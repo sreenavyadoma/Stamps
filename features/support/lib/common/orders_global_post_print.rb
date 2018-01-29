@@ -21,25 +21,25 @@ module Stamps
         #AB_ORDERSAUTO_3515
         module WindowTitle
           def window_title
-            (cache[:window_title].nil?||!cache[:window_title].present?)?cache[:window_title]=StampsField.new(browser.div(css: '')):cache[:window_title]
+            (cache[:window_title].nil? || !cache[:window_title].present?) ? cache[:window_title] = StampsField.new(browser.div(css: '')) : cache[:window_title]
           end
         end
 
         module ModalElements
           def checkbox
-            (cache[:checkbox].nil?||!cache[:checkbox].present?)?cache[:checkbox]=StampsWatirCheckbox.new(browser.span(css: '')):cache[:checkbox]
+            (cache[:checkbox].nil? || !cache[:checkbox].present?) ? cache[:checkbox] = StampsWatirCheckbox.new(browser.span(css: '')) : cache[:checkbox]
           end
 
           def body
-            (cache[:body].nil?||!cache[:body].present?)?cache[:body]=StampsField.new(browser.div(css: '')):cache[:body]
+            (cache[:body].nil? || !cache[:body].present?) ? cache[:body] = StampsField.new(browser.div(css: '')) : cache[:body]
           end
 
           def global_post_ok_btn
-            (cache[:global_post_ok_btn].nil?||!cache[:global_post_ok_btn].present?)?cache[:global_post_ok_btn]=StampsField.new(browser.div(css: '')):cache[:global_post_ok_btn]
+            (cache[:global_post_ok_btn].nil? || !cache[:global_post_ok_btn].present?) ? cache[:global_post_ok_btn] = StampsField.new(browser.div(css: '')) : cache[:global_post_ok_btn]
           end
 
           def global_post_x_btn
-            (cache[:global_post_x_btn].nil?||!cache[:global_post_x_btn].present?)?cache[:global_post_x_btn]=StampsField.new(browser.div(css: '')):cache[:global_post_x_btn]
+            (cache[:global_post_x_btn].nil? || !cache[:global_post_x_btn].present?) ? cache[:global_post_x_btn] = StampsField.new(browser.div(css: '')) : cache[:global_post_x_btn]
           end
         end
 

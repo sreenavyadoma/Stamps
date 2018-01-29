@@ -31,18 +31,18 @@ module Stamps
       end
 
       def username
-        (cache[:username].nil? || cache[:username].present?)?cache[:username]=StampsTextbox.new(
-            (browser.text_field(css: "div[id^=forgotpasswordmodal]>div>div>div>div>div>div>div>div>div>div>div>div>input"))):cache[:username]
+        (cache[:username].nil? || cache[:username].present?) ? cache[:username] = StampsTextbox.new(
+            (browser.text_field(css: "div[id^=forgotpasswordmodal]>div>div>div>div>div>div>div>div>div>div>div>div>input"))) : cache[:username]
       end
 
       def secret_answer_1
-        (cache[:secret_answer_1].nil? || cache[:secret_answer_1].present?)?cache[:secret_answer_1]=StampsTextbox.new(
-            browser.text_fields(css: "div[id^=forgotpasswordmodal]>div>div>div>div>div>div>div>div>div>div>div>div>input")[1]):cache[:secret_answer_1]
+        (cache[:secret_answer_1].nil? || cache[:secret_answer_1].present?) ? cache[:secret_answer_1] = StampsTextbox.new(
+            browser.text_fields(css: "div[id^=forgotpasswordmodal]>div>div>div>div>div>div>div>div>div>div>div>div>input")[1]) : cache[:secret_answer_1]
       end
 
       def secret_answer_2
-        (cache[:secret_answer_2].nil? || cache[:secret_answer_2].present?)?cache[:secret_answer_2]=StampsTextbox.new(
-            browser.text_fields(css: "div[id^=forgotpasswordmodal]>div>div>div>div>div>div>div>div>div>div>div>div>input")[2]):cache[:secret_answer_2]
+        (cache[:secret_answer_2].nil? || cache[:secret_answer_2].present?) ? cache[:secret_answer_2] = StampsTextbox.new(
+            browser.text_fields(css: "div[id^=forgotpasswordmodal]>div>div>div>div>div>div>div>div>div>div>div>div>input")[2]) : cache[:secret_answer_2]
       end
 
       def continue
@@ -54,7 +54,7 @@ module Stamps
       end
 
       def confirm_reset
-        confirmation=StampsField.new(browser.label(text: "We have sent a temporary password to the email address associated with your account."))
+        confirmation = StampsField.new(browser.label(text: "We have sent a temporary password to the email address associated with your account."))
         5.times do
           sleep(0.35)
           return confirmation if confirmation.present?

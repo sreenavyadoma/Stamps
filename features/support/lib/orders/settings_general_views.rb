@@ -1,15 +1,15 @@
 module Stamps
   module Orders
     module Settings
-      #todo-rob re-work changes to Settings Fields tests
+      # todo-Rob Implement caching
       class Pounds < Browser::Base
         attr_reader :textbox, :inc_bthn, :dec_btn
 
         def initialize(param)
           super
-          @textbox=StampsTextbox.new(browser.text_field(name: 'sdc-resetfieldswin-poundsnumberfield-inputEl'))
-          @inc_bthn=StampsField.new(browser.div(css: "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=up]"))
-          @dec_btn=StampsField.new(browser.div(css: "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=down]"))
+          @textbox = StampsTextbox.new(browser.text_field(name: 'sdc-resetfieldswin-poundsnumberfield-inputEl'))
+          @inc_bthn = StampsField.new(browser.div(css: "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=up]"))
+          @dec_btn = StampsField.new(browser.div(css: "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=down]"))
         end
 
         def text
@@ -40,9 +40,9 @@ module Stamps
 
         def initialize(param)
           super
-          @textbox=StampsTextbox.new(browser.text_field(name: 'sdc-resetfieldswin-ouncesnumberfield-inputEl'))
-          @inc_btn=StampsField.new(browser.div(css: "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=up]"))
-          @dec_btn=StampsField.new(browser.div(css: "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=down]"))
+          @textbox = StampsTextbox.new(browser.text_field(name: 'sdc-resetfieldswin-ouncesnumberfield-inputEl'))
+          @inc_btn = StampsField.new(browser.div(css: "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=up]"))
+          @dec_btn = StampsField.new(browser.div(css: "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=down]"))
         end
 
         def text
@@ -73,8 +73,8 @@ module Stamps
 
         def initialize(param)
           super
-          @lb=Pounds.new(param)
-          @oz=Ounces.new(param)
+          @lb = Pounds.new(param)
+          @oz = Ounces.new(param)
         end
 
         def enabled?
@@ -82,10 +82,10 @@ module Stamps
         end
 
         def checkbox
-          checkbox_field=browser.span(id: "sdc-resetfieldswin-weightcheckbox-displayEl")
-          verify_field=checkbox_field.parent.parent.parent
-          attribute_name="class"
-          attribute_value="checked"
+          checkbox_field = browser.span(id: "sdc-resetfieldswin-weightcheckbox-displayEl")
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
       end
@@ -95,9 +95,9 @@ module Stamps
 
         def initialize(param)
           super
-          @textbox=StampsTextbox.new(browser.text_field(name: 'sdc-resetfieldswin-lengthnumberfield-inputEl'))
-          @inc_btn=StampsField.new(browser.div css: "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=up]")
-          @dec_btn=StampsField.new(browser.div css: "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=down]")
+          @textbox = StampsTextbox.new(browser.text_field(name: 'sdc-resetfieldswin-lengthnumberfield-inputEl'))
+          @inc_btn = StampsField.new(browser.div css: "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=up]")
+          @dec_btn = StampsField.new(browser.div css: "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=down]")
         end
 
         def text
@@ -128,9 +128,9 @@ module Stamps
 
         def initialize(param)
           super
-          @textbox=StampsTextbox.new(browser.text_field name: 'sdc-resetfieldswin-widthnumberfield-inputEl')
-          @inc_btn=StampsField.new(browser.div css: "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=up]")
-          @dec_btn=StampsField.new(browser.div css: "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=down]")
+          @textbox = StampsTextbox.new(browser.text_field name: 'sdc-resetfieldswin-widthnumberfield-inputEl')
+          @inc_btn = StampsField.new(browser.div css: "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=up]")
+          @dec_btn = StampsField.new(browser.div css: "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=down]")
         end
 
         def text
@@ -161,7 +161,7 @@ module Stamps
 
         def initialize(param)
           super
-          @textbox=StampsTextbox.new(browser.text_field name: 'sdc-resetfieldswin-heightnumberfield-inputEl')
+          @textbox = StampsTextbox.new(browser.text_field name: 'sdc-resetfieldswin-heightnumberfield-inputEl')
         end
 
         def text
@@ -175,14 +175,14 @@ module Stamps
         end
 
         def increment value
-          button=StampsField.new(browser.div css: "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=up]")
+          button = StampsField.new(browser.div css: "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=up]")
           value.to_i.times do
             button.click
           end
         end
 
         def decrement value
-          button=StampsField.new(browser.div css: "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=down]")
+          button = StampsField.new(browser.div css: "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=down]")
           value.to_i.times do
             button.click
           end
@@ -191,13 +191,13 @@ module Stamps
 
       class SettingsLogoffDropDown < Browser::Base
         def textbox
-          (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsField.new(
-              browser.text_field(css: "[id^=generaltabview-][id$=-targetEl] [id^=form-][id$=-targetEl]>div:nth-child(4) input")):cache[:textbox]
+          (cache[:textbox].nil? || !cache[:textbox].present?) ? cache[:textbox] = StampsField.new(
+              browser.text_field(css: "[id^=generaltabview-][id$=-targetEl] [id^=form-][id$=-targetEl]>div:nth-child(4) input")) : cache[:textbox]
         end
 
         def dropdown
-          (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsField.new(
-              browser.div(css: "[id^=generaltabview-][id$=-targetEl] [id^=form-][id$=-targetEl]>div:nth-child(4) [class*=arrow-trigger]")):cache[:dropdown]
+          (cache[:dropdown].nil? || !cache[:dropdown].present?) ? cache[:dropdown] = StampsField.new(
+              browser.div(css: "[id^=generaltabview-][id$=-targetEl] [id^=form-][id$=-targetEl]>div:nth-child(4) [class*=arrow-trigger]")) : cache[:dropdown]
         end
 
         def five_min
@@ -226,9 +226,9 @@ module Stamps
 
         private
         def select(str)
-          selection=StampsField.new(browser.li(text: str))
+          selection = StampsField.new(browser.li(text: str))
           10.times do
-            return textbox.text if textbox.text==str
+            return textbox.text if textbox.text == str
             dropdown.click unless selection.present?
             selection.click
           end
@@ -241,8 +241,8 @@ module Stamps
 
         def initialize(param)
           super
-          @textbox=StampsTextbox.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div>input")
-          @dropdown=StampsField.new browser.div css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div[id$=picker]"
+          @textbox = StampsTextbox.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div>input")
+          @dropdown = StampsField.new browser.div css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div[id$=picker]"
         end
 
         def text
@@ -250,7 +250,7 @@ module Stamps
         end
 
         def select(selection)
-          selection_label=StampsField.new browser.li text: selection
+          selection_label = StampsField.new browser.li text: selection
           10.times do
             break if textbox.text.include? selection
             dropdown.click unless selection_label.present?
@@ -361,12 +361,12 @@ module Stamps
 
         def initialize(param)
           super
-          @textbox=StampsTextbox.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div>input")
-          @dropdown=StampsField.new browser.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div[id$=picker]")
+          @textbox = StampsTextbox.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div>input")
+          @dropdown = StampsField.new browser.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div[id$=picker]")
         end
 
         def select(selection)
-          selection_label=StampsField.new browser.li text: selection
+          selection_label = StampsField.new browser.li text: selection
           10.times do
             break if textbox.text.include? selection
             dropdown.click unless selection_label.present?
@@ -409,9 +409,9 @@ module Stamps
 
         def initialize(param)
           super
-          @length=Length.new(param)
-          @width=Width.new(param)
-          @height=Height.new(param)
+          @length = Length.new(param)
+          @width = Width.new(param)
+          @height = Height.new(param)
         end
 
         def enabled?
@@ -419,8 +419,8 @@ module Stamps
         end
 
         def checkbox
-          checkbox_field=browser.span(id: "sdc-resetfieldswin-dimensionscheckbox-displayEl")
-          verify_field=checkbox_field.parent.parent.parent
+          checkbox_field = browser.span(id: "sdc-resetfieldswin-dimensionscheckbox-displayEl")
+          verify_field = checkbox_field.parent.parent.parent
           StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
         end
       end
@@ -431,8 +431,8 @@ module Stamps
         end
 
         def service
-          checkbox_field=browser.span id: "sdc-resetfieldswin-servicecheckbox-displayEl"
-          verify_field=checkbox_field.parent.parent.parent
+          checkbox_field = browser.span id: "sdc-resetfieldswin-servicecheckbox-displayEl"
+          verify_field = checkbox_field.parent.parent.parent
           StampsCheckbox.new checkbox_field, verify_field, v, "checked"
         end
 
@@ -445,88 +445,88 @@ module Stamps
         end
 
         def ship_to_address
-          checkbox_field=browser.span id: "sdc-resetfieldswin-shiptoaddresscheckbox-displayEl"
-          verify_field=checkbox_field.parent.parent.parent
-          attribute_name="class"
-          attribute_value="checked"
+          checkbox_field = browser.span id: "sdc-resetfieldswin-shiptoaddresscheckbox-displayEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def tracking
-          checkbox_field=browser.span id: "sdc-resetfieldswin-trackingcheckbox-displayEl"
-          verify_field=checkbox_field.parent.parent.parent
-          attribute_name="class"
-          attribute_value="checked"
+          checkbox_field = browser.span id: "sdc-resetfieldswin-trackingcheckbox-displayEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def extra_services
-          checkbox_field=browser.span id: "sdc-resetfieldswin-extraservicescheckbox-displayEl"
-          verify_field=checkbox_field.parent.parent.parent
-          attribute_name="class"
-          attribute_value="checked"
+          checkbox_field = browser.span id: "sdc-resetfieldswin-extraservicescheckbox-displayEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def insurance
-          checkbox_field=browser.span id: "sdc-resetfieldswin-insurancecheckbox-displayEl"
-          verify_field=checkbox_field.parent.parent.parent
-          attribute_name="class"
-          attribute_value="checked"
+          checkbox_field = browser.span id: "sdc-resetfieldswin-insurancecheckbox-displayEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def reference_numbers
-          checkbox_field=browser.span id: "sdc-resetfieldswin-referencenumberscheckbox-displayEl"
-          verify_field=checkbox_field.parent.parent.parent
-          attribute_name="class"
-          attribute_value="checked"
+          checkbox_field = browser.span id: "sdc-resetfieldswin-referencenumberscheckbox-displayEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def cost_code
-          checkbox_field=browser.span id: "sdc-resetfieldswin-costcodecheckbox-displayEl"
-          verify_field=checkbox_field.parent.parent.parent
-          attribute_name="class"
-          attribute_value="checked"
+          checkbox_field = browser.span id: "sdc-resetfieldswin-costcodecheckbox-displayEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def customs
-          checkbox_field=browser.span id: "sdc-resetfieldswin-customscheckbox-displayEl"
-          verify_field=checkbox_field.parent.parent.parent
-          attribute_name="class"
-          attribute_value="checked"
+          checkbox_field = browser.span id: "sdc-resetfieldswin-customscheckbox-displayEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def quantity
-          checkbox_field=browser.span id: "sdc-resetfieldswin-quantitycheckbox-displayEl"
-          verify_field=checkbox_field.parent.parent.parent
-          attribute_name="class"
-          attribute_value="checked"
+          checkbox_field = browser.span id: "sdc-resetfieldswin-quantitycheckbox-displayEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def stamps_amount
-          checkbox_field=browser.span id: "sdc-resetfieldswin-stampsamountcheckbox-displayEl"
-          verify_field=checkbox_field.parent.parent.parent
-          attribute_name="class"
-          attribute_value="checked"
+          checkbox_field = browser.span id: "sdc-resetfieldswin-stampsamountcheckbox-displayEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def auto_advance_label_position
-          parent=(browser.label :text=> "Auto-Advance Label Position (NetStamps and Label Sheets)").parent
-          checkbox_field=parent.span(:class=> 'x-form-checkbox')
-          verify_field=checkbox_field.parent.parent.parent
-          attribute_name="class"
-          attribute_value="checked"
+          parent = (browser.label :text => "Auto-Advance Label Position (NetStamps and Label Sheets)").parent
+          checkbox_field = parent.span(:class => 'x-form-checkbox')
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def close
-          button=StampsField.new(browser.span text: "Close")
+          button = StampsField.new(browser.span text: "Close")
           5.times do
             return unless button.present?
             button.click
@@ -539,7 +539,7 @@ module Stamps
       class GeneralSettings < Browser::Base
 
         def general
-          @general=browser.span(text: 'General')
+          @general = browser.span(text: 'General')
         end
 
         def title
@@ -551,8 +551,8 @@ module Stamps
         end
 
         def services
-          checkbox_field=browser.span(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(2)>div>div>div>div>div>div>div>span")
-          verify_field=checkbox_field.parent.parent.parent
+          checkbox_field = browser.span(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(2)>div>div>div>div>div>div>div>span")
+          verify_field = checkbox_field.parent.parent.parent
           StampsCheckbox.new(checkbox_field, verify_field, "class", "checked")
         end
 
@@ -569,16 +569,16 @@ module Stamps
         end
 
         def print_confirm
-          checkbox_field=browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(6)>div>div>div>div>div>div>div>span"
-          verify_field=checkbox_field.parent.parent.parent
-          attribute_name="class"
-          attribute_value="checked"
+          checkbox_field = browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(6)>div>div>div>div>div>div>div>span"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def reset_fields
-          modal=ResetFields.new(param)
-          button=StampsField.new browser.span text: "Select..."
+          modal = ResetFields.new(param)
+          button = StampsField.new browser.span text: "Select..."
           10.times do
             button.click unless modal.present?
             return modal if modal.present?
@@ -586,31 +586,31 @@ module Stamps
         end
 
         def usps_terms
-          checkbox_field=browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(8)>div>div>div>div>div>div>div>span"
-          verify_field=checkbox_field.parent.parent.parent
-          attribute_name="class"
-          attribute_value="checked"
+          checkbox_field = browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(8)>div>div>div>div>div>div>div>span"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def contacts
-          checkbox_field=browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(10)>div>div>div>div>div>div>div>span"
-          verify_field=checkbox_field.parent.parent.parent
-          attribute_name="class"
-          attribute_value="checked"
+          checkbox_field = browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(10)>div>div>div>div>div>div>div>span"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def shipments
-          checkbox_field=browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(15)>div>div>div>div>div>div>div>span"
-          verify_field=checkbox_field.parent.parent.parent
-          attribute_name="class"
-          attribute_value="checked"
+          checkbox_field = browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(15)>div>div>div>div>div>div>div>span"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def save
-          button=StampsField.new(browser.span text: "Done")
+          button = StampsField.new(browser.span text: "Done")
           10.times do
             button.click
             return unless button.present?
@@ -618,7 +618,7 @@ module Stamps
         end
 
         def close
-          button=StampsField.new(browser.img css: "img[class$=close]")
+          button = StampsField.new(browser.img css: "img[class$=close]")
           10.times do
             button.click
             return unless button.present?
@@ -629,16 +629,16 @@ module Stamps
 
       module GeneralSettingsContainer
         def gen_settings_header
-          (cache[:gen_settings].nil?||!cache[:gen_settings].present?)?cache[:gen_settings]=StampsField.new(
-              browser.label(text: "General Settings")):cache[:gen_settings]
+          (cache[:gen_settings].nil? || !cache[:gen_settings].present?) ? cache[:gen_settings] = StampsField.new(
+              browser.label(text: "General Settings")) : cache[:gen_settings]
         end
 
         def services
-          (cache[:services].nil?||!cache[:services].present?)?cache[:services]="":cache[:services]
+          (cache[:services].nil? || !cache[:services].present?) ? cache[:services] = "" : cache[:services]
         end
 
         def logoff
-          (cache[:services].nil?||!cache[:services].present?)?cache[:services]=SettingsLogoffDropDown.new(param):cache[:services]
+          (cache[:services].nil? || !cache[:services].present?) ? cache[:services] = SettingsLogoffDropDown.new(param) : cache[:services]
         end
 
         def postdate
@@ -686,8 +686,8 @@ module Stamps
 
       class InternationalTabView < Browser::Base
         def gen_settings_header
-          (cache[:gen_settings_header].nil?||!cache[:gen_settings_header].present?)?cache[:gen_settings_header]=StampsField.new(
-              browser.label(text: "Default Customs Information")[0]):cache[:gen_settings_header]
+          (cache[:gen_settings_header].nil? || !cache[:gen_settings_header].present?) ? cache[:gen_settings_header] = StampsField.new(
+              browser.label(text: "Default Customs Information")[0]) : cache[:gen_settings_header]
         end
 
         def package_contents

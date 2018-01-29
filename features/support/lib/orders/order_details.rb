@@ -42,7 +42,8 @@ module Stamps
       # Single Order Details Form fields
       module Fields
         module BlurOutField
-          def blur_out(count=1)
+          # @param [count] count
+          def blur_out(count = 1)
             @service_blur_out_field = StampsField.new(browser.label(text: 'Service:')) if @service_blur_out_field.nil? || !@service_blur_out_field.present?
             @weight_blur_out_field = StampsField.new(browser.label(text: 'Weight:')) if @weight_blur_out_field.nil? || !@weight_blur_out_field.present?
             (count.nil? ? 1 : count.to_i).times do

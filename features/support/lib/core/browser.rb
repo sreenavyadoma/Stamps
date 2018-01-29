@@ -19,12 +19,10 @@ module Stamps
         module ClassMethods
           def assign(cache)
             @cache = cache
-            self
           end
 
           def cache
-            raise RuntimeError, "cache has not been set. Missing assign({}) statement in your class." if @cache.nil?
-            @cache
+            @cache.nil? ? raise(ArgumentError, 'Missing assign({}) statement, cache not set.') : @cache
           end
         end
       end
@@ -41,7 +39,6 @@ module Stamps
         @param = param
         self.class.browser = param.browser
         @logger = param.logger
-        self
       end
 
       def browser
@@ -55,55 +52,6 @@ module Stamps
       include Cache
       def cache
         self.class.cache
-      end
-    end
-
-    class FloatingBoundList < BaseCache
-      @@hash = {}
-      class << self
-        def set(key, val)
-          @@hash[key.to_sym] = val
-        end
-
-        def get(key)
-          @@hash[key.to_sym]
-        end
-
-        def has_key?(key)
-          @@hash.has_key?(key.to_sym)
-        end
-
-        def keys
-          @@hash.keys
-        end
-
-        def values
-          @@hash.values
-        end
-      end
-
-      def initialize(param)
-        super
-      end
-
-      def set(key, val)
-        self.class.set(key, val)
-      end
-
-      def get(key)
-        self.class.get(key)
-      end
-
-      def has_key?(key)
-        self.class.has_key?(key.to_sym)
-      end
-
-      def keys
-        self.class.keys
-      end
-
-      def values
-        self.class.values
       end
     end
 
@@ -305,7 +253,7 @@ module Stamps
       end
 
       def data_error
-        attribute_value("data-errorqtip")
+        attribute_value('data-errorqtip')
       end
 
       def style(property)
@@ -368,7 +316,7 @@ module Stamps
             clear
             textbox.set(str) if present?
             break if text == str
-            set_attribute_value("value", str) if present?
+            set_attribute_value('value', str) if present?
             break if text == str
           rescue
             # ignore
@@ -494,7 +442,7 @@ module Stamps
       def checked?
         begin
           result = check_verify.attribute_value(attribute)
-          return result == "true" if result == "true" || result == "false"
+          return result == 'true' if result == 'true' || result == 'false'
           return result.include?(attribute_value)
         rescue
           # ignore
@@ -535,7 +483,7 @@ module Stamps
           break if selected?
           radio.click
         end
-        expect(selected?).to be(true), "Unable to select radio button"
+        expect(selected?).to be(true), 'Unable to select radio button'
         self
       end
 
@@ -592,7 +540,7 @@ module Stamps
 
 
       def data_qtip(selection)
-        StampsField.new(expose_selection(selection)).attribute_value("data-qtip")
+        StampsField.new(expose_selection(selection)).attribute_value('data-qtip')
       end
     end
 
@@ -608,7 +556,7 @@ module Stamps
       def select(str)
         dropdown.click
         sleep(0.25)
-        expect(list_of_values).not_to be_nil, "Error: Set list_of_values before calling select_from_lov."
+        expect(list_of_values).not_to be_nil, 'Error: Set list_of_values before calling select_from_lov.'
         10.times do
           begin
             dropdown.click if list_of_values.size == 0
@@ -648,7 +596,7 @@ module Stamps
 
       def select(str)
         dropdown.click
-        expect(html_tag).not_to be_nil, "Error: Set html_tag before calling select."
+        expect(html_tag).not_to be_nil, 'Error: Set html_tag before calling select.'
         case html_tag
           when :span
             selection = StampsField.new(browser.span(text: str))

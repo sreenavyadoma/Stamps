@@ -5,8 +5,8 @@ module Stamps
 
       def initialize(param)
         super
-        @window_title=StampsField.new(browser.div(text: 'Search Contacts'))
-        @x_btn=StampsField.new(browser.img(css: "img[class*='x-tool-img x-tool-close']"))
+        @window_title = StampsField.new(browser.div(text: 'Search Contacts'))
+        @x_btn = StampsField.new(browser.img(css: "img[class*='x-tool-img x-tool-close']"))
 
       end
 

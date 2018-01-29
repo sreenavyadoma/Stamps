@@ -254,11 +254,11 @@ module Stamps
       end
 
       def edit_payment_method
-        expect("Edit Payment Method is not yet implemented.").to eql ""
+        raise 'Not Implemented'
       end
 
       def autobuy
-        expect("AutoBuy is not implemented").to eql ""
+        raise 'Not Implemented'
       end
     end
 
@@ -403,21 +403,25 @@ module Stamps
       end
 
       def orders
-        raise "NavBar::Orders is not implemented!"
+        raise 'Not Implemented'
+=begin
         10.times do
           orders_link.click
           web_orders.wait_until_present(8)
           return web_orders if grid.present?
         end
+=end
       end
 
       def mail
-        raise "NavBar::Mail is not implemented!"
+        raise 'Not Implemented'
+=begin
         10.times do
           mail_link.click
           web_mail.wait_until_present(8)
           return web_mail if grid.present?
         end
+=end
       end
 
       def sign_out
