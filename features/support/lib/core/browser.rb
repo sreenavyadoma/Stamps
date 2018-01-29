@@ -18,7 +18,7 @@ module Stamps
           end
 
           def cache
-            @cache.nil? ? raise(ArgumentError, 'Missing assign({}) statement, cache not set.') : @cache
+            @cache.nil? ? raise(ArgumentError, "Missing #{self.name.split('::').last}.assign({}) statement, cache not set for #{self}") : @cache
           end
         end
       end
