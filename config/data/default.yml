@@ -58,6 +58,7 @@ supported_stores:
   shopify: Shopify
   magento: Magento
   opencart: OpenCart
+  square: Square
 
 
 intellij:
@@ -101,7 +102,7 @@ mail_services:
   Media Mail: sdc-servicedroplist-mmpackage
   FCM Post Card: sdc-servicedroplist-fcpostcard
   FCM Letter: sdc-servicedroplist-fcletter
-  FCM Large Envelope: sdc-servicedroplist-fclargeenvelopeorflat
+  FCM Large Envelope/Flat: sdc-servicedroplist-fclargeenvelopeorflat
   FCM Package/Thick Envelope: sdc-servicedroplist-fcthickenvelope
   PM Large/Thick Envelope: sdc-servicedroplist-pmlargeenvelopeorflat
   PM Package: sdc-servicedroplist-pmpackage
@@ -118,13 +119,13 @@ mail_services:
   PME Flat Rate Envelope: sdc-servicedroplist-xmflatrateenvelope
   PME Padded Flat Rate Envelope: sdc-servicedroplist-xmflatratepaddedenvelope
   PME Legal Flat Rate Envelope: sdc-servicedroplist-xmlegalflatrateenvelope
-  MM Package: sdc-servicedroplist-mmpackage
-  PSG Package: sdc-servicedroplist-pspackage
+  MM Package/Flat/Thick Envelope: sdc-servicedroplist-mmpackage
+  PSG Package/Flat/Thick Envelope: sdc-servicedroplist-pspackage
   PSG Large Package: sdc-servicedroplist-pslargepackage
   PSG Oversized Package: sdc-servicedroplist-psoversizedpackage
-  FCMI Large Envelope: sdc-servicedroplist-fcilargeenvelopeorflat
-  FCMI Package: sdc-servicedroplist-fcithickenvelope
-  PMI Package: sdc-servicedroplist-pmipackage
+  FCMI Large Envelope/Flat: sdc-servicedroplist-fcilargeenvelopeorflat
+  FCMI Package/Thick Envelope: sdc-servicedroplist-fcithickenvelope
+  PMI Package/Flat/Thick Envelope: sdc-servicedroplist-pmipackage
   PMI Flat Rate Envelope: sdc-servicedroplist-pmiflatrateenvelope
   PMI Padded Flat Rate Envelope: sdc-servicedroplist-pmiflatratepaddedenvelope
   PMI Legal Flat Rate Envelope: sdc-servicedroplist-pmilegalflatrateenvelope
@@ -133,13 +134,13 @@ mail_services:
   PMI Large Flat Rate Box: sdc-servicedroplist-pmilargeflatratebox
   PMI Regional Rate Box A: sdc-servicedroplist-pmiregionalrateboxa
   PMI Regional Rate Box B: sdc-servicedroplist-pmiregionalrateboxb
-  PMEI Package: sdc-servicedroplist-emipackage
+  PMEI Package/Flat/Thick Envelope: sdc-servicedroplist-emipackage
   PMEI Flat Rate Envelope: sdc-servicedroplist-emiflatrateenvelope
   PMEI Padded Flat Rate Envelope: sdc-servicedroplist-emiflatratepaddedenvelope
   PMEI Legal Flat Rate Envelope: sdc-servicedroplist-emilegalflatrateenvelope
 
 orders_services:
-  FCM Large Envelope: sdc-servicedroplist-fclargeenvelopeorflat
+  FCM Large Envelope/Flat: sdc-servicedroplist-fclargeenvelopeorflat
   FCM Package/Thick Envelope: sdc-servicedroplist-fcthickenvelope
   PM Large/Thick Envelope: sdc-servicedroplist-pmlargeenvelopeorflat
   PM Package: sdc-servicedroplist-pmpackage
@@ -156,13 +157,13 @@ orders_services:
   PME Flat Rate Envelope: sdc-servicedroplist-xmflatrateenvelope
   PME Padded Flat Rate Envelope: sdc-servicedroplist-xmflatratepaddedenvelope
   PME Legal Flat Rate Envelope: sdc-servicedroplist-xmlegalflatrateenvelope
-  MM Package: sdc-servicedroplist-mmpackage
-  PSG Package: sdc-servicedroplist-pspackage
+  MM Package/Flat/Thick Envelope: sdc-servicedroplist-mmpackage
+  PSG Package/Flat/Thick Envelope: sdc-servicedroplist-pspackage
   PSG Large Package: sdc-servicedroplist-pslargepackage
   PSG Oversized Package: sdc-servicedroplist-psoversizedpackage
-  FCMI Large Envelope: sdc-servicedroplist-fcilargeenvelopeorflat
-  FCMI Package: sdc-servicedroplist-fcithickenvelope
-  PMI Package: sdc-servicedroplist-pmipackage
+  FCMI Large Envelope/Flat: sdc-servicedroplist-fcilargeenvelopeorflat
+  FCMI Package/Thick Envelope: sdc-servicedroplist-fcithickenvelope
+  PMI Package/Flat/Thick Envelope: sdc-servicedroplist-pmipackage
   PMI Flat Rate Envelope: sdc-servicedroplist-pmiflatrateenvelope
   PMI Padded Flat Rate Envelope: sdc-servicedroplist-pmiflatratepaddedenvelope
   PMI Legal Flat Rate Envelope: sdc-servicedroplist-pmilegalflatrateenvelope
@@ -171,7 +172,7 @@ orders_services:
   PMI Large Flat Rate Box: sdc-servicedroplist-pmilargeflatratebox
   PMI Regional Rate Box A: sdc-servicedroplist-pmiregionalrateboxa
   PMI Regional Rate Box B: sdc-servicedroplist-pmiregionalrateboxb
-  PMEI Package: sdc-servicedroplist-emipackage
+  PMEI Package/Flat/Thick Envelope: sdc-servicedroplist-emipackage
   PMEI Flat Rate Envelope: sdc-servicedroplist-emiflatrateenvelope
   PMEI Padded Flat Rate Envelope: sdc-servicedroplist-emiflatratepaddedenvelope
   PMEI Legal Flat Rate Envelope: sdc-servicedroplist-emilegalflatrateenvelope

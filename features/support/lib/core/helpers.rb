@@ -50,7 +50,7 @@ module Stamps
   module RandomGenerators
   end
 
-  module ParameterHelper
+  module ParameterHelper #todo-Rob move ParameterHelper to String open class
     def state_fullname(state) #todo-Rob. This is wrong, fix it.
       if @states.nil?
         @states = {}
@@ -395,8 +395,10 @@ module Stamps
         # when /apple|osx|safari|mac/
         #   return :safari
         else
-          raise "#{browser} is not a valid selection. Valid browsers are ff|firefox|mozilla|chrome|gc|google|ms|me|microsoft|edge"
+          # do nothing
       end
+
+      raise ArgumentError, "#{browser} is not a valid selection. Valid browsers are ff|firefox|mozilla|chrome|gc|google|ms|me|microsoft|edge"
     end
   end
 

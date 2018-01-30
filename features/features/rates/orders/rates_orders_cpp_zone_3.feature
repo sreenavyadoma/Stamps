@@ -6,7 +6,7 @@ Feature: January 2017 Rates for CPP User in Zone 3
   @rates_orders_cpp_zone_3
   Scenario: FCM Package
     Then set Order Details Ship-To to random address in zone 3
-    Then set Order Details service to FCM Large Envelope
+    Then set Order Details service to FCM Large Envelope/Flat
     Then set Order Details Weight to 0 lb 2 oz
     Then expect Order Details Service Cost is 1.19
     Then expect Order Details Total Ship Cost is 1.19
@@ -158,7 +158,7 @@ Feature: January 2017 Rates for CPP User in Zone 3
     Then set Order Details service to PME Padded Flat Rate Envelope
     Then set Order Details Weight to 14 lb 0 oz
     Then expect Order Details Service Cost is 21.64
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
     Then expect Order Details Total Ship Cost is 21.64
     Then Sign out
 
@@ -173,9 +173,9 @@ Feature: January 2017 Rates for CPP User in Zone 3
     Then Sign out
 
   @rates_orders_cpp_zone_3
-  Scenario: MM Package
+  Scenario: MM Package/Flat/Thick Envelope
     Then set Order Details Ship-To to random address in zone 3
-    Then set Order Details service to MM Package
+    Then set Order Details service to MM Package/Flat/Thick Envelope
     Then set Order Details Weight to 13 lb 0 oz
     Then expect Order Details Service Cost is 8.45
     Then set Order Details Tracking to USPS Tracking
@@ -185,7 +185,7 @@ Feature: January 2017 Rates for CPP User in Zone 3
   @rates_orders_cpp_zone_3
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
     Then set Order Details Ship-To to random address in zone 3
-    Then set Order Details service to PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
     Then set Order Details Weight to 23 lb 0 oz
     Then expect Order Details Service Cost is 19.29
     Then set Order Details Tracking to USPS Tracking
@@ -208,6 +208,6 @@ Feature: January 2017 Rates for CPP User in Zone 3
     Then set Order Details service to PSG Oversized Package
     Then set Order Details Weight to 40 lb 0 oz
     Then expect Order Details Service Cost is 67.94
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
     Then expect Order Details Total Ship Cost is 70.39
     Then Sign out

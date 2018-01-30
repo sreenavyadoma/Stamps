@@ -9,7 +9,7 @@ Feature: All International Rules
   Scenario: Add Missing Validation Logic for Phone and International Email
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To Country to Australia
+    Then set Order Details Domestic Ship-To Country to Australia
     Then check Orders Grid row 1
 
     Then expect Order Details International Name data error tooltip is "A first and last name of at least two characters each is required"
@@ -50,7 +50,7 @@ Feature: All International Rules
     Then set Customs Package Contents to Other
     Then Expect Customs Internal Transaction Number is Required
 
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
     Then Expect Customs Internal Transaction Number is Required
     Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -85,7 +85,7 @@ Feature: All International Rules
     Then set Customs Package Contents to Other
     Then Expect Customs Internal Transaction Number is Required
 
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
     Then Expect Customs Internal Transaction Number is Required
     Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -98,7 +98,7 @@ Feature: All International Rules
   Scenario: International Shipping fields and Customs Information fields validation
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To Country to Japan
+    Then set Order Details Domestic Ship-To Country to Japan
 
     Then expect Order Details International Address fields are visible
     Then expect Order Details Domestic Ship-To fields are hidden
@@ -171,7 +171,7 @@ Feature: All International Rules
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then set Order Details service to FCMI Large Envelope
+    Then set Order Details service to FCMI Large Envelope/Flat
     Then Sign out
 
 
@@ -200,7 +200,7 @@ Feature: All International Rules
     Then Expect Customs Internal Transaction Number is Required
     Then set Customs Package Contents to Other
     Then Expect Customs Internal Transaction Number is Required
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
     Then Expect Customs Internal Transaction Number is Required
     Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -220,7 +220,7 @@ Feature: All International Rules
     Then set Order Details Ounces to 5
     Then set Order Details service to PMI Flat Rate Envelope
 
-  #Then set Order Details service to FCMI Large Envelope
+  #Then set Order Details service to FCMI Large Envelope/Flat
     Then click Order Details form Customs Form button
     Then Expect Customs Internal Transaction Number is Required
     Then set Customs Package Contents to Commercial Sample
@@ -238,7 +238,7 @@ Feature: All International Rules
     Then set Customs Package Contents to Other
     Then Expect Customs Internal Transaction Number is Required
 
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
     Then Expect Customs Internal Transaction Number is Required
     Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -257,7 +257,7 @@ Feature: All International Rules
     Then set Order Details Ounces to 5
     Then set Order Details service to PMI Flat Rate Envelope
 
-  #Then set Order Details service to FCMI Large Envelope
+  #Then set Order Details service to FCMI Large Envelope/Flat
     Then click Order Details form Customs Form button
     Then Expect Customs Internal Transaction Number is Required
     Then set Customs Package Contents to Commercial Sample
@@ -275,7 +275,7 @@ Feature: All International Rules
     Then set Customs Package Contents to Other
     Then Expect Customs Internal Transaction Number is Required
 
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
     Then Expect Customs Internal Transaction Number is Required
     Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -294,13 +294,13 @@ Feature: All International Rules
     Then set Order Details Ounces to 5
     Then set Order Details service to PMI Flat Rate Envelope
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
-    Then set Order Details service to FCMI Large Envelope
+    Then set Order Details service to FCMI Large Envelope/Flat
     Then click Order Details form Customs Form button
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
     Then Expect Customs Internal Transaction Number is Required
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 10
     Then Expect Customs Internal Transaction Number is Not required
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 2501, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 2501, Made In United States, Tariff 10
     Then Expect Customs Internal Transaction Number is Required
     Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -346,7 +346,7 @@ Feature: All International Rules
   Scenario: Two character minimum for Name & Company
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To Country to Antigua & Barbuda
+    Then set Order Details Domestic Ship-To Country to Antigua & Barbuda
     Then set Order Details International Ship-To Name to "a"
     Then expect Order Details International Name data error tooltip is "A first and last name of at least two characters each is required"
 

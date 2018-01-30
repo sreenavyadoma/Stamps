@@ -200,7 +200,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details Height to 1
     Then set Order Details Length to 1
     Then click Order Details form Customs Form button
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 20, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 20, Made In United States, Tariff 10
     Then close Customs Information form
     Then click Orders Toolbar Print button
     Then set Print modal Print-On to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
@@ -219,7 +219,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details Height to 1
     Then set Order Details Length to 1
     Then click Order Details form Customs Form button
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 20, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 20, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then click Orders Toolbar Print button

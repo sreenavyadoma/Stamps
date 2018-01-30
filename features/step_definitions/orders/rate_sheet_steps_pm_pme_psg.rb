@@ -426,7 +426,7 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
         end
 
       end
-    rescue Exception=> e
+    rescue Exception => e
       test_config.logger.step e.message
       test_config.logger.step e.backtrace.join("\n")
       test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:error_msg]]="Zone #{zone} - Row #{row_number}: #{e.message}"

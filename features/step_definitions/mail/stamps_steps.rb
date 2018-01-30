@@ -83,17 +83,17 @@ end
 
 #AB_ORDERSAUTO_3516
 Then /^[Ee]xpect [Pp]rint [Ff]orm [Pp]ounds [Ff]ield is (\d+)$/ do |weight_lb|
-  expect(stamps.mail.print_form.mail_weight.mail_pounds.text).to eql(weight_lb), "Pound field isn't equal to #{weight_lb}"
+  expect(stamps.mail.print_form.weight.pounds.text).to eql(weight_lb), "Pound field isn't equal to #{weight_lb}"
 end
 
 #AB_ORDERSAUTO_3516
 Then /^[Ee]xpect [Pp]rint [Ff]orm [Oo]unces [Ff]ield is (\d+)$/ do |weight_oz|
-  expect(stamps.mail.print_form.mail_weight.mail_ounces.text).to eql(weight_oz), "Ounces field isn't equal to #{weight_oz}"
+  expect(stamps.mail.print_form.weight.ounces.text).to eql(weight_oz), "Ounces field isn't equal to #{weight_oz}"
 end
 
 #AB_ORDERSAUTO_3516
 Then /^[Cc]lick [Rr]eset [Bb]utton$/ do
-  step "expect print form Reset Button is present"
+  step 'expect print form Toolbar Menu Reset Button is present'
   toolbar.reset.click
 end
 
