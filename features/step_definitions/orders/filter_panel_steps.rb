@@ -37,20 +37,18 @@ Then /^Filter Panel: Expand Panel$/ do
   stamps.orders.filter_panel.menu_item.expand.click
 end
 
-#todo-Rob In left Filter Panel, expect Shipped Tab Date Printed is today
+# todo-Rob In left Filter Panel, expect Shipped Tab Date Printed is today
 Then /^[Ii]n left Filter Panel, expect Shipped Tab Date Printed is today$/ do
   today=test_helper.now_plus_mon_dd 0
   stamps.orders.filter_panel.shipped.select.date_printed.sort_descending
   actual_print_date=stamps.orders.filter_panel.shipped.select.date_printed.row 1
 end
 
-#todo-Rob is this needed?
+# todo-Rob is this needed?
 Then /^[Ii]n left Filter Panel, expect Shipped Tab Ship Date is today$/ do
-
 end
 
 Then /^[Ii]n left Filter Panel, expect Shipped Tab Ship Date is today plus (\d+)$/ do |day|
-
 end
 
 Then /^[Ii]n left Filter Panel, expect order moved to Shipped$/ do
@@ -106,7 +104,7 @@ Then /^[Ii]n left Filter Panel, expect Panel is open$/ do
 end
 
 Then /^[Ii]n left Filter Panel, expect panel is hidden$/ do
-  expect(stamps.orders.filter_panel.are_filter_links_present).to eql false
+  expect(stamps.orders.filter_panel.are_filter_links_present).to eql(false)
 end
 
 Then /^Filter Panel: Click panel name$/ do
@@ -121,26 +119,5 @@ end
 Then /^[Ii]n left Filter Panel, expect printed Order ID is not in Awaiting Shipment tab$/ do
   grid=stamps.orders.filter_panel.awaiting_shipment.select
   row1_order_id=grid.order_id.row(1)
-  expect((test_param[:order_id].values.last).include? row1_order_id).is false
+  expect((test_param[:order_id].values.last).include? row1_order_id).is(false)
 end
-
-Then /^[Ii]n left Filter Panel, expect all printed Order IDs not in Awaiting Shipment tab$/ do
-  test_param[:order_id].values.last.should_not include stamps.orders.filter_panel.awaiting_shipment.select.order_id.row(1)
-  test_param[:order_id].values.last.should_not include stamps.orders.filter_panel.awaiting_shipment.select.order_id.row(2)
-  test_param[:order_id].values.last.should_not include stamps.orders.filter_panel.awaiting_shipment.select.order_id.row(3)
-end
-
-Then /^[Ii]n left Filter Panel, expect printed Order ID is in Shipped tab$/ do
-  stamps.orders.filter_panel.shipped.select.order_id.sort_descending
-  stamps.orders.filter_panel.shipped.select.order_id.sort_descending
-  expect(stamps.orders.filter_panel.shipped.select.order_id.row(1)).to eql test_param[:order_id].values.last
-end
-
-Then /^[Ii]n left Filter Panel, expect all printed Order IDs are in Shipped tab$/ do
-  expect(test_param[:order_id].values.last).to include grid.order_id.row(3)
-  expect(test_param[:order_id_2]).to include grid.order_id.row(2)
-  expect(test_param[:order_id_3]).to include grid.order_id.row(1)
-end
-
-
-
