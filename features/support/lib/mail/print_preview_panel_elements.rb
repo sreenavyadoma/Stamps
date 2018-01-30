@@ -36,7 +36,7 @@ module Stamps
             begin
               left_label.click
               break if (left_label.attribute_value 'class').include? 'selected'
-            rescue StandardError
+            rescue
               false
             end
           end
@@ -48,7 +48,7 @@ module Stamps
             begin
               right_label.click
               break if (right_label.attribute_value 'class').include? 'selected'
-            rescue StandardError
+            rescue
               false
             end
           end

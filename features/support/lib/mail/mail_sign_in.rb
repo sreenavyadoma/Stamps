@@ -366,10 +366,17 @@ module Stamps
               break if signed_in_user.present?
             end
             return signed_in_user.text
-          rescue
-            # ignore
+          rescue StandardError => e
+            @error = e
           end
 
+          unless @error.nil?
+            logger.error "\n---\n#{"Unable to sign-in with credentials #{usr}/#{pw}"}\n#{@error.class.name}: #{@error.message}\n---\n"
+            logger.error @error.backtrace.join("\n")
+            @error.message
+            @error.backtrace.join("\n")
+            raise @error
+          end
           raise "Unable to sign-in with credentials #{usr}/#{pw}"
         end
 
