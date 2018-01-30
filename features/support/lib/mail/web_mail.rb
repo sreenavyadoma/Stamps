@@ -8,11 +8,11 @@ module Stamps
       assign({})
 
       def sign_in_modal
-        cache[:sign_in_modal].nil? || !cache[:sign_in_modal].present? ? cache[:sign_in_modal] = MailSignIn::MailSignInModal.new(param) : cache[:sign_in_modal]
+        cache[:sign_in].nil? || !cache[:sign_in].present? ? cache[:sign_in] = MailSignIn::MailSignInModal.new(param) : cache[:sign_in]
       end
 
       def toolbar_menu
-        cache[:toolbar_menu].nil? || !cache[:toolbar_menu].present? ? cache[:toolbar_menu] = MailToolbarMenu.new(param) : cache[:toolbar_menu]
+        cache[:menu].nil? || !cache[:menu].present? ? cache[:menu] = MailToolbarMenu.new(param) : cache[:menu]
       end
 
       def print_on(selection)
@@ -24,48 +24,48 @@ module Stamps
 
       def print_form
         case param.print_media
-        when :stamps
-          if cache[:stamps_print_form].nil? || !cache[:stamps_print_form].present?
-            cache[:stamps_print_form] = Stamps::Mail::PrintFormPanel::Form.new(param).extend(PrintFormPanel::MailStamps)
-          end
-          return cache[:stamps_print_form]
-        when :label
-          if cache[:label_print_form].nil? || !cache[:label_print_form].present?
-            cache[:label_print_form] = Stamps::Mail::PrintFormPanel::Form.new(param).extend(PrintFormPanel::ShippingLabel)
-          end
-          return cache[:label_print_form]
-        when :envelope
-          if cache[:envelope_print_form].nil? || !cache[:envelope_print_form].present?
-            cache[:envelope_print_form] = Stamps::Mail::PrintFormPanel::Form.new(param).extend(PrintFormPanel::Envelope)
-          end
-          return cache[:envelope_print_form]
-        when :certified_mail
-          if cache[:certified_mail_print_form].nil? || !cache[:certified_mail_print_form].present?
-            cache[:certified_mail_print_form] = Stamps::Mail::PrintFormPanel::Form.new(param).extend(PrintFormPanel::CertifiedMail)
-          end
-          return cache[:certified_mail_print_form]
-        when :certified_mail_3910_3930
-          if cache[:certified_mail_3910_3930_print_form].nil? || !cache[:certified_mail_3910_3930_print_form].present?
-            cache[:certified_mail_3910_3930_print_form] = Stamps::Mail::PrintFormPanel::Form.new(param).extend(PrintFormPanel::CertifiedMail39103930)
-          end
-          return cache[:certified_mail_3910_3930_print_form]
-        when :certified_mail_3810
-          if cache[:certified_mail_3810_print_form].nil? || !cache[:certified_mail_3810_print_form].present?
-            cache[:certified_mail_3810_print_form] = Stamps::Mail::PrintFormPanel::Form.new(param).extend(PrintFormPanel::CertifiedMail3810)
-          end
-          return cache[:certified_mail_3810_print_form]
-        when :certified_mail_3830
-          if cache[:certified_mail_3830_print_form].nil? || !cache[:certified_mail_3830_print_form].present?
-            cache[:certified_mail_3830_print_form] = Stamps::Mail::PrintFormPanel::Form.new(param).extend(PrintFormPanel::CertifiedMail3830)
-          end
-          return cache[:certified_mail_3830_print_form]
-        when :roll
-          if cache[:roll_print_form].nil? || !cache[:roll_print_form].present?
-            cache[:roll_print_form] = Stamps::Mail::PrintFormPanel::Form.new(param).extend(PrintFormPanel::Roll)
-          end
-          return cache[:roll_print_form]
-        when :manage_printing_options
-          raise "manage_printing_options is not implemented."
+          when :stamps
+            if cache[:stamps].nil? || !cache[:stamps].present?
+              cache[:stamps] = (Class.new(Browser::BaseCache) { assign({}) }).new(param).extend(PrintFormPanel::MailStamps)
+            end
+            return cache[:stamps]
+          when :label
+            if cache[:label].nil? || !cache[:label].present?
+              cache[:label] = (Class.new(Browser::BaseCache) { assign({}) }).new(param).extend(PrintFormPanel::ShippingLabel)
+            end
+            return cache[:label]
+          when :envelope
+            if cache[:envelope].nil? || !cache[:envelope].present?
+              cache[:envelope] = (Class.new(Browser::BaseCache) { assign({}) }).new(param).extend(PrintFormPanel::Envelope)
+            end
+            return cache[:envelope]
+          when :certified_mail
+            if cache[:cm].nil? || !cache[:cm].present?
+              cache[:cm] = (Class.new(Browser::BaseCache) { assign({}) }).new(param).extend(PrintFormPanel::CertifiedMail)
+            end
+            return cache[:cm]
+          when :certified_mail_3910_3930
+            if cache[:cm39103930].nil? || !cache[:cm39103930].present?
+              cache[:cm39103930] = (Class.new(Browser::BaseCache) { assign({}) }).new(param).extend(PrintFormPanel::CertifiedMail39103930)
+            end
+            return cache[:cm39103930]
+          when :certified_mail_3810
+            if cache[:cm3810].nil? || !cache[:cm3810].present?
+              cache[:cm3810] = (Class.new(Browser::BaseCache) { assign({}) }).new(param).extend(PrintFormPanel::CertifiedMail3810)
+            end
+            return cache[:cm3810]
+          when :certified_mail_3830
+            if cache[:certified_mail_3830_print_form].nil? || !cache[:certified_mail_3830_print_form].present?
+              cache[:certified_mail_3830_print_form] = (Class.new(Browser::BaseCache) { assign({}) }).new(param).extend(PrintFormPanel::CertifiedMail3830)
+            end
+            return cache[:certified_mail_3830_print_form]
+          when :roll
+            if cache[:roll].nil? || !cache[:roll].present?
+              cache[:roll] = (Class.new(Browser::BaseCache) { assign({}) }).new(param).extend(PrintFormPanel::Roll)
+            end
+            return cache[:roll]
+          when :manage_printing_options
+            raise 'Not Implemented'
           else
             # ignore
         end

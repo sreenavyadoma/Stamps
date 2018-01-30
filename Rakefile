@@ -1344,6 +1344,13 @@ Cucumber::Rake::Task.new(:tooltips) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+print_dialog_ship_date_calendar_plus_1
+
+Cucumber::Rake::Task.new(:print_dialog_ship_date_calendar) do |t|
+  t.profile = 'print_dialog_ship_date_calendar'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:print_two_up_expanded_sdc1200_left_print3) do |t|
   t.profile = 'print_two_up_expanded_sdc1200_left_print3'
   t.cucumber_opts = "-p cuke_reports"

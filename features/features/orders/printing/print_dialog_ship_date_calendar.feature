@@ -1,10 +1,11 @@
-Feature: Set Print Ship Date to Today
+
+Feature: Set Print Ship Date up to 5 days from now in Calendar
 
   Background:
     Given user is signed in to Web Apps
 
   @print_dialog_ship_date_calendar
-  Scenario: Set Ship Date to today
+  Scenario: Set Ship Date to tomorrow
 
   # Ship Date today + 1
     Then add new order
@@ -22,6 +23,8 @@ Feature: Set Print Ship Date to Today
     Then expect Orders Grid Ship Date for this order is correct
     Then expect Orders Grid Date Printed for this order is correct
 
+  @print_dialog_ship_date_calendar
+  Scenario: Set Ship Date to 2 days from now
   # Ship Date Today + 2
     Then add new order
     Then set Order Details Ship-From to default
@@ -38,6 +41,8 @@ Feature: Set Print Ship Date to Today
     Then expect Orders Grid Date Printed for this order is correct
     Then expect Orders Grid Ship Date for this order is correct
 
+
+  Scenario: Set Ship Date to 3 days from now
   # Ship Date Today + 3
     Then add new order
     Then set Order Details Ship-From to default
@@ -54,6 +59,8 @@ Feature: Set Print Ship Date to Today
     Then expect Orders Grid Date Printed for this order is correct
     Then expect Orders Grid Ship Date for this order is correct
 
+
+  Scenario: Set Ship Date to 4 days from now
       # Ship Date Today + 4
     Then add new order
     Then set Order Details Ship-From to default
@@ -64,13 +71,14 @@ Feature: Set Print Ship Date to Today
     Then set Print modal Print-On to Shipping Label - 8 ½" x 11" Paper
     Then set Orders print modal printer
     Then set Print modal Ship Date Calendar to today plus 4
-    Then set Print modal Ship Date to today plus 4
     Then click print modal print button
     Then Pause for 2 seconds
     Then select Filter Panel tab Shipped
     Then expect Orders Grid Date Printed for this order is correct
     Then expect Orders Grid Ship Date for this order is correct
 
+
+  Scenario: Set Ship Date to 5 days from now
   # Ship Date Today + 5
     Then add new order
     Then set Order Details Ship-From to default

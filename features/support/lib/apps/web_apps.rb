@@ -1,11 +1,23 @@
 module Stamps
   module WebApp
     def health
-      @health ||= HealthCheck.new(modal_param)
+      begin
+        @health ||= HealthCheck.new(modal_param)
+      rescue StandardError > e
+        test_config.logger.error e.message
+        test_config.logger.error e.backtrace.join('\n')
+        raise e
+      end
     end
 
     def stamps
-      @stamps ||= StampsDotCom.new(modal_param)
+      begin
+        @stamps ||= StampsDotCom.new(modal_param)
+      rescue StandardError > e
+        test_config.logger.error e.message
+        test_config.logger.error e.backtrace.join('\n')
+        raise e
+      end
     end
   end
 end

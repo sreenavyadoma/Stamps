@@ -43,15 +43,15 @@ module Stamps
 
         def initialize(param)
           super
-          @username_textbox = StampsTextbox.new(browser.text_field(css: "[placeholder=USERNAME]"))
-          @password_textbox = StampsTextbox.new(browser.text_field(css: "[placeholder=PASSWORD]"))
-          @sign_in_btn = StampsField.new(browser.span(text: "Sign In"))
+          @username_textbox = StampsTextbox.new(browser.text_field(css: '[placeholder=USERNAME]'))
+          @password_textbox = StampsTextbox.new(browser.text_field(css: '[placeholder=PASSWORD]'))
+          @sign_in_btn = StampsField.new(browser.span(text: 'Sign In'))
           @title = StampsField.new(browser.div(text: 'Sign In'))
-          @signed_in_user = StampsField.new(browser.span(id: "userNameText"))
+          @signed_in_user = StampsField.new(browser.span(id: 'userNameText'))
         end
 
         def remember_my_username
-          raise "remember_my_username not yet implemented."
+          raise 'remember_my_username not yet implemented.'
         end
 
         def validation_message
@@ -113,15 +113,15 @@ module Stamps
 
             marketplace.wait_until_present(6)
             if marketplace.present?
-              logger.message "-"
+              logger.message '-'
               logger.message "Username: #{usr}"
               logger.message "Username: #{usr}"
-              logger.message "-"
+              logger.message '-'
               return marketplace
             end
           end
-          expect(validation_message.text).to eql ""
-          expect("Market Place modal is not present").to eql "First Time Sign In" unless marketplace.present?
+          expect(validation_message.text).to eql ''
+          expect('Market Place modal is not present').to eql 'First Time Sign In' unless marketplace.present?
         end
 
         def load_sign_in_page
@@ -138,25 +138,25 @@ module Stamps
               url = "http://#{param.test_env}/#{(param.web_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
           end
 
-          logger.message "-"
+          logger.message '-'
           logger.message "URL: #{url}"
-          logger.message "-"
+          logger.message '-'
 
           browser.goto(url)
-          if browser.text.include? "Server Error"
+          if browser.text.include? 'Server Error'
             logger.error browser.text
-            raise browser.text
+            raise "Server Error:\n #{browser.text}"
           end
 
-          logger.message "-"
+          logger.message '-'
           logger.message "Page loaded: #{browser.url}"
-          logger.message "-"
+          logger.message '-'
 
           case param.web_app
             when :orders
-              expect(browser.url).to include "Orders"
+              expect(browser.url).to include 'Orders'
             when :mail
-              expect(browser.url.downcase).to include "webpostage"
+              expect(browser.url.downcase).to include 'webpostage'
             else
               # do nothing
           end
@@ -165,17 +165,17 @@ module Stamps
 
         def orders_sign_in(usr, pw)
           begin
-            loading_orders = StampsField.new(browser.div(text: "Loading orders..."))
-            invalid_username = StampsField.new(browser.span(id: "InvalidUsernameMsg"))
+            loading_orders = StampsField.new(browser.div(text: 'Loading orders...'))
+            invalid_username = StampsField.new(browser.span(id: 'InvalidUsernameMsg'))
             new_welcome = NewWelcomeModal.new(param)
             security_questions = SecurityQuestionsSuccess.new(param)
             server_error = Stamps::Orders::OrdersRuntimeError::ServerError.new(param)
 
-            expect(browser.url).to include "Orders"
+            expect(browser.url).to include 'Orders'
 
-            logger.message "#" * 15
+            logger.message '#' * 15
             logger.message "Username: #{usr}"
-            logger.message "#" * 15
+            logger.message '#' * 15
 
             wait_until_present(4)
             30.times do
@@ -226,11 +226,11 @@ module Stamps
         def orders_sign_in_sec_questions(usr, pw)
           security_questions = SecurityQuestions.new(param)
 
-          expect(browser.url).to include "Orders"
+          expect(browser.url).to include 'Orders'
 
-          logger.message "#" * 15
+          logger.message '#' * 15
           logger.message "Username: #{usr}"
-          logger.message "#" * 15
+          logger.message '#' * 15
 
           username.wait_until_present(8)
           20.times do
@@ -242,7 +242,7 @@ module Stamps
                 return security_questions if security_questions.present?
               end
           end
-          expect(security_questions).to be_present, ""
+          expect(security_questions).to be_present, ''
         end
       end
     end

@@ -110,7 +110,7 @@ module Stamps
         end
       end
 
-      module StampsAdvancedOptions
+      module Stamps
         include AdvOptToggle
         include AdvOptExtraServices
         include AdvOptReferenceNumber
@@ -144,7 +144,7 @@ module Stamps
 
       end
 
-      module LabelsAdvancedOptions
+      module Labels
         include AdvOptToggle
         include AdvOptExtraServices
         include AdvOptMailDate
@@ -159,7 +159,7 @@ module Stamps
         end
       end
 
-      module EnvelopesAdvancedOptions
+      module Envelopes
         include AdvOptToggle
         include AdvOptExtraServices
         include AdvOptMailDate
@@ -195,7 +195,7 @@ module Stamps
         end
       end
 
-      module CertifiedMailsAdvancedOptions
+      module CertifiedMails
         include AdvOptToggle
         include AdvOptExtraServices
         include AdvOptMailDate
@@ -215,7 +215,7 @@ module Stamps
         end
       end
 
-      module RollsAdvancedOptions
+      module Rolls
         include AdvOptToggle
         include AdvOptExtraServices
         include AdvOptMailDate
@@ -228,10 +228,6 @@ module Stamps
         def present?
           cost_code.present? && reference_number.present? && mail_date.present?
         end
-      end
-
-      class Form < BaseCache
-        assign({})
       end
     end
   end
