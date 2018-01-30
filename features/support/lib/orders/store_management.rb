@@ -246,15 +246,15 @@ module Stamps
             when :paypal
               (cache[:paypal_window].nil?||!cache[:paypal_window].present?)?cache[:paypal_window]=Browser::Base.new(param).extend(Orders::Stores::PayPalWindowTitle):cache[:paypal_window]
             when :ebay
-              raise "#{str} is not implemented."
+              raise "#{str} not implemented."
             when :shopify
-              raise "#{str} is not implemented."
+              raise "#{str} not implemented."
             when :amazon
-              raise "#{str} is not implemented."
+              raise "#{str} not implemented."
             when :etsy
-              raise "#{str} is not implemented."
+              raise "#{str} not implemented."
             when :magento
-              raise "#{str} is not implemented."
+              raise "#{str} not implemented."
             when :square
               (cache[:square_window].nil?||!cache[:square_window].present?)?cache[:square_window]=Browser::Base.new(param).extend(Orders::Stores::SquareWindowTitle):cache[:square_window]
             when :opencart
@@ -266,8 +266,8 @@ module Stamps
 
         def add_store(str)
           20.times do
-            store_field(str).click
             return store_window(str).window_title.text if store_window(str).window_title.present?
+            store_field(str).click
           end
           nil
         end

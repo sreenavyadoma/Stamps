@@ -8,7 +8,7 @@ Feature:  service Selection & Order Grid Values
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
-    Then set Order Details service to PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
 
     Then set Order Details Ounces to 1
     Then click Orders Toolbar Print button
@@ -21,7 +21,7 @@ Feature:  service Selection & Order Grid Values
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
-    Then set Order Details service to PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
     Then set Order Details Ounces to 1
     Then click Orders Toolbar Print button
     Then set Print modal Print-On to Shipping Label - Paper

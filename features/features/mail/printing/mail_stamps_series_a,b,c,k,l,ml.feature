@@ -15,7 +15,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Ounces to 1
-    Then select Print form service FCM Large Envelope
+    Then select Print form service FCM Large Envelope/Flat
     Then set Advanced Options Cost Code to None
     Then Print Postage
     Then set Mail Print modal Printer
@@ -43,7 +43,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Ounces to 1
-    Then select Print form service FCM Large Envelope
+    Then select Print form service FCM Large Envelope/Flat
     Then set Advanced Options Cost Code to None
     Then Print Postage
     Then set Mail Print modal Printer
@@ -71,7 +71,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Ounces to 1
-    Then select Print form service FCM Large Envelope
+    Then select Print form service FCM Large Envelope/Flat
     Then set Advanced Options Cost Code to None
     Then Print Postage
     Then set Mail Print modal Printer
@@ -99,7 +99,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Ounces to 1
-    Then select Print form service FCM Large Envelope
+    Then select Print form service FCM Large Envelope/Flat
     Then set Advanced Options Cost Code to None
     Then Print Postage
     Then set Mail Print modal Printer
@@ -127,7 +127,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Ounces to 1
-    Then select Print form service FCM Large Envelope
+    Then select Print form service FCM Large Envelope/Flat
     Then set Advanced Options Cost Code to None
     Then Print Postage
     Then set Mail Print modal Printer
@@ -155,7 +155,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Ounces to 1
-    Then select Print form service FCM Large Envelope
+    Then select Print form service FCM Large Envelope/Flat
     Then set Advanced Options Cost Code to None
     Then Print Postage
     Then set Mail Print modal Printer

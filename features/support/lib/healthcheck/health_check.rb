@@ -17,7 +17,7 @@ module Stamps
     end
 
     def address_book
-      param.test_env='stg' if param.test_env.downcase=='staging'
+      param.test_env = 'stg' if param.test_env.downcase == 'staging'
       case param.test_env.downcase
         when /sc/
           browser.goto("https://printext.qasc.stamps.com/addressbook/healthcheck.aspx")

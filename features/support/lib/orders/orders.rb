@@ -24,8 +24,8 @@ module Stamps
       end
 
       def order_details
-        cache[:single_order] = Orders::SingleOrder::DetailsForm.new(param) if cache[:single_order].nil?
-        cache[:single_order]
+        cache[:order_details] = Orders::SingleOrder::OrderDetails.new(param) if cache[:order_details].nil?
+        cache[:order_details]
       end
 
       def bulk_update
@@ -49,7 +49,8 @@ module Stamps
       end
 
       def external_sites
-        (cache[:external_sites].nil?||!cache[:external_sites].present?)?cache[:external_sites]=Stamps::Orders::ExternalSites::WebPage.new(param):cache[:external_sites]
+        cache[:external_sites] = (Class.new(Browser::BaseCache) { assign({}) }).new(param).extend(StampsExternalSites) if cache[:external_sites].nil?
+        cache[:external_sites]
       end
 
       def present?

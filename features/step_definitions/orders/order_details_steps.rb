@@ -57,9 +57,14 @@ Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) Description to (.*)$/ do
   step 'Save Order Details data'
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to (.*)$/ do |country|
+Then /^[Ss]et [Oo]rder [Dd]etails [Dd]omestic [Ss]hip-[Tt]o [Cc]ountry to (.*)$/ do |country|
   step 'show order details form ship-to fields'
-  expect(stamps.orders.order_details.ship_to.country.select(test_param[:ship_to_country] = country)).to eql(test_param[:ship_to_country])
+  expect(stamps.orders.order_details.ship_to.domestic.country.select(test_param[:ship_to_country] = country)).to eql(test_param[:ship_to_country])
+end
+
+Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o [Cc]ountry to (.*)$/ do |country|
+  step 'show order details form ship-to fields'
+  expect(stamps.orders.order_details.ship_to.international.country.select(test_param[:ship_to_country] = country)).to eql(test_param[:ship_to_country])
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o [Nn]ame to \"(.*)\"$/ do |str|
@@ -244,7 +249,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o Country to a random country in P
   country_list = data_for(:country_groups_PMEI_flat_rate, {})['group' + group].values
   test_param[:country] = country_list[rand(country_list.size)]
   test_config.logger.step "#{"#" * 10} Desired Country: #{test_param[:country]}"
-  step "set Order Details Ship-To Country to #{test_param[:country]}"
+  step "set Order Details Domestic Ship-To Country to #{test_param[:country]}"
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to a random country in PMEI price group (.*)$/ do |group|
@@ -265,14 +270,14 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to a random country i
   end
   test_param[:country] = country_name
   test_config.logger.step "#{"#" * 10} Desired Country: #{test_param[:country]}"
-  step "set Order Details Ship-To Country to #{test_param[:country]}"
+  step "set Order Details Domestic Ship-To Country to #{test_param[:country]}"
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to a random country in PMI Flat Rate price group (.*)$/ do |group|
   country_list = data_for(:country_groups_PMI_flat_rate, {})['group' + group].values
   test_param[:country] = country_list[rand(country_list.size)]
   test_config.logger.step "#{"#" * 10} Desired Country: #{test_param[:country]}"
-  step "set Order Details Ship-To Country to #{test_param[:country]}"
+  step "set Order Details Domestic Ship-To Country to #{test_param[:country]}"
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to a random country in PMI price group (.*)$/ do |group|
@@ -293,7 +298,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to a random country i
   end
   test_param[:country] = country_name
   test_config.logger.step "#{"#" * 10} Desired Country: #{test_param[:country]}"
-  step "set Order Details Ship-To Country to #{test_param[:country]}"
+  step "set Order Details Domestic Ship-To Country to #{test_param[:country]}"
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Ii]nternational address to$/ do |table|
@@ -308,7 +313,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Ii]nternational address to$/ do
   test_param[:phone] = table.hashes.first[:phone].downcase.include?('random') ? StampsTest.rand_phone : table.hashes.first['phone']
   test_param[:email] = table.hashes.first['email'].downcase.include?('random') ? StampsTest.rand_email : table.hashes.first['email']
 
-  step "set Order Details Ship-To Country to #{test_param[:country]}"
+  step "set Order Details Domestic Ship-To Country to #{test_param[:country]}"
   step "set Order Details International Ship-To Name to \"#{test_param[:full_name]}\""
   step "set Order Details International Ship-To Company to \"#{test_param[:company]}\""
   step "set Order Details International Ship-To Address 1 to \"#{test_param[:street_address_1]}\""
@@ -335,7 +340,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Dd]omestic address to$/ do |tab
   test_param[:country] = table.hashes.first['country'].size==0 ? 'United States' : table.hashes.first['country']
   test_param[:ship_to] = "#{test_param[:full_name]},#{test_param[:company]},#{test_param[:street_address]},#{test_param[:street_address_2]} ,#{test_param[:city]} #{test_param[:state]} #{test_param[:zip]}"
 
-  step "set Order Details Ship-To Country to #{test_param[:country]}"
+  step "set Order Details Domestic Ship-To Country to #{test_param[:country]}"
   step "set Order Details Ship-To text area to #{test_param[:ship_to]}"
 end
 
@@ -362,11 +367,11 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails Order ID is truthy$/ do
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails Order ID equals Grid Oder ID in row (\d+)$/ do |row|
-  expect(stamps.orders.order_details.toolbar.order_id).to eql stamps.orders.orders_grid.grid_column(:order_id).row(row)
+  expect(stamps.orders.order_details.toolbar.order_id.text).to eql stamps.orders.orders_grid.grid_column(:order_id).row(row)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails Order ID is the same as saved Order ID$/ do
-  expect(stamps.orders.order_details.toolbar.order_id).to eql test_param[:order_id].values.last
+  expect(stamps.orders.order_details.toolbar.order_id.text).to eql test_param[:order_id].values.last
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ss]hip-[Tt]o Name is (.*)$/ do |expectation|

@@ -13,15 +13,15 @@ Then /^[Ss]et Print form Mail-From to (.*)$/ do |value|
 end
 
 Then /^[Cc]heck Print form [Ee]mail [Tt]racking checkbox$/ do
-  stamps.mail.print_form.mail_email.email_checkbox.click
+  stamps.mail.print_form.email_tracking.email_checkbox.click
 end
 
 Then /^[Ss]et Print form [Pp]ounds to (\d+)$/ do |pounds|
-  stamps.mail.print_form.mail_weight.mail_pounds.set(test_param[:pounds]=pounds)
+  stamps.mail.print_form.weight.pounds.set(test_param[:pounds]=pounds)
 end
 
 Then /^[Ss]et Print form [Oo]unces to (\d+)$/ do |ounces|
-  stamps.mail.print_form.mail_weight.mail_ounces.set(test_param[:ounces]=ounces)
+  stamps.mail.print_form.weight.ounces.set(test_param[:ounces]=ounces)
 end
 
 Then /^[Ss]et Dimensions to length (\d+) width (\d+) height (\d+)$/ do |length, width, height|
@@ -44,17 +44,17 @@ Then /^[Ee]xpect Print form height is (?:correct|(\d+))$/ do |str|
 end
 
 Then /^[Ee]xpect [Pp]rint [Ff]orm [Ss]ervice (.*) is not present in dropdown list$/ do |service|
-  expect(stamps.mail.print_form.mail_service.select_service(test_param[:service]=service).present?).to be(false)
+  expect(stamps.mail.print_form.service.select_service(test_param[:service]=service).present?).to be(false)
 end
 
 Then /^[Ss]elect [Pp]rint [Ff]orm [Ss]ervice (.*)$/ do |str|
   step "blur out on print form"
-  stamps.mail.print_form.mail_service.select_service(test_param[:service]=str)
+  stamps.mail.print_form.service.select_service(test_param[:service]=str)
 end
 
 Then /^[Ee]xpect [Pp]rint [Ff]orm [Ss]ervice [Cc]ost [Ff]or (.*) is (.*)$/ do |service, cost|
   step "blur out on print form"
-  stamps.mail.print_form.mail_service.service_cost(test_param[:service]=service).to eql("$#{cost}")
+  stamps.mail.print_form.service.service_cost(test_param[:service]=service).to eql("$#{cost}")
 end
 
 When /^[Pp]rint [Ll]abel$/ do
@@ -84,9 +84,9 @@ end
 Then /^[Ss]et Print form [Mm]ail-[Tt]o [Cc]ountry to (.*)$/ do |country|
   20.times do # work around for rating problem
     stamps.mail.print_form.mail_to.mail_to_country.select_country(test_param[:country]=country)
-    break if stamps.mail.print_form.mail_to.mail_to_country.textbox.text.include?(test_param[:country]) && stamps.mail.print_form.mail_service.has_rates?
+    break if stamps.mail.print_form.mail_to.mail_to_country.textbox.text.include?(test_param[:country]) && stamps.mail.print_form.service.has_rates?
   end
-  expect(stamps.mail.print_form.mail_service).to be_has_rates, "Mail service list of values does not have rates."
+  expect(stamps.mail.print_form.service).to be_has_rates, "Mail service list of values does not have rates."
   expect(stamps.mail.print_form.mail_to.mail_to_country.textbox.text).to eql(test_param[:country])
 end
 
@@ -104,7 +104,7 @@ end
 
 #AB_ORDERSAUTO_3516
 Then /^[Ee]xpect Print form service is empty$/ do
-  expect(stamps.mail.print_form.mail_service.textbox.text).eql?("")
+  expect(stamps.mail.print_form.service.textbox.text).eql?("")
 end
 
 

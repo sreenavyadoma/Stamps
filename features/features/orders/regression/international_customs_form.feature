@@ -17,9 +17,9 @@ Feature:  Customs Form Item Grid
     Then set Order Details Ounces to 3
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
     Then click Order Details form Customs Form button
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 100.50, Made In Zimbabwe, Tariff 100
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 100.50, Made In Zimbabwe, Tariff 100
     Then expect Customs Total Value is 100.50
-    Then add Customs form Associated Item 2, Description random, Qty 1, Price 100.25, Made In Afghanistan, Tariff 100
+    Then add Customs Associated Item 2, Description random, Qty 1, Price 100.25, Made In Afghanistan, Tariff 100
     Then expect Customs Total Value is 200.75
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -37,10 +37,10 @@ Feature:  Customs Form Item Grid
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
     Then click Order Details form Customs Form button
     Then expect Customs Associated Item Grid count is 1
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 1000, Made In Japan, Tariff 100
-    Then add Customs form Associated Item 2, Description random, Qty 2, Price 2000, Made In Afghanistan, Tariff 200
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 1000, Made In Japan, Tariff 100
+    Then add Customs Associated Item 2, Description random, Qty 2, Price 2000, Made In Afghanistan, Tariff 200
     Then expect Customs Associated Item Grid count is 2
-    Then add Customs form Associated Item 3, Description random, Qty 3, Price 3000, Made In Zimbabwe, Tariff 300
+    Then add Customs Associated Item 3, Description random, Qty 3, Price 3000, Made In Zimbabwe, Tariff 300
     Then expect Customs Associated Item Grid count is 3
     Then delete Customs form Associated Item 3
     Then expect Customs Associated Item Grid count is 2

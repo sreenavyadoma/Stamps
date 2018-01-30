@@ -10,7 +10,7 @@ Feature: Auto-Calculate Customs Form Weight
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province | postal_code | country  | phone  |  email  |
       | random | random  | random           | random | random   | random      | random   | France | random  | random  |
-    Then set Order Details service to PMI Package
+    Then set Order Details service to PMI Package/Flat/Thick Envelope
     Then set Order Details Ounces to 4
 
     Then on Order Details form, Add Item 1
@@ -25,14 +25,14 @@ Feature: Auto-Calculate Customs Form Weight
 
     Then click Order Details form Customs Form button
 
-    Then add Customs form Associated Item 1
+    Then add Customs Associated Item 1
     Then set Customs Associated Item 1 Description to item 1
     Then set Customs Associated Item 1 Qty to 2
     Then set Customs Associated Item 1 Unit Price to 1
     Then set Customs Associated Item 1 Made In is Country to United States
     Then set Customs Associated Item 1 Tarriff to 5
 
-    Then add Customs form Associated Item 2
+    Then add Customs Associated Item 2
     Then set Customs Associated Item 2 Description to item 2
     Then set Customs Associated Item 2 Qty to 2
     Then set Customs Associated Item 2 Unit Price to 1

@@ -214,7 +214,7 @@ module Stamps
           cache[:city]
         end
         def state
-          cache[:state]=StampsDropdown.new(textbox, dropdown, :li) if cache[:state].nil? || !cache[:state].present?
+          cache[:state] = StampsDropdown.new(textbox, dropdown, :li) if cache[:state].nil? || !cache[:state].present?
           cache[:state]
         end
         def zip

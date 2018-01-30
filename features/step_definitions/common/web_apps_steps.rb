@@ -104,7 +104,7 @@ Given /^[Ll]ogin and add order domestic$/ do
   step "a valid user is signed in to Web Apps"
   step "add new order"
   step "set Order Details Ship-From to default"
-  step "set Order Details Ship-To Country to United States"
+  step "set Order Details Domestic Ship-To Country to United States"
 end
 
 

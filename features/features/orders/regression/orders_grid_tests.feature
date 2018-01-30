@@ -20,7 +20,7 @@ Feature: in Orders Grid, Tracking & Order Status
     Then uncheck order details insure-for checkbox
     Then set Order Details service to PM Package
     Then uncheck order details insure-for checkbox
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
     Then Pause for 2 seconds
     Then expect Orders Grid Insured Value is $0.00
     Then Pause for 1 second

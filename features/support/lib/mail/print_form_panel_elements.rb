@@ -6,7 +6,7 @@ module Stamps
           (cache[:blur_out_field].nil? || !cache[:blur_out_field].present?) ? cache[:blur_out_field] = StampsField.new(browser.label(text: 'Print On:')) : cache[:blur_out_field]
         end
 
-        def blur_out(count=2)
+        def blur_out(count = 2)
           expect(blur_out_field).to be_present, "Blur out field is not present."
           count.to_i.times do
             blur_out_field.double_click
@@ -610,22 +610,22 @@ module Stamps
               "checked") : cache[:auto_weigh]
         end
 
-        def mail_pounds
-          (cache[:mail_pounds].nil? || !cache[:mail_pounds].present?) ? cache[:mail_pounds] = StampsNumberField.new(
+        def pounds
+          (cache[:pounds].nil? || !cache[:pounds].present?) ? cache[:pounds] = StampsNumberField.new(
               browser.text_field(name: "WeightLbs"),
               browser.div(css: "div[class*=pounds-numberfield]>div>div>div>div[class*=spinner-up]"),
-              browser.div(css: "div[class*=pounds-numberfield]>div>div>div>div[class*=spinner-down]")) : cache[:mail_pounds]
+              browser.div(css: "div[class*=pounds-numberfield]>div>div>div>div[class*=spinner-down]")) : cache[:pounds]
         end
 
-        def mail_ounces
-          (cache[:mail_ounces].nil? || !cache[:mail_ounces].present?) ? cache[:mail_ounces] = StampsNumberField.new(
+        def ounces
+          (cache[:ounces].nil? || !cache[:ounces].present?) ? cache[:ounces] = StampsNumberField.new(
               browser.text_field(name: "WeightOz"),
               browser.div(css: "div[class*=ounces-numberfield]>div>div>div>div[class*=spinner-up]"),
-              browser.div(css: "div[class*=ounces-numberfield]>div>div>div>div[class*=spinner-down]")) : cache[:mail_ounces]
+              browser.div(css: "div[class*=ounces-numberfield]>div>div>div>div[class*=spinner-down]")) : cache[:ounces]
         end
 
         def present?
-          mail_pounds.present? && mail_ounces.present?
+          pounds.present? && ounces.present?
         end
       end
 
@@ -761,7 +761,7 @@ module Stamps
         def has_rates?
           case(param.print_media)
             when :certified_mail
-              default_service = 'FCMI Package'
+              default_service = 'FCMI Package/Thick Envelope'
             when :label
               default_service = 'PM Flat Rate Envelope'
               default_int_service = 'PMI Flat Rate Envelope'
@@ -866,10 +866,10 @@ module Stamps
         end
 
         def insure_for_amt
-          (cache[:mail_pounds].nil? || !cache[:mail_pounds].present?) ? cache[:mail_pounds] = StampsNumberField.new(
+          (cache[:pounds].nil? || !cache[:pounds].present?) ? cache[:pounds] = StampsNumberField.new(
               browser.input(id: "sdc-mainpanel-insureamtnumberfield-inputEl"),
               browser.div(css: "div[id='sdc-mainpanel-insureamtnumberfield-trigger-spinner']>div[class*=spinner-up]"),
-              browser.div(css: "div[id='sdc-mainpanel-insureamtnumberfield-trigger-spinner']>div[class*=spinner-down]")) : cache[:mail_pounds]
+              browser.div(css: "div[id='sdc-mainpanel-insureamtnumberfield-trigger-spinner']>div[class*=spinner-down]")) : cache[:pounds]
         end
 
         def present?

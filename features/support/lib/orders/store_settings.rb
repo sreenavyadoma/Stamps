@@ -44,7 +44,7 @@ module Stamps
           #browser.spans(css: "[ng-bind-html^='service.PackageStr']").size
 
           case(str)
-            when /FCM Large Envelope/ #0. FCM Large Envelope/Flat (1-3 days) -- Large Envelope/Flat
+            when /FCM Large Envelope\/Flat/ #0. FCM Large Envelope/Flat/Flat (1-3 days) -- Large Envelope/Flat
               return iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[0]
             when /FCM Package/ #1. FCM Package/Thick Envelope (1-3 days) -- Package/Thick Envelope
               return iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[1]
@@ -78,19 +78,19 @@ module Stamps
               return iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[15]
             when /PME Legal Flat Rate Envelope/ #16. PME Legal Flat Rate Envelope (1-2 days) -- Legal Flat Rate Envelope
               return iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[16]
-            when /MM Package/ #17. MM Package/Flat/Thick Envelope (2-9 days) -- Package/Flat/Thick Envelope
+            when /MM Package\/Flat\/Thick Envelope/ #17. MM Package/Flat/Thick Envelope/Flat/Thick Envelope (2-9 days) -- Package/Flat/Thick Envelope
               return iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[17]
-            when /PSG Package/  #18. PSG Package/Flat/Thick Envelope (2-9 days) -- Package/Flat/Thick Envelope
+            when /PSG Package\/Flat\/Thick Envelope/  #18. PSG Package/Flat/Thick Envelope/Flat/Thick Envelope (2-9 days) -- Package/Flat/Thick Envelope
               return iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[18]
             when /PSG Large Package/ #19. PSG Large Package (2-9 days) -- Large Package
               return iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[19]
             when /PSG Oversized Package/ #20. PSG Oversized Package (2-9 days) -- Oversized Package
               return iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[20]
-            when /FCMI Large Envelope/ #21. FCMI Large Envelope/Flat (1 - 999 days) -- Large Envelope/Flat
+            when /FCMI Large Envelope\/Flat/ #21. FCMI Large Envelope/Flat/Flat (1 - 999 days) -- Large Envelope/Flat
               return iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[21]
-            when /FCMI Package/ #22. FCMI Package/Thick Envelope (1 - 999 days) -- Package/Thick Envelope
+            when /FCMI Package\/Thick Envelope/ #22. FCMI Package/Thick Envelope/Thick Envelope (1 - 999 days) -- Package/Thick Envelope
               return iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[22]
-            when /PMI Package/ #23. PMI Package/Flat/Thick Envelope (6 - 10 days) -- Package/Flat/Thick Envelope
+            when /PMI Package\/Flat\/Thick Envelope/ #23. PMI Package/Flat/Thick Envelope (6 - 10 days) -- Package/Flat/Thick Envelope
               return iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[23]
             when /PMI Flat Rate Envelope/ #24. PMI Flat Rate Envelope (6 - 10 days) -- Flat Rate Envelope
               return iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[24]
@@ -108,7 +108,7 @@ module Stamps
               return iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[30]
             when /PMI Regional Rate Box B/ #31. PMI Regional Rate Box B (6 - 10 days) -- Regional Rate Box B
               return iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[31]
-            when /PMEI Package/ #32. PMEI Package/Flat/Thick Envelope (3 - 5 days) -- Package/Flat/Thick Envelope
+            when /PMEI Package\/Flat\/Thick Envelope/ #32. PMEI Package/Flat/Thick Envelope/Flat/Thick Envelope (3 - 5 days) -- Package/Flat/Thick Envelope
               return iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[32]
             when /PMEI Flat Rate Envelope/ #33. PMEI Flat Rate Envelope (3 - 5 days) -- Flat Rate Envelope
               return iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[33]

@@ -58,7 +58,7 @@ Feature:  BVT tests for Orders
       | full_name     | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country | phone        |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone | Random email  |
     Then set Order Details Weight to 2 lb 2 oz
-    Then set Order Details international service to PMEI Package
+    Then set Order Details international service to PMEI Package/Flat/Thick Envelope
     Then blur out on Order Details form 2 times
 
   # Check 1st two orders
@@ -73,7 +73,7 @@ Feature:  BVT tests for Orders
     Then blur out on multi order details form
     Then set Bulk Update Ship From to default
     Then set Bulk Update domestic service to PM Large Package
-    Then set Bulk Update International service to PMI Package
+    Then set Bulk Update International service to PMI Package/Flat/Thick Envelope
     Then click Bulk Update Update Order button
 
   # Uncheck both orders
@@ -106,9 +106,9 @@ Feature:  BVT tests for Orders
       | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then set Order Details Ounces to 4
-    Then set Order Details service to FCMI Large Envelope
+    Then set Order Details service to FCMI Large Envelope/Flat
     Then click Order Details form Customs Form button
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 4, Made In Japan, Tariff 1
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 4, Made In Japan, Tariff 1
     Then set Customs Package Contents to Commercial Sample
     Then set Customs Package Contents to Gift
     Then set Customs Package Contents to Document
@@ -229,12 +229,11 @@ Feature:  BVT tests for Orders
     Then set Order Details Ounces to 1
     Then set Order Details service to PM Package
     Then set Order Details Insure-For to $100.00
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
     Then set Order Details Length to 1
     Then set Order Details Width to 1
     Then set Order Details Height to 1
 
-    Then expect Orders Grid service is Priority Mail
     Then expect Orders Grid service is PM Package
     Then expect Orders Grid service is correct
 
@@ -330,7 +329,7 @@ Feature:  BVT tests for Orders
 
     Then expect Order Details Ship-To Country is correct
     Then set Order Details Weight to 2 lb 2 oz
-    Then set Order Details service to PMI Package
+    Then set Order Details service to PMI Package/Flat/Thick Envelope
     Then set Order Details Insure-For to $100.25
     Then set Order Details Reference Number to Some random string
     Then on Order Details form, Add Item 1, Qty 1, ID ID 1, Description Description 1
@@ -365,9 +364,9 @@ Feature:  BVT tests for Orders
 
     Then set Customs ITN Number to ITN123
 
-    Then add Customs form Associated Item 1, Description Item 1, Qty 1, Price 1, Made In United States, Tariff 1
-    Then add Customs form Associated Item 2, Description Item 2, Qty 2, Price 2, Made In Japan, Tariff 2
-    Then add Customs form Associated Item 3, Description Random String, Qty 3, Price 3, Made In Canada, Tariff 3
+    Then add Customs Associated Item 1, Description Item 1, Qty 1, Price 1, Made In United States, Tariff 1
+    Then add Customs Associated Item 2, Description Item 2, Qty 2, Price 2, Made In Japan, Tariff 2
+    Then add Customs Associated Item 3, Description Random String, Qty 3, Price 3, Made In Canada, Tariff 3
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form

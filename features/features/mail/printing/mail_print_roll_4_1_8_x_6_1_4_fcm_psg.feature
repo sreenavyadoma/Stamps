@@ -14,7 +14,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - FCM_PSG
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Ounces to 1
-    Then select Print form service FCM Large Envelope
+    Then select Print form service FCM Large Envelope/Flat
     Then Print Postage
     Then set Mail Print modal Printer ZDesigner
     Then click Mail Print modal Print button
@@ -60,7 +60,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - FCM_PSG
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 5 through 8
     Then set Print form Ounces to 1
-    Then select Print form service PSG Package
+    Then select Print form service PSG Package/Flat/Thick Envelope
     Then Print Postage
     Then set Mail Print modal Printer ZDesigner
     Then click Mail Print modal Print button

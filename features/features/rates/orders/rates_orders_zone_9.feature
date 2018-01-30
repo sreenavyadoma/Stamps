@@ -6,7 +6,7 @@ Feature: Local Rating test for Zone 9
   @rates_orders_zone_9
   Scenario: FCM Package
     Then set Order Details Ship-To to random address in zone 9
-    Then set Order Details service to FCM Large Envelope
+    Then set Order Details service to FCM Large Envelope/Flat
     Then set Order Details Weight to 0 lb 4 oz
     Then expect Order Details Service Cost is 1.61
     Then expect Order Details Total Ship Cost is 1.61
@@ -176,9 +176,9 @@ Feature: Local Rating test for Zone 9
     Then Sign out
 
   @rates_orders_zone_9
-  Scenario: MM Package
+  Scenario: MM Package/Flat/Thick Envelope
     Then set Order Details Ship-To to random address in zone 9
-    Then set Order Details service to MM Package
+    Then set Order Details service to MM Package/Flat/Thick Envelope
     Then set Order Details Weight to 3 lb 0 oz
     Then expect Order Details Service Cost is 3.61
     Then set Order Details Tracking to USPS Tracking
@@ -188,7 +188,7 @@ Feature: Local Rating test for Zone 9
   @rates_orders_zone_9
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
     Then set Order Details Ship-To to random address in zone 9
-    Then set Order Details service to PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
     Then set Order Details Weight to 6 lb 0 oz
     Then expect Order Details Service Cost is 23.32
     Then set Order Details Tracking to USPS Tracking
@@ -198,7 +198,7 @@ Feature: Local Rating test for Zone 9
   @rates_orders_zone_9
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
     Then set Order Details Ship-To to random address in zone 9
-    Then set Order Details service to PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
     Then set Order Details Weight to 12 lb 0 oz
     Then expect Order Details Service Cost is 57.74
     Then set Order Details Tracking to USPS Tracking

@@ -1,14 +1,26 @@
 
 Then /^[Cc]heck [Oorders ]*?[Ggrid ]*?[Ccached ]*?[Oo]rder[IiDd ]*?(?:| (\d+))$/ do |order_id|
-  order_id = (order_id.nil?) ? test_param[:order_id].values.last : test_param[:order_id][order_id.to_i]
+  order_id = order_id.nil? ? test_param[:order_id].values.last : test_param[:order_id][order_id.to_i]
   stamps.orders.orders_grid.grid_column(:checkbox).check_order_id(order_id)
-  expect(stamps.orders.orders_grid.grid_column(:checkbox).order_id_checked?(order_id)).to be(true), "Couldn't check Order ID #{order_id}"
+  expect(stamps.orders.orders_grid.grid_column(
+      :checkbox).order_id_checked?(order_id)).to be(true), "Couldn't check Order ID #{order_id}"
 end
 
 Then /^[Uu]ncheck [Oorders ]*?[Ggrid ]*?[Ccached ]*?[Oo]rder[IiDd ]*?(?:| (\d+))$/ do |order_id|
-  order_id = (order_id.nil?) ? test_param[:order_id].values.last : test_param[:order_id][order_id.to_i]
+  order_id = order_id.nil? ? test_param[:order_id].values.last : test_param[:order_id][order_id.to_i]
   stamps.orders.orders_grid.grid_column(:checkbox).uncheck_order_id(order_id)
   expect(stamps.orders.orders_grid.grid_column(:checkbox).order_id_checked?(order_id)).to be(false)
+end
+
+When /^[Cc]heck(?: [O]rders)?(?: [Gg]rid)? [Rr]ow (\d+)$/ do |row|
+  stamps.orders.orders_grid.grid_column(:checkbox).check(row)
+  expect(checked = stamps.orders.orders_grid.grid_column(:checkbox).checked?(
+      row)).to be(true), "Row #{row} is #{checked ? 'checked' : 'unchecked'}"
+end
+
+When /^[Uu]ncheck(?: [O]rders)?(?: [Gg]rid)? [Rr]ow (\d+)$/ do |row|
+  expect(stamps.orders.orders_grid.grid_column(:checkbox).uncheck(
+      row)).to be(false), "Unable to uncheck Orders Grid row #{row}"
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Store is (.*)$/ do |expectation|
@@ -17,7 +29,7 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Store is (.*)$/ do |expectation|
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Order ID is the same as Details Form Order ID$/ do
-  expect(stamps.orders.order_details.toolbar.order_id).to eql(stamps.orders.orders_grid.grid_column(:order_id).row(1))
+  expect(stamps.orders.order_details.toolbar.order_id.text).to eql(stamps.orders.orders_grid.grid_column(:order_id).row(1))
 end
 
 Then /^[Ee]xpect cached Order ID is in [Oo]rders [Gg]rid [Rr]ow (\d+)$/ do |row|
@@ -32,21 +44,12 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Ship Cost is the same as Details Form Ship Co
   expect(stamps.orders.order_details.footer.total_ship_cost.text.dollar_amount_str.to_f.round(2)).to eql(stamps.orders.orders_grid.grid_column(:ship_cost).data(test_param[:order_id].values.last))
 end
 
-When /^[Cc]heck(?: [O]rders)?(?: [Gg]rid)? [Rr]ow (\d+)$/ do |row|
-  stamps.orders.orders_grid.grid_column(:checkbox).check(row)
-  expect(checked = stamps.orders.orders_grid.grid_column(:checkbox).checked?(row)).to be(true), "Row #{row} is #{(checked) ? 'checked' : 'unchecked'}"
-end
-
-When /^[Uu]ncheck(?: [O]rders)?(?: [Gg]rid)? [Rr]ow (\d+)$/ do |row|
-  expect(stamps.orders.orders_grid.grid_column(:checkbox).uncheck(row)).to be(false), "Unable to uncheck Orders Grid row #{row}"
-end
-
 Then /^[Ee]xpect [Oo]rders [Gg]rid Date Printed for this order is (?:correct|(\d{2}\/\d{2}\/\d{4}))$/ do |str|
-  expect(stamps.orders.orders_grid.grid_column(:date_printed).data(test_param[:order_id].values.last)).to eql(test_helper.grid_date_format((str.nil?) ? Date.today.strftime("%b %-d") : str))
+  expect(stamps.orders.orders_grid.grid_column(:date_printed).data(test_param[:order_id].values.last)).to eql(test_helper.grid_date_format(str.nil? ? Date.today.strftime("%b %-d") : str))
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Ship Date for this order is (?:correct|(\d{2}\/\d{2}\/\d{4}))$/ do |str|
-  expect(stamps.orders.orders_grid.grid_column(:ship_date).data(test_param[:order_id].values.last)).to eql(test_helper.grid_date_format((str.nil?) ? test_param[:ship_date] : str))
+  expect(stamps.orders.orders_grid.grid_column(:ship_date).data(test_param[:order_id].values.last)).to eql(test_helper.grid_date_format(str.nil? ? test_param[:ship_date] : str))
 end
 
 Then /^[Ee]xpect Ship-To address is;$/ do |table|
@@ -178,9 +181,9 @@ end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid service is (?:correct|(.*))$/ do |expectation|
   expectation = test_param[:service] if expectation.nil?
-  expectation = (test_param[:service_look_up][expectation.split(' ').first].nil?) ? expectation : test_param[:service_look_up][expectation.split(' ').first]
+  expectation = test_param[:service_look_up][expectation.split(' ').first].nil? ? expectation : test_param[:service_look_up][expectation.split(' ').first]
   10.times { break if stamps.orders.orders_grid.grid_column(:service).data(test_param[:order_id].values.last).eql? expectation }
-  expect(stamps.orders.orders_grid.grid_column(:service).data(test_param[:order_id].values.last)).to include expectation
+  expect(stamps.orders.orders_grid.grid_column(:service).data(test_param[:order_id].values.last)).to eql(expectation)
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Insured Value is \$(.+)$/ do |expectation|
@@ -217,7 +220,7 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Ship Cost error to contain \"(.*)\"$/ do |exp
   grid_order_id = stamps.orders.orders_grid.grid_column(:order_id).row 1
   ship_cost_error = stamps.orders.orders_grid.grid_column(:ship_cost).data_error grid_order_id
   expect(ship_cost_error).to include(expectation)
-  ship_cost_error = stamps.orders.orders_grid.grid_column(:ship_cost).data_error "81453"
+  ship_cost_error = stamps.orders.orders_grid.grid_column(:ship_cost).data_error "81453" #todo-Alex, what is this?
   ship_cost_error = stamps.orders.orders_grid.grid_column(:ship_cost).data_error "81408"
   ship_cost_error = stamps.orders.orders_grid.grid_column(:ship_cost).data_error "81407"
 end
