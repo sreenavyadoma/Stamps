@@ -1,7 +1,7 @@
 # Membership Page validation steps
 
 Then /^[Bb]lur_out on [Mm]embership [Pp]age$/ do
-  registration.profile.header.blur_out
+  registration.membership.header.blur_out
 end
 
 Then /^[Pp]opulate all [Mm]embership [Pp]age required fields$/ do
@@ -12,70 +12,60 @@ Then /^[Pp]opulate all [Mm]embership [Pp]age required fields$/ do
   step "set Membership page Month to Dec (12)"
   step "set Membership page Year to 2026"
   step "check Membership page Terms & Conditions"
-
-
-
 end
 
-
-
-
 Then /^[Ss]et [Mm]embership [Pp]age [Mm]ember [Aa]ddress to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
-  address=test_helper.address_helper_zone(address) #combine this
+  address = test_helper.address_helper_zone(address) #combine this
 
-  test_param[:first_name]=address['first_name'] #combine this in address_helper_zone
-  test_param[:last_name]=address['last_name']
-  test_param[:street_address]=address['street_address']
-  test_param[:city]=address['city']
-  test_param[:state]=address['state']
-  test_param[:zip]=address['zip']
-  test_param[:company]=address['company']
-  test_param[:ship_to_domestic]=test_helper.format_address(address)
-  test_param[:phone_number_format]=address['phone_number_format']
+  test_param[:first_name] = address['first_name'] #combine this in address_helper_zone
+  test_param[:last_name] = address['last_name']
+  test_param[:street_address] = address['street_address']
+  test_param[:city] = address['city']
+  test_param[:state] = address['state']
+  test_param[:zip] = address['zip']
+  test_param[:company] = address['company']
+  test_param[:ship_to_domestic] = test_helper.format_address(address)
+  test_param[:phone_number_format] = address[:phone_number_format]
 
   step "set Membership page First Name to #{test_param[:first_name]}"
   step "set Membership page Last Name to #{test_param[:last_name]}"
   step "set Membership page Address to #{test_param[:street_address]}"
   step "blur_out on membership page"
   step "set Membership page City to #{test_param[:city]}"
-  step "select Membership page State to #{test_param[:state]}"
+  step "select Membership page State #{test_param[:state]}"
   step "blur_out on membership page"
   step "set Membership page Zip to #{test_param[:zip]}"
   step "set Membership page Phone to #{test_param[:phone_number_format]}"
-
-
-
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Ff]irst [Nn]ame to (?:random value|(.*))$/ do |str|
   registration.membership.first_name.wait_until_present(10)
   expect(registration.membership.first_name).to be_present
-  registration.membership.first_name.set(test_param[:first_name]=(str.nil?)?(test_helper.random_alpha_capitalize ):str)
+  registration.membership.first_name.set(test_param[:first_name] = str.nil? ? StampsTest.rand_alpha_str.capitalize  : str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Ff]irst [Nn]ame is (?:correct|(.*))$/ do |str|
-  expect(registration.membership.first_name.text).to eql((str.nil?)?test_param[:first_name]:str)
+  expect(registration.membership.first_name.text).to eql(str.nil? ? test_param[:first_name] : str)
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Ll]ast [Nn]ame to (?:random value|(.*))$/ do |str|
-  registration.membership.last_name.set(test_param[:last_name]=(str.nil?)?(test_helper.random_alpha_capitalize ):str)
+  registration.membership.last_name.set(test_param[:last_name] = str.nil? ? StampsTest.rand_alpha_str.capitalize  : str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Ll]ast [Nn]ame is (?:correct|(.*))$/ do |str|
-  expect(registration.membership.last_name.text).to eql((str.nil?)?test_param[:last_name]:str)
+  expect(registration.membership.last_name.text).to eql(str.nil? ? test_param[:last_name] : str)
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Cc]ompany to (?:random value|(.*))$/ do |str|
-  registration.membership.company.set(test_param[:company]=(str.nil?)?(test_helper.random_alpha ):str) if registration.membership.company.present?
+  registration.membership.company.set(test_param[:company] = str.nil? ? StampsTest.rand_alpha_str  : str) if registration.membership.company.present?
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Cc]ompany is (?:correct|(.*))$/ do |str|
-  expect(registration.membership.company.text).to eql((str.nil?)?test_param[:company]:str) if registration.membership.company.present?
+  expect(registration.membership.company.text).to eql(str.nil? ? test_param[:company] : str) if registration.membership.company.present?
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Aa]ddress to (.*)$/ do |str|
-  registration.membership.address.set(test_param[:address]=str)
-=begin
+  registration.membership.address.set(test_param[:address] = str)
   registration.membership.address.click
   registration.membership.address.double_click
   registration.membership.address.click
@@ -84,77 +74,74 @@ Then /^[Ss]et [Mm]embership [Pp]age [Aa]ddress to (.*)$/ do |str|
   registration.membership.address.click
   registration.membership.address.click
   step "blur_out on membership page"
-=end
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Aa]ddress is (?:correct|(.*))$/ do |str|
-  expect(registration.membership.address.text).to eql((str.nil?)?test_param[:address]:str)
+  expect(registration.membership.address.text).to eql(str.nil? ? test_param[:address] : str)
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Cc]ity to (.*)$/ do |str|
-  registration.membership.city.set(test_param[:city]=str)
+  registration.membership.city.set(test_param[:city] = str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Cc]ity is (?:correct|(.*))$/ do |str|
-  expect(registration.membership.city.text).to eql((str.nil?)?test_param[:city]:str)
+  expect(registration.membership.city.text).to eql(str.nil? ? test_param[:city] : str)
 end
 
-Then /^[Ss]elect [Mm]embership [Pp]age [Ss]tate to (.*)$/ do |str|
-  registration.membership.state.select(test_param[:state]=str)
+Then /^[Ss]elect [Mm]embership [Pp]age [Ss]tate (.*)$/ do |str|
+  registration.membership.state.select(test_param[:state] = str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Ss]tate is (?:correct|(.*))$/ do |str|
-  expect(registration.membership.state.text).to eql((str.nil?)?test_param[:state]:str)
+  expect(registration.membership.state.text).to eql(str.nil? ? test_param[:state] : str)
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Zz]ip to (.*)$/ do |str|
-  registration.membership.zip.set(test_param[:zip]=str)
+  registration.membership.zip.set(test_param[:zip] = str)
   step "blur_out on membership page"
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Zz]ip is (?:correct|(.*))$/ do |str|
-  expect(registration.membership.zip.text).to eql((str.nil?)?test_param[:zip]:str)
+  expect(registration.membership.zip.text).to eql(str.nil? ? test_param[:zip] : str)
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Pp]hone to (?:random value|(.*))$/ do |str|
-  test_param[:phone]=(str.nil?)?(test_helper.random_phone_number_format ):str
-  registration.membership.phone.set(test_param[:phone])
+  registration.membership.phone.set(test_param[:phone] = str.nil? ? StampsTest.rand_phone_format : str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Pp]hone is (?:correct|(.*))$/ do |str|
-  str=(str.nil?)?test_param[:phone]:str
-  expect(registration.membership.phone.text).to eql(str)
+  expect(registration.membership.phone.text).to eql(str.nil? ? test_param[:phone] : str)
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Cc]ardholder's [Nn]ame to (?:random value|(.*))$/ do |str|
-  test_param[:card_holder_name]=(str.nil?)?(test_helper.random_full_name ):str
-  registration.membership.cc_holder_name .set test_param[:card_holder_name]
+  test_param[:card_holder_name] = str.nil? ? StampsTest.rand_full_name  : str
+  registration.membership.cc_holder_name.set test_param[:card_holder_name]
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Cc]ardholder's [Nn]ame is (?:correct|(.*))$/ do |str|
-  str=(str.nil?)?test_param[:card_holder_name]:str
+  str = str.nil? ? test_param[:card_holder_name] : str
   expect(registration.membership.cc_holder_name .text).to eql(str)
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Cc]redit [Cc]ard [Nn]umber to (?:default value|(.*))$/ do |str|
-  test_param[:cc_number]=(str.nil?)?("4111111111111111" ):str
+  test_param[:cc_number] = str.nil? ? "4111111111111111"  : str
   registration.membership.cc_number.set test_param[:cc_number]
   step "blur_out on membership page"
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Cc]redit [Cc]ard [Nn]umber is (?:correct|(.*))$/ do |str|
-  str=(str.nil?)?test_param[:cc_number]:str
+  str = str.nil? ? test_param[:cc_number] : str
   expect(registration.membership.cc_number.text).to eql(str)
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Mm]onth to (.*)$/ do |str|
-  test_param[:card_holder_name]=str
+  test_param[:card_holder_name] = str
   registration.membership.cc_month.select(test_param[:card_holder_name])
   step "blur_out on membership page"
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Mm]onth is (?:correct|(.*))$/ do |str|
-  str=(str.nil?)?test_param[:card_holder_name]:str
+  str = str.nil? ? test_param[:card_holder_name] : str
   expect(registration.membership.cc_month.text).to eql(str)
 end
 
@@ -162,14 +149,14 @@ Then /^[Ss]et Membership page Year to this year plus (\d+)$/ do |year|
   step "set Membership page Year to year #{Date.today.year + year.to_i}"
 end
 
-Then /^[Ss]et [Mm]embership [Pp]age [Yy]ear to (.*)$/ do |str|
-  test_param[:cc_year]=str
+Then /^[Ss]et [Mm]embership [Pp]age [Yy]ear to year (.*)$/ do |str|
+  test_param[:cc_year] = str
   registration.membership.cc_year.select(test_param[:cc_year])
   step "blur_out on membership page"
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Yy]ear is (?:correct|(.*))$/ do |str|
-  str=(str.nil?)?test_param[:cc_year]:str
+  str = str.nil? ? test_param[:cc_year] : str
   expect(registration.membership.cc_year.text).to eql(str)
 end
 
@@ -198,13 +185,13 @@ Then /^[Ee]xpect Billing Address form is not present$/ do
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Mm]ember [Bb]illing [Aa]ddress to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
-  address=test_helper.address_helper_zone(address) #combine this
+  address = test_helper.address_helper_zone(address) #combine this
 
-  test_param[:street_address]=address['street_address']
-  test_param[:city]=address['city']
-  test_param[:state]=address['state']
-  test_param[:zip]=address['zip']
-  test_param[:phone_number_format]=address['phone_number_format']
+  test_param[:street_address] = address['street_address']
+  test_param[:city] = address['city']
+  test_param[:state] = address['state']
+  test_param[:zip] = address['zip']
+  test_param[:phone_number_format] = address['phone_number_format']
 
   step "set Membership page Billing Address to #{test_param[:street_address]}"
   step "set Membership page Billing City to #{test_param[:city]}"
@@ -214,7 +201,7 @@ Then /^[Ss]et [Mm]embership [Pp]age [Mm]ember [Bb]illing [Aa]ddress to(?: a |)(?
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Bb]illing [Aa]ddress to (.*)$/ do |str|
-  registration.membership.billing_address.set(test_param[:billing_address]=(str.nil?)?(test_helper.random_alpha_capitalize ):str)
+  registration.membership.billing_address.set(test_param[:billing_address] = str.nil? ? StampsTest.rand_alpha_str.capitalize  : str)
   step "blur_out on membership page"
   registration.membership.billing_address.click
   step "blur_out on membership page"
@@ -224,32 +211,32 @@ Then /^[Ss]et [Mm]embership [Pp]age [Bb]illing [Aa]ddress to (.*)$/ do |str|
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Aa]ddress is (?:correct|(.*))$/ do |str|
-  expect(registration.membership.billing_address.text).to eql((str.nil?)?test_param[:billing_address]:str)
+  expect(registration.membership.billing_address.text).to eql(str.nil? ? test_param[:billing_address] : str)
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Bb]illing [Cc]ity to (.*)$/ do |str|
-  registration.membership.billing_city.set(test_param[:billing_city]=(str.nil?)?(test_helper.random_alpha_capitalize ):str)
+  registration.membership.billing_city.set(test_param[:billing_city] = str.nil? ? StampsTest.rand_alpha_str.capitalize  : str)
   step "blur_out on membership page"
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Cc]ity is (?:correct|(.*))$/ do |str|
-  expect(registration.membership.billing_city.text).to eql((str.nil?)?test_param[:billing_city]:str)
+  expect(registration.membership.billing_city.text).to eql(str.nil? ? test_param[:billing_city] : str)
 end
 
 Then /^[Ss]elect [Mm]embership [Pp]age [Bb]illing [Ss]tate (.*)$/ do |str|
-  registration.membership.billing_state.select(test_param[:billing_state]=str)
+  registration.membership.billing_state.select(test_param[:billing_state] = str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Ss]tate is (?:correct|(.*))$/ do |str|
-  expect(registration.membership.billing_state.text).to eql((str.nil?)?test_param[:billing_state]:str)
+  expect(registration.membership.billing_state.text).to eql(str.nil? ? test_param[:billing_state] : str)
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Bb]illing [Zz]ip to (.*)$/ do |str|
-  registration.membership.billing_zip.set(test_param[:billing_zip]=(str.nil?)?(test_helper.random_alpha_capitalize ):str)
+  registration.membership.billing_zip.set(test_param[:billing_zip] = str.nil? ? StampsTest.rand_alpha_str.capitalize  : str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Zz]ip is (?:correct|(.*))$/ do |str|
-  expect(registration.membership.billing_zip.text).to eql((str.nil?)?test_param[:billing_zip]:str)
+  expect(registration.membership.billing_zip.text).to eql(str.nil? ? test_param[:billing_zip] : str)
 end
 
 Then /^[Cc]heck [Mm]embership [Pp]age Terms & Conditions$/ do

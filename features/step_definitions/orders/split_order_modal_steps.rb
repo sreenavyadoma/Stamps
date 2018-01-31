@@ -19,7 +19,7 @@ Then /^[Ee]xpect [Ss]plit [Oo]rder [Mm]odal default new order id is correct$/ do
 end
 
 Then /^[Ss]et [Ss]plit [Oo]rder new order number to (.*)$/ do |number|
-  stamps.orders.modals.split_order_modal.new_order_id.set (number.downcase=='random')?(test_helper.random_phone_number):number
+  stamps.orders.modals.split_order_modal.new_order_id.set (number.downcase=='random')?(StampsTest.rand_phone):number
 end
 
 Then /^[Ss]et [Ss]plit [Oo]rder new order quantity for item (\d+) to (\d+)$/ do |item_number, quantity|
@@ -32,5 +32,5 @@ Then /^[Cc]lick [Ss]plit [Oo]rder modal confirm button$/ do
 end
 
 Then /[Ee]xpect new order from [Ss]plit [Oo]rder modal is selected in orders grid$/ do
-  expect(stamps.orders.single_order_details.toolbar.order_id).to eql test_param[:split_order_id] #confirm the order id in the single order details form matches the saved new order id
+  expect(stamps.orders.order_details.toolbar.order_id).to eql test_param[:split_order_id] #confirm the order id in the single order details form matches the saved new order id
 end

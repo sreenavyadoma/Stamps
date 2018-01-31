@@ -11,5 +11,5 @@ Feature: Address Cleansing BVT
     Then set Print form Mail-To to address to Address Cleansing, BVT, 1350 Market Street, San Francisco, CA
     Then set Print form Ounces to 1
     Then select Print form service PM Package
-    Then expect Print form Domestic Address field displays Address Cleansing, BVT, 1350 Market Street, San Francisco, CA 94102
+    Then expect Print form Domestic Address field displays Address Cleansing, BVT, 1350 Market Street, San Francisco, CA 94102-5401
     Then Sign out

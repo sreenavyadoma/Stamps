@@ -420,7 +420,7 @@ Feature:  All Store Management
 
     Then in Orders Toolbar, Refresh Orders
     Then in Orders Toolbar, Refresh Orders
-    Then check orders grid cached order id 637
+    Then check order 637
     Then in Orders Toolbar, Refresh Orders
     Then select Filter Panel tab Shipped
     Then select Filter Panel tab Awaiting Shipment
@@ -439,7 +439,7 @@ Feature:  All Store Management
 
     Then in Orders Toolbar, Refresh Orders
     Then in Orders Toolbar, Refresh Orders
-    Then check orders grid cached order id 637
+    Then check order 637
     Then in Orders Toolbar, Refresh Orders
     Then select Filter Panel tab Shipped
     Then select Filter Panel tab Awaiting Shipment
@@ -458,7 +458,7 @@ Feature:  All Store Management
 
     Then in Orders Toolbar, Refresh Orders
     Then in Orders Toolbar, Refresh Orders
-    Then check orders grid cached order id 637
+    Then check order 637
     Then in Orders Toolbar, Refresh Orders
     Then select Filter Panel tab Shipped
     Then select Filter Panel tab Awaiting Shipment

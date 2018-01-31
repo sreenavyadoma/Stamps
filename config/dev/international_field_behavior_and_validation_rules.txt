@@ -13,60 +13,60 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
 
     * Open Customs Form
 
-    * Expect Customs Form CheckBox "I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions" is visible
-    * Expect Customs Form Add Item tooltip to be "Add another item"
-    * Expect Customs Form Package Contents to be Merchandise
-    * Expect Customs Form Non-Delivery Options to be Return to Sender
-    * Expect Customs Form Weight(lbs) to be 0
+    * Expect Customs CheckBox "I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions" is visible
+    * Expect Customs Add Item tooltip to be "Add another item"
+    * Expect Customs Package Contents to be Merchandise
+    * Expect Customs Non-Delivery Options to be Return to Sender
+    * Expect Customs Weight(lbs) to be 0
     * Customs Form: Expect Total Value to be 0.00
 
-    * Set Customs Form Weight(lbs) to 0
+    * Set Customs Weight(lbs) to 0
     * Increment Customs Form Weight(lbs) by 2
     * Decrement Customs Form Weight(lbs) by 1
-    * Expect Customs Form Weight(lbs) to be 1
+    * Expect Customs Weight(lbs) to be 1
 
-    * Set Customs Form Weight(oz) to 0
+    * Set Customs Weight(oz) to 0
     * Increment Customs Form Weight(oz) by 2
     * Decrement Customs Form Weight(oz) by 1
-    * Expect Customs Form Weight(oz ) to be 1
+    * Expect Customs Weight(oz ) to be 1
 
-    * Set Customs Form Package Contents to Merchandise
-    * Expect Customs Form Package Contents to be Merchandise
-    * Set Customs Form Package Contents to Document
-    * Expect Customs Form Package Contents to be Document
-    * Set Customs Form Package Contents to Gift
-    * Expect Customs Form Package Contents to be Gift
-    * Set Customs Form Package Contents to Humanitarian Donation
-    * Expect Customs Form Package Contents to be Humanitarian Donation
-    * Set Customs Form Package Contents to Returned Goods
-    * Expect Customs Form Package Contents to be Returned Goods
-    * Set Customs Form Package Contents to Other
-    * Expect Customs Form Package Contents to be Other
-    * Set Customs Form Package Contents to Merchandise
+    * Set Customs Package Contents to Merchandise
+    * Expect Customs Package Contents to be Merchandise
+    * Set Customs Package Contents to Document
+    * Expect Customs Package Contents to be Document
+    * Set Customs Package Contents to Gift
+    * Expect Customs Package Contents to be Gift
+    * Set Customs Package Contents to Humanitarian Donation
+    * Expect Customs Package Contents to be Humanitarian Donation
+    * Set Customs Package Contents to Returned Goods
+    * Expect Customs Package Contents to be Returned Goods
+    * Set Customs Package Contents to Other
+    * Expect Customs Package Contents to be Other
+    * Set Customs Package Contents to Merchandise
 
-    * Set Customs Form More Info to random
+    * Set Customs More Info to random
 
-    * Set Customs Form Non-Delivery Options to Return To Sender
-    * Expect Customs Form Non-Delivery Options to be Return To Sender
-    * Set Customs Form Non-Delivery Options to Treat as abandoned
-    * Expect Customs Form Non-Delivery Options to be Treat as abandoned
+    * Set Customs Non-Delivery Options to Return To Sender
+    * Expect Customs Non-Delivery Options to be Return To Sender
+    * Set Customs Non-Delivery Options to Treat as abandoned
+    * Expect Customs Non-Delivery Options to be Treat as abandoned
 
-    * Set Customs Form Internal Transaction # to Not Required
-    * Expect Customs Form Internal Transaction # to be Not Required
-    * Set Customs Form Internal Transaction # to Required
-    * Expect Customs Form Internal Transaction # to be Required
+    * Set Customs Internal Transaction # to Not Required
+    * Expect Customs Internal Transaction # to be Not Required
+    * Set Customs Internal Transaction # to Required
+    * Expect Customs Internal Transaction # to be Required
 
     * Add or Edit Customs Form Item 1 to Description=random, Qty 1, Unit Price 2500, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
     * Add or Edit Customs Form Item 2 to Description=random, Qty 1, Unit Price 10, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
     * Add or Edit Customs Form Item 3 to Description=random, Qty 1, Unit Price 10, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
 
-    * Expect Customs Form Weight(lbs) to be correct
+    * Expect Customs Weight(lbs) to be correct
     * Customs Form: Expect Total Value to be correct
 
-    * Expect Customs Form Internal Transaction # to be Required
+    * Expect Customs Internal Transaction # to be Required
     * Delete Customs Form Item 2
     * Delete Customs Form Item 1
-    * Expect Customs Form Internal Transaction # to be Not Required
+    * Expect Customs Internal Transaction # to be Not Required
 
     * Close Customs Form
     * Expect Customs Information Modal to be present

@@ -5,9 +5,9 @@ module Stamps
 
       def initialize(param)
         super
-        @window_title=StampsField.new browser.div(text: "Transaction Complete")
-        @textarea=StampsField.new browser.div(css: "div[componentid^=dialoguemodal-]>div[id$=body]>div>div")
-        @ok_btn=StampsField.new(browser.span(css: "div[id^=panel-][id$=-innerCt]>a>span>span>span[id$=btnInnerEl]"))
+        @window_title = StampsField.new browser.div(text: "Transaction Complete")
+        @textarea = StampsField.new browser.div(css: "div[componentid^=dialoguemodal-]>div[id$=body]>div>div")
+        @ok_btn = StampsField.new(browser.span(css: "div[id^=panel-][id$=-innerCt]>a>span>span>span[id$=btnInnerEl]"))
       end
 
       def wait_until_present(*args)
@@ -32,9 +32,9 @@ module Stamps
 
       def initialize(param)
         super
-        @window_title=StampsField.new browser.div(text: 'Confirm Transaction')
-        @confirm_btn=StampsField.new browser.span(text: "Confirm")
-        @transaction_complete=TransactionComplete.new(param)
+        @window_title = StampsField.new browser.div(text: 'Confirm Transaction')
+        @confirm_btn = StampsField.new browser.span(text: "Confirm")
+        @transaction_complete = TransactionComplete.new(param)
       end
 
       def exit
@@ -50,10 +50,10 @@ module Stamps
       end
 
       def textarea
-        if param.web_app==:orders
-          div=browser.div(class: 'sdc-dialoguemodal-confirm-purchase')
-        elsif param.web_app==:mail
-          div=browser.divs(css: "div[id^=dialoguemodal-][id$=-innerCt]").last
+        if param.web_app == :orders
+          div = browser.div(class: 'sdc-dialoguemodal-confirm-purchase')
+        elsif param.web_app == :mail
+          div = browser.divs(css: "div[id^=dialoguemodal-][id$=-innerCt]").last
         else
           expect("Purchase Button failure. #{param.web_app} is not a valid value for param.web_app, check your test.").to eql "Invalid Value"
         end
@@ -93,8 +93,8 @@ module Stamps
 
       def initialize(param)
         super
-        @body=StampsField.new(browser.div(css: "div[id^=dialoguemodal-][id$=-body]>div>div[id^=dialoguemodal-][id$=-innerCt]"))
-        @window_title=StampsField.new(browser.div(text: "Account Balance Limit"))
+        @body = StampsField.new(browser.div(css: "div[id^=dialoguemodal-][id$=-body]>div>div[id^=dialoguemodal-][id$=-innerCt]"))
+        @window_title = StampsField.new(browser.div(text: "Account Balance Limit"))
       end
 
       def present?
@@ -111,7 +111,7 @@ module Stamps
 
       def initialize(param)
         super
-        @window_title=StampsField.new(browser.div(text: "Add Funds"))
+        @window_title = StampsField.new(browser.div(text: "Add Funds"))
       end
 
       def present?
@@ -124,11 +124,11 @@ module Stamps
 
       def initialize(param)
         super
-        @confirm_transaction=ConfirmTransaction.new(param)
-        @auto_add_funds_modal=AutoBuyPostageModal.new(param)
-        @auto_buy_postage_link=StampsField.new browser.span(text: "Auto-buy postage")
-        @window_title=browser.div(text: "Add Funds")
-        @account_balance_limit=AccountBalanceLimit.new(param)
+        @confirm_transaction = ConfirmTransaction.new(param)
+        @auto_add_funds_modal = AutoBuyPostageModal.new(param)
+        @auto_buy_postage_link = StampsField.new browser.span(text: "Auto-buy postage")
+        @window_title = browser.div(text: "Add Funds")
+        @account_balance_limit = AccountBalanceLimit.new(param)
       end
 
       def auto_buy_postage
@@ -195,7 +195,7 @@ module Stamps
         verify_element_attrib = "checked"
         checkbox = StampsRadio.new(checkbox_element, verify_element, attribute, verify_element_attrib)
 
-        textbox=StampsTextbox.new(browser.text_field id: "sdc-purchasewin-otheramount")
+        textbox = StampsTextbox.new(browser.text_field id: "sdc-purchasewin-otheramount")
 
         checkbox.select
         textbox.set(value)
@@ -221,15 +221,15 @@ module Stamps
     end
 
     class BalanceDropDown < Browser::Base
-      attr_reader :add_funds_modal, :buy_more_dropdown, :buy_more_link, :view_history_link, :balance_field
+      attr_reader :add_funds_modal, :buy_more_dropdown, :buy_more_link, :view_history_link, :balance_amount
 
       def initialize(param)
         super
-        @add_funds_modal=AddFundsModal.new(param)
-        @buy_more_dropdown=StampsField.new(browser.span(class: "balanceLabel"))
-        @buy_more_link=StampsField.new(browser.a(text: "Buy More"))
-        @view_history_link=StampsField.new(browser.a(text: "View Purchase History"))
-        @balance_field=StampsField.new(browser.span(id: 'postageBalanceAmt'))
+        @add_funds_modal = AddFundsModal.new(param)
+        @buy_more_dropdown = StampsField.new(browser.span(class: "balanceLabel"))
+        @buy_more_link = StampsField.new(browser.a(text: "Buy More"))
+        @view_history_link = StampsField.new(browser.a(text: "View Purchase History"))
+        @balance_amount = StampsField.new(browser.span(id: 'postageBalanceAmt'))
       end
 
       def buy_more
@@ -253,21 +253,12 @@ module Stamps
         end
       end
 
-      def balance_text
-        balance_field.wait_until_present(5)
-        test_helper.dollar_amount_str(balance_field.text)
-      end
-
-      def amount
-        balance_text.to_f.round(2)
-      end
-
       def new_balance(old_balance)
         10.times do
-          break unless (test_helper.dollar_amount_str(balance_text).to_f.round(2)).to_s.include? old_balance.to_s
+          break unless balance_text.dollar_amount_str.include? old_balance.to_s
           sleep(0.25)
         end
-        (test_helper.dollar_amount_str(balance_field.text).gsub(',', '').to_f.round(2)).to_s
+        balance_field.text.dollar_amount_str
       end
     end
 
@@ -276,8 +267,8 @@ module Stamps
 
       def initialize(param)
         super
-        @username=StampsField.new(browser.span id: 'userNameText')
-        @sign_out_link=StampsField.new(browser.a(text: "Sign Out"))
+        @username = StampsField.new(browser.span id: 'userNameText')
+        @sign_out_link = StampsField.new(browser.a(text: "Sign Out"))
       end
 
       def present?
@@ -317,12 +308,12 @@ module Stamps
 
       def initialize(param)
         super
-        @balance=BalanceDropDown.new(param)
-        @username=UsernameDropDown.new(param)
-        @sign_out_link=StampsField.new(browser.link(id: "signOutLink"))
-        @signed_in_username=StampsField.new(browser.span(id: 'userNameText'))
-        @orders_link=StampsField.new(browser.a(text: 'Orders'))
-        @mail_link=StampsField.new(browser.a(text: 'Mail'))
+        @balance = BalanceDropDown.new(param)
+        @username = UsernameDropDown.new(param)
+        @sign_out_link = StampsField.new(browser.link(id: "signOutLink"))
+        @signed_in_username = StampsField.new(browser.span(id: 'userNameText'))
+        @orders_link = StampsField.new(browser.a(text: 'Orders'))
+        @mail_link = StampsField.new(browser.a(text: 'Mail'))
       end
 
       def orders
@@ -356,7 +347,7 @@ module Stamps
             #ignore
           end
         end
-        logger.info "#{ENV["SIGNED_IN_USER"]}#{(signed_in_username.present?)?" - sign-out failed":" was signed out.  Goodbye."}"
+        logger.info "#{ENV["SIGNED_IN_USER"]}#{(signed_in_username.present?) ? " - sign-out failed" : " was signed out.  Goodbye."}"
       end
 
       def wait_until_present(*args)
