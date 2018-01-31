@@ -79,7 +79,7 @@ module Stamps
         logger.message "BROWSER: #{self.browser_version.to_s.gsub("/", " ")}"
         logger.message "-"
         #driver.cookies.clear
-      rescue Exception => e
+      rescue StandardError => e
         err = e.backtrace.join("\n")
         logger.error e.message
         logger.error e.backtrace.join("\n")

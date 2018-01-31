@@ -1,6 +1,11 @@
 module Stamps
   module Orders
     module OrdersSettings
+
+      class TempCache < Base::BaseCache
+        assign({})
+      end
+
       module StoresTabViewToolbar
         def add_btn
           (cache[:add_btn].nil? || !cache[:add_btn].present?) ? cache[:add_btn] = StampsField.new(browser.span(css: "[id=addStoreButton-btnIconEl]")) : cache[:add_btn]
@@ -50,9 +55,11 @@ module Stamps
       module StoresTabViewBottom
       end
 
-      class StoresTabView < Browser::Base
+      class StoresTabView < Browser::BaseCache
         include StoresTabViewToolbar
         include StoresTabViewBottom
+
+        assign({})
 
         def present?
           add_btn.present?

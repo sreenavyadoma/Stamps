@@ -7,7 +7,9 @@ module Stamps
         def extra_services_btn
           cache[:extra_services_btn].nil? || !cache[:extra_services_btn].present? ? cache[:extra_services_btn] = StampsField2.new(
               browser.span(id: "sdc-mainpanel-extraservicesbtn-btnInnerEl"),
-              browser.a(id: 'sdc-mainpanel-extraservicesbtn'), 'class', 'disabled'
+              browser.a(id: 'sdc-mainpanel-extraservicesbtn'),
+              'class',
+              'disabled'
               ) : cache[:extra_services_btn]
         end
 
