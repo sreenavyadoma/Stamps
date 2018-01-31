@@ -408,55 +408,147 @@ module Stamps
         end
 
       end
-      module AccountInfoEmailHelp
-        def help_block
-          @help_block=RegHelpBlock.new(browser, browser.lis(css: "li[id=email]>div>div>div>div>span>ul>li")) if @help_block.nil?||!@help_block.present?
-          @help_block
-          end
-          def single_field_help_block
-            @single_field_help_block=RegHelpBlock.new(browser, browser.spans(css: "li[id=email]>div>div>div>div>span")) if @single_field_help_block.nil?||!@single_field_help_block.present?
-            @single_field_help_block
-          end
-        end
-      module AccountInfoUserNameHelp
-        def help_block
-          @help_block=RegHelpBlock.new(browser, browser.lis(css: "#accountinfo [class=col-xs-12]:nth-child(2) [class*='help-block filled'] li")) if @help_block.nil?||!@help_block.present?
-          @help_block
-        end
-      end
-      module AccountInfoPasswordHelp
-        def help_block
-          @help_block=RegHelpBlock.new(browser, browser.lis(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span>span>ul>li")) if @help_block.nil?||!@help_block.present?
-          @help_block
+      module SecreteQuestions
+
+        def  secrete_question_header
+        (cache[:secrete_question_header].nil?||!cache[:secrete_question_header].present?)?cache[:secrete_question_header]=Stamps::Browser::StampsField.new(browser.h2(css: "li[id=secretquestions]>div>div:nth-child(1)>h2")):cache[:secrete_question_header]
         end
 
-        def single_field_help_block
-          @single_field_help_block=RegHelpBlock.new(browser,browser.spans(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span")) if @single_field_help_block.nil?||!@single_field_help_block.present?
-          @single_field_help_block
+        def secrete_quesiton1
+            # field=browser.span(css: "button[data-id=usageType]>span[class*=option]")
+            # list_of_values=browser.spans(css: "li[id=survey]>div>div>div>div[class*=select]>div>ul>li>a>span[class=text]")
+            # @survey_question ||= StampsDropDownLovSubStr.new(field, field, list_of_values) if @survey_question.nil?||!@survey_question.present?
+            # @survey_question
+
+            (cache[:secrete_quesiton1].nil?||!cache[:secrete_quesiton1].present?)?cache[:secrete_quesiton1]=Stamps::Browser::StampsDropDownLovSubStr.new(
+                browser.span(css: "li[id=secretquestions]>div>div:nth-child(2)>div:nth-child(1)>div>button>span[class*=option]"),
+                browser.span(css: "li[id=secretquestions]>div>div:nth-child(2)>div:nth-child(1)>div>button>span[class*=option]"),
+                browser.spans(css: "li[id=secretquestions]>div>div:nth-child(2)>div:nth-child(1)>div>div>ul>li>a>[class=text]")).extend(AccountInfoSecretQuestions1Help):cache[:secrete_quesiton1]
         end
+
+        def secrete_answer1
+          # @account_username=Fields::RegProfileUsername.new(browser.text_field(name: "username")) if @account_username.nil?||!@account_username.present?
+          # @account_username
+
+          (cache[:secrete_answer1].nil?||!cache[:secrete_answer1].present?)?cache[:secrete_answer1]=Stamps::Browser::StampsTextbox.new(browser.text_field(id: "secretAnswer1")).extend(AccountInfoSecretAnswer1Help):cache[:secrete_answer1]
+
+        end
+
+
+        def secrete_quesiton2
+          # field=browser.span(css: "button[data-id=usageType]>span[class*=option]")
+          # list_of_values=browser.spans(css: "li[id=survey]>div>div>div>div[class*=select]>div>ul>li>a>span[class=text]")
+          # @survey_question ||= StampsDropDownLovSubStr.new(field, field, list_of_values) if @survey_question.nil?||!@survey_question.present?
+          # @survey_question
+
+          (cache[:secrete_quesiton2].nil?||!cache[:secrete_quesiton2].present?)?cache[:secrete_quesiton2]=Stamps::Browser::StampsDropDownLovSubStr.new(
+              browser.span(css: "li[id=secretquestions]>div>div:nth-child(3)>div:nth-child(1)>div>button>span[class*=option]"),
+              browser.span(css: "li[id=secretquestions]>div>div:nth-child(3)>div:nth-child(1)>div>button>span[class*=option]"),
+              browser.spans(css: "li[id=secretquestions]>div>div:nth-child(3)>div:nth-child(1)>div>div>ul>li>a>[class=text]")).extend(AccountInfoSecretQuestions2Help):cache[:secrete_quesiton2]
+        end
+
+
+        def secrete_answer2
+          # @account_username=Fields::RegProfileUsername.new(browser.text_field(name: "username")) if @account_username.nil?||!@account_username.present?
+          # @account_username
+
+          (cache[:secrete_answer2].nil?||!cache[:secrete_answer2].present?)?cache[:secrete_answer2]=Stamps::Browser::StampsTextbox.new(browser.text_field(id: "secretAnswer2")).extend(AccountInfoSecretAnswer2Help):cache[:secrete_answer2]
+
+        end
+
+
+      end
+      module AccountInfoEmailHelp
+        def single_field_help_block
+          (cache[:single_field_help_block].nil?||!cache[:single_field_help_block].present?)?cache[:single_field_help_block]=RegHelpBlock.new(browser, browser.spans(css: "li[id=email]>div>div>div>div>span")):cache[:single_field_help_block]
+        end
+
+        def help_block
+          # @help_block=RegHelpBlock.new(browser, browser.lis(css: "li[id=email]>div>div>div>div>span>ul>li")) if @help_block.nil?||!@help_block.present?
+          # @help_block
+
+          (cache[:help_block].nil?||!cache[:help_block].present?)?cache[:help_block]=RegHelpBlock.new(browser, browser.lis(css: "li[id=email]>div>div>div>div>span>ul>li")):cache[:help_block]
+        end
+      end
+      module AccountInfoUserNameHelp
+        def single_field_help_block
+          (cache[:single_field_help_block].nil?||!cache[:single_field_help_block].present?)?cache[:single_field_help_block]=RegHelpBlock.new(browser, browser.spans(css: "li[id=accountinfo]>div>div:nth-child(1)>div>span")):cache[:single_field_help_block]
+        end
+
+        def help_block
+          # @help_block=RegHelpBlock.new(browser, browser.lis(css: "#accountinfo [class=col-xs-12]:nth-child(1) [class*='help-block filled'] li")) if @help_block.nil?||!@help_block.present?
+          # @help_block
+
+          (cache[:help_block].nil?||!cache[:help_block].present?)?cache[:help_block]=RegHelpBlock.new(browser, browser.lis(css: "#accountinfo [class=col-xs-12]:nth-child(1) [class*='help-block filled'] li")):cache[:help_block]
+        end
+
+      end
+      module AccountInfoPasswordHelp
+        def single_field_help_block
+          (cache[:single_field_help_block].nil?||!cache[:single_field_help_block].present?)?cache[:single_field_help_block]=RegHelpBlock.new(browser, browser.spans(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span")):cache[:single_field_help_block]
+        end
+
+        def help_block
+          # @help_block=RegHelpBlock.new(browser, browser.lis(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span>span>ul>li")) if @help_block.nil?||!@help_block.present?
+          # @help_block
+          (cache[:help_block].nil?||!cache[:help_block].present?)?cache[:help_block]=RegHelpBlock.new(browser, browser.lis(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span>span>ul>li")):cache[:help_block]
+        end
+
       end
       module AccountInfoRetypePasswordHelp
         def help_block
-          @help_block=RegHelpBlock.new(browser, browser.spans(css: "li[id=accountinfo]>div>div:nth-child(3)>div>span>span>ul>li")) if @help_block.nil?||!@help_block.present?
-          @help_block
+          # @help_block=RegHelpBlock.new(browser, browser.lis(css: "li[id=accountinfo]>div>div:nth-child(3)>div>span>span>ul>li")) if @help_block.nil?||!@help_block.present?
+          # @help_block
+
+          (cache[:help_block].nil?||!cache[:help_block].present?)?cache[:help_block]=RegHelpBlock.new(browser, browser.lis(css: "li[id=accountinfo]>div>div:nth-child(3)>div>span>span>ul>li")):cache[:help_block]
+
         end
         def single_field_help_block
-          @single_field_help_block=RegHelpBlock.new(browser,browser.spans(css: "li[id=accountinfo]>div>div:nth-child(3)>div>span")) if @single_field_help_block.nil?||!@single_field_help_block.present?
-          @single_field_help_block
+          # @single_field_help_block=RegHelpBlock.new(browser,browser.spans(css: "li[id=accountinfo]>div>div:nth-child(3)>div>span")) if @single_field_help_block.nil?||!@single_field_help_block.present?
+          # @single_field_help_block
+          (cache[:single_field_help_block].nil?||!cache[:single_field_help_block].present?)?cache[:single_field_help_block]=RegHelpBlock.new(browser, browser.spans(css: "li[id=accountinfo]>div>div:nth-child(3)>div>span")):cache[:single_field_help_block]
         end
+
       end
       module AccountInfoPromocodeHelp
-        def promocode_help_block
-          @help_block=RegHelpBlock.new(browser, browser.lis(css: "li[id=promocode]>div>div>div>div>span>ul>li")) if @help_block.nil?||!@help_block.present?
-          @help_block
+
+        def help_block
+          # @help_block=RegHelpBlock.new(browser, browser.lis(css: "li[id=promocode]>div>div>div>div>span>ul>li")) if @help_block.nil?||!@help_block.present?
+          # @help_block
+
+          (cache[:help_block].nil?||!cache[:help_block].present?)?cache[:help_block]=RegHelpBlock.new(browser, browser.lis(css: "li[id=promocode]>div>div>div>div>span>ul>li")):cache[:help_block]
         end
+
       end
-      module AccountInfoSurveyQuestionHelp
+      module AccountInfoSecretQuestions1Help
         def single_field_help_block
-          @single_field_help_block=RegHelpBlock.new(browser,browser.lis(css: "li[id=survey]>div>div:nth-child(1)>div>div>span")) if @single_field_help_block.nil?||!@single_field_help_block.present?
-          @single_field_help_block
+          # @single_field_help_block=RegHelpBlock.new(browser,browser.lis(css: "#secretquestions>div>div:nth-child(2)>div.form-group.fancy-input.has-error>span>span")) if @single_field_help_block.nil?||!@single_field_help_block.present?
+          # @single_field_help_block
+          (cache[:single_field_help_block].nil?||!cache[:single_field_help_block].present?)?cache[:single_field_help_block]=RegHelpBlock.new(browser, browser.spans(css: "li[id=survey]>div>div:nth-child(1)>div>div>span")):cache[:single_field_help_block]
         end
       end
+      module AccountInfoSecretAnswer1Help
+        def single_field_help_block
+          # @single_field_help_block=RegHelpBlock.new(browser,browser.lis(css: "#secretquestions>div>div:nth-child(2)>div.form-group.fancy-input.has-error>span>span")) if @single_field_help_block.nil?||!@single_field_help_block.present?
+          # @single_field_help_block
+          (cache[:single_field_help_block].nil?||!cache[:single_field_help_block].present?)?cache[:single_field_help_block]=RegHelpBlock.new(browser, browser.spans(css: "li[id=secretquestions]>div>div:nth-child(2)>div.form-group.fancy-input.has-error>span>span")):cache[:single_field_help_block]
+        end
+      end
+      module AccountInfoSecretQuestions2Help
+        def single_field_help_block
+          # @single_field_help_block=RegHelpBlock.new(browser,browser.lis(css: "#secretquestions>div>div:nth-child(2)>div.form-group.fancy-input.has-error>span>span")) if @single_field_help_block.nil?||!@single_field_help_block.present?
+          # @single_field_help_block
+          (cache[:single_field_help_block].nil?||!cache[:single_field_help_block].present?)?cache[:single_field_help_block]=RegHelpBlock.new(browser, browser.spans(css: "li[id=secretquestions]>div>div:nth-child(3)>div:nth-child(1)>span>span")):cache[:single_field_help_block]
+        end
+      end
+      module AccountInfoSecretAnswer2Help
+        def single_field_help_block
+          # @single_field_help_block=RegHelpBlock.new(browser,browser.lis(css: "#secretquestions>div>div:nth-child(2)>div.form-group.fancy-input.has-error>span>span")) if @single_field_help_block.nil?||!@single_field_help_block.present?
+          # @single_field_help_block
+          (cache[:single_field_help_block].nil?||!cache[:single_field_help_block].present?)?cache[:single_field_help_block]=RegHelpBlock.new(browser, browser.spans(css: "li[id=secretquestions]>div>div:nth-child(3)>div:nth-child(2)>span>span")):cache[:single_field_help_block]
+        end
+      end
+
       class Page < Browser::BaseCache
         assign({})
         def cache
@@ -469,7 +561,7 @@ module Stamps
         include SideContent
 
         def header
-# =begin
+        # =begin
 #           if cache[:header].nil?||!cache[:header].present?
 #             cache[:header]=StampsField.new(browser.h1(css: "div[id=page]>div>div>h1"))
 #           else

@@ -25,7 +25,7 @@ Feature: Test Workflow - Theme 1632 Happy Path
    # Then set Membership page member address to random address between zone 1 and 4
    # Then set Membership page member address to First Last, Company Name, 1390 market street #2900, san francisco, ca, 94102
 
-#     Then set Membership page Phone to random value
+#    Then set Membership page Phone to random value
 #    Then set Membership page Cardholder's Name to random value
 #    Then set Membership page Credit Card Number to default value
 #    Then set Membership page Month to Dec (12)
