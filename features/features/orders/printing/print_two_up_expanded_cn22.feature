@@ -14,11 +14,11 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country    | phone   |  email  |
       | FCMI Lg Env-Flat | 5.5x8.5 Right Side 2 | random           | random           | random | random  | random      | Croatia | random  | random  |
-    Then set Order Details service to FCMI Large Envelope
+    Then set Order Details service to FCMI Large Envelope/Flat
     Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then add new order
@@ -26,11 +26,11 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country    | phone   |  email  |
       | FCMI Pkg-Thick Env | 5.5x8.5 Right Side 1 | random           | random           | random | random  | random      | India | random  | random  |
-    Then set Order Details service to FCMI Package
+    Then set Order Details service to FCMI Package/Thick Envelope
     Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then check Orders Grid row 1
@@ -52,10 +52,10 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
       | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | PMEI MFR Box | SDC-1200  | 234 Laurier Avenue West  | random     | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then set Order Details Weight to 1 lb 1 oz
-    Then set Order Details service to FCMI Large Envelope
+    Then set Order Details service to FCMI Large Envelope/Flat
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
 
@@ -68,7 +68,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then set Order Details Weight to 1 lb 1 oz
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
 
@@ -102,7 +102,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
 
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then click Orders Toolbar Print button
@@ -125,7 +125,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then add new order
@@ -137,7 +137,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then check Orders Grid row 1
@@ -162,7 +162,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then add new order
@@ -174,7 +174,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then check Orders Grid row 1

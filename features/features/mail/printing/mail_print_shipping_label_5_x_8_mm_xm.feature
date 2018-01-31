@@ -13,7 +13,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - MM XM
     Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 5 through 8
     Then set Print form Ounces to 1
-    Then select Print form service MM Package
+    Then select Print form service MM Package/Flat/Thick Envelope
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button

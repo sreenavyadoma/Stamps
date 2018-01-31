@@ -53,48 +53,48 @@ end
 
 Then /^Tooltips: Expect Customs Tooltip Error for Total Weight is (.+)$/ do |expectation|
   #test_config.logger.step "Tooltips: Expect Customs Tooltip Error for Total Weight is #{expectation}"
-  stamps.orders.order_details.customs.edit_customs_form.should_not be_nil
-  data_error_qtip=stamps.orders.order_details.customs.edit_customs_form.total_weight.data_error
+  stamps.common_modals.customs_form.should_not be_nil
+  data_error_qtip=stamps.common_modals.customs_form.total_weight.data_error
   #test_config.logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   expect(data_error_qtip).to include(expectation)
 end
 
 Then /^[Oo]n Customs form, expect Associated Item Description Tooltip Error is (.*)$/ do |expectation|
   #test_config.logger.step "expect Customs Associated Item Description Tooltip Error is #{expectation}"
-  stamps.orders.order_details.customs.edit_customs_form.should_not be_nil
-  data_error_qtip=stamps.orders.order_details.customs.edit_customs_form.associated_items.item_number(1).description.data_error_qtip
+  stamps.common_modals.customs_form.should_not be_nil
+  data_error_qtip=stamps.common_modals.customs_form.associated_items.item_number(1).description.data_error_qtip
   #test_config.logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   expect(data_error_qtip).to include(expectation)
 end
 
 Then /^[Oo]n Customs form, expect Qty Tooltip Error is (.*)$/ do |expectation|
   #test_config.logger.step "expect Customs Qty Tooltip Error is #{expectation}"
-  stamps.orders.order_details.customs.edit_customs_form.should_not be_nil
-  data_error_qtip=stamps.orders.order_details.customs.edit_customs_form.associated_items.item_number(1).qty.textbox.data_error_qtip
+  stamps.common_modals.customs_form.should_not be_nil
+  data_error_qtip=stamps.common_modals.customs_form.associated_items.item_number(1).qty.textbox.data_error_qtip
   #test_config.logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   expect(data_error_qtip).to include(expectation)
 end
 
 Then /^[Oo]n Customs form, expect Unit Price Tooltip Error is (.*)$/ do |expectation|
   #test_config.logger.step "expect Customs Unit Price Tooltip Error is #{expectation}"
-  stamps.orders.order_details.customs.edit_customs_form.should_not be_nil
-  data_error_qtip=stamps.orders.order_details.customs.edit_customs_form.associated_items.item_number(1).unit_price.textbox.data_error_qtip
+  stamps.common_modals.customs_form.should_not be_nil
+  data_error_qtip=stamps.common_modals.customs_form.associated_items.item_number(1).unit_price.textbox.data_error_qtip
   #test_config.logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   expect(data_error_qtip).to include(expectation)
 end
 
 Then /^[Oo]n Customs form, expect Pounds Tooltip Error is (.*)$/ do |expectation|
   #test_config.logger.step "expect Customs Pounds Tooltip Error is #{expectation}"
-  stamps.orders.order_details.customs.edit_customs_form.should_not be_nil
-  data_error_qtip=stamps.orders.order_details.customs.edit_customs_form.associated_items.item_number(1).lb.textbox.data_error_qtip
+  stamps.common_modals.customs_form.should_not be_nil
+  data_error_qtip=stamps.common_modals.customs_form.associated_items.item_number(1).lb.textbox.data_error_qtip
   #test_config.logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   expect(data_error_qtip).to include(expectation)
 end
 
 Then /^[Oo]n Customs form, expect Ounces Tooltip Error is (.*)$/ do |expectation|
   #test_config.logger.step "expect Customs Ounces Tooltip Error is #{expectation}"
-  stamps.orders.order_details.customs.edit_customs_form.should_not be_nil
-  data_error_qtip=stamps.orders.order_details.customs.edit_customs_form.associated_items.item_number(1).oz.textbox.data_error_qtip
+  stamps.common_modals.customs_form.should_not be_nil
+  data_error_qtip=stamps.common_modals.customs_form.associated_items.item_number(1).oz.textbox.data_error_qtip
   #test_config.logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   expect(ddata_error_qtip).to include(expectation)
 end

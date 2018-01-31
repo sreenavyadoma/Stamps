@@ -9,20 +9,20 @@ module Stamps
 
       def initialize(param)
         super
-        @install_stamps_connect=PrintModal::InstallStampsConnect.new(param)
-        @mail_print_modal=PrintModal::MailPrintModal.new(param)
-        @confirm_window=PrintModal::MailConfirmPrint.new(param)
-        @please_wait=PrintModal::PleaseWait.new(param)
-        @windows_print=Windows::PrintWindow.new(param.browser)
-        @sample_button=StampsField.new browser.span(text: "Print Sample")
-        @printing_problem=PrintingProblem.new(param)
-        @insufficient_funds=MailInsufficientFunds.new(param)
-        @print_quantity_warning=PrintQuantityWarning.new(param)
-        @hidden_postage_warning=HiddenPostageWarning.new(param)
+        @install_stamps_connect = PrintModal::InstallStampsConnect.new(param)
+        @mail_print_modal = PrintModal::MailPrintModal.new(param)
+        @confirm_window = PrintModal::MailConfirmPrint.new(param)
+        @please_wait = PrintModal::PleaseWait.new(param)
+        @windows_print = Windows::PrintWindow.new(param.browser)
+        @sample_button = StampsField.new browser.span(text: "Print Sample")
+        @printing_problem = PrintingProblem.new(param)
+        @insufficient_funds = MailInsufficientFunds.new(param)
+        @print_quantity_warning = PrintQuantityWarning.new(param)
+        @hidden_postage_warning = HiddenPostageWarning.new(param)
       end
 
       def totals_field
-        (cache[:total].nil?||!cache[:total].present?)?cache[:total]=StampsField.new(browser.label(css: "div[id^=toolbar-][id$=-targetEl]>div[class*=ct]>div>div>div>div>div>label")):cache[:total]
+        cache[:total].nil? || !cache[:total].present? ? cache[:total] = StampsField.new(browser.label(css: "div[id^=toolbar-][id$=-targetEl]>div[class*=ct]>div>div>div>div>div>label")) : cache[:total]
       end
 
       def total
@@ -34,21 +34,21 @@ module Stamps
         10.times do
           case param.print_media
             when :envelope
-              @print_button=StampsField.new(browser.span(text: 'Print Envelope'))
+              @print_button = StampsField.new(browser.span(text: 'Print Envelope'))
             when :stamps
-              @print_button=StampsField.new(browser.span(text: 'Print Stamps'))
+              @print_button = StampsField.new(browser.span(text: 'Print Stamps'))
             when :label
-              @print_button=StampsField.new(browser.span(text: 'Print Label'))
+              @print_button = StampsField.new(browser.span(text: 'Print Label'))
             when :roll
-              @print_button=StampsField.new(browser.span(text: 'Print Label'))
+              @print_button = StampsField.new(browser.span(text: 'Print Label'))
             when :certified_mail
-              @print_button=StampsField.new(browser.span(text: 'Print Label'))
+              @print_button = StampsField.new(browser.span(text: 'Print Label'))
             when :certified_mail_3910_3930
-              @print_button=StampsField.new(browser.span(text: 'Print Label'))
+              @print_button = StampsField.new(browser.span(text: 'Print Label'))
             when :certified_mail_3810
-              @print_button=StampsField.new(browser.span(text: 'Print Envelope'))
+              @print_button = StampsField.new(browser.span(text: 'Print Envelope'))
             when :certified_mail_3830
-              @print_button=StampsField.new(browser.span(text: 'Print Envelope'))
+              @print_button = StampsField.new(browser.span(text: 'Print Envelope'))
             else
               # do nothing
           end
@@ -63,7 +63,10 @@ module Stamps
       end
 
       def incomplete_window_title
-        (cache[:incomplete_window_title].nil?||!cache[:incomplete_window_title].present?)?cache[:incomplete_window_title]=Browser::Base.new(param).extend(IncFeldsWindowTitle):cache[:incomplete_window_title]
+        if cache[:incomplete_window_title].nil? || !cache[:incomplete_window_title].present?
+          cache[:incomplete_window_title] = Browser::Base.new(param).extend(IncFeldsWindowTitle)
+        end
+        cache[:incomplete_window_title]
       end
 
       def print_postage_expecting_error
@@ -77,7 +80,8 @@ module Stamps
       def open_window(window)
         return window if window.present?
 
-        expect(print_button).to be_present, "Print button is not present."
+        raise "Print button is not present" unless print_button.present?
+
         30.times do
           begin
             print_button.click
@@ -107,12 +111,12 @@ module Stamps
             #ignore
           end
         end
-        expect(window).to be_present, "Unable to open Mail Print Modal"
+        raise "Unable to open Mail Print Modal"
       end
 
       def open_sample_window window
         return window if window.present?
-        print=sample_button
+        print = sample_button
 
         print.click
 

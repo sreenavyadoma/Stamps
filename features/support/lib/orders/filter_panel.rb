@@ -1,13 +1,17 @@
 module Stamps
   module Orders
     module LeftPanel
-      class CollapseButton < Browser::Base
-        attr_reader :button, :tooltip_field
+      class CollapseButton < Browser::BaseCache
+        assign({})
 
-        def initialize(param)
-          super
-          @button=StampsField.new(browser.span css: "span[id^=button-][id$=-btnIconEl]")
-          @tooltip_field=StampsField.new(browser.div id: 'ext-quicktips-tip-innerCt')
+        def button
+          cache[:button] = StampsField.new(browser.span css: "span[id^=button-][id$=-btnIconEl]") if cache[:button].nil? || !cache[:button].present?
+          cache[:button]
+        end
+
+        def tooltip_field
+          cache[:tooltip_field] = StampsField.new(browser.div id: 'ext-quicktips-tip-innerCt') if cache[:tooltip_field].nil? || !cache[:tooltip_field].present?
+          cache[:tooltip_field]
         end
 
         def click
@@ -36,13 +40,16 @@ module Stamps
         end
       end
 
-      class ExpandButton < Browser::Base
-        attr_reader :button, :tooltip_field
+      class ExpandButton < Browser::BaseCache
+        assign({})
 
-        def initialize(param)
-          super
-          @button=StampsField.new(browser.img css: 'img[class*=tool-expand-right]')
-          @tooltip_field=StampsField.new(browser.div id: 'ext-quicktips-tip-innerCt')
+        def button
+          cache[:button].nil? || !cache[:button].present? ? cache[:button] = StampsField.new(browser.img(css: 'img[class*=tool-expand-right]')) : cache[:button]
+        end
+
+        def tooltip_field
+          cache[:tooltip_field] = StampsField.new(browser.div(id: 'ext-quicktips-tip-innerCt')) if cache[:tooltip_field].nil? || !cache[:tooltip_field].present?
+          cache[:tooltip_field]
         end
 
         def click
@@ -71,24 +78,35 @@ module Stamps
         end
       end
 
-      class FilterMenuItem < Browser::Base
-        attr_reader :collapse, :expand
+      class FilterMenuItem < Browser::BaseCache
+        assign({})
 
-        def initialize(param)
-          super
-          @collapse=CollapseButton.new(param)
-          @expand=ExpandButton.new(param)
+        def collapse
+          cache[:collapse].nil? ? cache[:collapse] = CollapseButton.new(param) : cache[:collapse]
+        end
+
+        def expand
+          cache[:expand].nil? ? cache[:expand] = ExpandButton.new(param) : cache[:expand]
         end
       end
 
-      class SearchResults < Browser::Base
-        attr_reader :label, :remove_button, :count_label
+      class SearchResults < Browser::BaseCache
+        assign({})
 
-        def initialize(param)
-          super
-          @label=StampsField.new browser.div(text: "Search Results")
-          @remove_button=StampsField.new browser.a(css: "a[data-qtip=Remove]")
-          @count_label=StampsField.new browser.div(css: "div[id=left-filter-panel-targetEl]>table>tbody>tr>td:nth-child(3)>div>div")
+        def label
+          cache[:label].nil? || !cache[:label].present? ? cache[:label] = StampsField.new(browser.div(text: "Search Results")) : cache[:label]
+        end
+
+        def remove_button
+          cache[:remove_button] = StampsField.new(browser.a(css: "a[data-qtip=Remove]")) if cache[:remove_button].nil? || !cache[:remove_button].present?
+          cache[:remove_button]
+        end
+
+        def count_label
+          if cache[:count_label].nil? || !cache[:count_label].present?
+            cache[:count_label] = StampsField.new(browser.div(css: "div[id=left-filter-panel-targetEl]>table>tbody>tr>td:nth-child(3)>div>div"))
+          end
+          cache[:count_label]
         end
 
         def present?
@@ -108,14 +126,32 @@ module Stamps
         end
       end
 
-      class SearchOrders < Browser::Base
+      class SearchOrders < Browser::BaseCache
+        assign({})
+
         attr_reader :textbox, :search_button, :search_results
 
         def initialize(param)
           super
-          @textbox=StampsTextbox.new browser.text_field(css: "[placeholder='Search Orders']")
-          @search_button=StampsField.new browser.div(css: "[id^=textfield-][id$=-trigger-search]")
-          @search_results=SearchResults.new(param)
+          @textbox = StampsTextbox.new browser.text_field(css: "[placeholder='Search Orders']")
+          @search_button = StampsField.new browser.div(css: "[id^=textfield-][id$=-trigger-search]")
+          @search_results = SearchResults.new(param)
+        end
+
+        def textbox
+          cache[:textbox] = StampsTextbox.new(browser.text_field(css: "[placeholder='Search Orders']")) if cache[:textbox].nil? || !cache[:textbox].present?
+          cache[:textbox]
+        end
+
+        def search_button
+          if cache[:search_button].nil? || !cache[:search_button].present?
+            cache[:search_button] = StampsField.new(browser.div(css: "[id^=textfield-][id$=-trigger-search]"))
+          end
+          cache[:search_button]
+        end
+
+        def search_results
+          cache[:search_results].nil? ? cache[:search_results] = SearchResults.new(param) : cache[:search_results]
         end
 
         def present?
@@ -142,7 +178,7 @@ module Stamps
         end
 
         def select
-          tab=StampsField.new(field)
+          tab = StampsField.new(field)
           40.times do
             tab.double_click
             tab.click
@@ -154,11 +190,12 @@ module Stamps
         end
       end
 
-      class AwaitingShipmentTab < Browser::Base
+      class AwaitingShipmentTab < Browser::BaseCache
+        assign({})
         include FilterTabHelper
         def initialize(param)
           super
-          @panel_name="Awaiting Shipment"
+          @panel_name = "Awaiting Shipment"
         end
 
         def count
@@ -166,42 +203,62 @@ module Stamps
         end
       end
 
-      class ShippedTab < Browser::Base
+      class ShippedTab < Browser::BaseCache
+        assign({})
         include FilterTabHelper
         def initialize(param)
           super
-          @panel_name="Shipped"
+          @panel_name = "Shipped"
         end
       end
 
-      class CanceledTab < Browser::Base
+      class CanceledTab < Browser::BaseCache
+        assign({})
         include FilterTabHelper
         def initialize(param)
           super
-          @panel_name="Canceled"
+          @panel_name = "Canceled"
         end
       end
 
-      class OnHoldTab < Browser::Base
+      class OnHoldTab < Browser::BaseCache
+        assign({})
         include FilterTabHelper
         def initialize(param)
           super
-          @panel_name="On Hold"
+          @panel_name = "On Hold"
         end
       end
 
-      class FilterPanel < Browser::Base
-        attr_reader :search_orders, :search_results, :awaiting_shipment, :shipped, :canceled, :on_hold, :menu_item
+      class FilterPanel < Browser::BaseCache
+        assign({})
 
-        def initialize(param)
-          super
-          @awaiting_shipment=AwaitingShipmentTab.new(param)
-          @shipped=ShippedTab.new(param)
-          @canceled=CanceledTab.new(param)
-          @on_hold=OnHoldTab.new(param)
-          @search_orders=SearchOrders.new(param)
-          @menu_item=FilterMenuItem.new(param)
-          @search_results=SearchResults.new(param)
+        def search_orders
+          cache[:search_orders].nil? ? cache[:search_orders] = SearchOrders.new(param) : cache[:search_orders]
+        end
+
+        def search_results
+          cache[:search_results].nil? ? cache[:search_results] = SearchResults.new(param) : cache[:search_results]
+        end
+
+        def awaiting_shipment
+          cache[:awaiting_shipment].nil? ? cache[:awaiting_shipment] = AwaitingShipmentTab.new(param) : cache[:awaiting_shipment]
+        end
+
+        def shipped
+          cache[:shipped].nil? ? cache[:shipped] = ShippedTab.new(param) : cache[:shipped]
+        end
+
+        def canceled
+          cache[:canceled].nil? ? cache[:canceled] = CanceledTab.new(param) : cache[:canceled]
+        end
+
+        def on_hold
+          cache[:on_hold].nil? ? cache[:on_hold] = OnHoldTab.new(param) : cache[:on_hold]
+        end
+
+        def menu_item
+          cache[:menu_item].nil? ? cache[:menu_item] = FilterMenuItem.new(param) : cache[:menu_item]
         end
 
         def selected_filter

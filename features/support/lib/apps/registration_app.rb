@@ -3,18 +3,20 @@ module Stamps
     def registration
       begin
         @registration ||= Stamps::Registration::WebRegistration.new(modal_param)
-      rescue Exception => e
+      rescue StandardError => e
         test_config.logger.error e.message
         test_config.logger.error e.backtrace.join("\n")
+        raise e
       end
     end
 
     def sdc_website
       begin
         @sdc_website ||= Stamps::Registration::SdcWebsite.new(modal_param)
-      rescue Exception => e
+      rescue StandardError => e
         test_config.logger.error e.message
         test_config.logger.error e.backtrace.join("\n")
+        raise e
       end
     end
 

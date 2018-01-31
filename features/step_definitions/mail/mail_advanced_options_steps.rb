@@ -113,7 +113,7 @@ end
 Then /^[Ee]xpect Advanced Options Mail Date is (?:correct|(.*))$/ do |expectation|
   step "Expect Advanced Options responds to Mail Date (mail_date)"
   expectation=test_param[:mail_date] if expectation.nil?
-  valid_date=Date.strptime(expectation, "%m/%d/%Y") rescue nil
+  valid_date=Date.strptime(expectation, "%m/%d/%Y")
   expect(valid_date).not_to be_nil, "Invalid Date format. Expected date format mm/dd/YYYY (03/24/2017)  got #{expectation}"
   expect(stamps.mail.print_form.advanced_options.mail_date.textbox.text).to eql(expectation), "Advanced Options Mail Date is not #{expectation}"
 end

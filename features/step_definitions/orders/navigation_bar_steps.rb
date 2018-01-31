@@ -26,3 +26,8 @@ Then /^Navigation Bar: Mail$/ do
   stamps.navigation_bar.mail
 end
 
+#todo - Alex move Navigation Bar steps from Orders to Commmon
+Then /^[Ee]xpect [Nn]avigation [Bb]ar Help Button is present$/ do
+  expect(stamps.navigation_bar.help_link.present?).to be(true), "Help button is not present on Print form"
+end
+

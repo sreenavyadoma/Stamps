@@ -20,6 +20,10 @@ Then /^[Cc]onnect [Mm]arketplace [Ss]tore (.*)$/ do |str|
   expect(stamps.orders.marketplace.add_your_store_modal.dataview.add_store(str)).to eql("Connect Your #{data_for(:supported_stores, {})[str.downcase]} Store")
 end
 
+Then /^[Cc]click on [Mm]arketplace [Ss]tore (.*)$/ do |str|
+
+end
+
 Then /^[Aa]dd [Mm]arketplace [Ss]hip[Ss]tation [Ss]tore (.*)$/ do |str|
   step "validate store name #{str}"
   step "expect Marketplace modal is present"

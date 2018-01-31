@@ -196,7 +196,7 @@ Feature: All details tests for order
     Then set Order Details service to PMI Flat Rate Envelope
     Then expect Order Details service is PMI Flat Rate Envelope
     Then click Order Details form Customs Form button
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then expect Order Details Pounds is 0
@@ -210,7 +210,7 @@ Feature: All details tests for order
     Then set Order Details service to PMI Padded Flat Rate Envelope
     Then expect Order Details service is PMI Padded Flat Rate Envelope
     Then click Order Details form Customs Form button
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then expect Order Details Pounds is 0
@@ -224,7 +224,7 @@ Feature: All details tests for order
     Then set Order Details service to PMI Legal Flat Rate Envelope
     Then expect Order Details service is PMI Legal Flat Rate Envelope
     Then click Order Details form Customs Form button
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then expect Order Details Pounds is 0
@@ -238,7 +238,7 @@ Feature: All details tests for order
     Then set Order Details service to PMI Small Flat Rate Box
     Then expect Order Details service is PMI Small Flat Rate Box
     Then click Order Details form Customs Form button
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then expect Order Details Pounds is 0
@@ -252,7 +252,7 @@ Feature: All details tests for order
     Then set Order Details service to PMI Medium Flat Rate Box
     Then expect Order Details service is PMI Medium Flat Rate Box
     Then click Order Details form Customs Form button
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then expect Order Details Pounds is 0
@@ -266,7 +266,7 @@ Feature: All details tests for order
     Then set Order Details service to PMI Large Flat Rate Box
     Then expect Order Details service is PMI Large Flat Rate Box
     Then click Order Details form Customs Form button
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then expect Order Details Pounds is 0
@@ -280,7 +280,7 @@ Feature: All details tests for order
     Then set Order Details service to PMEI Flat Rate Envelope
     Then expect Order Details service is PMEI Flat Rate Envelope
     Then click Order Details form Customs Form button
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then expect Order Details Pounds is 0
@@ -294,7 +294,7 @@ Feature: All details tests for order
     Then set Order Details service to PMEI Padded Flat Rate Envelope
     Then expect Order Details service is PMEI Padded Flat Rate Envelope
     Then click Order Details form Customs Form button
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then expect Order Details Pounds is 0
@@ -308,7 +308,7 @@ Feature: All details tests for order
     Then set Order Details service to PMEI Legal Flat Rate Envelope
     Then expect Order Details service is PMEI Legal Flat Rate Envelope
     Then click Order Details form Customs Form button
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then expect Order Details Pounds is 0
@@ -323,37 +323,37 @@ Feature: All details tests for order
 
   @details_large_dimensions_pm
   Scenario: Priority Mail and Large Dimensions
-    * add new order
-    * expect Order Details service is an empty string
-    * set Order Details Ship-To to random address in zone 8
-    * set Order Details Ounces to 2
-    * set Order Details Pounds to 1
-    * set Order Details service to PM Package
-    * expect Order Details service is PM Package
-    * set Order Details Length to 20
-    * set Order Details Width to 35
-    * set Order Details Height to 20
-    * blur out on Order Details form
-    * blur out on Order Details form
-    * expect Order Details Dimensions are hidden
-    * set Order Details service to PM Package
-    * blur out on Order Details form
-    * set Order Details Length to 1
-    * set Order Details Width to 1
-    * set Order Details Height to 1
-    * Pause for 2 seconds
-    * expect Order Details service Textbox is enabled
-    * Pause for 1 second
-    * expect Order Details service is PM Package
-    * Pause for 1 second
-    * expect Order Details service "PM Package" is enabled
-    * Pause for 1 second
-    * set Order Details service to PM Package
-    * Pause for 2 seconds
-    * expect Order Details Length is 1
-    * expect Order Details Height is 1
-    * expect Order Details Width is 1
-    * Sign out
+    Then add new order
+    Then expect Order Details service is an empty string
+    Then set Order Details Ship-To to random address in zone 8
+    Then set Order Details Ounces to 2
+    Then set Order Details Pounds to 1
+    Then set Order Details service to PM Package
+    Then expect Order Details service is PM Package
+    Then set Order Details Length to 20
+    Then set Order Details Width to 35
+    Then set Order Details Height to 20
+    Then blur out on Order Details form
+    Then blur out on Order Details form
+    Then expect Order Details Dimensions are hidden
+    Then set Order Details service to PM Package
+    Then blur out on Order Details form
+    Then set Order Details Length to 1
+    Then set Order Details Width to 1
+    Then set Order Details Height to 1
+    Then Pause for 2 seconds
+    Then expect Order Details service Textbox is enabled
+    Then Pause for 1 second
+    Then expect Order Details service is PM Package
+    Then Pause for 1 second
+    Then expect Order Details service "PM Package" is enabled
+    Then Pause for 1 second
+    Then set Order Details service to PM Package
+    Then Pause for 2 seconds
+    Then expect Order Details Length is 1
+    Then expect Order Details Height is 1
+    Then expect Order Details Width is 1
+    Then Sign out
 
 
   @details_non_integer_lb
@@ -416,7 +416,7 @@ Feature: All details tests for order
     Then set Order Details Ship-To to random address in zone 1
     Then set Order Details Ounces to 1
 
-    Then set Order Details service to FCM Large Envelope
+    Then set Order Details service to FCM Large Envelope/Flat
     Then expect Order Details service is FCM Large Envelope/Flat
 
     Then click Orders Toolbar Print button
@@ -542,15 +542,15 @@ Feature: All details tests for order
     Then expect Print modal Print Modal is present
     Then in Print modal, click Close button
 
-    Then set Order Details service to MM Package
-    Then expect Order Details service is MM Package
+    Then set Order Details service to MM Package/Flat/Thick Envelope
+    Then expect Order Details service is MM Package/Flat/Thick Envelope
 
     Then click Orders Toolbar Print button
     Then expect Print modal Print Modal is present
     Then in Print modal, click Close button
 
-    Then set Order Details service to PSG Package
-    Then expect Order Details service is PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
+    Then expect Order Details service is PSG Package/Flat/Thick Envelope
 
     Then click Orders Toolbar Print button
     Then expect Print modal Print Modal is present
@@ -573,26 +573,26 @@ Feature: All details tests for order
     Then set Order Details Ounces to 1
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
     Then click Order Details form Customs Form button
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In Brazil, Tariff 1
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 1, Made In Brazil, Tariff 1
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
 
-    Then set Order Details service to FCMI Large Envelope
-    Then expect Order Details service is FCMI Large Envelope
+    Then set Order Details service to FCMI Large Envelope/Flat
+    Then expect Order Details service is FCMI Large Envelope/Flat
 
     Then click Orders Toolbar Print button
     Then expect Print modal Print Modal is present
     Then in Print modal, click Close button
 
-    Then set Order Details service to FCMI Package
-    Then expect Order Details service is FCMI Package
+    Then set Order Details service to FCMI Package/Thick Envelope
+    Then expect Order Details service is FCMI Package/Thick Envelope
 
     Then click Orders Toolbar Print button
     Then expect Print modal Print Modal is present
     Then in Print modal, click Close button
 
-    Then set Order Details service to PMI Package
-    Then expect Order Details service is PMI Package
+    Then set Order Details service to PMI Package/Flat/Thick Envelope
+    Then expect Order Details service is PMI Package/Flat/Thick Envelope
 
     Then click Orders Toolbar Print button
     Then expect Print modal Print Modal is present
@@ -646,8 +646,8 @@ Feature: All details tests for order
     #Then set Order Details service to PMI Regional Rate Box B
     #Then expect Order Details service is PMI Regional Rate Box B
 
-    Then set Order Details service to PMEI Package
-    Then expect Order Details service is PMEI Package
+    Then set Order Details service to PMEI Package/Flat/Thick Envelope
+    Then expect Order Details service is PMEI Package/Flat/Thick Envelope
 
     Then click Orders Toolbar Print button
     Then expect Print modal Print Modal is present
@@ -691,7 +691,7 @@ Feature: All details tests for order
     Then set Order Details service to PM Package
     Then set Order Details Ounces to 1
     Then set Order Details Pounds to 1
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
     Then set Order Details Length to 1
     Then set Order Details Width to 1
     Then set Order Details Height to 1

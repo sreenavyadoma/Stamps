@@ -14,7 +14,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Ounces to 1
-    * set Order Details service to FCM Large Envelope
+    * set Order Details service to FCM Large Envelope/Flat
     * set Order Details Insure-For to $15.00
     * set Order Details Tracking to "None"
 
@@ -200,7 +200,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Pounds to 20
-    * set Order Details service to MM Package
+    * set Order Details service to MM Package/Flat/Thick Envelope
     * set Order Details Insure-For to $56.00
     * set Order Details Tracking to Signature Required
 
@@ -212,7 +212,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Pounds to 21
-    * set Order Details service to PSG Package
+    * set Order Details service to PSG Package/Flat/Thick Envelope
     * set Order Details Insure-For to $345.00
     * set Order Details Tracking to USPS Tracking
 
@@ -222,7 +222,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Pounds to 22
-    Then set Order Details service to PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
     * set Order Details Insure-For to $456.00
     * set Order Details Tracking to Signature Required
 
@@ -257,7 +257,7 @@ Feature: 150 orders
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then set Order Details service to FCMI Large Envelope
+    Then set Order Details service to FCMI Large Envelope/Flat
 
     Then add new order
     Then set Order Details Ship-From to default
@@ -288,7 +288,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Ounces to 1
-    * set Order Details service to FCM Large Envelope
+    * set Order Details service to FCM Large Envelope/Flat
     * set Order Details Insure-For to $15.00
     * set Order Details Tracking to "None"
 
@@ -474,7 +474,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Pounds to 20
-    * set Order Details service to MM Package
+    * set Order Details service to MM Package/Flat/Thick Envelope
     * set Order Details Insure-For to $56.00
     * set Order Details Tracking to Signature Required
 
@@ -486,7 +486,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Pounds to 21
-    Then set Order Details service to PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
     * set Order Details Insure-For to $345.00
     * set Order Details Tracking to USPS Tracking
 
@@ -496,7 +496,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Pounds to 22
-    Then set Order Details service to PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
     * set Order Details Insure-For to $456.00
     * set Order Details Tracking to Signature Required
 
@@ -531,7 +531,7 @@ Feature: 150 orders
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then set Order Details service to FCMI Large Envelope
+    Then set Order Details service to FCMI Large Envelope/Flat
 
     Then add new order
     Then set Order Details Ship-From to default
@@ -562,7 +562,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Ounces to 1
-    * set Order Details service to FCM Large Envelope
+    * set Order Details service to FCM Large Envelope/Flat
     * set Order Details Insure-For to $15.00
     * set Order Details Tracking to "None"
 
@@ -747,7 +747,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Pounds to 20
-    * set Order Details service to MM Package
+    * set Order Details service to MM Package/Flat/Thick Envelope
     * set Order Details Insure-For to $56.00
     * set Order Details Tracking to Signature Required
 
@@ -759,7 +759,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Pounds to 21
-    Then set Order Details service to PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
     * set Order Details Insure-For to $345.00
     * set Order Details Tracking to USPS Tracking
 
@@ -769,7 +769,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Pounds to 22
-    Then set Order Details service to PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
     * set Order Details Insure-For to $456.00
     * set Order Details Tracking to Signature Required
 
@@ -804,7 +804,7 @@ Feature: 150 orders
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then set Order Details service to FCMI Large Envelope
+    Then set Order Details service to FCMI Large Envelope/Flat
 
     Then add new order
     Then set Order Details Ship-From to default
@@ -835,7 +835,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Ounces to 1
-    * set Order Details service to FCM Large Envelope
+    * set Order Details service to FCM Large Envelope/Flat
     * set Order Details Insure-For to $15.00
     * set Order Details Tracking to "None"
 
@@ -1021,7 +1021,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Pounds to 20
-    * set Order Details service to MM Package
+    * set Order Details service to MM Package/Flat/Thick Envelope
     * set Order Details Insure-For to $56.00
     * set Order Details Tracking to Signature Required
 
@@ -1033,7 +1033,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Pounds to 21
-    Then set Order Details service to PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
     * set Order Details Insure-For to $345.00
     * set Order Details Tracking to USPS Tracking
 
@@ -1043,7 +1043,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Pounds to 22
-    Then set Order Details service to PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
     * set Order Details Insure-For to $456.00
     * set Order Details Tracking to Signature Required
 
@@ -1078,7 +1078,7 @@ Feature: 150 orders
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then set Order Details service to FCMI Large Envelope
+    Then set Order Details service to FCMI Large Envelope/Flat
 
     Then add new order
     Then set Order Details Ship-From to default
@@ -1109,7 +1109,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Ounces to 1
-    * set Order Details service to FCM Large Envelope
+    * set Order Details service to FCM Large Envelope/Flat
     * set Order Details Insure-For to $15.00
     * set Order Details Tracking to "None"
 
@@ -1295,7 +1295,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Pounds to 20
-    * set Order Details service to MM Package
+    * set Order Details service to MM Package/Flat/Thick Envelope
     * set Order Details Insure-For to $56.00
     * set Order Details Tracking to Signature Required
 
@@ -1307,7 +1307,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Pounds to 21
-    Then set Order Details service to PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
     * set Order Details Insure-For to $345.00
     * set Order Details Tracking to USPS Tracking
 
@@ -1317,7 +1317,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Pounds to 22
-    Then set Order Details service to PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
     * set Order Details Insure-For to $456.00
     * set Order Details Tracking to Signature Required
 
@@ -1352,7 +1352,7 @@ Feature: 150 orders
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then set Order Details service to FCMI Large Envelope
+    Then set Order Details service to FCMI Large Envelope/Flat
 
     Then add new order
     Then set Order Details Ship-From to default
@@ -1383,7 +1383,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Ounces to 1
-    * set Order Details service to FCM Large Envelope
+    * set Order Details service to FCM Large Envelope/Flat
     * set Order Details Insure-For to $15.00
     * set Order Details Tracking to "None"
 
@@ -1569,7 +1569,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Pounds to 20
-    * set Order Details service to MM Package
+    * set Order Details service to MM Package/Flat/Thick Envelope
     * set Order Details Insure-For to $56.00
     * set Order Details Tracking to Signature Required
 
@@ -1581,7 +1581,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Pounds to 21
-    Then set Order Details service to PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
     * set Order Details Insure-For to $345.00
     * set Order Details Tracking to USPS Tracking
 
@@ -1591,7 +1591,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Pounds to 22
-    Then set Order Details service to PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
     * set Order Details Insure-For to $456.00
     * set Order Details Tracking to Signature Required
 
@@ -1626,7 +1626,7 @@ Feature: 150 orders
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then set Order Details service to FCMI Large Envelope
+    Then set Order Details service to FCMI Large Envelope/Flat
 
     Then add new order
     Then set Order Details Ship-From to default
