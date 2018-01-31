@@ -13,7 +13,7 @@ Feature: Mail Shipping Label - SDC-1200 MM XM
     Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Ounces to 1
-    Then select Print form service MM Package
+    Then select Print form service MM Package/Flat/Thick Envelope
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button

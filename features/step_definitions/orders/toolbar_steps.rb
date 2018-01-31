@@ -9,7 +9,7 @@ end
 
 Then /^Save Order Details data$/ do
   if stamps.orders.order_details.present?
-    test_param[:country] = stamps.orders.order_details.ship_to.country.textbox.text
+    test_param[:country] = stamps.orders.order_details.ship_to.domestic.country.textbox.text
     test_param[:service_cost] = stamps.orders.order_details.service.cost.text.dollar_amount_str.to_f.round(2)
     test_param[:service] = stamps.orders.order_details.service.textbox.text
     test_param[:ship_from] = stamps.orders.order_details.single_ship_from.textbox.text

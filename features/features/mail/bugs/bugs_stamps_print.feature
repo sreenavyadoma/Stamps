@@ -12,7 +12,7 @@ Feature: Stamps print media bugs
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Ounces to 1
-    Then select Print form service FCM Large Envelope
+    Then select Print form service FCM Large Envelope/Flat
     Then show Advanced Options
     Then check Advanced Options Hide Label Value
     Then select Print On Envelope - 10
@@ -26,7 +26,7 @@ Feature: Stamps print media bugs
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Ounces to 1
-    Then select Print form service FCM Large Envelope
+    Then select Print form service FCM Large Envelope/Flat
     Then Print Postage
     Then click Mail Print modal Print button
 

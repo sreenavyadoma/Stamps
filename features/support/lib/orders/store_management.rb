@@ -1,7 +1,8 @@
 module Stamps
   module Orders
     module Stores
-      class ImportingOrdersModal < Browser::Base
+      class ImportingOrdersModal < Browser::BaseCache
+        assign({})
         def present?
           browser.div(text: "Importing Orders").present?
         end
@@ -203,10 +204,12 @@ module Stamps
         end
       end
 
-      class MarketplaceDataView < Browser::Base
+      class MarketplaceDataView < Browser::BaseCache
+        assign({})
+
         def store_count
           begin
-            return browser.divs(css: "[id^=dataview][class*=x-window-item]>[class=x-dataview-item][role=option]>a").size
+            return browser.divs(css: "[id^=dataview][class*=x-window-item]>[class=x-dataview-item][role=option]").size
           rescue
             #ignore
           end
@@ -231,6 +234,8 @@ module Stamps
               (cache[:magento_store_field].nil?||!cache[:magento_store_field].present?)?cache[:magento_store_field]=StampsField.new(browser.a(css: "[data-store-name=paypal]")):cache[:magento_store_field]
             when :opencart
               (cache[:opencart_store_field].nil?||!cache[:opencart_store_field].present?)?cache[:opencart_store_field]=StampsField.new(browser.div(css: "div[style*='/OpenCart']")):cache[:opencart_store_field]
+            when :square
+              (cache[:square_store_field].nil?||!cache[:square_store_field].present?)?cache[:square_store_field]=StampsField.new(browser.div(css: "div[style*='/squarebanner']")):cache[:square_store_field]
             else
               return nil
           end
@@ -241,15 +246,17 @@ module Stamps
             when :paypal
               (cache[:paypal_window].nil?||!cache[:paypal_window].present?)?cache[:paypal_window]=Browser::Base.new(param).extend(Orders::Stores::PayPalWindowTitle):cache[:paypal_window]
             when :ebay
-              raise "#{str} is not implemented."
+              raise "#{str} not implemented."
             when :shopify
-              raise "#{str} is not implemented."
+              raise "#{str} not implemented."
             when :amazon
-              raise "#{str} is not implemented."
+              raise "#{str} not implemented."
             when :etsy
-              raise "#{str} is not implemented."
+              raise "#{str} not implemented."
             when :magento
-              raise "#{str} is not implemented."
+              raise "#{str} not implemented."
+            when :square
+              (cache[:square_window].nil?||!cache[:square_window].present?)?cache[:square_window]=Browser::Base.new(param).extend(Orders::Stores::SquareWindowTitle):cache[:square_window]
             when :opencart
               (cache[:opencart_window].nil?||!cache[:opencart_window].present?)?cache[:opencart_window]=Browser::Base.new(param).extend(Orders::Stores::ShipStationUpgradeMessage):cache[:opencart_window]
             else
@@ -281,8 +288,10 @@ module Stamps
         end
       end
 
-      class Marketplace < Browser::Base
+      class Marketplace < Browser::BaseCache
         include MarketPlaceWindowTitle
+
+        assign({})
 
         def present?
           window_title.present?

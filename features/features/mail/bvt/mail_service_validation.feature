@@ -9,7 +9,7 @@ Feature: Mail Service Validation
     Then select Print On Stamps
     Then select Print form service Media Mail
     Then select Print form service FCM Letter
-    Then select Print form service FCM Large Envelope
+    Then select Print form service FCM Large Envelope/Flat
 
     Then Sign out
 

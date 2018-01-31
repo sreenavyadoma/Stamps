@@ -367,21 +367,21 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
 
         if (row[@rate_sheet_columns[:service]]).include? "PMEI Flat Rate"
           if group < 9
-            step "set Order Details Ship-To Country to a random country in PMEI Flat Rate price group #{group}" if @modal_param.web_app==:orders
+            step "set Order Details Domestic Ship-To Country to a random country in PMEI Flat Rate price group #{group}" if @modal_param.web_app==:orders
             step "set Print Form Ship-To Country to a random country in PMEI Flat Rate price group #{group}" if @modal_param.web_app==:mail
           end
         elsif (row[@rate_sheet_columns[:service]]).include? "PMEI Package"
-          step "set Order Details Ship-To Country to a random country in PMEI price group #{group}" if @modal_param.web_app==:orders
+          step "set Order Details Domestic Ship-To Country to a random country in PMEI price group #{group}" if @modal_param.web_app==:orders
           step "set Print Form Ship-To Country to a random country in PMEI price group #{group}" if @modal_param.web_app==:mail
         end
 
         if (row[@rate_sheet_columns[:service]]).include? "PMI Flat Rate"
           if group < 9
-            step "set Order Details Ship-To Country to a random country in PMI Flat Rate price group #{group}" if @modal_param.web_app==:orders
+            step "set Order Details Domestic Ship-To Country to a random country in PMI Flat Rate price group #{group}" if @modal_param.web_app==:orders
             step "set Print Form Ship-To Country to a random country in PMI Flat Rate price group #{group}" if @modal_param.web_app==:mail
           end
         elsif (row[@rate_sheet_columns[:service]]).include? "PMI Package"
-          step "set Order Details Ship-To Country to a random country in PMI price group #{group}" if @modal_param.web_app==:orders
+          step "set Order Details Domestic Ship-To Country to a random country in PMI price group #{group}" if @modal_param.web_app==:orders
           step "set Print Form Ship-To Country to a random country in PMI price group #{group}" if @modal_param.web_app==:mail
         end
 
@@ -501,7 +501,7 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
         end
 
       end
-    rescue Exception=> e
+    rescue Exception => e
       test_config.logger.step e.message
       test_config.logger.step e.backtrace.join("\n")
       test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:error_msg]]="Group #{group} - Row #{row_number}: #{e.message}"

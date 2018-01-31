@@ -10,7 +10,7 @@ Feature: Mail Contacts Modal Bugs
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Ounces to 1
-    Then select Print form service FCM Large Envelope
+    Then select Print form service FCM Large Envelope/Flat
     Then set Advanced Options Reference Number to 12345
     Then set Advanced Options Cost Code to 123
     Then Print Postage

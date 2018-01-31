@@ -1,7 +1,9 @@
 module Stamps
   module Orders
     module SingleOrder
-      class InsuranceTermsConditions < Browser::Base
+      ##
+      # Single Order Details for Insurance Terms and Conditions
+      class InsuranceTermsConditions < Browser::Base #todo-Rob move to Stamps::Common
         def present?
           begin
             (browser.divs(text: "Stamps.com Insurance Terms and Conditions").first).present? || browser.spans(text: "I Agree").last.present?
@@ -36,12 +38,15 @@ module Stamps
         end
       end
 
+      ##
+      # Single Order Details Form fields
       module Fields
         module BlurOutField
-          def blur_out(count=1)
+          # @param [count] count
+          def blur_out(count = 1)
             @service_blur_out_field = StampsField.new(browser.label(text: 'Service:')) if @service_blur_out_field.nil? || !@service_blur_out_field.present?
             @weight_blur_out_field = StampsField.new(browser.label(text: 'Weight:')) if @weight_blur_out_field.nil? || !@weight_blur_out_field.present?
-            ((count.nil?) ? 1 : count.to_i).times do
+            (count.nil? ? 1 : count.to_i).times do
               @service_blur_out_field.click
               @weight_blur_out_field.double_click
               @weight_blur_out_field.click
@@ -50,80 +55,12 @@ module Stamps
           end
         end
 
-        class ShipToInternational < Browser::Base
-          include BlurOutField
-          def present?
-            name.present?
-          end
+        #todo-rob refactor auto-suggest internatinal
+        class AutoSuggestInternational < Browser::BaseCache
+          assign({})
 
-          def auto_suggest
-            @auto_suggest = AutoSuggestInternational.new(param) if @auto_suggest.nil? || !@auto_suggest.present?
-          end
-
-          def name
-            @name = StampsTextbox.new(browser.text_field(name: "ShipName")) if @name.nil? || !@name.present?
-            @name
-          end
-
-          def company
-            @company = StampsTextbox.new(browser.text_field(name: "ShipCompany")) if @company.nil? || !@company.present?
-            @company
-          end
-
-          def address_1
-            @address_1 = StampsTextbox.new(browser.text_field(name: "ShipStreet1")) if @address_1.nil? || !@address_1.present?
-            @address_1
-          end
-
-          def address_2
-            @address_2 = StampsTextbox.new(browser.text_field(name: "ShipStreet2")) if @address_2.nil? || !@address_2.present?
-            @address_2
-          end
-
-          def email
-            @email = StampsTextbox.new(browser.text_field(css: "[id*=shiptoview-international] [name=BuyerEmail]")) if @email.nil? || !@email.present?
-            @email
-          end
-
-          def city
-            @city = StampsTextbox.new(browser.text_field(name: "ShipCity")) if @city.nil? || !@city.present?
-            @city
-          end
-
-          def phone
-            @phone = StampsTextbox.new(browser.text_field(css: "[id*=shiptoview-international] [name=ShipPhone]")) if @phone.nil? || !@phone.present?
-            @phone
-          end
-
-          def postal_code
-            @postal_code = StampsTextbox.new(browser.text_field(name: "ShipPostalCode")) if @xxxx.nil? || !@xxxx.present?
-          end
-
-          def province
-            @province = StampsTextbox.new(browser.text_field(name: "ShipState")) if @xxxx.nil? || !@xxxx.present?
-          end
-
-          def less_link
-            @less_link = StampsField.new browser.span(css: "[id*=shiptoview-international] [class*=sdc-icon-up-arrow]") if @less_link.nil? || !@less_link.present?
-            @less_link
-          end
-
-          def hide_ship_to_details
-            20.times do
-              break unless less_link.present?
-              less_link.click
-              sleep(0.05)
-            end
-          end
-        end
-
-        class AutoSuggestInternational < Browser::Base
-          #todo-rob refactor auto-suggest internatinal
-          attr_reader :auto_suggest_box
-
-          def initialize(param)
-            super
-            @auto_suggest_box = AutoSuggestPopUp.new(param)
+          def auto_suggest_box
+            cache[:auto_suggest_box].nil? ? cache[:auto_suggest_box] = AutoSuggestPopUp.new(param) : cache[:auto_suggest_box]
           end
 
           def set address
@@ -145,7 +82,9 @@ module Stamps
           end
         end
 
-        class AutoSuggestPopUp < Browser::Base
+        class AutoSuggestPopUp < Browser::BaseCache
+          assign({})
+
           def present?
             name_fields[0].present?
           end
@@ -170,12 +109,14 @@ module Stamps
           end
         end
 
-        class AddressNotFound < Browser::Base
-          attr_reader :window_title
+        class AddressNotFound < Browser::BaseCache
+          assign({})
 
-          def initialize(param)
-            super
-            @window_title = StampsField.new browser.div(text: 'Exact Address Not Found')
+          def window_title
+            if cache[:window_title].nil? || !cache[:window_title].present?
+                cache[:window_title] = StampsField.new(browser.div(text: 'Exact Address Not Found'))
+            end
+            cache[:window_title]
           end
 
           def present?
@@ -199,7 +140,7 @@ module Stamps
 
           def set partial_address_hash
             exact_address_not_found_field = browser.div text: 'Exact Address Not Found'
-            form = DetailsForm.new(param) #todo-Rob this is wrong, change it.
+            form = OrderDetails.new(param) #todo-Rob this is wrong, change it.
             form.validate_address_link
             country_dropdown = self.country
             form.ship_to.set test_helper.format_address(partial_address_hash)
@@ -220,12 +161,11 @@ module Stamps
           end
         end
 
-        class AmbiguousAddress < Browser::Base
-          attr_reader :address_not_found
+        class AmbiguousAddress < Browser::BaseCache
+          assign({})
 
-          def initialize(param)
-            super
-            @address_not_found = AddressNotFound.new(param)
+          def address_not_found
+            cache[:address_not_found].nil? ? cache[:address_not_found] =  AddressNotFound.new(param) : cache[:address_not_found]
           end
 
           def data_error
@@ -322,82 +262,193 @@ module Stamps
         end
 
         module ShowShipToDetails
+          def ship_to_details_link
+            if cache[:ship_to_details_link].nil? || !cache[:ship_to_details_link].present?
+              cache[:ship_to_details_link] = StampsField.new(browser.span(css: "[id*=shipto] [class*=down]"))
+            end
+            cache[:ship_to_details_link]
+          end
+
           def show_ship_to_details
-            @show_ship_to_details_link = StampsField.new(browser.span(css: "[id*=shipto] [class*=down]")) if @show_ship_to_details_link.nil? || !@show_ship_to_details_link.present?
-            15.times do
-              break unless @show_ship_to_details_link.present?
-              @show_ship_to_details_link.click
+            20.times do
+              break unless ship_to_details_link.present?
+              ship_to_details_link.click
               sleep(0.05)
             end
           end
         end
 
-        class ShipToCountry < Browser::Base
+        class ShipToCountry < Browser::BaseCache
+          assign({})
           include ShowShipToDetails
+          attr_reader :textbox_field, :dropdown_field
+          def initialize(param, textbox_field, dropdown_field)
+            super(param)
+            @textbox_field = textbox_field
+            @dropdown_field = dropdown_field
+          end
+
+          assign({})
 
           def dropdown
-            (@dropdown.nil? || !@dropdown.present?) ? @dropdown = StampsField.new(dd) : @dropdown
+            if cache[:dropdown].nil? || !cache[:dropdown].present?
+              cache[:dropdown] = StampsField.new(dropdown_field)
+            end
+            cache[:dropdown]
           end
 
           def textbox
-            (@textbox.nil? || !@textbox.present?) ? @textbox = StampsTextbox.new(txtbox) : @textbox
+            if cache[:textbox].nil? || !cache[:textbox].present?
+              cache[:textbox] = StampsTextbox.new(textbox_field)
+            end
+            cache[:textbox]
           end
 
           def present?
             dropdown.present?
           end
 
-          def selected?(country)
-            textbox.text == country
+          def selection(str)
+            lov = browser.lis(text: str)
+            if lov.size == 1 # return first one
+              return lov[0]
+            elsif lov.size == 2
+              10.times do
+                dropdown.scroll_into_view.click unless lov[0].present? && lov[1].present?
+                return lov[0] if lov[0].present?
+                return lov[1] if lov[1].present?
+              end
+            end
+
+            raise ArgumentError, "Unable to create selection field for #{str}. Maximum of 2 floating country list of values expected."
           end
 
-          def select(country)
+          def select(str)
             show_ship_to_details
-            selection = nil
-            20.times do
-              break if textbox.text.include?(country)
-              dropdown.click
-              sleep(0.4)
-              browser.lis(text: country).each {|li| selection = StampsField.new(li) if li.text.size > 0}
-              dropdown.click unless selection.present?
-              selection.scroll_into_view
-              selection.click
+            dropdown.scroll_into_view.click
+            5.times do
+              begin
+                field = StampsField.new(selection(str))
+                dropdown.scroll_into_view.click unless field.present?
+                field.scroll_into_view.click
+                break if textbox.text.include?(str)
+              rescue
+                #ignore
+              end
             end
             textbox.text
           end
+        end
 
-          private
-          def dd
-            20.times do
-              dom_dd = browser.div(id: "sdc-mainpanel-matltocountrydroplist-trigger-picker")
-              int_dd = browser.div(css: "[id=shiptoview-international-targetEl] [id^=combo][id$=trigger-picker]")
-              return dom_dd if dom_dd.present?
-              return int_dd if int_dd.present?
-            end
-            raise "Unable to get a handle on Ship-To country drop-down for either domestic or international single order details form."
+        class ShipToInternational < Browser::BaseCache
+          assign({})
+          include BlurOutField
+          def present?
+            name.present?
           end
 
-          def txtbox
-            show_ship_to_details
-            20.times {browser.text_fields(name: "ShipCountryCode").each {|field| return field if field.present?}}
-            raise "Unable to get a handle on Ship-To country textbox for either domestic or international single order details form.."
+          def country
+            if cache[:country].nil?
+              cache[:country] = ShipToCountry.new(
+                  param,
+                  browser.text_field(css: "[id*=international] [name=ShipCountryCode]"),
+                  browser.div(css: "[id*=international] [id^=combo][id$=trigger-picker]"))
+            end
+            cache[:country]
+          end
+
+          def auto_suggest
+            cache[:auto_suggest] = AutoSuggestInternational.new(param) if cache[:auto_suggest].nil?
+            cache[:auto_suggest]
+          end
+
+          def name
+            cache[:name] = StampsTextbox.new(browser.text_field(name: "ShipName"))  if cache[:name].nil? || !cache[:name].present?
+            cache[:name]
+          end
+
+          def company
+            cache[:company] = StampsTextbox.new(browser.text_field(name: "ShipCompany")) if cache[:company].nil? || !cache[:company].present?
+            cache[:company]
+          end
+
+          def address_1
+            cache[:address_1] = StampsTextbox.new(browser.text_field(name: "ShipStreet1")) if cache[:address_1].nil? || !cache[:address_1].present?
+            cache[:address_1]
+          end
+
+          def address_2
+            cache[:address_2] = StampsTextbox.new(browser.text_field(name: "ShipStreet2")) if cache[:address_2].nil? || !cache[:address_2].present?
+            cache[:address_2]
+          end
+
+          def email
+            cache[:email] = StampsTextbox.new(browser.text_field(css: "[id*=shiptoview-international] [name=BuyerEmail]")) if cache[:email].nil? || !cache[:email].present?
+            cache[:email]
+          end
+
+          def city
+            cache[:city] = StampsTextbox.new(browser.text_field(name: "ShipCity")) if cache[:city].nil? || !cache[:city].present?
+            cache[:city]
+          end
+
+          def phone
+            cache[:phone] = StampsTextbox.new(browser.text_field(css: "[id*=shiptoview-international] [name=ShipPhone]")) if cache[:phone].nil? || !cache[:phone].present?
+            cache[:phone]
+          end
+
+          def postal_code
+            cache[:postal_code] = StampsTextbox.new(browser.text_field(name: "ShipPostalCode")) if cache[:postal_code].nil? || !cache[:postal_code].present?
+            cache[:postal_code]
+          end
+
+          def province
+            cache[:province] = StampsTextbox.new(browser.text_field(name: "ShipState")) if cache[:province].nil? || !cache[:province].present?
+            cache[:province]
+          end
+
+          def less_link
+            cache[:less_link] = StampsField.new browser.span(css: "[id*=shiptoview-international] [class*=sdc-icon-up-arrow]") if cache[:less_link].nil? || !cache[:less_link].present?
+            cache[:less_link]
+          end
+
+          def hide_ship_to_details
+            20.times do
+              break unless less_link.present?
+              less_link.click
+              sleep(0.05)
+            end
           end
         end
 
-        class ShipToDomestic < Browser::Base
+        class ShipToDomestic < Browser::BaseCache
+          assign({})
           include ShowShipToDetails, BlurOutField
 
-          attr_reader :ambiguous, :auto_suggest, :address_not_found
+          def ambiguous
+            cache[:ambiguous].nil? ? cache[:ambiguous] = AmbiguousAddress.new(param) : cache[:ambiguous]
+          end
 
-          def initialize(param)
-            super
-            @address_not_found = AddressNotFound.new(param)
-            @ambiguous = AmbiguousAddress.new(param)
-            @auto_suggest = AutoSuggestDomestic.new(param, @textarea)
+          def auto_suggest
+            cache[:auto_suggest].nil? ? cache[:auto_suggest] = AutoSuggestDomestic.new(param, textarea) : cache[:auto_suggest]
+          end
+
+          def address_not_found
+            cache[:address_not_found].nil? ? cache[:address_not_found] = AddressNotFound.new(param) : cache[:address_not_found]
+          end
+
+          def country
+            if cache[:country].nil?
+              cache[:country] = ShipToCountry.new(
+                  param,
+                  browser.text_field(css: "[id*=domestic] [name=ShipCountryCode]"),
+                  browser.div(css: "div#sdc-mainpanel-matltocountrydroplist-trigger-picker"))
+            end
+            cache[:country]
           end
 
           def present?
-            dom_textarea.present?
+            textarea.present?
           end
 
           def less_link
@@ -414,21 +465,15 @@ module Stamps
           end
 
           def textarea
-            show_ship_to_details
-            @textarea = ShipToTextArea.new browser.textarea(name: "freeFormAddress") if @textarea.nil? || !@textarea.present?
-            @textarea
+            cache[:textarea].nil? || !cache[:textarea].present? ? cache[:textarea] = ShipToTextArea.new(browser.textarea(name: "freeFormAddress")) : cache[:textarea]
           end
 
           def email
-            show_ship_to_details
-            @email = StampsTextbox.new browser.text_field(name: 'BuyerEmail') if @email.nil? || !@email.present?
-            @email
+            cache[:email].nil? || !cache[:email].present? ? cache[:email] = StampsTextbox.new(browser.text_field(name: 'BuyerEmail')) : cache[:email]
           end
 
           def phone
-            show_ship_to_details
-            @phone = StampsTextbox.new browser.text_field(name: "ShipPhone") if @phone.nil? || !@phone.present?
-            @phone
+            cache[:phone].nil? || !cache[:phone].present? ? cache[:phone] = StampsTextbox.new(browser.text_field(name: "ShipPhone")) : cache[:phone]
           end
 
           def set(address) #todo-Rob move setting textarea responsibility to step def
@@ -442,10 +487,8 @@ module Stamps
                   break if less_link.present?
                 end
                 break if less_link.present?
-              rescue Exception => e
-                logger.error e.message
-                logger.error e.backtrace.join("\n")
-                expect("Unable to Ship-To address to #{address}. Error: #{e.message}").to eql "Set Ship-To Address Failed"
+              rescue
+                # ignore
               end
             end
             textarea.text
@@ -462,12 +505,18 @@ module Stamps
           end
         end
 
-        class AutoSuggestDomestic < Browser::Base
-          attr_reader :textarea, :auto_suggest_box
+        class AutoSuggestDomestic < Browser::BaseCache
+          assign({})
+
+          attr_reader :textarea
+
           def initialize(param, textarea)
             super(param)
             @textarea = textarea
-            @auto_suggest_box = AutoSuggestPopUp.new(param)
+          end
+
+          def auto_suggest_box
+            cache[:auto_suggest_box].nil? ? cache[:auto_suggest_box] = AutoSuggestPopUp.new(param) : cache[:auto_suggest_box]
           end
 
           def set(address)
@@ -480,21 +529,23 @@ module Stamps
                 return auto_suggest_box if auto_suggest_box.present?
                 ship_to_area1.double_click
                 return auto_suggest_box if auto_suggest_box.present?
-              rescue Exception => e
-                logger.error e.message
-                logger.error e.backtrace.join("\n")
+              rescue
+                # ignore
               end
             }
           end
         end
 
-        class ShipTo < Browser::Base
-          attr_reader :country, :international, :domestic
-          def initialize(param)
-            super
-            @country = ShipToCountry.new(param)
-            @domestic = ShipToDomestic.new(param)
-            @international = Fields::ShipToInternational.new(param)
+        class ShipTo < Browser::BaseCache
+          assign({})
+          def domestic
+            cache[:domestic] = ShipToDomestic.new(param) if cache[:domestic].nil? || !cache[:domestic].present?
+            cache[:domestic]
+          end
+
+          def international
+            cache[:international] = Fields::ShipToInternational.new(param) if cache[:international].nil? || !cache[:international].present?
+            cache[:international]
           end
         end
 
@@ -515,9 +566,6 @@ module Stamps
         class InsureFor < Browser::BaseCache
           include BlurOutField
           assign({})
-          def cache
-            self.class.cache
-          end
 
           def cost
             cache[:cost] = StampsField.new(browser.div(css: "[class*=single] [class*=insurance-field]").parent.labels[4]) if cache[:cost].nil? || !cache[:cost].present?
@@ -552,9 +600,6 @@ module Stamps
 
         class Tracking < Browser::BaseCache
           assign({})
-          def cache
-            self.class.cache
-          end
 
           def cost
             cache[:cost] = StampsField.new(browser.label(css: '[class*=single] [class*=tracking_cost]')) if cache[:cost].nil? || !cache[:cost].present?
@@ -663,13 +708,19 @@ module Stamps
           end
         end
 
-        class ItemsOrderedSection < Browser::Base
-          attr_reader :add_btn, :dropdown
+        class ItemsOrderedSection < Browser::BaseCache
+          assign({})
 
-          def initialize(param)
-            super
-            @add_btn = StampsField.new(browser.span(css: "span[class*=sdc-icon-add]"))
-            @dropdown = StampsField.new(browser.img(css: "div[id^=associatedorderitems-][id$=_header-targetEl]>div>img"))
+          def add_btn
+            cache[:add_btn] = StampsField.new(browser.span(css: "span[class*=sdc-icon-add]")) if cache[:add_btn].nil? || !cache[:add_btn].present?
+            cache[:add_btn]
+          end
+
+          def dropdown
+            if cache[:dropdown].nil? || cache[:dropdown].present?
+              cache[:dropdown] = StampsField.new(browser.img(css: "div[id^=associatedorderitems-][id$=_header-targetEl]>div>img"))
+            end
+            cache[:dropdown]
           end
 
           def expand
@@ -756,55 +807,48 @@ module Stamps
           end
         end
 
-        class SingleOrderDetailsOrderId < Browser::Base
-          def present?
-            order_id_field.present?
-          end
-
-          def wait_until_present(*args)
-            order_id_field.wait_until_present(*args)
-          end
-
-          def order_id_field
-            @order_id_field = StampsField.new(browser.b(css: "div[id^=singleOrderDetailsForm][class*=singleorder-detailsform]>div[id^=toolbar]>div[id^=toolbar]>div[id^=toolbar]>label>b")) if @order_id_field.nil? || !@order_id_field.present?
-            @order_id_field
-          end
-
-          def details_order_id
-            30.times{
-              begin
-                return /\d+/.match(order_id_field.text).to_s if present?
-                sleep(0.15)
-              rescue
-                #ignroe
-              end
-            }
-            ""
-          end
-        end
-
-        class Toolbar < Browser::Base
-          def menu
-            @menu = ToolbarMenu.new(param) if @menu.nil? || !@menu.present?
-            @menu
-          end
-
+        module OrderDetailsOrderId
           def order_id
-            SingleOrderDetailsOrderId.new(param).details_order_id #todo-Rob fix this
+            if cache[:order_id_field].nil? || !cache[:order_id_field].present?
+              cache[:order_id_field] = StampsField.new(browser.b(css: "[class*=singleorder] [id^=toolbar][id$=targetEl]>label b"))
+            end
+            cache[:order_id_field]
           end
         end
 
-        class Footer < Browser::Base
+        class Toolbar < Browser::BaseCache
+          include OrderDetailsOrderId
+          assign({})
+          def menu
+            cache[:menu].nil? ? cache[:menu] = ToolbarMenu.new(param) : cache[:menu]
+          end
+
+          def order
+            cache[:order].nil? ? cache[:order] = SingleOrderDetailsOrderId.new(param) : cache[:order]
+          end
+        end
+
+        class Footer < Browser::BaseCache
+          assign({})
+
           def label
-            StampsField.new(browser.strong(text: 'Total Ship Cost:'))
+            cache[:label].nil? || !cache[:label].present? ? cache[:label] = StampsField.new(browser.strong(text: 'Total Ship Cost:')) : cache[:label]
           end
 
           def total_ship_cost
-            StampsField.new(browser.strong(css: '[class*=singleorder-detailsform] [class*=total_cost] strong'))
+            if cache[:total_ship_cost].nil? || !cache[:total_ship_cost].present?
+                cache[:total_ship_cost] = StampsField.new(browser.strong(css: '[class*=singleorder-detailsform] [class*=total_cost] strong'))
+            end
+            cache[:total_ship_cost]
+          end
+
+          def cost_label
+            cache[:cost_label] = StampsField.new(browser.labels(css: "label[class*=total_cost]")[1]) if cache[:cost_label].nil? || !cache[:cost_label].present?
+            cache[:cost_label]
           end
 
           def multiple_order_cost
-            cost_label = StampsField.new(browser.labels(css: "label[class*=total_cost]")[1])
+            # cost_label = StampsField.new(browser.labels(css: "label[class*=total_cost]")[1])
             10.times do
               begin
                 cost = cost_label.text
@@ -818,25 +862,28 @@ module Stamps
           end
         end
 
-        class OrdersCustomsFields < Browser::Base
-          attr_reader :customs_form, :view_restrictions, :browser_restrictions_button, :custom_form_btn, :restrictions_btn
+        class Contents < Browser::BaseCache
+          assign({})
+          attr_reader
 
           def initialize(param)
             super
-            @customs_form = Stamps::Common::Customs::CustomsInformation.new(param)
-            @view_restrictions = Orders::SingleOrder::Fields::ViewRestrictions.new(param)
-            @custom_form_btn = StampsField.new browser.span text: 'Customs Form...'
-            @restrictions_btn = StampsField.new browser.span text: 'Restrictions...'
+            @restrictions_btn = StampsField.new(browser.span(text: 'Restrictions...'))
           end
 
-          def edit_customs_form
-            10.times do
-              return customs_form if customs_form.present?
-              custom_form_btn.scroll_into_view
-              custom_form_btn.click
-              customs_form.wait_until_present(2)
-            end
-            expect(customs_form).to be_present
+          def restrictions_btn
+            cache[:restrictions_btn] = StampsField.new(browser.a(css: '[data-qtip^=View]')) if cache[:restrictions_btn].nil? || !cache[:restrictions_btn].present?
+            cache[:restrictions_btn]
+          end
+
+          def view_restrictions
+            cache[:view_restrictions] = Orders::SingleOrder::Fields::ViewRestrictions.new(param) if cache[:view_restrictions].nil?
+            cache[:view_restrictions]
+          end
+
+          def customs_form
+            cache[:customs_form] = StampsField.new(browser.a(css: '[data-qtip*=Edit]')) if cache[:customs_form].nil? || !cache[:customs_form].present?
+            cache[:customs_form]
           end
 
           def restrictions
@@ -850,21 +897,18 @@ module Stamps
 
         class Service < Browser::BaseCache
           assign({})
-          def cache
-            self.class.cache
-          end
-
-          def selection_field(order_form, str)
-            ::Common::ServiceSelection::FloatingServiceTracker.new(param).selection_field(order_form, str)
-          end
 
           def textbox
-            cache[:textbox] = StampsTextbox.new(browser.text_field(css: "[id^=singleOrder] [name=Service]")) if cache[:textbox].nil? || !cache[:textbox].present?
+            if cache[:textbox].nil? || !cache[:textbox].present?
+              cache[:textbox] = StampsTextbox.new(browser.text_field(css: "[id^=singleOrder] [name=Service]"))
+            end
             cache[:textbox]
           end
 
           def dropdown
-            cache[:dropdown] = StampsField.new(browser.div(css: "[id^=singleOrder] [id^=service][id$=picker]")) if cache[:dropdown].nil? || !cache[:dropdown].present?
+            if cache[:dropdown].nil? || !cache[:dropdown].present?
+              cache[:dropdown] = StampsField.new(browser.div(css: "[id^=singleOrder] [id^=service][id$=picker]"))
+            end
             cache[:dropdown]
           end
 
@@ -873,13 +917,28 @@ module Stamps
             cache[:cost]
           end
 
+          def selection(str)
+            lov = browser.tds(css: "li##{data_for(:orders_services, {})[str]} td.x-boundlist-item-text")
+            if lov.size == 1 # return first one
+              return lov[0]
+            elsif lov.size == 2
+              10.times do
+                dropdown.scroll_into_view.click unless lov[0].present? || lov[1].present?
+                return lov[0] if lov[0].present?
+                return lov[1] if lov[1].present?
+              end
+            end
+
+            raise ArgumentError, "Unable to create selection field for #{str}. Maximum of 2 floating service list of values expected."
+          end
+
           def select(str)
-            dropdown.click
-            selection = selection_field(::Common::ServiceSelection::FloatingServiceTracker::SINGLE_ORDER, str)
-            5.times do
+            dropdown.scroll_into_view.click
+            10.times do
               begin
-                dropdown.click unless selection.present?
-                selection.scroll_into_view.click
+                field = StampsField.new(selection(str))
+                dropdown.scroll_into_view.click unless field.present?
+                field.scroll_into_view.click
                 break if textbox.text.include?(str)
               rescue
                 #ignore
@@ -889,12 +948,12 @@ module Stamps
           end
 
           def inline_cost(service_name)
-            cost_label=StampsField.new(browser.td(css: "tr[data-qtip*='#{service_name}']>td:nth-child(3)"))
+            cost_label = StampsField.new(browser.td(css: "tr[data-qtip*='#{service_name}']>td:nth-child(3)"))
             10.times do
               begin
                 dropdown.click unless cost_label.present?
                 if cost_label.present?
-                  service_cost=cost_label.text.dollar_amount_str
+                  service_cost = cost_label.text.dollar_amount_str
                   logger.info "Service Cost for \"#{service_name}\" is #{service_cost}"
                   dropdown.click if cost_label.present?
                   return service_cost.to_f.round(2)
@@ -907,26 +966,79 @@ module Stamps
         end
       end
 
-      class DetailsForm < Browser::BaseCache
+      ##
+      # Single Order Details Form
+      class OrderDetails < Browser::BaseCache
         assign({})
         include Fields::BlurOutField
-        attr_reader :toolbar, :single_ship_from, :ship_to, :weight, :body, :insure_for, :service, :tracking,
-                    :dimensions, :footer, :customs, :items_ordered, :reference_no, :collapsed_details
-        def initialize(param)
-          super
-          @toolbar = Fields::Toolbar.new(param)
-          @single_ship_from = Stamps::Orders::DetailsFormCommon::DetailsFormShipFrom.new(param, :single_order)
-          @ship_to = Fields::ShipTo.new(param)
-          @weight = Stamps::Orders::DetailsFormCommon::OrderDetailsWeight.new(param, :single_order)
-          @insure_for = Fields::InsureFor.new(param)
-          @tracking = Fields::Tracking.new(param)
-          @reference_no = StampsTextbox.new(browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(10)>div>div>div>div>div>div>input"))
-          @dimensions = Stamps::Orders::DetailsFormCommon::DetailsFormDimensions.new(param, :single_order)
-          @items_ordered = Fields::ItemsOrderedSection.new(param)
-          @customs = Fields::OrdersCustomsFields.new(param)
-          @body = StampsField.new(browser.div(css: "div[id^=singleOrderDetailsForm][id$=body]"))
-          @collapsed_details = Fields::Collapsible.new(param)
-          @footer = Fields::Footer.new(param)
+
+        def toolbar
+          cache[:toolbar] = Fields::Toolbar.new(param) if cache[:toolbar].nil?
+          cache[:toolbar]
+        end
+
+        def single_ship_from
+          cache[:single_ship_from] = Stamps::Orders::DetailsFormCommon::DetailsFormShipFrom.new(param, :single_order) if cache[:single_ship_from].nil?
+          cache[:single_ship_from]
+        end
+
+        def ship_to
+          cache[:ship_to] = Fields::ShipTo.new(param) if cache[:ship_to].nil?
+          cache[:ship_to]
+        end
+
+        def weight
+          cache[:weight] = Stamps::Orders::DetailsFormCommon::OrderDetailsWeight.new(param, :single_order) if cache[:weight].nil?
+          cache[:weight]
+        end
+
+        def insure_for
+          cache[:insure_for] = Fields::InsureFor.new(param) if cache[:insure_for].nil?
+          cache[:insure_for]
+        end
+
+        def tracking
+          cache[:tracking] = Fields::Tracking.new(param) if cache[:tracking].nil?
+          cache[:tracking]
+        end
+
+        def reference_no
+          if cache[:reference_no].nil? || !cache[:reference_no].present?
+            cache[:reference_no] = StampsTextbox.new(browser.text_field(css: "[id^=single][id$=-targetEl]>div:nth-child(10) input"))
+          end
+          cache[:reference_no]
+        end
+
+        def dimensions
+          cache[:dimensions] = Stamps::Orders::DetailsFormCommon::DetailsFormDimensions.new(param, :single_order) if cache[:dimensions].nil?
+          cache[:dimensions]
+        end
+
+        def items_ordered
+          cache[:items_ordered] = Fields::ItemsOrderedSection.new(param) if cache[:items_ordered].nil?
+          cache[:items_ordered]
+        end
+
+        def body
+          if cache[:body].nil? || !cache[:body].present?
+            cache[:body] = StampsField.new(browser.div(css: "[id^=single][id$=body]"))
+          end
+          cache[:body]
+        end
+
+        def collapsed_details
+          cache[:collapsed_details] = Fields::Collapsible.new(param) if cache[:collapsed_details].nil?
+          cache[:collapsed_details]
+        end
+
+        def footer
+          cache[:footer] = Fields::Footer.new(param) if cache[:footer].nil?
+          cache[:footer]
+        end
+
+        def contents
+          cache[:contents] = Fields::Contents.new(param) if cache[:contents].nil?
+          cache[:contents]
         end
 
         def present?
@@ -934,11 +1046,8 @@ module Stamps
         end
 
         def service
-          if cache[:service].nil? || !cache[:service].present?
-            cache[:service] = Fields::Service.new(param)
-          else
-            cache[:service]
-          end
+          cache[:service] = Fields::Service.new(param) if cache[:service].nil?
+          cache[:service]
         end
 
         def wait_until_present(*args)
@@ -954,7 +1063,6 @@ module Stamps
           end
         end
       end
-
     end
   end
 end

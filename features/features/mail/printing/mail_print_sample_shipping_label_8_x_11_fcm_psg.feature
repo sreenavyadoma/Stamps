@@ -15,7 +15,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” FCM PSG Paper
     Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
-    Then select Print form service FCM Large Envelope
+    Then select Print form service FCM Large Envelope/Flat
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
@@ -66,7 +66,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” FCM PSG Paper
     Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
-    Then select Print form service PSG Package
+    Then select Print form service PSG Package/Flat/Thick Envelope
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button

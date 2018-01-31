@@ -16,12 +16,12 @@ Feature: Single Order Details form Bugs
     Then set Order Details Pounds to 0
     Then set Order Details Ounces to 3
     Then click Order Details form Customs Form button
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 100.50, Made In Zimbabwe, Tariff 100
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 100.50, Made In Zimbabwe, Tariff 100
     Then expect Customs Total Value is 100.50
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
 
-    Then set Order Details Ship-To Country to United States
+    Then set Order Details Domestic Ship-To Country to United States
     Then set Order Details service to PM Package
     Then Print Order expecting error This order is not ready for printing:\nShip To address is required
 

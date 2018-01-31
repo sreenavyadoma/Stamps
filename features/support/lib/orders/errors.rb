@@ -11,7 +11,7 @@ module Stamps
         end
 
         def ok
-          button=StampsField.new(browser.spans(text: "OK").last)
+          button = StampsField.new(browser.spans(text: "OK").last)
           20.times do
             button.click
             sleep(0.025)
@@ -23,7 +23,7 @@ module Stamps
       class PrintingError < StandardError
         attr_reader :object
         def initialize(object)
-          @object=object
+          @object = object
         end
       end
 
@@ -37,7 +37,7 @@ module Stamps
         end
 
         def ok
-          ok_btn=StampsField.new(browser.span(text: 'OK'))
+          ok_btn = StampsField.new(browser.span(text: 'OK'))
           5.times {
             ok_btn.click
             break unless ok_btn.present?
@@ -65,7 +65,7 @@ module Stamps
         end
 
         def ok
-          ok_btn=StampsField.new browser.span(text: "OK")
+          ok_btn = StampsField.new browser.span(text: "OK")
           10.times{
             ok_btn.click
             break unless ok_btn.present?
@@ -94,7 +94,7 @@ module Stamps
         end
 
         def cancel
-          cancel_button=StampsField.new(browser.span(text: "Cancel"))
+          cancel_button = StampsField.new(browser.span(text: "Cancel"))
           5.times{
             begin
               cancel_button.click

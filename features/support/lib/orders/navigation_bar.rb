@@ -1,13 +1,25 @@
 module Stamps
   module Navigation
-    class TransactionComplete < Browser::Base
-      attr_reader :window_title, :textarea, :ok_btn
+    class TransactionComplete < Browser::BaseCache
+      assign({})
 
-      def initialize(param)
-        super
-        @window_title = StampsField.new browser.div(text: "Transaction Complete")
-        @textarea = StampsField.new browser.div(css: "div[componentid^=dialoguemodal-]>div[id$=body]>div>div")
-        @ok_btn = StampsField.new(browser.span(css: "div[id^=panel-][id$=-innerCt]>a>span>span>span[id$=btnInnerEl]"))
+      def window_title
+        cache[:window_title] = StampsField.new(browser.div(text: "Transaction Complete")) if cache[:window_title].nil? || !cache[:window_title].present?
+        cache[:window_title]
+      end
+
+      def textarea
+        if cache[:textarea].nil? || !cache[:textarea].present?
+          cache[:textarea] = StampsField.new(browser.div(css: "div[componentid^=dialoguemodal-]>div[id$=body]>div>div"))
+        end
+        cache[:textarea]
+      end
+
+      def ok_btn
+        if cache[:ok_btn].nil? || !cache[:ok_btn].present?
+          cache[:ok_btn] = StampsField.new(browser.span(css: "div[id^=panel-][id$=-innerCt]>a>span>span>span[id$=btnInnerEl]"))
+        end
+        cache[:ok_btn]
       end
 
       def wait_until_present(*args)
@@ -27,14 +39,21 @@ module Stamps
       end
     end
 
-    class ConfirmTransaction < Browser::Base
-      attr_reader :window_title, :transaction_complete, :confirm_btn
+    class ConfirmTransaction < Browser::BaseCache
+      assign({})
 
-      def initialize(param)
-        super
-        @window_title = StampsField.new browser.div(text: 'Confirm Transaction')
-        @confirm_btn = StampsField.new browser.span(text: "Confirm")
-        @transaction_complete = TransactionComplete.new(param)
+      def window_title
+        cache[:window_title] = StampsField.new(browser.div(text: 'Confirm Transaction')) if cache[:window_title].nil? || !cache[:window_title].present?
+        cache[:window_title]
+      end
+
+      def transaction_complete
+        cache[:transaction_complete].nil? ? cache[:transaction_complete] = TransactionComplete.new(param) : cache[:transaction_complete]
+      end
+
+      def confirm_btn
+        cache[:confirm_btn] = StampsField.new(browser.span(text: "Confirm")) if cache[:confirm_btn].nil? || !cache[:confirm_btn].present?
+        cache[:confirm_btn]
       end
 
       def exit
@@ -88,13 +107,19 @@ module Stamps
       end
     end
 
-    class AccountBalanceLimit < Browser::Base
-      attr_reader :body, :window_title
+    class AccountBalanceLimit < Browser::BaseCache
+      assign({})
 
-      def initialize(param)
-        super
-        @body = StampsField.new(browser.div(css: "div[id^=dialoguemodal-][id$=-body]>div>div[id^=dialoguemodal-][id$=-innerCt]"))
-        @window_title = StampsField.new(browser.div(text: "Account Balance Limit"))
+      def body
+        if cache[:body].nil? || !cache[:body].present?
+               cache[:body] = StampsField.new(browser.div(css: "div[id^=dialoguemodal-][id$=-body]>div>div[id^=dialoguemodal-][id$=-innerCt]"))
+        end
+        cache[:body]
+      end
+
+      def window_title
+        cache[:window_title] = StampsField.new(browser.div(text: "Account Balance Limit")) if cache[:window_title].nil? || !cache[:window_title].present?
+        cache[:window_title]
       end
 
       def present?
@@ -106,12 +131,12 @@ module Stamps
       end
     end
 
-    class AutoBuyPostageModal < Browser::Base
-      attr_reader :window_title
+    class AutoBuyPostageModal < Browser::BaseCache
+      assign({})
 
-      def initialize(param)
-        super
-        @window_title = StampsField.new(browser.div(text: "Add Funds"))
+      def window_title
+        cache[:window_title] = StampsField.new(browser.div(text: "Add Funds")) if cache[:window_title].nil? || !cache[:window_title].present?
+        cache[:window_title]
       end
 
       def present?
@@ -119,16 +144,33 @@ module Stamps
       end
     end
 
-    class AddFundsModal < Browser::Base
-      attr_reader :confirm_transaction, :auto_add_funds_modal, :auto_buy_postage_link, :window_title, :account_balance_limit
+    class AddFundsModal < Browser::BaseCache
+      assign({})
 
-      def initialize(param)
-        super
-        @confirm_transaction = ConfirmTransaction.new(param)
-        @auto_add_funds_modal = AutoBuyPostageModal.new(param)
-        @auto_buy_postage_link = StampsField.new browser.span(text: "Auto-buy postage")
-        @window_title = browser.div(text: "Add Funds")
-        @account_balance_limit = AccountBalanceLimit.new(param)
+      def confirm_transaction
+        cache[:confirm_transaction].nil? ? cache[:confirm_transaction] = ConfirmTransaction.new(param) : cache[:confirm_transaction]
+      end
+
+      def auto_add_funds_modal
+        cache[:auto_add_funds_modal].nil? ? cache[:auto_add_funds_modal] = AutoBuyPostageModal.new(param) : cache[:auto_add_funds_modal]
+      end
+
+      def auto_buy_postage_link
+        if cache[:auto_buy_postage_link].nil? || !cache[:auto_buy_postage_link].present?
+          cache[:auto_buy_postage_link] = StampsField.new(browser.span(text: "Auto-buy postage"))
+        end
+        cache[:auto_buy_postage_link]
+      end
+
+      def window_title
+        if cache[:window_title].nil? || !cache[:window_title].present?
+          cache[:window_title] = StampsField.new(browser.div(text: "Add Funds"))
+        end
+        cache[:window_title]
+      end
+
+      def account_balance_limit
+        cache[:account_balance_limit].nil? ? cache[:account_balance_limit] = AccountBalanceLimit.new(param) : cache[:account_balance_limit]
       end
 
       def auto_buy_postage
@@ -212,24 +254,47 @@ module Stamps
       end
 
       def edit_payment_method
-        expect("Edit Payment Method is not yet implemented.").to eql ""
+        raise 'Not Implemented'
       end
 
       def autobuy
-        expect("AutoBuy is not implemented").to eql ""
+        raise 'Not Implemented'
       end
     end
 
-    class BalanceDropDown < Browser::Base
-      attr_reader :add_funds_modal, :buy_more_dropdown, :buy_more_link, :view_history_link, :balance_amount
+    class BalanceDropDown < Browser::BaseCache
+      assign({})
 
-      def initialize(param)
-        super
-        @add_funds_modal = AddFundsModal.new(param)
-        @buy_more_dropdown = StampsField.new(browser.span(class: "balanceLabel"))
-        @buy_more_link = StampsField.new(browser.a(text: "Buy More"))
-        @view_history_link = StampsField.new(browser.a(text: "View Purchase History"))
-        @balance_amount = StampsField.new(browser.span(id: 'postageBalanceAmt'))
+      def add_funds_modal
+        cache[:add_funds_modal].nil? ? cache[:add_funds_modal] = AddFundsModal.new(param) : cache[:add_funds_modal]
+      end
+
+      def buy_more_dropdown
+        if cache[:buy_more_dropdown].nil? || !cache[:buy_more_dropdown].present?
+          cache[:buy_more_dropdown] = StampsField.new(browser.span(class: "balanceLabel"))
+        end
+        cache[:buy_more_dropdown]
+      end
+
+      def buy_more_link
+        if cache[:buy_more_link].nil? || !cache[:buy_more_link].present?
+          cache[:buy_more_link] = StampsField.new(browser.a(text: "Buy More"))
+        end
+        cache[:buy_more_link]
+      end
+
+      def view_history_link
+        if cache[:view_history_link].nil? || !cache[:view_history_link].present?
+          cache[:view_history_link] = StampsField.new(browser.a(text: "View Purchase History"))
+        end
+        cache[:view_history_link]
+      end
+
+      def balance_amount
+        if cache[:balance_amount].nil? || !cache[:balance_amount].present?
+          cache[:balance_amount] = StampsField.new(browser.span(id: 'postageBalanceAmt'))
+        end
+        cache[:balance_amount]
       end
 
       def buy_more
@@ -262,13 +327,17 @@ module Stamps
       end
     end
 
-    class UsernameDropDown < Browser::Base
-      attr_reader :username, :sign_out_link
+    class UsernameDropDown < Browser::BaseCache
+      assign({})
+      def cache
+        self.class.cache
+      end
 
-      def initialize(param)
-        super
-        @username = StampsField.new(browser.span id: 'userNameText')
-        @sign_out_link = StampsField.new(browser.a(text: "Sign Out"))
+      def username
+        cache[:username].nil? ? cache[:username] = StampsField.new(browser.span id: 'userNameText') : cache[:username]
+      end
+      def sign_out_link
+        cache[:sign_out_link].nil? ? cache[:sign_out_link] = StampsField.new(browser.a(text: "Sign Out")) : cache[:sign_out_link]
       end
 
       def present?
@@ -303,33 +372,56 @@ module Stamps
       end
     end
 
-    class NavigationBar < Browser::Base
-      attr_reader :balance, :username, :sign_out_link, :signed_in_username, :orders_link, :mail_link, :web_mail, :web_orders
+    class NavigationBar < Browser::BaseCache
+      assign({})
 
-      def initialize(param)
-        super
-        @balance = BalanceDropDown.new(param)
-        @username = UsernameDropDown.new(param)
-        @sign_out_link = StampsField.new(browser.link(id: "signOutLink"))
-        @signed_in_username = StampsField.new(browser.span(id: 'userNameText'))
-        @orders_link = StampsField.new(browser.a(text: 'Orders'))
-        @mail_link = StampsField.new(browser.a(text: 'Mail'))
+      def balance
+        cache[:balance].nil? ? cache[:balance] = BalanceDropDown.new(param) : cache[:balance]
+      end
+
+      def username
+        cache[:username].nil? ? cache[:username] = UsernameDropDown.new(param) : cache[:username]
+      end
+
+      def sign_out_link
+        cache[:sign_out_link].nil? ? cache[:sign_out_link] = StampsField.new(browser.link(id: "signOutLink")) : cache[:sign_out_link]
+      end
+
+      def signed_in_username
+        cache[:signed_in_username].nil? ? cache[:signed_in_username] = StampsField.new(browser.span(id: 'userNameText')) : cache[:signed_in_username]
+      end
+      def orders_link
+        cache[:orders_link].nil? ? cache[:orders_link] = StampsField.new(browser.a(text: 'Orders')) : cache[:orders_link]
+      end
+
+      def mail_link
+        cache[:mail_link].nil? ? cache[:mail_link] = StampsField.new(browser.a(text: 'Mail')) : cache[:mail_link]
+      end
+
+      def help_link
+        cache[:help_link].nil? ? cache[:help_link] = StampsField.new(browser.a(text: 'Help')) : cache[:help_link]
       end
 
       def orders
+        raise 'Not Implemented'
+=begin
         10.times do
           orders_link.click
           web_orders.wait_until_present(8)
           return web_orders if grid.present?
         end
+=end
       end
 
       def mail
+        raise 'Not Implemented'
+=begin
         10.times do
           mail_link.click
           web_mail.wait_until_present(8)
           return web_mail if grid.present?
         end
+=end
       end
 
       def sign_out

@@ -2,9 +2,6 @@ module Stamps
   module Orders
     class WebOrders < Browser::BaseCache
       assign({})
-      def cache
-        self.class.cache
-      end
 
       def orders_toolbar
         cache[:orders_toolbar] = Orders::Toolbar::OrdersToolbar.new(param) if cache[:orders_toolbar].nil?
@@ -27,8 +24,8 @@ module Stamps
       end
 
       def order_details
-        cache[:single_order] = Orders::SingleOrder::DetailsForm.new(param) if cache[:single_order].nil?
-        cache[:single_order]
+        cache[:order_details] = Orders::SingleOrder::OrderDetails.new(param) if cache[:order_details].nil?
+        cache[:order_details]
       end
 
       def bulk_update
@@ -37,18 +34,23 @@ module Stamps
       end
 
       def modals
-        cache[:modals] = Stamps::Browser::Base.new(param).extend(StampsOrdersModals) if cache[:modals].nil?
+        cache[:modals] = Stamps::Orders::StampsOrdersModals.new(param) if cache[:modals].nil?
         cache[:modals]
       end
 
       def marketplace
-        cache[:marketplace] = Stamps::Browser::Base.new(param).extend(MarketPlaceStoreModals) if cache[:marketplace].nil?
+        cache[:marketplace] = Stamps::Orders::MarketPlaceStoreModals.new(param) if cache[:marketplace].nil?
         cache[:marketplace]
       end
 
       def styles
         cache[:styles] = PageStyles.new(param) if cache[:styles].nil?
         cache[:styles]
+      end
+
+      def external_sites
+        cache[:external_sites] = (Class.new(Browser::BaseCache) { assign({}) }).new(param).extend(StampsExternalSites) if cache[:external_sites].nil?
+        cache[:external_sites]
       end
 
       def present?

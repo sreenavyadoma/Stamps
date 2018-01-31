@@ -5,22 +5,24 @@ module Stamps
       module AdvOptExtraServices
         #AB_ORDERSAUTO_3516
         def extra_services_btn
-          (cache[:extra_services_btn].nil?||!cache[:extra_services_btn].present?)?cache[:extra_services_btn]=StampsField2.new(
+          cache[:extra_services_btn].nil? || !cache[:extra_services_btn].present? ? cache[:extra_services_btn] = StampsField2.new(
               browser.span(id: "sdc-mainpanel-extraservicesbtn-btnInnerEl"),
-              browser.a(id: 'sdc-mainpanel-extraservicesbtn'), 'class', 'disabled'
-              ):cache[:extra_services_btn]
+              browser.a(id: 'sdc-mainpanel-extraservicesbtn'),
+              'class',
+              'disabled'
+              ) : cache[:extra_services_btn]
         end
 
         def xtra_serv_panel
-          (cache[:xtra_serv_panel].nil?||!cache[:xtra_serv_panel].present?)?cache[:xtra_serv_panel]=PrintFormPanel::MailExtraServices.new(param):cache[:xtra_serv_panel]
+          cache[:xtra_serv_panel].nil? || !cache[:xtra_serv_panel].present? ? cache[:xtra_serv_panel] = PrintFormPanel::MailExtraServices.new(param) : cache[:xtra_serv_panel]
         end
 
         def value_must_be_shown
-          (cache[:value_must_be_shown_popup].nil?||!cache[:value_must_be_shown_popup].present?)?cache[:value_must_be_shown_popup]=PrintFormPanel::ValueMustBeShown.new(param):cache[:value_must_be_shown_popup]
+          cache[:value_must_be_shown_popup].nil? || !cache[:value_must_be_shown_popup].present? ? cache[:value_must_be_shown_popup] = PrintFormPanel::ValueMustBeShown.new(param) : cache[:value_must_be_shown_popup]
         end
 
         def special_contents_warning
-          (cache[:special_contents_warning_popup].nil?||!cache[:special_contents_warning_popup].present?)?cache[:special_contents_warning_popup]=PrintFormPanel::SpecialContentsWarning.new(param):cache[:special_contents_warning_popup]
+          cache[:special_contents_warning_popup].nil? || !cache[:special_contents_warning_popup].present? ? cache[:special_contents_warning_popup] = PrintFormPanel::SpecialContentsWarning.new(param) : cache[:special_contents_warning_popup]
         end
 
         def extra_services
@@ -33,64 +35,64 @@ module Stamps
 
       module AdvOptReferenceNumber
         def reference_number
-          (cache[:reference_number].nil?||!cache[:reference_number].present?)?cache[:reference_number]=StampsTextbox.new(
-              browser.text_field(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(6)>div>div>div>div>div>div>input")):cache[:reference_number]
+          cache[:reference_number].nil? || !cache[:reference_number].present? ? cache[:reference_number] = StampsTextbox.new(
+              browser.text_field(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(6)>div>div>div>div>div>div>input")) : cache[:reference_number]
         end
       end
 
       module AdvOptCostCode
         def cost_code
-          (cache[:cost_code].nil?||!cache[:cost_code].present?)?cache[:cost_code]=StampsCombobox.new(
+          cache[:cost_code].nil? || !cache[:cost_code].present? ? cache[:cost_code] = StampsCombobox.new(
               browser.text_fields(css: "input[id^=costcodesdroplist-][id$=-inputEl]"),  #fixed typo in text field id
               browser.divs(css: "div[id^=costcodesdroplist-][id$=trigger-picker]"),
               :li,
-              0):cache[:cost_code]
+              0) : cache[:cost_code]
         end
       end
 
       module AdvOptMailDate
         def mail_date
-          (cache[:mail_date].nil?||!cache[:mail_date].present?)?cache[:mail_date]=MailDate.new(param):cache[:mail_date]
+          cache[:mail_date].nil? || !cache[:mail_date].present? ? cache[:mail_date] = MailDate.new(param) : cache[:mail_date]
         end
       end
 
       module AdvOptHideLabelValue
         def hide_label_value
-          (cache[:hide_label_value].nil?||!cache[:hide_label_value].present?)?cache[:hide_label_value]=StampsCheckbox.new(
+          cache[:hide_label_value].nil? || !cache[:hide_label_value].present? ? cache[:hide_label_value] = StampsCheckbox.new(
               browser.span(css: "[id^=printPreviewPanel-] div:nth-child(1)>div>div>span"),
               browser.div(text: "Hide Label Value"),
               "class",
-              "checked"):cache[:hide_label_value]
+              "checked") : cache[:hide_label_value]
         end
       end
 
       module AdvOptPrintReferenceNumber
         def print_reference_number
-          (cache[:print_reference_number].nil?||!cache[:print_reference_number].present?)?cache[:print_reference_number]=StampsCheckbox.new(
+          cache[:print_reference_number].nil? || !cache[:print_reference_number].present? ? cache[:print_reference_number] = StampsCheckbox.new(
               browser.span(css: "[id^=printPreviewPanel-] div:nth-child(3)>div>div>span"),
               browser.div(text: "Print Reference #"),
               "class",
-              "checked"):cache[:print_reference_number]
+              "checked") : cache[:print_reference_number]
         end
       end
 
       module AdvOptPrintReceipt
         def print_receipt
-          (cache[:print_receipt].nil?||!cache[:print_receipt].present?)?cache[:print_receipt]=StampsCheckbox.new(
+          cache[:print_receipt].nil? || !cache[:print_receipt].present? ? cache[:print_receipt] = StampsCheckbox.new(
               browser.span(css: "[id^=printPreviewPanel-] div:nth-child(2)>div>div>span"),
               browser.div(text: "Print Receipt"),
               "class",
-              "checked"):cache[:print_receipt]
+              "checked") : cache[:print_receipt]
         end
       end
 
       module AdvOptToggle
         def show_field
-          (cache[:show_field].nil?||!cache[:show_field].present?)?cache[:show_field]=StampsField.new(browser.span(text: "Show Advanced Options")):cache[:show_field]
+          cache[:show_field].nil? || !cache[:show_field].present? ? cache[:show_field] = StampsField.new(browser.span(text: "Show Advanced Options")) : cache[:show_field]
         end
 
         def hide_field
-          (cache[:hide_field].nil?||!cache[:hide_field].present?)?cache[:hide_field]=StampsField.new(browser.span(text: "Hide Advanced Options")):cache[:hide_field]
+          cache[:hide_field].nil? || !cache[:hide_field].present? ? cache[:hide_field] = StampsField.new(browser.span(text: "Hide Advanced Options")) : cache[:hide_field]
         end
 
         def show
@@ -110,7 +112,7 @@ module Stamps
         end
       end
 
-      module StampsAdvancedOptions
+      module Stamps
         include AdvOptToggle
         include AdvOptExtraServices
         include AdvOptReferenceNumber
@@ -121,24 +123,30 @@ module Stamps
         end
 
         def calculate_postage_amount
-          (cache[:calculate_postage].nil?||!cache[:calculate_postage].present?)?cache[:calculate_postage]=StampsRadio.new(
-              browser.span(id: 'sdc-mainpanel-calculatepostageradio-displayEl'),
-              browser.div(id: 'sdc-mainpanel-calculatepostageradio'),
-              "class",
-              "checked"):cache[:calculate_postage]
+          if (cache[:calculate_postage].nil? || !cache[:calculate_postage].present?)
+            cache[:calculate_postage] = StampsRadio.new(
+                browser.span(id: 'sdc-mainpanel-calculatepostageradio-displayEl'),
+                browser.div(id: 'sdc-mainpanel-calculatepostageradio'),
+                "class",
+                "checked")
+          end
+          cache[:calculate_postage]
         end
 
         def specify_postage_amount
-          (cache[:specify_postage].nil?||!cache[:specify_postage].present?)?cache[:specify_postage]=StampsRadio.new(
-              browser.span(id: 'sdc-mainpanel-specifypostageradio-displayEl'),
-              browser.div(id: 'sdc-mainpanel-specifypostageradio'),
-              "class",
-              "checked"):cache[:specify_postage]
+          if cache[:specify_postage].nil? || !cache[:specify_postage].present? then
+            cache[:specify_postage] = StampsRadio.new(
+                browser.span(id: 'sdc-mainpanel-specifypostageradio-displayEl'),
+                browser.div(id: 'sdc-mainpanel-specifypostageradio'),
+                "class",
+                "checked")
+          end
+          cache[:specify_postage]
         end
 
       end
 
-      module LabelsAdvancedOptions
+      module Labels
         include AdvOptToggle
         include AdvOptExtraServices
         include AdvOptMailDate
@@ -153,7 +161,7 @@ module Stamps
         end
       end
 
-      module EnvelopesAdvancedOptions
+      module Envelopes
         include AdvOptToggle
         include AdvOptExtraServices
         include AdvOptMailDate
@@ -165,31 +173,31 @@ module Stamps
         end
 
         def return_address
-          (cache[:return_address].nil?||!cache[:return_address].present?)?cache[:return_address]=StampsCheckbox.new(
+          cache[:return_address].nil? || !cache[:return_address].present? ? cache[:return_address] = StampsCheckbox.new(
               browser.span(css: "[id^=printPreviewPanel-][id$=-innerCt] div:nth-child(5)>div>div>div:nth-child(2)>div>div>span"),
               browser.div(css: "[id^=printPreviewPanel-] div:nth-child(5)>div>div>div:nth-child(2)"),
               "class",
-              "checked"):cache[:return_address]
+              "checked") : cache[:return_address]
         end
 
         def delivery_address
-          (cache[:delivery_address].nil?||!cache[:delivery_address].present?)?cache[:delivery_address]=StampsCheckbox.new(
+          cache[:delivery_address].nil? || !cache[:delivery_address].present? ? cache[:delivery_address] = StampsCheckbox.new(
               browser.span(css: "[id^=printPreviewPanel-] div:nth-child(5)>div>div>div:nth-child(3)>div>div>span"),
               browser.div(css: "[id^=printPreviewPanel-] div:nth-child(5)>div>div>div:nth-child(3)"),
               "class",
-              "checked"):cache[:delivery_address]
+              "checked") : cache[:delivery_address]
         end
 
         def postage
-          (cache[:postage].nil?||!cache[:postage].present?)?cache[:postage]=StampsCheckbox.new(
+          cache[:postage].nil? || !cache[:postage].present? ? cache[:postage] = StampsCheckbox.new(
               browser.span(css: "[id^=printPreviewPanel-] div:nth-child(5)>div>div>div:nth-child(4)>div>div>span"),
               browser.div(css: "[id^=printPreviewPanel-] div:nth-child(5)>div>div>div:nth-child(4)"),
               "class",
-              "checked"):cache[:postage]
+              "checked") : cache[:postage]
         end
       end
 
-      module CertifiedMailsAdvancedOptions
+      module CertifiedMails
         include AdvOptToggle
         include AdvOptExtraServices
         include AdvOptMailDate
@@ -201,15 +209,15 @@ module Stamps
         end
 
         def restricted_delivery
-          (cache[:restricted_delivery].nil?||!cache[:restricted_delivery].present?)?cache[:restricted_delivery]=StampsCheckbox.new(
+          cache[:restricted_delivery].nil? || !cache[:restricted_delivery].present? ? cache[:restricted_delivery] = StampsCheckbox.new(
               browser.input(css: "input[class*=sdc-mainpanel-rdcheckbox]"),
               browser.div(css: "[id^=certifiedmailview-][id$=certifiedmailview-1148-outerCt] [id^=fieldcontainer-][id$=-innerCt] div:nth-child(4) [class*=x-form-type-checkbox]"),
               "class",
-              "checked"):cache[:restricted_delivery]
+              "checked") : cache[:restricted_delivery]
         end
       end
 
-      module RollsAdvancedOptions
+      module Rolls
         include AdvOptToggle
         include AdvOptExtraServices
         include AdvOptMailDate
@@ -223,7 +231,6 @@ module Stamps
           cost_code.present? && reference_number.present? && mail_date.present?
         end
       end
-
     end
   end
 end
