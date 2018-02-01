@@ -215,7 +215,7 @@ module Stamps
                       return result
                     end
                   end
-                rescue StandardError
+                rescue
                   #ignore
                 end
               else
@@ -311,7 +311,7 @@ module Stamps
                       return result
                     end
                   end
-                rescue StandardError
+                rescue
                   #ignore
                 end
               else
@@ -501,7 +501,7 @@ module Stamps
                   logger.info qtip.to_s
                   return qtip
                 end
-              rescue StandardError
+              rescue
                 #ignore
               end
             end

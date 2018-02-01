@@ -1,23 +1,20 @@
 
 module Stamps
   module Orders
-    module ExternalSquare
+    class SquareLogin < Browser::BaseCache
+      assign({})
+
       def email
-        StampsTextbox.new (browser.text_field(css: "input[id='email']"))
+        (cache[:email].nil?||!cache[:email].present?)?cache[:email] = StampsTextbox.new(browser.text_field(css: "input[id='email']")) :cache[:email]
       end
 
       def password
-        StampsTextbox.new (browser.text_field(css: "input[id='password']"))
+        (cache[:password].nil?||!cache[:password].present?)?cache[:password] = StampsTextbox.new(browser.text_field(css: "input[id='password']")):cache[:password]
       end
 
       def sign_in
-        browser.button(id: 'sign-in-button')
+        (cache[:sign_in].nil?||!cache[:sign_in].present?)?cache[:sign_in] = StampsField.new(browser.button(css: '[id=sign-in-button]')):cache[:sign_in]
       end
     end
-
-    class SquareLogin
-    include ExternalSquare
-    end
-
   end
 end

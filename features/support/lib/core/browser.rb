@@ -40,6 +40,7 @@ module Stamps
       def browser
         self.class.browser
       end
+      alias_method :html, :browser
     end
 
     ##

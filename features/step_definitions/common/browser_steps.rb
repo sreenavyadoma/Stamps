@@ -22,36 +22,6 @@ Then /^[Pp]ause for (\d+) [Ss]econd(?:|s)?$/ do |seconds|
   rescue
     #ignore
   end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 end
 
 Then(/^Close the browser and clear cookies$/) do #Clear Cookies

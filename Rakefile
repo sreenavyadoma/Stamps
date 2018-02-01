@@ -1173,6 +1173,11 @@ Cucumber::Rake::Task.new(:big_commerce) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:square_workflow) do |t|
+  t.profile = 'square_workflow'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:bvt_shipping_address_management) do |t|
   t.profile = 'bvt_shipping_address_management'
   t.cucumber_opts = "-p cuke_reports"

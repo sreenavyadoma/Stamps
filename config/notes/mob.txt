@@ -1,0 +1,9 @@
+Install Java 1.8
+http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
+Install Node.js & NPM
+https://nodejs.org/en/
+
+Install Appium
+npm install -g appium
+http://appium.io/docs/en/about-appium/getting-started/?lang=en#appium-clients

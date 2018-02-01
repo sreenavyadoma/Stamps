@@ -1,5 +1,5 @@
 
-Then /^[Ee]xpect [Ee]xternal [Ss]ite [Ss]quare [Ee]mail textbox is present$/ do
+Then /^[Ee]xpect [Ee]xternal [Ss]ite [Ss]quare [Ee]mail text box is present$/ do
   step "pause for 3 seconds"
   expect(stamps.orders.external_sites.square_com.email.present?).to be(true), "External site square login page not available"
 end

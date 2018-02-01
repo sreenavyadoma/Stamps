@@ -148,10 +148,6 @@ module Stamps
             raise "Server Error:\n #{browser.text}"
           end
 
-          logger.message '-'
-          logger.message "Page loaded: #{browser.url}"
-          logger.message '-'
-
           case param.web_app
             when :orders
               expect(browser.url).to include 'Orders'
@@ -180,7 +176,7 @@ module Stamps
             wait_until_present(4)
             30.times do
               begin
-                 return signed_in_user.text if signed_in_user.present?
+                return signed_in_user.text if signed_in_user.present?
                 if present?
                   username(usr)
                   password(pw)
@@ -208,13 +204,13 @@ module Stamps
                   learn_more.close
                 end
                 signed_in_user.wait_until_present(2)
-              rescue Exception => e
+              rescue StandardError => e
                 logger.error e.message
                 logger.error e.backtrace.join "\n"
                 raise e
               end
             end
-          rescue Exception => e
+          rescue StandardError => e
             logger.error e.message
             logger.error e.backtrace.join("\n")
             raise e
