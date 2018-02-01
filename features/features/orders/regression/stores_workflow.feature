@@ -4,6 +4,8 @@ Feature:  All Store Management
   Background:
     Given a valid user is signed in to Web Apps
 
+
+
     @paypal_workflow
     Scenario: PayPal Workflow
 
@@ -12,6 +14,10 @@ Feature:  All Store Management
       Then search Marketplace for store name Paypal
       Then expect Marketplace dataview count is equal to 1
       Then connect Marketplace store Paypal
+      Then expect Paypal store modal present
+      Then expect Paypal logo present
+      #Connecting to Paypal
+
       Then set PayPal Email Address to qaclient@stamps.com
       Then click Paypal verify email button
       Then set Paypal orders number option to use the Paypal transaction ID
@@ -24,29 +30,38 @@ Feature:  All Store Management
       Then Check Express Checkout as a Paypal transaction type
       Then Uncheck Express Checkout as a Paypal transaction type
       Then Connect to Paypal Store
-      Then Store Settings: Set Store Nickname to random
-      Then Store Settings: Set service Mapping 1, Requested Services Priority Envelope, Shipping service PM Flat Rate Envelope
 
-  @paypal_workflow_backlog
-  Scenario: PayPal Workflow backlog
-      Then Connect to Paypal Store
-      Then Set store nickname to My Store
-      Then Add new service mapping
-      Then Set Store Nickname to random
-      Then Set store service Mapping 1, Requested Services Priority Envelope, Shipping service PM Flat Rate Envelope
-      #Then Save store settings
-      #Then Expect store nickname XXX appears in list
+      # Settings Modal
+      Then expect store settings PayPal modal is present
+      # General Settings
+      Then set store settings store nickname to StampsQA
+      Then expect Settings dialog store import new orders is checked
+      Then Uncheck Settings dialog store import new orders
+      Then expect Settings dialog store import new orders is Unchecked
+      Then check Settings dialog store import new orders
+      # Service Mapping
+      Then select store settings requested service to service 1
+      Then select store settings shipping service to FCM Large Envelope/Flat
+      Then Store Settings: click Save
 
+      # Paypal Settings Modal
+      Then pause for 2 seconds
+      Then select order settings store StampsQA
+      Then click order settings stores edit button
+      Then expect store settings PayPal modal is present
+      # General Settings
+      Then set store settings store nickname to StampsQA
+      Then expect Settings dialog store import new orders is checked
+      Then Uncheck Settings dialog store import new orders
+      Then expect Settings dialog store import new orders is Unchecked
+      Then check Settings dialog store import new orders
+      # Service Mapping
+      Then select store settings requested service to service 2
+      Then select store settings shipping service to FCM Large Envelope/Flat
+      Then Store Settings: click Save
 
-      #Then Paypal: Expect Help article is present
-      #Then Paypal: Open Paypal link
-      #Then Paypal: Expect Paypal site is present
-      #Then PayPal: Set PayPal Email Address to xxxxxxxx
-      #Then Paypal: Expect error icon appears next to Email address field
-      #Then Paypal: Close modal
-      #Then Orders Settings: Click Done
-      #Then Sign out
-
+      Then click order settings stores Delete button
+      Then Sign out
 
     @square_workflow
     Scenario: Square Store Workflow

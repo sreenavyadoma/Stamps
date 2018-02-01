@@ -11,7 +11,7 @@ Then /^select store settings requested service to ([\w \/]+)$/ do |str|
 end
 
 Then /^expect store settings (\w+) modal is present$/ do |store_name|
-  expect(stamps.orders.marketplace.store_settings.window_title.text).to eql("#{store_name} Settings")
+  expect(stamps.orders.marketplace.store_settings.window_title.text).to include("#{store_name} Settings")
 end
 
 Then /^expect store settings modal is present$/ do

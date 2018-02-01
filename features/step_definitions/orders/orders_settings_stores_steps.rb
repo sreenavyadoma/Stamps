@@ -17,7 +17,8 @@ Then /^[Cc]lick [Oo]rder [Ss]ettings [Ss]tores Reconnect [Bb]utton$/ do
 end
 
 Then /^[Cc]lick [Oo]rder [Ss]ettings [Ss]tores Delete [Bb]utton$/ do
-  pending #stamps.orders.modals.orders_settings_modal.stores_tab.delete
+  stamps.orders.modals.orders_settings_modal.stores_tab.delete
+  stamps.orders.modals.orders_settings_modal.stores_tab.delete_store_confirm_modal.confirm_delete
 end
 
 Then /^[Ss]elect [Oo]rder [Ss]ettings Store name (.*)$/ do |store|
