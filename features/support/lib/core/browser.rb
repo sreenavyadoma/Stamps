@@ -42,7 +42,6 @@ module Stamps
       end
       alias_method :html, :browser
 
-
       def cache
         @cache = {} if @cache.nil?
         @cache
@@ -69,7 +68,9 @@ module Stamps
       alias_method :input, :field
 
       def browser
-        raise ArgumentError, "browser is nil for html field #{field.class}. Set #{self.class.to_s.split('::').last}.browser = browser after creating this object." if self.class.browser.nil?
+        if self.class.browser.nil?
+          raise ArgumentError, "browser is nil for html field #{field.class}. Set #{self.class.to_s.split('::').last}.browser = browser after creating this object."
+        end
         self.class.browser
       end
 
