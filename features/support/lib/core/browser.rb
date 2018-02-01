@@ -41,15 +41,17 @@ module Stamps
         self.class.browser
       end
       alias_method :html, :browser
+
+
+      def cache
+        @cache = {} if @cache.nil?
+        @cache
+      end
     end
 
     ##
     #
     class BaseCache < Base
-      def cache
-        @cache = {} if @cache.nil?
-        @cache
-      end
     end
 
     # todo-Rob REW
