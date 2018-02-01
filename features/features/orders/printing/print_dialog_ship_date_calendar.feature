@@ -42,7 +42,7 @@ Feature: Set Print Ship Date up to 5 days from now in Calendar
     Then expect Orders Grid Ship Date for this order is correct
     Then Sign out
 
-
+  @print_dialog_ship_date_calendar
   Scenario: Set Ship Date to 3 days from now
   # Ship Date Today + 3
     Then add new order
@@ -61,7 +61,7 @@ Feature: Set Print Ship Date up to 5 days from now in Calendar
     Then expect Orders Grid Ship Date for this order is correct
     Then Sign out
 
-
+  @print_dialog_ship_date_calendar
   Scenario: Set Ship Date to 4 days from now
       # Ship Date Today + 4
     Then add new order
@@ -80,7 +80,7 @@ Feature: Set Print Ship Date up to 5 days from now in Calendar
     Then expect Orders Grid Ship Date for this order is correct
     Then Sign out
 
-
+  @print_dialog_ship_date_calendar
   Scenario: Set Ship Date to 5 days from now
   # Ship Date Today + 5
     Then add new order
