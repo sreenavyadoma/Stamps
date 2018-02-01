@@ -56,7 +56,7 @@ module Stamps
         end
 
         #todo-rob refactor auto-suggest internatinal
-        class AutoSuggestInternational < Browser::BaseCache
+        class AutoSuggestInternational < Browser::Base
           #assign({})
 
           def auto_suggest_box
@@ -82,7 +82,7 @@ module Stamps
           end
         end
 
-        class AutoSuggestPopUp < Browser::BaseCache
+        class AutoSuggestPopUp < Browser::Base
           #assign({})
 
           def present?
@@ -109,7 +109,7 @@ module Stamps
           end
         end
 
-        class AddressNotFound < Browser::BaseCache
+        class AddressNotFound < Browser::Base
           #assign({})
 
           def window_title
@@ -161,7 +161,7 @@ module Stamps
           end
         end
 
-        class AmbiguousAddress < Browser::BaseCache
+        class AmbiguousAddress < Browser::Base
           #assign({})
 
           def address_not_found
@@ -278,7 +278,7 @@ module Stamps
           end
         end
 
-        class ShipToCountry < Browser::BaseCache
+        class ShipToCountry < Browser::Base
           #assign({})
           include ShowShipToDetails
           attr_reader :textbox_field, :dropdown_field
@@ -340,7 +340,7 @@ module Stamps
           end
         end
 
-        class ShipToInternational < Browser::BaseCache
+        class ShipToInternational < Browser::Base
           #assign({})
           include BlurOutField
           def present?
@@ -421,7 +421,7 @@ module Stamps
           end
         end
 
-        class ShipToDomestic < Browser::BaseCache
+        class ShipToDomestic < Browser::Base
           #assign({})
           include ShowShipToDetails, BlurOutField
 
@@ -505,7 +505,7 @@ module Stamps
           end
         end
 
-        class AutoSuggestDomestic < Browser::BaseCache
+        class AutoSuggestDomestic < Browser::Base
           #assign({})
 
           attr_reader :textarea
@@ -536,7 +536,7 @@ module Stamps
           end
         end
 
-        class ShipTo < Browser::BaseCache
+        class ShipTo < Browser::Base
           #assign({})
           def domestic
             cache[:domestic] = ShipToDomestic.new(param) if cache[:domestic].nil? || !cache[:domestic].present?
@@ -563,7 +563,7 @@ module Stamps
           end
         end
 
-        class InsureFor < Browser::BaseCache
+        class InsureFor < Browser::Base
           include BlurOutField
           #assign({})
 
@@ -598,7 +598,7 @@ module Stamps
           end
         end
 
-        class Tracking < Browser::BaseCache
+        class Tracking < Browser::Base
           #assign({})
 
           def cost
@@ -708,7 +708,7 @@ module Stamps
           end
         end
 
-        class ItemsOrderedSection < Browser::BaseCache
+        class ItemsOrderedSection < Browser::Base
           #assign({})
 
           def add_btn
@@ -816,7 +816,7 @@ module Stamps
           end
         end
 
-        class Toolbar < Browser::BaseCache
+        class Toolbar < Browser::Base
           include OrderDetailsOrderId
           #assign({})
           def menu
@@ -828,7 +828,7 @@ module Stamps
           end
         end
 
-        class Footer < Browser::BaseCache
+        class Footer < Browser::Base
           #assign({})
 
           def label
@@ -862,7 +862,7 @@ module Stamps
           end
         end
 
-        class Contents < Browser::BaseCache
+        class Contents < Browser::Base
           #assign({})
           attr_reader
 
@@ -895,7 +895,7 @@ module Stamps
           end
         end
 
-        class Service < Browser::BaseCache
+        class Service < Browser::Base
           #assign({})
 
           def textbox
@@ -968,7 +968,7 @@ module Stamps
 
       ##
       # Single Order Details Form
-      class OrderDetails < Browser::BaseCache
+      class OrderDetails < Browser::Base
         #assign({})
         include Fields::BlurOutField
 

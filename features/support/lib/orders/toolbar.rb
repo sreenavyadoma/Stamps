@@ -60,7 +60,7 @@ module Stamps
         end
       end
 
-      class MoveToShippedModal < Browser::BaseCache
+      class MoveToShippedModal < Browser::Base
         #assign({})
 
         def window_title
@@ -105,7 +105,7 @@ module Stamps
         end
       end
 
-      class MoveToAwaitingShipmentModal < Browser::BaseCache
+      class MoveToAwaitingShipmentModal < Browser::Base
         #assign({})
 
         attr_reader :window_title, :cancel_btn
@@ -136,7 +136,7 @@ module Stamps
         end
       end
 
-      class MoveDropDown < Browser::BaseCache
+      class MoveDropDown < Browser::Base
         #assign({})
 
         def dropdown
@@ -238,7 +238,7 @@ module Stamps
         end
       end
 
-      class MoreActionsDropDown < Browser::BaseCache
+      class MoreActionsDropDown < Browser::Base
 
         #assign({})
 
@@ -251,7 +251,7 @@ module Stamps
         end
 
         def split_order
-          (cache[:split_order].nil? || !cache[:split_order].present?) ? cache[:split_order] = Browser::BaseCache.new(param).extend(Stamps::Orders::SplitOrder::WindowTitle) : cache[:split_order] #todo-ORDERSAUTO-3405 code review: you should only get a handle on window title here. SplitOrderModal should have a window title module.
+          (cache[:split_order].nil? || !cache[:split_order].present?) ? cache[:split_order] = Browser::Base.new(param).extend(Stamps::Orders::SplitOrder::WindowTitle) : cache[:split_order] #todo-ORDERSAUTO-3405 code review: you should only get a handle on window title here. SplitOrderModal should have a window title module.
         end
 
         def combine_orders
@@ -303,7 +303,7 @@ module Stamps
         end
       end
 
-       class PrintIncompleteOrderError < Browser::BaseCache
+       class PrintIncompleteOrderError < Browser::Base
          #assign({})
 
          attr_reader :window_title, :ok_btn, :error_message_label
@@ -359,7 +359,7 @@ module Stamps
       end
 
       #todo-rob update Print Multi Order Error tests
-      class PrintMultiOrderError < Browser::BaseCache
+      class PrintMultiOrderError < Browser::Base
         #assign({})
 
         def window_title
@@ -425,7 +425,7 @@ module Stamps
         end
       end
 
-      class UspsPrivacyActStatement < Browser::BaseCache
+      class UspsPrivacyActStatement < Browser::Base
         #assign({})
 
         def window_title
@@ -464,7 +464,7 @@ module Stamps
         end
       end
 
-      class USPSTermsOrders < Browser::BaseCache
+      class USPSTermsOrders < Browser::Base
         #assign({})
 
         attr_reader :window_title, :i_agree_btn, :cancel_btn, :privacy_act_link
@@ -545,7 +545,7 @@ module Stamps
         end
       end
 
-      class ShipStationServerError < Browser::BaseCache
+      class ShipStationServerError < Browser::Base
         #assign({})
         def window_title
           browser.divs(text: 'Server Error').first
@@ -560,7 +560,7 @@ module Stamps
         end
       end
 
-      class ToolbarPrintButton < Browser::BaseCache
+      class ToolbarPrintButton < Browser::Base
         include Stamps::Orders::TermsAndConditions
 
         #assign({})
@@ -801,7 +801,7 @@ module Stamps
         end
       end
 
-      class AddButton < Browser::BaseCache
+      class AddButton < Browser::Base
         include Stamps::Orders::SingleOrder::Fields::OrderDetailsOrderId
         #assign({})
 
@@ -1008,7 +1008,7 @@ module Stamps
       end
 
 
-      class ToolbarSettingsIcon < Browser::BaseCache
+      class ToolbarSettingsIcon < Browser::Base
         include Stamps::Orders::OrdersSettings::OrdersSettingsModalTitle
 
         #assign({})
@@ -1036,7 +1036,7 @@ module Stamps
         end
       end
 
-      class OrdersToolbar < Browser::BaseCache
+      class OrdersToolbar < Browser::Base
         #assign({})
         include OrdersToolbarLeftSide
         #include OrdersToolbarRightSide

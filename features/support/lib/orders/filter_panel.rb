@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module LeftPanel
-      class CollapseButton < Browser::BaseCache
+      class CollapseButton < Browser::Base
         #assign({})
 
         def button
@@ -40,7 +40,7 @@ module Stamps
         end
       end
 
-      class ExpandButton < Browser::BaseCache
+      class ExpandButton < Browser::Base
         #assign({})
 
         def button
@@ -78,7 +78,7 @@ module Stamps
         end
       end
 
-      class FilterMenuItem < Browser::BaseCache
+      class FilterMenuItem < Browser::Base
         #assign({})
 
         def collapse
@@ -90,7 +90,7 @@ module Stamps
         end
       end
 
-      class SearchResults < Browser::BaseCache
+      class SearchResults < Browser::Base
         #assign({})
 
         def label
@@ -126,7 +126,7 @@ module Stamps
         end
       end
 
-      class SearchOrders < Browser::BaseCache
+      class SearchOrders < Browser::Base
         #assign({})
 
         attr_reader :textbox, :search_button, :search_results
@@ -190,7 +190,7 @@ module Stamps
         end
       end
 
-      class AwaitingShipmentTab < Browser::BaseCache
+      class AwaitingShipmentTab < Browser::Base
         #assign({})
         include FilterTabHelper
         def initialize(param)
@@ -203,7 +203,7 @@ module Stamps
         end
       end
 
-      class ShippedTab < Browser::BaseCache
+      class ShippedTab < Browser::Base
         #assign({})
         include FilterTabHelper
         def initialize(param)
@@ -212,7 +212,7 @@ module Stamps
         end
       end
 
-      class CanceledTab < Browser::BaseCache
+      class CanceledTab < Browser::Base
         #assign({})
         include FilterTabHelper
         def initialize(param)
@@ -221,7 +221,7 @@ module Stamps
         end
       end
 
-      class OnHoldTab < Browser::BaseCache
+      class OnHoldTab < Browser::Base
         #assign({})
         include FilterTabHelper
         def initialize(param)
@@ -230,7 +230,7 @@ module Stamps
         end
       end
 
-      class FilterPanel < Browser::BaseCache
+      class FilterPanel < Browser::Base
         #assign({})
 
         def search_orders

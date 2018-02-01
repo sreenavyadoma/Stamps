@@ -7,7 +7,7 @@ module Stamps
         end
       end
 
-      class Modal < Browser::BaseCache
+      class Modal < Browser::Base
         include WindowTitle
         #assign({})
 
@@ -42,7 +42,7 @@ module Stamps
 
 
 
-        class SplitItemDetails < Browser::BaseCache
+        class SplitItemDetails < Browser::Base
 
           attr_reader :index
           def initialize(param, number)

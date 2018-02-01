@@ -89,7 +89,7 @@ module Stamps
 
       ##
       # first index is 1 from feature file.
-      class AssociatedLineItem < Browser::BaseCache
+      class AssociatedLineItem < Browser::Base
         #assign({})
         attr_reader :index
         def initialize(param, index)
@@ -156,7 +156,7 @@ module Stamps
         end
       end
 
-      class AssociatedItems < Browser::BaseCache
+      class AssociatedItems < Browser::Base
         #assign({})
         def add_item
           if cache[:add_item].nil? || !cache[:add_item].present?
@@ -240,7 +240,7 @@ module Stamps
         end
       end
 
-      class CustomsInformation < Browser::BaseCache
+      class CustomsInformation < Browser::Base
         #assign({})
 
         attr_reader :window_title, :usps_privacy_act_warning, :close_button, :internal_transaction,

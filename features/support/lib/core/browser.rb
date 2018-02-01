@@ -49,11 +49,6 @@ module Stamps
       end
     end
 
-    ##
-    #
-    class BaseCache < Base
-    end
-
     # todo-Rob REW
     class StampsField
       class << self

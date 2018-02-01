@@ -1,5 +1,5 @@
 module Stamps
-  class StampsDotCom < Browser::BaseCache
+  class StampsDotCom < Browser::Base
     #assign({})
 
     def navigation_bar

@@ -2,7 +2,7 @@ module Stamps
   module Orders
     module ShipFrom
       #todo-Rob move ManageShippingAddresses modal to stamps.orders.modals.manage_shipping_addresses
-      class ManageShippingAddresses < Browser::BaseCache
+      class ManageShippingAddresses < Browser::Base
         #assign({})
 
         def edit_button
@@ -177,7 +177,7 @@ module Stamps
       end
 
       #todo-Rob REW
-      class AddShippingAddress < Browser::BaseCache
+      class AddShippingAddress < Browser::Base
         #assign({})
 
         attr_accessor :address_hash
@@ -263,7 +263,7 @@ module Stamps
 
       end
 
-      class DeleteShippingAddress < Browser::BaseCache
+      class DeleteShippingAddress < Browser::Base
         #assign({})
 
         def window_title
