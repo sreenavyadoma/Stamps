@@ -6,7 +6,6 @@ Feature: Set Print Ship Date up to 5 days from now in Calendar
 
   @print_dialog_ship_date_calendar
   Scenario: Set Ship Date to tomorrow
-
   # Ship Date today + 1
     Then add new order
     Then set Order Details Ship-From to default
@@ -22,6 +21,7 @@ Feature: Set Print Ship Date up to 5 days from now in Calendar
     Then select Filter Panel tab Shipped
     Then expect Orders Grid Ship Date for this order is correct
     Then expect Orders Grid Date Printed for this order is correct
+    Then Sign out
 
   @print_dialog_ship_date_calendar
   Scenario: Set Ship Date to 2 days from now
@@ -40,6 +40,7 @@ Feature: Set Print Ship Date up to 5 days from now in Calendar
     Then select Filter Panel tab Shipped
     Then expect Orders Grid Date Printed for this order is correct
     Then expect Orders Grid Ship Date for this order is correct
+    Then Sign out
 
 
   Scenario: Set Ship Date to 3 days from now
@@ -58,6 +59,7 @@ Feature: Set Print Ship Date up to 5 days from now in Calendar
     Then select Filter Panel tab Shipped
     Then expect Orders Grid Date Printed for this order is correct
     Then expect Orders Grid Ship Date for this order is correct
+    Then Sign out
 
 
   Scenario: Set Ship Date to 4 days from now
@@ -76,6 +78,7 @@ Feature: Set Print Ship Date up to 5 days from now in Calendar
     Then select Filter Panel tab Shipped
     Then expect Orders Grid Date Printed for this order is correct
     Then expect Orders Grid Ship Date for this order is correct
+    Then Sign out
 
 
   Scenario: Set Ship Date to 5 days from now
