@@ -84,7 +84,7 @@ Then /^[Ss]et [Pp]rint [Mm]odal Ship Date [Cc]alendar to (?:today|today plus (\d
   test_param[:ship_date]
 end
 
-Then /^[Ee]xpect [Pp]rint [Mm]odal Ship Date is (\d+) day\(s\) from today/ do |day|
+Then /^[Ee]xpect [Pp]rint [Mm]odal Ship Date is (\d+) (?:day|days) from today$/ do |day|
   step "expect print modal ship date dropdown is present"
   expect(stamps.orders.modals.orders_print_modal.ship_date.textbox.text).to eql(test_helper.date_printed(day))
 end
