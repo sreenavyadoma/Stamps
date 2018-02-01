@@ -86,11 +86,11 @@ module Stamps
         end
       end
 
-      class OrdersSettingsModal < Browser::BaseCache
+      class OrdersSettingsModal < Browser::Base
         include OrdersSettingsModalTitle
         include OrdersSettingsTabBar
 
-        assign({})
+        #assign({})
 
         def present?
           window_title.present?

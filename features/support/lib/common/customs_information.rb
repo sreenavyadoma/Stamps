@@ -89,8 +89,8 @@ module Stamps
 
       ##
       # first index is 1 from feature file.
-      class AssociatedLineItem < Browser::BaseCache
-        assign({})
+      class AssociatedLineItem < Browser::Base
+        #assign({})
         attr_reader :index
         def initialize(param, index)
           super(param)
@@ -156,8 +156,8 @@ module Stamps
         end
       end
 
-      class AssociatedItems < Browser::BaseCache
-        assign({})
+      class AssociatedItems < Browser::Base
+        #assign({})
         def add_item
           if cache[:add_item].nil? || !cache[:add_item].present?
             cache[:add_item] = StampsField.new(browser.span(css: "[id^=associatedcustomsitems] [class*=toolbar] [class*=sdc-icon-add]"))
@@ -240,8 +240,8 @@ module Stamps
         end
       end
 
-      class CustomsInformation < Browser::BaseCache
-        assign({})
+      class CustomsInformation < Browser::Base
+        #assign({})
 
         attr_reader :window_title, :usps_privacy_act_warning, :close_button, :internal_transaction,
                     :more_info, :itn_number, :license, :invoice, :privacy_statement, :privacy_link,

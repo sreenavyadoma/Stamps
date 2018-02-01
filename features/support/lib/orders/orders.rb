@@ -1,7 +1,7 @@
 module Stamps
   module Orders
-    class WebOrders < Browser::BaseCache
-      assign({})
+    class WebOrders < Browser::Base
+      #assign({})
 
       def orders_toolbar
         cache[:orders_toolbar] = Orders::Toolbar::OrdersToolbar.new(param) if cache[:orders_toolbar].nil?
@@ -49,7 +49,7 @@ module Stamps
       end
 
       def external_sites
-        cache[:external_sites] = (Class.new(Browser::BaseCache) { assign({}) }).new(param).extend(StampsExternalSites) if cache[:external_sites].nil?
+        cache[:external_sites] = Class.new(Browser::Base).new(param).extend(StampsExternalSites) if cache[:external_sites].nil?
         cache[:external_sites]
       end
 

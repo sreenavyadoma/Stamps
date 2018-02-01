@@ -2,8 +2,8 @@ module Stamps
   module Orders
     module OrdersSettings
 
-      class TempCache < Base::BaseCache
-        assign({})
+      class TempCache < Base::Base
+        #assign({})
       end
 
       module StoresTabViewToolbar
@@ -101,11 +101,11 @@ module Stamps
       module StoresTabViewBottom
       end
 
-      class StoresTabView < Browser::BaseCache
+      class StoresTabView < Browser::Base
         include StoresTabViewToolbar
         include StoresTabViewBottom
 
-        assign({})
+        #assign({})
 
         def present?
           add_btn.present?

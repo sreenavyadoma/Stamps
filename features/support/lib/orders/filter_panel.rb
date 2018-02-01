@@ -1,8 +1,8 @@
 module Stamps
   module Orders
     module LeftPanel
-      class CollapseButton < Browser::BaseCache
-        assign({})
+      class CollapseButton < Browser::Base
+        #assign({})
 
         def button
           cache[:button] = StampsField.new(browser.span css: "span[id^=button-][id$=-btnIconEl]") if cache[:button].nil? || !cache[:button].present?
@@ -40,8 +40,8 @@ module Stamps
         end
       end
 
-      class ExpandButton < Browser::BaseCache
-        assign({})
+      class ExpandButton < Browser::Base
+        #assign({})
 
         def button
           cache[:button].nil? || !cache[:button].present? ? cache[:button] = StampsField.new(browser.img(css: 'img[class*=tool-expand-right]')) : cache[:button]
@@ -78,8 +78,8 @@ module Stamps
         end
       end
 
-      class FilterMenuItem < Browser::BaseCache
-        assign({})
+      class FilterMenuItem < Browser::Base
+        #assign({})
 
         def collapse
           cache[:collapse].nil? ? cache[:collapse] = CollapseButton.new(param) : cache[:collapse]
@@ -90,8 +90,8 @@ module Stamps
         end
       end
 
-      class SearchResults < Browser::BaseCache
-        assign({})
+      class SearchResults < Browser::Base
+        #assign({})
 
         def label
           cache[:label].nil? || !cache[:label].present? ? cache[:label] = StampsField.new(browser.div(text: "Search Results")) : cache[:label]
@@ -126,8 +126,8 @@ module Stamps
         end
       end
 
-      class SearchOrders < Browser::BaseCache
-        assign({})
+      class SearchOrders < Browser::Base
+        #assign({})
 
         attr_reader :textbox, :search_button, :search_results
 
@@ -190,8 +190,8 @@ module Stamps
         end
       end
 
-      class AwaitingShipmentTab < Browser::BaseCache
-        assign({})
+      class AwaitingShipmentTab < Browser::Base
+        #assign({})
         include FilterTabHelper
         def initialize(param)
           super
@@ -203,8 +203,8 @@ module Stamps
         end
       end
 
-      class ShippedTab < Browser::BaseCache
-        assign({})
+      class ShippedTab < Browser::Base
+        #assign({})
         include FilterTabHelper
         def initialize(param)
           super
@@ -212,8 +212,8 @@ module Stamps
         end
       end
 
-      class CanceledTab < Browser::BaseCache
-        assign({})
+      class CanceledTab < Browser::Base
+        #assign({})
         include FilterTabHelper
         def initialize(param)
           super
@@ -221,8 +221,8 @@ module Stamps
         end
       end
 
-      class OnHoldTab < Browser::BaseCache
-        assign({})
+      class OnHoldTab < Browser::Base
+        #assign({})
         include FilterTabHelper
         def initialize(param)
           super
@@ -230,8 +230,8 @@ module Stamps
         end
       end
 
-      class FilterPanel < Browser::BaseCache
-        assign({})
+      class FilterPanel < Browser::Base
+        #assign({})
 
         def search_orders
           cache[:search_orders].nil? ? cache[:search_orders] = SearchOrders.new(param) : cache[:search_orders]

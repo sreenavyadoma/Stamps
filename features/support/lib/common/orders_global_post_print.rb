@@ -43,7 +43,7 @@ module Stamps
           end
         end
 
-        class GlobalPostLabelModal < BaseCache
+        class GlobalPostLabelModal < Base
           # include GlobalPostLabelModalBody
           # include GlobalPostLabelModalCheckbox
           include WindowTitle

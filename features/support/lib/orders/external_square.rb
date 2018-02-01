@@ -1,8 +1,8 @@
 
 module Stamps
   module Orders
-    class SquareLogin < Browser::BaseCache
-      assign({})
+    class SquareLogin < Browser::Base
+      #assign({})
 
       def email
         (cache[:email].nil?||!cache[:email].present?)?cache[:email] = StampsTextbox.new(browser.text_field(css: "input[id='email']")) :cache[:email]

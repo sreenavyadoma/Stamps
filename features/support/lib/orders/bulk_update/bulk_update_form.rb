@@ -8,8 +8,8 @@ module Stamps
       end
 
       module Fields
-        class Dimensions < Browser::BaseCache
-          assign({})
+        class Dimensions < Browser::Base
+          #assign({})
 
           def present?
             length.present? && width.present? && height.present? && checkbox.present?
@@ -43,8 +43,8 @@ module Stamps
           end
         end
 
-        class Weight < Browser::BaseCache
-          assign({})
+        class Weight < Browser::Base
+          #assign({})
 
           def present?
             lbs.present? && oz.present? && checkbox.present?
@@ -134,8 +134,8 @@ module Stamps
           end
         end
 
-        class Service < Browser::BaseCache
-          assign({})
+        class Service < Browser::Base
+          #assign({})
           def textbox
             cache[:textbox] = StampsTextbox.new(browser.text_field(css: '[class*=domestic-service-row] [name=service]')) if cache[:textbox].nil? || !cache[:textbox].present?
             cache[:textbox]
@@ -230,8 +230,8 @@ module Stamps
           end
         end
 
-        class IntlService < Browser::BaseCache
-          assign({})
+        class IntlService < Browser::Base
+          #assign({})
           def textbox
             cache[:box] = StampsTextbox.new(browser.text_field(css: '[name=intlService]')) if cache[:box].nil? || !cache[:box].present?
             cache[:box]
@@ -454,8 +454,8 @@ module Stamps
 
         # REWORK -----------------------------------------------
 
-        class MultiOrderDetailsTracking < Browser::BaseCache
-          assign({})
+        class MultiOrderDetailsTracking < Browser::Base
+          #assign({})
           attr_reader :textbox, :dropdown
           def initialize(param)
             super(param)
@@ -510,8 +510,8 @@ module Stamps
 
       end
 
-      class Form < Browser::BaseCache
-        assign({})
+      class Form < Browser::Base
+        #assign({})
         include Toolbar
         include PresetMenu
 

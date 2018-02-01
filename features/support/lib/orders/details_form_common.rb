@@ -2,8 +2,8 @@ module Stamps
   module Orders
     module DetailsFormCommon
 
-      class DetailsFormDimensions < Browser::BaseCache
-        assign({})
+      class DetailsFormDimensions < Browser::Base
+        #assign({})
 
         def initialize(param, form_type)
           super(param)
@@ -93,8 +93,8 @@ module Stamps
         end
       end
 
-      class DetailsFormShipFrom < Browser::BaseCache
-        assign ({})
+      class DetailsFormShipFrom < Browser::Base
+        #assign({})
 
         attr_reader :form_type
 

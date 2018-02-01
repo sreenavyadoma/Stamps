@@ -221,10 +221,10 @@ module Stamps
         end
       end
 
-      class ManagePrintOptionsModal < Browser::BaseCache
+      class ManagePrintOptionsModal < Browser::Base
         include PrintMediaHelper
 
-        assign({})
+        #assign({})
 
         def search_field
           (cache[:search_field].nil? || !cache[:search_field].present?) ? cache[:search_field] = StampsTextbox.new(
@@ -356,12 +356,12 @@ module Stamps
         end
       end
 
-      class PrintOn < Browser::BaseCache
+      class PrintOn < Browser::Base
         include PrintFormBlurOut
         include PrintMediaHelper
         include PrintOnTextbox
 
-        assign({})
+        #assign({})
 
         def dropdown
           (cache[:dropdown].nil? || !cache[:dropdown].present?) ? cache[:dropdown] = StampsField.new(
@@ -447,9 +447,9 @@ module Stamps
         end
       end
 
-      class MailToCountry < Browser::BaseCache
+      class MailToCountry < Browser::Base
         include PrintFormBlurOut
-        assign({})
+        #assign({})
         def dom_dd
           (cache[:dom_dd].nil? || !cache[:dom_dd].present?) ? cache[:dom_dd] = StampsTextbox.new(
               browser.div(id: "sdc-mainpanel-matltocountrydroplist-trigger-picker")) : cache[:dom_dd]
@@ -504,10 +504,10 @@ module Stamps
         end
       end
 
-      class MailToInt < Browser::BaseCache
+      class MailToInt < Browser::Base
         include PrintFormBlurOut
 
-        assign({})
+        #assign({})
 
         def name
           (cache[:name].nil? || !cache[:name].present?) ? cache[:name] = StampsTextbox.new(
@@ -557,10 +557,10 @@ module Stamps
         end
       end
 
-      class MailToDom < Browser::BaseCache
+      class MailToDom < Browser::Base
         include MailDomTextArea
         include PrintFormBlurOut
-        assign({})
+        #assign({})
 
         attr_reader :country
 
@@ -576,10 +576,10 @@ module Stamps
         end
       end
 
-      class PrintFormEmail < Browser::BaseCache
+      class PrintFormEmail < Browser::Base
         include PrintFormBlurOut
 
-        assign({})
+        #assign({})
 
         def email_textbox
           (cache[:email_textbox].nil? || !cache[:email_textbox].present?) ? cache[:email_textbox] = StampsTextbox.new(
@@ -592,10 +592,10 @@ module Stamps
         end
       end
 
-      class PrintFormWeight < Browser::BaseCache
+      class PrintFormWeight < Browser::Base
         include PrintFormBlurOut
 
-        assign({})
+        #assign({})
 
         def weigh
           (cache[:weigh].nil? || !cache[:weigh].present?) ? cache[:weigh] = StampsField.new(
@@ -629,8 +629,8 @@ module Stamps
         end
       end
 
-      class PrintFormDimensions < Browser::BaseCache
-        assign({})
+      class PrintFormDimensions < Browser::Base
+        #assign({})
 
         def length
           (cache[:length].nil? || !cache[:length].present?) ? cache[:length] = StampsNumberField.new(
@@ -654,9 +654,9 @@ module Stamps
         end
       end
 
-      class PrintFormMailFrom < Browser::BaseCache
+      class PrintFormMailFrom < Browser::Base
         include PrintFormBlurOut
-        assign({})
+        #assign({})
         def textbox
           (cache[:textbox].nil? || !cache[:textbox].present?) ? cache[:textbox] = StampsTextbox.new(
               browser.text_field(id: "sdc-mainpanel-shipfromdroplist-inputEl")) : cache[:textbox]
@@ -706,10 +706,10 @@ module Stamps
         end
       end
 
-      class MailServiceSelection < Browser::BaseCache
+      class MailServiceSelection < Browser::Base
         include ParameterHelper
 
-        assign({})
+        #assign({})
 
         def cost_field(str)
           (cache[:cost_field].nil? || !cache[:cost_field].present?) ? cache[:cost_field] = StampsField.new(
@@ -738,10 +738,10 @@ module Stamps
         end
       end
 
-      class PrintFormService < Browser::BaseCache
+      class PrintFormService < Browser::Base
         include PrintFormBlurOut
 
-        assign({})
+        #assign({})
 
         def service_selection
           (cache[:service_selection].nil? || !cache[:service_selection].present?) ? cache[:service_selection] = MailServiceSelection.new(
@@ -855,10 +855,10 @@ module Stamps
 
       end
 
-      class PrintFormInsureFor < Browser::BaseCache
+      class PrintFormInsureFor < Browser::Base
         include PrintFormBlurOut
 
-        assign({})
+        #assign({})
 
         def price
           (cache[:textbox].nil? || !cache[:textbox].present?) ? cache[:textbox] = StampsField.new(
@@ -877,10 +877,10 @@ module Stamps
         end
       end
 
-      class PrintFormTracking < Browser::BaseCache
+      class PrintFormTracking < Browser::Base
         include PrintFormBlurOut
 
-        assign({})
+        #assign({})
 
         def textbox
           (cache[:textbox].nil? || !cache[:textbox].present?) ? cache[:textbox] = StampsTextbox.new(
@@ -917,8 +917,8 @@ module Stamps
         end
       end
 
-      class PrintFormCostCode < Browser::BaseCache
-        assign({})
+      class PrintFormCostCode < Browser::Base
+        #assign({})
 
         def textbox
           (cache[:textbox].nil? || !cache[:textbox].present?) ? cache[:textbox] = StampsTextbox.new(browser.text_field(name: "costCodeId")) : cache[:textbox]
@@ -945,8 +945,8 @@ module Stamps
       end
 
       #todo-Rob reference http://jira.psisystems.local/browse/ORDERSAUTO-3460
-      class PrintFormMailToLink < Browser::BaseCache
-        assign({})
+      class PrintFormMailToLink < Browser::Base
+        #assign({})
 
         def link
           (cache[:link].nil? || !cache[:link].present?) ? cache[:link] = StampsField.new(browser.span(css: "[class*=sdc-mainpanel-shiptolinkbtn] [id$=btnInnerEl]")) : cache[:link]
@@ -965,9 +965,9 @@ module Stamps
         end
       end
 
-      class PrintFormMailTo < Browser::BaseCache
+      class PrintFormMailTo < Browser::Base
         include PrintFormBlurOut
-        assign({})
+        #assign({})
         def mail_to_country
           (cache[:mail_to_country].nil? || !cache[:mail_to_country].present?) ? cache[:mail_to_country] = MailToCountry.new(param) : cache[:mail_to_country]
         end

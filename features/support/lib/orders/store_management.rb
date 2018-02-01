@@ -1,8 +1,8 @@
 module Stamps
   module Orders
     module Stores
-      class ImportingOrdersModal < Browser::BaseCache
-        assign({})
+      class ImportingOrdersModal < Browser::Base
+        #assign({})
         def present?
           browser.div(text: "Importing Orders").present?
         end
@@ -204,8 +204,8 @@ module Stamps
         end
       end
 
-      class MarketplaceDataView < Browser::BaseCache
-        assign({})
+      class MarketplaceDataView < Browser::Base
+        #assign({})
 
         def store_count
           begin
@@ -288,10 +288,10 @@ module Stamps
         end
       end
 
-      class Marketplace < Browser::BaseCache
+      class Marketplace < Browser::Base
         include MarketPlaceWindowTitle
 
-        assign({})
+        #assign({})
 
         def present?
           window_title.present?

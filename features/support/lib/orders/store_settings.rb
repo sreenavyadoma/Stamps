@@ -13,10 +13,10 @@ module Stamps
         end
       end
 
-      class StoreSettingsShippingService < Browser::BaseCache
+      class StoreSettingsShippingService < Browser::Base
         include StoresIframe
 
-        assign({})
+        #assign({})
 
         def textbox
           (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(iframe.span(css: "[class^=ui-select-match][placeholder='Select a Service'] span[ng-hide*=select]")):cache[:textbox]
@@ -124,11 +124,11 @@ module Stamps
         end
       end
 
-      class StoreSettings < Browser::BaseCache
+      class StoreSettings < Browser::Base
         include StoresIframe
         include StoreSettingsWindowTitle
 
-        assign({})
+        #assign({})
 
         def present?
           store_nickname.present?
