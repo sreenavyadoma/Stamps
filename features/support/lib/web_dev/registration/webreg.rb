@@ -2,7 +2,7 @@ module Stamps
   module Registration
 
     class WebRegistration < Browser::BaseCache
-      assign({})
+  #    assign({})
 
        attr_reader :bread_crumbs, :profile, :membership, :footer, :choose_supplies, :add_postage, :ship_volume_survey, :security_questions
        def initialize(param)
@@ -28,7 +28,7 @@ module Stamps
       end
 
       def profile
-        cache[:profile] = Profile::Page.new(param) if cache[:profile].nil?
+        cache[:profile] = Profile::ProfilePage.new(param) if cache[:profile].nil?
         cache[:profile]
       end
 
@@ -97,7 +97,7 @@ module Stamps
     end
 
     class AnErrorOccured < Browser::BaseCache
-      assign({})
+ #     assign({})
 
        attr :header_elem, :top_message_elem, :error_code_elem, :error_description_elem
        def initialize(param)

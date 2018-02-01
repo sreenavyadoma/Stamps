@@ -459,11 +459,6 @@ module Stamps
       end
 
       class MembershipPage < Browser::BaseCache
-        assign({})
-        def cache
-          self.class.cache
-        end
-
         include PersonalInfo
         include CreditCard
         include TermsAndConditions
