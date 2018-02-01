@@ -55,6 +55,8 @@ After do |scenario|
   user_credentials.close if (modal_param.web_app == :mail || modal_param.web_app == :orders) && !((!ENV['USR'].nil? && ENV['USR'].downcase != 'default') && (!ENV['PW'].nil?))
 
   test_config.teardown
+  @stamps = nil
+  @health = nil
   if scenario.failed?
     test_config.logger.error "#{scenario.feature}"
     test_config.logger.error "#{scenario.feature} #{scenario.name}:\n#{scenario.exception.message}"

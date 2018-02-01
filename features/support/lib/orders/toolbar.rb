@@ -61,7 +61,7 @@ module Stamps
       end
 
       class MoveToShippedModal < Browser::BaseCache
-        assign({})
+        #assign({})
 
         def window_title
           if cache[:window_title].nil? || !cache[:window_title].present?
@@ -106,7 +106,7 @@ module Stamps
       end
 
       class MoveToAwaitingShipmentModal < Browser::BaseCache
-        assign({})
+        #assign({})
 
         attr_reader :window_title, :cancel_btn
 
@@ -137,7 +137,7 @@ module Stamps
       end
 
       class MoveDropDown < Browser::BaseCache
-        assign({})
+        #assign({})
 
         def dropdown
           cache[:dropdown] = StampsField.new(browser.span(text: "Move")) if cache[:dropdown].nil? || cache[:dropdown].present?
@@ -240,7 +240,7 @@ module Stamps
 
       class MoreActionsDropDown < Browser::BaseCache
 
-        assign({})
+        #assign({})
 
         def enabled?
           dropdown.enabled?
@@ -304,7 +304,7 @@ module Stamps
       end
 
        class PrintIncompleteOrderError < Browser::BaseCache
-         assign({})
+         #assign({})
 
          attr_reader :window_title, :ok_btn, :error_message_label
 
@@ -360,7 +360,7 @@ module Stamps
 
       #todo-rob update Print Multi Order Error tests
       class PrintMultiOrderError < Browser::BaseCache
-        assign({})
+        #assign({})
 
         def window_title
           cache[:window_title] = StampsField.new(browser.div(text: 'Order Error')) if cache[:window_title].nil? || !cache[:window_title].present?
@@ -426,7 +426,7 @@ module Stamps
       end
 
       class UspsPrivacyActStatement < Browser::BaseCache
-        assign({})
+        #assign({})
 
         def window_title
           if cache[:window_title].nil? || !cache[:window_title].present?
@@ -465,7 +465,7 @@ module Stamps
       end
 
       class USPSTermsOrders < Browser::BaseCache
-        assign({})
+        #assign({})
 
         attr_reader :window_title, :i_agree_btn, :cancel_btn, :privacy_act_link
 
@@ -546,7 +546,7 @@ module Stamps
       end
 
       class ShipStationServerError < Browser::BaseCache
-        assign({})
+        #assign({})
         def window_title
           browser.divs(text: 'Server Error').first
         end
@@ -563,7 +563,7 @@ module Stamps
       class ToolbarPrintButton < Browser::BaseCache
         include Stamps::Orders::TermsAndConditions
 
-        assign({})
+        #assign({})
 
         def incomplete_order_modal
           cache[:incomplete_order].nil? ? cache[:incomplete_order] = PrintIncompleteOrderError.new(param) : cache[:incomplete_order]
@@ -803,7 +803,7 @@ module Stamps
 
       class AddButton < Browser::BaseCache
         include Stamps::Orders::SingleOrder::Fields::OrderDetailsOrderId
-        assign({})
+        #assign({})
 
         def add_btn
           cache[:add_btn] = StampsField.new(browser.span(text: 'Add')) if cache[:add_btn].nil? || !cache[:add_btn].present?
@@ -1011,7 +1011,7 @@ module Stamps
       class ToolbarSettingsIcon < Browser::BaseCache
         include Stamps::Orders::OrdersSettings::OrdersSettingsModalTitle
 
-        assign({})
+        #assign({})
 
         def field
           cache[:field] = StampsField.new(browser.span(css: "[class*=sdc-icon-settings]")) if cache[:field].nil? || !cache[:field].present?
@@ -1037,7 +1037,7 @@ module Stamps
       end
 
       class OrdersToolbar < Browser::BaseCache
-        assign({})
+        #assign({})
         include OrdersToolbarLeftSide
         #include OrdersToolbarRightSide
         include ToolbarItemsToBeVerified

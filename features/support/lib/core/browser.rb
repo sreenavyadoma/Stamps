@@ -46,9 +46,9 @@ module Stamps
     ##
     #
     class BaseCache < Base
-      include Cache
       def cache
-        self.class.cache
+        @cache = {} if @cache.nil?
+        @cache
       end
     end
 

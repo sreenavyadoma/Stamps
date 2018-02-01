@@ -57,7 +57,7 @@ module Stamps
 
         #todo-rob refactor auto-suggest internatinal
         class AutoSuggestInternational < Browser::BaseCache
-          assign({})
+          #assign({})
 
           def auto_suggest_box
             cache[:auto_suggest_box].nil? ? cache[:auto_suggest_box] = AutoSuggestPopUp.new(param) : cache[:auto_suggest_box]
@@ -83,7 +83,7 @@ module Stamps
         end
 
         class AutoSuggestPopUp < Browser::BaseCache
-          assign({})
+          #assign({})
 
           def present?
             name_fields[0].present?
@@ -110,7 +110,7 @@ module Stamps
         end
 
         class AddressNotFound < Browser::BaseCache
-          assign({})
+          #assign({})
 
           def window_title
             if cache[:window_title].nil? || !cache[:window_title].present?
@@ -162,7 +162,7 @@ module Stamps
         end
 
         class AmbiguousAddress < Browser::BaseCache
-          assign({})
+          #assign({})
 
           def address_not_found
             cache[:address_not_found].nil? ? cache[:address_not_found] =  AddressNotFound.new(param) : cache[:address_not_found]
@@ -279,7 +279,7 @@ module Stamps
         end
 
         class ShipToCountry < Browser::BaseCache
-          assign({})
+          #assign({})
           include ShowShipToDetails
           attr_reader :textbox_field, :dropdown_field
           def initialize(param, textbox_field, dropdown_field)
@@ -288,7 +288,7 @@ module Stamps
             @dropdown_field = dropdown_field
           end
 
-          assign({})
+          #assign({})
 
           def dropdown
             if cache[:dropdown].nil? || !cache[:dropdown].present?
@@ -341,7 +341,7 @@ module Stamps
         end
 
         class ShipToInternational < Browser::BaseCache
-          assign({})
+          #assign({})
           include BlurOutField
           def present?
             name.present?
@@ -422,7 +422,7 @@ module Stamps
         end
 
         class ShipToDomestic < Browser::BaseCache
-          assign({})
+          #assign({})
           include ShowShipToDetails, BlurOutField
 
           def ambiguous
@@ -506,7 +506,7 @@ module Stamps
         end
 
         class AutoSuggestDomestic < Browser::BaseCache
-          assign({})
+          #assign({})
 
           attr_reader :textarea
 
@@ -537,7 +537,7 @@ module Stamps
         end
 
         class ShipTo < Browser::BaseCache
-          assign({})
+          #assign({})
           def domestic
             cache[:domestic] = ShipToDomestic.new(param) if cache[:domestic].nil? || !cache[:domestic].present?
             cache[:domestic]
@@ -565,7 +565,7 @@ module Stamps
 
         class InsureFor < Browser::BaseCache
           include BlurOutField
-          assign({})
+          #assign({})
 
           def cost
             cache[:cost] = StampsField.new(browser.div(css: "[class*=single] [class*=insurance-field]").parent.labels[4]) if cache[:cost].nil? || !cache[:cost].present?
@@ -599,7 +599,7 @@ module Stamps
         end
 
         class Tracking < Browser::BaseCache
-          assign({})
+          #assign({})
 
           def cost
             cache[:cost] = StampsField.new(browser.label(css: '[class*=single] [class*=tracking_cost]')) if cache[:cost].nil? || !cache[:cost].present?
@@ -709,7 +709,7 @@ module Stamps
         end
 
         class ItemsOrderedSection < Browser::BaseCache
-          assign({})
+          #assign({})
 
           def add_btn
             cache[:add_btn] = StampsField.new(browser.span(css: "span[class*=sdc-icon-add]")) if cache[:add_btn].nil? || !cache[:add_btn].present?
@@ -818,7 +818,7 @@ module Stamps
 
         class Toolbar < Browser::BaseCache
           include OrderDetailsOrderId
-          assign({})
+          #assign({})
           def menu
             cache[:menu].nil? ? cache[:menu] = ToolbarMenu.new(param) : cache[:menu]
           end
@@ -829,7 +829,7 @@ module Stamps
         end
 
         class Footer < Browser::BaseCache
-          assign({})
+          #assign({})
 
           def label
             cache[:label].nil? || !cache[:label].present? ? cache[:label] = StampsField.new(browser.strong(text: 'Total Ship Cost:')) : cache[:label]
@@ -863,7 +863,7 @@ module Stamps
         end
 
         class Contents < Browser::BaseCache
-          assign({})
+          #assign({})
           attr_reader
 
           def initialize(param)
@@ -896,7 +896,7 @@ module Stamps
         end
 
         class Service < Browser::BaseCache
-          assign({})
+          #assign({})
 
           def textbox
             if cache[:textbox].nil? || !cache[:textbox].present?
@@ -969,7 +969,7 @@ module Stamps
       ##
       # Single Order Details Form
       class OrderDetails < Browser::BaseCache
-        assign({})
+        #assign({})
         include Fields::BlurOutField
 
         def toolbar

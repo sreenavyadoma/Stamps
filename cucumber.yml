@@ -19,7 +19,7 @@ mhossain1_cc: --tags @registration_ui_validation_profile_page WEB_APP = orders W
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
-eli_dev: --tags @split_order --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=sc BROWSER=ff USR=scutfh8m1 PW=pass111 PRINTER=Automation Printer
+eli_dev: --tags @print_dialog_ship_date_calendar --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff USR=hal9000stage25 PW=password1 PRINTER=Automation Printer
 ray_dev: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=gc USR=default PW=pass111
 sap:              --tags @registration_orders WEB_APP=registration URL=cc --guess DEBUG=false BROWSER=gc MAX_WINDOW=false
 
@@ -33,7 +33,7 @@ xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
-xxxxxxxxxxxxx: --tags @xxxxxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
+xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
 mail_print_envelope_11: --tags @mail_print_envelope_11 --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=mail PRINTER=factory
 
 poc_stg_chrome: --tags @authentication --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=gc
@@ -266,6 +266,10 @@ dev_bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic -
 dev_bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders
 dev_bvt_shipstation_search: --tags @bvt_shipstation_search --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders
 dev_import_orders: --tags @import_orders --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders
+
+#PRINT DIALOG SHIP DATE CALENDAR
+print_dialog_ship_date_calendar: --tags @print_dialog_ship_date_calendar --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders
+
 
 # PRINT TWO UP EXPANDED
 print_two_up_expanded_sdc1200_left_print3: --tags @print_two_up_expanded_sdc1200_left_print3 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
