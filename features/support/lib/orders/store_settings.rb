@@ -13,7 +13,7 @@ module Stamps
         end
       end
 
-      class StoreSettingsShippingService < Browser::BaseCache
+      class StoreSettingsShippingService < Browser::Base
         include StoresIframe
 
         #assign({})
@@ -124,7 +124,7 @@ module Stamps
         end
       end
 
-      class StoreSettings < Browser::BaseCache
+      class StoreSettings < Browser::Base
         include StoresIframe
         include StoreSettingsWindowTitle
 

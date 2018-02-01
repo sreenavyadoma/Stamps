@@ -2,7 +2,7 @@ module Stamps
   module Orders
     module OrdersSettings
 
-      class TempCache < Base::BaseCache
+      class TempCache < Base::Base
         #assign({})
       end
 
@@ -55,7 +55,7 @@ module Stamps
       module StoresTabViewBottom
       end
 
-      class StoresTabView < Browser::BaseCache
+      class StoresTabView < Browser::Base
         include StoresTabViewToolbar
         include StoresTabViewBottom
 

@@ -1,6 +1,6 @@
 module Stamps
   module Navigation
-    class TransactionComplete < Browser::BaseCache
+    class TransactionComplete < Browser::Base
       #assign({})
 
       def window_title
@@ -39,7 +39,7 @@ module Stamps
       end
     end
 
-    class ConfirmTransaction < Browser::BaseCache
+    class ConfirmTransaction < Browser::Base
       #assign({})
 
       def window_title
@@ -107,7 +107,7 @@ module Stamps
       end
     end
 
-    class AccountBalanceLimit < Browser::BaseCache
+    class AccountBalanceLimit < Browser::Base
       #assign({})
 
       def body
@@ -131,7 +131,7 @@ module Stamps
       end
     end
 
-    class AutoBuyPostageModal < Browser::BaseCache
+    class AutoBuyPostageModal < Browser::Base
       #assign({})
 
       def window_title
@@ -144,7 +144,7 @@ module Stamps
       end
     end
 
-    class AddFundsModal < Browser::BaseCache
+    class AddFundsModal < Browser::Base
       #assign({})
 
       def confirm_transaction
@@ -262,7 +262,7 @@ module Stamps
       end
     end
 
-    class BalanceDropDown < Browser::BaseCache
+    class BalanceDropDown < Browser::Base
       #assign({})
 
       def add_funds_modal
@@ -327,7 +327,7 @@ module Stamps
       end
     end
 
-    class UsernameDropDown < Browser::BaseCache
+    class UsernameDropDown < Browser::Base
       #assign({})
       def cache
         self.class.cache
@@ -372,7 +372,7 @@ module Stamps
       end
     end
 
-    class NavigationBar < Browser::BaseCache
+    class NavigationBar < Browser::Base
       #assign({})
 
       def balance

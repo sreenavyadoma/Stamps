@@ -221,7 +221,7 @@ module Stamps
         end
       end
 
-      class ManagePrintOptionsModal < Browser::BaseCache
+      class ManagePrintOptionsModal < Browser::Base
         include PrintMediaHelper
 
         #assign({})
@@ -356,7 +356,7 @@ module Stamps
         end
       end
 
-      class PrintOn < Browser::BaseCache
+      class PrintOn < Browser::Base
         include PrintFormBlurOut
         include PrintMediaHelper
         include PrintOnTextbox
@@ -447,7 +447,7 @@ module Stamps
         end
       end
 
-      class MailToCountry < Browser::BaseCache
+      class MailToCountry < Browser::Base
         include PrintFormBlurOut
         #assign({})
         def dom_dd
@@ -504,7 +504,7 @@ module Stamps
         end
       end
 
-      class MailToInt < Browser::BaseCache
+      class MailToInt < Browser::Base
         include PrintFormBlurOut
 
         #assign({})
@@ -557,7 +557,7 @@ module Stamps
         end
       end
 
-      class MailToDom < Browser::BaseCache
+      class MailToDom < Browser::Base
         include MailDomTextArea
         include PrintFormBlurOut
         #assign({})
@@ -576,7 +576,7 @@ module Stamps
         end
       end
 
-      class PrintFormEmail < Browser::BaseCache
+      class PrintFormEmail < Browser::Base
         include PrintFormBlurOut
 
         #assign({})
@@ -592,7 +592,7 @@ module Stamps
         end
       end
 
-      class PrintFormWeight < Browser::BaseCache
+      class PrintFormWeight < Browser::Base
         include PrintFormBlurOut
 
         #assign({})
@@ -629,7 +629,7 @@ module Stamps
         end
       end
 
-      class PrintFormDimensions < Browser::BaseCache
+      class PrintFormDimensions < Browser::Base
         #assign({})
 
         def length
@@ -654,7 +654,7 @@ module Stamps
         end
       end
 
-      class PrintFormMailFrom < Browser::BaseCache
+      class PrintFormMailFrom < Browser::Base
         include PrintFormBlurOut
         #assign({})
         def textbox
@@ -706,7 +706,7 @@ module Stamps
         end
       end
 
-      class MailServiceSelection < Browser::BaseCache
+      class MailServiceSelection < Browser::Base
         include ParameterHelper
 
         #assign({})
@@ -738,7 +738,7 @@ module Stamps
         end
       end
 
-      class PrintFormService < Browser::BaseCache
+      class PrintFormService < Browser::Base
         include PrintFormBlurOut
 
         #assign({})
@@ -855,7 +855,7 @@ module Stamps
 
       end
 
-      class PrintFormInsureFor < Browser::BaseCache
+      class PrintFormInsureFor < Browser::Base
         include PrintFormBlurOut
 
         #assign({})
@@ -877,7 +877,7 @@ module Stamps
         end
       end
 
-      class PrintFormTracking < Browser::BaseCache
+      class PrintFormTracking < Browser::Base
         include PrintFormBlurOut
 
         #assign({})
@@ -917,7 +917,7 @@ module Stamps
         end
       end
 
-      class PrintFormCostCode < Browser::BaseCache
+      class PrintFormCostCode < Browser::Base
         #assign({})
 
         def textbox
@@ -945,7 +945,7 @@ module Stamps
       end
 
       #todo-Rob reference http://jira.psisystems.local/browse/ORDERSAUTO-3460
-      class PrintFormMailToLink < Browser::BaseCache
+      class PrintFormMailToLink < Browser::Base
         #assign({})
 
         def link
@@ -965,7 +965,7 @@ module Stamps
         end
       end
 
-      class PrintFormMailTo < Browser::BaseCache
+      class PrintFormMailTo < Browser::Base
         include PrintFormBlurOut
         #assign({})
         def mail_to_country

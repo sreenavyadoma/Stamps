@@ -1,6 +1,6 @@
 module Stamps
   module Orders
-    class MarketPlaceStoreModals < Stamps::Browser::BaseCache
+    class MarketPlaceStoreModals < Stamps::Browser::Base
       #assign({})
       def paypal_store
         (cache[:paypal_store].nil?||!cache[:paypal_store].present?)?cache[:paypal_store]=Stamps::Orders::Stores::PayPal.new(param):cache[:paypal_store]

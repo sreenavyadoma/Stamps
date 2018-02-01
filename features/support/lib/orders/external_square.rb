@@ -1,7 +1,7 @@
 
 module Stamps
   module Orders
-    class SquareLogin < Browser::BaseCache
+    class SquareLogin < Browser::Base
       #assign({})
 
       def email

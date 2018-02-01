@@ -15,7 +15,7 @@ module Stamps
         end
       end
 
-      class PrintPreview < Browser::BaseCache
+      class PrintPreview < Browser::Base
         include PrintFormBlurOut
 
         #assign({})

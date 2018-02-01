@@ -2,7 +2,7 @@
 module Stamps
   module Orders
     module Printing
-      class OrdersPrintMediaDropList < Browser::BaseCache
+      class OrdersPrintMediaDropList < Browser::Base
         #assign({})
         def dropdown
           cache[:printing_on].nil? || !cache[:printing_on].present? ? cache[:printing_on] = StampsField.new(browser.div(css: "div[id^=printmediadroplist][id$=trigger-picker]")) : cache[:printing_on]
@@ -373,7 +373,7 @@ module Stamps
         end
       end
 
-      class OrdersShipDate < Browser::BaseCache
+      class OrdersShipDate < Browser::Base
         #assign({})
         def shipdate_label
           cache[:shipdate_label].nil? || !cache[:shipdate_label].present? ? cache[:shipdate_label] = StampsField.new(browser.span(css: '[id=sdc-printpostagewindow-shipdate-targetEl] [class*=x-form-item-label-inner-default]')) : cache[:shipdate_label]
@@ -487,7 +487,7 @@ module Stamps
         end
       end
 
-      class OrdersPrintModal < Browser::BaseCache
+      class OrdersPrintModal < Browser::Base
         include OrdersPrintModalTitle
         include OrdersUpperPrintModal
         include OrdersPrintModalFooter

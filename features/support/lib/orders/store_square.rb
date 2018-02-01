@@ -99,7 +99,7 @@ module Stamps
         end
       end
 
-      class Settings < Browser::BaseCache
+      class Settings < Browser::Base
         include GeneralSettings
         include ServiceMapping
 
@@ -139,7 +139,7 @@ module Stamps
         end
       end
 
-      class Square < Browser::BaseCache
+      class Square < Browser::Base
         include SquareWindowTitle
         #assign({})
 
