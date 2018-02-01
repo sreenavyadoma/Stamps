@@ -18,14 +18,14 @@ Then /^[Ss]et [Pp]rofile [Pp]age [Ee]mail to (?:random value|(.*))$/ do |str|
   #expect(registration.profile.email.text).to eql str
   #expect(['Abc', 'D']).to include('Y')
 
-  registration.profile.email.set(test_param[:email]=(str.nil?)?(test_helper.random_email):str)
+  registration.profile.email.set(test_param[:email]=(str.nil?)?(StampsTest.rand_email):str)
   step "blur out on profile page"
 
 
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Uu]sername to (?:random value|(.*))$/ do |str|
-  registration.profile.account_username.set((test_param[:username]=(str.nil?)?(test_helper.random_username):str))
+  registration.profile.account_username.set((test_param[:username]=(str.nil?)?(StampsTest.rand_usr):str))
   step "blur out on profile page"
 end
 
@@ -39,7 +39,8 @@ Then /^[Ee]xpect [Pp]rofile [Pp]age [Uu]sername is (?:correct|(.*))$/ do |str|
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Pp]assword to (?:random value|(.*))$/ do |str|
-  registration.profile.account_password.set(test_param[:password]=(str.nil?)?"pass111":str) #test_helper.random_password
+ # registration.profile.account_password.set(test_param[:password]=(str.nil?)?"pass111":str) #test_helper.random_password
+   registration.profile.account_password.set(test_param[:password]=(str.nil?)?StampsTest.rand_alpha_numeric(6,14):str)
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Pp]assword is (?:correct|(.*))$/ do |str|
