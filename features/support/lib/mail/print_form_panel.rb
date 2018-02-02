@@ -283,6 +283,7 @@ module Stamps
         include AdvancedOptions
         include Dimensions
         include PrintOnTextbox
+        include PrintFormBlurOut
 
         def present?
           print_on_textbox.text.include?('Shipping Label')
