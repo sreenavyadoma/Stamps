@@ -30,7 +30,7 @@ module Stamps
         end
       end
 
-      module ServiceMapping
+      module ServicerMapping
 
         def service_text
           (cache[:service_text].nil?||!cache[:service_text].present?)?cache[:service_text]= StampsField.new(iframe.h3(text: "Service Mapping")):cache[:service_text]
@@ -101,7 +101,7 @@ module Stamps
 
       class Settings < Browser::Base
         include GeneralSettings
-        include ServiceMapping
+        include ServicerMapping
 
         #assign({})
 

@@ -8,6 +8,10 @@ Then /^[Ss]elect [Oo]rder [Ss]ettings [Ss]tore (.+)$/ do |store|
   expect(stamps.orders.modals.orders_settings_modal.stores_tab.select_store(store)).to eql(store)
 end
 
+Then /^[Ss]elect saved [Oo]rder [Ss]ettings [Ss]tore$/ do
+  expect(stamps.orders.modals.orders_settings_modal.stores_tab.select_store(test_param[:store_nickname])).to eql(test_param[:store_nickname])
+end
+
 Then /^[Cc]lick [Oo]rder [Ss]ettings [Ss]tores [Ee]dit [Bb]utton$/ do
   stamps.orders.modals.orders_settings_modal.stores_tab.edit
 end
@@ -18,6 +22,9 @@ end
 
 Then /^[Cc]lick [Oo]rder [Ss]ettings [Ss]tores Delete [Bb]utton$/ do
   stamps.orders.modals.orders_settings_modal.stores_tab.delete
+end
+
+Then /^[Cc]lick [Oo]rder [Ss]ettings [Ss]tores Delete confirmation [Bb]utton$/ do
   stamps.orders.modals.orders_settings_modal.stores_tab.delete_store_confirm_modal.confirm_delete
 end
 
@@ -27,6 +34,14 @@ end
 
 Then /^[Ee]xpect [Oo]rder [Ss]ettings Store name (.*) to be present$/ do |store|
   expect(stamps.orders.modals.orders_settings_modal.stores_tab.store_list(store)).to be_present
+end
+
+Then /^[Ee]xpect [Oo]rders [Ss]ettings [Ss]tore [S]aved nickname is not present in list$/ do
+  expect(stamps.orders.modals.orders_settings_modal.stores_tab.store_exists(test_param[:store_nickname])).not_to be(true), "Deleted store is PRESENT and it should NOT be PRESENT"
+end
+
+Then /^[Ee]xpect [Oo]rders [Ss]ettings [Ss]tore [Nn]ickname (.*) is not present in list$/ do |store|
+  expect(stamps.orders.modals.orders_settings_modal.stores_tab.store_exists(store)).not_to be(true), "Deleted store is PRESENT and it should NOT be PRESENT"
 end
 
 

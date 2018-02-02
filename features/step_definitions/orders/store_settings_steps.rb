@@ -1,5 +1,7 @@
-Then /^set store settings store nickname to ([\w\.@]+)$/ do |str|
-  stamps.orders.marketplace.store_settings.store_nickname.set(str)
+Then /^set store settings store nickname to (.*)$/ do |str|
+  nickname = (str.downcase.include?('random') ? StampsTest.rand_alpha_numeric : str)
+  stamps.orders.marketplace.store_settings.store_nickname.set(nickname)
+  test_param[:store_nickname] = nickname
 end
 
 Then /^select store settings shipping service to ([\w \/]+)$/ do |str|
@@ -19,14 +21,28 @@ Then /^expect store settings modal is present$/ do
   expect(stamps.orders.marketplace.store_settings.window_title.text).to eql("Settings")
 end
 
-Then /^Store Settings: Set Store Nickname to (.*)$/ do |nickname|
-  #test_config.logger.step "Store Settings: Set Store Nickname to #{nickname}"
-  raise "Store Settings is not open.  Check your test workflow." if @store_settings.nil?
-  #test_config.logger.step "Old Amazon Store Name:#{test_data[:store_name]}"
-  test_param[:store_name]=(nickname.downcase.include? 'random')?StampsTest.rand_alpha_numeric(20):nickname
-  #test_config.logger.step "Store Nickname: #{test_data[:store_name]}"
-  @store_settings.store_nickname.set test_param[:store_name]
+Then /^[Aa]dd store service Mapping (\d+), Requested Services (.*), Shipping service (.*)$/ do |mapping_number, requested_services, shipping_service|
+  step "add store service Mapping #{mapping_number}"
+  step "set store service Mapping #{mapping_number} Requested Service to #{requested_services}"
+  step "set store service Mapping #{mapping_number} Shipping Service to #{shipping_service}"
 end
+
+Then /^[Aa]dd store service Mapping (\d+)$/ do |mapping_number|
+  stamps.orders.marketplace.store_settings.service_mapping_list.mapping_number(mapping_number.to_i)
+end
+
+Then /^[Ss]et store service Mapping (\d+) Requested Service to (.*)$/ do |mapping_number, value|
+  test_param[:service_mapping_items][mapping_number] = {} unless test_param[:service_mapping_items].has_key?(mapping_number)
+  test_param[:service_mapping_items][mapping_number][:requested_service] = (value.downcase.include?('random') ? StampsTest.rand_alpha_numeric : value)
+  stamps.orders.marketplace.store_settings.service_mapping_list.mapping_number(mapping_number.to_i).requested_service_mapping.set(test_param[:service_mapping_items][mapping_number][:requested_service])
+end
+
+Then /^[Ss]et store service Mapping (\d+) Shipping Service to (.*)$/ do |mapping_number, value|
+  test_param[:service_mapping_items][mapping_number] = {} unless test_param[:service_mapping_items].has_key?(mapping_number)
+  test_param[:service_mapping_items][mapping_number][:shipping_service] = value
+  expect(stamps.orders.marketplace.store_settings.service_mapping_list.mapping_number(mapping_number.to_i).shipping_service_mapping.select(test_param[:service_mapping_items][mapping_number][:shipping_service])).to include(test_param[:service_mapping_items][mapping_number][:shipping_service])
+end
+
 
 Then /^[Aa]dd new store service mapping$/ do
   @store_settings.add_new_service_mapping.click

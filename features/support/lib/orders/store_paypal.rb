@@ -144,11 +144,11 @@ module Stamps
         end
       end
 
-#todo-rob fix me
-      class PayPal < Browser::BaseCache
+
+      class PayPal < Browser::Base
         include PayPalModals
         include PayPalWindowTitle
-        assign({})
+        #assign({})
         def iframe
           browser.iframe(css: "[id=storeiframe]")
         end
@@ -182,8 +182,8 @@ module Stamps
         end
       end
 
-      class ConnectYourPaypalStore < Browser::BaseCache
-        assign({})
+      class ConnectYourPaypalStore < Browser::Base
+        #assign({})
         def iframe
           browser.iframe(css: "[id=storeiframe]")
         end

@@ -2,10 +2,6 @@ module Stamps
   module Orders
     module OrdersSettings
 
-      class TempCache < Base::Base
-        #assign({})
-      end
-
       module StoresTabViewToolbar
         def add_btn
           (cache[:add_btn].nil? || !cache[:add_btn].present?) ? cache[:add_btn] = StampsField.new(browser.span(css: "[id=addStoreButton-btnIconEl]")) : cache[:add_btn]
@@ -16,16 +12,16 @@ module Stamps
         end
 
         def delete_btn
-          (cache[:delete_btn].nil? || !cache[:delete_btn].present?) ? cache[:delete_btn] = StampsField.new(browser.span text: "Delete") : cache[:delete_btn]
+          (cache[:delete_btn].nil? || !cache[:delete_btn].present?) ? cache[:delete_btn] = StampsField.new(browser.a(css: "[class*=sdc-managestoreswindow-deletebtn]")) : cache[:delete_btn]
         end
 
         def marketplace_window_title
-          (cache[:marketplace_window_title].nil? || !cache[:marketplace_window_title].present?) ? cache[:marketplace_window_title] = TempCache.new(
+          (cache[:marketplace_window_title].nil? || !cache[:marketplace_window_title].present?) ? cache[:marketplace_window_title] = Browser::Base.new(
               param).extend(Orders::Stores::MarketPlaceWindowTitle) : cache[:marketplace_window_title]
         end
 
         def store_settings_window_title
-          (cache[:store_settings_window_title].nil? || !cache[:store_settings_window_title].present?) ? cache[:store_settings_window_title] = TempCache.new(
+          (cache[:store_settings_window_title].nil? || !cache[:store_settings_window_title].present?) ? cache[:store_settings_window_title] = Browser::Base.new(
               param).extend(Orders::Stores::StoreSettingsWindowTitle) : cache[:store_settings_window_title]
         end
 
@@ -52,27 +48,29 @@ module Stamps
 
         def delete
           20.times do
+            sleep 1
             break if delete_store_confirm_modal.present?
             delete_btn.click
           end
+          expect("Unable to click store delete button.").to eql ""
         end
 
         def delete_store_confirm_modal
           cache[:delete_store_confirm_modal].nil? || !cache[:delete_store_confirm_modal].present? ? cache[:delete_store_confirm_modal] = DeleteStoreConfirm.new(param) : cache[:delete_store_confirm_modal]
         end
 
-        class DeleteStoreConfirm < Base::BaseCache
-          assign({})
+        class DeleteStoreConfirm < Browser::Base
+          #assign({})
 
           def present?
             delete_store_text.present?
           end
 
-          def delete_btn
-            (cache[:delete_btn].nil? || !cache[:delete_btn].present?) ? cache[:delete_btn] = StampsField.new(browser.div(css: "div[id=deleteStoreButton]>div>div>div[class*=x-autocontainer-outerCt]>div[class*=x-autocontainer-innerCt]>a:nth-child(1)")) : cache[:delete_btn]
+          def confirm_delete_btn
+            (cache[:confirm_delete_btn].nil? || !cache[:confirm_delete_btn].present?) ? cache[:confirm_delete_btn] = StampsField.new(browser.a(css: "div[id=deleteStoreButton]>div>div>div[class*=x-autocontainer-outerCt]>div[class*=x-autocontainer-innerCt]>a:nth-child(1)")) : cache[:confirm_delete_btn]
           end
 
-          def cancel_btn
+          def cancel_delete_btn
             (cache[:cancel_btn].nil? || !cache[:cancel_btn].present?) ? cache[:cancel_btn] = StampsField.new(browser.span text: "Cancel") : cache[:cancel_btn]
           end
 
@@ -83,14 +81,15 @@ module Stamps
           def confirm_delete
             20.times do
               break if !present?
-              delete_btn.click
+              confirm_delete_btn.click
             end
+            expect("Unable to click store delete confirmation button.").to eql ""
           end
 
           def cancel_delete
             20.times do
               break if !present?
-              cancel_btn.click
+              cancel_delete_btn.click
             end
           end
 
@@ -113,11 +112,16 @@ module Stamps
 
         def select_store(store)
           field = StampsField.new(browser.div(text: store))
+          sleep 2
           20.times do
             field.click
             return field.text if field.field.parent.parent.parent.parent.attribute_value('class').include?('selected')
           end
           nil
+        end
+
+        def store_exists(store)
+          (StampsField.new(browser.div(text: store))).present?
         end
       end
 
