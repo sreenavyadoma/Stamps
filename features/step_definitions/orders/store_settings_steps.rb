@@ -15,7 +15,7 @@ Then /^expect store settings (\w+) modal is present$/ do |store_name|
 end
 
 Then /^expect store settings modal is present$/ do
-  step "pause for 20 seconds"
+  step "pause for 20 seconds" #todo-Rob change to? stamps.orders.marketplace.store_settings.window_title.wait_until_present(20)
   expect(stamps.orders.marketplace.store_settings.window_title.text).to eql("Settings")
 end
 
