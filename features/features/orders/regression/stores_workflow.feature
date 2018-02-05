@@ -61,6 +61,7 @@ Feature:  All Store Management
       Then click order settings stores Delete button
       Then click order settings stores Delete confirmation button
       Then expect orders settings store saved nickname is not present in list
+      Then click Done in orders settings store tab
       Then Sign out
 
     @square_workflow

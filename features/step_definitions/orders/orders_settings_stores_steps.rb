@@ -36,13 +36,21 @@ Then /^[Ee]xpect [Oo]rder [Ss]ettings Store name (.*) to be present$/ do |store|
   expect(stamps.orders.modals.orders_settings_modal.stores_tab.store_list(store)).to be_present
 end
 
-Then /^[Ee]xpect [Oo]rders [Ss]ettings [Ss]tore [S]aved nickname is not present in list$/ do
+Then /^[Ee]xpect [Oo]rders [Ss]ettings [Ss]tore [Ss]aved nickname is not present in list$/ do
+  sleep 5
   expect(stamps.orders.modals.orders_settings_modal.stores_tab.store_exists(test_param[:store_nickname])).not_to be(true), "Deleted store is PRESENT and it should NOT be PRESENT"
 end
 
 Then /^[Ee]xpect [Oo]rders [Ss]ettings [Ss]tore [Nn]ickname (.*) is not present in list$/ do |store|
+  sleep 5
   expect(stamps.orders.modals.orders_settings_modal.stores_tab.store_exists(store)).not_to be(true), "Deleted store is PRESENT and it should NOT be PRESENT"
 end
+
+Then /^[Cc]lick [Dd]one in [Oo]rders [Ss]ettings [Ss]tore tab$/ do
+  sleep 1
+  stamps.orders.modals.orders_settings_modal.stores_tab.done.click
+end
+
 
 
 

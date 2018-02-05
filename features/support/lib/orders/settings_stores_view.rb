@@ -48,11 +48,10 @@ module Stamps
 
         def delete
           20.times do
-            sleep 1
+            sleep 5
             break if delete_store_confirm_modal.present?
             delete_btn.click
           end
-          expect("Unable to click store delete button.").to eql ""
         end
 
         def delete_store_confirm_modal
@@ -83,7 +82,6 @@ module Stamps
               break if !present?
               confirm_delete_btn.click
             end
-            expect("Unable to click store delete confirmation button.").to eql ""
           end
 
           def cancel_delete
@@ -98,6 +96,9 @@ module Stamps
 
 
       module StoresTabViewBottom
+        def done
+          StampsField.new(browser.span(text: "Done"))
+        end
       end
 
       class StoresTabView < Browser::Base
@@ -112,7 +113,7 @@ module Stamps
 
         def select_store(store)
           field = StampsField.new(browser.div(text: store))
-          sleep 2
+          sleep 5
           20.times do
             field.click
             return field.text if field.field.parent.parent.parent.parent.attribute_value('class').include?('selected')
@@ -121,7 +122,13 @@ module Stamps
         end
 
         def store_exists(store)
-          (StampsField.new(browser.div(text: store))).present?
+          10.times do
+            sleep 1
+            if !(StampsField.new(browser.div(text: store)).present?)
+              return StampsField.new(browser.div(text: store)).present?
+            end
+          end
+          StampsField.new(browser.div(text: store)).present?
         end
       end
 
