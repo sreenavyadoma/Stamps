@@ -18,7 +18,6 @@ Feature: Set Print Ship Date up to 5 days from now in Calendar
     Then set Print modal Ship Date Calendar to today plus 1
     Then expect Print modal Ship Date is 1 day from today
     Then set Print modal Ship Date to today plus 1
-
     Then click print modal print button
     Then Pause for 2 seconds
     Then select Filter Panel tab Shipped
