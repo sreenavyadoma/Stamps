@@ -1,21 +1,7 @@
 module Stamps
   module Registration
 
-    class WebRegistration < Browser::BaseCache
-  #    assign({})
-
-       attr_reader :bread_crumbs, :profile, :membership, :footer, :choose_supplies, :add_postage, :ship_volume_survey, :security_questions
-       def initialize(param)
-         super
-        #@bread_crumbs=RegistrationBreadCrumbs.new(param)
-        #@profile=Profile::Page.new(param)
-        #@membership ||= Membership::MembershipPage.new(param)
-        #@choose_supplies=ChooseSupplies.new(param)
-        #@add_postage=AddPostage.new(param)
-        #@ship_volume_survey=ShipVolumeSurvey.new(param)
-        #@footer=Footer::ProfileFooter.new(param)
-        #@security_questions=SecurityQuestionsRegistration.new(param)
-       end
+    class WebRegistration < Browser::Base
 
       def navigation
         cache[:navigation] = Navigation::RegistrationNavigationBar.new(param) if cache[:navigation].nil?
@@ -96,17 +82,7 @@ module Stamps
 
     end
 
-    class AnErrorOccured < Browser::BaseCache
- #     assign({})
-
-       attr :header_elem, :top_message_elem, :error_code_elem, :error_description_elem
-       def initialize(param)
-      #   super
-      #   #@header_elem=StampsField.new browser.h3(text: "An Error Occurred")
-      #   #@top_message_elem=StampsField.new browser.p(id: "topMessage")
-      #   #@error_code_elem=StampsField.new browser.p(id: "errorCode")
-      #   #@error_description_elem=StampsField.new browser.p(id: "errorDescription")
-       end
+    class AnErrorOccured < Browser::Base
 
       def header_elem
         cache[:header_elem] = StampsField.new browser.h3(text: "An Error Occurred") if cache[:header_elem].nil?

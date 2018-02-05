@@ -17,6 +17,8 @@ end
 Then /^[Ee]xpect [Pp]rofile [Pp]age LIVE chat button exists$/ do
   expect(registration.footer.live_chat_button).to be_present, "LIVE chat button doesn't exists in footer of a page"
 end
+
+
 #:trust_elogo, :live_chat_button
 #@live_chat_button=StampsElement.new(browser.html_tag(name: "property"))
 

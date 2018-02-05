@@ -111,6 +111,7 @@ end
 
 Then /^[Cc]heck [Pp]rofile [Pp]age [Mm]oney-saving offers and new products$/ do
   registration.profile.money_saving_offers_checkbox.check
+
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Mm]oney-saving offers and new products is checked$/ do
@@ -126,7 +127,6 @@ Then /^[Ee]xpect [Pp]rofile [Pp]age [Mm]oney-saving offers and new products is u
 end
 
 Then /^[Cc]ontinue to [Mm]embership page$/ do
-  #registration.profile.continue
   registration.profile.continue_btn.click
   step "pause for 1 seconds"
 end

@@ -15,7 +15,14 @@ Then /^(?:|[Ii] )[Ll]oad(?:|ed) SDC Website$/ do
 end
 
 Then /^[Cc]lick on [Gg]et [Ss]tarted$/ do
-  sdc_website.get_started
+
+  10.times do
+    sdc_website.get_started_btn.click
+    registration.wait_until_present(5)
+  end
   expect(test_config.browser.url).to include('profile')
+
+  #sdc_website.get_started
+
 end
 

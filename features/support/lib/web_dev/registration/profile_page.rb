@@ -1,9 +1,19 @@
 module Stamps
   module Registration
     module Profile
+
+      module Header
+
+        def header
+          (cache[:header].nil? || !cache[:header].present?) ? cache[:header] = StampsField.new(browser.h1(css: "div[id=page]>div>div>h1")) : cache[:header]
+        end
+
+      end
       module AccountInfo
+
         def email
-          (cache[:email].nil? || !cache[:email].present?) ? cache[:email] = Stamps::Browser::StampsTextbox.new(browser.text_field(id: "email")).extend(AccountInfoEmailHelp) : cache[:email]
+          #(cache[:email].nil? || !cache[:email].present?) ? cache[:email] = Stamps::Browser::StampsTextbox.new(browser.text_field(id: "email")).extend(AccountInfoEmailHelp) : cache[:email]
+          (cache[:account_username].nil? || !cache[:account_username].present?) ? cache[:account_username] = Stamps::Browser::StampsTextbox.new(browser.text_field(name: "username")):cache[:account_username]
         end
 
         def account_username
@@ -132,7 +142,7 @@ module Stamps
 
       end
       module AccountInfoEmailHelp
-        def single_field_help_block
+        def email_single_field_help_block
           (cache[:single_field_help_block].nil? || !cache[:single_field_help_block].present?) ? cache[:single_field_help_block] = RegHelpBlock.new(browser, browser.spans(css: "li[id=email]>div>div>div>div>span")) : cache[:single_field_help_block]
         end
 
@@ -198,17 +208,32 @@ module Stamps
         end
       end
 
-      class ProfilePage < Browser::BaseCache
+      class RegProfileEmail < Stamps::Browser::StampsTextbox
+        def single_field_help_block
+          (cache[:single_field_help_block].nil? || !cache[:single_field_help_block].present?) ? cache[:single_field_help_block] = RegHelpBlock.new(browser, browser.spans(css: "li[id=email]>div>div>div>div>span")) : cache[:single_field_help_block]
+        end
+      end
 
+      class ProfilePage < Browser::Base
+
+        include AccountInfoEmailHelp
+        include AccountInfoUserNameHelp
+        include AccountInfoPasswordHelp
+        include AccountInfoRetypePasswordHelp
+        include AccountInfoPromocodeHelp
+        include AccountInfoSecretQuestions1Help
+        include AccountInfoSecretAnswer1Help
+        include AccountInfoSecretQuestions2Help
+        include AccountInfoSecretAnswer2Help
+        include Header
         include AccountInfo
         include WebregSurvey
         include WebregPromocode
         include WebregPagination
         include SideContent
+        include SecreteQuestions
 
-        def header
-          (cache[:header].nil? || !cache[:header].present?) ? cache[:header] = StampsField.new(browser.h1(css: "div[id=page]>div>div>h1")) : cache[:header]
-        end
+
 
         def present?
           email.present?

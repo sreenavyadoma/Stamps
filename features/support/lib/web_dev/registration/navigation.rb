@@ -2,12 +2,22 @@ module Stamps
   module Registration
     module Navigation
       class RegistrationNavigationBar < Browser::Base
-        attr_reader :stamps_logo, :usps_logo
+        # attr_reader :stamps_logo, :usps_logo
+        #
+        # def initialize(param)
+        #   super
+        #  # @stamps_logo=StampsField.new(browser.img(id: "sdc-logo"))
+        #   @usps_logo=StampsField.new(browser.img(css: "img[src*=logo_usps_vendor_]"))
+        # end
 
-        def initialize(param)
-          super
-          @stamps_logo=StampsField.new(browser.img(id: "sdc-logo"))
-          @usps_logo=StampsField.new(browser.img(css: "img[src*=logo_usps_vendor_]"))
+        def stamps_logo
+          cache[:stamps_logo] = StampsField.new(browser.img(id: "sdc-logo")) if cache[:stamps_logo].nil?
+          cache[:stamps_logo]
+        end
+
+        def usps_logo
+          cache[:usps_logo] = StampsField.new(browser.img(css: "img[src*=logo_usps_vendor_]")) if cache[:usps_logo].nil?
+          cache[:usps_logo]
         end
 
         def present?
