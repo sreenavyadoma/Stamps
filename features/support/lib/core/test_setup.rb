@@ -69,7 +69,14 @@ module Stamps
             driver = Watir::Browser.new :ie
             driver.window.maximize
           when :safari
+            # kill safari browser before launching via webdriver
+            stdout, status = Open3.capture3("killall Safari")
+            logger.message status
+            logger.message stdout
+
             driver = Watir::Browser.new :safari
+            #sleep(3)
+            driver.window.maximize
           else
             raise "#{browser_str} is not a valid browser"
         end
