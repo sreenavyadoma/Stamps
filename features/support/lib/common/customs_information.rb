@@ -274,11 +274,11 @@ module Stamps
         end
 
         def non_delivery_options
-          cache[:add_btn] = StampsField.new(browser.span(css: "[id^=associatedcustomsitems] [class*=toolbar] a")) if cache[:add_btn].nil? || !cache[:add_btn].present?
-          cache[:add_btn]
-
-          @non_delivery_options = StampsCombobox.new(browser.text_field(css: "[name=NonDelivery]"), browser.div(css: "[id*=nondeliveryoptionsdroplist]"), :li, 0)
-
+          if cache[:non_delivery_options].nil? || !cache[:non_delivery_options].present?
+            cache[:non_delivery_options] = StampsCombobox.new(browser.text_fields(css: "[name=NonDelivery]"),
+                                                              browser.divs(css: "[id*=nondeliveryoptionsdroplist]"), :li, 0)
+          end
+          cache[:non_delivery_options]
         end
 
         def package_contents

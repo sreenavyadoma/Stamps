@@ -75,6 +75,14 @@ Then /^[Ee]xpect Customs Internal Transaction Number is (?:correct|(.*))$/ do |e
   expect(stamps.mail.print_form.mail_customs.edit_customs_form.internal_transaction.textbox.text).to eql(expectation) if modal_param.web_app == :mail
 end
 
+# duplicate
+# Then /^[Ee]xpect Customs Internal Transaction Number is (.+)$/ do |expectation|
+#   step "Blur out on Customs form"
+#   sleep(0.5)
+#   expect(stamps.common_modals.customs_form.internal_transaction.textbox.text).to eql(expectation) if modal_param.web_app == :orders
+#   expect(stamps.mail.print_form.mail_customs.edit_customs_form.internal_transaction.textbox.text).to eql(expectation) if modal_param.web_app == :mail
+# end
+
 Then /^[Ss]et Customs More Info to (?:(?:a|some) random string|(.*))$/ do |value|
   test_param[:customs_more_info] = value.nil? ? StampsTest.rand_alpha_numeric(6, 18) : value
   stamps.common_modals.customs_form.package_contents.contents.more_info.set(test_param[:customs_more_info]) if modal_param.web_app == :orders
@@ -281,13 +289,6 @@ Then /^[Ee]xpect Customs ITN Number is visible$/ do
   sleep(0.5)
   expect(stamps.common_modals.customs_form.itn_number.enabled?).to be(true) if modal_param.web_app == :orders
   expect(stamps.mail.print_form.mail_customs.edit_customs_form.itn_number.enabled?).to be(true) if modal_param.web_app == :mail
-end
-
-Then /^[Ee]xpect Customs Internal Transaction Number is (.+)$/ do |expectation|
-  step "Blur out on Customs form"
-  sleep(0.5)
-  expect(stamps.common_modals.customs_form.internal_transaction.textbox.text).to eql(expectation) if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_customs_form.internal_transaction.textbox.text).to eql(expectation) if modal_param.web_app == :mail
 end
 
 Then /^[Ee]xpect Customs Associated Item Grid count is (.+)$/ do |expectation|
