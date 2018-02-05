@@ -31,7 +31,6 @@ end
 Then /^Store Settings: Set service Mapping (\d+), Requested Services (.*), Shipping service (.*)$/ do |item_number, requested_services, shipping_service|
   #test_config.logger.step "Store Settings: Set Requested Services to random #{requested_services}"
   raise "Amazon Settings is not open.  Check your test workflow." if @store_settings.nil?
-
   service_mapping_item =@store_settings.service_mapping.item item_number.to_i
   service_mapping_item.requested_services.set(requested_services.downcase.include? 'random')?StampsTest.rand_alpha_numeric(4, 20):requested_services
   service_mapping_item.shipping_Service.select shipping_service
@@ -56,9 +55,7 @@ Then /^Store Settings: Save$/ do
   @store_settings.save
 end
 
-
 #### Settings Modal ####
-
 Then /^[Ee]xpect [Ss]quare [Ss]ettings [Dd]ialog is present$/ do
   step "pause for 5 seconds"
   expect(stamps.orders.marketplace.square.settings.window_title.present?).to be(true), "Sqaure Settings dialog is not present"
