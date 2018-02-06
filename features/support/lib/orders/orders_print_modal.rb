@@ -343,9 +343,9 @@ module Stamps
           if ((Date.today + day).strftime '%w').to_i > 6
             day +=1
           end
-          date_picker_header = StampsField.new browser.div class: "x-datepicker-header"
+          date_picker_header = StampsField.new(browser.div(class: "x-datepicker-header"))
           picker_button = StampsField.new browser.div(css: "div[id^=datefield][id$=trigger-picker]")
-          ship_date_textbox = StampsTextbox.new browser.text_field(css: "input[id^=datefield][id$=inputEl]")
+          ship_date_textbox = StampsTextbox.new(browser.text_field(css: "input[id^=datefield][id$=inputEl]"))
 
           ship_date_str = test_helper.this_month_plus(day)
           ship_date_mmddyy = test_helper.today_plus(day)
@@ -380,7 +380,7 @@ module Stamps
         end
 
         def date_picker
-          cache[:date_picker].nil? || !cache[:date_picker].present? ? cache[:date_picker] = OrdersDatePicker.new(param) : cache[:date_picker]
+          cache[:date_picker].nil? ? cache[:date_picker] = OrdersDatePicker.new(param) : cache[:date_picker]
         end
 
         def textbox
