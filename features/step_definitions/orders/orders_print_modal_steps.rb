@@ -70,12 +70,14 @@ Then /^[Ss]et [Pp]rint [Mm]odal Ship Date to (?:today|today plus (\d+))$/ do |da
   stamps.orders.modals.orders_print_modal.ship_date.shipdate_label.click(10)
   stamps.orders.modals.orders_print_modal.ship_date.shipdate_label.double_click(10)
   step "expect Print modal Ship Date is #{day} days from today"
+  test_param[:ship_date]=stamps.orders.modals.orders_print_modal.ship_date.textbox.text
 end
 
 Then /^[Ss]et [Pp]rint [Mm]odal Ship Date [Cc]alendar to (?:today|today plus (\d+))$/ do |day|
   step "expect print modal ship date dropdown is present"
-  stamps.orders.modals.orders_print_modal.ship_date.date_picker.today_plus(day.nil? ? '0' : day)
+  stamps.orders.modals.orders_print_modal.ship_date.date_picker.today_plus(day.nil? ? '0' : day)  #If print date is today, set day increase to zero, otherwise set to 'day' value
   step "expect Print modal Ship Date is #{day} days from today"
+  test_param[:ship_date]=stamps.orders.modals.orders_print_modal.ship_date.textbox.text    # set ship date variable to value in Ship Date text field
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal Ship Date is (\d+) (?:day|days) from today$/ do |day|
