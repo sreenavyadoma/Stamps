@@ -49,7 +49,7 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Date Printed for this order is (?:correct|(\d
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Ship Date for this order is (?:correct|(\d{2}\/\d{2}\/\d{4}))$/ do |str|
-  expect(stamps.orders.orders_grid.grid_column(:ship_date).data(test_param[:order_id].values.last)).to eql(test_helper.grid_date_format(str.nil? ? test_param[:ship_date] : str))
+  expect(stamps.orders.orders_grid.grid_column(:ship_date).data(test_param[:order_id].values.last)).to eql(test_helper.grid_date_format(str.nil? ? stamps.orders.modals.orders_print_modal.ship_date.textbox.text : str))
 end
 
 Then /^[Ee]xpect Ship-To address is;$/ do |table|
