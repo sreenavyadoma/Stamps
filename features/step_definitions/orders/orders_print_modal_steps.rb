@@ -1,12 +1,12 @@
 
 
 Then /^[Ii]n [Pp]rint [Mm]odal, click [Pp]rint button Incomplete Order$/ do
-  @incomplete_order_modal=stamps.orders.orders_toolbar.toolbar_print.click #todo-Rob move @incomplete_order_modal to stamps.orders.modals.incomplete_order_modal
+  @incomplete_order_modal = stamps.orders.orders_toolbar.toolbar_print.click #todo-Rob move @incomplete_order_modal to stamps.orders.modals.incomplete_order_modal
   expect("Incomplete Order Modal did not open").to eql "click print modal print button Incomplete Order" unless @incomplete_order_modal.instance_of? Orders::Toolbar::PrintIncompleteOrderError
 end
 
 Then /^[Cc]lick Orders Toolbar Print button expecting incomplete order$/ do
-  @incomplete_order_modal=stamps.orders.orders_toolbar.toolbar_print.click #this needs to change
+  @incomplete_order_modal = stamps.orders.orders_toolbar.toolbar_print.click #this needs to change
   expect("Incomplete Order Modal did not open").to eql "click print modal print button Incomplete Order" unless @incomplete_order_modal.instance_of? Orders::Toolbar::PrintIncompleteOrderError
 end
 
@@ -26,10 +26,10 @@ end
 Then /^[Ss]et [Oo]rders [Pp]rint [Mm]odal [Pp]rinter ?(?:|(.*))$/ do |printer|
   step "expect orders print modal is present"
   step "Orders print modal printer dropdown is present"
-  expect(test_param[:printer]=(printer.nil?)? modal_param.printer : printer).to_not be_nil, "PRINTER parameter is not defined. Printing tests must define PRINTER value either in cucumber.yml file or in Jenkins."
+  expect(test_param[:printer] = (printer.nil?) ? modal_param.printer : printer).to_not be_nil, "PRINTER parameter is not defined. Printing tests must define PRINTER value either in cucumber.yml file or in Jenkins."
   if test_param[:printer].include?('\\') #validate printer format
     expect(test_param[:printer]).to match(/\\.+\.*/)
-    test_param[:printer]=/\\\\(.+)\\/.match(test_param[:printer])[1]
+    test_param[:printer] = /\\\\(.+)\\/.match(test_param[:printer])[1]
   end
   expect(stamps.orders.modals.orders_print_modal.printer.select(test_param[:printer])).to_not be_nil, "Unable to select printer \"#{test_param[:printer]}\". \nMake sure \"#{test_param[:printer]}\" is configured for host #{modal_param.hostname}. \nUSR: #{test_param[:username]}, #{modal_param.web_app.to_s.capitalize}(#{modal_param.test_env.upcase})"
 end
@@ -69,22 +69,16 @@ Then /^[Ss]et [Pp]rint [Mm]odal Ship Date to (?:today|today plus (\d+))$/ do |da
   stamps.orders.modals.orders_print_modal.ship_date.textbox.set(test_helper.today_plus(day))
   stamps.orders.modals.orders_print_modal.ship_date.shipdate_label.click(10)
   stamps.orders.modals.orders_print_modal.ship_date.shipdate_label.double_click(10)
-  test_param[:ship_date]=stamps.orders.modals.orders_print_modal.ship_date.textbox.text
-  test_param[:ship_date]
+  step "expect Print modal Ship Date is #{day} days from today"
 end
 
 Then /^[Ss]et [Pp]rint [Mm]odal Ship Date [Cc]alendar to (?:today|today plus (\d+))$/ do |day|
   step "expect print modal ship date dropdown is present"
-  if day.nil?
-    stamps.orders.modals.orders_print_modal.ship_date.date_picker.today_plus('0')
-  else
-    stamps.orders.modals.orders_print_modal.ship_date.date_picker.today_plus(day)
-  end
-  test_param[:ship_date]=stamps.orders.modals.orders_print_modal.ship_date.textbox.text
-  test_param[:ship_date]
+  stamps.orders.modals.orders_print_modal.ship_date.date_picker.today_plus(day.nil? ? '0' : day)  #If print date is today, set day increase to zero, otherwise set to 'day' value
+  step "expect Print modal Ship Date is #{day} days from today"
 end
 
-Then /^[Ee]xpect [Pp]rint [Mm]odal Ship Date is (\d+) day\(s\) from today/ do |day|
+Then /^[Ee]xpect [Pp]rint [Mm]odal Ship Date is (\d+) (?:day|days) from today$/ do |day|
   step "expect print modal ship date dropdown is present"
   expect(stamps.orders.modals.orders_print_modal.ship_date.textbox.text).to eql(test_helper.date_printed(day))
 end
@@ -174,16 +168,16 @@ end
 
 #todo-Rob Rework print_expecting_error
 Then /^Print Order expecting error (.*)$/ do |error_message|
-  modal=stamps.orders.orders_toolbar.toolbar_print.print_expecting_error  #updated reference for printer_expecting_error
-  error_message=error_message.gsub("\\n","\n") #reformatting newline character to match actual character in modal
-  actual=modal.error_message
+  modal = stamps.orders.orders_toolbar.toolbar_print.print_expecting_error  #updated reference for printer_expecting_error
+  error_message = error_message.gsub("\\n","\n") #reformatting newline character to match actual character in modal
+  actual = modal.error_message
   modal.ok
   expect(actual).to include error_message
 end
 
 Then /^[Pp]rint expecting (.*) selected orders have errors and cannot be printed. To print the remaining orders, click Continue.$/ do |error_message|
-  modal=stamps.orders.modals.orders_print_modal.print_expecting_error
-  actual=modal.error_message
+  modal = stamps.orders.modals.orders_print_modal.print_expecting_error
+  actual = modal.error_message
   modal.continue.print
   expect(actual).to eql "#{error_message} selected orders have errors and cannot be printed.\nTo mail the remaining orders, click Continue."
 end
@@ -193,21 +187,21 @@ Then /^[Pp]rint expecting invalid address error$/ do
 end
 
 When /^[Pp]rint expecting rating error$/ do
-  modal=stamps.orders.modals.orders_print_modal.print_expecting_rating_error
-  actual=modal.error_message
+  modal = stamps.orders.modals.orders_print_modal.print_expecting_rating_error
+  actual = modal.error_message
   modal.close
   expect(actual).to include "An error occurred while attempting to rate your mail"
 end
 
 When /^[Pp]rint expecting some orders can not be printed$/ do
-  modal=stamps.orders.modals.orders_print_modal.print_expecting_error
-  actual=modal.error_message
+  modal = stamps.orders.modals.orders_print_modal.print_expecting_error
+  actual = modal.error_message
   modal.continue.print
   expect(actual).to include "To mail the remaining orders, click Continue"
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal Title is \"You have (.*) label\(s\) ready to print\"$/ do |expectation|
-  actual=stamps.orders.modals.orders_print_modal.label_count
+  actual = stamps.orders.modals.orders_print_modal.label_count
   stamps.orders.modals.orders_print_modal.close
   expect("You have #{actual} label(s) ready to mail").to eql("You have #{expectation} label(s) ready to mail")
 end
