@@ -53,17 +53,23 @@ module Stamps
         def print_media(str)
           case(str)
             when /Certified Mail Label - SDC-3610/
-              return :certified_mail
+              #return :certified_mail
+              return :cm3610
             when /Certified Mail Label - SDC-3710/
-              return :certified_mail
+              #return :certified_mail
+              return :cm3710
             when /Certified Mail Label - SDC-3910/
-              return :certified_mail_3910_3930
+              #return :certified_mail_3910_3930
+              return :cm3910
             when /Certified Mail Label - SDC-3930/
-              return :certified_mail_3910_3930
+              #return :certified_mail_3910_3930
+              return :cm3930
             when /Certified Mail Label - SDC-3810/
-              return :certified_mail_3810
+              #eturn :certified_mail_3810
+              return :cm3810
             when /Certified Mail Label - SDC-3830/
-              return :certified_mail_3830
+              #return :certified_mail_3830
+              return :cm3830
             when /Shipping Label/
               return :label
             when /Envelope/
