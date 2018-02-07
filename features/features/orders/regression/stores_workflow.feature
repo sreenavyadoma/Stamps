@@ -21,23 +21,23 @@ Feature:  All Store Management
       Then set PayPal Email Address to qaclient@stamps.com
       Then click Paypal verify email button
       Then set Paypal orders number option to use the Paypal transaction ID
-      #Then set Paypal orders number option to use the invoice number
-      #Then set PayPal Email Address restriction to qaclient@stamps.com
-      #Then set Paypal import option to import all transactions
-      #Then set Paypal import option to only import the following transaction types
-      #Then Check Integral Evolution as a Paypal transaction type
-      #Then Uncheck Integral Evolution as a Paypal transaction type
-      #Then Check Express Checkout as a Paypal transaction type
-      #Then Uncheck Express Checkout as a Paypal transaction type
+      Then set Paypal orders number option to use the invoice number
+      Then set PayPal Email Address restriction to qaclient@stamps.com
+      Then set Paypal import option to import all transactions
+      Then set Paypal import option to only import the following transaction types
+      Then Check Integral Evolution as a Paypal transaction type
+      Then Uncheck Integral Evolution as a Paypal transaction type
+      Then Check Express Checkout as a Paypal transaction type
+      Then Uncheck Express Checkout as a Paypal transaction type
       Then Connect to Paypal Store
 
       ## Settings Modal
       Then expect store settings PayPal modal is present
       ## General Settings
       Then set store settings store nickname to random
-      #Then expect Settings dialog store import new orders is checked
-      #Then Uncheck Settings dialog store import new orders
-      #Then expect Settings dialog store import new orders is Unchecked
+      Then expect Settings dialog store import new orders is checked
+      Then Uncheck Settings dialog store import new orders
+      Then expect Settings dialog store import new orders is Unchecked
       Then check Settings dialog store import new orders
       ## Service Mapping
       Then add store service Mapping 1, Requested Services service 1, Shipping service FCM Large Envelope/Flat

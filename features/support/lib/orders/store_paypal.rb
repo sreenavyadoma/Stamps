@@ -1,6 +1,11 @@
 module Stamps
   module Orders
     module Stores
+      module StoresIframe
+        def iframe
+          (cache[:iframe].nil?)?cache[:iframe]=browser.iframe(css: "[id=storeiframe]"):cache[:iframe]
+        end
+      end
 
       class Error400 < Browser::Base
 
@@ -117,13 +122,13 @@ module Stamps
       end
 
       class PayPalEmailVerSent < Browser::Base
-        def confirm_token
+        def confirm_token                  #This modal requires the user to verify receipt of email, which is outside of scope for automation
 
         end
       end
 
       class PayPalEmailVer < Browser::Base
-        def send_email_verification
+        def send_email_verification        #This modal requires the user to verify receipt of email, which is outside of scope for automation
 
         end
       end
@@ -139,7 +144,7 @@ module Stamps
       end
 
       module PayPalModals
-        def email_verification_modal
+        def email_verification_modal        #This modal requires the user to verify receipt of email, which is outside of scope for automation
 
         end
       end
@@ -148,10 +153,8 @@ module Stamps
       class PayPal < Browser::Base
         include PayPalModals
         include PayPalWindowTitle
+        include StoresIframe
         #assign({})
-        def iframe
-          browser.iframe(css: "[id=storeiframe]")
-        end
 
         def present?
           window_title.present?
@@ -173,53 +176,58 @@ module Stamps
           (cache[:verify_email_field].nil?||!cache[:verify_email_field].present?)?cache[:verify_email_field]=StampsField.new(iframe.button(css: "[ng-click='paypal.testConnection()']")):cache[:verify_email_field]
         end
 
+        def verify_email_button
+          (cache[:verify_email_button].nil?||!cache[:verify_email_button].present?)?cache[:verify_email_button]=StampsField.new(iframe.span(text: "Verify Email")):cache[:verify_email_button]
+        end
+
         def verify_email
-          button=StampsField.new(iframe.span(text: "Verify Email"))
           connect_to_store=ConnectYourPaypalStore.new(param)
-          button.click
-          sleep 5
-          connect_to_store if connect_to_store.present?
+          20.times do
+            return connect_to_store if connect_to_store.present?
+            verify_email_button.click
+            sleep(2)
+          end
         end
       end
 
       class ConnectYourPaypalStore < Browser::Base
         #assign({})
-        def iframe
-          browser.iframe(css: "[id=storeiframe]")
-        end
+        include StoresIframe
         def store_icon
-          StampsField.new(iframe.img(css: "img[src*=paypalbanner.png]"))
+          (cache[:verify_email_button].nil?||!cache[:verify_email_button].present?)?cache[:verify_email_button]=StampsField.new(iframe.img(css: "img[src*=paypalbanner.png]")):cache[:verify_email_button]
         end
 
         def present?
           restrict_to_email_address.present?
         end
 
-        def connect
-          button=StampsField.new(iframe.span(text: "Connect"))
+        def connect_button
+          (cache[:connect_button].nil?||!cache[:connect_button].present?)?cache[:connect_button]=StampsField.new(iframe.span(text: "Connect")):cache[:connect_button]
+        end
+
+        def connect              #Click connect button to connect to Paypal Store and bring up Store Settings modal
           store_settings=StoreSettings.new(param)
           10.times do
-            button.click
+            connect_button.click
             store_settings.wait_until_present
             return store_settings if store_settings.present?
           end
-
         end
 
         def radio_transaction_id
-          iframe.radio(css: 'input[id=transactionID]').set
+          (cache[:radio_transaction_id].nil?||!cache[:radio_transaction_id].present?)?cache[:radio_transaction_id]=StampsRadio.new(iframe.radio(css: 'input[id=transactionID]'), iframe.radio(css: 'input[id=transactionID]'), "class", "ng-valid-parse"):cache[:radio_transaction_id]
         end
 
         def radio_invoice_number
-          iframe.radio(css: 'input[id=invoiceNo]').set
+          (cache[:radio_invoice_number].nil?||!cache[:radio_invoice_number].present?)?cache[:radio_invoice_number]=StampsRadio.new(iframe.radio(css: 'input[id=invoiceNo]'), iframe.radio(css: 'input[id=invoiceNo]'), "class", "ng-valid-parse"):cache[:radio_invoice_number]
         end
 
         def radio_import_all_transactions
-          iframe.radio(css: 'input[id=importAllTransations]').set
+          (cache[:radio_import_all_transactions].nil?||!cache[:radio_import_all_transactions].present?)?cache[:radio_import_all_transactions]=StampsRadio.new(iframe.radio(css: 'input[id=importAllTransations]'), iframe.radio(css: 'input[id=importAllTransations]'), "class", "ng-valid-parse"):cache[:radio_import_all_transactions]
         end
 
         def radio_import_selected_types
-          iframe.radio(css: 'input[id=selectImport]').set
+          (cache[:radio_import_selected_types].nil?||!cache[:radio_import_selected_types].present?)?cache[:radio_import_selected_types]=StampsRadio.new(iframe.radio(css: 'input[id=selectImport]'), iframe.radio(css: 'input[id=selectImport]'), "class", "ng-valid-parse"):cache[:radio_import_selected_types]
         end
 
         def restrict_to_email_address

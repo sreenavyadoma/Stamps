@@ -3,7 +3,7 @@ module Stamps
     module Stores
       module StoresIframe
         def iframe
-          browser.iframe(css: "[id=storeiframe]")
+          (cache[:iframe].nil?)?cache[:iframe]=browser.iframe(css: "[id=storeiframe]"):cache[:iframe]
         end
       end
 
