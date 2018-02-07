@@ -409,6 +409,7 @@ rakuten: --tags @rakuten --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_A
 volusion: --tags @volusion --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 amazon: --tags @amazon --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 square_workflow: --tags @square_workflow --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+paypal_workflow: --tags @paypal_workflow --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
 # ----------------------------# MAIL Bugs
 bugs_advanced_options: --tags  @bugs_advanced_options --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
