@@ -15,7 +15,7 @@ Then /^expect store settings (\w+) modal is present$/ do |store_name|
 end
 
 Then /^expect store settings modal is present$/ do
-  step "pause for 20 seconds"
+  step "pause for 20 seconds" #todo-Rob change to? stamps.orders.marketplace.store_settings.window_title.wait_until_present(20)
   expect(stamps.orders.marketplace.store_settings.window_title.text).to eql("Settings")
 end
 
@@ -23,7 +23,7 @@ Then /^Store Settings: Set Store Nickname to (.*)$/ do |nickname|
   #test_config.logger.step "Store Settings: Set Store Nickname to #{nickname}"
   raise "Store Settings is not open.  Check your test workflow." if @store_settings.nil?
   #test_config.logger.step "Old Amazon Store Name:#{test_data[:store_name]}"
-  test_param[:store_name]=(nickname.downcase.include? 'random')?StampsTest.rand_alpha_numeric(20):nickname
+  test_param[:store_name] = (nickname.downcase.include? 'random') ? StampsTest.rand_alpha_numeric(4, 20) : nickname
   #test_config.logger.step "Store Nickname: #{test_data[:store_name]}"
   @store_settings.store_nickname.set test_param[:store_name]
 end
@@ -31,9 +31,8 @@ end
 Then /^Store Settings: Set service Mapping (\d+), Requested Services (.*), Shipping service (.*)$/ do |item_number, requested_services, shipping_service|
   #test_config.logger.step "Store Settings: Set Requested Services to random #{requested_services}"
   raise "Amazon Settings is not open.  Check your test workflow." if @store_settings.nil?
-
-  service_mapping_item =@store_settings.service_mapping.item item_number.to_i
-  service_mapping_item.requested_services.set(requested_services.downcase.include? 'random')?StampsTest.rand_alpha_numeric(20):requested_services
+  service_mapping_item = @store_settings.service_mapping.item item_number.to_i
+  service_mapping_item.requested_services.set(requested_services.downcase.include? 'random') ? StampsTest.rand_alpha_numeric(4, 20) : requested_services
   service_mapping_item.shipping_Service.select shipping_service
 end
 
@@ -56,9 +55,7 @@ Then /^Store Settings: Save$/ do
   @store_settings.save
 end
 
-
 #### Settings Modal ####
-
 Then /^[Ee]xpect [Ss]quare [Ss]ettings [Dd]ialog is present$/ do
   step "pause for 5 seconds"
   expect(stamps.orders.marketplace.square.settings.window_title.present?).to be(true), "Sqaure Settings dialog is not present"
