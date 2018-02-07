@@ -28,8 +28,6 @@ Then /^[Ee]xpect [Oo]rder [Ss]ettings Store name (.*) to be present$/ do |store|
   expect(stamps.orders.modals.orders_settings_modal.stores_tab.store_list(store)).to be_present
 end
 
-
-
 Then /^Manage [Ss]tores: Close Modal$/ do
   #test_config.logger.step "Manage [Ss]tores: Close Modal"
   @manage_stores.close
