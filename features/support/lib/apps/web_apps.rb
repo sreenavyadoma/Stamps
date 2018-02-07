@@ -11,6 +11,16 @@ module Stamps
       end
     end
 
+    def firewall
+      begin
+        raise 'Not Implemented'
+      rescue StandardError > e
+        test_config.logger.error e.message
+        test_config.logger.error e.backtrace.join('\n')
+        raise e
+      end
+    end
+
     def stamps
       begin
         @stamps = StampsDotCom.new(modal_param) if @stamps.nil?
