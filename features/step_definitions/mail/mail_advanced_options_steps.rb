@@ -221,7 +221,7 @@ end
 Then /^[Ee]xpect Print Form Return Receipt is disabled$/ do
   step "Expect Print form responds to Return Receipt (return_receipt)"
   # expect(stamps.mail.print_form.return_receipt.enabled?).to be(false), "Print form include Return Receipt is enabled"
-  expect(stamps.mail.print_form.return_receipt.disabled?).to be(true), "Print form include Return Receipt is enabled"
+  expect(stamps.mail.print_form.return_receipt.stamps_disabled?).to be(true), "Print form include Return Receipt is enabled"
 end
 
 Then /^[Ee]xpect Print Form Return Receipt is not visible$/ do
