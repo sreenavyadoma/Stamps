@@ -70,7 +70,6 @@ Feature: Manually verify all mail pieces in Staging
     Then click Mail Print modal Print button
     Then Sign out
 
-
   Scenario: Shipping Label - 8 ½" x 11" Paper
     Then select Print On Shipping Label - Paper
     Then set Print form Mail-From to default
