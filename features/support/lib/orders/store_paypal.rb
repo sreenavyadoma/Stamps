@@ -118,13 +118,13 @@ module Stamps
 
       class PayPalEmailVerSent < Browser::Base
         def confirm_token
-
+          raise 'Not Implemented.'
         end
       end
 
       class PayPalEmailVer < Browser::Base
         def send_email_verification
-
+          raise 'Not Implemented.'
         end
       end
 
