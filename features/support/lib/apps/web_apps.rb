@@ -4,7 +4,17 @@ module Stamps
       begin
         @health = HealthCheck.new(modal_param) if @health.nil?
         @health
-      rescue StandardError > e
+      rescue Exception > e
+        test_config.logger.error e.message
+        test_config.logger.error e.backtrace.join('\n')
+        raise e
+      end
+    end
+
+    def firewall
+      begin
+        raise 'Not Implemented'
+      rescue Exception > e
         test_config.logger.error e.message
         test_config.logger.error e.backtrace.join('\n')
         raise e
@@ -15,7 +25,7 @@ module Stamps
       begin
         @stamps = StampsDotCom.new(modal_param) if @stamps.nil?
         @stamps
-      rescue StandardError > e
+      rescue Exception > e
         test_config.logger.error e.message
         test_config.logger.error e.backtrace.join('\n')
         raise e

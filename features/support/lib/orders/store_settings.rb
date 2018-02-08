@@ -3,7 +3,7 @@ module Stamps
     module Stores
       module StoresIframe
         def iframe
-          (cache[:iframe].nil?)?cache[:iframe]=browser.iframe(css: "[id=storeiframe]"):cache[:iframe]
+          browser.iframe(css: "[id=storeiframe]")
         end
       end
 
@@ -13,52 +13,17 @@ module Stamps
         end
       end
 
-      module Products
-        def auto_add_to_products_page
-          (cache[:add_to_products].nil?||!cache[:add_to_products].present?)?cache[:add_to_products]=StampsCheckbox.new(
-              iframe.input(id: "addNewProducts"),
-              iframe.input(id: "addNewProducts"),
-              "class",
-              "ng-not-empty"):cache[:add_to_products]
-        end
-
-        def sku
-          (cache[:sku].nil?||!cache[:sku].present?)?cache[:sku]=StampsRadio.new(
-              iframe.label(css: "label[for='sku']"),
-              iframe.input(id: 'sku'),
-              "class",
-              "parse"):cache[:sku]
-        end
-
-        def product_listing_name
-          (cache[:product_listing_name].nil?||!cache[:product_listing_name].present?)?cache[:product_listing_name]=StampsRadio.new(
-              iframe.label(css: "label[for='productListingName']"),
-              iframe.input(id: 'productListingName'),
-              "class",
-              "parse"):cache[:product_listing_name]
-        end
-      end
-
       class StoreSettingsShippingService < Browser::Base
         include StoresIframe
-        #assign({})
-        attr_reader :index
-        def initialize(param, index)
-          super(param)
-          @index = index
-        end
+
+
 
         def textbox
-          if cache["textbox#{index}".to_sym].nil? || !cache["textbox#{index}".to_sym].present?
-            cache["textbox#{index}".to_sym] = StampsTextbox.new(iframe.spans(css: "[class^=ui-select-match][placeholder='Select a Service'] span[ng-hide*=select]")[index])
-          end
-          cache["textbox#{index}".to_sym]
+          (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(iframe.span(css: "[class^=ui-select-match][placeholder='Select a Service'] span[ng-hide*=select]")):cache[:textbox]
         end
 
         def dropdown
-          if cache["dropdown#{index}".to_sym].nil? || !cache["dropdown#{index}".to_sym].present?
-            cache["dropdown#{index}".to_sym] = StampsField.new(iframe.divs(class: "selectize-input")[index])
-          end
+          (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsField.new(iframe.div(class: "selectize-input")):cache[:dropdown]
         end
 
         def select(str)
@@ -159,93 +124,11 @@ module Stamps
         end
       end
 
-
-      class ServiceMapping < Browser::Base
-        include StoresIframe
-        attr_reader :index
-        def initialize(param, index)
-          super(param)
-          @index = index - 1
-        end
-
-        def delete
-          if cache["delete#{index}".to_sym].nil? || !cache["delete#{index}".to_sym].present?
-            cache["delete#{index}".to_sym] = StampsField.new(iframe.buttons(css: "[class=action remove]")[index])
-          end
-          cache["delete#{index}".to_sym].scroll_into_view
-          cache["delete#{index}".to_sym]
-        end
-
-        def requested_service_mapping
-          if cache["requested_service_mapping#{index}".to_sym].nil? || !cache["requested_service_mapping#{index}".to_sym].present?
-            cache["requested_service_mapping#{index}".to_sym] = StampsTextbox.new(iframe.text_fields(name: "serviceName")[index])
-          end
-          cache["requested_service_mapping#{index}".to_sym].scroll_into_view
-          cache["requested_service_mapping#{index}".to_sym]
-        end
-
-        def shipping_service_mapping
-          if cache["shipping_service_mapping#{index}".to_sym].nil?
-            cache["shipping_service_mapping#{index}".to_sym] = StoreSettingsShippingService.new(param, index)
-          end
-          cache["shipping_service_mapping#{index}".to_sym].textbox.scroll_into_view
-          cache["shipping_service_mapping#{index}".to_sym]
-        end
-
-        def present?
-          requested_service_mapping.present?
-        end
-
-      end
-
-
-      class ServiceMappingList < Browser::Base
-        include StoresIframe
-        def add_service_mapping
-          if cache[:add_service_mapping].nil? || !cache[:add_service_mapping].present?
-            cache[:add_service_mapping] = StampsField.new(iframe.button(css: "[class*='action add']"))
-          end
-          cache[:add_service_mapping]
-        end
-
-        def present?
-          add_item.present?
-        end
-
-        def size
-          iframe.tables(css: "[class^=service-group]").size
-        end
-
-        def mapping_number(number)
-          cache["mapping_number#{number}".to_sym] = ServiceMapping.new(param, number) if cache["mapping_number#{number}".to_sym].nil?
-          5.times do
-            if cache["mapping_number#{number}".to_sym].present?
-              cache["mapping_number#{number}".to_sym].requested_service_mapping.scroll_into_view
-              return cache["mapping_number#{number}".to_sym]
-            end
-
-            if number > size
-              add_service_mapping.click
-              sleep(0.4)
-              # expose Made In country list of values on item add
-              #cache["mapping_number#{number}".to_sym].made_in.dropdown.click
-              #sleep(0.05)
-              #cache["mapping_number#{number}".to_sym].made_in.dropdown.click
-            end
-          end
-          nil
-        end
-
-
-
-      end
-
       class StoreSettings < Browser::Base
         include StoresIframe
         include StoreSettingsWindowTitle
-        include Products
 
-        #assign({})
+
 
         def present?
           store_nickname.present?
@@ -255,19 +138,48 @@ module Stamps
           store_nickname.wait_until_present(*args)
         end
 
-        def service_mapping_list
-          cache[:service_mapping_list] = ServiceMappingList.new(param) if cache[:service_mapping_list].nil?
-          cache[:service_mapping_list]
-        end
-
         def store_nickname
           (cache[:store_nickname].nil?||!cache[:store_nickname].present?)?cache[:store_nickname]=StampsTextbox.new(
               iframe.text_field(id: "storeName")):cache[:store_nickname]
         end
 
+        def shipping_service
+          (cache[:shipping_service].nil?||!cache[:shipping_service].present?)?cache[:shipping_service]=StoreSettingsShippingService.new(
+              param):cache[:shipping_service]
+        end
+
         def auto_import_new_orders
           (cache[:auto_import].nil?||!cache[:v].present?)?cache[:auto_import]=Stamps::Browser::StampsCheckbox.new(
               iframe.input(id: 'importOrders'), iframe.input(id: 'importOrders'), "class", "ng-not-empty"):cache[:auto_import]
+        end
+
+        def requested_service
+          (cache[:requested_service].nil?||!cache[:requested_service].present?)?cache[:requested_service]=StampsTextbox.new(
+              iframe.text_field(name: "serviceName")):cache[:requested_service]
+        end
+
+        def auto_add_to_products_page
+          (cache[:add_to_products].nil?||!cache[:add_to_products].present?)?cache[:add_to_products]=StampsCheckbox.new(
+              iframe.input(id: "addNewProducts"),
+              iframe.input(id: "addNewProducts"),
+              "class",
+              "parse"):cache[:add_to_products]
+        end
+
+        def sku
+          (cache[:sku].nil?||!cache[:sku].present?)?cache[:sku]=StampsRadio.new(
+              iframe.label(css: "label[for='sku']"),
+              iframe.input(id: 'sku'),
+              "class",
+              "parse"):cache[:sku]
+        end
+
+        def product_listing_name
+          (cache[:product_listing_name].nil?||!cache[:product_listing_name].present?)?cache[:product_listing_name]=StampsRadio.new(
+              iframe.label(css: "label[for='productListingName']"),
+              iframe.input(id: 'productListingName'),
+              "class",
+              "parse"):cache[:product_listing_name]
         end
 
         def save

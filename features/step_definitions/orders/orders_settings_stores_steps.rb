@@ -8,10 +8,6 @@ Then /^[Ss]elect [Oo]rder [Ss]ettings [Ss]tore (.+)$/ do |store|
   expect(stamps.orders.modals.orders_settings_modal.stores_tab.select_store(store)).to eql(store)
 end
 
-Then /^[Ss]elect saved [Oo]rder [Ss]ettings [Ss]tore$/ do     # select the store that was most recently created and saved
-  expect(stamps.orders.modals.orders_settings_modal.stores_tab.select_store(test_param[:store_nickname])).to eql(test_param[:store_nickname])
-end
-
 Then /^[Cc]lick [Oo]rder [Ss]ettings [Ss]tores [Ee]dit [Bb]utton$/ do
   stamps.orders.modals.orders_settings_modal.stores_tab.edit
 end
@@ -21,11 +17,7 @@ Then /^[Cc]lick [Oo]rder [Ss]ettings [Ss]tores Reconnect [Bb]utton$/ do
 end
 
 Then /^[Cc]lick [Oo]rder [Ss]ettings [Ss]tores Delete [Bb]utton$/ do
-  stamps.orders.modals.orders_settings_modal.stores_tab.delete
-end
-
-Then /^[Cc]lick [Oo]rder [Ss]ettings [Ss]tores Delete confirmation [Bb]utton$/ do
-  stamps.orders.modals.orders_settings_modal.stores_tab.delete_store_confirm_modal.confirm_delete
+  pending #stamps.orders.modals.orders_settings_modal.stores_tab.delete
 end
 
 Then /^[Ss]elect [Oo]rder [Ss]ettings Store name (.*)$/ do |store|
@@ -35,24 +27,6 @@ end
 Then /^[Ee]xpect [Oo]rder [Ss]ettings Store name (.*) to be present$/ do |store|
   expect(stamps.orders.modals.orders_settings_modal.stores_tab.store_list(store)).to be_present
 end
-
-Then /^[Ee]xpect [Oo]rders [Ss]ettings [Ss]tore [Ss]aved nickname is not present in list$/ do # expect that the store that was most recently created and saved is not present in the store list
-  sleep 5
-  expect(stamps.orders.modals.orders_settings_modal.stores_tab.store_name(test_param[:store_nickname]).present?).not_to be(true), "Deleted store is PRESENT and it should NOT be PRESENT"
-end
-
-Then /^[Ee]xpect [Oo]rders [Ss]ettings [Ss]tore [Nn]ickname (.*) is not present in list$/ do |store|
-  sleep 5
-  expect(stamps.orders.modals.orders_settings_modal.stores_tab.store_name(store).present?).not_to be(true), "Deleted store is PRESENT and it should NOT be PRESENT"
-end
-
-Then /^[Cc]lick [Dd]one in [Oo]rders [Ss]ettings [Ss]tore tab$/ do
-  sleep 1
-  stamps.orders.modals.orders_settings_modal.stores_tab.done.click
-end
-
-
-
 
 Then /^Manage [Ss]tores: Close Modal$/ do
   #test_config.logger.step "Manage [Ss]tores: Close Modal"

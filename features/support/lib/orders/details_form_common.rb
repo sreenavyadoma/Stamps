@@ -3,7 +3,7 @@ module Stamps
     module DetailsFormCommon
 
       class DetailsFormDimensions < Browser::Base
-        #assign({})
+
 
         def initialize(param, form_type)
           super(param)
@@ -94,7 +94,7 @@ module Stamps
       end
 
       class DetailsFormShipFrom < Browser::Base
-        #assign({})
+
 
         attr_reader :form_type
 
