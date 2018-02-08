@@ -18,7 +18,7 @@ module Stamps
       class PrintPreview < Browser::Base
         include PrintFormBlurOut
 
-        #assign({})
+
 
         def link
           (cache[:buy_more_labels].nil?||!cache[:buy_more_labels].present?)?cache[:buy_more_labels]=StampsField.new(browser.span(text: "Buy More Labels")):cache[:buy_more_labels]

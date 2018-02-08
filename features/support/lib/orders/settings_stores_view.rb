@@ -3,7 +3,7 @@ module Stamps
     module OrdersSettings
 
       class TempCache < Base::Base
-        #assign({})
+
       end
 
       module StoresTabViewToolbar
@@ -59,7 +59,7 @@ module Stamps
         include StoresTabViewToolbar
         include StoresTabViewBottom
 
-        #assign({})
+
 
         def present?
           add_btn.present?

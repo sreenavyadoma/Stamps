@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     class WebOrders < Browser::Base
-      #assign({})
+
 
       def orders_toolbar
         cache[:orders_toolbar] = Orders::Toolbar::OrdersToolbar.new(param) if cache[:orders_toolbar].nil?

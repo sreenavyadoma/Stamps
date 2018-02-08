@@ -9,7 +9,7 @@ module Stamps
 
       class Modal < Browser::Base
         include WindowTitle
-        #assign({})
+
 
         def new_order_id #The default text in the New Order ID field, usually the existing orders ID with -1 appended to the end
           (cache[:new_order_id].nil? || !cache[:new_order_id].present?) ? cache[:new_order_id] = StampsTextbox.new(browser.text_field(css: "div[id^=splitorderwindow-][class*=dialogue-content]>div>div>div>div>div>div>div>div>div>div>div>input")) : cache[:new_order_id]

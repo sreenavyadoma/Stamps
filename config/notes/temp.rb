@@ -26,7 +26,7 @@ class Parent
 end
 
 class Daughter < Parent
-  #assign({})
+  
 
   def add(name, value)
     thing[name]=value

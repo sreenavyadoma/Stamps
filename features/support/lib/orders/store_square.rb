@@ -103,7 +103,7 @@ module Stamps
         include GeneralSettings
         include ServiceMapping
 
-        #assign({})
+
 
         def iframe
           browser.iframe(css: "iframe[id=storeiframe]")
@@ -141,7 +141,7 @@ module Stamps
 
       class Square < Browser::Base
         include SquareWindowTitle
-        #assign({})
+
 
         def iframe
           browser.iframe(css: "iframe[id=storeiframe]")
