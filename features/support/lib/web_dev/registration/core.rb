@@ -1,24 +1,23 @@
 module Stamps
   module Registration
+    ##
+    # help_fields is an array
       class RegHelpBlock
-        attr_accessor :browser, :help_fields
-        def initialize(browser, help_fields)
-          @help_fields=help_fields
-          @browser=browser
+        attr_accessor  :help_fields
+        def initialize(help_fields)
+          @help_fields = help_fields
         end
 
-        def size
-          help_fields.size.to_s
+        def count
+         help_fields.text.split("\n").size
+         end
+
+        #alias_method :count, :size
+
+        def text(index)
+            help_fields.text.split("\n")[index]
         end
 
-        def tooltip(*args)
-          if args.length==0
-            tooltip_index=0
-          else
-            tooltip_index=args[0].to_i
-          end
-          StampsField.new(help_fields[tooltip_index]).text
-        end
       end
   end
 end

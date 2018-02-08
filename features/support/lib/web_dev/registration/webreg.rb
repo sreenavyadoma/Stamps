@@ -14,7 +14,7 @@ module Stamps
       end
 
       def profile
-        cache[:profile] = Profile::ProfilePage.new(param) if cache[:profile].nil?
+        cache[:profile] = Profile::Page.new(param) if cache[:profile].nil?
         cache[:profile]
       end
 

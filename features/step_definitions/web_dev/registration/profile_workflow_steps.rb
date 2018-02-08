@@ -13,46 +13,40 @@ Then /^[Pp]opulate all [Pp]rofile page required fields$/ do
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Ee]mail to (?:random value|(.*))$/ do |str|
-  registration.profile.email.wait_until_present(10)
-  expect(registration.profile.email).to be_present, "Profile page did not load properly, check your test."
-  #expect(registration.profile.email.text).to eql str
-  #expect(['Abc', 'D']).to include('Y')
-
-  registration.profile.email.set(test_param[:email]=(str.nil?)?(StampsTest.rand_email):str)
+  registration.profile.email.textbox.wait_until_present(10)
+  expect(registration.profile.email.textbox).to be_present, "Profile page did not load properly, check your test."
+  registration.profile.email.textbox.set(test_param[:email]=(str.nil?)?(StampsTest.rand_email):str)
   step "blur out on profile page"
 
 
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Uu]sername to (?:random value|(.*))$/ do |str|
-  registration.profile.account_username.set((test_param[:username]=(str.nil?)?(StampsTest.rand_usr):str))
+  registration.profile.account_username.textbox.set((test_param[:username]=(str.nil?)?(StampsTest.rand_usr):str))
   step "blur out on profile page"
 end
 
-Then /^[Ee]xpect Profile page [Uu]sername tooltip (\d+) to be (.*)$/ do |tooltip_index, str|
-  expect(registration.profile.account_username.help_block.tooltip(tooltip_index)).to eql(str)
-end
-
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Uu]sername is (?:correct|(.*))$/ do |str|
-  expect(registration.profile.account_username.text).to eql((str.nil?)?test_param[:username]:str)
+  expect(registration.profile.account_username.textbox.text).to eql((str.nil?)?test_param[:username]:str)
 
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Pp]assword to (?:random value|(.*))$/ do |str|
  # registration.profile.account_password.set(test_param[:password]=(str.nil?)?"pass111":str) #test_helper.random_password
-   registration.profile.account_password.set(test_param[:password]=(str.nil?)?StampsTest.rand_alpha_numeric(6,14):str)
+   registration.profile.account_password.textbox.set(test_param[:account_password]=(str.nil?)?StampsTest.rand_alpha_numeric(5,13):str)
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Pp]assword is (?:correct|(.*))$/ do |str|
-  expect(registration.profile.account_password.text).to eql((str.nil?)?test_param[:password]:str)
+  expect(registration.profile.account_password.textbox.text).to eql((str.nil?)?test_param[:account_password]:str)
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Rr]e-[Tt]ype [Pp]assword to (?:same as previous password|(.*))$/ do |str|
-  registration.profile.retype_password.set(test_param[:retype_password]=(str.nil?)?(test_param[:password]):str)
+  registration.profile.retype_password.textbox.set(test_param[:retype_password]=(str.nil?)?(test_param[:account_password]):str)
+
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Rr]e-[Tt]ype [Pp]assword is (?:correct|(.*))$/ do |str|
-  expect(registration.profile.retype_password.text).to eql((str.nil?)?test_param[:retype_password]:str)
+  expect(registration.profile.retype_password.textbox.text).to eql((str.nil?)?test_param[:retype_password]:str)
 end
 
 # Business Use - Mostly mailing (letters/postcards/flats)
@@ -60,11 +54,11 @@ end
 # Business Use - Both mailing and shipping
 # Individual/Home Office
 Then /^[Ss]et [Pp]rofile [Pp]age [Ss]urvey [Qq]uestion to (.*)$/ do |str|
-  test_param[:survey_question_selected]=registration.profile.survey_question.select(test_param[:survey_question]=str)
-end
+  test_param[:survey_question_selected]=registration.profile.survey_question.survey_question_dropdown.select(test_param[:survey_question]=str)
+  end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Ss]urvey [Qq]uestion is (?:correct|(.*))$/ do |str|
-  expect(registration.profile.survey_question.text).to include((str.nil?)?test_param[:survey_question]:str)
+  expect(registration.profile.survey_question.survey_question_dropdown.text).to include((str.nil?)?test_param[:survey_question]:str)
 end
 
 #Magazine Ad
@@ -83,30 +77,31 @@ end
 #Email from Stamps.com
 # Already used in office
 Then /^[Ss]et How did you hear about us\? to (.*)$/ do |str|
-  test_param[:survey_question_selected]=registration.profile.referer_name.select(test_param[:referer_name]=str) if registration.profile.referer_name.present?
+  test_param[:survey_question_selected]=registration.profile.referer_name.referer_name_dropdown.select(test_param[:referer_name]=str) if registration.profile.referer_name.referer_name_dropdown.present?
 end
 
 Then /^[Ee]xpect How did you hear about us\? is (?:correct|(.*))$/ do |str|
-  expect(registration.profile.referer_name.text).to eql((str.nil?)?test_param[:referer_name]:str) if registration.profile.referer_name.present?
+  expect(registration.profile.referer_name.referer_name_dropdown.text).to eql((str.nil?)?test_param[:referer_name]:str) if registration.profile.referer_name.present?
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Pp]romo [Cc]ode to (?:an empty string|(.*))$/ do |str|
   step "show profile page promo code textbox"
-  registration.profile.promo_code.set(test_param[:promo_code]=(str.nil?)?'':str)
+  registration.profile.promo_code.textbox.set(test_param[:promo_code]=(str.nil?)?'':str)
 
 end
 
-Then /^[Ee]xpect Profile page [Pp]romo [Cc]ode tooltip (\d+) to be (.*)$/ do |tooltip_index, str|
-  expect(registration.profile.promo_code.help_block.tooltip(tooltip_index)).to eql(str)
+Then /^[Ee]xpect Profile page [Pp]romo [Cc]ode tooltip (\d+) to be (.*)$/ do |index, str|
+  expect(registration.profile.promo_code.tooltip.text(index.to_i - 1)).to eql(str)
 end
 
 Then /^[Ss]how [Pp]rofile [Pp]age [Pp]romo [Cc]ode [Tt]extbox$/ do
-  registration.profile.show_promo_code
+  registration.profile.promo_code.link.click if registration.profile.promo_code.link.present?
+  expect(registration.profile.promo_code.textbox).to be_present, "Unable to show Promo Code textbox upon clicking Show Promo Code link."
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Pp]romo [Cc]ode is (?:correct|(.*))$/ do |str|
   step "show profile page promo code textbox"
-  expect(registration.profile.show_promo_code.text).to eql((str.nil?)?test_param[:promo_code]:str)
+  expect(registration.profile.promo_code.textbox).to eql((str.nil?)?test_param[:promo_code]:str)
 end
 
 Then /^[Cc]heck [Pp]rofile [Pp]age [Mm]oney-saving offers and new products$/ do

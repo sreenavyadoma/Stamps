@@ -3,9 +3,10 @@ module Stamps
     class SdcWebsite < Browser::Base
 
       def get_started_btn
-        cache[:get_started_btn] = StampsField.new(browser.button(css: "div[class*='pull-right']>button[class*=register]")) if cache[:web_apps].nil?
-        cache[:get_started_btn]
+        cache[:get_started_btn].nil? || !cache[:get_started_btn].present? ? cache[:get_started_btn] = StampsField.new(browser.button(css: "div[class*='pull-right']>button[class*=register]")) :cache[:get_started_btn]
       end
+
+
 
       def registration
         cache[:registration] = WebRegistration.new(param) if cache[:registration].nil?
@@ -28,16 +29,6 @@ module Stamps
         get_started_btn.wait_until_present(10)
         expect(get_started_btn).to be_present
       end
-
-
-      # def get_started #todo-MH move this functionality to step def, keeping page objects pure
-      #   10.times do
-      #     get_started_btn.click
-      #     registration.wait_until_present(5)
-      #     return registration if registration.present?
-      #   end
-      #   expect(browser.url).to include('profile')
-      # end
 
     end
   end

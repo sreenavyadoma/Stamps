@@ -12,11 +12,12 @@ Feature: Test Workflow - Theme 1632 Happy Path
     Then set Profile page Re-type password to same as previous password
     Then set Profile page Survey Question to Individual
     Then set Profile page Promo Code to PR33-NH77
-  #  Then set How did you hear about us? to Television Commercial
+    Then set How did you hear about us? to Television Commercial
 
-   # Then continue to Membership page
+    #Then check Profile page Security Questions is present
+    Then continue to Membership page
 
-   # Then check Profile page Security Questions is present
+
 
     # Membership Page
     # Then set Membership page First Name to random
