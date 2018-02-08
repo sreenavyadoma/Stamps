@@ -494,7 +494,7 @@ module Stamps
           radio.click
         end
         expect(selected?).to be(true), 'Unable to select radio button'
-        self
+        selected?
       end
 
       def selected?
