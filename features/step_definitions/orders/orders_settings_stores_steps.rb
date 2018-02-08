@@ -8,7 +8,7 @@ Then /^[Ss]elect [Oo]rder [Ss]ettings [Ss]tore (.+)$/ do |store|
   expect(stamps.orders.modals.orders_settings_modal.stores_tab.select_store(store)).to eql(store)
 end
 
-Then /^[Ss]elect saved [Oo]rder [Ss]ettings [Ss]tore$/ do
+Then /^[Ss]elect saved [Oo]rder [Ss]ettings [Ss]tore$/ do     # select the store that was most recently created and saved
   expect(stamps.orders.modals.orders_settings_modal.stores_tab.select_store(test_param[:store_nickname])).to eql(test_param[:store_nickname])
 end
 
@@ -36,14 +36,14 @@ Then /^[Ee]xpect [Oo]rder [Ss]ettings Store name (.*) to be present$/ do |store|
   expect(stamps.orders.modals.orders_settings_modal.stores_tab.store_list(store)).to be_present
 end
 
-Then /^[Ee]xpect [Oo]rders [Ss]ettings [Ss]tore [Ss]aved nickname is not present in list$/ do
+Then /^[Ee]xpect [Oo]rders [Ss]ettings [Ss]tore [Ss]aved nickname is not present in list$/ do # expect that the store that was most recently created and saved is not present in the store list
   sleep 5
-  expect(stamps.orders.modals.orders_settings_modal.stores_tab.store_exists(test_param[:store_nickname])).not_to be(true), "Deleted store is PRESENT and it should NOT be PRESENT"
+  expect(stamps.orders.modals.orders_settings_modal.stores_tab.store_name(test_param[:store_nickname]).present?).not_to be(true), "Deleted store is PRESENT and it should NOT be PRESENT"
 end
 
 Then /^[Ee]xpect [Oo]rders [Ss]ettings [Ss]tore [Nn]ickname (.*) is not present in list$/ do |store|
   sleep 5
-  expect(stamps.orders.modals.orders_settings_modal.stores_tab.store_exists(store)).not_to be(true), "Deleted store is PRESENT and it should NOT be PRESENT"
+  expect(stamps.orders.modals.orders_settings_modal.stores_tab.store_name(store).present?).not_to be(true), "Deleted store is PRESENT and it should NOT be PRESENT"
 end
 
 Then /^[Cc]lick [Dd]one in [Oo]rders [Ss]ettings [Ss]tore tab$/ do

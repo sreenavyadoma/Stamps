@@ -111,25 +111,20 @@ module Stamps
           add_btn.present?
         end
 
+        def store_name (store)
+          StampsField.new(browser.div(text: store))
+        end
+
         def select_store(store)
-          field = StampsField.new(browser.div(text: store))
           sleep 5
           20.times do
-            field.click
-            return field.text if field.field.parent.parent.parent.parent.attribute_value('class').include?('selected')
+            store_name(store).click
+            return store_name(store).text if store_name(store).field.parent.parent.parent.parent.attribute_value('class').include?('selected')
           end
           nil
         end
 
-        def store_exists(store)
-          10.times do
-            sleep 1
-            if !(StampsField.new(browser.div(text: store)).present?)
-              return StampsField.new(browser.div(text: store)).present?
-            end
-          end
-          StampsField.new(browser.div(text: store)).present?
-        end
+
       end
 
     end

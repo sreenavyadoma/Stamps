@@ -16,10 +16,12 @@ Feature:  All Store Management
       Then connect Marketplace store Paypal
       Then expect Paypal store modal present
       Then expect Paypal logo present
-      ##Connecting to Paypal
 
+      ##Paypal Email Verification
       Then set PayPal Email Address to qaclient@stamps.com
       Then click Paypal verify email button
+
+      ## Paypal Settings
       Then set Paypal orders number option to use the Paypal transaction ID
       Then set Paypal orders number option to use the invoice number
       Then set PayPal Email Address restriction to qaclient@stamps.com
@@ -31,32 +33,38 @@ Feature:  All Store Management
       Then Uncheck Express Checkout as a Paypal transaction type
       Then Connect to Paypal Store
 
-      ## Settings Modal
+      ## Store Settings
       Then expect store settings PayPal modal is present
-      ## General Settings
       Then set store settings store nickname to random
       Then expect Settings dialog store import new orders is checked
       Then Uncheck Settings dialog store import new orders
       Then expect Settings dialog store import new orders is Unchecked
       Then check Settings dialog store import new orders
+
       ## Service Mapping
       Then add store service Mapping 1, Requested Services service 1, Shipping service FCM Large Envelope/Flat
-      Then Store Settings: click Save
 
-      ## Paypal Settings Modal
+      ##Products Settings
+      Then Check Store Settings dialog Automatically add new products to the Products page
+      Then Uncheck Store Settings dialog Automatically add new products to the Products page
+      Then Select Uniquely Identify Products by SKU
+      Then Select Uniquely Identify Products by Product Listing Name
+      Then Click Save in Store Settings modal
+
+      ##Edit Sore Settings
       Then pause for 2 seconds
       Then select saved order settings store
       Then click order settings stores edit button
       Then expect store settings PayPal modal is present
-      ## General Settings
       Then set store settings store nickname to random
       Then expect Settings dialog store import new orders is checked
       Then Uncheck Settings dialog store import new orders
       Then expect Settings dialog store import new orders is Unchecked
       Then check Settings dialog store import new orders
-      ## Service Mapping
       Then add store service Mapping 2, Requested Services service 2, Shipping service FCM Large Envelope/Flat
-      Then Store Settings: click Save
+      Then Click Save in Store Settings modal
+
+      ##Delete Store
       Then select saved order settings store
       Then click order settings stores Delete button
       Then click order settings stores Delete confirmation button

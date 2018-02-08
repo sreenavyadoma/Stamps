@@ -100,6 +100,25 @@ Then /^[Ee]xpect Settings dialog store import new orders is Unchecked$/ do
   expect(stamps.orders.marketplace.store_settings.auto_import_new_orders.checked?).not_to be(true), "Automatically import new orders is NOT unchecked"
 end
 
-Then /^Store Settings: click Save$/ do
+Then /^[Cc]heck Store Settings dialog Automatically add new products to the [Pp]roducts page$/ do
+  stamps.orders.marketplace.store_settings.auto_add_to_products_page.check
+end
+
+Then /^[Uu]ncheck Store Settings dialog Automatically add new products to the [Pp]roducts page$/ do
+  stamps.orders.marketplace.store_settings.auto_add_to_products_page.uncheck
+end
+
+Then /^[Ss]elect [Uu]niquely [Ii]dentify [Pp]roducts by SKU$/ do
+  #The default selected radio button on this page is sku, and in its initial default state the class name for sku is different than when it is selected by the user, making the StampsRadio validation fail.
+  #Therefore, product_listing_name needs to be selected first so that the when sku is selected, its class name can be used for validation.
+  stamps.orders.marketplace.store_settings.product_listing_name.select
+  stamps.orders.marketplace.store_settings.sku.select
+end
+
+Then /^[Ss]elect [Uu]niquely [Ii]dentify [Pp]roducts by [Pp]roduct [Ll]isting [Nn]ame$/ do
+  stamps.orders.marketplace.store_settings.product_listing_name.select
+end
+
+Then /^[Cc]lick [Ss]ave in [Ss]tore [Ss]ettings modal$/ do
   stamps.orders.marketplace.store_settings.save.click
 end

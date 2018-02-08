@@ -13,6 +13,32 @@ module Stamps
         end
       end
 
+      module Products
+        def auto_add_to_products_page
+          (cache[:add_to_products].nil?||!cache[:add_to_products].present?)?cache[:add_to_products]=StampsCheckbox.new(
+              iframe.input(id: "addNewProducts"),
+              iframe.input(id: "addNewProducts"),
+              "class",
+              "ng-not-empty"):cache[:add_to_products]
+        end
+
+        def sku
+          (cache[:sku].nil?||!cache[:sku].present?)?cache[:sku]=StampsRadio.new(
+              iframe.label(css: "label[for='sku']"),
+              iframe.input(id: 'sku'),
+              "class",
+              "parse"):cache[:sku]
+        end
+
+        def product_listing_name
+          (cache[:product_listing_name].nil?||!cache[:product_listing_name].present?)?cache[:product_listing_name]=StampsRadio.new(
+              iframe.label(css: "label[for='productListingName']"),
+              iframe.input(id: 'productListingName'),
+              "class",
+              "parse"):cache[:product_listing_name]
+        end
+      end
+
       class StoreSettingsShippingService < Browser::Base
         include StoresIframe
         #assign({})
@@ -217,6 +243,7 @@ module Stamps
       class StoreSettings < Browser::Base
         include StoresIframe
         include StoreSettingsWindowTitle
+        include Products
 
         #assign({})
 
@@ -241,32 +268,6 @@ module Stamps
         def auto_import_new_orders
           (cache[:auto_import].nil?||!cache[:v].present?)?cache[:auto_import]=Stamps::Browser::StampsCheckbox.new(
               iframe.input(id: 'importOrders'), iframe.input(id: 'importOrders'), "class", "ng-not-empty"):cache[:auto_import]
-        end
-
-
-
-        def auto_add_to_products_page
-          (cache[:add_to_products].nil?||!cache[:add_to_products].present?)?cache[:add_to_products]=StampsCheckbox.new(
-              iframe.input(id: "addNewProducts"),
-              iframe.input(id: "addNewProducts"),
-              "class",
-              "parse"):cache[:add_to_products]
-        end
-
-        def sku
-          (cache[:sku].nil?||!cache[:sku].present?)?cache[:sku]=StampsRadio.new(
-              iframe.label(css: "label[for='sku']"),
-              iframe.input(id: 'sku'),
-              "class",
-              "parse"):cache[:sku]
-        end
-
-        def product_listing_name
-          (cache[:product_listing_name].nil?||!cache[:product_listing_name].present?)?cache[:product_listing_name]=StampsRadio.new(
-              iframe.label(css: "label[for='productListingName']"),
-              iframe.input(id: 'productListingName'),
-              "class",
-              "parse"):cache[:product_listing_name]
         end
 
         def save
