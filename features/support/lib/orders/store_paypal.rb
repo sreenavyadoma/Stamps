@@ -10,7 +10,7 @@ module Stamps
       class Error400 < Browser::Base
 
         def close
-          button=StampsField.new(browser.imgs(css: "img[class*=x-tool-close]").last)
+          button = StampsField.new(browser.imgs(css: "img[class*=x-tool-close]").last)
           5.times do
             button.click
             sleep(0.35)
@@ -27,7 +27,7 @@ module Stamps
         end
 
         def ok
-          button=StampsField.new(browser.span(text: "OK"))
+          button = StampsField.new(browser.span(text: "OK"))
           5.times do
             button.click
             sleep(0.35)
@@ -51,7 +51,7 @@ module Stamps
         end
 
         def wait_until_present
-          window=window_title
+          window = window_title
           3.times do
             break if window.present?
             sleep(0.35)
@@ -59,7 +59,7 @@ module Stamps
         end
 
         def close
-          button=StampsField.new(browser.imgs(css: "img[class*='x-tool-close']").last)
+          button = StampsField.new(browser.imgs(css: "img[class*='x-tool-close']").last)
           5.times do
             button.click
             sleep(0.35)
@@ -87,7 +87,7 @@ module Stamps
         end
 
         def wait_until_present
-          window=window_title
+          window = window_title
           5.times do
             break if window.present?
             sleep(0.35)
@@ -95,7 +95,7 @@ module Stamps
         end
 
         def close
-          button=StampsField.new(browser.imgs(css: "img[class*=x-tool-close]").last)
+          button = StampsField.new(browser.imgs(css: "img[class*=x-tool-close]").last)
           5.times do
             button.click
             sleep(0.35)
@@ -104,15 +104,15 @@ module Stamps
         end
 
         def send_email_verification
-          button=StampsField.new(browser.spans(text: "Send Email Verification").last)
-          verification_sent=EmailVerificationSent.new(param)
-          error=Error400.new(param)
+          button = StampsField.new(browser.spans(text: "Send Email Verification").last)
+          verification_sent = EmailVerificationSent.new(param)
+          error = Error400.new(param)
           10.times do
             button.click
             verification_sent.wait_until_present
             return verification_sent if verification_sent.present?
             if error.present?
-              text=error.text
+              text = error.text
               logger.info text
               error.ok
               raise text
@@ -123,13 +123,13 @@ module Stamps
 
       class PayPalEmailVerSent < Browser::Base
         def confirm_token                  #This modal requires the user to verify receipt of email, which is outside of scope for automation
-
+          raise 'Not Implemented.'
         end
       end
 
       class PayPalEmailVer < Browser::Base
         def send_email_verification        #This modal requires the user to verify receipt of email, which is outside of scope for automation
-
+          raise 'Not Implemented.'
         end
       end
 
@@ -139,13 +139,13 @@ module Stamps
         end
 
         def x_btn
-          (cache[:x_btn].nil?||!cache[:x_btn].present?)?cache[:x_btn]=StampsField.new(browser.imgs(css: "[id^=storeiframewindow-][id$=_header-targetEl] img").first):cache[:x_btn]
+          cache[:x_btn].nil? || !cache[:x_btn].present? ? cache[:x_btn] = StampsField.new(browser.imgs(css: "[id^=storeiframewindow-][id$=_header-targetEl] img").first) : cache[:x_btn]
         end
       end
 
       module PayPalModals
         def email_verification_modal        #This modal requires the user to verify receipt of email, which is outside of scope for automation
-
+          raise 'Not Implemented.'
         end
       end
 
@@ -154,26 +154,25 @@ module Stamps
         include PayPalModals
         include PayPalWindowTitle
         include StoresIframe
-        #assign({})
 
         def present?
           window_title.present?
         end
 
         def store_modal
-          (cache[:store_modal].nil?||!cache[:store_modal].present?)?cache[:store_modal]=StampsField.new(browser.div(css: "div[id^='storeiframewindow'][id$='header']")):cache[:store_modal]
+          cache[:store_modal].nil? || !cache[:store_modal].present? ? cache[:store_modal] = StampsField.new(browser.div(css: "div[id^='storeiframewindow'][id$='header']")) : cache[:store_modal]
         end
 
         def store_icon
-          (cache[:store_icon].nil?||!cache[:store_icon].present?)?cache[:store_icon]=StampsField.new(iframe.img(css: "img[src*=paypalbanner]")):cache[:store_icon]
+          cache[:store_icon].nil? || !cache[:store_icon].present? ? cache[:store_icon] = StampsField.new(iframe.img(css: "img[src*=paypalbanner]")) : cache[:store_icon]
         end
 
         def email_address
-          (cache[:email_address].nil?||!cache[:email_address].present?)?cache[:email_address]=StampsTextbox.new(iframe.text_field(css: "[class*=paypalEmailField]")):cache[:email_address]
+          cache[:email_address].nil? || !cache[:email_address].present? ? cache[:email_address] = StampsTextbox.new(iframe.text_field(css: "[class*=paypalEmailField]")) : cache[:email_address]
         end
 
         def verify_email_field
-          (cache[:verify_email_field].nil?||!cache[:verify_email_field].present?)?cache[:verify_email_field]=StampsField.new(iframe.button(css: "[ng-click='paypal.testConnection()']")):cache[:verify_email_field]
+          cache[:verify_email_field].nil? || !cache[:verify_email_field].present? ? cache[:verify_email_field] = StampsField.new(iframe.button(css: "[ng-click='paypal.testConnection()']")) : cache[:verify_email_field]
         end
 
         def verify_email_button
@@ -191,7 +190,6 @@ module Stamps
       end
 
       class ConnectYourPaypalStore < Browser::Base
-        #assign({})
         include StoresIframe
         def store_icon
           (cache[:verify_email_button].nil?||!cache[:verify_email_button].present?)?cache[:verify_email_button]=StampsField.new(iframe.img(css: "img[src*=paypalbanner.png]")):cache[:verify_email_button]

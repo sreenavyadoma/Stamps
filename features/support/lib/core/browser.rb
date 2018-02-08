@@ -438,7 +438,7 @@ module Stamps
       end
 
       def enabled?
-        checkbox.enabled?
+        raise 'Not Implemented'
       end
 
       def visible?
@@ -447,6 +447,10 @@ module Stamps
 
       def exist?
         checkbox.exist?
+      end
+
+      def disabled?
+        check_verify.attribute_value('class').include?('disabled') #browser.div(id: 'sdc-mainpanel-rrcheckbox')
       end
 
       def checked?

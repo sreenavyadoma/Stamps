@@ -105,7 +105,7 @@ module Stamps
         include StoresTabViewToolbar
         include StoresTabViewBottom
 
-        #assign({})
+
 
         def present?
           add_btn.present?

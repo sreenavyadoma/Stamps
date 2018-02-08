@@ -33,7 +33,7 @@ module Stamps
     class MailToolbarMenu < Browser::Base
       include MailToolbarLeftSide
       include MailToolbarRightSide
-      #assign({})
+
 
     end
   end

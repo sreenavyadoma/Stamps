@@ -90,7 +90,7 @@ module Stamps
         include OrdersSettingsModalTitle
         include OrdersSettingsTabBar
 
-        #assign({})
+
 
         def present?
           window_title.present?

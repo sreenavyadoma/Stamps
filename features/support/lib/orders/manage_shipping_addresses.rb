@@ -3,7 +3,7 @@ module Stamps
     module ShipFrom
       #todo-Rob move ManageShippingAddresses modal to stamps.orders.modals.manage_shipping_addresses
       class ManageShippingAddresses < Browser::Base
-        #assign({})
+
 
         def edit_button
           if cache[:edit_button].nil? || !cache[:edit_button].present?
@@ -178,7 +178,7 @@ module Stamps
 
       #todo-Rob REW
       class AddShippingAddress < Browser::Base
-        #assign({})
+
 
         attr_accessor :address_hash
 
@@ -264,7 +264,7 @@ module Stamps
       end
 
       class DeleteShippingAddress < Browser::Base
-        #assign({})
+
 
         def window_title
           cache[:window_title] = StampsField.new(browser.div(text: "Delete Shipping Address")) if cache[:window_title].nil? || !cache[:window_title].present?

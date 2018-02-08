@@ -123,7 +123,7 @@ module Stamps
         end
 
         def calculate_postage_amount
-          if (cache[:calculate_postage].nil? || !cache[:calculate_postage].present?)
+          if cache[:calculate_postage].nil? || !cache[:calculate_postage].present?
             cache[:calculate_postage] = StampsRadio.new(
                 browser.span(id: 'sdc-mainpanel-calculatepostageradio-displayEl'),
                 browser.div(id: 'sdc-mainpanel-calculatepostageradio'),
@@ -209,11 +209,15 @@ module Stamps
         end
 
         def restricted_delivery
-          cache[:restricted_delivery].nil? || !cache[:restricted_delivery].present? ? cache[:restricted_delivery] = StampsCheckbox.new(
-              browser.input(css: "input[class*=sdc-mainpanel-rdcheckbox]"),
-              browser.div(css: "[id^=certifiedmailview-][id$=certifiedmailview-1148-outerCt] [id^=fieldcontainer-][id$=-innerCt] div:nth-child(4) [class*=x-form-type-checkbox]"),
-              "class",
-              "checked") : cache[:restricted_delivery]
+          if cache[:restricted_delivery].nil? || !cache[:restricted_delivery].present?
+            cache[:restricted_delivery] = StampsCheckbox.new(
+                  # browser.input(css: "input[class*=sdc-mainpanel-rdcheckbox]"),
+                  browser.span(css: "span[class*=sdc-mainpanel-rdcheckbox]"),
+                  # browser.div(css: "[id^=certifiedmailview-][id$=certifiedmailview-1148-outerCt][id^=fieldcontainer-][id$=-innerCt] div:nth-child(4) [class*=x-form-type-checkbox]"),
+                  browser.div(css: "[id^=certifiedmailview-] div:nth-child(4) [class*=x-form-type-checkbox]"),
+                  "class","checked")
+          end
+          cache[:restricted_delivery]
         end
       end
 
