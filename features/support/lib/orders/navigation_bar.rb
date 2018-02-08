@@ -1,7 +1,7 @@
 module Stamps
   module Navigation
     class TransactionComplete < Browser::Base
-      #assign({})
+
 
       def window_title
         cache[:window_title] = StampsField.new(browser.div(text: "Transaction Complete")) if cache[:window_title].nil? || !cache[:window_title].present?
@@ -40,7 +40,7 @@ module Stamps
     end
 
     class ConfirmTransaction < Browser::Base
-      #assign({})
+
 
       def window_title
         cache[:window_title] = StampsField.new(browser.div(text: 'Confirm Transaction')) if cache[:window_title].nil? || !cache[:window_title].present?
@@ -108,7 +108,7 @@ module Stamps
     end
 
     class AccountBalanceLimit < Browser::Base
-      #assign({})
+
 
       def body
         if cache[:body].nil? || !cache[:body].present?
@@ -132,7 +132,7 @@ module Stamps
     end
 
     class AutoBuyPostageModal < Browser::Base
-      #assign({})
+
 
       def window_title
         cache[:window_title] = StampsField.new(browser.div(text: "Add Funds")) if cache[:window_title].nil? || !cache[:window_title].present?
@@ -145,7 +145,7 @@ module Stamps
     end
 
     class AddFundsModal < Browser::Base
-      #assign({})
+
 
       def confirm_transaction
         cache[:confirm_transaction].nil? ? cache[:confirm_transaction] = ConfirmTransaction.new(param) : cache[:confirm_transaction]
@@ -263,7 +263,7 @@ module Stamps
     end
 
     class BalanceDropDown < Browser::Base
-      #assign({})
+
 
       def add_funds_modal
         cache[:add_funds_modal].nil? ? cache[:add_funds_modal] = AddFundsModal.new(param) : cache[:add_funds_modal]
@@ -328,7 +328,7 @@ module Stamps
     end
 
     class UsernameDropDown < Browser::Base
-      #assign({})
+
       def cache
         self.class.cache
       end
@@ -373,7 +373,7 @@ module Stamps
     end
 
     class NavigationBar < Browser::Base
-      #assign({})
+
 
       def balance
         cache[:balance].nil? ? cache[:balance] = BalanceDropDown.new(param) : cache[:balance]

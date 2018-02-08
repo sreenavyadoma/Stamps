@@ -5,7 +5,7 @@ module Stamps
       include Stamps::Mail::MailModals
       include PrintFormPanel::PrintFormBlurOut
 
-      #assign({})
+
 
       def sign_in_modal
         cache[:sign_in].nil? || !cache[:sign_in].present? ? cache[:sign_in] = MailSignIn::MailSignInModal.new(param) : cache[:sign_in]
