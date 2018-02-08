@@ -450,7 +450,7 @@ module Stamps
       end
 
       ##
-      # Stamps UI framework disables an html field by adding the string disabled in one of its class attributes.
+      # Stamps UI framework disables an html field by adding string disabled in the field's class attribute.
       def stamps_disabled?(attr = 'class', attr_val = 'disabled')
         check_verify.attribute_value(attr).include?(attr_val)
       end
