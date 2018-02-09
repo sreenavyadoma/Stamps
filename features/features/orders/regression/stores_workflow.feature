@@ -27,10 +27,51 @@ Feature:  All Store Management
       Then set PayPal Email Address restriction to qaclient@stamps.com
       Then set Paypal import option to import all transactions
       Then set Paypal import option to only import the following transaction types
-      Then Check Integral Evolution as a Paypal transaction type
-      Then Uncheck Integral Evolution as a Paypal transaction type
+      Then Check Cart as a Paypal transaction type
+      Then Check Web Accept as a Paypal transaction type
       Then Check Express Checkout as a Paypal transaction type
+      Then Check Send Money as a Paypal transaction type
+      Then Check Virtual Terminal as a Paypal transaction type
+      Then Check Subscription Payment as a Paypal transaction type
+      Then Check Merchant Payment as a Paypal transaction type
+      Then Check Mass Payment as a Paypal transaction type
+      Then Check Integral Evolution as a Paypal transaction type
+      Then Check Website Payments Pro Hosted as a Paypal transaction type
+      Then Check Website Payments Pro API as a Paypal transaction type
+      Then Expect Cart is checked as a Paypal transaction type
+      Then Expect Web Accept is checked as a Paypal transaction type
+      Then Expect Express Checkout is checked as a Paypal transaction type
+      Then Expect Send Money is checked as a Paypal transaction type
+      Then Expect Virtual Terminal is checked as a Paypal transaction type
+      Then Expect Subscription Payment is checked as a Paypal transaction type
+      Then Expect Merchant Payment is checked as a Paypal transaction type
+      Then Expect Mass Payment is checked as a Paypal transaction type
+      Then Expect Integral Evolution is checked as a Paypal transaction type
+      Then Expect Website Payments Pro Hosted is checked as a Paypal transaction type
+      Then Expect Website Payments Pro API is checked as a Paypal transaction type
+      Then Uncheck Cart as a Paypal transaction type
+      Then Uncheck Web Accept as a Paypal transaction type
       Then Uncheck Express Checkout as a Paypal transaction type
+      Then Uncheck Send Money as a Paypal transaction type
+      Then Uncheck Virtual Terminal as a Paypal transaction type
+      Then Uncheck Subscription Payment as a Paypal transaction type
+      Then Uncheck Merchant Payment as a Paypal transaction type
+      Then Uncheck Mass Payment as a Paypal transaction type
+      Then Uncheck Integral Evolution as a Paypal transaction type
+      Then Uncheck Website Payments Pro Hosted as a Paypal transaction type
+      Then Uncheck Website Payments Pro API as a Paypal transaction type
+      Then Expect Cart is unchecked as a Paypal transaction type
+      Then Expect Web Accept is unchecked as a Paypal transaction type
+      Then Expect Express Checkout is unchecked as a Paypal transaction type
+      Then Expect Send Money is unchecked as a Paypal transaction type
+      Then Expect Virtual Terminal is unchecked as a Paypal transaction type
+      Then Expect Subscription Payment is unchecked as a Paypal transaction type
+      Then Expect Merchant Payment is unchecked as a Paypal transaction type
+      Then Expect Mass Payment is unchecked as a Paypal transaction type
+      Then Expect Integral Evolution is unchecked as a Paypal transaction type
+      Then Expect Website Payments Pro Hosted is unchecked as a Paypal transaction type
+      Then Expect Website Payments Pro API is unchecked as a Paypal transaction type
+
       Then Connect to Paypal Store
 
       ## Store Settings
@@ -43,10 +84,13 @@ Feature:  All Store Management
 
       ## Service Mapping
       Then add store service Mapping 1, Requested Services service 1, Shipping service FCM Large Envelope/Flat
+      Then add store service Mapping 2, Requested Services service 5, Shipping service PM Package
 
       ##Products Settings
       Then Check Store Settings dialog Automatically add new products to the Products page
+      Then Expect Store Settings dialog Automatically add new products to the Products page is checked
       Then Uncheck Store Settings dialog Automatically add new products to the Products page
+      Then Expect Store Settings dialog Automatically add new products to the Products page is unchecked
       Then Select Uniquely Identify Products by SKU
       Then Select Uniquely Identify Products by Product Listing Name
       Then Click Save in Store Settings modal
@@ -61,7 +105,7 @@ Feature:  All Store Management
       Then Uncheck Settings dialog store import new orders
       Then expect Settings dialog store import new orders is Unchecked
       Then check Settings dialog store import new orders
-      Then add store service Mapping 2, Requested Services service 2, Shipping service FCM Large Envelope/Flat
+      Then add store service Mapping 3, Requested Services service 8, Shipping service PM Small Flat Rate Box
       Then Click Save in Store Settings modal
 
       ##Delete Store
@@ -102,8 +146,7 @@ Feature:  All Store Management
       # Service Mapping
       Then select store settings requested service to service 1
       Then select store settings shipping service to FCM Large Envelope
-      Then Store Settings: click Save
-
+      Then Click Save in Store Settings modal
       # Square Settings Modal
       Then pause for 2 seconds
       Then select order settings store StampsQA
@@ -118,6 +161,6 @@ Feature:  All Store Management
       # Service Mapping
       Then select store settings requested service to service 2
       Then select store settings shipping service to FCM Large Envelope
-      Then Store Settings: click Save
+      Then Click Save in Store Settings modal
       Then Sign out
 

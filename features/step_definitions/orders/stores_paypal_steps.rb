@@ -168,6 +168,95 @@ Then /^[Uu]ncheck Website Payments Pro API as a Paypal transaction type$/ do
   stamps.orders.marketplace.paypal.verify_email.type_website_payments_pro_api.uncheck
 end
 
+Then /^[Ee]xpect Cart is checked as a Paypal transaction type$/ do
+  expect(stamps.orders.marketplace.paypal.verify_email.type_cart.checked?).to be(true), "Cart is NOT checked"
+end
+
+Then /^[Ee]xpect Web Accept is checked as a Paypal transaction type$/ do
+  expect(stamps.orders.marketplace.paypal.verify_email.type_web_accept.checked?).to be(true), "Web Accept is NOT checked"
+end
+
+Then /^[Ee]xpect Express Checkout is checked as a Paypal transaction type$/ do
+  expect(stamps.orders.marketplace.paypal.verify_email.type_express_checkout.checked?).to be(true), "Express Checkout is NOT checked"
+end
+
+Then /^[Ee]xpect Send Money is checked as a Paypal transaction type$/ do
+  expect(stamps.orders.marketplace.paypal.verify_email.type_send_money.checked?).to be(true), "Send Money is NOT checked"
+end
+
+Then /^[Ee]xpect Virtual Terminal is checked as a Paypal transaction type$/ do
+  expect(stamps.orders.marketplace.paypal.verify_email.type_virtual_terminal.checked?).to be(true), "Virtual Terminal is NOT checked"
+end
+
+Then /^[Ee]xpect Subscription Payment is checked as a Paypal transaction type$/ do
+  expect(stamps.orders.marketplace.paypal.verify_email.type_subscription_payment.checked?).to be(true), "Subscription Payment is NOT checked"
+end
+
+Then /^[Ee]xpect Merchant Payment is checked as a Paypal transaction type$/ do
+  expect(stamps.orders.marketplace.paypal.verify_email.type_merchant_payment.checked?).to be(true), "Merchant Payment is NOT checked"
+end
+
+Then /^[Ee]xpect Mass Payment is checked as a Paypal transaction type$/ do
+  expect(stamps.orders.marketplace.paypal.verify_email.type_mass_payment.checked?).to be(true), "Mass Payment is NOT checked"
+end
+
+Then /^[Ee]xpect Integral Evolution is checked as a Paypal transaction type$/ do
+  expect(stamps.orders.marketplace.paypal.verify_email.type_integral_evolution.checked?).to be(true), "Integral Evolution is NOT checked"
+end
+
+Then /^[Ee]xpect Website Payments Pro Hosted is checked as a Paypal transaction type$/ do
+  expect(stamps.orders.marketplace.paypal.verify_email.type_website_payments_pro_hosted.checked?).to be(true), "Website Payments Pro Hosted is NOT checked"
+end
+
+Then /^[Ee]xpect Website Payments Pro API is checked as a Paypal transaction type$/ do
+  expect(stamps.orders.marketplace.paypal.verify_email.type_website_payments_pro_api.checked?).to be(true), "Website Payments Pro API is NOT checked"
+end
+
+Then /^[Ee]xpect Cart is unchecked as a Paypal transaction type$/ do
+  expect(stamps.orders.marketplace.paypal.verify_email.type_cart.checked?).not_to be(true), "Cart is NOT unchecked"
+end
+
+Then /^[Ee]xpect Web Accept is unchecked as a Paypal transaction type$/ do
+  expect(stamps.orders.marketplace.paypal.verify_email.type_web_accept.checked?).not_to be(true), "Web Accept is NOT unchecked"
+end
+
+Then /^[Ee]xpect Express Checkout is unchecked as a Paypal transaction type$/ do
+  expect(stamps.orders.marketplace.paypal.verify_email.type_express_checkout.checked?).not_to be(true), "Express Checkout is NOT unchecked"
+end
+
+Then /^[Ee]xpect Send Money is unchecked as a Paypal transaction type$/ do
+  expect(stamps.orders.marketplace.paypal.verify_email.type_send_money.checked?).not_to be(true), "Send Money is NOT unchecked"
+end
+
+Then /^[Ee]xpect Virtual Terminal is unchecked as a Paypal transaction type$/ do
+  expect(stamps.orders.marketplace.paypal.verify_email.type_virtual_terminal.checked?).not_to be(true), "Virtual Terminal is NOT unchecked"
+end
+
+Then /^[Ee]xpect Subscription Payment is unchecked as a Paypal transaction type$/ do
+  expect(stamps.orders.marketplace.paypal.verify_email.type_subscription_payment.checked?).not_to be(true), "Subscription Payment is NOT unchecked"
+end
+
+Then /^[Ee]xpect Merchant Payment is unchecked as a Paypal transaction type$/ do
+  expect(stamps.orders.marketplace.paypal.verify_email.type_merchant_payment.checked?).not_to be(true), "Merchant Payment is NOT unchecked"
+end
+
+Then /^[Ee]xpect Mass Payment is unchecked as a Paypal transaction type$/ do
+  expect(stamps.orders.marketplace.paypal.verify_email.type_mass_payment.checked?).not_to be(true), "Mass Payment is NOT unchecked"
+end
+
+Then /^[Ee]xpect Integral Evolution is unchecked as a Paypal transaction type$/ do
+  expect(stamps.orders.marketplace.paypal.verify_email.type_integral_evolution.checked?).not_to be(true), "Integral Evolution is NOT unchecked"
+end
+
+Then /^[Ee]xpect Website Payments Pro Hosted is unchecked as a Paypal transaction type$/ do
+  expect(stamps.orders.marketplace.paypal.verify_email.type_website_payments_pro_hosted.checked?).not_to be(true), "Website Payments Pro Hosted is NOT unchecked"
+end
+
+Then /^[Ee]xpect Website Payments Pro API is unchecked as a Paypal transaction type$/ do
+  expect(stamps.orders.marketplace.paypal.verify_email.type_website_payments_pro_api.checked?).not_to be(true), "Website Payments Pro API is NOT unchecked"
+end
+
+
 Then /^Connect to Paypal Store$/ do
   @store_settings = stamps.orders.marketplace.paypal.verify_email.connect
 end

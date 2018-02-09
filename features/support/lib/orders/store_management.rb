@@ -259,10 +259,10 @@ module Stamps
             when :opencart
               cache[:opencart_window].nil? || !cache[:opencart_window].present? ? cache[:opencart_window] = Browser::Base.new(param).extend(Orders::Stores::ShipStationUpgradeMessage) : cache[:opencart_window]
             else
-              # ignroe
+              raise ArgumentError,  "#{str} - Invalid store selection or store is not yet implemented. Check your test."
           end
 
-          raise ArgumentError,  "#{str} - Invalid store selection or store is not yet implemented. Check your test."
+
         end
 
         def add_store(str)
