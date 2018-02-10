@@ -5,11 +5,11 @@ Then /^[Ee]xpect [Pp]aypal [Ss]tore modal present$/ do
 end
 
 Then /^[Ee]xpect [Pp]aypal logo present$/ do
-  expect(stamps.orders.marketplace.paypal.store_icon.present?).to be(true), "Paypal logo is not present"
+  expect(stamps.orders.marketplace.paypal.paypal_store_icon.present?).to be(true), "Paypal logo is not present"
 end
 
 Then /^[Ss]et PayPal Email Address to (.*)$/ do |email|
-  stamps.orders.marketplace.paypal.email_address.set(test_param[:paypal_email]=email)
+  stamps.orders.marketplace.paypal.paypal_email_address.set(test_param[:paypal_email]=email)
 end
 
 Then /^[Cc]lick [Pp]aypal [Vv]erify [Ee]mail [Bb]utton$/ do
