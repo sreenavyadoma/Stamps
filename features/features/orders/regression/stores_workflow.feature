@@ -13,7 +13,7 @@ Feature:  All Store Management
       Then click Order Settings Stores Add button
       Then search Marketplace for store name PayPal
       Then expect Marketplace dataview count is equal to 1
-      Then connect Marketplace store PayPal
+      Then connect Marketplace store Paypal
       Then expect PayPal store modal present
       Then expect PayPal logo present
 
