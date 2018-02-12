@@ -1,20 +1,19 @@
 
 
-Then /^[Ee]xpect [Pp]aypal [Ss]tore modal present$/ do
+Then /^[Ee]xpect [Pp]ay[Pp]al [Ss]tore modal present$/ do
   expect(stamps.orders.marketplace.paypal.present?).to be(true), "PayPal Store is not present"
 end
 
-Then /^[Ee]xpect [Pp]aypal logo present$/ do
+Then /^[Ee]xpect [Pp]ay[Pp]al logo present$/ do
   expect(stamps.orders.marketplace.paypal.paypal_store_icon.present?).to be(true), "PayPal logo is not present"
 end
 
-Then /^[Ss]et PayPal Email Address to (.*)$/ do |email|
+Then /^[Ss]et [Pp]ay[Pp]al Email Address to (.*)$/ do |email|
   stamps.orders.marketplace.paypal.paypal_email_address.set(test_param[:paypal_email]=email)
 end
 
-Then /^[Cc]lick [Pp]aypal [Vv]erify [Ee]mail [Bb]utton$/ do
+Then /^[Cc]lick [Pp]ay[Pp]al [Vv]erify [Ee]mail [Bb]utton$/ do
   stamps.orders.marketplace.paypal.verify_email_button.click
-
 end
 
 Then /^PayPal Email Verification Required: Close modal$/ do
@@ -52,23 +51,23 @@ Then /^PayPal: Close modal$/ do
   @store.close
 end
 
-Then /^[Ss]et PayPal orders number option to use the PayPal transaction ID$/ do
+Then /^[Ss]et [Pp]ay[Pp]al orders number option to use the PayPal transaction ID$/ do
   #The default selected radio button on this page is radio_transaction_id, and in its initial default state the class name for radio_transaction_id is different than when it is selected by the user , making the StampsRadio validation fail.
   #Therefore, radio_invoice_number needs to be selected first so that the when radio_transaction_id is selected, its class name can be used for validation.
   stamps.orders.marketplace.paypal.verify_email.radio_invoice_number.select
   stamps.orders.marketplace.paypal.verify_email.radio_transaction_id.select
 end
 
-Then /^[Ss]et PayPal orders number option to use the invoice number$/ do
+Then /^[Ss]et [Pp]ay[Pp]al orders number option to use the invoice number$/ do
   stamps.orders.marketplace.paypal.verify_email.radio_invoice_number.select
 end
 
-Then /^[Ss]et PayPal Email Address restriction to (.*)$/ do |email|
+Then /^[Ss]et [Pp]ay[Pp]al Email Address restriction to (.*)$/ do |email|
   stamps.orders.marketplace.paypal.verify_email.restrict_to_email_address.set email
   test_param[:paypal_email_restriction]=email
 end
 
-Then /^[Ss]et PayPal import option to import all transactions$/ do
+Then /^[Ss]et [Pp]ay[Pp]al import option to import all transactions$/ do
   #The default selected radio button on this page is radio_import_all_transactions, and in its initial default state the class name for radio_import_all_transactions is different than when it is selected by the user , making the StampsRadio validation fail.
   #Therefore, radio_import_selected_types needs to be selected first so that the when radio_import_all_transactions is selected, its class name can be used for validation.
 
@@ -76,7 +75,7 @@ Then /^[Ss]et PayPal import option to import all transactions$/ do
   stamps.orders.marketplace.paypal.verify_email.radio_import_all_transactions.select
 end
 
-Then /^[Ss]et PayPal import option to only import the following transaction types$/ do
+Then /^[Ss]et [Pp]ay[Pp]al import option to only import the following transaction types$/ do
   stamps.orders.marketplace.paypal.verify_email.radio_import_selected_types.select
 end
 
