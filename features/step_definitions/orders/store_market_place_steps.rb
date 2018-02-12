@@ -51,12 +51,12 @@ end
 #
 # Then /^[Ss]elect PayPal on Marketplace modal$/ do
 #   step "expect PayPal is on Marketplace modal"
-#   stamps.orders.marketplace.add_your_store_modal.PayPal.click
+#   stamps.orders.marketplace.add_your_store_modal.paypal.click
 # end
 =begin
 
 Then /^[Ee]xpect PayPal is on Marketplace modal$/ do
-  expect(stamps.orders.marketplace.add_your_store_modal.PayPal_store).to be_present, "PayPal is not on Marketplace modal"
+  expect(stamps.orders.marketplace.add_your_store_modal.paypal_store).to be_present, "PayPal is not on Marketplace modal"
 end
 
 Then /^Marketplace: Select Big Commerce$/ do

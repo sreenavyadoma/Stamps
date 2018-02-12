@@ -50,7 +50,7 @@ database:
     password: Jenkins123!
 
 supported_stores:
-  PayPal: PayPal
+  paypal: PayPal
   amazon: Amazon
   ebay: eBay
   rakuten: Rakuten

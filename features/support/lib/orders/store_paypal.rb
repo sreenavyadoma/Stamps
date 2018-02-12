@@ -21,11 +21,11 @@ module Stamps
 
         class ConnectYourStore < Browser::Base
           include StoresIframe
-          def PayPal_store_icon
-            if cache[:PayPal_store_icon].nil? || !cache[:PayPal_store_icon].present?
-              cache[:PayPal_store_icon] = StampsField.new(iframe.img(css: "img[src*=PayPalbanner.png]"))
+          def paypal_store_icon
+            if cache[:paypal_store_icon].nil? || !cache[:paypal_store_icon].present?
+              cache[:paypal_store_icon] = StampsField.new(iframe.img(css: "img[src*=paypalbanner.png]"))
             end
-            cache[:PayPal_store_icon]
+            cache[:paypal_store_icon]
           end
 
           def present?
@@ -193,23 +193,23 @@ module Stamps
             cache[:store_modal]
           end
 
-          def PayPal_store_icon
-            if cache[:PayPal_store_icon].nil? || !cache[:PayPal_store_icon].present?
-              cache[:PayPal_store_icon] = StampsField.new(iframe.img(css: "img[src*=PayPalbanner]"))
+          def paypal_store_icon
+            if cache[:paypal_store_icon].nil? || !cache[:paypal_store_icon].present?
+              cache[:paypal_store_icon] = StampsField.new(iframe.img(css: "img[src*=paypalbanner]"))
             end
-            cache[:PayPal_store_icon]
+            cache[:paypal_store_icon]
           end
 
-          def PayPal_email_address
-            if cache[:PayPal_email_address].nil? || !cache[:PayPal_email_address].present?
-              cache[:PayPal_email_address] = StampsTextbox.new(iframe.text_field(css: "[class*=PayPalEmailField]"))
+          def paypal_email_address
+            if cache[:paypal_email_address].nil? || !cache[:paypal_email_address].present?
+              cache[:paypal_email_address] = StampsTextbox.new(iframe.text_field(css: "[class*=paypalEmailField]"))
             end
-            cache[:PayPal_email_address]
+            cache[:paypal_email_address]
           end
 
           def verify_email_field
             if cache[:verify_email_field].nil? || !cache[:verify_email_field].present?
-              cache[:verify_email_field] = StampsField.new(iframe.button(css: "[ng-click='PayPal.testConnection()']"))
+              cache[:verify_email_field] = StampsField.new(iframe.button(css: "[ng-click='paypal.testConnection()']"))
             end
             cache[:verify_email_field]
           end

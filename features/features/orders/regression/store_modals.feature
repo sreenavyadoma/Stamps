@@ -187,7 +187,7 @@ Feature:  All Store Management
     Then Sign out
 
 
-  @PayPal
+  @paypal
   Scenario: PayPal Store Management
     Then Manage Stores: Open Modal
     Then Manage Stores: Delete All Stores

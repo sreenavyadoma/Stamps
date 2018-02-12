@@ -1153,8 +1153,8 @@ Cucumber::Rake::Task.new(:tooltips_improvements) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:PayPal) do |t|
-  t.profile = 'PayPal'
+Cucumber::Rake::Task.new(:paypal) do |t|
+  t.profile = 'paypal'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -1178,8 +1178,8 @@ Cucumber::Rake::Task.new(:square_workflow) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:PayPal_workflow) do |t|
-  t.profile = 'PayPal_workflow'
+Cucumber::Rake::Task.new(:paypal_workflow) do |t|
+  t.profile = 'paypal_workflow'
   t.cucumber_opts = "-p cuke_reports"
 end
 

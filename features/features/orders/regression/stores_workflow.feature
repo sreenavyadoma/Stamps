@@ -6,7 +6,7 @@ Feature:  All Store Management
 
 
 
-    @PayPal_workflow
+    @paypal_workflow
     Scenario: PayPal Workflow
 
       Then click orders toolbar settings button
