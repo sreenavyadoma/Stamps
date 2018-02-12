@@ -53,9 +53,7 @@ end
 
 Then /^Buy Mail Purchase Approved: Expect text area contains, Your fund request for \$(.*) has been approved.$/ do |amount|
   expect(@purchase_approved).to be_truthy
-  expectation="Your fund request for $#{amount} has been approved."
-  actual_value=@purchase_approved.text
-  expect(actual_value).to eql expectation
+  expect(@purchase_approved.text).to eql "Your fund request for $#{amount} has been approved."
 end
 
 Then /^Buy Mail Purchase Approved: Click OK [Bb]utton$/ do
