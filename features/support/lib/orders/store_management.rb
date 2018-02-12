@@ -243,7 +243,7 @@ module Stamps
         def store_window(str)
           case(str.downcase.to_sym)
             when :paypal
-              cache[:paypal_window].nil? || !cache[:paypal_window].present? ? cache[:paypal_window] = Browser::Base.new(param).extend(Orders::Stores::PayPalWindowTitle) : cache[:paypal_window]
+              cache[:paypal_window].nil? || !cache[:paypal_window].present? ? cache[:paypal_window] = Browser::Base.new(param).extend(Orders::Stores::PayPal::WindowTitle) : cache[:paypal_window]
             when :ebay
               raise "#{str} not implemented."
             when :shopify
