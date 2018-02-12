@@ -6,73 +6,73 @@ Feature:  All Store Management
 
 
 
-    @paypal_workflow
+    @PayPal_workflow
     Scenario: PayPal Workflow
 
       Then click orders toolbar settings button
       Then click Order Settings Stores Add button
-      Then search Marketplace for store name Paypal
+      Then search Marketplace for store name PayPal
       Then expect Marketplace dataview count is equal to 1
-      Then connect Marketplace store Paypal
-      Then expect Paypal store modal present
-      Then expect Paypal logo present
+      Then connect Marketplace store PayPal
+      Then expect PayPal store modal present
+      Then expect PayPal logo present
 
-      ##Paypal Email Verification
+      ##PayPal Email Verification
       Then set PayPal Email Address to qaclient@stamps.com
-      Then click Paypal verify email button
+      Then click PayPal verify email button
 
-      ## Paypal Settings
-      Then set Paypal orders number option to use the Paypal transaction ID
-      Then set Paypal orders number option to use the invoice number
+      ## PayPal Settings
+      Then set PayPal orders number option to use the PayPal transaction ID
+      Then set PayPal orders number option to use the invoice number
       Then set PayPal Email Address restriction to qaclient@stamps.com
-      Then set Paypal import option to import all transactions
-      Then set Paypal import option to only import the following transaction types
-      Then Check Cart as a Paypal transaction type
-      Then Check Web Accept as a Paypal transaction type
-      Then Check Express Checkout as a Paypal transaction type
-      Then Check Send Money as a Paypal transaction type
-      Then Check Virtual Terminal as a Paypal transaction type
-      Then Check Subscription Payment as a Paypal transaction type
-      Then Check Merchant Payment as a Paypal transaction type
-      Then Check Mass Payment as a Paypal transaction type
-      Then Check Integral Evolution as a Paypal transaction type
-      Then Check Website Payments Pro Hosted as a Paypal transaction type
-      Then Check Website Payments Pro API as a Paypal transaction type
-      Then Expect Cart is checked as a Paypal transaction type
-      Then Expect Web Accept is checked as a Paypal transaction type
-      Then Expect Express Checkout is checked as a Paypal transaction type
-      Then Expect Send Money is checked as a Paypal transaction type
-      Then Expect Virtual Terminal is checked as a Paypal transaction type
-      Then Expect Subscription Payment is checked as a Paypal transaction type
-      Then Expect Merchant Payment is checked as a Paypal transaction type
-      Then Expect Mass Payment is checked as a Paypal transaction type
-      Then Expect Integral Evolution is checked as a Paypal transaction type
-      Then Expect Website Payments Pro Hosted is checked as a Paypal transaction type
-      Then Expect Website Payments Pro API is checked as a Paypal transaction type
-      Then Uncheck Cart as a Paypal transaction type
-      Then Uncheck Web Accept as a Paypal transaction type
-      Then Uncheck Express Checkout as a Paypal transaction type
-      Then Uncheck Send Money as a Paypal transaction type
-      Then Uncheck Virtual Terminal as a Paypal transaction type
-      Then Uncheck Subscription Payment as a Paypal transaction type
-      Then Uncheck Merchant Payment as a Paypal transaction type
-      Then Uncheck Mass Payment as a Paypal transaction type
-      Then Uncheck Integral Evolution as a Paypal transaction type
-      Then Uncheck Website Payments Pro Hosted as a Paypal transaction type
-      Then Uncheck Website Payments Pro API as a Paypal transaction type
-      Then Expect Cart is unchecked as a Paypal transaction type
-      Then Expect Web Accept is unchecked as a Paypal transaction type
-      Then Expect Express Checkout is unchecked as a Paypal transaction type
-      Then Expect Send Money is unchecked as a Paypal transaction type
-      Then Expect Virtual Terminal is unchecked as a Paypal transaction type
-      Then Expect Subscription Payment is unchecked as a Paypal transaction type
-      Then Expect Merchant Payment is unchecked as a Paypal transaction type
-      Then Expect Mass Payment is unchecked as a Paypal transaction type
-      Then Expect Integral Evolution is unchecked as a Paypal transaction type
-      Then Expect Website Payments Pro Hosted is unchecked as a Paypal transaction type
-      Then Expect Website Payments Pro API is unchecked as a Paypal transaction type
+      Then set PayPal import option to import all transactions
+      Then set PayPal import option to only import the following transaction types
+      Then Check Cart as a PayPal transaction type
+      Then Check Web Accept as a PayPal transaction type
+      Then Check Express Checkout as a PayPal transaction type
+      Then Check Send Money as a PayPal transaction type
+      Then Check Virtual Terminal as a PayPal transaction type
+      Then Check Subscription Payment as a PayPal transaction type
+      Then Check Merchant Payment as a PayPal transaction type
+      Then Check Mass Payment as a PayPal transaction type
+      Then Check Integral Evolution as a PayPal transaction type
+      Then Check Website Payments Pro Hosted as a PayPal transaction type
+      Then Check Website Payments Pro API as a PayPal transaction type
+      Then Expect Cart is checked as a PayPal transaction type
+      Then Expect Web Accept is checked as a PayPal transaction type
+      Then Expect Express Checkout is checked as a PayPal transaction type
+      Then Expect Send Money is checked as a PayPal transaction type
+      Then Expect Virtual Terminal is checked as a PayPal transaction type
+      Then Expect Subscription Payment is checked as a PayPal transaction type
+      Then Expect Merchant Payment is checked as a PayPal transaction type
+      Then Expect Mass Payment is checked as a PayPal transaction type
+      Then Expect Integral Evolution is checked as a PayPal transaction type
+      Then Expect Website Payments Pro Hosted is checked as a PayPal transaction type
+      Then Expect Website Payments Pro API is checked as a PayPal transaction type
+      Then Uncheck Cart as a PayPal transaction type
+      Then Uncheck Web Accept as a PayPal transaction type
+      Then Uncheck Express Checkout as a PayPal transaction type
+      Then Uncheck Send Money as a PayPal transaction type
+      Then Uncheck Virtual Terminal as a PayPal transaction type
+      Then Uncheck Subscription Payment as a PayPal transaction type
+      Then Uncheck Merchant Payment as a PayPal transaction type
+      Then Uncheck Mass Payment as a PayPal transaction type
+      Then Uncheck Integral Evolution as a PayPal transaction type
+      Then Uncheck Website Payments Pro Hosted as a PayPal transaction type
+      Then Uncheck Website Payments Pro API as a PayPal transaction type
+      Then Expect Cart is unchecked as a PayPal transaction type
+      Then Expect Web Accept is unchecked as a PayPal transaction type
+      Then Expect Express Checkout is unchecked as a PayPal transaction type
+      Then Expect Send Money is unchecked as a PayPal transaction type
+      Then Expect Virtual Terminal is unchecked as a PayPal transaction type
+      Then Expect Subscription Payment is unchecked as a PayPal transaction type
+      Then Expect Merchant Payment is unchecked as a PayPal transaction type
+      Then Expect Mass Payment is unchecked as a PayPal transaction type
+      Then Expect Integral Evolution is unchecked as a PayPal transaction type
+      Then Expect Website Payments Pro Hosted is unchecked as a PayPal transaction type
+      Then Expect Website Payments Pro API is unchecked as a PayPal transaction type
 
-      Then Connect to Paypal Store
+      Then Connect to PayPal Store
 
       ## Store Settings
       Then expect store settings PayPal modal is present

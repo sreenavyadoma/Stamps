@@ -1,4 +1,4 @@
-default: --backtrace --profile alex_orders
+default: --backtrace --profile eli_dev
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -14,7 +14,7 @@ rob_registration: --tags @registration_normal_workflow WEB_APP=registration URL=
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
-eli_dev: --tags @paypal_workflow --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff USR=hal9000stage25 PW=password1 PRINTER=Automation Printer
+eli_dev: --tags @PayPal_workflow --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff USR=hal9000stage25 PW=password1 PRINTER=Automation Printer
 ray_dev: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=gc USR=default PW=pass111
 sap:              --tags @registration_orders WEB_APP=registration URL=cc --guess DEBUG=false BROWSER=gc MAX_WINDOW=false
 
@@ -400,7 +400,7 @@ import_orders_ship_from_test: --tags @import_orders_ship_from_test --guess DEBUG
 stores: --tags @stores --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 marketplace: --tags @marketplace --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 big_commerce: --tags @big_commerce --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
-paypal: --tags @paypal --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
+PayPal: --tags @PayPal --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 yahoo: --tags @yahoo --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 threedcart: --tags @3dcart --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 shopify: --tags @shopify --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
@@ -409,7 +409,7 @@ rakuten: --tags @rakuten --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_A
 volusion: --tags @volusion --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 amazon: --tags @amazon --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 square_workflow: --tags @square_workflow --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-paypal_workflow: --tags @paypal_workflow --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+PayPal_workflow: --tags @PayPal_workflow --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
 # ----------------------------# MAIL Bugs
 bugs_advanced_options: --tags  @bugs_advanced_options --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail

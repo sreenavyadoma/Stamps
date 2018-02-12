@@ -217,20 +217,20 @@ module Stamps
 
         def store_field(str)
           case(str.downcase.to_sym)
-            when :paypal
-              cache[:paypal_store_field].nil? || !cache[:paypal_store_field].present? ? cache[:paypal_store_field] = StampsField.new(browser.a(css: "[data-store-name=paypal]")) : cache[:paypal_store_field]
+            when :PayPal
+              cache[:PayPal_store_field].nil? || !cache[:PayPal_store_field].present? ? cache[:PayPal_store_field] = StampsField.new(browser.a(css: "[data-store-name=PayPal]")) : cache[:PayPal_store_field]
             when :ebay
-              cache[:ebay_store_field].nil? || !cache[:ebay_store_field].present? ? cache[:ebay_store_field] = StampsField.new(browser.a(css: "[data-store-name=paypal]")) : cache[:ebay_store_field]
+              cache[:ebay_store_field].nil? || !cache[:ebay_store_field].present? ? cache[:ebay_store_field] = StampsField.new(browser.a(css: "[data-store-name=PayPal]")) : cache[:ebay_store_field]
             when :rakuten
-              cache[:rakuten_store_field].nil? || !cache[:rakuten_store_field].present? ? cache[:rakuten_store_field] = StampsField.new(browser.a(css: "[data-store-name=paypal]")) : cache[:rakuten_store_field]
+              cache[:rakuten_store_field].nil? || !cache[:rakuten_store_field].present? ? cache[:rakuten_store_field] = StampsField.new(browser.a(css: "[data-store-name=PayPal]")) : cache[:rakuten_store_field]
             when :shopify
-              cache[:shopify_store_field].nil? || !cache[:shopify_store_field].present? ? cache[:shopify_store_field] = StampsField.new(browser.a(css: "[data-store-name=paypal]")) : cache[:shopify_store_field]
+              cache[:shopify_store_field].nil? || !cache[:shopify_store_field].present? ? cache[:shopify_store_field] = StampsField.new(browser.a(css: "[data-store-name=PayPal]")) : cache[:shopify_store_field]
             when :amazon
-              cache[:amazon_store_field].nil? || !cache[:amazon_store_field].present? ? cache[:amazon_store_field] = StampsField.new(browser.a(css: "[data-store-name=paypal]")) : cache[:amazon_store_field]
+              cache[:amazon_store_field].nil? || !cache[:amazon_store_field].present? ? cache[:amazon_store_field] = StampsField.new(browser.a(css: "[data-store-name=PayPal]")) : cache[:amazon_store_field]
             when :etsy
-              cache[:etsy_store_field].nil? || !cache[:etsy_store_field].present? ? cache[:etsy_store_field] = StampsField.new(browser.a(css: "[data-store-name=paypal]")) : cache[:etsy_store_field]
+              cache[:etsy_store_field].nil? || !cache[:etsy_store_field].present? ? cache[:etsy_store_field] = StampsField.new(browser.a(css: "[data-store-name=PayPal]")) : cache[:etsy_store_field]
             when :magento
-              cache[:magento_store_field].nil? || !cache[:magento_store_field].present? ? cache[:magento_store_field] = StampsField.new(browser.a(css: "[data-store-name=paypal]")) : cache[:magento_store_field]
+              cache[:magento_store_field].nil? || !cache[:magento_store_field].present? ? cache[:magento_store_field] = StampsField.new(browser.a(css: "[data-store-name=PayPal]")) : cache[:magento_store_field]
             when :opencart
               cache[:opencart_store_field].nil? || !cache[:opencart_store_field].present? ? cache[:opencart_store_field] = StampsField.new(browser.div(css: "div[style*='/OpenCart']")) : cache[:opencart_store_field]
             when :square
@@ -242,8 +242,11 @@ module Stamps
 
         def store_window(str)
           case(str.downcase.to_sym)
-            when :paypal
-              cache[:paypal_window].nil? || !cache[:paypal_window].present? ? cache[:paypal_window] = Browser::Base.new(param).extend(Orders::Stores::PayPal::WindowTitle) : cache[:paypal_window]
+            when :PayPal
+              if cache[:PayPal_window].nil? || !cache[:PayPal_window].present?
+                cache[:PayPal_window] = Browser::Base.new(param).extend(Stamps::Orders::Stores::PayPal::WindowTitle)
+              end
+              return cache[:PayPal_window]
             when :ebay
               raise "#{str} not implemented."
             when :shopify
@@ -261,8 +264,6 @@ module Stamps
             else
               raise ArgumentError,  "#{str} - Invalid store selection or store is not yet implemented. Check your test."
           end
-
-
         end
 
         def add_store(str)
