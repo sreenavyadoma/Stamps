@@ -128,16 +128,17 @@ module Stamps
           end
 
           def money_saving_offers_checkbox
-            (cache[:money_saving_offers_checkbox].nil? || !cache[:money_saving_offers_checkbox].present?) ? cache[:money_saving_offers_checkbox] = Stamps::Browser::StampsWatirCheckbox.new(browser.checkbox(css: '#sideoptin > #optInDiv > div.checkbox > #optIn')) : cache[:money_saving_offers_checkbox]
+            (cache[:money_saving_offers_checkbox].nil? || !cache[:money_saving_offers_checkbox].present?) ? cache[:money_saving_offers_checkbox] = Stamps::Browser::StampsWatirCheckbox.new(browser.inputs(id: "optIn").last) : cache[:money_saving_offers_checkbox]
           end
 
           def money_saving_offers_paragraph
             (cache[:money_saving_offers_paragraph].nil? || !cache[:money_saving_offers_paragraph].present?) ? cache[:money_saving_offers_paragraph] = Stamps::Browser::StampsField.new(browser.span(css: "li[id=sideoptin]>div[id=optInDiv]>div>label>span")) : cache[:money_saving_offers_paragraph]
           end
-
-        end
+         end
 
         module WebRegPagination
+
+
           def continue_btn
             (cache[:continue_btn].nil? || !cache[:continue_btn].present?) ? cache[:continue_btn] = Stamps::Browser::StampsField.new(browser.button(id: "next")) : cache[:continue_btn]
           end
@@ -148,6 +149,7 @@ module Stamps
         include Fields
         include Fields::SideContent
         include Fields::WebRegPagination
+
 
         def header
           (cache[:header].nil?||!cache[:header].present?)?cache[:header]=StampsField.new(browser.h1(css: "div[id=page]>div>div>h1")):cache[:header]

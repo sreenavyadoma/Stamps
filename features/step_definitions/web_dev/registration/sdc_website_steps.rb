@@ -16,9 +16,9 @@ end
 
 Then /^[Cc]lick on [Gg]et [Ss]tarted$/ do
     sdc_website.get_started_btn.wait_until_present(5)
+    expect(sdc_website.get_started_btn.present?).to be(true), "GET STARTED button is not preset"
     sdc_website.get_started_btn.click
-    registration.profile.email.textbox.wait_until_present(5)
+    registration.bread_crumbs.bread_crumb_profile.wait_until_present(10)
     expect(test_config.browser.url).to include('profile')
-
 end
 

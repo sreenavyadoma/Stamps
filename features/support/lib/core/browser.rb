@@ -269,6 +269,9 @@ module Stamps
       def style(property)
         field.style(property)
       end
+      def fire_event
+        field.fire_event :click
+      end
     end
 
     #todo-Rob rework disabled field
@@ -421,6 +424,9 @@ module Stamps
           # ignore
         end
         false
+      end
+      def fire_event
+        return  checkbox.fire_event :click
       end
     end
 
