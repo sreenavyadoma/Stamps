@@ -425,9 +425,6 @@ module Stamps
         end
         false
       end
-      def fire_event
-        return  checkbox.fire_event :click
-      end
     end
 
     class StampsCheckbox
