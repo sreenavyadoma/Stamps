@@ -15,27 +15,27 @@ module Stamps
 
       module Products
         def auto_add_to_products_page
-          (cache[:add_to_products].nil? || !cache[:add_to_products].present?) ? cache[:add_to_products] = StampsCheckbox.new(
-              iframe.input(id: "addNewProducts"),
-              iframe.input(id: "addNewProducts"),
-              "class",
-              "ng-not-empty") : cache[:add_to_products]
+          if cache[:add_to_products].nil? || !cache[:add_to_products].present?
+            cache[:add_to_products] = StampsCheckbox.new( iframe.input(id: "addNewProducts"), iframe.input(id: "addNewProducts"), 
+                                                          "class", "ng-not-empty")
+          end
+          cache[:add_to_products]
         end
 
         def sku
-          (cache[:sku].nil? || !cache[:sku].present?) ? cache[:sku] = StampsRadio.new(
-              iframe.label(css: "label[for='sku']"),
-              iframe.input(id: 'sku'),
-              "class",
-              "parse") : cache[:sku]
+          if cache[:sku].nil? || !cache[:sku].present?
+            cache[:sku] = StampsRadio.new(iframe.label(css: "label[for='sku']"), iframe.input(id: 'sku'), 
+                                          "class", "parse")
+          end
+          cache[:sku]
         end
 
         def product_listing_name
-          (cache[:product_listing_name].nil? || !cache[:product_listing_name].present?) ? cache[:product_listing_name] = StampsRadio.new(
-              iframe.label(css: "label[for='productListingName']"),
-              iframe.input(id: 'productListingName'),
-              "class",
-              "parse") : cache[:product_listing_name]
+          if cache[:prod_list].nil? || !cache[:prod_list].present?
+            cache[:prod_list] = StampsRadio.new(iframe.label(css: "label[for='productListingName']"), 
+                                                iframe.input(id: 'productListingName'), "class", "parse")
+          end
+          cache[:prod_list]
         end
       end
 
