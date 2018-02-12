@@ -3,7 +3,7 @@ module Stamps
     module Stores
       module StoresIframe
         def iframe
-          (cache[:iframe].nil?)?cache[:iframe]=browser.iframe(css: "[id=storeiframe]"):cache[:iframe]
+          (cache[:iframe].nil?) ? cache[:iframe] = browser.iframe(css: "[id=storeiframe]") : cache[:iframe]
         end
       end
 
@@ -160,27 +160,42 @@ module Stamps
         end
 
         def store_modal
-          cache[:store_modal].nil? || !cache[:store_modal].present? ? cache[:store_modal] = StampsField.new(browser.div(css: "div[id^='storeiframewindow'][id$='header']")) : cache[:store_modal]
+          if cache[:store_modal].nil? || !cache[:store_modal].present?
+            cache[:store_modal] = StampsField.new(browser.div(css: "div[id^='storeiframewindow'][id$='header']"))
+          end
+          cache[:store_modal]
         end
 
         def paypal_store_icon
-          cache[:paypal_store_icon].nil? || !cache[:paypal_store_icon].present? ? cache[:paypal_store_icon] = StampsField.new(iframe.img(css: "img[src*=paypalbanner]")) : cache[:paypal_store_icon]
+          if cache[:paypal_store_icon].nil? || !cache[:paypal_store_icon].present?
+            cache[:paypal_store_icon] = StampsField.new(iframe.img(css: "img[src*=paypalbanner]"))
+          end
+          cache[:paypal_store_icon]
         end
 
         def paypal_email_address
-          cache[:paypal_email_address].nil? || !cache[:paypal_email_address].present? ? cache[:paypal_email_address] = StampsTextbox.new(iframe.text_field(css: "[class*=paypalEmailField]")) : cache[:paypal_email_address]
+          if cache[:paypal_email_address].nil? || !cache[:paypal_email_address].present?
+            cache[:paypal_email_address] = StampsTextbox.new(iframe.text_field(css: "[class*=paypalEmailField]"))
+          end
+          cache[:paypal_email_address]
         end
 
         def verify_email_field
-          cache[:verify_email_field].nil? || !cache[:verify_email_field].present? ? cache[:verify_email_field] = StampsField.new(iframe.button(css: "[ng-click='paypal.testConnection()']")) : cache[:verify_email_field]
+          if cache[:verify_email_field].nil? || !cache[:verify_email_field].present?
+            cache[:verify_email_field] = StampsField.new(iframe.button(css: "[ng-click='paypal.testConnection()']"))
+          end
+          cache[:verify_email_field]
         end
 
         def verify_email_button
-          (cache[:verify_email_button].nil?||!cache[:verify_email_button].present?)?cache[:verify_email_button]=StampsField.new(iframe.span(text: "Verify Email")):cache[:verify_email_button]
+          if cache[:verify_email_button].nil? || !cache[:verify_email_button].present?
+            cache[:verify_email_button] = StampsField.new(iframe.span(text: "Verify Email"))
+          end
+          cache[:verify_email_button]
         end
 
         def verify_email
-          connect_to_store=ConnectYourPaypalStore.new(param)
+          connect_to_store = ConnectYourPaypalStore.new(param)
           20.times do
             return connect_to_store if connect_to_store.present?
             verify_email_button.click
@@ -203,11 +218,14 @@ module Stamps
         end
 
         def connect_button
-          (cache[:connect_button].nil?||!cache[:connect_button].present?)?cache[:connect_button]=StampsField.new(iframe.span(text: "Connect")):cache[:connect_button]
+          if cache[:connect_button].nil? || !cache[:connect_button].present?
+            cache[:connect_button] = StampsField.new(iframe.span(text: "Connect"))
+          end
+          cache[:connect_button]
         end
 
         def connect              #Click connect button to connect to Paypal Store and bring up Store Settings modal
-          store_settings=StoreSettings.new(param)
+          store_settings = StoreSettings.new(param)
           10.times do
             connect_button.click
             store_settings.wait_until_present
