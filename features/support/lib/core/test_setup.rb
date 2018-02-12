@@ -1,6 +1,6 @@
 module Stamps
   class StampsTestSetup
-    attr_accessor :browser, :firefox_profile, :browser_version, :scenario_name
+    attr_accessor :browser, :firefox_profile, :browser_version, :scenario_name, :os_version
 
     def logger
       @logger.nil? || @logger.scenario_name != scenario_name ? @logger = StampsLogger.new(scenario_name) : @logger
@@ -12,7 +12,6 @@ module Stamps
       begin
         Watir::always_locate = true
         logger.info "Browser Selection: #{browser_str}"
-        browser_version = 'Unknown'
         case(browser_str)
           when :edge # Launch Microsoft Edge
             begin
@@ -69,13 +68,16 @@ module Stamps
             driver = Watir::Browser.new :ie
             driver.window.maximize
           when :safari
-            # kill safari browser before launching via webdriver
             stdout, status = Open3.capture3("killall Safari")
             logger.message status
             logger.message stdout
 
             driver = Watir::Browser.new :safari
-            #sleep(3)
+            #info = driver.execute_script("return navigator.userAgent;")
+            #match = /([\d.]+) (Safari)/.match(info)
+            #self.browser_version = "#{match[2]} #{match[1]}"
+            #os_version = /(Mac OS.+[\d_]+)\)/.match(info)[1]
+            get_versions(driver.execute_script("return navigator.userAgent;"))
             driver.window.maximize
           else
             raise "#{browser_str} is not a valid browser"
@@ -84,6 +86,7 @@ module Stamps
         self.browser = driver
         logger.message "-"
         logger.message "BROWSER: #{self.browser_version.to_s.gsub("/", " ")}"
+        logger.message "OS: #{self.os_version.to_s.gsub("/", " ")}" if self.os_version
         logger.message "-"
         #driver.cookies.clear
       rescue StandardError => e
@@ -93,6 +96,14 @@ module Stamps
         logger.error e.message
         raise e
       end
+    end
+
+    private
+    def get_versions(info)
+      # match = /([\d.]+) (Safari)/.match(info)
+      # self.browser_version = "#{match[2]} #{match[1]}"
+      self.browser_version = /[\d.]+ Safari|Edge\/.+|Firefox\/.+|Chrome\/.+/.match(info)
+      self.os_version = /(Mac OS.+[\d_]+)\)/.match(info)[1]
     end
 
     def os

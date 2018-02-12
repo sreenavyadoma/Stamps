@@ -1,4 +1,4 @@
-default: --backtrace --profile alex_orders
+default: --backtrace --profile alex_mail
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -18,11 +18,11 @@ eli_dev: --tags @print_dialog_ship_date_calendar --guess DEBUG=false JENKINS=fal
 ray_dev: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=gc USR=default PW=pass111
 sap:              --tags @registration_orders WEB_APP=registration URL=cc --guess DEBUG=false BROWSER=gc MAX_WINDOW=false
 
-alex_mail:  --tags @bvt_mail_piece_validation BROWSER=ff WEB_APP=mail JENKINS=true URL=sc USR=abqasc1 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
+alex_mail:  --tags @purchasing BROWSER=safari WEB_APP=orders JENKINS=true URL=stg USR=abqast1 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
 alex_regress:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders JENKINS=true URL=cc USR=abqacc10 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
 alex_rates:  --tags @rates_pm_comm_base_zone_1 BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast2 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
 alex_rates_pmi:  --tags @rates_pmi_comm_plus_group_9 BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast2 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
-alex_orders:  --tags @details_large_dimensions_pm BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast1 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
+alex_orders:  --tags @square_workflow BROWSER=gc WEB_APP=orders JENKINS=true URL=qasc USR=abqasc2 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
 
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
