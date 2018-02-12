@@ -15,27 +15,27 @@ module Stamps
 
       module Products
         def auto_add_to_products_page
-          (cache[:add_to_products].nil?||!cache[:add_to_products].present?)?cache[:add_to_products]=StampsCheckbox.new(
+          (cache[:add_to_products].nil? || !cache[:add_to_products].present?) ? cache[:add_to_products] = StampsCheckbox.new(
               iframe.input(id: "addNewProducts"),
               iframe.input(id: "addNewProducts"),
               "class",
-              "ng-not-empty"):cache[:add_to_products]
+              "ng-not-empty") : cache[:add_to_products]
         end
 
         def sku
-          (cache[:sku].nil?||!cache[:sku].present?)?cache[:sku]=StampsRadio.new(
+          (cache[:sku].nil? || !cache[:sku].present?) ? cache[:sku] = StampsRadio.new(
               iframe.label(css: "label[for='sku']"),
               iframe.input(id: 'sku'),
               "class",
-              "parse"):cache[:sku]
+              "parse") : cache[:sku]
         end
 
         def product_listing_name
-          (cache[:product_listing_name].nil?||!cache[:product_listing_name].present?)?cache[:product_listing_name]=StampsRadio.new(
+          (cache[:product_listing_name].nil? || !cache[:product_listing_name].present?) ? cache[:product_listing_name] = StampsRadio.new(
               iframe.label(css: "label[for='productListingName']"),
               iframe.input(id: 'productListingName'),
               "class",
-              "parse"):cache[:product_listing_name]
+              "parse") : cache[:product_listing_name]
         end
       end
 
@@ -258,32 +258,46 @@ module Stamps
         end
 
         def store_nickname
-          (cache[:store_nickname].nil?||!cache[:store_nickname].present?)?cache[:store_nickname]=StampsTextbox.new(
-              iframe.text_field(id: "storeName")):cache[:store_nickname]
+          if cache[:store_nickname].nil? || !cache[:store_nickname].present?
+            cache[:store_nickname] = StampsTextbox.new(iframe.text_field(id: "storeName"))
+          end
+          cache[:store_nickname]
         end
 
         def auto_import_new_orders
-          (cache[:auto_import].nil?||!cache[:v].present?)?cache[:auto_import]=Stamps::Browser::StampsCheckbox.new(
-              iframe.input(id: 'importOrders'), iframe.input(id: 'importOrders'), "class", "ng-not-empty"):cache[:auto_import]
+          if cache[:auto_import].nil? || !cache[:v].present?
+            cache[:auto_import] = Stamps::Browser::StampsCheckbox.new(iframe.input(id: 'importOrders'), iframe.input(id: 'importOrders'), "class", "ng-not-empty")
+          end
+          cache[:auto_import]
         end
 
         def save
-          (cache[:save].nil?||!cache[:save].present?)?cache[:save]=StampsField.new(iframe.button(id: "saveSettings")):cache[:save]
+          cache[:save] = StampsField.new(iframe.button(id: "saveSettings")) if cache[:save].nil? || !cache[:save].present?
+          cache[:save]
         end
 
         def remove_service
-          (cache[:remove_service].nil?||!cache[:remove_service].present?)?cache[:remove_service]=StampsField.new(iframe.button(class: "action remove")):cache[:remove_service]
+          if cache[:remove_service].nil? || !cache[:remove_service].present?
+            cache[:remove_service] = StampsField.new(iframe.button(class: "action remove"))
+          end
+          cache[:remove_service]
         end
 
         def manage_service_options
-          (cache[:manage_service].nil?||!cache[:manage_service].present?)?cache[:manage_service]=StampsField.new(iframe.button(class: "action remove")):cache[:manage_service]
+          if cache[:manage_service].nil? || !cache[:manage_service].present?
+            cache[:manage_service] = StampsField.new(iframe.button(class: "action remove"))
+          end
+          cache[:manage_service]
         end
 
         def service_tooltip(str)
         end
 
         def general_settings
-          (cache[:title_text].nil?||!cache[:title_text].present?)?cache[:title_text]= StampsField.new(iframe.h3(css: "div[class^='storeEdit']>form>h3")):cache[:title_text]
+          if cache[:title_text].nil? || !cache[:title_text].present?
+            cache[:title_text] = StampsField.new(iframe.h3(css: "div[class^='storeEdit']>form>h3"))
+          end
+          cache[:title_text]
         end
       end
     end
