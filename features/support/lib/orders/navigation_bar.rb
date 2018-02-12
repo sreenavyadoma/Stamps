@@ -292,7 +292,7 @@ module Stamps
 
       def balance_amount
         if cache[:balance_amount].nil? || !cache[:balance_amount].present?
-          cache[:balance_amount] = StampsField.new(browser.span(class: 'postageBalanceAmt'))
+          cache[:balance_amount] = StampsField.new(browser.span(css: '[id=postageBalanceAmt]'))
         end
         cache[:balance_amount]
       end
