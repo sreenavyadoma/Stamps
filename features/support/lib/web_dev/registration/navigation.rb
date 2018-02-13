@@ -11,12 +11,12 @@ module Stamps
         # end
 
         def stamps_logo
-          cache[:stamps_logo] = StampsField.new(browser.img(id: "sdc-logo")) if cache[:stamps_logo].nil?
+          cache[:stamps_logo] = StampsField.new(browser.img(id: "sdc-logo")) if cache[:stamps_logo].nil? || cache[:stamps_logo].present?
           cache[:stamps_logo]
         end
 
         def usps_logo
-          cache[:usps_logo] = StampsField.new(browser.img(css: "img[src*=logo_usps_vendor_]")) if cache[:usps_logo].nil?
+          cache[:usps_logo] = StampsField.new(browser.img(css: "img[src*=logo_usps_vendor_]")) if cache[:usps_logo].nil? || cache[:stamps_logo].present?
           cache[:usps_logo]
         end
 
