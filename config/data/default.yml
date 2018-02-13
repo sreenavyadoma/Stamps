@@ -50,7 +50,7 @@ database:
     password: Jenkins123!
 
 supported_stores:
-  paypal: Paypal
+  paypal: PayPal
   amazon: Amazon
   ebay: eBay
   rakuten: Rakuten
@@ -176,6 +176,7 @@ orders_services:
   PMEI Flat Rate Envelope: sdc-servicedroplist-emiflatrateenvelope
   PMEI Padded Flat Rate Envelope: sdc-servicedroplist-emiflatratepaddedenvelope
   PMEI Legal Flat Rate Envelope: sdc-servicedroplist-emilegalflatrateenvelope
+
 
 country_groups_PMI:
   group1:

@@ -105,8 +105,7 @@ Then /^[Ee]xpect [Pp]rofile [Pp]age [Pp]romo [Cc]ode is (?:correct|(.*))$/ do |s
 end
 
 Then /^[Cc]heck [Pp]rofile [Pp]age [Mm]oney-saving offers and new products$/ do
-       registration.profile.money_saving_offers_checkbox.fire_event(:click) unless registration.profile.money_saving_offers_checkbox.checked?
-
+  registration.profile.money_saving_offers_checkbox.fire_event(:click) unless registration.profile.money_saving_offers_checkbox.checked?
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Mm]oney-saving offers and new products is checked$/ do

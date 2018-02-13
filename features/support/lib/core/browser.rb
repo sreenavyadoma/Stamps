@@ -441,7 +441,7 @@ module Stamps
       end
 
       def enabled?
-        checkbox.enabled?
+        raise 'Not Implemented'
       end
 
       def visible?
@@ -452,10 +452,18 @@ module Stamps
         checkbox.exist?
       end
 
+      ##
+      # Stamps UI framework disables an html field by adding string disabled in the field's class attribute.
+      def stamps_disabled?(attr = 'class', attr_val = 'disabled')
+        check_verify.attribute_value(attr).include?(attr_val)
+      end
+
       def checked?
         begin
           result = check_verify.attribute_value(attribute)
-          return result == 'true' if result == 'true' || result == 'false'
+          if result == 'true' || result == 'false'
+            return result == 'true'
+          end
           return result.include?(attribute_value)
         rescue
           # ignore
@@ -497,7 +505,7 @@ module Stamps
           radio.click
         end
         expect(selected?).to be(true), 'Unable to select radio button'
-        self
+        selected?
       end
 
       def selected?

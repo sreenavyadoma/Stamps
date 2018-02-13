@@ -2,7 +2,7 @@ module Stamps
   module Orders
     module Stores
       class ImportingOrdersModal < Browser::Base
-        #assign({})
+
         def present?
           browser.div(text: "Importing Orders").present?
         end
@@ -12,7 +12,7 @@ module Stamps
         end
 
         def ok
-          button=StampsField.new(browser.span(text: "OK"))
+          button = StampsField.new(browser.span(text: "OK"))
           20.times do
             button.click
             break unless button.present?
@@ -30,14 +30,14 @@ module Stamps
         end
 
         def delete_btn
-          spans=browser.spans(css: "div[componentid^=dialoguemodal]>div[id^=panel]>div>div>div>a:nth-child(1)>span>span>span[id$=btnInnerEl]")
-          first=spans.first
-          last=spans.last
-          (last.present?)?last:first
+          spans = browser.spans(css: "div[componentid^=dialoguemodal]>div[id^=panel]>div>div>div>a:nth-child(1)>span>span>span[id$=btnInnerEl]")
+          first = spans.first
+          last = spans.last
+          last.present? ? last : first
         end
 
         def delete
-          button=StampsField.new delete_btn
+          button = StampsField.new delete_btn
           5.times do
             break if button.present?
           end
@@ -196,16 +196,15 @@ module Stamps
 
       module MarketPlaceWindowTitle
         def window_title
-          (cache[:window_title].nil?||!cache[:window_title].present?)?cache[:window_title]=StampsField.new(browser.div(css: "[id^=storeselectionwindow-] [class$=x-title-item]")):cache[:window_title]
+          cache[:window_title].nil? || !cache[:window_title].present? ? cache[:window_title] = StampsField.new(browser.div(css: "[id^=storeselectionwindow-] [class$=x-title-item]")) : cache[:window_title]
         end
 
         def x_btn
-          (cache[:x_btn].nil?||!cache[:x_btn].present?)?cache[:x_btn]=StampsField.new(browser.divs(css: "[id^=storeselectionwindow-] img").last):cache[:x_btn]
+          cache[:x_btn].nil? || !cache[:x_btn].present? ? cache[:x_btn] = StampsField.new(browser.divs(css: "[id^=storeselectionwindow-] img").last) : cache[:x_btn]
         end
       end
 
       class MarketplaceDataView < Browser::Base
-        #assign({})
 
         def store_count
           begin
@@ -219,23 +218,23 @@ module Stamps
         def store_field(str)
           case(str.downcase.to_sym)
             when :paypal
-              (cache[:paypal_store_field].nil?||!cache[:paypal_store_field].present?)?cache[:paypal_store_field]=StampsField.new(browser.a(css: "[data-store-name=paypal]")):cache[:paypal_store_field]
+              cache[:paypal_store_field].nil? || !cache[:paypal_store_field].present? ? cache[:paypal_store_field] = StampsField.new(browser.a(css: "[data-store-name=paypal]")) : cache[:paypal_store_field]
             when :ebay
-              (cache[:ebay_store_field].nil?||!cache[:ebay_store_field].present?)?cache[:ebay_store_field]=StampsField.new(browser.a(css: "[data-store-name=paypal]")):cache[:ebay_store_field]
+              cache[:ebay_store_field].nil? || !cache[:ebay_store_field].present? ? cache[:ebay_store_field] = StampsField.new(browser.a(css: "[data-store-name=paypal]")) : cache[:ebay_store_field]
             when :rakuten
-              (cache[:rakuten_store_field].nil?||!cache[:rakuten_store_field].present?)?cache[:rakuten_store_field]=StampsField.new(browser.a(css: "[data-store-name=paypal]")):cache[:rakuten_store_field]
+              cache[:rakuten_store_field].nil? || !cache[:rakuten_store_field].present? ? cache[:rakuten_store_field] = StampsField.new(browser.a(css: "[data-store-name=paypal]")) : cache[:rakuten_store_field]
             when :shopify
-              (cache[:shopify_store_field].nil?||!cache[:shopify_store_field].present?)?cache[:shopify_store_field]=StampsField.new(browser.a(css: "[data-store-name=paypal]")):cache[:shopify_store_field]
+              cache[:shopify_store_field].nil? || !cache[:shopify_store_field].present? ? cache[:shopify_store_field] = StampsField.new(browser.a(css: "[data-store-name=paypal]")) : cache[:shopify_store_field]
             when :amazon
-              (cache[:amazon_store_field].nil?||!cache[:amazon_store_field].present?)?cache[:amazon_store_field]=StampsField.new(browser.a(css: "[data-store-name=paypal]")):cache[:amazon_store_field]
+              cache[:amazon_store_field].nil? || !cache[:amazon_store_field].present? ? cache[:amazon_store_field] = StampsField.new(browser.a(css: "[data-store-name=paypal]")) : cache[:amazon_store_field]
             when :etsy
-              (cache[:etsy_store_field].nil?||!cache[:etsy_store_field].present?)?cache[:etsy_store_field]=StampsField.new(browser.a(css: "[data-store-name=paypal]")):cache[:etsy_store_field]
+              cache[:etsy_store_field].nil? || !cache[:etsy_store_field].present? ? cache[:etsy_store_field] = StampsField.new(browser.a(css: "[data-store-name=paypal]")) : cache[:etsy_store_field]
             when :magento
-              (cache[:magento_store_field].nil?||!cache[:magento_store_field].present?)?cache[:magento_store_field]=StampsField.new(browser.a(css: "[data-store-name=paypal]")):cache[:magento_store_field]
+              cache[:magento_store_field].nil? || !cache[:magento_store_field].present? ? cache[:magento_store_field] = StampsField.new(browser.a(css: "[data-store-name=paypal]")) : cache[:magento_store_field]
             when :opencart
-              (cache[:opencart_store_field].nil?||!cache[:opencart_store_field].present?)?cache[:opencart_store_field]=StampsField.new(browser.div(css: "div[style*='/OpenCart']")):cache[:opencart_store_field]
+              cache[:opencart_store_field].nil? || !cache[:opencart_store_field].present? ? cache[:opencart_store_field] = StampsField.new(browser.div(css: "div[style*='/OpenCart']")) : cache[:opencart_store_field]
             when :square
-              (cache[:square_store_field].nil?||!cache[:square_store_field].present?)?cache[:square_store_field]=StampsField.new(browser.div(css: "div[style*='/squarebanner']")):cache[:square_store_field]
+              cache[:square_store_field].nil? || !cache[:square_store_field].present? ? cache[:square_store_field] = StampsField.new(browser.div(css: "div[style*='/squarebanner']")) : cache[:square_store_field]
             else
               return nil
           end
@@ -244,7 +243,10 @@ module Stamps
         def store_window(str)
           case(str.downcase.to_sym)
             when :paypal
-              (cache[:paypal_window].nil?||!cache[:paypal_window].present?)?cache[:paypal_window]=Browser::Base.new(param).extend(Orders::Stores::PayPalWindowTitle):cache[:paypal_window]
+              if cache[:paypal_window].nil? || !cache[:paypal_window].present?
+                cache[:paypal_window] = Browser::Base.new(param).extend(Stamps::Orders::Stores::PayPal::WindowTitle)
+              end
+              return cache[:paypal_window]
             when :ebay
               raise "#{str} not implemented."
             when :shopify
@@ -256,11 +258,11 @@ module Stamps
             when :magento
               raise "#{str} not implemented."
             when :square
-              (cache[:square_window].nil?||!cache[:square_window].present?)?cache[:square_window]=Browser::Base.new(param).extend(Orders::Stores::SquareWindowTitle):cache[:square_window]
+              cache[:square_window].nil? || !cache[:square_window].present? ? cache[:square_window] = Browser::Base.new(param).extend(Orders::Stores::SquareWindowTitle) : cache[:square_window]
             when :opencart
-              (cache[:opencart_window].nil?||!cache[:opencart_window].present?)?cache[:opencart_window]=Browser::Base.new(param).extend(Orders::Stores::ShipStationUpgradeMessage):cache[:opencart_window]
+              cache[:opencart_window].nil? || !cache[:opencart_window].present? ? cache[:opencart_window] = Browser::Base.new(param).extend(Orders::Stores::ShipStationUpgradeMessage) : cache[:opencart_window]
             else
-              raise "#{str} - Invalid store selection or store is not yet implemented. Check your test."
+              raise ArgumentError,  "#{str} - Invalid store selection or store is not yet implemented. Check your test."
           end
         end
 
@@ -269,7 +271,7 @@ module Stamps
             return store_window(str).window_title.text if store_window(str).window_title.present?
             store_field(str).click
           end
-          nil
+          raise "Unable to add store #{str}"
         end
 
         def add_advanced_feature(str)
@@ -277,6 +279,7 @@ module Stamps
             store_field(str).click
             return store_window(str).window_title.text if store_window(str).window_title.present?
           end
+          raise "Unable to click on store #{str}"
         end
 
         def requires_upgrade_msg(str)
@@ -291,8 +294,6 @@ module Stamps
       class Marketplace < Browser::Base
         include MarketPlaceWindowTitle
 
-        #assign({})
-
         def present?
           window_title.present?
         end
@@ -302,20 +303,24 @@ module Stamps
         end
 
         def contains(store_name)
-          browser.imgs(class: "data-view-selection-enabled").each {|image| return store_name if image.attribute_value("src").include?(store_name.downcase)}
+          browser.imgs(class: "data-view-selection-enabled").each { |image| return store_name if image.attribute_value("src").include?(store_name.downcase) }
           nil
         end
 
         def close
-          (StampsField.new((browser.imgs css: "img[class*='x-tool-close']").last)).click_while_present
+          StampsField.new((browser.imgs css: "img[class*='x-tool-close']").last).click_while_present
         end
 
         def search_by_name
-          (cache[:search_by_name].nil?||!cache[:v].present?)?cache[:search_by_name]=StampsTextbox.new(browser.text_field(css: "input[placeholder='Search by Name']")):cache[:search_by_name]
+          if cache[:search_by_name].nil? || !cache[:search_by_name].present?
+            cache[:search_by_name] = StampsTextbox.new(browser.text_field(css: "input[placeholder='Search by Name']"))
+          end
+          cache[:search_by_name]
         end
 
         def dataview
-          (cache[:dataview].nil?||!cache[:dataview].present?)?cache[:dataview]=MarketplaceDataView.new(param):cache[:dataview]
+          cache[:dataview] = MarketplaceDataView.new(param) if cache[:dataview].nil? || !cache[:dataview].present?
+          cache[:dataview]
         end
       end
 =begin

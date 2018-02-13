@@ -5,7 +5,7 @@ module Stamps
       include Stamps::Mail::MailModals
       include PrintFormPanel::PrintFormBlurOut
 
-      #assign({})
+
 
       def sign_in_modal
         cache[:sign_in].nil? || !cache[:sign_in].present? ? cache[:sign_in] = MailSignIn::MailSignInModal.new(param) : cache[:sign_in]
@@ -39,26 +39,41 @@ module Stamps
               cache[:envelope] = Class.new(Browser::Base).new(param).extend(PrintFormPanel::Envelope)
             end
             return cache[:envelope]
-          when :certified_mail
+          when :cm3610, :cm3710, :cm3910, :cm3930, :cm3810, :cm3830
             if cache[:cm].nil? || !cache[:cm].present?
               cache[:cm] = Class.new(Browser::Base).new(param).extend(PrintFormPanel::CertifiedMail)
             end
             return cache[:cm]
-          when :certified_mail_3910_3930
-            if cache[:cm39103930].nil? || !cache[:cm39103930].present?
-              cache[:cm39103930] = Class.new(Browser::Base).new(param).extend(PrintFormPanel::CertifiedMail39103930)
-            end
-            return cache[:cm39103930]
-          when :certified_mail_3810
-            if cache[:cm3810].nil? || !cache[:cm3810].present?
-              cache[:cm3810] = Class.new(Browser::Base).new(param).extend(PrintFormPanel::CertifiedMail3810)
-            end
-            return cache[:cm3810]
-          when :certified_mail_3830
-            if cache[:certified_mail_3830_print_form].nil? || !cache[:certified_mail_3830_print_form].present?
-              cache[:certified_mail_3830_print_form] = Class.new(Browser::Base).new(param).extend(PrintFormPanel::CertifiedMail3830)
-            end
-            return cache[:certified_mail_3830_print_form]
+          # when :cm3610
+          #   if cache[:cm3610].nil? || !cache[:cm3610].present?
+          #     cache[:cm3610] = Class.new(Browser::Base).new(param).extend(PrintFormPanel::CM3610)
+          #   end
+          #   return cache[:cm3610]
+          # when :cm3710
+          #   if cache[:cm3710].nil? || !cache[:cm3710].present?
+          #     cache[:cm3710] = Class.new(Browser::Base).new(param).extend(PrintFormPanel::CM3710)
+          #   end
+          #   return cache[:cm3710]
+          # when :cm3910
+          #   if cache[:cm3910].nil? || !cache[:cm3910].present?
+          #     cache[:cm3910] = Class.new(Browser::Base).new(param).extend(PrintFormPanel::CM3910)
+          #   end
+          #   return cache[:cm3910]
+          # when :cm3930
+          #   if cache[:cm3930].nil? || !cache[:cm3930].present?
+          #     cache[:cm3930] = Class.new(Browser::Base).new(param).extend(PrintFormPanel::CM3930)
+          #   end
+          #   return cache[:cm3930]
+          # when :cm3810
+          #   if cache[:cm3810].nil? || !cache[:cm3810].present?
+          #     cache[:cm3810] = Class.new(Browser::Base).new(param).extend(PrintFormPanel::CM3810)
+          #   end
+          #   return cache[:cm3810]
+          # when :cm3830
+          #   if cache[:cm3830].nil? || !cache[:cm3830].present?
+          #     cache[:cm3830] = Class.new(Browser::Base).new(param).extend(PrintFormPanel::CM3830)
+          #   end
+          #   return cache[:cm3830]
           when :roll
             if cache[:roll].nil? || !cache[:roll].present?
               cache[:roll] = Class.new(Browser::Base).new(param).extend(PrintFormPanel::Roll)

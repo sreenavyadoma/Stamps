@@ -12,10 +12,6 @@ Then /^[Ee]xpect Advanced Options responds to (.+) \((.+)\)$/ do |method_descrip
   expect(stamps.mail.print_form.advanced_options).to respond_to(method.to_sym), "Print media: #{modal_param.print_media}. Advanced Options does not respond to #{method_description} (#{method})"
 end
 
-Then /^[Ee]xpect Print form responds to (.+) \((.+)\)$/ do |method_description, method|
-  expect(stamps.mail.print_form).to respond_to(method.to_sym), "Print media: #{modal_param.print_media}. Print form does not respond to #{method_description} (#{method})"
-end
-
 Then /^[Ss]elect Advanced Options Extra Services$/ do
   step "Expect Advanced Options responds to Extra Services (extra_services)"
   stamps.mail.print_form.advanced_options.extra_services
@@ -188,6 +184,10 @@ Then /^[Ee]xpect Print Form Electronic Return Receipt is present$/ do
   expect(stamps.mail.print_form.electronic_return_receipt).to be_present, "Print form include Electronic Return Receipt is NOT present"
 end
 
+Then /^[Ee]xpect Print form responds to (.+) \((.+)\)$/ do |method_description, method|
+  expect(stamps.mail.print_form).to respond_to(method.to_sym), "Print media: #{modal_param.print_media}. Print form does not respond to #{method_description} (#{method})"
+end
+
 Then /^[Cc]heck Print Form Electronic Return Receipt$/ do
   step "Expect Print form responds to Electronic Return Receipt (electronic_return_receipt)"
   stamps.mail.print_form.electronic_return_receipt.check
@@ -220,11 +220,13 @@ end
 
 Then /^[Ee]xpect Print Form Return Receipt is disabled$/ do
   step "Expect Print form responds to Return Receipt (return_receipt)"
-  expect(stamps.mail.print_form.return_receipt.enabled?).to be(false), "Print form include Return Receipt is enabled"
+  # expect(stamps.mail.print_form.return_receipt.enabled?).to be(false), "Print form include Return Receipt is enabled"
+  expect(stamps.mail.print_form.return_receipt.stamps_disabled?).to be(true), "Print form include Return Receipt is enabled"
 end
 
 Then /^[Ee]xpect Print Form Return Receipt is not visible$/ do
-  expect{stamps.mail.print_form.return_receipt.present?}.to raise_exception(NoMethodError)
+  #expect(stamps.mail.print_form.return_receipt.present?).to raise_exception(NoMethodError)
+  expect(stamps.mail.print_form.return_receipt.present?).to be(false), "Print Form Return Receipt is visible"
 end
 
 Then /^[Cc]heck Print Form Return Receipt$/ do
@@ -259,7 +261,8 @@ end
 
 Then /^[Ee]xpect Print Form Certified Mail is disabled$/ do
   step "Expect Print form responds to Certified Mail (certified_mail)"
-  expect(stamps.mail.print_form.certified_mail.enabled?).to be(false), "Print form include Certified Mail is enabled"
+  # expect(stamps.mail.print_form.certified_mail.enabled?).to be(false), "Print form include Certified Mail is enabled"
+  expect(stamps.mail.print_form.certified_mail.disabled?).to be(true), "Print form include Certified Mail is enabled"
 end
 
 Then /^[Ee]xpect Advanced Options include Return Address is present$/ do
