@@ -269,8 +269,8 @@ module Stamps
       def style(property)
         field.style(property)
       end
-      def fire_event
-        field.fire_event :click
+      def fire_event(event)
+        field.fire_event(event)
       end
     end
 

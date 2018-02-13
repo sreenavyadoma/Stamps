@@ -15,7 +15,7 @@ rob_registration: --tags @registration_normal_workflow WEB_APP=registration URL=
 #todo-Rob WebReg consider removing webapp, username, password fields
 #mhossain1_cc: --tags @registration_normal_workflow WEB_APP=orders JENKINS=true URL=cc DEBUG=true BROWSER=ff MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
 
-mhossain1_cc: --tags @registration_ui_validation_profile_page WEB_APP = orders WEB_APP=orders JENKINS=true URL=cc DEBUG=true BROWSER=gc MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
+mhossain1_cc: --tags @registration_ui_validation_profile_page WEB_APP = orders WEB_APP=orders JENKINS=true URL=cc DEBUG=true BROWSER=edge MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
