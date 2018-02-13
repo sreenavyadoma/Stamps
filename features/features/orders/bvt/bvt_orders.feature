@@ -114,6 +114,8 @@ Feature:  BVT tests for Orders
     Then set Customs Package Contents to Document
     Then set Customs Package Contents to Humanitarian Donation
     Then set Customs Package Contents to Merchandise
+    Then set Customs Package Contents to Other
+    Then set Customs More Info to random
     Then set Customs Non-Delivery Options to Return to sender
     Then set Customs Internal Transaction Number to Not required
     Then set Customs More Info to random
