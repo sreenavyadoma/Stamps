@@ -16,7 +16,7 @@ module Stamps
       end
 
       class OpenCart < Browser::Base
-        #assign({})
+
         def add_advanced_shipping_feature
           (cache[:advanced_shipping].nil?||!cache[:advanced_shipping].present?)?cache[:advanced_shipping]=AddAdvancedShippingFeatures.new(param):cache[:advanced_shipping]
         end

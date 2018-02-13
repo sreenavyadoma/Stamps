@@ -396,8 +396,8 @@ module Stamps
           return :edge
         # when /ie|explorer|internet explorer/
         #   return :ie
-        # when /apple|osx|safari|mac/
-        #   return :safari
+        when /apple|osx|safari|mac/
+            return :safari
         else
           # do nothing
       end

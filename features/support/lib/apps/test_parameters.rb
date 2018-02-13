@@ -5,6 +5,7 @@ module Stamps
       if @test_param.nil?
         @test_param = {}
         @test_param[:customs_associated_items] = {}
+        @test_param[:service_mapping_items] = {}
         @test_param[:details_associated_items] = {}
         @test_param[:order_id] = {}
         @test_param[:service_look_up] = {}

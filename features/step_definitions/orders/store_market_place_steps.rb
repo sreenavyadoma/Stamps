@@ -17,7 +17,7 @@ end
 Then /^[Cc]onnect [Mm]arketplace [Ss]tore (.*)$/ do |str|
   step "validate store name #{str}"
   step "expect Marketplace modal is present"
-  expect(stamps.orders.marketplace.add_your_store_modal.dataview.add_store(str)).to eql("Connect Your #{data_for(:supported_stores, {})[str.downcase]} Store")
+  expect(stamps.orders.marketplace.add_your_store_modal.dataview.add_store(str)).to eql("Connect Your #{str} Store")
 end
 
 Then /^[Cc]click on [Mm]arketplace [Ss]tore (.*)$/ do |str|
@@ -49,14 +49,14 @@ Then /^[Ee]xpect [Mm]arketplace [Dd]ataview [Cc]ount is (greater|less|equal) (?:
   end
 end
 #
-# Then /^[Ss]elect Paypal on Marketplace modal$/ do
-#   step "expect Paypal is on Marketplace modal"
+# Then /^[Ss]elect PayPal on Marketplace modal$/ do
+#   step "expect PayPal is on Marketplace modal"
 #   stamps.orders.marketplace.add_your_store_modal.paypal.click
 # end
 =begin
 
-Then /^[Ee]xpect Paypal is on Marketplace modal$/ do
-  expect(stamps.orders.marketplace.add_your_store_modal.paypal_store).to be_present, "Paypal is not on Marketplace modal"
+Then /^[Ee]xpect PayPal is on Marketplace modal$/ do
+  expect(stamps.orders.marketplace.add_your_store_modal.paypal_store).to be_present, "PayPal is not on Marketplace modal"
 end
 
 Then /^Marketplace: Select Big Commerce$/ do

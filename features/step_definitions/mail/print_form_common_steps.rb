@@ -48,7 +48,7 @@ Then /^[Ee]xpect [Pp]rint [Ff]orm [Ss]ervice (.*) is not present in dropdown lis
 end
 
 Then /^[Ss]elect [Pp]rint [Ff]orm [Ss]ervice (.*)$/ do |str|
-  step "blur out on print form"
+#  step "blur out on print form"
   stamps.mail.print_form.service.select_service(test_param[:service]=str)
 end
 

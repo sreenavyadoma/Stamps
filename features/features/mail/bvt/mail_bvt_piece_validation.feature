@@ -52,7 +52,7 @@ Feature: Manually verify all mail pieces in Staging
     Then select Print form service PM Large Flat Rate Box
     Then Print Postage
 #    Then set Mail Print modal Printer Zebra LP 2844 on qa-printlab2016
-    Then set Mail Print modal Printer ZDesigner LP 2844AB
+    Then set Mail Print modal Printer ZDesigner LP 2844
     Then click Mail Print modal Print button
     Then Sign out
 
@@ -69,7 +69,6 @@ Feature: Manually verify all mail pieces in Staging
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then Sign out
-
 
   Scenario: Shipping Label - 8 ½" x 11" Paper
     Then select Print On Shipping Label - Paper

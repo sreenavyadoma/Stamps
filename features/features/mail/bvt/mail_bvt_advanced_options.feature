@@ -9,15 +9,12 @@ Feature: Advanced Options BVT
   Scenario: Advanced Options for Stamps
     Then select Print On Stamps
     Then show Advanced Options
-    # Calculate Postage
     Then expect Advanced Options Calculate Postage Amount radio button is present
     Then select Advanced Options Calculate Postage Amount
     Then expect Advanced Options Calculate Postage Amount is selected
-    # Specify Postage
     Then expect Advanced Options Specify Postage Amount radio button is present
     Then select Advanced Options Specify Postage Amount
     Then expect Advanced Options Specify Postage Amount is selected
-    # Populate Stamps form
     Then set Print form Serial Number to random C series
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
@@ -25,13 +22,13 @@ Feature: Advanced Options BVT
     Then select Print form service FCM Letter
     Then set Print form Quantity to 1
     Then set Advanced Options Cost Code to None
-    # Extra Services
+
     Then expect Advanced Options Extra Services Button is visible
-    # Reference Number Textbox
+
     Then expect Advanced Options Reference Number field is present
     Then set Advanced Options Reference Number to random string
     Then expect Advanced Options Reference Number is correct
-    # Cost Code Textbox
+
     Then expect Advanced Options Cost Code Field is present
     Then set Advanced Options Cost Code to None
     Then expect Advanced Options Cost Code is None
@@ -39,17 +36,13 @@ Feature: Advanced Options BVT
     # ------------------------------------------------------------ Rolls Advanced Options
   Scenario: Advanced Options for Roll 4x6
     Then select Print On Roll 4x6
-
     Then set Advanced Options Mail Date to today
     Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 1
     Then select Print form service PM Package
     Then show Advanced Options
-
-    # Extra Services
     Then expect Advanced Options Extra Services Button is visible
 
-    # Mail Date Picker
     Then expect Advanced Options Mail Date field is present
     Then set Advanced Options Mail Date to date 04/04/2017
     Then expect Advanced Options Mail Date is 04/04/2017
@@ -70,26 +63,22 @@ Feature: Advanced Options BVT
     Then set Advanced Options Mail Date to today plus 5
     Then expect Advanced Options Mail Date is correct
 
-    # Hide Label Value CheckBox
     Then expect Advanced Options Hide Label Value is present
     Then check Advanced Options Hide Label Value
     Then expect Advanced Options Hide Label Value is checked
     Then uncheck Advanced Options Hide Label Value
     Then expect Advanced Options Hide Label Value is unchecked
 
-    # Reference # CheckBox
     Then expect Advanced Options Print Reference # is present
     Then check Advanced Options Print Reference #
     Then expect Advanced Options Print Reference # is checked
     Then uncheck Advanced Options Print Reference #
     Then expect Advanced Options Print Reference # is unchecked
 
-    # Reference Number Textbox
     Then expect Advanced Options Reference Number field is present
     Then set Advanced Options Reference Number to random string
     Then expect Advanced Options Reference Number is correct
 
-    # Cost Code Textbox
     Then expect Advanced Options Cost Code Field is present
     Then set Advanced Options Cost Code to None
     Then expect Advanced Options Cost Code is None
@@ -97,20 +86,14 @@ Feature: Advanced Options BVT
     # ------------------------------------------------------------ Envelopes Advanced Options
   Scenario: Advanced Options for Envelope - 10
     Then select Print On Envelope - 10
-
     Then set Advanced Options Mail Date to today
-    # Populate Envelope form
     Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Ounces to 2
     Then select Print form service FCM Letter
-
     Then show Advanced Options
-
-    # Extra Services
     Then expect Advanced Options Extra Services Button is visible
 
-    # Mail Date Picker
     Then expect Advanced Options Mail Date field is present
     Then set Advanced Options Mail Date to date 04/04/2017
     Then expect Advanced Options Mail Date is 04/04/2017
@@ -131,33 +114,28 @@ Feature: Advanced Options BVT
     Then set Advanced Options Mail Date to today plus 5
     Then expect Advanced Options Mail Date is correct
 
-    # include Return Address CheckBox
     Then expect Advanced Options include Return Address is present
     Then check Advanced Options include Return Address
     Then expect Advanced Options include Return Address is checked
     Then uncheck Advanced Options include Return Address
     Then expect Advanced Options include Return Address is unchecked
 
-    # include Delivery Address CheckBox
     Then expect Advanced Options include Delivery Address is present
     Then check Advanced Options include Delivery Address
     Then expect Advanced Options include Delivery Address is checked
     Then uncheck Advanced Options include Delivery Address
     Then expect Advanced Options include Delivery Address is unchecked
 
-    # include Postage CheckBox
     Then expect Advanced Options include Postage is present
     Then check Advanced Options include Postage
     Then expect Advanced Options include Postage is checked
     Then uncheck Advanced Options include Postage
     Then expect Advanced Options include Postage is unchecked
 
-    # Reference Number Textbox
     Then expect Advanced Options Reference Number field is present
     Then set Advanced Options Reference Number to random string
     Then expect Advanced Options Reference Number is correct
 
-    # Cost Code Textbox
     Then expect Advanced Options Cost Code Field is present
     Then set Advanced Options Cost Code to None
     Then expect Advanced Options Cost Code is None
@@ -188,12 +166,10 @@ Feature: Advanced Options BVT
 
     Then expect Advanced Options Mail Date field is present
 
-    # Reference Number Textbox
     Then expect Advanced Options Reference Number field is present
     Then set Advanced Options Reference Number to random string
     Then expect Advanced Options Reference Number is correct
 
-    # Cost Code Textbox
     Then expect Advanced Options Cost Code Field is present
     Then set Advanced Options Cost Code to None
     Then expect Advanced Options Cost Code is None
@@ -228,12 +204,10 @@ Feature: Advanced Options BVT
 
     Then expect Advanced Options Mail Date field is present
 
-    # Reference Number Textbox
     Then expect Advanced Options Reference Number field is present
     Then set Advanced Options Reference Number to random string
     Then expect Advanced Options Reference Number is correct
 
-    # Cost Code Textbox
     Then expect Advanced Options Cost Code Field is present
     Then set Advanced Options Cost Code to None
     Then expect Advanced Options Cost Code is None
@@ -266,12 +240,10 @@ Feature: Advanced Options BVT
 
     Then expect Advanced Options Mail Date field is present
 
-    # Reference Number Textbox
     Then expect Advanced Options Reference Number field is present
     Then set Advanced Options Reference Number to random string
     Then expect Advanced Options Reference Number is correct
 
-    # Cost Code Textbox
     Then expect Advanced Options Cost Code Field is present
     Then set Advanced Options Cost Code to None
     Then expect Advanced Options Cost Code is None
@@ -304,12 +276,10 @@ Feature: Advanced Options BVT
 
     Then expect Advanced Options Mail Date field is present
 
-    # Reference Number Textbox
     Then expect Advanced Options Reference Number field is present
     Then set Advanced Options Reference Number to random string
     Then expect Advanced Options Reference Number is correct
 
-    # Cost Code Textbox
     Then expect Advanced Options Cost Code Field is present
     Then set Advanced Options Cost Code to None
     Then expect Advanced Options Cost Code is None
@@ -340,12 +310,10 @@ Feature: Advanced Options BVT
 
     Then expect Advanced Options Mail Date field is present
 
-    # Reference Number Textbox
     Then expect Advanced Options Reference Number field is present
     Then set Advanced Options Reference Number to random string
     Then expect Advanced Options Reference Number is correct
 
-    # Cost Code Textbox
     Then expect Advanced Options Cost Code Field is present
     Then set Advanced Options Cost Code to None
     Then expect Advanced Options Cost Code is None
@@ -360,10 +328,8 @@ Feature: Advanced Options BVT
     Then select Print form service PM Package
     Then show Advanced Options
 
-    # Extra Services
     Then expect Advanced Options Extra Services Button is visible
 
-    # Mail Date Picker
     Then expect Advanced Options Mail Date field is present
     Then set Advanced Options Mail Date to today
     Then expect Advanced Options Mail Date is correct
@@ -382,33 +348,28 @@ Feature: Advanced Options BVT
     Then set Advanced Options Mail Date to today plus 5
     Then expect Advanced Options Mail Date is correct
 
-    # Hide Label Value CheckBox
     Then expect Advanced Options Hide Label Value is present
     Then check Advanced Options Hide Label Value
     Then expect Advanced Options Hide Label Value is checked
     Then uncheck Advanced Options Hide Label Value
     Then expect Advanced Options Hide Label Value is unchecked
 
-    # Print Receipt CheckBox
     Then expect Advanced Options Print Receipt is present
     Then check Advanced Options Print Receipt
     Then expect Advanced Options Print Receipt is checked
     Then uncheck Advanced Options Print Receipt
     Then expect Advanced Options Print Receipt is unchecked
 
-    # Reference # CheckBox
     Then expect Advanced Options Print Reference # is present
     Then check Advanced Options Print Reference #
     Then expect Advanced Options Print Reference # is checked
     Then uncheck Advanced Options Print Reference #
     Then expect Advanced Options Print Reference # is unchecked
 
-    # Reference Number Textbox
     Then expect Advanced Options Reference Number field is present
     Then set Advanced Options Reference Number to random string
     Then expect Advanced Options Reference Number is correct
 
-    # Cost Code Textbox
     Then expect Advanced Options Cost Code Field is present
     Then set Advanced Options Cost Code to None
     Then expect Advanced Options Cost Code is None

@@ -76,7 +76,8 @@ module Stamps
               cache[:envelope_options] = Class.new(Browser::Base).new(param).extend(Stamps::Mail::AdvancedOptions::Envelopes)
             end
             return cache[:envelope_options]
-          when :certified_mail, :certified_mail_3910_3930, :certified_mail_3810, :certified_mail_3830
+          # when :certified_mail, :certified_mail_3910_3930, :certified_mail_3810, :certified_mail_3830
+          when :cm3610, :cm3710, :cm3910, :cm3930, :cm3810, :cm3830
             if cache[:cm_options].nil? || !cache[:cm_options].present?
               cache[:cm_options] = Class.new(Browser::Base).new(param).extend(Stamps::Mail::AdvancedOptions::CertifiedMails)
             end
@@ -144,6 +145,59 @@ module Stamps
         end
       end
 
+      module ExtServCertMail
+        def certified_mail
+          if cache[:certified_mail].nil? || !cache[:certified_mail].present? then
+            cache[:certified_mail] = Stamps::Browser::StampsCheckbox.new(
+                browser.input(id: 'sdc-mainpanel-cmcheckbox-inputEl'),
+                browser.div(id: 'sdc-mainpanel-cmcheckbox'),
+                'class',
+                'checked')
+          end
+          cache[:certified_mail]
+        end
+      end
+
+      module ExtServElecRetReceipt
+        def electronic_return_receipt
+          if cache[:ereturn_receipt].nil? || !cache[:ereturn_receipt].present? then
+            cache[:ereturn_receipt] = Stamps::Browser::StampsCheckbox.new(
+                browser.span(id: 'sdc-mainpanel-rrecheckbox-displayEl'),
+                browser.div(id: 'sdc-mainpanel-rrecheckbox'),
+                'class',
+                'checked')
+          end
+          cache[:ereturn_receipt]
+        end
+      end
+
+      # module ExtServRestDelivery
+      #   # def restricted_delivery
+      #   #   if cache[:restricted_delivery].nil? || !cache[:restricted_delivery].present?
+      #   #     cache[:restricted_delivery] = Stamps::Browser::StampsCheckbox.new(
+      #   #         browser.span(css: 'span[class*=sdc-mainpanel-rdcheckbox]'),
+      #   #         browser.div(css: 'div[id^=certifiedmailview]>div:nth-child(4)>div>div>div[class*=x-form-item]'),
+      #   #         'class',
+      #   #         'checked')
+      #   #   end
+      #   #   cache[:restricted_delivery]
+      #   # end
+      # end
+
+      module ExtServRetReceipt
+        def return_receipt
+          if cache[:return_receipt].nil? || !cache[:return_receipt].present?
+            cache[:return_receipt] = Stamps::Browser::StampsCheckbox.new(
+                browser.span(id: 'sdc-mainpanel-rrcheckbox-displayEl'),        #can't check/uncheck
+                #browser.span(css: 'span[id=sdc-mainpanel-rrcheckbox-displayEl]'),     #can't evaluate enabled/disabled
+                browser.div(id: 'sdc-mainpanel-rrcheckbox'),
+                'class',
+                'checked')
+          end
+          cache[:return_receipt]
+        end
+      end
+
       module CertifiedMail
         include MailFrom
         include MailTo
@@ -155,78 +209,41 @@ module Stamps
         include Dimensions
         include PrintOnTextbox
         include PrintFormBlurOut
+        include ExtServCertMail
+        include ExtServElecRetReceipt
+        include ExtServRetReceipt
 
         def present?
           print_on_textbox.text.include?('Certified Mail')
         end
-
-        def certified_mail
-          if cache[:certified_mail].nil? || !cache[:certified_mail].present? then
-            cache[:certified_mail] = Stamps::Browser::StampsCheckbox.new(
-                browser.input(id: 'sdc-mainpanel-cmcheckbox-inputEl'),
-                browser.div(id: 'sdc-mainpanel-cmcheckbox'),
-                'class',
-                'checked')
-          else
-            cache[:certified_mail]
-          end
-        end
-
-        def electronic_return_receipt
-          if cache[:ereturn_receipt].nil? || !cache[:ereturn_receipt].present? then
-            cache[:ereturn_receipt] = Stamps::Browser::StampsCheckbox.new(
-                browser.span(id: 'sdc-mainpanel-rrecheckbox-displayEl'),
-                browser.div(id: 'sdc-mainpanel-rrecheckbox'),
-                'class',
-                'checked')
-          else
-            cache[:ereturn_receipt]
-          end
-        end
-
       end
 
-      module CertifiedMail3810
-        def return_receipt
-          if cache[:return_receipt].nil? || !cache[:return_receipt].present? then
-            cache[:return_receipt] = Stamps::Browser::StampsCheckbox.new(
-                browser.input(id: 'sdc-mainpanel-rrcheckbox-inputEl'),
-                browser.div(id: 'sdc-mainpanel-rrcheckbox'),
-                'class',
-                'checked')
-          else
-            cache[:return_receipt]
-          end
-        end
-      end
+      # module CM3610
+      #   include CertifiedMail
+      # end
+      #
+      # module CM3710
+      #   include CertifiedMail
+      # end
+      #
+      # module CM3910
+      #   include CertifiedMail
+      # end
+      #
+      # module CM3930
+      #   include CertifiedMail
+      # end
+      #
+      # module CM3810
+      #   include CertifiedMail
+      #   include ExtServRetReceipt
+      # end
+      #
+      # module CM3830
+      #   include CertifiedMail
+      #   include ExtServRetReceipt
+      # end
 
-      module CertifiedMail3830
-        def return_receipt
-          if cache[:return_receipt].nil? || !cache[:return_receipt].present? then
-            cache[:return_receipt] = Stamps::Browser::StampsCheckbox.new(
-                browser.input(id: 'sdc-mainpanel-rrcheckbox-inputEl'),
-                browser.div(id: 'sdc-mainpanel-rrcheckbox'),
-                'class',
-                'checked')
-          else
-            cache[:return_receipt]
-          end
-        end
-      end
-
-      module CertifiedMail39103930
-        def return_receipt
-          if cache[:return_receipt].nil? || !cache[:return_receipt].present? then
-            cache[:return_receipt] = Stamps::Browser::StampsCheckbox.new(
-                browser.span(id: 'sdc-mainpanel-rrcheckbox-displayEl'),
-                browser.div(id: 'sdc-mainpanel-rrcheckbox'),
-                'class',
-                'checked')
-          else
-            cache[:return_receipt]
-          end
-        end
-      end
 
       module Roll
         include MailFrom
