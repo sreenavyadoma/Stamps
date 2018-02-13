@@ -21,4 +21,3 @@ Feature: Resetting mail fields
     Then select Print form service PM Flat Rate Envelope
     Then expect Advanced Options Extra Services Button is enabled
     Then Sign out
-    #AB_ORDERSAUTO_3516
