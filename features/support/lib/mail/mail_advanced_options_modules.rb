@@ -92,7 +92,7 @@ module Stamps
 
       module AdvOptPrintReceipt
         def print_receipt
-          if cache[:print_receipt].nil? || !cache[:print_receipt].present? then
+          if cache[:print_receipt].nil? || !cache[:print_receipt].present?
             cache[:print_receipt] = StampsCheckbox.new(browser.span(css: "[id^=printPreviewPanel-] div:nth-child(2)>div>div>span"),
                                                        browser.div(text: "Print Receipt"),
                                                        "class", "checked")
@@ -103,14 +103,14 @@ module Stamps
 
       module AdvOptToggle
         def show_field
-          if cache[:show_field].nil? || !cache[:show_field].present? then
+          if cache[:show_field].nil? || !cache[:show_field].present?
             cache[:show_field] = StampsField.new(browser.span(text: "Show Advanced Options"))
           end
           cache[:show_field]
         end
 
         def hide_field
-          if cache[:hide_field].nil? || !cache[:hide_field].present? then
+          if cache[:hide_field].nil? || !cache[:hide_field].present?
             cache[:hide_field] = StampsField.new(browser.span(text: "Hide Advanced Options"))
           end
           cache[:hide_field]
@@ -153,7 +153,7 @@ module Stamps
         end
 
         def specify_postage_amount
-          if cache[:specify_postage].nil? || !cache[:specify_postage].present? then
+          if cache[:specify_postage].nil? || !cache[:specify_postage].present?
             cache[:specify_postage] = StampsRadio.new(browser.span(id: 'sdc-mainpanel-specifypostageradio-displayEl'),
                                                       browser.div(id: 'sdc-mainpanel-specifypostageradio'),
                                                       "class", "checked")
@@ -199,7 +199,7 @@ module Stamps
         end
 
         def delivery_address
-          if cache[:delivery_address].nil? || !cache[:delivery_address].present? then
+          if cache[:delivery_address].nil? || !cache[:delivery_address].present?
             cache[:delivery_address] = StampsCheckbox.new(browser.span(css: "[id^=printPreviewPanel-] div:nth-child(5)>div>div>div:nth-child(3)>div>div>span"),
                                                           browser.div(css: "[id^=printPreviewPanel-] div:nth-child(5)>div>div>div:nth-child(3)"),
                                                           "class", "checked")
@@ -208,7 +208,7 @@ module Stamps
         end
 
         def postage
-          if cache[:postage].nil? || !cache[:postage].present? then
+          if cache[:postage].nil? || !cache[:postage].present?
             cache[:postage] = StampsCheckbox.new(browser.span(css: "[id^=printPreviewPanel-] div:nth-child(5)>div>div>div:nth-child(4)>div>div>span"),
                                                  browser.div(css: "[id^=printPreviewPanel-] div:nth-child(5)>div>div>div:nth-child(4)"),
                                                  "class", "checked")
