@@ -86,7 +86,7 @@ Feature:  BVT tests for Orders
   # verify fields in 1st order
     Then check order 1
     Then expect Order Details Ship From is correct
-    Then expect Order Details service is correct
+    Then expect Order Details service is PM Large Package
     Then Pause for 1 second
     Then uncheck order 1
     Then Pause for 1 second
@@ -94,7 +94,7 @@ Feature:  BVT tests for Orders
   # verify fields in 2nd order
     Then check order 2
     Then expect Order Details Ship From is correct
-    Then expect Order Details international service is correct
+    Then expect Order Details international service is PMI Package/Flat/Thick Envelope
     Then uncheck order 2
     Then Sign out
 
@@ -106,7 +106,7 @@ Feature:  BVT tests for Orders
       | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then set Order Details Ounces to 4
-    Then set Order Details service to FCMI Large Envelope/Flat
+    Then set Order Details service to FCMI Package/Thick Envelope
     Then click Order Details form Customs Form button
     Then add Customs Associated Item 1, Description random, Qty 1, Price 4, Made In Japan, Tariff 1
     Then set Customs Package Contents to Commercial Sample
@@ -274,7 +274,6 @@ Feature:  BVT tests for Orders
     Then expect Order Details Service Cost is correct
 
     Then expect Order Details Insure-For is 100.00
-    Then expect Order Details Insure-For Cost is correct
 
     Then expect Order Details Tracking is correct
     Then expect Order Details Tracking Cost is correct
@@ -409,7 +408,6 @@ Feature:  BVT tests for Orders
     Then expect Order Details Associated Item 3 Description is correct
 
     Then expect Order Details Insure-For is correct
-    Then expect Order Details Insure-For Cost is correct
     Then click Order Details form Customs Form button
     Then Pause for 2 second
     Then expect Customs Package Contents is Commercial Sample
