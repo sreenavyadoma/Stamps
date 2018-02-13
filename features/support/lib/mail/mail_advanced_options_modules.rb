@@ -35,8 +35,7 @@ module Stamps
 
       module AdvOptReferenceNumber
         def reference_number
-          cache[:reference_number].nil? || !cache[:reference_number].present? ? cache[:reference_number] = StampsTextbox.new(
-              browser.text_field(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(6)>div>div>div>div>div>div>input")) : cache[:reference_number]
+          cache[:reference_number].nil? || !cache[:reference_number].present? ? cache[:reference_number] = StampsTextbox.new(browser.text_field(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(6)>div>div>div>div>div>div>input")) : cache[:reference_number]
         end
       end
 
