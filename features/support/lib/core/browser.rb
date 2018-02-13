@@ -48,7 +48,6 @@ module Stamps
       end
     end
 
-    # todo-Rob REW
     class StampsField
       class << self
         attr_accessor :browser
