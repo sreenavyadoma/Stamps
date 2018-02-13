@@ -176,7 +176,7 @@ Feature:  All Store Management
     Then Marketplace: Expect store selection modal contains Amazon
     Then Marketplace: Expect store selection modal contains Ebay
     Then Marketplace: Expect store selection modal contains Etsy
-    Then Marketplace: Expect store selection modal contains Paypal
+    Then Marketplace: Expect store selection modal contains PayPal
     Then Marketplace: Expect store selection modal contains Shopify
     Then Marketplace: Expect store selection modal contains Volusion
     Then Marketplace: Expect store selection modal contains Yahoo

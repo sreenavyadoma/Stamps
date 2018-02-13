@@ -48,16 +48,12 @@ Then /^Buy Mail Confirm Transction: Click Confirm [Bb]utton$/ do
 end
 
 Then /^Buy Mail Confirm Purchase: Expect text area contains, Please confirm your \$(.*) postage purchase.$/ do |amount|
-  expectation="Please confirm that you wish to add $#{amount} to your account balance. Once you click the Confirm button, the amount will be added to your account and cannot be refunded."
-  actual_value=stamps.navigation_bar.balance.buy_more.purchase.text
-  expect(actual_value).to eql expectation
+  expect(stamps.navigation_bar.balance.buy_more.purchase.text).to eql "Please confirm that you wish to add $#{amount} to your account balance. Once you click the Confirm button, the amount will be added to your account and cannot be refunded."
 end
 
 Then /^Buy Mail Purchase Approved: Expect text area contains, Your fund request for \$(.*) has been approved.$/ do |amount|
   expect(@purchase_approved).to be_truthy
-  expectation="Your fund request for $#{amount} has been approved."
-  actual_value=@purchase_approved.text
-  expect(actual_value).to eql expectation
+  expect(@purchase_approved.text).to eql "Your fund request for $#{amount} has been approved."
 end
 
 Then /^Buy Mail Purchase Approved: Click OK [Bb]utton$/ do
@@ -68,12 +64,8 @@ end
 Then /^Buy Mail: Expect customer balance increased by \$(\d+)$/ do |purchase_amount|
   10.times do
     sleep(0.35)
-    new_balance=stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str
-    actual_purchased_amount=new_balance.to_f - test_param[:old_balance].to_f
-    break if actual_purchased_amount ==  purchase_amount.to_f
+    break if stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f - test_param[:old_balance].to_f ==  purchase_amount.to_f
   end
-  new_balance=stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str
-  actual_purchased_amount=new_balance.to_f - test_param[:old_balance].to_f
-  expect(actual_purchased_amount.round(2)).to eql purchase_amount.to_f.round(2)
+  expect((stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f - test_param[:old_balance].to_f).round(2)).to eql purchase_amount.to_f.round(2)
 end
 

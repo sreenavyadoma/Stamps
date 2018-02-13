@@ -1,5 +1,6 @@
-Then /^set store settings store nickname to ([\w\.@]+)$/ do |str|
-  stamps.orders.marketplace.store_settings.store_nickname.set(str)
+Then /^set store settings store nickname to (.*)$/ do |str|
+  nickname = (str.downcase.include?('random') ? StampsTest.rand_alpha_numeric : str)
+  stamps.orders.marketplace.store_settings.store_nickname.set(test_param[:store_nickname] = nickname)
 end
 
 Then /^select store settings shipping service to ([\w \/]+)$/ do |str|
@@ -11,24 +12,42 @@ Then /^select store settings requested service to ([\w \/]+)$/ do |str|
 end
 
 Then /^expect store settings (\w+) modal is present$/ do |store_name|
-  expect(stamps.orders.marketplace.store_settings.window_title.text).to eql("#{store_name} Settings")
+  expect(stamps.orders.marketplace.store_settings.window_title.text).to include("#{store_name} Settings")
 end
 
 Then /^expect store settings modal is present$/ do
-  step "pause for 20 seconds" #todo-Rob change to? stamps.orders.marketplace.store_settings.window_title.wait_until_present(20)
+  step "pause for 20 seconds"
   expect(stamps.orders.marketplace.store_settings.window_title.text).to eql("Settings")
 end
 
-Then /^Store Settings: Set Store Nickname to (.*)$/ do |nickname|
-  #test_config.logger.step "Store Settings: Set Store Nickname to #{nickname}"
-  raise "Store Settings is not open.  Check your test workflow." if @store_settings.nil?
-  #test_config.logger.step "Old Amazon Store Name:#{test_data[:store_name]}"
-  test_param[:store_name] = (nickname.downcase.include? 'random') ? StampsTest.rand_alpha_numeric(4, 20) : nickname
-  #test_config.logger.step "Store Nickname: #{test_data[:store_name]}"
-  @store_settings.store_nickname.set test_param[:store_name]
+Then /^[Aa]dd store service Mapping (\d+), Requested Services (.*), Shipping service (.*)$/ do |mapping_number, requested_services, shipping_service|
+  step "add store service Mapping #{mapping_number}"
+  step "set store service Mapping #{mapping_number} Requested Service to #{requested_services}"
+  step "set store service Mapping #{mapping_number} Shipping Service to #{shipping_service}"
 end
 
-Then /^Store Settings: Set service Mapping (\d+), Requested Services (.*), Shipping service (.*)$/ do |item_number, requested_services, shipping_service|
+Then /^[Aa]dd store service Mapping (\d+)$/ do |mapping_number|
+  stamps.orders.marketplace.store_settings.service_mapping_list.mapping_number(mapping_number.to_i)
+end
+
+Then /^[Ss]et store service Mapping (\d+) Requested Service to (.*)$/ do |mapping_number, value|
+  test_param[:service_mapping_items][mapping_number] = {} unless test_param[:service_mapping_items].has_key?(mapping_number)
+  test_param[:service_mapping_items][mapping_number][:requested_service] = (value.downcase.include?('random') ? StampsTest.rand_alpha_numeric : value)
+  stamps.orders.marketplace.store_settings.service_mapping_list.mapping_number(mapping_number.to_i).requested_service_mapping.set(test_param[:service_mapping_items][mapping_number][:requested_service])
+end
+
+Then /^[Ss]et store service Mapping (\d+) Shipping Service to (.*)$/ do |mapping_number, value|
+  test_param[:service_mapping_items][mapping_number] = {} unless test_param[:service_mapping_items].has_key?(mapping_number)
+  test_param[:service_mapping_items][mapping_number][:shipping_service] = value
+  expect(stamps.orders.marketplace.store_settings.service_mapping_list.mapping_number(mapping_number.to_i).shipping_service_mapping.select(test_param[:service_mapping_items][mapping_number][:shipping_service])).to include(test_param[:service_mapping_items][mapping_number][:shipping_service])
+end
+
+
+Then /^[Aa]dd new store service mapping$/ do
+  @store_settings.add_new_service_mapping.click
+end
+
+Then /^[Ss]et store service Mapping (\d+), Requested Services (.*), Shipping service (.*)$/ do |item_number, requested_services, shipping_service|
   #test_config.logger.step "Store Settings: Set Requested Services to random #{requested_services}"
   raise "Amazon Settings is not open.  Check your test workflow." if @store_settings.nil?
   service_mapping_item = @store_settings.service_mapping.item item_number.to_i
@@ -55,7 +74,9 @@ Then /^Store Settings: Save$/ do
   @store_settings.save
 end
 
+
 #### Settings Modal ####
+
 Then /^[Ee]xpect [Ss]quare [Ss]ettings [Dd]ialog is present$/ do
   step "pause for 5 seconds"
   expect(stamps.orders.marketplace.square.settings.window_title.present?).to be(true), "Sqaure Settings dialog is not present"
@@ -77,6 +98,33 @@ Then /^[Ee]xpect Settings dialog store import new orders is Unchecked$/ do
   expect(stamps.orders.marketplace.store_settings.auto_import_new_orders.checked?).not_to be(true), "Automatically import new orders is NOT unchecked"
 end
 
-Then /^Store Settings: click Save$/ do
+Then /^[Cc]heck Store Settings dialog Automatically add new products to the [Pp]roducts page$/ do
+  stamps.orders.marketplace.store_settings.auto_add_to_products_page.check
+end
+
+Then /^[Uu]ncheck Store Settings dialog Automatically add new products to the [Pp]roducts page$/ do
+  stamps.orders.marketplace.store_settings.auto_add_to_products_page.uncheck
+end
+
+Then /^[Ee]xpect Store Settings dialog Automatically add new products to the [Pp]roducts page is checked$/ do
+  expect(stamps.orders.marketplace.store_settings.auto_add_to_products_page.checked?).to be(true), "Automatically add new products to the Products page is NOT checked"
+end
+
+Then /^[Ee]xpect Store Settings dialog Automatically add new products to the [Pp]roducts page is unchecked$/ do
+  expect(stamps.orders.marketplace.store_settings.auto_add_to_products_page.checked?).not_to be(true), "Automatically add new products to the Products page is NOT unchecked"
+end
+
+Then /^[Ss]elect [Uu]niquely [Ii]dentify [Pp]roducts by SKU$/ do
+  #The default selected radio button on this page is sku, and in its initial default state the class name for sku is different than when it is selected by the user, making the StampsRadio validation fail.
+  #Therefore, product_listing_name needs to be selected first so that the when sku is selected, its class name can be used for validation.
+  stamps.orders.marketplace.store_settings.product_listing_name.select
+  stamps.orders.marketplace.store_settings.sku.select
+end
+
+Then /^[Ss]elect [Uu]niquely [Ii]dentify [Pp]roducts by [Pp]roduct [Ll]isting [Nn]ame$/ do
+  stamps.orders.marketplace.store_settings.product_listing_name.select
+end
+
+Then /^[Cc]lick [Ss]ave in [Ss]tore [Ss]ettings modal$/ do
   stamps.orders.marketplace.store_settings.save.click
 end

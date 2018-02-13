@@ -243,7 +243,10 @@ module Stamps
         def store_window(str)
           case(str.downcase.to_sym)
             when :paypal
-              cache[:paypal_window].nil? || !cache[:paypal_window].present? ? cache[:paypal_window] = Browser::Base.new(param).extend(Orders::Stores::PayPalWindowTitle) : cache[:paypal_window]
+              if cache[:paypal_window].nil? || !cache[:paypal_window].present?
+                cache[:paypal_window] = Browser::Base.new(param).extend(Stamps::Orders::Stores::PayPal::WindowTitle)
+              end
+              return cache[:paypal_window]
             when :ebay
               raise "#{str} not implemented."
             when :shopify
@@ -259,10 +262,8 @@ module Stamps
             when :opencart
               cache[:opencart_window].nil? || !cache[:opencart_window].present? ? cache[:opencart_window] = Browser::Base.new(param).extend(Orders::Stores::ShipStationUpgradeMessage) : cache[:opencart_window]
             else
-              # ignroe
+              raise ArgumentError,  "#{str} - Invalid store selection or store is not yet implemented. Check your test."
           end
-
-          raise ArgumentError,  "#{str} - Invalid store selection or store is not yet implemented. Check your test."
         end
 
         def add_store(str)
