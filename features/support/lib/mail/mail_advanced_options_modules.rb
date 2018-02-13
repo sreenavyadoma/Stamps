@@ -3,14 +3,14 @@ module Stamps
     module AdvancedOptions
 
       module AdvOptExtraServices
-        #AB_ORDERSAUTO_3516
         def extra_services_btn
-          cache[:extra_services_btn].nil? || !cache[:extra_services_btn].present? ? cache[:extra_services_btn] = StampsField2.new(
-              browser.span(id: "sdc-mainpanel-extraservicesbtn-btnInnerEl"),
-              browser.a(id: 'sdc-mainpanel-extraservicesbtn'),
-              'class',
-              'disabled'
-              ) : cache[:extra_services_btn]
+          if cache[:extra_services_btn].nil? || !cache[:extra_services_btn].present?
+            cache[:extra_services_btn] = StampsField.new(browser.span(id: "sdc-mainpanel-extraservicesbtn-btnInnerEl"))
+            cache[:extra_services_btn].verify_field = browser.a(id: 'sdc-mainpanel-extraservicesbtn')
+            cache[:extra_services_btn].ver_field_attr = 'class'
+            cache[:extra_services_btn].ver_field_attr_value = 'disabled'
+          end
+          cache[:extra_services_btn]
         end
 
         def xtra_serv_panel

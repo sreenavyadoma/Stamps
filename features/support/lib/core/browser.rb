@@ -53,13 +53,10 @@ module Stamps
         attr_accessor :browser
       end
 
+      attr_accessor :field, :verify_field, :ver_field_attr, :ver_field_attr_value
       def initialize(field)
         @field = field
         self.browser = field.browser unless field.browser.nil?
-      end
-
-      def field
-        @field
       end
       alias_method :checkbox, :field
       alias_method :radio, :field
@@ -272,20 +269,9 @@ module Stamps
       def fire_event(event)
         field.fire_event(event)
       end
-    end
 
-    #todo-Rob rework disabled field
-    #AB_ORDERSAUTO_3516
-    class StampsField2 < StampsField
-      def initialize(field, disabled_field, attribute, attribute_value)
-        super(field)
-        @disabled_field = disabled_field
-        @attribute = attribute
-        @attribute_value = attribute_value
-      end
-
-      def field_disabled?
-        @disabled_field.attribute_value(@attribute).include?(@attribute_value)
+      def stamps_disabled?
+        verify_field.attribute_value(ver_field_attr).include?(ver_field_attr_value)
       end
     end
 
