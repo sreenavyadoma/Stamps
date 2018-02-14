@@ -120,7 +120,6 @@ Feature:  BVT tests for Orders
     Then set Customs More Info to random
     Then set Customs Non-Delivery Options to Return to sender
     Then set Customs Internal Transaction Number to Not required
-    Then set Customs More Info to random
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then click Orders Toolbar Print button

@@ -27,7 +27,7 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Store is (.*)$/ do |expectation|
   expect(stamps.orders.orders_grid.grid_column(:store).data(test_param[:order_id].values.last)).to eql test_param[:store_name]
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid + the same as Details Form Order ID$/ do
+Then /^[Ee]xpect [Oo]rders [Gg]rid Order ID is the same as Details Form Order ID$/ do
   expect(stamps.orders.order_details.toolbar.order_id.text).to eql(stamps.orders.orders_grid.grid_column(:order_id).row(1))
 end
 
