@@ -57,20 +57,21 @@ Feature:  BVT tests for Orders
     Then set Order Details Ship-To International address to
       | full_name     | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country | phone        |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone | Random email  |
-    Then set Order Details Weight to 2 lb 2 oz
+    Then set Order Details Weight to 0 lb 1 oz
     Then set Order Details international service to PMEI Package/Flat/Thick Envelope
     Then blur out on Order Details form 2 times
 
   # Check 1st two orders
-    Then Pause for 4 second
+    Then Pause for 1 second
     Then check order 1
-    Then Pause for 4 second
+    Then Pause for 1 second
     Then check order 2
-    Then Pause for 4 seconds
+    Then Pause for 1 seconds
 
   # Updating order details
     Then expect Bulk Update is present
     Then blur out on multi order details form
+    Then set Bulk Update Ship From to default
     Then set Bulk Update domestic service to PM Large Package
     Then set Bulk Update International service to PMI Package/Flat/Thick Envelope
     Then click Bulk Update Update Order button
