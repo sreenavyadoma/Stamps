@@ -76,27 +76,7 @@ Feature:  BVT tests for Orders
     Then set Bulk Update International service to PMI Package/Flat/Thick Envelope
     Then click Bulk Update Update Order button
 
-  # Uncheck both orders
-    Then Pause for 1 second
-    Then uncheck order 1
-    Then Pause for 1 second
-    Then uncheck order 2
-    Then Pause for 1 second
 
-  # verify fields in 1st order
-    Then check order 1
-    Then expect Order Details Ship From is correct
-    Then expect Order Details service is PM Large Package
-    Then Pause for 1 second
-    Then uncheck order 1
-    Then Pause for 1 second
-
-  # verify fields in 2nd order
-    Then check order 2
-    Then expect Order Details Ship From is correct
-    Then expect Order Details international service is PMI Package/Flat/Thick Envelope
-    Then uncheck order 2
-    Then Sign out
 
 
   @bvt_international_shipping
