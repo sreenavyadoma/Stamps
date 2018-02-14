@@ -68,18 +68,18 @@ end
 
 Then /^[Ss]et Advanced Options Mail Date to ((?:date|today plus|tomorrow|today|))? ?(.*)?$/ do |time_str, value|
   step "Expect Advanced Options responds to Mail Date (mail_date)"
-  case time_str
-    when /date/
-      test_param[:mail_date]=value
-    when /today plus/
-      test_param[:mail_date]=(Date.today + value.to_i).strftime("%m/%d/%Y")
-    when /today/
-      test_param[:mail_date]=(Date.today).strftime("%m/%d/%Y")
-    when /tomorrow/
-      test_param[:mail_date]=(Date.today+1).strftime("%m/%d/%Y")
-    else
-      test_param[:mail_date]=(Date.today).strftime("%m/%d/%Y")
-  end
+  test_param[:mail_date] = case time_str
+                              when /date/
+                                value
+                              when /today plus/
+                                (Date.today + value.to_i).strftime("%m/%d/%Y")
+                              when /today/
+                                (Date.today).strftime("%m/%d/%Y")
+                              when /tomorrow/
+                                (Date.today+1).strftime("%m/%d/%Y")
+                              else
+                                (Date.today).strftime("%m/%d/%Y")
+                           end
   expect(stamps.mail.print_form.advanced_options.mail_date.textbox).to be_present
   stamps.mail.print_form.advanced_options.mail_date.textbox.set(test_param[:mail_date])
   expect(stamps.mail.print_form.advanced_options.mail_date.textbox.text).to eql(test_param[:mail_date])
