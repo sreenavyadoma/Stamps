@@ -66,6 +66,7 @@ Feature:  BVT tests for Orders
     Then check order 1
     Then Pause for 1 second
     Then check order 2
+
     Then Pause for 1 seconds
 
   # Updating order details
@@ -74,6 +75,7 @@ Feature:  BVT tests for Orders
     Then set Bulk Update Ship From to default
     Then set Bulk Update domestic service to PM Large Package
     Then set Bulk Update International service to PMI Package/Flat/Thick Envelope
+    Then Pause for 60 seconds
     Then click Bulk Update Update Order button
 
   # Uncheck both orders
