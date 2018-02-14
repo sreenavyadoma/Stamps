@@ -62,11 +62,11 @@ Feature:  BVT tests for Orders
     Then blur out on Order Details form 2 times
 
   # Check 1st two orders
-    Then Pause for 1 second
+    Then Pause for 4 second
     Then check order 1
-    Then Pause for 1 second
+    Then Pause for 4 second
     Then check order 2
-    Then Pause for 1 seconds
+    Then Pause for 4 seconds
 
   # Updating order details
     Then expect Bulk Update is present
