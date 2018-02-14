@@ -45,6 +45,7 @@ Feature:  BVT tests for Orders
   Scenario: BVT Bulk Update International
 
   # Order #1 (Domestic)
+    Then in Orders Grid, Sort Order Date in Descending Order
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address in zone 1
