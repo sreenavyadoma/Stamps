@@ -173,7 +173,7 @@ end
 
 Then /^[Cc]lick [Bb]ulk [Uu]pdate [Uu]pdate [Oo]rder [Bb]utton$/ do
   stamps.orders.bulk_update.update_orders.click
-  sleep 7
+  sleep 30
 end
 
 Then /^[Ee]xpect [Bb]ulk [Uu]pdate is present$/ do
