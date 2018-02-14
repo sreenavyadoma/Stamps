@@ -59,7 +59,6 @@ Feature:  BVT tests for Orders
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone | Random email  |
     Then set Order Details Weight to 0 lb 1 oz
     Then set Order Details international service to PMEI Package/Flat/Thick Envelope
-    Then Pause for 120 seconds
     Then blur out on Order Details form 2 times
 
   # Check 1st two orders
@@ -73,11 +72,9 @@ Feature:  BVT tests for Orders
   # Updating order details
     Then expect Bulk Update is present
     Then blur out on multi order details form
-    Then Pause for 120 seconds
     Then set Bulk Update Ship From to default
     Then set Bulk Update domestic service to PM Large Package
     Then set Bulk Update International service to PMI Package/Flat/Thick Envelope
-    Then Pause for 60 seconds
     Then click Bulk Update Update Order button
 
   # Uncheck both orders
