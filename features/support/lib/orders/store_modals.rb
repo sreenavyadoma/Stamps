@@ -14,11 +14,11 @@ module Stamps
       end
 
       def rakuten
-        cache[:rakuten].nil? ? cache[:rakuten] = Stamps::Orders::Stores::Rakuten.new(param) : cache[:rakuten]
+        cache[:rakuten].nil? ? cache[:rakuten] = Stamps::Orders::Stores::Rakuten::Store.new(param) : cache[:rakuten]
       end
 
       def shipstation
-        cache[:shipstation].nil? ? cache[:shipstation] = Stamps::Orders::Stores::OpenCart.new(param) : cache[:shipstation]
+        cache[:shipstation].nil? ? cache[:shipstation] = Stamps::Orders::Stores::OpenCart::Store.new(param) : cache[:shipstation]
       end
 
       def square
