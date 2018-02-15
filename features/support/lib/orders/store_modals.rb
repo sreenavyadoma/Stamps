@@ -22,13 +22,12 @@ module Stamps
       end
 
       def square
-        cache[:square_store].nil? ? cache[:square_store] = Stamps::Orders::Stores::Square.new(param) : cache[:square_store]
+        cache[:square].nil? ? cache[:square] = Stamps::Orders::Stores::Square::Store.new(param) : cache[:square]
       end
 
       def add_your_store_modal
         cache[:add_store].nil? ? cache[:add_store] = Stamps::Orders::Stores::Marketplace.new(param) : cache[:add_store]
       end
-
     end
   end
 end
