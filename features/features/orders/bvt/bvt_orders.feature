@@ -189,6 +189,7 @@ Feature:  BVT tests for Orders
 
   @bvt_shipstation_search
   Scenario: Search shipstation orders
+    Then in Orders Grid, Sort Order Date in Descending Order
     Then add new order
     Then set Order Details Ship-To to random address in zone 1
     Then set Order Details Email to random
