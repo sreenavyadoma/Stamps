@@ -108,7 +108,7 @@ Feature:  BVT tests for Orders
       | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then set Order Details Ounces to 4
-    Then set Order Details service to FCMI Package/Thick Envelope
+    Then set Order Details service to PMI Flat Rate Envelope
     Then click Order Details form Customs Form button
     Then add Customs Associated Item 1, Description random, Qty 1, Price 4, Made In Japan, Tariff 1
     Then set Customs Package Contents to Commercial Sample
@@ -347,7 +347,6 @@ Feature:  BVT tests for Orders
     Then expect Customs I agree to the USPS Privacy Act Statement is unchecked
 
     Then set Customs Package Contents to Document
-    Then set Customs More Info to some random string
 
     Then set Customs Package Contents to Commercial Sample
     Then expect Customs Package Contents is Commercial Sample
