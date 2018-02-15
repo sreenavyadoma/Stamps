@@ -515,12 +515,12 @@ module Stamps
       end
 
       def expose_selection(selection)
-        case html_tag
-          when :li
-            selection_field = browser.li(text: selection)
-          else
-            "Unsupported HTML drop-down selection tag #{html_tag}".should
-        end
+        selection_field = case html_tag
+                            when :li
+                              browser.li(text: selection)
+                            else
+                              raise ArgumentError, "Unsupported HTML drop-down selection tag #{html_tag}".should
+                          end
 
         5.times do
           dropdown.click
@@ -672,21 +672,19 @@ module Stamps
         textbox.present?
       end
 
-      def selection(str)
-        case selection_type
-          when :li
-            browser.lis(text: str)[index]
-          when :div
-            browser.divs(text: str)[index]
-          else
-            # do nothing
-        end
-      end
-
       def select(str)
         dropdown.click
         10.times do
-          selection = StampsField.new(selection(str))
+          selection = StampsField.new(
+            case selection_type
+              when :li
+                browser.lis(text: str)[index]
+              when :div
+                browser.divs(text: str)[index]
+              else
+                # do nothing
+            end
+          )
           begin
             break if textbox.text.include?(str)
             dropdown.click unless selection.present?

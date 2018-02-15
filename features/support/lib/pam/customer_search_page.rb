@@ -2,17 +2,16 @@ module Stamps
   module Pam
     class CustomerSearchPage < Browser::Base
       def visit
-        case param.test_env.downcase
-          when /cc/
-            url="http://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@qa-clientsite:82/pam/AccountSearch.asp"
-          when /sc/
-            url="http://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@site.qasc.stamps.com:82/pam/AccountSearch.asp"
-          when /stg/
-            url="https://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@site.staging.stamps.com:82/pam/AccountSearch.asp"
-          else
-            url=nil
-        end
-        expect(url).not_to be_nil, "URL is nil. Check your ENV['URL'] parameter."
+        url = case param.test_env.downcase
+                when /cc/
+                  "http://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@qa-clientsite:82/pam/AccountSearch.asp"
+                when /sc/
+                  "http://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@site.qasc.stamps.com:82/pam/AccountSearch.asp"
+                when /stg/
+                  "https://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@site.staging.stamps.com:82/pam/AccountSearch.asp"
+                else
+                  raise ArgumentError, "#{param.test_env} environment is not implemented."
+              end
         logger.info "Visit: #{url}"
         sleep(1)
         browser.goto(url)

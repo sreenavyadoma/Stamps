@@ -1,6 +1,6 @@
 module Stamps
   module Orders
-    module DetailsFormCommon
+    module DetailsFormCommon #todo-ORDERSAUTO-3737
 
       class DetailsFormDimensions < Browser::Base
 
