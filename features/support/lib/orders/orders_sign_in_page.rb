@@ -125,19 +125,18 @@ module Stamps
         end
 
         def load_sign_in_page
-          case param.test_env
-            when /cc/
-              url = "http://printext.qacc.stamps.com/#{(param.web_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
-            when /sc/
-              url = "http://printext.qasc.stamps.com/#{(param.web_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
-            when /stg/
-              url = "https://print.testing.stamps.com/#{(param.web_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
-            when /rating/
-              url = "http://printext.qacc.stamps.com/#{(param.web_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
-            else
-              url = "http://#{param.test_env}/#{(param.web_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
-          end
-
+          url = case param.test_env
+                  when /cc/
+                    "http://printext.qacc.stamps.com/#{(param.web_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
+                  when /sc/
+                    "http://printext.qasc.stamps.com/#{(param.web_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
+                  when /stg/
+                    "https://print.testing.stamps.com/#{(param.web_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
+                  when /rating/
+                    "http://printext.qacc.stamps.com/#{(param.web_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
+                  else
+                    "http://#{param.test_env}/#{(param.web_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
+                end
           logger.message '-'
           logger.message "URL: #{url}"
           logger.message '-'

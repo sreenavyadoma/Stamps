@@ -3,11 +3,11 @@ default: --backtrace --profile mhossain1_cc
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
 #robcm=ccpryiihrjz ccfb311osps4x print_dialog_ship_date
-rob_cc: --tags @bvt_international_shipping WEB_APP=orders JENKINS=true URL=cc DEBUG=true HEALTHCHECK=true BROWSER=ff MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory
+rob_cc: --tags @bvt_international_shipping WEB_APP=orders JENKINS=true URL=cc DEBUG=true HEALTHCHECK=true BROWSER=edge MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory
 rob_stg: --tags @orders_deselect_fails WEB_APP=orders JENKINS=true URL=stg DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgee1mtqvwdc0 PW=pass111 PRINTER=factory
 rob_sc: --tags @bvt_shipstation_updates_domestic WEB_APP=orders JENKINS=true URL=sc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=selenium  USR=scsejsglwa PW=pass111 DEBUG=true PRINTER=factory # c2jinmzmu64 schl0vlbfy2673 #19  schl0vlbfy2673
-rob_dev: --tags @bvt_shipping_address_management DEVELOPER=true WEB_APP=orders JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
-rob_mail_cc:  --tags @mail_bvt_stamps WEB_APP=mail JENKINS=true USR=cctruer0u PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory #\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
+rob_dev: --tags @mail_advanced_options_stamps DEVELOPER=true WEB_APP=orders JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
+rob_mail_cc:  --tags @mail_advanced_options_stamps WEB_APP=mail JENKINS=true USR=cctruer0u PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory #\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
 rob_mail_stg: --tags @print_dialog_ship_date WEB_APP=mail JENKINS=true USR=stgee1mtqvwdc0 PW=pass111 URL=stg --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory
 rob_mail_sc: --tags @print_dialog_ship_date WEB_APP=mail JENKINS=true USR=default PW=pass111 URL=sc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 rob_registration: --tags @registration_normal_workflow WEB_APP=registration URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=chrome MAX_WINDOW=false JENKINS=true
@@ -19,15 +19,15 @@ mhossain1_cc: --tags @registration_ui_validation_profile_page JENKINS=true URL=c
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
-eli_dev: --tags @print_dialog_ship_date_calendar --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff USR=hal9000stage25 PW=password1 PRINTER=Automation Printer
+eli_dev: --tags @paypal_workflow --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff USR=hal9000stage25 PW=password1 PRINTER=Automation Printer
 ray_dev: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=gc USR=default PW=pass111
 sap:              --tags @registration_orders WEB_APP=registration URL=cc --guess DEBUG=false BROWSER=gc MAX_WINDOW=false
 
-alex_mail:  --tags @bugs_shipping_label BROWSER=ff WEB_APP=mail JENKINS=true URL=stg USR=abqast1 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
+alex_mail:  --tags @mail_bvt_advanced_options BROWSER=ff WEB_APP=mail JENKINS=true URL=stg USR=abqast1 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
 alex_regress:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders JENKINS=true URL=cc USR=abqacc10 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
 alex_rates:  --tags @rates_pm_comm_base_zone_1 BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast2 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
 alex_rates_pmi:  --tags @rates_pmi_comm_plus_group_9 BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast2 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
-alex_orders:  --tags @square_workflow BROWSER=gc WEB_APP=orders JENKINS=true URL=qasc USR=abqasc2 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
+alex_orders:  --tags @purchasing BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=purchs_stg1 PW=pass111  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false #abqast1
 
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
@@ -414,6 +414,7 @@ rakuten: --tags @rakuten --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_A
 volusion: --tags @volusion --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 amazon: --tags @amazon --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 square_workflow: --tags @square_workflow --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+paypal_workflow: --tags @paypal_workflow --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
 # ----------------------------# MAIL Bugs
 bugs_advanced_options: --tags  @bugs_advanced_options --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail

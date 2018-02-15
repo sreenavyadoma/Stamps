@@ -58,23 +58,22 @@ module Stamps
       end
 
       def load_theme(theme)
-        case theme
-          when /1632/
-            theme='theme_1632'
-          else
-            # do nothing
-        end
-
-        case modal_param.test_env.downcase
-          when /cc/
-            url="https://qa-registration.stamps.com/registration/#{(theme.nil?)?"":"?theme=#{theme}"}"
-          when /sc/
-            url="https://registrationext.qasc.stamps.com/registration/#{(theme.nil?)?"":"?theme=#{theme}"}"
-          when /stg/
-            url="https://registration.staging.stamps.com/registration/#{(theme.nil?)?"":"?theme=#{theme}"}"
-          else
-            #do nothing
-        end
+        theme = case theme
+                  when /1632/
+                    'theme_1632'
+                  else
+                    nil
+                end
+        url = case modal_param.test_env.downcase
+                when /cc/
+                  "https://qa-registration.stamps.com/registration/#{(theme.nil?) ? "" : "?theme=#{theme}"}"
+                when /sc/
+                  "https://registrationext.qasc.stamps.com/registration/#{(theme.nil?) ? "" : "?theme=#{theme}"}"
+                when /stg/
+                  "https://registration.staging.stamps.com/registration/#{(theme.nil?) ? "" : "?theme=#{theme}"}"
+                else
+                  raise ArgumentError, "#{param.test_env} environment is not implemented."
+              end
         logger.info "Visit:  #{url}"
         browser.goto(url)
         wait_until_present(10)
