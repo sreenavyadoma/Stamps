@@ -270,8 +270,8 @@ module Stamps
         field.fire_event(event)
       end
 
-      def stamps_disabled?
-        verify_field.attribute_value(ver_field_attr).include?(ver_field_attr_value)
+      def stamps_disabled?(attrib = nil, attrib_val = nil)
+        verify_field.attribute_value(attrib.nil? ? ver_field_attr : attrib).include?(attrib_val.nil? ? ver_field_attr_value : attrib_val)
       end
     end
 
@@ -604,16 +604,16 @@ module Stamps
       def select(str)
         dropdown.click
         expect(html_tag).not_to be_nil, 'Error: Set html_tag before calling select.'
-        case html_tag
-          when :span
-            selection = StampsField.new(browser.span(text: str))
-          when :li
-            selection = StampsField.new(browser.li(text: str))
-          when :div
-            selection = StampsField.new(browser.div(text: str))
-          else
-            # do nothing
-        end
+        selection = case html_tag
+                      when :span
+                        StampsField.new(browser.span(text: str))
+                      when :li
+                        StampsField.new(browser.li(text: str))
+                      when :div
+                        StampsField.new(browser.div(text: str))
+                      else
+                        raise ArgumentError, "#{html_tag} is not not implemented."
+                    end
 
         20.times do
           begin
