@@ -48,19 +48,15 @@ module Stamps
       end
     end
 
-    # todo-Rob REW
     class StampsField
       class << self
         attr_accessor :browser
       end
 
+      attr_accessor :field, :verify_field, :ver_field_attr, :ver_field_attr_value
       def initialize(field)
         @field = field
         self.browser = field.browser unless field.browser.nil?
-      end
-
-      def field
-        @field
       end
       alias_method :checkbox, :field
       alias_method :radio, :field
@@ -269,20 +265,12 @@ module Stamps
       def style(property)
         field.style(property)
       end
-    end
-
-    #todo-Rob rework disabled field
-    #AB_ORDERSAUTO_3516
-    class StampsField2 < StampsField
-      def initialize(field, disabled_field, attribute, attribute_value)
-        super(field)
-        @disabled_field = disabled_field
-        @attribute = attribute
-        @attribute_value = attribute_value
+      def fire_event(event)
+        field.fire_event(event)
       end
 
-      def field_disabled?
-        @disabled_field.attribute_value(@attribute).include?(@attribute_value)
+      def stamps_disabled?(attrib = nil, attrib_val = nil)
+        verify_field.attribute_value(attrib.nil? ? ver_field_attr : attrib).include?(attrib_val.nil? ? ver_field_attr_value : attrib_val)
       end
     end
 
@@ -526,12 +514,12 @@ module Stamps
       end
 
       def expose_selection(selection)
-        case html_tag
-          when :li
-            selection_field = browser.li(text: selection)
-          else
-            "Unsupported HTML drop-down selection tag #{html_tag}".should
-        end
+        selection_field = case html_tag
+                            when :li
+                              browser.li(text: selection)
+                            else
+                              raise ArgumentError, "Unsupported HTML drop-down selection tag #{html_tag}".should
+                          end
 
         5.times do
           dropdown.click
@@ -615,16 +603,16 @@ module Stamps
       def select(str)
         dropdown.click
         expect(html_tag).not_to be_nil, 'Error: Set html_tag before calling select.'
-        case html_tag
-          when :span
-            selection = StampsField.new(browser.span(text: str))
-          when :li
-            selection = StampsField.new(browser.li(text: str))
-          when :div
-            selection = StampsField.new(browser.div(text: str))
-          else
-            # do nothing
-        end
+        selection = case html_tag
+                      when :span
+                        StampsField.new(browser.span(text: str))
+                      when :li
+                        StampsField.new(browser.li(text: str))
+                      when :div
+                        StampsField.new(browser.div(text: str))
+                      else
+                        raise ArgumentError, "#{html_tag} is not not implemented."
+                    end
 
         20.times do
           begin
@@ -683,21 +671,19 @@ module Stamps
         textbox.present?
       end
 
-      def selection(str)
-        case selection_type
-          when :li
-            browser.lis(text: str)[index]
-          when :div
-            browser.divs(text: str)[index]
-          else
-            # do nothing
-        end
-      end
-
       def select(str)
         dropdown.click
         10.times do
-          selection = StampsField.new(selection(str))
+          selection = StampsField.new(
+            case selection_type
+              when :li
+                browser.lis(text: str)[index]
+              when :div
+                browser.divs(text: str)[index]
+              else
+                # do nothing
+            end
+          )
           begin
             break if textbox.text.include?(str)
             dropdown.click unless selection.present?

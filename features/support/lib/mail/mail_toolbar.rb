@@ -33,30 +33,30 @@ module Stamps
         # expect([:envelope, :stamps, :label, :roll, :certified_mail, :certified_mail_3910_3930, :certified_mail_3810, :certified_mail_3830]).to include(param.print_media)
         expect([:envelope, :stamps, :label, :roll, :cm3610, :cm3710, :cm3910, :cm3930, :cm3810, :cm3830]).to include(param.print_media)
         10.times do
-          case param.print_media
-            when :envelope
-              @print_button = StampsField.new(browser.span(text: 'Print Envelope'))
-            when :stamps
-              @print_button = StampsField.new(browser.span(text: 'Print Stamps'))
-            when :label
-              @print_button = StampsField.new(browser.span(text: 'Print Label'))
-            when :roll
-              @print_button = StampsField.new(browser.span(text: 'Print Label'))
-            when :cm3610, :cm3710, :cm3910, :cm3930
-              @print_button = StampsField.new(browser.span(text: 'Print Label'))
-            when :cm3810, :cm3830
-              @print_button = StampsField.new(browser.span(text: 'Print Envelope'))
-            # when :certified_mail
-            #   @print_button = StampsField.new(browser.span(text: 'Print Label'))
-            # when :certified_mail_3910_3930
-            #   @print_button = StampsField.new(browser.span(text: 'Print Label'))
-            # when :certified_mail_3810
-            #   @print_button = StampsField.new(browser.span(text: 'Print Envelope'))
-            # when :certified_mail_3830
-            #   @print_button = StampsField.new(browser.span(text: 'Print Envelope'))
-            else
-              # do nothing
-          end
+          @print_button = case param.print_media
+                            when :envelope
+                              StampsField.new(browser.span(text: 'Print Envelope'))
+                            when :stamps
+                              StampsField.new(browser.span(text: 'Print Stamps'))
+                            when :label
+                              StampsField.new(browser.span(text: 'Print Label'))
+                            when :roll
+                              StampsField.new(browser.span(text: 'Print Label'))
+                            when :cm3610, :cm3710, :cm3910, :cm3930
+                              StampsField.new(browser.span(text: 'Print Label'))
+                            when :cm3810, :cm3830
+                              StampsField.new(browser.span(text: 'Print Envelope'))
+                            # when :certified_mail
+                            #   StampsField.new(browser.span(text: 'Print Label'))
+                            # when :certified_mail_3910_3930
+                            #   StampsField.new(browser.span(text: 'Print Label'))
+                            # when :certified_mail_3810
+                            #   StampsField.new(browser.span(text: 'Print Envelope'))
+                            # when :certified_mail_3830
+                            #   StampsField.new(browser.span(text: 'Print Envelope'))
+                            else
+                              # do nothing
+                          end
           break if @print_button.present?
         end
         expect(@print_button).to be_present

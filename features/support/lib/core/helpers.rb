@@ -47,6 +47,7 @@ module Stamps
       end
     end
   end
+
   module RandomGenerators
   end
 
@@ -75,6 +76,8 @@ module Stamps
       end
       ship_date.strftime('%m/%d/%Y')
     end
+
+    # todo-Helper refactoring: This should be part of String Open class.
 
     def is_whole_number?(number)
       number % 1 == 0
@@ -106,6 +109,7 @@ module Stamps
     def dolars_and_cents(str)
       /\$(?<dollars>\d*).(?<cents>.*)/.match(str.gsub(',', ''))
     end
+    # todo-Helper refactoring: This should be part of String Open class. should exist in monkey_patch.rb
 
     def format_address_arr(address_array)
       formatted_address = ''

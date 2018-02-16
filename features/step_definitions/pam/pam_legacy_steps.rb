@@ -4,7 +4,7 @@ Then /^[Oo]n PAM Customer Search page, set 5.2 or lower$/ do
   pam.customer_search.customer_search.user_5_2_or_lower
 end
 
-Then /^[Oo]n PAM Customer Search page, Verify user is found$/ do
+Then /^[Oo]n PAM Customer Search page, Verify user is found$/ do #todo-Mohammed fix @customer_profile
   expectation="Customer was found"
 
   if @pam_customer_profile_found
@@ -16,7 +16,7 @@ Then /^[Oo]n PAM Customer Search page, Verify user is found$/ do
       when Pam::MeterInfoNotAvailableForAccount
         actual_value=@customer_profile.text
       else
-        actual_value="Customer was not found!"
+        raise "Customer was not found!"
     end
   end
   expect(actual_value).to eql expectation

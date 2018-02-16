@@ -6,10 +6,10 @@ Feature: Profile page validation theme_1632
   @registration_ui_validation_profile_page
   Scenario: Profile Page UI Validation
 
-    # Verifying all content present
+   #Verifying all content present
     Then expect Registration navigation bar Stamps logo exists
     Then expect Registration navigation bar USPS logo exists
-    Then expect Registration bread crumbs is Profile
+    Then expect Profile bread crumbs is Profile
     Then expect Profile page header contain Sign up and avoid trips to the Post Office
     Then expect Profile page paragraph contain The USPS requires you to register your name, telephone number and physical address from which your postage will be printed. This information will be used to create your Stamps.com account.
     Then expect Profile page SideContent Side Account header is Why do I need to create an account?
@@ -23,19 +23,19 @@ Feature: Profile page validation theme_1632
     Then expect Profile page copyright link exists
 
     # Validate Single Help block tooltips
-    Then continue to Membership page
-    Then expect Profile page Email tooltip to be This field is required
-    Then expect Profile page Username tooltip to be This field is required
-    Then expect Profile page password tooltip to be This field is required
-    Then expect Profile page Re-Password tooltip to be This field is required
+     Then continue to Membership page
+     Then expect Profile page Email tooltip index 1 to be This field is required
+     Then expect Profile page username tooltip index 1 to be This field is required
+     Then expect Profile page password tooltip index 1 to be This field is required
+     Then expect Profile page Re-Password tooltip index 1 to be This field is required
 
-    # Verifying all fields present and set Negative values for tooltip Validation
+  #Verifying all fields present and set Negative values for tooltip Validation
     Then expect Profile page email exists
     Then set Profile page Email to kk
     Then expect Profile page username exists
     Then set Profile page Username to r
     Then expect Profile page password exists
-    Then set Profile page Password to r
+    Then set Profile page Password to !
     Then expect Profile page retype password exists
     Then set Profile page Re-type password to k
     Then expect Profile page Survey Question exists
@@ -46,22 +46,26 @@ Feature: Profile page validation theme_1632
     Then expect Profile page CONTINUE button exists
     Then continue to Membership page
 
-    # Validate tooltips for various values
-    # Validate Email tooltips
+   # Validate tooltips for various values
+   #Validate Email tooltips
     Then expect Profile page Email tooltip count is 2
-    Then expect Profile page Email tooltip 0 to be 5 character minimum
-    Then expect Profile page Email tooltip 1 to be Valid email address required
-    # Validate Username tooltips
-    Then expect Profile page Username tooltip 0 to be 2 character minimum
+    Then expect Profile page Email tooltip index 1 to be 5 character minimum
+    Then expect Profile page Email tooltip index 2 to be Valid email address required
+
+    #Validate Username tooltips
+    Then expect Profile page Username tooltip count is 1
+    Then expect Profile page username tooltip index 1 to be 2 character minimum
     # Validate Password tooltips
     Then expect Profile page Password tooltip count is 3
-    Then expect Profile page Password tooltip 0 to be 6 character minimum
-    Then expect Profile page Password tooltip 1 to be At least 1 number required
-    Then expect Profile page Password tooltip 2 to be Cannot match username
+    Then expect Profile page Password tooltip index 1 to be 6 character minimum
+    Then expect Profile page Password tooltip index 2 to be At least 1 number required
+    Then expect Profile page Password tooltip index 3 to be At least 1 letter required
+
     # Validate Re-type password tooltips
-    Then expect Profile page Re-Password tooltip 0 to be Passwords don't match
-    # Validate promo code tooltips
-    Then expect Profile page promo code tooltip 0 to be Invalid promo code
+     Then expect Profile page Re-Password tooltip index 1 to be Passwords don't match
+
+   #Validate promo code tooltips
+    Then expect Profile page promo code tooltip 1 to be Invalid promo code
 
     # Validating all fields with correct values
     Then set Profile page Email to random value
@@ -83,6 +87,7 @@ Feature: Profile page validation theme_1632
     Then set Profile page Survey Question to Individual
     Then expect Profile page Survey Question is correct
 
-    Then set How did you hear about us? to Magazine Ad
+    Then set How did you hear about us? to Web Search
     Then set Profile page promo code to PR33-NH77
+
 

@@ -29,7 +29,7 @@ Then /^[Oo]n [Mm]anage [Ss]hipping [Aa]ddress modal select row (\d)$/ do |row_nu
 end
 
 Then /^[Oo]n [Mm]anage [Ss]hipping [Aa]ddress modal click delete button$/ do
-  stamps.orders.modals.manage_shipping_addresses.delete_row
+  stamps.orders.modals.manage_shipping_addresses.delete_row #todo-ORDERSAUTO-3738
   step 'expect Delete Shipping Address modal is present'
 end
 

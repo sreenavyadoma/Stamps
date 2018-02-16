@@ -6,6 +6,7 @@ Feature: Advanced Options BVT
     Given a valid user is signed in to Web Apps
 
     # ------------------------------------------------------------ Stamps Advanced Options
+  @mail_advanced_options_stamps
   Scenario: Advanced Options for Stamps
     Then select Print On Stamps
     Then show Advanced Options
@@ -34,6 +35,7 @@ Feature: Advanced Options BVT
     Then expect Advanced Options Cost Code is None
 
     # ------------------------------------------------------------ Rolls Advanced Options
+  @mail_advanced_options__rolls
   Scenario: Advanced Options for Roll 4x6
     Then select Print On Roll 4x6
     Then set Advanced Options Mail Date to today
@@ -84,6 +86,7 @@ Feature: Advanced Options BVT
     Then expect Advanced Options Cost Code is None
 
     # ------------------------------------------------------------ Envelopes Advanced Options
+  @mail_advanced_options_envelope
   Scenario: Advanced Options for Envelope - 10
     Then select Print On Envelope - 10
     Then set Advanced Options Mail Date to today
@@ -141,6 +144,7 @@ Feature: Advanced Options BVT
     Then expect Advanced Options Cost Code is None
 
     # ------------------------------------------------------------ Certified Mail Advanced Options SDC-3710
+  @mail_advanced_options_cm3710
   Scenario: Advanced Options for Certified Mail Label - SDC-3710
     Then select Print On Certified Mail Label - SDC-3710
 
@@ -175,6 +179,7 @@ Feature: Advanced Options BVT
     Then expect Advanced Options Cost Code is None
 
     # ------------------------------------------------------------ Certified Mail Advanced Options SDC-3610
+  @mail_advanced_options_cm3610
   Scenario: Advanced Options for Certified Mail Label - SDC-3610
     Then select Print On Certified Mail Label - SDC-3610
 
@@ -213,6 +218,7 @@ Feature: Advanced Options BVT
     Then expect Advanced Options Cost Code is None
 
     # ------------------------------------------------------------ Certified Mail Advanced Options SDC-3910
+  @mail_advanced_options_cm3910
   Scenario: Advanced Options for Certified Mail Label - SDC-3910
     Then select Print On Certified Mail Label - SDC-3910
 
@@ -249,6 +255,7 @@ Feature: Advanced Options BVT
     Then expect Advanced Options Cost Code is None
 
     # ------------------------------------------------------------ Certified Mail Advanced Options SDC-3930
+  @mail_advanced_options_3930
   Scenario: Advanced Options for Certified Mail Label - SDC-3930
     Then select Print On Certified Mail Label - SDC-3930
 
@@ -285,6 +292,7 @@ Feature: Advanced Options BVT
     Then expect Advanced Options Cost Code is None
 
     # ------------------------------------------------------------ Certified Mail Advanced Options SDC-3810
+  @mail_advanced_options_3810
   Scenario: Advanced Options for Certified Mail Label - SDC-3810
     Then select Print On Certified Mail Label - SDC-3810
 
@@ -319,6 +327,7 @@ Feature: Advanced Options BVT
     Then expect Advanced Options Cost Code is None
 
     # ------------------------------------------------------------ Shipping Labels Advanced Options
+  @mail_advanced_options_paper
   Scenario: Advanced Options for Shipping Label - Paper
     Then select Print On Shipping Label - Paper
 

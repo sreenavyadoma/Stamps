@@ -2,34 +2,34 @@
 
 Then /^[Ss]et Print form Serial Number to (.*)$/ do |str|
   if str.include?('random')
-    case str.upcase
-      when /A/
-        serial="A#{Random.rand(10000..99999)}"
-      when /B/
-        serial="B#{Random.rand(10000..99999)}"
-      when /C/
-        serial="c#{Random.rand(10000..99999)}"
-      when /D/
-        serial="D#{Random.rand(10000..99999)}"
-      when /K/
-        serial="K#{Random.rand(10000..99999)}"
-      when /L/
-        serial="L#{Random.rand(10000..99999)}"
-      when /ML/
-        serial="ML#{Random.rand(10000..99999)}"
-      when /P/
-        serial="P#{Random.rand(10000..99999)}"
-      when /R/
-        serial="R#{Random.rand(10000..99999)}"
-      when /S/
-        serial="S#{Random.rand(10000..99999)}"
-      when /V/
-        serial="V#{Random.rand(10000..99999)}"
-      when /WN/
-        serial="WN#{Random.rand(10000..99999)}"
-      else
-        expect(['a', 'b', 'c', 'd', 'k', 'l', 'ml', 'p', 'r', 's', 'v', 'wn']).to include(str.downcase.scan( / (.*) /).last.first)
-    end
+    serial = case str.upcase
+              when /A/
+                "A#{Random.rand(10000..99999)}"
+              when /B/
+                "B#{Random.rand(10000..99999)}"
+              when /C/
+                "c#{Random.rand(10000..99999)}"
+              when /D/
+                "D#{Random.rand(10000..99999)}"
+              when /K/
+                "K#{Random.rand(10000..99999)}"
+              when /L/
+                "L#{Random.rand(10000..99999)}"
+              when /ML/
+                "ML#{Random.rand(10000..99999)}"
+              when /P/
+                "P#{Random.rand(10000..99999)}"
+              when /R/
+                "R#{Random.rand(10000..99999)}"
+              when /S/
+                "S#{Random.rand(10000..99999)}"
+              when /V/
+                "V#{Random.rand(10000..99999)}"
+              when /WN/
+                "WN#{Random.rand(10000..99999)}"
+              else
+                raise ArgumentError, "#{str} is not a valid Stamps serial number."
+            end
   else
     serial=str
   end

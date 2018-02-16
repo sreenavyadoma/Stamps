@@ -1,13 +1,24 @@
 module Stamps
   module Registration
     class ShipVolumeSurvey < Browser::Base
-      attr_reader :web_apps, :web_mail
+      # attr_reader :web_apps, :web_mail
+      #
+      # def initialize(param)
+      #   super
+      #   #@web_apps=StampsDotCom.new(param)
+      #   @web_mail=@web_apps.mail
+      # end
 
-      def initialize(param)
-        super
-        @web_apps=StampsDotCom.new(param)
-        @web_mail=@web_apps.mail
+      def web_apps
+        cache[:web_apps] = StampsDotCom.new(param) if cache[:web_apps].nil?
+        cache[:web_apps]
       end
+
+      def web_mail
+        cache[:web_mail] = web_apps.mail if cache[:web_mail].nil?
+        cache[:web_mail]
+      end
+
 
       def header_message
         browser.h2(text: "Help us customize your Stamps.com experience.").wait_until_present 10
@@ -17,17 +28,19 @@ module Stamps
         #browser.button(text: "Submit").wait_until_present 6
       end
 
-      def field_drop_down
-        StampsField.new(browser.span(css: "form[name=shipSurveyForm]>[class=shippingdropdown]"))
+      def drop_down
+        cache[:field] = StampsField.new(browser.span(css: "form[name=shipSurveyForm]>[class=shippingdropdown]")) if cache[:field].nil? || !cache[:field].present?
       end
 
       def select(str)
-        field_drop_down.click
+        drop_down.click
         selection=StampsField.new(browser.span(text: "1-10 packages per day (1-200 monthly)"))
         15.times do
           selection.click
         end
-        expect(field.text).to include(str)
+        # todo-MH
+        #expect(field.text).to include(str)
+        raise ArgumentError, "#{field.text} does not include #{str}"
       end
 
       def consent_checkbox

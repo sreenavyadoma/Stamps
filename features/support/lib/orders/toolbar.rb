@@ -239,9 +239,6 @@ module Stamps
       end
 
       class MoreActionsDropDown < Browser::Base
-
-
-
         def enabled?
           dropdown.enabled?
         end
@@ -274,24 +271,21 @@ module Stamps
           select(:apply_bulk_action)
         end
 
-        def selection_str(str)
-          case str
-            when :combine_orders
-              return "Combine Orders"
-            when :split_order
-              return "Split Order"
-            when :apply_bulk_action
-              return "Apply Bulk Action"
-            else
-              raise "Invalid selection: #{str}"
-          end
-        end
-
         def select(str)
-          expect(enabled?).to be(true)
+          raise "More actions drop down is disabled." unless enabled?
           5.times do
             return split_order.window_title.text if split_order.window_title.present? #this should be return
-            selection = StampsField.new(browser.span(text: selection_str(str)))
+            selection = StampsField.new(browser.span(text: case str
+                                                             when :combine_orders
+                                                               "Combine Orders"
+                                                             when :split_order
+                                                               "Split Order"
+                                                             when :apply_bulk_action
+                                                               "Apply Bulk Action"
+                                                             else
+                                                               raise "Invalid selection: #{str}"
+                                                           end
+                                                    ))
             dropdown.click unless selection.present?
             sleep(0.1)
             selection.hover
