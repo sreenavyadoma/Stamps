@@ -180,18 +180,28 @@ module Stamps
         end
         expect("Auto-Buy Postage modal did not open.").to eql "Unable to open Auto-Buy Postage modal upon clicking Auto-buy postage link"
       end
-      #todo-Alex remove param.web_app check
+
+      # #todo-Alex remove param.web_app check
+      # def purchase_button
+      #   if param.web_app == :orders || param.web_app == :mail
+      #     button = browser.span(id: "sdc-purchasewin-purchasebtn-btnInnerEl")
+      #  # elsif param.web_app == :mail
+      #   #  #button = browser.span(id: "sdc-purchasewin-purchasebtn-btnIconEl")
+      #     #button = browser.span(id: "sdc-purchasewin-purchasebtn-btnInnerEl")
+      #   else
+      #     "raise Purchase Button failure. #{param.web_app} is not a valid value for param.web_app, check your test."
+      #   end
+      #   StampsField.new button
+      # end
+
       def purchase_button
-        if param.web_app == :orders || param.web_app == :mail
-          button = browser.span(id: "sdc-purchasewin-purchasebtn-btnInnerEl")
-       # elsif param.web_app == :mail
-        #  #button = browser.span(id: "sdc-purchasewin-purchasebtn-btnIconEl")
-          #button = browser.span(id: "sdc-purchasewin-purchasebtn-btnInnerEl")
-        else
-          "raise Purchase Button failure. #{param.web_app} is not a valid value for param.web_app, check your test."
+        if cache[:purchase_button].nil? || !cache[:purchase_button].present?
+          cache[:purchase_button] = StampsField.new(browser.span(css: 'span[id=sdc-purchasewin-purchasebtn-btnInnerEl]'))
+          # cache[:purchase_button] = StampsField.new(browser.span(text: 'Purchase'))
         end
-        StampsField.new button
+        cache[:purchase_button]
       end
+
 
       def present?
         window_title.present?
