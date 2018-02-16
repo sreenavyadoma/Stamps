@@ -366,8 +366,8 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails Order ID is truthy$/ do
   expect(test_param[:order_id].values.last.to_i).to be > 0
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails Order ID equals Grid Oder ID in row (\d+)$/ do |row|
-  expect(stamps.orders.order_details.toolbar.order_id.text).to eql stamps.orders.orders_grid.grid_column(:order_id).row(row)
+Then /^[Ee]xpect [Oo]rder [Dd]etails Order ID equals Grid Order ID in row (\d+)$/ do |row|
+  expect(stamps.orders.order_details.toolbar.order_id.text.extract_numbers).to eql stamps.orders.orders_grid.grid_column(:order_id).row(row)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails Order ID is the same as saved Order ID$/ do

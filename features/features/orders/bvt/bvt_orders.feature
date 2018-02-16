@@ -189,7 +189,6 @@ Feature:  BVT tests for Orders
 
   @bvt_shipstation_search
   Scenario: Search shipstation orders
-    Then in Orders Grid, Sort Order Date in Descending Order
     Then add new order
     Then set Order Details Ship-To to random address in zone 1
     Then set Order Details Email to random
@@ -208,9 +207,10 @@ Feature:  BVT tests for Orders
     Then search filtered Orders for cached Order ID
     Then expect Filter Panel search results tab is present
     Then expect Filter Panel search result count is 1
+    Then check orders grid cached order id
 
   #Then check orders grid cached order id
-    Then expect Order Details Order ID equals Grid Oder ID in row 1
+    Then expect Order Details Order ID equals Grid Order ID in row 1
     Then expect Order Details Order ID is the same as saved Order ID
 
     Then expect Filter Panel search result count is greater than 0
