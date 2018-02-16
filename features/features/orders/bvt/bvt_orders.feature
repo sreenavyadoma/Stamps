@@ -307,7 +307,6 @@ Feature:  BVT tests for Orders
 
     Then expect Orders Grid Weight is 1 lb. 1 oz.
 
-    Then expect Orders Grid Tracking service is Signature Required
 
     Then expect Orders Grid Order Status is Awaiting Shipment
 
