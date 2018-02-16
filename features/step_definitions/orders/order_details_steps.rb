@@ -371,7 +371,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails Order ID equals Grid Order ID in row (\d+)$
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails Order ID is the same as saved Order ID$/ do
-  expect(stamps.orders.order_details.toolbar.order_id.text).to eql test_param[:order_id].values.last
+  expect(stamps.orders.order_details.toolbar.order_id.text.extract_numbers).to eql test_param[:order_id].values.last
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ss]hip-[Tt]o Name is (.*)$/ do |expectation|
