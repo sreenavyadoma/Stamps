@@ -22,7 +22,8 @@ module Stamps
       end
 
       def totals_field
-        cache[:total].nil? || !cache[:total].present? ? cache[:total] = StampsField.new(browser.label(css: "div[id^=toolbar-][id$=-targetEl]>div[class*=ct]>div>div>div>div>div>label")) : cache[:total]
+        # cache[:total].nil? || !cache[:total].present? ? cache[:total] = StampsField.new(browser.label(css: "div[id^=toolbar-][id$=-targetEl]>div[class*=ct]>div>div>div>div>div>label")) : cache[:total]
+        cache[:total].nil? || !cache[:total].present? ? cache[:total] = StampsField.new(browser.label(css: "div[class*=toolbar] label")) : cache[:total]
       end
 
       def total
