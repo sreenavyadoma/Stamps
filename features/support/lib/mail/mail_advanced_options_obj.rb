@@ -11,23 +11,19 @@ module Stamps
           @dropdown = browser.div(css: "div[id^=costcodesdroplist-][id$=costcodesdroplist-1226-trigger-picker]")
         end
 
-        def selection(str)
-          expect([:li, :div]).to include(@selection_type)
-          case selection_type
-            when :li
-              browser.lis(text: str)[@index]
-            when :div
-              browser.divs(text: str)[@index]
-            else
-              # do nothing
-          end
-        end
-
         def select(str)
-          logger.info "Select #{str}"
           dropdown.click
           10.times do
-            selection = StampsField.new(selection(str))
+            selection = StampsField.new(
+              case selection_type
+              when :li
+                browser.lis(text: str)[@index]
+              when :div
+                browser.divs(text: str)[@index]
+              else
+                raise ArgumentError, "#{str} tag is not implemented."
+              end
+            )
             break if textbox.text.include?(str)
             dropdown.click unless selection.present?
             selection.click
@@ -41,7 +37,7 @@ module Stamps
       module MailDateTextbox
         def textbox
           (cache[:textbox].nil? || !cache[:textbox].present?) ? cache[:textbox] = StampsTextbox.new(
-              browser.text_field(css: "[id=sdc-mainpanel-shipdatedatefield-targetEl] input")) : cache[:textbox]
+            browser.text_field(css: "[id=sdc-mainpanel-shipdatedatefield-targetEl] input")) : cache[:textbox]
         end
       end
 
@@ -50,7 +46,7 @@ module Stamps
         include ParameterHelper
         def trigger_picker
           (cache[:trigger_picker].nil? || !cache[:trigger_picker].present?) ? cache[:trigger_picker] = StampsField.new(
-              browser.div(css: "[id=sdc-mainpanel-shipdatedatefield-targetEl] div[id*=picker]")) : cache[:trigger_picker]
+            browser.div(css: "[id=sdc-mainpanel-shipdatedatefield-targetEl] div[id*=picker]")) : cache[:trigger_picker]
         end
 
         def mail_dates

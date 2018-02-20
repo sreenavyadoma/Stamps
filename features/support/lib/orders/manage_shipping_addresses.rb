@@ -3,8 +3,6 @@ module Stamps
     module ShipFrom
       #todo-Rob move ManageShippingAddresses modal to stamps.orders.modals.manage_shipping_addresses
       class ManageShippingAddresses < Browser::Base
-
-
         def edit_button
           if cache[:edit_button].nil? || !cache[:edit_button].present?
             cache[:edit_button] = StampsField.new(browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(2)"))

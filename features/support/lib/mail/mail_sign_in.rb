@@ -410,23 +410,23 @@ module Stamps
         def sign_in_and_remember(*args)
           visit :print_postage
           case args
-            when Hash
-              username = args[0]['username']
-              password = args[0]['password']
-            when Array
-              if args.length == 2
-                username = args[0]
-                password = args[1]
-              else
-                logger.info "Using Default Sign-in Credentials: #{ENV["USR"]}"
-                username = ENV['USR']
-                password = ENV['PW']
-              end
+          when Hash
+            username = args[0]['username']
+            password = args[0]['password']
+          when Array
+            if args.length == 2
+              username = args[0]
+              password = args[1]
             else
-              logger.message 'Using Default Sign-in Credentials.'
+              logger.info "Using Default Sign-in Credentials: #{ENV["USR"]}"
               username = ENV['USR']
               password = ENV['PW']
-              logger.message "USERNAME: #{username}, PASSWORD: #{password}"
+            end
+          else
+            logger.message 'Using Default Sign-in Credentials.'
+            username = ENV['USR']
+            password = ENV['PW']
+            logger.message "USERNAME: #{username}, PASSWORD: #{password}"
           end
 
           sign_in_link = StampsField.new browser.link(text: 'Sign In')

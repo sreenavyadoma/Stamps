@@ -1,38 +1,34 @@
 module Stamps
   module Registration
     class SdcWebsite < Browser::Base
-      attr_reader :get_started_btn, :registration
-      def initialize(param)
-        super
-        @get_started_btn=StampsField.new(browser.button(css: "div[class*='pull-right']>button[class*=register]"))
-        @registration=WebRegistration.new(param)
+
+      def get_started_btn
+        cache[:get_started_btn].nil? || !cache[:get_started_btn].present? ? cache[:get_started_btn] = StampsField.new(browser.button(css: "div[class*='pull-right']>button[class*=register]")) : cache[:get_started_btn]
+      end
+
+
+
+      def registration
+        cache[:registration] = WebRegistration.new(param) if cache[:registration].nil?
+        cache[:registration]
       end
 
       def load_page
-        case param.test_env.downcase
-          when /cc/
-            url="http://sdcwebsite.qacc.stamps.com/"
-          when /sc/
-            url="http://sdcwebsite.qasc.stamps.com/"
-          when /stg/
-            url="http://sdcwebsite.staging.stamps.com/"
-          else
-            #do nothing
-        end
-        logger.info "Visit:  #{url}"
+        url = case param.test_env.downcase
+                when /cc/
+                  "http://sdcwebsite.qacc.stamps.com/"
+                when /sc/
+                  "http://sdcwebsite.qasc.stamps.com/"
+                when /stg/
+                  "http://sdcwebsite.staging.stamps.com/"
+                else
+                  raise ArgumentError, "#{param.test_env} environment is not implemented."
+              end
         browser.goto(url)
-        get_started_btn.wait_until_present(5)
+        get_started_btn.wait_until_present(10)
         expect(get_started_btn).to be_present
       end
 
-      def get_started
-        10.times do
-          get_started_btn.click
-          registration.wait_until_present(5)
-          return registration if registration.present?
-        end
-        expect(browser.url).to include('profile')
-      end
     end
   end
 end

@@ -3,15 +3,27 @@ module Stamps
     module Footer
 
       class ProfileFooter < Browser::Base
-        attr_reader :privacy_policy_link, :copyright_link, :trust_elogo, :live_chat_button
 
-        def initialize(param)
-          super
-          @privacy_policy_link=StampsField.new(browser.a(css: "[data-pgtitle='Privacy Policy']"))
-          @copyright_link=StampsField.new(browser.a(css: "[data-pgtitle='Copyright']"))
-          @trust_elogo=StampsField.new(browser.img(css: "img[src$='logo_truste.png']"))
-          @live_chat_button=StampsField.new(browser.button(value: "Live Chat"))
+        def privacy_policy_link
+          cache[:privacy_policy_link] = StampsField.new(browser.a(css: "[data-pgtitle='Privacy Policy']")) if cache[:privacy_policy_link].nil?
+          cache[:privacy_policy_link]
         end
+
+        def copyright_link
+          cache[:copyright_link] = StampsField.new(browser.a(css: "[data-pgtitle='Copyright']")) if cache[:copyright_link].nil?
+          cache[:copyright_link]
+        end
+
+        def trust_elogo
+          cache[:trust_elogo] =StampsField.new(browser.img(css: "img[src$='logo_truste.png']")) if cache[:trust_elogo].nil?
+          cache[:trust_elogo]
+        end
+
+        def live_chat_button
+          cache[:live_chat_button] =StampsField.new(browser.button(value: "Live Chat")) if cache[:live_chat_button].nil?
+          cache[:live_chat_button]
+        end
+
 
         def present?
           privacy_policy_link.present?
