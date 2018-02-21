@@ -1,4 +1,4 @@
-default: --backtrace --profile alex_mail
+default: --backtrace --profile alex_rates
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
