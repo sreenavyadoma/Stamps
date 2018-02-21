@@ -45,6 +45,7 @@ Feature:  BVT tests for Orders
   Scenario: BVT Bulk Update International
 
   # Order #1 (Domestic)
+    Then in Orders Grid, Sort Order Date in Descending Order
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address in zone 1
@@ -57,7 +58,7 @@ Feature:  BVT tests for Orders
     Then set Order Details Ship-To International address to
       | full_name     | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country | phone        |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone | Random email  |
-    Then set Order Details Weight to 2 lb 2 oz
+    Then set Order Details Weight to 0 lb 1 oz
     Then set Order Details international service to PMEI Package/Flat/Thick Envelope
     Then blur out on Order Details form 2 times
 
@@ -66,6 +67,7 @@ Feature:  BVT tests for Orders
     Then check order 1
     Then Pause for 1 second
     Then check order 2
+
     Then Pause for 1 seconds
 
   # Updating order details
@@ -86,7 +88,7 @@ Feature:  BVT tests for Orders
   # verify fields in 1st order
     Then check order 1
     Then expect Order Details Ship From is correct
-    Then expect Order Details service is correct
+    Then expect Order Details service is PM Large Package
     Then Pause for 1 second
     Then uncheck order 1
     Then Pause for 1 second
@@ -94,7 +96,7 @@ Feature:  BVT tests for Orders
   # verify fields in 2nd order
     Then check order 2
     Then expect Order Details Ship From is correct
-    Then expect Order Details international service is correct
+    Then expect Order Details international service is PMI Package/Flat/Thick Envelope
     Then uncheck order 2
     Then Sign out
 
@@ -106,7 +108,7 @@ Feature:  BVT tests for Orders
       | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then set Order Details Ounces to 4
-    Then set Order Details service to FCMI Large Envelope/Flat
+    Then set Order Details service to PMI Flat Rate Envelope
     Then click Order Details form Customs Form button
     Then add Customs Associated Item 1, Description random, Qty 1, Price 4, Made In Japan, Tariff 1
     Then set Customs Package Contents to Commercial Sample
@@ -114,9 +116,10 @@ Feature:  BVT tests for Orders
     Then set Customs Package Contents to Document
     Then set Customs Package Contents to Humanitarian Donation
     Then set Customs Package Contents to Merchandise
+    Then set Customs Package Contents to Other
+    Then set Customs More Info to random
     Then set Customs Non-Delivery Options to Return to sender
     Then set Customs Internal Transaction Number to Not required
-    Then set Customs More Info to random
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then click Orders Toolbar Print button
@@ -204,9 +207,10 @@ Feature:  BVT tests for Orders
     Then search filtered Orders for cached Order ID
     Then expect Filter Panel search results tab is present
     Then expect Filter Panel search result count is 1
+    Then check orders grid cached order id
 
   #Then check orders grid cached order id
-    Then expect Order Details Order ID equals Grid Oder ID in row 1
+    Then expect Order Details Order ID equals Grid Order ID in row 1
     Then expect Order Details Order ID is the same as saved Order ID
 
     Then expect Filter Panel search result count is greater than 0
@@ -233,7 +237,7 @@ Feature:  BVT tests for Orders
     Then set Order Details Length to 1
     Then set Order Details Width to 1
     Then set Order Details Height to 1
-
+    Then expect Orders Grid service is Priority Mail
     Then expect Orders Grid service is PM Package
     Then expect Orders Grid service is correct
 
@@ -274,7 +278,6 @@ Feature:  BVT tests for Orders
     Then expect Order Details Service Cost is correct
 
     Then expect Order Details Insure-For is 100.00
-    Then expect Order Details Insure-For Cost is correct
 
     Then expect Order Details Tracking is correct
     Then expect Order Details Tracking Cost is correct
@@ -304,7 +307,6 @@ Feature:  BVT tests for Orders
 
     Then expect Orders Grid Weight is 1 lb. 1 oz.
 
-    Then expect Orders Grid Tracking service is Signature Required
 
     Then expect Orders Grid Order Status is Awaiting Shipment
 
@@ -336,8 +338,8 @@ Feature:  BVT tests for Orders
     Then on Order Details form, Add Item 2, Qty 2, ID random string, Description random string
     Then on Order Details form, Add Item 3, Qty 3, ID ID 3, Description random string
 
-    Then expect Orders Grid service is Priority Mail
-    Then expect Orders Grid service is PM Package
+    Then expect Orders Grid service is Priority Mail International
+    Then expect Orders Grid service is PMI Package/Flat/Thick Envelope
     Then expect Orders Grid service is correct
 
   # Edit the customs form
@@ -345,7 +347,6 @@ Feature:  BVT tests for Orders
     Then expect Customs I agree to the USPS Privacy Act Statement is unchecked
 
     Then set Customs Package Contents to Document
-    Then set Customs More Info to some random string
 
     Then set Customs Package Contents to Commercial Sample
     Then expect Customs Package Contents is Commercial Sample
@@ -409,7 +410,6 @@ Feature:  BVT tests for Orders
     Then expect Order Details Associated Item 3 Description is correct
 
     Then expect Order Details Insure-For is correct
-    Then expect Order Details Insure-For Cost is correct
     Then click Order Details form Customs Form button
     Then Pause for 2 second
     Then expect Customs Package Contents is Commercial Sample
