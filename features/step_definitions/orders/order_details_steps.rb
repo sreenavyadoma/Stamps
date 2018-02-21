@@ -351,6 +351,11 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(
   step 'hide order details form Ship-To fields'
 end
 
+Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to ambiguous address$/ do |table|
+  step 'expect Order Details is present'
+  stamps.orders.order_details.ship_to.domestic.set_ambiguous(test_helper.format_address(table.hashes.first))
+end
+
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o text area to (.*)$/ do |address|
   test_param[:ship_to_domestic] = test_helper.format_address(address)
   step 'show order details form ship-to fields'
@@ -426,11 +431,6 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails [Ss]hip-[Tt]o Email is (.*)$/ do |expectati
   step 'expect Order Details is present'
   step 'show order details form ship-to fields'
   expect(stamps.orders.order_details.ship_to.domestic.email.text).to eql expectation
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to ambiguous address$/ do |table|
-  step 'expect Order Details is present'
-  stamps.orders.order_details.ship_to.domestic.set_ambiguous(test_helper.format_address(table.hashes.first))
 end
 
 Then /^[Ii]n Exact Address Not Found module, select row (\d+)$/ do |row|
