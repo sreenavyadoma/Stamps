@@ -28,7 +28,7 @@ module Stamps
       begin
         FileUtils.copy_file(source_file, test_file)
         test_config.logger.step "#{"-"*40}"
-        test_config.logger.step "Rate File was Successfully UPDATED!!!"
+        test_config.logger.step "Rate File was Updated"
         test_config.logger.step "#{"-"*40}"
       rescue
         false
