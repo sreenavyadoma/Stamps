@@ -1,4 +1,4 @@
-
+#
 setup:
   windows:
     geckodriver: C:\Stamps\binaries\geckodriver.exe
