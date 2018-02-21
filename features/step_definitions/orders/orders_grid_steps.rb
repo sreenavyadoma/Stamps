@@ -28,7 +28,7 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Store is (.*)$/ do |expectation|
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Order ID is the same as Details Form Order ID$/ do
-  expect(stamps.orders.order_details.toolbar.order_id.text).to eql(stamps.orders.orders_grid.grid_column(:order_id).row(1))
+  expect(stamps.orders.order_details.toolbar.order_id.text.extract_numbers).to eql(stamps.orders.orders_grid.grid_column(:order_id).row(1))
 end
 
 Then /^[Ee]xpect cached Order ID is in [Oo]rders [Gg]rid [Rr]ow (\d+)$/ do |row|
@@ -40,7 +40,7 @@ Then /^[Ee]xpect cached Order ID is in [Oo]rders [Gg]rid [Rr]ow (\d+)$/ do |row|
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Ship Cost is the same as Details Form Ship Cost$/ do
-  expect(stamps.orders.order_details.footer.total_ship_cost.text.dollar_amount_str.to_f.round(2)).to eql(stamps.orders.orders_grid.grid_column(:ship_cost).data(test_param[:order_id].values.last))
+  expect(stamps.orders.order_details.footer.total_ship_cost.text.dollar_amount_str.to_f.round(2).to_s).to eql(stamps.orders.orders_grid.grid_column(:ship_cost).data(test_param[:order_id].values.last))
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Date Printed for this order is (?:correct|(\d{2}\/\d{2}\/\d{4}))$/ do |str|

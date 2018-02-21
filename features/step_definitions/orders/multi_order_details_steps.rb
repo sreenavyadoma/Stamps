@@ -172,7 +172,8 @@ Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Hh]eight is (?:correct|(.*))$/ do |str|
 end
 
 Then /^[Cc]lick [Bb]ulk [Uu]pdate [Uu]pdate [Oo]rder [Bb]utton$/ do
-  stamps.orders.bulk_update.update_orders
+  stamps.orders.bulk_update.update_orders.click
+  sleep 30
 end
 
 Then /^[Ee]xpect [Bb]ulk [Uu]pdate is present$/ do

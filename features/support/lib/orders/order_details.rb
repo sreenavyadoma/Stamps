@@ -810,7 +810,7 @@ module Stamps
         module OrderDetailsOrderId
           def order_id
             if cache[:order_id_field].nil? || !cache[:order_id_field].present?
-              cache[:order_id_field] = StampsField.new(browser.b(css: "[class*=singleorder] [id^=toolbar][id$=targetEl]>label b"))
+              cache[:order_id_field] = StampsField.new(browser.b(css: "[class*=singleorder] [id^=toolbar][id$=targetEl]>label>b"))
             end
             cache[:order_id_field]
           end
