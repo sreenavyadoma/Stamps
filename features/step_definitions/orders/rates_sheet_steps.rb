@@ -8,6 +8,7 @@ Then /^[Ee]xcel rate sheet is loaded$/ do
   Spreadsheet.client_encoding='UTF-8'
   rate_file=data_for(:rates_test, {})['rate_file']
   #copy file tolocal
+  #expect(stamps.rating.spreadsheet.updated) to_be (true)
   @rate_file_loc="#{data_for(:rates_test, {})['test_dir']}\\#{rate_file}"
   test_config.logger.step "Rate File: #{@rate_file_loc}"
   expect("Rate File: #{@rate_file_loc}").to eql "Rate File does not exist!" unless File.exist?(@rate_file_loc)
