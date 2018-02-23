@@ -18,6 +18,10 @@ module Stamps
       cache[:shared_modals] = Stamps::Browser::Base.new(param).extend(Stamps::Common::Modals) if cache[:shared_modals].nil?
       cache[:shared_modals]
     end
+
+    def rating
+      cache[:rating].nil? ? cache[:rating] = Rating.new(param) : cache[:rating]
+    end
   end
 end
 
