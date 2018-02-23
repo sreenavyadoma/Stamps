@@ -91,7 +91,7 @@ Then /^[Ss]et Print form [Mm]ail-[Tt]o [Cc]ountry to (.*)$/ do |country|
 end
 
 Then /^[Ss]ave Print Form Total Cost$/ do
-test_param[:total_ship_cost]=stamps.mail.mail_toolbar.total
+  test_param[:total_ship_cost]=stamps.mail.mail_toolbar.total
 end
 
 Then /^[Ss]ave Print Form Mail From$/ do

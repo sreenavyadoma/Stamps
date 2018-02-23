@@ -28,7 +28,6 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]ervice to (.*)$/ do |str|
   step 'Save Order Details data'
 end
 
-
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ii]nternational [Ss]ervice is (?:correct|(.*))$/ do |expectation|
   step 'expect Order Details is present'
   expect(stamps.orders.order_details.service.textbox.text.parse_service_name).to eql((expectation.nil?) ? test_param[:int_service] : expectation)

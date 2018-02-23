@@ -1,4 +1,4 @@
-
+# this is a test 2
 setup:
   windows:
     geckodriver: C:\Stamps\binaries\geckodriver.exe
@@ -19,8 +19,9 @@ rates_test:
   rates_pmi_comm_base: PMI Comm Base
   rates_pmi_comm_plus: PMI Comm Plus
   rates_fcm_package: FCM Package
-  test_dir: C:\Stamps\binaries\ #\\jenkinsvm01\Public\share\share\rates_test_data\tests todo-Rob automate copying of sheet to VM
+  test_dir: C:\Stamps\binaries
   results_dir: \\jenkinsvm01\Public\share\share\rates_test_data\results\
+  source_dir: \\jenkinsvm01\Public\share\share\rates_test_data\tests
 
 
 
@@ -31,7 +32,7 @@ import_orders_test:
   import_existing_orders_time_file: import_existing_orders_times.csv
 
 windows_files:
-  import_csv_file: \\\\jenkinsvm01\\Public\\automation\\data\\import_times.csv #data_for(:rates_test, {})['rates_pme_comm_base']
+  import_csv_file: \\\\jenkinsvm01\\Public\\automation\\data\\import_times.csv
 
 registration:
   default_parameter_file: default_parameter

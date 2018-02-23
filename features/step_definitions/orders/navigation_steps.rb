@@ -68,4 +68,3 @@ Then /^Buy Mail: Expect customer balance increased by \$(\d+)$/ do |purchase_amo
   end
   expect((stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f - test_param[:old_balance].to_f).round(2)).to eql purchase_amount.to_f.round(2)
 end
-

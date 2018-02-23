@@ -6,26 +6,6 @@ module Stamps
 
     ##
     #
-    module Cache
-      class << self
-        def included(base)
-          base.extend ClassMethods
-        end
-
-        module ClassMethods
-          def assign(cache)
-            @cache = cache
-          end
-
-          def cache
-            @cache.nil? ? raise(ArgumentError, "Cache not set for #{self.to_s.split('::').last}") : @cache
-          end
-        end
-      end
-    end
-
-    ##
-    #
     class Base
       class << self
         attr_accessor :browser
@@ -695,5 +675,27 @@ module Stamps
         textbox.text
       end
     end
+
+    ##
+    #
+    module Cache
+      class << self
+        def included(base)
+          base.extend ClassMethods
+        end
+
+        module ClassMethods
+          def assign(cache)
+            @cache = cache
+          end
+
+          def cache
+            raise(ArgumentError, "Cache not set for #{self.to_s.split('::').last}") if @cache.nil?
+            @cache
+          end
+        end
+      end
+    end
+
   end
 end
