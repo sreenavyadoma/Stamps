@@ -55,7 +55,7 @@ Then /^[Ee]xpect [Mm]anage [Ss]hipping [Aa]ddress modal is present$/ do
 end
 
 Then /^[Ee]xpect [Mm]anage [Ss]hipping [Aa]ddress modal is not present$/ do
-  expect(stamps.orders.modals.manage_shipping_addresses.present?).to be(false), 'Manage Shipping Address modal is not present!'
+  expect(stamps.orders.modals.manage_shipping_addresses.present?).to be(false), 'Manage Shipping Address modal is present!'
 end
 
 Then /^[Ee]xpect Delete [Ss]hipping [Aa]ddress modal is present$/ do

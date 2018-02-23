@@ -239,7 +239,7 @@ end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Ff]rom to (?:Manage Shipping Addresses\.\.\.|(.*))$/ do |str|
   if str.nil?
-    stamps.orders.order_details.single_ship_from.select('Manage Shipping Addresses...')
+    expect(stamps.orders.order_details.single_ship_from.select('Manage Shipping Addresses...')).to eql("Manage Shipping Addresses")
   else
     test_param[:ship_from] = stamps.orders.order_details.single_ship_from.select(str)
   end

@@ -94,8 +94,6 @@ module Stamps
       end
 
       class DetailsFormShipFrom < Browser::Base
-
-
         attr_reader :form_type
 
         def initialize(param, form_type)
@@ -120,14 +118,17 @@ module Stamps
         def select(str)
           dropdown.click
           sleep(0.5)
+          window_title = Class.new(Browser::Base).new(param).extend(Stamps::Orders::ShipFrom::WindowTitle)
           selection = StampsField.new((str.downcase.include?('default')) ? browser.lis(css: "[class*='x-boundlist-item-over'][data-recordindex='0']")[(form_type == :single_order) ? 0 : 1] : browser.lis(text: /#{str}/)[(form_type == :single_order) ? 0 : 1])
           if str.downcase.include?("manage shipping")
-            15.times do
+            20.times do
               sleep(0.35)
               dropdown.click unless selection.present?
               selection.scroll_into_view.click
-              expect(stamps.orders.modals.manage_shipping_addresses).to be_present, "Manage Shipping Address modal is not present!"
+              return window_title.window_title.text if window_title.present?
             end
+
+            raise "Failed to open Manage Shipping Addresses modal"
           else
             15.times do
               sleep(0.35)

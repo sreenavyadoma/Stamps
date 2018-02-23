@@ -2,7 +2,17 @@ module Stamps
   module Orders
     module ShipFrom
       #todo-Rob move ManageShippingAddresses modal to stamps.orders.modals.manage_shipping_addresses
+      module WindowTitle
+        def window_title
+          if cache[:window_title].nil? || !cache[:window_title].present?
+            cache[:window_title] = StampsField.new(browser.div(css: 'div[class*=x-window-header-title-default]>div'))
+          end
+          cache[:window_title]
+        end
+      end
+
       class ManageShippingAddresses < Browser::Base
+        include WindowTitle
         def edit_button
           if cache[:edit_button].nil? || !cache[:edit_button].present?
             cache[:edit_button] = StampsField.new(browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(2)"))
@@ -17,15 +27,8 @@ module Stamps
           cache[:add_button]
         end
 
-        def window_title
-          if cache[:window_title].nil? || !cache[:window_title].present?
-            cache[:window_title] = StampsField.new(browser.div(css: 'div[class*=x-window-header-title-default]>div'))
-          end
-          cache[:window_title]
-        end
-
         def close_button
-          cache[:close_button] = StampsField.new(browser.image(css: "img[class*='x-tool-close']")) if cache[:close_button].nil? || !cache[:close_button].present?
+          cache[:close_button] = StampsField.new(browser.span(css: "span[class*=sdc-icon-mobile-close-light]")) if cache[:close_button].nil? || !cache[:close_button].present?
           cache[:close_button]
         end
 

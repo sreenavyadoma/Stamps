@@ -1,4 +1,4 @@
-default: --backtrace --profile alex_rates
+default: --backtrace --profile alex_orders
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -27,7 +27,7 @@ alex_mail:  --tags @mail_bvt_purchasing BROWSER=gc WEB_APP=mail JENKINS=true URL
 alex_regress:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders JENKINS=true URL=cc USR=abqacc10 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
 alex_rates:  --tags @rates_parcel_select_ground_zone_1 BROWSER=ff WEB_APP=mail JENKINS=true URL=stg USR=abqast1 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
 alex_rates_pmi:  --tags @rates_pmi_comm_plus_group_9 BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast2 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
-alex_orders:  --tags @purchasing BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=purchs_stg1 PW=pass111  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false #abqast1
+alex_orders:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders JENKINS=true URL=qacc USR=abqacc10 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false #abqast1
 
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
