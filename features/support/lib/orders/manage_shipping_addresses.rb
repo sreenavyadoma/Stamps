@@ -173,7 +173,7 @@ module Stamps
 
         def shipping_address_count
           wait_until_present
-          browser.tables(css: "[id^=grid-][class*=panel-body] [class*=x-grid-item]").size
+          browser.tables(css: "[id^=grid-][class*=panel-body] table[class*=x-grid-item]").size
         end
       end
 
