@@ -43,7 +43,6 @@ module Stamps
               profile['network.http.phishy-userpass-length'] = 255
               driver = Watir::Browser.new(:firefox, :profile => profile)
             end
-            # self.browser_version = /Firefox\/.+/.match(driver.execute_script("return navigator.userAgent;"))
             get_versions(driver.execute_script("return navigator.userAgent;"))
             driver.window.resize_to 1560, 1020
             driver.window.move_to 0, 0
@@ -56,7 +55,6 @@ module Stamps
               #ignore
             end
             driver = Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate))
-            # self.browser_version = /Chrome\/.+/.match(driver.execute_script("return navigator.userAgent;"))
             get_versions(driver.execute_script("return navigator.userAgent;"))
             driver.window.maximize
             #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
@@ -75,12 +73,7 @@ module Stamps
             # stdout, status = Open3.capture3("killall Safari")
             logger.message status
             logger.message stdout
-
             driver = Watir::Browser.new :safari, technology_preview: true
-            #info = driver.execute_script("return navigator.userAgent;")
-            #match = /([\d.]+) (Safari)/.match(info)
-            #self.browser_version = "#{match[2]} #{match[1]}"
-            #os_version = /(Mac OS.+[\d_]+)\)/.match(info)[1]
             get_versions(driver.execute_script("return navigator.userAgent;"))
             driver.window.maximize
           else
@@ -148,8 +141,6 @@ module Stamps
       self.browser_version = /[\d.]+ Safari|Edge\/.+|Firefox\/.+|Chrome\/[\d\.]+/.match(info)
       self.os_version = /(Mac OS.+?[\d_]+|Windows.+?[\d\.]+)/.match(info)
     end
-
-
   end
 end
 
