@@ -11,6 +11,7 @@ module Stamps
     def setup(browser_str)
       begin
         Watir::always_locate = true
+        Selenium::WebDriver.logger.level = :warn
         logger.info "Browser Selection: #{browser_str}"
         case(browser_str)
           when :edge # Launch Microsoft Edge
@@ -68,11 +69,12 @@ module Stamps
             driver = Watir::Browser.new :ie
             driver.window.maximize
           when :safari
-            stdout, status = Open3.capture3("killall Safari")
+            stdout, status = Open3.capture3("killall 'Safari Technology Preview'")
+            # stdout, status = Open3.capture3("killall Safari")
             logger.message status
             logger.message stdout
 
-            driver = Watir::Browser.new :safari
+            driver = Watir::Browser.new :safari, technology_preview: true
             #info = driver.execute_script("return navigator.userAgent;")
             #match = /([\d.]+) (Safari)/.match(info)
             #self.browser_version = "#{match[2]} #{match[1]}"
@@ -96,14 +98,6 @@ module Stamps
         logger.error e.message
         raise e
       end
-    end
-
-    private
-    def get_versions(info)
-      # match = /([\d.]+) (Safari)/.match(info)
-      # self.browser_version = "#{match[2]} #{match[1]}"
-      self.browser_version = /[\d.]+ Safari|Edge\/.+|Firefox\/.+|Chrome\/.+/.match(info)
-      self.os_version = /(Mac OS.+[\d_]+)\)/.match(info)[1]
     end
 
     def os
@@ -146,6 +140,15 @@ module Stamps
         #ignore
       end
     end
+
+    private
+    def get_versions(info)
+      # match = /([\d.]+) (Safari)/.match(info)
+      # self.browser_version = "#{match[2]} #{match[1]}"
+      self.browser_version = /[\d.]+ Safari|Edge\/.+|Firefox\/.+|Chrome\/.+/.match(info)
+      self.os_version = /(Mac OS.+[\d_]+)\)/.match(info)[1]
+    end
+
 
   end
 end
