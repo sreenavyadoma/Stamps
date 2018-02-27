@@ -146,8 +146,7 @@ module Stamps
     private
     def get_versions(info)
       self.browser_version = /[\d.]+ Safari|Edge\/.+|Firefox\/.+|Chrome\/[\d\.]+/.match(info)
-      #self.os_version = /(Mac OS.+?[\d_]+|Windows.+?[\d]{1,})/.match(info)
-      self.os_version = info
+      self.os_version = /(Mac OS.+?[\d_]+|Windows.+?[\d\.]+)/.match(info)
     end
 
 
