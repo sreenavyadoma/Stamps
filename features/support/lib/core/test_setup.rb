@@ -69,11 +69,12 @@ module Stamps
             driver = Watir::Browser.new :ie
             driver.window.maximize
           when :safari
-            stdout, status = Open3.capture3("killall 'Safari Technology Preview'")
-            # stdout, status = Open3.capture3("killall Safari")
+            # stdout, status = Open3.capture3("killall 'Safari Technology Preview'")    #todo Alex uncomment once framework upgraded to Watir 6.10.2
+            stdout, status = Open3.capture3("killall Safari")
             logger.message status
             logger.message stdout
-            driver = Watir::Browser.new :safari, technology_preview: true
+            # driver = Watir::Browser.new :safari, technology_preview: true
+            driver = Watir::Browser.new :safari                                         #todo Alex uncomment once framework upgraded to Watir 6.10.2
             get_versions(driver.execute_script("return navigator.userAgent;"))
             driver.window.maximize
           else
