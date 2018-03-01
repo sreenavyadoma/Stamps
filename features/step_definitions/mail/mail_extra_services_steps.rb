@@ -18,6 +18,7 @@ end
 Then /^[Ss]ave Extra Services$/ do
   expect(stamps.mail.print_form.advanced_options.extra_services.save_field).to be_present
   stamps.mail.print_form.advanced_options.extra_services.save
+  # stamps.mail.print_form.advanced_options.xtra_serv_panel.save
 end
 
 Then /^[Ee]xpect Extra Services is present$/ do
