@@ -18,7 +18,7 @@ Feature: International Shipping BVT
 
     Then expect Customs I agree to the USPS Privacy Act Statement is unchecked
     Then set Customs Package Contents to Document
-    Then set Customs More Info to some random string
+    #Then set Customs More Info to some random string
     Then set Customs Package Contents to Commercial Sample
     Then expect Customs Package Contents is Commercial Sample
     Then set Customs License Number to a random string
