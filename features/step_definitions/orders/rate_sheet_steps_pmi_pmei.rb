@@ -436,7 +436,7 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
           test_config.logger.step "#{"#" * 10} "
           test_config.logger.step"#{"#" * 50}"
 
-          if test_helper.is_whole_number?(weight_lb)
+          if weight_lb.is_whole_number?
             weight_lb = weight_lb.to_i
             test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight_lb]] = weight_lb
             test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight]] = "#{weight_lb} lb."

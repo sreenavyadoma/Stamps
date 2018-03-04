@@ -41,7 +41,7 @@ end
 Then /^[Ss]et [Mm]embership [Pp]age [Ff]irst [Nn]ame to (?:random value|(.*))$/ do |str|
   registration.membership.first_name.wait_until_present(10)
   expect(registration.membership.first_name).to be_present
-  registration.membership.first_name.set(test_param[:first_name] = str.nil? ? StampsTest.rand_alpha_str.capitalize  : str)
+  registration.membership.first_name.set(test_param[:first_name] = str.nil? ? ParamHelper.rand_alpha_str.capitalize  : str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Ff]irst [Nn]ame is (?:correct|(.*))$/ do |str|
@@ -49,7 +49,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age [Ff]irst [Nn]ame is (?:correct|(.*))$/ do
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Ll]ast [Nn]ame to (?:random value|(.*))$/ do |str|
-  registration.membership.last_name.set(test_param[:last_name] = str.nil? ? StampsTest.rand_alpha_str.capitalize  : str)
+  registration.membership.last_name.set(test_param[:last_name] = str.nil? ? ParamHelper.rand_alpha_str.capitalize  : str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Ll]ast [Nn]ame is (?:correct|(.*))$/ do |str|
@@ -57,7 +57,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age [Ll]ast [Nn]ame is (?:correct|(.*))$/ do 
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Cc]ompany to (?:random value|(.*))$/ do |str|
-  registration.membership.company.set(test_param[:company] = str.nil? ? StampsTest.rand_alpha_str  : str) if registration.membership.company.present?
+  registration.membership.company.set(test_param[:company] = str.nil? ? ParamHelper.rand_alpha_str  : str) if registration.membership.company.present?
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Cc]ompany is (?:correct|(.*))$/ do |str|
@@ -106,7 +106,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age [Zz]ip is (?:correct|(.*))$/ do |str|
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Pp]hone to (?:random value|(.*))$/ do |str|
-  registration.membership.phone.set(test_param[:phone] = str.nil? ? StampsTest.rand_phone_format : str)
+  registration.membership.phone.set(test_param[:phone] = str.nil? ? ParamHelper.rand_phone_format : str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Pp]hone is (?:correct|(.*))$/ do |str|
@@ -114,7 +114,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age [Pp]hone is (?:correct|(.*))$/ do |str|
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Cc]ardholder's [Nn]ame to (?:random value|(.*))$/ do |str|
-  test_param[:card_holder_name] = str.nil? ? StampsTest.rand_full_name  : str
+  test_param[:card_holder_name] = str.nil? ? ParamHelper.rand_full_name  : str
   registration.membership.cc_holder_name.set test_param[:card_holder_name]
 end
 
@@ -201,7 +201,7 @@ Then /^[Ss]et [Mm]embership [Pp]age [Mm]ember [Bb]illing [Aa]ddress to(?: a |)(?
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Bb]illing [Aa]ddress to (.*)$/ do |str|
-  registration.membership.billing_address.set(test_param[:billing_address] = str.nil? ? StampsTest.rand_alpha_str.capitalize  : str)
+  registration.membership.billing_address.set(test_param[:billing_address] = str.nil? ? ParamHelper.rand_alpha_str.capitalize  : str)
   step "blur_out on membership page"
   registration.membership.billing_address.click
   step "blur_out on membership page"
@@ -215,7 +215,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Aa]ddress is (?:correct|(.*))
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Bb]illing [Cc]ity to (.*)$/ do |str|
-  registration.membership.billing_city.set(test_param[:billing_city] = str.nil? ? StampsTest.rand_alpha_str.capitalize  : str)
+  registration.membership.billing_city.set(test_param[:billing_city] = str.nil? ? ParamHelper.rand_alpha_str.capitalize  : str)
   step "blur_out on membership page"
 end
 
@@ -232,7 +232,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Ss]tate is (?:correct|(.*))$/
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Bb]illing [Zz]ip to (.*)$/ do |str|
-  registration.membership.billing_zip.set(test_param[:billing_zip] = str.nil? ? StampsTest.rand_alpha_str.capitalize  : str)
+  registration.membership.billing_zip.set(test_param[:billing_zip] = str.nil? ? ParamHelper.rand_alpha_str.capitalize  : str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Zz]ip is (?:correct|(.*))$/ do |str|

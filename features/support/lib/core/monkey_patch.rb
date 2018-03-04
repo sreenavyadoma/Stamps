@@ -24,4 +24,18 @@ class String
   def extract_numbers
     /\d+/.match(self).to_s
   end
+
+  def is_whole_number?(number)
+    number % 1 == 0
+  end
+
+  def is_numeric?(str)
+    begin
+      return !!Float(str.to_f)
+    rescue
+      #ignore
+    end
+    false
+  end
+
 end

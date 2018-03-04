@@ -73,23 +73,23 @@ Then /^Import Orders: Randomize data in (.*)$/ do |filename|
       if index != 0
         address = test_helper.rand_zone_1_4
         row[2] = Random.rand(1..10)
-        row[3] = StampsTest.rand_full_name
-        row[4] = StampsTest.rand_full_name
-        row[5] = StampsTest.rand_comp_name
+        row[3] = ParamHelper.rand_full_name
+        row[4] = ParamHelper.rand_full_name
+        row[5] = ParamHelper.rand_comp_name
         row[6] = address['street_address']
         row[9] = address['city']
         row[10] = address['state']
         row[11] = address['zip']
-        row[13] = StampsTest.rand_phone
-        row[14] = StampsTest.rand_email
+        row[13] = ParamHelper.rand_phone
+        row[14] = ParamHelper.rand_email
         row[15] = Random.rand(1..10)
         row[16] = Random.rand(1..10)
         row[17] = Random.rand(1..10)
         row[18] = Random.rand(1..10)
-        row[19] = StampsTest.rand_full_name
-        row[20] = StampsTest.rand_full_name
+        row[19] = ParamHelper.rand_full_name
+        row[20] = ParamHelper.rand_full_name
         row[21] = [true, false].sample
-        row[22] = StampsTest.rand_full_name
+        row[22] = ParamHelper.rand_full_name
       end
       csv_out << row
     end

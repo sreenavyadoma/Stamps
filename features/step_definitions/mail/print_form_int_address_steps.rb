@@ -68,42 +68,42 @@ end
 #todo-Rob start here for international
 Then /^[Ss]et Print form Name to (?:tab|enter|(.*))$/ do |str|
   stamps.mail.print_form.mail_to.mail_address.name.click
-  stamps.mail.print_form.mail_to.mail_address.name.set(test_param[:mail_to_name] = (str.downcase == 'random') ? StampsTest.rand_full_name : str) unless str.nil?
+  stamps.mail.print_form.mail_to.mail_address.name.set(test_param[:mail_to_name] = (str.downcase == 'random') ? ParamHelper.rand_full_name : str) unless str.nil?
 end
 
 Then /^[Ss]et Print form Company to (?:tab|enter|(.*))$/ do |str|
   stamps.mail.print_form.mail_to.mail_address.company.click
-  stamps.mail.print_form.mail_to.mail_address.company.set(test_param[:mail_to_company] = (str.downcase == 'random') ? StampsTest.rand_full_name : str) unless str.nil?
+  stamps.mail.print_form.mail_to.mail_address.company.set(test_param[:mail_to_company] = (str.downcase == 'random') ? ParamHelper.rand_full_name : str) unless str.nil?
 end
 
 Then /^[Ss]et Print form Address 1 to (?:tab|enter|(.*))$/ do |str|
   stamps.mail.print_form.mail_to.mail_address.address_1.click
-  stamps.mail.print_form.mail_to.mail_address.address_1.set(test_param[:mail_to_street_address_1] = (str.downcase == 'random') ? StampsTest.rand_full_name : str) unless str.nil?
+  stamps.mail.print_form.mail_to.mail_address.address_1.set(test_param[:mail_to_street_address_1] = (str.downcase == 'random') ? ParamHelper.rand_full_name : str) unless str.nil?
 end
 
 Then /^[Ss]et Print form Address 2 to (?:tab|enter|(.*))$/ do |str|
   stamps.mail.print_form.mail_to.mail_address.address_2.click
-  stamps.mail.print_form.mail_to.mail_address.address_2.set(test_param[:mail_to_street_address_2] = (str.downcase == 'random') ? StampsTest.rand_full_name : str) unless str.nil?
+  stamps.mail.print_form.mail_to.mail_address.address_2.set(test_param[:mail_to_street_address_2] = (str.downcase == 'random') ? ParamHelper.rand_full_name : str) unless str.nil?
 end
 
 Then /^[Ss]et Print form City to (?:tab|enter|(.*))$/ do |str|
   stamps.mail.print_form.mail_to.mail_address.city.click
-  stamps.mail.print_form.mail_to.mail_address.city.set(test_param[:mail_to_city] = (str.downcase == 'random') ? StampsTest.rand_full_name : str) unless str.nil?
+  stamps.mail.print_form.mail_to.mail_address.city.set(test_param[:mail_to_city] = (str.downcase == 'random') ? ParamHelper.rand_full_name : str) unless str.nil?
 end
 
 Then /^[Ss]et Print form Province to (?:tab|enter|(.*))$/ do |str|
   stamps.mail.print_form.mail_to.mail_address.province.click
-  stamps.mail.print_form.mail_to.mail_address.province.set(test_param[:mail_to_province] = (str.downcase == 'random') ? StampsTest.rand_full_name : str) unless str.nil?
+  stamps.mail.print_form.mail_to.mail_address.province.set(test_param[:mail_to_province] = (str.downcase == 'random') ? ParamHelper.rand_full_name : str) unless str.nil?
 end
 
 Then /^[Ss]et Print form Postal Code to (?:tab|enter|(.*))$/ do |str|
   stamps.mail.print_form.mail_to.mail_address.postal_code.click
-  stamps.mail.print_form.mail_to.mail_address.postal_code.set(test_param[:mail_to_postal_code] = (str.downcase == 'random') ? StampsTest.rand_full_name : str) unless str.nil?
+  stamps.mail.print_form.mail_to.mail_address.postal_code.set(test_param[:mail_to_postal_code] = (str.downcase == 'random') ? ParamHelper.rand_full_name : str) unless str.nil?
 end
 
 Then /^[Ss]et Print form Phone to (?:tab|enter|(.*))$/ do |str|
   stamps.mail.print_form.mail_to.mail_address.phone.click
-  stamps.mail.print_form.mail_to.mail_address.phone.set(test_param[:mail_to_phone] = (str.downcase == 'random') ? StampsTest.rand_phone : str) unless str.nil?
+  stamps.mail.print_form.mail_to.mail_address.phone.set(test_param[:mail_to_phone] = (str.downcase == 'random') ? ParamHelper.rand_phone : str) unless str.nil?
 end
 
 Then /^[Ee]xpect Print form Domestic Address Field is present$/ do

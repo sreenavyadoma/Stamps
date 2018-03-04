@@ -1,5 +1,5 @@
 module Stamps
-  class StampsTest
+  class ParamHelper
     class << self
       attr_accessor :test_env
       def rand_alpha_str(min = 2, max = 10)
@@ -48,9 +48,6 @@ module Stamps
     end
   end
 
-  module RandomGenerators
-  end
-
   module ParameterHelper #todo-Rob move ParameterHelper to String open class
     def state_fullname(state) #todo-Rob. This is wrong, fix it.
       if @states.nil?
@@ -75,21 +72,6 @@ module Stamps
         ship_date += 1 if ship_date.wday == 0 # add 1 if today is Sunday
       end
       ship_date.strftime('%m/%d/%Y')
-    end
-
-    # todo-Helper refactoring: This should be part of String Open class.
-
-    def is_whole_number?(number)
-      number % 1 == 0
-    end
-
-    def is_numeric?(str)
-      begin
-        return !!Float(str.to_f)
-      rescue
-        #ignore
-      end
-      false
     end
 
     def dollar_amount_f(str)
@@ -118,7 +100,7 @@ module Stamps
           if index == address_array.size - 1 #if this is the last item in the string, don't append a new line
             formatted_address = formatted_address + field.to_s.strip
           else #(param_hash['full_name'].downcase.include? 'random') ? test_helper.random_name : param_hash['full_name']
-            formatted_address = formatted_address + ((field.to_s.strip.downcase.include? 'random') ? StampsTest.rand_full_name : field.to_s.strip) + "\n"
+            formatted_address = formatted_address + ((field.to_s.strip.downcase.include? 'random') ? ParamHelper.rand_full_name : field.to_s.strip) + "\n"
           end
         end
       end
@@ -146,8 +128,8 @@ module Stamps
     end
 
     def address_hash_to_str(hash)
-      "#{hash['full_name'].downcase.include?('random') ? StampsTest.rand_full_name : hash['full_name']}
-#{hash['company'].downcase.include?('random') ? StampsTest.rand_comp_name : hash['company']}
+      "#{hash['full_name'].downcase.include?('random') ? ParamHelper.rand_full_name : hash['full_name']}
+#{hash['company'].downcase.include?('random') ? ParamHelper.rand_comp_name : hash['company']}
 #{hash['street_address']} #{hash['street_address_2'].nil? ? '' : hash['street_address_2']}
 #{hash['city']} #{hash['state']} #{hash['zip']}"
     end
@@ -343,7 +325,7 @@ module Stamps
       shipping['ship_from_zip'] = shipping['zip']
       shipping['state_abbrev'] = shipping['state']
       shipping['state'] = us_states[shipping['state_abbrev']]
-      shipping['street_address2'] = StampsTest.rand_suite
+      shipping['street_address2'] = ParamHelper.rand_suite
       shipping
     end
 
@@ -353,18 +335,18 @@ module Stamps
       shipping['ship_from_zip'] = shipping['zip']
       shipping['state_abbrev'] = shipping['state']
       shipping['state'] = us_states[shipping['state_abbrev']]
-      shipping['street_address2'] = StampsTest.rand_suite
+      shipping['street_address2'] = ParamHelper.rand_suite
       shipping
     end
 
     def rand_shipping_data(hash_data)
-      hash_data['first_name'] = StampsTest.rand_alpha_str.capitalize
-      hash_data['last_name'] = StampsTest.rand_alpha_str.capitalize
+      hash_data['first_name'] = ParamHelper.rand_alpha_str.capitalize
+      hash_data['last_name'] = ParamHelper.rand_alpha_str.capitalize
       hash_data['full_name'] = "#{hash_data['first_name']} #{hash_data['last_name']}"
-      hash_data['company'] = StampsTest.rand_comp_name
-      hash_data['phone'] = StampsTest.rand_phone
-      hash_data['phone_number_format'] = StampsTest.rand_phone_format
-      hash_data['email'] = StampsTest.rand_email
+      hash_data['company'] = ParamHelper.rand_comp_name
+      hash_data['phone'] = ParamHelper.rand_phone
+      hash_data['phone_number_format'] = ParamHelper.rand_phone_format
+      hash_data['email'] = ParamHelper.rand_email
       hash_data
     end
 

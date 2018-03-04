@@ -731,12 +731,8 @@ module Stamps
           dollar_amount_str(cost_field(str).text)
         end
 
-        def selection_is_numeric?(str)
-          is_numeric?(cost_str(str))
-        end
-
         def service_cost(str)
-          (selection_is_numeric?) ? cost_field(str).text.to_f : 0
+          cost_str(str).is_numeric? ? cost_field(str).text.to_f : 0
         end
 
         def has_rates?(str)
