@@ -1,5 +1,5 @@
 module Stamps
-  module WebApp
+  module WebApps
     def health
       begin
         @health = HealthCheck.new(modal_param) if @health.nil?
@@ -33,3 +33,10 @@ module Stamps
     end
   end
 end
+
+#Object.const_get("#{ENV['PLATFORM']}StampsDotCom").new(modal_param)
+
+# use subclassing to encapsulate
+# mobile setup, ask where it is running and instantiate proper object. then setup appropriate landing page.
+# Create DeviceType and OsType objects.
+#

@@ -34,8 +34,6 @@ Then /^Import Orders: Import Existing Orders$/ do
   csv_file.add_row([Time.now,import_time])
   test_config.logger.step "Import Time Saved to CSV file"
   csv_file.close
-
-
 end
 
 Then /^Import Orders: Select CSV File$/ do
