@@ -22,7 +22,8 @@ module Stamps
           dropdowns = browser.divs(id: "sdc-extraserviceswin-contentdroplist-trigger-picker")
           @handling = StampsCombobox.new(textboxes, dropdowns, :li, 0)
 
-          @save_field = StampsField.new(browser.span(id: "sdc-extraservices-savebtn-btnInnerEl"))
+          # @save_field = StampsField.new(browser.span(id: "sdc-extraservices-savebtn-btnInnerEl"))
+          @save_field = StampsField.new(browser.span(id: "sdc-extraservices-savebtn-btnWrap"))
           @close_field = StampsField.new(browser.img(css: "img[class*='x-tool-img x-tool-close']"))
 
           @security_price_field = StampsField.new(browser.label(id: "sdc-extraserviceswin-securitypricelabel"))
