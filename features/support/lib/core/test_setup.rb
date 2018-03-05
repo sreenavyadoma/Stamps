@@ -10,7 +10,7 @@ module Stamps
 
     def setup(browser_str)
       begin
-        Watir::always_locate = true
+        Watir.always_locate = true
         logger.info "Browser Selection: #{browser_str}"
         browser_version = 'Unknown'
         case(browser_str)

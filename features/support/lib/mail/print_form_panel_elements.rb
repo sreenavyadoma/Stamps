@@ -731,8 +731,12 @@ module Stamps
           dollar_amount_str(cost_field(str).text)
         end
 
+        def selection_is_numeric?(str)
+          is_numeric?(cost_str(str))
+        end
+
         def service_cost(str)
-          cost_str(str).is_numeric? ? cost_field(str).text.to_f : 0
+          (selection_is_numeric?) ? cost_field(str).text.to_f : 0
         end
 
         def has_rates?(str)
@@ -742,6 +746,8 @@ module Stamps
 
       class PrintFormService < Browser::Base
         include PrintFormBlurOut
+
+
 
         def service_selection
           (cache[:service_selection].nil? || !cache[:service_selection].present?) ? cache[:service_selection] = MailServiceSelection.new(

@@ -74,6 +74,21 @@ module Stamps
       ship_date.strftime('%m/%d/%Y')
     end
 
+    # todo-Helper refactoring: This should be part of String Open class.
+
+    def is_whole_number?(number)
+      number % 1 == 0
+    end
+
+    def is_numeric?(str)
+      begin
+        return !!Float(str.to_f)
+      rescue
+        #ignore
+      end
+      false
+    end
+
     def dollar_amount_f(str)
       /[^$]+/.match(str).to_f
     end
