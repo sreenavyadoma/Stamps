@@ -34,9 +34,9 @@ Before do  |scenario|
       test_param[:username] = credentials[:username]
       test_param[:password] = credentials[:password]
     end
+    expect(test_param[:username]).to be_truthy
+    expect(test_param[:password]).to be_truthy
   end
-  expect(test_param[:username]).to be_truthy
-  expect(test_param[:password]).to be_truthy
 end
 
 After do |scenario|
