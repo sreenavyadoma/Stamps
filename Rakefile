@@ -8,8 +8,8 @@ Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
-  t.profile = 'xxxxxxxxxx'
+Cucumber::Rake::Task.new(:alex_test) do |t|
+  t.profile = 'alex_test'
   t.cucumber_opts = "-p cuke_reports"
 end
 Cucumber::Rake::Task.new(:bvt_mail_piece_validation) do |t|
