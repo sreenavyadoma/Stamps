@@ -55,7 +55,7 @@ Then /^[Ee]xpect in [Aa]dd [Aa]dvanced [Ss]hipping [Ff]eatures[!] dialog content
 end
 
 Then /^[Ee]xpect in [Aa]dd [Aa]dvanced [Ss]hipping [Ff]eatures[!] dialog contain all content list$/ do
-  expect(stamps.orders.marketplace.shipstation.add_advanced_shipping_feature.li_1.text).to eql("Includes mobile app for shipping on the go")
+  expect(stamps.orders.marketplace.shipstation.add_advanced_shipping_feature.li_1.text).to eql("Includes _mobile app for shipping on the go")
   expect(stamps.orders.marketplace.shipstation.add_advanced_shipping_feature.li_2.text).to eql("Connect to 75+ marketplaces and channels")
   expect(stamps.orders.marketplace.shipstation.add_advanced_shipping_feature.li_3.text).to eql("One-stop rate shopping saves you money")
   expect(stamps.orders.marketplace.shipstation.add_advanced_shipping_feature.li_4.text).to eql("Real-time geo-tracking for all your shipments in one place")

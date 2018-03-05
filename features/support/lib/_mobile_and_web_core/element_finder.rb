@@ -8,7 +8,7 @@ module Stamps
     end
 
     def element(locator, max_time_in_sec)
-      if (max_time_in_sec < 0 || max_time_in_sec > ABSOLUTE_MAX_WAIT_TIME_SECONDS)
+      if max_time_in_sec < 0 || max_time_in_sec > ABSOLUTE_MAX_WAIT_TIME_SECONDS
         max_time_in_sec = ABSOLUTE_MAX_WAIT_TIME_SECONDS
       end
       begin

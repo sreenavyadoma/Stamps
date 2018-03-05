@@ -1,6 +1,6 @@
 module Stamps
   module Core
-    class StampsPageObject
+    class PageObject
       attr_reader :driver
       def initialize(driver)
         @driver = driver
@@ -13,4 +13,6 @@ module Stamps
       end
     end
   end
+
+
 end

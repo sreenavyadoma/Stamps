@@ -59,7 +59,7 @@ module Stamps
         end
 
         def li_1
-          (cache[:li_1].nil?||!cache[:li_1].present?)?cache[:li_1]=StampsField.new(browser.span(text: "Includes mobile app for shipping on the go")):cache[:li_1]
+          (cache[:li_1].nil?||!cache[:li_1].present?)?cache[:li_1]=StampsField.new(browser.span(text: "Includes _mobile app for shipping on the go")):cache[:li_1]
         end
 
         def li_2
