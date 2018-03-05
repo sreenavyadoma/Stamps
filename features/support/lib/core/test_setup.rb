@@ -43,7 +43,7 @@ module Stamps
               profile['network.http.phishy-userpass-length'] = 255
               driver = Watir::Browser.new(:firefox, :profile => profile)
             end
-            get_versions(driver.execute_script("return navigator.userAgent;"))
+            versions(driver.execute_script("return navigator.userAgent;"))
             driver.window.resize_to 1560, 1020
             driver.window.move_to 0, 0
           when :chrome
@@ -55,7 +55,7 @@ module Stamps
               #ignore
             end
             driver = Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate))
-            get_versions(driver.execute_script("return navigator.userAgent;"))
+            versions(driver.execute_script("return navigator.userAgent;"))
             driver.window.maximize
             #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
           when :ie # Launch Internet Explorer
@@ -75,7 +75,7 @@ module Stamps
             logger.message stdout
             # driver = Watir::Browser.new :safari, technology_preview: true
             driver = Watir::Browser.new :safari                                         #todo Alex uncomment once framework upgraded to Watir 6.10.2
-            get_versions(driver.execute_script("return navigator.userAgent;"))
+            versions(driver.execute_script("return navigator.userAgent;"))
             driver.window.maximize
           else
             raise "#{browser_str} is not a valid browser"
@@ -138,7 +138,7 @@ module Stamps
     end
 
     private
-    def get_versions(info)
+    def versions(info)
       self.browser_version = /[\d.]+ Safari|Edge\/.+|Firefox\/.+|Chrome\/[\d\.]+/.match(info)
       self.os_version = /(Mac OS.+?[\d_]+|Windows.+?[\d\.]+)/.match(info)
     end
