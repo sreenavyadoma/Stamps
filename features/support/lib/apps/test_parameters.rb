@@ -49,7 +49,7 @@ module Stamps
 
         @modal_param.printer = (ENV['PRINTER'].nil?) ? 'factory' : ENV['PRINTER']
 
-        @modal_param.debug = (ENV["DEBUG"].nil?) ? false : ENV["DEBUG"].downcase == "true"
+        @modal_param.debug = (ENV["VERBOSE"].nil?) ? false : ENV["VERBOSE"].downcase == "true"
 
         if @modal_param.web_app == :mail || @modal_param.web_app == :orders
           @modal_param.health_check = test_helper.to_bool ENV['HEALTHCHECK']
@@ -59,7 +59,7 @@ module Stamps
           expect(ENV['BROWSER']).to be_truthy
           expect(ENV['URL']).to be_truthy
           expect(ENV['HEALTHCHECK']).to be_truthy
-          expect(ENV['DEBUG']).to be_truthy
+          expect(ENV['VERBOSE']).to be_truthy
           expect(ENV['WEB_APP']).to be_truthy
           expect(['orders', 'mail', 'Registration']).to include(ENV['WEB_APP'].downcase), "Expected WEB_APP value to be either orders, mail or Registration. Got #{ENV['WEB_APP']}"
         end

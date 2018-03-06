@@ -1,11 +1,4 @@
 module Stamps
-  class StampsLogDecorator < SimpleDelegator
-    def initialize(log)
-      @log = log
-      super
-    end
-  end
-
   ## Deprecated
   #
   class StampsLogger

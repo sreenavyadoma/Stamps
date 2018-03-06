@@ -1,11 +1,15 @@
 module Stamps
   module StampsTest
     class << self
-      attr_accessor :driver, :scenario, :scenario_name, :firefox_profile, :browser_version, :os_version
+      attr_accessor :driver, :log, :scenario, :scenario_name, :firefox_profile, :browser_version, :os_version
 
       def initialize(scenario)
         @scenario = scenario
         @scenario_name = scenario.name
+        logger = Log4r::Logger.new(":")
+        logger.outputters = Outputter.stdout
+        @log = Stamps::Core::StampsLogDecorator.new(logger)
+        @log.verbose = ENV['VERBOSE']
       end
 
       def print_test_steps
@@ -142,12 +146,6 @@ module Stamps
         rescue
           #ignore
         end
-      end
-
-      def log
-        @log.nil? || @log.scenario_name != self.scenario_name ? @log = StampsLogDecorator.new(Log4r::Logger.new ":") : @log
-        #@log=StampsLogger.new(scenario_name) if @log.nil?||@log.scenario_name!=scenario_name # create new instance of log if scenario name changes
-        #@log
       end
 
       private
