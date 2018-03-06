@@ -187,7 +187,7 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
     test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:zone]]="zone#{zone}"
     begin
       if row_number > 0
-        test_config.logger.step"#{"#"*80} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_number}"
+        StampsTest.log.step"#{"#"*80} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_number}"
 
         # Set address to proper zone
         step "set Order Details Ship-To to random address between zone 1 and 4"  if @modal_param.web_app==:orders
@@ -196,12 +196,12 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
         # spreadsheet price for zone
 
         if row[zone_column]==nil
-          test_config.logger.step "#{"#"*10} "
-          test_config.logger.step "#{"#"*10} "
-          test_config.logger.step "#{"#"*10} Test Row #{row_number} Skipped. No rates found on sheet."
-          test_config.logger.step "#{"#"*10} "
-          test_config.logger.step "#{"#"*10} "
-          test_config.logger.step"#{"#"*80} "
+          StampsTest.log.step "#{"#"*10} "
+          StampsTest.log.step "#{"#"*10} "
+          StampsTest.log.step "#{"#"*10} Test Row #{row_number} Skipped. No rates found on sheet."
+          StampsTest.log.step "#{"#"*10} "
+          StampsTest.log.step "#{"#"*10} "
+          StampsTest.log.step"#{"#"*80} "
           test_param[:result_sheet].row(row_number).set_format(test_param[:result_sheet_columns][:zone], format)
           test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight_oz]]=row[@rate_sheet_columns[:weight_oz]]
           test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:zone]]=row[zone_column]
@@ -236,11 +236,11 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
           # Set weight per spreadsheet
 
           weight_oz=row[@rate_sheet_columns[:weight_oz]]
-          test_config.logger.step "#{"#"*10} "
-          test_config.logger.step "#{"#"*10} Weight: #{weight_oz}"
-          test_config.logger.step "#{"#"*10} Price: #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:zone]]}"
-          test_config.logger.step "#{"#"*10} "
-          test_config.logger.step"#{"#"*50}"
+          StampsTest.log.step "#{"#"*10} "
+          StampsTest.log.step "#{"#"*10} Weight: #{weight_oz}"
+          StampsTest.log.step "#{"#"*10} Price: #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:zone]]}"
+          StampsTest.log.step "#{"#"*10} "
+          StampsTest.log.step"#{"#"*50}"
 
 
           weight_oz=weight_oz.to_i
@@ -296,19 +296,19 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
             test_param[:result_sheet].row(row_number).set_format(test_param[:result_sheet_columns][:status], fail_format)
             test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:results]]="Expected #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:zone]]}, Got #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:total_ship_cost]]}"
           end
-          test_config.logger.step "#{"#"*10} "
-          test_config.logger.step "#{"#"*10} Weight: #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight]]}"
-          test_config.logger.step "#{"#"*10} Selected Service: #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:service_selected]]}"
-          test_config.logger.step "#{"#"*10} Ship-To Address: #{test_param[:address]}" if @modal_param.web_app==:mail
-          test_config.logger.step "#{"#"*10} Ship-To Address: #{test_param[:full_name]}, #{test_param[:street_address]}, #{test_param[:city]}, #{test_param[:state]}, #{test_param[:zip]}" if @modal_param.web_app==:orders
-          test_config.logger.step "#{"#"*10} #{"*"*5} Test #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:status]] } - Expected #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:zone]]}, Got #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:total_ship_cost]]} #{"*"*5}"
-          test_config.logger.step "#{"#"*10} "
+          StampsTest.log.step "#{"#"*10} "
+          StampsTest.log.step "#{"#"*10} Weight: #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight]]}"
+          StampsTest.log.step "#{"#"*10} Selected Service: #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:service_selected]]}"
+          StampsTest.log.step "#{"#"*10} Ship-To Address: #{test_param[:address]}" if @modal_param.web_app==:mail
+          StampsTest.log.step "#{"#"*10} Ship-To Address: #{test_param[:full_name]}, #{test_param[:street_address]}, #{test_param[:city]}, #{test_param[:state]}, #{test_param[:zip]}" if @modal_param.web_app==:orders
+          StampsTest.log.step "#{"#"*10} #{"*"*5} Test #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:status]] } - Expected #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:zone]]}, Got #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:total_ship_cost]]} #{"*"*5}"
+          StampsTest.log.step "#{"#"*10} "
         end
 
       end
     rescue Exception => e
-      test_config.logger.step e.message
-      test_config.logger.step e.backtrace.join("\n")
+      StampsTest.log.step e.message
+      StampsTest.log.step e.backtrace.join("\n")
       test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:error_msg]]="Zone #{zone} - Row #{row_number}: #{e.message}"
     end
   end
@@ -325,34 +325,34 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
       if row_number > 0
         if row[test_param[:result_sheet_columns][:status]].casecmp("failed")==0 || (row[test_param[:result_sheet_columns][:status]].casecmp("passed")!=0 && !row[test_param[:result_sheet_columns][:error_msg]].nil?)
           @failed_test_count +=1
-          test_config.logger.step "Zone #{zone} - Row #{row_number} Failed"
+          StampsTest.log.step "Zone #{zone} - Row #{row_number} Failed"
         end
       end
     end
   end
-  test_config.logger.step "#{"*"*80}"
-  test_config.logger.step "#{"*"*80}"
-  test_config.logger.step "Number of Failed Tests: #{@failed_test_count}"
-  test_config.logger.step "Number of Failed Tests: #{@failed_test_count}"
-  test_config.logger.step "Number of Failed Tests: #{@failed_test_count}"
-  test_config.logger.step "Number of Failed Tests: #{@failed_test_count}"
-  test_config.logger.step "Number of Failed Tests: #{@failed_test_count}"
-  test_config.logger.step "Number of Failed Tests: #{@failed_test_count}"
-  test_config.logger.step "#{"*"*80}"
-  test_config.logger.step "#{"*"*80}"
+  StampsTest.log.step "#{"*"*80}"
+  StampsTest.log.step "#{"*"*80}"
+  StampsTest.log.step "Number of Failed Tests: #{@failed_test_count}"
+  StampsTest.log.step "Number of Failed Tests: #{@failed_test_count}"
+  StampsTest.log.step "Number of Failed Tests: #{@failed_test_count}"
+  StampsTest.log.step "Number of Failed Tests: #{@failed_test_count}"
+  StampsTest.log.step "Number of Failed Tests: #{@failed_test_count}"
+  StampsTest.log.step "Number of Failed Tests: #{@failed_test_count}"
+  StampsTest.log.step "#{"*"*80}"
+  StampsTest.log.step "#{"*"*80}"
 end
 
 
 Then /^Rates: Number of failed test should be less than (\d+)$/ do |count|
-  test_config.logger.step "#{"*"*80}"
-  test_config.logger.step "Rates: Number of failed test should be less than #{count}"
+  StampsTest.log.step "#{"*"*80}"
+  StampsTest.log.step "Rates: Number of failed test should be less than #{count}"
   count=count.to_i
-  test_config.logger.step "Number of Failed Tests: #{@failed_test_count}"
-  test_config.logger.step "Number of Failed Tests: #{@failed_test_count}"
-  test_config.logger.step "Number of Failed Tests: #{@failed_test_count}"
-  test_config.logger.step "Number of Failed Tests: #{@failed_test_count}"
-  test_config.logger.step "Number of Failed Tests: #{@failed_test_count}"
-  test_config.logger.step "Number of Failed Tests: #{@failed_test_count}"
+  StampsTest.log.step "Number of Failed Tests: #{@failed_test_count}"
+  StampsTest.log.step "Number of Failed Tests: #{@failed_test_count}"
+  StampsTest.log.step "Number of Failed Tests: #{@failed_test_count}"
+  StampsTest.log.step "Number of Failed Tests: #{@failed_test_count}"
+  StampsTest.log.step "Number of Failed Tests: #{@failed_test_count}"
+  StampsTest.log.step "Number of Failed Tests: #{@failed_test_count}"
   expect(@failed_test_count).to be < count
-  test_config.logger.step "#{"*"*80}"
+  StampsTest.log.step "#{"*"*80}"
 end

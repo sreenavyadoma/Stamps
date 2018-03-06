@@ -1,5 +1,5 @@
 Then /^[Oo]n Add Funds modal, purchase 10$/ do
-  #test_config.logger.step "on Add Funds modal, purchase 10"
+  #StampsTest.log.step "on Add Funds modal, purchase 10"
   test_param[:old_balance]=stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
   stamps.navigation_bar.balance.buy_more.buy_10.select
 end

@@ -359,7 +359,7 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
     test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:group]] = "group#{group}"
     begin
       if row_number > 0
-        test_config.logger.step"#{"#" * 80} Rate Sheet: #{param_sheet}: Group #{group} - Row #{row_number}"
+        StampsTest.log.step"#{"#" * 80} Rate Sheet: #{param_sheet}: Group #{group} - Row #{row_number}"
 
         #Set weight for country weight limit check
         test_param[:pounds] = (row[@rate_sheet_columns[:weight_lb]]).to_i
@@ -390,12 +390,12 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
         # spreadsheet price for group
 
         if row[group_column] == nil
-          test_config.logger.step "#{"#" * 10} "
-          test_config.logger.step "#{"#" * 10} "
-          test_config.logger.step "#{"#" * 10} Test Row #{row_number} Skipped. No rates found on sheet."
-          test_config.logger.step "#{"#" * 10} "
-          test_config.logger.step "#{"#" * 10} "
-          test_config.logger.step"#{"#" * 80} "
+          StampsTest.log.step "#{"#" * 10} "
+          StampsTest.log.step "#{"#" * 10} "
+          StampsTest.log.step "#{"#" * 10} Test Row #{row_number} Skipped. No rates found on sheet."
+          StampsTest.log.step "#{"#" * 10} "
+          StampsTest.log.step "#{"#" * 10} "
+          StampsTest.log.step"#{"#" * 80} "
           test_param[:result_sheet].row(row_number).set_format(test_param[:result_sheet_columns][:group], format)
           test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight_lb]] = row[@rate_sheet_columns[:weight_lb]]
           test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:group]] = row[group_column]
@@ -417,7 +417,7 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
           test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:ship_to_country]] = test_param[:country]
 
           # Set weight to 0
-          test_config.logger.step "#{"#" * 10} Desired Weight: #{row[@rate_sheet_columns[:weight_lb]]}"
+          StampsTest.log.step "#{"#" * 10} Desired Weight: #{row[@rate_sheet_columns[:weight_lb]]}"
           if @modal_param.web_app == :orders
             step "set Order Details Pounds to 0"
             step "set Order Details Ounces to 0"
@@ -430,11 +430,11 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
           # Set weight per spreadsheet
           #row[@rate_sheet_columns[:weight_lb]].should_not be nil
           weight_lb = row[@rate_sheet_columns[:weight_lb]]
-          test_config.logger.step "#{"#" * 10} "
-          test_config.logger.step "#{"#" * 10} Weight: #{weight_lb}"
-          test_config.logger.step "#{"#" * 10} Price: #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:group]]}"
-          test_config.logger.step "#{"#" * 10} "
-          test_config.logger.step"#{"#" * 50}"
+          StampsTest.log.step "#{"#" * 10} "
+          StampsTest.log.step "#{"#" * 10} Weight: #{weight_lb}"
+          StampsTest.log.step "#{"#" * 10} Price: #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:group]]}"
+          StampsTest.log.step "#{"#" * 10} "
+          StampsTest.log.step"#{"#" * 50}"
 
           if test_helper.is_whole_number?(weight_lb)
             weight_lb = weight_lb.to_i
@@ -444,7 +444,7 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
             step "set Print form Pounds to #{weight_lb}" if @modal_param.web_app == :mail
           else
             weight_oz = Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_i       #AB_ORDERSAUTO_3580 - IDE bug, Weight require 2 parameters
-            #test_config.logger.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
+            #StampsTest.log.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
             test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight]] = "#{weight_oz} oz."
             test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight_lb]] = weight_oz
             step "set Order Details Ounces to #{weight_oz}" if @modal_param.web_app == :orders
@@ -455,7 +455,7 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
           # Set Service
           row[@rate_sheet_columns[:service]].should_not be nil
           service = row[@rate_sheet_columns[:service]]
-          test_config.logger.step "#{"#" * 10} Desired Service: #{service}"
+          StampsTest.log.step "#{"#" * 10} Desired Service: #{service}"
           test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:service]] = service
 
           # record execution time as time service was selected.
@@ -493,18 +493,18 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
             test_param[:result_sheet].row(row_number).set_format(test_param[:result_sheet_columns][:status], fail_format)
             test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:results]] = "Expected #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:group]]}, Got #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:total_ship_cost]]}"
           end
-          test_config.logger.step "#{"#" * 10} "
-          test_config.logger.step "#{"#" * 10} Selected Weight: #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight]]}"
-          test_config.logger.step "#{"#" * 10} Selected Service: #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:service_selected]]}"
-          test_config.logger.step "#{"#" * 10} Selected Country: #{test_param[:country]}"
-          test_config.logger.step "#{"#" * 10} #{"*" * 5} Test #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:status]] } - Expected #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:group]]}, Got #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:total_ship_cost]]} #{"*" * 5}"
-          test_config.logger.step "#{"#" * 10} "
+          StampsTest.log.step "#{"#" * 10} "
+          StampsTest.log.step "#{"#" * 10} Selected Weight: #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight]]}"
+          StampsTest.log.step "#{"#" * 10} Selected Service: #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:service_selected]]}"
+          StampsTest.log.step "#{"#" * 10} Selected Country: #{test_param[:country]}"
+          StampsTest.log.step "#{"#" * 10} #{"*" * 5} Test #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:status]] } - Expected #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:group]]}, Got #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:total_ship_cost]]} #{"*" * 5}"
+          StampsTest.log.step "#{"#" * 10} "
         end
 
       end
     rescue Exception => e
-      test_config.logger.step e.message
-      test_config.logger.step e.backtrace.join("\n")
+      StampsTest.log.step e.message
+      StampsTest.log.step e.backtrace.join("\n")
       test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:error_msg]] = "Group #{group} - Row #{row_number}: #{e.message}"
     end
   end
@@ -522,19 +522,19 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
       if row_number > 0
         if row[test_param[:result_sheet_columns][:status]].casecmp("failed") == 0 || (row[test_param[:result_sheet_columns][:status]].casecmp("passed") != 0 && !row[test_param[:result_sheet_columns][:error_msg]].nil?)
           @failed_test_count += 1
-          test_config.logger.step "Group #{group} - Row #{row_number} Failed"
+          StampsTest.log.step "Group #{group} - Row #{row_number} Failed"
         end
       end
     end
   end
-  test_config.logger.step "#{"*" * 80}"
-  test_config.logger.step "#{"*" * 80}"
-  test_config.logger.step "Number of Failed Tests: #{@failed_test_count}"
-  test_config.logger.step "Number of Failed Tests: #{@failed_test_count}"
-  test_config.logger.step "Number of Failed Tests: #{@failed_test_count}"
-  test_config.logger.step "Number of Failed Tests: #{@failed_test_count}"
-  test_config.logger.step "Number of Failed Tests: #{@failed_test_count}"
-  test_config.logger.step "Number of Failed Tests: #{@failed_test_count}"
-  test_config.logger.step "#{"*" * 80}"
-  test_config.logger.step "#{"*" * 80}"
+  StampsTest.log.step "#{"*" * 80}"
+  StampsTest.log.step "#{"*" * 80}"
+  StampsTest.log.step "Number of Failed Tests: #{@failed_test_count}"
+  StampsTest.log.step "Number of Failed Tests: #{@failed_test_count}"
+  StampsTest.log.step "Number of Failed Tests: #{@failed_test_count}"
+  StampsTest.log.step "Number of Failed Tests: #{@failed_test_count}"
+  StampsTest.log.step "Number of Failed Tests: #{@failed_test_count}"
+  StampsTest.log.step "Number of Failed Tests: #{@failed_test_count}"
+  StampsTest.log.step "#{"*" * 80}"
+  StampsTest.log.step "#{"*" * 80}"
 end

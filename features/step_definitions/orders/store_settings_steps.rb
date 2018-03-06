@@ -48,7 +48,7 @@ Then /^[Aa]dd new store service mapping$/ do
 end
 
 Then /^[Ss]et store service Mapping (\d+), Requested Services (.*), Shipping service (.*)$/ do |item_number, requested_services, shipping_service|
-  #test_config.logger.step "Store Settings: Set Requested Services to random #{requested_services}"
+  #StampsTest.log.step "Store Settings: Set Requested Services to random #{requested_services}"
   raise "Amazon Settings is not open.  Check your test workflow." if @store_settings.nil?
   service_mapping_item = @store_settings.service_mapping.item item_number.to_i
   service_mapping_item.requested_services.set(requested_services.downcase.include? 'random') ? ParamHelper.rand_alpha_numeric(4, 20) : requested_services
@@ -56,14 +56,14 @@ Then /^[Ss]et store service Mapping (\d+), Requested Services (.*), Shipping ser
 end
 
 Then /^Store Settings: Set Automatically Import New Orders to checked$/ do
-  #test_config.logger.step "Store Settings: Set Automatically Import New Orders to checked"
+  #StampsTest.log.step "Store Settings: Set Automatically Import New Orders to checked"
   raise "Amazon Settings is not open.  Check your test workflow." if @store_settings.nil?
   sleep(0.35)
   @store_settings.automatically_import_new_web_apps.orders.check
 end
 
 Then /^Store Settings: Uncheck Automatically Import New Orders$/ do
-  #test_config.logger.step "Store Settings: Uncheck Automatically Import New Orders"
+  #StampsTest.log.step "Store Settings: Uncheck Automatically Import New Orders"
   raise "Amazon Settings is not open.  Check your test workflow." if @store_settings.nil?
   sleep(0.35)
   @store_settings.automatically_import_new_web_apps.orders.uncheck

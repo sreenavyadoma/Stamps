@@ -3,7 +3,6 @@ module Stamps
     class ElementFinder
       ABSOLUTE_MAX_WAIT_TIME_SECONDS = 12
 
-      attr_reader :driver
       def initialize(driver)
         @driver = driver
       end
@@ -14,12 +13,16 @@ module Stamps
         end
         begin
           element = driver.element(locator).to_subtype
+          Watir::Wait.until
           element.wait_until_present(max_time_in_sec)
         rescue
           element = nil
         end
         element
       end
+
+      protected
+      attr_reader :driver
     end
   end
 end

@@ -8,7 +8,7 @@ Feature:  BVT tests for Orders
   @bvt_ambigious_address
   Scenario: BVT Ambigious Address
     Then add new order
-    Then set Order Details Ship-To to ambiguous address
+    Then set Order Details Ship-To ambiguous address to
       | full_name       | company  | street_address      | city          | state | zip   | country       | phone           |  email            |
       | Juan Dela Cruz | Betfair  | 1390 Market Street  | San Francisco | CA    | 94102 | United States | (415) 123-5555  | rtest@stamps.com  |
     Then Expect Exact Address Not Found module to appear

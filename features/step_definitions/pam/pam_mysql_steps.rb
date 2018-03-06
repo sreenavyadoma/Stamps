@@ -1,6 +1,6 @@
 Then /^[Ss]et PAM AppCap Overrides to Always On for all Required Fields for all users in the database$/ do
   credentials_list=user_credentials.all_user_credentials
-  test_config.logger.step "Number of users in the database: #{credentials_list.size}"
+  StampsTest.log.step "Number of users in the database: #{credentials_list.size}"
   credentials_list.each_with_index do |row, index|
     step "load PAM Customer Search page"
     step "search PAM Customer Search page for username #{row[:username]}"
@@ -17,7 +17,7 @@ Then /^[Ss]et PAM AppCap Overrides to Always On for all Required Fields for all 
 end
 
 Then /^[Ss]eeart PAM Customer Search page username from parameter file$/ do
-  step "set PAM Customer Search page username to #{test_config['username']}"
+  step "set PAM Customer Search page username to #{StampsTest['username']}"
 end
 
 Then /^[Ss]earch PAM [Cc]ustomer [Ss]earch page for username (.*)$/ do |str|
@@ -29,13 +29,13 @@ Then /^[Ss]earch PAM [Cc]ustomer [Ss]earch page for username (.*)$/ do |str|
     if pam.customer_profile_page.present?
       break
     elsif pam.customer_not_found_page.present?
-      test_config.logger.step "PAM:  #{pam.customer_not_found_page.status_reason.text}"
-      test_config.browser.back unless index==iteration-1
+      StampsTest.log.step "PAM:  #{pam.customer_not_found_page.status_reason.text}"
+      StampsTest.browser.back unless index==iteration-1
       sleep(0.25)
       pam.customer_profile_page.username.set(str)
     elsif pam.meter_info_not_available.present?
-      test_config.logger.step "PAM:  #{pam.meter_info_not_available.error_message.text}"
-      test_config.browser.back unless index==iteration-1
+      StampsTest.log.step "PAM:  #{pam.meter_info_not_available.error_message.text}"
+      StampsTest.browser.back unless index==iteration-1
     end
   end
   expect(pam.customer_not_found_page.status_reason.text).to eql("OK") if pam.customer_not_found_page.present?
@@ -139,5 +139,5 @@ end
 
 Then /^[Oo]n PAM AppCap Overrides page, Submit$/ do
   result=pam.appcap_overrides_page.submit.ok
-  test_config.logger.message " ############## #{test_param[:username]}: #{result}"
+  StampsTest.log.info " ############## #{test_param[:username]}: #{result}"
 end

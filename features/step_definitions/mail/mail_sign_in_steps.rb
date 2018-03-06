@@ -13,19 +13,19 @@ Then /^What's new: Click More Info$/ do
 end
 
 Then /^More Info: Expect More Info page is present$/ do
-  #test_config.logger.step "More Info: Expect More Info page is present"
+  #StampsTest.log.step "More Info: Expect More Info page is present"
   expectation="A second browser window was opened"
   expectation="A second browser window did not open." unless @more_info_page.present?
   expect(expectation).to eql "A second browser window was opened"
 end
 
 Then /^More Info: Close More Info page$/ do
-  #test_config.logger.step "More Info: Close More Info page"
-  test_config.logger.step @more_info_page.title
-  test_config.logger.step @more_info_page.title
-  test_config.logger.step @more_info_page.title
-  test_config.logger.step @more_info_page.title
-  test_config.logger.step @more_info_page.title
+  #StampsTest.log.step "More Info: Close More Info page"
+  StampsTest.log.step @more_info_page.title
+  StampsTest.log.step @more_info_page.title
+  StampsTest.log.step @more_info_page.title
+  StampsTest.log.step @more_info_page.title
+  StampsTest.log.step @more_info_page.title
   sleep(2)
   @more_info_page.close
   sleep(3)

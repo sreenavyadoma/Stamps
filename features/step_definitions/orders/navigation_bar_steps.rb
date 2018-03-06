@@ -1,20 +1,20 @@
 Then /^Navigation Bar: Customer Balance$/ do
-  #test_config.logger.step "Navigation Bar: Customer Balance"
+  #StampsTest.log.step "Navigation Bar: Customer Balance"
   test_param[:customer_starting_balance] = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
-  test_config.logger.message " ############## CUSTOMER BALANCE "
-  test_config.logger.message " ############## #{stamps.navigation_bar.balance.balance_amount.text}"
-  test_config.logger.message " ############## CUSTOMER BALANCE "
+  StampsTest.log.info " ############## CUSTOMER BALANCE "
+  StampsTest.log.info " ############## #{stamps.navigation_bar.balance.balance_amount.text}"
+  StampsTest.log.info " ############## CUSTOMER BALANCE "
 end
 
 Then /^Navigation Bar: Wait while balance less than (\d+)$/ do |expectation|
-  #test_config.logger.step "Navigation Bar: Wait while balance less than #{expectation}"
+  #StampsTest.log.step "Navigation Bar: Wait while balance less than #{expectation}"
   expectation = expectation.to_f
   for i in 0..30
       new_balance = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
-      test_config.logger.message "New Account Balance: $#{new_balance}"
+      StampsTest.log.info "New Account Balance: $#{new_balance}"
       sleep(0.35)
       break if new_balance > expectation
-      test_config.browser.refresh
+      StampsTest.browser.refresh
   end
 end
 

@@ -34,7 +34,7 @@ module Stamps
         expect(ENV['BROWSER']).to_not be(nil), "Browser is not defined, check your cucumber.yml entry for this test or your Jenkins job"
         @modal_param.browser_str = browser_type(ENV['BROWSER'])
 
-        @modal_param.scenario_name = test_config.scenario_name
+        @modal_param.scenario_name = StampsTest.scenario_name
         @modal_param.firefox_profile = (ENV['FIREFOX_PROFILE'].nil?) ? 'selenium' : ENV['FIREFOX_PROFILE']
         expect(ENV['WEB_APP']).not_to be_nil
         @modal_param.web_app = (ENV['WEB_APP'].downcase).to_sym
@@ -64,9 +64,9 @@ module Stamps
           expect(['orders', 'mail', 'Registration']).to include(ENV['WEB_APP'].downcase), "Expected WEB_APP value to be either orders, mail or Registration. Got #{ENV['WEB_APP']}"
         end
       end
-      @modal_param.browser = test_config.browser
-      @modal_param.logger = test_config.logger
-      @modal_param.scenario_name = test_config.scenario_name
+      @modal_param.browser = StampsTest.browser
+      @modal_param.logger = StampsTest.log
+      @modal_param.scenario_name = StampsTest.scenario_name
       @modal_param
     end
 

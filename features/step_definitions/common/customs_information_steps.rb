@@ -55,8 +55,8 @@ Then /^[Ee]xpect Customs Non-Delivery Options is (?:correct|(.*))$/ do |expectat
       break if actual == expectation
     end
   end
-  test_config.logger.message "Expectation: #{expectation}"
-  test_config.logger.message "Got: #{actual}"
+  StampsTest.log.info "Expectation: #{expectation}"
+  StampsTest.log.info "Got: #{actual}"
   expect(stamps.common_modals.customs_form.non_delivery_options.textbox.text).to eql(expectation) if modal_param.web_app == :orders
   expect(stamps.mail.print_form.mail_customs.edit_customs_form.non_delivery_options.textbox.text).to eql(expectation) if modal_param.web_app == :mail
 end

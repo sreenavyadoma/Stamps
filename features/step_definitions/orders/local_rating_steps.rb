@@ -1,14 +1,14 @@
 Then /^Verify Local Rating$/ do |table|
-  #test_config.logger.step "Verify Local Rating..."
+  #StampsTest.log.step "Verify Local Rating..."
   #results_file="local_rating_results.csv"
   order_details_form = stamps.orders.details
   parameter_array = table.hashes
   results = {}
 
   parameter_array.each_with_index do |field, index|
-    #test_config.logger.step "  --------------------------------------------------------------------------- "
-    #test_config.logger.step "  Test #{index}  ||  #{field["ship_from"]} ||  #{field["ship_to"]} ||  #{field["weight_oz"]} ||  #{field["weight_lb"]} ||  #{field["length"]} ||  #{field["height"]} ||  #{field["width"]} ||  #{field["service"]} ||  #{field["tracking"]}"
-    #test_config.logger.step "  --------------------------------------------------------------------------- "
+    #StampsTest.log.step "  --------------------------------------------------------------------------- "
+    #StampsTest.log.step "  Test #{index}  ||  #{field["ship_from"]} ||  #{field["ship_to"]} ||  #{field["weight_oz"]} ||  #{field["weight_lb"]} ||  #{field["length"]} ||  #{field["height"]} ||  #{field["width"]} ||  #{field["service"]} ||  #{field["tracking"]}"
+    #StampsTest.log.step "  --------------------------------------------------------------------------- "
     step "set Order Details Ship-From to #{field["ship_from"]}"
     step "set Order Details Ship-To Domestic address to #{field["ship_to"]}"
     step "set Order Details Ounces to #{field["weight_oz"]}"
@@ -44,9 +44,9 @@ Then /^Verify Local Rating$/ do |table|
       break if total_ship_cost == expected_total_amount
     end
 
-    #test_config.logger.step "  --------------------------------------------------------------------------- "
-    #test_config.logger.step "  Test #{index} #{(results[index])?"Passed":"Failed"}"
-    #test_config.logger.step "  --------------------------------------------------------------------------- "
+    #StampsTest.log.step "  --------------------------------------------------------------------------- "
+    #StampsTest.log.step "  Test #{index} #{(results[index])?"Passed":"Failed"}"
+    #StampsTest.log.step "  --------------------------------------------------------------------------- "
 
     actual = stamps.orders.order_details.footer.total_ship_cost.text.dollar_amount_str.to_f.round(2)
     expect(actual).to eql expected_total_amount

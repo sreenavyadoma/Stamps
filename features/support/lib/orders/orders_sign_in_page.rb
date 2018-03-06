@@ -37,7 +37,6 @@ module Stamps
         end
       end
 
-      #todo-Rob add caching
       class OrdersLandingPage < Browser::Base
         attr_reader :username_textbox, :password_textbox, :sign_in_btn, :title, :signed_in_user
 

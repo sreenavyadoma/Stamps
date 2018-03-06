@@ -17,37 +17,37 @@ Then /^[Cc]lick [Pp]ay[Pp]al [Vv]erify [Ee]mail [Bb]utton$/ do
 end
 
 Then /^PayPal Email Verification Required: Close modal$/ do
-  #test_config.logger.step "PayPal Email Verification Required: Close modal"
+  #StampsTest.log.step "PayPal Email Verification Required: Close modal"
   stamps.orders.marketplace.paypal.email_verification_modal.close
 end
 
 Then /^PayPal Email Verification Required: Send Email Verification$/ do
-  #test_config.logger.step "PayPal Email Verification Required: Send Email Verification"
+  #StampsTest.log.step "PayPal Email Verification Required: Send Email Verification"
   @verification_sent=stamps.orders.marketplace.paypal.email_verification_modal.send_email_verification
 end
 
 Then /^PayPal: Expect Email Verification Sent modal is present$/ do
-  #test_config.logger.step "PayPal: Expect Email Verification Sent modal is present"
+  #StampsTest.log.step "PayPal: Expect Email Verification Sent modal is present"
   expectation="Email Verification Sent modal is present"
   if @verification_sent.nil?
     expectation="Email Verification Sent modal is not present"
   else
     expectation="Email Verification Sent modal is not present" unless @verification_sent.present?
   end
-  #test_config.logger.step "Test #{(expectation=="Email Verification Sent modal is present")?"Passed":"Failed"}"
+  #StampsTest.log.step "Test #{(expectation=="Email Verification Sent modal is present")?"Passed":"Failed"}"
   expect(expectation).to eql "Email Verification Sent modal is present"
 end
 
 Then /^PayPal: Expect Verification Email is sent to (.*)$/ do |expectation|
-  #test_config.logger.step "PayPal: Expect Verification Email is sent to #{expectation}"
+  #StampsTest.log.step "PayPal: Expect Verification Email is sent to #{expectation}"
   actual=@verification_sent.email
   @verification_sent.close
-  #test_config.logger.step "Test #{(actual==expectation)?"Passed":"Failed"}"
+  #StampsTest.log.step "Test #{(actual==expectation)?"Passed":"Failed"}"
   expect(actual).to eql expectation
 end
 
 Then /^PayPal: Close modal$/ do
-  #test_config.logger.step "PayPal: Close modal"
+  #StampsTest.log.step "PayPal: Close modal"
   @store.close
 end
 

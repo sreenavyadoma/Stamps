@@ -248,7 +248,7 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o Country to a random country in PMEI Flat Rate price group (.*)$/ do |group|
   country_list = data_for(:country_groups_PMEI_flat_rate, {})['group' + group].values
   test_param[:country] = country_list[rand(country_list.size)]
-  test_config.logger.step "#{"#" * 10} Desired Country: #{test_param[:country]}"
+  StampsTest.log.step "#{"#" * 10} Desired Country: #{test_param[:country]}"
   step "set Order Details Domestic Ship-To Country to #{test_param[:country]}"
 end
 
@@ -269,14 +269,14 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to a random country i
     end
   end
   test_param[:country] = country_name
-  test_config.logger.step "#{"#" * 10} Desired Country: #{test_param[:country]}"
+  StampsTest.log.step "#{"#" * 10} Desired Country: #{test_param[:country]}"
   step "set Order Details Domestic Ship-To Country to #{test_param[:country]}"
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to a random country in PMI Flat Rate price group (.*)$/ do |group|
   country_list = data_for(:country_groups_PMI_flat_rate, {})['group' + group].values
   test_param[:country] = country_list[rand(country_list.size)]
-  test_config.logger.step "#{"#" * 10} Desired Country: #{test_param[:country]}"
+  StampsTest.log.step "#{"#" * 10} Desired Country: #{test_param[:country]}"
   step "set Order Details Domestic Ship-To Country to #{test_param[:country]}"
 end
 
@@ -297,7 +297,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to a random country i
     end
   end
   test_param[:country] = country_name
-  test_config.logger.step "#{"#" * 10} Desired Country: #{test_param[:country]}"
+  StampsTest.log.step "#{"#" * 10} Desired Country: #{test_param[:country]}"
   step "set Order Details Domestic Ship-To Country to #{test_param[:country]}"
 end
 
@@ -351,7 +351,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(
   step 'hide order details form Ship-To fields'
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to ambiguous address$/ do |table|
+Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Aa]mbiguous [Aa]ddress to$/ do |table|
   step 'expect Order Details is present'
   stamps.orders.order_details.ship_to.domestic.set_ambiguous(test_helper.format_address(table.hashes.first))
 end

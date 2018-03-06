@@ -55,16 +55,16 @@ end
 
 
 Then /^Manage [Ss]tores: Close Modal$/ do
-  #test_config.logger.step "Manage [Ss]tores: Close Modal"
+  #StampsTest.log.step "Manage [Ss]tores: Close Modal"
   @manage_stores.close
 end
 
 Then /^Manage [Ss]tores: Delete Row (\d+)$/ do |row|
-  #test_config.logger.step "Manage [Ss]tores: Delete Row #{row}"
+  #StampsTest.log.step "Manage [Ss]tores: Delete Row #{row}"
   step "Manage [Ss]tores: Open Modal"
   grid=@manage_stores.stores_grid
   size=grid.size
-  #test_config.logger.step "Grid Count before delete is #{size}"
+  #StampsTest.log.step "Grid Count before delete is #{size}"
   delete_modal=@manage_stores.stores_grid.delete_row row
   delete_modal.delete
   expect(delete_modal.present?).not_to be(true)
@@ -72,32 +72,32 @@ end
 
 Then /^Manage [Ss]tores: Select Store (.*)$/ do |store_name|
   test_param[:store_name]=(store_name.downcase.include? 'random')?test_param[:store_name]:store_name
-  #test_config.logger.step "Manage [Ss]tores: Select Store #{test_data[:store_name]}"
+  #StampsTest.log.step "Manage [Ss]tores: Select Store #{test_data[:store_name]}"
   raise "Unble to select store name: #{test_param[:store_name]}.  Either it's nil or does not exist in the modal.  Check your test." if test_param[:store_name].nil?
   raise "Store name can't be nil or an empty String" if test_param[:store_name].nil?||test_param[:store_name].size==0
   @manage_stores.stores_grid.select(test_param[:store_name])
 end
 
 Then /^Manage [Ss]tores: Delete All [Ss]tores$/ do
-  #test_config.logger.step "Manage [Ss]tores: Delete All [Ss]tores"
+  #StampsTest.log.step "Manage [Ss]tores: Delete All [Ss]tores"
   @manage_stores.stores_grid.delete_all
 end
 
 Then /^Manage [Ss]tores: Delete$/ do
-  #test_config.logger.step "Manage [Ss]tores: Delete"
+  #StampsTest.log.step "Manage [Ss]tores: Delete"
   @manage_stores.delete_item.delete
 end
 
 Then /^Manage [Ss]tores: Reconnect$/ do
-  #test_config.logger.step "Manage [Ss]tores: Reconnect"
+  #StampsTest.log.step "Manage [Ss]tores: Reconnect"
   @store=@manage_stores.reconnect
 end
 
 Then /^Manage [Ss]tores: Edit$/ do
-  #test_config.logger.step "Manage [Ss]tores: Edit"
+  #StampsTest.log.step "Manage [Ss]tores: Edit"
   @store_settings=@manage_stores.edit
   test_result="Store [Ss]ettings modal is #{(@store_settings.present?)?"present":"not present"} - Test #{(@store_settings.present?)?"passed":"failed"}"
-  test_config.logger.step test_result
+  StampsTest.log.step test_result
   if @store_settings.nil?||!(@store_settings.present?)
     raise test_result
   end

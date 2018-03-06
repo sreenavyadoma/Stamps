@@ -12,24 +12,13 @@ include Spreadsheet
 include DatabaseHelper
 
 Before do  |scenario|
-  test_config.scenario_name = scenario.name
-  test_config.logger.message "-"
-  test_config.logger.message "-"
-  test_config.logger.message "-"
-  test_config.logger.message "Running Tests..."
-  test_config.logger.message "-"
-  test_config.logger.message "-"
-  test_config.logger.message "- Feature: #{scenario.feature}"
-  test_config.logger.message "- Scenario: #{scenario.name}"
-  test_config.logger.message "- Tags:"
-  scenario.tags.each_with_index {|tag, index| test_config.logger.message "--Tag #{index + 1}: #{tag.name}" }
-  test_config.logger.message "- Steps:"
-  scenario.test_steps.each_with_index { |test_step, index|
-    test_config.logger.message "-- #{test_step.source.last.keyword}#{test_step.text}"
-  }
-  test_config.logger.message "-"
-  test_config.logger.message "-"
-  # MySql
+  StampsTest.initialize(scenario)
+  StampsTest.log.info "Begin..."
+  StampsTest.log.info "-"
+  StampsTest.log.info "-"
+  StampsTest.print_test_steps
+
+  # todo-Rob refactor MySql
   if modal_param.web_app == :mail || modal_param.web_app == :orders
     if test_param[:username].nil? || test_param[:username].downcase == 'default' || test_param[:username].downcase == 'mysql'
       credentials = user_credentials.fetch(scenario.tags[0].name)
@@ -42,32 +31,22 @@ Before do  |scenario|
 end
 
 After do |scenario|
-  test_config.logger.message "Teardown Tests..."
-  test_config.logger.message "-"
-  test_config.logger.message "- Feature: #{scenario.feature}"
-  test_config.logger.message "- Scenario: #{scenario.name}"
-  test_config.logger.message "- Tags:"
-  scenario.tags.each_with_index {|tag, index| test_config.logger.message "--Tag #{index + 1}: #{tag.name}" }
-  test_config.logger.message "- Steps:"
-  scenario.test_steps.each_with_index { |test_step, index|
-    test_config.logger.message "-- #{test_step.source.last.keyword}#{test_step.text}"
-  }
-  test_config.logger.message "-"
-  test_config.logger.message "-"
+  StampsTest.log.info "Teardown..."
+  StampsTest.print_test_steps
 
   #user_credentials.close if (modal_param.web_app == :mail || modal_param.web_app == :orders) && !((!ENV['USR'].nil? && ENV['USR'].downcase != 'default') && (!ENV['PW'].nil?))
 
-  test_config.teardown
+  StampsTest.teardown
   @stamps = nil
   @health = nil
   if scenario.failed?
-    test_config.logger.error "#{scenario.feature}"
-    test_config.logger.error "#{scenario.feature} #{scenario.name}:\n#{scenario.exception.message}"
-    test_config.logger.error "#{scenario.feature}"
+    StampsTest.log.error "#{scenario.feature}"
+    StampsTest.log.error "#{scenario.feature} #{scenario.name}:\n#{scenario.exception.message}"
+    StampsTest.log.error "#{scenario.feature}"
   end
-  test_config.logger.step "  --  Test Parameters"
+  StampsTest.log.step "  --  Test Parameters"
   test_param.each do |key, value|
-    test_config.logger.step "  --  #{key} : #{value}"
+    StampsTest.log.step "  --  #{key} : #{value}"
   end
 end
 

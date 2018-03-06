@@ -10,13 +10,13 @@ Then /^[Ee]xcel rate sheet is loaded$/ do
   #copy file tolocal
   expect(stamps.rating.spreadsheet.update).to be(true)
   @rate_file_loc="#{data_for(:rates_test, {})['test_dir']}\\#{rate_file}"
-  test_config.logger.step "Rate File: #{@rate_file_loc}"
+  StampsTest.log.step "Rate File: #{@rate_file_loc}"
   expect("Rate File: #{@rate_file_loc}").to eql "Rate File does not exist!" unless File.exist?(@rate_file_loc)
   begin
     @rate_file=Spreadsheet.open(@rate_file_loc)
   rescue Exception => e
-    test_config.logger.step e.message
-    test_config.logger.step e.backtrace.join("\n")
+    StampsTest.log.step e.message
+    StampsTest.log.step e.backtrace.join("\n")
     expect(e.message).to eql "Excel Rate File is opened by someone at a computer somewhere. Close the excel sheet before running the test again."
   end
   @failed_test_count=0

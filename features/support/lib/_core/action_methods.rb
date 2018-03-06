@@ -1,7 +1,6 @@
 module Stamps
   module Core
     class ActionMethods
-      attr_reader :driver, :finder
       def initialize(driver, finder)
         @driver = driver
         @finder = finder
@@ -49,6 +48,10 @@ module Stamps
         # set a flag that enables framework to throw an exception or log error. throwOrLogError
         raise "#{method_name_from} - Unable to locate element with locator #{locator.to_s}"
       end
+
+      protected
+      attr_reader :driver, :finder
+
     end
   end
 end

@@ -1,8 +1,17 @@
 module Stamps
+  class StampsLogDecorator < SimpleDelegator
+    def initialize(log)
+      @log = log
+      super
+    end
+  end
+
+  ## Deprecated
+  #
   class StampsLogger
     attr_accessor :scenario_name
 
-    def initialize(scenario_name='Test Scenario')
+    def initialize(scenario_name = 'Test Scenario')
       @scenario_name = scenario_name
       @logger = Log4r::Logger.new ":"
       @logger.outputters = Outputter.stdout
@@ -38,7 +47,7 @@ module Stamps
     def info(message)
       begin
         message = repeat message, 25 if message.size == 1
-        (@logger.info "#{scenario_name} :: #{message}") if StampsTestSetup.debug
+        (@logger.info "#{scenario_name} :: #{message}") if StampsTest.debug
       rescue
         # ignore
       end

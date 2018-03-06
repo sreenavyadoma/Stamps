@@ -88,21 +88,21 @@ Then /^[Oo]n PAM ACH Purchase page, set Amount to \$(\d+)\.(\d+)$/ do |dollars, 
 end
 
 Then /^[Oo]n PAM Customer Profile page, get Available Mail Amount$/ do
-  test_config.logger.message "PAM: Available Mail ############################"
-  test_config.logger.message "PAM: Available Mail ############################"
-  test_config.logger.message "PAM: Available Mail ############################"
-  test_config.logger.message "PAM: Available Mail $#{@customer_profile.available_postage.text}"
-  test_config.logger.message "PAM: Available Mail $#{@customer_profile.available_postage.text}"
-  test_config.logger.message "PAM: Available Mail $#{@customer_profile.available_postage.text}"
-  test_config.logger.message "PAM: Available Mail ############################"
-  test_config.logger.message "PAM: Available Mail ############################"
-  test_config.logger.message "PAM: Available Mail ############################"
+  StampsTest.log.info "PAM: Available Mail ############################"
+  StampsTest.log.info "PAM: Available Mail ############################"
+  StampsTest.log.info "PAM: Available Mail ############################"
+  StampsTest.log.info "PAM: Available Mail $#{@customer_profile.available_postage.text}"
+  StampsTest.log.info "PAM: Available Mail $#{@customer_profile.available_postage.text}"
+  StampsTest.log.info "PAM: Available Mail $#{@customer_profile.available_postage.text}"
+  StampsTest.log.info "PAM: Available Mail ############################"
+  StampsTest.log.info "PAM: Available Mail ############################"
+  StampsTest.log.info "PAM: Available Mail ############################"
 end
 
 Then /^[Ss]end username to standard out$/ do
-  test_config.logger.step " ############## NEW USER ID "
-  test_config.logger.message " ############## #{test_param[:username]}"
-  test_config.logger.message " ############## NEW USER ID "
+  StampsTest.log.step " ############## NEW USER ID "
+  StampsTest.log.info " ############## #{test_param[:username]}"
+  StampsTest.log.info " ############## NEW USER ID "
 end
 
 

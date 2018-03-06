@@ -42,14 +42,14 @@ end
 Then /^Label Unavailable: Expect Visible$/ do
   case @reprint_modal
     when LabelUnavailable
-      test_config.logger.step @reprint_modal.message
+      StampsTest.log.step @reprint_modal.message
       label_unavailable_visible = @reprint_modal.present?
-      #test_config.logger.step "Test #{(label_unavailable_visible)?"Passed":"Failed"}"
+      #StampsTest.log.step "Test #{(label_unavailable_visible)?"Passed":"Failed"}"
       @reprint_modal.ok
       @reprint_modal.close
       expect(label_unavailable_visible).to be(true)
     else
-      #test_config.logger.step "Test #{(@reprint_modal.present?)?"Passed":"Failed"}"
+      #StampsTest.log.step "Test #{(@reprint_modal.present?)?"Passed":"Failed"}"
       expect(@reprint_modal).to be_present
   end
 end
