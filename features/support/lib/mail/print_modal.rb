@@ -130,7 +130,7 @@ module Stamps
           begin
             x_button.click
           rescue
-            #ignore
+            # ignore
           end
         end
 
@@ -158,7 +158,7 @@ module Stamps
               close
             end
           rescue
-            #ignore
+            # ignore
           end
           @printing_error
         end

@@ -92,7 +92,7 @@ module Stamps
                     logger.info "Selection #{box.text} - #{(box.text.include? service)?"was selected": "not selected"}"
                     break if box.text.include? service
                   rescue
-                    #ignore
+                    # ignore
                   end
                 }
                 logger.info "#{service} selected."
@@ -210,7 +210,7 @@ module Stamps
           begin
             return browser.divs(css: "[id^=dataview][class*=x-window-item]>[class=x-dataview-item][role=option]").size
           rescue
-            #ignore
+            # ignore
           end
           0
         end
@@ -422,7 +422,7 @@ module Stamps
                 checkbox.check
                 break if checkbox.checked?
               rescue
-                #ignore
+                # ignore
               end
             end
           end

@@ -45,7 +45,7 @@ Then /^[Ee]xpect [Mm]arketplace [Dd]ataview [Cc]ount is (greater|less|equal) (?:
     when /equal/
       expect(stamps.orders.marketplace.add_your_store_modal.dataview.store_count).to eql count.to_i
     else
-      #ignore
+      # ignore
   end
 end
 #

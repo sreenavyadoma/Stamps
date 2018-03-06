@@ -20,7 +20,7 @@ module Stamps
                 StampsField.new(button).click
               end
             rescue
-              #ignore
+              # ignore
             end
           end
         end
@@ -32,7 +32,7 @@ module Stamps
                 StampsField.new(button).click
               end
             rescue
-              #ignore
+              # ignore
             end
           end
         end
@@ -76,7 +76,7 @@ module Stamps
                 ship_to_area1.double_click
                 return auto_suggest_box if auto_suggest_box.present?
               rescue
-                #ignore
+                # ignore
               end
             }
           end
@@ -153,7 +153,7 @@ module Stamps
 
                 break if (exact_address_not_found_field.present?) || (form.validate_address_link.present?)
               rescue
-                #ignore
+                # ignore
               end
             }
             #single_order_form.hide_ship_to
@@ -204,7 +204,7 @@ module Stamps
             elsif address_arr.size == 4 || address_arr.size == 5
               address_arr[2].strip
             else
-              #ignore
+              # ignore
             end
           end
 
@@ -216,7 +216,7 @@ module Stamps
             elsif address_arr.size == 5
               @city_arr = address_arr[4].strip
             else
-              #ignore
+              # ignore
             end
             last_line_arr = @city_arr.split(",")
             expect(last_line_arr.size).to equal 2
@@ -333,7 +333,7 @@ module Stamps
                 field.scroll_into_view.click
                 break if textbox.text.include?(str)
               rescue
-                #ignore
+                # ignore
               end
             end
             textbox.text
@@ -657,7 +657,7 @@ module Stamps
                 dropdown.click unless label.present?
                 return label.text if label.present?
               rescue
-                #ignore
+                # ignore
               end
               expect("Unable to fetch inline cost for #{selection}").to eql "Details - Tracking inline cost"
             end
@@ -674,7 +674,7 @@ module Stamps
                   return qtip
                 end
               rescue
-                #ignore
+                # ignore
               end
             }
           end
@@ -854,7 +854,7 @@ module Stamps
                 cost = cost_label.text
                 logger.info "Cost is #{cost}"
               rescue
-                #ignore
+                # ignore
               end
               break unless cost.include? "$"
             end
@@ -941,7 +941,7 @@ module Stamps
                 field.scroll_into_view.click
                 break if textbox.text.include?(str)
               rescue
-                #ignore
+                # ignore
               end
             end
             textbox.text
@@ -959,7 +959,7 @@ module Stamps
                   return service_cost.to_f.round(2)
                 end
               rescue
-                #ignore
+                # ignore
               end
             end
           end

@@ -11,7 +11,7 @@ Then /^[Ss]elect [Ff]ilter [Pp]anel tab (.*)$/ do |str|
     when /Awaiting Shipment/
       stamps.orders.filter_panel.awaiting_shipment.select
     else
-      #ignore
+      # ignore
   end
   step "expect selected filter is #{str}"
 end

@@ -9,7 +9,7 @@ module Stamps
               browser.select_list(:id, "ShipCountry").option(text: country).when_present.select
               browser.select_list(:id, "ShipCountry").option(text: country).when_present.select
             rescue
-              #ignore
+              # ignore
             end
           end
         end
@@ -20,7 +20,7 @@ module Stamps
               browser.select_list(:id, "ShipState_dropdown").option(text: state).when_present.select
               browser.select_list(:id, "ShipState_dropdown").option(text: state).when_present.select
             rescue
-              #ignore
+              # ignore
             end
           end
         end

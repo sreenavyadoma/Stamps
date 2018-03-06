@@ -113,7 +113,7 @@ module Stamps
             end
             return window if window.present?
           rescue
-            #ignore
+            # ignore
           end
         end
         raise "Unable to open Mail Print Modal"
@@ -150,7 +150,7 @@ module Stamps
 
             print.click
           rescue
-            #ignore
+            # ignore
           end
         end
 

@@ -606,7 +606,7 @@ module Stamps
               expect(incomplete_order_modal).to_not be_present, incomplete_order_modal.error_message_p2
               expect(multi_order_some_error).to_not be_present, multi_order_some_error.error_message_p2
             rescue
-              #ignore
+              # ignore
             end
           end
           nil
@@ -685,7 +685,7 @@ module Stamps
               print_order_btn.click
               sleep(0.35)
             rescue
-              #ignore
+              # ignore
             end
 
             if install_plugin_error.present?
@@ -855,7 +855,7 @@ module Stamps
               raise "Server Error: \n#{server_error.text}" if server_error.present?
 
             rescue
-              #ignore
+              # ignore
             end
           end
           raise "Server Error: \n#{server_error.text}" if server_error.present?

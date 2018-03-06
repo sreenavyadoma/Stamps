@@ -17,7 +17,7 @@ module Stamps
         begin
           window_x_button.wait_until_present
         rescue
-          #ignore
+          # ignore
         end
       end
 

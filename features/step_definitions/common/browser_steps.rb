@@ -12,7 +12,7 @@ Then /^Refresh the browser$/ do
     StampsTest.browser.refresh
     sleep(2)
   rescue
-    #ignore
+    # ignore
   end
 end
 
@@ -20,7 +20,7 @@ Then /^[Pp]ause for (\d+) [Ss]econd(?:|s)?$/ do |seconds|
   begin
     sleep(seconds.to_i)
   rescue
-    #ignore
+    # ignore
   end
 end
 

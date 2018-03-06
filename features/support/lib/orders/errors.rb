@@ -87,7 +87,7 @@ module Stamps
               continue_button.click
               break unless continue_button.present?
             rescue
-              #ignore
+              # ignore
             end
           }
           OrdersPrintModal.new(param)
@@ -100,7 +100,7 @@ module Stamps
               cancel_button.click
               break unless cancel_button.present?
             rescue
-              #ignore
+              # ignore
             end
           }
         end
@@ -121,7 +121,7 @@ module Stamps
           begin
             ok_button.wait_until_present
           rescue
-            #ignore
+            # ignore
           end
           self
         end

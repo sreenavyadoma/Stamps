@@ -22,7 +22,7 @@ module Stamps
             field_helper.click left_label
             return true if label_selected? left_label
           rescue
-            #ignore
+            # ignore
           end
         }
         false
@@ -34,7 +34,7 @@ module Stamps
             field_helper.click right_label
             return true if label_selected? right_label
           rescue
-            #ignore
+            # ignore
           end
         }
         false

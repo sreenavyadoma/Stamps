@@ -63,7 +63,7 @@ Then /^[Ss]elect [Gg]rid [Tt]oolbar [Mm]ore [Aa]ctions item ([Ss]plit [Oo]rder|[
     when /apply bulk action/
       #stamps.orders.orders_toolbar.toolbar_more_actions.select_apply_bulk_action
     else
-      #ignore
+      # ignore
   end
 end
 

@@ -24,7 +24,7 @@ Then /^[Ee]xpect Ship Cost equals Total amount$/ do
     begin
       break if stamps.orders.orders_grid.grid_column(:ship_cost).data(test_param[:order_id].values.last).eql?(stamps.orders.order_details.footer.total_ship_cost.text.dollar_amount_str.to_f.round(2))
     rescue
-      #ignore
+      # ignore
     end
   end
   expect(stamps.orders.orders_grid.grid_column(:ship_cost).data(test_param[:order_id].values.last)).to eql(stamps.orders.order_details.footer.total_ship_cost.text.dollar_amount_str.to_f.round(2))

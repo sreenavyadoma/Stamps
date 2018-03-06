@@ -21,7 +21,7 @@ module Stamps
               sleep(0.35)
               break unless button.present?
             rescue
-              #ignore
+              # ignore
             end
           end
         end
@@ -59,7 +59,7 @@ module Stamps
               sleep(0.35)
               break unless button.present?
             rescue
-              #ignore
+              # ignore
             end
           end
         end

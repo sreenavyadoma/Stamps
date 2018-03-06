@@ -97,7 +97,7 @@ module Stamps
             begin
               return browser.tables(css: '[id^=ordersGrid-][id$=-body] table').size if browser.tables(css: '[id^=ordersGrid-][id$=-body] table').size > 0
             rescue
-              #ignore
+              # ignore
             end
           end
           0

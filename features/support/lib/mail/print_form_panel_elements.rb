@@ -436,7 +436,7 @@ module Stamps
                 show_all_print_media
               end
             rescue
-              #ignore
+              # ignore
             end
             sleep(0.15)
           end
@@ -501,7 +501,7 @@ module Stamps
                 blur_out
                 break if textbox.text == str
               rescue
-                #ignore
+                # ignore
               end
             end
           end unless textbox.text == str
@@ -698,7 +698,7 @@ module Stamps
                 return manage_shipping_address if manage_shipping_address.present?
                 dropdown.click unless selection_field(str).present?
               rescue
-                #ignore
+                # ignore
               end
             end
           else
@@ -829,7 +829,7 @@ module Stamps
                 return service_cost
               end
             rescue
-              #ignore
+              # ignore
             end
           end
           blur_out
@@ -848,7 +848,7 @@ module Stamps
                 return tooltip
               end
             rescue
-              #ignore
+              # ignore
             end
           }
           blur_out
@@ -911,7 +911,7 @@ module Stamps
               selection_field(str).click
               return selection_field(str) if textbox.text.include?(str)
             rescue
-              #ignore
+              # ignore
             end
           end
           nil
@@ -943,7 +943,7 @@ module Stamps
               field.click
               return textbox.text if textbox.text.include?(selection)
             rescue
-              #ignore
+              # ignore
             end
           end
           textbox.text

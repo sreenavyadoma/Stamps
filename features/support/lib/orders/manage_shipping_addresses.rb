@@ -57,7 +57,7 @@ module Stamps
               return grid_row_item.attribute_value("class").include?('selected') if row == index + 1
             end
           rescue
-            #ignore
+            # ignore
           end
           false
         end
@@ -154,7 +154,7 @@ module Stamps
               cell.click
               break if checked?(row_num)
             rescue
-              #ignore
+              # ignore
             end
           end
         end

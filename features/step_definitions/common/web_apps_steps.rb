@@ -85,7 +85,7 @@ Then /^[Ss]ign out$/ do
     step "Navigation Bar: Customer Balance"
     stamps.navigation_bar.username.sign_out
   rescue
-    #ignore
+    # ignore
   end
 end
 

@@ -29,80 +29,66 @@ module Stamps
         begin
           Watir.always_locate = true
           Selenium::WebDriver.log.level = :warn
-          log.info "Browser Selection: #{browser}"
           case(browser)
             when :edge # Launch Microsoft Edge
               begin
                 stdout, stdeerr, status = Open3.capture3("taskkill /im MicrosoftEdge.exe /f")
-                log.error status
-                log.error stdout
               rescue
-                #ignore
+                # ignore
               end
               capabilities = Selenium::WebDriver::Remote::Capabilities.edge(accept_insecure_certs: true)
-              driver = Watir::Browser.new(:edge, :desired_capabilities => capabilities)
-              driver.window.maximize
-              self.browser_version = /Edge\/.+/.match(driver.execute_script("return navigator.userAgent;"))
+              self.driver = Watir::Browser.new(:edge, :desired_capabilities => capabilities)
+              #self.driver.window.maximize
+              #self.browser_version = /Edge\/.+/.match(driver.execute_script("return navigator.userAgent;"))
             when :firefox # Launch Firefox
               begin
                 stdout, stdeerr, status = Open3.capture3("taskkill /im firefox.exe /f")
-                log.error status
-                log.error stdout
               rescue
-                #ignore
+                # ignore
               end
               if firefox_profile.nil?
                 capabilities = Selenium::WebDriver::Remote::Capabilities.firefox(accept_insecure_certs: true)
-                driver = Watir::Browser.new(:firefox, :desired_capabilities => capabilities)
+                self.driver = Watir::Browser.new(:firefox, :desired_capabilities => capabilities)
               else
                 profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(firefox_profile)
                 profile.assume_untrusted_certificate_issuer = true
                 profile['network.http.phishy-userpass-length'] = 255
-                driver = Watir::Browser.new(:firefox, :profile => profile)
+                self.driver = Watir::Browser.new(:firefox, :profile => profile)
               end
-              versions(driver.execute_script("return navigator.userAgent;"))
-              driver.window.resize_to 1560, 1020
-              driver.window.move_to 0, 0
+              #versions(self.driver.execute_script("return navigator.userAgent;"))
+              self.driver.window.resize_to 1560, 1020
+              self.driver.window.move_to 0, 0
             when :chrome
               begin
                 stdout, stdeerr, status = Open3.capture3("taskkill /im chrome.exe /f")
-                log.error status
-                log.error stdout
               rescue
-                #ignore
+                # ignore
               end
-              driver = Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate))
-              versions(driver.execute_script("return navigator.userAgent;"))
-              driver.window.maximize
+              self.driver = Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate))
+              #versions(driver.execute_script("return navigator.userAgent;"))
+              self.driver.window.maximize
             #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
             when :ie # Launch Internet Explorer
               begin
                 stdout, stdeerr, status = Open3.capture3("taskkill /im iexplore.exe /f")
-                log.info status
-                log.info stdout
               rescue
-                #ignore
+                # ignore
               end
-              driver = Watir::Browser.new :ie
-              driver.window.maximize
+              self.driver = Watir::Browser.new :ie
+              #driver.window.maximize
             when :safari
+              begin
+              rescue
+                # ignore
+              end
               stdout, status = Open3.capture3("killall 'Safari Technology Preview'")    #todo Alex uncomment once framework upgraded to Watir 6.10.2
               #stdout, status = Open3.capture3("killall Safari")
-              log.info status
-              log.info stdout
               driver = Watir::Browser.new :safari, technology_preview: true
-              #driver = Watir::Browser.new :safari                                         #todo Alex uncomment once framework upgraded to Watir 6.10.2
-              versions(driver.execute_script("return navigator.userAgent;"))
-              driver.window.maximize
             else
-              raise ArgumentError, "#{browser} is not a valid browser"
+              raise ArgumentError, "#{browser} is not a valid browser selection"
           end
 
-          log.info "-"
-          log.info "BROWSER: #{self.browser_version.to_s.gsub("/", " ")}"
-          log.info "OS: #{self.os_version.to_s.gsub("/", " ")}" if self.os_version
-          log.info "-"
-          driver
+          self.driver
         rescue StandardError => e
           err = e.backtrace.join("\n")
           log.error e.message
@@ -134,7 +120,7 @@ module Stamps
         begin
           browser.quit
         rescue
-          #ignore
+          # ignore
         end
         log.info "#{@browser_str} closed."
       end
@@ -144,7 +130,7 @@ module Stamps
         begin
           browser.cookies.clear
         rescue
-          #ignore
+          # ignore
         end
       end
 
@@ -157,3 +143,20 @@ module Stamps
   end
 end
 
+=begin
+
+
+          log.info "Browser Selection: #{browser}"
+
+              #driver = Watir::Browser.new :safari                                         #todo Alex uncomment once framework upgraded to Watir 6.10.2
+              #versions(driver.execute_script("return navigator.userAgent;"))
+              #driver.window.maximize #todo-Rob move elsewhere
+
+
+          #log.info "-"
+          #log.info "BROWSER: #{self.browser_version.to_s.gsub("/", " ")}"
+          #log.info "OS: #{self.os_version.to_s.gsub("/", " ")}" if self.os_version
+          #log.info "-"
+
+
+=end

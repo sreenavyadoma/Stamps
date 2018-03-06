@@ -177,7 +177,7 @@ module Stamps
               sleep(0.15)
               break if textbox.text.include?(str)
             rescue
-              #ignore
+              # ignore
             end
           end
           textbox.text
@@ -196,7 +196,7 @@ module Stamps
                 return tooltip if tooltip.include? "<strong>"
               end
             rescue
-              #ignore
+              # ignore
             end
           end
           blur_out
@@ -223,7 +223,7 @@ module Stamps
                   end
                 end
               rescue
-                #ignore
+                # ignore
               end
             else
               sleep(0.35)
@@ -261,7 +261,7 @@ module Stamps
                 return service_cost.to_f.round(2)
               end
             rescue
-              #ignore
+              # ignore
             end
           end
         end

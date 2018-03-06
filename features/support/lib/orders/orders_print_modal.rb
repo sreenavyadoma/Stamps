@@ -454,7 +454,7 @@ module Stamps
               sleep(0.25)
               return true unless print_button.present?
             rescue
-              #ignore
+              # ignore
             end
           end
           false

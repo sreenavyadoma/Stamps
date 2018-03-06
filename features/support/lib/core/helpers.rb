@@ -84,7 +84,7 @@ module Stamps
       begin
         return !!Float(str.to_f)
       rescue
-        #ignore
+        # ignore
       end
       false
     end

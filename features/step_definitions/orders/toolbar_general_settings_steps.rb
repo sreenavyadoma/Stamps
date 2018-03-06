@@ -66,7 +66,7 @@ Then /^set general settings logoff to (.*)$/ do |str|
     when /2 hours/
       stamps.orders.modals.orders_settings_modal.general_tab.log_off.two_hours
     else
-      #ignore
+      # ignore
   end
 end
 

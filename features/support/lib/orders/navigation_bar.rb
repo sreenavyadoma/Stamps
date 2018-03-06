@@ -432,7 +432,7 @@ module Stamps
             sign_out_link.click
             break unless signed_in_username.present?
           rescue
-            #ignore
+            # ignore
           end
         end
         logger.info "#{ENV["SIGNED_IN_USER"]}#{(signed_in_username.present?) ? " - sign-out failed" : " was signed out.  Goodbye."}"

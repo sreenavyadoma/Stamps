@@ -11,7 +11,7 @@ Then /^[Ss]elect [Gg]rid [Tt]oolbar [Mm]ove [Mm]enu item (.*)$/ do |str|
     when /Move to Awaiting Shipment/
       stamps.orders.orders_toolbar.toolbar_move.move_to_awaiting_shipment
     else
-      #ignore
+      # ignore
   end
 end
 
