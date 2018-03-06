@@ -14,7 +14,7 @@ Then /^Navigation Bar: Wait while balance less than (\d+)$/ do |expectation|
       StampsTest.log.info "New Account Balance: $#{new_balance}"
       sleep(0.35)
       break if new_balance > expectation
-      StampsTest.browser.refresh
+      StampsTest.driver.refresh
   end
 end
 

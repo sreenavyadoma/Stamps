@@ -5,6 +5,10 @@ Feature:  BVT tests for Orders
   Background:
     Given a valid user is signed in to Web Apps
 
+  @authentication
+  Scenario: Orders Authentication Test
+    Then Sign out
+
   @bvt_ambigious_address
   Scenario: BVT Ambigious Address
     Then add new order

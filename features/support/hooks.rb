@@ -17,17 +17,6 @@ Before do  |scenario|
   StampsTest.log.info "-"
   StampsTest.log.info "-"
   StampsTest.print_test_steps
-
-  # todo-Rob refactor MySql
-  if modal_param.web_app == :mail || modal_param.web_app == :orders
-    if test_param[:username].nil? || test_param[:username].downcase == 'default' || test_param[:username].downcase == 'mysql'
-      credentials = user_credentials.fetch(scenario.tags[0].name)
-      test_param[:username] = credentials[:username]
-      test_param[:password] = credentials[:password]
-    end
-    expect(test_param[:username]).to be_truthy
-    expect(test_param[:password]).to be_truthy
-  end
 end
 
 After do |scenario|

@@ -64,7 +64,7 @@ module Stamps
           expect(['orders', 'mail', 'Registration']).to include(ENV['WEB_APP'].downcase), "Expected WEB_APP value to be either orders, mail or Registration. Got #{ENV['WEB_APP']}"
         end
       end
-      @modal_param.browser = StampsTest.browser
+      @modal_param.browser = StampsTest.driver
       @modal_param.logger = StampsTest.log
       @modal_param.scenario_name = StampsTest.scenario_name
       @modal_param

@@ -30,12 +30,12 @@ Then /^[Ss]earch PAM [Cc]ustomer [Ss]earch page for username (.*)$/ do |str|
       break
     elsif pam.customer_not_found_page.present?
       StampsTest.log.step "PAM:  #{pam.customer_not_found_page.status_reason.text}"
-      StampsTest.browser.back unless index==iteration-1
+      StampsTest.driver.back unless index==iteration-1
       sleep(0.25)
       pam.customer_profile_page.username.set(str)
     elsif pam.meter_info_not_available.present?
       StampsTest.log.step "PAM:  #{pam.meter_info_not_available.error_message.text}"
-      StampsTest.browser.back unless index==iteration-1
+      StampsTest.driver.back unless index==iteration-1
     end
   end
   expect(pam.customer_not_found_page.status_reason.text).to eql("OK") if pam.customer_not_found_page.present?

@@ -30,6 +30,7 @@ module Stamps
           Watir.always_locate = true
           Selenium::WebDriver.log.level = :warn
           case(browser)
+
             when :edge # Launch Microsoft Edge
               begin
                 stdout, stdeerr, status = Open3.capture3("taskkill /im MicrosoftEdge.exe /f")
@@ -38,8 +39,8 @@ module Stamps
               end
               capabilities = Selenium::WebDriver::Remote::Capabilities.edge(accept_insecure_certs: true)
               self.driver = Watir::Browser.new(:edge, :desired_capabilities => capabilities)
-              #self.driver.window.maximize
-              #self.browser_version = /Edge\/.+/.match(driver.execute_script("return navigator.userAgent;"))
+              self.driver.window.maximize
+
             when :firefox # Launch Firefox
               begin
                 stdout, stdeerr, status = Open3.capture3("taskkill /im firefox.exe /f")
@@ -55,9 +56,9 @@ module Stamps
                 profile['network.http.phishy-userpass-length'] = 255
                 self.driver = Watir::Browser.new(:firefox, :profile => profile)
               end
-              #versions(self.driver.execute_script("return navigator.userAgent;"))
               self.driver.window.resize_to 1560, 1020
               self.driver.window.move_to 0, 0
+
             when :chrome
               begin
                 stdout, stdeerr, status = Open3.capture3("taskkill /im chrome.exe /f")
@@ -65,9 +66,9 @@ module Stamps
                 # ignore
               end
               self.driver = Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate))
-              #versions(driver.execute_script("return navigator.userAgent;"))
               self.driver.window.maximize
             #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
+
             when :ie # Launch Internet Explorer
               begin
                 stdout, stdeerr, status = Open3.capture3("taskkill /im iexplore.exe /f")
@@ -75,19 +76,18 @@ module Stamps
                 # ignore
               end
               self.driver = Watir::Browser.new :ie
-              #driver.window.maximize
+              driver.window.maximize
+
             when :safari
               begin
+                stdout, status = Open3.capture3("killall 'Safari Technology Preview'")    #todo Alex uncomment once framework upgraded to Watir 6.10.2
               rescue
                 # ignore
               end
-              stdout, status = Open3.capture3("killall 'Safari Technology Preview'")    #todo Alex uncomment once framework upgraded to Watir 6.10.2
-              #stdout, status = Open3.capture3("killall Safari")
-              driver = Watir::Browser.new :safari, technology_preview: true
+              self.driver = Watir::Browser.new :safari, technology_preview: true
             else
               raise ArgumentError, "#{browser} is not a valid browser selection"
           end
-
           self.driver
         rescue StandardError => e
           err = e.backtrace.join("\n")
@@ -157,6 +157,19 @@ end
           #log.info "BROWSER: #{self.browser_version.to_s.gsub("/", " ")}"
           #log.info "OS: #{self.os_version.to_s.gsub("/", " ")}" if self.os_version
           #log.info "-"
+
+
+              #self.driver.window.maximize
+              #self.browser_version = /Edge\/.+/.match(driver.execute_script("return navigator.userAgent;"))
+
+
+#stdout, status = Open3.capture3("killall Safari")
+
+              #versions(driver.execute_script("return navigator.userAgent;"))
+              #versions(self.driver.execute_script("return navigator.userAgent;"))
+
+
+
 
 
 =end

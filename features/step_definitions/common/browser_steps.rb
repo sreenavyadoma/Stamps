@@ -9,7 +9,7 @@ end
 
 Then /^Refresh the browser$/ do
   begin
-    StampsTest.browser.refresh
+    StampsTest.driver.refresh
     sleep(2)
   rescue
     # ignore

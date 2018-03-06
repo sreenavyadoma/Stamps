@@ -1,5 +1,5 @@
 module Stamps
-  class ParamHelper
+  module ParamHelper
     class << self
       attr_accessor :test_env
       def rand_alpha_str(min = 2, max = 10)
