@@ -22,9 +22,9 @@ Before do  |scenario|
   test_config.logger.message "---------------- Feature: #{scenario.feature}"
   test_config.logger.message "---------------- Scenario: #{scenario.name}"
   test_config.logger.message "---------------- Tags:"
-  scenario.tags.each_with_index {|tag, index| test_config.logger.message "---------------- Tag #{index + 1}: #{tag.name}" }
+  #scenario.tags.each_with_index {|tag, index| test_config.logger.message "---------------- Tag #{index + 1}: #{tag.name}" }
   test_config.logger.message "---------------- Steps:"
-  scenario.test_steps.each_with_index { |test_step, index| test_config.logger.message "---------------- Step #{index + 1}: #{test_step.source.last.keyword}#{test_step.source.last.name}"}
+  #scenario.test_steps.each_with_index { |test_step, index| test_config.logger.message "---------------- Step #{index + 1}: #{test_step.source.last.keyword}#{test_step.source.last.name}"}
   test_config.logger.message "-"
   test_config.logger.message "-"
   # MySql
@@ -46,9 +46,9 @@ After do |scenario|
   test_config.logger.message "---------------- Feature: #{scenario.feature}"
   test_config.logger.message "---------------- Scenario: #{scenario.name}"
   test_config.logger.message "---------------- Tags:"
-  scenario.tags.each_with_index {|tag, index| test_config.logger.message "---------------- Tag #{index + 1}: #{tag.name}" }
+  #scenario.tags.each_with_index {|tag, index| test_config.logger.message "---------------- Tag #{index + 1}: #{tag.name}" }
   test_config.logger.message "---------------- Steps:"
-  scenario.test_steps.each_with_index { |test_step, index| test_config.logger.message "---------------- Step #{index}: #{test_step.source.last.keyword}#{test_step.source.last.name}" if index > 0}
+  #scenario.test_steps.each_with_index { |test_step, index| test_config.logger.message "---------------- Step #{index}: #{test_step.source.last.keyword}#{test_step.source.last.name}" if index > 0}
   test_config.logger.message "-"
   test_config.logger.message "-"
 
