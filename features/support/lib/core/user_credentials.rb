@@ -7,8 +7,8 @@ module Stamps
       @user_credentials = {}
     end
 
-    def fetch(cuke_tag)
-      @cuke_tag = cuke_tag
+    def fetch(tags)
+      @cuke_tag = tags
       # reset old usernames
       result = db_connection.query("select * from user_credentials where in_use=1 and date_add(in_use_time, INTERVAL 2 HOUR) < (CURTIME())")
       if result.size > 0

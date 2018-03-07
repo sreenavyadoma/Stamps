@@ -9,7 +9,6 @@ include RSpec::Matchers
 include DataMagic
 include RAutomation
 include Spreadsheet
-include Mysql2
 
 Before do  |scenario|
   StampsTest.initialize(scenario)
@@ -22,9 +21,6 @@ end
 After do |scenario|
   StampsTest.log.info "Teardown..."
   StampsTest.print_test_steps
-
-  #user_credentials.close if (modal_param.web_app == :mail || modal_param.web_app == :orders) && !((!ENV['USR'].nil? && ENV['USR'].downcase != 'default') && (!ENV['PW'].nil?))
-
   StampsTest.teardown
   @stamps = nil
   @health = nil
