@@ -33,12 +33,3 @@ After do |scenario|
     StampsTest.log.step "  --  #{key} : #{value}"
   end
 end
-
-# result=db_connection.query("select * from user_credentials where test_env='stg' and in_use=1 and in_use_date=#{Time.now.to_date}")
-#
-# result.each_with_index do |row, index|
-#   if row['in_use_date']==Time.now.to_date
-#     p row['username']
-#     break
-#   end
-# end
