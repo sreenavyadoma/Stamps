@@ -2,7 +2,7 @@ module Stamps
 
   def user_credentials
     @user_credentials ||= StampsUserCredentials.new(db_connection)
-    @user_credentials.scenario_name=StampsTest.scenario_name
+    @user_credentials.scenario_name = StampsTest.scenario_name
     @user_credentials
   end
 
