@@ -9,7 +9,6 @@ module Stamps
 
   module TestHelper
     class << self
-      attr_accessor
       def rand_alpha_str(min = 2, max = 10)
         Array.new(rand(min..max)) { [*'a'..'z'].sample }.join
       end
@@ -125,81 +124,81 @@ module Stamps
         formatted_address
       end
 
-      def address_helper_zone(zone)
+      def address_helper_zone(zone, env)
         case zone.downcase
           when /zone 1 (?:through|and) 4/
-            rand_zone_1_4
+            rand_zone_1_4(env)
           when /zone 5 (?:through|and) 8/
-            rand_zone_5_8
+            rand_zone_5_8(env)
           when /zone 1/
-            rand_zone_1
+            rand_zone_1(env)
           when /zone 2/
-            rand_zone_2
+            rand_zone_2(env)
           when /zone 3/
-            rand_zone_3
+            rand_zone_3(env)
           when /zone 4/
-            rand_zone_4
+            rand_zone_4(env)
           when /zone 5/
-            rand_zone_5
+            rand_zone_5(env)
           when /zone 6/
-            rand_zone_6
+            rand_zone_6(env)
           when /zone 7/
-            rand_zone_7
+            rand_zone_7(env)
           when /zone 8/
-            rand_zone_8
+            rand_zone_8(env)
           when /zone 9/
-            rand_zone_9
+            rand_zone_9(env)
           else
             return zone
         end
       end
 
-      def rand_zone_1
-        rand_zone_processing(data_for(:zone_1_through_4, {})['zone1'].values)
+      def rand_zone_1(env)
+        rand_zone_processing(data_for(:zone_1_through_4, {})['zone1'].values, env)
       end
 
-      def rand_zone_2
-        rand_zone_processing(data_for(:zone_1_through_4, {})['zone2'].values)
+      def rand_zone_2(env)
+        rand_zone_processing(data_for(:zone_1_through_4, {})['zone2'].values, env)
       end
 
-      def rand_zone_3
-        rand_zone_processing(data_for(:zone_1_through_4, {})['zone3'].values)
+      def rand_zone_3(env)
+        rand_zone_processing(data_for(:zone_1_through_4, {})['zone3'].values, env)
       end
 
-      def rand_zone_4
-        rand_zone_processing(data_for(:zone_1_through_4, {})['zone4'].values)
+      def rand_zone_4(env)
+        rand_zone_processing(data_for(:zone_1_through_4, {})['zone4'].values, env)
       end
 
-      def rand_zone_5
-        rand_zone_processing(data_for(:zone_5_through_8, {})['zone5'].values)
+      def rand_zone_5(env)
+        rand_zone_processing(data_for(:zone_5_through_8, {})['zone5'].values, env)
       end
 
-      def rand_zone_6
-        rand_zone_processing(data_for(:zone_5_through_8, {})['zone6'].values)
+      def rand_zone_6(env)
+        rand_zone_processing(data_for(:zone_5_through_8, {})['zone6'].values, env)
       end
 
-      def rand_zone_7
-        rand_zone_processing(data_for(:zone_5_through_8, {})['zone7'].values)
+      def rand_zone_7(env)
+        rand_zone_processing(data_for(:zone_5_through_8, {})['zone7'].values, env)
       end
 
-      def rand_zone_8
-        rand_zone_processing(data_for(:zone_5_through_8, {})['zone8'].values)
+      def rand_zone_8(env)
+        rand_zone_processing(data_for(:zone_5_through_8, {})['zone8'].values, env)
       end
 
-      def rand_zone_9
-        rand_zone_processing(data_for(:non_domestic, {})['zone9'].values)
+      def rand_zone_9(env)
+        rand_zone_processing(data_for(:non_domestic, {})['zone9'].values, env)
       end
 
-      def rand_zone_processing address
-        rand_shipping_data(address[rand(address.size)])
+      def rand_zone_processing(address, env)
+        rand_shipping_data(address[rand(address.size)], env)
       end
 
       def rand_zone_1_4(env)
         rand_shipping_data(data_rand_zone_1_4, env)
       end
 
-      def rand_zone_5_8
-        rand_shipping_data(data_rand_zone_5_8)
+      def rand_zone_5_8(env)
+        rand_shipping_data(data_rand_zone_5_8, env)
       end
 
       def rand_ship_from_zone_1_4
@@ -264,9 +263,9 @@ module Stamps
         end
       end
 
-      def address_helper(zone)
-        return format_address(address_helper_zone(zone)) if zone.downcase.include?('zone')
-        format_address(zone)
+      def address_helper(zone, env)
+        return format_address(address_helper_zone(zone, env)) if zone.downcase.include?('zone')
+        format_address(zone, env)
       end
 
       def address_hash_to_str(hash)
