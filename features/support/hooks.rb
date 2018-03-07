@@ -14,7 +14,6 @@ Before do  |scenario|
   StampsTest.initialize(scenario)
   StampsTest.log.info "Begin..."
   StampsTest.log.info "-"
-  StampsTest.log.info "-"
   StampsTest.print_test_steps
 end
 
