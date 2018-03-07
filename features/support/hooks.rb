@@ -9,7 +9,7 @@ include RSpec::Matchers
 include DataMagic
 include RAutomation
 include Spreadsheet
-include DatabaseHelper
+include Mysql2
 
 Before do  |scenario|
   StampsTest.initialize(scenario)

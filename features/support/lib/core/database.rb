@@ -1,7 +1,7 @@
 module Stamps
   module Database
     module MySql
-      class StampsMySqlConnection
+      class Connection
         attr_reader :host, :username, :password, :log, :connection
         def initialize(host, username, password, log)
           @host = host
