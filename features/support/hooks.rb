@@ -11,7 +11,7 @@ include RAutomation
 include Spreadsheet
 
 Before do  |scenario|
-  StampsTest.initialize(scenario)
+  StampsTest.start(scenario)
   StampsTest.log.info "Begin..."
   StampsTest.log.info "-"
   StampsTest.print_test_steps
@@ -27,3 +27,4 @@ After do |scenario|
   StampsTest.log.step "  --  Test Parameters"
   test_param.each { |key, value| StampsTest.log.step "  --  #{key} : #{value}" }
 end
+
