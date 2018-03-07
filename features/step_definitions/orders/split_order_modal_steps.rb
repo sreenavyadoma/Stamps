@@ -19,7 +19,7 @@ Then /^[Ee]xpect [Ss]plit [Oo]rder [Mm]odal default new order id is correct$/ do
 end
 
 Then /^[Ss]et [Ss]plit [Oo]rder new order number to (.*)$/ do |number|
-  stamps.orders.modals.split_order_modal.new_order_id.set (number.downcase=='random')?(ParamHelper.rand_phone):number
+  stamps.orders.modals.split_order_modal.new_order_id.set (number.downcase=='random')?(TestHelper.rand_phone):number
 end
 
 Then /^[Ss]et [Ss]plit [Oo]rder new order quantity for item (\d+) to (\d+)$/ do |item_number, quantity|

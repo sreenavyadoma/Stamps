@@ -1,8 +1,4 @@
 module Stamps
-  module TestHelper
-
-  end
-
   module EnvVar
     class << self
       @param = {}

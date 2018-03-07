@@ -43,7 +43,8 @@ module Stamps
 
       class MailDatePicker < Browser::Base
         include MailDateTextbox
-        include ParameterHelper
+        # include ParameterHelper
+
         def trigger_picker
           (cache[:trigger_picker].nil? || !cache[:trigger_picker].present?) ? cache[:trigger_picker] = StampsField.new(
             browser.div(css: "[id=sdc-mainpanel-shipdatedatefield-targetEl] div[id*=picker]")) : cache[:trigger_picker]

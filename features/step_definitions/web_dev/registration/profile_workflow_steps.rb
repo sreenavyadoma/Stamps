@@ -15,12 +15,12 @@ end
 Then /^[Ss]et [Pp]rofile [Pp]age [Ee]mail to (?:random value|(.*))$/ do |str|
   registration.profile.email.textbox.wait_until_present(10)
   expect(registration.profile.email.textbox).to be_present, "Profile page did not load properly, check your test."
-  registration.profile.email.textbox.set(test_param[:email]=(str.nil?)?(ParamHelper.rand_email):str)
+  registration.profile.email.textbox.set(test_param[:email]=(str.nil?)?(TestHelper.rand_email):str)
   step "blur out on profile page"
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Uu]sername to (?:random value|(.*))$/ do |str|
-  registration.profile.account_username.textbox.set((test_param[:username]=(str.nil?)?(ParamHelper.rand_usr):str))
+  registration.profile.account_username.textbox.set((test_param[:username]=(str.nil?)?(TestHelper.rand_usr):str))
   step "blur out on profile page"
 end
 
@@ -31,7 +31,7 @@ end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Pp]assword to (?:random value|(.*))$/ do |str|
  # registration.profile.account_password.set(test_param[:password]=(str.nil?)?"pass111":str) #test_helper.random_password
-   registration.profile.account_password.textbox.set(test_param[:account_password]=(str.nil?)?ParamHelper.rand_alpha_numeric(5, 13):str)
+   registration.profile.account_password.textbox.set(test_param[:account_password]=(str.nil?)?TestHelper.rand_alpha_numeric(5, 13):str)
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Pp]assword is (?:correct|(.*))$/ do |str|

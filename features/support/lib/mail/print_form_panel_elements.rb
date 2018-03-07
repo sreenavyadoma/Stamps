@@ -713,9 +713,7 @@ module Stamps
       end
 
       class MailServiceSelection < Browser::Base
-        include ParameterHelper
-
-
+        #include ParameterHelper
 
         def cost_field(str)
           (cache[:cost_field].nil? || !cache[:cost_field].present?) ? cache[:cost_field] = StampsField.new(
