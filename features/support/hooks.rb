@@ -21,7 +21,7 @@ After do |scenario|
   StampsTest.log.info "Teardown..."
   StampsTest.print_test_steps
   StampsTest.teardown
-  @stamps = nil
+  @stamps = nil #TODO-Rob this needs to exist in StampsTest
   @health = nil
   if scenario.failed?
     StampsTest.log.error "#{scenario.feature}"
