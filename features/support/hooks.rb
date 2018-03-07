@@ -23,13 +23,7 @@ After do |scenario|
   StampsTest.teardown
   @stamps = nil #TODO-Rob this needs to exist in StampsTest
   @health = nil
-  if scenario.failed?
-    StampsTest.log.error "#{scenario.feature}"
-    StampsTest.log.error "#{scenario.feature} #{scenario.name}:\n#{scenario.exception.message}"
-    StampsTest.log.error "#{scenario.feature}"
-  end
+  StampsTest.log.error "#{scenario.feature} #{scenario.name}:\n#{scenario.exception.message}" if scenario.failed?
   StampsTest.log.step "  --  Test Parameters"
-  test_param.each do |key, value|
-    StampsTest.log.step "  --  #{key} : #{value}"
-  end
+  test_param.each { |key, value| StampsTest.log.step "  --  #{key} : #{value}" }
 end
