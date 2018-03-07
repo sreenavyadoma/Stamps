@@ -81,7 +81,7 @@ Then /^Import Orders: Randomize data in (.*)$/ do |filename|
         row[10] = address['state']
         row[11] = address['zip']
         row[13] = TestHelper.rand_phone
-        row[14] = TestHelper.rand_email
+        row[14] = TestHelper.rand_email(modal_param.test_env)
         row[15] = Random.rand(1..10)
         row[16] = Random.rand(1..10)
         row[17] = Random.rand(1..10)

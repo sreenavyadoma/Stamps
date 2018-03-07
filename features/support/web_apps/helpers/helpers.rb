@@ -9,7 +9,7 @@ module Stamps
 
   module TestHelper
     class << self
-      attr_accessor :test_env
+      attr_accessor
       def rand_alpha_str(min = 2, max = 10)
         Array.new(rand(min..max)) { [*'a'..'z'].sample }.join
       end
@@ -22,16 +22,16 @@ module Stamps
         rand_alpha_numeric(*args).to_s.split.map(&:capitalize).join(' ')
       end
 
-      def rand_usr
+      def rand_usr(env)
         down = ('a'..'z').to_a
         up = ('A'..'Z').to_a
         digits = ('0'..'9').to_a
         special = ['-', '_', '.', '-', '_', '.', '-', '_', '.']
-        (test_env.nil? ? 'xx' : test_env) + (digits + down + up + special).shuffle[1..1].join + [rand_samp_str(down), rand_samp_str(up), rand_samp_str(digits)].concat((down + up + digits).sample(Random.rand(0..5))).shuffle.join
+        (env.nil? ? 'xx' : env) + (digits + down + up + special).shuffle[1..1].join + [rand_samp_str(down), rand_samp_str(up), rand_samp_str(digits)].concat((down + up + digits).sample(Random.rand(0..5))).shuffle.join
       end
 
-      def rand_email
-        "#{rand_usr}@mailinator.com".downcase
+      def rand_email(env)
+        "#{rand_usr(env)}@mailinator.com".downcase
       end
 
       def rand_alpha_numeric(min = 2, max = 10)
@@ -194,8 +194,8 @@ module Stamps
         rand_shipping_data(address[rand(address.size)])
       end
 
-      def rand_zone_1_4
-        rand_shipping_data(data_rand_zone_1_4)
+      def rand_zone_1_4(env)
+        rand_shipping_data(data_rand_zone_1_4, env)
       end
 
       def rand_zone_5_8
@@ -204,7 +204,7 @@ module Stamps
 
       def rand_ship_from_zone_1_4
         us_states = data_for(:us_states, {}) if us_states.nil?
-        shipping = rand_shipping_data(data_rand_zone_1_4)
+        shipping = rand_shipping_data(data_rand_zone_1_4, env)
         shipping['ship_from_zip'] = shipping['zip']
         shipping['state_abbrev'] = shipping['state']
         shipping['state'] = us_states[shipping['state_abbrev']]
@@ -212,9 +212,9 @@ module Stamps
         shipping
       end
 
-      def rand_ship_from_zone_5_8
+      def rand_ship_from_zone_5_8(env)
         us_states = data_for(:us_states, {}) if us_states.nil?
-        shipping = rand_shipping_data(data_rand_zone_5_8)
+        shipping = rand_shipping_data(data_rand_zone_5_8, env)
         shipping['ship_from_zip'] = shipping['zip']
         shipping['state_abbrev'] = shipping['state']
         shipping['state'] = us_states[shipping['state_abbrev']]
@@ -222,14 +222,14 @@ module Stamps
         shipping
       end
 
-      def rand_shipping_data(hash_data)
+      def rand_shipping_data(hash_data, env)
         hash_data['first_name'] = rand_alpha_str.capitalize
         hash_data['last_name'] = rand_alpha_str.capitalize
         hash_data['full_name'] = "#{hash_data['first_name']} #{hash_data['last_name']}"
         hash_data['company'] = rand_comp_name
         hash_data['phone'] = rand_phone
         hash_data['phone_number_format'] = rand_phone_format
-        hash_data['email'] = rand_email
+        hash_data['email'] = rand_email(env)
         hash_data
       end
 

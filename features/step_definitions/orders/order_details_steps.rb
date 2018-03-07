@@ -311,7 +311,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Ii]nternational address to$/ do
   test_param[:state] = table.hashes.first['province'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['province']
   test_param[:zip] = table.hashes.first['postal_code'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['postal_code']
   test_param[:phone] = table.hashes.first[:phone].downcase.include?('random') ? TestHelper.rand_phone : table.hashes.first['phone']
-  test_param[:email] = table.hashes.first['email'].downcase.include?('random') ? TestHelper.rand_email : table.hashes.first['email']
+  test_param[:email] = table.hashes.first['email'].downcase.include?('random') ? TestHelper.rand_email(modal_param.test_env) : table.hashes.first['email']
 
   step "set Order Details Domestic Ship-To Country to #{test_param[:country]}"
   step "set Order Details International Ship-To Name to \"#{test_param[:full_name]}\""
@@ -445,7 +445,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails Phone to (.*)$/ do |phone|
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Email to (.*)$/ do |email|
-  test_param[:email] = email.to_s.strip.downcase.include?('random') ? TestHelper.rand_email : email
+  test_param[:email] = email.to_s.strip.downcase.include?('random') ? TestHelper.rand_email(modal_param.test_env) : email
   step 'show order details form ship-to fields'
   stamps.orders.order_details.ship_to.domestic.email.set(test_param[:email]) unless test_param[:email].length == 0
   step 'Save Order Details data'
