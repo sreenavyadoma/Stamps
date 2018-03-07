@@ -1,4 +1,12 @@
 module Stamps
+
+  def user_credentials
+    @user_credentials ||= StampsUserCredentials.new(db_connection)
+    @user_credentials.scenario_name=StampsTest.scenario_name
+    @user_credentials
+  end
+
+
   module TestHelper
     class << self
       attr_accessor :test_env
@@ -71,8 +79,6 @@ module Stamps
         ship_date.strftime('%m/%d/%Y')
       end
 
-      # todo-Helper refactoring: This should be part of String Open class.
-
       def is_whole_number?(number)
         number % 1 == 0
       end
@@ -103,7 +109,6 @@ module Stamps
       def dolars_and_cents(str)
         /\$(?<dollars>\d*).(?<cents>.*)/.match(str.gsub(',', ''))
       end
-      # todo-Helper refactoring: This should be part of String Open class. should exist in monkey_patch.rb
 
       def format_address_arr(address_array)
         formatted_address = ''
@@ -111,7 +116,7 @@ module Stamps
           address_array.each_with_index do |field, index|
             if index == address_array.size - 1 #if this is the last item in the string, don't append a new line
               formatted_address = formatted_address + field.to_s.strip
-            else #(param_hash['full_name'].downcase.include? 'random') ? test_helper.random_name : param_hash['full_name']
+            else #(param_hash['full_name'].downcase.include? 'random') ? TestHelper.random_name : param_hash['full_name']
               formatted_address = formatted_address + ((field.to_s.strip.downcase.include? 'random') ? rand_full_name : field.to_s.strip) + "\n"
             end
           end
@@ -119,6 +124,131 @@ module Stamps
         logger.info "Formatted Shipping Address:  \n#{formatted_address}"
         formatted_address
       end
+
+      def address_helper_zone(zone)
+        case zone.downcase
+          when /zone 1 (?:through|and) 4/
+            rand_zone_1_4
+          when /zone 5 (?:through|and) 8/
+            rand_zone_5_8
+          when /zone 1/
+            rand_zone_1
+          when /zone 2/
+            rand_zone_2
+          when /zone 3/
+            rand_zone_3
+          when /zone 4/
+            rand_zone_4
+          when /zone 5/
+            rand_zone_5
+          when /zone 6/
+            rand_zone_6
+          when /zone 7/
+            rand_zone_7
+          when /zone 8/
+            rand_zone_8
+          when /zone 9/
+            rand_zone_9
+          else
+            return zone
+        end
+      end
+
+      def rand_zone_1
+        rand_zone_processing(data_for(:zone_1_through_4, {})['zone1'].values)
+      end
+
+      def rand_zone_2
+        rand_zone_processing(data_for(:zone_1_through_4, {})['zone2'].values)
+      end
+
+      def rand_zone_3
+        rand_zone_processing(data_for(:zone_1_through_4, {})['zone3'].values)
+      end
+
+      def rand_zone_4
+        rand_zone_processing(data_for(:zone_1_through_4, {})['zone4'].values)
+      end
+
+      def rand_zone_5
+        rand_zone_processing(data_for(:zone_5_through_8, {})['zone5'].values)
+      end
+
+      def rand_zone_6
+        rand_zone_processing(data_for(:zone_5_through_8, {})['zone6'].values)
+      end
+
+      def rand_zone_7
+        rand_zone_processing(data_for(:zone_5_through_8, {})['zone7'].values)
+      end
+
+      def rand_zone_8
+        rand_zone_processing(data_for(:zone_5_through_8, {})['zone8'].values)
+      end
+
+      def rand_zone_9
+        rand_zone_processing(data_for(:non_domestic, {})['zone9'].values)
+      end
+
+      def rand_zone_processing address
+        rand_shipping_data(address[rand(address.size)])
+      end
+
+      def rand_zone_1_4
+        rand_shipping_data(data_rand_zone_1_4)
+      end
+
+      def rand_zone_5_8
+        rand_shipping_data(data_rand_zone_5_8)
+      end
+
+      def rand_ship_from_zone_1_4
+        us_states = data_for(:us_states, {}) if us_states.nil?
+        shipping = rand_shipping_data(data_rand_zone_1_4)
+        shipping['ship_from_zip'] = shipping['zip']
+        shipping['state_abbrev'] = shipping['state']
+        shipping['state'] = us_states[shipping['state_abbrev']]
+        shipping['street_address2'] = rand_suite
+        shipping
+      end
+
+      def rand_ship_from_zone_5_8
+        us_states = data_for(:us_states, {}) if us_states.nil?
+        shipping = rand_shipping_data(data_rand_zone_5_8)
+        shipping['ship_from_zip'] = shipping['zip']
+        shipping['state_abbrev'] = shipping['state']
+        shipping['state'] = us_states[shipping['state_abbrev']]
+        shipping['street_address2'] = rand_suite
+        shipping
+      end
+
+      def rand_shipping_data(hash_data)
+        hash_data['first_name'] = rand_alpha_str.capitalize
+        hash_data['last_name'] = rand_alpha_str.capitalize
+        hash_data['full_name'] = "#{hash_data['first_name']} #{hash_data['last_name']}"
+        hash_data['company'] = rand_comp_name
+        hash_data['phone'] = rand_phone
+        hash_data['phone_number_format'] = rand_phone_format
+        hash_data['email'] = rand_email
+        hash_data
+      end
+
+      def rand_login_credentials
+        login_credentials = data_for(:login_credentials, {})[ENV['URL']]
+        credentials = login_credentials.values
+        credentials[rand(credentials.size)]
+      end
+
+      def url_prefix(*args)
+        @url_hash = data_for(:url_prefix, {})
+        case args.length
+          when 1
+            return @url_hash[args[0]]
+          else
+            return @url_hash[ENV['URL']]
+        end
+      end
+
 
       def format_address(address)
         if address.is_a?(Hash)
@@ -259,133 +389,18 @@ module Stamps
 
   end
 
-  module DefaultYmlData
-    def address_helper_zone(zone)
-      case zone.downcase
-        when /zone 1 (?:through|and) 4/
-          rand_zone_1_4
-        when /zone 5 (?:through|and) 8/
-          rand_zone_5_8
-        when /zone 1/
-          rand_zone_1
-        when /zone 2/
-          rand_zone_2
-        when /zone 3/
-          rand_zone_3
-        when /zone 4/
-          rand_zone_4
-        when /zone 5/
-          rand_zone_5
-        when /zone 6/
-          rand_zone_6
-        when /zone 7/
-          rand_zone_7
-        when /zone 8/
-          rand_zone_8
-        when /zone 9/
-          rand_zone_9
-        else
-          return zone
-      end
-    end
 
-    def rand_zone_1
-      rand_zone_processing(data_for(:zone_1_through_4, {})['zone1'].values)
-    end
 
-    def rand_zone_2
-      rand_zone_processing(data_for(:zone_1_through_4, {})['zone2'].values)
-    end
 
-    def rand_zone_3
-      rand_zone_processing(data_for(:zone_1_through_4, {})['zone3'].values)
-    end
 
-    def rand_zone_4
-      rand_zone_processing(data_for(:zone_1_through_4, {})['zone4'].values)
-    end
 
-    def rand_zone_5
-      rand_zone_processing(data_for(:zone_5_through_8, {})['zone5'].values)
-    end
 
-    def rand_zone_6
-      rand_zone_processing(data_for(:zone_5_through_8, {})['zone6'].values)
-    end
 
-    def rand_zone_7
-      rand_zone_processing(data_for(:zone_5_through_8, {})['zone7'].values)
-    end
 
-    def rand_zone_8
-      rand_zone_processing(data_for(:zone_5_through_8, {})['zone8'].values)
-    end
 
-    def rand_zone_9
-      rand_zone_processing(data_for(:non_domestic, {})['zone9'].values)
-    end
 
-    def rand_zone_processing address
-      rand_shipping_data(address[rand(address.size)])
-    end
 
-    def rand_zone_1_4
-      rand_shipping_data(data_rand_zone_1_4)
-    end
-
-    def rand_zone_5_8
-      rand_shipping_data(data_rand_zone_5_8)
-    end
-
-    def rand_ship_from_zone_1_4
-      us_states = data_for(:us_states, {}) if us_states.nil?
-      shipping = rand_shipping_data(data_rand_zone_1_4)
-      shipping['ship_from_zip'] = shipping['zip']
-      shipping['state_abbrev'] = shipping['state']
-      shipping['state'] = us_states[shipping['state_abbrev']]
-      shipping['street_address2'] = rand_suite
-      shipping
-    end
-
-    def rand_ship_from_zone_5_8
-      us_states = data_for(:us_states, {}) if us_states.nil?
-      shipping = rand_shipping_data(data_rand_zone_5_8)
-      shipping['ship_from_zip'] = shipping['zip']
-      shipping['state_abbrev'] = shipping['state']
-      shipping['state'] = us_states[shipping['state_abbrev']]
-      shipping['street_address2'] = rand_suite
-      shipping
-    end
-
-    def rand_shipping_data(hash_data)
-      hash_data['first_name'] = rand_alpha_str.capitalize
-      hash_data['last_name'] = rand_alpha_str.capitalize
-      hash_data['full_name'] = "#{hash_data['first_name']} #{hash_data['last_name']}"
-      hash_data['company'] = rand_comp_name
-      hash_data['phone'] = rand_phone
-      hash_data['phone_number_format'] = rand_phone_format
-      hash_data['email'] = rand_email
-      hash_data
-    end
-
-    def rand_login_credentials
-      login_credentials = data_for(:login_credentials, {})[ENV['URL']]
-      credentials = login_credentials.values
-      credentials[rand(credentials.size)]
-    end
-
-    def url_prefix(*args)
-      @url_hash = data_for(:url_prefix, {})
-      case args.length
-        when 1
-          return @url_hash[args[0]]
-        else
-          return @url_hash[ENV['URL']]
-      end
-    end
-
-  end
-
+  #----------------------------------------------------------
   module BrowserType
     def browser_type(browser)
       case browser.downcase
@@ -398,7 +413,7 @@ module Stamps
         # when /ie|explorer|internet explorer/
         #   return :ie
         when /apple|osx|safari|mac/
-            return :safari
+          return :safari
         else
           # do nothing
       end
@@ -407,13 +422,30 @@ module Stamps
     end
   end
 
-  class StampsTestHelper #todo-Rob OpenClass
-    include ParameterHelper
-    include DefaultYmlData
-    attr_reader :logger
-    def initialize(logger)
-      @logger = logger
+  module EnvVar
+    class << self
+      @param = {}
+      @param[:customs_associated_items] = {}
+      @param[:service_mapping_items] = {}
+      @param[:details_associated_items] = {}
+      @param[:order_id] = {}
+      @param[:service_look_up] = {}
+      @param[:service_look_up]['FCM'] = 'First-Class Mail'
+      @param[:service_look_up]['PM'] = 'Priority Mail'
+      @param[:service_look_up]['PME'] = 'Priority Mail Express'
+      @param[:service_look_up]['MM'] = 'Media Mail'
+      @param[:service_look_up]['PSG'] = 'Parcel Select Ground'
+      @param[:service_look_up]['FCMI'] = 'First-Class Mail International'
+      @param[:service_look_up]['PMI'] = 'Priority Mail International'
+      @param[:service_look_up]['PMEI'] = 'Priority Mail Express International'
+      @param[:ord_id_ctr] = 0
+      @param[:username] = ENV['USR']
+      @param[:password] = ENV['PW']
+      @param[:web_app] = ENV['WEB_APP']
+      @param[:url] = ENV['URL']
+      @param[:test] = ENV['USER_CREDENTIALS']
+      attr_accessor :param
     end
   end
-
 end
+

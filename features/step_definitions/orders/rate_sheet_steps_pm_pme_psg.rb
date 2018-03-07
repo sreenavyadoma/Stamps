@@ -356,7 +356,7 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           StampsTest.log.step "#{"#" * 10} "
           StampsTest.log.step"#{"#" * 50}"
 
-          if test_helper.is_whole_number?(weight_lb)
+          if TestHelper.is_whole_number?(weight_lb)
             weight_lb = weight_lb.to_i
             test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight_lb]] = weight_lb
             test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight]] = "#{weight_lb} lb."

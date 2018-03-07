@@ -293,7 +293,7 @@ module Stamps
         end
 
         def date_field(day)
-          browser.td(css: "td[aria-label='#{test_helper.this_month_plus day.to_i}']")
+          browser.td(css: "td[aria-label='#{TestHelper.this_month_plus day.to_i}']")
         end
 
         def date(day)
@@ -311,7 +311,7 @@ module Stamps
             picker.click unless today.present?
             today.click
             sleep(0.35)
-            return test_helper.now_plus_mon_dd 0 #get ship date text box value and return it in correct format or not...
+            return TestHelper.now_plus_mon_dd 0 #get ship date text box value and return it in correct format or not...
           }
           expect("Unable to select today's date from date picker object in Print Modal.").to eql ""
         end
@@ -323,7 +323,7 @@ module Stamps
             picker.click unless today.present?
             today.click
             sleep(0.35)
-            return test_helper.now_plus_mon_dd 0
+            return TestHelper.now_plus_mon_dd 0
           }
           expect("Unable to select today's date from date picker object in Print Modal.").to eql ""
         end
@@ -347,8 +347,8 @@ module Stamps
           picker_button = StampsField.new browser.div(css: "div[id^=datefield][id$=trigger-picker]")
           ship_date_textbox = StampsTextbox.new(browser.text_field(css: "input[id^=datefield][id$=inputEl]"))
 
-          ship_date_str = test_helper.this_month_plus(day)
-          ship_date_mmddyy = test_helper.today_plus(day)
+          ship_date_str = TestHelper.this_month_plus(day)
+          ship_date_mmddyy = TestHelper.today_plus(day)
           date_field = StampsField.new(browser.div(css: "td[aria-label='#{ship_date_str}']>div"))
 
           10.times{
@@ -358,8 +358,8 @@ module Stamps
               break
             else
               day += 1
-              ship_date_str = test_helper.this_month_plus day
-              ship_date_mmddyy = test_helper.today_plus day
+              ship_date_str = TestHelper.this_month_plus day
+              ship_date_mmddyy = TestHelper.today_plus day
               date_field = StampsField.new browser.div css: "td[aria-label='#{ship_date_str}']>div"
             end
           }

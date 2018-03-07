@@ -64,7 +64,7 @@ module Stamps
         end
 
         def choose_date(field, day)
-          date = valid_ship_date(day)
+          date = TestHelper.valid_ship_date(day)
           field = StampsField.new(field)
           trigger_picker.click
           30.times do

@@ -28,7 +28,7 @@ module Stamps
       def setup(browser)
         begin
           Watir.always_locate = true
-          Selenium::WebDriver.log.level = :warn
+          Selenium::WebDriver.logger.level = :warn
           case(browser)
 
             when :edge # Launch Microsoft Edge
@@ -37,8 +37,7 @@ module Stamps
               rescue
                 # ignore
               end
-              capabilities = Selenium::WebDriver::Remote::Capabilities.edge(accept_insecure_certs: true)
-              self.driver = Watir::Browser.new(:edge, :desired_capabilities => capabilities)
+              self.driver = Watir::Browser.new(:edge, accept_insecure_certs: true)
               self.driver.window.maximize
 
             when :firefox # Launch Firefox
@@ -48,8 +47,7 @@ module Stamps
                 # ignore
               end
               if firefox_profile.nil?
-                capabilities = Selenium::WebDriver::Remote::Capabilities.firefox(accept_insecure_certs: true)
-                self.driver = Watir::Browser.new(:firefox, :desired_capabilities => capabilities)
+                self.driver = Watir::Browser.new(:firefox, accept_insecure_certs: true)
               else
                 profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(firefox_profile)
                 profile.assume_untrusted_certificate_issuer = true

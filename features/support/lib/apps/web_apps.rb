@@ -37,6 +37,6 @@ end
 #todo-Rob Object.const_get
 #Object.const_get("#{ENV['PLATFORM']}StampsDotCom").new(modal_param)
 # use subclassing to encapsulate
-# _mobile setup, ask where it is running and instantiate proper object. then setup appropriate landing page.
+# core setup, ask where it is running and instantiate proper object. then setup appropriate landing page.
 # Create DeviceType and OsType objects.
 #

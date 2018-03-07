@@ -143,7 +143,7 @@ module Stamps
             form = OrderDetails.new(param) #todo-Rob this is wrong, change it.
             form.validate_address_link
             country_dropdown = self.country
-            form.ship_to.set test_helper.format_address(partial_address_hash)
+            form.ship_to.set TestHelper.format_address(partial_address_hash)
             30.times {
               begin
                 item_label.click

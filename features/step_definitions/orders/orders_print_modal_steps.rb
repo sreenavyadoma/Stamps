@@ -66,7 +66,7 @@ end
 
 Then /^[Ss]et [Pp]rint [Mm]odal Ship Date to (?:today|today plus (\d+))$/ do |day|
   step "expect print modal ship date dropdown is present"
-  stamps.orders.modals.orders_print_modal.ship_date.textbox.set(test_helper.today_plus(day))
+  stamps.orders.modals.orders_print_modal.ship_date.textbox.set(TestHelper.today_plus(day))
   stamps.orders.modals.orders_print_modal.ship_date.shipdate_label.click(10)
   stamps.orders.modals.orders_print_modal.ship_date.shipdate_label.double_click(10)
   step "expect Print modal Ship Date is #{day} days from today"
@@ -80,7 +80,7 @@ end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal Ship Date is (\d+) (?:day|days) from today$/ do |day|
   step "expect print modal ship date dropdown is present"
-  expect(stamps.orders.modals.orders_print_modal.ship_date.textbox.text).to eql(test_helper.date_printed(day))
+  expect(stamps.orders.modals.orders_print_modal.ship_date.textbox.text).to eql(TestHelper.date_printed(day))
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal [Ss]hip [Dd]ate [Dd]rop[Dd]own is present$/ do

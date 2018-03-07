@@ -30,7 +30,7 @@ Then /^[Ee]xpect [Pp]rofile [Pp]age [Uu]sername is (?:correct|(.*))$/ do |str|
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Pp]assword to (?:random value|(.*))$/ do |str|
- # registration.profile.account_password.set(test_param[:password]=(str.nil?)?"pass111":str) #test_helper.random_password
+ # registration.profile.account_password.set(test_param[:password]=(str.nil?)?"pass111":str) #TestHelper.random_password
    registration.profile.account_password.textbox.set(test_param[:account_password]=(str.nil?)?TestHelper.rand_alpha_numeric(5, 13):str)
 end
 

@@ -22,9 +22,9 @@ module Stamps
 
     def registration_parameter_file(*args)
       directory="#{data_for(:registration, {})['development_dir']}"
-      directory="#{data_for(:registration, {})['jenkins_dir']}" if test_helper.to_bool(ENV['JENKINS'])
+      directory="#{data_for(:registration, {})['jenkins_dir']}" if TestHelper.to_bool(ENV['JENKINS'])
       FileUtils.mkdir_p(directory)
-      return "#{directory}\\#{ENV['URL']}_#{(args.length==0||args[0].nil?)?data_for(:registration, {})['default_parameter_file']:"#{args[0]}"}.yml" if test_helper.to_bool(ENV['JENKINS'])
+      return "#{directory}\\#{ENV['URL']}_#{(args.length==0||args[0].nil?)?data_for(:registration, {})['default_parameter_file']:"#{args[0]}"}.yml" if TestHelper.to_bool(ENV['JENKINS'])
       "#{directory}\\#{ENV['URL']}_#{(args.length==0||args[0].nil?)?data_for(:registration, {})['default_parameter_file']:"#{args[0]}"}.yml"
     end
 

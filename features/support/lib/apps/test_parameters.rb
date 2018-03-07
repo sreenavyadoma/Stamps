@@ -52,7 +52,7 @@ module Stamps
         @modal_param.debug = (ENV["VERBOSE"].nil?) ? false : ENV["VERBOSE"].downcase == "true"
 
         if @modal_param.web_app == :mail || @modal_param.web_app == :orders
-          @modal_param.health_check = test_helper.to_bool ENV['HEALTHCHECK']
+          @modal_param.health_check = TestHelper.to_bool ENV['HEALTHCHECK']
           @modal_param.url = ENV['URL']
           @modal_param.developer = ENV['DEVELOPER']
 

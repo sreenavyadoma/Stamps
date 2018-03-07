@@ -730,7 +730,7 @@ module Stamps
         end
 
         def selection_is_numeric?(str)
-          is_numeric?(cost_str(str))
+          TestHelper.is_numeric?(cost_str(str))
         end
 
         def service_cost(str)

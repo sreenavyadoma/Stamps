@@ -346,18 +346,18 @@ end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
   step 'show order details form ship-to fields'
-  stamps.orders.order_details.ship_to.domestic.set(test_param[:ship_to_domestic] = test_helper.format_address(test_helper.address_helper_zone(address)))
+  stamps.orders.order_details.ship_to.domestic.set(test_param[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address)))
   step 'Save Order Details data'
   step 'hide order details form Ship-To fields'
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Aa]mbiguous [Aa]ddress to$/ do |table|
   step 'expect Order Details is present'
-  stamps.orders.order_details.ship_to.domestic.set_ambiguous(test_helper.format_address(table.hashes.first))
+  stamps.orders.order_details.ship_to.domestic.set_ambiguous(TestHelper.format_address(table.hashes.first))
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o text area to (.*)$/ do |address|
-  test_param[:ship_to_domestic] = test_helper.format_address(address)
+  test_param[:ship_to_domestic] = TestHelper.format_address(address)
   step 'show order details form ship-to fields'
   stamps.orders.order_details.ship_to.domestic.set(test_param[:ship_to_domestic])
   step 'Save Order Details data'

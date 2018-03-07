@@ -71,7 +71,7 @@ Then /^Import Orders: Randomize data in (.*)$/ do |filename|
     old_csv = CSV.read(import_old_loc)
     old_csv.each_with_index do |row, index|
       if index != 0
-        address = test_helper.rand_zone_1_4
+        address = TestHelper.rand_zone_1_4
         row[2] = Random.rand(1..10)
         row[3] = TestHelper.rand_full_name
         row[4] = TestHelper.rand_full_name
@@ -121,7 +121,7 @@ Then /^Import Orders: Expect first (.*) orders in CSV file (.*) match orders in 
       expect(stamps.orders.orders_grid.grid_column(:zip).data(order_id)).to eql(row[11]), "Expected Zip for order #{row[0]} is #{row[11]}, Zip in orders grid is #{stamps.orders.orders_grid.grid_column(:zip).data(order_id)}"
       expect(stamps.orders.orders_grid.grid_column(:phone).data(order_id)).to eql(row[13]), "Expected Phone for order #{row[0]} is #{row[13]}, Phone in orders grid is #{stamps.orders.orders_grid.grid_column(:phone).data(order_id)}"
       expect(stamps.orders.orders_grid.grid_column(:email).data(order_id)).to eql(row[14]), "Expected Email for order #{row[0]} is #{row[14]}, Email in orders grid is #{stamps.orders.orders_grid.grid_column(:email).data(order_id)}"
-      expect(test_helper.format_weight(stamps.orders.orders_grid.grid_column(:weight).data(order_id))).to eql(row[15]), "Expected Weight for order #{row[0]} is #{row[15]}, Weight in orders grid is #{test_helper.format_weight(stamps.orders.orders_grid.grid_column(:weight).data(order_id))}"
+      expect(TestHelper.format_weight(stamps.orders.orders_grid.grid_column(:weight).data(order_id))).to eql(row[15]), "Expected Weight for order #{row[0]} is #{row[15]}, Weight in orders grid is #{TestHelper.format_weight(stamps.orders.orders_grid.grid_column(:weight).data(order_id))}"
       StampsTest.log.step "Order # #{order_id} verified in Orders Grid"
     end
     break if counter >= num_orders
