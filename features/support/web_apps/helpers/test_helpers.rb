@@ -384,10 +384,6 @@ module Stamps
     end
   end
 
-  module ParameterHelper #todo-Rob move ParameterHelper to String open class
-
-  end
-
 
 
 
