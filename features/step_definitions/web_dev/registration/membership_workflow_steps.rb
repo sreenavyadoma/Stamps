@@ -15,7 +15,7 @@ Then /^[Pp]opulate all [Mm]embership [Pp]age required fields$/ do
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Mm]ember [Aa]ddress to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
-  address = TestHelper.address_helper_zone(address) #combine this
+  address = TestHelper.address_helper_zone(address, modal_param.test_env) #combine this
 
   test_param[:first_name] = address['first_name'] #combine this in address_helper_zone
   test_param[:last_name] = address['last_name']
@@ -185,7 +185,7 @@ Then /^[Ee]xpect Billing Address form is not present$/ do
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Mm]ember [Bb]illing [Aa]ddress to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
-  address = TestHelper.address_helper_zone(address) #combine this
+  address = TestHelper.address_helper_zone(address, modal_param.test_env) #combine this
 
   test_param[:street_address] = address['street_address']
   test_param[:city] = address['city']

@@ -201,7 +201,7 @@ module Stamps
         rand_shipping_data(data_rand_zone_5_8, env)
       end
 
-      def rand_ship_from_zone_1_4
+      def rand_ship_from_zone_1_4(env)
         us_states = data_for(:us_states, {}) if us_states.nil?
         shipping = rand_shipping_data(data_rand_zone_1_4, env)
         shipping['ship_from_zip'] = shipping['zip']

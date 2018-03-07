@@ -71,7 +71,7 @@ Then /^Import Orders: Randomize data in (.*)$/ do |filename|
     old_csv = CSV.read(import_old_loc)
     old_csv.each_with_index do |row, index|
       if index != 0
-        address = TestHelper.rand_zone_1_4
+        address = TestHelper.rand_zone_1_4(modal_param.test_env)
         row[2] = Random.rand(1..10)
         row[3] = TestHelper.rand_full_name
         row[4] = TestHelper.rand_full_name
