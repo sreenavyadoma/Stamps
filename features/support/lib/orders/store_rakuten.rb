@@ -53,17 +53,17 @@ module Stamps
               button.click
               sleep(2)
               if importing_order.present?
-                logger.info importing_order.message
+                log.info importing_order.message
                 importing_order.ok
               end
               if server_error.present?
                 error_str = server_error.message
-                logger.info error_str
+                log.info error_str
                 server_error.ok
                 expect("Server Error: \n#{error_str}").to eql "" unless counter < max_server_error_retry_count
               end
               if connecting_button.field.visible?
-                logger.info connecting_button.text
+                log.info connecting_button.text
               end
               return settings if settings.present?
             end

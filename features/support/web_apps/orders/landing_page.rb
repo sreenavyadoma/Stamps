@@ -85,10 +85,10 @@ module Stamps
 
           marketplace.wait_until_present(6)
           if marketplace.present?
-            logger.message '-'
-            logger.message "Username: #{usr}"
-            logger.message "Username: #{usr}"
-            logger.message '-'
+            log.message '-'
+            log.message "Username: #{usr}"
+            log.message "Username: #{usr}"
+            log.message '-'
             return marketplace
           end
         end
@@ -109,13 +109,13 @@ module Stamps
                 else
                   "http://#{param.test_env}/#{(param.web_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
               end
-        logger.message '-'
-        logger.message "URL: #{url}"
-        logger.message '-'
+        log.message '-'
+        log.message "URL: #{url}"
+        log.message '-'
 
         browser.goto(url)
         if browser.text.include? 'Server Error'
-          logger.error browser.text
+          log.error browser.text
           raise "Server Error:\n #{browser.text}"
         end
 
@@ -140,9 +140,9 @@ module Stamps
 
           expect(browser.url).to include 'Orders'
 
-          logger.message '#' * 15
-          logger.message "Username: #{usr}"
-          logger.message '#' * 15
+          log.message '#' * 15
+          log.message "Username: #{usr}"
+          log.message '#' * 15
 
           wait_until_present(4)
           30.times do
@@ -157,13 +157,13 @@ module Stamps
                 raise server_error.message if server_error.present?
                 security_questions.wait_until_present(2)
                 return security_questions if security_questions.present?
-                logger.message invalid_username.text if invalid_username.present?
+                log.message invalid_username.text if invalid_username.present?
                 loading_orders.wait_until_present(4)
-                10.times {logger.message loading_orders.text if loading_orders.present?}
+                10.times {log.message loading_orders.text if loading_orders.present?}
               end
               new_welcome.wait_until_present(2)
               if new_welcome.present?
-                logger.message new_welcome.message
+                log.message new_welcome.message
                 add_manual_order = new_welcome.next
                 expect(add_manual_order).to be_present
                 import_from_csv = add_manual_order.next
@@ -176,14 +176,14 @@ module Stamps
               end
               signed_in_user.wait_until_present(2)
             rescue StandardError => e
-              logger.error e.message
-              logger.error e.backtrace.join "\n"
+              log.error e.message
+              log.error e.backtrace.join "\n"
               raise e
             end
           end
         rescue StandardError => e
-          logger.error e.message
-          logger.error e.backtrace.join("\n")
+          log.error e.message
+          log.error e.backtrace.join("\n")
           raise e
         end
         nil
@@ -195,9 +195,9 @@ module Stamps
 
         expect(browser.url).to include 'Orders'
 
-        logger.message '#' * 15
-        logger.message "Username: #{usr}"
-        logger.message '#' * 15
+        log.message '#' * 15
+        log.message "Username: #{usr}"
+        log.message '#' * 15
 
         username.wait_until_present(8)
         20.times do

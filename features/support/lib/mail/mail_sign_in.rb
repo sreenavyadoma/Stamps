@@ -345,7 +345,7 @@ module Stamps
               5.times do
                 begin
                   if signed_in_user.present?
-                    logger.message("Signed-in user: #{signed_in_user.text}")
+                    log.message("Signed-in user: #{signed_in_user.text}")
                     break
                   end
                   if whats_new_modal.present?
@@ -371,8 +371,8 @@ module Stamps
           end
 
           unless @error.nil?
-            logger.error "\n---\n#{"Unable to sign-in with credentials #{usr}/#{pw}"}\n#{@error.class.name}: #{@error.message}\n---\n"
-            logger.error @error.backtrace.join("\n")
+            log.error "\n---\n#{"Unable to sign-in with credentials #{usr}/#{pw}"}\n#{@error.class.name}: #{@error.message}\n---\n"
+            log.error @error.backtrace.join("\n")
             @error.message
             @error.backtrace.join("\n")
             raise @error
@@ -418,15 +418,15 @@ module Stamps
               username = args[0]
               password = args[1]
             else
-              logger.info "Using Default Sign-in Credentials: #{ENV["USR"]}"
+              log.info "Using Default Sign-in Credentials: #{ENV["USR"]}"
               username = ENV['USR']
               password = ENV['PW']
             end
           else
-            logger.message 'Using Default Sign-in Credentials.'
+            log.message 'Using Default Sign-in Credentials.'
             username = ENV['USR']
             password = ENV['PW']
-            logger.message "USERNAME: #{username}, PASSWORD: #{password}"
+            log.message "USERNAME: #{username}, PASSWORD: #{password}"
           end
 
           sign_in_link = StampsField.new browser.link(text: 'Sign In')
@@ -460,23 +460,23 @@ module Stamps
             sign_in_link.click unless sign_in_button.present?
             break if signed_in_user.present?
 
-            #logger.info "Verifying account info... #{(verifying_present?)?"true":"false"}"
+            #log.info "Verifying account info... #{(verifying_present?)?"true":"false"}"
             if verifying_present?
-              #logger.info "#{(verifying_present?)?"Verifying account info....":"Verifying account info done or not visible"}"
+              #log.info "#{(verifying_present?)?"Verifying account info....":"Verifying account info done or not visible"}"
               verifying_wait_while_present
               signed_in_user.wait_until_present
-              logger.info "Signed in username is #{signed_in_user.text}"
+              log.info "Signed in username is #{signed_in_user.text}"
             end
 
-            logger.info "#{username} is #{(signed_in_user.present?) ? "signed-in!" : "not signed-in."}"
+            log.info "#{username} is #{(signed_in_user.present?) ? "signed-in!" : "not signed-in."}"
 
             break if signed_in_user.present?
 
             expect(invalid_msg.text).to eql "Invalid Username & Password. #{@username}/#{@password}" if invalid_msg.present?
 
           }
-          logger.info "#{username} is #{(signed_in_user.present?) ? "signed-in!" : "not signed-in."}"
-          logger.info "Password is #{password}"
+          log.info "#{username} is #{(signed_in_user.present?) ? "signed-in!" : "not signed-in."}"
+          log.info "Password is #{password}"
 
           # def invalid_username_password
           #   StampsField.new browser.div css: "div[id*=InvalidUsernamePasswordMsg]"

@@ -1,14 +1,14 @@
 module Stamps
   ## Deprecated
   #
-  class StampsLogger
+  class Stampslog
     attr_accessor :scenario_name
 
     def initialize(scenario_name = 'Test Scenario')
       @scenario_name = scenario_name
-      @logger = Log4r::Logger.new ":"
-      @logger.outputters = Outputter.stdout
-      #@logger.level=Log4r::INFO
+      @log = Log4r::log.new ":"
+      @log.outputters = Outputter.stdout
+      #@log.level=Log4r::INFO
     end
 
     def repeat(char, count)
@@ -20,7 +20,7 @@ module Stamps
     def message(message)
       begin
         message = repeat message, 25 if message.size == 1
-        @logger.info "#{scenario_name} :: #{message}"
+        @log.info "#{scenario_name} :: #{message}"
       rescue
         # ignore
       end
@@ -30,7 +30,7 @@ module Stamps
     def step(message)
       begin
         message = repeat message, 25 if message.size == 1
-        (@logger.info "#{scenario_name} :: #{message}")
+        (@log.info "#{scenario_name} :: #{message}")
       rescue
         # ignore
       end
@@ -40,7 +40,7 @@ module Stamps
     def info(message)
       begin
         message = repeat message, 25 if message.size == 1
-        (@logger.info "#{scenario_name} :: #{message}") if StampsTest.debug
+        (@log.info "#{scenario_name} :: #{message}") if StampsTest.debug
       rescue
         # ignore
       end
@@ -50,7 +50,7 @@ module Stamps
     def warn(message)
       begin
         message = repeat message, 25 if message.size == 1
-        (@logger.warn "#{scenario_name} :: #{message}")
+        (@log.warn "#{scenario_name} :: #{message}")
       rescue
         # ignore
       end
@@ -60,7 +60,7 @@ module Stamps
     def error(message)
       begin
         message = repeat message, 25 if message.size == 1
-        (@logger.error "#{scenario_name} :: #{message}")
+        (@log.error "#{scenario_name} :: #{message}")
       rescue
         # ignore
       end
@@ -70,7 +70,7 @@ module Stamps
     def fatal(message)
       begin
         message = repeat message, 25 if message.size == 1
-        (@logger.fatal "#{scenario_name} :: #{message}")
+        (@log.fatal "#{scenario_name} :: #{message}")
       rescue
         # ignore
       end
@@ -80,7 +80,7 @@ module Stamps
     def debug(message)
       begin
         message = repeat message, 25 if message.size == 1
-        @logger.debug "#{scenario_name} :: #{message}"
+        @log.debug "#{scenario_name} :: #{message}"
       rescue
         #ignroe
       end

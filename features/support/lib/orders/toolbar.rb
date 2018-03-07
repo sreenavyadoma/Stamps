@@ -231,7 +231,7 @@ module Stamps
             btn.field.hover
             sleep(0.35)
             if tooltip_field.present?
-              logger.info tooltip_field.text
+              log.info tooltip_field.text
               return tooltip_field.text
             end
           end
@@ -595,7 +595,7 @@ module Stamps
               print_window.window_title.wait_until_present(4)
               return print_window.window_title.text if print_window.window_title.present?
               if terms_conditions.present?
-                logger.debug terms_conditions.form_body.text
+                log.debug terms_conditions.form_body.text
                 terms_conditions.i_agree
                 terms_conditions.close.click_while_present
               end
@@ -844,9 +844,9 @@ module Stamps
               # new accounts will connect to ShipStation for the first time.
               20.times do
                 if initializing_db.present?
-                  logger.message initializing_db.text
-                  logger.message initializing_db.text
-                  logger.message initializing_db.text
+                  log.message initializing_db.text
+                  log.message initializing_db.text
+                  log.message initializing_db.text
                   initializing_db.wait_while_present(3)
                   break unless initializing_db.present?
                 end
@@ -871,7 +871,7 @@ module Stamps
             button.field.hover
             sleep(0.35)
             if tooltip_field.present?
-              logger.info tooltip_field.text
+              log.info tooltip_field.text
               return tooltip_field.text
             end
           end
@@ -1055,42 +1055,42 @@ module Stamps
           button.click
           sleep(0.35)
           if importing_order.present?
-            logger.info importing_order.message
+            log.info importing_order.message
             importing_order.ok
           end
           if importing_order.present?
-            logger.info importing_order.message
+            log.info importing_order.message
             importing_order.ok
           end
           if importing_order.present?
-            logger.info importing_order.message
+            log.info importing_order.message
             importing_order.ok
           end
           button.click
           sleep(0.35)
           if importing_order.present?
-            logger.info importing_order.message
+            log.info importing_order.message
             importing_order.ok
           end
           if importing_order.present?
-            logger.info importing_order.message
+            log.info importing_order.message
             importing_order.ok
           end
           if importing_order.present?
-            logger.info importing_order.message
+            log.info importing_order.message
             importing_order.ok
           end
           button.click
           if importing_order.present?
-            logger.info importing_order.message
+            log.info importing_order.message
             importing_order.ok
           end
           if importing_order.present?
-            logger.info importing_order.message
+            log.info importing_order.message
             importing_order.ok
           end
           if importing_order.present?
-            logger.info importing_order.message
+            log.info importing_order.message
             importing_order.ok
           end
         end

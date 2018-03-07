@@ -121,7 +121,7 @@ module Stamps
             end
           end
         end
-        logger.info "Formatted Shipping Address:  \n#{formatted_address}"
+        log.info "Formatted Shipping Address:  \n#{formatted_address}"
         formatted_address
       end
 

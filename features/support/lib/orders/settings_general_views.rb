@@ -18,7 +18,7 @@ module Stamps
 
         def set(value)
           textbox.set(value)
-          logger.info "Pounds set to #{textbox.text}"
+          log.info "Pounds set to #{textbox.text}"
           expect(text).to eql value
         end
 
@@ -51,7 +51,7 @@ module Stamps
 
         def set(value)
           textbox.set(value)
-          logger.info "Pounds set to #{textbox.text}"
+          log.info "Pounds set to #{textbox.text}"
           expect(text).to eql value
         end
 
@@ -106,7 +106,7 @@ module Stamps
 
         def set(value)
           textbox.set(value)
-          logger.info "Pounds set to #{textbox.text}"
+          log.info "Pounds set to #{textbox.text}"
           expect(text).to eql value
         end
 
@@ -139,7 +139,7 @@ module Stamps
 
         def set(value)
           textbox.set(value)
-          logger.info "Pounds set to #{textbox.text}"
+          log.info "Pounds set to #{textbox.text}"
           expect(text).to eql value
         end
 
@@ -170,7 +170,7 @@ module Stamps
 
         def set(value)
           textbox.set(value)
-          logger.info "Pounds set to #{textbox.text}"
+          log.info "Pounds set to #{textbox.text}"
           expect(text).to eql value
         end
 

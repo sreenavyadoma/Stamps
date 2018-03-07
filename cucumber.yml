@@ -3,7 +3,7 @@ default: --backtrace --profile rob_cc
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
 #robcm=ccpryiihrjz ccfb311osps4x print_dialog_ship_date
-rob_cc: --tags @authentication WEB_APP=orders JENKINS=true URL=cc VERBOSE=false HEALTHCHECK=true BROWSER=edge MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory
+rob_cc: --tags @bvt_new_order WEB_APP=orders JENKINS=true URL=cc VERBOSE=false HEALTHCHECK=true BROWSER=edge MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory
 rob_stg: --tags @orders_deselect_fails WEB_APP=orders JENKINS=true URL=stg VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgee1mtqvwdc0 PW=pass111 PRINTER=factory
 rob_sc: --tags @bvt_shipstation_updates_domestic WEB_APP=orders JENKINS=true URL=sc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=selenium  USR=scsejsglwa PW=pass111 VERBOSE=true PRINTER=factory # c2jinmzmu64 schl0vlbfy2673 #19  schl0vlbfy2673
 rob_dev: --tags @mail_advanced_options_stamps DEVELOPER=true WEB_APP=orders JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess VERBOSE=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false

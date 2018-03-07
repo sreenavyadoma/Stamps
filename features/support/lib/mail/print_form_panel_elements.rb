@@ -842,7 +842,7 @@ module Stamps
               button.click unless selection_label.present?
               if selection_label.present?
                 tooltip = selection_label.attribute_value "data-qtip"
-                logger.info "Service Tooltip for \"#{selection}\" is #{tooltip}"
+                log.info "Service Tooltip for \"#{selection}\" is #{tooltip}"
                 return tooltip
               end
             rescue

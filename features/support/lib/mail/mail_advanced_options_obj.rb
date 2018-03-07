@@ -27,7 +27,7 @@ module Stamps
             break if textbox.text.include?(str)
             dropdown.click unless selection.present?
             selection.click
-            logger.info "Selected: #{textbox.text} - #{((textbox.text).include? str) ? "done" : "not selected"}"
+            log.info "Selected: #{textbox.text} - #{((textbox.text).include? str) ? "done" : "not selected"}"
           end
           expect(textbox.text).to eql(str)
           textbox.text

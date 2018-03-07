@@ -44,93 +44,93 @@ module Stamps
           10.times do
             button.click
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             button.click
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             sleep(0.35)
             return settings if settings.present?
             return shopify if shopify.present?
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             sleep(0.35)
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             return settings if settings.present?
             return shopify if shopify.present?
             sleep(0.35)
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             if importing_order.present?
-              logger.info importing_order.message
-              importing_order.ok
-            end
-            return settings if settings.present?
-            return shopify if shopify.present?
-            sleep(0.35)
-            if importing_order.present?
-              logger.info importing_order.message
-              importing_order.ok
-            end
-            if importing_order.present?
-              logger.info importing_order.message
-              importing_order.ok
-            end
-            if importing_order.present?
-              logger.info importing_order.message
-              importing_order.ok
-            end
-            if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             return settings if settings.present?
             return shopify if shopify.present?
             sleep(0.35)
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
+              importing_order.ok
+            end
+            return settings if settings.present?
+            return shopify if shopify.present?
+            sleep(0.35)
+            if importing_order.present?
+              log.info importing_order.message
+              importing_order.ok
+            end
+            if importing_order.present?
+              log.info importing_order.message
+              importing_order.ok
+            end
+            if importing_order.present?
+              log.info importing_order.message
+              importing_order.ok
+            end
+            if importing_order.present?
+              log.info importing_order.message
               importing_order.ok
             end
             return settings if settings.present?
@@ -147,89 +147,89 @@ module Stamps
           10.times do
             button.click
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             button.click
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             sleep(0.35)
             return manage_stores if manage_stores.present?
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             sleep(0.35)
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             return manage_stores if manage_stores.present?
             sleep(0.35)
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             if importing_order.present?
-              logger.info importing_order.message
-              importing_order.ok
-            end
-            return manage_stores if manage_stores.present?
-            sleep(0.35)
-            if importing_order.present?
-              logger.info importing_order.message
-              importing_order.ok
-            end
-            if importing_order.present?
-              logger.info importing_order.message
-              importing_order.ok
-            end
-            if importing_order.present?
-              logger.info importing_order.message
-              importing_order.ok
-            end
-            if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             return manage_stores if manage_stores.present?
             sleep(0.35)
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
+              importing_order.ok
+            end
+            return manage_stores if manage_stores.present?
+            sleep(0.35)
+            if importing_order.present?
+              log.info importing_order.message
+              importing_order.ok
+            end
+            if importing_order.present?
+              log.info importing_order.message
+              importing_order.ok
+            end
+            if importing_order.present?
+              log.info importing_order.message
+              importing_order.ok
+            end
+            if importing_order.present?
+              log.info importing_order.message
               importing_order.ok
             end
             return manage_stores if manage_stores.present?

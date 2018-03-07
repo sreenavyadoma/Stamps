@@ -93,6 +93,6 @@
       "level": "information",
       "always_log_level": "error",
       "log_to_server_level": "information",
-      "log_to_server_path": "NativeAppErrorLogger.aspx"
+      "log_to_server_path": "NativeAppErrorlog.aspx"
    }
 }

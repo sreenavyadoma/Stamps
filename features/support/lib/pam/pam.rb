@@ -34,7 +34,7 @@ module Stamps
                 else
                   raise ArgumentError, "#{param.test_env} environment is not implemented."
               end
-        logger.info "Visit: #{url}"
+        log.info "Visit: #{url}"
         sleep(1)
         browser.goto(url)
         sleep(1)

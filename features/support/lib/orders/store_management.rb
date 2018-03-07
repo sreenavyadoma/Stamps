@@ -79,7 +79,7 @@ module Stamps
               end
 
               def select service
-                logger.info "Select Shipping service #{service}"
+                log.info "Select Shipping service #{service}"
                 selection=StampsField.new(browser.trs(css: "tr[data-qtip*='#{service}']")[@index])
                 box=textbox
                 dd=dropdown
@@ -89,13 +89,13 @@ module Stamps
                     dd.click unless selection.present?
                     selection.scroll_into_view
                     selection.click
-                    logger.info "Selection #{box.text} - #{(box.text.include? service)?"was selected": "not selected"}"
+                    log.info "Selection #{box.text} - #{(box.text.include? service)?"was selected": "not selected"}"
                     break if box.text.include? service
                   rescue
                     # ignore
                   end
                 }
-                logger.info "#{service} selected."
+                log.info "#{service} selected."
               end
             end
 
@@ -133,17 +133,17 @@ module Stamps
           def item index
             index=index.to_i
             add_button=add_new_service_mapping_btn
-            logger.info "Item Count: #{size}"
+            log.info "Item Count: #{size}"
 
             20.times{
               break if size >= index
               sleep(0.35)
               break if size >= index
               add_button.click if index > size
-              logger.info "Service Mapping Item Count: #{size}"
+              log.info "Service Mapping Item Count: #{size}"
             }
 
-            logger.info "User Entered Number: #{index}. Actual Item Count: #{size}"
+            log.info "User Entered Number: #{index}. Actual Item Count: #{size}"
 
             ServiceMappingLineItem.new(param, index-1)
           end
@@ -162,12 +162,12 @@ module Stamps
             button.click
             5.times do
               if importing_order.present?
-                logger.info importing_order.message
+                log.info importing_order.message
                 importing_order.ok
               end
               if server_error.present?
                 error_str=server_error.message
-                logger.info error_str
+                log.info error_str
                 server_error.ok
                 expect("Server Error: \n#{error_str}").to eql ""
               end
@@ -366,7 +366,7 @@ module Stamps
             stores_grid=browser.divs(css: "div[class*='x-grid-item-container']").last
             tables=stores_grid.tables
             grid_size=tables.size
-            logger.info "Manage Stores:  Number of items in Grid #{grid_size}"
+            log.info "Manage Stores:  Number of items in Grid #{grid_size}"
 
             if grid_size > 1
               0.upto grid_size do |index|
@@ -374,13 +374,13 @@ module Stamps
                 begin
                   row=StampsField.new tables[row_to_delete]
                   grid_item_name=StampsField.new(row).text
-                  logger.info "#{index} Delete Item - #{grid_item_name}"
+                  log.info "#{index} Delete Item - #{grid_item_name}"
 
                   if grid_item_name.include? "Manual Orders"
-                    logger.info "#{index} Skipping #{grid_item_name}"
+                    log.info "#{index} Skipping #{grid_item_name}"
                     row=StampsField.new tables[row_to_delete+1]
                     grid_item_name=StampsField.new(row).text
-                    logger.info "#{index} Delete Item - #{grid_item_name}"
+                    log.info "#{index} Delete Item - #{grid_item_name}"
                   end
 
                   3.times do
@@ -397,13 +397,13 @@ module Stamps
                     break unless delete_modal.present?
                   end
                 rescue
-                  logger.info "#{index} Skipping..."
+                  log.info "#{index} Skipping..."
                 end
 
                 stores_grid=browser.divs(css: "div[class*='x-grid-item-container']").last
                 tables=stores_grid.tables
                 grid_size=tables.size
-                logger.info "Manage Stores: Number of items in Grid is #{grid_size}"
+                log.info "Manage Stores: Number of items in Grid is #{grid_size}"
                 break if grid_size==1
               end
             end
@@ -506,13 +506,13 @@ module Stamps
           15.times do
             button.click
             if server_error.present?
-              logger.info server_error.message
+              log.info server_error.message
               server_error.ok
             end
             5.times do
               if server_error.present?
                 error_str=server_error.message
-                logger.info error_str
+                log.info error_str
                 server_error.ok
                 expect("Server Error: \n#{server_error}").to eql ""
               end

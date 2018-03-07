@@ -61,7 +61,7 @@ module Stamps
               dropdown.click unless media_selection.present?
               if media_selection.present?
                 tooltip = media_selection.attribute_value "data-qtip"
-                logger.info "Print Media Tooltip for \"#{media}\" is \n#{tooltip}\n"
+                log.info "Print Media Tooltip for \"#{media}\" is \n#{tooltip}\n"
                 if tooltip.include? "<strong>"
                   dropdown.click if media_selection.present?
                   return tooltip
@@ -171,7 +171,7 @@ module Stamps
         def label_selected?(div)
           8.times do
             selected = (div.attribute_value 'class').include? 'selected'
-            logger.info "Label selected?  #{selected ? 'Yes' : 'No'}"
+            log.info "Label selected?  #{selected ? 'Yes' : 'No'}"
             break if selected
           end
           (div.attribute_value 'class').include? 'selected'
@@ -273,10 +273,10 @@ module Stamps
 
           if dont_show
             dont_show_checkbox.check
-            logger.info "USPS Terms - Don't show this again input field is #{dont_show_checkbox.checked?}"
+            log.info "USPS Terms - Don't show this again input field is #{dont_show_checkbox.checked?}"
           else
             dont_show_checkbox.uncheck
-            logger.info "USPS Terms - Don't show this again input field is #{dont_show_checkbox.checked?}"
+            log.info "USPS Terms - Don't show this again input field is #{dont_show_checkbox.checked?}"
           end
         end
       end

@@ -185,7 +185,7 @@ module Stamps
 #                 sleep(0.15)
 #                 if selection_label.present?
 #                   tooltip=selection_label.attribute_value("data-qtip")
-#                   logger.info "Service Tooltip for \"#{selection}\" is #{tooltip}"
+#                   log.info "Service Tooltip for \"#{selection}\" is #{tooltip}"
 #                   return tooltip if tooltip.include? "<strong>"
 #                 end
 #               rescue
@@ -281,7 +281,7 @@ module Stamps
 #                 sleep(0.15)
 #                 if selection_label.present?
 #                   tooltip=selection_label.attribute_value("data-qtip")
-#                   logger.info "Service Tooltip for \"#{selection}\" is #{tooltip}"
+#                   log.info "Service Tooltip for \"#{selection}\" is #{tooltip}"
 #                   return tooltip if tooltip.include? "<strong>"
 #                 end
 #               rescue
@@ -357,7 +357,7 @@ module Stamps
                 selection.scroll_into_view
                 sleep(0.15)
                 selection.click
-                logger.info "Selected service #{textbox.text} - #{(textbox.text.include? str) ? "success" : "service not selected"}"
+                log.info "Selected service #{textbox.text} - #{(textbox.text.include? str) ? "success" : "service not selected"}"
                 sleep(0.15)
                 break if textbox.text.include?(str)
               rescue
@@ -376,7 +376,7 @@ module Stamps
                 sleep(0.15)
                 if selection_label.present?
                   tooltip = selection_label.attribute_value("data-qtip")
-                  logger.info "Service Tooltip for \"#{selection}\" is #{tooltip}"
+                  log.info "Service Tooltip for \"#{selection}\" is #{tooltip}"
                   return tooltip if tooltip.include? "<strong>"
                 end
               rescue
@@ -440,7 +440,7 @@ module Stamps
                 dropdown.click unless cost_label.present?
                 if cost_label.present?
                   service_cost = cost_label.text.dollar_amount_str
-                  logger.info "Service Cost for \"#{service_name}\" is #{service_cost}"
+                  log.info "Service Cost for \"#{service_name}\" is #{service_cost}"
                   dropdown.click if cost_label.present?
                   return service_cost.to_f.round(2)
                 end
@@ -498,7 +498,7 @@ module Stamps
                 dropdown.click unless selection_label.present?
                 if selection_label.present?
                   qtip = selection_label.parent.parent.parent.parent.attribute_value('data-qtip')
-                  logger.info qtip.to_s
+                  log.info qtip.to_s
                   return qtip
                 end
               rescue

@@ -94,7 +94,7 @@ module Stamps
             return window if window.present?
             expect(install_stamps_connect.body.text).to eql(install_stamps_connect.window_title.text) if install_stamps_connect.present?
             if please_wait.present?
-              logger.message(please_wait.paragraph)
+              log.message(please_wait.paragraph)
               please_wait.ok
               sleep(0.125)
               print_button.click
@@ -106,7 +106,7 @@ module Stamps
             end
             expect(print_postage_expecting_error.text).to eql(install_stamps_connect.window_title.text) if install_stamps_connect.present?
             if please_wait.present?
-              logger.message(please_wait.paragraph)
+              log.message(please_wait.paragraph)
               please_wait.ok
               sleep(0.125)
               print_button.click
@@ -163,7 +163,7 @@ module Stamps
         confirm_window.wait_until_present 3
         5.times do
           if confirm_window.present?
-            logger.info "Confirm Print"
+            log.info "Confirm Print"
             confirm_window.dont_prompt_deducting_postage_again
             confirm_window.continue
             confirm_window.continue
@@ -182,7 +182,7 @@ module Stamps
         end
         sleep(2)
         #raise "Unable to open international mail modal." unless windows_print.present?
-        logger.info "LAST CHANCE!!! #{windows_print.present?}"
+        log.info "LAST CHANCE!!! #{windows_print.present?}"
         windows_print.print
       end
     end

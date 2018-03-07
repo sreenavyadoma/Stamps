@@ -65,7 +65,7 @@ module Stamps
         end
       end
       @modal_param.browser = StampsTest.driver
-      @modal_param.logger = StampsTest.log
+      @modal_param.log = StampsTest.log
       @modal_param.scenario_name = StampsTest.scenario_name
       @modal_param
     end

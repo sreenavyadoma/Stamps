@@ -160,9 +160,9 @@ module Stamps
             sleep(2)
             if order_num_field.present?
               order_number_str=order_num_field.text
-              logger.info order_number_str
+              log.info order_number_str
               order_number=/(\d+)/.match(order_number_str)
-              logger.info "ORDER NUMBER:  #{order_number}"
+              log.info "ORDER NUMBER:  #{order_number}"
               return order_number
             end
           end
@@ -180,7 +180,7 @@ module Stamps
 
         def count
           count=StampsField.new(browser.span(css: "span[data-v-observable=cart-count]")).text
-          logger.info "Volusion Cart Count: #{count}"
+          log.info "Volusion Cart Count: #{count}"
           count.to_i
         end
 

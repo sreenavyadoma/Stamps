@@ -44,7 +44,7 @@ module Stamps
           button.click
           change_success.wait_until_present 3
           if change_success.present?
-            logger.info change_success.text
+            log.info change_success.text
             return change_success
           end
         end

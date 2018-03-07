@@ -2,7 +2,7 @@ module Stamps
   ##
   #
   module Browser
-    Param = Struct.new(:browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media, :developer, :debug, :firefox_profile, :printer, :browser_str, :hostname) {} unless Object.const_defined?('Param')
+    Param = Struct.new(:browser, :log, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media, :developer, :debug, :firefox_profile, :printer, :browser_str, :hostname) {} unless Object.const_defined?('Param')
 
     ##
     #
@@ -10,11 +10,11 @@ module Stamps
       class << self
         attr_accessor :browser
       end
-      attr_reader :param, :logger
+      attr_reader :param, :log
       def initialize(param)
         @param = param
         self.class.browser = param.browser
-        @logger = param.logger
+        @log = param.log
       end
 
       def browser

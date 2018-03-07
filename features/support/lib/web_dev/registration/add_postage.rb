@@ -44,7 +44,7 @@ module Stamps
 
       def confirm
         confirm_button=StampsField.new (browser.button text: "Confirm")
-        logger.info "Add Postage Page has loaded: #{browser.url}"
+        log.info "Add Postage Page has loaded: #{browser.url}"
 
         10.times do
           confirm_button.click

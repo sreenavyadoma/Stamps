@@ -9,7 +9,7 @@ module Stamps
         logger = Log4r::Logger.new(":")
         logger.outputters = Outputter.stdout
         @log = Stamps::Core::StampsLogDecorator.new(logger)
-        @log.verbose = ENV['VERBOSE']
+        @log.verbose = true #ENV['VERBOSE']
       end
 
       def print_test_steps

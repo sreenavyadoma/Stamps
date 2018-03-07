@@ -40,7 +40,7 @@ module Stamps
               break if text_field.text.include? selection
             end
 
-            logger.info "Order Source #{selection} was #{(text_field.text.include? selection)?"Selected":"NOT selected"}"
+            log.info "Order Source #{selection} was #{(text_field.text.include? selection)?"Selected":"NOT selected"}"
           end
 
           def amazon
@@ -74,7 +74,7 @@ module Stamps
               break if text_field.text.include? selection
             end
 
-            logger.info "Product Identifier #{selection} was #{(text_field.text.include? selection)?"Selected":"NOT selected"}"
+            log.info "Product Identifier #{selection} was #{(text_field.text.include? selection)?"Selected":"NOT selected"}"
           end
 
           def use_sku
@@ -135,12 +135,12 @@ module Stamps
             button.click
             5.times do
               if importing_order.present?
-                logger.info importing_order.message
+                log.info importing_order.message
                 importing_order.ok
               end
               if server_error.present?
                 error_str=server_error.message
-                logger.info error_str
+                log.info error_str
                 server_error.ok
                 expect("Server Error: \n#{error_str}").to eql ""
               end
@@ -163,12 +163,12 @@ module Stamps
             5.times do
               if server_error.present?
                 error_str=server_error.message
-                logger.info error_str
+                log.info error_str
                 server_error.ok
                 expect("Server Error: \n#{error_str}").to eql ""
               end
               if importing_order.present?
-                logger.info importing_order.message
+                log.info importing_order.message
                 importing_order.ok
               end
               return settings if settings.present?

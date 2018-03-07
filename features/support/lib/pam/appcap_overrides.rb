@@ -172,11 +172,11 @@ module Stamps
         5.times do
           submit_button.click
           if appcap_overrides.present?
-            logger.message appcap_overrides.text
-            logger.message appcap_overrides.text
-            logger.message appcap_overrides.text
-            logger.message appcap_overrides.text
-            logger.message appcap_overrides.text
+            log.message appcap_overrides.text
+            log.message appcap_overrides.text
+            log.message appcap_overrides.text
+            log.message appcap_overrides.text
+            log.message appcap_overrides.text
             return appcap_overrides
           end
         end

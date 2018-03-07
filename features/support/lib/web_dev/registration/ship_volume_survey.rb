@@ -49,7 +49,7 @@ module Stamps
 
       def submit
         submit=StampsField.new browser.button text: "Submit"
-        logger.info "Ship Volume Survey Page has loaded: #{browser.url}"
+        log.info "Ship Volume Survey Page has loaded: #{browser.url}"
 
         10.times do
           submit.click

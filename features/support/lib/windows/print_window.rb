@@ -11,7 +11,7 @@ module Stamps
 
       def present?
         print_window=RAutomation::Window.new(:title => /Print/i)
-        logger.info "Print Window Present? #{print_window.present?}"
+        log.info "Print Window Present? #{print_window.present?}"
         begin
           if browser==:firefox
             print_window.activate
@@ -39,7 +39,7 @@ module Stamps
 
       def print
         print_window=RAutomation::Window.new(:title => /Print/i)
-        logger.info "Print Window Present? #{print_window.present?}"
+        log.info "Print Window Present? #{print_window.present?}"
         if browser==:firefox
           wait_until_present
           expect("Print Window is not open").to eql "" unless present?
@@ -49,7 +49,7 @@ module Stamps
           begin
             print_window.button(:value => "OK").click
           rescue RAutomation::WaitHelper::TimeoutError => e
-            logger.error e.backtrace.join "\n"
+            log.error e.backtrace.join "\n"
             raise "Unable to click on OK button in Windows Print dialog. Windows print modal might not have been present.\n#{e.backtrace.join "\n"}"
           end
 
@@ -62,7 +62,7 @@ module Stamps
           begin
             print_window.button(:value => "&Print").click
           rescue RAutomation::WaitHelper::TimeoutError => e
-            logger.error e.backtrace.join "\n"
+            log.error e.backtrace.join "\n"
             raise "Unable to click on OK button in Windows Print dialog. Windows print modal might not have been present." + e
           end
 
@@ -75,13 +75,13 @@ module Stamps
           begin
             print_window.button(:value => "&Print").click
           rescue RAutomation::WaitHelper::TimeoutError => e
-            logger.error e.backtrace.join "\n"
+            log.error e.backtrace.join "\n"
             raise "Unable to click on OK button in Windows Print dialog. Windows print modal might not have been present." + e
           end
         else
           expect("Invalid browser selection.  #{browser} is not recognized.  User :firefox, :chrome or :ie").to eql ""
         end
-        logger.info "Windows click print modal print buttoning successful."
+        log.info "Windows click print modal print buttoning successful."
         sleep(3)
       end
     end

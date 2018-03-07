@@ -29,7 +29,7 @@ module Stamps
       end
 
       def close
-        logger.message message
+        log.message message
         close_button.click_while_present
       end
     end
@@ -64,7 +64,7 @@ module Stamps
 
       def next
         10.times do
-          logger.message message
+          log.message message
           next_button.click
           return learn_more if learn_more.present?
         end
@@ -101,7 +101,7 @@ module Stamps
 
       def next
         10.times do
-          logger.message message
+          log.message message
           next_button.click
           return import_from_stores if import_from_stores.present?
         end
@@ -138,7 +138,7 @@ module Stamps
 
       def next
         10.times do
-          logger.message message
+          log.message message
           next_button.click
           return import_from_csv if import_from_csv.present?
         end

@@ -134,7 +134,7 @@ module Stamps
             browser.divs(css: "[id^=ordersGrid-][id$=-body] table td:nth-child(#{column_number(:order_id)})>div").each_with_index do |field, index|
               scroll_to_column(field)
               if StampsField.new(field).text.include?(order_id)
-                logger.info "Order ID #{order_id}, Row #{index + 1}"
+                log.info "Order ID #{order_id}, Row #{index + 1}"
                 sleep(0.35)
                 return index + 1
               end
@@ -664,7 +664,7 @@ module Stamps
             data_error = ""
           end
 
-          logger.info "#{order_id} data-qtip error:  #{data_error.length == 0 ? "None" : data_error}"
+          log.info "#{order_id} data-qtip error:  #{data_error.length == 0 ? "None" : data_error}"
           data_error
         end
 
@@ -796,7 +796,7 @@ module Stamps
           if args.length == 1
             if args[0].is_a? Hash
               rows = args[0]
-              logger.info "Restoring #{} checked orders..."
+              log.info "Restoring #{} checked orders..."
             else
               raise ArgumentError, "This method expects a Hash of Web Elements, got #{args[0].class}"
             end
@@ -805,7 +805,7 @@ module Stamps
               checked = hash_field[1]
               if checked
                 check(row_number)
-                logger.info "Row #{row_number} #{checked?(row_number)}"
+                log.info "Row #{row_number} #{checked?(row_number)}"
               end
             end
           else
@@ -879,7 +879,7 @@ module Stamps
             cache_count = args[0]
           end
 
-          #logger.info "Caching checked rows..."
+          #log.info "Caching checked rows..."
           checked_rows = {}
           grid_total = row_count
           if cache_count > 2 && cache_count < grid_total
@@ -889,15 +889,15 @@ module Stamps
           else
             cache_item_count = cache_count
           end
-          #logger.info "Number of rows to check:  #{cache_item_count}"
+          #log.info "Number of rows to check:  #{cache_item_count}"
           1.upto(cache_item_count) { |row|
             checked = checked?(row)
             if checked
               checked_rows[row] = checked
             end
-            logger.info "Row #{row} Checked? #{checked}.  Stored:  #{checked_rows[row]}"
+            log.info "Row #{row} Checked? #{checked}.  Stored:  #{checked_rows[row]}"
           }
-          #logger.info "Checked rows cached."
+          #log.info "Checked rows cached."
           checked_rows
         end
 

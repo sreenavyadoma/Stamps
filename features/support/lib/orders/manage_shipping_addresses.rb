@@ -91,10 +91,10 @@ module Stamps
             grid_city = city row
             grid_state = state row
             if (grid_name.casecmp(name) == 0) && (grid_company.casecmp(company) == 0) && (grid_city.casecmp(city) == 0)
-              logger.info "Match found! - Row #{row} :: Name=#{grid_name} :: Company=#{grid_company} :: City=#{grid_city} ::  State=#{grid_state} :: "
+              log.info "Match found! - Row #{row} :: Name=#{grid_name} :: Company=#{grid_company} :: City=#{grid_city} ::  State=#{grid_state} :: "
               return row
             else
-              logger.info "No match - Row #{row} :: Name=#{grid_name} :: Company=#{grid_company} :: City=#{grid_city} ::  State=#{grid_state} :: "
+              log.info "No match - Row #{row} :: Name=#{grid_name} :: Company=#{grid_company} :: City=#{grid_city} ::  State=#{grid_state} :: "
             end
           end
           0

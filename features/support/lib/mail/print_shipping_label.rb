@@ -51,7 +51,7 @@ module Stamps
       def label_selected? div
         8.times{
           selected=(div.attribute_value 'class').include? 'selectedLabel'
-          logger.info "Label selected?  #{(selected)? 'Yes':'No'}"
+          log.info "Label selected?  #{(selected)? 'Yes':'No'}"
           break if selected
         }
         (div.attribute_value 'class').include? 'selectedLabel'

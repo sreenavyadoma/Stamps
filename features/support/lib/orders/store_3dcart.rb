@@ -72,16 +72,16 @@ module Stamps
             button.click
             sleep(0.35)
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             if server_error.present?
               error_str=server_error.message
-              logger.info error_str
+              log.info error_str
               server_error.ok
               expect("Server Error: \n#{error_str}").to eql "" unless counter < max_server_error_retry_count
             end
-            logger.info connecting_button.text if connecting_button.field.visible?
+            log.info connecting_button.text if connecting_button.field.visible?
             return settings if settings.present?
           end
           expect("Rakuten Store Connect failed.  Settings Modal did not open.  ").to eql ""
@@ -100,16 +100,16 @@ module Stamps
             button.click
             sleep(0.35)
             if importing_order.present?
-              logger.info importing_order.message
+              log.info importing_order.message
               importing_order.ok
             end
             if server_error.present?
               error_str=server_error.message
-              logger.info error_str
+              log.info error_str
               server_error.ok
               expect("Server Error: \n#{error_str}").to eql "" unless counter < max_server_error_retry_count
             end
-            logger.info connecting_button.text if connecting_button.field.visible?
+            log.info connecting_button.text if connecting_button.field.visible?
             return manage_stores if manage_stores.present?
           end
         end

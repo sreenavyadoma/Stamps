@@ -144,9 +144,9 @@ module Stamps
             if error_label.present?
               @printing_error = true
               ptags = browser.ps css: 'div[id^=dialoguemodal]>p'
-              logger.info "-- Chrome NAWS Plugin Error --"
-              ptags.each {|p_tag| logger.error "#{StampsField.new(p_tag).text}" if p_tag.present? }
-              logger.info "-- Chrome NAWS Plugin Error --"
+              log.info "-- Chrome NAWS Plugin Error --"
+              ptags.each {|p_tag| log.error "#{StampsField.new(p_tag).text}" if p_tag.present? }
+              log.info "-- Chrome NAWS Plugin Error --"
               if error_ok_button.present?
                 error_message = self.error_message
                 5.times {
@@ -176,11 +176,11 @@ module Stamps
             window_text = error_window.text
             err_msg = message_label.text
             @printing_error = "#{window_text} \n #{(err_msg)}"
-            logger.info "Printing Error: \n#{@printing_error}"
+            log.info "Printing Error: \n#{@printing_error}"
           end
 
           if ok_button.present?
-            logger.info "Error Window OK button"
+            log.info "Error Window OK button"
             ok_button.click
             ok_button.click
             ok_button.click

@@ -70,17 +70,17 @@ module Stamps
           yes_button.click
           sleep(0.35)
           if confirmation.present?
-            logger.message confirmation.text
-            logger.message confirmation.text
-            logger.message confirmation.text
-            logger.message confirmation.text
+            log.message confirmation.text
+            log.message confirmation.text
+            log.message confirmation.text
+            log.message confirmation.text
             return confirmation
           end
           if ach_error.present?
-            logger.message ach_error.text
-            logger.message ach_error.text
-            logger.message ach_error.text
-            logger.message ach_error.text
+            log.message ach_error.text
+            log.message ach_error.text
+            log.message ach_error.text
+            log.message ach_error.text
             return ach_error
           end
         end
@@ -113,7 +113,7 @@ module Stamps
           submit_button.click
           submit_button.click
           if purchase_verification.present?
-            logger.info purchase_verification.text
+            log.info purchase_verification.text
             return purchase_verification
           end
         end

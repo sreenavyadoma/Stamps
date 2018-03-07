@@ -129,11 +129,11 @@ Then /^[Oo]n [Mm]embership [Pp]age, click Submit and correct errors$/ do
     case @registration_result
       #when there's a failure, correct field and resubmit.
       when Registration::MembershipPhone
-        logger.error "Membership Phone Textbox has error: #{@registration_result.help_text}"
+        log.error "Membership Phone Textbox has error: #{@registration_result.help_text}"
         step "set Registration Membership page Phone to random"
         step "On Registration Membership page, click Submit"
       when Registration::MembershipCardNumber
-        logger.error "Membership Phone Textbox has error: #{@registration_result.help_text}"
+        log.error "Membership Phone Textbox has error: #{@registration_result.help_text}"
         step "set Registration Membership page Card number to #{test_param[:card_number]}"
         step "On Registration Membership page, click Submit"
       when Registration::ChooseSupplies

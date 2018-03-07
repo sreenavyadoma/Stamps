@@ -33,7 +33,7 @@ module Stamps
             button.field.hover
             sleep(0.35)
             if tooltip_field.present?
-              logger.info tooltip_field.text
+              log.info tooltip_field.text
               return tooltip_field.text
             end
           end
@@ -71,7 +71,7 @@ module Stamps
             button.field.hover
             sleep(0.35)
             if tooltip_field.present?
-              logger.info tooltip_field.text
+              log.info tooltip_field.text
               return tooltip_field.text
             end
           end
@@ -186,7 +186,7 @@ module Stamps
             break if selected?
           end
           expect(selected?).to be(true), "Unable to select Filter Panel: #{panel_name}"
-          logger.info "Selected Filter Panel: #{panel_name}"
+          log.info "Selected Filter Panel: #{panel_name}"
         end
       end
 

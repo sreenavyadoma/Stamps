@@ -56,7 +56,7 @@ module Stamps
 
         if server_error.present?
           error_str = server_error.message
-          logger.info error_str
+          log.info error_str
           server_error.ok
           expect("Server Error: \n#{error_str}").to eql ""
         end

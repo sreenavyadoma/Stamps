@@ -435,7 +435,7 @@ module Stamps
             # ignore
           end
         end
-        logger.info "#{ENV["SIGNED_IN_USER"]}#{(signed_in_username.present?) ? " - sign-out failed" : " was signed out.  Goodbye."}"
+        log.info "#{ENV["SIGNED_IN_USER"]}#{(signed_in_username.present?) ? " - sign-out failed" : " was signed out.  Goodbye."}"
       end
 
       def wait_until_present(*args)

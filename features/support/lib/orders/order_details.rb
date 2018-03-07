@@ -670,7 +670,7 @@ module Stamps
                 dropdown.click unless selection_label.present?
                 if selection_label.present?
                   qtip = selection_label.parent.parent.parent.parent.attribute_value("data-qtip")
-                  logger.info "#{qtip}"
+                  log.info "#{qtip}"
                   return qtip
                 end
               rescue
@@ -800,7 +800,7 @@ module Stamps
               dropdown.field.hover
               sleep(0.35)
               if tooltip_field.present?
-                logger.info tooltip_field.text
+                log.info tooltip_field.text
                 return tooltip_field.text
               end
             end
@@ -852,7 +852,7 @@ module Stamps
             10.times do
               begin
                 cost = cost_label.text
-                logger.info "Cost is #{cost}"
+                log.info "Cost is #{cost}"
               rescue
                 # ignore
               end
@@ -954,7 +954,7 @@ module Stamps
                 dropdown.click unless cost_label.present?
                 if cost_label.present?
                   service_cost = cost_label.text.dollar_amount_str
-                  logger.info "Service Cost for \"#{service_name}\" is #{service_cost}"
+                  log.info "Service Cost for \"#{service_name}\" is #{service_cost}"
                   dropdown.click if cost_label.present?
                   return service_cost.to_f.round(2)
                 end

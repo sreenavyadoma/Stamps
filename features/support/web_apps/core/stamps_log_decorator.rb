@@ -2,8 +2,8 @@ module Stamps
   module Core
     class StampsLogDecorator < SimpleDelegator
       attr_accessor :scenario_name, :verbose
-      def initialize(log)
-        @log = log
+      def initialize(logger)
+        @logger = logger
         super
       end
 

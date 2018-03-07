@@ -12,7 +12,7 @@ module Stamps
           raise "Invalid environment selection: #{param.test_env}"
       end
       sleep(1)
-      logger.message browser.text
+      log.message browser.text
       browser.text
     end
 
@@ -29,7 +29,7 @@ module Stamps
           raise "Invalid environment selection: #{param.test_env}"
       end
       sleep(1)
-      logger.message browser.text
+      log.message browser.text
       browser.text
     end
 
@@ -45,7 +45,7 @@ module Stamps
           raise "Invalid environment selection: #{param.test_env}"
       end
       sleep(1)
-      logger.message browser.text
+      log.message browser.text
       browser.text
     end
 
@@ -61,7 +61,7 @@ module Stamps
           raise "Invalid environment selection: #{param.test_env}"
       end
       sleep(1)
-      logger.message browser.text
+      log.message browser.text
       browser.text
     end
   end
