@@ -4,15 +4,15 @@ module Stamps
       #todo-Rob fix this, very unprofession
       class MoreInfoPage < WebApps::Base
         def present?
-          browser.windows.size > 1
+          driver.windows.size > 1
         end
 
         def title
-          browser.windows.last.title
+          driver.windows.last.title
         end
 
         def close
-          browser.windows.last.close
+          driver.windows.last.close
         end
       end
 
@@ -21,7 +21,7 @@ module Stamps
 
         def initialize(param)
           super
-          @remember_user_field = StampsField.new browser.checkbox(id: 'rememberUser')
+          @remember_user_field = StampsField.new driver.checkbox(id: 'rememberUser')
         end
 
         def present?
@@ -29,13 +29,13 @@ module Stamps
         end
 
         def check
-          browser.checkbox(css: 'input[id=rememberUser]').set
-          browser.checkbox(css: 'input[id=rememberUser]').set
+          driver.checkbox(css: 'input[id=rememberUser]').set
+          driver.checkbox(css: 'input[id=rememberUser]').set
         end
 
         def uncheck
-          browser.checkbox(css: 'input[id=rememberUser]').clear
-          browser.checkbox(css: 'input[id=rememberUser]').clear
+          driver.checkbox(css: 'input[id=rememberUser]').clear
+          driver.checkbox(css: 'input[id=rememberUser]').clear
         end
       end
 
@@ -46,17 +46,17 @@ module Stamps
         end
 
         def url
-          browser.url
+          driver.url
         end
 
         def is_url_correct?
-          browser.url.include? 'stamps.com/Webpostage'
+          driver.url.include? 'stamps.com/Webpostage'
         end
 
         def wait_until_url_loads
           20.times do
             sleep(0.35)
-            break if browser.url.include? 'stamps.com/Webpostage'
+            break if driver.url.include? 'stamps.com/Webpostage'
           end
         end
 
@@ -73,15 +73,15 @@ module Stamps
       #todo-Rob fix this, very unprofession
       class MoreInfoPage < WebApps::Base
         def present?
-          browser.windows.size > 1
+          driver.windows.size > 1
         end
 
         def title
-          browser.windows.last.title
+          driver.windows.last.title
         end
 
         def close
-          browser.windows.last.close
+          driver.windows.last.close
         end
       end
 
@@ -90,7 +90,7 @@ module Stamps
 
         def initialize(param)
           super
-          @remember_user_field = StampsField.new browser.checkbox(id: 'rememberUser')
+          @remember_user_field = StampsField.new driver.checkbox(id: 'rememberUser')
         end
 
         def present?
@@ -98,13 +98,13 @@ module Stamps
         end
 
         def check
-          browser.checkbox(css: 'input[id=rememberUser]').set
-          browser.checkbox(css: 'input[id=rememberUser]').set
+          driver.checkbox(css: 'input[id=rememberUser]').set
+          driver.checkbox(css: 'input[id=rememberUser]').set
         end
 
         def uncheck
-          browser.checkbox(css: 'input[id=rememberUser]').clear
-          browser.checkbox(css: 'input[id=rememberUser]').clear
+          driver.checkbox(css: 'input[id=rememberUser]').clear
+          driver.checkbox(css: 'input[id=rememberUser]').clear
         end
       end
 
@@ -115,17 +115,17 @@ module Stamps
         end
 
         def url
-          browser.url
+          driver.url
         end
 
         def is_url_correct?
-          browser.url.include? 'stamps.com/Webpostage'
+          driver.url.include? 'stamps.com/Webpostage'
         end
 
         def wait_until_url_loads
           20.times do
             sleep(0.35)
-            break if browser.url.include? 'stamps.com/Webpostage'
+            break if driver.url.include? 'stamps.com/Webpostage'
           end
         end
 
@@ -141,15 +141,15 @@ module Stamps
       #todo-Rob refactor MoreInfoPage
       class MoreInfoPage < WebApps::Base
         def present?
-          browser.windows.size > 1
+          driver.windows.size > 1
         end
 
         def title
-          browser.windows.last.title
+          driver.windows.last.title
         end
 
         def close
-          browser.windows.last.close
+          driver.windows.last.close
         end
       end
 
@@ -158,7 +158,7 @@ module Stamps
 
         def initialize(param)
           super
-          @remember_user_field = StampsField.new browser.checkbox(id: 'rememberUser')
+          @remember_user_field = StampsField.new driver.checkbox(id: 'rememberUser')
         end
 
         def present?
@@ -166,13 +166,13 @@ module Stamps
         end
 
         def check
-          browser.checkbox(css: 'input[id=rememberUser]').set
-          browser.checkbox(css: 'input[id=rememberUser]').set
+          driver.checkbox(css: 'input[id=rememberUser]').set
+          driver.checkbox(css: 'input[id=rememberUser]').set
         end
 
         def uncheck
-          browser.checkbox(css: 'input[id=rememberUser]').clear
-          browser.checkbox(css: 'input[id=rememberUser]').clear
+          driver.checkbox(css: 'input[id=rememberUser]').clear
+          driver.checkbox(css: 'input[id=rememberUser]').clear
         end
       end
 
@@ -183,17 +183,17 @@ module Stamps
         end
 
         def url
-          browser.url
+          driver.url
         end
 
         def is_url_correct?
-          browser.url.include? 'stamps.com/Webpostage'
+          driver.url.include? 'stamps.com/Webpostage'
         end
 
         def wait_until_url_loads
           20.times do
             sleep(0.35)
-            break if browser.url.include? 'stamps.com/Webpostage'
+            break if driver.url.include? 'stamps.com/Webpostage'
           end
         end
 
@@ -211,11 +211,11 @@ module Stamps
 
         def initialize(param)
           super
-          @x_btn = StampsField.new browser.img(css: 'div[id^=dialoguemodal]>div>img[class*=x-tool-close]')
-          @more_info_btn = StampsField.new browser.span(text: 'More Info')
-          @continue_btn = StampsField.new browser.span(text: 'Continue')
+          @x_btn = StampsField.new driver.img(css: 'div[id^=dialoguemodal]>div>img[class*=x-tool-close]')
+          @more_info_btn = StampsField.new driver.span(text: 'More Info')
+          @continue_btn = StampsField.new driver.span(text: 'Continue')
           @more_info_page = MoreInfoPage.new(param)
-          @window_title = StampsField.new browser.span(css: "div[id^=title][class*='x-window-header-title x-window-header-title-default']>div[id^=title-][id$=-textEl]")
+          @window_title = StampsField.new driver.span(css: "div[id^=title][class*='x-window-header-title x-window-header-title-default']>div[id^=title-][id$=-textEl]")
         end
 
         def present?
@@ -247,19 +247,19 @@ module Stamps
       class MailSignInModal < WebApps::Base
         
         def username_textbox
-          (cache[:username_textbox].nil? || !cache[:username_textbox].present?) ? cache[:username_textbox] = StampsTextbox.new(browser.text_field(id: 'UserNameTextBox')) : cache[:username_textbox]
+          (cache[:username_textbox].nil? || !cache[:username_textbox].present?) ? cache[:username_textbox] = StampsTextbox.new(driver.text_field(id: 'UserNameTextBox')) : cache[:username_textbox]
         end
 
         def password_textbox
-          (cache[:password_textbox].nil? || !cache[:password_textbox].present?) ? cache[:password_textbox] = StampsTextbox.new(browser.text_field(id: 'PasswordTextBox')) : cache[:password_textbox]
+          (cache[:password_textbox].nil? || !cache[:password_textbox].present?) ? cache[:password_textbox] = StampsTextbox.new(driver.text_field(id: 'PasswordTextBox')) : cache[:password_textbox]
         end
 
         def sign_in_button
-          (cache[:sign_in_button].nil? || !cache[:sign_in_button].present?) ? cache[:sign_in_button] = StampsField.new(browser.button(id: 'signInButton')) : cache[:sign_in_button]
+          (cache[:sign_in_button].nil? || !cache[:sign_in_button].present?) ? cache[:sign_in_button] = StampsField.new(driver.button(id: 'signInButton')) : cache[:sign_in_button]
         end
 
         def invalid_msg
-          (cache[:invalid_msg].nil? || !cache[:invalid_msg].present?) ? cache[:invalid_msg] = StampsField.new(browser.div(css: 'div[id*=InvalidUsernamePasswordMsg]')) : cache[:invalid_msg]
+          (cache[:invalid_msg].nil? || !cache[:invalid_msg].present?) ? cache[:invalid_msg] = StampsField.new(driver.div(css: 'div[id*=InvalidUsernamePasswordMsg]')) : cache[:invalid_msg]
         end
 
         def whats_new_modal
@@ -267,23 +267,23 @@ module Stamps
         end
 
         def verifying_account_info
-          (cache[:account_info].nil? || !cache[:account_info].present?) ? cache[:account_info] = StampsField.new(browser.div(text: 'Verifying account information...')) : cache[:account_info]
+          (cache[:account_info].nil? || !cache[:account_info].present?) ? cache[:account_info] = StampsField.new(driver.div(text: 'Verifying account information...')) : cache[:account_info]
         end
 
         def remember_username_checkbox
-          (cache[:remember_username].nil? || !cache[:remember_username].present?) ? cache[:remember_username] = StampsWatirCheckbox.new(browser.checkbox(id: 'rememberUser')) : cache[:remember_username]
+          (cache[:remember_username].nil? || !cache[:remember_username].present?) ? cache[:remember_username] = StampsWatirCheckbox.new(driver.checkbox(id: 'rememberUser')) : cache[:remember_username]
         end
 
         def invalid_username_password
-          (cache[:invalid_username].nil? || !cache[:invalid_username].present?) ? cache[:invalid_username] = StampsField.new(browser.div(id: 'InvalidUsernamePasswordMsg')) : cache[:invalid_username]
+          (cache[:invalid_username].nil? || !cache[:invalid_username].present?) ? cache[:invalid_username] = StampsField.new(driver.div(id: 'InvalidUsernamePasswordMsg')) : cache[:invalid_username]
         end
 
         def signed_in_user
-          (cache[:signed_in_user].nil? || !cache[:signed_in_user].present?) ? cache[:signed_in_user] = StampsField.new(browser.span(id: 'userNameText')) : cache[:signed_in_user]
+          (cache[:signed_in_user].nil? || !cache[:signed_in_user].present?) ? cache[:signed_in_user] = StampsField.new(driver.span(id: 'userNameText')) : cache[:signed_in_user]
         end
 
         def sign_in_form
-          (cache[:sign_in_form].nil? || !cache[:sign_in_form].present?) ? cache[:sign_in_form] = StampsField.new(browser.form(css: 'form[class=form-signin]')) : cache[:sign_in_form]
+          (cache[:sign_in_form].nil? || !cache[:sign_in_form].present?) ? cache[:sign_in_form] = StampsField.new(driver.form(css: 'form[class=form-signin]')) : cache[:sign_in_form]
         end
 
         def server_error
@@ -295,7 +295,7 @@ module Stamps
         end
 
         def sign_in_link
-          (cache[:sign_in_link].nil? || !cache[:sign_in_link].present?) ? cache[:sign_in_link] = StampsField.new(browser.a(css: 'a[class*=signInLink]')) : cache[:sign_in_link]
+          (cache[:sign_in_link].nil? || !cache[:sign_in_link].present?) ? cache[:sign_in_link] = StampsField.new(driver.a(css: 'a[class*=signInLink]')) : cache[:sign_in_link]
         end
 
         def wait_until_present(*args)
@@ -429,14 +429,14 @@ module Stamps
             log.message "USERNAME: #{username}, PASSWORD: #{password}"
           end
 
-          sign_in_link = StampsField.new browser.link(text: 'Sign In')
-          username_textbox = StampsTextbox.new browser.text_field(id: 'UserNameTextBox')
-          password_textbox = StampsTextbox.new browser.text_field(id: 'PasswordTextBox')
+          sign_in_link = StampsField.new driver.link(text: 'Sign In')
+          username_textbox = StampsTextbox.new driver.text_field(id: 'UserNameTextBox')
+          password_textbox = StampsTextbox.new driver.text_field(id: 'PasswordTextBox')
           remember_username = Stamps::WebApps::StampsCheckbox.new checkbox_field, verify_field, 'class', 'checked'
-          sign_in_button = StampsField.new browser.button(id: 'signInButton')
-          verifying_account_info = StampsField.new browser.div(text: 'Verifying account information...')
-          signed_in_user = StampsField.new browser.span(id: 'userNameText')
-          invalid_msg = StampsField.new browser.div css: 'div[id*=InvalidUsernamePasswordMsg]'
+          sign_in_button = StampsField.new driver.button(id: 'signInButton')
+          verifying_account_info = StampsField.new driver.div(text: 'Verifying account information...')
+          signed_in_user = StampsField.new driver.span(id: 'userNameText')
+          invalid_msg = StampsField.new driver.div css: 'div[id*=InvalidUsernamePasswordMsg]'
 
           10.times {
             sign_in_link.click unless username_textbox.present?
@@ -479,12 +479,12 @@ module Stamps
           log.info "Password is #{password}"
 
           # def invalid_username_password
-          #   StampsField.new browser.div css: "div[id*=InvalidUsernamePasswordMsg]"
+          #   StampsField.new driver.div css: "div[id*=InvalidUsernamePasswordMsg]"
           # end
 
           # def forgot_username
-          #   sign_in_link=StampsField.new browser.link(text: "Sign In")
-          #   button=StampsField.new browser.a css: "a[class*=forgotUsername]"
+          #   sign_in_link=StampsField.new driver.link(text: "Sign In")
+          #   button=StampsField.new driver.a css: "a[class*=forgotUsername]"
           #   forgot_username_modal=ForgotUsernameModal.new(param)
           #   5.times do
           #     sign_in_link.click
@@ -496,8 +496,8 @@ module Stamps
           # end
 
           # def forgot_password
-          #   sign_in_link=StampsField.new browser.link(text: "Sign In")
-          #   button=StampsField.new browser.a css: "a[class*=forgotPassword]"
+          #   sign_in_link=StampsField.new driver.link(text: "Sign In")
+          #   button=StampsField.new driver.a css: "a[class*=forgotPassword]"
           #   forgot_password_modal=ForgotPasswordModal.new(param)
           #   5.times do
           #     sign_in_link.click
@@ -511,8 +511,8 @@ module Stamps
         end
 
          def forgot_username
-           sign_in_link = StampsField.new browser.link(text: 'Sign In')
-           button = StampsField.new browser.a css: 'a[class*=forgotUsername]'
+           sign_in_link = StampsField.new driver.link(text: 'Sign In')
+           button = StampsField.new driver.a css: 'a[class*=forgotUsername]'
            forgot_username_modal = ForgotUsernameModal.new(param)
            5.times do
              #sign_in_link.click
@@ -525,8 +525,8 @@ module Stamps
          end
 
         def forgot_password
-          sign_in_link = StampsField.new browser.link(text: 'Sign In')
-          button = StampsField.new browser.a css: 'a[class*=forgotPassword]'
+          sign_in_link = StampsField.new driver.link(text: 'Sign In')
+          button = StampsField.new driver.a css: 'a[class*=forgotPassword]'
           forgot_password_modal = ForgotPasswordModal.new(param)
           5.times do
             #sign_in_link.click
@@ -539,7 +539,7 @@ module Stamps
         end
 
          def invalid_username_password
-           StampsField.new browser.div css: 'div[id*=InvalidUsernamePasswordMsg]'
+           StampsField.new driver.div css: 'div[id*=InvalidUsernamePasswordMsg]'
          end
       end
     end

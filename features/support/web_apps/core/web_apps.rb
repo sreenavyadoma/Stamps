@@ -14,11 +14,6 @@ module Stamps
         @log = param.log
       end
 
-      def driver
-        super
-      end
-      alias_method :browser, :driver
-
       def cache
         @cache = {} if @cache.nil?
         @cache
@@ -27,32 +22,32 @@ module Stamps
     
     class StampsField
       class << self
-        attr_accessor :browser
+        attr_accessor :driver
       end
 
       attr_accessor :field, :verify_field, :ver_field_attr, :ver_field_attr_value
       def initialize(field)
         @field = field
-        self.browser = field.browser unless field.browser.nil?
+        self.driver = field.driver unless field.driver.nil?
       end
       alias_method :checkbox, :field
       alias_method :radio, :field
       alias_method :textbox, :field
       alias_method :input, :field
 
-      def browser
-        if self.class.browser.nil?
-          raise ArgumentError, "browser is nil for html field #{field.class}. Set #{self.class.to_s.split('::').last}.browser = browser after creating this object."
+      def driver
+        if self.class.driver.nil?
+          raise ArgumentError, "driver is nil for html field #{field.class}. Set #{self.class.to_s.split('::').last}.driver = driver after creating this object."
         end
-        self.class.browser
+        self.class.driver
       end
 
-      def browser=(browser)
-        self.class.browser = browser
+      def driver=(driver)
+        self.class.driver = driver
       end
 
       def url
-        browser.url
+        driver.url
       end
 
       def flash
@@ -146,7 +141,7 @@ module Stamps
 
       def scroll_into_view
         begin
-          browser.execute_script('arguments[0].scrollIntoView();', field)
+          driver.execute_script('arguments[0].scrollIntoView();', field)
         rescue
           # ignore
         end
@@ -232,7 +227,7 @@ module Stamps
       end
 
       def set_attribute_value(attribute_name, value)
-        browser.execute_script("return arguments[0].#{attribute_name}='#{value}'", field) if present?
+        driver.execute_script("return arguments[0].#{attribute_name}='#{value}'", field) if present?
       end
 
       def data_error
@@ -481,10 +476,10 @@ module Stamps
     end
 
     class StampsOldDropDown # TODO-Rob refactor this to StampsGenericDropDown
-      attr_accessor :browser, :dropdown, :textbox, :html_tag
+      attr_accessor :driver, :dropdown, :textbox, :html_tag
 
       def initialize(dropdown, html_tag, textbox)
-        @browser = dropdown.browser
+        @driver = dropdown.driver
         @dropdown = StampsField.new(dropdown)
         @html_tag = html_tag
         @textbox = StampsTextbox.new(textbox)
@@ -493,7 +488,7 @@ module Stamps
       def expose_selection(selection)
         selection_field = case html_tag
                             when :li
-                              browser.li(text: selection)
+                              driver.li(text: selection)
                             else
                               raise ArgumentError, "Unsupported HTML drop-down selection tag #{html_tag}".should
                           end
@@ -582,11 +577,11 @@ module Stamps
         expect(html_tag).not_to be_nil, 'Error: Set html_tag before calling select.'
         selection = case html_tag
                       when :span
-                        StampsField.new(browser.span(text: str))
+                        StampsField.new(driver.span(text: str))
                       when :li
-                        StampsField.new(browser.li(text: str))
+                        StampsField.new(driver.li(text: str))
                       when :div
-                        StampsField.new(browser.div(text: str))
+                        StampsField.new(driver.div(text: str))
                       else
                         raise ArgumentError, "#{html_tag} is not not implemented."
                     end
@@ -607,13 +602,13 @@ module Stamps
     end
 
     class StampsNumberField
-      attr_reader :browser, :textbox, :increment, :decrement
+      attr_reader :driver, :textbox, :increment, :decrement
 
       def initialize(textbox, inc_btn, dec_btn)
         @textbox = StampsTextbox.new(textbox)
         @increment = StampsField.new(inc_btn)
         @decrement = StampsField.new(dec_btn)
-        @browser = textbox.browser
+        @driver = textbox.driver
       end
 
       def present?
@@ -634,14 +629,14 @@ module Stamps
     end
 
     class StampsCombobox
-      attr_accessor :browser, :textbox, :dropdown, :selection_type, :index
+      attr_accessor :driver, :textbox, :dropdown, :selection_type, :index
 
       def initialize(textboxes, dropdowns, selection_type, index)
         @index = index
         @textbox = StampsTextbox.new(textboxes[index])
         @dropdown = StampsTextbox.new(dropdowns[index])
         @selection_type = selection_type
-        @browser = textbox.browser
+        @driver = textbox.driver
       end
 
       def present?
@@ -654,9 +649,9 @@ module Stamps
           selection = StampsField.new(
             case selection_type
               when :li
-                browser.lis(text: str)[index]
+                driver.lis(text: str)[index]
               when :div
-                browser.divs(text: str)[index]
+                driver.divs(text: str)[index]
               else
                 # do nothing
             end

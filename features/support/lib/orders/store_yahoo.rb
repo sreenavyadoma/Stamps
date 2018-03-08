@@ -4,7 +4,7 @@ module Stamps
 =begin
       class YahooSettings < StoreSettings
         def window_title
-          StampsField.new browser.div text: "Yahoo Settings"
+          StampsField.new driver.div text: "Yahoo Settings"
         end
 
         def present?
@@ -20,7 +20,7 @@ module Stamps
       class Yahoo < WebApps::Base
 
         def window_title
-          StampsField.new browser.div(text: "Connect your Yahoo Store")
+          StampsField.new driver.div(text: "Connect your Yahoo Store")
         end
 
         def present?
@@ -28,26 +28,26 @@ module Stamps
         end
 
         def store_id
-          StampsTextbox.new browser.text_field(css: "div[id^=connectyahoowindow-][id$=-body]>div>div>div>div>div[class*=x-box-layout-ct]>div>div>div[id^=textfield]>div[id$=bodyEl]>div>div>input")
+          StampsTextbox.new driver.text_field(css: "div[id^=connectyahoowindow-][id$=-body]>div>div>div>div>div[class*=x-box-layout-ct]>div>div>div[id^=textfield]>div[id$=bodyEl]>div>div>input")
         end
 
         def contact_token
-          parent=browser.span(text: "Partner Store Contract Token").parent.parent
+          parent=driver.span(text: "Partner Store Contract Token").parent.parent
           input=parent.divs[0].div.div.textbox
           raise "Contact Token textbox does not exist or textbox locator is wrong." unless input.present?
           StampsTextbox.new input
         end
 
         def first_order_id_to_import
-          StampsTextbox.new browser.text_field(css: "div[id^=connectyahoowindow-][id$=-body]>div>div>div>div>div[class*=x-box-layout-ct]>div>div>div:nth-child(4)>div>div>div>div>div>div>input")
+          StampsTextbox.new driver.text_field(css: "div[id^=connectyahoowindow-][id$=-body]>div>div>div>div>div[class*=x-box-layout-ct]>div>div>div:nth-child(4)>div>div>div>div>div>div>input")
         end
 
         def connect_button
-          StampsField.new browser.span(text: "Connect")
+          StampsField.new driver.span(text: "Connect")
         end
 
         def connect
-          button=StampsField.new browser.span(text: "Connect")
+          button=StampsField.new driver.span(text: "Connect")
           settings=YahooSettings.new(param)
           server_error=Orders::Stores::ServerError.new(param)
           importing_order=Orders::Stores::ImportingOrdersModal.new(param)
@@ -73,7 +73,7 @@ module Stamps
         end
 
         def reconnect
-          button=StampsField.new browser.span(text: "Connect")
+          button=StampsField.new driver.span(text: "Connect")
           server_error=Orders::Stores::ServerError.new(param)
           manage_stores=ManageStores.new(param)
           importing_order=Orders::Stores::ImportingOrdersModal.new(param)
@@ -98,7 +98,7 @@ module Stamps
         end
 
         def reconnect_old
-          button=StampsField.new browser.span(text: "Connect")
+          button=StampsField.new driver.span(text: "Connect")
           manage_stores=ManageStores.new(param)
           importing_order=Orders::Stores::ImportingOrdersModal.new(param)
 
@@ -198,7 +198,7 @@ module Stamps
       class ModifyYahooStore < Yahoo
 
         def window_title
-          StampsField.new(browser.div text: "Modify your Yahoo Store Connection")
+          StampsField.new(driver.div text: "Modify your Yahoo Store Connection")
         end
 
         def present?
@@ -212,19 +212,19 @@ module Stamps
 
       class YahooPage < WebApps::Base
         def present?
-          browser.url.include? "shopify.com"
+          driver.url.include? "shopify.com"
         end
 
         def username
-          StampsTextbox.new browser.text_field(id: 'login-input')
+          StampsTextbox.new driver.text_field(id: 'login-input')
         end
 
         def password
-          StampsTextbox.new browser.text_field(id: 'password')
+          StampsTextbox.new driver.text_field(id: 'password')
         end
 
         def sign_in
-          button=StampsField.new browser.text_field(css: "input[value='Log in']")
+          button=StampsField.new driver.text_field(css: "input[value='Log in']")
           settings_page=ShopifySettings.new(param)
 
           10.times do

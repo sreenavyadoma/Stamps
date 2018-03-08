@@ -45,7 +45,7 @@ module Stamps
         def sort_order(column, sort_order)
           scroll_to_column(column)
 
-          span = browser.span(text: column_text[column])
+          span = driver.span(text: column_text[column])
           column = StampsField.new(span)
           sort_order = sort_order == :sort_ascending ? "ASC" : "DESC"
           sort_order_span = span.parent.parent.parent.parent.parent
@@ -72,15 +72,15 @@ module Stamps
         end
 
         def row_count
-          browser.tables(css: "[id^=ordersGrid-] table").size.to_i
+          driver.tables(css: "[id^=ordersGrid-] table").size.to_i
         end
 
         def scroll_to_column(name)
           case name
             when Symbol
-              StampsField.new(browser.span(text: column_text[name])).scroll_into_view
+              StampsField.new(driver.span(text: column_text[name])).scroll_into_view
             when String
-              StampsField.new(browser.span(text: name)).scroll_into_view
+              StampsField.new(driver.span(text: name)).scroll_into_view
             when Watir::Element
               StampsField.new(name).scroll_into_view
             else
@@ -95,7 +95,7 @@ module Stamps
         def size
           15.times do
             begin
-              return browser.tables(css: '[id^=ordersGrid-][id$=-body] table').size if browser.tables(css: '[id^=ordersGrid-][id$=-body] table').size > 0
+              return driver.tables(css: '[id^=ordersGrid-][id$=-body] table').size if driver.tables(css: '[id^=ordersGrid-][id$=-body] table').size > 0
             rescue
               # ignore
             end
@@ -110,7 +110,7 @@ module Stamps
         end
 
         def grid_field(column_number, row)
-          browser.div(css: "div[id^=ordersGrid-][id$=-body]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td:nth-child(#{column_number(column_number).to_s})>div")
+          driver.div(css: "div[id^=ordersGrid-][id$=-body]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td:nth-child(#{column_number(column_number).to_s})>div")
         end
 
         def grid_field_column_name(column_name, row)
@@ -119,7 +119,7 @@ module Stamps
 
         def column_number(column)
           if column_cache[column].nil?
-            columns = browser.spans(css: "div[id^=gridcolumn-][id$=-textEl]>span")
+            columns = driver.spans(css: "div[id^=gridcolumn-][id$=-textEl]>span")
             columns.each_with_index do |field, index|
               scroll_to_column(field) #scroll unless field is visible
               column_cache[column_text.key(StampsField.new(field).text)] = index + 1
@@ -128,10 +128,10 @@ module Stamps
           column_cache[column]
         end
 
-        # locate row location for order_id
+        # TODO-Rob Create a hash that keeps track of which row an order id is on. :locate row location for order_id
         def row_number(order_id)
           7.times do
-            browser.divs(css: "[id^=ordersGrid-][id$=-body] table td:nth-child(#{column_number(:order_id)})>div").each_with_index do |field, index|
+            driver.divs(css: "[id^=ordersGrid-][id$=-body] table td:nth-child(#{column_number(:order_id)})>div").each_with_index do |field, index|
               scroll_to_column(field)
               if StampsField.new(field).text.include?(order_id)
                 #log.info "Order ID #{order_id}, Row #{index + 1}"
@@ -779,13 +779,13 @@ module Stamps
       class GridCheckBox < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
-          StampsField.new(browser.spans(class: "x-column-header-text-inner").first).scroll_into_view
+          StampsField.new(driver.spans(class: "x-column-header-text-inner").first).scroll_into_view
         end
 
         def checkbox_header
           scroll_into_view
-          checkbox_field = browser.spans(class: "x-column-header-text-inner").first
-          check_verify_field = browser.div(css: "div[class*=x-column-header-checkbox]")
+          checkbox_field = driver.spans(class: "x-column-header-text-inner").first
+          check_verify_field = driver.div(css: "div[class*=x-column-header-checkbox]")
           attribute = "class"
           attrib_value_check = "checker-on"
           Stamps::WebApps::StampsCheckbox.new checkbox_field, check_verify_field, attribute, attrib_value_check
@@ -840,8 +840,8 @@ module Stamps
 
         def checkbox_field(row)
           StampsCheckbox.new(
-              browser.div(css: "[id^=ordersGrid] table:nth-child(#{row.to_s}) [class=x-grid-row-checker]"),
-              browser.table(css: "[id*=Grid] table:nth-child(#{row.to_s})"),
+              driver.div(css: "[id^=ordersGrid] table:nth-child(#{row.to_s}) [class=x-grid-row-checker]"),
+              driver.table(css: "[id*=Grid] table:nth-child(#{row.to_s})"),
               "class", "selected")
         end
 
@@ -1054,7 +1054,7 @@ module Stamps
         end
 
         def grid_field
-          !column.has_key?(:grid_field) || !column[:grid_field].present? ? column[:grid_field] = StampsField.new(browser.div(css: "[id^=ordersGrid-][class*=orders-grid]")) : column[:grid_field]
+          !column.has_key?(:grid_field) || !column[:grid_field].present? ? column[:grid_field] = StampsField.new(driver.div(css: "[id^=ordersGrid-][class*=orders-grid]")) : column[:grid_field]
         end
 
         def self.column

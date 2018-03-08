@@ -3,7 +3,7 @@
 
 Feature: Registration
   Background:
-    Given I launched default browser
+    Given I launched default driver
 
   @registration_pam
   Scenario:

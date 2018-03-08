@@ -1,6 +1,6 @@
 Feature: Registration
   Background:
-    Given I launched default browser
+    Given I launched default driver
 
   @pam_meter_limit_100k
   Scenario:

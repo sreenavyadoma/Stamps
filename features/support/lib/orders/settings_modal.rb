@@ -54,33 +54,33 @@ module Stamps
 
         # HTML fields
         def stores_tab_field
-          cache[:stores_tab_field].nil? || !cache[:stores_tab_field].present? ? cache[:stores_tab_field] = StampsField.new(browser.span(text: 'Stores')) : cache[:stores_tab_field]
+          cache[:stores_tab_field].nil? || !cache[:stores_tab_field].present? ? cache[:stores_tab_field] = StampsField.new(driver.span(text: 'Stores')) : cache[:stores_tab_field]
         end
 
         def gen_tab_field
-          cache[:gen_tab_field].nil? || !cache[:gen_tab_field].present? ? cache[:gen_tab_field] = StampsField.new(browser.span(text: 'General')) : cache[:gen_tab_field]
+          cache[:gen_tab_field].nil? || !cache[:gen_tab_field].present? ? cache[:gen_tab_field] = StampsField.new(driver.span(text: 'General')) : cache[:gen_tab_field]
         end
 
         def int_tab_field
-          cache[:int_tab_field].nil? || !cache[:int_tab_field].present? ? cache[:int_tab_field] = StampsField.new(browser.span(text: 'International')) : cache[:int_tab_field]
+          cache[:int_tab_field].nil? || !cache[:int_tab_field].present? ? cache[:int_tab_field] = StampsField.new(driver.span(text: 'International')) : cache[:int_tab_field]
         end
 
         def label_tab_field
-          cache[:label_tab_field].nil? || !cache[:label_tab_field].present? ? cache[:label_tab_field] = StampsField.new(browser.span(text: 'Label Messages')) : cache[:label_tab_field]
+          cache[:label_tab_field].nil? || !cache[:label_tab_field].present? ? cache[:label_tab_field] = StampsField.new(driver.span(text: 'Label Messages')) : cache[:label_tab_field]
         end
       end
 
       module OrdersSettingsModalTitle
         def window_title
           if cache[:window_title].nil? || !cache[:window_title].present?
-            cache[:window_title] = StampsField.new(browser.div(css: '[id=userprefswindow_header-targetEl] div div'))
+            cache[:window_title] = StampsField.new(driver.div(css: '[id=userprefswindow_header-targetEl] div div'))
           end
           cache[:window_title]
         end
 
         def x_btn
           if cache[:window_title].nil? || !cache[:window_title].present?
-              cache[:window_title] = StampsField.new(browser.img(css: '[id$=userprefswindow-1751_header-targetEl] img'))
+              cache[:window_title] = StampsField.new(driver.img(css: '[id$=userprefswindow-1751_header-targetEl] img'))
           end
           cache[:window_title]
         end

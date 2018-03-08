@@ -14,7 +14,7 @@ module Stamps
               end
         log.info "Visit: #{url}"
         sleep(1)
-        browser.goto(url)
+        driver.goto(url)
         sleep(1.5)
         self
       end
@@ -28,31 +28,31 @@ module Stamps
       end
 
       def username
-        StampsTextbox.new(browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=uname]"))
+        StampsTextbox.new(driver.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=uname]"))
       end
 
       def first_name
-        @first_name ||= StampsTextbox.new(browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=fname]"))
+        @first_name ||= StampsTextbox.new(driver.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=fname]"))
       end
 
       def last_name
-        @last_name ||= StampsTextbox.new(browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=fname]"))
+        @last_name ||= StampsTextbox.new(driver.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=fname]"))
       end
 
       def phone
-        @phone ||= StampsTextbox.new(browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=phone]"))
+        @phone ||= StampsTextbox.new(driver.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=phone]"))
       end
 
       def email
-        @email ||= StampsTextbox.new(browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=email]"))
+        @email ||= StampsTextbox.new(driver.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=email]"))
       end
 
       def search_btn
-        StampsField.new(browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]"))
+        StampsField.new(driver.text_field(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]"))
       end
 
       def user_5_2_radio
-        @user_5_2_radio ||= browser.radio(css: "input[name=v6usr][value='0']")
+        @user_5_2_radio ||= driver.radio(css: "input[name=v6usr][value='0']")
       end
 
       def user_5_2_or_lower

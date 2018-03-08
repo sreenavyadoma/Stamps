@@ -3,13 +3,13 @@ module Stamps
     module Stores
       module StoresIframe
         def iframe
-          browser.iframe(css: "[id=storeiframe]")
+          driver.iframe(css: "[id=storeiframe]")
         end
       end
 
       module StoreSettingsWindowTitle
         def window_title
-          StampsField.new(browser.div(css: "[id^=storeiframewindow-][id$=_header-targetEl] [class$=x-title-item]"))
+          StampsField.new(driver.div(css: "[id^=storeiframewindow-][id$=_header-targetEl] [class$=x-title-item]"))
         end
       end
 
@@ -75,7 +75,7 @@ module Stamps
         def selection_field(str)
           #Version 2. check number of selections, if less than 36, bring them all in.
           #raise error or call Manage Service Options if iframe.spans(css: "[ng-bind-html^='service.PackageStr']").size < 36
-          #browser.spans(css: "[ng-bind-html^='service.PackageStr']").size
+          #driver.spans(css: "[ng-bind-html^='service.PackageStr']").size
 
           case(str)
             when /FCM Large Envelope\/Flat/ #0. FCM Large Envelope/Flat/Flat (1-3 days) -- Large Envelope/Flat

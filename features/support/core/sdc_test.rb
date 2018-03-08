@@ -25,11 +25,11 @@ module Stamps
         log.info "-"
       end
 
-      def setup(browser)
+      def setup(driver)
         begin
           Watir.always_locate = true
           Selenium::WebDriver.logger.level = :warn
-          case(browser)
+          case(driver)
 
             when :edge # Launch Microsoft Edge
               begin
@@ -84,7 +84,7 @@ module Stamps
               end
               self.driver = Watir::Browser.new :safari, technology_preview: true
             else
-              raise ArgumentError, "#{browser} is not a valid browser selection"
+              raise ArgumentError, "#{driver} is not a valid driver selection"
           end
           self.driver
         rescue StandardError => e
@@ -116,7 +116,7 @@ module Stamps
 
       def teardown
         begin
-          browser.quit
+          driver.quit
         rescue
           # ignore
         end
@@ -126,7 +126,7 @@ module Stamps
       def clear_cookies
         log.info "Clearing cookies"
         begin
-          browser.cookies.clear
+          driver.cookies.clear
         rescue
           # ignore
         end
@@ -144,7 +144,7 @@ end
 =begin
 
 
-          log.info "Browser Selection: #{browser}"
+          log.info "Browser Selection: #{driver}"
 
               #driver = Watir::Browser.new :safari                                         #todo Alex uncomment once framework upgraded to Watir 6.10.2
               #versions(driver.execute_script("return navigator.userAgent;"))

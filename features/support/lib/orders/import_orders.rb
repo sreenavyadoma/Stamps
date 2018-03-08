@@ -2,23 +2,23 @@ module Stamps
   module Orders
     class SuccessModal < WebApps::Base
       def window_title
-        StampsField.new(browser.div(css: "div[id^=dialoguemodal-][id$=_header-innerCt]")).text
+        StampsField.new(driver.div(css: "div[id^=dialoguemodal-][id$=_header-innerCt]")).text
       end
 
       def present?
-        browser.div(text: "Success").present?
+        driver.div(text: "Success").present?
       end
 
       def wait_until_present
-          (browser.div(text: "Success")).wait_until_present(120)
+          (driver.div(text: "Success")).wait_until_present(120)
       end
 
       def message
-        StampsTextbox.new browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]").text
+        StampsTextbox.new driver.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]").text
       end
 
       def ok
-        button = StampsField.new(browser.spans(text: "OK").last)
+        button = StampsField.new(driver.spans(text: "OK").last)
         5.times do
           button.click
           break unless button.present?
@@ -31,7 +31,7 @@ module Stamps
 
       def initialize(param)
         super
-        @title = StampsField.new browser.div(text: "Import Orders")
+        @title = StampsField.new driver.div(text: "Import Orders")
       end
 
       def present?
@@ -39,16 +39,16 @@ module Stamps
       end
 
       def filename_label
-        StampsField.new(browser.label(id: "fileNameLabel")).text
+        StampsField.new(driver.label(id: "fileNameLabel")).text
       end
 
       def textbox
-        StampsTextbox.new browser.text_field(id: "files-inputEl")
+        StampsTextbox.new driver.text_field(id: "files-inputEl")
       end
 
       def import
         success = SuccessModal.new(param)
-        button = StampsField.new browser.span(text: "Import")
+        button = StampsField.new driver.span(text: "Import")
         server_error = Orders::Stores::ServerError.new(param)
 
         button.click
@@ -73,7 +73,7 @@ module Stamps
       end
 
       def cancel
-        button = StampsField.new browser.span(text: "Cancel")
+        button = StampsField.new driver.span(text: "Cancel")
         5.times do
           button.click
           button.click
@@ -84,7 +84,7 @@ module Stamps
       end
 
       def select_csv_file
-        button = StampsField.new browser.span(text: "Select CSV File")
+        button = StampsField.new driver.span(text: "Select CSV File")
         open_file = Windows::OpenFile.new(param.driver)
         10.times do
           button.field.parent.click
@@ -95,7 +95,7 @@ module Stamps
       end
 
       def download_sample_file
-        StampsField.new(browser.a(text: "Download sample file")).click
+        StampsField.new(driver.a(text: "Download sample file")).click
       end
     end
   end

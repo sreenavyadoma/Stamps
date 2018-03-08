@@ -1,8 +1,8 @@
 module Stamps
   module TestHelper
     class << self
-      def browser_type(browser)
-        case browser.downcase
+      def browser_type(driver)
+        case driver.downcase
           when /ff|firefox|mozilla/
             return :firefox
           when /chrome|gc|google/
@@ -17,7 +17,7 @@ module Stamps
             # do nothing
         end
 
-        raise ArgumentError, "#{browser} is not a valid selection. Valid browsers are ff|firefox|mozilla|chrome|gc|google|ms|me|microsoft|edge"
+        raise ArgumentError, "#{driver} is not a valid selection. Valid browsers are ff|firefox|mozilla|chrome|gc|google|ms|me|microsoft|edge"
       end
 
       def rand_alpha_str(min = 2, max = 10)

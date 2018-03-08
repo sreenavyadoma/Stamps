@@ -6,8 +6,8 @@ module Stamps
 
       def initialize(param)
         super
-        @window_title = StampsField.new(browser.span text: "Manage Mailing Addresses")
-        @close_btn = StampsField.new browser.img(css: "img[class*=close]")
+        @window_title = StampsField.new(driver.span text: "Manage Mailing Addresses")
+        @close_btn = StampsField.new driver.img(css: "img[class*=close]")
       end
 
       def close

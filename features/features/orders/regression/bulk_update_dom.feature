@@ -236,7 +236,7 @@ Feature: Bulk Update Domestic
     Then click Bulk Update Update Order button
     Then Pause for 2 seconds
 
-    #Then Refresh the browser
+    #Then Refresh the driver
 
     #verify fields in 1st order
     #Then check Orders Grid row 1
@@ -276,7 +276,7 @@ Feature: Bulk Update Domestic
     Then set Order Details service to PM Package
     Then set Order Details Pounds to 1
 
-    Then Refresh the browser
+    Then Refresh the driver
 
     #Check 1st two orders
     Then check Orders Grid row 1
@@ -290,7 +290,7 @@ Feature: Bulk Update Domestic
     Then click Bulk Update Update Order button
     Then Pause for 2 seconds
 
-    Then Refresh the browser
+    Then Refresh the driver
 
     #verify fields in 1st order
     Then check Orders Grid row 1

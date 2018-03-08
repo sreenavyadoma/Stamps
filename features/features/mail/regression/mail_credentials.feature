@@ -2,7 +2,7 @@
 Feature: Forgot Password, Forgot Username, Invalid Credentials, Remember Username
 
   Background:
-    Given I launched default browser
+    Given I launched default driver
 
   @mail_forgot_password
   Scenario: Forgot Password

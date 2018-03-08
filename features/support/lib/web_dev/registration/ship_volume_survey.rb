@@ -21,20 +21,20 @@ module Stamps
 
 
       def header_message
-        browser.h2(text: "Help us customize your Stamps.com experience.").wait_until_present 10
+        driver.h2(text: "Help us customize your Stamps.com experience.").wait_until_present 10
       end
 
       def wait_until_present
-        #browser.button(text: "Submit").wait_until_present 6
+        #driver.button(text: "Submit").wait_until_present 6
       end
 
       def drop_down
-        cache[:field] = StampsField.new(browser.span(css: "form[name=shipSurveyForm]>[class=shippingdropdown]")) if cache[:field].nil? || !cache[:field].present?
+        cache[:field] = StampsField.new(driver.span(css: "form[name=shipSurveyForm]>[class=shippingdropdown]")) if cache[:field].nil? || !cache[:field].present?
       end
 
       def select(str)
         drop_down.click
-        selection=StampsField.new(browser.span(text: "1-10 packages per day (1-200 monthly)"))
+        selection=StampsField.new(driver.span(text: "1-10 packages per day (1-200 monthly)"))
         15.times do
           selection.click
         end
@@ -44,12 +44,12 @@ module Stamps
       end
 
       def consent_checkbox
-        @consent_checkbox=StampsWatirCheckbox.new(browser.checkbox(name: 'consentCheckbox'))
+        @consent_checkbox=StampsWatirCheckbox.new(driver.checkbox(name: 'consentCheckbox'))
       end
 
       def submit
-        submit=StampsField.new browser.button text: "Submit"
-        log.info "Ship Volume Survey Page has loaded: #{browser.url}"
+        submit=StampsField.new driver.button text: "Submit"
+        log.info "Ship Volume Survey Page has loaded: #{driver.url}"
 
         10.times do
           submit.click

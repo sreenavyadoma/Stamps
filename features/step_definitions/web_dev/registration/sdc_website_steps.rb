@@ -1,11 +1,11 @@
 Then /^(?:|[Ii] )[Ll]oad(?:|ed) (?:|the default |default )[Rr]egistration(?: [Pp]age| [Tt]heme (.*))$/ do |str|
   if str.nil?
-    step "I launch default browser"
+    step "I launch default driver"
     step "load SDC Website"
     step "click on Get Started"
   else
     TestData.store[:registration_theme]=str
-    step "I launch default browser"
+    step "I launch default driver"
     registration.load_theme(TestData.store[:registration_theme])
   end
 end

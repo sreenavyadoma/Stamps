@@ -6,8 +6,8 @@ module Stamps
         class VolusionCountry < WebApps::Base
           def select(country)
             begin
-              browser.select_list(:id, "ShipCountry").option(text: country).when_present.select
-              browser.select_list(:id, "ShipCountry").option(text: country).when_present.select
+              driver.select_list(:id, "ShipCountry").option(text: country).when_present.select
+              driver.select_list(:id, "ShipCountry").option(text: country).when_present.select
             rescue
               # ignore
             end
@@ -17,8 +17,8 @@ module Stamps
         class VolusionState < WebApps::Base
           def select state
             begin
-              browser.select_list(:id, "ShipState_dropdown").option(text: state).when_present.select
-              browser.select_list(:id, "ShipState_dropdown").option(text: state).when_present.select
+              driver.select_list(:id, "ShipState_dropdown").option(text: state).when_present.select
+              driver.select_list(:id, "ShipState_dropdown").option(text: state).when_present.select
             rescue
               # ignore
             end
@@ -27,54 +27,54 @@ module Stamps
 
         class VolusionTypeOfAddress < WebApps::Base
           def residential
-            browser.radio(css: 'input[name=ShipResidential][value=Y]').set
-            browser.radio(css: 'input[name=ShipResidential][value=Y]').set
+            driver.radio(css: 'input[name=ShipResidential][value=Y]').set
+            driver.radio(css: 'input[name=ShipResidential][value=Y]').set
           end
 
           def business
-            browser.radio(css: 'input[name=ShipResidential][value=N]').set
-            browser.radio(css: 'input[name=ShipResidential][value=N]').set
+            driver.radio(css: 'input[name=ShipResidential][value=N]').set
+            driver.radio(css: 'input[name=ShipResidential][value=N]').set
           end
         end
 
         class VolusionBillingAddress < WebApps::Base
           def yes
-            browser.radio(css: 'input[name=alsobilling][value=Y]').set
-            browser.radio(css: 'input[name=alsobilling][value=Y]').set
+            driver.radio(css: 'input[name=alsobilling][value=Y]').set
+            driver.radio(css: 'input[name=alsobilling][value=Y]').set
           end
 
           def no
-            browser.radio(css: 'input[name=alsobilling][value=N]').set
-            browser.radio(css: 'input[name=alsobilling][value=N]').set
+            driver.radio(css: 'input[name=alsobilling][value=N]').set
+            driver.radio(css: 'input[name=alsobilling][value=N]').set
           end
         end
 
         def present?
-          browser.text_field(name: "ShipFirstName").present?
+          driver.text_field(name: "ShipFirstName").present?
         end
 
         def first_name
-          StampsTextbox.new browser.text_field(name: "ShipFirstName")
+          StampsTextbox.new driver.text_field(name: "ShipFirstName")
         end
 
         def last_name
-          StampsTextbox.new browser.text_field(name: "ShipLastName")
+          StampsTextbox.new driver.text_field(name: "ShipLastName")
         end
 
         def company
-          StampsTextbox.new browser.text_field(name: "ShipCompanyName")
+          StampsTextbox.new driver.text_field(name: "ShipCompanyName")
         end
 
         def address_1
-          StampsTextbox.new browser.text_field(name: "ShipAddress1")
+          StampsTextbox.new driver.text_field(name: "ShipAddress1")
         end
 
         def address_2
-          StampsTextbox.new browser.text_field(name: "ShipAddress2")
+          StampsTextbox.new driver.text_field(name: "ShipAddress2")
         end
 
         def city
-          StampsTextbox.new browser.text_field(name: "ShipCity")
+          StampsTextbox.new driver.text_field(name: "ShipCity")
         end
 
         def country
@@ -86,11 +86,11 @@ module Stamps
         end
 
         def zip_code
-          StampsTextbox.new browser.text_field(name: "ShipPostalCode")
+          StampsTextbox.new driver.text_field(name: "ShipPostalCode")
         end
 
         def phone_number
-          StampsTextbox.new browser.text_field(name: "ShipPhoneNumber")
+          StampsTextbox.new driver.text_field(name: "ShipPhoneNumber")
         end
 
         def type_of_address
@@ -102,7 +102,7 @@ module Stamps
         end
 
         def continue
-          button=StampsField.new browser.text_field(name: "btnContinue")
+          button=StampsField.new driver.text_field(name: "btnContinue")
           account_page=MyAccountPage.new(param)
           10.times do
             button.click
@@ -115,24 +115,24 @@ module Stamps
       class VolusionCheckOut < WebApps::Base
         class VolusionAddressType < WebApps::Base
           def residential
-            browser.radio(css: 'input[name=ShipResidential][value=Y]').set
-            browser.radio(css: 'input[name=ShipResidential][value=Y]').set
+            driver.radio(css: 'input[name=ShipResidential][value=Y]').set
+            driver.radio(css: 'input[name=ShipResidential][value=Y]').set
           end
 
           def business
-            browser.radio(css: 'input[name=ShipResidential][value=N]').set
-            browser.radio(css: 'input[name=ShipResidential][value=N]').set
+            driver.radio(css: 'input[name=ShipResidential][value=N]').set
+            driver.radio(css: 'input[name=ShipResidential][value=N]').set
           end
         end
 
         def present?
-          browser.h2(text: "Checkout").present?
+          driver.h2(text: "Checkout").present?
         end
 
         def my_saved_billing_address address
-          browser.select_list(:name, "My_Saved_Billing").option(text: address).select
-          browser.select_list(:name, "My_Saved_Billing").option(text: address).select
-          browser.select_list(:name, "My_Saved_Billing").option(text: address).select
+          driver.select_list(:name, "My_Saved_Billing").option(text: address).select
+          driver.select_list(:name, "My_Saved_Billing").option(text: address).select
+          driver.select_list(:name, "My_Saved_Billing").option(text: address).select
         end
 
 
@@ -141,20 +141,20 @@ module Stamps
         end
 
         def shipping_method method
-          browser.select_list(:name, "ShippingSpeedChoice").option(value: @shipping_method_map[method]).select
-          browser.select_list(:name, "ShippingSpeedChoice").option(value: @shipping_method_map[method]).select
-          browser.select_list(:name, "ShippingSpeedChoice").option(value: @shipping_method_map[method]).select
+          driver.select_list(:name, "ShippingSpeedChoice").option(value: @shipping_method_map[method]).select
+          driver.select_list(:name, "ShippingSpeedChoice").option(value: @shipping_method_map[method]).select
+          driver.select_list(:name, "ShippingSpeedChoice").option(value: @shipping_method_map[method]).select
         end
 
         def payment_method method
-          browser.select_list(:name, "PaymentMethodTypeDisplay").option(text: method).select
-          browser.select_list(:name, "PaymentMethodTypeDisplay").option(text: method).select
-          browser.select_list(:name, "PaymentMethodTypeDisplay").option(text: method).select
+          driver.select_list(:name, "PaymentMethodTypeDisplay").option(text: method).select
+          driver.select_list(:name, "PaymentMethodTypeDisplay").option(text: method).select
+          driver.select_list(:name, "PaymentMethodTypeDisplay").option(text: method).select
         end
 
         def place_order
-          button=StampsField.new browser.button(id: "btnSubmitOrder")
-          order_num_field=StampsField.new browser.div(css: "main#content_area>table>tbody>tr>td>div")
+          button=StampsField.new driver.button(id: "btnSubmitOrder")
+          order_num_field=StampsField.new driver.div(css: "main#content_area>table>tbody>tr>td>div")
           10.times do
             button.click
             sleep(2)
@@ -171,21 +171,21 @@ module Stamps
 
       class VolusionCart < WebApps::Base
         def visit
-          browser.goto "http://ywvmt.dmjeb.servertrust.com/shoppingcart.asp"
+          driver.goto "http://ywvmt.dmjeb.servertrust.com/shoppingcart.asp"
         end
 
         def present?
-          browser.text_field(css: "input[name='btn_checkout_guest']").present?
+          driver.text_field(css: "input[name='btn_checkout_guest']").present?
         end
 
         def count
-          count=StampsField.new(browser.span(css: "span[data-v-observable=cart-count]")).text
+          count=StampsField.new(driver.span(css: "span[data-v-observable=cart-count]")).text
           log.info "Volusion Cart Count: #{count}"
           count.to_i
         end
 
         def proceed_to_checkout
-          button=StampsField.new browser.text_field(css: "input[name='btn_checkout_guest']")
+          button=StampsField.new driver.text_field(css: "input[name='btn_checkout_guest']")
           checkout=VolusionCheckOut.new(param)
           10.times do
             button.click
@@ -198,11 +198,11 @@ module Stamps
 
       class VolusionProduct < WebApps::Base
         def present?
-          browser.text_field(css: "input[alt='Add to cart']").present?
+          driver.text_field(css: "input[alt='Add to cart']").present?
         end
 
         def qty_field
-          StampsTextbox.new browser.text_field(name: 'QTY.SAMPLE1')
+          StampsTextbox.new driver.text_field(name: 'QTY.SAMPLE1')
         end
 
         def qty number
@@ -215,7 +215,7 @@ module Stamps
           qty_textbox=self.qty_field
           shopping_cart=VolusionCart.new(param)
           cart_count_b4_add=shopping_cart.count
-          button=StampsField.new browser.text_field(css: "input[alt='Add to cart']")
+          button=StampsField.new driver.text_field(css: "input[alt='Add to cart']")
           2.times do
             button.click
             break if (cart_count_b4_add + @qty_to_add)==shopping_cart.count
@@ -228,11 +228,11 @@ module Stamps
 
       class VolusionCategoryOne < WebApps::Base
         def present?
-          browser.a(css: "a[title='SAMPLE PRODUCT ONE, SAMPLE1']").present?
+          driver.a(css: "a[title='SAMPLE PRODUCT ONE, SAMPLE1']").present?
         end
 
         def sample_product_one
-          link=StampsField.new browser.a(css: "a[title='SAMPLE PRODUCT ONE, SAMPLE1']")
+          link=StampsField.new driver.a(css: "a[title='SAMPLE PRODUCT ONE, SAMPLE1']")
           product=VolusionProduct.new(param)
           10.times do
             link.click
@@ -244,8 +244,8 @@ module Stamps
 
       class MyAccountPage < WebApps::Base
         def log_out
-          logged_out_field=StampsField.new browser.li(text: "You are now logged out.")
-          button=StampsField.new browser.a(css: "a[href*=logout]")
+          logged_out_field=StampsField.new driver.li(text: "You are now logged out.")
+          button=StampsField.new driver.a(css: "a[href*=logout]")
           5.times do
             button.click
             sleep(0.35)
@@ -254,12 +254,12 @@ module Stamps
         end
 
         def present?
-          browser.a(css: "a[href*=logout]").present?
+          driver.a(css: "a[href*=logout]").present?
         end
 
         def my_account
-          link=StampsField.new browser.a(text: "My Account")
-          label=StampsField.new browser.b(text: "My Orders")
+          link=StampsField.new driver.a(text: "My Account")
+          label=StampsField.new driver.b(text: "My Orders")
           10.times do
             link.click
             break if label.present?
@@ -273,7 +273,7 @@ module Stamps
         end
 
         def category_one
-          link=StampsField.new(browser.as(text: "CATEGORY ONE").last)
+          link=StampsField.new(driver.as(text: "CATEGORY ONE").last)
           category_1=VolusionCategoryOne.new(param)
           10.times do
             link.click
@@ -286,34 +286,34 @@ module Stamps
       class VolusionRegistration < WebApps::Base
         class ReceiveNewsLetterCheckBox < WebApps::Base
           def check
-            browser.checkbox(name: 'emailsubscriber').set
-            browser.checkbox(name: 'emailsubscriber').set
+            driver.checkbox(name: 'emailsubscriber').set
+            driver.checkbox(name: 'emailsubscriber').set
           end
 
           def uncheck
-            browser.checkbox(name: 'emailsubscriber').clear
-            browser.checkbox(name: 'emailsubscriber').clear
+            driver.checkbox(name: 'emailsubscriber').clear
+            driver.checkbox(name: 'emailsubscriber').clear
           end
         end
 
         def present?
-          browser.text_field(name: "Email").present?
+          driver.text_field(name: "Email").present?
         end
 
         def email
-          StampsTextbox.new browser.text_field(name: "Email")
+          StampsTextbox.new driver.text_field(name: "Email")
         end
 
         def email_again
-          StampsTextbox.new browser.text_field(name: "Emailagain")
+          StampsTextbox.new driver.text_field(name: "Emailagain")
         end
 
         def password
-          StampsTextbox.new browser.text_field(name: "password")
+          StampsTextbox.new driver.text_field(name: "password")
         end
 
         def password_again
-          StampsTextbox.new browser.text_field(name: "passwordagain")
+          StampsTextbox.new driver.text_field(name: "passwordagain")
         end
 
         def receive_newsletter
@@ -321,7 +321,7 @@ module Stamps
         end
 
         def continue
-          button=StampsField.new browser.text_field(id: "btnContinue")
+          button=StampsField.new driver.text_field(id: "btnContinue")
           shipping_address=VolusionShippingAddress.new(param)
           10.times do
             button.click
@@ -333,27 +333,27 @@ module Stamps
 
       class VolusionLoginPage < WebApps::Base
         def visit
-          browser.goto "http://ywvmt.dmjeb.servertrust.com/myaccount.asp"
+          driver.goto "http://ywvmt.dmjeb.servertrust.com/myaccount.asp"
         end
 
         def present?
-          browser.text_field(name: "email").present?
+          driver.text_field(name: "email").present?
         end
 
         def email
-          StampsTextbox.new browser.text_field(name: "email")
+          StampsTextbox.new driver.text_field(name: "email")
         end
 
         def password
-          StampsTextbox.new browser.text_field(name: "password")
+          StampsTextbox.new driver.text_field(name: "password")
         end
 
         def login
-          StampsField.new browser.text_field(css: "input[src*=btn_login]")
+          StampsField.new driver.text_field(css: "input[src*=btn_login]")
         end
 
         def continue
-          button=StampsField.new browser.img(css: "img[src*=Continue]")
+          button=StampsField.new driver.img(css: "img[src*=Continue]")
           registration=VolusionRegistration.new(param)
           10.times do
             button.click

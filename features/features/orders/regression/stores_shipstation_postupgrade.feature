@@ -14,7 +14,7 @@ Feature: ShipStation Post Upgrade Path
     Then expect in Looking for ShipStation? dialog Sign in to ShipStation Button exists
     Then expect in Looking for ShipStation? dialog Close Button exists
     Then click on close Button
-    Then Refresh the browser
+    Then Refresh the driver
     Then expect Orders page Looking for ShipStation? dialog is present
     Then check Looking for ShipStation? dialog don't show checkbox
     Then un-check Looking for ShipStation? dialog don't show checkbox

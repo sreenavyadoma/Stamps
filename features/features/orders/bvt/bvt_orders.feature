@@ -202,7 +202,7 @@ Feature:  BVT tests for Orders
     Then uncheck orders grid cached order id
 
     Then Pause for 3 seconds
-    Then Refresh the browser
+    Then Refresh the driver
     Then Pause for 5 seconds
 
   # Search for new order
@@ -378,7 +378,7 @@ Feature:  BVT tests for Orders
     Then Pause for 1 second
     Then blur out on Order Details form 3 times
     Then uncheck orders grid cached order id
-   #Then Refresh the browser
+   #Then Refresh the driver
     Then Pause for 3 seconds
     Then check orders grid cached order id
     Then Pause for 2 seconds

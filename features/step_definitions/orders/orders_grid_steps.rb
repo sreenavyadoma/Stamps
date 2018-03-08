@@ -132,13 +132,13 @@ end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Pounds is (?:correct|(.*))$/ do |expectation|
   expectation = TestData.store[:pounds] if expectation.nil?
-  20.times { break if stamps.orders.orders_grid.grid_column(:weight).lb(TestData.store[:order_id].values.last).eql? expectation }
+  10.times { break if stamps.orders.orders_grid.grid_column(:weight).lb(TestData.store[:order_id].values.last).eql? expectation.to_i }
   expect(stamps.orders.orders_grid.grid_column(:weight).lb(TestData.store[:order_id].values.last)).to eql expectation.to_i
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Ounces is (?:correct|(.*))$/ do |expectation|
   expectation = TestData.store[:ounces] if expectation.nil?
-  10.times { break if stamps.orders.orders_grid.grid_column(:weight).oz(TestData.store[:order_id].values.last).eql? expectation }
+  10.times { break if stamps.orders.orders_grid.grid_column(:weight).oz(TestData.store[:order_id].values.last).eql? expectation.to_i }
   expect(stamps.orders.orders_grid.grid_column(:weight).oz(TestData.store[:order_id].values.last)).to eql expectation.to_i
 end
 
@@ -159,7 +159,7 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Weight\(oz\) is (.*)$/ do |expectation|
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Qty. is (.+)$/ do |expectation|
-  20.times { break if stamps.orders.orders_grid.grid_column(:qty).data(TestData.store[:order_id].values.last).eql? expectation }
+  20.times { break if stamps.orders.orders_grid.grid_column(:qty).data(TestData.store[:order_id].values.last).eql? expectation.to_i }
   expect(stamps.orders.orders_grid.grid_column(:qty).data(TestData.store[:order_id].values.last)).to eql expectation.to_i
 end
 

@@ -14,7 +14,7 @@ module Stamps
         @confirm_window = PrintModal::MailConfirmPrint.new(param)
         @please_wait = PrintModal::PleaseWait.new(param)
         @windows_print = Windows::PrintWindow.new(param.driver)
-        @sample_button = StampsField.new browser.span(text: "Print Sample")
+        @sample_button = StampsField.new driver.span(text: "Print Sample")
         @printing_problem = PrintingProblem.new(param)
         @insufficient_funds = MailInsufficientFunds.new(param)
         @print_quantity_warning = PrintQuantityWarning.new(param)
@@ -22,7 +22,7 @@ module Stamps
       end
 
       def totals_field
-        cache[:totals_field].nil? || !cache[:totals_field].present? ? cache[:totals_field] = StampsField.new(browser.label(css: "div[class*=toolbar] label")) : cache[:totals_field]
+        cache[:totals_field].nil? || !cache[:totals_field].present? ? cache[:totals_field] = StampsField.new(driver.label(css: "div[class*=toolbar] label")) : cache[:totals_field]
       end
 
       def total
@@ -33,17 +33,17 @@ module Stamps
           10.times do
           @print_button = case param.print_media
                             when :envelope
-                              StampsField.new(browser.span(text: 'Print Envelope'))
+                              StampsField.new(driver.span(text: 'Print Envelope'))
                             when :stamps
-                              StampsField.new(browser.span(text: 'Print Stamps'))
+                              StampsField.new(driver.span(text: 'Print Stamps'))
                             when :label
-                              StampsField.new(browser.span(text: 'Print Label'))
+                              StampsField.new(driver.span(text: 'Print Label'))
                             when :roll
-                              StampsField.new(browser.span(text: 'Print Label'))
+                              StampsField.new(driver.span(text: 'Print Label'))
                             when :cm3610, :cm3710, :cm3910, :cm3930
-                              StampsField.new(browser.span(text: 'Print Label'))
+                              StampsField.new(driver.span(text: 'Print Label'))
                             when :cm3810, :cm3830
-                              StampsField.new(browser.span(text: 'Print Envelope'))
+                              StampsField.new(driver.span(text: 'Print Envelope'))
                             else
                               raise ArgumentError, "Invalid print media. Don't know what to do with #{}"
                           end
@@ -180,7 +180,7 @@ module Stamps
 
     class PrintingProblem < WebApps::Base
       def field
-        StampsField.new((browser.divs css: 'div[id^=dialoguemodal-][id$=-innerCt]').last)
+        StampsField.new((driver.divs css: 'div[id^=dialoguemodal-][id$=-innerCt]').last)
       end
 
       def present?

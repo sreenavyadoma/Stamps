@@ -3,7 +3,7 @@ module Stamps
     module Stores
       module StoresIframe
         def iframe
-          (cache[:iframe].nil?) ? cache[:iframe] = browser.iframe(css: "[id=storeiframe]") : cache[:iframe]
+          (cache[:iframe].nil?) ? cache[:iframe] = driver.iframe(css: "[id=storeiframe]") : cache[:iframe]
         end
       end
 
@@ -11,11 +11,11 @@ module Stamps
 
         module WindowTitle
           def window_title
-            StampsField.new(browser.divs(css: "[id^=storeiframewindow-][id$=_header-targetEl] [class*=x-title-item]").first)
+            StampsField.new(driver.divs(css: "[id^=storeiframewindow-][id$=_header-targetEl] [class*=x-title-item]").first)
           end
 
           def x_btn
-            cache[:x_btn].nil? || !cache[:x_btn].present? ? cache[:x_btn] = StampsField.new(browser.imgs(css: "[id^=storeiframewindow-][id$=_header-targetEl] img").first) : cache[:x_btn]
+            cache[:x_btn].nil? || !cache[:x_btn].present? ? cache[:x_btn] = StampsField.new(driver.imgs(css: "[id^=storeiframewindow-][id$=_header-targetEl] img").first) : cache[:x_btn]
           end
         end
 
@@ -188,7 +188,7 @@ module Stamps
 
           def store_modal
             if cache[:store_modal].nil? || !cache[:store_modal].present?
-              cache[:store_modal] = StampsField.new(browser.div(css: "div[id^='storeiframewindow'][id$='header']"))
+              cache[:store_modal] = StampsField.new(driver.div(css: "div[id^='storeiframewindow'][id$='header']"))
             end
             cache[:store_modal]
           end

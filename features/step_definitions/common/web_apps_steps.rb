@@ -1,6 +1,6 @@
 
 Given /^(?:|(?:|[Aa] )(?:[Vv]alid |))[Uu]ser is signed in to Web Apps$/ do
-  step "I launch default browser"
+  step "I launch default driver"
   step "Health Check: Print - Web Batch" if modal_param.health_check
   step "Health Check: Print - Address Book" if modal_param.health_check
   step "load Web Apps Sign-in page"

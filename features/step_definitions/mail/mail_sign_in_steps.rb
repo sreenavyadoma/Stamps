@@ -14,9 +14,9 @@ end
 
 Then /^More Info: Expect More Info page is present$/ do
   #SdcTest.log.step "More Info: Expect More Info page is present"
-  expectation="A second browser window was opened"
-  expectation="A second browser window did not open." unless @more_info_page.present?
-  expect(expectation).to eql "A second browser window was opened"
+  expectation="A second driver window was opened"
+  expectation="A second driver window did not open." unless @more_info_page.present?
+  expect(expectation).to eql "A second driver window was opened"
 end
 
 Then /^More Info: Close More Info page$/ do

@@ -2,7 +2,7 @@
 Feature: As a batch shipper, I want is able to create Then Print many orders automatically
 
   Background:
-    Given I launched browser ff
+    Given I launched driver ff
 
   @print_many_orders
   Scenario:  Print Specified Number of Orders

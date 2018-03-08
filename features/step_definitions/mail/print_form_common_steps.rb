@@ -1,5 +1,5 @@
 # encoding: utf-8
-# These browser fields exists on all forms (i.e. Stamps, Envelopes, Shipping Label and Certified Mail)
+# These driver fields exists on all forms (i.e. Stamps, Envelopes, Shipping Label and Certified Mail)
 Then /^[Ss]elect Print On (.*)$/ do |media|
   stamps.mail.print_on(TestData.store[:print_on]=media)
 end

@@ -3,7 +3,7 @@ Then /^Teardown$/ do
   SdcTest.teardown
 end
 
-Given /^(?:|I )[Ll]aunch(?:|ed) (?:|browser)(?:| (\w+))(?:|(?:|the )default browser)$/ do |str|
+Given /^(?:|I )[Ll]aunch(?:|ed) (?:|driver)(?:| (\w+))(?:|(?:|the )default driver)$/ do |str|
   SdcTest.setup((str.nil?)? modal_param.browser_str : str)
 end
 
@@ -24,7 +24,7 @@ Then /^[Pp]ause for (\d+) [Ss]econd(?:|s)?$/ do |seconds|
   end
 end
 
-Then(/^Close the browser and clear cookies$/) do #Clear Cookies
+Then(/^Close the driver and clear cookies$/) do #Clear Cookies
   SdcTest.clear_cookies
 end
 

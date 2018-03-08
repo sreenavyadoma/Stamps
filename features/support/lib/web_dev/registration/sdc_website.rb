@@ -3,7 +3,7 @@ module Stamps
     class SdcWebsite < WebApps::Base
 
       def get_started_btn
-        cache[:get_started_btn].nil? || !cache[:get_started_btn].present? ? cache[:get_started_btn] = StampsField.new(browser.button(css: "div[class*='pull-right']>button[class*=register]")) : cache[:get_started_btn]
+        cache[:get_started_btn].nil? || !cache[:get_started_btn].present? ? cache[:get_started_btn] = StampsField.new(driver.button(css: "div[class*='pull-right']>button[class*=register]")) : cache[:get_started_btn]
       end
 
 
@@ -24,7 +24,7 @@ module Stamps
                 else
                   raise ArgumentError, "#{param.env} environment is not implemented."
               end
-        browser.goto(url)
+        driver.goto(url)
         get_started_btn.wait_until_present(10)
         expect(get_started_btn).to be_present
       end
