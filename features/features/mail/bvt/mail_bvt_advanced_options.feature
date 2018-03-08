@@ -1,4 +1,5 @@
 
+@mobile_mail_smoke_test
 @mail_bvt_advanced_options
 Feature: Advanced Options BVT
 

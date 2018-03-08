@@ -1,3 +1,4 @@
+@mobile_mail_smoke_test
 Feature: International Shipping BVT
 
   Background:

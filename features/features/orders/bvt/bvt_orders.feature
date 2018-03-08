@@ -1,4 +1,4 @@
-
+@mobile_orders_smoke_test
 @bvt_all_tests
 Feature:  BVT tests for Orders
 

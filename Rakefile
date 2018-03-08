@@ -8,6 +8,16 @@ Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:mobile_orders_smoke_test) do |t|
+  t.profile = 'mobile_orders_smoke_test'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mobile_mail_smoke_test) do |t|
+  t.profile = 'mobile_mail_smoke_test'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:alex_test) do |t|
   t.profile = 'alex_test'
   t.cucumber_opts = "-p cuke_reports"

@@ -1,5 +1,5 @@
 @bvt_mail_piece_validation
-
+@mobile_mail_smoke_test
 Feature: Manually verify all mail pieces in Staging
 
   Background:
