@@ -8,9 +8,7 @@ module Stamps
         self.class.driver = driver
       end
 
-      def driver
-        self.class.driver
-      end
+      def driver; self.class.driver; end
     end
   end
 end
