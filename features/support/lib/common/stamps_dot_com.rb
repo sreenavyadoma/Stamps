@@ -1,5 +1,5 @@
 module Stamps
-  class StampsDotCom < Browser::Base
+  class StampsDotCom < WebApps::Base
     def navigation_bar
       cache[:navigation].nil? ? cache[:navigation] = Navigation::NavigationBar.new(param) : cache[:navigation]
     end
@@ -13,7 +13,7 @@ module Stamps
     end
 
     def common_modals
-      cache[:shared_modals] = Stamps::Browser::Base.new(param).extend(Stamps::Common::Modals) if cache[:shared_modals].nil?
+      cache[:shared_modals] = Stamps::WebApps::Base.new(param).extend(Stamps::Common::Modals) if cache[:shared_modals].nil?
       cache[:shared_modals]
     end
 

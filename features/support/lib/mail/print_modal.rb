@@ -2,7 +2,7 @@
 module Stamps
   module Mail
     module PrintModal
-      class InstallStampsConnect < Browser::Base
+      class InstallStampsConnect < WebApps::Base
         def window_title
           StampsField.new(browser.divs(text: 'Install Stamps.com Connect').first)
         end
@@ -20,7 +20,7 @@ module Stamps
         end
       end
 
-      class MailPrinterComboBox < Browser::Base
+      class MailPrinterComboBox < WebApps::Base
         def dropdown
           @dropdown = StampsField.new(browser.div(css: "[id^=printwindow-] [class*=x-form-arrow-trigger-default]")) if @dropdown.nil? || !@dropdown.present?
           @dropdown
@@ -51,7 +51,7 @@ module Stamps
         end
       end
 
-      class MailPaperTrayComboBox < Browser::Base
+      class MailPaperTrayComboBox < WebApps::Base
         attr_accessor :dropdown, :textbox
 
         def initialize(param)
@@ -71,7 +71,7 @@ module Stamps
         end
       end
 
-      class MailPrintModal < Browser::Base
+      class MailPrintModal < WebApps::Base
         attr_accessor :paper_tray, :mail_printer, :print_button, :reprint_link
 
         def initialize(param)

@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module LeftPanel
-      class CollapseButton < Browser::Base
+      class CollapseButton < WebApps::Base
         
 
         def button
@@ -40,7 +40,7 @@ module Stamps
         end
       end
 
-      class ExpandButton < Browser::Base
+      class ExpandButton < WebApps::Base
         
 
         def button
@@ -78,7 +78,7 @@ module Stamps
         end
       end
 
-      class FilterMenuItem < Browser::Base
+      class FilterMenuItem < WebApps::Base
         
 
         def collapse
@@ -90,7 +90,7 @@ module Stamps
         end
       end
 
-      class SearchResults < Browser::Base
+      class SearchResults < WebApps::Base
         
 
         def label
@@ -126,7 +126,7 @@ module Stamps
         end
       end
 
-      class SearchOrders < Browser::Base
+      class SearchOrders < WebApps::Base
         
 
         attr_reader :textbox, :search_button, :search_results
@@ -190,7 +190,7 @@ module Stamps
         end
       end
 
-      class AwaitingShipmentTab < Browser::Base
+      class AwaitingShipmentTab < WebApps::Base
         
         include FilterTabHelper
         def initialize(param)
@@ -203,7 +203,7 @@ module Stamps
         end
       end
 
-      class ShippedTab < Browser::Base
+      class ShippedTab < WebApps::Base
         
         include FilterTabHelper
         def initialize(param)
@@ -212,7 +212,7 @@ module Stamps
         end
       end
 
-      class CanceledTab < Browser::Base
+      class CanceledTab < WebApps::Base
         
         include FilterTabHelper
         def initialize(param)
@@ -221,7 +221,7 @@ module Stamps
         end
       end
 
-      class OnHoldTab < Browser::Base
+      class OnHoldTab < WebApps::Base
         
         include FilterTabHelper
         def initialize(param)
@@ -230,7 +230,7 @@ module Stamps
         end
       end
 
-      class FilterPanel < Browser::Base
+      class FilterPanel < WebApps::Base
         
 
         def search_orders

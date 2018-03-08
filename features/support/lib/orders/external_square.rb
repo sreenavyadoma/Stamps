@@ -1,7 +1,7 @@
 
 module Stamps
   module Orders
-    class SquareLogin < Browser::Base
+    class SquareLogin < WebApps::Base
 
 
       def email

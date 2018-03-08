@@ -1,6 +1,6 @@
 # encoding: utf-8
 include Stamps
-include Stamps::Browser
+include Stamps::WebApps
 include Stamps::Orders
 include Stamps::Mail
 include Log4r
@@ -11,20 +11,18 @@ include RAutomation
 include Spreadsheet
 
 Before do  |scenario|
-  StampsTest.init(scenario)
-  StampsTest.log.info "Begin..."
-  StampsTest.log.info "-"
-  StampsTest.print_test_steps
+  SdcTest.init(scenario)
+  SdcTest.log.info "Begin..."
+  SdcTest.log.info "-"
+  SdcTest.print_test_steps
 end
 
 After do |scenario|
-  StampsTest.log.info "Teardown..."
-  StampsTest.print_test_steps
-  StampsTest.teardown
+  SdcTest.log.info "Teardown..."
+  SdcTest.print_test_steps
+  SdcTest.teardown
   @stamps = nil #TODO-Rob this needs to exist in StampsTest
   @health = nil
-  StampsTest.log.error "#{scenario.feature} #{scenario.name}:\n#{scenario.exception.message}" if scenario.failed?
-  StampsTest.log.step "  --  Test Parameters"
-  test_param.each { |key, value| StampsTest.log.step "  --  #{key} : #{value}" }
+  SdcTest.log.error "#{scenario.feature} #{scenario.name}:\n#{scenario.exception.message}" if scenario.failed?
 end
 

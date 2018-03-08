@@ -2,7 +2,7 @@ module Stamps
   module Registration
     module Footer
 
-      class ProfileFooter < Browser::Base
+      class ProfileFooter < WebApps::Base
 
         def privacy_policy_link
           cache[:privacy_policy_link] = StampsField.new(browser.a(css: "[data-pgtitle='Privacy Policy']")) if cache[:privacy_policy_link].nil?

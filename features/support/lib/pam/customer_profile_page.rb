@@ -42,7 +42,7 @@ module Stamps
       end
     end
 
-    class CustomerProfilePage < Browser::Base
+    class CustomerProfilePage < WebApps::Base
       include PamPageHeader
       include CustomerProfileAccountInfo
       include CustomerProfileAccountStatus

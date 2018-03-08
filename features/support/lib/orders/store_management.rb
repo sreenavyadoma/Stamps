@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module Stores
-      class ImportingOrdersModal < Browser::Base
+      class ImportingOrdersModal < WebApps::Base
 
         def present?
           browser.div(text: "Importing Orders").present?
@@ -20,7 +20,7 @@ module Stamps
         end
       end
 
-      class DeleteStoreModal < Browser::Base
+      class DeleteStoreModal < WebApps::Base
         def present?
           delete_btn.present?
         end
@@ -204,7 +204,7 @@ module Stamps
         end
       end
 
-      class MarketplaceDataView < Browser::Base
+      class MarketplaceDataView < WebApps::Base
 
         def store_count
           begin
@@ -244,7 +244,7 @@ module Stamps
           case(str.downcase.to_sym)
             when :paypal
               if cache[:paypal_window].nil? || !cache[:paypal_window].present?
-                cache[:paypal_window] = Browser::Base.new(param).extend(Stamps::Orders::Stores::PayPal::WindowTitle)
+                cache[:paypal_window] = WebApps::Base.new(param).extend(Stamps::Orders::Stores::PayPal::WindowTitle)
               end
               return cache[:paypal_window]
             when :ebay
@@ -258,9 +258,9 @@ module Stamps
             when :magento
               raise "#{str} not implemented."
             when :square
-              cache[:square_window].nil? || !cache[:square_window].present? ? cache[:square_window] = Browser::Base.new(param).extend(Orders::Stores::Square::WindowTitle) : cache[:square_window]
+              cache[:square_window].nil? || !cache[:square_window].present? ? cache[:square_window] = WebApps::Base.new(param).extend(Orders::Stores::Square::WindowTitle) : cache[:square_window]
             when :opencart
-              cache[:opencart_window].nil? || !cache[:opencart_window].present? ? cache[:opencart_window] = Browser::Base.new(param).extend(Orders::Stores::OpenCart::ShipStationUpgradeMessage) : cache[:opencart_window]
+              cache[:opencart_window].nil? || !cache[:opencart_window].present? ? cache[:opencart_window] = WebApps::Base.new(param).extend(Orders::Stores::OpenCart::ShipStationUpgradeMessage) : cache[:opencart_window]
             else
               raise ArgumentError,  "#{str} - Invalid store selection or store is not yet implemented. Check your test."
           end
@@ -291,7 +291,7 @@ module Stamps
         end
       end
 
-      class Marketplace < Browser::Base
+      class Marketplace < WebApps::Base
         include MarketPlaceWindowTitle
 
         def present?

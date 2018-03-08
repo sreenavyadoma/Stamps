@@ -1,7 +1,7 @@
 module Stamps
   module Mail
     module PrintFormPanel
-      class MailExtraServices < Browser::Base #todo-Rob implement caching MailExtraServices
+      class MailExtraServices < WebApps::Base #todo-Rob implement caching MailExtraServices
         attr_accessor :window_title, :security, :value, :handling, :save_field, :close_field, :security_price_field, :return_receipt_price_field,
                       :restricted_delivery_price_field, :cod_price_field, :non_delivery_notice_price_field, :content_price_field,
                       :special_handling_price_field, :merchandise_return_receipt_field, :total_price_field
@@ -179,7 +179,7 @@ module Stamps
         end
       end
 
-      class ValueMustBeShown < Browser::Base #This class represents the Postage Value Must be Shown modal. It appears when hidden postage has been checked and the user tries to add an extra service that is incompatible with hidden postage
+      class ValueMustBeShown < WebApps::Base #This class represents the Postage Value Must be Shown modal. It appears when hidden postage has been checked and the user tries to add an extra service that is incompatible with hidden postage
 
         def continue
           (cache[:continue].nil? || !cache[:continue].present?) ? cache[:continue] = StampsField.new(browser.span(text: "Continue")) : cache[:continue]
@@ -192,7 +192,7 @@ module Stamps
 
       ##
       # This class represents the Special Contents Warning modal. It appears when the extra service "Live Animal" or "live Animal (with fee)" is selected
-      class SpecialContentsWarning < Browser::Base
+      class SpecialContentsWarning < WebApps::Base
         def i_agree
           (cache[:i_agree].nil? || !cache[:i_agree].present?) ? cache[:i_agree] = StampsField.new(
               browser.span(text: "I Agree")) : cache[:i_agree]

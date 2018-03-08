@@ -42,7 +42,7 @@ module Stamps
         end
       end
 
-      class AutomationRulesModal < Browser::Base
+      class AutomationRulesModal < WebApps::Base
 
         def add
           @add = StampsField.new(browser.span(text: '')) if @add.nil? || !@add.present?
@@ -89,7 +89,7 @@ module Stamps
         end
       end
 
-      class NewRuleModal < Browser::Base
+      class NewRuleModal < WebApps::Base
 #        include AddCriteria
  #       include AddAction
 
@@ -128,7 +128,7 @@ module Stamps
         end
       end
 
-      class EditRuleModal < Browser::Base
+      class EditRuleModal < WebApps::Base
         include AddCriteria
         include AddAction
 
@@ -167,7 +167,7 @@ module Stamps
         end
       end
 
-      class DeleteRuleModal < Browser::Base
+      class DeleteRuleModal < WebApps::Base
 
         def header
           @header = StampsField.new(browser.span(text: '')) if @header.nil? || !@header.present?

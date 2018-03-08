@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module OrdersRuntimeError
-      class ServerError < Browser::Base
+      class ServerError < WebApps::Base
         def present?
           StampsField.new(browser.div(text: /Server Error/)).present?
         end
@@ -27,7 +27,7 @@ module Stamps
         end
       end
 
-      class OrderError < Browser::Base
+      class OrderError < WebApps::Base
         def window_title
           StampsField.new(browser.div(text: 'Order Error'))
         end
@@ -49,7 +49,7 @@ module Stamps
         end
       end
 
-      class IncompleteOrderError < Browser::Base
+      class IncompleteOrderError < WebApps::Base
 
         def wait_until_present(*args) #added wait_until_present to class
           window_title.wait_until_present(*args)
@@ -111,7 +111,7 @@ module Stamps
 
       end
 
-      class RatingError < Browser::Base
+      class RatingError < WebApps::Base
 
         def ok_button
           StampsField.new(browser.span(text: 'OK'))

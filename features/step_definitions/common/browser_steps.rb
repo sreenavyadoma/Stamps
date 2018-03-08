@@ -1,15 +1,15 @@
 
 Then /^Teardown$/ do
-  StampsTest.teardown
+  SdcTest.teardown
 end
 
 Given /^(?:|I )[Ll]aunch(?:|ed) (?:|browser)(?:| (\w+))(?:|(?:|the )default browser)$/ do |str|
-  StampsTest.setup((str.nil?)? modal_param.browser_str : str)
+  SdcTest.setup((str.nil?)? modal_param.browser_str : str)
 end
 
 Then /^Refresh the browser$/ do
   begin
-    StampsTest.driver.refresh
+    SdcTest.driver.refresh
     sleep(2)
   rescue
     # ignore
@@ -25,7 +25,7 @@ Then /^[Pp]ause for (\d+) [Ss]econd(?:|s)?$/ do |seconds|
 end
 
 Then(/^Close the browser and clear cookies$/) do #Clear Cookies
-  StampsTest.clear_cookies
+  SdcTest.clear_cookies
 end
 
 

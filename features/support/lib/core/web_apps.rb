@@ -1,15 +1,24 @@
 module Stamps
   ##
   #
-  module Browser
+  module WebApps
     Param = Struct.new(:browser, :log, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media, :developer, :debug, :firefox_profile, :printer, :browser_str, :hostname) {} unless Object.const_defined?('Param')
 
+    class Basex
+
+      attr_reader :param, :log
+      def initialize(driver, param)
+        @param = param
+        @log = param.log
+      end
+    end
     ##
     #
     class Base
       class << self
         attr_accessor :browser
       end
+
       attr_reader :param, :log
       def initialize(param)
         @param = param
@@ -27,7 +36,7 @@ module Stamps
         @cache
       end
     end
-
+    
     class StampsField
       class << self
         attr_accessor :browser

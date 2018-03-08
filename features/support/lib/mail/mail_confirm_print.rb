@@ -2,7 +2,7 @@
 module Stamps
   module Mail
     module PrintModal
-      class MailConfirmPrint < Browser::Base
+      class MailConfirmPrint < WebApps::Base
         attr_accessor :window_title, :do_not_prompt, :continue_btn
 
         def initialize(param)
@@ -30,7 +30,7 @@ module Stamps
         end
       end
 
-      class PleaseWait < Browser::Base
+      class PleaseWait < WebApps::Base
         attr_accessor :window_title, :paragraph, :ok_btn
 
         def initialize(param)

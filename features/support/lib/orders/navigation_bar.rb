@@ -1,6 +1,6 @@
 module Stamps
   module Navigation
-    class TransactionComplete < Browser::Base
+    class TransactionComplete < WebApps::Base
 
 
       def window_title
@@ -39,7 +39,7 @@ module Stamps
       end
     end
 
-    class ConfirmTransaction < Browser::Base
+    class ConfirmTransaction < WebApps::Base
 
 
       def window_title
@@ -93,7 +93,7 @@ module Stamps
       end
     end
 
-    class MinimumPurchaseAmountNotice < Browser::Base
+    class MinimumPurchaseAmountNotice < WebApps::Base
       def present?
 
       end
@@ -107,7 +107,7 @@ module Stamps
       end
     end
 
-    class AccountBalanceLimit < Browser::Base
+    class AccountBalanceLimit < WebApps::Base
 
 
       def body
@@ -131,7 +131,7 @@ module Stamps
       end
     end
 
-    class AutoBuyPostageModal < Browser::Base
+    class AutoBuyPostageModal < WebApps::Base
 
 
       def window_title
@@ -144,7 +144,7 @@ module Stamps
       end
     end
 
-    class AddFundsModal < Browser::Base
+    class AddFundsModal < WebApps::Base
 
 
       def confirm_transaction
@@ -258,7 +258,7 @@ module Stamps
       end
     end
 
-    class BalanceDropDown < Browser::Base
+    class BalanceDropDown < WebApps::Base
 
 
       def add_funds_modal
@@ -323,7 +323,7 @@ module Stamps
       end
     end
 
-    class UsernameDropDown < Browser::Base
+    class UsernameDropDown < WebApps::Base
 
       def cache
         self.class.cache
@@ -368,7 +368,7 @@ module Stamps
       end
     end
 
-    class NavigationBar < Browser::Base
+    class NavigationBar < WebApps::Base
 
 
       def balance

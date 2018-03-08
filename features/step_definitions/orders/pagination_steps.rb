@@ -31,7 +31,7 @@ Then /^[Ii]n Orders Toolbar, expect number of orders on page is correct$/ do
 
   sleep(0.35)
   stamps.orders.checkbox.uncheck_all
-  #StampsTest.log.step "Test #{(max_order_count==multi_order_count)?"Passed":"Failed"}"
+  #SdcTest.log.step "Test #{(max_order_count==multi_order_count)?"Passed":"Failed"}"
   expect(max_order_count).to eql multi_order_count
 end
 
@@ -59,7 +59,7 @@ end
 Then /^Pagination control to go to first page is (\w+)$/ do |first_pagination_enabled|
   enabled=stamps.orders.orders_toolbar.first_page.present?
   if first_pagination_enabled.downcase=="enabled"
-    #StampsTest.log.step "Pagination control to go to first page is enabled.  Test #{(enabled)?'Passed':'Failed'}"
+    #SdcTest.log.step "Pagination control to go to first page is enabled.  Test #{(enabled)?'Passed':'Failed'}"
     expect(enabled).to be(true)
   end
 end
@@ -67,7 +67,7 @@ end
 Then /^Pagination control to go to previous page is (\w+)$/ do |previous_pagination_enabled|
   enabled=stamps.orders.orders_toolbar.previous_page.present?
   if previous_pagination_enabled.downcase=="enabled"
-    #StampsTest.log.step "Pagination control to go to previous page is enabled.  Test #{(enabled)?'Passed':'Failed'}"
+    #SdcTest.log.step "Pagination control to go to previous page is enabled.  Test #{(enabled)?'Passed':'Failed'}"
     expect(enabled).to be(true)
   end
 end
@@ -75,25 +75,25 @@ end
 Then /^Pagination control to go to page number is (\w+$)$/ do |page_number_enabled|
   enabled=stamps.orders.orders_toolbar.page_number.present?
   if page_number_enabled.downcase=="enabled"
-    #StampsTest.log.step "Pagination control to go to page number is enabled.  Test #{(enabled)?'Passed':'Failed'}"
+    #SdcTest.log.step "Pagination control to go to page number is enabled.  Test #{(enabled)?'Passed':'Failed'}"
     expect(enabled).to be(true)
   end
 end
 
 Then /^Pagination control to go to next page is (\w+)$/ do |next_pagination_enabled|
-  #StampsTest.log.step "Pagination control to go to next page is #{next_pagination_enabled}"
+  #SdcTest.log.step "Pagination control to go to next page is #{next_pagination_enabled}"
   enabled=stamps.orders.orders_toolbar.next_page.present?
   if next_pagination_enabled.downcase=="enabled"
-    #StampsTest.log.step "Pagination control to go to next page is enabled.  Test #{(enabled)?'Passed':'Failed'}"
+    #SdcTest.log.step "Pagination control to go to next page is enabled.  Test #{(enabled)?'Passed':'Failed'}"
     expect(enabled).to be(true)
   end
 end
 
 Then /^Pagination control to go to last page is (\w+)$/ do |last_pagination_enabled|
-  #StampsTest.log.step "Pagination control to go to last page is #{last_pagination_enabled}"
+  #SdcTest.log.step "Pagination control to go to last page is #{last_pagination_enabled}"
   enabled=stamps.orders.orders_toolbar.last_page.present?
   if last_pagination_enabled.downcase=="enabled"
-    #StampsTest.log.step "Pagination control to go to last page is enabled.  Test #{(enabled)?'Passed':'Failed'}"
+    #SdcTest.log.step "Pagination control to go to last page is enabled.  Test #{(enabled)?'Passed':'Failed'}"
     expect(enabled).to be(true)
   end
 end
@@ -103,10 +103,10 @@ Then /^[Ee]xpect page toolbar First Page is (\w+)$/  do |expectation|
   case expectation.downcase
     when "enabled"
       enabled=stamps.orders.orders_toolbar.first_page.present?
-      StampsTest.log.step enabled
+      SdcTest.log.step enabled
     when "disabled"
       disabled=stamps.orders.orders_toolbar.first_page_disabled
-      StampsTest.log.step disabled
+      SdcTest.log.step disabled
     else
       raise "Illegal argument exception"
   end
@@ -117,10 +117,10 @@ Then /^[Ee]xpect page toolbar Previous Page is (\w+)$/  do |expectation|
   case expectation.downcase
     when "enabled"
       enabled=stamps.orders.orders_toolbar.previous_page.present?
-      StampsTest.log.step enabled
+      SdcTest.log.step enabled
     when "disabled"
       disabled=stamps.orders.orders_toolbar.first_page_disabled
-      StampsTest.log.step disabled
+      SdcTest.log.step disabled
     else
       raise "Illegal argument exception"
   end
@@ -131,7 +131,7 @@ Then /^[Ee]xpect page toolbar Page Number is (\w+)$/  do |expectation|
   case expectation.downcase
     when "enabled"
       enabled=stamps.orders.orders_toolbar.page_number.present?
-      StampsTest.log.step enabled
+      SdcTest.log.step enabled
     else
       raise "Illegal argument exception"
   end
@@ -142,10 +142,10 @@ Then /^[Ee]xpect page toolbar Next Page is (\w+)$/  do |expectation|
   case expectation.downcase
     when "enabled"
       enabled=stamps.orders.orders_toolbar.next_page.present?
-      StampsTest.log.step enabled
+      SdcTest.log.step enabled
     when "disabled"
       disabled=stamps.orders.orders_toolbar.last_page_disabled
-      StampsTest.log.step disabled
+      SdcTest.log.step disabled
     else
       raise "Illegal argument exception"
   end
@@ -156,10 +156,10 @@ Then /^[Ee]xpect page toolbar Last Page is (\w+)$/  do |expectation|
   case expectation.downcase
     when "enabled"
       enabled=stamps.orders.orders_toolbar.last_page.present?
-      StampsTest.log.step enabled
+      SdcTest.log.step enabled
     when "disabled"
       disabled=stamps.orders.orders_toolbar.last_page_disabled
-      StampsTest.log.step disabled
+      SdcTest.log.step disabled
     else
       raise "Illegal argument exception"
   end
@@ -168,10 +168,10 @@ end
 When /^[Ss]et Page Number to (\d*)$/ do |value|
   #StampsTest.log.step "Set Page Number to #{value}"
   begin
-    #StampsTest.log.step "Set Page Number to \"#{value}\""
+    #SdcTest.log.step "Set Page Number to \"#{value}\""
     page_one_order_id=stamps.orders.orders_grid.grid_column(:order_id).row 1
     page_number=stamps.orders.orders_toolbar.page_number.text
-    #StampsTest.log.step "Current page number #{page_number}"
+    #SdcTest.log.step "Current page number #{page_number}"
     stamps.orders.orders_toolbar.page_number.set(value)
     sleep(0.35)
     page_number_textbox=stamps.orders.orders_toolbar.page_number
@@ -179,25 +179,25 @@ When /^[Ss]et Page Number to (\d*)$/ do |value|
     textbox_field=page_number_textbox.field
     textbox_field.click
     textbox_field.click
-    #StampsTest.log.step "New page number #{page_number}"
+    #SdcTest.log.step "New page number #{page_number}"
     page_two_order_id=stamps.orders.orders_grid.grid_column(:order_id).row 1
     page_one_order_id.should_not eql page_two_order_id
   end unless value.length==0
 end
 
 Then /^Paging: Expect Total Number of Pages is (\d+)$/ do |total_number_of_pages|
-  #StampsTest.log.step "Paging: Expect Total Number of Pages is #{total_number_of_pages}"
-  #StampsTest.log.step "Passed value is #{total_number_of_pages}"
+  #SdcTest.log.step "Paging: Expect Total Number of Pages is #{total_number_of_pages}"
+  #SdcTest.log.step "Passed value is #{total_number_of_pages}"
   browser_total_number_of_pages=stamps.orders.orders_toolbar.total_number_of_pages.to_s
-  #StampsTest.log.step "DD value is #{browser_total_number_of_pages}"
+  #SdcTest.log.step "DD value is #{browser_total_number_of_pages}"
   test_result=browser_total_number_of_pages.include? total_number_of_pages
-  #StampsTest.log.step "#{(test_result)?'Test Passed.':'Test Failed'}"
+  #SdcTest.log.step "#{(test_result)?'Test Passed.':'Test Failed'}"
   expect(test_result).to be(true)
   #expect(total_number_of_pages)).to be eql expect(browser_total_number_of_pages)
 end
 
 Then /^Web Batch grid has more orders than value selected in 'number of orders per page' pagination control$/ do
-  #StampsTest.log.step "Web Batch grid has more orders than value selected in 'number of orders per page' pagination control"
+  #SdcTest.log.step "Web Batch grid has more orders than value selected in 'number of orders per page' pagination control"
   #1 Count order grid items ordersgridpagingtoolbar
   page_count=stamps.orders.orders_toolbar.page_count.text
   expect(page_count.to_i > 1).is true

@@ -1,6 +1,6 @@
 module Stamps
   module Pam
-    class PamHeader < Browser::Base
+    class PamHeader < WebApps::Base
       def search_link
         StampsField.new(browser.a(css: 'a[href*=AccountSearch]'))
       end
@@ -18,7 +18,7 @@ module Stamps
       end
     end
 
-    class PaymentAdministratorManager < Browser::Base
+    class PaymentAdministratorManager < WebApps::Base
       def page_title
         StampsField.new(browser.h5(text: "Customer Search"))
       end

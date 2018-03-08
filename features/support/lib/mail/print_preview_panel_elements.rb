@@ -15,7 +15,7 @@ module Stamps
         end
       end
 
-      class PrintPreview < Browser::Base
+      class PrintPreview < WebApps::Base
         include PrintFormBlurOut
 
 

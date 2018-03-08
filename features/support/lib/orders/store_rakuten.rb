@@ -2,7 +2,7 @@ module Stamps
   module Orders
     module Stores
       module Rakuten
-        class Store < Browser::Base
+        class Store < WebApps::Base
 
           def window_title
             StampsField.new(browser.div text: "Connect your Rakuten Store")

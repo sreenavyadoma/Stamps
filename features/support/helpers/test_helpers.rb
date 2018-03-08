@@ -1,14 +1,25 @@
 module Stamps
-
-  def user_credentials
-    @user_credentials ||= StampsUserCredentials.new(db_connection)
-    @user_credentials.scenario_name = StampsTest.scenario_name
-    @user_credentials
-  end
-
-
   module TestHelper
     class << self
+      def browser_type(browser)
+        case browser.downcase
+          when /ff|firefox|mozilla/
+            return :firefox
+          when /chrome|gc|google/
+            return :chrome
+          when /ms|me|microsoft|edge/
+            return :edge
+          # when /ie|explorer|internet explorer/
+          #   return :ie
+          when /apple|osx|safari|mac/
+            return :safari
+          else
+            # do nothing
+        end
+
+        raise ArgumentError, "#{browser} is not a valid selection. Valid browsers are ff|firefox|mozilla|chrome|gc|google|ms|me|microsoft|edge"
+      end
+
       def rand_alpha_str(min = 2, max = 10)
         Array.new(rand(min..max)) { [*'a'..'z'].sample }.join
       end
@@ -383,63 +394,5 @@ module Stamps
     end
   end
 
-
-
-
-
-
-
-
-
-
-
-
-  #----------------------------------------------------------
-  module BrowserType
-    def browser_type(browser)
-      case browser.downcase
-        when /ff|firefox|mozilla/
-          return :firefox
-        when /chrome|gc|google/
-          return :chrome
-        when /ms|me|microsoft|edge/
-          return :edge
-        # when /ie|explorer|internet explorer/
-        #   return :ie
-        when /apple|osx|safari|mac/
-          return :safari
-        else
-          # do nothing
-      end
-
-      raise ArgumentError, "#{browser} is not a valid selection. Valid browsers are ff|firefox|mozilla|chrome|gc|google|ms|me|microsoft|edge"
-    end
-  end
-
-  module EnvVar
-    class << self
-      @param = {}
-      @param[:customs_associated_items] = {}
-      @param[:service_mapping_items] = {}
-      @param[:details_associated_items] = {}
-      @param[:order_id] = {}
-      @param[:service_look_up] = {}
-      @param[:service_look_up]['FCM'] = 'First-Class Mail'
-      @param[:service_look_up]['PM'] = 'Priority Mail'
-      @param[:service_look_up]['PME'] = 'Priority Mail Express'
-      @param[:service_look_up]['MM'] = 'Media Mail'
-      @param[:service_look_up]['PSG'] = 'Parcel Select Ground'
-      @param[:service_look_up]['FCMI'] = 'First-Class Mail International'
-      @param[:service_look_up]['PMI'] = 'Priority Mail International'
-      @param[:service_look_up]['PMEI'] = 'Priority Mail Express International'
-      @param[:ord_id_ctr] = 0
-      @param[:username] = ENV['USR']
-      @param[:password] = ENV['PW']
-      @param[:web_app] = ENV['WEB_APP']
-      @param[:url] = ENV['URL']
-      @param[:test] = ENV['USER_CREDENTIALS']
-      attr_accessor :param
-    end
-  end
 end
 

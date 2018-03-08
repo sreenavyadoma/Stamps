@@ -43,7 +43,7 @@ module Stamps
           end
         end
 
-        class GlobalPostLabelModal < Base
+        class GlobalPostLabelModal < WebApps::Base
           # include GlobalPostLabelModalBody
           # include GlobalPostLabelModalCheckbox
           include WindowTitle

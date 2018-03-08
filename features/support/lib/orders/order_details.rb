@@ -3,7 +3,7 @@ module Stamps
     module SingleOrder
       ##
       # Single Order Details for Insurance Terms and Conditions
-      class InsuranceTermsConditions < Browser::Base #todo-Rob move to Stamps::Common
+      class InsuranceTermsConditions < WebApps::Base #todo-Rob move to Stamps::Common
         def present?
           begin
             (browser.divs(text: "Stamps.com Insurance Terms and Conditions").first).present? || browser.spans(text: "I Agree").last.present?
@@ -56,7 +56,7 @@ module Stamps
         end
 
         #todo-rob refactor auto-suggest internatinal
-        class AutoSuggestInternational < Browser::Base
+        class AutoSuggestInternational < WebApps::Base
 
 
           def auto_suggest_box
@@ -82,7 +82,7 @@ module Stamps
           end
         end
 
-        class AutoSuggestPopUp < Browser::Base
+        class AutoSuggestPopUp < WebApps::Base
 
 
           def present?
@@ -109,7 +109,7 @@ module Stamps
           end
         end
 
-        class AddressNotFound < Browser::Base
+        class AddressNotFound < WebApps::Base
 
 
           def window_title
@@ -161,7 +161,7 @@ module Stamps
           end
         end
 
-        class AmbiguousAddress < Browser::Base
+        class AmbiguousAddress < WebApps::Base
 
 
           def address_not_found
@@ -278,7 +278,7 @@ module Stamps
           end
         end
 
-        class ShipToCountry < Browser::Base
+        class ShipToCountry < WebApps::Base
 
           include ShowShipToDetails
           attr_reader :textbox_field, :dropdown_field
@@ -340,7 +340,7 @@ module Stamps
           end
         end
 
-        class ShipToInternational < Browser::Base
+        class ShipToInternational < WebApps::Base
 
           include BlurOutField
           def present?
@@ -421,7 +421,7 @@ module Stamps
           end
         end
 
-        class ShipToDomestic < Browser::Base
+        class ShipToDomestic < WebApps::Base
 
           include ShowShipToDetails, BlurOutField
 
@@ -505,7 +505,7 @@ module Stamps
           end
         end
 
-        class AutoSuggestDomestic < Browser::Base
+        class AutoSuggestDomestic < WebApps::Base
 
 
           attr_reader :textarea
@@ -536,7 +536,7 @@ module Stamps
           end
         end
 
-        class ShipTo < Browser::Base
+        class ShipTo < WebApps::Base
 
           def domestic
             cache[:domestic] = ShipToDomestic.new(param) if cache[:domestic].nil? || !cache[:domestic].present?
@@ -549,7 +549,7 @@ module Stamps
           end
         end
 
-        class ViewRestrictions < Browser::Base
+        class ViewRestrictions < WebApps::Base
           def browser_ok_button
             StampsField.new(browser.span(text: "OK"))
           end
@@ -563,7 +563,7 @@ module Stamps
           end
         end
 
-        class InsureFor < Browser::Base
+        class InsureFor < WebApps::Base
           include BlurOutField
 
 
@@ -598,7 +598,7 @@ module Stamps
           end
         end
 
-        class Tracking < Browser::Base
+        class Tracking < WebApps::Base
 
 
           def cost
@@ -680,10 +680,10 @@ module Stamps
           end
         end
 
-        class StoreItem < Browser::Base
+        class StoreItem < WebApps::Base
         end
 
-        class AssociatedOrderItem < Browser::Base
+        class AssociatedOrderItem < WebApps::Base
           attr_reader :index, :item_qty, :item_id, :item_description, :delete
           def initialize(param, number)
             super(param)
@@ -692,7 +692,7 @@ module Stamps
             textbox = browser.text_fields(name: "Quantity")[@index - 1]
             inc_btn = browser.divs(css: "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=up]")[@index - 1]
             dec_btn = browser.divs(css: "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=down]")[@index - 1]
-            @item_qty = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
+            @item_qty = Stamps::WebApps::StampsNumberField.new(textbox, inc_btn, dec_btn)
 
             @item_id = StampsTextbox.new((browser.text_fields(name: "SKU")[index - 1]))
             @delete = StampsField.new(browser.spans(css: "span[class*=sdc-icon-remove]")[index - 1])
@@ -708,7 +708,7 @@ module Stamps
           end
         end
 
-        class ItemsOrderedSection < Browser::Base
+        class ItemsOrderedSection < WebApps::Base
 
 
           def add_btn
@@ -755,7 +755,7 @@ module Stamps
           end
         end
 
-        class Collapsible < Browser::Base
+        class Collapsible < WebApps::Base
           attr_reader :field
           def initialize(param)
             super
@@ -774,7 +774,7 @@ module Stamps
           end
         end
 
-        class ToolbarMenu < Browser::Base
+        class ToolbarMenu < WebApps::Base
           attr_reader :dropdown
           def initialize(param)
             super
@@ -816,7 +816,7 @@ module Stamps
           end
         end
 
-        class Toolbar < Browser::Base
+        class Toolbar < WebApps::Base
           include OrderDetailsOrderId
 
           def menu
@@ -828,7 +828,7 @@ module Stamps
           end
         end
 
-        class Footer < Browser::Base
+        class Footer < WebApps::Base
 
 
           def label
@@ -862,7 +862,7 @@ module Stamps
           end
         end
 
-        class Contents < Browser::Base
+        class Contents < WebApps::Base
 
           attr_reader
 
@@ -895,7 +895,7 @@ module Stamps
           end
         end
 
-        class Service < Browser::Base
+        class Service < WebApps::Base
 
 
           def textbox
@@ -968,7 +968,7 @@ module Stamps
 
       ##
       # Single Order Details Form
-      class OrderDetails < Browser::Base
+      class OrderDetails < WebApps::Base
 
         include Fields::BlurOutField
 

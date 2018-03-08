@@ -1,7 +1,7 @@
 # encoding: utf-8
 # These browser fields exists on all forms (i.e. Stamps, Envelopes, Shipping Label and Certified Mail)
 Then /^[Ss]elect Print On (.*)$/ do |media|
-  stamps.mail.print_on(test_param[:print_on]=media)
+  stamps.mail.print_on(TestData.store[:print_on]=media)
 end
 
 Then /^[Bb]lur out on [Pp]rint [Ff]orm$/ do
@@ -9,7 +9,7 @@ Then /^[Bb]lur out on [Pp]rint [Ff]orm$/ do
 end
 
 Then /^[Ss]et Print form Mail-From to (.*)$/ do |value|
-  stamps.mail.print_form.mail_from.select(test_param[:ship_from]=value)
+  stamps.mail.print_form.mail_from.select(TestData.store[:ship_from]=value)
 end
 
 Then /^[Cc]heck Print form [Ee]mail [Tt]racking checkbox$/ do
@@ -17,11 +17,11 @@ Then /^[Cc]heck Print form [Ee]mail [Tt]racking checkbox$/ do
 end
 
 Then /^[Ss]et Print form [Pp]ounds to (\d+)$/ do |pounds|
-  stamps.mail.print_form.weight.pounds.set(test_param[:pounds]=pounds)
+  stamps.mail.print_form.weight.pounds.set(TestData.store[:pounds]=pounds)
 end
 
 Then /^[Ss]et Print form [Oo]unces to (\d+)$/ do |ounces|
-  stamps.mail.print_form.weight.ounces.set(test_param[:ounces]=ounces)
+  stamps.mail.print_form.weight.ounces.set(TestData.store[:ounces]=ounces)
 end
 
 Then /^[Ss]et Dimensions to length (\d+) width (\d+) height (\d+)$/ do |length, width, height|
@@ -32,29 +32,29 @@ end
 
 # dimension expectations
 Then /^[Ee]xpect Print form Length is (?:correct|(\d+))$/ do |str|
-  expect(stamps.mail.print_form.dimensions.length.text.to_i).to eql(((str.nil?)?test_param[:length] : str).to_i)
+  expect(stamps.mail.print_form.dimensions.length.text.to_i).to eql(((str.nil?)?TestData.store[:length] : str).to_i)
 end
 
 Then /^[Ee]xpect Print form width is (?:correct|(\d+))$/ do |str|
-  expect(stamps.mail.print_form.dimensions.width.text.to_i).to eql(((str.nil?)?test_param[:width] : str).to_i)
+  expect(stamps.mail.print_form.dimensions.width.text.to_i).to eql(((str.nil?)?TestData.store[:width] : str).to_i)
 end
 
 Then /^[Ee]xpect Print form height is (?:correct|(\d+))$/ do |str|
-  expect(stamps.mail.print_form.dimensions.height.text.to_i).to eql(((str.nil?)?test_param[:height] : str).to_i)
+  expect(stamps.mail.print_form.dimensions.height.text.to_i).to eql(((str.nil?)?TestData.store[:height] : str).to_i)
 end
 
 Then /^[Ee]xpect [Pp]rint [Ff]orm [Ss]ervice (.*) is not present in dropdown list$/ do |service|
-  expect(stamps.mail.print_form.service.select_service(test_param[:service]=service).present?).to be(false)
+  expect(stamps.mail.print_form.service.select_service(TestData.store[:service]=service).present?).to be(false)
 end
 
 Then /^[Ss]elect [Pp]rint [Ff]orm [Ss]ervice (.*)$/ do |str|
 #  step "blur out on print form"
-  stamps.mail.print_form.service.select_service(test_param[:service]=str)
+  stamps.mail.print_form.service.select_service(TestData.store[:service]=str)
 end
 
 Then /^[Ee]xpect [Pp]rint [Ff]orm [Ss]ervice [Cc]ost [Ff]or (.*) is (.*)$/ do |service, cost|
   step "blur out on print form"
-  stamps.mail.print_form.service.service_cost(test_param[:service]=service).to eql("$#{cost}")
+  stamps.mail.print_form.service.service_cost(TestData.store[:service]=service).to eql("$#{cost}")
 end
 
 When /^[Pp]rint [Ll]abel$/ do
@@ -83,19 +83,19 @@ end
 
 Then /^[Ss]et Print form [Mm]ail-[Tt]o [Cc]ountry to (.*)$/ do |country|
   20.times do # work around for rating problem
-    stamps.mail.print_form.mail_to.mail_to_country.select_country(test_param[:country]=country)
-    break if stamps.mail.print_form.mail_to.mail_to_country.textbox.text.include?(test_param[:country]) && stamps.mail.print_form.service.has_rates?
+    stamps.mail.print_form.mail_to.mail_to_country.select_country(TestData.store[:country]=country)
+    break if stamps.mail.print_form.mail_to.mail_to_country.textbox.text.include?(TestData.store[:country]) && stamps.mail.print_form.service.has_rates?
   end
   expect(stamps.mail.print_form.service).to be_has_rates, "Mail service list of values does not have rates."
-  expect(stamps.mail.print_form.mail_to.mail_to_country.textbox.text).to eql(test_param[:country])
+  expect(stamps.mail.print_form.mail_to.mail_to_country.textbox.text).to eql(TestData.store[:country])
 end
 
 Then /^[Ss]ave Print Form Total Cost$/ do
-  test_param[:total_ship_cost]=stamps.mail.mail_toolbar.total
+  TestData.store[:total_ship_cost]=stamps.mail.mail_toolbar.total
 end
 
 Then /^[Ss]ave Print Form Mail From$/ do
-  test_param[:ship_from]=stamps.mail.print_form.mail_from.textbox.text
+  TestData.store[:ship_from]=stamps.mail.print_form.mail_from.textbox.text
 end
 
 Then /^[Cc]lick on [Bb]uy [Mm]ore [Ll]abels link$/ do

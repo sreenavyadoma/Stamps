@@ -1,7 +1,7 @@
 module Stamps
   module Pam
 
-    class AppCapOverridesConfirmation < Browser::Base
+    class AppCapOverridesConfirmation < WebApps::Base
       def title
         StampsField.new browser.td(text: 'AppCap Overrides')
       end
@@ -25,7 +25,7 @@ module Stamps
       end
     end
 
-    class AppCapCertifiedMail < Browser::Base
+    class AppCapCertifiedMail < WebApps::Base
       def always_on
         browser.radio(css: 'input[name=CertMail][value=On]').set
       end
@@ -39,7 +39,7 @@ module Stamps
       end
     end
 
-    class AppCapInternetPostagePrinting < Browser::Base
+    class AppCapInternetPostagePrinting < WebApps::Base
       def always_on
         browser.radio(css: 'input[name=IBIP][value=On]').set
       end
@@ -53,7 +53,7 @@ module Stamps
       end
     end
 
-    class AppCapNetStampsPrinting < Browser::Base
+    class AppCapNetStampsPrinting < WebApps::Base
       def always_on
         browser.radio(css: 'input[name=NS][value=On]').set
       end
@@ -67,7 +67,7 @@ module Stamps
       end
     end
 
-    class AppCapShippingLabelPrinting < Browser::Base
+    class AppCapShippingLabelPrinting < WebApps::Base
       def always_on
         browser.radio(css: 'input[name=SL][value=On]').set
       end
@@ -81,7 +81,7 @@ module Stamps
       end
     end
 
-    class AppCapInternationalShipping < Browser::Base
+    class AppCapInternationalShipping < WebApps::Base
       def always_on
         browser.radio(css: 'input[name=IntlShipping][value=On]').set
       end
@@ -95,7 +95,7 @@ module Stamps
       end
     end
 
-    class AppCapAllowHighRiskCountries < Browser::Base
+    class AppCapAllowHighRiskCountries < WebApps::Base
       def always_on
         browser.radio(css: 'input[name=AllowHighRiskCountries][value=On]').set
       end
@@ -109,7 +109,7 @@ module Stamps
       end
     end
 
-    class AppCapMailingLabelPrinting < Browser::Base
+    class AppCapMailingLabelPrinting < WebApps::Base
       def always_on
         browser.radio(css: 'input[name=CreateMailingLabelIndicia][value=On]').set
       end
@@ -123,7 +123,7 @@ module Stamps
       end
     end
 
-    class AppCapOverridesPage < Browser::Base
+    class AppCapOverridesPage < WebApps::Base
       def username
         StampsField.new(browser.a(css: "tbody>tr:nth-child(2)>td:nth-child(2)>a"))
       end

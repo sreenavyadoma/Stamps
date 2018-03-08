@@ -1,6 +1,6 @@
 module Stamps
   module Registration
-    class RegistrationBreadCrumbs < Browser::Base
+    class RegistrationBreadCrumbs < WebApps::Base
 
       def bread_crumb_profile
         cache[:bread_crumb_profile] = StampsField.new(browser.span(css: "li[id=breadcrumb_Profile]>span")) if cache[:bread_crumb_profile].nil? || !cache[:bread_crumb_profile].present?

@@ -5,7 +5,7 @@ Then /^Mail: Open Forgot Username Modal/ do
 end
 
 Then /^[Oo]n Print form, set forgotten email to (.*)$/ do |email|
-  #StampsTest.log.step "on Print form, enter forgotten email: \n #{email}"
+  #SdcTest.log.step "on Print form, enter forgotten email: \n #{email}"
   #@forgot_username=stamps.mail.sign_in_modal.forgot_username if @forgot_username.nil?
   @forgot_username.email.set email
   @forgot_username.continue
@@ -18,7 +18,7 @@ Then /^Mail: Open Forgot Password Modal/ do
 end
 
 Then /^[Oo]n Print form, set forgotten username to (.*)$/ do |username|
-  #StampsTest.log.step "on Print form, enter forgotten username: \n #{username}"
+  #SdcTest.log.step "on Print form, enter forgotten username: \n #{username}"
   #@forgot_password=stamps.mail.sign_in_modal.forgot_password if @forgot_password.nil?  #Alex
   @forgot_password.username.set username
   @forgot_password.continue
@@ -26,14 +26,14 @@ end
 
 Then /^[Oo]n Print form, set secret answer 1 to (.*)$/ do |answer|
 #Then /^[Oo]n Print form, set secret answer (\d+) to (.*)$/ do |number, answer|
-  #StampsTest.log.step "on Print form, set secret answer 1 to: \n #{answer}"
+#SdcTest.log.step "on Print form, set secret answer 1 to: \n #{answer}"
   #@forgot_password=stamps.mail.sign_in_modal.forgot_password if @forgot_password.nil?  #Alex
   @forgot_password.secret_answer_1.set answer   #Alex test
   #@forgot_password.secret_answer(number).set(answer)
 end
 
 Then /^[Oo]n Print form, set secret answer 2 to (.*)$/ do |answer|
-  #StampsTest.log.step "on Print form, set secret answer 1 to: \n #{answer}"
+  #SdcTest.log.step "on Print form, set secret answer 1 to: \n #{answer}"
   #@forgot_password=stamps.mail.sign_in_modal.forgot_password if @forgot_password.nil?  #Alex
   @forgot_password.secret_answer_2.set answer
 end

@@ -17,7 +17,7 @@ module Stamps
       end
 =end
 
-      class Yahoo < Browser::Base
+      class Yahoo < WebApps::Base
 
         def window_title
           StampsField.new browser.div(text: "Connect your Yahoo Store")
@@ -210,7 +210,7 @@ module Stamps
         end
       end
 
-      class YahooPage < Browser::Base
+      class YahooPage < WebApps::Base
         def present?
           browser.url.include? "shopify.com"
         end

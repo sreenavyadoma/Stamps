@@ -1,11 +1,11 @@
 module Stamps
-  class Rating < Browser::Base
+  class Rating < WebApps::Base
     def spreadsheet
       cache[:spreadsheet].nil? ? cache[:spreadsheet] = SpreadSheet.new(param) : cache[:spreadsheet]
     end
   end
 
-  class SpreadSheet < Browser::Base
+  class SpreadSheet < WebApps::Base
     def source_file
       "#{data_for(:rates_test, {})['source_dir']}\\#{data_for(:rates_test, {})['rate_file']}"
     end
@@ -27,9 +27,9 @@ module Stamps
     def update_file
       begin
         FileUtils.copy_file(source_file, test_file)
-        StampsTest.log.step "#{"-"*40}"
-        StampsTest.log.step "Rate File was Updated"
-        StampsTest.log.step "#{"-"*40}"
+        SdcTest.log.step "#{"-"*40}"
+        SdcTest.log.step "Rate File was Updated"
+        SdcTest.log.step "#{"-"*40}"
       rescue
         false
       end

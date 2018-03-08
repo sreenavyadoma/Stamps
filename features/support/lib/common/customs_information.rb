@@ -46,12 +46,12 @@ module Stamps
         end
       end
 
-      class PackageContentsDetails < Browser::Base
+      class PackageContentsDetails < WebApps::Base
       end
 
       ##
       #
-      class MadeIn < Browser::Base
+      class MadeIn < WebApps::Base
         attr_reader :index
 
         def initialize(param, index)
@@ -89,7 +89,7 @@ module Stamps
 
       ##
       # first index is 1 from feature file.
-      class AssociatedLineItem < Browser::Base
+      class AssociatedLineItem < WebApps::Base
 
         attr_reader :index
         def initialize(param, index)
@@ -156,7 +156,7 @@ module Stamps
         end
       end
 
-      class AssociatedItems < Browser::Base
+      class AssociatedItems < WebApps::Base
 
         def add_item
           if cache[:add_item].nil? || !cache[:add_item].present?
@@ -194,7 +194,7 @@ module Stamps
         end
       end
 
-      class UspsPrivactActStatementModal < Browser::Base
+      class UspsPrivactActStatementModal < WebApps::Base
         attr_reader :window_title, :okay
 
         def initialize(param)
@@ -208,7 +208,7 @@ module Stamps
         end
       end
 
-      class PackageContents < Browser::Base
+      class PackageContents < WebApps::Base
         attr_accessor :combobox, :contents
 
         def initialize(param)
@@ -226,7 +226,7 @@ module Stamps
         end
       end
 
-      class CustInfoInternalTransaction < Browser::Base #todo-Rob-Customs no usage for this class
+      class CustInfoInternalTransaction < WebApps::Base #todo-Rob-Customs no usage for this class
         attr_accessor :combobox, :itn_number
 
         def initialize(param)
@@ -240,7 +240,7 @@ module Stamps
         end
       end
 
-      class CustomsInformation < Browser::Base
+      class CustomsInformation < WebApps::Base
 
 
         attr_reader :window_title, :usps_privacy_act_warning, :close_button, :internal_transaction,

@@ -458,7 +458,7 @@ module Stamps
         end
       end
 
-      class MembershipPage < Browser::Base
+      class MembershipPage < WebApps::Base
         include PersonalInfo
         include CreditCard
         include TermsAndConditions

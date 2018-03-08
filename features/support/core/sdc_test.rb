@@ -1,5 +1,5 @@
 module Stamps
-  module StampsTest
+  module SdcTest
     class << self
       attr_accessor :driver, :log, :scenario, :scenario_name, :firefox_profile, :browser_version, :os_version
 

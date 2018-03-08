@@ -144,7 +144,7 @@ module Stamps
         end
       end
 
-      class OrderId < Browser::Base
+      class OrderId < WebApps::Base
         include GridColumnCommon
         def exist? order_id
           row_number(order_id) > 0
@@ -178,7 +178,7 @@ module Stamps
 
       end
 
-      class Store < Browser::Base
+      class Store < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:store)
@@ -201,7 +201,7 @@ module Stamps
         end
       end
 
-      class Age < Browser::Base
+      class Age < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:age)
@@ -224,7 +224,7 @@ module Stamps
         end
       end
 
-      class OrderDate < Browser::Base
+      class OrderDate < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:order_date)
@@ -247,7 +247,7 @@ module Stamps
         end
       end
 
-      class Recipient < Browser::Base
+      class Recipient < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:recipient)
@@ -273,7 +273,7 @@ module Stamps
 
       end
 
-      class Company < Browser::Base
+      class Company < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:company)
@@ -296,7 +296,7 @@ module Stamps
         end
       end
 
-      class Address < Browser::Base
+      class Address < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:address)
@@ -319,7 +319,7 @@ module Stamps
         end
       end
 
-      class City < Browser::Base
+      class City < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:city)
@@ -342,7 +342,7 @@ module Stamps
         end
       end
 
-      class State < Browser::Base
+      class State < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:state)
@@ -365,7 +365,7 @@ module Stamps
         end
       end
 
-      class Zip < Browser::Base
+      class Zip < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:zip)
@@ -388,7 +388,7 @@ module Stamps
         end
       end
 
-      class Phone < Browser::Base
+      class Phone < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:phone)
@@ -411,7 +411,7 @@ module Stamps
         end
       end
 
-      class Email < Browser::Base
+      class Email < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:email)
@@ -434,7 +434,7 @@ module Stamps
         end
       end
 
-      class Qty < Browser::Base
+      class Qty < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:qty)
@@ -457,7 +457,7 @@ module Stamps
         end
       end
 
-      class ItemSKU < Browser::Base
+      class ItemSKU < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:item_sku)
@@ -480,7 +480,7 @@ module Stamps
         end
       end
 
-      class ItemName < Browser::Base
+      class ItemName < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:item_name)
@@ -503,7 +503,7 @@ module Stamps
         end
       end
 
-      class Weight < Browser::Base
+      class Weight < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:weight)
@@ -534,7 +534,7 @@ module Stamps
         end
       end
 
-      class InsuredValue < Browser::Base
+      class InsuredValue < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:insured_value)
@@ -557,7 +557,7 @@ module Stamps
         end
       end
 
-      class OrderStatus < Browser::Base
+      class OrderStatus < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:order_status)
@@ -580,7 +580,7 @@ module Stamps
         end
       end
 
-      class ShipDate < Browser::Base
+      class ShipDate < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:ship_date)
@@ -603,7 +603,7 @@ module Stamps
         end
       end
 
-      class ShipFrom < Browser::Base
+      class ShipFrom < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:ship_from)
@@ -618,7 +618,7 @@ module Stamps
         end
       end
 
-      class Country < Browser::Base
+      class Country < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:country)
@@ -641,7 +641,7 @@ module Stamps
         end
       end
 
-      class ShipCost < Browser::Base
+      class ShipCost < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:ship_cost)
@@ -670,7 +670,7 @@ module Stamps
 
       end
 
-      class Company < Browser::Base
+      class Company < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:company)
@@ -685,7 +685,7 @@ module Stamps
         end
       end
 
-      class GridService < Browser::Base
+      class GridService < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:service)
@@ -708,7 +708,7 @@ module Stamps
         end
       end
 
-      class RequestedService < Browser::Base
+      class RequestedService < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:requested_service)
@@ -723,7 +723,7 @@ module Stamps
         end
       end
 
-      class ReferenceNo < Browser::Base
+      class ReferenceNo < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:reference_no)
@@ -738,7 +738,7 @@ module Stamps
         end
       end
 
-      class Tracking < Browser::Base
+      class Tracking < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:tracking_no)
@@ -753,7 +753,7 @@ module Stamps
         end
       end
 
-      class DatePrinted < Browser::Base
+      class DatePrinted < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:date_printed)
@@ -776,7 +776,7 @@ module Stamps
         end
       end
 
-      class GridCheckBox < Browser::Base
+      class GridCheckBox < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           StampsField.new(browser.spans(class: "x-column-header-text-inner").first).scroll_into_view
@@ -788,7 +788,7 @@ module Stamps
           check_verify_field = browser.div(css: "div[class*=x-column-header-checkbox]")
           attribute = "class"
           attrib_value_check = "checker-on"
-          Stamps::Browser::StampsCheckbox.new checkbox_field, check_verify_field, attribute, attrib_value_check
+          Stamps::WebApps::StampsCheckbox.new checkbox_field, check_verify_field, attribute, attrib_value_check
         end
 
         def check_all(*args)
@@ -903,7 +903,7 @@ module Stamps
 
       end
 
-      class TrackingService < Browser::Base
+      class TrackingService < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:tracking_service)
@@ -926,7 +926,7 @@ module Stamps
         end
       end
 
-      class OrderTotal < Browser::Base
+      class OrderTotal < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:order_total)
@@ -949,7 +949,7 @@ module Stamps
         end
       end
 
-      class GridSource < Browser::Base
+      class GridSource < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:source)
@@ -973,7 +973,7 @@ module Stamps
       end
 
       # Orders Grid
-      class OrdersGrid < Browser::Base
+      class OrdersGrid < WebApps::Base
         @column = {}
         def present?
           grid_field.present?

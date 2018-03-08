@@ -1,6 +1,6 @@
 
 Then /^Volusion: Visit Page$/ do
-  step "I launched default browser" if StampsTest.driver.nil?
+  step "I launched default browser" if SdcTest.driver.nil?
   volusion.visit
 end
 

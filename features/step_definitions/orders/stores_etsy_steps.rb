@@ -23,14 +23,14 @@ Then /^Etsy Store: Connect then sign in with Etsy credentials (.*)\/(.*)$/ do |u
   #StampsTest.log.step "Etsy Store: Connect"
   raise "Etsy Store modal is not visible or present.  Check your test workflow" if @store.nil?
   @store_settings=@store.connect username, password
-  StampsTest.log.step @store_settings.nil?
+  SdcTest.log.step @store_settings.nil?
 end
 
 Then /^Etsy Store: Reconnect then sign in with Etsy credentials (.*)\/(.*)$/ do |username, password|
   #StampsTest.log.step "Etsy Store: Connect"
   raise "Etsy Store modal is not visible or present.  Check your test workflow" if @store.nil?
   @store_settings=@store.reconnect username, password
-  StampsTest.log.step @store_settings.nil?
+  SdcTest.log.step @store_settings.nil?
 end
 
 

@@ -8,7 +8,7 @@ module Stamps
       end
 
       module Fields
-        class Dimensions < Browser::Base
+        class Dimensions < WebApps::Base
           
 
           def present?
@@ -43,7 +43,7 @@ module Stamps
           end
         end
 
-        class Weight < Browser::Base
+        class Weight < WebApps::Base
           
 
           def present?
@@ -73,7 +73,7 @@ module Stamps
           end
         end
 
-        class ShipFrom < Browser::Base
+        class ShipFrom < WebApps::Base
           attr_reader :form_type
           def initialize(param, form_type)
             super(param)
@@ -134,7 +134,7 @@ module Stamps
           end
         end
 
-        class Service < Browser::Base
+        class Service < WebApps::Base
           
           def textbox
             cache[:textbox] = StampsTextbox.new(browser.text_field(css: '[class*=domestic-service-row] [name=service]')) if cache[:textbox].nil? || !cache[:textbox].present?
@@ -230,7 +230,7 @@ module Stamps
           end
         end
 
-        class IntlService < Browser::Base
+        class IntlService < WebApps::Base
           
           def textbox
             cache[:box] = StampsTextbox.new(browser.text_field(css: '[name=intlService]')) if cache[:box].nil? || !cache[:box].present?
@@ -326,7 +326,7 @@ module Stamps
           end
         end
 
-        class IntServiceTwo < Browser::Base
+        class IntServiceTwo < WebApps::Base
           attr_reader :textbox, :dropdown, :form_type
           def initialize(param, form_type)
             super(param)
@@ -454,7 +454,7 @@ module Stamps
 
         # REWORK -----------------------------------------------
 
-        class MultiOrderDetailsTracking < Browser::Base
+        class MultiOrderDetailsTracking < WebApps::Base
           
           attr_reader :textbox, :dropdown
           def initialize(param)
@@ -510,7 +510,7 @@ module Stamps
 
       end
 
-      class Form < Browser::Base
+      class Form < WebApps::Base
         
         include Toolbar
         include PresetMenu

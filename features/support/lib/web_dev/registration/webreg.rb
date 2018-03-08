@@ -1,7 +1,7 @@
 module Stamps
   module Registration
 
-    class WebRegistration < Browser::Base
+    class WebRegistration < WebApps::Base
 
       def navigation
         cache[:navigation] = Navigation::RegistrationNavigationBar.new(param) if cache[:navigation].nil?
@@ -81,7 +81,7 @@ module Stamps
 
     end
 
-    class AnErrorOccured < Browser::Base
+    class AnErrorOccured < WebApps::Base
 
       def header_elem
         cache[:header_elem] = StampsField.new browser.h3(text: "An Error Occurred") if cache[:header_elem].nil?

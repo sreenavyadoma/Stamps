@@ -17,7 +17,7 @@ module Stamps
       end
 =end
 
-      class Volusion < Browser::Base
+      class Volusion < WebApps::Base
         def present?
           connect_button.present?
         end

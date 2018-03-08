@@ -1,6 +1,6 @@
 Then /^[Ss]et PAM AppCap Overrides to Always On for all Required Fields for all users in the database$/ do
   credentials_list=user_credentials.all_user_credentials
-  StampsTest.log.step "Number of users in the database: #{credentials_list.size}"
+  SdcTest.log.step "Number of users in the database: #{credentials_list.size}"
   credentials_list.each_with_index do |row, index|
     step "load PAM Customer Search page"
     step "search PAM Customer Search page for username #{row[:username]}"
@@ -17,39 +17,39 @@ Then /^[Ss]et PAM AppCap Overrides to Always On for all Required Fields for all 
 end
 
 Then /^[Ss]eeart PAM Customer Search page username from parameter file$/ do
-  step "set PAM Customer Search page username to #{StampsTest['username']}"
+  step "set PAM Customer Search page username to #{SdcTest['username']}"
 end
 
 Then /^[Ss]earch PAM [Cc]ustomer [Ss]earch page for username (.*)$/ do |str|
   iteration=10
   iteration.times do |index|
-    pam.customer_search_page.username.set(test_param[:username]=str)
+    pam.customer_search_page.username.set(TestData.store[:username]=str)
     pam.customer_search_page.search_btn.click
     pam.customer_profile_page.wait_until_present(2)
     if pam.customer_profile_page.present?
       break
     elsif pam.customer_not_found_page.present?
-      StampsTest.log.step "PAM:  #{pam.customer_not_found_page.status_reason.text}"
-      StampsTest.driver.back unless index==iteration-1
+      SdcTest.log.step "PAM:  #{pam.customer_not_found_page.status_reason.text}"
+      SdcTest.driver.back unless index==iteration-1
       sleep(0.25)
       pam.customer_profile_page.username.set(str)
     elsif pam.meter_info_not_available.present?
-      StampsTest.log.step "PAM:  #{pam.meter_info_not_available.error_message.text}"
-      StampsTest.driver.back unless index==iteration-1
+      SdcTest.log.step "PAM:  #{pam.meter_info_not_available.error_message.text}"
+      SdcTest.driver.back unless index==iteration-1
     end
   end
   expect(pam.customer_not_found_page.status_reason.text).to eql("OK") if pam.customer_not_found_page.present?
   expect(pam.meter_info_not_available.error_message.text).to eql("OK") if pam.meter_info_not_available.present?
-  expect(pam.customer_profile_page.username.text).to eql(test_param[:username])
+  expect(pam.customer_profile_page.username.text).to eql(TestData.store[:username])
 end
 
 Then /^[Ss]et PAM [Cc]ustomer [Ss]earch page [Uu]sername to (?:cached value|(.*))$/ do |str|
-  test_param[:username]=str unless str.nil?
-  pam.customer_search.search_username(test_param[:username])
+  TestData.store[:username]=str unless str.nil?
+  pam.customer_search.search_username(TestData.store[:username])
 end
 
 Then /^[Cc]lick PAM [Cc]ustomer [Ss]earch page [Ss]earch [Bb]utton$/ do
-  test_param[:pam_search_result]=pam.customer_search.search_username(test_param[:username])
+  TestData.store[:pam_search_result]=pam.customer_search.search_username(TestData.store[:username])
 end
 
 Then /^[Cc]lick PAM AppCap Overrides link$/ do
@@ -58,7 +58,7 @@ Then /^[Cc]lick PAM AppCap Overrides link$/ do
     break if pam.appcap_overrides_page.present?
   end
   expect(pam.appcap_overrides_page).to be_present, "PAM AppCap Overrides is not present"
-  expect(pam.appcap_overrides_page.username.text.downcase).to eql(test_param[:username].downcase)
+  expect(pam.appcap_overrides_page.username.text.downcase).to eql(TestData.store[:username].downcase)
 end
 
 Then /^[Ss]et PAM AppCap Overrides Allow High Risk Countries to Always On$/ do
@@ -139,5 +139,5 @@ end
 
 Then /^[Oo]n PAM AppCap Overrides page, Submit$/ do
   result=pam.appcap_overrides_page.submit.ok
-  StampsTest.log.info " ############## #{test_param[:username]}: #{result}"
+  SdcTest.log.info " ############## #{TestData.store[:username]}: #{result}"
 end

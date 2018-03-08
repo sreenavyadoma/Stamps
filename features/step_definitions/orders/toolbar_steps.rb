@@ -1,23 +1,23 @@
 
 Then /^(?:[Cc]lick Orders Toolbar Add button|add new order|add [Oo]rder (\d+))$/ do |count|
-  test_param[:old_balance] = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
+  TestData.store[:old_balance] = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
   stamps.orders.orders_grid.grid_column(:checkbox).uncheck(1)
-  test_param[:order_id][(count.nil?) ? test_param[:ord_id_ctr] += 1 : count.to_i] = stamps.orders.orders_toolbar.toolbar_add.click
+  TestData.store[:order_id][(count.nil?) ? TestData.store[:ord_id_ctr] += 1 : count.to_i] = stamps.orders.orders_toolbar.toolbar_add.click
   expect(stamps.orders.orders_grid.grid_column(:checkbox).checked?(1)).to be(true), "Orders Grid checkbox 1 is unchecked!"
   step "Save Order Details data"
 end
 
 Then /^Save Order Details data$/ do
   if stamps.orders.order_details.present?
-    test_param[:country] = stamps.orders.order_details.ship_to.domestic.country.textbox.text
-    test_param[:service_cost] = stamps.orders.order_details.service.cost.text.dollar_amount_str.to_f.round(2)
-    test_param[:service] = stamps.orders.order_details.service.textbox.text
-    test_param[:ship_from] = stamps.orders.order_details.single_ship_from.textbox.text
-    test_param[:insure_for_cost] = stamps.orders.order_details.insure_for.cost.text.dollar_amount_str.to_f.round(2)
-    test_param[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost.text.dollar_amount_str.to_f.round(2)
-    test_param[:awaiting_shipment_count] = stamps.orders.filter_panel.awaiting_shipment.count
-    test_param[:tracking_cost] = stamps.orders.order_details.tracking.cost.text.dollar_amount_str.to_f.round(2)
-    test_param[:tracking] = stamps.orders.order_details.tracking.textbox.text
+    TestData.store[:country] = stamps.orders.order_details.ship_to.domestic.country.textbox.text
+    TestData.store[:service_cost] = stamps.orders.order_details.service.cost.text.dollar_amount_str.to_f.round(2)
+    TestData.store[:service] = stamps.orders.order_details.service.textbox.text
+    TestData.store[:ship_from] = stamps.orders.order_details.single_ship_from.textbox.text
+    TestData.store[:insure_for_cost] = stamps.orders.order_details.insure_for.cost.text.dollar_amount_str.to_f.round(2)
+    TestData.store[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost.text.dollar_amount_str.to_f.round(2)
+    TestData.store[:awaiting_shipment_count] = stamps.orders.filter_panel.awaiting_shipment.count
+    TestData.store[:tracking_cost] = stamps.orders.order_details.tracking.cost.text.dollar_amount_str.to_f.round(2)
+    TestData.store[:tracking] = stamps.orders.order_details.tracking.textbox.text
   end
 end
 
@@ -42,14 +42,14 @@ end
 Then /^Label Unavailable: Expect Visible$/ do
   case @reprint_modal
     when LabelUnavailable
-      StampsTest.log.step @reprint_modal.message
+      SdcTest.log.step @reprint_modal.message
       label_unavailable_visible = @reprint_modal.present?
       #StampsTest.log.step "Test #{(label_unavailable_visible)?"Passed":"Failed"}"
       @reprint_modal.ok
       @reprint_modal.close
       expect(label_unavailable_visible).to be(true)
     else
-      #StampsTest.log.step "Test #{(@reprint_modal.present?)?"Passed":"Failed"}"
+      #SdcTest.log.step "Test #{(@reprint_modal.present?)?"Passed":"Failed"}"
       expect(@reprint_modal).to be_present
   end
 end

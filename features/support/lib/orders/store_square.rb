@@ -2,7 +2,7 @@ module Stamps
   module Orders
     module Stores
       module Square
-        class Settings < Browser::Base
+        class Settings < WebApps::Base
           def iframe
             browser.iframe(css: "iframe[id=storeiframe]")
           end
@@ -47,7 +47,7 @@ module Stamps
           end
         end
 
-        class Store < Browser::Base
+        class Store < WebApps::Base
           include WindowTitle
           def iframe
             browser.iframe(css: "iframe[id=storeiframe]")

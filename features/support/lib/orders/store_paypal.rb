@@ -19,7 +19,7 @@ module Stamps
           end
         end
 
-        class ConnectYourStore < Browser::Base
+        class ConnectYourStore < WebApps::Base
           include StoresIframe
           def paypal_store_icon
             if cache[:paypal_store_icon].nil? || !cache[:paypal_store_icon].present?
@@ -85,7 +85,7 @@ module Stamps
 
           def type_cart
             if cache[:type_cart].nil? || !cache[:type_cart].present?
-              cache[:type_cart] = Stamps::Browser::StampsCheckbox.new(
+              cache[:type_cart] = Stamps::WebApps::StampsCheckbox.new(
                   iframe.input(css: 'input[id=cart]'), iframe.input(css: 'input[id=cart]'), "class", "ng-not-empty")
             end
             cache[:type_cart]
@@ -93,7 +93,7 @@ module Stamps
 
           def type_web_accept
             if cache[:type_web_accept].nil? || !cache[:type_web_accept].present?
-              cache[:type_web_accept] = Stamps::Browser::StampsCheckbox.new(
+              cache[:type_web_accept] = Stamps::WebApps::StampsCheckbox.new(
                   iframe.input(css: 'input[id=webaccept]'), iframe.input(css: 'input[id=webaccept]'), "class", "ng-not-empty")
             end
             cache[:type_web_accept]
@@ -101,7 +101,7 @@ module Stamps
 
           def type_express_checkout
             if cache[:type_express_checkout].nil? || !cache[:type_express_checkout].present?
-              cache[:type_express_checkout] = Stamps::Browser::StampsCheckbox.new(
+              cache[:type_express_checkout] = Stamps::WebApps::StampsCheckbox.new(
                   iframe.input(css: 'input[id=expresscheckout]'), iframe.input(css: 'input[id=expresscheckout]'), "class", "ng-not-empty")
             end
             cache[:type_express_checkout]
@@ -109,7 +109,7 @@ module Stamps
 
           def type_send_money
             if cache[:type_send_money].nil? || !cache[:type_send_money].present?
-              cache[:type_send_money] = Stamps::Browser::StampsCheckbox.new(
+              cache[:type_send_money] = Stamps::WebApps::StampsCheckbox.new(
                   iframe.input(css: 'input[id=sendmoney]'), iframe.input(css: 'input[id=sendmoney]'), "class", "ng-not-empty")
             end
             cache[:type_send_money]
@@ -117,7 +117,7 @@ module Stamps
 
           def type_virtual_terminal
             if cache[:type_virtual_terminal].nil? || !cache[:type_virtual_terminal].present?
-              cache[:type_virtual_terminal] = Stamps::Browser::StampsCheckbox.new(
+              cache[:type_virtual_terminal] = Stamps::WebApps::StampsCheckbox.new(
                   iframe.input(css: 'input[id=virtualterminal]'), iframe.input(css: 'input[id=virtualterminal]'), "class", "ng-not-empty")
             end
             cache[:type_virtual_terminal]
@@ -125,7 +125,7 @@ module Stamps
 
           def type_subscription_payment
             if cache[:type_subscription_payment].nil? || !cache[:type_subscription_payment].present?
-              cache[:type_subscription_payment] = Stamps::Browser::StampsCheckbox.new(
+              cache[:type_subscription_payment] = Stamps::WebApps::StampsCheckbox.new(
                   iframe.input(css: 'input[id=subscrpayment]'), iframe.input(css: 'input[id=subscrpayment]'), "class", "ng-not-empty")
             end
             cache[:type_subscription_payment]
@@ -133,7 +133,7 @@ module Stamps
 
           def type_merchant_payment
             if cache[:type_merchant_payment].nil? || !cache[:type_merchant_payment].present?
-              cache[:type_merchant_payment] = Stamps::Browser::StampsCheckbox.new(
+              cache[:type_merchant_payment] = Stamps::WebApps::StampsCheckbox.new(
                   iframe.input(css: 'input[id=merchpmt]'), iframe.input(css: 'input[id=merchpmt]'), "class", "ng-not-empty")
             end
             cache[:type_merchant_payment]
@@ -141,7 +141,7 @@ module Stamps
 
           def type_mass_payment
             if cache[:type_mass_payment].nil? || !cache[:type_mass_payment].present?
-              cache[:type_mass_payment] = Stamps::Browser::StampsCheckbox.new(
+              cache[:type_mass_payment] = Stamps::WebApps::StampsCheckbox.new(
                   iframe.input(css: 'input[id=masspay]'), iframe.input(css: 'input[id=masspay]'), "class", "ng-not-empty")
             end
             cache[:type_mass_payment]
@@ -149,7 +149,7 @@ module Stamps
 
           def type_integral_evolution
             if cache[:type_integral_evolution].nil? || !cache[:type_integral_evolution].present?
-              cache[:type_integral_evolution] = Stamps::Browser::StampsCheckbox.new(
+              cache[:type_integral_evolution] = Stamps::WebApps::StampsCheckbox.new(
                   iframe.input(css: 'input[id=integralevolution]'), iframe.input(css: 'input[id=integralevolution]'), "class", "ng-not-empty")
             end
             cache[:type_integral_evolution]
@@ -157,7 +157,7 @@ module Stamps
 
           def type_website_payments_pro_hosted
             if cache[:type_website_payments_pro_hosted].nil? || !cache[:type_website_payments_pro_hosted].present?
-              cache[:type_website_payments_pro_hosted] = Stamps::Browser::StampsCheckbox.new(
+              cache[:type_website_payments_pro_hosted] = Stamps::WebApps::StampsCheckbox.new(
                   iframe.input(css: 'input[id=prohosted]'), iframe.input(css: 'input[id=prohosted]'), "class", "ng-not-empty")
             end
             cache[:type_website_payments_pro_hosted]
@@ -165,7 +165,7 @@ module Stamps
 
           def type_website_payments_pro_api
             if cache[:type_website_payments_pro_api].nil? || !cache[:type_website_payments_pro_api].present?
-              cache[:type_website_payments_pro_api] = Stamps::Browser::StampsCheckbox.new(
+              cache[:type_website_payments_pro_api] = Stamps::WebApps::StampsCheckbox.new(
                   iframe.input(css: 'input[id=proapi]'), iframe.input(css: 'input[id=proapi]'), "class", "ng-not-empty")
             end
             cache[:type_website_payments_pro_api]
@@ -174,7 +174,7 @@ module Stamps
         end
 
 
-        class Store < Browser::Base
+        class Store < WebApps::Base
           include WindowTitle
           include StoresIframe
 

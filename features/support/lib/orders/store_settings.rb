@@ -39,7 +39,7 @@ module Stamps
         end
       end
 
-      class StoreSettingsShippingService < Browser::Base
+      class StoreSettingsShippingService < WebApps::Base
         include StoresIframe
         attr_reader :index
         def initialize(param, index)
@@ -159,7 +159,7 @@ module Stamps
       end
 
 
-      class ServiceMapping < Browser::Base
+      class ServiceMapping < WebApps::Base
         include StoresIframe
         attr_reader :index
         def initialize(param, index)
@@ -198,7 +198,7 @@ module Stamps
       end
 
 
-      class ServiceMappingList < Browser::Base
+      class ServiceMappingList < WebApps::Base
         include StoresIframe
         def add_service_mapping
           if cache[:add_service_mapping].nil? || !cache[:add_service_mapping].present?
@@ -239,7 +239,7 @@ module Stamps
 
       end
 
-      class StoreSettings < Browser::Base
+      class StoreSettings < WebApps::Base
         include StoresIframe
         include StoreSettingsWindowTitle
         include Products
@@ -266,7 +266,7 @@ module Stamps
 
         def auto_import_new_orders
           if cache[:auto_import].nil? || !cache[:v].present?
-            cache[:auto_import] = Stamps::Browser::StampsCheckbox.new(iframe.input(id: 'importOrders'), iframe.input(id: 'importOrders'), "class", "ng-not-empty")
+            cache[:auto_import] = Stamps::WebApps::StampsCheckbox.new(iframe.input(id: 'importOrders'), iframe.input(id: 'importOrders'), "class", "ng-not-empty")
           end
           cache[:auto_import]
         end

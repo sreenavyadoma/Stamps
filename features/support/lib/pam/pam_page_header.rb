@@ -4,7 +4,7 @@ module Stamps
       def change_meter_limit
         link=StampsField.new browser.a(text: "Change Meter Limit")
         meter_limit_page=ChangeMeterLimit.new(param)
-        change_meter_limit_header=Browser::StampsField.new browser.td(text: "Change Meter Limit")
+        change_meter_limit_header=WebApps::StampsField.new browser.td(text: "Change Meter Limit")
         5.times do
           link.click
           change_meter_limit_header.wait_until_present 4

@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module Toolbar
-      class MoveToOnHoldModal < Browser::Base
+      class MoveToOnHoldModal < WebApps::Base
         attr_reader :window_title, :cancel_btn, :hold_until
 
         def initialize(param)
@@ -31,7 +31,7 @@ module Stamps
         end
       end
 
-      class MoveToCanceledModal < Browser::Base
+      class MoveToCanceledModal < WebApps::Base
         attr_reader :window_title, :cancel_btn
 
         def initialize(param)
@@ -60,7 +60,7 @@ module Stamps
         end
       end
 
-      class MoveToShippedModal < Browser::Base
+      class MoveToShippedModal < WebApps::Base
 
 
         def window_title
@@ -105,7 +105,7 @@ module Stamps
         end
       end
 
-      class MoveToAwaitingShipmentModal < Browser::Base
+      class MoveToAwaitingShipmentModal < WebApps::Base
 
 
         attr_reader :window_title, :cancel_btn
@@ -136,7 +136,7 @@ module Stamps
         end
       end
 
-      class MoveDropDown < Browser::Base
+      class MoveDropDown < WebApps::Base
 
 
         def dropdown
@@ -238,7 +238,7 @@ module Stamps
         end
       end
 
-      class MoreActionsDropDown < Browser::Base
+      class MoreActionsDropDown < WebApps::Base
         def enabled?
           dropdown.enabled?
         end
@@ -248,7 +248,7 @@ module Stamps
         end
 
         def split_order
-          (cache[:split_order].nil? || !cache[:split_order].present?) ? cache[:split_order] = Browser::Base.new(param).extend(Stamps::Orders::SplitOrder::WindowTitle) : cache[:split_order] #todo-ORDERSAUTO-3405 code review: you should only get a handle on window title here. SplitOrderModal should have a window title module.
+          (cache[:split_order].nil? || !cache[:split_order].present?) ? cache[:split_order] = WebApps::Base.new(param).extend(Stamps::Orders::SplitOrder::WindowTitle) : cache[:split_order] #todo-ORDERSAUTO-3405 code review: you should only get a handle on window title here. SplitOrderModal should have a window title module.
         end
 
         def combine_orders
@@ -297,7 +297,7 @@ module Stamps
         end
       end
 
-       class PrintIncompleteOrderError < Browser::Base
+       class PrintIncompleteOrderError < WebApps::Base
 
 
          attr_reader :window_title, :ok_btn, :error_message_label
@@ -353,7 +353,7 @@ module Stamps
       end
 
       #todo-rob update Print Multi Order Error tests
-      class PrintMultiOrderError < Browser::Base
+      class PrintMultiOrderError < WebApps::Base
 
 
         def window_title
@@ -419,7 +419,7 @@ module Stamps
         end
       end
 
-      class UspsPrivacyActStatement < Browser::Base
+      class UspsPrivacyActStatement < WebApps::Base
 
 
         def window_title
@@ -458,7 +458,7 @@ module Stamps
         end
       end
 
-      class USPSTermsOrders < Browser::Base
+      class USPSTermsOrders < WebApps::Base
 
 
         attr_reader :window_title, :i_agree_btn, :cancel_btn, :privacy_act_link
@@ -539,7 +539,7 @@ module Stamps
         end
       end
 
-      class ShipStationServerError < Browser::Base
+      class ShipStationServerError < WebApps::Base
 
         def window_title
           browser.divs(text: 'Server Error').first
@@ -554,7 +554,7 @@ module Stamps
         end
       end
 
-      class ToolbarPrintButton < Browser::Base
+      class ToolbarPrintButton < WebApps::Base
         include Stamps::Orders::TermsAndConditions
 
 
@@ -716,7 +716,7 @@ module Stamps
         end
 
         def print_window
-          (cache[:print_window].nil? || !cache[:print_window].present?) ? cache[:print_window] = Browser::Base.new(param).extend(Stamps::Orders::Printing::OrdersPrintModalTitle) : cache[:print_window]
+          (cache[:print_window].nil? || !cache[:print_window].present?) ? cache[:print_window] = WebApps::Base.new(param).extend(Stamps::Orders::Printing::OrdersPrintModalTitle) : cache[:print_window]
         end
 
         #todo-Rob verify css locator
@@ -725,7 +725,7 @@ module Stamps
         end
       end
 
-      class SettingsMenu < Browser::Base
+      class SettingsMenu < WebApps::Base
         def select(menu_item)
           dd = StampsField.new browser.span css: "span[class*=sdc-icon-settings]"
           case menu_item.downcase
@@ -763,7 +763,7 @@ module Stamps
         end
       end
 
-      class PerPage < Browser::Base
+      class PerPage < WebApps::Base
         attr_reader :textbox, :dropdown
 
         def initialize(param)
@@ -795,7 +795,7 @@ module Stamps
         end
       end
 
-      class AddButton < Browser::Base
+      class AddButton < WebApps::Base
         include Stamps::Orders::SingleOrder::Fields::OrderDetailsOrderId
 
 
@@ -1002,7 +1002,7 @@ module Stamps
       end
 
 
-      class ToolbarSettingsIcon < Browser::Base
+      class ToolbarSettingsIcon < WebApps::Base
         include Stamps::Orders::OrdersSettings::OrdersSettingsModalTitle
 
 
@@ -1030,7 +1030,7 @@ module Stamps
         end
       end
 
-      class OrdersToolbar < Browser::Base
+      class OrdersToolbar < WebApps::Base
 
         include OrdersToolbarLeftSide
         #include OrdersToolbarRightSide

@@ -4,9 +4,9 @@ Then /^(?:|[Ii] )[Ll]oad(?:|ed) (?:|the default |default )[Rr]egistration(?: [Pp
     step "load SDC Website"
     step "click on Get Started"
   else
-    test_param[:registration_theme]=str
+    TestData.store[:registration_theme]=str
     step "I launch default browser"
-    registration.load_theme(test_param[:registration_theme])
+    registration.load_theme(TestData.store[:registration_theme])
   end
 end
 
@@ -19,6 +19,6 @@ Then /^[Cc]lick on [Gg]et [Ss]tarted$/ do
     expect(sdc_website.get_started_btn.present?).to be(true), "GET STARTED button is not preset"
     sdc_website.get_started_btn.click
     registration.bread_crumbs.bread_crumb_profile.wait_until_present(10)
-    expect(StampsTest.driver.url).to include('profile')
+    expect(SdcTest.driver.url).to include('profile')
 end
 

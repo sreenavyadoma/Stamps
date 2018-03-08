@@ -2,7 +2,7 @@
 module Stamps
   module Orders
     module Printing
-      class OrdersPrintMediaDropList < Browser::Base
+      class OrdersPrintMediaDropList < WebApps::Base
         
         def dropdown
           cache[:printing_on].nil? || !cache[:printing_on].present? ? cache[:printing_on] = StampsField.new(browser.div(css: "div[id^=printmediadroplist][id$=trigger-picker]")) : cache[:printing_on]
@@ -74,7 +74,7 @@ module Stamps
         end
       end
 
-      class OrdersPrinter < Browser::Base
+      class OrdersPrinter < WebApps::Base
         def dropdown
           @dropdown.nil? || !@dropdown.present? ? @dropdown = StampsField.new(browser.div(id: "sdc-printpostagewindow-printerdroplist-trigger-picker")) : @dropdown
         end
@@ -102,7 +102,7 @@ module Stamps
         end
       end
 
-      class OrdersPaperTray < Browser::Base
+      class OrdersPaperTray < WebApps::Base
         def dropdown
           @dropdown.nil? || !@dropdown.present? ? @dropdown = StampsField.new(browser.div(css: "div[id^=printwindow-][id$=-body]>div>div>div[id^=combo]>div>div>div[id*=picker]")) : @dropdown
         end
@@ -123,7 +123,7 @@ module Stamps
         end
       end
 
-      class OrdersStartingLabel < Browser::Base
+      class OrdersStartingLabel < WebApps::Base
         def left_label
           @left_label.nil? || !@left_label.present? ? @left_label = StampsField.new(browser.div(css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(1)")) : @left_label
         end
@@ -189,7 +189,7 @@ module Stamps
         end
       end
 
-      class OrdersPrintOptions < Browser::Base
+      class OrdersPrintOptions < WebApps::Base
         def hide_postage_value
           checkbox_field = browser.span id: "sdc-printpostagewindow-hidepostagecheckbox-displayEl"
           verify_field = checkbox_field.parent.parent.parent
@@ -215,7 +215,7 @@ module Stamps
         end
       end
 
-      class LabelUnavailable < Browser::Base
+      class LabelUnavailable < WebApps::Base
         def present?
           browser.div(text: "Label Unavailable").present?
         end
@@ -241,7 +241,7 @@ module Stamps
         end
       end
 
-      class OrdersUspsTerms < Browser::Base
+      class OrdersUspsTerms < WebApps::Base
         attr_reader :agree_to_terms, :cancel
 
         def initialize(param)
@@ -269,7 +269,7 @@ module Stamps
           attribute = "class"
           attrib_value_check = "checked"
 
-          dont_show_checkbox = Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, attribute, attrib_value_check
+          dont_show_checkbox = Stamps::WebApps::StampsCheckbox.new checkbox_field, verify_field, attribute, attrib_value_check
 
           if dont_show
             dont_show_checkbox.check
@@ -282,7 +282,7 @@ module Stamps
       end
 
       #todo-Rob clean up orders date picker
-      class OrdersDatePicker < Browser::Base
+      class OrdersDatePicker < WebApps::Base
 
         def todays_date_div
           browser.div(css: "div[title='Today']")
@@ -373,7 +373,7 @@ module Stamps
         end
       end
 
-      class OrdersShipDate < Browser::Base
+      class OrdersShipDate < WebApps::Base
         
         def shipdate_label
           cache[:shipdate_label].nil? || !cache[:shipdate_label].present? ? cache[:shipdate_label] = StampsField.new(browser.span(css: '[id=sdc-printpostagewindow-shipdate-targetEl] [class*=x-form-item-label-inner-default]')) : cache[:shipdate_label]
@@ -397,7 +397,7 @@ module Stamps
       end
 
       #todo-Rob is this needed?
-      class OrdersPrintModalFields < Browser::Base
+      class OrdersPrintModalFields < WebApps::Base
 
       end
 
@@ -487,7 +487,7 @@ module Stamps
         end
       end
 
-      class OrdersPrintModal < Browser::Base
+      class OrdersPrintModal < WebApps::Base
         include OrdersPrintModalTitle
         include OrdersUpperPrintModal
         include OrdersPrintModalFooter

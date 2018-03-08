@@ -10,7 +10,7 @@ module Stamps
 
     ##
     # Orders floating modals
-    class StampsOrdersModals < Stamps::Browser::Base
+    class StampsOrdersModals < Stamps::WebApps::Base
       
       def orders_print_modal
         cache[:orders_print_modal] = Printing::OrdersPrintModal.new(param) if cache[:orders_print_modal].nil?
@@ -45,7 +45,7 @@ module Stamps
     end
 
     module TermsAndConditions
-      class TermsAndConditionsModal < Stamps::Browser::Base
+      class TermsAndConditionsModal < Stamps::WebApps::Base
         
         def present?
           i_agree_button.present?

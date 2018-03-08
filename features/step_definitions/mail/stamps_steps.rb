@@ -37,13 +37,13 @@ Then /^[Ss]et Print form Serial Number to (.*)$/ do |str|
 end
 
 Then /^[Ss]et Print form Amount to (\d*.?\d+)$/ do |value|
-  test_param[:stamp_amount]=value
-  stamps.mail.print_form.stamp_amount.set(test_param[:stamp_amount])
+  TestData.store[:stamp_amount]=value
+  stamps.mail.print_form.stamp_amount.set(TestData.store[:stamp_amount])
 end
 
 Then /^[Ss]et Print form Quantity to (\d+)$/ do |value|
-  test_param[:quantity]=value
-  stamps.mail.print_form.quantity.set(test_param[:quantity])
+  TestData.store[:quantity]=value
+  stamps.mail.print_form.quantity.set(TestData.store[:quantity])
 end
 
 
@@ -55,12 +55,12 @@ Then /^[Ee]xpect Print form Domestic Address field displays last printed contact
     sleep(0.5);
     reformatted_address = (stamps.mail.print_form.mail_to.dom_mail_address.textarea.text).gsub(/ \n/,"\n").gsub(",","")  #remove commas and unnecessary spaces from address that appears iin domestic address field
     uncleansed_address = reformatted_address.slice(0..-6) #remove last 4 digits from zip code
-    break if uncleansed_address==test_param[:address].gsub(/ \n/,"\n")  #compare reformatted address from domestic address field to the last address used for printing postage
+    break if uncleansed_address==TestData.store[:address].gsub(/ \n/,"\n")  #compare reformatted address from domestic address field to the last address used for printing postage
   end
   reformatted_address = (stamps.mail.print_form.mail_to.dom_mail_address.textarea.text).gsub(/ \n/,"\n").gsub(",","")
   uncleansed_address = reformatted_address.slice(0..-6)
-  expect(uncleansed_address).to eql test_param[:address].gsub(/ \n/,"\n")
-  StampsTest.log.step 'Address Match Confirmed'
+  expect(uncleansed_address).to eql TestData.store[:address].gsub(/ \n/,"\n")
+  SdcTest.log.step 'Address Match Confirmed'
 end
 
 Then /^[Ee]xpect Print form Domestic Address field displays (.*)$/ do |value|
@@ -73,7 +73,7 @@ Then /^[Ee]xpect Print form Domestic Address field displays (.*)$/ do |value|
     break if (stamps.mail.print_form.mail_to.mail_address.textarea.text).gsub(/ \n/,", ").gsub(/\n/,", ")==value
   end
   expect((stamps.mail.print_form.mail_to.mail_address.textarea.text).gsub(/ \n/,", ").gsub(/\n/,", ")).to eql value
-  StampsTest.log.step 'Address Cleansed -- Expected Result Confirmed'
+  SdcTest.log.step 'Address Cleansed -- Expected Result Confirmed'
 end
 
 #AB_ORDERSAUTO_3516

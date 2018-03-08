@@ -2,8 +2,8 @@ module Stamps
   module Orders
     module Stores
 
-      class VolusionShippingAddress < Browser::Base
-        class VolusionCountry < Browser::Base
+      class VolusionShippingAddress < WebApps::Base
+        class VolusionCountry < WebApps::Base
           def select(country)
             begin
               browser.select_list(:id, "ShipCountry").option(text: country).when_present.select
@@ -14,7 +14,7 @@ module Stamps
           end
         end
 
-        class VolusionState < Browser::Base
+        class VolusionState < WebApps::Base
           def select state
             begin
               browser.select_list(:id, "ShipState_dropdown").option(text: state).when_present.select
@@ -25,7 +25,7 @@ module Stamps
           end
         end
 
-        class VolusionTypeOfAddress < Browser::Base
+        class VolusionTypeOfAddress < WebApps::Base
           def residential
             browser.radio(css: 'input[name=ShipResidential][value=Y]').set
             browser.radio(css: 'input[name=ShipResidential][value=Y]').set
@@ -37,7 +37,7 @@ module Stamps
           end
         end
 
-        class VolusionBillingAddress < Browser::Base
+        class VolusionBillingAddress < WebApps::Base
           def yes
             browser.radio(css: 'input[name=alsobilling][value=Y]').set
             browser.radio(css: 'input[name=alsobilling][value=Y]').set
@@ -112,8 +112,8 @@ module Stamps
         end
       end
 
-      class VolusionCheckOut < Browser::Base
-        class VolusionAddressType < Browser::Base
+      class VolusionCheckOut < WebApps::Base
+        class VolusionAddressType < WebApps::Base
           def residential
             browser.radio(css: 'input[name=ShipResidential][value=Y]').set
             browser.radio(css: 'input[name=ShipResidential][value=Y]').set
@@ -169,7 +169,7 @@ module Stamps
         end
       end
 
-      class VolusionCart < Browser::Base
+      class VolusionCart < WebApps::Base
         def visit
           browser.goto "http://ywvmt.dmjeb.servertrust.com/shoppingcart.asp"
         end
@@ -196,7 +196,7 @@ module Stamps
         end
       end
 
-      class VolusionProduct < Browser::Base
+      class VolusionProduct < WebApps::Base
         def present?
           browser.text_field(css: "input[alt='Add to cart']").present?
         end
@@ -226,7 +226,7 @@ module Stamps
         end
       end
 
-      class VolusionCategoryOne < Browser::Base
+      class VolusionCategoryOne < WebApps::Base
         def present?
           browser.a(css: "a[title='SAMPLE PRODUCT ONE, SAMPLE1']").present?
         end
@@ -242,7 +242,7 @@ module Stamps
         end
       end
 
-      class MyAccountPage < Browser::Base
+      class MyAccountPage < WebApps::Base
         def log_out
           logged_out_field=StampsField.new browser.li(text: "You are now logged out.")
           button=StampsField.new browser.a(css: "a[href*=logout]")
@@ -283,8 +283,8 @@ module Stamps
         end
       end
 
-      class VolusionRegistration < Browser::Base
-        class ReceiveNewsLetterCheckBox < Browser::Base
+      class VolusionRegistration < WebApps::Base
+        class ReceiveNewsLetterCheckBox < WebApps::Base
           def check
             browser.checkbox(name: 'emailsubscriber').set
             browser.checkbox(name: 'emailsubscriber').set
@@ -331,7 +331,7 @@ module Stamps
         end
       end
 
-      class VolusionLoginPage < Browser::Base
+      class VolusionLoginPage < WebApps::Base
         def visit
           browser.goto "http://ywvmt.dmjeb.servertrust.com/myaccount.asp"
         end

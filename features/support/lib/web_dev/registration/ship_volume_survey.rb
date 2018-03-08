@@ -1,6 +1,6 @@
 module Stamps
   module Registration
-    class ShipVolumeSurvey < Browser::Base
+    class ShipVolumeSurvey < WebApps::Base
       # attr_reader :web_apps, :web_mail
       #
       # def initialize(param)

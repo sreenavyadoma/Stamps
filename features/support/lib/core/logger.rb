@@ -40,7 +40,7 @@ module Stamps
     def info(message)
       begin
         message = repeat message, 25 if message.size == 1
-        (@log.info "#{scenario_name} :: #{message}") if StampsTest.debug
+        (@log.info "#{scenario_name} :: #{message}") if SdcTest.debug
       rescue
         # ignore
       end

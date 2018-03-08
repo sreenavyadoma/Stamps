@@ -26,12 +26,12 @@ end
 Then /^[Ss]et [Oo]rders [Pp]rint [Mm]odal [Pp]rinter ?(?:|(.*))$/ do |printer|
   step "expect orders print modal is present"
   step "Orders print modal printer dropdown is present"
-  expect(test_param[:printer] = (printer.nil?) ? modal_param.printer : printer).to_not be_nil, "PRINTER parameter is not defined. Printing tests must define PRINTER value either in cucumber.yml file or in Jenkins."
-  if test_param[:printer].include?('\\') #validate printer format
-    expect(test_param[:printer]).to match(/\\.+\.*/)
-    test_param[:printer] = /\\\\(.+)\\/.match(test_param[:printer])[1]
+  expect(TestData.store[:printer] = (printer.nil?) ? modal_param.printer : printer).to_not be_nil, "PRINTER parameter is not defined. Printing tests must define PRINTER value either in cucumber.yml file or in Jenkins."
+  if TestData.store[:printer].include?('\\') #validate printer format
+    expect(TestData.store[:printer]).to match(/\\.+\.*/)
+    TestData.store[:printer] = /\\\\(.+)\\/.match(TestData.store[:printer])[1]
   end
-  expect(stamps.orders.modals.orders_print_modal.printer.select(test_param[:printer])).to_not be_nil, "Unable to select printer \"#{test_param[:printer]}\". \nMake sure \"#{test_param[:printer]}\" is configured for host #{modal_param.hostname}. \nUSR: #{test_param[:username]}, #{modal_param.web_app.to_s.capitalize}(#{modal_param.test_env.upcase})"
+  expect(stamps.orders.modals.orders_print_modal.printer.select(TestData.store[:printer])).to_not be_nil, "Unable to select printer \"#{TestData.store[:printer]}\". \nMake sure \"#{TestData.store[:printer]}\" is configured for host #{modal_param.hostname}. \nUSR: #{TestData.store[:username]}, #{modal_param.web_app.to_s.capitalize}(#{modal_param.test_env.upcase})"
 end
 
 Then /^[Oo]rders [Pp]rint [Mm]odal [Pp]rinter [Dd]rop[Dd]own is present$/ do

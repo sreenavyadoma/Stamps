@@ -1,10 +1,10 @@
 Then /^Amazon Store: Set Amazon Seller ID to (.*)$/ do |seller_id|
-  #StampsTest.log.step "Amazon Store: Set Amazon Seller ID to #{seller_id}"
+  #SdcTest.log.step "Amazon Store: Set Amazon Seller ID to #{seller_id}"
   @store.seller_id.set seller_id
 end
 
 Then /^Amazon Store: Set Amazon MWS Auth Token to (.*)$/ do |auth_token|
-  #StampsTest.log.step "Amazon Store: Set Amazon MWS Auth Token to  #{auth_token}"
+  #SdcTest.log.step "Amazon Store: Set Amazon MWS Auth Token to  #{auth_token}"
   @store.auth_token.set auth_token
 end
 
@@ -34,10 +34,10 @@ Then /^Amazon Store: Set Product Identifier to Use the ASIN$/ do
 end
 
 Then /^Amazon Store: Connect for the first time expecting Amazon Settings modal$/ do
-  #StampsTest.log.step "Amazon Store: Connect for the first time expecting Amazon Settings modal"
+  #SdcTest.log.step "Amazon Store: Connect for the first time expecting Amazon Settings modal"
   @store_settings=@store.connect_expecting_store_settings
   test_result="Amazon Store Settings modal is #{(@store_settings.present?)?"present":"not present"} - Test #{(@store_settings.present?)?"passed":"failed"}"
-  StampsTest.log.step test_result
+  SdcTest.log.step test_result
   if @store_settings.nil?||!(@store_settings.present?)
     raise test_result
   end

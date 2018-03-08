@@ -30,7 +30,7 @@ module Stamps
       end
     end
 
-    class MailToolbarMenu < Browser::Base
+    class MailToolbarMenu < WebApps::Base
       include MailToolbarLeftSide
       include MailToolbarRightSide
 

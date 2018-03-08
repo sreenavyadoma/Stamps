@@ -1,6 +1,6 @@
 module Stamps
   module Mail
-    class MailInsufficientFunds < Browser::Base
+    class MailInsufficientFunds < WebApps::Base
       attr_reader :window_title, :body, :add_funds_btn, :close_btn
 
       def initialize(param)
@@ -28,7 +28,7 @@ module Stamps
       end
     end
 
-    class PrintQuantityWarning < Browser::Base
+    class PrintQuantityWarning < WebApps::Base
       attr_reader :agree_and_continue_btn, :close, :cancel
 
       def initialize(param)
@@ -53,7 +53,7 @@ module Stamps
 
     end
 
-    class HiddenPostageWarning < Browser::Base #This class represents the hidden postage warning modal. It appears when the hidden postage button is checked while an incompatible extra service option is selected
+    class HiddenPostageWarning < WebApps::Base #This class represents the hidden postage warning modal. It appears when the hidden postage button is checked while an incompatible extra service option is selected
 
       def continue_button
         (cache[:continue_button].nil? || !cache[:continue_button].present?) ? cache[:continue_button] = StampsField.new(browser.span text: "Continue") : cache[:continue_button]

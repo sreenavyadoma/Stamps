@@ -82,27 +82,27 @@ Then /^[Oo]n PAM ACH Purchase page, set Amount to \$(\d+)\.(\d+)$/ do |dollars, 
   comments.click
   comments.click
   comments.click
-  comments.set test_param[:username]
+  comments.set TestData.store[:username]
 
   @ach_credit.submit.yes.ok
 end
 
 Then /^[Oo]n PAM Customer Profile page, get Available Mail Amount$/ do
-  StampsTest.log.info "PAM: Available Mail ############################"
-  StampsTest.log.info "PAM: Available Mail ############################"
-  StampsTest.log.info "PAM: Available Mail ############################"
-  StampsTest.log.info "PAM: Available Mail $#{@customer_profile.available_postage.text}"
-  StampsTest.log.info "PAM: Available Mail $#{@customer_profile.available_postage.text}"
-  StampsTest.log.info "PAM: Available Mail $#{@customer_profile.available_postage.text}"
-  StampsTest.log.info "PAM: Available Mail ############################"
-  StampsTest.log.info "PAM: Available Mail ############################"
-  StampsTest.log.info "PAM: Available Mail ############################"
+  SdcTest.log.info "PAM: Available Mail ############################"
+  SdcTest.log.info "PAM: Available Mail ############################"
+  SdcTest.log.info "PAM: Available Mail ############################"
+  SdcTest.log.info "PAM: Available Mail $#{@customer_profile.available_postage.text}"
+  SdcTest.log.info "PAM: Available Mail $#{@customer_profile.available_postage.text}"
+  SdcTest.log.info "PAM: Available Mail $#{@customer_profile.available_postage.text}"
+  SdcTest.log.info "PAM: Available Mail ############################"
+  SdcTest.log.info "PAM: Available Mail ############################"
+  SdcTest.log.info "PAM: Available Mail ############################"
 end
 
 Then /^[Ss]end username to standard out$/ do
-  StampsTest.log.step " ############## NEW USER ID "
-  StampsTest.log.info " ############## #{test_param[:username]}"
-  StampsTest.log.info " ############## NEW USER ID "
+  SdcTest.log.step " ############## NEW USER ID "
+  SdcTest.log.info " ############## #{TestData.store[:username]}"
+  SdcTest.log.info " ############## NEW USER ID "
 end
 
 

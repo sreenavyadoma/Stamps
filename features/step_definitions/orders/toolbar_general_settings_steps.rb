@@ -167,7 +167,7 @@ Then /^[Ii]n Settings modal, set Postdate to 11:00 p.m.$/ do
 end
 
 Then /^[Ii]n Settings modal, Postdate Set (.*)$/ do |value|
-  StampsTest.log.step "In Settings modal, Postdate Set #{value}"
+  SdcTest.log.step "In Settings modal, Postdate Set #{value}"
   case value.downcase
     when "12:00 a.m."
       stamps.orders.modals.orders_settings_modal.general_tab.post_date.twelve_am
@@ -703,27 +703,27 @@ Then /^Reset Fields:  Expect Auto-Advance Label Position Unchecked$/ do
 end
 
 Then /^Reset Fields:  Set Weight to (\d+) lb (\d+) oz$/ do |lb, oz|
-  #StampsTest.log.step "Reset Fields:  Set Weight to #{lb} lb #{oz} oz"
+  #SdcTest.log.step "Reset Fields:  Set Weight to #{lb} lb #{oz} oz"
   step "Reset Fields:  Check Weight"
   @reset_fields.weight.lb.set lb
   @reset_fields.weight.oz.set oz
 end
 
 Then /^Reset Fields:  Expect Weight lb equals (\d+)$/ do |lb|
-  StampsTest.log.step  "Reset Fields:  Expect Weight lb equals #{lb}"
+  SdcTest.log.step "Reset Fields:  Expect Weight lb equals #{lb}"
 
   step "Reset Fields:  Check Weight"
   expect(@reset_fields.weight.lb.textbox.text.to_i).to eql lb.to_i
 end
 
 Then /^Reset Fields:  Expect Weight oz equals (\d+)$/ do |oz|
-  StampsTest.log.step  "Reset Fields:  Expect Weight oz equals #{oz}"
+  SdcTest.log.step "Reset Fields:  Expect Weight oz equals #{oz}"
   step "Reset Fields:  Check Weight"
   expect(@reset_fields.weight.oz.textbox.text.to_i).to eql oz.to_i
 end
 
 Then /^Reset Fields:  Set Dimensions to length (\d+), width (\d+), height (\d+)$/ do |length, width, height|
-  StampsTest.log.step  "Reset Fields:  Set Dimensions to length #{length}, width #{width}, height #{height}"
+  SdcTest.log.step "Reset Fields:  Set Dimensions to length #{length}, width #{width}, height #{height}"
   step "Reset Fields:  Check Dimensions"
   @reset_fields.dimensions.length.set length
   @reset_fields.dimensions.width.set width
@@ -731,19 +731,19 @@ Then /^Reset Fields:  Set Dimensions to length (\d+), width (\d+), height (\d+)$
 end
 
 Then /^Reset Fields:  Expect Dimensions to length equals (\d+)$/ do |length|
-  StampsTest.log.step  "Reset Fields:  Expect Dimensions to length equals #{length}"
+  SdcTest.log.step "Reset Fields:  Expect Dimensions to length equals #{length}"
   step "Reset Fields:  Check Dimensions"
   expect(@reset_fields.dimensions.length.textbox.text.to_i).to eql length.to_i
 end
 
 Then /^Reset Fields:  Expect Dimensions to width equals (\d+)$/ do |width|
-  StampsTest.log.step  "Reset Fields:  Expect Dimensions to width equals #{width}"
+  SdcTest.log.step "Reset Fields:  Expect Dimensions to width equals #{width}"
   step "Reset Fields:  Check Dimensions"
   expect(@reset_fields.dimensions.width.textbox.text.to_i).to eql width.to_i
 end
 
 Then /^Reset Fields:  Expect Dimensions to height equals (\d+)$/ do |height|
-  StampsTest.log.step  "Reset Fields:  Expect Dimensions to height equals #{height}"
+  SdcTest.log.step "Reset Fields:  Expect Dimensions to height equals #{height}"
   step "Reset Fields:  Check Dimensions"
   expect(@reset_fields.dimensions.height.textbox.text.to_i).to eql height.to_i
 end

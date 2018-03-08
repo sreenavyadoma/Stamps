@@ -2,7 +2,7 @@ module Stamps
   module Orders
     module Authentication
 
-      class SecurityQuestionsSuccess < Browser::Base
+      class SecurityQuestionsSuccess < WebApps::Base
         def cont_btn
           @cont_btn = StampsField.new(browser.span(text: "Continue")) if @cont_btn.nil? || !@cont_btn.present?
           @cont_btn
@@ -51,7 +51,7 @@ module Stamps
         end
       end
 
-      class SecurityFirstQuestion < Browser::Base
+      class SecurityFirstQuestion < WebApps::Base
         def drop_down
           @drop_down = StampsField.new(browser.divs(css: "div[id^=combo-][id$=-trigger-picker]")[0]) if @drop_down.nil? || !@drop_down.present?
           @drop_down
@@ -79,7 +79,7 @@ module Stamps
         end
       end
 
-      class SecuritySecondQuestion < Browser::Base
+      class SecuritySecondQuestion < WebApps::Base
         def drop_down
           @drop_down = StampsField.new(browser.divs(css: "div[id^=combo-][id$=-trigger-picker]")[1]) if @drop_down.nil? || !@drop_down.present?
           @drop_down

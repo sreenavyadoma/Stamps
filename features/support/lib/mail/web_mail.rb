@@ -1,11 +1,9 @@
 # encoding: utf-8
 module Stamps
   module Mail
-    class WebMail < Browser::Base
+    class WebMail < WebApps::Base
       include Stamps::Mail::MailModals
       include PrintFormPanel::PrintFormBlurOut
-
-
 
       def sign_in_modal
         cache[:sign_in].nil? || !cache[:sign_in].present? ? cache[:sign_in] = MailSignIn::MailSignInModal.new(param) : cache[:sign_in]
@@ -19,29 +17,29 @@ module Stamps
         wait_until_present(5)
         blur_out
         raise "Print-on drop-down is not present." unless print_media.present?
-        param.print_media = print_media.select_print_on(selection)
+        param.print_media = print_media.select_print_on(selection) #todo-Rob might need to decouple this further?
       end
 
       def print_form
         case param.print_media
           when :stamps
             if cache[:stamps].nil? || !cache[:stamps].present?
-              cache[:stamps] = Class.new(Browser::Base).new(param).extend(PrintFormPanel::MailStamps)
+              cache[:stamps] = Class.new(WebApps::Base).new(param).extend(PrintFormPanel::MailStamps)
             end
             return cache[:stamps]
           when :label
             if cache[:label].nil? || !cache[:label].present?
-              cache[:label] = Class.new(Browser::Base).new(param).extend(PrintFormPanel::ShippingLabel)
+              cache[:label] = Class.new(WebApps::Base).new(param).extend(PrintFormPanel::ShippingLabel)
             end
             return cache[:label]
           when :envelope
             if cache[:envelope].nil? || !cache[:envelope].present?
-              cache[:envelope] = Class.new(Browser::Base).new(param).extend(PrintFormPanel::Envelope)
+              cache[:envelope] = Class.new(WebApps::Base).new(param).extend(PrintFormPanel::Envelope)
             end
             return cache[:envelope]
           when :cm3610, :cm3710, :cm3910, :cm3930, :cm3810, :cm3830
             if cache[:cm].nil? || !cache[:cm].present?
-              cache[:cm] = Class.new(Browser::Base).new(param).extend(PrintFormPanel::CertifiedMail)
+              cache[:cm] = Class.new(WebApps::Base).new(param).extend(PrintFormPanel::CertifiedMail)
             end
             return cache[:cm]
           # when :cm3610
@@ -76,7 +74,7 @@ module Stamps
           #   return cache[:cm3830]
           when :roll
             if cache[:roll].nil? || !cache[:roll].present?
-              cache[:roll] = Class.new(Browser::Base).new(param).extend(PrintFormPanel::Roll)
+              cache[:roll] = Class.new(WebApps::Base).new(param).extend(PrintFormPanel::Roll)
             end
             return cache[:roll]
           when :manage_printing_options

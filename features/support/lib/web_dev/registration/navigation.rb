@@ -1,7 +1,7 @@
 module Stamps
   module Registration
     module Navigation
-      class RegistrationNavigationBar < Browser::Base
+      class RegistrationNavigationBar < WebApps::Base
         def stamps_logo
           cache[:stamps_logo] = StampsField.new(browser.img(id: "sdc-logo")) if cache[:stamps_logo].nil? || !cache[:stamps_logo].present?
           cache[:stamps_logo]

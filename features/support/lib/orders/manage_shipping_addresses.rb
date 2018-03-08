@@ -11,7 +11,7 @@ module Stamps
         end
       end
 
-      class ManageShippingAddresses < Browser::Base
+      class ManageShippingAddresses < WebApps::Base
         include WindowTitle
         def edit_button
           if cache[:edit_button].nil? || !cache[:edit_button].present?
@@ -178,7 +178,7 @@ module Stamps
       end
 
       #todo-Rob REW
-      class AddShippingAddress < Browser::Base
+      class AddShippingAddress < WebApps::Base
 
 
         attr_accessor :address_hash
@@ -264,7 +264,7 @@ module Stamps
 
       end
 
-      class DeleteShippingAddress < Browser::Base
+      class DeleteShippingAddress < WebApps::Base
 
 
         def window_title

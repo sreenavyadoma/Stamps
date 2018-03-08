@@ -1,6 +1,6 @@
 module Stamps
   module Pam
-    class CustomerSearchPage < Browser::Base
+    class CustomerSearchPage < WebApps::Base
       def visit
         url = case param.test_env.downcase
                 when /cc/

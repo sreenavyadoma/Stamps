@@ -1,6 +1,6 @@
 module Stamps
   module Registration
-    class SdcWebsite < Browser::Base
+    class SdcWebsite < WebApps::Base
 
       def get_started_btn
         cache[:get_started_btn].nil? || !cache[:get_started_btn].present? ? cache[:get_started_btn] = StampsField.new(browser.button(css: "div[class*='pull-right']>button[class*=register]")) : cache[:get_started_btn]

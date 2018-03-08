@@ -1,6 +1,6 @@
 module Stamps
   module Pam
-    class USPSCheckBox < Browser::Base
+    class USPSCheckBox < WebApps::Base
       def check
         browser.checkbox(name: 'USPSApproved').set
         browser.checkbox(name: 'USPSApproved').set
@@ -13,7 +13,7 @@ module Stamps
       end
     end
 
-    class ChangeMeterLimit < Browser::Base
+    class ChangeMeterLimit < WebApps::Base
       attr_reader :usps_approval, :new_meter_limit, :current_meter, :maximum_meter
 
       def initialize(param)
@@ -37,7 +37,7 @@ module Stamps
       end
 
       def submit
-        button=Stamps::Browser::StampsField.new browser.input(name: "submit")
+        button=Stamps::WebApps::StampsField.new browser.input(name: "submit")
         change_success=ChangeMeterLimitSuccess.new(param)
         5.times do
           button.click
@@ -51,7 +51,7 @@ module Stamps
       end
     end
 
-    class ChangeMeterLimitSuccess < Browser::Base
+    class ChangeMeterLimitSuccess < WebApps::Base
       def present?
         browser.td(text: "Change Meter Limit Success").present?
       end

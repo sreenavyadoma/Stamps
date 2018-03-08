@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module Authentication
-      class NewWelcomeModal < Browser::Base
+      class NewWelcomeModal < WebApps::Base
         attr_reader :title, :msg_container, :next_button, :close_button, :add_manual_order
 
         def initialize(param)

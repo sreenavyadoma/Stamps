@@ -15,7 +15,7 @@ module Stamps
         end
       end
 
-      class UpgradePlan < Browser::Base
+      class UpgradePlan < WebApps::Base
         attr_reader :window_title, :close_btn, :upgrade_now_btn, :not_yet_btn, :paragraph_field
 
         def initialize(param)
@@ -227,7 +227,7 @@ module Stamps
         end
       end
 
-      class ManagePrintOptionsModal < Browser::Base
+      class ManagePrintOptionsModal < WebApps::Base
         include PrintMediaHelper
 
 
@@ -337,7 +337,7 @@ module Stamps
 
           clickable_field = browser.div(css: "[class=x-grid-row-checker]")
           verify = browser.div(css: "[class=x-grid-row-checker]").parent.parent.parent.parent.parent
-          @search_result = Stamps::Browser::StampsCheckbox.new(clickable_field, verify, "class", "selected")
+          @search_result = Stamps::WebApps::StampsCheckbox.new(clickable_field, verify, "class", "selected")
         end
 
         def save
@@ -362,7 +362,7 @@ module Stamps
         end
       end
 
-      class PrintOn < Browser::Base
+      class PrintOn < WebApps::Base
         include PrintFormBlurOut
         include PrintMediaHelper
         include PrintOnTextbox
@@ -420,12 +420,11 @@ module Stamps
         def select_print_on(str)
           dropdown.wait_until_present(4)
           dropdown.click
-          param.print_media = print_media(str)
           10.times do
             begin
               if print_on_textbox.text.include?(selected_sub_str(str))
                 dropdown.click if manage_printing_options_lov.present?
-                return param.print_media
+                return print_media(str)
               end
               selection = StampsField.new(browser.li(css: "li[class^=#{(data_for(:mail_print_media, {})[str]).split(',').first}][data-recordindex='#{(data_for(:mail_print_media, {})[str]).split(',').last}']"))
               dropdown.click unless manage_printing_options_lov.present?
@@ -453,7 +452,7 @@ module Stamps
         end
       end
 
-      class MailToCountry < Browser::Base
+      class MailToCountry < WebApps::Base
         include PrintFormBlurOut
 
         def dom_dd
@@ -510,7 +509,7 @@ module Stamps
         end
       end
 
-      class MailToInt < Browser::Base
+      class MailToInt < WebApps::Base
         include PrintFormBlurOut
 
 
@@ -563,7 +562,7 @@ module Stamps
         end
       end
 
-      class MailToDom < Browser::Base
+      class MailToDom < WebApps::Base
         include MailDomTextArea
         include PrintFormBlurOut
 
@@ -582,7 +581,7 @@ module Stamps
         end
       end
 
-      class PrintFormEmail < Browser::Base
+      class PrintFormEmail < WebApps::Base
         include PrintFormBlurOut
 
 
@@ -598,7 +597,7 @@ module Stamps
         end
       end
 
-      class PrintFormWeight < Browser::Base
+      class PrintFormWeight < WebApps::Base
         include PrintFormBlurOut
 
 
@@ -635,7 +634,7 @@ module Stamps
         end
       end
 
-      class PrintFormDimensions < Browser::Base
+      class PrintFormDimensions < WebApps::Base
 
 
         def length
@@ -660,7 +659,7 @@ module Stamps
         end
       end
 
-      class PrintFormMailFrom < Browser::Base
+      class PrintFormMailFrom < WebApps::Base
         include PrintFormBlurOut
 
         def textbox
@@ -712,7 +711,7 @@ module Stamps
         end
       end
 
-      class MailServiceSelection < Browser::Base
+      class MailServiceSelection < WebApps::Base
         #include ParameterHelper
 
         def cost_field(str)
@@ -742,7 +741,7 @@ module Stamps
         end
       end
 
-      class PrintFormService < Browser::Base
+      class PrintFormService < WebApps::Base
         include PrintFormBlurOut
 
 
@@ -859,7 +858,7 @@ module Stamps
 
       end
 
-      class PrintFormInsureFor < Browser::Base
+      class PrintFormInsureFor < WebApps::Base
         include PrintFormBlurOut
 
 
@@ -881,7 +880,7 @@ module Stamps
         end
       end
 
-      class PrintFormTracking < Browser::Base
+      class PrintFormTracking < WebApps::Base
         include PrintFormBlurOut
 
 
@@ -921,7 +920,7 @@ module Stamps
         end
       end
 
-      class PrintFormCostCode < Browser::Base
+      class PrintFormCostCode < WebApps::Base
 
 
         def textbox
@@ -949,7 +948,7 @@ module Stamps
       end
 
       #todo-Rob reference http://jira.psisystems.local/browse/ORDERSAUTO-3460
-      class PrintFormMailToLink < Browser::Base
+      class PrintFormMailToLink < WebApps::Base
 
 
         def link
@@ -969,7 +968,7 @@ module Stamps
         end
       end
 
-      class PrintFormMailTo < Browser::Base
+      class PrintFormMailTo < WebApps::Base
         include PrintFormBlurOut
 
         def mail_to_country
@@ -999,7 +998,7 @@ module Stamps
         end
       end
 
-      class PrintFormCustoms < Browser::Base
+      class PrintFormCustoms < WebApps::Base
         attr_reader :button, :customs_form
 
         def initialize(param)

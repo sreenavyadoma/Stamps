@@ -2,7 +2,7 @@ module Stamps
   module Orders
     module DetailsFormCommon #todo-ORDERSAUTO-3737
 
-      class DetailsFormDimensions < Browser::Base
+      class DetailsFormDimensions < WebApps::Base
 
 
         def initialize(param, form_type)
@@ -15,7 +15,7 @@ module Stamps
             textbox = browser.text_fields(css: "[class*=sdc-mainpanel-lengthnumberfield]")[(@form_type == :single_order) ? 0 : 1]
             inc_btn = browser.div(css: "")
             dec_btn = browser.div(css: "")
-            @length = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
+            @length = Stamps::WebApps::StampsNumberField.new(textbox, inc_btn, dec_btn)
           end
           @length
         end
@@ -25,7 +25,7 @@ module Stamps
             textbox = browser.text_field(css: "[class*=sdc-mainpanel-widthnumberfield]")
             inc_btn = browser.div(css: "")
             dec_btn = browser.div(css: "")
-            @width = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
+            @width = Stamps::WebApps::StampsNumberField.new(textbox, inc_btn, dec_btn)
           end
           @width
         end
@@ -35,7 +35,7 @@ module Stamps
             textbox = browser.text_field(css: "[class*=sdc-mainpanel-heightnumberfield]")
             inc_btn = browser.div(css: "")
             dec_btn = browser.div(css: "")
-            @height = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
+            @height = Stamps::WebApps::StampsNumberField.new(textbox, inc_btn, dec_btn)
           end
           @height
         end
@@ -45,7 +45,7 @@ module Stamps
         end
       end
 
-      class ShipFromField < Browser::Base
+      class ShipFromField < WebApps::Base
         attr_reader :form
         def initialize(param, form)
           super(param)
@@ -93,7 +93,7 @@ module Stamps
         end
       end
 
-      class DetailsFormShipFrom < Browser::Base
+      class DetailsFormShipFrom < WebApps::Base
         attr_reader :form_type
 
         def initialize(param, form_type)
@@ -118,7 +118,7 @@ module Stamps
         def select(str)
           dropdown.click
           sleep(0.5)
-          window_title = Class.new(Browser::Base).new(param).extend(Stamps::Orders::ShipFrom::WindowTitle)
+          window_title = Class.new(WebApps::Base).new(param).extend(Stamps::Orders::ShipFrom::WindowTitle)
           selection = StampsField.new((str.downcase.include?('default')) ? browser.lis(css: "[class*='x-boundlist-item-over'][data-recordindex='0']")[(form_type == :single_order) ? 0 : 1] : browser.lis(text: /#{str}/)[(form_type == :single_order) ? 0 : 1])
           if str.downcase.include?("manage shipping")
             20.times do
@@ -142,7 +142,7 @@ module Stamps
         end
       end
 
-      class DetailsFormService < Browser::Base
+      class DetailsFormService < WebApps::Base
         attr_reader :textbox, :dropdown, :form_type
         def initialize(param, form_type)
           super(param)
@@ -268,7 +268,7 @@ module Stamps
 
       end
 
-      class OrderDetailsWeight < Browser::Base
+      class OrderDetailsWeight < WebApps::Base
         attr_reader :lb, :oz
         def initialize(param, form_type)
           super(param)
@@ -277,22 +277,22 @@ module Stamps
               textbox = browser.text_field(name: 'WeightLbs')
               inc_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=pounds]>div[class*=up]")
               dec_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=pounds]>div[class*=down]")
-              @lb = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
+              @lb = Stamps::WebApps::StampsNumberField.new(textbox, inc_btn, dec_btn)
 
               textbox = browser.text_field(name: 'WeightOz')
               inc_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=ounces]>div[class*=up]")
               dec_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=ounces]>div[class*=down]")
-              @oz = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
+              @oz = Stamps::WebApps::StampsNumberField.new(textbox, inc_btn, dec_btn)
             when :multi_order_details
               textbox = browser.text_field(name: 'WeightLbs')
               inc_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=pounds]>div>div>div>div[class*=up]")
               dec_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=pounds]>div>div>div>div[class*=down]")
-              @lb = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
+              @lb = Stamps::WebApps::StampsNumberField.new(textbox, inc_btn, dec_btn)
 
               textbox = browser.text_field(name: 'WeightOz')
               inc_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=ounces]>div>div>div>div[class*=up]")
               dec_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=ounces]>div>div>div>div[class*=down]")
-              @oz = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
+              @oz = Stamps::WebApps::StampsNumberField.new(textbox, inc_btn, dec_btn)
             else
               raise "Invalid form type: #{form_type}"
           end

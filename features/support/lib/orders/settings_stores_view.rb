@@ -16,12 +16,12 @@ module Stamps
         end
 
         def marketplace_window_title
-          (cache[:marketplace_window_title].nil? || !cache[:marketplace_window_title].present?) ? cache[:marketplace_window_title] = Browser::Base.new(
+          (cache[:marketplace_window_title].nil? || !cache[:marketplace_window_title].present?) ? cache[:marketplace_window_title] = WebApps::Base.new(
               param).extend(Orders::Stores::MarketPlaceWindowTitle) : cache[:marketplace_window_title]
         end
 
         def store_settings_window_title
-          (cache[:store_settings_window_title].nil? || !cache[:store_settings_window_title].present?) ? cache[:store_settings_window_title] = Browser::Base.new(
+          (cache[:store_settings_window_title].nil? || !cache[:store_settings_window_title].present?) ? cache[:store_settings_window_title] = WebApps::Base.new(
               param).extend(Orders::Stores::StoreSettingsWindowTitle) : cache[:store_settings_window_title]
         end
 
@@ -58,7 +58,7 @@ module Stamps
           cache[:delete_store_confirm_modal].nil? || !cache[:delete_store_confirm_modal].present? ? cache[:delete_store_confirm_modal] = DeleteStoreConfirm.new(param) : cache[:delete_store_confirm_modal]
         end
 
-        class DeleteStoreConfirm < Browser::Base
+        class DeleteStoreConfirm < WebApps::Base
           #assign({})
 
           def present?
@@ -101,7 +101,7 @@ module Stamps
         end
       end
 
-      class StoresTabView < Browser::Base
+      class StoresTabView < WebApps::Base
         include StoresTabViewToolbar
         include StoresTabViewBottom
 

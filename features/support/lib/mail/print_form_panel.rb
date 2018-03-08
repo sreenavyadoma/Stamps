@@ -63,28 +63,28 @@ module Stamps
           case param.print_media
           when :stamps
             if cache[:stamps_options].nil? || !cache[:stamps_options].present?
-              cache[:stamps_options] = Class.new(Browser::Base).new(param).extend(Stamps::Mail::AdvancedOptions::Stamps)
+              cache[:stamps_options] = Class.new(WebApps::Base).new(param).extend(Stamps::Mail::AdvancedOptions::Stamps)
             end
             return cache[:stamps_options]
           when :label
             if cache[:label_options].nil? || !cache[:label_options].present?
-              cache[:label_options] = Class.new(Browser::Base).new(param).extend(Stamps::Mail::AdvancedOptions::Labels)
+              cache[:label_options] = Class.new(WebApps::Base).new(param).extend(Stamps::Mail::AdvancedOptions::Labels)
             end
             return cache[:label_options]
           when :envelope
             if cache[:envelope_options].nil? || !cache[:envelope_options].present?
-              cache[:envelope_options] = Class.new(Browser::Base).new(param).extend(Stamps::Mail::AdvancedOptions::Envelopes)
+              cache[:envelope_options] = Class.new(WebApps::Base).new(param).extend(Stamps::Mail::AdvancedOptions::Envelopes)
             end
             return cache[:envelope_options]
           # when :certified_mail, :certified_mail_3910_3930, :certified_mail_3810, :certified_mail_3830
           when :cm3610, :cm3710, :cm3910, :cm3930, :cm3810, :cm3830
             if cache[:cm_options].nil? || !cache[:cm_options].present?
-              cache[:cm_options] = Class.new(Browser::Base).new(param).extend(Stamps::Mail::AdvancedOptions::CertifiedMails)
+              cache[:cm_options] = Class.new(WebApps::Base).new(param).extend(Stamps::Mail::AdvancedOptions::CertifiedMails)
             end
             return cache[:cm_options]
           when :roll
             if cache[:roll_options].nil? || !cache[:roll_options].present?
-              cache[:roll_options] = Class.new(Browser::Base).new(param).extend(Stamps::Mail::AdvancedOptions::Rolls)
+              cache[:roll_options] = Class.new(WebApps::Base).new(param).extend(Stamps::Mail::AdvancedOptions::Rolls)
             end
             return cache[:roll_options]
           end
@@ -148,7 +148,7 @@ module Stamps
       module ExtServCertMail
         def certified_mail
           if cache[:certified_mail].nil? || !cache[:certified_mail].present? then
-            cache[:certified_mail] = Stamps::Browser::StampsCheckbox.new(
+            cache[:certified_mail] = Stamps::WebApps::StampsCheckbox.new(
                 browser.input(id: 'sdc-mainpanel-cmcheckbox-inputEl'),
                 browser.div(id: 'sdc-mainpanel-cmcheckbox'),
                 'class',
@@ -161,7 +161,7 @@ module Stamps
       module ExtServElecRetReceipt
         def electronic_return_receipt
           if cache[:ereturn_receipt].nil? || !cache[:ereturn_receipt].present? then
-            cache[:ereturn_receipt] = Stamps::Browser::StampsCheckbox.new(
+            cache[:ereturn_receipt] = Stamps::WebApps::StampsCheckbox.new(
                 browser.span(id: 'sdc-mainpanel-rrecheckbox-displayEl'),
                 browser.div(id: 'sdc-mainpanel-rrecheckbox'),
                 'class',
@@ -187,7 +187,7 @@ module Stamps
       module ExtServRetReceipt
         def return_receipt
           if cache[:return_receipt].nil? || !cache[:return_receipt].present?
-            cache[:return_receipt] = Stamps::Browser::StampsCheckbox.new(
+            cache[:return_receipt] = Stamps::WebApps::StampsCheckbox.new(
                 browser.span(id: 'sdc-mainpanel-rrcheckbox-displayEl'),        #can't check/uncheck
                 #browser.span(css: 'span[id=sdc-mainpanel-rrcheckbox-displayEl]'),     #can't evaluate enabled/disabled
                 browser.div(id: 'sdc-mainpanel-rrcheckbox'),
