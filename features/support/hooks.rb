@@ -11,7 +11,7 @@ include RAutomation
 include Spreadsheet
 
 Before do  |scenario|
-  StampsTest.start(scenario)
+  StampsTest.init(scenario)
   StampsTest.log.info "Begin..."
   StampsTest.log.info "-"
   StampsTest.print_test_steps

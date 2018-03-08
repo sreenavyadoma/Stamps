@@ -3,7 +3,7 @@ module Stamps
     class << self
       attr_accessor :driver, :log, :scenario, :scenario_name, :firefox_profile, :browser_version, :os_version
 
-      def initialize(scenario)
+      def init(scenario)
         @scenario = scenario
         @scenario_name = scenario.name
         logger = Log4r::Logger.new(":")
