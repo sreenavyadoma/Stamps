@@ -71,7 +71,6 @@ Feature:  BVT tests for Orders
     Then check order 1
     Then Pause for 1 second
     Then check order 2
-
     Then Pause for 1 seconds
 
   # Updating order details
