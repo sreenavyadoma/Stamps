@@ -859,7 +859,7 @@ module Stamps
             end
           end
           raise "Server Error: \n#{server_error.text}" if server_error.present?
-          raise "Initializing Database took longer than expected. Check your test making sure ShipStation is up and running in  #{param.test_env}" if initializing_db.present?
+          raise "Initializing Database took longer than expected. Check your test making sure ShipStation is up and running in  #{param.env}" if initializing_db.present?
           raise "Unable to add new order."
         end
 

@@ -24,7 +24,7 @@ module Stamps
       end
 
       def visit
-        url = case param.test_env.downcase
+        url = case param.env.downcase
                 when /cc/
                   "http://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@qa-clientsite:82/pam/Default.asp"
                 when /sc/
@@ -32,7 +32,7 @@ module Stamps
                 when /stg/
                   "https://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@site.staging.stamps.com:82/pam/Default.asp"
                 else
-                  raise ArgumentError, "#{param.test_env} environment is not implemented."
+                  raise ArgumentError, "#{param.env} environment is not implemented."
               end
         log.info "Visit: #{url}"
         sleep(1)

@@ -14,7 +14,7 @@ module Stamps
       end
 
       def load_page
-        url = case param.test_env.downcase
+        url = case param.env.downcase
                 when /cc/
                   "http://sdcwebsite.qacc.stamps.com/"
                 when /sc/
@@ -22,7 +22,7 @@ module Stamps
                 when /stg/
                   "http://sdcwebsite.staging.stamps.com/"
                 else
-                  raise ArgumentError, "#{param.test_env} environment is not implemented."
+                  raise ArgumentError, "#{param.env} environment is not implemented."
               end
         browser.goto(url)
         get_started_btn.wait_until_present(10)

@@ -8,7 +8,7 @@ module Stamps
   
   module SdcParam
     class << self
-      attr_accessor :log, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media, 
+      attr_accessor :log, :scenario_name, :web_app, :env, :health_check, :usr, :pw, :url, :print_media,
                     :developer, :debug, :firefox_profile, :printer, :browser_str, :hostname
       
       def webapps
@@ -27,6 +27,7 @@ module Stamps
         raise "Not Implemented."        
       end
     end
+
     def modal_param #todo-Rob refact TestParam
       if @modal_param.nil?
         @modal_param = WebApps::Param.new
@@ -40,11 +41,11 @@ module Stamps
         @modal_param.web_app = (ENV['WEB_APP'].downcase).to_sym
         expect([:orders, :mail, :registration, :pam, :webdev, :rob]).to include(@modal_param.web_app), "Invalid modal_paramter WEB_APP=#{@modal_param.web_app}. Valid values are mail, registration"
 
-        @modal_param.test_env = ENV['URL']
-        @modal_param.test_env = 'stg' if ENV['URL'].downcase == 'staging'
-        @modal_param.test_env = 'qacc' if ENV['URL'].downcase.include?('cc')
-        @modal_param.test_env = 'qasc' if ENV['URL'].downcase.include?('sc')
-        @modal_param.test_env = 'qacc' if ENV['URL'].downcase.include?('rating')
+        @modal_param.env = ENV['URL']
+        @modal_param.env = 'stg' if ENV['URL'].downcase == 'staging'
+        @modal_param.env = 'qacc' if ENV['URL'].downcase.include?('cc')
+        @modal_param.env = 'qasc' if ENV['URL'].downcase.include?('sc')
+        @modal_param.env = 'qacc' if ENV['URL'].downcase.include?('rating')
 
 
         @modal_param.printer = (ENV['PRINTER'].nil?) ? 'factory' : ENV['PRINTER']

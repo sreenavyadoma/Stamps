@@ -45,7 +45,7 @@ module Stamps
 
         def upgrade_now
           upgrade_now_btn.click_while_present
-          expect(browser.url).to include(param.test_env), "User rerouted to an external URL. You are no longer in #{param.test_env}. Check URL #{browser.url}"
+          expect(browser.url).to include(param.env), "User rerouted to an external URL. You are no longer in #{param.env}. Check URL #{browser.url}"
         end
       end
 

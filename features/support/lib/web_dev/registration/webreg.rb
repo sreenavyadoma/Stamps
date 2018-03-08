@@ -64,7 +64,7 @@ module Stamps
                   else
                     nil
                 end
-        url = case modal_param.test_env.downcase
+        url = case modal_param.env.downcase
                 when /cc/
                   "https://qa-registration.stamps.com/registration/#{(theme.nil?) ? "" : "?theme=#{theme}"}"
                 when /sc/
@@ -72,7 +72,7 @@ module Stamps
                 when /stg/
                   "https://registration.staging.stamps.com/registration/#{(theme.nil?) ? "" : "?theme=#{theme}"}"
                 else
-                  raise ArgumentError, "#{param.test_env} environment is not implemented."
+                  raise ArgumentError, "#{param.env} environment is not implemented."
               end
         log.info "Visit:  #{url}"
         browser.goto(url)

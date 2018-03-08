@@ -1,7 +1,7 @@
 module Stamps
   class HealthCheck < WebApps::Base
     def health_check
-      case param.test_env.downcase
+      case param.env.downcase
         when /sc/
           browser.goto("https://printext.qasc.stamps.com/orders/healthcheck.aspx")
         when /cc/
@@ -9,7 +9,7 @@ module Stamps
         when /stg/
           browser.goto("https://print.testing.stamps.com/orders/healthcheck.aspx")
         else
-          raise "Invalid environment selection: #{param.test_env}"
+          raise "Invalid environment selection: #{param.env}"
       end
       sleep(1)
       log.message browser.text
@@ -17,8 +17,8 @@ module Stamps
     end
 
     def address_book
-      param.test_env = 'stg' if param.test_env.downcase == 'staging'
-      case param.test_env.downcase
+      param.env = 'stg' if param.env.downcase == 'staging'
+      case param.env.downcase
         when /sc/
           browser.goto("https://printext.qasc.stamps.com/addressbook/healthcheck.aspx")
         when /cc/
@@ -26,7 +26,7 @@ module Stamps
         when /stg/
           browser.goto("https://print.testing.stamps.com/addressbook/healthcheck.aspx")
         else
-          raise "Invalid environment selection: #{param.test_env}"
+          raise "Invalid environment selection: #{param.env}"
       end
       sleep(1)
       log.message browser.text
@@ -34,7 +34,7 @@ module Stamps
     end
 
     def or_reports
-      case param.test_env.downcase
+      case param.env.downcase
         when /sc/
           browser.goto("https://orext.qasc.stamps.com/ORReports/healthcheck.aspx")
         when /cc/
@@ -42,7 +42,7 @@ module Stamps
         when /stg/
           browser.goto("https://or.staging.stamps.com/orreports/healthcheck.aspx")
         else
-          raise "Invalid environment selection: #{param.test_env}"
+          raise "Invalid environment selection: #{param.env}"
       end
       sleep(1)
       log.message browser.text
@@ -50,7 +50,7 @@ module Stamps
     end
 
     def or_postage_tools
-      case param.test_env.downcase
+      case param.env.downcase
         when /sc/
           browser.goto("https://orext.qasc.stamps.com/postagetools/healthcheck.aspx")
         when /cc/
@@ -58,7 +58,7 @@ module Stamps
         when /stg/
           browser.goto("https://or.staging.stamps.com/postagetools/healthcheck.aspx")
         else
-          raise "Invalid environment selection: #{param.test_env}"
+          raise "Invalid environment selection: #{param.env}"
       end
       sleep(1)
       log.message browser.text

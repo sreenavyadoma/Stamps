@@ -24,7 +24,7 @@ Then /^[Ss]et [Mm]ail [Pp]rint modal Printer ?(?:|(.*))$/ do |printer|
   TestData.store[:printer]=(printer.nil?)? modal_param.printer : printer
   expect(TestData.store[:printer]).to match(/\\.+\.*/) if TestData.store[:printer].include?('\\') #validate printer format
   step "expect mail print modal is present"
-  expect(stamps.mail.mail_toolbar.print_postage.mail_printer).to be_present, "Unable to print on printer #{TestData.store[:printer]}. Check that StampsConnect is pointing to #{modal_param.test_env} on this PC."
+  expect(stamps.mail.mail_toolbar.print_postage.mail_printer).to be_present, "Unable to print on printer #{TestData.store[:printer]}. Check that StampsConnect is pointing to #{modal_param.env} on this PC."
   expect(stamps.mail.mail_toolbar.print_postage.mail_printer.select_printer(TestData.store[:printer])).to_not be(false), "Unable to select printer #{printer}. The printer does not exist in Printer drop-down list of values."
 end
 

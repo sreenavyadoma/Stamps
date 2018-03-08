@@ -2,7 +2,7 @@ module Stamps
   ##
   #
   module WebApps
-    Param = Struct.new(:driver, :log, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media, :developer, :debug, :firefox_profile, :printer, :browser_str, :hostname) {} unless Object.const_defined?('Param')
+    Param = Struct.new(:driver, :log, :scenario_name, :web_app, :env, :health_check, :usr, :pw, :url, :print_media, :developer, :debug, :firefox_profile, :printer, :browser_str, :hostname) {} unless Object.const_defined?('Param')
 
     ##
     #
