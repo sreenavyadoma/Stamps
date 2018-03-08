@@ -13,7 +13,7 @@ module Stamps
         @mail_print_modal = PrintModal::MailPrintModal.new(param)
         @confirm_window = PrintModal::MailConfirmPrint.new(param)
         @please_wait = PrintModal::PleaseWait.new(param)
-        @windows_print = Windows::PrintWindow.new(param.browser)
+        @windows_print = Windows::PrintWindow.new(param.driver)
         @sample_button = StampsField.new browser.span(text: "Print Sample")
         @printing_problem = PrintingProblem.new(param)
         @insufficient_funds = MailInsufficientFunds.new(param)

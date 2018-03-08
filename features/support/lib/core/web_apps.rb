@@ -2,34 +2,22 @@ module Stamps
   ##
   #
   module WebApps
-    Param = Struct.new(:browser, :log, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media, :developer, :debug, :firefox_profile, :printer, :browser_str, :hostname) {} unless Object.const_defined?('Param')
+    Param = Struct.new(:driver, :log, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media, :developer, :debug, :firefox_profile, :printer, :browser_str, :hostname) {} unless Object.const_defined?('Param')
 
-    class Basex
-
-      attr_reader :param, :log
-      def initialize(driver, param)
-        @param = param
-        @log = param.log
-      end
-    end
     ##
     #
-    class Base
-      class << self
-        attr_accessor :browser
-      end
-
+    class Base < Core::Base
       attr_reader :param, :log
       def initialize(param)
+        super(param.driver)
         @param = param
-        self.class.browser = param.browser
         @log = param.log
       end
 
-      def browser
-        self.class.browser
+      def driver
+        super
       end
-      alias_method :html, :browser
+      alias_method :browser, :driver
 
       def cache
         @cache = {} if @cache.nil?

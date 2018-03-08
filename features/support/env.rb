@@ -24,6 +24,7 @@ require 'holidays'
 require 'socket'
 
 require_relative 'lib/core/monkey_patch'
+require_relative 'core/sdc_core'
 require_relative 'lib/apps/db_helper'
 require_relative 'lib/core/user_credentials'
 require_relative 'lib/apps/registration_app'
