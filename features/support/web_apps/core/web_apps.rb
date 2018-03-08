@@ -28,7 +28,7 @@ module Stamps
       attr_accessor :field, :verify_field, :ver_field_attr, :ver_field_attr_value
       def initialize(field)
         @field = field
-        self.driver = field.driver unless field.driver.nil?
+        self.driver = field.browser unless field.driver.nil? # TODO-Rob encapsulate field.browser
       end
       alias_method :checkbox, :field
       alias_method :radio, :field
