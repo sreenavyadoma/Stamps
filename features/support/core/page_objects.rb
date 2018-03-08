@@ -17,3 +17,4 @@ module Stamps
   end
 
 end
+
