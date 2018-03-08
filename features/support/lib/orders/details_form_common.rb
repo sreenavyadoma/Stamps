@@ -76,8 +76,8 @@ module Stamps
           return manage_shipping_address if manage_shipping_address.present?
           dropdown.click
           15.times do
-            selection1 = (str.downcase.include?('default')) ? browser.lis(css: "[class*='x-boundlist-item-over'][data-recordindex='0']")[0] : browser.lis(text: /#{str}/)[0]
-            selection2 = (str.downcase.include?('default')) ? browser.lis(css: "[class*='x-boundlist-item-over'][data-recordindex='0']")[1] : browser.lis(text: /#{str}/)[1]
+            selection1 = (str.downcase.include?('default')) ? browser.lis(css: "[class*='x-boundlist-item-over'][data-recordindex='0']")[0] : browser.lis(visible_text: /#{str}/)[0]
+            selection2 = (str.downcase.include?('default')) ? browser.lis(css: "[class*='x-boundlist-item-over'][data-recordindex='0']")[1] : browser.lis(visible_text: /#{str}/)[1]
             selection = StampsField.new((selection1.present?) ? selection1 : selection2)
             dropdown.click unless selection.present?
             selection.scroll_into_view
@@ -119,7 +119,7 @@ module Stamps
           dropdown.click
           sleep(0.5)
           window_title = Class.new(Browser::Base).new(param).extend(Stamps::Orders::ShipFrom::WindowTitle)
-          selection = StampsField.new((str.downcase.include?('default')) ? browser.lis(css: "[class*='x-boundlist-item-over'][data-recordindex='0']")[(form_type == :single_order) ? 0 : 1] : browser.lis(text: /#{str}/)[(form_type == :single_order) ? 0 : 1])
+          selection = StampsField.new((str.downcase.include?('default')) ? browser.lis(css: "[class*='x-boundlist-item-over'][data-recordindex='0']")[(form_type == :single_order) ? 0 : 1] : browser.lis(visible_text: /#{str}/)[(form_type == :single_order) ? 0 : 1])
           if str.downcase.include?("manage shipping")
             20.times do
               sleep(0.35)

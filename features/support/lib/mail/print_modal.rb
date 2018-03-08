@@ -41,7 +41,7 @@ module Stamps
           partial_printer_name = (str.include?('\\')) ? /\\\\(.+)\\/.match(str)[1] : str
           5.times do
             return textbox.text if textbox.text.include?(partial_printer_name)
-            selection = StampsField.new(browser.li(text: /#{partial_printer_name}/))
+            selection = StampsField.new(browser.li(visible_text: /#{partial_printer_name}/))
             dropdown.click unless selected_printer.present?
             return false if selected_printer.present? && !selection.present?
             selection.click
