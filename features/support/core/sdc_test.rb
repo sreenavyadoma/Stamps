@@ -4,12 +4,31 @@ module Stamps
       attr_accessor :driver, :log, :scenario, :scenario_name, :firefox_profile, :browser_version, :os_version
 
       def init(scenario)
+        init_env_var
         @scenario = scenario
         @scenario_name = scenario.name
         logger = Log4r::Logger.new(":")
         logger.outputters = Outputter.stdout
         @log = Stamps::Core::SdcLogger.new(logger)
-        @log.verbose = true #ENV['VERBOSE']
+        @log.verbose = SdcParamHelper.verbose
+      end
+
+      def init_env_var
+        SdcParamHelper.verbose = ENV['VERBOSE'].nil? ? false : ENV['VERBOSE'].downcase == 'true'
+        SdcParamHelper.xxxxxxx
+        SdcParamHelper.xxxxxxx
+        SdcParamHelper.xxxxxxx
+        SdcParamHelper.xxxxxxx
+        SdcParamHelper.xxxxxxx
+        SdcParamHelper.xxxxxxx
+        SdcParamHelper.xxxxxxx
+        SdcParamHelper.xxxxxxx
+        SdcParamHelper.xxxxxxx
+        SdcParamHelper.xxxxxxx
+        SdcParamHelper.xxxxxxx
+        SdcParamHelper.xxxxxxx
+        SdcParamHelper.xxxxxxx
+        SdcParamHelper.xxxxxxx
       end
 
       def print_test_steps

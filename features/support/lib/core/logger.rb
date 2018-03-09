@@ -1,5 +1,5 @@
 module Stamps
-  ## Deprecated
+  ## Deprecated. Use SdcLogger instead
   #
   class Stampslog
     attr_accessor :scenario_name
