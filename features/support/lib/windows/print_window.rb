@@ -3,27 +3,27 @@ module Stamps
     class PrintWindow
       include RAutomation
 
-      attr_reader :browser
+      attr_reader :driver
 
-      def initialize(browser)
-        @browser=browser
+      def initialize(driver)
+        @driver=driver
       end
 
       def present?
         print_window=RAutomation::Window.new(:title => /Print/i)
         log.info "Print Window Present? #{print_window.present?}"
         begin
-          if browser==:firefox
+          if driver==:firefox
             print_window.activate
             print_window.button(:value => "OK").exists?
-          elsif browser==:chrome
+          elsif driver==:chrome
             print_window.activate
             print_window.button(:value => "&Print").exists?
-          elsif browser==:ie
+          elsif driver==:ie
             print_window.activate
             print_window.button(:value => "&Print").exists?
           else
-            expect("Invalid browser selection.  #{browser} is not recognized.  User :firefox, :chrome or :ie").to eql ""
+            expect("Invalid driver selection.  #{driver} is not recognized.  User :firefox, :chrome or :ie").to eql ""
           end
         rescue
           false
@@ -40,7 +40,7 @@ module Stamps
       def print
         print_window=RAutomation::Window.new(:title => /Print/i)
         log.info "Print Window Present? #{print_window.present?}"
-        if browser==:firefox
+        if driver==:firefox
           wait_until_present
           expect("Print Window is not open").to eql "" unless present?
           print_window.activate
@@ -53,7 +53,7 @@ module Stamps
             raise "Unable to click on OK button in Windows Print dialog. Windows print modal might not have been present.\n#{e.backtrace.join "\n"}"
           end
 
-        elsif browser==:chrome
+        elsif driver==:chrome
           wait_until_present
           expect("Print Window is not open").to eql "" unless present?
           print_window.activate
@@ -66,7 +66,7 @@ module Stamps
             raise "Unable to click on OK button in Windows Print dialog. Windows print modal might not have been present." + e
           end
 
-        elsif browser==:ie
+        elsif driver==:ie
           wait_until_present
           expect("Print Window is not open").to eql "" unless present?
           print_window.activate
@@ -79,7 +79,7 @@ module Stamps
             raise "Unable to click on OK button in Windows Print dialog. Windows print modal might not have been present." + e
           end
         else
-          expect("Invalid browser selection.  #{browser} is not recognized.  User :firefox, :chrome or :ie").to eql ""
+          expect("Invalid driver selection.  #{driver} is not recognized.  User :firefox, :chrome or :ie").to eql ""
         end
         log.info "Windows click print modal print buttoning successful."
         sleep(3)

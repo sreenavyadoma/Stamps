@@ -5,12 +5,12 @@ module Stamps
         
 
         def button
-          cache[:button] = StampsField.new(browser.span css: "span[id^=button-][id$=-btnIconEl]") if cache[:button].nil? || !cache[:button].present?
+          cache[:button] = StampsField.new(driver.span css: "span[id^=button-][id$=-btnIconEl]") if cache[:button].nil? || !cache[:button].present?
           cache[:button]
         end
 
         def tooltip_field
-          cache[:tooltip_field] = StampsField.new(browser.div id: 'ext-quicktips-tip-innerCt') if cache[:tooltip_field].nil? || !cache[:tooltip_field].present?
+          cache[:tooltip_field] = StampsField.new(driver.div id: 'ext-quicktips-tip-innerCt') if cache[:tooltip_field].nil? || !cache[:tooltip_field].present?
           cache[:tooltip_field]
         end
 
@@ -44,11 +44,11 @@ module Stamps
         
 
         def button
-          cache[:button].nil? || !cache[:button].present? ? cache[:button] = StampsField.new(browser.img(css: 'img[class*=tool-expand-right]')) : cache[:button]
+          cache[:button].nil? || !cache[:button].present? ? cache[:button] = StampsField.new(driver.img(css: 'img[class*=tool-expand-right]')) : cache[:button]
         end
 
         def tooltip_field
-          cache[:tooltip_field] = StampsField.new(browser.div(id: 'ext-quicktips-tip-innerCt')) if cache[:tooltip_field].nil? || !cache[:tooltip_field].present?
+          cache[:tooltip_field] = StampsField.new(driver.div(id: 'ext-quicktips-tip-innerCt')) if cache[:tooltip_field].nil? || !cache[:tooltip_field].present?
           cache[:tooltip_field]
         end
 
@@ -94,17 +94,17 @@ module Stamps
         
 
         def label
-          cache[:label].nil? || !cache[:label].present? ? cache[:label] = StampsField.new(browser.div(text: "Search Results")) : cache[:label]
+          cache[:label].nil? || !cache[:label].present? ? cache[:label] = StampsField.new(driver.div(text: "Search Results")) : cache[:label]
         end
 
         def remove_button
-          cache[:remove_button] = StampsField.new(browser.a(css: "a[data-qtip=Remove]")) if cache[:remove_button].nil? || !cache[:remove_button].present?
+          cache[:remove_button] = StampsField.new(driver.a(css: "a[data-qtip=Remove]")) if cache[:remove_button].nil? || !cache[:remove_button].present?
           cache[:remove_button]
         end
 
         def count_label
           if cache[:count_label].nil? || !cache[:count_label].present?
-            cache[:count_label] = StampsField.new(browser.div(css: "div[id=left-filter-panel-targetEl]>table>tbody>tr>td:nth-child(3)>div>div"))
+            cache[:count_label] = StampsField.new(driver.div(css: "div[id=left-filter-panel-targetEl]>table>tbody>tr>td:nth-child(3)>div>div"))
           end
           cache[:count_label]
         end
@@ -133,19 +133,19 @@ module Stamps
 
         def initialize(param)
           super
-          @textbox = StampsTextbox.new browser.text_field(css: "[placeholder='Search Orders']")
-          @search_button = StampsField.new browser.div(css: "[id^=textfield-][id$=-trigger-search]")
+          @textbox = StampsTextbox.new driver.text_field(css: "[placeholder='Search Orders']")
+          @search_button = StampsField.new driver.div(css: "[id^=textfield-][id$=-trigger-search]")
           @search_results = SearchResults.new(param)
         end
 
         def textbox
-          cache[:textbox] = StampsTextbox.new(browser.text_field(css: "[placeholder='Search Orders']")) if cache[:textbox].nil? || !cache[:textbox].present?
+          cache[:textbox] = StampsTextbox.new(driver.text_field(css: "[placeholder='Search Orders']")) if cache[:textbox].nil? || !cache[:textbox].present?
           cache[:textbox]
         end
 
         def search_button
           if cache[:search_button].nil? || !cache[:search_button].present?
-            cache[:search_button] = StampsField.new(browser.div(css: "[id^=textfield-][id$=-trigger-search]"))
+            cache[:search_button] = StampsField.new(driver.div(css: "[id^=textfield-][id$=-trigger-search]"))
           end
           cache[:search_button]
         end
@@ -170,7 +170,7 @@ module Stamps
         end
 
         def field
-          browser.divs(text: panel_name).first
+          driver.divs(text: panel_name).first
         end
 
         def text
@@ -199,7 +199,7 @@ module Stamps
         end
 
         def count
-          StampsField.new(browser.div(css: "div#left-filter-panel-targetEl>table[style*=left]>tbody>tr>td>div[class*=widget]>div[class=sdc-badge]")).text.to_i
+          StampsField.new(driver.div(css: "div#left-filter-panel-targetEl>table[style*=left]>tbody>tr>td>div[class*=widget]>div[class=sdc-badge]")).text.to_i
         end
       end
 

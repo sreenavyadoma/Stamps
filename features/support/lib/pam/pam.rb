@@ -2,29 +2,29 @@ module Stamps
   module Pam
     class PamHeader < WebApps::Base
       def search_link
-        StampsField.new(browser.a(css: 'a[href*=AccountSearch]'))
+        StampsField.new(driver.a(css: 'a[href*=AccountSearch]'))
       end
 
       def customer_profile_link
-        StampsField.new(browser.a(css: 'a[href*=Profile]'))
+        StampsField.new(driver.a(css: 'a[href*=Profile]'))
       end
 
       def change_meter_limit_link
-        StampsField.new(browser.a(css: 'a[href*=MeterLimit]'))
+        StampsField.new(driver.a(css: 'a[href*=MeterLimit]'))
       end
 
       def appcapp_overrides_link
-        StampsField.new(browser.a(css: 'a[href*=AppCapOverride]'))
+        StampsField.new(driver.a(css: 'a[href*=AppCapOverride]'))
       end
     end
 
     class PaymentAdministratorManager < WebApps::Base
       def page_title
-        StampsField.new(browser.h5(text: "Customer Search"))
+        StampsField.new(driver.h5(text: "Customer Search"))
       end
 
       def visit
-        url = case param.test_env.downcase
+        url = case param.env.downcase
                 when /cc/
                   "http://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@qa-clientsite:82/pam/Default.asp"
                 when /sc/
@@ -32,11 +32,11 @@ module Stamps
                 when /stg/
                   "https://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@site.staging.stamps.com:82/pam/Default.asp"
                 else
-                  raise ArgumentError, "#{param.test_env} environment is not implemented."
+                  raise ArgumentError, "#{param.env} environment is not implemented."
               end
         log.info "Visit: #{url}"
         sleep(1)
-        browser.goto(url)
+        driver.goto(url)
         sleep(1)
         self
       end

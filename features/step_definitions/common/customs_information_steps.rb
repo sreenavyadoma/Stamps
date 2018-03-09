@@ -383,7 +383,7 @@ Then /^[Ee]xpect Customs Associated Item (\d+) Quantity is (?:correct|(\d+))$/ d
   expectation = expectation.nil? ? TestData.store[:customs_associated_items][item_number][:quantity] : expectation
   sleep(0.5)
   expect(stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).item_qty.textbox.text.to_i).to eql(expectation.to_i) if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).item_qty.textbox.text.to_i).to eql(expectation.to_i) if modal_param.web_app == :mail
+  expect(expectation.to_i).to eql(stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).item_qty.textbox.text.to_i) if modal_param.web_app == :mail
 end
 
 Then /^[Ee]xpect Customs Associated Item (\d+) Unit Price is (?:correct|(.*))$/ do |item_number, expectation|

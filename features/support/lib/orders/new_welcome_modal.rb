@@ -6,10 +6,10 @@ module Stamps
 
         def initialize(param)
           super
-          @title = StampsField.new(browser.div(text: 'Welcome!'))
-          @msg_container = StampsField.new(browser.div(id: 'sdc-window-tutorial-innerCt'))
-          @next_button = StampsField.new(browser.span(text: 'Next'))
-          @close_button = StampsField.new(browser.img(css: 'img[class$=x-tool-close]'))
+          @title = StampsField.new(driver.div(text: 'Welcome!'))
+          @msg_container = StampsField.new(driver.div(id: 'sdc-window-tutorial-innerCt'))
+          @next_button = StampsField.new(driver.span(text: 'Next'))
+          @close_button = StampsField.new(driver.img(css: 'img[class$=x-tool-close]'))
           @add_manual_order = AddManualOrderModal.new(param)
         end
 

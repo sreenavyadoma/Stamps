@@ -4,7 +4,7 @@ Then /^[Ll]oad PAM [Pp]age$/ do
   pam.visit
 end
 
-Then /^I? ?[Ll]aunch browser and [Ll]oad PAM [Cc]ustomer [Ss]earch page$/ do
+Then /^I? ?[Ll]aunch driver and [Ll]oad PAM [Cc]ustomer [Ss]earch page$/ do
   step "I launched default browser" if SdcTest.driver.nil?
   step "load PAM Customer Search page"
 end

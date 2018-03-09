@@ -64,7 +64,7 @@ module Stamps
                   else
                     nil
                 end
-        url = case modal_param.test_env.downcase
+        url = case modal_param.env.downcase
                 when /cc/
                   "https://qa-registration.stamps.com/registration/#{(theme.nil?) ? "" : "?theme=#{theme}"}"
                 when /sc/
@@ -72,10 +72,10 @@ module Stamps
                 when /stg/
                   "https://registration.staging.stamps.com/registration/#{(theme.nil?) ? "" : "?theme=#{theme}"}"
                 else
-                  raise ArgumentError, "#{param.test_env} environment is not implemented."
+                  raise ArgumentError, "#{param.env} environment is not implemented."
               end
         log.info "Visit:  #{url}"
-        browser.goto(url)
+        driver.goto(url)
         wait_until_present(10)
       end
 
@@ -84,22 +84,22 @@ module Stamps
     class AnErrorOccured < WebApps::Base
 
       def header_elem
-        cache[:header_elem] = StampsField.new browser.h3(text: "An Error Occurred") if cache[:header_elem].nil?
+        cache[:header_elem] = StampsField.new driver.h3(text: "An Error Occurred") if cache[:header_elem].nil?
         cache[:header_elem]
       end
 
       def top_message_elem
-        cache[:top_message_elem] = StampsField.new browser.p(id: "topMessage") if cache[:top_message_elem].nil?
+        cache[:top_message_elem] = StampsField.new driver.p(id: "topMessage") if cache[:top_message_elem].nil?
         cache[:top_message_elem]
       end
 
       def error_code_elem
-        cache[:error_code_elem] = StampsField.new browser.p(id: "errorCode") if cache[:error_code_elem].nil?
+        cache[:error_code_elem] = StampsField.new driver.p(id: "errorCode") if cache[:error_code_elem].nil?
         cache[:error_code_elem]
       end
 
       def error_description_elem
-        cache[:error_description_elem] = StampsField.new browser.p(id: "errorDescription") if cache[:error_description_elem].nil?
+        cache[:error_description_elem] = StampsField.new driver.p(id: "errorDescription") if cache[:error_description_elem].nil?
         cache[:error_description_elem]
       end
 

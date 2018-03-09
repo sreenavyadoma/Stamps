@@ -4,17 +4,17 @@ module Stamps
 
       class SecurityQuestionsSuccess < WebApps::Base
         def cont_btn
-          @cont_btn = StampsField.new(browser.span(text: "Continue")) if @cont_btn.nil? || !@cont_btn.present?
+          @cont_btn = StampsField.new(driver.span(text: "Continue")) if @cont_btn.nil? || !@cont_btn.present?
           @cont_btn
         end
 
         def window_title
-          @window_title = StampsField.new(browser.div(text: "Security Questions")) if @window_title.nil? || !@window_title.present?
+          @window_title = StampsField.new(driver.div(text: "Security Questions")) if @window_title.nil? || !@window_title.present?
           @window_title
         end
 
         def security_que_successfully_msg
-          @security_que_successfully_msg = StampsField.new(browser.div(text: "Security questions and answers have been successfully set.")) if @security_que_successfully_msg.nil? || !@security_que_successfully_msg.present?
+          @security_que_successfully_msg = StampsField.new(driver.div(text: "Security questions and answers have been successfully set.")) if @security_que_successfully_msg.nil? || !@security_que_successfully_msg.present?
           @security_que_successfully_msg
         end
 
@@ -29,7 +29,7 @@ module Stamps
         end
 
         def body
-          @body = StampsField.new(browser.div(css: "div[class*='app-window'][class*='window-closable']>div[id$=body]>div>div>div>div>label")) if @body.nil? || !@body.present?
+          @body = StampsField.new(driver.div(css: "div[class*='app-window'][class*='window-closable']>div[id$=body]>div>div>div>div>label")) if @body.nil? || !@body.present?
           @body
         end
 
@@ -53,18 +53,18 @@ module Stamps
 
       class SecurityFirstQuestion < WebApps::Base
         def drop_down
-          @drop_down = StampsField.new(browser.divs(css: "div[id^=combo-][id$=-trigger-picker]")[0]) if @drop_down.nil? || !@drop_down.present?
+          @drop_down = StampsField.new(driver.divs(css: "div[id^=combo-][id$=-trigger-picker]")[0]) if @drop_down.nil? || !@drop_down.present?
           @drop_down
         end
 
         def text_box
-          @text_box = StampsField.new(browser.divs(css: "input[placeholder='<Please Select>']")[0]) if @text_box.nil? || !@text_box.present?
+          @text_box = StampsField.new(driver.divs(css: "input[placeholder='<Please Select>']")[0]) if @text_box.nil? || !@text_box.present?
           @text_box
         end
 
         def select(str)
           drop_down.click
-          selection = StampsField.new(browser.lis(text: str).first)
+          selection = StampsField.new(driver.lis(text: str).first)
 
           5.times do
             drop_down.click unless selection.present?
@@ -74,25 +74,25 @@ module Stamps
         end
 
         def first_security_answer
-          @first_security_answer = StampsTextbox.new(browser.text_field(css: "input[data-errorqtip*='Security answer is required']")) if @first_security_answer.nil? || !@first_security_answer.present?
+          @first_security_answer = StampsTextbox.new(driver.text_field(css: "input[data-errorqtip*='Security answer is required']")) if @first_security_answer.nil? || !@first_security_answer.present?
           @first_security_answer
         end
       end
 
       class SecuritySecondQuestion < WebApps::Base
         def drop_down
-          @drop_down = StampsField.new(browser.divs(css: "div[id^=combo-][id$=-trigger-picker]")[1]) if @drop_down.nil? || !@drop_down.present?
+          @drop_down = StampsField.new(driver.divs(css: "div[id^=combo-][id$=-trigger-picker]")[1]) if @drop_down.nil? || !@drop_down.present?
           @drop_down
         end
 
         def text_box
-          @text_box = StampsField.new(browser.divs(css: "input[placeholder='<Please Select>']")[1]) if @text_box.nil? || !@text_box.present?
+          @text_box = StampsField.new(driver.divs(css: "input[placeholder='<Please Select>']")[1]) if @text_box.nil? || !@text_box.present?
           @text_box
         end
 
         def select(str)
           drop_down.click
-          selection = StampsField.new(browser.lis(text: str).last)
+          selection = StampsField.new(driver.lis(text: str).last)
 
           1.times do
             drop_down.click unless selection.present?
@@ -102,7 +102,7 @@ module Stamps
         end
 
         def second_security_answer
-          @second_security_answer = StampsTextbox.new(browser.text_field(css: "input[data-errorqtip*='Security answer is required']")) if @second_security_answer.nil? || !@second_security_answer.present?
+          @second_security_answer = StampsTextbox.new(driver.text_field(css: "input[data-errorqtip*='Security answer is required']")) if @second_security_answer.nil? || !@second_security_answer.present?
           @second_security_answer
         end
       end

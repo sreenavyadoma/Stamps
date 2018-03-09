@@ -2,7 +2,7 @@ module Stamps
   module Pam
     class CustomerNotFoundPage < WebApps::Base
       def status_reason
-        StampsField.new(browser.td(:css, '[class=TD3][align=middle]'))
+        StampsField.new(driver.td(:css, '[class=TD3][align=middle]'))
       end
 
       def present?
@@ -12,11 +12,11 @@ module Stamps
 
     class MeterInfoNotAvailable < WebApps::Base
       def page_title
-        StampsField.new(browser.td(:text, 'Error'))
+        StampsField.new(driver.td(:text, 'Error'))
       end
 
       def error_message
-        StampsField.new(browser.td(:css, 'td.TD3:nth-child(2)'))
+        StampsField.new(driver.td(:css, 'td.TD3:nth-child(2)'))
       end
 
       def present?

@@ -4,7 +4,7 @@ module Stamps
 =begin
       class EtsySettings < StoreSettings
         def window_title
-          StampsField.new browser.div text: "Etsy Settings"
+          StampsField.new driver.div text: "Etsy Settings"
         end
 
         def present?
@@ -20,7 +20,7 @@ module Stamps
       class Etsy < WebApps::Base
 
         def window_title
-          StampsField.new(browser.div text: "Connect your Etsy Store")
+          StampsField.new(driver.div text: "Connect your Etsy Store")
         end
 
         def present?
@@ -28,23 +28,23 @@ module Stamps
         end
 
         def etsy_username
-          StampsTextbox.new(browser.text_fields(css: "input[type=text][role=textbox][data-ref=inputEl]").last)
+          StampsTextbox.new(driver.text_fields(css: "input[type=text][role=textbox][data-ref=inputEl]").last)
         end
 
         def find_my_shops
-          button=StampsField.new browser.span(text: "Find My Shops")
+          button=StampsField.new driver.span(text: "Find My Shops")
           button.click
           button.click
         end
 
         def available_shops
-          button=StampsField.new((browser.text_fields(css: "input[id^=combo-][id$=-inputEl]")).last)
+          button=StampsField.new((driver.text_fields(css: "input[id^=combo-][id$=-inputEl]")).last)
           button.click
           button.click
         end
 
         def connect username, password
-          button=StampsField.new browser.span(text: "Connect")
+          button=StampsField.new driver.span(text: "Connect")
           etsy_page=EtsyPage.new(param)
           sign_in_page=EtsySignInPage.new(param)
 
@@ -74,7 +74,7 @@ module Stamps
         end
 
         def reconnect username, password
-          button=StampsField.new browser.span(text: "Connect")
+          button=StampsField.new driver.span(text: "Connect")
           etsy_page=EtsyPage.new(param)
           sign_in_page=EtsySignInPage.new(param)
 
@@ -107,7 +107,7 @@ module Stamps
       class ModifyEtsyStore < Etsy
 
         def window_title
-          StampsField.new(browser.div text: "Modify your Etsy Store Connection")
+          StampsField.new(driver.div text: "Modify your Etsy Store Connection")
         end
 
         def present?
@@ -122,7 +122,7 @@ module Stamps
       class ReconnectEtsyStore < Etsy
 
         def window_title
-          StampsField.new(browser.div text: "Modify your Rakuten Store Connection")
+          StampsField.new(driver.div text: "Modify your Rakuten Store Connection")
         end
 
         def present?
@@ -136,19 +136,19 @@ module Stamps
 
       class EtsySignInPage < WebApps::Base
         def present?
-          browser.text_field(id: 'username-existing').present?
+          driver.text_field(id: 'username-existing').present?
         end
 
         def username
-          StampsTextbox.new browser.text_field(id: 'username-existing')
+          StampsTextbox.new driver.text_field(id: 'username-existing')
         end
 
         def password
-          StampsTextbox.new browser.text_field(id: 'password-existing')
+          StampsTextbox.new driver.text_field(id: 'password-existing')
         end
 
         def sign_in
-          button=StampsField.new browser.text_field(id: 'signin_button')
+          button=StampsField.new driver.text_field(id: 'signin_button')
           etsy_page=EtsyPage.new(param)
 
           10.times do
@@ -161,15 +161,15 @@ module Stamps
 
       class EtsyPage < WebApps::Base
         def present?
-          browser.url.include? "etsy.com"
+          driver.url.include? "etsy.com"
         end
 
         def allow_access
-          button=StampsField.new browser.text_field(css: 'input[type=submit]')
+          button=StampsField.new driver.text_field(css: 'input[type=submit]')
           settings=EtsySettings.new(param)
 
           3.times do
-            browser.execute_script("window.scrollBy(0,400)")
+            driver.execute_script("window.scrollBy(0,400)")
             button.click
             button.click
             sleep(5)
@@ -179,11 +179,11 @@ module Stamps
         end
 
         def allow_access_after_reconnect
-          button=StampsField.new browser.text_field(css: 'input[type=submit]')
+          button=StampsField.new driver.text_field(css: 'input[type=submit]')
           manage_stores=ManageStores.new(param)
 
           3.times do
-            browser.execute_script("window.scrollBy(0,400)")
+            driver.execute_script("window.scrollBy(0,400)")
             button.click
             button.click
             sleep(5)

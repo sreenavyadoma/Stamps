@@ -5,7 +5,7 @@ Gemfile.lock
 *.iml
 .idea/
 *.png
-
+*.zip
 #reports
 *.html
 *.json

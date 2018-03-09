@@ -15,7 +15,7 @@ module Stamps
         end
 
         def more_info
-          @more_info = StampsTextbox.new(browser.text_field(name: "CustomsComments")) if @more_info.nil? || !@more_info.present?
+          @more_info = StampsTextbox.new(driver.text_field(name: "CustomsComments")) if @more_info.nil? || !@more_info.present?
           expect(@more_info).to be_present
           expect(@more_info).to be_present
           @more_info
@@ -28,19 +28,19 @@ module Stamps
         end
 
         def license
-          @license = StampsTextbox.new(browser.text_field(name: "CustomsLicenseNumber")) if @license.nil? || !@license.present?
+          @license = StampsTextbox.new(driver.text_field(name: "CustomsLicenseNumber")) if @license.nil? || !@license.present?
           expect(@license).to be_present
           @license
         end
 
         def certificate
-          @certificate = StampsTextbox.new(browser.text_field(name: "CustomsCertificateNumber")) if @certificate.nil? || !@certificate.present?
+          @certificate = StampsTextbox.new(driver.text_field(name: "CustomsCertificateNumber")) if @certificate.nil? || !@certificate.present?
           expect(@license).to be_present
           @certificate
         end
 
         def invoice
-          @invoice = StampsTextbox.new(browser.text_field(name: "CustomsInvoiceNumber")) if @invoice.nil? || !@invoice.present?
+          @invoice = StampsTextbox.new(driver.text_field(name: "CustomsInvoiceNumber")) if @invoice.nil? || !@invoice.present?
           expect(@invoice).to be_present
           @invoice
         end
@@ -61,21 +61,21 @@ module Stamps
 
         def textbox
           if cache["textbox#{index}".to_sym].nil? || !cache["textbox#{index}".to_sym].present?
-            cache["textbox#{index}".to_sym] = StampsTextbox.new(browser.text_fields(css: "[id^=singlecustomsitem] [name*=Country]")[index])
+            cache["textbox#{index}".to_sym] = StampsTextbox.new(driver.text_fields(css: "[id^=singlecustomsitem] [name*=Country]")[index])
           end
           cache["textbox#{index}".to_sym]
         end
 
         def dropdown
           if cache["dropdown#{index}".to_sym].nil? || !cache["dropdown#{index}".to_sym].present?
-            cache["dropdown#{index}".to_sym] = StampsField.new(browser.divs(css: "[id^=singlecustomsitem] [id$=picker]")[index])
+            cache["dropdown#{index}".to_sym] = StampsField.new(driver.divs(css: "[id^=singlecustomsitem] [id$=picker]")[index])
           end
           cache["dropdown#{index}".to_sym]
         end
 
         def select(str)
           dropdown.scroll_into_view.click
-          selection = StampsField.new(browser.lis(text: str)[@lov_index.nil? ? @lov_index = browser.lis(text: "United States").size - 1 : @lov_index])
+          selection = StampsField.new(driver.lis(text: str)[@lov_index.nil? ? @lov_index = driver.lis(text: "United States").size - 1 : @lov_index])
           dropdown.scroll_into_view.click
           15.times do
             break if textbox.scroll_into_view.text.include?(str)
@@ -99,7 +99,7 @@ module Stamps
 
         def delete
           if cache["delete#{index}".to_sym].nil? || !cache["delete#{index}".to_sym].present?
-            cache["delete#{index}".to_sym] = StampsField.new(browser.spans(css: "[id*=customswindow] [class*=sdc-icon-remove]")[index])
+            cache["delete#{index}".to_sym] = StampsField.new(driver.spans(css: "[id*=customswindow] [class*=sdc-icon-remove]")[index])
           end
           cache["delete#{index}".to_sym].scroll_into_view
           cache["delete#{index}".to_sym]
@@ -107,7 +107,7 @@ module Stamps
 
         def item_description
           if cache["item_description#{index}".to_sym].nil? || !cache["item_description#{index}".to_sym].present?
-            cache["item_description#{index}".to_sym] = StampsTextbox.new(browser.text_fields(css: "[class*=customs-description] [name=Description]")[index])
+            cache["item_description#{index}".to_sym] = StampsTextbox.new(driver.text_fields(css: "[class*=customs-description] [name=Description]")[index])
           end
           cache["item_description#{index}".to_sym].scroll_into_view
           cache["item_description#{index}".to_sym]
@@ -115,7 +115,7 @@ module Stamps
 
         def hs_tariff
           if cache["tariff#{index}".to_sym].nil? || !cache["tariff#{index}".to_sym].present?
-            cache["tariff#{index}".to_sym] = StampsTextbox.new(browser.text_fields(css: "[name=TariffNo]")[index])
+            cache["tariff#{index}".to_sym] = StampsTextbox.new(driver.text_fields(css: "[name=TariffNo]")[index])
           end
           cache["tariff#{index}".to_sym].scroll_into_view
           cache["tariff#{index}".to_sym]
@@ -132,9 +132,9 @@ module Stamps
         def item_qty
           if cache["item_qty#{index}".to_sym].nil? || !cache["item_qty#{index}".to_sym].present?
             cache["item_qty#{index}".to_sym] = StampsNumberField.new(
-                browser.text_fields(css: "[id^=singlecustomsitem] [name=Quantity]")[index],
-                browser.divs(css: "[id^=singlecustomsitem]>[id^=numberfield] [class*=up]")[index],
-                browser.divs(css: "[id^=singlecustomsitem]>[id^=numberfield] [class*=down]")[index])
+                driver.text_fields(css: "[id^=singlecustomsitem] [name=Quantity]")[index],
+                driver.divs(css: "[id^=singlecustomsitem]>[id^=numberfield] [class*=up]")[index],
+                driver.divs(css: "[id^=singlecustomsitem]>[id^=numberfield] [class*=down]")[index])
           end
           cache["item_qty#{index}".to_sym].scroll_into_view
           cache["item_qty#{index}".to_sym]
@@ -143,9 +143,9 @@ module Stamps
         def unit_price
           if cache["unit_price#{index}".to_sym].nil? || !cache["unit_price#{index}".to_sym].present?
             cache["unit_price#{index}".to_sym] = StampsNumberField.new(
-                browser.text_fields(css: "[id^=singlecustomsitem] [name=Value]")[index],
-                browser.divs(css: "[id^=singlecustomsitem]>[id^=container] [class*=up]")[index],
-                browser.divs(css: "[id^=singlecustomsitem]>[id^=container] [class*=down]")[index])
+                driver.text_fields(css: "[id^=singlecustomsitem] [name=Value]")[index],
+                driver.divs(css: "[id^=singlecustomsitem]>[id^=container] [class*=up]")[index],
+                driver.divs(css: "[id^=singlecustomsitem]>[id^=container] [class*=down]")[index])
           end
           cache["unit_price#{index}".to_sym].scroll_into_view
           cache["unit_price#{index}".to_sym]
@@ -160,7 +160,7 @@ module Stamps
 
         def add_item
           if cache[:add_item].nil? || !cache[:add_item].present?
-            cache[:add_item] = StampsField.new(browser.span(css: "[id^=associatedcustomsitems] [class*=toolbar] [class*=sdc-icon-add]"))
+            cache[:add_item] = StampsField.new(driver.span(css: "[id^=associatedcustomsitems] [class*=toolbar] [class*=sdc-icon-add]"))
           end
           cache[:add_item]
         end
@@ -170,7 +170,7 @@ module Stamps
         end
 
         def size
-          browser.tables(css: "[id^=singlecustomsitem][id$=innerCt]").size
+          driver.tables(css: "[id^=singlecustomsitem][id$=innerCt]").size
         end
 
         def item_number(number)
@@ -199,8 +199,8 @@ module Stamps
 
         def initialize(param)
           super
-          @window_title = StampsField.new(browser.div(text: "USPS Privacy Act Statement"))
-          @okay = browser.span(text: "OK")
+          @window_title = StampsField.new(driver.div(text: "USPS Privacy Act Statement"))
+          @okay = driver.span(text: "OK")
         end
 
         def present?
@@ -213,8 +213,8 @@ module Stamps
 
         def initialize(param)
           super
-          textboxes = browser.text_fields(name: "CustomsContents")
-          dropdowns = browser.divs(id: "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker")
+          textboxes = driver.text_fields(name: "CustomsContents")
+          dropdowns = driver.divs(id: "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker")
           @combobox = StampsCombobox.new(textboxes, dropdowns, :li, 0)
           @contents = PackageContentsDetails.new(param).extend(MoreInfo)
         end
@@ -231,8 +231,8 @@ module Stamps
 
         def initialize(param)
           super
-          @combobox = StampsCombobox.new(browser.text_fields(name: "IsITNRequired"), browser.divs(id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker"), :li, 0)
-          @itn_number = StampsTextbox.new(browser.text_field(name: "AES"))
+          @combobox = StampsCombobox.new(driver.text_fields(name: "IsITNRequired"), driver.divs(id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker"), :li, 0)
+          @itn_number = StampsTextbox.new(driver.text_field(name: "AES"))
         end
 
         def select(str)
@@ -249,34 +249,34 @@ module Stamps
 
         def initialize(param)
           super
-          @window_title = StampsField.new browser.div(text: "Customs Information")
+          @window_title = StampsField.new driver.div(text: "Customs Information")
 
 
 
-          textboxes = browser.text_fields(id: "sdc-customsFormWindow-internaltransactiondroplist-inputEl")
-          dropdowns = browser.divs(id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker")
+          textboxes = driver.text_fields(id: "sdc-customsFormWindow-internaltransactiondroplist-inputEl")
+          dropdowns = driver.divs(id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker")
           @internal_transaction = StampsCombobox.new(textboxes, dropdowns, :li, 0)
 
-          @more_info = StampsTextbox.new browser.text_field name: "CustomsComments"
-          @usps_privacy_act_warning = StampsField.new(browser.label text: "You must agree to the USPS Privacy Act Statement")
-          @itn_number = StampsTextbox.new browser.text_field(name: "AES")
-          @license = StampsTextbox.new browser.text_field(name: "CustomsLicenseNumber")
-          @certificate = StampsTextbox.new browser.text_field(name: "CustomsCertificateNumber")
-          @invoice = StampsTextbox.new browser.text_field(name: "CustomsInvoiceNumber")
+          @more_info = StampsTextbox.new driver.text_field name: "CustomsComments"
+          @usps_privacy_act_warning = StampsField.new(driver.label text: "You must agree to the USPS Privacy Act Statement")
+          @itn_number = StampsTextbox.new driver.text_field(name: "AES")
+          @license = StampsTextbox.new driver.text_field(name: "CustomsLicenseNumber")
+          @certificate = StampsTextbox.new driver.text_field(name: "CustomsCertificateNumber")
+          @invoice = StampsTextbox.new driver.text_field(name: "CustomsInvoiceNumber")
 
           @privacy_statement = UspsPrivactActStatementModal.new(param)
-          @privacy_link = StampsField.new(browser.span(text: "USPS Privacy Act Statement"))
-          @restrictions_prohibitions_link = StampsField.new(browser.span(text: "Restrictions and Prohibitions"))
+          @privacy_link = StampsField.new(driver.span(text: "USPS Privacy Act Statement"))
+          @restrictions_prohibitions_link = StampsField.new(driver.span(text: "Restrictions and Prohibitions"))
 
-          @close_button = StampsField.new(browser.span(text: "Close"))
-          @x_button = StampsField.new(browser.image(css: "img[class*='x-tool-close']"))
-          @total_label = StampsField.new(browser.span(text: 'Total:'))
+          @close_button = StampsField.new(driver.span(text: "Close"))
+          @x_button = StampsField.new(driver.image(css: "img[class*='x-tool-close']"))
+          @total_label = StampsField.new(driver.span(text: 'Total:'))
         end
 
         def non_delivery_options
           if cache[:non_delivery_options].nil? || !cache[:non_delivery_options].present?
-            cache[:non_delivery_options] = StampsCombobox.new(browser.text_fields(css: "[name=NonDelivery]"),
-                                                              browser.divs(css: "[id*=nondeliveryoptionsdroplist]"), :li, 0)
+            cache[:non_delivery_options] = StampsCombobox.new(driver.text_fields(css: "[name=NonDelivery]"),
+                                                              driver.divs(css: "[id*=nondeliveryoptionsdroplist]"), :li, 0)
           end
           cache[:non_delivery_options]
         end
@@ -306,13 +306,13 @@ module Stamps
 
         def agree_to_terms
           StampsCheckbox.new(
-              browser.input(css: "[id^=customswindow] [class*=bottom] input"),
-              browser.div(css: "[id^=customswindow][class*=resizable] [class*=bottom] [id^=checkbox][class*=x-form-item-no-label]"),
+              driver.input(css: "[id^=customswindow] [class*=bottom] input"),
+              driver.div(css: "[id^=customswindow][class*=resizable] [class*=bottom] [id^=checkbox][class*=x-form-item-no-label]"),
               "class", "checked")
         end
 
         def total_cost
-          StampsField.new(browser.div(css: '[id^=customswindow][componentid^=customswindow] [class*=x-panel-default-docked-bottom] [class*=sdc-displayfield-overflow]'))
+          StampsField.new(driver.div(css: '[id^=customswindow][componentid^=customswindow] [class*=x-panel-default-docked-bottom] [class*=sdc-displayfield-overflow]'))
         end
 
         def usps_privacy_act_statement

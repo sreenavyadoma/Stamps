@@ -4,20 +4,20 @@ module Stamps
 
 
       def window_title
-        cache[:window_title] = StampsField.new(browser.div(text: "Transaction Complete")) if cache[:window_title].nil? || !cache[:window_title].present?
+        cache[:window_title] = StampsField.new(driver.div(text: "Transaction Complete")) if cache[:window_title].nil? || !cache[:window_title].present?
         cache[:window_title]
       end
 
       def textarea
         if cache[:textarea].nil? || !cache[:textarea].present?
-          cache[:textarea] = StampsField.new(browser.div(css: "div[componentid^=dialoguemodal-]>div[id$=body]>div>div"))
+          cache[:textarea] = StampsField.new(driver.div(css: "div[componentid^=dialoguemodal-]>div[id$=body]>div>div"))
         end
         cache[:textarea]
       end
 
       def ok_btn
         if cache[:ok_btn].nil? || !cache[:ok_btn].present?
-          cache[:ok_btn] = StampsField.new(browser.span(css: "div[id^=panel-][id$=-innerCt]>a>span>span[id$=btnEl]"))
+          cache[:ok_btn] = StampsField.new(driver.span(css: "div[id^=panel-][id$=-innerCt]>a>span>span[id$=btnEl]"))
         end
         cache[:ok_btn]
       end
@@ -43,7 +43,7 @@ module Stamps
 
 
       def window_title
-        cache[:window_title] = StampsField.new(browser.div(text: 'Confirm Transaction')) if cache[:window_title].nil? || !cache[:window_title].present?
+        cache[:window_title] = StampsField.new(driver.div(text: 'Confirm Transaction')) if cache[:window_title].nil? || !cache[:window_title].present?
         cache[:window_title]
       end
 
@@ -52,12 +52,12 @@ module Stamps
       end
 
       def confirm_btn
-        cache[:confirm_btn] = StampsField.new(browser.span(text: "Confirm")) if cache[:confirm_btn].nil? || !cache[:confirm_btn].present?
+        cache[:confirm_btn] = StampsField.new(driver.span(text: "Confirm")) if cache[:confirm_btn].nil? || !cache[:confirm_btn].present?
         cache[:confirm_btn]
       end
 
       def exit
-        StampsField.new(browser.imgs(class: "x-tool-img x-tool-close").last).click_while_present
+        StampsField.new(driver.imgs(class: "x-tool-img x-tool-close").last).click_while_present
       end
 
       def present?
@@ -70,9 +70,9 @@ module Stamps
 
       def textarea
         if param.web_app == :orders
-          div = browser.div(class: 'sdc-dialoguemodal-confirm-purchase')
+          div = driver.div(class: 'sdc-dialoguemodal-confirm-purchase')
         elsif param.web_app == :mail
-          div = browser.divs(css: "div[id^=dialoguemodal-][id$=-innerCt]").last
+          div = driver.divs(css: "div[id^=dialoguemodal-][id$=-innerCt]").last
         else
           expect("Purchase Button failure. #{param.web_app} is not a valid value for param.web_app, check your test.").to eql "Invalid Value"
         end
@@ -112,13 +112,13 @@ module Stamps
 
       def body
         if cache[:body].nil? || !cache[:body].present?
-               cache[:body] = StampsField.new(browser.div(css: "div[id^=dialoguemodal-][id$=-body]>div>div[id^=dialoguemodal-][id$=-innerCt]"))
+               cache[:body] = StampsField.new(driver.div(css: "div[id^=dialoguemodal-][id$=-body]>div>div[id^=dialoguemodal-][id$=-innerCt]"))
         end
         cache[:body]
       end
 
       def window_title
-        cache[:window_title] = StampsField.new(browser.div(text: "Account Balance Limit")) if cache[:window_title].nil? || !cache[:window_title].present?
+        cache[:window_title] = StampsField.new(driver.div(text: "Account Balance Limit")) if cache[:window_title].nil? || !cache[:window_title].present?
         cache[:window_title]
       end
 
@@ -135,7 +135,7 @@ module Stamps
 
 
       def window_title
-        cache[:window_title] = StampsField.new(browser.div(text: "Add Funds")) if cache[:window_title].nil? || !cache[:window_title].present?
+        cache[:window_title] = StampsField.new(driver.div(text: "Add Funds")) if cache[:window_title].nil? || !cache[:window_title].present?
         cache[:window_title]
       end
 
@@ -157,14 +157,14 @@ module Stamps
 
       def auto_buy_postage_link
         if cache[:auto_buy_postage_link].nil? || !cache[:auto_buy_postage_link].present?
-          cache[:auto_buy_postage_link] = StampsField.new(browser.span(text: "Auto-buy postage"))
+          cache[:auto_buy_postage_link] = StampsField.new(driver.span(text: "Auto-buy postage"))
         end
         cache[:auto_buy_postage_link]
       end
 
       def window_title
         if cache[:window_title].nil? || !cache[:window_title].present?
-          cache[:window_title] = StampsField.new(browser.div(text: "Add Funds"))
+          cache[:window_title] = StampsField.new(driver.div(text: "Add Funds"))
         end
         cache[:window_title]
       end
@@ -183,7 +183,7 @@ module Stamps
 
       def purchase_button
         if cache[:purchase_button].nil? || !cache[:purchase_button].present?
-          cache[:purchase_button] = StampsField.new(browser.span(css: 'span#sdc-purchasewin-purchasebtn-btnWrap'))
+          cache[:purchase_button] = StampsField.new(driver.span(css: 'span#sdc-purchasewin-purchasebtn-btnWrap'))
         end
         cache[:purchase_button]
       end
@@ -195,7 +195,7 @@ module Stamps
 
       def buy_10
         param.web_app.should_not be nil
-        checkbox_element = browser.label(css: "label[for=sdc-purchasewin-10dradio][id$=boxLabelEl]")
+        checkbox_element = driver.label(css: "label[for=sdc-purchasewin-10dradio][id$=boxLabelEl]")
         verify_element = checkbox_element.parent.parent.parent
         attribute = "class"
         verify_element_attrib = "checked"
@@ -203,7 +203,7 @@ module Stamps
       end
 
       def buy_25
-        checkbox_element = browser.label(css: "label[for=sdc-purchasewin-25dradio][id$=boxLabelEl]")
+        checkbox_element = driver.label(css: "label[for=sdc-purchasewin-25dradio][id$=boxLabelEl]")
         verify_element = checkbox_element.parent.parent.parent
         attribute = "class"
         verify_element_attrib = "checked"
@@ -211,7 +211,7 @@ module Stamps
       end
 
       def buy_50
-        checkbox_element = browser.label(css: "label[for=sdc-purchasewin-50dradio][id$=boxLabelEl]")
+        checkbox_element = driver.label(css: "label[for=sdc-purchasewin-50dradio][id$=boxLabelEl]")
         verify_element = checkbox_element.parent.parent.parent
         attribute = "class"
         verify_element_attrib = "checked"
@@ -219,7 +219,7 @@ module Stamps
       end
 
       def buy_100
-        checkbox_element = browser.label(css: "label[for=sdc-purchasewin-100dradio][id$=boxLabelEl]")
+        checkbox_element = driver.label(css: "label[for=sdc-purchasewin-100dradio][id$=boxLabelEl]")
         verify_element = checkbox_element.parent.parent.parent
         attribute = "class"
         verify_element_attrib = "checked"
@@ -227,13 +227,13 @@ module Stamps
       end
 
       def buy_other value
-        checkbox_element = browser.label(css: "label[for=sdc-purchasewin-otherdradio][id$=boxLabelEl]")
+        checkbox_element = driver.label(css: "label[for=sdc-purchasewin-otherdradio][id$=boxLabelEl]")
         verify_element = checkbox_element.parent.parent.parent
         attribute = "class"
         verify_element_attrib = "checked"
         checkbox = StampsRadio.new(checkbox_element, verify_element, attribute, verify_element_attrib)
 
-        textbox = StampsTextbox.new(browser.text_field id: "sdc-purchasewin-otheramount")
+        textbox = StampsTextbox.new(driver.text_field id: "sdc-purchasewin-otheramount")
 
         checkbox.select
         textbox.set(value)
@@ -267,28 +267,28 @@ module Stamps
 
       def buy_more_dropdown
         if cache[:buy_more_dropdown].nil? || !cache[:buy_more_dropdown].present?
-          cache[:buy_more_dropdown] = StampsField.new(browser.span(class: "balanceLabel"))
+          cache[:buy_more_dropdown] = StampsField.new(driver.span(class: "balanceLabel"))
         end
         cache[:buy_more_dropdown]
       end
 
       def buy_more_link
         if cache[:buy_more_link].nil? || !cache[:buy_more_link].present?
-          cache[:buy_more_link] = StampsField.new(browser.a(text: "Buy More"))
+          cache[:buy_more_link] = StampsField.new(driver.a(text: "Buy More"))
         end
         cache[:buy_more_link]
       end
 
       def view_history_link
         if cache[:view_history_link].nil? || !cache[:view_history_link].present?
-          cache[:view_history_link] = StampsField.new(browser.a(text: "View Purchase History"))
+          cache[:view_history_link] = StampsField.new(driver.a(text: "View Purchase History"))
         end
         cache[:view_history_link]
       end
 
       def balance_amount
         if cache[:balance_amount].nil? || !cache[:balance_amount].present?
-          cache[:balance_amount] = StampsField.new(browser.span(css: '[class*=balance]>a>strong>span'))
+          cache[:balance_amount] = StampsField.new(driver.span(css: '[class*=balance]>a>strong>span'))
         end
         cache[:balance_amount]
       end
@@ -330,10 +330,10 @@ module Stamps
       end
 
       def username
-        cache[:username].nil? ? cache[:username] = StampsField.new(browser.span id: 'userNameText') : cache[:username]
+        cache[:username].nil? ? cache[:username] = StampsField.new(driver.span id: 'userNameText') : cache[:username]
       end
       def sign_out_link
-        cache[:sign_out_link].nil? ? cache[:sign_out_link] = StampsField.new(browser.a(text: "Sign Out")) : cache[:sign_out_link]
+        cache[:sign_out_link].nil? ? cache[:sign_out_link] = StampsField.new(driver.a(text: "Sign Out")) : cache[:sign_out_link]
       end
 
       def present?
@@ -363,7 +363,7 @@ module Stamps
           username.hover
           sign_out_link.click if sign_out_link.present?
           sleep(0.35)
-          return if browser.url.include? "SignIn"
+          return if driver.url.include? "SignIn"
         end
       end
     end
@@ -380,22 +380,22 @@ module Stamps
       end
 
       def sign_out_link
-        cache[:sign_out_link].nil? ? cache[:sign_out_link] = StampsField.new(browser.link(id: "signOutLink")) : cache[:sign_out_link]
+        cache[:sign_out_link].nil? ? cache[:sign_out_link] = StampsField.new(driver.link(id: "signOutLink")) : cache[:sign_out_link]
       end
 
       def signed_in_username
-        cache[:signed_in_username].nil? ? cache[:signed_in_username] = StampsField.new(browser.span(id: 'userNameText')) : cache[:signed_in_username]
+        cache[:signed_in_username].nil? ? cache[:signed_in_username] = StampsField.new(driver.span(id: 'userNameText')) : cache[:signed_in_username]
       end
       def orders_link
-        cache[:orders_link].nil? ? cache[:orders_link] = StampsField.new(browser.a(text: 'Orders')) : cache[:orders_link]
+        cache[:orders_link].nil? ? cache[:orders_link] = StampsField.new(driver.a(text: 'Orders')) : cache[:orders_link]
       end
 
       def mail_link
-        cache[:mail_link].nil? ? cache[:mail_link] = StampsField.new(browser.a(text: 'Mail')) : cache[:mail_link]
+        cache[:mail_link].nil? ? cache[:mail_link] = StampsField.new(driver.a(text: 'Mail')) : cache[:mail_link]
       end
 
       def help_link
-        cache[:help_link].nil? ? cache[:help_link] = StampsField.new(browser.a(text: 'Help')) : cache[:help_link]
+        cache[:help_link].nil? ? cache[:help_link] = StampsField.new(driver.a(text: 'Help')) : cache[:help_link]
       end
 
       def orders

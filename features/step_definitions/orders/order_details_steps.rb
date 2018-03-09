@@ -311,7 +311,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Ii]nternational address to$/ do
   TestData.store[:state] = table.hashes.first['province'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['province']
   TestData.store[:zip] = table.hashes.first['postal_code'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['postal_code']
   TestData.store[:phone] = table.hashes.first[:phone].downcase.include?('random') ? TestHelper.rand_phone : table.hashes.first['phone']
-  TestData.store[:email] = table.hashes.first['email'].downcase.include?('random') ? TestHelper.rand_email(modal_param.test_env) : table.hashes.first['email']
+  TestData.store[:email] = table.hashes.first['email'].downcase.include?('random') ? TestHelper.rand_email(modal_param.env) : table.hashes.first['email']
 
   step "set Order Details Domestic Ship-To Country to #{TestData.store[:country]}"
   step "set Order Details International Ship-To Name to \"#{TestData.store[:full_name]}\""
@@ -346,7 +346,7 @@ end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
   step 'show order details form ship-to fields'
-  stamps.orders.order_details.ship_to.domestic.set(TestData.store[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address, modal_param.test_env)))
+  stamps.orders.order_details.ship_to.domestic.set(TestData.store[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address, modal_param.env)))
   step 'Save Order Details data'
   step 'hide order details form Ship-To fields'
 end
@@ -445,7 +445,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails Phone to (.*)$/ do |phone|
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Email to (.*)$/ do |email|
-  TestData.store[:email] = email.to_s.strip.downcase.include?('random') ? TestHelper.rand_email(modal_param.test_env) : email
+  TestData.store[:email] = email.to_s.strip.downcase.include?('random') ? TestHelper.rand_email(modal_param.env) : email
   step 'show order details form ship-to fields'
   stamps.orders.order_details.ship_to.domestic.email.set(TestData.store[:email]) unless TestData.store[:email].length == 0
   step 'Save Order Details data'

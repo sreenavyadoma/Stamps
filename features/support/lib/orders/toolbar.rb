@@ -6,9 +6,9 @@ module Stamps
 
         def initialize(param)
           super
-          @window_title = StampsField.new(browser.div(css: "div[id^=movetohold-][id$=_header-targetEl]>div[id^=title]"))
-          @cancel_btn = StampsField.new(browser.span(text: "Cancel"))
-          @hold_until = StampsTextbox.new(browser.text_field(css: "input[placeholder='Select a Date']"))
+          @window_title = StampsField.new(driver.div(css: "div[id^=movetohold-][id$=_header-targetEl]>div[id^=title]"))
+          @cancel_btn = StampsField.new(driver.span(text: "Cancel"))
+          @hold_until = StampsTextbox.new(driver.text_field(css: "input[placeholder='Select a Date']"))
         end
 
         def present?
@@ -16,7 +16,7 @@ module Stamps
         end
 
         def move
-          move_btn = StampsField.new(browser.spans(text: "Move").last)
+          move_btn = StampsField.new(driver.spans(text: "Move").last)
           10.times do
             move_btn.click
             break unless move_btn.present?
@@ -36,8 +36,8 @@ module Stamps
 
         def initialize(param)
           super
-          @window_title = StampsField.new(browser.div(css: "div[id^=dialoguemodal-][id$=_header-targetEl]>div[id^=title]"))
-          @cancel_btn = StampsField.new(browser.span(text: "Cancel"))
+          @window_title = StampsField.new(driver.div(css: "div[id^=dialoguemodal-][id$=_header-targetEl]>div[id^=title]"))
+          @cancel_btn = StampsField.new(driver.span(text: "Cancel"))
         end
 
         def present?
@@ -45,7 +45,7 @@ module Stamps
         end
 
         def move
-          move_btn = StampsField.new(browser.spans(text: "Move").last)
+          move_btn = StampsField.new(driver.spans(text: "Move").last)
           10.times do
             move_btn.click
             break unless move_btn.present?
@@ -65,12 +65,12 @@ module Stamps
 
         def window_title
           if cache[:window_title].nil? || !cache[:window_title].present?
-            cache[:window_title] = StampsField.new(browser.div(css: "div[id^=movetoshippedwindow-][id$=_header-targetEl]>div[id^=title]"))
+            cache[:window_title] = StampsField.new(driver.div(css: "div[id^=movetoshippedwindow-][id$=_header-targetEl]>div[id^=title]"))
           end
           cache[:window_title]
         end
         def cancel_btn
-          cache[:cancel_btn] = StampsField.new(browser.span(text: "Cancel")) if cache[:cancel_btn].nil? || !cache[:cancel_btn].present?
+          cache[:cancel_btn] = StampsField.new(driver.span(text: "Cancel")) if cache[:cancel_btn].nil? || !cache[:cancel_btn].present?
           cache[:cancel_btn]
         end
 
@@ -79,7 +79,7 @@ module Stamps
         end
 
         def order
-          cache[:order] = StampsField.new(browser.label(css: "[id^=thirdcolcell-]>label")) if cache[:order].nil? || !cache[:order].present?
+          cache[:order] = StampsField.new(driver.label(css: "[id^=thirdcolcell-]>label")) if cache[:order].nil? || !cache[:order].present?
           cache[:order]
         end
 
@@ -89,7 +89,7 @@ module Stamps
 
         def move_to_shipped
           ord_num = order_number
-          move_to_shipped_btn = StampsField.new(browser.spans(text: "Move to Shipped").last)
+          move_to_shipped_btn = StampsField.new(driver.spans(text: "Move to Shipped").last)
           30.times do
             move_to_shipped_btn.click
             break unless move_to_shipped_btn.present?
@@ -112,8 +112,8 @@ module Stamps
 
         def initialize(param)
           super
-          @window_title = StampsField.new(browser.div(css: "div[id^=dialoguemodal-][id$=_header-targetEl]>div[id^=title]"))
-          @cancel_btn = StampsField.new(browser.span(text: "Cancel"))
+          @window_title = StampsField.new(driver.div(css: "div[id^=dialoguemodal-][id$=_header-targetEl]>div[id^=title]"))
+          @cancel_btn = StampsField.new(driver.span(text: "Cancel"))
         end
 
         def present?
@@ -121,7 +121,7 @@ module Stamps
         end
 
         def move
-          move_btn = StampsField.new(browser.spans(text: "Move").last)
+          move_btn = StampsField.new(driver.spans(text: "Move").last)
           10.times do
             move_btn.click
             break unless move_btn.present?
@@ -140,7 +140,7 @@ module Stamps
 
 
         def dropdown
-          cache[:dropdown] = StampsField.new(browser.span(text: "Move")) if cache[:dropdown].nil? || cache[:dropdown].present?
+          cache[:dropdown] = StampsField.new(driver.span(text: "Move")) if cache[:dropdown].nil? || cache[:dropdown].present?
           cache[:dropdown]
         end
 
@@ -165,7 +165,7 @@ module Stamps
         end
 
         def tooltip_field
-          cache[:tooltip_field] = StampsField.new(browser.div(id: 'ext-quicktips-tip-innerCt')) if cache[:tooltip_field].nil?
+          cache[:tooltip_field] = StampsField.new(driver.div(id: 'ext-quicktips-tip-innerCt')) if cache[:tooltip_field].nil?
           cache[:tooltip_field]
         end
 
@@ -213,7 +213,7 @@ module Stamps
 
           30.times{
             return modal if modal.present?
-            selection_item = StampsField.new(browser.span(text: selection_str))
+            selection_item = StampsField.new(driver.span(text: selection_str))
             dropdown.click unless selection_item.present?
             sleep(0.50)
             selection_item.hover
@@ -244,7 +244,7 @@ module Stamps
         end
 
         def dropdown
-          (cache[:dropdown].nil? || !cache[:dropdown].present?) ? cache[:dropdown] = StampsField.new(browser.span(text: "More Actions")) : cache[:dropdown]
+          (cache[:dropdown].nil? || !cache[:dropdown].present?) ? cache[:dropdown] = StampsField.new(driver.span(text: "More Actions")) : cache[:dropdown]
         end
 
         def split_order
@@ -275,7 +275,7 @@ module Stamps
           raise "More actions drop down is disabled." unless enabled?
           5.times do
             return split_order.window_title.text if split_order.window_title.present? #this should be return
-            selection = StampsField.new(browser.span(text: case str
+            selection = StampsField.new(driver.span(text: case str
                                                              when :combine_orders
                                                                "Combine Orders"
                                                              when :split_order
@@ -303,18 +303,18 @@ module Stamps
          attr_reader :window_title, :ok_btn, :error_message_label
 
          def window_title
-           cache[:window_title] = StampsField.new(browser.div(text: 'Incomplete Order')) if cache[:window_title].nil? || !cache[:window_title].present?
+           cache[:window_title] = StampsField.new(driver.div(text: 'Incomplete Order')) if cache[:window_title].nil? || !cache[:window_title].present?
            cache[:window_title]
          end
 
          def ok_btn
-           cache[:ok_btn] = StampsField.new(browser.span(text: "OK")) if cache[:ok_btn].nil? || !cache[:ok_btn].present?
+           cache[:ok_btn] = StampsField.new(driver.span(text: "OK")) if cache[:ok_btn].nil? || !cache[:ok_btn].present?
            cache[:ok_btn]
          end
 
          def error_message_label
            if cache[:error_message_label].nil? || !cache[:error_message_label].present?
-            cache[:error_message_label] = browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
+            cache[:error_message_label] = driver.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
            end
            cache[:error_message_label]
          end
@@ -322,9 +322,9 @@ module Stamps
 
         def initialize(param)
           super
-          @window_title=StampsField.new browser.div(text: 'Incomplete Order')
-          @ok_btn=StampsField.new browser.span(text: "OK")
-          @error_message_label=browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
+          @window_title=StampsField.new driver.div(text: 'Incomplete Order')
+          @ok_btn=StampsField.new driver.span(text: "OK")
+          @error_message_label=driver.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
         end
 
         def present?
@@ -357,7 +357,7 @@ module Stamps
 
 
         def window_title
-          cache[:window_title] = StampsField.new(browser.div(text: 'Order Error')) if cache[:window_title].nil? || !cache[:window_title].present?
+          cache[:window_title] = StampsField.new(driver.div(text: 'Order Error')) if cache[:window_title].nil? || !cache[:window_title].present?
           cache[:window_title]
         end
 
@@ -379,8 +379,8 @@ module Stamps
 
         def initialize(param)
           super
-          @continue_btn = StampsField.new browser.span(text: 'Continue')
-          @cancel_btn = StampsField.new browser.span(text: 'Cancel')
+          @continue_btn = StampsField.new driver.span(text: 'Continue')
+          @cancel_btn = StampsField.new driver.span(text: 'Cancel')
         end
 
         def present?
@@ -406,7 +406,7 @@ module Stamps
 
       class PrintMultiOrderAllHaveError < PrintMultiOrderError
         def ok_btn
-          cache[:ok_btn] = StampsField.new(browser.span(text: "OK")) if cache[:ok_btn].nil? || !cache[:ok_btn].present?
+          cache[:ok_btn] = StampsField.new(driver.span(text: "OK")) if cache[:ok_btn].nil? || !cache[:ok_btn].present?
           cache[:ok_btn]
         end
 
@@ -424,20 +424,20 @@ module Stamps
 
         def window_title
           if cache[:window_title].nil? || !cache[:window_title].present?
-            cache[:window_title] = StampsField.new(browser.div(text: 'USPS Privacy Act Statement'))
+            cache[:window_title] = StampsField.new(driver.div(text: 'USPS Privacy Act Statement'))
           end
           cache[:window_title]
         end
 
         def message_label
           if cache[:message_label].nil? || !cache[:message_label].present?
-            cache[:message_label] = StampsField.new browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
+            cache[:message_label] = StampsField.new driver.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
           end
           cache[:message_label]
         end
 
         def ok_btn
-          cache[:ok_btn] = StampsField.new(browser.span(text: "OK")) if cache[:ok_btn].nil? || !cache[:ok_btn].present?
+          cache[:ok_btn] = StampsField.new(driver.span(text: "OK")) if cache[:ok_btn].nil? || !cache[:ok_btn].present?
           cache[:ok_btn]
         end
 
@@ -464,33 +464,33 @@ module Stamps
         attr_reader :window_title, :i_agree_btn, :cancel_btn, :privacy_act_link
 
         def window_title
-          cache[:window_title] = StampsField.new(browser.div(text: 'USPS Terms')) if cache[:window_title].nil? || !cache[:window_title].present?
+          cache[:window_title] = StampsField.new(driver.div(text: 'USPS Terms')) if cache[:window_title].nil? || !cache[:window_title].present?
           cache[:window_title]
         end
 
         def i_agree_btn
-          cache[:i_agree_btn] = StampsField.new(browser.span(text: "I Agree")) if cache[:i_agree_btn].nil? || !cache[:i_agree_btn].present?
+          cache[:i_agree_btn] = StampsField.new(driver.span(text: "I Agree")) if cache[:i_agree_btn].nil? || !cache[:i_agree_btn].present?
           cache[:i_agree_btn]
         end
 
         def cancel_btn
-          cache[:cancel_btn] = StampsField.new(browser.span(text: "Cancel")) if cache[:cancel_btn].nil? || !cache[:cancel_btn].present?
+          cache[:cancel_btn] = StampsField.new(driver.span(text: "Cancel")) if cache[:cancel_btn].nil? || !cache[:cancel_btn].present?
           cache[:cancel_btn]
         end
 
         def privacy_act_link
           if cache[:privacy_act_link].nil? || !cache[:privacy_act_link].present?
-            cache[:privacy_act_link] = StampsField.new(browser.div(text: 'USPS Privacy Act Statement'))
+            cache[:privacy_act_link] = StampsField.new(driver.div(text: 'USPS Privacy Act Statement'))
           end
           cache[:privacy_act_link]
         end
 
         def initialize(param)
           super
-          @window_title=StampsField.new browser.div(text: 'USPS Terms')
-          @i_agree_btn=StampsField.new browser.span(text: "I Agree")
-          @cancel_btn=StampsField.new browser.span(text: "Cancel")
-          @privacy_act_link=StampsField.new browser.a(text: "USPS Privacy Act Statement")
+          @window_title=StampsField.new driver.div(text: 'USPS Terms')
+          @i_agree_btn=StampsField.new driver.span(text: "I Agree")
+          @cancel_btn=StampsField.new driver.span(text: "Cancel")
+          @privacy_act_link=StampsField.new driver.a(text: "USPS Privacy Act Statement")
         end
 
         def present?
@@ -515,15 +515,15 @@ module Stamps
 
         def text_p1
           #"One or more orders is missing the following acknowledgement. Please agree to the following prior to printing these orders:"
-          StampsField.new(browser.divs(css: "div[id^=uspstermsdialog-][id$=-body]>div>div>div>div>div").first).text
+          StampsField.new(driver.divs(css: "div[id^=uspstermsdialog-][id$=-body]>div>div>div>div>div").first).text
         end
 
         def text_p2
-          StampsField.new(browser.divs(css: "div[id^=uspstermsdialog-][id$=-body]>div>div>div>div>div")[1]).text
+          StampsField.new(driver.divs(css: "div[id^=uspstermsdialog-][id$=-body]>div>div>div>div>div")[1]).text
         end
 
         def dont_show_this_again
-          field = browser.label(text: "Don't show this again.")
+          field = driver.label(text: "Don't show this again.")
           verify_field = field.parent.parent.parent
           StampsCheckbox.new field, verify_field, "class", "checked"
         end
@@ -542,7 +542,7 @@ module Stamps
       class ShipStationServerError < WebApps::Base
 
         def window_title
-          browser.divs(text: 'Server Error').first
+          driver.divs(text: 'Server Error').first
         end
 
         def present?
@@ -550,7 +550,7 @@ module Stamps
         end
 
         def text
-          StampsField.new(browser.divs(css: "div[class*=sdc-warning]>div[id$=outerCt]>div").first).text #todo-Rob this is wrong, fix it.
+          StampsField.new(driver.divs(css: "div[class*=sdc-warning]>div[id$=outerCt]>div").first).text #todo-Rob this is wrong, fix it.
         end
       end
 
@@ -721,23 +721,23 @@ module Stamps
 
         #todo-Rob verify css locator
         def print_order_btn
-          (cache[:print_order_btn].nil? || !cache[:print_order_btn].present?) ? cache[:print_order_btn] = StampsField.new(browser.a(css: "div[id^=app-main]>div[id^=toolbar]>div>div>a[data-qtip*=Print]")) : cache[:print_order_btn]
+          (cache[:print_order_btn].nil? || !cache[:print_order_btn].present?) ? cache[:print_order_btn] = StampsField.new(driver.a(css: "div[id^=app-main]>div[id^=toolbar]>div>div>a[data-qtip*=Print]")) : cache[:print_order_btn]
         end
       end
 
       class SettingsMenu < WebApps::Base
         def select(menu_item)
-          dd = StampsField.new browser.span css: "span[class*=sdc-icon-settings]"
+          dd = StampsField.new driver.span css: "span[class*=sdc-icon-settings]"
           case menu_item.downcase
             when /settings/
-              selection = StampsField.new(browser.span text: "General Settings")
+              selection = StampsField.new(driver.span text: "General Settings")
               modal = Orders::Settings::GeneralSettings.new(param)
             when /stores/
-              selection = StampsField.new(browser.span text: "Add/Edit Stores")
+              selection = StampsField.new(driver.span text: "Add/Edit Stores")
               modal = Orders::Stores::ManageStores.new(param)
             # to-do Kaushal automation rules implement
             when /automation_rules/
-              selection = StampsField.new(browser.span text: " ")
+              selection = StampsField.new(driver.span text: " ")
               modal = Orders::AutomationRulesModal.new(param)
             else
               expect("Invalid Menu Selection - #{menu_item} is not recognized.  Valid selections are Settings or Stores.").to eql ""
@@ -768,12 +768,12 @@ module Stamps
 
         def initialize(param)
           super
-          @textbox = StampsTextbox.new(browser.text_field(id: "sdc-batch-grid-pagingtoolbar-combobox-inputEl"))
-          @dropdown = StampsField.new(browser.div(id: "sdc-batch-grid-pagingtoolbar-combobox-trigger-picker"))
+          @textbox = StampsTextbox.new(driver.text_field(id: "sdc-batch-grid-pagingtoolbar-combobox-inputEl"))
+          @dropdown = StampsField.new(driver.div(id: "sdc-batch-grid-pagingtoolbar-combobox-trigger-picker"))
         end
 
         def select(selection)
-          per_page = StampsField.new(browser.li(text: selection))
+          per_page = StampsField.new(driver.li(text: selection))
           box = textbox
           10.times do
             dropdown.click unless per_page.present?
@@ -800,7 +800,7 @@ module Stamps
 
 
         def add_btn
-          cache[:add_btn] = StampsField.new(browser.span(text: 'Add')) if cache[:add_btn].nil? || !cache[:add_btn].present?
+          cache[:add_btn] = StampsField.new(driver.span(text: 'Add')) if cache[:add_btn].nil? || !cache[:add_btn].present?
           cache[:add_btn]
         end
 
@@ -816,23 +816,23 @@ module Stamps
 
         def initializing_db
           if cache[:initializing_db].nil? || !cache[:initializing_db].present?
-            cache[:initializing_db] = StampsField.new(browser.div(text: "Initializing Order Database"))
+            cache[:initializing_db] = StampsField.new(driver.div(text: "Initializing Order Database"))
           end
           cache[:initializing_db]
         end
 
         def tooltip_field
           if cache[:tooltip_field].nil? || !cache[:tooltip_field].present?
-            cache[:tooltip_field] = StampsField.new(browser.div(id: 'ext-quicktips-tip-innerCt'))
+            cache[:tooltip_field] = StampsField.new(driver.div(id: 'ext-quicktips-tip-innerCt'))
           end
           cache[:tooltip_field]
         end
 
         def click
-          # add_btn=StampsField.new(browser.span(text: 'Add'))
+          # add_btn=StampsField.new(driver.span(text: 'Add'))
           # details_order_id=Orders::SingleOrder::Fields::SingleOrderDetailsOrderId.new(param)
           # server_error=ShipStationServerError.new(param)
-          # initializing_db=StampsField.new(browser.div(text: "Initializing Order Database"))
+          # initializing_db=StampsField.new(driver.div(text: "Initializing Order Database"))
 
           15.times do
             begin
@@ -859,12 +859,12 @@ module Stamps
             end
           end
           raise "Server Error: \n#{server_error.text}" if server_error.present?
-          raise "Initializing Database took longer than expected. Check your test making sure ShipStation is up and running in  #{param.test_env}" if initializing_db.present?
+          raise "Initializing Database took longer than expected. Check your test making sure ShipStation is up and running in  #{param.env}" if initializing_db.present?
           raise "Unable to add new order."
         end
 
         def tooltip
-          #tooltip_field=StampsField.new(browser.div(id: 'ext-quicktips-tip-innerCt'))
+          #tooltip_field=StampsField.new(driver.div(id: 'ext-quicktips-tip-innerCt'))
           button.field.hover
           button.field.hover
           15.times do
@@ -884,7 +884,7 @@ module Stamps
         end
 
         def toolbar_import
-          (cache[:import].nil? || !cache[:import].present?) ? cache[:import] = StampsField.new(browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]")) : cache[:import]
+          (cache[:import].nil? || !cache[:import].present?) ? cache[:import] = StampsField.new(driver.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]")) : cache[:import]
         end
 
         def import
@@ -935,7 +935,7 @@ module Stamps
         end
 
         def reprint
-          button = StampsField.new browser.span(text: "Reprint")
+          button = StampsField.new driver.span(text: "Reprint")
           modal = RePrintModal.new(param)
           label_unavailable = LabelUnavailable.new(param)
           15.times do
@@ -946,55 +946,55 @@ module Stamps
         end
 
         def browser_settings_button
-          StampsField.new(browser.span css: "span[class*=sdc-icon-settings]")
+          StampsField.new(driver.span css: "span[class*=sdc-icon-settings]")
         end
 
         def page_count
-          (browser.divs css: "div[id^=tbtext]").last
+          (driver.divs css: "div[id^=tbtext]").last
         end
 
         def page_number
-          field = browser.text_field css: "div[id^=pagingtoolbar][data-ref=innerCt]>div>div[id^=numberfield]>div[data-ref=bodyEl]>div>div:nth-child(1)>input"
+          field = driver.text_field css: "div[id^=pagingtoolbar][data-ref=innerCt]>div>div[id^=numberfield]>div[data-ref=bodyEl]>div>div:nth-child(1)>input"
           textbox = StampsTextbox.new field
           textbox
         end
 
         def first_page
-          field = browser.span css: "span[class*=x-tbar-page-first]"
+          field = driver.span css: "span[class*=x-tbar-page-first]"
           label = StampsField.new field
           label
         end
 
         def first_page_disabled
-          field = browser.a  css: "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
+          field = driver.a  css: "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
           label = StampsField.new field
           label.field.disabled?
         end
 
         def previous_page
-          StampsField.new field browser.span css: "span[class*=x-tbar-page-prev]"
+          StampsField.new field driver.span css: "span[class*=x-tbar-page-prev]"
         end
 
         def previous_page_disabled
-          field = browser.a  css: "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
+          field = driver.a  css: "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
           label = StampsField.new field
           label.field.disabled?
         end
 
         def next_page
-          StampsField.new field browser.span css: "span[class*=x-tbar-page-next]"
+          StampsField.new field driver.span css: "span[class*=x-tbar-page-next]"
         end
 
         def last_page
-          StampsField.new field browser.span css: "span[class*=x-tbar-page-last]"
+          StampsField.new field driver.span css: "span[class*=x-tbar-page-last]"
         end
 
         def last_page_disabled
-          StampsField.new browser.a css: "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
+          StampsField.new driver.a css: "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
         end
 
         def total_number_of_pages
-          label = (StampsField.new browser.divs css: "div[id^=tbtext-]").last
+          label = (StampsField.new driver.divs css: "div[id^=tbtext-]").last
           number_str = label.text
           number = number_str.scan /\d+/
           number.last.to_s
@@ -1008,7 +1008,7 @@ module Stamps
 
 
         def field
-          cache[:field] = StampsField.new(browser.span(css: "[class*=sdc-icon-settings]")) if cache[:field].nil? || !cache[:field].present?
+          cache[:field] = StampsField.new(driver.span(css: "[class*=sdc-icon-settings]")) if cache[:field].nil? || !cache[:field].present?
           cache[:field]
         end
 
@@ -1049,7 +1049,7 @@ module Stamps
         end
 
         def refresh_orders
-          button = StampsField.new browser.span(css: "a[data-qtip*='Refresh Orders']>span>span>span[id$=btnInnerEl]")
+          button = StampsField.new driver.span(css: "a[data-qtip*='Refresh Orders']>span>span>span[id$=btnInnerEl]")
           importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
           button.click

@@ -14,10 +14,10 @@ o    Credentials - jvalles@stamps.com / myamazon       (Login to MT account and 
 
 
 Steps
-1. Login into the seller profile in one browser.
+1. Login into the seller profile in one driver.
 
 Go to INVENTORY – Manage Inventor. Get ASIN/ISBN number :  for example  B00K7ABADO
-2. In another browser, login into the buyer account and use the ASIN/ISBN B00K7ABADO to  select the item you wish to purchase.    Mt.amazon.com
+2. In another driver, login into the buyer account and use the ASIN/ISBN B00K7ABADO to  select the item you wish to purchase.    Mt.amazon.com
 and  buy the item  from seller  e-stamps MWS Test
 
 3.       Add the desired item to the cart.

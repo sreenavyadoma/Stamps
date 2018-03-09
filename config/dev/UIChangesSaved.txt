@@ -76,12 +76,12 @@ Feature: Remember Column Changes Between Sessions (Re-order, Resize, Show/Hide).
 		* Sign in with user A
 		* Make changes to columns
 		* Sign out
-		* Sign in with user B on same browser
+		* Sign in with user B on same driver
 		* Make changes to columns
 		* Sign out
-		* Sign in with user A on same browser
+		* Sign in with user A on same driver
 		* Expect all changes done before to still be there
-		* Sign in with user B on same browser
+		* Sign in with user B on same driver
 		* Expect all changes done before to still be there
 		
 		

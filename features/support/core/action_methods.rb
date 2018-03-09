@@ -13,11 +13,11 @@ module Stamps
         throw_or_log_error(locator, call[0], "does not respond to set") if element.respond_to? :set
         element.set(text)
 
-        # browser.text_field(name: "new_user_first_name").wait_until_present
+        # driver.text_field(name: "new_user_first_name").wait_until_present
         # # need helper class that will create element based on locator
-        # browser.text_field(name: "new_user_first_name").wait_until(&:present?).click
-        # browser.text_field(name: "new_user_first_name").wait_until(message: 'foo') { |field| field.present? }
-        # browser.text_field(name: "new_user_first_name").wait_until(timeout: 60, &:present?)
+        # driver.text_field(name: "new_user_first_name").wait_until(&:present?).click
+        # driver.text_field(name: "new_user_first_name").wait_until(message: 'foo') { |field| field.present? }
+        # driver.text_field(name: "new_user_first_name").wait_until(timeout: 60, &:present?)
       end
 
       def send_keys(text, locator, max_time_in_sec)

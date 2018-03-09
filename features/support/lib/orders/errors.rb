@@ -3,15 +3,15 @@ module Stamps
     module OrdersRuntimeError
       class ServerError < WebApps::Base
         def present?
-          StampsField.new(browser.div(text: /Server Error/)).present?
+          StampsField.new(driver.div(text: /Server Error/)).present?
         end
 
         def message
-          StampsField.new(browser.divs(css: "div[id^=dialoguemodal-][id$=-body][class*=sdc-warning]>div>div").last).text
+          StampsField.new(driver.divs(css: "div[id^=dialoguemodal-][id$=-body][class*=sdc-warning]>div>div").last).text
         end
 
         def ok
-          button = StampsField.new(browser.spans(text: "OK").last)
+          button = StampsField.new(driver.spans(text: "OK").last)
           20.times do
             button.click
             sleep(0.025)
@@ -29,7 +29,7 @@ module Stamps
 
       class OrderError < WebApps::Base
         def window_title
-          StampsField.new(browser.div(text: 'Order Error'))
+          StampsField.new(driver.div(text: 'Order Error'))
         end
 
         def present?
@@ -37,7 +37,7 @@ module Stamps
         end
 
         def ok
-          ok_btn = StampsField.new(browser.span(text: 'OK'))
+          ok_btn = StampsField.new(driver.span(text: 'OK'))
           5.times {
             ok_btn.click
             break unless ok_btn.present?
@@ -45,7 +45,7 @@ module Stamps
         end
 
         def error_message
-          (StampsField.new(browser.div(css: "div[class='x-autocontainer-innerCt'][id^=dialoguemodal]"))).text
+          (StampsField.new(driver.div(css: "div[class='x-autocontainer-innerCt'][id^=dialoguemodal]"))).text
         end
       end
 
@@ -56,16 +56,16 @@ module Stamps
         end
 
         def error_message_label
-          browser.div css: "div[class='x-autocontainer-innerCt'][id^=dialoguemodal]"
+          driver.div css: "div[class='x-autocontainer-innerCt'][id^=dialoguemodal]"
         end
 
         def window_title
-          return StampsField.new browser.div(text: 'Incomplete Order') #Changed text from Order Error to Incomplete Order
+          return StampsField.new driver.div(text: 'Incomplete Order') #Changed text from Order Error to Incomplete Order
           nil
         end
 
         def ok
-          ok_btn = StampsField.new browser.span(text: "OK")
+          ok_btn = StampsField.new driver.span(text: "OK")
           10.times{
             ok_btn.click
             break unless ok_btn.present?
@@ -73,11 +73,11 @@ module Stamps
         end
 
         def error_message
-          StampsField.new(browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")).text
+          StampsField.new(driver.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")).text
         end
 
         def present?
-          browser.div(text: "Incomplete Order").present?
+          driver.div(text: "Incomplete Order").present?
         end
 
         #todo-Rob fix this OrdersPrintModal.new(param)
@@ -94,7 +94,7 @@ module Stamps
         end
 
         def cancel
-          cancel_button = StampsField.new(browser.span(text: "Cancel"))
+          cancel_button = StampsField.new(driver.span(text: "Cancel"))
           5.times{
             begin
               cancel_button.click
@@ -114,7 +114,7 @@ module Stamps
       class RatingError < WebApps::Base
 
         def ok_button
-          StampsField.new(browser.span(text: 'OK'))
+          StampsField.new(driver.span(text: 'OK'))
         end
 
         def wait_until_present
@@ -138,7 +138,7 @@ module Stamps
         end
 
         def error_message
-          StampsField.new(browser.p(css: 'div[class=x-autocontainer-innerCt]>p:nth-child(1)')).text
+          StampsField.new(driver.p(css: 'div[class=x-autocontainer-innerCt]>p:nth-child(1)')).text
         end
 
       end

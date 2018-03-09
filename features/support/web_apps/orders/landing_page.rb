@@ -11,11 +11,11 @@ module Stamps
 
       def initialize(param)
         super
-        @username_textbox = StampsTextbox.new(browser.text_field(css: '[placeholder=USERNAME]'))
-        @password_textbox = StampsTextbox.new(browser.text_field(css: '[placeholder=PASSWORD]'))
-        @sign_in_btn = StampsField.new(browser.span(text: 'Sign In'))
-        @title = StampsField.new(browser.div(text: 'Sign In'))
-        @signed_in_user = StampsField.new(browser.span(id: 'userNameText'))
+        @username_textbox = StampsTextbox.new(driver.text_field(css: '[placeholder=USERNAME]'))
+        @password_textbox = StampsTextbox.new(driver.text_field(css: '[placeholder=PASSWORD]'))
+        @sign_in_btn = StampsField.new(driver.span(text: 'Sign In'))
+        @title = StampsField.new(driver.div(text: 'Sign In'))
+        @signed_in_user = StampsField.new(driver.span(id: 'userNameText'))
       end
 
       def username_textbox
@@ -27,7 +27,7 @@ module Stamps
       end
 
       def validation_message
-        StampsField.new(browser.span id: 'InvalidUsernameMsg')
+        StampsField.new(driver.span id: 'InvalidUsernameMsg')
       end
 
       def blur_out
@@ -97,7 +97,7 @@ module Stamps
       end
 
       def load_sign_in_page
-        url = case param.test_env
+        url = case param.env
                 when /cc/
                   "http://printext.qacc.stamps.com/#{(param.web_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
                 when /sc/
@@ -107,38 +107,38 @@ module Stamps
                 when /rating/
                   "http://printext.qacc.stamps.com/#{(param.web_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
                 else
-                  "http://#{param.test_env}/#{(param.web_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
+                  "http://#{param.env}/#{(param.web_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
               end
         log.message '-'
         log.message "URL: #{url}"
         log.message '-'
 
-        browser.goto(url)
-        if browser.text.include? 'Server Error'
-          log.error browser.text
-          raise "Server Error:\n #{browser.text}"
+        driver.goto(url)
+        if driver.text.include? 'Server Error'
+          log.error driver.text
+          raise "Server Error:\n #{driver.text}"
         end
 
         case param.web_app
           when :orders
-            expect(browser.url).to include 'Orders'
+            expect(driver.url).to include 'Orders'
           when :mail
-            expect(browser.url.downcase).to include 'webpostage'
+            expect(driver.url.downcase).to include 'webpostage'
           else
             # do nothing
         end
-        browser.url
+        driver.url
       end
 
       def orders_sign_in(usr, pw)
         begin
-          loading_orders = StampsField.new(browser.div(text: 'Loading orders...'))
-          invalid_username = StampsField.new(browser.span(id: 'InvalidUsernameMsg'))
+          loading_orders = StampsField.new(driver.div(text: 'Loading orders...'))
+          invalid_username = StampsField.new(driver.span(id: 'InvalidUsernameMsg'))
           new_welcome = NewWelcomeModal.new(param)
           security_questions = SecurityQuestionsSuccess.new(param)
           server_error = Stamps::Orders::OrdersRuntimeError::ServerError.new(param)
 
-          expect(browser.url).to include 'Orders'
+          expect(driver.url).to include 'Orders'
 
           log.message '#' * 15
           log.message "Username: #{usr}"
@@ -193,7 +193,7 @@ module Stamps
       def orders_sign_in_sec_questions(usr, pw)
         security_questions = SecurityQuestions.new(param)
 
-        expect(browser.url).to include 'Orders'
+        expect(driver.url).to include 'Orders'
 
         log.message '#' * 15
         log.message "Username: #{usr}"

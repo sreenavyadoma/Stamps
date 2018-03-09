@@ -24,7 +24,7 @@ Then /^[Pp]ause for (\d+) [Ss]econd(?:|s)?$/ do |seconds|
   end
 end
 
-Then(/^Close the browser and clear cookies$/) do #Clear Cookies
+Then(/^Close the driver and clear cookies$/) do #Clear Cookies
   SdcTest.clear_cookies
 end
 

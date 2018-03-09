@@ -4,7 +4,7 @@ module Stamps
 =begin
       class ShopifySettings < StoreSettings
         def window_title
-          StampsField.new browser.div text: "Shopify Settings"
+          StampsField.new driver.div text: "Shopify Settings"
         end
 
         def present?
@@ -20,7 +20,7 @@ module Stamps
       class Shopify < WebApps::Base
 
         def window_title
-          StampsField.new(browser.div text: "Connect your Shopify Store")
+          StampsField.new(driver.div text: "Connect your Shopify Store")
         end
 
         def present?
@@ -28,15 +28,15 @@ module Stamps
         end
 
         def shopify_domain
-          StampsTextbox.new(browser.text_fields(css: "input[name^=textfield-][name$=-inputEl]").last)
+          StampsTextbox.new(driver.text_fields(css: "input[name^=textfield-][name$=-inputEl]").last)
         end
 
         def connect_button
-          StampsField.new browser.span(text: "Connect")
+          StampsField.new driver.span(text: "Connect")
         end
 
         def connect
-          button=StampsField.new browser.span(text: "Connect")
+          button=StampsField.new driver.span(text: "Connect")
           settings=ShopifySettings.new(param)
           shopify=ShopifyPage.new(param)
           importing_order=Orders::Stores::ImportingOrdersModal.new(param)
@@ -140,7 +140,7 @@ module Stamps
         end
 
         def reconnect
-          button=StampsField.new browser.span(text: "Connect")
+          button=StampsField.new driver.span(text: "Connect")
           manage_stores=ManageStores.new(param)
           importing_order=Orders::Stores::ImportingOrdersModal.new(param)
 
@@ -240,7 +240,7 @@ module Stamps
       class ModifyShopifyStore < Shopify
 
         def window_title
-          StampsField.new(browser.div text: "Modify your Shopify Store Connection")
+          StampsField.new(driver.div text: "Modify your Shopify Store Connection")
         end
 
         def present?
@@ -254,19 +254,19 @@ module Stamps
 
       class ShopifyPage < WebApps::Base
         def present?
-          browser.url.include? "shopify.com"
+          driver.url.include? "shopify.com"
         end
 
         def username
-          StampsTextbox.new browser.text_field(id: 'login-input')
+          StampsTextbox.new driver.text_field(id: 'login-input')
         end
 
         def password
-          StampsTextbox.new browser.text_field(id: 'password')
+          StampsTextbox.new driver.text_field(id: 'password')
         end
 
         def sign_in
-          button=StampsField.new browser.text_field(css: "input[value='Log in']")
+          button=StampsField.new driver.text_field(css: "input[value='Log in']")
           settings_page=ShopifySettings.new(param)
 
           10.times do

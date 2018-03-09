@@ -4,7 +4,7 @@ module Stamps
 =begin
       class AmazonSettings < StoreSettings
         def window_title
-          StampsField.new browser.div(text: "Amazon Settings")
+          StampsField.new driver.div(text: "Amazon Settings")
         end
 
         def present?
@@ -20,17 +20,17 @@ module Stamps
       class Amazon < WebApps::Base
         class OrderSource < WebApps::Base
           def textbox
-            StampsTextbox.new(browser.text_field name: "AmazonMarketplace")
+            StampsTextbox.new(driver.text_field name: "AmazonMarketplace")
           end
 
           def dropdown
-            StampsField.new(browser.divs(css: "div[id^=combo-][id$=-triggerWrap][class$=x-form-trigger-wrap-default]>div[id^=combo-][id$=-trigger-picker]")[2])
+            StampsField.new(driver.divs(css: "div[id^=combo-][id$=-triggerWrap][class$=x-form-trigger-wrap-default]>div[id^=combo-][id$=-trigger-picker]")[2])
           end
 
           def select(selection)
             dd=dropdown
             text_field=textbox
-            selection_field=StampsField.new(browser.li text: selection)
+            selection_field=StampsField.new(driver.li text: selection)
 
             10.times do
               dd.click unless selection_field.present?
@@ -54,17 +54,17 @@ module Stamps
 
         class ProductIdentifier < WebApps::Base
           def textbox
-            StampsTextbox.new(browser.text_field css: "input[name^=combo-][name$=-inputEl]")
+            StampsTextbox.new(driver.text_field css: "input[name^=combo-][name$=-inputEl]")
           end
 
           def dropdown
-            StampsField.new((browser.divs(css: "div[id^=combo-][id$=-trigger-picker]")).last)
+            StampsField.new((driver.divs(css: "div[id^=combo-][id$=-trigger-picker]")).last)
           end
 
           def select(selection)
             dd=dropdown
             text_field=textbox
-            selection_field=StampsField.new(browser.li text: selection)
+            selection_field=StampsField.new(driver.li text: selection)
 
             10.times do
               dd.click unless selection_field.present?
@@ -88,15 +88,15 @@ module Stamps
         end
 
         def window_title
-          StampsField.new(browser.div text: "Connect your Amazon Store")
+          StampsField.new(driver.div text: "Connect your Amazon Store")
         end
 
         def present?
-          browser.span(text: "Verify Seller ID").present?
+          driver.span(text: "Verify Seller ID").present?
         end
 
         def close
-          button=StampsField.new browser.img(css: "div[id^=connectamazonwindow-][id$=header-targetEl]>div>img")
+          button=StampsField.new driver.img(css: "div[id^=connectamazonwindow-][id$=header-targetEl]>div>img")
           5.times do
             button.click
             break unless present?
@@ -104,15 +104,15 @@ module Stamps
         end
 
         def seller_id
-          StampsTextbox.new browser.text_field(name: "AmazonSellerID")
+          StampsTextbox.new driver.text_field(name: "AmazonSellerID")
         end
 
         def auth_token
-          StampsTextbox.new browser.text_field(name: "AuthToken")
+          StampsTextbox.new driver.text_field(name: "AuthToken")
         end
 
         def verify_seller_id
-          button=StampsField.new(browser.span text: "Verify Seller ID")
+          button=StampsField.new(driver.span text: "Verify Seller ID")
           3.times do
             button.click
           end
@@ -127,7 +127,7 @@ module Stamps
         end
 
         def connect
-          button=StampsField.new browser.span(text: "Connect")
+          button=StampsField.new driver.span(text: "Connect")
           server_error=Orders::Stores::ServerError.new(param)
           importing_order=Orders::Stores::ImportingOrdersModal.new(param)
 
@@ -153,7 +153,7 @@ module Stamps
         end
 
         def connect_expecting_store_settings
-          button=(StampsField.new(browser.span text: "Connect"))
+          button=(StampsField.new(driver.span text: "Connect"))
           settings=AmazonSettings.new(param)
           server_error=Orders::Stores::ServerError.new(param)
           importing_order=Orders::Stores::ImportingOrdersModal.new(param)
@@ -187,7 +187,7 @@ module Stamps
       class ModifyAmazonStore < Amazon
 
         def window_title
-          StampsField.new(browser.div text: "Modify your Amazon Store Connection")
+          StampsField.new(driver.div text: "Modify your Amazon Store Connection")
         end
 
         def present?

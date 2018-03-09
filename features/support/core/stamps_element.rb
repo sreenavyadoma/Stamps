@@ -5,26 +5,26 @@ module Stamps
       def initialize(driver, locator)
         super(driver)
         @field = locator
-        self.browser = locator.browser unless locator.browser.nil?
+        self.driver = locator.driver unless locator.driver.nil?
       end
       alias_method :checkbox, :field
       alias_method :radio, :field
       alias_method :textbox, :field
       alias_method :input, :field
 
-      def browser
-        if self.class.browser.nil?
-          raise ArgumentError, "browser is nil for html field #{field.class}. Set #{self.class.to_s.split('::').last}.browser = browser after creating this object."
+      def driver
+        if self.class.driver.nil?
+          raise ArgumentError, "driver is nil for html field #{field.class}. Set #{self.class.to_s.split('::').last}.driver = driver after creating this object."
         end
-        self.class.browser
+        self.class.driver
       end
 
-      def browser=(browser)
-        self.class.browser = browser
+      def driver=(driver)
+        self.class.driver = driver
       end
 
       def url
-        browser.url
+        driver.url
       end
 
       def flash
@@ -118,7 +118,7 @@ module Stamps
 
       def scroll_into_view
         begin
-          browser.execute_script('arguments[0].scrollIntoView();', field)
+          driver.execute_script('arguments[0].scrollIntoView();', field)
         rescue
           # ignore
         end
@@ -204,7 +204,7 @@ module Stamps
       end
 
       def set_attribute_value(attribute_name, value)
-        browser.execute_script("return arguments[0].#{attribute_name}='#{value}'", field) if present?
+        driver.execute_script("return arguments[0].#{attribute_name}='#{value}'", field) if present?
       end
 
       def data_error

@@ -5,15 +5,15 @@ module Stamps
 
       def initialize(param)
         super
-        @window_title = StampsField.new(browser.div(text: 'Search Contacts'))
-        @x_btn = StampsField.new(browser.img(css: "img[class*='x-tool-img x-tool-close']"))
+        @window_title = StampsField.new(driver.div(text: 'Search Contacts'))
+        @x_btn = StampsField.new(driver.img(css: "img[class*='x-tool-img x-tool-close']"))
 
       end
 
 
       #iframe to access elements in contacts modal
       def contacts_frame
-        browser.iframe(css: "iframe[src*='/addressbook/modal.aspx']")
+        driver.iframe(css: "iframe[src*='/addressbook/modal.aspx']")
       end
 
       #button to search for contacts in modal

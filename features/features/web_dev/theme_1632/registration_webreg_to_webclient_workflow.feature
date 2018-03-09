@@ -29,7 +29,7 @@ Feature: Webreg to Web client registration theme_1632
     Then click Membership page Submit button
 
     # Web Client
-    # Default browser launch
+    # Default driver launch
     Then load web apps orders then sign-in expecting Security Questions
 
     # Select security questions and answers
