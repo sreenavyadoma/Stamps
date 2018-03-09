@@ -2,9 +2,9 @@ module Stamps
 
   module SdcParamHelper
     class << self
-      attr_accessor :log, :scenario_name, :web_app, :env, :health_check, :usr, :pw, :url, :print_media,
-                    :developer, :verbose, :firefox_profile, :printer, :browser_str, :hostname
-      
+      #attr_accessor :log, :scenario_name, :web_app, :env, :health_check, :usr, :pw, :url, :print_media, :developer, :verbose, :firefox_profile, :printer, :browser_str, :hostname
+      attr_accessor :env
+
       def webapps
         webapps = WebApps::Param.new
         webapps

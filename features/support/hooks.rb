@@ -11,7 +11,7 @@ include RAutomation
 include Spreadsheet
 
 Before do  |scenario|
-  SdcTest.init(scenario)
+  SdcTest.new(scenario)
   SdcTest.log.info "Begin..."
   SdcTest.log.info "-"
   SdcTest.print_test_steps
