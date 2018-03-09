@@ -1,5 +1,13 @@
 module Stamps
   module Core
+    class ElementWrapper
+      def initialize(driver, locator)
+        @driver = driver
+        @finder = ElementFinder.new(driver)
+        @actions = ActionMethods.new(driver, finder, call[0])
+      end
+    end
+
     class PageObject
       def initialize(driver)
         @driver = driver
