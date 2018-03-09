@@ -1,48 +1,7 @@
 module Stamps
-  module SdcTest
+  class SdcTest
     class << self
       attr_accessor :driver, :log, :scenario, :scenario_name, :firefox_profile, :browser_version, :os_version
-
-      def init(scenario)
-        init_env_var
-        @scenario = scenario
-        @scenario_name = scenario.name
-        logger = Log4r::Logger.new(":")
-        logger.outputters = Outputter.stdout
-        @log = Stamps::Core::SdcLogger.new(logger)
-        @log.verbose = SdcParamHelper.verbose
-      end
-
-      def init_env_var
-        SdcParamHelper.verbose = ENV['VERBOSE'].nil? ? false : ENV['VERBOSE'].downcase == 'true'
-        SdcParamHelper.xxxxxxx
-        SdcParamHelper.xxxxxxx
-        SdcParamHelper.xxxxxxx
-        SdcParamHelper.xxxxxxx
-        SdcParamHelper.xxxxxxx
-        SdcParamHelper.xxxxxxx
-        SdcParamHelper.xxxxxxx
-        SdcParamHelper.xxxxxxx
-        SdcParamHelper.xxxxxxx
-        SdcParamHelper.xxxxxxx
-        SdcParamHelper.xxxxxxx
-        SdcParamHelper.xxxxxxx
-        SdcParamHelper.xxxxxxx
-        SdcParamHelper.xxxxxxx
-      end
-
-      def print_test_steps
-        raise ArgumentError, 'Set scenario object before printing test steps' if scenario.nil?
-        self.scenario_name = scenario.name
-        log.info "- Feature: #{scenario.feature}"
-        log.info "- Scenario: #{scenario.name}"
-        log.info "- Tags:"
-        scenario.tags.each_with_index { |tag, index| log.info "--Tag #{index + 1}: #{tag.name}" }
-        log.info "- Steps:"
-        scenario.test_steps.each_with_index { |steps, index| log.info "-- #{steps.source.last.keyword}#{steps.text}" }
-        log.info "-"
-        log.info "-"
-      end
 
       def setup(driver)
         begin
@@ -56,7 +15,7 @@ module Stamps
               rescue
                 # ignore
               end
-              self.driver = SdcDriver.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
+              self.driver = Watir::Browser.new(:edge, accept_insecure_certs: true)
               self.driver.window.maximize
 
             when :firefox # Launch Firefox
@@ -71,7 +30,7 @@ module Stamps
                 profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(firefox_profile)
                 profile.assume_untrusted_certificate_issuer = true
                 profile['network.http.phishy-userpass-length'] = 255
-                self.driver = SdcDriver.new(Watir::Browser.new(:firefox, :profile => profile))
+                self.driver = Watir::Browser.new(:firefox, :profile => profile)
               end
               self.driver.window.resize_to 1560, 1020
               self.driver.window.move_to 0, 0
@@ -82,7 +41,7 @@ module Stamps
               rescue
                 # ignore
               end
-              self.driver = SdcDriver.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+              self.driver = Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate))
               self.driver.window.maximize
             #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
 
@@ -92,7 +51,7 @@ module Stamps
               rescue
                 # ignore
               end
-              self.driver = SdcDriver.new(Watir::Browser.new(:ie))
+              self.driver = Watir::Browser.new :ie
               driver.window.maximize
 
             when :safari
@@ -101,17 +60,15 @@ module Stamps
               rescue
                 # ignore
               end
-              self.driver = SdcDriver.new(Watir::Browser.new(:safari, technology_preview: true))
+              self.driver = Watir::Browser.new :safari, technology_preview: true
             else
               raise ArgumentError, "#{driver} is not a valid driver selection"
           end
           self.driver
-        rescue StandardError => e
-          err = e.backtrace.join("\n")
+        rescue Exception => e
           log.error e.message
           log.error e.backtrace.join("\n")
-          log.error e.message
-          raise e
+          raise "Unable to launch browser. #{e.message}", e
         end
       end
 
@@ -157,6 +114,47 @@ module Stamps
         self.os_version = /(Mac OS.+?[\d_]+|Windows.+?[\d\.]+)/.match(info)
       end
     end
+
+    def print_test_steps
+      raise ArgumentError, 'Set scenario object before printing test steps' if scenario.nil?
+      self.scenario_name = scenario.name
+      log.info "- Feature: #{scenario.feature}"
+      log.info "- Scenario: #{scenario.name}"
+      log.info "- Tags:"
+      scenario.tags.each_with_index { |tag, index| log.info "--Tag #{index + 1}: #{tag.name}" }
+      log.info "- Steps:"
+      scenario.test_steps.each_with_index { |steps, index| log.info "-- #{steps.source.last.keyword}#{steps.text}" }
+      log.info "-"
+      log.info "-"
+    end
+  end
+
+  def initialize(scenario)
+    self.class.scenario = scenario
+    self.class.scenario_name = scenario.name
+    init_env_var
+    logger = Log4r::Logger.new(":")
+    logger.outputters = Outputter.stdout
+    self.class.log = Stamps::Core::StampsLogDecorator.new(logger)
+    self.class.log.verbose = true #ENV['VERBOSE']
+  end
+
+  def init_env_var
+    SdcParamHelper.verbose = ENV['VERBOSE'].nil? ? false : ENV['VERBOSE'].downcase == 'true'
+    SdcParamHelper.xxxxxxx
+    SdcParamHelper.xxxxxxx
+    SdcParamHelper.xxxxxxx
+    SdcParamHelper.xxxxxxx
+    SdcParamHelper.xxxxxxx
+    SdcParamHelper.xxxxxxx
+    SdcParamHelper.xxxxxxx
+    SdcParamHelper.xxxxxxx
+    SdcParamHelper.xxxxxxx
+    SdcParamHelper.xxxxxxx
+    SdcParamHelper.xxxxxxx
+    SdcParamHelper.xxxxxxx
+    SdcParamHelper.xxxxxxx
+    SdcParamHelper.xxxxxxx
   end
 end
 
