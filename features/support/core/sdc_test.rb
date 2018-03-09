@@ -25,11 +25,11 @@ module Stamps
         log.info "-"
       end
 
-      def setup(driver)
+      def setup(browser_sym)
         begin
           Watir.always_locate = true
           Selenium::WebDriver.logger.level = :warn
-          case(driver)
+          case(browser_sym)
 
             when :edge # Launch Microsoft Edge
               begin
