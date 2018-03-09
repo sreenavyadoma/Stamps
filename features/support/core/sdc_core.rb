@@ -1,5 +1,11 @@
 module Stamps
   module Core
+    class SdcDriver < SimpleDelegator
+      def initialize(driver)
+        super
+      end
+    end
+
     class Base
       class << self
         attr_accessor :driver

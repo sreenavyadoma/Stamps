@@ -8,7 +8,7 @@ module Stamps
         @scenario_name = scenario.name
         logger = Log4r::Logger.new(":")
         logger.outputters = Outputter.stdout
-        @log = Stamps::Core::StampsLogDecorator.new(logger)
+        @log = Stamps::Core::SdcLogger.new(logger)
         @log.verbose = true #ENV['VERBOSE']
       end
 
@@ -37,7 +37,7 @@ module Stamps
               rescue
                 # ignore
               end
-              self.driver = Watir::Browser.new(:edge, accept_insecure_certs: true)
+              self.driver = SdcDriver.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
               self.driver.window.maximize
 
             when :firefox # Launch Firefox
@@ -52,7 +52,7 @@ module Stamps
                 profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(firefox_profile)
                 profile.assume_untrusted_certificate_issuer = true
                 profile['network.http.phishy-userpass-length'] = 255
-                self.driver = Watir::Browser.new(:firefox, :profile => profile)
+                self.driver = SdcDriver.new(Watir::Browser.new(:firefox, :profile => profile))
               end
               self.driver.window.resize_to 1560, 1020
               self.driver.window.move_to 0, 0
@@ -63,7 +63,7 @@ module Stamps
               rescue
                 # ignore
               end
-              self.driver = Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate))
+              self.driver = SdcDriver.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
               self.driver.window.maximize
             #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
 
@@ -73,7 +73,7 @@ module Stamps
               rescue
                 # ignore
               end
-              self.driver = Watir::Browser.new :ie
+              self.driver = SdcDriver.new(Watir::Browser.new(:ie))
               driver.window.maximize
 
             when :safari
@@ -82,7 +82,7 @@ module Stamps
               rescue
                 # ignore
               end
-              self.driver = Watir::Browser.new :safari, technology_preview: true
+              self.driver = SdcDriver.new(Watir::Browser.new(:safari, technology_preview: true))
             else
               raise ArgumentError, "#{driver} is not a valid driver selection"
           end

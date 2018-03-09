@@ -1,6 +1,6 @@
 module Stamps
   module Core
-    class StampsLogDecorator < SimpleDelegator
+    class SdcLogger < SimpleDelegator
       attr_accessor :scenario_name, :verbose
       def initialize(logger)
         @logger = logger
