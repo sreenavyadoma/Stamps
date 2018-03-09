@@ -1,7 +1,7 @@
 
 Feature: PAM page
   Background:
-    Given I launched default driver
+    Given I launched default browser
 
   @pam
   Scenario: PAM page

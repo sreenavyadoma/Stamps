@@ -2,7 +2,7 @@
 Feature: Health Check
 
   Background:
-    Given I launched default driver
+    Given I launched default browser
 
   @healthcheck
   Scenario: Healthcheck for Orders & Web Postage

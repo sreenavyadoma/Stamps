@@ -3,7 +3,7 @@ Then /^Teardown$/ do
   SdcTest.teardown
 end
 
-Given /^(?:|I )[Ll]aunch(?:|ed) (?:|driver)(?:| (\w+))(?:|(?:|the )default driver)$/ do |str|
+Given /^(?:|I )[Ll]aunch(?:|ed) (?:|browser)(?:| (\w+))(?:|(?:|the )default browser)$/ do |str|
   SdcTest.setup((str.nil?)? modal_param.browser_str : str)
 end
 

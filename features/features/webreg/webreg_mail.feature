@@ -1,7 +1,7 @@
 Feature: First time Mail sign in
 
   Background:
-    Given I launched default driver
+    Given I launched default browser
 
     @registration_mail
     @whats_new
