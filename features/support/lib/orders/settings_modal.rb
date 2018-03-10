@@ -41,7 +41,8 @@ module Stamps
         end
 
         def general_tab_view
-          cache[:general_tab].nil? || !cache[:general_tab].present? ? cache[:general_tab] = Orders::OrdersSettings::GeneralTabView.new(param) : cache[:general_tab]
+          # cache[:general_tab].nil? || !cache[:general_tab].present? ? cache[:general_tab] = Orders::OrdersSettings::GeneralTabView.new(param) : cache[:general_tab]
+          cache[:general_tab].nil? || !cache[:general_tab].present? ? cache[:general_tab] = Orders::Settings::GeneralTabView.new(param) : cache[:general_tab]
         end
 
         def int_tab_view
