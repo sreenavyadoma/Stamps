@@ -189,7 +189,7 @@ module Stamps
         end
 
         def x_button
-          driver.img(css: 'img[class*=x-tool-close]')
+          driver.span(css: 'span[class*=sdc-icon-mobile-close-light]')
         end
 
         def printer_label
