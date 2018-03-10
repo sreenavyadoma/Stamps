@@ -684,7 +684,7 @@ module Stamps
           if str.downcase.to_sym == :default
             (cache[:default].nil? || !cache[:default].present?) ? cache[:default] = StampsField.new(driver.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*=x-boundlist-item]")[0]) : cache[:default]
           else
-            (cache[str.to_sym].nil? || !cache[str.to_sym].present?) ? cache[str.to_sym] = StampsField.new(driver.li(text: /#{str}/)) : cache[str.to_sym]
+            (cache[str.to_sym].nil? || !cache[str.to_sym].present?) ? cache[str.to_sym] = StampsField.new(driver.li(visible_text: /#{str}/)) : cache[str.to_sym]
           end
         end
 
