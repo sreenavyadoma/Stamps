@@ -181,12 +181,12 @@ module Stamps
     def initialize(scenario)
       self.class.scenario = scenario
       self.class.scenario_name = SdcParamHelper.scenario_name = scenario.name
-      init_env_param
+      test_env
       logger
     end
 
     private
-    def init_env_param
+    def test_env
       SdcParamHelper.verbose = ENV['VERBOSE'].nil? ? false : ENV['VERBOSE'].downcase == 'true'
       SdcParamHelper.web_app
       SdcParamHelper.env
