@@ -30,7 +30,6 @@ module Stamps
           Watir.always_locate = true
           Selenium::WebDriver.logger.level = :warn
           case(sym)
-
             when :edge # Launch Microsoft Edge
               begin
                 stdout, stdeerr, status = Open3.capture3("taskkill /im MicrosoftEdge.exe /f")
