@@ -2,7 +2,7 @@
 # common Print form steps for Envelope|Label|Roll|CM
 
 Then /^[Ss]et Print form [Mm]ail-[Tt]o (?:|to )(?:|a )(?:|random )address(?: to| in| between|) (.*)$/ do |address|
-  stamps.mail.print_form.mail_to.mail_address.textarea.set(TestData.store[:address]=TestHelper.address_helper(address))
+  stamps.mail.print_form.mail_to.mail_address.textarea.set(TestData.store[:address]=TestHelper.address_helper(address, modal_param.env))
 end
 
 Then /^[Ee]xpect Print form Mail To is disabled$/ do

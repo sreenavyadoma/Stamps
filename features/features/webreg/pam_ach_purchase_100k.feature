@@ -1,6 +1,6 @@
 Feature: Registration
   Background:
-    Given I launched default driver
+    Given I launched default browser
 
   @pam_ach_purchase_100k
   Scenario:

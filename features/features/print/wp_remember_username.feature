@@ -2,7 +2,7 @@ Feature: Remember Username
 
   Background:
     #Given I am signed in as a postage shipper
-    Given I launched the default driver
+    Given I launched default browser
 
   @mail_remember_username
   Scenario: Remember Username
