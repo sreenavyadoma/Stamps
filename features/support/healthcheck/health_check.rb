@@ -1,6 +1,6 @@
 module Stamps
   class HealthCheck < WebApps::Base
-    def health_check
+    def health_check #todo-Rob refactor healthcheck
       case param.env.downcase
         when /sc/
           driver.goto("https://printext.qasc.stamps.com/orders/healthcheck.aspx")

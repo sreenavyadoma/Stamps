@@ -1,21 +1,19 @@
 
 Given /^(?:|(?:|[Aa] )(?:[Vv]alid |))[Uu]ser is signed in to Web Apps$/ do
   step "I launch default browser"
-  step "Health Check: Print - Web Batch" if modal_param.health_check
-  step "Health Check: Print - Address Book" if modal_param.health_check
+  step "Health Check: Print - Web Batch" if SdcEnv.health_check
+  step "Health Check: Print - Address Book" if SdcEnv.health_check
   step "load Web Apps Sign-in page"
   step "sign-in to Web Apps as #{TestData.store[:username]}, #{TestData.store[:password]}"
   step "Navigation Bar: Customer Balance"
 end
 
 Then /^[Ll]oad [Ww]eb [Aa]pps [Oo]rders (?:and|then) sign-in$/ do
-  modal_param.web_app = :orders
   step "load Web Apps Sign-in page"
   step "sign-in to Web Apps as #{TestData.store[:username]}, #{TestData.store[:password]}"
 end
 
 Then /^[Ll]oad [Ww]eb [Aa]pps [Oo]rders (?:and|then) sign-in expecting Security Questions$/ do
-  modal_param.web_app = :orders
   step "pause for 40 seconds"
   step "load Web Apps Sign-in page"
   TestData.store[:security_questions] = stamps.orders.landing_page.orders_sign_in(TestData.store[:username], TestData.store[:password])
@@ -66,7 +64,6 @@ Then /^[Ee]xpect Security Questions successfully set dialog contain (.*)/ do |st
 end
 
 Then /^[Ll]oad [Ww]eb [Aa]pps [Mm]ail (?:and|then) sign-in$/ do
-  modal_param.web_app = :mail
   step "load Web Apps Sign-in page"
   step "sign-in to Web Apps as #{modal_param.usr}, #{modal_param.pw}"
 end
@@ -79,7 +76,7 @@ Given /^[Ss]ign-in to [Ww]eb [Aa]pps as (.*), (.*)$/ do |username, password|
   # MySql
   begin
     if username.nil? || username.downcase == 'default' || username.downcase == 'mysql'
-      credentials = user_credentials.fetch(SdcTest.scenario.tags[0].name)
+      credentials = user_credentials.fetch(SdcEnv.scenario.tags[0].name)
       TestData.store[:username] = username = credentials[:username]
       TestData.store[:password] = password = credentials[:password]
     end
@@ -90,8 +87,8 @@ Given /^[Ss]ign-in to [Ww]eb [Aa]pps as (.*), (.*)$/ do |username, password|
   end
   expect(username).to be_truthy
   expect(password).to be_truthy
-  expect(stamps.orders.landing_page.orders_sign_in(username, password)).to eql(username) if modal_param.web_app == :orders
-  expect(stamps.mail.sign_in_modal.mail_sign_in(username, password)).to eql(username) if modal_param.web_app == :mail
+  expect(stamps.orders.landing_page.orders_sign_in(username, password)).to eql(username) if SdcEnv.web_app == :orders
+  expect(stamps.mail.sign_in_modal.mail_sign_in(username, password)).to eql(username) if SdcEnv.web_app == :mail
 end
 
 Then /^[Ss]ign out$/ do

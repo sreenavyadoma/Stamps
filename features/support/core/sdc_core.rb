@@ -1,6 +1,6 @@
 module Stamps
   module Core
-    class SdcDriver < SimpleDelegator
+    class SdcDelegatedDriver < SimpleDelegator
       def initialize(driver)
         super
       end
