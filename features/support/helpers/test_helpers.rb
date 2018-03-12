@@ -1,7 +1,6 @@
 module Stamps
   module TestHelper
     class << self
-
       def rand_alpha_str(min = 2, max = 10)
         Array.new(rand(min..max)) { [*'a'..'z'].sample }.join
       end
