@@ -50,7 +50,7 @@ module Stamps
       end
 
       class ManagePrintOptionsModal < WebApps::Base
-        include PrintMediaHelper
+        #include PrintMediaHelper
 
 
 
@@ -149,7 +149,7 @@ module Stamps
         end
 
         def search(str)
-          search_field.set(mpo_search_str(str))
+          search_field.set(PrintMediaHelper.mpo_search_str(str))
           30.times do
             sleep(0.05)
             break if driver.divs(css: "[class=x-grid-row-checker]").size == 1
@@ -186,7 +186,7 @@ module Stamps
 
       class PrintOn < WebApps::Base
         include PrintFormBlurOut
-        include PrintMediaHelper
+        #include PrintMediaHelper
         include PrintOnTextbox
 
         def dropdown
@@ -242,9 +242,9 @@ module Stamps
           dropdown.click
           10.times do
             begin
-              if print_on_textbox.text.include?(selected_sub_str(str))
+              if print_on_textbox.text.include?(PrintMediaHelper.selected_sub_str(str))
                 dropdown.click if manage_printing_options_lov.present?
-                return print_media(str)
+                return PrintMediaHelper.print_media(str)
               end
               selection = StampsField.new(driver.li(css: "li[class^=#{(data_for(:mail_print_media, {})[str]).split(',').first}][data-recordindex='#{(data_for(:mail_print_media, {})[str]).split(',').last}']"))
               dropdown.click unless manage_printing_options_lov.present?
@@ -700,8 +700,6 @@ module Stamps
 
       class PrintFormTracking < WebApps::Base
         include PrintFormBlurOut
-
-
 
         def textbox
           (cache[:textbox].nil? || !cache[:textbox].present?) ? cache[:textbox] = StampsTextbox.new(

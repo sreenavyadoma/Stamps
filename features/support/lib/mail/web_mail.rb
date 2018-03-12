@@ -39,7 +39,7 @@ module Stamps
               cache[:envelope] = Class.new(WebApps::Base).new(param).extend(PrintFormPanel::Envelope)
             end
             return cache[:envelope]
-          when :cm3610, :cm3710, :cm3910, :cm3930, :cm3810, :cm3830
+          when :certified_mail
             if cache[:cm].nil? || !cache[:cm].present?
               cache[:cm] = Class.new(WebApps::Base).new(param).extend(PrintFormPanel::CertifiedMail)
             end
