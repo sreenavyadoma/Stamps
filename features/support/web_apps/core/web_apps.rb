@@ -12,6 +12,7 @@ module Stamps
         super(param.driver)
         @param = param
         @log = param.log
+        self
       end
 
       def cache

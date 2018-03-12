@@ -65,7 +65,7 @@ end
 
 Then /^[Ll]oad [Ww]eb [Aa]pps [Mm]ail (?:and|then) sign-in$/ do
   step "load Web Apps Sign-in page"
-  step "sign-in to Web Apps as #{modal_param.usr}, #{modal_param.pw}"
+  step "sign-in to Web Apps as #{SdcEnv.usr}, #{SdcEnv.pw}"
 end
 
 Given /^[Ll]oad [Ww]eb [Aa]pps [Ss]ign-in page$/ do

@@ -3,7 +3,7 @@ module Stamps
   module SdcEnv
     class << self
       attr_accessor :web_app, :env, :health_check, :usr, :pw, :url, :verbose,
-                    :firefox_profile, :printer, :browser_str, :hostname, :scenario
+                    :printer, :browser_str, :hostname, :scenario, :print_media
     end
   end
 
@@ -11,7 +11,7 @@ module Stamps
     class << self
       attr_accessor :log
 
-      def setup(browser, firefox_profile = nil)
+      def configure(browser, firefox_profile = nil)
         begin
           Watir.always_locate = true
           Selenium::WebDriver.logger.level = :warn
@@ -189,52 +189,6 @@ module Stamps
     end
   end
 
-  def modal_param #todo-Rob refact TestParam
-    if @modal_param.nil?
-      #@modal_param = WebApps::Param.new
-      #@modal_param.hostname = Socket.gethostname
-      #expect(ENV['BROWSER']).to_not be(nil), "Browser is not defined, check your cucumber.yml entry for this test or your Jenkins job"
-      #@modal_param.browser_str = TestHelper.browser_type(ENV['BROWSER'])
-
-      #@modal_param.scenario_name = SdcEnv.scenario_name
-
-      #@modal_param.firefox_profile = (ENV['FIREFOX_PROFILE'].nil?) ? 'selenium' : ENV['FIREFOX_PROFILE']
-
-      #expect(ENV['WEB_APP']).not_to be_nil
-      #@SdcEnv.web_app = (ENV['WEB_APP'].downcase).to_sym
-      #expect([:orders, :mail, :registration, :pam, :webdev, :rob]).to include(@SdcEnv.web_app), "Invalid modal_paramter WEB_APP=#{@SdcEnv.web_app}. Valid values are mail, registration"
-
-      # @modal_param.env = ENV['URL']
-      # @modal_param.env = 'stg' if ENV['URL'].downcase == 'staging'
-      # @modal_param.env = 'qacc' if ENV['URL'].downcase.include?('cc')
-      # @modal_param.env = 'qasc' if ENV['URL'].downcase.include?('sc')
-      # @modal_param.env = 'qacc' if ENV['URL'].downcase.include?('rating')
-
-
-      @modal_param.printer = (ENV['PRINTER'].nil?) ? 'factory' : ENV['PRINTER']
-
-      @modal_param.debug = (ENV["VERBOSE"].nil?) ? false : ENV["VERBOSE"].downcase == "true"
-
-      if @SdcEnv.web_app == :mail || @SdcEnv.web_app == :orders
-        @SdcEnv.health_check = TestHelper.to_bool ENV['HEALTHCHECK']
-        @modal_param.url = ENV['URL']
-        @modal_param.developer = ENV['DEVELOPER']
-
-        expect(ENV['BROWSER']).to be_truthy
-        expect(ENV['URL']).to be_truthy
-        expect(ENV['HEALTHCHECK']).to be_truthy
-        expect(ENV['VERBOSE']).to be_truthy
-        expect(ENV['WEB_APP']).to be_truthy
-        expect(['orders', 'mail', 'Registration']).to include(ENV['WEB_APP'].downcase), "Expected WEB_APP value to be either orders, mail or Registration. Got #{ENV['WEB_APP']}"
-      end
-    end
-    @modal_param.driver = SdcTest.driver
-    @modal_param.log = SdcTest.log
-    @modal_param.scenario_name = SdcEnv.scenario_name
-    @modal_param
-  end
-
-
   module SdcParamHelper
     class << self
 
@@ -260,49 +214,6 @@ module Stamps
       def browser_type(driver)
 
         raise ArgumentError, "#{driver} is not a valid selection. Valid browsers are ff|firefox|mozilla|chrome|gc|google|ms|me|microsoft|edge"
-      end
-
-      def modal_param #todo-Rob refact TestParam
-        if @modal_param.nil?
-          @modal_param = WebApps::Param.new
-          @modal_param.hostname = Socket.gethostname
-          expect(ENV['BROWSER']).to_not be(nil), "Browser is not defined, check your cucumber.yml entry for this test or your Jenkins job"
-          @modal_param.browser_str = TestHelper.browser_type(ENV['BROWSER'])
-
-          @modal_param.scenario_name = SdcEnv.scenario_name
-          @modal_param.firefox_profile = (ENV['FIREFOX_PROFILE'].nil?) ? 'selenium' : ENV['FIREFOX_PROFILE']
-          expect(ENV['WEB_APP']).not_to be_nil
-          @SdcEnv.web_app = (ENV['WEB_APP'].downcase).to_sym
-          expect([:orders, :mail, :registration, :pam, :webdev, :rob]).to include(@SdcEnv.web_app), "Invalid modal_paramter WEB_APP=#{@SdcEnv.web_app}. Valid values are mail, registration"
-
-          @modal_param.env = ENV['URL']
-          @modal_param.env = 'stg' if ENV['URL'].downcase == 'staging'
-          @modal_param.env = 'qacc' if ENV['URL'].downcase.include?('cc')
-          @modal_param.env = 'qasc' if ENV['URL'].downcase.include?('sc')
-          @modal_param.env = 'qacc' if ENV['URL'].downcase.include?('rating')
-
-
-          @modal_param.printer = (ENV['PRINTER'].nil?) ? 'factory' : ENV['PRINTER']
-
-          @modal_param.debug = (ENV["VERBOSE"].nil?) ? false : ENV["VERBOSE"].downcase == "true"
-
-          if @SdcEnv.web_app == :mail || @SdcEnv.web_app == :orders
-            @SdcEnv.health_check = TestHelper.to_bool ENV['HEALTHCHECK']
-            @modal_param.url = ENV['URL']
-            @modal_param.developer = ENV['DEVELOPER']
-
-            expect(ENV['BROWSER']).to be_truthy
-            expect(ENV['URL']).to be_truthy
-            expect(ENV['HEALTHCHECK']).to be_truthy
-            expect(ENV['VERBOSE']).to be_truthy
-            expect(ENV['WEB_APP']).to be_truthy
-            expect(['orders', 'mail', 'Registration']).to include(ENV['WEB_APP'].downcase), "Expected WEB_APP value to be either orders, mail or Registration. Got #{ENV['WEB_APP']}"
-          end
-        end
-        @modal_param.driver = SdcTest.driver
-        @modal_param.log = SdcTest.log
-        @modal_param.scenario_name = SdcEnv.scenario_name
-        @modal_param
       end
     end
 
