@@ -25,3 +25,4 @@ end
 Then /^[Ss]et Print form height to (\d+)$/ do |height|
   stamps.mail.print_form.dimensions.height.set(TestData.store[:height]=height)
 end
+
