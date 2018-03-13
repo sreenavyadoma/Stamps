@@ -8,7 +8,7 @@ rob_cc: --tags @bvt_new_order SDC_APP=orders BROWSER=ff JENKINS=true URL=cc VERB
 rob_stg: --tags @bvt_new_order SDC_APP=orders JENKINS=true URL=stg VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=default PW=pass111 PRINTER=factory #stgee1mtqvwdc0
 rob_sc: --tags @bvt_shipstation_updates_domestic SDC_APP=orders JENKINS=true URL=sc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=selenium  USR=scsejsglwa PW=pass111 VERBOSE=true PRINTER=factory # c2jinmzmu64 schl0vlbfy2673 #19  schl0vlbfy2673
 rob_dev: --tags @mail_advanced_options_stamps SDC_APP=orders JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess VERBOSE=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
-rob_mail_cc:  --tags @mail_bvt_envelopes SDC_APP=mail JENKINS=true USR=cctruer0u PW=pass111 URL=cc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory #\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
+rob_mail_cc:  --tags @mail_bvt_international SDC_APP=mail JENKINS=true USR=cctruer0u PW=pass111 URL=cc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory #\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
 rob_mail_stg: --tags @mail_bvt_international SDC_APP=mail JENKINS=true USR=default PW=pass111 URL=stg --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory #stgee1mtqvwdc0
 rob_mail_sc: --tags @print_dialog_ship_date SDC_APP=mail JENKINS=true USR=default PW=pass111 URL=sc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 rob_registration: --tags @registration_normal_workflow SDC_APP=registration URL=cc --guess VERBOSE=true HEALTHCHECK=false BROWSER=chrome MAX_WINDOW=false JENKINS=true

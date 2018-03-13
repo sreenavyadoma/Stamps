@@ -85,8 +85,8 @@ Given /^[Ss]ign-in to [Ww]eb [Aa]pps as (.*), (.*)$/ do |username, password|
     log.error e.backtrace.join("\n")
     raise e
   end
-  expect(username).to be_truthy
-  expect(password).to be_truthy
+  expect(TestData.store[:username] = username).to be_truthy
+  expect(TestData.store[:password] = password).to be_truthy
   expect(stamps.orders.landing_page.orders_sign_in(username, password)).to eql(username) if SdcEnv.web_app == :orders
   expect(stamps.mail.sign_in_modal.mail_sign_in(username, password)).to eql(username) if SdcEnv.web_app == :mail
 end
