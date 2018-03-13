@@ -6,10 +6,6 @@ module Stamps
       include Stamps::Mail::MailModals
       include PrintFormPanel::PrintFormBlurOut
       attr_accessor :print_media
-      def initialize(param)
-        super(param)
-        @print_media = param.print_media
-      end
 
       def sign_in_modal
         cache[:sign_in].nil? || !cache[:sign_in].present? ? cache[:sign_in] = MailSignIn::MailSignInModal.new(param) : cache[:sign_in]

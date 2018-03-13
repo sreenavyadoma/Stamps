@@ -10,7 +10,7 @@ module Stamps
 
       def initialize(param)
         super
-        @print_media = print_media
+        @print_media = param.print_media
         @install_stamps_connect = PrintModal::InstallStampsConnect.new(param)
         @mail_print_modal = PrintModal::MailPrintModal.new(param)
         @confirm_window = PrintModal::MailConfirmPrint.new(param)
@@ -47,7 +47,7 @@ module Stamps
                             when :cm3810, :cm3830
                               StampsField.new(driver.span(text: 'Print Envelope'))
                             else
-                              raise ArgumentError, "Invalid print media. Don't know what to do with #{}"
+                              raise ArgumentError, "Invalid print media: #{print_media}"
                           end
           break if @print_button.present?
         end
