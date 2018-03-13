@@ -3,6 +3,7 @@ Feature: Envelopes BVT
   Background:
     Given a valid user is signed in to Web Apps
 
+  @mobile_mail_smoke_test
   @mail_bvt_envelopes
   Scenario: Envelope
     Then select Print On Envelope - 10
