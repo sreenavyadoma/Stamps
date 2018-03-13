@@ -8,9 +8,9 @@ module Stamps
                   :printing_problem, :insufficient_funds, :print_label, :print_stamps, :print_envelope, :print_quantity_warning,
                   :hidden_postage_warning, :print_media
 
-      def initialize(param)
-        super
-        @print_media = param.print_media
+      def initialize(param, print_media)
+        super(param)
+        @print_media = print_media
         @install_stamps_connect = PrintModal::InstallStampsConnect.new(param)
         @mail_print_modal = PrintModal::MailPrintModal.new(param)
         @confirm_window = PrintModal::MailConfirmPrint.new(param)

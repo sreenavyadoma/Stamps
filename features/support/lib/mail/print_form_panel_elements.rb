@@ -564,9 +564,9 @@ module Stamps
       class PrintFormService < WebApps::Base
         include PrintFormBlurOut
         attr_accessor :print_media
-        def initialize(param)
+        def initialize(param, print_media)
           super(param)
-          @print_media = param.print_media
+          @print_media = print_media
         end
 
         def service_selection

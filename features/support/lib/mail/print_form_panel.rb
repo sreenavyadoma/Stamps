@@ -33,7 +33,7 @@ module Stamps
 
       module Service
         def service
-          cache[:service].nil? || !cache[:service].present? ? cache[:service] = PrintFormService.new(param) : cache[:service]
+          cache[:service].nil? || !cache[:service].present? ? cache[:service] = PrintFormService.new(param, print_media) : cache[:service]
         end
       end
 
