@@ -76,7 +76,7 @@ Given /^[Ss]ign-in to [Ww]eb [Aa]pps as (.*), (.*)$/ do |username, password|
   # MySql
   begin
     if username.nil? || username.downcase == 'default' || username.downcase == 'mysql'
-      credentials = user_credentials.fetch(SdcEnv.scenario.tags[0].name)
+      credentials = user_credentials.fetch(SdcTest.scenario.tags[0].name)
       TestData.store[:username] = username = credentials[:username]
       TestData.store[:password] = password = credentials[:password]
     end

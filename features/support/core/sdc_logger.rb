@@ -17,6 +17,7 @@ module Stamps
         super(str) if verbose
       end
 
+
     end
   end
 end

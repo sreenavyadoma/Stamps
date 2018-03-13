@@ -5,20 +5,19 @@ module Stamps
     BROWSERS = %w(firefox ff chrome gc safari edge).freeze
     SDC_APP = %w(orders mail webdev ios android).freeze
     class << self
-      attr_accessor :web_app, :env, :health_check, :usr, :pw, :url, :verbose,
-                    :printer, :browser, :hostname, :scenario, :print_media
+      attr_accessor :web_app, :env, :health_check, :usr, :pw, :url, :verbose,  :printer, :browser, :hostname, :print_media
     end
   end
 
   class SdcTest
     class << self
-      attr_accessor :driver, :log
+      attr_accessor :driver, :scenario_name, :scenario, :log
 
       def configure_driver(browser, firefox_profile = nil)
         begin
           Watir.always_locate = true
           Selenium::WebDriver.logger.level = :warn
-          case(browser)
+          case(browser.nil? ? SdcEnv.browser : validate_browser(browser))
             when :edge # Launch Microsoft Edge
               begin
                 stdout, stdeerr, status = Open3.capture3("taskkill /im MicrosoftEdge.exe /f")
@@ -83,11 +82,10 @@ module Stamps
       end
 
       def configure(scenario)
+        self.scenario = scenario
         raise ArgumentError, "SDC_APP is not defined or invalid. Expected values are #{SdcEnv::SDC_APP}" unless !ENV['SDC_APP'].nil? && SdcEnv::SDC_APP.include?(ENV['SDC_APP'].downcase)
-        raise ArgumentError, "BROWSER is not defined or invalid. Expected values are #{SdcEnv::BROWSERS}" unless !ENV['BROWSER'].nil? && SdcEnv::BROWSERS.include?(ENV['BROWSER'].downcase)
         raise ArgumentError, "URL is not defined or invalid. Expected values are #{SdcEnv::TEST_ENVIRONMENTS}" unless !ENV['URL'].nil? && SdcEnv::TEST_ENVIRONMENTS.include?(ENV['URL'].downcase)
-
-        SdcEnv.scenario = scenario
+        SdcEnv.browser = validate_browser(ENV['BROWSER'])
         SdcEnv.verbose = ENV['VERBOSE'].nil? ? false : ENV['VERBOSE'].downcase == 'true'
         SdcEnv.hostname = Socket.gethostname
         SdcEnv.web_app = (ENV['SDC_APP'].downcase).to_sym
@@ -105,19 +103,6 @@ module Stamps
                        when /rating/
                          'rating'
                      end
-        SdcEnv.browser = case ENV['BROWSER'].downcase
-                           when /ff|firefox|mozilla/
-                             :firefox
-                           when /chrome|gc|google/
-                             :chrome
-                           when /ms|me|microsoft|edge/
-                             :edge
-                           when /apple|osx|safari|mac/
-                             :safari
-                           else
-                             # ignore
-                         end
-
         logger = Log4r::Logger.new(":")
         logger.outputters = Outputter.stdout
         self.log = Stamps::Core::SdcLogger.new(logger)
@@ -137,7 +122,7 @@ module Stamps
       end
 
       def print_test_steps
-        raise ArgumentError, 'Set scenario object before printing test steps' if scenario.nil?
+        raise ArgumentError, 'Set scenario object before printing test steps' if self.scenario.nil?
         self.scenario_name = scenario.name
         log.info "- Feature: #{scenario.feature}"
         log.info "- Scenario: #{scenario.name}"
@@ -168,6 +153,24 @@ module Stamps
       end
 
       private
+
+      def validate_browser(browser)
+        raise ArgumentError, "BROWSER=#{browser}. Expected values are #{SdcEnv::BROWSERS}" unless !browser.nil? && SdcEnv::BROWSERS.include?(browser.downcase)
+        case browser.downcase
+          when /ff|firefox|mozilla/
+            return :firefox
+          when /chrome|gc|google/
+            return :chrome
+          when /ms|me|microsoft|edge/
+            return :edge
+          when /apple|osx|safari|mac/
+            return :safari
+          else
+            # ignore
+        end
+        nil
+      end
+
       def browser_version(str)
         /[\d.]+ Safari|Edge\/.+|Firefox\/.+|Chrome\/[\d\.]+/.match(str)
       end
