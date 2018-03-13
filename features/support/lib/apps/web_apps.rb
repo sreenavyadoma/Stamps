@@ -2,7 +2,7 @@ module Stamps
   module WebApps2
     def health
       begin
-        @health = HealthCheck.new(modal_param) if @health.nil?
+        @health = HealthCheck.new(SdcTest.web_apps_param) if @health.nil?
         @health
       rescue Exception > e
         SdcTest.log.error e.message
@@ -23,7 +23,7 @@ module Stamps
 
     def stamps
       begin
-        @stamps = StampsDotCom.new(modal_param) if @stamps.nil?
+        @stamps = StampsDotCom.new(SdcTest.web_apps_param) if @stamps.nil?
         @stamps
       rescue Exception > e
         SdcTest.log.error e.message
@@ -35,7 +35,7 @@ module Stamps
 end
 
 #todo-Rob Object.const_get
-#Object.const_get("#{ENV['PLATFORM']}StampsDotCom").new(modal_param)
+#Object.const_get("#{ENV['PLATFORM']}StampsDotCom").new(SdcTest.web_apps_param)
 # use subclassing to encapsulate
 # core setup, ask where it is running and instantiate proper object. then setup appropriate landing page.
 # Create DeviceType and OsType objects.

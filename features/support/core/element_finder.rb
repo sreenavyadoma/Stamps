@@ -12,13 +12,14 @@ module Stamps
           max_time_in_sec = ABSOLUTE_MAX_WAIT_TIME_SECONDS
         end
         begin
-          element = driver.element(locator).to_subtype
-          Watir::Wait.until
-          element.wait_until_present(max_time_in_sec)
+          driver.wait_until(timeout: 2) do |driver|
+            driver.element(locator).to_subtype.present?
+          end
+          return driver.element(locator).to_subtype
         rescue
-          element = nil
+          # ignore
         end
-        element
+        nil
       end
 
       protected

@@ -26,16 +26,16 @@ end
 Then /^[Ss]et [Oo]rders [Pp]rint [Mm]odal [Pp]rinter ?(?:|(.*))$/ do |printer|
   step "expect orders print modal is present"
   step "Orders print modal printer dropdown is present"
-  expect(TestData.store[:printer] = (printer.nil?) ? modal_param.printer : printer).to_not be_nil, "PRINTER parameter is not defined. Printing tests must define PRINTER value either in cucumber.yml file or in Jenkins."
+  expect(TestData.store[:printer] = (printer.nil?) ? SdcEnv.printer : printer).to_not be_nil, "PRINTER parameter is not defined. Printing tests must define PRINTER value either in cucumber.yml file or in Jenkins."
   if TestData.store[:printer].include?('\\') #validate printer format
     expect(TestData.store[:printer]).to match(/\\.+\.*/)
     TestData.store[:printer] = /\\\\(.+)\\/.match(TestData.store[:printer])[1]
   end
-  expect(stamps.orders.modals.orders_print_modal.printer.select(TestData.store[:printer])).to_not be_nil, "Unable to select printer \"#{TestData.store[:printer]}\". \nMake sure \"#{TestData.store[:printer]}\" is configured for host #{modal_param.hostname}. \nUSR: #{TestData.store[:username]}, #{modal_param.web_app.to_s.capitalize}(#{modal_param.env.upcase})"
+  expect(stamps.orders.modals.orders_print_modal.printer.select(TestData.store[:printer])).to_not be_nil, "Unable to select printer \"#{TestData.store[:printer]}\". \nMake sure \"#{TestData.store[:printer]}\" is configured for host #{SdcEnv.hostname}. \nUSR: #{TestData.store[:username]}, #{SdcEnv.web_app.to_s.capitalize}(#{SdcEnv.env.upcase})"
 end
 
 Then /^[Oo]rders [Pp]rint [Mm]odal [Pp]rinter [Dd]rop[Dd]own is present$/ do
-  expect(stamps.orders.modals.orders_print_modal.printer).to be_present, "StampsConnect is not connected. You might need to re-login to this PC: #{modal_param.hostname}"
+  expect(stamps.orders.modals.orders_print_modal.printer).to be_present, "StampsConnect is not connected. You might need to re-login to this PC: #{SdcEnv.hostname}"
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal [Pp]rint [Mm]odal is [Pp]resent$/ do
@@ -84,7 +84,7 @@ Then /^[Ee]xpect [Pp]rint [Mm]odal Ship Date is (\d+) (?:day|days) from today$/ 
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal [Ss]hip [Dd]ate [Dd]rop[Dd]own is present$/ do
-  expect(stamps.orders.modals.orders_print_modal.ship_date).to be_present, "Ship Date dropdown is not present. Check that StampsConnect is connected. You might need to re-login on this PC #{modal_param.hostname}"
+  expect(stamps.orders.modals.orders_print_modal.ship_date).to be_present, "Ship Date dropdown is not present. Check that StampsConnect is connected. You might need to re-login on this PC #{SdcEnv.hostname}"
 end
 
 Then /^[Ii]n [Pp]rint modal, check Hide Mail Value$/ do

@@ -49,186 +49,8 @@ module Stamps
         end
       end
 
-      module PrintMediaHelper
-        def print_media(str)
-          case(str)
-            when /Certified Mail Label - SDC-3610/
-              #return :certified_mail
-              return :cm3610
-            when /Certified Mail Label - SDC-3710/
-              #return :certified_mail
-              return :cm3710
-            when /Certified Mail Label - SDC-3910/
-              #return :certified_mail_3910_3930
-              return :cm3910
-            when /Certified Mail Label - SDC-3930/
-              #return :certified_mail_3910_3930
-              return :cm3930
-            when /Certified Mail Label - SDC-3810/
-              #eturn :certified_mail_3810
-              return :cm3810
-            when /Certified Mail Label - SDC-3830/
-              #return :certified_mail_3830
-              return :cm3830
-            when /Shipping Label/
-              return :label
-            when /Envelope/
-              return :envelope
-            when /Roll/
-              return :roll
-            when /Manage Printing Options/
-              return :manage_printing_options
-            when /Stamps/
-              return :stamps
-            else
-              raise "#{str} is not a valid print_media"
-          end
-        end
-
-        def selected_sub_str(str)
-          case(str)
-            when /Shipping Label - Paper/
-              return 'Paper'
-            when /Shipping Label - SDC-1200/
-              return 'SDC-1200'
-            when /Shipping Label - 5x8/
-              return 'Shipping Label - 5 '
-            when /Envelope - 10/
-              return 'Envelope - #10'
-            when /Envelope - 9/
-              return 'Envelope - #9'
-            when /Envelope - A9/
-              return 'Envelope - #A9'
-            when /Envelope - 6/
-              return 'Envelope - #6'
-            when /Envelope - A2/
-              return 'Envelope - #A2'
-            when /Envelope - 7/
-              return 'Envelope - #7'
-            when /Envelope - 11/
-              return 'Envelope - #11'
-            when /Envelope - 12/
-              return 'Envelope - #12'
-            when /Certified Mail Label - SDC-3610/
-              return 'SDC-3610'
-            when /Certified Mail Label - SDC-3710/
-              return 'SDC-3710'
-            when /Certified Mail Label - SDC-3910/
-              return 'SDC-3910'
-            when /Certified Mail Label - SDC-3930/
-              return 'SDC-3930'
-            when /Certified Mail Label - SDC-3810/
-              return 'SDC-3810'
-            when /Certified Mail Label - SDC-3830/
-              return 'SDC-3830'
-            when /Roll 4x6/
-              return 'Roll - 4'
-            when /Roll 418x614/
-              return 'Roll - 4 '
-            when /Manage Printing Options/
-              return 'Manage Printing Option...'
-            when /Stamps/
-              return 'Stamps'
-            else
-              raise "#{str} is not a valid print_media"
-          end
-        end
-
-        def mpo_search_str(str)
-          case(str)
-            when /Stamps/
-              return 'stamps'
-            when /Shipping Label - Paper/
-              return 'Shipping Label - 8 '
-            when /Shipping Label - SDC-1200/
-              return 'Shipping Label - SDC-1200'
-            when /Shipping Label - 5x8/
-              return 'Shipping Label - 5 '
-            when /Envelope - 10/
-              return 'Envelope - #10'
-            when /Envelope - 9/
-              return 'Envelope - #9'
-            when /Envelope - A9/
-              return 'Envelope - #A9'
-            when /Envelope - 6/
-              return 'Envelope - #6'
-            when /Envelope - A2/
-              return 'Envelope - #A2'
-            when /Envelope - 7/
-              return 'Envelope - #7'
-            when /Envelope - 11/
-              return 'Envelope - #11'
-            when /Envelope - 12/
-              return 'Envelope - #12'
-            when /Certified Mail Label - SDC-3610/
-              return 'Certified Mail Label - SDC-3610'
-            when /Certified Mail Label - SDC-3710/
-              return 'Certified Mail Label - SDC-3710'
-            when /Certified Mail Label - SDC-3910/
-              return 'Certified Mail Label - SDC-3910'
-            when /Certified Mail Label - SDC-3930/
-              return 'Certified Mail Label - SDC-3930'
-            when /Certified Mail Label - SDC-3810/
-              return 'Certified Mail #11 Envelope - SDC-3810'
-            when /Certified Mail Label - SDC-3830/
-              return 'Certified Mail #11 Envelope - SDC-3830'
-            when /Roll 4x6/
-              return 'Roll - 4" x 6" Shipping Label'
-            when /Roll 418x614/
-              return 'Roll - 4 '
-            else
-              raise "#{str} is not a valid print_media"
-          end
-        end
-
-        def selection_field(str)
-          case(str)
-            when /Shipping Label - Paper/
-              return 'Shipping Label - 8 '
-            when /Shipping Label - SDC-1200/
-              return 'Shipping Label - SDC-1200'
-            when /Shipping Label - 5x8/
-              return 'Shipping Label - 5 '
-            when /Envelope - 10/
-              return 'Envelope - #10'
-            when /Envelope - 9/
-              return 'Envelope - #9'
-            when /Envelope - A9/
-              return 'Envelope - #A9'
-            when /Envelope - 6/
-              return 'Envelope - #6'
-            when /Envelope - A2/
-              return 'Envelope - #A2'
-            when /Envelope - 7/
-              return 'Envelope - #7'
-            when /Envelope - 11/
-              return 'Envelope - #11'
-            when /Envelope - 12/
-              return 'Envelope - #12'
-            when /Certified Mail Label - SDC-3610/
-              return 'Certified Mail Label - SDC-3610'
-            when /Certified Mail Label - SDC-3710/
-              return 'Certified Mail Label - SDC-3710'
-            when /Certified Mail Label - SDC-3910/
-              return 'Certified Mail Label - SDC-3910'
-            when /Certified Mail Label - SDC-3930/
-              return 'Certified Mail Label - SDC-3930'
-            when /Certified Mail Label - SDC-3810/
-              return 'Certified Mail #11 Envelope - SDC-3810'
-            when /Roll 4x6/
-              return 'Roll - 4" x 6" Shipping Label'
-            when /Roll 418x614/
-              return 'Roll - 4 '
-            when /Stamps/
-              return 'stamps'
-            else
-              raise "#{str} is not a valid print_media"
-          end
-        end
-      end
-
       class ManagePrintOptionsModal < WebApps::Base
-        include PrintMediaHelper
+        #include PrintMediaHelper
 
 
 
@@ -327,7 +149,7 @@ module Stamps
         end
 
         def search(str)
-          search_field.set(mpo_search_str(str))
+          search_field.set(PrintMediaHelper.mpo_search_str(str))
           30.times do
             sleep(0.05)
             break if driver.divs(css: "[class=x-grid-row-checker]").size == 1
@@ -364,10 +186,8 @@ module Stamps
 
       class PrintOn < WebApps::Base
         include PrintFormBlurOut
-        include PrintMediaHelper
+        #include PrintMediaHelper
         include PrintOnTextbox
-
-
 
         def dropdown
           (cache[:dropdown].nil? || !cache[:dropdown].present?) ? cache[:dropdown] = StampsField.new(
@@ -422,9 +242,9 @@ module Stamps
           dropdown.click
           10.times do
             begin
-              if print_on_textbox.text.include?(selected_sub_str(str))
+              if print_on_textbox.text.include?(PrintMediaHelper.selected_sub_str(str))
                 dropdown.click if manage_printing_options_lov.present?
-                return print_media(str)
+                return PrintMediaHelper.print_media(str)
               end
               selection = StampsField.new(driver.li(css: "li[class^=#{(data_for(:mail_print_media, {})[str]).split(',').first}][data-recordindex='#{(data_for(:mail_print_media, {})[str]).split(',').last}']"))
               dropdown.click unless manage_printing_options_lov.present?
@@ -743,8 +563,11 @@ module Stamps
 
       class PrintFormService < WebApps::Base
         include PrintFormBlurOut
-
-
+        attr_accessor :print_media
+        def initialize(param, print_media)
+          super(param)
+          @print_media = print_media
+        end
 
         def service_selection
           (cache[:service_selection].nil? || !cache[:service_selection].present?) ? cache[:service_selection] = MailServiceSelection.new(
@@ -762,7 +585,7 @@ module Stamps
         end
 
         def has_rates?
-          case(param.print_media)
+          case(print_media)
             when :certified_mail
               default_service = 'FCMI Package/Thick Envelope'
             when :label
@@ -882,8 +705,6 @@ module Stamps
 
       class PrintFormTracking < WebApps::Base
         include PrintFormBlurOut
-
-
 
         def textbox
           (cache[:textbox].nil? || !cache[:textbox].present?) ? cache[:textbox] = StampsTextbox.new(

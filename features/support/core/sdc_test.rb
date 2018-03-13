@@ -1,42 +1,30 @@
 module Stamps
-  module SdcTest
+
+  module SdcEnv
+    TEST_ENVIRONMENTS = %w(staging stg qacc cc qasc sc rating).freeze
+    BROWSERS = %w(firefox ff chrome gc safari edge).freeze
+    SDC_APP = %w(orders mail webdev ios android).freeze
     class << self
-      attr_accessor :driver, :log, :scenario, :scenario_name, :firefox_profile, :browser_version, :os_version
+      attr_accessor :web_app, :env, :health_check, :usr, :pw, :url, :verbose,  :printer, :browser, :hostname, :print_media
+    end
+  end
 
-      def init(scenario)
-        @scenario = scenario
-        @scenario_name = scenario.name
-        logger = Log4r::Logger.new(":")
-        logger.outputters = Outputter.stdout
-        @log = Stamps::Core::StampsLogDecorator.new(logger)
-        @log.verbose = true #ENV['VERBOSE']
-      end
+  class SdcTest
+    class << self
+      attr_accessor :driver, :scenario_name, :scenario, :log
 
-      def print_test_steps
-        raise ArgumentError, 'Set scenario object before printing test steps' if scenario.nil?
-        self.scenario_name = scenario.name
-        log.info "- Feature: #{scenario.feature}"
-        log.info "- Scenario: #{scenario.name}"
-        log.info "- Tags:"
-        scenario.tags.each_with_index { |tag, index| log.info "--Tag #{index + 1}: #{tag.name}" }
-        log.info "- Steps:"
-        scenario.test_steps.each_with_index { |steps, index| log.info "-- #{steps.source.last.keyword}#{steps.text}" }
-        log.info "-"
-        log.info "-"
-      end
-
-      def setup(sym)
+      def configure_driver(browser, firefox_profile = nil)
         begin
           Watir.always_locate = true
           Selenium::WebDriver.logger.level = :warn
-          case(sym)
+          case(browser.nil? ? SdcEnv.browser : validate_browser(browser))
             when :edge # Launch Microsoft Edge
               begin
                 stdout, stdeerr, status = Open3.capture3("taskkill /im MicrosoftEdge.exe /f")
               rescue
                 # ignore
               end
-              self.driver = Watir::Browser.new(:edge, accept_insecure_certs: true)
+              self.driver = SdcDelegatedDriver.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
               self.driver.window.maximize
 
             when :firefox # Launch Firefox
@@ -51,7 +39,7 @@ module Stamps
                 profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(firefox_profile)
                 profile.assume_untrusted_certificate_issuer = true
                 profile['network.http.phishy-userpass-length'] = 255
-                self.driver = Watir::Browser.new(:firefox, :profile => profile)
+                self.driver = SdcDelegatedDriver.new(Watir::Browser.new(:firefox, :profile => profile))
               end
               self.driver.window.resize_to 1560, 1020
               self.driver.window.move_to 0, 0
@@ -62,7 +50,7 @@ module Stamps
               rescue
                 # ignore
               end
-              self.driver = Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate))
+              self.driver = SdcDelegatedDriver.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
               self.driver.window.maximize
             #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
 
@@ -72,8 +60,8 @@ module Stamps
               rescue
                 # ignore
               end
-              self.driver = Watir::Browser.new :ie
-              driver.window.maximize
+              self.driver = SdcDelegatedDriver.new(Watir::Browser.new(:ie))
+              self.driver.window.maximize
 
             when :safari
               begin
@@ -81,36 +69,90 @@ module Stamps
               rescue
                 # ignore
               end
-              self.driver = Watir::Browser.new :safari, technology_preview: true
+              self.driver = SdcDelegatedDriver.new(Watir::Browser.new(:safari, technology_preview: true))
             else
               raise ArgumentError, "#{driver} is not a valid driver selection"
           end
           self.driver
-        rescue StandardError => e
-          err = e.backtrace.join("\n")
+        rescue Exception => e
           log.error e.message
           log.error e.backtrace.join("\n")
-          log.error e.message
-          raise e
+          raise "Driver setup failed: #{e.message}", e
         end
       end
 
-      def os
-        @os = begin
-          host_os = RbConfig::CONFIG['host_os']
-          case host_os
-            when /mswin|msys|mingw|cygwin|bccwin|wince|emc/
-              return :windows
-            when /darwin|mac os/
-              return :macosx
-            when /linux/
-              return :linux
-            when /solaris|bsd/
-              return :unix
-            else
-              expect("OS #{host_os.inspect} is not defined").to eql ""
-          end
-        end
+      def configure(scenario)
+        self.scenario = scenario
+        raise ArgumentError, "SDC_APP is not defined or invalid. Expected values are #{SdcEnv::SDC_APP}" unless !ENV['SDC_APP'].nil? && SdcEnv::SDC_APP.include?(ENV['SDC_APP'].downcase)
+        raise ArgumentError, "URL is not defined or invalid. Expected values are #{SdcEnv::TEST_ENVIRONMENTS}" unless !ENV['URL'].nil? && SdcEnv::TEST_ENVIRONMENTS.include?(ENV['URL'].downcase)
+        SdcEnv.browser = validate_browser(ENV['BROWSER'])
+        SdcEnv.verbose = ENV['VERBOSE'].nil? ? false : ENV['VERBOSE'].downcase == 'true'
+        SdcEnv.hostname = Socket.gethostname
+        SdcEnv.web_app = (ENV['SDC_APP'].downcase).to_sym
+        SdcEnv.env = ENV['URL'].downcase
+        SdcEnv.health_check = ENV['HEALTHCHECK'].nil? ? false : ENV['HEALTHCHECK'].casecmp('true') == 0
+        SdcEnv.usr = ENV['USR']
+        SdcEnv.pw = ENV['PW']
+        SdcEnv.env = case(ENV['URL'].downcase)
+                       when /staging/
+                         'stg'
+                       when /cc/
+                         'qacc'
+                       when /sc/
+                         'qasc'
+                       when /rating/
+                         'rating'
+                     end
+        logger = Log4r::Logger.new(":")
+        logger.outputters = Outputter.stdout
+        self.log = Stamps::Core::SdcLogger.new(logger)
+        self.log.verbose = SdcEnv.verbose
+
+        #These should be in an orders/mail or web_apps environment variable container
+        SdcEnv.printer = ENV['PRINTER']
+      end
+
+      ##
+      # This is a work around and it will go away
+      def web_apps_param
+        #Param = Struct.new(:driver, :log, :scenario_name, :web_app, :env, :usr, :pw, :print_media, :printer)
+        param = Param.new
+        param.driver = self.driver
+        param.log = self.log
+        param.scenario_name
+        param.scenario_name
+        param.env = SdcEnv.env
+        param.usr = SdcEnv.usr
+        param.pw = SdcEnv.pw
+        #These should be in an orders/mail or web_apps environment variable container
+        param.printer = SdcEnv.printer
+        param.web_app = SdcEnv.web_app
+        param
+      end
+
+      def configure_orders
+
+      end
+
+      def configure_mail
+
+      end
+
+      def configure_webdev
+
+      end
+
+      def print_test_steps
+        raise ArgumentError, 'Set scenario object before printing test steps' if self.scenario.nil?
+        self.scenario_name = scenario.name
+        log.info "- Feature: #{scenario.feature}"
+        log.info "- Scenario: #{scenario.name}"
+        log.info "- Tags:"
+        scenario.tags.each_with_index { |tag, index| log.info "--Tag #{index + 1}: #{tag.name}" }
+        log.info "- Steps:"
+        scenario.test_steps.each_with_index { |steps, index| log.info "-- #{steps.source.last.keyword}#{steps.text}" }
+        log.info "-"
+        log.info "-"
       end
 
       def teardown
@@ -119,7 +161,7 @@ module Stamps
         rescue
           # ignore
         end
-        log.info "#{@browser_str} closed."
+        log.info "#{@browser} closed."
       end
 
       def clear_cookies
@@ -132,11 +174,62 @@ module Stamps
       end
 
       private
-      def versions(info)
-        self.browser_version = /[\d.]+ Safari|Edge\/.+|Firefox\/.+|Chrome\/[\d\.]+/.match(info)
-        self.os_version = /(Mac OS.+?[\d_]+|Windows.+?[\d\.]+)/.match(info)
+
+      def validate_browser(browser)
+        raise ArgumentError, "BROWSER=#{browser}. Expected values are #{SdcEnv::BROWSERS}" unless !browser.nil? && SdcEnv::BROWSERS.include?(browser.downcase)
+        case browser.downcase
+          when /ff|firefox|mozilla/
+            return :firefox
+          when /chrome|gc|google/
+            return :chrome
+          when /ms|me|microsoft|edge/
+            return :edge
+          when /apple|osx|safari|mac/
+            return :safari
+          else
+            # ignore
+        end
+        nil
+      end
+
+      def browser_version(str)
+        /[\d.]+ Safari|Edge\/.+|Firefox\/.+|Chrome\/[\d\.]+/.match(str)
+      end
+
+      def os_version(str)
+        /(Mac OS.+?[\d_]+|Windows.+?[\d\.]+)/.match(str)
       end
     end
+  end
+
+  module SdcParamHelper
+    class << self
+
+      attr_accessor :env
+
+      def webapps
+        webapps = WebApps::Param.new
+        webapps
+      end
+
+      def webdev
+        raise "Not Implemented."
+      end
+
+      def ios
+        raise "Not Implemented."
+      end
+
+      def android
+        raise "Not Implemented."
+      end
+
+      def browser_type(driver)
+
+        raise ArgumentError, "#{driver} is not a valid selection. Valid browsers are ff|firefox|mozilla|chrome|gc|google|ms|me|microsoft|edge"
+      end
+    end
+
   end
 end
 

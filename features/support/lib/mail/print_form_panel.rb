@@ -33,7 +33,7 @@ module Stamps
 
       module Service
         def service
-          cache[:service].nil? || !cache[:service].present? ? cache[:service] = PrintFormService.new(param) : cache[:service]
+          cache[:service].nil? || !cache[:service].present? ? cache[:service] = PrintFormService.new(param, print_media) : cache[:service]
         end
       end
 
@@ -60,7 +60,7 @@ module Stamps
       module AdvancedOptions
         # @return [Mail Advanced Options]
         def advanced_options
-          case param.print_media
+          case print_media
           when :stamps
             if cache[:stamps_options].nil? || !cache[:stamps_options].present?
               cache[:stamps_options] = Class.new(WebApps::Base).new(param).extend(Stamps::Mail::AdvancedOptions::Stamps)
@@ -89,7 +89,7 @@ module Stamps
             return cache[:roll_options]
           end
 
-          raise ArgumentError, "Unable to create Advanced Options object for print media #{param.print_media}"
+          raise ArgumentError, "Unable to create Advanced Options object for print media #{print_media}"
         end
       end
 

@@ -14,7 +14,7 @@ module Stamps
       end
 
       def load_page
-        url = case param.env.downcase
+        url = case param.env
                 when /cc/
                   "http://sdcwebsite.qacc.stamps.com/"
                 when /sc/
