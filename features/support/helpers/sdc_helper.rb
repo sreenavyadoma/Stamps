@@ -1,6 +1,7 @@
 module Stamps
   module SdcHelper
     class << self
+=begin
       def enum(*values, &class_body)
         Class.new( Class.new(&class_body) ) do
           attr_reader :ordinal
@@ -19,6 +20,7 @@ module Stamps
           end
         end
       end
+=end
     end
   end
 end

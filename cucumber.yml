@@ -1,63 +1,64 @@
-default: --backtrace --profile alex_orders
+default: --backtrace --profile rob_cc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
+#todo-Rob set PRINTER=factory as default automation printer
 #robcm=ccpryiihrjz ccfb311osps4x print_dialog_ship_date
-rob_cc: --tags @authentication WEB_APP=orders JENKINS=true URL=cc VERBOSE=false HEALTHCHECK=true BROWSER=ff MAX_WINDOW=false USR=default PW=pass111 PRINTER=factory
-rob_stg: --tags @bvt_new_order WEB_APP=orders JENKINS=true URL=stg VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=default PW=pass111 PRINTER=factory #stgee1mtqvwdc0
-rob_sc: --tags @bvt_shipstation_updates_domestic WEB_APP=orders JENKINS=true URL=sc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=selenium  USR=scsejsglwa PW=pass111 VERBOSE=true PRINTER=factory # c2jinmzmu64 schl0vlbfy2673 #19  schl0vlbfy2673
-rob_dev: --tags @mail_advanced_options_stamps WEB_APP=orders JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess VERBOSE=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
-rob_mail_cc:  --tags @mail_advanced_options_stamps WEB_APP=mail JENKINS=true USR=cctruer0u PW=pass111 URL=cc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory #\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
-rob_mail_stg: --tags @mail_bvt_international WEB_APP=mail JENKINS=true USR=default PW=pass111 URL=stg --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory #stgee1mtqvwdc0
-rob_mail_sc: --tags @print_dialog_ship_date WEB_APP=mail JENKINS=true USR=default PW=pass111 URL=sc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
-rob_registration: --tags @registration_normal_workflow WEB_APP=registration URL=cc --guess VERBOSE=true HEALTHCHECK=false BROWSER=chrome MAX_WINDOW=false JENKINS=true
+rob_cc: --tags @authentication SDC_APP=orders BROWSER=ff JENKINS=true URL=cc VERBOSE=false HEALTHCHECK=true MAX_WINDOW=false USR=default PW=pass111 PRINTER=factory
+rob_stg: --tags @bvt_new_order SDC_APP=orders JENKINS=true URL=stg VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=default PW=pass111 PRINTER=factory #stgee1mtqvwdc0
+rob_sc: --tags @bvt_shipstation_updates_domestic SDC_APP=orders JENKINS=true URL=sc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=selenium  USR=scsejsglwa PW=pass111 VERBOSE=true PRINTER=factory # c2jinmzmu64 schl0vlbfy2673 #19  schl0vlbfy2673
+rob_dev: --tags @mail_advanced_options_stamps SDC_APP=orders JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess VERBOSE=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
+rob_mail_cc:  --tags @mail_advanced_options_stamps SDC_APP=mail JENKINS=true USR=cctruer0u PW=pass111 URL=cc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory #\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
+rob_mail_stg: --tags @mail_bvt_international SDC_APP=mail JENKINS=true USR=default PW=pass111 URL=stg --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory #stgee1mtqvwdc0
+rob_mail_sc: --tags @print_dialog_ship_date SDC_APP=mail JENKINS=true USR=default PW=pass111 URL=sc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
+rob_registration: --tags @registration_normal_workflow SDC_APP=registration URL=cc --guess VERBOSE=true HEALTHCHECK=false BROWSER=chrome MAX_WINDOW=false JENKINS=true
 
 #todo-Rob WebReg consider removing webapp, username, password fields
-#mhossain1_cc: --tags @registration_normal_workflow WEB_APP=orders JENKINS=true URL=cc VERBOSE=true BROWSER=ff MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
+#mhossain1_cc: --tags @registration_normal_workflow SDC_APP=orders JENKINS=true URL=cc VERBOSE=true BROWSER=ff MAX_WINDOW=false SDC_APP=registration USR=mhossain1 PW=Password1
 
-mhossain1_cc: --tags @registration_ui_validation_profile_page JENKINS=true URL=cc VERBOSE=true BROWSER=edge MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
+mhossain1_cc: --tags @registration_ui_validation_profile_page JENKINS=true URL=cc VERBOSE=true BROWSER=edge MAX_WINDOW=false SDC_APP=registration USR=mhossain1 PW=Password1
 
-mobile_orders_smoke_test: --tags @mobile_orders_smoke_test --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-mobile_mail_smoke_test: --tags @mobile_mail_smoke_test --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+mobile_orders_smoke_test: --tags @mobile_orders_smoke_test --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+mobile_mail_smoke_test: --tags @mobile_mail_smoke_test --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
 
-web_apps_dev: --tags @bvt_new_order WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess VERBOSE=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
+web_apps_dev: --tags @bvt_new_order SDC_APP=orders JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess VERBOSE=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
-eli_dev: --tags @bvt_shipstation_search --guess VERBOSE=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff USR=hal9000stage25 PW=password1 PRINTER=Automation Printer
-ray_dev: --tags @rates_parcel_select_ground --guess VERBOSE=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=gc USR=default PW=pass111
-sap:              --tags @registration_orders WEB_APP=registration URL=cc --guess VERBOSE=false BROWSER=gc MAX_WINDOW=false
+eli_dev: --tags @bvt_shipstation_search --guess VERBOSE=false JENKINS=false HEALTHCHECK=true SDC_APP=orders URL=stg BROWSER=ff USR=hal9000stage25 PW=password1 PRINTER=Automation Printer
+ray_dev: --tags @rates_parcel_select_ground --guess VERBOSE=false JENKINS=false HEALTHCHECK=true SDC_APP=orders URL=stg BROWSER=gc USR=default PW=pass111
+sap:              --tags @registration_orders SDC_APP=registration URL=cc --guess VERBOSE=false BROWSER=gc MAX_WINDOW=false
 
-alex_mail:  --tags @mail_bvt_international BROWSER=ff WEB_APP=mail JENKINS=true URL=stg USR=abqast1 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
-alex_regress:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders JENKINS=true URL=cc USR=abqacc10 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
-alex_rates:  --tags @rates_parcel_select_ground_zone_1 BROWSER=ff WEB_APP=mail JENKINS=true URL=stg USR=abqast1 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
-alex_rates_pmi:  --tags @rates_pmi_comm_plus_group_9 BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast2 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
-alex_orders:  --tags @bvt_shipping_address_management BROWSER=safari WEB_APP=orders JENKINS=true URL=qacc USR=abqacc10 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false #abqast1
-alex_orders:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders JENKINS=true URL=qacc USR=abqacc10 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false #abqast1
-alex_test:  --tags @bvt_shipping_address_management BROWSER=gc WEB_APP=orders JENKINS=true URL=qacc USR=abqacc10 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
+alex_mail:  --tags @mail_bvt_international BROWSER=ff SDC_APP=mail JENKINS=true URL=stg USR=abqast1 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
+alex_regress:  --tags @bvt_shipping_address_management BROWSER=ff SDC_APP=orders JENKINS=true URL=cc USR=abqacc10 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
+alex_rates:  --tags @rates_parcel_select_ground_zone_1 BROWSER=ff SDC_APP=mail JENKINS=true URL=stg USR=abqast1 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
+alex_rates_pmi:  --tags @rates_pmi_comm_plus_group_9 BROWSER=ff SDC_APP=orders JENKINS=true URL=stg USR=abqast2 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
+alex_orders:  --tags @bvt_shipping_address_management BROWSER=safari SDC_APP=orders JENKINS=true URL=qacc USR=abqacc10 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false #abqast1
+alex_orders:  --tags @bvt_shipping_address_management BROWSER=ff SDC_APP=orders JENKINS=true URL=qacc USR=abqacc10 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false #abqast1
+alex_test:  --tags @bvt_shipping_address_management BROWSER=gc SDC_APP=orders JENKINS=true URL=qacc USR=abqacc10 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
 
-xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
-xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
-xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
-xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
-xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
-mail_print_envelope_11: --tags @mail_print_envelope_11 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=mail PRINTER=factory
+xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=xxxxxxxxxx
+xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=xxxxxxxxxx
+xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=xxxxxxxxxx
+xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=xxxxxxxxxx
+xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=xxxxxxxxxx
+mail_print_envelope_11: --tags @mail_print_envelope_11 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false SDC_APP=mail PRINTER=factory
 
-poc_stg_chrome: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=gc
-poc_stg_firefox: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff
-poc_cc_chrome: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=cc BROWSER=gc
-poc_cc_firefox: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=cc BROWSER=ff
-poc_sc_chrome: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=sc BROWSER=gc
-poc_sc_firefox: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=sc BROWSER=ff
-poc_cc_edge: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=cc BROWSER=edge
-poc_stg_edge: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=edge
+poc_stg_chrome: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders URL=stg BROWSER=gc
+poc_stg_firefox: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders URL=stg BROWSER=ff
+poc_cc_chrome: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders URL=cc BROWSER=gc
+poc_cc_firefox: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders URL=cc BROWSER=ff
+poc_sc_chrome: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders URL=sc BROWSER=gc
+poc_sc_firefox: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders URL=sc BROWSER=ff
+poc_cc_edge: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders URL=cc BROWSER=edge
+poc_stg_edge: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders URL=stg BROWSER=edge
 
-jenkinsvm: --tags @healthcheck --guess VERBOSE=true JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=gc USR=ss_cctest3 PW=password1
+jenkinsvm: --tags @healthcheck --guess VERBOSE=true JENKINS=false HEALTHCHECK=true SDC_APP=orders URL=stg BROWSER=gc USR=ss_cctest3 PW=password1
 
-rates_pme_comm_base_mail: --tags @rates_pme_comm_base --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
-rates_pme_comm_base: --tags @rates_pme_comm_base --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-rates_pm_comm_base: --tags @rates_pm_comm_base --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-rates_pme_comm_plus: --tags @rates_pme_comm_plus --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-rates_pm_comm_plus: --tags @rates_pm_comm_plus --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-rates_parcel_select_ground: --tags @rates_parcel_select_ground --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+rates_pme_comm_base_mail: --tags @rates_pme_comm_base --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail
+rates_pme_comm_base: --tags @rates_pme_comm_base --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+rates_pm_comm_base: --tags @rates_pm_comm_base --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+rates_pme_comm_plus: --tags @rates_pme_comm_plus --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+rates_pm_comm_plus: --tags @rates_pm_comm_plus --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+rates_parcel_select_ground: --tags @rates_parcel_select_ground --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
 rates_pmei_comm_base:  --tags @rates_pmei_comm_base --guess VERBOSE=false JENKINS=true HEALTHCHECK=true
 rates_pmei_comm_plus:  --tags @rates_pmei_comm_plus --guess VERBOSE=false JENKINS=true HEALTHCHECK=true
 rates_pmei_comm_base_group_1:  --tags @rates_pmei_comm_base_group_1 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true
@@ -181,344 +182,344 @@ rates_pmi_comm_plus_group_17:  --tags @rates_pmi_comm_plus_group_17 --guess VERB
 
 rates_fcm_package:   --tags @rates_fcm_package --guess VERBOSE=false JENKINS=true HEALTHCHECK=true
 
-bvt_mail_piece_validation: --tags @bvt_mail_piece_validation --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
+bvt_mail_piece_validation: --tags @bvt_mail_piece_validation --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
 
-xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
+xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=xxxxxxxxxx
 
 # PAM
-pam_db_user_appscap_provisioning:  --tags @pam_db_user_appscap_provisioning --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=pam --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
+pam_db_user_appscap_provisioning:  --tags @pam_db_user_appscap_provisioning --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=pam --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
 
-mail_bvt_advanced_options: --tags @mail_bvt_advanced_options --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
+mail_bvt_advanced_options: --tags @mail_bvt_advanced_options --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail
 
-registration_normal_workflow: --tags @registration_normal_workflofoxw WEB_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
-registration_profile_page_ui_validation: --tags @registration_profile_page_ui_validation WEB_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
-registration_membership_page_ui_validation: --tags @registration_membership_page_ui_validation WEB_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
-registration_normal_workflow: --tags @registration_normal_workflow WEB_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
+registration_normal_workflow: --tags @registration_normal_workflofoxw SDC_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
+registration_profile_page_ui_validation: --tags @registration_profile_page_ui_validation SDC_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
+registration_membership_page_ui_validation: --tags @registration_membership_page_ui_validation SDC_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
+registration_normal_workflow: --tags @registration_normal_workflow SDC_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
 
-registration_ui_validation_add_postage_page: --tags @registration_ui_validation_add_postage_page WEB_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
-registration_ui_validation_membership_page: --tags @registration_ui_validation_membership_page WEB_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
-registration_ui_validation_profile_page: --tags @registration_ui_validation_profile_page WEB_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
-registration_ui_validation_security_questions_page: --tags @registration_ui_validation_security_questions_page WEB_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
-registration_ui_validation_add_validation_model: --tags @registration_ui_validation_add_validation_model WEB_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
-registration_username_taken_model: --tags @registration_username_taken_model WEB_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
-registration_ui_validation_choose_supplies_page: --tags @registration_ui_validation_choose_supplies_page WEB_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
-registration_security_questions_happy_path: --tags @registration_security_questions_happy_path WEB_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
+registration_ui_validation_add_postage_page: --tags @registration_ui_validation_add_postage_page SDC_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
+registration_ui_validation_membership_page: --tags @registration_ui_validation_membership_page SDC_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
+registration_ui_validation_profile_page: --tags @registration_ui_validation_profile_page SDC_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
+registration_ui_validation_security_questions_page: --tags @registration_ui_validation_security_questions_page SDC_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
+registration_ui_validation_add_validation_model: --tags @registration_ui_validation_add_validation_model SDC_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
+registration_username_taken_model: --tags @registration_username_taken_model SDC_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
+registration_ui_validation_choose_supplies_page: --tags @registration_ui_validation_choose_supplies_page SDC_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
+registration_security_questions_happy_path: --tags @registration_security_questions_happy_path SDC_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
 
 
-mail_print_shipping_label_8x11: --tags @mail_print_shipping_label_8x11 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail_print_shipping_label_8x11 PRINTER=factory
+mail_print_shipping_label_8x11: --tags @mail_print_shipping_label_8x11 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail_print_shipping_label_8x11 PRINTER=factory
 
-search_orders: --tags @search_orders --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-search_orders_on_hold: --tags @search_orders_on_hold --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+search_orders: --tags @search_orders --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+search_orders_on_hold: --tags @search_orders_on_hold --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
 
-output_username: --tags @output_username --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-generate_username: --tags @generate_username --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+output_username: --tags @output_username --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+generate_username: --tags @generate_username --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
 
-healthcheck: --tags @healthcheck --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+healthcheck: --tags @healthcheck --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
 
-authentication: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+authentication: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
 
-customs_form_auto_calculate_weight: --tags @customs_form_auto_calculate_weight --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-whats_new: --tags @whats_new --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+customs_form_auto_calculate_weight: --tags @customs_form_auto_calculate_weight --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+whats_new: --tags @whats_new --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
 
-Registration: --tags @Registration --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=Registration
-pam: --tags @pam --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=pam
-registration_pam_orders: --tags @registration_pam_orders --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=Registration
+Registration: --tags @Registration --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=Registration
+pam: --tags @pam --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=pam
+registration_pam_orders: --tags @registration_pam_orders --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=Registration
 
-registration_ach_purchase_100k: --tags @registration_ach_purchase_100k --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=Registration
-pam_ach_purchase_100k: --tags @pam_ach_purchase_100k --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=Registration
-registration_meter_limit_100k: --tags @registration_meter_limit_100k --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=Registration
-pam_meter_limit_100k: --tags @pam_meter_limit_100k --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=Registration
+registration_ach_purchase_100k: --tags @registration_ach_purchase_100k --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=Registration
+pam_ach_purchase_100k: --tags @pam_ach_purchase_100k --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=Registration
+registration_meter_limit_100k: --tags @registration_meter_limit_100k --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=Registration
+pam_meter_limit_100k: --tags @pam_meter_limit_100k --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=Registration
 
-details_non_integer_lb: --tags @details_non_integer_lb --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-grid_order_status: --tags @grid_order_status --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-tooltips_improvements: --tags @tooltips_improvements --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+details_non_integer_lb: --tags @details_non_integer_lb --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+grid_order_status: --tags @grid_order_status --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+tooltips_improvements: --tags @tooltips_improvements --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
 
 # --------------------------  ORDERS Bugs
-bugs_orders_filter_panel: --tags @bugs_orders_filter_panel --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-bugs_multi_order_details: --tags @bugs_multi_order_details --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-bugs_orders_customs_form: --tags @bugs_orders_customs_form --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-bugs_orders_grid: --tags @bugs_orders_grid --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-bugs_orders_grid_toolbar: --tags @bugs_orders_grid_toolbar --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-bugs_orders_navigation_bar: --tags @bugs_orders_navigation_bar --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-bugs_orders_settings: --tags @bugs_orders_settings --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-bugs_single_order_details_form: --tags @bugs_single_order_details_form --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-bugs_print_modal: --tags @bugs_print_modal --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+bugs_orders_filter_panel: --tags @bugs_orders_filter_panel --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+bugs_multi_order_details: --tags @bugs_multi_order_details --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+bugs_orders_customs_form: --tags @bugs_orders_customs_form --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+bugs_orders_grid: --tags @bugs_orders_grid --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+bugs_orders_grid_toolbar: --tags @bugs_orders_grid_toolbar --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+bugs_orders_navigation_bar: --tags @bugs_orders_navigation_bar --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+bugs_orders_settings: --tags @bugs_orders_settings --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+bugs_single_order_details_form: --tags @bugs_single_order_details_form --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+bugs_print_modal: --tags @bugs_print_modal --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
 
 
 # --------------------------  ORDERS BVT
-bvt_shipping_address_management: --tags @bvt_shipping_address_management --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-bvt_ambigious_address: --tags @bvt_ambigious_address --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-bvt_bulk_update: --tags @bvt_bulk_update --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-bvt_address_cleansing: --tags @bvt_address_cleansing --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-bvt_international_shipping: --tags @bvt_international_shipping --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-bvt_new_order: --tags @bvt_new_order --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-bvt_printing: --tags @bvt_printing --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-bvt_purchasing: --tags @bvt_purchasing --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-bvt_purchasing_cc: --tags @bvt_purchasing_cc --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USR=cchrvv6qp PW=pass111
-bvt_purchasing_stg: --tags @bvt_purchasing_stg --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USR=stgugqex0q4 PW=pass111
-bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic --guess VERBOSE=false JENKINS=true HEALTHCHECK=falsepa WEB_APP=orders
-bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders
-bvt_shipstation_search: --tags @bvt_shipstation_search --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-bvt_all_tests: --tags @bvt_all_tests --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+bvt_shipping_address_management: --tags @bvt_shipping_address_management --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+bvt_ambigious_address: --tags @bvt_ambigious_address --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+bvt_bulk_update: --tags @bvt_bulk_update --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+bvt_address_cleansing: --tags @bvt_address_cleansing --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+bvt_international_shipping: --tags @bvt_international_shipping --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+bvt_new_order: --tags @bvt_new_order --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+bvt_printing: --tags @bvt_printing --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+bvt_purchasing: --tags @bvt_purchasing --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+bvt_purchasing_cc: --tags @bvt_purchasing_cc --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders USR=cchrvv6qp PW=pass111
+bvt_purchasing_stg: --tags @bvt_purchasing_stg --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders USR=stgugqex0q4 PW=pass111
+bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic --guess VERBOSE=false JENKINS=true HEALTHCHECK=falsepa SDC_APP=orders
+bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess VERBOSE=false JENKINS=true HEALTHCHECK=false SDC_APP=orders
+bvt_shipstation_search: --tags @bvt_shipstation_search --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+bvt_all_tests: --tags @bvt_all_tests --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
 
-dev_bvt_shipping_address_management: --tags @bvt_shipping_address_management --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders
-dev_bvt_address_cleansing: --tags @bvt_address_cleansing --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders
-dev_bvt_international_shipping: --tags @bvt_international_shipping --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders
-dev_bvt_new_order: --tags @bvt_new_order --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders
-dev_bvt_printing: --tags @bvt_printing --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders PRINTER=factory
-dev_bvt_purchasing: --tags @bvt_purchasing --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders
-dev_bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders
-dev_bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders
-dev_bvt_shipstation_search: --tags @bvt_shipstation_search --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders
-dev_import_orders: --tags @import_orders --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders
+dev_bvt_shipping_address_management: --tags @bvt_shipping_address_management --guess VERBOSE=false JENKINS=true HEALTHCHECK=false SDC_APP=orders
+dev_bvt_address_cleansing: --tags @bvt_address_cleansing --guess VERBOSE=false JENKINS=true HEALTHCHECK=false SDC_APP=orders
+dev_bvt_international_shipping: --tags @bvt_international_shipping --guess VERBOSE=false JENKINS=true HEALTHCHECK=false SDC_APP=orders
+dev_bvt_new_order: --tags @bvt_new_order --guess VERBOSE=false JENKINS=true HEALTHCHECK=false SDC_APP=orders
+dev_bvt_printing: --tags @bvt_printing --guess VERBOSE=false JENKINS=true HEALTHCHECK=false SDC_APP=orders PRINTER=factory
+dev_bvt_purchasing: --tags @bvt_purchasing --guess VERBOSE=false JENKINS=true HEALTHCHECK=false SDC_APP=orders
+dev_bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic --guess VERBOSE=false JENKINS=true HEALTHCHECK=false SDC_APP=orders
+dev_bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess VERBOSE=false JENKINS=true HEALTHCHECK=false SDC_APP=orders
+dev_bvt_shipstation_search: --tags @bvt_shipstation_search --guess VERBOSE=false JENKINS=true HEALTHCHECK=false SDC_APP=orders
+dev_import_orders: --tags @import_orders --guess VERBOSE=false JENKINS=true HEALTHCHECK=false SDC_APP=orders
 
 #PRINT DIALOG SHIP DATE CALENDAR
-print_dialog_ship_date_calendar: --tags @print_dialog_ship_date_calendar --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders
+print_dialog_ship_date_calendar: --tags @print_dialog_ship_date_calendar --guess VERBOSE=false JENKINS=true HEALTHCHECK=false SDC_APP=orders
 
 
 # PRINT TWO UP EXPANDED
-print_two_up_expanded_sdc1200_left_print3: --tags @print_two_up_expanded_sdc1200_left_print3 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_two_up_expanded_sdc1200_4x6_left_print1: --tags @print_two_up_expanded_sdc1200_4x6_left_print1 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_two_up_expanded_paper: --tags @print_two_up_expanded_paper --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_two_up_expanded_fpo_cn22_paper_right: --tags @print_two_up_expanded_fpo_cn22_paper_right --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
+print_two_up_expanded_sdc1200_left_print3: --tags @print_two_up_expanded_sdc1200_left_print3 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_two_up_expanded_sdc1200_4x6_left_print1: --tags @print_two_up_expanded_sdc1200_4x6_left_print1 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_two_up_expanded_paper: --tags @print_two_up_expanded_paper --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_two_up_expanded_fpo_cn22_paper_right: --tags @print_two_up_expanded_fpo_cn22_paper_right --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
 
-print_two_up_expanded_cp72: --tags @print_two_up_expanded_cp72 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_two_up_expanded_cn22: --tags @print_two_up_expanded_cn22 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_two_up_expanded_5x8: --tags @print_two_up_expanded_5x8 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
+print_two_up_expanded_cp72: --tags @print_two_up_expanded_cp72 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_two_up_expanded_cn22: --tags @print_two_up_expanded_cn22 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_two_up_expanded_5x8: --tags @print_two_up_expanded_5x8 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
 
 #PRINT TWO UP
-print_dialog_two_up_window_title: --tags @print_dialog_two_up_window_title --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_dialog_two_up_x_number_of_labels: --tags @print_dialog_two_up_x_number_of_labels --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_two_up_multiple_domestic_labels: --tags @print_two_up_multiple_domestic_labels --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
+print_dialog_two_up_window_title: --tags @print_dialog_two_up_window_title --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_dialog_two_up_x_number_of_labels: --tags @print_dialog_two_up_x_number_of_labels --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_two_up_multiple_domestic_labels: --tags @print_two_up_multiple_domestic_labels --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
 # PRINT SAMPLE
-print_sample_pm_flat_rate_envelope: --tags @print_sample_pm_flat_rate_envelope --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_sample_pme_package: --tags @print_sample_pme_package --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_sample_pm_regional_rate_box_a: --tags @print_sample_pm_regional_rate_box_a --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_sample_parcel_select_ground_large_package: --tags @print_sample_parcel_select_ground_large_package --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_sample_pme_padded_flat_rate_envelope: --tags @print_sample_pme_padded_flat_rate_envelope --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_multiple_orders: --tags @print_multiple_orders --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
+print_sample_pm_flat_rate_envelope: --tags @print_sample_pm_flat_rate_envelope --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_sample_pme_package: --tags @print_sample_pme_package --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_sample_pm_regional_rate_box_a: --tags @print_sample_pm_regional_rate_box_a --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_sample_parcel_select_ground_large_package: --tags @print_sample_parcel_select_ground_large_package --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_sample_pme_padded_flat_rate_envelope: --tags @print_sample_pme_padded_flat_rate_envelope --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_multiple_orders: --tags @print_multiple_orders --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
 # PRINT SHIP DATE
-print_dialog_ship_date: --tags @print_dialog_ship_date --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
+print_dialog_ship_date: --tags @print_dialog_ship_date --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
 # PRINT MEDIA
-tooltip_print_media: --tags @tooltip_print_media --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_dialog_printing_on_8x11_paper: --tags @print_dialog_printing_on_8x11_paper --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_dialog_printing_on_4x6_sdc1200: --tags @print_dialog_printing_on_4x6_sdc1200 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_dialog_printing_on_5x8_shipping_label: --tags @print_dialog_printing_on_5x8_shipping_label --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_dialog_printing_on_4x6_shipping_label: --tags @print_dialog_printing_on_4x6_shipping_label --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_dialog_printing_on_4x6_roll: --tags @print_dialog_printing_on_4x6_roll --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_dialog_hide_postage_value: --tags @print_dialog_hide_postage_value --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_dialog_email_tracking: --tags @print_dialog_email_tracking --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
+tooltip_print_media: --tags @tooltip_print_media --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_dialog_printing_on_8x11_paper: --tags @print_dialog_printing_on_8x11_paper --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_dialog_printing_on_4x6_sdc1200: --tags @print_dialog_printing_on_4x6_sdc1200 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_dialog_printing_on_5x8_shipping_label: --tags @print_dialog_printing_on_5x8_shipping_label --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_dialog_printing_on_4x6_shipping_label: --tags @print_dialog_printing_on_4x6_shipping_label --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_dialog_printing_on_4x6_roll: --tags @print_dialog_printing_on_4x6_roll --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_dialog_hide_postage_value: --tags @print_dialog_hide_postage_value --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_dialog_email_tracking: --tags @print_dialog_email_tracking --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
 # PRINT LABEL SIDES
-print_dialog_label_sides: --tags @print_dialog_label_sides --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
+print_dialog_label_sides: --tags @print_dialog_label_sides --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
 # CP72 & CN22
-print_layout_cp72: --tags @print_layout_cp72 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_layout_cn22_5x8: --tags @print_layout_cn22_5x8 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_layout_cn22_5x8_continuation: --tags @print_layout_cn22_5x8_continuation --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_layout_cn22_paper_left_side: --tags @print_layout_cn22_paper_left_side --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_layout_cn22_roll: --tags @print_layout_cn22_roll --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
+print_layout_cp72: --tags @print_layout_cp72 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_layout_cn22_5x8: --tags @print_layout_cn22_5x8 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_layout_cn22_5x8_continuation: --tags @print_layout_cn22_5x8_continuation --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_layout_cn22_paper_left_side: --tags @print_layout_cn22_paper_left_side --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_layout_cn22_roll: --tags @print_layout_cn22_roll --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
 #PRINT BULK UPDATE
-bulk_update_dom: --tags @bulk_update_dom --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-bulk_update_int: --tags @bulk_update_int --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+bulk_update_dom: --tags @bulk_update_dom --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+bulk_update_int: --tags @bulk_update_int --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
 # CHECK IF THESE ARE IN JENKINS
-reprint_tests: --tags @reprint_tests --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_multiple_reprints: --tags @print_multiple_reprints --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_on_thermal: --tags @print_on_thermal --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
+reprint_tests: --tags @reprint_tests --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_multiple_reprints: --tags @print_multiple_reprints --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_on_thermal: --tags @print_on_thermal --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
 
-tsce_printing: --tags @tsce_printing --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=tse_pritnern
+tsce_printing: --tags @tsce_printing --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=tse_pritnern
 # ORDERS REGRESSION
-details_edit_order: --tags @details_edit_order --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-details_services: --tags @details_services --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-details_flat_rate_no_weight_international: --tags @details_flat_rate_no_weight_international --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-details_flat_rate_no_weight_domestic: --tags @details_flat_rate_no_weight_domestic --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-details_large_dimensions_pm: --tags @details_large_dimensions_pm --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-international_customs_form: --tags @international_customs_form --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-international_customs_form_totals: --tags @international_customs_form_totals --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-international_customs_form_edit_delete_item: --tags @international_customs_form_edit_delete_item --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-tooltip_customs_form: --tags @tooltip_customs_form --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-tooltips: --tags @tooltips --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-details_reference_no: --tags @details_reference_no --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-customs_form_qty: --tags @customs_form_qty --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-grid_automation_test: --tags @grid_automation_test --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-orders_grid_tests: --tags @orders_grid_tests --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-grid_insured_value: --tags @grid_insured_value --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-grid_order_status: --tags @grid_order_status --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-grid_tracking: --tags @grid_tracking --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-grid_ship_cost: --tags @grid_ship_cost --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-print_dialog_thermal_number_of_labels_count: --tags @print_dialog_thermal_number_of_labels_count --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-details_placeholders: --tags @details_placeholders --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-general_settings: --tags @general_settings --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-details_ship_cost_total: --tags @details_ship_cost_total --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-nav_postage_balance_update: --tags @nav_postage_balance_update --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-tracking_defaults: --tags @tracking_defaults --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-parcel_select: --tags @parcel_select --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-filter_panel: --tags @filter_panel --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-address_cleansing: --tags @address_cleansing,@bvt_ambigious_address --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-address_management: --tags @address_management --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-inline_service_rates: --tags @inline_service_rates --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-purchasing: --tags @purchasing --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-sorting: --tags @sort --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-auto_suggest: --tags @auto_suggest --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-new_country: --tags  @new_country --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-details_panel: --tags  @details_panel --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-details_order: --tags  @details_order --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-import_updated_orders: --tags  @import_updated_orders --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-automation_rule: --tags @automation_rule --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-general_settings_test_cases: --tags @general_settings_test_cases --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-stores_shipstation_postupgrade: --tags @stores_shipstation_postupgrade --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-stores_shipstation_preupgrade: --tags @stores_shipstation_preupgrade --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-orders_fci_flats: --tags @orders_fci_flats --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-print_label_preview_image: --tags @print_label_preview_image --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-split_order: --tags @split_order --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+details_edit_order: --tags @details_edit_order --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+details_services: --tags @details_services --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+details_flat_rate_no_weight_international: --tags @details_flat_rate_no_weight_international --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+details_flat_rate_no_weight_domestic: --tags @details_flat_rate_no_weight_domestic --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+details_large_dimensions_pm: --tags @details_large_dimensions_pm --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+international_customs_form: --tags @international_customs_form --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+international_customs_form_totals: --tags @international_customs_form_totals --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+international_customs_form_edit_delete_item: --tags @international_customs_form_edit_delete_item --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+tooltip_customs_form: --tags @tooltip_customs_form --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+tooltips: --tags @tooltips --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+details_reference_no: --tags @details_reference_no --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+customs_form_qty: --tags @customs_form_qty --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+grid_automation_test: --tags @grid_automation_test --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+orders_grid_tests: --tags @orders_grid_tests --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+grid_insured_value: --tags @grid_insured_value --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+grid_order_status: --tags @grid_order_status --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+grid_tracking: --tags @grid_tracking --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+grid_ship_cost: --tags @grid_ship_cost --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+print_dialog_thermal_number_of_labels_count: --tags @print_dialog_thermal_number_of_labels_count --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+details_placeholders: --tags @details_placeholders --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+general_settings: --tags @general_settings --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+details_ship_cost_total: --tags @details_ship_cost_total --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+nav_postage_balance_update: --tags @nav_postage_balance_update --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+tracking_defaults: --tags @tracking_defaults --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+parcel_select: --tags @parcel_select --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+filter_panel: --tags @filter_panel --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+address_cleansing: --tags @address_cleansing,@bvt_ambigious_address --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+address_management: --tags @address_management --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+inline_service_rates: --tags @inline_service_rates --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+purchasing: --tags @purchasing --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+sorting: --tags @sort --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+auto_suggest: --tags @auto_suggest --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+new_country: --tags  @new_country --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+details_panel: --tags  @details_panel --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+details_order: --tags  @details_order --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+import_updated_orders: --tags  @import_updated_orders --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+automation_rule: --tags @automation_rule --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+general_settings_test_cases: --tags @general_settings_test_cases --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+stores_shipstation_postupgrade: --tags @stores_shipstation_postupgrade --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+stores_shipstation_preupgrade: --tags @stores_shipstation_preupgrade --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+orders_fci_flats: --tags @orders_fci_flats --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+print_label_preview_image: --tags @print_label_preview_image --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+split_order: --tags @split_order --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
 
 # REGRESSION NOT INCLUDED
-grid_column_order: --tags @grid_column_order --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-import_orders: --tags @import_orders --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-pagination: --tags @pagination --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-registration_specify_username_jenkins: --tags @registration_specify_username_jenkins --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+grid_column_order: --tags @grid_column_order --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+import_orders: --tags @import_orders --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+pagination: --tags @pagination --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+registration_specify_username_jenkins: --tags @registration_specify_username_jenkins --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
 # DOES NOT EXIST
-print_label_position: --tags @print_label_position --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_media: --tags @print_media --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_media_tooltips: --tags @print_media_tooltips --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-printing_errors: --tags @printing_error --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-printing:  --tags @mail --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_date: --tags @print_date --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_two_up_expanded: --tags @print_two_up_expanded --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_label_position_layouts: --tags @print_label_position_layouts --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-print_layouts_cp72: --tags @print_two_up_expanded --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
-international: --tags @international --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-change_settings: --tags @settings --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-fcm_selection_enabled: --tags  @fcm_selection_enabled --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-multiple_order_total_cost: --tags @multiple_order_total_cost --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+print_label_position: --tags @print_label_position --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_media: --tags @print_media --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_media_tooltips: --tags @print_media_tooltips --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+printing_errors: --tags @printing_error --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+printing:  --tags @mail --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_date: --tags @print_date --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_two_up_expanded: --tags @print_two_up_expanded --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_label_position_layouts: --tags @print_label_position_layouts --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+print_layouts_cp72: --tags @print_two_up_expanded --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders PRINTER=factory
+international: --tags @international --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+change_settings: --tags @settings --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+fcm_selection_enabled: --tags  @fcm_selection_enabled --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+multiple_order_total_cost: --tags @multiple_order_total_cost --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
 
 # NO USER_CREDENTIALS
-auto_suggest_international: --tags @auto_suggest_international --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-item_details: --tags @item_details --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+auto_suggest_international: --tags @auto_suggest_international --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+item_details: --tags @item_details --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
 
 
 #need to reevaluate
-rules_domestic: --tags @rules_domestic --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-international_rules: --tags  @international_rules --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-orders_10: --tags @orders_10 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-orders_20: --tags @orders_20 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-jenkins_orders: --tags @jenkins_orders --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+rules_domestic: --tags @rules_domestic --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+international_rules: --tags  @international_rules --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+orders_10: --tags @orders_10 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+orders_20: --tags @orders_20 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+jenkins_orders: --tags @jenkins_orders --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
 
-local_rating: --tags @local_rating --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-local_rating_smoke_test: --tags @local_rating_smoke_test --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-import_orders_ship_from_test: --tags @import_orders_ship_from_test --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+local_rating: --tags @local_rating --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+local_rating_smoke_test: --tags @local_rating_smoke_test --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+import_orders_ship_from_test: --tags @import_orders_ship_from_test --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
 
 # Stores
-stores: --tags @stores --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-marketplace: --tags @marketplace --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-big_commerce: --tags @big_commerce --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-paypal: --tags @paypal --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-yahoo: --tags @yahoo --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-threedcart: --tags @3dcart --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-shopify: --tags @shopify --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-etsy: --tags @etsy --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-rakuten: --tags @rakuten --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-volusion: --tags @volusion --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-amazon: --tags @amazon --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-square_workflow: --tags @square_workflow --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-paypal_workflow: --tags @paypal_workflow --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+stores: --tags @stores --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+marketplace: --tags @marketplace --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+big_commerce: --tags @big_commerce --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+paypal: --tags @paypal --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+yahoo: --tags @yahoo --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+threedcart: --tags @3dcart --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+shopify: --tags @shopify --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+etsy: --tags @etsy --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+rakuten: --tags @rakuten --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+volusion: --tags @volusion --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+amazon: --tags @amazon --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+square_workflow: --tags @square_workflow --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
+paypal_workflow: --tags @paypal_workflow --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=orders
 
 # ----------------------------# MAIL Bugs
-bugs_advanced_options: --tags  @bugs_advanced_options --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
-bugs_certified_mail: --tags  @bugs_certified_mail --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
-bugs_contacts_modal: --tags  @bugs_contacts_modal --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
-bugs_envelope: --tags  @bugs_envelope --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
-bugs_extra_services: --tags  @bugs_extra_services --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
-bugs_roll: --tags  @bugs_roll --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
-bugs_shipping_label: --tags  @bugs_shipping_label --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
-bugs_stamps_print: --tags  @bugs_stamps_print --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
-bugs_stamps: --tags  @bugs_stamps --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
+bugs_advanced_options: --tags  @bugs_advanced_options --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail
+bugs_certified_mail: --tags  @bugs_certified_mail --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail
+bugs_contacts_modal: --tags  @bugs_contacts_modal --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail
+bugs_envelope: --tags  @bugs_envelope --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail
+bugs_extra_services: --tags  @bugs_extra_services --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail
+bugs_roll: --tags  @bugs_roll --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail
+bugs_shipping_label: --tags  @bugs_shipping_label --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail
+bugs_stamps_print: --tags  @bugs_stamps_print --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail
+bugs_stamps: --tags  @bugs_stamps --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail
 
 # MAIL
-mail_authentication: --tags  @mail_authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
-mail_bvt_address_cleansing: --tags  @mail_bvt_address_cleansing --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
-mail_bvt_contacts: --tags  @mail_bvt_contacts --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
-mail_bvt_envelopes: --tags  @mail_bvt_envelopes --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_bvt_extra_services: --tags  @mail_bvt_extra_services --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
-mail_bvt_purchasing: --tags  @mail_bvt_purchasing --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
-mail_bvt_stamps: --tags  @mail_bvt_stamps --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_bvt_international: --tags  @mail_bvt_international --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
-mail_reset: --tags  @mail_reset --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
+mail_authentication: --tags  @mail_authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail
+mail_bvt_address_cleansing: --tags  @mail_bvt_address_cleansing --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail
+mail_bvt_contacts: --tags  @mail_bvt_contacts --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail
+mail_bvt_envelopes: --tags  @mail_bvt_envelopes --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_bvt_extra_services: --tags  @mail_bvt_extra_services --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail
+mail_bvt_purchasing: --tags  @mail_bvt_purchasing --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail
+mail_bvt_stamps: --tags  @mail_bvt_stamps --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_bvt_international: --tags  @mail_bvt_international --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail
+mail_reset: --tags  @mail_reset --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail
 
-dev_mail_authentication: --tags  @mail_authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=mail
-dev_mail_bvt_address_cleansing: --tags  @mail_bvt_address_cleansing --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=mail
-dev_mail_bvt_contacts: --tags  @mail_bvt_contacts --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=mail
-dev_mail_bvt_envelopes: --tags  @mail_bvt_envelopes --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=mail
-dev_mail_bvt_extra_services: --tags  @mail_bvt_extra_services --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=mail
-dev_mail_bvt_purchasing: --tags  @mail_bvt_purchasing --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=mail
-dev_mail_bvt_stamps: --tags  @mail_bvt_stamps --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=mail
-dev_mail_bvt_international: --tags  @mail_bvt_international --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=mail
+dev_mail_authentication: --tags  @mail_authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=false SDC_APP=mail
+dev_mail_bvt_address_cleansing: --tags  @mail_bvt_address_cleansing --guess VERBOSE=false JENKINS=true HEALTHCHECK=false SDC_APP=mail
+dev_mail_bvt_contacts: --tags  @mail_bvt_contacts --guess VERBOSE=false JENKINS=true HEALTHCHECK=false SDC_APP=mail
+dev_mail_bvt_envelopes: --tags  @mail_bvt_envelopes --guess VERBOSE=false JENKINS=true HEALTHCHECK=false SDC_APP=mail
+dev_mail_bvt_extra_services: --tags  @mail_bvt_extra_services --guess VERBOSE=false JENKINS=true HEALTHCHECK=false SDC_APP=mail
+dev_mail_bvt_purchasing: --tags  @mail_bvt_purchasing --guess VERBOSE=false JENKINS=true HEALTHCHECK=false SDC_APP=mail
+dev_mail_bvt_stamps: --tags  @mail_bvt_stamps --guess VERBOSE=false JENKINS=true HEALTHCHECK=false SDC_APP=mail
+dev_mail_bvt_international: --tags  @mail_bvt_international --guess VERBOSE=false JENKINS=true HEALTHCHECK=false SDC_APP=mail
 
-mail_print_label_left_side: --tags  @mail_print_label_left_side --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_label_right_side: --tags  @mail_print_label_right_side --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_certified_mail_hidden_postage: --tags  @mail_print_certified_mail_hidden_postage --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
+mail_print_label_left_side: --tags  @mail_print_label_left_side --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_label_right_side: --tags  @mail_print_label_right_side --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_certified_mail_hidden_postage: --tags  @mail_print_certified_mail_hidden_postage --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
 
-mail_print_envelope_6_7_9_11_12: --tags @mail_print_envelope_6_7_9_11_12 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_envelope_10_A2_A9: --tags @mail_print_envelope_10_A2_A9 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_by_split_button: --tags @mail_print_by_split_button --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
+mail_print_envelope_6_7_9_11_12: --tags @mail_print_envelope_6_7_9_11_12 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_envelope_10_A2_A9: --tags @mail_print_envelope_10_A2_A9 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_by_split_button: --tags @mail_print_by_split_button --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
 
-mail_print_roll_4_1_8_x_6_1_4_fcm_psg: --tags @mail_print_roll_4_1_8_x_6_1_4_fcm_psg --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_roll_4_1_8_x_6_1_4_mm_xm: --tags @mail_print_roll_4_1_8_x_6_1_4_mm_xm --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_roll_4_1_8_x_6_1_4_pm_box: --tags @mail_print_roll_4_1_8_x_6_1_4_pm_box --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_roll_4_1_8_x_6_1_4_pm_envelope_package: --tags @mail_print_roll_4_1_8_x_6_1_4_pm_envelope_package --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
+mail_print_roll_4_1_8_x_6_1_4_fcm_psg: --tags @mail_print_roll_4_1_8_x_6_1_4_fcm_psg --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_roll_4_1_8_x_6_1_4_mm_xm: --tags @mail_print_roll_4_1_8_x_6_1_4_mm_xm --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_roll_4_1_8_x_6_1_4_pm_box: --tags @mail_print_roll_4_1_8_x_6_1_4_pm_box --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_roll_4_1_8_x_6_1_4_pm_envelope_package: --tags @mail_print_roll_4_1_8_x_6_1_4_pm_envelope_package --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
 
-mail_print_roll_4_x_6_fcm_psg: --tags @mail_print_roll_4_x_6_fcm_psg --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_roll_4_x_6_mm_xm: --tags @mail_print_roll_4_x_6_mm_xm --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_roll_4_x_6_pm_box: --tags @mail_print_roll_4_x_6_pm_box --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_roll_4_x_6_pm_envelope_package: --tags @mail_print_roll_4_x_6_pm_envelope_package --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
+mail_print_roll_4_x_6_fcm_psg: --tags @mail_print_roll_4_x_6_fcm_psg --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_roll_4_x_6_mm_xm: --tags @mail_print_roll_4_x_6_mm_xm --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_roll_4_x_6_pm_box: --tags @mail_print_roll_4_x_6_pm_box --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_roll_4_x_6_pm_envelope_package: --tags @mail_print_roll_4_x_6_pm_envelope_package --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
 
-mail_print_sample_shipping_label_8_x_11_fcm_psg: --tags @mail_print_sample_shipping_label_8_x_11_fcm_psg --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_sample_shipping_label_8_x_11_mm_xm: --tags @mail_print_sample_shipping_label_8_x_11_mm_xm --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_sample_shipping_label_8_x_11_pm_box: --tags @mail_print_sample_shipping_label_8_x_11_pm_box --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_sample_shipping_label_8_x_11_pm_envelope_package: --tags @mail_print_sample_shipping_label_8_x_11_pm_envelope_package --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
+mail_print_sample_shipping_label_8_x_11_fcm_psg: --tags @mail_print_sample_shipping_label_8_x_11_fcm_psg --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_sample_shipping_label_8_x_11_mm_xm: --tags @mail_print_sample_shipping_label_8_x_11_mm_xm --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_sample_shipping_label_8_x_11_pm_box: --tags @mail_print_sample_shipping_label_8_x_11_pm_box --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_sample_shipping_label_8_x_11_pm_envelope_package: --tags @mail_print_sample_shipping_label_8_x_11_pm_envelope_package --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
 
-mail_print_shipping_label_8_x_11_fcm_psg: --tags @mail_print_shipping_label_8_x_11_fcm_psg --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_shipping_label_8_x_11_mm_xm: --tags @mail_print_shipping_label_8_x_11_mm_xm --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_shipping_label_8_x_11_pm_box: --tags @mail_print_shipping_label_8_x_11_pm_box --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_shipping_label_8_x_11_pm_envelope_package: --tags @mail_print_shipping_label_8_x_11_pm_envelope_package --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
+mail_print_shipping_label_8_x_11_fcm_psg: --tags @mail_print_shipping_label_8_x_11_fcm_psg --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_shipping_label_8_x_11_mm_xm: --tags @mail_print_shipping_label_8_x_11_mm_xm --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_shipping_label_8_x_11_pm_box: --tags @mail_print_shipping_label_8_x_11_pm_box --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_shipping_label_8_x_11_pm_envelope_package: --tags @mail_print_shipping_label_8_x_11_pm_envelope_package --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
 
-mail_print_sample_shipping_label_5x8_fcm_psg: --tags @mail_print_sample_shipping_label_5x8_fcm_psg --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_sample_shipping_label_5x8_mm_xm: --tags @mail_print_sample_shipping_label_5x8_mm_xm --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_sample_shipping_label_5x8_pm_box: --tags @mail_print_sample_shipping_label_5x8_pm_box --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_sample_shipping_label_5x8_pm_envelope_package: --tags @mail_print_sample_shipping_label_5x8_pm_envelope_package --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
+mail_print_sample_shipping_label_5x8_fcm_psg: --tags @mail_print_sample_shipping_label_5x8_fcm_psg --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_sample_shipping_label_5x8_mm_xm: --tags @mail_print_sample_shipping_label_5x8_mm_xm --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_sample_shipping_label_5x8_pm_box: --tags @mail_print_sample_shipping_label_5x8_pm_box --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_sample_shipping_label_5x8_pm_envelope_package: --tags @mail_print_sample_shipping_label_5x8_pm_envelope_package --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
 
-mail_print_shipping_label_5x8_fcm_psg: --tags @mail_print_shipping_label_5x8_fcm_psg --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_shipping_label_5x8_mm_xm: --tags @mail_print_shipping_label_5x8_mm_xm --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_shipping_label_5x8_pm_box: --tags @mail_print_shipping_label_5x8_pm_box --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_shipping_label_5x8_pm_envelope_package: --tags @mail_print_shipping_label_5x8_pm_envelope_package --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
+mail_print_shipping_label_5x8_fcm_psg: --tags @mail_print_shipping_label_5x8_fcm_psg --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_shipping_label_5x8_mm_xm: --tags @mail_print_shipping_label_5x8_mm_xm --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_shipping_label_5x8_pm_box: --tags @mail_print_shipping_label_5x8_pm_box --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_shipping_label_5x8_pm_envelope_package: --tags @mail_print_shipping_label_5x8_pm_envelope_package --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
 
-mail_print_sample_shipping_label_sdc1200_fcm_psg: --tags @mail_print_sample_shipping_label_sdc1200_fcm_psg --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_sample_shipping_label_sdc1200_mm_xm: --tags @mail_print_sample_shipping_label_sdc1200_mm_xm --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_sample_shipping_label_sdc1200_pm_box: --tags @mail_print_sample_shipping_label_sdc1200_pm_box --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_sample_shipping_label_sdc1200_pm_envelope_package: --tags @mail_print_sample_shipping_label_sdc1200_pm_envelope_package --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_shipping_label_sdc1200_with_receipt: --tags @mail_print_shipping_label_sdc1200_with_receipt --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
+mail_print_sample_shipping_label_sdc1200_fcm_psg: --tags @mail_print_sample_shipping_label_sdc1200_fcm_psg --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_sample_shipping_label_sdc1200_mm_xm: --tags @mail_print_sample_shipping_label_sdc1200_mm_xm --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_sample_shipping_label_sdc1200_pm_box: --tags @mail_print_sample_shipping_label_sdc1200_pm_box --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_sample_shipping_label_sdc1200_pm_envelope_package: --tags @mail_print_sample_shipping_label_sdc1200_pm_envelope_package --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_shipping_label_sdc1200_with_receipt: --tags @mail_print_shipping_label_sdc1200_with_receipt --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
 
-mail_print_shipping_label_sdc1200_fcm_psg: --tags @mail_print_shipping_label_sdc1200_fcm_psg --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_shipping_label_sdc1200_mm_xm: --tags @mail_print_shipping_label_sdc1200_mm_xm --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_shipping_label_sdc1200_pm_box: --tags @mail_print_shipping_label_sdc1200_pm_box --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_shipping_label_sdc1200_pm_envelope_package: --tags @mail_print_shipping_label_sdc1200_pm_envelope_package --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_envelope_12: --tags  @mail_print_envelope_12 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_shipping_label_preview_panel_options: --tags  @mail_print_shipping_label_preview_panel_options --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_forgot_username: --tags  @mail_forgot_username --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
-mail_forgot_password: --tags  @mail_forgot_password --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
+mail_print_shipping_label_sdc1200_fcm_psg: --tags @mail_print_shipping_label_sdc1200_fcm_psg --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_shipping_label_sdc1200_mm_xm: --tags @mail_print_shipping_label_sdc1200_mm_xm --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_shipping_label_sdc1200_pm_box: --tags @mail_print_shipping_label_sdc1200_pm_box --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_shipping_label_sdc1200_pm_envelope_package: --tags @mail_print_shipping_label_sdc1200_pm_envelope_package --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_envelope_12: --tags  @mail_print_envelope_12 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_shipping_label_preview_panel_options: --tags  @mail_print_shipping_label_preview_panel_options --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_forgot_username: --tags  @mail_forgot_username --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail
+mail_forgot_password: --tags  @mail_forgot_password --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail
 
-mail_stamps_series_a_b_c_k_l_ml: --tags  @mail_stamps_series_a_b_c_k_l_ml --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_stamps_series_p_r_s_v_wn: --tags  @mail_stamps_series_p_r_s_v_wn --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
+mail_stamps_series_a_b_c_k_l_ml: --tags  @mail_stamps_series_a_b_c_k_l_ml --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_stamps_series_p_r_s_v_wn: --tags  @mail_stamps_series_p_r_s_v_wn --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
 
-mail_print_on_list_of_values: --tags  @mail_print_on_list_of_values --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_postage_fields: --tags  @mail_print_postage_fields --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_invalid_credentials: --tags  @mail_invalid_credentials --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
-mail_manage_shipping_addresses: --tags  @mail_manage_shipping_addresses --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
-mail_remember_username: --tags  @mail_remember_username --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
-mail_welcome: --tags  @mail_welcome --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
-mail_print_envelope_10_return_address: --tags  @mail_print_envelope_10_return_address --guess VERBOSE=false HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_envelope_10_delivery_address: --tags  @mail_print_envelope_10_delivery_address --guess VERBOSE=false HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_envelope_10_postage: --tags  @mail_print_envelope_10_postage --guess VERBOSE=false HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_buy_more_labels: --tags  @mail_buy_more_labels --guess VERBOSE=false HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_fci_flats: --tags  @mail_fci_flats --guess VERBOSE=false HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_hidden_postage: --tags  @mail_hidden_postage --guess VERBOSE=false HEALTHCHECK=true WEB_APP=mail PRINTER=factory
+mail_print_on_list_of_values: --tags  @mail_print_on_list_of_values --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_postage_fields: --tags  @mail_print_postage_fields --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_invalid_credentials: --tags  @mail_invalid_credentials --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail
+mail_manage_shipping_addresses: --tags  @mail_manage_shipping_addresses --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail
+mail_remember_username: --tags  @mail_remember_username --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail
+mail_welcome: --tags  @mail_welcome --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail
+mail_print_envelope_10_return_address: --tags  @mail_print_envelope_10_return_address --guess VERBOSE=false HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_envelope_10_delivery_address: --tags  @mail_print_envelope_10_delivery_address --guess VERBOSE=false HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_print_envelope_10_postage: --tags  @mail_print_envelope_10_postage --guess VERBOSE=false HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_buy_more_labels: --tags  @mail_buy_more_labels --guess VERBOSE=false HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_fci_flats: --tags  @mail_fci_flats --guess VERBOSE=false HEALTHCHECK=true SDC_APP=mail PRINTER=factory
+mail_hidden_postage: --tags  @mail_hidden_postage --guess VERBOSE=false HEALTHCHECK=true SDC_APP=mail PRINTER=factory
 
-mail_bug_ordersauto_3243: --tags  @mail_bug_ordersauto_3243 --guess VERBOSE=false HEALTHCHECK=true WEB_APP=mail PRINTER=factory
+mail_bug_ordersauto_3243: --tags  @mail_bug_ordersauto_3243 --guess VERBOSE=false HEALTHCHECK=true SDC_APP=mail PRINTER=factory
