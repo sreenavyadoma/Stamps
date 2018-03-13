@@ -24,8 +24,8 @@ Then /^[Ee]xpect Advanced Options Extra Services Button is (\w+)/ do |str|
       expect(stamps.mail.print_form.advanced_options.extra_services_btn.stamps_disabled?).to be(false), "Extra Services Button is NOT enabled"
     when /disabled/
       expect(stamps.mail.print_form.advanced_options.extra_services_btn.stamps_disabled?).to be(true), "Extra Services Button is NOT disabled"
-      when /visible/
-        expect(stamps.mail.print_form.advanced_options.extra_services_btn).to be_visible, "Extra Services Button is NOT visible"
+    when /visible/
+      expect(stamps.mail.print_form.advanced_options.extra_services_btn).to be_visible, "Extra Services Button is NOT visible"
     else
       raise ArgumentError, "#{str} is not implemented."
   end
