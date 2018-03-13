@@ -5,7 +5,6 @@ module Stamps
     class WebMail < WebApps::Base
       include Stamps::Mail::MailModals
       include PrintFormPanel::PrintFormBlurOut
-      attr_accessor :print_media
 
       def sign_in_modal
         cache[:sign_in].nil? || !cache[:sign_in].present? ? cache[:sign_in] = MailSignIn::MailSignInModal.new(param) : cache[:sign_in]
@@ -18,12 +17,12 @@ module Stamps
       def print_on(selection)
         wait_until_present(5)
         blur_out
-        raise "Print-on drop-down is not present." unless print_media.present?
-        self.print_media = print_media_obj.select_print_on(selection) #todo-Rob might need to decouple this further?
+        raise "Print-on drop-down is not present." unless print_media_obj.present?
+        param.print_media = print_media_obj.select_print_on(selection) #todo-Rob might need to decouple this further?
       end
 
       def print_form
-        case self.print_media
+        case param.print_media
           when :stamps
             if cache[:stamps].nil? || !cache[:stamps].present?
               cache[:stamps] = Class.new(WebApps::Base).new(param).extend(PrintFormPanel::MailStamps)
@@ -55,7 +54,7 @@ module Stamps
             # ignore
         end
 
-        raise ArgumentError, "Invalid print media: #{self.print_media}"
+        raise ArgumentError, "Invalid print media: #{param.print_media}"
       end
 
       def print_preview
@@ -63,7 +62,7 @@ module Stamps
       end
 
       def mail_toolbar
-        cache[:mail_toolbar].nil? || !cache[:mail_toolbar].present? ? cache[:mail_toolbar] = MailToolbar.new(param).print_media = self.print_media : cache[:mail_toolbar]
+        cache[:mail_toolbar].nil? || !cache[:mail_toolbar].present? ? cache[:mail_toolbar] = MailToolbar.new(param): cache[:mail_toolbar]
       end
 
       def mail_external_sites
@@ -75,11 +74,11 @@ module Stamps
       end
 
       def present?
-        print_media.present?
+        print_media_obj.present?
       end
 
       def wait_until_present(*args)
-        print_media.wait_until_present(*args)
+        print_media_obj.wait_until_present(*args)
       end
     end
   end

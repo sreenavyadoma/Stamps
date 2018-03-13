@@ -89,8 +89,8 @@ module Stamps
         SdcEnv.verbose = ENV['VERBOSE'].nil? ? false : ENV['VERBOSE'].downcase == 'true'
         SdcEnv.hostname = Socket.gethostname
         SdcEnv.web_app = (ENV['SDC_APP'].downcase).to_sym
-        SdcEnv.env = ENV['URL']
-        SdcEnv.health_check = ENV['HEALTHCHECK'].nil? ? false : ENV['HEALTHCHECK'].downcase == 'true'
+        SdcEnv.env = ENV['URL'].downcase
+        SdcEnv.health_check = ENV['HEALTHCHECK'].nil? ? false : ENV['HEALTHCHECK'].casecmp('true') == 0
         SdcEnv.usr = ENV['USR']
         SdcEnv.pw = ENV['PW']
         SdcEnv.env = case(ENV['URL'].downcase)
@@ -107,6 +107,27 @@ module Stamps
         logger.outputters = Outputter.stdout
         self.log = Stamps::Core::SdcLogger.new(logger)
         self.log.verbose = SdcEnv.verbose
+
+        #These should be in an orders/mail or web_apps environment variable container
+        SdcEnv.printer = ENV['PRINTER']
+      end
+
+      ##
+      # This is a work around and it will go away
+      def web_apps_param
+        #Param = Struct.new(:driver, :log, :scenario_name, :web_app, :env, :usr, :pw, :print_media, :printer)
+        param = Param.new
+        param.driver = self.driver
+        param.log = self.log
+        param.scenario_name
+        param.scenario_name
+        param.env = SdcEnv.env
+        param.usr = SdcEnv.usr
+        param.pw = SdcEnv.pw
+        #These should be in an orders/mail or web_apps environment variable container
+        param.printer = SdcEnv.printer
+        param.web_app = SdcEnv.web_app
+        param
       end
 
       def configure_orders

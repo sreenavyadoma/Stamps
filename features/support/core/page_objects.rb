@@ -4,7 +4,7 @@ module Stamps
       def initialize(driver, locator)
         @driver = driver
         @finder = ElementFinder.new(driver)
-        @actions = ActionMethods.new(driver, finder, call[0])
+        #@actions = ActionMethods.new(driver, finder, call[0])
       end
     end
 

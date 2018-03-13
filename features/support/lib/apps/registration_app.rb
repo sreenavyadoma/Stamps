@@ -2,7 +2,7 @@ module Stamps
   module RegistrationApp
     def registration
       begin
-        @registration ||= Stamps::Registration::WebRegistration.new(modal_param)
+        @registration ||= Stamps::Registration::WebRegistration.new(SdcTest.web_apps_param)
       rescue StandardError => e
         SdcTest.log.error e.message
         SdcTest.log.error e.backtrace.join("\n")
@@ -12,7 +12,7 @@ module Stamps
 
     def sdc_website
       begin
-        @sdc_website ||= Stamps::Registration::SdcWebsite.new(modal_param)
+        @sdc_website ||= Stamps::Registration::SdcWebsite.new(SdcTest.web_apps_param)
       rescue StandardError => e
         SdcTest.log.error e.message
         SdcTest.log.error e.backtrace.join("\n")
@@ -22,9 +22,11 @@ module Stamps
 
     def registration_parameter_file(*args)
       directory="#{data_for(:registration, {})['development_dir']}"
-      directory="#{data_for(:registration, {})['jenkins_dir']}" if TestHelper.to_bool(ENV['JENKINS'])
+      directory="#{data_for(:registration, {})['jenkins_dir']}" if TestHelper.to_bool(ENV['JENKINS']) #this is wrong.
       FileUtils.mkdir_p(directory)
-      return "#{directory}\\#{ENV['URL']}_#{(args.length==0||args[0].nil?)?data_for(:registration, {})['default_parameter_file']:"#{args[0]}"}.yml" if TestHelper.to_bool(ENV['JENKINS'])
+
+      return "#{directory}\\#{ENV['URL']}_#{(args.length==0||args[0].nil?)?data_for(:registration, {})['default_parameter_file']:"#{args[0]}"}.yml" if TestHelper.to_bool(ENV['JENKINS']) #this is wrong., don't call environment variables this way.
+
       "#{directory}\\#{ENV['URL']}_#{(args.length==0||args[0].nil?)?data_for(:registration, {})['default_parameter_file']:"#{args[0]}"}.yml"
     end
 
