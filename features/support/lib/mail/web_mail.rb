@@ -5,6 +5,11 @@ module Stamps
     class WebMail < WebApps::Base
       include Stamps::Mail::MailModals
       include PrintFormPanel::PrintFormBlurOut
+      attr_accessor :print_media
+      def initialize(param)
+        super(param)
+        @print_media = param.print_media
+      end
 
       def sign_in_modal
         cache[:sign_in].nil? || !cache[:sign_in].present? ? cache[:sign_in] = MailSignIn::MailSignInModal.new(param) : cache[:sign_in]
@@ -18,11 +23,11 @@ module Stamps
         wait_until_present(5)
         blur_out
         raise "Print-on drop-down is not present." unless print_media_obj.present?
-        param.print_media = print_media_obj.select_print_on(selection) #todo-Rob might need to decouple this further?
+        @print_media = print_media_obj.select_print_on(selection) #todo-Rob might need to decouple this further?
       end
 
       def print_form
-        case param.print_media
+        case print_media
           when :stamps
             if cache[:stamps].nil? || !cache[:stamps].present?
               cache[:stamps] = Class.new(WebApps::Base).new(param).extend(PrintFormPanel::MailStamps)
@@ -54,7 +59,7 @@ module Stamps
             # ignore
         end
 
-        raise ArgumentError, "Invalid print media: #{param.print_media}"
+        raise ArgumentError, "Invalid print media: #{print_media}"
       end
 
       def print_preview

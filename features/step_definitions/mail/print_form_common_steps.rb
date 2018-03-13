@@ -9,7 +9,7 @@ Then /^[Bb]lur out on [Pp]rint [Ff]orm$/ do
 end
 
 Then /^[Ss]et Print form Mail-From to (.*)$/ do |value|
-  stamps.mail.print_form.mail_from.select(TestData.store[:ship_from]=value)
+  stamps.mail.print_form.mail_from.select(TestData.store[:ship_from] = value)
 end
 
 Then /^[Cc]heck Print form [Ee]mail [Tt]racking checkbox$/ do

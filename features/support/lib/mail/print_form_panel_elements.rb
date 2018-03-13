@@ -563,6 +563,11 @@ module Stamps
 
       class PrintFormService < WebApps::Base
         include PrintFormBlurOut
+        attr_accessor :print_media
+        def initialize(param)
+          super(param)
+          @print_media = param.print_media
+        end
 
         def service_selection
           (cache[:service_selection].nil? || !cache[:service_selection].present?) ? cache[:service_selection] = MailServiceSelection.new(
@@ -580,7 +585,7 @@ module Stamps
         end
 
         def has_rates?
-          case(param.print_media)
+          case(print_media)
             when :certified_mail
               default_service = 'FCMI Package/Thick Envelope'
             when :label
