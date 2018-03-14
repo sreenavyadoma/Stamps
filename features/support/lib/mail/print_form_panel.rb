@@ -59,6 +59,7 @@ module Stamps
       # Mail Advanced Options
       module AdvancedOptions
         # @return [Mail Advanced Options]
+
         def advanced_options
           case print_media
           when :stamps

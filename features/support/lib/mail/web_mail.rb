@@ -29,7 +29,7 @@ module Stamps
         case print_media
           when :stamps
             if cache[:stamps].nil? || !cache[:stamps].present?
-              cache[:stamps] = Object.const_get('Mail::Base').extend(PrintFormPanel::MailStamps)
+              cache[:stamps] = Object.const_get('Mail::Base').new(param).extend(PrintFormPanel::MailStamps)
               cache[:stamps].print_media = print_media #todo-Rob fix this in new page object
             end
             return cache[:stamps]
