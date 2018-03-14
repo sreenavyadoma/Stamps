@@ -4,7 +4,7 @@ Then /^Teardown$/ do
 end
 
 Given /^(?:|I )[Ll]aunch(?:|ed) (?:|browser)(?:| (\w+))(?:|(?:|the )default browser)$/ do |str|
-  SdcTest.setup((str.nil?)? modal_param.browser_str : str)
+  SdcTest.configure_driver(str)
 end
 
 Then /^Refresh the browser$/ do

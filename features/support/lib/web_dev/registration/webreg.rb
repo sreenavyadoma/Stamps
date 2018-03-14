@@ -64,7 +64,7 @@ module Stamps
                   else
                     nil
                 end
-        url = case modal_param.env.downcase
+        url = case SdcEnv.env.downcase
                 when /cc/
                   "https://qa-registration.stamps.com/registration/#{(theme.nil?) ? "" : "?theme=#{theme}"}"
                 when /sc/

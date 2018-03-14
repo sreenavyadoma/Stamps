@@ -41,7 +41,7 @@ module Stamps
           partial_printer_name = (str.include?('\\')) ? /\\\\(.+)\\/.match(str)[1] : str
           5.times do
             return textbox.text if textbox.text.include?(partial_printer_name)
-            selection = StampsField.new(driver.li(text: /#{partial_printer_name}/))
+            selection = StampsField.new(driver.li(visible_text: /#{partial_printer_name}/))
             dropdown.click unless selected_printer.present?
             return false if selected_printer.present? && !selection.present?
             selection.click
@@ -189,7 +189,7 @@ module Stamps
         end
 
         def x_button
-          driver.img(css: 'img[class*=x-tool-close]')
+          driver.span(css: 'span[class*=sdc-icon-mobile-close-light]')
         end
 
         def printer_label

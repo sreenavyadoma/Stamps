@@ -1,5 +1,26 @@
 module Stamps
-  def db_connection
+
+
+
+
+  #----------------------------------------------------------
+
+
+
+
+
+
+
+  #----------------------------------------------------------
+  # 
+
+  def user_credentials
+    @user_credentials ||= StampsUserCredentials.new(mysql_conn)
+    @user_credentials.scenario_name = SdcTest.scenario_name
+    @user_credentials
+  end
+
+  def mysql_conn
     if @db_connection.nil?
       host = data_for(:database, {})['mysql']['host']
       username = data_for(:database, {})['mysql']['username']
@@ -10,6 +31,8 @@ module Stamps
     end
     @db_connection
   end
+
+
+
+
 end
-
-
