@@ -1,7 +1,7 @@
 module Stamps
   class HealthCheck < WebApps::Base
-    def health_check
-      case param.env.downcase
+    def health_check #todo-Rob refactor healthcheck
+      case param.env
         when /sc/
           driver.goto("https://printext.qasc.stamps.com/orders/healthcheck.aspx")
         when /cc/
@@ -17,8 +17,7 @@ module Stamps
     end
 
     def address_book
-      param.env = 'stg' if param.env.downcase == 'staging'
-      case param.env.downcase
+      case param.env
         when /sc/
           driver.goto("https://printext.qasc.stamps.com/addressbook/healthcheck.aspx")
         when /cc/
@@ -34,7 +33,7 @@ module Stamps
     end
 
     def or_reports
-      case param.env.downcase
+      case param.env
         when /sc/
           driver.goto("https://orext.qasc.stamps.com/ORReports/healthcheck.aspx")
         when /cc/
@@ -50,7 +49,7 @@ module Stamps
     end
 
     def or_postage_tools
-      case param.env.downcase
+      case param.env
         when /sc/
           driver.goto("https://orext.qasc.stamps.com/postagetools/healthcheck.aspx")
         when /cc/

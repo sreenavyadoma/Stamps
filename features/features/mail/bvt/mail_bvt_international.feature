@@ -1,9 +1,9 @@
-@mobile_mail_smoke_test
 Feature: International Shipping BVT
 
   Background:
     Given a user is signed in to Web Apps
 
+  @mobile_mail_smoke_test
   @mail_bvt_international
   Scenario: International Shipping
     Then select Print On Shipping Label - Paper

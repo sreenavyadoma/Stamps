@@ -5,10 +5,12 @@ module Stamps
       #include Stamps::Mail::MailModals::PrintIncompleteFields
 
       attr_reader :total, :mail_print_modal, :install_stamps_connect, :confirm_window, :please_wait, :windows_print, :sample_button,
-                  :printing_problem, :insufficient_funds, :print_label, :print_stamps, :print_envelope, :print_quantity_warning, :hidden_postage_warning
+                  :printing_problem, :insufficient_funds, :print_label, :print_stamps, :print_envelope, :print_quantity_warning,
+                  :hidden_postage_warning, :print_media
 
-      def initialize(param)
-        super
+      def initialize(param, print_media)
+        super(param)
+        @print_media = print_media
         @install_stamps_connect = PrintModal::InstallStampsConnect.new(param)
         @mail_print_modal = PrintModal::MailPrintModal.new(param)
         @confirm_window = PrintModal::MailConfirmPrint.new(param)
@@ -31,7 +33,7 @@ module Stamps
 
       def print_button
           10.times do
-          @print_button = case param.print_media
+          @print_button = case print_media
                             when :envelope
                               StampsField.new(driver.span(text: 'Print Envelope'))
                             when :stamps
@@ -45,7 +47,7 @@ module Stamps
                             when :cm3810, :cm3830
                               StampsField.new(driver.span(text: 'Print Envelope'))
                             else
-                              raise ArgumentError, "Invalid print media. Don't know what to do with #{}"
+                              raise ArgumentError, "Invalid print media: #{print_media}"
                           end
           break if @print_button.present?
         end

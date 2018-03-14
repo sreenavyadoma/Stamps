@@ -118,8 +118,8 @@ module Stamps
         def select(str)
           dropdown.click
           sleep(0.5)
-          window_title = Class.new(WebApps::Base).new(param).extend(Stamps::Orders::ShipFrom::WindowTitle)
-          selection = StampsField.new((str.downcase.include?('default')) ? driver.lis(css: "[class*='x-boundlist-item-over'][data-recordindex='0']")[(form_type == :single_order) ? 0 : 1] : driver.lis(visible_text: /#{str}/)[(form_type == :single_order) ? 0 : 1])
+          window_title = Object.const_get('WebApps::Base').new(param).extend(Stamps::Orders::ShipFrom::WindowTitle)
+          selection = StampsField.new((str.downcase.include?('default')) ? driver.lis(css: "[class*='x-boundlist-item-over'][data-recordindex='0']")[(form_type == :single_order) ? 0 : 1] : driver.lis(text: /#{str}/)[(form_type == :single_order) ? 0 : 1])
           if str.downcase.include?("manage shipping")
             20.times do
               sleep(0.35)

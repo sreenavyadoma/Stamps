@@ -1,10 +1,10 @@
 Then /^[Pp]repare environment for ratings test$/ do
-  step "select Print On Shipping Label - Paper" if @modal_param.web_app==:mail
-  step "add new order" if @modal_param.web_app==:orders
+  step "select Print On Shipping Label - Paper" if @SdcEnv.web_app==:mail
+  step "add new order" if @SdcEnv.web_app==:orders
 end
 
 Then /^[Ee]xcel rate sheet is loaded$/ do
-  expect([:orders, :mail]).to include(modal_param.web_app)
+  expect([:orders, :mail]).to include(SdcEnv.web_app)
   Spreadsheet.client_encoding='UTF-8'
   rate_file=data_for(:rates_test, {})['rate_file']
   #copy file tolocal

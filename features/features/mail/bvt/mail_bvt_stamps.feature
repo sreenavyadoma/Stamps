@@ -1,11 +1,11 @@
-@mobile_mail_smoke_test
+
 Feature: Print form BVT
 
   Background:
     Given a valid user is signed in to Web Apps
 
+  @mobile_mail_smoke_test
   @mail_bvt_stamps
-
   Scenario: Print form Specify Postage
     Then select Print On Stamps
 

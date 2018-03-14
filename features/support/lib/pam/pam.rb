@@ -24,7 +24,7 @@ module Stamps
       end
 
       def visit
-        url = case param.env.downcase
+        url = case param.env
                 when /cc/
                   "http://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@qa-clientsite:82/pam/Default.asp"
                 when /sc/
