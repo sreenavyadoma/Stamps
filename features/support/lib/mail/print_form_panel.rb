@@ -63,28 +63,28 @@ module Stamps
           case print_media
           when :stamps
             if cache[:stamps_options].nil? || !cache[:stamps_options].present?
-              cache[:stamps_options] = Class.new(WebApps::Base).new(param).extend(Stamps::Mail::AdvancedOptions::Stamps)
+              cache[:stamps_options] = Object.const_get('WebApps::Base').new(param).extend(Stamps::Mail::AdvancedOptions::Stamps)
             end
             return cache[:stamps_options]
           when :label
             if cache[:label_options].nil? || !cache[:label_options].present?
-              cache[:label_options] = Class.new(WebApps::Base).new(param).extend(Stamps::Mail::AdvancedOptions::Labels)
+              cache[:label_options] = Object.const_get('WebApps::Base').new(param).extend(Stamps::Mail::AdvancedOptions::Labels)
             end
             return cache[:label_options]
           when :envelope
             if cache[:envelope_options].nil? || !cache[:envelope_options].present?
-              cache[:envelope_options] = Class.new(WebApps::Base).new(param).extend(Stamps::Mail::AdvancedOptions::Envelopes)
+              cache[:envelope_options] = Object.const_get('WebApps::Base').new(param).extend(Stamps::Mail::AdvancedOptions::Envelopes)
             end
             return cache[:envelope_options]
           # when :certified_mail, :certified_mail_3910_3930, :certified_mail_3810, :certified_mail_3830
           when :cm3610, :cm3710, :cm3910, :cm3930, :cm3810, :cm3830
             if cache[:cm_options].nil? || !cache[:cm_options].present?
-              cache[:cm_options] = Class.new(WebApps::Base).new(param).extend(Stamps::Mail::AdvancedOptions::CertifiedMails)
+              cache[:cm_options] = Object.const_get('WebApps::Base').new(param).extend(Stamps::Mail::AdvancedOptions::CertifiedMails)
             end
             return cache[:cm_options]
           when :roll
             if cache[:roll_options].nil? || !cache[:roll_options].present?
-              cache[:roll_options] = Class.new(WebApps::Base).new(param).extend(Stamps::Mail::AdvancedOptions::Rolls)
+              cache[:roll_options] = Object.const_get('WebApps::Base').new(param).extend(Stamps::Mail::AdvancedOptions::Rolls)
             end
             return cache[:roll_options]
           end

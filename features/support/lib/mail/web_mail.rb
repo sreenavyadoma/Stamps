@@ -29,31 +29,31 @@ module Stamps
         case print_media
           when :stamps
             if cache[:stamps].nil? || !cache[:stamps].present?
-              cache[:stamps] = Class.new(Mail::Base).new(param).extend(PrintFormPanel::MailStamps)
+              cache[:stamps] = Object.const_get('Mail::Base').extend(PrintFormPanel::MailStamps)
               cache[:stamps].print_media = print_media #todo-Rob fix this in new page object
             end
             return cache[:stamps]
           when :label
             if cache[:label].nil? || !cache[:label].present?
-              cache[:label] = Class.new(Mail::Base).new(param).extend(PrintFormPanel::ShippingLabel)
+              cache[:label] = Object.const_get('Mail::Base').new(param).extend(PrintFormPanel::ShippingLabel)
               cache[:label].print_media = print_media #todo-Rob fix this in new page object
             end
             return cache[:label]
           when :envelope
             if cache[:envelope].nil? || !cache[:envelope].present?
-              cache[:envelope] = Class.new(Mail::Base).new(param).extend(PrintFormPanel::Envelope)
+              cache[:envelope] = Object.const_get('Mail::Base').new(param).extend(PrintFormPanel::Envelope)
               cache[:envelope].print_media = print_media #todo-Rob fix this in new page object
             end
             return cache[:envelope]
           when :certified_mail
             if cache[:cm].nil? || !cache[:cm].present?
-              cache[:cm] = Class.new(Mail::Base).new(param).extend(PrintFormPanel::CertifiedMail)
+              cache[:cm] = Object.const_get('Mail::Base').new(param).extend(PrintFormPanel::CertifiedMail)
               cache[:cm].print_media = print_media #todo-Rob fix this in new page object
             end
             return cache[:cm]
           when :roll
             if cache[:roll].nil? || !cache[:roll].present?
-              cache[:roll] = Class.new(Mail::Base).new(param).extend(PrintFormPanel::Roll)
+              cache[:roll] = Object.const_get('Mail::Base').new(param).extend(PrintFormPanel::Roll)
               cache[:roll].print_media = print_media #todo-Rob fix this in new page object
             end
             return cache[:roll]

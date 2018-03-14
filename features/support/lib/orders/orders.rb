@@ -49,7 +49,7 @@ module Stamps
       end
 
       def external_sites
-        cache[:external_sites] = Class.new(WebApps::Base).new(param).extend(StampsExternalSites) if cache[:external_sites].nil?
+        cache[:external_sites] = Object.const_get('WebApps::Base').new(param).extend(StampsExternalSites) if cache[:external_sites].nil?
         cache[:external_sites]
       end
 

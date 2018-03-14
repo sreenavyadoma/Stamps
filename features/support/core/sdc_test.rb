@@ -10,7 +10,9 @@ module Stamps
   end
 
   class SdcTest
+
     class << self
+      include Stamps::Core
       attr_accessor :driver, :scenario_name, :scenario, :log
 
       def configure_driver(browser, firefox_profile = nil)
@@ -34,7 +36,7 @@ module Stamps
                 # ignore
               end
               if firefox_profile.nil?
-                self.driver = Watir::Browser.new(:firefox, accept_insecure_certs: true)
+                self.driver = SdcDelegatedDriver.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
               else
                 profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(firefox_profile)
                 profile.assume_untrusted_certificate_issuer = true
