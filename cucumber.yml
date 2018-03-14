@@ -10,7 +10,7 @@ rob_sc: --tags @bvt_shipstation_updates_domestic SDC_APP=orders JENKINS=true URL
 rob_dev: --tags @mail_advanced_options_stamps SDC_APP=orders JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess VERBOSE=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 rob_mail_cc:  --tags @mail_bvt_international SDC_APP=mail JENKINS=true USR=cctruer0u PW=pass111 URL=cc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory #\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
 rob_mail_stg: --tags @mail_bvt_international SDC_APP=mail JENKINS=true USR=default PW=pass111 URL=stg --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory #stgee1mtqvwdc0
-rob_mail_sc: --tags @mail_bvt_advanced_options SDC_APP=mail JENKINS=true USR=default PW=pass111 URL=sc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
+rob_mail_sc: --tags @print_dialog_ship_date SDC_APP=mail JENKINS=true USR=default PW=pass111 URL=sc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 rob_registration: --tags @registration_normal_workflow SDC_APP=registration URL=cc --guess VERBOSE=true HEALTHCHECK=false BROWSER=chrome MAX_WINDOW=false JENKINS=true
 
 #todo-Rob WebReg consider removing webapp, username, password fields
@@ -27,13 +27,13 @@ eli_dev: --tags @bvt_shipstation_search --guess VERBOSE=false JENKINS=false HEAL
 ray_dev: --tags @rates_parcel_select_ground --guess VERBOSE=false JENKINS=false HEALTHCHECK=true SDC_APP=orders URL=stg BROWSER=gc USR=default PW=pass111
 sap:              --tags @registration_orders SDC_APP=registration URL=cc --guess VERBOSE=false BROWSER=gc MAX_WINDOW=false
 
-alex_mail:  --tags @address_management BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast1 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
-alex_regress:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders JENKINS=true URL=cc USR=abqacc10 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
-alex_rates:  --tags @rates_parcel_select_ground_zone_1 BROWSER=ff WEB_APP=mail JENKINS=true URL=stg USR=abqast1 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
-alex_rates_pmi:  --tags @rates_pmi_comm_plus_group_9 BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast2 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
-alex_orders:  --tags @bvt_shipping_address_management BROWSER=safari WEB_APP=orders JENKINS=true URL=qacc USR=abqacc10 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false #abqast1
-alex_orders:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders JENKINS=true URL=qacc USR=abqacc10 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false #abqast1
-alex_test:  --tags @bvt_shipping_address_management BROWSER=gc WEB_APP=orders JENKINS=true URL=qacc USR=abqacc10 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
+alex_mail:  --tags @mail_bvt_international BROWSER=ff SDC_APP=mail JENKINS=true URL=stg USR=abqast1 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
+alex_regress:  --tags @bvt_shipping_address_management BROWSER=ff SDC_APP=orders JENKINS=true URL=cc USR=abqacc10 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
+alex_rates:  --tags @rates_parcel_select_ground_zone_1 BROWSER=ff SDC_APP=mail JENKINS=true URL=stg USR=abqast1 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
+alex_rates_pmi:  --tags @rates_pmi_comm_plus_group_9 BROWSER=ff SDC_APP=orders JENKINS=true URL=stg USR=abqast2 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
+alex_orders:  --tags @bvt_shipping_address_management BROWSER=safari SDC_APP=orders JENKINS=true URL=qacc USR=abqacc10 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false #abqast1
+alex_orders:  --tags @bvt_shipping_address_management BROWSER=ff SDC_APP=orders JENKINS=true URL=qacc USR=abqacc10 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false #abqast1
+alex_test:  --tags @bvt_shipping_address_management BROWSER=gc SDC_APP=orders JENKINS=true URL=qacc USR=abqacc10 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
 
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=xxxxxxxxxx
