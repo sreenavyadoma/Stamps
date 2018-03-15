@@ -1,0 +1,8 @@
+
+Download mysql connector ARCHIVE for 32/64 bit windows here;
+https://dev.mysql.com/downloads/connector/c/
+extract the files here;
+C:\mysql-connector\
+Then install it using this command;
+gem install mysql2 --platform=ruby -- '--with-mysql-lib="C:\mysql-connector\lib" --with-mysql-include="C:\mysql-connector\include" --with-mysql-dir="C:\mysql-connector"'
+
