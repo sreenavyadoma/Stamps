@@ -101,7 +101,6 @@ module Stamps
         SdcEnv.verbose = ENV['VERBOSE'].nil? ? false : ENV['VERBOSE'].downcase == 'true'
         SdcEnv.hostname = Socket.gethostname
         SdcEnv.web_app = (ENV['SDC_APP'].downcase).to_sym
-        SdcEnv.env = ENV['URL'].downcase
         SdcEnv.health_check = ENV['HEALTHCHECK'].nil? ? false : ENV['HEALTHCHECK'].casecmp('true') == 0
         SdcEnv.usr = ENV['USR']
         SdcEnv.pw = ENV['PW']
@@ -114,6 +113,8 @@ module Stamps
                          'qasc'
                        when /rating/
                          'rating'
+                       else
+                         ENV['URL'].downcase #todo-Rob convert environment to symbol
                      end
         logger = Log4r::Logger.new(":")
         logger.outputters = Outputter.stdout

@@ -98,7 +98,7 @@ module Stamps
                   when /rating/
                     "http://printext.qacc.stamps.com/#{(param.web_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
                   else
-                    "http://#{param.env}/#{(param.web_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
+                    raise ArgumentError, "Don't know what to do with #{param.env}. URL might not be set?"
                 end
           log.message '-'
           log.message "URL: #{url}"
