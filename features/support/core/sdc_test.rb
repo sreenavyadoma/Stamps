@@ -13,7 +13,7 @@ module Stamps
 
     class << self
       include Stamps::Core
-      attr_accessor :driver, :scenario_name, :scenario, :log
+      attr_reader :driver, :scenario_name, :scenario, :log
 
       def configure_driver(browser, firefox_profile = nil)
         begin
@@ -26,8 +26,8 @@ module Stamps
               rescue
                 # ignore
               end
-              self.driver = SdcDelegatedDriver.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
-              self.driver.window.maximize
+              @driver = SdcDelegatedDriver.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
+              @driver.window.maximize
 
             when :firefox # Launch Firefox
               begin
@@ -36,15 +36,15 @@ module Stamps
                 # ignore
               end
               if firefox_profile.nil?
-                self.driver = SdcDelegatedDriver.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
+                @driver = SdcDelegatedDriver.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
               else
                 profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(firefox_profile)
                 profile.assume_untrusted_certificate_issuer = true
                 profile['network.http.phishy-userpass-length'] = 255
-                self.driver = SdcDelegatedDriver.new(Watir::Browser.new(:firefox, :profile => profile))
+                @driver = SdcDelegatedDriver.new(Watir::Browser.new(:firefox, :profile => profile))
               end
-              self.driver.window.resize_to 1560, 1020
-              self.driver.window.move_to 0, 0
+              @driver.window.resize_to 1560, 1020
+              @driver.window.move_to 0, 0
 
             when :chrome
               begin
@@ -52,8 +52,8 @@ module Stamps
               rescue
                 # ignore
               end
-              self.driver = SdcDelegatedDriver.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
-              self.driver.window.maximize
+              @driver = SdcDelegatedDriver.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+              @driver.window.maximize
             #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
 
             when :ie # Launch Internet Explorer
@@ -62,8 +62,8 @@ module Stamps
               rescue
                 # ignore
               end
-              self.driver = SdcDelegatedDriver.new(Watir::Browser.new(:ie))
-              self.driver.window.maximize
+              @driver = SdcDelegatedDriver.new(Watir::Browser.new(:ie))
+              @driver.window.maximize
 
             when :safari
               begin
@@ -71,11 +71,11 @@ module Stamps
               rescue
                 # ignore
               end
-              self.driver = SdcDelegatedDriver.new(Watir::Browser.new(:safari, technology_preview: true))
+              @driver = SdcDelegatedDriver.new(Watir::Browser.new(:safari, technology_preview: true))
             else
               raise ArgumentError, "#{driver} is not a valid driver selection"
           end
-          self.driver
+          @driver
         rescue Exception => e
           log.error e.message
           log.error e.backtrace.join("\n")
@@ -84,7 +84,7 @@ module Stamps
       end
 
       def configure(scenario)
-        self.scenario = scenario
+        @scenario = scenario
         raise ArgumentError, "SDC_APP is not defined or invalid. Expected values are #{SdcEnv::SDC_APP}" unless !ENV['SDC_APP'].nil? && SdcEnv::SDC_APP.include?(ENV['SDC_APP'].downcase)
         raise ArgumentError, "URL is not defined or invalid. Expected values are #{SdcEnv::TEST_ENVIRONMENTS}" unless !ENV['URL'].nil? && SdcEnv::TEST_ENVIRONMENTS.include?(ENV['URL'].downcase)
         SdcEnv.browser = validate_browser(ENV['BROWSER'])
@@ -108,8 +108,8 @@ module Stamps
                      end
         logger = Log4r::Logger.new(":")
         logger.outputters = Outputter.stdout
-        self.log = Stamps::Core::SdcLogger.new(logger)
-        self.log.verbose = SdcEnv.verbose
+        @log = Stamps::Core::SdcLogger.new(logger)
+        @log.verbose = SdcEnv.verbose
 
         #These should be in an orders/mail or web_apps environment variable container
         SdcEnv.printer = ENV['PRINTER']
@@ -120,8 +120,8 @@ module Stamps
       def web_apps_param
         #Param = Struct.new(:driver, :log, :scenario_name, :web_app, :env, :usr, :pw, :print_media, :printer)
         param = Param.new
-        param.driver = self.driver
-        param.log = self.log
+        param.driver = @driver
+        param.log = @log
         param.scenario_name
         param.scenario_name
         param.env = SdcEnv.env
@@ -146,8 +146,8 @@ module Stamps
       end
 
       def print_test_steps
-        raise ArgumentError, 'Set scenario object before printing test steps' if self.scenario.nil?
-        self.scenario_name = scenario.name
+        raise ArgumentError, 'Set scenario object before printing test steps' if @scenario.nil?
+        @scenario_name = scenario.name
         log.info "- Feature: #{scenario.feature}"
         log.info "- Scenario: #{scenario.name}"
         log.info "- Tags:"
@@ -252,14 +252,14 @@ end
           #log.info "-"
 
 
-              #self.driver.window.maximize
+              #@driver.window.maximize
               #self.browser_version = /Edge\/.+/.match(driver.execute_script("return navigator.userAgent;"))
 
 
 #stdout, status = Open3.capture3("killall Safari")
 
               #versions(driver.execute_script("return navigator.userAgent;"))
-              #versions(self.driver.execute_script("return navigator.userAgent;"))
+              #versions(@driver.execute_script("return navigator.userAgent;"))
 
 
 
