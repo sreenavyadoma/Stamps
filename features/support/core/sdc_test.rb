@@ -1,16 +1,15 @@
 module Stamps
 
   module SdcEnv
-    TEST_ENVIRONMENTS = %w(staging stg qacc cc qasc sc rating).freeze
-    BROWSERS = %w(firefox ff chrome gc safari edge).freeze
-    SDC_APP = %w(orders mail webdev ios android).freeze
+    TEST_ENVIRONMENTS = %i(stg qacc cc qasc sc rating).freeze
+    BROWSERS = %i(firefox ff chrome gc safari edge).freeze
+    SDC_APP = %i(orders mail webdev ios android).freeze
     class << self
       attr_accessor :web_app, :env, :health_check, :usr, :pw, :url, :verbose,  :printer, :browser, :hostname, :print_media
     end
   end
 
   class SdcTest
-
     class << self
       include Stamps::Core
       attr_reader :driver, :scenario_name, :scenario, :log
@@ -19,7 +18,7 @@ module Stamps
         begin
           Watir.always_locate = true
           Selenium::WebDriver.logger.level = :warn
-          case(browser.nil? ? SdcEnv.browser : validate_browser(browser))
+          case(browser.nil? ? SdcEnv.browser : browser_sym(browser))
             when :edge # Launch Microsoft Edge
               begin
                 stdout, stdeerr, status = Open3.capture3("taskkill /im MicrosoftEdge.exe /f")
@@ -85,27 +84,14 @@ module Stamps
 
       def configure(scenario)
         @scenario = scenario
-        raise ArgumentError, "SDC_APP is not defined or invalid. Expected values are #{SdcEnv::SDC_APP}" unless !ENV['SDC_APP'].nil? && SdcEnv::SDC_APP.include?(ENV['SDC_APP'].downcase)
-        raise ArgumentError, "URL is not defined or invalid. Expected values are #{SdcEnv::TEST_ENVIRONMENTS}" unless !ENV['URL'].nil? && SdcEnv::TEST_ENVIRONMENTS.include?(ENV['URL'].downcase)
-        SdcEnv.browser = validate_browser(ENV['BROWSER'])
+        SdcEnv.browser = browser_sym(ENV['BROWSER'])
         SdcEnv.verbose = ENV['VERBOSE'].nil? ? false : ENV['VERBOSE'].downcase == 'true'
         SdcEnv.hostname = Socket.gethostname
-        SdcEnv.web_app = (ENV['SDC_APP'].downcase).to_sym
+        SdcEnv.web_app = sdc_app(ENV['SDC_APP'])
         SdcEnv.health_check = ENV['HEALTHCHECK'].nil? ? false : ENV['HEALTHCHECK'].casecmp('true') == 0
         SdcEnv.usr = ENV['USR']
         SdcEnv.pw = ENV['PW']
-        SdcEnv.env = case(ENV['URL'].downcase)
-                       when /staging/
-                         'stg'
-                       when /cc/
-                         'qacc'
-                       when /sc/
-                         'qasc'
-                       when /rating/
-                         'rating'
-                       else
-                         ENV['URL'].downcase #todo-Rob convert environment to symbol
-                     end
+        SdcEnv.env = test_env(ENV['URL'])
         logger = Log4r::Logger.new(":")
         logger.outputters = Outputter.stdout
         @log = Stamps::Core::SdcLogger.new(logger)
@@ -113,24 +99,23 @@ module Stamps
 
         #These should be in an orders/mail or web_apps environment variable container
         SdcEnv.printer = ENV['PRINTER']
+
+        # todo-Rob workaround, fix it.
+        @web_apps_param = ::WebApps::Param.new
+        @web_apps_param.log = @log
+        @web_apps_param.scenario_name
+        @web_apps_param.scenario_name
+        @web_apps_param.env = SdcEnv.env
+        @web_apps_param.usr = SdcEnv.usr
+        @web_apps_param.pw = SdcEnv.pw
+        @web_apps_param.printer = SdcEnv.printer
+        @web_apps_param.web_app = SdcEnv.web_app
       end
 
-      ##
-      # This is a work around and it will go away
       def web_apps_param
-        #Param = Struct.new(:driver, :log, :scenario_name, :web_app, :env, :usr, :pw, :print_media, :printer)
-        param = Param.new
-        param.driver = @driver
-        param.log = @log
-        param.scenario_name
-        param.scenario_name
-        param.env = SdcEnv.env
-        param.usr = SdcEnv.usr
-        param.pw = SdcEnv.pw
-        #These should be in an orders/mail or web_apps environment variable container
-        param.printer = SdcEnv.printer
-        param.web_app = SdcEnv.web_app
-        param
+        @web_apps_param
+        @web_apps_param.driver = @driver
+        @web_apps_param
       end
 
       def configure_orders
@@ -178,9 +163,8 @@ module Stamps
 
       private
 
-      def validate_browser(browser)
-        raise ArgumentError, "BROWSER=#{browser}. Expected values are #{SdcEnv::BROWSERS}" unless !browser.nil? && SdcEnv::BROWSERS.include?(browser.downcase)
-        case browser.downcase
+      def browser_sym(str)
+        case str.downcase
           when /ff|firefox|mozilla/
             return :firefox
           when /chrome|gc|google/
@@ -192,7 +176,32 @@ module Stamps
           else
             # ignore
         end
-        nil
+
+        raise ArgumentError, "BROWSER=#{str}. Expected values are #{SdcEnv::BROWSERS}" unless !str.nil? && SdcEnv::BROWSERS.include?(str.downcase)
+      end
+
+      def sdc_app(str)
+        return str.downcase.to_sym if !str.nil? && SdcEnv::SDC_APP.include?(str.downcase.to_sym)
+        raise ArgumentError, "SDC_APP is not defined or invalid. Expected values are #{SdcEnv::SDC_APP} - Got: #{str}"
+      end
+
+      def test_env(str)
+        case(str.downcase)
+          when /staging/
+            return :stg
+          when /stg/
+            return :stg
+          when /cc/
+            return :qacc
+          when /sc/
+            return :qasc
+          when /rat/
+            return :rating
+          else
+            # ignore
+        end
+
+        raise ArgumentError, "URL is not defined or invalid. Expected values are #{SdcEnv::TEST_ENVIRONMENTS}" unless !str.nil? && SdcEnv::TEST_ENVIRONMENTS.include?(str.downcase.to_sym)
       end
 
       def browser_version(str)

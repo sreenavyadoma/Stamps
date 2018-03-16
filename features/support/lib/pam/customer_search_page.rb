@@ -3,11 +3,11 @@ module Stamps
     class CustomerSearchPage < WebApps::Base
       def visit
         url = case param.env
-                when /cc/
+                when :qacc
                   "http://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@qa-clientsite:82/pam/AccountSearch.asp"
-                when /sc/
+                when :qasc
                   "http://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@site.qasc.stamps.com:82/pam/AccountSearch.asp"
-                when /stg/
+                when :stg
                   "https://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@site.staging.stamps.com:82/pam/AccountSearch.asp"
                 else
                   raise ArgumentError, "#{param.env} environment is not implemented."

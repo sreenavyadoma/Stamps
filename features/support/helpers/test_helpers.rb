@@ -17,16 +17,20 @@ module Stamps
         down = ('a'..'z').to_a
         up = ('A'..'Z').to_a
         digits = ('0'..'9').to_a
-        special = ['-', '_', '.', '-', '_', '.', '-', '_', '.']
-        (env.nil? ? 'xx' : env) + (digits + down + up + special).shuffle[1..1].join + [rand_samp_str(down), rand_samp_str(up), rand_samp_str(digits)].concat((down + up + digits).sample(Random.rand(0..5))).shuffle.join
+        special = %w('-', '_', '.', '-', '_', '.', '-', '_', '.')
+        (env.nil? ? 'xx' : env.to_s) + (digits + down + up + special).shuffle[1..1].join +
+            [rand_samp_str(down), rand_samp_str(up), rand_samp_str(
+                digits)].concat((down + up + digits).sample(Random.rand(0..5))).shuffle.join
       end
 
       def rand_email(env)
-        "#{rand_usr(env)}@mailinator.com".downcase
+        "#{rand_usr(env.to_s)}@mailinator.com".downcase
       end
 
       def rand_alpha_numeric(min = 2, max = 10)
-        [rand_samp_str(('a'..'z').to_a), rand_samp_str(('A'..'Z').to_a), rand_samp_str(('0'..'9').to_a)].concat((('a'..'z').to_a + ('A'..'Z').to_a + ('0'..'9').to_a).sample(Random.rand(min..max))).shuffle.join
+        [rand_samp_str(('a'..'z').to_a), rand_samp_str(('A'..'Z').to_a),
+         rand_samp_str(('0'..'9').to_a)].concat((('a'..'z').to_a +
+            ('A'..'Z').to_a + ('0'..'9').to_a).sample(Random.rand(min..max))).shuffle.join
       end
 
       def rand_samp_str(arr)

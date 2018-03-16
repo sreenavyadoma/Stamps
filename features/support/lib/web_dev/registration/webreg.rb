@@ -65,11 +65,11 @@ module Stamps
                     nil
                 end
         url = case SdcEnv.env.downcase
-                when /cc/
+                when :qacc
                   "https://qa-registration.stamps.com/registration/#{(theme.nil?) ? "" : "?theme=#{theme}"}"
-                when /sc/
+                when :qasc
                   "https://registrationext.qasc.stamps.com/registration/#{(theme.nil?) ? "" : "?theme=#{theme}"}"
-                when /stg/
+                when :stg
                   "https://registration.staging.stamps.com/registration/#{(theme.nil?) ? "" : "?theme=#{theme}"}"
                 else
                   raise ArgumentError, "#{param.env} environment is not implemented."

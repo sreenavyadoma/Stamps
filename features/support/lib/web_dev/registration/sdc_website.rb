@@ -15,11 +15,11 @@ module Stamps
 
       def load_page
         url = case param.env
-                when /cc/
+                when :qacc
                   "http://sdcwebsite.qacc.stamps.com/"
-                when /sc/
+                when :qasc
                   "http://sdcwebsite.qasc.stamps.com/"
-                when /stg/
+                when :stg
                   "http://sdcwebsite.staging.stamps.com/"
                 else
                   raise ArgumentError, "#{param.env} environment is not implemented."
