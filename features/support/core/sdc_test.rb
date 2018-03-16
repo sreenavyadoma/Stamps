@@ -48,13 +48,23 @@ module Stamps
 
             when :chrome
               begin
-                stdout, stdeerr, status = Open3.capture3("taskkill /im chrome.exe /f")
+                #    stdout, stdeerr, status = Open3.capture3("taskkill /im chrome.exe /f")
               rescue
                 # ignore
               end
               @driver = SdcDelegatedDriver.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
               @driver.window.maximize
             #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
+
+            when :chromeb
+              begin
+                #    stdout, stdeerr, status = Open3.capture3("taskkill /im chrome.exe /f")
+              rescue
+                # ignore
+              end
+              Selenium::WebDriver::Chrome.path = "C:\\Program Files (x86)\\Google\\Chrome Beta\\Application\\chrome.exe"
+              @driver = SdcDelegatedDriver.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+              @driver.window.maximize
 
             when :ie # Launch Internet Explorer
               begin
@@ -176,12 +186,14 @@ module Stamps
       end
 
       private
-
+      #todo-Rob these need to be declared in a constant
       def validate_browser(browser)
         raise ArgumentError, "BROWSER=#{browser}. Expected values are #{SdcEnv::BROWSERS}" unless !browser.nil? && SdcEnv::BROWSERS.include?(browser.downcase)
         case browser.downcase
           when /ff|firefox|mozilla/
             return :firefox
+          when /chromeb|gcb|googleb/
+            return :chromeb
           when /chrome|gc|google/
             return :chrome
           when /ms|me|microsoft|edge/
