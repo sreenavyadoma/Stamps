@@ -48,7 +48,7 @@ module Stamps
 
             when :chrome
               begin
-                #    stdout, stdeerr, status = Open3.capture3("taskkill /im chrome.exe /f")
+                stdout, stdeerr, status = Open3.capture3("taskkill /im chrome.exe /f")
               rescue
                 # ignore
               end
