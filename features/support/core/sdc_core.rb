@@ -1,9 +1,20 @@
 module Stamps
   module Core
-    class SdcDelegatedDriver < SimpleDelegator
+    class SdcDriver
       def initialize(driver)
-        super
+        @driver = driver
       end
+
+      def method_missing(method, *args)
+        if driver.respond_to?(method)
+          driver.send(method, *args)
+        else
+          super
+        end
+      end
+
+      private
+      attr_reader :driver
     end
 
     class Base
