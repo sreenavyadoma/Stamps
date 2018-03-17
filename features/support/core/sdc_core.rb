@@ -1,21 +1,22 @@
 module Stamps
-  module Core
-    class SdcDriver
-      def initialize(driver)
-        @driver = driver
-      end
-
-      def method_missing(method, *args)
-        if driver.respond_to?(method)
-          driver.send(method, *args)
-        else
-          super
-        end
-      end
-
-      private
-      attr_reader :driver
+  class SdcDriver
+    def initialize(driver)
+      @driver = driver
     end
+
+    def method_missing(method, *args)
+      if driver.respond_to?(method)
+        driver.send(method, *args)
+      else
+        super
+      end
+    end
+
+    private
+    attr_reader :driver
+  end
+
+  module Core
 
     class Base
       class << self
