@@ -1,3 +1,12 @@
+
+class Object
+  def set_instance_variables(binding, *variables)
+    variables.each do |var|
+      instance_variable_set(:"@#{var}", eval(var.to_s, binding)) #def initialize(red=0, green=0, blue=0) set_instance_variables(binding, *local_variables) end
+    end
+  end
+end
+
 class String
   ##
   # Strips garbage proceeding service selection.
