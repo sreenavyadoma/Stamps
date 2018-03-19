@@ -1,5 +1,5 @@
 module Stamps
-  module WebApps2
+  module WebApps
     def health
       begin
         @health = HealthCheck.new(SdcTest.web_apps_param) if @health.nil?

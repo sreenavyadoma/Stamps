@@ -98,13 +98,13 @@ module Stamps
 
       def load_sign_in_page
         url = case param.env
-                when /cc/
+                when :qacc
                   "http://printext.qacc.stamps.com/#{(param.web_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
-                when /sc/
+                when :qasc
                   "http://printext.qasc.stamps.com/#{(param.web_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
-                when /stg/
+                when :stg
                   "https://print.testing.stamps.com/#{(param.web_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
-                when /rating/
+                when :rating
                   "http://printext.qacc.stamps.com/#{(param.web_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
                 else
                   "http://#{param.env}/#{(param.web_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"

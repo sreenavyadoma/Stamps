@@ -25,11 +25,11 @@ module Stamps
 
       def visit
         url = case param.env
-                when /cc/
+                when :qacc
                   "http://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@qa-clientsite:82/pam/Default.asp"
-                when /sc/
+                when :qasc
                   "http://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@site.qasc.stamps.com:82/pam/Default.asp"
-                when /stg/
+                when :stg
                   "https://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@site.staging.stamps.com:82/pam/Default.asp"
                 else
                   raise ArgumentError, "#{param.env} environment is not implemented."
