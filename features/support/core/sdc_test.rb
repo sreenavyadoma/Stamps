@@ -62,7 +62,7 @@ module Stamps
               rescue
                 # ignore
               end
-              Selenium::WebDriver::Chrome.path = "C:\\Program Files (x86)\\Google\\Chrome Beta\\Application\\chrome.exe"
+              Selenium::WebDriver::Chrome.path = data_for(:setup, {})['windows']['chromedriverbeta']
               @driver = SdcDelegatedDriver.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
               @driver.window.maximize
 

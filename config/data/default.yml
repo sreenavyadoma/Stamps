@@ -3,6 +3,7 @@ setup:
   windows:
     geckodriver: C:\Stamps\binaries\geckodriver.exe
     chromedriver: C:\Stamps\binaries\chromedriver.exe
+    chromedriverbeta: C:\Program Files (x86)\Google\Chrome Beta\Application\chrome.exe
   mac:
     geckodriver: tbd
     chromedriver: tbd

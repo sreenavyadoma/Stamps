@@ -9,7 +9,7 @@ module Stamps
     end
 
     def mail
-      cache[:mail].nil? ? cache[:mail] = WebMail.new(param) : cache[:mail]
+      cache[:mail].nil? ? cache[:mail] = Mail::WebMail.new(param) : cache[:mail]
     end
 
     def common_modals
