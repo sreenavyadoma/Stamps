@@ -40,25 +40,4 @@ require_relative 'lib/orders/store_management'
 require_relative 'lib/mail/print_form_panel_elements'
 require_relative 'lib/mail/print_form_panel'
 
-
-#require_relative 'lib/core/core/web_apps'
-#require_relative 'lib/apps/_parameters'
-#require_relative 'lib/apps/ers/test_helpers'
-#require_relative 'web_apps/helpers/paramhelpers'
-#require_relative 'lib/apps/ps'
-#require_relative 'lib/apps/web_apps'
-#
-#
-# # helper module
-# require_relative 'lib/orders/fields'
-# require_relative 'lib/mail/print_form_panel'
-# require_relative 'lib/windows/print_window'
-# require_relative 'lib/orders/store_management'
-# require_relative 'lib/orders/general_settings'
-# require_relative 'lib/windows/open_file'
-# require_relative '../../features/support/lib/common/customs_information'
-
-# require 'Win32API'
-# require 'win32/registry.rb'
-
 World Stamps

@@ -81,8 +81,8 @@ Given /^[Ss]ign-in to [Ww]eb [Aa]pps as (.*), (.*)$/ do |username, password|
       TestData.store[:password] = password = credentials[:password]
     end
   rescue Exception => e
-    log.error e.message
-    log.error e.backtrace.join("\n")
+    SdcTest.log.error e.message
+    SdcTest.log.error e.backtrace.join("\n")
     raise e
   end
   expect(TestData.store[:username] = username).to be_truthy
