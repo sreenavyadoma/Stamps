@@ -2,7 +2,7 @@ module Stamps
 
   module SdcEnv
     TEST_ENVIRONMENTS = %w(staging stg qacc cc qasc sc rating).freeze
-    BROWSERS = %w(firefox ff chrome gc safari edge).freeze
+    BROWSERS = %w(firefox ff chrome gc safari edge chromeb gcb).freeze
     SDC_APP = %w(orders mail webdev ios android).freeze
     class << self
       attr_accessor :web_app, :env, :health_check, :usr, :pw, :url, :verbose,  :printer, :browser, :hostname, :print_media
