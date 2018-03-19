@@ -94,14 +94,14 @@ module Stamps
 
       def configure(scenario)
         @scenario = scenario
-        SdcEnv.browser = browser_sym(ENV['BROWSER'])
-        SdcEnv.verbose = ENV['VERBOSE'].nil? ? false : ENV['VERBOSE'].downcase == 'true'
-        SdcEnv.hostname = Socket.gethostname
-        SdcEnv.web_app = sdc_app(ENV['SDC_APP'])
-        SdcEnv.health_check = ENV['HEALTHCHECK'].nil? ? false : ENV['HEALTHCHECK'].casecmp('true') == 0
-        SdcEnv.usr = ENV['USR']
-        SdcEnv.pw = ENV['PW']
-        SdcEnv.env = test_env(ENV['URL'])
+        SdcEnv.browser ||= browser_sym(ENV['BROWSER'])
+        SdcEnv.verbose ||= ENV['VERBOSE'].nil? ? false : ENV['VERBOSE'].downcase == 'true'
+        SdcEnv.hostname ||= Socket.gethostname
+        SdcEnv.web_app ||= sdc_app(ENV['SDC_APP'])
+        SdcEnv.health_check ||= ENV['HEALTHCHECK'].nil? ? false : ENV['HEALTHCHECK'].casecmp('true') == 0
+        SdcEnv.usr ||= ENV['USR']
+        SdcEnv.pw ||= ENV['PW']
+        SdcEnv.env ||= test_env(ENV['URL'])
         logger = Log4r::Logger.new(":")
         logger.outputters = Outputter.stdout
         @log = SdcLogger.new(logger, SdcEnv.verbose)
