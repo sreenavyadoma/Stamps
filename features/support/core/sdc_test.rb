@@ -94,8 +94,7 @@ module Stamps
         SdcEnv.env = test_env(ENV['URL'])
         logger = Log4r::Logger.new(":")
         logger.outputters = Outputter.stdout
-        @log = Stamps::Core::SdcLogger.new(logger)
-        @log.verbose = SdcEnv.verbose
+        @log = SdcLogger.new(logger, SdcEnv.verbose)
 
         #These should be in an orders/mail or web_apps environment variable container
         SdcEnv.printer = ENV['PRINTER']

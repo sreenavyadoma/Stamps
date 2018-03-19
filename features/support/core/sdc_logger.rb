@@ -1,23 +1,24 @@
 module Stamps
   module Core
-    class SdcLogger < SimpleDelegator
-      attr_accessor :scenario_name, :verbose
-      def initialize(logger)
+    class SdcLogger < BasicObject
+      def initialize(logger, verbose)
         @logger = logger
-        super
+        @verbose = verbose
       end
 
       def info(str)
-        super(str) if verbose
+        logger.info(str) if verbose
       end
       alias_method :message, :info
       alias_method :step, :info
 
-      def debug(str)
-        super(str) if verbose
+      def method_missing(method, *args)
+        super unless logger.respond_to?(method)
+        logger.send(method, *args)
       end
 
-
+      private
+      attr_reader :logger, :verbose
     end
   end
 end

@@ -13,6 +13,7 @@ gem 'yml_reader'
 gem 'holidays'
 gem 'spreadsheet'
 gem 'measured'
+gem 'require_all'
 #gem 'mysql2'
 
 #gem 'watir', '6.2.1'

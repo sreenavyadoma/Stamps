@@ -1,15 +1,12 @@
 module Stamps
-  class SdcDriver
+  class SdcDriver < BasicObject
     def initialize(driver)
       @driver = driver
     end
 
     def method_missing(method, *args)
-      if driver.respond_to?(method)
-        driver.send(method, *args)
-      else
-        super
-      end
+      super unless driver.respond_to?(method)
+      driver.send(method, *args)
     end
 
     private
