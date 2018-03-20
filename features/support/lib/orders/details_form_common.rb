@@ -142,6 +142,7 @@ module Stamps
         end
       end
 
+      # DetailsFormService NOT IN USE!
       class DetailsFormService < WebApps::Base
         attr_reader :textbox, :dropdown, :form_type
         def initialize(param, form_type)
