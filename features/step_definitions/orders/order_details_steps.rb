@@ -451,61 +451,61 @@ Then /^[Ss]et [Oo]rder [Dd]etails Email to (.*)$/ do |email|
   step 'Save Order Details data'
 end
 
-#todo-ORDERSAUTO-2261
+
 Then /^[Ii]ncrement [Oo]rder [Dd]etails Pounds by (\d*)$/ do |str|
   str.to_i.times { stamps.orders.order_details.weight.lb.increment.click }
 end
-#todo-ORDERSAUTO-2261
+
 Then /^[Dd]ecrement [Oo]rder [Dd]etails Pounds by (\d*)$/ do |str|
   str.to_i.times { stamps.orders.order_details.weight.lb.decrement.click }
   step 'Save Order Details data'
 end
-#todo-ORDERSAUTO-2261
+
 Then /^[Ii]ncrement [Oo]rder [Dd]etails Ounces by (\d*)$/ do |str|
   str.to_i.times { stamps.orders.order_details.weight.oz.increment.click }
   step 'Save Order Details data'
 end
-#todo-ORDERSAUTO-2261
+
 Then /^[Dd]ecrement [Oo]rder [Dd]etails Ounces by (\d*)$/ do |str|
   str.to_i.times { stamps.orders.order_details.weight.oz.decrement.click }
   step 'Save Order Details data'
 end
-#todo-ORDERSAUTO-2261
+
 Then /^[Ii]ncrement [Oo]rder [Dd]etails Length by (\d*)$/ do |str|
   str.to_i.times { stamps.orders.order_details.dimensions.length.increment.click }
   step 'Save Order Details data'
 end
-#todo-ORDERSAUTO-2261
+
 Then /^[Dd]ecrement [Oo]rder [Dd]etails Length by (\d*)$/ do |str|
   str.to_i.times { stamps.orders.order_details.dimensions.length.decrement.click }
   step 'Save Order Details data'
 end
-#todo-ORDERSAUTO-2261
+
 Then /^[Ii]ncrement [Oo]rder [Dd]etails Width by (\d*)$/ do |str|
   str.to_i.times { stamps.orders.order_details.dimensions.width.increment.click }
   step 'Save Order Details data'
 end
-#todo-ORDERSAUTO-2261
+
 Then /^[Dd]ecrement [Oo]rder [Dd]etails Width by (\d*)$/ do |str|
   str.to_i.times { stamps.orders.order_details.dimensions.width.decrement.click }
   step 'Save Order Details data'
 end
-#todo-ORDERSAUTO-2261
+
 Then /^[Ii]ncrement [Oo]rder [Dd]etails Height by (\d*)$/ do |str|
   str.to_i.times { stamps.orders.order_details.dimensions.height.increment.click }
   step 'Save Order Details data'
 end
-#todo-ORDERSAUTO-2261
+
 Then /^[Dd]ecrement [Oo]rder [Dd]etails Height by (\d*)$/ do |str|
   str.to_i.times { stamps.orders.order_details.dimensions.height.decrement.click }
   step 'Save Order Details data'
 end
-#todo-ORDERSAUTO-2261
+
 Then /^[Ii]ncrement [Oo]rder [Dd]etails [Ii]nsure-[Ff]or by (\d*)$/ do |str|
   str.to_i.times { stamps.orders.order_details.insure_for.increment.click }
   step 'Save Order Details data'
 end
-#todo-ORDERSAUTO-2261
+
 Then /^[Dd]ecrement [Oo]rder [Dd]etails [Ii]nsure-[Ff]or by (\d*)$/ do |str|
   str.to_i.times { stamps.orders.order_details.insure_for.decrement.click }
   step 'Save Order Details data'

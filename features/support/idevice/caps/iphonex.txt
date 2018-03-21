@@ -1,0 +1,9 @@
+[caps]
+platformName = "ios"
+deviceName = "iPhone X"
+platformVersion = "11.2"
+browserName = "safari"
+
+[appium_lib]
+sauce_username = false
+sauce_access_key = false

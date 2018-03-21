@@ -3,7 +3,7 @@
 Feature: PAM AppCap Provisioning
 
   Background:
-    Given I launch the default driver
+    Given I launched the browser
 
   Scenario:
     Then set PAM AppCap Overrides to Always On for all Required Fields for all users in the database

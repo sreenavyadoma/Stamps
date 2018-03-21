@@ -16,7 +16,7 @@ module Stamps
 
   def user_credentials
     @user_credentials ||= StampsUserCredentials.new(mysql_conn)
-    @user_credentials.scenario_name = SdcTest.scenario_name
+    @user_credentials.test_scenario = SdcTest.test_scenario
     @user_credentials
   end
 

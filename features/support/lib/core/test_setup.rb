@@ -1,10 +1,10 @@
 module Stamps
   class StampsTestSetup
-    attr_accessor :browser, :firefox_profile, :browser_version, :scenario_name, :os_version
+    attr_accessor :browser, :firefox_profile, :browser_version, :test_scenario, :os_version
 
     def logger
-      @logger.nil? || @logger.scenario_name != scenario_name ? @logger = StampsLogger.new(scenario_name) : @logger
-      #@logger=StampsLogger.new(scenario_name) if @logger.nil?||@logger.scenario_name!=scenario_name # create new instance of logger if scenario name changes
+      @logger.nil? || @logger.test_scenario != test_scenario ? @logger = StampsLogger.new(test_scenario) : @logger
+      #@logger=StampsLogger.new(test_scenario) if @logger.nil?||@logger.test_scenario!=test_scenario # create new instance of logger if scenario name changes
       #@logger
     end
 

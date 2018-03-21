@@ -1,6 +1,6 @@
 Feature: Registration
   Background:
-    Given I launched default browser
+    Given I launched the browser
 
   @registration_meter_limit_100k
   Scenario:
