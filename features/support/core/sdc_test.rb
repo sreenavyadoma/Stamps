@@ -7,7 +7,7 @@ module Stamps
     IDEVICES = %i(iphone6 iphone7 iphone8 iphonex android).freeze
     class << self #todo-Rob refactor PrintMedia
       attr_accessor :web_app, :env, :health_check, :usr, :pw, :url, :verbose,  :printer, :browser, :hostname,
-                    :print_media, :i_device_name
+                    :print_media, :i_device_name, :firefox_profile
     end
   end
 
@@ -43,7 +43,7 @@ module Stamps
           begin
             Watir.always_locate = true
             Selenium::WebDriver.logger.level = :warn
-            case(test_driver)
+            case(SdcEnv.browser)
               when :edge # Launch Microsoft Edge
                 begin
                   stdout, stdeerr, status = Open3.capture3("taskkill /im MicrosoftEdge.exe /f")
@@ -59,7 +59,7 @@ module Stamps
                 rescue
                   # ignore
                 end
-                if firefox_profile.nil?
+                if SdcEnv.firefox_profile.nil?
                   @driver = SdcDriver.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
                 else
                   profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(firefox_profile)
@@ -122,6 +122,7 @@ module Stamps
         SdcEnv.usr = ENV['USR']
         SdcEnv.pw = ENV['PW']
         SdcEnv.env = test_env(ENV['URL'])
+        SdcEnv.firefox_profile = ENV['FIREFOX_PROFILE']
         logger = Log4r::Logger.new(":")
         logger.outputters = Outputter.stdout
         @log = SdcLogger.new(logger, SdcEnv.verbose)
@@ -218,7 +219,7 @@ module Stamps
 
       def test_env(str)
         if str.nil? || !SdcEnv::TEST_ENVIRONMENTS.include?(str.downcase.to_sym)
-          raise ArgumentError, "URL is not defined or invalid. Expected values are #{SdcEnv::TEST_ENVIRONMENTS}"
+          raise ArgumentError, "URL=#{str} is invalid. Expected values are #{SdcEnv::TEST_ENVIRONMENTS}"
         end
         case(str.downcase)
           when /staging/
