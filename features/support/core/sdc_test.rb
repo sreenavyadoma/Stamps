@@ -3,7 +3,8 @@ module Stamps
   module SdcEnv
     TEST_ENVIRONMENTS = %i(stg qacc cc qasc sc rating).freeze
     BROWSERS = %i(firefox ff chrome gc safari edge).freeze
-    SDC_APP = %i(orders mail webdev ios android).freeze
+    SDC_APP = %i(ios android).freeze
+    IDEVICES = %i(ios android).freeze
     class << self
       attr_accessor :web_app, :env, :health_check, :usr, :pw, :url, :verbose,  :printer, :browser, :hostname, :print_media
     end
@@ -15,6 +16,9 @@ module Stamps
       attr_reader :driver, :scenario_name, :scenario, :log
 
       def configure_driver(browser, firefox_profile = nil)
+        if SdcEnv.env.nil? && browser.nil?
+
+        end
         begin
           Watir.always_locate = true
           Selenium::WebDriver.logger.level = :warn
@@ -66,7 +70,7 @@ module Stamps
 
             when :safari
               begin
-                stdout, status = Open3.capture3("killall 'Safari Technology Preview'")    #todo Alex uncomment once framework upgraded to Watir 6.10.2
+                stdout, status = Open3.capture3("killall 'Safari Technology Preview'")
               rescue
                 # ignore
               end
@@ -185,6 +189,7 @@ module Stamps
       end
 
       def test_env(str)
+        return str if str.nil?
         case(str.downcase)
           when /staging/
             return :stg
