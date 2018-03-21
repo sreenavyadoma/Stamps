@@ -41,12 +41,7 @@ xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=tr
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=xxxxxxxxxx
 
-
-
-
 iphonex: --tags @iphonex --guess IDEVICENAME='iphone x' VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail URL=cc
-
-
 
 mail_print_envelope_11: --tags @mail_print_envelope_11 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false SDC_APP=mail PRINTER=factory
 
