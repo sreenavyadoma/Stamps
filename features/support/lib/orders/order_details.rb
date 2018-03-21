@@ -978,7 +978,8 @@ module Stamps
         end
 
         def single_ship_from
-          cache[:single_ship_from] = Stamps::Orders::DetailsFormCommon::DetailsFormShipFrom.new(param, :single_order) if cache[:single_ship_from].nil?
+          # cache[:single_ship_from] = Stamps::Orders::DetailsFormCommon::DetailsFormShipFrom.new(param, :single_order) if cache[:single_ship_from].nil?
+          cache[:single_ship_from] = Stamps::Orders::DetailsFormCommon::SingleFormShipFrom.new(param) if cache[:single_ship_from].nil?
           cache[:single_ship_from]
         end
 

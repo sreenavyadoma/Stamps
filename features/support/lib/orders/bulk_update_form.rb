@@ -326,6 +326,7 @@ module Stamps
           end
         end
 
+        #todo - not in use delete?
         class IntServiceTwo < WebApps::Base
           attr_reader :textbox, :dropdown, :form_type
           def initialize(param, form_type)
@@ -535,7 +536,8 @@ module Stamps
 
         def ship_from
           if cache[:ship_from].nil?
-            cache[:ship_from] = ::DetailsFormCommon::DetailsFormShipFrom.new(param, :multi_order_details)
+            # cache[:ship_from] = ::DetailsFormCommon::DetailsFormShipFrom.new(param, :multi_order_details)
+            cache[:ship_from] = ::DetailsFormCommon::BulkFormShipFrom.new(param)
           end
           cache[:ship_from]
         end
@@ -578,6 +580,15 @@ module Stamps
 
         def dimensions
           cache[:dimensions].nil? ? cache[:dimensions] = Fields::Dimensions.new(param) : cache[:dimensions]
+        end
+
+        def insurance
+        end
+
+        def insure_amt
+        end
+
+        def tracking
         end
       end
     end

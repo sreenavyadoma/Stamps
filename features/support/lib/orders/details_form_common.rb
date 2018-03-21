@@ -299,6 +299,94 @@ module Stamps
           end
         end
       end
+
+      class SingleFormShipFrom < WebApps::Base
+        def initialize(param)
+          super(param)
+        end
+
+        def textbox
+          if cache[:textbox].nil? || !cache[:textbox].present?
+            cache[:textbox] = StampsTextbox.new(driver.text_fields(name: "ShipFrom").first)
+          end
+          cache[:textbox]
+        end
+
+        def dropdown
+          if cache[:dropdown].nil? || !cache[:dropdown].present?
+            cache[:dropdown] = StampsTextbox.new(driver.divs(css: "div[id^=shipfromdroplist][id$=trigger-picker]").first)
+          end
+          cache[:dropdown]
+        end
+
+        def select(str)
+          dropdown.click
+          sleep(0.5)
+          window_title = Object.const_get('WebApps::Base').new(param).extend(Stamps::Orders::ShipFrom::WindowTitle)
+          selection = StampsField.new((str.downcase.include?('default')) ? driver.lis(css: "[class*='x-boundlist-item-over'][data-recordindex='0']").first : driver.lis(visible_text: /#{str}/).first)
+          if str.downcase.include?("manage shipping")
+            20.times do
+              sleep(0.35)
+              dropdown.click unless selection.present?
+              selection.scroll_into_view.click
+              return window_title.window_title.text if window_title.present?
+            end
+
+            raise "Failed to open Manage Shipping Addresses modal"
+          else
+            15.times do
+              sleep(0.35)
+              dropdown.click unless selection.present?
+              selection.scroll_into_view.click
+              sleep(0.35)
+              return textbox.text if textbox.text.size > 2
+            end
+          end
+          textbox.text
+        end
+      end
+
+      class BulkFormShipFrom < WebApps::Base
+        def textbox
+          if cache[:textbox].nil? || !cache[:textbox].present?
+            cache[:textbox] = StampsTextbox.new(driver.text_fields(name: "ShipFrom").last)
+          end
+          cache[:textbox]
+        end
+
+        def dropdown
+          if cache[:dropdown].nil? || !cache[:dropdown].present?
+            cache[:dropdown] = StampsTextbox.new(driver.divs(css: "div[id^=shipfromdroplist][id$=trigger-picker]").last)
+          end
+          cache[:dropdown]
+        end
+
+        def select(str)
+          dropdown.click
+          sleep(0.5)
+          window_title = Object.const_get('WebApps::Base').new(param).extend(Stamps::Orders::ShipFrom::WindowTitle)
+          selection = StampsField.new((str.downcase.include?('default')) ? driver.lis(css: "[class*='x-boundlist-item-over'][data-recordindex='0']").last : driver.lis(visible_text: /#{str}/).last)
+          if str.downcase.include?("manage shipping")
+            20.times do
+              sleep(0.35)
+              dropdown.click unless selection.present?
+              selection.scroll_into_view.click
+              return window_title.window_title.text if window_title.present?
+            end
+
+            raise "Failed to open Manage Shipping Addresses modal"
+          else
+            15.times do
+              sleep(0.35)
+              dropdown.click unless selection.present?
+              selection.scroll_into_view.click
+              sleep(0.35)
+              return textbox.text if textbox.text.size > 2
+            end
+          end
+          textbox.text
+        end
+      end
     end
   end
 end

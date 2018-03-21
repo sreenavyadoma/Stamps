@@ -50,7 +50,7 @@ Feature:  BVT tests for Orders
 
   # Order #1 (Domestic)
     Then in Orders Grid, Sort Order Date in Descending Order
-    Then add new order
+    Then add order 1
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address in zone 1
     Then set Order Details service to PM Package
@@ -58,7 +58,7 @@ Feature:  BVT tests for Orders
     Then Pause for 1 second
 
   # Order #2 (International)
-    Then add new order
+    Then add order 2
     Then set Order Details Ship-To International address to
       | full_name     | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country | phone        |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone | Random email  |
