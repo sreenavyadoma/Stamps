@@ -75,7 +75,7 @@ module Stamps
                 rescue
                   # ignore
                 end
-                if SdcEnv.firefox_profile.nil?
+                unless SdcEnv.firefox_profile
                   @driver = SdcDriver.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
                 else
                   profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(firefox_profile)
