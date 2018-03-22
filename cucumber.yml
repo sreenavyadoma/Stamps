@@ -1,4 +1,4 @@
-default: --backtrace --profile rob_cc
+default: --backtrace --profile iphonex
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -12,6 +12,8 @@ rob_mail_cc:  --tags @mail_bvt_international SDC_APP=mail JENKINS=true USR=cctru
 rob_mail_stg: --tags @mail_bvt_international SDC_APP=mail JENKINS=true USR=default PW=pass111 URL=stg --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory #stgee1mtqvwdc0
 rob_mail_sc: --tags @print_dialog_ship_date SDC_APP=mail JENKINS=true USR=default PW=pass111 URL=sc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 rob_registration: --tags @registration_normal_workflow SDC_APP=registration URL=cc --guess VERBOSE=true HEALTHCHECK=false BROWSER=chrome MAX_WINDOW=false JENKINS=true
+
+iphonex: --tags @iphonex --guess IDEVICENAME='iphone x' VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail URL=cc
 
 #todo-Rob WebReg consider removing webapp, username, password fields
 #mhossain1_cc: --tags @registration_normal_workflow SDC_APP=orders JENKINS=true URL=cc VERBOSE=true BROWSER=ff MAX_WINDOW=false SDC_APP=registration USR=mhossain1 PW=Password1
@@ -40,8 +42,6 @@ xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=tr
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=xxxxxxxxxx
-
-iphonex: --tags @iphonex --guess IDEVICENAME='iphone x' VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail URL=cc
 
 mail_print_envelope_11: --tags @mail_print_envelope_11 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false SDC_APP=mail PRINTER=factory
 

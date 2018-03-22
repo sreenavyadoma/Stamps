@@ -13,22 +13,24 @@ module Stamps
 
   class SdcDeviceDriver
     class << self
-      attr_reader :core_driver, :driver
+      attr_reader :driver #:core_driver,
       def configure(device_name)
         caps = Appium.load_appium_txt file: File.expand_path("../../idevices/caps/#{device_name}.txt", __FILE__), verbose: true
-        Appium::Driver.new(caps, true)
-        Appium.promote_appium_methods Stamps
-        @core_driver = $driver
+        #Appium::Driver.new(caps, true)
+        #Appium.promote_appium_methods Stamps
+        #@core_driver = $driver
+        @driver = Appium::Driver.new(caps)
+        #@driver.start_driver
         self
       end
 
       def start
-        core_driver.start_driver
+        @driver.start_driver
         self
       end
 
       def driver
-        core_driver.driver
+        @driver.driver
       end
     end
   end
