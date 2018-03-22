@@ -35,8 +35,7 @@ module Stamps
               #ignore
             end
             if firefox_profile.nil?
-              capabilities = Selenium::WebDriver::Remote::Capabilities.firefox(accept_insecure_certs: true)
-              driver = Watir::Browser.new(:firefox, :desired_capabilities => capabilities)
+              driver = Watir::Browser.new(:firefox, accept_insecure_certs: true)
             else
               profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(firefox_profile)
               profile.assume_untrusted_certificate_issuer = true

@@ -23,15 +23,15 @@ module Stamps
         def selection_field(media)
           case(media)
             when /Paper/ # Shipping Label: 8 ½" x 11" Paper
-              return StampsField.new(browser.li text: /Paper/)
+              return StampsField.new(browser.li visible_text: /Paper/)
             when /SDC-1200/ # Shipping Label: Stamps.com SDC-1200, 4 ¼" x 6 ¾"
-              return StampsField.new(browser.li text: /SDC-1200/)
+              return StampsField.new(browser.li visible_text: /SDC-1200/)
             when /Shipping Label - 5 / # Shipping Label: 5 ½" x 8 ½"
-              return StampsField.new(browser.li text: /Shipping Label - 5 /)
+              return StampsField.new(browser.li visible_text: /Shipping Label - 5 /)
             when /Roll - 418x614/ # Roll 418x614
-              return StampsField.new(browser.li text: /Roll - 4 ⅛/)
+              return StampsField.new(browser.li visible_text: /Roll - 4 ⅛/)
             when /Roll - 4 / # Roll - 4" x 6" Shipping Label
-              return StampsField.new(browser.li text: /Roll - 4 /)
+              return StampsField.new(browser.li visible_text: /Roll - 4 /)
             else
               expect("Don't know what to do with #{media}.").to eql "Invalid Print Media Selection."
           end
@@ -92,7 +92,7 @@ module Stamps
         end
 
         def select(selection)
-          selection_label = StampsField.new(browser.li(text: /#{selection}/))
+          selection_label = StampsField.new(browser.li(visible_text: /#{selection}/))
           15.times do
             return textbox.text if textbox.text.include? selection[0..(selection.size > 5 ? selection.size - 4 : selection.size)]
             dropdown.click unless selection_label.present?

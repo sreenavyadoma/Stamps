@@ -3,7 +3,7 @@ module Stamps
     module OrdersRuntimeError
       class ServerError < Browser::Base
         def present?
-          StampsField.new(browser.div(text: /Server Error/)).present?
+          StampsField.new(browser.div(visible_text: /Server Error/)).present?
         end
 
         def message
