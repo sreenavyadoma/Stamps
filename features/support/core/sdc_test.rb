@@ -5,6 +5,7 @@ module Stamps
     BROWSERS = %i(firefox chrome safari edge chromeb).freeze
     SDC_APP = %i(orders mail webdev registration).freeze
     IDEVICES = %i(iphone6 iphone7 iphone8 iphonex android).freeze
+
     class << self #todo-Rob refactor PrintMedia
       attr_accessor :web_app, :env, :health_check, :usr, :pw, :url, :verbose,  :printer, :browser, :hostname,
                     :print_media, :i_device_name, :firefox_profile
