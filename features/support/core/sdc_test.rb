@@ -11,6 +11,20 @@ module Stamps
     end
   end
 
+  class SdcDriver < BasicObject
+    def initialize(driver)
+      @driver = driver
+    end
+
+    def method_missing(method, *args)
+      super unless driver.respond_to?(method)
+      driver.send(method, *args)
+    end
+
+    private
+    attr_reader :driver
+  end
+
   class SdcDeviceDriver
     class << self
       attr_reader :driver #:core_driver,
@@ -19,7 +33,7 @@ module Stamps
         #Appium::Driver.new(caps, true)
         #Appium.promote_appium_methods Stamps
         #@core_driver = $driver
-        @driver = Appium::Driver.new(caps)
+        @driver = Appium::Driver.new(caps, false)
         #@driver.start_driver
         self
       end

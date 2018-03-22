@@ -2,55 +2,44 @@ module Stamps
   module Orders
     class WebOrders < WebApps::Base
 
-
       def orders_toolbar
-        cache[:orders_toolbar] = Orders::Toolbar::OrdersToolbar.new(param) if cache[:orders_toolbar].nil?
-        cache[:orders_toolbar]
+        @orders_toolbar ||= ::Toolbar::OrdersToolbar.new(param)
       end
 
       def landing_page
-        cache[:landing_page] = Orders::Authentication::OrdersLandingPage.new(param) if cache[:landing_page].nil?
-        cache[:landing_page]
+        @landing_page ||= ::Authentication::OrdersLandingPage.new(param)
       end
 
       def filter_panel
-        cache[:filter_panel] = Orders::LeftPanel::FilterPanel.new(param) if cache['filter_panel'].nil?
-        cache[:filter_panel]
+        @filter_panel ||= ::LeftPanel::FilterPanel.new(param)
       end
 
       def orders_grid
-        cache[:orders_grid] = Orders::Grid::OrdersGrid.new(param) if cache[:orders_grid].nil?
-        cache[:orders_grid]
+        @orders_grid ||= ::Grid::OrdersGrid.new(param)
       end
 
       def order_details
-        cache[:order_details] = Orders::SingleOrder::OrderDetails.new(param) if cache[:order_details].nil?
-        cache[:order_details]
+        @order_details ||= ::SingleOrder::OrderDetails.new(param)
       end
 
       def bulk_update
-        cache[:bulk_update] = Orders::BulkUpdate::Form.new(param) if cache[:bulk_update].nil?
-        cache[:bulk_update]
+        @bulk_update ||= ::BulkUpdate::Form.new(param)
       end
 
       def modals
-        cache[:modals] = Stamps::Orders::StampsOrdersModals.new(param) if cache[:modals].nil?
-        cache[:modals]
+        @xxxxx ||= ::Orders::StampsOrdersModals.new(param)
       end
 
       def marketplace
-        cache[:marketplace] = Stamps::Orders::MarketPlaceStoreModals.new(param) if cache[:marketplace].nil?
-        cache[:marketplace]
+        @xxxxx ||= ::Orders::MarketPlaceStoreModals.new(param)
       end
 
       def styles
-        cache[:styles] = PageStyles.new(param) if cache[:styles].nil?
-        cache[:styles]
+        @xxxxx ||= PageStyles.new(param)
       end
 
       def external_sites
-        cache[:external_sites] = Object.const_get('WebApps::Base').new(param).extend(StampsExternalSites) if cache[:external_sites].nil?
-        cache[:external_sites]
+        @xxxxx ||= Object.const_get('WebApps::Base').new(param).extend(StampsExternalSites)
       end
 
       def present?
