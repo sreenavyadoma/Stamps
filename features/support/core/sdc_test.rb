@@ -96,6 +96,16 @@ module Stamps
                 @driver.window.maximize
               #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
 
+            when :chromeb
+              begin
+                #    stdout, stdeerr, status = Open3.capture3("taskkill /im chrome.exe /f")
+              rescue
+                # ignore
+              end
+              Selenium::WebDriver::Chrome.path = data_for(:setup, {})['windows']['chromedriverbeta']
+              @driver = SdcDelegatedDriver.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+              @driver.window.maximize
+
               when :ie
                 begin
                   stdout, stdeerr, status = Open3.capture3("taskkill /im iexplore.exe /f")
@@ -129,16 +139,16 @@ module Stamps
 
       def start(scenario)
         @scenario = scenario
-        SdcEnv.browser = browser_selection(ENV['BROWSER'])
-        SdcEnv.i_device_name = i_device_selection(ENV['IDEVICENAME'])
-        SdcEnv.verbose = ENV['VERBOSE'].nil? ? false : ENV['VERBOSE'].downcase == 'true'
-        SdcEnv.hostname = Socket.gethostname
-        SdcEnv.web_app = sdc_app(ENV['SDC_APP'])
-        SdcEnv.health_check = ENV['HEALTHCHECK'].nil? ? false : ENV['HEALTHCHECK'].casecmp('true') == 0
-        SdcEnv.usr = ENV['USR']
-        SdcEnv.pw = ENV['PW']
-        SdcEnv.env = test_env(ENV['URL'])
-        SdcEnv.firefox_profile = ENV['FIREFOX_PROFILE']
+        SdcEnv.browser ||= browser_selection(ENV['BROWSER'])
+        SdcEnv.i_device_name ||= i_device_selection(ENV['IDEVICENAME'])
+        SdcEnv.verbose ||= ENV['VERBOSE'].nil? ? false : ENV['VERBOSE'].downcase == 'true'
+        SdcEnv.hostname ||= Socket.gethostname
+        SdcEnv.web_app ||= sdc_app(ENV['SDC_APP'])
+        SdcEnv.health_check ||= ENV['HEALTHCHECK'].nil? ? false : ENV['HEALTHCHECK'].casecmp('true') == 0
+        SdcEnv.usr ||= ENV['USR']
+        SdcEnv.pw ||= ENV['PW']
+        SdcEnv.env ||= test_env(ENV['URL'])
+        SdcEnv.firefox_profile ||= ENV['FIREFOX_PROFILE']
         logger = Log4r::Logger.new(":")
         logger.outputters = Outputter.stdout
         @log = SdcLogger.new(logger, SdcEnv.verbose)
@@ -213,14 +223,14 @@ module Stamps
         case str.downcase
           when /ff|firefox|mozilla/
             return :firefox
+          when /chromeb|gcb|googleb/
+            return :chromeb
           when /chrome|gc|google/
             return :chrome
           when /ms|me|microsoft|edge/
             return :edge
           when /apple|osx|safari|mac/
             return :safari
-          when 'iphone6'
-            return :iphone6
           else
             # ignore
         end
