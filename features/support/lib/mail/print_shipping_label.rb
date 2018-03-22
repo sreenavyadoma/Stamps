@@ -5,7 +5,7 @@ module Stamps
 
     class StartingLabel < Browser::StampsHtmlField
       def label_divs
-        browser.divs css: "div[class*='unprintedLabel']"
+        driver.divs css: "div[class*='unprintedLabel']"
       end
 
       def left_label
@@ -22,7 +22,7 @@ module Stamps
             field_helper.click left_label
             return true if label_selected? left_label
           rescue
-            #ignore
+            # ignore
           end
         }
         false
@@ -34,7 +34,7 @@ module Stamps
             field_helper.click right_label
             return true if label_selected? right_label
           rescue
-            #ignore
+            # ignore
           end
         }
         false
@@ -51,7 +51,7 @@ module Stamps
       def label_selected? div
         8.times{
           selected=(div.attribute_value 'class').include? 'selectedLabel'
-          logger.info "Label selected?  #{(selected)? 'Yes':'No'}"
+          log.info "Label selected?  #{(selected)? 'Yes':'No'}"
           break if selected
         }
         (div.attribute_value 'class').include? 'selectedLabel'
@@ -67,28 +67,28 @@ module Stamps
 
       def initialize(param)
         super
-        @reference_number=StampsTextBox.new browser.text_field(name: "referenceNumber")
+        @reference_number=StampsTextBox.new driver.text_field(name: "referenceNumber")
 
       end
 
       def preview_image
-        image=StampsElement.new browser.div css: "div[style*='Label_selection_and_view.gif']"
+        image=StampsElement.new driver.div css: "div[style*='Label_selection_and_view.gif']"
       end
 
       def hide_postage_value
-        checkbox_field=browser.input(id: "hidePostageCheckBox")
+        checkbox_field=driver.input(id: "hidePostageCheckBox")
         verify_field=checkbox_field.parent.parent.parent.parent
         Stamps::Browser::StampsCheckBox.new checkbox_field, verify_field, "class", "checked"
       end
 
       def print_receipt
-        checkbox_field=browser.input(id: "printreceiptcheckbox")
+        checkbox_field=driver.input(id: "printreceiptcheckbox")
         verify_field=checkbox_field.parent.parent.parent.parent
         Stamps::Browser::StampsCheckBox.new checkbox_field, verify_field, "class", "checked"
       end
 
       def print_reference_number
-        checkbox_field=browser.input(id: "printreferencecheckbox")
+        checkbox_field=driver.input(id: "printreferencecheckbox")
         verify_field=checkbox_field.parent.parent.parent.parent
         Stamps::Browser::StampsCheckBox.new checkbox_field, verify_field, "class", "checked"
       end

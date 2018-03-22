@@ -5,27 +5,27 @@ module Stamps
 
     class RollFormView < PrintForm
       def preview_image
-        image=StampsElement.new browser.img css: "dimg[src*='Labelsample.gif']"
+        image=StampsElement.new driver.img css: "dimg[src*='Labelsample.gif']"
       end
 
       def hide_postage_value
-        checkbox_field=browser.text_field css: "input[id=hidePostageCheckBox]"
-        verify_fields=browser.inputs css: "table[id^=checkboxfield][class*=x-form-type-checkbox]"
+        checkbox_field=driver.text_field css: "input[id=hidePostageCheckBox]"
+        verify_fields=driver.inputs css: "table[id^=checkboxfield][class*=x-form-type-checkbox]"
         verify_field=verify_fields[5]
 
         Stamps::Browser::StampsCheckBox.new checkbox_field, verify_field, "class", "checked"
       end
 
       def print_reference_number
-        checkbox_field=browser.text_field css: "input[id=printreferencecheckbox]"
-        verify_fields=browser.inputs css: "table[id^=checkboxfield][class*=x-form-type-checkbox]"
+        checkbox_field=driver.text_field css: "input[id=printreferencecheckbox]"
+        verify_fields=driver.inputs css: "table[id^=checkboxfield][class*=x-form-type-checkbox]"
         verify_field=verify_fields[6]
 
         Stamps::Browser::StampsCheckBox.new checkbox_field, verify_field, "class", "checked"
       end
 
       def reference_number
-        StampsTextBox.new browser.text_field name: "referenceNumber"
+        StampsTextBox.new driver.text_field name: "referenceNumber"
       end
 
       def cost_code

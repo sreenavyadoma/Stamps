@@ -4,38 +4,36 @@ end
 
 Then /^Import Orders: Import$/ do
   import_time = stamps.orders.orders_toolbar.import.import
-  test_config.logger.step "Success modal is present after #{import_time} seconds"
+  SdcTest.log.step "Success modal is present after #{import_time} seconds"
 
   #import_timer_filename="\\\\rcruz-win7\\Public\\automation\\data\\import_times.csv"
 
   import_time_file = data_for(:import_orders_test, {})['import_time_file']
   import_time_loc = "#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{ENV['URL']}\\#{import_time_file}"
 
-  test_config.logger.step "Import Orders File: #{import_time_loc}"
+  SdcTest.log.step "Import Orders File: #{import_time_loc}"
   expect("Import Orders File: #{import_time_loc}").to eql "Import Time File does not exist!" unless File.exist?(import_time_loc)
 
   csv_file = CSV.open(import_time_loc, "a")
   csv_file.add_row([Time.now,import_time])
-  test_config.logger.step "Import Time Saved to CSV file"
+  SdcTest.log.step "Import Time Saved to CSV file"
   csv_file.close
 end
 
 Then /^Import Orders: Import Existing Orders$/ do
   import_time = stamps.orders.orders_toolbar.import.import
-  test_config.logger.step "Success modal is present after #{import_time} seconds"
+  SdcTest.log.step "Success modal is present after #{import_time} seconds"
 
   import_time_file = data_for(:import_orders_test, {})['import_existing_orders_time_file']
   import_time_loc = "#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{ENV['URL']}\\#{import_time_file}"
 
-  test_config.logger.step "Import Orders File: #{import_time_loc}"
+  SdcTest.log.step "Import Orders File: #{import_time_loc}"
   expect("Import Orders File: #{import_time_loc}").to eql "Import Time File does not exist!" unless File.exist?(import_time_loc)
 
   csv_file = CSV.open(import_time_loc, "a")
   csv_file.add_row([Time.now,import_time])
-  test_config.logger.step "Import Time Saved to CSV file"
+  SdcTest.log.step "Import Time Saved to CSV file"
   csv_file.close
-
-
 end
 
 Then /^Import Orders: Select CSV File$/ do
@@ -65,7 +63,7 @@ end
 Then /^Import Orders: Randomize data in (.*)$/ do |filename|
 
   import_old_file = data_for(:import_orders_test, {})['import_old_file']
-  #test_config.logger.step "File location is #{'import_orders_dir'+ENV['URL']}"
+  #SdcTest.log.step "File location is #{'import_orders_dir'+ENV['URL']}"
   import_new_loc = "#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{ENV['URL']}\\#{filename}"
   import_old_loc = "#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{ENV['URL']}\\#{import_old_file}"
 
@@ -73,30 +71,30 @@ Then /^Import Orders: Randomize data in (.*)$/ do |filename|
     old_csv = CSV.read(import_old_loc)
     old_csv.each_with_index do |row, index|
       if index != 0
-        address = test_helper.rand_zone_1_4
+        address = TestHelper.rand_zone_1_4(SdcEnv.env)
         row[2] = Random.rand(1..10)
-        row[3] = StampsTest.rand_full_name
-        row[4] = StampsTest.rand_full_name
-        row[5] = StampsTest.rand_comp_name
+        row[3] = TestHelper.rand_full_name
+        row[4] = TestHelper.rand_full_name
+        row[5] = TestHelper.rand_comp_name
         row[6] = address['street_address']
         row[9] = address['city']
         row[10] = address['state']
         row[11] = address['zip']
-        row[13] = StampsTest.rand_phone
-        row[14] = StampsTest.rand_email
+        row[13] = TestHelper.rand_phone
+        row[14] = TestHelper.rand_email(SdcEnv.env)
         row[15] = Random.rand(1..10)
         row[16] = Random.rand(1..10)
         row[17] = Random.rand(1..10)
         row[18] = Random.rand(1..10)
-        row[19] = StampsTest.rand_full_name
-        row[20] = StampsTest.rand_full_name
+        row[19] = TestHelper.rand_full_name
+        row[20] = TestHelper.rand_full_name
         row[21] = [true, false].sample
-        row[22] = StampsTest.rand_full_name
+        row[22] = TestHelper.rand_full_name
       end
       csv_out << row
     end
 
-    test_config.logger.step "Orders info in #{filename} has been randomized"
+    SdcTest.log.step "Orders info in #{filename} has been randomized"
   end
 end
 
@@ -123,8 +121,8 @@ Then /^Import Orders: Expect first (.*) orders in CSV file (.*) match orders in 
       expect(stamps.orders.orders_grid.grid_column(:zip).data(order_id)).to eql(row[11]), "Expected Zip for order #{row[0]} is #{row[11]}, Zip in orders grid is #{stamps.orders.orders_grid.grid_column(:zip).data(order_id)}"
       expect(stamps.orders.orders_grid.grid_column(:phone).data(order_id)).to eql(row[13]), "Expected Phone for order #{row[0]} is #{row[13]}, Phone in orders grid is #{stamps.orders.orders_grid.grid_column(:phone).data(order_id)}"
       expect(stamps.orders.orders_grid.grid_column(:email).data(order_id)).to eql(row[14]), "Expected Email for order #{row[0]} is #{row[14]}, Email in orders grid is #{stamps.orders.orders_grid.grid_column(:email).data(order_id)}"
-      expect(test_helper.format_weight(stamps.orders.orders_grid.grid_column(:weight).data(order_id))).to eql(row[15]), "Expected Weight for order #{row[0]} is #{row[15]}, Weight in orders grid is #{test_helper.format_weight(stamps.orders.orders_grid.grid_column(:weight).data(order_id))}"
-      test_config.logger.step "Order # #{order_id} verified in Orders Grid"
+      expect(TestHelper.format_weight(stamps.orders.orders_grid.grid_column(:weight).data(order_id))).to eql(row[15]), "Expected Weight for order #{row[0]} is #{row[15]}, Weight in orders grid is #{TestHelper.format_weight(stamps.orders.orders_grid.grid_column(:weight).data(order_id))}"
+      SdcTest.log.step "Order # #{order_id} verified in Orders Grid"
     end
     break if counter >= num_orders
   end
@@ -138,8 +136,8 @@ Then /^Import Orders: File Upload: Set Filename to (.*)$/ do |filename|
   import_orders_loc = "#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{ENV['URL']}\\#{filename}"
 
   #@csv_import_filename="\\\\rcruz-win7\\Public\\automation\\data\\#{filename}"
-  #test_config.logger.step "Import File:  #{@csv_import_filename}"
-  test_config.logger.step "Import File:  #{import_orders_loc}"
+  #SdcTest.log.step "Import File:  #{@csv_import_filename}"
+  SdcTest.log.step "Import File:  #{import_orders_loc}"
 
 
 

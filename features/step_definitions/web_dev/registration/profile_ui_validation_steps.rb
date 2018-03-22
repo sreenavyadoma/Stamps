@@ -72,7 +72,7 @@ Then /^[Ee]xpect [Pp]rofile [Pp]age CONTINUE button exists$/ do
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Ee]mail is (?:correct|(.*))$/ do |str|
-  expect(registration.profile.email.textbox.text).to eql((str.nil?)?test_param[:email]:str)
+  expect(registration.profile.email.textbox.text).to eql((str.nil?)?TestData.store[:email]:str)
 end
 
 Then /^[Ee]xpect Profile page Email tooltip index (\d+) to be (.*)$/ do |index, str|

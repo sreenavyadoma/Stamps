@@ -21,18 +21,18 @@ end
 Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, group|
   group = group.to_i
 
-  test_param[:result_file] = Spreadsheet::Workbook.new
-  test_param[:result_sheet] = test_param[:result_file].create_worksheet
+  TestData.store[:result_file] = Spreadsheet::Workbook.new
+  TestData.store[:result_sheet] = TestData.store[:result_file].create_worksheet
 
   @rate_sheet = @rate_file.worksheet param_sheet
   @rate_sheet.should_not be nil
 
   # Set result sheet name to parameter sheet name
-  test_param[:result_sheet].name = param_sheet
+  TestData.store[:result_sheet].name = param_sheet
 
   @rate_sheet_columns = {}
-  test_param[:result_sheet_columns] = {}
-  test_param[:result_sheet_column_offset] = 8
+  TestData.store[:result_sheet_columns] = {}
+  TestData.store[:result_sheet_column_offset] = 8
 
   # map out parameter sheet column location
   @rate_sheet_header = @rate_sheet.row(0)
@@ -42,171 +42,171 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
   @rate_sheet_header.each_with_index do |column_name, row_number|
     if column_name == 'weight_lb'
       @rate_sheet_columns[:weight_lb] = row_number
-      (test_param[:result_sheet_columns])[:weight_lb] = row_number
-      test_param[:result_sheet].row(0)[row_number] = 'weight_lb'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      (TestData.store[:result_sheet_columns])[:weight_lb] = row_number
+      TestData.store[:result_sheet].row(0)[row_number] = 'weight_lb'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name == 'group1'
       @rate_sheet_columns[:group1] = row_number
-      test_param[:result_sheet_columns][:group] = 1
-      test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:group]] = 'group1'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      TestData.store[:result_sheet_columns][:group] = 1
+      TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:group]] = 'group1'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name == 'group2'
       @rate_sheet_columns[:group2] = row_number
-      test_param[:result_sheet_columns][:group] = 1
-      test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:group]] = 'group2'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      TestData.store[:result_sheet_columns][:group] = 1
+      TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:group]] = 'group2'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name == 'group3'
       @rate_sheet_columns[:group3] = row_number
-      test_param[:result_sheet_columns][:group] = 1
-      test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:group]] = 'group3'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      TestData.store[:result_sheet_columns][:group] = 1
+      TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:group]] = 'group3'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name == 'group4'
       @rate_sheet_columns[:group4] = row_number
-      test_param[:result_sheet_columns][:group] = 1
-      test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:group]] = 'group4'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      TestData.store[:result_sheet_columns][:group] = 1
+      TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:group]] = 'group4'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name == 'group5'
       @rate_sheet_columns[:group5] = row_number
-      test_param[:result_sheet_columns][:group] = 1
-      test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:group]] = 'group5'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      TestData.store[:result_sheet_columns][:group] = 1
+      TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:group]] = 'group5'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name == 'group6'
       @rate_sheet_columns[:group6] = row_number
-      test_param[:result_sheet_columns][:group] = 1
-      test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:group]] = 'group6'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      TestData.store[:result_sheet_columns][:group] = 1
+      TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:group]] = 'group6'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name == 'group7'
       @rate_sheet_columns[:group7] = row_number
-      test_param[:result_sheet_columns][:group] = 1
-      test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:group]] = 'group7'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      TestData.store[:result_sheet_columns][:group] = 1
+      TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:group]] = 'group7'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name == 'group8'
       @rate_sheet_columns[:group8] = row_number
-      test_param[:result_sheet_columns][:group] = 1
-      test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:group]] = 'group8'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      TestData.store[:result_sheet_columns][:group] = 1
+      TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:group]] = 'group8'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name == 'group9'
       @rate_sheet_columns[:group9] = row_number
-      test_param[:result_sheet_columns][:group] = 1
-      test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:group]] = 'group9'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      TestData.store[:result_sheet_columns][:group] = 1
+      TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:group]] = 'group9'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name == 'group10'
       @rate_sheet_columns[:group10] = row_number
-      test_param[:result_sheet_columns][:group] = 1
-      test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:group]] = 'group10'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      TestData.store[:result_sheet_columns][:group] = 1
+      TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:group]] = 'group10'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name == 'group11'
       @rate_sheet_columns[:group11] = row_number
-      test_param[:result_sheet_columns][:group] = 1
-      test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:group]] = 'group11'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      TestData.store[:result_sheet_columns][:group] = 1
+      TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:group]] = 'group11'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name == 'group12'
       @rate_sheet_columns[:group12] = row_number
-      test_param[:result_sheet_columns][:group] = 1
-      test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:group]] = 'group12'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      TestData.store[:result_sheet_columns][:group] = 1
+      TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:group]] = 'group12'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name == 'group13'
       @rate_sheet_columns[:group13] = row_number
-      test_param[:result_sheet_columns][:group] = 1
-      test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:group]] = 'group13'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      TestData.store[:result_sheet_columns][:group] = 1
+      TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:group]] = 'group13'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name == 'group14'
       @rate_sheet_columns[:group14] = row_number
-      test_param[:result_sheet_columns][:group] = 1
-      test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:group]] = 'group14'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      TestData.store[:result_sheet_columns][:group] = 1
+      TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:group]] = 'group14'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name == 'group15'
       @rate_sheet_columns[:group15] = row_number
-      test_param[:result_sheet_columns][:group] = 1
-      test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:group]] = 'group15'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      TestData.store[:result_sheet_columns][:group] = 1
+      TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:group]] = 'group15'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name == 'group16'
       @rate_sheet_columns[:group16] = row_number
-      test_param[:result_sheet_columns][:group] = 1
-      test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:group]] = 'group16'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      TestData.store[:result_sheet_columns][:group] = 1
+      TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:group]] = 'group16'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name == 'group17'
       @rate_sheet_columns[:group17] = row_number
-      test_param[:result_sheet_columns][:group] = 1
-      test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:group]] = 'group17'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      TestData.store[:result_sheet_columns][:group] = 1
+      TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:group]] = 'group17'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name == 'service'
       @rate_sheet_columns[:service] = row_number
-      test_param[:result_sheet_columns][:service] = row_number - test_param[:result_sheet_column_offset]
-      test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:service]] = 'service'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      TestData.store[:result_sheet_columns][:service] = row_number - TestData.store[:result_sheet_column_offset]
+      TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:service]] = 'service'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name == 'execution_date'
       @rate_sheet_columns[:execution_date] = row_number
-      test_param[:result_sheet_columns][:execution_date] = row_number - test_param[:result_sheet_column_offset]
-      test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:execution_date]] = 'execution_date'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      TestData.store[:result_sheet_columns][:execution_date] = row_number - TestData.store[:result_sheet_column_offset]
+      TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:execution_date]] = 'execution_date'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name == 'username'
       @rate_sheet_columns[:username] = row_number
-      test_param[:result_sheet_columns][:username] = row_number - test_param[:result_sheet_column_offset]
-      test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:username]] = 'username'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      TestData.store[:result_sheet_columns][:username] = row_number - TestData.store[:result_sheet_column_offset]
+      TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:username]] = 'username'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name == 'ship_to_country'
       @rate_sheet_columns[:ship_to_country] = row_number
-      test_param[:result_sheet_columns][:ship_to_country] = row_number - test_param[:result_sheet_column_offset]
-      test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:ship_to_country]] = 'ship_to_country'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      TestData.store[:result_sheet_columns][:ship_to_country] = row_number - TestData.store[:result_sheet_column_offset]
+      TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:ship_to_country]] = 'ship_to_country'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name == 'weight'
       @rate_sheet_columns[:weight] = row_number
-      test_param[:result_sheet_columns][:weight] = row_number - test_param[:result_sheet_column_offset]
-      test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:weight]] = 'weight'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      TestData.store[:result_sheet_columns][:weight] = row_number - TestData.store[:result_sheet_column_offset]
+      TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:weight]] = 'weight'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name == 'service_selected'
       @rate_sheet_columns[:service_selected] = row_number
-      test_param[:result_sheet_columns][:service_selected] = row_number - test_param[:result_sheet_column_offset]
-      test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:service_selected]] = 'service_selected'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      TestData.store[:result_sheet_columns][:service_selected] = row_number - TestData.store[:result_sheet_column_offset]
+      TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:service_selected]] = 'service_selected'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name == 'total_ship_cost'
       @rate_sheet_columns[:total_ship_cost] = row_number
-      test_param[:result_sheet_columns][:total_ship_cost] = row_number - test_param[:result_sheet_column_offset]
-      test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:total_ship_cost]] = 'total_ship_cost'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      TestData.store[:result_sheet_columns][:total_ship_cost] = row_number - TestData.store[:result_sheet_column_offset]
+      TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:total_ship_cost]] = 'total_ship_cost'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name == 'results'
       @rate_sheet_columns[:results] = row_number
-      test_param[:result_sheet_columns][:results] = row_number - test_param[:result_sheet_column_offset]
-      test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:results]] = 'results'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      TestData.store[:result_sheet_columns][:results] = row_number - TestData.store[:result_sheet_column_offset]
+      TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:results]] = 'results'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name == 'status'
       @rate_sheet_columns[:status] = row_number
-      test_param[:result_sheet_columns][:status] = row_number - test_param[:result_sheet_column_offset]
-      test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:status]] = 'status'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      TestData.store[:result_sheet_columns][:status] = row_number - TestData.store[:result_sheet_column_offset]
+      TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:status]] = 'status'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name == 'error_msg'
       @rate_sheet_columns[:error_msg] = row_number
-      test_param[:result_sheet_columns][:error_msg] = row_number - test_param[:result_sheet_column_offset]
-      test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:error_msg]] = 'error_msg'
-      test_param[:result_sheet].row(0).set_format(row_number, @bold)
+      TestData.store[:result_sheet_columns][:error_msg] = row_number - TestData.store[:result_sheet_column_offset]
+      TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:error_msg]] = 'error_msg'
+      TestData.store[:result_sheet].row(0).set_format(row_number, @bold)
     end
   end
 
@@ -347,8 +347,8 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
                      # ignore
                  end
 
-  #test_param[:start_time]=Time.now
-  #test_param[:max_time]=240 #seconds or 4 min
+  #TestData.store[:start_time]=Time.now
+  #TestData.store[:max_time]=240 #seconds or 4 min
 
   format = Spreadsheet::Format.new :color => :blue, :pattern_fg_color => :yellow, :pattern => 1
   fail_format = Spreadsheet::Format.new :color => :red, :weight => :bold
@@ -356,72 +356,72 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
   # Set weight and services
   @rate_sheet.each_with_index do |row, row_number|
     @row = row
-    test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:group]] = "group#{group}"
+    TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:group]] = "group#{group}"
     begin
       if row_number > 0
-        test_config.logger.step"#{"#" * 80} Rate Sheet: #{param_sheet}: Group #{group} - Row #{row_number}"
+        SdcTest.log.step "#{"#" * 80} Rate Sheet: #{param_sheet}: Group #{group} - Row #{row_number}"
 
         #Set weight for country weight limit check
-        test_param[:pounds] = (row[@rate_sheet_columns[:weight_lb]]).to_i
+        TestData.store[:pounds] = (row[@rate_sheet_columns[:weight_lb]]).to_i
 
         # Set country to proper group
 
         if (row[@rate_sheet_columns[:service]]).include? "PMEI Flat Rate"
           if group < 9
-            step "set Order Details Domestic Ship-To Country to a random country in PMEI Flat Rate price group #{group}" if @modal_param.web_app == :orders
-            step "set Print Form Ship-To Country to a random country in PMEI Flat Rate price group #{group}" if @modal_param.web_app == :mail
+            step "set Order Details Domestic Ship-To Country to a random country in PMEI Flat Rate price group #{group}" if @SdcEnv.web_app == :orders
+            step "set Print Form Ship-To Country to a random country in PMEI Flat Rate price group #{group}" if @SdcEnv.web_app == :mail
           end
         elsif (row[@rate_sheet_columns[:service]]).include? "PMEI Package"
-          step "set Order Details Domestic Ship-To Country to a random country in PMEI price group #{group}" if @modal_param.web_app == :orders
-          step "set Print Form Ship-To Country to a random country in PMEI price group #{group}" if @modal_param.web_app == :mail
+          step "set Order Details Domestic Ship-To Country to a random country in PMEI price group #{group}" if @SdcEnv.web_app == :orders
+          step "set Print Form Ship-To Country to a random country in PMEI price group #{group}" if @SdcEnv.web_app == :mail
         end
 
         if (row[@rate_sheet_columns[:service]]).include? "PMI Flat Rate"
           if group < 9
-            step "set Order Details Domestic Ship-To Country to a random country in PMI Flat Rate price group #{group}" if @modal_param.web_app == :orders
-            step "set Print Form Ship-To Country to a random country in PMI Flat Rate price group #{group}" if @modal_param.web_app == :mail
+            step "set Order Details Domestic Ship-To Country to a random country in PMI Flat Rate price group #{group}" if @SdcEnv.web_app == :orders
+            step "set Print Form Ship-To Country to a random country in PMI Flat Rate price group #{group}" if @SdcEnv.web_app == :mail
           end
         elsif (row[@rate_sheet_columns[:service]]).include? "PMI Package"
-          step "set Order Details Domestic Ship-To Country to a random country in PMI price group #{group}" if @modal_param.web_app == :orders
-          step "set Print Form Ship-To Country to a random country in PMI price group #{group}" if @modal_param.web_app == :mail
+          step "set Order Details Domestic Ship-To Country to a random country in PMI price group #{group}" if @SdcEnv.web_app == :orders
+          step "set Print Form Ship-To Country to a random country in PMI price group #{group}" if @SdcEnv.web_app == :mail
         end
 
 
         # spreadsheet price for group
 
         if row[group_column] == nil
-          test_config.logger.step "#{"#" * 10} "
-          test_config.logger.step "#{"#" * 10} "
-          test_config.logger.step "#{"#" * 10} Test Row #{row_number} Skipped. No rates found on sheet."
-          test_config.logger.step "#{"#" * 10} "
-          test_config.logger.step "#{"#" * 10} "
-          test_config.logger.step"#{"#" * 80} "
-          test_param[:result_sheet].row(row_number).set_format(test_param[:result_sheet_columns][:group], format)
-          test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight_lb]] = row[@rate_sheet_columns[:weight_lb]]
-          test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:group]] = row[group_column]
-          test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:username]] = "--"
-          test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:ship_to_country]] = "--"
-          test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight]] = "--"
-          test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:service]] = "--"
-          test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:execution_date]] = "--"
-          test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:service_selected]] = "--"
-          test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:total_ship_cost]] = "--"
-          test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:status]] = "--"
-          test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:results]] = "--"
+          SdcTest.log.step "#{"#" * 10} "
+          SdcTest.log.step "#{"#" * 10} "
+          SdcTest.log.step "#{"#" * 10} Test Row #{row_number} Skipped. No rates found on sheet."
+          SdcTest.log.step "#{"#" * 10} "
+          SdcTest.log.step "#{"#" * 10} "
+          SdcTest.log.step "#{"#" * 80} "
+          TestData.store[:result_sheet].row(row_number).set_format(TestData.store[:result_sheet_columns][:group], format)
+          TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight_lb]] = row[@rate_sheet_columns[:weight_lb]]
+          TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:group]] = row[group_column]
+          TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:username]] = "--"
+          TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:ship_to_country]] = "--"
+          TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight]] = "--"
+          TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:service]] = "--"
+          TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:execution_date]] = "--"
+          TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:service_selected]] = "--"
+          TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:total_ship_cost]] = "--"
+          TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:status]] = "--"
+          TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:results]] = "--"
         else
           price = (row[group_column].to_f * 100).round / 100.0
           # set expectation column for this row to group price
-          test_param[:result_sheet].row(row_number).set_format(test_param[:result_sheet_columns][:group], format)
-          test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:group]] = price
-          test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:username]] = test_param[:username]
-          test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:ship_to_country]] = test_param[:country]
+          TestData.store[:result_sheet].row(row_number).set_format(TestData.store[:result_sheet_columns][:group], format)
+          TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:group]] = price
+          TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:username]] = TestData.store[:username]
+          TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:ship_to_country]] = TestData.store[:country]
 
           # Set weight to 0
-          test_config.logger.step "#{"#" * 10} Desired Weight: #{row[@rate_sheet_columns[:weight_lb]]}"
-          if @modal_param.web_app == :orders
+          SdcTest.log.step "#{"#" * 10} Desired Weight: #{row[@rate_sheet_columns[:weight_lb]]}"
+          if @SdcEnv.web_app == :orders
             step "set Order Details Pounds to 0"
             step "set Order Details Ounces to 0"
-          elsif @modal_param.web_app == :mail
+          elsif @SdcEnv.web_app == :mail
             step "set Print form Pounds to 0"
             step "set Print form Ounces to 0"
           end
@@ -430,111 +430,111 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
           # Set weight per spreadsheet
           #row[@rate_sheet_columns[:weight_lb]].should_not be nil
           weight_lb = row[@rate_sheet_columns[:weight_lb]]
-          test_config.logger.step "#{"#" * 10} "
-          test_config.logger.step "#{"#" * 10} Weight: #{weight_lb}"
-          test_config.logger.step "#{"#" * 10} Price: #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:group]]}"
-          test_config.logger.step "#{"#" * 10} "
-          test_config.logger.step"#{"#" * 50}"
+          SdcTest.log.step "#{"#" * 10} "
+          SdcTest.log.step "#{"#" * 10} Weight: #{weight_lb}"
+          SdcTest.log.step "#{"#" * 10} Price: #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:group]]}"
+          SdcTest.log.step "#{"#" * 10} "
+          SdcTest.log.step "#{"#" * 50}"
 
-          if test_helper.is_whole_number?(weight_lb)
+          if TestHelper.is_whole_number?(weight_lb)
             weight_lb = weight_lb.to_i
-            test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight_lb]] = weight_lb
-            test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight]] = "#{weight_lb} lb."
-            step "set Order Details Pounds to #{weight_lb}" if @modal_param.web_app == :orders
-            step "set Print form Pounds to #{weight_lb}" if @modal_param.web_app == :mail
+            TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight_lb]] = weight_lb
+            TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight]] = "#{weight_lb} lb."
+            step "set Order Details Pounds to #{weight_lb}" if @SdcEnv.web_app == :orders
+            step "set Print form Pounds to #{weight_lb}" if @SdcEnv.web_app == :mail
           else
             weight_oz = Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_i       #AB_ORDERSAUTO_3580 - IDE bug, Weight require 2 parameters
-            #test_config.logger.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
-            test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight]] = "#{weight_oz} oz."
-            test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight_lb]] = weight_oz
-            step "set Order Details Ounces to #{weight_oz}" if @modal_param.web_app == :orders
-            step "set Print form Ounces to #{weight_oz}" if @modal_param.web_app == :mail
+            #SdcTest.log.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
+            TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight]] = "#{weight_oz} oz."
+            TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight_lb]] = weight_oz
+            step "set Order Details Ounces to #{weight_oz}" if @SdcEnv.web_app == :orders
+            step "set Print form Ounces to #{weight_oz}" if @SdcEnv.web_app == :mail
           end
           sleep(0.025)
 
           # Set Service
           row[@rate_sheet_columns[:service]].should_not be nil
           service = row[@rate_sheet_columns[:service]]
-          test_config.logger.step "#{"#" * 10} Desired Service: #{service}"
-          test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:service]] = service
+          SdcTest.log.step "#{"#" * 10} Desired Service: #{service}"
+          TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:service]] = service
 
           # record execution time as time service was selected.
-          test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:execution_date]] = Time.now.strftime("%b %d, %Y %H:%M")
+          TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:execution_date]] = Time.now.strftime("%b %d, %Y %H:%M")
 
-          step "set Order Details service to #{service}" if @modal_param.web_app == :orders
-          step "select Print form service #{service}" if @modal_param.web_app == :mail
-          test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:service_selected]] = test_param[:service]
+          step "set Order Details service to #{service}" if @SdcEnv.web_app == :orders
+          step "select Print form service #{service}" if @SdcEnv.web_app == :mail
+          TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:service_selected]] = TestData.store[:service]
           sleep(0.525)
 
           # get total cost actual value from UI
-          step "Save Order Details data" if @modal_param.web_app == :orders
-          step "save Print Form Total Cost" if @modal_param.web_app == :mail
-          test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:total_ship_cost]] = (test_param[:total_ship_cost].to_f * 100).round / 100.0
+          step "Save Order Details data" if @SdcEnv.web_app == :orders
+          step "save Print Form Total Cost" if @SdcEnv.web_app == :mail
+          TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:total_ship_cost]] = (TestData.store[:total_ship_cost].to_f * 100).round / 100.0
 
           # Set weight to 0
-          if modal_param.web_app == :orders
+          if SdcEnv.web_app == :orders
             step "set Order Details Pounds to 0"
             step "set Order Details Ounces to 0"
-          elsif modal_param.web_app == :mail
+          elsif SdcEnv.web_app == :mail
             step "set Print form Pounds to 0"
             step "set Print form Ounces to 0"
           end
 
 
-          expectation_f = (test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:group]].to_f * 100).round / 100.0
-          total_ship_cost_f = (test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:total_ship_cost]].to_f * 100).round / 100.0
+          expectation_f = (TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:group]].to_f * 100).round / 100.0
+          total_ship_cost_f = (TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:total_ship_cost]].to_f * 100).round / 100.0
 
           if expectation_f == total_ship_cost_f
-            test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:status]] = "Passed"
-            test_param[:result_sheet].row(row_number).set_format(test_param[:result_sheet_columns][:status], pass_format)
-            test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:results]] = "#{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:group]]}==#{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:total_ship_cost]]}"
+            TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:status]] = "Passed"
+            TestData.store[:result_sheet].row(row_number).set_format(TestData.store[:result_sheet_columns][:status], pass_format)
+            TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:results]] = "#{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:group]]}==#{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:total_ship_cost]]}"
           else
-            test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:status]] = "Failed"
-            test_param[:result_sheet].row(row_number).set_format(test_param[:result_sheet_columns][:status], fail_format)
-            test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:results]] = "Expected #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:group]]}, Got #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:total_ship_cost]]}"
+            TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:status]] = "Failed"
+            TestData.store[:result_sheet].row(row_number).set_format(TestData.store[:result_sheet_columns][:status], fail_format)
+            TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:results]] = "Expected #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:group]]}, Got #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:total_ship_cost]]}"
           end
-          test_config.logger.step "#{"#" * 10} "
-          test_config.logger.step "#{"#" * 10} Selected Weight: #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight]]}"
-          test_config.logger.step "#{"#" * 10} Selected Service: #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:service_selected]]}"
-          test_config.logger.step "#{"#" * 10} Selected Country: #{test_param[:country]}"
-          test_config.logger.step "#{"#" * 10} #{"*" * 5} Test #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:status]] } - Expected #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:group]]}, Got #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:total_ship_cost]]} #{"*" * 5}"
-          test_config.logger.step "#{"#" * 10} "
+          SdcTest.log.step "#{"#" * 10} "
+          SdcTest.log.step "#{"#" * 10} Selected Weight: #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight]]}"
+          SdcTest.log.step "#{"#" * 10} Selected Service: #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:service_selected]]}"
+          SdcTest.log.step "#{"#" * 10} Selected Country: #{TestData.store[:country]}"
+          SdcTest.log.step "#{"#" * 10} #{"*" * 5} Test #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:status]] } - Expected #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:group]]}, Got #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:total_ship_cost]]} #{"*" * 5}"
+          SdcTest.log.step "#{"#" * 10} "
         end
 
       end
     rescue Exception => e
-      test_config.logger.step e.message
-      test_config.logger.step e.backtrace.join("\n")
-      test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:error_msg]] = "Group #{group} - Row #{row_number}: #{e.message}"
+      SdcTest.log.step e.message
+      SdcTest.log.step e.backtrace.join("\n")
+      TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:error_msg]] = "Group #{group} - Row #{row_number}: #{e.message}"
     end
   end
 
- # if (Time.now - test_param[:start_time] > test_param[:max_time])
+ # if (Time.now - TestData.store[:start_time] > TestData.store[:max_time])
  #   step "click orders toolbar settings button"
  #   step "In Settings modal, Save"
  # end
 
   result_sheet = param_sheet.gsub(/\s+/, "")
   @result_filename = "#{data_for(:rates_test, {})['results_dir']}\\#{result_sheet}_#{ENV['WEB_APP'].downcase}_#{ENV['URL'].downcase}_Group_#{group}_#{Time.now.strftime("%Y.%m.%d.%H.%M")}.xls"
-  test_param[:result_file].write @result_filename
-  test_param[:result_sheet].each_with_index do |row, row_number|
+  TestData.store[:result_file].write @result_filename
+  TestData.store[:result_sheet].each_with_index do |row, row_number|
     begin
       if row_number > 0
-        if row[test_param[:result_sheet_columns][:status]].casecmp("failed") == 0 || (row[test_param[:result_sheet_columns][:status]].casecmp("passed") != 0 && !row[test_param[:result_sheet_columns][:error_msg]].nil?)
+        if row[TestData.store[:result_sheet_columns][:status]].casecmp("failed") == 0 || (row[TestData.store[:result_sheet_columns][:status]].casecmp("passed") != 0 && !row[TestData.store[:result_sheet_columns][:error_msg]].nil?)
           @failed_test_count += 1
-          test_config.logger.step "Group #{group} - Row #{row_number} Failed"
+          SdcTest.log.step "Group #{group} - Row #{row_number} Failed"
         end
       end
     end
   end
-  test_config.logger.step "#{"*" * 80}"
-  test_config.logger.step "#{"*" * 80}"
-  test_config.logger.step "Number of Failed Tests: #{@failed_test_count}"
-  test_config.logger.step "Number of Failed Tests: #{@failed_test_count}"
-  test_config.logger.step "Number of Failed Tests: #{@failed_test_count}"
-  test_config.logger.step "Number of Failed Tests: #{@failed_test_count}"
-  test_config.logger.step "Number of Failed Tests: #{@failed_test_count}"
-  test_config.logger.step "Number of Failed Tests: #{@failed_test_count}"
-  test_config.logger.step "#{"*" * 80}"
-  test_config.logger.step "#{"*" * 80}"
+  SdcTest.log.step "#{"*" * 80}"
+  SdcTest.log.step "#{"*" * 80}"
+  SdcTest.log.step "Number of Failed Tests: #{@failed_test_count}"
+  SdcTest.log.step "Number of Failed Tests: #{@failed_test_count}"
+  SdcTest.log.step "Number of Failed Tests: #{@failed_test_count}"
+  SdcTest.log.step "Number of Failed Tests: #{@failed_test_count}"
+  SdcTest.log.step "Number of Failed Tests: #{@failed_test_count}"
+  SdcTest.log.step "Number of Failed Tests: #{@failed_test_count}"
+  SdcTest.log.step "#{"*" * 80}"
+  SdcTest.log.step "#{"*" * 80}"
 end

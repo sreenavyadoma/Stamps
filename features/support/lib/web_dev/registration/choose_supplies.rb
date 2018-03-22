@@ -1,6 +1,6 @@
 module Stamps
   module Registration
-    class ChooseSupplies < Browser::Base
+    class ChooseSupplies < WebApps::Base
       attr_reader :web_apps, :web_mail
 
       def initialize(param)
@@ -10,27 +10,27 @@ module Stamps
       end
 
       def wait_until_present
-        browser.button(text: "Place Order").wait_until_present 30
+        driver.button(text: "Place Order").wait_until_present 30
       end
 
       def welcome_kit_message
-        StampsField.new(browser.h1(text: "Customize your Welcome Kit")).wait_until_present 30
+        StampsField.new(driver.h1(text: "Customize your Welcome Kit")).wait_until_present 30
       end
 
       def welcome_kit_first_paragraph
-        StampsField.new(browser.ps(css: "div[class='container welcomeTextBucket']>section>p").first).wait_until_present 30
+        StampsField.new(driver.ps(css: "div[class='container welcomeTextBucket']>section>p").first).wait_until_present 30
       end
 
       def welcome_kit_second_paragraph
-        StampsField.new(browser.ps(css: "div[class='container welcomeTextBucket']>section>p").last).wait_until_present 30
+        StampsField.new(driver.ps(css: "div[class='container welcomeTextBucket']>section>p").last).wait_until_present 30
       end
 
       def welcome_kit_logo
-        StampsField.new(browser.img(css: "img[alt*='Stamps.com Welcome Kit']"))
+        StampsField.new(driver.img(css: "img[alt*='Stamps.com Welcome Kit']"))
       end
 
       def place_order_btn
-        StampsField.new browser.button text: "Place Order"
+        StampsField.new driver.button text: "Place Order"
       end
 
       def place_order

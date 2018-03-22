@@ -7,18 +7,18 @@ module Stamps
 
         module IncFeldsWindowTitle
           def window_title
-            StampsField.new(browser.div(text: 'Incomplete Fields'))
+            StampsField.new(driver.div(text: 'Incomplete Fields'))
           end
         end
 
-        class PrintIncompleteFields < Browser::Base
+        class PrintIncompleteFields < WebApps::Base
           include IncFeldsWindowTitle
           def present?
             window_title.present?
           end
 
           def warning_message
-            cache[:warning_message].nil? || !cache[:warning_message].present? ? cache[:warning_message] = StampsField.new(browser.div(css: "div[class*='sdc-warning dialogue']>div")) : cache[:warning_message]
+            cache[:warning_message].nil? || !cache[:warning_message].present? ? cache[:warning_message] = StampsField.new(driver.div(css: "div[class*='sdc-warning dialogue']>div")) : cache[:warning_message]
           end
         end
       end

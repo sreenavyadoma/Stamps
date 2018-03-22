@@ -4,24 +4,24 @@ module Stamps
 
       module StoresTabViewToolbar
         def add_btn
-          (cache[:add_btn].nil? || !cache[:add_btn].present?) ? cache[:add_btn] = StampsField.new(browser.span(css: "[id=addStoreButton-btnIconEl]")) : cache[:add_btn]
+          (cache[:add_btn].nil? || !cache[:add_btn].present?) ? cache[:add_btn] = StampsField.new(driver.span(css: "[id=addStoreButton-btnIconEl]")) : cache[:add_btn]
         end
 
         def edit_btn
-          (cache[:edit_btn].nil? || !cache[:edit_btn].present?) ? cache[:edit_btn] = StampsField.new(browser.a(css: "[class*=sdc-managestoreswindow-editbtn]")) : cache[:edit_btn]
+          (cache[:edit_btn].nil? || !cache[:edit_btn].present?) ? cache[:edit_btn] = StampsField.new(driver.a(css: "[class*=sdc-managestoreswindow-editbtn]")) : cache[:edit_btn]
         end
 
         def delete_btn
-          (cache[:delete_btn].nil? || !cache[:delete_btn].present?) ? cache[:delete_btn] = StampsField.new(browser.a(css: "[class*=sdc-managestoreswindow-deletebtn]")) : cache[:delete_btn]
+          (cache[:delete_btn].nil? || !cache[:delete_btn].present?) ? cache[:delete_btn] = StampsField.new(driver.a(css: "[class*=sdc-managestoreswindow-deletebtn]")) : cache[:delete_btn]
         end
 
         def marketplace_window_title
-          (cache[:marketplace_window_title].nil? || !cache[:marketplace_window_title].present?) ? cache[:marketplace_window_title] = Browser::Base.new(
+          (cache[:marketplace_window_title].nil? || !cache[:marketplace_window_title].present?) ? cache[:marketplace_window_title] = WebApps::Base.new(
               param).extend(Orders::Stores::MarketPlaceWindowTitle) : cache[:marketplace_window_title]
         end
 
         def store_settings_window_title
-          (cache[:store_settings_window_title].nil? || !cache[:store_settings_window_title].present?) ? cache[:store_settings_window_title] = Browser::Base.new(
+          (cache[:store_settings_window_title].nil? || !cache[:store_settings_window_title].present?) ? cache[:store_settings_window_title] = WebApps::Base.new(
               param).extend(Orders::Stores::StoreSettingsWindowTitle) : cache[:store_settings_window_title]
         end
 
@@ -58,7 +58,7 @@ module Stamps
           cache[:delete_store_confirm_modal].nil? || !cache[:delete_store_confirm_modal].present? ? cache[:delete_store_confirm_modal] = DeleteStoreConfirm.new(param) : cache[:delete_store_confirm_modal]
         end
 
-        class DeleteStoreConfirm < Browser::Base
+        class DeleteStoreConfirm < WebApps::Base
           #assign({})
 
           def present?
@@ -66,15 +66,15 @@ module Stamps
           end
 
           def confirm_delete_btn
-            (cache[:confirm_delete_btn].nil? || !cache[:confirm_delete_btn].present?) ? cache[:confirm_delete_btn] = StampsField.new(browser.a(css: "div[id=deleteStoreButton]>div>div>div[class*=x-autocontainer-outerCt]>div[class*=x-autocontainer-innerCt]>a:nth-child(1)")) : cache[:confirm_delete_btn]
+            (cache[:confirm_delete_btn].nil? || !cache[:confirm_delete_btn].present?) ? cache[:confirm_delete_btn] = StampsField.new(driver.a(css: "div[id=deleteStoreButton]>div>div>div[class*=x-autocontainer-outerCt]>div[class*=x-autocontainer-innerCt]>a:nth-child(1)")) : cache[:confirm_delete_btn]
           end
 
           def cancel_delete_btn
-            (cache[:cancel_btn].nil? || !cache[:cancel_btn].present?) ? cache[:cancel_btn] = StampsField.new(browser.span text: "Cancel") : cache[:cancel_btn]
+            (cache[:cancel_btn].nil? || !cache[:cancel_btn].present?) ? cache[:cancel_btn] = StampsField.new(driver.span text: "Cancel") : cache[:cancel_btn]
           end
 
           def delete_store_text
-            (cache[:delete_store_text].nil? || !cache[:delete_store_text].present?) ? cache[:delete_store_text] = StampsField.new(browser.div(css: "[id*=deleteStoreButton]")) : cache[:delete_store_text]
+            (cache[:delete_store_text].nil? || !cache[:delete_store_text].present?) ? cache[:delete_store_text] = StampsField.new(driver.div(css: "[id*=deleteStoreButton]")) : cache[:delete_store_text]
           end
 
           def confirm_delete
@@ -97,11 +97,11 @@ module Stamps
 
       module StoresTabViewBottom
         def done
-          StampsField.new(browser.span(text: "Done"))
+          StampsField.new(driver.span(text: "Done"))
         end
       end
 
-      class StoresTabView < Browser::Base
+      class StoresTabView < WebApps::Base
         include StoresTabViewToolbar
         include StoresTabViewBottom
 
@@ -112,7 +112,7 @@ module Stamps
         end
 
         def store_name (store)
-          StampsField.new(browser.div(text: store))
+          StampsField.new(driver.div(text: store))
         end
 
         def select_store(store)

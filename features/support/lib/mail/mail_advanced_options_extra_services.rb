@@ -1,40 +1,40 @@
 module Stamps
   module Mail
     module PrintFormPanel
-      class MailExtraServices < Browser::Base #todo-Rob implement caching MailExtraServices
+      class MailExtraServices < WebApps::Base #todo-Rob implement caching MailExtraServices
         attr_accessor :window_title, :security, :value, :handling, :save_field, :close_field, :security_price_field, :return_receipt_price_field,
                       :restricted_delivery_price_field, :cod_price_field, :non_delivery_notice_price_field, :content_price_field,
                       :special_handling_price_field, :merchandise_return_receipt_field, :total_price_field
 
         def initialize(param)
           super
-          @window_title = StampsField.new(browser.div(text: "Extra Services"))
-          textboxes = browser.text_fields(id: "sdc-extraserviceswin-securitydroplist-inputEl")
-          dropdowns = browser.divs(id: "sdc-extraserviceswin-securitydroplist-trigger-picker")
+          @window_title = StampsField.new(driver.div(text: "Extra Services"))
+          textboxes = driver.text_fields(id: "sdc-extraserviceswin-securitydroplist-inputEl")
+          dropdowns = driver.divs(id: "sdc-extraserviceswin-securitydroplist-trigger-picker")
           @security = StampsCombobox.new(textboxes, dropdowns, :li, 0)
 
-          textbox = browser.text_field(id: "sdc-extraserviceswin-valuenumberfield-inputEl")
-          inc_btn = browser.div(css: "div[id=sdc-extraserviceswin-valuenumberfield-trigger-spinner]>div[class*=up]")
-          dec_btn = browser.div(css: "div[id=sdc-extraserviceswin-valuenumberfield-trigger-spinner]>div[class*=down]")
+          textbox = driver.text_field(id: "sdc-extraserviceswin-valuenumberfield-inputEl")
+          inc_btn = driver.div(css: "div[id=sdc-extraserviceswin-valuenumberfield-trigger-spinner]>div[class*=up]")
+          dec_btn = driver.div(css: "div[id=sdc-extraserviceswin-valuenumberfield-trigger-spinner]>div[class*=down]")
           @value = StampsNumberField.new(textbox, inc_btn, dec_btn)
 
-          textboxes = browser.text_fields(id: "sdc-extraserviceswin-contentdroplist-inputEl")
-          dropdowns = browser.divs(id: "sdc-extraserviceswin-contentdroplist-trigger-picker")
+          textboxes = driver.text_fields(id: "sdc-extraserviceswin-contentdroplist-inputEl")
+          dropdowns = driver.divs(id: "sdc-extraserviceswin-contentdroplist-trigger-picker")
           @handling = StampsCombobox.new(textboxes, dropdowns, :li, 0)
 
-          # @save_field = StampsField.new(browser.span(id: "sdc-extraservices-savebtn-btnInnerEl"))
-          @save_field = StampsField.new(browser.span(id: "sdc-extraservices-savebtn-btnWrap"))
-          @close_field = StampsField.new(browser.img(css: "img[class*='x-tool-img x-tool-close']"))
+          # @save_field = StampsField.new(driver.span(id: "sdc-extraservices-savebtn-btnInnerEl"))
+          @save_field = StampsField.new(driver.span(id: "sdc-extraservices-savebtn-btnWrap"))
+          @close_field = StampsField.new(driver.img(css: "img[class*='x-tool-img x-tool-close']"))
 
-          @security_price_field = StampsField.new(browser.label(id: "sdc-extraserviceswin-securitypricelabel"))
-          @return_receipt_price_field = StampsField.new(browser.label(id: "sdc-extraserviceswin-rrpricelabel"))
-          @restricted_delivery_price_field = StampsField.new(browser.label(id: "sdc-extraserviceswin-rdpricelabel"))
-          @cod_price_field = StampsField.new(browser.label(id: "sdc-extraserviceswin-codpricelabel"))
-          @non_delivery_notice_price_field = StampsField.new(browser.label(id: "sdc-extraserviceswin-nndpricelabel"))
-          @content_price_field = StampsField.new(browser.label(id: "sdc-extraserviceswin-contentpricelabel"))
-          @special_handling_price_field = StampsField.new(browser.label(id: "sdc-extraserviceswin-shpricelabel"))
-          @merchandise_return_receipt_field = StampsField.new(browser.label(id: "sdc-extraserviceswin-rrmpricelabel"))
-          @total_price_field = StampsField.new(browser.label(id: "sdc-extraservices-totalcostlabel"))
+          @security_price_field = StampsField.new(driver.label(id: "sdc-extraserviceswin-securitypricelabel"))
+          @return_receipt_price_field = StampsField.new(driver.label(id: "sdc-extraserviceswin-rrpricelabel"))
+          @restricted_delivery_price_field = StampsField.new(driver.label(id: "sdc-extraserviceswin-rdpricelabel"))
+          @cod_price_field = StampsField.new(driver.label(id: "sdc-extraserviceswin-codpricelabel"))
+          @non_delivery_notice_price_field = StampsField.new(driver.label(id: "sdc-extraserviceswin-nndpricelabel"))
+          @content_price_field = StampsField.new(driver.label(id: "sdc-extraserviceswin-contentpricelabel"))
+          @special_handling_price_field = StampsField.new(driver.label(id: "sdc-extraserviceswin-shpricelabel"))
+          @merchandise_return_receipt_field = StampsField.new(driver.label(id: "sdc-extraserviceswin-rrmpricelabel"))
+          @total_price_field = StampsField.new(driver.label(id: "sdc-extraservices-totalcostlabel"))
         end
 
         def present?
@@ -107,8 +107,8 @@ module Stamps
 
         def return_receipt
           if @return_receipt.nil? || !@return_receipt.present?
-            checkbox = browser.span(id: "sdc-extraserviceswin-rrcheckbox-displayEl")
-            verify = browser.div(id: 'sdc-extraserviceswin-rrcheckbox')
+            checkbox = driver.span(id: "sdc-extraserviceswin-rrcheckbox-displayEl")
+            verify = driver.div(id: 'sdc-extraserviceswin-rrcheckbox')
             @return_receipt = StampsCheckbox.new(checkbox, verify, "class", "checked")
           end
           @return_receipt
@@ -116,8 +116,8 @@ module Stamps
 
         def electronic_return_receipt
           if @electronic_return_receipt.nil? || !@electronic_return_receipt.present?
-            checkbox = browser.span(id: "sdc-extraserviceswin-rrecheckbox-displayEl")
-            verify = browser.div(id: 'sdc-extraserviceswin-rrecheckbox')
+            checkbox = driver.span(id: "sdc-extraserviceswin-rrecheckbox-displayEl")
+            verify = driver.div(id: 'sdc-extraserviceswin-rrecheckbox')
             @electronic_return_receipt = StampsCheckbox.new(checkbox, verify, "class", "checked")
           end
           @electronic_return_receipt
@@ -125,8 +125,8 @@ module Stamps
 
         def restricted_delivery
           if @restricted_delivery.nil? || !@restricted_delivery.present?
-            checkbox = browser.span(id: "sdc-extraserviceswin-rdcheckbox-displayEl")
-            verify = browser.div(id: 'sdc-extraserviceswin-rdcheckbox')
+            checkbox = driver.span(id: "sdc-extraserviceswin-rdcheckbox-displayEl")
+            verify = driver.div(id: 'sdc-extraserviceswin-rdcheckbox')
             @restricted_delivery = StampsCheckbox.new(checkbox, verify, "class", "checked")
           end
           @restricted_delivery
@@ -134,9 +134,9 @@ module Stamps
 
         def cod
           if @cod.nil? || !@cod.present?
-            textbox = browser.text_field(id: "sdc-extraserviceswin-codnumberfield-inputEl")
-            inc_btn = browser.div(css: "div[id=sdc-extraserviceswin-codnumberfield-trigger-spinner]>div[class*=up]")
-            dec_btn = browser.div(css: "div[id=sdc-extraserviceswin-codnumberfield-trigger-spinner]>div[class*=down]")
+            textbox = driver.text_field(id: "sdc-extraserviceswin-codnumberfield-inputEl")
+            inc_btn = driver.div(css: "div[id=sdc-extraserviceswin-codnumberfield-trigger-spinner]>div[class*=up]")
+            dec_btn = driver.div(css: "div[id=sdc-extraserviceswin-codnumberfield-trigger-spinner]>div[class*=down]")
             @cod = StampsNumberField.new(textbox, inc_btn, dec_btn)
           end
           @cod
@@ -144,8 +144,8 @@ module Stamps
 
         def non_delivery_notice
           if @non_delivery_notice.nil? || !@non_delivery_notice.present?
-            checkbox = browser.span(id: "sdc-extraserviceswin-nndcheckbox-displayEl")
-            verify = browser.div(id: 'sdc-extraserviceswin-nndcheckbox')
+            checkbox = driver.span(id: "sdc-extraserviceswin-nndcheckbox-displayEl")
+            verify = driver.div(id: 'sdc-extraserviceswin-nndcheckbox')
             @non_delivery_notice = StampsCheckbox.new(checkbox, verify, "class", "checked")
           end
           @non_delivery_notice
@@ -153,8 +153,8 @@ module Stamps
 
         def fragile
           if @fragile.nil? || !@fragile.present?
-            checkbox = browser.span(id: "sdc-extraserviceswin-shcheckbox-displayEl")
-            verify = browser.div(id: 'sdc-extraserviceswin-shcheckbox')
+            checkbox = driver.span(id: "sdc-extraserviceswin-shcheckbox-displayEl")
+            verify = driver.div(id: 'sdc-extraserviceswin-shcheckbox')
             @fragile = StampsCheckbox.new(checkbox, verify, "class", "checked")
           end
           @fragile
@@ -162,8 +162,8 @@ module Stamps
 
         def non_rectangular
           if @non_rectangular.nil? || !@non_rectangular.present?
-            checkbox = browser.span(id: "sdc-extraserviceswin-notrectangularcheckbox-displayEl")
-            verify = browser.div(id: 'sdc-extraserviceswin-notrectangularcheckbox')
+            checkbox = driver.span(id: "sdc-extraserviceswin-notrectangularcheckbox-displayEl")
+            verify = driver.div(id: 'sdc-extraserviceswin-notrectangularcheckbox')
             @non_rectangular = StampsCheckbox.new(checkbox, verify, "class", "checked")
           end
           @non_rectangular
@@ -171,36 +171,36 @@ module Stamps
 
         def return_receipt_merchandise
           if @return_receipt_merchandise.nil? || !@return_receipt_merchandise.present?
-            checkbox = browser.span(id: "sdc-extraserviceswin-rrmcheckbox-displayEl")
-            verify = browser.div(id: 'sdc-extraserviceswin-rrmcheckbox')
+            checkbox = driver.span(id: "sdc-extraserviceswin-rrmcheckbox-displayEl")
+            verify = driver.div(id: 'sdc-extraserviceswin-rrmcheckbox')
             @return_receipt_merchandise = StampsCheckbox.new(checkbox, verify, "class", "checked")
           end
           @return_receipt_merchandise
         end
       end
 
-      class ValueMustBeShown < Browser::Base #This class represents the Postage Value Must be Shown modal. It appears when hidden postage has been checked and the user tries to add an extra service that is incompatible with hidden postage
+      class ValueMustBeShown < WebApps::Base #This class represents the Postage Value Must be Shown modal. It appears when hidden postage has been checked and the user tries to add an extra service that is incompatible with hidden postage
 
         def continue
-          (cache[:continue].nil? || !cache[:continue].present?) ? cache[:continue] = StampsField.new(browser.span(text: "Continue")) : cache[:continue]
+          (cache[:continue].nil? || !cache[:continue].present?) ? cache[:continue] = StampsField.new(driver.span(text: "Continue")) : cache[:continue]
         end
 
         def cancel
-          (cache[:cancel].nil? || !cache[:cancel].present?) ? cache[:cancel] = StampsField.new(browser.span(text: "Cancel")) : cache[:cancel]
+          (cache[:cancel].nil? || !cache[:cancel].present?) ? cache[:cancel] = StampsField.new(driver.span(text: "Cancel")) : cache[:cancel]
         end
       end
 
       ##
       # This class represents the Special Contents Warning modal. It appears when the extra service "Live Animal" or "live Animal (with fee)" is selected
-      class SpecialContentsWarning < Browser::Base
+      class SpecialContentsWarning < WebApps::Base
         def i_agree
           (cache[:i_agree].nil? || !cache[:i_agree].present?) ? cache[:i_agree] = StampsField.new(
-              browser.span(text: "I Agree")) : cache[:i_agree]
+              driver.span(text: "I Agree")) : cache[:i_agree]
         end
 
         def cancel
           (cache[:more_info].nil? || !cache[:more_info].present?) ? cache[:more_info] = StampsField.new(
-              browser.a(text: "More Info")) : cache[:more_info]
+              driver.a(text: "More Info")) : cache[:more_info]
         end
       end
     end

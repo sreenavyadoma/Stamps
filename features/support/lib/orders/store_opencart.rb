@@ -6,21 +6,21 @@ module Stamps
         #
         module ShipStationUpgradeMessage
           def free_upgrade_message
-            StampsField.new(browser.span(text: 'Requires Free Upgrade'))
+            StampsField.new(driver.span(text: 'Requires Free Upgrade'))
           end
 
           def available_in_shipstation_msg
-            StampsField.new(browser.div(text: 'Available in ShipStation'))
+            StampsField.new(driver.div(text: 'Available in ShipStation'))
           end
 
           def window_title
-            StampsField.new(browser.div(text: 'Add Advanced Shipping Features!'))
+            StampsField.new(driver.div(text: 'Add Advanced Shipping Features!'))
           end
         end
 
         ##
         #
-        class Store < Browser::Base
+        class Store < WebApps::Base
           def add_advanced_shipping_feature
             cache[:advanced_shipping].nil? || !cache[:advanced_shipping].present? ? cache[:advanced_shipping] = AddAdvancedShippingFeatures.new(param) : cache[:advanced_shipping]
           end

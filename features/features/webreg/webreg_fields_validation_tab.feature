@@ -4,7 +4,7 @@ Feature: Registration Fields Validation when user tabs to next field
 
   Background:
 
-    Given I launched the default browser
+    Given I launched the browser
 
   @registration_fields_validation_tab
   Scenario:

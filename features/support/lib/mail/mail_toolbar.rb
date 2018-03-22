@@ -1,20 +1,22 @@
 module Stamps
   module Mail
     #todo-Rob too many instance variables, fix it.
-    class MailToolbar < Browser::Base
+    class MailToolbar < WebApps::Base
       #include Stamps::Mail::MailModals::PrintIncompleteFields
 
       attr_reader :total, :mail_print_modal, :install_stamps_connect, :confirm_window, :please_wait, :windows_print, :sample_button,
-                  :printing_problem, :insufficient_funds, :print_label, :print_stamps, :print_envelope, :print_quantity_warning, :hidden_postage_warning
+                  :printing_problem, :insufficient_funds, :print_label, :print_stamps, :print_envelope, :print_quantity_warning,
+                  :hidden_postage_warning, :print_media
 
-      def initialize(param)
-        super
+      def initialize(param, print_media)
+        super(param)
+        @print_media = print_media
         @install_stamps_connect = PrintModal::InstallStampsConnect.new(param)
         @mail_print_modal = PrintModal::MailPrintModal.new(param)
         @confirm_window = PrintModal::MailConfirmPrint.new(param)
         @please_wait = PrintModal::PleaseWait.new(param)
-        @windows_print = Windows::PrintWindow.new(param.browser)
-        @sample_button = StampsField.new browser.span(text: "Print Sample")
+        @windows_print = Windows::PrintWindow.new(param.driver)
+        @sample_button = StampsField.new driver.span(text: "Print Sample")
         @printing_problem = PrintingProblem.new(param)
         @insufficient_funds = MailInsufficientFunds.new(param)
         @print_quantity_warning = PrintQuantityWarning.new(param)
@@ -22,7 +24,7 @@ module Stamps
       end
 
       def totals_field
-        cache[:totals_field].nil? || !cache[:totals_field].present? ? cache[:totals_field] = StampsField.new(browser.label(css: "div[class*=toolbar] label")) : cache[:totals_field]
+        cache[:totals_field].nil? || !cache[:totals_field].present? ? cache[:totals_field] = StampsField.new(driver.label(css: "div[class*=toolbar] label")) : cache[:totals_field]
       end
 
       def total
@@ -30,32 +32,22 @@ module Stamps
       end
 
       def print_button
-        # expect([:envelope, :stamps, :label, :roll, :certified_mail, :certified_mail_3910_3930, :certified_mail_3810, :certified_mail_3830]).to include(param.print_media)
-        expect([:envelope, :stamps, :label, :roll, :cm3610, :cm3710, :cm3910, :cm3930, :cm3810, :cm3830]).to include(param.print_media)
-        10.times do
-          @print_button = case param.print_media
+          10.times do
+          @print_button = case print_media
                             when :envelope
-                              StampsField.new(browser.span(text: 'Print Envelope'))
+                              StampsField.new(driver.span(text: 'Print Envelope'))
                             when :stamps
-                              StampsField.new(browser.span(text: 'Print Stamps'))
+                              StampsField.new(driver.span(text: 'Print Stamps'))
                             when :label
-                              StampsField.new(browser.span(text: 'Print Label'))
+                              StampsField.new(driver.span(text: 'Print Label'))
                             when :roll
-                              StampsField.new(browser.span(text: 'Print Label'))
+                              StampsField.new(driver.span(text: 'Print Label'))
                             when :cm3610, :cm3710, :cm3910, :cm3930
-                              StampsField.new(browser.span(text: 'Print Label'))
+                              StampsField.new(driver.span(text: 'Print Label'))
                             when :cm3810, :cm3830
-                              StampsField.new(browser.span(text: 'Print Envelope'))
-                            # when :certified_mail
-                            #   StampsField.new(browser.span(text: 'Print Label'))
-                            # when :certified_mail_3910_3930
-                            #   StampsField.new(browser.span(text: 'Print Label'))
-                            # when :certified_mail_3810
-                            #   StampsField.new(browser.span(text: 'Print Envelope'))
-                            # when :certified_mail_3830
-                            #   StampsField.new(browser.span(text: 'Print Envelope'))
+                              StampsField.new(driver.span(text: 'Print Envelope'))
                             else
-                              # do nothing
+                              raise ArgumentError, "Invalid print media: #{print_media}"
                           end
           break if @print_button.present?
         end
@@ -69,7 +61,7 @@ module Stamps
 
       def incomplete_window_title
         if cache[:incomplete_window_title].nil? || !cache[:incomplete_window_title].present?
-          cache[:incomplete_window_title] = Browser::Base.new(param).extend(IncFeldsWindowTitle)
+          cache[:incomplete_window_title] = WebApps::Base.new(param).extend(IncFeldsWindowTitle)
         end
         cache[:incomplete_window_title]
       end
@@ -94,7 +86,7 @@ module Stamps
             return window if window.present?
             expect(install_stamps_connect.body.text).to eql(install_stamps_connect.window_title.text) if install_stamps_connect.present?
             if please_wait.present?
-              logger.message(please_wait.paragraph)
+              log.message(please_wait.paragraph)
               please_wait.ok
               sleep(0.125)
               print_button.click
@@ -106,14 +98,14 @@ module Stamps
             end
             expect(print_postage_expecting_error.text).to eql(install_stamps_connect.window_title.text) if install_stamps_connect.present?
             if please_wait.present?
-              logger.message(please_wait.paragraph)
+              log.message(please_wait.paragraph)
               please_wait.ok
               sleep(0.125)
               print_button.click
             end
             return window if window.present?
           rescue
-            #ignore
+            # ignore
           end
         end
         raise "Unable to open Mail Print Modal"
@@ -150,7 +142,7 @@ module Stamps
 
             print.click
           rescue
-            #ignore
+            # ignore
           end
         end
 
@@ -163,7 +155,7 @@ module Stamps
         confirm_window.wait_until_present 3
         5.times do
           if confirm_window.present?
-            logger.info "Confirm Print"
+            log.info "Confirm Print"
             confirm_window.dont_prompt_deducting_postage_again
             confirm_window.continue
             confirm_window.continue
@@ -182,15 +174,15 @@ module Stamps
         end
         sleep(2)
         #raise "Unable to open international mail modal." unless windows_print.present?
-        logger.info "LAST CHANCE!!! #{windows_print.present?}"
+        log.info "LAST CHANCE!!! #{windows_print.present?}"
         windows_print.print
       end
     end
 
 
-    class PrintingProblem < Browser::Base
+    class PrintingProblem < WebApps::Base
       def field
-        StampsField.new((browser.divs css: 'div[id^=dialoguemodal-][id$=-innerCt]').last)
+        StampsField.new((driver.divs css: 'div[id^=dialoguemodal-][id$=-innerCt]').last)
       end
 
       def present?

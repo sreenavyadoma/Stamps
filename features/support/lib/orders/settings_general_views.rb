@@ -2,14 +2,14 @@ module Stamps
   module Orders
     module Settings
       # todo-Rob Implement caching
-      class Pounds < Browser::Base
+      class Pounds < WebApps::Base
         attr_reader :textbox, :inc_bthn, :dec_btn
 
         def initialize(param)
           super
-          @textbox = StampsTextbox.new(browser.text_field(name: 'sdc-resetfieldswin-poundsnumberfield-inputEl'))
-          @inc_bthn = StampsField.new(browser.div(css: "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=up]"))
-          @dec_btn = StampsField.new(browser.div(css: "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=down]"))
+          @textbox = StampsTextbox.new(driver.text_field(name: 'sdc-resetfieldswin-poundsnumberfield-inputEl'))
+          @inc_bthn = StampsField.new(driver.div(css: "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=up]"))
+          @dec_btn = StampsField.new(driver.div(css: "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=down]"))
         end
 
         def text
@@ -18,7 +18,7 @@ module Stamps
 
         def set(value)
           textbox.set(value)
-          logger.info "Pounds set to #{textbox.text}"
+          log.info "Pounds set to #{textbox.text}"
           expect(text).to eql value
         end
 
@@ -35,14 +35,14 @@ module Stamps
         end
       end
 
-      class Ounces < Browser::Base
+      class Ounces < WebApps::Base
         attr_reader :textbox, :inc_btn, :dec_btn
 
         def initialize(param)
           super
-          @textbox = StampsTextbox.new(browser.text_field(name: 'sdc-resetfieldswin-ouncesnumberfield-inputEl'))
-          @inc_btn = StampsField.new(browser.div(css: "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=up]"))
-          @dec_btn = StampsField.new(browser.div(css: "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=down]"))
+          @textbox = StampsTextbox.new(driver.text_field(name: 'sdc-resetfieldswin-ouncesnumberfield-inputEl'))
+          @inc_btn = StampsField.new(driver.div(css: "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=up]"))
+          @dec_btn = StampsField.new(driver.div(css: "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=down]"))
         end
 
         def text
@@ -51,7 +51,7 @@ module Stamps
 
         def set(value)
           textbox.set(value)
-          logger.info "Pounds set to #{textbox.text}"
+          log.info "Pounds set to #{textbox.text}"
           expect(text).to eql value
         end
 
@@ -68,7 +68,7 @@ module Stamps
         end
       end
 
-      class Weight < Browser::Base
+      class Weight < WebApps::Base
         attr_reader :lb, :oz
 
         def initialize(param)
@@ -78,11 +78,11 @@ module Stamps
         end
 
         def enabled?
-          StampsField.new(browser.text_field(name: 'sdc-resetfieldswin-poundsnumberfield-inputEl')).enabled?
+          StampsField.new(driver.text_field(name: 'sdc-resetfieldswin-poundsnumberfield-inputEl')).enabled?
         end
 
         def checkbox
-          checkbox_field = browser.span(id: "sdc-resetfieldswin-weightcheckbox-displayEl")
+          checkbox_field = driver.span(id: "sdc-resetfieldswin-weightcheckbox-displayEl")
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -90,14 +90,14 @@ module Stamps
         end
       end
 
-      class Length < Browser::Base
+      class Length < WebApps::Base
         attr_reader :textbox, :inc_btn, :dec_btn
 
         def initialize(param)
           super
-          @textbox = StampsTextbox.new(browser.text_field(name: 'sdc-resetfieldswin-lengthnumberfield-inputEl'))
-          @inc_btn = StampsField.new(browser.div css: "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=up]")
-          @dec_btn = StampsField.new(browser.div css: "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=down]")
+          @textbox = StampsTextbox.new(driver.text_field(name: 'sdc-resetfieldswin-lengthnumberfield-inputEl'))
+          @inc_btn = StampsField.new(driver.div css: "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=up]")
+          @dec_btn = StampsField.new(driver.div css: "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=down]")
         end
 
         def text
@@ -106,7 +106,7 @@ module Stamps
 
         def set(value)
           textbox.set(value)
-          logger.info "Pounds set to #{textbox.text}"
+          log.info "Pounds set to #{textbox.text}"
           expect(text).to eql value
         end
 
@@ -123,14 +123,14 @@ module Stamps
         end
       end
 
-      class Width < Browser::Base
+      class Width < WebApps::Base
         attr_reader :textbox, :inc_btn, :dec_btn
 
         def initialize(param)
           super
-          @textbox = StampsTextbox.new(browser.text_field name: 'sdc-resetfieldswin-widthnumberfield-inputEl')
-          @inc_btn = StampsField.new(browser.div css: "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=up]")
-          @dec_btn = StampsField.new(browser.div css: "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=down]")
+          @textbox = StampsTextbox.new(driver.text_field name: 'sdc-resetfieldswin-widthnumberfield-inputEl')
+          @inc_btn = StampsField.new(driver.div css: "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=up]")
+          @dec_btn = StampsField.new(driver.div css: "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=down]")
         end
 
         def text
@@ -139,7 +139,7 @@ module Stamps
 
         def set(value)
           textbox.set(value)
-          logger.info "Pounds set to #{textbox.text}"
+          log.info "Pounds set to #{textbox.text}"
           expect(text).to eql value
         end
 
@@ -156,12 +156,12 @@ module Stamps
         end
       end
 
-      class Height < Browser::Base
+      class Height < WebApps::Base
         attr_reader :textbox
 
         def initialize(param)
           super
-          @textbox = StampsTextbox.new(browser.text_field name: 'sdc-resetfieldswin-heightnumberfield-inputEl')
+          @textbox = StampsTextbox.new(driver.text_field name: 'sdc-resetfieldswin-heightnumberfield-inputEl')
         end
 
         def text
@@ -170,34 +170,34 @@ module Stamps
 
         def set(value)
           textbox.set(value)
-          logger.info "Pounds set to #{textbox.text}"
+          log.info "Pounds set to #{textbox.text}"
           expect(text).to eql value
         end
 
         def increment value
-          button = StampsField.new(browser.div css: "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=up]")
+          button = StampsField.new(driver.div css: "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=up]")
           value.to_i.times do
             button.click
           end
         end
 
         def decrement value
-          button = StampsField.new(browser.div css: "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=down]")
+          button = StampsField.new(driver.div css: "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=down]")
           value.to_i.times do
             button.click
           end
         end
       end
 
-      class SettingsLogoffDropDown < Browser::Base
+      class SettingsLogoffDropDown < WebApps::Base
         def textbox
           (cache[:textbox].nil? || !cache[:textbox].present?) ? cache[:textbox] = StampsField.new(
-              browser.text_field(css: "[id^=generaltabview-][id$=-targetEl] [id^=form-][id$=-targetEl]>div:nth-child(4) input")) : cache[:textbox]
+              driver.text_field(css: "[id^=generaltabview-][id$=-targetEl] [id^=form-][id$=-targetEl]>div:nth-child(4) input")) : cache[:textbox]
         end
 
         def dropdown
           (cache[:dropdown].nil? || !cache[:dropdown].present?) ? cache[:dropdown] = StampsField.new(
-              browser.div(css: "[id^=generaltabview-][id$=-targetEl] [id^=form-][id$=-targetEl]>div:nth-child(4) [class*=arrow-trigger]")) : cache[:dropdown]
+              driver.div(css: "[id^=generaltabview-][id$=-targetEl] [id^=form-][id$=-targetEl]>div:nth-child(4) [class*=arrow-trigger]")) : cache[:dropdown]
         end
 
         def five_min
@@ -226,7 +226,7 @@ module Stamps
 
         private
         def select(str)
-          selection = StampsField.new(browser.li(text: str))
+          selection = StampsField.new(driver.li(text: str))
           10.times do
             return textbox.text if textbox.text == str
             dropdown.click unless selection.present?
@@ -236,13 +236,13 @@ module Stamps
         end
       end
 
-      class PostDateDropDown < Browser::Base
+      class PostDateDropDown < WebApps::Base
         attr_reader :textbox, :dropdown
 
         def initialize(param)
           super
-          @textbox = StampsTextbox.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div>input")
-          @dropdown = StampsField.new browser.div css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div[id$=picker]"
+          @textbox = StampsTextbox.new driver.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div>input")
+          @dropdown = StampsField.new driver.div css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div[id$=picker]"
         end
 
         def text
@@ -250,7 +250,7 @@ module Stamps
         end
 
         def select(selection)
-          selection_label = StampsField.new browser.li text: selection
+          selection_label = StampsField.new driver.li text: selection
           10.times do
             break if textbox.text.include? selection
             dropdown.click unless selection_label.present?
@@ -356,17 +356,17 @@ module Stamps
         end
       end
 
-      class PostageBalanceDropDown < Browser::Base
+      class PostageBalanceDropDown < WebApps::Base
         attr_reader :textbox, :dropdown
 
         def initialize(param)
           super
-          @textbox = StampsTextbox.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div>input")
-          @dropdown = StampsField.new browser.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div[id$=picker]")
+          @textbox = StampsTextbox.new driver.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div>input")
+          @dropdown = StampsField.new driver.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div[id$=picker]")
         end
 
         def select(selection)
-          selection_label = StampsField.new browser.li text: selection
+          selection_label = StampsField.new driver.li text: selection
           10.times do
             break if textbox.text.include? selection
             dropdown.click unless selection_label.present?
@@ -404,7 +404,7 @@ module Stamps
         end
       end
 
-      class Dimensions < Browser::Base
+      class Dimensions < WebApps::Base
         attr_reader :length, :width, :height
 
         def initialize(param)
@@ -415,23 +415,23 @@ module Stamps
         end
 
         def enabled?
-          StampsField.new(browser.text_field name: 'sdc-resetfieldswin-lengthnumberfield-inputEl').enabled?
+          StampsField.new(driver.text_field name: 'sdc-resetfieldswin-lengthnumberfield-inputEl').enabled?
         end
 
         def checkbox
-          checkbox_field = browser.span(id: "sdc-resetfieldswin-dimensionscheckbox-displayEl")
+          checkbox_field = driver.span(id: "sdc-resetfieldswin-dimensionscheckbox-displayEl")
           verify_field = checkbox_field.parent.parent.parent
           StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
         end
       end
 
-      class ResetFields < Browser::Base
+      class ResetFields < WebApps::Base
         def present?
-          (browser.div text: "Reset Fields").present?
+          (driver.div text: "Reset Fields").present?
         end
 
         def service
-          checkbox_field = browser.span id: "sdc-resetfieldswin-servicecheckbox-displayEl"
+          checkbox_field = driver.span id: "sdc-resetfieldswin-servicecheckbox-displayEl"
           verify_field = checkbox_field.parent.parent.parent
           StampsCheckbox.new checkbox_field, verify_field, v, "checked"
         end
@@ -445,7 +445,7 @@ module Stamps
         end
 
         def ship_to_address
-          checkbox_field = browser.span id: "sdc-resetfieldswin-shiptoaddresscheckbox-displayEl"
+          checkbox_field = driver.span id: "sdc-resetfieldswin-shiptoaddresscheckbox-displayEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -453,7 +453,7 @@ module Stamps
         end
 
         def tracking
-          checkbox_field = browser.span id: "sdc-resetfieldswin-trackingcheckbox-displayEl"
+          checkbox_field = driver.span id: "sdc-resetfieldswin-trackingcheckbox-displayEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -461,7 +461,7 @@ module Stamps
         end
 
         def extra_services
-          checkbox_field = browser.span id: "sdc-resetfieldswin-extraservicescheckbox-displayEl"
+          checkbox_field = driver.span id: "sdc-resetfieldswin-extraservicescheckbox-displayEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -469,7 +469,7 @@ module Stamps
         end
 
         def insurance
-          checkbox_field = browser.span id: "sdc-resetfieldswin-insurancecheckbox-displayEl"
+          checkbox_field = driver.span id: "sdc-resetfieldswin-insurancecheckbox-displayEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -477,7 +477,7 @@ module Stamps
         end
 
         def reference_numbers
-          checkbox_field = browser.span id: "sdc-resetfieldswin-referencenumberscheckbox-displayEl"
+          checkbox_field = driver.span id: "sdc-resetfieldswin-referencenumberscheckbox-displayEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -485,7 +485,7 @@ module Stamps
         end
 
         def cost_code
-          checkbox_field = browser.span id: "sdc-resetfieldswin-costcodecheckbox-displayEl"
+          checkbox_field = driver.span id: "sdc-resetfieldswin-costcodecheckbox-displayEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -493,7 +493,7 @@ module Stamps
         end
 
         def customs
-          checkbox_field = browser.span id: "sdc-resetfieldswin-customscheckbox-displayEl"
+          checkbox_field = driver.span id: "sdc-resetfieldswin-customscheckbox-displayEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -501,7 +501,7 @@ module Stamps
         end
 
         def quantity
-          checkbox_field = browser.span id: "sdc-resetfieldswin-quantitycheckbox-displayEl"
+          checkbox_field = driver.span id: "sdc-resetfieldswin-quantitycheckbox-displayEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -509,7 +509,7 @@ module Stamps
         end
 
         def stamps_amount
-          checkbox_field = browser.span id: "sdc-resetfieldswin-stampsamountcheckbox-displayEl"
+          checkbox_field = driver.span id: "sdc-resetfieldswin-stampsamountcheckbox-displayEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -517,7 +517,7 @@ module Stamps
         end
 
         def auto_advance_label_position
-          parent = (browser.label :text => "Auto-Advance Label Position (NetStamps and Label Sheets)").parent
+          parent = (driver.label :text => "Auto-Advance Label Position (NetStamps and Label Sheets)").parent
           checkbox_field = parent.span(:class => 'x-form-checkbox')
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
@@ -526,7 +526,7 @@ module Stamps
         end
 
         def close
-          button = StampsField.new(browser.span text: "Close")
+          button = StampsField.new(driver.span text: "Close")
           5.times do
             return unless button.present?
             button.click
@@ -536,14 +536,14 @@ module Stamps
         end
       end
 
-      class GeneralSettings < Browser::Base
+      class GeneralSettings < WebApps::Base
 
         def general
-          @general = browser.span(text: 'General')
+          @general = driver.span(text: 'General')
         end
 
         def title
-          StampsField.new(browser.div text: "Orders Settings")
+          StampsField.new(driver.div text: "Orders Settings")
         end
 
         def present?
@@ -551,7 +551,7 @@ module Stamps
         end
 
         def services
-          checkbox_field = browser.span(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(2)>div>div>div>div>div>div>div>span")
+          checkbox_field = driver.span(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(2)>div>div>div>div>div>div>div>span")
           verify_field = checkbox_field.parent.parent.parent
           StampsCheckbox.new(checkbox_field, verify_field, "class", "checked")
         end
@@ -569,7 +569,7 @@ module Stamps
         end
 
         def print_confirm
-          checkbox_field = browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(6)>div>div>div>div>div>div>div>span"
+          checkbox_field = driver.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(6)>div>div>div>div>div>div>div>span"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -578,7 +578,7 @@ module Stamps
 
         def reset_fields
           modal = ResetFields.new(param)
-          button = StampsField.new browser.span text: "Select..."
+          button = StampsField.new driver.span text: "Select..."
           10.times do
             button.click unless modal.present?
             return modal if modal.present?
@@ -586,7 +586,7 @@ module Stamps
         end
 
         def usps_terms
-          checkbox_field = browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(8)>div>div>div>div>div>div>div>span"
+          checkbox_field = driver.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(8)>div>div>div>div>div>div>div>span"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -594,7 +594,7 @@ module Stamps
         end
 
         def contacts
-          checkbox_field = browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(10)>div>div>div>div>div>div>div>span"
+          checkbox_field = driver.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(10)>div>div>div>div>div>div>div>span"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -602,7 +602,7 @@ module Stamps
         end
 
         def shipments
-          checkbox_field = browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(15)>div>div>div>div>div>div>div>span"
+          checkbox_field = driver.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(15)>div>div>div>div>div>div>div>span"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -610,7 +610,7 @@ module Stamps
         end
 
         def save
-          button = StampsField.new(browser.span text: "Done")
+          button = StampsField.new(driver.span text: "Done")
           10.times do
             button.click
             return unless button.present?
@@ -618,7 +618,7 @@ module Stamps
         end
 
         def close
-          button = StampsField.new(browser.img css: "img[class$=close]")
+          button = StampsField.new(driver.img css: "img[class$=close]")
           10.times do
             button.click
             return unless button.present?
@@ -630,7 +630,7 @@ module Stamps
       module GeneralSettingsContainer
         def gen_settings_header
           (cache[:gen_settings].nil? || !cache[:gen_settings].present?) ? cache[:gen_settings] = StampsField.new(
-              browser.label(text: "General Settings")) : cache[:gen_settings]
+              driver.label(text: "General Settings")) : cache[:gen_settings]
         end
 
         def services
@@ -675,7 +675,7 @@ module Stamps
         end
       end
 
-      class GeneralTabView < Browser::Base
+      class GeneralTabView < WebApps::Base
         include GeneralSettingsContainer
         include EmailNotificationContainer
 
@@ -684,10 +684,10 @@ module Stamps
         end
       end
 
-      class InternationalTabView < Browser::Base
+      class InternationalTabView < WebApps::Base
         def gen_settings_header
           (cache[:gen_settings_header].nil? || !cache[:gen_settings_header].present?) ? cache[:gen_settings_header] = StampsField.new(
-              browser.label(text: "Default Customs Information")[0]) : cache[:gen_settings_header]
+              driver.label(text: "Default Customs Information")[0]) : cache[:gen_settings_header]
         end
 
         def package_contents
@@ -715,7 +715,7 @@ module Stamps
         end
       end
 
-      class LabelMessagesTabView < Browser::Base
+      class LabelMessagesTabView < WebApps::Base
 
       end
 

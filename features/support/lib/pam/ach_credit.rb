@@ -1,12 +1,12 @@
 module Stamps
   module Pam
-    class ACHCreditError < Browser::Base
+    class ACHCreditError < WebApps::Base
       attr_reader :title, :ok_button
 
       def initialize(param)
         super
-        @ok_button=StampsField.new browser.a(css: "a[href*=AccountACHCredit]")
-        @title=StampsField.new browser.td(text: "ACH Credit Error")
+        @ok_button=StampsField.new driver.a(css: "a[href*=AccountACHCredit]")
+        @title=StampsField.new driver.td(text: "ACH Credit Error")
       end
 
       def present?
@@ -22,13 +22,13 @@ module Stamps
       end
     end
 
-    class ACHCreditConfirmation < Browser::Base
+    class ACHCreditConfirmation < WebApps::Base
       attr_reader :title, :ok_button
 
       def initialize(param)
         super
-        @title=StampsField.new browser.td(text: "ACH Credit Confirmation")
-        @ok_button=StampsField.new browser.a(css: "a[href^=Profile]")
+        @title=StampsField.new driver.td(text: "ACH Credit Confirmation")
+        @ok_button=StampsField.new driver.a(css: "a[href^=Profile]")
       end
 
       def present?
@@ -44,16 +44,16 @@ module Stamps
       end
     end
 
-    class ACHPurchaseVerification < Browser::Base
+    class ACHPurchaseVerification < WebApps::Base
       attr_reader :title, :confirmation, :ach_error, :yes_button, :no_button
 
       def initialize(param)
         super
-        @title=StampsField.new browser.td(text: "ACH Purchase Verification")
+        @title=StampsField.new driver.td(text: "ACH Purchase Verification")
         @confirmation=ACHCreditConfirmation.new(param)
         @ach_error=ACHCreditError.new(param)
-        @yes_button=StampsField.new browser.input(name: "YES")
-        @no_button=StampsField.new browser.text_field(name: "NO")
+        @yes_button=StampsField.new driver.input(name: "YES")
+        @no_button=StampsField.new driver.text_field(name: "NO")
       end
 
       def present?
@@ -70,17 +70,17 @@ module Stamps
           yes_button.click
           sleep(0.35)
           if confirmation.present?
-            logger.message confirmation.text
-            logger.message confirmation.text
-            logger.message confirmation.text
-            logger.message confirmation.text
+            log.message confirmation.text
+            log.message confirmation.text
+            log.message confirmation.text
+            log.message confirmation.text
             return confirmation
           end
           if ach_error.present?
-            logger.message ach_error.text
-            logger.message ach_error.text
-            logger.message ach_error.text
-            logger.message ach_error.text
+            log.message ach_error.text
+            log.message ach_error.text
+            log.message ach_error.text
+            log.message ach_error.text
             return ach_error
           end
         end
@@ -92,16 +92,16 @@ module Stamps
       end
     end
 
-    class ACHCredit < Browser::Base
+    class ACHCredit < WebApps::Base
       attr_reader :dollar_amount, :cents_amount, :comments, :purchase_verification, :submit_button
 
       def initialize(param)
         super
-        @dollar_amount=StampsTextbox.new browser.text_field(name: "Amount")
-        @cents_amount=StampsTextbox.new browser.text_field(name: "AmountFraction")
-        @comments=StampsTextbox.new browser.text_field(name: "comments")
+        @dollar_amount=StampsTextbox.new driver.text_field(name: "Amount")
+        @cents_amount=StampsTextbox.new driver.text_field(name: "AmountFraction")
+        @comments=StampsTextbox.new driver.text_field(name: "comments")
         @purchase_verification=ACHPurchaseVerification.new(param)
-        @submit_button=StampsField.new browser.input(:value => "Submit")
+        @submit_button=StampsField.new driver.input(:value => "Submit")
       end
 
       def present?
@@ -113,7 +113,7 @@ module Stamps
           submit_button.click
           submit_button.click
           if purchase_verification.present?
-            logger.info purchase_verification.text
+            log.info purchase_verification.text
             return purchase_verification
           end
         end

@@ -1,14 +1,14 @@
 module Stamps
   module Mail
-    class MailInsufficientFunds < Browser::Base
+    class MailInsufficientFunds < WebApps::Base
       attr_reader :window_title, :body, :add_funds_btn, :close_btn
 
       def initialize(param)
         super
-        @window_title = StampsField.new(browser.div(text: 'Insufficient Funds'))
-        @body = StampsField.new(browser.div(text: 'div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]'))
-        @add_funds_btn = StampsField.new(browser.span(text: 'Add Funds'))
-        @close_btn = StampsField.new(browser.img(css: "img[class*='x-tool-img x-tool-close']"))
+        @window_title = StampsField.new(driver.div(text: 'Insufficient Funds'))
+        @body = StampsField.new(driver.div(text: 'div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]'))
+        @add_funds_btn = StampsField.new(driver.span(text: 'Add Funds'))
+        @close_btn = StampsField.new(driver.img(css: "img[class*='x-tool-img x-tool-close']"))
       end
 
       def present?
@@ -28,13 +28,13 @@ module Stamps
       end
     end
 
-    class PrintQuantityWarning < Browser::Base
+    class PrintQuantityWarning < WebApps::Base
       attr_reader :agree_and_continue_btn, :close, :cancel
 
       def initialize(param)
         super
-        @close = StampsField.new(browser.div(text: 'span[id^=button-1248-btnInnerEl]'))
-        @cancel = StampsField.new(browser.div(text: 'span[id^=button-1249-btnInnerEl]'))
+        @close = StampsField.new(driver.div(text: 'span[id^=button-1248-btnInnerEl]'))
+        @cancel = StampsField.new(driver.div(text: 'span[id^=button-1249-btnInnerEl]'))
         #@agree_and_continue_btn=StampsElement.new()
       end
 
@@ -53,18 +53,18 @@ module Stamps
 
     end
 
-    class HiddenPostageWarning < Browser::Base #This class represents the hidden postage warning modal. It appears when the hidden postage button is checked while an incompatible extra service option is selected
+    class HiddenPostageWarning < WebApps::Base #This class represents the hidden postage warning modal. It appears when the hidden postage button is checked while an incompatible extra service option is selected
 
       def continue_button
-        (cache[:continue_button].nil? || !cache[:continue_button].present?) ? cache[:continue_button] = StampsField.new(browser.span text: "Continue") : cache[:continue_button]
+        (cache[:continue_button].nil? || !cache[:continue_button].present?) ? cache[:continue_button] = StampsField.new(driver.span text: "Continue") : cache[:continue_button]
       end
 
       def cancel_button
-        (cache[:cancel_button].nil? || !cache[:cancel_button].present?) ? cache[:cancel_button] = StampsField.new(browser.span text: "Cancel") : cache[:cancel_button]
+        (cache[:cancel_button].nil? || !cache[:cancel_button].present?) ? cache[:cancel_button] = StampsField.new(driver.span text: "Cancel") : cache[:cancel_button]
       end
 
       def window_title
-        (cache[:window_title].nil? || !cache[:window_title].present?) ? cache[:window_title] = StampsField.new(browser.div text: "Hidden Postage Not Allowed") : cache[:window_title]
+        (cache[:window_title].nil? || !cache[:window_title].present?) ? cache[:window_title] = StampsField.new(driver.div text: "Hidden Postage Not Allowed") : cache[:window_title]
       end
 
       def present?
@@ -72,7 +72,7 @@ module Stamps
       end
 
       def extra_service service #This method confirms that the appropriate extra service text appears in the hidden postage warning modal, indicating which extra service caused the warning.
-        StampsField.new(browser.li text: service)
+        StampsField.new(driver.li text: service)
       end
 
       def continue

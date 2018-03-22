@@ -1,17 +1,17 @@
 module Stamps
   module Orders
     module Stores
-      class ServerError < Browser::Base
+      class ServerError < WebApps::Base
         def present?
-          browser.div(text: "Server Error").present?
+          driver.div(text: "Server Error").present?
         end
 
         def message
-          StampsField.new(browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")).text
+          StampsField.new(driver.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")).text
         end
 
         def ok
-          button=StampsField.new browser.span(text: 'OK')
+          button=StampsField.new driver.span(text: 'OK')
           button.click_while_present
         end
       end

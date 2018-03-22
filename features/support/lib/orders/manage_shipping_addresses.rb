@@ -5,36 +5,36 @@ module Stamps
       module WindowTitle
         def window_title
           if cache[:window_title].nil? || !cache[:window_title].present?
-            cache[:window_title] = StampsField.new(browser.div(css: 'div[class*=x-window-header-title-default]>div'))
+            cache[:window_title] = StampsField.new(driver.div(css: 'div[class*=x-window-header-title-default]>div'))
           end
           cache[:window_title]
         end
       end
 
-      class ManageShippingAddresses < Browser::Base
+      class ManageShippingAddresses < WebApps::Base
         include WindowTitle
         def edit_button
           if cache[:edit_button].nil? || !cache[:edit_button].present?
-            cache[:edit_button] = StampsField.new(browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(2)"))
+            cache[:edit_button] = StampsField.new(driver.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(2)"))
           end
           cache[:edit_button]
         end
 
         def add_button
           if cache[:add_button].nil? || !cache[:add_button].present?
-            cache[:add_button] = StampsField.new(browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(1)"))
+            cache[:add_button] = StampsField.new(driver.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(1)"))
           end
           cache[:add_button]
         end
 
         def close_button
-          cache[:close_button] = StampsField.new(browser.span(css: "span[class*=sdc-icon-mobile-close-light]")) if cache[:close_button].nil? || !cache[:close_button].present?
+          cache[:close_button] = StampsField.new(driver.span(css: "span[class*=sdc-icon-idevices-close-light]")) if cache[:close_button].nil? || !cache[:close_button].present?
           cache[:close_button]
         end
 
         def delete_button
           if cache[:delete_button].nil? || !cache[:delete_button].present?
-            cache[:delete_button] = StampsField.new browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(3)")
+            cache[:delete_button] = StampsField.new driver.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(3)")
           end
           cache[:delete_button]
         end
@@ -44,7 +44,7 @@ module Stamps
         end
 
         def grid_cell(row, column)
-          browser.td(css: "div[id^=grid-][class*=x-panel-body-default]>div>div>table:nth-child(#{row.to_i})>tbody>tr>td:nth-child(#{column.to_i})")
+          driver.td(css: "div[id^=grid-][class*=x-panel-body-default]>div>div>table:nth-child(#{row.to_i})>tbody>tr>td:nth-child(#{column.to_i})")
         end
 
         def grid_cell_text(row, column)
@@ -53,11 +53,11 @@ module Stamps
 
         def checked?(row)
           begin
-            browser.tables(css: "[id^=manageShipFromWindow-][id$=-body][class*=closable] table").each_with_index do |grid_row_item, index|
+            driver.tables(css: "[id^=manageShipFromWindow-][id$=-body][class*=closable] table").each_with_index do |grid_row_item, index|
               return grid_row_item.attribute_value("class").include?('selected') if row == index + 1
             end
           rescue
-            #ignore
+            # ignore
           end
           false
         end
@@ -91,10 +91,10 @@ module Stamps
             grid_city = city row
             grid_state = state row
             if (grid_name.casecmp(name) == 0) && (grid_company.casecmp(company) == 0) && (grid_city.casecmp(city) == 0)
-              logger.info "Match found! - Row #{row} :: Name=#{grid_name} :: Company=#{grid_company} :: City=#{grid_city} ::  State=#{grid_state} :: "
+              log.info "Match found! - Row #{row} :: Name=#{grid_name} :: Company=#{grid_company} :: City=#{grid_city} ::  State=#{grid_state} :: "
               return row
             else
-              logger.info "No match - Row #{row} :: Name=#{grid_name} :: Company=#{grid_company} :: City=#{grid_city} ::  State=#{grid_state} :: "
+              log.info "No match - Row #{row} :: Name=#{grid_name} :: Company=#{grid_company} :: City=#{grid_city} ::  State=#{grid_state} :: "
             end
           end
           0
@@ -154,7 +154,7 @@ module Stamps
               cell.click
               break if checked?(row_num)
             rescue
-              #ignore
+              # ignore
             end
           end
         end
@@ -173,45 +173,45 @@ module Stamps
 
         def shipping_address_count
           wait_until_present
-          browser.tables(css: "[id^=grid-][class*=panel-body] table[class*=x-grid-item]").size
+          driver.tables(css: "[id^=grid-][class*=panel-body] table[class*=x-grid-item]").size
         end
       end
 
       #todo-Rob REW
-      class AddShippingAddress < Browser::Base
+      class AddShippingAddress < WebApps::Base
 
 
         attr_accessor :address_hash
 
         def save_btn
-          cache[:save_btn] = StampsField.new(browser.span(text: 'Save')) if cache[:save_btn].nil? || !cache[:save_btn].present?
+          cache[:save_btn] = StampsField.new(driver.span(text: 'Save')) if cache[:save_btn].nil? || !cache[:save_btn].present?
           cache[:save_btn]
         end
 
         def origin_zip
-          cache[:origin_zip] = StampsTextbox.new(browser.text_field(name: 'OriginZip')) if cache[:origin_zip].nil? || !cache[:origin_zip].present?
+          cache[:origin_zip] = StampsTextbox.new(driver.text_field(name: 'OriginZip')) if cache[:origin_zip].nil? || !cache[:origin_zip].present?
           cache[:origin_zip]
         end
 
         def name
-          cache[:name] = StampsTextbox.new(browser.text_field(name: 'FullName')) if cache[:name].nil? || !cache[:name].present?
+          cache[:name] = StampsTextbox.new(driver.text_field(name: 'FullName')) if cache[:name].nil? || !cache[:name].present?
           cache[:name]
         end
 
         def company
-          cache[:company] = StampsTextbox.new(browser.text_field(name: 'Company')) if cache[:company].nil? || !cache[:company].present?
+          cache[:company] = StampsTextbox.new(driver.text_field(name: 'Company')) if cache[:company].nil? || !cache[:company].present?
           cache[:company]
         end
         def street_address_1
-          cache[:street_address_1] = StampsTextbox.new(browser.text_field name: 'Street1') if cache[:street_address_1].nil? || !cache[:street_address_1].present?
+          cache[:street_address_1] = StampsTextbox.new(driver.text_field name: 'Street1') if cache[:street_address_1].nil? || !cache[:street_address_1].present?
           cache[:street_address_1]
         end
         def street_address_2
-          cache[:street_address_2] = StampsTextbox.new(browser.text_field name: 'Street2') if cache[:street_address_2].nil? || !cache[:street_address_2].present?
+          cache[:street_address_2] = StampsTextbox.new(driver.text_field name: 'Street2') if cache[:street_address_2].nil? || !cache[:street_address_2].present?
           cache[:street_address_2]
         end
         def city
-          cache[:city] = StampsTextbox.new(browser.text_field(name: 'City')) if cache[:city].nil? || !cache[:city].present?
+          cache[:city] = StampsTextbox.new(driver.text_field(name: 'City')) if cache[:city].nil? || !cache[:city].present?
           cache[:city]
         end
         def state
@@ -219,20 +219,20 @@ module Stamps
           cache[:state]
         end
         def zip
-          cache[:zip] = StampsTextbox.new(browser.text_field(name: 'Zip')) if cache[:zip].nil? || !cache[:zip].present?
+          cache[:zip] = StampsTextbox.new(driver.text_field(name: 'Zip')) if cache[:zip].nil? || !cache[:zip].present?
           cache[:zip]
         end
         def phone
-          cache[:phone] = StampsTextbox.new(browser.text_field(name: "Phone")) if cache[:phone].nil? || !cache[:phone].present?
+          cache[:phone] = StampsTextbox.new(driver.text_field(name: "Phone")) if cache[:phone].nil? || !cache[:phone].present?
           cache[:phone]
         end
 
         private def dropdown
-          browser.div(css: "div[id^=statecombobox-][id$=-trigger-picker]")
+          driver.div(css: "div[id^=statecombobox-][id$=-trigger-picker]")
         end
 
         private def textbox
-          browser.text_field(css: 'input[id^=statecombobox-][id$=-inputEl]')
+          driver.text_field(css: 'input[id^=statecombobox-][id$=-inputEl]')
         end
 
         def present?
@@ -264,17 +264,17 @@ module Stamps
 
       end
 
-      class DeleteShippingAddress < Browser::Base
+      class DeleteShippingAddress < WebApps::Base
 
 
         def window_title
-          cache[:window_title] = StampsField.new(browser.div(text: "Delete Shipping Address")) if cache[:window_title].nil? || !cache[:window_title].present?
+          cache[:window_title] = StampsField.new(driver.div(text: "Delete Shipping Address")) if cache[:window_title].nil? || !cache[:window_title].present?
           cache[:window_title]
         end
 
         def delete_btn
           if cache[:delete_btn].nil? || !cache[:delete_btn].present?
-            cache[:delete_btn] = StampsField.new(browser.a(css: 'div[id^=dialoguemodal-][class*=closable] div[class*=x-panel-default-docked-bottom] a'))
+            cache[:delete_btn] = StampsField.new(driver.a(css: 'div[id^=dialoguemodal-][class*=closable] div[class*=x-panel-default-docked-bottom] a'))
           end
           cache[:delete_btn]
         end
@@ -285,7 +285,7 @@ module Stamps
 
         def close_btn
           if cache[:close_btn].nil? || !cache[:close_btn].present?
-            cache[:close_btn] = StampsField.new(browser.fields(css: 'img[class$=close]').last)
+            cache[:close_btn] = StampsField.new(driver.fields(css: 'img[class$=close]').last)
           end
           cache[:close_btn]
         end
@@ -296,7 +296,7 @@ module Stamps
 
         def message_field
           if cache[:message_field].nil? || !cache[:message_field].present?
-            cache[:message_field] = StampsField.new(browser.div(css: "div[class=x-autocontainer-innerCt][id^=dialoguemodal]"))
+            cache[:message_field] = StampsField.new(driver.div(css: "div[class=x-autocontainer-innerCt][id^=dialoguemodal]"))
           end
           cache[:message_field]
         end

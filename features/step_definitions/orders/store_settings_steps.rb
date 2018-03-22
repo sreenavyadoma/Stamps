@@ -1,6 +1,6 @@
 Then /^set store settings store nickname to (.*)$/ do |str|
-  nickname = (str.downcase.include?('random') ? StampsTest.rand_alpha_numeric : str)
-  stamps.orders.marketplace.store_settings.store_nickname.set(test_param[:store_nickname] = nickname)
+  nickname = (str.downcase.include?('random') ? TestHelper.rand_alpha_numeric : str)
+  stamps.orders.marketplace.store_settings.store_nickname.set(TestData.store[:store_nickname] = nickname)
 end
 
 Then /^select store settings shipping service to ([\w \/]+)$/ do |str|
@@ -31,15 +31,15 @@ Then /^[Aa]dd store service Mapping (\d+)$/ do |mapping_number|
 end
 
 Then /^[Ss]et store service Mapping (\d+) Requested Service to (.*)$/ do |mapping_number, value|
-  test_param[:service_mapping_items][mapping_number] = {} unless test_param[:service_mapping_items].has_key?(mapping_number)
-  test_param[:service_mapping_items][mapping_number][:requested_service] = (value.downcase.include?('random') ? StampsTest.rand_alpha_numeric : value)
-  stamps.orders.marketplace.store_settings.service_mapping_list.mapping_number(mapping_number.to_i).requested_service_mapping.set(test_param[:service_mapping_items][mapping_number][:requested_service])
+  TestData.store[:service_mapping_items][mapping_number] = {} unless TestData.store[:service_mapping_items].has_key?(mapping_number)
+  TestData.store[:service_mapping_items][mapping_number][:requested_service] = (value.downcase.include?('random') ? TestHelper.rand_alpha_numeric : value)
+  stamps.orders.marketplace.store_settings.service_mapping_list.mapping_number(mapping_number.to_i).requested_service_mapping.set(TestData.store[:service_mapping_items][mapping_number][:requested_service])
 end
 
 Then /^[Ss]et store service Mapping (\d+) Shipping Service to (.*)$/ do |mapping_number, value|
-  test_param[:service_mapping_items][mapping_number] = {} unless test_param[:service_mapping_items].has_key?(mapping_number)
-  test_param[:service_mapping_items][mapping_number][:shipping_service] = value
-  expect(stamps.orders.marketplace.store_settings.service_mapping_list.mapping_number(mapping_number.to_i).shipping_service_mapping.select(test_param[:service_mapping_items][mapping_number][:shipping_service])).to include(test_param[:service_mapping_items][mapping_number][:shipping_service])
+  TestData.store[:service_mapping_items][mapping_number] = {} unless TestData.store[:service_mapping_items].has_key?(mapping_number)
+  TestData.store[:service_mapping_items][mapping_number][:shipping_service] = value
+  expect(stamps.orders.marketplace.store_settings.service_mapping_list.mapping_number(mapping_number.to_i).shipping_service_mapping.select(TestData.store[:service_mapping_items][mapping_number][:shipping_service])).to include(TestData.store[:service_mapping_items][mapping_number][:shipping_service])
 end
 
 
@@ -48,22 +48,22 @@ Then /^[Aa]dd new store service mapping$/ do
 end
 
 Then /^[Ss]et store service Mapping (\d+), Requested Services (.*), Shipping service (.*)$/ do |item_number, requested_services, shipping_service|
-  #test_config.logger.step "Store Settings: Set Requested Services to random #{requested_services}"
+  #StampsTest.log.step "Store Settings: Set Requested Services to random #{requested_services}"
   raise "Amazon Settings is not open.  Check your test workflow." if @store_settings.nil?
   service_mapping_item = @store_settings.service_mapping.item item_number.to_i
-  service_mapping_item.requested_services.set(requested_services.downcase.include? 'random') ? StampsTest.rand_alpha_numeric(4, 20) : requested_services
+  service_mapping_item.requested_services.set(requested_services.downcase.include? 'random') ? TestHelper.rand_alpha_numeric(4, 20) : requested_services
   service_mapping_item.shipping_Service.select shipping_service
 end
 
 Then /^Store Settings: Set Automatically Import New Orders to checked$/ do
-  #test_config.logger.step "Store Settings: Set Automatically Import New Orders to checked"
+  #StampsTest.log.step "Store Settings: Set Automatically Import New Orders to checked"
   raise "Amazon Settings is not open.  Check your test workflow." if @store_settings.nil?
   sleep(0.35)
   @store_settings.automatically_import_new_web_apps.orders.check
 end
 
 Then /^Store Settings: Uncheck Automatically Import New Orders$/ do
-  #test_config.logger.step "Store Settings: Uncheck Automatically Import New Orders"
+  #StampsTest.log.step "Store Settings: Uncheck Automatically Import New Orders"
   raise "Amazon Settings is not open.  Check your test workflow." if @store_settings.nil?
   sleep(0.35)
   @store_settings.automatically_import_new_web_apps.orders.uncheck

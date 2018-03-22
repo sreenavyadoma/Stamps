@@ -1,0 +1,11 @@
+[caps]
+appiumVersion = "1.7.2"
+deviceName = "iPhone X Simulator"
+deviceOrientation = "portrait"
+platformVersion = "11.2"
+platformName = "iOS"
+browserName = "safari"
+
+[appium_lib]
+sauce_username = false
+sauce_access_key = false

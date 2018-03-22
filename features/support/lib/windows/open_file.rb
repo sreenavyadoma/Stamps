@@ -1,22 +1,22 @@
 module Stamps
   module Windows
     class OpenFile
-      attr_reader :browser
+      attr_reader :driver
 
-      def initialize(browser)
-        @browser=browser
+      def initialize(driver)
+        @driver=driver
       end
 
       def present?
         begin
-          if browser==:firefox
+          if driver==:firefox
             exist=RAutomation::Window.new(:title => /File Upload/i).exists?
             return exist
-          elsif browser==:chrome
+          elsif driver==:chrome
             exist=RAutomation::Window.new(:title => /&Open/i).exists?
             return exist
           else
-            expect("Invalid browser selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie").to eql ""
+            expect("Invalid driver selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie").to eql ""
           end
         rescue
           false
@@ -31,7 +31,7 @@ module Stamps
       end
 
       def file_name(filename)
-        if browser==:firefox
+        if driver==:firefox
           print_window=RAutomation::Window.new(:title => /File Upload/i)
           wait_until_present
           expect("Print Window is not open").to eql "" unless present?
@@ -42,14 +42,14 @@ module Stamps
 
           print_window.button(:value => "&Open").click
 
-        elsif browser==:chrome
+        elsif driver==:chrome
           print_window=RAutomation::Window.new(:title => /&Open/i)
           wait_until_present
           expect("Print Window is not open").to eql "" unless present?
           print_window.activate
           print_window.button(:value => "&Open").click
         else
-          expect("Invalid browser selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie").to eql ""
+          expect("Invalid driver selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie").to eql ""
         end
       end
     end

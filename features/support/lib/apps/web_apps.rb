@@ -1,12 +1,12 @@
 module Stamps
-  module WebApp
+  module WebApps
     def health
       begin
-        @health = HealthCheck.new(modal_param) if @health.nil?
+        @health ||= HealthCheck.new(SdcTest.web_apps_param)
         @health
       rescue Exception > e
-        test_config.logger.error e.message
-        test_config.logger.error e.backtrace.join('\n')
+        SdcTest.log.error e.message
+        SdcTest.log.error e.backtrace.join('\n')
         raise e
       end
     end
@@ -15,21 +15,27 @@ module Stamps
       begin
         raise 'Not Implemented'
       rescue Exception > e
-        test_config.logger.error e.message
-        test_config.logger.error e.backtrace.join('\n')
+        SdcTest.log.error e.message
+        SdcTest.log.error e.backtrace.join('\n')
         raise e
       end
     end
 
     def stamps
       begin
-        @stamps = StampsDotCom.new(modal_param) if @stamps.nil?
-        @stamps
+        @stamps ||= Object.const_get("StampsDotCom").new(SdcTest.web_apps_param)
       rescue Exception > e
-        test_config.logger.error e.message
-        test_config.logger.error e.backtrace.join('\n')
+        SdcTest.log.error e.message
+        SdcTest.log.error e.backtrace.join('\n')
         raise e
       end
     end
   end
 end
+
+#todo-Rob Object.const_get
+#Object.const_get("#{ENV['PLATFORM']}StampsDotCom").new(SdcTest.web_apps_param)
+# use subclassing to encapsulate
+# core setup, ask where it is running and instantiate proper object. then setup appropriate landing page.
+# Create DeviceType and OsType objects.
+#

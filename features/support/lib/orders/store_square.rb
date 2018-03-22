@@ -2,13 +2,13 @@ module Stamps
   module Orders
     module Stores
       module Square
-        class Settings < Browser::Base
+        class Settings < WebApps::Base
           def iframe
-            browser.iframe(css: "iframe[id=storeiframe]")
+            driver.iframe(css: "iframe[id=storeiframe]")
           end
 
           def window_title
-            StampsField.new browser.div(text: "Settings").wait_until_present
+            StampsField.new driver.div(text: "Settings").wait_until_present
           end
 
           def present?
@@ -24,7 +24,7 @@ module Stamps
           end
 
           def close
-            button = StampsField.new(browser.img(css: "img[src*='data:image/gif']"))
+            button = StampsField.new(driver.img(css: "img[src*='data:image/gif']"))
             5.times do
               button.click
               sleep(0.35)
@@ -33,24 +33,24 @@ module Stamps
           end
 
           def save
-            cache[:save].nil? || !cache[:save].present? ? cache[:save] = StampsField.new(browser.button(id: "saveSettings")) : cache[:save]
+            cache[:save].nil? || !cache[:save].present? ? cache[:save] = StampsField.new(driver.button(id: "saveSettings")) : cache[:save]
           end
         end
 
         module WindowTitle
           def window_title
-            StampsField.new(browser.divs(css: "[id^=storeiframewindow-][id$=_header-targetEl] [class*=x-title-item]").first)
+            StampsField.new(driver.divs(css: "[id^=storeiframewindow-][id$=_header-targetEl] [class*=x-title-item]").first)
           end
 
           def x_btn
-            StampsField.new(browser.imgs(css: "[id^=storeiframewindow-][id$=_header-targetEl] img").first)
+            StampsField.new(driver.imgs(css: "[id^=storeiframewindow-][id$=_header-targetEl] img").first)
           end
         end
 
-        class Store < Browser::Base
+        class Store < WebApps::Base
           include WindowTitle
           def iframe
-            browser.iframe(css: "iframe[id=storeiframe]")
+            driver.iframe(css: "iframe[id=storeiframe]")
           end
 
           def present?
@@ -59,7 +59,7 @@ module Stamps
 
           def store_modal
             if cache[:store_modal].nil? || !cache[:store_modal].present?
-              cache[:store_modal] = StampsField.new(browser.div(css: "div[id^='storeiframewindow'][id$='header']"))
+              cache[:store_modal] = StampsField.new(driver.div(css: "div[id^='storeiframewindow'][id$='header']"))
             end
             cache[:store_modal]
           end

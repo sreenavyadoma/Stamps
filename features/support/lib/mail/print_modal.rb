@@ -2,9 +2,9 @@
 module Stamps
   module Mail
     module PrintModal
-      class InstallStampsConnect < Browser::Base
+      class InstallStampsConnect < WebApps::Base
         def window_title
-          StampsField.new(browser.divs(text: 'Install Stamps.com Connect').first)
+          StampsField.new(driver.divs(text: 'Install Stamps.com Connect').first)
         end
 
         def present?
@@ -12,7 +12,7 @@ module Stamps
         end
 
         def body
-          StampsField.new(browser.div(css: "[class*=x-window-default-closable] [id^=dialoguemodal-][class=x-autocontainer-innerCt]"))
+          StampsField.new(driver.div(css: "[class*=x-window-default-closable] [id^=dialoguemodal-][class=x-autocontainer-innerCt]"))
         end
 
         def install_stamps_connect
@@ -20,14 +20,14 @@ module Stamps
         end
       end
 
-      class MailPrinterComboBox < Browser::Base
+      class MailPrinterComboBox < WebApps::Base
         def dropdown
-          @dropdown = StampsField.new(browser.div(css: "[id^=printwindow-] [class*=x-form-arrow-trigger-default]")) if @dropdown.nil? || !@dropdown.present?
+          @dropdown = StampsField.new(driver.div(css: "[id^=printwindow-] [class*=x-form-arrow-trigger-default]")) if @dropdown.nil? || !@dropdown.present?
           @dropdown
         end
 
         def textbox
-          @textbox = StampsTextbox.new(browser.text_field(name: "printers")) if @textbox.nil? || !@textbox.present?
+          @textbox = StampsTextbox.new(driver.text_field(name: "printers")) if @textbox.nil? || !@textbox.present?
           @textbox
         end
 
@@ -37,11 +37,11 @@ module Stamps
 
         # /\\.+\.*/ =~ str, this will check str pattern
         def select_printer(str)
-          selected_printer = StampsField.new(browser.li(css: "div[id*=boundlist][class*='x-boundlist-default'][data-savedtabindex-ext-field-1='0'] li[class*='x-boundlist-item x-boundlist-selected']"))
+          selected_printer = StampsField.new(driver.li(css: "div[id*=boundlist][class*='x-boundlist-default'][data-savedtabindex-ext-field-1='0'] li[class*='x-boundlist-item x-boundlist-selected']"))
           partial_printer_name = (str.include?('\\')) ? /\\\\(.+)\\/.match(str)[1] : str
           5.times do
             return textbox.text if textbox.text.include?(partial_printer_name)
-            selection = StampsField.new(browser.li(visible_text: /#{partial_printer_name}/))
+            selection = StampsField.new(driver.li(visible_text: /#{partial_printer_name}/))
             dropdown.click unless selected_printer.present?
             return false if selected_printer.present? && !selection.present?
             selection.click
@@ -51,17 +51,17 @@ module Stamps
         end
       end
 
-      class MailPaperTrayComboBox < Browser::Base
+      class MailPaperTrayComboBox < WebApps::Base
         attr_accessor :dropdown, :textbox
 
         def initialize(param)
           super
-          @textbox = StampsTextbox.new(browser.input(name: "paperTrays"))
-          @dropdown = StampsField.new(browser.div(css: "div[class*='x-vbox-form-item']>div>div>div[id$=-trigger-picker]"))
+          @textbox = StampsTextbox.new(driver.input(name: "paperTrays"))
+          @dropdown = StampsField.new(driver.div(css: "div[class*='x-vbox-form-item']>div>div>div[id$=-trigger-picker]"))
         end
 
         def select(str)
-          selection_label = StampsField.new(browser.li(text: str))
+          selection_label = StampsField.new(driver.li(text: str))
           10.times do
             dropdown.click unless selection_label.present?
             selection_label.click
@@ -71,19 +71,19 @@ module Stamps
         end
       end
 
-      class MailPrintModal < Browser::Base
+      class MailPrintModal < WebApps::Base
         attr_accessor :paper_tray, :mail_printer, :print_button, :reprint_link
 
         def initialize(param)
           super
           @mail_printer = MailPrinterComboBox.new(param)
           @paper_tray = MailPaperTrayComboBox.new(param)
-          @print_button = StampsField.new(browser.span(id: 'sdc-printwin-printbtn-btnInnerEl'))
-          @reprint_link = StampsField.new(browser.a(text: 'Reprint'))
+          @print_button = StampsField.new(driver.span(id: 'sdc-printwin-printbtn-btnInnerEl'))
+          @reprint_link = StampsField.new(driver.a(text: 'Reprint'))
         end
 
         def window_title
-          StampsField.new(browser.div(text: "Print"))
+          StampsField.new(driver.div(text: "Print"))
         end
 
         def present?
@@ -111,42 +111,42 @@ module Stamps
         end
 
         def label_sheet_required_count
-          browser.label(css: 'label[class*=label-sheets-requred]').text.gsub(/[^\d]/, '')
+          driver.label(css: 'label[class*=label-sheets-requred]').text.gsub(/[^\d]/, '')
         end
 
         def title
-          StampsField.new(browser.div(css: "div[id^=printwindow]>div[id^=title]>div[id^=title]")).text
+          StampsField.new(driver.div(css: "div[id^=printwindow]>div[id^=title]>div[id^=title]")).text
         end
 
         def error_ok_button
-          browser.span(text: 'OK')
+          driver.span(text: 'OK')
         end
 
         def error_message
-          StampsField.new(browser.div(css: 'div[class=x-autocontainer-outerCt][id^=dialoguemodal]>div[id^=dialoguemodal]')).text
+          StampsField.new(driver.div(css: 'div[class=x-autocontainer-outerCt][id^=dialoguemodal]>div[id^=dialoguemodal]')).text
         end
 
         def close
           begin
             x_button.click
           rescue
-            #ignore
+            # ignore
           end
         end
 
         def total_cost
-          browser.label(text: 'Total Cost:').parent.labels.last.dollar_amount_str.to_f.round(2)
+          driver.label(text: 'Total Cost:').parent.labels.last.dollar_amount_str.to_f.round(2)
         end
 
         def check_naws_plugin_error
           begin
-            error_label = browser.div text: 'Error'
+            error_label = driver.div text: 'Error'
             if error_label.present?
               @printing_error = true
-              ptags = browser.ps css: 'div[id^=dialoguemodal]>p'
-              logger.info "-- Chrome NAWS Plugin Error --"
-              ptags.each {|p_tag| logger.error "#{StampsField.new(p_tag).text}" if p_tag.present? }
-              logger.info "-- Chrome NAWS Plugin Error --"
+              ptags = driver.ps css: 'div[id^=dialoguemodal]>p'
+              log.info "-- Chrome NAWS Plugin Error --"
+              ptags.each {|p_tag| log.error "#{StampsField.new(p_tag).text}" if p_tag.present? }
+              log.info "-- Chrome NAWS Plugin Error --"
               if error_ok_button.present?
                 error_message = self.error_message
                 5.times {
@@ -158,17 +158,17 @@ module Stamps
               close
             end
           rescue
-            #ignore
+            # ignore
           end
           @printing_error
         end
 
         def printing_error_check
           @printing_error = ""
-          incomplete_order_window = StampsField.new(browser.div text: "Incomplete Order")
-          error_window = StampsField.new(browser.div text: "Error")
-          ok_button = StampsField.new(browser.span text: 'OK')
-          message_label = StampsField.new((browser.divs css: "div[id^=dialoguemodal][class=x-autocontainer-innerCt]").first)
+          incomplete_order_window = StampsField.new(driver.div text: "Incomplete Order")
+          error_window = StampsField.new(driver.div text: "Error")
+          ok_button = StampsField.new(driver.span text: 'OK')
+          message_label = StampsField.new((driver.divs css: "div[id^=dialoguemodal][class=x-autocontainer-innerCt]").first)
 
           sleep(2)
 
@@ -176,11 +176,11 @@ module Stamps
             window_text = error_window.text
             err_msg = message_label.text
             @printing_error = "#{window_text} \n #{(err_msg)}"
-            logger.info "Printing Error: \n#{@printing_error}"
+            log.info "Printing Error: \n#{@printing_error}"
           end
 
           if ok_button.present?
-            logger.info "Error Window OK button"
+            log.info "Error Window OK button"
             ok_button.click
             ok_button.click
             ok_button.click
@@ -189,19 +189,19 @@ module Stamps
         end
 
         def x_button
-          browser.img(css: 'img[class*=x-tool-close]')
+          driver.span(css: 'span[class*=sdc-icon-idevices-close-light]')
         end
 
         def printer_label
-          browser.label text: 'Printer:'
+          driver.label text: 'Printer:'
         end
 
         def printer_field
-          browser.text_field name: 'printers'
+          driver.text_field name: 'printers'
         end
 
         def paper_tray_field
-          browser.text_field name: 'paperTrays'
+          driver.text_field name: 'paperTrays'
         end
       end
     end

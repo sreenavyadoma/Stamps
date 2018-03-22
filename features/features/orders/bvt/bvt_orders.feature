@@ -1,14 +1,18 @@
-
+@mobile_orders_smoke_test
 @bvt_all_tests
 Feature:  BVT tests for Orders
 
   Background:
     Given a valid user is signed in to Web Apps
 
+  @authentication
+  Scenario: Orders Authentication Test
+    Then Sign out
+
   @bvt_ambigious_address
   Scenario: BVT Ambigious Address
     Then add new order
-    Then set Order Details Ship-To to ambiguous address
+    Then set Order Details Ship-To ambiguous address to
       | full_name       | company  | street_address      | city          | state | zip   | country       | phone           |  email            |
       | Juan Dela Cruz | Betfair  | 1390 Market Street  | San Francisco | CA    | 94102 | United States | (415) 123-5555  | rtest@stamps.com  |
     Then Expect Exact Address Not Found module to appear
@@ -67,7 +71,6 @@ Feature:  BVT tests for Orders
     Then check order 1
     Then Pause for 1 second
     Then check order 2
-
     Then Pause for 1 seconds
 
   # Updating order details
@@ -199,7 +202,7 @@ Feature:  BVT tests for Orders
     Then uncheck orders grid cached order id
 
     Then Pause for 3 seconds
-    Then Refresh the browser
+    Then Refresh the driver
     Then Pause for 5 seconds
 
   # Search for new order
@@ -375,7 +378,7 @@ Feature:  BVT tests for Orders
     Then Pause for 1 second
     Then blur out on Order Details form 3 times
     Then uncheck orders grid cached order id
-   #Then Refresh the browser
+   #Then Refresh the driver
     Then Pause for 3 seconds
     Then check orders grid cached order id
     Then Pause for 2 seconds

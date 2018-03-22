@@ -55,7 +55,7 @@ Then /^[Ee]xpect in [Aa]dd [Aa]dvanced [Ss]hipping [Ff]eatures[!] dialog content
 end
 
 Then /^[Ee]xpect in [Aa]dd [Aa]dvanced [Ss]hipping [Ff]eatures[!] dialog contain all content list$/ do
-  expect(stamps.orders.marketplace.shipstation.add_advanced_shipping_feature.li_1.text).to eql("Includes mobile app for shipping on the go")
+  expect(stamps.orders.marketplace.shipstation.add_advanced_shipping_feature.li_1.text).to eql("Includes core app for shipping on the go")
   expect(stamps.orders.marketplace.shipstation.add_advanced_shipping_feature.li_2.text).to eql("Connect to 75+ marketplaces and channels")
   expect(stamps.orders.marketplace.shipstation.add_advanced_shipping_feature.li_3.text).to eql("One-stop rate shopping saves you money")
   expect(stamps.orders.marketplace.shipstation.add_advanced_shipping_feature.li_4.text).to eql("Real-time geo-tracking for all your shipments in one place")
@@ -98,15 +98,15 @@ Then /^[Ee]xpect in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Ll]ogin Butto
 end
 
 Then /^[Ee]xpect in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Uu]sername is (?:correct|(.*))$/ do |str|
-  expect(stamps.orders.marketplace.shipstation.activate_your_new_features.username.text).to eql(test_param[:username]), "Username does not correct"
+  expect(stamps.orders.marketplace.shipstation.activate_your_new_features.username.text).to eql(TestData.store[:username]), "Username does not correct"
 end
 
 Then /^[Ss]et in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Pp]assword to (?:random value|(.*))$/ do |str|
-  stamps.orders.marketplace.shipstation.activate_your_new_features.password.set(test_param[:password]=(str.nil?)?"pass111":str)
+  stamps.orders.marketplace.shipstation.activate_your_new_features.password.set(TestData.store[:password]=(str.nil?)?"pass111":str)
 end
 
 Then /^[Ee]xpect in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Pp]assword is (?:correct|(.*))$/ do |str|
-  expect(stamps.orders.marketplace.shipstation.activate_your_new_features.password.text).to eql(test_param[:password]), "Password does not correct"
+  expect(stamps.orders.marketplace.shipstation.activate_your_new_features.password.text).to eql(TestData.store[:password]), "Password does not correct"
 end
 
 Then /^[Cc]heck in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Tt]erms [Aa]nd [Cc]onditions checkbox$/ do

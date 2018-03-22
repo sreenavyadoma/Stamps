@@ -1,14 +1,14 @@
 module Stamps
   class StampsUserCredentials
-    attr_accessor :scenario_name, :cuke_tag
+    attr_accessor :test_scenario, :cuke_tag
     attr_reader :db_connection, :user_credentials
     def initialize(db_connection)
       @db_connection = db_connection
       @user_credentials = {}
     end
 
-    def fetch(cuke_tag)
-      @cuke_tag = cuke_tag
+    def fetch(tags)
+      @cuke_tag = tags
       # reset old usernames
       result = db_connection.query("select * from user_credentials where in_use=1 and date_add(in_use_time, INTERVAL 2 HOUR) < (CURTIME())")
       if result.size > 0
@@ -28,8 +28,8 @@ module Stamps
     end
 
     def random_credentials(test_tag)
-      result = db_connection.query("select * from user_credentials where test_env='#{modal_param.test_env}' and user_status='Active' and test_tag='#{test_tag}' and in_use=0")
-      expect(result.size).to be > 0, "No user found in MySQL DB for test tag #{cuke_tag} (#{scenario_name}) in #{modal_param.test_env.upcase}. Try again later or add more users to the database."
+      result = db_connection.query("select * from user_credentials where test_env='#{SdcEnv.env}' and user_status='Active' and test_tag='#{test_tag}' and in_use=0")
+      expect(result.size).to be > 0, "No user found in MySQL DB for test tag #{cuke_tag} (#{test_scenario}) in #{SdcEnv.env.to_s.upcase}. Try again later or add more users to the database."
       rand_num = rand(result.size)
       result.each_with_index do |row, index|
         if rand_num == index
@@ -42,7 +42,7 @@ module Stamps
     end
 
     def all_user_credentials
-      results = db_connection.query("select * from user_credentials where test_env='#{modal_param.test_env}' and user_status='Active'")
+      results = db_connection.query("select * from user_credentials where test_env='#{SdcEnv.env}' and user_status='Active'")
       credentials = Array.new(results.size){Hash.new}
       results.each_with_index do |row, index| credentials[index] = {:username => row['username'], :password => row['password']} end
       credentials

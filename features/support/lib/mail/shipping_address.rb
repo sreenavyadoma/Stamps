@@ -1,13 +1,13 @@
 # encoding: utf-8
 module Stamps
   module Mail
-    class MailManageShippingAddresses < Browser::Base
+    class MailManageShippingAddresses < WebApps::Base
       attr_reader :window_title, :close_btn
 
       def initialize(param)
         super
-        @window_title = StampsField.new(browser.span text: "Manage Mailing Addresses")
-        @close_btn = StampsField.new browser.img(css: "img[class*=close]")
+        @window_title = StampsField.new(driver.span text: "Manage Mailing Addresses")
+        @close_btn = StampsField.new driver.img(css: "img[class*=close]")
       end
 
       def close

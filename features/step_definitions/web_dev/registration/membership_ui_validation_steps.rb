@@ -129,12 +129,12 @@ Then /^[Oo]n [Mm]embership [Pp]age, click Submit and correct errors$/ do
     case @registration_result
       #when there's a failure, correct field and resubmit.
       when Registration::MembershipPhone
-        logger.error "Membership Phone Textbox has error: #{@registration_result.help_text}"
+        SdcTest.log.error "Membership Phone Textbox has error: #{@registration_result.help_text}"
         step "set Registration Membership page Phone to random"
         step "On Registration Membership page, click Submit"
       when Registration::MembershipCardNumber
-        logger.error "Membership Phone Textbox has error: #{@registration_result.help_text}"
-        step "set Registration Membership page Card number to #{test_param[:card_number]}"
+        SdcTest.log.error "Membership Phone Textbox has error: #{@registration_result.help_text}"
+        step "set Registration Membership page Card number to #{TestData.store[:card_number]}"
         step "On Registration Membership page, click Submit"
       when Registration::ChooseSupplies
         break
@@ -270,7 +270,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age Username Taken model pop up Continue butt
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age Username Taken model pop up Username to (?:random value|(.*))$/ do |str|
-  registration.membership.uname_text_box.set(test_param[:uname_text_box] = str.nil? ? StampsTest.rand_alpha_str.capitalize : str)
+  registration.membership.uname_text_box.set(TestData.store[:uname_text_box] = str.nil? ? TestHelper.rand_alpha_str.capitalize : str)
 end
 
 Then /^[Cc]lick [Mm]embership [Pp]age Username Taken model pop up Continue [Bb]utton$/ do

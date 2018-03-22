@@ -11,7 +11,7 @@ end
 Then /^[Ss]earch [Mm]arketplace for [Ss]tore [Nn]ame (.*)$/ do |str|
   step "validate store name #{str}"
   step "expect Marketplace modal is present"
-  stamps.orders.marketplace.add_your_store_modal.search_by_name.set(test_param[:store_name]=str)
+  stamps.orders.marketplace.add_your_store_modal.search_by_name.set(TestData.store[:store_name]=str)
 end
 
 Then /^[Cc]onnect [Mm]arketplace [Ss]tore (.*)$/ do |str|
@@ -45,7 +45,7 @@ Then /^[Ee]xpect [Mm]arketplace [Dd]ataview [Cc]ount is (greater|less|equal) (?:
     when /equal/
       expect(stamps.orders.marketplace.add_your_store_modal.dataview.store_count).to eql count.to_i
     else
-      #ignore
+      # ignore
   end
 end
 #

@@ -2,9 +2,9 @@ module Stamps
   module Pam
     module PamPageHeader
       def change_meter_limit
-        link=StampsField.new browser.a(text: "Change Meter Limit")
+        link=StampsField.new driver.a(text: "Change Meter Limit")
         meter_limit_page=ChangeMeterLimit.new(param)
-        change_meter_limit_header=Browser::StampsField.new browser.td(text: "Change Meter Limit")
+        change_meter_limit_header=WebApps::StampsField.new driver.td(text: "Change Meter Limit")
         5.times do
           link.click
           change_meter_limit_header.wait_until_present 4
@@ -13,7 +13,7 @@ module Stamps
       end
 
       def ach_credit
-        ach_credit_link=StampsField.new browser.a(text: "ACH Credit")
+        ach_credit_link=StampsField.new driver.a(text: "ACH Credit")
         ach_credit_page=ACHCredit.new(param)
         5.times do
           ach_credit_link.wait_until_present 4
@@ -23,7 +23,7 @@ module Stamps
       end
 
       def appcapp_overrides
-        link=StampsField.new browser.a(text: "AppCap Overrides")
+        link=StampsField.new driver.a(text: "AppCap Overrides")
         page=AppCapOverridesPage.new(param)
         5.times do
           link.click

@@ -3,10 +3,10 @@ module Stamps
     module SingleOrder
       ##
       # Single Order Details for Insurance Terms and Conditions
-      class InsuranceTermsConditions < Browser::Base #todo-Rob move to Stamps::Common
+      class InsuranceTermsConditions < WebApps::Base #todo-Rob move to Stamps::Common
         def present?
           begin
-            (browser.divs(text: "Stamps.com Insurance Terms and Conditions").first).present? || browser.spans(text: "I Agree").last.present?
+            (driver.divs(text: "Stamps.com Insurance Terms and Conditions").first).present? || driver.spans(text: "I Agree").last.present?
           rescue
             false
           end
@@ -16,11 +16,11 @@ module Stamps
         def agree
           10.times do
             begin
-              browser.spans(text: "I Agree").each do |button|
+              driver.spans(text: "I Agree").each do |button|
                 StampsField.new(button).click
               end
             rescue
-              #ignore
+              # ignore
             end
           end
         end
@@ -28,11 +28,11 @@ module Stamps
         def cancel
           10.times do
             begin
-              browser.spans(text: "Cancel").each do |button|
+              driver.spans(text: "Cancel").each do |button|
                 StampsField.new(button).click
               end
             rescue
-              #ignore
+              # ignore
             end
           end
         end
@@ -44,8 +44,8 @@ module Stamps
         module BlurOutField
           # @param [count] count
           def blur_out(count = 1)
-            @service_blur_out_field = StampsField.new(browser.label(text: 'Service:')) if @service_blur_out_field.nil? || !@service_blur_out_field.present?
-            @weight_blur_out_field = StampsField.new(browser.label(text: 'Weight:')) if @weight_blur_out_field.nil? || !@weight_blur_out_field.present?
+            @service_blur_out_field = StampsField.new(driver.label(text: 'Service:')) if @service_blur_out_field.nil? || !@service_blur_out_field.present?
+            @weight_blur_out_field = StampsField.new(driver.label(text: 'Weight:')) if @weight_blur_out_field.nil? || !@weight_blur_out_field.present?
             (count.nil? ? 1 : count.to_i).times do
               @service_blur_out_field.click
               @weight_blur_out_field.double_click
@@ -56,7 +56,7 @@ module Stamps
         end
 
         #todo-rob refactor auto-suggest internatinal
-        class AutoSuggestInternational < Browser::Base
+        class AutoSuggestInternational < WebApps::Base
 
 
           def auto_suggest_box
@@ -76,13 +76,13 @@ module Stamps
                 ship_to_area1.double_click
                 return auto_suggest_box if auto_suggest_box.present?
               rescue
-                #ignore
+                # ignore
               end
             }
           end
         end
 
-        class AutoSuggestPopUp < Browser::Base
+        class AutoSuggestPopUp < WebApps::Base
 
 
           def present?
@@ -90,7 +90,7 @@ module Stamps
           end
 
           def size
-            browser.lis(css: "ul[class*='x-list-plain x-combo-list-ul']>li>div[class*=main]").size
+            driver.lis(css: "ul[class*='x-list-plain x-combo-list-ul']>li>div[class*=main]").size
           end
 
           def select number
@@ -101,20 +101,20 @@ module Stamps
           end
 
           def name_fields
-            browser.lis(css: "ul[class*='x-list-plain x-combo-list-ul']>li>div[class*=main]")
+            driver.lis(css: "ul[class*='x-list-plain x-combo-list-ul']>li>div[class*=main]")
           end
 
           def address_fields
-            browser.lis(css: "ul[class*='x-list-plain x-combo-list-ul']>li>div[class*=sub]")
+            driver.lis(css: "ul[class*='x-list-plain x-combo-list-ul']>li>div[class*=sub]")
           end
         end
 
-        class AddressNotFound < Browser::Base
+        class AddressNotFound < WebApps::Base
 
 
           def window_title
             if cache[:window_title].nil? || !cache[:window_title].present?
-                cache[:window_title] = StampsField.new(browser.div(text: 'Exact Address Not Found'))
+                cache[:window_title] = StampsField.new(driver.div(text: 'Exact Address Not Found'))
             end
             cache[:window_title]
           end
@@ -129,21 +129,21 @@ module Stamps
 
           def row(number)
             row = number.to_i <= 0 ? 0 : number.to_i - 1
-            checkbox_field = browser.text_field css: "input[name=addrAmbig][value='#{row}']"
+            checkbox_field = driver.text_field css: "input[name=addrAmbig][value='#{row}']"
 
             checkbox = StampsCheckbox.new checkbox_field, checkbox_field, "checked", "checked"
             checkbox.check
 
-            accept_button = StampsField.new browser.span text: "Accept"
+            accept_button = StampsField.new driver.span text: "Accept"
             accept_button.click_while_present
           end
 
           def set partial_address_hash
-            exact_address_not_found_field = browser.div text: 'Exact Address Not Found'
+            exact_address_not_found_field = driver.div text: 'Exact Address Not Found'
             form = OrderDetails.new(param) #todo-Rob this is wrong, change it.
             form.validate_address_link
             country_dropdown = self.country
-            form.ship_to.set test_helper.format_address(partial_address_hash)
+            form.ship_to.set TestHelper.format_address(partial_address_hash)
             30.times {
               begin
                 item_label.click
@@ -153,7 +153,7 @@ module Stamps
 
                 break if (exact_address_not_found_field.present?) || (form.validate_address_link.present?)
               rescue
-                #ignore
+                # ignore
               end
             }
             #single_order_form.hide_ship_to
@@ -161,7 +161,7 @@ module Stamps
           end
         end
 
-        class AmbiguousAddress < Browser::Base
+        class AmbiguousAddress < WebApps::Base
 
 
           def address_not_found
@@ -204,7 +204,7 @@ module Stamps
             elsif address_arr.size == 4 || address_arr.size == 5
               address_arr[2].strip
             else
-              #ignore
+              # ignore
             end
           end
 
@@ -216,7 +216,7 @@ module Stamps
             elsif address_arr.size == 5
               @city_arr = address_arr[4].strip
             else
-              #ignore
+              # ignore
             end
             last_line_arr = @city_arr.split(",")
             expect(last_line_arr.size).to equal 2
@@ -264,7 +264,7 @@ module Stamps
         module ShowShipToDetails
           def ship_to_details_link
             if cache[:ship_to_details_link].nil? || !cache[:ship_to_details_link].present?
-              cache[:ship_to_details_link] = StampsField.new(browser.span(css: "[id*=shipto] [class*=down]"))
+              cache[:ship_to_details_link] = StampsField.new(driver.span(css: "[id*=shipto] [class*=down]"))
             end
             cache[:ship_to_details_link]
           end
@@ -278,7 +278,7 @@ module Stamps
           end
         end
 
-        class ShipToCountry < Browser::Base
+        class ShipToCountry < WebApps::Base
 
           include ShowShipToDetails
           attr_reader :textbox_field, :dropdown_field
@@ -309,7 +309,7 @@ module Stamps
           end
 
           def selection(str)
-            lov = browser.lis(text: str)
+            lov = driver.lis(text: str)
             if lov.size == 1 # return first one
               return lov[0]
             elsif lov.size == 2
@@ -333,14 +333,14 @@ module Stamps
                 field.scroll_into_view.click
                 break if textbox.text.include?(str)
               rescue
-                #ignore
+                # ignore
               end
             end
             textbox.text
           end
         end
 
-        class ShipToInternational < Browser::Base
+        class ShipToInternational < WebApps::Base
 
           include BlurOutField
           def present?
@@ -351,8 +351,8 @@ module Stamps
             if cache[:country].nil?
               cache[:country] = ShipToCountry.new(
                   param,
-                  browser.text_field(css: "[id*=international] [name=ShipCountryCode]"),
-                  browser.div(css: "[id*=international] [id^=combo][id$=trigger-picker]"))
+                  driver.text_field(css: "[id*=international] [name=ShipCountryCode]"),
+                  driver.div(css: "[id*=international] [id^=combo][id$=trigger-picker]"))
             end
             cache[:country]
           end
@@ -363,52 +363,52 @@ module Stamps
           end
 
           def name
-            cache[:name] = StampsTextbox.new(browser.text_field(name: "ShipName"))  if cache[:name].nil? || !cache[:name].present?
+            cache[:name] = StampsTextbox.new(driver.text_field(name: "ShipName"))  if cache[:name].nil? || !cache[:name].present?
             cache[:name]
           end
 
           def company
-            cache[:company] = StampsTextbox.new(browser.text_field(name: "ShipCompany")) if cache[:company].nil? || !cache[:company].present?
+            cache[:company] = StampsTextbox.new(driver.text_field(name: "ShipCompany")) if cache[:company].nil? || !cache[:company].present?
             cache[:company]
           end
 
           def address_1
-            cache[:address_1] = StampsTextbox.new(browser.text_field(name: "ShipStreet1")) if cache[:address_1].nil? || !cache[:address_1].present?
+            cache[:address_1] = StampsTextbox.new(driver.text_field(name: "ShipStreet1")) if cache[:address_1].nil? || !cache[:address_1].present?
             cache[:address_1]
           end
 
           def address_2
-            cache[:address_2] = StampsTextbox.new(browser.text_field(name: "ShipStreet2")) if cache[:address_2].nil? || !cache[:address_2].present?
+            cache[:address_2] = StampsTextbox.new(driver.text_field(name: "ShipStreet2")) if cache[:address_2].nil? || !cache[:address_2].present?
             cache[:address_2]
           end
 
           def email
-            cache[:email] = StampsTextbox.new(browser.text_field(css: "[id*=shiptoview-international] [name=BuyerEmail]")) if cache[:email].nil? || !cache[:email].present?
+            cache[:email] = StampsTextbox.new(driver.text_field(css: "[id*=shiptoview-international] [name=BuyerEmail]")) if cache[:email].nil? || !cache[:email].present?
             cache[:email]
           end
 
           def city
-            cache[:city] = StampsTextbox.new(browser.text_field(name: "ShipCity")) if cache[:city].nil? || !cache[:city].present?
+            cache[:city] = StampsTextbox.new(driver.text_field(name: "ShipCity")) if cache[:city].nil? || !cache[:city].present?
             cache[:city]
           end
 
           def phone
-            cache[:phone] = StampsTextbox.new(browser.text_field(css: "[id*=shiptoview-international] [name=ShipPhone]")) if cache[:phone].nil? || !cache[:phone].present?
+            cache[:phone] = StampsTextbox.new(driver.text_field(css: "[id*=shiptoview-international] [name=ShipPhone]")) if cache[:phone].nil? || !cache[:phone].present?
             cache[:phone]
           end
 
           def postal_code
-            cache[:postal_code] = StampsTextbox.new(browser.text_field(name: "ShipPostalCode")) if cache[:postal_code].nil? || !cache[:postal_code].present?
+            cache[:postal_code] = StampsTextbox.new(driver.text_field(name: "ShipPostalCode")) if cache[:postal_code].nil? || !cache[:postal_code].present?
             cache[:postal_code]
           end
 
           def province
-            cache[:province] = StampsTextbox.new(browser.text_field(name: "ShipState")) if cache[:province].nil? || !cache[:province].present?
+            cache[:province] = StampsTextbox.new(driver.text_field(name: "ShipState")) if cache[:province].nil? || !cache[:province].present?
             cache[:province]
           end
 
           def less_link
-            cache[:less_link] = StampsField.new browser.span(css: "[id*=shiptoview-international] [class*=sdc-icon-up-arrow]") if cache[:less_link].nil? || !cache[:less_link].present?
+            cache[:less_link] = StampsField.new driver.span(css: "[id*=shiptoview-international] [class*=sdc-icon-up-arrow]") if cache[:less_link].nil? || !cache[:less_link].present?
             cache[:less_link]
           end
 
@@ -421,7 +421,7 @@ module Stamps
           end
         end
 
-        class ShipToDomestic < Browser::Base
+        class ShipToDomestic < WebApps::Base
 
           include ShowShipToDetails, BlurOutField
 
@@ -441,8 +441,8 @@ module Stamps
             if cache[:country].nil?
               cache[:country] = ShipToCountry.new(
                   param,
-                  browser.text_field(css: "[id*=domestic] [name=ShipCountryCode]"),
-                  browser.div(css: "div#sdc-mainpanel-matltocountrydroplist-trigger-picker"))
+                  driver.text_field(css: "[id*=domestic] [name=ShipCountryCode]"),
+                  driver.div(css: "div#sdc-mainpanel-matltocountrydroplist-trigger-picker"))
             end
             cache[:country]
           end
@@ -452,7 +452,7 @@ module Stamps
           end
 
           def less_link
-            @less_link = StampsField.new browser.span(css: "[id=shiptoview-domestic-targetEl] [class*=sdc-icon-up-arrow]") if @less_link.nil? || !@less_link.present?
+            @less_link = StampsField.new driver.span(css: "[id=shiptoview-domestic-targetEl] [class*=sdc-icon-up-arrow]") if @less_link.nil? || !@less_link.present?
             @less_link
           end
 
@@ -465,15 +465,15 @@ module Stamps
           end
 
           def textarea
-            cache[:textarea].nil? || !cache[:textarea].present? ? cache[:textarea] = ShipToTextArea.new(browser.textarea(name: "freeFormAddress")) : cache[:textarea]
+            cache[:textarea].nil? || !cache[:textarea].present? ? cache[:textarea] = ShipToTextArea.new(driver.textarea(name: "freeFormAddress")) : cache[:textarea]
           end
 
           def email
-            cache[:email].nil? || !cache[:email].present? ? cache[:email] = StampsTextbox.new(browser.text_field(name: 'BuyerEmail')) : cache[:email]
+            cache[:email].nil? || !cache[:email].present? ? cache[:email] = StampsTextbox.new(driver.text_field(name: 'BuyerEmail')) : cache[:email]
           end
 
           def phone
-            cache[:phone].nil? || !cache[:phone].present? ? cache[:phone] = StampsTextbox.new(browser.text_field(name: "ShipPhone")) : cache[:phone]
+            cache[:phone].nil? || !cache[:phone].present? ? cache[:phone] = StampsTextbox.new(driver.text_field(name: "ShipPhone")) : cache[:phone]
           end
 
           def set(address) #todo-Rob move setting textarea responsibility to step def
@@ -505,7 +505,7 @@ module Stamps
           end
         end
 
-        class AutoSuggestDomestic < Browser::Base
+        class AutoSuggestDomestic < WebApps::Base
 
 
           attr_reader :textarea
@@ -536,7 +536,7 @@ module Stamps
           end
         end
 
-        class ShipTo < Browser::Base
+        class ShipTo < WebApps::Base
 
           def domestic
             cache[:domestic] = ShipToDomestic.new(param) if cache[:domestic].nil? || !cache[:domestic].present?
@@ -549,9 +549,9 @@ module Stamps
           end
         end
 
-        class ViewRestrictions < Browser::Base
+        class ViewRestrictions < WebApps::Base
           def browser_ok_button
-            StampsField.new(browser.span(text: "OK"))
+            StampsField.new(driver.span(text: "OK"))
           end
 
           def present?
@@ -563,56 +563,56 @@ module Stamps
           end
         end
 
-        class InsureFor < Browser::Base
+        class InsureFor < WebApps::Base
           include BlurOutField
 
 
           def cost
-            cache[:cost] = StampsField.new(browser.div(css: "[class*=single] [class*=insurance-field]").parent.labels[4]) if cache[:cost].nil? || !cache[:cost].present?
+            cache[:cost] = StampsField.new(driver.div(css: "[class*=single] [class*=insurance-field]").parent.labels[4]) if cache[:cost].nil? || !cache[:cost].present?
             cache[:cost]
           end
 
           def textbox
-            cache[:textbox] = StampsTextbox.new(browser.text_field(css: "[class*=single] [name=InsuredValue]")) if cache[:textbox].nil? || !cache[:textbox].present?
+            cache[:textbox] = StampsTextbox.new(driver.text_field(css: "[class*=single] [name=InsuredValue]")) if cache[:textbox].nil? || !cache[:textbox].present?
             cache[:textbox]
           end
 
           def checkbox
             if cache[:checkbox].nil? || !cache[:checkbox].present?
               cache[:checkbox] = StampsCheckbox.new(
-                  browser.label(text: "Insure For $:").parent.input,
-                  browser.label(text: "Insure For $:").parent.divs[1],
+                  driver.label(text: "Insure For $:").parent.input,
+                  driver.label(text: "Insure For $:").parent.divs[1],
                   "class", "checked")
             end
             cache[:checkbox]
           end
 
           def increment
-            cache[:increment] = StampsField.new(browser.div(css: "[class*=single] [id^=insurance] [class*=up]")) if cache[:increment].nil? || !cache[:increment].present?
+            cache[:increment] = StampsField.new(driver.div(css: "[class*=single] [id^=insurance] [class*=up]")) if cache[:increment].nil? || !cache[:increment].present?
             cache[:increment]
           end
 
           def decrement
-            cache[:decrement] = StampsField.new(browser.div(css: "[class*=single] [id^=insurance] [class*=down]")) if cache[:decrement].nil? || !cache[:decrement].present?
+            cache[:decrement] = StampsField.new(driver.div(css: "[class*=single] [id^=insurance] [class*=down]")) if cache[:decrement].nil? || !cache[:decrement].present?
             cache[:decrement]
           end
         end
 
-        class Tracking < Browser::Base
+        class Tracking < WebApps::Base
 
 
           def cost
-            cache[:cost] = StampsField.new(browser.label(css: '[class*=single] [class*=tracking_cost]')) if cache[:cost].nil? || !cache[:cost].present?
+            cache[:cost] = StampsField.new(driver.label(css: '[class*=single] [class*=tracking_cost]')) if cache[:cost].nil? || !cache[:cost].present?
             cache[:cost]
           end
 
           def textbox
-            cache[:textbox] = StampsTextbox.new(browser.text_field(css: '[class*=single] [name=Tracking]')) if cache[:textbox].nil? || !cache[:textbox].present?
+            cache[:textbox] = StampsTextbox.new(driver.text_field(css: '[class*=single] [name=Tracking]')) if cache[:textbox].nil? || !cache[:textbox].present?
             cache[:textbox]
           end
 
           def dropdown
-            cache[:dropdown] = StampsField.new(browser.div(css: "[class*=single] [id^=tracking][id$=picker]")) if cache[:dropdown].nil? || !cache[:dropdown].present?
+            cache[:dropdown] = StampsField.new(driver.div(css: "[class*=single] [id^=tracking][id$=picker]")) if cache[:dropdown].nil? || !cache[:dropdown].present?
             cache[:dropdown]
           end
 
@@ -622,11 +622,11 @@ module Stamps
 
           def tracking_selection(selection)
             if selection.downcase.include? "usps"
-              StampsField.new(browser.tds(css: "div[id=sdc-trackingdroplist-dc]>table>tbody>tr>td"))
+              StampsField.new(driver.tds(css: "div[id=sdc-trackingdroplist-dc]>table>tbody>tr>td"))
             elsif selection.downcase.include? "signature"
-              StampsField.new(browser.tds(css: "div[id=sdc-trackingdroplist-sc]>table>tbody>tr>td"))
+              StampsField.new(driver.tds(css: "div[id=sdc-trackingdroplist-sc]>table>tbody>tr>td"))
             elsif selection.downcase.include? "none"
-              StampsField.new(browser.tds(css: "div[id=sdc-trackingdroplist-none]>table>tbody>tr>td"))
+              StampsField.new(driver.tds(css: "div[id=sdc-trackingdroplist-none]>table>tbody>tr>td"))
             else
               expect("#{selection} is not a valid selection").to eql "Valid selections are USPS Tracking and Signature Required"
             end
@@ -657,50 +657,50 @@ module Stamps
                 dropdown.click unless label.present?
                 return label.text if label.present?
               rescue
-                #ignore
+                # ignore
               end
               expect("Unable to fetch inline cost for #{selection}").to eql "Details - Tracking inline cost"
             end
           end
 
           def tooltip(selection)
-            selection_label = browser.td(text: selection)
+            selection_label = driver.td(text: selection)
             5.times {
               begin
                 dropdown.click unless selection_label.present?
                 if selection_label.present?
                   qtip = selection_label.parent.parent.parent.parent.attribute_value("data-qtip")
-                  logger.info "#{qtip}"
+                  log.info "#{qtip}"
                   return qtip
                 end
               rescue
-                #ignore
+                # ignore
               end
             }
           end
         end
 
-        class StoreItem < Browser::Base
+        class StoreItem < WebApps::Base
         end
 
-        class AssociatedOrderItem < Browser::Base
+        class AssociatedOrderItem < WebApps::Base
           attr_reader :index, :item_qty, :item_id, :item_description, :delete
           def initialize(param, number)
             super(param)
             @index = number
 
-            textbox = browser.text_fields(name: "Quantity")[@index - 1]
-            inc_btn = browser.divs(css: "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=up]")[@index - 1]
-            dec_btn = browser.divs(css: "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=down]")[@index - 1]
-            @item_qty = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
+            textbox = driver.text_fields(name: "Quantity")[@index - 1]
+            inc_btn = driver.divs(css: "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=up]")[@index - 1]
+            dec_btn = driver.divs(css: "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=down]")[@index - 1]
+            @item_qty = Stamps::WebApps::StampsNumberField.new(textbox, inc_btn, dec_btn)
 
-            @item_id = StampsTextbox.new((browser.text_fields(name: "SKU")[index - 1]))
-            @delete = StampsField.new(browser.spans(css: "span[class*=sdc-icon-remove]")[index - 1])
-            @item_description = StampsTextbox.new(browser.text_fields(name: "Description")[index - 1])
+            @item_id = StampsTextbox.new((driver.text_fields(name: "SKU")[index - 1]))
+            @delete = StampsField.new(driver.spans(css: "span[class*=sdc-icon-remove]")[index - 1])
+            @item_description = StampsTextbox.new(driver.text_fields(name: "Description")[index - 1])
           end
 
           def present?
-            ((browser.text_fields name: "SKU")[@index - 1]).present?
+            ((driver.text_fields name: "SKU")[@index - 1]).present?
           end
 
           def scroll_into_view
@@ -708,17 +708,17 @@ module Stamps
           end
         end
 
-        class ItemsOrderedSection < Browser::Base
+        class ItemsOrderedSection < WebApps::Base
 
 
           def add_btn
-            cache[:add_btn] = StampsField.new(browser.span(css: "span[class*=sdc-icon-add]")) if cache[:add_btn].nil? || !cache[:add_btn].present?
+            cache[:add_btn] = StampsField.new(driver.span(css: "span[class*=sdc-icon-add]")) if cache[:add_btn].nil? || !cache[:add_btn].present?
             cache[:add_btn]
           end
 
           def dropdown
             if cache[:dropdown].nil? || cache[:dropdown].present?
-              cache[:dropdown] = StampsField.new(browser.img(css: "div[id^=associatedorderitems-][id$=_header-targetEl]>div>img"))
+              cache[:dropdown] = StampsField.new(driver.img(css: "div[id^=associatedorderitems-][id$=_header-targetEl]>div>img"))
             end
             cache[:dropdown]
           end
@@ -738,7 +738,7 @@ module Stamps
           end
 
           def size
-            browser.divs(css: "div[id^=singleorderitem-][id$=-targetEl]").size
+            driver.divs(css: "div[id^=singleorderitem-][id$=-targetEl]").size
           end
           alias_method :count, :size
 
@@ -755,11 +755,11 @@ module Stamps
           end
         end
 
-        class Collapsible < Browser::Base
+        class Collapsible < WebApps::Base
           attr_reader :field
           def initialize(param)
             super
-            @field = StampsField.new(browser.img(class: "x-tool-img x-tool-expand-left"))
+            @field = StampsField.new(driver.img(class: "x-tool-img x-tool-expand-left"))
           end
 
           def present?
@@ -774,15 +774,15 @@ module Stamps
           end
         end
 
-        class ToolbarMenu < Browser::Base
+        class ToolbarMenu < WebApps::Base
           attr_reader :dropdown
           def initialize(param)
             super
-            @dropdown = StampsField.new(browser.spans(css: "span[class*='sdc-icon-more']").first)
+            @dropdown = StampsField.new(driver.spans(css: "span[class*='sdc-icon-more']").first)
           end
 
           def collapse
-            selection = StampsField.new browser.span(text: "Collapse Panel")
+            selection = StampsField.new driver.span(text: "Collapse Panel")
             dd = dropdown
             collapsed_details = Collapsible.new(param)
             10.times do
@@ -793,14 +793,14 @@ module Stamps
           end
 
           def tooltip
-            tooltip_field = StampsField.new(browser.div id: 'ext-quicktips-tip-innerCt')
+            tooltip_field = StampsField.new(driver.div id: 'ext-quicktips-tip-innerCt')
             dropdown.field.hover
             dropdown.field.hover
             15.times do
               dropdown.field.hover
               sleep(0.35)
               if tooltip_field.present?
-                logger.info tooltip_field.text
+                log.info tooltip_field.text
                 return tooltip_field.text
               end
             end
@@ -810,13 +810,13 @@ module Stamps
         module OrderDetailsOrderId
           def order_id
             if cache[:order_id_field].nil? || !cache[:order_id_field].present?
-              cache[:order_id_field] = StampsField.new(browser.b(css: "[class*=singleorder] [id^=toolbar][id$=targetEl]>label>b"))
+              cache[:order_id_field] = StampsField.new(driver.b(css: "[class*=singleorder] [id^=toolbar][id$=targetEl]>label>b"))
             end
             cache[:order_id_field]
           end
         end
 
-        class Toolbar < Browser::Base
+        class Toolbar < WebApps::Base
           include OrderDetailsOrderId
 
           def menu
@@ -828,33 +828,33 @@ module Stamps
           end
         end
 
-        class Footer < Browser::Base
+        class Footer < WebApps::Base
 
 
           def label
-            cache[:label].nil? || !cache[:label].present? ? cache[:label] = StampsField.new(browser.strong(text: 'Total Ship Cost:')) : cache[:label]
+            cache[:label].nil? || !cache[:label].present? ? cache[:label] = StampsField.new(driver.strong(text: 'Total Ship Cost:')) : cache[:label]
           end
 
           def total_ship_cost
             if cache[:total_ship_cost].nil? || !cache[:total_ship_cost].present?
-                cache[:total_ship_cost] = StampsField.new(browser.strong(css: '[class*=singleorder-detailsform] [class*=total_cost] strong'))
+                cache[:total_ship_cost] = StampsField.new(driver.strong(css: '[class*=singleorder-detailsform] [class*=total_cost] strong'))
             end
             cache[:total_ship_cost]
           end
 
           def cost_label
-            cache[:cost_label] = StampsField.new(browser.labels(css: "label[class*=total_cost]")[1]) if cache[:cost_label].nil? || !cache[:cost_label].present?
+            cache[:cost_label] = StampsField.new(driver.labels(css: "label[class*=total_cost]")[1]) if cache[:cost_label].nil? || !cache[:cost_label].present?
             cache[:cost_label]
           end
 
           def multiple_order_cost
-            # cost_label = StampsField.new(browser.labels(css: "label[class*=total_cost]")[1])
+            # cost_label = StampsField.new(driver.labels(css: "label[class*=total_cost]")[1])
             10.times do
               begin
                 cost = cost_label.text
-                logger.info "Cost is #{cost}"
+                log.info "Cost is #{cost}"
               rescue
-                #ignore
+                # ignore
               end
               break unless cost.include? "$"
             end
@@ -862,17 +862,17 @@ module Stamps
           end
         end
 
-        class Contents < Browser::Base
+        class Contents < WebApps::Base
 
           attr_reader
 
           def initialize(param)
             super
-            @restrictions_btn = StampsField.new(browser.span(text: 'Restrictions...'))
+            @restrictions_btn = StampsField.new(driver.span(text: 'Restrictions...'))
           end
 
           def restrictions_btn
-            cache[:restrictions_btn] = StampsField.new(browser.a(css: '[data-qtip^=View]')) if cache[:restrictions_btn].nil? || !cache[:restrictions_btn].present?
+            cache[:restrictions_btn] = StampsField.new(driver.a(css: '[data-qtip^=View]')) if cache[:restrictions_btn].nil? || !cache[:restrictions_btn].present?
             cache[:restrictions_btn]
           end
 
@@ -882,7 +882,7 @@ module Stamps
           end
 
           def customs_form
-            cache[:customs_form] = StampsField.new(browser.a(css: '[data-qtip*=Edit]')) if cache[:customs_form].nil? || !cache[:customs_form].present?
+            cache[:customs_form] = StampsField.new(driver.a(css: '[data-qtip*=Edit]')) if cache[:customs_form].nil? || !cache[:customs_form].present?
             cache[:customs_form]
           end
 
@@ -895,30 +895,30 @@ module Stamps
           end
         end
 
-        class Service < Browser::Base
+        class Service < WebApps::Base
 
 
           def textbox
             if cache[:textbox].nil? || !cache[:textbox].present?
-              cache[:textbox] = StampsTextbox.new(browser.text_field(css: "[id^=singleOrder] [name=Service]"))
+              cache[:textbox] = StampsTextbox.new(driver.text_field(css: "[id^=singleOrder] [name=Service]"))
             end
             cache[:textbox]
           end
 
           def dropdown
             if cache[:dropdown].nil? || !cache[:dropdown].present?
-              cache[:dropdown] = StampsField.new(browser.div(css: "[id^=singleOrder] [id^=service][id$=picker]"))
+              cache[:dropdown] = StampsField.new(driver.div(css: "[id^=singleOrder] [id^=service][id$=picker]"))
             end
             cache[:dropdown]
           end
 
           def cost
-            cache[:cost] = StampsField.new(browser.div(css: "[id^=single] [class*=service-droplist]").parent.labels[2]) if cache[:cost].nil? || !cache[:cost].present?
+            cache[:cost] = StampsField.new(driver.div(css: "[id^=single] [class*=service-droplist]").parent.labels[2]) if cache[:cost].nil? || !cache[:cost].present?
             cache[:cost]
           end
 
           def selection(str)
-            lov = browser.tds(css: "li##{data_for(:orders_services, {})[str]} td.x-boundlist-item-text")
+            lov = driver.tds(css: "li##{data_for(:orders_services, {})[str]} td.x-boundlist-item-text")
             if lov.size == 1 # return first one
               return lov[0]
             elsif lov.size == 2
@@ -941,25 +941,25 @@ module Stamps
                 field.scroll_into_view.click
                 break if textbox.text.include?(str)
               rescue
-                #ignore
+                # ignore
               end
             end
             textbox.text
           end
 
           def inline_cost(service_name)
-            cost_label = StampsField.new(browser.td(css: "tr[data-qtip*='#{service_name}']>td:nth-child(3)"))
+            cost_label = StampsField.new(driver.td(css: "tr[data-qtip*='#{service_name}']>td:nth-child(3)"))
             10.times do
               begin
                 dropdown.click unless cost_label.present?
                 if cost_label.present?
                   service_cost = cost_label.text.dollar_amount_str
-                  logger.info "Service Cost for \"#{service_name}\" is #{service_cost}"
+                  log.info "Service Cost for \"#{service_name}\" is #{service_cost}"
                   dropdown.click if cost_label.present?
                   return service_cost.to_f.round(2)
                 end
               rescue
-                #ignore
+                # ignore
               end
             end
           end
@@ -968,7 +968,7 @@ module Stamps
 
       ##
       # Single Order Details Form
-      class OrderDetails < Browser::Base
+      class OrderDetails < WebApps::Base
 
         include Fields::BlurOutField
 
@@ -1004,7 +1004,7 @@ module Stamps
 
         def reference_no
           if cache[:reference_no].nil? || !cache[:reference_no].present?
-            cache[:reference_no] = StampsTextbox.new(browser.text_field(css: "[id^=single][id$=-targetEl]>div:nth-child(10) input"))
+            cache[:reference_no] = StampsTextbox.new(driver.text_field(css: "[id^=single][id$=-targetEl]>div:nth-child(10) input"))
           end
           cache[:reference_no]
         end
@@ -1021,7 +1021,7 @@ module Stamps
 
         def body
           if cache[:body].nil? || !cache[:body].present?
-            cache[:body] = StampsField.new(browser.div(css: "[id^=single][id$=body]"))
+            cache[:body] = StampsField.new(driver.div(css: "[id^=single][id$=body]"))
           end
           cache[:body]
         end

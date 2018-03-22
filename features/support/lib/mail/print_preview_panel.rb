@@ -3,7 +3,7 @@ module Stamps
     module PrintPreviewPanel
       module PrintFormBlurOut
         def blur_out_field
-          cache[:blur_out_field].nil? || !cache[:blur_out_field].present? ? cache[:blur_out_field] = StampsField.new(browser.label(text: 'Print On:')) : cache[:blur_out_field]
+          cache[:blur_out_field].nil? || !cache[:blur_out_field].present? ? cache[:blur_out_field] = StampsField.new(driver.label(text: 'Print On:')) : cache[:blur_out_field]
         end
 
         def blur_out(count=2)

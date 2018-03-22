@@ -1,8 +1,8 @@
 module Stamps
   module Registration
-    class DownloadPage < Browser::Base
+    class DownloadPage < WebApps::Base
       def field
-        StampsField.new browser.h1 css: "div>h1"
+        StampsField.new driver.h1 css: "div>h1"
       end
 
       def present?

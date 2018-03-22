@@ -1,18 +1,18 @@
 module Stamps
   module Orders
     module Stores
-      class ImportingOrdersModal < Browser::Base
+      class ImportingOrdersModal < WebApps::Base
 
         def present?
-          browser.div(text: "Importing Orders").present?
+          driver.div(text: "Importing Orders").present?
         end
 
         def message
-          StampsField.new(browser.div(css: "div[id^=messagebox-][id$=-msg]")).text
+          StampsField.new(driver.div(css: "div[id^=messagebox-][id$=-msg]")).text
         end
 
         def ok
-          button = StampsField.new(browser.span(text: "OK"))
+          button = StampsField.new(driver.span(text: "OK"))
           20.times do
             button.click
             break unless button.present?
@@ -20,7 +20,7 @@ module Stamps
         end
       end
 
-      class DeleteStoreModal < Browser::Base
+      class DeleteStoreModal < WebApps::Base
         def present?
           delete_btn.present?
         end
@@ -30,7 +30,7 @@ module Stamps
         end
 
         def delete_btn
-          spans = browser.spans(css: "div[componentid^=dialoguemodal]>div[id^=panel]>div>div>div>a:nth-child(1)>span>span>span[id$=btnInnerEl]")
+          spans = driver.spans(css: "div[componentid^=dialoguemodal]>div[id^=panel]>div>div>div>a:nth-child(1)>span>span>span[id$=btnInnerEl]")
           first = spans.first
           last = spans.last
           last.present? ? last : first
@@ -50,7 +50,7 @@ module Stamps
         end
 
         def cancel
-          StampsField.new(browser.span text: "Cancel")
+          StampsField.new(driver.span text: "Cancel")
         end
       end
 
@@ -71,7 +71,7 @@ module Stamps
               end
 
               def textbox_field
-                browser.text_fields(name: "servicePackage")[@index]
+                driver.text_fields(name: "servicePackage")[@index]
               end
 
               def textbox
@@ -79,8 +79,8 @@ module Stamps
               end
 
               def select service
-                logger.info "Select Shipping service #{service}"
-                selection=StampsField.new(browser.trs(css: "tr[data-qtip*='#{service}']")[@index])
+                log.info "Select Shipping service #{service}"
+                selection=StampsField.new(driver.trs(css: "tr[data-qtip*='#{service}']")[@index])
                 box=textbox
                 dd=dropdown
 
@@ -89,13 +89,13 @@ module Stamps
                     dd.click unless selection.present?
                     selection.scroll_into_view
                     selection.click
-                    logger.info "Selection #{box.text} - #{(box.text.include? service)?"was selected": "not selected"}"
+                    log.info "Selection #{box.text} - #{(box.text.include? service)?"was selected": "not selected"}"
                     break if box.text.include? service
                   rescue
-                    #ignore
+                    # ignore
                   end
                 }
-                logger.info "#{service} selected."
+                log.info "#{service} selected."
               end
             end
 
@@ -109,12 +109,12 @@ module Stamps
             end
 
             def requested_services
-              text_field=browser.text_fields(name: "ServiceKey")[@index]
+              text_field=driver.text_fields(name: "ServiceKey")[@index]
               StampsTextbox.new text_field
             end
 
             def delete
-              StampsField.new(browser.spans(css: "span[class*=sdc-icon-remove]")[@index])
+              StampsField.new(driver.spans(css: "span[class*=sdc-icon-remove]")[@index])
               end
 
             def shipping_Service
@@ -123,27 +123,27 @@ module Stamps
           end
 
           def add_new_service_mapping_btn
-            StampsField.new browser.span(text: "Add New service Mapping")
+            StampsField.new driver.span(text: "Add New service Mapping")
           end
 
           def size
-            (browser.divs css: "div[id^=singleservicemappingitem][class*=x-container-default]").size
+            (driver.divs css: "div[id^=singleservicemappingitem][class*=x-container-default]").size
           end
 
           def item index
             index=index.to_i
             add_button=add_new_service_mapping_btn
-            logger.info "Item Count: #{size}"
+            log.info "Item Count: #{size}"
 
             20.times{
               break if size >= index
               sleep(0.35)
               break if size >= index
               add_button.click if index > size
-              logger.info "Service Mapping Item Count: #{size}"
+              log.info "Service Mapping Item Count: #{size}"
             }
 
-            logger.info "User Entered Number: #{index}. Actual Item Count: #{size}"
+            log.info "User Entered Number: #{index}. Actual Item Count: #{size}"
 
             ServiceMappingLineItem.new(param, index-1)
           end
@@ -154,7 +154,7 @@ module Stamps
         end
 
         def save
-          button=StampsField.new(browser.span text: "Save")
+          button=StampsField.new(driver.span text: "Save")
           server_error=Orders::Stores::ServerError.new(param)
           importing_order=Orders::Stores::ImportingOrdersModal.new(param)
 
@@ -162,12 +162,12 @@ module Stamps
             button.click
             5.times do
               if importing_order.present?
-                logger.info importing_order.message
+                log.info importing_order.message
                 importing_order.ok
               end
               if server_error.present?
                 error_str=server_error.message
-                logger.info error_str
+                log.info error_str
                 server_error.ok
                 expect("Server Error: \n#{error_str}").to eql ""
               end
@@ -178,15 +178,15 @@ module Stamps
         end
 
         def add_new_service_mapping
-          browser.span text: "Add New service Mapping"
+          driver.span text: "Add New service Mapping"
         end
 
         def store_nickname
-          StampsTextbox.new((browser.text_fields css: "input[name^=textfield-][name$=-inputEl][maxlength='50']").last)
+          StampsTextbox.new((driver.text_fields css: "input[name^=textfield-][name$=-inputEl][maxlength='50']").last)
         end
 
         def automatically_import_new_orders
-          label=(browser.label text: "Automatically Import New Orders")
+          label=(driver.label text: "Automatically Import New Orders")
           checkbox_field=label.parent.textbox
           verify_field=label.parent.parent.parent
           StampsCheckbox.new(checkbox_field, verify_field, "class", "checked")
@@ -196,21 +196,21 @@ module Stamps
 
       module MarketPlaceWindowTitle
         def window_title
-          cache[:window_title].nil? || !cache[:window_title].present? ? cache[:window_title] = StampsField.new(browser.div(css: "[id^=storeselectionwindow-] [class$=x-title-item]")) : cache[:window_title]
+          cache[:window_title].nil? || !cache[:window_title].present? ? cache[:window_title] = StampsField.new(driver.div(css: "[id^=storeselectionwindow-] [class$=x-title-item]")) : cache[:window_title]
         end
 
         def x_btn
-          cache[:x_btn].nil? || !cache[:x_btn].present? ? cache[:x_btn] = StampsField.new(browser.divs(css: "[id^=storeselectionwindow-] img").last) : cache[:x_btn]
+          cache[:x_btn].nil? || !cache[:x_btn].present? ? cache[:x_btn] = StampsField.new(driver.divs(css: "[id^=storeselectionwindow-] img").last) : cache[:x_btn]
         end
       end
 
-      class MarketplaceDataView < Browser::Base
+      class MarketplaceDataView < WebApps::Base
 
         def store_count
           begin
-            return browser.divs(css: "[id^=dataview][class*=x-window-item]>[class=x-dataview-item][role=option]").size
+            return driver.divs(css: "[id^=dataview][class*=x-window-item]>[class=x-dataview-item][role=option]").size
           rescue
-            #ignore
+            # ignore
           end
           0
         end
@@ -218,23 +218,23 @@ module Stamps
         def store_field(str)
           case(str.downcase.to_sym)
             when :paypal
-              cache[:paypal_store_field].nil? || !cache[:paypal_store_field].present? ? cache[:paypal_store_field] = StampsField.new(browser.a(css: "[data-store-name=paypal]")) : cache[:paypal_store_field]
+              cache[:paypal_store_field].nil? || !cache[:paypal_store_field].present? ? cache[:paypal_store_field] = StampsField.new(driver.a(css: "[data-store-name=paypal]")) : cache[:paypal_store_field]
             when :ebay
-              cache[:ebay_store_field].nil? || !cache[:ebay_store_field].present? ? cache[:ebay_store_field] = StampsField.new(browser.a(css: "[data-store-name=paypal]")) : cache[:ebay_store_field]
+              cache[:ebay_store_field].nil? || !cache[:ebay_store_field].present? ? cache[:ebay_store_field] = StampsField.new(driver.a(css: "[data-store-name=paypal]")) : cache[:ebay_store_field]
             when :rakuten
-              cache[:rakuten_store_field].nil? || !cache[:rakuten_store_field].present? ? cache[:rakuten_store_field] = StampsField.new(browser.a(css: "[data-store-name=paypal]")) : cache[:rakuten_store_field]
+              cache[:rakuten_store_field].nil? || !cache[:rakuten_store_field].present? ? cache[:rakuten_store_field] = StampsField.new(driver.a(css: "[data-store-name=paypal]")) : cache[:rakuten_store_field]
             when :shopify
-              cache[:shopify_store_field].nil? || !cache[:shopify_store_field].present? ? cache[:shopify_store_field] = StampsField.new(browser.a(css: "[data-store-name=paypal]")) : cache[:shopify_store_field]
+              cache[:shopify_store_field].nil? || !cache[:shopify_store_field].present? ? cache[:shopify_store_field] = StampsField.new(driver.a(css: "[data-store-name=paypal]")) : cache[:shopify_store_field]
             when :amazon
-              cache[:amazon_store_field].nil? || !cache[:amazon_store_field].present? ? cache[:amazon_store_field] = StampsField.new(browser.a(css: "[data-store-name=paypal]")) : cache[:amazon_store_field]
+              cache[:amazon_store_field].nil? || !cache[:amazon_store_field].present? ? cache[:amazon_store_field] = StampsField.new(driver.a(css: "[data-store-name=paypal]")) : cache[:amazon_store_field]
             when :etsy
-              cache[:etsy_store_field].nil? || !cache[:etsy_store_field].present? ? cache[:etsy_store_field] = StampsField.new(browser.a(css: "[data-store-name=paypal]")) : cache[:etsy_store_field]
+              cache[:etsy_store_field].nil? || !cache[:etsy_store_field].present? ? cache[:etsy_store_field] = StampsField.new(driver.a(css: "[data-store-name=paypal]")) : cache[:etsy_store_field]
             when :magento
-              cache[:magento_store_field].nil? || !cache[:magento_store_field].present? ? cache[:magento_store_field] = StampsField.new(browser.a(css: "[data-store-name=paypal]")) : cache[:magento_store_field]
+              cache[:magento_store_field].nil? || !cache[:magento_store_field].present? ? cache[:magento_store_field] = StampsField.new(driver.a(css: "[data-store-name=paypal]")) : cache[:magento_store_field]
             when :opencart
-              cache[:opencart_store_field].nil? || !cache[:opencart_store_field].present? ? cache[:opencart_store_field] = StampsField.new(browser.div(css: "div[style*='/OpenCart']")) : cache[:opencart_store_field]
+              cache[:opencart_store_field].nil? || !cache[:opencart_store_field].present? ? cache[:opencart_store_field] = StampsField.new(driver.div(css: "div[style*='/OpenCart']")) : cache[:opencart_store_field]
             when :square
-              cache[:square_store_field].nil? || !cache[:square_store_field].present? ? cache[:square_store_field] = StampsField.new(browser.div(css: "div[style*='/squarebanner']")) : cache[:square_store_field]
+              cache[:square_store_field].nil? || !cache[:square_store_field].present? ? cache[:square_store_field] = StampsField.new(driver.div(css: "div[style*='/squarebanner']")) : cache[:square_store_field]
             else
               return nil
           end
@@ -244,7 +244,7 @@ module Stamps
           case(str.downcase.to_sym)
             when :paypal
               if cache[:paypal_window].nil? || !cache[:paypal_window].present?
-                cache[:paypal_window] = Browser::Base.new(param).extend(Stamps::Orders::Stores::PayPal::WindowTitle)
+                cache[:paypal_window] = WebApps::Base.new(param).extend(Stamps::Orders::Stores::PayPal::WindowTitle)
               end
               return cache[:paypal_window]
             when :ebay
@@ -258,9 +258,9 @@ module Stamps
             when :magento
               raise "#{str} not implemented."
             when :square
-              cache[:square_window].nil? || !cache[:square_window].present? ? cache[:square_window] = Browser::Base.new(param).extend(Orders::Stores::Square::WindowTitle) : cache[:square_window]
+              cache[:square_window].nil? || !cache[:square_window].present? ? cache[:square_window] = WebApps::Base.new(param).extend(Orders::Stores::Square::WindowTitle) : cache[:square_window]
             when :opencart
-              cache[:opencart_window].nil? || !cache[:opencart_window].present? ? cache[:opencart_window] = Browser::Base.new(param).extend(Orders::Stores::OpenCart::ShipStationUpgradeMessage) : cache[:opencart_window]
+              cache[:opencart_window].nil? || !cache[:opencart_window].present? ? cache[:opencart_window] = WebApps::Base.new(param).extend(Orders::Stores::OpenCart::ShipStationUpgradeMessage) : cache[:opencart_window]
             else
               raise ArgumentError,  "#{str} - Invalid store selection or store is not yet implemented. Check your test."
           end
@@ -291,7 +291,7 @@ module Stamps
         end
       end
 
-      class Marketplace < Browser::Base
+      class Marketplace < WebApps::Base
         include MarketPlaceWindowTitle
 
         def present?
@@ -303,17 +303,17 @@ module Stamps
         end
 
         def contains(store_name)
-          browser.imgs(class: "data-view-selection-enabled").each { |image| return store_name if image.attribute_value("src").include?(store_name.downcase) }
+          driver.imgs(class: "data-view-selection-enabled").each { |image| return store_name if image.attribute_value("src").include?(store_name.downcase) }
           nil
         end
 
         def close
-          StampsField.new((browser.imgs css: "img[class*='x-tool-close']").last).click_while_present
+          StampsField.new((driver.imgs css: "img[class*='x-tool-close']").last).click_while_present
         end
 
         def search_by_name
           if cache[:search_by_name].nil? || !cache[:search_by_name].present?
-            cache[:search_by_name] = StampsTextbox.new(browser.text_field(css: "input[placeholder='Search by Name']"))
+            cache[:search_by_name] = StampsTextbox.new(driver.text_field(css: "input[placeholder='Search by Name']"))
           end
           cache[:search_by_name]
         end
@@ -329,20 +329,20 @@ module Stamps
         class ManageStoresGrid < Browser::StampsModal
 
           def size
-            (browser.tables css: "div[id^=grid]>div[class^=x-grid-view]>div[class=x-grid-item-container]>table").size
+            (driver.tables css: "div[id^=grid]>div[class^=x-grid-view]>div[class=x-grid-item-container]>table").size
           end
 
           def delete
-            StampsField.new(browser.spans(text: "Delete").last)
+            StampsField.new(driver.spans(text: "Delete").last)
           end
 
           def delete_name name
-            browser.div text: "My Amazon Store"
+            driver.div text: "My Amazon Store"
           end
 
           def delete_row row
             css="div[id^=grid]>div[class^=x-grid-view]>div[class=x-grid-item-container]>table:nth-child(#{row})>tbody>tr>td:nth-child(2)>div"
-            grid_row_item=browser.div css: css
+            grid_row_item=driver.div css: css
             grid_row_focused_field=StampsField.new grid_row_item.parent
             grid_row_field=StampsField.new grid_row_item
 
@@ -363,10 +363,10 @@ module Stamps
           def delete_all
             del_btn=delete
             delete_modal=DeleteStoreModal.new(param)
-            stores_grid=browser.divs(css: "div[class*='x-grid-item-container']").last
+            stores_grid=driver.divs(css: "div[class*='x-grid-item-container']").last
             tables=stores_grid.tables
             grid_size=tables.size
-            logger.info "Manage Stores:  Number of items in Grid #{grid_size}"
+            log.info "Manage Stores:  Number of items in Grid #{grid_size}"
 
             if grid_size > 1
               0.upto grid_size do |index|
@@ -374,13 +374,13 @@ module Stamps
                 begin
                   row=StampsField.new tables[row_to_delete]
                   grid_item_name=StampsField.new(row).text
-                  logger.info "#{index} Delete Item - #{grid_item_name}"
+                  log.info "#{index} Delete Item - #{grid_item_name}"
 
                   if grid_item_name.include? "Manual Orders"
-                    logger.info "#{index} Skipping #{grid_item_name}"
+                    log.info "#{index} Skipping #{grid_item_name}"
                     row=StampsField.new tables[row_to_delete+1]
                     grid_item_name=StampsField.new(row).text
-                    logger.info "#{index} Delete Item - #{grid_item_name}"
+                    log.info "#{index} Delete Item - #{grid_item_name}"
                   end
 
                   3.times do
@@ -397,13 +397,13 @@ module Stamps
                     break unless delete_modal.present?
                   end
                 rescue
-                  logger.info "#{index} Skipping..."
+                  log.info "#{index} Skipping..."
                 end
 
-                stores_grid=browser.divs(css: "div[class*='x-grid-item-container']").last
+                stores_grid=driver.divs(css: "div[class*='x-grid-item-container']").last
                 tables=stores_grid.tables
                 grid_size=tables.size
-                logger.info "Manage Stores: Number of items in Grid is #{grid_size}"
+                log.info "Manage Stores: Number of items in Grid is #{grid_size}"
                 break if grid_size==1
               end
             end
@@ -412,7 +412,7 @@ module Stamps
           def select store_name
             3.times do
               begin
-                checkbox_field=browser.divs(text: store_name).last
+                checkbox_field=driver.divs(text: store_name).last
                 sleep(0.35)
                 check_verify_field=checkbox_field.parent
                 checkbox=StampsCheckbox.new checkbox_field, check_verify_field, "class", "focused"
@@ -422,7 +422,7 @@ module Stamps
                 checkbox.check
                 break if checkbox.checked?
               rescue
-                #ignore
+                # ignore
               end
             end
           end
@@ -433,7 +433,7 @@ module Stamps
         end
 
         def close
-          button=StampsField.new browser.img(css: "div[id^=managestoreswindow-][id$=header-targetEl]>div>img")
+          button=StampsField.new driver.img(css: "div[id^=managestoreswindow-][id$=header-targetEl]>div>img")
           5.times do
             button.click
             return unless button.present?
@@ -441,7 +441,7 @@ module Stamps
         end
 
         def window_title
-          StampsField.new(browser.div text: "Manage Stores")
+          StampsField.new(driver.div text: "Manage Stores")
         end
 
         def present?
@@ -449,7 +449,7 @@ module Stamps
         end
 
         def add_button
-          StampsField.new browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(1)>span>span>span[id$=btnInnerEl]")
+          StampsField.new driver.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(1)>span>span>span[id$=btnInnerEl]")
         end
 
         def add
@@ -467,7 +467,7 @@ module Stamps
         end
 
         def edit
-          button=StampsField.new browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(2)>span>span>span[id$=btnInnerEl]")
+          button=StampsField.new driver.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(2)>span>span>span[id$=btnInnerEl]")
           rakuten=RakutenSettings.new(param)
           amazon=AmazonSettings.new(param)
           volusion=VolusionSettings.new(param)
@@ -490,7 +490,7 @@ module Stamps
         end
 
         def reconnect
-          button=StampsField.new browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(3)>span>span>span[id$=btnInnerEl]")
+          button=StampsField.new driver.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(3)>span>span>span[id$=btnInnerEl]")
           expect("No Store selected from Manage Store grid or Reconnect button is not present.  Check your test").to eql "" unless button.present?
 
           server_error=Orders::Stores::ServerError.new(param)
@@ -506,13 +506,13 @@ module Stamps
           15.times do
             button.click
             if server_error.present?
-              logger.info server_error.message
+              log.info server_error.message
               server_error.ok
             end
             5.times do
               if server_error.present?
                 error_str=server_error.message
-                logger.info error_str
+                log.info error_str
                 server_error.ok
                 expect("Server Error: \n#{server_error}").to eql ""
               end
@@ -535,7 +535,7 @@ module Stamps
         end
 
         def delete_item
-          button=StampsField.new browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(4)>span>span>span[id$=btnInnerEl]")
+          button=StampsField.new driver.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(4)>span>span>span[id$=btnInnerEl]")
           delete_modal=DeleteStoreModal.new(param)
           10.times do
             button.click

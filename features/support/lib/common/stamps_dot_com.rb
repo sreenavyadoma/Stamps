@@ -1,27 +1,23 @@
 module Stamps
-  class StampsDotCom < Browser::Base
-
-
+  class StampsDotCom < WebApps::Base
     def navigation_bar
-      cache[:navigation].nil? ? cache[:navigation] = Navigation::NavigationBar.new(param) : cache[:navigation]
+      @navigation ||= Navigation::NavigationBar.new(param)
     end
 
     def orders
-      cache[:orders].nil? ? cache[:orders] = WebOrders.new(param) : cache[:orders]
+      @orders ||= Orders::WebOrders.new(param)
     end
 
     def mail
-      cache[:mail].nil? ? cache[:mail] = WebMail.new(param) : cache[:mail]
+      @mail ||= Mail::WebMail.new(param)
     end
 
     def common_modals
-      cache[:shared_modals] = Stamps::Browser::Base.new(param).extend(Stamps::Common::Modals) if cache[:shared_modals].nil?
-      cache[:shared_modals]
+      @common ||= WebApps::Base.new(param).extend(Stamps::Common::Modals)
     end
 
     def rating
-      cache[:rating].nil? ? cache[:rating] = Rating.new(param) : cache[:rating]
+      @rating ||= Rating.new(param)
     end
   end
 end
-

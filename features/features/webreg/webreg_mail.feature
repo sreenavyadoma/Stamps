@@ -1,7 +1,7 @@
 Feature: First time Mail sign in
 
   Background:
-    Given I launched default browser
+    Given I launched the browser
 
     @registration_mail
     @whats_new

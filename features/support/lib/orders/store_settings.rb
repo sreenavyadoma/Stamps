@@ -3,13 +3,13 @@ module Stamps
     module Stores
       module StoresIframe
         def iframe
-          browser.iframe(css: "[id=storeiframe]")
+          driver.iframe(css: "[id=storeiframe]")
         end
       end
 
       module StoreSettingsWindowTitle
         def window_title
-          StampsField.new(browser.div(css: "[id^=storeiframewindow-][id$=_header-targetEl] [class$=x-title-item]"))
+          StampsField.new(driver.div(css: "[id^=storeiframewindow-][id$=_header-targetEl] [class$=x-title-item]"))
         end
       end
 
@@ -39,7 +39,7 @@ module Stamps
         end
       end
 
-      class StoreSettingsShippingService < Browser::Base
+      class StoreSettingsShippingService < WebApps::Base
         include StoresIframe
         attr_reader :index
         def initialize(param, index)
@@ -75,7 +75,7 @@ module Stamps
         def selection_field(str)
           #Version 2. check number of selections, if less than 36, bring them all in.
           #raise error or call Manage Service Options if iframe.spans(css: "[ng-bind-html^='service.PackageStr']").size < 36
-          #browser.spans(css: "[ng-bind-html^='service.PackageStr']").size
+          #driver.spans(css: "[ng-bind-html^='service.PackageStr']").size
 
           case(str)
             when /FCM Large Envelope\/Flat/ #0. FCM Large Envelope/Flat/Flat (1-3 days) -- Large Envelope/Flat
@@ -159,7 +159,7 @@ module Stamps
       end
 
 
-      class ServiceMapping < Browser::Base
+      class ServiceMapping < WebApps::Base
         include StoresIframe
         attr_reader :index
         def initialize(param, index)
@@ -198,7 +198,7 @@ module Stamps
       end
 
 
-      class ServiceMappingList < Browser::Base
+      class ServiceMappingList < WebApps::Base
         include StoresIframe
         def add_service_mapping
           if cache[:add_service_mapping].nil? || !cache[:add_service_mapping].present?
@@ -239,7 +239,7 @@ module Stamps
 
       end
 
-      class StoreSettings < Browser::Base
+      class StoreSettings < WebApps::Base
         include StoresIframe
         include StoreSettingsWindowTitle
         include Products
@@ -266,7 +266,7 @@ module Stamps
 
         def auto_import_new_orders
           if cache[:auto_import].nil? || !cache[:v].present?
-            cache[:auto_import] = Stamps::Browser::StampsCheckbox.new(iframe.input(id: 'importOrders'), iframe.input(id: 'importOrders'), "class", "ng-not-empty")
+            cache[:auto_import] = Stamps::WebApps::StampsCheckbox.new(iframe.input(id: 'importOrders'), iframe.input(id: 'importOrders'), "class", "ng-not-empty")
           end
           cache[:auto_import]
         end

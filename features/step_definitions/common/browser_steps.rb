@@ -1,18 +1,22 @@
 
 Then /^Teardown$/ do
-  test_config.teardown
+  SdcTest.teardown
 end
 
-Given /^(?:|I )[Ll]aunch(?:|ed) (?:|browser)(?:| (\w+))(?:|(?:|the )default browser)$/ do |str|
-  test_config.setup((str.nil?)? modal_param.browser_str : str)
+Given /^I launched the browser$/ do
+  step "Start test driver"
+end
+
+Then /^Start test driver$/ do
+  SdcTest.configure
 end
 
 Then /^Refresh the browser$/ do
   begin
-    test_config.browser.refresh
+    SdcTest.driver.refresh
     sleep(2)
   rescue
-    #ignore
+    # ignore
   end
 end
 
@@ -20,12 +24,12 @@ Then /^[Pp]ause for (\d+) [Ss]econd(?:|s)?$/ do |seconds|
   begin
     sleep(seconds.to_i)
   rescue
-    #ignore
+    # ignore
   end
 end
 
-Then(/^Close the browser and clear cookies$/) do #Clear Cookies
-  test_config.clear_cookies
+Then(/^Close the driver and clear cookies$/) do #Clear Cookies
+  SdcTest.clear_cookies
 end
 
 

@@ -2,15 +2,15 @@
 module Stamps
   module Mail
     module PrintModal
-      class MailConfirmPrint < Browser::Base
+      class MailConfirmPrint < WebApps::Base
         attr_accessor :window_title, :do_not_prompt, :continue_btn
 
         def initialize(param)
           super
-          @window_title = StampsField.new(browser.div(text: "Confirm Print"))
-          @continue_btn = StampsField.new(browser.span(text: "Continue"))
-          @do_not_prompt = StampsCheckbox.new browser.span(css: "div[id^=dialoguemodal-][id$=-targetEl]>div>div>div>span"),
-                                              browser.div(css: "div[id^=dialoguemodal-][id$=-targetEl]>div[class*=checkbox]"), "class", "checked"
+          @window_title = StampsField.new(driver.div(text: "Confirm Print"))
+          @continue_btn = StampsField.new(driver.span(text: "Continue"))
+          @do_not_prompt = StampsCheckbox.new driver.span(css: "div[id^=dialoguemodal-][id$=-targetEl]>div>div>div>span"),
+                                              driver.div(css: "div[id^=dialoguemodal-][id$=-targetEl]>div[class*=checkbox]"), "class", "checked"
         end
 
         def present?
@@ -30,14 +30,14 @@ module Stamps
         end
       end
 
-      class PleaseWait < Browser::Base
+      class PleaseWait < WebApps::Base
         attr_accessor :window_title, :paragraph, :ok_btn
 
         def initialize(param)
           super
-          @window_title = StampsField.new(browser.div(text: "Please Wait"))
-          @paragraph = StampsField.new(browser.div(css: "div[class*=resizable]>div[id^=dialoguemodal-][id$=-body]>div>div"))
-          @ok_btn = StampsField.new(browser.span(text: "OK"))
+          @window_title = StampsField.new(driver.div(text: "Please Wait"))
+          @paragraph = StampsField.new(driver.div(css: "div[class*=resizable]>div[id^=dialoguemodal-][id$=-body]>div>div"))
+          @ok_btn = StampsField.new(driver.span(text: "OK"))
         end
 
         def present?

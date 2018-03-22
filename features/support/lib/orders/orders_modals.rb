@@ -4,13 +4,13 @@ module Stamps
     # Orders Loading Orders... modal
     module LoadingOrders
       def loading_orders
-        cache[:loading_orders].nil? || !cache[:loading_orders].present? ? cache[:loading_orders] = StampsField.new(browser.div(text: 'Loading orders...')) : cache[:loading_orders]
+        cache[:loading_orders].nil? || !cache[:loading_orders].present? ? cache[:loading_orders] = StampsField.new(driver.div(text: 'Loading orders...')) : cache[:loading_orders]
       end
     end
 
     ##
     # Orders floating modals
-    class StampsOrdersModals < Stamps::Browser::Base
+    class StampsOrdersModals < Stamps::WebApps::Base
       
       def orders_print_modal
         cache[:orders_print_modal] = Printing::OrdersPrintModal.new(param) if cache[:orders_print_modal].nil?
@@ -45,7 +45,7 @@ module Stamps
     end
 
     module TermsAndConditions
-      class TermsAndConditionsModal < Stamps::Browser::Base
+      class TermsAndConditionsModal < Stamps::WebApps::Base
         
         def present?
           i_agree_button.present?
@@ -56,7 +56,7 @@ module Stamps
         end
 
         def i_agree_button
-          cache[:i_agree] = StampsInput.new(browser.iframe(css: "iframe[id^=component-]").input(class: 'acceptBtn stamps')) if cache[:i_agree].nil? || !cache[:i_agree].present?
+          cache[:i_agree] = StampsInput.new(driver.iframe(css: "iframe[id^=component-]").input(class: 'acceptBtn stamps')) if cache[:i_agree].nil? || !cache[:i_agree].present?
           cache[:i_agree]
         end
 
@@ -68,12 +68,12 @@ module Stamps
         end
 
         def form_body
-          cache[:form_body] = StampsField.new(browser.iframe(css: "iframe[id^=component-]").form.div(css: "[class=form-body]").ps[0]) if cache[:form_body].nil? || !cache[:form_body].present?
+          cache[:form_body] = StampsField.new(driver.iframe(css: "iframe[id^=component-]").form.div(css: "[class=form-body]").ps[0]) if cache[:form_body].nil? || !cache[:form_body].present?
           cache[:form_body]
         end
 
         def close
-          cache[:close] = StampsField.new(browser.img(css: "[class*=x-tool-close]")) if cache[:close].nil? || !cache[:close].present?
+          cache[:close] = StampsField.new(driver.img(css: "[class*=x-tool-close]")) if cache[:close].nil? || !cache[:close].present?
           cache[:close]
         end
       end
