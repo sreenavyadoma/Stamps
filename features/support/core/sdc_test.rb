@@ -2,7 +2,7 @@ module Stamps
 
   module SdcEnv
     TEST_ENVIRONMENTS = %i(stg qacc cc qasc sc rating).freeze
-    BROWSERS = %i(firefox ff chrome gc safari edge).freeze
+    BROWSERS = %i(firefox chrome safari edge chromeb).freeze
     SDC_APP = %i(orders mail webdev registration).freeze
     IDEVICES = %i(iphone6 iphone7 iphone8 iphonex android).freeze
     class << self #todo-Rob refactor PrintMedia
@@ -153,7 +153,7 @@ module Stamps
         logger.outputters = Outputter.stdout
         @log = SdcLogger.new(logger, SdcEnv.verbose)
 
-        #These should be in an orders/mail or web_apps environment variable container
+        #todo-Rob These should be in an orders/mail or web_apps environment variable container. This is a temp fix.
         SdcEnv.printer = ENV['PRINTER']
 
         @web_apps_param = Stamps::WebApps::Param.new
@@ -235,7 +235,7 @@ module Stamps
             # ignore
         end
 
-        raise ArgumentError, "BROWSER=#{str}. Expected values are #{SdcEnv::BROWSERS}" unless !str.nil? && SdcEnv::BROWSERS.include?(str.downcase)
+        raise ArgumentError, "BROWSER=#{str}. Valid BROWSER: ff|firefox|mozilla|chromeb|gcb|googleb|chrome|gc|google|ms|me|microsoft|edge|apple|osx|safari|mac"
       end
 
       def sdc_app(str)
