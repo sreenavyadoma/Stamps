@@ -505,12 +505,64 @@ module Stamps
           end
         end
 
+        #todo - Change this for BulkForm
         class Insurance < WebApps::Base
 
+          attr_reader :textbox, :dropdown
+          def initialize(param)
+            super(param)
+            @textbox ||= StampsTextbox.new driver.text_field(name: 'Tracking')
+            @dropdown ||= StampsField.new driver.div(css: 'div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=trackingdroplist-][id$=trigger-picker]')
+          end
+
+          def present?
+            textbox.present?
+          end
+
+          def tracking_selection(selection)
+            if selection.downcase.include? 'usps'
+              driver.tds(css: 'div[id=sdc-trackingdroplist-dc]>table>tbody>tr>td')
+            elsif selection.downcase.include? 'signature'
+              driver.tds(css: 'div[id=sdc-trackingdroplist-sc]>table>tbody>tr>td')
+            elsif selection.downcase.include? 'none'
+              driver.tds(css: 'div[id=sdc-trackingdroplist-none]>table>tbody>tr>td')
+            else
+              expect("#{selection} is not a valid selection").to eql 'Valid selections are USPS Tracking and Signature Required'
+            end
+          end
+
+          # todo-rob Details Tracking selection fix
+          def select(str)
+            expect(dropdown).to be_present
+            20.times do
+              selection = StampsField.new(tracking_selection(str).first)
+              dropdown.click unless selection.present?
+              selection.click
+              break if textbox.text.include?(str)
+            end
+            expect(textbox.text).to include(str)
+          end
+
+          def checkbox
+            @checkbox ||= StampsCheckbox.new(
+                driver.input(css: '[class*=mult] [class*=insurance-row]>div>div>div[class*=x-form-item] input[type=button]'),
+                driver.div(css: '[class*=mult] [class*=insurance-row]>div>div>div[class*=checkbox]'),
+                'class',
+                'checked')
+          end
         end
 
-        class InsuranceAmt < WebApps::Base
+        class InsureAmt < WebApps::Base
+          def present?
+            insure_amt.present?
+          end
 
+          def insure_amt
+            @insure_amt ||= StampsNumberField.new(
+                driver.text_field(css: '[class*=mult] [name=InsuredValue]'),
+                driver.div(css: '[class*=mult] [class*=insurance-field] [class*=up]'),
+                driver.div(css: '[class*=mult] [class*=insurance-field] [class*=down]'))
+          end
         end
 
         class Tracking < WebApps::Base
@@ -651,7 +703,7 @@ module Stamps
         end
 
         def insure_amt
-          @insure_amt ||= BulkUpdateFields::InsuranceAmt.new(param)
+          @insure_amt ||= BulkUpdateFields::InsureAmt.new(param)
         end
 
         def tracking
