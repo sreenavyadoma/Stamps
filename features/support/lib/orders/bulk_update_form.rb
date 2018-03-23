@@ -7,7 +7,68 @@ module Stamps
       module PresetMenu
       end
 
-      module Fields
+      module BulkUpdateFields
+        # class ShipFrom < WebApps::Base
+        #   attr_reader :form_type
+        #   def initialize(param, form_type)
+        #     super(param)
+        #     @form_type = form_type
+        #   end
+        #
+        #   def manage_shipping_address
+        #     if cache[:shipping_address].nil? || !cache[:shipping_address].present?
+        #       cache[:shipping_address] = Orders::ShipFrom::ManageShippingAddresses.new(param)
+        #     else
+        #       cache[:shipping_address]
+        #     end
+        #   end
+        #
+        #   def textbox
+        #     if cache[:textbox].nil? || !cache[:textbox].present?
+        #       cache[:textbox] = StampsTextbox.new(driver.text_field(css: '[class*=multi] [componentid^=ship]'))
+        #     else
+        #       cache[:textbox]
+        #     end
+        #   end
+        #
+        #   def dropdown
+        #     cache[:dropdown].nil? || !cache[:dropdown].present? ? cache[:dropdown] = StampsTextbox.new(
+        #         driver.div(css: '[class*=multi] [id^=ship][id$=picker]')) : cache[:dropdown]
+        #   end
+        #
+        #   def select(str)
+        #     blah unless get(:order_details) && get(:bulk_update)
+        #     # 1.If lov is nil, set lov[bulk:]=1
+        #     # 2. if lov is not nil and lov does not contain bulk key and single key exist with value 1, then set bulk key to 2 ()i.e lov[bulk:]=lov[single:]+1), else lov[bulk:]
+        #
+        #
+        #     return manage_shipping_address if manage_shipping_address.present?
+        #     dropdown.click
+        #     sleep(0.5)
+        #     selection = StampsField.new(str.downcase.include?('default') ? driver.lis(css: "[class*='x-boundlist-item-over'][data-recordindex='0']")[form_type == :single_order ? 0 : 1] : driver.lis(visible_text: str)[form_type == :single_order ? 0 : 1])
+        #     if str.downcase.include?('manage shipping')
+        #       15.times do
+        #         sleep(0.35)
+        #         dropdown.click unless selection.present?
+        #         selection.scroll_into_view
+        #         selection.click
+        #         return manage_shipping_address if manage_shipping_address.present?
+        #         expect(manage_shipping_address).to be_present, 'Manage Shipping Address modal is not present!'
+        #       end
+        #     else
+        #       15.times do
+        #         sleep(0.35)
+        #         dropdown.click unless selection.present?
+        #         selection.scroll_into_view
+        #         selection.click
+        #         sleep(0.35)
+        #         return textbox.text if textbox.text.size > 2
+        #       end
+        #     end
+        #     textbox.text
+        #   end
+        # end
+
         class Dimensions < WebApps::Base
           
 
@@ -44,8 +105,6 @@ module Stamps
         end
 
         class Weight < WebApps::Base
-          
-
           def present?
             lbs.present? && oz.present? && checkbox.present?
           end
@@ -71,70 +130,13 @@ module Stamps
                 'class',
                 'checked') : cache[:checkbox]
           end
-        end
 
-        class ShipFrom < WebApps::Base
-          attr_reader :form_type
-          def initialize(param, form_type)
-            super(param)
-            @form_type = form_type
-          end
-
-          def manage_shipping_address
-            if cache[:shipping_address].nil? || !cache[:shipping_address].present?
-              cache[:shipping_address] = Orders::ShipFrom::ManageShippingAddresses.new(param)
-            else
-              cache[:shipping_address]
-            end
-          end
-
-          def textbox
-            if cache[:textbox].nil? || !cache[:textbox].present?
-              cache[:textbox] = StampsTextbox.new(driver.text_field(css: '[class*=multi] [componentid^=ship]'))
-            else
-              cache[:textbox]
-            end
-          end
-
-          def dropdown
-            cache[:dropdown].nil? || !cache[:dropdown].present? ? cache[:dropdown] = StampsTextbox.new(
-                driver.div(css: '[class*=multi] [id^=ship][id$=picker]')) : cache[:dropdown]
-          end
-
-          def select(str)
-            blah unless get(:order_details) && get(:bulk_update)
-            # 1.If lov is nil, set lov[bulk:]=1
-            # 2. if lov is not nil and lov does not contain bulk key and single key exist with value 1, then set bulk key to 2 ()i.e lov[bulk:]=lov[single:]+1), else lov[bulk:]
-
-
-            return manage_shipping_address if manage_shipping_address.present?
-            dropdown.click
-            sleep(0.5)
-            selection = StampsField.new(str.downcase.include?('default') ? driver.lis(css: "[class*='x-boundlist-item-over'][data-recordindex='0']")[form_type == :single_order ? 0 : 1] : driver.lis(visible_text: str)[form_type == :single_order ? 0 : 1])
-            if str.downcase.include?('manage shipping')
-              15.times do
-                sleep(0.35)
-                dropdown.click unless selection.present?
-                selection.scroll_into_view
-                selection.click
-                return manage_shipping_address if manage_shipping_address.present?
-                expect(manage_shipping_address).to be_present, 'Manage Shipping Address modal is not present!'
-              end
-            else
-              15.times do
-                sleep(0.35)
-                dropdown.click unless selection.present?
-                selection.scroll_into_view
-                selection.click
-                sleep(0.35)
-                return textbox.text if textbox.text.size > 2
-              end
-            end
-            textbox.text
+          def weigh
+            @weigh ||= StampsField.new(driver.span(css: '[class*=mult] div[id^=weightview] a>span[id$=btnWrap][class*=secondary]'))
           end
         end
 
-        class Service < WebApps::Base
+        class DomesticService < WebApps::Base
           
           def textbox
             cache[:textbox] = StampsTextbox.new(driver.text_field(css: '[class*=domestic-service-row] [name=service]')) if cache[:textbox].nil? || !cache[:textbox].present?
@@ -453,10 +455,66 @@ module Stamps
 
         end
 
-        # REWORK -----------------------------------------------
+        class ShipFrom < WebApps::Base
+          def textbox
+            if cache[:textbox].nil? || !cache[:textbox].present?
+              cache[:textbox] = StampsTextbox.new(driver.text_fields(name: "ShipFrom").last)
+            end
+            cache[:textbox]
+          end
 
-        class MultiOrderDetailsTracking < WebApps::Base
-          
+          def dropdown
+            if cache[:dropdown].nil? || !cache[:dropdown].present?
+              cache[:dropdown] = StampsTextbox.new(driver.divs(css: "div[id^=shipfromdroplist][id$=trigger-picker]").last)
+            end
+            cache[:dropdown]
+          end
+
+          def select(str)
+            dropdown.click
+            sleep(0.5)
+            window_title = Object.const_get('WebApps::Base').new(param).extend(Stamps::Orders::ShipFrom::WindowTitle)
+            selection = StampsField.new((str.downcase.include?('default')) ? driver.lis(css: "[class*='x-boundlist-item-over'][data-recordindex='0']").last : driver.lis(visible_text: /#{str}/).last)
+            if str.downcase.include?("manage shipping")
+              20.times do
+                sleep(0.35)
+                dropdown.click unless selection.present?
+                selection.scroll_into_view.click
+                return window_title.window_title.text if window_title.present?
+              end
+
+              raise "Failed to open Manage Shipping Addresses modal"
+            else
+              15.times do
+                sleep(0.35)
+                dropdown.click unless selection.present?
+                selection.scroll_into_view.click
+                sleep(0.35)
+                return textbox.text if textbox.text.size > 2
+              end
+            end
+            textbox.text
+          end
+
+          def checkbox
+            @checkbox ||= StampsCheckbox.new(
+                driver.input(css: '[class*=mult] [class*=shipfrom-row]>div>div>div[class*=x-form-item] input[type=button]'),
+                driver.div(css: '[class*=mult] [class*=shipfrom-row]>div>div>div[class*=checkbox]'),
+                'class',
+                'checked')
+          end
+        end
+
+        class Insurance < WebApps::Base
+
+        end
+
+        class InsuranceAmt < WebApps::Base
+
+        end
+
+        class Tracking < WebApps::Base
+
           attr_reader :textbox, :dropdown
           def initialize(param)
             super(param)
@@ -507,8 +565,15 @@ module Stamps
               end
             end
           end
-        end
 
+          def checkbox
+            cache[:checkbox].nil? || !cache[:checkbox].present? ? cache[:checkbox] = StampsCheckbox.new(
+                driver.input(css: '[class*=mult] [class*=tracking-row]>div>div>div[class*=x-form-item] input[type=button]'),
+                driver.div(css: '[class*=mult] [class*=tracking-row]>div>div>div[class*=checkbox]'),
+                'class',
+                'checked') : cache[:checkbox]
+          end
+        end
       end
 
       class Form < WebApps::Base
@@ -536,20 +601,19 @@ module Stamps
 
         def ship_from
           if cache[:ship_from].nil?
-            # cache[:ship_from] = ::DetailsFormCommon::DetailsFormShipFrom.new(param, :multi_order_details)
-            cache[:ship_from] = ::DetailsFormCommon::BulkFormShipFrom.new(param)
+            cache[:ship_from] = BulkUpdateFields::ShipFrom.new(param)
           end
           cache[:ship_from]
         end
 
         def intl_service
-          cache[:int_service] = Fields::IntlService.new(param) if cache[:int_service].nil?
+          cache[:int_service] = BulkUpdateFields::IntlService.new(param) if cache[:int_service].nil?
           cache[:int_service]
         end
 
         # done
         def domestic_service
-          cache[:domestic_service] = Fields::Service.new(param) if cache[:domestic_service].nil?
+          cache[:domestic_service] = BulkUpdateFields::DomesticService.new(param) if cache[:domestic_service].nil?
           cache[:domestic_service]
         end
 
@@ -575,20 +639,23 @@ module Stamps
         end
 
         def weight
-          cache[:weight].nil? ? cache[:weight] = Fields::Weight.new(param) : cache[:weight]
+          cache[:weight].nil? ? cache[:weight] = BulkUpdateFields::Weight.new(param) : cache[:weight]
         end
 
         def dimensions
-          cache[:dimensions].nil? ? cache[:dimensions] = Fields::Dimensions.new(param) : cache[:dimensions]
+          cache[:dimensions].nil? ? cache[:dimensions] = BulkUpdateFields::Dimensions.new(param) : cache[:dimensions]
         end
 
         def insurance
+          @insurance ||= BulkUpdateFields::Insurance.new(param)
         end
 
         def insure_amt
+          @insure_amt ||= BulkUpdateFields::InsuranceAmt.new(param)
         end
 
         def tracking
+          @tracking ||= BulkUpdateFields::Tracking.new(param)
         end
       end
     end
