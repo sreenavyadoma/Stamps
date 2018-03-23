@@ -1,6 +1,6 @@
 
 Given /^(?:|(?:|[Aa] )(?:[Vv]alid |))[Uu]ser is signed in to Web Apps$/ do
-  step "I launch default browser"
+  step "I launched the browser"
   step "Health Check: Print - Web Batch" if SdcEnv.health_check
   step "Health Check: Print - Address Book" if SdcEnv.health_check
   step "load Web Apps Sign-in page"

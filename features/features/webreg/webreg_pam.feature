@@ -3,7 +3,7 @@
 
 Feature: Registration
   Background:
-    Given I launched default browser
+    Given I launched the browser
 
   @registration_pam
   Scenario:

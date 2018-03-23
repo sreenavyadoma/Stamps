@@ -1,6 +1,6 @@
 Feature: Registration
   Background:
-    Given I launched default browser
+    Given I launched the browser
 
   @pam_ach_purchase_100k
   Scenario:

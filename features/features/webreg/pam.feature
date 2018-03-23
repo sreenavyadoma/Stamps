@@ -1,7 +1,7 @@
 
 Feature: PAM page
   Background:
-    Given I launched default browser
+    Given I launched the browser
 
   @pam
   Scenario: PAM page

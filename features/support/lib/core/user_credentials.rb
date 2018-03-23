@@ -1,6 +1,6 @@
 module Stamps
   class StampsUserCredentials
-    attr_accessor :scenario_name, :cuke_tag
+    attr_accessor :test_scenario, :cuke_tag
     attr_reader :db_connection, :user_credentials
     def initialize(db_connection)
       @db_connection = db_connection
@@ -29,7 +29,7 @@ module Stamps
 
     def random_credentials(test_tag)
       result = db_connection.query("select * from user_credentials where test_env='#{SdcEnv.env}' and user_status='Active' and test_tag='#{test_tag}' and in_use=0")
-      expect(result.size).to be > 0, "No user found in MySQL DB for test tag #{cuke_tag} (#{scenario_name}) in #{SdcEnv.env.to_s.upcase}. Try again later or add more users to the database."
+      expect(result.size).to be > 0, "No user found in MySQL DB for test tag #{cuke_tag} (#{test_scenario}) in #{SdcEnv.env.to_s.upcase}. Try again later or add more users to the database."
       rand_num = rand(result.size)
       result.each_with_index do |row, index|
         if rand_num == index
