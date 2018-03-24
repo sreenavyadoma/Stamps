@@ -47,27 +47,6 @@ module Stamps
         define_method(name) do |*args|
           self.instance_exec(*args, &block)
         end
-
-        define_method("#{name}=") do |val|
-          watir_element = self.instance_exec &block
-          case watir_element
-            when Watir::Radio
-              watir_element.set if val
-            when Watir::CheckBox
-              val ? watir_element.set : watir_element.clear
-            when Watir::Select
-              watir_element.select val
-            when Watir::Button
-              watir_element.click
-            when Watir::TextField, Watir::TextArea
-              watir_element.set val if val
-            else
-              watir_element.click if val
-          end
-        end
-=begin
-=end
-
         element_list << name.to_sym
         required_element_list << name.to_sym if required
       end
@@ -101,26 +80,6 @@ module Stamps
 
     def initialize(browser_input = @@browser)
       @browser = browser_input
-    end
-
-    def submit_form(model)
-      fill_form(model)
-      submit.click
-    end
-
-    def fill_form(model)
-      intersect = case model
-                    when OpenStruct
-                      self.class.element_list & model.to_h.keys
-                    when Hash
-                      self.class.element_list & model.keys
-                    else
-                      model = model_to_hash(model)
-                      self.class.element_list & model.keys.reject { |el| model[el].nil? }
-                  end
-      intersect.each do |val|
-        self.send("#{val}=", model[val])
-      end
     end
 
     def inspect
@@ -165,11 +124,8 @@ module Stamps
     end
 
     def method_missing(method, *args, &block)
-      if @browser.respond_to?(method) && method != :page_url
-        @browser.send(method, *args, &block)
-      else
-        super
-      end
+      super unless @browser.respond_to?(method) && method != :page_url
+      @browser.send(method, *args, &block)
     end
 
     def respond_to_missing?(method, _include_all = false)
@@ -187,44 +143,44 @@ module Stamps
     end
 
     def present?
-      element.present? && @element.exist?
+      @element.present? && @element.exist?
+    end
+
+    def text_value
+      begin
+        return @element.text if @element.text.size > 0
+      rescue
+        # ignore
+      end
+
+      begin
+        return @element.value if @element.value.size > 0
+      rescue
+        # ignore
+      end
+
+      ''
     end
 
     def method_missing(method, *args, &block)
-      super unless element.respond_to?(method)
-      element.send(method, *args, &block)
+      super unless @element.respond_to?(method)
+      @element.send(method, *args, &block)
     end
-
-    private
-    :element
-  end
-
-  class SdcElement2
-    def initialize(browser)
-      @browser = browser
-    end
-
-    def method_missing(method, *args, &block)
-      super unless browser.respond_to?(method)
-      browser.send(method, *args, &block)
-    end
-    private
-    :browser
   end
 
   class TestPage < PageObject
 
     element(:first_name) { SdcElement.new(browser.text_field(id: 'new_user_first_name')) }
-    element(:last_name) { browser.text_field(id: 'new_user_last_name') }
-    element(:email_address) { browser.text_field(id: 'new_user_email') }
-    element(:email_address_confirm)  { browser.text_field(id: 'new_user_email_confirm') }
-    element(:country) { browser.select(id: 'new_user_country')}
-    element(:occupation) { browser.text_field(id: 'new_user_occupation') }
-    element(:submit) { browser.button(id: 'new_user_submit') }
+    element(:last_name) { SdcElement.new(browser.text_field(id: 'new_user_last_name')) }
+    element(:email_address) { SdcElement.new(browser.text_field(id: 'new_user_email')) }
+    element(:email_address_confirm)  { SdcElement.new(browser.text_field(id: 'new_user_email_confirm')) }
+    element(:country) { SdcElement.new(browser.select(id: 'new_user_country'))}
+    element(:occupation) { SdcElement.new(browser.text_field(id: 'new_user_occupation')) }
+    element(:submit) { SdcElement.new(browser.button(id: 'new_user_submit')) }
 
-    element(:cars) { browser.checkbox(id: 'new_user_interests_cars')}
-    element(:div_index) { |indx| browser.div(index: indx) }
-    element(:first_element) { browser.div }
+    element(:cars) { SdcElement.new(browser.checkbox(id: 'new_user_interests_cars'))}
+    element(:div_index) { |indx| SdcElement.new(browser.div(index: indx)) }
+    element(:first_element) { SdcElement.new(browser.div) }
     elements(:all_elements) { browser.divs }
     element(:first_sub_element) { div_index(1).div }
     elements(:all_sub_elements) { div_index(1).divs }

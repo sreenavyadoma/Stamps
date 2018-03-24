@@ -35,7 +35,7 @@ Then /^navigates to a simple url$/ do
 end
 
 Then /^navigates to a dynamic url$/ do
-  class TestPage2 < WatirDrops::PageObject
+  class TestPage2 < PageObject
     page_url { |val| "http://watir.com/examples/#{val}" }
   end
 
@@ -46,8 +46,9 @@ end
 Then /^enters text into a textfield based on value it is set equal to$/ do
   var = TestPage.new
   #var.first_name = 'Rob'
-  puts var.first_name
+  #puts var.first_name
   var.first_name.send_keys 'Roger'
+  puts var.first_name.text_value
   var.first_name.click
   element = var.browser.driver.find_element(id: 'new_user_email')
   element
@@ -55,7 +56,7 @@ Then /^enters text into a textfield based on value it is set equal to$/ do
 end
 
 Then /^selects value from dropdown based on value it is set equal to$/ do
-  TestPage.visit.country = 'Sweden'
+  TestPage.new.country.select 'Sweden'
   expect(TestPage.new.country.value).to be == '3'
 end
 
