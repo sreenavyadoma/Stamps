@@ -28,6 +28,14 @@ Then /^click Print Sample button$/ do
 end
 
 Then /^navigates to a simple url$/ do
+  MyOrders.browser = SdcTest.driver
+  MyOrders.visit
+  orders = MyOrders.new
+  orders.ns_serial_number.set 'S12345'
+  orders.ns_from_zip.set '90502'
+
+
+
   TestPage.browser = SdcTest.driver
   test_page = TestPage.visit
   test_page.methods
@@ -62,23 +70,22 @@ end
 
 # Update Radio Set
 Then /^selects radio button based being set equal to a true value$/ do
-  TestPage.visit.identity = true
+  TestPage.visit.identity.click
   expect(TestPage.new.identity).to be_set
 end
 
 Then /^selects checkbox based on being set equal to a true value$/ do
-  TestPage.visit.cars = true
+  TestPage.visit.cars.check
   expect(TestPage.new.cars).to be_set
 end
 
 Then /^deselects checkbox based on being set equal to a true value$/ do
-  TestPage.visit.cars = true
-  TestPage.new.cars = false
+  TestPage.new.cars.uncheck
   expect(TestPage.new.cars).to_not be_set
 end
 
 Then /^clicks button based on being set equal to a true value$/ do
-  TestPage.visit.submit = true
+  TestPage.visit.submit.click
   expect(ResultPage.new.success?).to be true
 end
 

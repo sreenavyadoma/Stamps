@@ -47,6 +47,7 @@ module Stamps
         define_method(name) do |*args|
           self.instance_exec(*args, &block)
         end
+
         element_list << name.to_sym
         required_element_list << name.to_sym if required
       end
@@ -54,12 +55,13 @@ module Stamps
       def visit(*args)
         new.tap do |page|
           page.goto(*args)
+          exception = Selenium::WebDriver::Error::WebDriverError
+          message = "Expected to be on #{page.class}, but conditions not met"
           if page.page_verifiable?
             begin
               page.wait_until(&:on_page?)
             rescue Watir::Wait::TimeoutError
-              raise Selenium::WebDriver::Error::WebDriverError,
-                    "Expected to be on #{page.class}, but something went wrong. Check your test."
+              raise exception, message
             end
           end
         end
@@ -79,6 +81,26 @@ module Stamps
 
     def initialize(browser = @@browser)
       @browser = browser
+    end
+
+    def submit_form(model)
+      fill_form(model)
+      submit.click
+    end
+
+    def fill_form(model)
+      intersect = case model
+                    when OpenStruct
+                      self.class.element_list & model.to_h.keys
+                    when Hash
+                      self.class.element_list & model.keys
+                    else
+                      model = model_to_hash(model)
+                      self.class.element_list & model.keys.reject { |el| model[el].nil? }
+                  end
+      intersect.each do |val|
+        self.send("#{val}=", model[val])
+      end
     end
 
     def inspect
@@ -166,6 +188,20 @@ module Stamps
       @element.send(method, *args, &block)
     end
   end
+
+
+
+  class MyOrders < PageObject
+    element(:ns_serial_number) { SdcElement.new(browser.text_field(name: 'NsSerial')) }
+    element(:ns_from_zip) { SdcElement.new(browser.text_field(name: 'unauthFromZip')) }
+
+    page_url(required: true) { "https://print.stamps.com/Webpostage/default2.aspx?" }
+  end
+
+
+
+
+
 
   class TestPage < PageObject
 
