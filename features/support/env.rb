@@ -24,6 +24,7 @@ require 'holidays'
 require 'socket'
 require 'appium_lib'
 require 'appium_lib_core'
+require 'watir_drops'
 
 require_relative 'core/sdc_core'
 require_relative 'lib/core/user_credentials'

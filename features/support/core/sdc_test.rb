@@ -17,9 +17,9 @@ module Stamps
       @driver = driver
     end
 
-    def method_missing(method, *args)
+    def method_missing(method, *args, &block)
       super unless driver.respond_to?(method)
-      driver.send(method, *args)
+      driver.send(method, *args, &block)
     end
 
     private
@@ -144,7 +144,7 @@ module Stamps
         SdcEnv.i_device_name ||= i_device_selection(ENV['IDEVICENAME'])
         SdcEnv.verbose ||= ENV['VERBOSE'].nil? ? false : ENV['VERBOSE'].downcase == 'true'
         SdcEnv.hostname ||= Socket.gethostname
-        SdcEnv.web_app ||= sdc_app(ENV['SDC_APP'])
+        SdcEnv.web_app ||= ENV['SDC_APP'].nil? ? ENV['SDC_APP'] : ENV['SDC_APP'].downcase.to_sym
         SdcEnv.health_check ||= ENV['HEALTHCHECK'].nil? ? false : ENV['HEALTHCHECK'].casecmp('true') == 0
         SdcEnv.usr ||= ENV['USR']
         SdcEnv.pw ||= ENV['PW']
@@ -208,60 +208,48 @@ module Stamps
       private
 
       def i_device_selection(str)
-        if str.nil?
-          return str
-        elsif SdcEnv::IDEVICES.include?((device = str.downcase.delete(' ').to_sym))
-          return device
-        else
-          # ignore
-        end
-
-        raise ArgumentError, "Invalid IDEVICENAME: #{str}. Valid options are #{SdcEnv::IDEVICES.inspect}"
+        return str.downcase.delete(' ').to_sym if str
+        str
       end
 
       def browser_selection(str)
-        return str if str.nil?
-        case str.downcase
-          when /ff|firefox|mozilla/
-            return :firefox
-          when /chromeb|gcb|googleb/
-            return :chromeb
-          when /chrome|gc|google/
-            return :chrome
-          when /ms|me|microsoft|edge/
-            return :edge
-          when /apple|osx|safari|mac/
-            return :safari
-          else
-            # ignore
+        if str
+          case str.downcase
+            when /ff|firefox|mozilla/
+              return :firefox
+            when /chromeb|gcb|googleb/
+              return :chromeb
+            when /chrome|gc|google/
+              return :chrome
+            when /ms|me|microsoft|edge/
+              return :edge
+            when /apple|osx|safari|mac/
+              return :safari
+            else
+              return str.downcase.to_sym
+          end
         end
-
-        raise ArgumentError, "BROWSER=#{str}. Valid BROWSER: ff|firefox|mozilla|chromeb|gcb|googleb|chrome|gc|google|ms|me|microsoft|edge|apple|osx|safari|mac"
-      end
-
-      def sdc_app(str)
-        return str.downcase.to_sym if !str.nil? && SdcEnv::SDC_APP.include?(str.downcase.to_sym)
-        raise ArgumentError, "SDC_APP is not defined or invalid. Expected values are #{SdcEnv::SDC_APP} - Got: #{str}"
+        str
       end
 
       def test_env(str)
-        if str.nil? || !SdcEnv::TEST_ENVIRONMENTS.include?(str.downcase.to_sym)
-          raise ArgumentError, "URL=#{str} is invalid. Expected values are #{SdcEnv::TEST_ENVIRONMENTS}"
+        if str
+          case(str.downcase)
+            when /staging/
+              return :stg
+            when /stg/
+              return :stg
+            when /cc/
+              return :qacc
+            when /sc/
+              return :qasc
+            when /rat/
+              return :rating
+            else
+              return str.downcase.to_sym
+          end
         end
-        case(str.downcase)
-          when /staging/
-            return :stg
-          when /stg/
-            return :stg
-          when /cc/
-            return :qacc
-          when /sc/
-            return :qasc
-          when /rat/
-            return :rating
-          else
-            # ignore
-        end
+        str
       end
 
       def browser_version(str)
