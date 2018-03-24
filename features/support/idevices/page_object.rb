@@ -54,20 +54,19 @@ module Stamps
       def visit(*args)
         new.tap do |page|
           page.goto(*args)
-          exception = Selenium::WebDriver::Error::WebDriverError
-          message = "Expected to be on #{page.class}, but conditions not met"
           if page.page_verifiable?
             begin
               page.wait_until(&:on_page?)
             rescue Watir::Wait::TimeoutError
-              raise exception, message
+              raise Selenium::WebDriver::Error::WebDriverError,
+                    "Expected to be on #{page.class}, but something went wrong. Check your test."
             end
           end
         end
       end
 
-      def browser=(browser_input)
-        @@browser = browser_input
+      def browser=(browser)
+        @@browser = browser
       end
 
       def browser
@@ -78,8 +77,8 @@ module Stamps
 
     attr_reader :browser
 
-    def initialize(browser_input = @@browser)
-      @browser = browser_input
+    def initialize(browser = @@browser)
+      @browser = browser
     end
 
     def inspect
