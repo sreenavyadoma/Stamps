@@ -90,24 +90,6 @@ module Stamps
           self.instance_exec(*args, &block)
         end
 
-        define_method("#{name}=") do |val|
-          watir_element = self.instance_exec &block
-          case watir_element
-            when Watir::Radio
-              watir_element.set if val
-            when Watir::CheckBox
-              val ? watir_element.set : watir_element.clear
-            when Watir::Select
-              watir_element.select val
-            when Watir::Button
-              watir_element.click
-            when Watir::TextField, Watir::TextArea
-              watir_element.set val if val
-            else
-              watir_element.click if val
-          end
-        end
-
         element_list << name.to_sym
         required_element_list << name.to_sym if required
       end

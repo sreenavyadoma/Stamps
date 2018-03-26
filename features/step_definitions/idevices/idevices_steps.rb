@@ -31,6 +31,9 @@ Then /^navigates to a simple url$/ do
   MyOrders.browser = SdcTest.driver
   MyOrders.visit
 
+  Orders.visit
+  Orders.order_details.service.select "FCM"
+
   #browser.span(:id, 'checkbox-1026-displayEl')
   #browser.div(css: '[class*=remember-username-checkbox]')
   #'class'
