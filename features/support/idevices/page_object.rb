@@ -1,5 +1,47 @@
 module Stamps
 
+  class SdcCheckbox
+
+    attr_accessor :checkbox, :check_verify, :attribute, :attribute_value
+
+    def initialize(checkbox, check_verify, attribute, attribute_value)
+      set_instance_variables(binding, *local_variables)
+    end
+
+    def present?
+      checkbox.present?
+    end
+
+    def checked?
+      begin
+        result = check_verify.attribute_value(attribute)
+        return result.casecmp('true') == 0 if result.casecmp('true') == 0 || result .casecmp('false') == 0
+        return result.include?(attribute_value)
+      rescue
+        # ignore
+      end
+      false
+    end
+
+    def check
+      5.times do
+        break if checked?
+        checkbox.click
+      end
+      checked?
+    end
+
+    def uncheck
+      if checked?
+        5.times do
+          checkbox.click
+          break unless checked?
+        end
+      end
+      checked?
+    end
+  end
+
   class PageObject
     include Watir::Waitable
 
@@ -46,6 +88,24 @@ module Stamps
       def element(name, required: false, &block)
         define_method(name) do |*args|
           self.instance_exec(*args, &block)
+        end
+
+        define_method("#{name}=") do |val|
+          watir_element = self.instance_exec &block
+          case watir_element
+            when Watir::Radio
+              watir_element.set if val
+            when Watir::CheckBox
+              val ? watir_element.set : watir_element.clear
+            when Watir::Select
+              watir_element.select val
+            when Watir::Button
+              watir_element.click
+            when Watir::TextField, Watir::TextArea
+              watir_element.set val if val
+            else
+              watir_element.click if val
+          end
         end
 
         element_list << name.to_sym
@@ -194,8 +254,9 @@ module Stamps
   class MyOrders < PageObject
     element(:ns_serial_number) { SdcElement.new(browser.text_field(name: 'NsSerial')) }
     element(:ns_from_zip) { SdcElement.new(browser.text_field(name: 'unauthFromZip')) }
+    element(:remember_me, required: true) { SdcCheckbox.new(browser.span(:id, 'checkbox-1026-displayEl'), browser.div(css: '[class*=remember-username-checkbox]'), 'class', 'checked') }
 
-    page_url(required: true) { "https://print.stamps.com/Webpostage/default2.aspx?" }
+    page_url(required: true) { "https://print.stamps.com/webpostage/default2.aspx" }
   end
 
 

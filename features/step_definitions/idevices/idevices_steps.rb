@@ -30,9 +30,18 @@ end
 Then /^navigates to a simple url$/ do
   MyOrders.browser = SdcTest.driver
   MyOrders.visit
+
+  #browser.span(:id, 'checkbox-1026-displayEl')
+  #browser.div(css: '[class*=remember-username-checkbox]')
+  #'class'
+  #'checked'
+
   orders = MyOrders.new
   orders.ns_serial_number.set 'S12345'
   orders.ns_from_zip.set '90502'
+  orders.remember_me.check
+  orders.remember_me.checked?
+  orders.remember_me.uncheck
 
 
 

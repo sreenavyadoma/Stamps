@@ -235,8 +235,6 @@ module Stamps
       def test_env(str)
         if str
           case(str.downcase)
-            when /staging/
-              return :stg
             when /stg/
               return :stg
             when /cc/
@@ -292,34 +290,3 @@ module Stamps
 
   end
 end
-
-=begin
-
-
-          log.info "Browser Selection: #{driver}"
-
-              #driver = Watir::Browser.new :safari                                         #todo Alex uncomment once framework upgraded to Watir 6.10.2
-              #versions(driver.execute_script("return navigator.userAgent;"))
-              #driver.window.maximize #todo-Rob move elsewhere
-
-
-          #log.info "-"
-          #log.info "BROWSER: #{self.browser_version.to_s.gsub("/", " ")}"
-          #log.info "OS: #{self.os_version.to_s.gsub("/", " ")}" if self.os_version
-          #log.info "-"
-
-
-              #@driver.window.maximize
-              #self.browser_version = /Edge\/.+/.match(driver.execute_script("return navigator.userAgent;"))
-
-
-#stdout, status = Open3.capture3("killall Safari")
-
-              #versions(driver.execute_script("return navigator.userAgent;"))
-              #versions(@driver.execute_script("return navigator.userAgent;"))
-
-
-
-
-
-=end
