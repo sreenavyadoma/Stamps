@@ -28,6 +28,7 @@ Then /^click Print Sample button$/ do
 end
 
 Then /^navigates to a simple url$/ do
+
   MyOrders.browser = SdcTest.driver
   MyOrders.visit
 

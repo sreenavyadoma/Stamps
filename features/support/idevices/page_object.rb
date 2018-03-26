@@ -1,47 +1,5 @@
 module Stamps
 
-  class SdcCheckbox
-
-    attr_accessor :checkbox, :check_verify, :attribute, :attribute_value
-
-    def initialize(checkbox, check_verify, attribute, attribute_value)
-      set_instance_variables(binding, *local_variables)
-    end
-
-    def present?
-      checkbox.present?
-    end
-
-    def checked?
-      begin
-        result = check_verify.attribute_value(attribute)
-        return result.casecmp('true') == 0 if result.casecmp('true') == 0 || result .casecmp('false') == 0
-        return result.include?(attribute_value)
-      rescue
-        # ignore
-      end
-      false
-    end
-
-    def check
-      5.times do
-        break if checked?
-        checkbox.click
-      end
-      checked?
-    end
-
-    def uncheck
-      if checked?
-        5.times do
-          checkbox.click
-          break unless checked?
-        end
-      end
-      checked?
-    end
-  end
-
   class PageObject
     include Watir::Waitable
 
@@ -231,12 +189,71 @@ module Stamps
     end
   end
 
+  class SdcChooser
 
+    attr_accessor :element, :verify, :attribute, :attribute_value
+
+    def initialize(element, verify, attribute, attribute_value)
+      set_instance_variables(binding, *local_variables)
+    end
+
+    def present?
+      element.present?
+    end
+
+    def chosen?
+      result = verify.attribute_value(attribute)
+      return result.casecmp('true') == 0 if result.casecmp('true') == 0 || result .casecmp('false') == 0
+      result.include?(attribute_value)
+    end
+    alias_method :checked?, :chosen?
+    alias_method :selected?, :chosen?
+
+    def choose(persist = 2)
+      persist.times do element.click; break if chosen? end
+      chosen?
+    end
+    alias_method :check, :choose
+    alias_method :select, :choose
+
+    def unchoose(persist = 2)
+      persist.times do break unless chosen?; element.click end
+      chosen?
+    end
+    alias_method :uncheck, :unchoose
+    alias_method :unselect, :unchoose
+
+    def method_missing(method, *args, &block)
+      super unless element.respond_to?(method)
+      element.send(method, *args, &block)
+    end
+  end
+
+  class OrdersLandingPage < PageObject
+    element(:username, required: true) { SdcElement.new(browser.text_field(name: 'NsSerial')) }
+    element(:password, required: true) { SdcElement.new(browser.text_field(name: 'unauthFromZip')) }
+    element(:sign_in, required: true) { SdcElement.new(browser.text_field(name: 'NsSerial')) }
+    element(:remember_me) { SdcChooser.new(
+        browser.span(:id, 'checkbox-1026-displayEl'),
+        browser.div(css: '[class*=remember-username-checkbox]'),
+        'class', 'checked') }
+
+    page_url(required: true) { "https://print.stamps.com/webpostage/default2.aspx" }
+
+    def sign_in_with(usr, pwd)
+      username.set usr
+      password.set pwd
+      sign_in.click
+    end
+  end
 
   class MyOrders < PageObject
     element(:ns_serial_number) { SdcElement.new(browser.text_field(name: 'NsSerial')) }
     element(:ns_from_zip) { SdcElement.new(browser.text_field(name: 'unauthFromZip')) }
-    element(:remember_me, required: true) { SdcCheckbox.new(browser.span(:id, 'checkbox-1026-displayEl'), browser.div(css: '[class*=remember-username-checkbox]'), 'class', 'checked') }
+    element(:remember_me, required: true) { SdcChooser.new(
+        browser.span(:id, 'checkbox-1026-displayEl'),
+        browser.div(css: '[class*=remember-username-checkbox]'),
+        'class', 'checked') }
 
     page_url(required: true) { "https://print.stamps.com/webpostage/default2.aspx" }
   end
