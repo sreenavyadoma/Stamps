@@ -162,8 +162,47 @@ module Stamps
       @element = element
     end
 
-    def present?
-      @element.present? && @element.exist?
+    def disabled?
+      begin
+        return field.disabled?
+      rescue
+        # ignore
+      end
+      true
+    end
+
+    def enabled?
+      begin
+        return @element.enabled?
+      rescue
+        # ignore
+      end
+      false
+    end
+
+    def visible?
+      begin
+        return @element.visible?
+      rescue
+        # ignore
+      end
+      false
+    end
+
+    def truthy?
+      !@element.nil? && @element.exist?
+    end
+
+    def clickable?
+      truthy? && @element.present? && @element.enabled?
+    end
+
+    def hover
+      begin
+        @element.hover if @element.present?
+      rescue
+        # ignore
+      end
     end
 
     def text_value
@@ -194,10 +233,6 @@ module Stamps
 
     def initialize(element, verify, attribute, attribute_value)
       set_instance_variables(binding, *local_variables)
-    end
-
-    def present?
-      element.present?
     end
 
     def chosen?

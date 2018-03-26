@@ -4,7 +4,8 @@ Feature: IDevice Tests
 
   @iphonex
   Scenario: Mail Authentication Test
-    Then visit Orders sign-in page
+    Then visit Sdc Website
+    Then sign-in to SDC Website
 
 
 #    Then load mail sign-in page

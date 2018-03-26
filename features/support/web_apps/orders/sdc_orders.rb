@@ -1,17 +1,26 @@
 module Stamps
   module Orders
     class LandingPage < PageObject
-      element(:username, required: true) { SdcElement.new(browser.text_field(name: 'NsSerial')) }
-      element(:password, required: true) { SdcElement.new(browser.text_field(name: 'unauthFromZip')) }
-      element(:sign_in, required: true) { SdcElement.new(browser.text_field(name: 'NsSerial')) }
-      element(:remember_me) { SdcChooser.new(SdcElement.new(browser.span(:id, 'checkbox-1026-displayEl')), SdcElement.new(browser.div(css: '[class*=remember-username-checkbox]')), 'class', 'checked') }
+      element(:username, required: true) { SdcElement.new(browser.text_field(css: '[placeholder=USERNAME]')) }
+      element(:password, required: true) { SdcElement.new(browser.text_field(css: '[placeholder=PASSWORD]')) }
+      element(:sign_in, required: true) { SdcElement.new(browser.span(text: 'Sign In')) }
+      element(:loading_orders) { SdcElement.new(browser.div(text: 'Loading orders...')) }
+      element(:remember_me) { SdcChooser.new(SdcElement.new(browser.span(:id, '[class*=remember-username-checkbox]')),
+                                             SdcElement.new(browser.div(css: '[class*=remember-username-checkbox] [id$=-displayEl]')),
+                                             'class', 'checked') }
 
       page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Orders&" }
+
+      def present?
+        username.present? && password.present? && sign_in.present? && remember_me.present?
+      end
 
       def sign_in_with(usr, pwd)
         username.set usr
         password.set pwd
         sign_in.click
+        username.wait_while_present(timeout: 10)
+        loading_orders.wait_while_present(timeout: 10)
       end
     end
 
@@ -32,7 +41,7 @@ module Stamps
                 Orders::LandingPage.visit('ext.qacc')
               when :qasc
                 Orders::LandingPage.visit('ext.qasc')
-              when :stg
+               when :stg
                 Orders::LandingPage.visit('.testing')
             end
           when :mail
