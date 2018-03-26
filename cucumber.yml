@@ -13,7 +13,7 @@ rob_mail_stg: --tags @mail_bvt_international SDC_APP=mail JENKINS=true USR=defau
 rob_mail_sc: --tags @print_dialog_ship_date SDC_APP=mail JENKINS=true USR=default PW=pass111 URL=sc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 rob_registration: --tags @registration_normal_workflow SDC_APP=registration URL=cc --guess VERBOSE=true HEALTHCHECK=false BROWSER=chrome MAX_WINDOW=false JENKINS=true
 
-browser_test:  --tags @browser_test BROWSER=gc VERBOSE=true URL=cc
+browser_test:  --tags @iphonex BROWSER=ff VERBOSE=true URL=cc SDC_APP=orders
 
 iphonex: --tags @iphonex --guess IDEVICENAME='iphone x' VERBOSE=false JENKINS=true HEALTHCHECK=true SDC_APP=mail URL=cc
 

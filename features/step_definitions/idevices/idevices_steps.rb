@@ -62,7 +62,16 @@ Then /^navigates to a dynamic url$/ do
 
   TestPage2.visit('forms_with_input_elements.html')
   expect(TestPage2.browser.title).to eql 'Forms with input elements'
+
+
+
 end
+# ext.qacc
+# ext.qasc
+# .testing
+#
+# webpostage/default2.aspx
+# orders
 
 Then /^enters text into a textfield based on value it is set equal to$/ do
   var = TestPage.new

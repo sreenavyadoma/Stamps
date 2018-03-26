@@ -8,6 +8,14 @@ Given /^(?:|(?:|[Aa] )(?:[Vv]alid |))[Uu]ser is signed in to Web Apps$/ do
   step "Navigation Bar: Customer Balance"
 end
 
+Then /^visit Orders sign-in page$/ do
+  SdcWebsite.visit
+end
+
+Given /^[Ll]oad [Ww]eb [Aa]pps [Ss]ign-in page$/ do
+  stamps.orders.landing_page.load_sign_in_page
+end
+
 Then /^[Ll]oad [Ww]eb [Aa]pps [Oo]rders (?:and|then) sign-in$/ do
   step "load Web Apps Sign-in page"
   step "sign-in to Web Apps as #{TestData.store[:username]}, #{TestData.store[:password]}"
@@ -68,22 +76,11 @@ Then /^[Ll]oad [Ww]eb [Aa]pps [Mm]ail (?:and|then) sign-in$/ do
   step "sign-in to Web Apps as #{SdcEnv.usr}, #{SdcEnv.pw}"
 end
 
-Given /^[Ll]oad [Ww]eb [Aa]pps [Ss]ign-in page$/ do
-  stamps.orders.landing_page.load_sign_in_page
-end
-
 Given /^[Ss]ign-in to [Ww]eb [Aa]pps as (.*), (.*)$/ do |username, password|
-  # MySql
-  begin
-    if username.nil? || username.downcase == 'default' || username.downcase == 'mysql'
-      credentials = user_credentials.fetch(SdcTest.scenario.tags[0].name)
-      TestData.store[:username] = username = credentials[:username]
-      TestData.store[:password] = password = credentials[:password]
-    end
-  rescue Exception => e
-    SdcTest.log.error e.message
-    SdcTest.log.error e.backtrace.join("\n")
-    raise e
+  if username.nil? || username.downcase == 'default' || username.downcase == 'mysql'
+    credentials = user_credentials.fetch(SdcTest.scenario.tags[0].name)
+    TestData.store[:username] = username = credentials[:username]
+    TestData.store[:password] = password = credentials[:password]
   end
   expect(TestData.store[:username] = username).to be_truthy
   expect(TestData.store[:password] = password).to be_truthy

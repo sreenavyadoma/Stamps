@@ -1,5 +1,6 @@
 module Stamps
   module Orders
+=begin
     class LandingPage < Core::PageObject
       class << self
         attr_reader :username_loc, :password_loc, :sign_in_loc
@@ -212,5 +213,6 @@ module Stamps
         expect(security_questions).to be_present, ''
       end
     end
+=end
   end
 end

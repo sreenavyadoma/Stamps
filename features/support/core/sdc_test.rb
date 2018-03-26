@@ -95,7 +95,6 @@ module Stamps
                 end
                 @driver = SdcDriver.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
                 @driver.window.maximize
-              #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
 
             when :chromeb
               begin
@@ -126,6 +125,7 @@ module Stamps
               else
                 raise ArgumentError, "#{test_driver} is not a valid browser."
             end
+            SdcWebsite.browser = @driver
           rescue Exception => e
             log.error e.message
             log.error e.backtrace.join("\n")
@@ -290,3 +290,4 @@ module Stamps
 
   end
 end
+#switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']

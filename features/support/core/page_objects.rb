@@ -8,6 +8,7 @@ module Stamps
       end
     end
 
+=begin
     class PageObject
       def initialize(driver)
         @driver = driver
@@ -22,6 +23,7 @@ module Stamps
       protected
       attr_reader :driver, :locators
     end
+=end
   end
 
 end
