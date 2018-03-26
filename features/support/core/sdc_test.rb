@@ -7,7 +7,7 @@ module Stamps
     IDEVICES = %i(iphone6 iphone7 iphone8 iphonex android).freeze
 
     class << self #todo-Rob refactor PrintMedia
-      attr_accessor :web_app, :env, :health_check, :usr, :pw, :url, :verbose,  :printer, :browser, :hostname,
+      attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose, :printer, :browser, :hostname,
                     :print_media, :i_device_name, :firefox_profile
     end
   end
@@ -144,7 +144,7 @@ module Stamps
         SdcEnv.i_device_name ||= i_device_selection(ENV['IDEVICENAME'])
         SdcEnv.verbose ||= ENV['VERBOSE'].nil? ? false : ENV['VERBOSE'].downcase == 'true'
         SdcEnv.hostname ||= Socket.gethostname
-        SdcEnv.web_app ||= ENV['SDC_APP'].nil? ? ENV['SDC_APP'] : ENV['SDC_APP'].downcase.to_sym
+        SdcEnv.sdc_app ||= ENV['WEB_APP'].nil? ? ENV['WEB_APP'] : ENV['WEB_APP'].downcase.to_sym
         SdcEnv.health_check ||= ENV['HEALTHCHECK'].nil? ? false : ENV['HEALTHCHECK'].casecmp('true') == 0
         SdcEnv.usr ||= ENV['USR']
         SdcEnv.pw ||= ENV['PW']
@@ -165,7 +165,7 @@ module Stamps
         @web_apps_param.usr = SdcEnv.usr
         @web_apps_param.pw = SdcEnv.pw
         @web_apps_param.printer = SdcEnv.printer
-        @web_apps_param.web_app = SdcEnv.web_app
+        @web_apps_param.sdc_app = SdcEnv.sdc_app
         print_test_steps
       end
 
@@ -188,6 +188,7 @@ module Stamps
       end
 
       def teardown
+        print_test_steps
         begin
           driver.quit
         rescue

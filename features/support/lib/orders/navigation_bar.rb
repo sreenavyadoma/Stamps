@@ -69,12 +69,12 @@ module Stamps
       end
 
       def textarea
-        if param.web_app == :orders
+        if param.sdc_app == :orders
           div = driver.div(class: 'sdc-dialoguemodal-confirm-purchase')
-        elsif param.web_app == :mail
+        elsif param.sdc_app == :mail
           div = driver.divs(css: "div[id^=dialoguemodal-][id$=-innerCt]").last
         else
-          expect("Purchase Button failure. #{param.web_app} is not a valid value for param.web_app, check your test.").to eql "Invalid Value"
+          expect("Purchase Button failure. #{param.sdc_app} is not a valid value for param.web_app, check your test.").to eql "Invalid Value"
         end
         StampsField.new div
       end
@@ -194,7 +194,7 @@ module Stamps
       end
 
       def buy_10
-        param.web_app.should_not be nil
+        param.sdc_app.should_not be nil
         checkbox_element = driver.label(css: "label[for=sdc-purchasewin-10dradio][id$=boxLabelEl]")
         verify_element = checkbox_element.parent.parent.parent
         attribute = "class"

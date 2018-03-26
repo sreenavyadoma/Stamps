@@ -20,7 +20,7 @@ module Stamps
           @store[:ord_id_ctr] = 0
           @store[:username] = ENV['USR']
           @store[:password] = ENV['PW']
-          @store[:web_app] = ENV['WEB_APP']
+          @store[:sdc_app] = ENV['WEB_APP']
           @store[:url] = ENV['URL']
           @store[:test] = ENV['USER_CREDENTIALS']
         end

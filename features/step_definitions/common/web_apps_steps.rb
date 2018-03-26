@@ -18,7 +18,7 @@ Then /^[Ss]ign-in to SDC Website$/ do
   SdcWebsite.orders.landing_page.sign_in_with(TestData.store[:username], TestData.store[:password])
   SdcTest.log.info "logged in"
   #expect(stamps.orders.landing_page.orders_sign_in(TestData.store[:username], TestData.store[:password])).to eql(TestData.store[:username]) if SdcEnv.web_app == :orders
-  expect(stamps.mail.sign_in_modal.mail_sign_in(TestData.store[:username], TestData.store[:password])).to eql(TestData.store[:username]) if SdcEnv.web_app == :mail
+  expect(stamps.mail.sign_in_modal.mail_sign_in(TestData.store[:username], TestData.store[:password])).to eql(TestData.store[:username]) if SdcEnv.sdc_app == :mail
 end
 
 Given /^(?:|(?:|[Aa] )(?:[Vv]alid |))[Uu]ser is signed in to Web Apps$/ do
@@ -102,8 +102,8 @@ Then /^[Ss]ign-in to [Ww]eb [Aa]pps as (.*), (.*)$/ do |username, password|
   end
   expect(TestData.store[:username] = username).to be_truthy
   expect(TestData.store[:password] = password).to be_truthy
-  expect(stamps.orders.landing_page.orders_sign_in(username, password)).to eql(username) if SdcEnv.web_app == :orders
-  expect(stamps.mail.sign_in_modal.mail_sign_in(username, password)).to eql(username) if SdcEnv.web_app == :mail
+  expect(stamps.orders.landing_page.orders_sign_in(username, password)).to eql(username) if SdcEnv.sdc_app == :orders
+  expect(stamps.mail.sign_in_modal.mail_sign_in(username, password)).to eql(username) if SdcEnv.sdc_app == :mail
 end
 
 Then /^[Ss]ign out$/ do

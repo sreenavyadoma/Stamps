@@ -16,10 +16,10 @@ Before do  |scenario|
 end
 
 After do |scenario|
-  SdcTest.print_test_steps
   SdcTest.teardown
   @stamps = nil #TODO-Rob this needs to exist in StampsTest
   @health = nil
+  user_credentials.close
   SdcTest.log.error "#{scenario.feature} #{scenario.name}:\n#{scenario.exception.message}" if scenario.failed?
 end
 

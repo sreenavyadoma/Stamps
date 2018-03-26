@@ -28,10 +28,10 @@ module Stamps
     end
 
     def random_credentials(test_tag)
-      result = db_connection.query("select * from user_credentials where test_env='#{SdcEnv.env}' and user_status='Active' and test_tag='#{test_tag}' and in_use=0")
-      expect(result.size).to be > 0, "No user found in MySQL DB for test tag #{cuke_tag} (#{test_scenario}) in #{SdcEnv.env.to_s.upcase}. Try again later or add more users to the database."
-      rand_num = rand(result.size)
-      result.each_with_index do |row, index|
+      results = db_connection.query("select * from user_credentials where test_env='#{SdcEnv.env.to_s}' and user_status='Active' and test_tag='#{test_tag}' and in_use=0")
+      expect(results.size).to be > 0, "No user found in MySQL DB for test tag #{cuke_tag} (#{test_scenario}) in #{SdcEnv.env.to_s.upcase}. Try again later or add more users to the database."
+      rand_num = rand(results.size)
+      results.each_with_index do |row, index|
         if rand_num == index
           user_credentials[:username] = row['username']
           user_credentials[:password] = row['password']

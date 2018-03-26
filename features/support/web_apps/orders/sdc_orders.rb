@@ -34,7 +34,7 @@ module Stamps
   class SdcWebsite < PageObject
     class << self
       def visit
-        case SdcEnv.web_app
+        case SdcEnv.sdc_app
           when :orders
             case SdcEnv.env
               when :qacc
@@ -45,7 +45,9 @@ module Stamps
                 Orders::LandingPage.visit('.testing')
             end
           when :mail
-
+            raise "Mail not implemented!"
+          else
+            raise ArgumentError, "SDC Website not defined."
         end
 
       end

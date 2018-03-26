@@ -90,13 +90,13 @@ module Stamps
         def load_sign_in_page
           url = case param.env
                   when :qacc
-                    "http://printext.qacc.stamps.com/#{(param.web_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
+                    "http://printext.qacc.stamps.com/#{(param.sdc_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
                   when :qasc
-                    "http://printext.qasc.stamps.com/#{(param.web_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
+                    "http://printext.qasc.stamps.com/#{(param.sdc_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
                   when :stg
-                    "https://print.testing.stamps.com/#{(param.web_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
+                    "https://print.testing.stamps.com/#{(param.sdc_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
                   when :rating
-                    "http://printext.qacc.stamps.com/#{(param.web_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
+                    "http://printext.qacc.stamps.com/#{(param.sdc_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
                   else
                     raise ArgumentError, "Don't know what to do with #{param.env}. URL might not be set?"
                 end
@@ -110,7 +110,7 @@ module Stamps
             raise "Server Error:\n #{driver.text}"
           end
 
-          case param.web_app
+          case param.sdc_app
             when :orders
               expect(driver.url).to include 'Orders'
             when :mail

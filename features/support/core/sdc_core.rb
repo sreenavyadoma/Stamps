@@ -82,26 +82,6 @@ module Stamps
       @browser = browser
     end
 
-    def submit_form(model)
-      fill_form(model)
-      submit.click
-    end
-
-    def fill_form(model)
-      intersect = case model
-                    when OpenStruct
-                      self.class.element_list & model.to_h.keys
-                    when Hash
-                      self.class.element_list & model.keys
-                    else
-                      model = model_to_hash(model)
-                      self.class.element_list & model.keys.reject { |el| model[el].nil? }
-                  end
-      intersect.each do |val|
-        self.send("#{val}=", model[val])
-      end
-    end
-
     def inspect
       '#<%s url=%s title=%s>' % [self.class, url.inspect, title.inspect]
     end
