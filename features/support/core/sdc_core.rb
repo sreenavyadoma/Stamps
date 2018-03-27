@@ -144,7 +144,7 @@ module Stamps
 
     def disabled?
       begin
-        return field.disabled?
+        return @element.send(:disabled?)
       rescue
         # ignore
       end
@@ -153,7 +153,7 @@ module Stamps
 
     def enabled?
       begin
-        return @element.enabled?
+        return @element.send(:enabled?)
       rescue
         # ignore
       end
@@ -162,7 +162,7 @@ module Stamps
 
     def visible?
       begin
-        return @element.visible?
+        return @element.send(:visible?)
       rescue
         # ignore
       end
@@ -170,7 +170,7 @@ module Stamps
     end
 
     def truthy?
-      !@element.nil? && @element.exist?
+      !@element.nil? && @element.send(:exist?)
     end
 
     def clickable?
@@ -179,7 +179,15 @@ module Stamps
 
     def hover
       begin
-        @element.hover if @element.present?
+        @element.send(:hover) if @element.present?
+      rescue
+        # ignore
+      end
+    end
+
+    def safe_wait_while_present(*args)
+      begin
+        @element.send(:wait_while_present, *args)
       rescue
         # ignore
       end
@@ -187,13 +195,13 @@ module Stamps
 
     def text_value
       begin
-        return @element.text if @element.text.size > 0
+        return @element.send(:text) if @element.send(:text).size > 0
       rescue
         # ignore
       end
 
       begin
-        return @element.value if @element.value.size > 0
+        return @element.send(:value) if @element.send(:value).size > 0
       rescue
         # ignore
       end

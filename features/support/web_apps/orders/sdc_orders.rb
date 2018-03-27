@@ -15,10 +15,10 @@ module Stamps
         username.present? && password.present? && sign_in.present? && remember_me.present?
       end
 
-      def sign_in_with(usr, pwd)
+      def sign_in_with(usr, pwd, persist = 4)
         username.set usr
         password.set pwd
-        sign_in.click
+        persist.times { sign_in.click; sign_in.send_keys :enter }
         username.wait_while_present(timeout: 10)
         loading_orders.wait_while_present(timeout: 10)
       end
@@ -41,8 +41,12 @@ module Stamps
                 Orders::LandingPage.visit('ext.qacc')
               when :qasc
                 Orders::LandingPage.visit('ext.qasc')
-               when :stg
+              when :stg
                 Orders::LandingPage.visit('.testing')
+              when :prod
+
+              else
+                # ignore
             end
           when :mail
             raise "Mail not implemented!"
@@ -62,11 +66,3 @@ module Stamps
     end
   end
 end
-
-# ext.qacc
-# ext.qasc
-# .testing
-#
-# webpostage/default2.aspx
-# orders
-#

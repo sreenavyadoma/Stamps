@@ -1,13 +1,13 @@
-default: --backtrace --profile browser_test
+default: --backtrace --profile rob_cc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
 #todo-Rob set PRINTER=factory as default automation printer
 #robcm=ccpryiihrjz ccfb311osps4x print_dialog_ship_date
-rob_cc: --tags @bvt_shipping_address_management WEB_APP=orders BROWSER=gc JENKINS=true URL=cc VERBOSE=true HEALTHCHECK=true MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory
+rob_cc: --tags @bvt_shipping_address_management WEB_APP=orders BROWSER=ff JENKINS=true URL=cc VERBOSE=true HEALTHCHECK=true MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory
 rob_stg: --tags @bvt_international_shipping WEB_APP=orders JENKINS=true URL=stg VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=default PW=pass111 PRINTER=factory #stgee1mtqvwdc0
 rob_sc: --tags @bvt_shipstation_updates_domestic WEB_APP=orders JENKINS=true URL=sc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=selenium  USR=scsejsglwa PW=pass111 VERBOSE=true PRINTER=factory # c2jinmzmu64 schl0vlbfy2673 #19  schl0vlbfy2673
-rob_dev: --tags @mail_advanced_options_stamps WEB_APP=orders JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess VERBOSE=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
+rob_dev: --tags @mail_advanced_options_stamps WEB_APP=orders JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 rob_mail_cc:  --tags @mail_bvt_international WEB_APP=mail JENKINS=true USR=cctruer0u PW=pass111 URL=cc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory #\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
 rob_mail_stg: --tags @mail_bvt_international WEB_APP=mail JENKINS=true USR=default PW=pass111 URL=stg --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory #stgee1mtqvwdc0
 rob_mail_sc: --tags @print_dialog_ship_date WEB_APP=mail JENKINS=true USR=default PW=pass111 URL=sc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
@@ -25,11 +25,11 @@ mhossain1_cc: --tags @registration_ui_validation_profile_page JENKINS=true URL=c
 mobile_orders_smoke_test: --tags @mobile_orders_smoke_test --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 mobile_mail_smoke_test: --tags @mobile_mail_smoke_test --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
-web_apps_dev: --tags @bvt_new_order WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess VERBOSE=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
+web_apps_dev: --tags @bvt_new_order WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess VERBOSE=false HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 
 eli_dev: --tags @bvt_shipstation_search --guess VERBOSE=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff USR=hal9000stage25 PW=password1 PRINTER=Automation Printer
-ray_dev: --tags @rates_parcel_select_ground --guess VERBOSE=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=gc USR=default PW=pass111
-sap:              --tags @registration_orders WEB_APP=registration URL=cc --guess VERBOSE=false BROWSER=gc MAX_WINDOW=false
+ray_dev: --tags @rates_parcel_select_ground --guess VERBOSE=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff USR=default PW=pass111
+sap:              --tags @registration_orders WEB_APP=registration URL=cc --guess VERBOSE=false BROWSER=ff MAX_WINDOW=false
 
 alex_mail:  --tags @mail_bvt_purchasing BROWSER=gcb WEB_APP=mail JENKINS=true URL=stg USR=abqast1 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
 alex_regress:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders JENKINS=true URL=cc USR=abqacc10 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
@@ -37,7 +37,7 @@ alex_rates:  --tags @rates_parcel_select_ground_zone_1 BROWSER=ff WEB_APP=mail J
 alex_rates_pmi:  --tags @rates_pmi_comm_plus_group_9 BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast2 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
 alex_orders:  --tags @bvt_shipping_address_management BROWSER=safari WEB_APP=orders JENKINS=true URL=qacc USR=abqacc10 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false #abqast1
 alex_orders:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders JENKINS=true URL=qacc USR=abqacc10 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false #abqast1
-alex_test:  --tags @bvt_shipping_address_management BROWSER=gc WEB_APP=orders JENKINS=true URL=qacc USR=abqacc10 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
+alex_test:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders JENKINS=true URL=qacc USR=abqacc10 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
 
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
@@ -47,16 +47,16 @@ xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=tr
 
 mail_print_envelope_11: --tags @mail_print_envelope_11 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=mail PRINTER=factory
 
-poc_stg_chrome: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=gc
+poc_stg_chrome: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff
 poc_stg_firefox: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff
-poc_cc_chrome: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=cc BROWSER=gc
+poc_cc_chrome: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=cc BROWSER=ff
 poc_cc_firefox: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=cc BROWSER=ff
-poc_sc_chrome: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=sc BROWSER=gc
+poc_sc_chrome: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=sc BROWSER=ff
 poc_sc_firefox: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=sc BROWSER=ff
 poc_cc_edge: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=cc BROWSER=edge
 poc_stg_edge: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=edge
 
-jenkinsvm: --tags @healthcheck --guess VERBOSE=true JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=gc USR=ss_cctest3 PW=password1
+jenkinsvm: --tags @healthcheck --guess VERBOSE=true JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff USR=ss_cctest3 PW=password1
 
 rates_pme_comm_base_mail: --tags @rates_pme_comm_base --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
 rates_pme_comm_base: --tags @rates_pme_comm_base --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
