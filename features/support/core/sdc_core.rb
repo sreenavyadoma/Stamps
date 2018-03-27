@@ -134,7 +134,7 @@ module Stamps
 
     def disabled?
       begin
-        return @element.send(:disabled?)
+        return @element.disabled?
       rescue
         # ignore
       end
@@ -143,7 +143,7 @@ module Stamps
 
     def enabled?
       begin
-        return @element.send(:enabled?)
+        return @element.enabled?
       rescue
         # ignore
       end
@@ -152,7 +152,7 @@ module Stamps
 
     def visible?
       begin
-        return @element.send(:visible?)
+        return @element.visible?
       rescue
         # ignore
       end
@@ -160,7 +160,7 @@ module Stamps
     end
 
     def truthy?
-      !@element.nil? && @element.send(:exist?)
+      !@element.nil? && @element.exist?
     end
 
     def clickable?
@@ -169,74 +169,139 @@ module Stamps
 
     def hover
       begin
-        @element.send(:hover) if @element.present?
+        @element.hover if @element.present?
       rescue
         # ignore
       end
+
+      self
     end
 
-    def safe_click(*modifiers, count = 1)
-      count.to_i.times do
+    def safe_click(*modifiers, ctr: 1)
+      ctr.to_i.times do
         begin
-          @element.send(:click, *modifiers)
+          @element.click(*modifiers)
         rescue
           # ignore
         end
       end
+
+      self
     end
 
-    def safe_set(*args, count: 1)
-      count.to_i.times do
+    def safe_set(*args, ctr: 1)
+      ctr.to_i.times do
         begin
-          @element.send(:set, *args)
+          @element.set(*args)
         rescue
           # ignore
         end
       end
+
+      text_value
     end
 
-    def safe_send_keys(*args, count = 1)
-      count.to_i.times do
+    def safe_send_keys(*args, ctr: 1)
+      ctr.to_i.times do
         begin
-          @element.send(:send_keys, *args)
+          @element.send_keys(*args)
         rescue
           # ignore
         end
       end
+
+      text_value
     end
 
     def safe_wait_while_present(*args)
       begin
-        @element.send(:wait_while_present, *args)
+        @element.wait_while_present(*args)
       rescue
         # ignore
       end
+
+      self
     end
 
     def safe_wait_until_present(*args)
       begin
-        @element.send(:wait_until_present, *args)
+        @element.wait_until_present(*args)
       rescue
         # ignore
       end
+
+      self
     end
 
     def text_value
       begin
-        text = @element.send(:text)
+        text = @element.text
         return text if text > 0
       rescue
         # ignore
       end
 
       begin
-        value = @element.send(:value)
+        value = @element.value
         return value if value.size > 0
       rescue
         # ignore
       end
 
-      ''
+      nil
+    end
+
+    def click_while_present(*modifiers, ctr: 2, wait: 1)
+      ctr.to_i.times do
+        begin
+          break unless clickable?
+          safe_click(*modifiers)
+          safe_wait_while_present(wait)
+        rescue
+          # ignore
+        end
+      end
+
+      clickable?
+    end
+
+    def send_keys_while_present(*args, ctr: 2, wait: 1)
+      ctr.to_i.times do
+        begin
+          break unless clickable?
+          safe_send_keys(*args)
+          safe_wait_while_present(wait)
+        rescue
+          # ignore
+        end
+      end
+
+      clickable?
+    end
+
+    def safe_double_click(ctr: 1)
+      ctr.to_i.times do
+        begin
+          field.double_click if clickable?
+        rescue
+          # ignore
+        end
+      end
+
+      self
+    end
+
+    def blur_out(ctr: 1)
+      ctr.to_i.times do
+        begin
+        rescue
+          safe_double_click
+          safe_click
+          # ignore
+        end
+      end
+
+      self
     end
 
     def method_missing(method, *args, &block)
