@@ -21,7 +21,7 @@ module Stamps
       super unless driver.respond_to?(method)
       driver.send(method, *args, &block)
     end
-
+    
     private
     attr_reader :driver
   end
