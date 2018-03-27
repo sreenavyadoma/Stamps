@@ -1,5 +1,4 @@
-
-class Object
+Object.class_eval do
   def set_instance_variables(binding, *variables)
     variables.each do |var|
       instance_variable_set(:"@#{var}", eval(var.to_s, binding)) #def initialize(red=0, green=0, blue=0) set_instance_variables(binding, *local_variables) end
@@ -7,7 +6,7 @@ class Object
   end
 end
 
-class String
+String.class_eval do
   ##
   # Strips garbage proceeding service selection.
   # "PMI Flat Rate Envelope (6 - 10 Days)".parse_service_name returns 'PMI Flat Rate Envelope'
