@@ -510,7 +510,8 @@ module Stamps
           attr_reader :textbox, :dropdown
           def initialize(param)
             super(param)
-            @textbox ||= StampsTextbox.new driver.text_field(name: 'Insurance')
+            # @textbox ||= StampsTextbox.new driver.text_field(name: 'Insurance')
+            @textbox ||= StampsTextbox.new driver.input(css: 'div[id^=multiOrderDetailsForm-] div[id^=combo-][id$=triggerWrap] input')
             @dropdown ||= StampsField.new driver.div(css: 'div[id^=multiOrderDetailsForm-] div[id^=combo-][id$=trigger-picker]')
           end
 
@@ -567,7 +568,8 @@ module Stamps
           attr_reader :textbox, :dropdown
           def initialize(param)
             super(param)
-            @textbox ||= StampsTextbox.new driver.text_field(name: 'Tracking')
+            # @textbox ||= StampsTextbox.new driver.text_field(name: 'Tracking')
+            @textbox ||= StampsTextbox.new driver.input(css: 'div[id^=multiOrderDetailsForm-] input[id^=trackingdroplist-]')
             @dropdown ||= StampsField.new driver.div(css: 'div[id^=multiOrderDetailsForm-] div[id^=trackingdroplist-][id$=trigger-picker]')
           end
 
