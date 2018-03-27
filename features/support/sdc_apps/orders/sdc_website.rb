@@ -40,7 +40,6 @@ module Stamps
                                        raise "Unable to determine if this is a mobile or browser test."
                                      end
         ).new
-
       end
 
       def mail
