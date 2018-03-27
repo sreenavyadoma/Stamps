@@ -215,7 +215,7 @@ module Stamps
 
     def safe_wait_while_present(timeout: nil, interval: nil)
       begin
-        @element.wait_while_present(timeout)
+        @element.wait_while_present(timeout, interval)
       rescue
         # ignore
       end
@@ -236,7 +236,7 @@ module Stamps
     def text_value
       begin
         text = @element.text
-        return text if text > 0
+        return text if text.size > 0
       rescue
         # ignore
       end
