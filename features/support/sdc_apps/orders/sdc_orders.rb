@@ -10,6 +10,14 @@ module Stamps
                             raise "Unable to determine if this is a mobile or browser test."
                           end
       end
+
+      def order_details
+
+      end
+
+      def toolbar
+
+      end
     end
   end
 end
