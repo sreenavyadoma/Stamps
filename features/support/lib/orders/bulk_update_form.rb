@@ -544,8 +544,8 @@ module Stamps
 
           def checkbox
             @checkbox ||= StampsCheckbox.new(
-                driver.input(css: '[class*=mult] [class*=insurance-row]>div>div>div[class*=x-form-item] input[type=button]'),
-                driver.div(css: '[class*=mult] [class*=insurance-row]>div>div>div[class*=checkbox]'),
+                driver.input(css: '[class*=mult] [class*=insurance-row] div[class*=x-form-item] input[type=button]'),
+                driver.div(css: '[class*=mult] [class*=insurance-row] div[class*=checkbox]'),
                 'class',
                 'checked')
           end
@@ -619,8 +619,8 @@ module Stamps
 
           def checkbox
             cache[:checkbox].nil? || !cache[:checkbox].present? ? cache[:checkbox] = StampsCheckbox.new(
-                driver.input(css: '[class*=mult] [class*=tracking-row]>div>div>div[class*=x-form-item] input[type=button]'),
-                driver.div(css: '[class*=mult] [class*=tracking-row]>div>div>div[class*=checkbox]'),
+                driver.input(css: '[class*=mult] [class*=tracking-row] div[class*=x-form-item] input[type=button]'),
+                driver.div(css: '[class*=mult] [class*=tracking-row] div[class*=checkbox]'),
                 'class',
                 'checked') : cache[:checkbox]
           end
