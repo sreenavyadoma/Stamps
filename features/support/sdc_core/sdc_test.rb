@@ -30,7 +30,7 @@ module Stamps
     class << self
       attr_reader :driver #:core_driver,
       def configure(device_name)
-        caps = Appium.load_appium_txt file: File.expand_path("../../idevices/caps/#{device_name}.txt", __FILE__), verbose: true
+        caps = Appium.load_appium_txt file: File.expand_path("../../sdc_idevices/caps/#{device_name}.txt", __FILE__), verbose: true
         #Appium::Driver.new(caps, true)
         #Appium.promote_appium_methods Stamps
         #@core_driver = $driver
