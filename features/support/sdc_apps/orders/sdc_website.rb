@@ -32,13 +32,15 @@ module Stamps
       end
 
       def orders
-        @orders ||= if SdcEnv.browser
-                      Orders::SdcOrders.new
-                    elsif SdcEnv.i_device_name
-                      Mobile::SdcOrders.new
-                    else
-                      raise "Unable to determine if this is a mobile or browser test."
-                    end
+        @orders ||= Object.const_get(if SdcEnv.browser
+                                       "Orders::SdcOrders"
+                                     elsif SdcEnv.i_device_name
+                                       "Mobile::SdcOrders"
+                                     else
+                                       raise "Unable to determine if this is a mobile or browser test."
+                                     end
+        ).new
+
       end
 
       def mail
