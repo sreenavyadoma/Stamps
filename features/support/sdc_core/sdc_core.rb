@@ -251,12 +251,13 @@ module Stamps
       nil
     end
 
-    def click_while_present(*modifiers, ctr: 2, wait: 1)
+    def click_while_present(*modifiers, ctr: 2)
       ctr.to_i.times do
         begin
           break unless clickable?
           safe_click(*modifiers)
-          safe_wait_while_present(wait)
+          safe_wait_while_present(1)
+          break unless @element.present?
         rescue
           # ignore
         end
@@ -265,12 +266,13 @@ module Stamps
       clickable?
     end
 
-    def send_keys_while_present(*args, ctr: 2, wait: 1)
+    def send_keys_while_present(*args, ctr: 2)
       ctr.to_i.times do
         begin
           break unless clickable?
           safe_send_keys(*args)
-          safe_wait_while_present(wait)
+          safe_wait_while_present(1)
+          break unless @element.present?
         rescue
           # ignore
         end
