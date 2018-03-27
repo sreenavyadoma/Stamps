@@ -175,6 +175,31 @@ module Stamps
       end
     end
 
+    def safe_set(*args)
+      begin
+        @element.send(:set, *args)
+      rescue
+        # ignore
+      end
+    end
+    alias_method :type, :set
+
+    def safe_click(*modifiers)
+      begin
+        @element.send(:click, *modifiers)
+      rescue
+        # ignore
+      end
+    end
+
+    def safe_send_keys(*args)
+      begin
+        @element.send(:send_keys, *args)
+      rescue
+        # ignore
+      end
+    end
+
     def safe_wait_while_present(*args)
       begin
         @element.send(:wait_while_present, *args)
@@ -183,15 +208,25 @@ module Stamps
       end
     end
 
+    def safe_wait_until_present(*args)
+      begin
+        @element.send(:wait_until_present, *args)
+      rescue
+        # ignore
+      end
+    end
+
     def text_value
       begin
-        return @element.send(:text) if @element.send(:text).size > 0
+        text = @element.send(:text)
+        return text if text > 0
       rescue
         # ignore
       end
 
       begin
-        return @element.send(:value) if @element.send(:value).size > 0
+        value = @element.send(:value)
+        return value if value.size > 0
       rescue
         # ignore
       end

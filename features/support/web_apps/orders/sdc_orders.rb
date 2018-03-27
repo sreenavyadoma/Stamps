@@ -20,14 +20,15 @@ module Stamps
         password.set pwd
         persist.times do
           begin
-            sign_in.click
-            sign_in.send_keys :enter
+            sign_in.safe_click
+            sign_in.safe_send_keys :enter
           rescue
             # ignore
           end
         end
-        username.wait_while_present(timeout: 10)
-        loading_orders.wait_while_present(timeout: 10)
+        username.safe_wait_while_present(timeout: 10)
+        loading_orders.safe_wait_until_present(timeout: 5)
+        loading_orders.wait_while_present(timeout: 15)
       end
     end
 
