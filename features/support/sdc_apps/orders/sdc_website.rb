@@ -21,7 +21,7 @@ module Stamps
             when :mail
               raise "Not implemented!"
             else
-              raise ArgumentError, "Don't know how to visit app :#{SdcEnv.sdc_app}"
+              raise ArgumentError, "Undefined App :#{SdcEnv.sdc_app}"
           end
         elsif SdcEnv.i_device_name
           raise "Not Implemented"
@@ -37,7 +37,7 @@ module Stamps
                                      elsif SdcEnv.i_device_name
                                        "Mobile::SdcOrders"
                                      else
-                                       raise "Unable to determine if this is a mobile or browser test."
+                                       raise "Can not determine if mobile or browser test."
                                      end
         ).new
       end

@@ -45,7 +45,8 @@ module Stamps
         begin
           @driver.start_driver
         rescue => e
-
+          SdcLog.error e.message
+          SdcLog.error e.backtrace.join("\n")
         end
         self
       end
