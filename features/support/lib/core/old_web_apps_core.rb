@@ -6,7 +6,7 @@ module Stamps
 
     ##
     #
-    class Base < Core::Base
+    class Base < Stamps::Core::Base
       attr_reader :param, :log
       def initialize(param)
         super(param.driver)
@@ -690,27 +690,6 @@ module Stamps
       end
     end
 
-  end
-
-  ##
-  #
-  module Cache
-    class << self
-      def included(base)
-        base.extend ClassMethods
-      end
-
-      module ClassMethods
-        def assign(cache)
-          @cache = cache
-        end
-
-        def cache
-          raise(ArgumentError, "Cache not set for #{self.to_s.split('::').last}") if @cache.nil?
-          @cache
-        end
-      end
-    end
   end
 
 end

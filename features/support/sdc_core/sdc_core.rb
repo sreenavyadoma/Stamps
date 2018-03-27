@@ -1,5 +1,5 @@
 module Stamps
-  class PageObject
+  class SdcPageObject
     include Watir::Waitable
 
     class << self
@@ -294,9 +294,8 @@ module Stamps
     def blur_out(ctr: 1)
       ctr.to_i.times do
         begin
+          safe_double_click; safe_click
         rescue
-          safe_double_click
-          safe_click
           # ignore
         end
       end
@@ -343,19 +342,6 @@ module Stamps
     def method_missing(method, *args, &block)
       super unless element.respond_to?(method)
       element.send(method, *args, &block)
-    end
-  end
-
-  module Core
-    class Base
-      class << self
-        attr_accessor :driver
-      end
-      def initialize(driver)
-        self.class.driver = driver
-      end
-
-      def driver; self.class.driver; end
     end
   end
 end

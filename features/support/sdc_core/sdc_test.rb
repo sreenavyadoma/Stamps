@@ -154,7 +154,7 @@ module Stamps
         logger.outputters = Outputter.stdout
         @log = SdcLogger.new(logger, SdcEnv.verbose)
 
-        #todo-Rob These should be in an orders/mail or web_apps environment variable container. This is a temp fix.
+        #todo-Rob These should be in an orders/mail or sdc_apps environment variable container. This is a temp fix.
         SdcEnv.printer = ENV['PRINTER']
 
         @web_apps_param = Stamps::WebApps::Param.new

@@ -1,6 +1,6 @@
 module Stamps
   module Orders
-    class SdcOrders < PageObject
+    class SdcOrders < SdcPageObject
       def landing_page
         @landing_page ||= if SdcEnv.browser
                             LandingPage.new

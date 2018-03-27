@@ -1,6 +1,6 @@
 module Stamps
 
-  class MyOrders < PageObject
+  class MyOrders < SdcPageObject
     element(:ns_serial_number) { SdcElement.new(browser.text_field(name: 'NsSerial')) }
     element(:ns_from_zip) { SdcElement.new(browser.text_field(name: 'unauthFromZip')) }
     element(:remember_me, required: true) { SdcChooser.new(
@@ -16,7 +16,7 @@ module Stamps
 
 
 
-  class TestPage < PageObject
+  class TestPage < SdcPageObject
 
     element(:first_name) { SdcElement.new(browser.text_field(id: 'new_user_first_name')) }
     element(:last_name) { SdcElement.new(browser.text_field(id: 'new_user_last_name')) }
@@ -38,7 +38,7 @@ module Stamps
   end
 
 
-  class ResultPage < PageObject
+  class ResultPage < SdcPageObject
 
     element(:message) { browser.div(id: 'messages').div(index: -1) }
 

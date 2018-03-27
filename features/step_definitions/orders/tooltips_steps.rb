@@ -289,7 +289,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails International Name data error tooltip is \"
     stamps.orders.order_details.ship_to.international.blur_out
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
     textbox.double_click
-    #web_apps.orders.order_details.ship_to.international.click_form
+    #sdc_apps.orders.order_details.ship_to.international.click_form
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
     sleep(0.35)
     data_error_tooltip=textbox
