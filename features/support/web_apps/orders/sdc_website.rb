@@ -18,9 +18,9 @@ module Stamps
                                       end
             )
           when :mail
-            raise "Mail not implemented!"
+            raise "Not implemented!"
           else
-            raise ArgumentError, "SDC Website not defined."
+            raise ArgumentError, "Don't know how to visit app :#{SdcEnv.sdc_app}"
         end
 
       end
