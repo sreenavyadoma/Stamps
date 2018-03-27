@@ -505,14 +505,13 @@ module Stamps
           end
         end
 
-        #todo - Change this for BulkForm
         class Insurance < WebApps::Base
 
           attr_reader :textbox, :dropdown
           def initialize(param)
             super(param)
-            @textbox ||= StampsTextbox.new driver.text_field(name: 'Tracking')
-            @dropdown ||= StampsField.new driver.div(css: 'div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=trackingdroplist-][id$=trigger-picker]')
+            @textbox ||= StampsTextbox.new driver.text_field(name: 'Insurance')
+            @dropdown ||= StampsField.new driver.div(css: 'div[id^=multiOrderDetailsForm-] div[id^=combo-][id$=trigger-picker]')
           end
 
           def present?
@@ -520,14 +519,14 @@ module Stamps
           end
 
           def tracking_selection(selection)
-            if selection.downcase.include? 'usps'
-              driver.tds(css: 'div[id=sdc-trackingdroplist-dc]>table>tbody>tr>td')
-            elsif selection.downcase.include? 'signature'
-              driver.tds(css: 'div[id=sdc-trackingdroplist-sc]>table>tbody>tr>td')
+            if selection.downcase.include? 'none'
+              driver.tds(visible_text: 'None')
+            elsif selection.downcase.include? 'stamps'
+              driver.tds(visible_text: 'Stamps.com Insurance')
             elsif selection.downcase.include? 'none'
               driver.tds(css: 'div[id=sdc-trackingdroplist-none]>table>tbody>tr>td')
             else
-              expect("#{selection} is not a valid selection").to eql 'Valid selections are USPS Tracking and Signature Required'
+              expect("#{selection} is not a valid selection").to eql 'Valid selections are None and Stamps.com Insurance'
             end
           end
 
@@ -571,7 +570,7 @@ module Stamps
           def initialize(param)
             super(param)
             @textbox = StampsTextbox.new driver.text_field(name: 'Tracking')
-            @dropdown = StampsField.new driver.div(css: 'div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=trackingdroplist-][id$=trigger-picker]')
+            @dropdown = StampsField.new driver.div(css: 'div[id^=multiOrderDetailsForm-] div[id^=trackingdroplist-][id$=trigger-picker]')
           end
 
           def present?
