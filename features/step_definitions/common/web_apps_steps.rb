@@ -16,7 +16,7 @@ Then /^[Ss]ign-in to SDC Website$/ do
   expect(TestData.store[:password]).to be_truthy
 
 
-  expect(SdcWebsite.orders.landing_page.sign_in_with(TestData.store[:username], TestData.store[:password])).to eql(TestData.store[:username]) if SdcEnv.web_app == :orders
+  expect(SdcWebsite.orders.landing_page.sign_in_with(TestData.store[:username], TestData.store[:password])).to eql(TestData.store[:username]) if SdcEnv.sdc_app == :orders
   expect(stamps.mail.sign_in_modal.mail_sign_in(TestData.store[:username], TestData.store[:password])).to eql(TestData.store[:username]) if SdcEnv.sdc_app == :mail
 end
 

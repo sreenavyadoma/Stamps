@@ -79,8 +79,8 @@ end
 # Then /^[Ee]xpect Customs Internal Transaction Number is (.+)$/ do |expectation|
 #   step "Blur out on Customs form"
 #   sleep(0.5)
-#   expect(stamps.common_modals.customs_form.internal_transaction.textbox.text).to eql(expectation) if SdcEnv.web_app == :orders
-#   expect(stamps.mail.print_form.mail_customs.edit_customs_form.internal_transaction.textbox.text).to eql(expectation) if SdcEnv.web_app == :mail
+#   expect(stamps.common_modals.customs_form.internal_transaction.textbox.text).to eql(expectation) if SdcEnv.sdc_app == :orders
+#   expect(stamps.mail.print_form.mail_customs.edit_customs_form.internal_transaction.textbox.text).to eql(expectation) if SdcEnv.sdc_app == :mail
 # end
 
 Then /^[Ss]et Customs More Info to (?:(?:a|some) random string|(.*))$/ do |value|
