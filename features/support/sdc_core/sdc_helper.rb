@@ -1,6 +1,6 @@
 module Stamps
-  module Core
-    class SdcLogger < BasicObject
+  class SdcLog < BasicObject
+    class << self
       def initialize(logger, verbose)
         @logger = logger
         @verbose = verbose

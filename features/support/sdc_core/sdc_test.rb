@@ -21,7 +21,7 @@ module Stamps
       super unless driver.respond_to?(method)
       driver.send(method, *args, &block)
     end
-    
+
     private
     attr_reader :driver
   end
@@ -30,7 +30,9 @@ module Stamps
     class << self
       attr_reader :driver #:core_driver,
       def configure(device_name)
-        caps = Appium.load_appium_txt file: File.expand_path("../../sdc_idevices/caps/#{device_name}.txt", __FILE__), verbose: true
+        file_path = File.expand_path("../../sdc_idevices/caps/#{device_name}.txt", __FILE__)
+        raise "#{device_name}: Missing Capabilities file - #{file_path}" unless File.exist?(file_path)
+        caps = Appium.load_appium_txt file: file_path, verbose: true
         #Appium::Driver.new(caps, true)
         #Appium.promote_appium_methods Stamps
         #@core_driver = $driver
@@ -40,7 +42,11 @@ module Stamps
       end
 
       def start
-        @driver.start_driver
+        begin
+          @driver.start_driver
+        rescue => e
+
+        end
         self
       end
 
@@ -127,10 +133,9 @@ module Stamps
             end
 
             @driver.driver.manage.timeouts.page_load = 12
-            SdcWebsite.browser = @driver
           rescue Exception => e
-            log.error e.message
-            log.error e.backtrace.join("\n")
+            SdcLog.error e.message
+            SdcLog.error e.backtrace.join("\n")
             raise "Driver setup failed: #{e.message}", e
           end
         elsif SdcEnv.i_device_name
@@ -138,6 +143,8 @@ module Stamps
         else
           raise ArgumentError, "Neither BROWSER nor IDEVICENAME is defined for test #{test_scenario}. Expected values are: #{SdcEnv::BROWSERS.inspect} and #{SdcEnv::IDEVICES.inspect}"
         end
+
+        SdcWebsite.browser = @driver
       end
 
       def start(scenario)
@@ -154,7 +161,7 @@ module Stamps
         SdcEnv.firefox_profile ||= ENV['FIREFOX_PROFILE']
         logger = Log4r::Logger.new(":")
         logger.outputters = Outputter.stdout
-        @log = SdcLogger.new(logger, SdcEnv.verbose)
+        @log = SdcLog.initialize(logger, SdcEnv.verbose)
 
         #todo-Rob These should be in an orders/mail or sdc_apps environment variable container. This is a temp fix.
         SdcEnv.printer = ENV['PRINTER']
@@ -179,14 +186,14 @@ module Stamps
 
       def print_test_steps
         raise ArgumentError, 'Set scenario object before printing test steps' if @scenario.nil?
-        log.info "- Feature: #{scenario.feature}"
-        log.info "- Scenario: #{scenario.name}"
-        log.info "- Tags:"
-        scenario.tags.each_with_index { |tag, index| log.info "--Tag #{index + 1}: #{tag.name}" }
-        log.info "- Steps:"
-        scenario.test_steps.each_with_index { |steps, index| log.info "-- #{steps.source.last.keyword}#{steps.text}" }
-        log.info "-"
-        log.info "-"
+        SdcLog.info "- Feature: #{scenario.feature}"
+        SdcLog.info "- Scenario: #{scenario.name}"
+        SdcLog.info "- Tags:"
+        scenario.tags.each_with_index { |tag, index| SdcLog.info "--Tag #{index + 1}: #{tag.name}" }
+        SdcLog.info "- Steps:"
+        scenario.test_steps.each_with_index { |steps, index| SdcLog.info "-- #{steps.source.last.keyword}#{steps.text}" }
+        SdcLog.info "-"
+        SdcLog.info "-"
       end
 
       def teardown
@@ -195,11 +202,11 @@ module Stamps
         rescue
           # ignore
         end
-        log.info "#{@browser} closed."
+        SdcLog.info "#{@browser} closed."
       end
 
       def clear_cookies
-        log.info "Clearing cookies"
+        SdcLog.info "Clearing cookies"
         begin
           driver.cookies.clear
         rescue

@@ -9,7 +9,7 @@ include RSpec::Matchers
 include DataMagic
 include RAutomation
 include Spreadsheet
-#include Appium
+include Appium
 
 Before do  |scenario|
   SdcTest.start(scenario)
