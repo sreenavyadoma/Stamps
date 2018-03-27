@@ -175,28 +175,33 @@ module Stamps
       end
     end
 
-    def safe_set(*args)
-      begin
-        @element.send(:set, *args)
-      rescue
-        # ignore
-      end
-    end
-    alias_method :type, :set
-
-    def safe_click(*modifiers)
-      begin
-        @element.send(:click, *modifiers)
-      rescue
-        # ignore
+    def safe_click(*modifiers, count = 1)
+      count.to_i.times do
+        begin
+          @element.send(:click, *modifiers)
+        rescue
+          # ignore
+        end
       end
     end
 
-    def safe_send_keys(*args)
-      begin
-        @element.send(:send_keys, *args)
-      rescue
-        # ignore
+    def safe_set(*args, count: 1)
+      count.to_i.times do
+        begin
+          @element.send(:set, *args)
+        rescue
+          # ignore
+        end
+      end
+    end
+
+    def safe_send_keys(*args, count = 1)
+      count.to_i.times do
+        begin
+          @element.send(:send_keys, *args)
+        rescue
+          # ignore
+        end
       end
     end
 
