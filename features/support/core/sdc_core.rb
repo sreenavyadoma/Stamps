@@ -87,16 +87,6 @@ module Stamps
     end
     alias_method :selector_string, :inspect
 
-    def model_to_hash(model)
-      return model unless model.is_a? WatirModel
-      hash = model.to_hash
-      matching_aliases = self.class.element_list & model.aliases.keys
-      matching_aliases.each do |key|
-        hash[key] = hash.delete(model.aliases[key])
-      end
-      hash
-    end
-
     def on_page?
       exception = Selenium::WebDriver::Error::WebDriverError
       message = "Can not verify page without any requirements set"
