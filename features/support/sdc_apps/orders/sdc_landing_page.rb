@@ -42,10 +42,10 @@ module Stamps
       def sign_in_with(usr, pwd, persist = 2)
         username.set usr
         password.set pwd
-        sign_in.safe_click(ctr: 2).send_keys_while_present(:enter, ctr:2)
-        username.safe_wait_while_present(4)
-        loading_orders.safe_wait_until_present(2).safe_wait_while_present(10)
-        signed_in_user.safe_wait_until_present(5).text_value
+        sign_in.safe_click(ctr: 2).send_keys_while_present(:enter, ctr: 2)
+        username.safe_wait_while_present(timeout: 4)
+        loading_orders.safe_wait_until_present(timeout: 5).safe_wait_while_present(timeout: 10)
+        signed_in_user.safe_wait_until_present(timeout: 10).text_value
       end
     end
   end

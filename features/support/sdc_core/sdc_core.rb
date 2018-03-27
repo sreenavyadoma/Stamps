@@ -164,7 +164,7 @@ module Stamps
     end
 
     def clickable?
-      truthy? && @element.present? && @element.enabled?
+      truthy? && @element.present? && enabled?
     end
 
     def hover
@@ -213,9 +213,9 @@ module Stamps
       text_value
     end
 
-    def safe_wait_while_present(*args)
+    def safe_wait_while_present(timeout: nil, interval: nil)
       begin
-        @element.wait_while_present(*args)
+        @element.wait_while_present(timeout)
       rescue
         # ignore
       end
@@ -223,9 +223,9 @@ module Stamps
       self
     end
 
-    def safe_wait_until_present(*args)
+    def safe_wait_until_present(timeout: nil, interval: nil)
       begin
-        @element.wait_until_present(*args)
+        @element.wait_until_present(timeout, interval)
       rescue
         # ignore
       end

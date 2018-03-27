@@ -125,6 +125,8 @@ module Stamps
               else
                 raise ArgumentError, "#{test_driver} is not a valid browser."
             end
+
+            @driver.driver.manage.timeouts.page_load = 12
             SdcWebsite.browser = @driver
           rescue Exception => e
             log.error e.message
