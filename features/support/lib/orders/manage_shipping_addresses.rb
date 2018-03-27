@@ -28,7 +28,7 @@ module Stamps
         end
 
         def close_button
-          cache[:close_button] = StampsField.new(driver.span(css: "span[class*=sdc-icon-idevices-close-light]")) if cache[:close_button].nil? || !cache[:close_button].present?
+          cache[:close_button] = StampsField.new(driver.span(css: "span[class*=sdc-icon-sdc_idevices-close-light]")) if cache[:close_button].nil? || !cache[:close_button].present?
           cache[:close_button]
         end
 

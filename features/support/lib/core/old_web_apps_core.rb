@@ -2,11 +2,11 @@ module Stamps
   ##
   #
   module WebApps
-    Param = Struct.new(:driver, :log, :test_scenario, :web_app, :env, :health_check, :usr, :pw, :url, :print_media, :debug, :firefox_profile, :printer, :hostname) {} unless Object.const_defined?('Param')
+    Param = Struct.new(:driver, :log, :test_scenario, :sdc_app, :env, :health_check, :usr, :pw, :url, :print_media, :debug, :firefox_profile, :printer, :hostname) {} unless Object.const_defined?('Param')
 
     ##
     #
-    class Base < Core::Base
+    class Base < Stamps::Core::Base
       attr_reader :param, :log
       def initialize(param)
         super(param.driver)
@@ -690,27 +690,6 @@ module Stamps
       end
     end
 
-  end
-
-  ##
-  #
-  module Cache
-    class << self
-      def included(base)
-        base.extend ClassMethods
-      end
-
-      module ClassMethods
-        def assign(cache)
-          @cache = cache
-        end
-
-        def cache
-          raise(ArgumentError, "Cache not set for #{self.to_s.split('::').last}") if @cache.nil?
-          @cache
-        end
-      end
-    end
   end
 
 end

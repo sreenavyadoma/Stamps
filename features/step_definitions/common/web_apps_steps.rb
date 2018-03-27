@@ -1,4 +1,23 @@
 
+Then /^visit Sdc Website$/ do
+  SdcWebsite.visit
+end
+
+Then /^[Ss]ign-in to SDC Website$/ do
+  if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default' || SdcEnv.usr.downcase == 'mysql'
+    credentials = user_credentials.fetch(SdcTest.scenario.tags[0].name)
+    TestData.store[:username] = credentials[:username]
+    TestData.store[:password] = credentials[:password]
+  else
+    TestData.store[:username] = SdcEnv.usr
+    TestData.store[:password] = SdcEnv.pw
+  end
+  expect(TestData.store[:username]).to be_truthy
+  expect(TestData.store[:password]).to be_truthy
+  expect(SdcWebsite.orders.landing_page.sign_in_with(TestData.store[:username], TestData.store[:password])).to eql(TestData.store[:username]) if SdcEnv.sdc_app == :orders
+  expect(stamps.mail.sign_in_modal.mail_sign_in(TestData.store[:username], TestData.store[:password])).to eql(TestData.store[:username]) if SdcEnv.sdc_app == :mail
+end
+
 Given /^(?:|(?:|[Aa] )(?:[Vv]alid |))[Uu]ser is signed in to Web Apps$/ do
   step "I launched the browser"
   step "Health Check: Print - Web Batch" if SdcEnv.health_check
@@ -6,6 +25,10 @@ Given /^(?:|(?:|[Aa] )(?:[Vv]alid |))[Uu]ser is signed in to Web Apps$/ do
   step "load Web Apps Sign-in page"
   step "sign-in to Web Apps as #{TestData.store[:username]}, #{TestData.store[:password]}"
   step "Navigation Bar: Customer Balance"
+end
+
+Given /^[Ll]oad [Ww]eb [Aa]pps [Ss]ign-in page$/ do
+  stamps.orders.landing_page.load_sign_in_page
 end
 
 Then /^[Ll]oad [Ww]eb [Aa]pps [Oo]rders (?:and|then) sign-in$/ do
@@ -68,27 +91,16 @@ Then /^[Ll]oad [Ww]eb [Aa]pps [Mm]ail (?:and|then) sign-in$/ do
   step "sign-in to Web Apps as #{SdcEnv.usr}, #{SdcEnv.pw}"
 end
 
-Given /^[Ll]oad [Ww]eb [Aa]pps [Ss]ign-in page$/ do
-  stamps.orders.landing_page.load_sign_in_page
-end
-
-Given /^[Ss]ign-in to [Ww]eb [Aa]pps as (.*), (.*)$/ do |username, password|
-  # MySql
-  begin
-    if username.nil? || username.downcase == 'default' || username.downcase == 'mysql'
-      credentials = user_credentials.fetch(SdcTest.scenario.tags[0].name)
-      TestData.store[:username] = username = credentials[:username]
-      TestData.store[:password] = password = credentials[:password]
-    end
-  rescue Exception => e
-    SdcTest.log.error e.message
-    SdcTest.log.error e.backtrace.join("\n")
-    raise e
+Then /^[Ss]ign-in to [Ww]eb [Aa]pps as (.*), (.*)$/ do |username, password|
+  if username.nil? || username.downcase == 'default' || username.downcase == 'mysql'
+    credentials = user_credentials.fetch(SdcTest.scenario.tags[0].name)
+    TestData.store[:username] = username = credentials[:username]
+    TestData.store[:password] = password = credentials[:password]
   end
   expect(TestData.store[:username] = username).to be_truthy
   expect(TestData.store[:password] = password).to be_truthy
-  expect(stamps.orders.landing_page.orders_sign_in(username, password)).to eql(username) if SdcEnv.web_app == :orders
-  expect(stamps.mail.sign_in_modal.mail_sign_in(username, password)).to eql(username) if SdcEnv.web_app == :mail
+  expect(stamps.orders.landing_page.orders_sign_in(username, password)).to eql(username) if SdcEnv.sdc_app == :orders
+  expect(stamps.mail.sign_in_modal.mail_sign_in(username, password)).to eql(username) if SdcEnv.sdc_app == :mail
 end
 
 Then /^[Ss]ign out$/ do

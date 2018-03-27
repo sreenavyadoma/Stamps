@@ -304,9 +304,9 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
         SdcTest.log.step "#{"#" * 80} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_number}"
 
         # Set address to proper zone
-        step "set Order Details Ship-To to a random address in Zone #{zone}"  if @SdcEnv.web_app == :orders
-        step "set Print form Mail-To to a random address in zone #{zone}" if @SdcEnv.web_app == :mail
-        step "save Print Form Mail From" if @SdcEnv.web_app == :mail
+        step "set Order Details Ship-To to a random address in Zone #{zone}"  if @SdcEnv.sdc_app == :orders
+        step "set Print form Mail-To to a random address in zone #{zone}" if @SdcEnv.sdc_app == :mail
+        step "save Print Form Mail From" if @SdcEnv.sdc_app == :mail
         # spreadsheet price for zone
 
         if row[zone_column] == nil
@@ -337,15 +337,15 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:zone]] = price
           TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:username]] = TestData.store[:username]
           TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:ship_from]] = TestData.store[:ship_from]
-          TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:ship_to_domestic]] = TestData.store[:ship_to_domestic]  if @SdcEnv.web_app == :orders
-          TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:ship_to_domestic]] = TestData.store[:address]  if @SdcEnv.web_app == :mail
+          TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:ship_to_domestic]] = TestData.store[:ship_to_domestic]  if @SdcEnv.sdc_app == :orders
+          TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:ship_to_domestic]] = TestData.store[:address]  if @SdcEnv.sdc_app == :mail
 
           # Set weight to 0
-          step "set Order Details Pounds to 0" if @SdcEnv.web_app == :orders
-          step "set Order Details Ounces to 0" if @SdcEnv.web_app == :orders
+          step "set Order Details Pounds to 0" if @SdcEnv.sdc_app == :orders
+          step "set Order Details Ounces to 0" if @SdcEnv.sdc_app == :orders
 
-          step "set Print form Pounds to 0" if @SdcEnv.web_app == :mail
-          step "set Print form Ounces to 0" if @SdcEnv.web_app == :mail
+          step "set Print form Pounds to 0" if @SdcEnv.sdc_app == :mail
+          step "set Print form Ounces to 0" if @SdcEnv.sdc_app == :mail
 
           # Set weight per spreadsheet
           #row[@rate_sheet_columns[:weight_lb]].should_not be nil
@@ -360,15 +360,15 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
             weight_lb = weight_lb.to_i
             TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight_lb]] = weight_lb
             TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight]] = "#{weight_lb} lb."
-            step "set Order Details Pounds to #{weight_lb}"  if @SdcEnv.web_app == :orders
-            step "set Print form Pounds to #{weight_lb}"  if @SdcEnv.web_app == :mail
+            step "set Order Details Pounds to #{weight_lb}"  if @SdcEnv.sdc_app == :orders
+            step "set Print form Pounds to #{weight_lb}"  if @SdcEnv.sdc_app == :mail
           else
             weight_oz = Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_i
             #SdcTest.log.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
             TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight]] = "#{weight_oz} oz."
             TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight_lb]] = weight_oz
-            step "set Order Details Ounces to #{weight_oz}"  if @SdcEnv.web_app == :orders
-            step "set Print form Ounces to #{weight_oz}"  if @SdcEnv.web_app == :mail
+            step "set Order Details Ounces to #{weight_oz}"  if @SdcEnv.sdc_app == :orders
+            step "set Print form Ounces to #{weight_oz}"  if @SdcEnv.sdc_app == :mail
           end
           sleep(0.025)
 
@@ -380,28 +380,28 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           # record execution time as time service was selected.
           TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:execution_date]] = Time.now.strftime("%b %d, %Y %H:%M")
 
-          step "set Order Details service to #{service}" if @SdcEnv.web_app == :orders
-          step "select Print form service #{service}" if @SdcEnv.web_app == :mail
+          step "set Order Details service to #{service}" if @SdcEnv.sdc_app == :orders
+          step "select Print form service #{service}" if @SdcEnv.sdc_app == :mail
 
           TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:service_selected]] = TestData.store[:service]
 
           # Set Tracking
           begin
-            step "set Order Details Tracking to #{row[@rate_sheet_columns[:tracking]]}"  if @SdcEnv.web_app == :orders
+            step "set Order Details Tracking to #{row[@rate_sheet_columns[:tracking]]}"  if @SdcEnv.sdc_app == :orders
           end unless row[@rate_sheet_columns[:tracking]].nil?
           # Write tracking to spreadsheet
           TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:tracking_selected]] = TestData.store[:tracking]
           sleep(0.525)
           # get total cost actual value from UI
-          step "Save Order Details data" if @SdcEnv.web_app == :orders
-          step "save Print Form Total Cost" if @SdcEnv.web_app == :mail
+          step "Save Order Details data" if @SdcEnv.sdc_app == :orders
+          step "save Print Form Total Cost" if @SdcEnv.sdc_app == :mail
           TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:total_ship_cost]] = (TestData.store[:total_ship_cost].to_f * 100).round / 100.0
 
           # Set weight to 0
-          if @SdcEnv.web_app == :mail
+          if @SdcEnv.sdc_app == :mail
             step "set Print form Pounds to 0"
             step "set Print form Ounces to 0"
-          elsif @SdcEnv.web_app == :orders
+          elsif @SdcEnv.sdc_app == :orders
             step "set Order Details Pounds to 0"
             step "set Order Details Ounces to 0"
           end
@@ -420,8 +420,8 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           SdcTest.log.step "#{"#" * 10} "
           SdcTest.log.step "#{"#" * 10} Weight: #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight]]}"
           SdcTest.log.step "#{"#" * 10} Selected Service: #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:service_selected]]}"
-          SdcTest.log.step "#{"#" * 10} Ship-To Address: #{TestData.store[:address]}" if @SdcEnv.web_app == :mail
-          SdcTest.log.step "#{"#" * 10} Ship-To Address: #{TestData.store[:full_name]}, #{TestData.store[:street_address]}, #{TestData.store[:city]}, #{TestData.store[:state]}, #{TestData.store[:zip]}" if @SdcEnv.web_app == :orders
+          SdcTest.log.step "#{"#" * 10} Ship-To Address: #{TestData.store[:address]}" if @SdcEnv.sdc_app == :mail
+          SdcTest.log.step "#{"#" * 10} Ship-To Address: #{TestData.store[:full_name]}, #{TestData.store[:street_address]}, #{TestData.store[:city]}, #{TestData.store[:state]}, #{TestData.store[:zip]}" if @SdcEnv.sdc_app == :orders
           SdcTest.log.step "#{"#" * 10} #{"*" * 5} Test #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:status]] } - Expected #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:zone]]}, Got #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:total_ship_cost]]} #{"*" * 5}"
           SdcTest.log.step "#{"#" * 10} "
         end

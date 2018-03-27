@@ -31,7 +31,7 @@ Then /^[Ss]et [Oo]rders [Pp]rint [Mm]odal [Pp]rinter ?(?:|(.*))$/ do |printer|
     expect(TestData.store[:printer]).to match(/\\.+\.*/)
     TestData.store[:printer] = /\\\\(.+)\\/.match(TestData.store[:printer])[1]
   end
-  expect(stamps.orders.modals.orders_print_modal.printer.select(TestData.store[:printer])).to_not be_nil, "Unable to select printer \"#{TestData.store[:printer]}\". \nMake sure \"#{TestData.store[:printer]}\" is configured for host #{SdcEnv.hostname}. \nUSR: #{TestData.store[:username]}, #{SdcEnv.web_app.to_s.capitalize}(#{SdcEnv.env.upcase})"
+  expect(stamps.orders.modals.orders_print_modal.printer.select(TestData.store[:printer])).to_not be_nil, "Unable to select printer \"#{TestData.store[:printer]}\". \nMake sure \"#{TestData.store[:printer]}\" is configured for host #{SdcEnv.hostname}. \nUSR: #{TestData.store[:username]}, #{SdcEnv.sdc_app.to_s.capitalize}(#{SdcEnv.env.upcase})"
 end
 
 Then /^[Oo]rders [Pp]rint [Mm]odal [Pp]rinter [Dd]rop[Dd]own is present$/ do

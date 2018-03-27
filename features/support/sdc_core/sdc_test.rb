@@ -2,11 +2,12 @@ module Stamps
 
   module SdcEnv
     TEST_ENVIRONMENTS = %i(stg qacc cc qasc sc rating).freeze
-    BROWSERS = %i(firefox ff chrome gc safari edge).freeze
+    BROWSERS = %i(firefox chrome safari edge chromeb).freeze
     SDC_APP = %i(orders mail webdev registration).freeze
     IDEVICES = %i(iphone6 iphone7 iphone8 iphonex android).freeze
+
     class << self #todo-Rob refactor PrintMedia
-      attr_accessor :web_app, :env, :health_check, :usr, :pw, :url, :verbose,  :printer, :browser, :hostname,
+      attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose, :printer, :browser, :hostname,
                     :print_media, :i_device_name, :firefox_profile
     end
   end
@@ -16,9 +17,9 @@ module Stamps
       @driver = driver
     end
 
-    def method_missing(method, *args)
+    def method_missing(method, *args, &block)
       super unless driver.respond_to?(method)
-      driver.send(method, *args)
+      driver.send(method, *args, &block)
     end
 
     private
@@ -29,7 +30,7 @@ module Stamps
     class << self
       attr_reader :driver #:core_driver,
       def configure(device_name)
-        caps = Appium.load_appium_txt file: File.expand_path("../../idevices/caps/#{device_name}.txt", __FILE__), verbose: true
+        caps = Appium.load_appium_txt file: File.expand_path("../../sdc_idevices/caps/#{device_name}.txt", __FILE__), verbose: true
         #Appium::Driver.new(caps, true)
         #Appium.promote_appium_methods Stamps
         #@core_driver = $driver
@@ -94,7 +95,6 @@ module Stamps
                 end
                 @driver = SdcDriver.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
                 @driver.window.maximize
-              #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
 
             when :chromeb
               begin
@@ -125,6 +125,9 @@ module Stamps
               else
                 raise ArgumentError, "#{test_driver} is not a valid browser."
             end
+
+            @driver.driver.manage.timeouts.page_load = 12
+            SdcWebsite.browser = @driver
           rescue Exception => e
             log.error e.message
             log.error e.backtrace.join("\n")
@@ -143,7 +146,7 @@ module Stamps
         SdcEnv.i_device_name ||= i_device_selection(ENV['IDEVICENAME'])
         SdcEnv.verbose ||= ENV['VERBOSE'].nil? ? false : ENV['VERBOSE'].casecmp('true') == 0
         SdcEnv.hostname ||= Socket.gethostname
-        SdcEnv.web_app ||= sdc_app(ENV['SDC_APP'])
+        SdcEnv.sdc_app ||= ENV['WEB_APP'].nil? ? ENV['WEB_APP'] : ENV['WEB_APP'].downcase.to_sym
         SdcEnv.health_check ||= ENV['HEALTHCHECK'].nil? ? false : ENV['HEALTHCHECK'].casecmp('true') == 0
         SdcEnv.usr ||= ENV['USR']
         SdcEnv.pw ||= ENV['PW']
@@ -153,7 +156,7 @@ module Stamps
         logger.outputters = Outputter.stdout
         @log = SdcLogger.new(logger, SdcEnv.verbose)
 
-        #These should be in an orders/mail or web_apps environment variable container
+        #todo-Rob These should be in an orders/mail or sdc_apps environment variable container. This is a temp fix.
         SdcEnv.printer = ENV['PRINTER']
 
         @web_apps_param = Stamps::WebApps::Param.new
@@ -164,7 +167,7 @@ module Stamps
         @web_apps_param.usr = SdcEnv.usr
         @web_apps_param.pw = SdcEnv.pw
         @web_apps_param.printer = SdcEnv.printer
-        @web_apps_param.web_app = SdcEnv.web_app
+        @web_apps_param.sdc_app = SdcEnv.sdc_app
         print_test_steps
       end
 
@@ -207,60 +210,48 @@ module Stamps
       private
 
       def i_device_selection(str)
-        if str.nil?
-          return str
-        elsif SdcEnv::IDEVICES.include?((device = str.downcase.delete(' ').to_sym))
-          return device
-        else
-          # ignore
-        end
-
-        raise ArgumentError, "Invalid IDEVICENAME: #{str}. Valid options are #{SdcEnv::IDEVICES.inspect}"
+        return str.downcase.delete(' ').to_sym if str
+        str
       end
 
       def browser_selection(str)
-        return str if str.nil?
-        case str.downcase
-          when /ff|firefox|mozilla/
-            return :firefox
-          when /chromeb|gcb|googleb/
-            return :chromeb
-          when /chrome|gc|google/
-            return :chrome
-          when /ms|me|microsoft|edge/
-            return :edge
-          when /apple|osx|safari|mac/
-            return :safari
-          else
-            # ignore
+        if str
+          case str.downcase
+            when /ff|firefox|mozilla/
+              return :firefox
+            when /chromeb|gcb|googleb/
+              return :chromeb
+            when /chrome|gc|google/
+              return :chrome
+            when /ms|me|microsoft|edge/
+              return :edge
+            when /apple|osx|safari|mac/
+              return :safari
+            else
+              return str.downcase.to_sym
+          end
         end
-
-        raise ArgumentError, "BROWSER=#{str}. Expected values are #{SdcEnv::BROWSERS}" unless !str.nil? && SdcEnv::BROWSERS.include?(str.downcase)
-      end
-
-      def sdc_app(str)
-        return str.downcase.to_sym if !str.nil? && SdcEnv::SDC_APP.include?(str.downcase.to_sym)
-        raise ArgumentError, "SDC_APP is not defined or invalid. Expected values are #{SdcEnv::SDC_APP} - Got: #{str}"
+        str
       end
 
       def test_env(str)
-        if str.nil? || !SdcEnv::TEST_ENVIRONMENTS.include?(str.downcase.to_sym)
-          raise ArgumentError, "URL=#{str} is invalid. Expected values are #{SdcEnv::TEST_ENVIRONMENTS}"
+        if str
+          case(str.downcase)
+            when /stg/
+              return :stg
+            when /cc/
+              return :qacc
+            when /sc/
+              return :qasc
+            when /rat/
+              return :rating
+            when /prod/
+              return :prod
+            else
+              return str.downcase.to_sym
+          end
         end
-        case(str.downcase)
-          when /staging/
-            return :stg
-          when /stg/
-            return :stg
-          when /cc/
-            return :qacc
-          when /sc/
-            return :qasc
-          when /rat/
-            return :rating
-          else
-            # ignore
-        end
+        str
       end
 
       def browser_version(str)
@@ -303,34 +294,4 @@ module Stamps
 
   end
 end
-
-=begin
-
-
-          log.info "Browser Selection: #{driver}"
-
-              #driver = Watir::Browser.new :safari                                         #todo Alex uncomment once framework upgraded to Watir 6.10.2
-              #versions(driver.execute_script("return navigator.userAgent;"))
-              #driver.window.maximize #todo-Rob move elsewhere
-
-
-          #log.info "-"
-          #log.info "BROWSER: #{self.browser_version.to_s.gsub("/", " ")}"
-          #log.info "OS: #{self.os_version.to_s.gsub("/", " ")}" if self.os_version
-          #log.info "-"
-
-
-              #@driver.window.maximize
-              #self.browser_version = /Edge\/.+/.match(driver.execute_script("return navigator.userAgent;"))
-
-
-#stdout, status = Open3.capture3("killall Safari")
-
-              #versions(driver.execute_script("return navigator.userAgent;"))
-              #versions(@driver.execute_script("return navigator.userAgent;"))
-
-
-
-
-
-=end
+#switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']

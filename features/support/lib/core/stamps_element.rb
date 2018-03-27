@@ -1,6 +1,17 @@
 module Stamps
   module Core
-    class StampsElement < PageObject
+    class Base
+      class << self
+        attr_accessor :driver
+      end
+      def initialize(driver)
+        self.class.driver = driver
+      end
+
+      def driver; self.class.driver; end
+    end
+
+    class StampsElement
       attr_accessor :field, :verify_field, :ver_field_attr, :ver_field_attr_value
       def initialize(driver, locator)
         super(driver)

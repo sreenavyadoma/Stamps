@@ -1,5 +1,6 @@
 module Stamps
   module Registration
+=begin
     class SdcWebsite < WebApps::Base
 
       def get_started_btn
@@ -30,5 +31,6 @@ module Stamps
       end
 
     end
+=end
   end
 end

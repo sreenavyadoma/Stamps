@@ -1,17 +1,17 @@
 module Stamps
   module Registration
     class ShipVolumeSurvey < WebApps::Base
-      # attr_reader :web_apps, :web_mail
+      # attr_reader :sdc_apps, :web_mail
       #
       # def initialize(param)
       #   super
-      #   #@web_apps=StampsDotCom.new(param)
-      #   @web_mail=@web_apps.mail
+      #   #@sdc_apps=StampsDotCom.new(param)
+      #   @web_mail=@sdc_apps.mail
       # end
 
       def web_apps
-        cache[:web_apps] = StampsDotCom.new(param) if cache[:web_apps].nil?
-        cache[:web_apps]
+        cache[:sdc_apps] = StampsDotCom.new(param) if cache[:sdc_apps].nil?
+        cache[:sdc_apps]
       end
 
       def web_mail
