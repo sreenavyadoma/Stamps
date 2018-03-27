@@ -42,7 +42,16 @@ module Stamps
       end
 
       def mail
-        @mail
+        raise "Not Implemented"
+=begin
+        @mail ||= if SdcEnv.browser
+                    Orders::SdcMail.new
+                  elsif SdcEnv.i_device_name
+                    Mobile::SdcOrders.new
+                  else
+                    raise "Unable to determine if this is a mobile or browser test."
+                  end
+=end
       end
     end
   end
