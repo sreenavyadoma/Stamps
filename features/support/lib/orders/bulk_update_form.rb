@@ -518,13 +518,11 @@ module Stamps
             textbox.present?
           end
 
-          def tracking_selection(selection)
+          def insurance_selection(selection)
             if selection.downcase.include? 'none'
               driver.tds(visible_text: 'None')
             elsif selection.downcase.include? 'stamps'
               driver.tds(visible_text: 'Stamps.com Insurance')
-            elsif selection.downcase.include? 'none'
-              driver.tds(css: 'div[id=sdc-trackingdroplist-none]>table>tbody>tr>td')
             else
               expect("#{selection} is not a valid selection").to eql 'Valid selections are None and Stamps.com Insurance'
             end
@@ -534,7 +532,7 @@ module Stamps
           def select(str)
             expect(dropdown).to be_present
             20.times do
-              selection = StampsField.new(tracking_selection(str).first)
+              selection = StampsField.new(insurance_selection(str).first)
               dropdown.click unless selection.present?
               selection.click
               break if textbox.text.include?(str)
@@ -569,8 +567,8 @@ module Stamps
           attr_reader :textbox, :dropdown
           def initialize(param)
             super(param)
-            @textbox = StampsTextbox.new driver.text_field(name: 'Tracking')
-            @dropdown = StampsField.new driver.div(css: 'div[id^=multiOrderDetailsForm-] div[id^=trackingdroplist-][id$=trigger-picker]')
+            @textbox ||= StampsTextbox.new driver.text_field(name: 'Tracking')
+            @dropdown ||= StampsField.new driver.div(css: 'div[id^=multiOrderDetailsForm-] div[id^=trackingdroplist-][id$=trigger-picker]')
           end
 
           def present?
