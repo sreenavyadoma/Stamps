@@ -190,7 +190,6 @@ module Stamps
       end
 
       def teardown
-        print_test_steps
         begin
           driver.quit
         rescue
