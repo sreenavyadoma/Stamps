@@ -18,7 +18,4 @@ module Stamps
     @db_connection
   end
 
-
-
-
 end
