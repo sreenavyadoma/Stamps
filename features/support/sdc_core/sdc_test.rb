@@ -144,7 +144,7 @@ module Stamps
         @scenario = scenario
         SdcEnv.browser ||= browser_selection(ENV['BROWSER'])
         SdcEnv.i_device_name ||= i_device_selection(ENV['IDEVICENAME'])
-        SdcEnv.verbose ||= ENV['VERBOSE'].nil? ? false : ENV['VERBOSE'].downcase == 'true'
+        SdcEnv.verbose ||= ENV['VERBOSE'].nil? ? false : ENV['VERBOSE'].casecmp('true') == 0
         SdcEnv.hostname ||= Socket.gethostname
         SdcEnv.sdc_app ||= ENV['WEB_APP'].nil? ? ENV['WEB_APP'] : ENV['WEB_APP'].downcase.to_sym
         SdcEnv.health_check ||= ENV['HEALTHCHECK'].nil? ? false : ENV['HEALTHCHECK'].casecmp('true') == 0
