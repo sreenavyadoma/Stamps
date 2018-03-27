@@ -15,10 +15,17 @@ module Stamps
         username.present? && password.present? && sign_in.present? && remember_me.present?
       end
 
-      def sign_in_with(usr, pwd, persist = 4)
+      def sign_in_with(usr, pwd, persist = 2)
         username.set usr
         password.set pwd
-        persist.times { sign_in.click; sign_in.send_keys :enter }
+        persist.times do
+          begin
+            sign_in.click
+            sign_in.send_keys :enter
+          rescue
+            # ignore
+          end
+        end
         username.wait_while_present(timeout: 10)
         loading_orders.wait_while_present(timeout: 10)
       end
@@ -44,7 +51,7 @@ module Stamps
               when :stg
                 Orders::LandingPage.visit('.testing')
               when :prod
-
+                Orders::LandingPage.visit('')
               else
                 # ignore
             end

@@ -244,6 +244,8 @@ module Stamps
               return :qasc
             when /rat/
               return :rating
+            when /prod/
+              return :prod
             else
               return str.downcase.to_sym
           end
