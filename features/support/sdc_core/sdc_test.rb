@@ -146,7 +146,8 @@ module Stamps
         SdcEnv.i_device_name ||= i_device_selection(ENV['IDEVICENAME'])
         SdcEnv.verbose ||= ENV['VERBOSE'].nil? ? false : ENV['VERBOSE'].casecmp('true') == 0
         SdcEnv.hostname ||= Socket.gethostname
-        SdcEnv.sdc_app ||= ENV['WEB_APP'].nil? ? ENV['WEB_APP'] : ENV['WEB_APP'].downcase.to_sym
+        # SdcEnv.sdc_app ||= ENV['WEB_APP'].nil? ? ENV['WEB_APP'] : ENV['WEB_APP'].downcase.to_sym
+        SdcEnv.sdc_app ||= (ENV['WEB_APP'].nil? ? ENV['SDC_APP'] : ENV['WEB_APP']).downcase.to_sym
         SdcEnv.health_check ||= ENV['HEALTHCHECK'].nil? ? false : ENV['HEALTHCHECK'].casecmp('true') == 0
         SdcEnv.usr ||= ENV['USR']
         SdcEnv.pw ||= ENV['PW']

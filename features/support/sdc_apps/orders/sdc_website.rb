@@ -43,6 +43,10 @@ module Stamps
 
       end
 
+      def navigation_bar
+        @navigation ||= Navigation::NavigationBar.new(param)
+      end
+
       def mail
         raise "Not Implemented"
 =begin

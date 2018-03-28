@@ -258,7 +258,8 @@ module Stamps
       end
     end
 
-    class BalanceDropDown < WebApps::Base
+    # class BalanceDropDown < WebApps::Base
+    class BalanceDropDown < SdcPageObject
 
 
       def add_funds_modal
@@ -287,10 +288,8 @@ module Stamps
       end
 
       def balance_amount
-        if cache[:balance_amount].nil? || !cache[:balance_amount].present?
-          cache[:balance_amount] = StampsField.new(driver.span(css: '[class*=balance]>a>strong>span'))
-        end
-        cache[:balance_amount]
+        # @balance_amount ||= StampsField.new(driver.span(css: '[class*=balance]>a>strong>span'))
+        element(:balance_amount, required: true) { SdcElement.new(driver.span(css: '[class*=balance]>a>strong>span')) }
       end
 
       def buy_more
@@ -372,7 +371,7 @@ module Stamps
 
 
       def balance
-        cache[:balance].nil? ? cache[:balance] = BalanceDropDown.new(param) : cache[:balance]
+        @balance ||= BalanceDropDown.new(param)
       end
 
       def username
