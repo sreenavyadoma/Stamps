@@ -1,5 +1,5 @@
 Then /^[Oo]n Add Funds modal, purchase 10$/ do
-  #SdcTest.log.step "on Add Funds modal, purchase 10"
+  #SdcLog.step "on Add Funds modal, purchase 10"
   TestData.store[:old_balance]=stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
   stamps.navigation_bar.balance.buy_more.buy_10.select
 end

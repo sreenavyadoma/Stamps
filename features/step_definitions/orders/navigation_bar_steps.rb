@@ -1,17 +1,17 @@
 Then /^Navigation Bar: Customer Balance$/ do
-  #SdcTest.log.step "Navigation Bar: Customer Balance"
+  #SdcLog.step "Navigation Bar: Customer Balance"
   TestData.store[:customer_starting_balance] = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
-  SdcTest.log.info " ############## CUSTOMER BALANCE "
-  SdcTest.log.info " ############## #{stamps.navigation_bar.balance.balance_amount.text}"
-  SdcTest.log.info " ############## CUSTOMER BALANCE "
+  SdcLog.info " ############## CUSTOMER BALANCE "
+  SdcLog.info " ############## #{stamps.navigation_bar.balance.balance_amount.text}"
+  SdcLog.info " ############## CUSTOMER BALANCE "
 end
 
 Then /^Navigation Bar: Wait while balance less than (\d+)$/ do |expectation|
-  #SdcTest.log.step "Navigation Bar: Wait while balance less than #{expectation}"
+  #SdcLog.step "Navigation Bar: Wait while balance less than #{expectation}"
   expectation = expectation.to_f
   for i in 0..30
       new_balance = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
-      SdcTest.log.info "New Account Balance: $#{new_balance}"
+      SdcLog.info "New Account Balance: $#{new_balance}"
       sleep(0.35)
       break if new_balance > expectation
       SdcTest.driver.refresh

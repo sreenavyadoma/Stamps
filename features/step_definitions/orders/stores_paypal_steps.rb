@@ -22,27 +22,27 @@ Then /^PayPal Email Verification Required: Close modal$/ do
 end
 
 Then /^PayPal Email Verification Required: Send Email Verification$/ do
-  #SdcTest.log.step "PayPal Email Verification Required: Send Email Verification"
+  #SdcLog.step "PayPal Email Verification Required: Send Email Verification"
   @verification_sent=stamps.orders.marketplace.paypal.email_verification_modal.send_email_verification
 end
 
 Then /^PayPal: Expect Email Verification Sent modal is present$/ do
-  #SdcTest.log.step "PayPal: Expect Email Verification Sent modal is present"
+  #SdcLog.step "PayPal: Expect Email Verification Sent modal is present"
   expectation="Email Verification Sent modal is present"
   if @verification_sent.nil?
     expectation="Email Verification Sent modal is not present"
   else
     expectation="Email Verification Sent modal is not present" unless @verification_sent.present?
   end
-  #SdcTest.log.step "Test #{(expectation=="Email Verification Sent modal is present")?"Passed":"Failed"}"
+  #SdcLog.step "Test #{(expectation=="Email Verification Sent modal is present")?"Passed":"Failed"}"
   expect(expectation).to eql "Email Verification Sent modal is present"
 end
 
 Then /^PayPal: Expect Verification Email is sent to (.*)$/ do |expectation|
-  #SdcTest.log.step "PayPal: Expect Verification Email is sent to #{expectation}"
+  #SdcLog.step "PayPal: Expect Verification Email is sent to #{expectation}"
   actual=@verification_sent.email
   @verification_sent.close
-  #SdcTest.log.step "Test #{(actual==expectation)?"Passed":"Failed"}"
+  #SdcLog.step "Test #{(actual==expectation)?"Passed":"Failed"}"
   expect(actual).to eql expectation
 end
 

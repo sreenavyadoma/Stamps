@@ -12,7 +12,7 @@ module Stamps
           raise ArgumentError, "Invalid environment selection: #{param.env}"
       end
       sleep(1)
-      log.message driver.text
+      log.info driver.text
       driver.text
     end
 
@@ -28,7 +28,7 @@ module Stamps
           raise ArgumentError, "Invalid environment selection: #{param.env}"
       end
       sleep(1)
-      log.message driver.text
+      log.info driver.text
       driver.text
     end
 
@@ -44,7 +44,7 @@ module Stamps
           raise ArgumentError, "Invalid environment selection: #{param.env}"
       end
       sleep(1)
-      log.message driver.text
+      log.info driver.text
       driver.text
     end
 
@@ -60,7 +60,7 @@ module Stamps
           raise ArgumentError, "Invalid environment selection: #{param.env}"
       end
       sleep(1)
-      log.message driver.text
+      log.info driver.text
       driver.text
     end
   end

@@ -345,7 +345,7 @@ module Stamps
               5.times do
                 begin
                   if signed_in_user.present?
-                    log.message("Signed-in user: #{signed_in_user.text}")
+                    log.info("Signed-in user: #{signed_in_user.text}")
                     break
                   end
                   if whats_new_modal.present?
@@ -423,10 +423,10 @@ module Stamps
               password = ENV['PW']
             end
           else
-            log.message 'Using Default Sign-in Credentials.'
+            log.info 'Using Default Sign-in Credentials.'
             username = ENV['USR']
             password = ENV['PW']
-            log.message "USERNAME: #{username}, PASSWORD: #{password}"
+            log.info "USERNAME: #{username}, PASSWORD: #{password}"
           end
 
           sign_in_link = StampsField.new driver.link(text: 'Sign In')

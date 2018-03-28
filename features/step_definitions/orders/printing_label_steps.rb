@@ -1,5 +1,5 @@
 Then /^View Print On option (.*) tooltip$/ do |label|
-  #SdcTest.log.step "View Print On option #{label} tooltip"
+  #SdcLog.step "View Print On option #{label} tooltip"
   tooltip=stamps.orders.modals.orders_print_modal.print_on_tooltip label
 end
 
@@ -8,9 +8,9 @@ end
 #Can be used to ship Large Envelopes, Packages, USPS Flat Rate Envelopes or Boxes, or USPS Regional Rate Boxes to any U.S. destination.
 #Avery 5126, 8126, 5526, 5783, 15516, 18126, 85783
 Then /^[Ee]xpect (.*) tool-tip to contain \"(.*)\"$/ do |label, tooltip_message|
-  #SdcTest.log.step "Expect #{label} tool-tip to contain #{tooltip_message}"
-  SdcTest.log.step label
-  SdcTest.log.step tooltip_message
+  #SdcLog.step "Expect #{label} tool-tip to contain #{tooltip_message}"
+  SdcLog.step label
+  SdcLog.step tooltip_message
 end
 
 

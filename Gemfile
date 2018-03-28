@@ -13,11 +13,10 @@ gem 'yml_reader'
 gem 'holidays'
 gem 'spreadsheet'
 gem 'measured'
-gem 'require_all'
+gem 'mysql2'
 #gem 'appium_lib'
 #gem 'appium_lib_core'
 
-#gem 'mysql2'
 
 #gem 'watir', '6.2.1'
 #gem 'selenium-webdriver', '3.4.0'
