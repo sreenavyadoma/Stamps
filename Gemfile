@@ -13,7 +13,7 @@ gem 'yml_reader'
 gem 'holidays'
 gem 'spreadsheet'
 gem 'measured'
-gem 'require_all'
+#gem 'require_all'
 #gem 'appium_lib'
 #gem 'appium_lib_core'
 
