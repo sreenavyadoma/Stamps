@@ -152,6 +152,7 @@ module Stamps
 
       def start(scenario)
         @scenario = scenario
+        SdcLog.initialize(verbose: SdcEnv.verbose)
         SdcEnv.browser ||= browser_selection(ENV['BROWSER'])
         SdcEnv.i_device_name ||= i_device_selection(ENV['IDEVICENAME'])
         SdcEnv.verbose ||= ENV['VERBOSE'].nil? ? false : ENV['VERBOSE'].downcase == 'true'
@@ -162,13 +163,12 @@ module Stamps
         SdcEnv.pw ||= ENV['PW']
         SdcEnv.env ||= test_env(ENV['URL'])
         SdcEnv.firefox_profile ||= ENV['FIREFOX_PROFILE']
-        SdcLog.initialize(verbose: SdcEnv.verbose)
 
         #todo-Rob These should be in an orders/mail or sdc_apps environment variable container. This is a temp fix.
         SdcEnv.printer = ENV['PRINTER']
 
         @web_apps_param = Stamps::WebApps::Param.new
-        @web_apps_param.log = @log
+        @web_apps_param.log = SdcLog # this will have to change
         @web_apps_param.test_scenario
         @web_apps_param.test_scenario
         @web_apps_param.env = SdcEnv.env
