@@ -37,7 +37,7 @@ module Stamps
         username.present? && password.present? && sign_in.present? && remember_me.present?
       end
 
-      def sign_in_with(usr, pwd, persist = 2)
+      def sign_in_with(usr, pwd)
         username.set usr
         password.set pwd
         sign_in.safe_click(ctr: 2).send_keys_while_present(:enter, ctr: 2)
