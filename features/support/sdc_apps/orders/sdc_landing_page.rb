@@ -54,12 +54,9 @@ module Stamps
     end
 
     class ILandingPage < SdcPageObject
-      element(:username, required: true) { SdcElement.new(browser.text_field(css: '[placeholder=USERNAME]')) }
-      element(:password, required: true) { SdcElement.new(browser.text_field(css: '[placeholder=PASSWORD]')) }
-      element(:sign_in, required: true) { SdcElement.new(browser.span(text: 'Sign In')) }
-      element(:remember_me) { SdcChooser.new(SdcElement.new(browser.span(:id, '[class*=remember-username-checkbox]')),
-                                             SdcElement.new(browser.div(css: '[class*=remember-username-checkbox] [id$=-displayEl]')),
-                                             'class', 'checked') }
+      element(:username, required: true) { SdcElement.new(browser.find_element(xpath: "//input[@placeholder='USERNAME']")) }
+      element(:password, required: true) { SdcElement.new(browser.text_fifind_elementeld(xpath: "//input[@placeholder='PASSWORD']")) }
+      element(:sign_in, required: true) { SdcElement.new(browser.find_element(xpath: "//span[contains(text(), 'Sign In')]")) }
 
       page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Orders&" }
 

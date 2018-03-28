@@ -70,6 +70,7 @@ module Stamps
         @@browser = browser
       end
 
+
       def browser
         @@browser
       end
@@ -77,13 +78,25 @@ module Stamps
     end
 
     attr_reader :browser
+    alias_method :driver, :browser
 
     def initialize(browser = @@browser)
       @browser = browser
     end
 
+
+    #@driver.current_url @driver.title
+
+
     def inspect
-      '#<%s url=%s title=%s>' % [self.class, url.inspect, title.inspect]
+      text = ''
+      if browser.is_a?(Watir::Browser)
+        text = '#<%s url=%s title=%s>' % [self.class, url.inspect, title.inspect]
+        SdcLog.warn text
+      end
+      text = '#<%s url=%s title=%s>' % [self.class, current_url.inspect, title.inspect]
+      SdcLog.warn text
+      text
     end
     alias_method :selector_string, :inspect
 
@@ -110,7 +123,12 @@ module Stamps
     end
 
     def goto(*args)
-      browser.goto page_url(*args)
+      return browser.get page_url(*args) if browser.is_a? Appium::Core::Base::Driver
+      return browser.goto page_url(*args) if browser.is_a? Watir::Browser
+
+      exception = Selenium::WebDriver::Error::WebDriverError
+      message = "Unsupported driver #{browser.class}"
+      raise exception, message unless page_verifiable?
     end
 
     def method_missing(method, *args, &block)
@@ -134,6 +152,9 @@ module Stamps
 
     def known_method(method, *args, &block)
       @element.send(method, *args, &block)
+      if @element.respond_to?(method)
+
+      end
     end
 
     def present?

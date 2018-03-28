@@ -28,7 +28,7 @@ module Stamps
 
   class SdcDeviceDriver
     class << self
-      attr_reader :driver #:core_driver,
+      attr_reader :core_driver
       def configure(device_name)
         file_path = File.expand_path("../../sdc_idevices/caps/#{device_name}.txt", __FILE__)
         raise "#{device_name}: Missing Capabilities file - #{file_path}" unless File.exist?(file_path)
@@ -36,14 +36,14 @@ module Stamps
         #Appium::Driver.new(caps, true)
         #Appium.promote_appium_methods Stamps
         #@core_driver = $driver
-        @driver = Appium::Driver.new(caps, false)
+        @core_driver = Appium::Driver.new(caps, false)
         #@driver.start_driver
         self
       end
 
       def start
         begin
-          @driver.start_driver
+          @core_driver.start_driver
         rescue => e
           SdcLog.error e.message
           SdcLog.error e.backtrace.join("\n")
@@ -51,9 +51,11 @@ module Stamps
         self
       end
 
-      def driver
-        @driver.driver
+      def web_driver
+        @core_driver.driver
       end
+      alias_method :browser, :web_driver
+      alias_method :driver, :web_driver
     end
   end
 
@@ -140,7 +142,7 @@ module Stamps
             raise "Driver setup failed: #{e.message}", e
           end
         elsif SdcEnv.i_device_name
-          @driver = SdcDeviceDriver.configure(SdcEnv.i_device_name.to_s).start.driver
+          @driver = SdcDeviceDriver.configure(SdcEnv.i_device_name.to_s).start.web_driver
         else
           raise ArgumentError, "Neither BROWSER nor IDEVICENAME is defined for test #{test_scenario}. Expected values are: #{SdcEnv::BROWSERS.inspect} and #{SdcEnv::IDEVICES.inspect}"
         end
