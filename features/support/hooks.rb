@@ -8,8 +8,6 @@ include RSpec
 include RSpec::Matchers
 include DataMagic
 
-include Appium
-
 # WebDriver
 # include Spreadsheet
 #include RAutomation
