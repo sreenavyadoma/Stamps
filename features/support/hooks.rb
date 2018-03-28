@@ -9,9 +9,9 @@ include RSpec::Matchers
 include DataMagic
 
 # WebDriver
-# include Spreadsheet
+include Spreadsheet
 #include RAutomation
-#
+
 Before do  |scenario|
   SdcTest.start(scenario)
 end

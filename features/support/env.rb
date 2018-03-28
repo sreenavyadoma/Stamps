@@ -3,10 +3,10 @@ $LOAD_PATH << File.expand_path('lib/features/orders', __FILE__)
 $LOAD_PATH << File.expand_path('features/support/lib', __FILE__)
 
 
-# require 'watir'
-# require 'spreadsheet'
-# require "csv"
-# require "rautomation"
+require 'watir'
+require 'spreadsheet'
+require "csv"
+require "rautomation"
 
 require 'data_magic'
 require 'rake'
@@ -25,8 +25,8 @@ require 'holidays'
 require 'socket'
 
 # Appium
-require 'appium_lib'
-require 'appium_lib_core'
+#require 'appium_lib'
+#require 'appium_lib_core'
 
 require_relative 'sdc_core/sdc_core'
 require_relative 'lib/core/stamps_element'
