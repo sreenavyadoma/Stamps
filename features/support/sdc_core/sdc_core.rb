@@ -143,20 +143,13 @@ module Stamps
       @element = element
     end
 
-    def known_method(method, *args, &block)
-      @element.send(method, *args, &block)
-      if @element.respond_to?(method)
-
-      end
-    end
-
     def present?
-      @element.send(:present?) if @element.is_a? ::Watir::Element
+      @element.send(:present?)
     end
 
     def disabled?
       begin
-        return @element.disabled? if @element.is_a? ::Watir::Element
+        return @element.disabled?
       rescue
         # ignore
       end
@@ -165,7 +158,7 @@ module Stamps
 
     def enabled?
       begin
-        return @element.enabled? if @element.is_a? ::Watir::Element
+        return @element.enabled?
       rescue
         # ignore
       end
@@ -174,7 +167,7 @@ module Stamps
 
     def visible?
       begin
-        return @element.visible? if @element.is_a? ::Watir::Element
+        return @element.visible?
       rescue
         # ignore
       end
@@ -182,16 +175,16 @@ module Stamps
     end
 
     def truthy?
-      !@element.nil? && @element.exist? if @element.is_a? ::Watir::Element
+      !@element.nil? && @element.exist?
     end
 
     def clickable?
-      truthy? && @element.present? && enabled? if @element.is_a? ::Watir::Element
+      truthy? && @element.present? && enabled?
     end
 
     def hover
       begin
-        @element.hover if @element.present? if @element.is_a? ::Watir::Element
+        @element.hover
       rescue
         # ignore
       end
@@ -202,7 +195,7 @@ module Stamps
     def safe_click(*modifiers, ctr: 1)
       ctr.to_i.times do
         begin
-          @element.click(*modifiers) if @element.is_a? ::Watir::Element
+          @element.click(*modifiers)
         rescue
           # ignore
         end
@@ -212,7 +205,7 @@ module Stamps
     end
 
     def set(*args)
-      @element.set(*args) if @element.is_a? ::Watir::Element
+      @element.set(*args)
     end
 
     def safe_set(*args, ctr: 1)
@@ -228,7 +221,7 @@ module Stamps
     end
 
     def send_keys(*args)
-      @element.send_keys(*args) if @element.is_a? ::Watir::Element
+      @element.send_keys(*args)
     end
 
     def safe_send_keys(*args, ctr: 1)
@@ -245,7 +238,7 @@ module Stamps
 
     def safe_wait_while_present(timeout: nil, interval: nil)
       begin
-        @element.wait_while_present(timeout, interval) if @element.is_a? ::Watir::Element
+        @element.wait_while_present(timeout, interval)
       rescue
         # ignore
       end
@@ -255,7 +248,7 @@ module Stamps
 
     def safe_wait_until_present(timeout: nil, interval: nil)
       begin
-        @element.wait_until_present(timeout, interval) if @element.is_a? ::Watir::Element
+        @element.wait_until_present(timeout, interval)
       rescue
         # ignore
       end
@@ -265,21 +258,15 @@ module Stamps
 
     def text_value
       begin
-        if @element.is_a? ::Watir::Element
-          text = @element.text
-          return text if text.size > 0
-        end
-
+        text = @element.text
+        return text if text.size > 0
       rescue
         # ignore
       end
 
       begin
-        if @element.is_a? ::Watir::Element
-          value = @element.value
-          return value if value.size > 0
-        end
-
+        value = @element.value
+        return value if value.size > 0
       rescue
         # ignore
       end
@@ -308,7 +295,6 @@ module Stamps
           break unless clickable?
           safe_send_keys(*args)
           safe_wait_while_present(1)
-          break unless present?
         rescue
           # ignore
         end
@@ -320,7 +306,7 @@ module Stamps
     def safe_double_click(ctr: 1)
       ctr.to_i.times do
         begin
-          @element.double_click  if @element.is_a? ::Watir::Element
+          @element.double_click
         rescue
           # ignore
         end
