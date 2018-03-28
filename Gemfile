@@ -4,7 +4,7 @@ source 'http://rubygems.org'
 #gem 'rautomation'
 
 # Common
-
+gem 'selenium-webdriver'
 gem 'rspec', '3.6.0'
 gem 'cucumber', '3.1.0'
 gem 'gherkin'

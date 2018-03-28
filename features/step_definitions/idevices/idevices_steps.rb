@@ -1,10 +1,10 @@
 
 Then /^load mail sign-in page$/ do
-  #SdcDeviceDriver.driver.get "https://print.stamps.com/Webpostage/default2.aspx?"
-  SdcDeviceDriver.driver.get "https://printext.qasc.stamps.com/webpostage/default2.aspx#"
-  @serial_number = SdcDeviceDriver.driver.find_element(id: "sdc-mainpanel-nsserialtextfield-inputEl")
+  #SdcIDriver.driver.get "https://print.stamps.com/Webpostage/default2.aspx?"
+  SdcIDriver.driver.get "https://printext.qasc.stamps.com/webpostage/default2.aspx#"
+  @serial_number = SdcIDriver.driver.find_element(id: "sdc-mainpanel-nsserialtextfield-inputEl")
   SdcLog.info "@serial_number.tag_name}=#{@serial_number.tag_name}"
-  @mail_settings = SdcDeviceDriver.driver.find_element(css: "[class*=sdc-icon-settings]")
+  @mail_settings = SdcIDriver.driver.find_element(css: "[class*=sdc-icon-settings]")
   SdcLog.info "@mail_settings.tag_name}=#{@mail_settings.tag_name}"
 end
 

@@ -26,18 +26,24 @@ module Stamps
     attr_reader :driver
   end
 
-  class SdcDeviceDriver
+  class SdcIDriver
     class << self
       attr_reader :core_driver
       def configure(device_name)
-        file_path = File.expand_path("../../sdc_idevices/caps/#{device_name}.txt", __FILE__)
-        raise "#{device_name}: Missing Capabilities file - #{file_path}" unless File.exist?(file_path)
-        caps = Appium.load_appium_txt file: file_path, verbose: true
-        #Appium::Driver.new(caps, true)
-        #Appium.promote_appium_methods Stamps
-        #@core_driver = $driver
-        @core_driver = Appium::Driver.new(caps, false)
-        #@driver.start_driver
+        begin
+          file_path = File.expand_path("../../sdc_idevices/caps/#{device_name}.txt", __FILE__)
+
+          exception = Selenium::WebDriver::Error::WebDriverError
+          message = "Capabilities file does not exist for device #{device_name}. #{file_path}"
+          raise exception, message unless File.exist?(file_path)
+
+          caps = Appium.load_appium_txt file: file_path, verbose: true
+          @core_driver = Appium::Driver.new(caps, false)
+        rescue Exception => e
+          SdcLog.error e.message
+          SdcLog.error e.backtrace.join("\n")
+          raise e, e.message
+        end
         self
       end
 
@@ -142,7 +148,7 @@ module Stamps
             raise "Driver setup failed: #{e.message}", e
           end
         elsif SdcEnv.i_device_name
-          @driver = SdcDeviceDriver.configure(SdcEnv.i_device_name.to_s).start.web_driver
+          @driver = SdcIDriver.configure(SdcEnv.i_device_name.to_s).start.web_driver
         else
           raise ArgumentError, "Neither BROWSER nor IDEVICENAME is defined for test #{test_scenario}. Expected values are: #{SdcEnv::BROWSERS.inspect} and #{SdcEnv::IDEVICES.inspect}"
         end
@@ -176,7 +182,7 @@ module Stamps
         @web_apps_param.pw = SdcEnv.pw
         @web_apps_param.printer = SdcEnv.printer
         @web_apps_param.sdc_app = SdcEnv.sdc_app
-        print_test_steps
+        #print_test_steps
       end
 
       def web_apps_param
@@ -303,3 +309,8 @@ module Stamps
   end
 end
 #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
+#
+#Appium::Driver.new(caps, true)
+#Appium.promote_appium_methods Stamps
+#@core_driver = $driver
+#@driver.start_driver
