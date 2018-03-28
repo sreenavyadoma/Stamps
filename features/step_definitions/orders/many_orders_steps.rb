@@ -21,9 +21,9 @@ Then /^Create (\d+) new orders with Address set to (.*) and service set to (.*)$
     step "set Order Details Ship-To address to #{address}"
     #SETTING SERVICE
     #step "set Order Details service to #{service}"
-    #SdcTest.log.step "set Order Details service to #{service}"
+    #SdcLog.step "set Order Details service to #{service}"
     batch.order_details.service.select service
-    #SdcTest.log.step "Order #{iteration} created."
+    #SdcLog.step "Order #{iteration} created."
     sleep(0.35)
   }
 end

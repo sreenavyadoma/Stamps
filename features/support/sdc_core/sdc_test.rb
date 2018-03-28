@@ -19,7 +19,7 @@ module Stamps
 
     def method_missing(method, *args, &block)
       super unless driver.respond_to?(method)
-      driver.send(method, *args, &block)
+      @driver.send(method, *args, &block)
     end
 
     private
@@ -28,32 +28,41 @@ module Stamps
 
   class SdcDeviceDriver
     class << self
-      attr_reader :driver #:core_driver,
+      attr_reader :core_driver
       def configure(device_name)
-        caps = Appium.load_appium_txt file: File.expand_path("../../sdc_idevices/caps/#{device_name}.txt", __FILE__), verbose: true
+        file_path = File.expand_path("../../sdc_idevices/caps/#{device_name}.txt", __FILE__)
+        raise "#{device_name}: Missing Capabilities file - #{file_path}" unless File.exist?(file_path)
+        caps = Appium.load_appium_txt file: file_path, verbose: true
         #Appium::Driver.new(caps, true)
         #Appium.promote_appium_methods Stamps
         #@core_driver = $driver
-        @driver = Appium::Driver.new(caps, false)
+        @core_driver = Appium::Driver.new(caps, false)
         #@driver.start_driver
         self
       end
 
       def start
-        @driver.start_driver
+        begin
+          @core_driver.start_driver
+        rescue => e
+          SdcLog.error e.message
+          SdcLog.error e.backtrace.join("\n")
+        end
         self
       end
 
-      def driver
-        @driver.driver
+      def web_driver
+        @core_driver.driver
       end
+      alias_method :browser, :web_driver
+      alias_method :driver, :web_driver
     end
   end
 
   class SdcTest
     class << self
       include Stamps::Core
-      attr_reader :driver, :test_scenario, :scenario, :log
+      attr_reader :driver, :test_scenario, :scenario
 
       def configure
         if SdcEnv.browser
@@ -127,21 +136,23 @@ module Stamps
             end
 
             @driver.driver.manage.timeouts.page_load = 12
-            SdcWebsite.browser = @driver
           rescue Exception => e
-            log.error e.message
-            log.error e.backtrace.join("\n")
+            SdcLog.error e.message
+            SdcLog.error e.backtrace.join("\n")
             raise "Driver setup failed: #{e.message}", e
           end
         elsif SdcEnv.i_device_name
-          @driver = SdcDeviceDriver.configure(SdcEnv.i_device_name.to_s).start.driver
+          @driver = SdcDeviceDriver.configure(SdcEnv.i_device_name.to_s).start.web_driver
         else
           raise ArgumentError, "Neither BROWSER nor IDEVICENAME is defined for test #{test_scenario}. Expected values are: #{SdcEnv::BROWSERS.inspect} and #{SdcEnv::IDEVICES.inspect}"
         end
+
+        SdcPageObject.browser = @driver
       end
 
       def start(scenario)
         @scenario = scenario
+        SdcLog.initialize(verbose: SdcEnv.verbose)
         SdcEnv.browser ||= browser_selection(ENV['BROWSER'])
         SdcEnv.i_device_name ||= i_device_selection(ENV['IDEVICENAME'])
         SdcEnv.verbose ||= ENV['VERBOSE'].nil? ? false : ENV['VERBOSE'].casecmp('true') == 0
@@ -152,15 +163,12 @@ module Stamps
         SdcEnv.pw ||= ENV['PW']
         SdcEnv.env ||= test_env(ENV['URL'])
         SdcEnv.firefox_profile ||= ENV['FIREFOX_PROFILE']
-        logger = Log4r::Logger.new(":")
-        logger.outputters = Outputter.stdout
-        @log = SdcLogger.new(logger, SdcEnv.verbose)
 
         #todo-Rob These should be in an orders/mail or sdc_apps environment variable container. This is a temp fix.
         SdcEnv.printer = ENV['PRINTER']
 
         @web_apps_param = Stamps::WebApps::Param.new
-        @web_apps_param.log = @log
+        @web_apps_param.log = SdcLog # this will have to change
         @web_apps_param.test_scenario
         @web_apps_param.test_scenario
         @web_apps_param.env = SdcEnv.env
@@ -179,14 +187,14 @@ module Stamps
 
       def print_test_steps
         raise ArgumentError, 'Set scenario object before printing test steps' if @scenario.nil?
-        log.info "- Feature: #{scenario.feature}"
-        log.info "- Scenario: #{scenario.name}"
-        log.info "- Tags:"
-        scenario.tags.each_with_index { |tag, index| log.info "--Tag #{index + 1}: #{tag.name}" }
-        log.info "- Steps:"
-        scenario.test_steps.each_with_index { |steps, index| log.info "-- #{steps.source.last.keyword}#{steps.text}" }
-        log.info "-"
-        log.info "-"
+        SdcLog.info "- Feature: #{scenario.feature}"
+        SdcLog.info "- Scenario: #{scenario.name}"
+        SdcLog.info "- Tags:"
+        scenario.tags.each_with_index { |tag, index| SdcLog.info "--Tag #{index + 1}: #{tag.name}" }
+        SdcLog.info "- Steps:"
+        scenario.test_steps.each_with_index { |steps, index| SdcLog.info "-- #{steps.source.last.keyword}#{steps.text}" }
+        SdcLog.info "-"
+        SdcLog.info "-"
       end
 
       def teardown
@@ -195,11 +203,11 @@ module Stamps
         rescue
           # ignore
         end
-        log.info "#{@browser} closed."
+        SdcLog.info "#{@browser} closed."
       end
 
       def clear_cookies
-        log.info "Clearing cookies"
+        SdcLog.info "Clearing cookies"
         begin
           driver.cookies.clear
         rescue

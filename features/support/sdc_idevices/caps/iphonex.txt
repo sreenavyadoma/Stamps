@@ -1,6 +1,6 @@
 [caps]
 appiumVersion = "1.7.2"
-deviceName = "iPhone X Simulator"
+deviceName = "iPhone X"
 deviceOrientation = "portrait"
 platformVersion = "11.2"
 platformName = "iOS"

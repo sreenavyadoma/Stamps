@@ -27,11 +27,36 @@ module Stamps
       element(:username, required: true) { SdcElement.new(browser.text_field(css: '[placeholder=USERNAME]')) }
       element(:password, required: true) { SdcElement.new(browser.text_field(css: '[placeholder=PASSWORD]')) }
       element(:sign_in, required: true) { SdcElement.new(browser.span(text: 'Sign In')) }
-      element(:loading_orders) { SdcElement.new(browser.div(text: 'Loading orders...')) }
       element(:remember_me) { SdcChooser.new(SdcElement.new(browser.span(:id, '[class*=remember-username-checkbox]')),
                                              SdcElement.new(browser.div(css: '[class*=remember-username-checkbox] [id$=-displayEl]')),
                                              'class', 'checked') }
-      element(:signed_in_user) {SdcElement.new(browser.span(id: 'userNameText'))}
+
+      page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Orders&" }
+
+      def present?
+        username.present? && password.present? && sign_in.present? && remember_me.present?
+      end
+
+      def sign_in_with(usr, pwd)
+        username.set usr
+        password.set pwd
+        sign_in.safe_click(ctr: 2).send_keys_while_present(:enter, ctr: 2)
+        username.safe_wait_while_present(timeout: 10)
+        Object.const_get(if SdcEnv.browser
+                           "Orders::SdcOrders"
+                         elsif SdcEnv.i_device_name
+                           "Mobile::SdcOrders"
+                         else
+                           raise "Can not determine if mobile or browser test."
+                         end
+        ).new
+      end
+    end
+
+    class ILandingPage < SdcPageObject
+      element(:username, required: true) { SdcElement.new(browser.find_element(xpath: "//input[@placeholder='USERNAME']")) }
+      element(:password, required: true) { SdcElement.new(browser.text_fifind_elementeld(xpath: "//input[@placeholder='PASSWORD']")) }
+      element(:sign_in, required: true) { SdcElement.new(browser.find_element(xpath: "//span[contains(text(), 'Sign In')]")) }
 
       page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Orders&" }
 

@@ -844,9 +844,9 @@ module Stamps
               # new accounts will connect to ShipStation for the first time.
               20.times do
                 if initializing_db.present?
-                  log.message initializing_db.text
-                  log.message initializing_db.text
-                  log.message initializing_db.text
+                  log.info initializing_db.text
+                  log.info initializing_db.text
+                  log.info initializing_db.text
                   initializing_db.wait_while_present(3)
                   break unless initializing_db.present?
                 end

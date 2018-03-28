@@ -9,7 +9,7 @@ include RSpec::Matchers
 include DataMagic
 include RAutomation
 include Spreadsheet
-#include Appium
+include Appium
 
 Before do  |scenario|
   SdcTest.start(scenario)
@@ -20,6 +20,6 @@ After do |scenario|
   @stamps = nil #TODO-Rob this needs to exist in StampsTest
   @health = nil
   user_credentials.close
-  SdcTest.log.error "#{scenario.feature} #{scenario.name}:\n#{scenario.exception.message}" if scenario.failed?
+  SdcLog.error "#{scenario.feature} #{scenario.name}:\n#{scenario.exception.message}" if scenario.failed?
 end
 

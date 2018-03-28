@@ -60,11 +60,11 @@ Then /^Manage [Ss]tores: Close Modal$/ do
 end
 
 Then /^Manage [Ss]tores: Delete Row (\d+)$/ do |row|
-  #SdcTest.log.step "Manage [Ss]tores: Delete Row #{row}"
+  #SdcLog.step "Manage [Ss]tores: Delete Row #{row}"
   step "Manage [Ss]tores: Open Modal"
   grid=@manage_stores.stores_grid
   size=grid.size
-  #SdcTest.log.step "Grid Count before delete is #{size}"
+  #SdcLog.step "Grid Count before delete is #{size}"
   delete_modal=@manage_stores.stores_grid.delete_row row
   delete_modal.delete
   expect(delete_modal.present?).not_to be(true)
@@ -89,15 +89,15 @@ Then /^Manage [Ss]tores: Delete$/ do
 end
 
 Then /^Manage [Ss]tores: Reconnect$/ do
-  #SdcTest.log.step "Manage [Ss]tores: Reconnect"
+  #SdcLog.step "Manage [Ss]tores: Reconnect"
   @store=@manage_stores.reconnect
 end
 
 Then /^Manage [Ss]tores: Edit$/ do
-  #SdcTest.log.step "Manage [Ss]tores: Edit"
+  #SdcLog.step "Manage [Ss]tores: Edit"
   @store_settings=@manage_stores.edit
   test_result="Store [Ss]ettings modal is #{(@store_settings.present?)?"present":"not present"} - Test #{(@store_settings.present?)?"passed":"failed"}"
-  SdcTest.log.step test_result
+  SdcLog.step test_result
   if @store_settings.nil?||!(@store_settings.present?)
     raise test_result
   end

@@ -70,6 +70,7 @@ module Stamps
         @@browser = browser
       end
 
+
       def browser
         @@browser
       end
@@ -77,13 +78,25 @@ module Stamps
     end
 
     attr_reader :browser
+    alias_method :driver, :browser
 
     def initialize(browser = @@browser)
       @browser = browser
     end
 
+
+    #@driver.current_url @driver.title
+
+
     def inspect
-      '#<%s url=%s title=%s>' % [self.class, url.inspect, title.inspect]
+      text = ''
+      if browser.is_a?(Watir::Browser)
+        text = '#<%s url=%s title=%s>' % [self.class, url.inspect, title.inspect]
+        SdcLog.warn text
+      end
+      text = '#<%s url=%s title=%s>' % [self.class, current_url.inspect, title.inspect]
+      SdcLog.warn text
+      text
     end
     alias_method :selector_string, :inspect
 
@@ -110,7 +123,12 @@ module Stamps
     end
 
     def goto(*args)
-      browser.goto page_url(*args)
+      return browser.get page_url(*args) if browser.is_a? Appium::Core::Base::Driver
+      return browser.goto page_url(*args) if browser.is_a? Watir::Browser
+
+      exception = Selenium::WebDriver::Error::WebDriverError
+      message = "Unsupported driver #{browser.class}"
+      raise exception, message unless page_verifiable?
     end
 
     def method_missing(method, *args, &block)
@@ -132,9 +150,20 @@ module Stamps
       @element = element
     end
 
+    def known_method(method, *args, &block)
+      @element.send(method, *args, &block)
+      if @element.respond_to?(method)
+
+      end
+    end
+
+    def present?
+      @element.send(:present?) if @element.is_a? ::Watir::Element
+    end
+
     def disabled?
       begin
-        return @element.disabled?
+        return @element.disabled? if @element.is_a? ::Watir::Element
       rescue
         # ignore
       end
@@ -143,7 +172,7 @@ module Stamps
 
     def enabled?
       begin
-        return @element.enabled?
+        return @element.enabled? if @element.is_a? ::Watir::Element
       rescue
         # ignore
       end
@@ -152,7 +181,7 @@ module Stamps
 
     def visible?
       begin
-        return @element.visible?
+        return @element.visible? if @element.is_a? ::Watir::Element
       rescue
         # ignore
       end
@@ -160,16 +189,16 @@ module Stamps
     end
 
     def truthy?
-      !@element.nil? && @element.exist?
+      !@element.nil? && @element.exist? if @element.is_a? ::Watir::Element
     end
 
     def clickable?
-      truthy? && @element.present? && enabled?
+      truthy? && @element.present? && enabled? if @element.is_a? ::Watir::Element
     end
 
     def hover
       begin
-        @element.hover if @element.present?
+        @element.hover if @element.present? if @element.is_a? ::Watir::Element
       rescue
         # ignore
       end
@@ -180,7 +209,7 @@ module Stamps
     def safe_click(*modifiers, ctr: 1)
       ctr.to_i.times do
         begin
-          @element.click(*modifiers)
+          @element.click(*modifiers) if @element.is_a? ::Watir::Element
         rescue
           # ignore
         end
@@ -189,10 +218,14 @@ module Stamps
       self
     end
 
+    def set(*args)
+      @element.set(*args) if @element.is_a? ::Watir::Element
+    end
+
     def safe_set(*args, ctr: 1)
       ctr.to_i.times do
         begin
-          @element.set(*args)
+          set(*args)
         rescue
           # ignore
         end
@@ -201,10 +234,14 @@ module Stamps
       text_value
     end
 
+    def send_keys(*args)
+      @element.send_keys(*args) if @element.is_a? ::Watir::Element
+    end
+
     def safe_send_keys(*args, ctr: 1)
       ctr.to_i.times do
         begin
-          @element.send_keys(*args)
+          send_keys(*args)
         rescue
           # ignore
         end
@@ -215,7 +252,7 @@ module Stamps
 
     def safe_wait_while_present(timeout: nil, interval: nil)
       begin
-        @element.wait_while_present(timeout, interval)
+        @element.wait_while_present(timeout, interval) if @element.is_a? ::Watir::Element
       rescue
         # ignore
       end
@@ -225,7 +262,7 @@ module Stamps
 
     def safe_wait_until_present(timeout: nil, interval: nil)
       begin
-        @element.wait_until_present(timeout, interval)
+        @element.wait_until_present(timeout, interval) if @element.is_a? ::Watir::Element
       rescue
         # ignore
       end
@@ -235,15 +272,21 @@ module Stamps
 
     def text_value
       begin
-        text = @element.text
-        return text if text.size > 0
+        if @element.is_a? ::Watir::Element
+          text = @element.text
+          return text if text.size > 0
+        end
+
       rescue
         # ignore
       end
 
       begin
-        value = @element.value
-        return value if value.size > 0
+        if @element.is_a? ::Watir::Element
+          value = @element.value
+          return value if value.size > 0
+        end
+
       rescue
         # ignore
       end
@@ -251,12 +294,13 @@ module Stamps
       nil
     end
 
-    def click_while_present(*modifiers, ctr: 2, wait: 1)
+    def click_while_present(*modifiers, ctr: 2)
       ctr.to_i.times do
         begin
           break unless clickable?
           safe_click(*modifiers)
-          safe_wait_while_present(wait)
+          safe_wait_while_present(1)
+          break unless present?
         rescue
           # ignore
         end
@@ -265,12 +309,13 @@ module Stamps
       clickable?
     end
 
-    def send_keys_while_present(*args, ctr: 2, wait: 1)
+    def send_keys_while_present(*args, ctr: 2)
       ctr.to_i.times do
         begin
           break unless clickable?
           safe_send_keys(*args)
-          safe_wait_while_present(wait)
+          safe_wait_while_present(1)
+          break unless present?
         rescue
           # ignore
         end
@@ -282,7 +327,7 @@ module Stamps
     def safe_double_click(ctr: 1)
       ctr.to_i.times do
         begin
-          field.double_click if clickable?
+          @element.double_click  if @element.is_a? ::Watir::Element
         rescue
           # ignore
         end
@@ -294,7 +339,8 @@ module Stamps
     def blur_out(ctr: 1)
       ctr.to_i.times do
         begin
-          safe_double_click; safe_click
+          safe_double_click
+          safe_click
         rescue
           # ignore
         end

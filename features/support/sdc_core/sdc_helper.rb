@@ -1,9 +1,10 @@
 module Stamps
-  module Core
-    class SdcLogger < BasicObject
-      def initialize(logger, verbose)
-        @logger = logger
+  class SdcLog < BasicObject
+    class << self
+      def initialize(verbose: true)
         @verbose = verbose
+        @logger = Log4r::Logger.new(":")
+        @logger.outputters = Outputter.stdout
       end
 
       def info(str)

@@ -1,21 +1,69 @@
 
 Then /^visit Sdc Website$/ do
-  SdcWebsite.visit
+  if SdcEnv.browser
+    case SdcEnv.sdc_app
+      when :orders
+        Orders::LandingPage.visit(case SdcEnv.env
+                                    when :qacc
+                                      'ext.qacc'
+                                    when :qasc
+                                      'ext.qasc'
+                                    when :stg
+                                      '.testing'
+                                    when :prod
+                                      ''
+                                    else
+                                      # ignore
+                                  end
+        )
+      when :mail
+        raise "Not implemented!"
+      else
+        raise ArgumentError, "Undefined App :#{SdcEnv.sdc_app}"
+    end
+  elsif SdcEnv.i_device_name
+    Orders::ILandingPage.visit(case SdcEnv.env
+                                 when :qacc
+                                   'ext.qacc'
+                                 when :qasc
+                                   'ext.qasc'
+                                 when :stg
+                                   '.testing'
+                                 when :prod
+                                   ''
+                                 else
+                                   # ignore
+                               end
+    )
+  else
+    raise ""
+  end
+
 end
 
 Then /^[Ss]ign-in to SDC Website$/ do
   if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default' || SdcEnv.usr.downcase == 'mysql'
     credentials = user_credentials.fetch(SdcTest.scenario.tags[0].name)
-    TestData.store[:username] = credentials[:username]
-    TestData.store[:password] = credentials[:password]
+    usr = credentials[:username]
+    pw = credentials[:password]
   else
-    TestData.store[:username] = SdcEnv.usr
-    TestData.store[:password] = SdcEnv.pw
+    usr = SdcEnv.usr
+    pw = SdcEnv.pw
   end
-  expect(TestData.store[:username]).to be_truthy
-  expect(TestData.store[:password]).to be_truthy
-  expect(SdcWebsite.orders.landing_page.sign_in_with(TestData.store[:username], TestData.store[:password])).to eql(TestData.store[:username]) if SdcEnv.sdc_app == :orders
-  expect(stamps.mail.sign_in_modal.mail_sign_in(TestData.store[:username], TestData.store[:password])).to eql(TestData.store[:username]) if SdcEnv.sdc_app == :mail
+  expect(usr).to be_truthy
+  expect(pw).to be_truthy
+  step "sign-in to Orders as #{usr}, #{pw}" if SdcEnv.sdc_app == :orders
+  step "sign-in to Mail as #{usr}, #{pw}" if SdcEnv.sdc_app == :mail
+end
+
+Then /^sign-in to Orders as (.+), (.+)$/ do |usr, pw|
+  SdcWebsite.orders = Orders::LandingPage.new.sign_in_with(TestData.store[:username] = usr, TestData.store[:password] = pw)
+  SdcWebsite.orders.loading_orders.safe_wait_until_present(timeout: 5).safe_wait_while_present(timeout: 10)
+  expect(SdcWebsite.orders.signed_in_user.safe_wait_until_present(timeout: 10).text_value).to eql (usr)
+end
+
+Then /^sign-in to Mail as (.+), (.+)$/ do |usr, pw|
+  stamps.mail.sign_in_modal.mail_sign_in(TestData.store[:username] = usr, TestData.store[:password] = pw)
 end
 
 Given /^(?:|(?:|[Aa] )(?:[Vv]alid |))[Uu]ser is signed in to Web Apps$/ do

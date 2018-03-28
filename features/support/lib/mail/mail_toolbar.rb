@@ -86,7 +86,7 @@ module Stamps
             return window if window.present?
             expect(install_stamps_connect.body.text).to eql(install_stamps_connect.window_title.text) if install_stamps_connect.present?
             if please_wait.present?
-              log.message(please_wait.paragraph)
+              log.info(please_wait.paragraph)
               please_wait.ok
               sleep(0.125)
               print_button.click
@@ -98,7 +98,7 @@ module Stamps
             end
             expect(print_postage_expecting_error.text).to eql(install_stamps_connect.window_title.text) if install_stamps_connect.present?
             if please_wait.present?
-              log.message(please_wait.paragraph)
+              log.info(please_wait.paragraph)
               please_wait.ok
               sleep(0.125)
               print_button.click

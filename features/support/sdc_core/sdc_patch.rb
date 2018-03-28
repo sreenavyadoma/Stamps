@@ -1,4 +1,6 @@
 Object.class_eval do
+  ##
+  # set_instance_variables(binding, *local_variables)
   def set_instance_variables(binding, *variables)
     variables.each do |var|
       instance_variable_set(:"@#{var}", eval(var.to_s, binding))

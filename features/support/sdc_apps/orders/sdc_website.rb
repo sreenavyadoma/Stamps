@@ -1,46 +1,18 @@
 module Stamps
   class SdcWebsite < SdcPageObject
     class << self
-      def visit
-        if SdcEnv.browser
-          case SdcEnv.sdc_app
-            when :orders
-              Orders::LandingPage.visit(case SdcEnv.env
-                                          when :qacc
-                                            'ext.qacc'
-                                          when :qasc
-                                            'ext.qasc'
-                                          when :stg
-                                            '.testing'
-                                          when :prod
-                                            ''
-                                          else
-                                            # ignore
-                                        end
-              )
-            when :mail
-              raise "Not implemented!"
-            else
-              raise ArgumentError, "Don't know how to visit app :#{SdcEnv.sdc_app}"
-          end
-        elsif SdcEnv.i_device_name
-          raise "Not Implemented"
-        else
-          raise ""
-        end
-
-      end
+      attr_writer :orders
 
       def orders
-        @orders ||= Object.const_get(if SdcEnv.browser
+        @orders = Object.const_get(if SdcEnv.browser
                                        "Orders::SdcOrders"
                                      elsif SdcEnv.i_device_name
                                        "Mobile::SdcOrders"
                                      else
-                                       raise "Unable to determine if this is a mobile or browser test."
+                                       raise "Can not determine if mobile or browser test."
                                      end
-        ).new
-
+        ).new if @orders.nil?
+        @orders
       end
 
       def mail

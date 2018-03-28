@@ -225,10 +225,10 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Ship Cost error to contain \"(.*)\"$/ do |exp
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid ship cost data error tooltip is \"(.*)\"$/ do |expectation|
-  #SdcTest.log.step "expect Orders Grid ship cost data error tooltip is #{expectation}"
+  #SdcLog.step "expect Orders Grid ship cost data error tooltip is #{expectation}"
   grid_order_id = stamps.orders.orders_grid.grid_column(:order_id).row 1
   grid_ship_cost = stamps.orders.orders_grid.grid_column(:ship_cost).data grid_order_id
   error = grid_ship_cost.attribute_expectation "data-errorqtip"
-  #SdcTest.log.step "Test #{(error.include? expectation)?"Passed":"Failed"}"
+  #SdcLog.step "Test #{(error.include? expectation)?"Passed":"Failed"}"
   expect(error).to include(expectation)
 end
