@@ -18,13 +18,26 @@ module Stamps
                                             # ignore
                                         end
               )
+              orders
             when :mail
               raise "Not implemented!"
             else
               raise ArgumentError, "Undefined App :#{SdcEnv.sdc_app}"
           end
         elsif SdcEnv.i_device_name
-          raise "Not Implemented"
+          Orders::ILandingPage.visit(case SdcEnv.env
+                                       when :qacc
+                                         'ext.qacc'
+                                       when :qasc
+                                         'ext.qasc'
+                                       when :stg
+                                         '.testing'
+                                       when :prod
+                                         ''
+                                       else
+                                         # ignore
+                                     end
+          )
         else
           raise ""
         end

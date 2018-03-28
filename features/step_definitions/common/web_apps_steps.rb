@@ -6,16 +6,24 @@ end
 Then /^[Ss]ign-in to SDC Website$/ do
   if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default' || SdcEnv.usr.downcase == 'mysql'
     credentials = user_credentials.fetch(SdcTest.scenario.tags[0].name)
-    TestData.store[:username] = credentials[:username]
-    TestData.store[:password] = credentials[:password]
+    usr = credentials[:username]
+    pw = credentials[:password]
   else
-    TestData.store[:username] = SdcEnv.usr
-    TestData.store[:password] = SdcEnv.pw
+    usr = SdcEnv.usr
+    pw = SdcEnv.pw
   end
-  expect(TestData.store[:username]).to be_truthy
-  expect(TestData.store[:password]).to be_truthy
-  expect(SdcWebsite.orders.landing_page.sign_in_with(TestData.store[:username], TestData.store[:password])).to eql(TestData.store[:username]) if SdcEnv.sdc_app == :orders
-  expect(stamps.mail.sign_in_modal.mail_sign_in(TestData.store[:username], TestData.store[:password])).to eql(TestData.store[:username]) if SdcEnv.sdc_app == :mail
+  expect(usr).to be_truthy
+  expect(pw).to be_truthy
+  step "sign-in to Orders as #{usr}, #{pw}" if SdcEnv.sdc_app == :orders
+  step "sign-in to Mail as #{usr}, #{pw}" if SdcEnv.sdc_app == :mail
+end
+
+Then /^sign-in to Orders as (.+), (.+)$/ do |usr, pw|
+  SdcWebsite.orders.landing_page.sign_in_with(TestData.store[:username] = usr, TestData.store[:password] = pw)
+end
+
+Then /^sign-in to Mail as (.+), (.+)$/ do |usr, pw|
+  stamps.mail.sign_in_modal.mail_sign_in(TestData.store[:username] = usr, TestData.store[:password] = pw)
 end
 
 Given /^(?:|(?:|[Aa] )(?:[Vv]alid |))[Uu]ser is signed in to Web Apps$/ do

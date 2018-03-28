@@ -66,20 +66,20 @@ module Stamps
         end
       end
 
-      def browser=(browser)
-        @@browser = browser
+      def driver=(driver)
+        @@driver = driver
       end
 
-      def browser
-        @@browser
+      def driver
+        @@driver
       end
 
     end
 
-    attr_reader :browser
+    attr_reader :driver
 
-    def initialize(browser = @@browser)
-      @browser = browser
+    def initialize(driver = @@driver)
+      @driver = driver
     end
 
     def inspect
@@ -94,11 +94,11 @@ module Stamps
 
       if self.class.require_url
         expected = page_url.gsub("#{URI.parse(page_url).scheme}://", '').chomp('/')
-        actual = browser.url.gsub("#{URI.parse(browser.url).scheme}://", '').chomp('/')
+        actual = driver.url.gsub("#{URI.parse(driver.url).scheme}://", '').chomp('/')
         return false unless expected == actual
       end
 
-      if self.respond_to?(:page_title) && browser.title != page_title
+      if self.respond_to?(:page_title) && driver.title != page_title
         return false
       end
 
@@ -110,16 +110,16 @@ module Stamps
     end
 
     def goto(*args)
-      browser.goto page_url(*args)
+      driver.goto page_url(*args)
     end
 
     def method_missing(method, *args, &block)
-      super unless @browser.respond_to?(method) && method != :page_url
-      @browser.send(method, *args, &block)
+      super unless @driver.respond_to?(method) && method != :page_url
+      @driver.send(method, *args, &block)
     end
 
     def respond_to_missing?(method, _include_all = false)
-      @browser.respond_to?(method) || super
+      @driver.respond_to?(method) || super
     end
 
     def page_verifiable?
@@ -130,6 +130,10 @@ module Stamps
   class SdcElement < BasicObject
     def initialize(element)
       @element = element
+    end
+
+    def present?
+      @element.present? if @element.is_a? ::Watir::Element
     end
 
     def disabled?

@@ -145,7 +145,7 @@ module Stamps
           raise ArgumentError, "Neither BROWSER nor IDEVICENAME is defined for test #{test_scenario}. Expected values are: #{SdcEnv::BROWSERS.inspect} and #{SdcEnv::IDEVICES.inspect}"
         end
 
-        SdcWebsite.browser = @driver
+        SdcPageObject.driver = @driver
       end
 
       def start(scenario)
