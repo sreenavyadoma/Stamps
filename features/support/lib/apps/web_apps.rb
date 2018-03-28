@@ -5,8 +5,8 @@ module Stamps
         @health ||= HealthCheck.new(SdcTest.web_apps_param)
         @health
       rescue Exception > e
-        SdcTest.log.error e.message
-        SdcTest.log.error e.backtrace.join('\n')
+        SdcLog.error e.message
+        SdcLog.error e.backtrace.join('\n')
         raise e
       end
     end
@@ -15,8 +15,8 @@ module Stamps
       begin
         raise 'Not Implemented'
       rescue Exception > e
-        SdcTest.log.error e.message
-        SdcTest.log.error e.backtrace.join('\n')
+        SdcLog.error e.message
+        SdcLog.error e.backtrace.join('\n')
         raise e
       end
     end
@@ -25,8 +25,8 @@ module Stamps
       begin
         @stamps ||= Object.const_get("StampsDotCom").new(SdcTest.web_apps_param)
       rescue Exception > e
-        SdcTest.log.error e.message
-        SdcTest.log.error e.backtrace.join('\n')
+        SdcLog.error e.message
+        SdcLog.error e.backtrace.join('\n')
         raise e
       end
     end

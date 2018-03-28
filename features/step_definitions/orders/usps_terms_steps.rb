@@ -1,5 +1,5 @@
 Then /^[Ee]xpect USPS Terms modal appears$/ do
-  #SdcTest.log.step "Expect USPS Terms modal appears"
+  #SdcLog.step "Expect USPS Terms modal appears"
   actual=stamps.orders.orders_toolbar.usps_intl_terms.is_usps_terms_modal_present
   expect(actual).to be(true)
 end
@@ -15,7 +15,7 @@ Then /^[Cc]lick I Agree on USPS Terms modal$/ do
 end
 
 Then /^Check Do Not Show Again checkbox in USPS Terms modal$/ do
-  #SdcTest.log.step "Check Do Not Show Again checkbox in USPS Terms modal"
+  #SdcLog.step "Check Do Not Show Again checkbox in USPS Terms modal"
   sleep(2)
   stamps.orders.orders_toolbar.usps_intl_terms.check_dont_show_again_checkbox
   sleep(2)

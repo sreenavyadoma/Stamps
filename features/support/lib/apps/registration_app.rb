@@ -4,8 +4,8 @@ module Stamps
       begin
         @registration ||= Stamps::Registration::WebRegistration.new(SdcTest.web_apps_param)
       rescue StandardError => e
-        SdcTest.log.error e.message
-        SdcTest.log.error e.backtrace.join("\n")
+        SdcLog.error e.message
+        SdcLog.error e.backtrace.join("\n")
         raise e
       end
     end
@@ -14,8 +14,8 @@ module Stamps
       begin
         @sdc_website ||= Stamps::Registration::SdcWebsite.new(SdcTest.web_apps_param)
       rescue StandardError => e
-        SdcTest.log.error e.message
-        SdcTest.log.error e.backtrace.join("\n")
+        SdcLog.error e.message
+        SdcLog.error e.backtrace.join("\n")
         raise e
       end
     end

@@ -62,7 +62,7 @@ module Stamps
   class SdcTest
     class << self
       include Stamps::Core
-      attr_reader :driver, :test_scenario, :scenario, :log
+      attr_reader :driver, :test_scenario, :scenario
 
       def configure
         if SdcEnv.browser
@@ -162,9 +162,7 @@ module Stamps
         SdcEnv.pw ||= ENV['PW']
         SdcEnv.env ||= test_env(ENV['URL'])
         SdcEnv.firefox_profile ||= ENV['FIREFOX_PROFILE']
-        logger = Log4r::Logger.new(":")
-        logger.outputters = Outputter.stdout
-        @log = SdcLog.initialize(logger, SdcEnv.verbose)
+        SdcLog.initialize(Env.verbose)
 
         #todo-Rob These should be in an orders/mail or sdc_apps environment variable container. This is a temp fix.
         SdcEnv.printer = ENV['PRINTER']

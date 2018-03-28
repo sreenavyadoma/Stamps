@@ -359,7 +359,7 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
     TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:group]] = "group#{group}"
     begin
       if row_number > 0
-        SdcTest.log.step "#{"#" * 80} Rate Sheet: #{param_sheet}: Group #{group} - Row #{row_number}"
+        SdcLog.step "#{"#" * 80} Rate Sheet: #{param_sheet}: Group #{group} - Row #{row_number}"
 
         #Set weight for country weight limit check
         TestData.store[:pounds] = (row[@rate_sheet_columns[:weight_lb]]).to_i
@@ -390,12 +390,12 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
         # spreadsheet price for group
 
         if row[group_column] == nil
-          SdcTest.log.step "#{"#" * 10} "
-          SdcTest.log.step "#{"#" * 10} "
-          SdcTest.log.step "#{"#" * 10} Test Row #{row_number} Skipped. No rates found on sheet."
-          SdcTest.log.step "#{"#" * 10} "
-          SdcTest.log.step "#{"#" * 10} "
-          SdcTest.log.step "#{"#" * 80} "
+          SdcLog.step "#{"#" * 10} "
+          SdcLog.step "#{"#" * 10} "
+          SdcLog.step "#{"#" * 10} Test Row #{row_number} Skipped. No rates found on sheet."
+          SdcLog.step "#{"#" * 10} "
+          SdcLog.step "#{"#" * 10} "
+          SdcLog.step "#{"#" * 80} "
           TestData.store[:result_sheet].row(row_number).set_format(TestData.store[:result_sheet_columns][:group], format)
           TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight_lb]] = row[@rate_sheet_columns[:weight_lb]]
           TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:group]] = row[group_column]
@@ -417,7 +417,7 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
           TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:ship_to_country]] = TestData.store[:country]
 
           # Set weight to 0
-          SdcTest.log.step "#{"#" * 10} Desired Weight: #{row[@rate_sheet_columns[:weight_lb]]}"
+          SdcLog.step "#{"#" * 10} Desired Weight: #{row[@rate_sheet_columns[:weight_lb]]}"
           if @SdcEnv.sdc_app == :orders
             step "set Order Details Pounds to 0"
             step "set Order Details Ounces to 0"
@@ -430,11 +430,11 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
           # Set weight per spreadsheet
           #row[@rate_sheet_columns[:weight_lb]].should_not be nil
           weight_lb = row[@rate_sheet_columns[:weight_lb]]
-          SdcTest.log.step "#{"#" * 10} "
-          SdcTest.log.step "#{"#" * 10} Weight: #{weight_lb}"
-          SdcTest.log.step "#{"#" * 10} Price: #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:group]]}"
-          SdcTest.log.step "#{"#" * 10} "
-          SdcTest.log.step "#{"#" * 50}"
+          SdcLog.step "#{"#" * 10} "
+          SdcLog.step "#{"#" * 10} Weight: #{weight_lb}"
+          SdcLog.step "#{"#" * 10} Price: #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:group]]}"
+          SdcLog.step "#{"#" * 10} "
+          SdcLog.step "#{"#" * 50}"
 
           if TestHelper.is_whole_number?(weight_lb)
             weight_lb = weight_lb.to_i
@@ -444,7 +444,7 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
             step "set Print form Pounds to #{weight_lb}" if @SdcEnv.sdc_app == :mail
           else
             weight_oz = Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_i       #AB_ORDERSAUTO_3580 - IDE bug, Weight require 2 parameters
-            #SdcTest.log.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
+            #SdcLog.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
             TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight]] = "#{weight_oz} oz."
             TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight_lb]] = weight_oz
             step "set Order Details Ounces to #{weight_oz}" if @SdcEnv.sdc_app == :orders
@@ -455,7 +455,7 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
           # Set Service
           row[@rate_sheet_columns[:service]].should_not be nil
           service = row[@rate_sheet_columns[:service]]
-          SdcTest.log.step "#{"#" * 10} Desired Service: #{service}"
+          SdcLog.step "#{"#" * 10} Desired Service: #{service}"
           TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:service]] = service
 
           # record execution time as time service was selected.
@@ -493,18 +493,18 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
             TestData.store[:result_sheet].row(row_number).set_format(TestData.store[:result_sheet_columns][:status], fail_format)
             TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:results]] = "Expected #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:group]]}, Got #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:total_ship_cost]]}"
           end
-          SdcTest.log.step "#{"#" * 10} "
-          SdcTest.log.step "#{"#" * 10} Selected Weight: #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight]]}"
-          SdcTest.log.step "#{"#" * 10} Selected Service: #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:service_selected]]}"
-          SdcTest.log.step "#{"#" * 10} Selected Country: #{TestData.store[:country]}"
-          SdcTest.log.step "#{"#" * 10} #{"*" * 5} Test #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:status]] } - Expected #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:group]]}, Got #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:total_ship_cost]]} #{"*" * 5}"
-          SdcTest.log.step "#{"#" * 10} "
+          SdcLog.step "#{"#" * 10} "
+          SdcLog.step "#{"#" * 10} Selected Weight: #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight]]}"
+          SdcLog.step "#{"#" * 10} Selected Service: #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:service_selected]]}"
+          SdcLog.step "#{"#" * 10} Selected Country: #{TestData.store[:country]}"
+          SdcLog.step "#{"#" * 10} #{"*" * 5} Test #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:status]] } - Expected #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:group]]}, Got #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:total_ship_cost]]} #{"*" * 5}"
+          SdcLog.step "#{"#" * 10} "
         end
 
       end
     rescue Exception => e
-      SdcTest.log.step e.message
-      SdcTest.log.step e.backtrace.join("\n")
+      SdcLog.step e.message
+      SdcLog.step e.backtrace.join("\n")
       TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:error_msg]] = "Group #{group} - Row #{row_number}: #{e.message}"
     end
   end
@@ -522,19 +522,19 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
       if row_number > 0
         if row[TestData.store[:result_sheet_columns][:status]].casecmp("failed") == 0 || (row[TestData.store[:result_sheet_columns][:status]].casecmp("passed") != 0 && !row[TestData.store[:result_sheet_columns][:error_msg]].nil?)
           @failed_test_count += 1
-          SdcTest.log.step "Group #{group} - Row #{row_number} Failed"
+          SdcLog.step "Group #{group} - Row #{row_number} Failed"
         end
       end
     end
   end
-  SdcTest.log.step "#{"*" * 80}"
-  SdcTest.log.step "#{"*" * 80}"
-  SdcTest.log.step "Number of Failed Tests: #{@failed_test_count}"
-  SdcTest.log.step "Number of Failed Tests: #{@failed_test_count}"
-  SdcTest.log.step "Number of Failed Tests: #{@failed_test_count}"
-  SdcTest.log.step "Number of Failed Tests: #{@failed_test_count}"
-  SdcTest.log.step "Number of Failed Tests: #{@failed_test_count}"
-  SdcTest.log.step "Number of Failed Tests: #{@failed_test_count}"
-  SdcTest.log.step "#{"*" * 80}"
-  SdcTest.log.step "#{"*" * 80}"
+  SdcLog.step "#{"*" * 80}"
+  SdcLog.step "#{"*" * 80}"
+  SdcLog.step "Number of Failed Tests: #{@failed_test_count}"
+  SdcLog.step "Number of Failed Tests: #{@failed_test_count}"
+  SdcLog.step "Number of Failed Tests: #{@failed_test_count}"
+  SdcLog.step "Number of Failed Tests: #{@failed_test_count}"
+  SdcLog.step "Number of Failed Tests: #{@failed_test_count}"
+  SdcLog.step "Number of Failed Tests: #{@failed_test_count}"
+  SdcLog.step "#{"*" * 80}"
+  SdcLog.step "#{"*" * 80}"
 end
