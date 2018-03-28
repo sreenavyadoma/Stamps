@@ -19,7 +19,7 @@ module Stamps
 
     def method_missing(method, *args, &block)
       super unless driver.respond_to?(method)
-      driver.send(method, *args, &block)
+      @driver.send(method, *args, &block)
     end
 
     private
