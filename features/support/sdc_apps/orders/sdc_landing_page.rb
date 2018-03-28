@@ -23,7 +23,7 @@ module Stamps
       end
     end
 
-    class LandingPage < SdcPageObject
+    class LandingPage < SdcIPageObject
       element(:username, required: true) { SdcElement.new(browser.text_field(css: '[placeholder=USERNAME]')) }
       element(:password, required: true) { SdcElement.new(browser.text_field(css: '[placeholder=PASSWORD]')) }
       element(:sign_in, required: true) { SdcElement.new(browser.span(text: 'Sign In')) }
