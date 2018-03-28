@@ -89,14 +89,7 @@ module Stamps
 
 
     def inspect
-      text = ''
-      if browser.is_a?(Watir::Browser)
-        text = '#<%s url=%s title=%s>' % [self.class, url.inspect, title.inspect]
-        SdcLog.warn text
-      end
-      text = '#<%s url=%s title=%s>' % [self.class, current_url.inspect, title.inspect]
-      SdcLog.warn text
-      text
+      '#<%s url=%s title=%s>' % [self.class, url.inspect, title.inspect]
     end
     alias_method :selector_string, :inspect
 
@@ -123,8 +116,8 @@ module Stamps
     end
 
     def goto(*args)
-      return browser.get page_url(*args) if browser.is_a? Appium::Core::Base::Driver
       return browser.goto page_url(*args) if browser.is_a? Watir::Browser
+      return browser.get page_url(*args) if browser.is_a? Appium::Core::Base::Driver
 
       exception = Selenium::WebDriver::Error::WebDriverError
       message = "Unsupported driver #{browser.class}"
