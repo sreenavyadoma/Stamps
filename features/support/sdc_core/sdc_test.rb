@@ -162,7 +162,7 @@ module Stamps
         SdcEnv.pw ||= ENV['PW']
         SdcEnv.env ||= test_env(ENV['URL'])
         SdcEnv.firefox_profile ||= ENV['FIREFOX_PROFILE']
-        SdcLog.initialize(Env.verbose)
+        SdcLog.initialize(SdcEnv.verbose)
 
         #todo-Rob These should be in an orders/mail or sdc_apps environment variable container. This is a temp fix.
         SdcEnv.printer = ENV['PRINTER']
