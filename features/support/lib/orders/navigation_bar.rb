@@ -260,6 +260,7 @@ module Stamps
 
     # class BalanceDropDown < WebApps::Base
     class BalanceDropDown < SdcPageObject
+      element(:balance_amount, required: true) { SdcElement.new(driver.span(css: '[class*=balance]>a>strong>span')) }
 
 
       def add_funds_modal
@@ -285,11 +286,6 @@ module Stamps
           cache[:view_history_link] = StampsField.new(driver.a(text: "View Purchase History"))
         end
         cache[:view_history_link]
-      end
-
-      def balance_amount
-        # @balance_amount ||= StampsField.new(driver.span(css: '[class*=balance]>a>strong>span'))
-        element(:balance_amount, required: true) { SdcElement.new(driver.span(css: '[class*=balance]>a>strong>span')) }
       end
 
       def buy_more
