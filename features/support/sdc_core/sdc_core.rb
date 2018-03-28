@@ -66,20 +66,20 @@ module Stamps
         end
       end
 
-      def driver=(driver)
-        @@driver = driver
+      def browser=(browser)
+        @@browser = browser
       end
 
-      def driver
-        @@driver
+      def browser
+        @@browser
       end
 
     end
 
-    attr_reader :driver
+    attr_reader :browser
 
-    def initialize(driver = @@driver)
-      @driver = driver
+    def initialize(browser = @@browser)
+      @browser = browser
     end
 
     def inspect
@@ -94,11 +94,11 @@ module Stamps
 
       if self.class.require_url
         expected = page_url.gsub("#{URI.parse(page_url).scheme}://", '').chomp('/')
-        actual = driver.url.gsub("#{URI.parse(driver.url).scheme}://", '').chomp('/')
+        actual = browser.url.gsub("#{URI.parse(browser.url).scheme}://", '').chomp('/')
         return false unless expected == actual
       end
 
-      if self.respond_to?(:page_title) && driver.title != page_title
+      if self.respond_to?(:page_title) && browser.title != page_title
         return false
       end
 
@@ -110,16 +110,16 @@ module Stamps
     end
 
     def goto(*args)
-      driver.goto page_url(*args)
+      browser.goto page_url(*args)
     end
 
     def method_missing(method, *args, &block)
-      super unless @driver.respond_to?(method) && method != :page_url
-      @driver.send(method, *args, &block)
+      super unless @browser.respond_to?(method) && method != :page_url
+      @browser.send(method, *args, &block)
     end
 
     def respond_to_missing?(method, _include_all = false)
-      @driver.respond_to?(method) || super
+      @browser.respond_to?(method) || super
     end
 
     def page_verifiable?
@@ -132,13 +132,17 @@ module Stamps
       @element = element
     end
 
+    def known_method(method, *args, &block)
+      @element.send(method, *args, &block)
+    end
+
     def present?
-      @element.present? if @element.is_a? ::Watir::Element
+      @element.send(:present?) if @element.is_a? ::Watir::Element
     end
 
     def disabled?
       begin
-        return @element.disabled?
+        return @element.disabled? if @element.is_a? ::Watir::Element
       rescue
         # ignore
       end
@@ -147,7 +151,7 @@ module Stamps
 
     def enabled?
       begin
-        return @element.enabled?
+        return @element.enabled? if @element.is_a? ::Watir::Element
       rescue
         # ignore
       end
@@ -156,7 +160,7 @@ module Stamps
 
     def visible?
       begin
-        return @element.visible?
+        return @element.visible? if @element.is_a? ::Watir::Element
       rescue
         # ignore
       end
@@ -164,16 +168,16 @@ module Stamps
     end
 
     def truthy?
-      !@element.nil? && @element.exist?
+      !@element.nil? && @element.exist? if @element.is_a? ::Watir::Element
     end
 
     def clickable?
-      truthy? && @element.present? && enabled?
+      truthy? && @element.present? && enabled? if @element.is_a? ::Watir::Element
     end
 
     def hover
       begin
-        @element.hover if @element.present?
+        @element.hover if @element.present? if @element.is_a? ::Watir::Element
       rescue
         # ignore
       end
@@ -184,7 +188,7 @@ module Stamps
     def safe_click(*modifiers, ctr: 1)
       ctr.to_i.times do
         begin
-          @element.click(*modifiers)
+          @element.click(*modifiers) if @element.is_a? ::Watir::Element
         rescue
           # ignore
         end
@@ -193,10 +197,14 @@ module Stamps
       self
     end
 
+    def set(*args)
+      @element.set(*args) if @element.is_a? ::Watir::Element
+    end
+
     def safe_set(*args, ctr: 1)
       ctr.to_i.times do
         begin
-          @element.set(*args)
+          set(*args)
         rescue
           # ignore
         end
@@ -205,10 +213,14 @@ module Stamps
       text_value
     end
 
+    def send_keys(*args)
+      @element.send_keys(*args) if @element.is_a? ::Watir::Element
+    end
+
     def safe_send_keys(*args, ctr: 1)
       ctr.to_i.times do
         begin
-          @element.send_keys(*args)
+          send_keys(*args)
         rescue
           # ignore
         end
@@ -219,7 +231,7 @@ module Stamps
 
     def safe_wait_while_present(timeout: nil, interval: nil)
       begin
-        @element.wait_while_present(timeout, interval)
+        @element.wait_while_present(timeout, interval) if @element.is_a? ::Watir::Element
       rescue
         # ignore
       end
@@ -229,7 +241,7 @@ module Stamps
 
     def safe_wait_until_present(timeout: nil, interval: nil)
       begin
-        @element.wait_until_present(timeout, interval)
+        @element.wait_until_present(timeout, interval) if @element.is_a? ::Watir::Element
       rescue
         # ignore
       end
@@ -239,15 +251,21 @@ module Stamps
 
     def text_value
       begin
-        text = @element.text
-        return text if text.size > 0
+        if @element.is_a? ::Watir::Element
+          text = @element.text
+          return text if text.size > 0
+        end
+
       rescue
         # ignore
       end
 
       begin
-        value = @element.value
-        return value if value.size > 0
+        if @element.is_a? ::Watir::Element
+          value = @element.value
+          return value if value.size > 0
+        end
+
       rescue
         # ignore
       end
@@ -261,7 +279,7 @@ module Stamps
           break unless clickable?
           safe_click(*modifiers)
           safe_wait_while_present(1)
-          break unless @element.present?
+          break unless present?
         rescue
           # ignore
         end
@@ -276,7 +294,7 @@ module Stamps
           break unless clickable?
           safe_send_keys(*args)
           safe_wait_while_present(1)
-          break unless @element.present?
+          break unless present?
         rescue
           # ignore
         end
@@ -288,7 +306,7 @@ module Stamps
     def safe_double_click(ctr: 1)
       ctr.to_i.times do
         begin
-          field.double_click if clickable?
+          @element.double_click  if @element.is_a? ::Watir::Element
         rescue
           # ignore
         end
@@ -300,7 +318,8 @@ module Stamps
     def blur_out(ctr: 1)
       ctr.to_i.times do
         begin
-          safe_double_click; safe_click
+          safe_double_click
+          safe_click
         rescue
           # ignore
         end

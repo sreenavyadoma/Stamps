@@ -76,10 +76,10 @@ module Stamps
 
             marketplace.wait_until_present(6)
             if marketplace.present?
-              log.message '-'
-              log.message "Username: #{usr}"
-              log.message "Username: #{usr}"
-              log.message '-'
+              log.info '-'
+              log.info "Username: #{usr}"
+              log.info "Username: #{usr}"
+              log.info '-'
               return marketplace
             end
           end
@@ -100,9 +100,9 @@ module Stamps
                   else
                     raise ArgumentError, "Don't know what to do with #{param.env}. URL might not be set?"
                 end
-          log.message '-'
-          log.message "URL: #{url}"
-          log.message '-'
+          log.info '-'
+          log.info "URL: #{url}"
+          log.info '-'
 
           driver.goto(url)
           if driver.text.include? 'Server Error'
@@ -131,9 +131,9 @@ module Stamps
 
             expect(driver.url).to include 'Orders'
 
-            log.message '#' * 15
-            log.message "Username: #{usr}"
-            log.message '#' * 15
+            log.info '#' * 15
+            log.info "Username: #{usr}"
+            log.info '#' * 15
 
             wait_until_present(4)
             30.times do
@@ -148,13 +148,13 @@ module Stamps
                   raise server_error.message if server_error.present?
                   security_questions.wait_until_present(2)
                   return security_questions if security_questions.present?
-                  log.message invalid_username.text if invalid_username.present?
+                  log.info invalid_username.text if invalid_username.present?
                   loading_orders.wait_until_present(4)
-                  10.times {log.message loading_orders.text if loading_orders.present?}
+                  10.times {log.info loading_orders.text if loading_orders.present?}
                 end
                 new_welcome.wait_until_present(2)
                 if new_welcome.present?
-                  log.message new_welcome.message
+                  log.info new_welcome.message
                   add_manual_order = new_welcome.next
                   expect(add_manual_order).to be_present
                   import_from_csv = add_manual_order.next
@@ -186,9 +186,9 @@ module Stamps
 
           expect(driver.url).to include 'Orders'
 
-          log.message '#' * 15
-          log.message "Username: #{usr}"
-          log.message '#' * 15
+          log.info '#' * 15
+          log.info "Username: #{usr}"
+          log.info '#' * 15
 
           username.wait_until_present(8)
           20.times do
