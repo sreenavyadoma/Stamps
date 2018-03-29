@@ -1,60 +1,32 @@
 module Stamps
 
-  class SdcDriver < BasicObject
-    def initialize(driver)
-      @driver = driver
-    end
-
-    def goto(*args)
-      return @driver.get(*args) if @driver.respond_to?(:get)
-      @driver.goto(*args) if @driver.respond_to?(:goto)
-    end
-
-    def method_missing(method, *args, &block)
-      super unless driver.respond_to?(method)
-      @driver.send(method, *args, &block)
-    end
-
-    private
-    attr_reader :driver
-  end
-
   class SdcIDriver
     class << self
+
       attr_reader :core_driver
-      def configure(device_name)
-        begin
-          file_path = File.expand_path("../../sdc_idevices/caps/#{device_name}.txt", __FILE__)
 
-          exception = Selenium::WebDriver::Error::WebDriverError
-          message = "Capabilities file does not exist for device #{device_name}. #{file_path}"
-          raise exception, message unless File.exist?(file_path)
-
-          caps = Appium.load_appium_txt file: file_path, verbose: true
-          @core_driver = Appium::Driver.new(caps, false)
-        rescue Exception => e
-          SdcLog.error e.message
-          SdcLog.error e.backtrace.join("\n")
-          raise e, e.message
-        end
-        self
-      end
-
-      def start
-        begin
-          @core_driver.start_driver
-        rescue => e
-          SdcLog.error e.message
-          SdcLog.error e.backtrace.join("\n")
-        end
-        self
-      end
-
-      def web_driver
-        @core_driver.driver
-      end
       alias_method :browser, :web_driver
       alias_method :driver, :web_driver
+
+      def configure(device_name)
+        @core_driver = Appium::Driver.new(capabilities(device_name), false)
+        self
+      end
+
+      def capabilities(device_name)
+        file_path = File.expand_path("../../sdc_idevices/caps/#{device_name}.txt", __FILE__)
+
+        exception = Selenium::WebDriver::Error::WebDriverError
+        message = "Capabilities file does not exist for device #{device_name}. #{file_path}"
+        raise exception, message unless File.exist?(file_path)
+
+        Appium.load_appium_txt file: file_path, verbose: true
+      end
+
+      def method_missing(name, *args, &block)
+        super unless @core_driver.respond_to?(name)
+        @core_driver.send(name, *args, &block)
+      end
     end
   end
 
@@ -198,6 +170,25 @@ module Stamps
     def page_verifiable?
       self.class.require_url || self.respond_to?(:page_title) || self.class.required_element_list.any?
     end
+  end
+
+  class SdcDriver < BasicObject
+    def initialize(driver)
+      @driver = driver
+    end
+
+    def goto(*args)
+      return @driver.get(*args) if @driver.respond_to?(:get)
+      @driver.goto(*args)
+    end
+
+    def method_missing(method, *args, &block)
+      super unless driver.respond_to?(method)
+      @driver.send(method, *args, &block)
+    end
+
+    private
+    attr_reader :driver
   end
 
   class SdcElement < BasicObject
