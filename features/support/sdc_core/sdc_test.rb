@@ -167,28 +167,10 @@ module Stamps
       end
 
       def require_gems
-        require 'data_magic'
-        require 'rake'
-        require 'log4r'
-        require 'rspec'
-        require 'date'
-        require 'fileutils'
-        require 'rbconfig'
-        require 'rubygems'
-        require 'open3'
-        require 'measured'
-        require 'holidays'
-        require 'socket'
-        require 'selenium-webdriver'
-        include Log4r
-        include RSpec
-        include RSpec::Matchers
-        include DataMagic
-
-        unless SdcEnv.framework
+        unless ENV['FRAMEWORK']
           require 'watir'
         end
-        if SdcEnv.i_device_name
+        if ENV['IDEVICENAME']
           require 'appium_lib'
           require 'appium_lib_core'
         end

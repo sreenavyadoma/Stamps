@@ -105,19 +105,6 @@ module Stamps
           log.info '-'
 
           driver.goto(url)
-          if driver.text.include? 'Server Error'
-            log.error driver.text
-            raise "Server Error:\n #{driver.text}"
-          end
-
-          case param.sdc_app
-            when :orders
-              expect(driver.url).to include 'Orders'
-            when :mail
-              expect(driver.url.downcase).to include 'webpostage'
-            else
-              # do nothing
-          end
           driver.url
         end
 
