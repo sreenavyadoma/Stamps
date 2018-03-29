@@ -14,7 +14,7 @@ rob_mail_sc: --tags @print_dialog_ship_date WEB_APP=mail JENKINS=true USR=defaul
 rob_registration: --tags @registration_normal_workflow WEB_APP=registration URL=cc --guess VERBOSE=true HEALTHCHECK=false BROWSER=chrome MAX_WINDOW=false JENKINS=true
 
 browser_test:  --tags @iphonex BROWSER=ff VERBOSE=true USR=ccfb311osps4x PW=pass111 URL=cc WEB_APP=orders HEALTHCHECK=true
-browser_test_:  --tags @iphonex BROWSER=ff VERBOSE=true USR=robcruz PW=Stamps#524113 URL=prod WEB_APP=orders HEALTHCHECK=true #FRAMEWORK=new
+browser_test_:  --tags @iphonex BROWSER=ff VERBOSE=true USR=abqaprod1 PW=password1 URL=prod WEB_APP=orders HEALTHCHECK=true #FRAMEWORK=new
 
 iphonex: --tags @iphonex --guess IDEVICENAME='iphone x' VERBOSE=true JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=cc USR=ccfb311osps4x PW=pass111
 
