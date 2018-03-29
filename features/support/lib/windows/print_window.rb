@@ -1,7 +1,7 @@
 module Stamps
   module Windows
     class PrintWindow
-      include RAutomation
+#      include RAutomation
 
       attr_reader :driver
 

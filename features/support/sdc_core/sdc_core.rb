@@ -50,6 +50,10 @@ module Stamps
         required_element_list << name.to_sym if required
       end
 
+      def element_x(name, locator, required: false)
+        element(name, required) { ElementLocator.find(locator) }
+      end
+
       def visit(*args)
         new.tap do |page|
           page.goto(*args)
@@ -118,7 +122,7 @@ module Stamps
       raise exception, message unless page_verifiable?
     end
 
-    def wait_until(timeout: 15, &block)
+    def wait_until(timeout: 12, &block)
       Selenium::WebDriver::Wait.new(:timeout => timeout).until(&block)
     end
 

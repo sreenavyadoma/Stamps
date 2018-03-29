@@ -8,7 +8,7 @@ module Stamps
 
     class << self #todo-Rob refactor PrintMedia
       attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose, :printer, :browser, :hostname,
-                    :print_media, :i_device_name, :firefox_profile
+                    :print_media, :i_device_name, :firefox_profile, :framework
     end
   end
 
@@ -76,21 +76,12 @@ module Stamps
             Watir.always_locate = true
             Selenium::WebDriver.logger.level = :warn
             case(SdcEnv.browser)
-              when :edge # Launch Microsoft Edge
-                begin
-                  stdout, stdeerr, status = Open3.capture3("taskkill /im MicrosoftEdge.exe /f")
-                rescue
-                  # ignore
-                end
+              when :edge
+                kill("taskkill /im MicrosoftEdge.exe /f")
                 @driver = SdcDriver.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
                 @driver.window.maximize
-
-              when :firefox # Launch Firefox
-                begin
-                  stdout, stdeerr, status = Open3.capture3("taskkill /im firefox.exe /f")
-                rescue
-                  # ignore
-                end
+              when :firefox
+                kill("taskkill /im firefox.exe /f")
                 unless SdcEnv.firefox_profile
                   @driver = SdcDriver.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
                 else
@@ -101,51 +92,30 @@ module Stamps
                 end
                 @driver.window.resize_to 1560, 1020
                 @driver.window.move_to 0, 0
-
               when :chrome
-                begin
-                  stdout, stdeerr, status = Open3.capture3("taskkill /im chrome.exe /f")
-                rescue
-                  # ignore
-                end
+                kill("taskkill /im chrome.exe /f")
                 @driver = SdcDriver.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
                 @driver.window.maximize
-
-            when :chromeb
-              begin
-                #    stdout, stdeerr, status = Open3.capture3("taskkill /im chrome.exe /f")
-              rescue
-                # ignore
-              end
-              Selenium::WebDriver::Chrome.path = data_for(:setup, {})['windows']['chromedriverbeta']
-              @driver = SdcDelegatedDriver.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
-              @driver.window.maximize
-
+              when :chromeb
+                kill("taskkill /im chrome.exe /f")
+                Selenium::WebDriver::Chrome.path = data_for(:setup, {})['windows']['chromedriverbeta']
+                @driver = SdcDelegatedDriver.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+                @driver.window.maximize
               when :ie
-                begin
-                  stdout, stdeerr, status = Open3.capture3("taskkill /im iexplore.exe /f")
-                rescue
-                  # ignore
-                end
+                kill("taskkill /im iexplore.exe /f")
                 @driver = SdcDriver.new(Watir::Browser.new(:ie))
                 @driver.window.maximize
-
               when :safari
-                begin
-                  stdout, status = Open3.capture3("killall 'Safari Technology Preview'")
-                rescue
-                  # ignore
-                end
+                kill("killall 'Safari Technology Preview'")
                 @driver = SdcDriver.new(Watir::Browser.new(:safari, technology_preview: true))
               else
-                raise ArgumentError, "#{test_driver} is not a valid browser."
+                raise ArgumentError, "Invalid browser selection. #{test_driver}"
             end
-
             @driver.driver.manage.timeouts.page_load = 12
           rescue Exception => e
             SdcLog.error e.message
             SdcLog.error e.backtrace.join("\n")
-            raise "Driver setup failed: #{e.message}", e
+            raise e, "Driver setup failed."
           end
         elsif SdcEnv.i_device_name
           @driver = SdcIDriver.configure(SdcEnv.i_device_name.to_s).start.web_driver
@@ -156,9 +126,16 @@ module Stamps
         SdcPageObject.browser = @driver
       end
 
+      def kill(str)
+        begin
+          stdout, stdeerr, status = Open3.capture3(str)
+        rescue
+          # ignore
+        end
+      end
+
       def start(scenario)
         @scenario = scenario
-        SdcLog.initialize(verbose: SdcEnv.verbose)
         SdcEnv.browser ||= browser_selection(ENV['BROWSER'])
         SdcEnv.i_device_name ||= i_device_selection(ENV['IDEVICENAME'])
         SdcEnv.verbose ||= ENV['VERBOSE'].nil? ? false : ENV['VERBOSE'].casecmp('true') == 0
@@ -169,12 +146,17 @@ module Stamps
         SdcEnv.pw ||= ENV['PW']
         SdcEnv.env ||= test_env(ENV['URL'])
         SdcEnv.firefox_profile ||= ENV['FIREFOX_PROFILE']
+        SdcEnv.framework ||= ENV['FRAMEWORK']
+        require_gems
+        SdcLog.initialize(verbose: SdcEnv.verbose)
+
 
         #todo-Rob These should be in an orders/mail or sdc_apps environment variable container. This is a temp fix.
         SdcEnv.printer = ENV['PRINTER']
 
+        # Support for old framework and will be phased out
         @web_apps_param = Stamps::WebApps::Param.new
-        @web_apps_param.log = SdcLog # this will have to change
+        @web_apps_param.log = SdcLog
         @web_apps_param.test_scenario
         @web_apps_param.test_scenario
         @web_apps_param.env = SdcEnv.env
@@ -182,7 +164,43 @@ module Stamps
         @web_apps_param.pw = SdcEnv.pw
         @web_apps_param.printer = SdcEnv.printer
         @web_apps_param.sdc_app = SdcEnv.sdc_app
-        #print_test_steps
+      end
+
+      def require_gems
+        require 'data_magic'
+        require 'rake'
+        require 'log4r'
+        require 'rspec'
+        require 'date'
+        require 'fileutils'
+        require 'rbconfig'
+        require 'rubygems'
+        require 'open3'
+        require 'measured'
+        require 'holidays'
+        require 'socket'
+        require 'selenium-webdriver'
+        include Log4r
+        include RSpec
+        include RSpec::Matchers
+        include DataMagic
+
+        unless SdcEnv.framework
+          require 'watir'
+        end
+        if SdcEnv.i_device_name
+          require 'appium_lib'
+          require 'appium_lib_core'
+        end
+        if /rates/.match(scenario.name)
+          require 'spreadsheet'
+          require "csv"
+          include Spreadsheet
+        end
+        if SdcEnv.usr.nil? || SdcEnv.usr.casecmp('default') == 0
+          require 'mysql2'
+        end
+
       end
 
       def web_apps_param
