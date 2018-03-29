@@ -2,6 +2,20 @@ $LOAD_PATH << File.expand_path('../../lib', __FILE__)
 $LOAD_PATH << File.expand_path('lib/features/orders', __FILE__)
 $LOAD_PATH << File.expand_path('features/support/lib', __FILE__)
 
+require 'data_magic'
+require 'rake'
+require 'log4r'
+require 'rspec'
+require 'date'
+require 'fileutils'
+require 'rbconfig'
+require 'rubygems'
+require 'open3'
+require 'measured'
+require 'holidays'
+require 'socket'
+require 'selenium-webdriver'
+
 require_relative 'sdc_core/sdc_core'
 require_relative 'lib/core/stamps_element'
 require_relative 'lib/core/user_credentials'
