@@ -1,6 +1,5 @@
 # encoding: utf-8
 
-
 include Stamps
 include Stamps::WebApps
 include Stamps::Orders
