@@ -54,9 +54,9 @@ module Stamps
     end
 
     class ILandingPage < SdcPageObject
-      element(:username, required: true) { SdcElement.new(browser.find_element(xpath: "//input[@placeholder='USERNAME']")) }
-      element(:password, required: true) { SdcElement.new(browser.find_element(xpath: "//input[@placeholder='PASSWORD']")) }
-      element(:sign_in, required: true) { SdcElement.new(browser.find_element(xpath: "//span[contains(text(), 'Sign In')]")) }
+      element(:username, required: true) { browser.find_element(xpath: "//input[@placeholder='USERNAME']") }
+      element(:password, required: true) { browser.find_element(xpath: "//input[@placeholder='PASSWORD']") }
+      element(:sign_in, required: true) { browser.find_element(xpath: "//span[contains(text(), 'Sign In')]") }
 
       page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Orders&" }
 
@@ -65,12 +65,12 @@ module Stamps
       end
 
       def sign_in_with(usr, pwd, persist = 2)
-        username.set usr
-        password.set pwd
-        sign_in.safe_click(ctr: 2).send_keys_while_present(:enter, ctr: 2)
-        username.safe_wait_while_present(timeout: 4)
-        loading_orders.safe_wait_until_present(timeout: 5).safe_wait_while_present(timeout: 10)
-        signed_in_user.safe_wait_until_present(timeout: 10).text_value
+        username.send_keys usr
+        password.send_keys pwd
+        sign_in.send_keys :enter
+        sign_in.send_keys :enter
+        sign_in.click
+        sign_in.click
       end
     end
   end
