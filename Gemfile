@@ -1,6 +1,5 @@
 source 'http://rubygems.org'
 
-
 # Common
 gem 'selenium-webdriver'
 gem 'rspec', '3.6.0'
