@@ -52,6 +52,8 @@ module Stamps
 
       def element_x(name, locator, required: false)
         element(name, required) { SdcElementFinder.element(locator) }
+        # use class eval on string
+
       end
 
       def visit(*args)
