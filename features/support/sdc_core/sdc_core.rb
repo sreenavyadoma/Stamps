@@ -51,7 +51,7 @@ module Stamps
       end
 
       def element_x(name, locator, required: false)
-        element(name, required) { ElementLocator.find(locator) }
+        element(name, required) { SdcElementFinder.element(locator) }
       end
 
       def visit(*args)
@@ -140,6 +140,11 @@ module Stamps
       self.class.require_url || self.respond_to?(:page_title) || self.class.required_element_list.any?
     end
   end
+
+  class SdcElementFinder < BasicObject
+
+  end
+
 
   class SdcElement < BasicObject
     def initialize(element)
