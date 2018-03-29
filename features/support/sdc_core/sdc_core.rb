@@ -143,7 +143,7 @@ module Stamps
     end
 
     def present?
-      @element.send(:present?)
+      @element.present?
     end
 
     def disabled?

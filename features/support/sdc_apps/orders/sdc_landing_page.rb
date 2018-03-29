@@ -23,7 +23,7 @@ module Stamps
       end
     end
 
-    class LandingPage < SdcIPageObject
+    class LandingPage < SdcPageObject
       element(:username, required: true) { SdcElement.new(browser.text_field(css: '[placeholder=USERNAME]')) }
       element(:password, required: true) { SdcElement.new(browser.text_field(css: '[placeholder=PASSWORD]')) }
       element(:sign_in, required: true) { SdcElement.new(browser.span(text: 'Sign In')) }
@@ -53,7 +53,7 @@ module Stamps
       end
     end
 
-    class ILandingPage < SdcIPageObject
+    class ILandingPage < SdcPageObject
       element(:username, required: true) { SdcElement.new(browser.find_element(xpath: "//input[@placeholder='USERNAME']")) }
       element(:password, required: true) { SdcElement.new(browser.text_fifind_elementeld(xpath: "//input[@placeholder='PASSWORD']")) }
       element(:sign_in, required: true) { SdcElement.new(browser.find_element(xpath: "//span[contains(text(), 'Sign In')]")) }
