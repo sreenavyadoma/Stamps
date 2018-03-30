@@ -57,14 +57,31 @@ Then /^[Ss]ign-in to SDC Website$/ do
 end
 
 Then /^sign-in to Orders as (.+), (.+)$/ do |usr, pw|
-  SdcWebsite.orders = Object.const_get(if SdcEnv.browser
-                                         'Orders::LandingPage'
-                                       elsif SdcEnv.i_device_name
-                                         'Orders::ILandingPage'
-                                       end
-  ).new.sign_in_with(TestData.store[:username] = usr, TestData.store[:password] = pw)
-  #SdcWebsite.orders.loading_orders.safe_wait_until_present(timeout: 5).safe_wait_while_present(timeout: 10)
-  #expect(SdcWebsite.orders.signed_in_user.safe_wait_until_present(timeout: 10).text_value).to eql (usr)
+  landing_page = Object.const_get(if SdcEnv.browser
+                     'Orders::LandingPage'
+                   elsif SdcEnv.i_device_name
+                     'Orders::ILandingPage'
+                   end
+  ).new
+
+
+  SdcLog.info landing_page.username.send_keys 'rob'
+  SdcLog.info landing_page.sign_in.click
+  SdcLog.info landing_page.sign_in.send_keys :enter
+  SdcLog.info landing_page.username.clear
+  SdcLog.info landing_page.username.send_keys 'rob'
+  SdcLog.info landing_page.sign_in.enabled?
+  SdcLog.info landing_page.sign_in.displayed?
+  #SdcLog.info landing_page.username.size
+  SdcLog.info landing_page.username.property('value')
+  SdcLog.info landing_page.username.text
+  SdcLog.info landing_page.username.property('name')
+  SdcLog.info landing_page.username.css_value('font')
+  SdcLog.info landing_page.username.css_value('border-radius')
+
+  SdcWebsite.orders = landing_page.sign_in_with(TestData.store[:username] = usr, TestData.store[:password] = pw)
+  SdcWebsite.orders.loading_orders.safe_wait_until_present(timeout: 5).safe_wait_while_present(timeout: 10)
+  expect(SdcWebsite.orders.signed_in_user.safe_wait_until_present(timeout: 10).text_value).to eql (usr)
 end
 
 Then /^sign-in to Mail as (.+), (.+)$/ do |usr, pw|

@@ -54,9 +54,9 @@ module Stamps
     end
 
     class ILandingPage < SdcPageObject
-      element(:username, required: true) { browser.find_element(xpath: "//input[@placeholder='USERNAME']") }
-      element(:password, required: true) { browser.find_element(xpath: "//input[@placeholder='PASSWORD']") }
-      element(:sign_in, required: true) { browser.find_element(xpath: "//span[contains(text(), 'Sign In')]") }
+      element(:username, required: true) { SdcElement.new(browser.find_element(xpath: "//input[@placeholder='USERNAME']")) }
+      element(:password, required: true) { SdcElement.new(browser.find_element(xpath: "//input[@placeholder='PASSWORD']")) }
+      element(:sign_in, required: true) { SdcElement.new(browser.find_element(xpath: "//span[contains(text(), 'Sign In')]")) }
 
       page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Orders&" }
 
@@ -64,13 +64,11 @@ module Stamps
         username.present? && password.present? && sign_in.present? && remember_me.present?
       end
 
-      def sign_in_with(usr, pwd, persist = 2)
+      def sign_in_with(usr, pwd)
         username.send_keys usr
         password.send_keys pwd
         sign_in.send_keys :enter
-        sign_in.send_keys :enter
-        sign_in.click
-        sign_in.click
+        sign_in.safe_send_keys :enter
       end
     end
   end

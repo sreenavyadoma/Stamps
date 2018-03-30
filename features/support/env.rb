@@ -13,7 +13,6 @@ require 'rubygems'
 require 'open3'
 require 'measured'
 require 'holidays'
-require 'socket'
 require 'selenium-webdriver'
 
 require_relative 'sdc_core/sdc_core'

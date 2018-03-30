@@ -8,8 +8,8 @@ module Stamps
         @logger.outputters = Log4r::Outputter.stdout
       end
 
-      def info(str)
-        logger.info(str) if verbose
+      def info(*args)
+        logger.info(*args) if verbose
       end
       alias_method :message, :info
       alias_method :step, :info
