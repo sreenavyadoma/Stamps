@@ -1,5 +1,17 @@
 module Stamps
 
+  module SdcEnv
+    TEST_ENVIRONMENTS = %i(stg qacc cc qasc sc rating).freeze unless Object.const_defined?('Stamps::SdcEnv::TEST_ENVIRONMENTS')
+    BROWSERS = %i(firefox chrome safari edge chromeb).freeze unless Object.const_defined?('Stamps::SdcEnv::BROWSERS')
+    SDC_APP = %i(orders mail webdev registration).freeze unless Object.const_defined?('Stamps::SdcEnv::SDC_APP')
+    IDEVICES = %i(iphone6 iphone7 iphone8 iphonex android).freeze unless Object.const_defined?('Stamps::SdcEnv::IDEVICES')
+
+    class << self #todo-Rob refactor PrintMedia
+      attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose, :printer, :browser, :hostname,
+                    :print_media, :i_device_name, :firefox_profile, :framework
+    end
+  end
+
   class SdcAppiumDriver
     class << self
       def core_driver(device_name)
@@ -452,5 +464,35 @@ module Stamps
       super unless element.respond_to?(method)
       element.send(method, *args, &block)
     end
+  end
+
+  module SdcParamHelper
+    class << self
+
+      attr_accessor :env
+
+      def webapps
+        webapps = Stamps::WebApps::Param.new
+        webapps
+      end
+
+      def webdev
+        raise "Not Implemented."
+      end
+
+      def ios
+        raise "Not Implemented."
+      end
+
+      def android
+        raise "Not Implemented."
+      end
+
+      def browser_type(driver)
+
+        raise ArgumentError, "#{driver} is not a valid selection. Valid browsers are ff|firefox|mozilla|chrome|gc|google|ms|me|microsoft|edge"
+      end
+    end
+
   end
 end

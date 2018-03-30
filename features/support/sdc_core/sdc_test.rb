@@ -1,17 +1,4 @@
 module Stamps
-
-  module SdcEnv
-    TEST_ENVIRONMENTS = %i(stg qacc cc qasc sc rating).freeze
-    BROWSERS = %i(firefox chrome safari edge chromeb).freeze
-    SDC_APP = %i(orders mail webdev registration).freeze
-    IDEVICES = %i(iphone6 iphone7 iphone8 iphonex android).freeze
-
-    class << self #todo-Rob refactor PrintMedia
-      attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose, :printer, :browser, :hostname,
-                    :print_media, :i_device_name, :firefox_profile, :framework
-    end
-  end
-
   class SdcTest
     class << self
       include Stamps::Core
@@ -230,36 +217,6 @@ module Stamps
         /(Mac OS.+?[\d_]+|Windows.+?[\d\.]+)/.match(str)
       end
     end
-  end
-
-  module SdcParamHelper
-    class << self
-
-      attr_accessor :env
-
-      def webapps
-        webapps = Stamps::WebApps::Param.new
-        webapps
-      end
-
-      def webdev
-        raise "Not Implemented."
-      end
-
-      def ios
-        raise "Not Implemented."
-      end
-
-      def android
-        raise "Not Implemented."
-      end
-
-      def browser_type(driver)
-
-        raise ArgumentError, "#{driver} is not a valid selection. Valid browsers are ff|firefox|mozilla|chrome|gc|google|ms|me|microsoft|edge"
-      end
-    end
-
   end
 end
 #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
