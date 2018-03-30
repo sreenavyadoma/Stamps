@@ -27,7 +27,24 @@ module Stamps
     end
   end
 
+  module SdcDriver
+    class << self
+      def browser=(browser)
+        @@browser = browser
+      end
+      alias_method :driver=, :browser=
+
+
+      def browser
+        @@browser
+      end
+      alias_method :driver, :browser
+    end
+  end
+
   class SdcPageObject
+    include SdcDriver
+
     class << self
       attr_writer :element_list
       attr_writer :required_element_list
@@ -96,17 +113,6 @@ module Stamps
         end
       end
 
-      def browser=(browser)
-        @@browser = browser
-      end
-      alias_method :driver=, :browser=
-
-
-      def browser
-        @@browser
-      end
-      alias_method :driver, :browser
-
     end
 
     attr_reader :browser
@@ -174,7 +180,7 @@ module Stamps
 
   end
 
-  class SdcDriver < BasicObject
+  class SdcDriverDecorator < BasicObject
     def initialize(driver)
       @driver = driver
     end

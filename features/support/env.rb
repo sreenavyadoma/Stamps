@@ -2,7 +2,7 @@ $LOAD_PATH << File.expand_path('../../lib', __FILE__)
 $LOAD_PATH << File.expand_path('lib/features/orders', __FILE__)
 $LOAD_PATH << File.expand_path('features/support/lib', __FILE__)
 
-require_relative 'sdc_core/sdc_test'
+#require_relative 'sdc_core/sdc_test'
 SdcTest.require_default_gems
 
 require_relative 'sdc_core/sdc_core'

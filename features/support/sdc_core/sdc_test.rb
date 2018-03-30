@@ -10,40 +10,40 @@ class SdcTest
           case(SdcEnv.browser)
             when :edge
               kill("taskkill /im MicrosoftEdge.exe /f")
-              SdcPageObject.driver = SdcDriver.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
-              SdcPageObject.driver.window.maximize
+              SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
+              SdcDriver.driver.window.maximize
             when :firefox
               kill("taskkill /im firefox.exe /f")
               unless SdcEnv.firefox_profile
-                SdcPageObject.driver = SdcDriver.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
+                SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
               else
                 profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(firefox_profile)
                 profile.assume_untrusted_certificate_issuer = true
                 profile['network.http.phishy-userpass-length'] = 255
-                SdcPageObject.driver = SdcDriver.new(Watir::Browser.new(:firefox, :profile => profile))
+                SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, :profile => profile))
               end
-              SdcPageObject.driver.window.resize_to 1560, 1020
-              SdcPageObject.driver.window.move_to 0, 0
+              SdcDriver.driver.window.resize_to 1560, 1020
+              SdcDriver.driver.window.move_to 0, 0
             when :chrome
               kill("taskkill /im chrome.exe /f")
-              SdcPageObject.driver = SdcDriver.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
-              SdcPageObject.driver.window.maximize
+              SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+              SdcDriver.driver.window.maximize
             when :chromeb
               kill("taskkill /im chrome.exe /f")
               Selenium::WebDriver::Chrome.path = data_for(:setup, {})['windows']['chromedriverbeta']
-              SdcPageObject.driver = SdcDelegatedDriver.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
-              SdcPageObject.driver.window.maximize
+              SdcDriver.driver = SdcDelegatedDriver.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+              SdcDriver.driver.window.maximize
             when :ie
               kill("taskkill /im iexplore.exe /f")
-              SdcPageObject.driver = SdcDriver.new(Watir::Browser.new(:ie))
-              SdcPageObject.driver.window.maximize
+              SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:ie))
+              SdcDriver.driver.window.maximize
             when :safari
               kill("killall 'Safari Technology Preview'")
-              SdcPageObject.driver = SdcDriver.new(Watir::Browser.new(:safari, technology_preview: true))
+              SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:safari, technology_preview: true))
             else
               raise ArgumentError, "Invalid browser selection. #{test_driver}"
           end
-          SdcPageObject.driver.driver.manage.timeouts.page_load = 12
+          SdcDriver.driver.driver.manage.timeouts.page_load = 12
         rescue Exception => e
           SdcLog.error e.message
           SdcLog.error e.backtrace.join("\n")
@@ -51,8 +51,8 @@ class SdcTest
         end
       elsif SdcEnv.i_device_name
         begin
-          SdcPageObject.driver = SdcDriver.new(SdcAppiumDriver.core_driver(SdcEnv.i_device_name.to_s).start_driver)
-          SdcPageObject.driver.manage.timeouts.implicit_wait = 20
+          SdcDriver.driver = SdcDriverDecorator.new(SdcAppiumDriver.core_driver(SdcEnv.i_device_name.to_s).start_driver)
+          SdcDriver.driver.manage.timeouts.implicit_wait = 20
         rescue Exception => e
           SdcLog.error e.message
           SdcLog.error e.backtrace.join("\n")
@@ -140,7 +140,7 @@ class SdcTest
 
     def web_apps_param
       @web_apps_param
-      @web_apps_param.driver = SdcPageObject.driver
+      @web_apps_param.driver = SdcDriver.driver
       @web_apps_param
     end
 
