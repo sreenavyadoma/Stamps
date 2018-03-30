@@ -2,7 +2,7 @@ Feature: IDevice Tests
   Background:
     Given Start test driver
 
-  @iphonex
+  @sauce_labs_poc
   Scenario: Mail Authentication Test
     Then visit Sdc Website
     Then sign-in to SDC Website

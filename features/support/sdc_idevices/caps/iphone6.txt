@@ -1,7 +1,7 @@
 [caps]
 platformName = "ios"
 deviceName = "iPhone 6"
-platformVersion = "11.2"
+platformVersion = "11.3"
 browserName = "safari"
 
 [appium_lib]

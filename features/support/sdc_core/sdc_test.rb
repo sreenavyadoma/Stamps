@@ -121,9 +121,14 @@ module Stamps
         if ENV['IDEVICENAME']
           require 'appium_lib'
           require 'appium_lib_core'
-        elsif ENV['FRAMEWORK'].nil?
+        end
+
+        if ENV['FRAMEWORK']
+          require 'selenium-webdriver'
+        else
           require 'watir'
         end
+
         if /rates/.match(scenario.name)
           require 'spreadsheet'
           require "csv"
