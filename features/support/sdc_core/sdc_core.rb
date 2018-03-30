@@ -245,8 +245,11 @@ module Stamps
     end
 
     def set(*args)
-      @element.send(:set, *args) if @element.respond_to? :set
-      @element.send(:send_keys, *args)
+      if @element.respond_to? :set
+        @element.send(:set, *args)
+      else
+        @element.send(:send_keys, *args)
+      end
     end
 
     def safe_set(*args, ctr: 1)
@@ -373,7 +376,6 @@ module Stamps
     def click_while_present(*modifiers, ctr: 2)
       ctr.to_i.times do
         begin
-          break unless clickable?
           safe_click(*modifiers)
           safe_wait_while_present(1)
           break unless present?
@@ -382,21 +384,18 @@ module Stamps
         end
       end
 
-      clickable?
     end
 
     def send_keys_while_present(*args, ctr: 2)
       ctr.to_i.times do
         begin
-          break unless clickable?
+          break unless present?
           safe_send_keys(*args)
           safe_wait_while_present(1)
         rescue
           # ignore
         end
       end
-
-      clickable?
     end
 
     def safe_double_click(ctr: 1)
