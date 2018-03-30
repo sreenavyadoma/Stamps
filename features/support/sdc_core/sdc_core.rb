@@ -2,7 +2,6 @@ module Stamps
 
   class SdcAppiumDriver
     class << self
-
       def core_driver(device_name)
         caps = Appium.load_appium_txt(file: File.expand_path("../../sdc_idevices/caps/#{device_name}.txt", __FILE__), verbose: true)
         @core_driver = Appium::Driver.new(caps, false)
@@ -17,7 +16,6 @@ module Stamps
   end
 
   class SdcPageObject
-
     class << self
       attr_writer :element_list
       attr_writer :required_element_list
