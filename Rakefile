@@ -3,8 +3,18 @@ require 'cucumber'
 require 'cucumber/rake/task'
 
 # BEGIN WEB REG
-Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
-  t.profile = 'xxxxxxxxxx'
+Cucumber::Rake::Task.new(:alex_mail) do |t|
+  t.profile = 'alex_mail'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:sauce_labs_browser) do |t|
+  t.profile = 'sauce_labs_browser'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:sauce_labs_iphonex) do |t|
+  t.profile = 'sauce_labs_iphonex'
   t.cucumber_opts = "-p cuke_reports"
 end
 

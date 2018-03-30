@@ -1,4 +1,4 @@
-default: --backtrace --profile iphonex_prod
+default: --backtrace --profile browser_prod
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -14,10 +14,11 @@ rob_mail_sc: --tags @print_dialog_ship_date WEB_APP=mail JENKINS=true USR=defaul
 rob_registration: --tags @registration_normal_workflow WEB_APP=registration URL=cc --guess VERBOSE=true HEALTHCHECK=false BROWSER=chrome MAX_WINDOW=false JENKINS=true
 
 browser_test:  --tags @iphonex BROWSER=ff VERBOSE=true USR=ccfb311osps4x PW=pass111 URL=cc WEB_APP=orders HEALTHCHECK=true
-browser_test_:  --tags @iphonex BROWSER=ff VERBOSE=true USR=abqaprod1 PW=password1 URL=prod WEB_APP=orders HEALTHCHECK=true #FRAMEWORK=new
 
 iphonex: --tags @iphonex --guess IDEVICENAME='iphone x' VERBOSE=true JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=cc USR=ccfb311osps4x PW=pass111
-iphonex_prod: --tags @iphonex --guess IDEVICENAME='iphone x' VERBOSE=true JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
+
+sauce_labs_browser:  --tags @sauce_labs_poc BROWSER=ff VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
+sauce_labs_iphonex: --tags @sauce_labs_poc IDEVICENAME='iphone x' VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
 
 #todo-Rob WebReg consider removing webapp, username, password fields
 #mhossain1_cc: --tags @registration_normal_workflow WEB_APP=orders JENKINS=true URL=cc VERBOSE=true BROWSER=ff MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
