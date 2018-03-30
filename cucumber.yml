@@ -1,4 +1,4 @@
-default: --backtrace --profile sauce_labs_browser
+default: --backtrace --profile saucelabs_iphonex
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -17,8 +17,8 @@ browser_test:  --tags @iphonex BROWSER=ff VERBOSE=true USR=ccfb311osps4x PW=pass
 
 iphonex: --tags @iphonex --guess IDEVICENAME='iphone x' VERBOSE=true JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=cc USR=ccfb311osps4x PW=pass111
 
-sauce_labs_browser:  --tags @sauce_labs_poc BROWSER=ff VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
-sauce_labs_iphonex: --tags @sauce_labs_poc IDEVICENAME='iphone x' VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
+saucelabs_browser:  --tags @saucelabs_poc BROWSER=ff VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
+saucelabs_iphonex: --tags @saucelabs_poc IDEVICENAME='iphone x' VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
 
 #todo-Rob WebReg consider removing webapp, username, password fields
 #mhossain1_cc: --tags @registration_normal_workflow WEB_APP=orders JENKINS=true URL=cc VERBOSE=true BROWSER=ff MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1

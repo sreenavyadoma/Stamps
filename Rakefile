@@ -8,13 +8,13 @@ Cucumber::Rake::Task.new(:alex_mail) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:sauce_labs_browser) do |t|
-  t.profile = 'sauce_labs_browser'
+Cucumber::Rake::Task.new(:saucelabs_browser) do |t|
+  t.profile = 'saucelabs_browser'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:sauce_labs_iphonex) do |t|
-  t.profile = 'sauce_labs_iphonex'
+Cucumber::Rake::Task.new(:saucelabs_iphonex) do |t|
+  t.profile = 'saucelabs_iphonex'
   t.cucumber_opts = "-p cuke_reports"
 end
 
