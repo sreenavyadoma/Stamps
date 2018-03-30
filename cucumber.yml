@@ -1,4 +1,4 @@
-default: --backtrace --profile saucelabs_browser
+default: --backtrace --profile saucelabs_iphonex
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -24,9 +24,6 @@ saucelabs_iphonex: --tags @saucelabs_poc IDEVICENAME='iphone x' VERBOSE=true WEB
 #mhossain1_cc: --tags @registration_normal_workflow WEB_APP=orders JENKINS=true URL=cc VERBOSE=true BROWSER=ff MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
 
 mhossain1_cc: --tags @registration_ui_validation_profile_page JENKINS=true URL=cc VERBOSE=true BROWSER=edge MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
-
-mobile_orders_smoke_test: --tags @mobile_orders_smoke_test --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-mobile_mail_smoke_test: --tags @mobile_mail_smoke_test --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess VERBOSE=false HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 
