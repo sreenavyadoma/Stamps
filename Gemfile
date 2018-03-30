@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 
 # Common
-gem 'selenium-webdriver'
 gem 'rspec', '3.6.0'
 gem 'cucumber', '3.1.0'
 gem 'gherkin'
@@ -14,6 +13,10 @@ gem 'measured'
 
 group :watir do
   gem 'watir', '6.10.3'
+end
+
+group :selenium do
+  gem 'selenium-webdriver'
 end
 
 group :mysql do
