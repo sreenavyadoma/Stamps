@@ -1,14 +1,9 @@
 module Stamps
 
-  class SdcIDriver
+  class SdcAppiumDriver
     class << self
 
-      attr_reader :core_driver
-
-      alias_method :browser, :web_driver
-      alias_method :driver, :web_driver
-
-      def configure(device_name)
+      def core_driver(device_name)
         @core_driver = Appium::Driver.new(capabilities(device_name), false)
         self
       end
@@ -82,7 +77,7 @@ module Stamps
       end
 
       def element_x(name, locator, required: false)
-        element(name, required) { ElementLocator.find(locator) }
+        element(name, required) { SdcElementFinder.element(locator) }
       end
 
       def visit(*args)
@@ -103,11 +98,13 @@ module Stamps
       def browser=(browser)
         @@browser = browser
       end
+      alias_method :driver=, :browser=
 
 
       def browser
         @@browser
       end
+      alias_method :driver, :browser
 
     end
 
@@ -172,6 +169,10 @@ module Stamps
     end
   end
 
+  class SdcElementFinder
+
+  end
+
   class SdcDriver < BasicObject
     def initialize(driver)
       @driver = driver
@@ -181,6 +182,8 @@ module Stamps
       return @driver.get(*args) if @driver.respond_to?(:get)
       @driver.goto(*args)
     end
+
+
 
     def method_missing(method, *args, &block)
       super unless driver.respond_to?(method)
@@ -197,21 +200,13 @@ module Stamps
     end
 
     def present?
-      @element.present?
-    end
-
-    def disabled?
-      begin
-        return @element.disabled?
-      rescue
-        # ignore
-      end
-      true
+      return @element.send(:present?) if @lement.respond_to?(:present?)
+      enabled? && @element.send(:displayed?)
     end
 
     def enabled?
       begin
-        return @element.enabled?
+        return @element.send(:enabled?)
       rescue
         # ignore
       end
@@ -220,24 +215,16 @@ module Stamps
 
     def visible?
       begin
-        return @element.visible?
+        return @element.send(:visible?)
       rescue
         # ignore
       end
       false
     end
 
-    def truthy?
-      !@element.nil? && @element.exist?
-    end
-
-    def clickable?
-      truthy? && @element.present? && enabled?
-    end
-
-    def hover
+    def safe_hover
       begin
-        @element.hover
+        @element.send(:hover)
       rescue
         # ignore
       end
@@ -248,7 +235,7 @@ module Stamps
     def safe_click(*modifiers, ctr: 1)
       ctr.to_i.times do
         begin
-          @element.click(*modifiers)
+          @element.send(:click, *modifiers)
         rescue
           # ignore
         end
@@ -258,7 +245,8 @@ module Stamps
     end
 
     def set(*args)
-      @element.set(*args)
+      @element.send(:set, *args) if @element.respond_to? :set
+      @element.send(:send_keys, *args)
     end
 
     def safe_set(*args, ctr: 1)
@@ -273,10 +261,6 @@ module Stamps
       text_value
     end
 
-    def send_keys(*args)
-      @element.send_keys(*args)
-    end
-
     def safe_send_keys(*args, ctr: 1)
       ctr.to_i.times do
         begin
@@ -288,6 +272,65 @@ module Stamps
 
       text_value
     end
+
+    def wait_until(timeout: 10, interval: 0.2, message: '', ignored: Error::NoSuchElementError)
+      end_time = Time.now + @timeout
+      last_error = nil
+
+      until Time.now > end_time
+        begin
+          result = yield
+          return result if result
+        rescue *ignored => last_error
+          # swallowed
+        end
+
+        sleep interval
+      end
+
+      msg = if message
+              message.dup
+            else
+              "timed out after #{timeout} seconds"
+            end
+
+      msg << " (#{last_error.message})" if last_error
+
+      raise Error::TimeOutError, msg
+    end
+
+    def wait_while(timeout: 10, interval: 0.2, message: '', ignored: Error::NoSuchElementError)
+      end_time = Time.now + @timeout
+      last_error = nil
+
+      until Time.now > end_time
+        begin
+          result = yield
+          return result if result
+        rescue *ignored => last_error
+          # swallowed
+        end
+
+        sleep interval
+      end
+
+      msg = if message
+              message.dup
+            else
+              "timed out after #{timeout} seconds"
+            end
+
+      msg << " (#{last_error.message})" if last_error
+
+      raise Error::TimeOutError, msg
+    end
+
+
+
+
+
+
+
 
     def safe_wait_while_present(timeout: nil, interval: nil)
       begin
