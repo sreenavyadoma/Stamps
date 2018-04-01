@@ -12,7 +12,60 @@ module Stamps
     end
   end
 
+  module SdcWait
+    def wait_until(timeout: 10, interval: 0.2, message: '', ignored: Error::NoSuchElementError)
+      end_time = Time.now + @timeout
+      last_error = nil
 
+      until Time.now > end_time
+        begin
+          result = yield
+          return result if result
+        rescue *ignored => last_error
+          # swallowed
+        end
+
+        sleep interval
+      end
+
+      msg = if message
+              message.dup
+            else
+              "timed out after #{timeout} seconds"
+            end
+
+      msg << " (#{last_error.message})" if last_error
+
+      raise Error::TimeOutError, msg
+    end
+
+    def wait_while(timeout: 10, interval: 0.2, message: '', ignored: Error::NoSuchElementError)
+      end_time = Time.now + @timeout
+      last_error = nil
+
+      until Time.now > end_time
+        begin
+          result = yield
+          return result if result
+        rescue *ignored => last_error
+          # swallowed
+        end
+
+        sleep interval
+      end
+
+      msg = if message
+              message.dup
+            else
+              "timed out after #{timeout} seconds"
+            end
+
+      msg << " (#{last_error.message})" if last_error
+
+      raise Error::TimeOutError, msg
+    end
+
+  end
 
   class SdcAppiumDriver
     class << self
@@ -50,6 +103,7 @@ module Stamps
 
   class SdcPageObject
     include SdcDriver
+    include SdcWait
 
     class << self
       attr_writer :element_list
@@ -111,8 +165,8 @@ module Stamps
           message = "Expected to be on #{page.class}, but conditions not met"
           if page.page_verifiable?
             begin
-              page.wait_until { page.on_page? }
-            rescue StandardError
+              page.wait_until(timeout: 20) { page.on_page? }
+            rescue Error::TimeOutError
               raise exception, message
             end
           end
@@ -162,11 +216,6 @@ module Stamps
       message = "Unsupported driver #{browser.class}"
       raise exception, message unless page_verifiable?
     end
-
-    def wait_until(timeout: 12, &block)
-      Selenium::WebDriver::Wait.new(:timeout => timeout).until(&block)
-    end
-
 
     def method_missing(method, *args, &block)
       super unless @browser.respond_to?(method) && method != :page_url
@@ -288,12 +337,6 @@ module Stamps
 
       text_value
     end
-
-
-
-
-
-
 
     def safe_wait_while_present(timeout: nil, interval: nil)
       begin
@@ -423,35 +466,5 @@ module Stamps
       super unless element.respond_to?(method)
       element.send(method, *args, &block)
     end
-  end
-
-  module SdcParamHelper
-    class << self
-
-      attr_accessor :env
-
-      def webapps
-        webapps = Stamps::WebApps::Param.new
-        webapps
-      end
-
-      def webdev
-        raise "Not Implemented."
-      end
-
-      def ios
-        raise "Not Implemented."
-      end
-
-      def android
-        raise "Not Implemented."
-      end
-
-      def browser_type(driver)
-
-        raise ArgumentError, "#{driver} is not a valid selection. Valid browsers are ff|firefox|mozilla|chrome|gc|google|ms|me|microsoft|edge"
-      end
-    end
-
   end
 end
