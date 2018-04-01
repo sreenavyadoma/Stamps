@@ -162,22 +162,30 @@ module Stamps
         element_list << name.to_sym
       end
 
-      def element(name, required: false, &block)
-        define_method(name) do |*args|
-          self.instance_exec(*args, &block)
-        end
-
-        element_list << name.to_sym
-        required_element_list << name.to_sym if required
-      end
-
       def by_locator(name, locator, timeout: 12, required: false)
         element(name, required: required) { SdcElement.new(finder.element(locator, timeout: timeout)) }
       end
 
-      def by_xpath(name, xpath, timeout: 12, required: false)
-        by_locator(name, xpath: xpath, timeout: timeout, required: required)
+      def by_xpath(name, str, timeout: 12, required: false)
+        by_locator(name, xpath: str, timeout: timeout, required: required)
       end
+
+      def by_classname(name, str, timeout: 12, required: false)
+        by_locator(name, class: str, timeout: timeout, required: required)
+      end
+
+      def by_id(name, str, timeout: 12, required: false)
+        by_locator(name, id: str, timeout: timeout, required: required)
+      end
+
+      def chooser(name, chooser_loc, verify_loc, attribute, value, timeout: 12, required: false)
+        element(name, required: required) { SdcChooser.new(finder.element(chooser_loc, timeout: timeout),
+                                                           finder.element(verify_loc, timeout: timeout),
+                                                           attribute, value) }
+      end
+      alias_method :checkbox, :chooser
+      alias_method :selection, :chooser
+      alias_method :radio, :chooser
 
       def visit(*args)
         new.tap do |page|
@@ -194,6 +202,16 @@ module Stamps
         end
       end
 
+      private
+
+      def element(name, required: false, &block)
+        define_method(name) do |*args|
+          self.instance_exec(*args, &block)
+        end
+
+        element_list << name.to_sym
+        required_element_list << name.to_sym if required
+      end
     end
 
     attr_reader :browser, :finder
