@@ -12,6 +12,8 @@ module Stamps
     end
   end
 
+
+
   class SdcAppiumDriver
     class << self
       def core_driver(device_name)
@@ -286,59 +288,6 @@ module Stamps
 
       text_value
     end
-
-    def wait_until(timeout: 10, interval: 0.2, message: '', ignored: Error::NoSuchElementError)
-      end_time = Time.now + @timeout
-      last_error = nil
-
-      until Time.now > end_time
-        begin
-          result = yield
-          return result if result
-        rescue *ignored => last_error
-          # swallowed
-        end
-
-        sleep interval
-      end
-
-      msg = if message
-              message.dup
-            else
-              "timed out after #{timeout} seconds"
-            end
-
-      msg << " (#{last_error.message})" if last_error
-
-      raise Error::TimeOutError, msg
-    end
-
-    def wait_while(timeout: 10, interval: 0.2, message: '', ignored: Error::NoSuchElementError)
-      end_time = Time.now + @timeout
-      last_error = nil
-
-      until Time.now > end_time
-        begin
-          result = yield
-          return result if result
-        rescue *ignored => last_error
-          # swallowed
-        end
-
-        sleep interval
-      end
-
-      msg = if message
-              message.dup
-            else
-              "timed out after #{timeout} seconds"
-            end
-
-      msg << " (#{last_error.message})" if last_error
-
-      raise Error::TimeOutError, msg
-    end
-
 
 
 
