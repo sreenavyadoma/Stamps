@@ -5,7 +5,7 @@ class SdcTest
     def configure
       if SdcEnv.browser
         begin
-          Watir.always_locate = true
+          #Watir.always_locate = true
           Selenium::WebDriver.logger.level = :warn
           case(SdcEnv.browser)
             when :edge
@@ -121,12 +121,12 @@ class SdcTest
         require 'appium_lib'
         require 'appium_lib_core'
       end
-
-      if ENV['FRAMEWORK']
-        require 'selenium-webdriver'
-      else
-        require 'watir'
-      end
+      #
+      # if ENV['FRAMEWORK']
+      #   require 'selenium-webdriver'
+      # else
+      #   require 'watir'
+      # end
 
       if /rates/.match(scenario.name)
         require 'spreadsheet'
@@ -231,3 +231,8 @@ class SdcTest
   end
 end
 #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
+#
+#
+# caps = Selenium::WebDriver::Remote::Capabilities.firefox
+# caps['acceptInsecureCerts'] = true
+# SdcDriver.driver = Selenium::WebDriver.for(:firefox, desired_capabilities: caps)

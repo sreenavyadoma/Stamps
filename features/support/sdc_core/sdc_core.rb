@@ -39,6 +39,10 @@ module Stamps
         @@browser
       end
       alias_method :driver, :browser
+
+      def web_driver
+        @@browser.driver
+      end
     end
   end
 

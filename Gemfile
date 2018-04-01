@@ -13,7 +13,7 @@ gem 'holidays'
 gem 'measured'
 
 group :watir do
-  gem 'watir', '6.10.3'
+  #gem 'watir', '6.10.3'
 end
 
 group :mysql do
