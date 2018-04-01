@@ -94,10 +94,6 @@ module Stamps
         @@browser
       end
       alias_method :driver, :browser
-
-      def web_driver
-        @@browser.driver
-      end
     end
   end
 
@@ -107,9 +103,16 @@ module Stamps
       @driver = driver
     end
 
-    def element(locator, timeout: 12)
+    def element(locator, message: '', timeout: 12)
       begin
-        wait_until(timeout: timeout) { @driver.find_element(locator) }
+        wait_until(timeout: timeout, message: message) { if @driver.respond_to?(:element)
+                                                           @driver.element(locator)
+                                                         else
+                                                           @driver.find_element(locator)
+                                                         end
+        }
+
+        return @driver.element(locator) if @driver.respond_to?(:element)
         return @driver.find_element(locator)
       rescue Selenium::WebDriver::Error::TimeOutError
         # swallow
@@ -163,7 +166,7 @@ module Stamps
       end
 
       def by_locator(name, locator, timeout: 12, required: false)
-        element(name, required: required) { SdcElement.new(finder.element(locator, timeout: timeout)) }
+        element(name, required: required) { SdcElement.new(finder.element(locator, message: name, timeout: timeout)) }
       end
 
       def by_xpath(name, str, timeout: 12, required: false)
@@ -219,7 +222,7 @@ module Stamps
 
     def initialize(browser = @@browser)
       @browser = browser
-      @finder = SdcElementFinder.new(browser.driver)
+      @finder = SdcElementFinder.new(browser)
     end
 
     def inspect
@@ -229,7 +232,7 @@ module Stamps
 
     def on_page?
       exception = Selenium::WebDriver::Error::WebDriverError
-      message = "Can not verify page without any requirements set"
+      message = 'Can not verify page without any requirements set'
       raise exception, message unless page_verifiable?
 
       if self.class.require_url
@@ -281,8 +284,6 @@ module Stamps
       @driver.goto(*args)
     end
 
-
-
     def method_missing(method, *args, &block)
       super unless driver.respond_to?(method)
       @driver.send(method, *args, &block)
@@ -293,6 +294,8 @@ module Stamps
   end
 
   class SdcElement < BasicObject
+    include SdcWait
+
     def initialize(element)
       @element = element
     end
@@ -322,6 +325,7 @@ module Stamps
 
     def safe_hover
       begin
+        @element.send(:focus)
         @element.send(:hover)
       rescue
         # ignore
@@ -362,9 +366,25 @@ module Stamps
       text_value
     end
 
-    def safe_wait_while_present(timeout: nil, interval: nil)
+    def send_keys_while_present(*args, ctr: 2)
+      ctr.to_i.times do
+        begin
+          break unless present?
+          safe_send_keys(*args)
+          safe_wait_while_present(1)
+        rescue
+          # ignore
+        end
+      end
+    end
+
+    def wait_until_present(timeout: 12, interval: 0.2)
+      wait_while(timeout: timeout, interval: interval) { present? }
+    end
+
+    def safe_wait_until_present(timeout: nil, interval: nil)
       begin
-        @element.wait_while_present(timeout, interval)
+        wait_until_present(timeout: timeout, interval: interval)
       rescue
         # ignore
       end
@@ -372,9 +392,13 @@ module Stamps
       self
     end
 
-    def safe_wait_until_present(timeout: nil, interval: nil)
+    def wait_while_present(timeout: 12, interval: 0.2)
+      wait_while(timeout: timeout, interval: interval) { present? }
+    end
+
+    def safe_wait_while_present(timeout: 10, interval: 0.2)
       begin
-        @element.wait_until_present(timeout, interval)
+        wait_while_present(timeout: timeout, interval: interval)
       rescue
         # ignore
       end
@@ -406,19 +430,6 @@ module Stamps
           safe_click(*modifiers)
           safe_wait_while_present(1)
           break unless present?
-        rescue
-          # ignore
-        end
-      end
-
-    end
-
-    def send_keys_while_present(*args, ctr: 2)
-      ctr.to_i.times do
-        begin
-          break unless present?
-          safe_send_keys(*args)
-          safe_wait_while_present(1)
         rescue
           # ignore
         end
