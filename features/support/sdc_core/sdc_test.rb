@@ -158,7 +158,7 @@ class SdcTest
 
     def teardown
       begin
-        driver.quit
+        SdcDriver.driver.quit
       rescue
         # ignore
       end

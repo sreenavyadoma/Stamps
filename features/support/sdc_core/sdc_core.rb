@@ -178,10 +178,10 @@ module Stamps
         by_locator(name, id: str, timeout: timeout, required: required)
       end
 
-      def chooser(name, chooser_loc, verify_loc, attribute, value, timeout: 12, required: false)
+      def chooser(name, chooser_loc, verify_loc, property, property_name, timeout: 12, required: false)
         element(name, required: required) { SdcChooser.new(finder.element(chooser_loc, timeout: timeout),
                                                            finder.element(verify_loc, timeout: timeout),
-                                                           attribute, value) }
+                                                           property, property_name) }
       end
       alias_method :checkbox, :chooser
       alias_method :selection, :chooser
@@ -458,29 +458,33 @@ module Stamps
 
   class SdcChooser
 
-    attr_accessor :element, :verify, :attribute, :attribute_value
+    attr_accessor :element, :verify, :property, :property_val
 
-    def initialize(element, verify, attribute, attribute_value)
+    def initialize(element, verify, property, property_val)
       set_instance_variables(binding, *local_variables)
     end
 
     def chosen?
-      result = verify.attribute_value(attribute)
+      if verify.respond_to? :attribute_value
+        result = verify.attribute_value(property)
+      else
+        result = verify.property(property)
+      end
       return result.casecmp('true') == 0 if result.casecmp('true') == 0 || result .casecmp('false') == 0
-      result.include?(attribute_value)
+      result.include?(property_val)
     end
     alias_method :checked?, :chosen?
     alias_method :selected?, :chosen?
 
-    def choose(persist = 2)
-      persist.times do element.click; break if chosen? end
+    def choose(iter: 2)
+      iter.times do element.click; break if chosen? end
       chosen?
     end
     alias_method :check, :choose
     alias_method :select, :choose
 
-    def unchoose(persist = 2)
-      persist.times do break unless chosen?; element.click end
+    def unchoose(iter: 2)
+      iter.times do break unless chosen?; element.click end
       chosen?
     end
     alias_method :uncheck, :unchoose

@@ -4,7 +4,7 @@ module Stamps
       by_xpath(:username, "//input[@placeholder='USERNAME']", required: true)
       by_xpath(:password, "//input[@placeholder='PASSWORD']", required: true)
       by_xpath(:sign_in, "//span[contains(text(), 'Sign In')]", required: true)
-      chooser(:remember_me,
+      checkbox(:remember_me,
               {xpath: "//*[contains(@class, 'remember-username-checkbox')]//span[contains(@id, 'displayEl')]"},
               {xpath: "//*[contains(@class, 'remember-username-checkbox')]"},
               "class", "checked")
@@ -16,12 +16,12 @@ module Stamps
       end
 
       def sign_in_with(usr, pwd)
+        SdcLog.info remember_me.checked?
+        remember_me.check
+        SdcLog.info remember_me.checked?
+        remember_me.uncheck
         username.set usr
         password.set pwd
-        SdcLog.info checkbox.checked?
-        checkbox.check
-        SdcLog.info checkbox.checked?
-        checkbox.uncheck
 
         sign_in.safe_click(ctr: 2).send_keys_while_present(:enter, ctr: 2)
         username.safe_wait_while_present(timeout: 10)
