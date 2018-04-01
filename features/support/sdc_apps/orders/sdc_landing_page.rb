@@ -24,9 +24,16 @@ module Stamps
     end
 
     class LandingPage < SdcPageObject
-      element(:username, required: true) { SdcElement.new(browser.text_field(css: '[placeholder=USERNAME]')) }
-      element(:password, required: true) { SdcElement.new(browser.text_field(css: '[placeholder=PASSWORD]')) }
-      element(:sign_in, required: true) { SdcElement.new(browser.span(text: 'Sign In')) }
+      # element(:username, required: true) { SdcElement.new(browser.text_field(css: '[placeholder=USERNAME]')) }
+      # element(:password, required: true) { SdcElement.new(browser.text_field(css: '[placeholder=PASSWORD]')) }
+      # element(:sign_in, required: true) { SdcElement.new(browser.span(text: 'Sign In')) }
+      # element(:remember_me) { SdcChooser.new(SdcElement.new(browser.span(:id, '[class*=remember-username-checkbox]')),
+      #                                        SdcElement.new(browser.div(css: '[class*=remember-username-checkbox] [id$=-displayEl]')),
+      #                                        'class', 'checked') }
+
+      by_xpath(:username, "//input[@placeholder='USERNAME']", required: true)
+      by_xpath(:password, "//input[@placeholder='PASSWORD']", required: true)
+      by_xpath(:sign_in, "//span[contains(text(), 'Sign In')]", required: true)
       element(:remember_me) { SdcChooser.new(SdcElement.new(browser.span(:id, '[class*=remember-username-checkbox]')),
                                              SdcElement.new(browser.div(css: '[class*=remember-username-checkbox] [id$=-displayEl]')),
                                              'class', 'checked') }

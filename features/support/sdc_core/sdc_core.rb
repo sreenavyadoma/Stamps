@@ -13,8 +13,8 @@ module Stamps
   end
 
   module SdcWait
-    def wait_until(timeout: 10, interval: 0.2, message: '', ignored: Error::NoSuchElementError)
-      end_time = Time.now + @timeout
+    def wait_until(timeout: 12, interval: 0.2, message: '', ignored: Selenium::WebDriver::Error::NoSuchElementError)
+      end_time = Time.now + timeout
       last_error = nil
 
       until Time.now > end_time
@@ -36,11 +36,11 @@ module Stamps
 
       msg << " (#{last_error.message})" if last_error
 
-      raise Error::TimeOutError, msg
+      raise Selenium::WebDriver::Error::TimeOutError, msg
     end
 
-    def wait_while(timeout: 10, interval: 0.2, message: '', ignored: Error::NoSuchElementError)
-      end_time = Time.now + @timeout
+    def wait_while(timeout: 12, interval: 0.2, message: '', ignored: Selenium::WebDriver::Error::NoSuchElementError)
+      end_time = Time.now + timeout
       last_error = nil
 
       until Time.now > end_time
@@ -62,7 +62,7 @@ module Stamps
 
       msg << " (#{last_error.message})" if last_error
 
-      raise Error::TimeOutError, msg
+      raise Selenium::WebDriver::Error::TimeOutError, msg
     end
 
   end
@@ -98,6 +98,23 @@ module Stamps
       def web_driver
         @@browser.driver
       end
+    end
+  end
+
+  class SdcElementFinder
+    include SdcWait
+    def initialize(driver)
+      @driver = driver
+    end
+
+    def element(locator, timeout: 12)
+      begin
+        wait_until(timeout: timeout) { @driver.find_element(locator) }
+        return @driver.find_element(locator)
+      rescue Selenium::WebDriver::Error::TimeOutError
+        # swallow
+      end
+      nil
     end
   end
 
@@ -154,8 +171,12 @@ module Stamps
         required_element_list << name.to_sym if required
       end
 
-      def element_x(name, locator, required: false)
-        element(name, required) { SdcElementFinder.element(locator) }
+      def by_locator(name, locator, timeout: 12, required: false)
+        element(name, required: required) { SdcElement.new(finder.element(locator, timeout: timeout)) }
+      end
+
+      def by_xpath(name, xpath, timeout: 12, required: false)
+        by_locator(name, xpath: xpath, timeout: timeout, required: required)
       end
 
       def visit(*args)
@@ -166,7 +187,7 @@ module Stamps
           if page.page_verifiable?
             begin
               page.wait_until(timeout: 20) { page.on_page? }
-            rescue Error::TimeOutError
+            rescue Selenium::WebDriver::Error::TimeOutError
               raise exception, message
             end
           end
@@ -175,11 +196,12 @@ module Stamps
 
     end
 
-    attr_reader :browser
+    attr_reader :browser, :finder
     alias_method :driver, :browser
 
     def initialize(browser = @@browser)
       @browser = browser
+      @finder = SdcElementFinder.new(browser.driver)
     end
 
     def inspect
@@ -229,10 +251,6 @@ module Stamps
     def page_verifiable?
       self.class.require_url || self.respond_to?(:page_title) || self.class.required_element_list.any?
     end
-  end
-
-  class SdcElementFinder
-
   end
 
   class SdcDriverDecorator < BasicObject
@@ -312,18 +330,6 @@ module Stamps
       else
         @element.send(:send_keys, *args)
       end
-    end
-
-    def safe_set(*args, ctr: 1)
-      ctr.to_i.times do
-        begin
-          set(*args)
-        rescue
-          # ignore
-        end
-      end
-
-      text_value
     end
 
     def safe_send_keys(*args, ctr: 1)

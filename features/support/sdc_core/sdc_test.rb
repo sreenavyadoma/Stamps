@@ -121,12 +121,12 @@ class SdcTest
         require 'appium_lib'
         require 'appium_lib_core'
       end
-      #
-      # if ENV['FRAMEWORK']
-      #   require 'selenium-webdriver'
-      # else
-      #   require 'watir'
-      # end
+
+      if ENV['FRAMEWORK']
+        require 'selenium-webdriver'
+      else
+        require 'watir'
+      end
 
       if /rates/.match(scenario.name)
         require 'spreadsheet'
