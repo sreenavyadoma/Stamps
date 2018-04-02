@@ -92,23 +92,26 @@ module Stamps
       @driver = driver
     end
 
+    def wait_for(locator)
+      case(locator)
+        when String
+          instance_eval(locator)
+        when Hash
+          if @driver.respond_to?(:element)
+            @driver.element(locator)
+          else
+            @driver.find_element(locator)
+          end
+        else
+          raise ArgumentError, "Invalid locator. #{locator}"
+      end
+    end
+
     def element(locator, message: '', timeout: 12)
-      wait_element = case(locator)
-                       when String
-                         instance_eval(locator)
-                       when Hash
-                         if @driver.respond_to?(:element)
-                           @driver.element(locator)
-                         else
-                           @driver.find_element(locator)
-                         end
-                       else
-                         raise ArgumentError, "Invalid locator. #{locator}"
-                     end
       begin
-        return wait_until(timeout: timeout, message: message) { wait_element }
+        return wait_until(timeout: timeout, message: message) { wait_for(locator) }
       rescue Selenium::WebDriver::Error::TimeOutError
-        # swallow
+        # ignore
       end
       nil
     end
@@ -302,6 +305,7 @@ module Stamps
       rescue
         # ignore
       end
+
       false
     end
 
@@ -311,6 +315,7 @@ module Stamps
       rescue
         # ignore
       end
+
       false
     end
 
@@ -338,10 +343,11 @@ module Stamps
 
     def set(*args, iter: 1)
       iter.to_i.times do
-        return @element.send(:set, *args) if @element.respond_to? :set
+        #return @element.send(:set, *args) if @element.respond_to? :set
         @element.send(:send_keys, *args)
       end
     end
+    alias_method :send_keys, :set
 
     def safe_send_keys(*args, ctr: 1)
       ctr.to_i.times do
@@ -352,7 +358,7 @@ module Stamps
         end
       end
 
-      text_value
+      self
     end
 
     def send_keys_while_present(*args, ctr: 1)
