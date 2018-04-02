@@ -453,6 +453,15 @@ module Stamps
       self
     end
 
+    def scroll_into_view
+      begin
+        @element.execute_script('arguments[0].scrollIntoView();', @element)
+      rescue
+        # ignore
+      end
+      self
+    end
+
     def blur_out(ctr: 1)
       ctr.to_i.times do
         begin
@@ -509,6 +518,35 @@ module Stamps
     def method_missing(method, *args, &block)
       super unless element.respond_to?(method)
       element.send(method, *args, &block)
+    end
+  end
+
+
+
+  class SdcNumberElement
+    attr_reader :driver, :textbox, :increment, :decrement
+
+    def initialize(text_field, increment, decrement)
+      @textbox = StampsTextbox.new(text_field)
+      @increment = StampsField.new(increment)
+      @decrement = StampsField.new(decrement)
+      @driver = text_field.driver
+    end
+
+    def present?
+      textbox.present?
+    end
+
+    def scroll_into_view(*args)
+      textbox.scroll_into_view(*args)
+    end
+
+    def text
+      textbox.text
+    end
+
+    def set(value)
+      textbox.set(value)
     end
   end
 end
