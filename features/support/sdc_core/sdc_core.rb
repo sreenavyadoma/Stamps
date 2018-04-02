@@ -1,8 +1,74 @@
 module Stamps
 
+  module SdcEnv
+    TEST_ENVIRONMENTS = %i(stg qacc cc qasc sc rating).freeze unless Object.const_defined?('Stamps::SdcEnv::TEST_ENVIRONMENTS')
+    BROWSERS = %i(firefox chrome safari edge chromeb).freeze unless Object.const_defined?('Stamps::SdcEnv::BROWSERS')
+    SDC_APP = %i(orders mail webdev registration).freeze unless Object.const_defined?('Stamps::SdcEnv::SDC_APP')
+    IDEVICES = %i(iphone6 iphone7 iphone8 iphonex android).freeze unless Object.const_defined?('Stamps::SdcEnv::IDEVICES')
+
+    class << self #todo-Rob refactor PrintMedia
+      attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose, :printer, :browser, :hostname,
+                    :print_media, :mobile, :firefox_profile, :framework
+    end
+  end
+
+  module SdcWait
+    def wait_until(timeout: 12, interval: 0.2, message: '', ignored: Selenium::WebDriver::Error::NoSuchElementError)
+      end_time = Time.now + timeout
+      last_error = nil
+
+      until Time.now > end_time
+        begin
+          result = yield
+          return result if result
+        rescue *ignored => last_error
+          # swallowed
+        end
+
+        sleep interval
+      end
+
+      msg = if message
+              message.dup
+            else
+              "timed out after #{timeout} seconds"
+            end
+
+      msg << " (#{last_error.message})" if last_error
+
+      raise Selenium::WebDriver::Error::TimeOutError, msg
+    end
+
+    def wait_while(timeout: 12, interval: 0.2, message: '', ignored: Selenium::WebDriver::Error::NoSuchElementError)
+      end_time = Time.now + timeout
+      last_error = nil
+
+      until Time.now > end_time
+        begin
+          result = yield
+          return result if result
+        rescue *ignored => last_error
+          # swallowed
+        end
+
+        sleep interval
+      end
+
+      msg = if message
+              message.dup
+            else
+              "timed out after #{timeout} seconds"
+            end
+
+      msg << " (#{last_error.message})" if last_error
+
+      raise Selenium::WebDriver::Error::TimeOutError, msg
+    end
+
+  end
+
   class SdcAppiumDriver
     class << self
-
       def core_driver(device_name)
         caps = Appium.load_appium_txt(file: File.expand_path("../../sdc_idevices/caps/#{device_name}.txt", __FILE__), verbose: true)
         @core_driver = Appium::Driver.new(caps, false)
@@ -16,7 +82,56 @@ module Stamps
     end
   end
 
+  module SdcDriver
+    class << self
+      def browser=(browser)
+        @@browser = browser
+      end
+      alias_method :driver=, :browser=
+
+
+      def browser
+        @@browser
+      end
+      alias_method :driver, :browser
+    end
+  end
+
+  class SdcElementFinder
+    include SdcWait
+
+    attr_reader :driver
+    alias_method :browser, :driver
+
+    def initialize(driver)
+      @driver = driver
+    end
+
+    def element(locator, message: '', timeout: 12)
+      begin
+        return wait_until(timeout: timeout, message: message) { case(locator)
+                                                                  when String
+                                                                    instance_eval(locator)
+                                                                  when Hash
+                                                                    if @driver.respond_to?(:element)
+                                                                      @driver.element(locator)
+                                                                    else
+                                                                      @driver.find_element(locator)
+                                                                    end
+                                                                  else
+                                                                    raise ArgumentError, "Invalid locator. #{locator}"
+                                                                end
+        }
+      rescue Selenium::WebDriver::Error::TimeOutError
+        # swallow
+      end
+      nil
+    end
+  end
+
   class SdcPageObject
+    include SdcDriver
+    include SdcWait
 
     class << self
       attr_writer :element_list
@@ -58,18 +173,27 @@ module Stamps
         element_list << name.to_sym
       end
 
-      def element(name, required: false, &block)
-        define_method(name) do |*args|
-          self.instance_exec(*args, &block)
-        end
-
-        element_list << name.to_sym
-        required_element_list << name.to_sym if required
+      def text_field(name, locator, required: false)
+        watir_element(name, :text_field, locator, required: required)
       end
 
-      def element_x(name, locator, required: false)
-        element(name, required) { SdcElementFinder.element(locator) }
+      def watir_element(name, tag_name, locator, required: false)
+        set_element(name, required: required) { SdcElement.new(finder.element("browser.#{tag_name}(#{locator})")) }
       end
+
+      def element(name, locator, timeout: 12, required: false)
+        set_element(name, required: required) { SdcElement.new(finder.element(locator, message: name, timeout: timeout)) }
+      end
+      alias_method :button, :element
+
+      def chooser(name, chooser_loc, verify_loc, property, property_name, timeout: 12, required: false)
+        set_element(name, required: required) { SdcChooser.new(finder.element(chooser_loc, timeout: timeout),
+                                                           finder.element(verify_loc, timeout: timeout),
+                                                           property, property_name) }
+      end
+      alias_method :checkbox, :chooser
+      alias_method :selection, :chooser
+      alias_method :radio, :chooser
 
       def visit(*args)
         new.tap do |page|
@@ -78,32 +202,32 @@ module Stamps
           message = "Expected to be on #{page.class}, but conditions not met"
           if page.page_verifiable?
             begin
-              page.wait_until { page.on_page? }
-            rescue StandardError
+              page.wait_until(timeout: 20) { page.on_page? }
+            rescue Selenium::WebDriver::Error::TimeOutError
               raise exception, message
             end
           end
         end
       end
 
-      def browser=(browser)
-        @@browser = browser
+      private
+
+      def set_element(name, required: false, &block)
+        define_method(name) do |*args|
+          self.instance_exec(*args, &block)
+        end
+
+        element_list << name.to_sym
+        required_element_list << name.to_sym if required
       end
-      alias_method :driver=, :browser=
-
-
-      def browser
-        @@browser
-      end
-      alias_method :driver, :browser
-
     end
 
-    attr_reader :browser
+    attr_reader :browser, :finder
     alias_method :driver, :browser
 
     def initialize(browser = @@browser)
       @browser = browser
+      @finder = SdcElementFinder.new(browser)
     end
 
     def inspect
@@ -113,7 +237,7 @@ module Stamps
 
     def on_page?
       exception = Selenium::WebDriver::Error::WebDriverError
-      message = "Can not verify page without any requirements set"
+      message = 'Can not verify page without any requirements set'
       raise exception, message unless page_verifiable?
 
       if self.class.require_url
@@ -141,11 +265,6 @@ module Stamps
       raise exception, message unless page_verifiable?
     end
 
-    def wait_until(timeout: 12, &block)
-      Selenium::WebDriver::Wait.new(:timeout => timeout).until(&block)
-    end
-
-
     def method_missing(method, *args, &block)
       super unless @browser.respond_to?(method) && method != :page_url
       @browser.send(method, *args, &block)
@@ -160,11 +279,8 @@ module Stamps
     end
   end
 
-  class SdcElementFinder
+  class SdcDriverDecorator < BasicObject
 
-  end
-
-  class SdcDriver < BasicObject
     def initialize(driver)
       @driver = driver
     end
@@ -174,10 +290,8 @@ module Stamps
       @driver.goto(*args)
     end
 
-
-
     def method_missing(method, *args, &block)
-      super unless driver.respond_to?(method)
+      super unless @driver.respond_to?(method)
       @driver.send(method, *args, &block)
     end
 
@@ -186,6 +300,8 @@ module Stamps
   end
 
   class SdcElement < BasicObject
+    include SdcWait
+
     def initialize(element)
       @element = element
     end
@@ -215,6 +331,7 @@ module Stamps
 
     def safe_hover
       begin
+        @element.send(:focus)
         @element.send(:hover)
       rescue
         # ignore
@@ -235,24 +352,11 @@ module Stamps
       self
     end
 
-    def set(*args)
-      if @element.respond_to? :set
-        @element.send(:set, *args)
-      else
+    def set(*args, iter: 1)
+      iter.to_i.times do
+        return @element.send(:set, *args) if @element.respond_to? :set
         @element.send(:send_keys, *args)
       end
-    end
-
-    def safe_set(*args, ctr: 1)
-      ctr.to_i.times do
-        begin
-          set(*args)
-        rescue
-          # ignore
-        end
-      end
-
-      text_value
     end
 
     def safe_send_keys(*args, ctr: 1)
@@ -267,68 +371,25 @@ module Stamps
       text_value
     end
 
-    def wait_until(timeout: 10, interval: 0.2, message: '', ignored: Error::NoSuchElementError)
-      end_time = Time.now + @timeout
-      last_error = nil
-
-      until Time.now > end_time
+    def send_keys_while_present(*args, ctr: 1)
+      ctr.to_i.times do
         begin
-          result = yield
-          return result if result
-        rescue *ignored => last_error
-          # swallowed
+          break unless present?
+          safe_send_keys(*args)
+          safe_wait_while_present(1)
+        rescue
+          # ignore
         end
-
-        sleep interval
       end
-
-      msg = if message
-              message.dup
-            else
-              "timed out after #{timeout} seconds"
-            end
-
-      msg << " (#{last_error.message})" if last_error
-
-      raise Error::TimeOutError, msg
     end
 
-    def wait_while(timeout: 10, interval: 0.2, message: '', ignored: Error::NoSuchElementError)
-      end_time = Time.now + @timeout
-      last_error = nil
-
-      until Time.now > end_time
-        begin
-          result = yield
-          return result if result
-        rescue *ignored => last_error
-          # swallowed
-        end
-
-        sleep interval
-      end
-
-      msg = if message
-              message.dup
-            else
-              "timed out after #{timeout} seconds"
-            end
-
-      msg << " (#{last_error.message})" if last_error
-
-      raise Error::TimeOutError, msg
+    def wait_until_present(timeout: 12, interval: 0.2)
+      wait_until(timeout: timeout, interval: interval) { present? }
     end
 
-
-
-
-
-
-
-
-    def safe_wait_while_present(timeout: nil, interval: nil)
+    def safe_wait_until_present(timeout: nil, interval: nil)
       begin
-        @element.wait_while_present(timeout, interval)
+        wait_until_present(timeout: timeout, interval: interval)
       rescue
         # ignore
       end
@@ -336,9 +397,13 @@ module Stamps
       self
     end
 
-    def safe_wait_until_present(timeout: nil, interval: nil)
+    def wait_while_present(timeout: 12, interval: 0.2)
+      wait_while(timeout: timeout, interval: interval) { present? }
+    end
+
+    def safe_wait_while_present(timeout: 10, interval: 0.2)
       begin
-        @element.wait_until_present(timeout, interval)
+        wait_while_present(timeout: timeout, interval: interval)
       rescue
         # ignore
       end
@@ -370,19 +435,6 @@ module Stamps
           safe_click(*modifiers)
           safe_wait_while_present(1)
           break unless present?
-        rescue
-          # ignore
-        end
-      end
-
-    end
-
-    def send_keys_while_present(*args, ctr: 2)
-      ctr.to_i.times do
-        begin
-          break unless present?
-          safe_send_keys(*args)
-          safe_wait_while_present(1)
         rescue
           # ignore
         end
@@ -422,29 +474,33 @@ module Stamps
 
   class SdcChooser
 
-    attr_accessor :element, :verify, :attribute, :attribute_value
+    attr_accessor :element, :verify, :property, :property_val
 
-    def initialize(element, verify, attribute, attribute_value)
+    def initialize(element, verify, property, property_val)
       set_instance_variables(binding, *local_variables)
     end
 
     def chosen?
-      result = verify.attribute_value(attribute)
+      if verify.respond_to? :attribute_value
+        result = verify.attribute_value(property)
+      else
+        result = verify.property(property)
+      end
       return result.casecmp('true') == 0 if result.casecmp('true') == 0 || result .casecmp('false') == 0
-      result.include?(attribute_value)
+      result.include?(property_val)
     end
     alias_method :checked?, :chosen?
     alias_method :selected?, :chosen?
 
-    def choose(persist = 2)
-      persist.times do element.click; break if chosen? end
+    def choose(iter: 2)
+      iter.times do element.click; break if chosen? end
       chosen?
     end
     alias_method :check, :choose
     alias_method :select, :choose
 
-    def unchoose(persist = 2)
-      persist.times do break unless chosen?; element.click end
+    def unchoose(iter: 2)
+      iter.times do break unless chosen?; element.click end
       chosen?
     end
     alias_method :uncheck, :unchoose

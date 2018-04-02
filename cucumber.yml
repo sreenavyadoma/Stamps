@@ -1,4 +1,4 @@
-default: --backtrace --profile saucelabs_iphonex
+default: --backtrace --profile saucelabs_browser
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -15,18 +15,17 @@ rob_registration: --tags @registration_normal_workflow WEB_APP=registration URL=
 
 browser_test:  --tags @iphonex BROWSER=ff VERBOSE=true USR=ccfb311osps4x PW=pass111 URL=cc WEB_APP=orders HEALTHCHECK=true
 
-iphonex: --tags @iphonex --guess IDEVICENAME='iphone x' VERBOSE=true JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=cc USR=ccfb311osps4x PW=pass111
+iphonex: --tags @iphonex --guess MOBILE='iphone x' VERBOSE=true JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=cc USR=ccfb311osps4x PW=pass111
 
 saucelabs_browser:  --tags @saucelabs_poc BROWSER=ff VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
-saucelabs_iphonex: --tags @saucelabs_poc IDEVICENAME='iphone x' VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
+saucelabs_iphonex: --tags @saucelabs_poc MOBILE='iphone x' VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
+
+saucelabs: --tags @saucelabs_poc VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
 
 #todo-Rob WebReg consider removing webapp, username, password fields
 #mhossain1_cc: --tags @registration_normal_workflow WEB_APP=orders JENKINS=true URL=cc VERBOSE=true BROWSER=ff MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
 
 mhossain1_cc: --tags @registration_ui_validation_profile_page JENKINS=true URL=cc VERBOSE=true BROWSER=edge MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
-
-mobile_orders_smoke_test: --tags @mobile_orders_smoke_test --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-mobile_mail_smoke_test: --tags @mobile_mail_smoke_test --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess VERBOSE=false HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 
