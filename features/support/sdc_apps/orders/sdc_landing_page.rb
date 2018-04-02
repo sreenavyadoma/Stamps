@@ -25,7 +25,7 @@ module Stamps
 
         sign_in.safe_click(ctr: 2).send_keys_while_present(:enter, ctr: 2)
         sign_in.wait_while_present
-        sleep 10
+        sleep 8
       end
     end
 
