@@ -1,0 +1,11 @@
+[caps]
+appiumVersion = "1.7.2"
+deviceName = "Galaxy_Nexus_API_27"
+deviceOrientation = "portrait"
+platformVersion = "8.1.0"
+platformName = "Android"
+browserName = "chrome"
+
+[appium_lib]
+sauce_username = false
+sauce_access_key = false

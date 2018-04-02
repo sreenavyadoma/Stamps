@@ -1,44 +1,6 @@
 
 Then /^visit Sdc Website$/ do
-  if SdcEnv.browser
-    case SdcEnv.sdc_app
-      when :orders
-        Orders::LandingPage.visit(case SdcEnv.env
-                                    when :qacc
-                                      'ext.qacc'
-                                    when :qasc
-                                      'ext.qasc'
-                                    when :stg
-                                      '.testing'
-                                    when :prod
-                                      ''
-                                    else
-                                      # ignore
-                                  end
-        )
-      when :mail
-        raise "Not implemented!"
-      else
-        raise ArgumentError, "Undefined App :#{SdcEnv.sdc_app}"
-    end
-  elsif SdcEnv.mobile
-    Orders::ILandingPage.visit(case SdcEnv.env
-                                 when :qacc
-                                   'ext.qacc'
-                                 when :qasc
-                                   'ext.qasc'
-                                 when :stg
-                                   '.testing'
-                                 when :prod
-                                   ''
-                                 else
-                                   # ignore
-                               end
-    )
-  else
-    raise ""
-  end
-
+  Orders::LandingPage.visit
 end
 
 Then /^[Ss]ign-in to SDC Website$/ do
@@ -57,13 +19,7 @@ Then /^[Ss]ign-in to SDC Website$/ do
 end
 
 Then /^sign-in to Orders as (.+), (.+)$/ do |usr, pw|
-  landing_page = Object.const_get(if SdcEnv.browser
-                     'Orders::LandingPage'
-                   elsif SdcEnv.mobile
-                     'Orders::ILandingPage'
-                   end
-  ).new
-  SdcWebsite.orders = landing_page.sign_in_with(TestData.store[:username] = usr, TestData.store[:password] = pw)
+  SdcWebsite.landing_page.sign_in_with(TestData.store[:username] = usr, TestData.store[:password] = pw)
   #SdcWebsite.orders.loading_orders.safe_wait_until_present(timeout: 5).safe_wait_while_present(timeout: 10)
   #expect(SdcWebsite.orders.signed_in_user.safe_wait_until_present(timeout: 10).text_value).to eql (usr)
 end

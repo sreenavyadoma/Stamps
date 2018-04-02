@@ -108,20 +108,20 @@ module Stamps
     end
 
     def element(locator, message: '', timeout: 12)
+      wait_element = case(locator)
+                       when String
+                         instance_eval(locator)
+                       when Hash
+                         if @driver.respond_to?(:element)
+                           @driver.element(locator)
+                         else
+                           @driver.find_element(locator)
+                         end
+                       else
+                         raise ArgumentError, "Invalid locator. #{locator}"
+                     end
       begin
-        return wait_until(timeout: timeout, message: message) { case(locator)
-                                                                  when String
-                                                                    instance_eval(locator)
-                                                                  when Hash
-                                                                    if @driver.respond_to?(:element)
-                                                                      @driver.element(locator)
-                                                                    else
-                                                                      @driver.find_element(locator)
-                                                                    end
-                                                                  else
-                                                                    raise ArgumentError, "Invalid locator. #{locator}"
-                                                                end
-        }
+        return wait_until(timeout: timeout, message: message) { wait_element }
       rescue Selenium::WebDriver::Error::TimeOutError
         # swallow
       end
