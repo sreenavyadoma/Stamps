@@ -181,7 +181,7 @@ module Stamps
         set_element(name, required: required) { SdcElement.new(finder.element("browser.#{tag_name}(#{locator})")) }
       end
 
-      def find_element(name, locator, timeout: 12, required: false)
+      def element(name, locator, timeout: 12, required: false)
         set_element(name, required: required) { SdcElement.new(finder.element(locator, message: name, timeout: timeout)) }
       end
       alias_method :button, :element
