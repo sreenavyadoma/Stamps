@@ -1,6 +1,6 @@
 class SdcTest
   class << self
-    attr_reader :driver, :test_scenario, :scenario
+    attr_reader :test_scenario, :scenario
 
     def configure
       if SdcEnv.browser
@@ -227,6 +227,22 @@ class SdcTest
     end
   end
 end
+
+module SdcDriver
+  class << self
+    def browser=(browser)
+      @@browser = browser
+    end
+    alias_method :driver=, :browser=
+
+
+    def browser
+      @@browser
+    end
+    alias_method :driver, :browser
+  end
+end
+
 #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
 #
 #

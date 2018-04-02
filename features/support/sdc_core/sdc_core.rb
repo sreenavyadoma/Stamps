@@ -82,21 +82,6 @@ module Stamps
     end
   end
 
-  module SdcDriver
-    class << self
-      def browser=(browser)
-        @@browser = browser
-      end
-      alias_method :driver=, :browser=
-
-
-      def browser
-        @@browser
-      end
-      alias_method :driver, :browser
-    end
-  end
-
   class SdcElementFinder
     include SdcWait
 
@@ -521,32 +506,17 @@ module Stamps
     end
   end
 
-
-
   class SdcNumberElement
+
     attr_reader :driver, :textbox, :increment, :decrement
 
     def initialize(text_field, increment, decrement)
-      @textbox = StampsTextbox.new(text_field)
-      @increment = StampsField.new(increment)
-      @decrement = StampsField.new(decrement)
-      @driver = text_field.driver
+      set_instance_variables(binding, *local_variables)
     end
 
-    def present?
-      textbox.present?
-    end
-
-    def scroll_into_view(*args)
-      textbox.scroll_into_view(*args)
-    end
-
-    def text
-      textbox.text
-    end
-
-    def set(value)
-      textbox.set(value)
+    def method_missing(method, *args, &block)
+      super unless @textbox.respond_to?(method)
+      @textbox.send(method, *args, &block)
     end
   end
 end

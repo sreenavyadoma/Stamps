@@ -1,8 +1,12 @@
 module Stamps
   module Orders
+    module SdcOrdersInstHelper
+
+    end
+
     class SdcOrders < SdcPageObject
-      #element(:loading_orders) { SdcElement.new(browser.div(text: 'Loading orders...')) } # this stays here
-      #element(:signed_in_user, required: true) {SdcElement.new(browser.span(id: 'userNameText'))} # this will need to move to Navigation > Signed-in Dropdown
+      element(:loading_orders, {text: 'Loading orders...'})
+      element(:signed_in_user, {id: 'userNameText'}, required: true)
 
       def order_details
 

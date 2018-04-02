@@ -1,7 +1,7 @@
 module Stamps
 
-  module SdcWebsiteHelper
-    def landing_page_po
+  module SdcWebInstHelper
+    def landing_page_inst
       if SdcEnv.browser
         case SdcEnv.sdc_app
           when :orders
@@ -18,7 +18,7 @@ module Stamps
       end
     end
 
-    def orders_po
+    def orders_inst
       if SdcEnv.browser
         "Orders::SdcOrders"
       elsif SdcEnv.mobile
@@ -31,15 +31,15 @@ module Stamps
 
   class SdcWebsite
     class << self
-      include SdcWebsiteHelper
+      include SdcWebInstHelper
       attr_writer :orders
 
       def landing_page
-        @landing_page ||= Object.const_get(landing_page_po).new
+        @landing_page ||= Object.const_get(landing_page_inst).new
       end
 
       def orders
-        @orders ||= Object.const_get(orders_po).new
+        @orders ||= Object.const_get(orders_inst).new
       end
 
       def mail
