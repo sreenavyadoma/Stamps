@@ -49,9 +49,9 @@ class SdcTest
           SdcLog.error e.backtrace.join("\n")
           raise e, "Browser driver failed to start"
         end
-      elsif SdcEnv.i_device_name
+      elsif SdcEnv.mobile
         begin
-          SdcDriver.driver = SdcDriverDecorator.new(SdcAppiumDriver.core_driver(SdcEnv.i_device_name.to_s).start_driver)
+          SdcDriver.driver = SdcDriverDecorator.new(SdcAppiumDriver.core_driver(SdcEnv.mobile.to_s).start_driver)
           SdcDriver.driver.manage.timeouts.implicit_wait = 20
         rescue Exception => e
           SdcLog.error e.message
@@ -59,7 +59,7 @@ class SdcTest
           riase e, "Appium driver failed to start"
         end
       else
-        raise ArgumentError, "Neither BROWSER nor IDEVICENAME is defined for test #{test_scenario}. Expected values are: #{SdcEnv::BROWSERS.inspect} and #{SdcEnv::IDEVICES.inspect}"
+        raise ArgumentError, "Neither BROWSER nor MOBILE is defined for test #{test_scenario}. Expected values are: #{SdcEnv::BROWSERS.inspect} and #{SdcEnv::IDEVICES.inspect}"
       end
     end
 
@@ -74,7 +74,7 @@ class SdcTest
     def start(scenario)
       @scenario = scenario
       SdcEnv.browser ||= browser_selection(ENV['BROWSER'])
-      SdcEnv.i_device_name ||= i_device_selection(ENV['IDEVICENAME'])
+      SdcEnv.mobile ||= device_name(ENV['MOBILE'])
       SdcEnv.verbose ||= ENV['VERBOSE'].nil? ? false : ENV['VERBOSE'].casecmp('true') == 0
       SdcEnv.hostname ||= Socket.gethostname
       SdcEnv.sdc_app ||= ENV['WEB_APP'].nil? ? ENV['WEB_APP'] : ENV['WEB_APP'].downcase.to_sym
@@ -117,7 +117,7 @@ class SdcTest
     end
 
     def require_gems
-      if ENV['IDEVICENAME']
+      if ENV['MOBILE']
         require 'appium_lib'
         require 'appium_lib_core'
       else
@@ -172,7 +172,7 @@ class SdcTest
 
     private
 
-    def i_device_selection(str)
+    def device_name(str)
       return str.downcase.delete(' ').to_sym if str
       str
     end

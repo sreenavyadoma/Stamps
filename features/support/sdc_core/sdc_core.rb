@@ -8,7 +8,7 @@ module Stamps
 
     class << self #todo-Rob refactor PrintMedia
       attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose, :printer, :browser, :hostname,
-                    :print_media, :i_device_name, :firefox_profile, :framework
+                    :print_media, :mobile, :firefox_profile, :framework
     end
   end
 
@@ -165,8 +165,13 @@ module Stamps
         element_list << name.to_sym
       end
 
+      def element(name, locator, tag_name: nil, required: false)
+        set_element(name, required: required) { SdcElement.new(instance_eval("browser.#{tag_name}(#{locator})")) } if SdcEnv.browser
+        by_locator(name, locator, required: required) if SdcEnv.mobile && locator.keys.first == :xpath
+      end
+
       def by_locator(name, locator, timeout: 12, required: false)
-        element(name, required: required) { SdcElement.new(finder.element(locator, message: name, timeout: timeout)) }
+        set_element(name, required: required) { SdcElement.new(finder.element(locator, message: name, timeout: timeout)) }
       end
 
       def by_xpath(name, str, timeout: 12, required: false)
@@ -182,7 +187,7 @@ module Stamps
       end
 
       def chooser(name, chooser_loc, verify_loc, property, property_name, timeout: 12, required: false)
-        element(name, required: required) { SdcChooser.new(finder.element(chooser_loc, timeout: timeout),
+        set_element(name, required: required) { SdcChooser.new(finder.element(chooser_loc, timeout: timeout),
                                                            finder.element(verify_loc, timeout: timeout),
                                                            property, property_name) }
       end
@@ -207,7 +212,7 @@ module Stamps
 
       private
 
-      def element(name, required: false, &block)
+      def set_element(name, required: false, &block)
         define_method(name) do |*args|
           self.instance_exec(*args, &block)
         end
@@ -346,10 +351,9 @@ module Stamps
       self
     end
 
-    def set(*args)
-      if @element.respond_to? :set
-        @element.send(:set, *args)
-      else
+    def set(*args, iter: 2)
+      iter.to_i.times do
+        return @element.send(:set, *args) if @element.respond_to? :set
         @element.send(:send_keys, *args)
       end
     end
@@ -379,7 +383,7 @@ module Stamps
     end
 
     def wait_until_present(timeout: 12, interval: 0.2)
-      wait_while(timeout: timeout, interval: interval) { present? }
+      wait_until(timeout: timeout, interval: interval) { present? }
     end
 
     def safe_wait_until_present(timeout: nil, interval: nil)

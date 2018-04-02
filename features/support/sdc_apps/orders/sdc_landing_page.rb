@@ -1,9 +1,11 @@
 module Stamps
   module Orders
     class LandingPage < SdcPageObject
-      by_xpath(:username, "//input[@placeholder='USERNAME']", required: true)
-      by_xpath(:password, "//input[@placeholder='PASSWORD']", required: true)
+      element(:username, {xpath: "//input[@placeholder='USERNAME']"}, tag_name: :text_field)
+      element(:password, {xpath: "//input[@placeholder='PASSWORD']"}, tag_name: :text_field)
+
       by_xpath(:sign_in, "//span[contains(text(), 'Sign In')]", required: true)
+      by_xpath(:i_username, "//input[@placeholder='USERNAME']")
       checkbox(:remember_me,
               {xpath: "//*[contains(@class, 'remember-username-checkbox')]//span[contains(@id, 'displayEl')]"},
               {xpath: "//*[contains(@class, 'remember-username-checkbox')]"},
@@ -16,19 +18,19 @@ module Stamps
       end
 
       def sign_in_with(usr, pwd)
+        username.set(usr)
+        password.set(pwd)
         SdcLog.info remember_me.checked?
         remember_me.check
         SdcLog.info remember_me.checked?
         remember_me.uncheck
-        username.set usr
-        password.set pwd
 
         sign_in.safe_click(ctr: 2).send_keys_while_present(:enter, ctr: 2)
         username.safe_wait_while_present(timeout: 10)
 =begin
         Object.const_get(if SdcEnv.browser
                            "Orders::SdcOrders"
-                         elsif SdcEnv.i_device_name
+                         elsif SdcEnv.mobile
                            "Mobile::SdcOrders"
                          else
                            raise "Can not determine if mobile or browser test."

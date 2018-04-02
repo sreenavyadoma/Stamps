@@ -15,10 +15,10 @@ rob_registration: --tags @registration_normal_workflow WEB_APP=registration URL=
 
 browser_test:  --tags @iphonex BROWSER=ff VERBOSE=true USR=ccfb311osps4x PW=pass111 URL=cc WEB_APP=orders HEALTHCHECK=true
 
-iphonex: --tags @iphonex --guess IDEVICENAME='iphone x' VERBOSE=true JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=cc USR=ccfb311osps4x PW=pass111
+iphonex: --tags @iphonex --guess MOBILE='iphone x' VERBOSE=true JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=cc USR=ccfb311osps4x PW=pass111
 
 saucelabs_browser:  --tags @saucelabs_poc BROWSER=ff VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
-saucelabs_iphonex: --tags @saucelabs_poc IDEVICENAME='iphone x' VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
+saucelabs_iphonex: --tags @saucelabs_poc MOBILE='iphone x' VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
 
 #todo-Rob WebReg consider removing webapp, username, password fields
 #mhossain1_cc: --tags @registration_normal_workflow WEB_APP=orders JENKINS=true URL=cc VERBOSE=true BROWSER=ff MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1

@@ -21,7 +21,7 @@ Then /^visit Sdc Website$/ do
       else
         raise ArgumentError, "Undefined App :#{SdcEnv.sdc_app}"
     end
-  elsif SdcEnv.i_device_name
+  elsif SdcEnv.mobile
     Orders::ILandingPage.visit(case SdcEnv.env
                                  when :qacc
                                    'ext.qacc'
@@ -59,7 +59,7 @@ end
 Then /^sign-in to Orders as (.+), (.+)$/ do |usr, pw|
   landing_page = Object.const_get(if SdcEnv.browser
                      'Orders::LandingPage'
-                   elsif SdcEnv.i_device_name
+                   elsif SdcEnv.mobile
                      'Orders::ILandingPage'
                    end
   ).new
