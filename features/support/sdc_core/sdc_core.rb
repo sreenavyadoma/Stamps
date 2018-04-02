@@ -99,21 +99,29 @@ module Stamps
 
   class SdcElementFinder
     include SdcWait
+
+    attr_reader :driver
+    alias_method :browser, :driver
+
     def initialize(driver)
       @driver = driver
     end
 
     def element(locator, message: '', timeout: 12)
       begin
-        wait_until(timeout: timeout, message: message) { if @driver.respond_to?(:element)
-                                                           @driver.element(locator)
-                                                         else
-                                                           @driver.find_element(locator)
-                                                         end
+        return wait_until(timeout: timeout, message: message) { case(locator)
+                                                                  when String
+                                                                    instance_eval(locator)
+                                                                  when Hash
+                                                                    if @driver.respond_to?(:element)
+                                                                      @driver.element(locator)
+                                                                    else
+                                                                      @driver.find_element(locator)
+                                                                    end
+                                                                  else
+                                                                    raise ArgumentError, "Invalid locator. #{locator}"
+                                                                end
         }
-
-        return @driver.element(locator) if @driver.respond_to?(:element)
-        return @driver.find_element(locator)
       rescue Selenium::WebDriver::Error::TimeOutError
         # swallow
       end
@@ -165,26 +173,18 @@ module Stamps
         element_list << name.to_sym
       end
 
-      def element(name, locator, tag_name: nil, required: false)
-        set_element(name, required: required) { SdcElement.new(instance_eval("browser.#{tag_name}(#{locator})")) } if SdcEnv.browser
-        by_locator(name, locator, required: required) if SdcEnv.mobile && locator.keys.first == :xpath
+      def text_field(name, locator, required: false)
+        watir_element(name, :text_field, locator, required: required)
       end
 
-      def by_locator(name, locator, timeout: 12, required: false)
+      def watir_element(name, tag_name, locator, required: false)
+        set_element(name, required: required) { SdcElement.new(finder.element("browser.#{tag_name}(#{locator})")) }
+      end
+
+      def find_element(name, locator, timeout: 12, required: false)
         set_element(name, required: required) { SdcElement.new(finder.element(locator, message: name, timeout: timeout)) }
       end
-
-      def by_xpath(name, str, timeout: 12, required: false)
-        by_locator(name, xpath: str, timeout: timeout, required: required)
-      end
-
-      def by_classname(name, str, timeout: 12, required: false)
-        by_locator(name, class: str, timeout: timeout, required: required)
-      end
-
-      def by_id(name, str, timeout: 12, required: false)
-        by_locator(name, id: str, timeout: timeout, required: required)
-      end
+      alias_method :button, :element
 
       def chooser(name, chooser_loc, verify_loc, property, property_name, timeout: 12, required: false)
         set_element(name, required: required) { SdcChooser.new(finder.element(chooser_loc, timeout: timeout),
