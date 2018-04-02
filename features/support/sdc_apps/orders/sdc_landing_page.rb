@@ -3,11 +3,15 @@ module Stamps
     class LandingPage < SdcPageObject
       text_field(:username, {xpath: "//input[@placeholder='USERNAME']"})
       text_field(:password,  {xpath: "//input[@placeholder='PASSWORD']"})
-      button(:sign_in, {xpath: "//span[contains(text(), 'Sign In')]"}, required: true)
+      element(:sign_in, {xpath: "//span[contains(text(), 'Sign In')]"}, required: true)
       checkbox(:remember_me,
               {xpath: "//*[contains(@class, 'remember-username-checkbox')]//span[contains(@id, 'displayEl')]"},
               {xpath: "//*[contains(@class, 'remember-username-checkbox')]"},
               "class", "checked")
+
+
+      element(:iusername, {xpath: "//input[@placeholder='USERNAME']"})
+      element(:ipassword,  {xpath: "//input[@placeholder='PASSWORD']"})
 
       page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Orders&" }
 
@@ -18,14 +22,25 @@ module Stamps
       def sign_in_with(usr, pwd)
         username.set(usr)
         password.set(pwd)
-        SdcLog.info remember_me.checked?
-        remember_me.check
-        SdcLog.info remember_me.checked?
-        remember_me.uncheck
 
         sign_in.safe_click(ctr: 2).send_keys_while_present(:enter, ctr: 2)
-        username.safe_wait_while_present(timeout: 10)
+        sign_in.wait_while_present
+        sleep 10
+      end
+    end
 
+    class ILandingPage < LandingPage
+      element(:username, {xpath: "//input[@placeholder='USERNAME']"})
+      element(:password,  {xpath: "//input[@placeholder='PASSWORD']"})
+
+      page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Orders&" }
+
+      def present?
+        username.present? && password.present? && sign_in.present? && remember_me.present?
+      end
+
+      def sign_in_with(usr, pwd)
+        super(usr,pwd)
       end
     end
   end

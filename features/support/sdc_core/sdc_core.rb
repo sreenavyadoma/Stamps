@@ -280,6 +280,7 @@ module Stamps
   end
 
   class SdcDriverDecorator < BasicObject
+
     def initialize(driver)
       @driver = driver
     end
@@ -290,7 +291,7 @@ module Stamps
     end
 
     def method_missing(method, *args, &block)
-      super unless driver.respond_to?(method)
+      super unless @driver.respond_to?(method)
       @driver.send(method, *args, &block)
     end
 
@@ -351,7 +352,7 @@ module Stamps
       self
     end
 
-    def set(*args, iter: 2)
+    def set(*args, iter: 1)
       iter.to_i.times do
         return @element.send(:set, *args) if @element.respond_to? :set
         @element.send(:send_keys, *args)
@@ -370,7 +371,7 @@ module Stamps
       text_value
     end
 
-    def send_keys_while_present(*args, ctr: 2)
+    def send_keys_while_present(*args, ctr: 1)
       ctr.to_i.times do
         begin
           break unless present?

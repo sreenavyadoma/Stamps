@@ -52,7 +52,7 @@ class SdcTest
       elsif SdcEnv.mobile
         begin
           SdcDriver.driver = SdcDriverDecorator.new(SdcAppiumDriver.core_driver(SdcEnv.mobile.to_s).start_driver)
-          SdcDriver.driver.manage.timeouts.implicit_wait = 20
+          SdcDriver.driver.manage.timeouts.implicit_wait = 10
         rescue Exception => e
           SdcLog.error e.message
           SdcLog.error e.backtrace.join("\n")
@@ -120,6 +120,7 @@ class SdcTest
       if ENV['MOBILE']
         require 'appium_lib'
         require 'appium_lib_core'
+        require 'selenium-webdriver'
       else
         require 'watir'
       end
