@@ -316,8 +316,7 @@ module Stamps
 
     def safe_hover
       begin
-        @element.send(:focus)
-        @element.send(:hover)
+        @element.send(:focus).send(:hover)
       rescue
         # ignore
       end
