@@ -1,5 +1,6 @@
 module Stamps
   module Orders
+
     class LandingPage < SdcPageObject
       text_field(:username, {xpath: "//input[@placeholder='USERNAME']"})
       text_field(:password,  {xpath: "//input[@placeholder='PASSWORD']"})
@@ -54,5 +55,6 @@ module Stamps
         super(usr,pwd)
       end
     end
+
   end
 end
