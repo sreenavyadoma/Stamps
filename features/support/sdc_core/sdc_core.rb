@@ -171,11 +171,11 @@ module Stamps
         subclass.required_element_list = required_element_list.dup
       end
 
-      def watir_element(name, tag_name, locator, required: false)
+      def _element(name, tag_name, locator, required: false)
         set_element(name, required: required) { SdcElement.new(finder.element("browser.#{tag_name}(#{locator})")) }
       end
 
-      def watir_elements(name, tag_name, locator, required: false)
+      def _elements(name, tag_name, locator, required: false)
         set_elements(name, required: required) { SdcElement.new(finder.element("browser.#{tag_name}(#{locator})")) }
       end
 
