@@ -6,7 +6,7 @@ module Stamps
 
     class SdcOrders < SdcPageObject
       element(:loading_orders, {text: 'Loading orders...'})
-      element(:signed_in_user, {id: 'userNameText'}, required: true)
+      element(:signed_in_user, {id: 'userNameText'})
 
       def order_details
 
