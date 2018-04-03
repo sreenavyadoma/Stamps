@@ -23,7 +23,7 @@ module Stamps
       end
 
       def bulk_update
-        @bulk_update ||= ::BulkUpdate::Form.new(param)
+        @bulk_update ||= ::SdcBulkUpdate::Form.new(param)
       end
 
       def modals

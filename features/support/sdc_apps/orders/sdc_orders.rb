@@ -9,7 +9,11 @@ module Stamps
       element(:signed_in_user, {id: 'userNameText'}, required: true)
 
       def order_details
+        @order_details = nil
+      end
 
+      def bulk_update
+        @bulk_update = nil
       end
 
       def navigation
@@ -20,7 +24,7 @@ module Stamps
 
       end
 
-      def orders_grid
+      def grid
 
       end
 
