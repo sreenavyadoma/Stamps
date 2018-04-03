@@ -187,7 +187,7 @@ module Stamps
         set_elements(name, required: required) { SdcElement.new(finder.elements(locator, message: name, timeout: timeout)) }
       end
 
-      def chooser(name, chooser_loc, verify_loc, property, property_name, timeout: 12, required: false)
+      def chooser(name, chooser_loc, verify_loc, property, property_name, timeout: 10, required: false)
         set_element(name, required: required) { SdcChooser.new(finder.element(chooser_loc, timeout: timeout),
                                                            finder.element(verify_loc, timeout: timeout),
                                                            property, property_name) }
@@ -195,6 +195,12 @@ module Stamps
       alias_method :checkbox, :chooser
       alias_method :selection, :chooser
       alias_method :radio, :chooser
+
+      def number(name, text_field_loc, increment_loc, decrement_loc, timeout: 10, required: false)
+        set_element(name, required: required) { SdcNumber.new(finder.element(text_field_loc, timeout: timeout),
+                                                              finder.element(increment_loc, timeout: timeout),
+                                                              finder.element(decrement_loc, timeout: timeout)) }
+      end
 
       def visit(*args)
         new.tap do |page|
@@ -417,7 +423,6 @@ module Stamps
         wait_while_present(timeout: timeout, interval: interval)
       rescue
         # ignore
-        z=1
       end
 
       self
@@ -533,9 +538,9 @@ module Stamps
     end
   end
 
-  class SdcNumberElement
+  class SdcNumber
 
-    attr_reader :driver, :textbox, :increment, :decrement
+    attr_reader :textbox, :increment, :decrement
 
     def initialize(text_field, increment, decrement)
       set_instance_variables(binding, *local_variables)
@@ -546,4 +551,5 @@ module Stamps
       @textbox.send(method, *args, &block)
     end
   end
+
 end
