@@ -99,7 +99,7 @@ module Stamps
 
     def _element(tag_name, locator, message: '', timeout: 12)
       begin
-        element = instance_exec("browser.#{tag_name}(#{locator})")
+        element = instance_eval("browser.#{tag_name}(#{locator})")
         return wait_until(timeout: timeout, message: message) { element }
       rescue Selenium::WebDriver::Error::TimeOutError
         # ignore
