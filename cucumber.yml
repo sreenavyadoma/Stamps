@@ -217,7 +217,6 @@ registration_username_taken_model: --tags @registration_username_taken_model WEB
 registration_ui_validation_choose_supplies_page: --tags @registration_ui_validation_choose_supplies_page WEB_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
 registration_security_questions_happy_path: --tags @registration_security_questions_happy_path WEB_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
 
-
 mail_print_shipping_label_8x11: --tags @mail_print_shipping_label_8x11 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail_print_shipping_label_8x11 PRINTER=factory
 
 search_orders: --tags @search_orders --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
