@@ -108,23 +108,11 @@ module Stamps
     end
 
     def element(locator, message: '', timeout: 12)
-      begin
-        return wait_until(timeout: timeout, message: message) { @driver.element(locator) }
-      rescue Selenium::WebDriver::Error::TimeOutError
-        # ignore
-      end
-
-      nil
+      wait_until(timeout: timeout, message: message) { @driver.element(locator) }
     end
 
     def elements(locator, message: '', timeout: 12)
-      begin
-        return wait_until(timeout: timeout, message: message) { @driver.elements(locator) }
-      rescue Selenium::WebDriver::Error::TimeOutError
-        # ignore
-      end
-
-      nil
+      wait_until(timeout: timeout, message: message) { @driver.elements(locator) }
     end
 
   end
