@@ -1,4 +1,4 @@
-default: --backtrace --profile saucelabs_browser
+default: --backtrace --profile google_iphonex
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -26,6 +26,10 @@ saucelabs_browser_cc:  --tags @saucelabs_poc BROWSER=ff VERBOSE=true WEB_APP=ord
 saucelabs_iphonex_cc: --tags @saucelabs_poc MOBILE='iphone x' VERBOSE=true WEB_APP=orders URL=cc USR=ccfb311osps4x PW=pass111
 
 saucelabs: --tags @saucelabs_poc VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
+
+google: --tags @google
+google_browser: --tags @google BROWSER=ff
+google_iphonex: --tags @google MOBILE=iphonex
 
 #todo-Rob WebReg consider removing webapp, username, password fields
 #mhossain1_cc: --tags @registration_normal_workflow WEB_APP=orders JENKINS=true URL=cc VERBOSE=true BROWSER=ff MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1

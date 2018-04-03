@@ -8,6 +8,11 @@ Cucumber::Rake::Task.new(:alex_mail) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:google) do |t|
+  t.profile = 'google'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:saucelabs) do |t|
   t.profile = 'saucelabs'
   t.cucumber_opts = "-p cuke_reports"
