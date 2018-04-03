@@ -552,4 +552,5 @@ module Stamps
       @textbox.send(method, *args, &block)
     end
   end
+
 end
