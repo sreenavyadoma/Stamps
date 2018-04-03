@@ -423,7 +423,6 @@ module Stamps
         wait_while_present(timeout: timeout, interval: interval)
       rescue
         # ignore
-        z=1
       end
 
       self
