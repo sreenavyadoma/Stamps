@@ -1,4 +1,4 @@
-default: --backtrace --profile saucelabs_browser_cc
+default: --backtrace --profile saucelabs_browser
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -19,6 +19,7 @@ iphonex: --tags @iphonex --guess MOBILE='iphone x' VERBOSE=true JENKINS=true HEA
 
 saucelabs_browser:  --tags @saucelabs_poc BROWSER=ff VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
 saucelabs_iphonex: --tags @saucelabs_poc MOBILE='iphone x' VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
+saucelabs_iphone8: --tags @saucelabs_poc MOBILE='iphone 8' VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
 saucelabs_samsung_galaxy: --tags @saucelabs_poc MOBILE=samsung_galaxy VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
 
 saucelabs_browser_cc:  --tags @saucelabs_poc BROWSER=ff VERBOSE=true WEB_APP=orders URL=cc USR=ccfb311osps4x PW=pass111

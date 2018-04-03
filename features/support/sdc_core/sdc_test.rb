@@ -174,8 +174,7 @@ class SdcTest
     private
 
     def device_name(str)
-      return str.downcase.delete(' ').to_sym if str
-      str
+      str.downcase.delete(' ').to_sym
     end
 
     def browser_selection(str)

@@ -37,7 +37,7 @@ module Stamps
         username.set(usr)
         password.set(pwd)
         sign_in.safe_click(ctr: 2).send_keys_while_present(:enter, ctr: 2)
-        sign_in.wait_while_present
+        sign_in.safe_wait_while_present
       end
     end
 

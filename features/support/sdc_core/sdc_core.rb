@@ -69,8 +69,13 @@ module Stamps
 
   class SdcAppiumDriver
     class << self
-      def core_driver(device_name)
-        caps = Appium.load_appium_txt(file: File.expand_path("../../sdc_idevices/caps/#{device_name}.txt", __FILE__), verbose: true)
+      def core_driver(device)
+        file = File.expand_path("../../sdc_idevices/caps/#{device}.txt", __FILE__)
+        exception = Selenium::WebDriver::Error::WebDriverError
+        message = "Appium capabilities does not exist for device #{device}. #{file}"
+        raise exception, message unless File.exist? file
+
+        caps = Appium.load_appium_txt(file: file, verbose: true)
         @core_driver = Appium::Driver.new(caps, false)
         self
       end
