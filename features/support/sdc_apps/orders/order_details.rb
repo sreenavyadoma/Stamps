@@ -1,10 +1,6 @@
 module Stamps
   module Orders
-    class SdcPagination
-      #drop down
-
-
-
+    class SdcOrderDetails
     end
   end
 end
