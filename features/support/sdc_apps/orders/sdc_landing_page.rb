@@ -27,10 +27,6 @@ module Stamps
               end)
       end
 
-      def present?
-        username.present? && password.present? && sign_in.present? && remember_me.present?
-      end
-
       def sign_in_with(usr, pwd)
         username.set(usr)
         password.set(pwd)
