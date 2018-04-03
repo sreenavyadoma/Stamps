@@ -2,10 +2,8 @@ module Stamps
   module Orders
 
     class LandingPage < SdcPageObject
-      # text_field(:username, {xpath: "//input[@placeholder='USERNAME']"})
-      # text_field(:password,  {xpath: "//input[@placeholder='PASSWORD']"})
-      element(:username, {xpath: "//input[@placeholder='USERNAME']"})
-      element(:password,  {xpath: "//input[@placeholder='PASSWORD']"})
+      _element(:username, :text_field, {xpath: "//input[@placeholder='USERNAME']"}, required: true)
+      _element(:password,  :text_field, {xpath: "//input[@placeholder='PASSWORD']"}, required: true)
       element(:sign_in, {xpath: "//span[contains(text(), 'Sign In')]"}, required: true)
       checkbox(:remember_me,
                {xpath: "//*[contains(@class, 'remember-username-checkbox')]//span[contains(@id, 'displayEl')]"},
@@ -48,10 +46,6 @@ module Stamps
       element(:password,  {xpath: "//input[@placeholder='PASSWORD']"})
 
       page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Orders&" }
-
-      def present?
-        username.present? && password.present? && sign_in.present? && remember_me.present?
-      end
 
       def sign_in_with(usr, pwd)
         super(usr,pwd)
