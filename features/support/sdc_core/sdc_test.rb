@@ -60,7 +60,7 @@ class SdcTest
         rescue Exception => e
           SdcLog.error e.message
           SdcLog.error e.backtrace.join("\n")
-          riase e, "Appium driver failed to start"
+          raise e, "Appium driver failed to start"
         end
 
       else

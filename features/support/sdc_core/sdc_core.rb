@@ -97,7 +97,7 @@ module Stamps
       @driver = driver
     end
 
-    def wait_for(locator)
+    def locate(locator)
       case(locator)
         when String
           instance_eval(locator)
@@ -114,7 +114,7 @@ module Stamps
 
     def element(locator, message: '', timeout: 12)
       begin
-        return wait_until(timeout: timeout, message: message) { wait_for(locator) }
+        return wait_until(timeout: timeout, message: message) { locate(locator) }
       rescue Selenium::WebDriver::Error::TimeOutError
         # ignore
       end
@@ -164,10 +164,6 @@ module Stamps
         end
 
         element_list << name.to_sym
-      end
-
-      def text_field(name, locator, required: false)
-        watir_element(name, :text_field, locator, required: required)
       end
 
       def watir_element(name, tag_name, locator, required: false)
@@ -401,6 +397,7 @@ module Stamps
         wait_while_present(timeout: timeout, interval: interval)
       rescue
         # ignore
+        z=1
       end
 
       self
