@@ -99,20 +99,53 @@ module Stamps
 
     def _element(tag_name, locator, message: '', timeout: 12)
       begin
-        return wait_until(timeout: timeout, message: message) { instance_eval("browser.#{tag_name}(#{locator})") }
+        element = instance_eval("browser.#{tag_name}(#{locator})")
+        return wait_until(timeout: timeout, message: message) { element }
       rescue Selenium::WebDriver::Error::TimeOutError
         # ignore
       end
 
-      nil
+      exception = Selenium::WebDriver::Error::WebDriverError
+      message = "Can not find element with locator: #{locator}"
+      raise exception, message if element.nil?
     end
 
     def element(locator, message: '', timeout: 12)
-      wait_until(timeout: timeout, message: message) { @driver.element(locator) }
+      begin
+        case
+          when SdcEnv.mobile
+            element = @driver.find_element(locator)
+          else
+            element = @driver.element(locator)
+        end
+
+        return wait_until(timeout: timeout, message: message) { element }
+      rescue Selenium::WebDriver::Error::TimeOutError
+        # ignore
+      end
+
+      exception = Selenium::WebDriver::Error::WebDriverError
+      message = "Can not find element with locator: #{locator}"
+      raise exception, message if element.nil?
     end
 
     def elements(locator, message: '', timeout: 12)
-      wait_until(timeout: timeout, message: message) { @driver.elements(locator) }
+      begin
+        case
+          when SdcEnv.mobile
+            elements = @driver.find_elements(locator)
+          else
+            elements = @driver.elements(locator)
+        end
+
+        return wait_until(timeout: timeout, message: message) { elements }
+      rescue Selenium::WebDriver::Error::TimeOutError
+        # ignore
+      end
+
+      exception = Selenium::WebDriver::Error::WebDriverError
+      message = "Can not find element with locator: #{locator}"
+      raise exception, message if element.nil?
     end
 
   end
@@ -346,12 +379,12 @@ module Stamps
       self
     end
 
-    def set(*args, iter: 1)
+    def set(*args)
       return @element.send(:send_keys, *args) if @element.is_a? ::Selenium::WebDriver::Element
       @element.send(:set, *args)
     end
 
-    def safe_send_keys(*args)
+    def safe_send_keys(*args, ctr: 1)
       ctr.to_i.times do
         begin
           @element.send(:send_keys, *args)
