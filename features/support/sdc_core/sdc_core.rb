@@ -69,8 +69,13 @@ module Stamps
 
   class SdcAppiumDriver
     class << self
-      def core_driver(device_name)
-        caps = Appium.load_appium_txt(file: File.expand_path("../../sdc_idevices/caps/#{device_name}.txt", __FILE__), verbose: true)
+      def core_driver(device)
+        file = File.expand_path("../../sdc_idevices/caps/#{device}.txt", __FILE__)
+        exception = Selenium::WebDriver::Error::WebDriverError
+        message = "Appium capabilities does not exist for device #{device}. #{file}"
+        raise exception, message unless File.exist? file
+
+        caps = Appium.load_appium_txt(file: file, verbose: true)
         @core_driver = Appium::Driver.new(caps, false)
         self
       end
@@ -79,21 +84,6 @@ module Stamps
         super unless @core_driver.respond_to?(name)
         @core_driver.send(name, *args, &block)
       end
-    end
-  end
-
-  module SdcDriver
-    class << self
-      def browser=(browser)
-        @@browser = browser
-      end
-      alias_method :driver=, :browser=
-
-
-      def browser
-        @@browser
-      end
-      alias_method :driver, :browser
     end
   end
 
@@ -107,23 +97,39 @@ module Stamps
       @driver = driver
     end
 
+    def locate(locator)
+      case(locator)
+        when String
+          instance_eval(locator)
+        when Hash
+          if @driver.respond_to?(:element)
+            @driver.element(locator)
+          else
+            @driver.find_element(locator)
+          end
+        else
+          raise ArgumentError, "Invalid locator. #{locator}"
+      end
+    end
+
+    def locate_elements(locator)
+      @driver.find_element(locator)
+    end
+
     def element(locator, message: '', timeout: 12)
-      wait_element = case(locator)
-                       when String
-                         instance_eval(locator)
-                       when Hash
-                         if @driver.respond_to?(:element)
-                           @driver.element(locator)
-                         else
-                           @driver.find_element(locator)
-                         end
-                       else
-                         raise ArgumentError, "Invalid locator. #{locator}"
-                     end
       begin
-        return wait_until(timeout: timeout, message: message) { wait_element }
+        return wait_until(timeout: timeout, message: message) { locate(locator) }
       rescue Selenium::WebDriver::Error::TimeOutError
-        # swallow
+        # ignore
+      end
+      nil
+    end
+
+    def elements(locator, message: '', timeout: 12)
+      begin
+        return wait_until(timeout: timeout, message: message) { locate_elements(locator) }
+      rescue Selenium::WebDriver::Error::TimeOutError
+        # ignore
       end
       nil
     end
@@ -165,26 +171,21 @@ module Stamps
         subclass.required_element_list = required_element_list.dup
       end
 
-      def elements(name, &block)
-        define_method(name) do |*args|
-          self.instance_exec(*args, &block)
-        end
-
-        element_list << name.to_sym
-      end
-
-      def text_field(name, locator, required: false)
-        watir_element(name, :text_field, locator, required: required)
-      end
-
       def watir_element(name, tag_name, locator, required: false)
         set_element(name, required: required) { SdcElement.new(finder.element("browser.#{tag_name}(#{locator})")) }
+      end
+
+      def watir_elements(name, tag_name, locator, required: false)
+        set_elements(name, required: required) { SdcElement.new(finder.element("browser.#{tag_name}(#{locator})")) }
       end
 
       def element(name, locator, timeout: 12, required: false)
         set_element(name, required: required) { SdcElement.new(finder.element(locator, message: name, timeout: timeout)) }
       end
-      alias_method :button, :element
+
+      def elements(name, locator, timeout: 12, required: false)
+        set_elements(name, required: required) { SdcElement.new(finder.elements(locator, message: name, timeout: timeout)) }
+      end
 
       def chooser(name, chooser_loc, verify_loc, property, property_name, timeout: 12, required: false)
         set_element(name, required: required) { SdcChooser.new(finder.element(chooser_loc, timeout: timeout),
@@ -219,6 +220,14 @@ module Stamps
 
         element_list << name.to_sym
         required_element_list << name.to_sym if required
+      end
+
+      def set_elements(name, &block)
+        define_method(name) do |*args|
+          self.instance_exec(*args, &block)
+        end
+
+        element_list << name.to_sym
       end
     end
 
@@ -317,6 +326,7 @@ module Stamps
       rescue
         # ignore
       end
+
       false
     end
 
@@ -326,13 +336,13 @@ module Stamps
       rescue
         # ignore
       end
+
       false
     end
 
     def safe_hover
       begin
-        @element.send(:focus)
-        @element.send(:hover)
+        @element.send(:focus).send(:hover)
       rescue
         # ignore
       end
@@ -354,10 +364,11 @@ module Stamps
 
     def set(*args, iter: 1)
       iter.to_i.times do
-        return @element.send(:set, *args) if @element.respond_to? :set
+        #return @element.send(:set, *args) if @element.respond_to? :set
         @element.send(:send_keys, *args)
       end
     end
+    alias_method :send_keys, :set
 
     def safe_send_keys(*args, ctr: 1)
       ctr.to_i.times do
@@ -368,7 +379,7 @@ module Stamps
         end
       end
 
-      text_value
+      self
     end
 
     def send_keys_while_present(*args, ctr: 1)
@@ -406,6 +417,7 @@ module Stamps
         wait_while_present(timeout: timeout, interval: interval)
       rescue
         # ignore
+        z=1
       end
 
       self
@@ -450,6 +462,15 @@ module Stamps
         end
       end
 
+      self
+    end
+
+    def scroll_into_view
+      begin
+        @element.execute_script('arguments[0].scrollIntoView();', @element)
+      rescue
+        # ignore
+      end
       self
     end
 
@@ -509,6 +530,20 @@ module Stamps
     def method_missing(method, *args, &block)
       super unless element.respond_to?(method)
       element.send(method, *args, &block)
+    end
+  end
+
+  class SdcNumberElement
+
+    attr_reader :driver, :textbox, :increment, :decrement
+
+    def initialize(text_field, increment, decrement)
+      set_instance_variables(binding, *local_variables)
+    end
+
+    def method_missing(method, *args, &block)
+      super unless @textbox.respond_to?(method)
+      @textbox.send(method, *args, &block)
     end
   end
 end

@@ -1,8 +1,11 @@
 module Stamps
   module Orders
+
     class LandingPage < SdcPageObject
-      text_field(:username, {xpath: "//input[@placeholder='USERNAME']"})
-      text_field(:password,  {xpath: "//input[@placeholder='PASSWORD']"})
+      # text_field(:username, {xpath: "//input[@placeholder='USERNAME']"})
+      # text_field(:password,  {xpath: "//input[@placeholder='PASSWORD']"})
+      element(:username, {xpath: "//input[@placeholder='USERNAME']"})
+      element(:password,  {xpath: "//input[@placeholder='PASSWORD']"})
       element(:sign_in, {xpath: "//span[contains(text(), 'Sign In')]"}, required: true)
       checkbox(:remember_me,
                {xpath: "//*[contains(@class, 'remember-username-checkbox')]//span[contains(@id, 'displayEl')]"},
@@ -36,7 +39,7 @@ module Stamps
         username.set(usr)
         password.set(pwd)
         sign_in.safe_click(ctr: 2).send_keys_while_present(:enter, ctr: 2)
-        sign_in.wait_while_present
+        sign_in.safe_wait_while_present
       end
     end
 
@@ -54,5 +57,6 @@ module Stamps
         super(usr,pwd)
       end
     end
+
   end
 end

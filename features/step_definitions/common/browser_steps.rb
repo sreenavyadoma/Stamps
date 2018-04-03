@@ -13,7 +13,7 @@ end
 
 Then /^Refresh the browser$/ do
   begin
-    SdcTest.driver.refresh
+    SdcDriver.browser.refresh
     sleep(2)
   rescue
     # ignore

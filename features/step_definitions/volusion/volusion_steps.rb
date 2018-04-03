@@ -1,6 +1,6 @@
 
 Then /^Volusion: Visit Page$/ do
-  step "I launched the browser" if SdcTest.driver.nil?
+  step "I launched the browser" if SdcDriver.browser.nil?
   volusion.visit
 end
 

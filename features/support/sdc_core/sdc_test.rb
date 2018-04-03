@@ -1,8 +1,9 @@
 class SdcTest
   class << self
-    attr_reader :driver, :test_scenario, :scenario
+    attr_reader :test_scenario, :scenario
 
     def configure
+
       if SdcEnv.browser
         begin
           #Watir.always_locate = true
@@ -44,20 +45,24 @@ class SdcTest
               raise ArgumentError, "Invalid browser selection. #{test_driver}"
           end
           SdcDriver.driver.driver.manage.timeouts.page_load = 12
+
         rescue Exception => e
           SdcLog.error e.message
           SdcLog.error e.backtrace.join("\n")
           raise e, "Browser driver failed to start"
         end
+
       elsif SdcEnv.mobile
+
         begin
           SdcDriver.driver = SdcDriverDecorator.new(SdcAppiumDriver.core_driver(SdcEnv.mobile.to_s).start_driver)
           SdcDriver.driver.manage.timeouts.implicit_wait = 10
         rescue Exception => e
           SdcLog.error e.message
           SdcLog.error e.backtrace.join("\n")
-          riase e, "Appium driver failed to start"
+          raise e, "Appium driver failed to start"
         end
+
       else
         raise ArgumentError, "Neither BROWSER nor MOBILE is defined for test #{test_scenario}. Expected values are: #{SdcEnv::BROWSERS.inspect} and #{SdcEnv::IDEVICES.inspect}"
       end
@@ -174,8 +179,8 @@ class SdcTest
     private
 
     def device_name(str)
-      return str.downcase.delete(' ').to_sym if str
-      str
+      return str if str.nil?
+      str.downcase.delete(' ').to_sym
     end
 
     def browser_selection(str)
@@ -227,6 +232,22 @@ class SdcTest
     end
   end
 end
+
+module SdcDriver
+  class << self
+    def browser=(browser)
+      @@browser = browser
+    end
+    alias_method :driver=, :browser=
+
+
+    def browser
+      @@browser
+    end
+    alias_method :driver, :browser
+  end
+end
+
 #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
 #
 #
