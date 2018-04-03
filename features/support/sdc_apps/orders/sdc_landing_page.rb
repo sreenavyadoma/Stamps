@@ -9,8 +9,6 @@ module Stamps
                {xpath: "//*[contains(@class, 'remember-username-checkbox')]//span[contains(@id, 'displayEl')]"},
                {xpath: "//*[contains(@class, 'remember-username-checkbox')]"},
                "class", "checked")
-      element(:iusername, {xpath: "//input[@placeholder='USERNAME']"})
-      element(:ipassword,  {xpath: "//input[@placeholder='PASSWORD']"})
 
       page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Orders&" }
 
