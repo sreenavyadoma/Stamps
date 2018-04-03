@@ -47,10 +47,6 @@ module Stamps
 
       page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Orders&" }
 
-      def present?
-        username.present? && password.present? && sign_in.present? && remember_me.present?
-      end
-
       def sign_in_with(usr, pwd)
         super(usr,pwd)
       end
