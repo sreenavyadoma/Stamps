@@ -1,5 +1,6 @@
 Then /^[Ii]n Add Postage page, click Confirm [Bb]utton$/ do
   registration.add_postage.confirm
+  sdc_email.text_field
 end
 
 Then /^[Ee]xpect add_postage_to_account message exists$/ do

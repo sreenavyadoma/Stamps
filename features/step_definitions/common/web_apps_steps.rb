@@ -25,6 +25,11 @@ Then /^sign-in to Orders as (.+), (.+)$/ do |usr, pw|
   expect(SdcWebsite.orders.signed_in_user.text).to eql(TestData.store[:username])
 end
 
+SdcWebDev.app_name_a.visit
+SdcWebDev.app_name_b
+
+
+
 Then /^sign-in to Mail as (.+), (.+)$/ do |usr, pw|
   stamps.mail.sign_in_modal.mail_sign_in(TestData.store[:username] = usr, TestData.store[:password] = pw)
 end

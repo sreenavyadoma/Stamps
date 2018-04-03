@@ -1,4 +1,32 @@
 module Stamps
+  module WebDev
+    module AppA
+
+    end
+  end
+end
+
+module Stamps
+  module WebDev
+    module AppB
+
+    end
+  end
+end
+
+module Stamps
+  module WebDev
+    class SdcProfilePage < SdcPageObject
+    end
+
+
+    class SdcEmail < SdcPageObject
+      text_field(:text_field, {xp: "email"})
+      element(:text_field, {xp: "email"})
+    end
+  end
+
+
   module Registration
     module Profile
       module Fields
