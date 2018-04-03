@@ -97,42 +97,36 @@ module Stamps
       @driver = driver
     end
 
-    def locate(locator)
-      case(locator)
-        when String
-          instance_eval(locator)
-        when Hash
-          if @driver.respond_to?(:element)
-            @driver.element(locator)
-          else
-            @driver.find_element(locator)
-          end
-        else
-          raise ArgumentError, "Invalid locator. #{locator}"
+    def _element(tag_name, locator, message: '', timeout: 12)
+      begin
+        return wait_until(timeout: timeout, message: message) { instance_eval("browser.#{tag_name}(#{locator})") }
+      rescue Selenium::WebDriver::Error::TimeOutError
+        # ignore
       end
-    end
 
-    def locate_elements(locator)
-      @driver.find_element(locator)
+      nil
     end
 
     def element(locator, message: '', timeout: 12)
       begin
-        return wait_until(timeout: timeout, message: message) { locate(locator) }
+        return wait_until(timeout: timeout, message: message) { @driver.element(locator) }
       rescue Selenium::WebDriver::Error::TimeOutError
         # ignore
       end
+
       nil
     end
 
     def elements(locator, message: '', timeout: 12)
       begin
-        return wait_until(timeout: timeout, message: message) { locate_elements(locator) }
+        return wait_until(timeout: timeout, message: message) { @driver.elements(locator) }
       rescue Selenium::WebDriver::Error::TimeOutError
         # ignore
       end
+
       nil
     end
+
   end
 
   class SdcPageObject
@@ -171,12 +165,8 @@ module Stamps
         subclass.required_element_list = required_element_list.dup
       end
 
-      def _element(name, tag_name, locator, required: false)
-        set_element(name, required: required) { SdcElement.new(finder.element("browser.#{tag_name}(#{locator})")) }
-      end
-
-      def _elements(name, tag_name, locator, required: false)
-        set_elements(name, required: required) { SdcElement.new(finder.element("browser.#{tag_name}(#{locator})")) }
+      def _element(name, tag_name, locator, timeout: 12, required: false)
+        set_element(name, required: required) { SdcElement.new(finder._element(tag_name, locator, timeout: timeout)) }
       end
 
       def element(name, locator, timeout: 12, required: false)
@@ -369,17 +359,14 @@ module Stamps
     end
 
     def set(*args, iter: 1)
-      iter.to_i.times do
-        #return @element.send(:set, *args) if @element.respond_to? :set
-        @element.send(:send_keys, *args)
-      end
+      return @element.send(:send_keys, *args) if @element.is_a? ::Selenium::WebDriver::Element
+      @element.send(:set, *args)
     end
-    alias_method :send_keys, :set
 
-    def safe_send_keys(*args, ctr: 1)
+    def safe_send_keys(*args)
       ctr.to_i.times do
         begin
-          send_keys(*args)
+          @element.send(:send_keys, *args)
         rescue
           # ignore
         end
