@@ -112,9 +112,22 @@ module Stamps
       end
     end
 
+    def locate_elements(locator)
+      @driver.find_element(locator)
+    end
+
     def element(locator, message: '', timeout: 12)
       begin
         return wait_until(timeout: timeout, message: message) { locate(locator) }
+      rescue Selenium::WebDriver::Error::TimeOutError
+        # ignore
+      end
+      nil
+    end
+
+    def elements(locator, message: '', timeout: 12)
+      begin
+        return wait_until(timeout: timeout, message: message) { locate_elements(locator) }
       rescue Selenium::WebDriver::Error::TimeOutError
         # ignore
       end
@@ -158,22 +171,21 @@ module Stamps
         subclass.required_element_list = required_element_list.dup
       end
 
-      def elements(name, &block)
-        define_method(name) do |*args|
-          self.instance_exec(*args, &block)
-        end
-
-        element_list << name.to_sym
-      end
-
       def watir_element(name, tag_name, locator, required: false)
         set_element(name, required: required) { SdcElement.new(finder.element("browser.#{tag_name}(#{locator})")) }
+      end
+
+      def watir_elements(name, tag_name, locator, required: false)
+        set_elements(name, required: required) { SdcElement.new(finder.element("browser.#{tag_name}(#{locator})")) }
       end
 
       def element(name, locator, timeout: 12, required: false)
         set_element(name, required: required) { SdcElement.new(finder.element(locator, message: name, timeout: timeout)) }
       end
-      alias_method :button, :element
+
+      def elements(name, locator, timeout: 12, required: false)
+        set_elements(name, required: required) { SdcElement.new(finder.elements(locator, message: name, timeout: timeout)) }
+      end
 
       def chooser(name, chooser_loc, verify_loc, property, property_name, timeout: 12, required: false)
         set_element(name, required: required) { SdcChooser.new(finder.element(chooser_loc, timeout: timeout),
@@ -208,6 +220,14 @@ module Stamps
 
         element_list << name.to_sym
         required_element_list << name.to_sym if required
+      end
+
+      def set_elements(name, &block)
+        define_method(name) do |*args|
+          self.instance_exec(*args, &block)
+        end
+
+        element_list << name.to_sym
       end
     end
 
