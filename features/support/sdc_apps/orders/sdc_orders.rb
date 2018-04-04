@@ -16,7 +16,7 @@ module Stamps
       end
 
       def navigation
-
+        @navigation ||= Object.const_get('SdcNavigation').new
       end
 
       def toolbar
