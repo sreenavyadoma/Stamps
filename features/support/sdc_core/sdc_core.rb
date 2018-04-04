@@ -530,14 +530,14 @@ module Stamps
     alias_method :checked?, :chosen?
     alias_method :selected?, :chosen?
 
-    def choose(iter: 2)
+    def choose(iter: 3)
       iter.times do element.click; break if chosen? end
       chosen?
     end
     alias_method :check, :choose
     alias_method :select, :choose
 
-    def unchoose(iter: 2)
+    def unchoose(iter: 3)
       iter.times do break unless chosen?; element.click end
       chosen?
     end
