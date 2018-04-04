@@ -57,6 +57,7 @@ class SdcTest
         begin
           SdcDriver.driver = SdcDriverDecorator.new(SdcAppiumDriver.core_driver(SdcEnv.mobile.to_s).start_driver)
           SdcDriver.driver.manage.timeouts.implicit_wait = 10
+
         rescue Exception => e
           SdcLog.error e.message
           SdcLog.error e.backtrace.join("\n")
