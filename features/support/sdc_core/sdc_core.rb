@@ -198,10 +198,10 @@ module Stamps
       def element(name, tag_name: nil, timeout: 12, required: false)
         thing(name, required: required) { SdcElement.new(finder.element(tag_name, yield, timeout: timeout)) }
       end
-      alias_method :text_field, :chooser
-      alias_method :button, :chooser
-      alias_method :label, :chooser
-      alias_method :selection, :chooser
+      alias_method :text_field, :element
+      alias_method :button, :element
+      alias_method :label, :element
+      alias_method :selection, :element
 
       def elements(name, tag_name: nil, timeout: 12, required: false)
         things(name, required: required) { SdcElement.new(finder.elements(tag_name, yield, timeout: timeout)) }
