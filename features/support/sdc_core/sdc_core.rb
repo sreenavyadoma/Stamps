@@ -196,7 +196,7 @@ module Stamps
       end
 
       def element(name, tag_name: nil, timeout: 12, required: false)
-        thing(name, required: required) { SdcElement.new(finder.element(tag_name, yield, timeout: timeout)) }
+        _element(name, required: required) { SdcElement.new(finder.element(tag_name, yield, timeout: timeout)) }
       end
       alias_method :text_field, :chooser
       alias_method :button, :chooser
@@ -204,17 +204,17 @@ module Stamps
       alias_method :selection, :chooser
 
       def elements(name, tag_name: nil, timeout: 12, required: false)
-        things(name, required: required) { SdcElement.new(finder.elements(tag_name, yield, timeout: timeout)) }
+        _elements(name, required: required) { SdcElement.new(finder.elements(tag_name, yield, timeout: timeout)) }
       end
 
       def chooser(name, chooser, verify, property, property_name)
-        thing(name) { SdcChooser.new(instance_eval(chooser.to_s), instance_eval(verify.to_s), property, property_name) }
+        _element(name) { SdcChooser.new(instance_eval(chooser.to_s), instance_eval(verify.to_s), property, property_name) }
       end
       alias_method :checkbox, :chooser
       alias_method :radio, :chooser
 
       def number(name, text_field, increment, decrement)
-        thing(name) { SdcNumber.new(instance_eval(text_field.to_s), instance_eval(increment.to_s), instance_eval(decrement.to_s)) }
+        _element(name) { SdcNumber.new(instance_eval(text_field.to_s), instance_eval(increment.to_s), instance_eval(decrement.to_s)) }
       end
 
       def visit(*args)
@@ -234,7 +234,7 @@ module Stamps
 
       private
 
-      def thing(name, required: false, &block)
+      def _element(name, required: false, &block)
         define_method(name) do |*args|
           self.instance_exec(*args, &block)
         end
@@ -243,7 +243,7 @@ module Stamps
         required_element_list << name.to_sym if required
       end
 
-      def things(name, &block)
+      def _elements(name, &block)
         define_method(name) do |*args|
           self.instance_exec(*args, &block)
         end
