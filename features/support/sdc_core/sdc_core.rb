@@ -72,7 +72,7 @@ module Stamps
       def core_driver(device)
         file = File.expand_path("../../sdc_idevices/caps/#{device}.txt", __FILE__)
         exception = Selenium::WebDriver::Error::WebDriverError
-        message = "Appium capabilities does not exist for device #{device}. #{file}"
+        message = "Appium capabilities file does not exist. #{device}: #{file}"
         raise exception, message unless File.exist? file
 
         caps = Appium.load_appium_txt(file: file, verbose: true)
