@@ -528,7 +528,7 @@ module Stamps
         when SdcEnv.browser
           return @element.send(:attribute_value, property_name).include?(property_value)
         when SdcEnv.mobile
-          return @element.send(:property, property_name).include?(property_value)
+          return @element.send(:attribute, property_name).include?(property_value)
       end
     end
   end
