@@ -9,11 +9,15 @@ class SdcTest
           #Watir.always_locate = true
           Selenium::WebDriver.logger.level = :warn
           case(SdcEnv.browser)
+
             when :edge
+
               kill("taskkill /im MicrosoftEdge.exe /f")
               SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
               SdcDriver.driver.window.maximize
+
             when :firefox
+
               kill("taskkill /im firefox.exe /f")
               unless SdcEnv.firefox_profile
                 SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
@@ -25,25 +29,35 @@ class SdcTest
               end
               SdcDriver.driver.window.resize_to 1560, 1020
               SdcDriver.driver.window.move_to 0, 0
+
             when :chrome
+
               kill("taskkill /im chrome.exe /f")
               SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
               SdcDriver.driver.window.maximize
+
             when :chromeb
+
               kill("taskkill /im chrome.exe /f")
               Selenium::WebDriver::Chrome.path = data_for(:setup, {})['windows']['chromedriverbeta']
               SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
               SdcDriver.driver.window.maximize
+
             when :ie
+
               kill("taskkill /im iexplore.exe /f")
               SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:ie))
               SdcDriver.driver.window.maximize
+
             when :safari
+
               kill("killall 'Safari Technology Preview'")
               SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:safari, technology_preview: true))
+
             else
               raise ArgumentError, "Invalid browser selection. #{test_driver}"
           end
+
           SdcDriver.driver.driver.manage.timeouts.page_load = 12
 
         rescue Exception => e
