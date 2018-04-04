@@ -195,12 +195,12 @@ module Stamps
         subclass.required_element_list = required_element_list.dup
       end
 
-      def element(name, locator, tag_name: tag_name, timeout: 12, required: false)
+      def element(name, locator: nil, tag_name: nil, timeout: 12, required: false)
         thing(name, required: required) { SdcElement.new(finder.element(tag_name, locator, timeout: timeout)) }
       end
 
-      def elements(name, locator, timeout: 12, required: false)
-        things(name, required: required) { SdcElement.new(finder.elements(locator, message: name, timeout: timeout)) }
+      def elements(name, locator: nil, tag_name: nil, timeout: 12, required: false)
+        things(name, required: required) { SdcElement.new(finder.elements(tag_name, locator, timeout: timeout)) }
       end
 
       def chooser(name, chooser_loc, verify_loc, property, property_name, timeout: 10, required: false)
@@ -551,14 +551,14 @@ module Stamps
 
     attr_reader :text_field, :increment, :decrement
 
-    def initialize(text_field_loc, increment_loc, decrement_loc)
+    def initialize(text_field_loc, increment_loc, decrement_loc, timeout: timeout)
       if SdcEnv.browser
-        @text_field = SdcElement.new(finder._element(text_field_loc, timeout: 10))
+        @text_field = SdcElement.new(finder._element(text_field_loc, timeout: timeout))
       else
-        @text_field = SdcElement.new(finder.element(text_field_loc, timeout: 10))
+        @text_field = SdcElement.new(finder.element(text_field_loc, timeout: timeout))
       end
-      @increment = SdcElement.new(finder.element(increment_loc, timeout: 10))
-      @decrement = SdcElement.new(finder.element(decrement_loc, timeout: 10))
+      @increment = SdcElement.new(finder.element(increment_loc, timeout: timeout))
+      @decrement = SdcElement.new(finder.element(decrement_loc, timeout: timeout))
     end
 
     def method_missing(method, *args, &block)

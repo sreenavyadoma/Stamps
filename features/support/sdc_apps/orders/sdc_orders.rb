@@ -5,8 +5,8 @@ module Stamps
     end
 
     class SdcOrders < SdcPageObject
-      element(:loading_orders, {text: 'Loading orders...'})
-      element(:signed_in_user, {id: 'userNameText'})
+      element(:loading_orders, locator: {text: 'Loading orders...'})
+      element(:signed_in_user, locator: {id: 'userNameText'})
 
       def order_details
         @order_details = nil
