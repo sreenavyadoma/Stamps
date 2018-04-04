@@ -189,6 +189,7 @@ module Stamps
       def _element(name, tag_name, locator, timeout: 12, required: false)
         set_element(name, required: required) { SdcElement.new(finder._element(tag_name, locator, timeout: timeout)) }
       end
+      alias_method :_elements, :_element
 
       def element(name, locator, timeout: 12, required: false)
         set_element(name, required: required) { SdcElement.new(finder.element(locator, message: name, timeout: timeout)) }
