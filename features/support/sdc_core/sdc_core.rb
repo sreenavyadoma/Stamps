@@ -337,8 +337,8 @@ module Stamps
     end
 
     def present?
-      return @element.send(:present?) if @lement.respond_to?(:present?)
-      enabled? && @element.send(:displayed?)
+      return enabled? && @element.send(:displayed?) unless @lement.respond_to?(:present?)
+      @element.send(:present?)
     end
 
     def enabled?
@@ -545,7 +545,7 @@ module Stamps
       if verify.respond_to? :attribute_value
         result = verify.attribute_value(property)
       else
-        result = verify.property(property)
+        result = verify.attribute(property)
       end
       return result.casecmp('true') == 0 if result.casecmp('true') == 0 || result .casecmp('false') == 0
       result.include?(property_val)
