@@ -371,8 +371,16 @@ module Stamps
       self
     end
 
-    def sdc_disabled?
-      sdc_?('class', 'disable')
+    def class_disabled?
+      question?('class', 'disable')
+    end
+
+    def class_enabled?
+      question?('class', 'enabled')
+    end
+
+    def class_checked?
+      question?('class', 'checked')
     end
 
     def set(*args)
@@ -515,7 +523,7 @@ module Stamps
 
     private
 
-    def sdc_?(property_name, property_value)
+    def question?(property_name, property_value)
       case
         when SdcEnv.browser
           return @element.send(:attribute_value, property_name).include?(property_value)
