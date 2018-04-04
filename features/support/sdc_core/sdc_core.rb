@@ -100,6 +100,7 @@ module Stamps
     def element(tag_name, locator, message: '', timeout: 12)
       begin
         case
+
           when SdcEnv.browser
             if tag_name.nil?
               element = @driver.element(locator)
@@ -111,8 +112,10 @@ module Stamps
                 # ignore
               end
             end
+
           when SdcEnv.mobile
             element = @driver.find_element(locator)
+
           else
             # ignore
         end
@@ -131,6 +134,7 @@ module Stamps
       begin
         case
           when SdcEnv.browser
+
             if tag_name.nil?
               elements = @driver.elements(locator)
             else
@@ -141,7 +145,9 @@ module Stamps
                 # ignore
               end
             end
+
           when SdcEnv.mobile
+
             elements = @driver.find_elements(locator)
           else
             # ignore
