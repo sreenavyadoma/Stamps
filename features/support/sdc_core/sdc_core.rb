@@ -123,7 +123,7 @@ module Stamps
       end
 
       exception = Selenium::WebDriver::Error::WebDriverError
-      message = "Can not find element with locator: #{locator}"
+      message = "Can not find element. locator: #{locator}"
       raise exception, message if element.nil?
     end
 
