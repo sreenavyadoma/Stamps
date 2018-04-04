@@ -15,10 +15,6 @@ module Stamps
         @bulk_update = nil
       end
 
-      def navigation
-        @navigation ||= Object.const_get('SdcNavigation').new
-      end
-
       def toolbar
 
       end
