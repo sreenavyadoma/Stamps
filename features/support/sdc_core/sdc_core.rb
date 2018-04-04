@@ -132,17 +132,17 @@ module Stamps
         case
           when SdcEnv.browser
             if tag_name.nil?
-              element = @driver.elements(locator)
+              elements = @driver.elements(locator)
             else
               begin
-                element = instance_eval("browser.#{tag_name}(#{locator})")
-                return wait_until(timeout: timeout, message: message) { element }
+                elements = instance_eval("browser.#{tag_name}(#{locator})")
+                return wait_until(timeout: timeout, message: message) { elements }
               rescue Selenium::WebDriver::Error::TimeOutError
                 # ignore
               end
             end
           when SdcEnv.mobile
-            element = @driver.find_elements(locator)
+            elements = @driver.find_elements(locator)
           else
             # ignore
         end
