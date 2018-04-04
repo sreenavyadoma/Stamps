@@ -2,23 +2,11 @@ module Stamps
   module Orders
     module LandPageInstHelper
       def visit_env
-        case SdcEnv.env
-          when :qacc
-            'ext.qacc'
-          when :qasc
-            'ext.qasc'
-          when :stg
-            '.testing'
-          when :prod
-            ''
-          else
-            # ignore
-        end
+
       end
     end
 
     class LandingPage < SdcPageObject
-      include LandPageInstHelper
 
       text_field(:username, tag_name: :text_field) { {xpath: "//input[@placeholder='USERNAME']"} }
       text_field(:password, tag_name: :text_field) { {xpath: "//input[@placeholder='PASSWORD']"} }
@@ -31,7 +19,18 @@ module Stamps
       page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Orders&" }
 
       def self.visit
-        super(visit_env)
+        super(case SdcEnv.env
+                when :qacc
+                  'ext.qacc'
+                when :qasc
+                  'ext.qasc'
+                when :stg
+                  '.testing'
+                when :prod
+                  ''
+                else
+                  # ignore
+              end)
       end
 
       def sign_in_with(usr, pwd)
