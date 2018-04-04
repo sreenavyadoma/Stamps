@@ -1,10 +1,5 @@
 module Stamps
   module Orders
-    module LandPageInstHelper
-      def visit_env
-
-      end
-    end
 
     class LandingPage < SdcPageObject
 
