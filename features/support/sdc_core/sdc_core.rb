@@ -371,6 +371,10 @@ module Stamps
       self
     end
 
+    def sdc_disabled?
+      sdc_?('class', 'disable')
+    end
+
     def set(*args)
       return @element.send(:send_keys, *args) if @element.is_a? ::Selenium::WebDriver::Element
       @element.send(:set, *args)
@@ -507,6 +511,17 @@ module Stamps
     def method_missing(method, *args, &block)
       super unless @element.respond_to?(method)
       @element.send(method, *args, &block)
+    end
+
+    private
+
+    def sdc_?(property_name, property_value)
+      case
+        when SdcEnv.browser
+          return @element.send(:attribute_value, property_name).include?(property_value)
+        when SdcEnv.mobile
+
+      end
     end
   end
 

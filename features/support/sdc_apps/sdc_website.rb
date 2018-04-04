@@ -29,6 +29,10 @@ module Stamps
       def mail
         raise "Not Implemented"
       end
+
+      def navigation
+
+      end
     end
   end
 
