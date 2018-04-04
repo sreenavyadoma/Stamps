@@ -6,10 +6,10 @@ module Stamps
       element(:password, tag_name: :text_field) { {xpath: "//input[@placeholder='PASSWORD']"} }
       element(:sign_in, required: true) { {xpath: "//span[contains(text(), 'Sign In')]"} }
 
-      # chooser(:remember_me,
-      #          {xpath: "//*[contains(@class, 'remember-username-checkbox')]//span[contains(@id, 'displayEl')]"},
-      #          {xpath: "//*[contains(@class, 'remember-username-checkbox')]"},
-      #          "class", "checked")
+      # Checkbox
+      element(:rm_checkbox) { {xpath: "//*[contains(@class, 'remember-username-checkbox')]//span[contains(@id, 'displayEl')]"} }
+      element(:rm_verify) { {xpath: "//*[contains(@class, 'remember-username-checkbox')]"} }
+      chooser(:remember_me, :rm_checkbox, :rm_verify, "class", "checked")
 
       page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Orders&" }
 
@@ -29,6 +29,11 @@ module Stamps
       end
 
       def sign_in_with(usr, pwd)
+        SdcLog.info remember_me.checked?
+        remember_me.check
+        SdcLog.info remember_me.checked?
+        remember_me.uncheck
+        SdcLog.info remember_me.checked?
         username.set(usr)
         password.set(pwd)
         sign_in.safe_click(ctr: 2).send_keys_while_present(:enter, ctr: 2)
