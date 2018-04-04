@@ -10,6 +10,10 @@ Then /^set google search textbox to (.*)$/ do |str|
     IGoogle.new.search.set(str)
     sleep 2
     IGoogle.new.search.send_keys :enter
+    IGoogle.new.search.send_keys :enter
+    IGoogle.new.search.safe_click
+    IGoogle.new.search.click
+    IGoogle.new.search.click
     sleep 2
   end
 end
