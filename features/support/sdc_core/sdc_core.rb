@@ -203,12 +203,12 @@ module Stamps
         things(name, required: required) { SdcElement.new(finder.elements(tag_name, yield, timeout: timeout)) }
       end
 
-      def chooser(name, chooser_loc, verify_loc, property, property_name, timeout: 10, required: false)
-        thing(name, required: required) { SdcChooser.new(chooser_loc, verify_loc, property, property_name) }
+      def chooser(name, chooser, verify, property, property_name)
+        thing(name) { SdcChooser.new(instance_eval(chooser.to_s), instance_eval(verify.to_s), property, property_name) }
       end
 
-      def number(name, text_field_loc, increment_loc, decrement_loc, timeout: 10, required: false)
-        thing(name, required: required) { SdcNumber.new(text_field_loc, increment_loc, decrement_loc) }
+      def number(name, text_field_loc, increment_loc, decrement_loc)
+        thing(name) { SdcNumber.new(text_field_loc, increment_loc, decrement_loc) }
       end
 
       def visit(*args)
@@ -508,11 +508,8 @@ module Stamps
 
     attr_reader :element, :verify, :property, :property_val
 
-    def initialize(element_loc, verify_loc, property, property_val)
-      @element = SdcElement.new(finder.element(element_loc))
-      @verify = SdcElement.new(finder.element(verify_loc))
-      @property = property
-      @property_val = property_val
+    def initialize(element, verify, property, property_val)
+      set_instance_variables(binding, *local_variables)
     end
 
     def chosen?
@@ -551,14 +548,8 @@ module Stamps
 
     attr_reader :text_field, :increment, :decrement
 
-    def initialize(text_field_loc, increment_loc, decrement_loc, timeout: timeout)
-      if SdcEnv.browser
-        @text_field = SdcElement.new(finder._element(text_field_loc, timeout: timeout))
-      else
-        @text_field = SdcElement.new(finder.element(text_field_loc, timeout: timeout))
-      end
-      @increment = SdcElement.new(finder.element(increment_loc, timeout: timeout))
-      @decrement = SdcElement.new(finder.element(decrement_loc, timeout: timeout))
+    def initialize(text_field, increment, decrement)
+      set_instance_variables(binding, *local_variables)
     end
 
     def method_missing(method, *args, &block)
