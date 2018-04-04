@@ -11,13 +11,11 @@ class SdcTest
           case(SdcEnv.browser)
 
             when :edge
-
               kill("taskkill /im MicrosoftEdge.exe /f")
               SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
               SdcDriver.driver.window.maximize
 
             when :firefox
-
               kill("taskkill /im firefox.exe /f")
               unless SdcEnv.firefox_profile
                 SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
@@ -31,26 +29,22 @@ class SdcTest
               SdcDriver.driver.window.move_to 0, 0
 
             when :chrome
-
               kill("taskkill /im chrome.exe /f")
               SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
               SdcDriver.driver.window.maximize
 
             when :chromeb
-
               kill("taskkill /im chrome.exe /f")
               Selenium::WebDriver::Chrome.path = data_for(:setup, {})['windows']['chromedriverbeta']
               SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
               SdcDriver.driver.window.maximize
 
             when :ie
-
               kill("taskkill /im iexplore.exe /f")
               SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:ie))
               SdcDriver.driver.window.maximize
 
             when :safari
-
               kill("killall 'Safari Technology Preview'")
               SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:safari, technology_preview: true))
 
@@ -67,7 +61,6 @@ class SdcTest
         end
 
       elsif SdcEnv.mobile
-
         begin
           SdcDriver.driver = SdcDriverDecorator.new(SdcAppiumDriver.core_driver(SdcEnv.mobile.to_s).start_driver)
           SdcDriver.driver.manage.timeouts.implicit_wait = 10
