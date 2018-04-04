@@ -2,10 +2,10 @@ module Stamps
   module Orders
 
     class LandingPage < SdcPageObject
-      _element(:username, :text_field, {xpath: "//input[@placeholder='USERNAME']"})
-      _element(:password,  :text_field, {xpath: "//input[@placeholder='PASSWORD']"})
+      element(:username, {xpath: "//input[@placeholder='USERNAME']"}, tag_name: :text_field)
+      element(:password, {xpath: "//input[@placeholder='PASSWORD']"}, tag_name: :text_field)
       element(:sign_in, {xpath: "//span[contains(text(), 'Sign In')]"}, required: true)
-      checkbox(:remember_me,
+      chooser(:remember_me,
                {xpath: "//*[contains(@class, 'remember-username-checkbox')]//span[contains(@id, 'displayEl')]"},
                {xpath: "//*[contains(@class, 'remember-username-checkbox')]"},
                "class", "checked")

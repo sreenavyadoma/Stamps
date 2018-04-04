@@ -97,26 +97,24 @@ module Stamps
       @driver = driver
     end
 
-    def _element(tag_name, locator, message: '', timeout: 12)
-      begin
-        element = instance_eval("browser.#{tag_name}(#{locator})")
-        return wait_until(timeout: timeout, message: message) { element }
-      rescue Selenium::WebDriver::Error::TimeOutError
-        # ignore
-      end
-
-      exception = Selenium::WebDriver::Error::WebDriverError
-      message = "Can not find element with locator: #{locator}"
-      raise exception, message if element.nil?
-    end
-
-    def element(locator, message: '', timeout: 12)
+    def element(tag_name, locator, message: '', timeout: 12)
       begin
         case
+          when SdcEnv.browser
+            if tag_name.nil?
+              element = @driver.element(locator)
+            else
+              begin
+                element = instance_eval("browser.#{tag_name}(#{locator})")
+                return wait_until(timeout: timeout, message: message) { element }
+              rescue Selenium::WebDriver::Error::TimeOutError
+                # ignore
+              end
+            end
           when SdcEnv.mobile
             element = @driver.find_element(locator)
           else
-            element = @driver.element(locator)
+            # ignore
         end
 
         return wait_until(timeout: timeout, message: message) { element }
@@ -129,13 +127,24 @@ module Stamps
       raise exception, message if element.nil?
     end
 
-    def elements(locator, message: '', timeout: 12)
+    def elements(tag_name, locator, message: '', timeout: 12)
       begin
         case
+          when SdcEnv.browser
+            if tag_name.nil?
+              element = @driver.elements(locator)
+            else
+              begin
+                element = instance_eval("browser.#{tag_name}(#{locator})")
+                return wait_until(timeout: timeout, message: message) { element }
+              rescue Selenium::WebDriver::Error::TimeOutError
+                # ignore
+              end
+            end
           when SdcEnv.mobile
-            elements = @driver.find_elements(locator)
+            element = @driver.find_elements(locator)
           else
-            elements = @driver.elements(locator)
+            # ignore
         end
 
         return wait_until(timeout: timeout, message: message) { elements }
@@ -186,28 +195,20 @@ module Stamps
         subclass.required_element_list = required_element_list.dup
       end
 
-      def _element(name, tag_name, locator, timeout: 12, required: false)
-        set_element(name, required: required) { SdcElement.new(finder._element(tag_name, locator, timeout: timeout)) }
-      end
-      alias_method :_elements, :_element
-
-      def element(name, locator, timeout: 12, required: false)
-        set_element(name, required: required) { SdcElement.new(finder.element(locator, message: name, timeout: timeout)) }
+      def element(name, locator, tag_name: tag_name, timeout: 12, required: false)
+        thing(name, required: required) { SdcElement.new(finder.element(tag_name, locator, timeout: timeout)) }
       end
 
       def elements(name, locator, timeout: 12, required: false)
-        set_elements(name, required: required) { SdcElement.new(finder.elements(locator, message: name, timeout: timeout)) }
+        things(name, required: required) { SdcElement.new(finder.elements(locator, message: name, timeout: timeout)) }
       end
 
       def chooser(name, chooser_loc, verify_loc, property, property_name, timeout: 10, required: false)
-        set_element(name, required: required) { SdcChooser.new(chooser_loc, verify_loc, property, property_name) }
+        thing(name, required: required) { SdcChooser.new(chooser_loc, verify_loc, property, property_name) }
       end
-      alias_method :checkbox, :chooser
-      alias_method :selection, :chooser
-      alias_method :radio, :chooser
 
       def number(name, text_field_loc, increment_loc, decrement_loc, timeout: 10, required: false)
-        set_element(name, required: required) { SdcNumber.new(text_field_loc, increment_loc, decrement_loc) }
+        thing(name, required: required) { SdcNumber.new(text_field_loc, increment_loc, decrement_loc) }
       end
 
       def visit(*args)
@@ -227,7 +228,7 @@ module Stamps
 
       private
 
-      def set_element(name, required: false, &block)
+      def thing(name, required: false, &block)
         define_method(name) do |*args|
           self.instance_exec(*args, &block)
         end
@@ -236,7 +237,7 @@ module Stamps
         required_element_list << name.to_sym if required
       end
 
-      def set_elements(name, &block)
+      def things(name, &block)
         define_method(name) do |*args|
           self.instance_exec(*args, &block)
         end
