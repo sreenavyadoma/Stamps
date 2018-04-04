@@ -207,8 +207,8 @@ module Stamps
         thing(name) { SdcChooser.new(instance_eval(chooser.to_s), instance_eval(verify.to_s), property, property_name) }
       end
 
-      def number(name, text_field_loc, increment_loc, decrement_loc)
-        thing(name) { SdcNumber.new(text_field_loc, increment_loc, decrement_loc) }
+      def number(name, text_field, increment, decrement)
+        thing(name) { SdcNumber.new(instance_eval(text_field.to_s), instance_eval(increment.to_s), instance_eval(decrement.to_s)) }
       end
 
       def visit(*args)
