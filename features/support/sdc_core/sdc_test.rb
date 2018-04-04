@@ -32,7 +32,7 @@ class SdcTest
             when :chromeb
               kill("taskkill /im chrome.exe /f")
               Selenium::WebDriver::Chrome.path = data_for(:setup, {})['windows']['chromedriverbeta']
-              SdcDriver.driver = SdcDelegatedDriver.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+              SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
               SdcDriver.driver.window.maximize
             when :ie
               kill("taskkill /im iexplore.exe /f")
@@ -66,14 +66,6 @@ class SdcTest
 
       else
         raise ArgumentError, "BROWSER or MOBILE not specified for #{test_scenario}"
-      end
-    end
-
-    def kill(str)
-      begin
-        stdout, stdeerr, status = Open3.capture3(str)
-      rescue
-        # ignore
       end
     end
 
@@ -178,6 +170,14 @@ class SdcTest
     end
 
     private
+
+    def kill(str)
+      begin
+        stdout, stdeerr, status = Open3.capture3(str)
+      rescue
+        # ignore
+      end
+    end
 
     def device_name(str)
       return str if str.nil?
