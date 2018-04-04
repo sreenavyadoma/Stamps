@@ -199,18 +199,14 @@ module Stamps
       end
 
       def chooser(name, chooser_loc, verify_loc, property, property_name, timeout: 10, required: false)
-        set_element(name, required: required) { SdcChooser.new(finder.element(chooser_loc, timeout: timeout),
-                                                           finder.element(verify_loc, timeout: timeout),
-                                                           property, property_name) }
+        set_element(name, required: required) { SdcChooser.new(chooser_loc, verify_loc, property, property_name) }
       end
       alias_method :checkbox, :chooser
       alias_method :selection, :chooser
       alias_method :radio, :chooser
 
       def number(name, text_field_loc, increment_loc, decrement_loc, timeout: 10, required: false)
-        set_element(name, required: required) { SdcNumber.new(finder.element(text_field_loc, timeout: timeout),
-                                                              finder.element(increment_loc, timeout: timeout),
-                                                              finder.element(decrement_loc, timeout: timeout)) }
+        set_element(name, required: required) { SdcNumber.new(text_field_loc, increment_loc, decrement_loc) }
       end
 
       def visit(*args)
@@ -508,10 +504,13 @@ module Stamps
 
   class SdcChooser
 
-    attr_accessor :element, :verify, :property, :property_val
+    attr_reader :element, :verify, :property, :property_val
 
-    def initialize(element, verify, property, property_val)
-      set_instance_variables(binding, *local_variables)
+    def initialize(element_loc, verify_loc, property, property_val)
+      @element = SdcElement.new(finder.element(element_loc))
+      @verify = SdcElement.new(finder.element(verify_loc))
+      @property = property
+      @property_val = property_val
     end
 
     def chosen?
@@ -548,15 +547,21 @@ module Stamps
 
   class SdcNumber
 
-    attr_reader :textbox, :increment, :decrement
+    attr_reader :text_field, :increment, :decrement
 
-    def initialize(text_field, increment, decrement)
-      set_instance_variables(binding, *local_variables)
+    def initialize(text_field_loc, increment_loc, decrement_loc)
+      if SdcEnv.browser
+        @text_field = SdcElement.new(finder._element(text_field_loc, timeout: 10))
+      else
+        @text_field = SdcElement.new(finder.element(text_field_loc, timeout: 10))
+      end
+      @increment = SdcElement.new(finder.element(increment_loc, timeout: 10))
+      @decrement = SdcElement.new(finder.element(decrement_loc, timeout: 10))
     end
 
     def method_missing(method, *args, &block)
-      super unless @textbox.respond_to?(method)
-      @textbox.send(method, *args, &block)
+      super unless @text_field.respond_to?(method)
+      @text_field.send(method, *args, &block)
     end
   end
 
