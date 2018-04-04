@@ -2,13 +2,14 @@ module Stamps
   module Orders
 
     class LandingPage < SdcPageObject
-      element(:username, tag_name: :text_field, locator:{xpath: "//input[@placeholder='USERNAME']"})
-      element(:password, tag_name: :text_field, locator: {xpath: "//input[@placeholder='PASSWORD']"})
-      element(:sign_in, locator: {xpath: "//span[contains(text(), 'Sign In')]"}, required: true)
-      chooser(:remember_me,
-               {xpath: "//*[contains(@class, 'remember-username-checkbox')]//span[contains(@id, 'displayEl')]"},
-               {xpath: "//*[contains(@class, 'remember-username-checkbox')]"},
-               "class", "checked")
+      element(:username, tag_name: :text_field) { {xpath: "//input[@placeholder='USERNAME']"} }
+      element(:password, tag_name: :text_field) { {xpath: "//input[@placeholder='PASSWORD']"} }
+      element(:sign_in, required: true) { {xpath: "//span[contains(text(), 'Sign In')]"} }
+
+      # chooser(:remember_me,
+      #          {xpath: "//*[contains(@class, 'remember-username-checkbox')]//span[contains(@id, 'displayEl')]"},
+      #          {xpath: "//*[contains(@class, 'remember-username-checkbox')]"},
+      #          "class", "checked")
 
       page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Orders&" }
 

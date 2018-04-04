@@ -195,12 +195,12 @@ module Stamps
         subclass.required_element_list = required_element_list.dup
       end
 
-      def element(name, locator: nil, tag_name: nil, timeout: 12, required: false)
-        thing(name, required: required) { SdcElement.new(finder.element(tag_name, locator, timeout: timeout)) }
+      def element(name, tag_name: nil, timeout: 12, required: false)
+        thing(name, required: required) { SdcElement.new(finder.element(tag_name, yield, timeout: timeout)) }
       end
 
-      def elements(name, locator: nil, tag_name: nil, timeout: 12, required: false)
-        things(name, required: required) { SdcElement.new(finder.elements(tag_name, locator, timeout: timeout)) }
+      def elements(name, tag_name: nil, timeout: 12, required: false)
+        things(name, required: required) { SdcElement.new(finder.elements(tag_name, yield, timeout: timeout)) }
       end
 
       def chooser(name, chooser_loc, verify_loc, property, property_name, timeout: 10, required: false)
