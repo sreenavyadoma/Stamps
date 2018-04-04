@@ -72,7 +72,7 @@ module Stamps
       def core_driver(device)
         file = File.expand_path("../../sdc_idevices/caps/#{device}.txt", __FILE__)
         exception = Selenium::WebDriver::Error::WebDriverError
-        message = "Appium capabilities does not exist for device #{device}. #{file}"
+        message = "Missing Appium capabilities file. #{device}: #{file}"
         raise exception, message unless File.exist? file
 
         caps = Appium.load_appium_txt(file: file, verbose: true)
@@ -97,26 +97,24 @@ module Stamps
       @driver = driver
     end
 
-    def _element(tag_name, locator, message: '', timeout: 12)
-      begin
-        element = instance_eval("browser.#{tag_name}(#{locator})")
-        return wait_until(timeout: timeout, message: message) { element }
-      rescue Selenium::WebDriver::Error::TimeOutError
-        # ignore
-      end
-
-      exception = Selenium::WebDriver::Error::WebDriverError
-      message = "Can not find element with locator: #{locator}"
-      raise exception, message if element.nil?
-    end
-
-    def element(locator, message: '', timeout: 12)
+    def element(tag_name, locator, message: '', timeout: 12)
       begin
         case
+          when SdcEnv.browser
+            if tag_name.nil?
+              element = @driver.element(locator)
+            else
+              begin
+                element = instance_eval("browser.#{tag_name}(#{locator})")
+                return wait_until(timeout: timeout, message: message) { element }
+              rescue Selenium::WebDriver::Error::TimeOutError
+                # ignore
+              end
+            end
           when SdcEnv.mobile
             element = @driver.find_element(locator)
           else
-            element = @driver.element(locator)
+            # ignore
         end
 
         return wait_until(timeout: timeout, message: message) { element }
@@ -125,17 +123,28 @@ module Stamps
       end
 
       exception = Selenium::WebDriver::Error::WebDriverError
-      message = "Can not find element with locator: #{locator}"
+      message = "Can not find element. locator: #{locator}"
       raise exception, message if element.nil?
     end
 
-    def elements(locator, message: '', timeout: 12)
+    def elements(tag_name, locator, message: '', timeout: 12)
       begin
         case
+          when SdcEnv.browser
+            if tag_name.nil?
+              elements = @driver.elements(locator)
+            else
+              begin
+                elements = instance_eval("browser.#{tag_name}(#{locator})")
+                return wait_until(timeout: timeout, message: message) { elements }
+              rescue Selenium::WebDriver::Error::TimeOutError
+                # ignore
+              end
+            end
           when SdcEnv.mobile
             elements = @driver.find_elements(locator)
           else
-            elements = @driver.elements(locator)
+            # ignore
         end
 
         return wait_until(timeout: timeout, message: message) { elements }
@@ -186,31 +195,26 @@ module Stamps
         subclass.required_element_list = required_element_list.dup
       end
 
-      def _element(name, tag_name, locator, timeout: 12, required: false)
-        set_element(name, required: required) { SdcElement.new(finder._element(tag_name, locator, timeout: timeout)) }
+      def element(name, tag_name: nil, timeout: 12, required: false)
+        _element(name, required: required) { SdcElement.new(finder.element(tag_name, yield, timeout: timeout)) }
+      end
+      alias_method :text_field, :element
+      alias_method :button, :element
+      alias_method :label, :element
+      alias_method :selection, :element
+
+      def elements(name, tag_name: nil, timeout: 12, required: false)
+        _elements(name, required: required) { SdcElement.new(finder.elements(tag_name, yield, timeout: timeout)) }
       end
 
-      def element(name, locator, timeout: 12, required: false)
-        set_element(name, required: required) { SdcElement.new(finder.element(locator, message: name, timeout: timeout)) }
-      end
-
-      def elements(name, locator, timeout: 12, required: false)
-        set_elements(name, required: required) { SdcElement.new(finder.elements(locator, message: name, timeout: timeout)) }
-      end
-
-      def chooser(name, chooser_loc, verify_loc, property, property_name, timeout: 10, required: false)
-        set_element(name, required: required) { SdcChooser.new(finder.element(chooser_loc, timeout: timeout),
-                                                           finder.element(verify_loc, timeout: timeout),
-                                                           property, property_name) }
+      def chooser(name, chooser, verify, property, property_name)
+        _element(name) { SdcChooser.new(instance_eval(chooser.to_s), instance_eval(verify.to_s), property, property_name) }
       end
       alias_method :checkbox, :chooser
-      alias_method :selection, :chooser
       alias_method :radio, :chooser
 
-      def number(name, text_field_loc, increment_loc, decrement_loc, timeout: 10, required: false)
-        set_element(name, required: required) { SdcNumber.new(finder.element(text_field_loc, timeout: timeout),
-                                                              finder.element(increment_loc, timeout: timeout),
-                                                              finder.element(decrement_loc, timeout: timeout)) }
+      def number(name, text_field, increment, decrement)
+        _element(name) { SdcNumber.new(instance_eval(text_field.to_s), instance_eval(increment.to_s), instance_eval(decrement.to_s)) }
       end
 
       def visit(*args)
@@ -230,7 +234,7 @@ module Stamps
 
       private
 
-      def set_element(name, required: false, &block)
+      def _element(name, required: false, &block)
         define_method(name) do |*args|
           self.instance_exec(*args, &block)
         end
@@ -239,7 +243,7 @@ module Stamps
         required_element_list << name.to_sym if required
       end
 
-      def set_elements(name, &block)
+      def _elements(name, &block)
         define_method(name) do |*args|
           self.instance_exec(*args, &block)
         end
@@ -333,8 +337,8 @@ module Stamps
     end
 
     def present?
-      return @element.send(:present?) if @lement.respond_to?(:present?)
-      enabled? && @element.send(:displayed?)
+      return enabled? && @element.send(:displayed?) unless @lement.respond_to?(:present?)
+      @element.send(:present?)
     end
 
     def enabled?
@@ -367,16 +371,16 @@ module Stamps
       self
     end
 
-    def safe_click(*modifiers, ctr: 1)
-      ctr.to_i.times do
-        begin
-          @element.send(:click, *modifiers)
-        rescue
-          # ignore
-        end
-      end
+    def class_disabled?
+      question?('class', 'disable')
+    end
 
-      self
+    def class_enabled?
+      question?('class', 'enabled')
+    end
+
+    def class_checked?
+      question?('class', 'checked')
     end
 
     def set(*args)
@@ -406,6 +410,18 @@ module Stamps
           # ignore
         end
       end
+    end
+
+    def safe_click(*modifiers, ctr: 1)
+      ctr.to_i.times do
+        begin
+          @element.send(:click, *modifiers)
+        rescue
+          # ignore
+        end
+      end
+
+      self
     end
 
     def wait_until_present(timeout: 12, interval: 0.2)
@@ -504,11 +520,22 @@ module Stamps
       super unless @element.respond_to?(method)
       @element.send(method, *args, &block)
     end
+
+    private
+
+    def question?(property_name, property_value)
+      case
+        when SdcEnv.browser
+          return @element.send(:attribute_value, property_name).include?(property_value)
+        when SdcEnv.mobile
+          return @element.send(:attribute, property_name).include?(property_value)
+      end
+    end
   end
 
   class SdcChooser
 
-    attr_accessor :element, :verify, :property, :property_val
+    attr_reader :element, :verify, :property, :property_val
 
     def initialize(element, verify, property, property_val)
       set_instance_variables(binding, *local_variables)
@@ -518,7 +545,7 @@ module Stamps
       if verify.respond_to? :attribute_value
         result = verify.attribute_value(property)
       else
-        result = verify.property(property)
+        result = verify.attribute(property)
       end
       return result.casecmp('true') == 0 if result.casecmp('true') == 0 || result .casecmp('false') == 0
       result.include?(property_val)
@@ -526,14 +553,14 @@ module Stamps
     alias_method :checked?, :chosen?
     alias_method :selected?, :chosen?
 
-    def choose(iter: 2)
+    def choose(iter: 3)
       iter.times do element.click; break if chosen? end
       chosen?
     end
     alias_method :check, :choose
     alias_method :select, :choose
 
-    def unchoose(iter: 2)
+    def unchoose(iter: 3)
       iter.times do break unless chosen?; element.click end
       chosen?
     end
@@ -548,15 +575,15 @@ module Stamps
 
   class SdcNumber
 
-    attr_reader :textbox, :increment, :decrement
+    attr_reader :text_field, :increment, :decrement
 
     def initialize(text_field, increment, decrement)
       set_instance_variables(binding, *local_variables)
     end
 
     def method_missing(method, *args, &block)
-      super unless @textbox.respond_to?(method)
-      @textbox.send(method, *args, &block)
+      super unless @text_field.respond_to?(method)
+      @text_field.send(method, *args, &block)
     end
   end
 

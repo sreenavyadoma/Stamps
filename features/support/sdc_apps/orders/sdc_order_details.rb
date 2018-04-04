@@ -1,10 +1,6 @@
 module Stamps
   module Orders
-    class Pagination
-      #drop down
-
-
-
+    class SdcOrderDetails
     end
   end
 end
