@@ -371,18 +371,6 @@ module Stamps
       self
     end
 
-    def safe_click(*modifiers, ctr: 1)
-      ctr.to_i.times do
-        begin
-          @element.send(:click, *modifiers)
-        rescue
-          # ignore
-        end
-      end
-
-      self
-    end
-
     def set(*args)
       return @element.send(:send_keys, *args) if @element.is_a? ::Selenium::WebDriver::Element
       @element.send(:set, *args)
@@ -410,6 +398,18 @@ module Stamps
           # ignore
         end
       end
+    end
+
+    def safe_click(*modifiers, ctr: 1)
+      ctr.to_i.times do
+        begin
+          @element.send(:click, *modifiers)
+        rescue
+          # ignore
+        end
+      end
+
+      self
     end
 
     def wait_until_present(timeout: 12, interval: 0.2)
