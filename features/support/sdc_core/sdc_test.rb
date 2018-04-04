@@ -65,7 +65,7 @@ class SdcTest
         end
 
       else
-        raise ArgumentError, "Neither BROWSER nor MOBILE is defined for test #{test_scenario}. Expected values are: #{SdcEnv::BROWSERS.inspect} and #{SdcEnv::IDEVICES.inspect}"
+        raise ArgumentError, "BROWSER or MOBILE not specified for #{test_scenario}"
       end
     end
 
