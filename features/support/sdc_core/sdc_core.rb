@@ -198,6 +198,9 @@ module Stamps
       def element(name, tag_name: nil, timeout: 12, required: false)
         thing(name, required: required) { SdcElement.new(finder.element(tag_name, yield, timeout: timeout)) }
       end
+      alias_method :text_field, :chooser
+      alias_method :button, :chooser
+      alias_method :label, :chooser
 
       def elements(name, tag_name: nil, timeout: 12, required: false)
         things(name, required: required) { SdcElement.new(finder.elements(tag_name, yield, timeout: timeout)) }
@@ -206,6 +209,9 @@ module Stamps
       def chooser(name, chooser, verify, property, property_name)
         thing(name) { SdcChooser.new(instance_eval(chooser.to_s), instance_eval(verify.to_s), property, property_name) }
       end
+      alias_method :checkbox, :chooser
+      alias_method :radio, :chooser
+      alias_method :selection, :chooser
 
       def number(name, text_field, increment, decrement)
         thing(name) { SdcNumber.new(instance_eval(text_field.to_s), instance_eval(increment.to_s), instance_eval(decrement.to_s)) }
