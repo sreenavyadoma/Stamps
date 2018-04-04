@@ -4,6 +4,7 @@ module Stamps
     class LandingPage < SdcPageObject
 
       text_field(:username, tag_name: :text_field) { {xpath: "//input[@placeholder='USERNAME']"} }
+      #text_field(:username, tag_name: :text_field) { {css: "[placeholder=USERNAME]"} }
       text_field(:password, tag_name: :text_field) { {xpath: "//input[@placeholder='PASSWORD']"} }
       button(:sign_in, required: true) { {xpath: "//span[contains(text(), 'Sign In')]"} }
 
