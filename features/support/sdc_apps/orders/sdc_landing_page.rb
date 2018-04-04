@@ -11,7 +11,6 @@ module Stamps
       element(:rm_verify) { {xpath: "//*[contains(@class, 'remember-username-checkbox')]"} }
       checkbox(:remember_me, :rm_checkbox, :rm_verify, "class", "checked")
 
-
       page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Orders&" }
 
       def self.visit
