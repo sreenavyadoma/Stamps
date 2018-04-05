@@ -9,10 +9,12 @@ class SdcTest
           #Watir.always_locate = true
           Selenium::WebDriver.logger.level = :warn
           case(SdcEnv.browser)
+
             when :edge
               kill("taskkill /im MicrosoftEdge.exe /f")
               SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
               SdcDriver.driver.window.maximize
+
             when :firefox
               kill("taskkill /im firefox.exe /f")
               unless SdcEnv.firefox_profile
@@ -25,25 +27,31 @@ class SdcTest
               end
               SdcDriver.driver.window.resize_to 1560, 1020
               SdcDriver.driver.window.move_to 0, 0
+
             when :chrome
               kill("taskkill /im chrome.exe /f")
               SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
               SdcDriver.driver.window.maximize
+
             when :chromeb
               kill("taskkill /im chrome.exe /f")
               Selenium::WebDriver::Chrome.path = data_for(:setup, {})['windows']['chromedriverbeta']
-              SdcDriver.driver = SdcDelegatedDriver.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+              SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
               SdcDriver.driver.window.maximize
+
             when :ie
               kill("taskkill /im iexplore.exe /f")
               SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:ie))
               SdcDriver.driver.window.maximize
+
             when :safari
               kill("killall 'Safari Technology Preview'")
               SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:safari, technology_preview: true))
+
             else
               raise ArgumentError, "Invalid browser selection. #{test_driver}"
           end
+
           SdcDriver.driver.driver.manage.timeouts.page_load = 12
 
         rescue Exception => e
@@ -53,10 +61,10 @@ class SdcTest
         end
 
       elsif SdcEnv.mobile
-
         begin
           SdcDriver.driver = SdcDriverDecorator.new(SdcAppiumDriver.core_driver(SdcEnv.mobile.to_s).start_driver)
           SdcDriver.driver.manage.timeouts.implicit_wait = 10
+
         rescue Exception => e
           SdcLog.error e.message
           SdcLog.error e.backtrace.join("\n")
@@ -64,15 +72,7 @@ class SdcTest
         end
 
       else
-        raise ArgumentError, "Neither BROWSER nor MOBILE is defined for test #{test_scenario}. Expected values are: #{SdcEnv::BROWSERS.inspect} and #{SdcEnv::IDEVICES.inspect}"
-      end
-    end
-
-    def kill(str)
-      begin
-        stdout, stdeerr, status = Open3.capture3(str)
-      rescue
-        # ignore
+        raise ArgumentError, "BROWSER or MOBILE not specified for #{test_scenario}"
       end
     end
 
@@ -177,6 +177,14 @@ class SdcTest
     end
 
     private
+
+    def kill(str)
+      begin
+        stdout, stdeerr, status = Open3.capture3(str)
+      rescue
+        # ignore
+      end
+    end
 
     def device_name(str)
       return str if str.nil?

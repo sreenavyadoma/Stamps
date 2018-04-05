@@ -3,8 +3,89 @@ require 'cucumber'
 require 'cucumber/rake/task'
 
 # BEGIN WEB REG
+
+Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
+  t.profile = 'xxxxxxxxxx'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
+  t.profile = 'xxxxxxxxxx'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
+  t.profile = 'xxxxxxxxxx'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
+  t.profile = 'xxxxxxxxxx'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
+  t.profile = 'xxxxxxxxxx'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rob_cc) do |t|
+  t.profile = 'rob_cc'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rob_staging) do |t|
+  t.profile = 'rob_staging'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rob_sc) do |t|
+  t.profile = 'rob_sc'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rob_stg) do |t|
+  t.profile = 'rob_stg'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rob_jenkins_dev) do |t|
+  t.profile = 'rob_jenkins_dev'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rob_dev_ie) do |t|
+  t.profile = 'rob_dev_ie'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rob_dev_gc) do |t|
+  t.profile = 'rob_dev_gc'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rob_cc) do |t|
+  t.profile = 'rob_cc'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rob_mail_stg) do |t|
+  t.profile = 'rob_mail_stg'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rob_mail_cc) do |t|
+  t.profile = 'rob_mail_cc'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:alex_mail) do |t|
   t.profile = 'alex_mail'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:google) do |t|
+  t.profile = 'google'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -50,11 +131,6 @@ end
 
 Cucumber::Rake::Task.new(:poc_cc_edge) do |t|
   t.profile = 'poc_cc_edge'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:rob_mail_cc) do |t|
-  t.profile = 'rob_mail_cc'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -128,36 +204,6 @@ Cucumber::Rake::Task.new(:registration_security_questions_happy_path) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 # END WEB REG
-
-Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
-  t.profile = 'xxxxxxxxxx'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
-  t.profile = 'xxxxxxxxxx'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
-  t.profile = 'xxxxxxxxxx'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
-  t.profile = 'xxxxxxxxxx'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
-  t.profile = 'xxxxxxxxxx'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:rob_mail_stg) do |t|
-  t.profile = 'rob_mail_stg'
-  t.cucumber_opts = "-p cuke_reports"
-end
 
 Cucumber::Rake::Task.new(:pam_db_user_appscap_provisioning) do |t|
   t.profile = 'pam_db_user_appscap_provisioning'
@@ -993,46 +1039,6 @@ end
 
 Cucumber::Rake::Task.new(:dev_international_order) do |t|
   t.profile = 'dev_international_order'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:rob_cc) do |t|
-  t.profile = 'rob_cc'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:rob_staging) do |t|
-  t.profile = 'rob_staging'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:rob_sc) do |t|
-  t.profile = 'rob_sc'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:rob_stg) do |t|
-  t.profile = 'rob_stg'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:rob_jenkins_dev) do |t|
-  t.profile = 'rob_jenkins_dev'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:rob_dev_ie) do |t|
-  t.profile = 'rob_dev_ie'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:rob_dev_gc) do |t|
-  t.profile = 'rob_dev_gc'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:rob_cc) do |t|
-  t.profile = 'rob_cc'
   t.cucumber_opts = "-p cuke_reports"
 end
 
