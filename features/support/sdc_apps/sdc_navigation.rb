@@ -1,4 +1,5 @@
 module Stamps
+
   class SignedInUser < SdcPageObject
     button(:signed_in_user, required: true) { {id: 'userNameText'} }
     element(:sign_out_link) { {id: "signOutLink"} }
@@ -12,7 +13,6 @@ module Stamps
         sign_out_link.safe_send_keys(:enter)
         break unless signed_in_user.present?
       end
-
     end
   end
 
@@ -21,4 +21,5 @@ module Stamps
       @user_drop_down ||= Object.const_get('SignedInUser').new
     end
   end
+
 end

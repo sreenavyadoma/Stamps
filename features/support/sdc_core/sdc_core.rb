@@ -99,7 +99,7 @@ module Stamps
 
     def element(tag_name, locator, message: '', timeout: 12)
       begin
-        element = wait_until(timeout: timeout, message: message) { find_element(tag_name, locator) }
+        element = wait_until(timeout: timeout, message: message) { set_element(tag_name, locator) }
       rescue Selenium::WebDriver::Error::TimeOutError
         # ignore
       end
@@ -108,12 +108,12 @@ module Stamps
       message = "Can not find element. locator: #{locator}"
       raise exception, message if element.nil?
 
-      SdcElement.new(find_element(tag_name, locator))
+      SdcElement.new(set_element(tag_name, locator))
     end
 
     def elements(tag_name, locator, message: '', timeout: 12)
       begin
-        element = wait_until(timeout: timeout, message: message) { find_elements(tag_name, locator) }
+        element = wait_until(timeout: timeout, message: message) { set_elements(tag_name, locator) }
       rescue Selenium::WebDriver::Error::TimeOutError
         # ignore
       end
@@ -122,12 +122,12 @@ module Stamps
       message = "Can not find element with locator: #{locator}"
       raise exception, message if element.nil?
 
-      find_elements(tag_name, locator)
+      set_elements(tag_name, locator)
     end
 
     private
 
-    def find_element(tag_name, locator)
+    def set_element(tag_name, locator)
       case
         when SdcEnv.browser
           if tag_name.nil?
@@ -137,7 +137,7 @@ module Stamps
           end
 
         when SdcEnv.mobile
-          return @driver.find_element(locator)
+          return @driver.set_element(locator)
         else
           # ignore
       end
@@ -145,7 +145,7 @@ module Stamps
       nil
     end
 
-    def find_elements(tag_name, locator)
+    def set_elements(tag_name, locator)
       case
         when SdcEnv.browser
           if tag_name.nil?
@@ -160,7 +160,7 @@ module Stamps
           end
 
         when SdcEnv.mobile
-          return @driver.find_elements(locator)
+          return @driver.set_elements(locator)
         else
           # ignore
       end
