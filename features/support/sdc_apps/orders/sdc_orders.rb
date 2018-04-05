@@ -6,7 +6,6 @@ module Stamps
 
     class SdcOrders < SdcPageObject
       element(:loading_orders) { {text: 'Loading orders...'} }
-      element(:signed_in_user) { {id: 'userNameText'} }
 
       def order_details
         @order_details = nil
@@ -14,10 +13,6 @@ module Stamps
 
       def bulk_update
         @bulk_update = nil
-      end
-
-      def navigation
-
       end
 
       def toolbar
