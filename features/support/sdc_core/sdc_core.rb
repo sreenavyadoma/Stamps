@@ -383,15 +383,15 @@ module Stamps
     end
 
     def class_disabled?
-      question?('class', 'disable')
+      prop_include?('class', 'disable')
     end
 
     def class_enabled?
-      question?('class', 'enabled')
+      prop_include?('class', 'enabled')
     end
 
     def class_checked?
-      question?('class', 'checked')
+      prop_include?('class', 'checked')
     end
 
     def set(*args)
@@ -534,7 +534,7 @@ module Stamps
 
     private
 
-    def question?(property_name, property_value)
+    def prop_include?(property_name, property_value)
       case
         when SdcEnv.browser
           return @element.send(:attribute_value, property_name).include?(property_value)
