@@ -25,8 +25,8 @@ end
 
 Then /^sign-in to Orders as (.+), (.+)$/ do |usr, pw|
   SdcWebsite.landing_page.sign_in_with(TestData.store[:username] = usr, TestData.store[:password] = pw)
-  SdcWebsite.navigation.user_drop_down.safe_wait_until_present(timeout: 10)
-  expect(SdcWebsite.navigation.user_drop_down.text).to eql(TestData.store[:username])
+  SdcWebsite.navigation.user_drop_down.signed_in_user.safe_wait_until_present(timeout: 8)
+  expect(SdcWebsite.navigation.user_drop_down.signed_in_user.text).to eql(TestData.store[:username])
 end
 
 Then /^sign-in to Mail as (.+), (.+)$/ do |usr, pw|

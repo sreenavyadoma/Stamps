@@ -67,7 +67,7 @@ module Stamps
 
   end
 
-  class SdcAppiumDriver
+  class SdcAppiumDriver < BasicObject
     class << self
       def core_driver(device)
         file = File.expand_path("../../sdc_idevices/caps/#{device}.txt", __FILE__)
@@ -99,28 +99,7 @@ module Stamps
 
     def element(tag_name, locator, message: '', timeout: 12)
       begin
-        case
-
-          when SdcEnv.browser
-            if tag_name.nil?
-              element = @driver.element(locator)
-            else
-              begin
-                element = instance_eval("browser.#{tag_name}(#{locator})")
-                return wait_until(timeout: timeout, message: message) { element }
-              rescue Selenium::WebDriver::Error::TimeOutError
-                # ignore
-              end
-            end
-
-          when SdcEnv.mobile
-            element = @driver.find_element(locator)
-
-          else
-            # ignore
-        end
-
-        return wait_until(timeout: timeout, message: message) { element }
+        element = wait_until(timeout: timeout, message: message) { find_element(tag_name, locator) }
       rescue Selenium::WebDriver::Error::TimeOutError
         # ignore
       end
@@ -128,32 +107,13 @@ module Stamps
       exception = Selenium::WebDriver::Error::WebDriverError
       message = "Can not find element. locator: #{locator}"
       raise exception, message if element.nil?
+
+      SdcElement.new(find_element(tag_name, locator))
     end
 
     def elements(tag_name, locator, message: '', timeout: 12)
       begin
-        case
-          when SdcEnv.browser
-
-            if tag_name.nil?
-              elements = @driver.elements(locator)
-            else
-              begin
-                elements = instance_eval("browser.#{tag_name}(#{locator})")
-                return wait_until(timeout: timeout, message: message) { elements }
-              rescue Selenium::WebDriver::Error::TimeOutError
-                # ignore
-              end
-            end
-
-          when SdcEnv.mobile
-
-            elements = @driver.find_elements(locator)
-          else
-            # ignore
-        end
-
-        return wait_until(timeout: timeout, message: message) { elements }
+        element = wait_until(timeout: timeout, message: message) { find_elements(tag_name, locator) }
       rescue Selenium::WebDriver::Error::TimeOutError
         # ignore
       end
@@ -161,12 +121,57 @@ module Stamps
       exception = Selenium::WebDriver::Error::WebDriverError
       message = "Can not find element with locator: #{locator}"
       raise exception, message if element.nil?
+
+      find_elements(tag_name, locator)
+    end
+
+    private
+
+    def find_element(tag_name, locator)
+      case
+        when SdcEnv.browser
+          if tag_name.nil?
+            return @driver.element(locator)
+          else
+            return instance_eval("browser.#{tag_name}(#{locator})")
+          end
+
+        when SdcEnv.mobile
+          return @driver.find_element(locator)
+        else
+          # ignore
+      end
+
+      nil
+    end
+
+    def find_elements(tag_name, locator)
+      case
+        when SdcEnv.browser
+          if tag_name.nil?
+            return @driver.elements(locator)
+          else
+            begin
+              elements = instance_eval("browser.#{tag_name}(#{locator})")
+              return wait_until(timeout: timeout, message: message) { elements }
+            rescue Selenium::WebDriver::Error::TimeOutError
+              # ignore
+            end
+          end
+
+        when SdcEnv.mobile
+          return @driver.find_elements(locator)
+        else
+          # ignore
+      end
+
+      nil
     end
 
   end
 
   class SdcPageObject
-    include SdcDriver
+    include ::SdcDriver
     include SdcWait
 
     class << self
@@ -202,7 +207,7 @@ module Stamps
       end
 
       def element(name, tag_name: nil, timeout: 12, required: false)
-        _element(name, required: required) { SdcElement.new(finder.element(tag_name, yield, timeout: timeout)) }
+        _element(name, required: required) { finder.element(tag_name, yield, timeout: timeout) }
       end
       alias_method :text_field, :element
       alias_method :button, :element
@@ -210,7 +215,7 @@ module Stamps
       alias_method :selection, :element
 
       def elements(name, tag_name: nil, timeout: 12, required: false)
-        _elements(name, required: required) { SdcElement.new(finder.elements(tag_name, yield, timeout: timeout)) }
+        _elements(name, required: required) { finder.elements(tag_name, yield, timeout: timeout) }
       end
 
       def chooser(name, chooser, verify, property, property_name)
@@ -444,7 +449,7 @@ module Stamps
       self
     end
 
-    def wait_while_present(timeout: 12, interval: 0.2)
+    def wait_while_present(timeout: 10, interval: 0.2)
       wait_while(timeout: timeout, interval: interval) { present? }
     end
 
@@ -539,7 +544,7 @@ module Stamps
     end
   end
 
-  class SdcChooser
+  class SdcChooser < BasicObject
 
     attr_reader :element, :verify, :property, :property_val
 
@@ -579,7 +584,7 @@ module Stamps
     end
   end
 
-  class SdcNumber
+  class SdcNumber < BasicObject
 
     attr_reader :text_field, :increment, :decrement
 
