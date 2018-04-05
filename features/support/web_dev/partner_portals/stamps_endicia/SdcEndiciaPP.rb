@@ -1,5 +1,4 @@
 module Stamps
-=begin
   module WebDev
     module Portals
       module StampsEndicia
@@ -44,5 +43,4 @@ module Stamps
       end
     end
   end
-=end
 end

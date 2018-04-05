@@ -29,8 +29,8 @@ Then /^sign-in to Orders as (.+), (.+)$/ do |usr, pw|
   expect(SdcWebsite.navigation.user_drop_down.signed_in_user.text).to eql(TestData.store[:username])
 end
 
-#SdcWebDev.app_name_a.visit
-#SdcWebDev.app_name_b
+SdcWebDev.app_name_a.visit
+SdcWebDev.app_name_b
 
 
 
