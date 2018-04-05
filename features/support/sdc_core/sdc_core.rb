@@ -235,7 +235,7 @@ module Stamps
           message = "Expected to be on #{page.class}, but conditions not met"
           if page.page_verifiable?
             begin
-              page.wait_until(timeout: 20) { page.on_page? }
+              page.wait_until(timeout: 20, &:on_page?)
             rescue Selenium::WebDriver::Error::TimeOutError
               raise exception, message
             end

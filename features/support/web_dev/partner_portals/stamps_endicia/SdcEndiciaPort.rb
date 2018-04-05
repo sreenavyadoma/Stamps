@@ -11,7 +11,7 @@ module Stamps
           # create elements
           text_field(:username, required: true) { {xpath: "xpath "} }
           text_field(:password, required: true) { {xpath: "xpath "} }
-          button(:sign_in, required: true) { {xpath: "xpath "} }
+          button(:sign_in) { {xpath: "xpath "} }
 
 
           def self.visit
