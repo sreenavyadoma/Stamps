@@ -3,7 +3,7 @@
 Feature:  BVT tests for Orders
 
   Background:
-    Given a valid user is signed in to Web Apps
+    Given Start test driver
 
   @authentication
   Scenario: Orders Authentication Test
