@@ -1,18 +1,19 @@
 module Stamps
+=begin
   module WebDev
     module Portals
       module StampsEndicia
         class SdcEndiciaLanding < SdcPageObject
-          page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Orders&" }
+          page_url { |env| "https://#{env}.partner.stamps.com" }
 
           # create sections aka classes having elements
-
-
-          # create elements
-          text_field(:username, required: true) { {xpath: "xpath "} }
-          text_field(:password, required: true) { {xpath: "xpath "} }
-          button(:sign_in) { {xpath: "xpath "} }
-
+            class LoginPage
+              # LoginPage elements
+              text_field(:username, :text_field, required: true) { {xpath: "xpath "} }
+              text_field(:password, :text_field, required: true) { {xpath: "xpath "} }
+              button(:sign_in, required: true) { {xpath: "xpath "} }
+              link(:forgot_pw, required: true) {{id: "xxx"}}
+            end
 
           def self.visit
             super(case SdcEnv.env
@@ -43,4 +44,5 @@ module Stamps
       end
     end
   end
+=end
 end
