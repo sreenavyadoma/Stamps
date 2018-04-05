@@ -21,8 +21,8 @@ module Stamps
 
 
     class SdcEmail < SdcPageObject
-      text_field(:text_field, {xp: "email"})
-      element(:text_field, {xp: "email"})
+      text_field(:text_field) { {xp: "email"} }
+      element(:text_field) { {xp: "email"} }
     end
   end
 

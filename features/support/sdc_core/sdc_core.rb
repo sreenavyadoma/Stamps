@@ -13,7 +13,35 @@ module Stamps
   end
 
   module SdcWait
-    def wait_until(timeout: 12, interval: 0.2, message: '', ignored: Selenium::WebDriver::Error::NoSuchElementError)
+    INTERVAL = 0.2 unless Object.const_defined?('Stamps::SdcWait::INTERVAL')
+
+    def wait_until(timeout: 12, interval: 0.2, message: '', &block)
+      end_time = Time.now + timeout
+      last_error = nil
+
+      until Time.now > end_time
+        begin
+          result = yield(block)
+          return result if result
+        rescue *ignored => last_error
+          # swallowed
+        end
+
+        sleep interval
+      end
+
+      msg = if message
+              message.dup
+            else
+              "timed out after #{timeout} seconds"
+            end
+
+      msg << " (#{last_error.message})" if last_error
+
+      raise Selenium::WebDriver::Error::TimeOutError, msg
+    end
+
+    def wait_while(timeout: 12, interval: 0.2, message: '', &block)
       end_time = Time.now + timeout
       last_error = nil
 
@@ -39,30 +67,17 @@ module Stamps
       raise Selenium::WebDriver::Error::TimeOutError, msg
     end
 
-    def wait_while(timeout: 12, interval: 0.2, message: '', ignored: Selenium::WebDriver::Error::NoSuchElementError)
-      end_time = Time.now + timeout
-      last_error = nil
+    private
 
-      until Time.now > end_time
-        begin
-          result = yield
-          return result if result
-        rescue *ignored => last_error
-          # swallowed
+    def _run_with_timer(timeout, interval, &block)
+      if timeout.zero?
+        block.call
+      else
+        timer.wait(timeout) do
+          block.call
+          sleep interval || INTERVAL
         end
-
-        sleep interval
       end
-
-      msg = if message
-              message.dup
-            else
-              "timed out after #{timeout} seconds"
-            end
-
-      msg << " (#{last_error.message})" if last_error
-
-      raise Selenium::WebDriver::Error::TimeOutError, msg
     end
 
   end
@@ -235,7 +250,7 @@ module Stamps
           message = "Expected to be on #{page.class}, but conditions not met"
           if page.page_verifiable?
             begin
-              page.wait_until(timeout: 20) { page.on_page? }
+              page.wait_until(timeout: 20, &:on_page?)
             rescue Selenium::WebDriver::Error::TimeOutError
               raise exception, message
             end
