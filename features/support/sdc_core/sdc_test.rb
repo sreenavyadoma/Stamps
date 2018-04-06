@@ -13,7 +13,6 @@ class SdcTest
             when :edge
               kill("taskkill /im MicrosoftEdge.exe /f")
               SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
-              SdcDriver.driver.window.maximize
 
             when :firefox
               kill("taskkill /im firefox.exe /f")
@@ -25,24 +24,19 @@ class SdcTest
                 profile['network.http.phishy-userpass-length'] = 255
                 SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, :profile => profile))
               end
-              SdcDriver.driver.window.resize_to 1560, 1020
-              SdcDriver.driver.window.move_to 0, 0
 
             when :chrome
               kill("taskkill /im chrome.exe /f")
               SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
-              SdcDriver.driver.window.maximize
 
             when :chromeb
               kill("taskkill /im chrome.exe /f")
               Selenium::WebDriver::Chrome.path = data_for(:setup, {})['windows']['chromedriverbeta']
               SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
-              SdcDriver.driver.window.maximize
 
             when :ie
               kill("taskkill /im iexplore.exe /f")
               SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:ie))
-              SdcDriver.driver.window.maximize
 
             when :safari
               kill("killall 'Safari Technology Preview'")
@@ -53,6 +47,13 @@ class SdcTest
           end
 
           SdcDriver.driver.driver.manage.timeouts.page_load = 12
+
+          if SdcEnv.debug
+            SdcDriver.driver.window.resize_to 900, 1020
+            SdcDriver.driver.window.move_to 0, 0
+          else
+            SdcDriver.driver.window.maximize
+          end
 
         rescue Exception => e
           SdcLog.error e.message
@@ -89,6 +90,7 @@ class SdcTest
       SdcEnv.env ||= test_env(ENV['URL'])
       SdcEnv.firefox_profile ||= ENV['FIREFOX_PROFILE']
       SdcEnv.framework ||= ENV['FRAMEWORK']
+      SdcEnv.debug ||= ENV['DEBUG']
       require_gems
       SdcLog.initialize(verbose: SdcEnv.verbose)
 

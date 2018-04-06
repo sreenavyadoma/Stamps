@@ -8,61 +8,72 @@ module Stamps
 
     class << self #todo-Rob refactor PrintMedia
       attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose, :printer, :browser, :hostname,
-                    :print_media, :mobile, :firefox_profile, :framework
+                    :print_media, :mobile, :firefox_profile, :framework, :debug
     end
   end
 
   module SdcWait
-    def wait_until(timeout: 12, interval: 0.2, message: '', ignored: Selenium::WebDriver::Error::NoSuchElementError)
-      end_time = Time.now + timeout
-      last_error = nil
-
-      until Time.now > end_time
-        begin
-          result = yield
-          return result if result
-        rescue *ignored => last_error
-          # swallowed
+    def ignored_error(ignored)
+      unless ignored
+        case
+          when SdcEnv.mobile
+            return Appium::Core::Error::NoSuchElementError
+          when SdcEnv.browser
+            return Selenium::WebDriver::Error::NoSuchElementError
         end
-
-        sleep interval
       end
 
-      msg = if message
-              message.dup
-            else
-              "timed out after #{timeout} seconds"
-            end
-
-      msg << " (#{last_error.message})" if last_error
-
-      raise Selenium::WebDriver::Error::TimeOutError, msg
+      ignored
     end
 
-    def wait_while(timeout: 12, interval: 0.2, message: '', ignored: Selenium::WebDriver::Error::NoSuchElementError)
+    def wait_until(timeout: 20, interval: 0.2, message: '', ignored_error: nil)
       end_time = Time.now + timeout
-      last_error = nil
+      error = nil
+      ignored = ignored_error(ignored_error)
 
       until Time.now > end_time
         begin
           result = yield
           return result if result
-        rescue *ignored => last_error
-          # swallowed
+        rescue *ignored => error
+          SdcLog.error error
+          SdcLog.error error.message
+          SdcLog.error error.backtrace.join "\n"
         end
 
-        sleep interval
+        sleep(interval)
       end
 
+      raise Selenium::WebDriver::Error::TimeOutError, message(message, error, timeout)
+    end
+
+    def wait_while(timeout: 20, interval: 0.2, message: '', ignored_error: nil)
+      end_time = Time.now + timeout
+      error = nil
+      ignored = ignored_error(ignored_error)
+
+      until Time.now > end_time
+        begin
+          result = yield
+          return result if result
+        rescue *ignored => error
+          # ignore
+        end
+
+        sleep(interval)
+      end
+
+      raise Selenium::WebDriver::Error::TimeOutError, message(message, error, timeout)
+    end
+
+    def message(message, error, timeout)
       msg = if message
               message.dup
             else
               "timed out after #{timeout} seconds"
             end
 
-      msg << " (#{last_error.message})" if last_error
-
-      raise Selenium::WebDriver::Error::TimeOutError, msg
+      msg << " (#{error.message})" if error
     end
 
   end
@@ -132,8 +143,8 @@ module Stamps
         when SdcEnv.browser
           if tag_name.nil?
             return @driver.element(locator)
-          else
-            return instance_eval("browser.#{tag_name}(#{locator})")
+            else
+             return instance_eval("browser.#{tag_name}(#{locator})")
           end
 
         when SdcEnv.mobile
@@ -152,8 +163,9 @@ module Stamps
             return @driver.elements(locator)
           else
             begin
-              elements = instance_eval("browser.#{tag_name}(#{locator})")
-              return wait_until(timeout: timeout, message: message) { elements }
+              code = "browser.#{tag_name}(#{locator})"
+              elements = instance_eval(code)
+              return wait_until(timeout: timeout, message: code) { elements }
             rescue Selenium::WebDriver::Error::TimeOutError
               # ignore
             end
@@ -213,6 +225,7 @@ module Stamps
       alias_method :button, :element
       alias_method :label, :element
       alias_method :selection, :element
+      alias_method :link, :element
 
       def elements(name, tag_name: nil, timeout: 12, required: false)
         _elements(name, required: required) { finder.elements(tag_name, yield, timeout: timeout) }
@@ -436,7 +449,23 @@ module Stamps
     end
 
     def wait_until_present(timeout: 12, interval: 0.2)
-      wait_until(timeout: timeout, interval: interval) { present? }
+      if @element.respond_to? :wait_until_present
+        @element.send(:wait_until_present, timeout: timeout, interval: interval)
+      else
+        wait_until(timeout: timeout, interval: interval) { present? }
+      end
+
+      self
+    end
+
+    def wait_while_present(timeout: 10, interval: 0.2)
+      if @element.respond_to? :wait_while
+        @element.send(:wait_while, timeout: timeout, interval: interval)
+      else
+        wait_until(timeout: timeout, interval: interval) { present? }
+      end
+
+      self
     end
 
     def safe_wait_until_present(timeout: nil, interval: nil)
@@ -445,12 +474,6 @@ module Stamps
       rescue
         # ignore
       end
-
-      self
-    end
-
-    def wait_while_present(timeout: 10, interval: 0.2)
-      wait_while(timeout: timeout, interval: interval) { present? }
     end
 
     def safe_wait_while_present(timeout: 10, interval: 0.2)
@@ -459,20 +482,18 @@ module Stamps
       rescue
         # ignore
       end
-
-      self
     end
 
     def text_value
       begin
-        text = @element.text
+        text = @element.send(:text)
         return text if text.size > 0
       rescue
         # ignore
       end
 
       begin
-        value = @element.value
+        value = @element.send(:value)
         return value if value.size > 0
       rescue
         # ignore
