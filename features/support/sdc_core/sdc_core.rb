@@ -213,6 +213,7 @@ module Stamps
       alias_method :button, :element
       alias_method :label, :element
       alias_method :selection, :element
+      alias_method :link, :element
 
       def elements(name, tag_name: nil, timeout: 12, required: false)
         _elements(name, required: required) { finder.elements(tag_name, yield, timeout: timeout) }
