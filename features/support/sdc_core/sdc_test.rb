@@ -6,6 +6,12 @@ class SdcTest
 
       if SdcEnv.browser
         begin
+
+          if SdcEnv.headless
+            @headless = Headless.new
+            @headless.start
+          end
+
           #Watir.always_locate = true
           Selenium::WebDriver.logger.level = :warn
           case(SdcEnv.browser)
@@ -91,7 +97,10 @@ class SdcTest
       SdcEnv.firefox_profile ||= ENV['FIREFOX_PROFILE']
       SdcEnv.framework ||= ENV['FRAMEWORK']
       SdcEnv.debug ||= ENV['DEBUG']
+      SdcEnv.headless ||= ENV['HEADLESS']
+
       require_gems
+
       SdcLog.initialize(verbose: SdcEnv.verbose)
 
       #todo-Rob These should be in an orders/mail or sdc_apps environment variable container. This is a temp fix.
@@ -137,8 +146,14 @@ class SdcTest
         require "csv"
         include Spreadsheet
       end
+
       if SdcEnv.usr.nil? || SdcEnv.usr.casecmp('default') == 0
         require 'mysql2'
+      end
+
+      if SdcEnv.headless
+        require 'xvfb'
+        require 'headless'
       end
     end
 
@@ -163,6 +178,7 @@ class SdcTest
     def teardown
       begin
         SdcDriver.driver.quit
+        @headless.destroy if SdcEnv.headless
       rescue
         # ignore
       end
