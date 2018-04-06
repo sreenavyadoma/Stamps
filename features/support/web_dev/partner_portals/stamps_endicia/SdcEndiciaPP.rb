@@ -2,8 +2,10 @@ module Stamps
   module WebDev
     module Portals
       module StampsEndicia
-        class SdcEndiciaLanding < SdcPageObject
+        class SdcEndiciaPP < SdcPageObject
+
           page_url { |env| "https://#{env}.partner.stamps.com" }
+
           def self.visit
             super(case SdcEnv.env
                     when :qacc
@@ -18,8 +20,14 @@ module Stamps
                       # ignore
                   end)
           end
+
+          def login_page
+            LoginPage.new()
+          end
+
         end
       end
     end
   end
 end
+
