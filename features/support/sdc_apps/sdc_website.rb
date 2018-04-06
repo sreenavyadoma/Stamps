@@ -6,7 +6,7 @@ module Stamps
       if SdcEnv.browser
         "Orders::SdcOrders"
       elsif SdcEnv.mobile
-        "Mobile::SdcOrders"
+        "Orders::SdcOrders"
       else
         raise ArgumentError, 'Can not determine if mobile or browser test'
       end
