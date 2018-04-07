@@ -8,7 +8,7 @@ class SdcTest
         begin
 
           if SdcEnv.headless
-            @headless = Headless.new
+            @headless = Headless.new(reuse: true, destroy_at_exit: false)
             @headless.start
           end
 
@@ -55,7 +55,7 @@ class SdcTest
           SdcDriver.driver.driver.manage.timeouts.page_load = 12
 
           if SdcEnv.debug
-            SdcDriver.driver.window.resize_to 900, 1020
+            SdcDriver.driver.window.resize_to 1100, 1020
             SdcDriver.driver.window.move_to 0, 0
           else
             SdcDriver.driver.window.maximize
