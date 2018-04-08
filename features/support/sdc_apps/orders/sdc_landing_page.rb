@@ -33,7 +33,7 @@ module Stamps
         password.set(pwd)
         sign_in.safe_click(ctr: 2).send_keys_while_present(:enter, ctr: 2)
         sign_in.safe_wait_while_present
-        sleep(5) if SdcEnv.ios
+        sleep(10) if SdcEnv.ios
       end
     end
 
