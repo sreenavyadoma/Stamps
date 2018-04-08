@@ -97,6 +97,8 @@ module Stamps
                     "https://print.testing.stamps.com/#{(param.sdc_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
                   when :rating
                     "http://printext.qacc.stamps.com/#{(param.sdc_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
+                  when :prod
+                    "http://print.stamps.com/#{(param.sdc_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
                   else
                     raise ArgumentError, "Don't know what to do with #{param.env}. URL might not be set?"
                 end
