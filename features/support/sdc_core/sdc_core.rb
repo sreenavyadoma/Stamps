@@ -4,11 +4,12 @@ module Stamps
     TEST_ENVIRONMENTS = %i(stg qacc cc qasc sc rating).freeze unless Object.const_defined?('Stamps::SdcEnv::TEST_ENVIRONMENTS')
     BROWSERS = %i(firefox chrome safari edge chromeb).freeze unless Object.const_defined?('Stamps::SdcEnv::BROWSERS')
     SDC_APP = %i(orders mail webdev registration).freeze unless Object.const_defined?('Stamps::SdcEnv::SDC_APP')
-    IDEVICES = %i(iphone6 iphone7 iphone8 iphonex android).freeze unless Object.const_defined?('Stamps::SdcEnv::IDEVICES')
+    IOS = %i(iphone6 iphone7 iphone8 iphonex).freeze unless Object.const_defined?('Stamps::SdcEnv::IOS')
+    ANDROID = %i(samsung_galaxy nexus_5x).freeze unless Object.const_defined?('Stamps::SdcEnv::ANDROID')
 
     class << self #todo-Rob refactor PrintMedia
       attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose, :printer, :browser, :hostname,
-                    :print_media, :mobile, :firefox_profile, :framework, :debug, :headless
+                    :print_media, :mobile, :android, :ios, :firefox_profile, :framework, :debug
     end
   end
 
@@ -80,7 +81,10 @@ module Stamps
 
   class SdcAppiumDriver < BasicObject
     class << self
-      def core_driver(device)
+
+      attr_reader :core_driver
+
+      def start(device)
         file = File.expand_path("../../sdc_idevices/caps/#{device}.txt", __FILE__)
         exception = Selenium::WebDriver::Error::WebDriverError
         message = "Missing Appium capabilities file. #{device}: #{file}"
@@ -88,7 +92,6 @@ module Stamps
 
         caps = Appium.load_appium_txt(file: file, verbose: true)
         @core_driver = Appium::Driver.new(caps, false)
-        self
       end
 
       def method_missing(name, *args, &block)

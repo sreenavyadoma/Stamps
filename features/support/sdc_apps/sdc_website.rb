@@ -1,6 +1,13 @@
 module Stamps
 
   module SdcWebInstHelper
+    def landing_page_inst
+      if SdcEnv.android
+        'Orders::AndroidLandingPage'
+      else
+        'Orders::LandingPage'
+      end
+    end
 
     def orders_inst
       if SdcEnv.browser
@@ -19,7 +26,7 @@ module Stamps
       attr_writer :orders
 
       def landing_page
-        @landing_page ||= Object.const_get('Orders::LandingPage').new
+        @landing_page ||= Object.const_get(landing_page_inst).new
       end
 
       def orders

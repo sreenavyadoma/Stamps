@@ -36,5 +36,14 @@ module Stamps
       end
     end
 
+    class AndroidLandingPage < LandingPage
+      def sign_in_with(usr, pwd)
+        username.set(usr)
+        password.set(pwd)
+        browser.hide_keyboard
+        browser.action.move_to(sign_in).send_keys(:enter).perform
+        browser.action.move_to(sign_in).click.perform
+      end
+    end
   end
 end

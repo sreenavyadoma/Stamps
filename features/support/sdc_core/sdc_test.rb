@@ -6,12 +6,6 @@ class SdcTest
 
       if SdcEnv.browser
         begin
-
-          if SdcEnv.headless
-            @headless = Headless.new(reuse: true, destroy_at_exit: false)
-            @headless.start
-          end
-
           #Watir.always_locate = true
           Selenium::WebDriver.logger.level = :warn
           case(SdcEnv.browser)
@@ -69,8 +63,8 @@ class SdcTest
 
       elsif SdcEnv.mobile
         begin
-          SdcDriver.driver = SdcDriverDecorator.new(SdcAppiumDriver.core_driver(SdcEnv.mobile.to_s).start_driver)
-          SdcDriver.driver.manage.timeouts.implicit_wait = 10
+          SdcDriver.driver = SdcDriverDecorator.new(SdcAppiumDriver.start(SdcEnv.mobile.to_s).start_driver)
+          SdcDriver.driver.manage.timeouts.implicit_wait = 15
 
         rescue Exception => e
           SdcLog.error e.message
@@ -86,7 +80,9 @@ class SdcTest
     def start(scenario)
       @scenario = scenario
       SdcEnv.browser ||= browser_selection(ENV['BROWSER'])
-      SdcEnv.mobile ||= device_name(ENV['MOBILE'])
+      SdcEnv.mobile ||= mobile(ENV['MOBILE'])
+      SdcEnv.ios ||= is_ios?(ENV['MOBILE'])
+      SdcEnv.android ||= is_android?(ENV['MOBILE'])
       SdcEnv.verbose ||= ENV['VERBOSE'].nil? ? false : ENV['VERBOSE'].casecmp('true') == 0
       SdcEnv.hostname ||= Socket.gethostname
       SdcEnv.sdc_app ||= ENV['WEB_APP'].nil? ? ENV['WEB_APP'] : ENV['WEB_APP'].downcase.to_sym
@@ -97,7 +93,6 @@ class SdcTest
       SdcEnv.firefox_profile ||= ENV['FIREFOX_PROFILE']
       SdcEnv.framework ||= ENV['FRAMEWORK']
       SdcEnv.debug ||= ENV['DEBUG']
-      SdcEnv.headless ||= ENV['HEADLESS']
 
       require_gems
 
@@ -151,10 +146,6 @@ class SdcTest
         require 'mysql2'
       end
 
-      if SdcEnv.headless
-        require 'xvfb'
-        require 'headless'
-      end
     end
 
     def web_apps_param
@@ -178,7 +169,6 @@ class SdcTest
     def teardown
       begin
         SdcDriver.driver.quit
-        @headless.destroy if SdcEnv.headless
       rescue
         # ignore
       end
@@ -204,9 +194,17 @@ class SdcTest
       end
     end
 
-    def device_name(str)
+    def mobile(str)
       return str if str.nil?
       str.downcase.delete(' ').to_sym
+    end
+
+    def is_ios?(str)
+      SdcEnv::IOS.include?(str.to_sym)
+    end
+
+    def is_android?(str)
+      SdcEnv::ANDROID.include?(str.to_sym)
     end
 
     def browser_selection(str)
