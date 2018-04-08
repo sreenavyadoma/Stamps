@@ -4,8 +4,9 @@ deviceName = "Galaxy_Nexus_API_27"
 deviceOrientation = "portrait"
 platformVersion = "8.1.0"
 platformName = "Android"
-browserName = "chrome"
+browserName = "Chrome"
 
 [appium_lib]
 sauce_username = false
 sauce_access_key = false
+

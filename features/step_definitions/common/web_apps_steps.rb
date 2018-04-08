@@ -1,7 +1,6 @@
 
 Then /^visit Sdc Website$/ do
   Orders::LandingPage.visit
-  SdcWebsite.orders.loading_orders.safe_wait_until_present(timeout: 10) if SdcEnv.browser
 end
 
 Then /^[Ss]ign-in to SDC Website$/ do
@@ -27,7 +26,7 @@ Then /^sign-in to Orders as (.+), (.+)$/ do |usr, pw|
   SdcWebsite.landing_page.sign_in_with(TestData.store[:username] = usr, TestData.store[:password] = pw)
   SdcWebsite.orders.loading_orders.safe_wait_until_present if SdcEnv.browser
   SdcWebsite.orders.loading_orders.safe_wait_while_present if SdcEnv.browser
-  SdcWebsite.navigation.user_drop_down.signed_in_user.safe_wait_until_present(timeout: 8)
+  SdcWebsite.navigation.user_drop_down.signed_in_user.safe_wait_until_present(timeout: 8) if SdcEnv.browser
   expect(SdcWebsite.navigation.user_drop_down.signed_in_user.text).to eql(TestData.store[:username])
 end
 

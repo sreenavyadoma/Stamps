@@ -49,7 +49,7 @@ class SdcTest
           SdcDriver.driver.driver.manage.timeouts.page_load = 12
 
           if SdcEnv.debug
-            SdcDriver.driver.window.resize_to 900, 1020
+            SdcDriver.driver.window.resize_to 1100, 1020
             SdcDriver.driver.window.move_to 0, 0
           else
             SdcDriver.driver.window.maximize
@@ -63,8 +63,8 @@ class SdcTest
 
       elsif SdcEnv.mobile
         begin
-          SdcDriver.driver = SdcDriverDecorator.new(SdcAppiumDriver.core_driver(SdcEnv.mobile.to_s).start_driver)
-          SdcDriver.driver.manage.timeouts.implicit_wait = 10
+          SdcDriver.driver = SdcDriverDecorator.new(SdcAppiumDriver.start(SdcEnv.mobile.to_s).start_driver)
+          SdcDriver.driver.manage.timeouts.implicit_wait = 15
 
         rescue Exception => e
           SdcLog.error e.message
@@ -80,7 +80,9 @@ class SdcTest
     def start(scenario)
       @scenario = scenario
       SdcEnv.browser ||= browser_selection(ENV['BROWSER'])
-      SdcEnv.mobile ||= device_name(ENV['MOBILE'])
+      SdcEnv.mobile ||= mobile(ENV['MOBILE'])
+      SdcEnv.ios ||= is_ios?(ENV['MOBILE'])
+      SdcEnv.android ||= is_android?(ENV['MOBILE'])
       SdcEnv.verbose ||= ENV['VERBOSE'].nil? ? false : ENV['VERBOSE'].casecmp('true') == 0
       SdcEnv.hostname ||= Socket.gethostname
       SdcEnv.sdc_app ||= ENV['WEB_APP'].nil? ? ENV['WEB_APP'] : ENV['WEB_APP'].downcase.to_sym
@@ -91,7 +93,9 @@ class SdcTest
       SdcEnv.firefox_profile ||= ENV['FIREFOX_PROFILE']
       SdcEnv.framework ||= ENV['FRAMEWORK']
       SdcEnv.debug ||= ENV['DEBUG']
+
       require_gems
+
       SdcLog.initialize(verbose: SdcEnv.verbose)
 
       #todo-Rob These should be in an orders/mail or sdc_apps environment variable container. This is a temp fix.
@@ -137,9 +141,11 @@ class SdcTest
         require "csv"
         include Spreadsheet
       end
+
       if SdcEnv.usr.nil? || SdcEnv.usr.casecmp('default') == 0
         require 'mysql2'
       end
+
     end
 
     def web_apps_param
@@ -188,9 +194,16 @@ class SdcTest
       end
     end
 
-    def device_name(str)
-      return str if str.nil?
-      str.downcase.delete(' ').to_sym
+    def mobile(str)
+      str.nil? ? str : str.downcase.delete(' ').to_sym
+    end
+
+    def is_ios?(str)
+      str.nil? ? str : SdcEnv::IOS.include?(str.to_sym)
+    end
+
+    def is_android?(str)
+      str.nil? ? str : SdcEnv::ANDROID.include?(str.to_sym)
     end
 
     def browser_selection(str)

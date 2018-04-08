@@ -32,3 +32,8 @@ group :appium do
   gem 'appium_lib_core'
 end
 
+group :headless do
+  gem 'xvfb'
+  gem 'headless'
+end
+
