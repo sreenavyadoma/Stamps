@@ -195,16 +195,15 @@ class SdcTest
     end
 
     def mobile(str)
-      return str if str.nil?
-      str.downcase.delete(' ').to_sym
+      str.nil? ? str : str.downcase.delete(' ').to_sym
     end
 
     def is_ios?(str)
-      SdcEnv::IOS.include?(str.to_sym)
+      str.nil? ? str : SdcEnv::IOS.include?(str.to_sym)
     end
 
     def is_android?(str)
-      SdcEnv::ANDROID.include?(str.to_sym)
+      str.nil? ? str : SdcEnv::ANDROID.include?(str.to_sym)
     end
 
     def browser_selection(str)
