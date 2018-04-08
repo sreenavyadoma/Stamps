@@ -1,7 +1,6 @@
 
 Then /^visit Sdc Website$/ do
   Orders::LandingPage.visit
-  SdcWebsite.orders.loading_orders.safe_wait_until_present(timeout: 10) if SdcEnv.browser
 end
 
 Then /^[Ss]ign-in to SDC Website$/ do
