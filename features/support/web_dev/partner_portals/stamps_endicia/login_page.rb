@@ -24,11 +24,18 @@ module Stamps
          end
 
           class LoginPage < SdcPageObject
+            text_field(:username, tag_name: :text_field, required: true) { {id: "username"} }
+            element(:username_tooltip, required: true) { {xpath: "xpath "} }
+
+            text_field(:password, tag_name: :text_field, required: true) { {id: "password "} }
+            element(:tooltip, required: true) { {xpath: "xpath "} }
 
             def email
-                Fields::Email.new()
+              @email ||= Fields::Email.new()
             end
-
+# login_page.password.set ''
+# login_page.username.set ''
+# login_page.sign_in.click
             def password
               Fields::Password.new()
             end
