@@ -28,11 +28,18 @@ module Stamps
               end)
       end
 
-      def sign_in_with(usr, pwd)
+      def sign_in_with(usr, pwd, iter: 3)
         username.set(usr)
         password.set(pwd)
-        sign_in.safe_click(ctr: 2).send_keys_while_present(:enter, ctr: 2)
-        sign_in.safe_wait_while_present
+        iter.to_i.times do
+          begin
+            sign_in.safe_click(ctr: 2).send_keys_while_present(:enter, ctr: 2)
+            sign_in.safe_wait_while_present
+            break unless sign_in.present?
+          rescue
+            # ignore
+          end
+        end
         sleep(10) if SdcEnv.ios
       end
     end
