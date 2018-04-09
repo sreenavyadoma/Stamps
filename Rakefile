@@ -2,6 +2,19 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
+
+#BEGIN WEB DEV
+  #BEGIN PARTNER PORTAL
+  Cucumber::Rake::Task.new(:sdc_endicia_pp_log_in) do |t|
+    t.profile = 'sdc_endicia_pp_log_in'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
+  #END PARTNER PORTAL
+
+# END WEB DEV
+
+
 # BEGIN WEB REG
 
 Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
