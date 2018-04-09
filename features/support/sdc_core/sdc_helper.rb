@@ -1,14 +1,15 @@
 module Stamps
   class SdcLog < BasicObject
     class << self
+
       def initialize(verbose: true)
         @verbose = verbose
         @logger = Log4r::Logger.new(":")
-        @logger.outputters = Outputter.stdout
+        @logger.outputters = Log4r::Outputter.stdout
       end
 
-      def info(str)
-        logger.info(str) if verbose
+      def info(*args)
+        logger.info(*args) if verbose
       end
       alias_method :message, :info
       alias_method :step, :info

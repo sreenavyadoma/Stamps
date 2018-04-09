@@ -5,7 +5,7 @@ cuke_reports: --format json --out report.json --backtrace -f pretty -r features 
 #todo-Rob set PRINTER=factory as default automation printer
 #robcm=ccpryiihrjz ccfb311osps4x print_dialog_ship_date
 rob_cc: --tags @authentication WEB_APP=orders BROWSER=ff JENKINS=true URL=cc VERBOSE=true HEALTHCHECK=true MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory
-rob_stg: --tags @authentication WEB_APP=orders JENKINS=true URL=stg VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=default PW=pass111 PRINTER=factory #stgee1mtqvwdc0
+rob_stg: --tags @bvt_new_order WEB_APP=orders JENKINS=true URL=stg VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=default PW=pass111 PRINTER=factory #stgee1mtqvwdc0
 rob_sc: --tags @bvt_shipstation_updates_domestic WEB_APP=orders JENKINS=true URL=sc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=selenium  USR=scsejsglwa PW=pass111 VERBOSE=true PRINTER=factory # c2jinmzmu64 schl0vlbfy2673 #19  schl0vlbfy2673
 rob_dev: --tags @mail_advanced_options_stamps WEB_APP=orders JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 rob_mail_cc:  --tags @mail_bvt_international WEB_APP=mail JENKINS=true USR=cctruer0u PW=pass111 URL=cc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory #\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
@@ -13,17 +13,28 @@ rob_mail_stg: --tags @mail_bvt_international WEB_APP=mail JENKINS=true USR=defau
 rob_mail_sc: --tags @print_dialog_ship_date WEB_APP=mail JENKINS=true USR=default PW=pass111 URL=sc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 rob_registration: --tags @registration_normal_workflow WEB_APP=registration URL=cc --guess VERBOSE=true HEALTHCHECK=false BROWSER=chrome MAX_WINDOW=false JENKINS=true
 
-browser_test:  --tags @authentication BROWSER=ff VERBOSE=true USR=ccfb311osps4x PW=pass111 URL=cc WEB_APP=orders HEALTHCHECK=true
+browser_test:  --tags @iphonex BROWSER=ff VERBOSE=true USR=ccfb311osps4x PW=pass111 URL=cc WEB_APP=orders HEALTHCHECK=true
 
-iphonex: --tags @iphonex --guess IDEVICENAME='iphone x' VERBOSE=true JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=cc USR=ccfb311osps4x PW=pass111
+iphonex: --tags @iphonex --guess MOBILE='iphone x' VERBOSE=true JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=cc USR=ccfb311osps4x PW=pass111
+
+saucelabs_browser:  --tags @saucelabs_poc BROWSER=ff VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1 DEBUG=true HEADLESS=true
+saucelabs_iphonex: --tags @saucelabs_poc MOBILE='iphone x' VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
+saucelabs_iphone8: --tags @saucelabs_poc MOBILE='iphone 8' VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
+saucelabs_samsung_galaxy: --tags @saucelabs_poc MOBILE=samsung_galaxy VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
+
+saucelabs_browser_cc:  --tags @saucelabs_poc BROWSER=ff VERBOSE=true WEB_APP=orders URL=cc USR=ccfb311osps4x PW=pass111
+saucelabs_iphonex_cc: --tags @saucelabs_poc MOBILE='iphone x' VERBOSE=true WEB_APP=orders URL=cc USR=ccfb311osps4x PW=pass111
+
+saucelabs: --tags @saucelabs_poc VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
+
+google: --tags @google
+google_browser: --tags @google BROWSER=ff
+google_iphonex: --tags @google MOBILE=iphonex
 
 #todo-Rob WebReg consider removing webapp, username, password fields
 #mhossain1_cc: --tags @registration_normal_workflow WEB_APP=orders JENKINS=true URL=cc VERBOSE=true BROWSER=ff MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
 
 mhossain1_cc: --tags @registration_ui_validation_profile_page JENKINS=true URL=cc VERBOSE=true BROWSER=edge MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
-
-mobile_orders_smoke_test: --tags @mobile_orders_smoke_test --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-mobile_mail_smoke_test: --tags @mobile_mail_smoke_test --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess VERBOSE=false HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 
@@ -208,7 +219,6 @@ registration_ui_validation_add_validation_model: --tags @registration_ui_validat
 registration_username_taken_model: --tags @registration_username_taken_model WEB_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
 registration_ui_validation_choose_supplies_page: --tags @registration_ui_validation_choose_supplies_page WEB_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
 registration_security_questions_happy_path: --tags @registration_security_questions_happy_path WEB_APP=registration --guess VERBOSE=false MAX_WINDOW=true JENKINS=true
-
 
 mail_print_shipping_label_8x11: --tags @mail_print_shipping_label_8x11 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail_print_shipping_label_8x11 PRINTER=factory
 
@@ -527,3 +537,4 @@ mail_fci_flats: --tags  @mail_fci_flats --guess VERBOSE=false HEALTHCHECK=true W
 mail_hidden_postage: --tags  @mail_hidden_postage --guess VERBOSE=false HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 
 mail_bug_ordersauto_3243: --tags  @mail_bug_ordersauto_3243 --guess VERBOSE=false HEALTHCHECK=true WEB_APP=mail PRINTER=factory
+

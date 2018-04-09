@@ -1,24 +1,39 @@
 source 'http://rubygems.org'
 
-gem 'watir', '6.10.3'
-gem 'selenium-webdriver'
+# Common
 gem 'rspec', '3.6.0'
 gem 'cucumber', '3.1.0'
 gem 'gherkin'
 gem 'rake'
 gem 'data_magic'
 gem 'log4r'
-gem 'rautomation'
 gem 'yml_reader'
 gem 'holidays'
-gem 'spreadsheet'
 gem 'measured'
-gem 'mysql2'
-#gem 'appium_lib'
-#gem 'appium_lib_core'
 
+group :watir do
+  gem 'watir', '6.10.3'
+end
 
-#gem 'watir', '6.2.1'
-#gem 'selenium-webdriver', '3.4.0'
-#gem 'cucumber', '2.4.0'
-#gem 'selenium-webdriver'
+group :selenium do
+  gem 'selenium-webdriver'
+end
+
+group :mysql do
+  gem 'mysql2'
+end
+
+group :rates do
+  gem 'spreadsheet'
+end
+
+group :appium do
+  gem 'appium_lib'
+  gem 'appium_lib_core'
+end
+
+group :headless do
+  gem 'xvfb'
+  gem 'headless'
+end
+

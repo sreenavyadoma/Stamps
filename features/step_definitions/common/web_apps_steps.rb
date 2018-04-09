@@ -1,44 +1,6 @@
 
 Then /^visit Sdc Website$/ do
-  if SdcEnv.browser
-    case SdcEnv.sdc_app
-      when :orders
-        Orders::LandingPage.visit(case SdcEnv.env
-                                    when :qacc
-                                      'ext.qacc'
-                                    when :qasc
-                                      'ext.qasc'
-                                    when :stg
-                                      '.testing'
-                                    when :prod
-                                      ''
-                                    else
-                                      # ignore
-                                  end
-        )
-      when :mail
-        raise "Not implemented!"
-      else
-        raise ArgumentError, "Undefined App :#{SdcEnv.sdc_app}"
-    end
-  elsif SdcEnv.i_device_name
-    Orders::ILandingPage.visit(case SdcEnv.env
-                                 when :qacc
-                                   'ext.qacc'
-                                 when :qasc
-                                   'ext.qasc'
-                                 when :stg
-                                   '.testing'
-                                 when :prod
-                                   ''
-                                 else
-                                   # ignore
-                               end
-    )
-  else
-    raise ""
-  end
-
+  Orders::LandingPage.visit
 end
 
 Then /^[Ss]ign-in to SDC Website$/ do
@@ -56,10 +18,18 @@ Then /^[Ss]ign-in to SDC Website$/ do
   step "sign-in to Mail as #{usr}, #{pw}" if SdcEnv.sdc_app == :mail
 end
 
+Then /^sign-out of SDC Website$/ do
+  sleep(2)
+  SdcWebsite.navigation.user_drop_down.sign_out if SdcEnv.browser
+  SdcWebsite.landing_page.username.safe_wait_until_present if SdcEnv.browser
+end
+
 Then /^sign-in to Orders as (.+), (.+)$/ do |usr, pw|
-  SdcWebsite.orders = Orders::LandingPage.new.sign_in_with(TestData.store[:username] = usr, TestData.store[:password] = pw)
-  SdcWebsite.orders.loading_orders.safe_wait_until_present(timeout: 5).safe_wait_while_present(timeout: 10)
-  expect(SdcWebsite.orders.signed_in_user.safe_wait_until_present(timeout: 10).text_value).to eql (usr)
+  SdcWebsite.landing_page.sign_in_with(TestData.store[:username] = usr, TestData.store[:password] = pw)
+  SdcWebsite.orders.loading_orders.safe_wait_until_present if SdcEnv.browser
+  SdcWebsite.orders.loading_orders.safe_wait_while_present if SdcEnv.browser
+  SdcWebsite.navigation.user_drop_down.signed_in_user.safe_wait_until_present(timeout: 5) if SdcEnv.browser
+  expect(SdcWebsite.navigation.user_drop_down.signed_in_user.text).to eql(TestData.store[:username])
 end
 
 Then /^sign-in to Mail as (.+), (.+)$/ do |usr, pw|

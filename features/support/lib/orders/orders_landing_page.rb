@@ -97,6 +97,8 @@ module Stamps
                     "https://print.testing.stamps.com/#{(param.sdc_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
                   when :rating
                     "http://printext.qacc.stamps.com/#{(param.sdc_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
+                  when :prod
+                    "http://print.stamps.com/#{(param.sdc_app == :orders) ? 'orders' : 'webpostage/default2.aspx'}"
                   else
                     raise ArgumentError, "Don't know what to do with #{param.env}. URL might not be set?"
                 end
@@ -105,19 +107,6 @@ module Stamps
           log.info '-'
 
           driver.goto(url)
-          if driver.text.include? 'Server Error'
-            log.error driver.text
-            raise "Server Error:\n #{driver.text}"
-          end
-
-          case param.sdc_app
-            when :orders
-              expect(driver.url).to include 'Orders'
-            when :mail
-              expect(driver.url.downcase).to include 'webpostage'
-            else
-              # do nothing
-          end
           driver.url
         end
 

@@ -1,22 +1,26 @@
 module Stamps
   module Orders
+    module SdcOrdersInstHelper
+
+    end
+
     class SdcOrders < SdcPageObject
-      element(:loading_orders) { SdcElement.new(browser.div(text: 'Loading orders...')) } # this stays here
-      element(:signed_in_user, required: true) {SdcElement.new(browser.span(id: 'userNameText'))} # this will need to move to Navigation > Signed-in Dropdown
+      element(:loading_orders) { {text: 'Loading orders...'} }
+      element(:grid_body, required: true) { {xpath: "//*[contains(@class, 'orders-grid')]"} }
 
       def order_details
-
+        @order_details = nil
       end
 
-      def navigation
-
+      def bulk_update
+        @bulk_update = nil
       end
 
       def toolbar
 
       end
 
-      def orders_grid
+      def grid
 
       end
 
