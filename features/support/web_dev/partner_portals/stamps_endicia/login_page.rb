@@ -11,7 +11,7 @@ module Stamps
           self.class.element(:selection) { {xpath: "//span[contains(text(), ' #{str} ')]"} }
 
           iter.to_i.times do
-            selection.present? unless dd.safe_click
+            dd.safe_click unless selection.present?
             selection.safe_click
             break if dd.text_value.include str
           end
