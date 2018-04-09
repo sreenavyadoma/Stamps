@@ -9,7 +9,7 @@ Feature: Login Page
     @sdc_endicia_pp_log_in
     Scenario: All conditions are true
         Then PP: A user navigates to the login page
-#        Then PP: email field shows placeholder "Email"
+        Then PP: email field shows placeholder Email
 #        Then PP: password field shows placeholder "Password"
 #        Then PP: user clicks "Log In"
 #        Then PP: expect email shows error message "This field is required.
