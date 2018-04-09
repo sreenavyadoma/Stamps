@@ -22,9 +22,6 @@ Then /^PP: [Pp]assword field shows placeholder (.*)$/ do |str|
 end
 
 Then /^PP: user clicks Log In$/ do |str|
-  # StampsEndicia.login_page.password_label.safe_click
-  #(StampsEndicia.login_page.password_label.present?).to eql("true")
-  expect(StampsEndicia.login_page.password_label.text_value).to eql(str)
-
-
+  StampsEndicia.login_page.log_in.safe_click
+  StampsEndicia.login_page.dd_survey.text_value
 end

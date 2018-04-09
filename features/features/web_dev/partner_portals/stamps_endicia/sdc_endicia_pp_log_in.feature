@@ -9,6 +9,7 @@ Feature: Login Page
     @sdc_endicia_pp_log_in
     Scenario: All conditions are true
         Then PP: A user navigates to the login page
+        Then PP: user clicks Log In
         Then PP: Email field shows placeholder EMAIL
         Then PP: Password field shows placeholder Password
 
