@@ -1,6 +1,25 @@
 module Stamps
   module WebDev
     module Portals
+
+      class SurveyDropDown
+        element(:dd, tag_name: :text_field, required: true) { {id: "usageType"} }
+
+        # Business Use - Mostly mailing (letters/postcards/flats)
+        def select(str, iter: 3)
+          # create the drop-down element
+          self.class.element(:selection) { {xpath: "//span[contains(text(), ' #{str} ')]"} }
+
+          iter.to_i.times do
+            selection.present? unless dd.safe_click
+            selection.safe_click
+            break if dd.text_value.include str
+          end
+
+          dd.text_value
+        end
+      end
+
       module StampsEndicia
         class LoginPage < SdcPageObject
             text_field(:email, tag_name: :text_field, required: true) { {id: "email"} }
