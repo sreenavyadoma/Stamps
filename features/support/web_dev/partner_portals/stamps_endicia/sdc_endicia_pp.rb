@@ -5,12 +5,12 @@ module Stamps
 
         class SdcEndiciaPP < SdcPageObject
 
-          page_url { |env| "https://#{env}stamps.com" }
+          page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Orders&" }
 
           def self.visit
             super(case SdcEnv.env
                     when :qacc
-                      'ext.sdcwebsite.staging'
+                      'ext.qacc'
                     when :qasc
                       'ext.qasc'
                     when :stg
