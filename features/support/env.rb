@@ -7,6 +7,9 @@ SdcTest.require_default_gems
 
 require_relative 'sdc_core/sdc_core'
 
+# web dev
+require_relative 'web_dev/partner_portals/stamps_endicia/sdc_endicia_pp'
+
 # Old Framework
 require_relative 'lib/core/stamps_element'
 require_relative 'lib/core/user_credentials'
