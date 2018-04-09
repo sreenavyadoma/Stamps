@@ -6,6 +6,7 @@ module Stamps
 
     class SdcOrders < SdcPageObject
       element(:loading_orders) { {text: 'Loading orders...'} }
+      element(:grid_body, required: true) { {xpath: "//*[contains(@class, 'orders-grid')]"} }
 
       def order_details
         @order_details = nil

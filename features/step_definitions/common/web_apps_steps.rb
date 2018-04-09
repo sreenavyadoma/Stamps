@@ -20,6 +20,8 @@ end
 
 Then /^sign-out of SDC Website$/ do
   SdcWebsite.navigation.user_drop_down.sign_out
+  SdcWebsite.landing_page.username.safe_wait_until_present if SdcEnv.browser
+  sleep(2)
 end
 
 Then /^sign-in to Orders as (.+), (.+)$/ do |usr, pw|
