@@ -1,7 +1,13 @@
 module Stamps
   module Orders
     module SdcOrdersInstHelper
-
+      def toolbar_inst
+        if SdcEnv.browser
+          'Orders::SdcOrdersToolbar'
+        else
+          'Orders::SdcOrdersToolbar'
+        end
+      end
     end
 
     class SdcOrders < SdcPageObject
@@ -9,7 +15,7 @@ module Stamps
       element(:grid_body, required: true) { {xpath: "//*[contains(@class, 'orders-grid')]"} }
 
       def order_details
-        @order_details = nil
+        @order_details = SdcOrderDetails.new
       end
 
       def bulk_update
@@ -17,7 +23,8 @@ module Stamps
       end
 
       def toolbar
-
+        #@toolbar ||= Object.const_get(toolbar_inst).new
+        @toolbar ||= SdcOrdersToolbar.new
       end
 
       def grid

@@ -258,10 +258,14 @@ module Stamps
       end
     end
 
-    # class BalanceDropDown < WebApps::Base
-    class BalanceDropDown < SdcPageObject
-      element(:balance_amount, required: true) { SdcElement.new(driver.span(css: '[class*=balance]>a>strong>span')) }
+    class BalanceDropDown < WebApps::Base
+    #class BalanceDropDown < SdcPageObject
+      #element(:balance_amount, required: true) { SdcElement.new(driver.span(css: '[class*=balance]>a>strong>span')) }
+      #element(:balance_amount) { {id: 'postageBalanceAmt'} }
 
+      def balance_amount
+        SdcElement.new(driver.span(css: '[class*=balance]>a>strong>span'))
+      end
 
       def add_funds_modal
         cache[:add_funds_modal].nil? ? cache[:add_funds_modal] = AddFundsModal.new(param) : cache[:add_funds_modal]

@@ -1,11 +1,20 @@
 
 Then /^(?:[Cc]lick Orders Toolbar Add button|add new order|add [Oo]rder (\d+))$/ do |count|
-  #TestData.store[:old_balance] = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
-  TestData.store[:old_balance] = SdcWebsite.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
-  stamps.orders.orders_grid.grid_column(:checkbox).uncheck(1)
-  TestData.store[:order_id][(count.nil?) ? TestData.store[:ord_id_ctr] += 1 : count.to_i] = stamps.orders.orders_toolbar.toolbar_add.click
-  expect(stamps.orders.orders_grid.grid_column(:checkbox).checked?(1)).to be(true), "Orders Grid checkbox 1 is unchecked!"
-  step "Save Order Details data"
+  #if SdcEnv.mobile
+    #TestData.store[:old_balance] = SdcWebsite.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
+    #stamps.orders.orders_grid.grid_column(:checkbox).uncheck(1)
+    TestData.store[:order_id][(count.nil?) ? TestData.store[:ord_id_ctr] += 1 : count.to_i] = stamps.orders.orders_toolbar.toolbar_add.click
+    expect(stamps.orders.orders_grid.grid_column(:checkbox).checked?(1)).to be(true), "Orders Grid checkbox 1 is unchecked!"
+    step "Save Order Details data"
+  # elseif SdcEnv.browser
+  #   TestData.store[:old_balance] = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
+  #   stamps.orders.orders_grid.grid_column(:checkbox).uncheck(1)
+  #   TestData.store[:order_id][(count.nil?) ? TestData.store[:ord_id_ctr] += 1 : count.to_i] = stamps.orders.orders_toolbar.toolbar_add.click
+  #   expect(stamps.orders.orders_grid.grid_column(:checkbox).checked?(1)).to be(true), "Orders Grid checkbox 1 is unchecked!"
+  #   step "Save Order Details data"
+  # else
+  #   raise "Environment is not defined!"
+  # end
 end
 
 Then /^Save Order Details data$/ do
