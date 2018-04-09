@@ -3,8 +3,9 @@ module Stamps
     module Portals
       module StampsEndicia
         class LoginPage < SdcPageObject
-            text_field(:username, tag_name: :text_field, required: true) { {id: "username"} }
-            element(:username_tooltip, required: true) { {xpath: "xpath "} }
+            text_field(:email, tag_name: :text_field, required: true) { {id: "email"} }
+            element(:email_tooltip, required: true) { {xpath: "xpath "} }
+            element(:email_label, required: true) { {xpath: " //*[@id='email']/div/div/div/label"} }
 
             text_field(:password, tag_name: :text_field, required: true) { {id: "password "} }
             element(:password_tooltip, required: true) { {xpath: "xpath "} }
@@ -21,6 +22,7 @@ module Stamps
               log_in.send_keys :enter
               username.safe_wait_while_present
             end
+
         end
       end
     end
