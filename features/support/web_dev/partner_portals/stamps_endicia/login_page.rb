@@ -1,25 +1,6 @@
 module Stamps
   module WebDev
     module Portals
-
-      class SurveyDropDown
-        element(:dd, tag_name: :text_field, required: true) { {id: "usageType"} }
-
-        # Business Use - Mostly mailing (letters/postcards/flats)
-        def select(str, iter: 3)
-          # create the drop-down element
-          self.class.element(:selection) { {xpath: "//span[contains(text(), ' #{str} ')]"} }
-
-          iter.to_i.times do
-            dd.safe_click unless selection.present?
-            selection.safe_click
-            break if dd.text_value.include str
-          end
-
-          dd.text_value
-        end
-      end
-
       module StampsEndicia
         class LoginPage < SdcPageObject
             text_field(:email, tag_name: :text_field, required: true) { {id: "email"} }
@@ -33,6 +14,23 @@ module Stamps
 
             link(:forgot_pw, required: true) {{id: "forgotpassword"}}
             element(:forgot_pw_tooltip, required: true) { {xpath: "xpath "} }
+
+
+            element(:dd, tag_name: :text_field, required: true) { {id: "usageType"} }
+
+            # Business Use - Mostly mailing (letters/postcards/flats)
+            def select(str, iter: 3)
+              # create the drop-down element
+              self.class.element(:selection) { {xpath: "//span[contains(text(), ' #{str} ')]"} }
+
+              iter.to_i.times do
+                dd.safe_click unless selection.present?
+                selection.safe_click
+                break if dd.text_value.include str
+              end
+
+              dd.text_value
+            end
 
             def sign_in_with(usr, pw)
               self.username.set usr

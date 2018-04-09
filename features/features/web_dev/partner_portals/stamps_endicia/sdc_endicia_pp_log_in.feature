@@ -9,8 +9,9 @@ Feature: Login Page
     @sdc_endicia_pp_log_in
     Scenario: All conditions are true
         Then PP: A user navigates to the login page
-        Then PP: email field shows placeholder Email
-#        Then PP: password field shows placeholder "Password"
+        Then PP: Email field shows placeholder EMAIL
+        Then PP: Password field shows placeholder Password
+
 #        Then PP: user clicks "Log In"
 #        Then PP: expect email shows error message "This field is required.
 #        Then PP: expect Password shows error message "This field is required."
@@ -26,7 +27,7 @@ Feature: Login Page
 #        Then PP: user blurs off Password
 #        Then PP: password shows error message "Field value should not be the same as EMAIL"
 #        Then PP: user enters valid Email/Password combination
-#        Then PP: user clicks "Log In"
+#        Then PP: user clicks Log In
 #        Then PP: website redirects user to Dashboard Page
 #        Then PP: website records login event in Audit Records
 
