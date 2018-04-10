@@ -21,6 +21,15 @@ module Stamps
         element(:dd_survey) { {xpath: "//*[@id='survey']/div[1]"} }
         element(:dd) { {xpath: "//span[contains(text(), 'Mostly shipping')]"} }
 
+
+       #element(:checkbox) { {xpath: "//*[@id='optIn']"} }
+        elements(:checkboxes) { {xpath: "//*[@id='optIn']"} }
+
+        element(:checkbox_header) { {xpath: "//*[@id='optInDiv']/h3"} }
+
+        element(:promo_link) {{id: "showPromoCode"}}
+        _element(:checkbox) { checkboxes[1] }
+
         # Business Use - Mostly mailing (letters/postcards/flats)
         # def select
         #   # create the drop-down element
@@ -36,15 +45,8 @@ module Stamps
         # end
        #
        def survey
-         element(:dd) { {xpath: "//span[contains(text(), 'Mostly shipping')]"} }
+         self.class.element(:dd) { {xpath: "//span[contains(text(), 'Mostly shipping')]"} }
        end
-
-        element(:checkbox) { {xpath: "//*[@id='optIn']"}[1] }
-
-        element(:checkbox_header) { {xpath: "//*[@id='optInDiv']/h3"} }
-
-        element(:promo_link) {{id: "showPromoCode"}}
-
 
         def sign_in_with(usr, pw)
           self.username.set usr

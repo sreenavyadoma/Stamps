@@ -13,6 +13,7 @@ Feature: Login Page
         Then PP: Email field shows placeholder EMAIL
         Then PP: Password field shows placeholder PASSWORD
         Then PP: check Profile page Money-saving offers and new products
+
        # Then PP: set profile page survey question to Mostly shipping
        # Then PP: set profile page survey question to Both mailing and shipping
 #        Then PP: user clicks "Log In"

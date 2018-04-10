@@ -216,7 +216,7 @@ module Stamps
       alias_method :link, :element
 
       def elements(name, tag_name: nil, timeout: 12, required: false)
-        _elements(name, required: required) { finder.elements(tag_name, yield, timeout: timeout) }
+        _elements(name) { finder.elements(tag_name, yield, timeout: timeout) }
       end
 
       def chooser(name, chooser, verify, property, property_name)
@@ -244,7 +244,7 @@ module Stamps
         end
       end
 
-      private
+      protected
 
       def _element(name, required: false, &block)
         define_method(name) do |*args|
