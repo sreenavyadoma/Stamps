@@ -3,7 +3,8 @@ module Stamps
     module Portals
       class LoginPage < SdcPageObject
         text_field(:email, tag_name: :text_field, required: true) { {id: "email"} }
-        element(:email_tooltip, required: true) { {xpath: "xpath"} }
+        element(:email_tooltip, required: true) { {xpath: "//*[@id='email']//span"} }
+
         label(:email_label, required: true) { {xpath: "//*[@id='email']/div/div/div/label"} }
 
         text_field(:password, tag_name: :text_field, required: true) { {id: "password"} }
@@ -16,21 +17,34 @@ module Stamps
         element(:forgot_pw_tooltip, required: true) { {xpath: "xpath"} }
 
 
-        element(:dd_survey, required: true) { {id: "usageType"} }
+       # element(:dd_survey, required: true) { {id: "usageType"} }
+        element(:dd_survey) { {xpath: "//*[@id='survey']/div[1]"} }
+        element(:dd) { {xpath: "//span[contains(text(), 'Mostly shipping')]"} }
 
         # Business Use - Mostly mailing (letters/postcards/flats)
-        def select(str, iter: 3)
-          # create the drop-down element
-          element(:selection) { {xpath: "//span[contains(text(), ' #{str} ')]"} }
+        # def select
+        #   # create the drop-down element
+        #   element(:choice) { {xpath: "//span[contains(text(), 'Mostly shipping')]"} }
+        #  # choice.safe_click
+        #   # iter.to_i.times do
+        #   #   dd_survey.safe_click unless selection.present?
+        #   #   selection.safe_click
+        #   #   break if dd.text_value.include str
+        #   # end
+        #
+        #   #dd.text_value
+        # end
+       #
+       def survey
+         element(:dd) { {xpath: "//span[contains(text(), 'Mostly shipping')]"} }
+       end
 
-          iter.to_i.times do
-            dd.safe_click unless selection.present?
-            selection.safe_click
-            break if dd.text_value.include str
-          end
+        element(:checkbox) { {xpath: "//*[@id='optIn']"}[1] }
 
-          dd.text_value
-        end
+        element(:checkbox_header) { {xpath: "//*[@id='optInDiv']/h3"} }
+
+        element(:promo_link) {{id: "showPromoCode"}}
+
 
         def sign_in_with(usr, pw)
           self.username.set usr
@@ -39,6 +53,7 @@ module Stamps
           log_in.send_keys :enter
           username.safe_wait_while_present
         end
+
       end
     end
   end

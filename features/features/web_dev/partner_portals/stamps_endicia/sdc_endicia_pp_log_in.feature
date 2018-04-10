@@ -7,12 +7,14 @@ Feature: Login Page
 #        Given PP: Partner user's partner contract Status = Active
 
     @sdc_endicia_pp_log_in
-    Scenario: All conditions are true
+    Scenario: PP StampsEndicia UI validation
         Then PP: A user navigates to the login page
         Then PP: user clicks Log In
         Then PP: Email field shows placeholder EMAIL
-        Then PP: Password field shows placeholder Password
-
+        Then PP: Password field shows placeholder PASSWORD
+        Then PP: check Profile page Money-saving offers and new products
+       # Then PP: set profile page survey question to Mostly shipping
+       # Then PP: set profile page survey question to Both mailing and shipping
 #        Then PP: user clicks "Log In"
 #        Then PP: expect email shows error message "This field is required.
 #        Then PP: expect Password shows error message "This field is required."

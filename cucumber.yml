@@ -35,7 +35,7 @@ google_iphonex: --tags @google MOBILE=iphonex
 #mhossain1_cc: --tags @registration_normal_workflow WEB_APP=orders JENKINS=true URL=cc VERBOSE=true BROWSER=ff MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
 #mhossain1_cc: --tags @registration_ui_validation_profile_page JENKINS=true URL=cc VERBOSE=true BROWSER=edge MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
 
-mhossain_cc: --tags @sdc_endicia_pp_log_in BROWSER=gc URL=stg
+mhossain_cc: --tags @sdc_endicia_pp_log_in BROWSER=ff URL=stg
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess VERBOSE=false HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 
