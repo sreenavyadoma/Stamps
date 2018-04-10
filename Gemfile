@@ -10,8 +10,8 @@ gem 'log4r'
 gem 'yml_reader'
 gem 'holidays'
 gem 'measured'
-# gem 'faker'
-# gem 'sauce_whisk'
+gem 'faker'
+gem 'sauce_whisk'
 
 group :watir do
   gem 'watir', '6.10.3'
