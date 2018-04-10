@@ -3,8 +3,8 @@ module Stamps
     class ShipTo < SdcPageObject
       element(:country) { {xpath: ''} }
       element(:address) { {xpath: ''} }
-      element(:phone) { {xpath: ''} }
-      element(:email) { {xpath: ''} }
+      element(:phone) { {xpath: '(//input[@name="ShipPhone"])[1]'} }
+      element(:email) { {xpath: '(//input[@name="BuyerEmail"])[1]'} }
 
       element(:show_more) { {xpath: '//div[starts-with(@id, "shiptoview-addressCollapsed")]//a'} }
       element(:show_less) { {xpath: '//div[starts-with(@id, "shiptoview-domestic")]//span[text()="Less"]'} }
