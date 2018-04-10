@@ -29,23 +29,24 @@ module Stamps
 
         element(:promo_link) {{id: "showPromoCode"}}
 
-        # Business Use - Mostly mailing (letters/postcards/flats)
-        # def select
-        #   # create the drop-down element
-        #   element(:choice) { {xpath: "//span[contains(text(), 'Mostly shipping')]"} }
-        #  # choice.safe_click
-        #   # iter.to_i.times do
-        #   #   dd_survey.safe_click unless selection.present?
-        #   #   selection.safe_click
-        #   #   break if dd.text_value.include str
-        #   # end
-        #
-        #   #dd.text_value
-        # end
-       #
-       def survey
-         self.class.element(:dd) { {xpath: "//span[contains(text(), 'Mostly shipping')]"} }
-       end
+        #Business Use - Mostly mailing (letters/postcards/flats)
+        def select(str, iter)
+          # create the drop-down element
+          self.class.element(:choice) { {xpath: "//span[contains(text(), 'Mostly shipping')]"} }
+         choice.safe_click
+
+          iter.to_i.times do
+            dd_survey.safe_click unless selection.present?
+            selection.safe_click
+            break if dd.text_value.include str
+          end
+
+          dd.text_value
+        end
+
+       # def survey
+       #   self.class.element(:dd) { {xpath: "//span[contains(text(), 'Mostly shipping')]"} }
+       # end
 
         def sign_in_with(usr, pw)
           self.username.set usr

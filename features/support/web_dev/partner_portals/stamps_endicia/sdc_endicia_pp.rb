@@ -25,7 +25,6 @@ module Stamps
           def login_page
             LoginPage.new()
           end
-
         end
 
       end
