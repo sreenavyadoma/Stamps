@@ -33,7 +33,7 @@ Then /^PP: set profile page survey question to (.*)$/ do |str|
 end
 
 Then /^PP: check Profile page Money-saving offers and new products$/ do
-  StampsEndicia.login_page.checkbox.fire_event(:click)
+  StampsEndicia.login_page.checkbox.safe_click
   StampsEndicia.login_page.checkbox_header.text_value
 
 

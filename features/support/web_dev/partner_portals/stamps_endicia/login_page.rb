@@ -4,7 +4,6 @@ module Stamps
       class LoginPage < SdcPageObject
         text_field(:email, tag_name: :text_field, required: true) { {id: "email"} }
         element(:email_tooltip, required: true) { {xpath: "//*[@id='email']//span"} }
-
         label(:email_label, required: true) { {xpath: "//*[@id='email']/div/div/div/label"} }
 
         text_field(:password, tag_name: :text_field, required: true) { {id: "password"} }
@@ -24,11 +23,11 @@ module Stamps
 
        #element(:checkbox) { {xpath: "//*[@id='optIn']"} }
         elements(:checkboxes) { {xpath: "//*[@id='optIn']"} }
+        _element(:checkbox) { checkboxes[1] }
 
         element(:checkbox_header) { {xpath: "//*[@id='optInDiv']/h3"} }
 
         element(:promo_link) {{id: "showPromoCode"}}
-        _element(:checkbox) { checkboxes[1] }
 
         # Business Use - Mostly mailing (letters/postcards/flats)
         # def select
