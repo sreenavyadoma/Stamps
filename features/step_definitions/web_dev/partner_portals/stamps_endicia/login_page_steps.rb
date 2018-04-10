@@ -1,11 +1,12 @@
-Given /^[Pp]P: Partner user's (.*) Status is (.*)$/ do
-
-end
-Given /^[Pp]P: Partner user's (.*) partner account Status is (.*)$/ do
+Given /^[Pp]P: [Pp]artner user's (.*) Status is (.*)$/ do
 
 end
 
-Given /^[Pp]P: Partner user's (.*) partner contract Status is (.*)$/ do
+Given /^[Pp]P: [Pp]artner user's (.*) partner account Status is (.*)$/ do
+
+end
+
+Given /^[Pp]P: [Pp]artner user's (.*) partner contract Status is (.*)$/ do
 
 end
 
@@ -57,9 +58,11 @@ Then /^[Pp]P: [Uu]ser blur off Email$/do
 
 end
 
+Then /^[Pp]P: [Ee]xpect login page email tooltip count is (.*)$/ do |count|
 
+end
 
-Then /^[Pp]P: [Ee]xpect login page email field shows error message (.*)$/ do |str|
+Then /^[Pp]P: [Ee]xpect login page email tooltip index (.*) to be (.*)$/ do |index, str|
 
 end
 
@@ -79,8 +82,11 @@ Then /^[Pp]P: [Ee]xpect login page [Pp]assword field shows placeholder (.*)$/ do
 
 end
 
+Then /^[Pp]P: [Ee]xpect login page password tooltip count is (.*)$/ do |count|
 
-Then /^[Pp]P: [Ee]xpect login page Password shows error message (.*)$/ do |str|
+end
+
+Then /^[Pp]P: [Ee]xpect login page Password tooltip index (.*) to be (.*)$/ do |index, str|
 
 end
 

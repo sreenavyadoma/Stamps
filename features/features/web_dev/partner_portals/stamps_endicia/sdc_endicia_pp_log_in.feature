@@ -21,8 +21,8 @@ Feature: PP-MVP: Login Page
 
         # Validate Single Help block tooltips
         Then PP: User clicks Log In
-        Then PP: expect login page email field shows error message This field is required.
-        Then PP: expect login page Password shows error message This field is required.
+        Then PP: expect login page email tooltip index 0 to be This field is required.
+        Then PP: expect login page Password tooltip index 0 to be This field is required.
 
         #set negative values for tooltip validation
         Then PP: set login page email field to abc
@@ -32,20 +32,26 @@ Feature: PP-MVP: Login Page
 
      # Validate tooltips for various values
         #Validate Email tooltips
-        Then PP: expect login page email field shows error message Valid email requested
+        Then PP: expect login page email tooltip count is 1
+        Then PP: expect login page email tooltip index 0 to be  Valid email address required.
+
         #Validate Password tooltips
-        Then PP: expect login page password shows error message Field value should have at least 8 characters
-        Then PP: expect login page password shows error message "Field value should include at least 1 number"
-        Then PP: expect login page password shows error message "Field value should include at least 1 letter"
+        Then PP: expect login page password tooltip count is 2
+        Then PP: expect login page password tooltip index 1 to be 8 characters minimum.
+        Then PP: expect login page password tooltip index 2 to be At least 1 number required.
+        Then PP: expect login page password tooltip index 3 to be At least 1 letter required.
+
+    #Valiadate email and password can't be the same
+        Then PP: set login page email field to abc@stamps.com
+        Then PP: set login page password to abc@stamps.com
+        Then PP: expect login page password tooltip index 0 to be Cannot match email.
 
 
-#        Then PP: user enters same valid value into Email and Password
-#        Then PP: user blurs off Password
-#        Then PP: password shows error message "Field value should not be the same as EMAIL"
-#        Then PP: user enters valid Email/Password combination
-#        Then PP: user clicks Log In
-#        Then PP: website redirects user to Dashboard Page
-#        Then PP: website records login event in Audit Records
+        Then PP: set login page email field to abc@stamps.com
+        Then PP: set login page password to pass1234
+        Then PP: User clicks Log In
+        Then PP: website redirects user to Dashboard Page
+        Then PP: website records login event in Audit Records
 
 
 
