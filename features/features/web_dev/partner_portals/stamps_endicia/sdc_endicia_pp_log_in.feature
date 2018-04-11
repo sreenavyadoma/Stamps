@@ -45,7 +45,7 @@ Feature: PP-MVP: Login Page
         Then PP: set login page password to abc@stamps.com
         Then PP: expect login page password tooltip index 0 to be Cannot match email.
 
-
+    #validate clicking log in button navigates to dashboard page
         Then PP: set login page email to abc@stamps.com
         Then PP: set login page password to pass1234
         Then PP: User clicks Log In
