@@ -13,7 +13,6 @@ module Stamps
       sign_out_link.safe_wait_until_present(timeout: 1)
       sign_out_link.safe_click
       sign_out_link.safe_send_keys(:enter)
-      sleep(1)
     end
   end
 

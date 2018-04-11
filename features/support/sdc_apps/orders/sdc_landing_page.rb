@@ -6,6 +6,7 @@ module Stamps
       element(:username) { SdcElement.new(browser.text_field(xpath: "//input[@placeholder='USERNAME']")) }
       element(:password) { SdcElement.new(browser.text_field(xpath: "//input[@placeholder='PASSWORD']")) }
       element(:sign_in) { SdcElement.new(browser.span(xpath: "//span[contains(text(), 'Sign In')]")) }
+      element(:signed_in_user) { SdcElement.new(browser.a(id: "username")) }
 
       page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Orders&" }
 
@@ -31,22 +32,22 @@ module Stamps
           begin
             sign_in.click
             sign_in.send_keys(:enter)
+            sign_in.send_keys(:enter)
             sign_in.safe_click
             #sign_in.send_keys_while_present(:enter, ctr: 2)
             #sign_in.safe_wait_while_present
-            break unless sign_in.present?
+            break if signed_in_user.present?
           rescue
             # ignore
           end
         end
-        sleep(5)
       end
     end
 
     class AndroidLandingPage < LandingPage
-      element(:username) { browser.find_element(xpath: "//input[@placeholder='USERNAME']") }
-      element(:password) { browser.find_element(xpath: "//input[@placeholder='PASSWORD']") }
-      element(:sign_in) { browser.find_element(xpath: "//span[contains(text(), 'Sign In')]") }
+      element(:username) { SdcElement.new(browser.find_element(xpath: "//input[@placeholder='USERNAME']")) }
+      element(:password) { SdcElement.new(browser.find_element(xpath: "//input[@placeholder='PASSWORD']")) }
+      element(:sign_in) { SdcElement.new(browser.find_element(xpath: "//span[contains(text(), 'Sign In')]")) }
 
       def sign_in_with(usr, pwd)
         username.set(usr)
