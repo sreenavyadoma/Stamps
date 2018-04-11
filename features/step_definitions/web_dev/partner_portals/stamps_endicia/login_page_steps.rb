@@ -1,13 +1,25 @@
-Given /^[Pp]P: [Pp]artner user's (.*) Status is (.*)$/ do
-
+Then /^[Ee]stablish db connection$/ do
+  sql_server.connect.db_name
 end
 
-Given /^[Pp]P: [Pp]artner user's (.*) partner account Status is (.*)$/ do
-
+Then /^[Cc]lose db connection$/ do
+  sql_server.close
 end
 
-Given /^[Pp]P: [Pp]artner user's (.*) partner contract Status is (.*)$/ do
+Given /^[Pp]P: [Pp]artner user's (.*) Status is (.*)$/ do |user, status|
+  step "Establish db connection"
+  result = sql_server.db_name.query("xxx")
+  expect(result).to eql(status)
+end
 
+Given /^[Pp]P: [Pp]artner user's (.*) partner account Status is (.*)$/ do |partner, status|
+  result = sql_server.db_name.query("xxx")
+  expect(result).to eql(status)
+end
+
+Given /^[Pp]P: [Pp]artner user's (.*) partner contract Status is (.*)$/ do |partner, status|
+  result = sql_server.db_name.query("xxx")
+  expect(result).to eql(status)
 end
 
 Then /^[Pp]P: [Aa] user navigates to the login page$/ do
