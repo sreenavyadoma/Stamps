@@ -222,7 +222,7 @@ module Stamps
         subclass.required_element_list = required_element_list.dup
       end
 
-      def element(name, required: false)
+      def element(name, tag_name: nil, timeout: 30, required: false)
         _element(name, required: required) { SdcElement.new(tag_name) }
       end
       alias_method :text_field, :element
