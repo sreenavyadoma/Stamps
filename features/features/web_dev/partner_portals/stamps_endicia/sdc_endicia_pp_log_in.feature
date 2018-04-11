@@ -21,14 +21,13 @@ Feature: PP-MVP: Login Page
 
         # Validate Single Help block tooltips
         Then PP: User clicks Log In
-        Then PP: expect login page email tooltip index 0 to be This field is required.
-        Then PP: expect login page Password tooltip index 0 to be This field is required.
+        Then PP: expect login page email tooltip index 1 to be This field is required.
+        Then PP: expect login page Password tooltip index 2 to be This field is required.
 
         #set negative values for tooltip validation
-        Then PP: set login page email field to abc
-        #Then PP: user blur off Email
+        Then PP: set login page email to abc
         Then PP: set login page password to a!
-       # Then PP: user blur off Password
+
 
      # Validate tooltips for various values
         #Validate Email tooltips
@@ -42,19 +41,13 @@ Feature: PP-MVP: Login Page
         Then PP: expect login page password tooltip index 3 to be At least 1 letter required.
 
     #Valiadate email and password can't be the same
-        Then PP: set login page email field to abc@stamps.com
+        Then PP: set login page email to abc@stamps.com
         Then PP: set login page password to abc@stamps.com
         Then PP: expect login page password tooltip index 0 to be Cannot match email.
 
 
-        Then PP: set login page email field to abc@stamps.com
+        Then PP: set login page email to abc@stamps.com
         Then PP: set login page password to pass1234
         Then PP: User clicks Log In
-        Then PP: website redirects user to Dashboard Page
-        Then PP: website records login event in Audit Records
-
-
-
-       #Then PP: check Profile page Money-saving offers and new products
-       # Then PP: set profile page survey question to Mostly shipping
-       # Then PP: set profile page survey question to Both mailing and shipping
+        Then PP: expect website redirects user to Dashboard Page
+        Then PP: expect website records login event in Audit Records
