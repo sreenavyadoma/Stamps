@@ -1,11 +1,11 @@
 module Stamps
-  class Rating < WebApps::Base
+  class Rating
     def spreadsheet
-      cache[:spreadsheet].nil? ? cache[:spreadsheet] = SpreadSheet.new(param) : cache[:spreadsheet]
+      @spreadsheet ||= SpreadSheet.new
     end
   end
 
-  class SpreadSheet < WebApps::Base
+  class SpreadSheet
     def source_file
       "#{data_for(:rates_test, {})['source_dir']}\\#{data_for(:rates_test, {})['rate_file']}"
     end

@@ -136,7 +136,7 @@ class SdcTest
         require 'watir'
       end
 
-      if /rates/.match(scenario.name)
+      if /rates/.match(scenario.tags[0].name)
         require 'spreadsheet'
         require "csv"
         include Spreadsheet
