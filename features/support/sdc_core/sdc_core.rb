@@ -344,7 +344,7 @@ module Stamps
 
     def wait_while_present(timeout: 10, interval: 0.2)
       if @element.respond_to? :wait_while_present
-        @element.send(:wait_while_present, timeout: timeout, interval: interval)
+        @element.send(:wait_while_present, timeout: timeout)
       else
         wait_until(timeout: timeout, interval: interval) { present? }
       end
