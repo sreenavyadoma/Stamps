@@ -40,9 +40,19 @@ Given /^(?:|(?:|[Aa] )(?:[Vv]alid |))[Uu]ser is signed in to Web Apps$/ do
   step "I launched the browser"
   step "Health Check: Print - Web Batch" if SdcEnv.health_check
   step "Health Check: Print - Address Book" if SdcEnv.health_check
-  #step "load Web Apps Sign-in page"
+
+  step "load Web Apps Sign-in page"
+  step "sign-in to Web Apps as #{TestData.store[:username]}, #{TestData.store[:password]}"
+
+  step "Navigation Bar: Customer Balance"
+end
+
+Given /^(?:|(?:|[Aa] )(?:[Vv]alid |))[Uu]ser is signed in to SDC Web Apps$/ do
+  step "I launched the browser"
+  step "Health Check: Print - Web Batch" if SdcEnv.health_check
+  step "Health Check: Print - Address Book" if SdcEnv.health_check
+
   step "visit Sdc Website"
-  #step "sign-in to Web Apps as #{TestData.store[:username]}, #{TestData.store[:password]}"
   step "sign-in to SDC Website"
   step "Navigation Bar: Customer Balance"
 end

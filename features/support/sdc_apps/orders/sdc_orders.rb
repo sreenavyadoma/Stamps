@@ -35,9 +35,10 @@ module Stamps
 
       end
 
-      def paging_toolbar
-
-      end
+      #part of grid
+      # def paging_toolbar
+      #
+      # end
     end
   end
 end

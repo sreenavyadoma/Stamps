@@ -1,6 +1,6 @@
 Then /^[Pp]repare environment for ratings test$/ do
-  step "select Print On Shipping Label - Paper" if @SdcEnv.sdc_app==:mail
-  step "add new order" if @SdcEnv.sdc_app==:orders
+  step "select Print On Shipping Label - Paper" if SdcEnv.sdc_app==:mail
+  step "add new order" if SdcEnv.sdc_app==:orders
 end
 
 Then /^[Ee]xcel rate sheet is loaded$/ do
