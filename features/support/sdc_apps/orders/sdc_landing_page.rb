@@ -1,11 +1,11 @@
 module Stamps
   module Orders
 
-    class LandingPage < SdcPage
+    class LandingPage < WatirDrops::PageObject
 
-      element(:username) { browser.text_field(xpath: "//input[@placeholder='USERNAME']") }
-      element(:password) { browser.text_field(xpath: "//input[@placeholder='PASSWORD']") }
-      element(:sign_in) { browser.span(xpath: "//span[contains(text(), 'Sign In')]") }
+      element(:username) { SdcElement.new(browser.text_field(xpath: "//input[@placeholder='USERNAME']")) }
+      element(:password) { SdcElement.new(browser.text_field(xpath: "//input[@placeholder='PASSWORD']")) }
+      element(:sign_in) { SdcElement.new(browser.span(xpath: "//span[contains(text(), 'Sign In')]")) }
 
       page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Orders&" }
 
@@ -40,7 +40,7 @@ module Stamps
             # ignore
           end
         end
-        sign_in.wait_while_present(timeout: 20)
+        sign_in.wait_while_present(timeout: 10)
         #sleep(10)
       end
     end

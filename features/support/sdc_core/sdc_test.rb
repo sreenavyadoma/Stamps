@@ -78,7 +78,7 @@ class SdcTest
 
     def configure
 
-      #Selenium::WebDriver.logger.level = :warn
+      Selenium::WebDriver.logger.level = :warn
 
       if SdcEnv.sauce_device
         SdcPage.browser = test_with_labels
@@ -202,6 +202,8 @@ class SdcTest
 
     def require_gems
 
+      require 'appium_lib'
+      require 'appium_lib_core'
 
       if /rates/.match(scenario.tags[0].name)
         require 'spreadsheet'

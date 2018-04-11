@@ -15,8 +15,6 @@ require 'measured'
 require 'holidays'
 require 'watir'
 require 'watir_drops'
-require 'appium_lib'
-require 'appium_lib_core'
 
 require_relative 'sdc_core/sdc_test'
 require_relative 'sdc_core/sdc_core'

@@ -19,7 +19,6 @@ Then /^[Ss]ign-in to SDC Website$/ do
 end
 
 Then /^sign-out of SDC Website$/ do
-  sleep(2)
   SdcWebsite.navigation.user_drop_down.sign_out if SdcEnv.browser
   SdcWebsite.landing_page.username.safe_wait_until_present if SdcEnv.browser
 end

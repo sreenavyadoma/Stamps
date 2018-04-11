@@ -4,9 +4,9 @@ module Stamps
 
     end
 
-    class SdcOrders < SdcPage
-      element(:loading_orders) { {text: 'Loading orders...'} }
-      element(:grid_body, required: true) { {xpath: "//*[contains(@class, 'orders-grid')]"} }
+    class SdcOrders < WatirDrops::PageObject
+      element(:loading_orders) { SdcElement.new(browser.element(text: 'Loading orders...')) }
+      element(:grid_body, required: true) { SdcElement.new(browser.element(xpath: "//*[contains(@class, 'orders-grid')]")) }
 
       def order_details
         @order_details = nil
