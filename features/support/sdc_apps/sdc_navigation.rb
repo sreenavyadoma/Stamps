@@ -1,9 +1,6 @@
 module Stamps
 
   class SignedInUser < WatirDrops::PageObject
-    # button(:signed_in_user, required: true) { {id: 'userNameText'} }
-    # element(:sign_out_link) { {id: "signOutLink"} }
-
     element(:signed_in_user) { SdcElement.new(browser.a(id: "username")) }
     element(:sign_out_link) { SdcElement.new(browser.a(id: "signOutLink")) }
 
@@ -12,7 +9,7 @@ module Stamps
       signed_in_user.hover unless sign_out_link.present?
       sign_out_link.safe_wait_until_present(timeout: 1)
       sign_out_link.safe_click
-      sign_out_link.safe_send_keys(:enter)
+      #sign_out_link.safe_send_keys(:enter)
     end
   end
 
