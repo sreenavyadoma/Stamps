@@ -29,7 +29,6 @@ module Stamps
         password.set(pwd)
         iter.to_i.times do
           begin
-            sleep(0.25)
             sign_in.click
             sign_in.send_keys(:enter)
             sign_in.safe_click
@@ -40,8 +39,7 @@ module Stamps
             # ignore
           end
         end
-        sign_in.wait_while_present(timeout: 10)
-        #sleep(10)
+        sleep(5)
       end
     end
 
