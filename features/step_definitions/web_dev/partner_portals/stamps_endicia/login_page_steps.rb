@@ -58,8 +58,6 @@ end
 
 
 Then /^[Pp]P: set login page email to (.*)$/do |str|
-  StampsEndicia.login_page.email.safe_wait_while_present
-  expect(StampsEndicia.login_page.email).to be_present, "Log In page did not load properly, check your test."
   StampsEndicia.login_page.email.set(TestData.store[:email]=(str.nil?))
   step "PP: Blur out on Login Page"
 end

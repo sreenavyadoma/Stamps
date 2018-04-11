@@ -26,6 +26,7 @@ Feature: PP-MVP: Login Page
 
         #set negative values for tooltip validation
         Then PP: set login page email to abc
+        Then PP: Blur out on Login Page
         Then PP: set login page password to a!
 
 
