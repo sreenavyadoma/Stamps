@@ -1,4 +1,4 @@
-@sdc_endicia_pp_log
+@sdc_endicia_pp_log_in
 Feature: PP-MVP: Login Page
 
     Background:
@@ -12,8 +12,6 @@ Feature: PP-MVP: Login Page
         Then PP: Partner user's xyz partner contract Status is Active
         Then PP: A user navigates to the login page
 
-    @sdc_endicia_pp_log_in_2
-    Scenario: PP: Login UI Validation
         #verify all content and fields are present
         Then PP: expect login page header Welcome to the Stamps.com endicia Partner Portal exist
         Then PP: expect login page Email field to exist
