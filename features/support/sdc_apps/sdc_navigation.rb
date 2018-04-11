@@ -1,8 +1,11 @@
 module Stamps
 
   class SignedInUser < SdcPageObject
-    button(:signed_in_user, required: true) { {id: 'userNameText'} }
-    element(:sign_out_link) { {id: "signOutLink"} }
+    # button(:signed_in_user, required: true) { {id: 'userNameText'} }
+    # element(:sign_out_link) { {id: "signOutLink"} }
+
+    _element(:signed_in_user) { browser.a(id: "username") }
+    _element(:sign_out_link) { browser.a(id: "signOutLink") }
 
     def sign_out(iter: 2)
       signed_in_user.safe_wait_until_present
@@ -21,3 +24,4 @@ module Stamps
   end
 
 end
+

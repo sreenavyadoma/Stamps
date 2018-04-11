@@ -1,6 +1,9 @@
-default: --backtrace --profile saucelabs_browser
+default: --backtrace --profile browser_saucelabs
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
+
+browser_saucelabs:  --tags @saucelabs_poc SAUCE_DEVICE=temp_device VERBOSE=true WEB_APP=orders URL=stg USR=abqast1 PW=pass111 DEBUG=true #URL=prod USR=abqaprod1 PW=password1 DEBUG=true HEADLESS=true
+iphonex_saucelabs: --tags @saucelabs_poc SAUCE_DEVICE='iPhone X Simulator' VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password
 
 #todo-Rob set PRINTER=factory as default automation printer
 #robcm=ccpryiihrjz ccfb311osps4x print_dialog_ship_date

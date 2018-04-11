@@ -3,13 +3,9 @@ module Stamps
 
     class LandingPage < SdcPageObject
 
-      text_field(:username, tag_name: :text_field, required: true) { {xpath: "//input[@placeholder='USERNAME']"} }
-      text_field(:password, tag_name: :text_field, required: true) { {xpath: "//input[@placeholder='PASSWORD']"} }
-      button(:sign_in, required: true) { {xpath: "//span[contains(text(), 'Sign In')]"} }
-
-      element(:rm_checkbox) { {xpath: "//*[contains(@class, 'remember-username-checkbox')]//span[contains(@id, 'displayEl')]"} }
-      element(:rm_verify) { {xpath: "//*[contains(@class, 'remember-username-checkbox')]"} }
-      checkbox(:remember_me, :rm_checkbox, :rm_verify, "class", "checked")
+      _element(:username) { browser.text_field(xpath: "//input[@placeholder='USERNAME']") }
+      _element(:password) { browser.text_field(xpath: "//input[@placeholder='PASSWORD']") }
+      _element(:sign_in) { browser.span(xpath: "//span[contains(text(), 'Sign In')]") }
 
       page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Orders&" }
 
@@ -33,18 +29,27 @@ module Stamps
         password.set(pwd)
         iter.to_i.times do
           begin
-            sign_in.safe_click(ctr: 2).send_keys_while_present(:enter, ctr: 2)
-            sign_in.safe_wait_while_present
+            sleep(0.25)
+            sign_in.click
+            sign_in.send_keys(:enter)
+            sign_in.safe_click
+            #sign_in.send_keys_while_present(:enter, ctr: 2)
+            #sign_in.safe_wait_while_present
             break unless sign_in.present?
           rescue
             # ignore
           end
         end
-        sleep(10) if SdcEnv.ios
+        sign_in.wait_while_present(20)
+        sleep(10)
       end
     end
 
     class AndroidLandingPage < LandingPage
+      _element(:username) { browser.find_element(xpath: "//input[@placeholder='USERNAME']") }
+      _element(:password) { browser.find_element(xpath: "//input[@placeholder='PASSWORD']") }
+      _element(:sign_in) { browser.find_element(xpath: "//span[contains(text(), 'Sign In')]") }
+
       def sign_in_with(usr, pwd)
         username.set(usr)
         password.set(pwd)

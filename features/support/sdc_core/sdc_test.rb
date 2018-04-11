@@ -2,97 +2,121 @@ class SdcTest
   class << self
     attr_reader :test_scenario, :scenario
 
+    def sauce_endpoint
+      #"https://#{data_for(:sauce_endpoint, {})['username']}:#{data_for(:sauce_endpoint, {})['access_key']}@ondemand.saucelabs.com:443/wd/hub"
+      "https://robcruz:0e60dbc9-5bbf-425a-988b-f81c42d6b7ef@ondemand.saucelabs.com:443/wd/hub"
+    end
+
+    def sauce_edge
+      caps = Selenium::WebDriver::Remote::Capabilities.edge()
+      caps['platform'] = 'Windows 10'
+      caps['version'] = '16.16299'
+      client = Selenium::WebDriver::Remote::Http::Default.new
+      client.timeout = 180
+
+      Watir::Browser.new :remote, {desired_capabilities: caps, http_client: client, url: sauce_endpoint}
+    end
+
     def configure
 
-      if SdcEnv.browser
-        begin
-          #Watir.always_locate = true
-          Selenium::WebDriver.logger.level = :warn
-          case(SdcEnv.browser)
+      #Selenium::WebDriver.logger.level = :warn
 
-            when :edge
-              kill("taskkill /im MicrosoftEdge.exe /f")
-              SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
-
-            when :firefox
-              kill("taskkill /im firefox.exe /f")
-              unless SdcEnv.firefox_profile
-                SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
-              else
-                profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(firefox_profile)
-                profile.assume_untrusted_certificate_issuer = true
-                profile['network.http.phishy-userpass-length'] = 255
-                SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, :profile => profile))
-              end
-
-            when :chrome
-              kill("taskkill /im chrome.exe /f")
-              SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
-
-            when :chromeb
-              kill("taskkill /im chrome.exe /f")
-              Selenium::WebDriver::Chrome.path = data_for(:setup, {})['windows']['chromedriverbeta']
-              SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
-
-            when :ie
-              kill("taskkill /im iexplore.exe /f")
-              SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:ie))
-
-            when :safari
-              kill("killall 'Safari Technology Preview'")
-              SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:safari, technology_preview: true))
-
-            else
-              raise ArgumentError, "Invalid browser selection. #{test_driver}"
-          end
-
-          SdcDriver.driver.driver.manage.timeouts.page_load = 12
-
-          if SdcEnv.debug
-            SdcDriver.driver.window.resize_to 1300, 1020
-            SdcDriver.driver.window.move_to 0, 0
-          else
-            SdcDriver.driver.window.maximize
-          end
-
-        rescue Exception => e
-          SdcLog.error e.message
-          SdcLog.error e.backtrace.join("\n")
-          raise e, "Browser driver failed to start"
-        end
-
-      elsif SdcEnv.mobile
-        begin
-          SdcDriver.driver = SdcDriverDecorator.new(SdcAppiumDriver.start(SdcEnv.mobile.to_s).start_driver)
-          SdcDriver.driver.manage.timeouts.implicit_wait = 15
-
-        rescue Exception => e
-          SdcLog.error e.message
-          SdcLog.error e.backtrace.join("\n")
-          raise e, "Appium driver failed to start"
-        end
-
+      if SdcEnv.sauce_device
+        SdcDriver.driver = sauce_edge
+        SdcLog.info SdcDriver.driver.class
+        SdcLog.info SdcDriver.driver
       else
-        raise ArgumentError, "BROWSER or MOBILE not specified for #{test_scenario}"
+
+        if SdcEnv.browser
+          begin
+            #Watir.always_locate = true
+            case(SdcEnv.browser)
+
+              when :edge
+                kill("taskkill /im MicrosoftEdge.exe /f")
+                SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
+
+              when :firefox
+                kill("taskkill /im firefox.exe /f")
+                unless SdcEnv.firefox_profile
+                  SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
+                else
+                  profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(firefox_profile)
+                  profile.assume_untrusted_certificate_issuer = true
+                  profile['network.http.phishy-userpass-length'] = 255
+                  SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, :profile => profile))
+                end
+
+              when :chrome
+                kill("taskkill /im chrome.exe /f")
+                SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+
+              when :chromeb
+                kill("taskkill /im chrome.exe /f")
+                Selenium::WebDriver::Chrome.path = data_for(:setup, {})['windows']['chromedriverbeta']
+                SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+
+              when :ie
+                kill("taskkill /im iexplore.exe /f")
+                SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:ie))
+
+              when :safari
+                kill("killall 'Safari Technology Preview'")
+                SdcDriver.driver = SdcDriverDecorator.new(Watir::Browser.new(:safari, technology_preview: true))
+
+              else
+                raise ArgumentError, "Invalid browser selection. #{test_driver}"
+            end
+
+            SdcDriver.driver.driver.manage.timeouts.page_load = 12
+
+            if SdcEnv.debug
+              SdcDriver.driver.window.resize_to 1300, 1020
+              SdcDriver.driver.window.move_to 0, 0
+            else
+              SdcDriver.driver.window.maximize
+            end
+
+          rescue Exception => e
+            SdcLog.error e.message
+            SdcLog.error e.backtrace.join("\n")
+            raise e, "Browser driver failed to start"
+          end
+
+        elsif SdcEnv.mobile
+          begin
+            SdcDriver.driver = SdcDriverDecorator.new(SdcAppiumDriver.start(SdcEnv.mobile.to_s).start_driver)
+            SdcDriver.driver.manage.timeouts.implicit_wait = 180
+
+          rescue Exception => e
+            SdcLog.error e.message
+            SdcLog.error e.backtrace.join("\n")
+            raise e, "Appium driver failed to start"
+          end
+
+        else
+          raise ArgumentError, "BROWSER or MOBILE not specified for #{test_scenario}"
+        end
       end
     end
 
     def start(scenario)
       @scenario = scenario
-      SdcEnv.browser ||= browser_selection(ENV['BROWSER'])
-      SdcEnv.mobile ||= mobile(ENV['MOBILE'])
-      SdcEnv.ios ||= is_ios?(ENV['MOBILE'])
-      SdcEnv.android ||= is_android?(ENV['MOBILE'])
-      SdcEnv.verbose ||= ENV['VERBOSE'].nil? ? false : ENV['VERBOSE'].casecmp('true') == 0
-      SdcEnv.hostname ||= Socket.gethostname
-      SdcEnv.sdc_app ||= ENV['WEB_APP'].nil? ? ENV['WEB_APP'] : ENV['WEB_APP'].downcase.to_sym
-      SdcEnv.health_check ||= ENV['HEALTHCHECK'].nil? ? false : ENV['HEALTHCHECK'].casecmp('true') == 0
+      SdcEnv.sauce_device ||= ENV['SAUCE_DEVICE'].downcase.sub(' ', '_').to_sym unless ENV['SAUCE_DEVICE'].nil? #todo-Rob fix me
+      SdcEnv.mobile ||= ENV['MOBILE'].downcase.sub(' ', '').to_sym unless ENV['MOBILE'].nil? #todo-Rob fix me
+      SdcEnv.ios ||= SdcEnv::IOS.include?(ENV['MOBILE'].to_sym) unless ENV['MOBILE'].nil?
+      SdcEnv.android ||= SdcEnv::ANDROID.include?(ENV['MOBILE'].to_sym) unless ENV['MOBILE'].nil?
+      SdcEnv.verbose ||= ENV['VERBOSE']
+      SdcEnv.sdc_app ||= ENV['WEB_APP'].downcase.to_sym unless ENV['WEB_APP'].nil?
+      SdcEnv.health_check ||= ENV['HEALTHCHECK']
       SdcEnv.usr ||= ENV['USR']
       SdcEnv.pw ||= ENV['PW']
-      SdcEnv.env ||= test_env(ENV['URL'])
       SdcEnv.firefox_profile ||= ENV['FIREFOX_PROFILE']
       SdcEnv.framework ||= ENV['FRAMEWORK']
       SdcEnv.debug ||= ENV['DEBUG']
+
+      SdcEnv.env ||= test_env(ENV['URL'])
+      SdcEnv.browser ||= browser_selection(ENV['BROWSER'])
 
       require_gems
 
@@ -136,7 +160,7 @@ class SdcTest
         require 'watir'
       end
 
-      if /rates/.match(scenario.name)
+      if /rates/.match(scenario.tags[0].name)
         require 'spreadsheet'
         require "csv"
         include Spreadsheet

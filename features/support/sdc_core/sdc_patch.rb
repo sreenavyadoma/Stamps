@@ -34,4 +34,8 @@ String.class_eval do
   def extract_numbers
     /\d+/.match(self).to_s
   end
+
+  def alpha_numeric
+    self.gsub(/[^0-9A-Za-z]/, '')
+  end
 end

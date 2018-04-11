@@ -9,7 +9,7 @@ module Stamps
 
     class << self #todo-Rob refactor PrintMedia
       attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose, :printer, :browser, :hostname,
-                    :print_media, :mobile, :android, :ios, :firefox_profile, :framework, :debug
+                    :print_media, :mobile, :android, :ios, :firefox_profile, :framework, :debug, :sauce_device
     end
   end
 
@@ -111,7 +111,7 @@ module Stamps
       @driver = driver
     end
 
-    def element(tag_name, locator, message: '', timeout: 12)
+    def element(tag_name, locator, message: '', timeout: 30)
       begin
         element = wait_until(timeout: timeout, message: message) { find_element(tag_name, locator) }
       rescue Selenium::WebDriver::Error::TimeOutError
@@ -125,7 +125,7 @@ module Stamps
       SdcElement.new(find_element(tag_name, locator))
     end
 
-    def elements(tag_name, locator, message: '', timeout: 12)
+    def elements(tag_name, locator, message: '', timeout: 30)
       begin
         element = wait_until(timeout: timeout, message: message) { find_elements(tag_name, locator) }
       rescue Selenium::WebDriver::Error::TimeOutError
@@ -221,7 +221,7 @@ module Stamps
         subclass.required_element_list = required_element_list.dup
       end
 
-      def element(name, tag_name: nil, timeout: 12, required: false)
+      def element(name, tag_name: nil, timeout: 30, required: false)
         _element(name, required: required) { finder.element(tag_name, yield, timeout: timeout) }
       end
       alias_method :text_field, :element
@@ -230,7 +230,7 @@ module Stamps
       alias_method :selection, :element
       alias_method :link, :element
 
-      def elements(name, tag_name: nil, timeout: 12, required: false)
+      def elements(name, tag_name: nil, timeout: 30, required: false)
         _elements(name, required: required) { finder.elements(tag_name, yield, timeout: timeout) }
       end
 
@@ -247,19 +247,15 @@ module Stamps
       def visit(*args)
         new.tap do |page|
           page.goto(*args)
-          exception = Selenium::WebDriver::Error::WebDriverError
-          message = "Expected to be on #{page.class}, but conditions not met"
           if page.page_verifiable?
             begin
               page.wait_until(timeout: 20) { page.on_page? }
             rescue Selenium::WebDriver::Error::TimeOutError
-              raise exception, message
+              raise Selenium::WebDriver::Error::WebDriverError, 'Page or one of its component did not load'
             end
           end
         end
       end
-
-      private
 
       def _element(name, required: false, &block)
         define_method(name) do |*args|
