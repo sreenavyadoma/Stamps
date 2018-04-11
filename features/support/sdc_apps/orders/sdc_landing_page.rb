@@ -40,8 +40,8 @@ module Stamps
             # ignore
           end
         end
-        sign_in.wait_while_present(20)
-        sleep(10)
+        sign_in.wait_while_present(timeout: 20)
+        #sleep(10)
       end
     end
 

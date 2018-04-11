@@ -17,12 +17,71 @@ class SdcTest
       Watir::Browser.new :remote, {desired_capabilities: caps, http_client: client, url: sauce_endpoint}
     end
 
+    def capabilities(device)
+      case
+        when device == :macos_safari
+          capabilities_config = {
+              :version => "11.0",
+              :platform => "macOS 10.13",
+              :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+          }
+          browser = :safari
+
+        when device == :macos_chrome
+          capabilities_config = {
+              :version => "54.0",
+              :platform => "macOS 10.13",
+              :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+          }
+          browser = :chrome
+
+        when device == :temp_device
+          capabilities_config = {
+              :version => "16.16299",
+              :platform => "Windows 10",
+              :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+          }
+          browser = :edge
+        else
+          message = "Unsupported device. DEVICE=#{device}"
+          error = ArgumentError
+          raise error, message
+      end
+
+      build_name = ENV['JENKINS_BUILD_NUMBER'] || ENV['SAUCE_BAMBOO_BUILDNUMBER'] || ENV['SAUCE_TC_BUILDNUMBER'] || ENV['SAUCE_BUILD_NAME']
+      capabilities_config[:build] = build_name unless build_name.nil?
+      Selenium::WebDriver::Remote::Capabilities.send(browser, capabilities_config)
+    end
+
+    def test_with_labels
+      begin
+        capabilities_config = {
+            :version => "16.16299",
+            :platform => "Windows 10",
+            :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+        }
+
+        build_name = ENV['JENKINS_BUILD_NUMBER'] || ENV['SAUCE_BAMBOO_BUILDNUMBER'] || ENV['SAUCE_TC_BUILDNUMBER'] || ENV['SAUCE_BUILD_NAME']
+        capabilities_config[:build] = build_name unless build_name.nil?
+        caps = Selenium::WebDriver::Remote::Capabilities.send(:edge, capabilities_config)
+
+        client = Selenium::WebDriver::Remote::Http::Default.new
+        client.timeout = 120
+
+        browser = Watir::Browser.new(:remote, {desired_capabilities: caps, http_client: client, url: sauce_endpoint})
+        return browser
+      rescue Exception => e
+        SdcLog.error e.backtrace.join("\n")
+        raise e
+      end
+    end
+
     def configure
 
       #Selenium::WebDriver.logger.level = :warn
 
       if SdcEnv.sauce_device
-        SdcDriver.driver = sauce_edge
+        SdcDriver.driver = test_with_labels
         SdcLog.info SdcDriver.driver.class
         SdcLog.info SdcDriver.driver
       else
@@ -101,7 +160,8 @@ class SdcTest
     end
 
     def start(scenario)
-      @scenario = scenario
+      @scenario = scenario #todo-rob fix this
+      SdcEnv.scenario = scenario
       SdcEnv.sauce_device ||= ENV['SAUCE_DEVICE'].downcase.sub(' ', '_').to_sym unless ENV['SAUCE_DEVICE'].nil? #todo-Rob fix me
       SdcEnv.mobile ||= ENV['MOBILE'].downcase.sub(' ', '').to_sym unless ENV['MOBILE'].nil? #todo-Rob fix me
       SdcEnv.ios ||= SdcEnv::IOS.include?(ENV['MOBILE'].to_sym) unless ENV['MOBILE'].nil?

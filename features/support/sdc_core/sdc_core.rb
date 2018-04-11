@@ -9,7 +9,8 @@ module Stamps
 
     class << self #todo-Rob refactor PrintMedia
       attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose, :printer, :browser, :hostname,
-                    :print_media, :mobile, :android, :ios, :firefox_profile, :framework, :debug, :sauce_device
+                    :print_media, :mobile, :android, :ios, :firefox_profile, :framework, :debug, :sauce_device,
+                    :scenario
     end
   end
 
@@ -221,8 +222,8 @@ module Stamps
         subclass.required_element_list = required_element_list.dup
       end
 
-      def element(name, tag_name: nil, timeout: 30, required: false)
-        _element(name, required: required) { finder.element(tag_name, yield, timeout: timeout) }
+      def element(name, required: false)
+        _element(name, required: required) { SdcElement.new(tag_name) }
       end
       alias_method :text_field, :element
       alias_method :button, :element
