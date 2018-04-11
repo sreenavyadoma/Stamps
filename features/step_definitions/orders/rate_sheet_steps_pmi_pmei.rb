@@ -437,13 +437,13 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
           SdcLog.step "#{"#" * 50}"
 
           if TestHelper.is_whole_number?(weight_lb)
-            weight_lb = weight_lb.to_i
+            weight_lb = weight_lb.to_f
             TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight_lb]] = weight_lb
             TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight]] = "#{weight_lb} lb."
             step "set Order Details Pounds to #{weight_lb}" if SdcEnv.sdc_app == :orders
             step "set Print form Pounds to #{weight_lb}" if SdcEnv.sdc_app == :mail
           else
-            weight_oz = Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_i       #AB_ORDERSAUTO_3580 - IDE bug, Weight require 2 parameters
+            weight_oz = Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_f       #AB_ORDERSAUTO_3580 - IDE bug, Weight require 2 parameters
             #SdcLog.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
             TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight]] = "#{weight_oz} oz."
             TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight_lb]] = weight_oz
