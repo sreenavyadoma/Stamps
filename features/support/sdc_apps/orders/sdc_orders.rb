@@ -4,7 +4,7 @@ module Stamps
 
     end
 
-    class SdcOrders < SdcPageObject
+    class SdcOrders < SdcPage
       element(:loading_orders) { {text: 'Loading orders...'} }
       element(:grid_body, required: true) { {xpath: "//*[contains(@class, 'orders-grid')]"} }
 

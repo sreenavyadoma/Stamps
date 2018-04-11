@@ -186,44 +186,13 @@ module Stamps
 
   end
 
-  class SdcPageObject
+  class SdcPage < WatirDrops::PageObject
     include ::SdcDriver
-    include SdcWait
 
     class << self
-      attr_writer :element_list
-      attr_writer :required_element_list
-      attr_reader :require_url
-
-      def page_url(required: false)
-        @require_url = required
-
-        define_method("page_url") do |*args|
-          yield(*args)
-        end
-      end
-
-      def page_title
-        define_method("page_title") do |*args|
-          yield(*args)
-        end
-      end
-
-      def element_list
-        @element_list ||= []
-      end
-
-      def required_element_list
-        @required_element_list ||= []
-      end
-
-      def inherited(subclass)
-        subclass.element_list = element_list.dup
-        subclass.required_element_list = required_element_list.dup
-      end
 
       def element(name, tag_name: nil, timeout: 30, required: false)
-        _element(name, required: required) { SdcElement.new(tag_name) }
+        super(name, required: required) { SdcElement.new(tag_name) }
       end
       alias_method :text_field, :element
       alias_method :button, :element
@@ -231,106 +200,18 @@ module Stamps
       alias_method :selection, :element
       alias_method :link, :element
 
-      def elements(name, tag_name: nil, timeout: 30, required: false)
-        _elements(name, required: required) { finder.elements(tag_name, yield, timeout: timeout) }
-      end
-
       def chooser(name, chooser, verify, property, property_name)
-        _element(name) { SdcChooser.new(instance_eval(chooser.to_s), instance_eval(verify.to_s), property, property_name) }
+        element(name) { SdcChooser.new(instance_eval(chooser.to_s), instance_eval(verify.to_s), property, property_name) }
       end
       alias_method :checkbox, :chooser
       alias_method :radio, :chooser
 
       def number(name, text_field, increment, decrement)
-        _element(name) { SdcNumber.new(instance_eval(text_field.to_s), instance_eval(increment.to_s), instance_eval(decrement.to_s)) }
+        element(name) { SdcNumber.new(instance_eval(text_field.to_s), instance_eval(increment.to_s), instance_eval(decrement.to_s)) }
       end
 
-      def visit(*args)
-        new.tap do |page|
-          page.goto(*args)
-          if page.page_verifiable?
-            begin
-              page.wait_until(timeout: 20) { page.on_page? }
-            rescue Selenium::WebDriver::Error::TimeOutError
-              raise Selenium::WebDriver::Error::WebDriverError, 'Page or one of its component did not load'
-            end
-          end
-        end
-      end
-
-      def _element(name, required: false, &block)
-        define_method(name) do |*args|
-          self.instance_exec(*args, &block)
-        end
-
-        element_list << name.to_sym
-        required_element_list << name.to_sym if required
-      end
-
-      def _elements(name, &block)
-        define_method(name) do |*args|
-          self.instance_exec(*args, &block)
-        end
-
-        element_list << name.to_sym
-      end
     end
 
-    attr_reader :browser, :finder
-    alias_method :driver, :browser
-
-    def initialize(browser = @@browser)
-      @browser = browser
-      @finder = SdcElementFinder.new(browser)
-    end
-
-    def inspect
-      '#<%s url=%s title=%s>' % [self.class, url.inspect, title.inspect]
-    end
-    alias_method :selector_string, :inspect
-
-    def on_page?
-      exception = Selenium::WebDriver::Error::WebDriverError
-      message = 'Can not verify page without any requirements set'
-      raise exception, message unless page_verifiable?
-
-      if self.class.require_url
-        expected = page_url.gsub("#{URI.parse(page_url).scheme}://", '').chomp('/')
-        actual = browser.url.gsub("#{URI.parse(browser.url).scheme}://", '').chomp('/')
-        return false unless expected == actual
-      end
-
-      if self.respond_to?(:page_title) && browser.title != page_title
-        return false
-      end
-
-      if !self.class.required_element_list.empty? && self.class.required_element_list.any? { |e| !send(e).present? }
-        return false
-      end
-
-      true
-    end
-
-    def goto(*args)
-      return browser.goto page_url(*args)
-
-      exception = Selenium::WebDriver::Error::WebDriverError
-      message = "Unsupported driver #{browser.class}"
-      raise exception, message unless page_verifiable?
-    end
-
-    def method_missing(method, *args, &block)
-      super unless @browser.respond_to?(method) && method != :page_url
-      @browser.send(method, *args, &block)
-    end
-
-    def respond_to_missing?(method, _include_all = false)
-      @browser.respond_to?(method) || super
-    end
-
-    def page_verifiable?
-      self.class.require_url || self.respond_to?(:page_title) || self.class.required_element_list.any?
-    end
   end
 
   class SdcDriverDecorator < BasicObject

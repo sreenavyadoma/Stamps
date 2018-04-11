@@ -1,11 +1,11 @@
 module Stamps
   module Orders
 
-    class LandingPage < SdcPageObject
+    class LandingPage < SdcPage
 
-      _element(:username) { browser.text_field(xpath: "//input[@placeholder='USERNAME']") }
-      _element(:password) { browser.text_field(xpath: "//input[@placeholder='PASSWORD']") }
-      _element(:sign_in) { browser.span(xpath: "//span[contains(text(), 'Sign In')]") }
+      element(:username) { browser.text_field(xpath: "//input[@placeholder='USERNAME']") }
+      element(:password) { browser.text_field(xpath: "//input[@placeholder='PASSWORD']") }
+      element(:sign_in) { browser.span(xpath: "//span[contains(text(), 'Sign In')]") }
 
       page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Orders&" }
 
@@ -46,9 +46,9 @@ module Stamps
     end
 
     class AndroidLandingPage < LandingPage
-      _element(:username) { browser.find_element(xpath: "//input[@placeholder='USERNAME']") }
-      _element(:password) { browser.find_element(xpath: "//input[@placeholder='PASSWORD']") }
-      _element(:sign_in) { browser.find_element(xpath: "//span[contains(text(), 'Sign In')]") }
+      element(:username) { browser.find_element(xpath: "//input[@placeholder='USERNAME']") }
+      element(:password) { browser.find_element(xpath: "//input[@placeholder='PASSWORD']") }
+      element(:sign_in) { browser.find_element(xpath: "//span[contains(text(), 'Sign In')]") }
 
       def sign_in_with(usr, pwd)
         username.set(usr)

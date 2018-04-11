@@ -2,9 +2,23 @@ $LOAD_PATH << File.expand_path('../../lib', __FILE__)
 $LOAD_PATH << File.expand_path('lib/features/orders', __FILE__)
 $LOAD_PATH << File.expand_path('features/support/lib', __FILE__)
 
-require_relative 'sdc_core/sdc_test'
-SdcTest.require_default_gems
+require 'data_magic'
+require 'rake'
+require 'log4r'
+require 'rspec'
+require 'date'
+require 'fileutils'
+require 'rbconfig'
+require 'rubygems'
+require 'open3'
+require 'measured'
+require 'holidays'
+require 'watir'
+require 'watir_drops'
+require 'appium_lib'
+require 'appium_lib_core'
 
+require_relative 'sdc_core/sdc_test'
 require_relative 'sdc_core/sdc_core'
 
 # Old Framework
