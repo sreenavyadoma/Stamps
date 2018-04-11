@@ -31,7 +31,7 @@ Then /^[Pp]P: [Ee]xpect login page header Welcome to the Stamps.com endicia Part
   expect(StampsEndicia.login_page.header).to be_present, "Header DOES NOT exist on login page"
 end
 
-Then /^[Pp]P: [Bb]lure out on [Ll]ogin [Pp]age$/do
+Then /^[Pp]P: [Bb]lur out on [Ll]ogin [Pp]age$/do
   StampsEndicia.login_page.header.blur_out
 end
 
@@ -49,7 +49,7 @@ Then /^[Pp]P: set login page email to (.*)$/do |str|
   StampsEndicia.login_page.email.safe_wait_while_present
   expect(StampsEndicia.login_page.email).to be_present, "Log In page did not load properly, check your test."
   StampsEndicia.login_page.email.set(TestData.store[:email]=(str.nil?))
-  step "PP: Blure out on Login Page"
+  step "PP: Blur out on Login Page"
 end
 
 
@@ -71,7 +71,7 @@ Then /^[Pp]P: set login page password to (.*)$/ do |str|
   StampsEndicia.login_page.password.safe_wait_while_present
   expect(StampsEndicia.login_page.password).to be_present, "Log In page did not load properly, check your test."
   StampsEndicia.login_page.password.set(TestData.store[:password]=(str.nil?))
-  step "PP: Blure out on Login Page"
+  step "PP: Blur out on Login Page"
 end
 
 
