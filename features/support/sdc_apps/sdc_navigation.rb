@@ -25,7 +25,7 @@ module Stamps
     def nav_inst
       if SdcEnv.browser
         "SignedInUser"
-      elsif SdcEnv.mobile
+      elsif SdcEnv.ios || SdEnv.android
         "ISignedInUser"
       else
         raise ArgumentError, 'Can not determine if mobile or browser test'
