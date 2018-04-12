@@ -46,12 +46,12 @@ module Stamps
 
       element(:ship_from) { {xpath: ''} }
 
-      element(:lbs_tf) { {xpath: '(//div[contains(@class, "pounds-numberfield")]//input)[1]'} }
+      text_field(:lbs_tf, tag_name: :text_field) { {xpath: '(//div[contains(@class, "pounds-numberfield")]//input)[1]'} }
       element(:lbs_inc) { {xpath: '(//div[contains(@class, "pounds-numberfield")]//div[contains(@class, "x-form-spinner-up")])[1]'} }
       element(:lbs_dec) { {xpath: '(//div[contains(@class, "pounds-numberfield")]//div[contains(@class, "x-form-spinner-down")])[1]'} }
       number(:lbs, :lbs_tf, :lbs_inc, :lbs_dec)
 
-      element(:oz_tf) { {xpath: '(//div[contains(@class, "ounces-numberfield")]//input)[1]'} }
+      text_field(:oz_tf, tag_name: :text_field) { {xpath: '(//div[contains(@class, "ounces-numberfield")]//input)[1]'} }
       element(:oz_inc) { {xpath: '(//div[contains(@class, "ounces-numberfield")]//div[contains(@class, "x-form-spinner-up")])[1]'} }
       element(:oz_dec) { {xpath: '(//div[contains(@class, "ounces-numberfield")]//div[contains(@class, "x-form-spinner-down")])[1]'} }
       number(:oz, :oz_tf, :oz_inc, :oz_dec)
