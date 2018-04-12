@@ -2,14 +2,14 @@ module Stamps
 
   module SdcEnv
     TEST_ENVIRONMENTS = %i(stg qacc cc qasc sc rating).freeze unless Object.const_defined?('Stamps::SdcEnv::TEST_ENVIRONMENTS')
-    BROWSERS = %i(firefox chrome safari edge chromeb).freeze unless Object.const_defined?('Stamps::SdcEnv::BROWSERS')
+    BROWSERS = %i(ff firefox gc chrome safari edge chromeb ie iexplorer).freeze unless Object.const_defined?('Stamps::SdcEnv::BROWSERS')
     SDC_APP = %i(orders mail webdev registration).freeze unless Object.const_defined?('Stamps::SdcEnv::SDC_APP')
     IOS = %i(iphone6 iphone7 iphone8 iphonex).freeze unless Object.const_defined?('Stamps::SdcEnv::IOS')
     ANDROID = %i(samsung_galaxy nexus_5x).freeze unless Object.const_defined?('Stamps::SdcEnv::ANDROID')
 
     class << self
       attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose, :printer, :browser, :hostname,
-                    :print_media, :mobile, :android, :ios, :firefox_profile, :framework, :debug, :scenario, :device
+                    :print_media, :mobile, :android, :ios, :firefox_profile, :framework, :debug, :scenario, :sauce_device
     end
   end
 

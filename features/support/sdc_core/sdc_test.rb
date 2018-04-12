@@ -162,10 +162,18 @@ class SdcTest
     def start(scenario)
       @scenario = scenario
       SdcEnv.scenario = scenario
-      SdcEnv.sauce_device ||= ENV['SAUCE_DEVICE'].downcase.sub(' ', '_').to_sym unless ENV['SAUCE_DEVICE'].nil? #todo-Rob fix me
-      SdcEnv.mobile ||= ENV['MOBILE'].downcase.sub(' ', '').to_sym unless ENV['MOBILE'].nil? #todo-Rob fix me
-      SdcEnv.ios ||= SdcEnv::IOS.include?(ENV['MOBILE'].to_sym) unless ENV['MOBILE'].nil?
-      SdcEnv.android ||= SdcEnv::ANDROID.include?(ENV['MOBILE'].to_sym) unless ENV['MOBILE'].nil?
+      SdcEnv.sauce_device ||= ENV['SAUCE_DEVICE'] unless ENV['SAUCE_DEVICE'].nil?
+      if SdcEnv.sauce_device
+        SdcEnv::BROWSERS.each { |browser| SdcEnv.browser = browser if SdcEnv.sauce_device.include? browser.to_s }
+        SdcEnv::IOS.each { |device| SdcEnv.ios = device if SdcEnv.sauce_device.include? device.to_s }
+        SdcEnv::ANDROID.each { |device| SdcEnv.android = device if SdcEnv.sauce_device.include? device.to_s }
+        SdcEnv.mobile = SdcEnv.ios || SdcEnv.android
+      else
+        SdcEnv.browser ||= browser_selection(ENV['BROWSER'])
+        SdcEnv.mobile ||= ENV['MOBILE'] unless ENV['MOBILE'].nil?
+        SdcEnv::IOS.each { |device| SdcEnv.ios = device if SdcEnv.mobile.include? device.to_s }
+        SdcEnv::ANDROID.each { |device| SdcEnv.android = device if SdcEnv.mobile.include? device.to_s }
+      end
       SdcEnv.verbose ||= ENV['VERBOSE']
       SdcEnv.sdc_app ||= ENV['WEB_APP'].downcase.to_sym unless ENV['WEB_APP'].nil?
       SdcEnv.health_check ||= ENV['HEALTHCHECK']
@@ -174,9 +182,7 @@ class SdcTest
       SdcEnv.firefox_profile ||= ENV['FIREFOX_PROFILE']
       SdcEnv.framework ||= ENV['FRAMEWORK']
       SdcEnv.debug ||= ENV['DEBUG']
-
       SdcEnv.env ||= test_env(ENV['URL'])
-      SdcEnv.browser ||= browser_selection(ENV['BROWSER'])
 
       require_gems
 
