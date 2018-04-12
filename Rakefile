@@ -24,8 +24,8 @@ Cucumber::Rake::Task.new(:sign_in_win10_edge_sauce) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:macos_chrome_sauce) do |t|
-  t.profile = 'macos_chrome_sauce'
+Cucumber::Rake::Task.new(:sign_in_macos_chrome_sauce) do |t|
+  t.profile = 'sign_in_macos_chrome_sauce'
   t.cucumber_opts = "-p cuke_reports"
 end
 
