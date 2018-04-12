@@ -45,7 +45,7 @@ class SdcTest
       client = Selenium::WebDriver::Remote::Http::Default.new
       client.timeout = 180
 
-      Watir::Browser.new :remote, {desired_capabilities: caps, http_client: client, url: sauce_endpoint}
+      Watir::Browser.new :remote, { desired_capabilities: caps, http_client: client, url: sauce_endpoint }
     end
 
     def capabilities(device)
