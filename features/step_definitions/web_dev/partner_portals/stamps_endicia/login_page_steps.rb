@@ -6,18 +6,18 @@ Then /^[Cc]lose db connection$/ do
   sql_server.close
 end
 
-Given /^[Pp]P: [Pp]artner user's (.*) Status is (.*)$/ do |user, status|
+Then /^[Pp]P: [Pp]artner user's (.*) Status is (.*)$/ do |user, status|
   step "Establish db connection"
   result = sql_server.db_name.query("xxx")
   expect(result).to eql(status)
 end
 
-Given /^[Pp]P: [Pp]artner user's (.*) partner account Status is (.*)$/ do |partner, status|
+Then /^[Pp]P: [Pp]artner user's (.*) partner account Status is (.*)$/ do |partner, status|
   result = sql_server.db_name.query("xxx")
   expect(result).to eql(status)
 end
 
-Given /^[Pp]P: [Pp]artner user's (.*) partner contract Status is (.*)$/ do |partner, status|
+Then /^[Pp]P: [Pp]artner user's (.*) partner contract Status is (.*)$/ do |partner, status|
   result = sql_server.db_name.query("xxx")
   expect(result).to eql(status)
 end
@@ -26,8 +26,28 @@ Then /^[Pp]P: [Aa] user navigates to the login page$/ do
   StampsEndicia.visit
 end
 
+Then /^[Pp]P: [Ee]xpect login page welcome content is (.*)$/ do |str|
+  StampsEndicia.login_page.welcome_content.safe_wait_while_present
+  expect(StampsEndicia.login_page.welcome_content.text_value).to eql(str), "Welcome to the content DOES NOT exist on login page"
+
+end
+
+Then /^[Pp]P: [Ee]xpect login page USPS Portal content is (.*)$/ do |str|
+  expect(StampsEndicia.login_page.usps_portal_content.text_value).to eql(str), "USPS Portal content DOES NOT exist on login page"
+
+end
+
+Then /^[Pp]P: [Ee]xpect login page Stamps.com endicia content is (.*)$/ do |str|
+  expect(StampsEndicia.login_page.sdc_endicia_content.text_value).to eql(str), "Stamps.com endicia content DOES NOT exist on login page"
+
+end
+
 Then /^[Pp]P: expect login page Log In button to exist$/do
- expect(StampsEndicia.login_page.log_in).to be_present, "Log In button DOES NOT exist on login page"
+  expect(StampsEndicia.login_page.log_in).to be_present, "Log In button DOES NOT exist on login page"
+end
+
+Then /^[Pp]P: [Ee]xpect login page Log In button text is (.*)$/do |str|
+ expect(StampsEndicia.login_page.login_label.text_value).to eql(str)
 end
 
 Then /^[Pp]P: [Uu]ser clicks Log In$/ do
@@ -39,9 +59,7 @@ Then /^[Pp]P: expect login page [Ff]orgot [Pp]assword link exist$/ do
   expect(StampsEndicia.login_page.forgot_pw).to be_present, "Forgot Password? link DOES NOT exist on login page"
 end
 
-Then /^[Pp]P: [Ee]xpect login page header Welcome to the Stamps.com endicia Partner Portal exist$/ do
-  expect(StampsEndicia.login_page.header).to be_present, "Header DOES NOT exist on login page"
-end
+
 
 Then /^[Pp]P: [Bb]lur out on [Ll]ogin [Pp]age$/do
   StampsEndicia.login_page.header.blur_out
@@ -52,14 +70,13 @@ Then /^[Pp]P: [Ee]xpect login page [Ee]mail field to exist$/do
 end
 
 Then /^[Pp]P: [Ee]xpect login page [Ee]mail field shows placeholder (.*)$/ do |str|
-  expect(StampsEndicia.login_page.email_label.text_value).to eql(str)
+  expect(StampsEndicia.login_page.email_placeholder.text_value).to eql(str)
 
 end
 
 
 Then /^[Pp]P: set login page email to (.*)$/do |str|
   StampsEndicia.login_page.email.set(TestData.store[:email]=(str.nil?))
-  step "PP: Blur out on Login Page"
 end
 
 
@@ -78,15 +95,12 @@ Then /^[Pp]P: [Ee]xpect login page Password field to exist$/ do
 end
 
 Then /^[Pp]P: set login page password to (.*)$/ do |str|
-  StampsEndicia.login_page.password.safe_wait_while_present
-  expect(StampsEndicia.login_page.password).to be_present, "Log In page did not load properly, check your test."
   StampsEndicia.login_page.password.set(TestData.store[:password]=(str.nil?))
-  step "PP: Blur out on Login Page"
 end
 
 
 Then /^[Pp]P: [Ee]xpect login page [Pp]assword field shows placeholder (.*)$/ do |str|
-  expect(StampsEndicia.login_page.password_label.text_value).to eql(str)
+  expect(StampsEndicia.login_page.password_placeholder.text_value).to eql(str)
 
 end
 

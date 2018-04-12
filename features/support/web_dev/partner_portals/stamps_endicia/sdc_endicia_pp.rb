@@ -4,7 +4,7 @@ module Stamps
       class StampsEndicia < SdcPageObject
 
         #page_url { |env| "https://#{env}.partner.stamps.com" }
-        page_url { |env| "https://#{env}-registration.stamps.com/registration/#!&p=profile" }
+        page_url { |env| "https://uspsportal.#{env}.stampsendicia.net/login" }
 
         def self.visit
           super(case SdcEnv.env
