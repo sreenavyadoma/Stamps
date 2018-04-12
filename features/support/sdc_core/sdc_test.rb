@@ -109,7 +109,7 @@ class SdcTest
 
     def configure
 
-      #Selenium::WebDriver.logger.level = :debug
+      Selenium::WebDriver.logger.level = :debug
 
       if SdcEnv.sauce_device
         case
