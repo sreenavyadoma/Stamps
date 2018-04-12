@@ -573,7 +573,11 @@ module Stamps
     attr_reader :element, :verify, :property, :property_val
 
     def initialize(element, verify, property, property_val)
-      set_instance_variables(binding, *local_variables)
+      @element = element
+      @verify = verify
+      @property = property
+      @property_val = property_val
+      #set_instance_variables(binding, *local_variables)
     end
 
     def chosen?
