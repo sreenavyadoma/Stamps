@@ -7,10 +7,9 @@ module Stamps
     IOS = %i(iphone6 iphone7 iphone8 iphonex).freeze unless Object.const_defined?('Stamps::SdcEnv::IOS')
     ANDROID = %i(samsung_galaxy nexus_5x).freeze unless Object.const_defined?('Stamps::SdcEnv::ANDROID')
 
-    class << self #todo-Rob refactor PrintMedia
+    class << self
       attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose, :printer, :browser, :hostname,
-                    :print_media, :mobile, :android, :ios, :firefox_profile, :framework, :debug, :sauce_device,
-                    :scenario
+                    :print_media, :mobile, :android, :ios, :firefox_profile, :framework, :debug, :scenario, :device
     end
   end
 

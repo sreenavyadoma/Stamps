@@ -160,7 +160,7 @@ class SdcTest
     end
 
     def start(scenario)
-      @scenario = scenario #todo-rob fix this
+      @scenario = scenario
       SdcEnv.scenario = scenario
       SdcEnv.sauce_device ||= ENV['SAUCE_DEVICE'].downcase.sub(' ', '_').to_sym unless ENV['SAUCE_DEVICE'].nil? #todo-Rob fix me
       SdcEnv.mobile ||= ENV['MOBILE'].downcase.sub(' ', '').to_sym unless ENV['MOBILE'].nil? #todo-Rob fix me
