@@ -358,6 +358,6 @@ end
 #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
 #
 #
-# caps = Selenium::WebDriver::Remote::Capabilities.firefox
-# caps['acceptInsecureCerts'] = true
-# SdcPage.browser = Selenium::WebDriver.for(:firefox, desired_capabilities: caps)
+# sdc_device_caps = Selenium::WebDriver::Remote::Capabilities.firefox
+# sdc_device_caps['acceptInsecureCerts'] = true
+# SdcPage.browser = Selenium::WebDriver.for(:firefox, desired_capabilities: sdc_device_caps)
