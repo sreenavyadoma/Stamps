@@ -107,6 +107,29 @@ class SdcTest
       end
     end
 
+    def macos_chrome_sauce
+      begin
+        capabilities_config = {
+            :version => "65.0",
+            :platform => "macOS 10.13",
+            :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+        }
+
+        build_name = ENV['JENKINS_BUILD_NUMBER'] || ENV['SAUCE_BAMBOO_BUILDNUMBER'] || ENV['SAUCE_TC_BUILDNUMBER'] || ENV['SAUCE_BUILD_NAME']
+        capabilities_config[:build] = build_name unless build_name.nil?
+        caps = Selenium::WebDriver::Remote::Capabilities.send(:chrome, capabilities_config)
+
+        client = Selenium::WebDriver::Remote::Http::Default.new
+        client.timeout = 120
+
+        browser = Watir::Browser.new(:remote, {desired_capabilities: caps, http_client: client, url: sauce_endpoint})
+        return browser
+      rescue Exception => e
+        SdcLog.error e.backtrace.join("\n")
+        raise e
+      end
+    end
+
     def configure
 
       Selenium::WebDriver.logger.level = :debug
@@ -115,7 +138,7 @@ class SdcTest
         case
 
           when SdcEnv.browser
-            SdcPage.browser = win10_edge_sauce
+            SdcPage.browser = class_eval(SdcEnv.sauce_device.to_s)
 
           when SdcEnv.mobile
             SdcPage.browser = SdcDriverDecorator.new(SdcAppiumDriver.new(SdcEnv.sauce_device).core_driver.start_driver)
