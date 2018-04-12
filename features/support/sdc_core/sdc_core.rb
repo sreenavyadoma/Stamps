@@ -79,25 +79,33 @@ module Stamps
 
   end
 
-  class SdcAppiumDriver < BasicObject
-    class << self
+  class SdcAppiumDriver
 
-      attr_reader :core_driver
+    attr_reader :device
 
-      def start(device)
-        file = File.expand_path("../..sdc_device_caps/#{device}.txt", __FILE__)
-        exception = Selenium::WebDriver::Error::WebDriverError
-        message = "Missing Appium capabilities file. #{device}: #{file}"
-        raise exception, message unless File.exist? file
+    def initialize(device)
+      @device = device
+    end
 
-        caps = Appium.load_appium_txt(file: file, verbose: true)
-        @core_driver = Appium::Driver.new(caps, false)
-      end
+    def core_driver
+      @core_driver ||= initialize_driver
+    end
 
-      def method_missing(name, *args, &block)
-        super unless @core_driver.respond_to?(name)
-        @core_driver.send(name, *args, &block)
-      end
+    def method_missing(name, *args, &block)
+      super unless @core_driver.respond_to?(name)
+      @core_driver.send(name, *args, &block)
+    end
+
+    private
+
+    def initialize_driver
+      file = ::File.expand_path("../../sdc_device_caps/#{device.to_s}.txt", __FILE__)
+      exception = ::Selenium::WebDriver::Error::WebDriverError
+      message = "Missing Appium capabilities file. #{device}: #{file}"
+      raise(exception, message) unless ::File.exist? file
+
+      caps = ::Appium.load_appium_txt(file: file, verbose: true)
+      ::Appium::Driver.new(caps, false)
     end
   end
 

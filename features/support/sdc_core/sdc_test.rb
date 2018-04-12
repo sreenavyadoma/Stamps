@@ -78,7 +78,7 @@ class SdcTest
 
     def configure
 
-      Selenium::WebDriver.logger.level = :warn
+      Selenium::WebDriver.logger.level = :debug
 
       if SdcEnv.sauce_device
         case
@@ -89,7 +89,7 @@ class SdcTest
             SdcLog.info SdcPage.browser
 
           when SdcEnv.mobile
-            SdcPage.browser = SdcDriverDecorator.new(SdcAppiumDriver.start(SdcEnv.mobile.to_s).start_driver)
+            SdcPage.browser = SdcDriverDecorator.new(SdcAppiumDriver.new(SdcEnv.sauce_device).core_driver.start_driver)
             SdcPage.browser.manage.timeouts.implicit_wait = 180
           else
             # ignore
@@ -153,8 +153,9 @@ class SdcTest
           end
 
         elsif SdcEnv.mobile
+
           begin
-            SdcPage.browser = SdcDriverDecorator.new(SdcAppiumDriver.start(SdcEnv.mobile.to_s).start_driver)
+            SdcPage.browser = SdcDriverDecorator.new(SdcAppiumDriver.new(SdcEnv.mobile).core_driver.start_driver)
             SdcPage.browser.manage.timeouts.implicit_wait = 180
 
           rescue Exception => e
