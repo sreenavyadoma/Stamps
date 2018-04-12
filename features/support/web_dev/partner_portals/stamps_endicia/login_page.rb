@@ -5,8 +5,10 @@ module Stamps
 
         #Welcome content
          element(:welcome_content, required: true) {{xpath: "//p['Welcome to the']"}}
+
         #sdcEndica content
         element(:sdc_endicia_content, required: true) {{xpath: "//img[@alt='Stamps.com and Endicia']"}}
+
         #USPS Portal content
          element(:usps_portal_content, required: true) {{xpath: "//p['USPS Portal']"}}
 
