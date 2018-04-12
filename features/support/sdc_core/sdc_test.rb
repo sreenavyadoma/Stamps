@@ -81,9 +81,19 @@ class SdcTest
       Selenium::WebDriver.logger.level = :warn
 
       if SdcEnv.sauce_device
-        SdcPage.browser = test_with_labels
-        SdcLog.info SdcPage.browser.class
-        SdcLog.info SdcPage.browser
+        case
+
+          when SdcEnv.browser
+            SdcPage.browser = test_with_labels
+            SdcLog.info SdcPage.browser.class
+            SdcLog.info SdcPage.browser
+
+          when SdcEnv.mobile
+            SdcPage.browser = SdcDriverDecorator.new(SdcAppiumDriver.start(SdcEnv.mobile.to_s).start_driver)
+            SdcPage.browser.manage.timeouts.implicit_wait = 180
+          else
+            # ignore
+        end
       else
 
         if SdcEnv.browser
