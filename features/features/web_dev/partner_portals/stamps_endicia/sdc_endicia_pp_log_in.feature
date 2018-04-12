@@ -59,9 +59,53 @@ Feature: PP-MVP: Login Page
           Logging in for the first time? Click ”Forgot Password“ below.
           """
 
+    #Validate Forgot Password link directs user to Reset Password Page
+
+
+     #@sdc_endicia_pp_login_page_user_status_inactive
+#    Scenario: PP: User Status is inactive expect unsuccessful login
+#        Then PP: Partner user's xyz Status is Inactive
+#        Then PP: Partner user's xyz partner account Status is Inactive
+#        Then PP: Partner user's xyz partner contract Status is Inactive
+
+#        Then PP: A user navigates to the login page
+
+#        Then PP: set login page email to automation@stamps.com
+#        Then PP: set login page password to pass1234
+#
+#        Then PP: User clicks Log In
+#       #Then PP: expect login page error message to be Your account is inactive. Please contact your Partner Manager.
+
+     #@sdc_endicia_pp_login_page_partner_status_inactive
+#    Scenario: PP: Partner Account Status is inactive expect unsuccessful login
+#        Then PP: Partner user's xyz Status is Active
+#        Then PP: Partner user's xyz partner account Status is Inactive
+#        Then PP: Partner user's xyz partner contract Status is Active
+
+#        Then PP: A user navigates to the login page
+
+#        Then PP: set login page email to automation@stamps.com
+#        Then PP: set login page password to pass1234
+#
+#        Then PP: User clicks Log In
+#       #Then PP: expect login page error message to be Your account is inactive. Please contact your Partner Manager.
+
+     #@sdc_endicia_pp_login_page_contract_status_inactive
+#    Scenario: PP: Partner Contract Status is inactive expect unsuccessful login
+#        Then PP: Partner user's xyz Status is Active
+#        Then PP: Partner user's xyz partner account Status is Active
+#        Then PP: Partner user's xyz partner contract Status is Inactive
+#
+#        Then PP: set login page email to automation@stamps.com
+#        Then PP: set login page password to pass1234
+#
+#        Then PP: User clicks Log In
+#       #Then PP: expect login page error message to be Your account is inactive. Please contact your Partner Manager.
+
+
 
     #@sdc_endicia_pp_login_page_all_status_active
-#    Scenario: PP: Successful Login
+#    Scenario: PP: All Status is Active expect Successful Login
 #
 #        Then PP: A user navigates to the login page
 #
@@ -71,23 +115,9 @@ Feature: PP-MVP: Login Page
 #
         Then PP: set login page email to automation@stamps.com
         Then PP: set login page password to pass1234
-#        Then PP: User clicks Log In
+        Then PP: User clicks Log In
         Then PP: expect website redirects user to Dashboard Page
-        Then PP: expect website records login event in Audit Records
+#        Then PP: expect website records login event in Audit Records
+
 #
-    #@sdc_endicia_pp_login_page_user_status_active
-#    Scenario: PP: Successful Login
-#        Then PP: Partner user's xyz Status is Active
-#        Then PP: Partner user's xyz partner account Status is Inactive
-#        Then PP: Partner user's xyz partner contract Status is Inactive
-#
-#        Then PP: set login page email to abc@stamps.com
-#        Then PP: set login page password to pass1234
-#
-#        Then PP: User clicks Log In
-#       # Then PP: expect website displays error message Your account is inactive. Please contact your Partner Manager.
-
-
-
-
 

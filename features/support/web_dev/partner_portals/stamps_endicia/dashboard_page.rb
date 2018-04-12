@@ -3,7 +3,7 @@ module Stamps
     module Portals
       class DashboardPage < SdcPageObject
 
-        element(:dashboard_page_header, required: true) {{xpath: "//h1['Welcome to USPS Portal']"}}
+        element(:header, required: true) {{xpath: "//h1['Welcome to USPS Portal']"}}
 
       end
 

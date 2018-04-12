@@ -58,7 +58,9 @@ Then /^[Pp]P: expect login page [Ff]orgot [Pp]assword link exist$/ do
   expect(StampsEndicia.login_page.forgot_pw).to be_present, "Forgot Password? link DOES NOT exist on login page"
 end
 
-
+Then /^[Pp]P: [Uu]ser clicks [Ff]orgot [Pp]assword link $/ do
+  StampsEndicia.login_page.forgot_pw.safe_click
+end
 
 Then /^[Pp]P: [Bb]lur out on [Ll]ogin [Pp]age$/ do
   StampsEndicia.login_page.usps_portal_content.blur_out
@@ -77,7 +79,7 @@ end
 
 
 Then /^[Pp]P: set login page email to (.*)$/ do |str|
-  StampsEndicia.login_page.email.set(TestData.store[:email]=(str))
+  StampsEndicia.login_page.email.set(TestData.store[:email]=str)
 end
 
 
@@ -97,7 +99,7 @@ Then /^[Pp]P: [Ee]xpect login page Password field to exist$/ do
 end
 
 Then /^[Pp]P: set login page password to (.*)$/ do |str|
-  StampsEndicia.login_page.password.set(TestData.store[:password]=(str.nil?))
+  StampsEndicia.login_page.password.set(TestData.store[:password]=str)
 end
 
 
@@ -121,11 +123,7 @@ Then /^[Pp]P: [Ee]xpect login page error message to be$/ do |str|
 end
 
 
-# Then /^PP: expect website redirects user to Dashboard Page$/ do
-#   # StampsEndicia.dashboard_page.header.safe_wait_while_present
-#   # expect(StampsEndicia.dashboard_page.header). to be_present, "Dashboard header DOES NOT exist on dashboard page"
-# end
-#
+
 #
 # Then /^PP: expect website records login event in Audit Records$/ do
 #
