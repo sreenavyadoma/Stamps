@@ -167,13 +167,12 @@ class SdcTest
         SdcEnv::BROWSERS.each { |browser| SdcEnv.browser = browser if SdcEnv.sauce_device.include? browser.to_s }
         SdcEnv::IOS.each { |device| SdcEnv.ios = device if SdcEnv.sauce_device.include? device.to_s }
         SdcEnv::ANDROID.each { |device| SdcEnv.android = device if SdcEnv.sauce_device.include? device.to_s }
-        SdcEnv.mobile = SdcEnv.ios || SdcEnv.android
       else
         SdcEnv.browser ||= browser_selection(ENV['BROWSER'])
-        SdcEnv.mobile ||= ENV['MOBILE'] unless ENV['MOBILE'].nil?
-        SdcEnv::IOS.each { |device| SdcEnv.ios = device if SdcEnv.mobile.include? device.to_s }
-        SdcEnv::ANDROID.each { |device| SdcEnv.android = device if SdcEnv.mobile.include? device.to_s }
+        SdcEnv.ios ||= ENV['IOS'] unless ENV['IOS'].nil?
+        SdcEnv.android ||= ENV['ANDROID'] unless ENV['ANDROID'].nil?
       end
+      SdcEnv.mobile = SdcEnv.ios || SdcEnv.android
       SdcEnv.verbose ||= ENV['VERBOSE']
       SdcEnv.sdc_app ||= ENV['WEB_APP'].downcase.to_sym unless ENV['WEB_APP'].nil?
       SdcEnv.health_check ||= ENV['HEALTHCHECK']

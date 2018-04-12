@@ -1,4 +1,4 @@
-default: --backtrace --profile iphonex_saucelabs
+default: --backtrace --profile saucelabs_samsung_galaxy
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -18,11 +18,9 @@ rob_registration: --tags @registration_normal_workflow WEB_APP=registration URL=
 
 browser_test:  --tags @iphonex BROWSER=ff VERBOSE=true USR=ccfb311osps4x PW=pass111 URL=cc WEB_APP=orders HEALTHCHECK=true
 
-iphonex: --tags @iphonex --guess MOBILE='iphone x' VERBOSE=true JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=cc USR=ccfb311osps4x PW=pass111
-
 saucelabs_browser:  --tags @saucelabs_poc BROWSER=gc VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1 DEBUG=true HEADLESS=true
-saucelabs_iphonex: --tags @saucelabs_poc IPHONE='iphone x' VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
-saucelabs_iphone8: --tags @saucelabs_poc IPHONE='iphone 8' VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
+saucelabs_iphonex: --tags @saucelabs_poc IOS=iphonex VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
+saucelabs_iphone8: --tags @saucelabs_poc IOS=iphone8 VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
 saucelabs_samsung_galaxy: --tags @saucelabs_poc ANDROID=samsung_galaxy VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
 
 saucelabs_browser_cc:  --tags @saucelabs_poc BROWSER=ff VERBOSE=true WEB_APP=orders URL=cc USR=ccfb311osps4x PW=pass111

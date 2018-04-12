@@ -52,19 +52,10 @@ module Stamps
       def sign_in_with(usr, pwd)
         username.set(usr)
         password.set(pwd)
-        iter.to_i.times do
-          begin
-            sign_in.click
-            sign_in.send_keys(:enter)
-            sign_in.send_keys(:enter)
-            sign_in.safe_click
-            #sign_in.send_keys_while_present(:enter, ctr: 2)
-            #sign_in.safe_wait_while_present
-            break if signed_in_user.present?
-          rescue
-            # ignore
-          end
-        end
+        sign_in.click
+        sign_in.send_keys(:enter)
+        sign_in.safe_send_keys(:enter)
+        sign_in.safe_click
       end
     end
 
