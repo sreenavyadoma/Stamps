@@ -1,4 +1,4 @@
-default: --backtrace --profile win10_edge_sauce
+default: --backtrace --profile iphonex_saucelabs
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 

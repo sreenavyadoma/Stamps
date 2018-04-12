@@ -307,7 +307,21 @@ class SdcTest
 
     def teardown
       begin
+
+        sessionid = SdcPage.browser.send(:bridge).session_id
+        jobname = "#{scenario.feature.name} - #{scenario.name}"
+
+        puts "SauceOnDemandSessionID=#{sessionid} job-name=#{jobname}"
+
         SdcPage.browser.quit
+
+        if scenario.passed?
+          SauceWhisk::Jobs.pass_job sessionid
+        else
+          SauceWhisk::Jobs.fail_job sessionid
+        end
+
+
       rescue
         # ignore
       end
