@@ -16,11 +16,12 @@ Then /^[Cc]heck Print form [Ee]mail [Tt]racking checkbox$/ do
   stamps.mail.print_form.email_tracking.email_checkbox.click
 end
 
-Then /^[Ss]et Print form [Pp]ounds to (\d+)$/ do |pounds|
+Then /^[Ss]et Print form [Pp]ounds to (\d+\.?\d*)$/ do |pounds|
   stamps.mail.print_form.weight.pounds.set(TestData.store[:pounds]=pounds)
 end
 
-Then /^[Ss]et Print form [Oo]unces to (\d+)$/ do |ounces|
+# Then /^[Ss]et Print form [Oo]unces to (\d+)$/ do |ounces|
+Then /^[Ss]et Print form [Oo]unces to (\d+\.?\d*)$/ do |ounces|
   stamps.mail.print_form.weight.ounces.set(TestData.store[:ounces]=ounces)
 end
 

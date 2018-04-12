@@ -357,13 +357,13 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           SdcLog.step "#{"#" * 50}"
 
           if TestHelper.is_whole_number?(weight_lb)
-            weight_lb = weight_lb.to_i
+            weight_lb = weight_lb.to_f
             TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight_lb]] = weight_lb
             TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight]] = "#{weight_lb} lb."
             step "set Order Details Pounds to #{weight_lb}"  if SdcEnv.sdc_app == :orders
             step "set Print form Pounds to #{weight_lb}"  if SdcEnv.sdc_app == :mail
           else
-            weight_oz = Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_i
+            weight_oz = Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_f
             #SdcLog.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
             TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight]] = "#{weight_oz} oz."
             TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight_lb]] = weight_oz

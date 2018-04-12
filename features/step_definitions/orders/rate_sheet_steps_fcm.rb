@@ -243,7 +243,7 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
           SdcLog.step "#{"#"*50}"
 
 
-          weight_oz=weight_oz.to_i
+          weight_oz=weight_oz.to_f
           TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight_oz]]=weight_oz
           TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight]]="#{weight_oz} oz."
           step "set Order Details Ounces to #{weight_oz}"  if SdcEnv.sdc_app==:orders

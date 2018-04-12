@@ -157,17 +157,17 @@ Then /^[Oo]n [Oo]rder [Dd]etails form, Delete Item (\d+)$/ do |item_number|
   item.delete.click
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails Weight to (\d+) lb (\d+) oz$/ do |pounds, ounces|
+Then /^[Ss]et [Oo]rder [Dd]etails Weight to (\d+\.?\d*) lb (\d+\.?\d*) oz$/ do |pounds, ounces|
   step "set Order Details Pounds to #{pounds}"
   step "set Order Details Ounces to #{ounces}"
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails Pounds to (\d+)$/ do |str|
+Then /^[Ss]et [Oo]rder [Dd]etails Pounds to (\d+\.?\d*)$/ do |str|
   stamps.orders.order_details.weight.lb.set(TestData.store[:pounds] = str)
   step 'blur out on Order Details form'
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails Ounces to (\d+)$/ do |str|
+Then /^[Ss]et [Oo]rder [Dd]etails Ounces to (\d+\.?\d*)$/ do |str|
   stamps.orders.order_details.weight.oz.set(TestData.store[:ounces] = str)
   step 'blur out on Order Details form'
 end
