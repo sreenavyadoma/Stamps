@@ -79,6 +79,7 @@ class SdcTest
 
     def start(scenario)
       @scenario = scenario
+      SdcEnv.new_framework ||= ENV['NEW_FRAMEWORK']
       SdcEnv.browser ||= browser_selection(ENV['BROWSER'])
       SdcEnv.mobile ||= mobile(ENV['MOBILE'])
       SdcEnv.ios ||= is_ios?(ENV['MOBILE'])
@@ -91,7 +92,6 @@ class SdcTest
       SdcEnv.pw ||= ENV['PW']
       SdcEnv.env ||= test_env(ENV['URL'])
       SdcEnv.firefox_profile ||= ENV['FIREFOX_PROFILE']
-      SdcEnv.framework ||= ENV['FRAMEWORK']
       SdcEnv.debug ||= ENV['DEBUG']
 
       require_gems
