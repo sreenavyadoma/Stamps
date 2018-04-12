@@ -4,6 +4,8 @@ module Stamps
     def landing_page_inst
       if SdcEnv.android
         'Orders::AndroidLandingPage'
+      elsif SdcEnv.ios
+        'Orders::IosLandingPage'
       else
         'Orders::LandingPage'
       end

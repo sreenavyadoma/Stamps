@@ -44,10 +44,31 @@ module Stamps
       end
     end
 
-    class AndroidLandingPage < LandingPage
+    class IosLandingPage < LandingPage
       element(:username) { SdcElement.new(browser.find_element(xpath: "//input[@placeholder='USERNAME']")) }
       element(:password) { SdcElement.new(browser.find_element(xpath: "//input[@placeholder='PASSWORD']")) }
       element(:sign_in) { SdcElement.new(browser.find_element(xpath: "//span[contains(text(), 'Sign In')]")) }
+
+      def sign_in_with(usr, pwd)
+        username.set(usr)
+        password.set(pwd)
+        iter.to_i.times do
+          begin
+            sign_in.click
+            sign_in.send_keys(:enter)
+            sign_in.send_keys(:enter)
+            sign_in.safe_click
+            #sign_in.send_keys_while_present(:enter, ctr: 2)
+            #sign_in.safe_wait_while_present
+            break if signed_in_user.present?
+          rescue
+            # ignore
+          end
+        end
+      end
+    end
+
+    class AndroidLandingPage < IosLandingPage
 
       def sign_in_with(usr, pwd)
         username.set(usr)
