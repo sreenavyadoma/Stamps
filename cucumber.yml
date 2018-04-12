@@ -1,9 +1,9 @@
-default: --backtrace --profile browser_saucelabs2
+default: --backtrace --profile win10_edge_sauce
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
-browser_saucelabs:  --tags @saucelabs_poc SAUCE_DEVICE=win10_edge_sauce VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1 DEBUG=true HEADLESS=true
-browser_saucelabs2:  --tags @saucelabs_poc SAUCE_DEVICE=macos_chrome_sauce VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1 DEBUG=true HEADLESS=true
+win10_edge_sauce:  --tags @saucelabs_poc SAUCE_DEVICE=win10_edge_sauce VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1 DEBUG=true HEADLESS=true
+macos_chrome_sauce:  --tags @saucelabs_poc SAUCE_DEVICE=macos_chrome_sauce VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1 DEBUG=true HEADLESS=true
 iphonex_saucelabs: --tags @saucelabs_poc SAUCE_DEVICE=iphonexsauce VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password
 
 #todo-Rob set PRINTER=factory as default automation printer

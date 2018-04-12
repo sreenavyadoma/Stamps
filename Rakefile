@@ -19,13 +19,13 @@ Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
-  t.profile = 'xxxxxxxxxx'
+Cucumber::Rake::Task.new(:win10_edge_sauce) do |t|
+  t.profile = 'win10_edge_sauce'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
-  t.profile = 'xxxxxxxxxx'
+Cucumber::Rake::Task.new(:macos_chrome_sauce) do |t|
+  t.profile = 'macos_chrome_sauce'
   t.cucumber_opts = "-p cuke_reports"
 end
 
