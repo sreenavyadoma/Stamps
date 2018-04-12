@@ -69,21 +69,21 @@ poc_stg_edge: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTHCH
 
 jenkinsvm: --tags @healthcheck --guess VERBOSE=true JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff USR=ss_cctest3 PW=password1
 
-rates_pme_comm_base_mail: --tags @rates_pme_comm_base --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
-rates_pme_comm_base: --tags @rates_pme_comm_base --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-rates_pm_comm_base: --tags @rates_pm_comm_base --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-rates_pme_comm_plus: --tags @rates_pme_comm_plus --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-rates_pm_comm_plus: --tags @rates_pm_comm_plus --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-rates_parcel_select_ground: --tags @rates_parcel_select_ground --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-rates_pmei_comm_base:  --tags @rates_pmei_comm_base --guess VERBOSE=false JENKINS=true HEALTHCHECK=true
-rates_pmei_comm_plus:  --tags @rates_pmei_comm_plus --guess VERBOSE=false JENKINS=true HEALTHCHECK=true
-rates_pmei_comm_base_group_1:  --tags @rates_pmei_comm_base_group_1 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true
-rates_pmei_comm_base_group_2:  --tags @rates_pmei_comm_base_group_2 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true
-rates_pmei_comm_base_group_3:  --tags @rates_pmei_comm_base_group_3 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true
-rates_pmei_comm_base_group_4:  --tags @rates_pmei_comm_base_group_4 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true
-rates_pmei_comm_base_group_5:  --tags @rates_pmei_comm_base_group_5 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true
-rates_pmei_comm_base_group_6:  --tags @rates_pmei_comm_base_group_6 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true
-rates_pmei_comm_base_group_7:  --tags @rates_pmei_comm_base_group_7 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true
+rates_pme_comm_base_mail: --tags @rates_pme_comm_base --guess VERBOSE=true JENKINS=true HEALTHCHECK=true WEB_APP=mail
+rates_pme_comm_base: --tags @rates_pme_comm_base --guess VERBOSE=true JENKINS=true HEALTHCHECK=true WEB_APP=orders
+rates_pm_comm_base: --tags @rates_pm_comm_base --guess VERBOSE=true JENKINS=true HEALTHCHECK=true WEB_APP=orders
+rates_pme_comm_plus: --tags @rates_pme_comm_plus --guess VERBOSE=true JENKINS=true HEALTHCHECK=true WEB_APP=orders
+rates_pm_comm_plus: --tags @rates_pm_comm_plus --guess VERBOSE=true JENKINS=true HEALTHCHECK=true WEB_APP=orders
+rates_parcel_select_ground: --tags @rates_parcel_select_ground --guess VERBOSE=true JENKINS=true HEALTHCHECK=true WEB_APP=orders
+rates_pmei_comm_base:  --tags @rates_pmei_comm_base --guess VERBOSE=true JENKINS=true HEALTHCHECK=true
+rates_pmei_comm_plus:  --tags @rates_pmei_comm_plus --guess VERBOSE=true JENKINS=true HEALTHCHECK=true
+rates_pmei_comm_base_group_1:  --tags @rates_pmei_comm_base_group_1 --guess VERBOSE=true JENKINS=true HEALTHCHECK=true
+rates_pmei_comm_base_group_2:  --tags @rates_pmei_comm_base_group_2 --guess VERBOSE=true JENKINS=true HEALTHCHECK=true
+rates_pmei_comm_base_group_3:  --tags @rates_pmei_comm_base_group_3 --guess VERBOSE=true JENKINS=true HEALTHCHECK=true
+rates_pmei_comm_base_group_4:  --tags @rates_pmei_comm_base_group_4 --guess VERBOSE=true JENKINS=true HEALTHCHECK=true
+rates_pmei_comm_base_group_5:  --tags @rates_pmei_comm_base_group_5 --guess VERBOSE=true JENKINS=true HEALTHCHECK=true
+rates_pmei_comm_base_group_6:  --tags @rates_pmei_comm_base_group_6 --guess VERBOSE=true JENKINS=true HEALTHCHECK=true
+rates_pmei_comm_base_group_7:  --tags @rates_pmei_comm_base_group_7 --guess VERBOSE=true JENKINS=true HEALTHCHECK=true
 rates_pmei_comm_base_group_8:  --tags @rates_pmei_comm_base_group_8 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true
 rates_pmei_comm_base_group_9:  --tags @rates_pmei_comm_base_group_9 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true
 rates_pmei_comm_base_group_10:  --tags @rates_pmei_comm_base_group_10 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true
@@ -196,7 +196,7 @@ rates_pmi_comm_plus_group_15:  --tags @rates_pmi_comm_plus_group_15 --guess VERB
 rates_pmi_comm_plus_group_16:  --tags @rates_pmi_comm_plus_group_16 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true
 rates_pmi_comm_plus_group_17:  --tags @rates_pmi_comm_plus_group_17 --guess VERBOSE=false JENKINS=true HEALTHCHECK=true
 
-rates_fcm_package:   --tags @rates_fcm_package --guess VERBOSE=false JENKINS=true HEALTHCHECK=true
+rates_fcm_package:   --tags @rates_fcm_package --guess VERBOSE=true JENKINS=true HEALTHCHECK=true
 
 bvt_mail_piece_validation: --tags @bvt_mail_piece_validation --guess VERBOSE=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 
