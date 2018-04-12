@@ -11,7 +11,7 @@ Feature: PP-MVP: Login Page
         Then PP: expect login page welcome content is Welcome to the
         Then PP: expect login page Stamps.com endicia content is Stamps.com and Endicia
         Then PP: expect login page USPS Portal content is USPS Portal
-#        Then PP: expect login page Email field to exist
+        Then PP: expect login page Email field to exist
 #        Then PP: expect login page Email field shows placeholder EMAIL
 #        Then PP: expect login page Password field to exist
 #        Then PP: expect login page Password field shows placeholder PASSWORD

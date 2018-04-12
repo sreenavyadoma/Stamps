@@ -10,7 +10,7 @@ module Stamps
         element(:sdc_endicia_content, required: true) {{xpath: "//img[@alt='Stamps.com and Endicia']"}}
 
         #USPS Portal content
-         element(:usps_portal_content, required: true) {{xpath: "//p['USPS Portal']"}}
+         element(:usps_portal_content, required: true) {{xpath: "//h3['USPS Portal']"}}
 
         #Email textbox
         text_field(:email, tag_name: :text_field, required: true) { {name: "email"} }

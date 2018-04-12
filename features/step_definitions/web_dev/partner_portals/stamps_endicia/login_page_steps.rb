@@ -33,20 +33,17 @@ Then /^[Pp]P: [Ee]xpect login page welcome content is (.*)$/ do |str|
 end
 
 Then /^[Pp]P: [Ee]xpect login page Stamps.com endicia content is (.*)$/ do |str|
-  expect(StampsEndicia.login_page.sdc_endicia_content.text_value).to eql(str), "Stamps.com endicia content DOES NOT exist on login page"
+  expect(StampsEndicia.login_page.sdc_endicia_content.attribute_value 'alt').to eql(str), "Stamps.com endicia content DOES NOT exist on login page"
 end
 
 Then /^[Pp]P: [Ee]xpect login page USPS Portal content is (.*)$/ do |str|
   expect(StampsEndicia.login_page.usps_portal_content.text_value).to eql(str), "USPS Portal content DOES NOT exist on login page"
-
 end
-
-
 
 # Then /^[Pp]P: [Ee]xpect login page Log In button to exist$/do
 #   expect(StampsEndicia.login_page.log_in).to be_present, "Log In button DOES NOT exist on login page"
 # end
-#
+
 # Then /^[Pp]P: [Ee]xpect login page Log In button text is (.*)$/do |str|
 #  expect(StampsEndicia.login_page.login_label.text_value).to eql(str)
 # end
@@ -66,9 +63,9 @@ end
 #   StampsEndicia.login_page.header.blur_out
 # end
 #
-# Then /^[Pp]P: [Ee]xpect login page [Ee]mail field to exist$/do
-#   expect(StampsEndicia.login_page.email).to be_present, "Email textbox DOES NOT exist on login page"
-# end
+Then /^[Pp]P: [Ee]xpect login page [Ee]mail field to exist$/do
+  expect(StampsEndicia.login_page.email).to be_present, "Email textbox DOES NOT exist on login page"
+end
 #
 # Then /^[Pp]P: [Ee]xpect login page [Ee]mail field shows placeholder (.*)$/ do |str|
 #   expect(StampsEndicia.login_page.email_placeholder.text_value).to eql(str)
