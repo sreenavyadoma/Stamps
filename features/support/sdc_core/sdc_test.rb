@@ -311,8 +311,6 @@ class SdcTest
         sessionid = SdcPage.browser.send(:bridge).session_id
         jobname = "#{scenario.feature.name} - #{scenario.name}"
 
-        puts "SauceOnDemandSessionID=#{sessionid} job-name=#{jobname}"
-
         SdcPage.browser.quit
 
         if scenario.passed?
@@ -321,7 +319,7 @@ class SdcTest
           SauceWhisk::Jobs.fail_job sessionid
         end
 
-
+        SdcLog.info "SauceOnDemandSessionID=#{sessionid} job-name=#{jobname}"
       rescue
         # ignore
       end
