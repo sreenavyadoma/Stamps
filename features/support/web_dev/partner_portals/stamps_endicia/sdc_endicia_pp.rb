@@ -25,6 +25,10 @@ module Stamps
           def login_page
             LoginPage.new()
           end
+
+          def dashboard_page
+            DashboardPage.new()
+          end
         end
 
       end

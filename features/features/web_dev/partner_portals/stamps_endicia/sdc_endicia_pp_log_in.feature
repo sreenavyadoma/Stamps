@@ -65,9 +65,9 @@ Feature: PP-MVP: Login Page
 #
 #        Then PP: A user navigates to the login page
 #
-        Then PP: Partner user's xyz Status is Active
-        Then PP: Partner user's xyz partner account Status is Active
-        Then PP: Partner user's xyz partner contract Status is Active
+#        Then PP: Partner user's xyz Status is Active
+#        Then PP: Partner user's xyz partner account Status is Active
+#        Then PP: Partner user's xyz partner contract Status is Active
 #
         Then PP: set login page email to automation@stamps.com
         Then PP: set login page password to pass1234

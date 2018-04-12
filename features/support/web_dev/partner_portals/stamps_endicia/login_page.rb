@@ -7,6 +7,7 @@ module Stamps
          elements(:p_content, required: true) {{xpath: "//p"}}
          _element(:welcome_content, required: true) {p_content[0]}
 
+         #Error Message
          _element(:error_message, required: true) {p_content[1]}
 
 
