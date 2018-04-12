@@ -3,7 +3,8 @@ Feature: PP-MVP: Login Page
 
     Background:
         Given Start test driver
-    #@sdc_endicia_pp_login_page_ui_validation
+
+    @sdc_endicia_pp_login_page_ui_validation
     Scenario: PP: Login UI Validation
         Then PP: A user navigates to the login page
 
@@ -12,41 +13,54 @@ Feature: PP-MVP: Login Page
         Then PP: expect login page Stamps.com endicia content is Stamps.com and Endicia
         Then PP: expect login page USPS Portal content is USPS Portal
         Then PP: expect login page Email field to exist
-#        Then PP: expect login page Email field shows placeholder EMAIL
-#        Then PP: expect login page Password field to exist
-#        Then PP: expect login page Password field shows placeholder PASSWORD
-#        Then PP: expect login page Log In button to exist
-#        Then PP: expect login page Log In button text is Log In
-#        Then PP: expect login page Forgot Password link exist
-#
-#        # Validate Single Help block tooltips
-#        Then PP: User clicks Log In
-#        Then PP: expect login page email tooltip index 1 to be This field is required.
-#        Then PP: expect login page Password tooltip index 2 to be This field is required.
-#
-#        #set negative values for tooltip validation
-#        Then PP: set login page email to abc
-#        Then PP: Blur out on Login Page
-#        Then PP: set login page password to a!
-#        Then PP: Blur out on Login Page
-#
-#     # Validate tooltips for various values
-#        #Validate Email tooltips
-#        Then PP: expect login page email tooltip count is 1
-#        Then PP: expect login page email tooltip index 0 to be  Valid email address required.
-#
-#        #Validate Password tooltips
-##        Then PP: expect login page password tooltip count is 2
-##        Then PP: expect login page password tooltip index 1 to be 8 characters minimum.
-##        Then PP: expect login page password tooltip index 2 to be At least 1 number required.
-##        Then PP: expect login page password tooltip index 3 to be At least 1 letter required.
-#
-#    #Valiadate email and password can't be the same
-#        Then PP: set login page email to abc@stamps.com
-#        Then PP: set login page password to abc@stamps.com
-#        Then PP: expect login page password tooltip index 0 to be Cannot match email.
+        Then PP: expect login page Email field shows placeholder EMAIL
+        Then PP: expect login page Password field to exist
+        Then PP: expect login page Password field shows placeholder PASSWORD
+        Then PP: expect login page Log In button to exist
+        Then PP: expect login page Log In button text is Log In
+        Then PP: expect login page Forgot Password link exist
 
-#    @sdc_endicia_pp_login_page_all_status_active
+        # Validate Single Help block tooltips
+        Then PP: User clicks Log In
+        Then PP: expect login page email tooltip index 1 to be This field is required.
+        Then PP: expect login page Password tooltip index 1 to be This field is required.
+
+        #set negative values for tooltip validation
+        Then PP: set login page email to abc
+        Then PP: Blur out on Login Page
+        Then PP: set login page password to a!
+        Then PP: Blur out on Login Page
+
+     # Validate tooltips for various values
+        #Validate Email tooltips
+        Then PP: expect login page email tooltip count is 1
+        Then PP: expect login page email tooltip index 0 to be Valid email address required.
+
+        #Validate Password tooltips
+#        Then PP: expect login page password tooltip count is 2
+#        Then PP: expect login page password tooltip index 1 to be 8 characters minimum.
+#        Then PP: expect login page password tooltip index 2 to be At least 1 number required.
+#        Then PP: expect login page password tooltip index 3 to be At least 1 letter required.
+
+    #Valiadate email and password can't be the same
+        Then PP: set login page email to abc@stamps.com
+        Then PP: set login page password to abc@stamps.com
+        Then PP: User clicks Log In
+#        Then PP: expect login page password tooltip index 1 to be Cannot match email.
+
+    #validate incorrect email or passowrd message
+        Then PP: set login page email to abc@stamps.com
+        Then PP: set login page password to abc123
+        Then PP: User clicks Log In
+        Then PP: expect login page error message to be
+          """
+          Your email / password is incorrect.
+          OR
+          Logging in for the first time? Click ”Forgot Password“ below.
+          """
+
+
+    #@sdc_endicia_pp_login_page_all_status_active
 #    Scenario: PP: Successful Login
 #
 #        Then PP: A user navigates to the login page
@@ -61,7 +75,7 @@ Feature: PP-MVP: Login Page
 #        Then PP: expect website redirects user to Dashboard Page
 #        Then PP: expect website records login event in Audit Records
 #
-#    @sdc_endicia_pp_login_page_user_status_active
+    #@sdc_endicia_pp_login_page_user_status_active
 #    Scenario: PP: Successful Login
 #        Then PP: Partner user's xyz Status is Active
 #        Then PP: Partner user's xyz partner account Status is Inactive

@@ -4,7 +4,11 @@ module Stamps
       class LoginPage < SdcPageObject
 
         #Welcome content
-         element(:welcome_content, required: true) {{xpath: "//p['Welcome to the']"}}
+         elements(:p_content, required: true) {{xpath: "//p"}}
+         _element(:welcome_content, required: true) {p_content[0]}
+
+         _element(:error_message, required: true) {p_content[1]}
+
 
         #sdcEndica content
         element(:sdc_endicia_content, required: true) {{xpath: "//img[@alt='Stamps.com and Endicia']"}}
