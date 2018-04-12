@@ -613,7 +613,10 @@ module Stamps
     attr_reader :text_field, :increment, :decrement
 
     def initialize(text_field, increment, decrement)
-      set_instance_variables(binding, *local_variables)
+      @text_field = text_field
+      @increment = increment
+      @decrement = decrement
+      # set_instance_variables(binding, *local_variables)
     end
 
     def method_missing(method, *args, &block)
