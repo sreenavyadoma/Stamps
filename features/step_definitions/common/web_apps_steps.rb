@@ -24,10 +24,12 @@ end
 
 Then /^sign-in to Orders as (.+), (.+)$/ do |usr, pw|
   SdcWebsite.landing_page.sign_in_with(TestData.store[:username] = usr, TestData.store[:password] = pw)
-  SdcWebsite.orders.loading_orders.safe_wait_until_present(timeout: 5) if SdcEnv.browser
-  SdcWebsite.orders.loading_orders.safe_wait_while_present(timeout: 5) if SdcEnv.browser
-  SdcWebsite.navigation.user_drop_down.signed_in_user.safe_wait_until_present(timeout: 5) if SdcEnv.browser
-  expect(SdcWebsite.navigation.user_drop_down.signed_in_user.text_value).to include(TestData.store[:username])
+  if SdcEnv.browser
+    SdcWebsite.orders.loading_orders.safe_wait_until_present(timeout: 5)
+    SdcWebsite.orders.loading_orders.safe_wait_while_present(timeout: 5)
+    SdcWebsite.navigation.user_drop_down.signed_in_user.safe_wait_until_present(timeout: 5)
+    expect(SdcWebsite.navigation.user_drop_down.signed_in_user.text_value).to include(TestData.store[:username])
+  end
 end
 
 Then /^sign-in to Mail as (.+), (.+)$/ do |usr, pw|
@@ -36,8 +38,10 @@ end
 
 Given /^(?:|(?:|[Aa] )(?:[Vv]alid |))[Uu]ser is signed in to Web Apps$/ do
   step "I launched the browser"
-  step "Health Check: Print - Web Batch" if SdcEnv.health_check
-  step "Health Check: Print - Address Book" if SdcEnv.health_check
+  if SdcEnv.health_check
+    step "Health Check: Print - Web Batch"
+    step "Health Check: Print - Address Book"
+  end
   step "load Web Apps Sign-in page"
   step "sign-in to Web Apps as #{TestData.store[:username]}, #{TestData.store[:password]}"
   step "Navigation Bar: Customer Balance"

@@ -1,3 +1,34 @@
+
+class SdcAppiumDriver
+
+  attr_reader :device
+
+  def initialize(device)
+    @device = device
+  end
+
+  def core_driver
+    @core_driver ||= initialize_driver
+  end
+
+  def method_missing(name, *args, &block)
+    super unless @core_driver.respond_to?(name)
+    @core_driver.send(name, *args, &block)
+  end
+
+  private
+
+  def initialize_driver
+    file = ::File.expand_path("../../sdc_device_caps/#{device.to_s}.txt", __FILE__)
+    exception = ::Selenium::WebDriver::Error::WebDriverError
+    message = "Missing Appium capabilities file. #{device}: #{file}"
+    raise(exception, message) unless ::File.exist? file
+
+    caps = ::Appium.load_appium_txt(file: file, verbose: true)
+    ::Appium::Driver.new(caps, false)
+  end
+end
+
 class SdcTest
   class << self
     attr_reader :test_scenario, :scenario
@@ -78,7 +109,7 @@ class SdcTest
 
     def configure
 
-      Selenium::WebDriver.logger.level = :debug
+      #Selenium::WebDriver.logger.level = :debug
 
       if SdcEnv.sauce_device
         case
