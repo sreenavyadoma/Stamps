@@ -259,7 +259,7 @@ module Stamps
         end
       end
 
-      private
+      protected
 
       def _element(name, required: false, &block)
         define_method(name) do |*args|
