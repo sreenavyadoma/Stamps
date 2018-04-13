@@ -56,7 +56,6 @@ module Stamps
         sign_in.click
         sign_in.send_keys(:enter)
         sign_in.safe_send_keys(:enter)
-        sign_in.safe_click
       end
       sleep(10)
     end
