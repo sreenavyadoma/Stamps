@@ -30,6 +30,7 @@ Then /^sign-in to Orders as (.+), (.+)$/ do |usr, pw|
     SdcWebsite.navigation.user_drop_down.signed_in_user.safe_wait_until_present(timeout: 5)
     #expect(SdcWebsite.navigation.user_drop_down.signed_in_user.text_value).to include(TestData.store[:username])
   end
+  sleep 3
 end
 
 Then /^sign-in to Mail as (.+), (.+)$/ do |usr, pw|
