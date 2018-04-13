@@ -9,9 +9,9 @@ Feature: PP-MVP: Login Page
         Then PP: A user navigates to the login page
 
         #verify all content and fields are present
-        Then PP: expect login page welcome content is Welcome to the
-        Then PP: expect login page Stamps.com endicia content is Stamps.com and Endicia
-        Then PP: expect login page USPS Portal content is USPS Portal
+        Then PP: expect login page "Welcome to the" content to exist
+        Then PP: expect login page "stamps.com endicia" logo to exist
+        Then PP: expect login page "USPS Portal" content to exist
         Then PP: expect login page Email field to exist
         Then PP: expect login page Email field shows placeholder EMAIL
         Then PP: expect login page Password field to exist

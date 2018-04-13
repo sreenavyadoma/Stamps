@@ -26,20 +26,17 @@ Then /^[Pp]P: [Aa] user navigates to the login page$/ do
   StampsEndicia.visit
 end
 
-Then /^[Pp]P: [Ee]xpect login page welcome content is (.*)$/ do |str|
-  #StampsEndicia.login_page.welcome_content.safe_wait_while_present
- #expect(StampsEndicia.login_page.welcome_content.text_value).to eql(str), "Welcome to the content DOES NOT exist on login page"
+Then /^[Pp]P: [Ee]xpect login page "Welcome to the" content to exist$/ do
+  expect(StampsEndicia.login_page.welcome_content).to be_present, "Welcome to the content DOES NOT exist on login page"
 
-  #StampsEndicia.login_page.welcome_content.wait_while_present
-  expect(StampsEndicia.login_page.welcome_content.text).to eql(str), "Welcome to the content DOES NOT exist on login page"
 end
 
-Then /^[Pp]P: [Ee]xpect login page Stamps.com endicia content is (.*)$/ do |str|
-  expect(StampsEndicia.login_page.sdc_endicia_content.attribute_value 'alt').to eql(str)
+Then /^[Pp]P: [Ee]xpect login page "stamps.com endicia" logo to exist$/ do
+  expect(StampsEndicia.login_page.sdc_endicia_logo).to be_present, "stamps.com endicia content DOES NOT exist on login page"
 end
 
-Then /^[Pp]P: [Ee]xpect login page USPS Portal content is (.*)$/ do |str|
-  expect(StampsEndicia.login_page.usps_portal_content.text_value).to eql(str), "USPS Portal content DOES NOT exist on login page"
+Then /^[Pp]P: [Ee]xpect login page "USPS Portal" content to exist$/ do
+  expect(StampsEndicia.login_page.usps_portal_content).to be_present, "USPS Portal content DOES NOT exist on login page"
 end
 
 Then /^[Pp]P: [Ee]xpect login page Log In button to exist$/ do

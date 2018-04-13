@@ -11,8 +11,8 @@ module Stamps
          _element(:error_message, required: true) {p_content[1]}
 
 
-        #sdcEndica content
-        element(:sdc_endicia_content, required: true) {{xpath: "//img[@alt='Stamps.com and Endicia']"}}
+        #sdcEndica logo
+        element(:sdc_endicia_logo, required: true) {{xpath: "//img[@alt='Stamps.com and Endicia']"}}
 
         #USPS Portal content
          element(:usps_portal_content, required: true) {{xpath: "//h3['USPS Portal']"}}
