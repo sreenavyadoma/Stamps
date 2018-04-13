@@ -66,8 +66,8 @@ module Stamps
         username.set(usr)
         password.set(pwd)
         browser.hide_keyboard
-        browser.action.move_to(sign_in).send_keys(:enter).perform
         browser.action.move_to(sign_in).click.perform
+        browser.action.move_to(sign_in).send_keys(:enter).perform
         sleep(10)
       end
     end

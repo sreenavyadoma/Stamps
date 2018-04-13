@@ -364,15 +364,6 @@ class SdcTest
       SdcLog.info "#{SdcPage.browser} closed."
     end
 
-    def clear_cookies
-      SdcLog.info "Clearing cookies"
-      begin
-        driver.cookies.clear
-      rescue
-        # ignore
-      end
-    end
-
     private
 
     def kill(str)
