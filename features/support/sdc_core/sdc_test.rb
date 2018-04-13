@@ -142,8 +142,8 @@ class SdcTest
               name: "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
           },
           appium_lib: {
-              sauce_username:   nil, # don't run on Sauce
-              sauce_access_key: nil,
+              sauce_username:   'robcruz', #nil, # don't run on Sauce
+              sauce_access_key: '0e60dbc9-5bbf-425a-988b-f81c42d6b7ef', #nil,
               wait: 60
           }
       }
