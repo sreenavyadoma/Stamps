@@ -15,7 +15,7 @@ module Stamps
       element(:grid_body, required: true) { {xpath: "//*[contains(@class, 'orders-grid')]"} }
 
       def order_details
-        @order_details = SdcOrderDetails.new
+        @order_details ||= SdcOrderDetails.new
       end
 
       def bulk_update
@@ -35,6 +35,12 @@ module Stamps
         @filter_panel ||= SdcOrdersFilterPanel.new
       end
 
+      def wait_until_present(count=10)
+        (count.nil? || count == 0 ? 1 : count.to_i).times do
+          return true unless loading_orders.present?
+          sleep(1)
+        end
+      end
       #part of grid
       # def paging_toolbar
       #

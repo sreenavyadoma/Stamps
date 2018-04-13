@@ -189,7 +189,7 @@ module Stamps
       def wait_until_present(count=3)
         (count.nil? || count == 0 ? 1 : count.to_i).times do
           return title.text_value if title.present?
-          sleep(0.1)
+          sleep(1)
         end
       end
     end
