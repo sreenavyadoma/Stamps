@@ -144,7 +144,7 @@ class SdcTest
           appium_lib: {
               sauce_username:   'robcruz', #nil, # don't run on Sauce
               sauce_access_key: '0e60dbc9-5bbf-425a-988b-f81c42d6b7ef', #nil,
-              wait: 60
+              wait: 120
           }
       }
 
@@ -161,7 +161,6 @@ class SdcTest
 
         Selenium::WebDriver.logger.level = :debug
         SdcPage.browser = SdcDriverDecorator.new(class_eval(SdcEnv.sauce_device.to_s))
-        SdcPage.browser.manage.timeouts.implicit_wait = 180 # if SdcEnv.mobile
 
       else
         case
