@@ -130,7 +130,7 @@ class SdcTest
       end
     end
 
-    def iphonexsauce
+    def iphonex_sauce
       desired_caps = {
           caps: {
               appiumVersion: '1.7.2',
@@ -139,6 +139,29 @@ class SdcTest
               platformVersion: '11.2',
               platformName:  'iOS',
               browserName: 'Safari',
+              name: "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+          },
+          appium_lib: {
+              sauce_username:   'robcruz', #nil, # don't run on Sauce
+              sauce_access_key: '0e60dbc9-5bbf-425a-988b-f81c42d6b7ef', #nil,
+              wait: 120
+          }
+      }
+
+      # Start the driver
+      Appium::Driver.new(desired_caps, false).start_driver
+
+    end
+
+    def samsung_galaxy_sauce
+      desired_caps = {
+          caps: {
+              appiumVersion: '1.7.2',
+              deviceName:    'Samsung Galaxy S8 GoogleAPI Emulator',
+              deviceOrientation: 'portrait',
+              platformVersion: '7.1',
+              platformName:  'Android',
+              browserName: 'Chrome',
               name: "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
           },
           appium_lib: {
