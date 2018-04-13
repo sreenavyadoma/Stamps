@@ -130,7 +130,7 @@ class SdcTest
       end
     end
 
-    def appium_temp
+    def iphonexsauce
       desired_caps = {
           caps: {
               appiumVersion: '1.7.2',
@@ -158,17 +158,10 @@ class SdcTest
       Selenium::WebDriver.logger.level = :debug
 
       if SdcEnv.sauce_device
-        case
 
-          when SdcEnv.browser
-            SdcPage.browser = class_eval(SdcEnv.sauce_device.to_s)
-
-          when SdcEnv.mobile
-            SdcPage.browser = SdcDriverDecorator.new(appium_temp)
-            SdcPage.browser.manage.timeouts.implicit_wait = 180
-          else
-            # ignore
-        end
+        Selenium::WebDriver.logger.level = :debug
+        SdcPage.browser = SdcDriverDecorator.new(class_eval(SdcEnv.sauce_device.to_s))
+        SdcPage.browser.manage.timeouts.implicit_wait = 180 # if SdcEnv.mobile
 
       else
         case
