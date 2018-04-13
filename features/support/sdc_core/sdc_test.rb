@@ -361,7 +361,7 @@ class SdcTest
       rescue
         # ignore
       end
-      SdcLog.info "#{@browser} closed."
+      SdcLog.info "#{SdcPage.browser} closed."
     end
 
     def clear_cookies
