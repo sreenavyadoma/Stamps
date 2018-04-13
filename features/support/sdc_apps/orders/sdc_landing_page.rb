@@ -53,9 +53,13 @@ module Stamps
       def sign_in_with(usr, pwd)
         username.set(usr)
         password.set(pwd)
-        sign_in.click
-        sign_in.send_keys(:enter)
-        sign_in.safe_send_keys(:enter)
+        begin
+          sign_in.click
+          sign_in.send_keys(:enter)
+          sign_in.safe_send_keys(:enter)
+        rescue
+          # ignore
+        end
       end
       sleep(10)
     end
@@ -66,8 +70,12 @@ module Stamps
         username.set(usr)
         password.set(pwd)
         browser.hide_keyboard
-        browser.action.move_to(sign_in).click.perform
-        browser.action.move_to(sign_in).send_keys(:enter).perform
+        begin
+          browser.action.move_to(sign_in).click.perform
+          browser.action.move_to(sign_in).send_keys(:enter).perform
+        rescue
+          # ignore
+        end
         sleep(10)
       end
     end
