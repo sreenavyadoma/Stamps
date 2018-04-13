@@ -122,7 +122,7 @@ Feature: PP-MVP: Login Page
         Then PP: set login page email to automation@stamps.com
         Then PP: set login page password to pass1234
         Then PP: User clicks Log In
-        Then PP: expect website redirects user to Dashboard Page
+        Then PP: expect user is redirected to the Dashboard Page
 #        Then PP: expect website records login event in Audit Records
 
 #

@@ -129,3 +129,12 @@ end
 #
 # end
 
+Given /^[Pp]P: [Aa] valid user is signed into the Partner Portal$/ do
+  step "Start test driver"
+  step "PP: A user navigates to the login page"
+  step "PP: Partner user's xyz partner account Status is Active"
+  step "PP: Partner user's xyz partner contract Status is Active"
+  step "PP: set login page email to automation@stamps.com"
+  step "PP: set login page password to pass1234"
+  step "PP: User clicks Log In"
+end
