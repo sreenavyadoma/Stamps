@@ -1,4 +1,4 @@
-default: --backtrace --profile sign_in_win10_edge_sauce
+default: --backtrace --profile saucelabs_iphonex
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 

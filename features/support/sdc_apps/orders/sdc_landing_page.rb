@@ -41,6 +41,7 @@ module Stamps
             # ignore
           end
         end
+        sleep(10)
       end
     end
 
@@ -57,6 +58,7 @@ module Stamps
         sign_in.safe_send_keys(:enter)
         sign_in.safe_click
       end
+      sleep(10)
     end
 
     class AndroidLandingPage < IosLandingPage
@@ -67,6 +69,7 @@ module Stamps
         browser.hide_keyboard
         browser.action.move_to(sign_in).send_keys(:enter).perform
         browser.action.move_to(sign_in).click.perform
+        sleep(10)
       end
     end
   end
