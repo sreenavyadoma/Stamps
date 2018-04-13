@@ -4,8 +4,7 @@ Then /^(?:[Cc]lick Orders Toolbar Add button|add new order|add [Oo]rder (\d+))$/
     TestData.store[:old_balance] = SdcWebsite.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
     #stamps.orders.orders_grid.grid_column(:checkbox).uncheck(1)
     TestData.store[:order_id][(count.nil?) ? TestData.store[:ord_id_ctr] += 1 : count.to_i] = SdcWebsite.orders.toolbar.add.click
-
-    expect(stamps.orders.orders_grid.grid_column(:checkbox).checked?(1)).to be(true), "Orders Grid checkbox 1 is unchecked!"
+    #expect(stamps.orders.orders_grid.grid_column(:checkbox).checked?(1)).to be(true), "Orders Grid checkbox 1 is unchecked!"
     step "Save Order Details data"
   else
     TestData.store[:old_balance] = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
@@ -17,7 +16,18 @@ Then /^(?:[Cc]lick Orders Toolbar Add button|add new order|add [Oo]rder (\d+))$/
 end
 
 Then /^Save Order Details data$/ do
-  if stamps.orders.order_details.present?
+  step "Expect Order Details is present"
+  if SdcEnv.new_framework
+    TestData.store[:country] = SdcWebsite.orders.order_details.ship_to.country.text_field.text_value
+    TestData.store[:service_cost] = SdcWebsite.orders.order_details.service.cost.text_value.dollar_amount_str.to_f.round(2)
+    TestData.store[:service] = SdcWebsite.orders.order_details.service.text_field.text_value
+    TestData.store[:ship_from] = SdcWebsite.orders.order_details.ship_from.text_field.text_value
+    TestData.store[:insure_for_cost] = SdcWebsite.orders.order_details.insurance.cost.text_value.dollar_amount_str.to_f.round(2)
+    TestData.store[:total_ship_cost] = SdcWebsite.orders.order_details.footer.total_ship_cost.text_value.dollar_amount_str.to_f.round(2)
+    TestData.store[:awaiting_shipment_count] = SdcWebsite.orders.filter_panel.awaiting_shipment.count.text_value.to_f.round(2)
+    TestData.store[:tracking_cost] = SdcWebsite.orders.order_details.tracking.cost.text_value.dollar_amount_str.to_f.round(2)
+    TestData.store[:tracking] = SdcWebsite.orders.order_details.tracking.text_field.text_value
+  else
     TestData.store[:country] = stamps.orders.order_details.ship_to.domestic.country.textbox.text
     TestData.store[:service_cost] = stamps.orders.order_details.service.cost.text.dollar_amount_str.to_f.round(2)
     TestData.store[:service] = stamps.orders.order_details.service.textbox.text

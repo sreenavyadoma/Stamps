@@ -1,12 +1,22 @@
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]ervice to (.*)$/ do |str|
   step 'expect Order Details is present'
-  TestData.store[:service] = stamps.orders.order_details.service.select(str).parse_service_name
-  expect(TestData.store[:service]).to eql(str)
-  20.times do
-    step 'blur out on Order Details form'
-    sleep(0.015)
-    break if stamps.orders.order_details.service.cost.text.dollar_amount_str.to_f.round(2) > 0
+  if SdcEnv.new_framework
+    TestData.store[:service] = SdcWebsite.orders.order_details.service.select(str).parse_service_name
+    expect(TestData.store[:service]).to eql(str)
+    20.times do
+      step 'blur out on Order Details form'
+      sleep(0.015)
+      break if SdcWebsite.orders.order_details.service.cost.text_value.dollar_amount_str.to_f.round(2) > 0
+    end
+  else
+    TestData.store[:service] = stamps.orders.order_details.service.select(str).parse_service_name
+    expect(TestData.store[:service]).to eql(str)
+    20.times do
+      step 'blur out on Order Details form'
+      sleep(0.015)
+      break if stamps.orders.order_details.service.cost.text.dollar_amount_str.to_f.round(2) > 0
+    end
   end
   step 'Save Order Details data'
 end

@@ -1,10 +1,17 @@
-
 Then /^[Hh]ide [Oo]rder [Dd]etails [Ff]orm [Ss]hip-[Tt]o [Ff]ields$/ do
-  stamps.orders.order_details.ship_to.domestic.hide_ship_to_details
+  if SdcEnv.new_framework
+    SdcWebsite.orders.order_details.ship_to.show_less.safe_click
+  else
+    stamps.orders.order_details.ship_to.domestic.hide_ship_to_details
+  end
 end
 
 Then /^[Ss]how [Oo]rder [Dd]etails [Ff]orm [Ss]hip-[Tt]o [Ff]ields$/ do
-  stamps.orders.order_details.ship_to.domestic.show_ship_to_details
+  if SdcEnv.new_framework
+    SdcWebsite.orders.order_details.ship_to.show_more.safe_click
+  else
+    stamps.orders.order_details.ship_to.domestic.show_ship_to_details
+  end
 end
 
 Then /^[Oo]n [Oo]rder [Dd]etails form, Expand Manual Items Ordered pane$/ do
@@ -163,17 +170,29 @@ Then /^[Ss]et [Oo]rder [Dd]etails Weight to (\d+\.?\d*) lb (\d+\.?\d*) oz$/ do |
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Pounds to (\d+\.?\d*)$/ do |str|
-  stamps.orders.order_details.weight.lb.set(TestData.store[:pounds] = str)
+  if SdcEnv.new_framework
+    SdcWebsite.orders.order_details.weight.lbs.set(TestData.store[:pounds] = str)
+  else
+    stamps.orders.order_details.weight.lb.set(TestData.store[:pounds] = str)
+  end
   step 'blur out on Order Details form'
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Ounces to (\d+\.?\d*)$/ do |str|
-  stamps.orders.order_details.weight.oz.set(TestData.store[:ounces] = str)
+  if SdcEnv.new_framework
+    SdcWebsite.orders.order_details.weight.oz.set(TestData.store[:pounds] = str)
+  else
+    stamps.orders.order_details.weight.oz.set(TestData.store[:ounces] = str)
+  end
   step 'blur out on Order Details form'
 end
 
 Then /^[Bb]lur out on [Oo]rder [Dd]etails form(?:| (\d+)(?:| times))$/ do |count|
-  stamps.orders.order_details.blur_out(count)
+  if SdcEnv.new_framework
+    SdcWebsite.orders.order_details.blur_out(count)
+  else
+    stamps.orders.order_details.blur_out(count)
+  end
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Dd]imensions to [Ll]ength (\d+) [Ww]idth (\d+) [Hh]eight (\d+)$/ do |length, width, height|
@@ -183,29 +202,47 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Dd]imensions to [Ll]ength (\d+) [Ww]idth (\d+
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ll]ength to (\d*)$/ do |str|
-  expect(stamps.orders.order_details.dimensions.length).to be_present, 'Order Details form Length is not present'
-  stamps.orders.order_details.dimensions.length.set(TestData.store[:length] = str)
+  if SdcEnv.new_framework
+    expect(SdcWebsite.orders.order_details.dimensions.length).to be_present, 'Order Details form Length is not present'
+    SdcWebsite.orders.order_details.dimensions.length.set(TestData.store[:length] = str)
+  else
+    expect(stamps.orders.order_details.dimensions.length).to be_present, 'Order Details form Length is not present'
+    stamps.orders.order_details.dimensions.length.set(TestData.store[:length] = str)
+  end
   step 'blur out on Order Details form'
   step 'Save Order Details data'
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ww]idth to (\d*)$/ do |str|
-  expect(stamps.orders.order_details.dimensions.width).to be_present, 'Order Details form Width is not present'
-  stamps.orders.order_details.dimensions.width.set(TestData.store[:width] = str)
+  if SdcEnv.new_framework
+    expect(SdcWebsite.orders.order_details.dimensions.width).to be_present, 'Order Details form Width is not present'
+    SdcWebsite.orders.order_details.dimensions.width.set(TestData.store[:width] = str)
+  else
+    expect(stamps.orders.order_details.dimensions.width).to be_present, 'Order Details form Width is not present'
+    stamps.orders.order_details.dimensions.width.set(TestData.store[:width] = str)
+  end
   step 'blur out on Order Details form'
   step 'Save Order Details data'
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Hh]eight to (\d*)$/ do |str|
-
-  expect(stamps.orders.order_details.dimensions.height).to be_present, 'Order Details form Height is not present'
-  stamps.orders.order_details.dimensions.height.set(TestData.store[:height] = str)
+  if SdcEnv.new_framework
+    expect(SdcWebsite.orders.order_details.dimensions.height).to be_present, 'Order Details form Height is not present'
+    SdcWebsite.orders.order_details.dimensions.height.set(TestData.store[:height] = str)
+  else
+    expect(stamps.orders.order_details.dimensions.height).to be_present, 'Order Details form Height is not present'
+    stamps.orders.order_details.dimensions.height.set(TestData.store[:height] = str)
+  end
   step 'blur out on Order Details form'
   step 'Save Order Details data'
 end
 
 Then /^[Cc]heck [Oo]rder [Dd]etails [Ii]nsure-[Ff]or [Cc]heckbox$/ do
-  stamps.orders.order_details.insure_for.checkbox.check
+  if SdcEnv.new_framework
+    SdcWebsite.orders.order_details.insurance.checkbox.check
+  else
+    stamps.orders.order_details.insure_for.checkbox.check
+  end
 end
 
 Then /^[Uu]ncheck [Oo]rder [Dd]etails [Ii]nsure-[Ff]or [Cc]heckbox$/ do
@@ -214,16 +251,24 @@ end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nsure-[Ff]or to \$(\d+\.\d{2})$/ do |str|
   step 'check order details insure-for checkbox'
-  stamps.orders.order_details.insure_for.textbox.set(TestData.store[:insured_value] = str.to_f)
-  3.times do
-    step 'blur out on Order Details form 2 times'
-    stamps.orders.modals.insurance_terms_conditions.agree if stamps.orders.modals.insurance_terms_conditions.present?
-    break unless stamps.orders.modals.insurance_terms_conditions.present?
-  end
-  # wait until insurance price is updated before proceeding to next step
-  10.times do
-    break if stamps.orders.order_details.insure_for.cost.text.dollar_amount_str.to_f.round(2) > 0
-    step 'blur out on Order Details form 3'
+  if SdcEnv.new_framework
+    SdcWebsite.orders.order_details.insurance.amount.set(TestData.store[:insured_value] = str.to_f)
+    10.times do
+      break if SdcWebsite.orders.order_details.insurance.cost.text_value.dollar_amount_str.to_f.round(2) > 0
+      step 'blur out on Order Details form 3'
+    end
+  else
+    stamps.orders.order_details.insure_for.textbox.set(TestData.store[:insured_value] = str.to_f)
+    3.times do
+      step 'blur out on Order Details form 2 times'
+      stamps.orders.modals.insurance_terms_conditions.agree if stamps.orders.modals.insurance_terms_conditions.present?
+      break unless stamps.orders.modals.insurance_terms_conditions.present?
+    end
+
+    10.times do
+      break if stamps.orders.order_details.insure_for.cost.text.dollar_amount_str.to_f.round(2) > 0
+      step 'blur out on Order Details form 3'
+    end
   end
   step 'Save Order Details data'
 end
@@ -346,7 +391,12 @@ end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
   step 'show order details form ship-to fields'
-  stamps.orders.order_details.ship_to.domestic.set(TestData.store[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address, SdcEnv.env)))
+  if SdcEnv.new_framework
+    SdcWebsite.orders.order_details.ship_to.address.set(TestData.store[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address, SdcEnv.env)))
+  else
+    stamps.orders.order_details.ship_to.domestic.set(TestData.store[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address, SdcEnv.env)))
+  end
+  step 'blur out on Order Details form'
   step 'Save Order Details data'
   step 'hide order details form Ship-To fields'
 end

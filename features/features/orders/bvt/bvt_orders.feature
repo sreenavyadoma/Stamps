@@ -141,7 +141,7 @@ Feature:  BVT tests for Orders
     Then set Order Details Length to 1
     Then set Order Details Width to 1
     Then set Order Details Height to 1
-  # Orders Grid Operations
+#  # Orders Grid Operations
     Then uncheck Orders Grid row 1
     Then expect Orders Grid Pounds is 1
     Then expect Orders Grid Ounces is 1

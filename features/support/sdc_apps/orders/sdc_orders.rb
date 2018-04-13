@@ -31,8 +31,8 @@ module Stamps
 
       end
 
-      def left_filter_panel
-
+      def filter_panel
+        @filter_panel ||= SdcOrdersFilterPanel.new
       end
 
       #part of grid
