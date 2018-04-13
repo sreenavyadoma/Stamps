@@ -15,7 +15,6 @@ module Stamps
         button(:hamburger, required: true) {{class: "navbar-toggle collapsed"}}
 
       end
-
     end
   end
 end
