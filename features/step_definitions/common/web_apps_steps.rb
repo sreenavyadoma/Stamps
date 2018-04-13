@@ -19,7 +19,7 @@ Then /^[Ss]ign-in to SDC Website$/ do
 end
 
 Then /^sign-out of SDC Website$/ do
-  SdcWebsite.navigation.user_drop_down.sign_out if SdcEnv.browser
+  #SdcWebsite.navigation.user_drop_down.sign_out if SdcEnv.browser
 end
 
 Then /^sign-in to Orders as (.+), (.+)$/ do |usr, pw|
