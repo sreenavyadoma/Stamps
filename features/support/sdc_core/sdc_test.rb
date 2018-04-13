@@ -130,6 +130,29 @@ class SdcTest
       end
     end
 
+    def appium_temp
+      desired_caps = {
+          caps: {
+              appiumVersion: '1.7.2',
+              deviceName:    'iPhone X Simulator',
+              deviceOrientation: 'portrait',
+              platformVersion: '11.2',
+              platformName:  'iOS',
+              browserName: 'Safari',
+              name: "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+          },
+          appium_lib: {
+              sauce_username:   nil, # don't run on Sauce
+              sauce_access_key: nil,
+              wait: 60
+          }
+      }
+
+      # Start the driver
+      Appium::Driver.new(desired_caps, false).start_driver
+
+    end
+
     def configure
 
       Selenium::WebDriver.logger.level = :debug
@@ -141,7 +164,7 @@ class SdcTest
             SdcPage.browser = class_eval(SdcEnv.sauce_device.to_s)
 
           when SdcEnv.mobile
-            SdcPage.browser = SdcDriverDecorator.new(SdcAppiumDriver.new(SdcEnv.sauce_device).core_driver.start_driver)
+            SdcPage.browser = SdcDriverDecorator.new(appium_temp)
             SdcPage.browser.manage.timeouts.implicit_wait = 180
           else
             # ignore
