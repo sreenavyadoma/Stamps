@@ -29,6 +29,10 @@ module Stamps
           def dashboard_page
             DashboardPage.new()
           end
+
+          def password_reset_page
+            PasswordResetPage.new()
+          end
         end
 
       end

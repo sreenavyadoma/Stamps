@@ -58,7 +58,7 @@ Then /^[Pp]P: expect login page [Ff]orgot [Pp]assword link exist$/ do
   expect(StampsEndicia.login_page.forgot_pw).to be_present, "Forgot Password? link DOES NOT exist on login page"
 end
 
-Then /^[Pp]P: [Uu]ser clicks [Ff]orgot [Pp]assword link $/ do
+Then /^[Pp]P: [Uu]ser clicks [Ff]orgot [Pp]assword link$/ do
   StampsEndicia.login_page.forgot_pw.safe_click
 end
 
