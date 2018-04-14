@@ -26,16 +26,30 @@ module Stamps
       end
     end
 
-    class SdcShipToCountry < SdcPageObject
+    class SdcShipToCountryDom < SdcPageObject
       element(:drop_down) { {xpath: '//div[contains(@id, "matltocountrydroplist-trigger-picker")]'} }
-      element(:text_field) { {xpath: '(//input[contains(@id, "matltocountrydroplist")])[1]'} }
+      element(:text_field) { {xpath: '//input[contains(@id, "matltocountrydroplist")]'} }
 
       def select(str)
         self.class.element(:selection_element) { {xpath: "//li[text()='#{str}']"} }
         5.times do
-          drop_down.click unless selection_element.present?
+          drop_down.safe_click unless selection_element.present?
           selection_element.safe_click
-          return text_field.text if text_field.text_value == str
+          return text_field.text_value if text_field.text_value == str
+        end
+      end
+    end
+
+    class SdcShipToCountryIntl < SdcPageObject
+      element(:drop_down) { {xpath: '(//*[contains(@id, "international")]//*[contains(@id, "picker")])[1]'} }
+      element(:text_field) { {xpath: '//div[contains(@id, "shiptoview-international")]//input[contains(@id, "combo")]'} }
+
+      def select(str)
+        self.class.element(:selection_element) { {xpath: "//li[text()='#{str}']"} }
+        5.times do
+          drop_down.safe_click unless selection_element.present?
+          selection_element.safe_click
+          return text_field.text_value if text_field.text_value == str
         end
       end
     end
@@ -49,10 +63,10 @@ module Stamps
         self.class.element(:selection_element) { {xpath: "//li[@id='#{data_for(:orders_services, {})[str]}']"} }
         5.times do
           drop_down.click unless selection_element.present?
-          selection_element.safe_click
-          # return text_field.text_value if text_field.text_value == str
-          return text_field.text_value if text_field.text_value.include?(str)
+          selection_element.safe_click unless selection_element.class_disabled?
+          return text_field.text_value if text_field.text_value && text_field.text_value.include?(str)
         end
+        ''
       end
     end
 
@@ -89,16 +103,45 @@ module Stamps
       button(:print) { {} }
     end
 
-    class SdcOrderDetailsShipTo < SdcPageObject
+    class SdcOrderDetailsDomestic < SdcPageObject
+      element(:phone, tag_name: :text_field) { {xpath: '(//input[@name="ShipPhone"])[1]'} }
+      element(:email, tag_name: :text_field) { {xpath: '(//input[@name="BuyerEmail"])[1]'} }
       element(:address, tag_name: :textarea) { {xpath: '//textarea[contains(@id, "shiptotextarea")]'} }
-      element(:phone) { {xpath: '(//input[@name="ShipPhone"])[1]'} }
-      element(:email) { {xpath: '(//input[@name="BuyerEmail"])[1]'} }
-
-      element(:show_more) { {xpath: '//div[starts-with(@id, "shiptoview-addressCollapsed")]//a'} }
-      element(:show_less) { {xpath: '//div[starts-with(@id, "shiptoview-domestic")]//span[text()="Less"]'} }
+      #element(:show_more) { {xpath: '//div[starts-with(@id, "shiptoview-addressCollapsed")]//a'} }
+      element(:show_less) { {xpath: '//div[contains(@id, "domestic")]//span[text()="Less"]'} }
 
       def country
-        @country ||= SdcShipToCountry.new
+        @country ||= SdcShipToCountryDom.new
+      end
+    end
+
+    class SdcOrderDetailsInternational < SdcPageObject
+      element(:name, tag_name: :text_field) { {xpath: '//input[@name="ShipName"]'} }
+      element(:company, tag_name: :text_field) { {xpath: '//input[@name="ShipCompany"]'} }
+      element(:address1, tag_name: :text_field) { {xpath: '//input[@name="ShipStreet1"]'} }
+      element(:address2, tag_name: :text_field) { {xpath: '//input[@name="ShipStreet2"]'} }
+      element(:city, tag_name: :text_field) { {xpath: '//input[@name="ShipCity"]'} }
+      element(:province, tag_name: :text_field) { {xpath: '//input[@name="ShipState"]'} }
+      element(:postal_code, tag_name: :text_field) { {xpath: '//input[@name="ShipPostalCode"]'} }
+      element(:phone, tag_name: :text_field) { {xpath: '(//input[@name="ShipPhone"])[2]'} }
+      element(:email, tag_name: :text_field) { {xpath: '(//input[@name="BuyerEmail"])[2]'} }
+      #element(:show_more) { {xpath: '//div[starts-with(@id, "shiptoview-addressCollapsed")]//a'} }
+      element(:show_less) { {xpath: '//div[contains(@id, "international")]//span[text()="Less"]'} }
+
+      def country
+        @country ||= SdcShipToCountryIntl.new
+      end
+    end
+
+    class SdcOrderDetailsShipTo < SdcPageObject
+      element(:show_more) { {xpath: '//div[starts-with(@id, "shiptoview-addressCollapsed")]//a'} }
+
+      def domestic
+        @domestic ||= SdcOrderDetailsDomestic.new
+      end
+
+      def international
+        @international ||= SdcOrderDetailsInternational.new
       end
     end
 
@@ -113,7 +156,6 @@ module Stamps
       element(:oz_dec) { {xpath: '(//div[contains(@class, "ounces-numberfield")]//div[contains(@class, "x-form-spinner-down")])[1]'} }
       number(:oz, :oz_tf, :oz_inc, :oz_dec)
     end
-
 
     class SdcOrderDetailsDimensions < SdcPageObject
       text_field(:len_tf, tag_name: :text_field) { {xpath: '(//*[contains(@class, "lengthnumberfield")])[1]'} }

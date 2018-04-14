@@ -35,7 +35,7 @@ module Stamps
         @filter_panel ||= SdcOrdersFilterPanel.new
       end
 
-      def wait_until_present(count=10)
+      def wait_until_present(count=30)
         (count.nil? || count == 0 ? 1 : count.to_i).times do
           return true unless loading_orders.present?
           sleep(1)

@@ -19,7 +19,7 @@ end
 Then /^Save Order Details data$/ do
   step "Expect Order Details is present"
   if SdcEnv.new_framework
-    TestData.store[:country] = SdcWebsite.orders.order_details.ship_to.country.text_field.text_value
+    TestData.store[:country] = SdcWebsite.orders.order_details.ship_to.domestic.country.text_field.text_value
     TestData.store[:service_cost] = SdcWebsite.orders.order_details.service.cost.text_value.dollar_amount_str.to_f.round(2)
     TestData.store[:service] = SdcWebsite.orders.order_details.service.text_field.text_value
     TestData.store[:ship_from] = SdcWebsite.orders.order_details.ship_from.text_field.text_value
