@@ -38,7 +38,6 @@ module Stamps
 
   class SdcPage < WatirDrops::PageObject
     class << self
-
       def page_obj(name, tag: nil, required: false, timeout: 30)
         _element(name, required: required) { SdcFinder.element(tag: tag, locator: yield) }
       end
