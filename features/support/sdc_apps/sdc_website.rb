@@ -4,7 +4,7 @@ module Stamps
     extend self
 
     def landing_page
-      @landing_page ||= Object.const_get('Orders::LandingPage').new
+      @landing_page ||= SdcLandingPage.new
     end
 
     def orders
