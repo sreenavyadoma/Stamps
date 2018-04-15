@@ -80,90 +80,6 @@ module Stamps
 
   end
 
-  class SdcElementFinder
-    include SdcWait
-
-    attr_reader :driver
-    alias_method :browser, :driver
-
-    def initialize(driver)
-      @driver = driver
-    end
-
-    def element(tag_name, locator, message: '', timeout: 30)
-      begin
-        element = wait_until(timeout: timeout, message: message) { find_element(tag_name, locator) }
-      rescue Selenium::WebDriver::Error::TimeOutError
-        # ignore
-      end
-
-      exception = Selenium::WebDriver::Error::WebDriverError
-      message = "Can not find element. locator: #{locator}"
-      raise exception, message if element.nil?
-
-      SdcElement.new(find_element(tag_name, locator))
-    end
-
-    def elements(tag_name, locator, message: '', timeout: 30)
-      begin
-        element = wait_until(timeout: timeout, message: message) { find_elements(tag_name, locator) }
-      rescue Selenium::WebDriver::Error::TimeOutError
-        # ignore
-      end
-
-      exception = Selenium::WebDriver::Error::WebDriverError
-      message = "Can not find element with locator: #{locator}"
-      raise exception, message if element.nil?
-
-      find_elements(tag_name, locator)
-    end
-
-    private
-
-    def find_element(tag_name, locator)
-      case
-      when SdcEnv.browser
-        if tag_name.nil?
-          return @driver.element(locator)
-        else
-          return instance_eval("browser.#{tag_name}(#{locator})")
-        end
-
-      when SdcEnv.mobile
-        return @driver.find_element(locator)
-      else
-        # ignore
-      end
-
-      nil
-    end
-
-    def find_elements(tag_name, locator)
-      case
-      when SdcEnv.browser
-        if tag_name.nil?
-          return @driver.elements(locator)
-        else
-          begin
-            code = "browser.#{tag_name}(#{locator})"
-            elements = instance_eval(code)
-            return wait_until(timeout: timeout, message: code) { elements }
-          rescue Selenium::WebDriver::Error::TimeOutError
-            # ignore
-          end
-        end
-
-      when SdcEnv.mobile
-        return @driver.find_elements(locator)
-      else
-        # ignore
-      end
-
-      nil
-    end
-
-  end
-
   class SdcFinder
     class << self
       def browser
@@ -186,7 +102,7 @@ module Stamps
   class SdcPage < WatirDrops::PageObject
     class << self
 
-      def page_obj(name, tag: nil, timeout: 30, required: false)
+      def page_obj(name, tag: nil, required: false, timeout: 30)
         _element(name, required: required) { SdcFinder.element(tag: tag, locator: yield) }
       end
       alias_method :text_field, :page_obj
@@ -218,38 +134,6 @@ module Stamps
 
   end
 
-
-
-  class SdcPageX
-    include ::SdcDriver
-
-    class << self
-      def visit(*args)
-        super(*args)
-      end
-
-      def element(name, tag_name: nil, timeout: 30, required: false)
-        super(name, required: required) { SdcElement.new(tag_name) }
-      end
-      alias_method :text_field, :element
-      alias_method :button, :element
-      alias_method :label, :element
-      alias_method :selection, :element
-      alias_method :link, :element
-
-      def chooser(name, chooser, verify, property, property_name)
-        element(name) { SdcChooser.new(instance_eval(chooser.to_s), instance_eval(verify.to_s), property, property_name) }
-      end
-      alias_method :checkbox, :chooser
-      alias_method :radio, :chooser
-
-      def number(name, text_field, increment, decrement)
-        element(name) { SdcNumber.new(instance_eval(text_field.to_s), instance_eval(increment.to_s), instance_eval(decrement.to_s)) }
-      end
-
-    end
-
-  end
 
   class SdcDriverDecorator < BasicObject
 
