@@ -1,6 +1,17 @@
 
 Then /^visit Sdc Website$/ do
-  Orders::LandingPage.visit
+  Orders::LandingPage.visit(case SdcEnv.env
+                            when :qacc
+                              'ext.qacc'
+                            when :qasc
+                              'ext.qasc'
+                            when :stg
+                              '.testing'
+                            when :prod
+                              ''
+                            else
+                              # ignore
+                            end)
 end
 
 Then /^[Ss]ign-in to SDC Website$/ do
@@ -23,12 +34,44 @@ Then /^sign-out of SDC Website$/ do
 end
 
 Then /^sign-in to Orders as (.+), (.+)$/ do |usr, pw|
-  SdcWebsite.landing_page.sign_in_with(TestData.store[:username] = usr, TestData.store[:password] = pw)
+  landing_page = SdcWebsite.landing_page
+  landing_page.username.set(TestData.store[:username] = usr)
+  landing_page.password.set(TestData.store[:password] = pw)
   if SdcEnv.browser
+    3.to_i.times do
+      begin
+        landing_page.sign_in.click
+        landing_page.sign_in.click
+        landing_page.sign_in.safe_click
+        landing_page.sign_in.send_keys(:enter)
+        landing_page.sign_in.send_keys(:enter)
+        #sign_in.send_keys_while_present(:enter, ctr: 2)
+        #sign_in.safe_wait_while_present
+        break if signed_in_user.present?
+      rescue
+        # ignore
+      end
+    end
+    sleep(10)
     SdcWebsite.orders.loading_orders.safe_wait_until_present(timeout: 5)
     SdcWebsite.orders.loading_orders.safe_wait_while_present(timeout: 5)
     SdcWebsite.navigation.user_drop_down.signed_in_user.safe_wait_until_present(timeout: 5)
     #expect(SdcWebsite.navigation.user_drop_down.signed_in_user.text_value).to include(TestData.store[:username])
+
+  elsif SdcEnv.ios
+    begin
+      landing_page.sign_in.click
+      landing_page.sign_in.send_keys(:enter)
+      landing_page.sign_in.safe_send_keys(:enter)
+    rescue
+      # ignore
+    end
+
+  elsif SdcEnv.android
+
+    SdcPage.browser.hide_keyboard
+    SdcPage.browser.action.move_to(sign_in).click.perform
+    SdcPage.browser.action.move_to(sign_in).send_keys(:enter).perform
   end
   sleep 3
 end

@@ -1,4 +1,6 @@
 
+##
+# There should be one mobile driver and one browser driver factory
 class SdcAppiumDriver
 
   attr_reader :device
