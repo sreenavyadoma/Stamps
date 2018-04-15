@@ -90,13 +90,13 @@ module Stamps
         SdcPage.browser
       end
 
-      def element(tag: nil, timeout: 20)
+      def element(tag: nil, timeout: 20, &block)
         if SdcEnv.browser
-          return SdcElement.new(instance_eval("browser.#{tag}(#{yield})")) if tag
-          return SdcElement.new(browser.element(locator))
+          return SdcElement.new(instance_eval("browser.#{tag}(#{block.call})")) if tag
+          return SdcElement.new(browser.element(block.call))
         elsif SdcEnv.mobile
-          result = wait_until(timeout: timeout) { browser.find_element(yield) }
-          return SdcElement.new(browser.find_element(yield)) if result
+          result = wait_until(timeout: timeout) { browser.find_element(block.call) }
+          return SdcElement.new(browser.find_element(block.call)) if result
         end
 
         nil
