@@ -1,8 +1,8 @@
 module Stamps
 
   class SignedInUser < SdcPage
-    element(:signed_in_user) { SdcElement.new(browser.a(id: "username")) }
-    element(:sign_out_link) { SdcElement.new(browser.a(id: "signOutLink")) }
+    page_obj(:signed_in_user, tag: :a) { {id: "username"} }
+    page_obj(:sign_out_link, tag: :a) { {id: "signOutLink"} }
 
     def sign_out
       signed_in_user.safe_wait_until_present
@@ -12,31 +12,11 @@ module Stamps
     end
   end
 
-  class ISignedInUser < SdcPage
-    element(:signed_in_user) { SdcElement.new(browser.find_element(id: "username")) }
-    element(:sign_out_link) { SdcElement.new(browser.find_element(id: "signOutLink")) }
-
-    def sign_out
-      super
-    end
-  end
-
-  module SdcNavigationInstHelper
-    def nav_inst
-      if SdcEnv.browser
-        "SignedInUser"
-      elsif SdcEnv.ios || SdcEnv.android
-        "ISignedInUser"
-      else
-        raise ArgumentError, 'Can not determine if mobile or browser test'
+  module SdcNavigation
+    class << self
+      def user_drop_down
+        @user_drop_down ||= Object.const_get('SignedInUser').new
       end
-    end
-  end
-
-  class SdcNavigation
-    include SdcNavigationInstHelper
-    def user_drop_down
-      @user_drop_down ||= Object.const_get(nav_inst).new
     end
   end
 
