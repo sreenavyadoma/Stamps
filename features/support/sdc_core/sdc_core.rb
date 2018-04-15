@@ -14,6 +14,74 @@ module Stamps
     end
   end
 
+
+  module SdcWait
+    def ignored_error(ignored)
+      unless ignored
+        case
+        when SdcEnv.mobile
+          return Appium::Core::Error::NoSuchElementError
+        when SdcEnv.browser
+          return Selenium::WebDriver::Error::NoSuchElementError
+        end
+      end
+
+      ignored
+    end
+
+    def wait_until(timeout: 20, interval: 0.2, message: '', ignored_error: nil)
+      end_time = Time.now + timeout
+      error = nil
+      ignored = ignored_error(ignored_error)
+
+      until Time.now > end_time
+        begin
+          result = yield
+          return result if result
+        rescue *ignored => error
+          SdcLog.error error
+          SdcLog.error error.message
+          SdcLog.error error.backtrace.join "\n"
+        end
+
+        sleep(interval)
+      end
+
+      raise Selenium::WebDriver::Error::TimeOutError, message(message, error, timeout)
+    end
+
+    def wait_while(timeout: 20, interval: 0.2, message: '', ignored_error: nil)
+      end_time = Time.now + timeout
+      error = nil
+      ignored = ignored_error(ignored_error)
+
+      until Time.now > end_time
+        begin
+          result = yield
+          return result if result
+        rescue *ignored => error
+          # ignore
+        end
+
+        sleep(interval)
+      end
+
+      raise Selenium::WebDriver::Error::TimeOutError, message(message, error, timeout)
+    end
+
+    def message(message, error, timeout)
+      msg = if message
+              message.dup
+            else
+              "timed out after #{timeout} seconds"
+            end
+
+      msg << " (#{error.message})" if error
+    end
+
+  end
+
+
   class SdcFinder
     class << self
       include Watir::Waitable
@@ -22,13 +90,13 @@ module Stamps
         SdcPage.browser
       end
 
-      def element(tag: nil, locator: nil, timeout: 20)
+      def element(tag: nil, timeout: 20)
         if SdcEnv.browser
-          return SdcElement.new(instance_eval("browser.#{tag}(#{locator})")) if tag
+          return SdcElement.new(instance_eval("browser.#{tag}(#{yield})")) if tag
           return SdcElement.new(browser.element(locator))
         elsif SdcEnv.mobile
-          result = wait_until(timeout: timeout) { browser.find_element(locator) }
-          return SdcElement.new(browser.find_element(locator)) if result
+          result = wait_until(timeout: timeout) { browser.find_element(yield) }
+          return SdcElement.new(browser.find_element(yield)) if result
         end
 
         nil
@@ -39,7 +107,7 @@ module Stamps
   class SdcPage < WatirDrops::PageObject
     class << self
       def page_obj(name, tag: nil, required: false, timeout: 30)
-        _element(name, required: required) { SdcFinder.element(tag: tag, locator: yield) }
+        _element(name, required: required) { SdcFinder.element(tag: tag, timeout: timeout) { yield } }
       end
       alias_method :text_field, :page_obj
       alias_method :button, :page_obj
