@@ -1,4 +1,4 @@
-default: --backtrace --profile iphonex_saucelabs
+default: --backtrace --profile saucelabs_browser
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 

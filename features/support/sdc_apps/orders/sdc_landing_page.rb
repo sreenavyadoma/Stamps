@@ -1,7 +1,11 @@
 module Stamps
   module Orders
 
-    class LandingPage < WatirDrops::PageObject
+    class ThePage < WatirDrops::PageObject
+
+    end
+
+    class LandingPage < ThePage
 
       element(:username) { SdcElement.new(browser.text_field(xpath: "//input[@placeholder='USERNAME']")) }
       element(:password) { SdcElement.new(browser.text_field(xpath: "//input[@placeholder='PASSWORD']")) }
