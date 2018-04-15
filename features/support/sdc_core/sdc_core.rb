@@ -38,8 +38,8 @@ module Stamps
 
   class SdcPage < WatirDrops::PageObject
     class << self
-      def page_obj(name, tag: nil, required: false, timeout: 30)
-        _element(name, required: required) { SdcFinder.element(tag: tag, timeout: timeout) { yield } }
+      def page_obj(name, tag: nil, required: false, timeout: 30, &block)
+        _element(name, required: required) { SdcFinder.element(tag: tag, timeout: timeout, &block) }
       end
       alias_method :text_field, :page_obj
       alias_method :button, :page_obj
