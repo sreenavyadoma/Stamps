@@ -18,10 +18,10 @@ module Stamps
     def ignored_error(ignored)
       unless ignored
         case
-          when SdcEnv.mobile
-            return Appium::Core::Error::NoSuchElementError
-          when SdcEnv.browser
-            return Selenium::WebDriver::Error::NoSuchElementError
+        when SdcEnv.mobile
+          return Appium::Core::Error::NoSuchElementError
+        when SdcEnv.browser
+          return Selenium::WebDriver::Error::NoSuchElementError
         end
       end
 
@@ -122,17 +122,17 @@ module Stamps
 
     def find_element(tag_name, locator)
       case
-        when SdcEnv.browser
-          if tag_name.nil?
-            return @driver.element(locator)
-            else
-             return instance_eval("browser.#{tag_name}(#{locator})")
-          end
-
-        when SdcEnv.mobile
-          return @driver.find_element(locator)
+      when SdcEnv.browser
+        if tag_name.nil?
+          return @driver.element(locator)
         else
-          # ignore
+          return instance_eval("browser.#{tag_name}(#{locator})")
+        end
+
+      when SdcEnv.mobile
+        return @driver.find_element(locator)
+      else
+        # ignore
       end
 
       nil
@@ -140,23 +140,23 @@ module Stamps
 
     def find_elements(tag_name, locator)
       case
-        when SdcEnv.browser
-          if tag_name.nil?
-            return @driver.elements(locator)
-          else
-            begin
-              code = "browser.#{tag_name}(#{locator})"
-              elements = instance_eval(code)
-              return wait_until(timeout: timeout, message: code) { elements }
-            rescue Selenium::WebDriver::Error::TimeOutError
-              # ignore
-            end
-          end
-
-        when SdcEnv.mobile
-          return @driver.find_elements(locator)
+      when SdcEnv.browser
+        if tag_name.nil?
+          return @driver.elements(locator)
         else
-          # ignore
+          begin
+            code = "browser.#{tag_name}(#{locator})"
+            elements = instance_eval(code)
+            return wait_until(timeout: timeout, message: code) { elements }
+          rescue Selenium::WebDriver::Error::TimeOutError
+            # ignore
+          end
+        end
+
+      when SdcEnv.mobile
+        return @driver.find_elements(locator)
+      else
+        # ignore
       end
 
       nil
@@ -164,7 +164,63 @@ module Stamps
 
   end
 
+  class SdcFinder
+    class << self
+      def browser
+        SdcPage.browser
+      end
+
+      def element(tag: nil, locator: nil)
+        if SdcEnv.browser
+          return SdcElement.new(instance_eval("browser.#{tag}(#{locator})")) if tag
+          return SdcElement.new(browser.element(locator))
+        elsif SdcEnv.mobile
+          return SdcElement.new(browser.find_element(locator))
+        end
+
+        nil
+      end
+    end
+  end
+
   class SdcPage < WatirDrops::PageObject
+    class << self
+
+      def page_obj(name, tag: nil, timeout: 30, required: false)
+        _element(name, required: required) { SdcFinder.element(tag: tag, locator: yield) }
+      end
+      alias_method :text_field, :page_obj
+      alias_method :button, :page_obj
+      alias_method :label, :page_obj
+      alias_method :selection, :page_obj
+      alias_method :link, :page_obj
+
+      def page_objs(name, &block)
+        elements(name, &block)
+      end
+
+      def chooser(name, chooser, verify, property, property_name)
+        _element(name) { SdcChooser.new(instance_eval(chooser.to_s), instance_eval(verify.to_s), property, property_name) }
+      end
+      alias_method :checkbox, :chooser
+      alias_method :radio, :chooser
+
+      def number(name, text_field, increment, decrement)
+        _element(name) { SdcNumber.new(instance_eval(text_field.to_s), instance_eval(increment.to_s), instance_eval(decrement.to_s)) }
+      end
+
+      protected
+
+      def _element(name, required: false, &block)
+        element(name, required: required, &block)
+      end
+    end
+
+  end
+
+
+
+  class SdcPageX
     include ::SdcDriver
 
     class << self
@@ -419,10 +475,10 @@ module Stamps
 
     def prop_include?(property_name, property_value)
       case
-        when SdcEnv.browser
-          return @element.send(:attribute_value, property_name).include?(property_value)
-        when SdcEnv.mobile
-          return @element.send(:attribute, property_name).include?(property_value)
+      when SdcEnv.browser
+        return @element.send(:attribute_value, property_name).include?(property_value)
+      when SdcEnv.mobile
+        return @element.send(:attribute, property_name).include?(property_value)
       end
     end
   end

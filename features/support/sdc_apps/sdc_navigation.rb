@@ -1,6 +1,6 @@
 module Stamps
 
-  class SignedInUser < WatirDrops::PageObject
+  class SignedInUser < SdcPage
     element(:signed_in_user) { SdcElement.new(browser.a(id: "username")) }
     element(:sign_out_link) { SdcElement.new(browser.a(id: "signOutLink")) }
 
@@ -12,7 +12,7 @@ module Stamps
     end
   end
 
-  class ISignedInUser < WatirDrops::PageObject
+  class ISignedInUser < SdcPage
     element(:signed_in_user) { SdcElement.new(browser.find_element(id: "username")) }
     element(:sign_out_link) { SdcElement.new(browser.find_element(id: "signOutLink")) }
 
