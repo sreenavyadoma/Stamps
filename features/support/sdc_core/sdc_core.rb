@@ -82,16 +82,19 @@ module Stamps
 
   class SdcFinder
     class << self
+      include Watir::Waitable
+
       def browser
         SdcPage.browser
       end
 
-      def element(tag: nil, locator: nil)
+      def element(tag: nil, locator: nil, timeout: 20)
         if SdcEnv.browser
           return SdcElement.new(instance_eval("browser.#{tag}(#{locator})")) if tag
           return SdcElement.new(browser.element(locator))
         elsif SdcEnv.mobile
-          return SdcElement.new(browser.find_element(locator))
+          result = wait_until(timeout: timeout) { browser.find_element(locator) }
+          return SdcElement.new(browser.find_element(locator)) if result
         end
 
         nil
