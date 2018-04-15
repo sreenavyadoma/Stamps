@@ -1,7 +1,6 @@
 module Stamps
   module Orders
 
-
     class LandingPage < SdcPage
 
       page_obj(:username, tag: :text_field) { {xpath: "//input[@placeholder='USERNAME']"} }
