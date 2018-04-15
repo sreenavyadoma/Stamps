@@ -18,11 +18,7 @@ module Stamps
     class << self
       include Watir::Waitable
 
-      def browser
-        SdcPage.browser
-      end
-
-      def element(tag: nil, timeout: 20, &block)
+      def element(browser, tag: nil, timeout: 20, &block)
         if SdcEnv.browser
           return SdcElement.new(instance_eval("browser.#{tag}(#{block.call})")) if tag
           return SdcElement.new(browser.element(block.call))
@@ -39,7 +35,7 @@ module Stamps
   class SdcPage < WatirDrops::PageObject
     class << self
       def page_obj(name, tag: nil, required: false, timeout: 30, &block)
-        _element(name, required: required) { SdcFinder.element(tag: tag, timeout: timeout, &block) }
+        _element(name, required: required) { SdcFinder.element(browser, tag: tag, timeout: timeout, &block) }
       end
       alias_method :text_field, :page_obj
       alias_method :button, :page_obj
