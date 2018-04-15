@@ -160,14 +160,14 @@ module Stamps
   end
 
   class SdcElement < BasicObject
-    include SdcWait
+    include ::Watir::Waitable
 
     def initialize(element)
       @element = element
     end
 
     def present?
-      return enabled? && @element.send(:displayed?) unless @lement.respond_to?(:present?)
+      @element.send(:displayed?) if @lement.respond_to?(:displayed?)
       @element.send(:present?)
     end
 
@@ -254,7 +254,7 @@ module Stamps
       self
     end
 
-    def wait_until_present(timeout: 15, interval: 0.2)
+    def wait_until_present(timeout: 20, interval: 0.2)
       if @element.respond_to? :wait_until_present
         @element.send(:wait_until_present, timeout: timeout, interval: interval)
       else
@@ -264,7 +264,7 @@ module Stamps
       self
     end
 
-    def wait_while_present(timeout: 15, interval: 0.2)
+    def wait_while_present(timeout: 20, interval: 0.2)
       if @element.respond_to? :wait_while_present
         @element.send(:wait_while_present, timeout: timeout)
       else
