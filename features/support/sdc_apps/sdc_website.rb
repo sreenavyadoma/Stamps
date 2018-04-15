@@ -8,11 +8,11 @@ module Stamps
     end
 
     def orders
-      @orders ||= Object.const_get("Orders::SdcOrders").new
+      @orders ||= Object.const_get('Orders::SdcOrders').new
     end
 
     def mail
-      raise "Not Implemented"
+      raise 'Not Implemented'
     end
 
     def navigation
