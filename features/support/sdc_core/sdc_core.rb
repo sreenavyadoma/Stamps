@@ -67,6 +67,7 @@ module Stamps
 
   end
 
+
   class SdcDriverDecorator < BasicObject
 
     def initialize(driver)
@@ -158,6 +159,18 @@ module Stamps
       self
     end
 
+    def send_keys_while_present(*args, ctr: 1)
+      ctr.to_i.times do
+        begin
+          break unless present?
+          safe_send_keys(*args)
+          safe_wait_while_present(1)
+        rescue
+          # ignore
+        end
+      end
+    end
+
     def safe_click(*modifiers, ctr: 1)
       ctr.to_i.times do
         begin
@@ -190,7 +203,7 @@ module Stamps
       self
     end
 
-    def safe_wait_until_present(timeout: 15, interval: nil)
+    def safe_wait_until_present(timeout: nil, interval: nil)
       begin
         wait_until_present(timeout: timeout, interval: interval)
       rescue
@@ -198,7 +211,7 @@ module Stamps
       end
     end
 
-    def safe_wait_while_present(timeout: 15, interval: 0.2)
+    def safe_wait_while_present(timeout: 10, interval: 0.2)
       begin
         wait_while_present(timeout: timeout, interval: interval)
       rescue

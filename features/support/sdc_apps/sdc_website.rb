@@ -8,16 +8,15 @@ module Stamps
     end
 
     def orders
-      SdcOrders
+      @orders ||= Object.const_get('Orders::SdcOrders').new
     end
 
     def mail
       raise 'Not Implemented'
-      # SdcMail
     end
 
     def navigation
-      SdcNavigation
+      @navigation ||= Object.const_get('SdcNavigation').new
     end
 
   end

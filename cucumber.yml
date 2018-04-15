@@ -1,4 +1,4 @@
-default: --backtrace --profile saucelabs_browser
+default: --backtrace --profile saucelabs_samsung_galaxy
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
