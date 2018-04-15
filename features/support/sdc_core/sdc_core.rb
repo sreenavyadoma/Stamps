@@ -14,21 +14,18 @@ module Stamps
     end
   end
 
-  class SdcFinder
-    class << self
-      include Watir::Waitable
+  module SdcFinder
 
-      def element(browser, tag: nil, timeout: 20, &block)
-        if browser.is_a? Watir::Browser
-          return SdcElement.new(instance_eval("browser.#{tag}(#{block.call})")) if tag
-          return SdcElement.new(browser.element(block.call))
-        else
-          result = wait_until(timeout: timeout) { browser.find_element(block.call) }
-          return SdcElement.new(browser.find_element(block.call)) if result
-        end
-
-        nil
+    def self.element(browser, tag: nil, timeout: 20, &block)
+      if browser.is_a? Watir::Browser
+        return SdcElement.new(instance_eval("browser.#{tag}(#{block.call})")) if tag
+        return SdcElement.new(browser.element(block.call))
+      else
+        result = Watir::Waitable::wait_until(timeout: timeout) { browser.find_element(block.call) }
+        return SdcElement.new(browser.find_element(block.call)) if result
       end
+
+      nil
     end
   end
 
