@@ -1,7 +1,8 @@
 
 Then /^(?:[Cc]lick Orders Toolbar Add button|add new order|add [Oo]rder (\d+))$/ do |count|
   if SdcEnv.new_framework
-    SdcWebsite.orders.wait_until_present
+    # SdcWebsite.orders.wait_until_present
+    step "Wait until orders loaded 30"
     #todo TestData.store[:old_balance] = SdcWebsite.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
     #todo stamps.orders.orders_grid.grid_column(:checkbox).uncheck(1)
     TestData.store[:order_id][(count.nil?) ? TestData.store[:ord_id_ctr] += 1 : count.to_i] = SdcWebsite.orders.toolbar.add.click

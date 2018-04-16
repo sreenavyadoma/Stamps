@@ -1,3 +1,10 @@
+Then /^[Ww]ait [Uu]ntil [Oo]rder [Dd]etails [Pp]resent (\d+)$/ do |delay|
+  (delay.nil? || delay == 0 ? 5 : delay.to_i).times do
+    break if SdcWebsite.orders.order_details.title.present?
+    sleep(1)
+  end
+end
+
 Then /^[Hh]ide [Oo]rder [Dd]etails [Ff]orm [Ss]hip-[Tt]o [Ff]ields$/ do
   if SdcEnv.new_framework
     SdcWebsite.orders.order_details.ship_to.domestic.show_less.safe_click
@@ -67,7 +74,17 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Dd]omestic [Ss]hip-[Tt]o [Cc]ountry to (.*)$/ do |country|
   step 'show order details form ship-to fields'
   if SdcEnv.new_framework
-    expect(SdcWebsite.orders.order_details.ship_to.domestic.country.select(TestData.store[:ship_to_country] = country)).to eql(TestData.store[:ship_to_country])
+    SdcShipToCountryDom.page_obj(:selection_element) { {xpath: "//li[text()='#{str}']"} }
+    5.times do
+      SdcWebsite.orders.order_details.ship_to.domestic.country.drop_down.click unless SdcWebsite.orders.order_details.ship_to.domestic.country.selection_element.present?
+      SdcWebsite.orders.order_details.ship_to.domestic.country.selection_element.safe_click unless SdcWebsite.orders.order_details.ship_to.domestic.country.selection_element.class_disabled?
+      if SdcWebsite.orders.order_details.ship_to.domestic.country.text_field.text_value && SdcWebsite.orders.order_details.ship_to.domestic.country.text_field.text_value.include?(str)
+        TestData.store[:ship_to_country] = SdcWebsite.orders.order_details.ship_to.domestic.country.text_field.text_value
+        break
+      end
+      TestData.store[:ship_to_country] ||= ''
+    end
+    expect(TestData.store[:ship_to_country]).to eql(country)
   else
     expect(stamps.orders.order_details.ship_to.domestic.country.select(TestData.store[:ship_to_country] = country)).to eql(TestData.store[:ship_to_country])
   end
@@ -76,7 +93,17 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o [Cc]ountry to (.*)$/ do |country|
   step 'show order details form ship-to fields'
   if SdcEnv.new_framework
-    expect(SdcWebsite.orders.order_details.ship_to.international.country.select(TestData.store[:ship_to_country] = country)).to eql(TestData.store[:ship_to_country])
+    SdcShipToCountryIntl.page_obj(:selection_element) { {xpath: "//li[text()='#{str}']"} }
+    5.times do
+      SdcWebsite.orders.order_details.ship_to.international.country.drop_down.click unless SdcWebsite.orders.order_details.ship_to.international.country.selection_element.present?
+      SdcWebsite.orders.order_details.ship_to.international.country.selection_element.safe_click unless SdcWebsite.orders.order_details.ship_to.international.country.selection_element.class_disabled?
+      if SdcWebsite.orders.order_details.ship_to.international.country.text_field.text_value && SdcWebsite.orders.order_details.ship_to.international.country.text_field.text_value.include?(str)
+        TestData.store[:ship_to_country] = SdcWebsite.orders.order_details.ship_to.international.country.text_field.text_value
+        break
+      end
+      TestData.store[:ship_to_country] ||= ''
+    end
+    expect(TestData.store[:ship_to_country]).to eql(country)
   else
     expect(stamps.orders.order_details.ship_to.international.country.select(TestData.store[:ship_to_country] = country)).to eql(TestData.store[:ship_to_country])
   end
@@ -269,7 +296,12 @@ end
 
 Then /^[Bb]lur out on [Oo]rder [Dd]etails form(?:| (\d+)(?:| times))$/ do |count|
   if SdcEnv.new_framework
-    SdcWebsite.orders.order_details.blur_out(count)
+    (count.nil? || count == 0 ? 1 : count.to_i).times do
+      SdcWebsite.orders.order_details.service_blur_out_field.safe_click
+      SdcWebsite.orders.order_details.weight_blur_out_field.safe_double_click
+      SdcWebsite.orders.order_details.weight_blur_out_field.safe_click
+      SdcWebsite.orders.order_details.service_blur_out_field.safe_double_click
+    end
   else
     stamps.orders.order_details.blur_out(count)
   end
@@ -354,19 +386,47 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nsure-[Ff]or to \$(\d+\.\d{2})$/ do |str|
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Tt]racking to (.*)$/ do |str|
-  stamps.orders.order_details.tracking.select(TestData.store[:tracking] = str)
-  10.times do
-    break if stamps.orders.order_details.tracking.cost.text.dollar_amount_str.to_f.round(2) > 0
-    step 'blur out on Order Details form'
+  if SdcEnv.new_framework
+    SdcOrderDetailsTracking.page_obj(:selection_element) { {xpath: "//li//td[text()='#{str}']"} }
+    5.times do
+      SdcWebsite.orders.order_details.tracking.drop_down.click unless SdcWebsite.orders.order_details.tracking.selection_element.present?
+      SdcWebsite.orders.order_details.tracking.selection_element.safe_click unless SdcWebsite.orders.order_details.tracking.selection_element.class_disabled?
+      break if SdcWebsite.orders.order_details.tracking.text_field.text_value == str
+    end
+    expect(SdcWebsite.orders.order_details.tracking.text_field.text_value).to eql(str)
+    10.times do
+      break if SdcWebsite.orders.order_details.tracking.cost.text.dollar_amount_str.to_f.round(2) > 0
+      step 'blur out on Order Details form'
+    end
+  else
+    stamps.orders.order_details.tracking.select(TestData.store[:tracking] = str)
+    10.times do
+      break if stamps.orders.order_details.tracking.cost.text.dollar_amount_str.to_f.round(2) > 0
+      step 'blur out on Order Details form'
+    end
   end
   step 'Save Order Details data'
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Ff]rom to (?:Manage Shipping Addresses\.\.\.|(.*))$/ do |str|
-  if str.nil?
-    expect(stamps.orders.order_details.single_ship_from.select('Manage Shipping Addresses...')).to eql("Manage Shipping Addresses")
+  if SdcEnv.new_framework
+    str ||= 'Manage Shipping Addresses...'
+
+    SdcOrderDetailsShipFrom.page_obj(:selection_element) { {xpath: "//li[text()='#{str}']"} }
+    5.times do
+      SdcWebsite.orders.order_details.ship_from.drop_down.click unless SdcWebsite.orders.order_details.ship_from.selection_element.present?
+      SdcWebsite.orders.order_details.ship_from.selection_element.safe_click unless SdcWebsite.orders.order_details.ship_from.selection_element.class_disabled?
+      if SdcWebsite.orders.order_details.ship_from.text_field.text_value == str
+        TestData.store[:ship_from] = SdcWebsite.orders.order_details.ship_from.text_field.text_value unless str == 'Manage Shipping Addresses...'
+        break
+      end
+    end
   else
-    TestData.store[:ship_from] = stamps.orders.order_details.single_ship_from.select(str)
+    if str.nil?
+      expect(stamps.orders.order_details.single_ship_from.select('Manage Shipping Addresses...')).to eql("Manage Shipping Addresses")
+    else
+      TestData.store[:ship_from] = stamps.orders.order_details.single_ship_from.select(str)
+    end
   end
 end
 

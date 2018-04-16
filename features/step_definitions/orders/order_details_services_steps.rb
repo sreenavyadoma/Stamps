@@ -2,7 +2,16 @@
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]ervice to (.*)$/ do |str|
   step 'expect Order Details is present'
   if SdcEnv.new_framework
-    TestData.store[:service] = SdcWebsite.orders.order_details.service.select(str).parse_service_name
+    SdcOrderDetailsService.page_obj(:selection_element) { {xpath: "//li[@id='#{data_for(:orders_services, {})[str]}']"} }
+    5.times do
+      SdcWebsite.orders.order_details.service.drop_down.click unless SdcWebsite.orders.order_details.service.selection_element.present?
+      SdcWebsite.orders.order_details.service.selection_element.safe_click unless SdcWebsite.orders.order_details.service.selection_element.class_disabled?
+      if SdcWebsite.orders.order_details.service.text_field.text_value && SdcWebsite.orders.order_details.service.text_field.text_value.include?(str)
+        TestData.store[:service] = SdcWebsite.orders.order_details.service.text_field.text_value.parse_service_name
+        break
+      end
+      TestData.store[:service] ||= ''
+    end
     expect(TestData.store[:service]).to eql(str)
     20.times do
       step 'blur out on Order Details form'

@@ -18,7 +18,6 @@ module Stamps
       end
 
       def toolbar
-        #@toolbar ||= Object.const_get(toolbar_inst).new
         @toolbar ||= SdcOrdersToolbar.new
       end
 
@@ -28,14 +27,6 @@ module Stamps
 
       def filter_panel
         @filter_panel ||= SdcOrdersFilterPanel.new
-      end
-
-      def wait_until_present(count=30)
-        (count.nil? || count == 0 ? 1 : count.to_i).times do
-          # return true unless loading_orders.present?
-          return true unless loading_popup.present?
-          sleep(1)
-        end
       end
     end
   end

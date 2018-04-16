@@ -1,73 +1,24 @@
 module Stamps
   module Orders
-    module SdcOrderDetailsComboBoxText
-      def text
-        text_field.text_value
-      end
-    end
-
-    module SdcOrderDetailsCost
-      def cost
-        cost_elem.text_value.dollar_amount_str.to_f
-      end
-    end
-
     class SdcOrderDetailsShipFrom < SdcPage
       page_obj(:drop_down) { {xpath: '(//div[starts-with(@id, "shipfromdroplist")]/div[contains(@id, "trigger-picker")])[1]'} }
       page_obj(:text_field) { {xpath: '(//input[starts-with(@id, "shipfromdroplist")])[1]'} }
-
-      def select(str)
-        self.class.page_obj(:selection_element) { {xpath: "//li[text()='#{str}']"} }
-        5.times do
-          drop_down.click unless selection_element.present?
-          selection_element.safe_click
-          return text_field.text if text_field.text_value == str
-        end
-      end
     end
 
     class SdcShipToCountryDom < SdcPage
       page_obj(:drop_down) { {xpath: '//div[contains(@id, "matltocountrydroplist-trigger-picker")]'} }
       page_obj(:text_field) { {xpath: '//input[contains(@id, "matltocountrydroplist")]'} }
-
-      def select(str)
-        self.class.page_obj(:selection_element) { {xpath: "//li[text()='#{str}']"} }
-        5.times do
-          drop_down.safe_click unless selection_element.present?
-          selection_element.safe_click
-          return text_field.text_value if text_field.text_value == str
-        end
-      end
     end
 
     class SdcShipToCountryIntl < SdcPage
       page_obj(:drop_down) { {xpath: '(//*[contains(@id, "international")]//*[contains(@id, "picker")])[1]'} }
       page_obj(:text_field) { {xpath: '//div[contains(@id, "shiptoview-international")]//input[contains(@id, "combo")]'} }
-
-      def select(str)
-        self.class.page_obj(:selection_element) { {xpath: "//li[text()='#{str}']"} }
-        5.times do
-          drop_down.safe_click unless selection_element.present?
-          selection_element.safe_click
-          return text_field.text_value if text_field.text_value == str
-        end
-      end
     end
 
     class SdcOrderDetailsService < SdcPage
       page_obj(:cost) { {xpath: '(//div[contains(@id, "singleOrderDetailsForm")]//div[6]//label[contains(@class, "details-form-label")])[2]'} }
       page_obj(:drop_down) { {xpath: '(//div[contains(@id, "servicedroplist")]//div[contains(@id, "trigger-picker")])[1]'} }
       page_obj(:text_field) { {xpath: '(//input[contains(@id, "servicedroplist")])[1]'} }
-
-      def select(str)
-        self.class.page_obj(:selection_element) { {xpath: "//li[@id='#{data_for(:orders_services, {})[str]}']"} }
-        5.times do
-          drop_down.click unless selection_element.present?
-          selection_element.safe_click unless selection_element.class_disabled?
-          return text_field.text_value if text_field.text_value && text_field.text_value.include?(str)
-        end
-        ''
-      end
     end
 
     class SdcOrderDetailsInsurance < SdcPage
@@ -87,15 +38,6 @@ module Stamps
       page_obj(:cost) { {xpath: '//*[contains(@class, "selected_tracking_cost")]'} }
       page_obj(:drop_down) { {xpath: '(//div[contains(@id, "trackingdroplist")]//div[contains(@id, "trigger-picker")])[1]'} }
       page_obj(:text_field) { {xpath: '(//input[contains(@id, "trackingdroplist")])[1]'} }
-
-      def select(str)
-        self.class.page_obj(:selection_element) { {xpath: "//li//td[text()='#{str}']"} }
-        5.times do
-          drop_down.click unless selection_element.present?
-          selection_element.safe_click
-          return text_field.text if text_field.text_value == str
-        end
-      end
     end
 
     class SdcOrderDetailsFooter < SdcPage
@@ -210,28 +152,19 @@ module Stamps
         @dimensions ||= SdcOrderDetailsDimensions.new
       end
 
-      #international
       #customs form
-      def present?
-        title.present?
-      end
-
-      def blur_out(count = 1)
-        (count.nil? || count == 0 ? 1 : count.to_i).times do
-          service_blur_out_field.safe_click
-          weight_blur_out_field.safe_double_click
-          weight_blur_out_field.safe_click
-          service_blur_out_field.safe_double_click
-        end
-      end
-
-      def wait_until_present(count=3)
-        (count.nil? || count == 0 ? 1 : count.to_i).times do
-          return title.text_value if title.present?
-          sleep(1)
-        end
-      end
-
+      # def present?
+      #   title.present?
+      # end
+      #
+      # def blur_out(count = 1)
+      #   (count.nil? || count == 0 ? 1 : count.to_i).times do
+      #     service_blur_out_field.safe_click
+      #     weight_blur_out_field.safe_double_click
+      #     weight_blur_out_field.safe_click
+      #     service_blur_out_field.safe_double_click
+      #   end
+      # end
     end
   end
 end

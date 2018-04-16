@@ -176,11 +176,15 @@ Then /^[Ss]ign-in to [Ww]eb [Aa]pps as (.*), (.*)$/ do |username, password|
 end
 
 Then /^[Ss]ign out$/ do
-  begin
-    step "Navigation Bar: Customer Balance"
-    stamps.navigation_bar.username.sign_out
-  rescue
-    # ignore
+  if SdcEnv.new_framework
+    #skip for now
+  else
+    begin
+      step "Navigation Bar: Customer Balance"
+      stamps.navigation_bar.username.sign_out
+    rescue
+      # ignore
+    end
   end
 end
 
