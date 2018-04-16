@@ -6,12 +6,12 @@ module Stamps
 
           #Welcome content
           page_objs(:p_content) {{xpath: "//p"}}
-          _element(:welcome_content, required: true) {p_content[0]}
+          _page_object(:welcome_content, required: true) {p_content[0]}
 
 
 
           #Error Message
-          _element(:error_message, required: true) {p_content[1]}
+          _page_object(:error_message, required: true) {p_content[1]}
 
 
           #sdcEndica logo
