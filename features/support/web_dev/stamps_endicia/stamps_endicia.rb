@@ -2,6 +2,11 @@ module Stamps
   module WebDev
     module StampsEndicia
       class PartnerPortals < SdcPageObject
+        
+        #stamps and endicia logo
+        elements(:sdc_endicia_logos)  {{xpath: "//img[@alt='Stamps.com and Endicia']"}}
+        _element(:sdc_endicia_logo_browser) {:sdc_endicia_logos[0]}
+        _element(:sdc_endicia_logo_mobile) {:sdc_endicia_logos[1]}
 
         #page_url { |env| "https://#{env}.partner.stamps.com" }
         page_url { |env| "https://uspsportal.#{env}.stampsendicia.net/login" }
@@ -30,13 +35,12 @@ module Stamps
             PartnerPortal::DashboardPage.new()
           end
 
-          def password_reset_page
+          def reset_password_page
             PartnerPortal::PasswordResetPage.new()
           end
         end
 
       end
-
 
     end
   end

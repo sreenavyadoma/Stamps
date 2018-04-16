@@ -64,7 +64,7 @@ Feature: PP-MVP: Login Page
 #        Scenario: PP: User click Forgot Password links
 #          Then PP: A user navigates to the login page
 #          Then PP: User clicks Forgot Password link
-#          Then PP: expect website redirects user to Reset Password Page
+#          Then PP: expect user is redirected to Reset Password Page
 
      #@sdc_endicia_pp_login_page_user_status_inactive
 #    Scenario: PP: User Status is inactive expect unsuccessful login
