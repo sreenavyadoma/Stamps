@@ -1,7 +1,7 @@
 module Stamps
   module WebDev
-    module Portals
-      class StampsEndicia < SdcPageObject
+    module StampsEndicia
+      class PartnerPortals < SdcPageObject
 
         #page_url { |env| "https://#{env}.partner.stamps.com" }
         page_url { |env| "https://uspsportal.#{env}.stampsendicia.net/login" }
@@ -23,19 +23,21 @@ module Stamps
 
         class << self
           def login_page
-            LoginPage.new()
+            PartnerPortal::LoginPage.new()
           end
 
           def dashboard_page
-            DashboardPage.new()
+            PartnerPortal::DashboardPage.new()
           end
 
           def password_reset_page
-            PasswordResetPage.new()
+            PartnerPortal::PasswordResetPage.new()
           end
         end
 
       end
+
+
     end
   end
 end

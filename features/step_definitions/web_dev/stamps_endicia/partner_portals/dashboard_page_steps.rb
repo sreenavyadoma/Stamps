@@ -25,20 +25,24 @@ end
 
 
 Then /^[Pp]P: [Ee]xpect user is redirected to the Dashboard Page$/ do
-   StampsEndicia.dashboard_page.header.safe_wait_while_present
-   expect(StampsEndicia.dashboard_page.header). to be_present, "Dashboard header DOES NOT exist on dashboard page"
+   PartnerPortals.dashboard_page.header.safe_wait_while_present
+   expect(PartnerPortals.dashboard_page.header). to be_present, "Dashboard header DOES NOT exist on dashboard page"
 end
 
 Then /^[Pp]P: [Ee]xpect on dashboard page Stamps Endicia Partner Portal Logo exists$/ do
-  expect(StampsEndicia.dashboard_page.sdc_endicia_logo_browser). to be_present, "Dashboard header DOES NOT exist on dashboard page"
+  expect(PartnerPortals.dashboard_page.sdc_endicia_logo_browser). to be_present, "Dashboard header DOES NOT exist on dashboard page"
 end
 
 Then /^[Pp]P: click on Stamps Endicia Partner Portal logo$/ do
-  StampsEndicia.dashboard_page.sdc_endicia_logo_browser.safe_click
+  PartnerPortals.dashboard_page.sdc_endicia_logo_browser.safe_click
 end
 
 Then /^[Pp]P: [Ee]xpect on dashboard page displays hamburger menu$/ do
-  expect(StampsEndicia.dashboard_page.hamburger). to be_present, "hamburger button DOES NOT exist on dashboard page"
+  expect(PartnerPortals.dashboard_page.hamburger). to be_present, "hamburger button DOES NOT exist on dashboard page"
+end
+
+Then /^[Pp]P: click hamburger menu on dashboard page$/ do
+  PartnerPortals.dashboard_page.hamburger.safe_click
 end
 
 
