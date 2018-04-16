@@ -1,10 +1,10 @@
 module Stamps
   module WebDev
     module StampsEndicia
-      class PartnerPortals < SdcPageObject
+      class PartnerPortals < SdcPage
         
         #stamps and endicia logo
-        elements(:sdc_endicia_logos)  {{xpath: "//img[@alt='Stamps.com and Endicia']"}}
+        page_objs(:sdc_endicia_logos)  {{xpath: "//img[@alt='Stamps.com and Endicia']"}}
         _element(:sdc_endicia_logo_browser) {:sdc_endicia_logos[0]}
         _element(:sdc_endicia_logo_mobile) {:sdc_endicia_logos[1]}
 
@@ -14,7 +14,7 @@ module Stamps
         def self.visit
           super(case SdcEnv.env
                   when :qacc
-                    'qa'
+                    'qacc'
                   when :qasc
                     'sdcwebsite.qasc'
                   when :stg

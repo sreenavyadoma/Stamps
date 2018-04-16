@@ -2,30 +2,32 @@ module Stamps
   module WebDev
     module StampsEndicia
       module PartnerPortal
-        class LoginPage < SdcPageObject
+        class LoginPage < SdcPage
 
           #Welcome content
-          elements(:p_content, required: true) {{xpath: "//p"}}
+          page_objs(:p_content) {{xpath: "//p"}}
           _element(:welcome_content, required: true) {p_content[0]}
+
+
 
           #Error Message
           _element(:error_message, required: true) {p_content[1]}
 
 
           #sdcEndica logo
-          element(:sdc_endicia_logo, required: true) {{xpath: "//img[@alt='Stamps.com and Endicia']"}}
+          page_obj(:sdc_endicia_logo, required: true) {{xpath: "//img[@alt='Stamps.com and Endicia']"}}
 
           #USPS Portal content
-          element(:usps_portal_content, required: true) {{xpath: "//h3['USPS Portal']"}}
+          page_obj(:usps_portal_content, required: true) {{xpath: "//h3['USPS Portal']"}}
 
           #Email textbox
-          text_field(:email, tag_name: :text_field, required: true) { {name: "email"} }
-          element(:email_tooltip, required: true) { {xpath: "//*[@name='email']/div/div/span"} }
+          text_field(:email, tag: :text_field, required: true) { {name: "email"} }
+          page_obj(:email_tooltip, required: true) { {xpath: "//*[@name='email']/div/div/span"} }
           label(:email_placeholder, required: true) { {xpath: "//input[@placeholder='EMAIL']"} }
 
           #Password textbox
-          text_field(:password, tag_name: :text_field, required: true) { {name: "password"} }
-          element(:password_tooltip, required: true) { {xpath: "//*[@name='password']/div/div/span"} }
+          text_field(:password, tag: :text_field, required: true) { {name: "password"} }
+          page_obj(:password_tooltip, required: true) { {xpath: "//*[@name='password']/div/div/span"} }
           label(:password_placeholder, required: true) { {xpath: "//input[@placeholder='PASSWORD']"} }
 
           #Log In button
