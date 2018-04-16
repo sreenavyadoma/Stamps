@@ -5,7 +5,7 @@ module Stamps
         class DashboardPage < SdcPage
 
           #welcome header
-          element(:header) {{xpath: "//h1['Welcome to USPS Portal']"}}
+          page_obj(:header) {{xpath: "//h1['Welcome to USPS Portal']"}}
 
           #hamburger button
           button(:hamburger, required: true) {{class: "navbar-toggle collapsed"}}

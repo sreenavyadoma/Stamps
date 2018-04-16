@@ -29,14 +29,6 @@ Then /^[Pp]P: [Ee]xpect user is redirected to the Dashboard Page$/ do
    expect(PartnerPortals.dashboard_page.header). to be_present, "User was not redirected to the dashboard page"
 end
 
-Then /^[Pp]P: [Ee]xpect on dashboard page Stamps Endicia Partner Portal Logo exists$/ do
-  expect(PartnerPortals.sdc_endicia_logo_browser). to be_present, "Dashboard header DOES NOT exist on dashboard page"
-end
-
-Then /^[Pp]P: click on Stamps Endicia Partner Portal logo$/ do
-  PartnerPortals.sdc_endicia_logo_browser.safe_click
-end
-
 Then /^[Pp]P: [Ee]xpect on dashboard page displays hamburger menu$/ do
   expect(PartnerPortals.dashboard_page.hamburger). to be_present, "hamburger button DOES NOT exist on dashboard page"
 end

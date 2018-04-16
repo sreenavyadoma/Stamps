@@ -4,8 +4,8 @@ module Stamps
       module PartnerPortal
         class PasswordResetPage < SdcPage
           #sdcEndica content
-          element(:header, required: true) {{xpath: "//h1['Password Reset']"}}
-          element(:sdc_endicia_logo_browser, required: true)
+          page_obj(:header, required: true) {{xpath: "//h1['Password Reset']"}}
+          page_obj(:sdc_endicia_logo_browser, required: true)
         end
       end
     end
