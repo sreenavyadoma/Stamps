@@ -1,12 +1,13 @@
 module Stamps
-  module Orders
-    module SdcOrdersInstHelper
-
+  module SdcOrders
+    class LoadingPopUp < SdcPage
+      page_obj(:loading_orders) { {text: 'Loading orders...'} }
     end
 
-    class SdcOrders < SdcPageObject
-      element(:loading_orders) { {text: 'Loading orders...'} }
-      element(:grid_body, required: true) { {xpath: "//*[contains(@class, 'orders-grid')]"} }
+    class << self
+      def loading_popup
+        LoadingPopUp.new.loading_orders
+      end
 
       def order_details
         @order_details = nil

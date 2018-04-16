@@ -50,11 +50,11 @@ p daughter.list
 p daughter.list
 
 
-son._element
+son._page_object
 daughter.thing
 son = Son.new
 
-p son._element
+p son._page_object
 
 
 module TestMethods
@@ -108,7 +108,7 @@ son.thing
 daughter.thing
 son = Son.new
 
-p son._element
+p son._page_object
 
 
 

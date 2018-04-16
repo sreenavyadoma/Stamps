@@ -15,9 +15,8 @@ end
 
 After do |scenario|
   SdcTest.teardown
+  user_credentials.close if SdcEnv.usr == 'default'
   @stamps = nil #TODO-Rob this needs to exist in StampsTest
   @health = nil
-  user_credentials.close if SdcEnv.usr == 'default'
-  SdcLog.error "#{scenario.feature} #{scenario.name}:\n#{scenario.exception.message}" if scenario.failed?
 end
 
