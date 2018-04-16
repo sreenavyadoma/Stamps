@@ -303,7 +303,11 @@ module Stamps
     attr_reader :element, :verify, :property, :property_val
 
     def initialize(element, verify, property, property_val)
-      set_instance_variables(binding, *local_variables)
+      @element = element
+      @verify = verify
+      @property = property
+      @property_val = property_val
+      # set_instance_variables(binding, *local_variables)
     end
 
     def chosen?
@@ -343,7 +347,10 @@ module Stamps
     attr_reader :text_field, :increment, :decrement
 
     def initialize(text_field, increment, decrement)
-      set_instance_variables(binding, *local_variables)
+      @text_field = text_field
+      @increment = increment
+      @decrement = decrement
+      # set_instance_variables(binding, *local_variables)
     end
 
     def method_missing(method, *args, &block)

@@ -32,7 +32,8 @@ module Stamps
 
       def wait_until_present(count=30)
         (count.nil? || count == 0 ? 1 : count.to_i).times do
-          return true unless loading_orders.present?
+          # return true unless loading_orders.present?
+          return true unless loading_popup.present?
           sleep(1)
         end
       end
