@@ -284,7 +284,7 @@ class SdcTest
       SdcEnv.usr ||= ENV['USR']
       SdcEnv.pw ||= ENV['PW']
       SdcEnv.firefox_profile ||= ENV['FIREFOX_PROFILE']
-      SdcEnv.framework ||= ENV['FRAMEWORK']
+      SdcEnv.new_framework ||= ENV['NEW_FRAMEWORK']
       SdcEnv.debug ||= ENV['DEBUG']
       SdcEnv.env ||= test_env(ENV['URL'])
 
