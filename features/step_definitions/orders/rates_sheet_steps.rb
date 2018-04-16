@@ -1,6 +1,6 @@
 Then /^[Pp]repare environment for ratings test$/ do
-  step "select Print On Shipping Label - Paper" if @SdcEnv.sdc_app==:mail
-  step "add new order" if @SdcEnv.sdc_app==:orders
+  step "select Print On Shipping Label - Paper" if SdcEnv.sdc_app==:mail
+  step "add new order" if SdcEnv.sdc_app==:orders
 end
 
 Then /^[Ee]xcel rate sheet is loaded$/ do
@@ -8,7 +8,7 @@ Then /^[Ee]xcel rate sheet is loaded$/ do
   Spreadsheet.client_encoding='UTF-8'
   rate_file=data_for(:rates_test, {})['rate_file']
   #copy file tolocal
-  expect(stamps.rating.spreadsheet.update).to be(true)
+  expect(Rating.new.spreadsheet.update).to be(true)
   @rate_file_loc="#{data_for(:rates_test, {})['test_dir']}\\#{rate_file}"
   SdcLog.step "Rate File: #{@rate_file_loc}"
   expect("Rate File: #{@rate_file_loc}").to eql "Rate File does not exist!" unless File.exist?(@rate_file_loc)

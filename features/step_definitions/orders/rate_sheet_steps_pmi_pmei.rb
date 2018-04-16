@@ -368,22 +368,22 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
 
         if (row[@rate_sheet_columns[:service]]).include? "PMEI Flat Rate"
           if group < 9
-            step "set Order Details Domestic Ship-To Country to a random country in PMEI Flat Rate price group #{group}" if @SdcEnv.sdc_app == :orders
-            step "set Print Form Ship-To Country to a random country in PMEI Flat Rate price group #{group}" if @SdcEnv.sdc_app == :mail
+            step "set Order Details Domestic Ship-To Country to a random country in PMEI Flat Rate price group #{group}" if SdcEnv.sdc_app == :orders
+            step "set Print Form Ship-To Country to a random country in PMEI Flat Rate price group #{group}" if SdcEnv.sdc_app == :mail
           end
         elsif (row[@rate_sheet_columns[:service]]).include? "PMEI Package"
-          step "set Order Details Domestic Ship-To Country to a random country in PMEI price group #{group}" if @SdcEnv.sdc_app == :orders
-          step "set Print Form Ship-To Country to a random country in PMEI price group #{group}" if @SdcEnv.sdc_app == :mail
+          step "set Order Details Domestic Ship-To Country to a random country in PMEI price group #{group}" if SdcEnv.sdc_app == :orders
+          step "set Print Form Ship-To Country to a random country in PMEI price group #{group}" if SdcEnv.sdc_app == :mail
         end
 
         if (row[@rate_sheet_columns[:service]]).include? "PMI Flat Rate"
           if group < 9
-            step "set Order Details Domestic Ship-To Country to a random country in PMI Flat Rate price group #{group}" if @SdcEnv.sdc_app == :orders
-            step "set Print Form Ship-To Country to a random country in PMI Flat Rate price group #{group}" if @SdcEnv.sdc_app == :mail
+            step "set Order Details Domestic Ship-To Country to a random country in PMI Flat Rate price group #{group}" if SdcEnv.sdc_app == :orders
+            step "set Print Form Ship-To Country to a random country in PMI Flat Rate price group #{group}" if SdcEnv.sdc_app == :mail
           end
         elsif (row[@rate_sheet_columns[:service]]).include? "PMI Package"
-          step "set Order Details Domestic Ship-To Country to a random country in PMI price group #{group}" if @SdcEnv.sdc_app == :orders
-          step "set Print Form Ship-To Country to a random country in PMI price group #{group}" if @SdcEnv.sdc_app == :mail
+          step "set Order Details Domestic Ship-To Country to a random country in PMI price group #{group}" if SdcEnv.sdc_app == :orders
+          step "set Print Form Ship-To Country to a random country in PMI price group #{group}" if SdcEnv.sdc_app == :mail
         end
 
 
@@ -418,10 +418,10 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
 
           # Set weight to 0
           SdcLog.step "#{"#" * 10} Desired Weight: #{row[@rate_sheet_columns[:weight_lb]]}"
-          if @SdcEnv.sdc_app == :orders
+          if SdcEnv.sdc_app == :orders
             step "set Order Details Pounds to 0"
             step "set Order Details Ounces to 0"
-          elsif @SdcEnv.sdc_app == :mail
+          elsif SdcEnv.sdc_app == :mail
             step "set Print form Pounds to 0"
             step "set Print form Ounces to 0"
           end
@@ -437,18 +437,18 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
           SdcLog.step "#{"#" * 50}"
 
           if TestHelper.is_whole_number?(weight_lb)
-            weight_lb = weight_lb.to_i
+            weight_lb = weight_lb.to_f
             TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight_lb]] = weight_lb
             TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight]] = "#{weight_lb} lb."
-            step "set Order Details Pounds to #{weight_lb}" if @SdcEnv.sdc_app == :orders
-            step "set Print form Pounds to #{weight_lb}" if @SdcEnv.sdc_app == :mail
+            step "set Order Details Pounds to #{weight_lb}" if SdcEnv.sdc_app == :orders
+            step "set Print form Pounds to #{weight_lb}" if SdcEnv.sdc_app == :mail
           else
-            weight_oz = Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_i       #AB_ORDERSAUTO_3580 - IDE bug, Weight require 2 parameters
+            weight_oz = Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_f       #AB_ORDERSAUTO_3580 - IDE bug, Weight require 2 parameters
             #SdcLog.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
             TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight]] = "#{weight_oz} oz."
             TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight_lb]] = weight_oz
-            step "set Order Details Ounces to #{weight_oz}" if @SdcEnv.sdc_app == :orders
-            step "set Print form Ounces to #{weight_oz}" if @SdcEnv.sdc_app == :mail
+            step "set Order Details Ounces to #{weight_oz}" if SdcEnv.sdc_app == :orders
+            step "set Print form Ounces to #{weight_oz}" if SdcEnv.sdc_app == :mail
           end
           sleep(0.025)
 
@@ -461,14 +461,14 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
           # record execution time as time service was selected.
           TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:execution_date]] = Time.now.strftime("%b %d, %Y %H:%M")
 
-          step "set Order Details service to #{service}" if @SdcEnv.sdc_app == :orders
-          step "select Print form service #{service}" if @SdcEnv.sdc_app == :mail
+          step "set Order Details service to #{service}" if SdcEnv.sdc_app == :orders
+          step "select Print form service #{service}" if SdcEnv.sdc_app == :mail
           TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:service_selected]] = TestData.store[:service]
           sleep(0.525)
 
           # get total cost actual value from UI
-          step "Save Order Details data" if @SdcEnv.sdc_app == :orders
-          step "save Print Form Total Cost" if @SdcEnv.sdc_app == :mail
+          step "Save Order Details data" if SdcEnv.sdc_app == :orders
+          step "save Print Form Total Cost" if SdcEnv.sdc_app == :mail
           TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:total_ship_cost]] = (TestData.store[:total_ship_cost].to_f * 100).round / 100.0
 
           # Set weight to 0

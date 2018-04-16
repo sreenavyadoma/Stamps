@@ -36,7 +36,7 @@ module Stamps
 
     class << self
       def page_obj(name, tag: nil, required: false, timeout: 30, &block)
-        _element(name, required: required) { SdcFinder.element(browser, tag: tag, timeout: timeout, &block) }
+        _page_object(name, required: required) { SdcFinder.element(browser, tag: tag, timeout: timeout, &block) }
       end
       alias_method :text_field, :page_obj
       alias_method :button, :page_obj
@@ -49,18 +49,18 @@ module Stamps
       end
 
       def chooser(name, chooser, verify, property, property_name)
-        _element(name) { SdcChooser.new(instance_eval(chooser.to_s), instance_eval(verify.to_s), property, property_name) }
+        _page_object(name) { SdcChooser.new(instance_eval(chooser.to_s), instance_eval(verify.to_s), property, property_name) }
       end
       alias_method :checkbox, :chooser
       alias_method :radio, :chooser
 
       def number(name, text_field, increment, decrement)
-        _element(name) { SdcNumber.new(instance_eval(text_field.to_s), instance_eval(increment.to_s), instance_eval(decrement.to_s)) }
+        _page_object(name) { SdcNumber.new(instance_eval(text_field.to_s), instance_eval(increment.to_s), instance_eval(decrement.to_s)) }
       end
 
       protected
 
-      def _element(name, required: false, &block)
+      def _page_object(name, required: false, &block)
         element(name, required: required, &block)
       end
     end
