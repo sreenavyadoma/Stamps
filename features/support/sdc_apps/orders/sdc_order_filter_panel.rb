@@ -1,11 +1,11 @@
 module Stamps
   module Orders
-    class SdcOrdersFilterAwaitingShip < SdcPageObject
-      element(:count) { {xpath: '(//*[contains(@class, "sdc-badgebutton-first")]//div[@class="sdc-badge"])[2]'} }
+    class SdcOrdersFilterAwaitingShip < SdcPage
+      page_obj(:count) { {xpath: '(//*[contains(@class, "sdc-badgebutton-first")]//div[@class="sdc-badge"])[2]'} }
       link(:awaiting) { {xpath: '(//*[contains(@class, "sdc-badgebutton-first")])[2]'} }
     end
 
-    class SdcOrdersFilterPanel < SdcPageObject
+    class SdcOrdersFilterPanel < SdcPage
       def awaiting_shipment
         @awaiting_shipment ||= SdcOrdersFilterAwaitingShip.new
       end

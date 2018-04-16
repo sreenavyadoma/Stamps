@@ -1,6 +1,6 @@
 module Stamps
   module Orders
-    class SdcOrdersGrid
+    class SdcOrdersGrid < SdcPage
     end
   end
 end
