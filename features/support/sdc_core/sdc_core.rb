@@ -2,167 +2,29 @@ module Stamps
 
   module SdcEnv
     TEST_ENVIRONMENTS = %i(stg qacc cc qasc sc rating).freeze unless Object.const_defined?('Stamps::SdcEnv::TEST_ENVIRONMENTS')
-    BROWSERS = %i(firefox chrome safari edge chromeb).freeze unless Object.const_defined?('Stamps::SdcEnv::BROWSERS')
+    BROWSERS = %i(ff firefox gc chrome safari edge chromeb ie iexplorer).freeze unless Object.const_defined?('Stamps::SdcEnv::BROWSERS')
     SDC_APP = %i(orders mail webdev registration).freeze unless Object.const_defined?('Stamps::SdcEnv::SDC_APP')
-    IDEVICES = %i(iphone6 iphone7 iphone8 iphonex android).freeze unless Object.const_defined?('Stamps::SdcEnv::IDEVICES')
+    IOS = %i(iphone6 iphone7 iphone8 iphonex).freeze unless Object.const_defined?('Stamps::SdcEnv::IOS')
+    ANDROID = %i(samsung_galaxy nexus_5x).freeze unless Object.const_defined?('Stamps::SdcEnv::ANDROID')
 
-    class << self #todo-Rob refactor PrintMedia
+    class << self
       attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose, :printer, :browser, :hostname,
-                    :print_media, :mobile, :firefox_profile, :framework
+                    :print_media, :mobile, :android, :ios, :firefox_profile, :new_framework, :debug, :scenario,
+                    :sauce_device, :test_name
     end
   end
 
-  module SdcWait
-    def wait_until(timeout: 12, interval: 0.2, message: '', ignored: Selenium::WebDriver::Error::NoSuchElementError)
-      end_time = Time.now + timeout
-      last_error = nil
+  module SdcFinder
+    extend self
+    include Watir::Waitable
 
-      until Time.now > end_time
-        begin
-          result = yield
-          return result if result
-        rescue *ignored => last_error
-          # swallowed
-        end
-
-        sleep interval
-      end
-
-      msg = if message
-              message.dup
-            else
-              "timed out after #{timeout} seconds"
-            end
-
-      msg << " (#{last_error.message})" if last_error
-
-      raise Selenium::WebDriver::Error::TimeOutError, msg
-    end
-
-    def wait_while(timeout: 12, interval: 0.2, message: '', ignored: Selenium::WebDriver::Error::NoSuchElementError)
-      end_time = Time.now + timeout
-      last_error = nil
-
-      until Time.now > end_time
-        begin
-          result = yield
-          return result if result
-        rescue *ignored => last_error
-          # swallowed
-        end
-
-        sleep interval
-      end
-
-      msg = if message
-              message.dup
-            else
-              "timed out after #{timeout} seconds"
-            end
-
-      msg << " (#{last_error.message})" if last_error
-
-      raise Selenium::WebDriver::Error::TimeOutError, msg
-    end
-
-  end
-
-  class SdcAppiumDriver < BasicObject
-    class << self
-      def core_driver(device)
-        file = File.expand_path("../../sdc_idevices/caps/#{device}.txt", __FILE__)
-        exception = Selenium::WebDriver::Error::WebDriverError
-        message = "Missing Appium capabilities file. #{device}: #{file}"
-        raise exception, message unless File.exist? file
-
-        caps = Appium.load_appium_txt(file: file, verbose: true)
-        @core_driver = Appium::Driver.new(caps, false)
-        self
-      end
-
-      def method_missing(name, *args, &block)
-        super unless @core_driver.respond_to?(name)
-        @core_driver.send(name, *args, &block)
-      end
-    end
-  end
-
-  class SdcElementFinder
-    include SdcWait
-
-    attr_reader :driver
-    alias_method :browser, :driver
-
-    def initialize(driver)
-      @driver = driver
-    end
-
-    def element(tag_name, locator, message: '', timeout: 12)
-      begin
-        element = wait_until(timeout: timeout, message: message) { find_element(tag_name, locator) }
-      rescue Selenium::WebDriver::Error::TimeOutError
-        # ignore
-      end
-
-      exception = Selenium::WebDriver::Error::WebDriverError
-      message = "Can not find element. locator: #{locator}"
-      raise exception, message if element.nil?
-
-      SdcElement.new(find_element(tag_name, locator))
-    end
-
-    def elements(tag_name, locator, message: '', timeout: 12)
-      begin
-        element = wait_until(timeout: timeout, message: message) { find_elements(tag_name, locator) }
-      rescue Selenium::WebDriver::Error::TimeOutError
-        # ignore
-      end
-
-      exception = Selenium::WebDriver::Error::WebDriverError
-      message = "Can not find element with locator: #{locator}"
-      raise exception, message if element.nil?
-
-      find_elements(tag_name, locator)
-    end
-
-    private
-
-    def find_element(tag_name, locator)
-      case
-        when SdcEnv.browser
-          if tag_name.nil?
-            return @driver.element(locator)
-          else
-            return instance_eval("browser.#{tag_name}(#{locator})")
-          end
-
-        when SdcEnv.mobile
-          return @driver.find_element(locator)
-        else
-          # ignore
-      end
-
-      nil
-    end
-
-    def find_elements(tag_name, locator)
-      case
-        when SdcEnv.browser
-          if tag_name.nil?
-            return @driver.elements(locator)
-          else
-            begin
-              elements = instance_eval("browser.#{tag_name}(#{locator})")
-              return wait_until(timeout: timeout, message: message) { elements }
-            rescue Selenium::WebDriver::Error::TimeOutError
-              # ignore
-            end
-          end
-
-        when SdcEnv.mobile
-          return @driver.find_elements(locator)
-        else
-          # ignore
+    def element(browser, tag: nil, timeout: 20, &block)
+      if browser.is_a? Watir::Browser
+        return SdcElement.new(instance_eval("browser.#{tag}(#{block.call})")) if tag
+        return SdcElement.new(browser.element(block.call))
+      else
+        result = wait_until(timeout: timeout) { browser.find_element(block.call) }
+        return SdcElement.new(browser.find_element(block.call)) if result
       end
 
       nil
@@ -170,53 +32,20 @@ module Stamps
 
   end
 
-  class SdcPageObject
-    include ::SdcDriver
-    include SdcWait
+  class SdcPage < WatirDrops::PageObject
 
     class << self
-      attr_writer :element_list
-      attr_writer :required_element_list
-      attr_reader :require_url
-
-      def page_url(required: false)
-        @require_url = required
-
-        define_method("page_url") do |*args|
-          yield(*args)
-        end
+      def page_obj(name, tag: nil, required: false, timeout: 30, &block)
+        _element(name, required: required) { SdcFinder.element(browser, tag: tag, timeout: timeout, &block) }
       end
+      alias_method :text_field, :page_obj
+      alias_method :button, :page_obj
+      alias_method :label, :page_obj
+      alias_method :selection, :page_obj
+      alias_method :link, :page_obj
 
-      def page_title
-        define_method("page_title") do |*args|
-          yield(*args)
-        end
-      end
-
-      def element_list
-        @element_list ||= []
-      end
-
-      def required_element_list
-        @required_element_list ||= []
-      end
-
-      def inherited(subclass)
-        subclass.element_list = element_list.dup
-        subclass.required_element_list = required_element_list.dup
-      end
-
-      def element(name, tag_name: nil, timeout: 12, required: false)
-        _element(name, required: required) { finder.element(tag_name, yield, timeout: timeout) }
-      end
-      alias_method :text_field, :element
-      alias_method :button, :element
-      alias_method :label, :element
-      alias_method :selection, :element
-      alias_method :link, :element
-
-      def elements(name, tag_name: nil, timeout: 12, required: false)
-        _elements(name) { finder.elements(tag_name, yield, timeout: timeout) }
+      def page_objs(name, &block)
+        elements(name, &block)
       end
 
       def chooser(name, chooser, verify, property, property_name)
@@ -229,97 +58,15 @@ module Stamps
         _element(name) { SdcNumber.new(instance_eval(text_field.to_s), instance_eval(increment.to_s), instance_eval(decrement.to_s)) }
       end
 
-      def visit(*args)
-        new.tap do |page|
-          page.goto(*args)
-          exception = Selenium::WebDriver::Error::WebDriverError
-          message = "Expected to be on #{page.class}, but conditions not met"
-          if page.page_verifiable?
-            begin
-              page.wait_until(timeout: 20, &:on_page?)
-            rescue Selenium::WebDriver::Error::TimeOutError
-              raise exception, message
-            end
-          end
-        end
-      end
-
       protected
 
       def _element(name, required: false, &block)
-        define_method(name) do |*args|
-          self.instance_exec(*args, &block)
-        end
-
-        element_list << name.to_sym
-        required_element_list << name.to_sym if required
-      end
-
-      def _elements(name, &block)
-        define_method(name) do |*args|
-          self.instance_exec(*args, &block)
-        end
-
-        element_list << name.to_sym
+        element(name, required: required, &block)
       end
     end
 
-    attr_reader :browser, :finder
-    alias_method :driver, :browser
-
-    def initialize(browser = @@browser)
-      @browser = browser
-      @finder = SdcElementFinder.new(browser)
-    end
-
-    def inspect
-      '#<%s url=%s title=%s>' % [self.class, url.inspect, title.inspect]
-    end
-    alias_method :selector_string, :inspect
-
-    def on_page?
-      exception = Selenium::WebDriver::Error::WebDriverError
-      message = 'Can not verify page without any requirements set'
-      raise exception, message unless page_verifiable?
-
-      if self.class.require_url
-        expected = page_url.gsub("#{URI.parse(page_url).scheme}://", '').chomp('/')
-        actual = browser.url.gsub("#{URI.parse(browser.url).scheme}://", '').chomp('/')
-        return false unless expected == actual
-      end
-
-      if self.respond_to?(:page_title) && browser.title != page_title
-        return false
-      end
-
-      if !self.class.required_element_list.empty? && self.class.required_element_list.any? { |e| !send(e).present? }
-        return false
-      end
-
-      true
-    end
-
-    def goto(*args)
-      return browser.goto page_url(*args)
-
-      exception = Selenium::WebDriver::Error::WebDriverError
-      message = "Unsupported driver #{browser.class}"
-      raise exception, message unless page_verifiable?
-    end
-
-    def method_missing(method, *args, &block)
-      super unless @browser.respond_to?(method) && method != :page_url
-      @browser.send(method, *args, &block)
-    end
-
-    def respond_to_missing?(method, _include_all = false)
-      @browser.respond_to?(method) || super
-    end
-
-    def page_verifiable?
-      self.class.require_url || self.respond_to?(:page_title) || self.class.required_element_list.any?
-    end
   end
+
 
   class SdcDriverDecorator < BasicObject
 
@@ -342,14 +89,14 @@ module Stamps
   end
 
   class SdcElement < BasicObject
-    include SdcWait
+    include ::Watir::Waitable
 
     def initialize(element)
       @element = element
     end
 
     def present?
-      return enabled? && @element.send(:displayed?) unless @lement.respond_to?(:present?)
+      @element.send(:displayed?) if @lement.respond_to?(:displayed?)
       @element.send(:present?)
     end
 
@@ -436,8 +183,24 @@ module Stamps
       self
     end
 
-    def wait_until_present(timeout: 12, interval: 0.2)
-      wait_until(timeout: timeout, interval: interval) { present? }
+    def wait_until_present(timeout: 20, interval: 0.2)
+      if @element.respond_to? :wait_until_present
+        @element.send(:wait_until_present, timeout: timeout, interval: interval)
+      else
+        wait_until(timeout: timeout, interval: interval) { present? }
+      end
+
+      self
+    end
+
+    def wait_while_present(timeout: 20, interval: 0.2)
+      if @element.respond_to? :wait_while_present
+        @element.send(:wait_while_present, timeout: timeout)
+      else
+        wait_until(timeout: timeout, interval: interval) { present? }
+      end
+
+      self
     end
 
     def safe_wait_until_present(timeout: nil, interval: nil)
@@ -446,12 +209,6 @@ module Stamps
       rescue
         # ignore
       end
-
-      self
-    end
-
-    def wait_while_present(timeout: 10, interval: 0.2)
-      wait_while(timeout: timeout, interval: interval) { present? }
     end
 
     def safe_wait_while_present(timeout: 10, interval: 0.2)
@@ -460,20 +217,18 @@ module Stamps
       rescue
         # ignore
       end
-
-      self
     end
 
     def text_value
       begin
-        text = @element.text
+        text = @element.send(:text)
         return text if text.size > 0
       rescue
         # ignore
       end
 
       begin
-        value = @element.value
+        value = @element.send(:value)
         return value if value.size > 0
       rescue
         # ignore
@@ -536,12 +291,10 @@ module Stamps
     private
 
     def prop_include?(property_name, property_value)
-      case
-        when SdcEnv.browser
-          return @element.send(:attribute_value, property_name).include?(property_value)
-        when SdcEnv.mobile
-          return @element.send(:attribute, property_name).include?(property_value)
+      if @element.respond_to? :attribute_value
+        return @element.send(:attribute_value, property_name).include?(property_value)
       end
+      @element.send(:attribute, property_name).include?(property_value)
     end
   end
 

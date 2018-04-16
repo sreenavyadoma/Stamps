@@ -18,14 +18,14 @@ module Stamps
   end
 
   module Mail
-    class SignInLink < SdcPageObject
+    class SignInLink < SdcPage
 
       def sign_in_with(usr, pw)
 
       end
     end
 
-    class SdcMail < SdcPageObject
+    class SdcMail < SdcPage
       include CommonNavigation
 
       page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Orders&" }
