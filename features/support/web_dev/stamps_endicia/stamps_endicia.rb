@@ -1,7 +1,7 @@
 module Stamps
   module WebDev
     module StampsEndicia
-      class PartnerPortals < SdcPage
+      class PartnerPortal < SdcPage
         #page_url { |env| "https://#{env}.partner.stamps.com" }
         page_url { |env| "https://uspsportal.#{env}.stampsendicia.net/login" }
 
@@ -36,11 +36,9 @@ module Stamps
           def stamps_endicia_common_page
             PartnerPortal::StampsEndiciaCommon.new()
           end
-
         end
 
       end
-
     end
   end
 end
