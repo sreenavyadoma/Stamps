@@ -176,7 +176,6 @@ Feature:  BVT tests for Orders
     Then Buy Mail: Expect customer balance increased by $10
     Then Sign out
 
-
   @bvt_shipping_address_management
   Scenario: BVT Shipping Address
     Then add new order
@@ -188,7 +187,6 @@ Feature:  BVT tests for Orders
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details service to PM Package
     Then Sign out
-
 
   @bvt_shipstation_search
   Scenario: Search shipstation orders

@@ -1,18 +1,13 @@
 module Stamps
-  module Orders
-    module SdcOrdersInstHelper
-      def toolbar_inst
-        if SdcEnv.browser
-          'Orders::SdcOrdersToolbar'
-        else
-          'Orders::SdcOrdersToolbar'
-        end
-      end
+  module SdcOrders
+    class LoadingPopUp < SdcPage
+      page_obj(:loading_orders) { {text: 'Loading orders...'} }
     end
 
-    class SdcOrders < SdcPageObject
-      element(:loading_orders) { {text: 'Loading orders...'} }
-      element(:grid_body, required: true) { {xpath: "//*[contains(@class, 'orders-grid')]"} }
+    class << self
+      def loading_popup
+        LoadingPopUp.new.loading_orders
+      end
 
       def order_details
         @order_details ||= SdcOrderDetails.new
@@ -41,10 +36,6 @@ module Stamps
           sleep(1)
         end
       end
-      #part of grid
-      # def paging_toolbar
-      #
-      # end
     end
   end
 end
