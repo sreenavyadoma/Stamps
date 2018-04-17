@@ -42,7 +42,7 @@ module Stamps
 
     class SdcOrderDetailsFooter < SdcPage
       label(:total_ship_cost) { {xpath: '//label[contains(@class, "total_cost")]'} }
-      button(:print) { {} }
+      button(:print) { {xpath: '(//div[contains(@class, "footer")]//span[text()="Print"])[1]'} }
     end
 
     class SdcOrderDetailsDomestic < SdcPage

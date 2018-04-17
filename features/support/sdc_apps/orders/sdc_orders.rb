@@ -28,6 +28,10 @@ module Stamps
       def filter_panel
         @filter_panel ||= SdcOrdersFilterPanel.new
       end
+
+      def modals
+        @modals ||= SdcOrdersModals.new
+      end
     end
   end
 end
