@@ -44,6 +44,11 @@ end
 
 Then /^sign-in to Orders as (.+), (.+)$/ do |usr, pw|
   landing_page = SdcWebsite.landing_page
+
+  landing_page.sign_in_elem.class
+  landing_page.sign_ins.class
+  landing_page.sign_in
+
   landing_page.username.set(TestData.store[:username] = usr)
   landing_page.password.set(TestData.store[:password] = pw)
   if SdcEnv.browser
