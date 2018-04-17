@@ -65,6 +65,10 @@ module Stamps
       alias_method :selection, :page_obj
       alias_method :link, :page_obj
 
+      def page_obj_wrapper(name, required: false)
+        _page_object(name, required: required) { SdcElement.new(yield) }
+      end
+
       def page_objs(name, tag: nil, timeout: 30, &block)
         _page_objects(name) { SdcFinder.elements(browser, tag: tag, timeout: timeout, &block) }
       end
