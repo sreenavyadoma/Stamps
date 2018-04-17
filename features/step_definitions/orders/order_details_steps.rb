@@ -411,7 +411,6 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Ff]rom to (?:Manage Shipping Addresses\.\.\.|(.*))$/ do |str|
   if SdcEnv.new_framework
     str ||= 'Manage Shipping Addresses...'
-
     SdcOrderDetailsShipFrom.page_obj(:selection_element) { {xpath: "//li[text()='#{str}']"} }
     5.times do
       SdcWebsite.orders.order_details.ship_from.drop_down.click unless SdcWebsite.orders.order_details.ship_from.selection_element.present?

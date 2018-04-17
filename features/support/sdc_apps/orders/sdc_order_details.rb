@@ -151,20 +151,6 @@ module Stamps
       def dimensions
         @dimensions ||= SdcOrderDetailsDimensions.new
       end
-
-      #customs form
-      # def present?
-      #   title.present?
-      # end
-      #
-      # def blur_out(count = 1)
-      #   (count.nil? || count == 0 ? 1 : count.to_i).times do
-      #     service_blur_out_field.safe_click
-      #     weight_blur_out_field.safe_double_click
-      #     weight_blur_out_field.safe_click
-      #     service_blur_out_field.safe_double_click
-      #   end
-      # end
     end
   end
 end
