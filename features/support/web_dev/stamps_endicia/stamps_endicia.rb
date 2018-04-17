@@ -30,7 +30,7 @@ module Stamps
           end
 
           def reset_password_page
-            PasswordResetPage.new()
+            ResetPasswordPage.new()
           end
 
           def stamps_endicia_common_page
@@ -68,7 +68,7 @@ module Stamps
           end
 
           def reset_password_page
-            PasswordResetPage.new()
+            ResetPasswordPage.new()
           end
 
           def stamps_endicia_common_page

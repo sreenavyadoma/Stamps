@@ -44,8 +44,8 @@ module Stamps
       alias_method :selection, :page_obj
       alias_method :link, :page_obj
 
-      def page_objs(name)
-        elements(name, yield)
+      def page_objs(name, &block)
+        elements(name, &block)
       end
 
       def chooser(name, chooser, verify, property, property_name)
