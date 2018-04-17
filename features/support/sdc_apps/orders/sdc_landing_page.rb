@@ -7,7 +7,7 @@ module Stamps
     page_obj(:sign_in) { {xpath: "//span[contains(text(), 'Sign In')]"} }
     page_objs(:sign_ins) { {xpath: "//span[contains(text(), 'Sign In')]"} }
     page_objs(:sign_in_elem) { {xpath: "//span[contains(text(), 'Sign In')]"} }
-    _page_object(:textbox) { sign_in_elem[0] }
+    page_objs_index(:textbox, index: 0) { :sign_in_elem }
 
     page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Orders&" }
 
