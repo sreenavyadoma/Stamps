@@ -2,7 +2,7 @@ module Stamps
   module WebDev
     module StampsEndicia
 
-      class ResetPasswordPage < SdcPage
+      class PPResetPasswordPage < SdcPage
         #sdcEndica content
         page_obj(:header) {{xpath: "//h1['Password Reset']"}}
 

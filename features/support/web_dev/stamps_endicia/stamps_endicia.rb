@@ -22,19 +22,19 @@ module Stamps
 
         class << self
           def login_page
-            @login_page ||= LoginPage.new()
+            @login_page ||= PPLoginPage.new()
           end
 
           def dashboard_page
-            DashboardPage.new()
+            @dashboard_page ||=PPDashboardPage.new()
           end
 
           def reset_password_page
-            ResetPasswordPage.new()
+            @reset_password_page ||= PPResetPasswordPage.new()
           end
 
           def stamps_endicia_common_page
-            StampsEndiciaCommon.new()
+            @stamps_endicia_common_page ||= StampsEndiciaCommon.new()
           end
         end
 
@@ -59,21 +59,21 @@ module Stamps
         end
 
         class << self
-          def login_page
-            LoginPage.new()
-          end
+          # def login_page
+          #   @login_page ||= USPSPLoginPage.new()
+          # end
 
-          def dashboard_page
-            DashboardPage.new()
-          end
+          # def dashboard_page
+          #   USPSPDashboardPage.new()
+          # end
+          #
+          # def reset_password_page
+          #   USPSPResetPasswordPage.new()
+          # end
 
-          def reset_password_page
-            ResetPasswordPage.new()
-          end
-
-          def stamps_endicia_common_page
-            StampsEndiciaCommon.new()
-          end
+          # def stamps_endicia_common_page
+          #   StampsEndiciaCommon.new()
+          # end
         end
 
       end

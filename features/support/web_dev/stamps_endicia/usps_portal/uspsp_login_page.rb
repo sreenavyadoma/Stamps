@@ -2,7 +2,7 @@ module Stamps
   module WebDev
     module StampsEndicia
 
-      class LoginPage < SdcPage
+      class USPSPLoginPage < SdcPage
         #Welcome content
         page_objs(:p_content) {{xpath: "//p"}}
         page_objs_index(:welcome_content, index: 0) {:p_content}

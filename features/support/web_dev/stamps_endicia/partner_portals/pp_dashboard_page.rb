@@ -2,7 +2,7 @@ module Stamps
   module WebDev
     module StampsEndicia
 
-      class DashboardPage < SdcPage
+      class PPDashboardPage < SdcPage
         #welcome header
         page_obj(:header) {{xpath: "//h1['Welcome to USPS Portal']"}}
 
