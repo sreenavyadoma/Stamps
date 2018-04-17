@@ -12,7 +12,9 @@ module Stamps
         #submit
         button(:submit) {{xpath: "//button[@label='Submit']/span" }}
 
-
+        #password Reset text
+        page_objs(:p_content) {{xpath: "//p"}}
+        page_objs_index(:text, index: 0) {:p_content}
 
       end
 

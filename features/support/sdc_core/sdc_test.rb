@@ -349,7 +349,7 @@ class SdcTest
       begin
 
         sessionid = SdcPage.browser.send(:bridge).session_id
-        jobname = "#{scenario.feature.name} - #{scenario.name}"
+        jobname = "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
 
         SdcPage.browser.quit
 
