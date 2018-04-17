@@ -30,6 +30,27 @@ module Stamps
       nil
     end
 
+    def elements(browser, tag: nil, timeout: 20, &block)
+      if browser.is_a? Watir::Browser
+        if tag.nil?
+          return browser.elements(block.call)
+        else
+          begin
+            code = "browser.#{tag}(#{block.call})"
+            elements = instance_eval(code)
+            return wait_until(timeout: timeout) { elements }
+          rescue Selenium::WebDriver::Error::TimeOutError
+            # ignore
+          end
+        end
+      else
+        result = wait_until(timeout: timeout) { browser.find_elements(block.call) }
+        return SdcElement.new(browser.find_elements(block.call)) if result
+      end
+
+      nil
+    end
+
   end
 
   class SdcPage < WatirDrops::PageObject
@@ -44,8 +65,12 @@ module Stamps
       alias_method :selection, :page_obj
       alias_method :link, :page_obj
 
-      def page_objs(name, &block)
-        elements(name, &block)
+      def page_objs(name, tag: nil, timeout: 30, &block)
+        _page_objects(name) { SdcFinder.elements(browser, tag: tag, timeout: timeout, &block) }
+      end
+
+      def page_objs_index(name, index: 0, required: false)
+        _page_object(name, required: required) { SdcElement.new(instance_eval(yield.to_s)[index]) }
       end
 
       def chooser(name, chooser, verify, property, property_name)
@@ -62,6 +87,10 @@ module Stamps
 
       def _page_object(name, required: false, &block)
         element(name, required: required, &block)
+      end
+
+      def _page_objects(name, &block)
+        elements(name, &block)
       end
     end
 
