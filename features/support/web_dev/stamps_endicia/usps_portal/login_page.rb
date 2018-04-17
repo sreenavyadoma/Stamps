@@ -4,11 +4,11 @@ module Stamps
 
       class LoginPage < SdcPage
         #Welcome content
-        elements(:p_content) {{xpath: "//p"}}
-        _page_object(:welcome_content) {p_content[0]}
+        page_objs(:p_content) {{xpath: "//p"}}
+        _page_object(:welcome_content) {:p_content[0]}
 
         #Error Message
-        _page_object(:error_message) {p_content[1]}
+        _page_object(:error_message) {:p_content[1]}
 
         #sdcEndica logo
         page_obj(:sdc_endicia_logo) {{xpath: "//img[@alt='Stamps.com and Endicia']"}}
