@@ -27,7 +27,9 @@ module Stamps
         return SdcElement.new(browser.find_element(block.call)) if result
       end
 
-      nil
+      message = "Cannot locate element #{block.call}"
+      error = Selenium::WebDriver::Error::NoSuchElementError
+      raise error, message
     end
 
     def elements(browser, tag: nil, timeout: 20, &block)
@@ -48,7 +50,9 @@ module Stamps
         return SdcElement.new(browser.find_elements(block.call)) if result
       end
 
-      nil
+      message = "Cannot locate elements #{block.call}"
+      error = Selenium::WebDriver::Error::NoSuchElementError
+      raise error, message
     end
 
   end

@@ -30,13 +30,13 @@ Then /^[Ss]ign-in to SDC Website$/ do
 end
 
 Then /^sign-out of SDC Website$/ do
+  SdcNavigation.user_drop_down.signed_in_user.safe_wait_until_present(timeout: 5)
   if SdcEnv.browser
     3.times do
-      SdcNavigation.user_drop_down.signed_in_user.safe_wait_until_present(timeout: 5)
       SdcNavigation.user_drop_down.signed_in_user.hover
       SdcNavigation.user_drop_down.sign_out_link.safe_wait_until_present(timeout: 1)
       SdcNavigation.user_drop_down.sign_out_link.safe_click
-      SdcWebsite.landing_page.username.safe_wait_until_present(timeout: 3)
+      SdcWebsite.landing_page.username.safe_wait_until_present(timeout: 2)
       break if SdcWebsite.landing_page.username.present?
     end
   end
