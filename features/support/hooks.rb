@@ -15,8 +15,8 @@ end
 
 After do |scenario|
   SdcTest.teardown
-  #user_credentials.close if SdcEnv.usr == 'default'
-  @stamps = nil #TODO-Rob this needs to exist in StampsTest
+  # Old framework
+  @stamps = nil
   @health = nil
 end
 

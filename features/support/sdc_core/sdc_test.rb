@@ -363,6 +363,9 @@ class SdcTest
       rescue
         # ignore
       end
+
+      SdcUserCredentials.close
+
       SdcLog.info "#{SdcPage.browser} closed."
     end
 

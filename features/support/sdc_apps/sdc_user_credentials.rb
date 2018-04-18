@@ -52,8 +52,12 @@ module Stamps
       end
 
       def close
-        connection.prepare("UPDATE user_credentials SET user_credentials.in_use=0 where username=?").execute(@user_credentials[:username])
-        connection.close
+        begin
+          connection.prepare("UPDATE user_credentials SET user_credentials.in_use=0 where username=?").execute(@user_credentials[:username])
+          connection.close
+        rescue
+          # ignore db errors
+        end if connection
       end
     end
   end
