@@ -54,8 +54,6 @@ Then /^sign-in to Orders as (.+), (.+)$/ do |usr, pw|
         landing_page.sign_in.safe_click
         landing_page.sign_in.send_keys(:enter)
         landing_page.sign_in.send_keys(:enter)
-        #sign_in.send_keys_while_present(:enter, ctr: 2)
-        #sign_in.safe_wait_while_present
         break if signed_in_user.present?
       rescue
         # ignore
