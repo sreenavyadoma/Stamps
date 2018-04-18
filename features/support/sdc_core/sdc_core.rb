@@ -51,7 +51,7 @@ module Stamps
 
     def elements(browser, tag: nil, timeout: 20)
       if browser.is_a? Watir::Browser
-        if tag then
+        if tag
           begin
             code = "browser.#{tag}(#{yield})"
             elements = instance_eval(code)
