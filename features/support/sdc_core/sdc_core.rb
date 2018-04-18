@@ -10,7 +10,7 @@ module Stamps
     class << self
       attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose, :printer, :browser, :hostname,
                     :print_media, :mobile, :android, :ios, :firefox_profile, :new_framework, :debug, :scenario,
-                    :sauce_device, :test_name
+                    :sauce_device, :test_name, :driver_log_level
     end
   end
 
@@ -20,11 +20,28 @@ module Stamps
 
     def element(browser, tag: nil, timeout: 20, &block)
       if browser.is_a? Watir::Browser
-        return SdcElement.new(instance_eval("browser.#{tag}(#{block.call})")) if tag
-        return SdcElement.new(browser.element(block.call))
+        if tag
+          element = instance_eval("browser.#{tag}(#{block.call})")
+          result = wait_until(timeout: timeout) { element }
+          if result
+            element = instance_eval("browser.#{tag}(#{block.call})")
+            return SdcElement.new(element)
+          end
+        else
+          element = browser.element(block.call)
+          result = wait_until(timeout: timeout) { element }
+          if result
+            element = browser.element(block.call)
+            return SdcElement.new(element)
+          end
+        end
       else
-        result = wait_until(timeout: timeout) { browser.find_element(block.call) }
-        return SdcElement.new(browser.find_element(block.call)) if result
+        element = browser.find_element(block.call)
+        result = wait_until(timeout: timeout) { element }
+        if result
+          element = browser.find_element(block.call)
+          return SdcElement.new(element)
+        end
       end
 
       message = "Cannot locate element #{block.call}"
@@ -34,20 +51,24 @@ module Stamps
 
     def elements(browser, tag: nil, timeout: 20, &block)
       if browser.is_a? Watir::Browser
-        if tag.nil?
-          return browser.elements(block.call)
-        else
+        if tag then
           begin
             code = "browser.#{tag}(#{block.call})"
             elements = instance_eval(code)
-            return wait_until(timeout: timeout) { elements }
+            result = wait_until(timeout: timeout) { elements }
+            return instance_eval(code) if result
           rescue Selenium::WebDriver::Error::TimeOutError
             # ignore
           end
+        else
+          elements = browser.elements(block.call)
+          result = wait_until(timeout: timeout) { elements }
+          return browser.elements(block.call) if result
         end
       else
-        result = wait_until(timeout: timeout) { browser.find_elements(block.call) }
-        return SdcElement.new(browser.find_elements(block.call)) if result
+        elements = browser.find_elements(block.call)
+        result = wait_until(timeout: timeout) { elements }
+        return browser.find_elements(block.call) if result
       end
 
       message = "Cannot locate elements #{block.call}"
