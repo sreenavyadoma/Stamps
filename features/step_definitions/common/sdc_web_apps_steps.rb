@@ -87,3 +87,55 @@ Then /^sign-in to Orders(?: as (.+), (.+)|)$/ do |usr, pw|
   end
   sleep 3
 end
+
+Then /^sign-in to Mail(?: as (.+), (.+)|)$/ do |usr, pw|
+  begin
+    if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default'
+      credentials = SdcUserCredentials.fetch(SdcTest.scenario.tags[0].name)
+      usr = credentials[:username]
+      pw = credentials[:password]
+    else
+      usr = SdcEnv.usr
+      pw = SdcEnv.pw
+    end
+  end unless usr && pw
+
+  expect(usr).to be_truthy
+  expect(pw).to be_truthy
+
+  mail = SdcWebsite.mail
+  mail.username.set(TestData.store[:username] = usr)
+  mail.password.set(TestData.store[:password] = pw)
+  if SdcEnv.browser
+    5.to_i.times do
+      begin
+        mail.sign_in.click
+        mail.sign_in.click
+        mail.sign_in.safe_click
+        mail.sign_in.send_keys(:enter)
+        mail.sign_in.send_keys(:enter)
+        break if signed_in_user.present?
+      rescue
+        # ignore
+      end
+    end
+    sleep(10)
+    SdcWebsite.navigation.user_drop_down.signed_in_user.safe_wait_until_present(timeout: 5)
+    expect(SdcWebsite.navigation.user_drop_down.signed_in_user.text_value).to include(TestData.store[:username])
+
+  elsif SdcEnv.ios
+    begin
+      mail.sign_in.click
+      mail.sign_in.send_keys(:enter)
+      mail.sign_in.safe_send_keys(:enter)
+    rescue
+      # ignore
+    end
+
+  elsif SdcEnv.android
+    SdcPage.browser.hide_keyboard
+    SdcPage.browser.action.move_to(mail.sign_in).click.perform
+    SdcPage.browser.action.move_to(mail.sign_in).send_keys(:enter).perform
+  end
+  sleep 3
+end

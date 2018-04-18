@@ -12,7 +12,7 @@ module Stamps
     end
 
     def mail
-      raise 'Not Implemented'
+      @mail ||= SdcMail.new
     end
 
     def navigation
