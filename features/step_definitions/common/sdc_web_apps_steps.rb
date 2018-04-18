@@ -35,7 +35,7 @@ end
 Then /^sign-in to Orders(?: as (.+), (.+)|)$/ do |usr, pw|
   begin
     if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default'
-      credentials = user_credentials.fetch(SdcTest.scenario.tags[0].name)
+      credentials = SdcUserCredentials.fetch(SdcTest.scenario.tags[0].name)
       usr = credentials[:username]
       pw = credentials[:password]
     else
