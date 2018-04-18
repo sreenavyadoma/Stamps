@@ -1,6 +1,13 @@
 module Stamps
   module TestHelper
     class << self
+      def user_credentials
+        @user_credentials ||= SdcMySqlCrentials.new
+        @user_credentials.test_scenario = SdcTest.test_scenario
+        @user_credentials
+      end
+
+
       def rand_alpha_str(min = 2, max = 10)
         Array.new(rand(min..max)) { [*'a'..'z'].sample }.join
       end

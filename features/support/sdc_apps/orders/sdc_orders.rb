@@ -10,7 +10,7 @@ module Stamps
       end
 
       def order_details
-        @order_details = nil
+        @order_details ||= SdcOrderDetails.new
       end
 
       def bulk_update
@@ -18,19 +18,19 @@ module Stamps
       end
 
       def toolbar
-
+        @toolbar ||= SdcOrdersToolbar.new
       end
 
       def grid
 
       end
 
-      def left_filter_panel
-
+      def filter_panel
+        @filter_panel ||= SdcOrdersFilterPanel.new
       end
 
-      def paging_toolbar
-
+      def modals
+        @modals ||= SdcOrdersModals.new
       end
     end
   end
