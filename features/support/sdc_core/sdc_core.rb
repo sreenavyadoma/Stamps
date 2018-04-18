@@ -337,9 +337,9 @@ module Stamps
       self
     end
 
-    def method_missing(method, *args, &block)
-      super unless @element.respond_to?(method)
-      @element.send(method, *args, &block)
+    def method_missing(name, *args, &block)
+      super unless @element.respond_to?(name)
+      @element.send(name, *args, &block)
     end
 
     private
@@ -407,9 +407,9 @@ module Stamps
       # set_instance_variables(binding, *local_variables)
     end
 
-    def method_missing(method, *args, &block)
-      super unless @text_field.respond_to?(method)
-      @text_field.send(method, *args, &block)
+    def method_missing(name, *args, &block)
+      super unless @text_field.respond_to?(name)
+      @text_field.send(name, *args, &block)
     end
   end
 
