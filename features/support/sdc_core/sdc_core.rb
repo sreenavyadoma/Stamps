@@ -18,42 +18,42 @@ module Stamps
     extend self
     include Watir::Waitable
 
-    def element(browser, tag: nil, timeout: 20, &block)
+    def element(browser, tag: nil, timeout: 20)
       if browser.is_a? Watir::Browser
         if tag
-          element = instance_eval("browser.#{tag}(#{block.call})")
+          element = instance_eval("browser.#{tag}(#{yield})")
           result = wait_until(timeout: timeout) { element }
           if result
-            element = instance_eval("browser.#{tag}(#{block.call})")
+            element = instance_eval("browser.#{tag}(#{yield})")
             return SdcElement.new(element)
           end
         else
-          element = browser.element(block.call)
+          element = browser.element(yield)
           result = wait_until(timeout: timeout) { element }
           if result
-            element = browser.element(block.call)
+            element = browser.element(yield)
             return SdcElement.new(element)
           end
         end
       else
-        element = browser.find_element(block.call)
+        element = browser.find_element(yield)
         result = wait_until(timeout: timeout) { element }
         if result
-          element = browser.find_element(block.call)
+          element = browser.find_element(yield)
           return SdcElement.new(element)
         end
       end
 
-      message = "Cannot locate element #{block.call}"
+      message = "Cannot locate element #{yield}"
       error = Selenium::WebDriver::Error::NoSuchElementError
       raise error, message
     end
 
-    def elements(browser, tag: nil, timeout: 20, &block)
+    def elements(browser, tag: nil, timeout: 20)
       if browser.is_a? Watir::Browser
         if tag then
           begin
-            code = "browser.#{tag}(#{block.call})"
+            code = "browser.#{tag}(#{yield})"
             elements = instance_eval(code)
             result = wait_until(timeout: timeout) { elements }
             return instance_eval(code) if result
@@ -61,17 +61,17 @@ module Stamps
             # ignore
           end
         else
-          elements = browser.elements(block.call)
+          elements = browser.elements(yield)
           result = wait_until(timeout: timeout) { elements }
-          return browser.elements(block.call) if result
+          return browser.elements(yield) if result
         end
       else
-        elements = browser.find_elements(block.call)
+        elements = browser.find_elements(yield)
         result = wait_until(timeout: timeout) { elements }
-        return browser.find_elements(block.call) if result
+        return browser.find_elements(yield) if result
       end
 
-      message = "Cannot locate elements #{block.call}"
+      message = "Cannot locate elements #{yield}"
       error = Selenium::WebDriver::Error::NoSuchElementError
       raise error, message
     end
