@@ -4,7 +4,7 @@ module Stamps
     extend self
 
     def landing_page
-      @landing_page ||= SdcLandingPage.new
+      @landing_page ||= SdcOrdersLandingPage.new
     end
 
     def orders

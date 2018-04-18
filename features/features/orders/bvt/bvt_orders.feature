@@ -5,10 +5,6 @@ Feature:  BVT tests for Orders
   Background:
     Given a valid user is signed in to Web Apps
 
-  @authentication
-  Scenario: Orders Authentication Test
-    Then Sign out
-
   @bvt_ambigious_address
   Scenario: BVT Ambigious Address
     Then add new order
@@ -128,27 +124,6 @@ Feature:  BVT tests for Orders
     Then click Orders Toolbar Print button
     Then in Print modal, click Close button
     Then Sign out
-
-
-  @bvt_new_order
-  Scenario:  BVT Add a new order
-    Then add new order
-    Then set Order Details Ship-To to random address between zone 9
-    Then set Order Details service to PM Package
-    Then set Order Details Pounds to 1
-    Then set Order Details Ounces to 1
-    Then set Order Details Insure-For to $1.00
-    Then set Order Details Length to 1
-    Then set Order Details Width to 1
-    Then set Order Details Height to 1
-#  # Orders Grid Operations
-    Then uncheck Orders Grid row 1
-    Then expect Orders Grid Pounds is 1
-    Then expect Orders Grid Ounces is 1
-    Then expect Orders Grid Weight is 1 lb. 1 oz.
-    Then expect Orders Grid Insured Value is $1.00
-    Then Sign out
-
 
   @bvt_printing
   Scenario:  BVT Printing
