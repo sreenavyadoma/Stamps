@@ -18,9 +18,8 @@ module Stamps
       page_obj(:drop_down) { {xpath: '(//*[contains(@id, "international")]//*[contains(@id, "picker")])[1]'} }
       page_obj(:text_field) { {xpath: '//div[contains(@id, "shiptoview-international")]//input[contains(@id, "combo")]'} }
 
-      def selection(str)
+      def selection_obj(str)
         self.class.page_obj(:selection_element) { {xpath: "//li[text()='#{str}']"} }
-
       end
     end
 
