@@ -92,9 +92,9 @@ module Stamps
       alias_method :link, :page_obj
 
       def page_objs(name, tag: nil, index: nil, required: false, timeout: 30, &block)
-        collection = index.nil? ? name : "#{name}s".to_sym
-        _page_objects(collection) { SdcFinder.elements(browser, tag: tag, timeout: timeout, &block) }
-        _page_object(name, required: required) { SdcElement.new(instance_eval(collection.to_s)[index]) } if index
+        collection_name = index.nil? ? name : "#{name}s".to_sym
+        _page_objects(collection_name) { SdcFinder.elements(browser, tag: tag, timeout: timeout, &block) }
+        _page_object(name, required: required) { SdcElement.new(instance_eval(collection_name.to_s)[index]) } if index
       end
 
       def page_objs_index(name, index: 0, required: false)
