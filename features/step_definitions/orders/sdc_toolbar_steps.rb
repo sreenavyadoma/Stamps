@@ -4,7 +4,9 @@ Then /^(?:[Cc]lick Orders Toolbar Add button|add new order|add [Oo]rder (\d+))$/
     # SdcOrders.wait_until_present
     #todo TestData.store[:old_balance] = SdcWebsite.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
     #todo stamps.orders.orders_grid.grid_column(:checkbox).uncheck(1)
+    SdcOrders.toolbar.add.wait_until_present(timeout: 30)
     TestData.store[:order_id][(count.nil?) ? TestData.store[:ord_id_ctr] += 1 : count.to_i] = SdcOrders.toolbar.add.click
+
     #todo expect(stamps.orders.orders_grid.grid_column(:checkbox).checked?(1)).to be(true), "Orders Grid checkbox 1 is unchecked!"
     step "Save Order Details data"
   else
@@ -17,7 +19,7 @@ Then /^(?:[Cc]lick Orders Toolbar Add button|add new order|add [Oo]rder (\d+))$/
 end
 
 Then /^Save Order Details data$/ do
-  #step "Expect Order Details is present"
+  step "Expect Order Details is present"
   if SdcEnv.new_framework
     TestData.store[:country] = SdcOrders.order_details.ship_to.domestic.country.text_field.text_value
     TestData.store[:service_cost] = SdcOrders.order_details.service.cost.text_value.dollar_amount_str.to_f.round(2)

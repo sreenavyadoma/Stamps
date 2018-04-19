@@ -28,9 +28,9 @@ module Stamps
     end
 
     class SdcOrderDetailsService < SdcPage
-      page_obj(:cost) { {xpath: '(//div[contains(@id, "singleOrderDetailsForm")]//div[6]//label[contains(@class, "details-form-label")])[2]'} }
-      page_obj(:drop_down) { {xpath: '(//div[contains(@id, "servicedroplist")]//div[contains(@id, "trigger-picker")])[1]'} }
-      page_obj(:text_field) { {xpath: '(//input[contains(@id, "servicedroplist")])[1]'} }
+      page_obj(:cost, required: true, timeout: 40) { {xpath: '(//div[contains(@id, "singleOrderDetailsForm")]//div[6]//label[contains(@class, "details-form-label")])[2]'} }
+      page_obj(:drop_down, required: true, timeout: 40) { {xpath: '(//div[contains(@id, "servicedroplist")]//div[contains(@id, "trigger-picker")])[1]'} }
+      page_obj(:text_field, required: true, timeout: 40) { {xpath: '(//input[contains(@id, "servicedroplist")])[1]'} }
 
       def selection(str)
         self.class.page_obj(:selection_obj) { {xpath: "//li[@id='#{data_for(:orders_services, {})[str]}']"} }
@@ -136,9 +136,9 @@ module Stamps
 
     class SdcOrderDetails < SdcPage
       page_obj(:title, required: true, timeout: 20) { {xpath: '//div[contains(@class, "singleorder-detailsform")]//label[contains(@class, "panel-header-text")]'} }
-      page_obj(:reference_num) { {xpath: '//div[contains(@class, "reference-field-container")]//input'} }
-      page_obj(:service_blur_out_field) { {xpath: '(//*[contains(text(), "Service:")])[2]'} }
-      page_obj(:weight_blur_out_field) { {xpath: '//*[contains(text(), "Weight:")]'} }
+      page_obj(:reference_num, required: true, timeout: 20) { {xpath: '//div[contains(@class, "reference-field-container")]//input'} }
+      page_obj(:service_blur_out_field, required: true, timeout: 20) { {xpath: '(//*[contains(text(), "Service:")])[2]'} }
+      page_obj(:weight_blur_out_field, required: true, timeout: 20) { {xpath: '//*[contains(text(), "Weight:")]'} }
 
       def ship_to
         @ship_to ||= SdcOrderDetailsShipTo.new
