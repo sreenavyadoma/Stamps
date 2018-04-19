@@ -1,5 +1,5 @@
 module Stamps
-  class MySqlConnectionDecorator < BasicObject
+  class MySqlConnDecorator < BasicObject
     attr_reader :host, :username, :password
     def initialize(host: nil, username: nil, password: nil)
       @connection = ::Mysql2::Client.new(host: host, username: username, password: password)
@@ -11,12 +11,12 @@ module Stamps
     end
   end
 
-  class UserCredConnection < BasicObject
+  class UserCredentialsConn < BasicObject
     def initialize
       host = data_for(:database, {})['mysql']['host']
       username = data_for(:database, {})['mysql']['username']
       password = data_for(:database, {})['mysql']['password']
-      @connection = MySqlConnectionDecorator.new(host: host, username: username, password: password)
+      @connection = MySqlConnDecorator.new(host: host, username: username, password: password)
       @connection.automatic_close = true
       @connection.select_db('stamps')
     end
