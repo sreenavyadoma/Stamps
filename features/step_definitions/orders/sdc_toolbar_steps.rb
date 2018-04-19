@@ -17,7 +17,7 @@ Then /^(?:[Cc]lick Orders Toolbar Add button|add new order|add [Oo]rder (\d+))$/
 end
 
 Then /^Save Order Details data$/ do
-  step "Expect Order Details is present"
+  #step "Expect Order Details is present"
   if SdcEnv.new_framework
     TestData.store[:country] = SdcOrders.order_details.ship_to.domestic.country.text_field.text_value
     TestData.store[:service_cost] = SdcOrders.order_details.service.cost.text_value.dollar_amount_str.to_f.round(2)
