@@ -47,7 +47,7 @@ Then /^[Pp]P: [Ee]xpect login page Log In button text is (.*)$/ do |str|
 end
 
 Then /^[Pp]P: [Uu]ser clicks Log In$/ do
-  PartnerPortal.login_page.log_in.safe_click
+  PartnerPortal.login_page.log_in.click
 end
 
 Then /^[Pp]P: expect login page [Ff]orgot [Pp]assword link exist$/ do
@@ -55,7 +55,7 @@ Then /^[Pp]P: expect login page [Ff]orgot [Pp]assword link exist$/ do
 end
 
 Then /^[Pp]P: [Uu]ser clicks [Ff]orgot [Pp]assword link$/ do
-  PartnerPortal.login_page.forgot_pw.safe_click
+  PartnerPortal.login_page.forgot_pw.click
 end
 
 Then /^[Pp]P: [Bb]lur out on [Ll]ogin [Pp]age$/ do
