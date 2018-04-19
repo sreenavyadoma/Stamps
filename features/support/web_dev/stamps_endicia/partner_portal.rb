@@ -88,7 +88,7 @@ module Stamps
       end
 
       def stamps_endicia_common_page
-        @stamps_endicia_common_page ||= StampsEndiciaCommon.new
+        @stamps_endicia_common_page ||= StampsEndicia::Common.new
       end
     end
 
