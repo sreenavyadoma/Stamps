@@ -8,9 +8,10 @@ module Stamps
     ANDROID = %i(samsung_galaxy nexus_5x).freeze unless Object.const_defined?('Stamps::SdcEnv::ANDROID')
 
     class << self
-      attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose, :printer, :browser, :hostname,
-                    :print_media, :mobile, :android, :ios, :firefox_profile, :new_framework, :debug, :scenario,
-                    :sauce_device, :test_name
+      attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose,
+                    :printer, :browser, :hostname, :print_media, :mobile,
+                    :android, :ios, :firefox_profile, :new_framework, :debug,
+                    :scenario, :sauce_device, :test_name, :driver_log_level
     end
   end
 
@@ -18,37 +19,62 @@ module Stamps
     extend self
     include Watir::Waitable
 
-    def element(browser, tag: nil, timeout: 20, &block)
+    def element(browser, tag: nil, timeout: 20)
       if browser.is_a? Watir::Browser
-        return SdcElement.new(instance_eval("browser.#{tag}(#{block.call})")) if tag
-        return SdcElement.new(browser.element(block.call))
-      else
-        result = wait_until(timeout: timeout) { browser.find_element(block.call) }
-        return SdcElement.new(browser.find_element(block.call)) if result
-      end
-
-      nil
-    end
-
-    def elements(browser, tag: nil, timeout: 20, &block)
-      if browser.is_a? Watir::Browser
-        if tag.nil?
-          return browser.elements(block.call)
+        if tag
+          element = instance_eval("browser.#{tag}(#{yield})")
+          result = wait_until(timeout: timeout) { element }
+          if result
+            element = instance_eval("browser.#{tag}(#{yield})")
+            return SdcElement.new(element)
+          end
         else
-          begin
-            code = "browser.#{tag}(#{block.call})"
-            elements = instance_eval(code)
-            return wait_until(timeout: timeout) { elements }
-          rescue Selenium::WebDriver::Error::TimeOutError
-            # ignore
+          element = browser.element(yield)
+          result = wait_until(timeout: timeout) { element }
+          if result
+            element = browser.element(yield)
+            return SdcElement.new(element)
           end
         end
       else
-        result = wait_until(timeout: timeout) { browser.find_elements(block.call) }
-        return SdcElement.new(browser.find_elements(block.call)) if result
+        element = browser.find_element(yield)
+        result = wait_until(timeout: timeout) { element }
+        if result
+          element = browser.find_element(yield)
+          return SdcElement.new(element)
+        end
       end
 
-      nil
+      message = "Cannot locate element #{yield}"
+      error = Selenium::WebDriver::Error::NoSuchElementError
+      raise error, message
+    end
+
+    def elements(browser, tag: nil, timeout: 20)
+      if browser.is_a? Watir::Browser
+        if tag
+          begin
+            code = "browser.#{tag}(#{yield})"
+            elements = instance_eval(code)
+            result = wait_until(timeout: timeout) { elements }
+            return instance_eval(code) if result
+          rescue Selenium::WebDriver::Error::TimeOutError
+            # ignore
+          end
+        else
+          elements = browser.elements(yield)
+          result = wait_until(timeout: timeout) { elements }
+          return browser.elements(yield) if result
+        end
+      else
+        elements = browser.find_elements(yield)
+        result = wait_until(timeout: timeout) { elements }
+        return browser.find_elements(yield) if result
+      end
+
+      message = "Cannot locate elements #{yield}"
+      error = Selenium::WebDriver::Error::NoSuchElementError
+      raise error, message
     end
 
   end
@@ -65,8 +91,10 @@ module Stamps
       alias_method :selection, :page_obj
       alias_method :link, :page_obj
 
-      def page_objs(name, tag: nil, timeout: 30, &block)
-        _page_objects(name) { SdcFinder.elements(browser, tag: tag, timeout: timeout, &block) }
+      def page_objs(name, tag: nil, index: nil, required: false, timeout: 30, &block)
+        list_name = index.nil? ? name : "#{name}s".to_sym
+        _page_objects(list_name) { SdcFinder.elements(browser, tag: tag, timeout: timeout, &block) }
+        _page_object(name, required: required) { SdcElement.new(instance_eval(list_name.to_s)[index]) } if index
       end
 
       def page_objs_index(name, index: 0, required: false)
@@ -312,9 +340,9 @@ module Stamps
       self
     end
 
-    def method_missing(method, *args, &block)
-      super unless @element.respond_to?(method)
-      @element.send(method, *args, &block)
+    def method_missing(name, *args, &block)
+      super unless @element.respond_to?(name)
+      @element.send(name, *args, &block)
     end
 
     private
@@ -332,7 +360,11 @@ module Stamps
     attr_reader :element, :verify, :property, :property_val
 
     def initialize(element, verify, property, property_val)
-      set_instance_variables(binding, *local_variables)
+      @element = element
+      @verify = verify
+      @property = property
+      @property_val = property_val
+      # set_instance_variables(binding, *local_variables)
     end
 
     def chosen?
@@ -372,12 +404,15 @@ module Stamps
     attr_reader :text_field, :increment, :decrement
 
     def initialize(text_field, increment, decrement)
-      set_instance_variables(binding, *local_variables)
+      @text_field = text_field
+      @increment = increment
+      @decrement = decrement
+      # set_instance_variables(binding, *local_variables)
     end
 
-    def method_missing(method, *args, &block)
-      super unless @text_field.respond_to?(method)
-      @text_field.send(method, *args, &block)
+    def method_missing(name, *args, &block)
+      super unless @text_field.respond_to?(name)
+      @text_field.send(name, *args, &block)
     end
   end
 

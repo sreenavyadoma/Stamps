@@ -24,7 +24,7 @@ module Stamps
     def stamps
       begin
         @stamps ||= Object.const_get("StampsDotCom").new(SdcTest.web_apps_param)
-      rescue Exception > e
+      rescue Exception => e
         SdcLog.error e.message
         SdcLog.error e.backtrace.join('\n')
         raise e

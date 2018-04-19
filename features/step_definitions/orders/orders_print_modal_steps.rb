@@ -43,7 +43,11 @@ Then /^[Ee]xpect [Pp]rint [Mm]odal [Pp]rint [Mm]odal is [Pp]resent$/ do
 end
 
 Then /^[Cc]lick [Pp]rint [Mm]odal [Pp]rint [Bb]utton$/ do
-  stamps.orders.modals.orders_print_modal.print
+  if SdcEnv.new_framework
+    SdcWebsite.orders.modals.print_modal.print.safe_click
+  else
+    stamps.orders.modals.orders_print_modal.print
+  end
 end
 
 Then /^[Cc]lick [Pp]rint [Mm]odal [Pp]rint [Bb]utton for SAS$/ do
@@ -141,7 +145,11 @@ end
 
 
 Then /^[Ss]et [Pp]rint [Mm]odal [Pp]rint-[Oo]n to (.*)$/ do |expectation|
-  stamps.orders.modals.orders_print_modal.printing_on.select(expectation)
+  if SdcEnv.new_framework
+    #skip for now
+  else
+    stamps.orders.modals.orders_print_modal.printing_on.select(expectation)
+  end
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal [Pp]rinting On Label is (.*)$/ do |expectation|

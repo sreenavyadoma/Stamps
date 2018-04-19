@@ -1,11 +1,4 @@
 
-Then /^[Hh]ide [Oo]rder [Dd]etails [Ff]orm [Ss]hip-[Tt]o [Ff]ields$/ do
-  stamps.orders.order_details.ship_to.domestic.hide_ship_to_details
-end
-
-Then /^[Ss]how [Oo]rder [Dd]etails [Ff]orm [Ss]hip-[Tt]o [Ff]ields$/ do
-  stamps.orders.order_details.ship_to.domestic.show_ship_to_details
-end
 
 Then /^[Oo]n [Oo]rder [Dd]etails form, Expand Manual Items Ordered pane$/ do
   stamps.orders.order_details.items_ordered.expand
@@ -57,95 +50,10 @@ Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) Description to (.*)$/ do
   step 'Save Order Details data'
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Dd]omestic [Ss]hip-[Tt]o [Cc]ountry to (.*)$/ do |country|
-  step 'show order details form ship-to fields'
-  expect(stamps.orders.order_details.ship_to.domestic.country.select(TestData.store[:ship_to_country] = country)).to eql(TestData.store[:ship_to_country])
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o [Cc]ountry to (.*)$/ do |country|
-  step 'show order details form ship-to fields'
-  expect(stamps.orders.order_details.ship_to.international.country.select(TestData.store[:ship_to_country] = country)).to eql(TestData.store[:ship_to_country])
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o [Nn]ame to \"(.*)\"$/ do |str|
-  TestData.store[:int_ship_to_name] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
-  if str.length == 0
-    stamps.orders.order_details.ship_to.international.name.click
-  else
-    stamps.orders.order_details.ship_to.international.name.set TestData.store[:int_ship_to_name]
-  end
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o [Cc]ompany to \"(.*)\"$/ do |str|
-  TestData.store[:int_ship_to_company] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
-  if str.length == 0
-    stamps.orders.order_details.ship_to.international.company.click
-  else
-    stamps.orders.order_details.ship_to.international.company.set TestData.store[:int_ship_to_company]
-  end
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Address 1 to \"(.*)\"$/ do |str|
-  TestData.store[:int_ship_to_address_1] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
-  if str.length == 0
-    stamps.orders.order_details.ship_to.international.address_1.click
-  else
-    stamps.orders.order_details.ship_to.international.address_1.set TestData.store[:int_ship_to_address_1]
-  end
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Address 2 to \"(.*)\"$/ do |str|
-  TestData.store[:int_ship_to_address_2] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
-  if str.length == 0
-    stamps.orders.order_details.ship_to.international.address_2.click
-  else
-    stamps.orders.order_details.ship_to.international.address_2.set TestData.store[:int_ship_to_address_2]
-  end
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o City to \"(.*)\"$/ do |str|
-  TestData.store[:int_ship_to_city] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
-  if str.length == 0
-    stamps.orders.order_details.ship_to.international.city.click
-  else
-    stamps.orders.order_details.ship_to.international.city.set TestData.store[:int_ship_to_city]
-  end
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Province to \"(.*)\"$/ do |str|
-  TestData.store[:int_ship_to_province] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
-  if str.length == 0
-    stamps.orders.order_details.ship_to.international.province.click
-  else
-    stamps.orders.order_details.ship_to.international.province.set TestData.store[:int_ship_to_province]
-  end
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Postal Code to \"(.*)\"$/ do |str|
-  TestData.store[:int_ship_to_postal_code] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
-  if str.length == 0
-    stamps.orders.order_details.ship_to.international.postal_code.click
-  else
-    stamps.orders.order_details.ship_to.international.postal_code.set TestData.store[:int_ship_to_postal_code]
-  end
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Phone to \"(.*)\"$/ do |str|
-  TestData.store[:int_ship_to_phone] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
-  if str.length == 0
-    stamps.orders.order_details.ship_to.international.phone.click
-  else
-    stamps.orders.order_details.ship_to.international.phone.set TestData.store[:int_ship_to_phone]
-  end
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Email to \"(.*)\"$/ do |str|
-  TestData.store[:int_ship_to_email] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
-  if str.length == 0
-    stamps.orders.order_details.ship_to.international.email.click
-  else
-    stamps.orders.order_details.ship_to.international.email.set TestData.store[:int_ship_to_email]
-  end
+Then /^[Ss]et [Oo]rder [Dd]etails [Dd]imensions to [Ll]ength (\d+) [Ww]idth (\d+) [Hh]eight (\d+)$/ do |length, width, height|
+  step "set Order Details Length to #{length}"
+  step "set Order Details Width to #{width}"
+  step "set Order Details Height to #{height}"
 end
 
 Then /^[Oo]n [Oo]rder [Dd]etails form, Expand panel$/ do
@@ -160,89 +68,6 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails Weight to (\d+\.?\d*) lb (\d+\.?\d*) oz$/ do |pounds, ounces|
   step "set Order Details Pounds to #{pounds}"
   step "set Order Details Ounces to #{ounces}"
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails Pounds to (\d+\.?\d*)$/ do |str|
-  stamps.orders.order_details.weight.lb.set(TestData.store[:pounds] = str)
-  step 'blur out on Order Details form'
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails Ounces to (\d+\.?\d*)$/ do |str|
-  stamps.orders.order_details.weight.oz.set(TestData.store[:ounces] = str)
-  step 'blur out on Order Details form'
-end
-
-Then /^[Bb]lur out on [Oo]rder [Dd]etails form(?:| (\d+)(?:| times))$/ do |count|
-  stamps.orders.order_details.blur_out(count)
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails [Dd]imensions to [Ll]ength (\d+) [Ww]idth (\d+) [Hh]eight (\d+)$/ do |length, width, height|
-  step "set Order Details Length to #{length}"
-  step "set Order Details Width to #{width}"
-  step "set Order Details Height to #{height}"
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails [Ll]ength to (\d*)$/ do |str|
-  expect(stamps.orders.order_details.dimensions.length).to be_present, 'Order Details form Length is not present'
-  stamps.orders.order_details.dimensions.length.set(TestData.store[:length] = str)
-  step 'blur out on Order Details form'
-  step 'Save Order Details data'
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails [Ww]idth to (\d*)$/ do |str|
-  expect(stamps.orders.order_details.dimensions.width).to be_present, 'Order Details form Width is not present'
-  stamps.orders.order_details.dimensions.width.set(TestData.store[:width] = str)
-  step 'blur out on Order Details form'
-  step 'Save Order Details data'
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails [Hh]eight to (\d*)$/ do |str|
-
-  expect(stamps.orders.order_details.dimensions.height).to be_present, 'Order Details form Height is not present'
-  stamps.orders.order_details.dimensions.height.set(TestData.store[:height] = str)
-  step 'blur out on Order Details form'
-  step 'Save Order Details data'
-end
-
-Then /^[Cc]heck [Oo]rder [Dd]etails [Ii]nsure-[Ff]or [Cc]heckbox$/ do
-  stamps.orders.order_details.insure_for.checkbox.check
-end
-
-Then /^[Uu]ncheck [Oo]rder [Dd]etails [Ii]nsure-[Ff]or [Cc]heckbox$/ do
-  stamps.orders.order_details.insure_for.checkbox.uncheck
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nsure-[Ff]or to \$(\d+\.\d{2})$/ do |str|
-  step 'check order details insure-for checkbox'
-  stamps.orders.order_details.insure_for.textbox.set(TestData.store[:insured_value] = str.to_f)
-  3.times do
-    step 'blur out on Order Details form 2 times'
-    stamps.orders.modals.insurance_terms_conditions.agree if stamps.orders.modals.insurance_terms_conditions.present?
-    break unless stamps.orders.modals.insurance_terms_conditions.present?
-  end
-  # wait until insurance price is updated before proceeding to next step
-  10.times do
-    break if stamps.orders.order_details.insure_for.cost.text.dollar_amount_str.to_f.round(2) > 0
-    step 'blur out on Order Details form 3'
-  end
-  step 'Save Order Details data'
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails [Tt]racking to (.*)$/ do |str|
-  stamps.orders.order_details.tracking.select(TestData.store[:tracking] = str)
-  10.times do
-    break if stamps.orders.order_details.tracking.cost.text.dollar_amount_str.to_f.round(2) > 0
-    step 'blur out on Order Details form'
-  end
-  step 'Save Order Details data'
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Ff]rom to (?:Manage Shipping Addresses\.\.\.|(.*))$/ do |str|
-  if str.nil?
-    expect(stamps.orders.order_details.single_ship_from.select('Manage Shipping Addresses...')).to eql("Manage Shipping Addresses")
-  else
-    TestData.store[:ship_from] = stamps.orders.order_details.single_ship_from.select(str)
-  end
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o Country to a random country in PMEI Flat Rate price group (.*)$/ do |group|
@@ -342,13 +167,6 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Dd]omestic address to$/ do |tab
 
   step "set Order Details Domestic Ship-To Country to #{TestData.store[:country]}"
   step "set Order Details Ship-To text area to #{TestData.store[:ship_to]}"
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
-  step 'show order details form ship-to fields'
-  stamps.orders.order_details.ship_to.domestic.set(TestData.store[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address, SdcEnv.env)))
-  step 'Save Order Details data'
-  step 'hide order details form Ship-To fields'
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Aa]mbiguous [Aa]ddress to$/ do |table|

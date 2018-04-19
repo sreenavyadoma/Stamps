@@ -1,5 +1,6 @@
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Ss]hip [Ff]rom to (.*)$/ do |str|
-  TestData.store[:bulk_ship_from] = stamps.orders.bulk_update.ship_from.select(str)
+  #TestData.store[:bulk_ship_from] = stamps.orders.bulk_update.ship_from.select(str)
+  TestData.store[:bulk_ship_from] = SdcWebsite.orders.bulk_update.ship_from.select(str)
 end
 
 Then /^[Bb]lur [Oo]ut on [Mm]ulti [Oo]rder [Dd]etails [Ff]orm(?:| (\d+)(?:| times))$/ do |count|

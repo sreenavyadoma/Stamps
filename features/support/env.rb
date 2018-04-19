@@ -24,7 +24,6 @@ require_relative 'web_dev/stamps_endicia/partner_portal'
 
 # Old Framework
 require_relative 'lib/core/stamps_element'
-require_relative 'lib/core/user_credentials'
 require_relative 'lib/apps/registration_app'
 require_relative 'lib/apps/pam_app'
 require_relative 'lib/pam/pam_page_header'
