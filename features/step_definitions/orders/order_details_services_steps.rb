@@ -2,7 +2,7 @@
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]ervice to (.*)$/ do |str|
   step 'expect Order Details is present'
   if SdcEnv.new_framework
-    SdcOrderDetailsService.page_obj(:selection_element) { {xpath: "//li[@id='#{data_for(:orders_services, {})[str]}']"} }
+    SdcOrders::SdcOrderDetailsService.page_obj(:selection_element) { {xpath: "//li[@id='#{data_for(:orders_services, {})[str]}']"} }
     5.times do
       SdcWebsite.orders.order_details.service.drop_down.click unless SdcWebsite.orders.order_details.service.selection_element.present?
       SdcWebsite.orders.order_details.service.selection_element.safe_click unless SdcWebsite.orders.order_details.service.selection_element.class_disabled?
