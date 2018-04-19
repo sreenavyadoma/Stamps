@@ -240,7 +240,7 @@ class SdcTest
                 SdcPage.browser.window.maximize
               end
 
-            rescue Exception => e
+            rescue StandardError => e
               SdcLog.error e.message
               SdcLog.error e.backtrace.join("\n")
               raise e, "Browser driver failed to start"
@@ -251,7 +251,7 @@ class SdcTest
               SdcPage.browser = SdcDriverDecorator.new(SdcAppiumDriver.new(SdcEnv.mobile).core_driver.start_driver)
               SdcPage.browser.manage.timeouts.implicit_wait = 180
 
-            rescue Exception => e
+            rescue StandardError => e
               SdcLog.error e.message
               SdcLog.error e.backtrace.join("\n")
               raise e, "Appium driver failed to start"

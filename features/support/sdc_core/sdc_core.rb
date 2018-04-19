@@ -97,10 +97,6 @@ module Stamps
         _page_object(name, required: required) { SdcElement.new(instance_eval(collection_name.to_s)[index]) } if index
       end
 
-      def page_objs_index(name, index: 0, required: false)
-        _page_object(name, required: required) { SdcElement.new(instance_eval(yield.to_s)[index]) }
-      end
-
       def chooser(name, chooser, verify, property, property_name)
         _page_object(name) { SdcChooser.new(instance_eval(chooser.to_s), instance_eval(verify.to_s), property, property_name) }
       end

@@ -1,5 +1,5 @@
 module Stamps
-  module Orders
+  module SdcOrders
     class SdcOrderDetailsShipFrom < SdcPage
       page_obj(:drop_down) { {xpath: '(//div[starts-with(@id, "shipfromdroplist")]/div[contains(@id, "trigger-picker")])[1]'} }
       page_obj(:text_field) { {xpath: '(//input[starts-with(@id, "shipfromdroplist")])[1]'} }
@@ -8,11 +8,19 @@ module Stamps
     class SdcShipToCountryDom < SdcPage
       page_obj(:drop_down) { {xpath: '//div[contains(@id, "matltocountrydroplist-trigger-picker")]'} }
       page_obj(:text_field) { {xpath: '//input[contains(@id, "matltocountrydroplist")]'} }
+
+      def selection_obj(str)
+        self.class.page_obj(:selection_element) { {xpath: "//li[text()='#{str}']"} }
+      end
     end
 
     class SdcShipToCountryIntl < SdcPage
       page_obj(:drop_down) { {xpath: '(//*[contains(@id, "international")]//*[contains(@id, "picker")])[1]'} }
       page_obj(:text_field) { {xpath: '//div[contains(@id, "shiptoview-international")]//input[contains(@id, "combo")]'} }
+
+      def selection_obj(str)
+        self.class.page_obj(:selection_element) { {xpath: "//li[text()='#{str}']"} }
+      end
     end
 
     class SdcOrderDetailsService < SdcPage
