@@ -8,6 +8,10 @@ module Stamps
     class SdcShipToCountryDom < SdcPage
       page_obj(:drop_down) { {xpath: '//div[contains(@id, "matltocountrydroplist-trigger-picker")]'} }
       page_obj(:text_field) { {xpath: '//input[contains(@id, "matltocountrydroplist")]'} }
+
+      def selection_obj(str)
+        self.class.page_obj(:selection_element) { {xpath: "//li[text()='#{str}']"} }
+      end
     end
 
     class SdcShipToCountryIntl < SdcPage
