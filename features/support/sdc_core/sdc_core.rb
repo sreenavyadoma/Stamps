@@ -8,9 +8,10 @@ module Stamps
     ANDROID = %i(samsung_galaxy nexus_5x).freeze unless Object.const_defined?('Stamps::SdcEnv::ANDROID')
 
     class << self
-      attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose, :printer, :browser, :hostname,
-                    :print_media, :mobile, :android, :ios, :firefox_profile, :new_framework, :debug, :scenario,
-                    :sauce_device, :test_name, :driver_log_level
+      attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose,
+                    :printer, :browser, :hostname, :print_media, :mobile,
+                    :android, :ios, :firefox_profile, :new_framework, :debug,
+                    :scenario, :sauce_device, :test_name, :driver_log_level
     end
   end
 
