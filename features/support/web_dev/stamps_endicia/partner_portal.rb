@@ -4,11 +4,13 @@ module Stamps
 
     class PPLoginPage < SdcPage
       #Welcome content
-      page_objs(:p_content) {{xpath: "//p"}}
-      page_objs_index(:welcome_content, index: 0) {:p_content}
+      # page_objs(:p_content) {{xpath: "//p"}}
+      # page_objs_index(:welcome_content, index: 0) {:p_content}
+      page_objs(:welcome_content, index: 0)  { {xpath: "//p"} }
 
       #Error Message
-      page_objs_index(:error_message, index: 1) {:p_content}
+      #page_objs_index(:error_message, index: 1) {:p_content}
+      page_objs(:error_message, index: 1)  { {xpath: "//p"} }
 
       #sdcEndica logo
       page_obj(:sdc_endicia_logo) {{xpath: "//img[@alt='Stamps.com and Endicia']"}}
@@ -32,6 +34,7 @@ module Stamps
 
       #Forgot Password? link
       link(:forgot_pw) {{xpath: "//a[@href='/password-reset/request']"}}
+
       #page_url { |env| "https://#{env}.partner.stamps.com" }
       page_url { |env| "https://uspsportal.#{env}.stampsendicia.net/login" }
 

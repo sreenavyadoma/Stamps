@@ -23,7 +23,7 @@
 # end
 
 Then /^[Pp]P: [Aa] user navigates to the login page$/ do
-  PartnerPortal.visit
+  PartnerPortal.login_page.visit
 end
 
 Then /^[Pp]P: [Ee]xpect login page "Welcome to the" content to exist$/ do

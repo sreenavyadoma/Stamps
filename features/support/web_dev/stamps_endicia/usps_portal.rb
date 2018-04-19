@@ -47,7 +47,6 @@ module Stamps
                 # ignore
               end)
       end
-
     end
 
     class << self

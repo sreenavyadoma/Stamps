@@ -8,7 +8,7 @@ include Log4r
 include RSpec
 include RSpec::Matchers
 include DataMagic
-include Stamps::WebDev::StampsEndicia
+include Stamps::PartnerPortal
 
 Before do  |scenario|
   SdcTest.start(scenario)
