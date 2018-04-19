@@ -2,7 +2,7 @@ module Stamps
   class SdcUserCredentials
     class << self
       def connection
-        @@connection ||= ::UserCredConnection.new
+        @@connection ||= ::UserCredentialsConn.new
       end
 
       def connection=(connection)
