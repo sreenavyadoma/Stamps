@@ -11,5 +11,4 @@ module Stamps
     end
     @sql_server
   end
-
 end
