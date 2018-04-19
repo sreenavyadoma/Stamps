@@ -4,12 +4,9 @@ module Stamps
 
     class PPLoginPage < SdcPage
       #Welcome content
-      # page_objs(:p_content) {{xpath: "//p"}}
-      # page_objs_index(:welcome_content, index: 0) {:p_content}
       page_objs(:welcome_content, index: 0)  { {xpath: "//p"} }
 
       #Error Message
-      #page_objs_index(:error_message, index: 1) {:p_content}
       page_objs(:error_message, index: 1)  { {xpath: "//p"} }
 
       #sdcEndica logo
@@ -51,6 +48,7 @@ module Stamps
               else
                 # ignore
               end)
+
       end
 
     end

@@ -3,11 +3,10 @@ module Stamps
 
     class USPSPLoginPage < SdcPage
       #Welcome content
-      page_objs(:p_content) {{xpath: "//p"}}
-      page_objs_index(:welcome_content, index: 0) {:p_content}
+      page_objs(:welcome_content, index: 0)  { {xpath: "//p"} }
 
       #Error Message
-      page_objs_index(:error_message, index: 1) {:p_content}
+      page_objs(:error_message, index: 1)  { {xpath: "//p"} }
 
       #sdcEndica logo
       page_obj(:sdc_endicia_logo) {{xpath: "//img[@alt='Stamps.com and Endicia']"}}
@@ -31,6 +30,8 @@ module Stamps
 
       #Forgot Password? link
       link(:forgot_pw) {{xpath: "//a[@href='/password-reset/request']"}}
+
+
       page_url { |env| "https://uspsportal.#{env}.stampsendicia.net/login" }
 
       def self.visit
@@ -50,21 +51,22 @@ module Stamps
     end
 
     class << self
-      # def login_page
-      #   @login_page ||= USPSPLoginPage.new()
-      # end
+       def login_page
+        @login_page ||= USPSPLoginPage.new
+      end
 
-      # def dashboard_page
-      #   USPSPDashboardPage.new()
-      # end
-      #
-      # def reset_password_page
-      #   USPSPResetPasswordPage.new()
-      # end
+      def dashboard_page
+        @dashboard_page ||=USPSPDashboardPage.new
+      end
 
-      # def stamps_endicia_common_page
-      #   StampsEndiciaCommon.new()
-      # end
+      def reset_password_page
+        @reset_password_page ||= USPSPResetPasswordPage.new
+      end
+
+      def stamps_endicia_common_page
+        @stamps_endicia_common_page ||= USPSPStampsEndicia::Common.new
+      end
     end
+
   end
 end
