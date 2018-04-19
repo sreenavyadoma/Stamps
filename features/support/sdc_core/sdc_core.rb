@@ -107,10 +107,6 @@ module Stamps
         _page_object(name) { SdcNumber.new(instance_eval(text_field.to_s), instance_eval(increment.to_s), instance_eval(decrement.to_s)) }
       end
 
-      def visit(*args)
-        super(*args)
-      end
-
       protected
 
       def _page_object(name, required: false, &block)
