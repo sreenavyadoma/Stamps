@@ -184,7 +184,7 @@ class SdcTest
 
       if SdcEnv.sauce_device
 
-        Selenium::WebDriver.logger.level = :error
+        Selenium::WebDriver.logger.level = :debug
         SdcPage.browser = SdcDriverDecorator.new(class_eval(SdcEnv.sauce_device.to_s))
 
       else
