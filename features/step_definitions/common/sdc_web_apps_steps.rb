@@ -55,8 +55,7 @@ Then /^sign-in to Orders(?: as (.+), (.+)|)$/ do |usr, pw|
       landing_page.sign_in.click
       #landing_page.sign_in.safe_click
       #landing_page.sign_in.send_keys(:enter)
-      SdcWebsite.orders.loading_popup.safe_wait_until_present(timeout: 3)
-      SdcWebsite.orders.loading_popup.safe_wait_while_present(timeout: 3)
+      sleep 4
     else
       5.to_i.times do
         begin
