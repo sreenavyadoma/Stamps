@@ -367,7 +367,7 @@ class SdcTest
       #   # ignore
       # end
 
-      SdcUserCredentials.close
+      #SdcUserCredentials.close
     end
 
     private
