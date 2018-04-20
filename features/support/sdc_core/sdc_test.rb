@@ -346,7 +346,6 @@ class SdcTest
     end
 
     def teardown
-      #
       # if SdcEnv.sauce_device
       #   sessionid = SdcPage.browser.send(:bridge).session_id
       #   jobname = "#{scenario.feature.name} - #{scenario.name}"
