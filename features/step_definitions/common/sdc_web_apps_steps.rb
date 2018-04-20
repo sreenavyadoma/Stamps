@@ -88,7 +88,7 @@ Then /^sign-in to Orders(?: as (.+), (.+)|)$/ do |usr, pw|
   elsif SdcEnv.android
     SdcPage.browser.hide_keyboard
     SdcPage.browser.action.move_to(landing_page.sign_in).click.perform
-    #SdcPage.browser.action.move_to(landing_page.sign_in).send_keys(:enter).perform
+    SdcPage.browser.action.move_to(landing_page.sign_in).send_keys(:enter).perform
   end
   sleep 3
 end
