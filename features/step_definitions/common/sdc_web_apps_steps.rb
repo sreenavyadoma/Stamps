@@ -54,7 +54,7 @@ Then /^sign-in to Orders(?: as (.+), (.+)|)$/ do |usr, pw|
     if SdcEnv.sauce_device
       landing_page.sign_in.click
       #landing_page.sign_in.send_keys(:enter)
-      sleep 2
+      sleep 4
     else
       5.to_i.times do
         begin
