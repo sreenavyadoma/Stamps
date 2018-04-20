@@ -53,7 +53,7 @@ Then /^sign-in to Orders(?: as (.+), (.+)|)$/ do |usr, pw|
   if SdcEnv.browser
     if SdcEnv.sauce_device
       landing_page.sign_in.click
-      landing_page.sign_in.safe_send_keys(:enter)
+      landing_page.sign_in.send_keys(:enter)
       sleep 2
     else
       5.to_i.times do
