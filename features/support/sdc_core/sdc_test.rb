@@ -364,6 +364,7 @@ class SdcTest
       #   SdcLog.info "#{SdcPage.browser} closed."
       # end
 
+      sleep 2
       SdcPage.browser.quit
     end
 
