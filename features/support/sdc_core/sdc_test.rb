@@ -346,23 +346,23 @@ class SdcTest
     end
 
     def teardown
-
-      if SdcEnv.sauce_device
-        sessionid = SdcPage.browser.send(:bridge).session_id
-        jobname = "#{scenario.feature.name} - #{scenario.name}"
-        if scenario.passed?
-          SauceWhisk::Jobs.pass_job sessionid
-        else
-          SauceWhisk::Jobs.fail_job sessionid
-        end
-
-        SdcLog.info "SauceOnDemandSessionID=#{sessionid} job-name=#{jobname}"
-      else
-
-        SdcUserCredentials.close
-
-        SdcLog.info "#{SdcPage.browser} closed."
-      end
+      #
+      # if SdcEnv.sauce_device
+      #   sessionid = SdcPage.browser.send(:bridge).session_id
+      #   jobname = "#{scenario.feature.name} - #{scenario.name}"
+      #   if scenario.passed?
+      #     SauceWhisk::Jobs.pass_job sessionid
+      #   else
+      #     SauceWhisk::Jobs.fail_job sessionid
+      #   end
+      #
+      #   SdcLog.info "SauceOnDemandSessionID=#{sessionid} job-name=#{jobname}"
+      # else
+      #
+      #   SdcUserCredentials.close
+      #
+      #   SdcLog.info "#{SdcPage.browser} closed."
+      # end
 
       SdcPage.browser.quit
     end
