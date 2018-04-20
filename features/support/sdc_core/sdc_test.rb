@@ -184,7 +184,7 @@ class SdcTest
 
       if SdcEnv.sauce_device
 
-        Selenium::WebDriver.logger.level = :debug
+        Selenium::WebDriver.logger.level = :error
         SdcPage.browser = SdcDriverDecorator.new(class_eval(SdcEnv.sauce_device.to_s))
 
       else
@@ -348,6 +348,8 @@ class SdcTest
     def teardown
       begin
 
+        SdcPage.browser.quit
+
         if SdcEnv.sauce_device
           sessionid = SdcPage.browser.send(:bridge).session_id
           jobname = "#{scenario.feature.name} - #{scenario.name}"
@@ -360,7 +362,6 @@ class SdcTest
           SdcLog.info "SauceOnDemandSessionID=#{sessionid} job-name=#{jobname}"
         end
 
-        SdcPage.browser.quit
 
       rescue
         # ignore
