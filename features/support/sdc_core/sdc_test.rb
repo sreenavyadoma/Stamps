@@ -96,7 +96,7 @@ class SdcTest
 
         build_name = ENV['JENKINS_BUILD_NUMBER'] || ENV['SAUCE_BAMBOO_BUILDNUMBER'] || ENV['SAUCE_TC_BUILDNUMBER'] || ENV['SAUCE_BUILD_NAME']
         capabilities_config[:build] = build_name unless build_name.nil?
-        caps = Selenium::WebDriver::Remote::Capabilities.send(:edge, capabilities_config)
+        caps = Selenium::WebDriver::Remote::Capabilities.send(:chrome, capabilities_config)
 
         client = Selenium::WebDriver::Remote::Http::Default.new
         client.timeout = 120
