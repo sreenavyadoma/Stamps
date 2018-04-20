@@ -31,7 +31,7 @@ Then /^sign-out of SDC Website$/ do
     end
   end
 end
-# (?:correct|(.*))
+
 Then /^sign-in to Orders(?: as (.+), (.+)|)$/ do |usr, pw|
   begin
     if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default'
