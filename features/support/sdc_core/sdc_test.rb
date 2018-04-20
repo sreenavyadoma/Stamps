@@ -348,7 +348,6 @@ class SdcTest
     def teardown
       begin
 
-        sleep 1
         SdcPage.browser.quit
 
         if SdcEnv.sauce_device
