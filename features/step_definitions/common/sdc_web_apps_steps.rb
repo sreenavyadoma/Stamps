@@ -54,6 +54,7 @@ Then /^sign-in to Orders(?: as (.+), (.+)|)$/ do |usr, pw|
     if SdcEnv.sauce_device
       landing_page.sign_in.click
       SdcWebsite.navigation.user_drop_down.signed_in_user.safe_wait_until_present(timeout: 10)
+      sleep 5
     else
       5.to_i.times do
         begin
