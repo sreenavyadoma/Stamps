@@ -7,8 +7,7 @@ module Stamps
 
     end
 
-    class SdcMail < SdcPage
-      include CommonNavigation
+    class << self
 
       def sign_in_link
         # sign-in modal
