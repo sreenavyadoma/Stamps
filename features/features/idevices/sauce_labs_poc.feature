@@ -6,4 +6,3 @@ Feature: Saucelabs POC Browser & Mobile
   Scenario: Orders Authentication
     Then visit Orders landing page
     Then sign-in to Orders
-    Then sign-out of SDC Website
