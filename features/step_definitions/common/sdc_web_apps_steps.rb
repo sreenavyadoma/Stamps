@@ -47,18 +47,17 @@ Then /^sign-in to Orders(?: as (.+), (.+)|)$/ do |usr, pw|
   expect(usr).to be_truthy
   expect(pw).to be_truthy
 
-  landing_page = SdcWebsite.landing_page
-  landing_page.username.set(TestData.store[:username] = usr)
-  landing_page.password.set(TestData.store[:password] = pw)
+  SdcWebsite.landing_page.username.set(TestData.store[:username] = usr)
+  SdcWebsite.landing_page.password.set(TestData.store[:password] = pw)
   if SdcEnv.browser
     if SdcEnv.sauce_device
-      landing_page.sign_in.click
+      SdcWebsite.landing_page.sign_in.click
       SdcWebsite.navigation.user_drop_down.signed_in_user.safe_wait_until_present(timeout: 10)
       sleep 5
     else
       3.times do
-        landing_page.sign_in.safe_click
-        break if signed_in_user.present?
+        SdcWebsite.landing_page.sign_in.safe_click
+        break if SdcWebsite.navigation.user_drop_down.signed_in_user.present?
       end
       SdcWebsite.orders.loading_popup.safe_wait_until_present(timeout: 5)
       SdcWebsite.orders.loading_popup.safe_wait_while_present(timeout: 5)
