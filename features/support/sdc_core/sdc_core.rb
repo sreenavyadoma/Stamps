@@ -192,15 +192,15 @@ module Stamps
     end
 
     def class_disabled?
-      prop_include?('class', 'disable')
+      property_include?('class', 'disable')
     end
 
     def class_enabled?
-      prop_include?('class', 'enabled')
+      property_include?('class', 'enabled')
     end
 
     def class_checked?
-      prop_include?('class', 'checked')
+      property_include?('class', 'checked')
     end
 
     def set(*args)
@@ -349,9 +349,7 @@ module Stamps
       @element.send(name, *args, &block)
     end
 
-    private
-
-    def prop_include?(property_name, property_value)
+    def property_include?(property_name, property_value)
       if @element.respond_to? :attribute_value
         return @element.send(:attribute_value, property_name).include?(property_value)
       end
