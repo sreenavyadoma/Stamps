@@ -56,17 +56,9 @@ Then /^sign-in to Orders(?: as (.+), (.+)|)$/ do |usr, pw|
       SdcWebsite.navigation.user_drop_down.signed_in_user.safe_wait_until_present(timeout: 10)
       sleep 5
     else
-      5.to_i.times do
-        begin
-          landing_page.sign_in.click
-          landing_page.sign_in.click
-          landing_page.sign_in.safe_click
-          landing_page.sign_in.send_keys(:enter)
-          landing_page.sign_in.send_keys(:enter)
-          break if signed_in_user.present?
-        rescue
-          # ignore
-        end
+      3.times do
+        landing_page.sign_in.safe_click
+        break if signed_in_user.present?
       end
       SdcWebsite.orders.loading_popup.safe_wait_until_present(timeout: 5)
       SdcWebsite.orders.loading_popup.safe_wait_while_present(timeout: 5)
