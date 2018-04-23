@@ -3,7 +3,7 @@
 Then /^[Ww]ait [Uu]ntil [Oo]rder [Dd]etails [Pp]resent (\d+)$/ do |delay|
   (delay.nil? || delay == 0 ? 5 : delay.to_i).times do
     break if SdcOrders.order_details.title.present?
-    sleep(1)
+    sleep(0.2)
   end
 end
 
@@ -26,10 +26,10 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Dd]omestic [Ss]hip-[Tt]o [Cc]ountry to (.*)$/ do |country|
   step 'show order details form ship-to fields'
   if SdcEnv.new_framework
-    SdcShipToCountryDom.page_obj(:selection_element) { {xpath: "//li[text()='#{str}']"} }
+    SdcOrders.order_details.ship_to.domestic.selection(str)
     5.times do
-      SdcOrders.order_details.ship_to.domestic.country.drop_down.click unless SdcOrders.order_details.ship_to.domestic.country.selection_element.present?
-      SdcOrders.order_details.ship_to.domestic.country.selection_element.safe_click unless SdcOrders.order_details.ship_to.domestic.country.selection_element.class_disabled?
+      SdcOrders.order_details.ship_to.domestic.country.drop_down.click unless SdcOrders.order_details.ship_to.domestic.country.selection_obj.present?
+      SdcOrders.order_details.ship_to.domestic.country.selection_obj.safe_click unless SdcOrders.order_details.ship_to.domestic.country.selection_obj.class_disabled?
       if SdcOrders.order_details.ship_to.domestic.country.text_field.text_value && SdcOrders.order_details.ship_to.domestic.country.text_field.text_value.include?(str)
         TestData.store[:ship_to_country] = SdcOrders.order_details.ship_to.domestic.country.text_field.text_value
         break
@@ -45,10 +45,10 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o [Cc]ountry to (.*)$/ do |country|
   step 'show order details form ship-to fields'
   if SdcEnv.new_framework
-    SdcShipToCountryIntl.page_obj(:selection_element) { {xpath: "//li[text()='#{str}']"} }
+    SdcOrders.order_details.ship_to.international.selection(country)
     5.times do
-      SdcOrders.order_details.ship_to.international.country.drop_down.click unless SdcOrders.order_details.ship_to.international.country.selection_element.present?
-      SdcOrders.order_details.ship_to.international.country.selection_element.safe_click unless SdcOrders.order_details.ship_to.international.country.selection_element.class_disabled?
+      SdcOrders.order_details.ship_to.international.country.drop_down.click unless SdcOrders.order_details.ship_to.international.country.selection_obj.present?
+      SdcOrders.order_details.ship_to.international.country.selection_obj.safe_click unless SdcOrders.order_details.ship_to.international.country.selection_obj.class_disabled?
       if SdcOrders.order_details.ship_to.international.country.text_field.text_value && SdcOrders.order_details.ship_to.international.country.text_field.text_value.include?(str)
         TestData.store[:ship_to_country] = SdcOrders.order_details.ship_to.international.country.text_field.text_value
         break
@@ -319,10 +319,10 @@ end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Tt]racking to (.*)$/ do |str|
   if SdcEnv.new_framework
-    SdcOrderDetailsTracking.page_obj(:selection_element) { {xpath: "//li//td[text()='#{str}']"} }
+    SdcOrders.order_details.service.selection(str)
     5.times do
-      SdcOrders.order_details.tracking.drop_down.click unless SdcOrders.order_details.tracking.selection_element.present?
-      SdcOrders.order_details.tracking.selection_element.safe_click unless SdcOrders.order_details.tracking.selection_element.class_disabled?
+      SdcOrders.order_details.tracking.drop_down.click unless SdcOrders.order_details.tracking.selection_obj.present?
+      SdcOrders.order_details.tracking.selection_obj.safe_click unless SdcOrders.order_details.tracking.selection_obj.class_disabled?
       break if SdcOrders.order_details.tracking.text_field.text_value == str
     end
     expect(SdcOrders.order_details.tracking.text_field.text_value).to eql(str)
@@ -343,10 +343,10 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Ff]rom to (?:Manage Shipping Addresses\.\.\.|(.*))$/ do |str|
   if SdcEnv.new_framework
     str ||= 'Manage Shipping Addresses...'
-    SdcOrderDetailsShipFrom.page_obj(:selection_element) { {xpath: "//li[text()='#{str}']"} }
+    SdcOrders.order_details.ship_from.selection(str)
     5.times do
-      SdcOrders.order_details.ship_from.drop_down.click unless SdcOrders.order_details.ship_from.selection_element.present?
-      SdcOrders.order_details.ship_from.selection_element.safe_click unless SdcOrders.order_details.ship_from.selection_element.class_disabled?
+      SdcOrders.order_details.ship_from.drop_down.click unless SdcOrders.order_details.ship_from.selection_obj.present?
+      SdcOrders.order_details.ship_from.selection_obj.safe_click unless SdcOrders.order_details.ship_from.selection_obj.class_disabled?
       if SdcOrders.order_details.ship_from.text_field.text_value == str
         TestData.store[:ship_from] = SdcOrders.order_details.ship_from.text_field.text_value unless str == 'Manage Shipping Addresses...'
         break
