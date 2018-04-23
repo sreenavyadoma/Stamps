@@ -344,16 +344,16 @@ module Stamps
       self
     end
 
-    def method_missing(name, *args, &block)
-      super unless @element.respond_to?(name)
-      @element.send(name, *args, &block)
-    end
-
     def property_include?(property_name, property_value)
       if @element.respond_to? :attribute_value
         return @element.send(:attribute_value, property_name).include?(property_value)
       end
       @element.send(:attribute, property_name).include?(property_value)
+    end
+
+    def method_missing(name, *args, &block)
+      super unless @element.respond_to?(name)
+      @element.send(name, *args, &block)
     end
   end
 
