@@ -1,22 +1,23 @@
 
 
 Then /^[Ww]ait [Uu]ntil [Oo]rder [Dd]etails [Pp]resent(?: (\d+), (\d+)|)$/ do |iteration, delay|
-  (iteration==0 ? 20 : iteration).times do
+  (iteration.zero? ? 20 : iteration).times do
     break if SdcOrders.order_details.title.present?
-    sleep(delay==0 ? 0.2 : delay)
+    sleep(delay.zero? ? 0.2 : delay)
   end
 end
 
 Then /^[Ww]ait [Uu]ntil [Oo]rder [Tt]oolbar [Pp]resent(?: (\d+), (\d+)|)$/ do |iteration, delay|
-  (iteration==0 ? 20 : iteration).times do
+  (iteration.zero? ? 20 : iteration).times do
     break if SdcOrders.toolbar.add.present?
-    sleep(delay==0 ? 0.2 : delay)
+    sleep(delay.zero? ? 0.2 : delay)
   end
 end
 
 Then /^[Hh]ide [Oo]rder [Dd]etails [Ff]orm [Ss]hip-[Tt]o [Ff]ields$/ do
   if SdcEnv.new_framework
-    SdcOrders.order_details.ship_to.domestic.show_less.safe_click
+    show_less = SdcOrders.order_details.ship_to.domestic.show_less
+    show_less.click if show_less.present?
   else
     stamps.orders.order_details.ship_to.domestic.hide_ship_to_details
   end
@@ -24,7 +25,8 @@ end
 
 Then /^[Ss]how [Oo]rder [Dd]etails [Ff]orm [Ss]hip-[Tt]o [Ff]ields$/ do
   if SdcEnv.new_framework
-    SdcOrders.order_details.ship_to.show_more.safe_click
+    show_more = SdcOrders.order_details.ship_to.show_more
+    show_more.click if show_more.present?
   else
     stamps.orders.order_details.ship_to.domestic.show_ship_to_details
   end
@@ -241,48 +243,48 @@ end
 
 Then /^[Bb]lur out on [Oo]rder [Dd]etails form(?:| (\d+)(?:| times))$/ do |count|
   if SdcEnv.new_framework
-    (count.nil? || count == 0 ? 1 : count.to_i).times do
-      SdcOrders.order_details.service_blur_out_field.safe_click
-      SdcOrders.order_details.weight_blur_out_field.safe_double_click
-      SdcOrders.order_details.weight_blur_out_field.safe_click
-      SdcOrders.order_details.service_blur_out_field.safe_double_click
+    (count.zero? ? 2 : count.to_i).times do
+      SdcOrders.order_details.service_label.safe_click
+      SdcOrders.order_details.weight_label.safe_double_click
+      SdcOrders.order_details.weight_label.safe_click
+      SdcOrders.order_details.service_label.safe_double_click
     end
   else
     stamps.orders.order_details.blur_out(count)
   end
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Ll]ength to (\d*)$/ do |str|
+Then /^[Ss]et [Oo]rder [Dd]etails [Ll]ength to (\d*)$/ do |number|
   if SdcEnv.new_framework
     expect(SdcOrders.order_details.dimensions.length).to be_present, 'Order Details form Length is not present'
-    SdcOrders.order_details.dimensions.length.set(TestData.store[:length] = str)
+    SdcOrders.order_details.dimensions.length.set(TestData.store[:length] = number)
   else
     expect(stamps.orders.order_details.dimensions.length).to be_present, 'Order Details form Length is not present'
-    stamps.orders.order_details.dimensions.length.set(TestData.store[:length] = str)
+    stamps.orders.order_details.dimensions.length.set(TestData.store[:length] = number)
   end
   step 'blur out on Order Details form'
   step 'Save Order Details data'
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Ww]idth to (\d*)$/ do |str|
+Then /^[Ss]et [Oo]rder [Dd]etails [Ww]idth to (\d*)$/ do |number|
   if SdcEnv.new_framework
     expect(SdcOrders.order_details.dimensions.width).to be_present, 'Order Details form Width is not present'
-    SdcOrders.order_details.dimensions.width.set(TestData.store[:width] = str)
+    SdcOrders.order_details.dimensions.width.set(TestData.store[:width] = number)
   else
     expect(stamps.orders.order_details.dimensions.width).to be_present, 'Order Details form Width is not present'
-    stamps.orders.order_details.dimensions.width.set(TestData.store[:width] = str)
+    stamps.orders.order_details.dimensions.width.set(TestData.store[:width] = number)
   end
   step 'blur out on Order Details form'
   step 'Save Order Details data'
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Hh]eight to (\d*)$/ do |str|
+Then /^[Ss]et [Oo]rder [Dd]etails [Hh]eight to (\d*)$/ do |number|
   if SdcEnv.new_framework
     expect(SdcOrders.order_details.dimensions.height).to be_present, 'Order Details form Height is not present'
-    SdcOrders.order_details.dimensions.height.set(TestData.store[:height] = str)
+    SdcOrders.order_details.dimensions.height.set(TestData.store[:height] = number)
   else
     expect(stamps.orders.order_details.dimensions.height).to be_present, 'Order Details form Height is not present'
-    stamps.orders.order_details.dimensions.height.set(TestData.store[:height] = str)
+    stamps.orders.order_details.dimensions.height.set(TestData.store[:height] = number)
   end
   step 'blur out on Order Details form'
   step 'Save Order Details data'
@@ -371,7 +373,9 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
   step 'show order details form ship-to fields'
   if SdcEnv.new_framework
-    SdcOrders.order_details.ship_to.domestic.address.set(TestData.store[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address, SdcEnv.env)))
+    address = SdcOrders.order_details.ship_to.domestic.address
+    address.set(TestData.store[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address, SdcEnv.env)))
+
   else
     stamps.orders.order_details.ship_to.domestic.set(TestData.store[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address, SdcEnv.env)))
   end
@@ -379,3 +383,8 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(
   step 'Save Order Details data'
   step 'hide order details form Ship-To fields'
 end
+
+# @service_blur_out_field = StampsField.new(driver.label(text: 'Service:')) if @service_blur_out_field.nil? || !@service_blur_out_field.present?
+# @weight_blur_out_field = StampsField.new(driver.label(text: 'Weight:')) if @weight_blur_out_field.nil? || !@weight_blur_out_field.present?
+
+
