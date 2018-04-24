@@ -1,16 +1,16 @@
 
 
 Then /^[Ww]ait [Uu]ntil [Oo]rder [Dd]etails [Pp]resent(?: (\d+), (\d+)|)$/ do |iteration, delay|
-  (iteration || 5).times do
+  (iteration==0 ? 20 : iteration).times do
     break if SdcOrders.order_details.title.present?
-    sleep(delay || 1)
+    sleep(delay==0 ? 0.2 : delay)
   end
 end
 
 Then /^[Ww]ait [Uu]ntil [Oo]rder [Tt]oolbar [Pp]resent(?: (\d+), (\d+)|)$/ do |iteration, delay|
-  (iteration || 5).times do
+  (iteration==0 ? 20 : iteration).times do
     break if SdcOrders.toolbar.add.present?
-    sleep(delay || 1)
+    sleep(delay==0 ? 0.2 : delay)
   end
 end
 

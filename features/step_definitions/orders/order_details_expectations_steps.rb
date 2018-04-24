@@ -1,7 +1,7 @@
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails is present$/ do
   if SdcEnv.new_framework
-    step "Wait until order details present 5"
+    step "wait until order details present"
     expect(SdcWebsite.orders.order_details).to be_present, "Order Details form is not present"
   else
     stamps.orders.order_details.wait_until_present(4)

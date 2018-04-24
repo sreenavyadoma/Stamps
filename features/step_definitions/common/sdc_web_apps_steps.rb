@@ -2,15 +2,15 @@
 Then /^visit Orders landing page$/ do
   SdcOrdersLandingPage.visit(case SdcEnv.env
                              when :qacc
-                         'ext.qacc'
+                               'ext.qacc'
                              when :qasc
-                         'ext.qasc'
+                               'ext.qasc'
                              when :stg
-                         '.testing'
+                               '.testing'
                              when :prod
-                         ''
+                               ''
                              else
-                         # ignore
+                               # ignore
                              end)
 end
 
@@ -69,7 +69,7 @@ Then /^sign-in to Orders(?: as (.+), (.+)|)$/ do |usr, pw|
     begin
       landing_page.sign_in.click
       landing_page.sign_in.send_keys(:enter)
-      #landing_page.sign_in.safe_send_keys(:enter)
+        #landing_page.sign_in.safe_send_keys(:enter)
     rescue
       # ignore
     end
