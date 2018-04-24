@@ -35,13 +35,13 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Dd]omestic [Ss]hip-[Tt]o [Cc]ountry to (.*)$/ do |country|
   step 'show order details form ship-to fields'
   if SdcEnv.new_framework
-    ship_to = SdcOrders.order_details.ship_to.domestic
-    ship_to.selection(country)
+    domestic = SdcOrders.order_details.ship_to.domestic
+    domestic.selection(country)
     5.times do
-      ship_to.country.drop_down.click unless ship_to.country.selection_obj.present?
-      ship_to.country.selection_obj.safe_click unless ship_to.country.selection_obj.class_disabled?
-      if ship_to.country.text_field.text_value && ship_to.country.text_field.text_value.include?(str)
-        TestData.store[:ship_to_country] = ship_to.country.text_field.text_value
+      domestic.country.drop_down.click unless domestic.country.selection_obj.present?
+      domestic.country.selection_obj.safe_click unless domestic.country.selection_obj.class_disabled?
+      if domestic.country.text_field.text_value && domestic.country.text_field.text_value.include?(str)
+        TestData.store[:ship_to_country] = domestic.country.text_field.text_value
         break
       end
       TestData.store[:ship_to_country] ||= ''
