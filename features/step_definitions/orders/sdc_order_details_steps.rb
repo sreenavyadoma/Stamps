@@ -73,13 +73,14 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o [Nn]ame to \"(.*)\"$/ do |str|
   TestData.store[:int_ship_to_name] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
   if SdcEnv.new_framework
-    if str.length == 0
-      SdcOrders.order_details.ship_to.international.name.safe_click
+    name = SdcOrders.order_details.ship_to.international.name
+    if str.length.zero?
+      name.click
     else
-      SdcOrders.order_details.ship_to.international.name.set(TestData.store[:int_ship_to_name])
+      name.set(TestData.store[:int_ship_to_name])
     end
   else
-    if str.length == 0
+    if str.length.zero?
       stamps.orders.order_details.ship_to.international.name.click
     else
       stamps.orders.order_details.ship_to.international.name.set TestData.store[:int_ship_to_name]
