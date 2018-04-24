@@ -379,7 +379,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(
     address.set(TestData.store[:ship_to_domestic])
 
   else
-    stamps.orders.order_details.ship_to.domestic.set(TestData.store[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address, SdcEnv.env)))
+    stamps.orders.order_details.ship_to.domestic.set(TestData.store[:ship_to_domestic])
   end
   step 'blur out on Order Details form'
   step 'Save Order Details data'
