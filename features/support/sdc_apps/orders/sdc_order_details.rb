@@ -138,8 +138,9 @@ module Stamps
     class SdcOrderDetails < SdcPage
       page_obj(:title, required: true, timeout: 20) { {xpath: '//div[contains(@class, "singleorder-detailsform")]//label[contains(@class, "panel-header-text")]'} }
       page_obj(:reference_num, required: true, timeout: 20) { {xpath: '//div[contains(@class, "reference-field-container")]//input'} }
-      page_obj(:service_blur_out_field, required: true, timeout: 20) { {xpath: '(//*[contains(text(), "Service:")])[2]'} }
-      page_obj(:weight_blur_out_field, required: true, timeout: 20) { {xpath: '//*[contains(text(), "Weight:")]'} }
+      page_obj(:service_label, required: true, timeout: 20) { {xpath: '(//*[contains(text(), "Service:")])[2]'} }
+      page_obj(:weight_label, required: true, timeout: 20) { {xpath: '//*[contains(text(), "Weight:")]'} }
+      page_obj(:ship_to_label, required: true, timeout: 20) { {xpath: '//div[starts-with(@id, "singleOrderDetailsForm")]//label[text()="Ship To:"]'} }
 
       def ship_to
         @ship_to ||= SdcOrderDetailsShipTo.new
