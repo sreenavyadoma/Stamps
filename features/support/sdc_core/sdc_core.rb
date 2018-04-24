@@ -119,7 +119,6 @@ module Stamps
 
   end
 
-
   class SdcDriverDecorator < BasicObject
 
     def initialize(driver)
