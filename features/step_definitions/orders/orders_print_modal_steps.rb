@@ -70,10 +70,27 @@ end
 
 Then /^[Ss]et [Pp]rint [Mm]odal Ship Date to (?:today|today plus (\d+))$/ do |day|
   step "expect print modal ship date dropdown is present"
-  stamps.orders.modals.orders_print_modal.ship_date.textbox.set(TestHelper.today_plus(day))
-  stamps.orders.modals.orders_print_modal.ship_date.shipdate_label.click(10)
-  stamps.orders.modals.orders_print_modal.ship_date.shipdate_label.double_click(10)
+  if SdcEnv.new_framework
+    SdcOrders.modals.print.ship_date.text_field.set(TestHelper.today_plus(day))
+  else
+    stamps.orders.modals.orders_print_modal.ship_date.textbox.set(TestHelper.today_plus(day))
+    stamps.orders.modals.orders_print_modal.ship_date.shipdate_label.click(10)
+    stamps.orders.modals.orders_print_modal.ship_date.shipdate_label.double_click(10)
+  end
+  step "blur out on Print modal Ship date 3"
   step "expect Print modal Ship Date is #{day} days from today"
+end
+
+Then /^[Bb]lur [Oo]ut [Oo]n [Pp]rint [Mm]odal [Ss]hip [Dd]ate (\d+)$/ do |count|
+  if SdcEnv.new_framework
+    count.times do
+      SdcOrders.modals.print.ship_date.blur_out.safe_click
+      sleep(0.2)
+    end
+  else
+    stamps.orders.modals.orders_print_modal.ship_date.shipdate_label.click(10)
+    stamps.orders.modals.orders_print_modal.ship_date.shipdate_label.double_click(10)
+  end
 end
 
 Then /^[Ss]et [Pp]rint [Mm]odal Ship Date [Cc]alendar to (?:today|today plus (\d+))$/ do |day|
@@ -84,11 +101,19 @@ end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal Ship Date is (\d+) (?:day|days) from today$/ do |day|
   step "expect print modal ship date dropdown is present"
-  expect(stamps.orders.modals.orders_print_modal.ship_date.textbox.text).to eql(TestHelper.date_printed(day))
+  if SdcEnv.new_framework
+    expect(SdcOrders.modals.print.ship_date.text_field.text_value).to eql(TestHelper.date_printed(day))
+  else
+    expect(stamps.orders.modals.orders_print_modal.ship_date.textbox.text).to eql(TestHelper.date_printed(day))
+  end
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal [Ss]hip [Dd]ate [Dd]rop[Dd]own is present$/ do
-  expect(stamps.orders.modals.orders_print_modal.ship_date).to be_present, "Ship Date dropdown is not present. Check that StampsConnect is connected. You might need to re-login on this PC #{SdcEnv.hostname}"
+  if SdcEnv.new_framework
+    expect(SdcOrders.modals.print.ship_date.drop_down).to be_present, "Ship Date dropdown is not present. Check that StampsConnect is connected. You might need to re-login on this PC #{SdcEnv.hostname}"
+  else
+    expect(stamps.orders.modals.orders_print_modal.ship_date).to be_present, "Ship Date dropdown is not present. Check that StampsConnect is connected. You might need to re-login on this PC #{SdcEnv.hostname}"
+  end
 end
 
 Then /^[Ii]n [Pp]rint modal, check Hide Mail Value$/ do
@@ -144,11 +169,17 @@ Then /^[Ee]xpect [Pp]rint [Mm]odal [Pp]review [Ll]abel is displayed$/ do
 end
 
 
-Then /^[Ss]et [Pp]rint [Mm]odal [Pp]rint-[Oo]n to (.*)$/ do |expectation|
+Then /^[Ss]et [Pp]rint [Mm]odal [Pp]rint-[Oo]n to (.*)$/ do |str|
   if SdcEnv.new_framework
-    #skip for now
+    SdcOrders.modals.print.print_on.selection(str)
+    5.times do
+      SdcOrders.modals.print.print_on.drop_down.click unless SdcOrders.modals.print.print_on.selection_obj.present?
+      SdcOrders.modals.print.print_on.selection_obj.safe_click unless SdcOrders.modals.print.print_on.selection_obj.class_disabled?
+      break if SdcOrders.modals.print.print_on.text_field.text_value == str
+    end
+    expect(SdcOrders.modals.print.print_on.text_field.text_value).to eql(str)
   else
-    stamps.orders.modals.orders_print_modal.printing_on.select(expectation)
+    stamps.orders.modals.orders_print_modal.printing_on.select(str)
   end
 end
 
@@ -162,7 +193,11 @@ Then /^[Ss]elect [Pp]rinter \"(.*)\"$/ do |printer|
 end
 
 Then /^[Cc]lose [Pp]rint [Mm]odal$/ do
-  stamps.orders.modals.orders_print_modal.close
+  if SdcEnv.new_framework
+    SdcOrders.modals.print.close.safe_click
+  else
+    stamps.orders.modals.orders_print_modal.close
+  end
 end
 
 Then /^Close Reprint Modal$/ do
