@@ -2,8 +2,8 @@ module Stamps
   module SdcNavigation
 
     class SignedInUser < SdcPage
-      page_obj(:signed_in_user, tag: :a) { {id: "username"} }
-      page_obj(:sign_out_link, tag: :a) { {id: "signOutLink"} }
+      page_object(:signed_in_user, tag: :a) { {id: "username"} }
+      page_object(:sign_out_link, tag: :a) { {id: "signOutLink"} }
     end
 
     class << self

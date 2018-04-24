@@ -81,16 +81,16 @@ module Stamps
   class SdcPage < WatirDrops::PageObject
 
     class << self
-      def page_obj(name, tag: nil, required: false, timeout: 30, &block)
+      def page_object(name, tag: nil, required: false, timeout: 30, &block)
         _page_object(name, required: required) { SdcFinder.element(browser, tag: tag, timeout: timeout, &block) }
       end
-      alias_method :text_field, :page_obj
-      alias_method :button, :page_obj
-      alias_method :label, :page_obj
-      alias_method :selection, :page_obj
-      alias_method :link, :page_obj
+      alias_method :text_field, :page_object
+      alias_method :button, :page_object
+      alias_method :label, :page_object
+      alias_method :selection, :page_object
+      alias_method :link, :page_object
 
-      def page_objs(name, tag: nil, index: nil, required: false, timeout: 30, &block)
+      def page_objects(name, tag: nil, index: nil, required: false, timeout: 30, &block)
         list_name = index.nil? ? name : "#{name}s".to_sym
         _page_objects(list_name) { SdcFinder.elements(browser, tag: tag, timeout: timeout, &block) }
         _page_object(name, required: required) { SdcElement.new(instance_eval(list_name.to_s)[index]) } if index
