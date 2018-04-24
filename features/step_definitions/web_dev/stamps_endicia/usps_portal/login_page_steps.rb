@@ -23,99 +23,99 @@
 # end
 
 Then /^[Uu]SPSP: [Aa] user navigates to the login page$/ do
-  PartnerPortal::PPLoginPage.visit
+  UspsPortal::USPSPLoginPage.visit
 end
 
 Then /^[Uu]SPSP: [Ee]xpect login page "Welcome to the" content to exist$/ do
-  expect(PartnerPortal.login_page.welcome_content).to be_present, "'Welcome to the content' DOES NOT exist on login page"
+  expect(UspsPortal.login_page.welcome_content).to be_present, "'Welcome to the content' DOES NOT exist on login page"
 end
 
 Then /^[Uu]SPSP: [Ee]xpect login page "stamps.com endicia" logo to exist$/ do
-  expect(PartnerPortal.login_page.sdc_endicia_logo).to be_present, "'stamps.com endicia' content DOES NOT exist on login page"
+  expect(UspsPortal.login_page.sdc_endicia_logo).to be_present, "'stamps.com endicia' content DOES NOT exist on login page"
 end
 
 Then /^[[Uu]SPSP: [Ee]xpect login page "USPS Portal" content to exist$/ do
-  expect(PartnerPortal.login_page.usps_portal_content).to be_present, "'USPS Portal' content DOES NOT exist on login page"
+  expect(UspsPortal.login_page.usps_portal_content).to be_present, "'USPS Portal' content DOES NOT exist on login page"
 end
 
 Then /^[Uu]SPSP: [Ee]xpect login page Log In button to exist$/ do
-  expect(PartnerPortal.login_page.log_in).to be_present, "Log In button DOES NOT exist on login page"
+  expect(UspsPortal.login_page.log_in).to be_present, "Log In button DOES NOT exist on login page"
 end
 
 Then /^[Uu]SPSP: [Ee]xpect login page Log In button text is (.*)$/ do |str|
-  expect(PartnerPortal.login_page.login_label.text_value).to eql(str)
+  expect(UspsPortal.login_page.login_label.text_value).to eql(str)
 end
 
 Then /^[Uu]SPSP: [Uu]ser clicks Log In$/ do
-  PartnerPortal.login_page.log_in.click
+  UspsPortal.login_page.log_in.click
 end
 
 Then /^[Uu]SPSP: expect login page [Ff]orgot [Pp]assword link exist$/ do
-  expect(PartnerPortal.login_page.forgot_pw).to be_present, "Forgot Password? link DOES NOT exist on login page"
+  expect(UspsPortal.login_page.forgot_pw).to be_present, "Forgot Password? link DOES NOT exist on login page"
 end
 
 Then /^[Uu]SPSP: [Uu]ser clicks [Ff]orgot [Pp]assword link$/ do
-  PartnerPortal.login_page.forgot_pw.click
+  UspsPortal.login_page.forgot_pw.click
 end
 
 Then /^[Uu]SPSP: [Bb]lur out on [Ll]ogin [Pp]age$/ do
-  PartnerPortal.login_page.usps_portal_content.blur_out
+  UspsPortal.login_page.usps_portal_content.blur_out
 end
 
 
 Then /^[Uu]SPSP: [Ee]xpect login page [Ee]mail field to exist$/ do
-  expect(PartnerPortal.login_page.email).to be_present, "Email textbox DOES NOT exist on login page"
+  expect(UspsPortal.login_page.email).to be_present, "Email textbox DOES NOT exist on login page"
 end
 
 
 Then /^[Uu]SPSP: [Ee]xpect login page [Ee]mail field shows placeholder (.*)$/ do |str|
-  expect(PartnerPortal.login_page.email_placeholder.attribute_value 'PLACEHOLDER').to eql(str)
+  expect(UspsPortal.login_page.email_placeholder.attribute_value 'PLACEHOLDER').to eql(str)
 
 end
 
 
 Then /^[Uu]SPSP: set login page email to (.*)$/ do |str|
-  PartnerPortal.login_page.email.set(TestData.store[:email]=str)
+  UspsPortal.login_page.email.set(TestData.store[:email]=str)
 end
 
 
 
 Then /^[Uu]SPSP: [Ee]xpect login page email tooltip count is (.*)$/ do |count|
-  TestData.store[:email_tooltip] = PartnerPortal.login_page.email_tooltip.text_value.split("\n")
+  TestData.store[:email_tooltip] = UspsPortal.login_page.email_tooltip.text_value.split("\n")
   expect(TestData.store[:email_tooltip].size).to eql(count.to_i)
 end
 
 Then /^[Uu]SPSP: [Ee]xpect login page email tooltip index (.*) to be (.*)$/ do |index, str|
-  TestData.store[:email_tooltip] = PartnerPortal.login_page.email_tooltip.text_value.split("\n")
+  TestData.store[:email_tooltip] = UspsPortal.login_page.email_tooltip.text_value.split("\n")
   expect(TestData.store[:email_tooltip][index.to_i - 1]).to eql(str)
 end
 
 Then /^[Uu]SPSP: [Ee]xpect login page Password field to exist$/ do
-  expect(PartnerPortal.login_page.password).to be_present, "Password textbox DOES NOT exist on login page"
+  expect(UspsPortal.login_page.password).to be_present, "Password textbox DOES NOT exist on login page"
 end
 
 Then /^[Uu]SPSP: set login page password to (.*)$/ do |str|
-  PartnerPortal.login_page.password.set(TestData.store[:password]=str)
+  UspsPortal.login_page.password.set(TestData.store[:password]=str)
 end
 
 
 Then /^[Uu]SPSP: [Ee]xpect login page [Pp]assword field shows placeholder (.*)$/ do |str|
-  expect(PartnerPortal.login_page.password_placeholder.attribute_value 'PLACEHOLDER').to eql(str)
+  expect(UspsPortal.login_page.password_placeholder.attribute_value 'PLACEHOLDER').to eql(str)
 
 end
 
 Then /^[Uu]SPSP: [Ee]xpect login page password tooltip count is (.*)$/ do |count|
-  TestData.store[:password_tooltip] = PartnerPortal.login_page.password_tooltip.text_value.split("\n")
+  TestData.store[:password_tooltip] = UspsPortal.login_page.password_tooltip.text_value.split("\n")
   expect(TestData.store[:password_tooltip].size).to eql(count.to_i)
 end
 
 Then /^[Uu]SPSP: [Ee]xpect login page Password tooltip index (.*) to be (.*)$/ do |index, str|
-  TestData.store[:password_tooltip] = PartnerPortal.login_page.password_tooltip.text_value.split("\n")
+  TestData.store[:password_tooltip] = UspsPortal.login_page.password_tooltip.text_value.split("\n")
   expect(TestData.store[:password_tooltip][index.to_i - 1]).to eql(str)
 end
 
 Then /^[Uu]SPSP: [Ee]xpect login page error message to be$/ do |str|
-  expect(PartnerPortal.login_page.error_message.text).to eql(str)
+  expect(UspsPortal.login_page.error_message.text).to eql(str)
 end
 
 Given /^[Uu]SPSP: [Aa] valid user is signed into the Partner Portal$/ do
