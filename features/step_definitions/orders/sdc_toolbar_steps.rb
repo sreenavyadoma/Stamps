@@ -3,7 +3,9 @@ Then /^(?:[Cc]lick Orders Toolbar Add button|add new order|add [Oo]rder (\d+))$/
   if SdcEnv.new_framework
     #todo TestData.store[:old_balance] = SdcWebsite.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
     #todo stamps.orders.orders_grid.grid_column(:checkbox).uncheck(1)
-    SdcOrders.toolbar.add.wait_until_present(timeout: 30)
+    step 'Wait until order toolbar present'
+    step 'Wait until order toolbar present'
+    step 'Wait until order toolbar present'
     TestData.store[:order_id][(count.nil?) ? TestData.store[:ord_id_ctr] += 1 : count.to_i] = SdcOrders.toolbar.add.click
     #todo expect(stamps.orders.orders_grid.grid_column(:checkbox).checked?(1)).to be(true), "Orders Grid checkbox 1 is unchecked!"
     step "Save Order Details data"

@@ -1,9 +1,16 @@
 
 
-Then /^[Ww]ait [Uu]ntil [Oo]rder [Dd]etails [Pp]resent (\d+)$/ do |delay|
-  (delay.nil? || delay == 0 ? 5 : delay.to_i).times do
+Then /^[Ww]ait [Uu]ntil [Oo]rder [Dd]etails [Pp]resent(?: (\d+), (\d+)|)$/ do |iteration, delay|
+  (iteration || 5).times do
     break if SdcOrders.order_details.title.present?
-    sleep(0.2)
+    sleep(delay || 1)
+  end
+end
+
+Then /^[Ww]ait [Uu]ntil [Oo]rder [Tt]oolbar [Pp]resent(?: (\d+), (\d+)|)$/ do |iteration, delay|
+  (iteration || 5).times do
+    break if SdcOrders.toolbar.add.present?
+    sleep(delay || 1)
   end
 end
 
