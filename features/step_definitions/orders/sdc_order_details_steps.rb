@@ -44,7 +44,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Dd]omestic [Ss]hip-[Tt]o [Cc]ountry to (.*)$/
         TestData.store[:ship_to_country] = domestic.country.text_field.text_value
         break
       end
-      TestData.store[:ship_to_country] ||= ''
+      TestData.store[:ship_to_country] = ''
     end
     expect(TestData.store[:ship_to_country]).to eql(country)
   else
