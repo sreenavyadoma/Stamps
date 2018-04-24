@@ -3,14 +3,14 @@
 Then /^[Ww]ait [Uu]ntil [Oo]rder [Dd]etails [Pp]resent(?: (\d+), (\d+)|)$/ do |iteration, delay|
   (iteration.zero? ? 20 : iteration).times do
     break if SdcOrders.order_details.title.present?
-    sleep(delay.zero? ? 0.2 : delay)
+    sleep(delay.zero? ? 0.2 : delay / 10)
   end
 end
 
 Then /^[Ww]ait [Uu]ntil [Oo]rder [Tt]oolbar [Pp]resent(?: (\d+), (\d+)|)$/ do |iteration, delay|
   (iteration.zero? ? 20 : iteration).times do
     break if SdcOrders.toolbar.add.present?
-    sleep(delay.zero? ? 0.2 : delay)
+    sleep(delay.zero? ? 0.2 : delay / 10)
   end
 end
 
@@ -35,15 +35,16 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Dd]omestic [Ss]hip-[Tt]o [Cc]ountry to (.*)$/ do |country|
   step 'show order details form ship-to fields'
   if SdcEnv.new_framework
-    SdcOrders.order_details.ship_to.domestic.selection(str)
+    domestic = SdcOrders.order_details.ship_to.domestic
+    domestic.selection(country)
     5.times do
-      SdcOrders.order_details.ship_to.domestic.country.drop_down.click unless SdcOrders.order_details.ship_to.domestic.country.selection_obj.present?
-      SdcOrders.order_details.ship_to.domestic.country.selection_obj.safe_click unless SdcOrders.order_details.ship_to.domestic.country.selection_obj.class_disabled?
-      if SdcOrders.order_details.ship_to.domestic.country.text_field.text_value && SdcOrders.order_details.ship_to.domestic.country.text_field.text_value.include?(str)
-        TestData.store[:ship_to_country] = SdcOrders.order_details.ship_to.domestic.country.text_field.text_value
+      domestic.country.drop_down.click unless domestic.country.selection_obj.present?
+      domestic.country.selection_obj.safe_click unless domestic.country.selection_obj.class_disabled?
+      if domestic.country.text_field.text_value && domestic.country.text_field.text_value.include?(str)
+        TestData.store[:ship_to_country] = domestic.country.text_field.text_value
         break
       end
-      TestData.store[:ship_to_country] ||= ''
+      TestData.store[:ship_to_country] = ''
     end
     expect(TestData.store[:ship_to_country]).to eql(country)
   else
@@ -73,13 +74,14 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o [Nn]ame to \"(.*)\"$/ do |str|
   TestData.store[:int_ship_to_name] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
   if SdcEnv.new_framework
-    if str.length == 0
-      SdcOrders.order_details.ship_to.international.name.safe_click
+    name = SdcOrders.order_details.ship_to.international.name
+    if str.length.zero?
+      name.click
     else
-      SdcOrders.order_details.ship_to.international.name.set(TestData.store[:int_ship_to_name])
+      name.set(TestData.store[:int_ship_to_name])
     end
   else
-    if str.length == 0
+    if str.length.zero?
       stamps.orders.order_details.ship_to.international.name.click
     else
       stamps.orders.order_details.ship_to.international.name.set TestData.store[:int_ship_to_name]
@@ -374,12 +376,13 @@ end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
   step 'show order details form ship-to fields'
+  TestData.store[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address, SdcEnv.env))
   if SdcEnv.new_framework
-    address_field = SdcOrders.order_details.ship_to.domestic.address
-    address_field.set(TestData.store[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address, SdcEnv.env)))
+    address = SdcOrders.order_details.ship_to.domestic.address
+    address.set(TestData.store[:ship_to_domestic])
 
   else
-    stamps.orders.order_details.ship_to.domestic.set(TestData.store[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address, SdcEnv.env)))
+    stamps.orders.order_details.ship_to.domestic.set(TestData.store[:ship_to_domestic])
   end
   step 'blur out on Order Details form'
   step 'Save Order Details data'
