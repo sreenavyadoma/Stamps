@@ -1,15 +1,23 @@
 
 
-Then /^[Ww]ait [Uu]ntil [Oo]rder [Dd]etails [Pp]resent (\d+)$/ do |delay|
-  (delay.nil? || delay == 0 ? 5 : delay.to_i).times do
+Then /^[Ww]ait [Uu]ntil [Oo]rder [Dd]etails [Pp]resent(?: (\d+), (\d+)|)$/ do |iteration, delay|
+  (iteration.zero? ? 20 : iteration).times do
     break if SdcOrders.order_details.title.present?
-    sleep(1)
+    sleep(delay.zero? ? 0.2 : delay / 10)
+  end
+end
+
+Then /^[Ww]ait [Uu]ntil [Oo]rder [Tt]oolbar [Pp]resent(?: (\d+), (\d+)|)$/ do |iteration, delay|
+  (iteration.zero? ? 20 : iteration).times do
+    break if SdcOrders.toolbar.add.present?
+    sleep(delay.zero? ? 0.2 : delay / 10)
   end
 end
 
 Then /^[Hh]ide [Oo]rder [Dd]etails [Ff]orm [Ss]hip-[Tt]o [Ff]ields$/ do
   if SdcEnv.new_framework
-    SdcOrders.order_details.ship_to.domestic.show_less.safe_click
+    show_less = SdcOrders.order_details.ship_to.domestic.show_less
+    show_less.click if show_less.present?
   else
     stamps.orders.order_details.ship_to.domestic.hide_ship_to_details
   end
@@ -17,7 +25,8 @@ end
 
 Then /^[Ss]how [Oo]rder [Dd]etails [Ff]orm [Ss]hip-[Tt]o [Ff]ields$/ do
   if SdcEnv.new_framework
-    SdcOrders.order_details.ship_to.show_more.safe_click
+    show_more = SdcOrders.order_details.ship_to.show_more
+    show_more.click if show_more.present?
   else
     stamps.orders.order_details.ship_to.domestic.show_ship_to_details
   end
@@ -26,10 +35,10 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Dd]omestic [Ss]hip-[Tt]o [Cc]ountry to (.*)$/ do |country|
   step 'show order details form ship-to fields'
   if SdcEnv.new_framework
-    SdcShipToCountryDom.page_obj(:selection_element) { {xpath: "//li[text()='#{str}']"} }
+    SdcOrders.order_details.ship_to.domestic.selection(str)
     5.times do
-      SdcOrders.order_details.ship_to.domestic.country.drop_down.click unless SdcOrders.order_details.ship_to.domestic.country.selection_element.present?
-      SdcOrders.order_details.ship_to.domestic.country.selection_element.safe_click unless SdcOrders.order_details.ship_to.domestic.country.selection_element.class_disabled?
+      SdcOrders.order_details.ship_to.domestic.country.drop_down.click unless SdcOrders.order_details.ship_to.domestic.country.selection_obj.present?
+      SdcOrders.order_details.ship_to.domestic.country.selection_obj.safe_click unless SdcOrders.order_details.ship_to.domestic.country.selection_obj.class_disabled?
       if SdcOrders.order_details.ship_to.domestic.country.text_field.text_value && SdcOrders.order_details.ship_to.domestic.country.text_field.text_value.include?(str)
         TestData.store[:ship_to_country] = SdcOrders.order_details.ship_to.domestic.country.text_field.text_value
         break
@@ -45,10 +54,10 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o [Cc]ountry to (.*)$/ do |country|
   step 'show order details form ship-to fields'
   if SdcEnv.new_framework
-    SdcShipToCountryIntl.page_obj(:selection_element) { {xpath: "//li[text()='#{str}']"} }
+    SdcOrders.order_details.ship_to.international.selection(country)
     5.times do
-      SdcOrders.order_details.ship_to.international.country.drop_down.click unless SdcOrders.order_details.ship_to.international.country.selection_element.present?
-      SdcOrders.order_details.ship_to.international.country.selection_element.safe_click unless SdcOrders.order_details.ship_to.international.country.selection_element.class_disabled?
+      SdcOrders.order_details.ship_to.international.country.drop_down.click unless SdcOrders.order_details.ship_to.international.country.selection_obj.present?
+      SdcOrders.order_details.ship_to.international.country.selection_obj.safe_click unless SdcOrders.order_details.ship_to.international.country.selection_obj.class_disabled?
       if SdcOrders.order_details.ship_to.international.country.text_field.text_value && SdcOrders.order_details.ship_to.international.country.text_field.text_value.include?(str)
         TestData.store[:ship_to_country] = SdcOrders.order_details.ship_to.international.country.text_field.text_value
         break
@@ -64,13 +73,14 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o [Nn]ame to \"(.*)\"$/ do |str|
   TestData.store[:int_ship_to_name] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
   if SdcEnv.new_framework
-    if str.length == 0
-      SdcOrders.order_details.ship_to.international.name.safe_click
+    name = SdcOrders.order_details.ship_to.international.name
+    if str.length.zero?
+      name.click
     else
-      SdcOrders.order_details.ship_to.international.name.set(TestData.store[:int_ship_to_name])
+      name.set(TestData.store[:int_ship_to_name])
     end
   else
-    if str.length == 0
+    if str.length.zero?
       stamps.orders.order_details.ship_to.international.name.click
     else
       stamps.orders.order_details.ship_to.international.name.set TestData.store[:int_ship_to_name]
@@ -234,48 +244,48 @@ end
 
 Then /^[Bb]lur out on [Oo]rder [Dd]etails form(?:| (\d+)(?:| times))$/ do |count|
   if SdcEnv.new_framework
-    (count.nil? || count == 0 ? 1 : count.to_i).times do
-      SdcOrders.order_details.service_blur_out_field.safe_click
-      SdcOrders.order_details.weight_blur_out_field.safe_double_click
-      SdcOrders.order_details.weight_blur_out_field.safe_click
-      SdcOrders.order_details.service_blur_out_field.safe_double_click
+    (count.zero? ? 2 : count.to_i).times do
+      SdcOrders.order_details.service_label.safe_click
+      SdcOrders.order_details.weight_label.safe_double_click
+      SdcOrders.order_details.weight_label.safe_click
+      SdcOrders.order_details.service_label.safe_double_click
     end
   else
     stamps.orders.order_details.blur_out(count)
   end
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Ll]ength to (\d*)$/ do |str|
+Then /^[Ss]et [Oo]rder [Dd]etails [Ll]ength to (\d*)$/ do |number|
   if SdcEnv.new_framework
     expect(SdcOrders.order_details.dimensions.length).to be_present, 'Order Details form Length is not present'
-    SdcOrders.order_details.dimensions.length.set(TestData.store[:length] = str)
+    SdcOrders.order_details.dimensions.length.set(TestData.store[:length] = number)
   else
     expect(stamps.orders.order_details.dimensions.length).to be_present, 'Order Details form Length is not present'
-    stamps.orders.order_details.dimensions.length.set(TestData.store[:length] = str)
+    stamps.orders.order_details.dimensions.length.set(TestData.store[:length] = number)
   end
   step 'blur out on Order Details form'
   step 'Save Order Details data'
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Ww]idth to (\d*)$/ do |str|
+Then /^[Ss]et [Oo]rder [Dd]etails [Ww]idth to (\d*)$/ do |number|
   if SdcEnv.new_framework
     expect(SdcOrders.order_details.dimensions.width).to be_present, 'Order Details form Width is not present'
-    SdcOrders.order_details.dimensions.width.set(TestData.store[:width] = str)
+    SdcOrders.order_details.dimensions.width.set(TestData.store[:width] = number)
   else
     expect(stamps.orders.order_details.dimensions.width).to be_present, 'Order Details form Width is not present'
-    stamps.orders.order_details.dimensions.width.set(TestData.store[:width] = str)
+    stamps.orders.order_details.dimensions.width.set(TestData.store[:width] = number)
   end
   step 'blur out on Order Details form'
   step 'Save Order Details data'
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Hh]eight to (\d*)$/ do |str|
+Then /^[Ss]et [Oo]rder [Dd]etails [Hh]eight to (\d*)$/ do |number|
   if SdcEnv.new_framework
     expect(SdcOrders.order_details.dimensions.height).to be_present, 'Order Details form Height is not present'
-    SdcOrders.order_details.dimensions.height.set(TestData.store[:height] = str)
+    SdcOrders.order_details.dimensions.height.set(TestData.store[:height] = number)
   else
     expect(stamps.orders.order_details.dimensions.height).to be_present, 'Order Details form Height is not present'
-    stamps.orders.order_details.dimensions.height.set(TestData.store[:height] = str)
+    stamps.orders.order_details.dimensions.height.set(TestData.store[:height] = number)
   end
   step 'blur out on Order Details form'
   step 'Save Order Details data'
@@ -319,10 +329,10 @@ end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Tt]racking to (.*)$/ do |str|
   if SdcEnv.new_framework
-    SdcOrderDetailsTracking.page_obj(:selection_element) { {xpath: "//li//td[text()='#{str}']"} }
+    SdcOrders.order_details.service.selection(str)
     5.times do
-      SdcOrders.order_details.tracking.drop_down.click unless SdcOrders.order_details.tracking.selection_element.present?
-      SdcOrders.order_details.tracking.selection_element.safe_click unless SdcOrders.order_details.tracking.selection_element.class_disabled?
+      SdcOrders.order_details.tracking.drop_down.click unless SdcOrders.order_details.tracking.selection_obj.present?
+      SdcOrders.order_details.tracking.selection_obj.safe_click unless SdcOrders.order_details.tracking.selection_obj.class_disabled?
       break if SdcOrders.order_details.tracking.text_field.text_value == str
     end
     expect(SdcOrders.order_details.tracking.text_field.text_value).to eql(str)
@@ -343,10 +353,10 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Ff]rom to (?:Manage Shipping Addresses\.\.\.|(.*))$/ do |str|
   if SdcEnv.new_framework
     str ||= 'Manage Shipping Addresses...'
-    SdcOrderDetailsShipFrom.page_obj(:selection_element) { {xpath: "//li[text()='#{str}']"} }
+    SdcOrders.order_details.ship_from.selection(str)
     5.times do
-      SdcOrders.order_details.ship_from.drop_down.click unless SdcOrders.order_details.ship_from.selection_element.present?
-      SdcOrders.order_details.ship_from.selection_element.safe_click unless SdcOrders.order_details.ship_from.selection_element.class_disabled?
+      SdcOrders.order_details.ship_from.drop_down.click unless SdcOrders.order_details.ship_from.selection_obj.present?
+      SdcOrders.order_details.ship_from.selection_obj.safe_click unless SdcOrders.order_details.ship_from.selection_obj.class_disabled?
       if SdcOrders.order_details.ship_from.text_field.text_value == str
         TestData.store[:ship_from] = SdcOrders.order_details.ship_from.text_field.text_value unless str == 'Manage Shipping Addresses...'
         break
@@ -363,12 +373,20 @@ end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
   step 'show order details form ship-to fields'
+  TestData.store[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address, SdcEnv.env))
   if SdcEnv.new_framework
-    SdcOrders.order_details.ship_to.domestic.address.set(TestData.store[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address, SdcEnv.env)))
+    address = SdcOrders.order_details.ship_to.domestic.address
+    address.set(TestData.store[:ship_to_domestic])
+
   else
-    stamps.orders.order_details.ship_to.domestic.set(TestData.store[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address, SdcEnv.env)))
+    stamps.orders.order_details.ship_to.domestic.set(TestData.store[:ship_to_domestic])
   end
   step 'blur out on Order Details form'
   step 'Save Order Details data'
   step 'hide order details form Ship-To fields'
 end
+
+# @service_blur_out_field = StampsField.new(driver.label(text: 'Service:')) if @service_blur_out_field.nil? || !@service_blur_out_field.present?
+# @weight_blur_out_field = StampsField.new(driver.label(text: 'Weight:')) if @weight_blur_out_field.nil? || !@weight_blur_out_field.present?
+
+

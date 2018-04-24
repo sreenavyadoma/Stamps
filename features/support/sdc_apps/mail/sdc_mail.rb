@@ -1,34 +1,12 @@
 module Stamps
-  module CommonNavigation
-    def mail
 
-    end
+  module SdcMail
 
-    def orders
-
-    end
-
-    def contacts
-
-    end
-
-    def history
-
-    end
-  end
-
-  module Mail
     class SignInLink < SdcPage
-
-      def sign_in_with(usr, pw)
-
-      end
+      page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Orders&" }
     end
 
-    class SdcMail < SdcPage
-      include CommonNavigation
-
-      page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Orders&" }
+    class << self
 
       def sign_in_link
         # sign-in modal

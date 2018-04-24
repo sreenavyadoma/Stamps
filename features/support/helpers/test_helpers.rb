@@ -375,7 +375,7 @@ module Stamps
             substitute_char = args[2]
             str.gsub(char_to_remove, substitute_char)
           else
-            rasie 'Illegal number of arguments for strip method.'
+            raise 'Illegal number of arguments for strip method.'
         end
       end
 

@@ -2,12 +2,12 @@
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]ervice to (.*)$/ do |str|
   step 'expect Order Details is present'
   if SdcEnv.new_framework
-    SdcOrderDetailsService.page_obj(:selection_element) { {xpath: "//li[@id='#{data_for(:orders_services, {})[str]}']"} }
+    SdcOrders.order_details.service.selection(str)
     5.times do
-      SdcWebsite.orders.order_details.service.drop_down.click unless SdcWebsite.orders.order_details.service.selection_element.present?
-      SdcWebsite.orders.order_details.service.selection_element.safe_click unless SdcWebsite.orders.order_details.service.selection_element.class_disabled?
-      if SdcWebsite.orders.order_details.service.text_field.text_value && SdcWebsite.orders.order_details.service.text_field.text_value.include?(str)
-        TestData.store[:service] = SdcWebsite.orders.order_details.service.text_field.text_value.parse_service_name
+      SdcOrders.order_details.service.drop_down.click unless SdcOrders.order_details.service.selection_obj.present?
+      SdcOrders.order_details.service.selection_obj.safe_click unless SdcOrders.order_details.service.selection_obj.class_disabled?
+      if SdcOrders.order_details.service.text_field.text_value && SdcOrders.order_details.service.text_field.text_value.include?(str)
+        TestData.store[:service] = SdcOrders.order_details.service.text_field.text_value.parse_service_name
         break
       end
       TestData.store[:service] ||= ''
@@ -16,7 +16,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]ervice to (.*)$/ do |str|
     20.times do
       step 'blur out on Order Details form'
       sleep(0.015)
-      break if SdcWebsite.orders.order_details.service.cost.text_value.dollar_amount_str.to_f.round(2) > 0
+      break if SdcOrders.order_details.service.cost.text_value.dollar_amount_str.to_f.round(2) > 0
     end
   else
     TestData.store[:service] = stamps.orders.order_details.service.select(str).parse_service_name
