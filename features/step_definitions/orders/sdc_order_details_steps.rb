@@ -375,8 +375,8 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
   step 'show order details form ship-to fields'
   if SdcEnv.new_framework
-    address = SdcOrders.order_details.ship_to.domestic.address
-    address.set(TestData.store[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address, SdcEnv.env)))
+    address_field = SdcOrders.order_details.ship_to.domestic.address
+    address_field.set(TestData.store[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address, SdcEnv.env)))
 
   else
     stamps.orders.order_details.ship_to.domestic.set(TestData.store[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address, SdcEnv.env)))

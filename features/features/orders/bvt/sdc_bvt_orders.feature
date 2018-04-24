@@ -43,15 +43,13 @@ Feature:  BVT tests for Orders
     Then set Order Details service to PM Flat Rate Envelope
     Then click Orders Toolbar Print button
     Then set Print modal Ship Date to today
-    Then set Print modal Print-On to Shipping Label - 8 ½" x 11" Paper
+    Then set Print modal Ship Date to today plus 1
+    Then set Print modal Ship Date to today plus 2
+#    Then set Print modal Ship Date to today plus 3
+#    Then set Print modal Print-On to Shipping Label - 8 ½" x 11" Paper
     Then close Print Modal
-
-#    Then set Orders print modal printer
-#    Then click print modal print button
-#    Then Pause for 2 seconds
-#    Then select Filter Panel tab Shipped
 #    Then expect Orders Grid Ship Date for this order is correct
-#    Then expect Orders Grid Date Printed for this order is correct
+
 
   # Ship Date today + 1
     Then add new order

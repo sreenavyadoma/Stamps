@@ -16,6 +16,15 @@ module Stamps
       page_obj(:blur_out) { {xpath: '//span[text()="Ship Date:"]'} }
     end
 
+    class SdcOrdersModalsPrinter < SdcPage
+      page_obj(:text_field, tag: :text_field) { {id: 'sdc-printpostagewindow-printerdroplist-inputEl'} }
+      page_obj(:drop_down) { {id: 'sdc-printpostagewindow-printerdroplist-trigger-picker'} }
+
+      def selection(str)
+        self.class.page_obj(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
+      end
+    end
+
     class SdcOrdersModalsPrint < SdcPage
       page_obj(:title) { {xpath: '//div[contains(@id, "printwindow")]//div[contains(text(),"You have")]'} }
       page_obj(:print) { {id: 'sdc-printwin-printbtn-btnWrap'} }
@@ -29,6 +38,10 @@ module Stamps
 
       def ship_date
         @ship_date ||= SdcOrdersModalsPrintShipDate.new
+      end
+
+      def printer
+        @printer ||= SdcOrdersModalsPrinter.new
       end
     end
 
