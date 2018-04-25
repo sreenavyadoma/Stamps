@@ -6,8 +6,8 @@ module Stamps
 
       def selection(str)
         self.class.page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
-        return self.class.page_obj(:selection_obj) { {xpath: '(//li[contains(@class, "x-boundlist-item")])[1]'} } if str == "default"
-        self.class.page_obj(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
+        return self.class.page_object(:selection_obj) { {xpath: '(//li[contains(@class, "x-boundlist-item")])[1]'} } if str == "default"
+        self.class.page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
       end
     end
 
