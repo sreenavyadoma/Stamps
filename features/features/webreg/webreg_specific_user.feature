@@ -62,7 +62,7 @@ Feature: Registration
     Then On PAM AppCap Overrides page, set Allow High Risk Countries to Always On
     Then On PAM AppCap Overrides page, Submit
 
-    Then Health Check: Print - Web Batch
+    Then Verify Health Check for Orders
 
     Then load Web Apps Sign-in page
     Then Orders: Sign-in as new user ss_sctest_b4/password1

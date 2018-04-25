@@ -1,15 +1,29 @@
-Then /^Health Check: Print - Web Batch$/ do
-  expect(health.health_check).to include("All tests passed") if SdcEnv.health_check
-end
+Then /^Verify Health Check for (.+)$/ do |str|
+  env = case SdcEnv.env
+        when :qacc
+          'ext.qacc'
+        when :qasc
+          'ext.qasc'
+        when :stg
+          '.testing'
+        when :prod
+          ''
+        else
+          # ignore
+        end
 
-Then /^Health Check: Print - Address Book$/ do
-  expect(health.address_book).to include("All tests passed") if SdcEnv.health_check
-end
-
-Then /^Health Check: OR - Reports$/ do
-  expect(health.or_reports).to include("All tests passed") if SdcEnv.health_check
-end
-
-Then /^Health Check: OR - Postage Tools$/ do
-  expect(health.or_postage_tools).to include("All tests passed") if SdcEnv.health_check
+  app = case(str.downcase)
+        when /orders/
+          :orders
+        when /address/
+          :addressbook
+        when /or reports/
+          :orreports
+        when /postage/
+          :postagetools
+        else
+          raise ArgumentError, "Healthcheck not supported for #{str}"
+        end
+  SdcHealthCheck.visit(env, app)
+  expect(SdcHealthCheck.browser.text).to include("All tests passed") if SdcEnv.health_check
 end
