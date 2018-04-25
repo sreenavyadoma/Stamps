@@ -14,6 +14,27 @@ Then /^visit Orders landing page$/ do
                              end)
 end
 
+Then /^Signin mail$/ do
+  env = case SdcEnv.env
+        when :qacc
+          'ext.qacc'
+        when :qasc
+          'ext.qasc'
+        when :stg
+          '.testing'
+        when :prod
+          ''
+        else
+          # ignore
+        end
+  SdcMailLandingPage.visit(env)
+end
+
+Then /^printon stuff$/ do
+
+  SdcMail.print_form.print_on("")
+end
+
 Then /^[Ss]ign-in to SDC Website$/ do
   step "sign-in to Orders as #{usr}, #{pw}" if SdcEnv.sdc_app == :orders
   step "sign-in to Mail as #{usr}, #{pw}" if SdcEnv.sdc_app == :mail
