@@ -12,7 +12,7 @@ module Stamps
     end
 
     def mail
-      @mail ||= SdcMail.new
+      SdcMail
     end
 
     def navigation
