@@ -73,6 +73,7 @@ Then /^Verify Health Check for (.+)$/ do |str|
         else
           raise ArgumentError, "Healthcheck not supported for #{str}"
         end
+
   SdcHealthCheck.visit(env, app)
   expect(SdcHealthCheck.browser.text).to include("All tests passed") if SdcEnv.health_check
 end
