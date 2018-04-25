@@ -89,7 +89,7 @@ module Stamps
         end
 
         def empty?
-          size == 0
+          size.zero?
         end
 
         def size
@@ -172,7 +172,7 @@ module Stamps
             break if size > 0
             sleep(0.35)
           }
-          return "" if size == 0
+          return "" if size.zero?
           grid_text(:order_id, row)
         end
 
@@ -664,7 +664,7 @@ module Stamps
             data_error = ""
           end
 
-          log.info "#{order_id} data-qtip error:  #{data_error.length == 0 ? "None" : data_error}"
+          log.info "#{order_id} data-qtip error:  #{data_error.length.zero? ? "None" : data_error}"
           data_error
         end
 

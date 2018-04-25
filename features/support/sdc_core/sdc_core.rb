@@ -365,7 +365,7 @@ module Stamps
       else
         result = verify.attribute(property)
       end
-      return result.casecmp('true') == 0 if result.casecmp('true') == 0 || result .casecmp('false') == 0
+      return result.casecmp('true').zero? if result.casecmp('true').zero? || result .casecmp('false').zero?
       result.include?(property_val)
     end
     alias_method :checked?, :chosen?

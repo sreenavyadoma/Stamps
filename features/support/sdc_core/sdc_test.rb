@@ -321,7 +321,7 @@ class SdcTest
         include Spreadsheet
       end
 
-      if SdcEnv.usr.nil? || SdcEnv.usr.casecmp('default') == 0
+      if SdcEnv.usr.nil? || SdcEnv.usr.casecmp('default').zero?
         require 'mysql2'
       end
 

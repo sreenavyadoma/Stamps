@@ -538,8 +538,8 @@ module Stamps
         expect(list_of_values).not_to be_nil, 'Error: Set list_of_values before calling select_from_lov.'
         10.times do
           begin
-            dropdown.click if list_of_values.size == 0
-            break unless list_of_values.size == 0
+            dropdown.click if list_of_values.size.zero?
+            break unless list_of_values.size.zero?
           rescue
             # ignore
           end
