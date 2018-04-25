@@ -10,7 +10,7 @@ module Stamps
       page_objs(:error_message, index: 1)  { {xpath: "//p"} }
 
       #sdcEndica logo
-      page_obj(:sdc_endicia_logo) {{xpath: "//img[@alt='Stamps & Endicia Company logo inverted']"}}
+      page_obj(:sdc_endicia_logo) {{xpath: "//img[@alt='Stamps.com Endicia | Partner Portal logo']"}}
 
       #USPS Portal content
       page_obj(:usps_portal_content) {{xpath: "//h3['USPS Portal']"}}
@@ -30,7 +30,7 @@ module Stamps
       button(:login_label) {{xpath: "//button[@label='Log In']/span"}}
 
       #Forgot Password? link
-      link(:forgot_pw) {{xpath: "//a[@href='/reset-password/request']"}}
+      link(:forgot_pw) {{xpath: "//a[@href='/partner/reset-password/request']"}}
 
       #page_url { |env| "http://uspsportal112.#{env}.stamps.com/login" }
       page_url { |env| "https://iigwe-win10.corp.stamps.com/partner/" }
