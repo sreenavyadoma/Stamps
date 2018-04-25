@@ -10,7 +10,7 @@ module Stamps
       page_objs(:error_message, index: 1)  { {xpath: "//p"} }
 
       #sdcEndica logo
-      page_obj(:sdc_endicia_logo) {{xpath: "//img[@alt='Stamps.com and Endicia']"}}
+      page_obj(:sdc_endicia_logo) {{xpath: "//img[@alt='Stamps & Endicia Company logo inverted']"}}
 
       #USPS Portal content
       page_obj(:usps_portal_content) {{xpath: "//h3['USPS Portal']"}}
@@ -18,22 +18,22 @@ module Stamps
       #Email textbox
       text_field(:email, tag: :text_field, required: true) { {name: "email"} }
       page_obj(:email_tooltip) { {xpath: "//*[@name='email']/div/div/span"} }
-      label(:email_placeholder) { {xpath: "//input[@placeholder='EMAIL']"} }
+      label(:email_placeholder) { {xpath: "//input[@placeholder='Email']"} }
 
       #Password textbox
       text_field(:password, tag: :text_field, required: true) { {name: "password"} }
       page_obj(:password_tooltip) { {xpath: "//*[@name='password']/div/div/span"} }
-      label(:password_placeholder) { {xpath: "//input[@placeholder='PASSWORD']"} }
+      label(:password_placeholder) { {xpath: "//input[@placeholder='Password']"} }
 
       #Log In button
       button(:log_in) { {xpath: "//button[@label='Log In']"} }
       button(:login_label) {{xpath: "//button[@label='Log In']/span"}}
 
       #Forgot Password? link
-      link(:forgot_pw) {{xpath: "//a[@href='/password-reset/request']"}}
+      link(:forgot_pw) {{xpath: "//a[@href='/reset-password/request']"}}
 
-      #page_url { |env| "https://#{env}.partner.stamps.com" }
-      page_url { |env| "https://uspsportal.#{env}.stampsendicia.net/login" }
+      #page_url { |env| "http://uspsportal112.#{env}.stamps.com/login" }
+      page_url { |env| "https://iigwe-win10.corp.stamps.com/partner/" }
 
       def self.visit
         super(case SdcEnv.env

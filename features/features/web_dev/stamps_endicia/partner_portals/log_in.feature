@@ -13,9 +13,9 @@ Feature: PP-MVP: Login Page
         Then PP: expect login page "stamps.com endicia" logo to exist
         Then PP: expect login page "USPS Portal" content to exist
         Then PP: expect login page Email field to exist
-        Then PP: expect login page Email field shows placeholder EMAIL
+        Then PP: expect login page Email field shows placeholder Email
         Then PP: expect login page Password field to exist
-        Then PP: expect login page Password field shows placeholder PASSWORD
+        Then PP: expect login page Password field shows placeholder Password
         Then PP: expect login page Log In button to exist
         Then PP: expect login page Log In button text is Log In
         Then PP: expect login page Forgot Password link exist
@@ -53,11 +53,14 @@ Feature: PP-MVP: Login Page
         Then PP: set login page password to abc123
         Then PP: User clicks Log In
         Then PP: expect login page error message to be
-          """
-          Your email / password is incorrect.
-          OR
-          Logging in for the first time? Click ”Forgot Password“ below.
-          """
+        """
+        Email address not found.
+        """
+#          """
+#          Your email or password is incorrect, please try again.
+#
+#          For assistance, please contact your Partner Manager.
+#          """
 
     #Validate Forgot Password link directs user to Reset Password Page
         #@sdc_endicia_pp_forgot_login_links
@@ -119,8 +122,8 @@ Feature: PP-MVP: Login Page
 #        Then PP: Partner user's xyz partner account Status is Active
 #        Then PP: Partner user's xyz partner contract Status is Active
 #
-        Then PP: set login page email to automation@stamps.com
-        Then PP: set login page password to pass1234
+        Then PP: set login page email to wteam@stamps.com
+        Then PP: set login page password to password1
         Then PP: User clicks Log In
         Then PP: expect user is redirected to the Dashboard Page
 #        Then PP: expect website records login event in Audit Records

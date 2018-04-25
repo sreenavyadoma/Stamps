@@ -34,7 +34,7 @@ Then /^[Uu]SPSP: [Ee]xpect login page "stamps.com endicia" logo to exist$/ do
   expect(UspsPortal.login_page.sdc_endicia_logo).to be_present, "'stamps.com endicia' content DOES NOT exist on login page"
 end
 
-Then /^[[Uu]SPSP: [Ee]xpect login page "USPS Portal" content to exist$/ do
+Then /^[Uu]SPSP: [Ee]xpect login page "USPS Portal" content to exist$/ do
   expect(UspsPortal.login_page.usps_portal_content).to be_present, "'USPS Portal' content DOES NOT exist on login page"
 end
 
