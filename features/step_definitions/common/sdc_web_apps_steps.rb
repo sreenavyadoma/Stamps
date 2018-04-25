@@ -14,6 +14,21 @@ Then /^visit Orders landing page$/ do
                              end)
 end
 
+Then /^visit Mail$/ do
+  SdcMail.visit(case SdcEnv.env
+                               when :qacc
+                                 'ext.qacc'
+                               when :qasc
+                                 'ext.qasc'
+                               when :stg
+                                 '.testing'
+                               when :prod
+                                 ''
+                               else
+                                 # ignore
+                             end)
+end
+
 Then /^[Ss]ign-in to SDC Website$/ do
   step "sign-in to Orders as #{usr}, #{pw}" if SdcEnv.sdc_app == :orders
   step "sign-in to Mail as #{usr}, #{pw}" if SdcEnv.sdc_app == :mail
@@ -104,17 +119,20 @@ Then /^sign-in to Mail(?: as (.+), (.+)|)$/ do |usr, pw|
   expect(pw).to be_truthy
 
   mail = SdcWebsite.mail
-  mail.username.set(TestData.store[:username] = usr)
-  mail.password.set(TestData.store[:password] = pw)
+  mail.sign_in_link.safe_hover
+  mail.sign_in_link.safe_click
+  sleep 1
+  mail.sign_in_modal.username.set(TestData.store[:username] = usr)
+  mail.sign_in_modal.password.set(TestData.store[:password] = pw)
   if SdcEnv.browser
     5.to_i.times do
       begin
-        mail.sign_in.click
-        mail.sign_in.click
-        mail.sign_in.safe_click
-        mail.sign_in.send_keys(:enter)
-        mail.sign_in.send_keys(:enter)
-        break if signed_in_user.present?
+        mail.sign_in_modal.sign_in_button.click
+        mail.sign_in_modal.sign_in_button.click
+        mail.sign_in_modal.sign_in_button.safe_click
+        mail.sign_in_modal.sign_in_button.send_keys(:enter)
+        mail.sign_in_modal.sign_in_button.sign_in_button.send_keys(:enter)
+        break if mail.signed_in_user.present?
       rescue
         # ignore
       end
