@@ -35,15 +35,16 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Dd]omestic [Ss]hip-[Tt]o [Cc]ountry to (.*)$/ do |country|
   step 'show order details form ship-to fields'
   if SdcEnv.new_framework
-    SdcOrders.order_details.ship_to.domestic.selection(str)
+    domestic = SdcOrders.order_details.ship_to.domestic
+    domestic.selection(country)
     5.times do
-      SdcOrders.order_details.ship_to.domestic.country.drop_down.click unless SdcOrders.order_details.ship_to.domestic.country.selection_obj.present?
-      SdcOrders.order_details.ship_to.domestic.country.selection_obj.safe_click unless SdcOrders.order_details.ship_to.domestic.country.selection_obj.class_disabled?
-      if SdcOrders.order_details.ship_to.domestic.country.text_field.text_value && SdcOrders.order_details.ship_to.domestic.country.text_field.text_value.include?(str)
-        TestData.store[:ship_to_country] = SdcOrders.order_details.ship_to.domestic.country.text_field.text_value
+      domestic.country.drop_down.click unless domestic.country.selection_obj.present?
+      domestic.country.selection_obj.safe_click unless domestic.country.selection_obj.class_disabled?
+      if domestic.country.text_field.text_value && domestic.country.text_field.text_value.include?(str)
+        TestData.store[:ship_to_country] = domestic.country.text_field.text_value
         break
       end
-      TestData.store[:ship_to_country] ||= ''
+      TestData.store[:ship_to_country] = ''
     end
     expect(TestData.store[:ship_to_country]).to eql(country)
   else
@@ -91,13 +92,13 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o [Cc]ompany to \"(.*)\"$/ do |str|
   TestData.store[:int_ship_to_company] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
   if SdcEnv.new_framework
-    if str.length == 0
+    if str.length.zero?
       SdcOrders.order_details.ship_to.international.company.safe_click
     else
       SdcOrders.order_details.ship_to.international.company.set(TestData.store[:int_ship_to_company])
     end
   else
-    if str.length == 0
+    if str.length.zero?
       stamps.orders.order_details.ship_to.international.company.click
     else
       stamps.orders.order_details.ship_to.international.company.set TestData.store[:int_ship_to_company]
@@ -108,13 +109,13 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Address 1 to \"(.*)\"$/ do |str|
   TestData.store[:int_ship_to_address_1] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
   if SdcEnv.new_framework
-    if str.length == 0
+    if str.length.zero?
       SdcOrders.order_details.ship_to.international.address1.safe_click
     else
       SdcOrders.order_details.ship_to.international.address1.set(TestData.store[:int_ship_to_address_1])
     end
   else
-    if str.length == 0
+    if str.length.zero?
       stamps.orders.order_details.ship_to.international.address_1.click
     else
       stamps.orders.order_details.ship_to.international.address_1.set TestData.store[:int_ship_to_address_1]
@@ -125,13 +126,13 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Address 2 to \"(.*)\"$/ do |str|
   TestData.store[:int_ship_to_address_2] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
   if SdcEnv.new_framework
-    if str.length == 0
+    if str.length.zero?
       SdcOrders.order_details.ship_to.international.address2.safe_click
     else
       SdcOrders.order_details.ship_to.international.address2.set(TestData.store[:int_ship_to_address_2])
     end
   else
-    if str.length == 0
+    if str.length.zero?
       stamps.orders.order_details.ship_to.international.address_2.click
     else
       stamps.orders.order_details.ship_to.international.address_2.set TestData.store[:int_ship_to_address_2]
@@ -142,13 +143,13 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o City to \"(.*)\"$/ do |str|
   TestData.store[:int_ship_to_city] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
   if SdcEnv.new_framework
-    if str.length == 0
+    if str.length.zero?
       SdcOrders.order_details.ship_to.international.city.safe_click
     else
       SdcOrders.order_details.ship_to.international.city.set(TestData.store[:int_ship_to_city])
     end
   else
-    if str.length == 0
+    if str.length.zero?
       stamps.orders.order_details.ship_to.international.city.click
     else
       stamps.orders.order_details.ship_to.international.city.set TestData.store[:int_ship_to_city]
@@ -159,13 +160,13 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Province to \"(.*)\"$/ do |str|
   TestData.store[:int_ship_to_province] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
   if SdcEnv.new_framework
-    if str.length == 0
+    if str.length.zero?
       SdcOrders.order_details.ship_to.international.province.safe_click
     else
       SdcOrders.order_details.ship_to.international.province.set(TestData.store[:int_ship_to_province])
     end
   else
-    if str.length == 0
+    if str.length.zero?
       stamps.orders.order_details.ship_to.international.province.click
     else
       stamps.orders.order_details.ship_to.international.province.set TestData.store[:int_ship_to_province]
@@ -176,13 +177,13 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Postal Code to \"(.*)\"$/ do |str|
   TestData.store[:int_ship_to_postal_code] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
   if SdcEnv.new_framework
-    if str.length == 0
+    if str.length.zero?
       SdcOrders.order_details.ship_to.international.postal_code.safe_click
     else
       SdcOrders.order_details.ship_to.international.postal_code.set(TestData.store[:int_ship_to_postal_code])
     end
   else
-    if str.length == 0
+    if str.length.zero?
       stamps.orders.order_details.ship_to.international.postal_code.click
     else
       stamps.orders.order_details.ship_to.international.postal_code.set TestData.store[:int_ship_to_postal_code]
@@ -193,13 +194,13 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Phone to \"(.*)\"$/ do |str|
   TestData.store[:int_ship_to_phone] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
   if SdcEnv.new_framework
-    if str.length == 0
+    if str.length.zero?
       SdcOrders.order_details.ship_to.international.phone.safe_click
     else
       SdcOrders.order_details.ship_to.international.phone.set(TestData.store[:int_ship_to_phone])
     end
   else
-    if str.length == 0
+    if str.length.zero?
       stamps.orders.order_details.ship_to.international.phone.click
     else
       stamps.orders.order_details.ship_to.international.phone.set TestData.store[:int_ship_to_phone]
@@ -210,13 +211,13 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Email to \"(.*)\"$/ do |str|
   TestData.store[:int_ship_to_email] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
   if SdcEnv.new_framework
-    if str.length == 0
+    if str.length.zero?
       SdcOrders.order_details.ship_to.international.email.safe_click
     else
       SdcOrders.order_details.ship_to.international.email.set(TestData.store[:int_ship_to_email])
     end
   else
-    if str.length == 0
+    if str.length.zero?
       stamps.orders.order_details.ship_to.international.email.click
     else
       stamps.orders.order_details.ship_to.international.email.set TestData.store[:int_ship_to_email]

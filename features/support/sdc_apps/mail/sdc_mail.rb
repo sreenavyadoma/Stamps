@@ -2,8 +2,8 @@ module Stamps
 
   module SdcMail
 
-    class SignInLink < SdcPage
-      page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Orders&" }
+    class SdcMailLandingPage < SdcPage
+      page_url { |env| "https://print#{env}.stamps.com/webpostage/default2.aspx" }
     end
 
     class << self
@@ -22,6 +22,10 @@ module Stamps
 
       def status_bar
 
+      end
+
+      def envelope
+        @envelope ||= Envelope.new
       end
     end
   end

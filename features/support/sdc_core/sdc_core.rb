@@ -81,19 +81,19 @@ module Stamps
   class SdcPage < WatirDrops::PageObject
 
     class << self
-      def page_obj(name, tag: nil, required: false, timeout: 30, &block)
+      def page_object(name, tag: nil, required: false, timeout: 30, &block)
         _page_object(name, required: required) { SdcFinder.element(browser, tag: tag, timeout: timeout, &block) }
       end
-      alias_method :text_field, :page_obj
-      alias_method :button, :page_obj
-      alias_method :label, :page_obj
-      alias_method :selection, :page_obj
-      alias_method :link, :page_obj
+      alias_method :text_field, :page_object
+      alias_method :button, :page_object
+      alias_method :label, :page_object
+      alias_method :selection, :page_object
+      alias_method :link, :page_object
 
-      def page_objs(name, tag: nil, index: nil, required: false, timeout: 30, &block)
-        collection_name = index.nil? ? name : "#{name}s".to_sym
-        _page_objects(collection_name) { SdcFinder.elements(browser, tag: tag, timeout: timeout, &block) }
-        _page_object(name, required: required) { SdcElement.new(instance_eval(collection_name.to_s)[index]) } if index
+      def page_objects(name, tag: nil, index: nil, required: false, timeout: 30, &block)
+        list_name = index.nil? ? name : "#{name}s".to_sym
+        _page_objects(list_name) { SdcFinder.elements(browser, tag: tag, timeout: timeout, &block) }
+        _page_object(name, required: required) { SdcElement.new(instance_eval(list_name.to_s)[index]) } if index
       end
 
       def chooser(name, chooser, verify, property, property_name)
@@ -365,7 +365,7 @@ module Stamps
       else
         result = verify.attribute(property)
       end
-      return result.casecmp('true') == 0 if result.casecmp('true') == 0 || result .casecmp('false') == 0
+      return result.casecmp('true').zero? if result.casecmp('true').zero? || result .casecmp('false').zero?
       result.include?(property_val)
     end
     alias_method :checked?, :chosen?

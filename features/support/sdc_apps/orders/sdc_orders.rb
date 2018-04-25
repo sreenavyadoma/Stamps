@@ -1,7 +1,7 @@
 module Stamps
   module SdcOrders
     class LoadingPopUp < SdcPage
-      page_obj(:loading_orders) { {text: 'Loading orders...'} }
+      page_object(:loading_orders) { {text: 'Loading orders...'} }
     end
 
     class << self
