@@ -8,9 +8,10 @@ module Stamps
     ANDROID = %i(samsung_galaxy nexus_5x).freeze unless Object.const_defined?('Stamps::SdcEnv::ANDROID')
 
     class << self
-      attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose, :printer, :browser, :hostname,
-                    :print_media, :mobile, :android, :ios, :firefox_profile, :new_framework, :debug, :scenario,
-                    :sauce_device, :test_name, :driver_log_level
+      attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose,
+                    :printer, :browser, :hostname, :print_media, :mobile,
+                    :android, :ios, :firefox_profile, :new_framework, :debug,
+                    :scenario, :sauce_device, :test_name, :driver_log_level
     end
   end
 
@@ -90,12 +91,10 @@ module Stamps
       alias_method :selection, :page_obj
       alias_method :link, :page_obj
 
-      def page_objs(name, tag: nil, timeout: 30, &block)
-        _page_objects(name) { SdcFinder.elements(browser, tag: tag, timeout: timeout, &block) }
-      end
-
-      def page_objs_index(name, index: 0, required: false)
-        _page_object(name, required: required) { SdcElement.new(instance_eval(yield.to_s)[index]) }
+      def page_objs(name, tag: nil, index: nil, required: false, timeout: 30, &block)
+        list_name = index.nil? ? name : "#{name}s".to_sym
+        _page_objects(list_name) { SdcFinder.elements(browser, tag: tag, timeout: timeout, &block) }
+        _page_object(name, required: required) { SdcElement.new(instance_eval(list_name.to_s)[index]) } if index
       end
 
       def chooser(name, chooser, verify, property, property_name)
@@ -106,6 +105,14 @@ module Stamps
 
       def number(name, text_field, increment, decrement)
         _page_object(name) { SdcNumber.new(instance_eval(text_field.to_s), instance_eval(increment.to_s), instance_eval(decrement.to_s)) }
+      end
+
+      def visit(*args)
+        super(*args)
+      end
+
+      def page_url(required: false)
+        super(required: required)
       end
 
       protected

@@ -240,7 +240,7 @@ class SdcTest
                 SdcPage.browser.window.maximize
               end
 
-            rescue Exception => e
+            rescue StandardError => e
               SdcLog.error e.message
               SdcLog.error e.backtrace.join("\n")
               raise e, "Browser driver failed to start"
@@ -251,7 +251,7 @@ class SdcTest
               SdcPage.browser = SdcDriverDecorator.new(SdcAppiumDriver.new(SdcEnv.mobile).core_driver.start_driver)
               SdcPage.browser.manage.timeouts.implicit_wait = 180
 
-            rescue Exception => e
+            rescue StandardError => e
               SdcLog.error e.message
               SdcLog.error e.backtrace.join("\n")
               raise e, "Appium driver failed to start"
@@ -346,29 +346,25 @@ class SdcTest
     end
 
     def teardown
-      begin
+      # if SdcEnv.sauce_device
+      #   sessionid = SdcPage.browser.send(:bridge).session_id
+      #   jobname = "#{scenario.feature.name} - #{scenario.name}"
+      #   if scenario.passed?
+      #     SauceWhisk::Jobs.pass_job sessionid
+      #   else
+      #     SauceWhisk::Jobs.fail_job sessionid
+      #   end
+      #
+      #   SdcLog.info "SauceOnDemandSessionID=#{sessionid} job-name=#{jobname}"
+      # else
+      #
+      #   SdcUserCredentials.close
+      #
+      #   SdcLog.info "#{SdcPage.browser} closed."
+      # end
 
-        if SdcEnv.sauce_device
-          sessionid = SdcPage.browser.send(:bridge).session_id
-          jobname = "#{scenario.feature.name} - #{scenario.name}"
-          if scenario.passed?
-            SauceWhisk::Jobs.pass_job sessionid
-          else
-            SauceWhisk::Jobs.fail_job sessionid
-          end
-
-          SdcLog.info "SauceOnDemandSessionID=#{sessionid} job-name=#{jobname}"
-        end
-
-        SdcPage.browser.quit
-
-      rescue
-        # ignore
-      end
-
-      SdcUserCredentials.close
-
-      SdcLog.info "#{SdcPage.browser} closed."
+      sleep 2
+      SdcPage.browser.quit
     end
 
     private

@@ -1,4 +1,4 @@
-default: --backtrace --profile eli_dev
+default: --backtrace --profile rob_cc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -9,7 +9,7 @@ samsung_galaxy_sauce: --tags @saucelabs_poc SAUCE_DEVICE=samsung_galaxy_sauce VE
 
 #todo-Rob set PRINTER=factory as default automation printer
 #robcm=ccpryiihrjz ccfb311osps4x print_dialog_ship_date
-rob_cc: --tags @authentication WEB_APP=orders BROWSER=ff JENKINS=true URL=cc VERBOSE=true HEALTHCHECK=true MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory
+rob_cc: --tags @bvt_new_order WEB_APP=orders BROWSER=ff JENKINS=true URL=cc VERBOSE=true HEALTHCHECK=true MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory NEW_FRAMEWORK=true DEBUG=true
 rob_stg: --tags @bvt_new_order WEB_APP=orders JENKINS=true URL=stg VERBOSE=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false USR=default PW=pass111 PRINTER=factory #stgee1mtqvwdc0
 rob_sc: --tags @bvt_shipstation_updates_domestic WEB_APP=orders JENKINS=true URL=sc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=selenium  USR=scsejsglwa PW=pass111 VERBOSE=true PRINTER=factory # c2jinmzmu64 schl0vlbfy2673 #19  schl0vlbfy2673
 rob_dev: --tags @mail_advanced_options_stamps WEB_APP=orders JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
@@ -20,7 +20,7 @@ rob_registration: --tags @registration_normal_workflow WEB_APP=registration URL=
 
 browser_test:  --tags @iphonex BROWSER=ff VERBOSE=true USR=ccfb311osps4x PW=pass111 URL=cc WEB_APP=orders HEALTHCHECK=true
 
-saucelabs_browser:  --tags @saucelabs_poc BROWSER=gc VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1 DEBUG=true HEADLESS=true
+saucelabs_browser:  --tags @bvt_new_order BROWSER=gc VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1 DEBUG=true HEADLESS=true
 saucelabs_iphonex: --tags @saucelabs_poc IOS=iphonex VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
 saucelabs_iphone8: --tags @saucelabs_poc IOS=iphone8 VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
 saucelabs_samsung_galaxy: --tags @saucelabs_poc ANDROID=samsung_galaxy VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
@@ -41,7 +41,7 @@ mhossain1_cc: --tags @registration_ui_validation_profile_page JENKINS=true URL=c
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess  HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 
-eli_dev: --tags @sdc_mail_remember_username --guess  JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff USR=hal9000stage25 PW=password1 PRINTER=Automation Printer
+eli_dev: --tags @bvt_shipstation_search --guess  JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff USR=hal9000stage25 PW=password1 PRINTER=Automation Printer
 ray_dev: --tags @rates_parcel_select_ground --guess  JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff USR=default PW=pass111
 sap:              --tags @registration_orders WEB_APP=registration URL=cc --guess  BROWSER=ff MAX_WINDOW=false
 
