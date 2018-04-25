@@ -17,20 +17,19 @@ module Stamps
 
   module SdcFinder
     extend self
-    include Watir::Waitable
 
     def element(browser, tag: nil, timeout: 20)
       if browser.is_a? Watir::Browser
         if tag
           element = instance_eval("browser.#{tag}(#{yield})")
-          result = wait_until(timeout: timeout) { element }
+          result = Watir::Wait.until(timeout: timeout) { element }
           if result
             element = instance_eval("browser.#{tag}(#{yield})")
             return SdcElement.new(element)
           end
         else
           element = browser.element(yield)
-          result = wait_until(timeout: timeout) { element }
+          result = Watir::Wait.until(timeout: timeout) { element }
           if result
             element = browser.element(yield)
             return SdcElement.new(element)
@@ -38,7 +37,7 @@ module Stamps
         end
       else
         element = browser.find_element(yield)
-        result = wait_until(timeout: timeout) { element }
+        result = Watir::Wait.until(timeout: timeout) { element }
         if result
           element = browser.find_element(yield)
           return SdcElement.new(element)
@@ -56,19 +55,19 @@ module Stamps
           begin
             code = "browser.#{tag}(#{yield})"
             elements = instance_eval(code)
-            result = wait_until(timeout: timeout) { elements }
+            result = Watir::Wait.until(timeout: timeout) { elements }
             return instance_eval(code) if result
           rescue Selenium::WebDriver::Error::TimeOutError
             # ignore
           end
         else
           elements = browser.elements(yield)
-          result = wait_until(timeout: timeout) { elements }
+          result = Watir::Wait.until(timeout: timeout) { elements }
           return browser.elements(yield) if result
         end
       else
         elements = browser.find_elements(yield)
-        result = wait_until(timeout: timeout) { elements }
+        result = Watir::Wait.until(timeout: timeout) { elements }
         return browser.find_elements(yield) if result
       end
 
@@ -82,16 +81,16 @@ module Stamps
   class SdcPage < WatirDrops::PageObject
 
     class << self
-      def page_obj(name, tag: nil, required: false, timeout: 30, &block)
+      def page_object(name, tag: nil, required: false, timeout: 30, &block)
         _page_object(name, required: required) { SdcFinder.element(browser, tag: tag, timeout: timeout, &block) }
       end
-      alias_method :text_field, :page_obj
-      alias_method :button, :page_obj
-      alias_method :label, :page_obj
-      alias_method :selection, :page_obj
-      alias_method :link, :page_obj
+      alias_method :text_field, :page_object
+      alias_method :button, :page_object
+      alias_method :label, :page_object
+      alias_method :selection, :page_object
+      alias_method :link, :page_object
 
-      def page_objs(name, tag: nil, index: nil, required: false, timeout: 30, &block)
+      def page_objects(name, tag: nil, index: nil, required: false, timeout: 30, &block)
         list_name = index.nil? ? name : "#{name}s".to_sym
         _page_objects(list_name) { SdcFinder.elements(browser, tag: tag, timeout: timeout, &block) }
         _page_object(name, required: required) { SdcElement.new(instance_eval(list_name.to_s)[index]) } if index
@@ -107,14 +106,6 @@ module Stamps
         _page_object(name) { SdcNumber.new(instance_eval(text_field.to_s), instance_eval(increment.to_s), instance_eval(decrement.to_s)) }
       end
 
-      def visit(*args)
-        super(*args)
-      end
-
-      def page_url(required: false)
-        super(required: required)
-      end
-
       protected
 
       def _page_object(name, required: false, &block)
@@ -127,7 +118,6 @@ module Stamps
     end
 
   end
-
 
   class SdcDriverDecorator < BasicObject
 
@@ -189,18 +179,6 @@ module Stamps
       end
 
       self
-    end
-
-    def class_disabled?
-      prop_include?('class', 'disable')
-    end
-
-    def class_enabled?
-      prop_include?('class', 'enabled')
-    end
-
-    def class_checked?
-      prop_include?('class', 'checked')
     end
 
     def set(*args)
@@ -344,18 +322,28 @@ module Stamps
       self
     end
 
-    def method_missing(name, *args, &block)
-      super unless @element.respond_to?(name)
-      @element.send(name, *args, &block)
+    def class_disabled?
+      attribute_include?('class', 'disable')
     end
 
-    private
+    def class_enabled?
+      attribute_include?('class', 'enabled')
+    end
 
-    def prop_include?(property_name, property_value)
+    def class_checked?
+      attribute_include?('class', 'checked')
+    end
+
+    def attribute_include?(property_name, property_value)
       if @element.respond_to? :attribute_value
         return @element.send(:attribute_value, property_name).include?(property_value)
       end
       @element.send(:attribute, property_name).include?(property_value)
+    end
+
+    def method_missing(name, *args, &block)
+      super unless @element.respond_to?(name)
+      @element.send(name, *args, &block)
     end
   end
 
@@ -377,7 +365,7 @@ module Stamps
       else
         result = verify.attribute(property)
       end
-      return result.casecmp('true') == 0 if result.casecmp('true') == 0 || result .casecmp('false') == 0
+      return result.casecmp('true').zero? if result.casecmp('true').zero? || result .casecmp('false').zero?
       result.include?(property_val)
     end
     alias_method :checked?, :chosen?

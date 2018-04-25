@@ -258,14 +258,14 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails Phone to (.*)$/ do |phone|
   TestData.store[:phone] = phone.to_s.strip.downcase.include?('random') ? TestHelper.rand_phone : phone
   step 'show order details form ship-to fields'
-  stamps.orders.order_details.ship_to.domestic.phone.set(TestData.store[:phone]) unless TestData.store[:phone].length == 0
+  stamps.orders.order_details.ship_to.domestic.phone.set(TestData.store[:phone]) unless TestData.store[:phone].length.zero?
   step 'Save Order Details data'
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Email to (.*)$/ do |email|
   TestData.store[:email] = email.to_s.strip.downcase.include?('random') ? TestHelper.rand_email(SdcEnv.env) : email
   step 'show order details form ship-to fields'
-  stamps.orders.order_details.ship_to.domestic.email.set(TestData.store[:email]) unless TestData.store[:email].length == 0
+  stamps.orders.order_details.ship_to.domestic.email.set(TestData.store[:email]) unless TestData.store[:email].length.zero?
   step 'Save Order Details data'
 end
 

@@ -58,5 +58,5 @@ Then /^[Ee]xpect Print modal Total Cost is \$([0-9.]*)$/ do |expectation|
     }
     print_window.close
     expect(actual_value).to eql expectation
-  end unless expectation.length == 0
+  end unless expectation.length.zero?
 end

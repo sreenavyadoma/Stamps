@@ -520,7 +520,7 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
   TestData.store[:result_sheet].each_with_index do |row, row_number|
     begin
       if row_number > 0
-        if row[TestData.store[:result_sheet_columns][:status]].casecmp("failed") == 0 || (row[TestData.store[:result_sheet_columns][:status]].casecmp("passed") != 0 && !row[TestData.store[:result_sheet_columns][:error_msg]].nil?)
+        if row[TestData.store[:result_sheet_columns][:status]].casecmp("failed").zero? || (row[TestData.store[:result_sheet_columns][:status]].casecmp("passed") != 0 && !row[TestData.store[:result_sheet_columns][:error_msg]].nil?)
           @failed_test_count += 1
           SdcLog.step "Group #{group} - Row #{row_number} Failed"
         end
