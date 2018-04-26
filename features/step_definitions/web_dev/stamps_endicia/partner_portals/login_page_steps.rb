@@ -85,7 +85,7 @@ Then /^[Pp]P: [Ee]xpect login page email tooltip count is (.*)$/ do |count|
   expect(TestData.store[:email_tooltip].size).to eql(count.to_i)
 end
 
-Then /^[Pp]P: [Ee]xpect login page email tooltip index (.*) to be (.*)$/ do |index, str|
+Then /^[Pp]P: [Ee]xpect login page email tooltip index (\d+) to be (.*)$/ do |index, str|
   TestData.store[:email_tooltip] = PartnerPortal.login_page.email_tooltip.text_value.split("\n")
   expect(TestData.store[:email_tooltip][index.to_i - 1]).to eql(str)
 end
@@ -104,12 +104,12 @@ Then /^[Pp]P: [Ee]xpect login page [Pp]assword field shows placeholder (.*)$/ do
 
 end
 
-Then /^[Pp]P: [Ee]xpect login page password tooltip count is (.*)$/ do |count|
+Then /^[Pp]P: [Ee]xpect login page [Pp]assword tooltip count is (.*)$/ do |count|
   TestData.store[:password_tooltip] = PartnerPortal.login_page.password_tooltip.text_value.split("\n")
   expect(TestData.store[:password_tooltip].size).to eql(count.to_i)
 end
 
-Then /^[Pp]P: [Ee]xpect login page Password tooltip index (.*) to be (.*)$/ do |index, str|
+Then /^[Pp]P: [Ee]xpect login page [Pp]assword tooltip index (\d+) to be (.*)$/ do |index, str|
   TestData.store[:password_tooltip] = PartnerPortal.login_page.password_tooltip.text_value.split("\n")
   expect(TestData.store[:password_tooltip][index.to_i - 1]).to eql(str)
 end

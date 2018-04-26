@@ -30,10 +30,10 @@ module Stamps
       button(:login_label) {{xpath: "//button[@label='Log In']/span"}}
 
       #Forgot Password? link
-      link(:forgot_pw) {{xpath: "//a[@href='/partner/reset-password/request']"}}
+      link(:forgot_pw) {{xpath: "//a[@href='/reset-password/request']"}}
 
-      #page_url { |env| "http://uspsportal112.#{env}.stamps.com/login" }
-      page_url { |env| "https://iigwe-win10.corp.stamps.com/partner/" }
+      page_url { |env| "http://uspsportal112.#{env}.stamps.com/login" }
+      #page_url { |env| "https://iigwe-win10.corp.stamps.com/partner/" }
 
       def self.visit
         super(case SdcEnv.env
