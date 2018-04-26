@@ -1,5 +1,9 @@
 module Stamps
 
+  class SdcMailLandingPage < SdcPage
+    page_url { |env| "https://print#{env}.stamps.com/webpostage/default2.aspx" }
+  end
+
   module SdcWebsite
     extend self
 

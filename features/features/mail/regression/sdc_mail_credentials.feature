@@ -1,44 +1,29 @@
-#Feature:  Mail Credentials Tests
-##
-##  Background:
-##    Given Start test driver
-##
-##
-##  @authentication
-##  Scenario: Mail - Remember Username
-##    Then visit Mail
-##    Then sign-in to Mail
-##    Then set username in Mail
-##    Then set password in Mail
-##    Then set Remember Username to Checked
-##    Then click Sign In in Mail
-##    Then sign-out of SDC Website
-##    Then visit Mail
-##    Then open sign in modal in Mail
-##    Then expect username is present in username field
-##    Then expect Remember Username is checked
-##  te
 Feature:  Mail Credentials Tests
 
-  Background:
+ Background:
     Given Start test driver
 
-
-  @sdc_mail_remember_username
-  Scenario: Mail - Remember Username
+  @sdc_mail_authentication
+  Scenario: Mail - Authentication
     Then visit Mail
     Then sign-in to Mail
     Then sign-out of SDC Website
 
-        #Then set username in Mail
-    #Then set password in Mail
-    #Then set Remember Username to Checked
-    #Then click Sign In in Mail
-    #Then sign-out of SDC Website
-    #Then visit Mail
-    #Then open sign in modal in Mail
-    #Then expect username is present in username field
-    #Then expect Remember Username is checked
+
+
+  @sdc_mail_remember_username
+  Scenario: Mail - Remember Username
+
+    Then visit Mail
+    Then set username in Mail
+    Then set password in Mail
+    Then set Remember Username to Checked
+    Then click the Sign In button in Mail
+    Then sign-out of SDC Website
+    Then visit Mail
+    Then open sign in modal in Mail
+    Then expect username is present in Mail username field
+    Then expect Remember Username to be checked
 
 
   @bvt_new_order

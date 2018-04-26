@@ -2,14 +2,10 @@ module Stamps
 
   module SdcMail
 
-    class SdcMailLandingPage < SdcPage
-      page_url { |env| "https://print#{env}.stamps.com/webpostage/default2.aspx" }
-    end
-
     class << self
 
       def sign_in_link
-        # sign-in modal
+        @envelope ||= Envelope.new
       end
 
       def print_form
