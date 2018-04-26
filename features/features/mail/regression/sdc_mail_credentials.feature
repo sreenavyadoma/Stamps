@@ -11,7 +11,7 @@ Feature:  Mail Credentials Tests
 
 
 
-  @sdc_mail_remember_username
+  @mail_remember_username
   Scenario: Mail - Remember Username
 
     Then visit Mail
