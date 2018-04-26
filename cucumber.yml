@@ -1,4 +1,4 @@
-default: --backtrace --profile rob_sc
+default: --backtrace --profile browser_test
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -18,7 +18,7 @@ rob_mail_stg: --tags @mail_bvt_international WEB_APP=mail JENKINS=true USR=defau
 rob_mail_sc: --tags @print_dialog_ship_date WEB_APP=mail JENKINS=true USR=default PW=pass111 URL=sc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 rob_registration: --tags @registration_normal_workflow WEB_APP=registration URL=cc --guess VERBOSE=true HEALTHCHECK=false BROWSER=chrome MAX_WINDOW=false JENKINS=true
 
-browser_test:  --tags @iphonex BROWSER=ff VERBOSE=true USR=ccfb311osps4x PW=pass111 URL=cc WEB_APP=orders HEALTHCHECK=true
+browser_test:  --tags @authentication BROWSER=ff VERBOSE=true USR=ccfb311osps4x PW=pass111 URL=prod WEB_APP=orders HEALTHCHECK=true
 
 saucelabs_browser:  --tags @bvt_new_order BROWSER=gc VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1 DEBUG=true HEADLESS=true
 saucelabs_iphonex: --tags @saucelabs_poc IOS=iphonex VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1

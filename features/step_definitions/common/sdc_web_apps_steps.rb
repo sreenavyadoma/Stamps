@@ -147,6 +147,7 @@ Then /^sign-in to Orders(?: as (.+), (.+)|)$/ do |usr, pw|
   expect(usr).to be_truthy
   expect(pw).to be_truthy
 
+  SdcWebsite.landing_page.username.set_attribute('value', 'new value')
   SdcWebsite.landing_page.username.set(TestData.store[:username] = usr)
   SdcWebsite.landing_page.password.set(TestData.store[:password] = pw)
   if SdcEnv.browser
