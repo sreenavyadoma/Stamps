@@ -95,14 +95,14 @@ end
 Then /^[Ss]elect [Pp]rint [Mm]odal [Ss]hip [Dd]ate [Dd]atepicker to (?:today|today plus (\d+))$/ do |day|
   date = TestHelper.parse_date(TestHelper.today_plus(day))
   ship_date = SdcOrders.modals.print.ship_date
-  datepicker = ship_date.datepicker
   ship_date.drop_down.safe_click
-  expect(datepicker.head_link).to be_present, "Datepicker is not present"
+  expect(ship_date.datepicker.head_link).to be_present, "Datepicker is not present"
   step "select month and year on month picker #{date[:month]} #{date[:year]}"
-  expect(datepicker.head_link.text_value).to include(date[:month]), "Correct month is not selected on the datepicker"
-  expect(datepicker.head_link.text_value).to include(date[:year]), "Correct year is not selected on the datepicker"
-  datepicker.selection_day(date[:day])
-  datepicker.day.safe_click unless datepicker.day.class_disabled?
+  expect(ship_date.datepicker.head_link.text_value).to include(date[:month]), "Correct month is not selected on the datepicker"
+  expect(ship_date.datepicker.head_link.text_value).to include(date[:year]), "Correct year is not selected on the datepicker"
+  ship_date.datepicker.selection_day(date[:day])
+  ship_date.datepicker.day.safe_click unless ship_date.datepicker.day.class_disabled?
+  sleep(1)
 end
 
 Then /^[Ss]elect [Mm]onth and [Yy]ear on [Mm]onth [Pp]icker ([a-zA-Z]+) (\d{4})$/ do |month, year|
