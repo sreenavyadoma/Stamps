@@ -284,6 +284,11 @@ module Stamps
         date.strftime '%b %-d'
       end
 
+      def parse_date(str)
+        collection = date_str.split '/'
+
+      end
+
       # returns mm/dd/yyyy "10/26/2017"
       def today_plus(day)
         (Date.today + day.to_i).strftime '%m/%d/%Y'
@@ -305,6 +310,7 @@ module Stamps
       def now_plus_hh(hours)
         hours = Time.now.hour + hours
         return "12:00 a.m." if hours.zero?
+        return "12:00 p.m." if hours == 12
         return "#{hours-12}:00 p.m." if hours > 12
         "#{hours}:00 a.m."
       end
