@@ -37,5 +37,8 @@ Then /^[Pp]P: click hamburger menu on dashboard page$/ do
   PartnerPortal.dashboard_page.hamburger.safe_click
 end
 
+Then /^[Pp]P: expect PreFered rates Qualified Postage to exists$/ do
+  expect(PartnerPortal.dashboard_page.preferred_rates_qualified_postage). to be_present "PreFered rates Qualified Postage canvas DOES NOT exist on dashboard page"
+end
 
 
