@@ -186,6 +186,10 @@ module Stamps
       @element.send(:set, *args)
     end
 
+    def set_attribute_value(attribute_name, value)
+      @element.driver.execute_script("return arguments[0].#{attribute_name}='#{value}'", field) if present?
+    end
+
     def safe_send_keys(*args, ctr: 1)
       ctr.to_i.times do
         begin
