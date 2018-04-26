@@ -353,8 +353,6 @@ module Stamps
 
   class SdcChooser < BasicObject
 
-    attr_reader :element, :verify, :property, :property_val
-
     def initialize(element, verify, property, property_val)
       @element = element
       @verify = verify
@@ -364,44 +362,44 @@ module Stamps
     end
 
     def chosen?
-      if verify.respond_to? :attribute_value
-        result = verify.attribute_value(property)
+      if @verify.respond_to? :attribute_value
+        result = @verify.attribute_value(@property)
       else
-        result = verify.attribute(property)
+        result = @verify.attribute(@property)
       end
       return result.casecmp('true').zero? if result.casecmp('true').zero? || result .casecmp('false').zero?
-      result.include?(property_val)
+      result.include?(@property_val)
     end
     alias_method :checked?, :chosen?
     alias_method :selected?, :chosen?
 
     def choose(iter: 3)
-      iter.times do element.click; break if chosen? end
+      iter.times do @element.click; break if chosen? end
       chosen?
     end
     alias_method :check, :choose
     alias_method :select, :choose
 
     def unchoose(iter: 3)
-      iter.times do break unless chosen?; element.click end
+      iter.times do break unless chosen?; @element.click end
       chosen?
     end
     alias_method :uncheck, :unchoose
     alias_method :unselect, :unchoose
 
     def respond_to?(name, include_private = false)
-      super || element.respond_to?(name, include_private)
+      super || @element.respond_to?(name, include_private)
     end
 
     def method_missing(method, *args, &block)
-      super unless element.respond_to?(method)
-      element.send(method, *args, &block)
+      super unless @element.respond_to?(method)
+      @element.send(method, *args, &block)
     end
   end
 
   class SdcNumber < BasicObject
 
-    attr_reader :text_field, :increment, :decrement
+    attr_reader :increment, :decrement
 
     def initialize(text_field, increment, decrement)
       @text_field = text_field
