@@ -21,7 +21,7 @@ module Stamps
       end
 
       def selection_year(year)
-        self.class.page_object(:month) { {xpath: "//*[contains(@class, 'x-monthpicker-year')]//a[text()='#{year}']"} }
+        self.class.page_object(:year) { {xpath: "//*[contains(@class, 'x-monthpicker-year')]//a[text()='#{year}']"} }
       end
     end
 

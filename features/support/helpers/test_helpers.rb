@@ -285,8 +285,13 @@ module Stamps
       end
 
       def parse_date(str)
-        collection = date_str.split '/'
-
+        if str.match(/\d{2}\/\d{2}\/\d{4}/)   # 04/28/2018
+          collection = str.split '/'
+          collection[0] = Date::MONTHNAMES[collection[0].to_i]
+        else                                  # April 28, 2018
+          collection = str.split(/[\s\/,]/).delete_if{|s| s.empty?}
+        end
+        {day: collection[1], year: collection[2], month: collection[0]}
       end
 
       # returns mm/dd/yyyy "10/26/2017"

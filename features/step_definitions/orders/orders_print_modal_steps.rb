@@ -93,8 +93,30 @@ Then /^[Ss]et [Pp]rint [Mm]odal Ship Date to (?:today|today plus (\d+))$/ do |da
 end
 
 Then /^[Ss]elect [Pp]rint [Mm]odal [Ss]hip [Dd]ate [Dd]atepicker to (?:today|today plus (\d+))$/ do |day|
-  date = TestHelper.today_plus(day)
+  date = TestHelper.parse_date(TestHelper.today_plus(day))
+  ship_date = SdcOrders.modals.print.ship_date
+  datepicker = ship_date.datepicker
+  ship_date.drop_down.safe_click
+  expect(datepicker.head_link).to be_present, "Datepicker is not present"
+  step "select month and year on month picker #{date[:month]} #{date[:year]}"
+  expect(datepicker.head_link.text_value).to include(date[:month]), "Correct month is not selected on the datepicker"
+  expect(datepicker.head_link.text_value).to include(date[:year]), "Correct year is not selected on the datepicker"
+  datepicker.selection_day(date[:day])
+  datepicker.day.safe_click unless datepicker.day.class_disabled?
+end
 
+Then /^[Ss]elect [Mm]onth and [Yy]ear on [Mm]onth [Pp]icker ([a-zA-Z]+) (\d{4})$/ do |month, year|
+  datepicker = SdcOrders.modals.print.ship_date.datepicker
+  expect(datepicker.head_link).to be_present, "Datepicker is not present"
+  unless datepicker.head_link.text_value.include?(month) && datepicker.head_link.text_value.include?(year)
+    datepicker.head_link.safe_click
+    expect(datepicker.month_picker).to be_present, "Print Modal Ship Date Month Picker is not present"
+    datepicker.month_picker.selection_month(month[0..2])
+    datepicker.month_picker.month.safe_click if datepicker.month_picker.month.present?
+    datepicker.month_picker.selection_year(year)
+    datepicker.month_picker.year.safe_click if datepicker.month_picker.year.present?
+    datepicker.month_picker.ok.safe_click
+  end
 end
 
 

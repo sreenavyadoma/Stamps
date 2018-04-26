@@ -91,10 +91,13 @@ Feature:  BVT tests for Orders
     Then set Order Details Ounces to 4
     Then set Order Details service to PM Flat Rate Envelope
     Then click Orders Toolbar Print button
-    Then expect Print modal Ship Date is 0 days from today
-    Then set Print modal Ship Date to today
-    Then set Print modal Ship Date to today plus 1
-    Then set Print modal Ship Date to today plus 2
+#    Then expect Print modal Ship Date is 0 days from today
+    Then select Print modal Ship Date datepicker to today
+    Then select Print modal Ship Date datepicker to today plus 1
+    Then select Print modal Ship Date datepicker to today plus 2
+#    Then set Print modal Ship Date to today
+#    Then set Print modal Ship Date to today plus 1
+#    Then set Print modal Ship Date to today plus 2
     Then close Print Modal
     Then set Orders Settings General postdate to 5:00 p.m.
     Then Sign out
