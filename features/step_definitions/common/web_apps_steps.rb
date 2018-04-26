@@ -7,8 +7,8 @@ end
 Given /^(?:|(?:|[Aa] )(?:[Vv]alid |))[Uu]ser is signed in to Web Apps$/ do
   step "I launched the browser"
   if SdcEnv.health_check
-    step "Health Check: Print - Web Batch"
-    step "Health Check: Print - Address Book"
+    step "Verify Health Check for Orders"
+    step "Verify Health Check for Address Book"
   end
   step "load Web Apps Sign-in page"
   step "sign-in to Web Apps as #{TestData.store[:username]}, #{TestData.store[:password]}"
