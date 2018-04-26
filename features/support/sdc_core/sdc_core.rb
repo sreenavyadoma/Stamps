@@ -188,7 +188,7 @@ module Stamps
     end
 
     def set_attribute(name, value)
-      execute_script("return arguments[0].#{name}='#{value}'", @element) if present?
+      execute_script("return arguments[0].#{name}='#{value}'", @element)
     end
 
     def safe_send_keys(*args, ctr: 1)
