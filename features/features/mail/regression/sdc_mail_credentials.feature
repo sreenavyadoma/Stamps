@@ -3,7 +3,7 @@ Feature:  Mail Credentials Tests
  Background:
     Given Start test driver
 
-  @sdc_mail_authentication
+  @mail_authentication
   Scenario: Mail - Authentication
     Then visit Mail
     Then sign-in to Mail
