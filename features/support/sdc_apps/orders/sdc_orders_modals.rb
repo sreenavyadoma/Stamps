@@ -13,7 +13,7 @@ module Stamps
     class SdcOrdersModalsPrintShipDate < SdcPage
       page_object(:text_field, tag: :text_field) { {xpath: '//input[contains(@id, "datefield")]'} }
       page_object(:drop_down) { {xpath: '//*[contains(@class, "x-form-date-trigger")]'} }
-      page_object(:blur_out) { {xpath: '//span[text()="Ship Date:"]'} }
+      # page_object(:blur_out) { {xpath: '//span[text()="Ship Date:"]'} }
     end
 
     class SdcOrdersModalsPrinter < SdcPage
@@ -46,18 +46,18 @@ module Stamps
     end
 
     class SdcOrdersModalsSettingsGeneral < SdcPage
-      page_object(:title) { {id: ''} }
-      page_object(:postade_text_field) { {id: ''} }
-      page_object(:postade_drop_down) { {id: ''} }
+      page_object(:title) { {xpath: '//label[text()="General Settings"]'} }
+      page_object(:postdate_text_field) { {xpath: '(//*[contains(@id, "generaltabview")]//input[contains(@class, "x-form-text")])[2]'} }
+      page_object(:postdate_drop_down) { {xpath: '(//*[contains(@id, "generaltabview")]//div[contains(@class, "x-form-arrow-trigger")])[2]'} }
 
-      page_object(:logoff_text_field) { {id: ''} }
-      page_object(:logoff_drop_down) { {id: ''} }
+      page_object(:logoff_text_field) { {xpath: '(//*[contains(@id, "generaltabview")]//input[contains(@class, "x-form-text")])[1]'} }
+      page_object(:logoff_drop_down) { {xpath: '(//*[contains(@id, "generaltabview")]//div[contains(@class, "x-form-arrow-trigger")])[1]'} }
 
-      page_object(:balance_text_field) { {id: ''} }
-      page_object(:balance_drop_down) { {id: ''} }
+      page_object(:balance_text_field) { {xpath: '(//*[contains(@id, "generaltabview")]//input[contains(@class, "x-form-text")])[3]'} }
+      page_object(:balance_drop_down) { {xpath: '(//*[contains(@id, "generaltabview")]//div[contains(@class, "x-form-arrow-trigger")])[3]'} }
 
       def selection(str)
-
+        self.class.page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
       end
     end
 
@@ -72,13 +72,13 @@ module Stamps
     end
 
     class SdcOrdersModalsSettings < SdcPage
-      page_object(:general) { {id: ''} }
-      page_object(:stores) { {id: ''} }
-      page_object(:international) { {id: ''} }
-      page_object(:label_msgs) { {id: ''} }
-      page_object(:title) { {id: ''} }
-      page_object(:done) { {id: ''} }
-      page_object(:close) { {id: ''} }
+      page_object(:general) { {xpath: '//*[text()="General"]'} }
+      page_object(:stores) { {xpath: '//*[text()="Stores"]'} }
+      page_object(:international) { {xpath: '//*[text()="International"]'} }
+      page_object(:label_msgs) { {xpath: '//*[text()="Label Messages"]'} }
+      page_object(:title) { {xpath: '(//*[text()="Orders Settings"])[1]'} }
+      # page_object(:done) { {id: ''} }     //generated dynamically for each view
+      page_object(:close) { {xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
 
       def general_settings
         @general_settings ||= SdcOrdersModalsSettingsGeneral.new

@@ -301,6 +301,14 @@ module Stamps
         (Date.today + day.to_i).strftime '%b %-d'
       end
 
+      # return "hh:mm a.m." format for settings dropdown
+      def now_plus_hh(hours)
+        hours = Time.now.hour + hours
+        return "12:00 a.m." if hours.zero?
+        return "#{hours-12}:00 p.m." if hours > 12
+        "#{hours}:00 a.m."
+      end
+
       # add +1 to day if day is a Sunday. We don't ship on Sundays.
       def shipdate_today_plus(day)
         ((Date.today + day.to_i).wday == 0) ? (Date.today + day.to_i + 1).strftime('%b %-d') : (Date.today + day.to_i).strftime('%b %-d')

@@ -71,20 +71,37 @@ end
 Then /^[Ss]et [Pp]rint [Mm]odal Ship Date to (?:today|today plus (\d+))$/ do |day|
   step "expect print modal ship date dropdown is present"
   if SdcEnv.new_framework
-    SdcOrders.modals.print.ship_date.text_field.set(TestHelper.today_plus(day))
+    date = TestHelper.today_plus(day)
+    10.times do
+      SdcOrders.modals.print.ship_date.text_field.set(date)
+      # SdcOrders.modals.print.ship_date.text_field.set(TestHelper.today_plus(day))
+      break if SdcOrders.modals.print.ship_date.text_field.text_value.eql?(date)
+      # SdcOrders.modals.print.ship_date.text_field.set("")
+      sleep(0.2)
+    end
   else
     stamps.orders.modals.orders_print_modal.ship_date.textbox.set(TestHelper.today_plus(day))
     stamps.orders.modals.orders_print_modal.ship_date.shipdate_label.click(10)
     stamps.orders.modals.orders_print_modal.ship_date.shipdate_label.double_click(10)
   end
-  step "blur out on Print modal Ship date 3"
+  step "blur out on Print modal Ship date 10"
   step "expect Print modal Ship Date is #{day} days from today"
+end
+
+Then /^[Cc]lear [Pp]rint [Mm]odal Ship Date$/ do
+  10.times do
+    SdcOrders.modals.print.ship_date.text_field.set("")
+    sleep(0.2)
+    break if SdcOrders.modals.print.ship_date.text_field.text_value.eql?("")
+  end
+  step "blur out on Print modal Ship date 10"
 end
 
 Then /^[Bb]lur [Oo]ut [Oo]n [Pp]rint [Mm]odal [Ss]hip [Dd]ate (\d+)$/ do |count|
   if SdcEnv.new_framework
     count.times do
-      SdcOrders.modals.print.ship_date.blur_out.safe_click
+      SdcOrders.modals.print.total.safe_click
+      SdcOrders.modals.print.total.safe_double_click
       sleep(0.2)
     end
   else
