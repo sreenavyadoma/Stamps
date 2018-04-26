@@ -341,6 +341,10 @@ module Stamps
       @element.send(:attribute, property_name).include?(property_value)
     end
 
+    def respond_to?(name, include_private = false)
+      super || @element.respond_to?(name, include_private)
+    end
+
     def method_missing(name, *args, &block)
       super unless @element.respond_to?(name)
       @element.send(name, *args, &block)
@@ -385,6 +389,10 @@ module Stamps
     alias_method :uncheck, :unchoose
     alias_method :unselect, :unchoose
 
+    def respond_to?(name, include_private = false)
+      super || element.respond_to?(name, include_private)
+    end
+
     def method_missing(method, *args, &block)
       super unless element.respond_to?(method)
       element.send(method, *args, &block)
@@ -400,6 +408,10 @@ module Stamps
       @increment = increment
       @decrement = decrement
       # set_instance_variables(binding, *local_variables)
+    end
+
+    def respond_to?(name, include_private = false)
+      super || @text_field.respond_to?(name, include_private)
     end
 
     def method_missing(name, *args, &block)
