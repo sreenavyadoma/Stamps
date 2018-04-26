@@ -231,7 +231,7 @@ module Stamps
       if respond_to? :wait_until_present
         send(:wait_until_present, timeout: timeout, interval: interval)
       else
-        wait_until(timeout: timeout, interval: interval) { present? }
+        wait_until(timeout: timeout, interval: interval, &:present?)
       end
 
       self
@@ -241,7 +241,7 @@ module Stamps
       if respond_to? :wait_while_present
         send(:wait_while_present, timeout: timeout)
       else
-        wait_until(timeout: timeout, interval: interval) { present? }
+        wait_while(timeout: timeout, interval: interval, &:present?)
       end
 
       self
