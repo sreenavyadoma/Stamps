@@ -1,11 +1,11 @@
 module Stamps
 
   module SdcEnv
-    TEST_ENVIRONMENTS = %i(stg qacc cc qasc sc rating).freeze unless Object.const_defined?('Stamps::SdcEnv::TEST_ENVIRONMENTS')
-    BROWSERS = %i(ff firefox gc chrome safari edge chromeb ie iexplorer).freeze unless Object.const_defined?('Stamps::SdcEnv::BROWSERS')
-    SDC_APP = %i(orders mail webdev registration).freeze unless Object.const_defined?('Stamps::SdcEnv::SDC_APP')
-    IOS = %i(iphone6 iphone7 iphone8 iphonex).freeze unless Object.const_defined?('Stamps::SdcEnv::IOS')
-    ANDROID = %i(samsung_galaxy nexus_5x).freeze unless Object.const_defined?('Stamps::SdcEnv::ANDROID')
+    TEST_ENVIRONMENTS = %i[stg qacc cc qasc sc rating].freeze unless Object.const_defined?('Stamps::SdcEnv::TEST_ENVIRONMENTS')
+    BROWSERS = %i[ff firefox gc chrome safari edge chromeb ie iexplorer].freeze unless Object.const_defined?('Stamps::SdcEnv::BROWSERS')
+    SDC_APP = %i[orders mail webdev registration].freeze unless Object.const_defined?('Stamps::SdcEnv::SDC_APP')
+    IOS = %i[iphone6 iphone7 iphone8 iphonex].freeze unless Object.const_defined?('Stamps::SdcEnv::IOS')
+    ANDROID = %i[samsung_galaxy nexus_5x].freeze unless Object.const_defined?('Stamps::SdcEnv::ANDROID')
 
     class << self
       attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose,
@@ -16,7 +16,7 @@ module Stamps
   end
 
   module SdcFinder
-    extend self
+    module_function
 
     def element(browser, tag: nil, timeout: 20)
       if browser.is_a? Watir::Browser
@@ -82,38 +82,28 @@ module Stamps
 
     class << self
       def page_object(name, tag: nil, required: false, timeout: 30, &block)
-        _page_object(name, required: required) { SdcFinder.element(browser, tag: tag, timeout: timeout, &block) }
+        element(name, required: required) { SdcFinder.element(browser, tag: tag, timeout: timeout, &block) }
       end
-      alias_method :text_field, :page_object
-      alias_method :button, :page_object
-      alias_method :label, :page_object
-      alias_method :selection, :page_object
-      alias_method :link, :page_object
+      alias text_field page_object
+      alias button page_object
+      alias label page_object
+      alias selection page_object
+      alias link page_object
 
       def page_objects(name, tag: nil, index: nil, required: false, timeout: 30, &block)
         list_name = index.nil? ? name : "#{name}s".to_sym
-        _page_objects(list_name) { SdcFinder.elements(browser, tag: tag, timeout: timeout, &block) }
-        _page_object(name, required: required) { SdcElement.new(instance_eval(list_name.to_s)[index]) } if index
+        elements(list_name) { SdcFinder.elements(browser, tag: tag, timeout: timeout, &block) }
+        element(name, required: required) { SdcElement.new(instance_eval(list_name.to_s)[index]) } if index
       end
 
       def chooser(name, chooser, verify, property, property_name)
-        _page_object(name) { SdcChooser.new(instance_eval(chooser.to_s), instance_eval(verify.to_s), property, property_name) }
+        element(name) { SdcChooser.new(instance_eval(chooser.to_s), instance_eval(verify.to_s), property, property_name) }
       end
-      alias_method :checkbox, :chooser
-      alias_method :radio, :chooser
+      alias checkbox chooser
+      alias radio chooser
 
       def number(name, text_field, increment, decrement)
-        _page_object(name) { SdcNumber.new(instance_eval(text_field.to_s), instance_eval(increment.to_s), instance_eval(decrement.to_s)) }
-      end
-
-      protected
-
-      def _page_object(name, required: false, &block)
-        element(name, required: required, &block)
-      end
-
-      def _page_objects(name, &block)
-        elements(name, &block)
+        element(name) { SdcNumber.new(instance_eval(text_field.to_s), instance_eval(increment.to_s), instance_eval(decrement.to_s)) }
       end
     end
 
@@ -154,7 +144,7 @@ module Stamps
     def enabled?
       begin
         return send(:enabled?)
-      rescue
+      rescue ::StandardError
         # ignore
       end
 
@@ -164,7 +154,7 @@ module Stamps
     def visible?
       begin
         return send(:visible?)
-      rescue
+      rescue ::StandardError
         # ignore
       end
 
@@ -175,7 +165,7 @@ module Stamps
       begin
         send(:focus)
         send(:hover)
-      rescue
+      rescue ::StandardError
         # ignore
       end
 
@@ -195,7 +185,7 @@ module Stamps
       ctr.to_i.times do
         begin
           send(:send_keys, *args)
-        rescue
+        rescue ::StandardError
           # ignore
         end
       end
@@ -208,8 +198,8 @@ module Stamps
         begin
           break unless present?
           safe_send_keys(*args)
-          safe_wait_while_present(1)
-        rescue
+          safe_wait_while_present(timeout: 1)
+        rescue ::StandardError
           # ignore
         end
       end
@@ -219,7 +209,19 @@ module Stamps
       ctr.to_i.times do
         begin
           send(:click, *modifiers)
-        rescue
+        rescue ::StandardError
+          # ignore
+        end
+      end
+
+      self
+    end
+
+    def safe_double_click(ctr: 1)
+      ctr.to_i.times do
+        begin
+          send(:double_click) if present?
+        rescue ::StandardError
           # ignore
         end
       end
@@ -248,33 +250,29 @@ module Stamps
     end
 
     def safe_wait_until_present(timeout: nil, interval: nil)
-      begin
-        wait_until_present(timeout: timeout, interval: interval)
-      rescue
-        # ignore
-      end
+      wait_until_present(timeout: timeout, interval: interval)
+    rescue ::StandardError
+        # ignored
     end
 
     def safe_wait_while_present(timeout: 10, interval: 0.2)
-      begin
-        wait_while_present(timeout: timeout, interval: interval)
-      rescue
-        # ignore
-      end
+      wait_while_present(timeout: timeout, interval: interval)
+    rescue ::StandardError
+      # ignore
     end
 
     def text_value
       begin
         text = send(:text)
-        return text if text.size > 0
-      rescue
+        return text unless text.empty?
+      rescue ::StandardError
         # ignore
       end
 
       begin
         value = send(:value)
-        return value if value.size > 0
-      rescue
+        return value unless value.empty?
+      rescue ::StandardError
         # ignore
       end
 
@@ -287,28 +285,16 @@ module Stamps
           safe_click(*modifiers)
           safe_wait_while_present(1)
           break unless present?
-        rescue
+        rescue ::StandardError
           # ignore
         end
       end
-    end
-
-    def safe_double_click(ctr: 1)
-      ctr.to_i.times do
-        begin
-          double_click
-        rescue
-          # ignore
-        end
-      end
-
-      self
     end
 
     def scroll_into_view
       begin
         execute_script('arguments[0].scrollIntoView();', @element)
-      rescue
+      rescue ::StandardError
         # ignore
       end
 
@@ -317,12 +303,8 @@ module Stamps
 
     def blur_out(ctr: 1)
       ctr.to_i.times do
-        begin
-          safe_double_click
-          safe_click
-        rescue
-          # ignore
-        end
+        safe_double_click
+        safe_click
       end
 
       self
@@ -368,30 +350,38 @@ module Stamps
     end
 
     def chosen?
-      if @verify.respond_to? :attribute_value
-        result = @verify.attribute_value(@property)
-      else
-        result = @verify.attribute(@property)
-      end
+      result = if @verify.respond_to? :attribute_value
+                 @verify.send(:attribute_value, @property)
+               else
+                 @verify.send(:attribute, @property)
+               end
       return result.casecmp('true').zero? if result.casecmp('true').zero? || result .casecmp('false').zero?
       result.include?(@property_val)
     end
-    alias_method :checked?, :chosen?
-    alias_method :selected?, :chosen?
+    alias checked? chosen?
+    alias selected? chosen?
 
     def choose(iter: 3)
-      iter.times do @element.click; break if chosen? end
+      iter.times do
+        click
+        break if chosen?
+      end
+
       chosen?
     end
-    alias_method :check, :choose
-    alias_method :select, :choose
+    alias check choose
+    alias select choose
 
     def unchoose(iter: 3)
-      iter.times do break unless chosen?; @element.click end
+      iter.times do
+        break unless chosen?
+        click
+      end
+
       chosen?
     end
-    alias_method :uncheck, :unchoose
-    alias_method :unselect, :unchoose
+    alias uncheck unchoose
+    alias unselect unchoose
 
     def respond_to?(name, include_private = false)
       super || @element.respond_to?(name, include_private)
