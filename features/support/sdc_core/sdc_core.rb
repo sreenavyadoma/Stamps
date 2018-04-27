@@ -208,7 +208,7 @@ module Stamps
         begin
           break unless present?
           safe_send_keys(*args)
-          safe_wait_while_present(1)
+          safe_wait_while_present(timeout: 1)
         rescue
           # ignore
         end
@@ -219,6 +219,18 @@ module Stamps
       ctr.to_i.times do
         begin
           send(:click, *modifiers)
+        rescue
+          # ignore
+        end
+      end
+
+      self
+    end
+
+    def safe_double_click(ctr: 1)
+      ctr.to_i.times do
+        begin
+          send(:double_click) if present?
         rescue
           # ignore
         end
@@ -293,18 +305,6 @@ module Stamps
       end
     end
 
-    def safe_double_click(ctr: 1)
-      ctr.to_i.times do
-        begin
-          double_click
-        rescue
-          # ignore
-        end
-      end
-
-      self
-    end
-
     def scroll_into_view
       begin
         execute_script('arguments[0].scrollIntoView();', @element)
@@ -317,12 +317,8 @@ module Stamps
 
     def blur_out(ctr: 1)
       ctr.to_i.times do
-        begin
-          safe_double_click
-          safe_click
-        rescue
-          # ignore
-        end
+        safe_double_click
+        safe_click
       end
 
       self
