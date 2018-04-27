@@ -17,7 +17,8 @@ end
 
 Then /^[Pp]P: set dashboard page to large viewport$/ do
   if SdcEnv.browser
-    SdcDriver.driver.window.resize_to(1920, 1080)
+   # SdcDriver.driver.window.resize_to(1920, 1080)
+     SdcPage.browser.window.resize_to(1920, 1080)
   else
     #ignore
   end
