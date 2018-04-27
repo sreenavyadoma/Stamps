@@ -14,11 +14,11 @@ module Stamps
       page_object(:remember_username, tag: :checkbox) { {id: 'rememberUser'} }
     end
 
-
     class << self
       def user_drop_down
         @user_drop_down ||= Object.const_get('SdcNavigation::SignedInUser').new
       end
+
       def mail_sign_in_modal
         @mail_sign_in_modal ||= Object.const_get('SdcNavigation::MailSignInModal').new
       end
