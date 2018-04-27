@@ -1,10 +1,9 @@
-@sdc_endicia_pp_log_in
+@pp_login_page_ui_validation
 Feature: PP-MVP: Login Page
 
     Background:
         Given Start test driver
 
-    @sdc_endicia_pp_login_page_ui_validation
     Scenario: PP: Login UI Validation
         Then PP: A user navigates to the login page
 
@@ -36,28 +35,34 @@ Feature: PP-MVP: Login Page
         Then PP: expect login page email tooltip count is 1
         Then PP: expect login page email tooltip index 0 to be Valid email address required.
 
-        # Validate Password tooltips
-        Then PP: expect login page password tooltip count is 2
-        Then PP: expect login page password tooltip index 1 to be 8 characters minimum.
-        Then PP: expect login page password tooltip index 2 to be At least 1 number required.
+#        # Validate Password tooltips
+#        Then PP: expect login page password tooltip count is 2
+#        Then PP: expect login page password tooltip index 1 to be 8 characters minimum.
+#        Then PP: expect login page password tooltip index 2 to be At least 1 number required.
         #Then PP: expect login page password tooltip index 3 to be At least 1 letter required.
 
     #Valiadate email and password can't be the same
-        Then PP: set login page email to abc@stamps.com
-        Then PP: set login page password to abc@stamps.com
-        Then PP: User clicks Log In
-        Then PP: expect login page password tooltip index 2 to be Cannot match email.
+#        Then PP: set login page email to abc@stamps.com
+#        Then PP: set login page password to abc@stamps.com
+#        Then PP: User clicks Log In
+#        Then PP: expect login page password tooltip index 2 to be Cannot match email.
 
     #validate incorrect email or passowrd message
-        Then PP: set login page email to abc@stamps.com
-        Then PP: set login page password to abc123
-        Then PP: User clicks Log In
-        Then PP: expect login page error message to be
-          """
-          Your email or password is incorrect, please try again.
+#        Then PP: set login page email to abc@stamps.com
+#        Then PP: set login page password to abc123
+#        Then PP: User clicks Log In
+#        Then PP: expect login page error message to be
+#          """
+#          Your email or password is incorrect, please try again.
+#
+#          For assistance, please contact your Partner Manager.
+#          """
 
-          For assistance, please contact your Partner Manager.
-          """
+   #Validate Forgot Password link directs user to Reset Password Page
+         Then PP: User clicks Forgot Password link
+         Then PP: expect user is redirected to Reset Password Page
+         Then PP: navigate back to previous page
+
         Then PP: set login page email to wteam@stamps.com
         Then PP: set login page password to password1
         Then PP: User clicks Log In
@@ -68,13 +73,6 @@ Feature: PP-MVP: Login Page
         #Then PP: expect PreFered rates Qualified Postage to exists
 
 
-
-    #Validate Forgot Password link directs user to Reset Password Page
-        #@sdc_endicia_pp_forgot_login_links
-#        Scenario: PP: User click Forgot Password links
-#          Then PP: A user navigates to the login page
-#          Then PP: User clicks Forgot Password link
-#          Then PP: expect user is redirected to Reset Password Page
 
      #@sdc_endicia_pp_login_page_user_status_inactive
 #    Scenario: PP: User Status is inactive expect unsuccessful login

@@ -35,7 +35,7 @@ Then /^[Pp]P: [Ee]xpect login page "stamps.com endicia" logo to exist$/ do
 end
 
 Then /^[Pp]P: [Ee]xpect login page "USPS Portal" content to exist$/ do
-  expect(PartnerPortal.login_page.usps_portal_content).to be_present, "'USPS Portal' content DOES NOT exist on login page"
+  expect(PartnerPortal.login_page.partner_portal_content).to be_present, "'USPS Portal' content DOES NOT exist on login page"
 end
 
 Then /^[Pp]P: [Ee]xpect login page Log In button to exist$/ do
@@ -59,7 +59,7 @@ Then /^[Pp]P: [Uu]ser clicks [Ff]orgot [Pp]assword link$/ do
 end
 
 Then /^[Pp]P: [Bb]lur out on [Ll]ogin [Pp]age$/ do
-  PartnerPortal.login_page.usps_portal_content.blur_out
+  PartnerPortal.login_page.partner_portal_content.blur_out
 end
 
 

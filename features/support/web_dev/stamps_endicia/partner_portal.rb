@@ -15,7 +15,7 @@ module Stamps
       page_object(:sdc_endicia_logo) { {xpath: "//img[@alt='Stamps.com Endicia | Partner Portal logo']"} }
 
       #Partner Portal content
-      page_object(:usps_portal_content) {{xpath: "//h3[contains(text(), 'Partner Portal')]"}}
+      page_object(:partner_portal_content) {{xpath: "//h3[contains(text(), 'Partner Portal')]"}}
 
       #Email textbox
       text_field(:email, tag: :text_field, required: true) { {name: "email"} }
@@ -73,7 +73,7 @@ module Stamps
 
     class PPResetPasswordPage < SdcPage
       #sdcEndica content
-      page_object(:header) { {xpath: "//h1['Password Reset']"} }
+      page_object(:header) { {xpath: "//h1[contains(text(), 'Reset Password Request')]"} }
 
       #Email
       text_field(:email, tag: :text_field, required: true) { {xpath: "//input[@name='email']"} }

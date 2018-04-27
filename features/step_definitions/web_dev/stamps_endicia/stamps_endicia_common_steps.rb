@@ -5,3 +5,7 @@ end
 Then /^[Pp]P: click on Stamps Endicia Partner Portal logo$/ do
   PartnerPortal.stamps_endicia_common_page.sdc_endicia_logo_browser.safe_click
 end
+
+Then /^[Pp]P: navigate back to previous page$/ do
+SdcPage.browser.back
+end
