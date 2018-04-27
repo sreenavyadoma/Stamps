@@ -58,7 +58,7 @@ Feature: Forgot Password, Forgot Username, Invalid Credentials, Remember Usernam
     Then Mail Sign In: Check Remember Username
     Then Mail Sign In: Expect Remember Username is checked
 
-  @mail_remember_username
+  #@mail_remember_username
   Scenario: Forget Username
     Then load Web Apps Sign-in page
     Then Mail Sign In: Set Remember Username to Unchecked
