@@ -8,7 +8,7 @@ Then /^[Ss]et [Oo]rders [Ss]ettings [Gg]eneral [Pp]ostdate to (now [+-]\d+ hours
     settings.selection_obj.safe_click unless settings.selection_obj.class_disabled?
     break if settings.postdate_text_field.text_value.include?(time)
   end
-  expect(settings.postdate_text_field.text_value).to eql(time), "Postdate was not selected"
+  expect(settings.postdate_text_field.text_value).to include(time), "Postdate was not selected"
   step "close Orders Settings modal"
 end
 
