@@ -365,9 +365,9 @@ module Stamps
 
     def chosen?
       if @verify.respond_to? :attribute_value
-        result = @verify.attribute_value(@property)
+        result = @verify.send(:attribute_value, @property)
       else
-        result = @verify.attribute(@property)
+        result = @verify.send(:attribute, @property)
       end
       return result.casecmp('true').zero? if result.casecmp('true').zero? || result .casecmp('false').zero?
       result.include?(@property_val)
@@ -376,14 +376,22 @@ module Stamps
     alias_method :selected?, :chosen?
 
     def choose(iter: 3)
-      iter.times do @element.click; break if chosen? end
+      iter.times do
+        click
+        break if chosen?
+      end
+
       chosen?
     end
     alias_method :check, :choose
     alias_method :select, :choose
 
     def unchoose(iter: 3)
-      iter.times do break unless chosen?; @element.click end
+      iter.times do
+        break unless chosen?
+        click
+      end
+
       chosen?
     end
     alias_method :uncheck, :unchoose
