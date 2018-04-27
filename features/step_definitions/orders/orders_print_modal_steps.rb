@@ -73,22 +73,13 @@ Then /^[Ss]et [Pp]rint [Mm]odal Ship Date to (?:today|today plus (\d+))$/ do |da
   if SdcEnv.new_framework
     text_field = SdcOrders.modals.print.ship_date.text_field
     date = TestHelper.today_plus(day)
-    10.times do
-      text_field.clear
-      sleep(2)
-      text_field.set(date)
-      sleep(2)
-      # SdcOrders.modals.print.ship_date.text_field.set(TestHelper.today_plus(day))
-      break if text_field.text_value.eql?(date)
-      # SdcOrders.modals.print.ship_date.text_field.set("")
-      sleep(1)
-    end
+    text_field.set_attribute('value', date)
   else
     stamps.orders.modals.orders_print_modal.ship_date.textbox.set(TestHelper.today_plus(day))
     stamps.orders.modals.orders_print_modal.ship_date.shipdate_label.click(10)
     stamps.orders.modals.orders_print_modal.ship_date.shipdate_label.double_click(10)
   end
-  step "blur out on Print modal Ship date 10"
+  step "blur out on Print modal Ship date 5"
   step "expect Print modal Ship Date is #{day} days from today"
 end
 
