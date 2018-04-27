@@ -5,17 +5,17 @@ module Stamps
     class PPLoginPage < SdcPage
       #Welcome content
       #page_objects(:welcome_content, index: 0)  { {xpath: "//p"} }
-
-      page_object(:welcome_content) { {xpath: "//img[@alt='Stamps.com Endicia | Partner Portal logo']"} }
+      page_object(:welcome_content) { {xpath: "//p[contains(text(),'Welcome to the')]"} }
 
       #Error Message
-      page_objects(:error_message, index: 1)  { {xpath: "//p"} }
+     # page_objects(:error_message, index: 1)  { {xpath: "//p"} }
+      page_object(:error_message) { {xpath: "//p[@class='text-center']"} }
 
       #sdcEndica logo
       page_object(:sdc_endicia_logo) { {xpath: "//img[@alt='Stamps.com Endicia | Partner Portal logo']"} }
 
       #Partner Portal content
-      page_object(:usps_portal_content) {{xpath: "//h3['USPS Portal']"}}
+      page_object(:usps_portal_content) {{xpath: "//h3[contains(text(), 'Partner Portal')]"}}
 
       #Email textbox
       text_field(:email, tag: :text_field, required: true) { {name: "email"} }

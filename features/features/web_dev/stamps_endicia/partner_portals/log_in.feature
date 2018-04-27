@@ -65,7 +65,7 @@ Feature: PP-MVP: Login Page
 #        Then PP: expect website records login event in Audit Records
 
 #
-        Then PP: expect PreFered rates Qualified Postage to exists
+        #Then PP: expect PreFered rates Qualified Postage to exists
 
 
 
