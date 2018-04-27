@@ -82,7 +82,7 @@ module Stamps
 
     class << self
       def page_object(name, tag: nil, required: false, timeout: 30, &block)
-        _page_object(name, required: required) { SdcFinder.element(browser, tag: tag, timeout: timeout, &block) }
+        element(name, required: required) { SdcFinder.element(browser, tag: tag, timeout: timeout, &block) }
       end
       alias_method :text_field, :page_object
       alias_method :button, :page_object
@@ -92,28 +92,18 @@ module Stamps
 
       def page_objects(name, tag: nil, index: nil, required: false, timeout: 30, &block)
         list_name = index.nil? ? name : "#{name}s".to_sym
-        _page_objects(list_name) { SdcFinder.elements(browser, tag: tag, timeout: timeout, &block) }
-        _page_object(name, required: required) { SdcElement.new(instance_eval(list_name.to_s)[index]) } if index
+        elements(list_name) { SdcFinder.elements(browser, tag: tag, timeout: timeout, &block) }
+        element(name, required: required) { SdcElement.new(instance_eval(list_name.to_s)[index]) } if index
       end
 
       def chooser(name, chooser, verify, property, property_name)
-        _page_object(name) { SdcChooser.new(instance_eval(chooser.to_s), instance_eval(verify.to_s), property, property_name) }
+        element(name) { SdcChooser.new(instance_eval(chooser.to_s), instance_eval(verify.to_s), property, property_name) }
       end
       alias_method :checkbox, :chooser
       alias_method :radio, :chooser
 
       def number(name, text_field, increment, decrement)
-        _page_object(name) { SdcNumber.new(instance_eval(text_field.to_s), instance_eval(increment.to_s), instance_eval(decrement.to_s)) }
-      end
-
-      protected
-
-      def _page_object(name, required: false, &block)
-        element(name, required: required, &block)
-      end
-
-      def _page_objects(name, &block)
-        elements(name, &block)
+        element(name) { SdcNumber.new(instance_eval(text_field.to_s), instance_eval(increment.to_s), instance_eval(decrement.to_s)) }
       end
     end
 
