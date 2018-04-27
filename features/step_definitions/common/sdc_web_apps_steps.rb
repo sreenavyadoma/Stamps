@@ -270,20 +270,19 @@ Then /^sign-in to Mail(?: as (.+), (.+)|)$/ do |usr, pw|
   expect(pw).to be_truthy
 
   modal = SdcWebsite.navigation.mail_sign_in_modal
-  modal.sign_in_link.click
-  modal.username.set(TestData.store[:username] = usr)
-  modal.password.set(TestData.store[:password] = pw)
   if SdcEnv.browser
-    5.to_i.times do
+    3.to_i.times do
       begin
+        modal.sign_in_link.click
+        modal.username.set(TestData.store[:username] = usr)
+        modal.password.set(TestData.store[:password] = pw)
         modal.sign_in.click
-        signed_in_user.wait_until_present(timeout: 3)
+        signed_in_user.wait_until_present(timeout: 12, interval: 0.2)
         break if signed_in_user.present?
       rescue
         # ignore
       end
     end
-    sleep(10)
     expect(SdcWebsite.navigation.user_drop_down.signed_in_user.text_value).to include(TestData.store[:username])
 
   elsif SdcEnv.ios
