@@ -61,7 +61,7 @@ module Stamps
       page_object(:print) { {id: 'sdc-printwin-printbtn-btnWrap'} }
       page_object(:print_sample) { {} }
       page_object(:total) { {xpath: '//*[contains(@class, "sdc-displayfield-font-style")]//div/*[contains(@id, "displayfield")]'} }
-      page_object(:close) { {xpath: '//span[contains(@class, "sdc-icon-mobile-close-light")]'} }
+      page_object(:close) { {xpath: '//*[contains(@class, "x-tool-close")]'} }
 
       def print_on
         @print_on ||= SdcOrdersModalsPrintOn.new

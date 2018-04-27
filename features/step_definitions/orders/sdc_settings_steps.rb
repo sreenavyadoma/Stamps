@@ -5,10 +5,10 @@ Then /^[Ss]et [Oo]rders [Ss]ettings [Gg]eneral [Pp]ostdate to (now [+-]\d+ hours
   settings.selection(time)
   5.times do
     settings.postdate_drop_down.click unless settings.selection_obj.present?
-    settings.selection_obj.safe_click unless settings.selection_obj.class_disabled?
+    settings.selection_obj.scroll_into_view.safe_click
     break if settings.postdate_text_field.text_value.include?(time)
   end
-  expect(settings.postdate_text_field.text_value).to eql(time), "Postdate was not selected"
+  expect(settings.postdate_text_field.text_value).to include(time), "Postdate was not selected"
   step "close Orders Settings modal"
 end
 
