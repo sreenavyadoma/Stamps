@@ -10,7 +10,7 @@ module Stamps
       page_objects(:error_message, index: 1)  { {xpath: "//p"} }
 
       #sdcEndica logo
-      page_object(:sdc_endicia_logo) {{xpath: "//img[@alt='Stamps.com Endicia | Partner Portal logo']"}}
+      page_object(:sdc_endicia_logo) { {xpath: "//img[@alt='Stamps.com Endicia | Partner Portal logo']"} }
 
       #Partner Portal content
       page_object(:usps_portal_content) {{xpath: "//h3['USPS Portal']"}}
@@ -27,10 +27,10 @@ module Stamps
 
       #Log In button
       button(:log_in) { {xpath: "//button[@label='Log In']"} }
-      button(:login_label) {{xpath: "//button[@label='Log In']/span"}}
+      button(:login_label) { {xpath: "//button[@label='Log In']/span"} }
 
       #Forgot Password? link
-      link(:forgot_pw) {{xpath: "//a[@href='/reset-password/request']"}}
+      link(:forgot_pw) { {xpath: "//a[@href='/reset-password/request']"} }
 
       page_url { |env| "http://uspsportal112.#{env}.stamps.com/login" }
       #page_url { |env| "https://iigwe-win10.corp.stamps.com/partner/" }
@@ -55,29 +55,29 @@ module Stamps
 
     class PPDashboardPage < SdcPage
       #welcome header
-      page_object(:header) {{xpath: "//h1['Welcome to USPS Portal']"}}
+      page_object(:header) { {xpath: "//h1['Welcome to USPS Portal']"} }
 
       #hamburger button
-      button(:hamburger, required: true) {{class: "navbar-toggle collapsed"}}
+      button(:hamburger, required: true) { {class: "navbar-toggle collapsed"} }
 
       #x button
-      button(:x, required: true) {{class: "xxx"}}
+      button(:x, required: true) { {class: "xxx"} }
 
       #canvas Preferred Rates Qualified Postage
-      page_objects(:preferred_rates_qualified_postage, index: 0) {{class: "chartjs-render-monitor"}}
+      page_objects(:preferred_rates_qualified_postage, index: 0) { {class: "chartjs-render-monitor"} }
 
 
     end
 
     class PPResetPasswordPage < SdcPage
       #sdcEndica content
-      page_object(:header) {{xpath: "//h1['Password Reset']"}}
+      page_object(:header) { {xpath: "//h1['Password Reset']"} }
 
       #Email
-      text_field(:email, tag: :text_field, required: true) {{xpath: "//input[@name='email']"}}
+      text_field(:email, tag: :text_field, required: true) { {xpath: "//input[@name='email']"} }
 
       #submit
-      button(:submit) {{xpath: "//button[@label='Submit']/span" }}
+      button(:submit) { {xpath: "//button[@label='Submit']/span" } }
     end
 
     class << self

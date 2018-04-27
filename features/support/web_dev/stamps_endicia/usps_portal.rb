@@ -9,10 +9,10 @@ module Stamps
       page_objects(:error_message, index: 1)  { {xpath: "//p"} }
 
       #sdcEndica logo
-      page_object(:sdc_endicia_logo) {{xpath: "//img[@alt='Stamps.com and Endicia']"}}
+      page_object(:sdc_endicia_logo) { {xpath: "//img[@alt='Stamps.com and Endicia']"} }
 
       #USPS Portal content
-      page_object(:usps_portal_content) {{xpath: "//h3['USPS Portal']"}}
+      page_object(:usps_portal_content) { {xpath: "//h3['USPS Portal']"} }
 
       #Email textbox
       text_field(:email, tag: :text_field, required: true) { {name: "email"} }
@@ -26,10 +26,10 @@ module Stamps
 
       #Log In button
       button(:log_in) { {xpath: "//button[@label='Log In']"} }
-      button(:login_label) {{xpath: "//button[@label='Log In']/span"}}
+      button(:login_label) { {xpath: "//button[@label='Log In']/span"} }
 
       #Forgot Password? link
-      link(:forgot_pw) {{xpath: "//a[@href='/password-reset/request']"}}
+      link(:forgot_pw) { {xpath: "//a[@href='/password-reset/request']"} }
 
 
       page_url { |env| "https://uspsportal.#{env}.stampsendicia.net/login" }
