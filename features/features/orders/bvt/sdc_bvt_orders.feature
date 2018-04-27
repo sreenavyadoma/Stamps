@@ -71,7 +71,6 @@ Feature:  BVT tests for Orders
     Then click Orders Toolbar Print button
     Then expect Print modal Ship Date is 1 days from today
     Then close Print Modal
-    Then set Orders Settings General postdate to 5:00 p.m.
 
     Then set Orders Settings General postdate to now +2 hours
     Then add new order
