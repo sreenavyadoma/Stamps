@@ -11,5 +11,3 @@ Feature:  Mail BVT - Authentication
     Then visit Mail
     Then sign-in to Mail
     Then sign-out of SDC Website
-
-
