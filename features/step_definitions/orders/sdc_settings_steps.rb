@@ -3,11 +3,15 @@ Then /^[Ss]et [Oo]rders [Ss]ettings [Gg]eneral [Pp]ostdate to (now [+-]\d+ hours
   time = TestHelper.now_plus_hh(/[+-]\d+/.match(time).to_s.to_i) unless /^\d{1,2}:\d\d [ap].m.$/.match(time)
   settings = SdcOrders.modals.settings.general_settings
   settings.selection(time)
-  settings.postdate_drop_down.click
-  settings.selection_obj.scroll_into_view.click
+  5.times do
+    settings.postdate_drop_down.click unless settings.selection_obj.present?
+    settings.selection_obj.scroll_into_view.safe_click
+    break if settings.postdate_text_field.text_value.include?(time)
+  end
   expect(settings.postdate_text_field.text_value).to include(time), "Postdate was not selected"
   step "close Orders Settings modal"
 end
+
 
 Then /^[Oo]pen [Oo]rders [Ss]ettings [Mm]odal$/ do
   step 'Wait until order toolbar present 40, 3'
@@ -31,7 +35,7 @@ Then /^[Oo]pen [Oo]rders [Ss]ettings [Gg]eneral [Ss]ettings$/ do
 end
 
 Then /^[Cc]lose [Oo]rders [Ss]ettings [Mm]odal$/ do
-  SdcOrders.modals.settings.close.click
-  sleep(4.2)
-  #expect(SdcOrders.modals.settings.general_settings.title).not_to be_present, "Order Settings modal present"
+  SdcOrders.modals.settings.close.safe_click
+  sleep(0.2)
+  expect(SdcOrders.modals.settings.general_settings.title).not_to be_present, "Order Settings modal present"
 end
