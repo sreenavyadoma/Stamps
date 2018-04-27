@@ -49,7 +49,7 @@ alex_mail:  --tags @mail_bvt_purchasing BROWSER=ff WEB_APP=mail JENKINS=true URL
 alex_regress:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders JENKINS=true URL=cc USR=abqacc10 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
 alex_rates:  --tags @rates_fcm_package BROWSER=ff WEB_APP=mail JENKINS=true URL=qacc USR=abqacc10 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
 alex_rates_pmi:  --tags @rates_pmi_comm_plus_group_9 BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast2 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
-alex_orders:  --tags @bvt_orders_ship_date BROWSER=ff WEB_APP=orders JENKINS=true URL=qacc USR=abqacc10 PW=password1 new_framework=true  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false #abqast1
+alex_orders:  --tags @bvt_orders_ship_date BROWSER=ff WEB_APP=orders JENKINS=true URL=prod USR=abqaprod1 PW=password1 new_framework=true  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false #abqast1
 alex_orders_stg:  --tags @bvt_orders_ship_date BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast2 PW=password1 new_framework=true  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false #abqast1
 alex_test:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders JENKINS=true URL=qacc USR=abqacc10 PW=password1  --guess VERBOSE=true HEALTHCHECK=false MAX_WINDOW=false
 

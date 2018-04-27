@@ -9,7 +9,8 @@ end
 
 Then /^[Ww]ait [Uu]ntil [Oo]rder [Tt]oolbar [Pp]resent(?: (\d+), (\d+)|)$/ do |iteration, delay|
   (iteration.zero? ? 20 : iteration).times do
-    break if SdcOrders.toolbar.add.present?
+    # break if SdcOrders.toolbar.add.present?
+    break unless SdcOrders.loading_popup.loading_orders.present?
     sleep(delay.zero? ? 0.2 : delay / 10)
   end
 end
