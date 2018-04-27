@@ -52,7 +52,7 @@ Feature:  BVT tests for Orders
   Scenario: Ship Date defaults to today
     Then visit Orders landing page
     Then sign-in to Orders
-    Then set Orders Settings General postdate to now +2 hours
+    #Then set Orders Settings General postdate to now +2 hours
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
