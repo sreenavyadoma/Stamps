@@ -147,13 +147,13 @@ module Stamps
     end
 
     def present?
-      @element.send(:displayed?) if @lement.respond_to?(:displayed?)
-      @element.send(:present?)
+      send(:displayed?) if respond_to?(:displayed?)
+      send(:present?)
     end
 
     def enabled?
       begin
-        return @element.send(:enabled?)
+        return send(:enabled?)
       rescue
         # ignore
       end
@@ -163,7 +163,7 @@ module Stamps
 
     def visible?
       begin
-        return @element.send(:visible?)
+        return send(:visible?)
       rescue
         # ignore
       end
@@ -173,7 +173,8 @@ module Stamps
 
     def safe_hover
       begin
-        @element.send(:focus).send(:hover)
+        send(:focus)
+        send(:hover)
       rescue
         # ignore
       end
@@ -182,14 +183,18 @@ module Stamps
     end
 
     def set(*args)
-      return @element.send(:send_keys, *args) if @element.is_a? ::Selenium::WebDriver::Element
-      @element.send(:set, *args)
+      return send(:send_keys, *args) if is_a? ::Selenium::WebDriver::Element
+      send(:set, *args)
+    end
+
+    def set_attribute(name, value)
+      execute_script("return arguments[0].#{name}='#{value}'", @element)
     end
 
     def safe_send_keys(*args, ctr: 1)
       ctr.to_i.times do
         begin
-          @element.send(:send_keys, *args)
+          send(:send_keys, *args)
         rescue
           # ignore
         end
@@ -213,7 +218,7 @@ module Stamps
     def safe_click(*modifiers, ctr: 1)
       ctr.to_i.times do
         begin
-          @element.send(:click, *modifiers)
+          send(:click, *modifiers)
         rescue
           # ignore
         end
@@ -223,20 +228,20 @@ module Stamps
     end
 
     def wait_until_present(timeout: 20, interval: 0.2)
-      if @element.respond_to? :wait_until_present
-        @element.send(:wait_until_present, timeout: timeout, interval: interval)
+      if respond_to? :wait_until_present
+        send(:wait_until_present, timeout: timeout, interval: interval)
       else
-        wait_until(timeout: timeout, interval: interval) { present? }
+        wait_until(timeout: timeout, interval: interval, &:present?)
       end
 
       self
     end
 
     def wait_while_present(timeout: 20, interval: 0.2)
-      if @element.respond_to? :wait_while_present
-        @element.send(:wait_while_present, timeout: timeout)
+      if respond_to? :wait_while_present
+        send(:wait_while_present, timeout: timeout)
       else
-        wait_until(timeout: timeout, interval: interval) { present? }
+        wait_while(timeout: timeout, interval: interval, &:present?)
       end
 
       self
@@ -260,14 +265,14 @@ module Stamps
 
     def text_value
       begin
-        text = @element.send(:text)
+        text = send(:text)
         return text if text.size > 0
       rescue
         # ignore
       end
 
       begin
-        value = @element.send(:value)
+        value = send(:value)
         return value if value.size > 0
       rescue
         # ignore
@@ -291,7 +296,7 @@ module Stamps
     def safe_double_click(ctr: 1)
       ctr.to_i.times do
         begin
-          @element.double_click
+          double_click
         rescue
           # ignore
         end
@@ -302,10 +307,11 @@ module Stamps
 
     def scroll_into_view
       begin
-        @element.execute_script('arguments[0].scrollIntoView();', @element)
+        execute_script('arguments[0].scrollIntoView();', @element)
       rescue
         # ignore
       end
+
       self
     end
 
@@ -335,10 +341,14 @@ module Stamps
     end
 
     def attribute_include?(property_name, property_value)
-      if @element.respond_to? :attribute_value
-        return @element.send(:attribute_value, property_name).include?(property_value)
+      if respond_to? :attribute_value
+        return send(:attribute_value, property_name).include?(property_value)
       end
-      @element.send(:attribute, property_name).include?(property_value)
+      send(:attribute, property_name).include?(property_value)
+    end
+
+    def respond_to?(name, include_private = false)
+      super || @element.respond_to?(name, include_private)
     end
 
     def method_missing(name, *args, &block)
@@ -349,8 +359,6 @@ module Stamps
 
   class SdcChooser < BasicObject
 
-    attr_reader :element, :verify, :property, :property_val
-
     def initialize(element, verify, property, property_val)
       @element = element
       @verify = verify
@@ -360,46 +368,54 @@ module Stamps
     end
 
     def chosen?
-      if verify.respond_to? :attribute_value
-        result = verify.attribute_value(property)
+      if @verify.respond_to? :attribute_value
+        result = @verify.attribute_value(@property)
       else
-        result = verify.attribute(property)
+        result = @verify.attribute(@property)
       end
       return result.casecmp('true').zero? if result.casecmp('true').zero? || result .casecmp('false').zero?
-      result.include?(property_val)
+      result.include?(@property_val)
     end
     alias_method :checked?, :chosen?
     alias_method :selected?, :chosen?
 
     def choose(iter: 3)
-      iter.times do element.click; break if chosen? end
+      iter.times do @element.click; break if chosen? end
       chosen?
     end
     alias_method :check, :choose
     alias_method :select, :choose
 
     def unchoose(iter: 3)
-      iter.times do break unless chosen?; element.click end
+      iter.times do break unless chosen?; @element.click end
       chosen?
     end
     alias_method :uncheck, :unchoose
     alias_method :unselect, :unchoose
 
+    def respond_to?(name, include_private = false)
+      super || @element.respond_to?(name, include_private)
+    end
+
     def method_missing(method, *args, &block)
-      super unless element.respond_to?(method)
-      element.send(method, *args, &block)
+      super unless @element.respond_to?(method)
+      @element.send(method, *args, &block)
     end
   end
 
   class SdcNumber < BasicObject
 
-    attr_reader :text_field, :increment, :decrement
+    attr_reader :increment, :decrement
 
     def initialize(text_field, increment, decrement)
       @text_field = text_field
       @increment = increment
       @decrement = decrement
       # set_instance_variables(binding, *local_variables)
+    end
+
+    def respond_to?(name, include_private = false)
+      super || @text_field.respond_to?(name, include_private)
     end
 
     def method_missing(name, *args, &block)

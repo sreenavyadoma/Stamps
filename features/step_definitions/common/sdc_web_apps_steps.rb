@@ -1,3 +1,82 @@
+Then /^Verify Health Check for (.+)$/ do |str|
+
+  env = case(str.downcase)
+        when /orders/
+          case SdcEnv.env
+          when :qacc
+            'printext.qacc'
+          when :qasc
+            'printext.qasc'
+          when :stg
+            'print.testing'
+          when :prod
+            ''
+          else
+            # ignore
+          end
+
+        when /address/
+          case SdcEnv.env
+          when :qacc
+            'printext.qacc'
+          when :qasc
+            'printext.qasc'
+          when :stg
+            'print.testing'
+          when :prod
+            ''
+          else
+            # ignore
+          end
+
+        when /or reports/
+          case SdcEnv.env
+          when :qacc
+            'orext.qacc'
+          when :qasc
+            'orext.qasc'
+          when :stg
+            'or.staging'
+          when :prod
+            ''
+          else
+            # ignore
+          end
+
+        when /postage/
+          case SdcEnv.env
+          when :qacc
+            'orext.qacc'
+          when :qasc
+            'orext.qasc'
+          when :stg
+            'or.staging'
+          when :prod
+            ''
+          else
+            # ignore
+          end
+
+        else
+          # ignore
+        end
+
+  app = case(str.downcase)
+        when /orders/
+          :orders
+        when /address/
+          :addressbook
+        when /or reports/
+          :orreports
+        when /postage/
+          :postagetools
+        else
+          raise ArgumentError, "Healthcheck not supported for #{str}"
+        end
+
+  SdcHealthCheck.visit(env, app)
+  expect(SdcHealthCheck.browser.text).to include("All tests passed") if SdcEnv.health_check
+end
 
 Then /^visit Orders landing page$/ do
   SdcOrdersLandingPage.visit(case SdcEnv.env
@@ -56,28 +135,11 @@ Then /^[Ss]ign-in to SDC Website$/ do
 end
 
 Then /^sign-out of SDC Website$/ do
-   if SdcEnv.browser
-     3.times do
-       SdcNavigation.user_drop_down.signed_in_user.safe_wait_until_present(timeout: 5)
-       SdcNavigation.user_drop_down.signed_in_user.hover
-       SdcNavigation.user_drop_down.sign_out_link.safe_wait_until_present(timeout: 1)
-       SdcNavigation.user_drop_down.sign_out_link.safe_click
-       SdcWebsite.landing_page.username.safe_wait_until_present(timeout: 3)
-       break if SdcWebsite.landing_page.username.present?
-     end
-   elsif SdcEnv.ios
-     begin
-       SdcNavigation.user_drop_down.signed_in_user.click
-       SdcNavigation.user_drop_down.sign_out_link.send_keys(:enter)
-     rescue
-       # ignore
-     end
-
-   elsif SdcEnv.android
-     SdcPage.browser.hide_keyboard
-     SdcPage.browser.action.move_to(SdcNavigation.user_drop_down.signed_in_user).click.perform
-     SdcPage.browser.action.move_to(SdcNavigation.user_drop_down.sign_out_link).send_keys(:enter).perform
-   end
+  SdcNavigation.user_drop_down.signed_in_user.safe_wait_until_present(timeout: 5)
+  SdcNavigation.user_drop_down.signed_in_user.hover
+  SdcNavigation.user_drop_down.sign_out_link.safe_wait_until_present(timeout: 1)
+  SdcNavigation.user_drop_down.sign_out_link.safe_click
+  SdcWebsite.landing_page.username.safe_wait_until_present(timeout: 3)
 end
 
 Then /^sign-in to Orders(?: as (.+), (.+)|)$/ do |usr, pw|
@@ -95,6 +157,7 @@ Then /^sign-in to Orders(?: as (.+), (.+)|)$/ do |usr, pw|
   expect(usr).to be_truthy
   expect(pw).to be_truthy
 
+  SdcWebsite.landing_page.username.set_attribute('value', 'new value')
   SdcWebsite.landing_page.username.set(TestData.store[:username] = usr)
   SdcWebsite.landing_page.password.set(TestData.store[:password] = pw)
   if SdcEnv.browser

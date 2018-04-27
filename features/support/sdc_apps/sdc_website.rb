@@ -1,4 +1,7 @@
 module Stamps
+  class SdcHealthCheck < SdcPage
+    page_url { |env, app| "https://#{env}.stamps.com/#{app.to_s}/healthcheck.aspx" }
+  end
 
   class SdcMailLandingPage < SdcPage
     page_url { |env| "https://print#{env}.stamps.com/webpostage/default2.aspx" }

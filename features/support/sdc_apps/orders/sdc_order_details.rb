@@ -5,7 +5,7 @@ module Stamps
       page_object(:text_field) { {xpath: '(//input[starts-with(@id, "shipfromdroplist")])[1]'} }
 
       def selection(str)
-        self.class.page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
+        self.class.page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} } 
       end
     end
 
