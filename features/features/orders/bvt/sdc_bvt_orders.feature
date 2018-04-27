@@ -53,6 +53,7 @@ Feature:  BVT tests for Orders
     Then visit Orders landing page
     Then sign-in to Orders
     Then set Orders Settings General postdate to now +2 hours
+    Then close Orders Settings modal
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
@@ -62,7 +63,9 @@ Feature:  BVT tests for Orders
     Then expect Print modal Ship Date is 0 days from today
     Then close Print Modal
 
+    Then Open Orders Settings General Settings
     Then set Orders Settings General postdate to now -2 hours
+    Then close Orders Settings modal
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
@@ -72,7 +75,9 @@ Feature:  BVT tests for Orders
     Then expect Print modal Ship Date is 1 days from today
     Then close Print Modal
 
+    Then Open Orders Settings General Settings
     Then set Orders Settings General postdate to now +2 hours
+    Then close Orders Settings modal
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
@@ -86,13 +91,16 @@ Feature:  BVT tests for Orders
     Then set Print modal Ship Date to today
     Then expect Print modal Ship Date is 0 days from today
     Then close Print Modal
+    Then Open Orders Settings General Settings
     Then set Orders Settings General postdate to 5:00 p.m.
+    Then close Orders Settings modal
     Then Sign out
 
   @bvt_orders_ship_date_calendar
   Scenario: Set Ship Date to today
     Then visit Orders landing page
     Then sign-in to Orders
+    Then Open Orders Settings General Settings
     Then set Orders Settings General postdate to now +2 hours
     Then add new order
     Then set Order Details Ship-From to default
@@ -107,5 +115,7 @@ Feature:  BVT tests for Orders
     Then select Print modal Ship Date datepicker to today
     Then expect Print modal Ship Date is 0 days from today
     Then close Print Modal
+    Then Open Orders Settings General Settings
     Then set Orders Settings General postdate to 5:00 p.m.
+    Then close Orders Settings modal
     Then Sign out

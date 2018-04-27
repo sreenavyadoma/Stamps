@@ -1,14 +1,10 @@
 Then /^[Ss]et [Oo]rders [Ss]ettings [Gg]eneral [Pp]ostdate to (now [+-]\d+ hours|\d{1,2}:\d\d [ap].m.)$/ do |time|
-  step "Open Orders Settings General Settings"
   time = TestHelper.now_plus_hh(/[+-]\d+/.match(time).to_s.to_i) unless /^\d{1,2}:\d\d [ap].m.$/.match(time)
   settings = SdcOrders.modals.settings.general_settings
   settings.selection(time)
-  3.times do
-    settings.postdate_drop_down.click unless settings.selection_obj.present?
-    break if settings.postdate_text_field.text_value.include?(time)
-  end
+  settings.postdate_drop_down.click
+  settings.selection_obj.scroll_into_view.click
   expect(settings.postdate_text_field.text_value).to include(time), "Postdate was not selected"
-  step "close Orders Settings modal"
 end
 
 
