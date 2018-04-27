@@ -49,7 +49,7 @@ Feature: Forgot Password, Forgot Username, Invalid Credentials, Remember Usernam
     Then Expect Invalid Message is "Your username or password is invalid." for  /
     Then Sign out
 
-  @mail_remember_username
+  #@mail_remember_username
   Scenario: Remember Username
     Then load Web Apps Sign-in page
     Then Mail Sign In: Set Username to
