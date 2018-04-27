@@ -48,7 +48,7 @@ Feature:  BVT tests for Orders
     Then sign-out of SDC Website
 
 
-#  @bvt_orders_ship_date
+  @bvt_orders_ship_date
   Scenario: Ship Date defaults to today
     Then visit Orders landing page
     Then sign-in to Orders
@@ -61,13 +61,7 @@ Feature:  BVT tests for Orders
     Then click Orders Toolbar Print button
     Then expect Print modal Ship Date is 0 days from today
     Then close Print Modal
-    Then set Orders Settings General postdate to 5:00 p.m.
-    Then Sign out
 
-#  @bvt_orders_ship_date
-  Scenario: Ship Date defaults to tomorrow
-    Then visit Orders landing page
-    Then sign-in to Orders
     Then set Orders Settings General postdate to now -2 hours
     Then add new order
     Then set Order Details Ship-From to default
@@ -78,12 +72,7 @@ Feature:  BVT tests for Orders
     Then expect Print modal Ship Date is 1 days from today
     Then close Print Modal
     Then set Orders Settings General postdate to 5:00 p.m.
-    Then Sign out
 
-  @bvt_orders_ship_date
-  Scenario: Set Ship Date to today
-    Then visit Orders landing page
-    Then sign-in to Orders
     Then set Orders Settings General postdate to now +2 hours
     Then add new order
     Then set Order Details Ship-From to default
