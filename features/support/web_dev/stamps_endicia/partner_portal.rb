@@ -4,7 +4,9 @@ module Stamps
 
     class PPLoginPage < SdcPage
       #Welcome content
-      page_objects(:welcome_content, index: 0)  { {xpath: "//p"} }
+      #page_objects(:welcome_content, index: 0)  { {xpath: "//p"} }
+
+      page_object(:welcome_content) { {xpath: "//img[@alt='Stamps.com Endicia | Partner Portal logo']"} }
 
       #Error Message
       page_objects(:error_message, index: 1)  { {xpath: "//p"} }

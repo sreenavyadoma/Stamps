@@ -115,6 +115,7 @@ Then /^[Pp]P: [Ee]xpect login page [Pp]assword tooltip index (\d+) to be (.*)$/ 
 end
 
 Then /^[Pp]P: [Ee]xpect login page error message to be$/ do |str|
+  PartnerPortal.login_page.error_message.safe_wait_while_present
   expect(PartnerPortal.login_page.error_message.text.strip).to eql(str)
 end
 
