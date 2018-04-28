@@ -318,7 +318,7 @@ Then /^[Cc]lick the [Ss]ign [Ii]n button in [Mm]ail$/ do
 end
 
 Then /^[Oo]pen [Ss]ign [Ii]n [Mm]odal in [Mm]ail$/ do
-  modal=SdcWebsite.navigation.mail_sign_in_modal
+  modal = SdcWebsite.navigation.mail_sign_in_modal
   2.to_i.times do
     begin
       modal.sign_in_link.click
