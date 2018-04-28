@@ -271,19 +271,16 @@ Then /^sign-in to Mail(?: as (.+), (.+)|)$/ do |usr, pw|
 
   modal = SdcWebsite.navigation.mail_sign_in_modal
   if SdcEnv.browser
-    3.to_i.times do
-      begin
-        modal.sign_in_link.click
-        modal.username.set(TestData.store[:username] = usr)
-        modal.password.set(TestData.store[:password] = pw)
-        modal.sign_in.click
-        signed_in_user.wait_until_present(timeout: 12, interval: 0.2)
-        break if signed_in_user.present?
-      rescue
-        # ignore
-      end
-    end
-    expect(SdcWebsite.navigation.user_drop_down.signed_in_user.text_value).to include(TestData.store[:username])
+    modal.sign_in_link.click
+    modal.username.set(usr)
+    modal.password.set(pw)
+    modal.sign_in.click
+
+    signed_in_user = SdcWebsite.navigation.user_drop_down.signed_in_user
+    signed_in_user.wait_until_present(timeout: 60, interval: 0.2)
+    expect(signed_in_user.text_value).to include(usr)
+    TestData.store[:username] = usr
+    TestData.store[:password] = pw
 
   elsif SdcEnv.ios
     raise StandardError, 'Not Implemented'
