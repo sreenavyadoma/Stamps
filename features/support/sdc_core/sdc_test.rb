@@ -87,49 +87,37 @@ class SdcTest
     end
 
     def win10_edge_sauce
-      begin
-        capabilities_config = {
-            :version => "16.16299",
-            :platform => "Windows 10",
-            :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
-        }
+      capabilities_config = {
+          :version => "16.16299",
+          :platform => "Windows 10",
+          :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+      }
 
-        build_name = ENV['JENKINS_BUILD_NUMBER'] || ENV['SAUCE_BAMBOO_BUILDNUMBER'] || ENV['SAUCE_TC_BUILDNUMBER'] || ENV['SAUCE_BUILD_NAME']
-        capabilities_config[:build] = build_name unless build_name.nil?
-        caps = Selenium::WebDriver::Remote::Capabilities.send(:edge, capabilities_config)
+      build_name = ENV['JENKINS_BUILD_NUMBER'] || ENV['SAUCE_BAMBOO_BUILDNUMBER'] || ENV['SAUCE_TC_BUILDNUMBER'] || ENV['SAUCE_BUILD_NAME']
+      capabilities_config[:build] = build_name unless build_name.nil?
+      caps = Selenium::WebDriver::Remote::Capabilities.send(:edge, capabilities_config)
 
-        client = Selenium::WebDriver::Remote::Http::Default.new
-        client.timeout = 120
+      client = Selenium::WebDriver::Remote::Http::Default.new
+      client.timeout = 120
 
-        browser = Watir::Browser.new(:remote, {desired_capabilities: caps, http_client: client, url: sauce_endpoint})
-        return browser
-      rescue Exception => e
-        SdcLog.error e.backtrace.join("\n")
-        raise e
-      end
+      Watir::Browser.new(:remote, {desired_capabilities: caps, http_client: client, url: sauce_endpoint})
     end
 
     def macos_chrome_sauce
-      begin
-        capabilities_config = {
-            :version => "65.0",
-            :platform => "macOS 10.13",
-            :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
-        }
+      capabilities_config = {
+          :version => "65.0",
+          :platform => "macOS 10.13",
+          :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+      }
 
-        build_name = ENV['JENKINS_BUILD_NUMBER'] || ENV['SAUCE_BAMBOO_BUILDNUMBER'] || ENV['SAUCE_TC_BUILDNUMBER'] || ENV['SAUCE_BUILD_NAME']
-        capabilities_config[:build] = build_name unless build_name.nil?
-        caps = Selenium::WebDriver::Remote::Capabilities.send(:chrome, capabilities_config)
+      build_name = ENV['JENKINS_BUILD_NUMBER'] || ENV['SAUCE_BAMBOO_BUILDNUMBER'] || ENV['SAUCE_TC_BUILDNUMBER'] || ENV['SAUCE_BUILD_NAME']
+      capabilities_config[:build] = build_name unless build_name.nil?
+      caps = Selenium::WebDriver::Remote::Capabilities.send(:chrome, capabilities_config)
 
-        client = Selenium::WebDriver::Remote::Http::Default.new
-        client.timeout = 120
+      client = Selenium::WebDriver::Remote::Http::Default.new
+      client.timeout = 120
 
-        browser = Watir::Browser.new(:remote, {desired_capabilities: caps, http_client: client, url: sauce_endpoint})
-        return browser
-      rescue Exception => e
-        SdcLog.error e.backtrace.join("\n")
-        raise e
-      end
+      Watir::Browser.new(:remote, {desired_capabilities: caps, http_client: client, url: sauce_endpoint})
     end
 
     def iphonex_sauce
@@ -150,9 +138,7 @@ class SdcTest
           }
       }
 
-      # Start the driver
       Appium::Driver.new(desired_caps, false).start_driver
-
     end
 
     def samsung_galaxy_sauce
@@ -173,9 +159,7 @@ class SdcTest
           }
       }
 
-      # Start the driver
       Appium::Driver.new(desired_caps, false).start_driver
-
     end
 
     def configure
@@ -311,24 +295,16 @@ class SdcTest
       @web_apps_param.sdc_app = SdcEnv.sdc_app
     end
 
-    def require_default_gems
-    end
-
     def require_gems
-
       require 'appium_lib'
       require 'appium_lib_core'
+      require 'mysql2' if SdcEnv.usr.nil? || SdcEnv.usr.casecmp('default').zero?
 
       if /rates/.match(scenario.tags[0].name)
         require 'spreadsheet'
         require "csv"
         include Spreadsheet
       end
-
-      if SdcEnv.usr.nil? || SdcEnv.usr.casecmp('default').zero?
-        require 'mysql2'
-      end
-
     end
 
     def web_apps_param
@@ -367,7 +343,6 @@ class SdcTest
       #   SdcLog.info "#{SdcPage.browser} closed."
       # end
 
-      sleep 2
       SdcPage.browser.quit
     end
 
