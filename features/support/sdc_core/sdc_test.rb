@@ -264,7 +264,7 @@ module SdcTest
     #todo-Rob These should be in an orders/mail or sdc_apps environment variable container. This is a temp fix.
     SdcEnv.printer = ENV['PRINTER']
 
-    # Support for old framework and will be phased out
+    # Support for old framework. This will be phased out.
     @web_apps_param = Stamps::WebApps::Param.new
     @web_apps_param.log = SdcLogger
     @web_apps_param.test_scenario
