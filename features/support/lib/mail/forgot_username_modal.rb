@@ -38,7 +38,7 @@ module Stamps
       end
 
       def ok
-        confirmation=StampsField.new(driver.label(text: "We have sent your username to the email address associated with your account. If you cannot find this email, please check your spam folder."))
+        confirmation = StampsField.new(driver.label(text: "We have sent your username to the email address associated with your account. If you cannot find this email, please check your spam folder."))
         5.times do
           sleep(0.35)
           break if confirmation.present?
