@@ -252,7 +252,7 @@ module SdcTest
 
     require_gems
 
-    SdcLogger.initialize(verbose: SdcEnv.verbose)
+    SdcLogger.new(verbose: SdcEnv.verbose)
 
     #todo-Rob These should be in an orders/mail or sdc_apps environment variable container. This is a temp fix.
     SdcEnv.printer = ENV['PRINTER']

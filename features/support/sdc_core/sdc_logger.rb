@@ -1,11 +1,24 @@
 module Stamps
   class SdcLogger < BasicObject
-    class << self
 
-      def initialize(verbose: true)
-        @verbose = verbose
-        @logger = Log4r::Logger.new(':')
-        @logger.outputters = Log4r::Outputter.stdout
+    def initialize(verbose: true)
+      @@logger = create_logger
+      @@verbose = verbose
+    end
+
+    def create_logger
+      logger = ::Log4r::Logger.new(':')
+      logger.outputters = ::Log4r::Outputter.stdout
+      logger
+    end
+
+    class << self
+      def logger
+        @@logger
+      end
+
+      def verbose
+        @@verbose
       end
 
       def info(*args)
@@ -18,9 +31,6 @@ module Stamps
         super unless logger.respond_to?(method)
         logger.send(method, *args)
       end
-
-      private
-      attr_reader :logger, :verbose
     end
   end
 end
