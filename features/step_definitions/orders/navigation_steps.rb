@@ -1,6 +1,6 @@
 Then /^[Oo]n Add Funds modal, purchase 10$/ do
   #SdcLog.step "on Add Funds modal, purchase 10"
-  TestData.store[:old_balance]=stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
+  TestData.store[:old_balance] = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
   stamps.navigation_bar.balance.buy_more.buy_10.select
 end
 
@@ -20,22 +20,22 @@ Then click print modal print button
 =end
 
 Then /^[Oo]n Add Funds modal, purchase 25$/ do
-  TestData.store[:old_balance]=stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
+  TestData.store[:old_balance] = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
   stamps.navigation_bar.balance.buy_more.buy_25.select
 end
 
 Then /^[Oo]n Add Funds modal, purchase 50$/ do
-  TestData.store[:old_balance]=stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
+  TestData.store[:old_balance] = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
   stamps.navigation_bar.balance.buy_more.buy_50.select
 end
 
 Then /^[Oo]n Add Funds modal, purchase 100$/ do
-  TestData.store[:old_balance]=stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
+  TestData.store[:old_balance] = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
   stamps.navigation_bar.balance.buy_more.buy_100.select
 end
 
 Then /^[Oo]n Add Funds modal, purchase Other Amount (\d+)$/ do |amount|
-  TestData.store[:old_balance]=stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
+  TestData.store[:old_balance] = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
   stamps.navigation_bar.balance.buy_more.buy_other amount
 end
 
@@ -44,7 +44,7 @@ Then /^[Oo]n Add Funds modal, click Purchase [Bb]utton$/ do
 end
 
 Then /^Buy Mail Confirm Transction: Click Confirm [Bb]utton$/ do
-  @purchase_approved=stamps.navigation_bar.balance.buy_more.purchase.confirm
+  @purchase_approved = stamps.navigation_bar.balance.buy_more.purchase.confirm
 end
 
 Then /^Buy Mail Confirm Purchase: Expect text area contains, Please confirm your \$(.*) postage purchase.$/ do |amount|
@@ -64,7 +64,7 @@ end
 Then /^Buy Mail: Expect customer balance increased by \$(\d+)$/ do |purchase_amount|
   10.times do
     sleep(0.35)
-    break if stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f - TestData.store[:old_balance].to_f ==  purchase_amount.to_f
+    break if stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f - TestData.store[:old_balance].to_f == purchase_amount.to_f
   end
   expect((stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f - TestData.store[:old_balance].to_f).round(2)).to eql purchase_amount.to_f.round(2)
 end

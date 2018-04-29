@@ -17,7 +17,7 @@ Then /^[Ss]elect [Ff]ilter [Pp]anel tab (.*)$/ do |str|
 end
 
 Then /^[Ee]xpect selected [Ff]ilter is (.*)$/ do |expectation|
-  30.times { sleep(0.25); break if stamps.orders.filter_panel.selected_filter==expectation }
+  30.times { sleep(0.25); break if stamps.orders.filter_panel.selected_filter == expectation }
   expect(stamps.orders.filter_panel.selected_filter).to eql expectation
 end
 
@@ -39,9 +39,9 @@ end
 
 # todo-Rob In left Filter Panel, expect Shipped Tab Date Printed is today
 Then /^[Ii]n left Filter Panel, expect Shipped Tab Date Printed is today$/ do
-  today=TestHelper.now_plus_mon_dd 0
+  today = TestHelper.now_plus_mon_dd 0
   stamps.orders.filter_panel.shipped.select.date_printed.sort_descending
-  actual_print_date=stamps.orders.filter_panel.shipped.select.date_printed.row 1
+  actual_print_date = stamps.orders.filter_panel.shipped.select.date_printed.row 1
 end
 
 # todo-Rob is this needed?
@@ -91,7 +91,7 @@ Then /^Filter Panel: Click on panel$/ do
 end
 
 Then /^[Ii]n left Filter Panel, expect Filters panel is close$/ do
-  actual=stamps.orders.filter_panel.search_orders.present?
+  actual = stamps.orders.filter_panel.search_orders.present?
   expect(actual).to be(false)
 end
 
@@ -117,7 +117,7 @@ end
 
 
 Then /^[Ii]n left Filter Panel, expect printed Order ID is not in Awaiting Shipment tab$/ do
-  grid=stamps.orders.filter_panel.awaiting_shipment.select
-  row1_order_id=grid.order_id.row(1)
+  grid = stamps.orders.filter_panel.awaiting_shipment.select
+  row1_order_id = grid.order_id.row(1)
   expect((TestData.store[:order_id].values.last).include? row1_order_id).is(false)
 end

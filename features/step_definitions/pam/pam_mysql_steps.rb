@@ -21,21 +21,21 @@ Then /^[Ss]eeart PAM Customer Search page username from parameter file$/ do
 end
 
 Then /^[Ss]earch PAM [Cc]ustomer [Ss]earch page for username (.*)$/ do |str|
-  iteration=10
+  iteration = 10
   iteration.times do |index|
-    pam.customer_search_page.username.set(TestData.store[:username]=str)
+    pam.customer_search_page.username.set(TestData.store[:username] = str)
     pam.customer_search_page.search_btn.click
     pam.customer_profile_page.wait_until_present(2)
     if pam.customer_profile_page.present?
       break
     elsif pam.customer_not_found_page.present?
       SdcLog.step "PAM:  #{pam.customer_not_found_page.status_reason.text}"
-      SdcDriver.browser.back unless index==iteration-1
+      SdcDriver.browser.back unless index == iteration - 1
       sleep(0.25)
       pam.customer_profile_page.username.set(str)
     elsif pam.meter_info_not_available.present?
       SdcLog.step "PAM:  #{pam.meter_info_not_available.error_message.text}"
-      SdcDriver.browser.back unless index==iteration-1
+      SdcDriver.browser.back unless index == iteration - 1
     end
   end
   expect(pam.customer_not_found_page.status_reason.text).to eql("OK") if pam.customer_not_found_page.present?
@@ -44,12 +44,12 @@ Then /^[Ss]earch PAM [Cc]ustomer [Ss]earch page for username (.*)$/ do |str|
 end
 
 Then /^[Ss]et PAM [Cc]ustomer [Ss]earch page [Uu]sername to (?:cached value|(.*))$/ do |str|
-  TestData.store[:username]=str unless str.nil?
+  TestData.store[:username] = str unless str.nil?
   pam.customer_search.search_username(TestData.store[:username])
 end
 
 Then /^[Cc]lick PAM [Cc]ustomer [Ss]earch page [Ss]earch [Bb]utton$/ do
-  TestData.store[:pam_search_result]=pam.customer_search.search_username(TestData.store[:username])
+  TestData.store[:pam_search_result] = pam.customer_search.search_username(TestData.store[:username])
 end
 
 Then /^[Cc]lick PAM AppCap Overrides link$/ do
@@ -138,6 +138,6 @@ Then /^[Oo]n PAM AppCap Overrides page, set Mailing Label Printing to Override$/
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, Submit$/ do
-  result=pam.appcap_overrides_page.submit.ok
+  result = pam.appcap_overrides_page.submit.ok
   SdcLog.info " ############## #{TestData.store[:username]}: #{result}"
 end

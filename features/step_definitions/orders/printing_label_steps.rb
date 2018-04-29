@@ -1,6 +1,6 @@
 Then /^View Print On option (.*) tooltip$/ do |label|
   #SdcLog.step "View Print On option #{label} tooltip"
-  tooltip=stamps.orders.modals.orders_print_modal.print_on_tooltip label
+  tooltip = stamps.orders.modals.orders_print_modal.print_on_tooltip label
 end
 
 #Shipping Label 5.5 x 8.5

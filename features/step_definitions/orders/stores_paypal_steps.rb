@@ -9,7 +9,7 @@ Then /^[Ee]xpect [Pp]ay[Pp]al logo present$/ do
 end
 
 Then /^[Ss]et [Pp]ay[Pp]al Email Address to (.*)$/ do |email|
-  stamps.orders.marketplace.paypal.paypal_email_address.set(TestData.store[:paypal_email]=email)
+  stamps.orders.marketplace.paypal.paypal_email_address.set(TestData.store[:paypal_email] = email)
 end
 
 Then /^[Cc]lick [Pp]ay[Pp]al [Vv]erify [Ee]mail [Bb]utton$/ do
@@ -23,16 +23,16 @@ end
 
 Then /^PayPal Email Verification Required: Send Email Verification$/ do
   #SdcLog.step "PayPal Email Verification Required: Send Email Verification"
-  @verification_sent=stamps.orders.marketplace.paypal.email_verification_modal.send_email_verification
+  @verification_sent = stamps.orders.marketplace.paypal.email_verification_modal.send_email_verification
 end
 
 Then /^PayPal: Expect Email Verification Sent modal is present$/ do
   #SdcLog.step "PayPal: Expect Email Verification Sent modal is present"
-  expectation="Email Verification Sent modal is present"
+  expectation = "Email Verification Sent modal is present"
   if @verification_sent.nil?
-    expectation="Email Verification Sent modal is not present"
+    expectation = "Email Verification Sent modal is not present"
   else
-    expectation="Email Verification Sent modal is not present" unless @verification_sent.present?
+    expectation = "Email Verification Sent modal is not present" unless @verification_sent.present?
   end
   #SdcLog.step "Test #{(expectation=="Email Verification Sent modal is present")?"Passed":"Failed"}"
   expect(expectation).to eql "Email Verification Sent modal is present"
@@ -40,7 +40,7 @@ end
 
 Then /^PayPal: Expect Verification Email is sent to (.*)$/ do |expectation|
   #SdcLog.step "PayPal: Expect Verification Email is sent to #{expectation}"
-  actual=@verification_sent.email
+  actual = @verification_sent.email
   @verification_sent.close
   #SdcLog.step "Test #{(actual==expectation)?"Passed":"Failed"}"
   expect(actual).to eql expectation
@@ -64,7 +64,7 @@ end
 
 Then /^[Ss]et [Pp]ay[Pp]al Email Address restriction to (.*)$/ do |email|
   stamps.orders.marketplace.paypal.verify_email.restrict_to_email_address.set email
-  TestData.store[:paypal_email_restriction]=email
+  TestData.store[:paypal_email_restriction] = email
 end
 
 Then /^[Ss]et [Pp]ay[Pp]al import option to import all transactions$/ do

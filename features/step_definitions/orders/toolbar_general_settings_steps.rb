@@ -489,7 +489,7 @@ end
 # Reset Fields
 
 Then /^[Ii]n Settings modal, Open Reset Fields Modal$/ do
-  @reset_fields=stamps.orders.modals.orders_settings_modal.general_tab.reset_fields
+  @reset_fields = stamps.orders.modals.orders_settings_modal.general_tab.reset_fields
 end
 
 Then /^Reset Fields:  Check Service$/ do

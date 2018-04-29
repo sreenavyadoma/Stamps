@@ -1,6 +1,6 @@
 Then /^[Ee]xpect USPS Terms modal appears$/ do
   #SdcLog.step "Expect USPS Terms modal appears"
-  actual=stamps.orders.orders_toolbar.usps_intl_terms.is_usps_terms_modal_present
+  actual = stamps.orders.orders_toolbar.usps_intl_terms.is_usps_terms_modal_present
   expect(actual).to be(true)
 end
 
