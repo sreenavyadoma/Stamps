@@ -2,7 +2,7 @@ module Stamps
   module RegistrationApp
     def registration
       begin
-        @registration ||= Stamps::Registration::WebRegistration.new(SdcTest.web_apps_param)
+        @registration ||= Stamps::Registration::WebRegistration.new(SdcTest.legacy_web_apps_param)
       rescue StandardError => e
         SdcLogger.error e.message
         SdcLogger.error e.backtrace.join("\n")
@@ -12,7 +12,7 @@ module Stamps
 
     def sdc_website
       begin
-        @sdc_website ||= Stamps::Registration::SdcWebsite.new(SdcTest.web_apps_param)
+        @sdc_website ||= Stamps::Registration::SdcWebsite.new(SdcTest.legacy_web_apps_param)
       rescue StandardError => e
         SdcLogger.error e.message
         SdcLogger.error e.backtrace.join("\n")

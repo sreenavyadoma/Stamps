@@ -298,7 +298,7 @@ module SdcTest
     end
   end
 
-  def web_apps_param
+  def legacy_web_apps_param
     @web_apps_param
     @web_apps_param.driver = SdcPage.browser
     @web_apps_param

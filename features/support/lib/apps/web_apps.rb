@@ -2,7 +2,7 @@ module Stamps
   module WebApps
     def health
       begin
-        @health ||= HealthCheck.new(SdcTest.web_apps_param)
+        @health ||= HealthCheck.new(SdcTest.legacy_web_apps_param)
         @health
       rescue Exception > e
         SdcLogger.error e.message
@@ -23,7 +23,7 @@ module Stamps
 
     def stamps
       begin
-        @stamps ||= Object.const_get("StampsDotCom").new(SdcTest.web_apps_param)
+        @stamps ||= Object.const_get("StampsDotCom").new(SdcTest.legacy_web_apps_param)
       rescue Exception => e
         SdcLogger.error e.message
         SdcLogger.error e.backtrace.join('\n')

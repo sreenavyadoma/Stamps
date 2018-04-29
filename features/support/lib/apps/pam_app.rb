@@ -1,7 +1,7 @@
 module Stamps
   module PaymentAdministratorManagerApp
     def pam
-      @pam ||= Pam::PaymentAdministratorManager.new(SdcTest.web_apps_param)
+      @pam ||= Pam::PaymentAdministratorManager.new(SdcTest.legacy_web_apps_param)
     end
   end
 end
