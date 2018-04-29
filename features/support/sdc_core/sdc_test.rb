@@ -54,24 +54,24 @@ class SdcTest
       case
         when device == :macos_safari
           capabilities_config = {
-              :version => "11.0",
-              :platform => "macOS 10.13",
+              :version => '11.0',
+              :platform => 'macOS 10.13',
               :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
           }
           browser = :safari
 
         when device == :macos_chrome
           capabilities_config = {
-              :version => "54.0",
-              :platform => "macOS 10.13",
+              :version => '54.0',
+              :platform => 'macOS 10.13',
               :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
           }
           browser = :chrome
 
         when device == :temp_device
           capabilities_config = {
-              :version => "16.16299",
-              :platform => "Windows 10",
+              :version => '16.16299',
+              :platform => 'Windows 10',
               :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
           }
           browser = :edge
@@ -88,8 +88,8 @@ class SdcTest
 
     def win10_edge_sauce
       capabilities_config = {
-          :version => "16.16299",
-          :platform => "Windows 10",
+          :version => '16.16299',
+          :platform => 'Windows 10',
           :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
       }
 
@@ -105,8 +105,8 @@ class SdcTest
 
     def macos_chrome_sauce
       capabilities_config = {
-          :version => "65.0",
-          :platform => "macOS 10.13",
+          :version => '65.0',
+          :platform => 'macOS 10.13',
           :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
       }
 
