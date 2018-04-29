@@ -10,13 +10,13 @@ Then /^[Ee]xcel rate sheet is loaded$/ do
   #copy file tolocal
   expect(Rating.new.spreadsheet.update).to be(true)
   @rate_file_loc = "#{data_for(:rates_test, {})['test_dir']}\\#{rate_file}"
-  SdcLog.step "Rate File: #{@rate_file_loc}"
+  SdcLogger.step "Rate File: #{@rate_file_loc}"
   expect("Rate File: #{@rate_file_loc}").to eql "Rate File does not exist!" unless File.exist?(@rate_file_loc)
   begin
     @rate_file = Spreadsheet.open(@rate_file_loc)
   rescue Exception => e
-    SdcLog.step e.message
-    SdcLog.step e.backtrace.join("\n")
+    SdcLogger.step e.message
+    SdcLogger.step e.backtrace.join("\n")
     expect(e.message).to eql "Excel Rate File is opened by someone at a computer somewhere. Close the excel sheet before running the test again."
   end
   @failed_test_count = 0

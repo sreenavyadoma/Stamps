@@ -88,21 +88,21 @@ Then /^[Oo]n PAM ACH Purchase page, set Amount to \$(\d+)\.(\d+)$/ do |dollars, 
 end
 
 Then /^[Oo]n PAM Customer Profile page, get Available Mail Amount$/ do
-  SdcLog.info "PAM: Available Mail ############################"
-  SdcLog.info "PAM: Available Mail ############################"
-  SdcLog.info "PAM: Available Mail ############################"
-  SdcLog.info "PAM: Available Mail $#{@customer_profile.available_postage.text}"
-  SdcLog.info "PAM: Available Mail $#{@customer_profile.available_postage.text}"
-  SdcLog.info "PAM: Available Mail $#{@customer_profile.available_postage.text}"
-  SdcLog.info "PAM: Available Mail ############################"
-  SdcLog.info "PAM: Available Mail ############################"
-  SdcLog.info "PAM: Available Mail ############################"
+  SdcLogger.info "PAM: Available Mail ############################"
+  SdcLogger.info "PAM: Available Mail ############################"
+  SdcLogger.info "PAM: Available Mail ############################"
+  SdcLogger.info "PAM: Available Mail $#{@customer_profile.available_postage.text}"
+  SdcLogger.info "PAM: Available Mail $#{@customer_profile.available_postage.text}"
+  SdcLogger.info "PAM: Available Mail $#{@customer_profile.available_postage.text}"
+  SdcLogger.info "PAM: Available Mail ############################"
+  SdcLogger.info "PAM: Available Mail ############################"
+  SdcLogger.info "PAM: Available Mail ############################"
 end
 
 Then /^[Ss]end username to standard out$/ do
-  SdcLog.step " ############## NEW USER ID "
-  SdcLog.info " ############## #{TestData.store[:username]}"
-  SdcLog.info " ############## NEW USER ID "
+  SdcLogger.step " ############## NEW USER ID "
+  SdcLogger.info " ############## #{TestData.store[:username]}"
+  SdcLogger.info " ############## NEW USER ID "
 end
 
 

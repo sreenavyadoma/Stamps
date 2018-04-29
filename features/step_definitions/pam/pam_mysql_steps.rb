@@ -1,6 +1,6 @@
 Then /^[Ss]et PAM AppCap Overrides to Always On for all Required Fields for all users in the database$/ do
   credentials_list = SdcUserCredentials.all_user_credentials
-  SdcLog.step "Number of users in the database: #{credentials_list.size}"
+  SdcLogger.step "Number of users in the database: #{credentials_list.size}"
   credentials_list.each_with_index do |row, index|
     step "load PAM Customer Search page"
     step "search PAM Customer Search page for username #{row[:username]}"
@@ -29,12 +29,12 @@ Then /^[Ss]earch PAM [Cc]ustomer [Ss]earch page for username (.*)$/ do |str|
     if pam.customer_profile_page.present?
       break
     elsif pam.customer_not_found_page.present?
-      SdcLog.step "PAM:  #{pam.customer_not_found_page.status_reason.text}"
+      SdcLogger.step "PAM:  #{pam.customer_not_found_page.status_reason.text}"
       SdcDriver.browser.back unless index == iteration - 1
       sleep(0.25)
       pam.customer_profile_page.username.set(str)
     elsif pam.meter_info_not_available.present?
-      SdcLog.step "PAM:  #{pam.meter_info_not_available.error_message.text}"
+      SdcLogger.step "PAM:  #{pam.meter_info_not_available.error_message.text}"
       SdcDriver.browser.back unless index == iteration - 1
     end
   end
@@ -139,5 +139,5 @@ end
 
 Then /^[Oo]n PAM AppCap Overrides page, Submit$/ do
   result = pam.appcap_overrides_page.submit.ok
-  SdcLog.info " ############## #{TestData.store[:username]}: #{result}"
+  SdcLogger.info " ############## #{TestData.store[:username]}: #{result}"
 end

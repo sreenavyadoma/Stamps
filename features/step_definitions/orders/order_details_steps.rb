@@ -73,7 +73,7 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o Country to a random country in PMEI Flat Rate price group (.*)$/ do |group|
   country_list = data_for(:country_groups_PMEI_flat_rate, {})['group' + group].values
   TestData.store[:country] = country_list[rand(country_list.size)]
-  SdcLog.step "#{"#" * 10} Desired Country: #{TestData.store[:country]}"
+  SdcLogger.step "#{"#" * 10} Desired Country: #{TestData.store[:country]}"
   step "set Order Details Domestic Ship-To Country to #{TestData.store[:country]}"
 end
 
@@ -94,14 +94,14 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to a random country i
     end
   end
   TestData.store[:country] = country_name
-  SdcLog.step "#{"#" * 10} Desired Country: #{TestData.store[:country]}"
+  SdcLogger.step "#{"#" * 10} Desired Country: #{TestData.store[:country]}"
   step "set Order Details Domestic Ship-To Country to #{TestData.store[:country]}"
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to a random country in PMI Flat Rate price group (.*)$/ do |group|
   country_list = data_for(:country_groups_PMI_flat_rate, {})['group' + group].values
   TestData.store[:country] = country_list[rand(country_list.size)]
-  SdcLog.step "#{"#" * 10} Desired Country: #{TestData.store[:country]}"
+  SdcLogger.step "#{"#" * 10} Desired Country: #{TestData.store[:country]}"
   step "set Order Details Domestic Ship-To Country to #{TestData.store[:country]}"
 end
 
@@ -122,7 +122,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to a random country i
     end
   end
   TestData.store[:country] = country_name
-  SdcLog.step "#{"#" * 10} Desired Country: #{TestData.store[:country]}"
+  SdcLogger.step "#{"#" * 10} Desired Country: #{TestData.store[:country]}"
   step "set Order Details Domestic Ship-To Country to #{TestData.store[:country]}"
 end
 

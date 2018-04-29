@@ -9,8 +9,8 @@ end
 #Avery 5126, 8126, 5526, 5783, 15516, 18126, 85783
 Then /^[Ee]xpect (.*) tool-tip to contain \"(.*)\"$/ do |label, tooltip_message|
   #SdcLog.step "Expect #{label} tool-tip to contain #{tooltip_message}"
-  SdcLog.step label
-  SdcLog.step tooltip_message
+  SdcLogger.step label
+  SdcLogger.step tooltip_message
 end
 
 

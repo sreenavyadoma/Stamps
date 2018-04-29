@@ -16,7 +16,7 @@ end
 Then /^Label Unavailable: Expect Visible$/ do
   case @reprint_modal
     when LabelUnavailable
-      SdcLog.step @reprint_modal.message
+      SdcLogger.step @reprint_modal.message
       label_unavailable_visible = @reprint_modal.present?
       #StampsTest.log.step "Test #{(label_unavailable_visible)?"Passed":"Failed"}"
       @reprint_modal.ok

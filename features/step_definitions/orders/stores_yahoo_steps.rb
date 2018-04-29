@@ -16,13 +16,13 @@ end
 Then /^Yahoo Store: Connect$/ do
   #SdcLog.step "Yahoo Store: Connect"
   @store_settings=@store.connect
-  SdcLog.step @store_settings.present?
+  SdcLogger.step @store_settings.present?
 end
 
 Then /^Yahoo Store: Reconnect$/ do
   #SdcLog.step "Yahoo Store: Reconnect"
   @store_settings=@store.reconnect
-  SdcLog.step @store_settings.present?
+  SdcLogger.step @store_settings.present?
 end
 
 Then /^Yahoo Store: Set Order Source to Non-Yahoo$/ do
@@ -44,7 +44,7 @@ Then /^Yahoo Store: Connect for the first time expecting Yahoo Settings modal$/ 
   #SdcLog.step "Yahoo Store: Connect for the first time expecting Yahoo Settings modal"
   @store_settings=@store.connect_expecting_store_settings
   test_result="Yahoo Store Settings modal is #{(@store_settings.present?)?"present":"not present"} - Test #{(@store_settings.present?)?"passed":"failed"}"
-  SdcLog.step test_result
+  SdcLogger.step test_result
   if @store_settings.nil?||!(@store_settings.present?)
     raise test_result
   end

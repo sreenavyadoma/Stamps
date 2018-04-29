@@ -13,7 +13,7 @@ Before do  |scenario|
   SdcTest.start(scenario)
 end
 
-After do |scenario|
+After do
   SdcTest.teardown
   # Old framework
   @stamps = nil

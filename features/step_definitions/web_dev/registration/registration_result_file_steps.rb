@@ -43,7 +43,7 @@ Then /^[Ss]ave password to (?:default parameter file|parameter file (.*))$/ do |
 end
 
 Then /^[Oo]n PAM Customer Search page, set username from parameter file$/ do
-  SdcLog.info "On PAM Customer Search page, set username from parameter file"
+  SdcLogger.info "On PAM Customer Search page, set username from parameter file"
   step "On PAM Customer Search page, set username to #{SdcTest['username']}"
 end
 

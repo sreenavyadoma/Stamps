@@ -131,19 +131,25 @@ module SdcTest
 
   def configure
 
-    Selenium::WebDriver.logger.level = :warn
+    begin
+      Selenium::WebDriver.logger.level = if SdcEnv.log_level
+                                           SdcEnv.log_level
+                                         else
+                                           :error
+                                         end
+    rescue StandardError => e
+      SdcLogger.error e.message
+      SdcLogger.error e.backtrace.join("\n")
+      raise e
+    end
 
     if SdcEnv.sauce_device
-
-      Selenium::WebDriver.logger.level = :debug
       SdcPage.browser = SdcDriverDecorator.new(class_eval(SdcEnv.sauce_device.to_s))
 
     else
-      case
-
-      when SdcEnv.browser
+      if SdcEnv.browser
         begin
-          #Watir.always_locate = true
+          # Watir.always_locate = true
           case(SdcEnv.browser)
 
           when :edge
@@ -196,19 +202,19 @@ module SdcTest
           end
 
         rescue StandardError => e
-          SdcLog.error e.message
-          SdcLog.error e.backtrace.join("\n")
+          SdcLogger.error e.message
+          SdcLogger.error e.backtrace.join("\n")
           raise e, "Browser driver failed to start"
         end
 
-      when SdcEnv.mobile
+      elsif SdcEnv.mobile
         begin
           SdcPage.browser = SdcDriverDecorator.new(SdcAppiumDriver.new(SdcEnv.mobile).core_driver.start_driver)
           SdcPage.browser.manage.timeouts.implicit_wait = 180
 
         rescue StandardError => e
-          SdcLog.error e.message
-          SdcLog.error e.backtrace.join("\n")
+          SdcLogger.error e.message
+          SdcLogger.error e.backtrace.join("\n")
           raise e, "Appium driver failed to start"
         end
 
@@ -223,9 +229,9 @@ module SdcTest
     SdcEnv.scenario = scenario
     SdcEnv.sauce_device ||= ENV['SAUCE_DEVICE'] unless ENV['SAUCE_DEVICE'].nil?
     if SdcEnv.sauce_device
-      SdcEnv::BROWSERS.each { |browser| SdcEnv.browser = browser if SdcEnv.sauce_device.include? browser.to_s }
-      SdcEnv::IOS.each { |device| SdcEnv.ios = device if SdcEnv.sauce_device.include? device.to_s }
-      SdcEnv::ANDROID.each { |device| SdcEnv.android = device if SdcEnv.sauce_device.include? device.to_s }
+      SdcEnv::BROWSERS.each { |browser| SdcEnv.browser = browser if SdcEnv.sauce_device.eql? browser.to_s }
+      SdcEnv::IOS.each { |device| SdcEnv.ios = device if SdcEnv.sauce_device.eql? device.to_s }
+      SdcEnv::ANDROID.each { |device| SdcEnv.android = device if SdcEnv.sauce_device.eql? device.to_s }
     else
       SdcEnv.browser ||= browser_selection(ENV['BROWSER'])
       SdcEnv.ios ||= ENV['IOS'] unless ENV['IOS'].nil?
@@ -233,6 +239,8 @@ module SdcTest
     end
     SdcEnv.mobile = SdcEnv.ios || SdcEnv.android
     SdcEnv.verbose ||= ENV['VERBOSE']
+    SdcEnv.log_level ||= ENV['LOG_LEVEL']
+
     SdcEnv.sdc_app ||= ENV['WEB_APP'].downcase.to_sym unless ENV['WEB_APP'].nil?
     SdcEnv.health_check ||= ENV['HEALTHCHECK']
     SdcEnv.usr ||= ENV['USR']
@@ -244,14 +252,14 @@ module SdcTest
 
     require_gems
 
-    SdcLog.initialize(verbose: SdcEnv.verbose)
+    SdcLogger.initialize(verbose: SdcEnv.verbose)
 
     #todo-Rob These should be in an orders/mail or sdc_apps environment variable container. This is a temp fix.
     SdcEnv.printer = ENV['PRINTER']
 
     # Support for old framework and will be phased out
     @web_apps_param = Stamps::WebApps::Param.new
-    @web_apps_param.log = SdcLog
+    @web_apps_param.log = SdcLogger
     @web_apps_param.test_scenario
     @web_apps_param.test_scenario
     @web_apps_param.env = SdcEnv.env
@@ -281,14 +289,14 @@ module SdcTest
 
   def print_test_steps
     raise ArgumentError, 'Set scenario object before printing test steps' if SdcEnv.scenario.nil?
-    SdcLog.info "- Feature: #{SdcEnv.scenario.feature}"
-    SdcLog.info "- Scenario: #{SdcEnv.scenario.name}"
-    SdcLog.info "- Tags:"
-    SdcEnv.scenario.tags.each_with_index { |tag, index| SdcLog.info "--Tag #{index + 1}: #{tag.name}" }
-    SdcLog.info "- Steps:"
-    SdcEnv.scenario.test_steps.each_with_index { |steps, index| SdcLog.info "-- #{steps.source.last.keyword}#{steps.text}" }
-    SdcLog.info "-"
-    SdcLog.info "-"
+    SdcLogger.info "- Feature: #{SdcEnv.scenario.feature}"
+    SdcLogger.info "- Scenario: #{SdcEnv.scenario.name}"
+    SdcLogger.info "- Tags:"
+    SdcEnv.scenario.tags.each_with_index { |tag, index| SdcLogger.info "--Tag #{index + 1}: #{tag.name}" }
+    SdcLogger.info "- Steps:"
+    SdcEnv.scenario.test_steps.each_with_index { |steps, index| SdcLogger.info "-- #{steps.source.last.keyword}#{steps.text}" }
+    SdcLogger.info "-"
+    SdcLogger.info "-"
   end
 
   def teardown
@@ -308,8 +316,12 @@ module SdcTest
     #
     #   SdcLog.info "#{SdcPage.browser} closed."
     # end
-
-    SdcPage.browser.quit
+    begin
+      SdcPage.browser.quit
+    rescue StandardError => e
+      SdcLogger.error e.message
+      SdcLogger.error e.backtrace.join("\n")
+    end
   end
 
   private

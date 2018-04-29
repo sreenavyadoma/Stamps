@@ -4,35 +4,35 @@ end
 
 Then /^Import Orders: Import$/ do
   import_time = stamps.orders.orders_toolbar.import.import
-  SdcLog.step "Success modal is present after #{import_time} seconds"
+  SdcLogger.step "Success modal is present after #{import_time} seconds"
 
   #import_timer_filename="\\\\rcruz-win7\\Public\\automation\\data\\import_times.csv"
 
   import_time_file = data_for(:import_orders_test, {})['import_time_file']
   import_time_loc = "#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{ENV['URL']}\\#{import_time_file}"
 
-  SdcLog.step "Import Orders File: #{import_time_loc}"
+  SdcLogger.step "Import Orders File: #{import_time_loc}"
   expect("Import Orders File: #{import_time_loc}").to eql "Import Time File does not exist!" unless File.exist?(import_time_loc)
 
   csv_file = CSV.open(import_time_loc, "a")
   csv_file.add_row([Time.now,import_time])
-  SdcLog.step "Import Time Saved to CSV file"
+  SdcLogger.step "Import Time Saved to CSV file"
   csv_file.close
 end
 
 Then /^Import Orders: Import Existing Orders$/ do
   import_time = stamps.orders.orders_toolbar.import.import
-  SdcLog.step "Success modal is present after #{import_time} seconds"
+  SdcLogger.step "Success modal is present after #{import_time} seconds"
 
   import_time_file = data_for(:import_orders_test, {})['import_existing_orders_time_file']
   import_time_loc = "#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{ENV['URL']}\\#{import_time_file}"
 
-  SdcLog.step "Import Orders File: #{import_time_loc}"
+  SdcLogger.step "Import Orders File: #{import_time_loc}"
   expect("Import Orders File: #{import_time_loc}").to eql "Import Time File does not exist!" unless File.exist?(import_time_loc)
 
   csv_file = CSV.open(import_time_loc, "a")
   csv_file.add_row([Time.now,import_time])
-  SdcLog.step "Import Time Saved to CSV file"
+  SdcLogger.step "Import Time Saved to CSV file"
   csv_file.close
 end
 
@@ -94,7 +94,7 @@ Then /^Import Orders: Randomize data in (.*)$/ do |filename|
       csv_out << row
     end
 
-    SdcLog.step "Orders info in #{filename} has been randomized"
+    SdcLogger.step "Orders info in #{filename} has been randomized"
   end
 end
 
@@ -122,7 +122,7 @@ Then /^Import Orders: Expect first (.*) orders in CSV file (.*) match orders in 
       expect(stamps.orders.orders_grid.grid_column(:phone).data(order_id)).to eql(row[13]), "Expected Phone for order #{row[0]} is #{row[13]}, Phone in orders grid is #{stamps.orders.orders_grid.grid_column(:phone).data(order_id)}"
       expect(stamps.orders.orders_grid.grid_column(:email).data(order_id)).to eql(row[14]), "Expected Email for order #{row[0]} is #{row[14]}, Email in orders grid is #{stamps.orders.orders_grid.grid_column(:email).data(order_id)}"
       expect(TestHelper.format_weight(stamps.orders.orders_grid.grid_column(:weight).data(order_id))).to eql(row[15]), "Expected Weight for order #{row[0]} is #{row[15]}, Weight in orders grid is #{TestHelper.format_weight(stamps.orders.orders_grid.grid_column(:weight).data(order_id))}"
-      SdcLog.step "Order # #{order_id} verified in Orders Grid"
+      SdcLogger.step "Order # #{order_id} verified in Orders Grid"
     end
     break if counter >= num_orders
   end
@@ -137,7 +137,7 @@ Then /^Import Orders: File Upload: Set Filename to (.*)$/ do |filename|
 
   #@csv_import_filename="\\\\rcruz-win7\\Public\\automation\\data\\#{filename}"
   #SdcLog.step "Import File:  #{@csv_import_filename}"
-  SdcLog.step "Import File:  #{import_orders_loc}"
+  SdcLogger.step "Import File:  #{import_orders_loc}"
 
 
 
