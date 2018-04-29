@@ -60,7 +60,7 @@ Then /^[Ee]xpect Print form Domestic Address field displays last printed contact
   reformatted_address = (stamps.mail.print_form.mail_to.dom_mail_address.textarea.text).gsub(/ \n/,"\n").gsub(",","")
   uncleansed_address = reformatted_address.slice(0..-6)
   expect(uncleansed_address).to eql TestData.store[:address].gsub(/ \n/,"\n")
-  SdcLogger.step 'Address Match Confirmed'
+  SdcLogger.debug 'Address Match Confirmed'
 end
 
 Then /^[Ee]xpect Print form Domestic Address field displays (.*)$/ do |value|
@@ -73,7 +73,7 @@ Then /^[Ee]xpect Print form Domestic Address field displays (.*)$/ do |value|
     break if (stamps.mail.print_form.mail_to.mail_address.textarea.text).gsub(/ \n/,", ").gsub(/\n/,", ") == value
   end
   expect((stamps.mail.print_form.mail_to.mail_address.textarea.text).gsub(/ \n/,", ").gsub(/\n/,", ")).to eql value
-  SdcLogger.step 'Address Cleansed -- Expected Result Confirmed'
+  SdcLogger.debug 'Address Cleansed -- Expected Result Confirmed'
 end
 
 #AB_ORDERSAUTO_3516

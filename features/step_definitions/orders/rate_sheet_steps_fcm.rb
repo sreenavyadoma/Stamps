@@ -187,7 +187,7 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
     TestData.store[:result_sheet].row(0)[TestData.store[:result_sheet_columns][:zone]] = "zone#{zone}"
     begin
       if row_number > 0
-        SdcLogger.step "#{"#" * 80} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_number}"
+        SdcLogger.debug "#{"#" * 80} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_number}"
 
         # Set address to proper zone
         step "set Order Details Ship-To to random address between zone 1 and 4"  if SdcEnv.sdc_app == :orders
@@ -196,12 +196,12 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
         # spreadsheet price for zone
 
         if row[zone_column] == nil
-          SdcLogger.step "#{"#" * 10} "
-          SdcLogger.step "#{"#" * 10} "
-          SdcLogger.step "#{"#" * 10} Test Row #{row_number} Skipped. No rates found on sheet."
-          SdcLogger.step "#{"#" * 10} "
-          SdcLogger.step "#{"#" * 10} "
-          SdcLogger.step "#{"#" * 80} "
+          SdcLogger.debug "#{"#" * 10} "
+          SdcLogger.debug "#{"#" * 10} "
+          SdcLogger.debug "#{"#" * 10} Test Row #{row_number} Skipped. No rates found on sheet."
+          SdcLogger.debug "#{"#" * 10} "
+          SdcLogger.debug "#{"#" * 10} "
+          SdcLogger.debug "#{"#" * 80} "
           TestData.store[:result_sheet].row(row_number).set_format(TestData.store[:result_sheet_columns][:zone], format)
           TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight_oz]] = row[@rate_sheet_columns[:weight_oz]]
           TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:zone]] = row[zone_column]
@@ -236,11 +236,11 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
           # Set weight per spreadsheet
 
           weight_oz = row[@rate_sheet_columns[:weight_oz]]
-          SdcLogger.step "#{"#" * 10} "
-          SdcLogger.step "#{"#" * 10} Weight: #{weight_oz}"
-          SdcLogger.step "#{"#" * 10} Price: #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:zone]]}"
-          SdcLogger.step "#{"#" * 10} "
-          SdcLogger.step "#{"#" * 50}"
+          SdcLogger.debug "#{"#" * 10} "
+          SdcLogger.debug "#{"#" * 10} Weight: #{weight_oz}"
+          SdcLogger.debug "#{"#" * 10} Price: #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:zone]]}"
+          SdcLogger.debug "#{"#" * 10} "
+          SdcLogger.debug "#{"#" * 50}"
 
 
           weight_oz = weight_oz.to_f
@@ -296,19 +296,19 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
             TestData.store[:result_sheet].row(row_number).set_format(TestData.store[:result_sheet_columns][:status], fail_format)
             TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:results]] = "Expected #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:zone]]}, Got #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:total_ship_cost]]}"
           end
-          SdcLogger.step "#{"#" * 10} "
-          SdcLogger.step "#{"#" * 10} Weight: #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight]]}"
-          SdcLogger.step "#{"#" * 10} Selected Service: #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:service_selected]]}"
-          SdcLogger.step "#{"#" * 10} Ship-To Address: #{TestData.store[:address]}" if SdcEnv.sdc_app == :mail
-          SdcLogger.step "#{"#" * 10} Ship-To Address: #{TestData.store[:full_name]}, #{TestData.store[:street_address]}, #{TestData.store[:city]}, #{TestData.store[:state]}, #{TestData.store[:zip]}" if SdcEnv.sdc_app == :orders
-          SdcLogger.step "#{"#" * 10} #{"*" * 5} Test #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:status]] } - Expected #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:zone]]}, Got #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:total_ship_cost]]} #{"*" * 5}"
-          SdcLogger.step "#{"#" * 10} "
+          SdcLogger.debug "#{"#" * 10} "
+          SdcLogger.debug "#{"#" * 10} Weight: #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:weight]]}"
+          SdcLogger.debug "#{"#" * 10} Selected Service: #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:service_selected]]}"
+          SdcLogger.debug "#{"#" * 10} Ship-To Address: #{TestData.store[:address]}" if SdcEnv.sdc_app == :mail
+          SdcLogger.debug "#{"#" * 10} Ship-To Address: #{TestData.store[:full_name]}, #{TestData.store[:street_address]}, #{TestData.store[:city]}, #{TestData.store[:state]}, #{TestData.store[:zip]}" if SdcEnv.sdc_app == :orders
+          SdcLogger.debug "#{"#" * 10} #{"*" * 5} Test #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:status]] } - Expected #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:zone]]}, Got #{TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:total_ship_cost]]} #{"*" * 5}"
+          SdcLogger.debug "#{"#" * 10} "
         end
 
       end
     rescue Exception => e
-      SdcLogger.step e.message
-      SdcLogger.step e.backtrace.join("\n")
+      SdcLogger.debug e.message
+      SdcLogger.debug e.backtrace.join("\n")
       TestData.store[:result_sheet][row_number, TestData.store[:result_sheet_columns][:error_msg]] = "Zone #{zone} - Row #{row_number}: #{e.message}"
     end
   end
@@ -325,34 +325,34 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
       if row_number > 0
         if row[TestData.store[:result_sheet_columns][:status]].casecmp("failed") == 0 || (row[TestData.store[:result_sheet_columns][:status]].casecmp("passed") != 0 && !row[TestData.store[:result_sheet_columns][:error_msg]].nil?)
           @failed_test_count += 1
-          SdcLogger.step "Zone #{zone} - Row #{row_number} Failed"
+          SdcLogger.debug "Zone #{zone} - Row #{row_number} Failed"
         end
       end
     end
   end
-  SdcLogger.step "#{"*" * 80}"
-  SdcLogger.step "#{"*" * 80}"
-  SdcLogger.step "Number of Failed Tests: #{@failed_test_count}"
-  SdcLogger.step "Number of Failed Tests: #{@failed_test_count}"
-  SdcLogger.step "Number of Failed Tests: #{@failed_test_count}"
-  SdcLogger.step "Number of Failed Tests: #{@failed_test_count}"
-  SdcLogger.step "Number of Failed Tests: #{@failed_test_count}"
-  SdcLogger.step "Number of Failed Tests: #{@failed_test_count}"
-  SdcLogger.step "#{"*" * 80}"
-  SdcLogger.step "#{"*" * 80}"
+  SdcLogger.debug "#{"*" * 80}"
+  SdcLogger.debug "#{"*" * 80}"
+  SdcLogger.debug "Number of Failed Tests: #{@failed_test_count}"
+  SdcLogger.debug "Number of Failed Tests: #{@failed_test_count}"
+  SdcLogger.debug "Number of Failed Tests: #{@failed_test_count}"
+  SdcLogger.debug "Number of Failed Tests: #{@failed_test_count}"
+  SdcLogger.debug "Number of Failed Tests: #{@failed_test_count}"
+  SdcLogger.debug "Number of Failed Tests: #{@failed_test_count}"
+  SdcLogger.debug "#{"*" * 80}"
+  SdcLogger.debug "#{"*" * 80}"
 end
 
 
 Then /^Rates: Number of failed test should be less than (\d+)$/ do |count|
-  SdcLogger.step "#{"*" * 80}"
-  SdcLogger.step "Rates: Number of failed test should be less than #{count}"
+  SdcLogger.debug "#{"*" * 80}"
+  SdcLogger.debug "Rates: Number of failed test should be less than #{count}"
   count = count.to_i
-  SdcLogger.step "Number of Failed Tests: #{@failed_test_count}"
-  SdcLogger.step "Number of Failed Tests: #{@failed_test_count}"
-  SdcLogger.step "Number of Failed Tests: #{@failed_test_count}"
-  SdcLogger.step "Number of Failed Tests: #{@failed_test_count}"
-  SdcLogger.step "Number of Failed Tests: #{@failed_test_count}"
-  SdcLogger.step "Number of Failed Tests: #{@failed_test_count}"
+  SdcLogger.debug "Number of Failed Tests: #{@failed_test_count}"
+  SdcLogger.debug "Number of Failed Tests: #{@failed_test_count}"
+  SdcLogger.debug "Number of Failed Tests: #{@failed_test_count}"
+  SdcLogger.debug "Number of Failed Tests: #{@failed_test_count}"
+  SdcLogger.debug "Number of Failed Tests: #{@failed_test_count}"
+  SdcLogger.debug "Number of Failed Tests: #{@failed_test_count}"
   expect(@failed_test_count).to be < count
-  SdcLogger.step "#{"*" * 80}"
+  SdcLogger.debug "#{"*" * 80}"
 end

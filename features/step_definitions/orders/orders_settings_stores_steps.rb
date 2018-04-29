@@ -97,7 +97,7 @@ Then /^Manage [Ss]tores: Edit$/ do
   #SdcLog.step "Manage [Ss]tores: Edit"
   @store_settings = @manage_stores.edit
   test_result = "Store [Ss]ettings modal is #{(@store_settings.present?) ? "present" : "not present"} - Test #{(@store_settings.present?) ? "passed" : "failed"}"
-  SdcLogger.step test_result
+  SdcLogger.debug test_result
   if @store_settings.nil? || !(@store_settings.present?)
     raise test_result
   end

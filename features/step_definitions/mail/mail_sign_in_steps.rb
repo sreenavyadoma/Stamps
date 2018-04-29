@@ -21,11 +21,11 @@ end
 
 Then /^More Info: Close More Info page$/ do
   #SdcLog.step "More Info: Close More Info page"
-  SdcLogger.step @more_info_page.title
-  SdcLogger.step @more_info_page.title
-  SdcLogger.step @more_info_page.title
-  SdcLogger.step @more_info_page.title
-  SdcLogger.step @more_info_page.title
+  SdcLogger.debug @more_info_page.title
+  SdcLogger.debug @more_info_page.title
+  SdcLogger.debug @more_info_page.title
+  SdcLogger.debug @more_info_page.title
+  SdcLogger.debug @more_info_page.title
   sleep(2)
   @more_info_page.close
   sleep(3)

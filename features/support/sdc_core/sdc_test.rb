@@ -130,18 +130,7 @@ module SdcTest
   end
 
   def configure
-
-    begin
-      Selenium::WebDriver.logger.level = if SdcEnv.log_level
-                                           SdcEnv.log_level
-                                         else
-                                           :error
-                                         end
-    rescue StandardError => e
-      SdcLogger.error e.message
-      SdcLogger.error e.backtrace.join("\n")
-      raise e
-    end
+    SdcLogger.debug 'Initializing test driver...'
 
     if SdcEnv.sauce_device
       SdcPage.browser = SdcDriverDecorator.new(class_eval(SdcEnv.sauce_device.to_s))
@@ -227,6 +216,31 @@ module SdcTest
 
   def start(scenario)
     SdcEnv.scenario = scenario
+    SdcEnv.log_level ||= ENV['LOG_LEVEL']
+    SdcEnv.driver_log_level ||= ENV['DRIVER_LOG_LEVEL']
+
+    # logger
+    SdcLogger.new(progname: SdcEnv.scenario.name)
+    begin
+      SdcLogger.level = if SdcEnv.log_level
+                          SdcEnv.log_level
+                        else
+                          :error
+                        end
+
+      SdcLogger.debug 'Begin test...'
+
+      Selenium::WebDriver.logger.level = if SdcEnv.driver_log_level
+                                           SdcEnv.driver_log_level
+                                         else
+                                           :error
+                                         end
+    rescue StandardError => e
+      SdcLogger.error e.message
+      SdcLogger.error e.backtrace.join("\n")
+      raise e
+    end
+
     SdcEnv.sauce_device ||= ENV['SAUCE_DEVICE'] unless ENV['SAUCE_DEVICE'].nil?
     if SdcEnv.sauce_device
       SdcEnv::BROWSERS.each { |browser| SdcEnv.browser = browser if SdcEnv.sauce_device.eql? browser.to_s }
@@ -238,9 +252,6 @@ module SdcTest
       SdcEnv.android ||= ENV['ANDROID'] unless ENV['ANDROID'].nil?
     end
     SdcEnv.mobile = SdcEnv.ios || SdcEnv.android
-    SdcEnv.verbose ||= ENV['VERBOSE']
-    SdcEnv.log_level ||= ENV['LOG_LEVEL']
-
     SdcEnv.sdc_app ||= ENV['WEB_APP'].downcase.to_sym unless ENV['WEB_APP'].nil?
     SdcEnv.health_check ||= ENV['HEALTHCHECK']
     SdcEnv.usr ||= ENV['USR']
@@ -251,8 +262,6 @@ module SdcTest
     SdcEnv.env ||= test_env(ENV['URL'])
 
     require_gems
-
-    SdcLogger.new(verbose: SdcEnv.verbose)
 
     #todo-Rob These should be in an orders/mail or sdc_apps environment variable container. This is a temp fix.
     SdcEnv.printer = ENV['PRINTER']
@@ -316,22 +325,22 @@ module SdcTest
     #
     #   SdcLog.info "#{SdcPage.browser} closed."
     # end
-    begin
-      SdcPage.browser.quit
-    rescue StandardError => e
-      SdcLogger.error e.message
-      SdcLogger.error e.backtrace.join("\n")
-    end
+    SdcLogger.debug 'Tearing down test...'
+    SdcPage.browser.quit
+    SdcLogger.debug 'Done.'
+  rescue StandardError => e
+    SdcLogger.error e.message
+    SdcLogger.error e.backtrace.join("\n")
   end
 
   private
 
   def kill(str)
-    begin
-      stdout, stdeerr, status = Open3.capture3(str)
-    rescue
-      # ignore
-    end
+
+    stdout, stdeerr, status = Open3.capture3(str)
+  rescue
+    # ignore
+
   end
 
   def mobile(str)

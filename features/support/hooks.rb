@@ -4,7 +4,6 @@ include Stamps
 include Stamps::WebApps
 include Stamps::Orders
 include Stamps::Mail
-include Log4r
 include RSpec
 include RSpec::Matchers
 include DataMagic

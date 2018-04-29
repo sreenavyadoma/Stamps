@@ -103,10 +103,10 @@ Then /^[Ee]xpect page toolbar First Page is (\w+)$/  do |expectation|
   case expectation.downcase
     when "enabled"
       enabled = stamps.orders.orders_toolbar.first_page.present?
-      SdcLogger.step enabled
+      SdcLogger.debug enabled
     when "disabled"
       disabled = stamps.orders.orders_toolbar.first_page_disabled
-      SdcLogger.step disabled
+      SdcLogger.debug disabled
     else
       raise "Illegal argument exception"
   end
@@ -117,10 +117,10 @@ Then /^[Ee]xpect page toolbar Previous Page is (\w+)$/  do |expectation|
   case expectation.downcase
     when "enabled"
       enabled = stamps.orders.orders_toolbar.previous_page.present?
-      SdcLogger.step enabled
+      SdcLogger.debug enabled
     when "disabled"
       disabled = stamps.orders.orders_toolbar.first_page_disabled
-      SdcLogger.step disabled
+      SdcLogger.debug disabled
     else
       raise "Illegal argument exception"
   end
@@ -131,7 +131,7 @@ Then /^[Ee]xpect page toolbar Page Number is (\w+)$/  do |expectation|
   case expectation.downcase
     when "enabled"
       enabled = stamps.orders.orders_toolbar.page_number.present?
-      SdcLogger.step enabled
+      SdcLogger.debug enabled
     else
       raise "Illegal argument exception"
   end
@@ -142,10 +142,10 @@ Then /^[Ee]xpect page toolbar Next Page is (\w+)$/  do |expectation|
   case expectation.downcase
     when "enabled"
       enabled = stamps.orders.orders_toolbar.next_page.present?
-      SdcLogger.step enabled
+      SdcLogger.debug enabled
     when "disabled"
       disabled = stamps.orders.orders_toolbar.last_page_disabled
-      SdcLogger.step disabled
+      SdcLogger.debug disabled
     else
       raise "Illegal argument exception"
   end
@@ -156,10 +156,10 @@ Then /^[Ee]xpect page toolbar Last Page is (\w+)$/  do |expectation|
   case expectation.downcase
     when "enabled"
       enabled = stamps.orders.orders_toolbar.last_page.present?
-      SdcLogger.step enabled
+      SdcLogger.debug enabled
     when "disabled"
       disabled = stamps.orders.orders_toolbar.last_page_disabled
-      SdcLogger.step disabled
+      SdcLogger.debug disabled
     else
       raise "Illegal argument exception"
   end

@@ -4,7 +4,7 @@ $LOAD_PATH << File.expand_path('features/support/lib', __FILE__)
 
 require 'data_magic'
 require 'rake'
-require 'log4r'
+require 'logger'
 require 'rspec'
 require 'date'
 require 'fileutils'

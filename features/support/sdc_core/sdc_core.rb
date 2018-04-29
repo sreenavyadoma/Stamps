@@ -6,13 +6,12 @@ module Stamps
     SDC_APP = %i[orders mail webdev registration].freeze unless Object.const_defined?('Stamps::SdcEnv::SDC_APP')
     IOS = %i[iphone6 iphone7 iphone8 iphonex].freeze unless Object.const_defined?('Stamps::SdcEnv::IOS')
     ANDROID = %i[samsung_galaxy nexus_5x].freeze unless Object.const_defined?('Stamps::SdcEnv::ANDROID')
-    LOG_LEVEL = %i[off severe warn info debug all].freeze unless Object.const_defined?('Stamps::SdcEnv::LOG_LEVEL')
 
     class << self
       attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose,
                     :printer, :browser, :hostname, :print_media, :mobile,
                     :android, :ios, :firefox_profile, :new_framework, :debug,
-                    :scenario, :sauce_device, :test_name, :log_level
+                    :scenario, :sauce_device, :test_name, :log_level, :driver_log_level
     end
   end
 
@@ -412,6 +411,29 @@ module Stamps
     def method_missing(name, *args, &block)
       super unless @text_field.respond_to?(name)
       @text_field.send(name, *args, &block)
+    end
+  end
+
+  class SdcLogger
+
+    def initialize(progname: 'Stamps.com')
+      @@logger = ::Logger.new(STDOUT)
+      @@logger.datetime_format = '%H:%M:%S'
+      @@logger.progname = progname
+      @@logger.formatter = proc do |severity, datetime, progname, msg|
+        "#{progname} :: #{msg}\n"
+      end
+    end
+
+    class << self
+      def logger
+        @@logger
+      end
+
+      def method_missing(method, *args)
+        super unless logger.respond_to?(method)
+        logger.send(method, *args)
+      end
     end
   end
 

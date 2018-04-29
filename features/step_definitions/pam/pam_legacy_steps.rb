@@ -100,7 +100,7 @@ Then /^[Oo]n PAM Customer Profile page, get Available Mail Amount$/ do
 end
 
 Then /^[Ss]end username to standard out$/ do
-  SdcLogger.step " ############## NEW USER ID "
+  SdcLogger.debug " ############## NEW USER ID "
   SdcLogger.info " ############## #{TestData.store[:username]}"
   SdcLogger.info " ############## NEW USER ID "
 end
