@@ -9,7 +9,8 @@ include RSpec::Matchers
 include DataMagic
 
 Before do  |scenario|
-  SdcTest.start(scenario)
+  SdcEnv.scenario = scenario
+  SdcTest.start
 end
 
 After do

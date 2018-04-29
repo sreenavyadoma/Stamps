@@ -130,7 +130,8 @@ module SdcTest
   end
 
   def configure
-    SdcLogger.debug 'Initializing test driver...'
+
+    SdcLogger.debug "Initializing test driver...\n"
 
     if SdcEnv.sauce_device
       SdcPage.browser = SdcDriverDecorator.new(class_eval(SdcEnv.sauce_device.to_s))
@@ -142,11 +143,11 @@ module SdcTest
           case(SdcEnv.browser)
 
           when :edge
-            kill("taskkill /im MicrosoftEdge.exe /f")
+            kill('taskkill /im MicrosoftEdge.exe /f')
             SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
 
           when :firefox
-            kill("taskkill /im firefox.exe /f")
+            kill('taskkill /im firefox.exe /f')
             unless SdcEnv.firefox_profile
               SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
             else
@@ -159,20 +160,20 @@ module SdcTest
             end
 
           when :chrome
-            kill("taskkill /im chrome.exe /f")
+            kill('taskkill /im chrome.exe /f')
             SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
 
             SdcPage.browser.driver.manage.timeouts.page_load = 12
 
           when :chromeb
-            kill("taskkill /im chrome.exe /f")
+            kill('taskkill /im chrome.exe /f')
             Selenium::WebDriver::Chrome.path = data_for(:setup, {})['windows']['chromedriverbeta']
             SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
 
             SdcPage.browser.driver.manage.timeouts.page_load = 12
 
           when :ie
-            kill("taskkill /im iexplore.exe /f")
+            kill('taskkill /im iexplore.exe /f')
             SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:ie))
 
           when :safari
@@ -193,7 +194,7 @@ module SdcTest
         rescue StandardError => e
           SdcLogger.error e.message
           SdcLogger.error e.backtrace.join("\n")
-          raise e, "Browser driver failed to start"
+          raise e, 'Browser driver failed to start'
         end
 
       elsif SdcEnv.mobile
@@ -204,31 +205,28 @@ module SdcTest
         rescue StandardError => e
           SdcLogger.error e.message
           SdcLogger.error e.backtrace.join("\n")
-          raise e, "Appium driver failed to start"
+          raise e, 'Appium driver failed to start'
         end
 
       else
-        raise ArgumentError, "Device must be defined"
+        raise ArgumentError, 'Device must be defined'
       end
 
     end
   end
 
-  def start(scenario)
-    SdcEnv.scenario = scenario
+  def start
     SdcEnv.log_level ||= ENV['LOG_LEVEL']
     SdcEnv.driver_log_level ||= ENV['DRIVER_LOG_LEVEL']
 
-    # logger
     SdcLogger.new(progname: SdcEnv.scenario.name)
+
     begin
       SdcLogger.level = if SdcEnv.log_level
                           SdcEnv.log_level
                         else
                           :error
                         end
-
-      SdcLogger.debug 'Begin test...'
 
       Selenium::WebDriver.logger.level = if SdcEnv.driver_log_level
                                            SdcEnv.driver_log_level
@@ -276,6 +274,16 @@ module SdcTest
     @web_apps_param.pw = SdcEnv.pw
     @web_apps_param.printer = SdcEnv.printer
     @web_apps_param.sdc_app = SdcEnv.sdc_app
+
+    SdcLogger.debug "\n"
+    SdcLogger.debug "Begin test...\n"
+    SdcLogger.debug "Feature: #{SdcEnv.scenario.feature}"
+    SdcLogger.debug "Scenario: #{SdcEnv.scenario.name}"
+    SdcLogger.debug '  Tags:'
+    SdcEnv.scenario.tags.each_with_index { |tag, index| SdcLogger.debug "  Tag #{index + 1}: #{tag.name}" }
+    SdcLogger.debug '  Steps:'
+    SdcEnv.scenario.test_steps.each { |steps| SdcLogger.debug "  #{steps.source.last.keyword}#{steps.text}" }
+    SdcLogger.debug "\n"
   end
 
   def require_gems
@@ -296,18 +304,6 @@ module SdcTest
     @web_apps_param
   end
 
-  def print_test_steps
-    raise ArgumentError, 'Set scenario object before printing test steps' if SdcEnv.scenario.nil?
-    SdcLogger.info "- Feature: #{SdcEnv.scenario.feature}"
-    SdcLogger.info "- Scenario: #{SdcEnv.scenario.name}"
-    SdcLogger.info "- Tags:"
-    SdcEnv.scenario.tags.each_with_index { |tag, index| SdcLogger.info "--Tag #{index + 1}: #{tag.name}" }
-    SdcLogger.info "- Steps:"
-    SdcEnv.scenario.test_steps.each_with_index { |steps, index| SdcLogger.info "-- #{steps.source.last.keyword}#{steps.text}" }
-    SdcLogger.info "-"
-    SdcLogger.info "-"
-  end
-
   def teardown
     # if SdcEnv.sauce_device
     #   sessionid = SdcPage.browser.send(:bridge).session_id
@@ -325,9 +321,10 @@ module SdcTest
     #
     #   SdcLog.info "#{SdcPage.browser} closed."
     # end
-    SdcLogger.debug 'Tearing down test...'
+
+    SdcLogger.debug "Tearing down test...\n"
     SdcPage.browser.quit
-    SdcLogger.debug 'Done.'
+    SdcLogger.debug "Done.\n"
   rescue StandardError => e
     SdcLogger.error e.message
     SdcLogger.error e.backtrace.join("\n")
