@@ -208,16 +208,22 @@ class SdcTest
                     profile.assume_untrusted_certificate_issuer = true
                     profile['network.http.phishy-userpass-length'] = 255
                     SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, :profile => profile))
+
+                    SdcPage.browser.driver.manage.timeouts.page_load = 12
                   end
 
                 when :chrome
                   kill("taskkill /im chrome.exe /f")
                   SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
 
+                  SdcPage.browser.driver.manage.timeouts.page_load = 12
+
                 when :chromeb
                   kill("taskkill /im chrome.exe /f")
                   Selenium::WebDriver::Chrome.path = data_for(:setup, {})['windows']['chromedriverbeta']
                   SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+
+                  SdcPage.browser.driver.manage.timeouts.page_load = 12
 
                 when :ie
                   kill("taskkill /im iexplore.exe /f")
@@ -230,8 +236,6 @@ class SdcTest
                 else
                   raise ArgumentError, "Invalid browser selection. #{test_driver}"
               end
-
-              SdcPage.browser.driver.manage.timeouts.page_load = 12
 
               if SdcEnv.debug
                 SdcPage.browser.window.resize_to 1300, 1020
