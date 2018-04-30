@@ -839,7 +839,7 @@ module Stamps
               add_btn.click
               20.times do
                 sleep(0.15)
-                return order_id.text.extract_numbers if order_id.present?
+                return order_id.text.parse_digits if order_id.present?
               end
               # new accounts will connect to ShipStation for the first time.
               20.times do

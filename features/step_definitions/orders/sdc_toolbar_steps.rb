@@ -8,7 +8,8 @@ Then /^[Aa]dd [Oo]rder (\d+)$/ do |count|
     #todo stamps.orders.orders_grid.grid_column(:checkbox).uncheck(1)
     step 'Wait until order toolbar present 40, 3'
     SdcOrders.toolbar.add.click
-    TestData.store[:order_id][count.to_i] = SdcOrders.order_details.order_id.text_value
+    SdcOrders.order_details.order_id.wait_until_present
+    TestData.store[:order_id][count.to_i] = SdcOrders.order_details.order_id.text_value.parse_digits
     #todo expect(stamps.orders.orders_grid.grid_column(:checkbox).checked?(1)).to be(true), "Orders Grid checkbox 1 is unchecked!"
     step "Save Order Details data"
   else

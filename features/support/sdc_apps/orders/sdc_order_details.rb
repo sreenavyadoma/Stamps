@@ -173,14 +173,5 @@ module SdcOrders
     def dimensions
       @dimensions ||= SdcOrderDetailsDimensions.new
     end
-
-    def respond_to?(name, include_private = false)
-      order_id.respond_to?(name, include_private) || super
-    end
-
-    def method_missing(name, *args, &block)
-      super unless order_id.respond_to?(name)
-      order_id.send(name, *args, &block)
-    end
   end
 end
