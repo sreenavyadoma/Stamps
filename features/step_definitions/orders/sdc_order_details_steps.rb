@@ -3,14 +3,14 @@
 Then /^[Ww]ait [Uu]ntil [Oo]rder [Dd]etails [Pp]resent(?: (\d+), (.+)|)$/ do |iteration, delay|
   (iteration.zero? ? 20 : iteration).times do
     break if SdcOrders.order_details.title.present?
-    sleep(delay.to_f.zero? ? 0.2 : delay.to_f / 10)
+    sleep(delay.to_f.zero? ? 0.2 : delay.to_f)
   end
 end
 
 Then /^[Ww]ait [Uu]ntil [Oo]rder [Tt]oolbar [Pp]resent(?: (\d+), (.+)|)$/ do |iteration, delay|
   (iteration.zero? ? 20 : iteration).times do
     break unless SdcOrders.loading_popup.present?
-    sleep(delay.to_f.zero? ? 0.2 : delay.to_f / 10)
+    sleep(delay.to_f.zero? ? 0.2 : delay.to_f)
   end
 end
 
