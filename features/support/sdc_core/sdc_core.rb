@@ -1,4 +1,4 @@
-module Stamps
+module SDC
 
   module SdcEnv
     TEST_ENVIRONMENTS = %i[stg qacc cc qasc sc rating].freeze unless Object.const_defined?('Stamps::SdcEnv::TEST_ENVIRONMENTS')
@@ -15,70 +15,69 @@ module Stamps
     end
   end
 
-  module SdcFinder
-    module_function
-
-    def element(browser, tag: nil, timeout: 20)
-      if browser.is_a? Watir::Browser
-        if tag
-          element = instance_eval("browser.#{tag}(#{yield})")
-          result = Watir::Wait.until(timeout: timeout) { element }
-          if result
+  class SdcFinder
+    class << self
+      def element(browser, tag: nil, timeout: 20)
+        if browser.is_a? Watir::Browser
+          if tag
             element = instance_eval("browser.#{tag}(#{yield})")
-            return SdcElement.new(element)
+            result = Watir::Wait.until(timeout: timeout) { element }
+            if result
+              element = instance_eval("browser.#{tag}(#{yield})")
+              return SdcElement.new(element)
+            end
+          else
+            element = browser.element(yield)
+            result = Watir::Wait.until(timeout: timeout) { element }
+            if result
+              element = browser.element(yield)
+              return SdcElement.new(element)
+            end
           end
         else
-          element = browser.element(yield)
+          element = browser.find_element(yield)
           result = Watir::Wait.until(timeout: timeout) { element }
           if result
-            element = browser.element(yield)
+            element = browser.find_element(yield)
             return SdcElement.new(element)
           end
         end
-      else
-        element = browser.find_element(yield)
-        result = Watir::Wait.until(timeout: timeout) { element }
-        if result
-          element = browser.find_element(yield)
-          return SdcElement.new(element)
-        end
+
+        message = "Cannot locate element #{yield}"
+        error = Selenium::WebDriver::Error::NoSuchElementError
+        raise error, message
       end
 
-      message = "Cannot locate element #{yield}"
-      error = Selenium::WebDriver::Error::NoSuchElementError
-      raise error, message
-    end
-
-    def elements(browser, tag: nil, timeout: 20)
-      if browser.is_a? Watir::Browser
-        if tag
-          begin
-            code = "browser.#{tag}(#{yield})"
-            elements = instance_eval(code)
+      def elements(browser, tag: nil, timeout: 20)
+        if browser.is_a? Watir::Browser
+          if tag
+            begin
+              code = "browser.#{tag}(#{yield})"
+              elements = instance_eval(code)
+              result = Watir::Wait.until(timeout: timeout) { elements }
+              return instance_eval(code) if result
+            rescue Selenium::WebDriver::Error::TimeOutError
+              # ignore
+            end
+          else
+            elements = browser.elements(yield)
             result = Watir::Wait.until(timeout: timeout) { elements }
-            return instance_eval(code) if result
-          rescue Selenium::WebDriver::Error::TimeOutError
-            # ignore
+            return browser.elements(yield) if result
           end
         else
-          elements = browser.elements(yield)
+          elements = browser.find_elements(yield)
           result = Watir::Wait.until(timeout: timeout) { elements }
-          return browser.elements(yield) if result
+          return browser.find_elements(yield) if result
         end
-      else
-        elements = browser.find_elements(yield)
-        result = Watir::Wait.until(timeout: timeout) { elements }
-        return browser.find_elements(yield) if result
+
+        message = "Cannot locate elements #{yield}"
+        error = Selenium::WebDriver::Error::NoSuchElementError
+        raise error, message
       end
-
-      message = "Cannot locate elements #{yield}"
-      error = Selenium::WebDriver::Error::NoSuchElementError
-      raise error, message
     end
-
   end
 
-  class SdcPage < WatirDrops::PageObject
+  class Page < WatirDrops::PageObject
 
     class << self
       def page_object(name, tag: nil, required: false, timeout: 30, &block)
@@ -434,6 +433,80 @@ module Stamps
         super unless logger.respond_to?(method)
         logger.send(method, *args)
       end
+    end
+  end
+
+  class TestData
+    class << self
+      def store
+        return @store if @store
+        @store = {}
+        @store[:customs_associated_items] = {}
+        @store[:service_mapping_items] = {}
+        @store[:details_associated_items] = {}
+        @store[:order_id] = {}
+        @store[:service_look_up] = {}
+        @store[:service_look_up]['FCM'] = 'First-Class Mail'
+        @store[:service_look_up]['PM'] = 'Priority Mail'
+        @store[:service_look_up]['PME'] = 'Priority Mail Express'
+        @store[:service_look_up]['MM'] = 'Media Mail'
+        @store[:service_look_up]['PSG'] = 'Parcel Select Ground'
+        @store[:service_look_up]['FCMI'] = 'First-Class Mail International'
+        @store[:service_look_up]['PMI'] = 'Priority Mail International'
+        @store[:service_look_up]['PMEI'] = 'Priority Mail Express International'
+        @store[:ord_id_ctr] = 0
+        @store[:username] = ENV['USR']
+        @store[:password] = ENV['PW']
+        @store[:sdc_app] = ENV['WEB_APP']
+        @store[:url] = ENV['URL']
+        @store[:test] = ENV['USER_CREDENTIALS']
+        @store
+      end
+    end
+  end
+
+  module SdcDriver
+    class << self
+      def browser=(browser)
+        @@browser = browser
+      end
+      alias_method :driver=, :browser=
+
+
+      def browser
+        @@browser
+      end
+      alias_method :driver, :browser
+    end
+  end
+
+  class SdcAppiumDriver
+
+    attr_reader :device
+
+    def initialize(device)
+      @device = device
+    end
+
+    def core_driver
+      @core_driver ||= initialize_driver
+    end
+
+    def method_missing(name, *args, &block)
+      super unless @core_driver.respond_to?(name)
+      @core_driver.send(name, *args, &block)
+    end
+
+    private
+
+    def initialize_driver
+      file = ::File.expand_path("../../sdc_device_caps/#{device.to_s}.txt", __FILE__)
+      exception = ::Selenium::WebDriver::Error::WebDriverError
+      message = "Missing Appium capabilities file. #{device}: #{file}"
+      raise(exception, message) unless ::File.exist? file
+
+      caps = ::Appium.load_appium_txt(file: file, verbose: true)
+      ::Appium::Driver.new(caps, false)
     end
   end
 

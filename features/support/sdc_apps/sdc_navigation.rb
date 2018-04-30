@@ -1,4 +1,4 @@
-module Stamps
+module SdcWebsite
   module SdcNavigation
 
     class SignedInUser < SdcPage
@@ -8,10 +8,8 @@ module Stamps
 
     class << self
       def user_drop_down
-        @user_drop_down ||= Object.const_get('SdcNavigation::SignedInUser').new
+        @user_drop_down ||= SignedInUser.new
       end
     end
   end
-
 end
-

@@ -143,8 +143,8 @@ Then /^sign-in to Orders(?: as (.+), (.+)|)$/ do |usr, pw|
   expect(pw).to be_truthy
 
   SdcWebsite.landing_page.username.set_attribute('value', 'new value')
-  SdcWebsite.landing_page.username.set(TestData.store[:username] = usr)
-  SdcWebsite.landing_page.password.set(TestData.store[:password] = pw)
+  SdcWebsite.landing_page.username.set(usr)
+  SdcWebsite.landing_page.password.set(pw)
   if SdcEnv.browser
     if SdcEnv.sauce_device
       SdcWebsite.landing_page.sign_in.click
@@ -175,7 +175,8 @@ Then /^sign-in to Orders(?: as (.+), (.+)|)$/ do |usr, pw|
     SdcPage.browser.action.move_to(landing_page.sign_in).click.perform
     SdcPage.browser.action.move_to(landing_page.sign_in).send_keys(:enter).perform
   end
-
+  TestData.store[:username] = usr
+  TestData.store[:password] = pw
 end
 
 Then /^sign-in to Mail(?: as (.+), (.+)|)$/ do |usr, pw|

@@ -1,4 +1,5 @@
-module Stamps
+
+module SdcWebsite
   module SdcOrders
     class LoadingPopUp < SdcPage
       page_object(:loading_orders) { {text: 'Loading orders...'} }
@@ -35,4 +36,3 @@ module Stamps
     end
   end
 end
-

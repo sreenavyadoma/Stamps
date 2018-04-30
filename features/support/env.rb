@@ -16,8 +16,9 @@ require 'holidays'
 require 'watir'
 require 'watir_drops'
 
-require_relative 'sdc_core/sdc_test'
 require_relative 'sdc_core/sdc_core'
+require_relative 'sdc_core/sdc_test'
+require_relative 'sdc_apps/sdc_website'
 
 # Old Framework
 require_relative 'lib/core/stamps_element'
@@ -36,4 +37,4 @@ require_relative 'lib/orders/store_management'
 require_relative 'lib/mail/print_form_panel_elements'
 require_relative 'lib/mail/print_form_panel'
 
-World Stamps
+World SDC, Stamps, SdcWebsite
