@@ -418,19 +418,17 @@ class SdcNumber < BasicObject
 end
 
 class SdcLogger
-
-  def initialize(progname: 'Stamps.com')
-    @@logger = ::Logger.new(STDOUT)
-    @@logger.datetime_format = '%H:%M:%S'
-    @@logger.progname = progname
-    @@logger.formatter = proc do |severity, datetime, progname, msg|
-      "#{progname} :: #{msg}\n"
-    end
-  end
-
   class << self
     def logger
-      @@logger
+      begin
+        @logger = ::Logger.new(STDOUT)
+        @logger.datetime_format = '%H:%M:%S'
+        @logger.progname = 'Stamps.com'
+        @logger.formatter = proc do |severity, datetime, progname, msg|
+          "#{progname} :: #{msg}\n"
+        end
+      end unless @logger
+      @logger
     end
 
     def respond_to?(name, include_private = false)
