@@ -1,6 +1,3 @@
-
-
-
 module SdcWebsite
 
   def landing_page
