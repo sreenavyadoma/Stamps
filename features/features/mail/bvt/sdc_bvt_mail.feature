@@ -28,7 +28,7 @@ Feature:  Mail BVT - Authentication
     Then visit Mail
     Then set username in Mail
     Then click the Sign In button in Mail
-    Then expect error message "Your username or password is invalid" in Mail Sign In Modal
+    Then expect Mail Sign In Modal error Your username or password is invalid
 
 
 

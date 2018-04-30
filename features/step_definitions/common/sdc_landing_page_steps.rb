@@ -127,9 +127,9 @@ Then /^[Ee]xpect [Uu]sername is present in Mail [Uu]sername field$/ do
 
 end
 
-Then /^[Ee]xpect error message "Your username or password is invalid" in [Mm]ail [Ss]ign [Ii]n [Mm]odal$/ do
+Then /^[Ee]xpect [Mm]ail [Ss]ign [Ii]n [Mm]odal error (.*)$/ do |str|
 
-  expect(SdcWebsite.navigation.mail_sign_in_modal.invalid_sign_in.present?).to eql true
+  expect(SdcWebsite.navigation.mail_sign_in_modal.invalid_sign_in.text_value).to eql str
 
 end
 
