@@ -15,6 +15,7 @@ require 'measured'
 require 'holidays'
 require 'watir'
 require 'watir_drops'
+require 'tiny_tds'
 
 require_relative 'sdc_core/sdc_core'
 require_relative 'sdc_core/sdc_test'
@@ -25,7 +26,7 @@ require_relative 'sdc_apps/sdc_navigation'
 
 # web dev
 require_relative 'web_dev/stamps_endicia/partner_portal'
-require 'tiny_tds'
+
 
 # Old Framework
 require_relative 'lib/core/stamps_element'
