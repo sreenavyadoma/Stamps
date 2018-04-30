@@ -55,8 +55,8 @@ Then /^[Ee]xpect Customs Non-Delivery Options is (?:correct|(.*))$/ do |expectat
       break if actual == expectation
     end
   end
-  SdcLog.info "Expectation: #{expectation}"
-  SdcLog.info "Got: #{actual}"
+  SdcLogger.info "Expectation: #{expectation}"
+  SdcLogger.info "Got: #{actual}"
   expect(stamps.common_modals.customs_form.non_delivery_options.textbox.text).to eql(expectation) if SdcEnv.sdc_app == :orders
   expect(stamps.mail.print_form.mail_customs.edit_customs_form.non_delivery_options.textbox.text).to eql(expectation) if SdcEnv.sdc_app == :mail
 end

@@ -9,4 +9,9 @@ module Stamps
     page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Orders&" }
 
   end
+
+  class SdcMailLandingPage < SdcPage
+    page_url { |env| "https://print#{env}.stamps.com/webpostage/default2.aspx" }
+  end
+
 end

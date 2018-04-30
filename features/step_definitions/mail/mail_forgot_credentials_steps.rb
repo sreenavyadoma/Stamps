@@ -1,6 +1,6 @@
 Then /^Mail: Open Forgot Username Modal/ do
   #StampsTest.log.step "Mail: Open Forgot Username Modal"
-  @forgot_username=stamps.mail.sign_in_modal.forgot_username if @forgot_username.nil?
+  @forgot_username = stamps.mail.sign_in_modal.forgot_username if @forgot_username.nil?
 
 end
 
@@ -14,7 +14,7 @@ end
 
 Then /^Mail: Open Forgot Password Modal/ do
   #StampsTest.log.step "Mail: Open Forgot Password Modal"
-  @forgot_password=stamps.mail.sign_in_modal.forgot_password if @forgot_password.nil?
+  @forgot_password = stamps.mail.sign_in_modal.forgot_password if @forgot_password.nil?
 end
 
 Then /^[Oo]n Print form, set forgotten username to (.*)$/ do |username|

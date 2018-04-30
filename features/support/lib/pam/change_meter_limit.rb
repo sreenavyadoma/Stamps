@@ -18,10 +18,10 @@ module Stamps
 
       def initialize(param)
         super
-        @usps_approval=USPSCheckBox.new(param)
-        @new_meter_limit=StampsTextbox.new driver.text_field(name: "resetAmt")
-        @current_meter=StampsField.new driver.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(3)>td:nth-child(2)")
-        @maximum_meter=StampsField.new driver.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(4)>td:nth-child(2)")
+        @usps_approval = USPSCheckBox.new(param)
+        @new_meter_limit = StampsTextbox.new driver.text_field(name: "resetAmt")
+        @current_meter = StampsField.new driver.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(3)>td:nth-child(2)")
+        @maximum_meter = StampsField.new driver.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(4)>td:nth-child(2)")
       end
 
       def present?
@@ -37,8 +37,8 @@ module Stamps
       end
 
       def submit
-        button=Stamps::WebApps::StampsField.new driver.input(name: "submit")
-        change_success=ChangeMeterLimitSuccess.new(param)
+        button = Stamps::WebApps::StampsField.new driver.input(name: "submit")
+        change_success = ChangeMeterLimitSuccess.new(param)
         5.times do
           button.click
           button.click
@@ -65,8 +65,8 @@ module Stamps
       end
 
       def ok
-        profile=CustomerProfilePage.new(param)
-        button=StampsField.new driver.a(css: "a[href^=Profile]")
+        profile = CustomerProfilePage.new(param)
+        button = StampsField.new driver.a(css: "a[href^=Profile]")
         5.times do
           button.wait_until_present 2
           button.click

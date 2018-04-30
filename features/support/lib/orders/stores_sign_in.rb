@@ -5,11 +5,11 @@ module Stamps
 
       def initialize(param)
         super
-        @title=StampsField.new driver.div(text: 'Learn More')
-        @msg_container=StampsField.new driver.div(id: 'sdc-window-tutorial-innerCt')
-        @close_button=StampsField.new driver.span(text: 'Close')
-        @cancel_button=StampsField.new driver.img(css: 'img[class$=x-tool-close]')
-        @learn_button=StampsField.new driver.span(text: 'Learn More')
+        @title = StampsField.new driver.div(text: 'Learn More')
+        @msg_container = StampsField.new driver.div(id: 'sdc-window-tutorial-innerCt')
+        @close_button = StampsField.new driver.span(text: 'Close')
+        @cancel_button = StampsField.new driver.img(css: 'img[class$=x-tool-close]')
+        @learn_button = StampsField.new driver.span(text: 'Learn More')
       end
 
       def present?
@@ -39,11 +39,11 @@ module Stamps
 
       def initialize(param)
         super
-        @title=StampsField.new driver.div(text: 'Import from Stores')
-        @msg_container=StampsField.new driver.div(id: 'sdc-window-tutorial-innerCt')
-        @next_button=StampsField.new driver.span(text: 'Next')
-        @close_button=StampsField.new driver.img(css: 'img[class$=x-tool-close]')
-        @learn_more=LearnMoreModal.new(param)
+        @title = StampsField.new driver.div(text: 'Import from Stores')
+        @msg_container = StampsField.new driver.div(id: 'sdc-window-tutorial-innerCt')
+        @next_button = StampsField.new driver.span(text: 'Next')
+        @close_button = StampsField.new driver.img(css: 'img[class$=x-tool-close]')
+        @learn_more = LearnMoreModal.new(param)
       end
 
       def present?
@@ -76,11 +76,11 @@ module Stamps
 
       def initialize(param)
         super
-        @title=StampsField.new driver.div(text: 'Import from CSV')
-        @msg_container=StampsField.new driver.div(id: 'sdc-window-tutorial-innerCt')
-        @next_button=StampsField.new driver.span(text: 'Next')
-        @close_button=StampsField.new driver.img(css: 'img[class$=x-tool-close]')
-        @import_from_stores=ImportFromStoresModal.new(param)
+        @title = StampsField.new driver.div(text: 'Import from CSV')
+        @msg_container = StampsField.new driver.div(id: 'sdc-window-tutorial-innerCt')
+        @next_button = StampsField.new driver.span(text: 'Next')
+        @close_button = StampsField.new driver.img(css: 'img[class$=x-tool-close]')
+        @import_from_stores = ImportFromStoresModal.new(param)
       end
 
       def present?
@@ -113,11 +113,11 @@ module Stamps
 
       def initialize(param)
         super
-        @title=StampsField.new driver.div(text: 'Add Manual Order')
-        @msg_container=StampsField.new driver.div(id: 'sdc-window-tutorial-innerCt')
-        @next_button=StampsField.new driver.span(text: 'Next')
-        @close_button=StampsField.new driver.img(css: 'img[class$=x-tool-close]')
-        @import_from_csv=ImportFromCsvModal.new(param)
+        @title = StampsField.new driver.div(text: 'Add Manual Order')
+        @msg_container = StampsField.new driver.div(id: 'sdc-window-tutorial-innerCt')
+        @next_button = StampsField.new driver.span(text: 'Next')
+        @close_button = StampsField.new driver.img(css: 'img[class$=x-tool-close]')
+        @import_from_csv = ImportFromCsvModal.new(param)
       end
 
       def present?

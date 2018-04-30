@@ -79,36 +79,6 @@ Then /^Verify Health Check for (.+)$/ do |str|
 end
 
 Then /^visit Orders landing page$/ do
-  SdcOrdersLandingPage.visit(case SdcEnv.env
-                             when :qacc
-                               'ext.qacc'
-                             when :qasc
-                               'ext.qasc'
-                             when :stg
-                               '.testing'
-                             when :prod
-                               ''
-                             else
-                               # ignore
-                             end)
-end
-
-Then /^visit Mail$/ do
-  SdcMailLandingPage.visit(case SdcEnv.env
-                             when :qacc
-                               'ext.qacc'
-                             when :qasc
-                               'ext.qasc'
-                             when :stg
-                               '.testing'
-                             when :prod
-                               ''
-                             else
-                               # ignore
-                           end)
-end
-
-Then /^Signin mail$/ do
   env = case SdcEnv.env
         when :qacc
           'ext.qacc'
@@ -121,12 +91,25 @@ Then /^Signin mail$/ do
         else
           # ignore
         end
-  SdcMailLandingPage.visit(env)
+
+  SdcOrdersLandingPage.visit(env)
 end
 
-Then /^printon stuff$/ do
+Then /^visit Mail$/ do
+  env = case SdcEnv.env
+        when :qacc
+          'ext.qacc'
+        when :qasc
+          'ext.qasc'
+        when :stg
+          '.testing'
+        when :prod
+          ''
+        else
+          # ignore
+        end
 
-  SdcMail.print_form.print_on("")
+  SdcMailLandingPage.visit(env)
 end
 
 Then /^[Ss]ign-in to SDC Website$/ do
@@ -158,8 +141,8 @@ Then /^sign-in to Orders(?: as (.+), (.+)|)$/ do |usr, pw|
   expect(pw).to be_truthy
 
   SdcWebsite.landing_page.username.set_attribute('value', 'new value')
-  SdcWebsite.landing_page.username.set(TestData.store[:username] = usr)
-  SdcWebsite.landing_page.password.set(TestData.store[:password] = pw)
+  SdcWebsite.landing_page.username.set(usr)
+  SdcWebsite.landing_page.password.set(pw)
   if SdcEnv.browser
     if SdcEnv.sauce_device
       SdcWebsite.landing_page.sign_in.click
@@ -190,7 +173,8 @@ Then /^sign-in to Orders(?: as (.+), (.+)|)$/ do |usr, pw|
     SdcPage.browser.action.move_to(landing_page.sign_in).click.perform
     SdcPage.browser.action.move_to(landing_page.sign_in).send_keys(:enter).perform
   end
-
+  TestData.store[:username] = usr
+  TestData.store[:password] = pw
 end
 
 

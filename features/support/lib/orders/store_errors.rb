@@ -11,7 +11,7 @@ module Stamps
         end
 
         def ok
-          button=StampsField.new driver.span(text: 'OK')
+          button = StampsField.new driver.span(text: 'OK')
           button.click_while_present
         end
       end

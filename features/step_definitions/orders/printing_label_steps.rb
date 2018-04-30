@@ -1,6 +1,6 @@
 Then /^View Print On option (.*) tooltip$/ do |label|
   #SdcLog.step "View Print On option #{label} tooltip"
-  tooltip=stamps.orders.modals.orders_print_modal.print_on_tooltip label
+  tooltip = stamps.orders.modals.orders_print_modal.print_on_tooltip label
 end
 
 #Shipping Label 5.5 x 8.5
@@ -9,8 +9,8 @@ end
 #Avery 5126, 8126, 5526, 5783, 15516, 18126, 85783
 Then /^[Ee]xpect (.*) tool-tip to contain \"(.*)\"$/ do |label, tooltip_message|
   #SdcLog.step "Expect #{label} tool-tip to contain #{tooltip_message}"
-  SdcLog.step label
-  SdcLog.step tooltip_message
+  SdcLogger.debug label
+  SdcLogger.debug tooltip_message
 end
 
 

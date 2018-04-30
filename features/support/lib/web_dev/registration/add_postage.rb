@@ -5,8 +5,8 @@ module Stamps
 
       def initialize(param)
         super
-        @web_apps=StampsDotCom.new(param)
-        @web_mail=@web_apps.mail
+        @web_apps = StampsDotCom.new(param)
+        @web_mail = @web_apps.mail
       end
 
       def present?
@@ -18,32 +18,32 @@ module Stamps
       end
 
       def buy_postage_10
-        checkbox_field=driver.input(css: "input[value='1:10.0']")
-        verify_field=checkbox_field.parent.parent.parent.parent
-        attribute="class"
-        verify_field_attrib="checked"
+        checkbox_field = driver.input(css: "input[value='1:10.0']")
+        verify_field = checkbox_field.parent.parent.parent.parent
+        attribute = "class"
+        verify_field_attrib = "checked"
         StampsRadio.new(checkbox_field, verify_field, attribute, verify_field_attrib)
       end
 
       def buy_postage_20
-        checkbox_field=driver.input(css: "input[value='2:20.0']")
-        verify_field=checkbox_field.parent.parent.parent.parent
-        attribute="class"
-        verify_field_attrib="checked"
+        checkbox_field = driver.input(css: "input[value='2:20.0']")
+        verify_field = checkbox_field.parent.parent.parent.parent
+        attribute = "class"
+        verify_field_attrib = "checked"
         StampsRadio.new(checkbox_field, verify_field, attribute, verify_field_attrib)
       end
 
       def no_thanks
-        checkbox_field=driver.input(css: "input[value='5:0.0']")
-        verify_field=checkbox_field.parent.parent.parent.parent
-        attribute="class"
-        verify_field_attrib="checked"
+        checkbox_field = driver.input(css: "input[value='5:0.0']")
+        verify_field = checkbox_field.parent.parent.parent.parent
+        attribute = "class"
+        verify_field_attrib = "checked"
         StampsRadio.new(checkbox_field, verify_field, attribute, verify_field_attrib)
       end
 
 
       def confirm
-        confirm_button=StampsField.new (driver.button text: "Confirm")
+        confirm_button = StampsField.new (driver.button text: "Confirm")
         log.info "Add Postage Page has loaded: #{driver.url}"
 
         10.times do

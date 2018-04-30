@@ -6,7 +6,7 @@ module Stamps
           cache[:blur_out_field].nil? || !cache[:blur_out_field].present? ? cache[:blur_out_field] = StampsField.new(driver.label(text: 'Print On:')) : cache[:blur_out_field]
         end
 
-        def blur_out(count=2)
+        def blur_out(count = 2)
           expect(blur_out_field).to be_present, 'Blur out field is not present.'
           count.to_i.times do
             blur_out_field.double_click
