@@ -94,7 +94,7 @@ module PartnerPortal
     end
 
     def stamps_endicia_common_page
-      @stamps_endicia_common_page ||= StampsEndicia::Common.new
+      @stamps_endicia_common_page ||= PartnerPortal::Common.new
     end
 
     def db_connection
