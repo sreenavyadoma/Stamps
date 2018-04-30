@@ -36,10 +36,10 @@ module Stamps
         end
 
         def connect
-          button=StampsField.new driver.span(text: "Connect")
-          settings=ShopifySettings.new(param)
-          shopify=ShopifyPage.new(param)
-          importing_order=Orders::Stores::ImportingOrdersModal.new(param)
+          button = StampsField.new driver.span(text: "Connect")
+          settings = ShopifySettings.new(param)
+          shopify = ShopifyPage.new(param)
+          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
           10.times do
             button.click
@@ -140,9 +140,9 @@ module Stamps
         end
 
         def reconnect
-          button=StampsField.new driver.span(text: "Connect")
-          manage_stores=ManageStores.new(param)
-          importing_order=Orders::Stores::ImportingOrdersModal.new(param)
+          button = StampsField.new driver.span(text: "Connect")
+          manage_stores = ManageStores.new(param)
+          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
           10.times do
             button.click
@@ -266,8 +266,8 @@ module Stamps
         end
 
         def sign_in
-          button=StampsField.new driver.text_field(css: "input[value='Log in']")
-          settings_page=ShopifySettings.new(param)
+          button = StampsField.new driver.text_field(css: "input[value='Log in']")
+          settings_page = ShopifySettings.new(param)
 
           10.times do
             button.click

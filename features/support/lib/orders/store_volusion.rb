@@ -23,7 +23,7 @@ module Stamps
         end
 
         def api_url url
-          textbox=StampsTextbox.new driver.text_field(css: "div>input[id^=textfield-][id$=-inputEl][name^=textfield-][name$=-inputEl][class*=required]")
+          textbox = StampsTextbox.new driver.text_field(css: "div>input[id^=textfield-][id$=-inputEl][name^=textfield-][name$=-inputEl][class*=required]")
           textbox.set url
         end
 
@@ -32,10 +32,10 @@ module Stamps
         end
 
         def connect
-          button=connect_button
-          settings=VolusionSettings.new(param)
-          server_error=Orders::Stores::ServerError.new(param)
-          importing_order=Orders::Stores::ImportingOrdersModal.new(param)
+          button = connect_button
+          settings = VolusionSettings.new(param)
+          server_error = Orders::Stores::ServerError.new(param)
+          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
           20.times do
             button.click
@@ -45,7 +45,7 @@ module Stamps
                 importing_order.ok
               end
               if server_error.present?
-                error_str=server_error.message
+                error_str = server_error.message
                 log.info error_str
                 server_error.ok
                 expect("Server Error: \n#{error_msg}").to eql ""
@@ -63,10 +63,10 @@ module Stamps
         end
 
         def reconnect
-          button=connect_button
-          manage_stores=ManageStores.new(param)
-          server_error=Orders::Stores::ServerError.new(param)
-          importing_order=Orders::Stores::ImportingOrdersModal.new(param)
+          button = connect_button
+          manage_stores = ManageStores.new(param)
+          server_error = Orders::Stores::ServerError.new(param)
+          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
           20.times do
             button.click
@@ -76,7 +76,7 @@ module Stamps
                 importing_order.ok
               end
               if server_error.present?
-                error_str=server_error.message
+                error_str = server_error.message
                 log.info error_str
                 server_error.ok
                 expect("Server Error: \n#{error_str}").to eql ""

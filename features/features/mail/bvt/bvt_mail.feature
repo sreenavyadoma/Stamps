@@ -2,9 +2,9 @@ Feature: BVT for Mail page
   Background:
     Given a valid user is signed in to Web Apps
 
-  @mail_authentication
-  Scenario: Mail Authentication Test
-    Then Sign out
+  #@mail_authentication
+  #Scenario: Mail Authentication Test
+  #  Then Sign out
 
   @mail_bvt_address_cleansing
   Scenario: Address Cleansing

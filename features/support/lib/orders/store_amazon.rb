@@ -28,9 +28,9 @@ module Stamps
           end
 
           def select(selection)
-            dd=dropdown
-            text_field=textbox
-            selection_field=StampsField.new(driver.li text: selection)
+            dd = dropdown
+            text_field = textbox
+            selection_field = StampsField.new(driver.li text: selection)
 
             10.times do
               dd.click unless selection_field.present?
@@ -40,7 +40,7 @@ module Stamps
               break if text_field.text.include? selection
             end
 
-            log.info "Order Source #{selection} was #{(text_field.text.include? selection)?"Selected":"NOT selected"}"
+            log.info "Order Source #{selection} was #{(text_field.text.include? selection) ? "Selected" : "NOT selected"}"
           end
 
           def amazon
@@ -62,9 +62,9 @@ module Stamps
           end
 
           def select(selection)
-            dd=dropdown
-            text_field=textbox
-            selection_field=StampsField.new(driver.li text: selection)
+            dd = dropdown
+            text_field = textbox
+            selection_field = StampsField.new(driver.li text: selection)
 
             10.times do
               dd.click unless selection_field.present?
@@ -74,7 +74,7 @@ module Stamps
               break if text_field.text.include? selection
             end
 
-            log.info "Product Identifier #{selection} was #{(text_field.text.include? selection)?"Selected":"NOT selected"}"
+            log.info "Product Identifier #{selection} was #{(text_field.text.include? selection) ? "Selected" : "NOT selected"}"
           end
 
           def use_sku
@@ -96,7 +96,7 @@ module Stamps
         end
 
         def close
-          button=StampsField.new driver.img(css: "div[id^=connectamazonwindow-][id$=header-targetEl]>div>img")
+          button = StampsField.new driver.img(css: "div[id^=connectamazonwindow-][id$=header-targetEl]>div>img")
           5.times do
             button.click
             break unless present?
@@ -112,7 +112,7 @@ module Stamps
         end
 
         def verify_seller_id
-          button=StampsField.new(driver.span text: "Verify Seller ID")
+          button = StampsField.new(driver.span text: "Verify Seller ID")
           3.times do
             button.click
           end
@@ -127,9 +127,9 @@ module Stamps
         end
 
         def connect
-          button=StampsField.new driver.span(text: "Connect")
-          server_error=Orders::Stores::ServerError.new(param)
-          importing_order=Orders::Stores::ImportingOrdersModal.new(param)
+          button = StampsField.new driver.span(text: "Connect")
+          server_error = Orders::Stores::ServerError.new(param)
+          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
           10.times do
             button.click
@@ -139,7 +139,7 @@ module Stamps
                 importing_order.ok
               end
               if server_error.present?
-                error_str=server_error.message
+                error_str = server_error.message
                 log.info error_str
                 server_error.ok
                 expect("Server Error: \n#{error_str}").to eql ""
@@ -153,16 +153,16 @@ module Stamps
         end
 
         def connect_expecting_store_settings
-          button=(StampsField.new(driver.span text: "Connect"))
-          settings=AmazonSettings.new(param)
-          server_error=Orders::Stores::ServerError.new(param)
-          importing_order=Orders::Stores::ImportingOrdersModal.new(param)
+          button = (StampsField.new(driver.span text: "Connect"))
+          settings = AmazonSettings.new(param)
+          server_error = Orders::Stores::ServerError.new(param)
+          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
           20.times do
             button.click
             5.times do
               if server_error.present?
-                error_str=server_error.message
+                error_str = server_error.message
                 log.info error_str
                 server_error.ok
                 expect("Server Error: \n#{error_str}").to eql ""

@@ -34,7 +34,7 @@ module Stamps
 
       def select(str)
         drop_down.click
-        selection=StampsField.new(driver.span(text: "1-10 packages per day (1-200 monthly)"))
+        selection = StampsField.new(driver.span(text: "1-10 packages per day (1-200 monthly)"))
         15.times do
           selection.click
         end
@@ -44,11 +44,11 @@ module Stamps
       end
 
       def consent_checkbox
-        @consent_checkbox=StampsWatirCheckbox.new(driver.checkbox(name: 'consentCheckbox'))
+        @consent_checkbox = StampsWatirCheckbox.new(driver.checkbox(name: 'consentCheckbox'))
       end
 
       def submit
-        submit=StampsField.new driver.button text: "Submit"
+        submit = StampsField.new driver.button text: "Submit"
         log.info "Ship Volume Survey Page has loaded: #{driver.url}"
 
         10.times do

@@ -27,9 +27,9 @@ module Stamps
     def update_file
       begin
         FileUtils.copy_file(source_file, test_file)
-        SdcLog.step "#{"-"*40}"
-        SdcLog.step "Rate File was Updated"
-        SdcLog.step "#{"-"*40}"
+        SdcLogger.debug "#{"-"*40}"
+        SdcLogger.debug "Rate File was Updated"
+        SdcLogger.debug "#{"-"*40}"
       rescue
         false
       end

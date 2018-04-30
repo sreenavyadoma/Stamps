@@ -6,20 +6,20 @@ module Stamps
       attr_reader :driver
 
       def initialize(driver)
-        @driver=driver
+        @driver = driver
       end
 
       def present?
-        print_window=RAutomation::Window.new(:title => /Print/i)
+        print_window = RAutomation::Window.new(:title => /Print/i)
         log.info "Print Window Present? #{print_window.present?}"
         begin
-          if driver==:firefox
+          if driver == :firefox
             print_window.activate
             print_window.button(:value => "OK").exists?
-          elsif driver==:chrome
+          elsif driver == :chrome
             print_window.activate
             print_window.button(:value => "&Print").exists?
-          elsif driver==:ie
+          elsif driver == :ie
             print_window.activate
             print_window.button(:value => "&Print").exists?
           else
@@ -38,9 +38,9 @@ module Stamps
       end
 
       def print
-        print_window=RAutomation::Window.new(:title => /Print/i)
+        print_window = RAutomation::Window.new(:title => /Print/i)
         log.info "Print Window Present? #{print_window.present?}"
-        if driver==:firefox
+        if driver == :firefox
           wait_until_present
           expect("Print Window is not open").to eql "" unless present?
           print_window.activate
@@ -53,7 +53,7 @@ module Stamps
             raise "Unable to click on OK button in Windows Print dialog. Windows print modal might not have been present.\n#{e.backtrace.join "\n"}"
           end
 
-        elsif driver==:chrome
+        elsif driver == :chrome
           wait_until_present
           expect("Print Window is not open").to eql "" unless present?
           print_window.activate
@@ -66,7 +66,7 @@ module Stamps
             raise "Unable to click on OK button in Windows Print dialog. Windows print modal might not have been present." + e
           end
 
-        elsif driver==:ie
+        elsif driver == :ie
           wait_until_present
           expect("Print Window is not open").to eql "" unless present?
           print_window.activate
