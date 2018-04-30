@@ -55,7 +55,7 @@ module PartnerPortal
 
   class PPDashboardPage < SdcPage
     #welcome header
-    page_object(:header) { {xpath: "//h3[contains(text(), 'Partner Portal')]"} }
+    page_object(:dashboard_header) { {class: "dashboard__header"} }
 
     #hamburger button
     button(:hamburger, required: true) { {class: "navbar-toggle collapsed"} }

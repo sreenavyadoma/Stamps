@@ -31,7 +31,7 @@ Feature: PP-MVP: Login Page
         Then PP: set login page password to !
         Then PP: Blur out on Login Page
 
-     # Validate tooltips for various values
+       # Validate tooltips for various values
         #Validate Email tooltips
         Then PP: expect login page email tooltip count is 1
         Then PP: expect login page email tooltip index 0 to be Valid email address required.
@@ -42,13 +42,32 @@ Feature: PP-MVP: Login Page
         Then PP: expect login page password tooltip index 2 to be At least 1 number required.
         Then PP: expect login page password tooltip index 3 to be 8 character minimum.
 
-    #Valiadate email and password can't be the same
+        #Validate Password tooltips for  At least 1 letter required.
+        Then PP: set login page password to 1234151523
+        Then PP: Blur out on Login Page
+        Then PP: expect login page password tooltip count is 1
+        Then PP: expect login page password tooltip index 1 to be At least 1 letter required.
+
+        #Validate Password tooltips for At least 1 number required.
+        Then PP: set login page password to abcdefghigh
+        Then PP: Blur out on Login Page
+        Then PP: expect login page password tooltip count is 1
+        Then PP: expect login page password tooltip index 1 to be At least 1 number required.
+
+        #Validate Password tooltips for 8 character minimum.
+        Then PP: set login page password to abc1
+        Then PP: Blur out on Login Page
+        Then PP: expect login page password tooltip count is 1
+        Then PP: expect login page password tooltip index 1 to be 8 character minimum.
+
+      #Valiadate email and password can't be the same
         Then PP: set login page email to abc1@stamps.com
         Then PP: set login page password to abc1@stamps.com
         Then PP: User clicks Log In
         Then PP: expect login page password tooltip index 1 to be Cannot match email.
 
-    #validate incorrect email or password message
+
+      #validate incorrect email or password message
 #        Then PP: set login page email to abc@stamps.com
 #        Then PP: set login page password to abc123
 #        Then PP: User clicks Log In
