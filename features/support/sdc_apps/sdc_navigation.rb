@@ -12,6 +12,7 @@ module Stamps
       page_object(:password, tag: :text_field) { {id: 'PasswordTextBox'} }
       page_object(:sign_in){{id: 'signInButton'}}
       page_object(:remember_username, tag: :checkbox) { {id: 'rememberUser'} }
+      page_object(:invalid_sign_in) { {xpath: '//div[contains(@id, "InvalidUsernamePasswordMsg")]//label'} }
     end
 
     class << self

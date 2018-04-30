@@ -106,7 +106,7 @@ Then /^[Cc]lick the [Ss]ign [Ii]n button in [Mm]ail$/ do
         modal.sign_in_link.click
         modal.sign_in.click
         signed_in_user.wait_until_present(timeout: 10)
-        expect(SdcWebsite.navigation.user_drop_down.signed_in_user.text_value).to include(TestData.store[:username])
+        #expect(SdcWebsite.navigation.user_drop_down.signed_in_user.text_value).to include(TestData.store[:username])
   elsif SdcEnv.ios
     raise StandardError, 'Not Implemented'
   elsif SdcEnv.android
@@ -131,3 +131,11 @@ Then /^[Ee]xpect [Uu]sername is present in Mail [Uu]sername field$/ do
   expect(modal.username.value).to eql TestData.store[:username]
 
 end
+
+Then /^[Cc]lick the [Ss]ign [Ii]n button in [Mm]ail expecting error message "Your username or password is invalid"$/ do
+
+  modal = SdcWebsite.navigation.mail_sign_in_modal
+  expect(modal.invalid_sign_in.present?).to eql true
+
+end
+
