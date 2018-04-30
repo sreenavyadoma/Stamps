@@ -140,6 +140,7 @@ module SdcOrders
     page_object(:service_label, required: true, timeout: 20) { {xpath: '(//*[contains(text(), "Service:")])[2]'} }
     page_object(:weight_label, required: true, timeout: 20) { {xpath: '//*[contains(text(), "Weight:")]'} }
     page_object(:ship_to_label, required: true, timeout: 20) { {xpath: '//div[starts-with(@id, "singleOrderDetailsForm")]//label[text()="Ship To:"]'} }
+    page_object(:order_id, required: true, timeout: 20) { {xpath: '(//*[contains(@class, "singleorder-detailsform")]//div[contains(@class, "sdc-toolbar")]//b)[1]'} }
 
     def ship_to
       @ship_to ||= SdcOrderDetailsShipTo.new
@@ -171,6 +172,15 @@ module SdcOrders
 
     def dimensions
       @dimensions ||= SdcOrderDetailsDimensions.new
+    end
+
+    def respond_to?(name, include_private = false)
+      order_id.respond_to?(name, include_private) || super
+    end
+
+    def method_missing(name, *args, &block)
+      super unless order_id.respond_to?(name)
+      order_id.send(name, *args, &block)
     end
   end
 end
