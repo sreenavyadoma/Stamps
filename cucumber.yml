@@ -9,8 +9,8 @@ samsung_galaxy_sauce: --tags @saucelabs_poc SAUCE_DEVICE=samsung_galaxy_sauce VE
 
 #todo-Rob set PRINTER=factory as default automation printer
 #robcm=ccpryiihrjz ccfb311osps4x print_dialog_ship_date
-rob_cc: --tags @bvt_new_order WEB_APP=orders BROWSER=ff JENKINS=true URL=cc VERBOSE=true HEALTHCHECK=true MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory NEW_FRAMEWORK=true DEBUG=true
-rob_stg: --tags @bvt_new_order WEB_APP=orders JENKINS=true URL=stg VERBOSE=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false USR=default PW=pass111 PRINTER=factory #stgee1mtqvwdc0
+rob_cc: --tags @bvt_orders_ship_date WEB_APP=orders BROWSER=ff JENKINS=true URL=cc VERBOSE=true HEALTHCHECK=true MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory NEW_FRAMEWORK=true DEBUG=true
+rob_stg: --tags @bvt_orders_ship_date WEB_APP=orders JENKINS=true URL=stg VERBOSE=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false USR=default PW=pass111 PRINTER=factory #stgee1mtqvwdc0
 rob_sc: --tags @healthcheck WEB_APP=orders JENKINS=true URL=sc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=selenium  USR=scsejsglwa PW=pass111 VERBOSE=true PRINTER=factory # c2jinmzmu64 schl0vlbfy2673 #19  schl0vlbfy2673
 rob_dev: --tags @mail_advanced_options_stamps WEB_APP=orders JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 rob_mail_cc:  --tags @mail_bvt_international WEB_APP=mail JENKINS=true USR=cctruer0u PW=pass111 URL=cc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory #\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
@@ -18,7 +18,7 @@ rob_mail_stg: --tags @mail_bvt_international WEB_APP=mail JENKINS=true USR=defau
 rob_mail_sc: --tags @print_dialog_ship_date WEB_APP=mail JENKINS=true USR=default PW=pass111 URL=sc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 rob_registration: --tags @registration_normal_workflow WEB_APP=registration URL=cc --guess VERBOSE=true HEALTHCHECK=false BROWSER=chrome MAX_WINDOW=false JENKINS=true
 
-browser_test:  --tags @mail_remember_username BROWSER=ff LOG_LEVEL=info USR=abqaprod1 PW=password1 URL=prod HEALTHCHECK=true LOG_LEVEL=debug
+browser_test:  --tags @bvt_orders_ship_date BROWSER=ff LOG_LEVEL=info USR=abqaprod1 PW=password1 URL=prod HEALTHCHECK=true LOG_LEVEL=debug
 
 saucelabs_browser:  --tags @bvt_new_order BROWSER=gc LOG_LEVEL=info WEB_APP=orders URL=prod USR=abqaprod1 PW=password1 HEADLESS=true
 saucelabs_iphonex: --tags @saucelabs_poc IOS=iphonex LOG_LEVEL=info WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
