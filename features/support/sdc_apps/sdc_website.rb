@@ -1,9 +1,5 @@
 module SdcWebsite
 
-  class SdcHealthCheck < SDC::Page
-    page_url { |env, app| "https://#{env}.stamps.com/#{app.to_s}/healthcheck.aspx" }
-  end
-
   def landing_page
     @landing_page ||= SdcOrdersLandingPage.new
   end

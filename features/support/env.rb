@@ -37,4 +37,4 @@ require_relative 'lib/orders/store_management'
 require_relative 'lib/mail/print_form_panel_elements'
 require_relative 'lib/mail/print_form_panel'
 
-World SDC, Stamps, SdcWebsite
+World Stamps, SdcWebsite
