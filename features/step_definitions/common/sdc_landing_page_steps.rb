@@ -13,7 +13,7 @@ Then /^set username in Mail(?: to (.+)|)$/ do |usr|
 
   modal = SdcWebsite.navigation.mail_sign_in_modal
   modal.sign_in_link.wait_until_present(timeout: 3)
-  modal.sign_in_link.click
+  modal.sign_in_link.click unless modal.username.present?
   modal.username.set(TestData.store[:username] = usr)
 
 end
@@ -32,14 +32,14 @@ Then /^set password in Mail(?: to (.+)|)$/ do |pw|
 
   modal = SdcWebsite.navigation.mail_sign_in_modal
   modal.sign_in_link.wait_until_present(timeout: 3)
-  modal.sign_in_link.click
+  modal.sign_in_link.click unless modal.password.present?
   modal.password.set(TestData.store[:password] = pw)
 end
 
 Then /^set [Rr]emember [Uu]sername to [Cc]hecked$/ do
   modal = SdcWebsite.navigation.mail_sign_in_modal
   modal.sign_in_link.wait_until_present(timeout: 3)
-  modal.sign_in_link.click
+  modal.sign_in_link.click unless modal.remember_username.present?
   modal.remember_username.set
 end
 
@@ -100,20 +100,15 @@ end
 
 Then /^[Cc]lick the [Ss]ign [Ii]n button in [Mm]ail$/ do
   modal = SdcWebsite.navigation.mail_sign_in_modal
-  signed_in_user = SdcWebsite.navigation.user_drop_down.signed_in_user
   if SdcEnv.browser
-        modal.sign_in_link.wait_until_present(timeout: 3)
-        modal.sign_in_link.click
-        modal.sign_in.click
-        signed_in_user.wait_until_present(timeout: 10)
-        #expect(SdcWebsite.navigation.user_drop_down.signed_in_user.text_value).to include(TestData.store[:username])
+    modal.sign_in_link.wait_until_present(timeout: 3)
+    modal.sign_in_link.click unless modal.sign_in.present?
+    modal.sign_in.click
   elsif SdcEnv.ios
     raise StandardError, 'Not Implemented'
   elsif SdcEnv.android
     raise StandardError, 'Not Implemented'
   end
-  sleep 3
-
 end
 
 Then /^[Oo]pen [Ss]ign [Ii]n [Mm]odal in [Mm]ail$/ do
