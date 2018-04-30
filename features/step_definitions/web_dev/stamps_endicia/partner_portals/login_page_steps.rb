@@ -11,6 +11,7 @@ Then /^[Pp]P: [Aa] user navigates to the login page$/ do
 end
 
 Then /^[Pp]P: [Ee]xpect login page "Welcome to the" content to exist$/ do
+  PartnerPortal.login_page.welcome_content.safe_wait_while_present
   expect(PartnerPortal.login_page.welcome_content).to be_present, "'Welcome to the content' DOES NOT exist on login page"
 end
 
@@ -106,9 +107,8 @@ end
 
 
 
-Then /^PP: expect website records login event in Audit Records (.*)$/ do
+Then /^PP: expect website records login event in Audit Records to be (.*)$/ do |str|
   step "Establish Partner Portal db connection"
-  step "Close partner portal db connection"
 
  result = PartnerPortal.db_connection.execute(
     "select RecordId, PartnerUserId, LogInfo, DateCreated
@@ -119,6 +119,9 @@ Then /^PP: expect website records login event in Audit Records (.*)$/ do
   result.each do |log_info|
     TestData.store[:login_status]= log_info['LogInfo']
   end
+  expect(TestData.store[:login_status]).to eql(str)
+
+  step "Close partner portal db connection"
 
 end
 

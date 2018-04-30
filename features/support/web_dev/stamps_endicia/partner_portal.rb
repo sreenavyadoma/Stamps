@@ -17,12 +17,12 @@ module PartnerPortal
 
     #Email textbox
     text_field(:email, tag: :text_field, required: true) { {name: "email"} }
-    page_object(:email_tooltip) { {xpath: "//*[@name='email']/div/div/span"} }
+    page_object(:email_tooltip) { {xpath: "//*[@name='email']/div/div"} }
     label(:email_placeholder) { {xpath: "//input[@placeholder='Email']"} }
 
     #Password textbox
     text_field(:password, tag: :text_field, required: true) { {name: "password"} }
-    page_object(:password_tooltip) { {xpath: "//*[@name='password']/div/div/span"} }
+    page_object(:password_tooltip) { {xpath: "//*[@name='password']/div/div"} }
     label(:password_placeholder) { {xpath: "//input[@placeholder='Password']"} }
 
     #Log In button
@@ -32,7 +32,7 @@ module PartnerPortal
     #Forgot Password? link
     link(:forgot_pw) { {xpath: "//a[@href='/reset-password/request']"} }
 
-    page_url { |env| "http://uspsportal112.#{env}.stamps.com/login" }
+    page_url { |env| "http://partner.#{env}.stamps.com/" }
     #page_url { |env| "https://iigwe-win10.corp.stamps.com/partner/" }
 
     def self.visit
@@ -55,7 +55,7 @@ module PartnerPortal
 
   class PPDashboardPage < SdcPage
     #welcome header
-    page_object(:header) { {xpath: "//h1['Welcome to USPS Portal']"} }
+    page_object(:header) { {xpath: "//h3[contains(text(), 'Partner Portal')]"} }
 
     #hamburger button
     button(:hamburger, required: true) { {class: "navbar-toggle collapsed"} }
@@ -64,7 +64,7 @@ module PartnerPortal
     button(:x, required: true) { {class: "xxx"} }
 
     #canvas Preferred Rates Qualified Postage
-    page_objects(:preferred_rates_qualified_postage, index: 0) { {class: "chartjs-render-monitor"} }
+    page_objects(:preferred_rates_qualified_postage, index: 0 ) { {xpath: "//h4[contains(text(), 'Preferred Rates Qualified Postage')]"} }
 
 
   end
