@@ -1,10 +1,4 @@
-
 module SdcMail
-
-  class SdcMailLandingPage < SdcPage
-    page_url { |env| "https://print#{env}.stamps.com/webpostage/default2.aspx" }
-  end
-
   class << self
 
     def sign_in_link

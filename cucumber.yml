@@ -18,7 +18,7 @@ rob_mail_stg: --tags @mail_bvt_international WEB_APP=mail JENKINS=true USR=defau
 rob_mail_sc: --tags @print_dialog_ship_date WEB_APP=mail JENKINS=true USR=default PW=pass111 URL=sc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 rob_registration: --tags @registration_normal_workflow WEB_APP=registration URL=cc --guess VERBOSE=true HEALTHCHECK=false BROWSER=chrome MAX_WINDOW=false JENKINS=true
 
-browser_test:  --tags @authentication BROWSER=ff LOG_LEVEL=info USR=robcruz PW=Stamps#524113 URL=prod WEB_APP=orders HEALTHCHECK=true LOG_LEVEL=debug
+browser_test:  --tags @mail_remember_username BROWSER=ff LOG_LEVEL=info USR=robcruz PW=Stamps#524113 URL=prod WEB_APP=orders HEALTHCHECK=true LOG_LEVEL=debug
 
 saucelabs_browser:  --tags @bvt_new_order BROWSER=gc LOG_LEVEL=info WEB_APP=orders URL=prod USR=abqaprod1 PW=password1 HEADLESS=true
 saucelabs_iphonex: --tags @saucelabs_poc IOS=iphonex LOG_LEVEL=info WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
