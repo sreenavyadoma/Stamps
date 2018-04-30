@@ -119,6 +119,10 @@ class SdcDriverDecorator < BasicObject
     @driver.goto(*args)
   end
 
+  def respond_to?(name, include_private = false)
+    super || @driver.respond_to?(name, include_private)
+  end
+
   def method_missing(method, *args, &block)
     super unless @driver.respond_to?(method)
     @driver.send(method, *args, &block)
@@ -429,6 +433,10 @@ class SdcLogger
       @@logger
     end
 
+    def respond_to?(name, include_private = false)
+      super || logger.respond_to?(name, include_private)
+    end
+
     def method_missing(method, *args)
       super unless logger.respond_to?(method)
       logger.send(method, *args)
@@ -490,6 +498,10 @@ class SdcAppiumDriver
 
   def core_driver
     @core_driver ||= initialize_driver
+  end
+
+  def respond_to?(name, include_private = false)
+    super || @core_driver.respond_to?(name, include_private)
   end
 
   def method_missing(name, *args, &block)
