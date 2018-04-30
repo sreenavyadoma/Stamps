@@ -1,28 +1,30 @@
-module Stamps
 
-  module SdcMail
+module SdcMail
 
-    class << self
+  class SdcMailLandingPage < SdcPage
+    page_url { |env| "https://print#{env}.stamps.com/webpostage/default2.aspx" }
+  end
 
-      def sign_in_link
-        @envelope ||= Envelope.new
-      end
+  class << self
 
-      def print_form
+    def sign_in_link
+      @envelope ||= Envelope.new
+    end
 
-      end
+    def print_form
 
-      def toolbar
+    end
 
-      end
+    def toolbar
 
-      def status_bar
+    end
 
-      end
+    def status_bar
 
-      def envelope
-        @envelope ||= Envelope.new
-      end
+    end
+
+    def envelope
+      @envelope ||= Envelope.new
     end
   end
 end
