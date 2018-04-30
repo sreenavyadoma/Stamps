@@ -4,7 +4,7 @@ Feature: PP-MVP: Login Page
     Background:
         Given Start test driver
 
-    Scenario: PP: Login UI Validation
+    Scenario: PP: Login Page Validation
 
         Then PP: A user navigates to the login page
 
