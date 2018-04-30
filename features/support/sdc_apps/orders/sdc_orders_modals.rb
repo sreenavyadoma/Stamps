@@ -1,6 +1,15 @@
-module Stamps
-  module SdcOrders
-    class SdcOrdersModalsPrintOn < SdcPage
+module SdcOrders
+  module SdcOrdersModals
+    def print
+      @print ||= OrdersPrintModal.new
+    end
+
+
+    def settings
+      @settings ||= OrdersSettingsModal.new
+    end
+
+    class PrintModalPrintOn < SdcPage
       page_object(:text_field, tag: :text_field) { {xpath: '//input[contains(@id, "printmediadroplist")]'} }
       page_object(:drop_down) { {xpath: '//*[contains(@id, "printmediadroplist")]/div[contains(@id, "trigger-picker")]'} }
       page_object(:blur_out) { {xpath: '//span[text()="Printing On:"]'} }
@@ -10,7 +19,7 @@ module Stamps
       end
     end
 
-    class SdcShipDateMonthPicker < SdcPage
+    class ShipDateMonthPicker < SdcPage
       page_object(:ok) { {xpath: '//*[@class="x-monthpicker-buttons"]//*[text()="OK"]'} }
       page_object(:cancel) { {xpath: '//*[@class="x-monthpicker-buttons"]//*[text()="Cancel"]'} }
       page_object(:year_prev) { {xpath: '//*[contains(@class,"x-monthpicker-yearnav-prev")]'} }
@@ -25,7 +34,7 @@ module Stamps
       end
     end
 
-    class SdcShipDateDatepicker < SdcPage
+    class ShipDateDatepicker < SdcPage
       page_object(:head_link) { {xpath: '//*[@class="x-datepicker-header"]//span[contains(@id, "btnWrap")]'} }
       page_object(:today) { {xpath: '//*[contains(@class, "x-datepicker-footer")]//*[contains(@id, "btnWrap")]'} }
 
@@ -34,20 +43,20 @@ module Stamps
       end
 
       def month_picker
-        @month_year ||= SdcShipDateMonthPicker.new
+        @month_year ||= ShipDateMonthPicker.new
       end
     end
 
-    class SdcOrdersModalsPrintShipDate < SdcPage
+    class PrintShipDate < SdcPage
       page_object(:text_field, tag: :text_field) { {xpath: '//input[contains(@id, "datefield")]'} }
       page_object(:drop_down) { {xpath: '//*[contains(@class, "x-form-date-trigger")]'} }
 
       def datepicker
-        @datepicker ||= SdcShipDateDatepicker.new
+        @datepicker ||= ShipDateDatepicker.new
       end
     end
 
-    class SdcOrdersModalsPrinter < SdcPage
+    class PrintModalPrinter < SdcPage
       page_object(:text_field, tag: :text_field) { {id: 'sdc-printpostagewindow-printerdroplist-inputEl'} }
       page_object(:drop_down) { {id: 'sdc-printpostagewindow-printerdroplist-trigger-picker'} }
 
@@ -56,7 +65,7 @@ module Stamps
       end
     end
 
-    class SdcOrdersModalsPrint < SdcPage
+    class OrdersPrintModal < SdcPage
       page_object(:title) { {xpath: '//div[contains(@id, "printwindow")]//div[contains(text(),"You have")]'} }
       page_object(:print) { {id: 'sdc-printwin-printbtn-btnWrap'} }
       page_object(:print_sample) { {} }
@@ -64,15 +73,15 @@ module Stamps
       page_object(:close) { {xpath: '//*[contains(@class, "x-tool-close")]'} }
 
       def print_on
-        @print_on ||= SdcOrdersModalsPrintOn.new
+        @print_on ||= PrintModalPrintOn.new
       end
 
       def ship_date
-        @ship_date ||= SdcOrdersModalsPrintShipDate.new
+        @ship_date ||= PrintShipDate.new
       end
 
       def printer
-        @printer ||= SdcOrdersModalsPrinter.new
+        @printer ||= PrintModalPrinter.new
       end
     end
 
@@ -92,17 +101,17 @@ module Stamps
       end
     end
 
-    class SdcOrdersModalsSettingsStores < SdcPage
+    class OrdersSettingsStores < SdcPage
 
     end
-    class SdcOrdersModalsSettingsIntl < SdcPage
+    class SdcOrdersSettingsInt < SdcPage
 
     end
-    class SdcOrdersModalsSettingsLabel < SdcPage
+    class OrdersSettingsLabel < SdcPage
 
     end
 
-    class SdcOrdersModalsSettings < SdcPage
+    class OrdersSettingsModal < SdcPage
       page_object(:general) { {xpath: '//*[text()="General"]'} }
       page_object(:stores) { {xpath: '//*[text()="Stores"]'} }
       page_object(:international) { {xpath: '//*[text()="International"]'} }
@@ -116,25 +125,15 @@ module Stamps
       end
 
       def stores_settings
-        @stores_settings ||= SdcOrdersModalsSettingsStores.new
+        @stores_settings ||= OrdersSettingsStores.new
       end
 
-      def intl_settings
-        @intl_settings ||= SdcOrdersModalsSettingsIntl.new
+      def int_settings
+        @intl_settings ||= SdcOrdersSettingsInt.new
       end
 
       def label_msgs_settings
-        @label_msgs_settings ||= SdcOrdersModalsSettingsLabel.new
-      end
-    end
-
-    class SdcOrdersModals < SdcPage
-      def print
-        @print ||= SdcOrdersModalsPrint.new
-      end
-
-      def settings
-        @settings ||= SdcOrdersModalsSettings.new
+        @label_msgs_settings ||= OrdersSettingsLabel.new
       end
     end
   end
