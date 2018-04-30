@@ -62,19 +62,19 @@ end
 Then /^Manage [Ss]tores: Delete Row (\d+)$/ do |row|
   #SdcLog.step "Manage [Ss]tores: Delete Row #{row}"
   step "Manage [Ss]tores: Open Modal"
-  grid=@manage_stores.stores_grid
-  size=grid.size
+  grid = @manage_stores.stores_grid
+  size = grid.size
   #SdcLog.step "Grid Count before delete is #{size}"
-  delete_modal=@manage_stores.stores_grid.delete_row row
+  delete_modal = @manage_stores.stores_grid.delete_row row
   delete_modal.delete
   expect(delete_modal.present?).not_to be(true)
 end
 
 Then /^Manage [Ss]tores: Select Store (.*)$/ do |store_name|
-  TestData.store[:store_name]=(store_name.downcase.include? 'random')?TestData.store[:store_name]:store_name
+  TestData.store[:store_name] = (store_name.downcase.include? 'random') ? TestData.store[:store_name] : store_name
   #StampsTest.log.step "Manage [Ss]tores: Select Store #{test_data[:store_name]}"
   raise "Unble to select store name: #{TestData.store[:store_name]}.  Either it's nil or does not exist in the modal.  Check your test." if TestData.store[:store_name].nil?
-  raise "Store name can't be nil or an empty String" if TestData.store[:store_name].nil?||TestData.store[:store_name].size==0
+  raise "Store name can't be nil or an empty String" if TestData.store[:store_name].nil? || TestData.store[:store_name].size == 0
   @manage_stores.stores_grid.select(TestData.store[:store_name])
 end
 
@@ -90,15 +90,15 @@ end
 
 Then /^Manage [Ss]tores: Reconnect$/ do
   #SdcLog.step "Manage [Ss]tores: Reconnect"
-  @store=@manage_stores.reconnect
+  @store = @manage_stores.reconnect
 end
 
 Then /^Manage [Ss]tores: Edit$/ do
   #SdcLog.step "Manage [Ss]tores: Edit"
-  @store_settings=@manage_stores.edit
-  test_result="Store [Ss]ettings modal is #{(@store_settings.present?)?"present":"not present"} - Test #{(@store_settings.present?)?"passed":"failed"}"
-  SdcLog.step test_result
-  if @store_settings.nil?||!(@store_settings.present?)
+  @store_settings = @manage_stores.edit
+  test_result = "Store [Ss]ettings modal is #{(@store_settings.present?) ? "present" : "not present"} - Test #{(@store_settings.present?) ? "passed" : "failed"}"
+  SdcLogger.debug test_result
+  if @store_settings.nil? || !(@store_settings.present?)
     raise test_result
   end
 end

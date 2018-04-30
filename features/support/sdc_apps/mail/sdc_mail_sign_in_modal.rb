@@ -1,6 +1,6 @@
 module Stamps
   module SdcMail
-    class EnvloepBlah < SdcPage
+    class SdcMailSignInModal < SdcPage
 
     end
   end

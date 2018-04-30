@@ -102,8 +102,8 @@ module Stamps
         end
 
         def continue
-          button=StampsField.new driver.text_field(name: "btnContinue")
-          account_page=MyAccountPage.new(param)
+          button = StampsField.new driver.text_field(name: "btnContinue")
+          account_page = MyAccountPage.new(param)
           10.times do
             button.click
             sleep(0.35)
@@ -153,15 +153,15 @@ module Stamps
         end
 
         def place_order
-          button=StampsField.new driver.button(id: "btnSubmitOrder")
-          order_num_field=StampsField.new driver.div(css: "main#content_area>table>tbody>tr>td>div")
+          button = StampsField.new driver.button(id: "btnSubmitOrder")
+          order_num_field = StampsField.new driver.div(css: "main#content_area>table>tbody>tr>td>div")
           10.times do
             button.click
             sleep(2)
             if order_num_field.present?
-              order_number_str=order_num_field.text
+              order_number_str = order_num_field.text
               log.info order_number_str
-              order_number=/(\d+)/.match(order_number_str)
+              order_number = /(\d+)/.match(order_number_str)
               log.info "ORDER NUMBER:  #{order_number}"
               return order_number
             end
@@ -179,14 +179,14 @@ module Stamps
         end
 
         def count
-          count=StampsField.new(driver.span(css: "span[data-v-observable=cart-count]")).text
+          count = StampsField.new(driver.span(css: "span[data-v-observable=cart-count]")).text
           log.info "Volusion Cart Count: #{count}"
           count.to_i
         end
 
         def proceed_to_checkout
-          button=StampsField.new driver.text_field(css: "input[name='btn_checkout_guest']")
-          checkout=VolusionCheckOut.new(param)
+          button = StampsField.new driver.text_field(css: "input[name='btn_checkout_guest']")
+          checkout = VolusionCheckOut.new(param)
           10.times do
             button.click
             sleep(0.35)
@@ -206,22 +206,22 @@ module Stamps
         end
 
         def qty number
-          @qty_to_add=number.to_i
-          field=qty_field
+          @qty_to_add = number.to_i
+          field = qty_field
           field.set @qty_to_add
         end
 
         def add_to_bag
-          qty_textbox=self.qty_field
-          shopping_cart=VolusionCart.new(param)
-          cart_count_b4_add=shopping_cart.count
-          button=StampsField.new driver.text_field(css: "input[alt='Add to cart']")
+          qty_textbox = self.qty_field
+          shopping_cart = VolusionCart.new(param)
+          cart_count_b4_add = shopping_cart.count
+          button = StampsField.new driver.text_field(css: "input[alt='Add to cart']")
           2.times do
             button.click
-            break if (cart_count_b4_add + @qty_to_add)==shopping_cart.count
+            break if (cart_count_b4_add + @qty_to_add) == shopping_cart.count
             sleep(2)
-            break if (cart_count_b4_add + @qty_to_add)==shopping_cart.count
-            break if (cart_count_b4_add + @qty_to_add)==shopping_cart.count
+            break if (cart_count_b4_add + @qty_to_add) == shopping_cart.count
+            break if (cart_count_b4_add + @qty_to_add) == shopping_cart.count
           end
         end
       end
@@ -232,8 +232,8 @@ module Stamps
         end
 
         def sample_product_one
-          link=StampsField.new driver.a(css: "a[title='SAMPLE PRODUCT ONE, SAMPLE1']")
-          product=VolusionProduct.new(param)
+          link = StampsField.new driver.a(css: "a[title='SAMPLE PRODUCT ONE, SAMPLE1']")
+          product = VolusionProduct.new(param)
           10.times do
             link.click
             sleep(0.35)
@@ -244,8 +244,8 @@ module Stamps
 
       class MyAccountPage < WebApps::Base
         def log_out
-          logged_out_field=StampsField.new driver.li(text: "You are now logged out.")
-          button=StampsField.new driver.a(css: "a[href*=logout]")
+          logged_out_field = StampsField.new driver.li(text: "You are now logged out.")
+          button = StampsField.new driver.a(css: "a[href*=logout]")
           5.times do
             button.click
             sleep(0.35)
@@ -258,23 +258,23 @@ module Stamps
         end
 
         def my_account
-          link=StampsField.new driver.a(text: "My Account")
-          label=StampsField.new driver.b(text: "My Orders")
+          link = StampsField.new driver.a(text: "My Account")
+          label = StampsField.new driver.b(text: "My Orders")
           10.times do
             link.click
             break if label.present?
           end
 
           def cart
-            shopping_cart=VolusionCart.new(param)
+            shopping_cart = VolusionCart.new(param)
             shopping_cart.visit
             shopping_cart
           end
         end
 
         def category_one
-          link=StampsField.new(driver.as(text: "CATEGORY ONE").last)
-          category_1=VolusionCategoryOne.new(param)
+          link = StampsField.new(driver.as(text: "CATEGORY ONE").last)
+          category_1 = VolusionCategoryOne.new(param)
           10.times do
             link.click
             sleep(0.35)
@@ -321,8 +321,8 @@ module Stamps
         end
 
         def continue
-          button=StampsField.new driver.text_field(id: "btnContinue")
-          shipping_address=VolusionShippingAddress.new(param)
+          button = StampsField.new driver.text_field(id: "btnContinue")
+          shipping_address = VolusionShippingAddress.new(param)
           10.times do
             button.click
             sleep(0.35)
@@ -353,8 +353,8 @@ module Stamps
         end
 
         def continue
-          button=StampsField.new driver.img(css: "img[src*=Continue]")
-          registration=VolusionRegistration.new(param)
+          button = StampsField.new driver.img(css: "img[src*=Continue]")
+          registration = VolusionRegistration.new(param)
           10.times do
             button.click
             sleep(0.35)

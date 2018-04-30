@@ -338,7 +338,7 @@ module Stamps
         end
 
         # default day is today
-        def today_plus(day=0)
+        def today_plus(day = 0)
           day = day.to_i
           if ((Date.today + day).strftime '%w').to_i > 6
             day +=1

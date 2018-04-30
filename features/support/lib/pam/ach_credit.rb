@@ -5,8 +5,8 @@ module Stamps
 
       def initialize(param)
         super
-        @ok_button=StampsField.new driver.a(css: "a[href*=AccountACHCredit]")
-        @title=StampsField.new driver.td(text: "ACH Credit Error")
+        @ok_button = StampsField.new driver.a(css: "a[href*=AccountACHCredit]")
+        @title = StampsField.new driver.td(text: "ACH Credit Error")
       end
 
       def present?
@@ -27,8 +27,8 @@ module Stamps
 
       def initialize(param)
         super
-        @title=StampsField.new driver.td(text: "ACH Credit Confirmation")
-        @ok_button=StampsField.new driver.a(css: "a[href^=Profile]")
+        @title = StampsField.new driver.td(text: "ACH Credit Confirmation")
+        @ok_button = StampsField.new driver.a(css: "a[href^=Profile]")
       end
 
       def present?
@@ -49,11 +49,11 @@ module Stamps
 
       def initialize(param)
         super
-        @title=StampsField.new driver.td(text: "ACH Purchase Verification")
-        @confirmation=ACHCreditConfirmation.new(param)
-        @ach_error=ACHCreditError.new(param)
-        @yes_button=StampsField.new driver.input(name: "YES")
-        @no_button=StampsField.new driver.text_field(name: "NO")
+        @title = StampsField.new driver.td(text: "ACH Purchase Verification")
+        @confirmation = ACHCreditConfirmation.new(param)
+        @ach_error = ACHCreditError.new(param)
+        @yes_button = StampsField.new driver.input(name: "YES")
+        @no_button = StampsField.new driver.text_field(name: "NO")
       end
 
       def present?
@@ -97,11 +97,11 @@ module Stamps
 
       def initialize(param)
         super
-        @dollar_amount=StampsTextbox.new driver.text_field(name: "Amount")
-        @cents_amount=StampsTextbox.new driver.text_field(name: "AmountFraction")
-        @comments=StampsTextbox.new driver.text_field(name: "comments")
-        @purchase_verification=ACHPurchaseVerification.new(param)
-        @submit_button=StampsField.new driver.input(:value => "Submit")
+        @dollar_amount = StampsTextbox.new driver.text_field(name: "Amount")
+        @cents_amount = StampsTextbox.new driver.text_field(name: "AmountFraction")
+        @comments = StampsTextbox.new driver.text_field(name: "comments")
+        @purchase_verification = ACHPurchaseVerification.new(param)
+        @submit_button = StampsField.new driver.input(:value => "Submit")
       end
 
       def present?
