@@ -8,7 +8,7 @@ setup:
     geckodriver: tbd
     chromedriver: tbd
 
-sql_server_PP:
+sql_server_pp:
   server: qa-clientdb14-v.corp.stamps.com
   database: PartnerPortal
   port: 1433

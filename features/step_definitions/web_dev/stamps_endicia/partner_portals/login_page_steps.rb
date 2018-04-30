@@ -1,26 +1,10 @@
-# Then /^[Ee]stablish db connection$/ do
-#   sql_server.connect.db_name
-# end
-#
-# Then /^[Cc]lose db connection$/ do
-#   sql_server.close
-# end
+Then /^[Ee]stablish [Pp]artner [Pp]ortal db connection$/ do
+  PartnerPortal.db_connection
+end
 
-# Then /^[Pp]P: [Pp]artner user's (.*) Status is (.*)$/ do |user, status|
-#   step "Establish db connection"
-#   result = sql_server.db_name.query("xxx")
-#   expect(result).to eql(status)
-# end
-#
-# Then /^[Pp]P: [Pp]artner user's (.*) partner account Status is (.*)$/ do |partner, status|
-#   result = sql_server.db_name.query("xxx")
-#   expect(result).to eql(status)
-# end
-#
-# Then /^[Pp]P: [Pp]artner user's (.*) partner contract Status is (.*)$/ do |partner, status|
-#   result = sql_server.db_name.query("xxx")
-#   expect(result).to eql(status)
-# end
+Then /^[Cc]lose [Pp]rtner [Pp]oratl db connection$/ do
+  PartnerPortal.db_connection.close
+end
 
 Then /^[Pp]P: [Aa] user navigates to the login page$/ do
   PartnerPortal::PPLoginPage.visit
@@ -121,10 +105,11 @@ end
 
 
 
-#
-# Then /^PP: expect website records login event in Audit Records$/ do
-#
-# end
+
+Then /^PP: expect website records login event in Audit Records$/ do
+  step "Establish Partner Portal db connection"
+  step "Close Prtner Poratl db connection"
+end
 
 Given /^[Pp]P: [Aa] valid user is signed into the Partner Portal$/ do
   step "Start test driver"
