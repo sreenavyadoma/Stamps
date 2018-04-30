@@ -12,8 +12,9 @@ Then /^set username in Mail(?: to (.+)|)$/ do |usr|
   expect(usr).to be_truthy
 
   modal = SdcWebsite.navigation.mail_sign_in_modal
-  modal.sign_in_link.wait_until_present(timeout: 3)
+  modal.sign_in_link.wait_until_present(timeout: 5)
   modal.sign_in_link.click unless modal.username.present?
+  modal.username.wait_until_present(timeout: 5)
   modal.username.set(TestData.store[:username] = usr)
 
 end
@@ -81,6 +82,7 @@ Then /^sign-in to Mail(?: as (.+), (.+)|)$/ do |usr, pw|
   expect(pw).to be_truthy
 
   modal = SdcWebsite.navigation.mail_sign_in_modal
+  signed_in_user = SdcWebsite.navigation.user_drop_down.signed_in_user
   modal.sign_in_link.wait_until_present(timeout: 3)
   modal.sign_in_link.click
   modal.username.set(TestData.store[:username] = usr)

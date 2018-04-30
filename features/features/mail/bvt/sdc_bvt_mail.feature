@@ -11,7 +11,6 @@ Feature:  Mail BVT - Authentication
 
   @mail_authentication
   Scenario: Mail - Remember Username
-
     Then visit Mail
     Then set username in Mail
     Then set password in Mail
@@ -28,7 +27,7 @@ Feature:  Mail BVT - Authentication
     Then visit Mail
     Then set username in Mail
     Then click the Sign In button in Mail
-    Then expect Mail Sign In Modal error Your username or password is invalid
+    Then expect Mail Sign In Modal error Your username or password is invalid.
 
 
 
