@@ -79,36 +79,6 @@ Then /^Verify Health Check for (.+)$/ do |str|
 end
 
 Then /^visit Orders landing page$/ do
-  SdcOrdersLandingPage.visit(case SdcEnv.env
-                             when :qacc
-                               'ext.qacc'
-                             when :qasc
-                               'ext.qasc'
-                             when :stg
-                               '.testing'
-                             when :prod
-                               ''
-                             else
-                               # ignore
-                             end)
-end
-
-Then /^visit Mail$/ do
-  SdcMailLandingPage.visit(case SdcEnv.env
-                             when :qacc
-                               'ext.qacc'
-                             when :qasc
-                               'ext.qasc'
-                             when :stg
-                               '.testing'
-                             when :prod
-                               ''
-                             else
-                               # ignore
-                           end)
-end
-
-Then /^Signin mail$/ do
   env = case SdcEnv.env
         when :qacc
           'ext.qacc'
@@ -121,12 +91,25 @@ Then /^Signin mail$/ do
         else
           # ignore
         end
-  SdcMailLandingPage.visit(env)
+
+  SdcOrdersLandingPage.visit(env)
 end
 
-Then /^printon stuff$/ do
+Then /^visit Mail$/ do
+  env = case SdcEnv.env
+        when :qacc
+          'ext.qacc'
+        when :qasc
+          'ext.qasc'
+        when :stg
+          '.testing'
+        when :prod
+          ''
+        else
+          # ignore
+        end
 
-  SdcMail.print_form.print_on("")
+  SdcMailLandingPage.visit(env)
 end
 
 Then /^[Ss]ign-in to SDC Website$/ do
@@ -272,16 +255,19 @@ Then /^sign-in to Mail(?: as (.+), (.+)|)$/ do |usr, pw|
 
   modal = SdcWebsite.navigation.mail_sign_in_modal
   if SdcEnv.browser
-    modal.sign_in_link.click
-    modal.username.set(usr)
-    modal.password.set(pw)
-    modal.sign_in.click
-
-    signed_in_user = SdcWebsite.navigation.user_drop_down.signed_in_user
-    signed_in_user.wait_until_present(timeout: 60, interval: 0.2)
-    expect(signed_in_user.text_value).to include(usr)
-    TestData.store[:username] = usr
-    TestData.store[:password] = pw
+    3.to_i.times do
+      begin
+        modal.sign_in_link.click
+        modal.username.set(TestData.store[:username] = usr)
+        modal.password.set(TestData.store[:password] = pw)
+        modal.sign_in.click
+        signed_in_user.wait_until_present(timeout: 12, interval: 0.2)
+        break if signed_in_user.present?
+      rescue
+        # ignore
+      end
+    end
+    expect(SdcWebsite.navigation.user_drop_down.signed_in_user.text_value).to include(TestData.store[:username])
 
   elsif SdcEnv.ios
     raise StandardError, 'Not Implemented'
@@ -289,6 +275,10 @@ Then /^sign-in to Mail(?: as (.+), (.+)|)$/ do |usr, pw|
     raise StandardError, 'Not Implemented'
   end
   sleep 3
+end
+
+Then /^test mail framework$/ do
+  SdcMail.print_form.print_on("")
 end
 
 Then /^[Cc]lick the [Ss]ign [Ii]n button in [Mm]ail$/ do
