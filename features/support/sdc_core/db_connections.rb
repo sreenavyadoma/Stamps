@@ -28,7 +28,7 @@ module Stamps
   end
 
   class SQLServerClient
-    attr_reader :host, :database, :username, :password, :port, :azure, :connection , :logger
+    attr_reader :host, :database, :username, :password, :port, :azure, :connection
     def initialize(username: nil, password: nil, server: nil, port: nil, database: nil, azure: nil)
       @connection = TinyTds::Client.new( username: username, password: password, host: server, port: port, database: database, azure: azure)
     end
@@ -39,15 +39,15 @@ module Stamps
     end
   end
 
-  class SomeUsernameData < BasicObject
+  class PartnerPortalDB < BasicObject
     def initialize
-      server = data_for(:sql_server, {})['server']
-      database = data_for(:sql_server, {})['database']
-      port = data_for(:sql_server, {})['port']
-      username = data_for(:sql_server, {})['username']
-      password = data_for(:sql_server, {})['password']
-      azure = data_for(:sql_server, {})['azure']
-      @connection = SQLServerClient.new(server, database, port, username, password, azure)
+      server = data_for(:sql_server_pp, {})['server']
+      database = data_for(:sql_server_pp, {})['database']
+      port = data_for(:sql_server_pp, {})['port']
+      username = data_for(:sql_server_pp, {})['username']
+      password = data_for(:sql_server_pp, {})['password']
+      azure = data_for(:sql_server_pp, {})['azure']
+      @connection = SQLServerClient.new(server: server, database: database, username: username, password: password, port: port, azure:azure)
     end
 
     def method_missing(name, *args, &block)
