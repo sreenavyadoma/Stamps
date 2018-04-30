@@ -127,10 +127,9 @@ Then /^[Ee]xpect [Uu]sername is present in Mail [Uu]sername field$/ do
 
 end
 
-Then /^[Cc]lick the [Ss]ign [Ii]n button in [Mm]ail expecting error message "Your username or password is invalid"$/ do
+Then /^[Ee]xpect error message "Your username or password is invalid" in [Mm]ail [Ss]ign [Ii]n [Mm]odal$/ do
 
-  modal = SdcWebsite.navigation.mail_sign_in_modal
-  expect(modal.invalid_sign_in.present?).to eql true
+  expect(SdcWebsite.navigation.mail_sign_in_modal.invalid_sign_in.present?).to eql true
 
 end
 

@@ -21,4 +21,5 @@ Feature:  Mail Credentials Tests
   Scenario: Mail - Invalid Credentials
     Then visit Mail
     Then set username in Mail
-    Then click the Sign In button in Mail expecting error message "Your username or password is invalid"
+    Then click the Sign In button in Mail
+    Then expect error message "Your username or password is invalid" in Mail Sign In Modal
