@@ -93,6 +93,21 @@ Then /^visit Orders landing page$/ do
                              end)
 end
 
+Then /^visit Mail$/ do
+  SdcMailLandingPage.visit(case SdcEnv.env
+                             when :qacc
+                               'ext.qacc'
+                             when :qasc
+                               'ext.qasc'
+                             when :stg
+                               '.testing'
+                             when :prod
+                               ''
+                             else
+                               # ignore
+                           end)
+end
+
 Then /^Signin mail$/ do
   env = case SdcEnv.env
         when :qacc
@@ -179,6 +194,67 @@ Then /^sign-in to Orders(?: as (.+), (.+)|)$/ do |usr, pw|
   TestData.store[:password] = pw
 end
 
+Then /^set username in Mail(?: to (.+)|)$/ do |usr|
+
+  begin
+    if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default'
+      credentials = SdcUserCredentials.fetch(SdcTest.scenario.tags[0].name)
+      usr = credentials[:username]
+    else
+      usr = SdcEnv.usr
+    end
+  end unless usr
+
+  expect(usr).to be_truthy
+
+  modal = SdcWebsite.navigation.mail_sign_in_modal
+  modal.sign_in_link.click
+  modal.username.set(TestData.store[:username] = usr)
+
+end
+
+Then /^set password in Mail(?: to (.+)|)$/ do |pw|
+  begin
+    if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default'
+      credentials = SdcUserCredentials.fetch(SdcTest.scenario.tags[0].name)
+      pw = credentials[:password]
+    else
+      pw = SdcEnv.pw
+    end
+  end unless pw
+
+  expect(pw).to be_truthy
+
+  modal = SdcWebsite.navigation.mail_sign_in_modal
+  modal.sign_in_link.click
+  modal.password.set(TestData.store[:password] = pw)
+end
+
+Then /^set [Rr]emember [Uu]sername to [Cc]hecked$/ do
+  modal = SdcWebsite.navigation.mail_sign_in_modal
+  modal.sign_in_link.click
+  modal.remember_username.set
+end
+
+Then /^set [Rr]emember [Uu]sername to [Uu]nchecked$/ do
+  modal = SdcWebsite.navigation.mail_sign_in_modal
+  modal.sign_in_link.click
+  modal.remember_username.clear
+end
+
+Then /^[Ee]xpect [Rr]emember [Uu]sername to be [Cc]hecked$/ do
+  modal = SdcWebsite.navigation.mail_sign_in_modal
+  modal.sign_in_link.click
+  expect(modal.remember_username.set?).to eql true
+end
+
+Then /^[Ee]xpect [Rr]emember [Uu]sername to be [Uu]nchecked$/ do
+  modal = SdcWebsite.navigation.mail_sign_in_modal
+  modal.sign_in_link.click
+  expect(modal.remember_username.set?).to eql false
+end
+
+
 Then /^sign-in to Mail(?: as (.+), (.+)|)$/ do |usr, pw|
   begin
     if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default'
@@ -194,17 +270,36 @@ Then /^sign-in to Mail(?: as (.+), (.+)|)$/ do |usr, pw|
   expect(usr).to be_truthy
   expect(pw).to be_truthy
 
-  mail = SdcWebsite.mail
-  mail.username.set(TestData.store[:username] = usr)
-  mail.password.set(TestData.store[:password] = pw)
+  modal = SdcWebsite.navigation.mail_sign_in_modal
   if SdcEnv.browser
-    5.to_i.times do
+    modal.sign_in_link.click
+    modal.username.set(usr)
+    modal.password.set(pw)
+    modal.sign_in.click
+
+    signed_in_user = SdcWebsite.navigation.user_drop_down.signed_in_user
+    signed_in_user.wait_until_present(timeout: 60, interval: 0.2)
+    expect(signed_in_user.text_value).to include(usr)
+    TestData.store[:username] = usr
+    TestData.store[:password] = pw
+
+  elsif SdcEnv.ios
+    raise StandardError, 'Not Implemented'
+  elsif SdcEnv.android
+    raise StandardError, 'Not Implemented'
+  end
+  sleep 3
+end
+
+Then /^[Cc]lick the [Ss]ign [Ii]n button in [Mm]ail$/ do
+  modal = SdcWebsite.navigation.mail_sign_in_modal
+  signed_in_user = SdcWebsite.navigation.user_drop_down.signed_in_user
+  if SdcEnv.browser
+    2.to_i.times do
       begin
-        mail.sign_in.click
-        mail.sign_in.click
-        mail.sign_in.safe_click
-        mail.sign_in.send_keys(:enter)
-        mail.sign_in.send_keys(:enter)
+        modal.sign_in_link.click
+        modal.sign_in.click
+        signed_in_user.wait_until_present(timeout: 3)
         break if signed_in_user.present?
       rescue
         # ignore
@@ -215,18 +310,33 @@ Then /^sign-in to Mail(?: as (.+), (.+)|)$/ do |usr, pw|
     expect(SdcWebsite.navigation.user_drop_down.signed_in_user.text_value).to include(TestData.store[:username])
 
   elsif SdcEnv.ios
+    raise StandardError, 'Not Implemented'
+  elsif SdcEnv.android
+    raise StandardError, 'Not Implemented'
+  end
+  sleep 3
+
+end
+
+Then /^[Oo]pen [Ss]ign [Ii]n [Mm]odal in [Mm]ail$/ do
+  modal = SdcWebsite.navigation.mail_sign_in_modal
+  2.to_i.times do
     begin
-      mail.sign_in.click
-      mail.sign_in.send_keys(:enter)
-      mail.sign_in.safe_send_keys(:enter)
+      modal.sign_in_link.click
+      modal.username.safe_wait_until_present(timeout: 5)
+      break if modal.username.present?
     rescue
       # ignore
     end
-
-  elsif SdcEnv.android
-    SdcPage.browser.hide_keyboard
-    SdcPage.browser.action.move_to(mail.sign_in).click.perform
-    SdcPage.browser.action.move_to(mail.sign_in).send_keys(:enter).perform
   end
-  sleep 3
 end
+
+Then /^[Ee]xpect [Uu]sername is present in Mail [Uu]sername field$/ do
+
+  modal = SdcWebsite.navigation.mail_sign_in_modal
+  modal.sign_in_link.click
+  expect(modal.username.value).to eql TestData.store[:username]
+
+end
+
+
