@@ -1,7 +1,7 @@
 
 Then /^[Pp]P: set dashboard page to small viewport$/ do
   if SdcEnv.browser
-    SdcDriver.driver.window.resize_to(320, 480)
+   # SdcDriver.driver.window.resize_to(320, 480)
   else
     #ignore
   end
@@ -9,7 +9,7 @@ end
 
 Then /^[Pp]P: set dashboard page to medium viewport$/ do
   if SdcEnv.browser
-    SdcDriver.driver.window.resize_to(768, 1024)
+    #SdcDriver.driver.window.resize_to(768, 1024)
   else
     #ignore
   end
@@ -18,7 +18,7 @@ end
 Then /^[Pp]P: set dashboard page to large viewport$/ do
   if SdcEnv.browser
    # SdcDriver.driver.window.resize_to(1920, 1080)
-     SdcPage.browser.window.resize_to(1920, 1080)
+     $SdcPage.browser.window.resize_to(1920, 1080)
   else
     #ignore
   end

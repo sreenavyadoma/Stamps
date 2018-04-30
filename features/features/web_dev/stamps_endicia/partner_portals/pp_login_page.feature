@@ -5,10 +5,6 @@ Feature: PP-MVP: Login Page
         #Given Start test driver
 
     Scenario: PP: Login UI Validation
-        Then Establish partner portal db connection
-        Then Close partner portal db connection
-
-        Then PP: A user navigates to the login page
 
         #verify all content and fields are present
         Then PP: expect login page "Welcome to the" content to exist
@@ -71,9 +67,8 @@ Feature: PP-MVP: Login Page
         Then PP: set login page password to password1
         Then PP: User clicks Log In
         #Then PP: expect user is redirected to the Dashboard Page
-        Then PP: expect website records login event in Audit Records
+        Then PP: expect website records login event in Audit Records Login success
 
-#
         #Then PP: expect PreFered rates Qualified Postage to exists
 
 

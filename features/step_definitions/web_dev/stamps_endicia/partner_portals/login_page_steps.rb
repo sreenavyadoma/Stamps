@@ -106,9 +106,20 @@ end
 
 
 
-Then /^PP: expect website records login event in Audit Records$/ do
+Then /^PP: expect website records login event in Audit Records (.*)$/ do
   step "Establish Partner Portal db connection"
-  step "Close Prtner Poratl db connection"
+  step "Close partner portal db connection"
+
+ result = PartnerPortal.db_connection.execute(
+    "select RecordId, PartnerUserId, LogInfo, DateCreated
+    from [dbo].[sdct_PartnerPortal_Log]
+    where DateCreated = (
+    Select MAX(DateCreated) from [dbo].[sdct_PartnerPortal_Log] where PartnerUserId = 1001)"
+  )
+  result.each do |log_info|
+    TestData.store[:login_status]= log_info['LogInfo']
+  end
+
 end
 
 Given /^[Pp]P: [Aa] valid user is signed into the Partner Portal$/ do
