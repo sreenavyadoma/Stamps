@@ -47,7 +47,7 @@ module Stamps
       username = data_for(:sql_server, {})['username']
       password = data_for(:sql_server, {})['password']
       azure = data_for(:sql_server, {})['azure']
-      @connection = Stamps::Database::SQLServerClient.new(server, database, port, username, password, azure)
+      @connection = SQLServerClient.new(server, database, port, username, password, azure)
     end
 
     def method_missing(name, *args, &block)
