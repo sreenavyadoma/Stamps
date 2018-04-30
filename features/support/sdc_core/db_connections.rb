@@ -21,6 +21,10 @@ module Stamps
       @connection.select_db('stamps')
     end
 
+    def respond_to?(name, include_private = false)
+      super || @connection.respond_to?(name, include_private)
+    end
+
     def method_missing(name, *args, &block)
       super unless @connection.respond_to?(name)
       @connection.send(name, *args, &block)
@@ -31,6 +35,10 @@ module Stamps
     attr_reader :host, :database, :username, :password, :port, :azure, :connection
     def initialize(username: nil, password: nil, server: nil, port: nil, database: nil, azure: nil)
       @connection = TinyTds::Client.new( username: username, password: password, host: server, port: port, database: database, azure: azure)
+    end
+
+    def respond_to?(name, include_private = false)
+      super || @connection.respond_to?(name, include_private)
     end
 
     def method_missing(name, *args, &block)
@@ -48,6 +56,10 @@ module Stamps
       password = data_for(:sql_server_pp, {})['password']
       azure = data_for(:sql_server_pp, {})['azure']
       @connection = SQLServerClient.new(server: server, database: database, username: username, password: password, port: port, azure:azure)
+    end
+
+    def respond_to?(name, include_private = false)
+      super || @connection.respond_to?(name, include_private)
     end
 
     def method_missing(name, *args, &block)

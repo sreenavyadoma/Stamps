@@ -2,9 +2,12 @@
 Feature: PP-MVP: Login Page
 
     Background:
-        Given Start test driver
+        #Given Start test driver
 
     Scenario: PP: Login UI Validation
+        Then Establish partner portal db connection
+        Then Close partner portal db connection
+
         Then PP: A user navigates to the login page
 
         #verify all content and fields are present

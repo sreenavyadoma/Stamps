@@ -2,7 +2,7 @@ Then /^[Ee]stablish [Pp]artner [Pp]ortal db connection$/ do
   PartnerPortal.db_connection
 end
 
-Then /^[Cc]lose [Pp]rtner [Pp]oratl db connection$/ do
+Then /^[Cc]lose [Pp]artner [Pp]ortal db connection$/ do
   PartnerPortal.db_connection.close
 end
 
