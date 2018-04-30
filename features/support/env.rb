@@ -21,6 +21,7 @@ require_relative 'sdc_core/sdc_core'
 
 # web dev
 require_relative 'web_dev/stamps_endicia/partner_portal'
+require 'tiney_tds'
 
 # Old Framework
 require_relative 'lib/core/stamps_element'

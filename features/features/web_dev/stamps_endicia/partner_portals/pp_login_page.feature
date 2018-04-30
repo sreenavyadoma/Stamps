@@ -1,4 +1,4 @@
-@pp_login_page_ui_validation
+@pp_login_page
 Feature: PP-MVP: Login Page
 
     Background:
@@ -10,7 +10,7 @@ Feature: PP-MVP: Login Page
         #verify all content and fields are present
         Then PP: expect login page "Welcome to the" content to exist
         Then PP: expect login page "stamps.com endicia" logo to exist
-        Then PP: expect login page "USPS Portal" content to exist
+        Then PP: expect login page "Partner Portal" content to exist
         Then PP: expect login page Email field to exist
         Then PP: expect login page Email field shows placeholder Email
         Then PP: expect login page Password field to exist
@@ -63,6 +63,7 @@ Feature: PP-MVP: Login Page
          Then PP: expect user is redirected to Reset Password Page
          Then PP: navigate back to previous page
 
+    #Validate successful log in
         Then PP: set login page email to wteam@stamps.com
         Then PP: set login page password to password1
         Then PP: User clicks Log In

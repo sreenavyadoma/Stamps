@@ -26,4 +26,39 @@ module Stamps
       @connection.send(name, *args, &block)
     end
   end
+
+  module SQLServer
+    class Client
+      attr_reader :server, :database, :username, :password, :port, :azure, :connection , :logger
+      def initialize(server, database, port, username, password, azure, logger)
+        @server = server
+        @database = database
+        @port = port
+        @username = username
+        @password = password
+        @azure = azure
+        @logger = logger
+      end
+
+      def connect
+        @connection = TinyTds::Client.new(username: username, password: password, host: server,port: port, database: database, azure: azure)
+        # logger.message "Database Encoding: #{connection.encoding}"
+        # logger.message "Database Info: #{connection.info}"
+      end
+
+      def select_db(db)
+        connection.select_db(db)
+      end
+
+      def query(query)
+        connection.execute(query)
+      end
+
+      def close
+        connection.close
+      end
+
+    end
+  end
+
 end

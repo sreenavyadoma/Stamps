@@ -34,7 +34,7 @@ Then /^[Pp]P: [Ee]xpect login page "stamps.com endicia" logo to exist$/ do
   expect(PartnerPortal.login_page.sdc_endicia_logo).to be_present, "'stamps.com endicia' content DOES NOT exist on login page"
 end
 
-Then /^[Pp]P: [Ee]xpect login page "USPS Portal" content to exist$/ do
+Then /^[Pp]P: [Ee]xpect login page "Partner Portal" content to exist$/ do
   expect(PartnerPortal.login_page.partner_portal_content).to be_present, "'USPS Portal' content DOES NOT exist on login page"
 end
 
@@ -47,7 +47,7 @@ Then /^[Pp]P: [Ee]xpect login page Log In button text is (.*)$/ do |str|
 end
 
 Then /^[Pp]P: [Uu]ser clicks Log In$/ do
-  PartnerPortal.login_page.log_in.click
+  PartnerPortal.login_page.log_in.send_keys(:enter)
 end
 
 Then /^[Pp]P: expect login page [Ff]orgot [Pp]assword link exist$/ do
@@ -55,7 +55,7 @@ Then /^[Pp]P: expect login page [Ff]orgot [Pp]assword link exist$/ do
 end
 
 Then /^[Pp]P: [Uu]ser clicks [Ff]orgot [Pp]assword link$/ do
-  PartnerPortal.login_page.forgot_pw.click
+  PartnerPortal.login_page.forgot_pw.send_keys(:enter)
 end
 
 Then /^[Pp]P: [Bb]lur out on [Ll]ogin [Pp]age$/ do
@@ -129,9 +129,6 @@ end
 Given /^[Pp]P: [Aa] valid user is signed into the Partner Portal$/ do
   step "Start test driver"
   step "PP: A user navigates to the login page"
-  # step "PP: Partner user's xyz Status is Active"
-  # step "PP: Partner user's xyz partner account Status is Active"
-  # step "PP: Partner user's xyz partner contract Status is Active"
   step "PP: set login page email to wteam@stamps.com"
   step "PP: set login page password to password1"
   step "PP: User clicks Log In"

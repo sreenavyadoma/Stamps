@@ -5,8 +5,8 @@ require 'cucumber/rake/task'
 
 #BEGIN WEB DEV
   #BEGIN PARTNER PORTAL
-  Cucumber::Rake::Task.new(:pp_login_page_ui_validation) do |t|
-    t.profile = 'sdc_endicia_pp_log_in'
+  Cucumber::Rake::Task.new(:pp_login) do |t|
+    t.profile = 'pp_log_in'
     t.cucumber_opts = "-p cuke_reports"
   end
 
