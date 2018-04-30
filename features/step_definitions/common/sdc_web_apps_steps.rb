@@ -128,7 +128,7 @@ end
 Then /^sign-in to Orders(?: as (.+), (.+)|)$/ do |usr, pw|
   begin
     if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default'
-      credentials = SdcUserCredentials.fetch(SdcTest.scenario.tags[0].name)
+      credentials = SdcUserCredentials.fetch(SdcEnv.scenario.tags[0].name)
       usr = credentials[:username]
       pw = credentials[:password]
     else
@@ -181,7 +181,7 @@ Then /^set username in Mail(?: to (.+)|)$/ do |usr|
 
   begin
     if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default'
-      credentials = SdcUserCredentials.fetch(SdcTest.scenario.tags[0].name)
+      credentials = SdcUserCredentials.fetch(SdcEnv.scenario.tags[0].name)
       usr = credentials[:username]
     else
       usr = SdcEnv.usr
@@ -199,7 +199,7 @@ end
 Then /^set password in Mail(?: to (.+)|)$/ do |pw|
   begin
     if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default'
-      credentials = SdcUserCredentials.fetch(SdcTest.scenario.tags[0].name)
+      credentials = SdcUserCredentials.fetch(SdcEnv.scenario.tags[0].name)
       pw = credentials[:password]
     else
       pw = SdcEnv.pw
@@ -241,7 +241,7 @@ end
 Then /^sign-in to Mail(?: as (.+), (.+)|)$/ do |usr, pw|
   begin
     if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default'
-      credentials = SdcUserCredentials.fetch(SdcTest.scenario.tags[0].name)
+      credentials = SdcUserCredentials.fetch(SdcEnv.scenario.tags[0].name)
       usr = credentials[:username]
       pw = credentials[:password]
     else
