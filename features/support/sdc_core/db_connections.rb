@@ -28,9 +28,9 @@ module Stamps
   end
 
   class SQLServerClient
-    attr_reader :server, :database, :username, :password, :port, :azure, :connection , :logger
-    def initialize(username: nil, password: nil, host: nil, port: nil, database: nil, azure: nil)
-      @connection = TinyTds::Client.new(username: username, password: password, host: server,port: port, database: database, azure: azure)
+    attr_reader :host, :database, :username, :password, :port, :azure, :connection , :logger
+    def initialize(username: nil, password: nil, server: nil, port: nil, database: nil, azure: nil)
+      @connection = TinyTds::Client.new( username: username, password: password, host: server, port: port, database: database, azure: azure)
     end
 
     def method_missing(name, *args, &block)
