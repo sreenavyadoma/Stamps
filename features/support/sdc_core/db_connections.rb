@@ -27,38 +27,35 @@ module Stamps
     end
   end
 
-  module SQLServer
-    class Client
-      attr_reader :server, :database, :username, :password, :port, :azure, :connection , :logger
-      def initialize(server, database, port, username, password, azure, logger)
-        @server = server
-        @database = database
-        @port = port
-        @username = username
-        @password = password
-        @azure = azure
-        @logger = logger
-      end
+  class SQLServerClient
+    attr_reader :server, :database, :username, :password, :port, :azure, :connection , :logger
+    def initialize(username: nil, password: nil, host: nil, port: nil, database: nil, azure: nil)
+      @connection = TinyTds::Client.new(username: username, password: password, host: server,port: port, database: database, azure: azure)
+    end
 
-      def connect
-        @connection = TinyTds::Client.new(username: username, password: password, host: server,port: port, database: database, azure: azure)
-        # logger.message "Database Encoding: #{connection.encoding}"
-        # logger.message "Database Info: #{connection.info}"
-      end
+    def method_missing(name, *args, &block)
+      super unless @connection.respond_to?(name)
+      @connection.send(name, *args, &block)
+    end
+  end
 
-      def select_db(db)
-        connection.select_db(db)
-      end
+  class SomeUsernameData < BasicObject
+    def initialize
+      server = data_for(:sql_server, {})['server']
+      database = data_for(:sql_server, {})['database']
+      port = data_for(:sql_server, {})['port']
+      username = data_for(:sql_server, {})['username']
+      password = data_for(:sql_server, {})['password']
+      azure = data_for(:sql_server, {})['azure']
+      @connection = Stamps::Database::SQLServerClient.new(server, database, port, username, password, azure)
+    end
 
-      def query(query)
-        connection.execute(query)
-      end
-
-      def close
-        connection.close
-      end
-
+    def method_missing(name, *args, &block)
+      super unless @connection.respond_to?(name)
+      @connection.send(name, *args, &block)
     end
   end
 
 end
+
+
