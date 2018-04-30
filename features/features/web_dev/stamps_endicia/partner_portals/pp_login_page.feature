@@ -62,38 +62,38 @@ Feature: PP-MVP: Login Page
 #          """
 
 
-#    #Validate User Status is inactive expect unsuccessful login
-#    Then PP: set login page email to abc@stamps.com
-#    Then PP: set login page password to password1
-#    Then PP: User clicks Log In
-#    Then PP: expect login page error message to be
-#        """
-#        Your email or password is incorrect, please try again.
-#
-#        For assistance, please contact your Partner Manager.
-#        """
-#
-#    #Partner Account Status is inactive expect unsuccessful login
-#    Then PP: set login page email to abcd@stamps.com
-#    Then PP: set login page password to password1
-#    Then PP: User clicks Log In
-#    Then PP: expect login page error message to be
-#        """
-#        Your email or password is incorrect, please try again.
-#
-#        For assistance, please contact your Partner Manager.
-#        """
-#
-#    #Partner Contract Status is inactive expect unsuccessful login
-#    Then PP: set login page email to automation@stamps.com
-#    Then PP: set login page password to password
-#    Then PP: User clicks Log In
-#    Then PP: expect login page error message to be
-#        """
-#        Your email or password is incorrect, please try again.
-#
-#        For assistance, please contact your Partner Manager.
-#        """
+    #Validate User Status is inactive expect unsuccessful login
+    Then PP: set login page email to xxx@stamps.com
+    Then PP: set login page password to password1
+    Then PP: User clicks Log In
+    Then PP: expect login page error message to be
+        """
+        Your email or password is incorrect, please try again.
+
+        For assistance, please contact your Partner Manager.
+        """
+
+    #Partner Account Status is inactive expect unsuccessful login
+    Then PP: set login page email to xxx@stamps.com
+    Then PP: set login page password to password1
+    Then PP: User clicks Log In
+    Then PP: expect login page error message to be
+        """
+        Your email or password is incorrect, please try again.
+
+        For assistance, please contact your Partner Manager.
+        """
+
+    #Partner Contract Status is inactive expect unsuccessful login
+    Then PP: set login page email to xxx@stamps.com
+    Then PP: set login page password to password1
+    Then PP: User clicks Log In
+    Then PP: expect login page error message to be
+        """
+        Your email or password is incorrect, please try again.
+
+        For assistance, please contact your Partner Manager.
+        """
 
     #Validate Forgot Password link directs user to Reset Password Page
     Then PP: User clicks Forgot Password link
