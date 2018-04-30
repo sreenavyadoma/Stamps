@@ -1,13 +1,5 @@
 module SdcOrders
-  module SdcOrdersModals
-    def print
-      @print ||= OrdersPrintModal.new
-    end
-
-
-    def settings
-      @settings ||= OrdersSettingsModal.new
-    end
+  module OrdersFloatingModals
 
     class PrintModalPrintOn < SdcPage
       page_object(:text_field, tag: :text_field) { {xpath: '//input[contains(@id, "printmediadroplist")]'} }
@@ -136,5 +128,16 @@ module SdcOrders
         @label_msgs_settings ||= OrdersSettingsLabel.new
       end
     end
+
+    def print
+      @print ||= OrdersPrintModal.new
+    end
+    module_function :print
+
+    def settings
+      @settings ||= OrdersSettingsModal.new
+    end
+    module_function :settings
+
   end
 end

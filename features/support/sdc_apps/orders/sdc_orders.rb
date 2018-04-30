@@ -30,7 +30,7 @@ module SdcOrders
     end
 
     def modals
-      @modals ||= SdcOrdersModals.new
+      OrdersFloatingModals
     end
   end
 end
