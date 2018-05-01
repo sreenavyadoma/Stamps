@@ -544,4 +544,4 @@ mail_hidden_postage: --tags  @mail_hidden_postage --guess  HEALTHCHECK=true WEB_
 mail_bug_ordersauto_3243: --tags  @mail_bug_ordersauto_3243 --guess  HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 
 #Partner Portal
-pp_login_page: --tags @pp_log_in_page_validation --guess JENKINS=true URL=qacc BROWSER=ff MAX_WINDOW=true
+pp_log_in_page_validation: --tags @pp_log_in_page_validation --guess JENKINS=true  MAX_WINDOW=true
