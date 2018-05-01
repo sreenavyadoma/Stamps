@@ -97,14 +97,14 @@ Feature: PP-MVP: Login Page
         Your account is inactive. Please contact your Partner Manager.
         """
 
-#    #Partner Contract Status is inactive expect unsuccessful login
-#        Then PP: set login page email to webdevauto2@stamps.com
-#        Then PP: set login page password to password1
-#        Then PP: User clicks Log In
-#        Then PP: expect login page error message to be
-#        """
-#        Your account is inactive. Please contact your Partner Manager.
-#        """
+    #Partner Contract Status is inactive expect unsuccessful login
+        Then PP: set login page email to webdevauto2@stamps.com
+        Then PP: set login page password to password1
+        Then PP: User clicks Log In
+        Then PP: expect login page error message to be
+        """
+        Your account is inactive. Please contact your Partner Manager.
+        """
 
     #Validate Forgot Password link directs user to Reset Password Page
         Then PP: User clicks Forgot Password link
