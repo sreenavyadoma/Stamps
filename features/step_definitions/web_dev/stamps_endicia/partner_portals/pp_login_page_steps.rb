@@ -104,7 +104,7 @@ Then /^[Pp]P: [Ee]xpect login page error message to be$/ do |str|
 end
 
 
-Then /^PP: expect website records login event in Audit Records to be (.*)$/ do |str|
+Then /^[Pp]P: [Ee]xpect website records login event in Audit Records to be (.*)$/ do |str|
   step "Establish Partner Portal db connection"
 
  result = PartnerPortal.db_connection.execute(

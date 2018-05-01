@@ -26,7 +26,7 @@ end
 
 
 Then /^[Pp]P: [Ee]xpect user is redirected to the Dashboard Page$/ do
-   PartnerPortal.dashboard_page.dashboard_header.wait_while_present(10)
+   PartnerPortal.dashboard_page.dashboard_header.safe_wait_while_present
    expect(PartnerPortal.dashboard_page.dashboard_header). to be_present, "User was not redirected to the dashboard page"
 end
 
