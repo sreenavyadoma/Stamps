@@ -1,4 +1,4 @@
-@pp_login_page
+@pp_log_in_page_validation
 Feature: PP-MVP: Login Page
 
     Background:
