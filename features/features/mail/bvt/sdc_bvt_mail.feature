@@ -3,14 +3,12 @@ Feature:  Mail BVT - Authentication
   Background:
     Given Start test driver
 
-  @mail_authentication_1
   @mail_authentication
   Scenario: Mail - Authentication
     Then visit Mail
     Then sign-in to Mail using credentials from MySql
     Then sign-out of SDC Website
 
-  @mail_authentication_remember
   @mail_authentication
   Scenario: Mail - Remember Username
     Then fetch user credentials from MySQL

@@ -78,6 +78,23 @@ Then /^Verify Health Check for (.+)$/ do |str|
   expect(SdcHealthCheck.browser.text).to include("All tests passed") if SdcEnv.health_check
 end
 
+Then /^fetch user credentials from MySQL$/ do
+  begin
+    if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default'
+      credentials = SdcUserCredentials.fetch(SdcTest.scenario.tags[0].name)
+      usr = credentials[:username]
+      pw = credentials[:password]
+    else
+      usr = SdcEnv.usr
+      pw = SdcEnv.pw
+    end
+  end unless usr && pw
+  expect(usr).to be_truthy
+  expect(pw).to be_truthy
+  TestData.store[:username] = usr
+  TestData.store[:password] = pw
+end
+
 Then /^visit Orders landing page$/ do
   env = case SdcEnv.env
         when :qacc

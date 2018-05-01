@@ -5,8 +5,8 @@ Then /^sign-in to Mail using credentials from MySql$/ do
   modal.sign_in_link.wait_until_present(timeout: 80, interval: 0.2)
   step 'fetch user credentials from MySQL'
   modal.sign_in_link.hover
-  step "set Mail username #{TestData.store[:username]}"
-  step "set Mail password #{TestData.store[:password]}"
+  step "set Mail username to #{TestData.store[:username]}"
+  step "set Mail password to #{TestData.store[:password]}"
 
   if SdcEnv.browser
     step 'click the Sign In button in Mail'
@@ -19,40 +19,26 @@ Then /^sign-in to Mail using credentials from MySql$/ do
 end
 
 Then /^expect user is signed in$/ do
+  SdcWebsite.navigation.user_drop_down.signed_in_user.wait_until_present(timeout: 15, interval: 0.2)
   expect(SdcWebsite.navigation.user_drop_down.signed_in_user).to be_present, "User #{TestData.store[:username]} is not signed in."
   expect(SdcWebsite.navigation.user_drop_down.signed_in_user.text_value).to include(TestData.store[:username])
 end
 
-Then /^fetch user credentials from MySQL$/ do
-  begin
-    if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default'
-      credentials = SdcUserCredentials.fetch(SdcTest.scenario.tags[0].name)
-      usr = credentials[:username]
-      pw = credentials[:password]
-    else
-      usr = SdcEnv.usr
-      pw = SdcEnv.pw
-    end
-  end unless usr && pw
-  expect(usr).to be_truthy
-  expect(pw).to be_truthy
-  TestData.store[:username] = usr
-  TestData.store[:password] = pw
-end
-
 Then /^set Mail username(?: to (.+)|)$/ do |usr|
+  usr = TestData.store[:username] if usr.nil?
   modal = SdcWebsite.navigation.mail_sign_in_modal
   modal.sign_in_link.wait_until_present(timeout: 15)
   modal.sign_in_link.hover unless modal.username.present?
-  modal.username.wait_until_present(timeout: 5)
-  modal.username.set(TestData.store[:username] = usr)
+  modal.username.wait_until_present(timeout: 15)
+  modal.username.set(usr)
 end
 
 Then /^set Mail password(?: to (.+)|)$/ do |pw|
+  pw = TestData.store[:password] if pw.nil?
   modal = SdcWebsite.navigation.mail_sign_in_modal
   modal.sign_in_link.wait_until_present(timeout: 15)
   modal.sign_in_link.hover unless modal.password.present?
-  modal.password.set(TestData.store[:password] = pw)
+  modal.password.set(pw)
 end
 
 Then /^set [Rr]emember [Uu]sername to [Cc]hecked$/ do
