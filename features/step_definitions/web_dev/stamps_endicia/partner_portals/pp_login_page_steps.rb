@@ -64,7 +64,6 @@ Then /^[Pp]P: set login page email to (?:env value|(.*))$/ do |str|
 end
 
 
-
 Then /^[Pp]P: [Ee]xpect login page email tooltip count is (.*)$/ do |count|
   TestData.store[:email_tooltip] = PartnerPortal.login_page.email_tooltip.text_value.split("\n")
   expect(TestData.store[:email_tooltip].size).to eql(count.to_i)
@@ -79,11 +78,8 @@ Then /^[Pp]P: [Ee]xpect login page Password field to exist$/ do
   expect(PartnerPortal.login_page.password).to be_present, "Password textbox DOES NOT exist on login page"
 end
 
-#Then /^[Pp]P: set login page password to (?:env value|(.*))$/ do |str|
-Then /^[Pp]P: set login page password to env value$/ do
-  #PartnerPortal.login_page.password.set(TestData.store[:password]=str)
-  #PartnerPortal.login_page.password.set(TestData.store[:password]=(str.nil?)?(SdcEnv.pw):str)
-  PartnerPortal.login_page.password.set(TestData.store[:password] = SdcEnv.pw)
+Then /^[Pp]P: set login page password to (?:env value|(.*))$/ do |str|
+  PartnerPortal.login_page.password.set(TestData.store[:password]=(str.nil?)?(SdcEnv.pw):str)
 end
 
 
@@ -129,7 +125,7 @@ end
 Given /^[Pp]P: [Aa] valid user is signed into the Partner Portal$/ do
   step "Start test driver"
   step "PP: A user navigates to the login page"
-  step "PP: set login page email to wteam@stamps.com"
-  step "PP: set login page password to password1"
+  step "PP: set login page email to env value"
+  step "PP: set login page password to env value"
   step "PP: User clicks Log In"
 end

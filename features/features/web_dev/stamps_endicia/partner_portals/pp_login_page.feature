@@ -8,9 +8,6 @@ Feature: PP-MVP: Login Page
 
         Then PP: A user navigates to the login page
 
-        Then PP: set login page email to abc
-        Then PP: set login page password to env value
-
         #verify all content and fields are present
         Then PP: expect login page "Welcome to the" content to exist
         Then PP: expect login page "stamps.com endicia" logo to exist
@@ -117,8 +114,8 @@ Feature: PP-MVP: Login Page
 
 
     #Validate successful log in
-        Then PP: set login page email to wteam@stamps.com
-        Then PP: set login page password to password1
+        Then PP: set login page email to env value
+        Then PP: set login page password to env value
         Then PP: User clicks Log In
         Then PP: expect user is redirected to the Dashboard Page
         Then PP: expect website records login event in Audit Records to be Login success
