@@ -32,7 +32,7 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Store is (.*)$/ do |expectation|
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Order ID is the same as Details Form Order ID$/ do
-  expect(stamps.orders.order_details.toolbar.order_id.text.extract_numbers).to eql(stamps.orders.orders_grid.grid_column(:order_id).row(1))
+  expect(stamps.orders.order_details.toolbar.order_id.text.parse_digits).to eql(stamps.orders.orders_grid.grid_column(:order_id).row(1))
 end
 
 Then /^[Ee]xpect cached Order ID is in [Oo]rders [Gg]rid [Rr]ow (\d+)$/ do |row|

@@ -128,7 +128,7 @@ end
 Then /^sign-in to Orders(?: as (.+), (.+)|)$/ do |usr, pw|
   begin
     if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default'
-      credentials = SdcUserCredentials.fetch(SdcTest.scenario.tags[0].name)
+      credentials = SdcUserCredentials.fetch(SdcEnv.scenario.tags[0].name)
       usr = credentials[:username]
       pw = credentials[:password]
     else
@@ -156,7 +156,7 @@ Then /^sign-in to Orders(?: as (.+), (.+)|)$/ do |usr, pw|
       SdcWebsite.orders.loading_popup.safe_wait_until_present(timeout: 5)
       SdcWebsite.orders.loading_popup.safe_wait_while_present(timeout: 5)
       SdcWebsite.navigation.user_drop_down.signed_in_user.safe_wait_until_present(timeout: 5)
-      expect(SdcWebsite.navigation.user_drop_down.signed_in_user.text_value).to eql(TestData.store[:username])
+      expect(SdcWebsite.navigation.user_drop_down.signed_in_user.text_value).to eql(usr)
     end
 
   elsif SdcEnv.ios
@@ -176,6 +176,4 @@ Then /^sign-in to Orders(?: as (.+), (.+)|)$/ do |usr, pw|
   TestData.store[:username] = usr
   TestData.store[:password] = pw
 end
-
-
 
