@@ -3,6 +3,7 @@ Feature:  Mail BVT - Authentication
   Background:
     Given Start test driver
 
+  @mail_authentication_1
   @mail_authentication
   Scenario: Mail - Authentication
     Then visit Mail
@@ -18,6 +19,7 @@ Feature:  Mail BVT - Authentication
     Then set Mail password
     Then set Remember Username to Checked
     Then click the Sign In button in Mail
+    Then expect user is signed in
     Then sign-out of SDC Website
     Then visit Mail
     Then open sign in modal in Mail
