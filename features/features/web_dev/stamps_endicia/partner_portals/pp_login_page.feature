@@ -8,6 +8,9 @@ Feature: PP-MVP: Login Page
 
         Then PP: A user navigates to the login page
 
+        Then PP: set login page email to abc
+        Then PP: set login page password to env value
+
         #verify all content and fields are present
         Then PP: expect login page "Welcome to the" content to exist
         Then PP: expect login page "stamps.com endicia" logo to exist

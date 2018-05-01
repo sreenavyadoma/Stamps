@@ -59,8 +59,8 @@ Then /^[Pp]P: [Ee]xpect login page [Ee]mail field shows placeholder (.*)$/ do |s
 end
 
 
-Then /^[Pp]P: set login page email to (.*)$/ do |str|
-  PartnerPortal.login_page.email.set(TestData.store[:email]=str)
+Then /^[Pp]P: set login page email to (?:env value|(.*))$/ do |str|
+  PartnerPortal.login_page.email.set(TestData.store[:email]=(str.nil?)?(SdcEnv.usr):str)
 end
 
 
@@ -79,8 +79,9 @@ Then /^[Pp]P: [Ee]xpect login page Password field to exist$/ do
   expect(PartnerPortal.login_page.password).to be_present, "Password textbox DOES NOT exist on login page"
 end
 
-Then /^[Pp]P: set login page password to (.*)$/ do |str|
-  PartnerPortal.login_page.password.set(TestData.store[:password]=str)
+Then /^[Pp]P: set login page password to (?:env value|(.*))$/ do |str|
+  #PartnerPortal.login_page.password.set(TestData.store[:password]=str)
+  PartnerPortal.login_page.password.set(TestData.store[:password]=(str.nil?)?(SdcEnv.pw):str)
 end
 
 
