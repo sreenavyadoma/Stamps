@@ -10,7 +10,7 @@ module SdcOrders
     end
 
     def order_details
-      @order_details ||= SdcOrderDetails.new
+      @order_details = SdcOrderDetails.new
     end
 
     def bulk_update
@@ -18,7 +18,7 @@ module SdcOrders
     end
 
     def toolbar
-      @toolbar ||= SdcOrdersToolbar.new
+      @toolbar = SdcOrdersToolbar.new
     end
 
     def grid
@@ -26,7 +26,7 @@ module SdcOrders
     end
 
     def filter_panel
-      @filter_panel ||= SdcOrdersFilterPanel.new
+      @filter_panel = SdcOrdersFilterPanel.new
     end
 
     def modals

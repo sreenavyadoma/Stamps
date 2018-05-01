@@ -31,7 +31,7 @@ String.class_eval do
   ##
   # Extracts numbers from string.
   #   "Order #1516802121794".extract_numbers returns 1516802121794
-  def extract_numbers
+  def parse_digits
     /\d+/.match(self).to_s
   end
 

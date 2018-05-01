@@ -74,7 +74,7 @@ module SdcOrders
     page_object(:show_less) { {xpath: '//div[contains(@id, "domestic")]//span[text()="Less"]'} }
 
     def country
-      @country ||= SdcShipToCountryDom.new
+      @country = SdcShipToCountryDom.new
     end
   end
 
@@ -91,7 +91,7 @@ module SdcOrders
     page_object(:show_less) { {xpath: '//div[contains(@id, "international")]//span[text()="Less"]'} }
 
     def country
-      @country ||= SdcShipToCountryIntl.new
+      @country = SdcShipToCountryIntl.new
     end
   end
 
@@ -99,11 +99,11 @@ module SdcOrders
     page_object(:show_more) { {xpath: '//div[starts-with(@id, "shiptoview-addressCollapsed")]//a'} }
 
     def domestic
-      @domestic ||= SdcOrderDetailsDomestic.new
+      @domestic = SdcOrderDetailsDomestic.new
     end
 
     def international
-      @international ||= SdcOrderDetailsInternational.new
+      @international = SdcOrderDetailsInternational.new
     end
   end
 
@@ -142,37 +142,38 @@ module SdcOrders
     page_object(:service_label, required: true, timeout: 20) { {xpath: '(//*[contains(text(), "Service:")])[2]'} }
     page_object(:weight_label, required: true, timeout: 20) { {xpath: '//*[contains(text(), "Weight:")]'} }
     page_object(:ship_to_label, required: true, timeout: 20) { {xpath: '//div[starts-with(@id, "singleOrderDetailsForm")]//label[text()="Ship To:"]'} }
+    page_object(:order_id, required: true, timeout: 20) { {xpath: '(//*[contains(@class, "singleorder-detailsform")]//div[contains(@class, "sdc-toolbar")]//b)[1]'} }
 
     def ship_to
-      @ship_to ||= SdcOrderDetailsShipTo.new
+      @ship_to = SdcOrderDetailsShipTo.new
     end
 
     def ship_from
-      @ship_from ||= SdcOrderDetailsShipFrom.new
+      @ship_from = SdcOrderDetailsShipFrom.new
     end
 
     def weight
-      @wieght ||= SdcOrderDetailsWeight.new
+      @wieght = SdcOrderDetailsWeight.new
     end
 
     def service
-      @service ||= SdcOrderDetailsService.new
+      @service = SdcOrderDetailsService.new
     end
 
     def insurance
-      @insurance ||= SdcOrderDetailsInsurance.new
+      @insurance = SdcOrderDetailsInsurance.new
     end
 
     def tracking
-      @tracking ||= SdcOrderDetailsTracking.new
+      @tracking = SdcOrderDetailsTracking.new
     end
 
     def footer
-      @footer ||= SdcOrderDetailsFooter.new
+      @footer = SdcOrderDetailsFooter.new
     end
 
     def dimensions
-      @dimensions ||= SdcOrderDetailsDimensions.new
+      @dimensions = SdcOrderDetailsDimensions.new
     end
   end
 end

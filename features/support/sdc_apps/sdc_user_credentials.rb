@@ -2,7 +2,7 @@ module Stamps
   class SdcUserCredentials
     class << self
       def connection
-        @@connection ||= ::UserCredentialsConn.new
+        @@connection = ::UserCredentialsConn.new
       end
 
       def connection=(connection)
@@ -30,7 +30,7 @@ module Stamps
       end
 
       def random_credentials(test_tag)
-        @user_credentials ||= {}
+        @user_credentials = {}
         results = connection.query("select * from user_credentials where test_env='#{SdcEnv.env.to_s}' and user_status='Active' and test_tag='#{test_tag}' and in_use=0")
         expect(results.size).to be > 0, "No user found in MySQL DB for test tag #{@cuke_tag} in #{SdcEnv.env.to_s.upcase}. Try again later or add more users to the database."
         rand_num = rand(results.size)

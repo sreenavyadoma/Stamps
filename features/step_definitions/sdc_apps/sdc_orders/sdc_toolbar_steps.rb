@@ -1,19 +1,26 @@
+Then /^[Aa]dd new order$/ do
+  step 'add order 1'
+end
 
-Then /^(?:[Cc]lick Orders Toolbar Add button|add new order|add [Oo]rder (\d+))$/ do |count|
+Then /^[Aa]dd [Oo]rder (\d+)$/ do |count|
   if SdcEnv.new_framework
     #todo TestData.store[:old_balance] = SdcWebsite.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
     #todo stamps.orders.orders_grid.grid_column(:checkbox).uncheck(1)
-    step 'Wait until order toolbar present 80, 0.3'
-    TestData.store[:order_id][(count.nil?) ? TestData.store[:ord_id_ctr] += 1 : count.to_i] = SdcOrders.toolbar.add.click
+    step 'Wait until order toolbar present 40, 3'
+    SdcOrders.toolbar.add.wait_until_present
+    SdcOrders.toolbar.add.click
+    SdcOrders.order_details.order_id.wait_until_present
+    TestData.store[:order_id][count.to_i] = SdcOrders.order_details.order_id.text_value.parse_digits
     #todo expect(stamps.orders.orders_grid.grid_column(:checkbox).checked?(1)).to be(true), "Orders Grid checkbox 1 is unchecked!"
     step "Save Order Details data"
   else
     TestData.store[:old_balance] = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
     stamps.orders.orders_grid.grid_column(:checkbox).uncheck(1)
-    TestData.store[:order_id][(count.nil?) ? TestData.store[:ord_id_ctr] += 1 : count.to_i] = stamps.orders.orders_toolbar.toolbar_add.click
+    TestData.store[:order_id][count.to_i] = stamps.orders.orders_toolbar.toolbar_add.click
     expect(stamps.orders.orders_grid.grid_column(:checkbox).checked?(1)).to be(true), "Orders Grid checkbox 1 is unchecked!"
     step "Save Order Details data"
   end
+  TestData.store[:ord_id_ctr] += 1
 end
 
 Then /^Save Order Details data$/ do

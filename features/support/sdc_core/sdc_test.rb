@@ -186,7 +186,7 @@ class SdcTest
               SdcPage.browser.window.resize_to 1300, 1020
               SdcPage.browser.window.move_to 0, 0
             else
-              SdcPage.browser.window.maximize
+              #SdcPage.browser.window.maximize
             end
 
           rescue StandardError => e
@@ -251,8 +251,8 @@ class SdcTest
       SdcEnv.mobile = SdcEnv.ios || SdcEnv.android
       SdcEnv.sdc_app ||= ENV['WEB_APP'].downcase.to_sym unless ENV['WEB_APP'].nil?
       SdcEnv.health_check ||= ENV['HEALTHCHECK']
-      SdcEnv.usr ||= ENV['USR']
-      SdcEnv.pw ||= ENV['PW']
+      SdcEnv.usr = ENV['USR']
+      SdcEnv.pw = ENV['PW']
       SdcEnv.firefox_profile ||= ENV['FIREFOX_PROFILE']
       SdcEnv.new_framework ||= ENV['NEW_FRAMEWORK']
       SdcEnv.debug ||= ENV['DEBUG']
