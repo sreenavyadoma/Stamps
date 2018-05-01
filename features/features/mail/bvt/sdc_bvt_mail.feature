@@ -6,14 +6,16 @@ Feature:  Mail BVT - Authentication
   @mail_authentication
   Scenario: Mail - Authentication
     Then visit Mail
-    Then sign-in to Mail
+    Then sign-in to Mail using credentials from MySql
     Then sign-out of SDC Website
 
+  @mail_authentication_remember
   @mail_authentication
   Scenario: Mail - Remember Username
+    Then fetch user credentials from MySQL
     Then visit Mail
-    Then set username in Mail
-    Then set password in Mail
+    Then set Mail username
+    Then set Mail password
     Then set Remember Username to Checked
     Then click the Sign In button in Mail
     Then sign-out of SDC Website
@@ -24,8 +26,9 @@ Feature:  Mail BVT - Authentication
 
   @mail_authentication
   Scenario: Mail - Invalid Credentials
+    Then fetch user credentials from MySQL
     Then visit Mail
-    Then set username in Mail
+    Then set Mail username
     Then click the Sign In button in Mail
     Then expect Mail Sign In Modal error Your username or password is invalid.
 

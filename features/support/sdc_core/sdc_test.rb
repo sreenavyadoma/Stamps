@@ -186,7 +186,7 @@ class SdcTest
               SdcPage.browser.window.resize_to 1300, 1020
               SdcPage.browser.window.move_to 0, 0
             else
-              SdcPage.browser.window.maximize
+              #SdcPage.browser.window.maximize
             end
 
           rescue StandardError => e
