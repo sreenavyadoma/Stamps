@@ -79,9 +79,11 @@ Then /^[Pp]P: [Ee]xpect login page Password field to exist$/ do
   expect(PartnerPortal.login_page.password).to be_present, "Password textbox DOES NOT exist on login page"
 end
 
-Then /^[Pp]P: set login page password to (?:env value|(.*))$/ do |str|
+#Then /^[Pp]P: set login page password to (?:env value|(.*))$/ do |str|
+Then /^[Pp]P: set login page password to env value$/ do
   #PartnerPortal.login_page.password.set(TestData.store[:password]=str)
-  PartnerPortal.login_page.password.set(TestData.store[:password]=(str.nil?)?(SdcEnv.pw):str)
+  #PartnerPortal.login_page.password.set(TestData.store[:password]=(str.nil?)?(SdcEnv.pw):str)
+  PartnerPortal.login_page.password.set(TestData.store[:password] = SdcEnv.pw)
 end
 
 
