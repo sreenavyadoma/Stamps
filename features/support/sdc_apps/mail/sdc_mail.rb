@@ -2,7 +2,7 @@ module SdcMail
   class << self
 
     def sign_in_link
-      @envelope ||= Envelope.new
+      @envelope = Envelope.new
     end
 
     def print_form
@@ -18,7 +18,7 @@ module SdcMail
     end
 
     def envelope
-      @envelope ||= Envelope.new
+      @envelope = Envelope.new
     end
   end
 end

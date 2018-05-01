@@ -2,21 +2,21 @@ default: --backtrace --profile mhossain1_cc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
-sign_in_win10_edge_sauce:  --tags @saucelabs_poc SAUCE_DEVICE=win10_edge_sauce VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1 DEBUG=true HEADLESS=true
-sign_in_macos_chrome_sauce:  --tags @saucelabs_poc SAUCE_DEVICE=macos_chrome_sauce VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password1 DEBUG=true HEADLESS=true
-iphonex_saucelabs: --tags @saucelabs_poc SAUCE_DEVICE=iphonex_sauce VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password
-samsung_galaxy_sauce: --tags @saucelabs_poc SAUCE_DEVICE=samsung_galaxy_sauce VERBOSE=true WEB_APP=orders URL=prod USR=abqaprod1 PW=password
+sign_in_win10_edge_sauce:  --tags @saucelabs_poc SAUCE_DEVICE=win10_edge_sauce LOG_LEVEL=debug WEB_APP=orders URL=prod USR=abqaprod1 PW=password1 DEBUG=true HEADLESS=true
+sign_in_macos_chrome_sauce:  --tags @saucelabs_poc SAUCE_DEVICE=macos_chrome_sauce LOG_LEVEL=debug WEB_APP=orders URL=prod USR=abqaprod1 PW=password1 DEBUG=true HEADLESS=true
+iphonex_saucelabs: --tags @saucelabs_poc SAUCE_DEVICE=iphonex_sauce LOG_LEVEL=debug WEB_APP=orders URL=prod USR=abqaprod1 PW=password
+samsung_galaxy_sauce: --tags @saucelabs_poc SAUCE_DEVICE=samsung_galaxy_sauce LOG_LEVEL=debug WEB_APP=orders URL=prod USR=abqaprod1 PW=password
 
 #todo-Rob set PRINTER=factory as default automation printer
 #robcm=ccpryiihrjz ccfb311osps4x print_dialog_ship_date
-rob_cc: --tags @bvt_new_order WEB_APP=orders BROWSER=ff JENKINS=true URL=cc VERBOSE=true HEALTHCHECK=true MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory NEW_FRAMEWORK=true DEBUG=true
-rob_stg: --tags @bvt_new_order WEB_APP=orders JENKINS=true URL=stg VERBOSE=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false USR=default PW=pass111 PRINTER=factory NEW_FRAMEWORK=true #stgee1mtqvwdc0
-rob_sc: --tags @healthcheck WEB_APP=orders JENKINS=true URL=sc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=selenium  USR=scsejsglwa PW=pass111 VERBOSE=true PRINTER=factory NEW_FRAMEWORK=true # c2jinmzmu64 schl0vlbfy2673 #19  schl0vlbfy2673
-rob_dev: --tags @mail_advanced_options_stamps WEB_APP=orders JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false NEW_FRAMEWORK=true
-rob_mail_cc:  --tags @authentication WEB_APP=mail JENKINS=true USR=cctruer0u PW=pass111 URL=cc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory NEW_FRAMEWORK=true #\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
-rob_mail_stg: --tags @mail_bvt_international WEB_APP=mail JENKINS=true USR=default PW=pass111 URL=stg --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory NEW_FRAMEWORK=true #stgee1mtqvwdc0
-rob_mail_sc: --tags @print_dialog_ship_date WEB_APP=mail JENKINS=true USR=default PW=pass111 URL=sc --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false NEW_FRAMEWORK=true
-rob_registration: --tags @registration_normal_workflow WEB_APP=registration URL=cc --guess VERBOSE=true HEALTHCHECK=false BROWSER=chrome MAX_WINDOW=false JENKINS=true NEW_FRAMEWORK=true
+rob_cc: --tags @bvt_new_order WEB_APP=orders BROWSER=ff JENKINS=true URL=cc LOG_LEVEL=debug HEALTHCHECK=true MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory NEW_FRAMEWORK=true DEBUG=true
+rob_stg: --tags @bvt_new_order WEB_APP=orders JENKINS=true URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false USR=default PW=pass111 PRINTER=factory NEW_FRAMEWORK=true #stgee1mtqvwdc0
+rob_sc: --tags @healthcheck WEB_APP=orders JENKINS=true URL=sc --guess LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=selenium  USR=scsejsglwa PW=pass111LOG_LEVEL=debug PRINTER=factory NEW_FRAMEWORK=true # c2jinmzmu64 schl0vlbfy2673 #19  schl0vlbfy2673
+rob_dev: --tags @mail_authentication WEB_APP=orders JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false NEW_FRAMEWORK=true
+rob_mail_cc:  --tags @mail_authentication WEB_APP=mail JENKINS=true USR=cctruer0u PW=pass111 URL=cc --guess LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory NEW_FRAMEWORK=true #\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
+rob_mail_stg: --tags @mail_authentication WEB_APP=mail JENKINS=true USR=default PW=pass111 URL=stg --guess LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory NEW_FRAMEWORK=true #stgee1mtqvwdc0
+rob_mail_sc: --tags @print_dialog_ship_date WEB_APP=mail JENKINS=true USR=default PW=pass111 URL=sc --guess LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false NEW_FRAMEWORK=true
+rob_registration: --tags @registration_normal_workflow WEB_APP=registration URL=cc --guess LOG_LEVEL=debug HEALTHCHECK=false BROWSER=chrome MAX_WINDOW=false JENKINS=true NEW_FRAMEWORK=true
 
 browser_test:  --tags @bvt_orders_ship_date BROWSER=ff LOG_LEVEL=info USR=abqaprod1 PW=password1 URL=prod HEALTHCHECK=true LOG_LEVEL=debug NEW_FRAMEWORK=true
 

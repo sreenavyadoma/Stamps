@@ -1,9 +1,9 @@
 Then /^Navigation Bar: Customer Balance$/ do
   #SdcLog.step "Navigation Bar: Customer Balance"
   TestData.store[:customer_starting_balance] = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
-  SdcLogger.info " ############## CUSTOMER BALANCE "
-  SdcLogger.info " ############## #{stamps.navigation_bar.balance.balance_amount.text}"
-  SdcLogger.info " ############## CUSTOMER BALANCE "
+  SdcLogger.debug " ############## CUSTOMER BALANCE "
+  SdcLogger.debug " ############## #{stamps.navigation_bar.balance.balance_amount.text}"
+  SdcLogger.debug " ############## CUSTOMER BALANCE "
 end
 
 Then /^Navigation Bar: Wait while balance less than (\d+)$/ do |expectation|
@@ -11,7 +11,7 @@ Then /^Navigation Bar: Wait while balance less than (\d+)$/ do |expectation|
   expectation = expectation.to_f
   for i in 0..30
       new_balance = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
-      SdcLogger.info "New Account Balance: $#{new_balance}"
+      SdcLogger.debug "New Account Balance: $#{new_balance}"
       sleep(0.35)
       break if new_balance > expectation
       SdcDriver.browser.refresh
