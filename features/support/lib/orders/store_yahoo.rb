@@ -32,8 +32,8 @@ module Stamps
         end
 
         def contact_token
-          parent=driver.span(text: "Partner Store Contract Token").parent.parent
-          input=parent.divs[0].div.div.textbox
+          parent = driver.span(text: "Partner Store Contract Token").parent.parent
+          input = parent.divs[0].div.div.textbox
           raise "Contact Token textbox does not exist or textbox locator is wrong." unless input.present?
           StampsTextbox.new input
         end
@@ -47,12 +47,12 @@ module Stamps
         end
 
         def connect
-          button=StampsField.new driver.span(text: "Connect")
-          settings=YahooSettings.new(param)
-          server_error=Orders::Stores::ServerError.new(param)
-          importing_order=Orders::Stores::ImportingOrdersModal.new(param)
+          button = StampsField.new driver.span(text: "Connect")
+          settings = YahooSettings.new(param)
+          server_error = Orders::Stores::ServerError.new(param)
+          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
-          max_server_error_retry_count=5
+          max_server_error_retry_count = 5
 
           20.times do |counter|
             button.click
@@ -62,7 +62,7 @@ module Stamps
               importing_order.ok
             end
             if server_error.present?
-              error_str=server_error.message
+              error_str = server_error.message
               log.info error_str
               server_error.ok
               expect("Server Error: \n#{error_str}").to eql "" unless counter < max_server_error_retry_count
@@ -73,12 +73,12 @@ module Stamps
         end
 
         def reconnect
-          button=StampsField.new driver.span(text: "Connect")
-          server_error=Orders::Stores::ServerError.new(param)
-          manage_stores=ManageStores.new(param)
-          importing_order=Orders::Stores::ImportingOrdersModal.new(param)
+          button = StampsField.new driver.span(text: "Connect")
+          server_error = Orders::Stores::ServerError.new(param)
+          manage_stores = ManageStores.new(param)
+          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
-          max_server_error_retry_count=5
+          max_server_error_retry_count = 5
 
           20.times do |counter|
             button.click
@@ -87,7 +87,7 @@ module Stamps
               importing_order.ok
             end
             if server_error.present?
-              error_str=server_error.message
+              error_str = server_error.message
               log.info error_str
               server_error.ok
               expect("Server Error: \n#{error_str}").to eql "" unless counter < max_server_error_retry_count
@@ -98,9 +98,9 @@ module Stamps
         end
 
         def reconnect_old
-          button=StampsField.new driver.span(text: "Connect")
-          manage_stores=ManageStores.new(param)
-          importing_order=Orders::Stores::ImportingOrdersModal.new(param)
+          button = StampsField.new driver.span(text: "Connect")
+          manage_stores = ManageStores.new(param)
+          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
           10.times do
             button.click
@@ -224,8 +224,8 @@ module Stamps
         end
 
         def sign_in
-          button=StampsField.new driver.text_field(css: "input[value='Log in']")
-          settings_page=ShopifySettings.new(param)
+          button = StampsField.new driver.text_field(css: "input[value='Log in']")
+          settings_page = ShopifySettings.new(param)
 
           10.times do
             button.click

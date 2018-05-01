@@ -1,6 +1,13 @@
 module Stamps
   module TestHelper
     class << self
+      def user_credentials
+        @user_credentials ||= SdcMySqlCrentials.new
+        @user_credentials.test_scenario = SdcTest.test_scenario
+        @user_credentials
+      end
+
+
       def rand_alpha_str(min = 2, max = 10)
         Array.new(rand(min..max)) { [*'a'..'z'].sample }.join
       end
@@ -69,13 +76,13 @@ module Stamps
           date = Date.civil(ship_date.year,ship_date.month,ship_date.day)
           #break if Holidays.on(date, :us).size==0 && ship_date.wday!=0 # break if today is not a holiday and not a Sunday.
           ship_date += 1 if Holidays.on(date, :us).size > 0 # add 1 if today is a holiday
-          ship_date += 1 if ship_date.wday == 0 # add 1 if today is Sunday
+          ship_date += 1 if ship_date.wday.zero? # add 1 if today is Sunday
         end
         ship_date.strftime('%m/%d/%Y')
       end
 
       def is_whole_number?(number)
-        number % 1 == 0
+        number % 1.zero?
       end
 
       def is_numeric?(str)
@@ -296,7 +303,7 @@ module Stamps
 
       # add +1 to day if day is a Sunday. We don't ship on Sundays.
       def shipdate_today_plus(day)
-        ((Date.today + day.to_i).wday == 0) ? (Date.today + day.to_i + 1).strftime('%b %-d') : (Date.today + day.to_i).strftime('%b %-d')
+        ((Date.today + day.to_i).wday.zero?) ? (Date.today + day.to_i + 1).strftime('%b %-d') : (Date.today + day.to_i).strftime('%b %-d')
       end
 
       # takes a date string format "11/21/2017" and converts it to "Nov 21"
@@ -368,7 +375,7 @@ module Stamps
             substitute_char = args[2]
             str.gsub(char_to_remove, substitute_char)
           else
-            rasie 'Illegal number of arguments for strip method.'
+            raise 'Illegal number of arguments for strip method.'
         end
       end
 

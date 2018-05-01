@@ -5,8 +5,8 @@ module Stamps
 
       def initialize(param)
         super
-        @web_apps=StampsDotCom.new(param)
-        @web_mail=@web_apps.mail
+        @web_apps = StampsDotCom.new(param)
+        @web_mail = @web_apps.mail
       end
 
       def wait_until_present

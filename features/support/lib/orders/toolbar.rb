@@ -297,34 +297,34 @@ module Stamps
         end
       end
 
-       class PrintIncompleteOrderError < WebApps::Base
+      class PrintIncompleteOrderError < WebApps::Base
 
 
-         attr_reader :window_title, :ok_btn, :error_message_label
+        attr_reader :window_title, :ok_btn, :error_message_label
 
-         def window_title
-           cache[:window_title] = StampsField.new(driver.div(text: 'Incomplete Order')) if cache[:window_title].nil? || !cache[:window_title].present?
-           cache[:window_title]
-         end
+        def window_title
+          cache[:window_title] = StampsField.new(driver.div(text: 'Incomplete Order')) if cache[:window_title].nil? || !cache[:window_title].present?
+          cache[:window_title]
+        end
 
-         def ok_btn
-           cache[:ok_btn] = StampsField.new(driver.span(text: "OK")) if cache[:ok_btn].nil? || !cache[:ok_btn].present?
-           cache[:ok_btn]
-         end
+        def ok_btn
+          cache[:ok_btn] = StampsField.new(driver.span(text: "OK")) if cache[:ok_btn].nil? || !cache[:ok_btn].present?
+          cache[:ok_btn]
+        end
 
-         def error_message_label
-           if cache[:error_message_label].nil? || !cache[:error_message_label].present?
-            cache[:error_message_label] = driver.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
-           end
-           cache[:error_message_label]
-         end
+        def error_message_label
+          if cache[:error_message_label].nil? || !cache[:error_message_label].present?
+           cache[:error_message_label] = driver.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
+          end
+          cache[:error_message_label]
+        end
 
 
         def initialize(param)
           super
-          @window_title=StampsField.new driver.div(text: 'Incomplete Order')
-          @ok_btn=StampsField.new driver.span(text: "OK")
-          @error_message_label=driver.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
+          @window_title = StampsField.new driver.div(text: 'Incomplete Order')
+          @ok_btn = StampsField.new driver.span(text: "OK")
+          @error_message_label = driver.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
         end
 
         def present?
@@ -350,7 +350,7 @@ module Stamps
         def error_message_p2
           StampsField.new(error_message_label.ps[1]).text
         end
-      end
+     end
 
       #todo-rob update Print Multi Order Error tests
       class PrintMultiOrderError < WebApps::Base
@@ -487,10 +487,10 @@ module Stamps
 
         def initialize(param)
           super
-          @window_title=StampsField.new driver.div(text: 'USPS Terms')
-          @i_agree_btn=StampsField.new driver.span(text: "I Agree")
-          @cancel_btn=StampsField.new driver.span(text: "Cancel")
-          @privacy_act_link=StampsField.new driver.a(text: "USPS Privacy Act Statement")
+          @window_title = StampsField.new driver.div(text: 'USPS Terms')
+          @i_agree_btn = StampsField.new driver.span(text: "I Agree")
+          @cancel_btn = StampsField.new driver.span(text: "Cancel")
+          @privacy_act_link = StampsField.new driver.a(text: "USPS Privacy Act Statement")
         end
 
         def present?
@@ -839,7 +839,7 @@ module Stamps
               add_btn.click
               20.times do
                 sleep(0.15)
-                return order_id.text.extract_numbers if order_id.present?
+                return order_id.text.parse_digits if order_id.present?
               end
               # new accounts will connect to ShipStation for the first time.
               20.times do

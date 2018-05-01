@@ -10,9 +10,9 @@ module Stamps
 
       class Links < WebApps::Base
         def color
-          field=driver.link css: "a[rel=WebBatch]"
+          field = driver.link css: "a[rel=WebBatch]"
           field.wait_until_present 6
-          style=field.style "color"
+          style = field.style "color"
           style
         end
 
@@ -27,15 +27,15 @@ module Stamps
 
       class NavigationHeader < WebApps::Base
         def height
-          field=driver.div class: "navbar-inner"
+          field = driver.div class: "navbar-inner"
           field.wait_until_present 5
           field.style "height"
         end
 
         def background_color
-          field=driver.div class: "navbar-inner"
+          field = driver.div class: "navbar-inner"
           field.wait_until_present 5
-          style=field.style "background-color"
+          style = field.style "background-color"
           style
         end
       end
@@ -50,29 +50,29 @@ module Stamps
         end
 
         def color
-          body_color=driver.body.style "color"
-          color_arr=body_color.scan /\d/
-          temp=""
-          color_arr.each{|field| temp=temp + field}
+          body_color = driver.body.style "color"
+          color_arr = body_color.scan /\d/
+          temp = ""
+          color_arr.each{|field| temp = temp + field}
           temp
         end
       end
 
       class Tooltip < WebApps::Base
         def width
-          field=driver.link css: "a[data-qtip*='Configure your settings']"
+          field = driver.link css: "a[data-qtip*='Configure your settings']"
           field.wait_until_present 6
           field.style "border-width"
         end
 
         def border_radius
-          field=driver.link css: "a[data-qtip*='Configure your settings']"
+          field = driver.link css: "a[data-qtip*='Configure your settings']"
           field.wait_until_present 5
           field.style "padding"
         end
 
         def border_style
-          field=driver.link css: "a[data-qtip*='Configure your settings']"
+          field = driver.link css: "a[data-qtip*='Configure your settings']"
           field.wait_until_present 5
           field.style "border-style"
         end
@@ -87,11 +87,11 @@ module Stamps
       end
 
       def navigation_header
-        @navigation_header=NavigationHeader.new(param)
+        @navigation_header = NavigationHeader.new(param)
       end
 
       def links
-        @links=Links.new(param)
+        @links = Links.new(param)
       end
     end
   end

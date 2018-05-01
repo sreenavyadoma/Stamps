@@ -4,20 +4,20 @@ include Stamps
 include Stamps::WebApps
 include Stamps::Orders
 include Stamps::Mail
-include Log4r
 include RSpec
 include RSpec::Matchers
 include DataMagic
-include Stamps::WebDev::StampsEndicia
+include PartnerPortal
 
 Before do  |scenario|
-  SdcTest.start(scenario)
+  SdcEnv.scenario = scenario
+  SdcTest.start
 end
 
-After do |scenario|
+After do
   SdcTest.teardown
-  user_credentials.close if SdcEnv.usr == 'default'
-  @stamps = nil #TODO-Rob this needs to exist in StampsTest
+  # Old framework
+  @stamps = nil
   @health = nil
 end
 

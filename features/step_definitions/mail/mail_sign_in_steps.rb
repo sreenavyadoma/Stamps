@@ -9,23 +9,23 @@ Then /^What's New: Click Continue [Bb]utton$/ do
 end
 
 Then /^What's new: Click More Info$/ do
-  @more_info_page=stamps.mail.sign_in_modal.whats_new_modal.more_info
+  @more_info_page = stamps.mail.sign_in_modal.whats_new_modal.more_info
 end
 
 Then /^More Info: Expect More Info page is present$/ do
   #SdcLog.step "More Info: Expect More Info page is present"
-  expectation="A second driver window was opened"
-  expectation="A second driver window did not open." unless @more_info_page.present?
+  expectation = "A second driver window was opened"
+  expectation = "A second driver window did not open." unless @more_info_page.present?
   expect(expectation).to eql "A second driver window was opened"
 end
 
 Then /^More Info: Close More Info page$/ do
   #SdcLog.step "More Info: Close More Info page"
-  SdcLog.step @more_info_page.title
-  SdcLog.step @more_info_page.title
-  SdcLog.step @more_info_page.title
-  SdcLog.step @more_info_page.title
-  SdcLog.step @more_info_page.title
+  SdcLogger.debug @more_info_page.title
+  SdcLogger.debug @more_info_page.title
+  SdcLogger.debug @more_info_page.title
+  SdcLogger.debug @more_info_page.title
+  SdcLogger.debug @more_info_page.title
   sleep(2)
   @more_info_page.close
   sleep(3)

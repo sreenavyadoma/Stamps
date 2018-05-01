@@ -43,10 +43,10 @@ end
 
 #todo-Rob fix code smells
 When /^[Cc]lick Print button on [Mm]ail [Pp]rint modal Sample$/ do
-  mail_print_modal=stamps.mail.mail_toolbar.print_sample
-  @printer=mail_print_modal.printer.textbox.text
-  @paper_tray=mail_print_modal.paper_tray.textbox.text
-  @printing_error=mail_print_modal.print
+  mail_print_modal = stamps.mail.mail_toolbar.print_sample
+  @printer = mail_print_modal.printer.textbox.text
+  @paper_tray = mail_print_modal.paper_tray.textbox.text
+  @printing_error = mail_print_modal.print
 end
 
 #todo-Rob change sentence structure and make print modal float (stamps.mail.mail_print_modal)

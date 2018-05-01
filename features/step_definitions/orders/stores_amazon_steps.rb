@@ -37,7 +37,7 @@ Then /^Amazon Store: Connect for the first time expecting Amazon Settings modal$
   #SdcLog.step "Amazon Store: Connect for the first time expecting Amazon Settings modal"
   @store_settings=@store.connect_expecting_store_settings
   test_result="Amazon Store Settings modal is #{(@store_settings.present?)?"present":"not present"} - Test #{(@store_settings.present?)?"passed":"failed"}"
-  SdcLog.step test_result
+  SdcLogger.debug test_result
   if @store_settings.nil?||!(@store_settings.present?)
     raise test_result
   end
