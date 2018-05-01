@@ -7,7 +7,7 @@ module Stamps
 
     class SdcOrdersFilterPanel < SdcPage
       def awaiting_shipment
-        @awaiting_shipment ||= SdcOrdersFilterAwaitingShip.new
+        @awaiting_shipment = SdcOrdersFilterAwaitingShip.new
       end
 
       def shipped

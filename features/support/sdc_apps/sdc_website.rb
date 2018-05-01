@@ -1,7 +1,7 @@
 module SdcWebsite
 
   def landing_page
-    @landing_page ||= SdcOrdersLandingPage.new
+    @landing_page = SdcOrdersLandingPage.new
   end
   module_function :landing_page
 

@@ -20,7 +20,6 @@ end
 
 Then /^expect user is signed in$/ do
   SdcWebsite.navigation.user_drop_down.signed_in_user.wait_until_present(timeout: 15, interval: 0.2)
-  expect(SdcWebsite.navigation.user_drop_down.signed_in_user).to be_present, "User #{TestData.store[:username]} is not signed in."
   expect(SdcWebsite.navigation.user_drop_down.signed_in_user.text_value).to include(TestData.store[:username])
 end
 

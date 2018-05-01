@@ -81,7 +81,7 @@ end
 Then /^fetch user credentials from MySQL$/ do
   begin
     if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default'
-      credentials = SdcUserCredentials.fetch(SdcTest.scenario.tags[0].name)
+      credentials = SdcUserCredentials.fetch(SdcEnv.scenario.tags[0].name)
       usr = credentials[:username]
       pw = credentials[:password]
     else
