@@ -444,29 +444,29 @@ end
 
 class TestData
   class << self
-    def store
-      return @store if @store
-      @store = {}
-      @store[:customs_associated_items] = {}
-      @store[:service_mapping_items] = {}
-      @store[:details_associated_items] = {}
-      @store[:order_id] = {}
-      @store[:service_look_up] = {}
-      @store[:service_look_up]['FCM'] = 'First-Class Mail'
-      @store[:service_look_up]['PM'] = 'Priority Mail'
-      @store[:service_look_up]['PME'] = 'Priority Mail Express'
-      @store[:service_look_up]['MM'] = 'Media Mail'
-      @store[:service_look_up]['PSG'] = 'Parcel Select Ground'
-      @store[:service_look_up]['FCMI'] = 'First-Class Mail International'
-      @store[:service_look_up]['PMI'] = 'Priority Mail International'
-      @store[:service_look_up]['PMEI'] = 'Priority Mail Express International'
-      @store[:ord_id_ctr] = 0
-      @store[:username] = ENV['USR']
-      @store[:password] = ENV['PW']
-      @store[:sdc_app] = ENV['WEB_APP']
-      @store[:url] = ENV['URL']
-      @store[:test] = ENV['USER_CREDENTIALS']
-      @store
+    def hash
+      return @hash if @hash
+      @hash = {}
+      @hash[:customs_associated_items] = {}
+      @hash[:service_mapping_items] = {}
+      @hash[:details_associated_items] = {}
+      @hash[:order_id] = {}
+      @hash[:service_look_up] = {}
+      @hash[:service_look_up]['FCM'] = 'First-Class Mail'
+      @hash[:service_look_up]['PM'] = 'Priority Mail'
+      @hash[:service_look_up]['PME'] = 'Priority Mail Express'
+      @hash[:service_look_up]['MM'] = 'Media Mail'
+      @hash[:service_look_up]['PSG'] = 'Parcel Select Ground'
+      @hash[:service_look_up]['FCMI'] = 'First-Class Mail International'
+      @hash[:service_look_up]['PMI'] = 'Priority Mail International'
+      @hash[:service_look_up]['PMEI'] = 'Priority Mail Express International'
+      @hash[:ord_id_ctr] = 0
+      @hash[:username] = ENV['USR']
+      @hash[:password] = ENV['PW']
+      @hash[:sdc_app] = ENV['WEB_APP']
+      @hash[:url] = ENV['URL']
+      @hash[:test] = ENV['USER_CREDENTIALS']
+      @hash
     end
   end
 end

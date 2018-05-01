@@ -1,18 +1,18 @@
 
 Then /^[Ss]earch filtered Orders for cached Order ID$/ do
-  step "search Orders for #{TestData.store[:order_id].values.last} expecting to find at least 1"
+  step "search Orders for #{TestData.hash[:order_id].values.last} expecting to find at least 1"
 end
 
 Then /^[Ss]earch filtered Orders for cached Ship-To full name$/ do
-  step "search Orders for #{TestData.store[:full_name]} expecting to find at least 1"
+  step "search Orders for #{TestData.hash[:full_name]} expecting to find at least 1"
 end
 
 Then /^[Ss]earch filtered Orders for cached Ship-To Company name$/ do
-  step "search Orders for #{TestData.store[:company]} expecting to find at least 1"
+  step "search Orders for #{TestData.hash[:company]} expecting to find at least 1"
 end
 
 Then /^[Ss]earch filtered Orders for cached Ship-To email$/ do
-  step "search Orders for #{TestData.store[:email]} expecting to find at least 1"
+  step "search Orders for #{TestData.hash[:email]} expecting to find at least 1"
 end
 
 Then /^[Ss]earch Orders for (.*) expecting to find at least (\d+)$/ do |str, count|
@@ -30,8 +30,8 @@ Then /^[Ss]earch Orders for (.*) expecting to find at least (\d+)$/ do |str, cou
 end
 
 Then /^[Ss]et Filter Panel Search textbox to (.*)$/ do |str|
-  TestData.store[:filter_panel_search_str]=str
-  stamps.orders.filter_panel.search_orders.textbox.set(TestData.store[:filter_panel_search_str])
+  TestData.hash[:filter_panel_search_str]=str
+  stamps.orders.filter_panel.search_orders.textbox.set(TestData.hash[:filter_panel_search_str])
 end
 
 Then /^[Cc]lick Filter Panel Search [Bb]utton$/ do

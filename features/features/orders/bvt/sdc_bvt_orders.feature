@@ -22,13 +22,11 @@ Feature:  BVT tests for Orders
 
   @authentication
   Scenario: Orders Authentication Test
-    Then visit Orders landing page
     Then sign-in to Orders
     Then sign-out of SDC Website
 
   @bvt_new_order
   Scenario:  BVT Add a new order
-    Then visit Orders landing page
     Then sign-in to Orders
     Then add order 1
     Then add order 2
@@ -52,7 +50,6 @@ Feature:  BVT tests for Orders
 
   @bvt_orders_ship_date
   Scenario: Ship Date defaults to today
-    Then visit Orders landing page
     Then sign-in to Orders
     Then Open Orders Settings General Settings
     Then set Orders Settings General postdate to now +2 hours
@@ -101,7 +98,6 @@ Feature:  BVT tests for Orders
 
   @bvt_orders_ship_date_calendar
   Scenario: Set Ship Date to today
-    Then visit Orders landing page
     Then sign-in to Orders
     Then Open Orders Settings General Settings
     Then set Orders Settings General postdate to now +2 hours
@@ -126,7 +122,6 @@ Feature:  BVT tests for Orders
 
   @bvt_international_shipping
   Scenario: BVT International Shipping
-    Then visit Orders landing page
     Then sign-in to Orders
 
     Then add new order
