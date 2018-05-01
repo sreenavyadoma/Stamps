@@ -7,7 +7,6 @@ Then /^[Ss]et [Oo]rders [Ss]ettings [Gg]eneral [Pp]ostdate to (now [+-]\d+ hours
   expect(settings.postdate_text_field.text_value).to include(time), "Postdate was not selected"
 end
 
-
 Then /^[Oo]pen [Oo]rders [Ss]ettings [Mm]odal$/ do
   step 'Wait until order toolbar present 40, 3'
   SdcOrders.toolbar.settings.safe_click

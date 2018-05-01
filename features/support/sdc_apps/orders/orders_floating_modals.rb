@@ -62,7 +62,7 @@ module SdcOrders
       page_object(:print) { {id: 'sdc-printwin-printbtn-btnWrap'} }
       page_object(:print_sample) { {} }
       page_object(:total) { {xpath: '//*[contains(@class, "sdc-displayfield-font-style")]//div/*[contains(@id, "displayfield")]'} }
-      page_object(:close) { {xpath: '//*[contains(@class, "x-tool-close")]'} }
+      page_object(:close) { {xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
 
       def print_on
         @print_on ||= PrintModalPrintOn.new
