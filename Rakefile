@@ -6,7 +6,7 @@ require 'cucumber/rake/task'
 #BEGIN WEB DEV
   #BEGIN PARTNER PORTAL
   Cucumber::Rake::Task.new(:pp_log_in_page_validation) do |t|
-    t.profile = 'pp_log_in'
+    t.profile = 'pp_log_in_page_validation'
     t.cucumber_opts = "-p cuke_reports"
   end
 
