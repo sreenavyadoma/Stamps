@@ -98,7 +98,7 @@ Then /^[Pp]P: [Ee]xpect login page [Pp]assword tooltip index (\d+) to be (.*)$/ 
 end
 
 Then /^[Pp]P: [Ee]xpect login page error message to be$/ do |str|
-  PartnerPortal.login_page.error_message.wait_until_present(timeout: 10)
+  PartnerPortal.login_page.error_message.wait_until_present(timeout: 10, interval: 0.2)
   expect(PartnerPortal.login_page.error_message.text.strip).to eql(str)
 end
 
