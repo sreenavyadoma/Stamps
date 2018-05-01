@@ -250,8 +250,8 @@ class SdcTest
       SdcEnv.mobile = SdcEnv.ios || SdcEnv.android
       SdcEnv.sdc_app ||= ENV['WEB_APP'].downcase.to_sym unless ENV['WEB_APP'].nil?
       SdcEnv.health_check ||= ENV['HEALTHCHECK']
-      SdcEnv.usr ||= ENV['USR']
-      SdcEnv.pw ||= ENV['PW']
+      SdcEnv.usr = ENV['USR']
+      SdcEnv.pw = ENV['PW']
       SdcEnv.firefox_profile ||= ENV['FIREFOX_PROFILE']
       SdcEnv.new_framework ||= ENV['NEW_FRAMEWORK']
       SdcEnv.debug ||= ENV['DEBUG']
