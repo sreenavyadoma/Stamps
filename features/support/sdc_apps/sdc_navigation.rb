@@ -5,7 +5,7 @@ module SdcNavigation
   end
 
   class MailSignInModal < SdcPage
-    page_object(:sign_in_link) { {xpath: '//a[contains(@class, "signInLink")]'} }
+    page_object(:sign_in_link,required: 40) { {xpath: '//a[contains(@class, "signInLink")]'} }
     page_object(:username, tag: :text_field) { {id: 'UserNameTextBox'} }
     page_object(:password, tag: :text_field) { {id: 'PasswordTextBox'} }
     page_object(:sign_in){{id: 'signInButton'}}

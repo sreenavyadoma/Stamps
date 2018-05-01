@@ -83,12 +83,12 @@ Then /^sign-in to Mail(?: as (.+), (.+)|)$/ do |usr, pw|
 
   modal = SdcWebsite.navigation.mail_sign_in_modal
   signed_in_user = SdcWebsite.navigation.user_drop_down.signed_in_user
-  modal.sign_in_link.wait_until_present(timeout: 3)
+  modal.sign_in_link.wait_until_present(timeout: 80, interval: 0.2)
   modal.sign_in_link.click
   modal.username.set(TestData.store[:username] = usr)
   modal.password.set(TestData.store[:password] = pw)
   if SdcEnv.browser
-    modal.sign_in.wait_until_present(timeout: 3)
+    modal.sign_in.wait_until_present(timeout: 10)
     modal.sign_in.click
     signed_in_user.wait_until_present(timeout: 10)
     expect(SdcWebsite.navigation.user_drop_down.signed_in_user.text_value).to include(TestData.store[:username])
