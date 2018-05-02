@@ -1,5 +1,5 @@
 module Stamps
-  module Registration
+   module Registration
     module Profile
       module Fields
         class Email < WebApps::Base

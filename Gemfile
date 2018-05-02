@@ -12,6 +12,7 @@ gem 'measured'
 gem 'faker'
 gem 'sauce_whisk'
 gem 'watir_drops'
+gem 'tiny_tds'
 
 group :watir do
   gem 'watir', '6.10.3'
