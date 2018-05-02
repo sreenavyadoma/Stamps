@@ -118,14 +118,14 @@ Then /^[Pp]P: [Ee]xpect login page error message to be$/ do |str|
 end
 
 
-Then /^[Pp]P: [Ee]xpect website records login event in Audit Records to be (.*)$/ do |str|
+Then /^[Pp]P: [Ee]xpect website records login event in Audit Records to be (.*) for PartnerUserId (.*)$/ do |str, id|
   step "Establish Partner Portal db connection"
 
  result = PartnerPortal.db_connection.execute(
     "select RecordId, PartnerUserId, LogInfo, DateCreated
      from [dbo].[sdct_PartnerPortal_Log]
      where DateCreated = (
-     Select MAX(DateCreated) from [dbo].[sdct_PartnerPortal_Log] where PartnerUserId = 1001)"
+     Select MAX(DateCreated) from [dbo].[sdct_PartnerPortal_Log] where PartnerUserId = #{id})"
   )
   result.each do |log_info|
     TestData.hash[:login_status] = log_info['LogInfo']
