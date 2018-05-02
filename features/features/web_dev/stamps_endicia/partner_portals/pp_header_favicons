@@ -2,7 +2,7 @@
 Feature: PP-MVP: Header and Favicons
 
   Background:
-    Given PP: A valid user is signed into the Partner Portal
+    Given PP: A valid user is signed into Partner Portal
 
   Scenario: PP: Header and Favicons Validation
 
