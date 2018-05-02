@@ -140,7 +140,7 @@ Then /^[Pp]P: [Ee]xpect for PartnerUserId (.*) LogTypeId is (\d+) and LogInfo is
 
 end
 
-Given /^[Pp]P: [Aa] valid user is signed into the Partner Portal$/ do
+Given /^[Pp]P: [Aa] valid user is signed into Partner Portal$/ do
   step "Start test driver"
   step "PP: A user navigates to the login page"
   step "PP: set login page email to env value"
