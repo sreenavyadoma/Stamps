@@ -125,7 +125,7 @@ Then /^[Pp]P: [Ee]xpect website records login event in Audit Records to be (.*)$
     "select RecordId, PartnerUserId, LogInfo, DateCreated
      from [dbo].[sdct_PartnerPortal_Log]
      where DateCreated = (
-     Select MAX(DateCreated) from [dbo].[sdct_PartnerPortal_Log])"
+     Select MAX(DateCreated) from [dbo].[sdct_PartnerPortal_Log] where PartnerUserId = 1001)"
   )
   result.each do |log_info|
     TestData.hash[:login_status] = log_info['LogInfo']
