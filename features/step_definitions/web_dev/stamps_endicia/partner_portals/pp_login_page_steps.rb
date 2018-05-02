@@ -32,7 +32,7 @@ end
 
 Then /^[Pp]P: [Uu]ser clicks Log In$/ do
   log_in = PartnerPortal.login_page.log_in
-  log_in.wait_until_present(timeout: 6)
+  log_in.wait_until_present(timeout: 5)
   log_in.send_keys(:enter)
 end
 
@@ -61,20 +61,28 @@ end
 
 
 Then /^[Pp]P: set login page email to (?:env value|(.*))$/ do |str|
-  PartnerPortal.login_page.email.set(TestData.store[:email]=(str.nil?)?(SdcEnv.usr):str)
+  #PartnerPortal.login_page.email.set(TestData.store[:email]=(str.nil?)?(SdcEnv.usr):str)
+  email =  PartnerPortal.login_page.email
+  email.wait_until_present(timeout: 5)
+  email.set(TestData.store[:email]=(str.nil?)?(SdcEnv.usr):str)
 end
 
 
 Then /^[Pp]P: [Ee]xpect login page email tooltip count is (.*)$/ do |count|
-  email_tooltip = PartnerPortal.login_page.email_tooltip
-  email_tooltip.wait_until_present(timeout: 5)
-  TestData.store[:email_tooltip] = email_tooltip.text_value.split("\n")
-  expect(TestData.store[:email_tooltip].size).to eql(count.to_i)
+  email_tooltip_count = PartnerPortal.login_page.email_tooltip
+  email_tooltip_count.wait_until_present(timeout: 5)
+  TestData.store[:email_tooltip_count] = email_tooltip_count.text_value.split("\n")
+  expect(TestData.store[:email_tooltip_count].size).to eql(count.to_i)
 end
 
 Then /^[Pp]P: [Ee]xpect login page email tooltip index (\d+) to be (.*)$/ do |index, str|
-  PartnerPortal.login_page.email_tooltip.wait_until_present(timeout: 10)
-  TestData.store[:email_tooltip] = PartnerPortal.login_page.email_tooltip.text_value.split("\n")
+  # PartnerPortal.login_page.email_tooltip.wait_until_present(timeout: 10)
+  # TestData.store[:email_tooltip] = PartnerPortal.login_page.email_tooltip.text_value.split("\n")
+  # expect(TestData.store[:email_tooltip][index.to_i - 1]).to eql(str)
+
+  email_tooltip = PartnerPortal.login_page.email_tooltip
+  email_tooltip.wait_until_present(timeout: 5)
+  TestData.store[:email_tooltip] = email_tooltip.text_value.split("\n")
   expect(TestData.store[:email_tooltip][index.to_i - 1]).to eql(str)
 end
 
@@ -83,7 +91,12 @@ Then /^[Pp]P: [Ee]xpect login page Password field to exist$/ do
 end
 
 Then /^[Pp]P: set login page password to (?:env value|(.*))$/ do |str|
-  PartnerPortal.login_page.password.set(TestData.store[:password]=(str.nil?)?(SdcEnv.pw):str)
+  #PartnerPortal.login_page.password.set(TestData.store[:password]=(str.nil?)?(SdcEnv.pw):str)
+
+  password =  PartnerPortal.login_page.password
+  password.wait_until_present(timeout: 5)
+  password.set(TestData.store[:password]=(str.nil?)?(SdcEnv.pw):str)
+
 end
 
 
@@ -93,18 +106,33 @@ Then /^[Pp]P: [Ee]xpect login page [Pp]assword field shows placeholder (.*)$/ do
 end
 
 Then /^[Pp]P: [Ee]xpect login page [Pp]assword tooltip count is (.*)$/ do |count|
-  TestData.store[:password_tooltip] = PartnerPortal.login_page.password_tooltip.text_value.split("\n")
-  expect(TestData.store[:password_tooltip].size).to eql(count.to_i)
+  # TestData.store[:password_tooltip] = PartnerPortal.login_page.password_tooltip.text_value.split("\n")
+  # expect(TestData.store[:password_tooltip].size).to eql(count.to_i)
+
+  password_tooltip_count = PartnerPortal.login_page.password_tooltip
+  password_tooltip_count.wait_until_present(timeout: 5)
+  TestData.store[:password_tooltip_count] = password_tooltip_count.text_value.split("\n")
+  expect(TestData.store[:password_tooltip_count].size).to eql(count.to_i)
+
+
 end
 
 Then /^[Pp]P: [Ee]xpect login page [Pp]assword tooltip index (\d+) to be (.*)$/ do |index, str|
-  TestData.store[:password_tooltip] = PartnerPortal.login_page.password_tooltip.text_value.split("\n")
+  # TestData.store[:password_tooltip] = PartnerPortal.login_page.password_tooltip.text_value.split("\n")
+  # expect(TestData.store[:password_tooltip][index.to_i - 1]).to eql(str)
+
+  password_tooltip = PartnerPortal.login_page.password_tooltip
+  password_tooltip.wait_until_present(timeout: 5)
+  TestData.store[:password_tooltip] = password_tooltip.text_value.split("\n")
   expect(TestData.store[:password_tooltip][index.to_i - 1]).to eql(str)
+
+
 end
 
 Then /^[Pp]P: [Ee]xpect login page error message to be$/ do |str|
-  PartnerPortal.login_page.error_message.wait_until_present(timeout: 10, interval: 0.2)
-  expect(PartnerPortal.login_page.error_message.text.strip).to eql(str)
+  error_message = PartnerPortal.login_page.error_message
+  error_message.wait_until_present(timeout: 10)
+  expect(error_message.text.strip).to eql(str)
 end
 
 

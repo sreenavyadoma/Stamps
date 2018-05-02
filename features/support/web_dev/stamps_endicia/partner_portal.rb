@@ -2,11 +2,9 @@ module PartnerPortal
 
   class PPLoginPage < SdcPage
     #Welcome content
-    #page_objects(:welcome_content, index: 0)  { {xpath: "//p"} }
     page_object(:welcome_content) { {xpath: "//p[contains(text(),'Welcome to the')]"} }
 
     #Error Message
-    # page_objects(:error_message, index: 1)  { {xpath: "//p"} }
     page_object(:error_message) { {xpath: "//p[@class='text-center']"} }
 
     #sdcEndica logo
@@ -33,7 +31,6 @@ module PartnerPortal
     link(:forgot_pw) { {xpath: "//a[@href='/reset-password/request']"} }
 
     page_url { |env| "http://partner.#{env}.stamps.com/" }
-    #page_url { |env| "https://iigwe-win10.corp.stamps.com/partner/" }
 
     def self.visit
       super(case SdcEnv.env
@@ -101,7 +98,7 @@ module PartnerPortal
     end
 
     def db_connection
-      @connection ||= PartnerPortalDB.new
+      @connection = PartnerPortalDB.new
     end
 
   end
