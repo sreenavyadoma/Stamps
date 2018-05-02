@@ -31,7 +31,9 @@ Then /^[Pp]P: [Ee]xpect login page Log In button text is (.*)$/ do |str|
 end
 
 Then /^[Pp]P: [Uu]ser clicks Log In$/ do
-  PartnerPortal.login_page.log_in.send_keys(:enter)
+  log_in = PartnerPortal.login_page.log_in
+  log_in.wait_until_present(timeout: 6)
+  log_in.send_keys(:enter)
 end
 
 Then /^[Pp]P: expect login page [Ff]orgot [Pp]assword link exist$/ do
@@ -64,11 +66,14 @@ end
 
 
 Then /^[Pp]P: [Ee]xpect login page email tooltip count is (.*)$/ do |count|
-  TestData.store[:email_tooltip] = PartnerPortal.login_page.email_tooltip.text_value.split("\n")
+  email_tooltip = PartnerPortal.login_page.email_tooltip
+  email_tooltip.wait_until_present(timeout: 5)
+  TestData.store[:email_tooltip] = email_tooltip.text_value.split("\n")
   expect(TestData.store[:email_tooltip].size).to eql(count.to_i)
 end
 
 Then /^[Pp]P: [Ee]xpect login page email tooltip index (\d+) to be (.*)$/ do |index, str|
+  PartnerPortal.login_page.email_tooltip.wait_until_present(timeout: 10)
   TestData.store[:email_tooltip] = PartnerPortal.login_page.email_tooltip.text_value.split("\n")
   expect(TestData.store[:email_tooltip][index.to_i - 1]).to eql(str)
 end

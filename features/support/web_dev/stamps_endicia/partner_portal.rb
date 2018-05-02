@@ -85,19 +85,19 @@ module PartnerPortal
 
   class << self
     def login_page
-      @login_page ||= PPLoginPage.new
+      @login_page = PPLoginPage.new
     end
 
     def dashboard_page
-      @dashboard_page ||=PPDashboardPage.new
+      @dashboard_page = PPDashboardPage.new
     end
 
     def reset_password_page
-      @reset_password_page ||= PPResetPasswordPage.new
+      @reset_password_page = PPResetPasswordPage.new
     end
 
     def stamps_endicia_common_page
-      @stamps_endicia_common_page ||= PartnerPortal::Common.new
+      @stamps_endicia_common_page = PartnerPortal::Common.new
     end
 
     def db_connection
