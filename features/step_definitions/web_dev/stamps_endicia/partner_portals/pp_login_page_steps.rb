@@ -118,21 +118,25 @@ Then /^[Pp]P: [Ee]xpect login page error message to be$/ do |str|
 end
 
 
-Then /^[Pp]P: [Ee]xpect website records login event in Audit Records to be (.*)$/ do |str|
+Then /^[Pp]P: [Ee]xpect for PartnerUserId (.*) LogTypeId is (\d+) and LogInfo is (.*)$/ do |user_id, log_id, log_info |
   step "Establish Partner Portal db connection"
 
- result = PartnerPortal.db_connection.execute(
-    "select RecordId, PartnerUserId, LogInfo, DateCreated
-    from [dbo].[sdct_PartnerPortal_Log]
-    where DateCreated = (
-    Select MAX(DateCreated) from [dbo].[sdct_PartnerPortal_Log] where PartnerUserId = 1001)"
+  result = PartnerPortal.db_connection.execute(
+      "select RecordId, LogTypeId, PartnerUserId, LogInfo, DateCreated
+     from [dbo].[sdct_PartnerPortal_Log]
+     where DateCreated = (
+     Select MAX(DateCreated) from [dbo].[sdct_PartnerPortal_Log] where PartnerUserId = #{user_id})"
   )
   result.each do |log_info|
-    TestData.hash[:login_status]= log_info['LogInfo']
+    TestData.hash[:login_status] = log_info['LogInfo']
+    TestData.hash[:login_type] = log_info['LogTypeId']
   end
-  expect(TestData.hash[:login_status]).to eql(str)
 
   step "Close partner portal db connection"
+
+  expect(TestData.hash[:login_type]).to eql(log_id)
+  expect(TestData.hash[:login_status]).to eql(log_info)
+
 
 end
 
