@@ -1,11 +1,11 @@
 
 @pp_header_favicons
-Feature: PP-MVP: Login Page
+Feature: PP-MVP: Header and Favicons
 
   Background:
     Given Start test driver
 
-  Scenario: PP: Login Page Validation
+  Scenario: PP: Header and Favicons Validation
 
     Then PP: A user navigates to the login page
 
