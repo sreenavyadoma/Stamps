@@ -5,8 +5,8 @@ Then /^sign-in to Mail using credentials from MySql$/ do
   modal.sign_in_link.wait_until_present(timeout: 80, interval: 0.2)
   step 'fetch user credentials from MySQL'
   modal.sign_in_link.hover
-  step "set Mail username to #{TestData.store[:username]}"
-  step "set Mail password to #{TestData.store[:password]}"
+  step "set Mail username to #{TestData.hash[:username]}"
+  step "set Mail password to #{TestData.hash[:password]}"
 
   if SdcEnv.browser
     step 'click the Sign In button in Mail'
@@ -20,11 +20,11 @@ end
 
 Then /^expect user is signed in$/ do
   SdcWebsite.navigation.user_drop_down.signed_in_user.wait_until_present(timeout: 15, interval: 0.2)
-  expect(SdcWebsite.navigation.user_drop_down.signed_in_user.text_value).to include(TestData.store[:username])
+  expect(SdcWebsite.navigation.user_drop_down.signed_in_user.text_value).to include(TestData.hash[:username])
 end
 
 Then /^set Mail username(?: to (.+)|)$/ do |usr|
-  usr = TestData.store[:username] if usr.nil?
+  usr = TestData.hash[:username] if usr.nil?
   modal = SdcWebsite.navigation.mail_sign_in_modal
   modal.sign_in_link.wait_until_present(timeout: 15)
   modal.sign_in_link.hover unless modal.username.present?
@@ -33,7 +33,7 @@ Then /^set Mail username(?: to (.+)|)$/ do |usr|
 end
 
 Then /^set Mail password(?: to (.+)|)$/ do |pw|
-  pw = TestData.store[:password] if pw.nil?
+  pw = TestData.hash[:password] if pw.nil?
   modal = SdcWebsite.navigation.mail_sign_in_modal
   modal.sign_in_link.wait_until_present(timeout: 15)
   modal.sign_in_link.hover unless modal.password.present?
@@ -93,7 +93,7 @@ Then /^[Ee]xpect [Uu]sername is present in Mail [Uu]sername field$/ do
   modal = SdcWebsite.navigation.mail_sign_in_modal
   modal.sign_in_link.hover
   modal.username.safe_wait_until_present(timeout: 5)
-  expect(modal.username.value).to eql TestData.store[:username]
+  expect(modal.username.value).to eql TestData.hash[:username]
 
 end
 

@@ -23,27 +23,27 @@ Then /^[Bb]lur [Oo]ut [Oo]n [Cc]ustoms [Ff]orm(?:| (\d+)(?:| times))$/ do |count
 end
 
 Then /^[Ss]et Customs Package Contents to (.*)$/ do |value|
-  TestData.store[:customs_package_contents] = value
-  stamps.common_modals.customs_form.package_contents.select(TestData.store[:customs_package_contents]) if SdcEnv.sdc_app == :orders
-  stamps.mail.print_form.mail_customs.edit_customs_form.package_contents.select(TestData.store[:customs_package_contents]) if SdcEnv.sdc_app == :mail
+  TestData.hash[:customs_package_contents] = value
+  stamps.common_modals.customs_form.package_contents.select(TestData.hash[:customs_package_contents]) if SdcEnv.sdc_app == :orders
+  stamps.mail.print_form.mail_customs.edit_customs_form.package_contents.select(TestData.hash[:customs_package_contents]) if SdcEnv.sdc_app == :mail
   step "Save Customs Information form Total amount"
 end
 
 Then /^[Ee]xpect Customs Package Contents is (?:correct|(.*))$/ do |expectation|
-  expectation = expectation.nil? ? TestData.store[:customs_package_contents] : expectation
+  expectation = expectation.nil? ? TestData.hash[:customs_package_contents] : expectation
   sleep(0.15)
   expect(stamps.common_modals.customs_form.package_contents.combobox.textbox.text).to eql(expectation) if SdcEnv.sdc_app == :orders
   expect(stamps.mail.print_form.mail_customs.edit_customs_form.package_contents.combobox.textbox.text).to eql(expectation) if SdcEnv.sdc_app == :mail
 end
 
 Then /^[Ss]et Customs Non-Delivery Options to (.*)$/ do |value|
-  TestData.store[:customs_non_delivery_options] = value
-  stamps.common_modals.customs_form.non_delivery_options.select(TestData.store[:customs_non_delivery_options]) if SdcEnv.sdc_app == :orders
-  stamps.mail.print_form.mail_customs.edit_customs_form.non_delivery_options.select(TestData.store[:customs_non_delivery_options]) if SdcEnv.sdc_app == :mail
+  TestData.hash[:customs_non_delivery_options] = value
+  stamps.common_modals.customs_form.non_delivery_options.select(TestData.hash[:customs_non_delivery_options]) if SdcEnv.sdc_app == :orders
+  stamps.mail.print_form.mail_customs.edit_customs_form.non_delivery_options.select(TestData.hash[:customs_non_delivery_options]) if SdcEnv.sdc_app == :mail
 end
 
 Then /^[Ee]xpect Customs Non-Delivery Options is (?:correct|(.*))$/ do |expectation|
-  expectation = expectation.nil? ? TestData.store[:customs_non_delivery_options] : expectation
+  expectation = expectation.nil? ? TestData.hash[:customs_non_delivery_options] : expectation
   actual = ""
   10.times do
     if SdcEnv.sdc_app == :orders
@@ -62,14 +62,14 @@ Then /^[Ee]xpect Customs Non-Delivery Options is (?:correct|(.*))$/ do |expectat
 end
 
 Then /^[Ss]et Customs Internal Transaction Number to (.*)$/ do |value|
-  TestData.store[:customs_internal_transaction_no] = value
-  stamps.common_modals.customs_form.internal_transaction.select(TestData.store[:customs_internal_transaction_no]) if SdcEnv.sdc_app == :orders
-  stamps.mail.print_form.mail_customs.edit_customs_form.internal_transaction.select(TestData.store[:customs_internal_transaction_no]) if SdcEnv.sdc_app == :mail
+  TestData.hash[:customs_internal_transaction_no] = value
+  stamps.common_modals.customs_form.internal_transaction.select(TestData.hash[:customs_internal_transaction_no]) if SdcEnv.sdc_app == :orders
+  stamps.mail.print_form.mail_customs.edit_customs_form.internal_transaction.select(TestData.hash[:customs_internal_transaction_no]) if SdcEnv.sdc_app == :mail
   step "Save Customs Information form Total amount"
 end
 
 Then /^[Ee]xpect Customs Internal Transaction Number is (?:correct|(.*))$/ do |expectation|
-  expectation = expectation.nil? ? TestData.store[:customs_internal_transaction_no] : expectation
+  expectation = expectation.nil? ? TestData.hash[:customs_internal_transaction_no] : expectation
   sleep(0.5)
   expect(stamps.common_modals.customs_form.internal_transaction.textbox.text).to eql(expectation) if SdcEnv.sdc_app == :orders
   expect(stamps.mail.print_form.mail_customs.edit_customs_form.internal_transaction.textbox.text).to eql(expectation) if SdcEnv.sdc_app == :mail
@@ -84,42 +84,42 @@ end
 # end
 
 Then /^[Ss]et Customs More Info to (?:(?:a|some) random string|(.*))$/ do |value|
-  TestData.store[:customs_more_info] = value.nil? ? TestHelper.rand_alpha_numeric(6, 18) : value
-  stamps.common_modals.customs_form.package_contents.contents.more_info.set(TestData.store[:customs_more_info]) if SdcEnv.sdc_app == :orders
-  stamps.mail.print_form.mail_customs.edit_customs_form.package_contents.contents.more_info.set(TestData.store[:customs_more_info]) if SdcEnv.sdc_app == :mail
+  TestData.hash[:customs_more_info] = value.nil? ? TestHelper.rand_alpha_numeric(6, 18) : value
+  stamps.common_modals.customs_form.package_contents.contents.more_info.set(TestData.hash[:customs_more_info]) if SdcEnv.sdc_app == :orders
+  stamps.mail.print_form.mail_customs.edit_customs_form.package_contents.contents.more_info.set(TestData.hash[:customs_more_info]) if SdcEnv.sdc_app == :mail
   step "Save Customs Information form Total amount"
 end
 
 Then /^[Ee]xpect Customs More Info is (?:correct|(.*))$/ do |expectation|
-  expectation = expectation.nil? ? TestData.store[:customs_more_info] : expectation
+  expectation = expectation.nil? ? TestData.hash[:customs_more_info] : expectation
   sleep(0.5)
   expect(stamps.common_modals.customs_form.package_contents.contents.more_info.text).to eql(expectation) if SdcEnv.sdc_app == :orders
   expect(stamps.mail.print_form.mail_customs.edit_customs_form.package_contents.contents.more_info.text).to eql(expectation) if SdcEnv.sdc_app == :mail
 end
 
 Then /^[Ss]et Customs ITN Number to (?:(?:a|some) random string|(.*))$/ do |value|
-  TestData.store[:customs_itn_no] = value.nil? ? TestHelper.rand_alpha_numeric(8, 50) : value
-  stamps.common_modals.customs_form.itn_number.set(TestData.store[:customs_itn_no]) if SdcEnv.sdc_app == :orders
-  stamps.mail.print_form.mail_customs.edit_customs_form.itn_number.set(TestData.store[:customs_itn_no]) if SdcEnv.sdc_app == :mail
+  TestData.hash[:customs_itn_no] = value.nil? ? TestHelper.rand_alpha_numeric(8, 50) : value
+  stamps.common_modals.customs_form.itn_number.set(TestData.hash[:customs_itn_no]) if SdcEnv.sdc_app == :orders
+  stamps.mail.print_form.mail_customs.edit_customs_form.itn_number.set(TestData.hash[:customs_itn_no]) if SdcEnv.sdc_app == :mail
   step "Save Customs Information form Total amount"
 end
 
 Then /^[Ee]xpect Customs ITN Number is (?:correct|(.*))$/ do |expectation|
-  expectation = expectation.nil? ? TestData.store[:customs_itn_no] : expectation
+  expectation = expectation.nil? ? TestData.hash[:customs_itn_no] : expectation
   sleep(0.5)
   expect(stamps.common_modals.customs_form.itn_number.text).to eql(expectation) if SdcEnv.sdc_app == :orders
   expect(stamps.mail.print_form.mail_customs.edit_customs_form.itn_number.text).to eql(expectation) if SdcEnv.sdc_app == :mail
 end
 
 Then /^[Ss]et Customs License Number to (?:(?:a|some) random string|(.*))$/ do |value|
-  TestData.store[:customs_license_no] = ((value.nil? ? TestHelper.rand_alpha_numeric(2, 6) : value)[0, 5])
-  stamps.common_modals.customs_form.license.set(TestData.store[:customs_license_no]) if SdcEnv.sdc_app == :orders
-  stamps.mail.print_form.mail_customs.edit_customs_form.license.set(TestData.store[:customs_license_no]) if SdcEnv.sdc_app == :mail
+  TestData.hash[:customs_license_no] = ((value.nil? ? TestHelper.rand_alpha_numeric(2, 6) : value)[0, 5])
+  stamps.common_modals.customs_form.license.set(TestData.hash[:customs_license_no]) if SdcEnv.sdc_app == :orders
+  stamps.mail.print_form.mail_customs.edit_customs_form.license.set(TestData.hash[:customs_license_no]) if SdcEnv.sdc_app == :mail
   step "Save Customs Information form Total amount"
 end
 
 Then /^[Ee]xpect Customs License Number is (?:correct|(.*))$/ do |expectation|
-  expectation = expectation.nil? ? TestData.store[:customs_license_no] : expectation
+  expectation = expectation.nil? ? TestData.hash[:customs_license_no] : expectation
   sleep(1)
   expect(stamps.common_modals.customs_form.license.text).to eql(expectation) if SdcEnv.sdc_app == :orders
   expect(stamps.mail.print_form.mail_customs.edit_customs_form.license.text).to eql(expectation) if SdcEnv.sdc_app == :mail
@@ -127,28 +127,28 @@ Then /^[Ee]xpect Customs License Number is (?:correct|(.*))$/ do |expectation|
 end
 
 Then /^[Ss]et Customs Certificate Number to (?:(?:a|some) random string|(.*))$/ do |value|
-  TestData.store[:customs_certificate_no] = (((value.nil? ? TestHelper.rand_alpha_numeric(2, 8) : value))[0, 7])
-  stamps.common_modals.customs_form.certificate.set(TestData.store[:customs_certificate_no]) if SdcEnv.sdc_app == :orders
-  stamps.mail.print_form.mail_customs.edit_customs_form.certificate.set(TestData.store[:customs_certificate_no]) if SdcEnv.sdc_app == :mail
+  TestData.hash[:customs_certificate_no] = (((value.nil? ? TestHelper.rand_alpha_numeric(2, 8) : value))[0, 7])
+  stamps.common_modals.customs_form.certificate.set(TestData.hash[:customs_certificate_no]) if SdcEnv.sdc_app == :orders
+  stamps.mail.print_form.mail_customs.edit_customs_form.certificate.set(TestData.hash[:customs_certificate_no]) if SdcEnv.sdc_app == :mail
   step "Save Customs Information form Total amount"
 end
 
 Then /^[Ee]xpect Customs Certificate Number is (?:correct|(.*))$/ do |expectation|
-  expectation = expectation.nil? ? TestData.store[:customs_certificate_no] : expectation
+  expectation = expectation.nil? ? TestData.hash[:customs_certificate_no] : expectation
   sleep(0.5)
   expect(stamps.common_modals.customs_form.certificate.text).to eql(expectation) if SdcEnv.sdc_app == :orders
   expect(stamps.mail.print_form.mail_customs.edit_customs_form.certificate.text).to eql(expectation) if SdcEnv.sdc_app == :mail
 end
 
 Then /^[Ss]et Customs Invoice Number to (?:(?:a|some) random string|(.*))$/ do |value|
-  TestData.store[:customs_invoice_no] = ((value.nil? ? TestHelper.rand_alpha_numeric(2, 10) : value)[0, 9])
-  stamps.common_modals.customs_form.invoice.set(TestData.store[:customs_invoice_no]) if SdcEnv.sdc_app == :orders
-  stamps.mail.print_form.mail_customs.edit_customs_form.invoice.set(TestData.store[:customs_invoice_no]) if SdcEnv.sdc_app == :mail
+  TestData.hash[:customs_invoice_no] = ((value.nil? ? TestHelper.rand_alpha_numeric(2, 10) : value)[0, 9])
+  stamps.common_modals.customs_form.invoice.set(TestData.hash[:customs_invoice_no]) if SdcEnv.sdc_app == :orders
+  stamps.mail.print_form.mail_customs.edit_customs_form.invoice.set(TestData.hash[:customs_invoice_no]) if SdcEnv.sdc_app == :mail
   step "Save Customs Information form Total amount"
 end
 
 Then /^[Ee]xpect Customs Invoice Number is (?:correct|(.*))$/ do |expectation|
-  expectation = expectation.nil? ? TestData.store[:customs_invoice_no] : expectation
+  expectation = expectation.nil? ? TestData.hash[:customs_invoice_no] : expectation
   sleep(0.5)
   expect(stamps.common_modals.customs_form.invoice.text).to eql(expectation) if SdcEnv.sdc_app == :orders
   expect(stamps.mail.print_form.mail_customs.edit_customs_form.invoice.text).to eql(expectation) if SdcEnv.sdc_app == :mail
@@ -299,17 +299,17 @@ Then /^[Ee]xpect Customs Associated Item Grid count is (.+)$/ do |expectation|
 end
 
 Then /^[Ss]ave Customs Information form [Tt]otal amount$/ do
-  TestData.store[:customs_total_value] = stamps.common_modals.customs_form.total_cost.text.dollar_amount_str.to_f.round(2) if SdcEnv.sdc_app == :orders
-  TestData.store[:customs_total_value] = stamps.mail.print_form.mail_customs.edit_customs_form.total_cost.text.dollar_amount_str.to_f.round(2) if SdcEnv.sdc_app == :mail
+  TestData.hash[:customs_total_value] = stamps.common_modals.customs_form.total_cost.text.dollar_amount_str.to_f.round(2) if SdcEnv.sdc_app == :orders
+  TestData.hash[:customs_total_value] = stamps.mail.print_form.mail_customs.edit_customs_form.total_cost.text.dollar_amount_str.to_f.round(2) if SdcEnv.sdc_app == :mail
 end
 
 Then /^[Ee]xpect Customs Total Value is (?:correct|(.*))$/ do |expectation|
   step "Blur out on Customs form"
   if SdcEnv.sdc_app == :orders
-    expect(stamps.common_modals.customs_form.total_cost.text.dollar_amount_str.to_f.round(2)).to eql(expectation.nil? ? TestData.store[:customs_total_value] : expectation.to_f.round(2))
+    expect(stamps.common_modals.customs_form.total_cost.text.dollar_amount_str.to_f.round(2)).to eql(expectation.nil? ? TestData.hash[:customs_total_value] : expectation.to_f.round(2))
   end
   if SdcEnv.sdc_app == :mail
-    expect(stamps.mail.print_form.mail_customs.edit_customs_form.total_cost.text.dollar_amount_str.to_f.round(2)).to eql(expectation.nil? ? TestData.store[:customs_total_value] : expectation.to_f.round(2))
+    expect(stamps.mail.print_form.mail_customs.edit_customs_form.total_cost.text.dollar_amount_str.to_f.round(2)).to eql(expectation.nil? ? TestData.hash[:customs_total_value] : expectation.to_f.round(2))
   end
 end
 
@@ -328,80 +328,80 @@ Then /^[Aa]dd Customs Associated Item (\d+)$/ do |item_number|
 end
 
 Then /^[Ss]et Customs Associated Item (\d+) Description to (.*)$/ do |item_number, value|
-  TestData.store[:customs_associated_items][item_number] = {} unless TestData.store[:customs_associated_items].has_key?(item_number)
-  TestData.store[:customs_associated_items][item_number][:description] = (value.downcase.include?('random') ? TestHelper.rand_alpha_numeric : value)
-  stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).item_description.set(TestData.store[:customs_associated_items][item_number][:description]) if SdcEnv.sdc_app == :orders
-  stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).item_description.set(TestData.store[:customs_associated_items][item_number][:description]) if SdcEnv.sdc_app == :mail
+  TestData.hash[:customs_associated_items][item_number] = {} unless TestData.hash[:customs_associated_items].has_key?(item_number)
+  TestData.hash[:customs_associated_items][item_number][:description] = (value.downcase.include?('random') ? TestHelper.rand_alpha_numeric : value)
+  stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).item_description.set(TestData.hash[:customs_associated_items][item_number][:description]) if SdcEnv.sdc_app == :orders
+  stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).item_description.set(TestData.hash[:customs_associated_items][item_number][:description]) if SdcEnv.sdc_app == :mail
   step "Save Customs Information form Total amount"
 end
 
 Then /^[Ss]et Customs Associated Item (\d+) Qty to (\d+)$/ do |item_number, value|
-  TestData.store[:customs_associated_items][item_number] = {} unless TestData.store[:customs_associated_items].has_key?(item_number)
-  TestData.store[:customs_associated_items][item_number][:quantity] = value
-  stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).item_qty.set(TestData.store[:customs_associated_items][item_number][:quantity]) if SdcEnv.sdc_app == :orders
-  stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).item_qty.set(TestData.store[:customs_associated_items][item_number][:quantity]) if SdcEnv.sdc_app == :mail
+  TestData.hash[:customs_associated_items][item_number] = {} unless TestData.hash[:customs_associated_items].has_key?(item_number)
+  TestData.hash[:customs_associated_items][item_number][:quantity] = value
+  stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).item_qty.set(TestData.hash[:customs_associated_items][item_number][:quantity]) if SdcEnv.sdc_app == :orders
+  stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).item_qty.set(TestData.hash[:customs_associated_items][item_number][:quantity]) if SdcEnv.sdc_app == :mail
   step "Save Customs Information form Total amount"
 end
 
 Then /^[Ss]et Customs Associated Item (\d+) Unit Price to (.*)$/ do |item_number, value|
-  TestData.store[:customs_associated_items][item_number] = {} unless TestData.store[:customs_associated_items].has_key?(item_number)
-  TestData.store[:customs_associated_items][item_number][:price] = value
-  stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).unit_price.set(TestData.store[:customs_associated_items][item_number][:price]) if SdcEnv.sdc_app == :orders
-  stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).unit_price.set(TestData.store[:customs_associated_items][item_number][:price]) if SdcEnv.sdc_app == :mail
+  TestData.hash[:customs_associated_items][item_number] = {} unless TestData.hash[:customs_associated_items].has_key?(item_number)
+  TestData.hash[:customs_associated_items][item_number][:price] = value
+  stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).unit_price.set(TestData.hash[:customs_associated_items][item_number][:price]) if SdcEnv.sdc_app == :orders
+  stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).unit_price.set(TestData.hash[:customs_associated_items][item_number][:price]) if SdcEnv.sdc_app == :mail
   step "Save Customs Information form Total amount"
 end
 
 Then /^[Ss]et Customs Associated Item (\d+) Made In is Country to (.*)$/ do |item_number, value|
-  TestData.store[:customs_associated_items][item_number] = {} unless TestData.store[:customs_associated_items].has_key?(item_number)
-  TestData.store[:customs_associated_items][item_number][:made_in] = value
+  TestData.hash[:customs_associated_items][item_number] = {} unless TestData.hash[:customs_associated_items].has_key?(item_number)
+  TestData.hash[:customs_associated_items][item_number][:made_in] = value
   if SdcEnv.sdc_app == :orders
     expect(stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).made_in.select(
-        TestData.store[:customs_associated_items][item_number][:made_in])).to eql(TestData.store[:customs_associated_items][item_number][:made_in])
+        TestData.hash[:customs_associated_items][item_number][:made_in])).to eql(TestData.hash[:customs_associated_items][item_number][:made_in])
   end
   if SdcEnv.sdc_app == :mail
     expect(stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).made_in.select(
-        TestData.store[:customs_associated_items][item_number][:made_in])).to eql(TestData.store[:customs_associated_items][item_number][:made_in])
+        TestData.hash[:customs_associated_items][item_number][:made_in])).to eql(TestData.hash[:customs_associated_items][item_number][:made_in])
   end
 end
 
 Then /^[Ss]et Customs Associated Item (\d+) Tarriff to (.*)$/ do |item_number, value|
-  TestData.store[:customs_associated_items][item_number] = {} unless TestData.store[:customs_associated_items].has_key?(item_number)
-  TestData.store[:customs_associated_items][item_number][:tarriff] = value
-  stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).hs_tariff.set(TestData.store[:customs_associated_items][item_number][:tarriff]) if SdcEnv.sdc_app == :orders
-  stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).hs_tariff.set(TestData.store[:customs_associated_items][item_number][:tarriff]) if SdcEnv.sdc_app == :mail
+  TestData.hash[:customs_associated_items][item_number] = {} unless TestData.hash[:customs_associated_items].has_key?(item_number)
+  TestData.hash[:customs_associated_items][item_number][:tarriff] = value
+  stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).hs_tariff.set(TestData.hash[:customs_associated_items][item_number][:tarriff]) if SdcEnv.sdc_app == :orders
+  stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).hs_tariff.set(TestData.hash[:customs_associated_items][item_number][:tarriff]) if SdcEnv.sdc_app == :mail
   step "Save Customs Information form Total amount"
 end
 
 Then /^[Ee]xpect Customs Associated Item (\d+) Description is (?:correct|(.*))$/ do |item_number, expectation|
-  expectation = expectation.nil? ? TestData.store[:customs_associated_items][item_number][:description] : expectation
+  expectation = expectation.nil? ? TestData.hash[:customs_associated_items][item_number][:description] : expectation
   sleep(0.5)
   expect(stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).item_description.text).to eql(expectation) if SdcEnv.sdc_app == :orders
   expect(stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).item_description.text).to eql(expectation) if SdcEnv.sdc_app == :mail
 end
 
 Then /^[Ee]xpect Customs Associated Item (\d+) Quantity is (?:correct|(\d+))$/ do |item_number, expectation|
-  expectation = expectation.nil? ? TestData.store[:customs_associated_items][item_number][:quantity] : expectation
+  expectation = expectation.nil? ? TestData.hash[:customs_associated_items][item_number][:quantity] : expectation
   sleep(0.5)
   expect(stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).item_qty.textbox.text.to_i).to eql(expectation.to_i) if SdcEnv.sdc_app == :orders
   expect(expectation.to_i).to eql(stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).item_qty.textbox.text.to_i) if SdcEnv.sdc_app == :mail
 end
 
 Then /^[Ee]xpect Customs Associated Item (\d+) Unit Price is (?:correct|(.*))$/ do |item_number, expectation|
-  expectation = expectation.nil? ? TestData.store[:customs_associated_items][item_number][:price] : expectation
+  expectation = expectation.nil? ? TestData.hash[:customs_associated_items][item_number][:price] : expectation
   sleep(0.5)
   expect(stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).unit_price.textbox.text.to_f).to eql(expectation.to_f) if SdcEnv.sdc_app == :orders
   expect(stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).unit_price.textbox.text.to_f).to eql(expectation.to_f) if SdcEnv.sdc_app == :mail
 end
 
 Then /^[Ee]xpect Customs Associated Item (\d+) Made In is (?:correct|(.*))$/ do |item_number, expectation|
-  expectation = expectation.nil? ? TestData.store[:customs_associated_items][item_number][:made_in] : expectation
+  expectation = expectation.nil? ? TestData.hash[:customs_associated_items][item_number][:made_in] : expectation
   sleep(0.5)
   expect(stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).made_in.textbox.text).to eql(expectation) if SdcEnv.sdc_app == :orders
   expect(stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).made_in.textbox.text).to eql(expectation) if SdcEnv.sdc_app == :mail
 end
 
 Then /^[Ee]xpect Customs Associated Item (\d+) Tariff is (?:correct|(.*))$/ do |item_number, expectation|
-  expectation = (expectation.nil? ? TestData.store[:customs_associated_items][item_number][:tarriff] : expectation).to_f
+  expectation = (expectation.nil? ? TestData.hash[:customs_associated_items][item_number][:tarriff] : expectation).to_f
   sleep(0.5)
   expect(stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).hs_tariff.text.to_f).to eql(expectation.to_f) if SdcEnv.sdc_app == :orders
   expect(stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).hs_tariff.text.to_f).to eql(expectation.to_f) if SdcEnv.sdc_app == :mail

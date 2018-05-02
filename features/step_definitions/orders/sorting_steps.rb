@@ -15,11 +15,11 @@ Then /^[Ii]n Orders Grid, Sort Order ID in Descending Order$/ do
 end
 
 Then /^[Ii]n Orders Grid, Store: Sort in Ascending Order$/ do
-  expect(stamps.orders.orders_grid.grid_column(:store).sort_ascending).to eql "ASC"
+  expect(stamps.orders.orders_grid.grid_column(:hash).sort_ascending).to eql "ASC"
 end
 
 Then /^[Ii]n Orders Grid, Store: Sort in Descending Order$/ do
-  expect(stamps.orders.orders_grid.grid_column(:store).sort_descending).to eql "DESC"
+  expect(stamps.orders.orders_grid.grid_column(:hash).sort_descending).to eql "DESC"
 end
 
 Then /^[Ii]n Orders Grid, Sort Age in Ascending Order$/ do

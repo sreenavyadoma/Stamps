@@ -21,11 +21,11 @@ When /^[Cc]lick [Mm]ail [Pp]rint modal Print [Bb]utton$/ do
 end
 
 Then /^[Ss]et [Mm]ail [Pp]rint modal Printer ?(?:|(.*))$/ do |printer|
-  TestData.store[:printer] = printer.nil? ? SdcEnv.printer : printer
-  expect(TestData.store[:printer]).to match(/\\.+\.*/) if TestData.store[:printer].include?('\\')
+  TestData.hash[:printer] = printer.nil? ? SdcEnv.printer : printer
+  expect(TestData.hash[:printer]).to match(/\\.+\.*/) if TestData.hash[:printer].include?('\\')
   step "expect mail print modal is present"
-  expect(stamps.mail.mail_toolbar.print_postage.mail_printer).to be_present, "Unable to print on printer #{TestData.store[:printer]}. Check that StampsConnect is pointing to #{SdcEnv.env} on this PC."
-  expect(stamps.mail.mail_toolbar.print_postage.mail_printer.select_printer(TestData.store[:printer])).to_not be(false), "Unable to select printer #{printer}. The printer does not exist in Printer drop-down list of values."
+  expect(stamps.mail.mail_toolbar.print_postage.mail_printer).to be_present, "Unable to print on printer #{TestData.hash[:printer]}. Check that StampsConnect is pointing to #{SdcEnv.env} on this PC."
+  expect(stamps.mail.mail_toolbar.print_postage.mail_printer.select_printer(TestData.hash[:printer])).to_not be(false), "Unable to select printer #{printer}. The printer does not exist in Printer drop-down list of values."
 end
 
 Then /^[Cc]lose [Mm]ail [Pp]rint [Mm]odal$/ do

@@ -1,7 +1,7 @@
 
 
 Then /^sign-in to Mail as (.+), (.+)$/ do |usr, pw|
-  stamps.mail.sign_in_modal.mail_sign_in(TestData.store[:username] = usr, TestData.store[:password] = pw)
+  stamps.mail.sign_in_modal.mail_sign_in(TestData.hash[:username] = usr, TestData.hash[:password] = pw)
 end
 
 Given /^(?:|(?:|[Aa] )(?:[Vv]alid |))[Uu]ser is signed in to Web Apps$/ do
@@ -11,7 +11,7 @@ Given /^(?:|(?:|[Aa] )(?:[Vv]alid |))[Uu]ser is signed in to Web Apps$/ do
     step "Verify Health Check for Address Book"
   end
   step "load Web Apps Sign-in page"
-  step "sign-in to Web Apps as #{TestData.store[:username]}, #{TestData.store[:password]}"
+  step "sign-in to Web Apps as #{TestData.hash[:username]}, #{TestData.hash[:password]}"
   step "Navigation Bar: Customer Balance"
 end
 
@@ -21,57 +21,57 @@ end
 
 Then /^[Ll]oad [Ww]eb [Aa]pps [Oo]rders (?:and|then) sign-in$/ do
   step "load Web Apps Sign-in page"
-  step "sign-in to Web Apps as #{TestData.store[:username]}, #{TestData.store[:password]}"
+  step "sign-in to Web Apps as #{TestData.hash[:username]}, #{TestData.hash[:password]}"
 end
 
 Then /^[Ll]oad [Ww]eb [Aa]pps [Oo]rders (?:and|then) sign-in expecting Security Questions$/ do
   step "pause for 40 seconds"
   step "load Web Apps Sign-in page"
-  TestData.store[:security_questions] = stamps.orders.landing_page.orders_sign_in(TestData.store[:username], TestData.store[:password])
+  TestData.hash[:security_questions] = stamps.orders.landing_page.orders_sign_in(TestData.hash[:username], TestData.hash[:password])
 end
 
 Then /^[Ss]elect [Ss]ecurity [Qa]uestions 1st [Ss]ecurity [Qq]uestion (.*)$/ do |str|
-  TestData.store[:security_questions].first_security_question.select(TestData.store[:first_security_question] = str)
+  TestData.hash[:security_questions].first_security_question.select(TestData.hash[:first_security_question] = str)
 end
 
 Then /^[Ee]xpect [Ss]ecurity [Qa]uestions 1st [Ss]ecurity [Qq]uetion is (?:correct|(.*))$/ do |str|
-  expect(TestData.store[:security_questions].first_security_question.text_box.text).to eql((str.nil?) ? TestData.store[:first_security_question] : str)
+  expect(TestData.hash[:security_questions].first_security_question.text_box.text).to eql((str.nil?) ? TestData.hash[:first_security_question] : str)
 end
 
 Then /^[Ss]et [Ss]ecurity [Qa]uestions 1st [Ss]ecurity [Aa]nswer to (?:random value|(.*))$/ do |str|
-  TestData.store[:security_questions].first_security_question.first_security_answer.set(TestData.store[:first_security_answer] = (str.nil?) ? 'automation' : str)
+  TestData.hash[:security_questions].first_security_question.first_security_answer.set(TestData.hash[:first_security_answer] = (str.nil?) ? 'automation' : str)
 end
 
 Then /^[Ee]xpect [Ss]ecurity [Qa]uestions 1st [Ss]ecurity [Aa]nswer is (?:correct|(.*))$/ do |str|
-  expect(TestData.store[:security_questions].first_security_question.first_security_answer.text).to eql((str.nil?) ? TestData.store[:first_security_answer] : str)
+  expect(TestData.hash[:security_questions].first_security_question.first_security_answer.text).to eql((str.nil?) ? TestData.hash[:first_security_answer] : str)
 end
 
 Then /^[Ss]elect [Ss]ecurity [Qa]uestions 2nd [Ss]ecurity [Qq]uestion (.*)$/ do |str|
-  TestData.store[:security_questions].second_security_question.select(TestData.store[:second_security_question] = str)
+  TestData.hash[:security_questions].second_security_question.select(TestData.hash[:second_security_question] = str)
 end
 
 Then /^[Ee]xpect [Ss]ecurity [Qa]uestions 2nd [Ss]ecurity [Qq]uetion is (?:correct|(.*))$/ do |str|
-  expect(TestData.store[:security_questions].second_security_question.text_box.text).to eql((str.nil?) ? TestData.store[:second_security_question] : str)
+  expect(TestData.hash[:security_questions].second_security_question.text_box.text).to eql((str.nil?) ? TestData.hash[:second_security_question] : str)
 end
 
 Then /^[Ss]et [Ss]ecurity [Qa]uestions 2nd [Ss]ecurity [Aa]nswer to (?:random value|(.*))$/ do |str|
-  TestData.store[:security_questions].second_security_question.second_security_answer.set(TestData.store[:second_security_answer] = (str.nil?) ? 'automation' : str)
+  TestData.hash[:security_questions].second_security_question.second_security_answer.set(TestData.hash[:second_security_answer] = (str.nil?) ? 'automation' : str)
 end
 
 Then /^[Ee]xpect [Ss]ecurity [Qa]uestions 2nd [Ss]ecurity [Aa]nswer is (?:correct|(.*))$/ do |str|
-  expect(TestData.store[:security_questions].second_security_question.second_security_question.text).to eql((str.nil?) ? TestData.store[:first_security_answer] : str)
+  expect(TestData.hash[:security_questions].second_security_question.second_security_question.text).to eql((str.nil?) ? TestData.hash[:first_security_answer] : str)
 end
 
 Then /^[Cc]lick [Ss]ecurity [Qq]uestions [Pp]age [Cc]ontinue [Bb]utton$/ do
-  TestData.store[:security_questions].cont_btn.click
+  TestData.hash[:security_questions].cont_btn.click
 end
 
 Then /^[Ee]xpect Security Questions successfully set dialog exists/ do
-  expect(TestData.store[:security_questions].window_title).to be_present, "Security Questions doesn't set up successfully"
+  expect(TestData.hash[:security_questions].window_title).to be_present, "Security Questions doesn't set up successfully"
 end
 
 Then /^[Ee]xpect Security Questions successfully set dialog contain (.*)/ do |str|
-  expect(TestData.store[:security_questions].security_que_successfully_msg.text).to eql(str)
+  expect(TestData.hash[:security_questions].security_que_successfully_msg.text).to eql(str)
 end
 
 Then /^[Ll]oad [Ww]eb [Aa]pps [Mm]ail (?:and|then) sign-in$/ do
@@ -82,11 +82,11 @@ end
 Then /^[Ss]ign-in to [Ww]eb [Aa]pps as (.*), (.*)$/ do |username, password|
   if username.nil? || username.downcase == 'default' || username.downcase == 'mysql'
     credentials = SdcUserCredentials.fetch(SdcEnv.scenario.tags[0].name)
-    TestData.store[:username] = username = credentials[:username]
-    TestData.store[:password] = password = credentials[:password]
+    TestData.hash[:username] = username = credentials[:username]
+    TestData.hash[:password] = password = credentials[:password]
   end
-  expect(TestData.store[:username] = username).to be_truthy
-  expect(TestData.store[:password] = password).to be_truthy
+  expect(TestData.hash[:username] = username).to be_truthy
+  expect(TestData.hash[:password] = password).to be_truthy
   expect(stamps.orders.landing_page.orders_sign_in(username, password)).to eql(username) if SdcEnv.sdc_app == :orders
   expect(stamps.mail.sign_in_modal.mail_sign_in(username, password)).to eql(username) if SdcEnv.sdc_app == :mail
 end
