@@ -4,9 +4,9 @@ Then /^(?:|[Ii] )[Ll]oad(?:|ed) (?:|the default |default )[Rr]egistration(?: [Pp
     step "load SDC Website"
     step "click on Get Started"
   else
-    TestData.store[:registration_theme]=str
+    TestData.hash[:registration_theme]=str
     step "I launched the browser"
-    registration.load_theme(TestData.store[:registration_theme])
+    registration.load_theme(TestData.hash[:registration_theme])
   end
 end
 

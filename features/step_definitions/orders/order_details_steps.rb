@@ -28,25 +28,25 @@ end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) Qty to (.*)$/ do |item_number, qty|
   step 'expect Order Details is present'
-  TestData.store[:details_associated_items][item_number] = {} unless TestData.store[:details_associated_items].has_key?(item_number)
-  TestData.store[:details_associated_items][item_number][:item_qty] = qty
-  stamps.orders.order_details.items_ordered.item(item_number.to_i).item_qty.set(TestData.store[:details_associated_items][item_number][:item_qty] )
+  TestData.hash[:details_associated_items][item_number] = {} unless TestData.hash[:details_associated_items].has_key?(item_number)
+  TestData.hash[:details_associated_items][item_number][:item_qty] = qty
+  stamps.orders.order_details.items_ordered.item(item_number.to_i).item_qty.set(TestData.hash[:details_associated_items][item_number][:item_qty] )
   step 'Save Order Details data'
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) ID to (.*)$/ do |item_number, str|
   step 'expect Order Details is present'
-  TestData.store[:details_associated_items][item_number] = {} unless TestData.store[:details_associated_items].has_key?(item_number)
-  TestData.store[:details_associated_items][item_number][:item_id] = (str.downcase.include?('random') ? TestHelper.rand_alpha_numeric : str)
-  stamps.orders.order_details.items_ordered.item(item_number.to_i).item_id.set(TestData.store[:details_associated_items][item_number][:item_id])
+  TestData.hash[:details_associated_items][item_number] = {} unless TestData.hash[:details_associated_items].has_key?(item_number)
+  TestData.hash[:details_associated_items][item_number][:item_id] = (str.downcase.include?('random') ? TestHelper.rand_alpha_numeric : str)
+  stamps.orders.order_details.items_ordered.item(item_number.to_i).item_id.set(TestData.hash[:details_associated_items][item_number][:item_id])
   step 'Save Order Details data'
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) Description to (.*)$/ do |item_number, str|
   step 'expect Order Details is present'
-  TestData.store[:details_associated_items][item_number] = {} unless TestData.store[:details_associated_items].has_key?(item_number)
-  TestData.store[:details_associated_items][item_number][:item_description] = (str.downcase.include?('random') ? TestHelper.rand_alpha_numeric : str)
-  stamps.orders.order_details.items_ordered.item(item_number.to_i).item_description.set(TestData.store[:details_associated_items][item_number][:item_description])
+  TestData.hash[:details_associated_items][item_number] = {} unless TestData.hash[:details_associated_items].has_key?(item_number)
+  TestData.hash[:details_associated_items][item_number][:item_description] = (str.downcase.include?('random') ? TestHelper.rand_alpha_numeric : str)
+  stamps.orders.order_details.items_ordered.item(item_number.to_i).item_description.set(TestData.hash[:details_associated_items][item_number][:item_description])
   step 'Save Order Details data'
 end
 
@@ -72,9 +72,9 @@ end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o Country to a random country in PMEI Flat Rate price group (.*)$/ do |group|
   country_list = data_for(:country_groups_PMEI_flat_rate, {})['group' + group].values
-  TestData.store[:country] = country_list[rand(country_list.size)]
-  SdcLogger.debug "#{"#" * 10} Desired Country: #{TestData.store[:country]}"
-  step "set Order Details Domestic Ship-To Country to #{TestData.store[:country]}"
+  TestData.hash[:country] = country_list[rand(country_list.size)]
+  SdcLogger.debug "#{"#" * 10} Desired Country: #{TestData.hash[:country]}"
+  step "set Order Details Domestic Ship-To Country to #{TestData.hash[:country]}"
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to a random country in PMEI price group (.*)$/ do |group|
@@ -83,8 +83,8 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to a random country i
   country_name = country_array[0]
   country_pounds = country_array[1].to_i
   200.times do
-    if !TestData.store[:pounds].nil?
-      if TestData.store[:pounds] > country_pounds
+    if !TestData.hash[:pounds].nil?
+      if TestData.hash[:pounds] > country_pounds
         country_array = country_list[rand(country_list.size)].split('|')
         country_name = country_array[0]
         country_pounds = country_array[1].to_i
@@ -93,16 +93,16 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to a random country i
       end
     end
   end
-  TestData.store[:country] = country_name
-  SdcLogger.debug "#{"#" * 10} Desired Country: #{TestData.store[:country]}"
-  step "set Order Details Domestic Ship-To Country to #{TestData.store[:country]}"
+  TestData.hash[:country] = country_name
+  SdcLogger.debug "#{"#" * 10} Desired Country: #{TestData.hash[:country]}"
+  step "set Order Details Domestic Ship-To Country to #{TestData.hash[:country]}"
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to a random country in PMI Flat Rate price group (.*)$/ do |group|
   country_list = data_for(:country_groups_PMI_flat_rate, {})['group' + group].values
-  TestData.store[:country] = country_list[rand(country_list.size)]
-  SdcLogger.debug "#{"#" * 10} Desired Country: #{TestData.store[:country]}"
-  step "set Order Details Domestic Ship-To Country to #{TestData.store[:country]}"
+  TestData.hash[:country] = country_list[rand(country_list.size)]
+  SdcLogger.debug "#{"#" * 10} Desired Country: #{TestData.hash[:country]}"
+  step "set Order Details Domestic Ship-To Country to #{TestData.hash[:country]}"
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to a random country in PMI price group (.*)$/ do |group|
@@ -111,8 +111,8 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to a random country i
   country_name = country_array[0]
   country_pounds = country_array[1].to_i
   200.times do
-    if !TestData.store[:pounds].nil?
-      if TestData.store[:pounds] > country_pounds
+    if !TestData.hash[:pounds].nil?
+      if TestData.hash[:pounds] > country_pounds
         country_array = country_list[rand(country_list.size)].split('|')
         country_name = country_array[0]
         country_pounds = country_array[1].to_i
@@ -121,52 +121,52 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to a random country i
       end
     end
   end
-  TestData.store[:country] = country_name
-  SdcLogger.debug "#{"#" * 10} Desired Country: #{TestData.store[:country]}"
-  step "set Order Details Domestic Ship-To Country to #{TestData.store[:country]}"
+  TestData.hash[:country] = country_name
+  SdcLogger.debug "#{"#" * 10} Desired Country: #{TestData.hash[:country]}"
+  step "set Order Details Domestic Ship-To Country to #{TestData.hash[:country]}"
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Ii]nternational address to$/ do |table|
-  TestData.store[:country] = table.hashes.first['country']
-  TestData.store[:full_name] = table.hashes.first[:full_name].downcase.include?('random') ? TestHelper.rand_full_name : table.hashes.first['full_name']
-  TestData.store[:company] = table.hashes.first['company'].downcase.include?('random') ? TestHelper.rand_comp_name : table.hashes.first['company']
-  TestData.store[:street_address_1] = table.hashes.first['street_address_1'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['street_address_1']
-  TestData.store[:street_address_2] = table.hashes.first['street_address_2'].downcase.include?('random') ? TestHelper.rand_suite : table.hashes.first['street_address_2']
-  TestData.store[:city] = table.hashes.first['city'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['city']
-  TestData.store[:state] = table.hashes.first['province'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['province']
-  TestData.store[:zip] = table.hashes.first['postal_code'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['postal_code']
-  TestData.store[:phone] = table.hashes.first[:phone].downcase.include?('random') ? TestHelper.rand_phone : table.hashes.first['phone']
-  TestData.store[:email] = table.hashes.first['email'].downcase.include?('random') ? TestHelper.rand_email(SdcEnv.env) : table.hashes.first['email']
+  TestData.hash[:country] = table.hashes.first['country']
+  TestData.hash[:full_name] = table.hashes.first[:full_name].downcase.include?('random') ? TestHelper.rand_full_name : table.hashes.first['full_name']
+  TestData.hash[:company] = table.hashes.first['company'].downcase.include?('random') ? TestHelper.rand_comp_name : table.hashes.first['company']
+  TestData.hash[:street_address_1] = table.hashes.first['street_address_1'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['street_address_1']
+  TestData.hash[:street_address_2] = table.hashes.first['street_address_2'].downcase.include?('random') ? TestHelper.rand_suite : table.hashes.first['street_address_2']
+  TestData.hash[:city] = table.hashes.first['city'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['city']
+  TestData.hash[:state] = table.hashes.first['province'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['province']
+  TestData.hash[:zip] = table.hashes.first['postal_code'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['postal_code']
+  TestData.hash[:phone] = table.hashes.first[:phone].downcase.include?('random') ? TestHelper.rand_phone : table.hashes.first['phone']
+  TestData.hash[:email] = table.hashes.first['email'].downcase.include?('random') ? TestHelper.rand_email(SdcEnv.env) : table.hashes.first['email']
 
-  step "set Order Details Domestic Ship-To Country to #{TestData.store[:country]}"
-  step "set Order Details International Ship-To Name to \"#{TestData.store[:full_name]}\""
-  step "set Order Details International Ship-To Company to \"#{TestData.store[:company]}\""
-  step "set Order Details International Ship-To Address 1 to \"#{TestData.store[:street_address_1]}\""
-  step "set Order Details International Ship-To Address 2 to \"#{TestData.store[:street_address_2]}\""
-  step "set Order Details International Ship-To City to \"#{TestData.store[:city]}\""
-  step "set Order Details International Ship-To Province to \"#{TestData.store[:state]}\""
-  step "set Order Details International Ship-To Postal Code to \"#{TestData.store[:zip]}\""
-  step "set Order Details International Ship-To Phone to \"#{TestData.store[:phone]}\""
-  step "set Order Details International Ship-To Email to \"#{TestData.store[:email]}\""
+  step "set Order Details Domestic Ship-To Country to #{TestData.hash[:country]}"
+  step "set Order Details International Ship-To Name to \"#{TestData.hash[:full_name]}\""
+  step "set Order Details International Ship-To Company to \"#{TestData.hash[:company]}\""
+  step "set Order Details International Ship-To Address 1 to \"#{TestData.hash[:street_address_1]}\""
+  step "set Order Details International Ship-To Address 2 to \"#{TestData.hash[:street_address_2]}\""
+  step "set Order Details International Ship-To City to \"#{TestData.hash[:city]}\""
+  step "set Order Details International Ship-To Province to \"#{TestData.hash[:state]}\""
+  step "set Order Details International Ship-To Postal Code to \"#{TestData.hash[:zip]}\""
+  step "set Order Details International Ship-To Phone to \"#{TestData.hash[:phone]}\""
+  step "set Order Details International Ship-To Email to \"#{TestData.hash[:email]}\""
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Dd]omestic address to$/ do |table|
-  TestData.store[:full_name] = table.hashes.first[:full_name].downcase.include?('random') ? TestHelper.rand_full_name : table.hashes.first['full_name']
-  TestData.store[:company] = table.hashes.first['company'].downcase.include?('random') ? TestHelper.rand_comp_name : table.hashes.first['company']
-  TestData.store[:street_address] = table.hashes.first['street_address']
+  TestData.hash[:full_name] = table.hashes.first[:full_name].downcase.include?('random') ? TestHelper.rand_full_name : table.hashes.first['full_name']
+  TestData.hash[:company] = table.hashes.first['company'].downcase.include?('random') ? TestHelper.rand_comp_name : table.hashes.first['company']
+  TestData.hash[:street_address] = table.hashes.first['street_address']
   if table.hashes.first['street_address_2'].nil?
-    TestData.store[:street_address_2] = ''
+    TestData.hash[:street_address_2] = ''
   else
-    TestData.store[:street_address_2] = table.hashes.first['street_address_2'].downcase.include?('random') ? TestHelper.rand_alpha_numeric(2, 7) : table.hashes.first['street_address_2']
+    TestData.hash[:street_address_2] = table.hashes.first['street_address_2'].downcase.include?('random') ? TestHelper.rand_alpha_numeric(2, 7) : table.hashes.first['street_address_2']
   end
-  TestData.store[:city] = table.hashes.first['city'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['city']
-  TestData.store[:state] = table.hashes.first['state'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['state']
-  TestData.store[:zip] = table.hashes.first['zip'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['zip']
-  TestData.store[:country] = table.hashes.first['country'].size==0 ? 'United States' : table.hashes.first['country']
-  TestData.store[:ship_to] = "#{TestData.store[:full_name]},#{TestData.store[:company]},#{TestData.store[:street_address]},#{TestData.store[:street_address_2]} ,#{TestData.store[:city]} #{TestData.store[:state]} #{TestData.store[:zip]}"
+  TestData.hash[:city] = table.hashes.first['city'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['city']
+  TestData.hash[:state] = table.hashes.first['state'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['state']
+  TestData.hash[:zip] = table.hashes.first['zip'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['zip']
+  TestData.hash[:country] = table.hashes.first['country'].size==0 ? 'United States' : table.hashes.first['country']
+  TestData.hash[:ship_to] = "#{TestData.hash[:full_name]},#{TestData.hash[:company]},#{TestData.hash[:street_address]},#{TestData.hash[:street_address_2]} ,#{TestData.hash[:city]} #{TestData.hash[:state]} #{TestData.hash[:zip]}"
 
-  step "set Order Details Domestic Ship-To Country to #{TestData.store[:country]}"
-  step "set Order Details Ship-To text area to #{TestData.store[:ship_to]}"
+  step "set Order Details Domestic Ship-To Country to #{TestData.hash[:country]}"
+  step "set Order Details Ship-To text area to #{TestData.hash[:ship_to]}"
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Aa]mbiguous [Aa]ddress to$/ do |table|
@@ -175,9 +175,9 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Aa]mbiguous [Aa]ddress to$/ do 
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o text area to (.*)$/ do |address|
-  TestData.store[:ship_to_domestic] = TestHelper.format_address(address)
+  TestData.hash[:ship_to_domestic] = TestHelper.format_address(address)
   step 'show order details form ship-to fields'
-  stamps.orders.order_details.ship_to.domestic.set(TestData.store[:ship_to_domestic])
+  stamps.orders.order_details.ship_to.domestic.set(TestData.hash[:ship_to_domestic])
   step 'Save Order Details data'
 end
 
@@ -186,7 +186,7 @@ Then /^[Oo]n [Oo]rder [Dd]etails form, [Hh]ide [Ii]nternational [Ss]hip-[Tt]o fi
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails Order ID is truthy$/ do
-  expect(TestData.store[:order_id].values.last.to_i).to be > 0
+  expect(TestData.hash[:order_id].values.last.to_i).to be > 0
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails Order ID equals Grid Order ID in row (\d+)$/ do |row|
@@ -194,7 +194,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails Order ID equals Grid Order ID in row (\d+)$
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails Order ID is the same as saved Order ID$/ do
-  expect(stamps.orders.order_details.toolbar.order_id.text.parse_digits).to eql TestData.store[:order_id].values.last
+  expect(stamps.orders.order_details.toolbar.order_id.text.parse_digits).to eql TestData.hash[:order_id].values.last
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ss]hip-[Tt]o Name is (.*)$/ do |expectation|
@@ -256,16 +256,16 @@ Then /^[Ii]n Exact Address Not Found module, select row (\d+)$/ do |row|
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Phone to (.*)$/ do |phone|
-  TestData.store[:phone] = phone.to_s.strip.downcase.include?('random') ? TestHelper.rand_phone : phone
+  TestData.hash[:phone] = phone.to_s.strip.downcase.include?('random') ? TestHelper.rand_phone : phone
   step 'show order details form ship-to fields'
-  stamps.orders.order_details.ship_to.domestic.phone.set(TestData.store[:phone]) unless TestData.store[:phone].length.zero?
+  stamps.orders.order_details.ship_to.domestic.phone.set(TestData.hash[:phone]) unless TestData.hash[:phone].length.zero?
   step 'Save Order Details data'
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Email to (.*)$/ do |email|
-  TestData.store[:email] = email.to_s.strip.downcase.include?('random') ? TestHelper.rand_email(SdcEnv.env) : email
+  TestData.hash[:email] = email.to_s.strip.downcase.include?('random') ? TestHelper.rand_email(SdcEnv.env) : email
   step 'show order details form ship-to fields'
-  stamps.orders.order_details.ship_to.domestic.email.set(TestData.store[:email]) unless TestData.store[:email].length.zero?
+  stamps.orders.order_details.ship_to.domestic.email.set(TestData.hash[:email]) unless TestData.hash[:email].length.zero?
   step 'Save Order Details data'
 end
 
@@ -330,7 +330,7 @@ Then /^[Dd]ecrement [Oo]rder [Dd]etails [Ii]nsure-[Ff]or by (\d*)$/ do |str|
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Reference Number to (.*)$/ do |str|
-  stamps.orders.order_details.reference_no.set(TestData.store[:reference_no] = str.downcase.include?('random') ? TestHelper.rand_alpha_numeric : str)
+  stamps.orders.order_details.reference_no.set(TestData.hash[:reference_no] = str.downcase.include?('random') ? TestHelper.rand_alpha_numeric : str)
   step 'Save Order Details data'
 end
 
@@ -346,5 +346,5 @@ end
 
 #validating
 Then /^[Ee]xpect [Oo]rder [Dd]etails Ship From is (?:correct|(.*))$/ do |expectation|
-  expect(stamps.orders.order_details.single_ship_from.textbox.text).to include(expectation.nil? ? TestData.store[:ship_from] : expectation)
+  expect(stamps.orders.order_details.single_ship_from.textbox.text).to include(expectation.nil? ? TestData.hash[:ship_from] : expectation)
 end

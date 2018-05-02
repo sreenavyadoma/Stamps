@@ -9,7 +9,7 @@ Then /^[Ee]xpect [Pp]ay[Pp]al logo present$/ do
 end
 
 Then /^[Ss]et [Pp]ay[Pp]al Email Address to (.*)$/ do |email|
-  stamps.orders.marketplace.paypal.paypal_email_address.set(TestData.store[:paypal_email] = email)
+  stamps.orders.marketplace.paypal.paypal_email_address.set(TestData.hash[:paypal_email] = email)
 end
 
 Then /^[Cc]lick [Pp]ay[Pp]al [Vv]erify [Ee]mail [Bb]utton$/ do
@@ -64,7 +64,7 @@ end
 
 Then /^[Ss]et [Pp]ay[Pp]al Email Address restriction to (.*)$/ do |email|
   stamps.orders.marketplace.paypal.verify_email.restrict_to_email_address.set email
-  TestData.store[:paypal_email_restriction] = email
+  TestData.hash[:paypal_email_restriction] = email
 end
 
 Then /^[Ss]et [Pp]ay[Pp]al import option to import all transactions$/ do

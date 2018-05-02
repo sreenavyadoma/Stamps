@@ -23,7 +23,7 @@ end
 Then /^[Ss]earch PAM [Cc]ustomer [Ss]earch page for username (.*)$/ do |str|
   iteration = 10
   iteration.times do |index|
-    pam.customer_search_page.username.set(TestData.store[:username] = str)
+    pam.customer_search_page.username.set(TestData.hash[:username] = str)
     pam.customer_search_page.search_btn.click
     pam.customer_profile_page.wait_until_present(2)
     if pam.customer_profile_page.present?
@@ -40,16 +40,16 @@ Then /^[Ss]earch PAM [Cc]ustomer [Ss]earch page for username (.*)$/ do |str|
   end
   expect(pam.customer_not_found_page.status_reason.text).to eql("OK") if pam.customer_not_found_page.present?
   expect(pam.meter_info_not_available.error_message.text).to eql("OK") if pam.meter_info_not_available.present?
-  expect(pam.customer_profile_page.username.text).to eql(TestData.store[:username])
+  expect(pam.customer_profile_page.username.text).to eql(TestData.hash[:username])
 end
 
 Then /^[Ss]et PAM [Cc]ustomer [Ss]earch page [Uu]sername to (?:cached value|(.*))$/ do |str|
-  TestData.store[:username] = str unless str.nil?
-  pam.customer_search.search_username(TestData.store[:username])
+  TestData.hash[:username] = str unless str.nil?
+  pam.customer_search.search_username(TestData.hash[:username])
 end
 
 Then /^[Cc]lick PAM [Cc]ustomer [Ss]earch page [Ss]earch [Bb]utton$/ do
-  TestData.store[:pam_search_result] = pam.customer_search.search_username(TestData.store[:username])
+  TestData.hash[:pam_search_result] = pam.customer_search.search_username(TestData.hash[:username])
 end
 
 Then /^[Cc]lick PAM AppCap Overrides link$/ do
@@ -58,7 +58,7 @@ Then /^[Cc]lick PAM AppCap Overrides link$/ do
     break if pam.appcap_overrides_page.present?
   end
   expect(pam.appcap_overrides_page).to be_present, "PAM AppCap Overrides is not present"
-  expect(pam.appcap_overrides_page.username.text.downcase).to eql(TestData.store[:username].downcase)
+  expect(pam.appcap_overrides_page.username.text.downcase).to eql(TestData.hash[:username].downcase)
 end
 
 Then /^[Ss]et PAM AppCap Overrides Allow High Risk Countries to Always On$/ do
@@ -139,5 +139,5 @@ end
 
 Then /^[Oo]n PAM AppCap Overrides page, Submit$/ do
   result = pam.appcap_overrides_page.submit.ok
-  SdcLogger.info " ############## #{TestData.store[:username]}: #{result}"
+  SdcLogger.info " ############## #{TestData.hash[:username]}: #{result}"
 end

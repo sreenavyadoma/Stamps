@@ -24,9 +24,9 @@ end
 Then /^[Ee]xpect cached Order ID exist in the selected filter$/ do
   15.times do
     sleep(0.10)
-    break if stamps.orders.orders_grid.grid_column(:order_id).row_num(TestData.store[:order_id].values.last) > 0
+    break if stamps.orders.orders_grid.grid_column(:order_id).row_num(TestData.hash[:order_id].values.last) > 0
   end
-  expect(stamps.orders.orders_grid.grid_column(:order_id).row_num(TestData.store[:order_id].values.last)).to be > 0
+  expect(stamps.orders.orders_grid.grid_column(:order_id).row_num(TestData.hash[:order_id].values.last)).to be > 0
 end
 
 Then /^Filter Panel: Collapse Panel$/ do
@@ -53,25 +53,25 @@ end
 
 Then /^[Ii]n left Filter Panel, expect order moved to Shipped$/ do
   stamps.orders.filter_panel.shipped.select.order_date.sort_descending
-  expect(stamps.orders.orders_grid.grid_column(:order_id).row_num(TestData.store[:order_id].values.last)).to be > 0
+  expect(stamps.orders.orders_grid.grid_column(:order_id).row_num(TestData.hash[:order_id].values.last)).to be > 0
 end
 
 Then /^[Ii]n left Filter Panel, expect order moved to Canceled$/ do
   stamps.orders.filter_panel.canceled.select.order_date.sort_descending
-  expect(stamps.orders.filter_panel.canceled.select.order_id.row_num(TestData.store[:order_id].values.last)).to be > 0
+  expect(stamps.orders.filter_panel.canceled.select.order_id.row_num(TestData.hash[:order_id].values.last)).to be > 0
 end
 
 Then /^[Ii]n left Filter Panel, expect order moved to Awaiting Shipment$/ do
   stamps.orders.orders_grid.grid_column(:order_date).sort_descending
-  expect(stamps.orders.orders_grid.grid_column(:order_id).row_num(TestData.store[:order_id].values.last)).to be > 0
+  expect(stamps.orders.orders_grid.grid_column(:order_id).row_num(TestData.hash[:order_id].values.last)).to be > 0
 end
 
 Then /^[Ii]n left Filter Panel, expect Awaiting Shipment count increased by (\d+)$/ do |count|
-  expect(stamps.orders.filter_panel.awaiting_shipment.count).to eql TestData.store[:awaiting_shipment_count].to_i + count.to_i
+  expect(stamps.orders.filter_panel.awaiting_shipment.count).to eql TestData.hash[:awaiting_shipment_count].to_i + count.to_i
 end
 
 Then /^[Ii]n left Filter Panel, expect Awaiting Shipment count decreased by (\d+)$/ do |count|
-  expect(stamps.orders.filter_panel.awaiting_shipment.count).to eql TestData.store[:awaiting_shipment_count].to_i - count.to_i
+  expect(stamps.orders.filter_panel.awaiting_shipment.count).to eql TestData.hash[:awaiting_shipment_count].to_i - count.to_i
 end
 
 Then /^[Ii]n left Filter Panel, expect panel arrow is pointing to the (.*) direction$/ do |expectation|
@@ -119,5 +119,5 @@ end
 Then /^[Ii]n left Filter Panel, expect printed Order ID is not in Awaiting Shipment tab$/ do
   grid = stamps.orders.filter_panel.awaiting_shipment.select
   row1_order_id = grid.order_id.row(1)
-  expect((TestData.store[:order_id].values.last).include? row1_order_id).is(false)
+  expect((TestData.hash[:order_id].values.last).include? row1_order_id).is(false)
 end
