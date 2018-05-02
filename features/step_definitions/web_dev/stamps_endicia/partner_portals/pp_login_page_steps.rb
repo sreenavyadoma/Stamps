@@ -89,7 +89,6 @@ Then /^[Pp]P: set login page password to (?:env value|(.*))$/ do |str|
   password =  PartnerPortal.login_page.password
   password.wait_until_present(timeout: 5)
   password.set(TestData.hash[:password]=(str.nil?)?(SdcEnv.pw):str)
-
 end
 
 
@@ -115,7 +114,6 @@ end
 Then /^[Pp]P: [Ee]xpect login page error message to be$/ do |str|
   error_message = PartnerPortal.login_page.error_message
   error_message.wait_until_present(timeout: 10)
-  #expect(error_message.attribute_value('innerText').strip).to eql(str)
   expect(error_message.text_value.strip).to eql(str)
 end
 
