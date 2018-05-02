@@ -14,66 +14,69 @@ module SdcEnv
   end
 end
 
-class SdcFinder
-  class << self
-    def element(browser, tag: nil, timeout: 20)
-      if browser.is_a? Watir::Browser
-        if tag
-          element = instance_eval("browser.#{tag}(#{yield})")
-          result = Watir::Wait.until(timeout: timeout) { element }
-          if result
-            element = instance_eval("browser.#{tag}(#{yield})")
-            return SdcElement.new(element)
-          end
-        else
-          element = browser.element(yield)
-          result = Watir::Wait.until(timeout: timeout) { element }
-          if result
-            element = browser.element(yield)
-            return SdcElement.new(element)
-          end
-        end
-      else
-        element = browser.find_element(yield)
+module SdcFinder
+  # @param [Browser] browser either Watir::Browser or Appium::Core::Driver
+  # @param [String] tag HTML tag for Watir
+  # @param [Integer] timeout in seconds
+  def element(browser, tag: nil, timeout: 20)
+    if browser.is_a? Watir::Browser
+      if tag
+        element = instance_eval("browser.#{tag}(#{yield})")
         result = Watir::Wait.until(timeout: timeout) { element }
         if result
-          element = browser.find_element(yield)
+          element = instance_eval("browser.#{tag}(#{yield})")
+          return SdcElement.new(element)
+        end
+      else
+        element = browser.element(yield)
+        result = Watir::Wait.until(timeout: timeout) { element }
+        if result
+          element = browser.element(yield)
           return SdcElement.new(element)
         end
       end
-
-      message = "Cannot locate element #{yield}"
-      error = Selenium::WebDriver::Error::NoSuchElementError
-      raise error, message
+    else
+      element = browser.find_element(yield)
+      result = Watir::Wait.until(timeout: timeout) { element }
+      if result
+        element = browser.find_element(yield)
+        return SdcElement.new(element)
+      end
     end
 
-    def elements(browser, tag: nil, timeout: 20)
-      if browser.is_a? Watir::Browser
-        if tag
-          begin
-            code = "browser.#{tag}(#{yield})"
-            elements = instance_eval(code)
-            result = Watir::Wait.until(timeout: timeout) { elements }
-            return instance_eval(code) if result
-          rescue Selenium::WebDriver::Error::TimeOutError
-            # ignore
-          end
-        else
-          elements = browser.elements(yield)
+    message = "Cannot locate element #{yield}"
+    error = Selenium::WebDriver::Error::NoSuchElementError
+    raise error, message
+  end
+  module_function :element
+
+  def elements(browser, tag: nil, timeout: 20)
+    if browser.is_a? Watir::Browser
+      if tag
+        begin
+          code = "browser.#{tag}(#{yield})"
+          elements = instance_eval(code)
           result = Watir::Wait.until(timeout: timeout) { elements }
-          return browser.elements(yield) if result
+          return instance_eval(code) if result
+        rescue Selenium::WebDriver::Error::TimeOutError
+          # ignore
         end
       else
-        elements = browser.find_elements(yield)
+        elements = browser.elements(yield)
         result = Watir::Wait.until(timeout: timeout) { elements }
-        return browser.find_elements(yield) if result
+        return browser.elements(yield) if result
       end
-
-      message = "Cannot locate elements #{yield}"
-      error = Selenium::WebDriver::Error::NoSuchElementError
-      raise error, message
+    else
+      elements = browser.find_elements(yield)
+      result = Watir::Wait.until(timeout: timeout) { elements }
+      return browser.find_elements(yield) if result
     end
+
+    message = "Cannot locate elements #{yield}"
+    error = Selenium::WebDriver::Error::NoSuchElementError
+    raise error, message
   end
+  module_function :elements
 end
 
 class SdcPage < WatirDrops::PageObject
