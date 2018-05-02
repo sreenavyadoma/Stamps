@@ -9,7 +9,7 @@ Then /^[Ss]elect [Oo]rder [Ss]ettings [Ss]tore (.+)$/ do |store|
 end
 
 Then /^[Ss]elect saved [Oo]rder [Ss]ettings [Ss]tore$/ do     # select the store that was most recently created and saved
-  expect(stamps.orders.modals.orders_settings_modal.stores_tab.select_store(TestData.store[:store_nickname])).to eql(TestData.store[:store_nickname])
+  expect(stamps.orders.modals.orders_settings_modal.stores_tab.select_store(TestData.hash[:store_nickname])).to eql(TestData.hash[:store_nickname])
 end
 
 Then /^[Cc]lick [Oo]rder [Ss]ettings [Ss]tores [Ee]dit [Bb]utton$/ do
@@ -38,7 +38,7 @@ end
 
 Then /^[Ee]xpect [Oo]rders [Ss]ettings [Ss]tore [Ss]aved nickname is not present in list$/ do # expect that the store that was most recently created and saved is not present in the store list
   sleep 5
-  expect(stamps.orders.modals.orders_settings_modal.stores_tab.store_name(TestData.store[:store_nickname]).present?).not_to be(true), "Deleted store is PRESENT and it should NOT be PRESENT"
+  expect(stamps.orders.modals.orders_settings_modal.stores_tab.store_name(TestData.hash[:store_nickname]).present?).not_to be(true), "Deleted store is PRESENT and it should NOT be PRESENT"
 end
 
 Then /^[Ee]xpect [Oo]rders [Ss]ettings [Ss]tore [Nn]ickname (.*) is not present in list$/ do |store|
@@ -71,11 +71,11 @@ Then /^Manage [Ss]tores: Delete Row (\d+)$/ do |row|
 end
 
 Then /^Manage [Ss]tores: Select Store (.*)$/ do |store_name|
-  TestData.store[:store_name] = (store_name.downcase.include? 'random') ? TestData.store[:store_name] : store_name
+  TestData.hash[:store_name] = (store_name.downcase.include? 'random') ? TestData.hash[:store_name] : store_name
   #StampsTest.log.step "Manage [Ss]tores: Select Store #{test_data[:store_name]}"
-  raise "Unble to select store name: #{TestData.store[:store_name]}.  Either it's nil or does not exist in the modal.  Check your test." if TestData.store[:store_name].nil?
-  raise "Store name can't be nil or an empty String" if TestData.store[:store_name].nil? || TestData.store[:store_name].size == 0
-  @manage_stores.stores_grid.select(TestData.store[:store_name])
+  raise "Unble to select store name: #{TestData.hash[:store_name]}.  Either it's nil or does not exist in the modal.  Check your test." if TestData.hash[:store_name].nil?
+  raise "Store name can't be nil or an empty String" if TestData.hash[:store_name].nil? || TestData.hash[:store_name].size == 0
+  @manage_stores.stores_grid.select(TestData.hash[:store_name])
 end
 
 Then /^Manage [Ss]tores: Delete All [Ss]tores$/ do

@@ -82,7 +82,7 @@ Then /^[Oo]n PAM ACH Purchase page, set Amount to \$(\d+)\.(\d+)$/ do |dollars, 
   comments.click
   comments.click
   comments.click
-  comments.set TestData.store[:username]
+  comments.set TestData.hash[:username]
 
   @ach_credit.submit.yes.ok
 end
@@ -101,7 +101,7 @@ end
 
 Then /^[Ss]end username to standard out$/ do
   SdcLogger.info " ############## NEW USER ID "
-  SdcLogger.info " ############## #{TestData.store[:username]}"
+  SdcLogger.info " ############## #{TestData.hash[:username]}"
   SdcLogger.info " ############## NEW USER ID "
 end
 

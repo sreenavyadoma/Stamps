@@ -1,6 +1,6 @@
 Then /^set store settings store nickname to (.*)$/ do |str|
   nickname = (str.downcase.include?('random') ? TestHelper.rand_alpha_numeric : str)
-  stamps.orders.marketplace.store_settings.store_nickname.set(TestData.store[:store_nickname] = nickname)
+  stamps.orders.marketplace.store_settings.store_nickname.set(TestData.hash[:store_nickname] = nickname)
 end
 
 Then /^select store settings shipping service to ([\w \/]+)$/ do |str|
@@ -31,15 +31,15 @@ Then /^[Aa]dd store service Mapping (\d+)$/ do |mapping_number|
 end
 
 Then /^[Ss]et store service Mapping (\d+) Requested Service to (.*)$/ do |mapping_number, value|
-  TestData.store[:service_mapping_items][mapping_number] = {} unless TestData.store[:service_mapping_items].has_key?(mapping_number)
-  TestData.store[:service_mapping_items][mapping_number][:requested_service] = (value.downcase.include?('random') ? TestHelper.rand_alpha_numeric : value)
-  stamps.orders.marketplace.store_settings.service_mapping_list.mapping_number(mapping_number.to_i).requested_service_mapping.set(TestData.store[:service_mapping_items][mapping_number][:requested_service])
+  TestData.hash[:service_mapping_items][mapping_number] = {} unless TestData.hash[:service_mapping_items].has_key?(mapping_number)
+  TestData.hash[:service_mapping_items][mapping_number][:requested_service] = (value.downcase.include?('random') ? TestHelper.rand_alpha_numeric : value)
+  stamps.orders.marketplace.store_settings.service_mapping_list.mapping_number(mapping_number.to_i).requested_service_mapping.set(TestData.hash[:service_mapping_items][mapping_number][:requested_service])
 end
 
 Then /^[Ss]et store service Mapping (\d+) Shipping Service to (.*)$/ do |mapping_number, value|
-  TestData.store[:service_mapping_items][mapping_number] = {} unless TestData.store[:service_mapping_items].has_key?(mapping_number)
-  TestData.store[:service_mapping_items][mapping_number][:shipping_service] = value
-  expect(stamps.orders.marketplace.store_settings.service_mapping_list.mapping_number(mapping_number.to_i).shipping_service_mapping.select(TestData.store[:service_mapping_items][mapping_number][:shipping_service])).to include(TestData.store[:service_mapping_items][mapping_number][:shipping_service])
+  TestData.hash[:service_mapping_items][mapping_number] = {} unless TestData.hash[:service_mapping_items].has_key?(mapping_number)
+  TestData.hash[:service_mapping_items][mapping_number][:shipping_service] = value
+  expect(stamps.orders.marketplace.store_settings.service_mapping_list.mapping_number(mapping_number.to_i).shipping_service_mapping.select(TestData.hash[:service_mapping_items][mapping_number][:shipping_service])).to include(TestData.hash[:service_mapping_items][mapping_number][:shipping_service])
 end
 
 

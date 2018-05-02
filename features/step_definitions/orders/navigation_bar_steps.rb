@@ -1,6 +1,6 @@
 Then /^Navigation Bar: Customer Balance$/ do
   #SdcLog.step "Navigation Bar: Customer Balance"
-  TestData.store[:customer_starting_balance] = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
+  TestData.hash[:customer_starting_balance] = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
   SdcLogger.debug " ############## CUSTOMER BALANCE "
   SdcLogger.debug " ############## #{stamps.navigation_bar.balance.balance_amount.text}"
   SdcLogger.debug " ############## CUSTOMER BALANCE "

@@ -98,15 +98,15 @@ Then /^[Ee]xpect in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Ll]ogin Butto
 end
 
 Then /^[Ee]xpect in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Uu]sername is (?:correct|(.*))$/ do |str|
-  expect(stamps.orders.marketplace.shipstation.activate_your_new_features.username.text).to eql(TestData.store[:username]), "Username does not correct"
+  expect(stamps.orders.marketplace.shipstation.activate_your_new_features.username.text).to eql(TestData.hash[:username]), "Username does not correct"
 end
 
 Then /^[Ss]et in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Pp]assword to (?:random value|(.*))$/ do |str|
-  stamps.orders.marketplace.shipstation.activate_your_new_features.password.set(TestData.store[:password]=(str.nil?)?"pass111":str)
+  stamps.orders.marketplace.shipstation.activate_your_new_features.password.set(TestData.hash[:password]=(str.nil?)?"pass111":str)
 end
 
 Then /^[Ee]xpect in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Pp]assword is (?:correct|(.*))$/ do |str|
-  expect(stamps.orders.marketplace.shipstation.activate_your_new_features.password.text).to eql(TestData.store[:password]), "Password does not correct"
+  expect(stamps.orders.marketplace.shipstation.activate_your_new_features.password.text).to eql(TestData.hash[:password]), "Password does not correct"
 end
 
 Then /^[Cc]heck in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Tt]erms [Aa]nd [Cc]onditions checkbox$/ do

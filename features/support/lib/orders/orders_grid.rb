@@ -9,7 +9,7 @@ module Stamps
         def column_text #todo-Rob implement data store
           @column_text ||= {
               check_box: " ",
-              store: "Store",
+              hash: "Store",
               ship_cost: "Ship Cost",
               age: "Age",
               order_id: "Order ID",
@@ -181,23 +181,23 @@ module Stamps
       class Store < WebApps::Base
         include GridColumnCommon
         def scroll_into_view
-          scroll_to_column(:store)
+          scroll_to_column(:hash)
         end
 
         def row(row)
-          grid_text(:store, row)
+          grid_text(:hash, row)
         end
 
         def data(order_id)
-          grid_text_by_id(:store, order_id)
+          grid_text_by_id(:hash, order_id)
         end
 
         def sort_ascending
-          sort_order(:store, :sort_ascending)
+          sort_order(:hash, :sort_ascending)
         end
 
         def sort_descending
-          sort_order(:store, :sort_descending)
+          sort_order(:hash, :sort_descending)
         end
       end
 
@@ -988,8 +988,8 @@ module Stamps
           case(name)
             when :checkbox
               !column.has_key?(:checkbox) || !column[:checkbox].present? ? column[:checkbox] = GridCheckBox.new(param) : column[:checkbox]
-            when :store
-              !column.has_key?(:store) || !column[:store].present? ? column[:store] = Store.new(param) : column[:store]
+            when :hash
+              !column.has_key?(:hash) || !column[:hash].present? ? column[:hash] = Store.new(param) : column[:hash]
             when :order_id
               !column.has_key?(:order_id) || !column[:order_id].present? ? column[:order_id] = OrderId.new(param) : column[:order_id]
             when :ship_cost
