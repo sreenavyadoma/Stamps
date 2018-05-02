@@ -31,7 +31,9 @@ Then /^[Pp]P: [Ee]xpect login page Log In button text is (.*)$/ do |str|
 end
 
 Then /^[Pp]P: [Uu]ser clicks Log In$/ do
-  PartnerPortal.login_page.log_in.send_keys(:enter)
+  log_in = PartnerPortal.login_page.log_in
+  log_in.wait_until_present(timeout: 5)
+  log_in.send_keys(:enter)
 end
 
 Then /^[Pp]P: expect login page [Ff]orgot [Pp]assword link exist$/ do
@@ -59,18 +61,24 @@ end
 
 
 Then /^[Pp]P: set login page email to (?:env value|(.*))$/ do |str|
-  PartnerPortal.login_page.email.set(TestData.store[:email]=(str.nil?)?(SdcEnv.usr):str)
+  email =  PartnerPortal.login_page.email
+  email.wait_until_present(timeout: 5)
+  email.set(TestData.hash[:email] = (str.nil?) ? (SdcEnv.usr) : str)
 end
 
 
 Then /^[Pp]P: [Ee]xpect login page email tooltip count is (.*)$/ do |count|
-  TestData.store[:email_tooltip] = PartnerPortal.login_page.email_tooltip.text_value.split("\n")
-  expect(TestData.store[:email_tooltip].size).to eql(count.to_i)
+  email_tooltip_count = PartnerPortal.login_page.email_tooltip
+  email_tooltip_count.wait_until_present(timeout: 5)
+  TestData.hash[:email_tooltip_count] = email_tooltip_count.text_value.split("\n")
+  expect(TestData.hash[:email_tooltip_count].size).to eql(count.to_i)
 end
 
 Then /^[Pp]P: [Ee]xpect login page email tooltip index (\d+) to be (.*)$/ do |index, str|
-  TestData.store[:email_tooltip] = PartnerPortal.login_page.email_tooltip.text_value.split("\n")
-  expect(TestData.store[:email_tooltip][index.to_i - 1]).to eql(str)
+  email_tooltip = PartnerPortal.login_page.email_tooltip
+  email_tooltip.wait_until_present(timeout: 5)
+  TestData.hash[:email_tooltip] = email_tooltip.text_value.split("\n")
+  expect(TestData.hash[:email_tooltip][index.to_i - 1]).to eql(str)
 end
 
 Then /^[Pp]P: [Ee]xpect login page Password field to exist$/ do
@@ -78,7 +86,9 @@ Then /^[Pp]P: [Ee]xpect login page Password field to exist$/ do
 end
 
 Then /^[Pp]P: set login page password to (?:env value|(.*))$/ do |str|
-  PartnerPortal.login_page.password.set(TestData.store[:password]=(str.nil?)?(SdcEnv.pw):str)
+  password =  PartnerPortal.login_page.password
+  password.wait_until_present(timeout: 5)
+  password.set(TestData.hash[:password] = (str.nil?) ? (SdcEnv.pw) : str)
 end
 
 
@@ -88,18 +98,23 @@ Then /^[Pp]P: [Ee]xpect login page [Pp]assword field shows placeholder (.*)$/ do
 end
 
 Then /^[Pp]P: [Ee]xpect login page [Pp]assword tooltip count is (.*)$/ do |count|
-  TestData.store[:password_tooltip] = PartnerPortal.login_page.password_tooltip.text_value.split("\n")
-  expect(TestData.store[:password_tooltip].size).to eql(count.to_i)
+  password_tooltip_count = PartnerPortal.login_page.password_tooltip
+  password_tooltip_count.wait_until_present(timeout: 5)
+  TestData.hash[:password_tooltip_count] = password_tooltip_count.text_value.split("\n")
+  expect(TestData.hash[:password_tooltip_count].size).to eql(count.to_i)
 end
 
 Then /^[Pp]P: [Ee]xpect login page [Pp]assword tooltip index (\d+) to be (.*)$/ do |index, str|
-  TestData.store[:password_tooltip] = PartnerPortal.login_page.password_tooltip.text_value.split("\n")
-  expect(TestData.store[:password_tooltip][index.to_i - 1]).to eql(str)
+  password_tooltip = PartnerPortal.login_page.password_tooltip
+  password_tooltip.wait_until_present(timeout: 5)
+  TestData.hash[:password_tooltip] = password_tooltip.text_value.split("\n")
+  expect(TestData.hash[:password_tooltip][index.to_i - 1]).to eql(str)
 end
 
 Then /^[Pp]P: [Ee]xpect login page error message to be$/ do |str|
-  PartnerPortal.login_page.error_message.wait_until_present(timeout: 10, interval: 0.2)
-  expect(PartnerPortal.login_page.error_message.text.strip).to eql(str)
+  error_message = PartnerPortal.login_page.error_message
+  error_message.wait_until_present(timeout: 10)
+  expect(error_message.text_value.strip).to eql(str)
 end
 
 
@@ -113,9 +128,9 @@ Then /^[Pp]P: [Ee]xpect website records login event in Audit Records to be (.*)$
     Select MAX(DateCreated) from [dbo].[sdct_PartnerPortal_Log] where PartnerUserId = 1001)"
   )
   result.each do |log_info|
-    TestData.store[:login_status]= log_info['LogInfo']
+    TestData.hash[:login_status] = log_info['LogInfo']
   end
-  expect(TestData.store[:login_status]).to eql(str)
+  expect(TestData.hash[:login_status]).to eql(str)
 
   step "Close partner portal db connection"
 

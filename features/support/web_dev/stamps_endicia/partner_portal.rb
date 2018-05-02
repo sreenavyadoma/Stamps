@@ -2,11 +2,9 @@ module PartnerPortal
 
   class PPLoginPage < SdcPage
     #Welcome content
-    #page_objects(:welcome_content, index: 0)  { {xpath: "//p"} }
     page_object(:welcome_content) { {xpath: "//p[contains(text(),'Welcome to the')]"} }
 
     #Error Message
-    # page_objects(:error_message, index: 1)  { {xpath: "//p"} }
     page_object(:error_message) { {xpath: "//p[@class='text-center']"} }
 
     #sdcEndica logo
@@ -32,8 +30,7 @@ module PartnerPortal
     #Forgot Password? link
     link(:forgot_pw) { {xpath: "//a[@href='/reset-password/request']"} }
 
-    page_url { |env| "http://partner.#{env}.stamps.com/" }
-    #page_url { |env| "https://iigwe-win10.corp.stamps.com/partner/" }
+    page_url { |env| "https://partner.#{env}.stamps.com/" }
 
     def self.visit
       super(case SdcEnv.env
@@ -85,23 +82,23 @@ module PartnerPortal
 
   class << self
     def login_page
-      @login_page ||= PPLoginPage.new
+      @login_page = PPLoginPage.new
     end
 
     def dashboard_page
-      @dashboard_page ||=PPDashboardPage.new
+      @dashboard_page = PPDashboardPage.new
     end
 
     def reset_password_page
-      @reset_password_page ||= PPResetPasswordPage.new
+      @reset_password_page = PPResetPasswordPage.new
     end
 
     def stamps_endicia_common_page
-      @stamps_endicia_common_page ||= PartnerPortal::Common.new
+      @stamps_endicia_common_page = PartnerPortal::Common.new
     end
 
     def db_connection
-      @connection ||= PartnerPortalDB.new
+      @connection = PartnerPortalDB.new
     end
 
   end
