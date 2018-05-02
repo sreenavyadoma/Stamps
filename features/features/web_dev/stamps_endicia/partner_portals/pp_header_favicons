@@ -2,8 +2,8 @@
 Feature: PP-MVP: Header and Favicons
 
   Background:
-    Given Start test driver
+    Given PP: A valid user is signed into the Partner Portal
 
   Scenario: PP: Header and Favicons Validation
 
-    Then PP: A user navigates to the login page
+

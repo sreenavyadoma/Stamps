@@ -60,6 +60,9 @@ module PartnerPortal
     #hamburger button
     button(:hamburger, required: true) { {class: "navbar-toggle collapsed"} }
 
+    #Left Panel Dashboard
+    page_object(:panel_dashboard) { {xpath: "//a[contains(text(), 'Dashboard')]"} }
+
     #x button
     button(:x, required: true) { {class: "xxx"} }
 
