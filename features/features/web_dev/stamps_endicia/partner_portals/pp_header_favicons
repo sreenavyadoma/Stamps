@@ -1,11 +1,12 @@
 
 @pp_header_favicons
-Feature: PP-MVP: Header and Favicons
+Feature: PP-MVP: Login Page
 
   Background:
-    Given PP: A valid user is signed into Partner Portal
+    Given Start test driver
 
-  Scenario: PP: Header and Favicons Validation
-    Then PP: expect user is redirected to the Dashboard Page
+  Scenario: PP: Login Page Validation
+
+    Then PP: A user navigates to the login page
 
 
