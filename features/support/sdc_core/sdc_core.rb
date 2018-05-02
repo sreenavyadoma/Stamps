@@ -230,7 +230,7 @@ class SdcElement < BasicObject
     self
   end
 
-  def wait_until_present(timeout: 20, interval: 0.2)
+  def wait_until_present(timeout: nil, message: nil, interval: nil)
     if respond_to? :wait_until_present
       send(:wait_until_present, timeout: timeout, interval: interval)
     else
@@ -240,7 +240,7 @@ class SdcElement < BasicObject
     self
   end
 
-  def wait_while_present(timeout: 20, interval: 0.2)
+  def wait_while_present(timeout: nil, message: nil, interval: nil)
     if respond_to? :wait_while_present
       send(:wait_while_present, timeout: timeout)
     else
@@ -250,13 +250,13 @@ class SdcElement < BasicObject
     self
   end
 
-  def safe_wait_until_present(timeout: nil, interval: nil)
+  def safe_wait_until_present(timeout: nil, message: nil, interval: nil)
     wait_until_present(timeout: timeout, interval: interval)
   rescue ::StandardError
     # ignored
   end
 
-  def safe_wait_while_present(timeout: 10, interval: 0.2)
+  def safe_wait_while_present(timeout: nil, message: nil, interval: nil)
     wait_while_present(timeout: timeout, interval: interval)
   rescue ::StandardError
     # ignore
