@@ -382,7 +382,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(
   else
     stamps.orders.order_details.ship_to.domestic.set(TestData.hash[:ship_to_domestic])
   end
-  step 'blur out on Order Details form'
+  #step 'blur out on Order Details form'
   step 'Save Order Details data'
   step 'hide order details form Ship-To fields'
 end
