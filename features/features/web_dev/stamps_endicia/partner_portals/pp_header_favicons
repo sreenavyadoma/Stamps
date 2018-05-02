@@ -1,3 +1,4 @@
+
 @pp_header_favicons
 Feature: PP-MVP: Header and Favicons
 
@@ -5,5 +6,6 @@ Feature: PP-MVP: Header and Favicons
     Given PP: A valid user is signed into Partner Portal
 
   Scenario: PP: Header and Favicons Validation
+    Then PP: expect user is redirected to the Dashboard Page
 
 
