@@ -63,7 +63,7 @@ end
 Then /^[Pp]P: set login page email to (?:env value|(.*))$/ do |str|
   email =  PartnerPortal.login_page.email
   email.wait_until_present(timeout: 5)
-  email.set(TestData.hash[:email]=(str.nil?)?(SdcEnv.usr):str)
+  email.set(TestData.hash[:email] = (str.nil?) ? (SdcEnv.usr) : str)
 end
 
 
@@ -88,7 +88,7 @@ end
 Then /^[Pp]P: set login page password to (?:env value|(.*))$/ do |str|
   password =  PartnerPortal.login_page.password
   password.wait_until_present(timeout: 5)
-  password.set(TestData.hash[:password]=(str.nil?)?(SdcEnv.pw):str)
+  password.set(TestData.hash[:password] = (str.nil?) ? (SdcEnv.pw) : str)
 end
 
 
@@ -128,7 +128,7 @@ Then /^[Pp]P: [Ee]xpect website records login event in Audit Records to be (.*)$
     Select MAX(DateCreated) from [dbo].[sdct_PartnerPortal_Log] where PartnerUserId = 1001)"
   )
   result.each do |log_info|
-    TestData.hash[:login_status]= log_info['LogInfo']
+    TestData.hash[:login_status] = log_info['LogInfo']
   end
   expect(TestData.hash[:login_status]).to eql(str)
 
