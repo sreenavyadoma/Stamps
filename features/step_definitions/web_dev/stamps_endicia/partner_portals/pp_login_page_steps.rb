@@ -7,6 +7,7 @@ Then /^[Cc]lose [Pp]artner [Pp]ortal db connection$/ do
 end
 
 Then /^[Pp]P: [Aa] user navigates to the login page$/ do
+  TestData.hash[:system_date] = DateTime.now.utc
   PartnerPortal::PPLoginPage.visit
 end
 
@@ -118,25 +119,34 @@ Then /^[Pp]P: [Ee]xpect login page error message to be$/ do |str|
 end
 
 
-Then /^[Pp]P: [Ee]xpect website records login event in Audit Records to be (.*)$/ do |str|
+Then /^[Pp]P: Expect a record (.*) event is added in Audit Records for user$/ do |log_info|
   step "Establish Partner Portal db connection"
 
- result = PartnerPortal.db_connection.execute(
-    "select RecordId, PartnerUserId, LogInfo, DateCreated
-    from [dbo].[sdct_PartnerPortal_Log]
-    where DateCreated = (
-    Select MAX(DateCreated) from [dbo].[sdct_PartnerPortal_Log] where PartnerUserId = 1001)"
-  )
-  result.each do |log_info|
-    TestData.hash[:login_status] = log_info['LogInfo']
+  user= PartnerPortal.db_connection.execute("select PartnerUserId, EmailAddress from [dbo].[sdct_PartnerPortal_User] where EmailAddress = '#{SdcEnv.usr}'")
+
+  user.each do |item|
+    TestData.hash[:user_id] = item['PartnerUserId']
   end
-  expect(TestData.hash[:login_status]).to eql(str)
+
+  log = PartnerPortal.db_connection.execute(
+      "select RecordId, LogTypeId, PartnerUserId, LogInfo, DateCreated
+     from [dbo].[sdct_PartnerPortal_Log]
+     where DateCreated = (
+     Select MAX(DateCreated) from [dbo].[sdct_PartnerPortal_Log] where PartnerUserId = #{TestData.hash[:user_id]})"
+  )
+  log.each do |item|
+    TestData.hash[:login_status] = item['LogInfo']
+    TestData.hash[:date_created] = item['DateCreated']
+  end
 
   step "Close partner portal db connection"
 
+  expect(TestData.hash[:date_created]).to be > TestData.hash[:system_date]
+  expect(TestData.hash[:login_status]).to eql(log_info)
+
 end
 
-Given /^[Pp]P: [Aa] valid user is signed into the Partner Portal$/ do
+Given /^[Pp]P: [Aa] valid user is signed into Partner Portal$/ do
   step "Start test driver"
   step "PP: A user navigates to the login page"
   step "PP: set login page email to env value"
