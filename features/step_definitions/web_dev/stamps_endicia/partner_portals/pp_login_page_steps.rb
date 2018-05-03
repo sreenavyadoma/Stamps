@@ -64,7 +64,7 @@ end
 Then /^[Pp]P: set login page email to (?:env value|(.*))$/ do |str|
   email =  PartnerPortal.login_page.email
   email.wait_until_present(timeout: 5)
-  email.set(TestData.hash[:email]=(str.nil?)?(SdcEnv.usr):str)
+  email.set(TestData.hash[:email] = (str.nil?) ? (SdcEnv.usr) : str)
 end
 
 
@@ -89,7 +89,7 @@ end
 Then /^[Pp]P: set login page password to (?:env value|(.*))$/ do |str|
   password =  PartnerPortal.login_page.password
   password.wait_until_present(timeout: 5)
-  password.set(TestData.hash[:password]=(str.nil?)?(SdcEnv.pw):str)
+  password.set(TestData.hash[:password] = (str.nil?) ? (SdcEnv.pw) : str)
 end
 
 

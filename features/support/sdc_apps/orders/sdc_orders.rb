@@ -22,7 +22,7 @@ module SdcOrders
     end
 
     def grid
-
+      @grid = SdcOrdersGrid.new
     end
 
     def filter_panel
