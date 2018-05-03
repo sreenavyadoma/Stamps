@@ -1,8 +1,15 @@
 module Stamps
   class MySqlConnDecorator < BasicObject
+    require 'mysql2'
+
     attr_reader :host, :username, :password
+
     def initialize(host: nil, username: nil, password: nil)
       @connection = ::Mysql2::Client.new(host: host, username: username, password: password)
+    end
+
+    def respond_to?(name, include_private = false)
+      @connection.respond_to?(name, include_private) || super
     end
 
     def method_missing(name, *args, &block)
@@ -22,7 +29,7 @@ module Stamps
     end
 
     def respond_to?(name, include_private = false)
-      super || @connection.respond_to?(name, include_private)
+      @connection.respond_to?(name, include_private) || super
     end
 
     def method_missing(name, *args, &block)
@@ -32,7 +39,10 @@ module Stamps
   end
 
   class SQLServerClient
+    require 'tiny_tds'
+
     attr_reader :host, :database, :username, :password, :port, :azure, :connection
+
     def initialize(username: nil, password: nil, server: nil, port: nil, database: nil, azure: nil)
       @connection = TinyTds::Client.new( username: username, password: password, host: server, port: port, database: database, azure: azure)
     end

@@ -9,7 +9,7 @@ include RSpec::Matchers
 include DataMagic
 include PartnerPortal
 
-Before do  |scenario|
+Before do |scenario|
   SdcEnv.scenario = scenario
   SdcTest.start
 end
