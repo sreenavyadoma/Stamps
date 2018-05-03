@@ -7,6 +7,7 @@ Then /^[Cc]lose [Pp]artner [Pp]ortal db connection$/ do
 end
 
 Then /^[Pp]P: [Aa] user navigates to the login page$/ do
+  TestData.hash[:system_date] = DateTime.now
   PartnerPortal::PPLoginPage.visit
 end
 
@@ -119,8 +120,6 @@ end
 
 
 Then /^[Pp]P: Expect a record (.*) event is added in Audit Records for user$/ do |log_info|
-  system_date = DateTime.now
-
   step "Establish Partner Portal db connection"
 
   user= PartnerPortal.db_connection.execute("select PartnerUserId, EmailAddress from [dbo].[sdct_PartnerPortal_User] where EmailAddress = '#{SdcEnv.usr}'")
@@ -142,7 +141,7 @@ Then /^[Pp]P: Expect a record (.*) event is added in Audit Records for user$/ do
 
   step "Close partner portal db connection"
 
-  expect(TestData.hash[:date_created]).to be > system_date
+  expect(TestData.hash[:date_created]).to be > TestData.hash[:system_date]
   expect(TestData.hash[:login_status]).to eql(log_info)
 
 end
