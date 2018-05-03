@@ -7,7 +7,7 @@ Then /^[Cc]lose [Pp]artner [Pp]ortal db connection$/ do
 end
 
 Then /^[Pp]P: [Aa] user navigates to the login page$/ do
-  TestData.hash[:system_date] = DateTime.now
+  TestData.hash[:system_date] = DateTime.now.utc
   PartnerPortal::PPLoginPage.visit
 end
 
