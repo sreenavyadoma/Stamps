@@ -118,25 +118,32 @@ Then /^[Pp]P: [Ee]xpect login page error message to be$/ do |str|
 end
 
 
-Then /^[Pp]P: [Ee]xpect for PartnerUserId (.*) LogTypeId is (\d+) and LogInfo is (.*)$/ do |user_id, log_id, log_info |
+Then /^[Pp]P: Expect a record (.*) event is added in Audit Records for user$/ do |log_info|
+  system_date = DateTime.now
+
   step "Establish Partner Portal db connection"
 
-  result = PartnerPortal.db_connection.execute(
+  user= PartnerPortal.db_connection.execute("select PartnerUserId, EmailAddress from [dbo].[sdct_PartnerPortal_User] where EmailAddress = '#{SdcEnv.usr}'")
+
+  user.each do |item|
+    TestData.hash[:user_id] = item['PartnerUserId']
+  end
+
+  log = PartnerPortal.db_connection.execute(
       "select RecordId, LogTypeId, PartnerUserId, LogInfo, DateCreated
      from [dbo].[sdct_PartnerPortal_Log]
      where DateCreated = (
-     Select MAX(DateCreated) from [dbo].[sdct_PartnerPortal_Log] where PartnerUserId = #{user_id})"
+     Select MAX(DateCreated) from [dbo].[sdct_PartnerPortal_Log] where PartnerUserId = #{TestData.hash[:user_id]})"
   )
-  result.each do |log_info|
-    TestData.hash[:login_status] = log_info['LogInfo']
-    TestData.hash[:login_type] = log_info['LogTypeId']
+  log.each do |item|
+    TestData.hash[:login_status] = item['LogInfo']
+    TestData.hash[:date_created] = item['DateCreated']
   end
 
   step "Close partner portal db connection"
 
-  expect(TestData.hash[:login_type]).to eql(log_id)
+  expect(TestData.hash[:date_created]).to be > system_date
   expect(TestData.hash[:login_status]).to eql(log_info)
-
 
 end
 
