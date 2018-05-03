@@ -1,2 +1,0 @@
-geckodriver-v0.19.1-win64.zip
-geckodriver-v0.16.1-win32

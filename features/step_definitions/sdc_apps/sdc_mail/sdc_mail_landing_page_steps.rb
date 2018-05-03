@@ -30,6 +30,7 @@ Then /^set Mail username(?: to (.+)|)$/ do |usr|
   modal.sign_in_link.hover unless modal.username.present?
   modal.username.wait_until_present(timeout: 15)
   modal.username.set(usr)
+
 end
 
 Then /^set Mail password(?: to (.+)|)$/ do |pw|
@@ -54,7 +55,7 @@ Then /^set [Rr]emember [Uu]sername to [Uu]nchecked$/ do
   modal.remember_username.clear
 end
 
-Then /^[Ee]xpect [Rr]emember [Uu]sername to be [Cc]hecked$/ do
+Then /^[Ee]xpect [Rr]emember [Uu]sername is [Cc]hecked$/ do
   modal = SdcWebsite.navigation.mail_sign_in_modal
   modal.sign_in_link.wait_until_present(timeout: 3)
   modal.sign_in_link.hover

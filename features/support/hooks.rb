@@ -7,6 +7,7 @@ include Stamps::Mail
 include RSpec
 include RSpec::Matchers
 include DataMagic
+include PartnerPortal
 
 Before do  |scenario|
   SdcEnv.scenario = scenario

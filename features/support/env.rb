@@ -15,6 +15,7 @@ require 'measured'
 require 'holidays'
 require 'watir'
 require 'watir_drops'
+require 'tiny_tds'
 
 require_relative 'sdc_core/sdc_core'
 require_relative 'sdc_core/sdc_test'
@@ -22,6 +23,10 @@ require_relative 'sdc_apps/sdc_website'
 require_relative 'sdc_apps/orders/sdc_orders'
 require_relative 'sdc_apps/mail/sdc_mail'
 require_relative 'sdc_apps/sdc_navigation'
+
+# web dev
+require_relative 'web_dev/stamps_endicia/partner_portal'
+
 
 # Old Framework
 require_relative 'lib/core/stamps_element'
@@ -40,4 +45,4 @@ require_relative 'lib/orders/store_management'
 require_relative 'lib/mail/print_form_panel_elements'
 require_relative 'lib/mail/print_form_panel'
 
-World Stamps, SdcWebsite, SdcOrders, SdcMail, SdcNavigation
+World Stamps, SdcWebsite, SdcOrders, SdcMail, SdcNavigation, PartnerPortal

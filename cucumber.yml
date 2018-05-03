@@ -3,7 +3,7 @@ default: --backtrace --profile alex_orders
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
 sign_in_win10_edge_sauce:  --tags @saucelabs_poc SAUCE_DEVICE=win10_edge_sauce LOG_LEVEL=debug WEB_APP=orders URL=prod USR=abqaprod1 PW=password1 DEBUG=true HEADLESS=true
-sign_in_macos_chrome_sauce:  --tags @saucelabs_poc SAUCE_DEVICE=macos_chrome_sauce LOG_LEVEL=debug WEB_APP=orders URL=prod USR=abqaprod1 PW=password1 DEBUG=true HEADLESS=true
+sign_in_macos_chrome_sauce:  --tags @mail_authentication SAUCE_DEVICE=macos_chrome_sauce LOG_LEVEL=debug WEB_APP=orders URL=prod USR=abqaprod1 PW=password1 DEBUG=true HEADLESS=true
 iphonex_saucelabs: --tags @saucelabs_poc SAUCE_DEVICE=iphonex_sauce LOG_LEVEL=debug WEB_APP=orders URL=prod USR=abqaprod1 PW=password
 samsung_galaxy_sauce: --tags @saucelabs_poc SAUCE_DEVICE=samsung_galaxy_sauce LOG_LEVEL=debug WEB_APP=orders URL=prod USR=abqaprod1 PW=password
 
@@ -37,7 +37,11 @@ google_iphonex: --tags @google MOBILE=iphonex
 #todo-Rob WebReg consider removing webapp, username, password fields
 #mhossain1_cc: --tags @registration_normal_workflow WEB_APP=orders JENKINS=true URL=cc LOG_LEVEL=info BROWSER=ff MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
 
-mhossain1_cc: --tags @registration_ui_validation_profile_page JENKINS=true URL=cc LOG_LEVEL=info BROWSER=edge MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
+#mhossain1_cc: --tags @registration_ui_validation_profile_page JENKINS=true URL=cc VERBOSE=true BROWSER=edge MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
+
+mhossain1_cc: --tags @pp_log_in_page_validation JENKINS=true URL=qacc BROWSER=ff MAX_WINDOW=true DEBUG=false USR=qawebdevelopment@stamps.com PW=password1
+
+
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess  HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 
@@ -544,3 +548,5 @@ mail_hidden_postage: --tags  @mail_hidden_postage --guess  HEALTHCHECK=true WEB_
 
 mail_bug_ordersauto_3243: --tags  @mail_bug_ordersauto_3243 --guess  HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 
+#Partner Portal
+pp_log_in_page_validation: --tags @pp_log_in_page_validation --guess JENKINS=true  MAX_WINDOW=true
