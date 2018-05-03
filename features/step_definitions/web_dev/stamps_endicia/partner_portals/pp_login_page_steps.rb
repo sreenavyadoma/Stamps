@@ -7,6 +7,7 @@ Then /^[Cc]lose [Pp]artner [Pp]ortal db connection$/ do
 end
 
 Then /^[Pp]P: [Aa] user navigates to the login page$/ do
+  TestData.hash[:system_date] = DateTime.now.utc
   PartnerPortal::PPLoginPage.visit
 end
 
@@ -63,7 +64,7 @@ end
 Then /^[Pp]P: set login page email to (?:env value|(.*))$/ do |str|
   email =  PartnerPortal.login_page.email
   email.wait_until_present(timeout: 5)
-  email.set(TestData.hash[:email] = (str.nil?) ? (SdcEnv.usr) : str)
+  email.set(TestData.hash[:email]=(str.nil?)?(SdcEnv.usr):str)
 end
 
 
@@ -88,7 +89,7 @@ end
 Then /^[Pp]P: set login page password to (?:env value|(.*))$/ do |str|
   password =  PartnerPortal.login_page.password
   password.wait_until_present(timeout: 5)
-  password.set(TestData.hash[:password] = (str.nil?) ? (SdcEnv.pw) : str)
+  password.set(TestData.hash[:password]=(str.nil?)?(SdcEnv.pw):str)
 end
 
 
@@ -118,25 +119,30 @@ Then /^[Pp]P: [Ee]xpect login page error message to be$/ do |str|
 end
 
 
-Then /^[Pp]P: [Ee]xpect for PartnerUserId (.*) LogTypeId is (\d+) and LogInfo is (.*)$/ do |user_id, log_id, log_info |
+Then /^[Pp]P: Expect a record (.*) event is added in Audit Records for user$/ do |log_info|
   step "Establish Partner Portal db connection"
 
- result = PartnerPortal.db_connection.execute(
-    "select RecordId, LogTypeId, PartnerUserId, LogInfo, DateCreated
+  user= PartnerPortal.db_connection.execute("select PartnerUserId, EmailAddress from [dbo].[sdct_PartnerPortal_User] where EmailAddress = '#{SdcEnv.usr}'")
+
+  user.each do |item|
+    TestData.hash[:user_id] = item['PartnerUserId']
+  end
+
+  log = PartnerPortal.db_connection.execute(
+      "select RecordId, LogTypeId, PartnerUserId, LogInfo, DateCreated
      from [dbo].[sdct_PartnerPortal_Log]
      where DateCreated = (
-     Select MAX(DateCreated) from [dbo].[sdct_PartnerPortal_Log] where PartnerUserId = #{user_id})"
+     Select MAX(DateCreated) from [dbo].[sdct_PartnerPortal_Log] where PartnerUserId = #{TestData.hash[:user_id]})"
   )
-  result.each do |log_info|
-    TestData.hash[:login_status] = log_info['LogInfo']
-    TestData.hash[:login_type] = log_info['LogTypeId']
+  log.each do |item|
+    TestData.hash[:login_status] = item['LogInfo']
+    TestData.hash[:date_created] = item['DateCreated']
   end
 
   step "Close partner portal db connection"
 
-  expect(TestData.hash[:login_type]).to eql(log_id)
+  expect(TestData.hash[:date_created]).to be > TestData.hash[:system_date]
   expect(TestData.hash[:login_status]).to eql(log_info)
-
 
 end
 

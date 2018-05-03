@@ -119,7 +119,7 @@ Feature: PP-MVP: Login Page
         Then PP: set login page password to env value
         Then PP: User clicks Log In
         Then PP: expect user is redirected to the Dashboard Page
-        Then PP: Expect for PartnerUserId 1001 LogTypeId is 1 and LogInfo is Login success
+        Then PP: Expect a record Login success event is added in Audit Records for user
 
 
 
