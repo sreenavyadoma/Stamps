@@ -9,7 +9,7 @@ Then /^[Aa]dd [Oo]rder (\d+)$/ do |count|
     step 'Wait until order toolbar present 40, 3'
     SdcOrders.toolbar.add.wait_until_present
     SdcOrders.toolbar.add.click
-    SdcOrders.order_details.order_id.wait_until_present(timeout: 5)
+    SdcOrders.order_details.order_id.wait_until_present(timeout: 15)
     TestData.hash[:order_id][count.to_i] = SdcOrders.order_details.order_id.text_value.parse_digits
     #todo expect(stamps.orders.orders_grid.grid_column(:checkbox).checked?(1)).to be(true), "Orders Grid checkbox 1 is unchecked!"
     step "Save Order Details data"
