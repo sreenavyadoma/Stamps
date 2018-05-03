@@ -1,0 +1,7 @@
+@pp_header_favicons
+Feature: PP-MVP: Header and Favicons
+
+  Background:
+    Given Start test driver
+
+  Scenario: PP: Header and Favicons Validation
