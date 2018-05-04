@@ -112,8 +112,6 @@ Feature: PP-MVP: Login Page
         Then PP: expect user is redirected to Reset Password Page
         Then PP: navigate back to previous page
 
-
-
     #Validate successful log in
         Then PP: set login page email to env value
         Then PP: set login page password to env value

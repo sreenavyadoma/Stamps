@@ -12,19 +12,19 @@ Then /^[Pp]P: [Aa] user navigates to the login page$/ do
 end
 
 Then /^[Pp]P: [Ee]xpect login page "Welcome to the" content to exist$/ do
-  expect(PartnerPortal.login_page.welcome_content).to be_present, "'Welcome to the content' DOES NOT exist on login page"
+  expect(PartnerPortal.login_page.welcome_content).to be_present, '"Welcome to the content" DOES NOT exist on login page'
 end
 
 Then /^[Pp]P: [Ee]xpect login page "stamps.com endicia" logo to exist$/ do
-  expect(PartnerPortal.login_page.sdc_endicia_logo).to be_present, "'stamps.com endicia' content DOES NOT exist on login page"
+  expect(PartnerPortal.login_page.sdc_endicia_logo).to be_present, '"stamps.com endicia" content DOES NOT exist on login page'
 end
 
 Then /^[Pp]P: [Ee]xpect login page "Partner Portal" content to exist$/ do
-  expect(PartnerPortal.login_page.partner_portal_content).to be_present, "'USPS Portal' content DOES NOT exist on login page"
+  expect(PartnerPortal.login_page.partner_portal_content).to be_present, '"USPS Portal" content DOES NOT exist on login pag'
 end
 
 Then /^[Pp]P: [Ee]xpect login page Log In button to exist$/ do
-  expect(PartnerPortal.login_page.log_in).to be_present, "Log In button DOES NOT exist on login page"
+  expect(PartnerPortal.login_page.log_in).to be_present, 'Log In button DOES NOT exist on login page'
 end
 
 Then /^[Pp]P: [Ee]xpect login page Log In button text is (.*)$/ do |str|
@@ -38,7 +38,7 @@ Then /^[Pp]P: [Uu]ser clicks Log In$/ do
 end
 
 Then /^[Pp]P: expect login page [Ff]orgot [Pp]assword link exist$/ do
-  expect(PartnerPortal.login_page.forgot_pw).to be_present, "Forgot Password? link DOES NOT exist on login page"
+  expect(PartnerPortal.login_page.forgot_pw).to be_present, 'Forgot Password? link DOES NOT exist on login page'
 end
 
 Then /^[Pp]P: [Uu]ser clicks [Ff]orgot [Pp]assword link$/ do
@@ -51,7 +51,7 @@ end
 
 
 Then /^[Pp]P: [Ee]xpect login page [Ee]mail field to exist$/ do
-  expect(PartnerPortal.login_page.email).to be_present, "Email textbox DOES NOT exist on login page"
+  expect(PartnerPortal.login_page.email).to be_present, 'Email textbox DOES NOT exist on login page'
 end
 
 
@@ -83,7 +83,7 @@ Then /^[Pp]P: [Ee]xpect login page email tooltip index (\d+) to be (.*)$/ do |in
 end
 
 Then /^[Pp]P: [Ee]xpect login page Password field to exist$/ do
-  expect(PartnerPortal.login_page.password).to be_present, "Password textbox DOES NOT exist on login page"
+  expect(PartnerPortal.login_page.password).to be_present, 'Password textbox DOES NOT exist on login page'
 end
 
 Then /^[Pp]P: set login page password to (?:env value|(.*))$/ do |str|
@@ -119,25 +119,12 @@ Then /^[Pp]P: [Ee]xpect login page error message to be$/ do |str|
 end
 
 
-Then /^[Pp]P: Expect a record (.*) event is added in Audit Records for user$/ do |log_info|
-  step "Establish Partner Portal db connection"
+Then /^[Pp]P: Expect a record (.*) event is added in Audit Records for (?:user|(.*))/ do |log_info, user|
+  step 'Establish Partner Portal db connection'
 
-  user= PartnerPortal.db_connection.execute("select PartnerUserId, EmailAddress from [dbo].[sdct_PartnerPortal_User] where EmailAddress = '#{SdcEnv.usr}'")
+  TestData.hash[:user_id] = PartnerPortal.login_page.partner_user_id_query((user.nil?) ? (SdcEnv.usr) :user)
 
-  user.each do |item|
-    TestData.hash[:user_id] = item['PartnerUserId']
-  end
-
-  log = PartnerPortal.db_connection.execute(
-      "select RecordId, LogTypeId, PartnerUserId, LogInfo, DateCreated
-     from [dbo].[sdct_PartnerPortal_Log]
-     where DateCreated = (
-     Select MAX(DateCreated) from [dbo].[sdct_PartnerPortal_Log] where PartnerUserId = #{TestData.hash[:user_id]})"
-  )
-  log.each do |item|
-    TestData.hash[:login_status] = item['LogInfo']
-    TestData.hash[:date_created] = item['DateCreated']
-  end
+  TestData.hash[:login_status], TestData.hash[:date_created] = PartnerPortal.login_page.log_info_date_created_query(TestData.hash[:user_id])
 
   step "Close partner portal db connection"
 
@@ -147,9 +134,9 @@ Then /^[Pp]P: Expect a record (.*) event is added in Audit Records for user$/ do
 end
 
 Given /^[Pp]P: [Aa] valid user is signed into Partner Portal$/ do
-  step "Start test driver"
-  step "PP: A user navigates to the login page"
-  step "PP: set login page email to env value"
-  step "PP: set login page password to env value"
-  step "PP: User clicks Log In"
+  step 'Start test driver'
+  step 'PP: A user navigates to the login page'
+  step 'PP: set login page email to env value'
+  step 'PP: set login page password to env value'
+  step 'PP: User clicks Log In'
 end
