@@ -134,9 +134,9 @@ Then /^[Pp]P: Expect a record (.*) event is added in Audit Records for (?:user|(
 end
 
 Given /^[Pp]P: [Aa] valid user is signed into Partner Portal$/ do
-  step "Start test driver"
-  step "PP: A user navigates to the login page"
-  step "PP: set login page email to env value"
-  step "PP: set login page password to env value"
-  step "PP: User clicks Log In"
+  step 'Start test driver'
+  step 'PP: A user navigates to the login page'
+  step 'PP: set login page email to env value'
+  step 'PP: set login page password to env value'
+  step 'PP: User clicks Log In'
 end
