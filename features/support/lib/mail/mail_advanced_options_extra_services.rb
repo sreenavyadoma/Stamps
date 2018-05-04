@@ -109,7 +109,7 @@ module Stamps
           if @return_receipt.nil? || !@return_receipt.present?
             checkbox = driver.span(id: "sdc-extraserviceswin-rrcheckbox-displayEl")
             verify = driver.div(id: 'sdc-extraserviceswin-rrcheckbox')
-            @return_receipt = StampsCheckbox.new(checkbox, verify, "class", "checked")
+            @return_receipt = StampsCheckbox.new(checkbox, verify, 'class', 'checked')
           end
           @return_receipt
         end
@@ -118,7 +118,7 @@ module Stamps
           if @electronic_return_receipt.nil? || !@electronic_return_receipt.present?
             checkbox = driver.span(id: "sdc-extraserviceswin-rrecheckbox-displayEl")
             verify = driver.div(id: 'sdc-extraserviceswin-rrecheckbox')
-            @electronic_return_receipt = StampsCheckbox.new(checkbox, verify, "class", "checked")
+            @electronic_return_receipt = StampsCheckbox.new(checkbox, verify, 'class', 'checked')
           end
           @electronic_return_receipt
         end
@@ -127,7 +127,7 @@ module Stamps
           if @restricted_delivery.nil? || !@restricted_delivery.present?
             checkbox = driver.span(id: "sdc-extraserviceswin-rdcheckbox-displayEl")
             verify = driver.div(id: 'sdc-extraserviceswin-rdcheckbox')
-            @restricted_delivery = StampsCheckbox.new(checkbox, verify, "class", "checked")
+            @restricted_delivery = StampsCheckbox.new(checkbox, verify, 'class', 'checked')
           end
           @restricted_delivery
         end
@@ -146,7 +146,7 @@ module Stamps
           if @non_delivery_notice.nil? || !@non_delivery_notice.present?
             checkbox = driver.span(id: "sdc-extraserviceswin-nndcheckbox-displayEl")
             verify = driver.div(id: 'sdc-extraserviceswin-nndcheckbox')
-            @non_delivery_notice = StampsCheckbox.new(checkbox, verify, "class", "checked")
+            @non_delivery_notice = StampsCheckbox.new(checkbox, verify, 'class', 'checked')
           end
           @non_delivery_notice
         end
@@ -155,7 +155,7 @@ module Stamps
           if @fragile.nil? || !@fragile.present?
             checkbox = driver.span(id: "sdc-extraserviceswin-shcheckbox-displayEl")
             verify = driver.div(id: 'sdc-extraserviceswin-shcheckbox')
-            @fragile = StampsCheckbox.new(checkbox, verify, "class", "checked")
+            @fragile = StampsCheckbox.new(checkbox, verify, 'class', 'checked')
           end
           @fragile
         end
@@ -164,7 +164,7 @@ module Stamps
           if @non_rectangular.nil? || !@non_rectangular.present?
             checkbox = driver.span(id: "sdc-extraserviceswin-notrectangularcheckbox-displayEl")
             verify = driver.div(id: 'sdc-extraserviceswin-notrectangularcheckbox')
-            @non_rectangular = StampsCheckbox.new(checkbox, verify, "class", "checked")
+            @non_rectangular = StampsCheckbox.new(checkbox, verify, 'class', 'checked')
           end
           @non_rectangular
         end
@@ -173,7 +173,7 @@ module Stamps
           if @return_receipt_merchandise.nil? || !@return_receipt_merchandise.present?
             checkbox = driver.span(id: "sdc-extraserviceswin-rrmcheckbox-displayEl")
             verify = driver.div(id: 'sdc-extraserviceswin-rrmcheckbox')
-            @return_receipt_merchandise = StampsCheckbox.new(checkbox, verify, "class", "checked")
+            @return_receipt_merchandise = StampsCheckbox.new(checkbox, verify, 'class', 'checked')
           end
           @return_receipt_merchandise
         end

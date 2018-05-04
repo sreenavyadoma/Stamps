@@ -238,6 +238,7 @@ generate_username: --tags @generate_username --guess  JENKINS=true HEALTHCHECK=t
 healthcheck: --tags @healthcheck --guess  JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
 authentication: --tags @authentication --guess  JENKINS=true HEALTHCHECK=true WEB_APP=orders
+authentication: --tags @authentication --guess  JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
 customs_form_auto_calculate_weight: --tags @customs_form_auto_calculate_weight --guess  JENKINS=true HEALTHCHECK=true WEB_APP=orders
 whats_new: --tags @whats_new --guess  JENKINS=true HEALTHCHECK=true WEB_APP=orders

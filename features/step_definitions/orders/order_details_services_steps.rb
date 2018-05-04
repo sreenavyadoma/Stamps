@@ -9,20 +9,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]ervice to (.*)$/ do |str|
     service.selection_obj.click unless service.selection_obj.class_disabled?
     expect('expect Order Details service is correct')
 
-    5.times do
-
-      if service.text_field.text_value && service.text_field.text_value.include?(str)
-        TestData.hash[:service] = service.text_field.text_value.parse_service_name
-        break
-      end
-      TestData.hash[:service] ||= ''
-    end
-    expect(TestData.hash[:service]).to eql(str)
-    20.times do
-      step 'blur out on Order Details form'
-      sleep(0.015)
-      break if service.cost.text_value.dollar_amount_str.to_f.round(2) > 0
-    end
+    service.cost.text_value.dollar_amount_str.to_f.round(2) > 0
 
   else
     TestData.hash[:service] = stamps.orders.order_details.service.select(str).parse_service_name

@@ -197,40 +197,40 @@ module Stamps
         param.sdc_app.should_not be nil
         checkbox_element = driver.label(css: "label[for=sdc-purchasewin-10dradio][id$=boxLabelEl]")
         verify_element = checkbox_element.parent.parent.parent
-        attribute = "class"
-        verify_element_attrib = "checked"
+        attribute = 'class'
+        verify_element_attrib = 'checked'
         StampsRadio.new(checkbox_element, verify_element, attribute, verify_element_attrib)
       end
 
       def buy_25
         checkbox_element = driver.label(css: "label[for=sdc-purchasewin-25dradio][id$=boxLabelEl]")
         verify_element = checkbox_element.parent.parent.parent
-        attribute = "class"
-        verify_element_attrib = "checked"
+        attribute = 'class'
+        verify_element_attrib = 'checked'
         StampsRadio.new(checkbox_element, verify_element, attribute, verify_element_attrib)
       end
 
       def buy_50
         checkbox_element = driver.label(css: "label[for=sdc-purchasewin-50dradio][id$=boxLabelEl]")
         verify_element = checkbox_element.parent.parent.parent
-        attribute = "class"
-        verify_element_attrib = "checked"
+        attribute = 'class'
+        verify_element_attrib = 'checked'
         StampsRadio.new(checkbox_element, verify_element, attribute, verify_element_attrib)
       end
 
       def buy_100
         checkbox_element = driver.label(css: "label[for=sdc-purchasewin-100dradio][id$=boxLabelEl]")
         verify_element = checkbox_element.parent.parent.parent
-        attribute = "class"
-        verify_element_attrib = "checked"
+        attribute = 'class'
+        verify_element_attrib = 'checked'
         StampsRadio.new(checkbox_element, verify_element, attribute, verify_element_attrib)
       end
 
       def buy_other value
         checkbox_element = driver.label(css: "label[for=sdc-purchasewin-otherdradio][id$=boxLabelEl]")
         verify_element = checkbox_element.parent.parent.parent
-        attribute = "class"
-        verify_element_attrib = "checked"
+        attribute = 'class'
+        verify_element_attrib = 'checked'
         checkbox = StampsRadio.new(checkbox_element, verify_element, attribute, verify_element_attrib)
 
         textbox = StampsTextbox.new(driver.text_field id: "sdc-purchasewin-otheramount")

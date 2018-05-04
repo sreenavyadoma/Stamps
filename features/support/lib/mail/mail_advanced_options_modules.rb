@@ -74,7 +74,7 @@ module Stamps
           if cache[:hide_label_value].nil? || !cache[:hide_label_value].present?
             cache[:hide_label_value] = StampsCheckbox.new(driver.span(css: "[id^=printPreviewPanel-] div:nth-child(1)>div>div>span"),
                                                           driver.div(text: "Hide Label Value"),
-                                                          "class", "checked")
+                                                          'class', 'checked')
           end
           cache[:hide_label_value]
         end
@@ -85,7 +85,7 @@ module Stamps
           if cache[:print_reference_number].nil? || !cache[:print_reference_number].present?
             cache[:print_reference_number] = StampsCheckbox.new(driver.span(css: "[id^=printPreviewPanel-] div:nth-child(3)>div>div>span"),
                                                                 driver.div(text: "Print Reference #"),
-                                                                "class", "checked")
+                                                                'class', 'checked')
           end
           cache[:print_reference_number]
         end
@@ -96,7 +96,7 @@ module Stamps
           if cache[:print_receipt].nil? || !cache[:print_receipt].present?
             cache[:print_receipt] = StampsCheckbox.new(driver.span(css: "[id^=printPreviewPanel-] div:nth-child(2)>div>div>span"),
                                                        driver.div(text: "Print Receipt"),
-                                                       "class", "checked")
+                                                       'class', 'checked')
           end
           cache[:print_receipt]
         end
@@ -148,7 +148,7 @@ module Stamps
           if cache[:calculate_postage].nil? || !cache[:calculate_postage].present?
             cache[:calculate_postage] = StampsRadio.new(driver.span(id: 'sdc-mainpanel-calculatepostageradio-displayEl'),
                                                         driver.div(id: 'sdc-mainpanel-calculatepostageradio'),
-                                                        "class", "checked")
+                                                        'class', 'checked')
           end
           cache[:calculate_postage]
         end
@@ -157,7 +157,7 @@ module Stamps
           if cache[:specify_postage].nil? || !cache[:specify_postage].present?
             cache[:specify_postage] = StampsRadio.new(driver.span(id: 'sdc-mainpanel-specifypostageradio-displayEl'),
                                                       driver.div(id: 'sdc-mainpanel-specifypostageradio'),
-                                                      "class", "checked")
+                                                      'class', 'checked')
           end
           cache[:specify_postage]
         end
@@ -194,7 +194,7 @@ module Stamps
           if cache[:return_address].nil? || !cache[:return_address].present?
             cache[:return_address] = StampsCheckbox.new(driver.span(css: "[id^=printPreviewPanel-][id$=-innerCt] div:nth-child(5)>div>div>div:nth-child(2)>div>div>span"),
                                                         driver.div(css: "[id^=printPreviewPanel-] div:nth-child(5)>div>div>div:nth-child(2)"),
-                                                        "class", "checked")
+                                                        'class', 'checked')
           end
           cache[:return_address]
         end
@@ -203,7 +203,7 @@ module Stamps
           if cache[:delivery_address].nil? || !cache[:delivery_address].present?
             cache[:delivery_address] = StampsCheckbox.new(driver.span(css: "[id^=printPreviewPanel-] div:nth-child(5)>div>div>div:nth-child(3)>div>div>span"),
                                                           driver.div(css: "[id^=printPreviewPanel-] div:nth-child(5)>div>div>div:nth-child(3)"),
-                                                          "class", "checked")
+                                                          'class', 'checked')
           end
           cache[:delivery_address]
         end
@@ -212,7 +212,7 @@ module Stamps
           if cache[:postage].nil? || !cache[:postage].present?
             cache[:postage] = StampsCheckbox.new(driver.span(css: "[id^=printPreviewPanel-] div:nth-child(5)>div>div>div:nth-child(4)>div>div>span"),
                                                  driver.div(css: "[id^=printPreviewPanel-] div:nth-child(5)>div>div>div:nth-child(4)"),
-                                                 "class", "checked")
+                                                 'class', 'checked')
           end
           cache[:postage]
         end
@@ -233,7 +233,7 @@ module Stamps
           if cache[:restricted_delivery].nil? || !cache[:restricted_delivery].present?
             cache[:restricted_delivery] = StampsCheckbox.new(driver.span(css: "span[class*=sdc-mainpanel-rdcheckbox]"),
                                                              driver.div(css: "[id^=certifiedmailview-] div:nth-child(4) [class*=x-form-type-checkbox]"),
-                                                             "class","checked")
+                                                             'class','checked')
           end
           cache[:restricted_delivery]
         end

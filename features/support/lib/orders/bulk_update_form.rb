@@ -401,10 +401,10 @@ module Stamps
                 begin
                   if selection_label.present?
                     if disabled_field.present?
-                      result = disabled_field.attribute_value("class").include? "disabled"
+                      result = disabled_field.attribute_value('class').include? "disabled"
                       sleep(0.35)
-                      result = disabled_field.attribute_value("class").include? "disabled"
-                      result = disabled_field.attribute_value("class").include? "disabled"
+                      result = disabled_field.attribute_value('class').include? "disabled"
+                      result = disabled_field.attribute_value('class').include? "disabled"
                       dropdown.click
                       return result
                     end
