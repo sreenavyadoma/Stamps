@@ -119,25 +119,30 @@ Then /^[Pp]P: [Ee]xpect login page error message to be$/ do |str|
 end
 
 
-Then /^[Pp]P: Expect a record (.*) event is added in Audit Records for user$/ do |log_info|
+Then /^[Pp]P: Expect a record (.*) event is added in Audit Records for (?:user|(.*))/ do |log_info, user|
   step "Establish Partner Portal db connection"
 
-  user= PartnerPortal.db_connection.execute("select PartnerUserId, EmailAddress from [dbo].[sdct_PartnerPortal_User] where EmailAddress = '#{SdcEnv.usr}'")
+  #user= PartnerPortal.db_connection.execute("select PartnerUserId, EmailAddress from [dbo].[sdct_PartnerPortal_User] where EmailAddress = '#{SdcEnv.usr}'")
 
-  user.each do |item|
-    TestData.hash[:user_id] = item['PartnerUserId']
-  end
+  # user.each do |item|
+  #   TestData.hash[:user_id] = item['PartnerUserId']
+  # end
 
-  log = PartnerPortal.db_connection.execute(
-      "select RecordId, LogTypeId, PartnerUserId, LogInfo, DateCreated
-     from [dbo].[sdct_PartnerPortal_Log]
-     where DateCreated = (
-     Select MAX(DateCreated) from [dbo].[sdct_PartnerPortal_Log] where PartnerUserId = #{TestData.hash[:user_id]})"
-  )
-  log.each do |item|
-    TestData.hash[:login_status] = item['LogInfo']
-    TestData.hash[:date_created] = item['DateCreated']
-  end
+  # log = PartnerPortal.db_connection.execute(
+  #     "select RecordId, LogTypeId, PartnerUserId, LogInfo, DateCreated
+  #     from [dbo].[sdct_PartnerPortal_Log]
+  #     where DateCreated = (
+  #     Select MAX(DateCreated) from [dbo].[sdct_PartnerPortal_Log] where PartnerUserId = #{TestData.hash[:user_id]})"
+  # )
+  # log.each do |item|
+  #   TestData.hash[:login_status] = item['LogInfo']
+  #   TestData.hash[:date_created] = item['DateCreated']
+  # end
+
+  TestData.hash[:user_id] = PartnerPortal.login_page.partner_user_id_query((user.nil?) ? (SdcEnv.usr) :user)
+
+
+
 
   step "Close partner portal db connection"
 

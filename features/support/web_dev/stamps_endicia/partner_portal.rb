@@ -33,6 +33,30 @@ module PartnerPortal
 
     page_url { |env| "https://partner.#{env}.stamps.com/" }
 
+    def  partner_user_id_query(user)
+      user = PartnerPortal.db_connection.execute("select PartnerUserId, EmailAddress from [dbo].[sdct_PartnerPortal_User] where EmailAddress = '#{user}'")
+
+      user.each do |item|
+        return item['PartnerUserId']
+      end
+
+    end
+
+    def log_query(user_id)
+      log = PartnerPortal.db_connection.execute(
+          "select RecordId, LogTypeId, PartnerUserId, LogInfo, DateCreated
+          from [dbo].[sdct_PartnerPortal_Log]
+          where DateCreated = (
+          Select MAX(DateCreated) from [dbo].[sdct_PartnerPortal_Log] where PartnerUserId = #{user_id})"
+      )
+      log.each do |item|
+        TestData.hash[:login_status] = item['LogInfo']
+        TestData.hash[:date_created] = item['DateCreated']
+      end
+    end
+
+
+
     def self.visit
       super(case SdcEnv.env
             when :qacc
@@ -95,7 +119,7 @@ module PartnerPortal
       @reset_password_page = PPResetPasswordPage.new
     end
 
-    def stamps_endicia_common_page
+    def pp_common_page
       @stamps_endicia_common_page = PartnerPortal::Common.new
     end
 
