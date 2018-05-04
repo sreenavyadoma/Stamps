@@ -55,11 +55,6 @@ Then /^visit Mail$/ do
   SdcMailLandingPage.visit(env)
 end
 
-Then /^[Ss]ign-in to SDC Website$/ do
-  step "sign-in to Orders as #{usr}, #{pw}" if SdcEnv.sdc_app == :orders
-  step "sign-in to Mail as #{usr}, #{pw}" if SdcEnv.sdc_app == :mail
-end
-
 Then /^[Ss]ign-out of SDC [Ww]ebsite$/ do
   SdcNavigation.user_drop_down.signed_in_user.safe_wait_until_present(timeout: 5)
   SdcNavigation.user_drop_down.signed_in_user.hover
