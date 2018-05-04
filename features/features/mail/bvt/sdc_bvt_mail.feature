@@ -22,7 +22,7 @@ Feature:  Mail BVT - Authentication
     Then visit Mail
     Then open sign in modal in Mail
     Then expect username is present in Mail username field
-    Then expect Remember Username to be checked
+    Then expect Remember Username is checked
 
   @mail_authentication
   Scenario: Mail - Invalid Credentials

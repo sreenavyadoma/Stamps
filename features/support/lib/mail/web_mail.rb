@@ -80,5 +80,6 @@ module Stamps
         print_media_obj.wait_until_present(*args)
       end
     end
+
   end
 end

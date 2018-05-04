@@ -64,7 +64,7 @@ end
 Then /^[Pp]P: set login page email to (?:env value|(.*))$/ do |str|
   email =  PartnerPortal.login_page.email
   email.wait_until_present(timeout: 5)
-  email.set(TestData.hash[:email]=(str.nil?)?(SdcEnv.usr):str)
+  email.set(TestData.hash[:email] = (str.nil?) ? (SdcEnv.usr) : str)
 end
 
 
@@ -89,7 +89,7 @@ end
 Then /^[Pp]P: set login page password to (?:env value|(.*))$/ do |str|
   password =  PartnerPortal.login_page.password
   password.wait_until_present(timeout: 5)
-  password.set(TestData.hash[:password]=(str.nil?)?(SdcEnv.pw):str)
+  password.set(TestData.hash[:password] = (str.nil?) ? (SdcEnv.pw) : str)
 end
 
 
@@ -119,25 +119,12 @@ Then /^[Pp]P: [Ee]xpect login page error message to be$/ do |str|
 end
 
 
-Then /^[Pp]P: Expect a record (.*) event is added in Audit Records for user$/ do |log_info|
+Then /^[Pp]P: Expect a record (.*) event is added in Audit Records for (?:user|(.*))/ do |log_info, user|
   step "Establish Partner Portal db connection"
 
-  user= PartnerPortal.db_connection.execute("select PartnerUserId, EmailAddress from [dbo].[sdct_PartnerPortal_User] where EmailAddress = '#{SdcEnv.usr}'")
+  TestData.hash[:user_id] = PartnerPortal.login_page.partner_user_id_query((user.nil?) ? (SdcEnv.usr) :user)
 
-  user.each do |item|
-    TestData.hash[:user_id] = item['PartnerUserId']
-  end
-
-  log = PartnerPortal.db_connection.execute(
-      "select RecordId, LogTypeId, PartnerUserId, LogInfo, DateCreated
-     from [dbo].[sdct_PartnerPortal_Log]
-     where DateCreated = (
-     Select MAX(DateCreated) from [dbo].[sdct_PartnerPortal_Log] where PartnerUserId = #{TestData.hash[:user_id]})"
-  )
-  log.each do |item|
-    TestData.hash[:login_status] = item['LogInfo']
-    TestData.hash[:date_created] = item['DateCreated']
-  end
+  TestData.hash[:login_status], TestData.hash[:date_created] = PartnerPortal.login_page.log_info_date_created_query(TestData.hash[:user_id])
 
   step "Close partner portal db connection"
 
