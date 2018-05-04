@@ -126,7 +126,6 @@ Then /^[Pp]P: Expect a record (.*) event is added in Audit Records for (?:user|(
 
   TestData.hash[:login_status], TestData.hash[:date_created] = PartnerPortal.login_page.log_info_date_created_query(TestData.hash[:user_id])
 
-
   step "Close partner portal db connection"
 
   expect(TestData.hash[:date_created]).to be > TestData.hash[:system_date]
