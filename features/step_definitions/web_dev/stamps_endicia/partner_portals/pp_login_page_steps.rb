@@ -120,7 +120,7 @@ end
 
 
 Then /^[Pp]P: Expect a record (.*) event is added in Audit Records for (?:user|(.*))/ do |log_info, user|
-  step "Establish Partner Portal db connection"
+  step 'Establish Partner Portal db connection'
 
   TestData.hash[:user_id] = PartnerPortal.login_page.partner_user_id_query((user.nil?) ? (SdcEnv.usr) :user)
 
