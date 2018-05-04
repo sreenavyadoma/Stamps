@@ -24,16 +24,21 @@ Then /^[Pp]P: set window to large viewport$/ do
 end
 
 Then /^[Pp]P: [Ee]xpect Stamps Endicia Partner Portal Logo exists$/ do
-  if SdcEnv.browser
+    if SdcEnv.mobile
+      expect(PartnerPortal.pp_common_page.sdc_endicia_logo_mobile). to be_present, "Stamps Endicia Partner Portal Logo header DOES NOT exist mobile mode"
+    end
+
     expect(PartnerPortal.pp_common_page.sdc_endicia_logo_browser). to be_present, "Stamps Endicia Partner Portal Logo header DOES NOT exist browser mode"
-  else
-    expect(PartnerPortal.pp_common_page.sdc_endicia_logo_mobile). to be_present, "Stamps Endicia Partner Portal Logo header DOES NOT exist mobile mode"
-  end
 end
 
-Then /^[Pp]P: click on Stamps Endicia Partner Portal logo$/ do
-  PartnerPortal.stamps_endicia_common_page.sdc_endicia_logo_browser.send_keys(:enter)
+Then /^[Pp]P: click on global header$/ do
+  PartnerPortal.stamps_endicia_common_page.global_header.send_keys(:enter)
 end
+
+Then /^[Pp]P: [Ee]xpect global  header exists$/ do
+  expect(PartnerPortal.pp_common_page.global_header).to be_present, "Global header DOES NOT exist"
+end
+
 
 Then /^[Pp]P: navigate back to previous page$/ do
 SdcPage.browser.back
