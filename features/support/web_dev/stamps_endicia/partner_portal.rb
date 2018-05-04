@@ -33,7 +33,7 @@ module PartnerPortal
 
     page_url { |env| "https://partner.#{env}.stamps.com/" }
 
-    def  partner_user_id_query(user)
+    def partner_user_id_query(user)
       user = PartnerPortal.db_connection.execute("select PartnerUserId, EmailAddress from [dbo].[sdct_PartnerPortal_User] where EmailAddress = '#{user}'")
 
       user.each do |item|
