@@ -445,8 +445,18 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(
   step 'show order details form ship-to fields'
   TestData.hash[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address, SdcEnv.env))
   if SdcEnv.new_framework
-    address = SdcOrders.order_details.ship_to.domestic.address
+    order_details = SdcOrders.order_details
+    address = order_details.ship_to.domestic.address
     address.set(TestData.hash[:ship_to_domestic])
+
+    order_details.weight_label.blur_out(ctr: 2)
+    order_details.service_label.blur_out(ctr: 2)
+    order_details.reference_num.blur_out(ctr: 2)
+    order_details.ship_to_label.blur_out(ctr: 2)
+    order_details.order_id.blur_out(ctr: 2)
+    order_details.title.blur_out(ctr: 2)
+
+    order_details.ship_to.domestic.show_less.wait_until_present(timeout: 5)
 
   else
     stamps.orders.order_details.ship_to.domestic.set(TestData.hash[:ship_to_domestic])
