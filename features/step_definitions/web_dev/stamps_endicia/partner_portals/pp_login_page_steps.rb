@@ -12,19 +12,19 @@ Then /^[Pp]P: [Aa] user navigates to the login page$/ do
 end
 
 Then /^[Pp]P: [Ee]xpect login page "Welcome to the" content to exist$/ do
-  expect(PartnerPortal.login_page.welcome_content).to be_present, "'Welcome to the content' DOES NOT exist on login page"
+  expect(PartnerPortal.login_page.welcome_content).to be_present, '"Welcome to the content" DOES NOT exist on login page'
 end
 
 Then /^[Pp]P: [Ee]xpect login page "stamps.com endicia" logo to exist$/ do
-  expect(PartnerPortal.login_page.sdc_endicia_logo).to be_present, "'stamps.com endicia' content DOES NOT exist on login page"
+  expect(PartnerPortal.login_page.sdc_endicia_logo).to be_present, '"stamps.com endicia" content DOES NOT exist on login page'
 end
 
 Then /^[Pp]P: [Ee]xpect login page "Partner Portal" content to exist$/ do
-  expect(PartnerPortal.login_page.partner_portal_content).to be_present, "'USPS Portal' content DOES NOT exist on login page"
+  expect(PartnerPortal.login_page.partner_portal_content).to be_present, '"USPS Portal" content DOES NOT exist on login pag'
 end
 
 Then /^[Pp]P: [Ee]xpect login page Log In button to exist$/ do
-  expect(PartnerPortal.login_page.log_in).to be_present, "Log In button DOES NOT exist on login page"
+  expect(PartnerPortal.login_page.log_in).to be_present, 'Log In button DOES NOT exist on login page'
 end
 
 Then /^[Pp]P: [Ee]xpect login page Log In button text is (.*)$/ do |str|
@@ -38,7 +38,7 @@ Then /^[Pp]P: [Uu]ser clicks Log In$/ do
 end
 
 Then /^[Pp]P: expect login page [Ff]orgot [Pp]assword link exist$/ do
-  expect(PartnerPortal.login_page.forgot_pw).to be_present, "Forgot Password? link DOES NOT exist on login page"
+  expect(PartnerPortal.login_page.forgot_pw).to be_present, 'Forgot Password? link DOES NOT exist on login page'
 end
 
 Then /^[Pp]P: [Uu]ser clicks [Ff]orgot [Pp]assword link$/ do
@@ -51,7 +51,7 @@ end
 
 
 Then /^[Pp]P: [Ee]xpect login page [Ee]mail field to exist$/ do
-  expect(PartnerPortal.login_page.email).to be_present, "Email textbox DOES NOT exist on login page"
+  expect(PartnerPortal.login_page.email).to be_present, 'Email textbox DOES NOT exist on login page'
 end
 
 
@@ -83,7 +83,7 @@ Then /^[Pp]P: [Ee]xpect login page email tooltip index (\d+) to be (.*)$/ do |in
 end
 
 Then /^[Pp]P: [Ee]xpect login page Password field to exist$/ do
-  expect(PartnerPortal.login_page.password).to be_present, "Password textbox DOES NOT exist on login page"
+  expect(PartnerPortal.login_page.password).to be_present, 'Password textbox DOES NOT exist on login page'
 end
 
 Then /^[Pp]P: set login page password to (?:env value|(.*))$/ do |str|
