@@ -139,14 +139,8 @@ module SdcMail
     page_object(:drop_down, required: :true, timeout: 30) { {xpath: ''} }
     page_object(:manage_printing_options_lov, required: :true, timeout: 30) { {xpath: '//*[text()="Manage Printing Options..."]'} }
 
-
     def upgrade_plan
       SdcUpgradePlan.new
-    end
-
-    def manage_printing_options_lov
-      (cache[:manage_printing_options_lov].nil? || !cache[:manage_printing_options_lov].present?) ? cache[:manage_printing_options_lov] = StampsField.new(
-          driver.li(text: 'Manage Printing Options...')) : cache[:manage_printing_options_lov]
     end
 
     def manage_printing_options
