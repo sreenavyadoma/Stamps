@@ -449,12 +449,14 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(
     address = order_details.ship_to.domestic.address
     address.set(TestData.hash[:ship_to_domestic])
 
-    order_details.weight_label.blur_out(ctr: 2)
-    order_details.service_label.blur_out(ctr: 2)
-    order_details.reference_num.blur_out(ctr: 2)
-    order_details.ship_to_label.blur_out(ctr: 2)
-    order_details.order_id.blur_out(ctr: 2)
-    order_details.title.blur_out(ctr: 2)
+    address.blur_out(ctr: 3)
+    order_details.weight_label.blur_out(ctr: 3)
+    order_details.service_label.blur_out(ctr: 3)
+    order_details.reference_num.blur_out(ctr: 3)
+    order_details.ship_to_label.blur_out(ctr: 3)
+    order_details.order_id.blur_out(ctr: 3)
+    order_details.title.blur_out(ctr: 3)
+    address.blur_out(ctr: 3)
 
     order_details.ship_to.domestic.show_less.wait_until_present(timeout: 5)
 
