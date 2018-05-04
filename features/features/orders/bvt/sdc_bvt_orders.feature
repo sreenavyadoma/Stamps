@@ -33,7 +33,6 @@ Feature:  BVT tests for Orders
     Then add new order
     Then set Order Details Ship-To to random address between zone 9
     Then set Order Details service to PM Package
-    Then expect Order Details service is PM Package
     Then set Order Details Pounds to 1
     Then set Order Details Ounces to 1
     Then set Order Details Insure-For to $1.00

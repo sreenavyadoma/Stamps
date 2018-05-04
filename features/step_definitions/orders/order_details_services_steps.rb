@@ -1,12 +1,13 @@
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]ervice to (.*)$/ do |str|
   step 'expect Order Details is present'
+  TestData.hash[:service] = str
   if SdcEnv.new_framework
     service = SdcOrders.order_details.service
     service.selection(str)
     service.drop_down.click unless service.selection_obj.present?
     service.selection_obj.click unless service.selection_obj.class_disabled?
-
+    expect('expect Order Details service is correct')
 
     5.times do
 
@@ -36,12 +37,11 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]ervice to (.*)$/ do |str|
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ss]ervice is (?:correct|(.*))$/ do |str|
-  step 'expect Order Details is present'
-  str = '' if str.eql?('an empty string')
+  service = str || TestData.hash[:service]
   if SdcEnv.new_framework
-    expect()
+    expect(SdcOrders.order_details.service.text_field.text_value).to include(service)
   else
-    expect(stamps.orders.order_details.service.textbox.text.parse_service_name).to eql((str.nil?) ? TestData.hash[:service] : str)
+    expect(stamps.orders.order_details.service.textbox.text.parse_service_name).to eql((service.nil?) ? TestData.hash[:service] : service)
   end
 end
 
