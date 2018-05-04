@@ -31,8 +31,6 @@ module PartnerPortal
     #Forgot Password? link
     link(:forgot_pw) { {xpath: "//a[@href='/reset-password/request']"} }
 
-    page_url { |env| "https://partner.#{env}.stamps.com/" }
-
     def partner_user_id_query(user)
       user = PartnerPortal.db_connection.execute("select PartnerUserId, EmailAddress from [dbo].[sdct_PartnerPortal_User] where EmailAddress = '#{user}'")
 
@@ -55,7 +53,7 @@ module PartnerPortal
 
     end
 
-
+    page_url { |env| "https://partner.#{env}.stamps.com/" }
 
     def self.visit
       super(case SdcEnv.env

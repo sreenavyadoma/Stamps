@@ -24,7 +24,11 @@ Then /^[Pp]P: set window to large viewport$/ do
 end
 
 Then /^[Pp]P: [Ee]xpect Stamps Endicia Partner Portal Logo exists$/ do
-  expect(PartnerPortal.pp_common_page.sdc_endicia_logo_browser). to be_present, "Stamps Endicia Partner Portal Logo header DOES NOT exist on dashboard page"
+  if SdcEnv.browser
+    expect(PartnerPortal.pp_common_page.sdc_endicia_logo_browser). to be_present, "Stamps Endicia Partner Portal Logo header DOES NOT exist browser mode"
+  else
+    expect(PartnerPortal.pp_common_page.sdc_endicia_logo_mobile). to be_present, "Stamps Endicia Partner Portal Logo header DOES NOT exist mobile mode"
+  end
 end
 
 Then /^[Pp]P: click on Stamps Endicia Partner Portal logo$/ do
