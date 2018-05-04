@@ -1,5 +1,6 @@
 module PartnerPortal
 
+
   class PPLoginPage < SdcPage
     #Welcome content
     page_object(:welcome_content) { {xpath: "//p[contains(text(),'Welcome to the')]"} }
@@ -81,6 +82,7 @@ module PartnerPortal
   end
 
   class << self
+
     def login_page
       @login_page = PPLoginPage.new
     end
