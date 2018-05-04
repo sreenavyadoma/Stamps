@@ -35,8 +35,8 @@ module Stamps
           def map_rakuten_sku
             checkbox_field = (driver.checkboxes(css: "input[type=button][id^=checkbox]").last)
             verify_field = checkbox_field.parent.parent.parent.parent
-            attribute_name = "class"
-            attribute_value = "checked"
+            attribute_name = 'class'
+            attribute_value = 'checked'
             StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
           end
 

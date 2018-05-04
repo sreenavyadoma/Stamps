@@ -10,27 +10,27 @@ module SdcOrders
     end
 
     def order_details
-      @order_details = SdcOrderDetails.new
+      SdcOrderDetails.new
     end
 
     def bulk_update
-      @bulk_update = nil
+      raise ArgumentError, 'Not Implemented'
     end
 
     def toolbar
-      @toolbar = SdcOrdersToolbar.new
+      SdcOrdersToolbar.new
     end
 
     def grid
-      @grid = SdcOrdersGrid.new
+      SdcOrdersGrid.new
     end
 
     def filter_panel
-      @filter_panel = SdcOrdersFilterPanel.new
+      SdcOrdersFilterPanel.new
     end
 
     def modals
-      @modals = SdcOrdersModals.new
+      SdcOrdersModals.new
     end
   end
 end
