@@ -93,7 +93,7 @@ module SdcOrders
     end
   end
 
-  class SdcOrderDetailsShipTo < SdcPageyea
+  class SdcOrderDetailsShipTo < SdcPage
     page_object(:show_more) { {xpath: '//div[starts-with(@id, "shiptoview-addressCollapsed")]//a'} }
 
     def domestic
