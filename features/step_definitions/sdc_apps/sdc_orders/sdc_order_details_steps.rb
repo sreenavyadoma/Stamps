@@ -1,4 +1,32 @@
 
+Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
+  step 'show order details form ship-to fields'
+  TestData.hash[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address, SdcEnv.env))
+  if SdcEnv.new_framework
+    order_details = SdcOrders.order_details
+    address = order_details.ship_to.domestic.address
+    address.set(TestData.hash[:ship_to_domestic])
+
+    address.blur_out(ctr: 3)
+    order_details.weight_label.blur_out(ctr: 3)
+    order_details.service_label.blur_out(ctr: 3)
+    order_details.reference_num.blur_out(ctr: 3)
+    order_details.ship_to_label.blur_out(ctr: 3)
+    order_details.order_id.blur_out(ctr: 3)
+    order_details.title.blur_out(ctr: 3)
+    order_details.service.drop_down.click
+    order_details.service.drop_down.click
+    address.blur_out(ctr: 3)
+    order_details.ship_to.domestic.show_less.safe_wait_until_present(timeout: 3)
+
+  else
+    stamps.orders.order_details.ship_to.domestic.set(TestData.hash[:ship_to_domestic])
+  end
+  #step 'blur out on Order Details form'
+  step 'Save Order Details data'
+  step 'hide order details form Ship-To fields'
+end
+
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]ervice to (.*)$/ do |str|
   step 'expect Order Details is present'
   TestData.hash[:service] = str
@@ -440,34 +468,6 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Ff]rom to (?:Manage Shipping Addresse
     end
   end
 end
-
-Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
-  step 'show order details form ship-to fields'
-  TestData.hash[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address, SdcEnv.env))
-  if SdcEnv.new_framework
-    order_details = SdcOrders.order_details
-    address = order_details.ship_to.domestic.address
-    address.set(TestData.hash[:ship_to_domestic])
-
-    address.blur_out(ctr: 3)
-    order_details.weight_label.blur_out(ctr: 3)
-    order_details.service_label.blur_out(ctr: 3)
-    order_details.reference_num.blur_out(ctr: 3)
-    order_details.ship_to_label.blur_out(ctr: 3)
-    order_details.order_id.blur_out(ctr: 3)
-    order_details.title.blur_out(ctr: 3)
-    address.blur_out(ctr: 3)
-
-    order_details.ship_to.domestic.show_less.wait_until_present(timeout: 5)
-
-  else
-    stamps.orders.order_details.ship_to.domestic.set(TestData.hash[:ship_to_domestic])
-  end
-  #step 'blur out on Order Details form'
-  step 'Save Order Details data'
-  step 'hide order details form Ship-To fields'
-end
-
 # @service_blur_out_field = StampsField.new(driver.label(text: 'Service:')) if @service_blur_out_field.nil? || !@service_blur_out_field.present?
 # @weight_blur_out_field = StampsField.new(driver.label(text: 'Weight:')) if @weight_blur_out_field.nil? || !@weight_blur_out_field.present?
 
