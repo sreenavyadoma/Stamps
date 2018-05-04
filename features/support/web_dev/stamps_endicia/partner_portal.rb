@@ -42,7 +42,7 @@ module PartnerPortal
 
     end
 
-    def log_query(user_id)
+    def log_info_date_created_query(user_id)
       log = PartnerPortal.db_connection.execute(
           "select RecordId, LogTypeId, PartnerUserId, LogInfo, DateCreated
           from [dbo].[sdct_PartnerPortal_Log]
@@ -50,9 +50,9 @@ module PartnerPortal
           Select MAX(DateCreated) from [dbo].[sdct_PartnerPortal_Log] where PartnerUserId = #{user_id})"
       )
       log.each do |item|
-        TestData.hash[:login_status] = item['LogInfo']
-        TestData.hash[:date_created] = item['DateCreated']
+        return item['LogInfo'], item['DateCreated']
       end
+
     end
 
 
