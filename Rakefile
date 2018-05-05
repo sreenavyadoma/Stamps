@@ -2,6 +2,23 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
+
+#BEGIN WEB DEV
+  #BEGIN PARTNER PORTAL
+  Cucumber::Rake::Task.new(:pp_log_in_page_validation) do |t|
+    t.profile = 'pp_log_in_page_validation'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
+  Cucumber::Rake::Task.new(:pp_header_favicons) do |t|
+    t.profile = 'pp_header_favicons'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+  #END PARTNER PORTAL
+
+# END WEB DEV
+
+
 # BEGIN WEB REG
 
 Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|

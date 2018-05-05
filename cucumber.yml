@@ -3,7 +3,7 @@ default: --backtrace --profile rob_cc
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
 sign_in_win10_edge_sauce:  --tags @saucelabs_poc SAUCE_DEVICE=win10_edge_sauce LOG_LEVEL=debug WEB_APP=orders URL=prod USR=abqaprod1 PW=password1 DEBUG=true HEADLESS=true
-sign_in_macos_chrome_sauce:  --tags @saucelabs_poc SAUCE_DEVICE=macos_chrome_sauce LOG_LEVEL=debug WEB_APP=orders URL=prod USR=abqaprod1 PW=password1 DEBUG=true HEADLESS=true
+sign_in_macos_chrome_sauce:  --tags @mail_authentication SAUCE_DEVICE=macos_chrome_sauce LOG_LEVEL=debug WEB_APP=orders URL=prod USR=abqaprod1 PW=password1 DEBUG=true HEADLESS=true
 iphonex_saucelabs: --tags @saucelabs_poc SAUCE_DEVICE=iphonex_sauce LOG_LEVEL=debug WEB_APP=orders URL=prod USR=abqaprod1 PW=password
 samsung_galaxy_sauce: --tags @saucelabs_poc SAUCE_DEVICE=samsung_galaxy_sauce LOG_LEVEL=debug WEB_APP=orders URL=prod USR=abqaprod1 PW=password
 
@@ -13,7 +13,7 @@ rob_cc: --tags @bvt_orders_ship_date WEB_APP=orders BROWSER=ff JENKINS=true URL=
 rob_stg: --tags @bvt_new_order WEB_APP=orders JENKINS=true URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false USR=default PW=pass111 PRINTER=factory NEW_FRAMEWORK=true #stgee1mtqvwdc0
 rob_sc: --tags @healthcheck WEB_APP=orders JENKINS=true URL=sc --guess LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=selenium  USR=scsejsglwa PW=pass111LOG_LEVEL=debug PRINTER=factory NEW_FRAMEWORK=true # c2jinmzmu64 schl0vlbfy2673 #19  schl0vlbfy2673
 rob_dev: --tags @mail_authentication WEB_APP=orders JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false NEW_FRAMEWORK=true
-rob_mail_cc:  --tags @mail_authentication WEB_APP=mail JENKINS=true USR=cctruer0u PW=pass111 URL=cc --guess LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory NEW_FRAMEWORK=true #\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
+rob_mail_cc:  --tags @mail_authentication WEB_APP=mail JENKINS=true URL=cc --guess LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory NEW_FRAMEWORK=true DEBUG=true #\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
 rob_mail_stg: --tags @mail_authentication WEB_APP=mail JENKINS=true USR=default PW=pass111 URL=stg --guess LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory NEW_FRAMEWORK=true #stgee1mtqvwdc0
 rob_mail_sc: --tags @print_dialog_ship_date WEB_APP=mail JENKINS=true USR=default PW=pass111 URL=sc --guess LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false NEW_FRAMEWORK=true
 rob_registration: --tags @registration_normal_workflow WEB_APP=registration URL=cc --guess LOG_LEVEL=debug HEALTHCHECK=false BROWSER=chrome MAX_WINDOW=false JENKINS=true NEW_FRAMEWORK=true
@@ -37,7 +37,11 @@ google_iphonex: --tags @google MOBILE=iphonex
 #todo-Rob WebReg consider removing webapp, username, password fields
 #mhossain1_cc: --tags @registration_normal_workflow WEB_APP=orders JENKINS=true URL=cc LOG_LEVEL=info BROWSER=ff MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
 
-mhossain1_cc: --tags @registration_ui_validation_profile_page JENKINS=true URL=cc LOG_LEVEL=info BROWSER=edge MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
+#mhossain1_cc: --tags @registration_ui_validation_profile_page JENKINS=true URL=cc VERBOSE=true BROWSER=edge MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
+
+mhossain1_cc: --tags @pp_log_in_page_validation JENKINS=true URL=qacc BROWSER=ff MAX_WINDOW=true DEBUG=false USR=wteam@stamps.com PW=password1
+#mhossain1_cc: --tags @pp_header_favicons JENKINS=true URL=qacc BROWSER=ff MAX_WINDOW=true DEBUG=false USR=wteam@stamps.com PW=password1
+
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess  HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 
@@ -232,9 +236,10 @@ search_orders_on_hold: --tags @search_orders_on_hold --guess  JENKINS=true HEALT
 output_username: --tags @output_username --guess  JENKINS=true HEALTHCHECK=true WEB_APP=orders
 generate_username: --tags @generate_username --guess  JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
-healthcheck: --tags @healthcheck --guess  JENKINS=true HEALTHCHECK=true WEB_APP=orders
+healthcheck: --tags @healthcheck --guess JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
 authentication: --tags @authentication --guess  JENKINS=true HEALTHCHECK=true WEB_APP=orders
+mail_authentication: --tags @mail_authentication --guess  JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
 customs_form_auto_calculate_weight: --tags @customs_form_auto_calculate_weight --guess  JENKINS=true HEALTHCHECK=true WEB_APP=orders
 whats_new: --tags @whats_new --guess  JENKINS=true HEALTHCHECK=true WEB_APP=orders
@@ -544,3 +549,6 @@ mail_hidden_postage: --tags  @mail_hidden_postage --guess  HEALTHCHECK=true WEB_
 
 mail_bug_ordersauto_3243: --tags  @mail_bug_ordersauto_3243 --guess  HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 
+#Partner Portal
+pp_log_in_page_validation: --tags @pp_log_in_page_validation --guess JENKINS=true  MAX_WINDOW=true
+pp_header_favicons: --tags @pp_header_favicons --guess JENKINS=true  MAX_WINDOW=true

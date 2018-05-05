@@ -131,7 +131,7 @@ module Stamps
             row = number.to_i <= 0 ? 0 : number.to_i - 1
             checkbox_field = driver.text_field css: "input[name=addrAmbig][value='#{row}']"
 
-            checkbox = StampsCheckbox.new checkbox_field, checkbox_field, "checked", "checked"
+            checkbox = StampsCheckbox.new checkbox_field, checkbox_field, 'checked', 'checked'
             checkbox.check
 
             accept_button = StampsField.new driver.span text: "Accept"
@@ -582,7 +582,7 @@ module Stamps
               cache[:checkbox] = StampsCheckbox.new(
                   driver.label(text: "Insure For $:").parent.input,
                   driver.label(text: "Insure For $:").parent.divs[1],
-                  "class", "checked")
+                  'class', 'checked')
             end
             cache[:checkbox]
           end

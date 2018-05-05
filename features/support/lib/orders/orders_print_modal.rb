@@ -140,24 +140,24 @@ module Stamps
           10.times do
             begin
               left_label.click
-              break if (left_label.attribute_value "class").include? 'selected'
+              break if (left_label.attribute_value 'class').include? 'selected'
             rescue
               false
             end
           end
-          (left_label.attribute_value "class").include? 'selected'
+          (left_label.attribute_value 'class').include? 'selected'
         end
 
         def select_right_label
           10.times do
             begin
               right_label.click
-              break if (right_label.attribute_value "class").include? 'selected'
+              break if (right_label.attribute_value 'class').include? 'selected'
             rescue
               false
             end
           end
-          (right_label.attribute_value "class").include? 'selected'
+          (right_label.attribute_value 'class').include? 'selected'
         end
 
         def left_selected?
@@ -193,24 +193,24 @@ module Stamps
         def hide_postage_value
           checkbox_field = driver.span id: "sdc-printpostagewindow-hidepostagecheckbox-displayEl"
           verify_field = checkbox_field.parent.parent.parent
-          attribute = "class"
-          verify_field_attrib = "checked"
+          attribute = 'class'
+          verify_field_attrib = 'checked'
           StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
         end
 
         def email_tracking
           checkbox_field = driver.span id: "sdc-printpostagewindow-emailtrackingcheckbox-displayEl"
           verify_field = checkbox_field.parent.parent.parent
-          attribute = "class"
-          verify_field_attrib = "checked"
+          attribute = 'class'
+          verify_field_attrib = 'checked'
           StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
         end
 
         def print_reference_no
           checkbox_field = driver.span id: "sdc-printpostagewindow-printreferencenumbercheckbox-displayEl"
           verify_field = checkbox_field.parent.parent.parent
-          attribute = "class"
-          verify_field_attrib = "checked"
+          attribute = 'class'
+          verify_field_attrib = 'checked'
           StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
         end
       end
@@ -266,8 +266,8 @@ module Stamps
           verify_field = driver.div css: "div[class='x-field x-form-item x-form-item-default x-form-type-checkbox x-box-item x-field-default x-vbox-form-item x-form-item-no-label']"
           expect("USPS Terms - Don't show this again checkbox is not present").to eql "" unless verify_field.present?
 
-          attribute = "class"
-          attrib_value_check = "checked"
+          attribute = 'class'
+          attrib_value_check = 'checked'
 
           dont_show_checkbox = Stamps::WebApps::StampsCheckbox.new checkbox_field, verify_field, attribute, attrib_value_check
 

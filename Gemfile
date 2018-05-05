@@ -13,6 +13,10 @@ gem 'faker'
 gem 'sauce_whisk'
 gem 'watir_drops'
 
+group :web_dev do
+  gem 'tiny_tds'
+end
+
 group :watir do
   gem 'watir', '6.10.3'
 end

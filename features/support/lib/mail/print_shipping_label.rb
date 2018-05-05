@@ -78,19 +78,19 @@ module Stamps
       def hide_postage_value
         checkbox_field=driver.input(id: "hidePostageCheckBox")
         verify_field=checkbox_field.parent.parent.parent.parent
-        Stamps::Browser::StampsCheckBox.new checkbox_field, verify_field, "class", "checked"
+        Stamps::Browser::StampsCheckBox.new checkbox_field, verify_field, 'class', 'checked'
       end
 
       def print_receipt
         checkbox_field=driver.input(id: "printreceiptcheckbox")
         verify_field=checkbox_field.parent.parent.parent.parent
-        Stamps::Browser::StampsCheckBox.new checkbox_field, verify_field, "class", "checked"
+        Stamps::Browser::StampsCheckBox.new checkbox_field, verify_field, 'class', 'checked'
       end
 
       def print_reference_number
         checkbox_field=driver.input(id: "printreferencecheckbox")
         verify_field=checkbox_field.parent.parent.parent.parent
-        Stamps::Browser::StampsCheckBox.new checkbox_field, verify_field, "class", "checked"
+        Stamps::Browser::StampsCheckBox.new checkbox_field, verify_field, 'class', 'checked'
       end
 
       def cost_code

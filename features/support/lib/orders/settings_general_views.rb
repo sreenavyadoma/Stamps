@@ -84,8 +84,8 @@ module Stamps
         def checkbox
           checkbox_field = driver.span(id: "sdc-resetfieldswin-weightcheckbox-displayEl")
           verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
+          attribute_name = 'class'
+          attribute_value = 'checked'
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
       end
@@ -421,7 +421,7 @@ module Stamps
         def checkbox
           checkbox_field = driver.span(id: "sdc-resetfieldswin-dimensionscheckbox-displayEl")
           verify_field = checkbox_field.parent.parent.parent
-          StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
+          StampsCheckbox.new checkbox_field, verify_field, 'class', 'checked'
         end
       end
 
@@ -433,7 +433,7 @@ module Stamps
         def service
           checkbox_field = driver.span id: "sdc-resetfieldswin-servicecheckbox-displayEl"
           verify_field = checkbox_field.parent.parent.parent
-          StampsCheckbox.new checkbox_field, verify_field, v, "checked"
+          StampsCheckbox.new checkbox_field, verify_field, v, 'checked'
         end
 
         def weight
@@ -447,72 +447,72 @@ module Stamps
         def ship_to_address
           checkbox_field = driver.span id: "sdc-resetfieldswin-shiptoaddresscheckbox-displayEl"
           verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
+          attribute_name = 'class'
+          attribute_value = 'checked'
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def tracking
           checkbox_field = driver.span id: "sdc-resetfieldswin-trackingcheckbox-displayEl"
           verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
+          attribute_name = 'class'
+          attribute_value = 'checked'
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def extra_services
           checkbox_field = driver.span id: "sdc-resetfieldswin-extraservicescheckbox-displayEl"
           verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
+          attribute_name = 'class'
+          attribute_value = 'checked'
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def insurance
           checkbox_field = driver.span id: "sdc-resetfieldswin-insurancecheckbox-displayEl"
           verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
+          attribute_name = 'class'
+          attribute_value = 'checked'
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def reference_numbers
           checkbox_field = driver.span id: "sdc-resetfieldswin-referencenumberscheckbox-displayEl"
           verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
+          attribute_name = 'class'
+          attribute_value = 'checked'
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def cost_code
           checkbox_field = driver.span id: "sdc-resetfieldswin-costcodecheckbox-displayEl"
           verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
+          attribute_name = 'class'
+          attribute_value = 'checked'
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def customs
           checkbox_field = driver.span id: "sdc-resetfieldswin-customscheckbox-displayEl"
           verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
+          attribute_name = 'class'
+          attribute_value = 'checked'
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def quantity
           checkbox_field = driver.span id: "sdc-resetfieldswin-quantitycheckbox-displayEl"
           verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
+          attribute_name = 'class'
+          attribute_value = 'checked'
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def stamps_amount
           checkbox_field = driver.span id: "sdc-resetfieldswin-stampsamountcheckbox-displayEl"
           verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
+          attribute_name = 'class'
+          attribute_value = 'checked'
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
@@ -520,8 +520,8 @@ module Stamps
           parent = (driver.label :text => "Auto-Advance Label Position (NetStamps and Label Sheets)").parent
           checkbox_field = parent.span(:class => 'x-form-checkbox')
           verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
+          attribute_name = 'class'
+          attribute_value = 'checked'
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
@@ -553,7 +553,7 @@ module Stamps
         def services
           checkbox_field = driver.span(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(2)>div>div>div>div>div>div>div>span")
           verify_field = checkbox_field.parent.parent.parent
-          StampsCheckbox.new(checkbox_field, verify_field, "class", "checked")
+          StampsCheckbox.new(checkbox_field, verify_field, 'class', 'checked')
         end
 
         def log_off
@@ -571,8 +571,8 @@ module Stamps
         def print_confirm
           checkbox_field = driver.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(6)>div>div>div>div>div>div>div>span"
           verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
+          attribute_name = 'class'
+          attribute_value = 'checked'
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
@@ -588,24 +588,24 @@ module Stamps
         def usps_terms
           checkbox_field = driver.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(8)>div>div>div>div>div>div>div>span"
           verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
+          attribute_name = 'class'
+          attribute_value = 'checked'
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def contacts
           checkbox_field = driver.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(10)>div>div>div>div>div>div>div>span"
           verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
+          attribute_name = 'class'
+          attribute_value = 'checked'
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def shipments
           checkbox_field = driver.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(15)>div>div>div>div>div>div>div>span"
           verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
+          attribute_name = 'class'
+          attribute_value = 'checked'
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 

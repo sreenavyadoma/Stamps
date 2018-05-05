@@ -159,7 +159,7 @@ module Stamps
 
           clickable_field = driver.div(css: "[class=x-grid-row-checker]")
           verify = driver.div(css: "[class=x-grid-row-checker]").parent.parent.parent.parent.parent
-          @search_result = Stamps::WebApps::StampsCheckbox.new(clickable_field, verify, "class", "selected")
+          @search_result = Stamps::WebApps::StampsCheckbox.new(clickable_field, verify, 'class', "selected")
         end
 
         def save
@@ -431,8 +431,8 @@ module Stamps
           (cache[:auto_weigh].nil? || !cache[:auto_weigh].present?) ? cache[:auto_weigh] = StampsCheckbox.new(
               driver.span(id: "div[class*=autoweight-checkbox]>div>div>span"),
               driver.div(id: "div[class*=autoweight-checkbox]>div>div:nth-child(2)"),
-              "class",
-              "checked") : cache[:auto_weigh]
+              'class',
+              'checked') : cache[:auto_weigh]
         end
 
         def pounds

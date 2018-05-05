@@ -54,15 +54,15 @@ module Stamps
             column.scroll_into_view
             5.times do
               sleep(1)
-              if sort_order_span.attribute_value("class").include?(sort_order)
+              if sort_order_span.attribute_value('class').include?(sort_order)
                 break;
               else
                 column.click
               end
             end
           end
-          return "ASC" if  sort_order_span.attribute_value("class").include?("ASC")
-          return "DESC" if  sort_order_span.attribute_value("class").include?("DESC")
+          return "ASC" if  sort_order_span.attribute_value('class').include?("ASC")
+          return "DESC" if  sort_order_span.attribute_value('class').include?("DESC")
           nil
         end
 
@@ -786,7 +786,7 @@ module Stamps
           scroll_into_view
           checkbox_field = driver.spans(class: "x-column-header-text-inner").first
           check_verify_field = driver.div(css: "div[class*=x-column-header-checkbox]")
-          attribute = "class"
+          attribute = 'class'
           attrib_value_check = "checker-on"
           Stamps::WebApps::StampsCheckbox.new checkbox_field, check_verify_field, attribute, attrib_value_check
         end
@@ -842,7 +842,7 @@ module Stamps
           StampsCheckbox.new(
               driver.div(css: "[id^=ordersGrid] table:nth-child(#{row.to_s}) [class=x-grid-row-checker]"),
               driver.table(css: "[id*=Grid] table:nth-child(#{row.to_s})"),
-              "class", "selected")
+              'class', "selected")
         end
 
         def check(row)

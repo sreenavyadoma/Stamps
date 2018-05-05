@@ -186,7 +186,7 @@ class SdcTest
               SdcPage.browser.window.resize_to 1300, 1020
               SdcPage.browser.window.move_to 0, 0
             else
-              #SdcPage.browser.window.maximize
+              SdcPage.browser.window.maximize
             end
 
           rescue StandardError => e
@@ -287,7 +287,7 @@ class SdcTest
     def require_gems
       require 'appium_lib'
       require 'appium_lib_core'
-      require 'mysql2' if SdcEnv.usr.nil? || SdcEnv.usr.casecmp('default').zero?
+      #require 'mysql2' if SdcEnv.usr.nil? || SdcEnv.usr.casecmp('default').zero?
 
       if /rates/.match(SdcEnv.scenario.tags[0].name)
         require 'spreadsheet'
