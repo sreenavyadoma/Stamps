@@ -1,12 +1,23 @@
 
 module SdcOrders
-  class LoadingPopUp < SdcPage
-    page_object(:loading_orders) { {text: 'Loading orders...'} }
+  class LoadingOrders < SdcPage
+    def initialize
+      @loading_orders = browser.element(text: 'Loading orders...')
+    end
+
+    def respond_to?(name, include_private = false)
+      @loading_orders.respond_to?(name, include_private) || super
+    end
+
+    def method_missing(name, *args &block)
+      super unless @loading_orders.respond_to? name
+      @loading_orders.send(name, *args, &block)
+    end
   end
 
   class << self
-    def loading_popup
-      LoadingPopUp.new.loading_orders
+    def loading
+      LoadingOrders.new
     end
 
     def order_details
