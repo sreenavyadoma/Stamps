@@ -48,7 +48,7 @@ module Stamps
     end
 
     def respond_to?(name, include_private = false)
-      super || @connection.respond_to?(name, include_private)
+      @connection.respond_to?(name, include_private) || super
     end
 
     def method_missing(name, *args, &block)
@@ -69,7 +69,7 @@ module Stamps
     end
 
     def respond_to?(name, include_private = false)
-      super || @connection.respond_to?(name, include_private)
+      @connection.respond_to?(name, include_private) || super
     end
 
     def method_missing(name, *args, &block)

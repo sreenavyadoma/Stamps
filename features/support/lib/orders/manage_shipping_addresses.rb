@@ -54,7 +54,7 @@ module Stamps
         def checked?(row)
           begin
             driver.tables(css: "[id^=manageShipFromWindow-][id$=-body][class*=closable] table").each_with_index do |grid_row_item, index|
-              return grid_row_item.attribute_value("class").include?('selected') if row == index + 1
+              return grid_row_item.attribute_value('class').include?('selected') if row == index + 1
             end
           rescue
             # ignore
@@ -143,7 +143,7 @@ module Stamps
         end
 
         def select_row(row_num)
-          click_row_until_selected(row_num, "class", "x-grid-item-selected")
+          click_row_until_selected(row_num, 'class', "x-grid-item-selected")
           window_title.click
         end
 
