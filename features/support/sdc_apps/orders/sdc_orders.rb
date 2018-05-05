@@ -18,8 +18,9 @@ module SdcOrders
   class << self
     def loading_orders
       klass = Class.new(SdcPage) do
-        page_object(:landing_page) { {text: 'Loading orders...'} }
+        page_object(:landing_page) { {xpath: '//*[contains(text(), "Loading orders...")]'} }
       end
+
       klass.new.landing_page
     end
 
