@@ -17,7 +17,10 @@ module SdcOrders
 
   class << self
     def loading_orders
-      LoadingOrders.new
+      klass = Class.new(SdcPage) do
+        page_object(:landing_page) { {text: 'Loading orders...'} }
+      end
+      klass.new.landing_page
     end
 
     def order_details

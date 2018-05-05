@@ -64,7 +64,7 @@ Then /^sign-in to Orders$/ do
       SdcWebsite.navigation.user_drop_down.signed_in_user.safe_wait_until_present(timeout: 15)
     else
       step 'click Orders landing page sign-in button'
-      landing_page.sign_in.safe_click
+
       loading_orders = SdcWebsite.orders.loading_orders
       loading_orders.wait_until_present(timeout: 8)
       loading_orders.wait_while_present(timeout: 10)
