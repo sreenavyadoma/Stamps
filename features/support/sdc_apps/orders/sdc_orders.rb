@@ -16,7 +16,7 @@ module SdcOrders
   end
 
   class << self
-    def loading
+    def loading_orders
       LoadingOrders.new
     end
 

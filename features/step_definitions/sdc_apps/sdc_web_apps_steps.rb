@@ -1,3 +1,114 @@
+
+Then /^visit Orders landing page$/ do
+  env = case SdcEnv.env
+        when :qacc
+          'ext.qacc'
+        when :qasc
+          'ext.qasc'
+        when :stg
+          '.testing'
+        when :prod
+          ''
+        else
+          # ignore
+        end
+
+  SdcOrdersLandingPage.visit(env)
+end
+
+Then /^visit Mail$/ do
+  env = case SdcEnv.env
+        when :qacc
+          'ext.qacc'
+        when :qasc
+          'ext.qasc'
+        when :stg
+          '.testing'
+        when :prod
+          ''
+        else
+          # ignore
+        end
+
+  SdcMailLandingPage.visit(env)
+end
+
+Then /^fetch user credentials from MySQL$/ do
+  begin
+    if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default'
+      credentials = SdcUserCredentials.fetch(SdcEnv.scenario.tags[0].name)
+      usr = credentials[:username]
+      pw = credentials[:password]
+    else
+      usr = SdcEnv.usr
+      pw = SdcEnv.pw
+    end
+  end unless usr && pw
+  expect(usr).to be_truthy
+  expect(pw).to be_truthy
+  TestData.hash[:username] = usr
+  TestData.hash[:password] = pw
+end
+
+Then /^sign-in to Orders$/ do
+  step 'fetch user credentials from MySQL'
+  step 'visit Orders landing page'
+  step "set Orders landing page username to #{TestData.hash[:username]}"
+  step "set Orders landing page password to #{TestData.hash[:password]}"
+
+  landing_page = SdcWebsite.landing_page
+  signed_in_user = SdcWebsite.navigation.user_drop_down.signed_in_user
+  if SdcEnv.browser
+    if SdcEnv.sauce_device
+      step 'click Orders landing page sign-in button'
+      SdcWebsite.navigation.user_drop_down.signed_in_user.safe_wait_until_present(timeout: 15)
+    else
+      step 'click Orders landing page sign-in button'
+      landing_page.sign_in.safe_click
+      loading_orders = SdcWebsite.orders.loading_orders
+      loading_orders.wait_until_present(timeout: 8)
+      loading_orders.wait_while_present(timeout: 10)
+      signed_in_user.safe_wait_until_present(timeout: 5)
+      expect(signed_in_user.text_value).to eql(TestData.hash[:username])
+    end
+
+  elsif SdcEnv.ios
+    begin
+      landing_page.sign_in.click
+      landing_page.sign_in.send_keys(:enter)
+        #landing_page.sign_in.safe_send_keys(:enter)
+    rescue ::StandardError
+      # ignore
+    end
+
+  elsif SdcEnv.android
+    SdcPage.browser.hide_keyboard
+    SdcPage.browser.action.move_to(landing_page.sign_in).click.perform
+    SdcPage.browser.action.move_to(landing_page.sign_in).send_keys(:enter).perform
+  end
+end
+
+Then /^set Orders landing page username to (.+)$/ do |str|
+  SdcWebsite.landing_page.username.set(str)
+end
+
+Then /^set Orders landing page password to (.+)$/ do |str|
+  SdcWebsite.landing_page.password.set(str)
+end
+
+Then /^click Orders landing page sign-in button$/ do
+  SdcWebsite.landing_page.sign_in.click
+end
+
+Then /^[Ss]ign-out of SDC [Ww]ebsite$/ do
+  user_drop_down = SdcNavigation.user_drop_down
+  user_drop_down.signed_in_user.safe_wait_until_present(timeout: 5)
+  user_drop_down.signed_in_user.hover
+  user_drop_down.sign_out_link.safe_wait_until_present(timeout: 1)
+  user_drop_down.sign_out_link.safe_click
+  SdcWebsite.landing_page.username.safe_wait_until_present(timeout: 4)
+end
+
 Then /^Verify Health Check for (.+)$/ do |str|
 
   env = case str.downcase
@@ -73,114 +184,4 @@ Then /^Verify Health Check for (.+)$/ do |str|
   SdcHealthCheck.visit(env, app)
   expect(SdcHealthCheck.browser.text).to include("All tests passed") if SdcEnv.health_check
 end
-
-Then /^visit Orders landing page$/ do
-  env = case SdcEnv.env
-        when :qacc
-          'ext.qacc'
-        when :qasc
-          'ext.qasc'
-        when :stg
-          '.testing'
-        when :prod
-          ''
-        else
-          # ignore
-        end
-
-  SdcOrdersLandingPage.visit(env)
-end
-
-Then /^visit Mail$/ do
-  env = case SdcEnv.env
-        when :qacc
-          'ext.qacc'
-        when :qasc
-          'ext.qasc'
-        when :stg
-          '.testing'
-        when :prod
-          ''
-        else
-          # ignore
-        end
-
-  SdcMailLandingPage.visit(env)
-end
-
-Then /^fetch user credentials from MySQL$/ do
-  begin
-    if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default'
-      credentials = SdcUserCredentials.fetch(SdcEnv.scenario.tags[0].name)
-      usr = credentials[:username]
-      pw = credentials[:password]
-    else
-      usr = SdcEnv.usr
-      pw = SdcEnv.pw
-    end
-  end unless usr && pw
-  expect(usr).to be_truthy
-  expect(pw).to be_truthy
-  TestData.hash[:username] = usr
-  TestData.hash[:password] = pw
-end
-
-Then /^sign-in to Orders$/ do
-  step 'fetch user credentials from MySQL'
-  step 'visit Orders landing page'
-  step "set Orders landing page username to #{TestData.hash[:username]}"
-  step "set Orders landing page password to #{TestData.hash[:password]}"
-
-  landing_page = SdcWebsite.landing_page
-  signed_in_user = SdcWebsite.navigation.user_drop_down.signed_in_user
-  if SdcEnv.browser
-    if SdcEnv.sauce_device
-      step 'click Orders landing page sign-in button'
-      SdcWebsite.navigation.user_drop_down.signed_in_user.safe_wait_until_present(timeout: 15)
-    else
-      step 'click Orders landing page sign-in button'
-      landing_page.sign_in.safe_click
-      SdcWebsite.orders.loading_orders.wait_until_present(timeout: 8)
-      SdcWebsite.orders.loading_orders.wait_while_present(timeout: 8)
-      signed_in_user.safe_wait_until_present(timeout: 5)
-      expect(signed_in_user.text_value).to eql(TestData.hash[:username])
-    end
-
-  elsif SdcEnv.ios
-    begin
-      landing_page.sign_in.click
-      landing_page.sign_in.send_keys(:enter)
-        #landing_page.sign_in.safe_send_keys(:enter)
-    rescue ::StandardError
-      # ignore
-    end
-
-  elsif SdcEnv.android
-    SdcPage.browser.hide_keyboard
-    SdcPage.browser.action.move_to(landing_page.sign_in).click.perform
-    SdcPage.browser.action.move_to(landing_page.sign_in).send_keys(:enter).perform
-  end
-end
-
-Then /^set Orders landing page username to (.+)$/ do |str|
-  SdcWebsite.landing_page.username.set(str)
-end
-
-Then /^set Orders landing page password to (.+)$/ do |str|
-  SdcWebsite.landing_page.password.set(str)
-end
-
-Then /^click Orders landing page sign-in button$/ do
-  SdcWebsite.landing_page.sign_in.click
-end
-
-Then /^[Ss]ign-out of SDC [Ww]ebsite$/ do
-  user_drop_down = SdcNavigation.user_drop_down
-  user_drop_down.signed_in_user.safe_wait_until_present(timeout: 5)
-  user_drop_down.signed_in_user.hover
-  user_drop_down.sign_out_link.safe_wait_until_present(timeout: 1)
-  user_drop_down.sign_out_link.safe_click
-  SdcWebsite.landing_page.username.safe_wait_until_present(timeout: 4)
-end
-
 
