@@ -163,7 +163,7 @@ module Stamps
         attr_accessor :field, :panel_name
         def selected?
           begin
-            field.parent.parent.parent.parent.attribute_value("class").include?('selected')
+            field.parent.parent.parent.parent.attribute_value('class').include?('selected')
           rescue
             false
           end

@@ -1,4 +1,4 @@
-default: --backtrace --profile bvt_new_order
+default: --backtrace --profile rob_mail_cc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -39,8 +39,8 @@ google_iphonex: --tags @google MOBILE=iphonex
 
 #mhossain1_cc: --tags @registration_ui_validation_profile_page JENKINS=true URL=cc VERBOSE=true BROWSER=edge MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
 
-mhossain1_cc: --tags @pp_log_in_page_validation JENKINS=true URL=qacc BROWSER=ff MAX_WINDOW=true DEBUG=false USR=qawebdevelopment@stamps.com PW=password1
-
+mhossain1_cc: --tags @pp_log_in_page_validation JENKINS=true URL=qacc BROWSER=ff MAX_WINDOW=true DEBUG=false USR=wteam@stamps.com PW=password1
+#mhossain1_cc: --tags @pp_header_favicons JENKINS=true URL=qacc BROWSER=ff MAX_WINDOW=true DEBUG=false USR=wteam@stamps.com PW=password1
 
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess  HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
@@ -235,9 +235,10 @@ search_orders_on_hold: --tags @search_orders_on_hold --guess  JENKINS=true HEALT
 output_username: --tags @output_username --guess  JENKINS=true HEALTHCHECK=true WEB_APP=orders
 generate_username: --tags @generate_username --guess  JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
-healthcheck: --tags @healthcheck --guess  JENKINS=true HEALTHCHECK=true WEB_APP=orders
+healthcheck: --tags @healthcheck --guess JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
 authentication: --tags @authentication --guess  JENKINS=true HEALTHCHECK=true WEB_APP=orders
+mail_authentication: --tags @mail_authentication --guess  JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
 customs_form_auto_calculate_weight: --tags @customs_form_auto_calculate_weight --guess  JENKINS=true HEALTHCHECK=true WEB_APP=orders
 whats_new: --tags @whats_new --guess  JENKINS=true HEALTHCHECK=true WEB_APP=orders
@@ -547,3 +548,4 @@ mail_bug_ordersauto_3243: --tags  @mail_bug_ordersauto_3243 --guess  HEALTHCHECK
 
 #Partner Portal
 pp_log_in_page_validation: --tags @pp_log_in_page_validation --guess JENKINS=true  MAX_WINDOW=true
+pp_header_favicons: --tags @pp_header_favicons --guess JENKINS=true  MAX_WINDOW=true
