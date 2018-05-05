@@ -121,6 +121,10 @@ class SdcDriverDecorator < BasicObject
     @driver.goto(*args)
   end
 
+  def respond_to?(name, include_private = false)
+    super || @driver.respond_to?(name, include_private)
+  end
+
   def method_missing(method, *args, &block)
     super unless @driver.respond_to?(method)
     @driver.send(method, *args, &block)
@@ -416,19 +420,21 @@ class SdcNumber < BasicObject
 end
 
 class SdcLogger
-
-  def initialize(progname: 'Stamps.com')
-    @@logger = ::Logger.new(STDOUT)
-    @@logger.datetime_format = '%H:%M:%S'
-    @@logger.progname = progname
-    @@logger.formatter = proc do |severity, datetime, progname, msg|
-      "#{progname} :: #{msg}\n"
-    end
-  end
-
   class << self
     def logger
-      @@logger
+      begin
+        @logger = ::Logger.new(STDOUT)
+        @logger.datetime_format = '%H:%M:%S'
+        @logger.progname = 'Stamps.com'
+        @logger.formatter = proc do |severity, datetime, progname, msg|
+          "#{progname} :: #{msg}\n"
+        end
+      end unless @logger
+      @logger
+    end
+
+    def respond_to?(name, include_private = false)
+      super || logger.respond_to?(name, include_private)
     end
 
     def method_missing(method, *args)
@@ -492,6 +498,10 @@ class SdcAppiumDriver
 
   def core_driver
     @core_driver ||= initialize_driver
+  end
+
+  def respond_to?(name, include_private = false)
+    super || @core_driver.respond_to?(name, include_private)
   end
 
   def method_missing(name, *args, &block)

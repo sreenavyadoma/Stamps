@@ -41,7 +41,7 @@ module SdcOrders
     end
 
     def modals
-      SdcOrdersModals.new
+      OrdersFloatingModals
     end
   end
 end

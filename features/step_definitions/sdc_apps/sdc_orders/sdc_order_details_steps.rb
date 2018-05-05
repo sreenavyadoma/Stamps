@@ -151,17 +151,19 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails [Ii]nternational [Ss]ervice is (?:correct|(
   expect(stamps.orders.order_details.service.textbox.text.parse_service_name).to eql((expectation.nil?) ? TestData.hash[:int_service] : expectation)
 end
 
-Then /^[Ww]ait [Uu]ntil [Oo]rder [Dd]etails [Pp]resent(?: (\d+), (\d+)|)$/ do |iteration, delay|
+
+
+Then /^[Ww]ait [Uu]ntil [Oo]rder [Dd]etails [Pp]resent(?: (\d+), (.+)|)$/ do |iteration, delay|
   (iteration.zero? ? 20 : iteration).times do
-    break if SdcOrders.order_details.title.present?
-    sleep(delay.zero? ? 0.2 : delay / 10)
+    break if SdcOrders.order_details.order_id.present?
+    sleep(delay.to_f.zero? ? 0.2 : delay.to_f)
   end
 end
 
-Then /^[Ww]ait [Uu]ntil [Oo]rder [Tt]oolbar [Pp]resent(?: (\d+), (\d+)|)$/ do |iteration, delay|
+Then /^[Ww]ait [Uu]ntil [Oo]rder [Tt]oolbar [Pp]resent(?: (\d+), (.+)|)$/ do |iteration, delay|
   (iteration.zero? ? 20 : iteration).times do
-    break if SdcOrders.toolbar.add.present?
-    sleep(delay.zero? ? 0.2 : delay / 10)
+    break unless SdcOrders.loading_popup.present?
+    sleep(delay.to_f.zero? ? 0.2 : delay.to_f)
   end
 end
 
@@ -455,6 +457,8 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Ff]rom to (?:Manage Shipping Addresse
     5.times do
       SdcOrders.order_details.ship_from.drop_down.click unless SdcOrders.order_details.ship_from.selection_obj.present?
       SdcOrders.order_details.ship_from.selection_obj.safe_click unless SdcOrders.order_details.ship_from.selection_obj.class_disabled?
+      break if str == 'default' && SdcOrders.order_details.ship_from.text_field.text_value != ''
+      #break if str == 'Manage Shipping Addresses...' && SdcOrders.modals.manage_shipping_addresses.title.present?
       if SdcOrders.order_details.ship_from.text_field.text_value == str
         TestData.hash[:ship_from] = SdcOrders.order_details.ship_from.text_field.text_value unless str == 'Manage Shipping Addresses...'
         break
