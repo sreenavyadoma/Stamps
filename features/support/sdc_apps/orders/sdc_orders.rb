@@ -9,7 +9,7 @@ module SdcOrders
       @loading_orders.respond_to?(name, include_private) || super
     end
 
-    def method_missing(name, *args &block)
+    def method_missing(name, *args, &block)
       super unless @loading_orders.respond_to? name
       @loading_orders.send(name, *args, &block)
     end
