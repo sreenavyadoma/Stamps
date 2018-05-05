@@ -1,24 +1,77 @@
 Then /^Verify Health Check for (.+)$/ do |str|
-  expect(SdcEnv::HEALTH_CHECK_APPS).to include(str.downcase)
-  SdcHealthCheck.visit(str)
-  expect(SdcHealthCheck.browser.text).to include("All tests passed") if SdcEnv.health_check
-end
 
-Then /^fetch user credentials from MySQL$/ do
-  begin
-    if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default'
-      credentials = SdcUserCredentials.fetch(SdcEnv.scenario.tags[0].name)
-      usr = credentials[:username]
-      pw = credentials[:password]
-    else
-      usr = SdcEnv.usr
-      pw = SdcEnv.pw
-    end
-  end unless usr && pw
-  expect(usr).to be_truthy
-  expect(pw).to be_truthy
-  TestData.hash[:username] = usr
-  TestData.hash[:password] = pw
+  env = case str.downcase
+        when /orders/
+          case SdcEnv.env
+          when :qacc
+            'printext.qacc'
+          when :qasc
+            'printext.qasc'
+          when :stg
+            'print.testing'
+          when :prod
+            ''
+          else
+            # ignore
+          end
+        when /address/
+          case SdcEnv.env
+          when :qacc
+            'printext.qacc'
+          when :qasc
+            'printext.qasc'
+          when :stg
+            'print.testing'
+          when :prod
+            ''
+          else
+            # ignore
+          end
+        when /or reports/
+          case SdcEnv.env
+          when :qacc
+            'orext.qacc'
+          when :qasc
+            'orext.qasc'
+          when :stg
+            'or.staging'
+          when :prod
+            ''
+          else
+            # ignore
+          end
+        when /postage/
+          case SdcEnv.env
+          when :qacc
+            'orext.qacc'
+          when :qasc
+            'orext.qasc'
+          when :stg
+            'or.staging'
+          when :prod
+            ''
+          else
+            # ignore
+          end
+        else
+          # ignore
+        end
+
+  app = case(str.downcase)
+        when /orders/
+          :orders
+        when /address/
+          :addressbook
+        when /or reports/
+          :orreports
+        when /postage/
+          :postagetools
+        else
+          raise ArgumentError, "Healthcheck not supported for #{str}"
+        end
+
+  SdcHealthCheck.visit(env, app)
+  expect(SdcHealthCheck.browser.text).to include("All tests passed") if SdcEnv.health_check
 end
 
 Then /^visit Orders landing page$/ do
@@ -55,11 +108,29 @@ Then /^visit Mail$/ do
   SdcMailLandingPage.visit(env)
 end
 
+Then /^fetch user credentials from MySQL$/ do
+  begin
+    if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default'
+      credentials = SdcUserCredentials.fetch(SdcEnv.scenario.tags[0].name)
+      usr = credentials[:username]
+      pw = credentials[:password]
+    else
+      usr = SdcEnv.usr
+      pw = SdcEnv.pw
+    end
+  end unless usr && pw
+  expect(usr).to be_truthy
+  expect(pw).to be_truthy
+  TestData.hash[:username] = usr
+  TestData.hash[:password] = pw
+end
+
 Then /^[Ss]ign-out of SDC [Ww]ebsite$/ do
-  SdcNavigation.user_drop_down.signed_in_user.safe_wait_until_present(timeout: 5)
-  SdcNavigation.user_drop_down.signed_in_user.hover
-  SdcNavigation.user_drop_down.sign_out_link.safe_wait_until_present(timeout: 1)
-  SdcNavigation.user_drop_down.sign_out_link.safe_click
+  user_drop_down = SdcNavigation.user_drop_down
+  user_drop_down.signed_in_user.safe_wait_until_present(timeout: 5)
+  user_drop_down.signed_in_user.hover
+  user_drop_down.sign_out_link.safe_wait_until_present(timeout: 1)
+  user_drop_down.sign_out_link.safe_click
   SdcWebsite.landing_page.username.safe_wait_until_present(timeout: 3)
 end
 
