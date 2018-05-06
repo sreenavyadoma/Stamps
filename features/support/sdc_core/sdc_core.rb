@@ -16,7 +16,7 @@ end
 
 module SdcFinder
   # @param [Browser] browser either Watir::Browser or Appium::Core::Driver
-  # @param [String] tag HTML tag for Watir
+  # @param [String]  HTML tag
   # @param [Integer] timeout in seconds
   def element(browser, tag: nil, timeout: 20)
     if browser.is_a? Watir::Browser
