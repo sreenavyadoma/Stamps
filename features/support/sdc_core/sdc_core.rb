@@ -82,9 +82,11 @@ end
 class SdcPage < WatirDrops::PageObject
 
   class << self
+
     def page_object(name, tag: nil, required: false, timeout: 30, &block)
       element(name, required: required) { SdcFinder.element(browser, tag: tag, timeout: timeout, &block) }
     end
+
     alias text_field page_object
     alias button page_object
     alias label page_object
@@ -100,6 +102,7 @@ class SdcPage < WatirDrops::PageObject
     def chooser(name, chooser, verify, property, property_name)
       element(name) { SdcChooser.new(instance_eval(chooser.to_s), instance_eval(verify.to_s), property, property_name) }
     end
+
     alias checkbox chooser
     alias radio chooser
 
@@ -107,7 +110,6 @@ class SdcPage < WatirDrops::PageObject
       element(name) { SdcNumber.new(instance_eval(text_field.to_s), instance_eval(increment.to_s), instance_eval(decrement.to_s)) }
     end
   end
-
 end
 
 class SdcDriverDecorator < BasicObject
@@ -363,6 +365,7 @@ class SdcChooser < BasicObject
     return result.casecmp('true').zero? if result.casecmp('true').zero? || result .casecmp('false').zero?
     result.include?(@property_val)
   end
+
   alias checked? chosen?
   alias selected? chosen?
 
@@ -374,6 +377,7 @@ class SdcChooser < BasicObject
 
     chosen?
   end
+
   alias check choose
   alias select choose
 
@@ -385,6 +389,7 @@ class SdcChooser < BasicObject
 
     chosen?
   end
+
   alias uncheck unchoose
   alias unselect unchoose
 
