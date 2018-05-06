@@ -169,8 +169,8 @@ end
 
 Then /^[Hh]ide [Oo]rder [Dd]etails [Ff]orm [Ss]hip-[Tt]o [Ff]ields$/ do
   if SdcEnv.new_framework
-    show_less = SdcOrders.order_details.ship_to.domestic.show_less
-    show_less.click if show_less.present?
+    domestic = SdcOrders.order_details.ship_to.domestic
+    domestic.show_less.click if domestic.show_less.present?
   else
     stamps.orders.order_details.ship_to.domestic.hide_ship_to_details
   end
@@ -178,8 +178,8 @@ end
 
 Then /^[Ss]how [Oo]rder [Dd]etails [Ff]orm [Ss]hip-[Tt]o [Ff]ields$/ do
   if SdcEnv.new_framework
-    show_more = SdcOrders.order_details.ship_to.show_more
-    show_more.click if show_more.present?
+    ship_to = SdcOrders.order_details.ship_to
+    ship_to.show_more.click if ship_to.show_more.present?
   else
     stamps.orders.order_details.ship_to.domestic.show_ship_to_details
   end
