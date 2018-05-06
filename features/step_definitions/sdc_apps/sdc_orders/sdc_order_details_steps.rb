@@ -15,9 +15,9 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(
     order_details.order_id.blur_out(ctr: 3)
     order_details.title.blur_out(ctr: 3)
     order_details.service.drop_down.click
+    order_details.ship_to.domestic.show_less.safe_wait_until_present(timeout: 3)
     order_details.service.drop_down.click
     address.blur_out(ctr: 3)
-    order_details.ship_to.domestic.show_less.safe_wait_until_present(timeout: 3)
 
   else
     stamps.orders.order_details.ship_to.domestic.set(TestData.hash[:ship_to_domestic])
