@@ -1,5 +1,5 @@
 Then /^[Aa]dd new order$/ do
-  step 'add order 1'
+  step 'add order 0'
 end
 
 Then /^[Aa]dd [Oo]rder (\d+)$/ do |count|
@@ -53,8 +53,8 @@ Then /^[Cc]lick [Oo]rders [Tt]oolbar [Pp]rint [Bb]utton$/ do
   step "Save Order Details data"
   if SdcEnv.new_framework
     SdcOrders.order_details.footer.print.safe_click
-    expect(SdcOrders.modals.print_modal.title).to be_present
-    expect(SdcOrders.modals.print_modal.title).to match(/You have \d label ready to print/)
+    expect(SdcOrders.modals.print.title).to be_present
+    expect(SdcOrders.modals.print.title.text_value).to match(/You have \d label ready to print/)
   else
     expect(stamps.orders.orders_toolbar.toolbar_print.click).to match(/You have \d label ready to print/)
   end

@@ -15,9 +15,9 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(
     order_details.order_id.blur_out(ctr: 3)
     order_details.title.blur_out(ctr: 3)
     order_details.service.drop_down.click
+    order_details.ship_to.domestic.show_less.safe_wait_until_present(timeout: 3)
     order_details.service.drop_down.click
     address.blur_out(ctr: 3)
-    order_details.ship_to.domestic.show_less.safe_wait_until_present(timeout: 3)
 
   else
     stamps.orders.order_details.ship_to.domestic.set(TestData.hash[:ship_to_domestic])
@@ -151,24 +151,26 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails [Ii]nternational [Ss]ervice is (?:correct|(
   expect(stamps.orders.order_details.service.textbox.text.parse_service_name).to eql((expectation.nil?) ? TestData.hash[:int_service] : expectation)
 end
 
-Then /^[Ww]ait [Uu]ntil [Oo]rder [Dd]etails [Pp]resent(?: (\d+), (\d+)|)$/ do |iteration, delay|
+
+
+Then /^[Ww]ait [Uu]ntil [Oo]rder [Dd]etails [Pp]resent(?: (\d+), (.+)|)$/ do |iteration, delay|
   (iteration.zero? ? 20 : iteration).times do
-    break if SdcOrders.order_details.title.present?
-    sleep(delay.zero? ? 0.2 : delay / 10)
+    break if SdcOrders.order_details.order_id.present?
+    sleep(delay.to_f.zero? ? 0.2 : delay.to_f)
   end
 end
 
-Then /^[Ww]ait [Uu]ntil [Oo]rder [Tt]oolbar [Pp]resent(?: (\d+), (\d+)|)$/ do |iteration, delay|
+Then /^[Ww]ait [Uu]ntil [Oo]rder [Tt]oolbar [Pp]resent(?: (\d+), (.+)|)$/ do |iteration, delay|
   (iteration.zero? ? 20 : iteration).times do
-    break if SdcOrders.toolbar.add.present?
-    sleep(delay.zero? ? 0.2 : delay / 10)
+    break unless SdcOrders.loading_popup.present?
+    sleep(delay.to_f.zero? ? 0.2 : delay.to_f)
   end
 end
 
 Then /^[Hh]ide [Oo]rder [Dd]etails [Ff]orm [Ss]hip-[Tt]o [Ff]ields$/ do
   if SdcEnv.new_framework
-    show_less = SdcOrders.order_details.ship_to.domestic.show_less
-    show_less.click if show_less.present?
+    domestic = SdcOrders.order_details.ship_to.domestic
+    domestic.show_less.click if domestic.show_less.present?
   else
     stamps.orders.order_details.ship_to.domestic.hide_ship_to_details
   end
@@ -176,8 +178,8 @@ end
 
 Then /^[Ss]how [Oo]rder [Dd]etails [Ff]orm [Ss]hip-[Tt]o [Ff]ields$/ do
   if SdcEnv.new_framework
-    show_more = SdcOrders.order_details.ship_to.show_more
-    show_more.click if show_more.present?
+    ship_to = SdcOrders.order_details.ship_to
+    ship_to.show_more.click if ship_to.show_more.present?
   else
     stamps.orders.order_details.ship_to.domestic.show_ship_to_details
   end
@@ -455,6 +457,8 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Ff]rom to (?:Manage Shipping Addresse
     5.times do
       SdcOrders.order_details.ship_from.drop_down.click unless SdcOrders.order_details.ship_from.selection_obj.present?
       SdcOrders.order_details.ship_from.selection_obj.safe_click unless SdcOrders.order_details.ship_from.selection_obj.class_disabled?
+      break if str == 'default' && SdcOrders.order_details.ship_from.text_field.text_value != ''
+      #break if str == 'Manage Shipping Addresses...' && SdcOrders.modals.manage_shipping_addresses.title.present?
       if SdcOrders.order_details.ship_from.text_field.text_value == str
         TestData.hash[:ship_from] = SdcOrders.order_details.ship_from.text_field.text_value unless str == 'Manage Shipping Addresses...'
         break

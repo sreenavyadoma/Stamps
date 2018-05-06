@@ -217,8 +217,6 @@ class SdcTest
       ::SdcEnv.log_level ||= ENV['LOG_LEVEL']
       ::SdcEnv.driver_log_level ||= ENV['DRIVER_LOG_LEVEL']
 
-      SdcLogger.new(progname: SdcEnv.scenario.name)
-
       begin
         SdcLogger.level = if SdcEnv.log_level
                             SdcEnv.log_level
@@ -231,6 +229,7 @@ class SdcTest
                                            else
                                              :error
                                            end
+        SdcLogger.progname = SdcEnv.scenario.name
       rescue StandardError => e
         SdcLogger.error e.message
         SdcLogger.error e.backtrace.join("\n")
@@ -238,6 +237,7 @@ class SdcTest
       end
 
       SdcEnv.sauce_device ||= ENV['SAUCE_DEVICE'] unless ENV['SAUCE_DEVICE'].nil?
+
       if SdcEnv.sauce_device
         SdcEnv::BROWSERS.each { |browser| SdcEnv.browser = browser if SdcEnv.sauce_device.eql? browser.to_s }
         SdcEnv::IOS.each { |device| SdcEnv.ios = device if SdcEnv.sauce_device.eql? device.to_s }
@@ -247,6 +247,7 @@ class SdcTest
         SdcEnv.ios ||= ENV['IOS'] unless ENV['IOS'].nil?
         SdcEnv.android ||= ENV['ANDROID'] unless ENV['ANDROID'].nil?
       end
+
       SdcEnv.mobile = SdcEnv.ios || SdcEnv.android
       SdcEnv.sdc_app ||= ENV['WEB_APP'].downcase.to_sym unless ENV['WEB_APP'].nil?
       SdcEnv.health_check ||= ENV['HEALTHCHECK']
