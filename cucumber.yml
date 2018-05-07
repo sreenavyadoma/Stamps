@@ -40,7 +40,7 @@ google_iphonex: --tags @google MOBILE=iphonex
 #mhossain1_cc: --tags @registration_ui_validation_profile_page JENKINS=true URL=cc VERBOSE=true BROWSER=edge MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
 
 #mhossain1_cc: --tags @pp_log_in_page_validation JENKINS=true URL=qacc BROWSER=ff MAX_WINDOW=true DEBUG=false USR=wteam@stamps.com PW=password1
-mhossain1_cc: --tags @pp_header_favicons_browser JENKINS=true URL=qacc BROWSER=ff MAX_WINDOW=true DEBUG=false USR=wteam@stamps.com PW=password1
+mhossain1_cc: --tags @pp_header_favicons_mobile JENKINS=true URL=qacc BROWSER=ff MAX_WINDOW=true DEBUG=false USR=wteam@stamps.com PW=password1
 
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess  HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
@@ -64,7 +64,7 @@ xxxxxxxxxx: --tags @xxxxxxxxxx --guess  JENKINS=true HEALTHCHECK=true WEB_APP=xx
 
 mail_print_envelope_11: --tags @mail_print_envelope_11 --guess  JENKINS=true HEALTHCHECK=false WEB_APP=mail PRINTER=factory
 
-poc_stg_chrome: --tags @authentication --guess  JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff
+poc_stg_chrome: --tags @authentication --guess  JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=gc
 poc_stg_firefox: --tags @authentication --guess  JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff
 poc_cc_chrome: --tags @authentication --guess  JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=cc BROWSER=ff
 poc_cc_firefox: --tags @authentication --guess  JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=cc BROWSER=ff
