@@ -5,8 +5,7 @@ Feature:  Mail BVT - Authentication
 
   @mail_authentication
   Scenario: Mail - Authentication
-    Then visit Mail
-    Then sign-in to Mail using credentials from MySql
+    Then sign-in to Mail
     Then sign-out of SDC Website
 
   @mail_authentication
@@ -37,7 +36,26 @@ Feature:  Mail BVT - Authentication
   @mail_bvt_advanced_options
   @mail_advanced_options_stamps
   Scenario: Advanced Options for Stamps
+    Then sign-in to Mail
     Then select Print On Stamps
+    Then select Print On Shipping Shipping Label - 8 ½" x 11" Paper
+    Then select Print On Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
+    Then select Print On Shipping Label - 5 ½" x 8 ½"
+    Then select Print On Envelope - #10, 4 ⅛" x 9 ½"
+    Then select Print On Envelope - #9, 3 ⅞" x 8 ⅞"
+    Then select Print On Envelope - #A9, 5 ¾" x 8 ¾"
+    Then select Print On Envelope - #6, 3 ⅝" x 6 ½"
+    Then select Print On Envelope - #A2, 4 ⅜" x 5 ¾"
+    Then select Print On Envelope - #7, 3 ⅞" x 7 ½"
+    Then select Print On Envelope - #11, 4 ½" x 10 ⅜"
+    Then select Print On Envelope - #12, 4 ¾" x 11"
+    Then select Print On Certified Mail Label - SDC-3610
+    Then select Print On Certified Mail Label - SDC-3710
+    Then select Print On Certified Mail Label - SDC-3910
+    Then select Print On Certified Mail Label - SDC-3930
+    Then select Print On Certified Mail #11 Envelope - SDC-3810
+    Then select Print On Roll - 4" x 6" Shipping Label
+    Then select Print On Roll - 4 ⅛" x 6 ¼" Shipping Label
     Then show Advanced Options
     Then expect Advanced Options Calculate Postage Amount radio button is present
     Then select Advanced Options Calculate Postage Amount

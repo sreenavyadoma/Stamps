@@ -215,7 +215,7 @@ module Stamps
           cache[:city]
         end
         def state
-          cache[:state] = StampsDropdown.new(textbox, dropdown, :li) if cache[:state].nil? || !cache[:state].present?
+          cache[:state] = StampsDropdown.new(textbox, drop_down, :li) if cache[:state].nil? || !cache[:state].present?
           cache[:state]
         end
         def zip
@@ -227,7 +227,7 @@ module Stamps
           cache[:phone]
         end
 
-        private def dropdown
+        private def drop_down
           driver.div(css: "div[id^=statecombobox-][id$=-trigger-picker]")
         end
 

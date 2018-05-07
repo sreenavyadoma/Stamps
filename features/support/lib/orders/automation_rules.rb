@@ -9,19 +9,19 @@ module Stamps
           @add_criteria_link
         end
 
-        def first_dropdown
-          @first_dropdown = StampsField.new(driver.span(text: '')) if @first_dropdown.nil? || !@first_dropdown.present?
-          @first_dropdown
+        def first_drop_down
+          @first_drop_down = StampsField.new(driver.span(text: '')) if @first_drop_down.nil? || !@first_drop_down.present?
+          @first_drop_down
         end
 
-        def second_dropdown
-          @second_dropdown = StampsField.new(driver.span(text: '')) if @second_dropdown.nil? || !@second_dropdown.present?
-          @second_dropdown
+        def second_drop_down
+          @second_drop_down = StampsField.new(driver.span(text: '')) if @second_drop_down.nil? || !@second_drop_down.present?
+          @second_drop_down
         end
 
-        def third_dropdown
-          @third_dropdown = StampsField.new(driver.span(text: '')) if @third_dropdown.nil? || !@third_dropdown.present?
-          @third_dropdown
+        def third_drop_down
+          @third_drop_down = StampsField.new(driver.span(text: '')) if @third_drop_down.nil? || !@third_drop_down.present?
+          @third_drop_down
         end
       end
 
@@ -31,14 +31,14 @@ module Stamps
           @add_action_link
         end
 
-        def first_dropdown
-          @first_dropdown = StampsField.new(driver.span(text: '')) if @first_dropdown.nil? || !@first_dropdown.present?
-          @first_dropdown
+        def first_drop_down
+          @first_drop_down = StampsField.new(driver.span(text: '')) if @first_drop_down.nil? || !@first_drop_down.present?
+          @first_drop_down
         end
 
-        def second_dropdown
-          @second_dropdown = StampsField.new(driver.span(text: '')) if @second_dropdown.nil? || !@second_dropdown.present?
-          @second_dropdown
+        def second_drop_down
+          @second_drop_down = StampsField.new(driver.span(text: '')) if @second_drop_down.nil? || !@second_drop_down.present?
+          @second_drop_down
         end
       end
 

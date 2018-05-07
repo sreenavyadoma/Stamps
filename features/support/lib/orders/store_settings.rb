@@ -54,16 +54,16 @@ module Stamps
           cache["textbox#{index}".to_sym]
         end
 
-        def dropdown
-          if cache["dropdown#{index}".to_sym].nil? || !cache["dropdown#{index}".to_sym].present?
-            cache["dropdown#{index}".to_sym] = StampsField.new(iframe.divs(class: "selectize-input")[index])
+        def drop_down
+          if cache["drop_down#{index}".to_sym].nil? || !cache["drop_down#{index}".to_sym].present?
+            cache["drop_down#{index}".to_sym] = StampsField.new(iframe.divs(class: "selectize-input")[index])
           end
         end
 
         def select(str)
           selection = StampsField.new(selection_field(str))
           10.times do
-            dropdown.click unless selection.present?
+            drop_down.click unless selection.present?
             selection.scroll_into_view
             selection.click
             return textbox.text if textbox.text.include?(str)
@@ -227,9 +227,9 @@ module Stamps
               add_service_mapping.click
               sleep(0.4)
               # expose Made In country list of values on item add
-              #cache["mapping_number#{number}".to_sym].made_in.dropdown.click
+              #cache["mapping_number#{number}".to_sym].made_in.drop_down.click
               #sleep(0.05)
-              #cache["mapping_number#{number}".to_sym].made_in.dropdown.click
+              #cache["mapping_number#{number}".to_sym].made_in.drop_down.click
             end
           end
           nil

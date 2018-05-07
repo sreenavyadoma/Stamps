@@ -452,28 +452,7 @@ end
 class TestData
   class << self
     def hash
-      return @hash if @hash
-      @hash = {}
-      @hash[:customs_associated_items] = {}
-      @hash[:service_mapping_items] = {}
-      @hash[:details_associated_items] = {}
-      @hash[:order_id] = {}
-      @hash[:service_look_up] = {}
-      @hash[:service_look_up]['FCM'] = 'First-Class Mail'
-      @hash[:service_look_up]['PM'] = 'Priority Mail'
-      @hash[:service_look_up]['PME'] = 'Priority Mail Express'
-      @hash[:service_look_up]['MM'] = 'Media Mail'
-      @hash[:service_look_up]['PSG'] = 'Parcel Select Ground'
-      @hash[:service_look_up]['FCMI'] = 'First-Class Mail International'
-      @hash[:service_look_up]['PMI'] = 'Priority Mail International'
-      @hash[:service_look_up]['PMEI'] = 'Priority Mail Express International'
-      @hash[:ord_id_ctr] = 0
-      @hash[:username] = ENV['USR']
-      @hash[:password] = ENV['PW']
-      @hash[:sdc_app] = ENV['WEB_APP']
-      @hash[:url] = ENV['URL']
-      @hash[:test] = ENV['USER_CREDENTIALS']
-      @hash
+      @hash ||= {}
     end
   end
 end

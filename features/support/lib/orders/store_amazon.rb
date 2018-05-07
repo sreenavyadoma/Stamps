@@ -23,12 +23,12 @@ module Stamps
             StampsTextbox.new(driver.text_field name: "AmazonMarketplace")
           end
 
-          def dropdown
+          def drop_down
             StampsField.new(driver.divs(css: "div[id^=combo-][id$=-triggerWrap][class$=x-form-trigger-wrap-default]>div[id^=combo-][id$=-trigger-picker]")[2])
           end
 
           def select(selection)
-            dd = dropdown
+            dd = drop_down
             text_field = textbox
             selection_field = StampsField.new(driver.li text: selection)
 
@@ -57,12 +57,12 @@ module Stamps
             StampsTextbox.new(driver.text_field css: "input[name^=combo-][name$=-inputEl]")
           end
 
-          def dropdown
+          def drop_down
             StampsField.new((driver.divs(css: "div[id^=combo-][id$=-trigger-picker]")).last)
           end
 
           def select(selection)
-            dd = dropdown
+            dd = drop_down
             text_field = textbox
             selection_field = StampsField.new(driver.li text: selection)
 
