@@ -17,12 +17,25 @@ Then /^[Pp]P: set window to large viewport$/ do
   end
 end
 
+Then /^[Pp]P: scroll to top of the page$/ do
+  SdcPage.browser.execute_script('document.documentElement.scrollTop = 0')
+end
+
+Then /^[Pp]P: scroll to middle of the page$/ do
+  SdcPage.browser.execute_script('window.scrollTo(screen.width/2, screen.height/2)');
+end
+
+Then /^[Pp]P: scroll to buttom of the page$/ do
+    SdcPage.browser.execute_script( 'window.scrollBy(0,document.body.scrollHeight)' )
+end
+
+
 Then /^[Pp]P: navigate back to previous page$/ do
   SdcPage.browser.back
 end
 
 Then /^[Pp]P: click on global header$/ do
-  PartnerPortal.pp_common_page.global_header.send_keys(:enter)
+  PartnerPortal.pp_common_page.global_header.click
 end
 
 Then /^[Pp]P: [Ee]xpect global  header exists$/ do

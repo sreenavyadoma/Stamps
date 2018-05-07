@@ -83,6 +83,9 @@ module PartnerPortal
     #canvas Preferred Rates Qualified Postage
     page_objects(:preferred_rates_qualified_postage, index: 0 ) { {xpath: "//h4[contains(text(), 'Preferred Rates Qualified Postage')]"} }
 
+    #Revenue Share
+    page_object(:revenue_share_title) { {xpath: "//h4[contains(text(), 'Revenue Share')]"} }
+
   end
 
   class PPResetPasswordPage < SdcPage
