@@ -3,10 +3,10 @@ module PartnerPortal
 
   class PPLoginPage < SdcPage
     #Welcome content
-    page_object(:welcome_content) { {xpath: "//p[contains(text(),'Welcome to the')]"} }
+    page_object(:welcome_content) { {xpath: '//p[contains(text(),"Welcome to the")]'} }
 
     #Error Message
-    page_object(:error_message) { {xpath: "//p[@class='text-center']"} }
+    page_object(:error_message) { {xpath: '//p[@class="text-center"]'} }
 
     #sdcEndica logo
     page_object(:sdc_endicia_logo) { {xpath: "//img[@alt='Stamps.com Endicia | Partner Portal logo']"} }
