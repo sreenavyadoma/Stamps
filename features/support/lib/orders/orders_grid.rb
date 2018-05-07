@@ -842,7 +842,7 @@ module Stamps
           StampsCheckbox.new(
               driver.div(css: "[id^=ordersGrid] table:nth-child(#{row.to_s}) [class=x-grid-row-checker]"),
               driver.table(css: "[id*=Grid] table:nth-child(#{row.to_s})"),
-              'class', "selected")
+              'class', 'selected')
         end
 
         def check(row)
