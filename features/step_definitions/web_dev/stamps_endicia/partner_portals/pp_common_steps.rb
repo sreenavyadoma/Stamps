@@ -49,8 +49,22 @@ Then /^[Pp]P: [Cc]lick on [Hh]amburger button$/ do
   PartnerPortal.pp_common_page.hamburger_button.send_keys(:enter)
 end
 
-Then /^[Pp]P: [Cc]lick on [Xx] button$/ do
+Then /^[Pp]P: [Ee]xpect [Xx] button exists$/ do
+  expect(PartnerPortal.pp_common_page.x_button).to be_present, "X button DOES NOT exist on small viewport"
+end
+
+Then /^[Pp]P: [Cc]lick on [Xx] button exists$/ do
   PartnerPortal.pp_common_page.hamburger_button.send_keys(:enter)
 end
 
+Then /^[Pp]P: [Ee]xpect [Dd]ashboard on left panel exists$/ do
+  expect(PartnerPortal.pp_common_page.panel_dashboard).to be_present, "Dashboard on panel DOES NOT exist"
+end
 
+Then /^[Pp]P: [Ee]xpect left panel to expand for mobile$/ do
+  expect(PartnerPortal.pp_common_page.panel_expanded_xs).to be_present, "Expanded Panel DOES NOT exist"
+end
+
+Then /^[Pp]P: [Ee]xpect left panel to collapse for mobile$/ do
+  expect(PartnerPortal.pp_common_page.panel_collapsed_xs).to be_present, "Collapsed Panel DOES NOT exist"
+end

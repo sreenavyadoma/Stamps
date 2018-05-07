@@ -30,10 +30,11 @@ Feature: PP-MVP: Header and Favicons
     Then PP: expect hamburger button exists
 
     Then PP: click on hamburger button
-    Then PP: expect X button to exist
-    Then expect Dashboard left panel header exists
-    Then click on hamburger button
-    Then expect hamburger button exists
+    Then PP: expect Dashboard on left panel exists
+    Then PP: expect left panel to expand for mobile
+    Then PP: expect X button exists
+    Then PP: expect left panel to collapse for mobile
+    Then PP: expect hamburger button exists
 
     Then PP: click on global header
     Then PP: expect user is redirected to the Dashboard page
