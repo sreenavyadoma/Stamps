@@ -20,7 +20,7 @@ Then /^[Pp]P: [Ee]xpect login page "stamps.com endicia" logo to exist$/ do
 end
 
 Then /^[Pp]P: [Ee]xpect login page "Partner Portal" content to exist$/ do
-  expect(PartnerPortal.login_page.partner_portal_content).to be_present, '"USPS Portal" content DOES NOT exist on login pag'
+  expect(PartnerPortal.login_page.partner_portal_content).to be_present, '"Partner Portal" content DOES NOT exist on login pag'
 end
 
 Then /^[Pp]P: [Ee]xpect login page Log In button to exist$/ do

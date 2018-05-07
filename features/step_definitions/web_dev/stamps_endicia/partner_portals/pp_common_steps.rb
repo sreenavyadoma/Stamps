@@ -60,6 +60,14 @@ Then /^[Pp]P: [Ee]xpect [Hh]amburger button exists for mobile$/ do
   expect(PartnerPortal.pp_common_page.hamburger_button_xs).to be_present, "Hamburger button DOES NOT exist mobile mode"
 end
 
+Then /^[Pp]P: [Ee]xpect [Hh]amburger button does not exists for browser$/ do
+  expect(PartnerPortal.pp_common_page.panel_hamburger).not_to be_present, "Hamburger button IS PRESENT"
+end
+
+Then /^[Pp]P: [Ee]xpect [Hh]amburger button does not exists for mobile$/ do
+  expect(PartnerPortal.pp_common_page.hamburger_button_xs).not_to be_present, "Hamburger button IS PRESENT"
+end
+
 Then /^[Pp]P: [Cc]lick on [Hh]amburger button$/ do
   PartnerPortal.pp_common_page.hamburger_button_xs.wait_until_present(timeout: 10)
   PartnerPortal.pp_common_page.hamburger_button_xs.click
@@ -71,10 +79,8 @@ Then /^[Pp]P: [Ee]xpect [Xx] button exists$/ do
 end
 
 Then /^[Pp]P: [Cc]lick on [Xx] button$/ do
-  if(PartnerPortal.pp_common_page.x_button.present? == true)
     PartnerPortal.pp_common_page.x_button.wait_until_present(timeout: 10)
     PartnerPortal.pp_common_page.x_button.click
-  end
 end
 
 Then /^[Pp]P: [Ee]xpect [Dd]ashboard on left panel exists$/ do

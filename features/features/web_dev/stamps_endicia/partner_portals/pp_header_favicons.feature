@@ -1,11 +1,20 @@
-@pp_header_favicons
 Feature: PP-MVP: Header and Favicons
 
   Background:
-    Given PP: A valid user is signed into Partner Portal
+    Given PP: A user navigates to the Reset Password Page
 
   @pp_header_favicons_browser
   Scenario: PP: Header and Favicons Validation For Browser
+
+    #Validate hamburger button doesn't display on unauthenticated page
+    Then PP: expect hamburger button does not exists for browser
+    Then PP: navigate back to previous page
+
+    #log in
+    Then PP: set login page email to env value
+    Then PP: set login page password to env value
+    Then PP: User clicks Log In
+
     #verify all content and fields are present
     Then PP: set window to large viewport
     Then PP: expect global  header exists
@@ -26,6 +35,15 @@ Feature: PP-MVP: Header and Favicons
 
   @pp_header_favicons_mobile
   Scenario: PP: Header and Favicons Validation For Mobile
+    #Validate hamburger button doesn't display on unauthenticated page
+    Then PP: expect hamburger button does not exists for browser
+    Then PP: navigate back to previous page
+
+    #log in
+    Then PP: set login page email to env value
+    Then PP: set login page password to env value
+    Then PP: User clicks Log In
+
     #verify all content and fields are present
     Then PP: set window to small viewport
     Then PP: click on X button
@@ -52,4 +70,3 @@ Feature: PP-MVP: Header and Favicons
     Then PP: click on global header
     Then PP: expect user is redirected to the Dashboard page
 
-    #validate hamburger button doesn't not exist on unauthenticated page
