@@ -1,19 +1,6 @@
-
 Then /^[Pp]P: set window to small viewport$/ do
   if SdcEnv.browser
     SdcPage.browser.window.resize_to(320, 480)
-  end
-end
-
-Then /^[Pp]P: set window to medium viewport$/ do
-  if SdcEnv.browser
-    SdcPage.browser.window.resize_to(992, 1080)
-  end
-end
-
-Then /^[Pp]P: set window to large viewport$/ do
-  if SdcEnv.browser
-    SdcPage.browser.window.resize_to(1200, 1080)
   end
 end
 
@@ -61,11 +48,11 @@ Then /^[Pp]P: [Ee]xpect [Hh]amburger button exists for mobile$/ do
 end
 
 Then /^[Pp]P: [Ee]xpect [Hh]amburger button does not exists for browser$/ do
-  expect(PartnerPortal.pp_common_page.panel_hamburger).not_to be_present, "Hamburger button IS PRESENT"
+  expect(PartnerPortal.pp_common_page.panel_hamburger).not_to be_present, "Hamburger button IS PRESENT browser mode"
 end
 
 Then /^[Pp]P: [Ee]xpect [Hh]amburger button does not exists for mobile$/ do
-  expect(PartnerPortal.pp_common_page.hamburger_button_xs).not_to be_present, "Hamburger button IS PRESENT"
+  expect(PartnerPortal.pp_common_page.hamburger_button_xs).not_to be_present, "Hamburger button IS PRESENT mobile"
 end
 
 Then /^[Pp]P: [Cc]lick on [Hh]amburger button$/ do

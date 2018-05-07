@@ -5,8 +5,10 @@ Feature: PP-MVP: Header and Favicons
 
   @pp_header_favicons_browser
   Scenario: PP: Header and Favicons Validation For Browser
-
     #Validate hamburger button doesn't display on unauthenticated page
+    Then PP: expect global  header exists
+    Then PP: expect partner portal logo exists
+    Then PP: expect Stamps Endicia Partner Portal Logo exists
     Then PP: expect hamburger button does not exists for browser
     Then PP: navigate back to previous page
 
@@ -16,16 +18,6 @@ Feature: PP-MVP: Header and Favicons
     Then PP: User clicks Log In
 
     #verify all content and fields are present
-    Then PP: set window to large viewport
-    Then PP: expect global  header exists
-    Then PP: expect partner portal logo exists
-    Then PP: expect Stamps Endicia Partner Portal Logo exists
-
-    Then PP: click on global header
-    Then PP: expect user is redirected to the Dashboard page
-
-    #verify all content and fields are present
-    Then PP: set window to medium viewport
     Then PP: expect global  header exists
     Then PP: expect partner portal logo exists
     Then PP: expect Stamps Endicia Partner Portal Logo exists
@@ -35,8 +27,13 @@ Feature: PP-MVP: Header and Favicons
 
   @pp_header_favicons_mobile
   Scenario: PP: Header and Favicons Validation For Mobile
+    Then PP: set window to small viewport
+
     #Validate hamburger button doesn't display on unauthenticated page
-    Then PP: expect hamburger button does not exists for browser
+    Then PP: expect global  header exists
+    Then PP: expect partner portal logo exists
+    Then PP: expect Stamps Endicia Partner Portal Logo exists
+    Then PP: expect hamburger button does not exists for mobile
     Then PP: navigate back to previous page
 
     #log in
@@ -45,8 +42,6 @@ Feature: PP-MVP: Header and Favicons
     Then PP: User clicks Log In
 
     #verify all content and fields are present
-    Then PP: set window to small viewport
-    Then PP: click on X button
     Then PP: expect global  header exists
     Then PP: expect partner portal logo exists
     Then PP: expect Stamps Endicia Partner Portal Logo exists for mobile
