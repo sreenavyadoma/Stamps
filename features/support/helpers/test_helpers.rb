@@ -291,7 +291,7 @@ module Stamps
         else                                  # April 28, 2018
           collection = str.split(/[\s\/,]/).delete_if{|s| s.empty?}
         end
-        {day: collection[1], year: collection[2], month: collection[0]}
+        {day: collection[1].sub(/^0/, ''), year: collection[2], month: collection[0]}
       end
 
       # returns mm/dd/yyyy "10/26/2017"
