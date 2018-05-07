@@ -17,12 +17,20 @@ Then /^[Pp]P: set window to large viewport$/ do
   end
 end
 
+Then /^[Pp]P: navigate back to previous page$/ do
+  SdcPage.browser.back
+end
+
 Then /^[Pp]P: click on global header$/ do
   PartnerPortal.pp_common_page.global_header.send_keys(:enter)
 end
 
 Then /^[Pp]P: [Ee]xpect global  header exists$/ do
   expect(PartnerPortal.pp_common_page.global_header).to be_present, "Global header DOES NOT exist"
+end
+
+Then /^[Pp]P: [Ee]xpect [Pp]artner [Pp]ortal logo exists$/ do
+  expect(PartnerPortal.pp_common_page.partner_portal_logo).to be_present, "Partner Portal logo DOES NOT exist"
 end
 
 Then /^[Pp]P: [Ee]xpect Stamps Endicia Partner Portal Logo exists$/ do
@@ -33,10 +41,7 @@ Then /^[Pp]P: [Ee]xpect Stamps Endicia Partner Portal Logo exists for mobile$/ d
     expect(PartnerPortal.pp_common_page.sdc_endicia_logo_mobile). to be_present, "Stamps Endicia Partner Portal Logo header DOES NOT exist mobile mode"
 end
 
-Then /^[Pp]P: [Ee]xpect [Pp]artner [Pp]ortal logo exists$/ do
-  expect(PartnerPortal.pp_common_page.partner_portal_logo).to be_present, "Partner Portal logo DOES NOT exist"
+Then /^[Pp]P: [Ee]xpect [Hh]amburger button exists$/ do
+  expect(PartnerPortal.pp_common_page.a).to be_present, "Global header DOES NOT exist"
 end
 
-Then /^[Pp]P: navigate back to previous page$/ do
-SdcPage.browser.back
-end
