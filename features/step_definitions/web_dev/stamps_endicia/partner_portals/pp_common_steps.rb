@@ -26,6 +26,7 @@ Then /^[Pp]P: click on global header$/ do
 end
 
 Then /^[Pp]P: [Ee]xpect global  header exists$/ do
+  PartnerPortal.pp_common_page.global_header.wait_until_present(timeout: 10)
   expect(PartnerPortal.pp_common_page.global_header).to be_present, "Global header DOES NOT exist"
 end
 
@@ -41,30 +42,39 @@ Then /^[Pp]P: [Ee]xpect Stamps Endicia Partner Portal Logo exists for mobile$/ d
     expect(PartnerPortal.pp_common_page.sdc_endicia_logo_mobile). to be_present, "Stamps Endicia Partner Portal Logo header DOES NOT exist mobile mode"
 end
 
-Then /^[Pp]P: [Ee]xpect [Hh]amburger button exists$/ do
-  expect(PartnerPortal.pp_common_page.hamburger_button).to be_present, "Hamburger button DOES NOT exist"
+Then /^[Pp]P: [Ee]xpect [Hh]amburger button exists for mobile$/ do
+  PartnerPortal.pp_common_page.hamburger_button_xs.wait_until_present(timeout: 10)
+  expect(PartnerPortal.pp_common_page.hamburger_button_xs).to be_present, "Hamburger button DOES NOT exist mobile mode"
 end
 
 Then /^[Pp]P: [Cc]lick on [Hh]amburger button$/ do
-  PartnerPortal.pp_common_page.hamburger_button.send_keys(:enter)
+  PartnerPortal.pp_common_page.hamburger_button_xs.wait_until_present(timeout: 10)
+  PartnerPortal.pp_common_page.hamburger_button_xs.click
 end
 
 Then /^[Pp]P: [Ee]xpect [Xx] button exists$/ do
-  expect(PartnerPortal.pp_common_page.x_button).to be_present, "X button DOES NOT exist on small viewport"
+  PartnerPortal.pp_common_page.x_button.wait_until_present(timeout: 10)
+  expect(PartnerPortal.pp_common_page.x_button).to be_present, "X button DOES NOT exist on mobile mode"
 end
 
 Then /^[Pp]P: [Cc]lick on [Xx] button$/ do
-  PartnerPortal.pp_common_page.hamburger_button.send_keys(:enter)
+  if(PartnerPortal.pp_common_page.x_button.present? == true)
+    PartnerPortal.pp_common_page.x_button.wait_until_present(timeout: 10)
+    PartnerPortal.pp_common_page.x_button.click
+  end
 end
 
 Then /^[Pp]P: [Ee]xpect [Dd]ashboard on left panel exists$/ do
-  expect(PartnerPortal.pp_common_page.panel_dashboard).to be_present, "Dashboard on panel DOES NOT exist"
+  PartnerPortal.pp_common_page.panel_dashboard.wait_until_present(timeout: 10)
+  expect(PartnerPortal.pp_common_page.panel_dashboard).to be_present, "Dashboard on panel DOES NOT exist mobile mode"
 end
 
 Then /^[Pp]P: [Ee]xpect left panel to expand for mobile$/ do
-  expect(PartnerPortal.pp_common_page.panel_expanded_xs).to be_present, "Expanded Panel DOES NOT exist"
+  PartnerPortal.pp_common_page.panel_expanded_xs.wait_until_present(timeout: 10)
+  expect(PartnerPortal.pp_common_page.panel_expanded_xs).to be_present, "Expanded Panel DOES NOT exist mobile mode"
 end
 
 Then /^[Pp]P: [Ee]xpect left panel to collapse for mobile$/ do
-  expect(PartnerPortal.pp_common_page.panel_collapsed_xs).to be_present, "Collapsed Panel DOES NOT exist"
+  PartnerPortal.pp_common_page.panel_collapsed_xs.wait_until_present(timeout: 10)
+  expect(PartnerPortal.pp_common_page.panel_collapsed_xs).to be_present, "Collapsed Panel DOES NOT exist mobile mode"
 end
