@@ -3,9 +3,31 @@ Feature: PP-MVP: Header and Favicons
 
   Background:
     Given PP: A valid user is signed into Partner Portal
+  @pp_header_favicons_browser
 
-  Scenario: PP: Header and Favicons Validation
-    #Then PP: set window to large viewport
+  Scenario: PP: Header and Favicons Validation For Browser
+    Then PP: set window to large viewport
     Then PP: expect global  header exists
+    Then PP: expect partner portal logo exists
     Then PP: expect Stamps Endicia Partner Portal Logo exists
-    Then PP: click on Stamps Endicia Partner Portal logo
+    Then PP: click on global header
+    Then PP: expect user is redirected to the Dashboard page
+
+    Then PP: set window to medium viewport
+    Then PP: expect global  header exists
+    Then PP: expect partner portal logo exists
+    Then PP: expect Stamps Endicia Partner Portal Logo exists
+    Then PP: click on global header
+    Then PP: expect user is redirected to the Dashboard page
+
+  @pp_header_favicons_mobile
+  Scenario: PP: Header and Favicons Validation For Mobile
+    #Validating UI
+    Then PP: set window to small viewport
+    Then PP: expect global  header exists
+    Then PP: expect partner portal logo exists
+    Then PP: expect Stamps Endicia Partner Portal Logo exists for mobile
+    Then expect hamburger button exists
+
+    Then PP: click on global header
+    Then PP: expect user is redirected to the Dashboard page
