@@ -42,6 +42,15 @@ Then /^[Pp]P: [Ee]xpect Stamps Endicia Partner Portal Logo exists for mobile$/ d
 end
 
 Then /^[Pp]P: [Ee]xpect [Hh]amburger button exists$/ do
-  expect(PartnerPortal.pp_common_page.a).to be_present, "Global header DOES NOT exist"
+  expect(PartnerPortal.pp_common_page.hamburger_button).to be_present, "Hamburger button DOES NOT exist"
 end
+
+Then /^[Pp]P: [Cc]lick on [Hh]amburger button$/ do
+  PartnerPortal.pp_common_page.hamburger_button.send_keys(:enter)
+end
+
+Then /^[Pp]P: [Cc]lick on [Xx] button$/ do
+  PartnerPortal.pp_common_page.hamburger_button.send_keys(:enter)
+end
+
 

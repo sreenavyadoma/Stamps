@@ -80,16 +80,8 @@ module PartnerPortal
     #Contract header
     page_object(:contract_header) { {class: "dashboard__contract-header"} }
 
-
-    #Left Panel Dashboard
-    page_object(:panel_dashboard) { {xpath: "//a[contains(text(), 'Dashboard')]"} }
-
-    #x button
-    button(:x, required: true) { {class: "xxx"} }
-
     #canvas Preferred Rates Qualified Postage
     page_objects(:preferred_rates_qualified_postage, index: 0 ) { {xpath: "//h4[contains(text(), 'Preferred Rates Qualified Postage')]"} }
-
 
   end
 
