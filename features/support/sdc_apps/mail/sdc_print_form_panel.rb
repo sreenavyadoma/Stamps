@@ -38,6 +38,7 @@ module SdcMail
         self.class.page_object(name) { {xpath: xpath} }
       end
     end
+
   end
 
 end
