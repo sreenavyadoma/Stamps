@@ -53,7 +53,7 @@ Then /^[Pp]P: [Ee]xpect [Xx] button exists$/ do
   expect(PartnerPortal.pp_common_page.x_button).to be_present, "X button DOES NOT exist on small viewport"
 end
 
-Then /^[Pp]P: [Cc]lick on [Xx] button exists$/ do
+Then /^[Pp]P: [Cc]lick on [Xx] button$/ do
   PartnerPortal.pp_common_page.hamburger_button.send_keys(:enter)
 end
 

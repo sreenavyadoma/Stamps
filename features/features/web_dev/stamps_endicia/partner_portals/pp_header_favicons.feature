@@ -30,9 +30,10 @@ Feature: PP-MVP: Header and Favicons
     Then PP: expect hamburger button exists
 
     Then PP: click on hamburger button
-    Then PP: expect Dashboard on left panel exists
     Then PP: expect left panel to expand for mobile
+    Then PP: expect Dashboard on left panel exists
     Then PP: expect X button exists
+    Then PP: click on X button
     Then PP: expect left panel to collapse for mobile
     Then PP: expect hamburger button exists
 
