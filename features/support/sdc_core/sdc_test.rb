@@ -159,7 +159,7 @@ class SdcTest
 
               when :firefox_iphone
                 kill('taskkill /im chrome.exe /f')
-                driver = Webdriver::UserAgent.driver(browser: :firefox, agent: :android_phone)
+                driver = Webdriver::UserAgent.driver(browser: :firefox, agent: :iphone)
                 SdcPage.browser = Watir::Browser.new(driver, accept_insecure_certs: true)
 
                 SdcPage.browser.driver.manage.timeouts.page_load = 12

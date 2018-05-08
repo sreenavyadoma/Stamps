@@ -40,7 +40,9 @@ google_iphonex: --tags @google MOBILE=iphonex
 #mhossain1_cc: --tags @registration_ui_validation_profile_page JENKINS=true URL=cc VERBOSE=true BROWSER=edge MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
 
 #mhossain1_cc: --tags @pp_log_in_page_validation JENKINS=true URL=qacc BROWSER=ff MAX_WINDOW=true DEBUG=false USR=wteam@stamps.com PW=password1
-mhossain1_cc: --tags @pp_header_favicons_mobile JENKINS=true URL=qacc BROWSER=firefox_iphone USR=wteam@stamps.com PW=password1
+#mhossain1_cc: --tags @pp_header_favicons_mobile JENKINS=true URL=qacc BROWSER=firefox_iphone USR=wteam@stamps.com PW=password1
+
+mhossain1_cc: --tags @pp_header_favicons_mobile URL=qacc ANDROID=samsung_galaxy USR=wteam@stamps.com PW=password1
 
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess  HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
