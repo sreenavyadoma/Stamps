@@ -17,33 +17,33 @@ class SdcTest
 
     def capabilities(device)
       case
-      when device == :macos_safari
-        capabilities_config = {
-            :version => '11.0',
-            :platform => 'macOS 10.13',
-            :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
-        }
-        browser = :safari
+        when device == :macos_safari
+          capabilities_config = {
+              :version => '11.0',
+              :platform => 'macOS 10.13',
+              :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+          }
+          browser = :safari
 
-      when device == :macos_chrome
-        capabilities_config = {
-            :version => '54.0',
-            :platform => 'macOS 10.13',
-            :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
-        }
-        browser = :chrome
+        when device == :macos_chrome
+          capabilities_config = {
+              :version => '54.0',
+              :platform => 'macOS 10.13',
+              :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+          }
+          browser = :chrome
 
-      when device == :temp_device
-        capabilities_config = {
-            :version => '16.16299',
-            :platform => 'Windows 10',
-            :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
-        }
-        browser = :edge
-      else
-        message = "Unsupported device. DEVICE=#{device}"
-        error = ArgumentError
-        raise error, message
+        when device == :temp_device
+          capabilities_config = {
+              :version => '16.16299',
+              :platform => 'Windows 10',
+              :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+          }
+          browser = :edge
+        else
+          message = "Unsupported device. DEVICE=#{device}"
+          error = ArgumentError
+          raise error, message
       end
 
       build_name = ENV['JENKINS_BUILD_NUMBER'] || ENV['SAUCE_BAMBOO_BUILDNUMBER'] || ENV['SAUCE_TC_BUILDNUMBER'] || ENV['SAUCE_BUILD_NAME']
@@ -140,46 +140,52 @@ class SdcTest
             # Watir.always_locate = true
             case(SdcEnv.browser)
 
-            when :edge
-              kill('taskkill /im MicrosoftEdge.exe /f')
-              SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
+              when :edge
+                kill('taskkill /im MicrosoftEdge.exe /f')
+                SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
 
-            when :firefox
-              kill('taskkill /im firefox.exe /f')
-              unless SdcEnv.firefox_profile
-                SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
-              else
-                profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(firefox_profile)
-                profile.assume_untrusted_certificate_issuer = true
-                profile['network.http.phishy-userpass-length'] = 255
-                SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, :profile => profile))
+              when :firefox
+                kill('taskkill /im firefox.exe /f')
+                unless SdcEnv.firefox_profile
+                  SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
+                else
+                  profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(firefox_profile)
+                  profile.assume_untrusted_certificate_issuer = true
+                  profile['network.http.phishy-userpass-length'] = 255
+                  SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, :profile => profile))
+
+                  SdcPage.browser.driver.manage.timeouts.page_load = 12
+                end
+
+              when :chrome
+                kill('taskkill /im chrome.exe /f')
+                SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
 
                 SdcPage.browser.driver.manage.timeouts.page_load = 12
-              end
 
-            when :chrome
-              kill('taskkill /im chrome.exe /f')
-              SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+              when :chromeb
+                kill('taskkill /im chrome.exe /f')
+                Selenium::WebDriver::Chrome.path = data_for(:setup, {})['windows']['chromedriverbeta']
+                SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
 
-              SdcPage.browser.driver.manage.timeouts.page_load = 12
+                SdcPage.browser.driver.manage.timeouts.page_load = 12
 
-            when :chromeb
-              kill('taskkill /im chrome.exe /f')
-              Selenium::WebDriver::Chrome.path = data_for(:setup, {})['windows']['chromedriverbeta']
-              SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+              when :chrome_iphone
+                kill('taskkill /im chrome.exe /f')
+                SdcPage.browser = Webdriver::UserAgent.driver(browser: :chrome, agent: :iphone, orientation: :portrait,switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate))
 
-              SdcPage.browser.driver.manage.timeouts.page_load = 12
+                SdcPage.browser.driver.manage.timeouts.page_load = 12
 
-            when :ie
-              kill('taskkill /im iexplore.exe /f')
-              SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:ie))
+              when :ie
+                kill('taskkill /im iexplore.exe /f')
+                SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:ie))
 
-            when :safari
-              kill("killall 'Safari Technology Preview'")
-              SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:safari, technology_preview: true))
+              when :safari
+                kill("killall 'Safari Technology Preview'")
+                SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:safari, technology_preview: true))
 
-            else
-              raise ArgumentError, "Invalid browser selection. #{test_driver}"
+              else
+                raise ArgumentError, "Invalid browser selection. #{test_driver}"
             end
 
             if SdcEnv.debug
@@ -353,18 +359,18 @@ class SdcTest
     def browser_selection(str)
       if str
         case str.downcase
-        when /ff|firefox|mozilla/
-          return :firefox
-        when /chromeb|gcb|googleb/
-          return :chromeb
-        when /chrome|gc|google/
-          return :chrome
-        when /ms|me|microsoft|edge/
-          return :edge
-        when /apple|osx|safari|mac/
-          return :safari
-        else
-          return str.downcase.to_sym
+          when /ff|firefox|mozilla/
+            return :firefox
+          when /chromeb|gcb|googleb/
+            return :chromeb
+          when /chrome|gc|google/
+            return :chrome
+          when /ms|me|microsoft|edge/
+            return :edge
+          when /apple|osx|safari|mac/
+            return :safari
+          else
+            return str.downcase.to_sym
         end
       end
       str
@@ -373,18 +379,18 @@ class SdcTest
     def test_env(str)
       if str
         case(str.downcase)
-        when /stg/
-          return :stg
-        when /cc/
-          return :qacc
-        when /sc/
-          return :qasc
-        when /rat/
-          return :rating
-        when /prod/
-          return :prod
-        else
-          return str.downcase.to_sym
+          when /stg/
+            return :stg
+          when /cc/
+            return :qacc
+          when /sc/
+            return :qasc
+          when /rat/
+            return :rating
+          when /prod/
+            return :prod
+          else
+            return str.downcase.to_sym
         end
       end
       str
