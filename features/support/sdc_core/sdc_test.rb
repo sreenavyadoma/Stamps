@@ -172,7 +172,8 @@ class SdcTest
 
               when :chrome_iphone
                 kill('taskkill /im chrome.exe /f')
-                SdcPage.browser = Webdriver::UserAgent.driver(browser: :chrome, agent: :iphone, orientation: :portrait,switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate))
+                driver = Webdriver::UserAgent.driver(browser: :chrome, agent: :iphone, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate))
+                SdcPage.browser = Watir::Browser.new driver
 
                 SdcPage.browser.driver.manage.timeouts.page_load = 12
 
