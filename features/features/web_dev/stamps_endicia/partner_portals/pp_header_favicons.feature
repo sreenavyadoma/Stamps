@@ -33,7 +33,7 @@ Feature: PP-MVP: Header and Favicons
 
   @pp_header_favicons_mobile
   Scenario: PP: Header and Favicons Validation For Mobile
-    Then PP: set window to small viewport
+    #Then PP: set window to small viewport
 
     #Validate hamburger button doesn't display on unauthenticated page
     Then PP: expect global header exists
