@@ -157,6 +157,13 @@ class SdcTest
                   SdcPage.browser.driver.manage.timeouts.page_load = 12
                 end
 
+              when :firefox_iphone
+                kill('taskkill /im chrome.exe /f')
+                driver = Webdriver::UserAgent.driver(browser: :firefox, agent: :iphone)
+                SdcPage.browser = Watir::Browser.new(driver, accept_insecure_certs: true)
+
+                SdcPage.browser.driver.manage.timeouts.page_load = 12
+
               when :chrome
                 kill('taskkill /im chrome.exe /f')
                 SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
@@ -167,13 +174,6 @@ class SdcTest
                 kill('taskkill /im chrome.exe /f')
                 Selenium::WebDriver::Chrome.path = data_for(:setup, {})['windows']['chromedriverbeta']
                 SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
-
-                SdcPage.browser.driver.manage.timeouts.page_load = 12
-
-              when :chrome_iphone
-                kill('taskkill /im chrome.exe /f')
-                driver = Webdriver::UserAgent.driver(browser: :chrome, agent: :iphone, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate))
-                SdcPage.browser = Watir::Browser.new driver
 
                 SdcPage.browser.driver.manage.timeouts.page_load = 12
 
@@ -189,12 +189,12 @@ class SdcTest
                 raise ArgumentError, "Invalid browser selection. #{test_driver}"
             end
 
-            if SdcEnv.debug
-              SdcPage.browser.window.resize_to 1300, 1020
-              SdcPage.browser.window.move_to 0, 0
-            else
-              SdcPage.browser.window.maximize
-            end
+            # if SdcEnv.debug
+            #   SdcPage.browser.window.resize_to 1300, 1020
+            #   SdcPage.browser.window.move_to 0, 0
+            # else
+            #   SdcPage.browser.window.maximize
+            # end
 
           rescue StandardError => e
             SdcLogger.error e.message
@@ -360,8 +360,8 @@ class SdcTest
     def browser_selection(str)
       if str
         case str.downcase
-        when /chrome_iphone/
-          return :chrome_iphone
+        when /firefox_iphone/
+          return :firefox_iphone
         when /ff|firefox|mozilla/
           return :firefox
         when /chromeb|gcb|googleb/
