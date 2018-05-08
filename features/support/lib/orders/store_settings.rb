@@ -17,7 +17,7 @@ module Stamps
         def auto_add_to_products_page
           if cache[:add_to_products].nil? || !cache[:add_to_products].present?
             cache[:add_to_products] = StampsCheckbox.new( iframe.input(id: "addNewProducts"), iframe.input(id: "addNewProducts"), 
-                                                          "class", "ng-not-empty")
+                                                          'class', "ng-not-empty")
           end
           cache[:add_to_products]
         end
@@ -25,7 +25,7 @@ module Stamps
         def sku
           if cache[:sku].nil? || !cache[:sku].present?
             cache[:sku] = StampsRadio.new(iframe.label(css: "label[for='sku']"), iframe.input(id: 'sku'), 
-                                          "class", "parse")
+                                          'class', "parse")
           end
           cache[:sku]
         end
@@ -33,7 +33,7 @@ module Stamps
         def product_listing_name
           if cache[:prod_list].nil? || !cache[:prod_list].present?
             cache[:prod_list] = StampsRadio.new(iframe.label(css: "label[for='productListingName']"), 
-                                                iframe.input(id: 'productListingName'), "class", "parse")
+                                                iframe.input(id: 'productListingName'), 'class', "parse")
           end
           cache[:prod_list]
         end
@@ -266,7 +266,7 @@ module Stamps
 
         def auto_import_new_orders
           if cache[:auto_import].nil? || !cache[:v].present?
-            cache[:auto_import] = Stamps::WebApps::StampsCheckbox.new(iframe.input(id: 'importOrders'), iframe.input(id: 'importOrders'), "class", "ng-not-empty")
+            cache[:auto_import] = Stamps::WebApps::StampsCheckbox.new(iframe.input(id: 'importOrders'), iframe.input(id: 'importOrders'), 'class', "ng-not-empty")
           end
           cache[:auto_import]
         end

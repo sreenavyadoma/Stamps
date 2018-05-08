@@ -31,7 +31,3 @@ Feature:  Mail BVT - Authentication
     Then set Mail username
     Then click the Sign In button in Mail
     Then expect Mail Sign In Modal error Your username or password is invalid.
-
-
-
-

@@ -308,7 +308,7 @@ module Stamps
           StampsCheckbox.new(
               driver.input(css: "[id^=customswindow] [class*=bottom] input"),
               driver.div(css: "[id^=customswindow][class*=resizable] [class*=bottom] [id^=checkbox][class*=x-form-item-no-label]"),
-              "class", "checked")
+              'class', 'checked')
         end
 
         def total_cost

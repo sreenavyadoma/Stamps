@@ -1,36 +1,43 @@
 
 module SdcOrders
-  class LoadingPopUp < SdcPage
-    page_object(:loading_orders) { {text: 'Loading orders...'} }
+
+  def loading_orders
+    klass = Class.new(SdcPage) do
+      page_object(:landing_page) { {xpath: '//*[contains(text(), "Loading orders...")]'} }
+    end
+
+    klass.new.landing_page
   end
+  module_function :loading_orders
 
-  class << self
-    def loading_popup
-      LoadingPopUp.new.loading_orders
-    end
-
-    def order_details
-      @order_details = SdcOrderDetails.new
-    end
-
-    def bulk_update
-      @bulk_update = nil
-    end
-
-    def toolbar
-      @toolbar = SdcOrdersToolbar.new
-    end
-
-    def grid
-      @grid = SdcOrdersGrid.new
-    end
-
-    def filter_panel
-      @filter_panel = SdcOrdersFilterPanel.new
-    end
-
-    def modals
-      @modals = SdcOrdersModals.new
-    end
+  def order_details
+    SdcOrderDetails.new
   end
+  module_function :order_details
+
+  def bulk_update
+    raise ArgumentError, 'Not Implemented'
+  end
+  module_function :bulk_update
+
+  def toolbar
+    SdcOrdersToolbar.new
+  end
+  module_function :toolbar
+
+  def grid
+    SdcOrdersGrid.new
+  end
+  module_function :grid
+
+  def filter_panel
+    SdcOrdersFilterPanel.new
+  end
+  module_function :filter_panel
+
+  def modals
+    OrdersFloatingModals
+  end
+  module_function :modals
+
 end

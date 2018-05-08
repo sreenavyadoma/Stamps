@@ -16,7 +16,7 @@ end
 
 module SdcFinder
   # @param [Browser] browser either Watir::Browser or Appium::Core::Driver
-  # @param [String] tag HTML tag for Watir
+  # @param [String]  HTML tag
   # @param [Integer] timeout in seconds
   def element(browser, tag: nil, timeout: 20)
     if browser.is_a? Watir::Browser
@@ -82,9 +82,11 @@ end
 class SdcPage < WatirDrops::PageObject
 
   class << self
+
     def page_object(name, tag: nil, required: false, timeout: 30, &block)
       element(name, required: required) { SdcFinder.element(browser, tag: tag, timeout: timeout, &block) }
     end
+
     alias text_field page_object
     alias button page_object
     alias label page_object
@@ -100,6 +102,7 @@ class SdcPage < WatirDrops::PageObject
     def chooser(name, chooser, verify, property, property_name)
       element(name) { SdcChooser.new(instance_eval(chooser.to_s), instance_eval(verify.to_s), property, property_name) }
     end
+
     alias checkbox chooser
     alias radio chooser
 
@@ -107,7 +110,6 @@ class SdcPage < WatirDrops::PageObject
       element(name) { SdcNumber.new(instance_eval(text_field.to_s), instance_eval(increment.to_s), instance_eval(decrement.to_s)) }
     end
   end
-
 end
 
 class SdcDriverDecorator < BasicObject
@@ -119,6 +121,10 @@ class SdcDriverDecorator < BasicObject
   def goto(*args)
     return @driver.get(*args) if @driver.respond_to?(:get)
     @driver.goto(*args)
+  end
+
+  def respond_to?(name, include_private = false)
+    super || @driver.respond_to?(name, include_private)
   end
 
   def method_missing(method, *args, &block)
@@ -359,6 +365,7 @@ class SdcChooser < BasicObject
     return result.casecmp('true').zero? if result.casecmp('true').zero? || result .casecmp('false').zero?
     result.include?(@property_val)
   end
+
   alias checked? chosen?
   alias selected? chosen?
 
@@ -370,6 +377,7 @@ class SdcChooser < BasicObject
 
     chosen?
   end
+
   alias check choose
   alias select choose
 
@@ -381,11 +389,12 @@ class SdcChooser < BasicObject
 
     chosen?
   end
+
   alias uncheck unchoose
   alias unselect unchoose
 
   def respond_to?(name, include_private = false)
-    super || @element.respond_to?(name, include_private)
+    @element.respond_to?(name, include_private) || super
   end
 
   def method_missing(method, *args, &block)
@@ -416,19 +425,21 @@ class SdcNumber < BasicObject
 end
 
 class SdcLogger
-
-  def initialize(progname: 'Stamps.com')
-    @@logger = ::Logger.new(STDOUT)
-    @@logger.datetime_format = '%H:%M:%S'
-    @@logger.progname = progname
-    @@logger.formatter = proc do |severity, datetime, progname, msg|
-      "#{progname} :: #{msg}\n"
-    end
-  end
-
   class << self
     def logger
-      @@logger
+      begin
+        @logger = ::Logger.new(STDOUT)
+        @logger.datetime_format = '%H:%M:%S'
+        @logger.progname = 'Stamps.com'
+        @logger.formatter = proc do |severity, datetime, progname, msg|
+          "#{progname} :: #{msg}\n"
+        end
+      end unless @logger
+      @logger
+    end
+
+    def respond_to?(name, include_private = false)
+      super || logger.respond_to?(name, include_private)
     end
 
     def method_missing(method, *args)
@@ -492,6 +503,10 @@ class SdcAppiumDriver
 
   def core_driver
     @core_driver ||= initialize_driver
+  end
+
+  def respond_to?(name, include_private = false)
+    super || @core_driver.respond_to?(name, include_private)
   end
 
   def method_missing(name, *args, &block)

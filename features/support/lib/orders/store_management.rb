@@ -189,7 +189,7 @@ module Stamps
           label=(driver.label text: "Automatically Import New Orders")
           checkbox_field=label.parent.textbox
           verify_field=label.parent.parent.parent
-          StampsCheckbox.new(checkbox_field, verify_field, "class", "checked")
+          StampsCheckbox.new(checkbox_field, verify_field, 'class', 'checked')
         end
       end
 =end
@@ -353,7 +353,7 @@ module Stamps
               #select grid row item
               5.times do
                 grid_row_field.click
-                break if (grid_row_focused_field.attribute_value "class").include? "focused"
+                break if (grid_row_focused_field.attribute_value 'class').include? "focused"
               end
               del_btn.click
               return delete_modal if delete_modal.present?
@@ -415,7 +415,7 @@ module Stamps
                 checkbox_field=driver.divs(text: store_name).last
                 sleep(0.35)
                 check_verify_field=checkbox_field.parent
-                checkbox=StampsCheckbox.new checkbox_field, check_verify_field, "class", "focused"
+                checkbox=StampsCheckbox.new checkbox_field, check_verify_field, 'class', "focused"
                 checkbox.check
                 checkbox.check
                 checkbox.check

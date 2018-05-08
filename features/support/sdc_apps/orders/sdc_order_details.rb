@@ -4,10 +4,12 @@ module SdcOrders
     page_object(:drop_down) { {xpath: '(//div[starts-with(@id, "shipfromdroplist")]/div[contains(@id, "trigger-picker")])[1]'} }
     page_object(:text_field) { {xpath: '(//input[starts-with(@id, "shipfromdroplist")])[1]'} }
 
-    def selection(str)
-      self.class.page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
+      def selection(str)
+        # self.class.page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
+        return self.class.page_object(:selection_obj) { {xpath: '(//li[contains(@class, "x-boundlist-item")])[1]'} } if str == "default"
+        self.class.page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
+      end
     end
-  end
 
   class SdcShipToCountryDom < SdcPage
     page_object(:drop_down) { {xpath: '//div[contains(@id, "matltocountrydroplist-trigger-picker")]'} }
@@ -42,7 +44,7 @@ module SdcOrders
 
     page_object(:chooser_elem) { {xpath: '//div[contains(@id, "singleOrderDetailsForm")]//div[7]//input[contains(@class, "checkbox")]'} }
     page_object(:verify_elem) { {xpath: '//div[contains(@id, "singleOrderDetailsForm")]//div[7]//div[contains(@class, "checkbox")]'} }
-    checkbox(:checkbox, :chooser_elem, :verify_elem, "class", "checked")
+    checkbox(:checkbox, :chooser_elem, :verify_elem, 'class', 'checked')
 
     text_field(:text_f, tag: :text_field) { {xpath: '(//input[contains(@id, "insurancefield")])[1]'} }
     page_object(:increment) { {xpath: '(//div[contains(@id, "insurancefield")]//div[contains(@class, "x-form-spinner-up")])[1]'} }
@@ -97,11 +99,11 @@ module SdcOrders
     page_object(:show_more) { {xpath: '//div[starts-with(@id, "shiptoview-addressCollapsed")]//a'} }
 
     def domestic
-      @domestic = SdcOrderDetailsDomestic.new
+      SdcOrderDetailsDomestic.new
     end
 
     def international
-      @international = SdcOrderDetailsInternational.new
+      SdcOrderDetailsInternational.new
     end
   end
 

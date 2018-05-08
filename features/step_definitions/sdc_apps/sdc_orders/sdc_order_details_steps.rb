@@ -1,23 +1,176 @@
 
+Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
+  step 'show order details form ship-to fields'
+  TestData.hash[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address, SdcEnv.env))
+  if SdcEnv.new_framework
+    order_details = SdcOrders.order_details
+    address = order_details.ship_to.domestic.address
+    address.set(TestData.hash[:ship_to_domestic])
 
-Then /^[Ww]ait [Uu]ntil [Oo]rder [Dd]etails [Pp]resent(?: (\d+), (\d+)|)$/ do |iteration, delay|
-  (iteration.zero? ? 20 : iteration).times do
-    break if SdcOrders.order_details.title.present?
-    sleep(delay.zero? ? 0.2 : delay / 10)
+    address.blur_out(ctr: 3)
+    order_details.weight_label.blur_out(ctr: 3)
+    order_details.service_label.blur_out(ctr: 3)
+    order_details.reference_num.blur_out(ctr: 3)
+    order_details.ship_to_label.blur_out(ctr: 3)
+    order_details.order_id.blur_out(ctr: 3)
+    order_details.title.blur_out(ctr: 3)
+    order_details.service.drop_down.click
+    order_details.ship_to.domestic.show_less.safe_wait_until_present(timeout: 3)
+    order_details.service.drop_down.click
+    address.blur_out(ctr: 3)
+
+  else
+    stamps.orders.order_details.ship_to.domestic.set(TestData.hash[:ship_to_domestic])
+  end
+  #step 'blur out on Order Details form'
+  step 'Save Order Details data'
+  step 'hide order details form Ship-To fields'
+end
+
+Then /^[Ss]et [Oo]rder [Dd]etails [Ss]ervice to (.*)$/ do |str|
+  step 'expect Order Details is present'
+  TestData.hash[:service] = str
+  if SdcEnv.new_framework
+    order_details = SdcOrders.order_details
+    service = order_details.service
+    service.selection(str)
+    service.drop_down.click unless service.selection_obj.present?
+    service.selection_obj.click unless service.selection_obj.class_disabled?
+    expect('expect Order Details service is correct')
+    order_details.weight_label.blur_out(ctr: 2)
+    order_details.service_label.blur_out(ctr: 2)
+    order_details.reference_num.blur_out(ctr: 2)
+    order_details.ship_to_label.blur_out(ctr: 2)
+    order_details.order_id.blur_out(ctr: 2)
+    order_details.title.blur_out(ctr: 2)
+
+    service.wait_until(timeout: 15) { service.cost.text_value.dollar_amount_str.to_f.round(2) > 0 }
+
+  else
+    TestData.hash[:service] = stamps.orders.order_details.service.select(str).parse_service_name
+    expect(TestData.hash[:service]).to eql(str)
+    20.times do
+      step 'blur out on Order Details form'
+      sleep(0.015)
+      break if stamps.orders.order_details.service.cost.text.dollar_amount_str.to_f.round(2) > 0
+    end
+  end
+  step 'Save Order Details data'
+end
+
+Then /^[Ss]et [Oo]rder [Dd]etails Pounds to (\d+\.?\d*)$/ do |str|
+  TestData.hash[:pounds] = str
+  if SdcEnv.new_framework
+    order_details = SdcOrders.order_details
+    weight = order_details.weight
+    weight.lbs.set(TestData.hash[:pounds])
+    order_details.weight_label.blur_out(ctr: 2)
+  else
+    stamps.orders.order_details.weight.lb.set(TestData.hash[:pounds])
   end
 end
 
-Then /^[Ww]ait [Uu]ntil [Oo]rder [Tt]oolbar [Pp]resent(?: (\d+), (\d+)|)$/ do |iteration, delay|
+Then /^[Ss]et [Oo]rder [Dd]etails Ounces to (\d+\.?\d*)$/ do |str|
+  TestData.hash[:pounds] = str
+  if SdcEnv.new_framework
+    order_details = SdcOrders.order_details
+    weight = order_details.weight
+    weight.oz.set(TestData.hash[:pounds])
+    order_details.weight_label.blur_out(ctr: 2)
+  else
+    stamps.orders.order_details.weight.oz.set(TestData.hash[:ounces])
+  end
+end
+
+Then /^[Ss]et [Oo]rder [Dd]etails [Ll]ength to (\d*)$/ do |number|
+  TestData.hash[:length] = number
+  if SdcEnv.new_framework
+    order_details = SdcOrders.order_details
+    dimensions = order_details.dimensions
+    expect(dimensions.length).to be_present, 'Order Details form Length is not present'
+    dimensions.length.set(TestData.hash[:length])
+    order_details.service_label.blur_out(ctr: 2)
+  else
+    expect(stamps.orders.order_details.dimensions.length).to be_present, 'Order Details form Length is not present'
+    stamps.orders.order_details.dimensions.length.set(TestData.hash[:length])
+  end
+  step 'Save Order Details data'
+end
+
+Then /^[Ss]et [Oo]rder [Dd]etails [Ww]idth to (\d*)$/ do |number|
+  if SdcEnv.new_framework
+    TestData.hash[:width] = number
+    order_details = SdcOrders.order_details
+    dimensions = order_details.dimensions
+    expect(dimensions.width).to be_present, 'Order Details form Width is not present'
+    dimensions.width.set(TestData.hash[:width])
+    order_details.service_label.blur_out(ctr: 2)
+  else
+    expect(stamps.orders.order_details.dimensions.width).to be_present, 'Order Details form Width is not present'
+    stamps.orders.order_details.dimensions.width.set(TestData.hash[:width])
+  end
+  step 'Save Order Details data'
+end
+
+Then /^[Ss]et [Oo]rder [Dd]etails [Hh]eight to (\d*)$/ do |number|
+  if SdcEnv.new_framework
+    order_details = SdcOrders.order_details
+    dimensions = order_details.dimensions
+    expect(dimensions.height).to be_present, 'Order Details form Height is not present'
+    dimensions.height.set(TestData.hash[:height] = number)
+    order_details.service_label.blur_out(ctr: 2)
+  else
+    expect(stamps.orders.order_details.dimensions.height).to be_present, 'Order Details form Height is not present'
+    stamps.orders.order_details.dimensions.height.set(TestData.hash[:height] = number)
+  end
+  step 'Save Order Details data'
+end
+
+Then /^[Ee]xpect [Oo]rder [Dd]etails [Ss]ervice is (?:correct|(.*))$/ do |str|
+  service = str || TestData.hash[:service]
+  if SdcEnv.new_framework
+    expect(SdcOrders.order_details.service.text_field.text_value).to include(service)
+  else
+    expect(stamps.orders.order_details.service.textbox.text.parse_service_name).to eql((service.nil?) ? TestData.hash[:service] : service)
+  end
+end
+
+Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]ervice to (.*)$/ do |str|
+  step 'expect Order Details is present'
+  TestData.hash[:int_service] = stamps.orders.order_details.service.select(str).parse_service_name
+  20.times do
+    step 'blur out on Order Details form'
+    sleep(0.015)
+    break if stamps.orders.order_details.service.cost.text.dollar_amount_str.to_f.round(2) > 0
+  end
+  step 'Save Order Details data'
+end
+
+Then /^[Ee]xpect [Oo]rder [Dd]etails [Ii]nternational [Ss]ervice is (?:correct|(.*))$/ do |expectation|
+  step 'expect Order Details is present'
+  expect(stamps.orders.order_details.service.textbox.text.parse_service_name).to eql((expectation.nil?) ? TestData.hash[:int_service] : expectation)
+end
+
+
+
+Then /^[Ww]ait [Uu]ntil [Oo]rder [Dd]etails [Pp]resent(?: (\d+), (.+)|)$/ do |iteration, delay|
   (iteration.zero? ? 20 : iteration).times do
-    break if SdcOrders.toolbar.add.present?
-    sleep(delay.zero? ? 0.2 : delay / 10)
+    break if SdcOrders.order_details.order_id.present?
+    sleep(delay.to_f.zero? ? 0.2 : delay.to_f)
+  end
+end
+
+Then /^[Ww]ait [Uu]ntil [Oo]rder [Tt]oolbar [Pp]resent(?: (\d+), (.+)|)$/ do |iteration, delay|
+  (iteration.zero? ? 20 : iteration).times do
+    break unless SdcOrders.loading_popup.present?
+    sleep(delay.to_f.zero? ? 0.2 : delay.to_f)
   end
 end
 
 Then /^[Hh]ide [Oo]rder [Dd]etails [Ff]orm [Ss]hip-[Tt]o [Ff]ields$/ do
   if SdcEnv.new_framework
-    show_less = SdcOrders.order_details.ship_to.domestic.show_less
-    show_less.click if show_less.present?
+    domestic = SdcOrders.order_details.ship_to.domestic
+    domestic.show_less.click if domestic.show_less.present?
   else
     stamps.orders.order_details.ship_to.domestic.hide_ship_to_details
   end
@@ -25,8 +178,8 @@ end
 
 Then /^[Ss]how [Oo]rder [Dd]etails [Ff]orm [Ss]hip-[Tt]o [Ff]ields$/ do
   if SdcEnv.new_framework
-    show_more = SdcOrders.order_details.ship_to.show_more
-    show_more.click if show_more.present?
+    ship_to = SdcOrders.order_details.ship_to
+    ship_to.show_more.click if ship_to.show_more.present?
   else
     stamps.orders.order_details.ship_to.domestic.show_ship_to_details
   end
@@ -225,24 +378,6 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Email to \"(.*)
   end
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails Pounds to (\d+\.?\d*)$/ do |str|
-  if SdcEnv.new_framework
-    SdcOrders.order_details.weight.lbs.set(TestData.hash[:pounds] = str)
-  else
-    stamps.orders.order_details.weight.lb.set(TestData.hash[:pounds] = str)
-  end
-  step 'blur out on Order Details form'
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails Ounces to (\d+\.?\d*)$/ do |str|
-  if SdcEnv.new_framework
-    SdcOrders.order_details.weight.oz.set(TestData.hash[:pounds] = str)
-  else
-    stamps.orders.order_details.weight.oz.set(TestData.hash[:ounces] = str)
-  end
-  step 'blur out on Order Details form'
-end
-
 Then /^[Bb]lur out on [Oo]rder [Dd]etails form(?:| (\d+)(?:| times))$/ do |count|
   if SdcEnv.new_framework
     (count.zero? ? 2 : count.to_i).times do
@@ -254,42 +389,6 @@ Then /^[Bb]lur out on [Oo]rder [Dd]etails form(?:| (\d+)(?:| times))$/ do |count
   else
     stamps.orders.order_details.blur_out(count)
   end
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails [Ll]ength to (\d*)$/ do |number|
-  if SdcEnv.new_framework
-    expect(SdcOrders.order_details.dimensions.length).to be_present, 'Order Details form Length is not present'
-    SdcOrders.order_details.dimensions.length.set(TestData.hash[:length] = number)
-  else
-    expect(stamps.orders.order_details.dimensions.length).to be_present, 'Order Details form Length is not present'
-    stamps.orders.order_details.dimensions.length.set(TestData.hash[:length] = number)
-  end
-  step 'blur out on Order Details form'
-  step 'Save Order Details data'
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails [Ww]idth to (\d*)$/ do |number|
-  if SdcEnv.new_framework
-    expect(SdcOrders.order_details.dimensions.width).to be_present, 'Order Details form Width is not present'
-    SdcOrders.order_details.dimensions.width.set(TestData.hash[:width] = number)
-  else
-    expect(stamps.orders.order_details.dimensions.width).to be_present, 'Order Details form Width is not present'
-    stamps.orders.order_details.dimensions.width.set(TestData.hash[:width] = number)
-  end
-  step 'blur out on Order Details form'
-  step 'Save Order Details data'
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails [Hh]eight to (\d*)$/ do |number|
-  if SdcEnv.new_framework
-    expect(SdcOrders.order_details.dimensions.height).to be_present, 'Order Details form Height is not present'
-    SdcOrders.order_details.dimensions.height.set(TestData.hash[:height] = number)
-  else
-    expect(stamps.orders.order_details.dimensions.height).to be_present, 'Order Details form Height is not present'
-    stamps.orders.order_details.dimensions.height.set(TestData.hash[:height] = number)
-  end
-  step 'blur out on Order Details form'
-  step 'Save Order Details data'
 end
 
 Then /^[Cc]heck [Oo]rder [Dd]etails [Ii]nsure-[Ff]or [Cc]heckbox$/ do
@@ -358,6 +457,8 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Ff]rom to (?:Manage Shipping Addresse
     5.times do
       SdcOrders.order_details.ship_from.drop_down.click unless SdcOrders.order_details.ship_from.selection_obj.present?
       SdcOrders.order_details.ship_from.selection_obj.safe_click unless SdcOrders.order_details.ship_from.selection_obj.class_disabled?
+      break if str == 'default' && SdcOrders.order_details.ship_from.text_field.text_value != ''
+      #break if str == 'Manage Shipping Addresses...' && SdcOrders.modals.manage_shipping_addresses.title.present?
       if SdcOrders.order_details.ship_from.text_field.text_value == str
         TestData.hash[:ship_from] = SdcOrders.order_details.ship_from.text_field.text_value unless str == 'Manage Shipping Addresses...'
         break
@@ -371,22 +472,6 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Ff]rom to (?:Manage Shipping Addresse
     end
   end
 end
-
-Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
-  step 'show order details form ship-to fields'
-  TestData.hash[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address, SdcEnv.env))
-  if SdcEnv.new_framework
-    address = SdcOrders.order_details.ship_to.domestic.address
-    address.set(TestData.hash[:ship_to_domestic])
-
-  else
-    stamps.orders.order_details.ship_to.domestic.set(TestData.hash[:ship_to_domestic])
-  end
-  #step 'blur out on Order Details form'
-  step 'Save Order Details data'
-  step 'hide order details form Ship-To fields'
-end
-
 # @service_blur_out_field = StampsField.new(driver.label(text: 'Service:')) if @service_blur_out_field.nil? || !@service_blur_out_field.present?
 # @weight_blur_out_field = StampsField.new(driver.label(text: 'Weight:')) if @weight_blur_out_field.nil? || !@weight_blur_out_field.present?
 
