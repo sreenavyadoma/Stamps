@@ -139,5 +139,5 @@ Given /^[Pp]P: [Aa] valid user is signed into Partner Portal$/ do
   step 'PP: set login page email to env value'
   step 'PP: set login page password to env value'
   step 'PP: User clicks Log In'
-  step 'PP: expect user is redirected to the Dashboard page'
+  step 'PP: expect dashboard page header exist'
 end
