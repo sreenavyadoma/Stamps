@@ -427,14 +427,14 @@ end
 class SdcLogger
   class << self
     def logger
-      begin
+      unless @logger
         @logger = ::Logger.new(STDOUT)
         @logger.datetime_format = '%H:%M:%S'
         @logger.progname = 'Stamps.com'
         @logger.formatter = proc do |severity, datetime, progname, msg|
           "#{progname} :: #{msg}\n"
         end
-      end unless @logger
+      end
       @logger
     end
 
