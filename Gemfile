@@ -12,7 +12,7 @@ gem 'measured'
 gem 'faker'
 gem 'sauce_whisk'
 gem 'watir_drops'
-gem 'webdriver-user-agent'
+
 
 group :web_dev do
   gem 'tiny_tds'

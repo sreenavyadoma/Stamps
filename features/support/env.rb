@@ -15,7 +15,7 @@ require 'measured'
 require 'holidays'
 require 'watir'
 require 'watir_drops'
-require 'webdriver-user-agent'
+
 
 require_relative 'sdc_core/sdc_core'
 require_relative 'sdc_core/sdc_test'
