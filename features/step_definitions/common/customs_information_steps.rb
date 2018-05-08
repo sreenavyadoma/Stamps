@@ -1,19 +1,27 @@
 
 Then /^[Cc]lick (?:Order Details|Print) [Ff]orm (?:[Ee]dit [Cc]ustoms|[Ee]dit|[Cc]ustoms) [Ff]orm [Bb]utton$/ do
-  10.times do
-    if SdcEnv.sdc_app == :orders
-      stamps.orders.order_details.contents.customs_form.scroll_into_view
-      stamps.orders.order_details.contents.customs_form.click
+  if SdcEnv.new_framework
+    SdcOrders.order_details.ship_to.international.customs_form.click
+  else
+    10.times do
+      if SdcEnv.sdc_app == :orders
+        stamps.orders.order_details.contents.customs_form.scroll_into_view
+        stamps.orders.order_details.contents.customs_form.click
+      end
+      stamps.common_modals.customs_form.wait_until_present(2)
+      break if stamps.common_modals.customs_form.present?
     end
-    stamps.common_modals.customs_form.wait_until_present(2)
-    break if stamps.common_modals.customs_form.present?
+    stamps.mail.print_form.mail_customs.edit_customs_form if SdcEnv.sdc_app == :mail
   end
-  stamps.mail.print_form.mail_customs.edit_customs_form if SdcEnv.sdc_app == :mail
   step 'expect customs form is present'
 end
 
 Then /^[Ee]xpect [Cc]ustoms [Ff]orm is [Pp]resent$/ do
-  expect(stamps.common_modals.customs_form).to be_present, 'Customs form did not open'
+  if SdcEnv.new_framework
+    expect(SdcWebsite.customs_form.title).to be_present, 'Customs form did not open'
+  else
+    expect(stamps.common_modals.customs_form).to be_present, 'Customs form did not open'
+  end
 end
 
 Then /^[Bb]lur [Oo]ut [Oo]n [Cc]ustoms [Ff]orm(?:| (\d+)(?:| times))$/ do |count|

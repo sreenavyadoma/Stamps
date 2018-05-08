@@ -5,7 +5,6 @@ module SdcOrders
     page_object(:text_field) { {xpath: '(//input[starts-with(@id, "shipfromdroplist")])[1]'} }
 
       def selection(str)
-        # self.class.page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
         return self.class.page_object(:selection_obj) { {xpath: '(//li[contains(@class, "x-boundlist-item")])[1]'} } if str == "default"
         self.class.page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
       end
@@ -74,7 +73,7 @@ module SdcOrders
     page_object(:show_less) { {xpath: '//div[contains(@id, "domestic")]//span[text()="Less"]'} }
 
     def country
-      @country = SdcShipToCountryDom.new
+      SdcShipToCountryDom.new
     end
   end
 
@@ -90,8 +89,12 @@ module SdcOrders
     page_object(:email, tag: :text_field) { {xpath: '(//input[@name="BuyerEmail"])[2]'} }
     page_object(:show_less) { {xpath: '//div[contains(@id, "international")]//span[text()="Less"]'} }
 
+    page_object(:customs_form) { {xpath: '//*[contains(@class, "customs-btn-container")]//*[text()="Customs Form..."]'} }
+    page_object(:restrictions) { {xpath: ''} }
+    page_object(:reference_num) { {xpath: ''} }
+
     def country
-      @country = SdcShipToCountryIntl.new
+      SdcShipToCountryIntl.new
     end
   end
 
@@ -145,35 +148,35 @@ module SdcOrders
     page_object(:order_id, required: true, timeout: 20) { {xpath: '(//*[contains(@class, "singleorder-detailsform")]//div[contains(@class, "sdc-toolbar")]//b)[1]'} }
 
     def ship_to
-      @ship_to = SdcOrderDetailsShipTo.new
+      SdcOrderDetailsShipTo.new
     end
 
     def ship_from
-      @ship_from = SdcOrderDetailsShipFrom.new
+      SdcOrderDetailsShipFrom.new
     end
 
     def weight
-      @wieght = SdcOrderDetailsWeight.new
+      SdcOrderDetailsWeight.new
     end
 
     def service
-      @service = SdcOrderDetailsService.new
+      SdcOrderDetailsService.new
     end
 
     def insurance
-      @insurance = SdcOrderDetailsInsurance.new
+      SdcOrderDetailsInsurance.new
     end
 
     def tracking
-      @tracking = SdcOrderDetailsTracking.new
+      SdcOrderDetailsTracking.new
     end
 
     def footer
-      @footer = SdcOrderDetailsFooter.new
+      SdcOrderDetailsFooter.new
     end
 
     def dimensions
-      @dimensions = SdcOrderDetailsDimensions.new
+      SdcOrderDetailsDimensions.new
     end
   end
 end

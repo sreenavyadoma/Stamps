@@ -188,17 +188,14 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Dd]omestic [Ss]hip-[Tt]o [Cc]ountry to (.*)$/ do |country|
   step 'show order details form ship-to fields'
   if SdcEnv.new_framework
-    domestic = SdcOrders.order_details.ship_to.domestic
-    domestic.selection(country)
-    5.times do
-      domestic.country.drop_down.click unless domestic.country.selection_obj.present?
-      domestic.country.selection_obj.safe_click unless domestic.country.selection_obj.class_disabled?
-      if domestic.country.text_field.text_value && domestic.country.text_field.text_value.include?(str)
-        TestData.hash[:ship_to_country] = domestic.country.text_field.text_value
-        break
-      end
-      TestData.hash[:ship_to_country] = ''
+    dom_country = SdcOrders.order_details.ship_to.domestic.country
+    dom_country.selection(country)
+    dom_country.drop_down.click unless dom_country.selection_obj.present?
+    dom_country.selection_obj.click unless dom_country.selection_obj.class_disabled?
+    if dom_country.text_field.text_value && dom_country.text_field.text_value.include?(country)
+      TestData.hash[:ship_to_country] = dom_country.text_field.text_value
     end
+    TestData.hash[:ship_to_country] ||= ''
     expect(TestData.hash[:ship_to_country]).to eql(country)
   else
     expect(stamps.orders.order_details.ship_to.domestic.country.select(TestData.hash[:ship_to_country] = country)).to eql(TestData.hash[:ship_to_country])
@@ -208,16 +205,14 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o [Cc]ountry to (.*)$/ do |country|
   step 'show order details form ship-to fields'
   if SdcEnv.new_framework
-    SdcOrders.order_details.ship_to.international.selection(country)
-    5.times do
-      SdcOrders.order_details.ship_to.international.country.drop_down.click unless SdcOrders.order_details.ship_to.international.country.selection_obj.present?
-      SdcOrders.order_details.ship_to.international.country.selection_obj.safe_click unless SdcOrders.order_details.ship_to.international.country.selection_obj.class_disabled?
-      if SdcOrders.order_details.ship_to.international.country.text_field.text_value && SdcOrders.order_details.ship_to.international.country.text_field.text_value.include?(str)
-        TestData.hash[:ship_to_country] = SdcOrders.order_details.ship_to.international.country.text_field.text_value
-        break
-      end
-      TestData.hash[:ship_to_country] ||= ''
+    intl_country = SdcOrders.order_details.ship_to.international.country
+    intl_country.selection(country)
+    intl_country.drop_down.click unless intl_country.selection_obj.present?
+    intl_country.selection_obj.click unless intl_country.selection_obj.class_disabled?
+    if intl_country.text_field.text_value && intl_country.text_field.text_value.include?(country)
+      TestData.hash[:ship_to_country] = intl_country.text_field.text_value
     end
+    TestData.hash[:ship_to_country] ||= ''
     expect(TestData.hash[:ship_to_country]).to eql(country)
   else
     expect(stamps.orders.order_details.ship_to.international.country.select(TestData.hash[:ship_to_country] = country)).to eql(TestData.hash[:ship_to_country])
@@ -246,7 +241,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o [Cc]ompany to \
   TestData.hash[:int_ship_to_company] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
   if SdcEnv.new_framework
     if str.length.zero?
-      SdcOrders.order_details.ship_to.international.company.safe_click
+      SdcOrders.order_details.ship_to.international.company.click
     else
       SdcOrders.order_details.ship_to.international.company.set(TestData.hash[:int_ship_to_company])
     end
@@ -263,7 +258,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Address 1 to \"
   TestData.hash[:int_ship_to_address_1] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
   if SdcEnv.new_framework
     if str.length.zero?
-      SdcOrders.order_details.ship_to.international.address1.safe_click
+      SdcOrders.order_details.ship_to.international.address1.click
     else
       SdcOrders.order_details.ship_to.international.address1.set(TestData.hash[:int_ship_to_address_1])
     end
@@ -280,7 +275,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Address 2 to \"
   TestData.hash[:int_ship_to_address_2] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
   if SdcEnv.new_framework
     if str.length.zero?
-      SdcOrders.order_details.ship_to.international.address2.safe_click
+      SdcOrders.order_details.ship_to.international.address2.click
     else
       SdcOrders.order_details.ship_to.international.address2.set(TestData.hash[:int_ship_to_address_2])
     end
@@ -297,7 +292,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o City to \"(.*)\
   TestData.hash[:int_ship_to_city] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
   if SdcEnv.new_framework
     if str.length.zero?
-      SdcOrders.order_details.ship_to.international.city.safe_click
+      SdcOrders.order_details.ship_to.international.city.click
     else
       SdcOrders.order_details.ship_to.international.city.set(TestData.hash[:int_ship_to_city])
     end
@@ -314,7 +309,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Province to \"(
   TestData.hash[:int_ship_to_province] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
   if SdcEnv.new_framework
     if str.length.zero?
-      SdcOrders.order_details.ship_to.international.province.safe_click
+      SdcOrders.order_details.ship_to.international.province.click
     else
       SdcOrders.order_details.ship_to.international.province.set(TestData.hash[:int_ship_to_province])
     end
@@ -331,7 +326,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Postal Code to 
   TestData.hash[:int_ship_to_postal_code] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
   if SdcEnv.new_framework
     if str.length.zero?
-      SdcOrders.order_details.ship_to.international.postal_code.safe_click
+      SdcOrders.order_details.ship_to.international.postal_code.click
     else
       SdcOrders.order_details.ship_to.international.postal_code.set(TestData.hash[:int_ship_to_postal_code])
     end
@@ -348,7 +343,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Phone to \"(.*)
   TestData.hash[:int_ship_to_phone] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
   if SdcEnv.new_framework
     if str.length.zero?
-      SdcOrders.order_details.ship_to.international.phone.safe_click
+      SdcOrders.order_details.ship_to.international.phone.click
     else
       SdcOrders.order_details.ship_to.international.phone.set(TestData.hash[:int_ship_to_phone])
     end
@@ -365,7 +360,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Email to \"(.*)
   TestData.hash[:int_ship_to_email] = ((str.downcase == 'random') ? TestHelper.rand_full_name : str)
   if SdcEnv.new_framework
     if str.length.zero?
-      SdcOrders.order_details.ship_to.international.email.safe_click
+      SdcOrders.order_details.ship_to.international.email.click
     else
       SdcOrders.order_details.ship_to.international.email.set(TestData.hash[:int_ship_to_email])
     end
@@ -381,10 +376,10 @@ end
 Then /^[Bb]lur out on [Oo]rder [Dd]etails form(?:| (\d+)(?:| times))$/ do |count|
   if SdcEnv.new_framework
     (count.zero? ? 2 : count.to_i).times do
-      SdcOrders.order_details.service_label.safe_click
-      SdcOrders.order_details.weight_label.safe_double_click
-      SdcOrders.order_details.weight_label.safe_click
-      SdcOrders.order_details.service_label.safe_double_click
+      SdcOrders.order_details.service_label.click
+      SdcOrders.order_details.weight_label.double_click
+      SdcOrders.order_details.weight_label.click
+      SdcOrders.order_details.service_label.double_click
     end
   else
     stamps.orders.order_details.blur_out(count)

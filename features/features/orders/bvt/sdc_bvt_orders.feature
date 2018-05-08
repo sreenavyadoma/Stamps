@@ -121,11 +121,10 @@ Feature:  BVT tests for Orders
   @bvt_international_shipping
   Scenario: BVT International Shipping
     Then sign-in to Orders
-
     Then add new order
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
-      | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
+      | random      | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then set Order Details Ounces to 4
     Then set Order Details service to PMI Flat Rate Envelope
     Then click Order Details form Customs Form button
