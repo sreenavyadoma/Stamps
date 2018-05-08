@@ -359,18 +359,20 @@ class SdcTest
     def browser_selection(str)
       if str
         case str.downcase
-          when /ff|firefox|mozilla/
-            return :firefox
-          when /chromeb|gcb|googleb/
-            return :chromeb
-          when /chrome|gc|google/
-            return :chrome
-          when /ms|me|microsoft|edge/
-            return :edge
-          when /apple|osx|safari|mac/
-            return :safari
-          else
-            return str.downcase.to_sym
+        when /chrome_iphone/
+          return :chrome_iphone
+        when /ff|firefox|mozilla/
+          return :firefox
+        when /chromeb|gcb|googleb/
+          return :chromeb
+        when /chrome|gc|google/
+          return :chrome
+        when /ms|me|microsoft|edge/
+          return :edge
+        when /apple|osx|safari|mac/
+          return :safari
+        else
+          return str.downcase.to_sym
         end
       end
       str
