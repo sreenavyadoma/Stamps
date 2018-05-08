@@ -8,9 +8,10 @@ Then /^[Ss]et [Oo]rders [Ss]ettings [Gg]eneral [Pp]ostdate to (now [+-]\d+ hours
 end
 
 Then /^[Oo]pen [Oo]rders [Ss]ettings [Mm]odal$/ do
-  step 'Wait until order toolbar present 40, 3'
-  SdcOrders.toolbar.settings.safe_click
-  step 'Wait until Orders Settings Modal present 40, 3'
+  # step 'Wait until order toolbar present 40, 3'
+  SdcOrders.toolbar.settings.click
+  SdcOrders.modals.settings.title.wait_until_present(timeout: 5)
+  # step 'Wait until Orders Settings Modal present 40, 3'
   expect(SdcOrders.modals.settings.title).to be_present, "Order Settings modal is not present"
 end
 

@@ -104,6 +104,7 @@ Then /^set Orders landing page password to (.+)$/ do |str|
 end
 
 Then /^click Orders landing page sign-in button$/ do
+  SdcWebsite.landing_page.sign_in.wait_until_present(timeout: 3)
   SdcWebsite.landing_page.sign_in.click
 end
 

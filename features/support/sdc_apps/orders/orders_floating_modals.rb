@@ -44,7 +44,7 @@ module SdcOrders
       page_object(:drop_down) { {xpath: '//*[contains(@class, "x-form-date-trigger")]'} }
 
       def datepicker
-        @datepicker ||= ShipDateDatepicker.new
+        ShipDateDatepicker.new
       end
     end
 
@@ -65,15 +65,15 @@ module SdcOrders
       page_object(:close) { {xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
 
       def print_on
-        @print_on ||= PrintModalPrintOn.new
+        PrintModalPrintOn.new
       end
 
       def ship_date
-        @ship_date ||= PrintShipDate.new
+        PrintShipDate.new
       end
 
       def printer
-        @printer ||= PrintModalPrinter.new
+        PrintModalPrinter.new
       end
     end
 

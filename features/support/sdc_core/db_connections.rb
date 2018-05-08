@@ -8,7 +8,7 @@ module Stamps
       @connection = ::Mysql2::Client.new(host: host, username: username, password: password)
     end
 
-    def respond_to?(name, include_private = false)
+    def respond_to_missing?(name, include_private = false)
       @connection.respond_to?(name, include_private) || super
     end
 
@@ -28,7 +28,7 @@ module Stamps
       @connection.select_db('stamps')
     end
 
-    def respond_to?(name, include_private = false)
+    def respond_to_missing?(name, include_private = false)
       @connection.respond_to?(name, include_private) || super
     end
 
@@ -47,7 +47,7 @@ module Stamps
       @connection = TinyTds::Client.new( username: username, password: password, host: server, port: port, database: database, azure: azure)
     end
 
-    def respond_to?(name, include_private = false)
+    def respond_to_missing?(name, include_private = false)
       @connection.respond_to?(name, include_private) || super
     end
 
@@ -68,7 +68,7 @@ module Stamps
       @connection = SQLServerClient.new(server: server, database: database, username: username, password: password, port: port, azure:azure)
     end
 
-    def respond_to?(name, include_private = false)
+    def respond_to_missing?(name, include_private = false)
       @connection.respond_to?(name, include_private) || super
     end
 
