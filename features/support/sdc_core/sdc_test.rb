@@ -127,6 +127,7 @@ class SdcTest
       Appium::Driver.new(desired_caps, false).start_driver
     end
 
+
     def configure
 
       SdcLogger.debug "Initializing test driver...\n"
@@ -353,8 +354,6 @@ class SdcTest
     def browser_selection(str)
       if str
         case str.downcase
-        when /firefox_iphone/
-          return :firefox_iphone
         when /ff|firefox|mozilla/
           return :firefox
         when /chromeb|gcb|googleb/
