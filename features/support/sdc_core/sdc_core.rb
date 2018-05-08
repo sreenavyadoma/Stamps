@@ -123,8 +123,8 @@ class SdcDriverDecorator < BasicObject
     @driver.goto(*args)
   end
 
-  def respond_to?(name, include_private = false)
-    super || @driver.respond_to?(name, include_private)
+  def respond_to_missing?(name, include_private = false)
+    @driver.respond_to?(name, include_private) || super
   end
 
   def method_missing(method, *args, &block)
@@ -336,8 +336,8 @@ class SdcElement < BasicObject
     send(:attribute, property_name).include?(property_value)
   end
 
-  def respond_to?(name, include_private = false)
-    super || @element.respond_to?(name, include_private)
+  def respond_to_missing?(name, include_private = false)
+    @element.respond_to?(name, include_private) || super
   end
 
   def method_missing(name, *args, &block)
@@ -414,8 +414,8 @@ class SdcNumber < BasicObject
     # set_instance_variables(binding, *local_variables)
   end
 
-  def respond_to?(name, include_private = false)
-    super || @text_field.respond_to?(name, include_private)
+  def respond_to_missing?(name, include_private = false)
+    @text_field.respond_to?(name, include_private) || super
   end
 
   def method_missing(name, *args, &block)
@@ -438,8 +438,8 @@ class SdcLogger
       @logger
     end
 
-    def respond_to?(name, include_private = false)
-      super || logger.respond_to?(name, include_private)
+    def respond_to_missing?(name, include_private = false)
+      logger.respond_to?(name, include_private)
     end
 
     def method_missing(method, *args)
@@ -505,8 +505,8 @@ class SdcAppiumDriver
     @core_driver ||= initialize_driver
   end
 
-  def respond_to?(name, include_private = false)
-    super || @core_driver.respond_to?(name, include_private)
+  def respond_to_missing?(name, include_private = false)
+    @core_driver.respond_to?(name, include_private)
   end
 
   def method_missing(name, *args, &block)

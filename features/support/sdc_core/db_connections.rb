@@ -68,7 +68,7 @@ module Stamps
       @connection = SQLServerClient.new(server: server, database: database, username: username, password: password, port: port, azure:azure)
     end
 
-    def respond_to?(name, include_private = false)
+    def respond_to_missing?(name, include_private = false)
       @connection.respond_to?(name, include_private) || super
     end
 
