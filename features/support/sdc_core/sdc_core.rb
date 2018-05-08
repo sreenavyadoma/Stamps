@@ -393,13 +393,13 @@ class SdcChooser < BasicObject
   alias uncheck unchoose
   alias unselect unchoose
 
-  def respond_to?(name, include_private = false)
+  def respond_to_missing?(name, include_private = false)
     @element.respond_to?(name, include_private) || super
   end
 
-  def method_missing(method, *args, &block)
-    super unless @element.respond_to?(method)
-    @element.send(method, *args, &block)
+  def method_missing(name, *args, &block)
+    super unless @element.respond_to? name
+    @element.send(name, *args, &block)
   end
 end
 
