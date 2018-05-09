@@ -11,3 +11,8 @@ end
 Then /^[Pp]P: expect dashboard header on left panel exists$/ do
   expect(PartnerPortal.dashboard_page.panel_dashboard). to be_present 'Dashboard header on left panel  DOES NOT exist on dashboard page'
 end
+
+
+Then /^[Pp]P: [Cc]lick submit in dashboard page$/ do
+  PartnerPortal.dashboard_page.submit.send_keys(:enter)
+end

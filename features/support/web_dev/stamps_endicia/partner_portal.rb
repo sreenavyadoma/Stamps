@@ -114,7 +114,7 @@ module PartnerPortal
       @reset_password_page = PPResetPasswordPage.new
     end
 
-    def pp_common_page
+    def common_page
       @stamps_endicia_common_page = PartnerPortal::Common.new
     end
 

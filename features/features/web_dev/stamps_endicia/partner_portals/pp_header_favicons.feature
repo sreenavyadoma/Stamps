@@ -60,11 +60,4 @@ Feature: PP-MVP: Header and Favicons
     Then PP: expect left panel to collapse for mobile
     Then PP: expect hamburger button exists for mobile
 
-    #validate header sticks to the top
-    Then PP: scroll to middle of the page
-    Then PP: click on global header
-    Then PP: scroll to buttom of the page
-    Then PP: click on global header
-    Then PP: scroll to top of the page
-    Then PP: click on global header
-    Then PP: expect dashboard page header exist
+
