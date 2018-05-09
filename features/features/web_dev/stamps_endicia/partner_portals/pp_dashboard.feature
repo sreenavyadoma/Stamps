@@ -1,9 +1,9 @@
-Feature: PP-MVP: Login Page
+Feature: PP-MVP: Dashboard Page
 
   Background:
-    Given Start test driver
+    Given PP: A valid user is signed into Partner Portal
 
-  @pp_dashboard_ui_validation
-  Scenario: PP: Dashboard Page UI Validation
+  @pp_dashboard_single_contract_validaiton
+  Scenario: PP: Dashboard Page Single Contract Validation
 
-    Then PP: A valid user is signed into Partner Portal
+    Then
