@@ -1,8 +1,3 @@
-Then /^[Pp]P: set window to small viewport$/ do
-  if SdcEnv.browser
-    SdcPage.browser.window.resize_to(320, 480)
-  end
-end
 
 Then /^[Pp]P: scroll to top of the page$/ do
    SdcPage.browser.execute_script('document.documentElement.scrollTop = 0')
