@@ -40,9 +40,9 @@ google_iphonex: --tags @google MOBILE=iphonex
 #mhossain1_cc: --tags @registration_ui_validation_profile_page JENKINS=true URL=cc VERBOSE=true BROWSER=edge MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
 
 #mhossain1_cc: --tags @pp_log_in_page_validation JENKINS=true URL=qacc BROWSER=ff MAX_WINDOW=true DEBUG=false USR=wteam@stamps.com PW=password1
-mhossain1_cc: --tags @pp_header_favicons_mobile JENKINS=true URL=qacc BROWSER_MOBILE_EMULATOR=gc,'iPhone X' USR=wteam@stamps.com PW=password1
+#mhossain1_cc: --tags @pp_header_favicons_browser_mobile JENKINS=true URL=qacc BROWSER_MOBILE_EMULATOR=gc,'iPhone X' USR=wteam@stamps.com PW=password1
+mhossain1_cc: --tags @pp_header_favicons_browser JENKINS=true URL=qacc BROWSER=ff USR=wteam@stamps.com PW=password1
 
-#mhossain1_cc: --tags @pp_dashboard_page_ui_validation JENKINS=true URL=qacc BROWSER_MOBILE_EMULATOR=gc,'iPhone X' USR=wteam@stamps.com PW=password1
 
 
 
@@ -556,4 +556,5 @@ mail_bug_ordersauto_3243: --tags  @mail_bug_ordersauto_3243 --guess  HEALTHCHECK
 
 #Partner Portal
 pp_log_in_page_validation: --tags @pp_log_in_page_validation --guess JENKINS=true  MAX_WINDOW=true
-pp_header_favicons: --tags @pp_header_favicons --guess JENKINS=true  MAX_WINDOW=true
+pp_header_favicons_browser: --tags @pp_header_favicons_browser --guess JENKINS=true  MAX_WINDOW=true
+pp_header_favicons_browser_mobile: --tags @pp_header_favicons_browser_mobile --guess JENKINS=true

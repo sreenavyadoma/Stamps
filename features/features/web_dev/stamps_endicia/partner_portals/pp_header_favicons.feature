@@ -31,7 +31,7 @@ Feature: PP-MVP: Header and Favicons
     Then PP: click on global header
     Then PP: expect dashboard page header exist
 
-  @pp_header_favicons_mobile
+  @pp_header_favicons_browser_mobile
   Scenario: PP: Header and Favicons Validation For Mobile
     #Validate hamburger button doesn't display on unauthenticated page
     Then PP: expect global header exists
