@@ -16,3 +16,4 @@ end
 Then /^[Pp]P: [Cc]lick submit in dashboard page$/ do
   PartnerPortal.dashboard_page.submit.send_keys(:enter)
 end
+
