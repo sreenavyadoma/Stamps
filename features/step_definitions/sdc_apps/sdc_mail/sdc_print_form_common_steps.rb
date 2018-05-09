@@ -5,7 +5,9 @@ Then /^[Ss]elect Print On (.+)$/ do |str|
     print_on = SdcMail.print_on
     print_on.selection(name: :selection_element, lov: str)
     print_on.drop_down.wait_until_present(timeout: 3)
+    print_on.text_field.wait_until_present(timeout: 3)
     print_on.drop_down.click
+    print_on.selection_element.wait_until_present(timeout: 3)
     print_on.drop_down.click unless print_on.selection_element.present?
     print_on.selection_element.click
     print_on.text_field.wait_until_present(timeout: 3)

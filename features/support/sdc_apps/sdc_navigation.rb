@@ -11,15 +11,16 @@ module SdcNavigation
     page_object(:sign_in){{id: 'signInButton'}}
     page_object(:remember_username, tag: :checkbox) { {id: 'rememberUser'} }
     page_object(:invalid_sign_in) { {xpath: '//div[contains(@id, "InvalidUsernamePasswordMsg")]//label'} }
+    page_object(:verifying_account_info, tag: :div) { {text: 'Verifying account information...'} }
   end
 
   class << self
     def user_drop_down
-      @user_drop_down = SignedInUser.new
+      SignedInUser.new
     end
 
     def mail_sign_in_modal
-      @mail_sign_in_modal = MailSignInModal.new
+      MailSignInModal.new
     end
   end
 end
