@@ -59,7 +59,7 @@ Feature:  Mail BVT - Authentication
     Then select Print On Manage Printing Options...
 
     Then check Shipping Label - 8 ½" x 11" Paper in Manage Print Options
-    Then click save on Manage Print Options
+    # Then click save on Manage Print Options
 
 #    Then show Advanced Options
 #    Then expect Advanced Options Calculate Postage Amount radio button is present
