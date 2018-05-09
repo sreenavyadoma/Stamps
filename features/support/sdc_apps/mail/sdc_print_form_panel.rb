@@ -29,11 +29,11 @@ module SdcMail
     page_object(:drop_down) { {xpath: '//*[starts-with(@id, "printmediadroplist-")][contains(@id, "-trigger-picker")]'} }
     page_object(:text_field) { {xpath: '//*[@name="PrintMedia"]'} }
 
-    def selection(name, str)
-      if str.eql? 'Manage Printing Options'
-        self.class.page_object(name) { {xpath: '//*[contains(text(), "Manage Printing Options")]'} }
+    def selection(name: :selection_element, lov: 'Manage Printing Options')
+      if lov.eql? 'Manage Printing Options'
+        self.class.page_object(name, tag: :li) { {xpath: '//*[contains(text(), "Manage Printing Options")]'} }
       else
-        media = data_for(:mail_print_media, {})[str]
+        media = data_for(:mail_print_media, {})[lov]
         xpath = "//li[starts-with(@class, '#{media.split(',').first}')][@data-recordindex='#{media.split(',').first}']"
         self.class.page_object(name) { {xpath: xpath} }
       end
