@@ -11,7 +11,8 @@ module SdcNavigation
     page_object(:sign_in){{id: 'signInButton'}}
     page_object(:remember_username, tag: :checkbox) { {id: 'rememberUser'} }
     page_object(:invalid_sign_in) { {xpath: '//div[contains(@id, "InvalidUsernamePasswordMsg")]//label'} }
-    page_object(:verifying_account_info, tag: :div) { {text: 'Verifying account information...'} }
+    page_object(:verifying_account_info) { {xpath: '//*[contains(text(), "Verifying")]'} }
+
   end
 
   class << self

@@ -94,12 +94,13 @@ end
 
 Then /^[Cc]lick the [Ss]ign [Ii]n button in [Mm]ail$/ do
   modal = SdcWebsite.navigation.mail_sign_in_modal
+  verifying_account_info = modal.verifying_account_info
   if SdcEnv.browser
     modal.sign_in_link.wait_until_present(timeout: 3)
     modal.sign_in_link.hover unless modal.sign_in.present?
     modal.sign_in.click
-    modal.verifying_account_info.safe_wait_until_present(timeout: 2)
-    modal.verifying_account_info.safe_wait_while_present(timeout: 3)
+    verifying_account_info.wait_until_present(timeout: 6)
+    verifying_account_info.wait_while_present(timeout: 8)
   elsif SdcEnv.ios
     raise StandardError, 'Not Implemented'
   elsif SdcEnv.android
