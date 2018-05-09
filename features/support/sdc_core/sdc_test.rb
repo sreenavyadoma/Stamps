@@ -177,6 +177,7 @@ class SdcTest
             when :safari
               kill("killall 'Safari Technology Preview'")
               SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:safari, technology_preview: true))
+              SdcPage.browser.window.maximize
 
             else
               raise ArgumentError, "Invalid browser selection. #{test_driver}"
@@ -231,7 +232,7 @@ class SdcTest
         raise e
       end
 
-      SdcEnv.sauce_device ||= ENV['SAUCE_DEVICE'] unless ENV['SAUCE_DEVICE'].nil?
+      SdcEnv.sauce_device ||= ENV['SAUCE_DEVICE']
 
       if SdcEnv.sauce_device
         SdcEnv::BROWSERS.each { |browser| SdcEnv.browser = browser if SdcEnv.sauce_device.eql? browser.to_s }
