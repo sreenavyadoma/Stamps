@@ -5,7 +5,7 @@ module SdcEnv
   BROWSER_MOBILE_EMULATORS = %i[iPhonex iPhone4].freeze unless Object.const_defined?('SdcEnv::BROWSER_MOBILE_EMULATORS')
   HEALTH_CHECK_APPS = ['address book', 'orders', 'or reports', 'postage tools'].freeze unless Object.const_defined?('SdcEnv::HEALTH_CHECK_APPS')
   IOS = %i[iphone6 iphone7 iphone8 iphonex].freeze unless Object.const_defined?('SdcEnv::IOS')
-  ANDROID = %i[samsung_galaxy nexus_5x mhandroid].freeze unless Object.const_defined?('SdcEnv::ANDROID')
+  ANDROID = %i[samsung_galaxy nexus_5x].freeze unless Object.const_defined?('SdcEnv::ANDROID')
 
   class << self
     attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose,
