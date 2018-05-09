@@ -18,6 +18,14 @@ Then /^[Ss]elect Print On (.+)$/ do |str|
   TestData.hash[:print_media] = str
 end
 
+
+
+Then /^check (.+) in Manage Print Options$/ do |str|
+  manage_print_options = SdcMail.modals.manage_print_options
+  manage_print_options.search.set str
+end
+#Then click save on Manage Print Options
+
 Then /^[Ss]how Advanced Options$/ do
   if SdcEnv.new_framework
     SdcMail.print_form.show_advanced_options

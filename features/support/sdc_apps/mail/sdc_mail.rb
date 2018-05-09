@@ -106,7 +106,7 @@ module SdcMail
   end
 
   def modals
-    @modals
+    SdcMailFloatingModals
   end
 
   ##
