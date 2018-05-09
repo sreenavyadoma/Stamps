@@ -15,7 +15,7 @@ require 'cucumber/rake/task'
     t.cucumber_opts = "-p cuke_reports"
   end
 
-  Cucumber::Rake::Task.new(:pp_header_favicons_mobile) do |t|
+  Cucumber::Rake::Task.new(:pp_header_favicons_browser_mobile) do |t|
     t.profile = 'pp_header_favicons_browser_mobile'
     t.cucumber_opts = "-p cuke_reports"
   end
