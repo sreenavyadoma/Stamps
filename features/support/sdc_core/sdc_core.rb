@@ -2,7 +2,7 @@
 module SdcEnv
   TEST_ENVIRONMENTS = %i[stg qacc cc qasc sc rating].freeze unless Object.const_defined?('SdcEnv::TEST_ENVIRONMENTS')
   BROWSERS = %i[ff firefox gc chrome safari edge chromeb ie iexplorer].freeze unless Object.const_defined?('SdcEnv::BROWSERS')
-  CHROME_DEVICE = %i[iPhonex iPhone4].freeze unless Object.const_defined?('SdcEnv::CHROME_DEVICE')
+  BROWSER_MOBILE_EMULATORS = ['iPhonex' 'iPhone4'].freeze unless Object.const_defined?('SdcEnv::BROWSER_MOBILE_EMULATORS')
   HEALTH_CHECK_APPS = ['address book', 'orders', 'or reports', 'postage tools'].freeze unless Object.const_defined?('SdcEnv::HEALTH_CHECK_APPS')
   IOS = %i[iphone6 iphone7 iphone8 iphonex].freeze unless Object.const_defined?('SdcEnv::IOS')
   ANDROID = %i[samsung_galaxy nexus_5x].freeze unless Object.const_defined?('SdcEnv::ANDROID')
@@ -11,7 +11,8 @@ module SdcEnv
     attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose,
                   :printer, :browser, :hostname, :print_media, :mobile,
                   :android, :ios, :firefox_profile, :new_framework, :debug,
-                  :scenario, :sauce_device, :test_name, :log_level, :driver_log_level, :chrome_device
+                  :scenario, :sauce_device, :test_name, :log_level,
+                  :driver_log_level, :browser_mobile_emulator
   end
 end
 
