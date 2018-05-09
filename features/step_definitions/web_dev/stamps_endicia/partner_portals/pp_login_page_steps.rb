@@ -42,6 +42,7 @@ Then /^[Pp]P: expect login page [Ff]orgot [Pp]assword link exist$/ do
 end
 
 Then /^[Pp]P: [Uu]ser clicks [Ff]orgot [Pp]assword link$/ do
+  SdcPage.browser.refresh
   PartnerPortal.login_page.forgot_pw.send_keys(:enter)
 end
 

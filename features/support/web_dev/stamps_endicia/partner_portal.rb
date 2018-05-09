@@ -84,19 +84,20 @@ module PartnerPortal
     page_objects(:preferred_rates_qualified_postage, index: 0 ) { {xpath: '//h4[contains(text(), "Preferred Rates Qualified Postage")]'} }
 
     #Revenue Share
-    page_object(:revenue_share_title) { {xpath: "//h4[contains(text(), 'Revenue Share')]"} }
+    page_object(:revenue_share_title) { {xpath: '//h4[contains(text(), "Revenue Share")]'} }
+
+    #submit
+    button(:submit) { {xpath: '//button[@label="Submit"]'} }
 
   end
 
   class PPResetPasswordPage < SdcPage
     #sdcEndica content
-    page_object(:header) { {xpath: "//h1[contains(text(), 'Reset Password Request')]"} }
+    page_object(:header) { {xpath: '//h1[contains(text(), "Reset Password Request")]'} }
 
     #Email
-    text_field(:email, tag: :text_field, required: true) { {xpath: "//input[@name='email']"} }
+    text_field(:email, tag: :text_field, required: true) { {xpath: '//input[@name="email"]'} }
 
-    #submit
-    button(:submit) { {xpath: "//button[@label='Submit']/span" } }
   end
 
   class << self
