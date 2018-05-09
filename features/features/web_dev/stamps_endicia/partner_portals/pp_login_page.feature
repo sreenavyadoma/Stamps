@@ -116,7 +116,7 @@ Feature: PP-MVP: Login Page
         Then PP: set login page email to env value
         Then PP: set login page password to env value
         Then PP: User clicks Log In
-        Then PP: expect user is redirected to the Dashboard Page
+        Then PP: expect dashboard page header exist
         Then PP: Expect a record Login success event is added in Audit Records for user
 
 

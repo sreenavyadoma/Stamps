@@ -1,5 +1,5 @@
 
-Then /^[Pp]P: [Ee]xpect user is redirected to the [Dd]ashboard [Pp]age$/ do
+Then /^[Pp]P: [Ee]xpect [Dd]ashboard [Pp]age header exist$/ do
    PartnerPortal.dashboard_page.dashboard_header.wait_until_present(timeout: 30)
    expect(PartnerPortal.dashboard_page.dashboard_header). to be_present, "User was not redirected to the dashboard page"
 end

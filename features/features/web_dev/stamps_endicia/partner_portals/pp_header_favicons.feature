@@ -29,7 +29,7 @@ Feature: PP-MVP: Header and Favicons
 
 
     Then PP: click on global header
-    Then PP: expect user is redirected to the Dashboard page
+    Then PP: expect dashboard page header exist
 
   @pp_header_favicons_mobile
   Scenario: PP: Header and Favicons Validation For Mobile
@@ -70,4 +70,4 @@ Feature: PP-MVP: Header and Favicons
     Then PP: click on global header
     Then PP: scroll to top of the page
     Then PP: click on global header
-    Then PP: expect user is redirected to the Dashboard page
+    Then PP: expect dashboard page header exist
