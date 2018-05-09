@@ -10,7 +10,7 @@ Then /^[Ss]elect Print On (.+)$/ do |str|
     print_on.drop_down.click unless print_on.selection_element.present?
     print_on.selection_element.click
     print_on.text_field.wait_until_present(timeout: 3)
-    expect(print_on.text_field.text_value).to eql str
+    expect(print_on.text_field.text_value).to eql(str) unless str.include? 'Manage'
   else
     stamps.mail.print_on(str)
   end

@@ -56,6 +56,7 @@ Feature:  Mail BVT - Authentication
     Then select Print On Roll - 4" x 6" Shipping Label
     Then select Print On Roll - 4 ⅛" x 6 ¼" Shipping Label
     Then select Print On Stamps
+    Then select Print On Manage Printing Options...
 #    Then show Advanced Options
 #    Then expect Advanced Options Calculate Postage Amount radio button is present
 #    Then select Advanced Options Calculate Postage Amount
