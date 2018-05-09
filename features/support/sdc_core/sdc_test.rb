@@ -213,7 +213,8 @@ class SdcTest
           end
           browser = arg_arr[0]
           device_name = arg_arr[1]
-          driver = browser_mobile_emulator(browser, device_name)
+          caps = browser_emulator_caps(browser, device_name)
+          driver = Selenium::WebDriver.for(:chrome, desired_capabilities: caps)
           SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(driver, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
         end
 
@@ -338,7 +339,7 @@ class SdcTest
 
     private
 
-    def browser_mobile_emulator(browser, device_name)
+    def browser_emulator_caps(browser, device_name)
       opts = {
         'mobileEmulation' => {
           'deviceName' => device_name
@@ -346,13 +347,12 @@ class SdcTest
       }
       case browser_selection(browser)
       when :chrome
-        capabilities = Selenium::WebDriver::Remote::Capabilities.chrome('chromeOptions' => opts)
+        return Selenium::WebDriver::Remote::Capabilities.chrome('chromeOptions' => opts)
       when :firefox
-        capabilities = Selenium::WebDriver::Remote::Capabilities.firefox #firefox config goes here
+        return Selenium::WebDriver::Remote::Capabilities.firefox #firefox config goes here
       else
         raise ArgumentError, "Unsupported browser. #{browser}"
       end
-      Selenium::WebDriver.for(:chrome, desired_capabilities: capabilities)
     end
 
     def kill(str)
