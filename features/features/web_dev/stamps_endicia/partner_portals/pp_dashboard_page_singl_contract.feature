@@ -6,10 +6,10 @@ Feature: PP-MVP: Login Page
   @pp_dashboard_page_ui_validation
   Scenario: PP: Dashboard Page UI Validation
     Then PP: expect dashboard page header exist
-#    Then PP: expect dashboard page the Left Panel exist
-#    Then PP: expect dashboard page the Footer exist
-#    Then PP: expect dashboard page the Contract drop-down does not exist
-#    Then PP: expect dashboard page the Last updated on field to be present
+    Then PP: expect dashboard page the Left Panel exist
+    Then PP: expect dashboard page the Footer exist
+    Then PP: expect dashboard page the Contract drop-down does not exist
+    Then PP: expect dashboard page the Last updated on field to be present
 #
 #    # Preffered Rates Qualified Postage $
 #    And PP: expect dashboard page the Preferred Rates Qualified Postage $ Chart exist
