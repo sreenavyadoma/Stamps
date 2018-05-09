@@ -19,7 +19,7 @@ class SdcTest
       case
         when device == :macos_safari
           capabilities_config = {
-              :version => '11.0',
+            :version => '11.0',
               :platform => 'macOS 10.13',
               :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
           }
@@ -27,7 +27,7 @@ class SdcTest
 
         when device == :macos_chrome
           capabilities_config = {
-              :version => '54.0',
+            :version => '54.0',
               :platform => 'macOS 10.13',
               :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
           }
@@ -35,7 +35,7 @@ class SdcTest
 
         when device == :temp_device
           capabilities_config = {
-              :version => '16.16299',
+            :version => '16.16299',
               :platform => 'Windows 10',
               :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
           }
@@ -53,7 +53,7 @@ class SdcTest
 
     def win10_edge_sauce
       capabilities_config = {
-          :version => '16.16299',
+        :version => '16.16299',
           :platform => 'Windows 10',
           :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
       }
@@ -70,7 +70,7 @@ class SdcTest
 
     def macos_chrome_sauce
       capabilities_config = {
-          :version => '65.0',
+        :version => '65.0',
           :platform => 'macOS 10.13',
           :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
       }
@@ -87,17 +87,17 @@ class SdcTest
 
     def iphonex_sauce
       desired_caps = {
-          caps: {
-              appiumVersion: '1.7.2',
-              deviceName:    'iPhone X Simulator',
-              deviceOrientation: 'portrait',
-              platformVersion: '11.2',
-              platformName:  'iOS',
-              browserName: 'Safari',
-              name: "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
-          },
+        caps: {
+          appiumVersion: '1.7.2',
+            deviceName:    'iPhone X Simulator',
+            deviceOrientation: 'portrait',
+            platformVersion: '11.2',
+            platformName:  'iOS',
+            browserName: 'Safari',
+            name: "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+        },
           appium_lib: {
-              sauce_username:   'robcruz', #nil, # don't run on Sauce
+            sauce_username:   'robcruz', #nil, # don't run on Sauce
               sauce_access_key: '0e60dbc9-5bbf-425a-988b-f81c42d6b7ef', #nil,
               wait: 120
           }
@@ -108,17 +108,17 @@ class SdcTest
 
     def samsung_galaxy_sauce
       desired_caps = {
-          caps: {
-              appiumVersion: '1.7.2',
-              deviceName:    'Samsung Galaxy S8 GoogleAPI Emulator',
-              deviceOrientation: 'portrait',
-              platformVersion: '7.1',
-              platformName:  'Android',
-              browserName: 'Chrome',
-              name: "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
-          },
+        caps: {
+          appiumVersion: '1.7.2',
+            deviceName:    'Samsung Galaxy S8 GoogleAPI Emulator',
+            deviceOrientation: 'portrait',
+            platformVersion: '7.1',
+            platformName:  'Android',
+            browserName: 'Chrome',
+            name: "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+        },
           appium_lib: {
-              sauce_username:   nil, # don't run on Sauce 'robcruz',
+            sauce_username:   nil, # don't run on Sauce 'robcruz',
               sauce_access_key: nil, # '0e60dbc9-5bbf-425a-988b-f81c42d6b7ef', #
               wait: 120
           }
@@ -206,24 +206,15 @@ class SdcTest
             raise e, 'Appium driver failed to start'
           end
 
-        elsif
-          if SdcEnv.chrome_device
-            def device_driver name
-              (opts = {
-                  "mobileEmulation" => {
-                      "deviceName" => name
-                  }
-              })
-              (capabilities = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => opts))
-              Selenium::WebDriver.for(:chrome, desired_capabilities: capabilities)
-            end
-
-            (driver = device_driver(SdcEnv.chrome_device))
-            (SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(driver, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate))))
-        end
-
-        else
-          raise ArgumentError, 'Device must be defined'
+        elsif SdcEnv.browser_mobile_emulator
+          arg_arr = SdcEnv.browser_mobile_emulator.split(',')
+          if arg_arr.size != 2
+            raise ArgumentError, "Wrong number of arguments. Expected 2, Got #{arg_arr.size}"
+          end
+          browser = arg_arr[0]
+          device_name = arg_arr[1]
+          driver = browser_mobile_emulator(browser, device_name)
+          SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(driver, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
         end
 
       end
@@ -260,7 +251,7 @@ class SdcTest
         SdcEnv::ANDROID.each { |device| SdcEnv.android = device if SdcEnv.sauce_device.eql? device.to_s }
       else
         SdcEnv.browser ||= browser_selection(ENV['BROWSER'])
-        SdcEnv.chrome_device
+        SdcEnv.browser_mobile_emulator ||= ENV['BROWSER_MOBILE_EMULATOR']
         SdcEnv.ios ||= ENV['IOS'] unless ENV['IOS'].nil?
         SdcEnv.android ||= ENV['ANDROID'] unless ENV['ANDROID'].nil?
       end
@@ -337,7 +328,7 @@ class SdcTest
       #   SdcLog.info "#{SdcPage.browser} closed."
       # end
 
-      SdcLogger.debug "Tearing down test...\n"
+      SdcLogger.debug "Tear down...\n"
       SdcPage.browser.quit
       SdcLogger.debug "Done.\n"
     rescue StandardError => e
@@ -346,6 +337,23 @@ class SdcTest
     end
 
     private
+
+    def browser_mobile_emulator(browser, device_name)
+      opts = {
+        'mobileEmulation' => {
+          'deviceName' => device_name
+        }
+      }
+      case browser_selection(browser)
+      when :chrome
+        capabilities = Selenium::WebDriver::Remote::Capabilities.chrome('chromeOptions' => opts)
+      when :firefox
+        capabilities = Selenium::WebDriver::Remote::Capabilities.firefox #firefox config goes here
+      else
+        raise ArgumentError, "Unsupported browser. #{browser}"
+      end
+      Selenium::WebDriver.for(:chrome, desired_capabilities: capabilities)
+    end
 
     def kill(str)
 
