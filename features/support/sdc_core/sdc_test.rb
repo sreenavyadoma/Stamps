@@ -134,7 +134,6 @@ class SdcTest
 
       if SdcEnv.sauce_device
         SdcPage.browser = SdcDriverDecorator.new(class_eval(SdcEnv.sauce_device.to_s))
-
       else
         if SdcEnv.browser
           begin
@@ -207,6 +206,22 @@ class SdcTest
             raise e, 'Appium driver failed to start'
           end
 
+        elsif
+          if SdcEnv.chrome_device
+            def device_driver name
+              (opts = {
+                  "mobileEmulation" => {
+                      "deviceName" => name
+                  }
+              })
+              (capabilities = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => opts))
+              Selenium::WebDriver.for(:chrome, desired_capabilities: capabilities)
+            end
+
+            (driver = device_driver(SdcEnv.chrome_device))
+            (SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(driver, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate))))
+        end
+
         else
           raise ArgumentError, 'Device must be defined'
         end
@@ -245,6 +260,7 @@ class SdcTest
         SdcEnv::ANDROID.each { |device| SdcEnv.android = device if SdcEnv.sauce_device.eql? device.to_s }
       else
         SdcEnv.browser ||= browser_selection(ENV['BROWSER'])
+        SdcEnv.chrome_device
         SdcEnv.ios ||= ENV['IOS'] unless ENV['IOS'].nil?
         SdcEnv.android ||= ENV['ANDROID'] unless ENV['ANDROID'].nil?
       end
