@@ -5,7 +5,7 @@ Then /^[Pp]P: set window to small viewport$/ do
 end
 
 Then /^[Pp]P: scroll to top of the page$/ do
-  SdcPage.browser.execute_script('document.documentElement.scrollTop = 0')
+   SdcPage.browser.execute_script('document.documentElement.scrollTop = 0')
 end
 
 Then /^[Pp]P: scroll to middle of the page$/ do
