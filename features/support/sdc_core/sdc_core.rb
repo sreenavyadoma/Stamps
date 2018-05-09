@@ -349,11 +349,11 @@ end
 
 class SdcChooser < BasicObject
 
-  def initialize(element, verify, property, property_val)
+  def initialize(element, verify, property, value)
     @element = element
     @verify = verify
     @property = property
-    @property_val = property_val
+    @value = value
     # set_instance_variables(binding, *local_variables)
   end
 
@@ -364,7 +364,7 @@ class SdcChooser < BasicObject
                @verify.send(:attribute, @property)
              end
     return result.casecmp('true').zero? if result.casecmp('true').zero? || result .casecmp('false').zero?
-    result.include?(@property_val)
+    result.include?(@value)
   end
 
   alias checked? chosen?

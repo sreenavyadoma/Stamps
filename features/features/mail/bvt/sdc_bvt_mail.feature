@@ -37,8 +37,7 @@ Feature:  Mail BVT - Authentication
   @mail_advanced_options_stamps
   Scenario: Advanced Options for Stamps
     Then sign-in to Mail
-    Then select Print On Stamps
-    Then select Print On Shipping Shipping Label - 8 ½" x 11" Paper
+    Then select Print On Shipping Label - 8 ½" x 11" Paper
     Then select Print On Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then select Print On Shipping Label - 5 ½" x 8 ½"
     Then select Print On Envelope - #10, 4 ⅛" x 9 ½"
@@ -56,27 +55,28 @@ Feature:  Mail BVT - Authentication
     Then select Print On Certified Mail #11 Envelope - SDC-3810
     Then select Print On Roll - 4" x 6" Shipping Label
     Then select Print On Roll - 4 ⅛" x 6 ¼" Shipping Label
-    Then show Advanced Options
-    Then expect Advanced Options Calculate Postage Amount radio button is present
-    Then select Advanced Options Calculate Postage Amount
-    Then expect Advanced Options Calculate Postage Amount is selected
-    Then expect Advanced Options Specify Postage Amount radio button is present
-    Then select Advanced Options Specify Postage Amount
-    Then expect Advanced Options Specify Postage Amount is selected
-    Then set Print form Serial Number to random C series
-    Then select Advanced Options Calculate Postage Amount
-    Then set Print form Mail-From to default
-    Then set Print form Mail-To Country to United States
-    Then select Print form service FCM Letter
-    Then set Print form Quantity to 1
-    Then set Advanced Options Cost Code to None
-
-    Then expect Advanced Options Extra Services Button is visible
-
-    Then expect Advanced Options Reference Number field is present
-    Then set Advanced Options Reference Number to random string
-    Then expect Advanced Options Reference Number is correct
-
-    Then expect Advanced Options Cost Code Field is present
-    Then set Advanced Options Cost Code to None
-    Then expect Advanced Options Cost Code is None
+    Then select Print On Stamps
+#    Then show Advanced Options
+#    Then expect Advanced Options Calculate Postage Amount radio button is present
+#    Then select Advanced Options Calculate Postage Amount
+#    Then expect Advanced Options Calculate Postage Amount is selected
+#    Then expect Advanced Options Specify Postage Amount radio button is present
+#    Then select Advanced Options Specify Postage Amount
+#    Then expect Advanced Options Specify Postage Amount is selected
+#    Then set Print form Serial Number to random C series
+#    Then select Advanced Options Calculate Postage Amount
+#    Then set Print form Mail-From to default
+#    Then set Print form Mail-To Country to United States
+#    Then select Print form service FCM Letter
+#    Then set Print form Quantity to 1
+#    Then set Advanced Options Cost Code to None
+#
+#    Then expect Advanced Options Extra Services Button is visible
+#
+#    Then expect Advanced Options Reference Number field is present
+#    Then set Advanced Options Reference Number to random string
+#    Then expect Advanced Options Reference Number is correct
+#
+#    Then expect Advanced Options Cost Code Field is present
+#    Then set Advanced Options Cost Code to None
+#    Then expect Advanced Options Cost Code is None
