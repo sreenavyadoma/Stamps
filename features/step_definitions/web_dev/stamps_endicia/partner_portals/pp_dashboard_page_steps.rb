@@ -130,6 +130,20 @@ Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the Preferred Rates Qualified Transact
   expect(current_month[0].to_s).to eql(str)
 end
 
+Then /^[Pp]P: expect [Dd]ashboard page the Active Customers Chart to exist$/ do
+  expect(PartnerPortal.dashboard_page.active_customers_customers_chart).to be_present, 'Active Customers chart DOES NOT exist on dashboard page'
+end
+
+Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the Active Customers Chart title to be (.*)$/ do |str|
+  expect(PartnerPortal.dashboard_page.active_customers_customers_chart_title.text_value.strip). to eql(str)
+end
+
+
+Then /^[Pp]P: expect [Dd]ashboard page the Active Customers Chart Y-axis label to be (.*)$/ do |str|
+  expect(PartnerPortal.dashboard_page.active_customers_customers_chart.text_value.strip). to eql(str)
+end
+
+
 
 Then /^[Pp]P: [Cc]lick submit in dashboard page$/ do
   PartnerPortal.dashboard_page.submit.send_keys(:enter)
