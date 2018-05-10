@@ -177,13 +177,12 @@ class SdcTest
             when :safari
               kill("killall 'Safari Technology Preview'")
               SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:safari, technology_preview: true))
-              SdcPage.browser.window.maximize
 
             else
               raise ArgumentError, "Invalid browser selection. #{test_driver}"
             end
 
-            SdcPage.browser.window.maximize unless SdcEnv.max_window
+            SdcPage.browser.window.maximize if SdcEnv.max_window
 
           rescue StandardError => e
             SdcLogger.error e.message
@@ -226,6 +225,7 @@ class SdcTest
                                              :error
                                            end
         SdcLogger.progname = SdcEnv.scenario.tags[0].name[1.. -1]
+
       rescue StandardError => e
         SdcLogger.error e.message
         SdcLogger.error e.backtrace.join("\n")
@@ -240,20 +240,21 @@ class SdcTest
         SdcEnv::ANDROID.each { |device| SdcEnv.android = device if SdcEnv.sauce_device.eql? device.to_s }
       else
         SdcEnv.browser ||= browser_selection(ENV['BROWSER'])
-        SdcEnv.ios ||= ENV['IOS'] unless ENV['IOS'].nil?
-        SdcEnv.android ||= ENV['ANDROID'] unless ENV['ANDROID'].nil?
+        SdcEnv.ios ||= ENV['IOS']
+        SdcEnv.android ||= ENV['ANDROID']
       end
 
       SdcEnv.mobile = SdcEnv.ios || SdcEnv.android
-      SdcEnv.sdc_app ||= ENV['WEB_APP'].downcase.to_sym unless ENV['WEB_APP'].nil?
       SdcEnv.health_check ||= ENV['HEALTHCHECK']
       SdcEnv.usr = ENV['USR']
       SdcEnv.pw = ENV['PW']
       SdcEnv.firefox_profile ||= ENV['FIREFOX_PROFILE']
       SdcEnv.new_framework ||= ENV['NEW_FRAMEWORK']
       SdcEnv.env ||= test_env(ENV['URL'])
-      SdcEnv.max_window ||= ENV['MAX_WINDOW']
+      SdcEnv.max_window ||= ENV['MAX_WINDOW'].nil? ? true : ENV['MAX_WINDOW'].casecmp('true').zero?
 
+      #deprecated
+      SdcEnv.sdc_app ||= ENV['WEB_APP'].downcase.to_sym unless ENV['WEB_APP'].nil?
       require_gems
 
       #todo-Rob These should be in an orders/mail or sdc_apps environment variable container. This is a temp fix.
