@@ -225,7 +225,7 @@ class SdcTest
                                            else
                                              :error
                                            end
-        SdcLogger.progname = SdcEnv.scenario.name
+        SdcLogger.progname = SdcEnv.scenario.tags[0].name[1.. -1]
       rescue StandardError => e
         SdcLogger.error e.message
         SdcLogger.error e.backtrace.join("\n")
