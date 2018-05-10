@@ -19,7 +19,10 @@ Feature: PP-MVP: Dashboard Page
     Then PP: expect dashboard page the Preferred Rates Qualified Transactions $ Chart Y-axis label to be USD ($)
     Then PP: expect dashboard page the Preferred Rates Qualified Transactions $ Chart has X-axis to be labeled with month abbreviations
     Then PP: expect dashboard page the Preferred Rates Qualified Transactions $ Chart Y-axis to start at 0
-    #Then PP: expect dashboard page the Preferred Rates Qualified Transactions Chart $ legends to exist
+    Then PP: expect dashboard page the Preferred Rates Qualified Transactions Chart $ legends to exist
+    Then PP: expect dashboard page the Preferred Rates Qualified Transactions Chart $ previous year legend to be last year date
+    Then PP: expect dashboard page the Preferred Rates Qualified Transactions Chart $ current year legends to be current year
+    Then PP: expect dashboard page the Preferred Rates Qualified Transactions Chart $ Current Month legends to be Current Month
     #Then PP: expect dashboard page the Preferred Rates Qualified Transactions $ Units of Representation to be in USD ($).
 
     # Preferred Rates Qualified Transactions #of packages
@@ -28,7 +31,10 @@ Feature: PP-MVP: Dashboard Page
     Then PP: expect dashboard page the Preferred Rates Qualified Transactions # Chart Y-axis label to be # of packages
     Then PP: expect dashboard page the Preferred Rates Qualified Transactions # Chart has X-axis to be labeled with month abbreviations
     Then PP: expect dashboard page the Preferred Rates Qualified Transactions # Chart Y-axis to start at 0
-    #Then PP: expect dashboard page the Preferred Rates Qualified Transactions # legends to exist
+    Then PP: expect dashboard page the Preferred Rates Qualified Transactions # legends to exist
+    Then PP: expect dashboard page the Preferred Rates Qualified Transactions # previous year legend to be last year date
+    Then PP: expect dashboard page the Preferred Rates Qualified Transactions # current year legends to be current year
+    Then PP: expect dashboard page the Preferred Rates Qualified Transactions # Current Month legends to be Current Month
     #Then PP: expect dashboard page the Preferred Rates Qualified Transactions # Units of Representation to be in # packages
 
    # Active Customers
@@ -37,7 +43,10 @@ Feature: PP-MVP: Dashboard Page
     Then PP: expect dashboard page the Active Customers Chart Y-axis label to be # of customers
     Then PP: expect dashboard page the Active Customers Chart has X-axis to be labeled with month abbreviations
     Then PP: expect dashboard page the Active Customers Chart Y-axis to start at 0
-    #Then PP: expect dashboard page the Active Customers Chart legends to exist
+    Then PP: expect dashboard page the Active Customers Chart legends to exist
+    Then PP: expect dashboard page the Active Customers Chart previous year legend to be last year date
+    Then PP: expect dashboard page the Active Customers Chart current year legends to be current year
+    Then PP: expect dashboard page the Active Customers Chart Current Month legends to be Current Month
     #Then PP: expect dashboard page the PActive Customers Chart Units of Representation to be in # customers
 
     # Revenue Share
@@ -46,34 +55,5 @@ Feature: PP-MVP: Dashboard Page
     Then PP: expect dashboard page the Revenue Share Chart Y-axis label to be USD ($)
     Then PP: expect dashboard page the Revenue Share Chart has X-axis to be labeled with month abbreviations
     Then PP: expect dashboard page the Revenue Share Chart Y-axis to start at 0
-#    Then PP: expect dashboard page the Revenue Share Chart legends to exist
-#    Then PP: expect dashboard page the Revenue Share Chart Units of Representation to be in USD ($)
-
-    # Export Data
-    Then PP: expect dashboard page the Export Data label to exist
-    Then PP: expect dashboard page the Export Data label to be Export Data
-    Then PP: expect dashboard page the Select a date range label to exist
-    Then PP: expect dashboard page the Select a date range label to be
-    """
-    Select a date range to export transaction level data as a CVS file.
-    """
-
-    # From
-    Then PP: expect dashboard page the From label to be From:
-    Then PP: expect dashboard page the From field to exist
-    Then PP: expect dashboard page the Form field placehoder to show MM/DD/YY
-    Then PP: expect dashboard page the From Date field the Calendar button to exist
-
-    # To
-    Then PP: expect dashboard page the To field to exist
-    Then PP: expect dashboard page the To field placehoder to show MM/DD/YY
-    Then PP: expect dashboard page the To field the Calendar button to exist
-    Then PP: set dashboard page the From field to 123456
-    Then PP: expect the To field to be 12/34/56
-    Then PP: dashboard page the To field Tab
-    Then PP: expect dashboard page the To field error message to be Valid date required
-
-    Then PP: set set dashboard page the From field to 010218
-    Then PP: set set dashboard page the To field to 010217
-    Then PP: expect dashboard page error message to be To Date must be after From Date.
-    Then PP: expect dashboard page the Dowload button to exist
+    Then PP: expect dashboard page the Revenue Share Chart legends to exist
+    #Then PP: expect dashboard page the Revenue Share Chart Units of Representation to be in USD ($)
