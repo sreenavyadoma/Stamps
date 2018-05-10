@@ -4,7 +4,7 @@ module SdcWebsite
   end
 
   def landing_page
-    @landing_page = SdcOrdersLandingPage.new
+    SdcOrdersLandingPage.new
   end
   module_function :landing_page
 
