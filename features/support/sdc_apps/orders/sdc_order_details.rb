@@ -35,6 +35,7 @@ module SdcOrders
 
     def selection(str)
       self.class.page_object(:selection_obj) { {xpath: "//li[@id='#{data_for(:orders_services, {})[str]}']"} }
+
     end
   end
 
