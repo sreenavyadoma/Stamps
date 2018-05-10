@@ -11,7 +11,8 @@ Feature: PP-MVP: Dashboard Page
     Then PP: expect left panel to expand for browser
     Then PP: expect dashboard page footer to exist
     Then PP: expect dashboard page the Contract drop-down does not exist
-    Then PP: expect dashboard page the 'Last updated on' field to be present
+    Then PP: expect dashboard page the Last updated on: field to be present
+    Then PP: expect dashboard page the Last updated on: field displays correct value
 
     # Preferred Rates Qualified Transactions $
     Then PP: expect dashboard page the Preferred Rates Qualified Transactions $ Chart to exist
@@ -56,4 +57,7 @@ Feature: PP-MVP: Dashboard Page
     Then PP: expect dashboard page the Revenue Share Chart has X-axis to be labeled with month abbreviations
     Then PP: expect dashboard page the Revenue Share Chart Y-axis to start at 0
     Then PP: expect dashboard page the Revenue Share Chart legends to exist
+    Then PP: expect dashboard page the Revenue Share Chart previous year legend to be last year date
+    Then PP: expect dashboard page the Revenue Share Chart current year legends to be current year
+    Then PP: expect dashboard page the Revenue Share Chart Current Month legends to be Current Month
     #Then PP: expect dashboard page the Revenue Share Chart Units of Representation to be in USD ($)
