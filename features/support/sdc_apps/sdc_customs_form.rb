@@ -47,14 +47,17 @@ module SdcWebsite
   class CustomsFormItem < SdcPage
     def item_description_element(num)
       self.class.page_object(:item_description, tag: :text_field) { {xpath: "(//*[contains(@id, 'singlecustomsitem')]//*[@name='Description'])[#{num}]"} }
+      self
     end
 
     def hs_tariff_element(num)
       self.class.page_object(:hs_tariff, tag: :text_field) { {xpath: "(//*[contains(@id, 'singlecustomsitem')]//*[@name='TariffNo'])[#{num}]"} }
+      self
     end
 
     def delete_element(num)
       self.class.page_object(:delete) { {xpath: "(//*[contains(@id, 'singlecustomsitem')]//a[contains(@class, 'x-btn-transparent-small')])[#{num}]"} }
+      self
     end
 
     def qty_element(num)
@@ -62,6 +65,7 @@ module SdcWebsite
       self.class.page_object(:qty_dec) { {xpath: "(//*[@name='Quantity']/../following-sibling::*/div[contains(@class, 'down')])[#{num}]"} }
       self.class.page_object(:qty_inc) { {xpath: "(//*[@name='Quantity']/../following-sibling::*/div[contains(@class, 'up')])[#{num}]"} }
       self.class.number(:qty, :qty_tf, :qty_inc, :qty_dec)
+      self
     end
 
     def unit_price_element(num)
@@ -69,6 +73,7 @@ module SdcWebsite
       self.class.page_object(:unit_price_dec) { {xpath: "(//*[@name='Value']/../following-sibling::*/div[contains(@class, 'down')])[#{num}]"} }
       self.class.page_object(:unit_price_inc) { {xpath: "(//*[@name='Value']/../following-sibling::*/div[contains(@class, 'up')])[#{num}]"} }
       self.class.number(:unit_price, :unit_price_tf, :unit_price_dec, :unit_price_inc)
+      self
     end
 
     def made_in
@@ -79,6 +84,7 @@ module SdcWebsite
   class MadeIn < SdcPage
     def text_field_element(num)
       self.class.text_field(:text_field, tag: :text_field) { {xpath: "(//*[@name='OriginCountryCode'])[#{num}]"} }
+      self
     end
 
     def drop_down_element(num)
