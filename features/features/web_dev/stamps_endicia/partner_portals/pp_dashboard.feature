@@ -15,11 +15,11 @@ Feature: PP-MVP: Dashboard Page
     Then PP: expect dashboard page the correct contract is being displayed for user
     Then PP: expect dashboard page the Last updated on: field to be present
     Then PP: expect dashboard page the Last updated on: field displays correct date for user
-#
-#    # Preferred Rates Qualified Transactions $
-#    Then PP: expect dashboard page the Preferred Rates Qualified Transactions $ Chart to exist
-#    Then PP: expect dashboard page the Preferred Rates Qualified Transactions $ Chart title to be Preferred Rates Qualified Transactions
-#    Then PP: expect dashboard page the Preferred Rates Qualified Transactions $ Chart Y-axis label to be USD ($)
+
+    # Preferred Rates Qualified Transactions $
+    Then PP: expect dashboard page the Preferred Rates Qualified Transactions USD Chart to exist
+    Then PP: expect dashboard page the Preferred Rates Qualified Transactions USD Chart title to be Preferred Rates Qualified Transactions
+    Then PP: expect dashboard page the Preferred Rates Qualified Transactions USD Chart Y-axis label to be USD ($)
 #    Then PP: expect dashboard page the Preferred Rates Qualified Transactions $ Chart has X-axis to be labeled with month abbreviations
 #    #Then PP: expect dashboard page the Preferred Rates Qualified Transactions $ Chart Y-axis to start at 0
 #    Then PP: expect dashboard page the Preferred Rates Qualified Transactions Chart $ legends to exist

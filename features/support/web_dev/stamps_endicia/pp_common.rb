@@ -32,7 +32,7 @@ module PartnerPortal
     page_object(:panel_expanded_lg)  { {class:  'sidebar'} }
 
     #footer
-    page_object(:footer)  { {class:  'pp-footer'} }
+    page_object(:footer)  { {class:  'footer'} }
 
 
     def user_table_query(user, column)

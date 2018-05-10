@@ -61,11 +61,17 @@ module PartnerPortal
     #Last Updated On
     page_object(:contract_last_updated_on) { {class: 'dashboard__contract-updated ng-star-inserted'} }
 
-    #canvas Preferred Rates Qualified Postage
-    page_objects(:preferred_rates_qualified_postage, index: 0 ) { {xpath: '//h4[contains(text(), "Preferred Rates Qualified Postage")]'} }
+    #charts
+    page_objects(:preferred_rates_qualified_transactions_usd_chart, index: 0 ) { {xpath: '//canvas'} }
+    page_objects(:preferred_rates_qualified_transactions_packages_chart, index: 1 ) { {xpath: '//canvas'} }
+    page_objects(:active_customers_customers_chart, index: 2 ) { {xpath: '//canvas'} }
+    page_objects(:active_customers_customers_usd_chart, index: 3 ) { {xpath: '//canvas'} }
 
-    #Revenue Share
-    page_object(:revenue_share_title) { {xpath: '//h4[contains(text(), "Revenue Share")]'} }
+    #charts title
+    page_objects(:preferred_rates_qualified_transactions_usd_chart_title, index: 0 ) { {xpath: '//h4'} }
+    page_objects(:preferred_rates_qualified_transactions_packages_chart_title, index: 1 ) { {xpath: '//h4'} }
+    page_objects(:active_customers_customers_chart_title, index: 2 ) { {xpath: '//h4'} }
+    page_objects(:active_customers_customers_usd_chart_title, index: 3 ) { {xpath: '//h4'} }
 
     #submit
     button(:submit) { {xpath: '//button[@label="Submit"]'} }
