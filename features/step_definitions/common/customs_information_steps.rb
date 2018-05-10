@@ -274,7 +274,7 @@ end
 
 Then /^[Cc]heck Customs form I agree to the USPS Privacy Act Statement$/ do
   if SdcEnv.new_framework
-    SdcWebsite.customs_form.agree.click
+    SdcWebsite.customs_form.agree.check
   else
     stamps.common_modals.customs_form.agree_to_terms.check if SdcEnv.sdc_app == :orders
     stamps.mail.print_form.mail_customs.edit_customs_form.agree_to_terms.check if SdcEnv.sdc_app == :mail
@@ -283,7 +283,6 @@ end
 
 Then /^[Ee]xpect Customs I agree to the USPS Privacy Act Statement is checked$/ do
   if SdcEnv.new_framework
-    # todo DOUBLE CHECK THIS
     expect(SdcWebsite.customs_form.agree.checked?).to be(true), "I agree to the USPS Privacy Act Statement is not checked"
   else
     sleep(0.5)
@@ -294,7 +293,7 @@ end
 
 Then /^[Uu]ncheck Customs form I agree to the USPS Privacy Act Statement$/ do
   if SdcEnv.new_framework
-  #   todo finish this
+    SdcWebsite.customs_form.agree.uncheck
   else
     stamps.common_modals.customs_form.agree_to_terms.uncheck if SdcEnv.sdc_app == :orders
     stamps.mail.print_form.mail_customs.edit_customs_form.agree_to_terms.uncheck if SdcEnv.sdc_app == :mail
@@ -303,8 +302,7 @@ end
 
 Then /^[Ee]xpect Customs I agree to the USPS Privacy Act Statement is unchecked$/ do
   if SdcEnv.new_framework
-    # todo DOUBLE CHECK THIS
-    expect(SdcWebsite.customs_form.agree.checked?).to be(true), "I agree to the USPS Privacy Act Statement is not checked"
+    expect(SdcWebsite.customs_form.agree.checked?).to be(false), "I agree to the USPS Privacy Act Statement is not unchecked"
   else
     sleep(0.05)
     expect(stamps.common_modals.customs_form.agree_to_terms.checked?).not_to be(true) if SdcEnv.sdc_app == :orders
