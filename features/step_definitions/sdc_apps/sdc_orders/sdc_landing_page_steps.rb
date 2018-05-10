@@ -58,7 +58,6 @@ Then /^fetch user credentials from MySQL$/ do
 end
 
 Then /^sign-in to Orders$/ do
-  step 'fetch user credentials from MySQL'
   step 'visit Orders landing page'
   step "set Orders landing page username to #{TestData.hash[:username]}"
   step "set Orders landing page password to #{TestData.hash[:password]}"

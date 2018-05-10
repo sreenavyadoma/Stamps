@@ -29,6 +29,7 @@ saucelabs_browser_cc:  --tags @saucelabs_poc BROWSER=ff LOG_LEVEL=info WEB_APP=o
 saucelabs_iphonex_cc: --tags @saucelabs_poc MOBILE='iphone x' LOG_LEVEL=info WEB_APP=orders URL=cc USR=ccfb311osps4x PW=pass111
 
 saucelabs: --tags @saucelabs_poc LOG_LEVEL=info WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
+saucelabs: --tags @saucelabs_poc LOG_LEVEL=info WEB_APP=orders URL=prod USR=abqaprod1 PW=password1
 
 google: --tags @google
 google_browser: --tags @google BROWSER=ff
