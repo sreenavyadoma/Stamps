@@ -38,7 +38,7 @@ module SdcOrders
     #   self.class.page_object(:selection_obj) { {xpath: "//li[@id='#{data_for(:orders_services, {})[str]}']"} }
     # end
 
-    def selection(name: :selection_element, lov: 'Manage Printing Options...')
+    def selection(name: :selection_obj, lov: 'Manage Printing Options...')
       self.class.page_object(name) { {xpath: "//li[text()='#{lov}']"} }
     end
   end

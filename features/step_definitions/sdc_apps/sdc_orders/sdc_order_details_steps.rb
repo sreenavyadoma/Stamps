@@ -20,7 +20,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]ervice to (.*)$/ do |str|
   if SdcEnv.new_framework
     order_details = SdcOrders.order_details
     service = order_details.service
-    service.selection(str)
+    service.selection(name: :selection_obj, lov: str)
     service.drop_down.click unless service.selection_obj.present?
     service.selection_obj.click unless service.selection_obj.class_disabled?
     expect('expect Order Details service is correct')
