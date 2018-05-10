@@ -259,13 +259,18 @@ class SdcElement < BasicObject
 
   def safe_wait_until_present(timeout: nil, message: nil, interval: nil)
     wait_until_present(timeout: timeout, interval: interval)
-  rescue ::StandardError
+  rescue ::Watir::Wait::TimeoutError
+    # ignore
+  rescue ::Selenium::WebDriver::Error::TimeOutError
+    # ignore
     # ignored
   end
 
   def safe_wait_while_present(timeout: nil, message: nil, interval: nil)
     wait_while_present(timeout: timeout, interval: interval)
-  rescue ::StandardError
+  rescue ::Watir::Wait::TimeoutError
+    # ignore
+  rescue ::Selenium::WebDriver::Error::TimeOutError
     # ignore
   end
 
