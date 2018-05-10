@@ -1,10 +1,3 @@
-Then /^[Ee]stablish [Pp]artner [Pp]ortal db connection$/ do
-  PartnerPortal.db_connection
-end
-
-Then /^[Cc]lose [Pp]artner [Pp]ortal db connection$/ do
-  PartnerPortal.db_connection.close
-end
 
 Then /^[Pp]P: [Aa] user navigates to the login page$/ do
   TestData.hash[:system_date] = DateTime.now.utc

@@ -1,3 +1,10 @@
+Then /^[Ee]stablish [Pp]artner [Pp]ortal db connection$/ do
+  PartnerPortal.db_connection
+end
+
+Then /^[Cc]lose [Pp]artner [Pp]ortal db connection$/ do
+  PartnerPortal.db_connection.close
+end
 
 Then /^[Pp]P: scroll to top of the page$/ do
    SdcPage.browser.execute_script('document.documentElement.scrollTop = 0')
