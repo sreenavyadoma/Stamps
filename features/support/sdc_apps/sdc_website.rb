@@ -24,7 +24,7 @@ module SdcWebsite
   module_function :navigation
 
   def customs_form
-    SdcCustomsForm
+    SdcCustomsForm.new
   end
   module_function :customs_form
 

@@ -15,7 +15,11 @@ Then /^[Ee]xpect [Pp]rint [Mm]odal Incomplete Order Error Message (.*)$/ do |exp
 end
 
 Then /^[Ii]n [Pp]rint modal, click Close [Bb]utton$/ do
-  stamps.orders.modals.orders_print_modal.close
+  if SdcEnv.new_framework
+    SdcOrders.modals.print.close.click
+  else
+    stamps.orders.modals.orders_print_modal.close
+  end
 end
 
 Then /^[Ss]et [Pp]rint [Mm]odal [Pp]rinter to \"(.*)\"$/ do |printer|
@@ -234,7 +238,7 @@ end
 
 Then /^[Cc]lose [Pp]rint [Mm]odal$/ do
   if SdcEnv.new_framework
-    SdcOrders.modals.print.close.safe_click
+    SdcOrders.modals.print.close.click
   else
     stamps.orders.modals.orders_print_modal.close
   end
