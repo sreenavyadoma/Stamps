@@ -44,7 +44,7 @@ Then /^[Pp]P: [Ee]xpect [Dd]ashboard [Pp]age the Last updated on: field displays
 end
 
 Then /^[Pp]P: expect [Dd]ashboard page the Preferred Rates Qualified Transactions USD Chart to exist$/ do
-  expect(PartnerPortal.dashboard_page.preferred_rates_qualified_transactions_usd_chart).to be_present 'Preferred Rates Qualified Transactions USD(S) chart DOES NOT exist on dashboard page'
+  expect(PartnerPortal.dashboard_page.preferred_rates_qualified_transactions_usd_chart).to be_present, 'Preferred Rates Qualified Transactions USD(S) chart DOES NOT exist on dashboard page'
 end
 
 
@@ -54,6 +54,80 @@ end
 
 Then /^[Pp]P: expect [Dd]ashboard page the Preferred Rates Qualified Transactions USD Chart Y-axis label to be (.*)$/ do |str|
   expect(PartnerPortal.dashboard_page.preferred_rates_qualified_transactions_usd_y_axis.text_value.strip). to eql(str)
+end
+
+Then /^[Pp]P: expect [Dd]ashboard page the Preferred Rates Qualified Transactions USD Chart has X-axis to be labeled with month abbreviations$/ do |str|
+   actual_month = str.split(',')
+   expected_month = PartnerPortal.dashboard_page.x_axis_month_abbreviations
+   expect(expected_month[0]). to eql( actual_month)
+end
+
+Then /^[Pp]P: expect [Dd]ashboard page the Preferred Rates Qualified Transactions Chart USD legends to exist$/ do
+  expect(PartnerPortal.dashboard_page.preferred_rates_qualified_transactions_usd_legends).to be_present, 'Preferred Rates Qualified Transactions Chart USD legends DOES NOT exist on dashboard page'
+end
+
+Then /^[Pp]P: expect [Dd]ashboard page the Preferred Rates Qualified Transactions Chart USD previous year legend to be last year date$/ do
+  last_update_on = PartnerPortal.dashboard_page.contract_last_updated_on
+  last_update_date = Date.strptime(last_update_on.text_value.split(':').last.strip, '%m/%d/%Y')
+  previous_year = last_update_date - 1.year
+  legends = PartnerPortal.dashboard_page.preferred_rates_qualified_transactions_usd_legends.text_value.split
+  expect(legends[0].to_i).to eql(previous_year.year)
+end
+
+Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the Preferred Rates Qualified Transactions Chart USD current year legends to be current year$/ do
+  last_update_on = PartnerPortal.dashboard_page.contract_last_updated_on
+  last_update_date = Date.strptime(last_update_on.text_value.split(':').last.strip, '%m/%d/%Y')
+  legends  = PartnerPortal.dashboard_page.preferred_rates_qualified_transactions_usd_legends.text_value.split
+  expect(legends[1].to_i).to eql(last_update_date.year)
+end
+
+Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the Preferred Rates Qualified Transactions Chart USD Current Month legends to be (.*)$/ do |str|
+  legends  = PartnerPortal.dashboard_page.preferred_rates_qualified_transactions_usd_legends.text_value.split
+  current_month = [] << legends[2] + " " + legends[3]
+  expect(current_month[0].to_s).to eql(str)
+end
+
+Then /^PP: expect dashboard page the Preferred Rates Qualified Transactions # Chart to exist$/ do
+  expect(PartnerPortal.dashboard_page.preferred_rates_qualified_transactions_packages_chart).to be_present, 'Preferred Rates Qualified Transactions # of packages chart DOES NOT exist on dashboard page'
+end
+
+Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the Preferred Rates Qualified Transactions # Chart title to be (.*)$/ do |str|
+  expect(PartnerPortal.dashboard_page.preferred_rates_qualified_transactions_packages_chart_title.text_value.strip). to eql(str)
+end
+
+Then /^[Pp]P: expect [Dd]ashboard page the Preferred Rates Qualified Transactions # Chart Y-axis label to be (.*)$/ do |str|
+  expect(PartnerPortal.dashboard_page.preferred_rates_qualified_transactions_packages_chart_y_axis.text_value.strip). to eql(str)
+end
+
+Then /^[Pp]P: expect [Dd]ashboard page the Preferred Rates Qualified Transactions # Chart has X-axis to be labeled with month abbreviations$/ do |str|
+  actual_month = str.split(',')
+  expected_month = PartnerPortal.dashboard_page.x_axis_month_abbreviations
+  expect(expected_month[1]). to eql( actual_month)
+end
+
+Then /^[Pp]P: expect [Dd]ashboard page the Preferred Rates Qualified Transactions # legends to exist$/ do
+  expect(PartnerPortal.dashboard_page.preferred_rates_qualified_transactions_packages_chart_legends).to be_present, 'Preferred Rates Qualified Transactions # Chart legends DOES NOT exist on dashboard page'
+end
+
+Then /^[Pp]P: expect [Dd]ashboard page the Preferred Rates Qualified Transactions # previous year legend to be last year date$/ do
+  last_update_on = PartnerPortal.dashboard_page.contract_last_updated_on
+  last_update_date = Date.strptime(last_update_on.text_value.split(':').last.strip, '%m/%d/%Y')
+  previous_year = last_update_date - 1.year
+  legends = PartnerPortal.dashboard_page.preferred_rates_qualified_transactions_packages_chart_legends.text_value.split
+  expect(legends[0].to_i).to eql(previous_year.year)
+end
+
+Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the Preferred Rates Qualified Transactions # current year legends to be current year$/ do
+  last_update_on = PartnerPortal.dashboard_page.contract_last_updated_on
+  last_update_date = Date.strptime(last_update_on.text_value.split(':').last.strip, '%m/%d/%Y')
+  legends  = PartnerPortal.dashboard_page.preferred_rates_qualified_transactions_packages_chart_legends.text_value.split
+  expect(legends[1].to_i).to eql(last_update_date.year)
+end
+
+Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the Preferred Rates Qualified Transactions # Current Month legends to be (.*)$/ do |str|
+  legends  = PartnerPortal.dashboard_page.preferred_rates_qualified_transactions_packages_chart_legends.text_value.split
+  current_month = [] << legends[2] + " " + legends[3]
+  expect(current_month[0].to_s).to eql(str)
 end
 
 

@@ -35,16 +35,16 @@ module PartnerPortal
 
     def self.visit
       super(case SdcEnv.env
-            when :qacc
-              'qacc'
-            when :qasc
-              'sdcwebsite.qasc'
-            when :stg
-              'staging'
-            when :prod
-              ''
-            else
-              # ignore
+              when :qacc
+                'qacc'
+              when :qasc
+                'sdcwebsite.qasc'
+              when :stg
+                'staging'
+              when :prod
+                ''
+              else
+                # ignore
             end)
 
     end
@@ -62,26 +62,41 @@ module PartnerPortal
     page_object(:contract_last_updated_on) { {class: 'dashboard__contract-updated ng-star-inserted'} }
 
     #charts
-    page_objects(:preferred_rates_qualified_transactions_usd_chart, index: 0 ) { {xpath: '//canvas'} }
-    page_objects(:preferred_rates_qualified_transactions_packages_chart, index: 1 ) { {xpath: '//canvas'} }
-    page_objects(:active_customers_customers_chart, index: 2 ) { {xpath: '//canvas'} }
-    page_objects(:revenue_share_chart, index: 3 ) { {xpath: '//canvas'} }
+    page_objects(:preferred_rates_qualified_transactions_usd_chart, index: 0 ) { {xpath: '//canvas[@class="chartjs-render-monitor"]'} }
+    page_objects(:preferred_rates_qualified_transactions_packages_chart, index: 1 ) { {xpath: '//canvas[@class="chartjs-render-monitor"]'} }
+    page_objects(:active_customers_customers_chart, index: 2 ) { {xpath: '//canvas[@class="chartjs-render-monitor"]'} }
+    page_objects(:revenue_share_chart, index: 3 ) { {xpath: '//canvas[@class="chartjs-render-monitor"]'} }
 
     #charts title
-    page_objects(:preferred_rates_qualified_transactions_usd_chart_title, index: 0 ) { {xpath: '//h4'} }
-    page_objects(:preferred_rates_qualified_transactions_packages_chart_title, index: 1 ) { {xpath: '//h4'} }
-    page_objects(:active_customers_customers_chart_title, index: 2 ) { {xpath: '//h4'} }
-    page_objects(:revenue_share_chart_title, index: 3 ) { {xpath: '//h4'} }
+    page_objects(:preferred_rates_qualified_transactions_usd_chart_title, index: 0 ) { {xpath: '//h4[@class="ppchart__title"]'} }
+    page_objects(:preferred_rates_qualified_transactions_packages_chart_title, index: 1 ) { {xpath: '//h4[@class="ppchart__title"]'} }
+    page_objects(:active_customers_customers_chart_title, index: 2 ) { {xpath: '//h4[@class="ppchart__title"]'} }
+    page_objects(:revenue_share_chart_title, index: 3 ) { {xpath: '//h4[@class="ppchart__title"]'} }
 
     #chart Y-axis
-    page_objects(:preferred_rates_qualified_transactions_usd_y_axis, index: 0 ) { {xpath: '//div[contains(text(), "USD ($)")]'} }
-    page_objects(:revenue_share_chart_y_axis, index: 1 ) { {xpath: '//div[contains(text(), "USD ($)")]'} }
+    page_objects(:preferred_rates_qualified_transactions_usd_y_axis, index: 0 ) { {xpath: '//div[@class="ppchart__chartlabel"]'} }
+    page_objects(:preferred_rates_qualified_transactions_packages_chart_y_axis, index: 1 ) { {xpath: '//div[@class="ppchart__chartlabel"]'} }
+    page_objects(:active_customers_customers_chart, index: 2 ) { {xpath: '//div[@class="ppchart__chartlabel"]'} }
+    page_objects(:revenue_share_chart_y_axis, index: 3 ) { {xpath: '//div[@class="ppchart__chartlabel"]'} }
 
-    page_object(:preferred_rates_qualified_transactions_packages_chart_y_axis ) { {xpath: '//div[contains(text(), "# of packages")]'} }
-    page_object(:active_customers_customers_chart ) { {xpath: '//div[contains(text(), "# of customers")]'} }
+    #chart legends
+    page_objects(:preferred_rates_qualified_transactions_usd_legends, index: 0 ) { {xpath:  '//ul[@class="ppchart__legend"]'} }
+    page_objects(:preferred_rates_qualified_transactions_packages_chart_legends, index: 1 ) { {xpath:  '//ul[@class="ppchart__legend"]'} }
+    page_objects(:active_customers_customers_chart_legends, index: 2 ) { {xpath:  '//ul[@class="ppchart__legend"]'} }
+    page_objects(:revenue_share_chart_legends, index: 3 ) { {xpath:  '//ul[@class="ppchart__legend"]'} }
+
+
 
     #submit
     button(:submit) { {xpath: '//button[@label="Submit"]'} }
+
+    #x-axis months
+    def x_axis_month_abbreviations
+     return SdcPage.browser.execute_script('return window.ChartsData.Charts.PrefRatesQualifiedPostageAmount.labels'),
+     SdcPage.browser.execute_script('return window.ChartsData.Charts.PrefRatesQualifiedPostageCount.labels'),
+     SdcPage.browser.execute_script('return window.ChartsData.Charts.ActiveCustomers.labels'),
+     SdcPage.browser.execute_script('return window.ChartsData.Charts.RevenueShare.labels')
+    end
 
   end
 
