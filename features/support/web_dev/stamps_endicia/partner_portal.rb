@@ -31,28 +31,6 @@ module PartnerPortal
     #Forgot Password? link
     link(:forgot_pw) { {xpath: '//a[@href="/reset-password/request"]'} }
 
-    def partner_user_id_query(user)
-      user = PartnerPortal.db_connection.execute("select PartnerUserId, EmailAddress from [dbo].[sdct_PartnerPortal_User] where EmailAddress = '#{user}'")
-
-      user.each do |item|
-        return item['PartnerUserId']
-      end
-
-    end
-
-    def log_info_date_created_query(user_id)
-      log = PartnerPortal.db_connection.execute(
-          'select RecordId, LogTypeId, PartnerUserId, LogInfo, DateCreated
-          from [dbo].[sdct_PartnerPortal_Log]
-          where DateCreated = (
-          Select MAX(DateCreated) from [dbo].[sdct_PartnerPortal_Log] where PartnerUserId = #{user_id})'
-      )
-      log.each do |item|
-        return item['LogInfo'], item['DateCreated']
-      end
-
-    end
-
     page_url { |env| "https://partner.#{env}.stamps.com/" }
 
     def self.visit
@@ -78,7 +56,10 @@ module PartnerPortal
     page_object(:dashboard_header) { {xpath: '//h1[contains(text(), "Dashboard")]'} }
 
     #Contract header
-    page_object(:contract_header) { {class: 'dashboard__contract-header'} }
+    page_object(:contract_header) { {class: 'dashboard__contract-header ng-star-inserted'} }
+
+    #Last Updated On
+    page_object(:contract_last_updated_on) { {class: 'dashboard__contract-updated ng-star-inserted'} }
 
     #canvas Preferred Rates Qualified Postage
     page_objects(:preferred_rates_qualified_postage, index: 0 ) { {xpath: '//h4[contains(text(), "Preferred Rates Qualified Postage")]'} }

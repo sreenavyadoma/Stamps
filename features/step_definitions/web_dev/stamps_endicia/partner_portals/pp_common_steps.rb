@@ -31,6 +31,13 @@ Then /^[Pp]P: [Ee]xpect global header exists$/ do
   expect(PartnerPortal.common_page.global_header).to be_present, 'Global header DOES NOT exist'
 end
 
+
+Then /^[Pp]P: [Ee]xpect footer to exists$/ do
+  PartnerPortal.common_page.footer.wait_until_present(timeout: 10)
+  expect(PartnerPortal.common_page.footer).to be_present, 'Footer DOES NOT exist'
+end
+
+
 Then /^[Pp]P: [Ee]xpect [Pp]artner [Pp]ortal logo exists$/ do
   expect(PartnerPortal.common_page.partner_portal_logo).to be_present, 'Partner Portal logo DOES NOT exist'
 end
