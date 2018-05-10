@@ -27,10 +27,7 @@ end
 Then /^[Bb]lur [Oo]ut [Oo]n [Cc]ustoms [Ff]orm(?:| (\d+)(?:| times))$/ do |count|
   count = count.nil? ? 1 : count.to_i
   if SdcEnv.new_framework
-    # todo finish later
     SdcWebsite.customs_form.total.blur_out
-    # SdcWebsite.customs_form.total.double_click
-    # SdcWebsite.customs_form.total.click
   else
     count.times { stamps.common_modals.customs_form.blur_out } if SdcEnv.sdc_app == :orders
     count.times { stamps.mail.print_form.mail_customs.edit_customs_form.blur_out } if SdcEnv.sdc_app == :mail
