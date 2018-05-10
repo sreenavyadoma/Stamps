@@ -76,15 +76,14 @@ module PartnerPortal
     #chart Y-axis
     page_objects(:preferred_rates_qualified_transactions_usd_y_axis, index: 0 ) { {xpath: '//div[@class="ppchart__chartlabel"]'} }
     page_objects(:preferred_rates_qualified_transactions_packages_chart_y_axis, index: 1 ) { {xpath: '//div[@class="ppchart__chartlabel"]'} }
-    page_objects(:active_customers_customers_chart, index: 2 ) { {xpath: '//div[@class="ppchart__chartlabel"]'} }
+    page_objects(:active_customers_customers_chart_y_axis, index: 2 ) { {xpath: '//div[@class="ppchart__chartlabel"]'} }
     page_objects(:revenue_share_chart_y_axis, index: 3 ) { {xpath: '//div[@class="ppchart__chartlabel"]'} }
 
     #chart legends
-    page_objects(:preferred_rates_qualified_transactions_usd_legends, index: 0 ) { {xpath:  '//ul[@class="ppchart__legend"]'} }
+    page_objects(:preferred_rates_qualified_transactions_usd_chart_legends, index: 0 ) { {xpath:  '//ul[@class="ppchart__legend"]'} }
     page_objects(:preferred_rates_qualified_transactions_packages_chart_legends, index: 1 ) { {xpath:  '//ul[@class="ppchart__legend"]'} }
     page_objects(:active_customers_customers_chart_legends, index: 2 ) { {xpath:  '//ul[@class="ppchart__legend"]'} }
     page_objects(:revenue_share_chart_legends, index: 3 ) { {xpath:  '//ul[@class="ppchart__legend"]'} }
-
 
 
     #submit
