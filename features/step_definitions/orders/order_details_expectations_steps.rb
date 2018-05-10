@@ -433,7 +433,7 @@ end
 And /^[Ee]xpect [Oo]rder [Dd]etails Ship-From drop-down be enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
   step "expect Order Details is present"
-  expect(stamps.orders.order_details.single_ship_from.dropdown.field.visible?).to be(true)
+  expect(stamps.orders.order_details.single_ship_from.drop_down.field.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails Ship-To Textbox is enabled$/ do
@@ -446,7 +446,7 @@ end
 And /^[Ee]xpect [Oo]rder [Dd]etails Ship-To drop-down is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
   step "expect Order Details is present"
-  expect(stamps.orders.order_details.ship_to.domestic.country.dropdown.field.visible?).to be(true)
+  expect(stamps.orders.order_details.ship_to.domestic.country.drop_down.field.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails Ship-To text area is enabled$/ do
@@ -486,7 +486,7 @@ end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails service drop-down is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.service.dropdown.field.visible?).to be(true)
+  expect(stamps.orders.order_details.service.drop_down.field.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails [Ii]nsure-[Ff]or Textbox is enabled$/ do
@@ -508,7 +508,7 @@ end
 And /^[Ee]xpect [Oo]rder [Dd]etails Tracking drop-down is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
   step "expect Order Details is present"
-  expect(stamps.orders.order_details.tracking.dropdown.field.visible?).to be(true)
+  expect(stamps.orders.order_details.tracking.drop_down.field.visible?).to be(true)
 end
 
 

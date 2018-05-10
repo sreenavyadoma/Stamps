@@ -66,7 +66,7 @@ module Stamps
                 @index=index
               end
 
-              def dropdown
+              def drop_down
                 StampsField.new textbox_field.parent.parent.divs[1]
               end
 
@@ -82,7 +82,7 @@ module Stamps
                 log.info "Select Shipping service #{service}"
                 selection=StampsField.new(driver.trs(css: "tr[data-qtip*='#{service}']")[@index])
                 box=textbox
-                dd=dropdown
+                dd=drop_down
 
                 10.times {
                   begin

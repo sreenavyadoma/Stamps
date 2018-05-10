@@ -1,8 +1,31 @@
 
+Then /^visit Mail$/ do
+  step 'initialize mail test parameters'
 
-Then /^sign-in to Mail using credentials from MySql$/ do
+  env = case SdcEnv.env
+        when :qacc
+          'ext.qacc'
+        when :qasc
+          'ext.qasc'
+        when :stg
+          '.testing'
+        when :prod
+          ''
+        else
+          # ignore
+        end
+
+  SdcMailLandingPage.visit(env)
+end
+
+Then /^initialize mail test parameters$/ do
+  # Mail Print Media
+end
+
+Then /^sign-in to Mail$/ do
+  step 'visit Mail'
   modal = SdcWebsite.navigation.mail_sign_in_modal
-  modal.sign_in_link.wait_until_present(timeout: 80, interval: 0.2)
+  modal.sign_in_link.wait_until_present(timeout: 10)
   step 'fetch user credentials from MySQL'
   modal.sign_in_link.hover
   step "set Mail username to #{TestData.hash[:username]}"
@@ -71,10 +94,13 @@ end
 
 Then /^[Cc]lick the [Ss]ign [Ii]n button in [Mm]ail$/ do
   modal = SdcWebsite.navigation.mail_sign_in_modal
+  verifying_account_info = modal.verifying_account_info
   if SdcEnv.browser
     modal.sign_in_link.wait_until_present(timeout: 3)
     modal.sign_in_link.hover unless modal.sign_in.present?
     modal.sign_in.click
+    verifying_account_info.wait_until_present(timeout: 6)
+    verifying_account_info.wait_while_present(timeout: 8)
   elsif SdcEnv.ios
     raise StandardError, 'Not Implemented'
   elsif SdcEnv.android

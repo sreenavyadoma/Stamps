@@ -1,5 +1,7 @@
 
 Then /^visit Orders landing page$/ do
+  step 'initialize orders test parameters'
+
   env = case SdcEnv.env
         when :qacc
           'ext.qacc'
@@ -16,21 +18,26 @@ Then /^visit Orders landing page$/ do
   SdcOrdersLandingPage.visit(env)
 end
 
-Then /^visit Mail$/ do
-  env = case SdcEnv.env
-        when :qacc
-          'ext.qacc'
-        when :qasc
-          'ext.qasc'
-        when :stg
-          '.testing'
-        when :prod
-          ''
-        else
-          # ignore
-        end
-
-  SdcMailLandingPage.visit(env)
+Then /^initialize orders test parameters$/ do
+  TestData.hash[:customs_associated_items] = {}
+  TestData.hash[:service_mapping_items] = {}
+  TestData.hash[:details_associated_items] = {}
+  TestData.hash[:order_id] = {}
+  TestData.hash[:service_look_up] = {}
+  TestData.hash[:service_look_up]['FCM'] = 'First-Class Mail'
+  TestData.hash[:service_look_up]['PM'] = 'Priority Mail'
+  TestData.hash[:service_look_up]['PME'] = 'Priority Mail Express'
+  TestData.hash[:service_look_up]['MM'] = 'Media Mail'
+  TestData.hash[:service_look_up]['PSG'] = 'Parcel Select Ground'
+  TestData.hash[:service_look_up]['FCMI'] = 'First-Class Mail International'
+  TestData.hash[:service_look_up]['PMI'] = 'Priority Mail International'
+  TestData.hash[:service_look_up]['PMEI'] = 'Priority Mail Express International'
+  TestData.hash[:ord_id_ctr] = 0
+  TestData.hash[:username] = ENV['USR']
+  TestData.hash[:password] = ENV['PW']
+  TestData.hash[:sdc_app] = ENV['WEB_APP']
+  TestData.hash[:url] = ENV['URL']
+  TestData.hash[:test] = ENV['USER_CREDENTIALS']
 end
 
 Then /^fetch user credentials from MySQL$/ do

@@ -1,8 +1,4 @@
 
-Then /^[Ss]how Advanced Options$/ do
-  stamps.mail.print_form.advanced_options.show
-  expect(stamps.mail.print_form.advanced_options).to be_present, "Print Media error in Advanced Options. Check your feature file workflow."
-end
 
 Then /^[Hh]ide Advanced Options$/ do
   stamps.mail.print_form.advanced_options.hide

@@ -177,17 +177,13 @@ class SdcTest
             when :safari
               kill("killall 'Safari Technology Preview'")
               SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:safari, technology_preview: true))
+              SdcPage.browser.window.maximize
 
             else
               raise ArgumentError, "Invalid browser selection. #{test_driver}"
             end
 
-            if SdcEnv.debug
-              SdcPage.browser.window.resize_to 1300, 1020
-              SdcPage.browser.window.move_to 0, 0
-            else
-              SdcPage.browser.window.maximize
-            end
+            SdcPage.browser.window.maximize unless SdcEnv.max_window
 
           rescue StandardError => e
             SdcLogger.error e.message
@@ -236,7 +232,7 @@ class SdcTest
         raise e
       end
 
-      SdcEnv.sauce_device ||= ENV['SAUCE_DEVICE'] unless ENV['SAUCE_DEVICE'].nil?
+      SdcEnv.sauce_device ||= ENV['SAUCE_DEVICE']
 
       if SdcEnv.sauce_device
         SdcEnv::BROWSERS.each { |browser| SdcEnv.browser = browser if SdcEnv.sauce_device.eql? browser.to_s }
@@ -255,8 +251,8 @@ class SdcTest
       SdcEnv.pw = ENV['PW']
       SdcEnv.firefox_profile ||= ENV['FIREFOX_PROFILE']
       SdcEnv.new_framework ||= ENV['NEW_FRAMEWORK']
-      SdcEnv.debug ||= ENV['DEBUG']
       SdcEnv.env ||= test_env(ENV['URL'])
+      SdcEnv.max_window ||= ENV['MAX_WINDOW']
 
       require_gems
 

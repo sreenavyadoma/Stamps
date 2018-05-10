@@ -271,11 +271,11 @@ module Stamps
         cache[:add_funds_modal].nil? ? cache[:add_funds_modal] = AddFundsModal.new(param) : cache[:add_funds_modal]
       end
 
-      def buy_more_dropdown
-        if cache[:buy_more_dropdown].nil? || !cache[:buy_more_dropdown].present?
-          cache[:buy_more_dropdown] = StampsField.new(driver.span(class: "balanceLabel"))
+      def buy_more_drop_down
+        if cache[:buy_more_drop_down].nil? || !cache[:buy_more_drop_down].present?
+          cache[:buy_more_drop_down] = StampsField.new(driver.span(class: "balanceLabel"))
         end
-        cache[:buy_more_dropdown]
+        cache[:buy_more_drop_down]
       end
 
       def buy_more_link
@@ -295,9 +295,9 @@ module Stamps
       def buy_more
         20.times do
           return add_funds_modal if add_funds_modal.present?
-          buy_more_dropdown.field.hover
-          buy_more_dropdown.click unless buy_more_link.present?
-          buy_more_dropdown.field.hover
+          buy_more_drop_down.field.hover
+          buy_more_drop_down.click unless buy_more_link.present?
+          buy_more_drop_down.field.hover
           buy_more_link.click
           return add_funds_modal if add_funds_modal.present?
         end
@@ -306,9 +306,9 @@ module Stamps
 
       def purchase_history
         2.times do
-          buy_more_dropdown.field.hover
-          buy_more_dropdown.click unless view_history_link.present?
-          buy_more_dropdown.field.hover
+          buy_more_drop_down.field.hover
+          buy_more_drop_down.click unless view_history_link.present?
+          buy_more_drop_down.field.hover
           view_history_link.click
         end
       end

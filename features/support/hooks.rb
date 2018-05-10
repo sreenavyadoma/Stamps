@@ -20,4 +20,3 @@ After do
   @stamps = nil
   @health = nil
 end
-

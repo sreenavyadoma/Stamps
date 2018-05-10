@@ -16,7 +16,7 @@ Then /^[Ee]xpect [Pp]rint [Ff]orm Ship-To address is (.*)$/ do |address|
 end
 
 Then /^[Ee]xpect [Pp]rint [Ff]orm [Pp]rint [Oo]n [Ff]ield is present$/ do
-  expect(stamps.mail.print_media.dropdown.present?).to be(true), "Print On doesn't exists on Print form"
+  expect(stamps.mail.print_media.drop_down.present?).to be(true), "Print On doesn't exists on Print form"
 end
 
 Then /^[Ee]xpect [Pp]rint [Ff]orm [Mm]ail [Ff]rom Field is present$/ do
