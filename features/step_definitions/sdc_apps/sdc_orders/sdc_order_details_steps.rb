@@ -20,9 +20,9 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]ervice to (.*)$/ do |str|
   if SdcEnv.new_framework
     order_details = SdcOrders.order_details
     service = order_details.service
-    service.selection(name: :selection_obj, lov: str)
-    service.drop_down.click unless service.selection_obj.present?
-    service.selection_obj.click unless service.selection_obj.class_disabled?
+    service.selection(name: :selection_element, str: str)
+    service.drop_down.click unless service.selection_element.present?
+    service.selection_element.click unless service.selection_element.class_disabled?
     expect('expect Order Details service is correct')
     order_details.weight_label.blur_out(ctr: 2)
     order_details.service_label.blur_out(ctr: 2)

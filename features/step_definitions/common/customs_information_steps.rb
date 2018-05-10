@@ -38,7 +38,7 @@ Then /^[Ss]et Customs Package Contents to (.*)$/ do |value|
   TestData.hash[:customs_package_contents] = value
   if SdcEnv.new_framework
     package_contents = SdcWebsite.customs_form.package_contents
-    package_contents.selection_element(value)
+    package_contents.selection_element(name: :selection, value: value)
     package_contents.drop_down.click unless package_contents.selection.present?
     package_contents.selection.click unless package_contents.selection.class_disabled?
     step "expect Customs Package Contents is #{value}"
@@ -64,7 +64,7 @@ Then /^[Ss]et Customs Non-Delivery Options to (.*)$/ do |value|
   TestData.hash[:customs_non_delivery_options] = value
   if SdcEnv.new_framework
     non_delivery = SdcWebsite.customs_form.non_delivery
-    non_delivery.selection_element(value)
+    non_delivery.selection_element(name: :selection, value: value)
     non_delivery.drop_down.click unless non_delivery.selection.present?
     non_delivery.selection.click unless non_delivery.selection.class_disabled?
     step "expect Customs Non-Delivery Options is #{value}"
@@ -99,7 +99,7 @@ Then /^[Ss]et Customs Internal Transaction Number to (.*)$/ do |value|
   TestData.hash[:customs_internal_transaction_no] = value
   if SdcEnv.new_framework
     internal_transaction = SdcWebsite.customs_form.internal_transaction
-    internal_transaction.selection_element(value)
+    internal_transaction.selection_element(name: :selection, value: value)
     internal_transaction.drop_down.click unless internal_transaction.selection.present?
     internal_transaction.selection.click unless internal_transaction.selection.class_disabled?
     step "expect Customs Internal Transaction Number is #{value}"

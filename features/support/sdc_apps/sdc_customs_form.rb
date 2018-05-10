@@ -94,8 +94,8 @@ module SdcWebsite
     page_object(:text_field) { {xpath: '//*[@name="CustomsContents"]'} }
     page_object(:drop_down) { {xpath: '//*[contains(@id, "packagecontentsdroplist")]'} }
 
-    def selection_element(str)
-      self.class.page_object(:selection) { {xpath: "//li[text()='#{str}']"} }
+    def selection_element(name: :selection, value: "Merchandise")
+      self.class.page_object(name) { {xpath: "//li[text()='#{value}']"} }
     end
   end
 
@@ -103,8 +103,8 @@ module SdcWebsite
     page_object(:text_field) { {xpath: '//*[@name="NonDelivery"]'} }
     page_object(:drop_down) { {xpath: '//*[contains(@id, "nondeliveryoptionsdroplist")]'} }
 
-    def selection_element(str)
-      self.class.page_object(:selection) { {xpath: "//li[text()='#{str}']"} }
+    def selection_element(name: :selection, value: "Return to sender")
+      self.class.page_object(name) { {xpath: "//li[text()='#{value}']"} }
     end
   end
 
@@ -112,8 +112,8 @@ module SdcWebsite
     page_object(:text_field) { {xpath: '//*[@name="IsITNRequired"]'} }
     page_object(:drop_down) { {xpath: '//*[contains(@id, "internaltransactiondroplist")]'} }
 
-    def selection_element(str)
-      self.class.page_object(:selection) { {xpath: "//li[text()='#{str}']"} }
+    def selection_element(name: :selection, value: "Not required")
+      self.class.page_object(name) { {xpath: "//li[text()='#{value}']"} }
     end
   end
 end

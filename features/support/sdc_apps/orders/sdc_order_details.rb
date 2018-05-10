@@ -33,13 +33,8 @@ module SdcOrders
     page_object(:drop_down, required: true, timeout: 40) { {xpath: '(//div[contains(@id, "servicedroplist")]//div[contains(@id, "trigger-picker")])[1]'} }
     page_object(:text_field, required: true, timeout: 40) { {xpath: '(//input[contains(@id, "servicedroplist")])[1]'} }
 
-    # todo-Alex change this
-    # def selection(str)
-    #   self.class.page_object(:selection_obj) { {xpath: "//li[@id='#{data_for(:orders_services, {})[str]}']"} }
-    # end
-
-    def selection(name: :selection_obj, lov: 'Manage Printing Options...')
-      self.class.page_object(name) { {xpath: "//li[text()='#{lov}']"} }
+    def selection(name: :selection_element, str: 'Manage Service Options...')
+      self.class.page_object(name) { {xpath: "//li[@id='#{data_for(:orders_services, {})[str]}']"} }
     end
   end
 
