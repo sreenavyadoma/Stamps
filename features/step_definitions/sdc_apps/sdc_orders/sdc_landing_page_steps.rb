@@ -1,6 +1,7 @@
 
 Then /^visit Orders landing page$/ do
   step 'initialize orders test parameters'
+  step 'fetch user credentials from MySQL'
 
   env = case SdcEnv.env
         when :qacc
@@ -33,8 +34,6 @@ Then /^initialize orders test parameters$/ do
   TestData.hash[:service_look_up]['PMI'] = 'Priority Mail International'
   TestData.hash[:service_look_up]['PMEI'] = 'Priority Mail Express International'
   TestData.hash[:ord_id_ctr] = 0
-  TestData.hash[:username] = ENV['USR']
-  TestData.hash[:password] = ENV['PW']
   TestData.hash[:sdc_app] = ENV['WEB_APP']
   TestData.hash[:url] = ENV['URL']
   TestData.hash[:test] = ENV['USER_CREDENTIALS']
