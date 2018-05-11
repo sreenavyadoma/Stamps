@@ -78,16 +78,15 @@ module SdcFinder
     raise error, message
   end
   module_function :elements
+
 end
 
 class SdcPage < WatirDrops::PageObject
 
   class << self
 
-    def page_object(name, tag: nil, required: false, timeout: 30, &block)
-      element(name, required: required) { SdcFinder.element(browser, tag: tag, timeout: timeout, &block) }
-
-      self
+    def page_object(name, tag: nil, required: false, timeout: 15, &block)
+      element(name.to_sym, required: required) { SdcFinder.element(browser, tag: tag, timeout: timeout, &block) }
     end
 
     alias text_field page_object
@@ -96,28 +95,48 @@ class SdcPage < WatirDrops::PageObject
     alias selection page_object
     alias link page_object
 
-    def page_objects(name, tag: nil, index: nil, required: false, timeout: 30, &block)
+    def page_objects(name, tag: nil, index: nil, required: false, timeout: 15)
       list_name = index.nil? ? name : "#{name}s".to_sym
-      elements(list_name) { SdcFinder.elements(browser, tag: tag, timeout: timeout, &block) }
+      elements(list_name) { SdcFinder.elements(browser, tag: tag, timeout: timeout) { yield } }
       element(name, required: required) { SdcElement.new(instance_eval(list_name.to_s)[index]) } if index
-
-      self
     end
 
     def chooser(name, chooser, verify, property, property_name)
-      element(name) { SdcChooser.new(instance_eval(chooser.to_s), instance_eval(verify.to_s), property, property_name) }
-
-      self
+      element(name.to_sym) { SdcChooser.new(instance_eval(chooser.to_s), instance_eval(verify.to_s), property, property_name) }
     end
 
     alias checkbox chooser
     alias radio chooser
 
     def number(name, text_field, increment, decrement)
-      element(name) { SdcNumber.new(instance_eval(text_field.to_s), instance_eval(increment.to_s), instance_eval(decrement.to_s)) }
-
-      self
+      element(name.to_sym) { SdcNumber.new(instance_eval(text_field.to_s), instance_eval(increment.to_s), instance_eval(decrement.to_s)) }
     end
+  end
+
+  def instance_page_object(name, tag: nil, required: false, timeout: 15, &block)
+    self.class.page_object(name, tag: tag, required: required, timeout: timeout, &block)
+
+    instance_eval(name.to_s)
+  end
+
+  def instance_page_objects(name, tag: nil, index: nil, required: false, timeout: 15)
+    self.class.page_objects(name, tag: tag, index: index, required: required, timeout: timeout) do
+      yield
+    end
+
+    instance_eval(name.to_s)
+  end
+
+  def instance_chooser(name, chooser, verify, property, property_name)
+    self.class.chooser(name, chooser, verify, property, property_name)
+
+    instance_eval(name.to_s)
+  end
+
+  def instance_number(name, text_field, increment, decrement)
+    self.class.number(name, text_field, increment, decrement)
+
+    instance_eval(name.to_s)
   end
 end
 

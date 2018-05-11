@@ -7,25 +7,25 @@ Then /^[Aa]dd [Oo]rder (\d+)$/ do |count|
     #todo TestData.store[:old_balance] = SdcWebsite.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
     #todo stamps.orders.orders_grid.grid_column(:checkbox).uncheck(1)
     #step 'Wait until order toolbar present 40, 3'
-    SdcOrders.toolbar.add.wait_until_present(timeout: 30)
-    SdcOrders.grid.body.wait_until_present(timeout: 60)
+    SdcOrders.toolbar.add.wait_until_present(timeout: 10)
+    SdcOrders.grid.body.wait_until_present(timeout: 10)
     SdcOrders.toolbar.add.click
     SdcOrders.order_details.title.wait_until_present(timeout: 30)
     TestData.hash[:order_id][count.to_i] = SdcOrders.order_details.order_id.text_value.parse_digits
     #todo expect(stamps.orders.orders_grid.grid_column(:checkbox).checked?(1)).to be(true), "Orders Grid checkbox 1 is unchecked!"
-    step "Save Order Details data"
+    step 'Save Order Details data'
   else
     TestData.hash[:old_balance] = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
     stamps.orders.orders_grid.grid_column(:checkbox).uncheck(1)
     TestData.hash[:order_id][count.to_i] = stamps.orders.orders_toolbar.toolbar_add.click
     expect(stamps.orders.orders_grid.grid_column(:checkbox).checked?(1)).to be(true), "Orders Grid checkbox 1 is unchecked!"
-    step "Save Order Details data"
+    step 'Save Order Details data'
   end
   TestData.hash[:ord_id_ctr] += 1
 end
 
 Then /^Save Order Details data$/ do
-  step "Expect Order Details is present"
+  step 'Expect Order Details is present'
   if SdcEnv.new_framework
     TestData.hash[:country] = SdcOrders.order_details.ship_to.domestic.country.text_field.text_value
     TestData.hash[:service_cost] = SdcOrders.order_details.service.cost.text_value.dollar_amount_str.to_f.round(2)
@@ -52,7 +52,7 @@ Then /^Save Order Details data$/ do
 end
 
 Then /^[Cc]lick [Oo]rders [Tt]oolbar [Pp]rint [Bb]utton$/ do
-  step "Save Order Details data"
+  step 'Save Order Details data'
   if SdcEnv.new_framework
     SdcOrders.order_details.footer.print.click
     expect(SdcOrders.modals.print.title).to be_present

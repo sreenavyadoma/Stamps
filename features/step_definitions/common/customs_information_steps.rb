@@ -24,10 +24,10 @@ Then /^[Ee]xpect [Cc]ustoms [Ff]orm is [Pp]resent$/ do
   end
 end
 
-Then /^[Bb]lur [Oo]ut [Oo]n [Cc]ustoms [Ff]orm(?:| (\d+)(?:| times))$/ do |count|
-  count ||= 1
+Then /^[Bb]lur [Oo]ut [Oo]n [Cc]ustoms [Ff]orm$/ do
   if SdcEnv.new_framework
     SdcWebsite.customs_form.total.blur_out
+    SdcWebsite.customs_form.title.blur_out
   else
     count.to_i.times { stamps.common_modals.customs_form.blur_out } if SdcEnv.sdc_app == :orders
     count.to_i.times { stamps.mail.print_form.mail_customs.edit_customs_form.blur_out } if SdcEnv.sdc_app == :mail
@@ -266,7 +266,7 @@ end
 
 Then /^[Dd]elete Customs Associated Item (\d+)$/ do |item_number|
   if SdcEnv.new_framework
-    SdcWebsite.customs_form.item.delete_element(item_number).delete.click
+    SdcWebsite.customs_form.item.delete(item_number).click
   else
     if SdcEnv.sdc_app == :orders
       field = stamps.common_modals.customs_form.associated_items
@@ -322,7 +322,7 @@ end
 
 Then /^[Cc]lose Customs Information form$/ do
   step 'Pause for 4 seconds'
-  step 'Blur out on Customs form 20 times'
+  step 'Blur out on Customs form'
   step 'Save Customs Information form Total amount'
   if SdcEnv.new_framework
     SdcWebsite.customs_form.close.click
@@ -479,7 +479,7 @@ end
 
 Then /^[Ee]xpect Customs Associated Item Grid count is (.+)$/ do |expectation|
   if SdcEnv.new_framework
-    expect(SdcWebclient.customs_form.associated_items.size).to eql(expectation.to_i), 'Number of Associated Customs Items is incorrect'
+    expect(SdcWebsite.customs_form.associated_items.size).to eql(expectation.to_i)
   else
     step 'Blur out on Customs form'
     sleep(0.5)
@@ -515,84 +515,96 @@ end
 
 Then /^[Aa]dd Customs Associated Item (\d+), Description (.*), Qty (\d+), Price (.+), Made In (.+), Tariff (.*)$/ do |item_number, description, qty, price, made_in, tariff|
   step "add Customs Associated Item #{item_number}" if item_number > 1
+  step "scroll into view customs associated item #{item_number}"
   step "set Customs Associated Item #{item_number} Description to #{description}"
   step "set Customs Associated Item #{item_number} Qty to #{qty}"
   step "set Customs Associated Item #{item_number} Unit Price to #{price}"
+  step "scroll into view customs associated item #{item_number}"
   step "set Customs Associated Item #{item_number} Made In is Country to #{made_in}"
+  step "scroll into view customs associated item #{item_number}"
   step "set Customs Associated Item #{item_number} Tarriff to #{tariff}"
 end
 
 Then /^[Aa]dd Customs Associated Item (\d+)$/ do |item_number|
   if SdcEnv.new_framework
     SdcWebsite.customs_form.add_item.click
-    step "initialize country list for item #{item_number}"
   else
     stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i) if SdcEnv.sdc_app == :orders
     stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i) if SdcEnv.sdc_app == :mail
   end
 end
 
-Then /^initialize country list for item (\d+)$/ do |item_number|
-  made_in = SdcWebsite.customs_form.item.made_in
-  made_in.drop_down_element(item_number)
-  made_in.drop_down.click
-  step 'Blur out on Customs form'
+Then /^scroll into view customs associated item (\d+)$/ do |item_number|
+  SdcWebsite.customs_form.item.made_in.drop_down(item_number).scroll_into_view
+  SdcWebsite.customs_form.item.item_description(item_number).scroll_into_view
+  SdcWebsite.customs_form.item.hs_tariff(item_number).scroll_into_view
+  SdcWebsite.customs_form.item.qty(item_number).scroll_into_view
+  SdcWebsite.customs_form.item.unit_price(item_number).scroll_into_view
+  SdcWebsite.customs_form.item.delete(item_number).scroll_into_view
 end
 
 Then /^[Ss]et Customs Associated Item (\d+) Description to (.*)$/ do |item_number, value|
+  TestData.hash[:customs_associated_items][item_number] ||= {}
+  value = TestHelper.rand_alpha_numeric if value.casecmp('random').zero?
   if SdcEnv.new_framework
-    SdcWebsite.customs_form.item.item_description_element(item_number).item_description.set(value)
+    SdcWebsite.customs_form.item.item_description(item_number).scroll_into_view.set(value)
   else
     stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).item_description.set(TestData.hash[:customs_associated_items][item_number][:description]) if SdcEnv.sdc_app == :orders
     stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).item_description.set(TestData.hash[:customs_associated_items][item_number][:description]) if SdcEnv.sdc_app == :mail
   end
   step 'Save Customs Information form Total amount'
 
-
-  TestData.hash[:customs_associated_items][item_number] = {} unless TestData.hash[:customs_associated_items].has_key?(item_number)
-  TestData.hash[:customs_associated_items][item_number][:description] = (value.downcase.include?('random') ? TestHelper.rand_alpha_numeric : value)
+  TestData.hash[:customs_associated_items][item_number][:description] = value
 end
 
 Then /^[Ss]et Customs Associated Item (\d+) Qty to (\d+)$/ do |item_number, value|
   if SdcEnv.new_framework
-    SdcWebsite.customs_form.item.qty_element(item_number).qty.set(value)
+    qty = SdcWebsite.customs_form.item.qty(item_number)
+    qty.scroll_into_view
+    qty.set(value)
   else
     stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).item_qty.set(TestData.hash[:customs_associated_items][item_number][:quantity]) if SdcEnv.sdc_app == :orders
     stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).item_qty.set(TestData.hash[:customs_associated_items][item_number][:quantity]) if SdcEnv.sdc_app == :mail
   end
   step 'Save Customs Information form Total amount'
 
-  TestData.hash[:customs_associated_items][item_number] = {} unless TestData.hash[:customs_associated_items].has_key?(item_number)
+  TestData.hash[:customs_associated_items][item_number] ||= {}
   TestData.hash[:customs_associated_items][item_number][:quantity] = value
 end
 
 Then /^[Ss]et Customs Associated Item (\d+) Unit Price to (.*)$/ do |item_number, value|
   if SdcEnv.new_framework
-    SdcWebsite.customs_form.item.unit_price_element(item_number).unit_price.set(value)
+    unit_price = SdcWebsite.customs_form.item.unit_price(item_number)
+    unit_price.scroll_into_view
+    unit_price.set(value)
   else
     stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).unit_price.set(TestData.hash[:customs_associated_items][item_number][:price]) if SdcEnv.sdc_app == :orders
     stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).unit_price.set(TestData.hash[:customs_associated_items][item_number][:price]) if SdcEnv.sdc_app == :mail
   end
   step 'Save Customs Information form Total amount'
 
-  TestData.hash[:customs_associated_items][item_number] = {} unless TestData.hash[:customs_associated_items].has_key?(item_number)
+  TestData.hash[:customs_associated_items][item_number] ||= {}
   TestData.hash[:customs_associated_items][item_number][:price] = value
 end
 
 Then /^[Ss]et Customs Associated Item (\d+) Made In is Country to (.*)$/ do |item_number, value|
   if SdcEnv.new_framework
     made_in = SdcWebsite.customs_form.item.made_in
-    made_in.drop_down_element(item_number)
-    made_in.text_field_element(item_number)
-    made_in.selection_element(item_number, value)
-    made_in.drop_down.click unless made_in.selection.present?
-    made_in.selection.scroll_into_view
-    made_in.selection.click unless made_in.selection.class_disabled?
-    if made_in.text_field.text_value && made_in.text_field.text_value.include?(value)
-      TestData.hash[:customs_associated_items][item_number][:made_in] = made_in.text_field.text_value
-    end
-    TestData.hash[:customs_associated_items][item_number][:made_in] ||= ''
-    expect(TestData.hash[:customs_associated_items][item_number][:made_in]).to eql(value)
+    drop_down = made_in.drop_down(item_number)
+    text_field = made_in.text_field(item_number)
+    selection = made_in.selection(item_number, value)
+
+    drop_down.scroll_into_view
+    text_field.scroll_into_view
+    drop_down.click
+    selection.safe_wait_until_present(timeout: 2)
+    drop_down.click unless selection.present?
+    selection.scroll_into_view
+    selection.click
+    drop_down.scroll_into_view
+    text_field.scroll_into_view
+    text_field.wait_until_present(timeout: 2)
+    expect(text_field.text_value).to include value
   else
     if SdcEnv.sdc_app == :orders
       expect(stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).made_in.select(
@@ -604,27 +616,27 @@ Then /^[Ss]et Customs Associated Item (\d+) Made In is Country to (.*)$/ do |ite
     end
   end
 
-  TestData.hash[:customs_associated_items][item_number] = {} unless TestData.hash[:customs_associated_items].has_key?(item_number)
+  TestData.hash[:customs_associated_items][item_number] ||= {}
   TestData.hash[:customs_associated_items][item_number][:made_in] = value
 end
 
 Then /^[Ss]et Customs Associated Item (\d+) Tarriff to (.*)$/ do |item_number, value|
   if SdcEnv.new_framework
-    SdcWebsite.customs_form.item.hs_tariff_element(item_number).hs_tariff.set(value)
+    SdcWebsite.customs_form.item.hs_tariff(item_number).scroll_into_view.set(value)
   else
     stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).hs_tariff.set(TestData.hash[:customs_associated_items][item_number][:tarriff]) if SdcEnv.sdc_app == :orders
     stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).hs_tariff.set(TestData.hash[:customs_associated_items][item_number][:tarriff]) if SdcEnv.sdc_app == :mail
   end
   step 'Save Customs Information form Total amount'
 
-  TestData.hash[:customs_associated_items][item_number] = {} unless TestData.hash[:customs_associated_items].has_key?(item_number)
+  TestData.hash[:customs_associated_items][item_number] ||= {}
   TestData.hash[:customs_associated_items][item_number][:tarriff] = value
 end
 
 Then /^[Ee]xpect Customs Associated Item (\d+) Description is (?:correct|(.*))$/ do |item_number, expectation|
   expectation ||= TestData.hash[:customs_associated_items][item_number][:description]
   if SdcEnv.new_framework
-    expect(SdcWebsite.customs_form.item.item_description_element(item_number).item_description.text_value).to eql(expectation), "Description of Item ##{item_number} is incorrect"
+    expect(SdcWebsite.customs_form.item.item_description(item_number).text_value).to eql(expectation), "Description of Item ##{item_number} is incorrect"
   else
     sleep(0.5)
     expect(stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).item_description.text).to eql(expectation) if SdcEnv.sdc_app == :orders
@@ -635,7 +647,7 @@ end
 Then /^[Ee]xpect Customs Associated Item (\d+) Quantity is (?:correct|(\d+))$/ do |item_number, expectation|
   expectation ||= TestData.hash[:customs_associated_items][item_number][:quantity]
   if SdcEnv.new_framework
-    expect(SdcWebsite.customs_form.item.qty_element(item_number).qty.text_value.to_i).to eql(expectation.to_i), "Qty of Item ##{item_number} is incorrect"
+    expect(SdcWebsite.customs_form.item.qty(item_number).text_value.to_i).to eql(expectation.to_i), "Qty of Item ##{item_number} is incorrect"
   else
     sleep(0.5)
     expect(stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).item_qty.textbox.text.to_i).to eql(expectation.to_i) if SdcEnv.sdc_app == :orders
@@ -646,7 +658,7 @@ end
 Then /^[Ee]xpect Customs Associated Item (\d+) Unit Price is (?:correct|(.*))$/ do |item_number, expectation|
   expectation ||= TestData.hash[:customs_associated_items][item_number][:price]
   if SdcEnv.new_framework
-    expect(SdcWebsite.customs_form.item.unit_price_element(item_number).unit_price.text_value.to_f).to eql(expectation.to_f), "Unit Price of Item ##{item_number} is incorrect"
+    expect(SdcWebsite.customs_form.item.unit_price(item_number).text_value.to_f).to eql(expectation.to_f), "Unit Price of Item ##{item_number} is incorrect"
   else
     sleep(0.5)
     expect(stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).unit_price.textbox.text.to_f).to eql(expectation.to_f) if SdcEnv.sdc_app == :orders
@@ -657,7 +669,7 @@ end
 Then /^[Ee]xpect Customs Associated Item (\d+) Made In is (?:correct|(.*))$/ do |item_number, expectation|
   expectation ||= TestData.hash[:customs_associated_items][item_number][:made_in]
   if SdcEnv.new_framework
-    expect(dcWebsite.customs_form.item.made_in.text_field_element(item_number).text_field.text_value).to eql(expectation), "Made In of Item ##{item_number} is incorrect"
+    expect(SdcWebsite.customs_form.item.made_in.text_field(item_number).text_value).to eql(expectation), "Made In of Item ##{item_number} is incorrect"
   else
     sleep(0.5)
     expect(stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).made_in.textbox.text).to eql(expectation) if SdcEnv.sdc_app == :orders
@@ -668,7 +680,7 @@ end
 Then /^[Ee]xpect Customs Associated Item (\d+) Tariff is (?:correct|(.*))$/ do |item_number, expectation|
   expectation ||= TestData.hash[:customs_associated_items][item_number][:tarriff]
   if SdcEnv.new_framework
-    expect(dcWebsite.customs_form.item.hs_tariff_element(item_number).hs_tariff.text_value.to_f).to eql(expectation.to_f), "Made In of Item ##{item_number} is incorrect"
+    expect(dcWebsite.customs_form.item.hs_tariff(item_number).text_value.to_f).to eql(expectation.to_f), "Made In of Item ##{item_number} is incorrect"
   else
     sleep(0.5)
     expect(stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).hs_tariff.text.to_f).to eql(expectation.to_f) if SdcEnv.sdc_app == :orders
