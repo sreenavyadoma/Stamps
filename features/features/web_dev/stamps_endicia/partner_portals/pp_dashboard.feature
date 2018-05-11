@@ -1,5 +1,5 @@
 @pp_dashboard_single_contract_ui_validaiton
-Feature: PP-MVP: Dashboard Page
+Feature: PP-MVP: Dashboard Page Single Contract
 
   Background:
     Given PP: A valid user is signed into Partner Portal
