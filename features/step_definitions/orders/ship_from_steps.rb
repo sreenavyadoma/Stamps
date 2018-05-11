@@ -10,8 +10,12 @@ Then /^[Oo]n [Mm]anage [Ss]hipping [Aa]ddress modal, delete all addresses$/ do
 end
 
 Then /^[Oo]n [Mm]anage [Ss]hipping [Aa]ddress modal, delete all rows$/ do
-  while stamps.orders.modals.manage_shipping_addresses.shipping_address_count > 1 do
-    step "On Manage Shipping Address modal, delete row #{1}"
+  if SdcEnv.new_framework
+  #   todo
+  else
+    while stamps.orders.modals.manage_shipping_addresses.shipping_address_count > 1 do
+      step "On Manage Shipping Address modal, delete row #{1}"
+    end
   end
   step 'Expect Manage Shipping Address all rows deleted'
 end
@@ -51,11 +55,19 @@ Then /^[Oo]pen [Mm]anage [Ss]hipping [Aa]ddress modal$/ do
 end
 
 Then /^[Ee]xpect [Mm]anage [Ss]hipping [Aa]ddress modal is present$/ do
-  expect(stamps.orders.modals.manage_shipping_addresses.present?).to be(true), 'Manage Shipping Address modal is not present!'
+  if SdcEnv.new_framework
+    expect(SdcWebsite.modals.manage_shipping_addresses.title).to be_present, 'Manage Shipping Address modal is not present!'
+  else
+    expect(stamps.orders.modals.manage_shipping_addresses.present?).to be(true), 'Manage Shipping Address modal is not present!'
+  end
 end
 
 Then /^[Ee]xpect [Mm]anage [Ss]hipping [Aa]ddress modal is not present$/ do
-  expect(stamps.orders.modals.manage_shipping_addresses.present?).to be(false), 'Manage Shipping Address modal is present!'
+  if SdcEnv.new_framework
+    expect(SdcWebsite.modals.manage_shipping_addresses.title).not_to be_present, 'Manage Shipping Address modal is present!'
+  else
+    expect(stamps.orders.modals.manage_shipping_addresses.present?).to be(false), 'Manage Shipping Address modal is present!'
+  end
 end
 
 Then /^[Ee]xpect Delete [Ss]hipping [Aa]ddress modal is present$/ do
@@ -67,16 +79,28 @@ Then /^[Ee]xpect Delete [Ss]hipping [Aa]ddress modal is not present$/ do
 end
 
 Then /^[Cc]lick [Mm]anage [Ss]hipping [Aa]ddress [Aa]dd button$/ do
-  stamps.orders.modals.manage_shipping_addresses.add_button.click
+  if SdcEnv.new_framework
+    SdcWebsite.modals.manage_shipping_addresses.add.click
+  else
+    stamps.orders.modals.manage_shipping_addresses.add_button.click
+  end
   step 'expect Add Shipping Address modal is present'
 end
 
 Then /^[Ee]xpect [Aa]dd [Ss]hipping [Aa]ddress [Mm]odal is present$/ do
-  expect(stamps.orders.modals.add_shipping_address.present?).to be(true), 'Add Shipping Address modal is not present!'
+  if SdcEnv.new_framework
+    expect(SdcWebsite.modals.add_edit_shipping_addresses.title).to be_present, 'Add Shipping Address modal is not present!'
+  else
+    expect(stamps.orders.modals.add_shipping_address.present?).to be(true), 'Add Shipping Address modal is not present!'
+  end
 end
 
 Then /^[Cc]lose [Mm]anage [Ss]hipping [Aa]ddress [Mm]odal$/ do
-  stamps.orders.modals.manage_shipping_addresses.close_window
+  if SdcEnv.new_framework
+    SdcWebsite.modals.manage_shipping_addresses.x_btn.click
+  else
+    stamps.orders.modals.manage_shipping_addresses.close_window
+  end
   step 'expect Manage Shipping Address modal is not present'
 end
 
@@ -112,7 +136,25 @@ Then /^[Oo]n Manage Shipping Address modal, add address$/ do |ship_from|
   TestData.hash[:phone]=TestData.hash[:ship_from_address][:phone]
   step 'Open Manage Shipping Address modal'
   step 'Click Manage Shipping Address Add button'
-  stamps.orders.modals.add_shipping_address.ship_from_address(TestData.hash[:ship_from_address])
+  if SdcEnv.new_framework
+    modal = SdcWebsite.modals.add_edit_shipping_addresses
+    modal.ship_from_zip.set(TestData.hash[:ship_from_zip])
+    modal.name.set(TestData.hash[:full_name])
+    modal.company.set(TestData.hash[:company])
+    modal.address.set(TestData.hash[:street_address])
+    modal.address2.set(TestData.hash[:street_address2])
+    modal.city.set(TestData.hash[:city])
+    modal.city.zip(TestData.hash[:zip])
+    modal.city.phone(TestData.hash[:phone])
+
+    modal.state.selection_element(TestData.hash[:state])
+    modal.state.dropdown.click unless modal.state.selection.present?
+    modal.selection.scroll_into_view
+    modal.selection.click unless modal.selection.class_disabled?
+    expect(modal.text_field.text_value).to include(TestData.hash[:state])
+  else
+    stamps.orders.modals.add_shipping_address.ship_from_address(TestData.hash[:ship_from_address])
+  end
   step 'Close Manage Shipping Address modal'
 end
 

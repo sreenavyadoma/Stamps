@@ -1,5 +1,49 @@
 module SdcOrders
   module OrdersFloatingModals
+    class ManageShippingAddresses < SdcPage
+      page_object(:title) { {xpath: '//*[text()="Manage Shipping Addresses"]'} }
+      page_object(:add) { {xpath: '//*[contains(@id, "manageShipFromWindow")]//*[text()="Add"]'} }
+      page_object(:edit) { {xpath: '//*[contains(@id, "manageShipFromWindow")]//*[text()="Edit"]'} }
+      page_object(:delete) { {xpath: '//*[contains(@id, "manageShipFromWindow")]//*[text()="Delete"]'} }
+      page_object(:x_btn) { {xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
+      page_objects(:addresses) { {xpath: '//*[contains(@id, "manageShipFromWindow")]//table[contains(@id, "tableview")]'} }
+
+      def address_element(num)
+        self.class.page_object(:address) { {xpath: "(//*[contains(@id, 'manageShipFromWindow')]//table[contains(@id, 'tableview')])[#{num}]"} }
+      end
+    end
+
+    class AddEditShippingAddress < SdcPage
+      page_object(:title) { {xpath: '//*[contains(@id, "editshipfromAddressWindow")]//*[contains(@class, "x-title-text")]'} }
+      page_object(:ship_from_zip, tag: :text_field) { {xpath: '//*[@name="OriginZip"]'} }
+      page_object(:name, tag: :text_field) { {xpath: '//*[@name="FullName"]'} }
+      page_object(:company, tag: :text_field) { {xpath: '//*[@name="Company"]'} }
+      page_object(:address, tag: :text_field) { {xpath: '//*[@name="Street1"]'} }
+      page_object(:address2, tag: :text_field) { {xpath: '//*[@name="Street2"]'} }
+      page_object(:city, tag: :text_field) { {xpath: '//*[@name="City"]'} }
+      page_object(:zip, tag: :text_field) { {xpath: '//*[@name="Zip"]'} }
+      page_object(:phone, tag: :text_field) { {xpath: '//*[@name="Phone"]'} }
+      page_object(:x_btn) { {xpath: '//*[contains(@id, "editshipfromAddressWindow")]//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
+
+      def state
+        ManageShippingAddressesState.new
+      end
+    end
+
+    class DeleteShippingAddress < SdcPage
+      page_object(:title) { {xpath: '//*[text()="Delete Shipping Address"]'} }
+      page_object(:delete) { {xpath: '//*[contains(@id, "dialoguemodal")]//*[text()="Delete"]/../..'} }
+      page_object(:x_btn) { {xpath: '//*[contains(@id, "dialoguemodal")]//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
+    end
+
+    class ManageShippingAddressesState < SdcPage
+      page_object(:drop_down) { {xpath: '//*[contains(@id, "statecombobox")]//div[contains(@id, "trigger-picker")]'} }
+      page_object(:text_field, tag: :text_field) { {xpath: '//input[contains(@id, "statecombobox")]'} }
+
+      def selection_element(str)
+        self.class.page_object(:selection) { {xpath: "//li[text()='#{str}']"} }
+      end
+    end
 
     class PrintModalPrintOn < SdcPage
       page_object(:text_field, tag: :text_field) { {xpath: '//input[contains(@id, "printmediadroplist")]'} }
@@ -130,14 +174,24 @@ module SdcOrders
     end
 
     def print
-      @print ||= OrdersPrintModal.new
+      OrdersPrintModal.new
     end
     module_function :print
 
     def settings
-      @settings ||= OrdersSettingsModal.new
+      OrdersSettingsModal.new
     end
     module_function :settings
+
+    def manage_shipping_addresses
+      ManageShippingAddresses
+    end
+    module_function :manage_shipping_addresses
+
+    def add_edit_shipping_addresses
+      AddEditShippingAddress
+    end
+    module_function :add_edit_shipping_addresses
 
   end
 end
