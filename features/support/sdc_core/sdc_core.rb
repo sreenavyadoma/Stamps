@@ -86,6 +86,8 @@ class SdcPage < WatirDrops::PageObject
 
     def page_object(name, tag: nil, required: false, timeout: 30, &block)
       element(name, required: required) { SdcFinder.element(browser, tag: tag, timeout: timeout, &block) }
+
+      self
     end
 
     alias text_field page_object
@@ -98,10 +100,14 @@ class SdcPage < WatirDrops::PageObject
       list_name = index.nil? ? name : "#{name}s".to_sym
       elements(list_name) { SdcFinder.elements(browser, tag: tag, timeout: timeout, &block) }
       element(name, required: required) { SdcElement.new(instance_eval(list_name.to_s)[index]) } if index
+
+      self
     end
 
     def chooser(name, chooser, verify, property, property_name)
       element(name) { SdcChooser.new(instance_eval(chooser.to_s), instance_eval(verify.to_s), property, property_name) }
+
+      self
     end
 
     alias checkbox chooser
@@ -109,6 +115,8 @@ class SdcPage < WatirDrops::PageObject
 
     def number(name, text_field, increment, decrement)
       element(name) { SdcNumber.new(instance_eval(text_field.to_s), instance_eval(increment.to_s), instance_eval(decrement.to_s)) }
+
+      self
     end
   end
 end
