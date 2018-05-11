@@ -559,4 +559,4 @@ mail_bug_ordersauto_3243: --tags  @mail_bug_ordersauto_3243 --guess  HEALTHCHECK
 pp_log_in_page_validation: --tags @pp_log_in_page_validation --guess JENKINS=true  MAX_WINDOW=true
 pp_header_favicons_browser: --tags @pp_header_favicons_browser --guess JENKINS=true  MAX_WINDOW=true
 pp_header_favicons_browser_mobile: --tags @pp_header_favicons_browser_mobile --guess JENKINS=true
-pp_dashboard_single_contract_ui_validaiton: --tags --@pp_dashboard_single_contract_ui_validaiton --guess JENKINS=true
+pp_dashboard_single_contract_ui_validaiton: --tags @pp_dashboard_single_contract_ui_validaiton --guess JENKINS=true
