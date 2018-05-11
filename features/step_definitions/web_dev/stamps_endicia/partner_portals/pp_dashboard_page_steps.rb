@@ -70,19 +70,19 @@ Then /^[Pp]P: expect [Dd]ashboard page the Preferred Rates Qualified Transaction
   last_update_on = PartnerPortal.dashboard_page.contract_last_updated_on
   last_update_date = Date.strptime(last_update_on.text_value.split(':').last.strip, '%m/%d/%Y')
   previous_year = last_update_date - 1.year
-  legends = PartnerPortal.dashboard_page.preferred_rates_qualified_transactions_usd_chart_legends.text_value.gsub!(/\P{ASCII}/, '').strip.split
+  legends = PartnerPortal.dashboard_page.preferred_rates_qualified_transactions_usd_chart_legends.text_value.gsub(/\P{ASCII}/, '').strip.split
   expect(legends[0].to_i).to eql(previous_year.year)
 end
 
 Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the Preferred Rates Qualified Transactions Chart USD current year legends to be current year$/ do
   last_update_on = PartnerPortal.dashboard_page.contract_last_updated_on
   last_update_date = Date.strptime(last_update_on.text_value.split(':').last.strip, '%m/%d/%Y')
-  legends  = PartnerPortal.dashboard_page.preferred_rates_qualified_transactions_usd_chart_legends.text_value.gsub!(/\P{ASCII}/, '').strip.split
+  legends  = PartnerPortal.dashboard_page.preferred_rates_qualified_transactions_usd_chart_legends.text_value.gsub(/\P{ASCII}/, '').strip.split
   expect(legends[1].to_i).to eql(last_update_date.year)
 end
 
 Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the Preferred Rates Qualified Transactions Chart USD Current Month legends to be (.*)$/ do |str|
-  legends  = PartnerPortal.dashboard_page.preferred_rates_qualified_transactions_usd_chart_legends.text_value.gsub!(/\P{ASCII}/, '').strip.split
+  legends  = PartnerPortal.dashboard_page.preferred_rates_qualified_transactions_usd_chart_legends.text_value.gsub(/\P{ASCII}/, '').strip.split
   current_month = [] << legends[2] + " " + legends[3]
   expect(current_month[0].to_s).to eql(str)
 end
