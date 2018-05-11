@@ -1,9 +1,10 @@
-@pp_dashboard_single_contract_ui_validaiton
+
 Feature: PP-MVP: Dashboard Page Single Contract
 
   Background:
     Given PP: A valid user is signed into Partner Portal
 
+  @pp_dashboard_single_contract_ui_validaiton
   Scenario: PP: Dashboard Page Single Contract UI Validation
 
     # Verify  all content and fields are present
@@ -69,3 +70,6 @@ Feature: PP-MVP: Dashboard Page Single Contract
    Then PP: expect dashboard page the Revenue Share Chart current year legends to be current year
    Then PP: expect dashboard page the Revenue Share Chart Current Month legends to be Current Month
 
+  @pp_dashboard_single_contract_chart_data_validation
+  Scenario: PP: Dashboard Page Single Contract UI Validation
+    # Preferred Rates Qualified Transactions $
