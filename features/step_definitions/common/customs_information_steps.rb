@@ -25,17 +25,16 @@ Then /^[Ee]xpect [Cc]ustoms [Ff]orm is [Pp]resent$/ do
 end
 
 Then /^[Bb]lur [Oo]ut [Oo]n [Cc]ustoms [Ff]orm(?:| (\d+)(?:| times))$/ do |count|
-  count = count.nil? ? 1 : count.to_i
+  count ||= 1
   if SdcEnv.new_framework
     SdcWebsite.customs_form.total.blur_out
   else
-    count.times { stamps.common_modals.customs_form.blur_out } if SdcEnv.sdc_app == :orders
-    count.times { stamps.mail.print_form.mail_customs.edit_customs_form.blur_out } if SdcEnv.sdc_app == :mail
+    count.to_i.times { stamps.common_modals.customs_form.blur_out } if SdcEnv.sdc_app == :orders
+    count.to_i.times { stamps.mail.print_form.mail_customs.edit_customs_form.blur_out } if SdcEnv.sdc_app == :mail
   end
 end
 
 Then /^[Ss]et Customs Package Contents to (.*)$/ do |value|
-  TestData.hash[:customs_package_contents] = value
   if SdcEnv.new_framework
     package_contents = SdcWebsite.customs_form.package_contents
     package_contents.selection_element(name: :selection, value: value)
@@ -43,14 +42,15 @@ Then /^[Ss]et Customs Package Contents to (.*)$/ do |value|
     package_contents.selection.click unless package_contents.selection.class_disabled?
     step "expect Customs Package Contents is #{value}"
   else
-    stamps.common_modals.customs_form.package_contents.select(TestData.hash[:customs_package_contents]) if SdcEnv.sdc_app == :orders
-    stamps.mail.print_form.mail_customs.edit_customs_form.package_contents.select(TestData.hash[:customs_package_contents]) if SdcEnv.sdc_app == :mail
+    stamps.common_modals.customs_form.package_contents.select(value) if SdcEnv.sdc_app == :orders
+    stamps.mail.print_form.mail_customs.edit_customs_form.package_contents.select(value) if SdcEnv.sdc_app == :mail
   end
   step 'Save Customs Information form Total amount'
+  TestData.hash[:customs_package_contents] = value
 end
 
 Then /^[Ee]xpect Customs Package Contents is (?:correct|(.*))$/ do |expectation|
-  expectation = expectation.nil? ? TestData.hash[:customs_package_contents] : expectation
+  expectation ||= TestData.hash[:customs_package_contents]
   if SdcEnv.new_framework
     expect(SdcWebsite.customs_form.package_contents.text_field.text_value).to eql(expectation), 'Package Content is incorrect'
   else
@@ -61,7 +61,6 @@ Then /^[Ee]xpect Customs Package Contents is (?:correct|(.*))$/ do |expectation|
 end
 
 Then /^[Ss]et Customs Non-Delivery Options to (.*)$/ do |value|
-  TestData.hash[:customs_non_delivery_options] = value
   if SdcEnv.new_framework
     non_delivery = SdcWebsite.customs_form.non_delivery
     non_delivery.selection_element(name: :selection, value: value)
@@ -69,13 +68,14 @@ Then /^[Ss]et Customs Non-Delivery Options to (.*)$/ do |value|
     non_delivery.selection.click unless non_delivery.selection.class_disabled?
     step "expect Customs Non-Delivery Options is #{value}"
   else
-    stamps.common_modals.customs_form.non_delivery_options.select(TestData.hash[:customs_non_delivery_options]) if SdcEnv.sdc_app == :orders
-    stamps.mail.print_form.mail_customs.edit_customs_form.non_delivery_options.select(TestData.hash[:customs_non_delivery_options]) if SdcEnv.sdc_app == :mail
+    stamps.common_modals.customs_form.non_delivery_options.select(value) if SdcEnv.sdc_app == :orders
+    stamps.mail.print_form.mail_customs.edit_customs_form.non_delivery_options.select(value) if SdcEnv.sdc_app == :mail
   end
+  TestData.hash[:customs_non_delivery_options] = value
 end
 
 Then /^[Ee]xpect Customs Non-Delivery Options is (?:correct|(.*))$/ do |expectation|
-  expectation = expectation.nil? ? TestData.hash[:customs_non_delivery_options] : expectation
+  expectation ||= TestData.hash[:customs_non_delivery_options]
   if SdcEnv.new_framework
     expect(SdcWebsite.customs_form.non_delivery.text_field.text_value).to eql(expectation), 'Package Content is incorrect'
   else
@@ -96,7 +96,6 @@ Then /^[Ee]xpect Customs Non-Delivery Options is (?:correct|(.*))$/ do |expectat
 end
 
 Then /^[Ss]et Customs Internal Transaction Number to (.*)$/ do |value|
-  TestData.hash[:customs_internal_transaction_no] = value
   if SdcEnv.new_framework
     internal_transaction = SdcWebsite.customs_form.internal_transaction
     internal_transaction.selection_element(name: :selection, value: value)
@@ -104,14 +103,15 @@ Then /^[Ss]et Customs Internal Transaction Number to (.*)$/ do |value|
     internal_transaction.selection.click unless internal_transaction.selection.class_disabled?
     step "expect Customs Internal Transaction Number is #{value}"
   else
-    stamps.common_modals.customs_form.internal_transaction.select(TestData.hash[:customs_internal_transaction_no]) if SdcEnv.sdc_app == :orders
-    stamps.mail.print_form.mail_customs.edit_customs_form.internal_transaction.select(TestData.hash[:customs_internal_transaction_no]) if SdcEnv.sdc_app == :mail
+    stamps.common_modals.customs_form.internal_transaction.select(value) if SdcEnv.sdc_app == :orders
+    stamps.mail.print_form.mail_customs.edit_customs_form.internal_transaction.select(value) if SdcEnv.sdc_app == :mail
   end
   step 'Save Customs Information form Total amount'
+  TestData.hash[:customs_internal_transaction_no] = value
 end
 
 Then /^[Ee]xpect Customs Internal Transaction Number is (?:correct|(.*))$/ do |expectation|
-  expectation = expectation.nil? ? TestData.hash[:customs_internal_transaction_no] : expectation
+  expectation ||= TestData.hash[:customs_internal_transaction_no]
   if SdcEnv.new_framework
     expect(SdcWebsite.customs_form.internal_transaction.text_field.text_value).to eql(expectation), 'Internal Transaction Number value is incorrect'
   else
@@ -122,19 +122,33 @@ Then /^[Ee]xpect Customs Internal Transaction Number is (?:correct|(.*))$/ do |e
 end
 
 Then /^[Ss]et Customs More Info to (?:(?:a|some) random string|(.*))$/ do |value|
-  TestData.hash[:customs_more_info] = value.nil? ? TestHelper.rand_alpha_numeric(6, 18) : value
+  value ||= TestHelper.rand_alpha_numeric(6, 18)
   if SdcEnv.new_framework
     SdcWebsite.customs_form.more_info.set(value) if SdcWebsite.customs_form.more_info.present?
     step "expect Customs More Info is #{value}"
   else
-    stamps.common_modals.customs_form.package_contents.contents.more_info.set(TestData.hash[:customs_more_info]) if SdcEnv.sdc_app == :orders
-    stamps.mail.print_form.mail_customs.edit_customs_form.package_contents.contents.more_info.set(TestData.hash[:customs_more_info]) if SdcEnv.sdc_app == :mail
+    stamps.common_modals.customs_form.package_contents.contents.more_info.set(value) if SdcEnv.sdc_app == :orders
+    stamps.mail.print_form.mail_customs.edit_customs_form.package_contents.contents.more_info.set(value) if SdcEnv.sdc_app == :mail
   end
   step 'Save Customs Information form Total amount'
+  TestData.hash[:customs_more_info] = value
+end
+
+Then /^ [Ss]et Customs More Info to (?:(?:a|some) random string|(.*))$/ do |value|
+  value ||= TestHelper.rand_alpha_numeric(6, 18)
+  if SdcEnv.new_framework
+    SdcWebsite.customs_form.more_info.set(value) if SdcWebsite.customs_form.more_info.present?
+    step "expect Customs More Info is #{value}"
+  else
+    stamps.common_modals.customs_form.package_contents.contents.more_info.set(value) if SdcEnv.sdc_app == :orders
+    stamps.mail.print_form.mail_customs.edit_customs_form.package_contents.contents.more_info.set(value) if SdcEnv.sdc_app == :mail
+  end
+  step 'Save Customs Information form Total amount'
+  TestData.hash[:customs_more_info] = value
 end
 
 Then /^[Ee]xpect Customs More Info is (?:correct|(.*))$/ do |expectation|
-  expectation = expectation.nil? ? TestData.hash[:customs_more_info] : expectation
+  expectation ||= TestData.hash[:customs_more_info]
   if SdcEnv.new_framework
     expect(SdcWebsite.customs_form.more_info).to be_present, 'More Info field is not present'
     expect(SdcWebsite.customs_form.more_info.text_value).to eql(expectation), 'More Info value is incorrect'
@@ -146,19 +160,20 @@ Then /^[Ee]xpect Customs More Info is (?:correct|(.*))$/ do |expectation|
 end
 
 Then /^[Ss]et Customs ITN Number to (?:(?:a|some) random string|(.*))$/ do |value|
-  TestData.hash[:customs_itn_no] = value.nil? ? TestHelper.rand_alpha_numeric(8, 50) : value
+  value ||= TestHelper.rand_alpha_numeric(8, 50)
   if SdcEnv.new_framework
     SdcWebsite.customs_form.itn.set(value) unless SdcWebsite.customs_form.itn.class_disabled?
     step "expect Customs ITN Number is #{value}"
   else
-    stamps.common_modals.customs_form.itn_number.set(TestData.hash[:customs_itn_no]) if SdcEnv.sdc_app == :orders
-    stamps.mail.print_form.mail_customs.edit_customs_form.itn_number.set(TestData.hash[:customs_itn_no]) if SdcEnv.sdc_app == :mail
+    stamps.common_modals.customs_form.itn_number.set(value) if SdcEnv.sdc_app == :orders
+    stamps.mail.print_form.mail_customs.edit_customs_form.itn_number.set(value) if SdcEnv.sdc_app == :mail
   end
   step 'Save Customs Information form Total amount'
+  TestData.hash[:customs_itn_no] = value
 end
 
 Then /^[Ee]xpect Customs ITN Number is (?:correct|(.*))$/ do |expectation|
-  expectation = expectation.nil? ? TestData.hash[:customs_itn_no] : expectation
+  expectation ||= TestData.hash[:customs_itn_no]
   if SdcEnv.new_framework
     expect(SdcWebsite.customs_form.itn.class_disabled?).to be(false), 'ITN number is disabled'
     expect(SdcWebsite.customs_form.itn.text_value).to eql(expectation), 'ITN number is incorrect'
@@ -170,19 +185,21 @@ Then /^[Ee]xpect Customs ITN Number is (?:correct|(.*))$/ do |expectation|
 end
 
 Then /^[Ss]et Customs License Number to (?:(?:a|some) random string|(.*))$/ do |value|
-  TestData.hash[:customs_license_no] = ((value.nil? ? TestHelper.rand_alpha_numeric(2, 6) : value)[0, 5])
+  value ||= TestHelper.rand_alpha_numeric(2, 6)
   if SdcEnv.new_framework
     SdcWebsite.customs_form.license.set(value) if SdcWebsite.customs_form.license.present?
     step "expect Customs License Number is #{value}"
   else
-    stamps.common_modals.customs_form.license.set(TestData.hash[:customs_license_no]) if SdcEnv.sdc_app == :orders
-    stamps.mail.print_form.mail_customs.edit_customs_form.license.set(TestData.hash[:customs_license_no]) if SdcEnv.sdc_app == :mail
+    stamps.common_modals.customs_form.license.set(value) if SdcEnv.sdc_app == :orders
+    stamps.mail.print_form.mail_customs.edit_customs_form.license.set(value) if SdcEnv.sdc_app == :mail
   end
   step 'Save Customs Information form Total amount'
+
+  TestData.hash[:customs_license_no] = value
 end
 
 Then /^[Ee]xpect Customs License Number is (?:correct|(.*))$/ do |expectation|
-  expectation = expectation.nil? ? TestData.hash[:customs_license_no] : expectation
+  expectation ||= TestData.hash[:customs_license_no]
   if SdcEnv.new_framework
     expect(SdcWebsite.customs_form.license).to be_present, 'License field is not present'
     expect(SdcWebsite.customs_form.license.text_value).to eql(expectation), 'License value is incorrect'
@@ -195,22 +212,25 @@ Then /^[Ee]xpect Customs License Number is (?:correct|(.*))$/ do |expectation|
 end
 
 Then /^[Ss]et Customs Certificate Number to (?:(?:a|some) random string|(.*))$/ do |value|
-  TestData.hash[:customs_certificate_no] = (((value.nil? ? TestHelper.rand_alpha_numeric(2, 8) : value))[0, 7])
+  value ||= TestHelper.rand_alpha_numeric(2, 8)
   if SdcEnv.new_framework
     SdcWebsite.customs_form.certificate.set(value) if SdcWebsite.customs_form.certificate.present?
     step "expect Customs Certificate Number is #{value}"
   else
-    stamps.common_modals.customs_form.certificate.set(TestData.hash[:customs_certificate_no]) if SdcEnv.sdc_app == :orders
-    stamps.mail.print_form.mail_customs.edit_customs_form.certificate.set(TestData.hash[:customs_certificate_no]) if SdcEnv.sdc_app == :mail
+    stamps.common_modals.customs_form.certificate.set(value) if SdcEnv.sdc_app == :orders
+    stamps.mail.print_form.mail_customs.edit_customs_form.certificate.set(value) if SdcEnv.sdc_app == :mail
   end
   step 'Save Customs Information form Total amount'
+
+  TestData.hash[:customs_certificate_no] = value
 end
 
 Then /^[Ee]xpect Customs Certificate Number is (?:correct|(.*))$/ do |expectation|
-  expectation = expectation.nil? ? TestData.hash[:customs_certificate_no] : expectation
+  expectation ||= TestData.hash[:customs_certificate_no]
   if SdcEnv.new_framework
     expect(SdcWebsite.customs_form.certificate).to be_present, 'Certificate Number is not present'
     expect(SdcWebsite.customs_form.certificate.text_value).to eql(expectation), 'Certificate Number is incorrect'
+    expect(SdcWebsite.customs_form.certificate.text_value).to eql(expectation)
   else
     sleep(0.5)
     expect(stamps.common_modals.customs_form.certificate.text).to eql(expectation) if SdcEnv.sdc_app == :orders
@@ -219,15 +239,17 @@ Then /^[Ee]xpect Customs Certificate Number is (?:correct|(.*))$/ do |expectatio
 end
 
 Then /^[Ss]et Customs Invoice Number to (?:(?:a|some) random string|(.*))$/ do |value|
-  TestData.hash[:customs_invoice_no] = ((value.nil? ? TestHelper.rand_alpha_numeric(2, 10) : value)[0, 9])
+  value ||= TestHelper.rand_alpha_numeric(2, 10)
   if SdcEnv.new_framework
     SdcWebsite.customs_form.invoice.set(value) if SdcWebsite.customs_form.invoice.present?
     step "expect Customs Invoice Number is #{value}"
   else
-    stamps.common_modals.customs_form.invoice.set(TestData.hash[:customs_invoice_no]) if SdcEnv.sdc_app == :orders
-    stamps.mail.print_form.mail_customs.edit_customs_form.invoice.set(TestData.hash[:customs_invoice_no]) if SdcEnv.sdc_app == :mail
+    stamps.common_modals.customs_form.invoice.set(value) if SdcEnv.sdc_app == :orders
+    stamps.mail.print_form.mail_customs.edit_customs_form.invoice.set(value) if SdcEnv.sdc_app == :mail
   end
   step 'Save Customs Information form Total amount'
+
+  TestData.hash[:customs_invoice_no] = value
 end
 
 Then /^[Ee]xpect Customs Invoice Number is (?:correct|(.*))$/ do |expectation|
@@ -518,8 +540,6 @@ Then /^initialize country list for item (\d+)$/ do |item_number|
 end
 
 Then /^[Ss]et Customs Associated Item (\d+) Description to (.*)$/ do |item_number, value|
-  TestData.hash[:customs_associated_items][item_number] = {} unless TestData.hash[:customs_associated_items].has_key?(item_number)
-  TestData.hash[:customs_associated_items][item_number][:description] = (value.downcase.include?('random') ? TestHelper.rand_alpha_numeric : value)
   if SdcEnv.new_framework
     SdcWebsite.customs_form.item.item_description_element(item_number).item_description.set(value)
   else
@@ -527,11 +547,13 @@ Then /^[Ss]et Customs Associated Item (\d+) Description to (.*)$/ do |item_numbe
     stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).item_description.set(TestData.hash[:customs_associated_items][item_number][:description]) if SdcEnv.sdc_app == :mail
   end
   step 'Save Customs Information form Total amount'
+
+
+  TestData.hash[:customs_associated_items][item_number] = {} unless TestData.hash[:customs_associated_items].has_key?(item_number)
+  TestData.hash[:customs_associated_items][item_number][:description] = (value.downcase.include?('random') ? TestHelper.rand_alpha_numeric : value)
 end
 
 Then /^[Ss]et Customs Associated Item (\d+) Qty to (\d+)$/ do |item_number, value|
-  TestData.hash[:customs_associated_items][item_number] = {} unless TestData.hash[:customs_associated_items].has_key?(item_number)
-  TestData.hash[:customs_associated_items][item_number][:quantity] = value
   if SdcEnv.new_framework
     SdcWebsite.customs_form.item.qty_element(item_number).qty.set(value)
   else
@@ -539,11 +561,12 @@ Then /^[Ss]et Customs Associated Item (\d+) Qty to (\d+)$/ do |item_number, valu
     stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).item_qty.set(TestData.hash[:customs_associated_items][item_number][:quantity]) if SdcEnv.sdc_app == :mail
   end
   step 'Save Customs Information form Total amount'
+
+  TestData.hash[:customs_associated_items][item_number] = {} unless TestData.hash[:customs_associated_items].has_key?(item_number)
+  TestData.hash[:customs_associated_items][item_number][:quantity] = value
 end
 
 Then /^[Ss]et Customs Associated Item (\d+) Unit Price to (.*)$/ do |item_number, value|
-  TestData.hash[:customs_associated_items][item_number] = {} unless TestData.hash[:customs_associated_items].has_key?(item_number)
-  TestData.hash[:customs_associated_items][item_number][:price] = value
   if SdcEnv.new_framework
     SdcWebsite.customs_form.item.unit_price_element(item_number).unit_price.set(value)
   else
@@ -551,11 +574,12 @@ Then /^[Ss]et Customs Associated Item (\d+) Unit Price to (.*)$/ do |item_number
     stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).unit_price.set(TestData.hash[:customs_associated_items][item_number][:price]) if SdcEnv.sdc_app == :mail
   end
   step 'Save Customs Information form Total amount'
+
+  TestData.hash[:customs_associated_items][item_number] = {} unless TestData.hash[:customs_associated_items].has_key?(item_number)
+  TestData.hash[:customs_associated_items][item_number][:price] = value
 end
 
 Then /^[Ss]et Customs Associated Item (\d+) Made In is Country to (.*)$/ do |item_number, value|
-  TestData.hash[:customs_associated_items][item_number] = {} unless TestData.hash[:customs_associated_items].has_key?(item_number)
-  TestData.hash[:customs_associated_items][item_number][:made_in] = value
   if SdcEnv.new_framework
     made_in = SdcWebsite.customs_form.item.made_in
     made_in.drop_down_element(item_number)
@@ -579,11 +603,12 @@ Then /^[Ss]et Customs Associated Item (\d+) Made In is Country to (.*)$/ do |ite
           TestData.hash[:customs_associated_items][item_number][:made_in])).to eql(TestData.hash[:customs_associated_items][item_number][:made_in])
     end
   end
+
+  TestData.hash[:customs_associated_items][item_number] = {} unless TestData.hash[:customs_associated_items].has_key?(item_number)
+  TestData.hash[:customs_associated_items][item_number][:made_in] = value
 end
 
 Then /^[Ss]et Customs Associated Item (\d+) Tarriff to (.*)$/ do |item_number, value|
-  TestData.hash[:customs_associated_items][item_number] = {} unless TestData.hash[:customs_associated_items].has_key?(item_number)
-  TestData.hash[:customs_associated_items][item_number][:tarriff] = value
   if SdcEnv.new_framework
     SdcWebsite.customs_form.item.hs_tariff_element(item_number).hs_tariff.set(value)
   else
@@ -591,10 +616,13 @@ Then /^[Ss]et Customs Associated Item (\d+) Tarriff to (.*)$/ do |item_number, v
     stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).hs_tariff.set(TestData.hash[:customs_associated_items][item_number][:tarriff]) if SdcEnv.sdc_app == :mail
   end
   step 'Save Customs Information form Total amount'
+
+  TestData.hash[:customs_associated_items][item_number] = {} unless TestData.hash[:customs_associated_items].has_key?(item_number)
+  TestData.hash[:customs_associated_items][item_number][:tarriff] = value
 end
 
 Then /^[Ee]xpect Customs Associated Item (\d+) Description is (?:correct|(.*))$/ do |item_number, expectation|
-  expectation = expectation.nil? ? TestData.hash[:customs_associated_items][item_number][:description] : expectation
+  expectation ||= TestData.hash[:customs_associated_items][item_number][:description]
   if SdcEnv.new_framework
     expect(SdcWebsite.customs_form.item.item_description_element(item_number).item_description.text_value).to eql(expectation), "Description of Item ##{item_number} is incorrect"
   else
@@ -605,7 +633,7 @@ Then /^[Ee]xpect Customs Associated Item (\d+) Description is (?:correct|(.*))$/
 end
 
 Then /^[Ee]xpect Customs Associated Item (\d+) Quantity is (?:correct|(\d+))$/ do |item_number, expectation|
-  expectation = expectation.nil? ? TestData.hash[:customs_associated_items][item_number][:quantity] : expectation
+  expectation ||= TestData.hash[:customs_associated_items][item_number][:quantity]
   if SdcEnv.new_framework
     expect(SdcWebsite.customs_form.item.qty_element(item_number).qty.text_value.to_i).to eql(expectation.to_i), "Qty of Item ##{item_number} is incorrect"
   else
@@ -616,7 +644,7 @@ Then /^[Ee]xpect Customs Associated Item (\d+) Quantity is (?:correct|(\d+))$/ d
 end
 
 Then /^[Ee]xpect Customs Associated Item (\d+) Unit Price is (?:correct|(.*))$/ do |item_number, expectation|
-  expectation = expectation.nil? ? TestData.hash[:customs_associated_items][item_number][:price] : expectation
+  expectation ||= TestData.hash[:customs_associated_items][item_number][:price]
   if SdcEnv.new_framework
     expect(SdcWebsite.customs_form.item.unit_price_element(item_number).unit_price.text_value.to_f).to eql(expectation.to_f), "Unit Price of Item ##{item_number} is incorrect"
   else
@@ -627,7 +655,7 @@ Then /^[Ee]xpect Customs Associated Item (\d+) Unit Price is (?:correct|(.*))$/ 
 end
 
 Then /^[Ee]xpect Customs Associated Item (\d+) Made In is (?:correct|(.*))$/ do |item_number, expectation|
-  expectation = expectation.nil? ? TestData.hash[:customs_associated_items][item_number][:made_in] : expectation
+  expectation ||= TestData.hash[:customs_associated_items][item_number][:made_in]
   if SdcEnv.new_framework
     expect(dcWebsite.customs_form.item.made_in.text_field_element(item_number).text_field.text_value).to eql(expectation), "Made In of Item ##{item_number} is incorrect"
   else
@@ -638,7 +666,7 @@ Then /^[Ee]xpect Customs Associated Item (\d+) Made In is (?:correct|(.*))$/ do 
 end
 
 Then /^[Ee]xpect Customs Associated Item (\d+) Tariff is (?:correct|(.*))$/ do |item_number, expectation|
-  expectation = (expectation.nil? ? TestData.hash[:customs_associated_items][item_number][:tarriff] : expectation).to_f
+  expectation ||= TestData.hash[:customs_associated_items][item_number][:tarriff]
   if SdcEnv.new_framework
     expect(dcWebsite.customs_form.item.hs_tariff_element(item_number).hs_tariff.text_value.to_f).to eql(expectation.to_f), "Made In of Item ##{item_number} is incorrect"
   else
