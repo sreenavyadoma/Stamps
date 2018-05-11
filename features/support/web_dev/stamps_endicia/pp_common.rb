@@ -65,7 +65,7 @@ module PartnerPortal
         return item["#{column}"]
       end
 
-     def chart_data(email, chart_title, month)
+     def chart_data_query(email, chart_title, month)
        "select  pp_user.PartnerUserId, pp_account.PartnerAccountId, pp_contract.ContractId,
         pp_user.EmailAddress,pp_account.AccountName, pp_contract.DisplayName as 'ContractName',
         pp_contract.DateLastUpdated as 'ContractLastUpdated', pp_chartdata.Month, pp_chartdata.Amount,
@@ -77,6 +77,11 @@ module PartnerPortal
         inner join [sdct_PartnerPortal_ChartDataType]as pp_chartdatatype on pp_chartdata.ChartDataTypeId = pp_chartdatatype.ChartDataTypeId
         where pp_user.EmailAddress = '#{email}' and pp_chartdatatype.ChartDataType = '#{chart_title}' and (DatePart(yy, pp_chartdata.Month)) = #{month}"
      end
+
+      def chart_data_window
+        SdcPage.browser.execute_script('window.ChartsData.Charts.PrefRatesQualifiedPostageAmount.datasets[0].data')
+      end
+
     end
 
   end
