@@ -58,12 +58,14 @@ Feature: PP-MVP: Dashboard Page
 
 #    # Revenue Share
     Then PP: expect dashboard page the Revenue Share Chart to exist
-#    Then PP: expect dashboard page the Revenue Share Chart to title to be Revenue Share
-#    Then PP: expect dashboard page the Revenue Share Chart Y-axis label to be USD ($)
-#    Then PP: expect dashboard page the Revenue Share Chart has X-axis to be labeled with month abbreviations
-#    Then PP: expect dashboard page the Revenue Share Chart Y-axis to start at 0
-#    Then PP: expect dashboard page the Revenue Share Chart legends to exist
-#    Then PP: expect dashboard page the Revenue Share Chart previous year legend to be last year date
-#    Then PP: expect dashboard page the Revenue Share Chart current year legends to be current year
-#    Then PP: expect dashboard page the Revenue Share Chart Current Month legends to be Current Month
-#    #Then PP: expect dashboard page the Revenue Share Chart Units of Representation to be in USD ($)
+    Then PP: expect dashboard page the Revenue Share Chart to title to be Revenue Share
+    Then PP: expect dashboard page the Revenue Share Chart Y-axis label to be USD ($)
+    Then PP: expect dashboard page the Revenue Share Chart has X-axis to be labeled with month abbreviations
+     """
+     Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec
+     """
+   Then PP: expect dashboard page the Revenue Share Chart legends to exist
+   Then PP: expect dashboard page the Revenue Share Chart previous year legend to be last year date
+   Then PP: expect dashboard page the Revenue Share Chart current year legends to be current year
+   Then PP: expect dashboard page the Revenue Share Chart Current Month legends to be Current Month
+

@@ -113,19 +113,19 @@ Then /^[Pp]P: expect [Dd]ashboard page the Preferred Rates Qualified Transaction
   last_update_on = PartnerPortal.dashboard_page.contract_last_updated_on
   last_update_date = Date.strptime(last_update_on.text_value.split(':').last.strip, '%m/%d/%Y')
   previous_year = last_update_date - 1.year
-  legends = PartnerPortal.dashboard_page.preferred_rates_qualified_transactions_packages_chart_legends.text_value.split
+  legends = PartnerPortal.dashboard_page.preferred_rates_qualified_transactions_packages_chart_legends.text_value.gsub(/\P{ASCII}/, '').strip.split
   expect(legends[0].to_i).to eql(previous_year.year)
 end
 
 Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the Preferred Rates Qualified Transactions # current year legends to be current year$/ do
   last_update_on = PartnerPortal.dashboard_page.contract_last_updated_on
   last_update_date = Date.strptime(last_update_on.text_value.split(':').last.strip, '%m/%d/%Y')
-  legends  = PartnerPortal.dashboard_page.preferred_rates_qualified_transactions_packages_chart_legends.text_value.split
+  legends  = PartnerPortal.dashboard_page.preferred_rates_qualified_transactions_packages_chart_legends.text_value.gsub(/\P{ASCII}/, '').strip.split
   expect(legends[1].to_i).to eql(last_update_date.year)
 end
 
 Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the Preferred Rates Qualified Transactions # Current Month legends to be (.*)$/ do |str|
-  legends  = PartnerPortal.dashboard_page.preferred_rates_qualified_transactions_packages_chart_legends.text_value.split
+  legends  = PartnerPortal.dashboard_page.preferred_rates_qualified_transactions_packages_chart_legends.text_value.gsub(/\P{ASCII}/, '').strip.split
   current_month = [] << legends[2] + " " + legends[3]
   expect(current_month[0].to_s).to eql(str)
 end
@@ -150,32 +150,71 @@ Then /^[Pp]P: expect [Dd]ashboard page the Active Customers Chart has X-axis to 
 end
 
 Then /^[Pp]P: expect [Dd]ashboard page the Active Customers Chart legends to exist$/ do
-  expect(PartnerPortal.dashboard_page.active_customers_customers_chart_legends).to be_present, ' Active Customers Chart legends chart LEGENDS DOES NOT exist on dashboard page'
+  expect(PartnerPortal.dashboard_page.active_customers_customers_chart_legends).to be_present, ' Active Customers chart LEGENDS DOES NOT exist on dashboard page'
 end
 
 Then /^[Pp]P: expect [Dd]ashboard page the Active Customers Chart previous year legend to be last year date$/ do
   last_update_on = PartnerPortal.dashboard_page.contract_last_updated_on
   last_update_date = Date.strptime(last_update_on.text_value.split(':').last.strip, '%m/%d/%Y')
   previous_year = last_update_date - 1.year
-  legends = PartnerPortal.dashboard_page.active_customers_customers_chart_legends.text_value.split
+  legends = PartnerPortal.dashboard_page.active_customers_customers_chart_legends.text_value.gsub(/\P{ASCII}/, '').strip.split
   expect(legends[0].to_i).to eql(previous_year.year)
 end
 
 Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the Active Customers Chart current year legends to be current year$/ do
   last_update_on = PartnerPortal.dashboard_page.contract_last_updated_on
   last_update_date = Date.strptime(last_update_on.text_value.split(':').last.strip, '%m/%d/%Y')
-  legends  = PartnerPortal.dashboard_page.active_customers_customers_chart_legends.text_value.split
+  legends  = PartnerPortal.dashboard_page.active_customers_customers_chart_legends.text_value.gsub(/\P{ASCII}/, '').strip.split
   expect(legends[1].to_i).to eql(last_update_date.year)
 end
 
 Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the Active Customers Chart Current Month legends to be (.*)$/ do |str|
-  legends  = PartnerPortal.dashboard_page.active_customers_customers_chart_legends.text_value.split
+  legends  = PartnerPortal.dashboard_page.active_customers_customers_chart_legends.text_value.gsub(/\P{ASCII}/, '').strip.split
   current_month = [] << legends[2] + " " + legends[3]
   expect(current_month[0].to_s).to eql(str)
 end
 
-Then /^[Pp]P: expect [Dd]ashboard page the Revenue Share Chart to exist$/ do
-  expect(PartnerPortal.dashboard_page.revenue_share_chart).to be_present, 'Revenue Share Chart DOES NOT exist on dashboard page'
+Then /^[Pp]P: expect [Dd]ashboard page the Revenue Share [Cc]hart to exist$/ do
+  expect(PartnerPortal.dashboard_page.revenue_share_chart).to be_present, 'Revenue Share chart DOES NOT exist on dashboard page'
+end
+
+Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the Revenue Share Chart to title to be (.*)$/ do |str|
+  expect(PartnerPortal.dashboard_page.revenue_share_chart_title.text_value.strip). to eql(str)
+end
+
+Then /^[Pp]P: expect [Dd]ashboard page the Revenue Share Chart Y-axis label to be (.*)$/ do |str|
+  expect(PartnerPortal.dashboard_page.revenue_share_chart_y_axis.text_value.strip). to eql(str)
+end
+
+Then /^[Pp]P: expect [Dd]ashboard page the Revenue Share Chart has X-axis to be labeled with month abbreviations$/ do |str|
+  actual_month = str.split(',')
+  expected_month = PartnerPortal.dashboard_page.x_axis_month_abbreviations
+  expect(expected_month[3]). to eql( actual_month)
+end
+
+Then /^[Pp]P: expect [Dd]ashboard page the Revenue Share [Cc]hart legends to exist$/ do
+  expect(PartnerPortal.dashboard_page.revenue_share_chart_legends).to be_present, ' Revenue Share chart LEGENDS DOES NOT exist on dashboard page'
+end
+
+Then /^[Pp]P: expect [Dd]ashboard page the Revenue Share Chart previous year legend to be last year date$/ do
+  last_update_on = PartnerPortal.dashboard_page.contract_last_updated_on
+  last_update_date = Date.strptime(last_update_on.text_value.split(':').last.strip, '%m/%d/%Y')
+  previous_year = last_update_date - 1.year
+  legends = PartnerPortal.dashboard_page.revenue_share_chart_legends.text_value.gsub(/\P{ASCII}/, '').strip.split
+  expect(legends[0].to_i).to eql(previous_year.year)
+end
+
+Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the Revenue Share Chart current year legends to be current year$/ do
+  last_update_on = PartnerPortal.dashboard_page.contract_last_updated_on
+  last_update_date = Date.strptime(last_update_on.text_value.split(':').last.strip, '%m/%d/%Y')
+  legends  = PartnerPortal.dashboard_page.revenue_share_chart_legends.text_value.gsub(/\P{ASCII}/, '').strip.split
+  expect(legends[1].to_i).to eql(last_update_date.year)
+end
+
+Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the Revenue Share Chart Current Month legends to be (.*)$/ do |str|
+  legends  = PartnerPortal.dashboard_page.revenue_share_chart_legends.text_value.gsub(/\P{ASCII}/, '').strip.split
+  current_month = [] << legends[2] + " " + legends[3]
+  expect(current_month[0].to_s).to eql(str)
 end
 
 Then /^[Pp]P: [Cc]lick submit in dashboard page$/ do
