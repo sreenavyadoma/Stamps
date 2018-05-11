@@ -217,6 +217,17 @@ Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the Revenue Share Chart Current Month 
   expect(current_month[0].to_s).to eql(str)
 end
 
+Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the Preferred Rates Qualified Transactions previous year chart data to be correct$/ do
+ previous_year_data = PartnerPortal.common_page.chart_data_window
+
+ step 'establish partner portal db connection'
+ TestData.hash[:partner_account_id] = PartnerPortal.common_page.user_table_query(((user.nil?) ? (SdcEnv.usr) :user), 'PartnerAccountId')
+ TestData.hash[:last_update_on] = PartnerPortal.common_page.contract_table_query(TestData.hash[:partner_account_id], 'DateLastUpdated')
+ step 'Close partner portal db connection'
+end
+
+
+
 Then /^[Pp]P: [Cc]lick submit in dashboard page$/ do
   PartnerPortal.dashboard_page.submit.send_keys(:enter)
 end
