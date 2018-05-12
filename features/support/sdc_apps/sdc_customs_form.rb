@@ -26,7 +26,6 @@ module SdcWebsite
     page_object(:certificate, tag: :text_field) { {xpath: '//*[@name="CustomsCertificateNumber"]'} }
     page_object(:invoice, tag: :text_field) { {xpath: '//*[@name="CustomsInvoiceNumber"]'} }
 
-
     def package_contents
       PackageContents.new
     end
