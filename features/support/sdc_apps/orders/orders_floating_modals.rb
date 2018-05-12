@@ -23,6 +23,7 @@ module SdcOrders
       page_object(:city, tag: :text_field) { {xpath: '//*[@name="City"]'} }
       page_object(:zip, tag: :text_field) { {xpath: '//*[@name="Zip"]'} }
       page_object(:phone, tag: :text_field) { {xpath: '//*[@name="Phone"]'} }
+      page_object(:save) { {xpath: '//*[text()="Save"]/../..'} }
       page_object(:x_btn) { {xpath: '//*[contains(@id, "editshipfromAddressWindow")]//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
 
       def state
@@ -184,14 +185,18 @@ module SdcOrders
     module_function :settings
 
     def manage_shipping_addresses
-      ManageShippingAddresses
+      ManageShippingAddresses.new
     end
     module_function :manage_shipping_addresses
 
-    def add_edit_shipping_addresses
-      AddEditShippingAddress
+    def add_edit_shipping_address
+      AddEditShippingAddress.new
     end
-    module_function :add_edit_shipping_addresses
+    module_function :add_edit_shipping_address
 
+    def delete_shipping_address
+      DeleteShippingAddress.new
+    end
+    module_function :delete_shipping_address
   end
 end
