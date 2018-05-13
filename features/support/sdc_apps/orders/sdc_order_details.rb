@@ -5,8 +5,8 @@ module SdcOrders
     page_object(:text_field) { {xpath: '(//input[starts-with(@id, "shipfromdroplist")])[1]'} }
 
       def selection(str)
-        return self.class.page_object(:selection_obj) { {xpath: '(//li[contains(@class, "x-boundlist-item")])[1]'} } if str == "default"
-        self.class.page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
+        return page_object(:selection_obj) { {xpath: '(//li[contains(@class, "x-boundlist-item")])[1]'} } if str == "default"
+        page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
       end
     end
 
@@ -15,7 +15,7 @@ module SdcOrders
     page_object(:text_field) { {xpath: '//input[contains(@id, "matltocountrydroplist")]'} }
 
     def selection(str)
-      self.class.page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
+      page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
     end
   end
 
@@ -24,7 +24,7 @@ module SdcOrders
     page_object(:text_field) { {xpath: '//div[contains(@id, "shiptoview-international")]//input[contains(@id, "combo")]'} }
 
     def selection(str)
-      self.class.page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
+      page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
     end
   end
 
@@ -34,7 +34,7 @@ module SdcOrders
     page_object(:text_field, required: true, timeout: 40) { {xpath: '(//input[contains(@id, "servicedroplist")])[1]'} }
 
     def selection(name: :selection_element, str: 'Manage Service Options...')
-      self.class.page_object(name) { {xpath: "//li[@id='#{data_for(:orders_services, {})[str]}']"} }
+      page_object(name) { {xpath: "//li[@id='#{data_for(:orders_services, {})[str]}']"} }
     end
   end
 
@@ -57,7 +57,7 @@ module SdcOrders
     page_object(:text_field) { {xpath: '(//input[contains(@id, "trackingdroplist")])[1]'} }
 
     def selection(str)
-      self.class.page_object(:selection_obj) { {xpath: "//li//td[text()='#{str}']"} }
+      page_object(:selection_obj) { {xpath: "//li//td[text()='#{str}']"} }
     end
   end
 
