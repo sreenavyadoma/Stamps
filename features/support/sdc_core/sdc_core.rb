@@ -85,7 +85,7 @@ class SdcPage < WatirDrops::PageObject
 
   class << self
 
-    def this_test(required: false)
+    def page_url(required: false)
       @require_url = required
 
       define_method("page_url") do |*args|
