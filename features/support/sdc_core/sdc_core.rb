@@ -444,7 +444,6 @@ class SdcNumber < BasicObject
     @text_field = text_field
     @increment = increment
     @decrement = decrement
-    # set_instance_variables(binding, *local_variables)
   end
 
   def respond_to_missing?(name, include_private = false)
