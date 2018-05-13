@@ -45,29 +45,29 @@ module SdcWebsite
 
   class CustomsFormItem < SdcPage
     def item_description(num)
-      instance_page_object("item_description#{num}", tag: :text_field) { {xpath: "(//*[contains(@id, 'singlecustomsitem')]//*[@name='Description'])[#{num}]"} }
+      page_object("item_description#{num}", tag: :text_field) { {xpath: "(//*[contains(@id, 'singlecustomsitem')]//*[@name='Description'])[#{num}]"} }
     end
 
     def hs_tariff(num)
-      instance_page_object("hs_tariff#{num}", tag: :text_field) { {xpath: "(//*[contains(@id, 'singlecustomsitem')]//*[@name='TariffNo'])[#{num}]"} }
+      page_object("hs_tariff#{num}", tag: :text_field) { {xpath: "(//*[contains(@id, 'singlecustomsitem')]//*[@name='TariffNo'])[#{num}]"} }
     end
 
     def delete(num)
-      instance_page_object("delete#{num}") { {xpath: "(//*[contains(@id, 'singlecustomsitem')]//a[contains(@class, 'x-btn-transparent-small')])[#{num}]"} }
+      page_object("delete#{num}") { {xpath: "(//*[contains(@id, 'singlecustomsitem')]//a[contains(@class, 'x-btn-transparent-small')])[#{num}]"} }
     end
 
     def qty(num)
-      instance_page_object("qty_tf#{num}", tag: :text_field) { {xpath: "(//*[@name='Quantity'])[#{num}]"} }
-      instance_page_object("qty_inc#{num}") { {xpath: "(//*[@name='Quantity']/../following-sibling::*/div[contains(@class, 'up')])[#{num}]"} }
-      instance_page_object("qty_dec#{num}") { {xpath: "(//*[@name='Quantity']/../following-sibling::*/div[contains(@class, 'down')])[#{num}]"} }
-      instance_number("qty#{num}", :"qty_tf#{num}", "qty_inc#{num}", "qty_dec#{num}")
+      page_object("qty_tf#{num}", tag: :text_field) { {xpath: "(//*[@name='Quantity'])[#{num}]"} }
+      page_object("qty_inc#{num}") { {xpath: "(//*[@name='Quantity']/../following-sibling::*/div[contains(@class, 'up')])[#{num}]"} }
+      page_object("qty_dec#{num}") { {xpath: "(//*[@name='Quantity']/../following-sibling::*/div[contains(@class, 'down')])[#{num}]"} }
+      number("qty#{num}", :"qty_tf#{num}", "qty_inc#{num}", "qty_dec#{num}")
     end
 
     def unit_price(num)
-      instance_page_object("unit_price_tf#{num}", tag: :text_field) { {xpath: "(//*[@name='Value'])[#{num}]"} }
-      instance_page_object("unit_price_dec#{num}") { {xpath: "(//*[@name='Value']/../following-sibling::*/div[contains(@class, 'down')])[#{num}]"} }
-      instance_page_object("unit_price_inc#{num}") { {xpath: "(//*[@name='Value']/../following-sibling::*/div[contains(@class, 'up')])[#{num}]"} }
-      instance_number("unit_price#{num}", "unit_price_tf#{num}", "unit_price_inc#{num}", "unit_price_dec#{num}")
+      page_object("unit_price_tf#{num}", tag: :text_field) { {xpath: "(//*[@name='Value'])[#{num}]"} }
+      page_object("unit_price_dec#{num}") { {xpath: "(//*[@name='Value']/../following-sibling::*/div[contains(@class, 'down')])[#{num}]"} }
+      page_object("unit_price_inc#{num}") { {xpath: "(//*[@name='Value']/../following-sibling::*/div[contains(@class, 'up')])[#{num}]"} }
+      number("unit_price#{num}", "unit_price_tf#{num}", "unit_price_inc#{num}", "unit_price_dec#{num}")
     end
 
     def made_in
@@ -77,15 +77,15 @@ module SdcWebsite
 
   class MadeIn < SdcPage
     def text_field(num)
-      instance_page_object("text_field#{num}", tag: :text_field) { {xpath: "(//*[@name='OriginCountryCode'])[#{num}]"} }
+      page_object("text_field#{num}", tag: :text_field) { {xpath: "(//*[@name='OriginCountryCode'])[#{num}]"} }
     end
 
     def drop_down(num)
-      instance_page_object("drop_down#{num}") { {xpath: "(//*[contains(@id, 'singlecustomsitem')]//*[contains(@class, 'x-form-arrow-trigger')])[#{num}]"} }
+      page_object("drop_down#{num}") { {xpath: "(//*[contains(@id, 'singlecustomsitem')]//*[contains(@class, 'x-form-arrow-trigger')])[#{num}]"} }
     end
 
     def selection(num, str)
-      instance_page_object("selection#{num}") { {xpath: "(//li[text()='#{str}'])[#{num+1}]"} }
+      page_object("selection#{num}") { {xpath: "(//li[text()='#{str}'])[#{num+1}]"} }
     end
   end
 
@@ -94,7 +94,7 @@ module SdcWebsite
     page_object(:drop_down) { {xpath: '//*[contains(@id, "packagecontentsdroplist")]'} }
 
     def selection_element(name: :selection, value: 'Merchandise')
-      instance_page_object(name) { {xpath: "//li[text()='#{value}']"} }
+      page_object(name) { {xpath: "//li[text()='#{value}']"} }
     end
   end
 
@@ -103,7 +103,7 @@ module SdcWebsite
     page_object(:drop_down) { {xpath: '//*[contains(@id, "nondeliveryoptionsdroplist")]'} }
 
     def selection_element(name: :selection, value: 'Return to sender')
-      instance_page_object(name) { {xpath: "//li[text()='#{value}']"} }
+      page_object(name) { {xpath: "//li[text()='#{value}']"} }
     end
   end
 
@@ -112,7 +112,7 @@ module SdcWebsite
     page_object(:drop_down) { {xpath: '//*[contains(@id, "internaltransactiondroplist")]'} }
 
     def selection_element(name: :selection, value: 'Not required')
-      instance_page_object(name) { {xpath: "//li[text()='#{value}']"} }
+      page_object(name) { {xpath: "//li[text()='#{value}']"} }
     end
   end
 end

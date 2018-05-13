@@ -58,7 +58,7 @@ Feature:  Mail BVT - Authentication
     Then select Print On Stamps
     Then select Print On Manage Printing Options...
 
-    Then check Shipping Label - 8 ½" x 11" Paper in Manage Print Options
+    #Then check Shipping Label - 8 ½" x 11" Paper in Manage Print Options
     # Then click save on Manage Print Options
 
 #    Then show Advanced Options

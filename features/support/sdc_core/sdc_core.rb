@@ -113,31 +113,31 @@ class SdcPage < WatirDrops::PageObject
     end
   end
 
-  def instance_page_object(name, tag: nil, required: false, timeout: 15, &block)
-    self.class.page_object(name, tag: tag, required: required, timeout: timeout, &block)
+  define_method :page_object do |*args, &block|
+    SdcPage.page_object(*args, &block)
 
-    instance_eval(name.to_s)
+    instance_eval(args.first.to_s)
   end
 
-  def instance_page_objects(name, tag: nil, index: nil, required: false, timeout: 15)
-    self.class.page_objects(name, tag: tag, index: index, required: required, timeout: timeout) do
-      yield
-    end
+  define_method :page_objects do |*args, &block|
+    SdcPage.page_objects(*args, &block)
 
-    instance_eval(name.to_s)
+    instance_eval(args.first.to_s)
   end
 
-  def instance_chooser(name, chooser, verify, property, property_name)
-    self.class.chooser(name, chooser, verify, property, property_name)
+  define_method :chooser do |*args|
+    SdcPage.chooser(*args)
 
-    instance_eval(name.to_s)
+    instance_eval(args.first.to_s)
   end
 
-  def instance_number(name, text_field, increment, decrement)
-    self.class.number(name, text_field, increment, decrement)
+  define_method :number do |*args|
+    SdcPage.number(*args)
 
-    instance_eval(name.to_s)
+    instance_eval(args.first.to_s)
   end
+
+
 end
 
 class SdcDriverDecorator < BasicObject

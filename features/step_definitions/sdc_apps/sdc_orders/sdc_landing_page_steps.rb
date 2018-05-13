@@ -62,6 +62,7 @@ Then /^sign-in to Orders$/ do
   step "set Orders landing page password to #{TestData.hash[:password]}"
 
   landing_page = SdcWebsite.landing_page
+
   signed_in_user = SdcWebsite.navigation.user_drop_down.signed_in_user
   if SdcEnv.browser
     if SdcEnv.sauce_device
