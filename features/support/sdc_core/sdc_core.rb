@@ -85,6 +85,14 @@ class SdcPage < WatirDrops::PageObject
 
   class << self
 
+    def this_test(required: false)
+      @require_url = required
+
+      define_method("page_url") do |*args|
+        yield(*args)
+      end
+    end
+
     def page_object(name, tag: nil, required: false, timeout: 15, &block)
       element(name.to_sym, required: required) { SdcFinder.element(browser, tag: tag, timeout: timeout, &block) }
     end
@@ -101,6 +109,10 @@ class SdcPage < WatirDrops::PageObject
       element(name, required: required) { SdcElement.new(instance_eval(list_name.to_s)[index]) } if index
     end
 
+    def by_locator()
+
+    end
+
     def chooser(name, chooser, verify, property, property_name)
       element(name.to_sym) { SdcChooser.new(instance_eval(chooser.to_s), instance_eval(verify.to_s), property, property_name) }
     end
@@ -110,6 +122,17 @@ class SdcPage < WatirDrops::PageObject
 
     def number(name, text_field, increment, decrement)
       element(name.to_sym) { SdcNumber.new(instance_eval(text_field.to_s), instance_eval(increment.to_s), instance_eval(decrement.to_s)) }
+    end
+
+    protected
+
+    def element(name, required: false, &block)
+      define_method(name) do |*args|
+        self.instance_exec(*args, &block)
+      end
+
+      element_list << name.to_sym
+      required_element_list << name.to_sym if required
     end
   end
 
