@@ -85,16 +85,22 @@ class SdcPage < WatirDrops::PageObject
 
   class << self
 
-    def page_url(required: false)
-      @require_url = required
-
-      define_method("page_url") do |*args|
-        yield(*args)
-      end
-    end
+    # def page_url(required: false)
+    #   @require_url = required
+    #
+    #   define_method("page_url") do |*args|
+    #     yield(*args)
+    #   end
+    # end
 
     def page_object(name, tag: nil, required: false, timeout: 15, &block)
       element(name.to_sym, required: required) { SdcFinder.element(browser, tag: tag, timeout: timeout, &block) }
+
+      define_method :page_object do |*args, &block|
+        SdcPage.page_object(*args, &block)
+
+        instance_eval(args.first.to_s)
+      end
     end
 
     alias text_field page_object
@@ -107,14 +113,22 @@ class SdcPage < WatirDrops::PageObject
       list_name = index.nil? ? name : "#{name}s".to_sym
       elements(list_name) { SdcFinder.elements(browser, tag: tag, timeout: timeout) { yield } }
       element(name, required: required) { SdcElement.new(instance_eval(list_name.to_s)[index]) } if index
-    end
 
-    def by_locator()
+      define_method :page_objects do |*args, &block|
+        SdcPage.page_objects(*args, &block)
 
+        instance_eval(args.first.to_s)
+      end
     end
 
     def chooser(name, chooser, verify, property, property_name)
       element(name.to_sym) { SdcChooser.new(instance_eval(chooser.to_s), instance_eval(verify.to_s), property, property_name) }
+
+      define_method :chooser do |*args|
+        SdcPage.chooser(*args)
+
+        instance_eval(args.first.to_s)
+      end
     end
 
     alias checkbox chooser
@@ -122,44 +136,14 @@ class SdcPage < WatirDrops::PageObject
 
     def number(name, text_field, increment, decrement)
       element(name.to_sym) { SdcNumber.new(instance_eval(text_field.to_s), instance_eval(increment.to_s), instance_eval(decrement.to_s)) }
-    end
 
-    protected
+      define_method :number do |*args|
+        SdcPage.number(*args)
 
-    def element(name, required: false, &block)
-      define_method(name) do |*args|
-        self.instance_exec(*args, &block)
+        instance_eval(args.first.to_s)
       end
-
-      element_list << name.to_sym
-      required_element_list << name.to_sym if required
     end
   end
-
-  define_method :page_object do |*args, &block|
-    SdcPage.page_object(*args, &block)
-
-    instance_eval(args.first.to_s)
-  end
-
-  define_method :page_objects do |*args, &block|
-    SdcPage.page_objects(*args, &block)
-
-    instance_eval(args.first.to_s)
-  end
-
-  define_method :chooser do |*args|
-    SdcPage.chooser(*args)
-
-    instance_eval(args.first.to_s)
-  end
-
-  define_method :number do |*args|
-    SdcPage.number(*args)
-
-    instance_eval(args.first.to_s)
-  end
-
 
 end
 

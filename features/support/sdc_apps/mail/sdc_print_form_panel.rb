@@ -28,7 +28,7 @@ module SdcMail
     page_object(:drop_down) { {xpath: '//*[starts-with(@id, "printmediadroplist-")][contains(@id, "-trigger-picker")]'} }
     page_object(:text_field) { {xpath: '//*[@name="PrintMedia"]'} }
 
-    by_locator(:selection_field, locator: :xpath) { |lov| "//li[text()='#{lov}']" }
+    #by_locator(:selection_field, locator: :xpath) { |lov| "//li[text()='#{lov}']" }
 
     def selection(name: :selection_element, lov: 'Manage Printing Options...')
       page_object(name) { {xpath: "//li[text()='#{lov}']"} }
