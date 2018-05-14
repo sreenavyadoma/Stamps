@@ -12,6 +12,7 @@ module PartnerPortal
 
     #Panel Dashboard
     page_object(:panel_dashboard) { {xpath: '//a[contains(text(), "Dashboard")]'} }
+    page_object(:panel_logout) { {xpath: '//a[contains(text(), "Logout")]'} }
 
     #xs viewport
     #hamburger button
