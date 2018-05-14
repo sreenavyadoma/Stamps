@@ -2,7 +2,7 @@
 Then /^[Ss]elect Print On (.+)$/ do |str|
   if SdcEnv.new_framework
     print_on = SdcMail.print_on
-    print_on.selection(name: :selection_element, lov: str)
+    print_on.selection(:selection_element, str)
     print_on.drop_down.wait_until_present(timeout: 3)
     print_on.text_field.wait_until_present(timeout: 3)
     print_on.drop_down.safe_click
