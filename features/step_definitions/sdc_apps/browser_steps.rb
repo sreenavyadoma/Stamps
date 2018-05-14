@@ -21,10 +21,14 @@ Then /^Refresh the browser$/ do
 end
 
 Then /^[Pp]ause for (\d+) [Ss]econd(?:|s)?$/ do |seconds|
-  begin
-    sleep(seconds.to_i)
-  rescue
-    # ignore
+  if SdcEnv.new_framework
+    #skip for now
+  else
+    begin
+      sleep(seconds.to_i)
+    rescue
+      # ignore
+    end
   end
 end
 
