@@ -21,6 +21,9 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]ervice to (.*)$/ do |str|
     order_details = SdcOrders.order_details
     service = order_details.service
     service.selection(name: :selection_element, str: str)
+    service.text_field.scroll_into_view
+    service.drop_down.scroll_into_view
+    service.drop_down.click
     service.drop_down.click unless service.selection_element.present?
     service.selection_element.click unless service.selection_element.class_disabled?
     expect('expect Order Details service is correct')
@@ -360,16 +363,17 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Email to \"(.*)
   end
 end
 
-Then /^[Bb]lur out on [Oo]rder [Dd]etails form(?:| (\d+)(?:| times))$/ do |count|
+Then /^[Bb]lur out on [Oo]rder [Dd]etails form$/ do
+  count ||= 1
   if SdcEnv.new_framework
-    (count.zero? ? 2 : count.to_i).times do
+    count.to_i.times do
       SdcOrders.order_details.service_label.click
       SdcOrders.order_details.weight_label.double_click
       SdcOrders.order_details.weight_label.click
       SdcOrders.order_details.service_label.double_click
     end
   else
-    stamps.orders.order_details.blur_out(count)
+    stamps.orders.order_details.blur_out(3)
   end
 end
 
@@ -391,19 +395,19 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nsure-[Ff]or to \$(\d+\.\d{2})$/ do |str|
     SdcOrders.order_details.insurance.amount.set(TestData.hash[:insured_value] = str.to_f)
     10.times do
       break if SdcOrders.order_details.insurance.cost.text_value.dollar_amount_str.to_f.round(2) > 0
-      step 'blur out on Order Details form 3'
+      step 'blur out on Order Details form'
     end
   else
     stamps.orders.order_details.insure_for.textbox.set(TestData.hash[:insured_value] = str.to_f)
     3.times do
-      step 'blur out on Order Details form 2 times'
+      step 'blur out on Order Details form'
       stamps.orders.modals.insurance_terms_conditions.agree if stamps.orders.modals.insurance_terms_conditions.present?
       break unless stamps.orders.modals.insurance_terms_conditions.present?
     end
 
     10.times do
       break if stamps.orders.order_details.insure_for.cost.text.dollar_amount_str.to_f.round(2) > 0
-      step 'blur out on Order Details form 3'
+      step 'blur out on Order Details form'
     end
   end
   step 'Save Order Details data'

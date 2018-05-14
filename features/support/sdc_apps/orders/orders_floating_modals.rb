@@ -52,7 +52,7 @@ module SdcOrders
       page_object(:blur_out) { {xpath: '//span[text()="Printing On:"]'} }
 
       def selection(str)
-        self.class.page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
+        page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
       end
     end
 
@@ -63,11 +63,11 @@ module SdcOrders
       page_object(:year_next) { {xpath: '//*[contains(@class,"x-monthpicker-yearnav-next")]'} }
 
       def selection_month(month)
-        self.class.page_object(:month) { {xpath: "//a[text()='#{month}']"} }
+        page_object(:month) { {xpath: "//a[text()='#{month}']"} }
       end
 
       def selection_year(year)
-        self.class.page_object(:year) { {xpath: "//*[contains(@class, 'x-monthpicker-year')]//a[text()='#{year}']"} }
+        page_object(:year) { {xpath: "//*[contains(@class, 'x-monthpicker-year')]//a[text()='#{year}']"} }
       end
     end
 
@@ -76,7 +76,7 @@ module SdcOrders
       page_object(:today) { {xpath: '//*[contains(@class, "x-datepicker-footer")]//*[contains(@id, "btnWrap")]'} }
 
       def selection_day(day)
-        self.class.page_object(:day) { {xpath: "//td[contains(@class, 'x-datepicker-active')]/*[text()='#{day}']/.."} }
+        page_object(:day) { {xpath: "//td[contains(@class, 'x-datepicker-active')]/*[text()='#{day}']/.."} }
       end
 
       def month_picker
@@ -98,7 +98,7 @@ module SdcOrders
       page_object(:drop_down) { {id: 'sdc-printpostagewindow-printerdroplist-trigger-picker'} }
 
       def selection(str)
-        self.class.page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
+        page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
       end
     end
 
@@ -134,7 +134,7 @@ module SdcOrders
       page_object(:balance_drop_down) { {xpath: '(//*[contains(@id, "generaltabview")]//div[contains(@class, "x-form-arrow-trigger")])[3]'} }
 
       def selection(str)
-        self.class.page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
+        page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
       end
     end
 

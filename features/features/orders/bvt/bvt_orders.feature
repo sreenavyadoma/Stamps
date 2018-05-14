@@ -60,7 +60,7 @@ Feature:  BVT tests for Orders
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone | Random email  |
     Then set Order Details Weight to 0 lb 1 oz
     Then set Order Details international service to PMEI Package/Flat/Thick Envelope
-    Then blur out on Order Details form 2 times
+    Then blur out on Order Details form
 
   # Check 1st two orders
     Then Pause for 1 second
@@ -185,7 +185,7 @@ Feature:  BVT tests for Orders
     Then on Order Details form, Add Item 1, Qty 1, ID Item 1 SKU, Description Item 1 Description
 
     Then Pause for 2 seconds
-    Then blur out on Order Details form 5 times
+    Then blur out on Order Details form
     Then Pause for 2 seconds
 
     Then uncheck orders grid cached order id
@@ -193,7 +193,7 @@ Feature:  BVT tests for Orders
     Then Pause for 2 seconds
     Then check orders grid cached order id
     Then Pause for 2 seconds
-    Then blur out on Order Details form 20 times
+    Then blur out on Order Details form
 
   #Verify Single Order Details form was saved in ShipStation
     Then expect Order Details Ship-From and Ship-From saved values are the same
@@ -313,7 +313,7 @@ Feature:  BVT tests for Orders
     Then close Customs Information form
 
     Then Pause for 1 second
-    Then blur out on Order Details form 3 times
+    Then blur out on Order Details form
     Then uncheck orders grid cached order id
    #Then Refresh the driver
     Then Pause for 3 seconds

@@ -16,16 +16,17 @@ module SdcEnv
 end
 
 module SdcFinder
+
   # @param [Browser] browser either Watir::Browser or Appium::Core::Driver
   # @param [String]  HTML tag
   # @param [Integer] timeout in seconds
   def element(browser, tag: nil, timeout: 20)
     if browser.is_a? Watir::Browser
       if tag
-        element = instance_eval("browser.#{tag}(#{yield})")
+        element = instance_eval("browser.#{tag}(#{yield})", __FILE__, __LINE__)
         result = Watir::Wait.until(timeout: timeout) { element }
         if result
-          element = instance_eval("browser.#{tag}(#{yield})")
+          element = instance_eval("browser.#{tag}(#{yield})", __FILE__, __LINE__)
           return SdcElement.new(element)
         end
       else
@@ -56,9 +57,9 @@ module SdcFinder
       if tag
         begin
           code = "browser.#{tag}(#{yield})"
-          elements = instance_eval(code)
+          elements = instance_eval(code, __FILE__, __LINE__)
           result = Watir::Wait.until(timeout: timeout) { elements }
-          return instance_eval(code) if result
+          return instance_eval(code, __FILE__, __LINE__) if result
         rescue Selenium::WebDriver::Error::TimeOutError
           # ignore
         end
@@ -78,16 +79,23 @@ module SdcFinder
     raise error, message
   end
   module_function :elements
+
 end
 
 class SdcPage < WatirDrops::PageObject
 
   class << self
 
-    def page_object(name, tag: nil, required: false, timeout: 30, &block)
-      element(name, required: required) { SdcFinder.element(browser, tag: tag, timeout: timeout, &block) }
+    def page_object(name, tag: nil, required: false, timeout: 15)
+      element(name.to_sym, required: required) do
+        SdcFinder.element(browser, tag: tag, timeout: timeout) { yield }
+      end
 
-      self
+      define_method :page_object do |*args, &block|
+        SdcPage.page_object(*args, &block)
+
+        instance_eval(args.first.to_s, __FILE__, __LINE__)
+      end
     end
 
     alias text_field page_object
@@ -96,29 +104,57 @@ class SdcPage < WatirDrops::PageObject
     alias selection page_object
     alias link page_object
 
-    def page_objects(name, tag: nil, index: nil, required: false, timeout: 30, &block)
+    def page_objects(name, tag: nil, index: nil, required: false, timeout: 15)
       list_name = index.nil? ? name : "#{name}s".to_sym
-      elements(list_name) { SdcFinder.elements(browser, tag: tag, timeout: timeout, &block) }
-      element(name, required: required) { SdcElement.new(instance_eval(list_name.to_s)[index]) } if index
 
-      self
+      elements(list_name) do
+        SdcFinder.elements(browser, tag: tag, timeout: timeout) { yield }
+      end
+
+      if index
+        element(name, required: required) do
+          SdcElement.new(instance_eval(list_name.to_s, __FILE__, __LINE__)[index])
+        end
+      end
+
+      define_method :page_objects do |*args, &block|
+        SdcPage.page_objects(*args, &block)
+
+        instance_eval(args.first.to_s, __FILE__, __LINE__)
+      end
     end
 
     def chooser(name, chooser, verify, property, property_name)
-      element(name) { SdcChooser.new(instance_eval(chooser.to_s), instance_eval(verify.to_s), property, property_name) }
-
-      self
+      element(name.to_sym) do
+        SdcChooser.new(instance_eval(chooser.to_s, __FILE__, __LINE__),
+                       instance_eval(verify.to_s, __FILE__, __LINE__),
+                       property, property_name)
+      end
     end
-
     alias checkbox chooser
     alias radio chooser
 
-    def number(name, text_field, increment, decrement)
-      element(name) { SdcNumber.new(instance_eval(text_field.to_s), instance_eval(increment.to_s), instance_eval(decrement.to_s)) }
-
-      self
+    def sdc_number(name, text_field, increment, decrement)
+      element(name.to_sym) do
+        SdcNumber.new(instance_eval(text_field.to_s, __FILE__, __LINE__),
+                      instance_eval(increment.to_s, __FILE__, __LINE__),
+                      instance_eval(decrement.to_s, __FILE__, __LINE__))
+      end
     end
   end
+
+  define_method :sdc_number do |*args|
+    self.class.sdc_number(*args)
+
+    instance_eval(args.first.to_s, __FILE__, __LINE__)
+  end
+
+  define_method :chooser do |*args|
+    SdcPage.chooser(*args)
+
+    instance_eval(args.first.to_s, __FILE__, __LINE__)
+  end
+
 end
 
 class SdcDriverDecorator < BasicObject
@@ -425,7 +461,6 @@ class SdcNumber < BasicObject
     @text_field = text_field
     @increment = increment
     @decrement = decrement
-    # set_instance_variables(binding, *local_variables)
   end
 
   def respond_to_missing?(name, include_private = false)

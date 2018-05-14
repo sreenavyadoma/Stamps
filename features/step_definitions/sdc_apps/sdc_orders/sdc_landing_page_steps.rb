@@ -62,6 +62,7 @@ Then /^sign-in to Orders$/ do
   step "set Orders landing page password to #{TestData.hash[:password]}"
 
   landing_page = SdcWebsite.landing_page
+
   signed_in_user = SdcWebsite.navigation.user_drop_down.signed_in_user
   if SdcEnv.browser
     if SdcEnv.sauce_device
@@ -100,9 +101,8 @@ end
 Then /^click Orders landing page sign-in button$/ do
   SdcWebsite.landing_page.sign_in.wait_until_present(timeout: 3)
   SdcWebsite.landing_page.sign_in.click
-  loading_orders = SdcWebsite.orders.loading_orders
-  loading_orders.safe_wait_until_present(timeout: 3)
-  loading_orders.wait_while_present(timeout: 10)
+  SdcWebsite.orders.loading_orders.safe_wait_until_present(timeout: 5)
+  SdcWebsite.orders.loading_orders.wait_while_present(timeout: 40)
 end
 
 Then /^[Ss]ign-out of SDC [Ww]ebsite$/ do

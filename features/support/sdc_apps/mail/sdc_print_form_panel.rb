@@ -19,18 +19,15 @@ module SdcMail
     page_object(:chooser) { {xpath: ''} }
     page_object(:verify) { {xpath: ''} }
     chooser(:result_checkbox, :chooser, :verify,'class', 'selected' )
-
-    page_object(:xxxx) { {xpath: ''} }
   end
 
   class SdcPrintOn < SdcPage
 
-    page_object(:xxxxxxx) { {xpath: ''} }
     page_object(:drop_down) { {xpath: '//*[starts-with(@id, "printmediadroplist-")][contains(@id, "-trigger-picker")]'} }
     page_object(:text_field) { {xpath: '//*[@name="PrintMedia"]'} }
 
-    def selection(name: :selection_element, lov: 'Manage Printing Options...')
-      self.class.page_object(name) { {xpath: "//li[text()='#{lov}']"} }
+    def selection(name, lov)
+      page_object(name) { {xpath: "//li[text()='#{lov}']"} }
     end
 
   end
