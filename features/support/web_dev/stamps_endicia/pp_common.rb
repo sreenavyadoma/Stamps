@@ -113,5 +113,12 @@ module PartnerPortal
       end
     end
 
+    def user_session_timeout
+      SdcPage.browser.execute_script(
+          'var d = new Date();
+          d.setHours(d.getHours() - 3);
+          window.localStorage.setItem("_ate", window.btoa(d.toString()));')
+    end
+
   end
 end
