@@ -8,7 +8,7 @@ Then /^[Aa]dd [Oo]rder (\d+)$/ do |count|
     #todo stamps.orders.orders_grid.grid_column(:checkbox).uncheck(1)
     #step 'Wait until order toolbar present 40, 3'
     SdcOrders.toolbar.add.wait_until_present(timeout: 10)
-    SdcOrders.grid.body.wait_until_present(timeout: 10)
+    SdcOrders.grid.body.wait_until_present(timeout: 20)
     SdcOrders.toolbar.add.click
     SdcOrders.order_details.title.wait_until_present(timeout: 30)
     TestData.hash[:order_id][count.to_i] = SdcOrders.order_details.order_id.text_value.parse_digits

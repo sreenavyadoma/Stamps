@@ -101,8 +101,8 @@ end
 Then /^click Orders landing page sign-in button$/ do
   SdcWebsite.landing_page.sign_in.wait_until_present(timeout: 3)
   SdcWebsite.landing_page.sign_in.click
-  SdcWebsite.orders.loading_orders.safe_wait_until_present(timeout: 3)
-  SdcWebsite.orders.loading_orders.wait_while_present(timeout: 45)
+  SdcWebsite.orders.loading_orders.safe_wait_until_present(timeout: 5)
+  SdcWebsite.orders.loading_orders.wait_while_present(timeout: 40)
 end
 
 Then /^[Ss]ign-out of SDC [Ww]ebsite$/ do
