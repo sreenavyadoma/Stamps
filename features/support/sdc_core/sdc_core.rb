@@ -106,9 +106,11 @@ class SdcPage < WatirDrops::PageObject
 
     def page_objects(name, tag: nil, index: nil, required: false, timeout: 15)
       list_name = index.nil? ? name : "#{name}s".to_sym
+
       elements(list_name) do
         SdcFinder.elements(browser, tag: tag, timeout: timeout) { yield }
       end
+
       if index
         element(name, required: required) do
           SdcElement.new(instance_eval(list_name.to_s, __FILE__, __LINE__)[index])
