@@ -40,8 +40,7 @@ end
 
 Then /^[Oo]n [Mm]anage [Ss]hipping [Aa]ddress modal select row (\d)$/ do |row_num|
   if SdcEnv.new_framework
-    SdcOrders.modals.manage_shipping_addresses.address_element(row_num)
-    SdcOrders.modals.manage_shipping_addresses.address.click
+    SdcOrders.modals.manage_shipping_addresses.address_element(row_num).click
   else
     stamps.orders.modals.manage_shipping_addresses.select_row(row_num)
   end

@@ -9,7 +9,7 @@ module SdcOrders
       page_objects(:addresses) { {xpath: '//*[contains(@id, "manageShipFromWindow")]//table[contains(@id, "tableview")]'} }
 
       def address_element(num)
-        self.class.page_object(:address) { {xpath: "(//*[contains(@id, 'manageShipFromWindow')]//table[contains(@id, 'tableview')])[#{num}]"} }
+        page_object(:address) { {xpath: "(//*[contains(@id, 'manageShipFromWindow')]//table[contains(@id, 'tableview')])[#{num}]"} }
       end
     end
 
@@ -42,7 +42,7 @@ module SdcOrders
       page_object(:text_field, tag: :text_field) { {xpath: '//input[contains(@id, "statecombobox")]'} }
 
       def selection_element(str)
-        self.class.page_object(:selection) { {xpath: "//li[text()='#{str}']"} }
+        page_object(:selection) { {xpath: "//li[text()='#{str}']"} }
       end
     end
 
