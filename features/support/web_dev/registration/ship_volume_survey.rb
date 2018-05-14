@@ -29,7 +29,7 @@ module Stamps
       end
 
       def drop_down
-        cache[:field] = StampsField.new(driver.span(css: "form[name=shipSurveyForm]>[class=shippingdropdown]")) if cache[:field].nil? || !cache[:field].present?
+        cache[:field] = StampsField.new(driver.span(css: "form[name=shipSurveyForm]>[class=shippingdrop_down]")) if cache[:field].nil? || !cache[:field].present?
       end
 
       def select(str)

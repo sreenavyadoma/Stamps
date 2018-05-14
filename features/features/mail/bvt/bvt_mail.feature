@@ -17,35 +17,6 @@ Feature: BVT for Mail page
     Then expect Print form Domestic Address field displays Address Cleansing, BVT, 1350 Market Street, San Francisco, CA 94102-5401
     Then Sign out
 
-    # ------------------------------------------------------------ Stamps Advanced Options
-  @mail_bvt_advanced_options
-  @mail_advanced_options_stamps
-  Scenario: Advanced Options for Stamps
-    Then select Print On Stamps
-    Then show Advanced Options
-    Then expect Advanced Options Calculate Postage Amount radio button is present
-    Then select Advanced Options Calculate Postage Amount
-    Then expect Advanced Options Calculate Postage Amount is selected
-    Then expect Advanced Options Specify Postage Amount radio button is present
-    Then select Advanced Options Specify Postage Amount
-    Then expect Advanced Options Specify Postage Amount is selected
-    Then set Print form Serial Number to random C series
-    Then select Advanced Options Calculate Postage Amount
-    Then set Print form Mail-From to default
-    Then set Print form Mail-To Country to United States
-    Then select Print form service FCM Letter
-    Then set Print form Quantity to 1
-    Then set Advanced Options Cost Code to None
-
-    Then expect Advanced Options Extra Services Button is visible
-
-    Then expect Advanced Options Reference Number field is present
-    Then set Advanced Options Reference Number to random string
-    Then expect Advanced Options Reference Number is correct
-
-    Then expect Advanced Options Cost Code Field is present
-    Then set Advanced Options Cost Code to None
-    Then expect Advanced Options Cost Code is None
 
     # ------------------------------------------------------------ Rolls Advanced Options
   @mail_bvt_advanced_options

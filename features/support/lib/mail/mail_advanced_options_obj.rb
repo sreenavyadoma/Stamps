@@ -2,17 +2,17 @@ module Stamps
   module Mail
     module AdvancedOptions
       class CostCodeComboBox < WebApps::Base
-        attr_accessor :param, :textbox, :dropdown
+        attr_accessor :param, :textbox, :drop_down
 
         def initialize(param)
           super
           @index = index
           @textbox = driver.text_field(css: "input[id^=costcodesdroplist-][id$=-inputEl]")
-          @dropdown = driver.div(css: "div[id^=costcodesdroplist-][id$=costcodesdroplist-1226-trigger-picker]")
+          @drop_down = driver.div(css: "div[id^=costcodesdroplist-][id$=costcodesdroplist-1226-trigger-picker]")
         end
 
         def select(str)
-          dropdown.click
+          drop_down.click
           10.times do
             selection = StampsField.new(
               case selection_type
@@ -25,7 +25,7 @@ module Stamps
               end
             )
             break if textbox.text.include?(str)
-            dropdown.click unless selection.present?
+            drop_down.click unless selection.present?
             selection.click
             log.info "Selected: #{textbox.text} - #{((textbox.text).include? str) ? "done" : "not selected"}"
           end

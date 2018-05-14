@@ -24,7 +24,7 @@ module Stamps
         down = ('a'..'z').to_a
         up = ('A'..'Z').to_a
         digits = ('0'..'9').to_a
-        special = %w('-', '_', '.', '-', '_', '.', '-', '_', '.')
+        special = %w(- _ .)
         (env.nil? ? 'xx' : env.to_s) + (digits + down + up + special).shuffle[1..1].join +
             [rand_samp_str(down), rand_samp_str(up), rand_samp_str(
                 digits)].concat((down + up + digits).sample(Random.rand(0..5))).shuffle.join
@@ -311,7 +311,7 @@ module Stamps
         (Date.today + day.to_i).strftime '%b %-d'
       end
 
-      # return "hh:mm a.m." format for settings dropdown
+      # return "hh:mm a.m." format for settings drop_down
       def now_plus_hh(hours)
         hours = Time.now.hour + hours
         return "12:00 a.m." if hours.zero?

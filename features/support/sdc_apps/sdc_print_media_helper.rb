@@ -1,0 +1,2 @@
+module SdcMail
+end
