@@ -92,7 +92,7 @@ class SdcPage < WatirDrops::PageObject
       end
 
       define_method :page_object do |*args, &block|
-        SdcPage.page_object(*args, &block)
+        self.class.page_object(*args, &block)
 
         instance_eval(args.first.to_s, __FILE__, __LINE__)
       end
@@ -118,7 +118,7 @@ class SdcPage < WatirDrops::PageObject
       end
 
       define_method :page_objects do |*args, &block|
-        SdcPage.page_objects(*args, &block)
+        self.class.page_objects(*args, &block)
 
         instance_eval(args.first.to_s, __FILE__, __LINE__)
       end
@@ -150,7 +150,7 @@ class SdcPage < WatirDrops::PageObject
   end
 
   define_method :chooser do |*args|
-    SdcPage.chooser(*args)
+    self.class.chooser(*args)
 
     instance_eval(args.first.to_s, __FILE__, __LINE__)
   end
