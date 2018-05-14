@@ -60,14 +60,14 @@ module SdcWebsite
       page_object("qty_tf#{num}", tag: :text_field) { { xpath: "(//*[@name='Quantity'])[#{num}]" } }
       page_object("qty_inc#{num}") {{xpath: "(//*[@name='Quantity']/../following-sibling::*/div[contains(@class, 'up')])[#{num}]"}}
       page_object("qty_dec#{num}") { { xpath: "(//*[@name='Quantity']/../following-sibling::*/div[contains(@class, 'down')])[#{num}]" } }
-      number("qty#{num}", :"qty_tf#{num}", "qty_inc#{num}", "qty_dec#{num}")
+      sdc_number("qty#{num}", "qty_tf#{num}", "qty_inc#{num}", "qty_dec#{num}")
     end
 
     def unit_price(num)
       page_object("unit_price_tf#{num}", tag: :text_field) { { xpath: "(//*[@name='Value'])[#{num}]" } }
       page_object("unit_price_dec#{num}") { { xpath: "(//*[@name='Value']/../following-sibling::*/div[contains(@class, 'down')])[#{num}]" } }
       page_object("unit_price_inc#{num}") { { xpath: "(//*[@name='Value']/../following-sibling::*/div[contains(@class, 'up')])[#{num}]" } }
-      number("unit_price#{num}", "unit_price_tf#{num}", "unit_price_inc#{num}", "unit_price_dec#{num}")
+      sdc_number("unit_price#{num}", "unit_price_tf#{num}", "unit_price_inc#{num}", "unit_price_dec#{num}")
     end
 
     def made_in

@@ -130,30 +130,29 @@ class SdcPage < WatirDrops::PageObject
                        instance_eval(verify.to_s, __FILE__, __LINE__),
                        property, property_name)
       end
-
-      define_method :chooser do |*args|
-        SdcPage.chooser(*args)
-
-        instance_eval(args.first.to_s, __FILE__, __LINE__)
-      end
     end
-
     alias checkbox chooser
     alias radio chooser
 
-    def number(name, text_field, increment, decrement)
+    def sdc_number(name, text_field, increment, decrement)
       element(name.to_sym) do
         SdcNumber.new(instance_eval(text_field.to_s, __FILE__, __LINE__),
                       instance_eval(increment.to_s, __FILE__, __LINE__),
                       instance_eval(decrement.to_s, __FILE__, __LINE__))
       end
-
-      define_method :number do |*args|
-        SdcPage.number(*args)
-
-        instance_eval(args.first.to_s, __FILE__, __LINE__)
-      end
     end
+  end
+
+  define_method :sdc_number do |*args|
+    self.class.sdc_number(*args)
+
+    instance_eval(args.first.to_s, __FILE__, __LINE__)
+  end
+
+  define_method :chooser do |*args|
+    SdcPage.chooser(*args)
+
+    instance_eval(args.first.to_s, __FILE__, __LINE__)
   end
 
 end
