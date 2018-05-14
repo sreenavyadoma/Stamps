@@ -72,7 +72,7 @@ Feature: PP-MVP: Dashboard Page Single Contract
 
   #Verify Last Updated On is not present
    Then PP: Click on Logout on left panel
-   Then PP: set login page email to qawebdevelopment@stamps.com
+   Then PP: set login page email to webdevauto3@stamps.com
    Then PP: set login page password to password1
    Then PP: User clicks Log In
    Then PP: expect dashboard page the Last updated on: field to be not present
