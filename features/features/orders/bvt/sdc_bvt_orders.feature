@@ -153,6 +153,7 @@ Feature:  BVT tests for Orders
       |90245          | Euan  | Betfair UK | 101 Mission Street | Suite 700       | San Francisco | California  | 94105  | United States | (415) 123-5555  |
     Then on Manage Shipping Address modal, delete all addresses
     Then set Order Details Ship-From to San Francisco, CA
+#    Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details service to PM Package
     Then Sign out

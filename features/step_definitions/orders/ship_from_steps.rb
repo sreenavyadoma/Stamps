@@ -107,6 +107,7 @@ end
 
 Then /^[Ee]xpect Delete [Ss]hipping [Aa]ddress modal is not present$/ do
   if SdcEnv.new_framework
+    SdcOrders.modals.delete_shipping_address.title.wait_while_present(timeout: 3)
     expect(SdcOrders.modals.delete_shipping_address.title).not_to be_present, 'Delete Shipping Address modal is present!'
   else
     expect(stamps.orders.modals.delete_shipping_address.present?).to be(false), 'Delete Shipping Address modal is present!'
@@ -188,7 +189,7 @@ Then /^[Oo]n Manage Shipping Address modal, add address$/ do |ship_from|
     modal.state.selection.click unless modal.state.selection.class_disabled?
     expect(modal.state.text_field.text_value).to include(TestData.hash[:state])
     SdcOrders.modals.add_edit_shipping_address.save.click
-    # SdcOrders.modals.manage_shipping_addresses.title.wait_while_present(timeout: 2)
+    SdcOrders.modals.manage_shipping_addresses.title.safe_wait_while_present(timeout: 2)
   else
     stamps.orders.modals.add_shipping_address.ship_from_address(TestData.hash[:ship_from_address])
   end
