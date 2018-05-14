@@ -64,14 +64,14 @@ Then /^set Mail password(?: to (.+)|)$/ do |pw|
   modal.password.set(pw)
 end
 
-Then /^set [Rr]emember [Uu]sername to [Cc]hecked$/ do
+Then /^[Cc]heck [Rr]emember [Uu]sername$/ do
   modal = SdcWebsite.navigation.mail_sign_in_modal
   modal.sign_in_link.wait_until_present(timeout: 15)
   modal.sign_in_link.hover unless modal.remember_username.present?
   modal.remember_username.set
 end
 
-Then /^set [Rr]emember [Uu]sername to [Uu]nchecked$/ do
+Then /^[Uu]ncheck [Rr]emember [Uu]sername$/ do
   modal = SdcWebsite.navigation.mail_sign_in_modal
   modal.sign_in_link.wait_until_present(timeout: 15)
   modal.sign_in_link.hover
