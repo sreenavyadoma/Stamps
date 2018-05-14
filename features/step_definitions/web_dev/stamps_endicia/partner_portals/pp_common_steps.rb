@@ -88,6 +88,12 @@ Then /^[Pp]P: [Ee]xpect [Dd]ashboard on left panel exists$/ do
   expect(PartnerPortal.common_page.panel_dashboard).to be_present, 'Dashboard on panel DOES NOT exist'
 end
 
+Then /^[Pp]P: [Cc]lick on Logout on left panel$/ do
+  PartnerPortal.common_page.panel_logout.wait_until_present(timeout: 10)
+  PartnerPortal.common_page.panel_logout.click
+end
+
+
 Then /^[Pp]P: [Ee]xpect left panel to expand for browser$/ do
   PartnerPortal.common_page.panel_expanded_lg.wait_until_present(timeout: 10)
   expect(PartnerPortal.common_page.panel_expanded_lg).to be_present, 'Expanded Panel DOES NOT exist browser mode'

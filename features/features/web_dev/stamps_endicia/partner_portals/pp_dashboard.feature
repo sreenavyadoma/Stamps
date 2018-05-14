@@ -56,7 +56,7 @@ Feature: PP-MVP: Dashboard Page Single Contract
    Then PP: expect dashboard page the Active Customers Chart current year legends to be current year
    Then PP: expect dashboard page the Active Customers Chart Current Month legends to be Current Month
 
-#    # Revenue Share
+   # Revenue Share
     Then PP: expect dashboard page the Revenue Share Chart to exist
     Then PP: expect dashboard page the Revenue Share Chart to title to be Revenue Share
     Then PP: expect dashboard page the Revenue Share Chart Y-axis label to be USD ($)
@@ -69,3 +69,9 @@ Feature: PP-MVP: Dashboard Page Single Contract
    Then PP: expect dashboard page the Revenue Share Chart current year legends to be current year
    Then PP: expect dashboard page the Revenue Share Chart Current Month legends to be Current Month
 
+  #Verify Last Updated On is not present
+   Then PP: Click on Logout on left panel
+   Then PP: set login page email to qawebdevelopment@stamps.com
+   Then PP: set login page password to password1
+   Then PP: User clicks Log In
+   Then pp: expect dashboard page the Last updated on: field to be not present
