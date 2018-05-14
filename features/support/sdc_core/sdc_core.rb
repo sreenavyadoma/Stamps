@@ -86,9 +86,9 @@ class SdcPage < WatirDrops::PageObject
 
   class << self
 
-    def page_object(name, tag: nil, required: false, timeout: 15, &block)
+    def page_object(name, tag: nil, required: false, timeout: 15)
       element(name.to_sym, required: required) do
-        SdcFinder.element(browser, tag: tag, timeout: timeout, &block)
+        SdcFinder.element(browser, tag: tag, timeout: timeout) { yield }
       end
 
       define_method :page_object do |*args, &block|
