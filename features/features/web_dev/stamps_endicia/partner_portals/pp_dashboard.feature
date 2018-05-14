@@ -72,10 +72,18 @@ Feature: PP-MVP: Dashboard Page Single Contract
 
 @pp_dashboard_single_contract_chart_data_validation
 Scenario: PP: Dashboard Page Single Contract UI Validation
-  # Preferred Rates Qualified Transactions $
-  Then PP: expect dashboard page the Preferred Rates Qualified Postage Amount chart previous year chart data to be correct
-  Then PP: expect dashboard page the Preferred Rates Qualified Postage Amount chart current year chart data to be correct
+  # Preferred Rates Qualified Transactions USD($)
+  Then PP: expect dashboard page the Preferred Rates Qualified Postage Amount USD chart previous year chart data to be correct
+  Then PP: expect dashboard page the Preferred Rates Qualified Postage Amount USD chart current year chart data to be correct
 
   # Preferred Rates Qualified Transactions #of packages
-  Then PP: expect dashboard page the Preferred Rates Qualified Postage Count chart previous year chart data to be correct
-  Then PP: expect dashboard page the Preferred Rates Qualified Postage Count chart previous year chart data to be correct
+  Then PP: expect dashboard page the Preferred Rates Qualified Postage Count # chart previous year chart data to be correct
+  Then PP: expect dashboard page the Preferred Rates Qualified Postage Count # chart current year chart data to be correct
+
+  # Active Customer #of customers
+  Then PP: expect dashboard page the Active Customers # chart previous year chart data to be correct
+  Then PP: expect dashboard page the Active Customers # chart current year chart data to be correct
+
+  # Revenue Share USD($)
+  Then PP: expect dashboard page the Revenue Share USD chart previous year chart data to be correct
+  Then PP: expect dashboard page the Revenue Share USD chart current year chart data to be correct

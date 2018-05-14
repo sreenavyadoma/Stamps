@@ -217,12 +217,52 @@ Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the Revenue Share Chart Current Month 
   expect(current_month[0].to_s).to eql(str)
 end
 
-Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the (.*) chart previous year chart data to be correct$/ do |chart|
- previous_year_data = PartnerPortal.common_page.chart_data_window
+Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the (.*) USD chart previous year chart data to be correct$/ do |chart|
+ legends = PartnerPortal.dashboard_page.revenue_share_chart_legends.text_value.gsub(/\P{ASCII}/, '').strip.split
+ previous_year_data = PartnerPortal.common_page.chart_data_window(chart, 'Previous')
+ previous_year_data_actual = previous_year_data.reject { |item| item.blank? }
 
  step 'establish partner portal db connection'
-puts  previous_year_data_expected = PartnerPortal.common_page.chart_data_query(SdcEnv.usr, chart, '2017', 'Amount' )
+ previous_year_data_expected =  PartnerPortal.common_page.chart_data_query(SdcEnv.usr, chart, legends[0], 'Amount' )
  step 'Close partner portal db connection'
+
+ expect(previous_year_data_expected).to match_array(previous_year_data_actual)
+end
+
+Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the (.*) USD chart current year chart data to be correct$/ do |chart|
+  legends = PartnerPortal.dashboard_page.revenue_share_chart_legends.text_value.gsub(/\P{ASCII}/, '').strip.split
+  previous_year_data = PartnerPortal.common_page.chart_data_window(chart, 'Current')
+  previous_year_data_actual = previous_year_data.reject { |item| item.blank? }
+
+  step 'establish partner portal db connection'
+  previous_year_data_expected =  PartnerPortal.common_page.chart_data_query(SdcEnv.usr, chart, legends[1], 'Amount' )
+  step 'Close partner portal db connection'
+
+  expect(previous_year_data_expected).to match_array(previous_year_data_actual)
+end
+
+Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the (.*) # chart previous year chart data to be correct$/ do |chart|
+  legends = PartnerPortal.dashboard_page.revenue_share_chart_legends.text_value.gsub(/\P{ASCII}/, '').strip.split
+  previous_year_data = PartnerPortal.common_page.chart_data_window(chart, 'Previous')
+  previous_year_data_actual = previous_year_data.reject { |item| item.blank? }
+
+  step 'establish partner portal db connection'
+  previous_year_data_expected =  PartnerPortal.common_page.chart_data_query(SdcEnv.usr, chart, legends[0], 'Count' )
+  step 'Close partner portal db connection'
+
+  expect(previous_year_data_expected).to match_array(previous_year_data_actual)
+end
+
+Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the (.*) # chart current year chart data to be correct$/ do |chart|
+  legends = PartnerPortal.dashboard_page.revenue_share_chart_legends.text_value.gsub(/\P{ASCII}/, '').strip.split
+  previous_year_data = PartnerPortal.common_page.chart_data_window(chart, 'Current')
+  previous_year_data_actual = previous_year_data.reject { |item| item.blank? }
+
+  step 'establish partner portal db connection'
+  previous_year_data_expected =  PartnerPortal.common_page.chart_data_query(SdcEnv.usr, chart, legends[1], 'Count' )
+  step 'Close partner portal db connection'
+
+  expect(previous_year_data_expected).to match_array(previous_year_data_actual)
 end
 
 

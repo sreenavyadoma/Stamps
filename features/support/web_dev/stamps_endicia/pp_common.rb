@@ -78,15 +78,38 @@ module PartnerPortal
         inner join [dbo].[sdct_PartnerPortal_ChartData] as pp_chartdata on pp_contract.ContractId = pp_chartdata.ContractId
         inner join [sdct_PartnerPortal_ChartDataType]as pp_chartdatatype on pp_chartdata.ChartDataTypeId = pp_chartdatatype.ChartDataTypeId
         where pp_user.EmailAddress = '#{email}' and pp_chartdatatype.ChartDataType = '#{chart_title}' and (DatePart(yy, pp_chartdata.Month)) = #{month}")
-
+      data_arr = []
       data.each do |item|
-        return item["#{column}"]
+        data_arr << item["#{column}"].to_f
       end
-
+      return data_arr
     end
 
-    def chart_data_window
-      SdcPage.browser.execute_script('return window.ChartsData.Charts.PrefRatesQualifiedPostageAmount.datasets[0].data')
+    def chart_data_window(chart, year)
+      case year
+        when "Previous"
+          case chart
+            when "Preferred Rates Qualified Postage Amount"
+              return SdcPage.browser.execute_script('return window.ChartsData.Charts.PrefRatesQualifiedPostageAmount.datasets[0].data')
+            when "Preferred Rates Qualified Postage Count"
+              return SdcPage.browser.execute_script('return window.ChartsData.Charts.PrefRatesQualifiedPostageCount.datasets[0].data')
+            when "Active Customers"
+              return SdcPage.browser.execute_script('return window.ChartsData.Charts.ActiveCustomers.datasets[0].data')
+            when "Revenue Share"
+              return SdcPage.browser.execute_script('return window.ChartsData.Charts.RevenueShare.datasets[0].data')
+          end
+        when "Current"
+          case chart
+            when "Preferred Rates Qualified Postage Amount"
+              return SdcPage.browser.execute_script('return window.ChartsData.Charts.PrefRatesQualifiedPostageAmount.datasets[1].data')
+            when "Preferred Rates Qualified Postage Count"
+              return SdcPage.browser.execute_script('return window.ChartsData.Charts.PrefRatesQualifiedPostageCount.datasets[1].data')
+            when "Active Customers"
+              return SdcPage.browser.execute_script('return window.ChartsData.Charts.ActiveCustomers.datasets[1].data')
+            when "Revenue Share"
+              return SdcPage.browser.execute_script('return window.ChartsData.Charts.RevenueShare.datasets[1].data')
+          end
+      end
     end
 
   end
