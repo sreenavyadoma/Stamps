@@ -16,6 +16,7 @@ module SdcEnv
 end
 
 module SdcFinder
+
   # @param [Browser] browser either Watir::Browser or Appium::Core::Driver
   # @param [String]  HTML tag
   # @param [Integer] timeout in seconds
@@ -85,13 +86,11 @@ class SdcPage < WatirDrops::PageObject
 
   class << self
 
-    # def page_url(required: false)
-    #   @require_url = required
-    #
-    #   define_method("page_url") do |*args|
-    #     yield(*args)
-    #   end
-    # end
+    def locator(name)
+      define_method(name) do |*args|
+        yield(*args)
+      end
+    end
 
     def page_object(name, tag: nil, required: false, timeout: 15, &block)
       element(name.to_sym, required: required) { SdcFinder.element(browser, tag: tag, timeout: timeout, &block) }
