@@ -1,9 +1,10 @@
-@pp_dashboard_single_contract_ui_validaiton
+
 Feature: PP-MVP: Dashboard Page Single Contract
 
   Background:
     Given PP: A valid user is signed into Partner Portal
 
+  @pp_dashboard_single_contract_ui_validaiton
   Scenario: PP: Dashboard Page Single Contract UI Validation
 
     # Verify  all content and fields are present
@@ -74,4 +75,4 @@ Feature: PP-MVP: Dashboard Page Single Contract
    Then PP: set login page email to qawebdevelopment@stamps.com
    Then PP: set login page password to password1
    Then PP: User clicks Log In
-   Then pp: expect dashboard page the Last updated on: field to be not present
+   Then PP: expect dashboard page the Last updated on: field to be not present

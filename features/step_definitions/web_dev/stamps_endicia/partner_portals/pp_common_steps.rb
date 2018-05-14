@@ -90,7 +90,7 @@ end
 
 Then /^[Pp]P: [Cc]lick on Logout on left panel$/ do
   PartnerPortal.common_page.panel_logout.wait_until_present(timeout: 10)
-  PartnerPortal.common_page.panel_logout.click
+  PartnerPortal.common_page.panel_logout.send_keys(:enter)
 end
 
 
