@@ -233,7 +233,7 @@ generate_username: --tags @generate_username --guess  HEALTHCHECK=true WEB_APP=o
 healthcheck: --tags @healthcheck --guess HEALTHCHECK=true NEW_FRAMEWORK=true
 
 authentication: --tags @authentication --guess  HEALTHCHECK=true WEB_APP=orders
-mail_authentication: --tags @mail_authentication --guess  HEALTHCHECK=true WEB_APP=orders
+mail_authentication: --tags @mail_authentication --guess HEALTHCHECK=true NEW_FRAMEWORK=true
 
 customs_form_auto_calculate_weight: --tags @customs_form_auto_calculate_weight --guess  HEALTHCHECK=true WEB_APP=orders
 whats_new: --tags @whats_new --guess  HEALTHCHECK=true WEB_APP=orders
