@@ -230,7 +230,7 @@ search_orders_on_hold: --tags @search_orders_on_hold --guess  HEALTHCHECK=true W
 output_username: --tags @output_username --guess  HEALTHCHECK=true WEB_APP=orders
 generate_username: --tags @generate_username --guess  HEALTHCHECK=true WEB_APP=orders
 
-healthcheck: --tags @healthcheck --guess HEALTHCHECK=true WEB_APP=orders
+healthcheck: --tags @healthcheck --guess HEALTHCHECK=true NEW_FRAMEWORK=true
 
 authentication: --tags @authentication --guess  HEALTHCHECK=true WEB_APP=orders
 mail_authentication: --tags @mail_authentication --guess  HEALTHCHECK=true WEB_APP=orders
