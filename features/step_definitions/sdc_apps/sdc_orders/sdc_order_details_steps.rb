@@ -21,6 +21,9 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]ervice to (.*)$/ do |str|
     order_details = SdcOrders.order_details
     service = order_details.service
     service.selection(name: :selection_element, str: str)
+    service.text_field.scroll_into_view
+    service.drop_down.scroll_into_view
+    service.drop_down.click
     service.drop_down.click unless service.selection_element.present?
     service.selection_element.click unless service.selection_element.class_disabled?
     expect('expect Order Details service is correct')
