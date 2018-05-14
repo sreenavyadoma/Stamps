@@ -276,7 +276,7 @@ bvt_purchasing_cc: --tags @bvt_purchasing_cc --guess  HEALTHCHECK=true WEB_APP=o
 bvt_purchasing_stg: --tags @bvt_purchasing_stg --guess  HEALTHCHECK=true WEB_APP=orders USR=stgugqex0q4 PW=pass111
 bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic --guess  HEALTHCHECK=falsepa WEB_APP=orders
 bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess  HEALTHCHECK=false WEB_APP=orders
-bvt_shipstation_search: --tags @bvt_shipstation_search --guess  HEALTHCHECK=true  NEW_FRAMEWORK=true
+bvt_shipstation_search: --tags @bvt_shipstation_search --guess  HEALTHCHECK=true NEW_FRAMEWORK=true
 bvt_orders_ship_date: --tags @bvt_orders_ship_date --guess  HEALTHCHECK=true WEB_APP=orders
 bvt_orders_ship_date_calendar: --tags @bvt_orders_ship_date_calendar --guess  HEALTHCHECK=true WEB_APP=orders
 bvt_all_tests: --tags @bvt_all_tests --guess  HEALTHCHECK=true WEB_APP=orders
