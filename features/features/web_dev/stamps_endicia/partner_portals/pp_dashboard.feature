@@ -71,7 +71,7 @@ Feature: PP-MVP: Dashboard Page Single Contract
    Then PP: expect dashboard page the Revenue Share Chart Current Month legends to be Current Month
 
   #Verify Last Updated On is not present
-   Then PP: Click on Logout on left panel
+   Then PP: navigate back to previous page
    Then PP: set login page email to webdevauto3@stamps.com
    Then PP: set login page password to password1
    Then PP: User clicks Log In
