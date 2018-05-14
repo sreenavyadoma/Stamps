@@ -45,6 +45,7 @@ end
 
 Then /^[Cc]lick Filter Panel Search [Bb]utton$/ do
   if SdcEnv.new_framework
+    SdcOrders.filter_panel.search.safe_wait_while_present(timeout: 2)
     SdcOrders.filter_panel.search.click
   else
     stamps.orders.filter_panel.search_orders.search_button.click
