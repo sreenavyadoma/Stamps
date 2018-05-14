@@ -7,7 +7,6 @@ module SdcOrders
       def selection_element(str)
         return self.class.page_object(:selection) { {xpath: '(//li[contains(@class, "x-boundlist-item")])[1]'} } if str == "default"
         self.class.page_object(:selection) { {xpath: "//li[contains(text(), '#{str}')]"} }
-        # self.class.page_object(:selection) { {xpath: "//li[text()='#{str}']"} }
       end
     end
 
