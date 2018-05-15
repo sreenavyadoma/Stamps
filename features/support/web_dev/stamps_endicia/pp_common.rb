@@ -16,24 +16,24 @@ module PartnerPortal
 
     #xs viewport
     #hamburger button
-    page_object(:hamburger_button_xs)  { { class:  'hamburger hamburger-slider visible-xs' } }
+    page_object(:hamburger_button_xs)  { { class:  ['hamburger hamburger-slider visible-xs'] } }
 
     #x button
-    page_object(:x_button)  { { class:  'hamburger hamburger-slider is-active visible-xs' } }
+    page_object(:x_button)  { { class:  ['hamburger hamburger-slider is-active visible-xs'] } }
 
     #Left Panel
-    page_object(:panel_collapsed_xs)  { { class:  'sidebar' } }
-    page_object(:panel_expanded_xs)  { { class:  'sidebar sidebar_expanded-xs' } }
+    page_object(:panel_collapsed_xs)  { { class:  ['sidebar'] } }
+    page_object(:panel_expanded_xs)  { { class:  ['sidebar sidebar_expanded-xs'] } }
 
     #Normal viewport left panel
-    page_object(:panel_hamburger) { { class: 'hamburger hamburger-slider hamburger-arrow hamburger-sidebar' } }
-    page_object(:panel_arrow) { { class: 'hamburger hamburger-slider is-active hamburger-arrow hamburger-sidebar' } }
+    page_object(:panel_hamburger) { { class: ['hamburger hamburger-slider hamburger-arrow hamburger-sidebar'] } }
+    page_object(:panel_arrow) { { class: ['hamburger hamburger-slider is-active hamburger-arrow hamburger-sidebar'] } }
 
-    page_object(:panel_collapsed_lg)  { { class:  'sidebar sidebar_collapsed' } }
-    page_object(:panel_expanded_lg)  { { class:  'sidebar' } }
+    page_object(:panel_collapsed_lg)  { { class:  ['sidebar sidebar_collapsed'] } }
+    page_object(:panel_expanded_lg)  { { class:  ['sidebar'] } }
 
     #footer
-    page_object(:footer)  { { class:  'footer' } }
+    page_object(:footer)  { { class:  ['footer'] } }
 
 
     def user_table_query(user, column)

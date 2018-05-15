@@ -34,7 +34,7 @@ Feature: PP-MVP: Header and Favicons
     Then PP: expect global header exists
     Then PP: expect partner portal logo exists
     Then PP: expect Stamps Endicia Partner Portal Logo exists for mobile
-    Then PP: expect hamburger button does not exists for mobile
+    #Then PP: expect hamburger button does not exists for mobile
     Then PP: expect X button does not exists
     Then PP: click on global header
 
