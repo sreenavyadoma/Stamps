@@ -21,7 +21,7 @@ module SdcFinder
   # @param [Browser] browser either Watir::Browser or Appium::Core::Driver
   # @param [String]  HTML tag
   # @param [Integer] timeout in seconds
-  def element(browser, tag: nil, timeout: 20)
+  def element(browser, tag: nil, timeout: 15)
     if browser.is_a? Watir::Browser
       if tag
         element = instance_eval("browser.#{tag}(#{yield})", __FILE__, __LINE__)
@@ -53,7 +53,7 @@ module SdcFinder
   end
   module_function :element
 
-  def elements(browser, tag: nil, timeout: 20)
+  def elements(browser, tag: nil, timeout: 15)
     if browser.is_a? Watir::Browser
       if tag
         begin
@@ -87,9 +87,9 @@ class SdcPage < WatirDrops::PageObject
 
   class << self
 
-    def page_object(name, tag: nil, required: false, timeout: 15)
+    def page_object(name, tag: nil, required: false, timeout: 15, &block)
       element(name.to_sym, required: required) do
-        SdcFinder.element(browser, tag: tag, timeout: timeout) { yield }
+        SdcFinder.element(browser, tag: tag, timeout: timeout, &block)
       end
 
       define_method :page_object do |*args, &block|
@@ -105,6 +105,13 @@ class SdcPage < WatirDrops::PageObject
     alias selection page_object
     alias link page_object
 
+    # @param [String] name
+    # @param [String] tag
+    # @param [Integer] index
+    # @param [Boolean] required
+    # @param [Integer] timeout
+    # @param [Hash] block
+    # @return [SdcElement]
     def page_objects(name, tag: nil, index: nil, required: false, timeout: 15)
       list_name = index.nil? ? name : "#{name}s".to_sym
 

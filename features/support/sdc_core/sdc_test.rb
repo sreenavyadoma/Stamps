@@ -16,7 +16,7 @@ class SdcTest
     end
 
     def capabilities(device)
-      case
+      case device
         when :macos_safari
           capabilities_config = {
             :version => '11.0',
