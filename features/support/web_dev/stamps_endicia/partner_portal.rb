@@ -46,7 +46,6 @@ module PartnerPortal
               else
                 # ignore
             end)
-
     end
 
   end
