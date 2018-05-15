@@ -9,7 +9,7 @@ Feature: PP-MVP: Footer
     #validate footer on Reset Passowrd page
     Then PP: a user navigates to Reset Password Page
     Then PP: expect footer to exists
-    Then PP: expect copyright dates are correct
+    Then PP: expect copyright dates is 2017 - current year
     Then PP: click on Copyright Stamps.com link
     Then PP: expect https://www.stamps.com/site/copyright/ open in a new tab
     Then PP: click on Copyright Endicia link
