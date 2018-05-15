@@ -125,49 +125,6 @@ Feature:  BVT tests for Orders
     Then Buy Mail: Expect customer balance increased by $10
     Then Sign out
 
-  @bvt_shipping_address_management
-  Scenario: BVT Shipping Address
-    Then add new order
-    Then on Manage Shipping Address modal, add address
-      |ship_from_zip  | full_name  | company    | street_address| street_address2 | city          | state       | zip    | country       | phone           |
-      |90245          | Euan  | Betfair UK | 101 Mission Street | Suite 700       | San Francisco | California  | 94105  | United States | (415) 123-5555  |
-    Then on Manage Shipping Address modal, delete all addresses
-    Then set Order Details Ship-From to San Francisco, CA
-    Then set Order Details Ship-To to random address between zone 1 and 4
-    Then set Order Details service to PM Package
-    Then Sign out
-
-  @bvt_shipstation_search
-  Scenario: Search shipstation orders
-    Then add new order
-    Then set Order Details Ship-To to random address in zone 1
-    Then set Order Details Email to random
-    Then set Order Details Phone to random
-    Then set Order Details service to PM Package
-    Then set Order Details Weight to 1 lb 1 oz
-
-    Then uncheck orders grid cached order id
-
-    Then Pause for 3 seconds
-    Then Refresh the driver
-    Then Pause for 5 seconds
-
-  # Search for new order
-    Then check orders grid cached order id
-    Then search filtered Orders for cached Order ID
-    Then expect Filter Panel search results tab is present
-    Then expect Filter Panel search result count is 1
-    Then check orders grid cached order id
-
-  #Then check orders grid cached order id
-    Then expect Order Details Order ID equals Grid Order ID in row 1
-    Then expect Order Details Order ID is the same as saved Order ID
-
-    Then expect Filter Panel search result count is greater than 0
-    Then remove Filter Panel search results tab
-    Then expect Filter Panel search results tab is not present
-
-    Then Sign out
 
 
   @bvt_shipstation_updates_domestic

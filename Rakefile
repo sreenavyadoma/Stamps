@@ -10,10 +10,31 @@ require 'cucumber/rake/task'
     t.cucumber_opts = "-p cuke_reports"
   end
 
-  Cucumber::Rake::Task.new(:pp_header_favicons) do |t|
-    t.profile = 'pp_header_favicons'
+  Cucumber::Rake::Task.new(:pp_header_favicons_browser) do |t|
+    t.profile = 'pp_header_favicons_browser'
     t.cucumber_opts = "-p cuke_reports"
   end
+
+  Cucumber::Rake::Task.new(:pp_header_favicons_browser_mobile) do |t|
+    t.profile = 'pp_header_favicons_browser_mobile'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
+  Cucumber::Rake::Task.new(:pp_dashboard_single_contract_ui_validaiton) do |t|
+    t.profile = 'pp_dashboard_single_contract_ui_validaiton'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
+  Cucumber::Rake::Task.new(:pp_dashboard_single_contract_chart_data_validation) do |t|
+    t.profile = 'pp_dashboard_single_contract_chart_data_validation'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
+  Cucumber::Rake::Task.new(:pp_authenticate) do |t|
+    t.profile = 'pp_authenticate'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
   #END PARTNER PORTAL
 
 # END WEB DEV

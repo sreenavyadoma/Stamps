@@ -2,6 +2,7 @@
 module SdcEnv
   TEST_ENVIRONMENTS = %i[stg qacc cc qasc sc rating].freeze unless Object.const_defined?('SdcEnv::TEST_ENVIRONMENTS')
   BROWSERS = %i[ff firefox gc chrome safari edge chromeb ie iexplorer].freeze unless Object.const_defined?('SdcEnv::BROWSERS')
+  BROWSER_MOBILE_EMULATORS = ['iPhone X', 'iPhone 4', 'Pixel 2', 'Pixel 2 XL'].freeze unless Object.const_defined?('SdcEnv::BROWSER_MOBILE_EMULATORS')
   HEALTH_CHECK_APPS = ['address book', 'orders', 'or reports', 'postage tools'].freeze unless Object.const_defined?('SdcEnv::HEALTH_CHECK_APPS')
   IOS = %i[iphone6 iphone7 iphone8 iphonex].freeze unless Object.const_defined?('SdcEnv::IOS')
   ANDROID = %i[samsung_galaxy nexus_5x].freeze unless Object.const_defined?('SdcEnv::ANDROID')
@@ -9,9 +10,9 @@ module SdcEnv
   class << self
     attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose,
                   :printer, :browser, :hostname, :print_media, :mobile,
-                  :android, :ios, :firefox_profile, :new_framework, :max_window,
                   :scenario, :sauce_device, :test_name, :log_level,
-                  :driver_log_level
+                  :driver_log_level, :browser_mobile_emulator,
+                  :android, :ios, :firefox_profile, :new_framework, :max_window
   end
 end
 
@@ -20,7 +21,7 @@ module SdcFinder
   # @param [Browser] browser either Watir::Browser or Appium::Core::Driver
   # @param [String]  HTML tag
   # @param [Integer] timeout in seconds
-  def element(browser, tag: nil, timeout: 20)
+  def element(browser, tag: nil, timeout: 15)
     if browser.is_a? Watir::Browser
       if tag
         element = instance_eval("browser.#{tag}(#{yield})", __FILE__, __LINE__)
@@ -52,7 +53,7 @@ module SdcFinder
   end
   module_function :element
 
-  def elements(browser, tag: nil, timeout: 20)
+  def elements(browser, tag: nil, timeout: 15)
     if browser.is_a? Watir::Browser
       if tag
         begin
@@ -86,9 +87,9 @@ class SdcPage < WatirDrops::PageObject
 
   class << self
 
-    def page_object(name, tag: nil, required: false, timeout: 15)
+    def page_object(name, tag: nil, required: false, timeout: 15, &block)
       element(name.to_sym, required: required) do
-        SdcFinder.element(browser, tag: tag, timeout: timeout) { yield }
+        SdcFinder.element(browser, tag: tag, timeout: timeout, &block)
       end
 
       define_method :page_object do |*args, &block|
@@ -104,6 +105,13 @@ class SdcPage < WatirDrops::PageObject
     alias selection page_object
     alias link page_object
 
+    # @param [String] name
+    # @param [String] tag
+    # @param [Integer] index
+    # @param [Boolean] required
+    # @param [Integer] timeout
+    # @param [Hash] block
+    # @return [SdcElement]
     def page_objects(name, tag: nil, index: nil, required: false, timeout: 15)
       list_name = index.nil? ? name : "#{name}s".to_sym
 
