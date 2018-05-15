@@ -2,6 +2,7 @@
 module SdcEnv
   TEST_ENVIRONMENTS = %i[stg qacc cc qasc sc rating].freeze unless Object.const_defined?('SdcEnv::TEST_ENVIRONMENTS')
   BROWSERS = %i[ff firefox gc chrome safari edge chromeb ie iexplorer].freeze unless Object.const_defined?('SdcEnv::BROWSERS')
+  BROWSER_MOBILE_EMULATORS = ['iPhone X', 'iPhone 4', 'Pixel 2', 'Pixel 2 XL'].freeze unless Object.const_defined?('SdcEnv::BROWSER_MOBILE_EMULATORS')
   HEALTH_CHECK_APPS = ['address book', 'orders', 'or reports', 'postage tools'].freeze unless Object.const_defined?('SdcEnv::HEALTH_CHECK_APPS')
   IOS = %i[iphone6 iphone7 iphone8 iphonex].freeze unless Object.const_defined?('SdcEnv::IOS')
   ANDROID = %i[samsung_galaxy nexus_5x].freeze unless Object.const_defined?('SdcEnv::ANDROID')
@@ -9,9 +10,9 @@ module SdcEnv
   class << self
     attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose,
                   :printer, :browser, :hostname, :print_media, :mobile,
-                  :android, :ios, :firefox_profile, :new_framework, :max_window,
                   :scenario, :sauce_device, :test_name, :log_level,
-                  :driver_log_level
+                  :driver_log_level, :browser_mobile_emulator,
+                  :android, :ios, :firefox_profile, :new_framework, :max_window
   end
 end
 

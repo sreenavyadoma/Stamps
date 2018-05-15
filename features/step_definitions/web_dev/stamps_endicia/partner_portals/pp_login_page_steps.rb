@@ -1,10 +1,3 @@
-Then /^[Ee]stablish [Pp]artner [Pp]ortal db connection$/ do
-  PartnerPortal.db_connection
-end
-
-Then /^[Cc]lose [Pp]artner [Pp]ortal db connection$/ do
-  PartnerPortal.db_connection.close
-end
 
 Then /^[Pp]P: [Aa] user navigates to the login page$/ do
   TestData.hash[:system_date] = DateTime.now.utc
@@ -20,7 +13,7 @@ Then /^[Pp]P: [Ee]xpect login page "stamps.com endicia" logo to exist$/ do
 end
 
 Then /^[Pp]P: [Ee]xpect login page "Partner Portal" content to exist$/ do
-  expect(PartnerPortal.login_page.partner_portal_content).to be_present, '"USPS Portal" content DOES NOT exist on login pag'
+  expect(PartnerPortal.login_page.partner_portal_content).to be_present, '"Partner Portal" content DOES NOT exist on login pag'
 end
 
 Then /^[Pp]P: [Ee]xpect login page Log In button to exist$/ do
@@ -122,11 +115,12 @@ end
 Then /^[Pp]P: Expect a record (.*) event is added in Audit Records for (?:user|(.*))/ do |log_info, user|
   step 'Establish Partner Portal db connection'
 
-  TestData.hash[:user_id] = PartnerPortal.login_page.partner_user_id_query((user.nil?) ? (SdcEnv.usr) :user)
+  TestData.hash[:user_id] = PartnerPortal.common_page.user_table_query(((user.nil?) ? (SdcEnv.usr) :user), 'PartnerUserId')
 
-  TestData.hash[:login_status], TestData.hash[:date_created] = PartnerPortal.login_page.log_info_date_created_query(TestData.hash[:user_id])
+  TestData.hash[:login_status] = PartnerPortal.common_page.log_table_query(TestData.hash[:user_id], 'LogInfo')
+  TestData.hash[:date_created] = PartnerPortal.common_page.log_table_query(TestData.hash[:user_id], 'DateCreated')
 
-  step "Close partner portal db connection"
+  step 'Close partner portal db connection'
 
   expect(TestData.hash[:date_created]).to be > TestData.hash[:system_date]
   expect(TestData.hash[:login_status]).to eql(log_info)
@@ -139,4 +133,5 @@ Given /^[Pp]P: [Aa] valid user is signed into Partner Portal$/ do
   step 'PP: set login page email to env value'
   step 'PP: set login page password to env value'
   step 'PP: User clicks Log In'
+  step 'PP: expect dashboard page header exist'
 end
