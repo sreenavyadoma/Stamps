@@ -105,7 +105,27 @@ module PartnerPortal
     #Email
     text_field(:email, tag: :text_field, required: true) { { xpath: '//input[@name="email"]' } }
 
+    #page_url { |env| "https://partner.#{env}.stamps.com/reset-password/request" }
+    page_url { |env| "https://partner.#{env}.stamps.com/error-404" }
+
+    def self.visit
+      super(case SdcEnv.env
+              when :qacc
+                'qacc'
+              when :qasc
+                'sdcwebsite.qasc'
+              when :stg
+                'staging'
+              when :prod
+                ''
+              else
+                # ignore
+            end)
+    end
+
   end
+
+
 
   class << self
 

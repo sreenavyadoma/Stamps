@@ -38,11 +38,38 @@ Then /^[Pp]P: [Ee]xpect footer to exists$/ do
   expect(PartnerPortal.common_page.footer).to be_present, 'Footer DOES NOT exist'
 end
 
-Then /^PP: expect footer to exists$/ do
-  PartnerPortal.common_page.footer.wait_until_present(timeout: 10)
-  expect(PartnerPortal.common_page.footer).to be_present, 'Footer DOES NOT exist'
+Then /^PP: expect copyright dates are correct$/ do
+  system_date = DateTime.now.utc
+  previous_year = system_date - 1.year
+  current_year = system_date.year
+  copyright_date_actual = PartnerPortal.common_page.copyright_date.text_value.gsub(/\P{ASCII}/, '').strip.gsub("Copyright", "").split('-')
+
+  expect(previous_year.year).to eql(copyright_date_actual.first.to_i)
+  expect(current_year).to eql(copyright_date_actual.last.to_i)
 end
 
+Then /^PP: click on Copyright Stamps.com link$/ do
+ PartnerPortal.common_page.stamps_copyright_link.send_keys(:enter)
+end
+
+Then /^PP: click on Copyright Endicia link$/ do
+  PartnerPortal.common_page.endicia_copyright_link.send_keys(:enter)
+end
+
+Then /^PP: click on Stamps.com Privacy Policy link$/ do
+  PartnerPortal.common_page.stamps_privacy_policy_link.send_keys(:enter)
+end
+
+Then /^PP: click on Endicia Privacy Policy link$/ do
+  PartnerPortal.common_page.endicia_privacy_policy_link.send_keys(:enter)
+end
+
+Then /^PP: expect (.*) open in a new tab$/ do |str|
+  step 'pause for 5 second'
+  url =  SdcPage.browser.windows.last.url
+  SdcPage.browser.windows.last.close
+  expect(url).to eql(str)
+end
 
 Then /^[Pp]P: [Ee]xpect [Pp]artner [Pp]ortal logo exists$/ do
   expect(PartnerPortal.common_page.partner_portal_logo).to be_present, 'Partner Portal logo DOES NOT exist'
