@@ -1,6 +1,6 @@
 
-Then /^[Cc]heck [Oorders ]*?[Ggrid ]*?[Ccached ]*?[Oo]rder[IiDd ]*?(?:| (\d+))$/ do |order_id|
-  order_id = order_id.nil? ? TestData.hash[:order_id].values.last : TestData.hash[:order_id][order_id.to_i]
+Then /^check orders grid order id (cached|\d+)$/ do |order_id|
+  order_id = order_id.nil? || order_id == 'cached' ? TestData.hash[:order_id].values.last : TestData.hash[:order_id][order_id.to_i]
   if SdcEnv.new_framework
     #todo - orders grid implementation
   else
@@ -9,12 +9,10 @@ Then /^[Cc]heck [Oorders ]*?[Ggrid ]*?[Ccached ]*?[Oo]rder[IiDd ]*?(?:| (\d+))$/
   end
 end
 
-Then /^[Uu]ncheck [Oo]rders [Gg]rid \w*?\s?[Oo]rder ID( \d+)?$/ do |order_id|
-# Then /^[Uu]ncheck [Oo]rders [Gg]rid \w* ?[Oo]rder (ID|id)\s?(\d+)?$/ do |t,order_id|
-# Then /^[Uu]ncheck [Oorders ]*?[Ggrid ]*?[Ccached ]*?[Oo]rder[IiDd ]*?(?:| (\d+))$/ do |order_id|
-  order_id = order_id.nil? ? TestData.hash[:order_id].values.last : TestData.hash[:order_id][order_id.to_i]
+Then /^uncheck orders grid order id (cached|\d+)$/ do |order_id|
+  order_id = order_id.nil? || order_id == 'cached' ? TestData.hash[:order_id].values.last : TestData.hash[:order_id][order_id.to_i]
   if SdcEnv.new_framework
-    #skip for now
+    #todo - orders grid implementation
   else
     stamps.orders.orders_grid.grid_column(:checkbox).uncheck_order_id(order_id)
     expect(stamps.orders.orders_grid.grid_column(:checkbox).order_id_checked?(order_id)).to be(false)
@@ -29,7 +27,7 @@ end
 
 When /^[Uu]ncheck(?: [O]rders)?(?: [Gg]rid)? [Rr]ow (\d+)$/ do |row|
   if SdcEnv.new_framework
-    #skip for now
+    #todo - orders grid implementation
   else
     expect(stamps.orders.orders_grid.grid_column(:checkbox).uncheck(
         row)).to be(false), "Unable to uncheck Orders Grid row #{row}"

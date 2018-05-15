@@ -165,17 +165,15 @@ Feature:  BVT tests for Orders
     Then set Order Details Phone to random
     Then set Order Details service to PM Package
     Then set Order Details Weight to 1 lb 1 oz
-#    Then uncheck orders grid order ID 56565
-    Then uncheck orders grid cached order ID
-#    Then check orders grid cached order id
+    Then uncheck orders grid order id cached
+    Then check orders grid order id cached
     Then search filtered Orders for cached Order ID
     Then expect Filter Panel search results tab is present
     Then expect Filter Panel search result count is 1
-#    Then check orders grid cached order id
+    Then check orders grid order id cached
     Then expect Order Details Order ID equals Grid Order ID in row 1
     Then expect Order Details Order ID is the same as saved Order ID
     Then expect Filter Panel search result count is greater than 0
     Then remove Filter Panel search results tab
     Then expect Filter Panel search results tab is not present
-
     Then Sign out
