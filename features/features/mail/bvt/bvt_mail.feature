@@ -740,3 +740,4 @@ Feature: BVT for Mail page
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then Sign out
+

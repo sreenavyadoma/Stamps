@@ -19,12 +19,30 @@ Then /^[Ss]elect Print On (.+)$/ do |str|
 end
 
 
+Then /^check (.+) in manage print options$/ do |str|
+  step "search for #{str} in manage print options"
 
-Then /^check (.+) in Manage Print Options$/ do |str|
+  SdcMail.modals.manage_print_options.print_option_checkbox.check
+end
+
+Then /^expect manage print options modal is present$/ do
+  expect(SdcMail.modals.manage_print_options.search.present?).to eql(true)
+end
+
+Then /^uncheck (.+) in manage print options$/ do |str|
+  step "search for #{str} in manage print options"
+  SdcMail.modals.manage_print_options.print_option_checkbox.uncheck
+end
+
+Then /^search for (.+) in manage print options$/ do |str|
   manage_print_options = SdcMail.modals.manage_print_options
   manage_print_options.search.set str
+  SdcPage.browser.wait_until(timeout: 2) {manage_print_options.grid.size == 1 }
 end
-#Then click save on Manage Print Options
+
+Then /^click save in manage print options$/ do
+  SdcMail.modals.manage_print_options.save.click
+end
 
 Then /^[Ss]how Advanced Options$/ do
   if SdcEnv.new_framework
