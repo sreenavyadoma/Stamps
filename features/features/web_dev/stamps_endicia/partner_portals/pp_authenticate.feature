@@ -6,10 +6,11 @@ Feature: PP-MVP: Authenticate
   @pp_authenticate
   Scenario: PP: Authenticate Validation
 
-
+    #validate user is un-authenticated after sessions times out
     Then PP: de-authenticate user
     Then PP: expect user is redirect to the login page
 
+    #validate a authenticated user can navigate from un-authenticated page to authenticated page
     Then PP: set login page email to env value
     Then PP: set login page password to env value
     Then PP: User clicks Log In
