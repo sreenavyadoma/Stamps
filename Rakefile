@@ -30,6 +30,10 @@ require 'cucumber/rake/task'
     t.cucumber_opts = "-p cuke_reports"
   end
 
+  Cucumber::Rake::Task.new(:pp_authenticate) do |t|
+    t.profile = 'pp_authenticate'
+    t.cucumber_opts = "-p cuke_reports"
+  end
 
   #END PARTNER PORTAL
 
