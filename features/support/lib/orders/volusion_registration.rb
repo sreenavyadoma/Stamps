@@ -17,8 +17,8 @@ module Stamps
         class VolusionState < WebApps::Base
           def select state
             begin
-              driver.select_list(:id, "ShipState_dropdown").option(text: state).when_present.select
-              driver.select_list(:id, "ShipState_dropdown").option(text: state).when_present.select
+              driver.select_list(:id, "ShipState_drop_down").option(text: state).when_present.select
+              driver.select_list(:id, "ShipState_drop_down").option(text: state).when_present.select
             rescue
               # ignore
             end

@@ -20,11 +20,11 @@ module Stamps
 
         class ProductWeightUnit < Browser::Base
           def select(selection)
-            dropdown=StampsField.new(driver.divs(css: "div[id^=combo-][id$=-trigger-picker]").last)
+            drop_down=StampsField.new(driver.divs(css: "div[id^=combo-][id$=-trigger-picker]").last)
             textbox=StampsTextbox.new driver.text_field(css: "input[name^=combo-][name$=-inputEl][role=combobox]")
             selection_field=StampsField.new driver.li(text: "#{selection}")
             10.times do
-              dropdown.click unless selection_field.present?
+              drop_down.click unless selection_field.present?
               selection_field.click
               break if textbox.text.include? selection
             end

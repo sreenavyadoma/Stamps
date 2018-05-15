@@ -139,9 +139,9 @@ module Stamps
       class MoveDropDown < WebApps::Base
 
 
-        def dropdown
-          cache[:dropdown] = StampsField.new(driver.span(text: "Move")) if cache[:dropdown].nil? || cache[:dropdown].present?
-          cache[:dropdown]
+        def drop_down
+          cache[:drop_down] = StampsField.new(driver.span(text: "Move")) if cache[:drop_down].nil? || cache[:drop_down].present?
+          cache[:drop_down]
         end
 
         def shipped
@@ -170,7 +170,7 @@ module Stamps
         end
 
         def enabled?
-          dropdown.enabled?
+          drop_down.enabled?
         end
 
         def move_to_shipped
@@ -214,7 +214,7 @@ module Stamps
           30.times{
             return modal if modal.present?
             selection_item = StampsField.new(driver.span(text: selection_str))
-            dropdown.click unless selection_item.present?
+            drop_down.click unless selection_item.present?
             sleep(0.50)
             selection_item.hover
             sleep(0.25)
@@ -224,7 +224,7 @@ module Stamps
         end
 
         def tooltip
-          btn = dropdown
+          btn = drop_down
           btn.field.hover
           btn.field.hover
           15.times do
@@ -240,11 +240,11 @@ module Stamps
 
       class MoreActionsDropDown < WebApps::Base
         def enabled?
-          dropdown.enabled?
+          drop_down.enabled?
         end
 
-        def dropdown
-          (cache[:dropdown].nil? || !cache[:dropdown].present?) ? cache[:dropdown] = StampsField.new(driver.span(text: "More Actions")) : cache[:dropdown]
+        def drop_down
+          (cache[:drop_down].nil? || !cache[:drop_down].present?) ? cache[:drop_down] = StampsField.new(driver.span(text: "More Actions")) : cache[:drop_down]
         end
 
         def split_order
@@ -286,7 +286,7 @@ module Stamps
                                                                raise "Invalid selection: #{str}"
                                                            end
                                                     ))
-            dropdown.click unless selection.present?
+            drop_down.click unless selection.present?
             sleep(0.1)
             selection.hover
             sleep(0.1)
@@ -764,19 +764,19 @@ module Stamps
       end
 
       class PerPage < WebApps::Base
-        attr_reader :textbox, :dropdown
+        attr_reader :textbox, :drop_down
 
         def initialize(param)
           super
           @textbox = StampsTextbox.new(driver.text_field(id: "sdc-batch-grid-pagingtoolbar-combobox-inputEl"))
-          @dropdown = StampsField.new(driver.div(id: "sdc-batch-grid-pagingtoolbar-combobox-trigger-picker"))
+          @drop_down = StampsField.new(driver.div(id: "sdc-batch-grid-pagingtoolbar-combobox-trigger-picker"))
         end
 
         def select(selection)
           per_page = StampsField.new(driver.li(text: selection))
           box = textbox
           10.times do
-            dropdown.click unless per_page.present?
+            drop_down.click unless per_page.present?
             per_page.click if per_page.present?
             return box.text if box.text.include?(selection)
           end

@@ -189,9 +189,9 @@ module Stamps
         #include PrintMediaHelper
         include PrintOnTextbox
 
-        def dropdown
-          (cache[:dropdown].nil? || !cache[:dropdown].present?) ? cache[:dropdown] = StampsField.new(
-              driver.div(css: "[id^=printmediadroplist][id$=trigger-picker]")) : cache[:dropdown]
+        def drop_down
+          (cache[:drop_down].nil? || !cache[:drop_down].present?) ? cache[:drop_down] = StampsField.new(
+              driver.div(css: "[id^=printmediadroplist][id$=trigger-picker]")) : cache[:drop_down]
         end
 
         def upgrade_plan
@@ -220,7 +220,7 @@ module Stamps
           begin
             10.times do
               break if manage_printing_options.present?
-              dropdown.click unless manage_printing_options_lov.present?
+              drop_down.click unless manage_printing_options_lov.present?
               manage_printing_options_lov.click
               sleep(0.25)
             end
@@ -230,7 +230,7 @@ module Stamps
         end
 
         def show_all_print_media
-          dropdown.click unless manage_printing_options_lov.present?
+          drop_down.click unless manage_printing_options_lov.present?
           5.times do
             break if driver.lis(css: "li[class*=x-boundlist-item]").size == 20
           end
@@ -238,16 +238,16 @@ module Stamps
         end
 
         def select_print_on(str)
-          dropdown.wait_until_present(4)
-          dropdown.click
+          drop_down.wait_until_present(4)
+          drop_down.click
           10.times do
             begin
               if print_on_textbox.text.include?(PrintMediaHelper.selected_sub_str(str))
-                dropdown.click if manage_printing_options_lov.present?
+                drop_down.click if manage_printing_options_lov.present?
                 return PrintMediaHelper.print_media(str)
               end
               selection = StampsField.new(driver.li(css: "li[class^=#{(data_for(:mail_print_media, {})[str]).split(',').first}][data-recordindex='#{(data_for(:mail_print_media, {})[str]).split(',').last}']"))
-              dropdown.click unless manage_printing_options_lov.present?
+              drop_down.click unless manage_printing_options_lov.present?
               if selection.present?
                 selection.scroll_into_view
                 selection.click
@@ -259,14 +259,14 @@ module Stamps
             end
             sleep(0.15)
           end
-          dropdown.click unless manage_printing_options_lov.present?
+          drop_down.click unless manage_printing_options_lov.present?
           nil
         end
 
         def tooltip(str)
           10.times do
             selection = StampsField.new(driver.div(text: str))
-            dropdown.click unless selection.present?
+            drop_down.click unless selection.present?
             return selection.attribute_value "data-qtip" if selection.present?
           end
         end
@@ -299,7 +299,7 @@ module Stamps
           dom_dd.present? && dom_textbox.present?
         end
 
-        def dropdown
+        def drop_down
           (domestic?) ? dom_dd : int_dd
         end
 
@@ -309,11 +309,11 @@ module Stamps
 
         def select_country(str)
           begin
-            dropdown.click
+            drop_down.click
             selection = StampsField.new(driver.lis(text: str)[(domestic?) ? 0 : 1])
             30.times do
               begin
-                dropdown.click unless selection.present?
+                drop_down.click unless selection.present?
                 sleep(0.5)
                 selection.scroll_into_view
                 selection.click
@@ -487,9 +487,9 @@ module Stamps
               driver.text_field(id: "sdc-mainpanel-shipfromdroplist-inputEl")) : cache[:textbox]
         end
 
-        def dropdown
-          (cache[:dropdown].nil? || !cache[:dropdown].present?) ? cache[:dropdown] = StampsField.new(
-              driver.div(id: "sdc-mainpanel-shipfromdroplist-trigger-picker")) : cache[:dropdown]
+        def drop_down
+          (cache[:drop_down].nil? || !cache[:drop_down].present?) ? cache[:drop_down] = StampsField.new(
+              driver.div(id: "sdc-mainpanel-shipfromdroplist-trigger-picker")) : cache[:drop_down]
         end
 
         def manage_shipping_address
@@ -509,13 +509,13 @@ module Stamps
         end
 
         def select(str)
-          dropdown.click
+          drop_down.click
           if str.downcase.include?('manage shipping')
             10.times do
               begin
                 selection_field(str).click
                 return manage_shipping_address if manage_shipping_address.present?
-                dropdown.click unless selection_field(str).present?
+                drop_down.click unless selection_field(str).present?
               rescue
                 # ignore
               end
@@ -524,7 +524,7 @@ module Stamps
             10.times do
               selection_field(str).click
               return textbox.text if textbox.text.length > 0
-              dropdown.click unless selection_field(str).present?
+              drop_down.click unless selection_field(str).present?
             end
           end
           nil
@@ -579,9 +579,9 @@ module Stamps
               driver.text_field(id: "sdc-mainpanel-servicedroplist-inputEl")) : cache[:textbox]
         end
 
-        def dropdown
-          (cache[:dropdown].nil? || !cache[:dropdown].present?) ? cache[:dropdown] = StampsField.new(
-              driver.div(id: "sdc-mainpanel-servicedroplist-trigger-picker")) : cache[:dropdown]
+        def drop_down
+          (cache[:drop_down].nil? || !cache[:drop_down].present?) ? cache[:drop_down] = StampsField.new(
+              driver.div(id: "sdc-mainpanel-servicedroplist-trigger-picker")) : cache[:drop_down]
         end
 
         def has_rates?
@@ -607,21 +607,21 @@ module Stamps
             elsif service_selection.service_field(default_int_service).present?
               return service_selection.has_rates?(default_int_service)
             else
-              dropdown.click
+              drop_down.click
             end
           end
           false
         end
 
         def service_cost(str)
-          dropdown.wait_until_present(4)
+          drop_down.wait_until_present(4)
           blur_out
           20.times do
             if service_selection.cost_field(str).present?
               service_selection.cost_field(str).scroll_into_view
               return service_selection.cost_field(str).text
             end
-            dropdown.click
+            drop_down.click
           end
           nil
         end
@@ -629,9 +629,9 @@ module Stamps
         def select_service(str)
           15.times do
             break if textbox.text.include?(str)
-            dropdown.click unless service_selection.service_field(str).present?
-            dropdown.wait_until_present(4)
-            dropdown.click unless service_selection.service_field(str).present?
+            drop_down.click unless service_selection.service_field(str).present?
+            drop_down.wait_until_present(4)
+            drop_down.click unless service_selection.service_field(str).present?
             service_selection.service_field(str).scroll_into_view
             service_selection.service_field(str).click
             blur_out
@@ -643,7 +643,7 @@ module Stamps
           cost_label = StampsField.new(driver.td(css: "tr[data-qtip*='#{selection}']>td:nth-child(3)"))
           20.times do
             begin
-              dropdown.click unless cost_label.present?
+              drop_down.click unless cost_label.present?
               if cost_label.present?
                 service_cost = cost_label.text.dollar_amount_str.to_f.round(2)
                 return service_cost
@@ -657,7 +657,7 @@ module Stamps
 
         #todo-Rob rework tooltips
         def tooltip(selection)
-          button = dropdown
+          button = drop_down
           selection_label = StampsField.new driver.tr css: "tr[data-qtip*='#{selection}']"
           10.times {
             begin
@@ -711,9 +711,9 @@ module Stamps
               driver.text_field(id: "sdc-mainpanel-trackingdroplist-inputEl")) : cache[:textbox]
         end
 
-        def dropdown
-          (cache[:dropdown].nil? || !cache[:dropdown].present?) ? cache[:dropdown] = StampsField.new(
-              driver.div(id: "sdc-mainpanel-trackingdroplist-trigger-picker")) : cache[:dropdown]
+        def drop_down
+          (cache[:drop_down].nil? || !cache[:drop_down].present?) ? cache[:drop_down] = StampsField.new(
+              driver.div(id: "sdc-mainpanel-trackingdroplist-trigger-picker")) : cache[:drop_down]
         end
 
         def selection_field(str)
@@ -724,7 +724,7 @@ module Stamps
         def select(str)
           10.times do
             begin
-              dropdown.click unless selection_field(str).present?
+              drop_down.click unless selection_field(str).present?
               selection_field(str).scroll_into_view
               selection_field(str).click
               return selection_field(str) if textbox.text.include?(str)
@@ -736,8 +736,8 @@ module Stamps
         end
 
         def price
-          (cache[:dropdown].nil? || !cache[:dropdown].present?) ? cache[:dropdown] = StampsField.new(
-              driver.label(id: "sdc-mainpanel-trackingpricelabel")) : cache[:dropdown]
+          (cache[:drop_down].nil? || !cache[:drop_down].present?) ? cache[:drop_down] = StampsField.new(
+              driver.label(id: "sdc-mainpanel-trackingpricelabel")) : cache[:drop_down]
         end
       end
 
@@ -748,15 +748,15 @@ module Stamps
           (cache[:textbox].nil? || !cache[:textbox].present?) ? cache[:textbox] = StampsTextbox.new(driver.text_field(name: "costCodeId")) : cache[:textbox]
         end
 
-        def dropdown
-          (cache[:dropdown].nil? || !cache[:dropdown].present?) ? cache[:dropdown] = StampsField.new(driver.div(css: "[id^=costcodesdroplist-][id$=-trigger-picker]")) : cache[:dropdown]
+        def drop_down
+          (cache[:drop_down].nil? || !cache[:drop_down].present?) ? cache[:drop_down] = StampsField.new(driver.div(css: "[id^=costcodesdroplist-][id$=-trigger-picker]")) : cache[:drop_down]
         end
 
         def select(selection)
           field = StampsField.new(driver.div(text: selection))
           10.times do
             begin
-              dropdown.click unless field.present?
+              drop_down.click unless field.present?
               field.scroll_into_view
               field.click
               return textbox.text if textbox.text.include?(selection)

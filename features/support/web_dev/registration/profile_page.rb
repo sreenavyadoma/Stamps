@@ -44,7 +44,7 @@ module Stamps
         end
 
         class WebRegSurvey1 < WebApps::Base
-          def survey_question_dropdown #todo-Rob change from old to new format
+          def survey_question_drop_down #todo-Rob change from old to new format
             cache[:survey_question].nil? || !cache[:survey_question].present? ? cache[:survey_question] = Stamps::WebApps::StampsDropDownLovSubStr.new(
                 driver.span(css: "button[data-id=usageType]>span[class*=option]"),
                 driver.span(css: "button[data-id=usageType]>span[class*=option]"),
@@ -57,7 +57,7 @@ module Stamps
 
         end
         class WebRegSurvey2 < WebApps::Base
-          def referer_name_dropdown
+          def referer_name_drop_down
             cache[:referer_name].nil? || !cache[:referer_name].present? ? cache[:referer_name] = Stamps::WebApps::StampsDropDownLovSubStr.new(
                 driver.span(css: "button[data-id=referrerName]>span[class*=option]"),
                 driver.span(css: "button[data-id=referrerName]>span[class*=option]"),

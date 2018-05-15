@@ -1,5 +1,8 @@
 
 Then /^visit Orders landing page$/ do
+  step 'initialize orders test parameters'
+  step 'fetch user credentials from MySQL'
+
   env = case SdcEnv.env
         when :qacc
           'ext.qacc'
@@ -16,21 +19,24 @@ Then /^visit Orders landing page$/ do
   SdcOrdersLandingPage.visit(env)
 end
 
-Then /^visit Mail$/ do
-  env = case SdcEnv.env
-        when :qacc
-          'ext.qacc'
-        when :qasc
-          'ext.qasc'
-        when :stg
-          '.testing'
-        when :prod
-          ''
-        else
-          # ignore
-        end
-
-  SdcMailLandingPage.visit(env)
+Then /^initialize orders test parameters$/ do
+  TestData.hash[:customs_associated_items] = {}
+  TestData.hash[:service_mapping_items] = {}
+  TestData.hash[:details_associated_items] = {}
+  TestData.hash[:order_id] = {}
+  TestData.hash[:service_look_up] = {}
+  TestData.hash[:service_look_up]['FCM'] = 'First-Class Mail'
+  TestData.hash[:service_look_up]['PM'] = 'Priority Mail'
+  TestData.hash[:service_look_up]['PME'] = 'Priority Mail Express'
+  TestData.hash[:service_look_up]['MM'] = 'Media Mail'
+  TestData.hash[:service_look_up]['PSG'] = 'Parcel Select Ground'
+  TestData.hash[:service_look_up]['FCMI'] = 'First-Class Mail International'
+  TestData.hash[:service_look_up]['PMI'] = 'Priority Mail International'
+  TestData.hash[:service_look_up]['PMEI'] = 'Priority Mail Express International'
+  TestData.hash[:ord_id_ctr] = 0
+  TestData.hash[:sdc_app] = ENV['WEB_APP']
+  TestData.hash[:url] = ENV['URL']
+  TestData.hash[:test] = ENV['USER_CREDENTIALS']
 end
 
 Then /^fetch user credentials from MySQL$/ do
@@ -51,12 +57,12 @@ Then /^fetch user credentials from MySQL$/ do
 end
 
 Then /^sign-in to Orders$/ do
-  step 'fetch user credentials from MySQL'
   step 'visit Orders landing page'
   step "set Orders landing page username to #{TestData.hash[:username]}"
   step "set Orders landing page password to #{TestData.hash[:password]}"
 
   landing_page = SdcWebsite.landing_page
+
   signed_in_user = SdcWebsite.navigation.user_drop_down.signed_in_user
   if SdcEnv.browser
     if SdcEnv.sauce_device
@@ -64,10 +70,6 @@ Then /^sign-in to Orders$/ do
       SdcWebsite.navigation.user_drop_down.signed_in_user.safe_wait_until_present(timeout: 15)
     else
       step 'click Orders landing page sign-in button'
-
-      loading_orders = SdcWebsite.orders.loading_orders
-      loading_orders.wait_until_present(timeout: 8)
-      loading_orders.wait_while_present(timeout: 10)
       signed_in_user.safe_wait_until_present(timeout: 5)
       expect(signed_in_user.text_value).to eql(TestData.hash[:username])
     end
@@ -99,6 +101,8 @@ end
 Then /^click Orders landing page sign-in button$/ do
   SdcWebsite.landing_page.sign_in.wait_until_present(timeout: 3)
   SdcWebsite.landing_page.sign_in.click
+  SdcWebsite.orders.loading_orders.safe_wait_until_present(timeout: 5)
+  SdcWebsite.orders.loading_orders.wait_while_present(timeout: 40)
 end
 
 Then /^[Ss]ign-out of SDC [Ww]ebsite$/ do

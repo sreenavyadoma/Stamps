@@ -10,8 +10,8 @@ module Stamps
           super
           @window_title = StampsField.new(driver.div(text: "Extra Services"))
           textboxes = driver.text_fields(id: "sdc-extraserviceswin-securitydroplist-inputEl")
-          dropdowns = driver.divs(id: "sdc-extraserviceswin-securitydroplist-trigger-picker")
-          @security = StampsCombobox.new(textboxes, dropdowns, :li, 0)
+          drop_downs = driver.divs(id: "sdc-extraserviceswin-securitydroplist-trigger-picker")
+          @security = StampsCombobox.new(textboxes, drop_downs, :li, 0)
 
           textbox = driver.text_field(id: "sdc-extraserviceswin-valuenumberfield-inputEl")
           inc_btn = driver.div(css: "div[id=sdc-extraserviceswin-valuenumberfield-trigger-spinner]>div[class*=up]")
@@ -19,8 +19,8 @@ module Stamps
           @value = StampsNumberField.new(textbox, inc_btn, dec_btn)
 
           textboxes = driver.text_fields(id: "sdc-extraserviceswin-contentdroplist-inputEl")
-          dropdowns = driver.divs(id: "sdc-extraserviceswin-contentdroplist-trigger-picker")
-          @handling = StampsCombobox.new(textboxes, dropdowns, :li, 0)
+          drop_downs = driver.divs(id: "sdc-extraserviceswin-contentdroplist-trigger-picker")
+          @handling = StampsCombobox.new(textboxes, drop_downs, :li, 0)
 
           # @save_field = StampsField.new(driver.span(id: "sdc-extraservices-savebtn-btnInnerEl"))
           @save_field = StampsField.new(driver.span(id: "sdc-extraservices-savebtn-btnWrap"))
