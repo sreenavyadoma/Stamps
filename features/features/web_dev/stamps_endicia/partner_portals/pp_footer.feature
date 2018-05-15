@@ -22,7 +22,7 @@ Feature: PP-MVP: Footer
 #    #validate footer on Reset Password Request Confirmation
 #    Then PP: a user navigates to Reset Password Request Confirmation
 #    Then PP: expect footer to exists
-#    Then PP: expect copyright dates are correct
+#    Then PP: expect copyright dates is 2017 - current year
 #    Then PP: click on Copyright Stamps.com link
 #    Then PP: expect https://www.stamps.com/site/copyright/ open in a new tab
 #    Then PP: click on Copyright Endicia link
@@ -35,7 +35,7 @@ Feature: PP-MVP: Footer
 #    #validate footer on Set Password Page
 #    Then PP: a user navigates to Set Password Page
 #    Then PP: expect footer to exists
-#    Then PP: expect copyright dates are correct
+#    Then PP: expect copyright dates is 2017 - current year
 #    Then PP: click on Copyright Stamps.com link
 #    Then PP: expect https://www.stamps.com/site/copyright/ open in a new tab
 #    Then PP: click on Copyright Endicia link
@@ -48,7 +48,7 @@ Feature: PP-MVP: Footer
     #validate footer on 404 Page
 #    Then PP: a user navigates to 404 Page
 #    Then PP: expect footer to exists
-#    Then PP: expect copyright dates are correct
+#    Then PP: expect copyright dates is 2017 - current year
 #    Then PP: click on Copyright Stamps.com link
 #    Then PP: expect https://www.stamps.com/site/copyright/ open in a new tab
 #    Then PP: click on Copyright Endicia link
@@ -61,7 +61,7 @@ Feature: PP-MVP: Footer
 #  #validate footer on 500 Page
 #  Then PP: a user navigates to 500 Page
 #  Then PP: expect footer to exists
-#  Then PP: expect copyright dates are correct
+#  Then PP: expect copyright dates is 2017 - current year
 #  Then PP: click on Copyright Stamps.com link
 #  Then PP: expect https://www.stamps.com/site/copyright/ open in a new tab
 #  Then PP: click on Copyright Endicia link
@@ -82,7 +82,7 @@ Feature: PP-MVP: Footer
 #  Then PP: User clicks Log In
 #  Then PP: expect dashboard page header exist
 #  Then PP: expect footer to exists
-#  Then PP: expect copyright dates are correct
+#  Then PP: expect copyright dates is 2017 - current year
 #  Then PP: click on Copyright Stamps.com link
 #  Then PP: expect https://www.stamps.com/site/copyright/ open in a new tab
 #  Then PP: click on Copyright Endicia link
