@@ -9,9 +9,7 @@ Feature: PP-MVP: Header and Favicons
     Then PP: expect global header exists
     Then PP: expect partner portal logo exists
     Then PP: expect Stamps Endicia Partner Portal Logo exists
-    Then PP: expect left panel to expand for browser
     Then PP: expect hamburger button does not exists for browser
-    Then PP: expect arrow on left panel does not exists for browser
     Then PP: navigate back to previous page
 
     #log in
@@ -37,6 +35,7 @@ Feature: PP-MVP: Header and Favicons
     Then PP: expect partner portal logo exists
     Then PP: expect Stamps Endicia Partner Portal Logo exists for mobile
     Then PP: expect hamburger button does not exists for mobile
+    Then PP: expect X button does not exists
     Then PP: navigate back to previous page
 
     #log in

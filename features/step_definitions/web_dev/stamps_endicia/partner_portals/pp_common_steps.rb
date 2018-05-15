@@ -78,6 +78,10 @@ Then /^[Pp]P: [Ee]xpect [Xx] button exists$/ do
   expect(PartnerPortal.common_page.x_button).to be_present, 'X button DOES NOT exist on mobile mode'
 end
 
+Then /^[Pp]P: [Ee]xpect [Xx] button does not exists$/ do
+  expect(PartnerPortal.common_page.x_button).not_to be_present, 'X button is PRESENT in mobile mode'
+end
+
 Then /^[Pp]P: [Cc]lick on [Xx] button$/ do
     PartnerPortal.common_page.x_button.wait_until_present(timeout: 10)
     PartnerPortal.common_page.x_button.click
