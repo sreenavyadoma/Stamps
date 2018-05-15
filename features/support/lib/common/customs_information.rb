@@ -66,20 +66,20 @@ module Stamps
           cache["textbox#{index}".to_sym]
         end
 
-        def dropdown
-          if cache["dropdown#{index}".to_sym].nil? || !cache["dropdown#{index}".to_sym].present?
-            cache["dropdown#{index}".to_sym] = StampsField.new(driver.divs(css: "[id^=singlecustomsitem] [id$=picker]")[index])
+        def drop_down
+          if cache["drop_down#{index}".to_sym].nil? || !cache["drop_down#{index}".to_sym].present?
+            cache["drop_down#{index}".to_sym] = StampsField.new(driver.divs(css: "[id^=singlecustomsitem] [id$=picker]")[index])
           end
-          cache["dropdown#{index}".to_sym]
+          cache["drop_down#{index}".to_sym]
         end
 
         def select(str)
-          dropdown.scroll_into_view.click
+          drop_down.scroll_into_view.click
           selection = StampsField.new(driver.lis(text: str)[@lov_index.nil? ? @lov_index = driver.lis(text: "United States").size - 1 : @lov_index])
-          dropdown.scroll_into_view.click
+          drop_down.scroll_into_view.click
           15.times do
             break if textbox.scroll_into_view.text.include?(str)
-            dropdown.scroll_into_view.click unless selection.present?
+            drop_down.scroll_into_view.click unless selection.present?
             sleep(0.15)
             selection.scroll_into_view.click
           end
@@ -185,9 +185,9 @@ module Stamps
               add_item.click
               sleep(0.2)
               # expose Made In country list of values on item add
-              cache["item_number#{number}".to_sym].made_in.dropdown.click
+              cache["item_number#{number}".to_sym].made_in.drop_down.click
               sleep(0.05)
-              cache["item_number#{number}".to_sym].made_in.dropdown.click
+              cache["item_number#{number}".to_sym].made_in.drop_down.click
             end
           end
           nil
@@ -214,8 +214,8 @@ module Stamps
         def initialize(param)
           super
           textboxes = driver.text_fields(name: "CustomsContents")
-          dropdowns = driver.divs(id: "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker")
-          @combobox = StampsCombobox.new(textboxes, dropdowns, :li, 0)
+          drop_downs = driver.divs(id: "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker")
+          @combobox = StampsCombobox.new(textboxes, drop_downs, :li, 0)
           @contents = PackageContentsDetails.new(param).extend(MoreInfo)
         end
 
@@ -254,8 +254,8 @@ module Stamps
 
 
           textboxes = driver.text_fields(id: "sdc-customsFormWindow-internaltransactiondroplist-inputEl")
-          dropdowns = driver.divs(id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker")
-          @internal_transaction = StampsCombobox.new(textboxes, dropdowns, :li, 0)
+          drop_downs = driver.divs(id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker")
+          @internal_transaction = StampsCombobox.new(textboxes, drop_downs, :li, 0)
 
           @more_info = StampsTextbox.new driver.text_field name: "CustomsComments"
           @usps_privacy_act_warning = StampsField.new(driver.label text: "You must agree to the USPS Privacy Act Statement")

@@ -21,9 +21,9 @@ module Stamps
       end
 
       class MailPrinterComboBox < WebApps::Base
-        def dropdown
-          @dropdown = StampsField.new(driver.div(css: "[id^=printwindow-] [class*=x-form-arrow-trigger-default]")) if @dropdown.nil? || !@dropdown.present?
-          @dropdown
+        def drop_down
+          @drop_down = StampsField.new(driver.div(css: "[id^=printwindow-] [class*=x-form-arrow-trigger-default]")) if @drop_down.nil? || !@drop_down.present?
+          @drop_down
         end
 
         def textbox
@@ -42,7 +42,7 @@ module Stamps
           5.times do
             return textbox.text if textbox.text.include?(partial_printer_name)
             selection = StampsField.new(driver.li(visible_text: /#{partial_printer_name}/))
-            dropdown.click unless selected_printer.present?
+            drop_down.click unless selected_printer.present?
             return false if selected_printer.present? && !selection.present?
             selection.click
             return textbox.text if textbox.text.include?(partial_printer_name)
@@ -52,18 +52,18 @@ module Stamps
       end
 
       class MailPaperTrayComboBox < WebApps::Base
-        attr_accessor :dropdown, :textbox
+        attr_accessor :drop_down, :textbox
 
         def initialize(param)
           super
           @textbox = StampsTextbox.new(driver.input(name: "paperTrays"))
-          @dropdown = StampsField.new(driver.div(css: "div[class*='x-vbox-form-item']>div>div>div[id$=-trigger-picker]"))
+          @drop_down = StampsField.new(driver.div(css: "div[class*='x-vbox-form-item']>div>div>div[id$=-trigger-picker]"))
         end
 
         def select(str)
           selection_label = StampsField.new(driver.li(text: str))
           10.times do
-            dropdown.click unless selection_label.present?
+            drop_down.click unless selection_label.present?
             selection_label.click
             sleep(0.15)
             break if textbox.text.include?(str)
