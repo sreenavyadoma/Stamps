@@ -88,7 +88,7 @@ module PartnerPortal
 
     def chart_data_window(chart, year)
       case year
-        when "Previous"
+        when 'Previous'
           case chart
             when "Preferred Rates Qualified Postage Amount"
               return SdcPage.browser.execute_script('return window.ChartsData.Charts.PrefRatesQualifiedPostageAmount.datasets[0].data')
@@ -99,7 +99,7 @@ module PartnerPortal
             when "Revenue Share"
               return SdcPage.browser.execute_script('return window.ChartsData.Charts.RevenueShare.datasets[0].data')
           end
-        when "Current"
+        when 'Current'
           case chart
             when "Preferred Rates Qualified Postage Amount"
               return SdcPage.browser.execute_script('return window.ChartsData.Charts.PrefRatesQualifiedPostageAmount.datasets[1].data')
