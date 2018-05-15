@@ -37,7 +37,8 @@ end
 Then /^search for (.+) in manage print options$/ do |str|
   manage_print_options = SdcMail.modals.manage_print_options
   manage_print_options.search.set str
-  SdcPage.browser.wait_until(timeout: 2) {manage_print_options.grid.size == 1 }
+  manage_print_options.print_option_checkbox.wait_until_present(timeout: 5)
+  #SdcPage.browser.wait_until(timeout: 8) { manage_print_options.grid.size == 1 }
 end
 
 Then /^click save in manage print options$/ do
