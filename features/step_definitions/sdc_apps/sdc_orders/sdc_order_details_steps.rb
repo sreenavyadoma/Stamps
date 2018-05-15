@@ -439,16 +439,12 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Ff]rom to (?:Manage Shipping Addresses\.\.\.|(.*))$/ do |str|
   if SdcEnv.new_framework
     str ||= 'Manage Shipping Addresses...'
-    SdcOrders.order_details.ship_from.selection(str)
-    5.times do
-      SdcOrders.order_details.ship_from.drop_down.click unless SdcOrders.order_details.ship_from.selection_obj.present?
-      SdcOrders.order_details.ship_from.selection_obj.safe_click unless SdcOrders.order_details.ship_from.selection_obj.class_disabled?
-      break if str == 'default' && SdcOrders.order_details.ship_from.text_field.text_value != ''
-      #break if str == 'Manage Shipping Addresses...' && SdcOrders.modals.manage_shipping_addresses.title.present?
-      if SdcOrders.order_details.ship_from.text_field.text_value == str
-        TestData.hash[:ship_from] = SdcOrders.order_details.ship_from.text_field.text_value unless str == 'Manage Shipping Addresses...'
-        break
-      end
+    ship_from = SdcOrders.order_details.ship_from
+    ship_from.selection_element(str)
+    ship_from.drop_down.click unless ship_from.selection.present?
+    ship_from.selection.click unless ship_from.selection.class_disabled?
+    if ship_from.text_field.text_value == str || str == 'default'
+      TestData.hash[:ship_from] = ship_from.text_field.text_value unless str == 'Manage Shipping Addresses...'
     end
   else
     if str.nil?
