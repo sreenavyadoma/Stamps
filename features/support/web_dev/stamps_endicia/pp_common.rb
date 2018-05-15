@@ -34,6 +34,11 @@ module PartnerPortal
 
     #footer
     page_object(:footer)  { { class:  ['footer'] } }
+    page_object(:copyright_date) { {class: ['footer__copyright']} }
+    page_object(:stamps_copyright_link) { {xpath: '//a[@href="https://www.stamps.com/site/copyright/"]'} }
+    page_object(:endicia_copyright_link) { {xpath: '//a[@href="https://www.endicia.com/LegalNotice/"]'} }
+    page_object(:stamps_privacy_policy_link) { {xpath:  '//a[@href="https://www.stamps.com/privacy-policy/"]'} }
+    page_object(:endicia_privacy_policy_link) { {xpath:  '//a[@href="https://www.endicia.com/policy/privacy-policy/"]'} }
 
 
     def user_table_query(user, column)
