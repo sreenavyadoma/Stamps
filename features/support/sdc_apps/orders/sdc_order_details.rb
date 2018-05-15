@@ -4,11 +4,11 @@ module SdcOrders
     page_object(:drop_down) { {xpath: '(//div[starts-with(@id, "shipfromdroplist")]/div[contains(@id, "trigger-picker")])[1]'} }
     page_object(:text_field) { {xpath: '(//input[starts-with(@id, "shipfromdroplist")])[1]'} }
 
-      def selection(str)
-        return page_object(:selection_obj) { {xpath: '(//li[contains(@class, "x-boundlist-item")])[1]'} } if str == "default"
-        page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
-      end
+    def selection_element(str)
+        return page_object(:selection) { {xpath: '(//li[contains(@class, "x-boundlist-item")])[1]'} } if str == "default"
+        page_object(:selection) { {xpath: "//li[contains(text(), '#{str}')]"} }
     end
+  end
 
   class SdcShipToCountryDom < SdcPage
     page_object(:drop_down) { {xpath: '//div[contains(@id, "matltocountrydroplist-trigger-picker")]'} }
