@@ -23,6 +23,7 @@ Then /^[Pp]P: navigate back to previous page$/ do
 end
 
 Then /^[Pp]P: click on global header$/ do
+  PartnerPortal.common_page.global_header.wait_until_present(timeout: 10)
   PartnerPortal.common_page.global_header.click
 end
 
