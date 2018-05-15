@@ -47,7 +47,7 @@ alex_regress:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders
 alex_rates:  --tags @rates_fcm_package BROWSER=ff URL=qacc USR=abqacc10 PW=password1  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false
 alex_rates_pmi:  --tags @rates_pmi_comm_plus_group_9 BROWSER=ff WEB_APP=orders URL=stg USR=abqast2 PW=password1  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false
 alex_orders:  --tags @bvt_shipstation_search BROWSER=ff WEB_APP=orders URL=stg USR=default PW=pass111 NEW_FRAMEWORK=true --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=true #abqast1
-#alex_orders:  --tags @bvt_new_order BROWSER=ff WEB_APP=orders URL=qacc USR=abqacc10 PW=password1 new_framework=true  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false #abqast1
+#alex_orders:  --tags @bvt_new_order BROWSER=ff URL=stg USR=abqast2 PW=password1 new_framework=true  --guess LOG_LEVEL=info HEALTHCHECK=false #abqast1
 alex_test:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders URL=qacc USR=abqacc10 PW=password1  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false
 #alex_orders:  --tags @bvt_orders_ship_date_calendar BROWSER=ff WEB_APP=orders URL=stg USR=abqast2 PW=password1 new_framework=true  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false
 
