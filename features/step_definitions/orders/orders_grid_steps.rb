@@ -9,7 +9,7 @@ Then /^[Cc]heck [Oorders ]*?[Ggrid ]*?[Ccached ]*?[Oo]rder[IiDd ]*?(?:| (\d+))$/
   end
 end
 
-Then /^[Uu]ncheck [Oo]rders [Gg]rid \w*?\s?[Oo]rder ID( \d+)?$/ do |order_id|
+Then /^uncheck orders grid order id (\d+)?$/ do |order_id|
 # Then /^[Uu]ncheck [Oo]rders [Gg]rid \w* ?[Oo]rder (ID|id)\s?(\d+)?$/ do |t,order_id|
 # Then /^[Uu]ncheck [Oorders ]*?[Ggrid ]*?[Ccached ]*?[Oo]rder[IiDd ]*?(?:| (\d+))$/ do |order_id|
   order_id = order_id.nil? ? TestData.hash[:order_id].values.last : TestData.hash[:order_id][order_id.to_i]
