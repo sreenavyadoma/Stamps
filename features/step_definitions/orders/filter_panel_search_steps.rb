@@ -20,7 +20,7 @@ Then /^[Ss]earch Orders for (.*) expecting to find at least (\d+)$/ do |str, cou
   if SdcEnv.new_framework
     step "click Filter Panel Search button"
     SdcOrders.loading_orders.wait_while_present(timeout: 10)
-    expect(SdcOrders.filter_panel.search_results.count.text_value.to_i).to be >= count.to_i, "Couldn't find #{str} in Orders Grid"
+    expect(SdcOrders.filter_panel.search_results.count.text_value.to_i).to be >= count.to_i
   else
     begin
       15.times do
