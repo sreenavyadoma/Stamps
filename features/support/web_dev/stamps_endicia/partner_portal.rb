@@ -105,7 +105,64 @@ module PartnerPortal
     #Email
     text_field(:email, tag: :text_field, required: true) { { xpath: '//input[@name="email"]' } }
 
-    #page_url { |env| "https://partner.#{env}.stamps.com/reset-password/request" }
+    page_url { |env| "https://partner.#{env}.stamps.com/reset-password/request" }
+
+    def self.visit
+      super(case SdcEnv.env
+              when :qacc
+                'qacc'
+              when :qasc
+                'sdcwebsite.qasc'
+              when :stg
+                'staging'
+              when :prod
+                ''
+              else
+                # ignore
+            end)
+    end
+
+  end
+
+  class PPResetPasswordConfirmationPage < SdcPage
+    page_url { |env| "https://partner.#{env}.stamps.com/reset-password/request/confirmation" }
+
+    def self.visit
+      super(case SdcEnv.env
+              when :qacc
+                'qacc'
+              when :qasc
+                'sdcwebsite.qasc'
+              when :stg
+                'staging'
+              when :prod
+                ''
+              else
+                # ignore
+            end)
+    end
+  end
+
+  class PPSetPasswordPage < SdcPage
+    page_url { |env| "https://partner.#{env}.stamps.com/set-password" }
+
+    def self.visit
+      super(case SdcEnv.env
+              when :qacc
+                'qacc'
+              when :qasc
+                'sdcwebsite.qasc'
+              when :stg
+                'staging'
+              when :prod
+                ''
+              else
+                # ignore
+            end)
+    end
+  end
+
+  class PPError404Page < SdcPage
     page_url { |env| "https://partner.#{env}.stamps.com/error-404" }
 
     def self.visit
@@ -125,7 +182,25 @@ module PartnerPortal
 
   end
 
+  class PPError500Page < SdcPage
+    page_url { |env| "https://partner.#{env}.stamps.com/error-500" }
 
+    def self.visit
+      super(case SdcEnv.env
+              when :qacc
+                'qacc'
+              when :qasc
+                'sdcwebsite.qasc'
+              when :stg
+                'staging'
+              when :prod
+                ''
+              else
+                # ignore
+            end)
+    end
+
+  end
 
   class << self
 
@@ -139,6 +214,22 @@ module PartnerPortal
 
     def reset_password_page
       @reset_password_page = PPResetPasswordPage.new
+    end
+
+    def reset_password_confirm_page
+      @reset_password_confirm_page = PPResetPasswordConfirmationPage.new
+    end
+
+    def set_password_page
+      @set_password_page = PPSetPasswordPage.new
+    end
+
+    def error_404_page
+      @error_404_page = PPError404Page.new
+    end
+
+    def error_500_page
+      @error_500_page = PPError500Page.new
     end
 
     def common_page
