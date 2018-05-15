@@ -10,7 +10,7 @@ Feature: PP-MVP: Header and Favicons
     Then PP: expect partner portal logo exists
     Then PP: expect Stamps Endicia Partner Portal Logo exists
     Then PP: expect hamburger button does not exists for browser
-    Then PP: navigate back to previous page
+    Then PP: click on global header
 
     #log in
     Then PP: set login page email to env value
@@ -36,7 +36,7 @@ Feature: PP-MVP: Header and Favicons
     Then PP: expect Stamps Endicia Partner Portal Logo exists for mobile
     Then PP: expect hamburger button does not exists for mobile
     Then PP: expect X button does not exists
-    Then PP: navigate back to previous page
+    Then PP: click on global header
 
     #log in
     Then PP: set login page email to env value
@@ -58,4 +58,5 @@ Feature: PP-MVP: Header and Favicons
     Then PP: expect left panel to collapse for mobile
     Then PP: expect hamburger button exists for mobile
 
-
+    Then PP: click on global header
+    Then PP: expect dashboard page header exist
