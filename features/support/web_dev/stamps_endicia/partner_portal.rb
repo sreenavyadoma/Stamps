@@ -31,42 +31,20 @@ module PartnerPortal
     #Forgot Password? link
     link(:forgot_pw) { {xpath: '//a[@href="/reset-password/request"]'} }
 
-    def partner_user_id_query(user)
-      user = PartnerPortal.db_connection.execute("select PartnerUserId, EmailAddress from [dbo].[sdct_PartnerPortal_User] where EmailAddress = '#{user}'")
-
-      user.each do |item|
-        return item['PartnerUserId']
-      end
-
-    end
-
-    def log_info_date_created_query(user_id)
-      log = PartnerPortal.db_connection.execute(
-          'select RecordId, LogTypeId, PartnerUserId, LogInfo, DateCreated
-          from [dbo].[sdct_PartnerPortal_Log]
-          where DateCreated = (
-          Select MAX(DateCreated) from [dbo].[sdct_PartnerPortal_Log] where PartnerUserId = #{user_id})'
-      )
-      log.each do |item|
-        return item['LogInfo'], item['DateCreated']
-      end
-
-    end
-
     page_url { |env| "https://partner.#{env}.stamps.com/" }
 
     def self.visit
       super(case SdcEnv.env
-            when :qacc
-              'qacc'
-            when :qasc
-              'sdcwebsite.qasc'
-            when :stg
-              'staging'
-            when :prod
-              ''
-            else
-              # ignore
+              when :qacc
+                'qacc'
+              when :qasc
+                'sdcwebsite.qasc'
+              when :stg
+                'staging'
+              when :prod
+                ''
+              else
+                # ignore
             end)
 
     end
@@ -78,16 +56,46 @@ module PartnerPortal
     page_object(:dashboard_header) { {xpath: '//h1[contains(text(), "Dashboard")]'} }
 
     #Contract header
-    page_object(:contract_header) { {class: 'dashboard__contract-header'} }
+    page_object(:contract_header) { {class: 'dashboard__contract-header ng-star-inserted'} }
 
-    #canvas Preferred Rates Qualified Postage
-    page_objects(:preferred_rates_qualified_postage, index: 0 ) { {xpath: '//h4[contains(text(), "Preferred Rates Qualified Postage")]'} }
+    #Last Updated On
+    page_object(:contract_last_updated_on) { {class: 'dashboard__contract-updated ng-star-inserted'} }
 
-    #Revenue Share
-    page_object(:revenue_share_title) { {xpath: '//h4[contains(text(), "Revenue Share")]'} }
+    #charts
+    page_objects(:preferred_rates_qualified_transactions_usd_chart, index: 0 ) { {xpath: '//canvas[@class="chartjs-render-monitor"]'} }
+    page_objects(:preferred_rates_qualified_transactions_packages_chart, index: 1 ) { {xpath: '//canvas[@class="chartjs-render-monitor"]'} }
+    page_objects(:active_customers_customers_chart, index: 2 ) { {xpath: '//canvas[@class="chartjs-render-monitor"]'} }
+    page_objects(:revenue_share_chart, index: 3 ) { {xpath: '//canvas[@class="chartjs-render-monitor"]'} }
+
+    #charts title
+    page_objects(:preferred_rates_qualified_transactions_usd_chart_title, index: 0 ) { {xpath: '//h4[@class="ppchart__title"]'} }
+    page_objects(:preferred_rates_qualified_transactions_packages_chart_title, index: 1 ) { {xpath: '//h4[@class="ppchart__title"]'} }
+    page_objects(:active_customers_customers_chart_title, index: 2 ) { {xpath: '//h4[@class="ppchart__title"]'} }
+    page_objects(:revenue_share_chart_title, index: 3 ) { {xpath: '//h4[@class="ppchart__title"]'} }
+
+    #chart Y-axis
+    page_objects(:preferred_rates_qualified_transactions_usd_y_axis, index: 0 ) { {xpath: '//div[@class="ppchart__chartlabel"]'} }
+    page_objects(:preferred_rates_qualified_transactions_packages_chart_y_axis, index: 1 ) { {xpath: '//div[@class="ppchart__chartlabel"]'} }
+    page_objects(:active_customers_customers_chart_y_axis, index: 2 ) { {xpath: '//div[@class="ppchart__chartlabel"]'} }
+    page_objects(:revenue_share_chart_y_axis, index: 3 ) { {xpath: '//div[@class="ppchart__chartlabel"]'} }
+
+    #chart legends
+    page_objects(:preferred_rates_qualified_transactions_usd_chart_legends, index: 0 ) { {xpath:  '//ul[@class="ppchart__legend"]'} }
+    page_objects(:preferred_rates_qualified_transactions_packages_chart_legends, index: 1 ) { {xpath:  '//ul[@class="ppchart__legend"]'} }
+    page_objects(:active_customers_customers_chart_legends, index: 2 ) { {xpath:  '//ul[@class="ppchart__legend"]'} }
+    page_objects(:revenue_share_chart_legends, index: 3 ) { {xpath:  '//ul[@class="ppchart__legend"]'} }
+
 
     #submit
     button(:submit) { {xpath: '//button[@label="Submit"]'} }
+
+    #x-axis months
+    def x_axis_month_abbreviations
+     return SdcPage.browser.execute_script('return window.ChartsData.Charts.PrefRatesQualifiedPostageAmount.labels'),
+     SdcPage.browser.execute_script('return window.ChartsData.Charts.PrefRatesQualifiedPostageCount.labels'),
+     SdcPage.browser.execute_script('return window.ChartsData.Charts.ActiveCustomers.labels'),
+     SdcPage.browser.execute_script('return window.ChartsData.Charts.RevenueShare.labels')
+    end
 
   end
 

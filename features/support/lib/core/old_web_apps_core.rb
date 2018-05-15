@@ -477,11 +477,11 @@ module Stamps
     end
 
     class StampsOldDropDown # TODO-Rob refactor this to StampsGenericDropDown
-      attr_accessor :driver, :dropdown, :textbox, :html_tag
+      attr_accessor :driver, :drop_down, :textbox, :html_tag
 
-      def initialize(dropdown, html_tag, textbox)
-        @driver = dropdown.driver
-        @dropdown = StampsField.new(dropdown)
+      def initialize(drop_down, html_tag, textbox)
+        @driver = drop_down.driver
+        @drop_down = StampsField.new(drop_down)
         @html_tag = html_tag
         @textbox = StampsTextbox.new(textbox)
       end
@@ -495,7 +495,7 @@ module Stamps
                           end
 
         5.times do
-          dropdown.click
+          drop_down.click
           return selection_field if selection_field.present?
         end
         expect(selection_field).to be_present, "Drop-down selection #{selection} is not in the list of values."
@@ -524,21 +524,21 @@ module Stamps
     end
 
     class StampsDropDownLovSubStr < StampsTextbox
-      attr_accessor :list_of_values, :dropdown
+      attr_accessor :list_of_values, :drop_down
 
-      def initialize(textbox, dropdown, list_of_values)
+      def initialize(textbox, drop_down, list_of_values)
         super(textbox)
-        @dropdown = StampsField.new(dropdown)
+        @drop_down = StampsField.new(drop_down)
         @list_of_values = list_of_values
       end
 
       def select(str)
-        dropdown.click
+        drop_down.click
         sleep(0.25)
         expect(list_of_values).not_to be_nil, 'Error: Set list_of_values before calling select_from_lov.'
         10.times do
           begin
-            dropdown.click if list_of_values.size.zero?
+            drop_down.click if list_of_values.size.zero?
             break unless list_of_values.size.zero?
           rescue
             # ignore
@@ -565,16 +565,16 @@ module Stamps
 
     # todo-Rob REW
     class StampsDropdown < StampsTextbox
-      attr_accessor :html_tag, :dropdown
+      attr_accessor :html_tag, :drop_down
 
-      def initialize(textbox, dropdown, html_tag)
+      def initialize(textbox, drop_down, html_tag)
         super(textbox)
-        @dropdown = StampsField.new(dropdown)
+        @drop_down = StampsField.new(drop_down)
         @html_tag = html_tag
       end
 
       def select(str)
-        dropdown.click
+        drop_down.click
         expect(html_tag).not_to be_nil, 'Error: Set html_tag before calling select.'
         selection = case html_tag
                       when :span
@@ -589,7 +589,7 @@ module Stamps
 
         20.times do
           begin
-            dropdown.click unless selection.present?
+            drop_down.click unless selection.present?
             selection.scroll_into_view
             selection.click
             break if text == str
@@ -630,12 +630,12 @@ module Stamps
     end
 
     class StampsCombobox
-      attr_accessor :driver, :textbox, :dropdown, :selection_type, :index
+      attr_accessor :driver, :textbox, :drop_down, :selection_type, :index
 
-      def initialize(textboxes, dropdowns, selection_type, index)
+      def initialize(textboxes, drop_downs, selection_type, index)
         @index = index
         @textbox = StampsTextbox.new(textboxes[index])
-        @dropdown = StampsTextbox.new(dropdowns[index])
+        @drop_down = StampsTextbox.new(drop_downs[index])
         @selection_type = selection_type
         @driver = textbox.driver
       end
@@ -645,7 +645,7 @@ module Stamps
       end
 
       def select(str)
-        dropdown.click
+        drop_down.click
         10.times do
           selection = StampsField.new(
             case selection_type
@@ -659,7 +659,7 @@ module Stamps
           )
           begin
             break if textbox.text.include?(str)
-            dropdown.click unless selection.present?
+            drop_down.click unless selection.present?
             selection.scroll_into_view.click
           rescue
             # ignore

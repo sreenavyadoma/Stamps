@@ -272,7 +272,7 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:tracking_selected]] = TestData.hash[:tracking]
           sleep(0.525)
           # get total cost actual value from UI
-          step "Save Order Details data" if SdcEnv.sdc_app == :orders
+          step 'Save Order Details data' if SdcEnv.sdc_app == :orders
           step "save Print Form Total Cost" if SdcEnv.sdc_app == :mail
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:total_ship_cost]] = (TestData.hash[:total_ship_cost].to_f * 100).round / 100.0
 

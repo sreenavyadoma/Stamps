@@ -1,10 +1,3 @@
-Then /^[Ee]stablish [Pp]artner [Pp]ortal db connection$/ do
-  PartnerPortal.db_connection
-end
-
-Then /^[Cc]lose [Pp]artner [Pp]ortal db connection$/ do
-  PartnerPortal.db_connection.close
-end
 
 Then /^[Pp]P: [Aa] user navigates to the login page$/ do
   TestData.hash[:system_date] = DateTime.now.utc
@@ -122,9 +115,10 @@ end
 Then /^[Pp]P: Expect a record (.*) event is added in Audit Records for (?:user|(.*))/ do |log_info, user|
   step 'Establish Partner Portal db connection'
 
-  TestData.hash[:user_id] = PartnerPortal.login_page.partner_user_id_query((user.nil?) ? (SdcEnv.usr) :user)
+  TestData.hash[:user_id] = PartnerPortal.common_page.user_table_query(((user.nil?) ? (SdcEnv.usr) :user), 'PartnerUserId')
 
-  TestData.hash[:login_status], TestData.hash[:date_created] = PartnerPortal.login_page.log_info_date_created_query(TestData.hash[:user_id])
+  TestData.hash[:login_status] = PartnerPortal.common_page.log_table_query(TestData.hash[:user_id], 'LogInfo')
+  TestData.hash[:date_created] = PartnerPortal.common_page.log_table_query(TestData.hash[:user_id], 'DateCreated')
 
   step 'Close partner portal db connection'
 

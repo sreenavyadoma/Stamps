@@ -15,11 +15,11 @@ module SdcNavigation
 
   class << self
     def user_drop_down
-      @user_drop_down = SignedInUser.new
+      SignedInUser.new
     end
 
     def mail_sign_in_modal
-      @mail_sign_in_modal = MailSignInModal.new
+      MailSignInModal.new
     end
   end
 end

@@ -195,9 +195,9 @@ module Stamps
               driver.text_field(css: "[id^=generaltabview-][id$=-targetEl] [id^=form-][id$=-targetEl]>div:nth-child(4) input")) : cache[:textbox]
         end
 
-        def dropdown
-          (cache[:dropdown].nil? || !cache[:dropdown].present?) ? cache[:dropdown] = StampsField.new(
-              driver.div(css: "[id^=generaltabview-][id$=-targetEl] [id^=form-][id$=-targetEl]>div:nth-child(4) [class*=arrow-trigger]")) : cache[:dropdown]
+        def drop_down
+          (cache[:drop_down].nil? || !cache[:drop_down].present?) ? cache[:drop_down] = StampsField.new(
+              driver.div(css: "[id^=generaltabview-][id$=-targetEl] [id^=form-][id$=-targetEl]>div:nth-child(4) [class*=arrow-trigger]")) : cache[:drop_down]
         end
 
         def five_min
@@ -229,7 +229,7 @@ module Stamps
           selection = StampsField.new(driver.li(text: str))
           10.times do
             return textbox.text if textbox.text == str
-            dropdown.click unless selection.present?
+            drop_down.click unless selection.present?
             selection.click
           end
           nil
@@ -237,12 +237,12 @@ module Stamps
       end
 
       class PostDateDropDown < WebApps::Base
-        attr_reader :textbox, :dropdown
+        attr_reader :textbox, :drop_down
 
         def initialize(param)
           super
           @textbox = StampsTextbox.new driver.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div>input")
-          @dropdown = StampsField.new driver.div css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div[id$=picker]"
+          @drop_down = StampsField.new driver.div css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div[id$=picker]"
         end
 
         def text
@@ -253,7 +253,7 @@ module Stamps
           selection_label = StampsField.new driver.li text: selection
           10.times do
             break if textbox.text.include? selection
-            dropdown.click unless selection_label.present?
+            drop_down.click unless selection_label.present?
             selection_label.click
           end
           expect(textbox.text).to include(selection)
@@ -357,19 +357,19 @@ module Stamps
       end
 
       class PostageBalanceDropDown < WebApps::Base
-        attr_reader :textbox, :dropdown
+        attr_reader :textbox, :drop_down
 
         def initialize(param)
           super
           @textbox = StampsTextbox.new driver.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div>input")
-          @dropdown = StampsField.new driver.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div[id$=picker]")
+          @drop_down = StampsField.new driver.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div[id$=picker]")
         end
 
         def select(selection)
           selection_label = StampsField.new driver.li text: selection
           10.times do
             break if textbox.text.include? selection
-            dropdown.click unless selection_label.present?
+            drop_down.click unless selection_label.present?
             selection_label.click
           end
           expect(textbox.text).to include(selection)

@@ -1,3 +1,10 @@
+Then /^[Ee]stablish [Pp]artner [Pp]ortal db connection$/ do
+  PartnerPortal.db_connection
+end
+
+Then /^[Cc]lose [Pp]artner [Pp]ortal db connection$/ do
+  PartnerPortal.db_connection.close
+end
 
 Then /^[Pp]P: scroll to top of the page$/ do
    SdcPage.browser.execute_script('document.documentElement.scrollTop = 0')
@@ -23,6 +30,13 @@ Then /^[Pp]P: [Ee]xpect global header exists$/ do
   PartnerPortal.common_page.global_header.wait_until_present(timeout: 10)
   expect(PartnerPortal.common_page.global_header).to be_present, 'Global header DOES NOT exist'
 end
+
+
+Then /^[Pp]P: [Ee]xpect footer to exists$/ do
+  PartnerPortal.common_page.footer.wait_until_present(timeout: 10)
+  expect(PartnerPortal.common_page.footer).to be_present, 'Footer DOES NOT exist'
+end
+
 
 Then /^[Pp]P: [Ee]xpect [Pp]artner [Pp]ortal logo exists$/ do
   expect(PartnerPortal.common_page.partner_portal_logo).to be_present, 'Partner Portal logo DOES NOT exist'
@@ -73,6 +87,12 @@ Then /^[Pp]P: [Ee]xpect [Dd]ashboard on left panel exists$/ do
   PartnerPortal.common_page.panel_dashboard.wait_until_present(timeout: 10)
   expect(PartnerPortal.common_page.panel_dashboard).to be_present, 'Dashboard on panel DOES NOT exist'
 end
+
+Then /^[Pp]P: [Cc]lick on Logout on left panel$/ do
+  PartnerPortal.common_page.panel_logout.wait_until_present(timeout: 10)
+  PartnerPortal.common_page.panel_logout.send_keys(:enter)
+end
+
 
 Then /^[Pp]P: [Ee]xpect left panel to expand for browser$/ do
   PartnerPortal.common_page.panel_expanded_lg.wait_until_present(timeout: 10)

@@ -5,9 +5,8 @@ module SdcOrders
     page_object(:text_field) { {xpath: '(//input[starts-with(@id, "shipfromdroplist")])[1]'} }
 
       def selection(str)
-        # self.class.page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
-        return self.class.page_object(:selection_obj) { {xpath: '(//li[contains(@class, "x-boundlist-item")])[1]'} } if str == "default"
-        self.class.page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
+        return page_object(:selection_obj) { {xpath: '(//li[contains(@class, "x-boundlist-item")])[1]'} } if str == "default"
+        page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
       end
     end
 
@@ -16,7 +15,7 @@ module SdcOrders
     page_object(:text_field) { {xpath: '//input[contains(@id, "matltocountrydroplist")]'} }
 
     def selection(str)
-      self.class.page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
+      page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
     end
   end
 
@@ -25,7 +24,7 @@ module SdcOrders
     page_object(:text_field) { {xpath: '//div[contains(@id, "shiptoview-international")]//input[contains(@id, "combo")]'} }
 
     def selection(str)
-      self.class.page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
+      page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
     end
   end
 
@@ -34,8 +33,8 @@ module SdcOrders
     page_object(:drop_down, required: true, timeout: 40) { {xpath: '(//div[contains(@id, "servicedroplist")]//div[contains(@id, "trigger-picker")])[1]'} }
     page_object(:text_field, required: true, timeout: 40) { {xpath: '(//input[contains(@id, "servicedroplist")])[1]'} }
 
-    def selection(str)
-      self.class.page_object(:selection_obj) { {xpath: "//li[@id='#{data_for(:orders_services, {})[str]}']"} }
+    def selection(name: :selection_element, str: 'Manage Service Options...')
+      page_object(name) { {xpath: "//li[@id='#{data_for(:orders_services, {})[str]}']"} }
     end
   end
 
@@ -49,7 +48,7 @@ module SdcOrders
     text_field(:text_f, tag: :text_field) { {xpath: '(//input[contains(@id, "insurancefield")])[1]'} }
     page_object(:increment) { {xpath: '(//div[contains(@id, "insurancefield")]//div[contains(@class, "x-form-spinner-up")])[1]'} }
     page_object(:decrement) { {xpath: '(//div[contains(@id, "insurancefield")]//div[contains(@class, "x-form-spinner-down")])[1]'} }
-    number(:amount, :text_f, :increment, :decrement)
+    sdc_number(:amount, :text_f, :increment, :decrement)
   end
 
   class SdcOrderDetailsTracking < SdcPage
@@ -58,7 +57,7 @@ module SdcOrders
     page_object(:text_field) { {xpath: '(//input[contains(@id, "trackingdroplist")])[1]'} }
 
     def selection(str)
-      self.class.page_object(:selection_obj) { {xpath: "//li//td[text()='#{str}']"} }
+      page_object(:selection_obj) { {xpath: "//li//td[text()='#{str}']"} }
     end
   end
 
@@ -74,7 +73,7 @@ module SdcOrders
     page_object(:show_less) { {xpath: '//div[contains(@id, "domestic")]//span[text()="Less"]'} }
 
     def country
-      @country = SdcShipToCountryDom.new
+      SdcShipToCountryDom.new
     end
   end
 
@@ -90,8 +89,12 @@ module SdcOrders
     page_object(:email, tag: :text_field) { {xpath: '(//input[@name="BuyerEmail"])[2]'} }
     page_object(:show_less) { {xpath: '//div[contains(@id, "international")]//span[text()="Less"]'} }
 
+    page_object(:customs_form) { {xpath: '//*[contains(@class, "customs-btn-container")]//*[text()="Customs Form..."]'} }
+    page_object(:restrictions) { {xpath: ''} }
+    page_object(:reference_num) { {xpath: ''} }
+
     def country
-      @country = SdcShipToCountryIntl.new
+      SdcShipToCountryIntl.new
     end
   end
 
@@ -111,29 +114,29 @@ module SdcOrders
     text_field(:lbs_tf, tag: :text_field) { {xpath: '(//div[contains(@class, "pounds-numberfield")]//input)[1]'} }
     page_object(:lbs_inc) { {xpath: '(//div[contains(@class, "pounds-numberfield")]//div[contains(@class, "x-form-spinner-up")])[1]'} }
     page_object(:lbs_dec) { {xpath: '(//div[contains(@class, "pounds-numberfield")]//div[contains(@class, "x-form-spinner-down")])[1]'} }
-    number(:lbs, :lbs_tf, :lbs_inc, :lbs_dec)
+    sdc_number(:lbs, :lbs_tf, :lbs_inc, :lbs_dec)
 
     text_field(:oz_tf, tag: :text_field) { {xpath: '(//div[contains(@class, "ounces-numberfield")]//input)[1]'} }
     page_object(:oz_inc) { {xpath: '(//div[contains(@class, "ounces-numberfield")]//div[contains(@class, "x-form-spinner-up")])[1]'} }
     page_object(:oz_dec) { {xpath: '(//div[contains(@class, "ounces-numberfield")]//div[contains(@class, "x-form-spinner-down")])[1]'} }
-    number(:oz, :oz_tf, :oz_inc, :oz_dec)
+    sdc_number(:oz, :oz_tf, :oz_inc, :oz_dec)
   end
 
   class SdcOrderDetailsDimensions < SdcPage
     text_field(:len_tf, tag: :text_field) { {xpath: '(//*[contains(@class, "lengthnumberfield")])[1]'} }
     page_object(:len_inc) { {xpath: '(//*[contains(@class, "lengthnumberfield")]/../following-sibling::*/div[contains(@class, "up")])[1]'} }
     page_object(:len_dec) { {xpath: '(//*[contains(@class, "lengthnumberfield")]/../following-sibling::*/div[contains(@class, "down")])[1]'} }
-    number(:length, :len_tf, :len_inc, :len_dec)
+    sdc_number(:length, :len_tf, :len_inc, :len_dec)
 
     text_field(:wid_tf, tag: :text_field) { {xpath: '(//*[contains(@class, "widthnumberfield")])[1]'} }
     page_object(:wid_inc) { {xpath: '(//*[contains(@class, "lengthnumberfield")]/../following-sibling::*/div[contains(@class, "up")])[1]'} }
     page_object(:wid_dec) { {xpath: '(//*[contains(@class, "lengthnumberfield")]/../following-sibling::*/div[contains(@class, "down")])[1]'} }
-    number(:width, :wid_tf, :wid_inc, :wid_dec)
+    sdc_number(:width, :wid_tf, :wid_inc, :wid_dec)
 
     text_field(:oz_tf, tag: :text_field) { {xpath: '(//*[contains(@class, "heightnumberfield")])[1]'} }
     page_object(:oz_inc) { {xpath: '(//*[contains(@class, "heightnumberfield")]/../following-sibling::*/div[contains(@class, "up")])[1]'} }
     page_object(:oz_dec) { {xpath: '(//*[contains(@class, "heightnumberfield")]/../following-sibling::*/div[contains(@class, "down")])[1]'} }
-    number(:height, :oz_tf, :oz_inc, :oz_dec)
+    sdc_number(:height, :oz_tf, :oz_inc, :oz_dec)
   end
 
   class SdcOrderDetails < SdcPage
@@ -145,35 +148,35 @@ module SdcOrders
     page_object(:order_id, required: true, timeout: 20) { {xpath: '(//*[contains(@class, "singleorder-detailsform")]//div[contains(@class, "sdc-toolbar")]//b)[1]'} }
 
     def ship_to
-      @ship_to = SdcOrderDetailsShipTo.new
+      SdcOrderDetailsShipTo.new
     end
 
     def ship_from
-      @ship_from = SdcOrderDetailsShipFrom.new
+      SdcOrderDetailsShipFrom.new
     end
 
     def weight
-      @wieght = SdcOrderDetailsWeight.new
+      SdcOrderDetailsWeight.new
     end
 
     def service
-      @service = SdcOrderDetailsService.new
+      SdcOrderDetailsService.new
     end
 
     def insurance
-      @insurance = SdcOrderDetailsInsurance.new
+      SdcOrderDetailsInsurance.new
     end
 
     def tracking
-      @tracking = SdcOrderDetailsTracking.new
+      SdcOrderDetailsTracking.new
     end
 
     def footer
-      @footer = SdcOrderDetailsFooter.new
+      SdcOrderDetailsFooter.new
     end
 
     def dimensions
-      @dimensions = SdcOrderDetailsDimensions.new
+      SdcOrderDetailsDimensions.new
     end
   end
 end

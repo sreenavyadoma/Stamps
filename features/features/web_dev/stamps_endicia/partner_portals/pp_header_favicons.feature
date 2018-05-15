@@ -25,7 +25,6 @@ Feature: PP-MVP: Header and Favicons
     Then PP: click on arrow on left panel
     Then PP: expect hamburger button exists for browser
 
-
     Then PP: click on global header
     Then PP: expect dashboard page header exist
 

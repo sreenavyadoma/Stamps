@@ -4,7 +4,7 @@ module Stamps
     module Printing
       class OrdersPrintMediaDropList < WebApps::Base
         
-        def dropdown
+        def drop_down
           cache[:printing_on].nil? || !cache[:printing_on].present? ? cache[:printing_on] = StampsField.new(driver.div(css: "div[id^=printmediadroplist][id$=trigger-picker]")) : cache[:printing_on]
         end
 
@@ -46,24 +46,24 @@ module Stamps
               else
                 break if textbox.text.include? media
               end
-              dropdown.click unless selection.present?
+              drop_down.click unless selection.present?
               selection.click
             end
           end unless textbox.text.include? media
         end
 
         def tooltip(media)
-          dropdown = self.dropdown
+          drop_down = self.drop_down
           media_selection = selection media
 
           10.times do
             begin
-              dropdown.click unless media_selection.present?
+              drop_down.click unless media_selection.present?
               if media_selection.present?
                 tooltip = media_selection.attribute_value "data-qtip"
                 log.info "Print Media Tooltip for \"#{media}\" is \n#{tooltip}\n"
                 if tooltip.include? "<strong>"
-                  dropdown.click if media_selection.present?
+                  drop_down.click if media_selection.present?
                   return tooltip
                 end
               end
@@ -75,8 +75,8 @@ module Stamps
       end
 
       class OrdersPrinter < WebApps::Base
-        def dropdown
-          @dropdown.nil? || !@dropdown.present? ? @dropdown = StampsField.new(driver.div(id: "sdc-printpostagewindow-printerdroplist-trigger-picker")) : @dropdown
+        def drop_down
+          @drop_down.nil? || !@drop_down.present? ? @drop_down = StampsField.new(driver.div(id: "sdc-printpostagewindow-printerdroplist-trigger-picker")) : @drop_down
         end
 
         def textbox
@@ -95,7 +95,7 @@ module Stamps
           selection_label = StampsField.new(driver.li(visible_text: /#{selection}/))
           15.times do
             return textbox.text if textbox.text.include? selection[0..(selection.size > 5 ? selection.size - 4 : selection.size)]
-            dropdown.click unless selection_label.present?
+            drop_down.click unless selection_label.present?
             selection_label.click
           end
           nil
@@ -103,8 +103,8 @@ module Stamps
       end
 
       class OrdersPaperTray < WebApps::Base
-        def dropdown
-          @dropdown.nil? || !@dropdown.present? ? @dropdown = StampsField.new(driver.div(css: "div[id^=printwindow-][id$=-body]>div>div>div[id^=combo]>div>div>div[id*=picker]")) : @dropdown
+        def drop_down
+          @drop_down.nil? || !@drop_down.present? ? @drop_down = StampsField.new(driver.div(css: "div[id^=printwindow-][id$=-body]>div>div>div[id^=combo]>div>div>div[id*=picker]")) : @drop_down
         end
 
         def textbox
@@ -115,7 +115,7 @@ module Stamps
           begin
             selection_label = StampsField.new(driver.li(text: selection))
             5.times do
-              dropdown.click unless selection_label.present?
+              drop_down.click unless selection_label.present?
               selection_label.click
               break if textbox.text.include? selection[0..(selection.size > 5 ? selection.size - 4 : selection.size)]
             end
