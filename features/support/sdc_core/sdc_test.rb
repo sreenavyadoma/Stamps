@@ -17,33 +17,33 @@ class SdcTest
 
     def capabilities(device)
       case
-      when device == :macos_safari
-        capabilities_config = {
+        when :macos_safari
+          capabilities_config = {
             :version => '11.0',
-            :platform => 'macOS 10.13',
-            :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
-        }
-        browser = :safari
+              :platform => 'macOS 10.13',
+              :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+          }
+          browser = :safari
 
-      when device == :macos_chrome
-        capabilities_config = {
+        when :macos_chrome
+          capabilities_config = {
             :version => '54.0',
-            :platform => 'macOS 10.13',
-            :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
-        }
-        browser = :chrome
+              :platform => 'macOS 10.13',
+              :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+          }
+          browser = :chrome
 
-      when device == :temp_device
-        capabilities_config = {
+        when :temp_device
+          capabilities_config = {
             :version => '16.16299',
-            :platform => 'Windows 10',
-            :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
-        }
-        browser = :edge
-      else
-        message = "Unsupported device. DEVICE=#{device}"
-        error = ArgumentError
-        raise error, message
+              :platform => 'Windows 10',
+              :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+          }
+          browser = :edge
+        else
+          message = "Unsupported device. DEVICE=#{device}"
+          error = ArgumentError
+          raise error, message
       end
 
       build_name = ENV['JENKINS_BUILD_NUMBER'] || ENV['SAUCE_BAMBOO_BUILDNUMBER'] || ENV['SAUCE_TC_BUILDNUMBER'] || ENV['SAUCE_BUILD_NAME']
@@ -53,7 +53,7 @@ class SdcTest
 
     def win10_edge_sauce
       capabilities_config = {
-          :version => '16.16299',
+        :version => '16.16299',
           :platform => 'Windows 10',
           :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
       }
@@ -70,7 +70,7 @@ class SdcTest
 
     def macos_chrome_sauce
       capabilities_config = {
-          :version => '65.0',
+        :version => '65.0',
           :platform => 'macOS 10.13',
           :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
       }
@@ -211,6 +211,9 @@ class SdcTest
           caps = browser_emulator_caps(browser, device_name)
           driver = Selenium::WebDriver.for(:chrome, desired_capabilities: caps)
           SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(driver, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+
+        else
+          raise ArgumentError, 'Device must be defined'
         end
 
       end
@@ -249,8 +252,8 @@ class SdcTest
       else
         SdcEnv.browser ||= browser_selection(ENV['BROWSER'])
         SdcEnv.browser_mobile_emulator ||= ENV['BROWSER_MOBILE_EMULATOR']
-        SdcEnv.ios ||= ENV['IOS'] unless ENV['IOS'].nil?
-        SdcEnv.android ||= ENV['ANDROID'] unless ENV['ANDROID'].nil?
+        SdcEnv.ios ||= ENV['IOS']
+        SdcEnv.android ||= ENV['ANDROID']
       end
 
       SdcEnv.mobile = SdcEnv.ios || SdcEnv.android
@@ -326,7 +329,7 @@ class SdcTest
       #   SdcLog.info "#{SdcPage.browser} closed."
       # end
 
-      SdcLogger.debug "Tearing down test...\n"
+      SdcLogger.debug "Tear down...\n"
       SdcPage.browser.quit
       SdcLogger.debug "Done.\n"
     rescue StandardError => e
