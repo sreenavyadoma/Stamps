@@ -20,8 +20,7 @@ Then /^[Ss]earch Orders for (.*) expecting to find at least (\d+)$/ do |str, cou
   if SdcEnv.new_framework
     step "click Filter Panel Search button"
     SdcOrders.loading_orders.wait_while_present(timeout: 10)
-    # expect(SdcOrders.filter_panel.search_results.count.text_value.to_i).to be >= count.to_i
-    expect(SdcOrders.filter_panel.search_results.count.text_value.to_i).to be > count.to_i-1
+    expect(SdcOrders.filter_panel.search_results.count.text_value.to_i).to be >= count.to_i
   else
     begin
       15.times do
@@ -63,8 +62,7 @@ end
 
 Then /^[Ee]xpect Filter Panel search result count is greater than (\d+)$/ do |count|
   if SdcEnv.new_framework
-    # expect(SdcOrders.filter_panel.search_results.count.text_value.to_i).to be >= count.to_i
-    expect(SdcOrders.filter_panel.search_results.count.text_value.to_i).to be > count.to_i-1
+    expect(SdcOrders.filter_panel.search_results.count.text_value.to_i).to be >= count.to_i
   else
     expect(stamps.orders.filter_panel.search_results.count).to be > count.to_i
   end
