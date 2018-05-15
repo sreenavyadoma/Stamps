@@ -11,8 +11,8 @@ module SdcEnv
     attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose,
                   :printer, :browser, :hostname, :print_media, :mobile,
                   :scenario, :sauce_device, :test_name, :log_level,
-                  :driver_log_level, :browser_mobile_emulator
-                  :android, :ios, :firefox_profile, :new_framework, :max_window,
+                  :driver_log_level, :browser_mobile_emulator,
+                  :android, :ios, :firefox_profile, :new_framework, :max_window
   end
 end
 
