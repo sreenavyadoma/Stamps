@@ -39,7 +39,25 @@ Feature: PP-MVP: Left Panel
     Then PP: set login page password to env value
     Then PP: User clicks Log In
     Then PP: expect dashboard page header exist
+
+    #validate content are present on left panel
     Then PP: expect left panel to expand for browser
     Then PP: expect arrow on left panel exists for browser
     Then PP: expect dashboard on left panel exists
+    Then PP: expect logout on left panel exists
+    Then PP: expect usps logo on left panel exists
+    #Then PP: expect partner logo is unique to partner
+
+    #validate functionality
+    Then PP: click on arrow on left panel
+    Then PP: expect left panel to collapse for browser
+    Then PP: expect hamburger button exists for browser
+    Then PP: click on hamburger button
+    Then PP: expect left panel to expand for browser
+    Then PP: expect arrow on left panel exists for browser
+
+    #validate Dashboard link on left panel
+    Then PP: click on Dashboard on left panel
+
+
 

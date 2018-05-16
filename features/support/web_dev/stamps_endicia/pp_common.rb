@@ -13,6 +13,7 @@ module PartnerPortal
     #Panel Dashboard
     page_object(:panel_dashboard) { { xpath: '//a[contains(text(), "Dashboard")]' } }
     page_object(:panel_logout) { { xpath: '//a[contains(text(), "Logout")]' } }
+    page_object(:panel_usps_logo) { { class: ['sidebar-footer'] } }
 
     #xs viewport
     #hamburger button
@@ -39,6 +40,7 @@ module PartnerPortal
     page_object(:endicia_copyright_link) { {xpath: '//a[@href="https://www.endicia.com/LegalNotice/"]'} }
     page_object(:stamps_privacy_policy_link) { {xpath:  '//a[@href="https://www.stamps.com/privacy-policy/"]'} }
     page_object(:endicia_privacy_policy_link) { {xpath:  '//a[@href="https://www.endicia.com/policy/privacy-policy/"]'} }
+
 
 
     def user_table_query(user, column)

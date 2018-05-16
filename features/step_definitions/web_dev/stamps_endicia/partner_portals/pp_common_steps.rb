@@ -90,7 +90,12 @@ end
 
 Then /^[Pp]P: [Ee]xpect [Dd]ashboard on left panel exists$/ do
   PartnerPortal.common_page.panel_dashboard.wait_until_present(timeout: 10)
-  expect(PartnerPortal.common_page.panel_dashboard).to be_present, 'Dashboard on panel DOES NOT exist'
+  expect(PartnerPortal.common_page.panel_dashboard).to be_present, 'Dashboard on Left Panel DOES NOT exist'
+end
+
+Then /^PP: click on dashboard on left panel$/ do
+  PartnerPortal.common_page.panel_dashboard.wait_until_present(timeout: 10)
+  PartnerPortal.common_page.panel_dashboard.send_keys(:enter)
 end
 
 Then /^[Pp]P: [Cc]lick on Logout on left panel$/ do
@@ -100,7 +105,12 @@ end
 
 Then /^[Pp]P: [Ee]xpect [Ll]ogout on left panel exists$/ do
   PartnerPortal.common_page.panel_logout.wait_until_present(timeout: 10)
-  expect(PartnerPortal.common_page.panel_logout).to be_present, 'Logout on panel DOES NOT exist'
+  expect(PartnerPortal.common_page.panel_logout).to be_present, 'Logout on Left Panel DOES NOT exist'
+end
+
+Then /^PP: expect usps logo on left panel exists$/ do
+  PartnerPortal.common_page.panel_usps_logo.wait_until_present(timeout: 10)
+  expect(PartnerPortal.common_page.panel_usps_logo).to be_present, 'USPS on Left Panel DOES NOT exist'
 end
 
 
@@ -144,6 +154,12 @@ end
 Then /^[Pp]P: [Ee]xpect [Hh]amburger button does not exists for browser$/ do
   expect(PartnerPortal.common_page.panel_hamburger).not_to be_present, 'Hamburger button IS PRESENT browser mode'
 end
+
+Then /^PP: click on hamburger button$/ do
+  PartnerPortal.common_page.panel_hamburger.wait_until_present(timeout: 10)
+  PartnerPortal.common_page.panel_hamburger.send_keys(:enter)
+end
+
 
 
 Then /^[Pp]P: [Ee]xpect left panel to expand for mobile$/ do
