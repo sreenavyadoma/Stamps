@@ -1,7 +1,7 @@
 
 Then /^[Pp]P: [Aa] user navigates to the login page$/ do
   TestData.hash[:system_date] = DateTime.now.utc
-  PartnerPortal::PPLoginPage.visit
+  PPLoginPage.visit
 end
 
 Then /^[Pp]P: [Ee]xpect user is redirect to the login page$/ do
