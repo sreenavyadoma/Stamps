@@ -73,7 +73,7 @@ Feature: PP-MVP: Footer
 
   #validate footer on login page
     Then PP: A user navigates to the login page
-    Then PP: expect footer to exists not exists
+    Then PP: expect footer does not exists
 
   #validate footer on Dashboard page
     Then PP: A user navigates to the login page

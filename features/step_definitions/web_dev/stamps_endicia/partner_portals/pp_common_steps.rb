@@ -38,6 +38,11 @@ Then /^[Pp]P: [Ee]xpect footer to exists$/ do
   expect(PartnerPortal.common_page.footer).to be_present, 'Footer DOES NOT exist'
 end
 
+Then /^[Pp]P: [Ee]xpect footer does not exists$/ do
+  PartnerPortal.common_page.footer.wait_until_present(timeout: 10)
+  expect(PartnerPortal.common_page.footer).not_to be_present, 'Footer is PRESENT'
+end
+
 Then /^PP: expect copyright dates is (\d+) - current year$/ do |year|
   system_date = DateTime.now.utc
   copyright_date_actual = PartnerPortal.common_page.copyright_date.text_value.gsub(/\P{ASCII}/, '').strip.gsub("Copyright", "").split('-')
