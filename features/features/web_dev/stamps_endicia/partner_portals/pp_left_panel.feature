@@ -71,10 +71,38 @@ Feature: PP-MVP: Left Panel
   @pp_left_panel_mobile
   Scenario: PP: Left Panel Validation mobile
 
-   #Validate left panel on an unauthenticated page
-    #validate left panel on login page
+   #Validate left panel on an authenticated page
     Then PP: A user navigates to the login page
-    Then PP: expect left panel does not exist for browser
+    Then PP: set login page email to env value
+    Then PP: set login page password to env value
+    Then PP: User clicks Log In
+    Then PP: expect dashboard page header exist
+
+    #validate content are present for left panel
+    Then PP: expect hamburger button exists for mobile
+    Then PP: click on hamburger button for mobile
+    Then PP: expect X button exists
+    Then PP: expect left panel to expand for mobile
+    Then PP: expect Dashboard on left panel exists
+    Then PP: expect logout on left panel exists
+    Then PP: expect usps logo on left panel exists
+    #Then PP: expect partner logo is unique to partner
+
+   #validate functionality
+    Then PP: click on X button
+    Then PP: expect left panel to collapse for mobile
+    Then PP: expect hamburger button exists for mobile
+    Then PP: click on hamburger button for mobile
+    Then PP: expect X button exists
+    Then PP: expect left panel to expand for mobile
+    Then PP: expect Dashboard on left panel exists
+    Then PP: expect logout on left panel exists
+    Then PP: expect usps logo on left panel exists
+    #Then PP: expect partner logo is unique to partner
+
+
+
+
 
 
 

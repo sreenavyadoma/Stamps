@@ -1,7 +1,7 @@
 Feature: PP-MVP: Header and Favicons
 
   Background:
-    Given Start test driver
+    Given PP: A user navigates to the Reset Password Page
 
   @pp_header_favicons_browser
   Scenario: PP: Header and Favicons Validation For Browser

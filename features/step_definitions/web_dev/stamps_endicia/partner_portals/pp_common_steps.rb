@@ -160,8 +160,6 @@ Then /^PP: click on hamburger button$/ do
   PartnerPortal.common_page.panel_hamburger.click
 end
 
-
-
 Then /^[Pp]P: [Ee]xpect left panel to expand for mobile$/ do
   PartnerPortal.common_page.panel_expanded_xs.wait_until_present(timeout: 10)
   expect(PartnerPortal.common_page.panel_expanded_xs).to be_present, 'Expanded Panel DOES NOT exist mobile mode'
