@@ -40,5 +40,6 @@ Feature: PP-MVP: Left Panel
     Then PP: User clicks Log In
     Then PP: expect dashboard page header exist
     Then PP: expect left panel to expand for browser
-    Then PP: expect left panel arrow exists
+    Then PP: expect arrow on left panel exists for browser
+    Then PP: expect dashboard on left panel exists
 

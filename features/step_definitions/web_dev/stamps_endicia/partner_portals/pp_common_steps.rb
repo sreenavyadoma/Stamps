@@ -98,6 +98,11 @@ Then /^[Pp]P: [Cc]lick on Logout on left panel$/ do
   PartnerPortal.common_page.panel_logout.send_keys(:enter)
 end
 
+Then /^[Pp]P: [Ee]xpect [Ll]ogout on left panel exists$/ do
+  PartnerPortal.common_page.panel_logout.wait_until_present(timeout: 10)
+  expect(PartnerPortal.common_page.panel_logout).to be_present, 'Logout on panel DOES NOT exist'
+end
+
 
 Then /^[Pp]P: [Ee]xpect left panel to expand for browser$/ do
   PartnerPortal.common_page.panel_expanded_lg.wait_until_present(timeout: 10)
