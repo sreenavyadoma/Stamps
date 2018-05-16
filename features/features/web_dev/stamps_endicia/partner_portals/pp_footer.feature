@@ -6,7 +6,7 @@ Feature: PP-MVP: Footer
   @pp_footer
   Scenario: PP: Footer Validation
 
-    #validate footer on Reset Passowrd page
+    #validate footer on Reset Password page
     Then PP: a user navigates to Reset Password Page
     Then PP: expect footer to exists
     Then PP: expect copyright dates is 2017 - current year
