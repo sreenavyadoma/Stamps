@@ -25,11 +25,10 @@ end
 
 Then /^add order details associated item (\d+)$/ do |item_number|
   if SdcEnv.new_framework
-  #   todo - Alex
+    SdcOrders.order_details.add_item.click
   else
     stamps.orders.order_details.items_ordered.item(item_number.to_i)
   end
-
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) Qty to (.*)$/ do |item_number, qty|
@@ -37,9 +36,9 @@ Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) Qty to (.*)$/ do |item_n
   TestData.hash[:details_associated_items][item_number] = {} unless TestData.hash[:details_associated_items].has_key?(item_number)
   TestData.hash[:details_associated_items][item_number][:item_qty] = qty
   if SdcEnv.new_framework
-
+    SdcOrders.order_details.associated_item.qty(1).set(TestData.hash[:details_associated_items][item_number][:item_qty])
   else
-      stamps.orders.order_details.items_ordered.item(item_number.to_i).item_qty.set(TestData.hash[:details_associated_items][item_number][:item_qty] )
+    stamps.orders.order_details.items_ordered.item(item_number.to_i).item_qty.set(TestData.hash[:details_associated_items][item_number][:item_qty] )
   end
   step 'Save Order Details data'
 end
