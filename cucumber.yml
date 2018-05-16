@@ -554,3 +554,4 @@ pp_header_favicons_browser_mobile: --tags @pp_header_favicons_browser_mobile --g
 pp_dashboard_single_contract_ui_validaiton: --tags @pp_dashboard_single_contract_ui_validaiton --guess JENKINS=true
 pp_dashboard_single_contract_chart_data_validation: --tags @pp_dashboard_single_contract_chart_data_validation --guess JENKINS=true
 pp_authenticate: --tags @pp_authenticate --guess JENKINS=true
+pp_footer: --tags @pp_footer --guess JENKINS=true
