@@ -6,7 +6,7 @@ Given /^[Pp]P: [Aa] user navigates to the Reset Password Page$/ do
 end
 
 Then /^[Pp]P: [Aa] user navigates to Reset Password Page$/ do
-  PartnerPortal::PPResetPasswordPage.visit
+ PPResetPasswordPage.visit
 end
 
 Then /^[Pp]P: [Ee]xpect user is redirected to Reset Password Page$/ do
