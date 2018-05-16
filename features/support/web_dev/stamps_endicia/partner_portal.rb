@@ -100,7 +100,7 @@ module PartnerPortal
 
   class PPResetPasswordPage < SdcPage
     #sdcEndica content
-    page_object(:header) { { xpath: '//h1[contains(text(), "Reset Password Request")]' } }
+    page_object(:header) { { xpath: '//h1[contains(text(), "Reset Password")]' } }
 
     #Email
     text_field(:email, tag: :text_field, required: true) { { xpath: '//input[@name="email"]' } }
