@@ -18,11 +18,36 @@ Then /^[Ss]elect Print On (.+)$/ do |str|
   TestData.hash[:print_media] = str
 end
 
+Then /^select all options in manage printing options/ do
+  step "select Print On Manage Printing Options..."
+  step "expect manage print options modal is present"
+  step "check Stamps in manage print options"
+  step "check Shipping Label - 8 ½\" x 11\" Paper in manage print options"
+  step "check Shipping Label - SDC-1200, 4 ¼\" x 6 ¾\" in manage print options"
+  step "check Shipping Label - 5 ½\" x 8 ½\" in manage print options"
+  step "check Envelope - #10, 4 ⅛\" x 9 ½\" in manage print options"
+  step "check Envelope - #9, 3 ⅞\" x 8 ⅞\" in manage print options"
+  step "check Envelope - #A9, 5 ¾\" x 8 ¾\" in manage print options"
+  step "check Envelope - #6, 3 ⅝\" x 6 ½\" in manage print options"
+  step "check Envelope - #A2, 4 ⅜\" x 5 ¾\" in manage print options"
+  step "check Envelope - #7, 3 ⅞\" x 7 ½\" in manage print options"
+  step "check Envelope - #11, 4 ½\" x 10 ⅜\" in manage print options"
+  step "check Envelope - #12, 4 ¾\" x 11\" in manage print options"
+  step "check Certified Mail Label - SDC-3610 in manage print options"
+  step "check Certified Mail Label - SDC-3710 in manage print options"
+  step "check Certified Mail Label - SDC-3910 in manage print options"
+  step "check Certified Mail Label - SDC-3930 in manage print options"
+  step "check Certified Mail #11 Envelope - SDC-3810 in manage print options"
+  step "check Certified Mail #11 Envelope - SDC-3830 in manage print options"
+  step "check Roll - 4\" x 6\" Shipping Label in manage print options"
+  step "check Roll - 4 ⅛\" x 6 ¼\" Shipping Label in manage print options"
+  step "click save in manage print options"
+end
 
 Then /^check (.+) in manage print options$/ do |str|
   step "search for #{str} in manage print options"
-
-  SdcMail.modals.manage_print_options.print_option_checkbox.check
+  manage_print_options = SdcMail.modals.manage_print_options
+  manage_print_options.print_option_checkbox.check
 end
 
 Then /^expect manage print options modal is present$/ do
@@ -37,8 +62,8 @@ end
 Then /^search for (.+) in manage print options$/ do |str|
   manage_print_options = SdcMail.modals.manage_print_options
   manage_print_options.search.set str
-  manage_print_options.print_option_checkbox.wait_until_present(timeout: 5)
-  #SdcPage.browser.wait_until(timeout: 8) { manage_print_options.grid.size == 1 }
+  manage_print_options.search.send_keys(:enter)
+  manage_print_options.search_button.click
 end
 
 Then /^click save in manage print options$/ do

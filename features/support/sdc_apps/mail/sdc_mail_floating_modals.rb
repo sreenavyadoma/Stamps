@@ -3,12 +3,12 @@ module SdcMail
     page_object(:search, tag: :text_field) { {xpath: "//input[@placeholder='Search']"} }
     page_object(:save) { {xpath: '//span[contains(text(), "Save")]'} }
     page_object(:close) { {xpath: '//span[contains(@class, "x-btn-icon-el")]'} }
-
+    page_object(:search_button) { {xpath: '//div[contains(@class, "x-form-search-trigger-grey")]'} }
     page_object(:search_option) { {xpath: '//span[contains(@class, "x-btn-icon-el")]'} }
-    page_object(:print_option) { {xpath: "//table[contains(@id, 'tableview')]" } }
-    checkbox(:print_option_checkbox, :print_option, :print_option, "class", "x-grid-item-selected")
+    page_object(:print_verify) { {xpath: "//table[contains(@id, 'tableview')]" } }
+    page_object(:print_chooser) { {xpath: "//table[contains(@id, 'tableview')]//tbody//tr//td[1]//div//div" } }
+    checkbox(:print_option_checkbox, :print_chooser, :print_verify, "class", "x-grid-item-selected")
     page_objects(:grid) { {xpath: "//table[contains(@id, 'tableview')]" } }
-
 
   end
 
