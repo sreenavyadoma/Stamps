@@ -98,7 +98,7 @@ Then /^PP: click on dashboard on left panel$/ do
   PartnerPortal.common_page.panel_dashboard.send_keys(:enter)
 end
 
-Then /^[Pp]P: [Cc]lick on Logout on left panel$/ do
+Then /^[Pp]P: [Cc]lick on [Ll]ogout on left panel$/ do
   PartnerPortal.common_page.panel_logout.wait_until_present(timeout: 10)
   PartnerPortal.common_page.panel_logout.send_keys(:enter)
 end
@@ -157,7 +157,7 @@ end
 
 Then /^PP: click on hamburger button$/ do
   PartnerPortal.common_page.panel_hamburger.wait_until_present(timeout: 10)
-  PartnerPortal.common_page.panel_hamburger.send_keys(:enter)
+  PartnerPortal.common_page.panel_hamburger.click
 end
 
 

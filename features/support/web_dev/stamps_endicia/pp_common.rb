@@ -10,7 +10,7 @@ module PartnerPortal
     #Partner Portal logo
     page_object(:partner_portal_logo)  { { xpath:  '//h3[contains(text(), "Partner Portal")]' } }
 
-    #Panel Dashboard
+    #Panel Content
     page_object(:panel_dashboard) { { xpath: '//a[contains(text(), "Dashboard")]' } }
     page_object(:panel_logout) { { xpath: '//a[contains(text(), "Logout")]' } }
     page_object(:panel_usps_logo) { { class: ['sidebar-footer'] } }
@@ -18,10 +18,8 @@ module PartnerPortal
     #xs viewport
     #hamburger button
     page_object(:hamburger_button_xs)  { { class:  ['hamburger hamburger-slider visible-xs'] } }
-
     #x button
     page_object(:x_button)  { { class:  ['hamburger hamburger-slider is-active visible-xs'] } }
-
     #Left Panel
     page_object(:panel_collapsed_xs)  { { class:  ['sidebar'] } }
     page_object(:panel_expanded_xs)  { { class:  ['sidebar sidebar_expanded-xs'] } }
@@ -29,7 +27,7 @@ module PartnerPortal
     #Normal viewport left panel
     page_object(:panel_hamburger) { { class: ['hamburger hamburger-slider hamburger-arrow hamburger-sidebar'] } }
     page_object(:panel_arrow) { { class: ['hamburger hamburger-slider is-active hamburger-arrow hamburger-sidebar'] } }
-
+    #Left Panel
     page_object(:panel_collapsed_lg)  { { class:  ['sidebar sidebar_collapsed'] } }
     page_object(:panel_expanded_lg)  { { class:  ['sidebar'] } }
 

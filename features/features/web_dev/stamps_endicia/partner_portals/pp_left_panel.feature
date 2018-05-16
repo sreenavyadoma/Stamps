@@ -5,7 +5,7 @@ Feature: PP-MVP: Left Panel
     Given Start test driver
 
   @pp_left_panel_browser
-  Scenario: PP: Left Panel Validation
+  Scenario: PP: Left Panel Validation Browser
 
   #Validate left panel on an unauthenticated page
     #validate left panel on login page
@@ -55,9 +55,30 @@ Feature: PP-MVP: Left Panel
     Then PP: click on hamburger button
     Then PP: expect left panel to expand for browser
     Then PP: expect arrow on left panel exists for browser
+    Then PP: expect dashboard on left panel exists
+    Then PP: expect logout on left panel exists
+    Then PP: expect usps logo on left panel exists
+    #Then PP: expect partner logo is unique to partner
 
     #validate Dashboard link on left panel
-    Then PP: click on Dashboard on left panel
+    Then PP: click on dashboard on left panel
+    Then PP: expect dashboard page header exist
+
+    #validate Logout link on left panel
+    Then PP: click on logout on left panel
+    Then PP: expect user is redirect to the login page
+
+  @pp_left_panel_mobile
+  Scenario: PP: Left Panel Validation mobile
+
+   #Validate left panel on an unauthenticated page
+    #validate left panel on login page
+    Then PP: A user navigates to the login page
+    Then PP: expect left panel does not exist for browser
+
+
+
+
 
 
 
