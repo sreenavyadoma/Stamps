@@ -27,7 +27,7 @@ Feature: Mail Shipping Label - SDC-1200 with receipt
     Then set Print form Ounces to 1
     Then select Print form service FCM Package/Thick Envelope
     Then click Print form Edit Customs Form button
-    Then add Customs Associated Item 1, Description Item 1, Qty 1, Price 1, Made In United States, Tariff 1
+    Then add Customs Associated Item 1, description Item 1, qty 1, Price 1, Made In United States, Tariff 1
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then show Advanced Options
@@ -45,7 +45,7 @@ Feature: Mail Shipping Label - SDC-1200 with receipt
     Then set Print form Ounces to 1
     Then select Print form service FCMI Package/Thick Envelope
     Then click Print form Edit Customs Form button
-    Then add Customs Associated Item 1, Description Item 1, Qty 1, Price 1, Made In United States, Tariff 1
+    Then add Customs Associated Item 1, description Item 1, qty 1, Price 1, Made In United States, Tariff 1
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then show Advanced Options
@@ -63,7 +63,7 @@ Feature: Mail Shipping Label - SDC-1200 with receipt
     Then set Print form Ounces to 1
     Then select Print form service PMI Package/Flat/Thick Envelope
     Then click Print form Edit Customs Form button
-    Then add Customs Associated Item 1, Description Item 1, Qty 1, Price 1, Made In United States, Tariff 1
+    Then add Customs Associated Item 1, description Item 1, qty 1, Price 1, Made In United States, Tariff 1
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then show Advanced Options
@@ -72,4 +72,4 @@ Feature: Mail Shipping Label - SDC-1200 with receipt
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
-    Then Sign out
+    Then sign out

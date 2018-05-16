@@ -50,4 +50,4 @@ Feature: Add Manage Shipping Addresses
       |ship_from_zip  | full_name | company | street_address     | street_address2 |   city   |   state       |  zip    |  country       |  phone           |
       |90245          | CLARK     | Buick   | 101 Mission Street | Suite 700       |   Fresno |  California   |  93706  |  United States |  (415) 123-5518  |
 
-    Then Sign out
+    Then sign out

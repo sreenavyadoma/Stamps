@@ -8,4 +8,4 @@ Feature:  Delete Ship From
   Scenario: regression
     Then add new order
     Then on Manage Shipping Address modal, delete all addresses
-    Then Sign out
+    Then sign out

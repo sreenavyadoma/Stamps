@@ -28,4 +28,4 @@ Feature: Print On List Of Values
     Then select Print On Certified Mail Label - SDC-3810
     Then select Print On Roll 4x6
     Then select Print On Roll 418x614
-    Then Sign out
+    Then sign out

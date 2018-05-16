@@ -34,12 +34,12 @@ When /^[Uu]ncheck(?: [O]rders)?(?: [Gg]rid)? [Rr]ow (\d+)$/ do |row|
   end
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid Store is (.*)$/ do |expectation|
+Then /^expect orders grid store is (.*)$/ do |expectation|
   TestData.hash[:store_name] = expectation.downcase.include?('random') ? TestData.hash[:store_name] : expectation
   expect(stamps.orders.orders_grid.grid_column(:hash).data(TestData.hash[:order_id].values.last)).to eql TestData.hash[:store_name]
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid Order ID is the same as Details Form Order ID$/ do
+Then /^expect orders grid order id is the same as details form order id$/ do
   expect(stamps.orders.order_details.toolbar.order_id.text.parse_digits).to eql(stamps.orders.orders_grid.grid_column(:order_id).row(1))
 end
 
@@ -51,7 +51,7 @@ Then /^[Ee]xpect cached Order ID is in [Oo]rders [Gg]rid [Rr]ow (\d+)$/ do |row|
   expect(stamps.orders.orders_grid.grid_column(:order_id).row(row)).to eql TestData.hash[:order_id].values.last
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid Ship Cost is the same as Details Form Ship Cost$/ do
+Then /^expect orders grid ship cost is the same as details form ship cost$/ do
   expect(stamps.orders.order_details.footer.total_ship_cost.text.dollar_amount_str.to_f.round(2).to_s).to eql(stamps.orders.orders_grid.grid_column(:ship_cost).data(TestData.hash[:order_id].values.last))
 end
 
@@ -64,29 +64,29 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Ship Date for this order is (?:correct|(\d{2}
 end
 
 Then /^[Ee]xpect Ship-To address is;$/ do |table|
-  step "expect Orders Grid Recipient is #{table.hashes.first[:name]}"
-  step "expect Orders Grid Company is #{table.hashes.first['company']}"
-  step "expect Orders Grid Address is #{table.hashes.first[:address]}"
-  step "expect Orders Grid City is #{table.hashes.first[:city]}"
-  step "expect Orders Grid State is #{table.hashes.first[:state]}"
-  step "expect Orders Grid Zip is #{table.hashes.first[:zip]}"
-  step "expect Orders Grid Phone is #{table.hashes.first[:phone]}"
-  step "expect Orders Grid Email is #{table.hashes.first[:email]}"
+  step "expect orders grid recipient is #{table.hashes.first[:name]}"
+  step "expect orders grid company is #{table.hashes.first['company']}"
+  step "expect orders grid address is #{table.hashes.first[:address]}"
+  step "expect orders grid city is #{table.hashes.first[:city]}"
+  step "expect orders grid state is #{table.hashes.first[:state]}"
+  step "expect orders grid zip is #{table.hashes.first[:zip]}"
+  step "expect orders grid phone is #{table.hashes.first[:phone]}"
+  step "expect orders grid email is #{table.hashes.first[:email]}"
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid Age is (.+)$/ do |expectation|
+Then /^expect orders grid age is (.+)$/ do |expectation|
   expect(TestData.hash[:order_id].values.last).to be_truthy
   10.times { break if stamps.orders.orders_grid.grid_column(:age).data(TestData.hash[:order_id].values.last).eql? expectation }
   expect(stamps.orders.orders_grid.grid_column(:age).data(TestData.hash[:order_id].values.last)).to eql expectation
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid Order Date is populated$/ do
+Then /^expect orders grid order date is populated$/ do
   expect(TestData.hash[:order_id].values.last).to be_truthy
   5.times { break if stamps.orders.orders_grid.grid_column(:order_date).data(TestData.hash[:order_id].values.last).size > 4 }
   expect(stamps.orders.orders_grid.grid_column(:order_date).data(TestData.hash[:order_id].values.last).size).to be > 4
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid Recipient is (?:correct|(.*))$/ do |expectation|
+Then /^expect orders grid recipient is (?:correct|(.*))$/ do |expectation|
   step "Pause for 2 seconds"
   expectation = TestData.hash[:full_name] if expectation.nil?
   expect(TestData.hash[:order_id].values.last).to be_truthy
@@ -94,31 +94,31 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Recipient is (?:correct|(.*))$/ do |expectati
   expect(stamps.orders.orders_grid.grid_column(:recipient).data(TestData.hash[:order_id].values.last)).to eql expectation
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid Company is (?:correct|(.*))$/ do |expectation|
+Then /^expect orders grid company is (?:correct|(.*))$/ do |expectation|
   expectation = TestData.hash[:company] if expectation.nil?
   10.times { break if stamps.orders.orders_grid.grid_column(:company).data(TestData.hash[:order_id].values.last).eql? expectation }
   expect(stamps.orders.orders_grid.grid_column(:company).data(TestData.hash[:order_id].values.last)).to eql expectation
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid Address is (?:correct|(.*))$/ do |expectation|
+Then /^expect orders grid address is (?:correct|(.*))$/ do |expectation|
   expectation = "#{TestData.hash[:street_address_1]}#{(TestData.hash[:street_address_2].scan(/(\w+)/).size > 0) ? " #{TestData.hash[:street_address_2]}" : ""}" if expectation.nil?
   10.times { break if stamps.orders.orders_grid.grid_column(:address).data(TestData.hash[:order_id].values.last).eql? expectation }
   expect(stamps.orders.orders_grid.grid_column(:address).data(TestData.hash[:order_id].values.last)).to eql expectation
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid City is (?:correct|(.*))$/ do |expectation|
+Then /^expect orders grid city is (?:correct|(.*))$/ do |expectation|
   expectation = TestData.hash[:city] if expectation.nil?
   10.times { break if stamps.orders.orders_grid.grid_column(:city).data(TestData.hash[:order_id].values.last).eql? expectation }
   expect(stamps.orders.orders_grid.grid_column(:city).data(TestData.hash[:order_id].values.last)).to eql expectation
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid State is (?:correct|(.*))$/ do |expectation|
+Then /^expect orders grid state is (?:correct|(.*))$/ do |expectation|
   expectation = TestData.hash[:state] if expectation.nil?
   10.times { break if stamps.orders.orders_grid.grid_column(:state).data(TestData.hash[:order_id].values.last).eql? expectation }
   expect(stamps.orders.orders_grid.grid_column(:state).data(TestData.hash[:order_id].values.last)).to eql expectation
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid Zip is (?:correct|(.*))$/ do |expectation|
+Then /^expect orders grid zip is (?:correct|(.*))$/ do |expectation|
   expectation = TestData.hash[:zip] if expectation.nil?
   10.times { break if stamps.orders.orders_grid.grid_column(:zip).data(TestData.hash[:order_id].values.last).eql? expectation }
   expect(stamps.orders.orders_grid.grid_column(:zip).data(TestData.hash[:order_id].values.last)).to include(expectation)
@@ -130,19 +130,19 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Country is (?:correct|(.*))$/ do |expectation
   expect(stamps.orders.orders_grid.grid_column(:country).data(TestData.hash[:order_id].values.last)).to include(expectation)
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid Email is (?:correct|(.*))$/ do |expectation|
+Then /^expect orders grid email is (?:correct|(.*))$/ do |expectation|
   expectation = TestData.hash[:email] if expectation.nil?
   10.times { break if stamps.orders.orders_grid.grid_column(:email).data(TestData.hash[:order_id].values.last).eql? expectation }
   expect(stamps.orders.orders_grid.grid_column(:email).data(TestData.hash[:order_id].values.last)).to eql expectation
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid Phone is (?:correct|(.*))$/ do |expectation|
+Then /^expect orders grid phone is (?:correct|(.*))$/ do |expectation|
   expectation = TestData.hash[:phone] if expectation.nil?
   10.times { break if stamps.orders.orders_grid.grid_column(:phone).data(TestData.hash[:order_id].values.last).eql? expectation }
   expect(stamps.orders.orders_grid.grid_column(:phone).data(TestData.hash[:order_id].values.last)).to eql expectation
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid Pounds is (?:correct|(.*))$/ do |expectation|
+Then /^expect orders grid pounds is (?:correct|(.*))$/ do |expectation|
   if SdcEnv.new_framework
     #skip for now
   else
@@ -153,7 +153,7 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Pounds is (?:correct|(.*))$/ do |expectation|
 
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid Ounces is (?:correct|(.*))$/ do |expectation|
+Then /^expect orders grid ounces is (?:correct|(.*))$/ do |expectation|
   if SdcEnv.new_framework
     #skip for now
   else
@@ -163,7 +163,7 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Ounces is (?:correct|(.*))$/ do |expectation|
   end
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid Weight is (\d+) lb. (\d+) oz.$/ do |pounds, ounces|
+Then /^expect orders grid weight is (\d+) lb. (\d+) oz.$/ do |pounds, ounces|
   if SdcEnv.new_framework
     #skip for now
   else
@@ -183,17 +183,17 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Weight\(oz\) is (.*)$/ do |expectation|
   expect(stamps.orders.orders_grid.grid_column(:weight).oz(TestData.hash[:order_id].values.last)).to eql expectation
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid Qty. is (.+)$/ do |expectation|
+Then /^expect orders grid qty. is (.+)$/ do |expectation|
   20.times { break if stamps.orders.orders_grid.grid_column(:qty).data(TestData.hash[:order_id].values.last).eql? expectation.to_i }
   expect(stamps.orders.orders_grid.grid_column(:qty).data(TestData.hash[:order_id].values.last)).to eql expectation.to_i
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid Item SKU is (.+)$/ do |expectation|
+Then /^expect orders grid item sku is (.+)$/ do |expectation|
   10.times { break if stamps.orders.orders_grid.grid_column(:item_sku).data(TestData.hash[:order_id].values.last).eql? expectation }
   expect(stamps.orders.orders_grid.grid_column(:item_sku).data(TestData.hash[:order_id].values.last)).to eql expectation
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid Item Name is (.+)$/ do |expectation|
+Then /^expect orders grid item name is (.+)$/ do |expectation|
   10.times { break if stamps.orders.orders_grid.grid_column(:item_name).data(TestData.hash[:order_id].values.last).eql? expectation }
   expect(stamps.orders.orders_grid.grid_column(:item_name).data(TestData.hash[:order_id].values.last)).to eql expectation
 end
@@ -203,14 +203,14 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Ship From is (.+)$/ do |expectation|
   expect(stamps.orders.orders_grid.grid_column(:ship_from).data(TestData.hash[:order_id].values.last)).to eql expectation
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid service is (?:correct|(.*))$/ do |expectation|
+Then /^expect orders grid service is (?:correct|(.*))$/ do |expectation|
   expectation = TestData.hash[:service] if expectation.nil?
   expectation = TestData.hash[:service_look_up][expectation.split(' ').first].nil? ? expectation : TestData.hash[:service_look_up][expectation.split(' ').first]
   10.times { break if stamps.orders.orders_grid.grid_column(:service).data(TestData.hash[:order_id].values.last).eql? expectation }
   expect(stamps.orders.orders_grid.grid_column(:service).data(TestData.hash[:order_id].values.last)).to eql(expectation)
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid Insured Value is \$(.+)$/ do |expectation|
+Then /^expect orders grid insured value is \$(.+)$/ do |expectation|
   if SdcEnv.new_framework
     #skip for now
   else
@@ -229,7 +229,7 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Tracking service is (.+)$/ do |expectation|
   expect(stamps.orders.orders_grid.grid_column(:tracking_service).data(TestData.hash[:order_id].values.last)).to eql expectation
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid Order Status is (.+)$/ do |expectation|
+Then /^expect orders grid order status is (.+)$/ do |expectation|
   10.times { break if stamps.orders.orders_grid.grid_column(:order_status).data(TestData.hash[:order_id].values.last) == expectation }
   expect(stamps.orders.orders_grid.grid_column(:order_status).data(TestData.hash[:order_id].values.last)).to eql expectation
 end

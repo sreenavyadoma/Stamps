@@ -37,5 +37,5 @@ Feature:Shipping Label Preview Panel
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
-    Then Sign out
+    Then sign out
 

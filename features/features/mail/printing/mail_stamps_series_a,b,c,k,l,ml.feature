@@ -174,4 +174,4 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
-    Then Sign out
+    Then sign out

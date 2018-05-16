@@ -4,7 +4,7 @@ Feature: BVT for Mail page
 
   #@mail_authentication
   #Scenario: Mail Authentication Test
-  #  Then Sign out
+  #  Then sign out
 
   @mail_bvt_address_cleansing
   Scenario: Address Cleansing
@@ -15,7 +15,7 @@ Feature: BVT for Mail page
     Then set Print form Ounces to 1
     Then select Print form service PM Package
     Then expect Print form Domestic Address field displays Address Cleansing, BVT, 1350 Market Street, San Francisco, CA 94102-5401
-    Then Sign out
+    Then sign out
 
 
     # ------------------------------------------------------------ Rolls Advanced Options
@@ -375,7 +375,7 @@ Feature: BVT for Mail page
     Then set Advanced Options Cost Code to None
     Then expect Advanced Options Cost Code is None
 
-    Then Sign out
+    Then sign out
 
   @mail_bvt_contacts
   Scenario: Contacts
@@ -384,7 +384,7 @@ Feature: BVT for Mail page
     Then set Print form Mail-From to default
     Then click Print form Mail To link
     Then click Search Contacts close button
-    Then Sign out
+    Then sign out
 
   @mobile_mail_smoke_test
   @mail_bvt_envelopes
@@ -398,7 +398,7 @@ Feature: BVT for Mail page
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
-    Then Sign out
+    Then sign out
 
   @mail_bvt_extra_services
   Scenario: Extra Services
@@ -444,7 +444,7 @@ Feature: BVT for Mail page
     Then expect Extra Services Total Price to be 26.15
 
     Then save Extra Services
-    Then Sign out
+    Then sign out
 
   @mobile_mail_smoke_test
   @mail_bvt_international
@@ -480,15 +480,15 @@ Feature: BVT for Mail page
 
     Then set Customs ITN Number to ITN123
 
-    Then add Customs Associated Item 1, Description Item 1, Qty 1, Price 1, Made In United States, Tariff 1
-    Then add Customs Associated Item 2, Description Item 2, Qty 2, Price 2, Made In Japan, Tariff 2
-    Then add Customs Associated Item 3, Description Random String, Qty 3, Price 3, Made In Canada, Tariff 3
+    Then add Customs Associated Item 1, description Item 1, qty 1, Price 1, Made In United States, Tariff 1
+    Then add Customs Associated Item 2, description Item 2, qty 2, Price 2, Made In Japan, Tariff 2
+    Then add Customs Associated Item 3, description Random String, qty 3, Price 3, Made In Canada, Tariff 3
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
 
     Then click Print form Edit Customs Form button
-    Then Pause for 1 second
+    Then pause for 1 second
     Then expect Customs Package Contents is Commercial Sample
     Then expect Customs License Number is correct
     Then expect Customs Certificate Number is correct
@@ -520,7 +520,7 @@ Feature: BVT for Mail page
     Then close Customs Information form
 
 #Then Mail: Print International Postage
-    Then Sign out
+    Then sign out
 
   @bvt_mail_piece_validation
   Scenario: Stamps B-Series
@@ -535,7 +535,7 @@ Feature: BVT for Mail page
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
-    Then Sign out
+    Then sign out
 
   @bvt_mail_piece_validation
   Scenario: Envelope - #10
@@ -547,7 +547,7 @@ Feature: BVT for Mail page
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
-    Then Sign out
+    Then sign out
 
   @bvt_mail_piece_validation
   Scenario: Shipping Label - 8 ½" x 11" Paper
@@ -561,7 +561,7 @@ Feature: BVT for Mail page
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
-    Then Sign out
+    Then sign out
 
   @bvt_mail_piece_validation
   Scenario: Roll - 4" x 6" Shipping Label
@@ -575,7 +575,7 @@ Feature: BVT for Mail page
 #    Then set Mail Print modal Printer Zebra LP 2844 on qa-printlab2016
     Then set Mail Print modal Printer ZDesigner LP 2844
     Then click Mail Print modal Print button
-    Then Sign out
+    Then sign out
 
   @bvt_mail_piece_validation
   Scenario: Certified Mail Label - SDC-3610
@@ -590,7 +590,7 @@ Feature: BVT for Mail page
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
-    Then Sign out
+    Then sign out
 
   @bvt_mail_piece_validation
   Scenario: Shipping Label - 8 ½" x 11" Paper
@@ -606,7 +606,7 @@ Feature: BVT for Mail page
     Then Print Label
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
-    Then Sign out
+    Then sign out
 
   @mail_bvt_purchasing
   Scenario: Purchasing $10
@@ -619,7 +619,7 @@ Feature: BVT for Mail page
     Then Buy Mail Purchase Approved: Click OK button
     Then Buy Mail: Expect customer balance increased by $10
 
-    Then Sign out
+    Then sign out
 
   @mobile_mail_smoke_test
   @mail_bvt_stamps
@@ -646,7 +646,7 @@ Feature: BVT for Mail page
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
-    Then Sign out
+    Then sign out
 
   @mail_service_validation
   Scenario: Mail Service Validation
@@ -654,7 +654,7 @@ Feature: BVT for Mail page
     Then select Print form service Media Mail
     Then select Print form service FCM Letter
     Then select Print form service FCM Large Envelope/Flat
-    Then Sign out
+    Then sign out
 
   @mail_service_validation
   Scenario: Mail Service Validation for Stamps
@@ -669,7 +669,7 @@ Feature: BVT for Mail page
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
-    Then Sign out
+    Then sign out
 
   @mail_service_validation
   Scenario: Envelope - #10
@@ -681,7 +681,7 @@ Feature: BVT for Mail page
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
-    Then Sign out
+    Then sign out
 
   @mail_service_validation
   Scenario: Shipping Label - 8 ½" x 11" Paper
@@ -695,7 +695,7 @@ Feature: BVT for Mail page
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
-    Then Sign out
+    Then sign out
 
   @mail_service_validation
   Scenario: Roll - 4" x 6" Shipping Label
@@ -708,7 +708,7 @@ Feature: BVT for Mail page
     Then Print Postage
     Then set Mail Print modal Printer Zebra LP 2844 on qa-printlab2016
     Then click Mail Print modal Print button
-    Then Sign out
+    Then sign out
 
   @mail_service_validation
   Scenario: Certified Mail Label - SDC-3610
@@ -723,7 +723,7 @@ Feature: BVT for Mail page
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
-    Then Sign out
+    Then sign out
 
   @mail_service_validation
   Scenario: Shipping Label - 8 ½" x 11" Paper
@@ -739,4 +739,4 @@ Feature: BVT for Mail page
     Then Print Label
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
-    Then Sign out
+    Then sign out

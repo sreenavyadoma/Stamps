@@ -30,7 +30,7 @@ Feature: Stamps print media bugs
     Then Print Postage
     Then click Mail Print modal Print button
 
-    Then Sign out
+    Then sign out
 
   @bugs_stamps_print
   Scenario: Web Client L Series NetStamps | Media Mail | Unable To Get Rates

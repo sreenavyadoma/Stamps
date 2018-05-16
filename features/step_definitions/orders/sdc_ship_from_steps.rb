@@ -205,6 +205,6 @@ Then /^[Oo]n Manage Shipping Address modal, set Manage Shipping Addresses to$/ d
 end
 
 Then /^[Oo]n Manage Shipping Address modal, expect selection has (.*)$/ do |address|
-  step "blur out on Order Details form"
+  step "blur out on order details form"
   #stamps.orders.order_details.single_ship_from.select("Manage Shipping Addresses").address_located?(test_data[:ship_from_address])).to be(true)
 end

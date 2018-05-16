@@ -8,7 +8,7 @@ Feature:  service enabled/disabled tests
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
-    Then set Order Details Ounces to 17
+    Then set order details ounces to 17
     Then expect Order Details service "FCM Package" is disabled
     Then expect Order Details service "First-Class Mail Package/Thick Envelope" is disabled
 
@@ -16,33 +16,33 @@ Feature:  service enabled/disabled tests
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
-    Then set Order Details Ounces to 15.9
+    Then set order details ounces to 15.9
     Then expect Order Details service "First-Class Mail Package/Thick Envelope" is enabled
     #Then expect Order Details service "FCM Package" is enabled
 
   @rules_domestic
   Scenario: Domestic Rules Engine Validation
     Then add new order
-    Then set Order Details Email to bademail
-    Then uncheck orders grid cached order id
-    Then check orders grid cached order id
+    Then set order details email to bademail
+    Then uncheck orders grid order id cached
+    Then check orders grid order id cached
     Then expect Order Details Domestic Address data error tooltip is "Ship To address is required"
     Then expect Order Details Domestic Email data error tooltip is "Please enter a valid email address"
     Then expect Order Details Weight Lbs data error tooltip is "Weight cannot be 0"
     Then expect Order Details Weight Oz data error tooltip is "Weight cannot be 0"
     Then expect Order Details service data error tooltip is "Service is required"
-    Then check orders grid cached order id
+    Then check orders grid order id cached
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random,PO BOX 1257,Pohnpei, FM 96941-1257
-    Then set Order Details Email to random
-    Then set Order Details Phone to random
-    Then set Order Details service to PM Large Package
-    Then set Order Details Pounds to 5
-    Then uncheck orders grid cached order id
-    Then check orders grid cached order id
-    Then set Order Details Length to 0
-    Then set Order Details Width to 0
-    Then set Order Details Height to 0
+    Then set order details email to random
+    Then set order details phone to random
+    Then set order details service to PM Large Package
+    Then set order details pounds to 5
+    Then uncheck orders grid order id cached
+    Then check orders grid order id cached
+    Then set order details length to 0
+    Then set order details width to 0
+    Then set order details height to 0
     #Then expect Order Details Dimensions Length data error tooltip is "Dimensions are required"
     #Then expect Order Details Dimensions Width data error tooltip is "Dimensions are required"
     #Then expect Order Details Dimensions Height data error tooltip is "Dimensions are required"

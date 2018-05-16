@@ -14,7 +14,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails is not present$/ do
   expect(stamps.orders.order_details.present?).to be(false), "Order Details form is present"
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails Ship-From and Ship-From saved values are the same$/ do
+Then /^expect order details ship-from and ship-from saved values are the same$/ do
   stamps.orders.order_details.wait_until_present(2)
   step 'Expect Order Details is present'
   step "show order details form ship-to fields"
@@ -281,13 +281,13 @@ Then /^[Ee]xpect Exact Address Not Found module to appear/ do
   expect(stamps.orders.order_details.ship_to.domestic.ambiguous.address_not_found.window_title.text).to eql "Exact Address Not Found"
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails Reference Number is (?:correct|(.*))$/ do |expectation|
+Then /^expect order details reference number is (?:correct|(.*))$/ do |expectation|
   stamps.orders.order_details.wait_until_present(2)
   step 'Expect Order Details is present'
   expect(stamps.orders.order_details.reference_no.text).to eql(expectation.nil? ? TestData.hash[:reference_no] : expectation)
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails [Ii]nsure-[Ff]or is (?:correct|(\d+\.\d{2}))$/ do |expectation|
+Then /^expect order details insure-for is (?:correct|(\d+\.\d{2}))$/ do |expectation|
   stamps.orders.order_details.wait_until_present(2)
   step 'Expect Order Details is present'
   expect(stamps.orders.order_details.insure_for.textbox.text.to_f.round(2)).to eql(expectation.nil? ? TestData.hash[:insured_value] : expectation.to_f)
@@ -348,7 +348,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails Service [Cc]ost saved value is the same$/ d
   step "expect Order Details Service [Cc]ost is #{TestData.hash[:service_cost]}"
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails Service [Cc]ost is (?:correct|(\d+.\d*))$/ do |expectation|
+Then /^expect order details service cost is (?:correct|(\d+.\d*))$/ do |expectation|
   expectation = TestData.hash[:service_cost] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   step 'Expect Order Details is present'
@@ -361,7 +361,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails Service [Cc]ost is greater than \$([0-9.]*)
   expect(stamps.orders.order_details.service.cost.text.dollar_amount_str.to_f.round(2)).to be > expectation.to_f.round(2)
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails Tracking [Cc]ost is (?:correct|(\d+.\d*))$/ do |expectation|
+Then /^expect order details tracking cost is (?:correct|(\d+.\d*))$/ do |expectation|
   expectation = TestData.hash[:tracking_cost] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   step 'Expect Order Details is present'
@@ -374,14 +374,14 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails Tracking [Cc]ost is greater than \$([0-9.]*
   expect(stamps.orders.order_details.tracking.cost.text.dollar_amount_str.to_f.round(2)).to be > expectation.to_f.round(2)
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails Pounds? (?:is (\d+)|and saved Pounds? are the same)$/ do |expectation|
+Then /^expect order details pounds? (?:is (\d+)|and saved Pounds? are the same)$/ do |expectation|
   expectation = TestData.hash[:pounds] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   step 'Expect Order Details is present'
   expect(stamps.orders.order_details.weight.lb.textbox.text.to_f).to eql expectation.to_f.round(2)
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails Ounces? (?:is (\d+)|and saved Ounces? are the same)$/ do |expectation|
+Then /^expect order details ounces? (?:is (\d+)|and saved Ounces? are the same)$/ do |expectation|
   expectation = TestData.hash[:ounces] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   step 'Expect Order Details is present'
@@ -394,23 +394,24 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails Dimensions are hidden$/ do
   expect(stamps.orders.order_details.dimensions.present?).not_to be(true)
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails Length is (\d+)$/ do |expectation|
+Then /^expect order details length is (\d+)$/ do |expectation|
   stamps.orders.order_details.wait_until_present(2)
   step 'Expect Order Details is present'
   expect(stamps.orders.order_details.dimensions.length.textbox.text.to_f).to eql expectation.to_f.round(2)
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails Width is (\d+)$/ do |expectation|
+Then /^expect order details width is (\d+)$/ do |expectation|
   stamps.orders.order_details.wait_until_present(2)
+#   todo - Alex add expect to fix the step!!!
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails Height is (\d+)$/ do |expectation|
+Then /^expect order details height is (\d+)$/ do |expectation|
   stamps.orders.order_details.wait_until_present(2)
   step 'Expect Order Details is present'
   expect(stamps.orders.order_details.dimensions.height.textbox.text.to_i).to eql expectation.to_i
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails Tracking is (?:correct|(.*))$/ do |expectation|
+Then /^expect order details tracking is (?:correct|(.*))$/ do |expectation|
   expectation = TestData.hash[:tracking] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   step 'Expect Order Details is present'

@@ -66,4 +66,4 @@ Feature: Envelope #6, #7, #9, #11, #12
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     
-    Then Sign out
+    Then sign out

@@ -12,13 +12,13 @@ Feature: Ambigious Address
       | Hillary Clinton | The White House         | 1390 Market Street  | San Francisco | CA    | 94102 | United States |        |        |
     Then Expect Exact Address Not Found module to appear
     Then In Exact Address Not Found module, select row 1
-    Then set Order Details Ounces to 1
-    Then set Order Details Pounds to 1
-    Then expect Orders Grid Recipient is Hillary Clinton
-    Then expect Orders Grid Company is The White House
-    Then expect Orders Grid City is San Francisco
-    Then expect Orders Grid State is CA
-    Then expect Orders Grid Zip is 94102
-    Then set Order Details service to PM Package
-    Then Sign out
+    Then set order details ounces to 1
+    Then set order details pounds to 1
+    Then expect orders grid recipient is Hillary Clinton
+    Then expect orders grid company is The White House
+    Then expect orders grid city is San Francisco
+    Then expect orders grid state is CA
+    Then expect orders grid zip is 94102
+    Then set order details service to PM Package
+    Then sign out
 

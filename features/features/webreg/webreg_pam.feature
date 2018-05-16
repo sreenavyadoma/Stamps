@@ -55,7 +55,7 @@ Feature: Registration
     Then PAM Customer Profile: Get Available Mail Amount
     Then PAM Customer Profile: Click ACH Credit link
     Then PAM ACH Purchase: Set Amount to $100000.00
-    Then Pause for 2 seconds
+    Then pause for 2 seconds
     Then PAM Customer Profile: Get Available Mail Amount
     Then PAM Customer Profile: Get Available Mail Amount
     Then PAM Customer Profile: Click  AppCap Overrides link

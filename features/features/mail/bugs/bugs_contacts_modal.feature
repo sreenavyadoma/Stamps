@@ -25,4 +25,4 @@ Feature: Mail Contacts Modal Bugs
     Then show Advanced Options
     Then Expect Advanced Options Reference Number is blank
     Then Expect Advanced Options Cost Code is None
-    Then Sign out
+    Then sign out

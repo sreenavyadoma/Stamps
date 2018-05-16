@@ -1,8 +1,8 @@
-Then /^[Aa]dd new order$/ do
+Then /^add new order$/ do
   step 'add order 0'
 end
 
-Then /^[Aa]dd [Oo]rder (\d+)$/ do |count|
+Then /^add order (\d+)$/ do |count|
   if SdcEnv.new_framework
     #todo TestData.store[:old_balance] = SdcWebsite.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
     #todo stamps.orders.orders_grid.grid_column(:checkbox).uncheck(1)
@@ -52,7 +52,7 @@ Then /^Save Order Details data$/ do
   end
 end
 
-Then /^[Cc]lick [Oo]rders [Tt]oolbar [Pp]rint [Bb]utton$/ do
+Then /^click orders toolbar print button$/ do
   step 'Save Order Details data'
   if SdcEnv.new_framework
     SdcOrders.order_details.footer.print.click

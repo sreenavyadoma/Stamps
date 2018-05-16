@@ -62,4 +62,4 @@ Feature: Mail Shipping Label - 8 ½” x 11” PM BOX Paper
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
-    Then Sign out
+    Then sign out

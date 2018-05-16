@@ -15,6 +15,6 @@ Feature:  Address Management
       |90245          | Rob   | Stamps.com | 1990 E. Grand Ave. |                 | El Segundo | California | 90245  | United States | random |
     Then On Manage Shipping Address modal, delete row 1
     Then on Manage Shipping Address modal, delete all addresses
-    Then Sign out
+    Then sign out
 
 

@@ -103,7 +103,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
 
 
 
-    Then Sign out
+    Then sign out
 
   @mail_hidden_postage_backlog
   Scenario: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbox State for Hide Label Value
@@ -279,4 +279,4 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then expect Extra Services Total Price to be 25.85
 
     Then save Extra Services
-    Then Sign out
+    Then sign out

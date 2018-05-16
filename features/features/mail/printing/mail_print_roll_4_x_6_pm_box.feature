@@ -66,4 +66,4 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Box
     Then set Mail Print modal Printer ZDesigner
     Then click Mail Print modal Print button
 
-    Then Sign out
+    Then sign out

@@ -12,7 +12,7 @@ Feature: Validate Automation Rule Tab
     Then expect Automation Rules page header contain Save time with Automation Rules
     Then expect Automation Rules page paragraph contain To get started, click the Add button on the top left.
     Then Close Settings modal
-    Then Sign out
+    Then sign out
 
   @automation_rule_add_without_criteria
   Scenario: Add new Automation rule w/o criteria
@@ -29,7 +29,7 @@ Feature: Validate Automation Rule Tab
     Then click New Rule modal Save Rule button
     Then expect Automation Rules modal, Rule name is present
     Then Close Settings modal
-    Then Sign out
+    Then sign out
 
   @automation_rule_add_with_criteria
   Scenario: Add new Automation rule with criteria
@@ -51,7 +51,7 @@ Feature: Validate Automation Rule Tab
     Then click New Rule modal Save Rule button
     Then expect Automation Rules modal, Rule name is present
     Then Close Settings modal
-    Then Sign out
+    Then sign out
 
   @automation_rule_edit_w/o_criteria
   Scenario: Edit new Automation rule w/o criteria
@@ -72,7 +72,7 @@ Feature: Validate Automation Rule Tab
     Then expect Edit Rule modal, service to etc.
     Then expect Edit Rule modal, drop-down to FCM Package
     Then Close Settings modal
-    Then Sign out
+    Then sign out
 
   @automation_rule_edit_with_criteria
   Scenario: Edit new Automation rule with criteria
@@ -98,7 +98,7 @@ Feature: Validate Automation Rule Tab
     Then expect Edit Rule modal, service to etc.
     Then expect Edit Rule modal, drop-down to FCM Package
     Then Close Settings modal
-    Then Sign out
+    Then sign out
 
   @automation_rule_delete
   Scenario: Delete Automation rule
@@ -113,4 +113,4 @@ Feature: Validate Automation Rule Tab
     Then click Delete Automation dialog Delete button
     Then expect Automation Rules page, rule name is not present
     Then Close Settings modal
-    Then Sign out
+    Then sign out

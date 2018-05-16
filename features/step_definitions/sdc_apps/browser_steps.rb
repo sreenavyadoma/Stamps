@@ -20,7 +20,7 @@ Then /^Refresh the browser$/ do
   end
 end
 
-Then /^[Pp]ause for (\d+) [Ss]econd(?:|s)?$/ do |seconds|
+Then /^pause for (\d+) second(?:|s)?$/ do |seconds|
   if SdcEnv.new_framework
     #skip for now
   else

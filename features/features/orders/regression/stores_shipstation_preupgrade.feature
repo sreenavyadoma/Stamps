@@ -39,4 +39,4 @@ Feature: ShipStation Pre-Upgrade Path
     Then expect in Activate Your New Features dialog terms and conditions is checked
     Then close Activate Your New Features dialog
 
-    Then Sign out
+    Then sign out

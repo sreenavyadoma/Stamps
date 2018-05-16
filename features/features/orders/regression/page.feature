@@ -19,7 +19,7 @@ Feature: Order Pagination
     Then in Orders Toolbar, set Per Page drop-down to 500
     Then in Orders Toolbar, expect number of orders on page is correct
 
-    Then Sign out
+    Then sign out
 
 
 
