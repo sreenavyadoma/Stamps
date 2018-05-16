@@ -1,3 +1,3 @@
 Then /^PP: a user navigates to Reset Password Request Confirmation$/ do
-  PartnerPortal::PPResetPasswordConfirmationPage.visit
+ PPResetPasswordConfirmationPage.visit
 end
