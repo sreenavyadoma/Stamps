@@ -190,11 +190,20 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails Order ID is truthy$/ do
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails Order ID equals Grid Order ID in row (\d+)$/ do |row|
-  expect(stamps.orders.order_details.toolbar.order_id.text.parse_digits).to eql stamps.orders.orders_grid.grid_column(:order_id).row(row)
+  if SdcEnv.new_framework
+    #todo - orders grid implementation
+  else
+    expect(stamps.orders.order_details.toolbar.order_id.text.parse_digits).to eql stamps.orders.orders_grid.grid_column(:order_id).row(row)
+  end
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails Order ID is the same as saved Order ID$/ do
-  expect(stamps.orders.order_details.toolbar.order_id.text.parse_digits).to eql TestData.hash[:order_id].values.last
+  if SdcEnv.new_framework
+    # todo - orders grid implementation , only uncomment
+    # expect(SdcOrders.order_details.order_id.text_value.parse_digits).to eql(TestData.hash[:order_id].values.last)
+  else
+    expect(stamps.orders.order_details.toolbar.order_id.text.parse_digits).to eql TestData.hash[:order_id].values.last
+  end
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ss]hip-[Tt]o Name is (.*)$/ do |expectation|
