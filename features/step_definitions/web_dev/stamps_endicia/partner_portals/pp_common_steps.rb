@@ -39,7 +39,6 @@ Then /^[Pp]P: [Ee]xpect footer to exists$/ do
 end
 
 Then /^[Pp]P: [Ee]xpect footer does not exists$/ do
-  PartnerPortal.common_page.footer.wait_until_present(timeout: 10)
   expect(PartnerPortal.common_page.footer).not_to be_present, 'Footer is PRESENT'
 end
 
