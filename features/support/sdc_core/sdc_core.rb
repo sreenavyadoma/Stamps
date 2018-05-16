@@ -185,8 +185,6 @@ class SdcDriverDecorator < BasicObject
     @driver.send(method, *args, &block)
   end
 
-  private
-  attr_reader :driver
 end
 
 class SdcElement < BasicObject
