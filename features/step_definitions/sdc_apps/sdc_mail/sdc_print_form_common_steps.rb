@@ -7,7 +7,9 @@ Then /^[Ss]elect Print On (.+)$/ do |str|
     print_on.drop_down.wait_until_present(timeout: 3)
     print_on.text_field.wait_until_present(timeout: 3)
     print_on.drop_down.safe_click
-    step "validate mail print on #{str}" unless str.casecmp('Manage Printing Options...').zero?
+    unless str.casecmp('Manage Printing Options...').zero?
+      step "validate mail print on #{str}"
+    end
     print_on.selection(:selection_element, str)
     print_on.selection_list.each do |element|
       print_on_arr << element.text
