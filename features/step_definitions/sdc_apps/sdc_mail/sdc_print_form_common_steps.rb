@@ -3,11 +3,9 @@ Then /^[Ss]elect Print On (.+)$/ do |str|
   if SdcEnv.new_framework
     print_on = SdcMail.print_on
     print_on.selection(:selection_element, str)
-    print_on.drop_down.wait_until_present(timeout: 3)
-    print_on.text_field.wait_until_present(timeout: 3)
+    print_on.text_field.wait_until_present(timeout: 6)
     print_on.drop_down.safe_click
     unless str.casecmp('Manage Printing Options...').zero?
-      print_on = SdcMail.print_on
       if print_on.selection_list.size < 21
         step 'select all options in manage printing options'
         print_on.drop_down.click
@@ -21,9 +19,7 @@ Then /^[Ss]elect Print On (.+)$/ do |str|
       expect(print_on_arr).to include(str)
     end
     print_on.drop_down.click unless print_on.selection_element.present?
-    #print_on.selection_element.wait_until_present(timeout: 0.25)
     print_on.selection_element.click
-    #print_on.text_field.wait_until_present(timeout: 0.25)
     unless str.include? 'Manage'
       expect(print_on.text_field.text_value).to eql(str)
     end
