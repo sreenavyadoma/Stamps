@@ -6,8 +6,10 @@ Then /^[Ss]elect Print On (.+)$/ do |str|
     print_on.drop_down.wait_until_present(timeout: 3)
     print_on.text_field.wait_until_present(timeout: 3)
     print_on.drop_down.safe_click
-    print_on.selection_element.wait_until_present(timeout: 3)
+    step "validate mail print on #{str}" unless str == "Manage Printing Options..."
+    print_on.selection(:selection_element, str)
     print_on.drop_down.click unless print_on.selection_element.present?
+    print_on.selection_element.wait_until_present(timeout: 3)
     print_on.selection_element.click
     print_on.text_field.wait_until_present(timeout: 3)
     expect(print_on.text_field.text_value).to eql(str) unless str.include? 'Manage'
@@ -16,6 +18,20 @@ Then /^[Ss]elect Print On (.+)$/ do |str|
   end
 #  SdcMail.print_media = SdcPrintMediaHelper.to_sym(str)
   TestData.hash[:print_media] = str
+end
+
+Then /^validate mail print on (.+)$/ do |str|
+  print_on = SdcMail.print_on
+  print_on_arr =[]
+  if print_on.selection_list.size < 21
+    step "select all options in manage printing options"
+    print_on.drop_down.click
+  end
+  expect(print_on.selection_list.size).to eql 21
+  print_on.selection_list.each do |element|
+    print_on_arr << element.text
+  end
+  expect(print_on_arr).to include(str)
 end
 
 Then /^select all options in manage printing options/ do
@@ -45,9 +61,22 @@ Then /^select all options in manage printing options/ do
 end
 
 Then /^check (.+) in manage print options$/ do |str|
-  step "search for #{str} in manage print options"
   manage_print_options = SdcMail.modals.manage_print_options
-  manage_print_options.print_option_checkbox.check
+  unless manage_print_options.search.present?
+    step "select Print On Manage Printing Options..."
+  end
+  step "search for #{str} in manage print options"
+
+  t1 = Time.now
+  t2 = Time.now
+  while t2-t1 < 2 do
+    t2 = Time.now
+    if manage_print_options.single_grid_item.text == str
+      manage_print_options.print_option_checkbox.check
+      break
+    end
+  end
+  expect(manage_print_options.single_grid_item.text).to eql (str)
 end
 
 Then /^expect manage print options modal is present$/ do
@@ -64,6 +93,7 @@ Then /^search for (.+) in manage print options$/ do |str|
   manage_print_options.search.set str
   manage_print_options.search.send_keys(:enter)
   manage_print_options.search_button.click
+
 end
 
 Then /^click save in manage print options$/ do

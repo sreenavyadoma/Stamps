@@ -8,8 +8,8 @@ module SdcMail
     page_object(:print_verify) { {xpath: "//table[contains(@id, 'tableview')]" } }
     page_object(:print_chooser) { {xpath: "//table[contains(@id, 'tableview')]//tbody//tr//td[1]//div//div" } }
     checkbox(:print_option_checkbox, :print_chooser, :print_verify, "class", "x-grid-item-selected")
-    page_objects(:grid) { {xpath: "//table[contains(@id, 'tableview')]" } }
-
+    page_object(:single_grid_item) { {xpath: "//table[contains(@id, 'tableview')]//tbody//tr//td[2]//div" } }
+    page_object(:grid) { {xpath: "//table[contains(@id, 'tableview')]" } }
   end
 
   module SdcMailFloatingModals
