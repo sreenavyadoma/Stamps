@@ -93,7 +93,6 @@ Then /^search for (.+) in manage print options$/ do |str|
   manage_print_options.search.set str
   manage_print_options.search.send_keys(:enter)
   manage_print_options.search_button.click
-
 end
 
 Then /^click save in manage print options$/ do
