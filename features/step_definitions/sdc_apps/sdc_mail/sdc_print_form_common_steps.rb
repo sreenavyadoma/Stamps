@@ -2,19 +2,24 @@
 Then /^[Ss]elect Print On (.+)$/ do |str|
   if SdcEnv.new_framework
     print_on = SdcMail.print_on
-    print_on_arr = []
     print_on.selection(:selection_element, str)
     print_on.drop_down.wait_until_present(timeout: 3)
     print_on.text_field.wait_until_present(timeout: 3)
     print_on.drop_down.safe_click
     unless str.casecmp('Manage Printing Options...').zero?
-      step "validate mail print on #{str}"
+      print_on = SdcMail.print_on
+      if print_on.selection_list.size < 21
+        step 'select all options in manage printing options'
+        print_on.drop_down.click
+      end
+      expect(print_on.selection_list.size).to eql 21
+      print_on_arr = []
+      print_on.selection(:selection_element, str)
+      print_on.selection_list.each do |element|
+        print_on_arr << element.text
+      end
+      expect(print_on_arr).to include(str)
     end
-    print_on.selection(:selection_element, str)
-    print_on.selection_list.each do |element|
-      print_on_arr << element.text
-    end
-    expect(print_on_arr).to include(str)
     print_on.drop_down.click unless print_on.selection_element.present?
     print_on.selection_element.wait_until_present(timeout: 0.5)
     print_on.selection_element.click
@@ -27,15 +32,6 @@ Then /^[Ss]elect Print On (.+)$/ do |str|
   end
 #  SdcMail.print_media = SdcPrintMediaHelper.to_sym(str)
   TestData.hash[:print_media] = str
-end
-
-Then /^validate mail print on (.+)$/ do |str|
-  print_on = SdcMail.print_on
-  if print_on.selection_list.size < 21
-    step 'select all options in manage printing options'
-    print_on.drop_down.click
-  end
-  expect(print_on.selection_list.size).to eql 21
 end
 
 Then /^select all options in manage printing options/ do
