@@ -4,10 +4,8 @@ Feature: Manage Print Options
     Given Start test driver
 
   @mail_manage_printing_options
-  Scenario: Print On List Of Values
+  Scenario: Manage Print Options
     Then sign-in to Mail
-    Then select all options in manage printing options
-    Then select Print On Stamps
     Then select Print On Manage Printing Options...
     Then expect manage print options modal is present
     Then check Stamps in manage print options
