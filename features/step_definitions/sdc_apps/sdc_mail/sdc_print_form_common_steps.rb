@@ -21,9 +21,9 @@ Then /^[Ss]elect Print On (.+)$/ do |str|
       expect(print_on_arr).to include(str)
     end
     print_on.drop_down.click unless print_on.selection_element.present?
-    print_on.selection_element.wait_until_present(timeout: 0.5)
+    #print_on.selection_element.wait_until_present(timeout: 0.25)
     print_on.selection_element.click
-    print_on.text_field.wait_until_present(timeout: 0.5)
+    #print_on.text_field.wait_until_present(timeout: 0.25)
     unless str.include? 'Manage'
       expect(print_on.text_field.text_value).to eql(str)
     end
