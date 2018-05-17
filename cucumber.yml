@@ -1,4 +1,4 @@
-default: --backtrace --profile alex_orders
+default: --backtrace --profile rob
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -10,9 +10,9 @@ samsung_galaxy_sauce: --tags @saucelabs_poc SAUCE_DEVICE=samsung_galaxy_sauce LO
 #todo-Rob set PRINTER=factory as default automation printer
 #robcm=ccpryiihrjz ccfb311osps4x print_dialog_ship_date bvt_international_shipping
 #rob: --tags @mail_advanced_options_stamps URL=cc BROWSER=ff LOG_LEVEL=debug HEALTHCHECK=true MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory NEW_FRAMEWORK=true DEBUG=true
-rob: --tags @mail_authentication URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=default PW=pass111 PRINTER=factory NEW_FRAMEWORK=true #stgee1mtqvwdc0
+#rob: --tags @mail_authentication URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=default PW=pass111 PRINTER=factory NEW_FRAMEWORK=true #stgee1mtqvwdc0
 #rob: --tags @mail_advanced_options_stamps URL=sc --guess LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=selenium  USR=scsejsglwa PW=pass111LOG_LEVEL=debug PRINTER=factory NEW_FRAMEWORK=true DEBUG=true # c2jinmzmu64 schl0vlbfy2673 #19  schl0vlbfy2673
-#rob:  --tags @mail_advanced_options_stamps URL=prod BROWSER=ff LOG_LEVEL=info USR=robcruz PW=Stamps#524113 LOG_LEVEL=debug NEW_FRAMEWORK=true DEBUG=true MAX_WINDOW=false
+rob:  --tags @mail_manage_printing_options URL=prod BROWSER=ff LOG_LEVEL=info USR=robcruz PW=Stamps#524113 LOG_LEVEL=debug NEW_FRAMEWORK=true DEBUG=true MAX_WINDOW=false
 
 #bvt_orders_ship_date
 saucelabs_browser:  --tags @bvt_new_order BROWSER=gc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1 HEADLESS=true
@@ -42,7 +42,7 @@ mhossain1_cc: --tags @pp_authenticate JENKINS=true URL=qacc BROWSER=ff USR=wteam
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess  HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 
-eli_dev: --tags @mail_authentication --guess  JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff USR=hal9000stage25 PW=password1 PRINTER=Automation Printer
+eli_dev: --tags @mail_manage_printing_options --guess  JENKINS=false HEALTHCHECK=true WEB_APP=mail URL=stg BROWSER=ff USR=hal9000stage25 PW=password1 PRINTER=Automation Printer NEW_FRAMEWORK=true
 ray_dev: --tags @rates_parcel_select_ground --guess  JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff USR=default PW=pass111
 sap:              --tags @registration_orders WEB_APP=registration URL=cc --guess  BROWSER=ff MAX_WINDOW=false
 
@@ -545,7 +545,7 @@ mail_fci_flats: --tags  @mail_fci_flats --guess  HEALTHCHECK=true PRINTER=factor
 mail_hidden_postage: --tags  @mail_hidden_postage --guess  HEALTHCHECK=true PRINTER=factory
 
 mail_bug_ordersauto_3243: --tags  @mail_bug_ordersauto_3243 --guess  HEALTHCHECK=true PRINTER=factory
-
+mail_manage_printing_options: --tags @mail_manage_printing_options --guess  HEALTHCHECK=true NEW_FRAMEWORK=true
 #Partner Portal
 pp_log_in_page_validation: --tags @pp_log_in_page_validation --guess JENKINS=true  MAX_WINDOW=true
 pp_header_favicons_browser: --tags @pp_header_favicons_browser --guess JENKINS=true  MAX_WINDOW=true

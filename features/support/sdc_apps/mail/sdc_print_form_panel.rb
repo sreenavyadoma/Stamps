@@ -25,6 +25,7 @@ module SdcMail
 
     page_object(:drop_down) { {xpath: '//*[starts-with(@id, "printmediadroplist-")][contains(@id, "-trigger-picker")]'} }
     page_object(:text_field) { {xpath: '//*[@name="PrintMedia"]'} }
+    page_objects(:selection_list) { {xpath: "//li[contains(@class, 'x-boundlist-item')]"} }
 
     def selection(name, lov)
       page_object(name) { {xpath: "//li[text()='#{lov}']"} }

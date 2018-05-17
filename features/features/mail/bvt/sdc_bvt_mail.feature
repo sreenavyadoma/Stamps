@@ -4,7 +4,7 @@ Feature:  Mail BVT - Authentication
     Given Start test driver
 
   @mail_authentication
-  Scenario: Mail - Remember Username
+  Scenario: Mail - Authentication
     Then sign-in to Mail
     Then sign-out of SDC Website
     Then visit Mail
