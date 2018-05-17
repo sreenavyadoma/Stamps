@@ -193,10 +193,11 @@ Feature:  BVT tests for Orders
 
   @bvt_shipstation_updates_domestic
   Scenario: Update ShipStation for Domestic
+    Then sign-in to Orders
     Then add new order
     Then set order details ship-to domestic address to
       | full_name       | company      | street_address   | street_address_2| city    | state | zip    | country  |
-      | First Last | Company Name | 777 N Orange Ave | Apt 100         | Orlando | FL    | 32801  | United States |
+      | First Last      | Company Name | 777 N Orange Ave | Apt 100         | Orlando | FL    | 32801  | United States |
     Then set order details phone to 888-888-8888
     Then set order details email to rtest@stamps.com
     Then set order details pounds to 1
