@@ -146,6 +146,17 @@ Then /^[Pp]P: [Cc]lick on arrow on left panel$/ do
   PartnerPortal.common_page.panel_arrow.click
 end
 
+Then /^PP: expect partner logo is unique to partner$/ do
+    step 'Establish Partner Portal db connection'
+    logo_expected = PartnerPortal.common_page.partner_logo(SdcEnv.usr)
+    step 'Close partner portal db connection'
+
+    expect(PartnerPortal.common_page.panel_arrow.panel_partner_logo.attribute_value 'src').to eql(logo_expected)
+
+
+end
+
+
 Then /^[Pp]P: [Ee]xpect [Hh]amburger button exists for browser$/ do
   PartnerPortal.common_page.panel_hamburger.wait_until_present(timeout: 10)
   expect(PartnerPortal.common_page.panel_hamburger).to be_present, 'Hamburger button DOES NOT exist browser mode'

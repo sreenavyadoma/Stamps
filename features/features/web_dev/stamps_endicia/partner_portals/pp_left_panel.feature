@@ -46,7 +46,7 @@ Feature: PP-MVP: Left Panel
     Then PP: expect dashboard on left panel exists
     Then PP: expect logout on left panel exists
     Then PP: expect usps logo on left panel exists
-    #Then PP: expect partner logo is unique to partner
+    Then PP: expect partner logo is unique to partner
 
     #validate functionality
     Then PP: click on arrow on left panel
@@ -58,7 +58,7 @@ Feature: PP-MVP: Left Panel
     Then PP: expect dashboard on left panel exists
     Then PP: expect logout on left panel exists
     Then PP: expect usps logo on left panel exists
-    #Then PP: expect partner logo is unique to partner
+    Then PP: expect partner logo is unique to partner
 
     #validate Dashboard link on left panel
     Then PP: click on dashboard on left panel
@@ -86,7 +86,7 @@ Feature: PP-MVP: Left Panel
     Then PP: expect Dashboard on left panel exists
     Then PP: expect logout on left panel exists
     Then PP: expect usps logo on left panel exists
-    #Then PP: expect partner logo is unique to partner
+    Then PP: expect partner logo is unique to partner
 
    #validate functionality
     Then PP: click on X button
@@ -98,7 +98,7 @@ Feature: PP-MVP: Left Panel
     Then PP: expect Dashboard on left panel exists
     Then PP: expect logout on left panel exists
     Then PP: expect usps logo on left panel exists
-    #Then PP: expect partner logo is unique to partner
+    Then PP: expect partner logo is unique to partner
 
     #validate Dashboard link on left panel
     Then PP: click on dashboard on left panel

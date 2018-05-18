@@ -14,6 +14,7 @@ module PartnerPortal
     page_object(:panel_dashboard) { { xpath: '//a[contains(text(), "Dashboard")]' } }
     page_object(:panel_logout) { { xpath: '//a[contains(text(), "Logout")]' } }
     page_object(:panel_usps_logo) { { class: ['sidebar-footer'] } }
+    page_object(:panel_partner_logo) { { class: ['sidebar-logo'] } }
 
     #xs viewport
     #hamburger button
@@ -123,6 +124,19 @@ module PartnerPortal
           'var d = new Date();
           d.setHours(d.getHours() - 3);
           window.localStorage.setItem("_ate", window.btoa(d.toString()));')
+    end
+
+    def partner_logo_query(user)
+      logo = PartnerPortal.db_connection.execute(
+        "select pp_user.EmailAddress, pp_account.AccountName, pp_asset.AssetPath
+        from [dbo].[sdct_PartnerPortal_Asset] as pp_asset
+        inner join [dbo].[sdct_PartnerPortal_Account] as pp_account on  pp_account.AssetId = pp_asset.AssetId
+        inner join [dbo].[sdct_PartnerPortal_User] as pp_user on pp_user.PartnerAccountId = pp_account.PartnerAccountId
+        where pp_user.EmailAddress = '#{user}'")
+
+      logo.each do |item|
+        return item['AssetPath']
+      end
     end
 
   end
