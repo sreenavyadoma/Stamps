@@ -115,7 +115,7 @@ module SdcMail
   def modals
     SdcMailFloatingModals
   end
-
+  module_function :modals
   ##
   # Print Media helper
   module SdcPrintMediaHelper

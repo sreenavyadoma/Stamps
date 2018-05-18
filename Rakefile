@@ -3187,6 +3187,12 @@ Cucumber::Rake::Task.new(:mail_hidden_postage) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:mail_manage_printing_options) do |t|
+  t.profile = 'mail_manage_printing_options'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+
 #--------------------### Orders Bugs ##---------------------
 
 Cucumber::Rake::Task.new(:bugs_orders_filter_panel) do |t|
