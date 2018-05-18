@@ -4,6 +4,13 @@ Then /^[Pp]P: [Aa] user navigates to the login page$/ do
   PartnerPortal::PPLoginPage.visit
 end
 
+Then /^[Pp]P: [Ee]xpect user is redirect to the login page$/ do
+  step 'PP: Expect login page "Welcome to the" content to exist'
+  step 'PP: Expect login page "stamps.com endicia" logo to exist'
+  step 'PP: Expect login page "Partner Portal" content to exist'
+end
+
+
 Then /^[Pp]P: [Ee]xpect login page "Welcome to the" content to exist$/ do
   expect(PartnerPortal.login_page.welcome_content).to be_present, '"Welcome to the content" DOES NOT exist on login page'
 end

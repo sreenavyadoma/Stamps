@@ -32,12 +32,49 @@ Then /^[Pp]P: [Ee]xpect global header exists$/ do
   expect(PartnerPortal.common_page.global_header).to be_present, 'Global header DOES NOT exist'
 end
 
+Then /^[Pp]P: [Ee]xpect global header does not exists$/ do
+  expect(PartnerPortal.common_page.global_header).not_to be_present, 'Global header is PRESENT'
+end
 
 Then /^[Pp]P: [Ee]xpect footer to exists$/ do
   PartnerPortal.common_page.footer.wait_until_present(timeout: 10)
   expect(PartnerPortal.common_page.footer).to be_present, 'Footer DOES NOT exist'
 end
 
+Then /^[Pp]P: [Ee]xpect footer does not exists$/ do
+  expect(PartnerPortal.common_page.footer).not_to be_present, 'Footer is PRESENT'
+end
+
+Then /^PP: expect copyright dates is (\d+) - current year$/ do |year|
+  system_date = DateTime.now.utc
+  copyright_date_actual = PartnerPortal.common_page.copyright_date.text_value.gsub(/\P{ASCII}/, '').strip.gsub("Copyright", "").split('-')
+
+  expect(copyright_date_actual.first.to_i).to eql(year)
+  expect(system_date.year).to eql(copyright_date_actual.last.to_i)
+end
+
+Then /^PP: click on Copyright Stamps.com link$/ do
+ PartnerPortal.common_page.stamps_copyright_link.send_keys(:enter)
+end
+
+Then /^PP: click on Copyright Endicia link$/ do
+  PartnerPortal.common_page.endicia_copyright_link.send_keys(:enter)
+end
+
+Then /^PP: click on Stamps.com Privacy Policy link$/ do
+  PartnerPortal.common_page.stamps_privacy_policy_link.send_keys(:enter)
+end
+
+Then /^PP: click on Endicia Privacy Policy link$/ do
+  PartnerPortal.common_page.endicia_privacy_policy_link.send_keys(:enter)
+end
+
+Then /^PP: expect (.*) open in a new tab$/ do |str|
+  step 'pause for 2 second'
+  url =  SdcPage.browser.windows.last.url
+  SdcPage.browser.windows.last.close
+  expect(url).to eql(str)
+end
 
 Then /^[Pp]P: [Ee]xpect [Pp]artner [Pp]ortal logo exists$/ do
   expect(PartnerPortal.common_page.partner_portal_logo).to be_present, 'Partner Portal logo DOES NOT exist'
