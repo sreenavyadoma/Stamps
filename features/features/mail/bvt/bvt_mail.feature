@@ -523,21 +523,6 @@ Feature: BVT for Mail page
     Then Sign out
 
   @bvt_mail_piece_validation
-  Scenario: Stamps B-Series
-    Then select Print On Stamps
-    Then show Advanced Options
-    Then set Print form Serial Number to B12345
-    Then select Advanced Options Specify Postage Amount
-    Then set Print form Mail-From to default
-    Then select Print form service Media Mail
-    Then set Print form Amount to 2
-    Then set Print form Quantity to 1
-    Then Print Postage
-    Then set Mail Print modal Printer
-    Then click Mail Print modal Print button
-    Then Sign out
-
-  @bvt_mail_piece_validation
   Scenario: Envelope - #10
     Then select Print On Envelope - 10
     Then set Print form Mail-From to default
