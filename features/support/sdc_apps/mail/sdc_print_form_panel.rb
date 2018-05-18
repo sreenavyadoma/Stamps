@@ -22,7 +22,7 @@ module SdcMail
   end
 
   class SdcPrintOn < SdcPage
-    attr_class_accessor :media
+    #attr_class_accessor :media
 
     page_object(:drop_down) { {xpath: '//*[starts-with(@id, "printmediadroplist-")][contains(@id, "-trigger-picker")]'} }
     page_object(:text_field) { {xpath: '//*[@name="PrintMedia"]'} }
