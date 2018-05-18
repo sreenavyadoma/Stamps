@@ -26,7 +26,7 @@ Then /^[Ss]elect Print On (.+)$/ do |str|
   else
     stamps.mail.print_on(str)
   end
-#  SdcMail.print_media = SdcPrintMediaHelper.to_sym(str)
+  SdcPrintOn.media = SdcPrintMediaHelper.to_sym(str)
   TestData.hash[:print_media] = str
 end
 
