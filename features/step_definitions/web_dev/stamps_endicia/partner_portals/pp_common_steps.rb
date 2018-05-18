@@ -148,10 +148,11 @@ end
 
 Then /^PP: expect partner logo is unique to partner$/ do
     step 'Establish Partner Portal db connection'
-    logo_expected = PartnerPortal.common_page.partner_logo(SdcEnv.usr)
+    logo_expected = PartnerPortal.common_page.partner_logo_query(SdcEnv.usr)
     step 'Close partner portal db connection'
 
-    expect(PartnerPortal.common_page.panel_arrow.panel_partner_logo.attribute_value 'src').to eql(logo_expected)
+    logo_actual = PartnerPortal.common_page.panel_partner_logo.attribute_value 'src'
+    expect(logo_expected).to eql(logo_actual.split('partner/').last)
 
 
 end
