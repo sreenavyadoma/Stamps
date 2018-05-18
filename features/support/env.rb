@@ -2,6 +2,7 @@ $LOAD_PATH << File.expand_path('../../lib', __FILE__)
 $LOAD_PATH << File.expand_path('lib/features/orders', __FILE__)
 $LOAD_PATH << File.expand_path('features/support/lib', __FILE__)
 
+require 'facets/module/attr_class_accessor'
 require 'data_magic'
 require 'rake'
 require 'logger'
