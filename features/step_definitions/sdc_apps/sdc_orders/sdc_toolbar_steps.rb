@@ -26,7 +26,7 @@ Then /^add order (\d+)$/ do |count|
 end
 
 Then /^Save Order Details data$/ do
-  step 'Expect Order Details is present'
+  step 'expect order details is present'
   if SdcEnv.new_framework
     TestData.hash[:country] = SdcOrders.order_details.ship_to.domestic.country.text_field.text_value
     TestData.hash[:service_cost] = SdcOrders.order_details.service.cost.text_value.dollar_amount_str.to_f.round(2)

@@ -32,7 +32,7 @@ Then /^add order details associated item (\d+)$/ do |item_number|
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) Qty to (.*)$/ do |item_number, qty|
-  step 'expect Order Details is present'
+  step 'expect order details is present'
   TestData.hash[:details_associated_items][item_number] = {} unless TestData.hash[:details_associated_items].has_key?(item_number)
   TestData.hash[:details_associated_items][item_number][:item_qty] = qty
   if SdcEnv.new_framework
@@ -44,18 +44,26 @@ Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) Qty to (.*)$/ do |item_n
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) ID to (.*)$/ do |item_number, str|
-  step 'expect Order Details is present'
+  step 'expect order details is present'
   TestData.hash[:details_associated_items][item_number] = {} unless TestData.hash[:details_associated_items].has_key?(item_number)
   TestData.hash[:details_associated_items][item_number][:item_id] = (str.downcase.include?('random') ? TestHelper.rand_alpha_numeric : str)
-  stamps.orders.order_details.items_ordered.item(item_number.to_i).item_id.set(TestData.hash[:details_associated_items][item_number][:item_id])
+  if SdcEnv.new_framework
+    SdcOrders.order_details.associated_item.id(1).set(TestData.hash[:details_associated_items][item_number][:item_id])
+  else
+    stamps.orders.order_details.items_ordered.item(item_number.to_i).item_id.set(TestData.hash[:details_associated_items][item_number][:item_id])
+  end
   step 'Save Order Details data'
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) Description to (.*)$/ do |item_number, str|
-  step 'expect Order Details is present'
+  step 'expect order details is present'
   TestData.hash[:details_associated_items][item_number] = {} unless TestData.hash[:details_associated_items].has_key?(item_number)
   TestData.hash[:details_associated_items][item_number][:item_description] = (str.downcase.include?('random') ? TestHelper.rand_alpha_numeric : str)
-  stamps.orders.order_details.items_ordered.item(item_number.to_i).item_description.set(TestData.hash[:details_associated_items][item_number][:item_description])
+  if SdcEnv.new_framework
+    SdcOrders.order_details.associated_item.description(1).set(TestData.hash[:details_associated_items][item_number][:item_description])
+  else
+    stamps.orders.order_details.items_ordered.item(item_number.to_i).item_description.set(TestData.hash[:details_associated_items][item_number][:item_description])
+  end
   step 'Save Order Details data'
 end
 
@@ -179,7 +187,7 @@ Then /^set order details ship-to domestic address to$/ do |table|
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Aa]mbiguous [Aa]ddress to$/ do |table|
-  step 'expect Order Details is present'
+  step 'expect order details is present'
   stamps.orders.order_details.ship_to.domestic.set_ambiguous(TestHelper.format_address(table.hashes.first))
 end
 
@@ -216,57 +224,94 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails Order ID is the same as saved Order ID$/ do
 end
 
 Then /^expect order details ship-to name is (.*)$/ do |expectation|
-  step 'expect Order Details is present'
+  step 'expect order details is present'
   step 'show order details form ship-to fields'
-  expect(stamps.orders.order_details.ship_to.domestic.textarea.recipient_name).to eql expectation
+  if SdcEnv.new_framework
+    # todo - check Address Test Helper
+    # expect(SdcOrders.order_details.ship_to.domestic.text_field.text_value).to eql(expectation)
+  else
+    expect(stamps.orders.order_details.ship_to.domestic.textarea.recipient_name).to eql expectation
+  end
 end
 
 Then /^expect order details ship-to company name is (.*)$/ do |expectation|
-  step 'expect Order Details is present'
+  step 'expect order details is present'
   step 'show order details form ship-to fields'
-  expect(stamps.orders.order_details.ship_to.domestic.textarea.company_name).to eql expectation
+  if SdcEnv.new_framework
+  #   todo Alex add helper function
+  else
+    expect(stamps.orders.order_details.ship_to.domestic.textarea.company_name).to eql expectation
+  end
 end
 
 Then /^expect order details ship-to cleansed street address is (.*)$/ do |expectation|
-  step 'expect Order Details is present'
+  step 'expect order details is present'
   step 'show order details form ship-to fields'
-  expect(stamps.orders.order_details.ship_to.domestic.textarea.street_address).to eql expectation
+  if SdcEnv.new_framework
+    # skip for now
+  else
+    expect(stamps.orders.order_details.ship_to.domestic.textarea.street_address).to eql expectation
+  end
 end
 
 Then /^expect order details ship-to cleansed city is (.*)$/ do |expectation|
-  step 'expect Order Details is present'
+  step 'expect order details is present'
   step 'show order details form ship-to fields'
-  expect(stamps.orders.order_details.ship_to.domestic.textarea.city).to eql expectation
+  if SdcEnv.new_framework
+    # skip for now
+  else
+    expect(stamps.orders.order_details.ship_to.domestic.textarea.city).to eql expectation
+  end
 end
 
 Then /^expect order details ship-to cleansed state is (.*)$/ do |expectation|
-  step 'expect Order Details is present'
+  step 'expect order details is present'
   step 'show order details form ship-to fields'
-  expect(stamps.orders.order_details.ship_to.domestic.textarea.state).to eql expectation
+  if SdcEnv.new_framework
+    # skip for now
+  else
+    expect(stamps.orders.order_details.ship_to.domestic.textarea.state).to eql expectation
+  end
 end
 
 Then /^expect order details ship-to cleansed zip plus 4 code is (.*)$/ do |expectation|
-  step 'expect Order Details is present'
+  step 'expect order details is present'
   step 'show order details form ship-to fields'
-  expect(stamps.orders.order_details.ship_to.domestic.textarea.zip_plus_4).to eql expectation
+  if SdcEnv.new_framework
+    # skip for now
+  else
+    expect(stamps.orders.order_details.ship_to.domestic.textarea.zip_plus_4).to eql expectation
+  end
 end
 
 Then /^expect order details ship-to cleansed zip code is (.*)$/ do |expectation|
-  step 'expect Order Details is present'
+  step 'expect order details is present'
   step 'show order details form ship-to fields'
-  expect(stamps.orders.order_details.ship_to.domestic.textarea.zip_code).to eql expectation
+  if SdcEnv.new_framework
+    # skip for now
+  else
+    expect(stamps.orders.order_details.ship_to.domestic.textarea.zip_code).to eql expectation
+  end
 end
 
 Then /^expect order details ship-to phone is (.*)$/ do |expectation|
-  step 'expect Order Details is present'
+  step 'expect order details is present'
   step 'show order details form ship-to fields'
-  expect(stamps.orders.order_details.ship_to.domestic.phone.text).to eql expectation
+  if SdcEnv.new_framework
+    expect(SdcOrders.order_details.ship_to.domestic.phone.text_value).to eql(expectation)
+  else
+    expect(stamps.orders.order_details.ship_to.domestic.phone.text).to eql expectation
+  end
 end
 
 Then /^expect order details ship-to email is (.*)$/ do |expectation|
-  step 'expect Order Details is present'
+  step 'expect order details is present'
   step 'show order details form ship-to fields'
-  expect(stamps.orders.order_details.ship_to.domestic.email.text).to eql expectation
+  if SdcEnv.new_framework
+    expect(SdcOrders.order_details.ship_to.domestic.email.text_value).to eql(expectation)
+  else
+    expect(stamps.orders.order_details.ship_to.domestic.email.text).to eql expectation
+  end
 end
 
 Then /^[Ii]n Exact Address Not Found module, select row (\d+)$/ do |row|

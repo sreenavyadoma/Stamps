@@ -139,8 +139,6 @@ module SdcOrders
   end
 
   class SdcOrderDetailsItem < SdcPage
-    #page_object(:ids, tag: :text_field) { { xpath: "(//*[@name='SKU'])[1]" } }
-
     def qty(num)
       page_object("qty_tf#{num}", tag: :text_field) { { xpath: "(//*[@name='Quantity'])[#{num}]" } }
       page_object("qty_inc#{num}") {{xpath: "(//*[@name='Quantity']/../following-sibling::*/div[contains(@class, 'up')])[#{num}]"}}

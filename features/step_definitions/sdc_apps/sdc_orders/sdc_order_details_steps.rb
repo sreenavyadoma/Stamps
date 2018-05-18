@@ -15,7 +15,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(
 end
 
 Then /^set order details service to (.*)$/ do |str|
-  step 'expect Order Details is present'
+  step 'expect order details is present'
   TestData.hash[:service] = str
   if SdcEnv.new_framework
     order_details = SdcOrders.order_details
@@ -126,7 +126,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails [Ss]ervice is (?:correct|(.*))$/ do |str|
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]ervice to (.*)$/ do |str|
-  step 'expect Order Details is present'
+  step 'expect order details is present'
   TestData.hash[:int_service] = stamps.orders.order_details.service.select(str).parse_service_name
   20.times do
     step 'blur out on order details form'
@@ -137,7 +137,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]ervice to (.*)$/ do |str|
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ii]nternational [Ss]ervice is (?:correct|(.*))$/ do |expectation|
-  step 'expect Order Details is present'
+  step 'expect order details is present'
   expect(stamps.orders.order_details.service.textbox.text.parse_service_name).to eql((expectation.nil?) ? TestData.hash[:int_service] : expectation)
 end
 
