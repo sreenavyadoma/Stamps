@@ -100,6 +100,15 @@ Feature: PP-MVP: Left Panel
     Then PP: expect usps logo on left panel exists
     #Then PP: expect partner logo is unique to partner
 
+    #validate Dashboard link on left panel
+    Then PP: click on dashboard on left panel
+    Then PP: expect dashboard page header exist
+
+    #validate Logout link on left panel
+    Then PP: click on logout on left panel
+    Then PP: expect user is redirect to the login page
+
+
 
 
 
