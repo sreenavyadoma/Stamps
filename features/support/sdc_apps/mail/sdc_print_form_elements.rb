@@ -31,7 +31,16 @@ module SdcMail
     def selection(name, lov)
       page_object(name) { {xpath: "//li[text()='#{lov}']"} }
     end
+  end
 
+  class SdcMailFrom < SdcPage
+    page_object(:xxxxxxx) { {xpath: 'xxxxxxx'} }
+    page_object(:drop_down) { {xpath: 'xxxxxxx'} }
+    page_object(:text_field) { {xpath: 'xxxxxxx'} }
+
+    def selection(name, str)
+      page_object(name) { {xpath: "#{str}"} }
+    end
   end
 
 end
