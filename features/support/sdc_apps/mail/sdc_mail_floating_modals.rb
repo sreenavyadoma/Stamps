@@ -12,10 +12,21 @@ module SdcMail
     page_object(:grid) { {xpath: "//table[contains(@id, 'tableview')]" } }
   end
 
+  class SdcWhatsNew < SdcPage
+    page_object(:title) { {xpath: '//div[contains(text(), "What\'s New in Mail?")]'} }
+    page_object(:close) { {xpath: '//span[contains(text(), "Close")]'} }
+    page_object(:more_info) { {xpath: '//span[contains(text(), "More Info")]'} }
+  end
+
   module SdcMailFloatingModals
     def manage_print_options
       SdcManagePrintOptions.new
     end
     module_function :manage_print_options
+
+    def whats_new
+      SdcWhatsNew.new
+    end
+    module_function :whats_new
   end
 end

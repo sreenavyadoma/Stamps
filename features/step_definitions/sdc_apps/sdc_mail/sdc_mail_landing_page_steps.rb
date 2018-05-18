@@ -33,11 +33,20 @@ Then /^sign-in to Mail$/ do
 
   if SdcEnv.browser
     step 'click the Sign In button in Mail'
+    step 'close whats new modal in mail'
     step 'expect user is signed in'
   elsif SdcEnv.ios
     raise StandardError, 'Not Implemented'
   elsif SdcEnv.android
     raise StandardError, 'Not Implemented'
+  end
+end
+
+
+
+Then /^close whats new modal in mail$/ do
+  if SdcMail.modals.whats_new.present?
+    SdcMail.modals.whats_new.close.click
   end
 end
 
