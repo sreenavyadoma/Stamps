@@ -65,7 +65,7 @@ module SdcMail
   module_function :print_on
 
   def print_form
-    case SdcPrintOn.print_media
+    case SdcPrintOn.media
     when :stamps
       @stamps ||= Object.const_get('Mail::Base').new(param).extend(PrintFormPanel::MailStamps)
       @stamps.print_media = print_media #todo-Rob Fix print_media
