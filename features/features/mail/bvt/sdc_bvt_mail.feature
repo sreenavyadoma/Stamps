@@ -96,3 +96,17 @@ Feature:  Mail BVT - Authentication
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then Sign out
+
+
+  @rob_test
+  Scenario: Address Cleansing
+    Then select Print On Shipping Label - Paper
+#    Then set Print form Mail-From to default
+#    Then set Print form Mail-To country to United States
+    Then set Print form Mail-To to address to Address Cleansing, BVT, 1350 Market Street, San Francisco, CA
+#    Then set Print form Ounces to 1
+#    Then select Print form service PM Package
+#    Then expect Print form Domestic Address field displays Address Cleansing, BVT, 1350 Market Street, San Francisco, CA 94102-5401
+#    Then Sign out
+
+
