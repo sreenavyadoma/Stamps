@@ -24,7 +24,7 @@ module SdcMail
     sdc_accessor :print_media
 
     page_object(:drop_down) { { xpath: '//*[starts-with(@id, "printmediadroplist-")][contains(@id, "-trigger-picker")]' } }
-    page_object(:text_field) { { xpath: '//*[@name="PrintMedia"]' } }
+    page_object(:text_field, tag: :text_field) { { xpath: '//*[@name="PrintMedia"]' } }
     page_objects(:selection_list) { { xpath: '//li[contains(@class, "x-boundlist-item")]' } }
     page_object(:label) { { xpath: '//label[(text()="Print On:")]' } }
 

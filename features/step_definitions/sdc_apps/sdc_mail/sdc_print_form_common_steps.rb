@@ -20,8 +20,10 @@ Then /^[Ss]elect Print On (.+)$/ do |str|
       expect(print_on_arr).to include(str)
     end
     print_on.drop_down.safe_click
-    #print_on.drop_down.click unless print_on.selection_element.present?
+    print_on.text_field.click
+    print_on.text_field.set_attribute('value', '')
     print_on.text_field.set str
+    print_on.selection_element.safe_wait_until_present(timeout: 1)
     print_on.selection_element.click
     # print_on.label.safe_click
     # print_on.label.safe_double_click
