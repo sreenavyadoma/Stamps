@@ -9,7 +9,6 @@ module SdcMail
   end
 
   class SdcManagePrintOptionsModal < SdcPage
-
     page_object(:search) { { xpath: '' } }
     page_object(:save) { { xpath: '' } }
     page_object(:close) { { xpath: '' } }
