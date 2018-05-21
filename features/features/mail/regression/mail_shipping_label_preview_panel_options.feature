@@ -9,8 +9,8 @@ Feature:Shipping Label Preview Panel
     Then select Print On Shipping Label - 5x8
 
     Then set Print form Mail-From to default
-    Then set Print form Mail-To Country to United States
-    Then set Print form Mail-To to a random address in zone 1 through 4
+    Then set print form mail-to Country to United States
+    Then set print form mail-to to a random address in zone 1 through 4
     Then set Print form Ounces to 1
     #Then select Print form service Priority Mail Package
     Then select Print form service PM Package

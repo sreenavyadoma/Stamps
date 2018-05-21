@@ -10,7 +10,7 @@ Feature: Verify Mail Elements Are Present
     Then expect Print form Mail From Field is present
     Then expect Print form Mail To Link is present
     Then expect Print form Mail To Country Field is present
-    Then set Print form Mail-To Country to United States
+    Then set print form mail-to Country to United States
     Then expect Print form Domestic Address Field is present
     Then expect Print form Email Check Box is present
     Then expect Print form Email Field is present
@@ -34,7 +34,7 @@ Feature: Verify Mail Elements Are Present
     Then expect Print form Print Sample Button is present
     Then expect Print form Print Button is present
 
-    Then set Print form Mail-To Country to India
+    Then set print form mail-to Country to India
     Then expect Print form International Name Field is present
     Then expect Print form International Company Field is present
     Then expect Print form International Address 1 Field is present

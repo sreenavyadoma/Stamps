@@ -9,8 +9,8 @@ Feature: Stamps print media bugs
 
     Then select Print On Shipping Label - 5x8
     Then set Print form Mail-From to default
-    Then set Print form Mail-To Country to United States
-    Then set Print form Mail-To to a random address in zone 1 through 4
+    Then set print form mail-to Country to United States
+    Then set print form mail-to to a random address in zone 1 through 4
     Then set Print form Ounces to 1
     Then select Print form service FCM Large Envelope/Flat
     Then show Advanced Options
@@ -23,8 +23,8 @@ Feature: Stamps print media bugs
     #mail_print_roll_4x6_fcm_large_envelope
     Then select Print On Roll 4x6
     Then set Print form Mail-From to default
-    Then set Print form Mail-To Country to United States
-    Then set Print form Mail-To to a random address in zone 1 through 4
+    Then set print form mail-to Country to United States
+    Then set print form mail-to to a random address in zone 1 through 4
     Then set Print form Ounces to 1
     Then select Print form service FCM Large Envelope/Flat
     Then Print Postage
@@ -57,7 +57,7 @@ Feature: Stamps print media bugs
     Then check Print form Email Tracking checkbox
     Then select Print On Envelope - 10
     Then set Print form Mail-From to default
-    Then set Print form Mail-To to a random address in zone 1 through 4
+    Then set print form mail-to to a random address in zone 1 through 4
     Then set Print form Ounces to 1
     Then select Print form service FCM Letter
     Then expect mail Print modal is present

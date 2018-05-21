@@ -5,8 +5,19 @@ Then /^[Bb]lur out on [Pp]rint [Ff]orm$/ do
   stamps.mail.print_form.blur_out
 end
 
-Then /^[Ss]et Print form Mail-From to (.*)$/ do |value|
-  stamps.mail.print_form.mail_from.select(TestData.hash[:ship_from] = value)
+Then /^[Ss]et Print form Mail-From to (.*)$/ do |str|
+  if SdcEnv.new_framework
+    mail_from = SdcMail.print_form.mail_from
+    mail_from.selection(:selection_element, str)
+    text = mail_from.text_field.text_value
+    unless text.eql? str
+      mail_from.drop_down.click
+      mail_from.selection_element.click unless mail_from.selection_element.present?
+      mail_from.selection_element.safe_click
+    end
+  else
+    stamps.mail.print_form.mail_from.select(TestData.hash[:ship_from] = str)
+  end
 end
 
 Then /^[Cc]heck Print form [Ee]mail [Tt]racking checkbox$/ do
@@ -79,13 +90,27 @@ Then /^[Ee]xpect on [Pp]rint [Pp]review [Pp]anel, right side label is selected$/
   expect(stamps.mail.print_preview.right_selected?).to be(true), "Right Label image doesn't exists on Print form"
 end
 
-Then /^[Ss]et Print form [Mm]ail-[Tt]o [Cc]ountry to (.*)$/ do |country|
-  20.times do # work around for rating problem
-    stamps.mail.print_form.mail_to.mail_to_country.select_country(TestData.hash[:country] = country)
-    break if stamps.mail.print_form.mail_to.mail_to_country.textbox.text.include?(TestData.hash[:country]) && stamps.mail.print_form.service.has_rates?
+Then /^set print form mail-to [Cc]ountry to (.*)$/ do |str|
+  if SdcEnv.new_framework
+    mail_to = SdcMail.print_form.mail_to
+    mail_to.selection(:selection_element, str)
+    text_field = mail_to.dom_text_field
+    text_field.safe_wait_until_present(timeout: 1)
+    text_field = mail_to.int_text_field if mail_to.int_text_field.present?
+    unless text_field.text_value.eql? str
+      text_field.set str
+      mail_to.selection_element.safe_click
+    end
+    expect(text_field.text_value).to eql str
+    sleep 2
+  else
+    20.times do
+      stamps.mail.print_form.mail_to.mail_to_country.select_country(TestData.hash[:country] = str)
+      break if stamps.mail.print_form.mail_to.mail_to_country.textbox.text.include?(TestData.hash[:country]) && stamps.mail.print_form.service.has_rates?
+    end
+    expect(stamps.mail.print_form.service).to be_has_rates, "Mail service list of values does not have rates."
+    expect(stamps.mail.print_form.mail_to.mail_to_country.textbox.text).to eql(TestData.hash[:country])
   end
-  expect(stamps.mail.print_form.service).to be_has_rates, "Mail service list of values does not have rates."
-  expect(stamps.mail.print_form.mail_to.mail_to_country.textbox.text).to eql(TestData.hash[:country])
 end
 
 Then /^[Ss]ave Print Form Total Cost$/ do

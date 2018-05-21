@@ -1,7 +1,7 @@
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
   step 'show order details form ship-to fields'
-  TestData.hash[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address, SdcEnv.env))
+  TestData.hash[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address))
   if SdcEnv.new_framework
     order_details = SdcOrders.order_details
     domestic = order_details.ship_to.domestic

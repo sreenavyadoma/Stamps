@@ -16,6 +16,7 @@ require 'holidays'
 require 'watir'
 require 'watir_drops'
 
+require_relative 'sdc_core/sdc_patch'
 require_relative 'sdc_core/sdc_core'
 require_relative 'sdc_core/sdc_test'
 require_relative 'sdc_apps/sdc_website'

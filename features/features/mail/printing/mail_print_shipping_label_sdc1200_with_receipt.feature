@@ -11,7 +11,7 @@ Feature: Mail Shipping Label - SDC-1200 with receipt
    #mail_print_shipping_label_sdc1200_regular
     Then select Print On Shipping Label - SDC-1200
     Then set Print form Mail-From to default
-    Then set Print form Mail-To to a random address in zone 1 through 4
+    Then set print form mail-to to a random address in zone 1 through 4
     Then set Print form Ounces to 1
     Then select Print form service FCM Large Envelope/Flat
     Then show Advanced Options
@@ -23,7 +23,7 @@ Feature: Mail Shipping Label - SDC-1200 with receipt
    #mail_print_shipping_label_sdc1200_fpo
     Then select Print On Shipping Label - SDC-1200
     Then set Print form Mail-From to default
-    Then set Print form Mail-To to address FPO Label, random company, UNIT 100100 BOX 4 120, FPO, AP 96691
+    Then set print form mail-to to address FPO Label, random company, UNIT 100100 BOX 4 120, FPO, AP 96691
     Then set Print form Ounces to 1
     Then select Print form service FCM Package/Thick Envelope
     Then click Print form Edit Customs Form button

@@ -305,7 +305,7 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
 
         # Set address to proper zone
         step "set Order Details Ship-To to a random address in Zone #{zone}"  if SdcEnv.sdc_app == :orders
-        step "set Print form Mail-To to a random address in zone #{zone}" if SdcEnv.sdc_app == :mail
+        step "set print form mail-to to a random address in zone #{zone}" if SdcEnv.sdc_app == :mail
         step "save Print Form Mail From" if SdcEnv.sdc_app == :mail
         # spreadsheet price for zone
 
