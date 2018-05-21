@@ -525,6 +525,17 @@ Then /^[Aa]dd Customs Associated Item (\d+), description (.*), qty (\d+), Price 
   step "set Customs Associated Item #{item_number} Tarriff to #{tariff}"
 end
 
+Then /^edit customs associated item (\d+), description (.*), qty (\d+), Price (.+), Made In (.+), Tariff (.*)$/ do |item_number, description, qty, price, made_in, tariff|
+  step "scroll into view customs associated item #{item_number}"
+  step "set Customs Associated Item #{item_number} Description to #{description}"
+  step "set Customs Associated Item #{item_number} Qty to #{qty}"
+  step "set Customs Associated Item #{item_number} Unit Price to #{price}"
+  step "scroll into view customs associated item #{item_number}"
+  step "set Customs Associated Item #{item_number} Made In is Country to #{made_in}"
+  step "scroll into view customs associated item #{item_number}"
+  step "set Customs Associated Item #{item_number} Tarriff to #{tariff}"
+end
+
 Then /^[Aa]dd Customs Associated Item (\d+)$/ do |item_number|
   if SdcEnv.new_framework
     SdcWebsite.customs_form.add_item.click

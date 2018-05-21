@@ -134,9 +134,9 @@ Feature:  BVT tests for Orders
     Then add Customs Associated Item 4, description random, qty 1, Price 4, Made In Philippines, Tariff 1
     Then add Customs Associated Item 5, description random, qty 1, Price 4, Made In Czech Republic, Tariff 1
     Then add Customs Associated Item 6, description random, qty 1, Price 4, Made In Denmark, Tariff 1
-    Then add Customs Associated Item 7, description random, qty 1, Price 4, Made In Scotland (Great Britain), Tariff 1
+    Then add Customs Associated Item 7, description random, qty 1, Price 4, Made In India, Tariff 1
     Then add Customs Associated Item 8, description random, qty 1, Price 4, Made In Spain, Tariff 1
-    Then add Customs Associated Item 9, description random, qty 1, Price 4, Made In United Kingdom (Great Britain), Tariff 1
+    Then add Customs Associated Item 9, description random, qty 1, Price 4, Made In Ukraine, Tariff 1
     Then add Customs Associated Item 10, description random, qty 1, Price 4, Made In Australia, Tariff 1
     Then add Customs Associated Item 11, description random, qty 1, Price 4, Made In Norway, Tariff 1
     Then add Customs Associated Item 1, description random, qty 1, Price 4, Made In United States, Tariff 1
