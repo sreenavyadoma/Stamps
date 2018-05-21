@@ -7,7 +7,6 @@ module Stamps
         @user_credentials
       end
 
-
       def rand_alpha_str(min = 2, max = 10)
         Array.new(rand(min..max)) { [*'a'..'z'].sample }.join
       end
@@ -20,18 +19,19 @@ module Stamps
         rand_alpha_numeric(*args).to_s.split.map(&:capitalize).join(' ')
       end
 
-      def rand_usr(env)
+      def rand_usr
         down = ('a'..'z').to_a
         up = ('A'..'Z').to_a
         digits = ('0'..'9').to_a
         special = %w(- _ .)
-        (env.nil? ? 'xx' : env.to_s) + (digits + down + up + special).shuffle[1..1].join +
-            [rand_samp_str(down), rand_samp_str(up), rand_samp_str(
-                digits)].concat((down + up + digits).sample(Random.rand(0..5))).shuffle.join
+        SdcEnv.env.to_s  + (digits + down + up + special).shuffle[1..1].join +
+          [rand_samp_str(down), rand_samp_str(up), rand_samp_str(
+              digits)].concat((down + up + digits).sample(Random.rand(0..5))
+          ).shuffle.join
       end
 
-      def rand_email(env)
-        "#{rand_usr(env.to_s)}@mailinator.com".downcase
+      def rand_email
+        "#{rand_usr}@mailinator.com".downcase
       end
 
       def rand_alpha_numeric(min = 2, max = 10)
@@ -126,86 +126,86 @@ module Stamps
         formatted_address
       end
 
-      def address_helper_zone(zone, env)
+      def address_helper_zone(zone)
         case zone.downcase
           when /zone 1 (?:through|and) 4/
-            rand_zone_1_4(env)
+            rand_zone_1_4
           when /zone 5 (?:through|and) 8/
-            rand_zone_5_8(env)
+            rand_zone_5_8
           when /zone 1/
-            rand_zone_1(env)
+            rand_zone_1
           when /zone 2/
-            rand_zone_2(env)
+            rand_zone_2
           when /zone 3/
-            rand_zone_3(env)
+            rand_zone_3
           when /zone 4/
-            rand_zone_4(env)
+            rand_zone_4
           when /zone 5/
-            rand_zone_5(env)
+            rand_zone_5
           when /zone 6/
-            rand_zone_6(env)
+            rand_zone_6
           when /zone 7/
-            rand_zone_7(env)
+            rand_zone_7
           when /zone 8/
-            rand_zone_8(env)
+            rand_zone_8
           when /zone 9/
-            rand_zone_9(env)
+            rand_zone_9
           else
             return zone
         end
       end
 
-      def rand_zone_1(env)
-        rand_zone_processing(data_for(:zone_1_through_4, {})['zone1'].values, env)
+      def rand_zone_1
+        rand_zone_processing(data_for(:zone_1_through_4, {})['zone1'].values)
       end
 
-      def rand_zone_2(env)
-        rand_zone_processing(data_for(:zone_1_through_4, {})['zone2'].values, env)
+      def rand_zone_2
+        rand_zone_processing(data_for(:zone_1_through_4, {})['zone2'].values)
       end
 
-      def rand_zone_3(env)
-        rand_zone_processing(data_for(:zone_1_through_4, {})['zone3'].values, env)
+      def rand_zone_3
+        rand_zone_processing(data_for(:zone_1_through_4, {})['zone3'].values)
       end
 
-      def rand_zone_4(env)
-        rand_zone_processing(data_for(:zone_1_through_4, {})['zone4'].values, env)
+      def rand_zone_4
+        rand_zone_processing(data_for(:zone_1_through_4, {})['zone4'].values)
       end
 
-      def rand_zone_5(env)
-        rand_zone_processing(data_for(:zone_5_through_8, {})['zone5'].values, env)
+      def rand_zone_5
+        rand_zone_processing(data_for(:zone_5_through_8, {})['zone5'].values)
       end
 
-      def rand_zone_6(env)
-        rand_zone_processing(data_for(:zone_5_through_8, {})['zone6'].values, env)
+      def rand_zone_6
+        rand_zone_processing(data_for(:zone_5_through_8, {})['zone6'].values)
       end
 
-      def rand_zone_7(env)
-        rand_zone_processing(data_for(:zone_5_through_8, {})['zone7'].values, env)
+      def rand_zone_7
+        rand_zone_processing(data_for(:zone_5_through_8, {})['zone7'].values)
       end
 
-      def rand_zone_8(env)
-        rand_zone_processing(data_for(:zone_5_through_8, {})['zone8'].values, env)
+      def rand_zone_8
+        rand_zone_processing(data_for(:zone_5_through_8, {})['zone8'].values)
       end
 
-      def rand_zone_9(env)
-        rand_zone_processing(data_for(:non_domestic, {})['zone9'].values, env)
+      def rand_zone_9
+        rand_zone_processing(data_for(:non_domestic, {})['zone9'].values)
       end
 
-      def rand_zone_processing(address, env)
-        rand_shipping_data(address[rand(address.size)], env)
+      def rand_zone_processing(address)
+        rand_shipping_data(address[rand(address.size)])
       end
 
-      def rand_zone_1_4(env)
-        rand_shipping_data(data_rand_zone_1_4, env)
+      def rand_zone_1_4
+        rand_shipping_data(data_rand_zone_1_4)
       end
 
-      def rand_zone_5_8(env)
-        rand_shipping_data(data_rand_zone_5_8, env)
+      def rand_zone_5_8
+        rand_shipping_data(data_rand_zone_5_8)
       end
 
-      def rand_ship_from_zone_1_4(env)
+      def rand_ship_from_zone_1_4
         us_states = data_for(:us_states, {}) if us_states.nil?
-        shipping = rand_shipping_data(data_rand_zone_1_4, env)
+        shipping = rand_shipping_data(data_rand_zone_1_4)
         shipping['ship_from_zip'] = shipping['zip']
         shipping['state_abbrev'] = shipping['state']
         shipping['state'] = us_states[shipping['state_abbrev']]
@@ -213,9 +213,9 @@ module Stamps
         shipping
       end
 
-      def rand_ship_from_zone_5_8(env)
+      def rand_ship_from_zone_5_8
         us_states = data_for(:us_states, {}) if us_states.nil?
-        shipping = rand_shipping_data(data_rand_zone_5_8, env)
+        shipping = rand_shipping_data(data_rand_zone_5_8)
         shipping['ship_from_zip'] = shipping['zip']
         shipping['state_abbrev'] = shipping['state']
         shipping['state'] = us_states[shipping['state_abbrev']]
@@ -223,14 +223,14 @@ module Stamps
         shipping
       end
 
-      def rand_shipping_data(hash_data, env)
+      def rand_shipping_data(hash_data)
         hash_data['first_name'] = rand_alpha_str.capitalize
         hash_data['last_name'] = rand_alpha_str.capitalize
         hash_data['full_name'] = "#{hash_data['first_name']} #{hash_data['last_name']}"
         hash_data['company'] = rand_comp_name
         hash_data['phone'] = rand_phone
         hash_data['phone_number_format'] = rand_phone_format
-        hash_data['email'] = rand_email(env)
+        hash_data['email'] = rand_email
         hash_data
       end
 
@@ -265,9 +265,9 @@ module Stamps
         end
       end
 
-      def address_helper(zone, env)
-        return format_address(address_helper_zone(zone, env)) if zone.downcase.include?('zone')
-        format_address(zone, env)
+      def address_helper(zone)
+        return format_address(address_helper_zone(zone)) if zone.downcase.include?('zone')
+        format_address(zone)
       end
 
       def address_hash_to_str(hash)

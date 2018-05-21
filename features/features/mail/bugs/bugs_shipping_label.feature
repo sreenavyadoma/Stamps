@@ -7,7 +7,7 @@ Feature: Shipping Label bugs
   Scenario: WEBAPPS-6783 Reset Button Resets Starting Label Position after Print
     Then select Print On Shipping Label - Paper
     Then set Print form Mail-From to default
-    Then set Print form Mail-To to a random address in zone 1
+    Then set print form mail-to to a random address in zone 1
     Then set Print form Ounces to 1
     Then select Print form service FCM Large Envelope
 

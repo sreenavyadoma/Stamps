@@ -1,32 +1,45 @@
 
-Then /^[Ss]elect Print On (.+)$/ do |str|
+Then /^select Print On (.+)$/ do |str|
+  SdcLogger.debug "select Print On #{str}"
   if SdcEnv.new_framework
     print_on = SdcMail.print_on
-    print_on.selection(:selection_element, str)
     print_on.text_field.wait_until_present(timeout: 6)
     print_on.drop_down.safe_click
-    unless str.casecmp('Manage Printing Options...').zero?
-      if print_on.selection_list.size < 21
-        step 'select all options in manage printing options'
-        print_on.drop_down.click
-      end
-      expect(print_on.selection_list.size).to eql 21
-      print_on_arr = []
+    print_on_arr = []
+    print_on.selection_list.each do |element|
+      print_on_arr << element.text
+    end
+    print_on.drop_down.safe_click
+
+    if print_on_arr.include? str
       print_on.selection(:selection_element, str)
-      print_on.selection_list.each do |element|
-        print_on_arr << element.text
-      end
-      expect(print_on_arr).to include(str)
+      print_on.text_field.set_attribute('value', '')
+      print_on.text_field.set str
+      print_on.selection_element.safe_wait_until_present(timeout: 1)
+      print_on.selection_element.click
+    else
+      print_on.text_field.set_attribute('value', '')
+      print_on.text_field.set 'Manage Printing Options...'
+      print_on.selection(:selection_element, 'Manage Printing Options...')
+      print_on.selection_element.safe_wait_until_present(timeout: 2)
+      print_on.selection_element.safe_click
+      print_on.selection_element.wait_while_present(timeout: 2)
+      step "check #{str} in manage print options"
+      step 'click save in manage print options'
+      print_on.selection(:selection_element, str)
+      print_on.text_field.click
+      print_on.text_field.set_attribute('value', '')
+      print_on.text_field.set str
+      print_on.selection_element.safe_wait_until_present(timeout: 1)
+      print_on.selection_element.click
     end
-    print_on.drop_down.click unless print_on.selection_element.present?
-    print_on.selection_element.click
-    unless str.include? 'Manage'
-      expect(print_on.text_field.text_value).to eql(str)
-    end
+    print_on.label.safe_click
+    print_on.label.double_click
+    print_on.label.safe_click
+
   else
     stamps.mail.print_on(str)
   end
-#  SdcMail.print_media = SdcPrintMediaHelper.to_sym(str)
   TestData.hash[:print_media] = str
 end
 
@@ -62,16 +75,8 @@ Then /^check (.+) in manage print options$/ do |str|
     step 'select Print On Manage Printing Options...'
   end
   step "search for #{str} in manage print options"
-
-  t1 = Time.now
-  t2 = Time.now
-  while t2-t1 < 2 do
-    t2 = Time.now
-    if manage_print_options.single_grid_item.text == str
-      manage_print_options.print_option_checkbox.check
-      break
-    end
-  end
+  SdcPage.browser.wait_until(timeout: 2) { manage_print_options.single_grid_item.text == str }
+  manage_print_options.print_option_checkbox.check
   expect(manage_print_options.single_grid_item.text).to eql (str)
 end
 
@@ -92,7 +97,9 @@ Then /^search for (.+) in manage print options$/ do |str|
 end
 
 Then /^click save in manage print options$/ do
-  SdcMail.modals.manage_print_options.save.click
+  save = SdcMail.modals.manage_print_options.save
+  save.click
+  save.safe_wait_while_present(timeout: 2)
 end
 
 Then /^[Ss]how Advanced Options$/ do

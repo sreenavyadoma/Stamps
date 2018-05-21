@@ -1,8 +1,15 @@
 
 # common Print form steps for Envelope|Label|Roll|CM
 
-Then /^[Ss]et Print form [Mm]ail-[Tt]o (?:|to )(?:|a )(?:|random )address(?: to| in| between|) (.*)$/ do |address|
-  stamps.mail.print_form.mail_to.mail_address.textarea.set(TestData.hash[:address] = TestHelper.address_helper(address, SdcEnv.env))
+Then /^set print form mail-to (?:|to )(?:|a )(?:|random )address(?: to| in| between|) (.*)$/ do |str|
+  address = TestHelper.address_helper(str)
+  if SdcEnv.new_framework
+    SdcMail.print_form.mail_to.text_area.set(address)
+  else
+    stamps.mail.print_form.mail_to.mail_address.textarea.set(address)
+  end
+
+  TestData.hash[:address] = address
 end
 
 Then /^[Ee]xpect Print form Mail To is disabled$/ do

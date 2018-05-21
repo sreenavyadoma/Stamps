@@ -154,7 +154,7 @@ Then /^[Oo]n [Mm]anage [Ss]hipping [Aa]ddress [Mm]odal, edit address for name=\"
 end
 
 Then /^[Aa]dd random Ship-from address from (.*)$/ do |address|
-  TestData.hash[:ship_from_address] = TestHelper.address_helper_zone(address, SdcEnv.env)
+  TestData.hash[:ship_from_address] = TestHelper.address_helper_zone(address)
   stamps.orders.order_details.single_ship_from.select('Manage Shipping Addresses').add.ship_from_address(TestData.hash[:ship_from_address])
 end
 
