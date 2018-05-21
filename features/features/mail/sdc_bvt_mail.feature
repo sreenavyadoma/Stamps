@@ -102,9 +102,9 @@ Feature:  Mail BVT - Authentication
   Scenario: Address Cleansing
     Then sign-in to Mail
     Then select Print On Shipping Label - 8 ½" x 11" Paper
-#    Then set Print form Mail-From to default
+#    Then set Print form Mail-From to Automation - El Segundo, CA
 #    Then set print form mail-to country to United States
-    Then set print form mail-to to address to Address Cleansing, BVT, 1350 Market Street, San Francisco, CA
+    Then set print form mail-to to address to Address Cleansing, BVT, 1350 Market Street #2905, San Francisco, CA
 #    Then set Print form Ounces to 1
 #    Then select Print form service PM Package
 #    Then expect Print form Domestic Address field displays Address Cleansing, BVT, 1350 Market Street, San Francisco, CA 94102-5401

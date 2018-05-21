@@ -69,7 +69,7 @@ module SdcMail
     when /stamps/
       return Object.const_get('SdcPage').new.extend(SdcStampsPrintForm)
     when /shipping_label/
-      raise ArgumentError, 'Not Implemented'
+      return Object.const_get('SdcPage').new.extend(SdcStampsPrintForm)
     when /envelope/
       raise ArgumentError, 'Not Implemented'
     when /certified_mail/

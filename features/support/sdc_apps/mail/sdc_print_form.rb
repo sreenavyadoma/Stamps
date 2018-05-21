@@ -17,21 +17,24 @@ module SdcMail
   end
 
   module SdcPrintFormMailTo
+    class IntMailToCountry < SdcPage
+
+    end
 
     class MailTo < SdcPage
-      page_object(:text_area, tag: :text_area) { { xpath: '//textarea[@name="freeFormAddress"]' } }
+      page_object(:text_area, tag: :textarea) { { xpath: '//textarea[@name="freeFormAddress"]' } }
       page_object(:drop_down) { { xpath: '//*[@id="sdc-mainpanel-matltocountrydroplist-trigger-picker"]' } }
       page_objects(:dom_text_field, index: 1, tag: :text_field) { { xpath: '//input[@name="ShipCountryCode"]' } }
       page_objects(:int_text_field, index: 2, tag: :text_field) { { xpath: '//input[@name="ShipCountryCode"]' } }
-      page_object(:link) { { xpath: 'xxxxxxx' } }
-      page_object(:name) { { xpath: 'xxxxxxx' } }
-      page_object(:company) { { xpath: 'xxxxxxx' } }
-      page_object(:address_1) { { xpath: 'xxxxxxx' } }
-      page_object(:address_2) { { xpath: 'xxxxxxx' } }
-      page_object(:city) { { xpath: 'xxxxxxx' } }
-      page_object(:province) { { xpath: 'xxxxxxx' } }
-      page_object(:postal_code) { { xpath: 'xxxxxxx' } }
-      page_object(:phone) { { xpath: 'xxxxxxx' } }
+      page_object(:link, tag: u) { { xpath: '//label[contains(@class, "sdc-mainpanel-shiptolinkbtn")]//u' } }
+      page_object(:name, tag: :text_field) { { xpath: '//input[@name="ShipName"]' } }
+      page_object(:company, tag: :text_field) { { xpath: '//input[@name="ShipCompany"]' } }
+      page_object(:address_1, tag: :text_field) { { xpath: '//input[@name="ShipStreet1"]' } }
+      page_object(:address_2, tag: :text_field) { { xpath: '//input[@name="ShipStreet2"]' } }
+      page_object(:city, tag: :text_field) { { xpath: '//input[@name="ShipCity"]' } }
+      page_object(:province, tag: :text_field) { { xpath: '//input[@name="ShipState"]' } }
+      page_object(:postal_code, tag: :text_field) { { xpath: '//input[@name="ShipPostalCode"]' } }
+      page_object(:phone, tag: :text_field) { { xpath: '//input[@name="ShipPhone"]' } }
 
       def selection(name, str)
         page_object(name) { { xpath: "#{str}" } }
@@ -47,7 +50,6 @@ module SdcMail
     include SdcPrintFormMailFrom
     include SdcPrintFormMailTo
 
-    # include MailTo
     # include Weight
     # include Service
     # include AdvancedOptions
