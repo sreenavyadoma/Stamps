@@ -398,8 +398,8 @@ Then /^expect order details pounds? (?:is (\d+)|and saved Pounds? are the same)$
   expectation = TestData.hash[:pounds] if expectation.nil?
   step 'expect order details is present'
   if SdcEnv.new_framework
-    expect(SdcOrders.order_details.weight.lbs.text_value.to_f).to eql(expectation.to_f.round(2))
-    # expect(SdcOrders.order_details.weight.lbs.value.to_f).to eql(expectation.to_f.round(2))
+    # expect(SdcOrders.order_details.weight.lbs.text_value.to_f).to eql(expectation.to_f.round(2))
+    expect(SdcOrders.order_details.weight.lbs.value.to_f).to eql(expectation.to_f.round(2))
   else
     expect(stamps.orders.order_details.weight.lb.textbox.text.to_f).to eql expectation.to_f.round(2)
   end
