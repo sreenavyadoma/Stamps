@@ -97,7 +97,9 @@ Then /^search for (.+) in manage print options$/ do |str|
 end
 
 Then /^click save in manage print options$/ do
-  SdcMail.modals.manage_print_options.save.click
+  save = SdcMail.modals.manage_print_options.save
+  save.click
+  save.safe_wait_while_present(timeout: 2)
 end
 
 Then /^[Ss]how Advanced Options$/ do
