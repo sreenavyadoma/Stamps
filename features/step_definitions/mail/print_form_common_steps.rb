@@ -99,6 +99,7 @@ Then /^set print form mail-to [Cc]ountry to (.*)$/ do |str|
     text_field = mail_to.int_text_field if mail_to.int_text_field.present?
     unless text_field.text_value.eql? str
       text_field.set str
+      mail_to.selection_element.safe_wait_until_present(timeout: 2)
       mail_to.selection_element.safe_click
     end
     expect(text_field.text_value).to eql str

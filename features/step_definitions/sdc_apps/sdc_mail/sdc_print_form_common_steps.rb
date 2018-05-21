@@ -33,6 +33,9 @@ Then /^select Print On (.+)$/ do |str|
       print_on.selection_element.safe_wait_until_present(timeout: 1)
       print_on.selection_element.click
     end
+    print_on.label.safe_click
+    print_on.label.double_click
+    print_on.label.safe_click
 
   else
     stamps.mail.print_on(str)
