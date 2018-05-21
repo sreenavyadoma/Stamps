@@ -23,11 +23,13 @@ Then /^[Ss]elect Print On (.+)$/ do |str|
       print_on.text_field.click
       print_on.text_field.set_attribute('value', '')
       print_on.text_field.set 'Manage Printing Options...'
+      print_on.selection(:selection_element, 'Manage Printing Options...')
       print_on.selection_element.safe_wait_until_present(timeout: 2)
-      print_on.selection_element.click
+      print_on.selection_element.safe_click
       print_on.selection_element.wait_while_present(timeout: 2)
       step "check #{str} in manage print options"
       step 'click save in manage print options'
+      print_on.selection(:selection_element, str)
       print_on.text_field.click
       print_on.text_field.set_attribute('value', '')
       print_on.text_field.set str
