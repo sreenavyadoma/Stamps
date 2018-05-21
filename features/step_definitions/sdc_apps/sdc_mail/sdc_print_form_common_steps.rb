@@ -1,11 +1,9 @@
 
-Then /^[Ss]elect Print On (.+)$/ do |str|
-  SdcLogger.debug str
+Then /^select Print On (.+)$/ do |str|
+  SdcLogger.debug "select Print On #{str}"
   if SdcEnv.new_framework
     print_on = SdcMail.print_on
-    print_on.selection(:selection_element, str)
     print_on.text_field.wait_until_present(timeout: 6)
-
     print_on.drop_down.safe_click
     print_on_arr = []
     print_on.selection_list.each do |element|
@@ -14,13 +12,12 @@ Then /^[Ss]elect Print On (.+)$/ do |str|
     print_on.drop_down.safe_click
 
     if print_on_arr.include? str
-      print_on.text_field.click
+      print_on.selection(:selection_element, str)
       print_on.text_field.set_attribute('value', '')
       print_on.text_field.set str
       print_on.selection_element.safe_wait_until_present(timeout: 1)
       print_on.selection_element.click
     else
-      print_on.text_field.click
       print_on.text_field.set_attribute('value', '')
       print_on.text_field.set 'Manage Printing Options...'
       print_on.selection(:selection_element, 'Manage Printing Options...')
