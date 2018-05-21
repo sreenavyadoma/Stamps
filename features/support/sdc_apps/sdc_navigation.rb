@@ -13,13 +13,14 @@ module SdcNavigation
     page_object(:invalid_sign_in) { {xpath: '//div[contains(@id, "InvalidUsernamePasswordMsg")]//label'} }
   end
 
-  class << self
-    def user_drop_down
-      SignedInUser.new
-    end
-
-    def mail_sign_in_modal
-      MailSignInModal.new
-    end
+  def user_drop_down
+    SignedInUser.new
   end
+  module_function :user_drop_down
+
+  def mail_sign_in_modal
+    MailSignInModal.new
+  end
+  module_function :mail_sign_in_modal
+
 end
