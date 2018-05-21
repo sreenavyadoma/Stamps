@@ -11,7 +11,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     #mail_print_shipping_label_5x8_fcm_large_envelope
     Then select Print On Shipping Label - 5x8
     Then set Print form Mail-From to default
-    Then set Print form Mail-To to a random address in zone 5 through 8
+    Then set print form mail-to to a random address in zone 5 through 8
     Then set Print form Ounces to 1
     Then select Print form service FCM Large Envelope/Flat
     Then Print label using split button
@@ -25,7 +25,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
 
     Then select Print On Envelope - 6
     Then set Print form Mail-From to default
-    Then set Print form Mail-To to a random address in zone 1 through 4
+    Then set print form mail-to to a random address in zone 1 through 4
     Then set Print form Ounces to 1
     Then select Print form service FCM Letter
     Then Print postage using split button
@@ -35,7 +35,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
   Scenario: Print On: Envelope #11
     Then select Print On Envelope - 11
     Then set Print form Mail-From to default
-    Then set Print form Mail-To to a random address in zone 5 through 8
+    Then set print form mail-to to a random address in zone 5 through 8
     Then set Print form Ounces to 1
     Then select Print form service FCM Letter
     Then Print postage using split button
@@ -47,8 +47,8 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
   Scenario: Print SDC 3930 (with hidden postage)
     Then select Print On Shipping Label - Paper
     Then set Print form Mail-From to default
-    Then set Print form Mail-To Country to United States
-    Then set Print form Mail-To to a random address in zone 1 through 4
+    Then set print form mail-to Country to United States
+    Then set print form mail-to to a random address in zone 1 through 4
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
     Then select Print form service PM Package
@@ -62,8 +62,8 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
   #mail_print_roll_4_1_8_x_6_1_4_fcm_large_envelope
     Then select Print On Roll 418x614
     Then set Print form Mail-From to default
-    Then set Print form Mail-To Country to United States
-    Then set Print form Mail-To to a random address in zone 1 through 4
+    Then set print form mail-to Country to United States
+    Then set print form mail-to to a random address in zone 1 through 4
     Then set Print form Ounces to 1
     Then select Print form service FCM Large Envelope/Flat
     Then Print postage using split button
@@ -72,8 +72,8 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
    #mail_print_roll_4x6_fcm_large_envelope
     Then select Print On Roll 4x6
     Then set Print form Mail-From to default
-    Then set Print form Mail-To Country to United States
-    Then set Print form Mail-To to a random address in zone 1 through 4
+    Then set print form mail-to Country to United States
+    Then set print form mail-to to a random address in zone 1 through 4
     Then set Print form Ounces to 1
     Then select Print form service FCM Large Envelope/Flat
     Then Print postage using split button
@@ -88,7 +88,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then set Print form Serial Number to B12345
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
-    Then set Print form Mail-To Country to United States
+    Then set print form mail-to Country to United States
     Then set Print form Ounces to 1
     Then select Print form service FCM Large Envelope/Flat
     Then set Advanced Options Cost Code to None
@@ -101,7 +101,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then set Print form Serial Number to B12345
     Then select Advanced Options Specify Postage Amount
     Then set Print form Mail-From to default
-    Then set Print form Mail-To Country to United States
+    Then set print form mail-to Country to United States
     Then select Print form service Media Mail
     Then set Print form Amount to 0.15
     Then set Advanced Options Cost Code to None

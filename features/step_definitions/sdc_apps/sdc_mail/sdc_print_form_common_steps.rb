@@ -1,5 +1,6 @@
 
 Then /^[Ss]elect Print On (.+)$/ do |str|
+  SdcLogger.debug str
   if SdcEnv.new_framework
     print_on = SdcMail.print_on
     print_on.selection(:selection_element, str)
@@ -26,7 +27,6 @@ Then /^[Ss]elect Print On (.+)$/ do |str|
   else
     stamps.mail.print_on(str)
   end
-  SdcPrintOn.media = SdcPrintMediaHelper.to_sym(str)
   TestData.hash[:print_media] = str
 end
 

@@ -65,34 +65,22 @@ module SdcMail
   module_function :print_on
 
   def print_form
-    case SdcPrintOn.media
-    when :stamps
-      @stamps ||= Object.const_get('Mail::Base').new(param).extend(PrintFormPanel::MailStamps)
-      @stamps.print_media = print_media #todo-Rob Fix print_media
-      return @stamps
-    when :label
-      @label ||= Object.const_get('Mail::Base').new(param).extend(PrintFormPanel::ShippingLabel)
-      @label.print_media = print_media
-      return @label
-    when :envelope
-      @envelope ||= Object.const_get('Mail::Base').new(param).extend(PrintFormPanel::Envelope)
-      @envelope.print_media = print_media
-      return @envelope
-    when :certified_mail
-      @certified_mail ||= Object.const_get('Mail::Base').new(param).extend(PrintFormPanel::CertifiedMail)
-      @certified_mail.print_media = print_media
-      return @certified_mail
-    when :roll
-      @roll ||= Object.const_get('Mail::Base').new(param).extend(PrintFormPanel::Roll)
-      @roll.print_media = print_media
-      return @roll
-    when :manage_printing_options
-      raise 'Not Implemented'
+    case SdcPrintOn.print_media.to_s
+    when /stamps/
+      return Object.const_get('SdcPage').new.extend(SdcStampsPrintForm)
+    when /shipping_label/
+      return Object.const_get('SdcPage').new.extend(SdcStampsPrintForm)
+    when /envelope/
+      raise ArgumentError, 'Not Implemented'
+    when /certified_mail/
+      raise ArgumentError, 'Not Implemented'
+    when /roll/
+      raise ArgumentError, 'Not Implemented'
     else
       # ignore
     end
 
-    raise ArgumentError, "Invalid print media: #{print_media}"
+    raise ArgumentError, "Invalid print media: #{SdcEnv.print_media}"
   end
   module_function :print_form
 

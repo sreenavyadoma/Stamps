@@ -9,7 +9,6 @@ module SdcMail
   end
 
   class SdcManagePrintOptionsModal < SdcPage
-
     page_object(:search) { { xpath: '' } }
     page_object(:save) { { xpath: '' } }
     page_object(:close) { { xpath: '' } }
@@ -22,16 +21,16 @@ module SdcMail
   end
 
   class SdcPrintOn < SdcPage
-    #attr_class_accessor :media
+    sdc_accessor :print_media
 
     page_object(:drop_down) { { xpath: '//*[starts-with(@id, "printmediadroplist-")][contains(@id, "-trigger-picker")]' } }
     page_object(:text_field) { { xpath: '//*[@name="PrintMedia"]' } }
-    page_objects(:selection_list) { { xpath: "//li[contains(@class, 'x-boundlist-item')]" } }
+    page_objects(:selection_list) { { xpath: '//li[contains(@class, "x-boundlist-item")]' } }
 
-    def selection(name, lov)
-      page_object(name) { { xpath: "//li[text()='#{lov}']" } }
+    def selection(name, str)
+      self.class.print_media = SdcPrintMediaHelper.to_sym(str)
+      page_object(name) { { xpath: "//li[text()='#{str}']" } }
     end
-
   end
 
 end

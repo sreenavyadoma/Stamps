@@ -55,45 +55,6 @@ module Stamps
         end
       end
 
-      ##
-      # Mail Advanced Options
-      module AdvancedOptions
-        # @return [Mail Advanced Options]
-
-        def advanced_options
-          case print_media
-          when :stamps
-            if cache[:stamps_options].nil? || !cache[:stamps_options].present?
-              cache[:stamps_options] = Object.const_get('WebApps::Base').new(param).extend(Stamps::Mail::AdvancedOptions::Stamps)
-            end
-            return cache[:stamps_options]
-          when :label
-            if cache[:label_options].nil? || !cache[:label_options].present?
-              cache[:label_options] = Object.const_get('WebApps::Base').new(param).extend(Stamps::Mail::AdvancedOptions::Labels)
-            end
-            return cache[:label_options]
-          when :envelope
-            if cache[:envelope_options].nil? || !cache[:envelope_options].present?
-              cache[:envelope_options] = Object.const_get('WebApps::Base').new(param).extend(Stamps::Mail::AdvancedOptions::Envelopes)
-            end
-            return cache[:envelope_options]
-          # when :certified_mail, :certified_mail_3910_3930, :certified_mail_3810, :certified_mail_3830
-          when :cm3610, :cm3710, :cm3910, :cm3930, :cm3810, :cm3830
-            if cache[:cm_options].nil? || !cache[:cm_options].present?
-              cache[:cm_options] = Object.const_get('WebApps::Base').new(param).extend(Stamps::Mail::AdvancedOptions::CertifiedMails)
-            end
-            return cache[:cm_options]
-          when :roll
-            if cache[:roll_options].nil? || !cache[:roll_options].present?
-              cache[:roll_options] = Object.const_get('WebApps::Base').new(param).extend(Stamps::Mail::AdvancedOptions::Rolls)
-            end
-            return cache[:roll_options]
-          end
-
-          raise ArgumentError, "Unable to create Advanced Options object for print media #{print_media}"
-        end
-      end
-
       module StampsPrintPreview
         def buy_more_labels
           @buy_more_labels = StampsField.new(driver.span(text: 'Buy More Labels')) if @buy_more_labels.nil? || !@buy_more_labels.present?
@@ -152,6 +113,45 @@ module Stamps
                 'checked')
           end
           cache[:return_receipt]
+        end
+      end
+
+      ##
+      # Mail Advanced Options
+      module AdvancedOptions
+        # @return [Mail Advanced Options]
+
+        def advanced_options
+          case print_media
+          when :stamps
+            if cache[:stamps_options].nil? || !cache[:stamps_options].present?
+              cache[:stamps_options] = Object.const_get('WebApps::Base').new(param).extend(Stamps::Mail::AdvancedOptions::Stamps)
+            end
+            return cache[:stamps_options]
+          when :label
+            if cache[:label_options].nil? || !cache[:label_options].present?
+              cache[:label_options] = Object.const_get('WebApps::Base').new(param).extend(Stamps::Mail::AdvancedOptions::Labels)
+            end
+            return cache[:label_options]
+          when :envelope
+            if cache[:envelope_options].nil? || !cache[:envelope_options].present?
+              cache[:envelope_options] = Object.const_get('WebApps::Base').new(param).extend(Stamps::Mail::AdvancedOptions::Envelopes)
+            end
+            return cache[:envelope_options]
+            # when :certified_mail, :certified_mail_3910_3930, :certified_mail_3810, :certified_mail_3830
+          when :cm3610, :cm3710, :cm3910, :cm3930, :cm3810, :cm3830
+            if cache[:cm_options].nil? || !cache[:cm_options].present?
+              cache[:cm_options] = Object.const_get('WebApps::Base').new(param).extend(Stamps::Mail::AdvancedOptions::CertifiedMails)
+            end
+            return cache[:cm_options]
+          when :roll
+            if cache[:roll_options].nil? || !cache[:roll_options].present?
+              cache[:roll_options] = Object.const_get('WebApps::Base').new(param).extend(Stamps::Mail::AdvancedOptions::Rolls)
+            end
+            return cache[:roll_options]
+          end
+
+          raise ArgumentError, "Unable to create Advanced Options object for print media #{print_media}"
         end
       end
 
