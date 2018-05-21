@@ -97,7 +97,6 @@ Feature:  Mail BVT - Authentication
     Then click Mail Print modal Print button
     Then Sign out
 
-
   @rob_test
   Scenario: Address Cleansing
     Then sign-in to Mail
