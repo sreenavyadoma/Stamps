@@ -5,32 +5,36 @@ Then /^[Ss]elect Print On (.+)$/ do |str|
     print_on = SdcMail.print_on
     print_on.selection(:selection_element, str)
     print_on.text_field.wait_until_present(timeout: 6)
+
     print_on.drop_down.safe_click
-    unless str.casecmp('Manage Printing Options...').zero?
-      if print_on.selection_list.size < 21
-        step 'select all options in manage printing options'
-        print_on.drop_down.click
-      end
-      expect(print_on.selection_list.size).to eql 21
-      print_on_arr = []
-      print_on.selection(:selection_element, str)
-      print_on.selection_list.each do |element|
-        print_on_arr << element.text
-      end
-      expect(print_on_arr).to include(str)
+    print_on_arr = []
+    print_on.selection_list.each do |element|
+      print_on_arr << element.text
     end
     print_on.drop_down.safe_click
-    print_on.text_field.click
-    print_on.text_field.set_attribute('value', '')
-    print_on.text_field.set str
-    print_on.selection_element.safe_wait_until_present(timeout: 1)
-    print_on.selection_element.click
-    # print_on.label.safe_click
-    # print_on.label.safe_double_click
-    # print_on.label.safe_click
-    unless str.include? 'Manage'
-      expect(print_on.text_field.text_value).to eql(str)
+
+    if print_on_arr.include? str
+      print_on.text_field.click
+      print_on.text_field.set_attribute('value', '')
+      print_on.text_field.set str
+      print_on.selection_element.safe_wait_until_present(timeout: 1)
+      print_on.selection_element.click
+    else
+      print_on.text_field.click
+      print_on.text_field.set_attribute('value', '')
+      print_on.text_field.set 'Manage Printing Options...'
+      print_on.selection_element.safe_wait_until_present(timeout: 2)
+      print_on.selection_element.click
+      print_on.selection_element.wait_while_present(timeout: 2)
+      step "check #{str} in manage print options"
+      step 'click save in manage print options'
+      print_on.text_field.click
+      print_on.text_field.set_attribute('value', '')
+      print_on.text_field.set str
+      print_on.selection_element.safe_wait_until_present(timeout: 1)
+      print_on.selection_element.click
     end
+
   else
     stamps.mail.print_on(str)
   end

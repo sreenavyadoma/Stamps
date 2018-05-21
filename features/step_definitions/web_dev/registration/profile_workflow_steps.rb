@@ -15,7 +15,7 @@ end
 Then /^[Ss]et [Pp]rofile [Pp]age [Ee]mail to (?:random value|(.*))$/ do |str|
   registration.profile.email.textbox.wait_until_present(10)
   expect(registration.profile.email.textbox).to be_present, "Profile page did not load properly, check your test."
-  registration.profile.email.textbox.set(TestData.hash[:email]=(str.nil?)?(TestHelper.rand_email(SdcEnv.env)):str)
+  registration.profile.email.textbox.set(TestData.hash[:email]=(str.nil?)?(TestHelper.rand_email):str)
   step "blur out on profile page"
 end
 
