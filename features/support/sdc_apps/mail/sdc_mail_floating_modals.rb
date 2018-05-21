@@ -12,10 +12,29 @@ module SdcMail
     page_object(:grid) { {xpath: "//table[contains(@id, 'tableview')]" } }
   end
 
+  class SdcManageShippingAddresses < SdcPage
+
+  end
+
+  class SdcEditMailingAddress < SdcPage
+
+  end
+
   module SdcMailFloatingModals
     def manage_print_options
       SdcManagePrintOptions.new
     end
     module_function :manage_print_options
+
+    def manage_shipping_addresses
+      SdcManageShippingAddresses.new
+    end
+    module_function :manage_shipping_addresses
+
+    def edit_mailing_address
+      SdcEditMailingAddress.new
+    end
+    module_function :edit_mailing_address
+
   end
 end
