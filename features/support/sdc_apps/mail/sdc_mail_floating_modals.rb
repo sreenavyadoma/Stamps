@@ -13,11 +13,9 @@ module SdcMail
   end
 
   class SdcManageShippingAddresses < SdcPage
-
   end
 
   class SdcEditMailingAddress < SdcPage
-
   end
 
   module SdcMailFloatingModals
