@@ -107,7 +107,7 @@ Then /^expect orders grid order date is populated$/ do
 end
 
 Then /^expect orders grid recipient is (?:correct|(.*))$/ do |expectation|
-  step "Pause for 2 seconds"
+  step "pause for 2 seconds"
   expectation = TestData.hash[:full_name] if expectation.nil?
   if SdcEnv.new_framework
     #todo - orders grid implementation

@@ -16,7 +16,7 @@ end
 
 Then /^expect order details ship-from and ship-from saved values are the same$/ do
   if SdcEnv.new_framework
-  #   skip
+  #   todo - Alex complete this
   else
     stamps.orders.order_details.wait_until_present(2)
   end
@@ -301,7 +301,7 @@ end
 Then /^expect order details insure-for is (?:correct|(\d+\.\d{2}))$/ do |expectation|
   step 'expect order details is present'
   if SdcEnv.new_framework
-    expect(SdcOrders.order_details.insure_for.text_field.text_value.to_f.round(2)).to eql(expectation.nil? ? TestData.hash[:insured_value] : expectation.to_f)
+    expect(SdcOrders.order_details.insure_for.amount.value.to_f.round(2)).to eql(expectation.nil? ? TestData.hash[:insured_value] : expectation.to_f)
   else
     expect(stamps.orders.order_details.insure_for.textbox.text.to_f.round(2)).to eql(expectation.nil? ? TestData.hash[:insured_value] : expectation.to_f)
   end
@@ -398,7 +398,8 @@ Then /^expect order details pounds? (?:is (\d+)|and saved Pounds? are the same)$
   expectation = TestData.hash[:pounds] if expectation.nil?
   step 'expect order details is present'
   if SdcEnv.new_framework
-    expect(SdcOrders.order_details.weight.lbs.text_field.text_value.to_f).to eql(expectation.to_f.round(2))
+    expect(SdcOrders.order_details.weight.lbs.text_value.to_f).to eql(expectation.to_f.round(2))
+    # expect(SdcOrders.order_details.weight.lbs.value.to_f).to eql(expectation.to_f.round(2))
   else
     expect(stamps.orders.order_details.weight.lb.textbox.text.to_f).to eql expectation.to_f.round(2)
   end
@@ -408,7 +409,7 @@ Then /^expect order details ounces? (?:is (\d+)|and saved Ounces? are the same)$
   expectation = TestData.hash[:ounces] if expectation.nil?
   step 'expect order details is present'
   if SdcEnv.new_framework
-    expect(SdcOrders.order_details.weight.oz.text_field.text_value.to_f).to eql(expectation.to_f.round(2))
+    expect(SdcOrders.order_details.weight.oz.value.to_f).to eql(expectation.to_f.round(2))
   else
     expect(stamps.orders.order_details.weight.oz.textbox.text.to_f).to eql expectation.to_f.round(2)
   end
@@ -423,7 +424,7 @@ end
 Then /^expect order details length is (\d+)$/ do |expectation|
   step 'expect order details is present'
   if SdcEnv.new_framework
-    expect(SdcOrders.order_details.dimensions.length.text_field.text_value.to_f).to eql(expectation.to_f.round(2))
+    expect(SdcOrders.order_details.dimensions.length.value.to_f).to eql(expectation.to_f.round(2))
   else
     expect(stamps.orders.order_details.dimensions.length.textbox.text.to_f).to eql expectation.to_f.round(2)
   end
@@ -432,7 +433,7 @@ end
 Then /^expect order details width is (\d+)$/ do |expectation|
   step 'expect order details is present'
   if SdcEnv.new_framework
-    expect(SdcOrders.order_details.dimensions.width.text_field.text_value.to_f).to eql(expectation.to_f.round(2))
+    expect(SdcOrders.order_details.dimensions.width.value.to_f).to eql(expectation.to_f.round(2))
   else
     stamps.orders.order_details.wait_until_present(2)
     expect(stamps.orders.order_details.dimensions.width.textbox.text.to_f).to eql expectation.to_f.round(2)
@@ -442,7 +443,7 @@ end
 Then /^expect order details height is (\d+)$/ do |expectation|
   step 'expect order details is present'
   if SdcEnv.new_framework
-    expect(SdcOrders.order_details.dimensions.height.text_field.text_value.to_f).to eql(expectation.to_f.round(2))
+    expect(SdcOrders.order_details.dimensions.height.value.to_f).to eql(expectation.to_f.round(2))
   else
     stamps.orders.order_details.wait_until_present(2)
     expect(stamps.orders.order_details.dimensions.height.textbox.text.to_i).to eql expectation.to_i

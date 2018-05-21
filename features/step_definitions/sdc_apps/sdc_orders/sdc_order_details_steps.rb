@@ -379,7 +379,7 @@ end
 
 Then /^[Cc]heck [Oo]rder [Dd]etails [Ii]nsure-[Ff]or [Cc]heckbox$/ do
   if SdcEnv.new_framework
-    SdcOrders.order_details.insurance.checkbox.check
+    SdcOrders.order_details.insure_for.checkbox.check
   else
     stamps.orders.order_details.insure_for.checkbox.check
   end
@@ -392,9 +392,9 @@ end
 Then /^set order details insure-for to \$(\d+\.\d{2})$/ do |str|
   step 'check order details insure-for checkbox'
   if SdcEnv.new_framework
-    SdcOrders.order_details.insurance.amount.set(TestData.hash[:insured_value] = str.to_f)
+    SdcOrders.order_details.insure_for.amount.set(TestData.hash[:insured_value] = str.to_f)
     10.times do
-      break if SdcOrders.order_details.insurance.cost.text_value.dollar_amount_str.to_f.round(2) > 0
+      break if SdcOrders.order_details.insure_for.cost.text_value.dollar_amount_str.to_f.round(2) > 0
       step 'blur out on order details form'
     end
   else

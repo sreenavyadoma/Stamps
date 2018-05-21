@@ -281,8 +281,9 @@ module Stamps
         hash = {}
         temp = str.split(/\n/)
         hash[:name], hash[:company], hash[:street] = temp
-        hash[:city], hash[:state], hash[:zip], hash[:zip_cleanse] = temp.last.split(/[,\s-]/).reject{|s| s.eql?('') || s.nil?}
-        hash
+        hash[:city], hash[:state], hash[:zip], hash[:zip_full] = temp.last.split(/[,\s-]/).reject{|s| s.eql?('') || s.nil?}
+        hash[:zip_full] = "#{hash[:zip]}-#{hash[:zip_full]}"
+        hash.each_value(&:strip!)
       end
 
       # Convert date string from format 12/3/2015 to Dec 3

@@ -184,7 +184,7 @@ module SdcOrders
       SdcOrderDetailsService.new
     end
 
-    def insurance
+    def insure_for
       SdcOrderDetailsInsurance.new
     end
 

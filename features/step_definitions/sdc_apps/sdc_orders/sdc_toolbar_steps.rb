@@ -32,7 +32,7 @@ Then /^Save Order Details data$/ do
     TestData.hash[:service_cost] = SdcOrders.order_details.service.cost.text_value.dollar_amount_str.to_f.round(2)
     TestData.hash[:service] = SdcOrders.order_details.service.text_field.text_value
     TestData.hash[:ship_from] = SdcOrders.order_details.ship_from.text_field.text_value
-    TestData.hash[:insure_for_cost] = SdcOrders.order_details.insurance.cost.text_value.dollar_amount_str.to_f.round(2)
+    TestData.hash[:insure_for_cost] = SdcOrders.order_details.insure_for.cost.text_value.dollar_amount_str.to_f.round(2)
     TestData.hash[:total_ship_cost] = SdcOrders.order_details.footer.total_ship_cost.text_value.dollar_amount_str.to_f.round(2)
     TestData.hash[:awaiting_shipment_count] = SdcOrders.filter_panel.awaiting_shipment.count.text_value.to_f.round(2)
     if TestData.hash[:country] == "United States"

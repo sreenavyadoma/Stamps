@@ -227,8 +227,7 @@ Then /^expect order details ship-to name is (.*)$/ do |expectation|
   step 'expect order details is present'
   step 'show order details form ship-to fields'
   if SdcEnv.new_framework
-    # todo - check Address Test Helper
-    # expect(SdcOrders.order_details.ship_to.domestic.text_field.text_value).to eql(expectation)
+    expect(TestHelper.address_str_to_hash(SdcOrders.order_details.ship_to.domestic.address.text_value)[:name]).to eql(expectation)
   else
     expect(stamps.orders.order_details.ship_to.domestic.textarea.recipient_name).to eql expectation
   end
@@ -239,6 +238,7 @@ Then /^expect order details ship-to company name is (.*)$/ do |expectation|
   step 'show order details form ship-to fields'
   if SdcEnv.new_framework
   #   todo Alex add helper function
+    expect(TestHelper.address_str_to_hash(SdcOrders.order_details.ship_to.domestic.address.text_value)[:company]).to eql(expectation)
   else
     expect(stamps.orders.order_details.ship_to.domestic.textarea.company_name).to eql expectation
   end
@@ -248,7 +248,7 @@ Then /^expect order details ship-to cleansed street address is (.*)$/ do |expect
   step 'expect order details is present'
   step 'show order details form ship-to fields'
   if SdcEnv.new_framework
-    # skip for now
+    expect(TestHelper.address_str_to_hash(SdcOrders.order_details.ship_to.domestic.address.text_value)[:street]).to eql(expectation)
   else
     expect(stamps.orders.order_details.ship_to.domestic.textarea.street_address).to eql expectation
   end
@@ -258,7 +258,7 @@ Then /^expect order details ship-to cleansed city is (.*)$/ do |expectation|
   step 'expect order details is present'
   step 'show order details form ship-to fields'
   if SdcEnv.new_framework
-    # skip for now
+    expect(TestHelper.address_str_to_hash(SdcOrders.order_details.ship_to.domestic.address.text_value)[:city]).to eql(expectation)
   else
     expect(stamps.orders.order_details.ship_to.domestic.textarea.city).to eql expectation
   end
@@ -268,7 +268,7 @@ Then /^expect order details ship-to cleansed state is (.*)$/ do |expectation|
   step 'expect order details is present'
   step 'show order details form ship-to fields'
   if SdcEnv.new_framework
-    # skip for now
+    expect(TestHelper.address_str_to_hash(SdcOrders.order_details.ship_to.domestic.address.text_value)[:state]).to eql(expectation)
   else
     expect(stamps.orders.order_details.ship_to.domestic.textarea.state).to eql expectation
   end
@@ -278,7 +278,7 @@ Then /^expect order details ship-to cleansed zip plus 4 code is (.*)$/ do |expec
   step 'expect order details is present'
   step 'show order details form ship-to fields'
   if SdcEnv.new_framework
-    # skip for now
+    expect(TestHelper.address_str_to_hash(SdcOrders.order_details.ship_to.domestic.address.text_value)[:zip_full]).to eql(expectation)
   else
     expect(stamps.orders.order_details.ship_to.domestic.textarea.zip_plus_4).to eql expectation
   end
@@ -288,7 +288,7 @@ Then /^expect order details ship-to cleansed zip code is (.*)$/ do |expectation|
   step 'expect order details is present'
   step 'show order details form ship-to fields'
   if SdcEnv.new_framework
-    # skip for now
+    expect(TestHelper.address_str_to_hash(SdcOrders.order_details.ship_to.domestic.address.text_value)[:zip]).to eql(expectation)
   else
     expect(stamps.orders.order_details.ship_to.domestic.textarea.zip_code).to eql expectation
   end
