@@ -19,8 +19,13 @@ Then /^[Ss]elect Print On (.+)$/ do |str|
       end
       expect(print_on_arr).to include(str)
     end
-    print_on.drop_down.click unless print_on.selection_element.present?
+    print_on.drop_down.safe_click
+    #print_on.drop_down.click unless print_on.selection_element.present?
+    print_on.text_field.set str
     print_on.selection_element.click
+    # print_on.label.safe_click
+    # print_on.label.safe_double_click
+    # print_on.label.safe_click
     unless str.include? 'Manage'
       expect(print_on.text_field.text_value).to eql(str)
     end
