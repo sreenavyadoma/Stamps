@@ -1,6 +1,6 @@
 module SdcMail
 
-  module SdcPrintMailFrom
+  module SdcPrintFormMailFrom
 
     class MailFrom < SdcPage
       page_object(:drop_down) { { xpath: '//*[@id="sdc-mainpanel-shipfromdroplist-trigger-picker"]' } }
@@ -16,33 +16,25 @@ module SdcMail
     end
   end
 
-  module SdcPrintMailTo
+  module SdcPrintFormMailTo
 
-    class MailToCountry < SdcPage
+    class MailTo < SdcPage
+      page_object(:text_area, tag: :text_area) { { xpath: '//textarea[@name="freeFormAddress"]' } }
       page_object(:drop_down) { { xpath: '//*[@id="sdc-mainpanel-matltocountrydroplist-trigger-picker"]' } }
-      page_object(:text_field) { { xpath: 'xxxxxxx' } }
+      page_objects(:dom_text_field, index: 1, tag: :text_field) { { xpath: '//input[@name="ShipCountryCode"]' } }
+      page_objects(:int_text_field, index: 2, tag: :text_field) { { xpath: '//input[@name="ShipCountryCode"]' } }
+      page_object(:link) { { xpath: 'xxxxxxx' } }
+      page_object(:name) { { xpath: 'xxxxxxx' } }
+      page_object(:company) { { xpath: 'xxxxxxx' } }
+      page_object(:address_1) { { xpath: 'xxxxxxx' } }
+      page_object(:address_2) { { xpath: 'xxxxxxx' } }
+      page_object(:city) { { xpath: 'xxxxxxx' } }
+      page_object(:province) { { xpath: 'xxxxxxx' } }
+      page_object(:postal_code) { { xpath: 'xxxxxxx' } }
+      page_object(:phone) { { xpath: 'xxxxxxx' } }
 
       def selection(name, str)
         page_object(name) { { xpath: "#{str}" } }
-      end
-    end
-
-    class MailTo < SdcPage
-      def initialize
-        page_object(:text_area, tag: :text_area) { { xpath: '//textarea[@name="freeFormAddress"]' } }
-      end
-
-      def country
-        MailToCountry.new
-      end
-
-      def respond_to_missing(name, include_private = false)
-        text_area.respond_to?(name, include_private) || super
-      end
-
-      def method_missing(name, *args, &block)
-        super unless text_area.respond_to? name
-        text_area.send(name, *args, &block)
       end
     end
 
@@ -51,8 +43,10 @@ module SdcMail
     end
   end
 
-  class SdcMailStamps < SdcPage
-    include SdcPrintMailFrom
+  module SdcStampsPrintForm
+    include SdcPrintFormMailFrom
+    include SdcPrintFormMailTo
+
     # include MailTo
     # include Weight
     # include Service

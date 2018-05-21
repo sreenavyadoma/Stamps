@@ -3,7 +3,7 @@
 
 Then /^[Ss]et Print form Ship-To to international address$/ do |table|
   TestData.hash[:address_hash] = table.hashes.first
-  step "set Print form Mail-To Country to #{TestData.hash[:address_hash]['country']}"
+  step "set print form mail-to Country to #{TestData.hash[:address_hash]['country']}"
   step "set Print form Name to #{TestData.hash[:address_hash]['name']}"
   step "set Print form Company to #{TestData.hash[:address_hash]['company']}"
   step "set Print form Address 1 to #{TestData.hash[:address_hash]['street_address_1']}"
@@ -30,13 +30,13 @@ Then /^[Ss]et Print Form Ship-To Country to a random country in PMEI price group
       end
     end
   end
-  step "set Print form Mail-To Country to #{TestData.hash[:country] = country_name}"
+  step "set print form mail-to Country to #{TestData.hash[:country] = country_name}"
 end
 
 Then /^[Ss]et Print Form Ship-To Country to a random country in PMEI Flat Rate price group (.*)$/ do |group|
   country_list = data_for(:country_groups_PMEI_flat_rate, {})["group" + group].values
   TestData.hash[:country] = country_list[rand(country_list.size)]
-  step "set Print form Mail-To Country to #{TestData.hash[:country]}"
+  step "set print form mail-to Country to #{TestData.hash[:country]}"
 end
 
 Then /^[Ss]et Print Form Ship-To Country to a random country in PMI price group (.*)$/ do |group|
@@ -56,13 +56,13 @@ Then /^[Ss]et Print Form Ship-To Country to a random country in PMI price group 
     end
   end
   TestData.hash[:country] = country_name
-  step "set Print form Mail-To Country to #{TestData.hash[:country]}"
+  step "set print form mail-to Country to #{TestData.hash[:country]}"
 end
 
 Then /^[Ss]et Print Form Ship-To Country to a random country in PMI Flat Rate price group (.*)$/ do |group|
   country_list = data_for(:country_groups_PMI_flat_rate, {})["group" + group].values
   TestData.hash[:country] = country_list[rand(country_list.size)]
-  step "set Print form Mail-To Country to #{TestData.hash[:country]}"
+  step "set print form mail-to Country to #{TestData.hash[:country]}"
 end
 
 #todo-Rob start here for international

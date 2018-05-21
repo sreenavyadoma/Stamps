@@ -79,7 +79,7 @@ Then /^[Ee]xpect on [Pp]rint [Pp]review [Pp]anel, right side label is selected$/
   expect(stamps.mail.print_preview.right_selected?).to be(true), "Right Label image doesn't exists on Print form"
 end
 
-Then /^[Ss]et Print form [Mm]ail-[Tt]o [Cc]ountry to (.*)$/ do |country|
+Then /^set print form mail-to [Cc]ountry to (.*)$/ do |country|
   20.times do # work around for rating problem
     stamps.mail.print_form.mail_to.mail_to_country.select_country(TestData.hash[:country] = country)
     break if stamps.mail.print_form.mail_to.mail_to_country.textbox.text.include?(TestData.hash[:country]) && stamps.mail.print_form.service.has_rates?

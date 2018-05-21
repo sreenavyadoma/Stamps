@@ -31,7 +31,7 @@ Feature:  Mail BVT - Authentication
   @mail_bvt_advanced_options
   @mail_advanced_options_stamps
   Scenario: Advanced Options for Stamps
-    Then sign-in to Mail
+    #Then sign-in to Mail
     Then select Print On Shipping Label - 8 ½" x 11" Paper
     Then select Print On Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then select Print On Shipping Label - 5 ½" x 8 ½"
@@ -66,7 +66,7 @@ Feature:  Mail BVT - Authentication
 #    Then set Print form Serial Number to random C series
 #    Then select Advanced Options Calculate Postage Amount
 #    Then set Print form Mail-From to default
-#    Then set Print form Mail-To Country to United States
+#    Then set print form mail-to Country to United States
 #    Then select Print form service FCM Letter
 #    Then set Print form Quantity to 1
 #    Then set Advanced Options Cost Code to None
@@ -100,10 +100,11 @@ Feature:  Mail BVT - Authentication
 
   @rob_test
   Scenario: Address Cleansing
-    Then select Print On Shipping Label - Paper
+    Then sign-in to Mail
+    Then select Print On Shipping Label - 8 ½" x 11" Paper
 #    Then set Print form Mail-From to default
-#    Then set Print form Mail-To country to United States
-    Then set Print form Mail-To to address to Address Cleansing, BVT, 1350 Market Street, San Francisco, CA
+#    Then set print form mail-to country to United States
+    Then set print form mail-to to address to Address Cleansing, BVT, 1350 Market Street, San Francisco, CA
 #    Then set Print form Ounces to 1
 #    Then select Print form service PM Package
 #    Then expect Print form Domestic Address field displays Address Cleansing, BVT, 1350 Market Street, San Francisco, CA 94102-5401
