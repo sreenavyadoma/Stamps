@@ -32,7 +32,7 @@ module Stamps
       end
 
       def rand_email
-        "#{rand_usr(SdcEnv.env.to_s)}@mailinator.com".downcase
+        "#{rand_usr}@mailinator.com".downcase
       end
 
       def rand_alpha_numeric(min = 2, max = 10)
