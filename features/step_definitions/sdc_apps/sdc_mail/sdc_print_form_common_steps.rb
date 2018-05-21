@@ -75,16 +75,8 @@ Then /^check (.+) in manage print options$/ do |str|
     step 'select Print On Manage Printing Options...'
   end
   step "search for #{str} in manage print options"
-
-  t1 = Time.now
-  t2 = Time.now
-  while t2-t1 < 2 do
-    t2 = Time.now
-    if manage_print_options.single_grid_item.text == str
-      manage_print_options.print_option_checkbox.check
-      break
-    end
-  end
+  SdcPage.browser.wait_until(2) { manage_print_options.single_grid_item.text == str }
+  manage_print_options.print_option_checkbox.check
   expect(manage_print_options.single_grid_item.text).to eql (str)
 end
 
