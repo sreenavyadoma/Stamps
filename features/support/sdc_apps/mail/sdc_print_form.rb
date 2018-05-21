@@ -18,29 +18,33 @@ module SdcMail
   end
 
   module ShippingLabel
-    include MailFrom
-    include MailTo
-    include Weight
-    include EmailTracking
-    include Service
-    include InsureFor
-    include Tracking
-    include MailCustoms
-    include AdvancedOptions
-    include Dimensions
-    include PrintOnTextbox
-    include PrintFormBlurOut
+    include SdcPrintFormMailFrom
+    include SdcPrintFormMailTo
+    include SdcPrintFormEmailTracking
 
-    def present?
-      print_on_textbox.text.include?('Shipping Label')
-    end
-
-    def mail_ship_date
-      raise 'Not Implemented'
-    end
-
-    def form_view
-      raise 'Not Implemented'
-    end
+    # include MailFrom
+    # include MailTo
+    # include Weight
+    # include EmailTracking
+    # include Service
+    # include InsureFor
+    # include Tracking
+    # include MailCustoms
+    # include AdvancedOptions
+    # include Dimensions
+    # include PrintOnTextbox
+    # include PrintFormBlurOut
+    #
+    # def present?
+    #   print_on_textbox.text.include?('Shipping Label')
+    # end
+    #
+    # def mail_ship_date
+    #   raise 'Not Implemented'
+    # end
+    #
+    # def form_view
+    #   raise 'Not Implemented'
+    # end
   end
 end

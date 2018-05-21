@@ -82,7 +82,10 @@ module SdcMail
 
   module SdcPrintFormEmailTracking
     class SdceMailTracking < SdcPage
-      page_object(:name, tag: :text_field) { { xpath: '//input[@name="ShipName"]' } }
+      page_object(:text_field, tag: :text_field) { { xpath: '//*[@id="sdc-mainpanel-emailtextfield-webpostage-inputEl"]' } }
+      page_object(:chooser) { { xpath: 'xxxxxxx' } }
+      page_object(:verify) { { xpath: 'xxxxxxx' } }
+      chooser(:checkbox, :chooser, :verify, 'class', 'checked')
     end
 
     def email_tracking
