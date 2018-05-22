@@ -93,6 +93,15 @@ Then /^[Pp]P: [Ee]xpect [Dd]ashboard on left panel exists$/ do
   expect(PartnerPortal.common_page.panel_dashboard).to be_present, 'Dashboard on Left Panel DOES NOT exist'
 end
 
+Then /^PP: expect dashboard on left panel to be in (.*) state$/ do |status|
+ if status == 'active'
+  active = PartnerPortal.common_page.panel_dashboard.attribute_value 'class'
+  expect(active).to_eql('active')
+ else
+   active
+ end
+end
+
 Then /^PP: click on dashboard on left panel$/ do
   PartnerPortal.common_page.panel_dashboard.wait_until_present(timeout: 10)
   PartnerPortal.common_page.panel_dashboard.send_keys(:enter)
