@@ -6,7 +6,7 @@ module SdcMail
       unless @selected_hash
         @selected_hash = {}
         @selected_hash['Stamps'] = :stamps
-        @selected_hash['Shipping Shipping Label - 8 ½" x 11" Paper'] = :shipping_label_8x11
+        @selected_hash['Shipping Label - 8 ½" x 11" Paper'] = :shipping_label_8x11
         @selected_hash['Shipping Label - SDC-1200, 4 ¼" x 6 ¾"'] = :shipping_label_sdc_1200
         @selected_hash['Shipping Label - 5 ½" x 8 ½"'] = :shipping_label_5x8
         @selected_hash['Envelope - #10, 4 ⅛" x 9 ½"'] = :envelope_10

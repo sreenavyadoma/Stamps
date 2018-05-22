@@ -2,7 +2,6 @@ $LOAD_PATH << File.expand_path('../../lib', __FILE__)
 $LOAD_PATH << File.expand_path('lib/features/orders', __FILE__)
 $LOAD_PATH << File.expand_path('features/support/lib', __FILE__)
 
-#require 'facets/module/attr_class_accessor'
 require 'data_magic'
 require 'rake'
 require 'logger'
@@ -17,11 +16,13 @@ require 'holidays'
 require 'watir'
 require 'watir_drops'
 
+require_relative 'sdc_core/sdc_patch'
 require_relative 'sdc_core/sdc_core'
 require_relative 'sdc_core/sdc_test'
 require_relative 'sdc_apps/sdc_website'
 require_relative 'sdc_apps/orders/sdc_orders'
 require_relative 'sdc_apps/mail/sdc_mail'
+require_relative 'sdc_apps/mail/sdc_print_form_elements'
 require_relative 'sdc_apps/sdc_navigation'
 
 # web dev

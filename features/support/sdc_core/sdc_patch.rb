@@ -1,3 +1,18 @@
+Class.class_eval do
+  def sdc_accessor(name)
+    delegate_to_class name
+    singleton_class.instance_eval do
+      attr_accessor name
+    end
+  end
+
+  def delegate_to_class(name)
+    define_method name do |*args, &block|
+      self.class.send name, *args, &block
+    end
+  end
+end
+
 Object.class_eval do
   ##
   # set_instance_variables(binding, *local_variables)
