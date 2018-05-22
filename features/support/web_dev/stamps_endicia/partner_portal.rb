@@ -31,7 +31,7 @@ module PartnerPortal
     #Forgot Password? link
     link(:forgot_pw) { { xpath: '//a[@href="/reset-password/request"]' } }
 
-    page_url { |env| "https://partner.#{env}.stamps.com/" }
+    page_url { |env| "https://partner.#{env}.stamps.com/login" }
 
     def self.visit
       super(case SdcEnv.env

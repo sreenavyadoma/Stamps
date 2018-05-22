@@ -152,7 +152,7 @@ Then /^PP: expect partner logo is unique to partner$/ do
     step 'Close partner portal db connection'
 
     logo_actual = PartnerPortal.common_page.panel_partner_logo.attribute_value 'src'
-    expect(logo_expected).to eql(logo_actual.split('partner/').last)
+    expect(logo_expected).to eql(logo_actual.split('com/').last)
 
 
 end

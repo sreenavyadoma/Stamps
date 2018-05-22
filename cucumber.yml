@@ -39,7 +39,7 @@ saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=passw
 #mhossain1_cc: --tags @pp_dashboard_single_contract_chart_data_validation JENKINS=true URL=qacc BROWSER=ff USR=wteam@stamps.com PW=password1
 #mhossain1_cc: --tags @pp_authenticate JENKINS=true URL=qacc BROWSER=ff USR=wteam@stamps.com PW=password1
 #mhossain1_cc: --tags @pp_footer JENKINS=true URL=qacc BROWSER=edge USR=wteam@stamps.com PW=password1
-mhossain1_cc: --tags @pp_left_panel_browser JENKINS=true URL=qacc BROWSER=edge USR=wteam@stamps.com PW=password1
+mhossain1_cc: --tags @pp_left_panel_browser JENKINS=true URL=qacc BROWSER=ff USR=wteam@stamps.com PW=password1
 #mhossain1_cc: --tags @pp_left_panel_mobile JENKINS=true URL=qacc BROWSER_MOBILE_EMULATOR=gc,'Pixel 2 XL' USR=wteam@stamps.com PW=password1
 
 
