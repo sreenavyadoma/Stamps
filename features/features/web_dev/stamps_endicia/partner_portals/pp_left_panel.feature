@@ -85,6 +85,7 @@ Feature: PP-MVP: Left Panel
     Then PP: expect X button exists
     Then PP: expect left panel to expand for mobile
     Then PP: expect Dashboard on left panel exists
+    Then PP: expect dashboard on left panel to be in active state
     Then PP: expect logout on left panel exists
     Then PP: expect usps logo on left panel exists
     Then PP: expect partner logo is unique to partner

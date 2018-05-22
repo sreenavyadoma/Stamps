@@ -163,10 +163,7 @@ Then /^PP: expect partner logo is unique to partner$/ do
 
     logo_actual = PartnerPortal.common_page.panel_partner_logo.attribute_value 'src'
     expect(logo_expected).to eql(logo_actual.split('com/').last)
-
-
 end
-
 
 Then /^[Pp]P: [Ee]xpect [Hh]amburger button exists for browser$/ do
   PartnerPortal.common_page.panel_hamburger.wait_until_present(timeout: 10)
