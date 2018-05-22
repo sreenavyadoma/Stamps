@@ -98,7 +98,7 @@ Then /^PP: expect dashboard on left panel to be in (.*) state$/ do |status|
   active = PartnerPortal.common_page.panel_dashboard.attribute_value 'class'
   expect(active).to eql('active')
  else
-  inactive = PartnerPortal.common_page.panel_dashboard.attribute_value 'class'.exist?
+  inactive = PartnerPortal.common_page.panel_dashboard.attribute_value 'class'.present?
   expect(inactive).to eql('false')
  end
 end
