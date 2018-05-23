@@ -17,11 +17,11 @@ module SdcMail
   def print_form
     case SdcPrintOn.print_media.to_s
     when /stamps/
-      return Object.const_get('SdcPage').new.extend(SdcStampsPrintForm)
+      return Object.const_get('SdcPage').new.extend(SdcStampsForm)
     when /shipping_label/
-      return Object.const_get('SdcPage').new.extend(SdcShippingLabelPrintForm)
+      return Object.const_get('SdcPage').new.extend(SdcShippingLabelsForm)
     when /envelope/
-      return Object.const_get('SdcPage').new.extend(SdcEnvelopePrintForm)
+      return Object.const_get('SdcPage').new.extend(SdcEnvelopesForm)
     when /certified_mail/
       return Object.const_get('SdcPage').new.extend(SdcCertifiedMailPrintForm)
     when /roll/

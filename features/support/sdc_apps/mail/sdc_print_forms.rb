@@ -1,8 +1,12 @@
 module SdcMail
 
-  module SdcStampsPrintForm
+  module SdcStampsForm
     include SdcPrintFormMailFrom
     include SdcPrintFormMailTo
+
+    def advanced_options
+      Object.const_get('SdcPage').new.extend(SdcAdvancedOptions::Stamps)
+    end
 
     # include Weight
     # include Service
@@ -17,10 +21,14 @@ module SdcMail
 
   end
 
-  module SdcShippingLabelPrintForm
+  module SdcShippingLabelsForm
     include SdcPrintFormMailFrom
     include SdcPrintFormMailTo
     include SdcPrintFormEmailTracking
+
+    def advanced_options
+      Object.const_get('SdcPage').new.extend(SdcAdvancedOptions::ShippingLabels)
+    end
 
     # include MailFrom
     # include MailTo
@@ -49,9 +57,13 @@ module SdcMail
 
 
 
-  module SdcEnvelopePrintForm
+  module SdcEnvelopesForm
     include SdcPrintFormMailFrom
     include SdcPrintFormMailTo
+
+    def advanced_options
+      Object.const_get('SdcPage').new.extend(SdcAdvancedOptions::Envelopes)
+    end
 
     # include Weight
     # include Service
@@ -89,10 +101,7 @@ module SdcMail
     # include ExtServCertMail
     # include ExtServElecRetReceipt
     # include ExtServRetReceipt
-    #
-    # def present?
-    #   print_on_textbox.text.include?('Certified Mail')
-    # end
+
   end
 
   module SdcRollPrintForm
@@ -109,9 +118,6 @@ module SdcMail
     # include Dimensions
     # include PrintOnTextbox
     # include PrintFormBlurOut
-    #
-    # def present?
-    #   print_on_textbox.text.include?('Roll')
-    # end
+
   end
 end
