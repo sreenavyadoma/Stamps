@@ -98,9 +98,12 @@ module SdcMail
         page_object(:drop_down) { { xpath: '//*[@id="sdc-mainpanel-servicedroplist-trigger-picker"]' } }
         page_object(:cost) { { xpath: '//*[@id="sdc-mainpanel-servicepricelabel"]' } }
 
-        def service_elements(str)
-          page_object(:selection) { { xpath: "//*[@id='#{data_for(:mail_services, {})[str]}']//td[@class='x-boundlist-item-text']" } }
-          page_object(:selection_cost) { { xpath: "//*[@id='#{data_for(:mail_services, {})[str]}']//td[@class='x-boundlist-item-amount']" } }
+        def service_element(name, str)
+          page_object(name) { { xpath: "//*[@id='#{data_for(:mail_services, {})[str]}']//td[@class='x-boundlist-item-text']" } }
+        end
+
+        def inline_cost_element(name, str)
+          page_object(name) { { xpath: "//*[@id='#{data_for(:mail_services, {})[str]}']//td[@class='x-boundlist-item-amount']" } }
         end
       end
 
