@@ -40,7 +40,8 @@ module PartnerPortal
     page_object(:stamps_privacy_policy_link) { {xpath:  '//a[@href="https://www.stamps.com/privacy-policy/"]'} }
     page_object(:endicia_privacy_policy_link) { {xpath:  '//a[@href="https://www.endicia.com/policy/privacy-policy/"]'} }
 
-
+    #pop ups
+    page_object(:error_ok)  { { xpath:  '//button[@label="OK"]' } }
 
     def user_table_query(user, column)
       user = PartnerPortal.db_connection.execute("select * from [dbo].[sdct_PartnerPortal_User] where EmailAddress = '#{user}'")

@@ -216,3 +216,8 @@ Then /^[Pp]P: [Cc]lick on [Xx] button$/ do
   PartnerPortal.common_page.x_button.wait_until_present(timeout: 10)
   PartnerPortal.common_page.x_button.click
 end
+
+#pop ups
+Then /^PP: click ok button on error pop up$/ do
+  PartnerPortal.common_page.error_ok.send_keys(:enter)
+end
