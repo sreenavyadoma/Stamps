@@ -55,10 +55,10 @@ module PartnerPortal
     page_object(:dashboard_header) { { xpath: '//h1[contains(text(), "Dashboard")]' } }
 
     #Contract header
-    page_object(:contract_header) { { class: 'dashboard__contract-header ng-star-inserted' } }
+    page_object(:contract_header) { { class: ['dashboard__contract-header ng-star-inserted'] } }
 
     #Last Updated On
-    page_object(:contract_last_updated_on) { { class: 'dashboard__contract-updated ng-star-inserted' } }
+    page_object(:contract_last_updated_on) { { class: ['dashboard__contract-updated ng-star-inserted'] } }
 
     #charts
     page_objects(:preferred_rates_qualified_transactions_usd_chart, index: 0) { { xpath: '//canvas[@class="chartjs-render-monitor"]' } }
@@ -103,7 +103,14 @@ module PartnerPortal
     page_object(:header) { { xpath: '//h1[contains(text(), "Reset Password")]' } }
 
     #Email
-    text_field(:email, tag: :text_field, required: true) { { xpath: '//input[@name="email"]' } }
+    text_field(:email, tag: :text_field, required: true) { { class: ['form-control ng-untouched ng-pristine ng-invalid'] } }
+
+    #submit
+    page_object(:submit) { { class: ['ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only'] } }
+
+    #icon
+    page_object(:icon) { { xpath:  '//img[@alt="Reset password request icon image"]'} }
+
 
     page_url { |env| "https://partner.#{env}.stamps.com/reset-password/request" }
 
@@ -125,6 +132,9 @@ module PartnerPortal
   end
 
   class PPResetPasswordConfirmationPage < SdcPage
+    #header
+    page_object(:header) { { xpath:  '//h1[contains(text(), "Reset Email Sent")]'} }
+
     page_url { |env| "https://partner.#{env}.stamps.com/reset-password/request/confirmation" }
 
     def self.visit

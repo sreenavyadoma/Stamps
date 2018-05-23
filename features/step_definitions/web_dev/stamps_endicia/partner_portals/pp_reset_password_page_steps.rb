@@ -11,7 +11,11 @@ end
 
 Then /^[Pp]P: [Ee]xpect user is redirected to Reset Password Page$/ do
   PartnerPortal.reset_password_page.header.wait_until_present(timeout: 10)
-  expect(PartnerPortal.reset_password_page.header). to be_present, 'User was not redirected to the Reset Password Page'
+  expect(PartnerPortal.reset_password_page.header).to be_present, 'User was not redirected to the Reset Password Page'
+end
+
+Then /^PP: expect reset password page email text field exists$/ do
+
 end
 
 
