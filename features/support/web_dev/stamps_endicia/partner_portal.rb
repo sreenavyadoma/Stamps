@@ -103,7 +103,7 @@ module PartnerPortal
     page_object(:header) { { xpath: '//h1[contains(text(), "Reset Password")]' } }
 
     #Email
-    text_field(:email, tag: :text_field, required: true) { { class: ['form-control ng-untouched ng-pristine ng-invalid'] } }
+    text_field(:email, tag: :text_field, required: true) { { name: 'email' } }
 
     #submit
     page_object(:submit) { { class: ['ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only'] } }
