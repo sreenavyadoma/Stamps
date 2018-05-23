@@ -5,12 +5,12 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
 
   @mail_hidden_postage
   Scenario: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbox State for Hide Label Value
-    Then select Print On Shipping Label - 5x8
+    Then select print on Shipping Label - 5x8
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to address random name, random company, 3217 Shasta Circle S., Los Angeles, CA 90065
     Then set Print form Ounces to 1
-    Then select Print form service PM Package
+    Then select print form service PM Package
     Then show Advanced Options
     Then expect Advanced Options Hide Label Value is checked
     Then select Advanced Options Extra Services
@@ -67,7 +67,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then expect Extra Services Handling is Normal
 
     Then close Extra Services
-    Then select Print form service FCM Large Envelope/Flat
+    Then select print form service FCM Large Envelope/Flat
     Then select Advanced Options Extra Services
     Then set Extra Services Security to USPS Insurance
     Then set Extra Services Value to 1.00
@@ -156,7 +156,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then expect Extra Services Handling is Normal
 
     Then close Extra Services
-    Then select Print form service FCM Large Envelope/Flat
+    Then select print form service FCM Large Envelope/Flat
     Then select Advanced Options Extra Services
     Then set Extra Services Security to USPS Insurance
     Then set Extra Services Value to 1.00
@@ -207,7 +207,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then expect Extra Services Handling is Normal
 
     Then close Extra Services
-    Then select Print form service FCM Large Envelope/Flat
+    Then select print form service FCM Large Envelope/Flat
     Then select Advanced Options Extra Services
     Then set Extra Services Security to USPS Insurance
     Then set Extra Services Value to 1.00
@@ -236,7 +236,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
 
 
     Then close Extra Services
-    Then select Print form service PM Package
+    Then select print form service PM Package
 
 
 

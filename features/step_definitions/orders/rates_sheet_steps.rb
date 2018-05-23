@@ -1,5 +1,5 @@
 Then /^[Pp]repare environment for ratings test$/ do
-  step "select Print On Shipping Label - Paper" if SdcEnv.sdc_app == :mail
+  step "select print on Shipping Label - Paper" if SdcEnv.sdc_app == :mail
   step "add new order" if SdcEnv.sdc_app == :orders
 end
 

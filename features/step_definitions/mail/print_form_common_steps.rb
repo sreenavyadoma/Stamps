@@ -56,7 +56,7 @@ Then /^[Ee]xpect [Pp]rint [Ff]orm [Ss]ervice (.*) is not present in dropdown lis
   expect(stamps.mail.print_form.service.select_service(TestData.hash[:service] = service).present?).to be(false)
 end
 
-Then /^[Ss]elect [Pp]rint [Ff]orm [Ss]ervice (.*)$/ do |str|
+Then /^select print form service (.*)$/ do |str|
   SdcLogger.debug "service: #{str}"
   TestData.hash[:service] = str
   if SdcEnv.new_framework

@@ -8,12 +8,12 @@ Feature: BVT for Mail page
 
   @mail_bvt_address_cleansing
   Scenario: Address Cleansing
-    Then select Print On Shipping Label - Paper
+    Then select print on Shipping Label - Paper
     Then set Print form Mail-From to default
     Then set print form mail-to country to United States
     Then set print form mail-to to address to Address Cleansing, BVT, 1350 Market Street, San Francisco, CA
     Then set Print form Ounces to 1
-    Then select Print form service PM Package
+    Then select print form service PM Package
     Then expect Print form Domestic Address field displays Address Cleansing, BVT, 1350 Market Street, San Francisco, CA 94102-5401
     Then sign out
 
@@ -22,11 +22,11 @@ Feature: BVT for Mail page
   @mail_bvt_advanced_options
   @mail_advanced_options__rolls
   Scenario: Advanced Options for Roll 4x6
-    Then select Print On Roll 4x6
+    Then select print on Roll 4x6
     Then set Advanced Options Mail Date to today
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1
-    Then select Print form service PM Package
+    Then select print form service PM Package
     Then show Advanced Options
     Then expect Advanced Options Extra Services Button is visible
 
@@ -74,12 +74,12 @@ Feature: BVT for Mail page
   @mail_bvt_advanced_options
   @mail_advanced_options_envelope
   Scenario: Advanced Options for Envelope - 10
-    Then select Print On Envelope - 10
+    Then select print on Envelope - 10
     Then set Advanced Options Mail Date to today
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1 through 4
     Then set Print form Ounces to 2
-    Then select Print form service FCM Letter
+    Then select print form service FCM Letter
     Then show Advanced Options
     Then expect Advanced Options Extra Services Button is visible
 
@@ -133,7 +133,7 @@ Feature: BVT for Mail page
   @mail_bvt_advanced_options
   @mail_advanced_options_cm3710
   Scenario: Advanced Options for Certified Mail Label - SDC-3710
-    Then select Print On Certified Mail Label - SDC-3710
+    Then select print on Certified Mail Label - SDC-3710
 
     Then show Advanced Options
 
@@ -169,11 +169,11 @@ Feature: BVT for Mail page
   @mail_bvt_advanced_options
   @mail_advanced_options_cm3610
   Scenario: Advanced Options for Certified Mail Label - SDC-3610
-    Then select Print On Certified Mail Label - SDC-3610
+    Then select print on Certified Mail Label - SDC-3610
 
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1
-    Then select Print form service PM Package
+    Then select print form service PM Package
 
     Then show Advanced Options
 
@@ -209,7 +209,7 @@ Feature: BVT for Mail page
   @mail_bvt_advanced_options
   @mail_advanced_options_cm3910
   Scenario: Advanced Options for Certified Mail Label - SDC-3910
-    Then select Print On Certified Mail Label - SDC-3910
+    Then select print on Certified Mail Label - SDC-3910
 
     Then expect Print Form Certified Mail is checked
     Then expect Print Form Certified Mail is visible
@@ -247,7 +247,7 @@ Feature: BVT for Mail page
   @mail_bvt_advanced_options
   @mail_advanced_options_3930
   Scenario: Advanced Options for Certified Mail Label - SDC-3930
-    Then select Print On Certified Mail Label - SDC-3930
+    Then select print on Certified Mail Label - SDC-3930
 
     Then expect Print Form Certified Mail is checked
     Then expect Print Form Certified Mail is visible
@@ -285,7 +285,7 @@ Feature: BVT for Mail page
   @mail_bvt_advanced_options
   @mail_advanced_options_3810
   Scenario: Advanced Options for Certified Mail Label - SDC-3810
-    Then select Print On Certified Mail Label - SDC-3810
+    Then select print on Certified Mail Label - SDC-3810
 
     Then expect Print Form Certified Mail is checked
     Then expect Print Form Certified Mail is visible
@@ -321,12 +321,12 @@ Feature: BVT for Mail page
   @mail_bvt_advanced_options
   @mail_advanced_options_paper
   Scenario: Advanced Options for Shipping Label - Paper
-    Then select Print On Shipping Label - Paper
+    Then select print on Shipping Label - Paper
 
     Then set Advanced Options Mail Date to today
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1
-    Then select Print form service PM Package
+    Then select print form service PM Package
     Then show Advanced Options
 
     Then expect Advanced Options Extra Services Button is visible
@@ -380,7 +380,7 @@ Feature: BVT for Mail page
   @mail_bvt_contacts
   Scenario: Contacts
 
-    Then select Print On Shipping Label - 5x8
+    Then select print on Shipping Label - 5x8
     Then set Print form Mail-From to default
     Then click Print form Mail To link
     Then click Search Contacts close button
@@ -389,11 +389,11 @@ Feature: BVT for Mail page
   @mobile_mail_smoke_test
   @mail_bvt_envelopes
   Scenario: Envelope
-    Then select Print On Envelope - 10
+    Then select print on Envelope - 10
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Print form service FCM Letter
+    Then select print form service FCM Letter
   #Then expect Print Form service cost for FCM Letter is N/A
     Then Print Postage
     Then set Mail Print modal Printer
@@ -402,12 +402,12 @@ Feature: BVT for Mail page
 
   @mail_bvt_extra_services
   Scenario: Extra Services
-    Then select Print On Shipping Label - 5x8
+    Then select print on Shipping Label - 5x8
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to address random name, random company, 3217 Shasta Circle S., Los Angeles, CA 90065
     Then set Print form Ounces to 1
-    Then select Print form service PM Padded Flat Rate Envelope
+    Then select print form service PM Padded Flat Rate Envelope
     Then expect Advanced Options Hide Label Value is checked
     Then select Advanced Options Extra Services
 
@@ -449,7 +449,7 @@ Feature: BVT for Mail page
   @mobile_mail_smoke_test
   @mail_bvt_international
   Scenario: International Shipping
-    Then select Print On Shipping Label - Paper
+    Then select print on Shipping Label - Paper
     Then set Print form Mail-From to default
     Then show Advanced Options
     Then set Advanced Options Mail Date to today
@@ -457,7 +457,7 @@ Feature: BVT for Mail page
       | name   | company | street_address_1 | street_address_2  | city   | province | postal_code | country| phone  |
       | random | random  | random           | random            | random | random   | random      | Italy | random  |
     Then set Print form Ounces to 3
-    Then select Print form service PMI Flat Rate Envelope
+    Then select print form service PMI Flat Rate Envelope
     Then click Print form Edit Customs Form button
 
     Then expect Customs I agree to the USPS Privacy Act Statement is unchecked
@@ -524,11 +524,11 @@ Feature: BVT for Mail page
 
   @bvt_mail_piece_validation
   Scenario: Envelope - #10
-    Then select Print On Envelope - 10
+    Then select print on Envelope - 10
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Print form service FCM Letter
+    Then select print form service FCM Letter
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
@@ -536,13 +536,13 @@ Feature: BVT for Mail page
 
   @bvt_mail_piece_validation
   Scenario: Shipping Label - 8 ½" x 11" Paper
-    Then select Print On Shipping Label - Paper
+    Then select print on Shipping Label - Paper
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 5 through 8
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
-    Then select Print form service PM Flat Rate Envelope
+    Then select print form service PM Flat Rate Envelope
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
@@ -550,12 +550,12 @@ Feature: BVT for Mail page
 
   @bvt_mail_piece_validation
   Scenario: Roll - 4" x 6" Shipping Label
-    Then select Print On Roll 4x6
+    Then select print on Roll 4x6
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set Print form Ounces to 1
-    Then select Print form service PM Large Flat Rate Box
+    Then select print form service PM Large Flat Rate Box
     Then Print Postage
 #    Then set Mail Print modal Printer Zebra LP 2844 on qa-printlab2016
     Then set Mail Print modal Printer ZDesigner LP 2844
@@ -564,14 +564,14 @@ Feature: BVT for Mail page
 
   @bvt_mail_piece_validation
   Scenario: Certified Mail Label - SDC-3610
-#    Then select Print On Shipping Label - Paper
-    Then select Print On Certified Mail Label - SDC-3610
+#    Then select print on Shipping Label - Paper
+    Then select print on Certified Mail Label - SDC-3610
     Then set Print form Mail-From to default
 #    Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
-    Then select Print form service PM Package
+    Then select print form service PM Package
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
@@ -579,13 +579,13 @@ Feature: BVT for Mail page
 
   @bvt_mail_piece_validation
   Scenario: Shipping Label - 8 ½" x 11" Paper
-    Then select Print On Shipping Label - Paper
+    Then select print on Shipping Label - Paper
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
-    Then select Print form service PM Flat Rate Envelope
+    Then select print form service PM Flat Rate Envelope
     Then show Advanced Options
     Then check Advanced Options Print Receipt
     Then Print Label
@@ -609,12 +609,12 @@ Feature: BVT for Mail page
   @mobile_mail_smoke_test
   @mail_bvt_stamps
   Scenario: Print form Specify Postage
-    Then select Print On Stamps
+    Then select print on Stamps
 
     Then set Print form Serial Number to C12345
     Then select Advanced Options Specify Postage Amount
     Then set Print form Mail-From to default
-    Then select Print form service Media Mail
+    Then select print form service Media Mail
     Then set Print form Amount to 2.85
     Then set Print form Quantity to 1
     Then set Advanced Options Reference Number to Stamp3221
@@ -626,7 +626,7 @@ Feature: BVT for Mail page
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
     Then set Print form Ounces to 1
-    Then select Print form service FCM Letter
+    Then select print form service FCM Letter
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
@@ -635,20 +635,20 @@ Feature: BVT for Mail page
 
   @mail_service_validation
   Scenario: Mail Service Validation
-    Then select Print On Stamps
-    Then select Print form service Media Mail
-    Then select Print form service FCM Letter
-    Then select Print form service FCM Large Envelope/Flat
+    Then select print on Stamps
+    Then select print form service Media Mail
+    Then select print form service FCM Letter
+    Then select print form service FCM Large Envelope/Flat
     Then sign out
 
   @mail_service_validation
   Scenario: Mail Service Validation for Stamps
-    Then select Print On Stamps
+    Then select print on Stamps
     Then show Advanced Options
     Then set Print form Serial Number to B12345
     Then select Advanced Options Specify Postage Amount
     Then set Print form Mail-From to default
-    Then select Print form service Media Mail
+    Then select print form service Media Mail
     Then set Print form Amount to 2
     Then set Print form Quantity to 1
     Then Print Postage
@@ -658,11 +658,11 @@ Feature: BVT for Mail page
 
   @mail_service_validation
   Scenario: Envelope - #10
-    Then select Print On Envelope - 10
+    Then select print on Envelope - 10
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Print form service FCM Letter
+    Then select print form service FCM Letter
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
@@ -670,13 +670,13 @@ Feature: BVT for Mail page
 
   @mail_service_validation
   Scenario: Shipping Label - 8 ½" x 11" Paper
-    Then select Print On Shipping Label - Paper
+    Then select print on Shipping Label - Paper
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 5 through 8
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
-    Then select Print form service PM Flat Rate Envelope
+    Then select print form service PM Flat Rate Envelope
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
@@ -684,12 +684,12 @@ Feature: BVT for Mail page
 
   @mail_service_validation
   Scenario: Roll - 4" x 6" Shipping Label
-    Then select Print On Roll 4x6
+    Then select print on Roll 4x6
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set Print form Ounces to 1
-    Then select Print form service PM Large Flat Rate Box
+    Then select print form service PM Large Flat Rate Box
     Then Print Postage
     Then set Mail Print modal Printer Zebra LP 2844 on qa-printlab2016
     Then click Mail Print modal Print button
@@ -697,14 +697,14 @@ Feature: BVT for Mail page
 
   @mail_service_validation
   Scenario: Certified Mail Label - SDC-3610
-#    Then select Print On Shipping Label - Paper
-    Then select Print On Certified Mail Label - SDC-3610
+#    Then select print on Shipping Label - Paper
+    Then select print on Certified Mail Label - SDC-3610
     Then set Print form Mail-From to default
 #    Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
-    Then select Print form service PM Package
+    Then select print form service PM Package
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
@@ -712,13 +712,13 @@ Feature: BVT for Mail page
 
   @mail_service_validation
   Scenario: Shipping Label - 8 ½" x 11" Paper
-    Then select Print On Shipping Label - Paper
+    Then select print on Shipping Label - Paper
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
-    Then select Print form service PM Flat Rate Envelope
+    Then select print form service PM Flat Rate Envelope
     Then show Advanced Options
     Then check Advanced Options Print Receipt
     Then Print Label
