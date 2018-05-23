@@ -22,7 +22,6 @@ Feature: PP-MVP: Left Panel
 
     #validate header on Set Password Page
     Then PP: a user navigates to Set Password Page
-    Then PP: click ok button on error pop up
     Then PP: expect left panel does not exist for browser
 
     #validate header on 404 Page

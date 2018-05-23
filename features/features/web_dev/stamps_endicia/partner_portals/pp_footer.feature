@@ -34,7 +34,6 @@ Feature: PP-MVP: Footer
 
     #validate footer on Set Password Page
     Then PP: a user navigates to Set Password Page
-    Then PP: click ok button on error pop up
     Then PP: expect footer to exists
     Then PP: expect copyright dates is 2017 - current year
     Then PP: click on Copyright Stamps.com link

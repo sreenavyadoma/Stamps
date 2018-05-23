@@ -23,7 +23,6 @@ Feature: PP-MVP: Authenticate
 
     #validate Set Password Page
     Then PP: a user navigates to Set Password Page
-    Then PP: click ok button on error pop up
     Then PP: click on global header
     Then PP: expect user is redirect to the login page
 
@@ -57,7 +56,6 @@ Feature: PP-MVP: Authenticate
 
     #validate Set Password Page
     Then PP: a user navigates to Set Password Page
-    Then PP: click ok button on error pop up
     Then PP: click on global header
     Then PP: expect dashboard page header exist
 
