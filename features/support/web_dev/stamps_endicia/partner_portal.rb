@@ -111,6 +111,9 @@ module PartnerPortal
     #icon
     page_object(:icon) { { xpath:  '//img[@alt="Reset password request icon image"]'} }
 
+    #error message
+    page_object(:email_error) { { xpath:  '//*[@name="email"]/div/div'} }
+
 
     page_url { |env| "https://partner.#{env}.stamps.com/reset-password/request" }
 
