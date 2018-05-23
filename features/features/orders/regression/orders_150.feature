@@ -10,8 +10,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 1
     * set Order Details service to FCM Large Envelope/Flat
@@ -20,8 +20,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 2
     * set Order Details service to First-Class Mail Package/Thick Envelope
@@ -32,8 +32,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 3
     * set Order Details service to PM Large/Thick Envelope
@@ -41,8 +41,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 4
     * set Order Details service to PM Package
@@ -50,8 +50,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 5
     * set Order Details service to PM Large Package
@@ -60,8 +60,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 6
     * set Order Details service to PM Flat Rate Envelope
@@ -69,8 +69,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 7
     * set Order Details service to PM Padded Flat Rate Envelope
@@ -79,8 +79,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 8
     * set Order Details service to PM Legal Flat Rate Envelope
@@ -88,8 +88,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 9
     * set Order Details service to PM Small Flat Rate Box
@@ -98,8 +98,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 10
     * set Order Details service to PM Medium Flat Rate Box
@@ -108,8 +108,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 11
     * set Order Details service to PM Large Flat Rate Box
@@ -118,8 +118,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 12
     * set Order Details service to PM Regional Rate Box A
@@ -128,8 +128,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 13
     * set Order Details service to PM Regional Rate Box B
@@ -138,8 +138,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 14
     * set order details insure-for to $305.00
@@ -149,8 +149,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 15
     Then set order details service to PME Package/Flat/Thick Envelope
@@ -158,8 +158,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 16
     * set Order Details service to PME Flat Rate Envelope
@@ -167,8 +167,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 17
     * set Order Details service to PME Padded Flat Rate Envelope
@@ -176,8 +176,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 18
     * set Order Details service to PME Legal Flat Rate Envelope
@@ -185,8 +185,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 19
     * set Order Details service to PME Padded Flat Rate Envelope
@@ -196,8 +196,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 20
     * set Order Details service to MM Package/Flat/Thick Envelope
@@ -208,8 +208,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 21
     * set Order Details service to PSG Package/Flat/Thick Envelope
@@ -218,8 +218,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 22
     Then set order details service to PSG Package/Flat/Thick Envelope
@@ -228,8 +228,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 23
     * set Order Details service to PSG Oversized Package
@@ -239,7 +239,7 @@ Feature: 150 orders
     # International
 
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
 
     Then set order details ship-to international address to
       | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
@@ -260,7 +260,7 @@ Feature: 150 orders
     Then set order details service to FCMI Large Envelope/Flat
 
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
 
     Then set order details ship-to international address to
       | full_name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
@@ -284,8 +284,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 1
     * set Order Details service to FCM Large Envelope/Flat
@@ -294,8 +294,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 2
     * set Order Details service to First-Class Mail Package/Thick Envelope
@@ -306,8 +306,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 3
     * set Order Details service to PM Large/Thick Envelope
@@ -315,8 +315,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 4
     * set Order Details service to PM Package
@@ -324,8 +324,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 5
     * set Order Details service to PM Large Package
@@ -334,8 +334,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 6
     * set Order Details service to PM Flat Rate Envelope
@@ -343,8 +343,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 7
     * set Order Details service to PM Padded Flat Rate Envelope
@@ -353,8 +353,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 8
     * set Order Details service to PM Legal Flat Rate Envelope
@@ -362,8 +362,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 9
     * set Order Details service to PM Small Flat Rate Box
@@ -372,8 +372,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 10
     * set Order Details service to PM Medium Flat Rate Box
@@ -382,8 +382,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 11
     * set Order Details service to PM Large Flat Rate Box
@@ -392,8 +392,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 12
     * set Order Details service to PM Regional Rate Box A
@@ -402,8 +402,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 13
     * set Order Details service to PM Regional Rate Box B
@@ -412,8 +412,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 14
     * set order details insure-for to $305.00
@@ -423,8 +423,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 15
     Then set order details service to PME Package/Flat/Thick Envelope
@@ -432,8 +432,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 16
     * set Order Details service to PME Flat Rate Envelope
@@ -441,8 +441,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 17
     * set Order Details service to PME Padded Flat Rate Envelope
@@ -450,8 +450,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 18
     * set Order Details service to PME Legal Flat Rate Envelope
@@ -459,8 +459,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 19
     * set Order Details service to PME Padded Flat Rate Envelope
@@ -470,8 +470,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 20
     * set Order Details service to MM Package/Flat/Thick Envelope
@@ -482,8 +482,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 21
     Then set order details service to PSG Package/Flat/Thick Envelope
@@ -492,8 +492,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 22
     Then set order details service to PSG Package/Flat/Thick Envelope
@@ -502,8 +502,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 23
     * set Order Details service to PSG Oversized Package
@@ -513,7 +513,7 @@ Feature: 150 orders
     # International
 
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
 
     Then set order details ship-to international address to
       | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country | phone       |  email           |
@@ -534,7 +534,7 @@ Feature: 150 orders
     Then set order details service to FCMI Large Envelope/Flat
 
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
 
     Then set order details ship-to international address to
       | full_name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
@@ -558,8 +558,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 1
     * set Order Details service to FCM Large Envelope/Flat
@@ -568,8 +568,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 2
     * set Order Details service to First-Class Mail Package/Thick Envelope
@@ -580,8 +580,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 3
     * set Order Details service to PM Large/Thick Envelope
@@ -589,8 +589,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 4
     * set Order Details service to PM Package
@@ -598,8 +598,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 5
     * set Order Details service to PM Large Package
@@ -608,8 +608,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 6
     * set Order Details service to PM Flat Rate Envelope
@@ -617,8 +617,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 7
     * set Order Details service to PM Padded Flat Rate Envelope
@@ -627,8 +627,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 8
     * set Order Details service to PM Legal Flat Rate Envelope
@@ -636,8 +636,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 9
     * set Order Details service to PM Small Flat Rate Box
@@ -646,8 +646,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 10
     * set Order Details service to PM Medium Flat Rate Box
@@ -656,8 +656,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 11
     * set Order Details service to PM Large Flat Rate Box
@@ -666,8 +666,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 12
     * set Order Details service to PM Regional Rate Box A
@@ -676,8 +676,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 13
     * set Order Details service to PM Regional Rate Box B
@@ -686,8 +686,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
     * set order details ounces to 14
     * set order details insure-for to $305.00
     * set Order Details Tracking to Signature Required
@@ -696,8 +696,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 15
     Then set order details service to PME Package/Flat/Thick Envelope
@@ -705,8 +705,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 16
     * set Order Details service to PME Flat Rate Envelope
@@ -714,8 +714,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 17
     * set Order Details service to PME Padded Flat Rate Envelope
@@ -723,8 +723,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 18
     * set Order Details service to PME Legal Flat Rate Envelope
@@ -732,8 +732,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 19
     * set Order Details service to PME Padded Flat Rate Envelope
@@ -743,8 +743,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 20
     * set Order Details service to MM Package/Flat/Thick Envelope
@@ -755,8 +755,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 21
     Then set order details service to PSG Package/Flat/Thick Envelope
@@ -765,8 +765,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 22
     Then set order details service to PSG Package/Flat/Thick Envelope
@@ -775,8 +775,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 23
     * set Order Details service to PSG Oversized Package
@@ -786,7 +786,7 @@ Feature: 150 orders
     # International
 
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
 
     Then set order details ship-to international address to
       | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
@@ -807,7 +807,7 @@ Feature: 150 orders
     Then set order details service to FCMI Large Envelope/Flat
 
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
 
     Then set order details ship-to international address to
       | full_name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
@@ -831,8 +831,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 1
     * set Order Details service to FCM Large Envelope/Flat
@@ -841,8 +841,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 2
     * set Order Details service to First-Class Mail Package/Thick Envelope
@@ -853,8 +853,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 3
     * set Order Details service to PM Large/Thick Envelope
@@ -862,8 +862,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 4
     * set Order Details service to PM Package
@@ -871,8 +871,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 5
     * set Order Details service to PM Large Package
@@ -881,8 +881,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 6
     * set Order Details service to PM Flat Rate Envelope
@@ -890,8 +890,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 7
     * set Order Details service to PM Padded Flat Rate Envelope
@@ -900,8 +900,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 8
     * set Order Details service to PM Legal Flat Rate Envelope
@@ -909,8 +909,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 9
     * set Order Details service to PM Small Flat Rate Box
@@ -919,8 +919,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 10
     * set Order Details service to PM Medium Flat Rate Box
@@ -929,8 +929,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 11
     * set Order Details service to PM Large Flat Rate Box
@@ -939,8 +939,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 12
     * set Order Details service to PM Regional Rate Box A
@@ -949,8 +949,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 13
     * set Order Details service to PM Regional Rate Box B
@@ -959,8 +959,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 14
     * set order details insure-for to $305.00
@@ -970,8 +970,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 15
     Then set order details service to PME Package/Flat/Thick Envelope
@@ -979,8 +979,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 16
     * set Order Details service to PME Flat Rate Envelope
@@ -988,8 +988,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 17
     * set Order Details service to PME Padded Flat Rate Envelope
@@ -997,8 +997,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 18
     * set Order Details service to PME Legal Flat Rate Envelope
@@ -1006,8 +1006,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 19
     * set Order Details service to PME Padded Flat Rate Envelope
@@ -1017,8 +1017,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 20
     * set Order Details service to MM Package/Flat/Thick Envelope
@@ -1029,8 +1029,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 21
     Then set order details service to PSG Package/Flat/Thick Envelope
@@ -1039,8 +1039,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 22
     Then set order details service to PSG Package/Flat/Thick Envelope
@@ -1049,8 +1049,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 23
     * set Order Details service to PSG Oversized Package
@@ -1060,7 +1060,7 @@ Feature: 150 orders
     # International
 
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
 
     Then set order details ship-to international address to
       | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country     | phone       |  email  |
@@ -1081,7 +1081,7 @@ Feature: 150 orders
     Then set order details service to FCMI Large Envelope/Flat
 
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
 
     Then set order details ship-to international address to
       | full_name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
@@ -1105,8 +1105,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 1
     * set Order Details service to FCM Large Envelope/Flat
@@ -1115,8 +1115,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 2
     * set Order Details service to First-Class Mail Package/Thick Envelope
@@ -1127,8 +1127,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 3
     * set Order Details service to PM Large/Thick Envelope
@@ -1136,8 +1136,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 4
     * set Order Details service to PM Package
@@ -1145,8 +1145,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 5
     * set Order Details service to PM Large Package
@@ -1155,8 +1155,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 6
     * set Order Details service to PM Flat Rate Envelope
@@ -1164,8 +1164,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 7
     * set Order Details service to PM Padded Flat Rate Envelope
@@ -1174,8 +1174,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 8
     * set Order Details service to PM Legal Flat Rate Envelope
@@ -1183,8 +1183,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 9
     * set Order Details service to PM Small Flat Rate Box
@@ -1193,8 +1193,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 10
     * set Order Details service to PM Medium Flat Rate Box
@@ -1203,8 +1203,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 11
     * set Order Details service to PM Large Flat Rate Box
@@ -1213,8 +1213,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 12
     * set Order Details service to PM Regional Rate Box A
@@ -1223,8 +1223,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 13
     * set Order Details service to PM Regional Rate Box B
@@ -1233,8 +1233,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 14
     * set order details insure-for to $305.00
@@ -1244,8 +1244,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 15
     Then set order details service to PME Package/Flat/Thick Envelope
@@ -1253,8 +1253,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 16
     * set Order Details service to PME Flat Rate Envelope
@@ -1262,8 +1262,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 17
     * set Order Details service to PME Padded Flat Rate Envelope
@@ -1271,8 +1271,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 18
     * set Order Details service to PME Legal Flat Rate Envelope
@@ -1280,8 +1280,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 19
     * set Order Details service to PME Padded Flat Rate Envelope
@@ -1291,8 +1291,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 20
     * set Order Details service to MM Package/Flat/Thick Envelope
@@ -1303,8 +1303,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 21
     Then set order details service to PSG Package/Flat/Thick Envelope
@@ -1313,8 +1313,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 22
     Then set order details service to PSG Package/Flat/Thick Envelope
@@ -1323,8 +1323,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 23
     * set Order Details service to PSG Oversized Package
@@ -1334,7 +1334,7 @@ Feature: 150 orders
     # International
 
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
 
     Then set order details ship-to international address to
       | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
@@ -1355,7 +1355,7 @@ Feature: 150 orders
     Then set order details service to FCMI Large Envelope/Flat
 
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
 
     Then set order details ship-to international address to
       | full_name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
@@ -1379,8 +1379,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 1
     * set Order Details service to FCM Large Envelope/Flat
@@ -1389,8 +1389,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 2
     * set Order Details service to First-Class Mail Package/Thick Envelope
@@ -1401,8 +1401,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 3
     * set Order Details service to PM Large/Thick Envelope
@@ -1410,8 +1410,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 4
     * set Order Details service to PM Package
@@ -1419,8 +1419,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 5
     * set Order Details service to PM Large Package
@@ -1429,8 +1429,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 6
     * set Order Details service to PM Flat Rate Envelope
@@ -1438,8 +1438,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 7
     * set Order Details service to PM Padded Flat Rate Envelope
@@ -1448,8 +1448,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 8
     * set Order Details service to PM Legal Flat Rate Envelope
@@ -1457,8 +1457,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 9
     * set Order Details service to PM Small Flat Rate Box
@@ -1467,8 +1467,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 10
     * set Order Details service to PM Medium Flat Rate Box
@@ -1477,8 +1477,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 11
     * set Order Details service to PM Large Flat Rate Box
@@ -1487,8 +1487,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 12
     * set Order Details service to PM Regional Rate Box A
@@ -1497,8 +1497,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 13
     * set Order Details service to PM Regional Rate Box B
@@ -1507,8 +1507,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 14
     * set order details insure-for to $305.00
@@ -1518,8 +1518,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details ounces to 15
     Then set order details service to PME Package/Flat/Thick Envelope
@@ -1527,8 +1527,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 16
     * set Order Details service to PME Flat Rate Envelope
@@ -1536,8 +1536,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 17
     * set Order Details service to PME Padded Flat Rate Envelope
@@ -1545,8 +1545,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 18
     * set Order Details service to PME Legal Flat Rate Envelope
@@ -1554,8 +1554,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 19
     * set Order Details service to PME Padded Flat Rate Envelope
@@ -1565,8 +1565,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 20
     * set Order Details service to MM Package/Flat/Thick Envelope
@@ -1577,8 +1577,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 21
     Then set order details service to PSG Package/Flat/Thick Envelope
@@ -1587,8 +1587,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 22
     Then set order details service to PSG Package/Flat/Thick Envelope
@@ -1597,8 +1597,8 @@ Feature: 150 orders
 
     * add new order
     * expect Order Details Order ID is truthy
-    * set Order Details Ship-From to default
-    * set Order Details Ship-To to random address between zone 1 and 4
+    * set order details ship-from to default
+    * set order details ship-to to random address between zone 1 and 4
 
     * set order details pounds to 23
     * set Order Details service to PSG Oversized Package
@@ -1608,7 +1608,7 @@ Feature: 150 orders
     # International
 
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
 
     Then set order details ship-to international address to
       | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country   | phone       |  email  |
@@ -1629,7 +1629,7 @@ Feature: 150 orders
     Then set order details service to FCMI Large Envelope/Flat
 
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
 
     Then set order details ship-to international address to
       | full_name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country  | phone   |  email  |

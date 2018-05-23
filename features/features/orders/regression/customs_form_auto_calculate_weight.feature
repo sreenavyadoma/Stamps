@@ -6,7 +6,7 @@ Feature: Auto-Calculate Customs Form Weight
   @customs_form_auto_calculate_weight
   Scenario: Auto-Calculate Customs Form Weight
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province | postal_code | country  | phone  |  email  |
       | random | random  | random           | random | random   | random      | random   | France | random  | random  |

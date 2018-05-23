@@ -7,8 +7,8 @@ Feature:  Requires x-number of label sheets
   @print_dialog_two_up_x_number_of_labels
   Scenario:  Requires x-number of label sheets
     Then add new order
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PM Flat Rate Envelope
     Then set order details weight to 1 lb 1 oz
 
@@ -18,7 +18,7 @@ Feature:  Requires x-number of label sheets
     Then in print modal, click close button
 
     Then add new order
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PM Flat Rate Envelope
     Then set order details weight to 1 lb 1 oz
 

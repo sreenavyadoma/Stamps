@@ -6,7 +6,7 @@ Feature: Print 1 single ply DPO CP72 label on 4⅛ x 6¼ roll
   @print_layout_dpo_cp72_roll_single_ply
   Scenario: Print 1 single ply DPO CP72 label on 4⅛ x 6¼ roll
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set Order Details Domestic Ship-To Country to United States
     Then set order details ship-to domestic address to
       | full_name     | company       | street_address      | street_address_2| city | state | zip        | country       | phone  |  email |
@@ -19,7 +19,7 @@ Feature: Print 1 single ply DPO CP72 label on 4⅛ x 6¼ roll
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then click orders toolbar print button
-    Then set Print modal Print-On to Roll 418x614
+    Then set print modal print-on to Roll 418x614
     Then click print modal print button Sample
     Then click print modal print button
     Then sign out

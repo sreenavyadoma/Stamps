@@ -8,7 +8,7 @@ Feature:  Print new country orders
   @country_code_bonaire
   Scenario: Print Bonaire, Sincd t Eustatius, and Saba orders
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code| country                          | phone   |  email  |
       | random | random  | random           | random           | random | random  | 12345      | Bonaire, Sint Eustatius and Saba | random  | random  |
@@ -25,7 +25,7 @@ Feature:  Print new country orders
     Then close Customs Information form
     Then pause for 3 seconds
     Then click orders toolbar print button
-    Then set Print modal Print-On to Shipping Label - 8 ½" x 11" Paper
+    Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
     Then set Orders print modal printer
     Then click print modal print button
     Then sign out
@@ -34,7 +34,7 @@ Feature:  Print new country orders
   @country_code_curacao
   Scenario: Print Curacao
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code| country | phone   |  email  |
       | random | random  | random           | random           | random | random  | 12345      | Curacao | random  | random  |
@@ -51,7 +51,7 @@ Feature:  Print new country orders
     Then close Customs Information form
     Then pause for 3 seconds
     Then click orders toolbar print button
-    Then set Print modal Print-On to Shipping Label - 8 ½" x 11" Paper
+    Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
     Then set Orders print modal printer
     Then click print modal print button
     Then sign out

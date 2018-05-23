@@ -7,8 +7,8 @@ Feature: User Views Price Next to service Dropdown
   @inline_service_rates
   Scenario:  User Views Price Next to service Dropdown
     Then add new order
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then expect order details service cost is 0.00
     Then expect Order Details Service Cost inline price for "FCM Package" is greater than $0.01
     Then expect Order Details Service Cost inline price for "First-Class Mail Package/Thick Envelope" is greater than $0.01

@@ -5,7 +5,7 @@ Feature: January 2017 Rates for CPP User in Zone 6
 
   @rates_orders_cpp_zone_6
   Scenario: FCM Package
-    Then set Order Details Ship-To to random address in zone 6
+    Then set order details ship-to to random address in zone 6
     Then set order details service to FCM Large Envelope/Flat
     Then set order details weight to 0 lb 12 oz
     Then expect order details service cost is 3.29
@@ -13,7 +13,7 @@ Feature: January 2017 Rates for CPP User in Zone 6
 
   @rates_orders_cpp_zone_6
   Scenario: First-Class Mail Package/Thick Envelope
-    Then set Order Details Ship-To to random address in zone 6
+    Then set order details ship-to to random address in zone 6
     Then set order details service to First-Class Mail Package/Thick Envelope
     Then set order details weight to 0 lb 5 oz
     Then expect order details service cost is 2.77
@@ -22,7 +22,7 @@ Feature: January 2017 Rates for CPP User in Zone 6
 
   @rates_orders_cpp_zone_6
   Scenario: Priority Mail Large/Thick Envelope
-    Then set Order Details Ship-To to random address in zone 6
+    Then set order details ship-to to random address in zone 6
     Then set order details service to PM Large/Thick Envelope
     Then set order details weight to 34 lb 0 oz
     Then expect order details service cost is 54.18
@@ -32,7 +32,7 @@ Feature: January 2017 Rates for CPP User in Zone 6
 
   @rates_orders_cpp_zone_6
   Scenario: Priority Mail Package
-    Then set Order Details Ship-To to random address in zone 6
+    Then set order details ship-to to random address in zone 6
     Then set order details service to PM Package
     Then set order details weight to 11 lb 0 oz
     Then set order details length to 10
@@ -46,7 +46,7 @@ Feature: January 2017 Rates for CPP User in Zone 6
 
   @rates_orders_cpp_zone_6
   Scenario: Priority Mail Large Package
-    Then set Order Details Ship-To to random address in zone 6
+    Then set order details ship-to to random address in zone 6
     Then set order details service to PM Large Package
     Then set order details weight to 42 lb 0 oz
     Then set order details length to 20
@@ -60,7 +60,7 @@ Feature: January 2017 Rates for CPP User in Zone 6
 
   @rates_orders_cpp_zone_6
   Scenario: Priority Mail Flat Rate Envelope
-    Then set Order Details Ship-To to random address in zone 6
+    Then set order details ship-to to random address in zone 6
     Then set order details service to PM Flat Rate Envelope
     Then set order details weight to 32 lb 3 oz
     Then expect order details service cost is 5.95
@@ -71,7 +71,7 @@ Feature: January 2017 Rates for CPP User in Zone 6
 
   @rates_orders_cpp_zone_6
   Scenario: Priority Mail Padded Flat Rate Envelope
-    Then set Order Details Ship-To to random address in zone 6
+    Then set order details ship-to to random address in zone 6
     Then set order details service to PM Padded Flat Rate Envelope
     Then set order details weight to 23 lb 0 oz
     Then expect order details service cost is 6.50
@@ -82,7 +82,7 @@ Feature: January 2017 Rates for CPP User in Zone 6
 
   @rates_orders_cpp_zone_6
   Scenario: Priority Mail Legal Flat Rate Envelope
-    Then set Order Details Ship-To to random address in zone 6
+    Then set order details ship-to to random address in zone 6
     Then set order details service to PM Legal Flat Rate Envelope
     Then set order details weight to 33 lb 0 oz
     Then expect order details service cost is 6.25
@@ -93,7 +93,7 @@ Feature: January 2017 Rates for CPP User in Zone 6
 
   @rates_orders_cpp_zone_6
   Scenario: Priority Mail Small Flat Rate Box
-    Then set Order Details Ship-To to random address in zone 6
+    Then set order details ship-to to random address in zone 6
     Then set order details service to PM Small Flat Rate Box
     Then set order details weight to 55 lb 0 oz
     Then expect order details service cost is 6.45
@@ -104,7 +104,7 @@ Feature: January 2017 Rates for CPP User in Zone 6
 
   @rates_orders_cpp_zone_6
   Scenario: Priority Mail Medium Flat Rate Box
-    Then set Order Details Ship-To to random address in zone 6
+    Then set order details ship-to to random address in zone 6
     Then set order details service to PM Medium Flat Rate Box
     Then set order details weight to 46 lb 0 oz
     Then expect order details service cost is 12.40
@@ -115,7 +115,7 @@ Feature: January 2017 Rates for CPP User in Zone 6
 
   @rates_orders_cpp_zone_6
   Scenario: Priority Mail Large Flat Rate Box
-    Then set Order Details Ship-To to random address in zone 6
+    Then set order details ship-to to random address in zone 6
     Then set order details service to PM Large Flat Rate Box
     Then set order details weight to 31 lb 0 oz
     Then expect order details service cost is 17.05
@@ -125,7 +125,7 @@ Feature: January 2017 Rates for CPP User in Zone 6
 
   @local_rating6
   Scenario: Priority Mail Regional Rate Box A
-    Then set Order Details Ship-To to random address in zone 6
+    Then set order details ship-to to random address in zone 6
     Then set order details service to PM Regional Rate Box A
     Then set order details weight to 3 lb 0 oz
     Then expect order details service cost is 9.19
@@ -135,7 +135,7 @@ Feature: January 2017 Rates for CPP User in Zone 6
 
   @local_rating6
   Scenario: Priority Mail Regional Rate Box B
-    Then set Order Details Ship-To to random address in zone 6
+    Then set order details ship-to to random address in zone 6
     Then set order details service to PM Regional Rate Box B
     Then set order details weight to 1 lb 0 oz
     Then expect order details service cost is 15.68
@@ -146,7 +146,7 @@ Feature: January 2017 Rates for CPP User in Zone 6
 
   @rates_orders_cpp_zone_6
   Scenario: PME Package/Flat/Thick Envelope
-    Then set Order Details Ship-To to random address in zone 6
+    Then set order details ship-to to random address in zone 6
     Then set order details service to PME Package/Flat/Thick Envelope
     Then set order details weight to 23 lb 0 oz
     Then expect order details service cost is 117.40
@@ -157,7 +157,7 @@ Feature: January 2017 Rates for CPP User in Zone 6
 
   @rates_orders_cpp_zone_6
   Scenario: PME Flat Rate Envelope
-    Then set Order Details Ship-To to random address in zone 6
+    Then set order details ship-to to random address in zone 6
     Then set order details service to PME Flat Rate Envelope
     Then set order details weight to 19 lb 0 oz
     Then expect order details service cost is 21.18
@@ -168,7 +168,7 @@ Feature: January 2017 Rates for CPP User in Zone 6
 
   @rates_orders_cpp_zone_6
   Scenario: PME Padded Flat Rate Envelope
-    Then set Order Details Ship-To to random address in zone 6
+    Then set order details ship-to to random address in zone 6
     Then set order details service to PME Padded Flat Rate Envelope
     Then set order details weight to 57 lb 0 oz
     Then expect order details service cost is 21.64
@@ -179,7 +179,7 @@ Feature: January 2017 Rates for CPP User in Zone 6
 
   @rates_orders_cpp_zone_6
   Scenario: PME Legal Flat Rate Envelope
-    Then set Order Details Ship-To to random address in zone 6
+    Then set order details ship-to to random address in zone 6
     Then set order details service to PME Legal Flat Rate Envelope
     Then set order details weight to 40 lb 0 oz
     Then expect order details service cost is 21.28
@@ -190,7 +190,7 @@ Feature: January 2017 Rates for CPP User in Zone 6
 
   @rates_orders_cpp_zone_6
   Scenario: MM Package/Flat/Thick Envelope
-    Then set Order Details Ship-To to random address in zone 6
+    Then set order details ship-to to random address in zone 6
     Then set order details service to MM Package/Flat/Thick Envelope
     Then set order details weight to 66 lb 0 oz
     Then expect order details service cost is 33.89
@@ -201,7 +201,7 @@ Feature: January 2017 Rates for CPP User in Zone 6
 
   @rates_orders_cpp_zone_6
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
-    Then set Order Details Ship-To to random address in zone 6
+    Then set order details ship-to to random address in zone 6
     Then set order details service to PSG Package/Flat/Thick Envelope
     Then set order details weight to 38 lb 0 oz
     Then expect order details service cost is 59.04
@@ -212,7 +212,7 @@ Feature: January 2017 Rates for CPP User in Zone 6
 
   @rates_orders_cpp_zone_6
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
-    Then set Order Details Ship-To to random address in zone 6
+    Then set order details ship-to to random address in zone 6
     Then set order details service to PSG Large Package
     Then set order details weight to 59 lb 0 oz
     Then expect order details service cost is 77.60
@@ -223,7 +223,7 @@ Feature: January 2017 Rates for CPP User in Zone 6
 
   @rates_orders_cpp_zone_6
   Scenario: Parcel Select Ground Oversized Package
-    Then set Order Details Ship-To to random address in zone 6
+    Then set order details ship-to to random address in zone 6
     Then set order details service to PSG Oversized Package
     Then set order details weight to 48 lb 0 oz
     Then expect order details service cost is 123.37

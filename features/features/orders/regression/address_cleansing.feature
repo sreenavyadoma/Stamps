@@ -7,7 +7,7 @@ Feature: Address Cleansing
   @address_cleansing
   Scenario: Address Cleansing
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set order details ship-to domestic address to
       | full_name              | company | street_address   | street_address_2 | city       | state | zip | country       |
       | Address Cleansing | No Zip  | 1990 E Grand Ave |                  | El Segundo | CA    |     | United States |
@@ -22,6 +22,6 @@ Feature: Address Cleansing
     Then expect orders grid state is CA
 
     Then add new order
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PM Package
     Then sign out

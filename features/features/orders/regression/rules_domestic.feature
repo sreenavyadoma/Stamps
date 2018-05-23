@@ -6,16 +6,16 @@ Feature:  service enabled/disabled tests
   @rules_domestic
   Scenario:  First Class Mail over 16 ounces disabled
     Then add new order
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 17
     Then expect Order Details service "FCM Package" is disabled
     Then expect Order Details service "First-Class Mail Package/Thick Envelope" is disabled
 
     #First Class Mail up to 15.9 ounces enabled
     Then add new order
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 15.9
     Then expect Order Details service "First-Class Mail Package/Thick Envelope" is enabled
     #Then expect Order Details service "FCM Package" is enabled
@@ -32,8 +32,8 @@ Feature:  service enabled/disabled tests
     Then expect order details weight Oz data error tooltip is "Weight cannot be 0"
     Then expect Order Details service data error tooltip is "Service is required"
     Then check orders grid order id cached
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random,PO BOX 1257,Pohnpei, FM 96941-1257
+    Then set order details ship-from to default
+    Then set order details ship-to to random,PO BOX 1257,Pohnpei, FM 96941-1257
     Then set order details email to random
     Then set order details phone to random
     Then set order details service to PM Large Package

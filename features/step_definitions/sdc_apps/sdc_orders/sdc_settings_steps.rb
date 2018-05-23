@@ -1,4 +1,4 @@
-Then /^[Ss]et [Oo]rders [Ss]ettings [Gg]eneral [Pp]ostdate to (now [+-]\d+ hours|\d{1,2}:\d\d [ap].m.)$/ do |time|
+Then /^set orders settings general postdate to (now [+-]\d+ hours|\d{1,2}:\d\d [ap].m.)$/ do |time|
   time = TestHelper.now_plus_hh(/[+-]\d+/.match(time).to_s.to_i) unless /^\d{1,2}:\d\d [ap].m.$/.match(time)
   settings = SdcOrders.modals.settings.general_settings
   settings.selection(time)
@@ -22,14 +22,14 @@ Then /^[Ww]ait [Uu]ntil [Oo]rders [Ss]ettings [Mm]odal [Pp]resent(?: (\d+), (.+)
   end
 end
 
-Then /^[Oo]pen [Oo]rders [Ss]ettings [Gg]eneral [Ss]ettings$/ do
+Then /^open orders settings general settings$/ do
   step 'Open Orders settings modal'
   SdcOrders.modals.settings.general.click
   SdcOrders.modals.settings.general_settings.title.wait_until_present(timeout: 40, interval: 0.2)
   expect(SdcOrders.modals.settings.general_settings.title).to be_present, "Order Settings modal is not present"
 end
 
-Then /^[Cc]lose [Oo]rders [Ss]ettings [Mm]odal$/ do
+Then /^close orders settings modal$/ do
   SdcOrders.modals.settings.close.click
   SdcOrders.modals.settings.close.wait_while_present(timeout: 50, interval: 0.2)
   expect(SdcOrders.modals.settings.general_settings.title).not_to be_present, "Order Settings modal present"

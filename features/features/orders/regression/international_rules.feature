@@ -8,7 +8,7 @@ Feature: All International Rules
   @rules_international_dev
   Scenario: Add Missing Validation Logic for Phone and International Email
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set Order Details Domestic Ship-To Country to Australia
     Then check Orders Grid row 1
 
@@ -27,7 +27,7 @@ Feature: All International Rules
   @rules_international_cuba
   Scenario: Cuba Internal Transaction Number Required
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Cuba    | random  | random  |
@@ -61,7 +61,7 @@ Feature: All International Rules
   @rules_international_iran
   Scenario: Iran Internal Transaction Number Required
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Iran    | random  | random  |
@@ -97,7 +97,7 @@ Feature: All International Rules
   @rules_international_customs_fields_validation
   Scenario: International Shipping fields and Customs Information fields validation
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set Order Details Domestic Ship-To Country to Japan
 
     Then expect Order Details International Address fields are visible
@@ -179,7 +179,7 @@ Feature: All International Rules
   @rules_international_nkorea
   Scenario: North Korea Internal Transaction Number Required
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Democratic People's Republic of (North) Korea| random  | random  |
@@ -212,7 +212,7 @@ Feature: All International Rules
   @international_rogue_countries_sudan
   Scenario: Sudan Internal Transaction Number Required
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Sudan    | random  | random  |
@@ -249,7 +249,7 @@ Feature: All International Rules
   @rules_international_syria
   Scenario: Syria Internal Transaction Number Required
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Syria    | random  | random  |
@@ -287,7 +287,7 @@ Feature: All International Rules
   @rules_international_over_2500
   Scenario: Customs Form Internal Transaction Number Required for total over $2500
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set order details ship-to international address to
       | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
@@ -312,7 +312,7 @@ Feature: All International Rules
   @rules_international_trx_no_not_required
   Scenario: Internal Transaction # Not Required
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Philippines    | random  | random  |
@@ -345,13 +345,13 @@ Feature: All International Rules
   @rules_international_name_stuff
   Scenario: Two character minimum for Name & Company
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set Order Details Domestic Ship-To Country to Antigua & Barbuda
     Then set Order Details International Ship-To Name to "a"
     Then expect Order Details International Name data error tooltip is "A first and last name of at least two characters each is required"
 
 
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set Order Details International Ship-To Name to "abc def"
     Then expect Order Details International Name data error tooltip is ""
     #Then expect Order Details International Company data error tooltip is ""

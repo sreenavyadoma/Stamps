@@ -8,8 +8,8 @@ Feature: in Orders Grid, Tracking & Order Status
   @grid_insured_value
   Scenario: Tracking & Order Status
     Then add new order
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 5
     Then set order details service to PM Flat Rate Envelope
     Then check order details insure-for checkbox
@@ -35,8 +35,8 @@ Feature: in Orders Grid, Tracking & Order Status
   @grid_ship_cost
   Scenario: B-01743 Show Cost of Order in Ship Cost Grid
     Then add new order
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 1
     Then set order details service to PM Small Flat Rate Box
     Then Expect Ship Cost equals Total amount
@@ -46,13 +46,13 @@ Feature: in Orders Grid, Tracking & Order Status
   Scenario: Tracking & Order Status
     Then add new order
     Then expect orders grid order status is Awaiting Shipment
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 5
     Then set order details service to PM Large Package
     Then set Order Details Tracking to USPS Tracking
     Then click orders toolbar print button
-    Then set Print modal Print-On to Shipping Label - 8 ½" x 11" Paper
+    Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
     #Then set Orders print modal printer
     Then click print modal print button
     Then select Filter Panel tab Shipped

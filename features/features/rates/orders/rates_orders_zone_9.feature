@@ -5,7 +5,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: FCM Package
-    Then set Order Details Ship-To to random address in zone 9
+    Then set order details ship-to to random address in zone 9
     Then set order details service to FCM Large Envelope/Flat
     Then set order details weight to 0 lb 4 oz
     Then expect order details service cost is 1.61
@@ -14,7 +14,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: First-Class Mail Package/Thick Envelope
-    Then set Order Details Ship-To to random address in zone 9
+    Then set order details ship-to to random address in zone 9
     Then set order details service to First-Class Mail Package/Thick Envelope
     Then set order details weight to 0 lb 10 oz
     Then expect order details service cost is 3.46
@@ -24,7 +24,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Priority Mail Large/Thick Envelope
-    Then set Order Details Ship-To to random address in zone 9
+    Then set order details ship-to to random address in zone 9
     Then set order details service to PM Large/Thick Envelope
     Then set order details weight to 0 lb 8 oz
     Then expect order details service cost is 9.89
@@ -34,7 +34,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Priority Mail Package
-    Then set Order Details Ship-To to random address in zone 9
+    Then set order details ship-to to random address in zone 9
     Then set order details service to PM Package
     Then set order details weight to 2 lb 0 oz
     Then expect order details service cost is 15.14
@@ -44,7 +44,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Priority Mail Large Package
-    Then set Order Details Ship-To to random address in zone 9
+    Then set order details ship-to to random address in zone 9
     Then set order details service to PM Large Package
     Then set order details weight to 22 lb 0 oz
     Then set order details length to 30
@@ -57,7 +57,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Priority Mail Flat Rate Envelope
-    Then set Order Details Ship-To to random address in zone 9
+    Then set order details ship-to to random address in zone 9
     Then set order details service to PM Flat Rate Envelope
     Then set order details weight to 13 lb 3 oz
     Then expect order details service cost is 5.95
@@ -67,7 +67,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Priority Mail Padded Flat Rate Envelope
-    Then set Order Details Ship-To to random address in zone 9
+    Then set order details ship-to to random address in zone 9
     Then set order details service to PM Padded Flat Rate Envelope
     Then set order details weight to 3 lb 0 oz
     Then expect order details service cost is 6.50
@@ -77,7 +77,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Priority Mail Legal Flat Rate Envelope
-    Then set Order Details Ship-To to random address in zone 9
+    Then set order details ship-to to random address in zone 9
     Then set order details service to PM Legal Flat Rate Envelope
     Then set order details weight to 6 lb 0 oz
     Then expect order details service cost is 6.25
@@ -87,7 +87,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Priority Mail Small Flat Rate Box
-    Then set Order Details Ship-To to random address in zone 9
+    Then set order details ship-to to random address in zone 9
     Then set order details service to PM Small Flat Rate Box
     Then set order details weight to 2 lb 0 oz
     Then expect order details service cost is 6.45
@@ -97,7 +97,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Priority Mail Medium Flat Rate Box
-    Then set Order Details Ship-To to random address in zone 9
+    Then set order details ship-to to random address in zone 9
     Then set order details service to PM Medium Flat Rate Box
     Then set order details weight to 6 lb 0 oz
     Then expect order details service cost is 12.40
@@ -107,7 +107,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Priority Mail Large Flat Rate Box
-    Then set Order Details Ship-To to random address in zone 9
+    Then set order details ship-to to random address in zone 9
     Then set order details service to PM Large Flat Rate Box
     Then set order details weight to 15 lb 0 oz
     Then expect order details service cost is 17.05
@@ -118,7 +118,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Priority Mail Regional Rate Box A
-    Then set Order Details Ship-To to random address in zone 9
+    Then set order details ship-to to random address in zone 9
     Then set order details service to PM Regional Rate Box A
     Then set order details weight to 4 lb 0 oz
     Then expect order details service cost is 15.14
@@ -128,7 +128,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Priority Mail Regional Rate Box B
-    Then set Order Details Ship-To to random address in zone 9
+    Then set order details ship-to to random address in zone 9
     Then set order details service to PM Regional Rate Box B
     Then set order details weight to 12 lb 0 oz
     Then expect order details service cost is 28.72
@@ -137,7 +137,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: PME Package/Flat/Thick Envelope
-    Then set Order Details Ship-To to random address in zone 9
+    Then set order details ship-to to random address in zone 9
     Then set order details service to PME Package/Flat/Thick Envelope
     Then set order details weight to 9 lb 0 oz
     Then expect order details service cost is 90.96
@@ -147,7 +147,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: PME Flat Rate Envelope
-    Then set Order Details Ship-To to random address in zone 9
+    Then set order details ship-to to random address in zone 9
     Then set order details service to PME Flat Rate Envelope
     Then set order details weight to 7 lb 0 oz
     Then expect order details service cost is 21.18
@@ -157,7 +157,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: PME Padded Flat Rate Envelope
-    Then set Order Details Ship-To to random address in zone 9
+    Then set order details ship-to to random address in zone 9
     Then set order details service to PME Padded Flat Rate Envelope
     Then set order details weight to 11 lb 0 oz
     Then expect order details service cost is 21.64
@@ -167,7 +167,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: PME Legal Flat Rate Envelope
-    Then set Order Details Ship-To to random address in zone 9
+    Then set order details ship-to to random address in zone 9
     Then set order details service to PME Legal Flat Rate Envelope
     Then set order details weight to 16 lb 0 oz
     Then expect order details service cost is 21.28
@@ -177,7 +177,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: MM Package/Flat/Thick Envelope
-    Then set Order Details Ship-To to random address in zone 9
+    Then set order details ship-to to random address in zone 9
     Then set order details service to MM Package/Flat/Thick Envelope
     Then set order details weight to 3 lb 0 oz
     Then expect order details service cost is 3.61
@@ -187,7 +187,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
-    Then set Order Details Ship-To to random address in zone 9
+    Then set order details ship-to to random address in zone 9
     Then set order details service to PSG Package/Flat/Thick Envelope
     Then set order details weight to 6 lb 0 oz
     Then expect order details service cost is 23.32
@@ -197,7 +197,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
-    Then set Order Details Ship-To to random address in zone 9
+    Then set order details ship-to to random address in zone 9
     Then set order details service to PSG Package/Flat/Thick Envelope
     Then set order details weight to 12 lb 0 oz
     Then expect order details service cost is 57.74
@@ -207,7 +207,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Parcel Select Ground Oversized Package
-    Then set Order Details Ship-To to random address in zone 9
+    Then set order details ship-to to random address in zone 9
     Then set order details service to PSG Oversized Package
     Then set order details weight to 50 lb 0 oz
     Then expect order details service cost is 173.87

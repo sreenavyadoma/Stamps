@@ -47,8 +47,8 @@ Feature:  BVT tests for Orders
   # Order #1 (Domestic)
     Then in Orders Grid, Sort Order Date in Descending Order
     Then add order 1
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address in zone 1
+    Then set order details ship-from to default
+    Then set order details ship-to to random address in zone 1
     Then set order details service to PM Package
     Then set order details ounces to 1
     Then pause for 1 second
@@ -102,14 +102,14 @@ Feature:  BVT tests for Orders
   @bvt_printing
   Scenario:  BVT Printing
     Then add new order
-    Then set Order Details Ship-To to random address between zone 5 and 8
+    Then set order details ship-to to random address between zone 5 and 8
     Then set order details service to PM Package
     Then set order details ounces to 1
     Then set order details width to 1
     Then set order details length to 1
     Then set order details height to 1
     Then click orders toolbar print button
-    Then set Print modal Print-On to Shipping Label - 8 ½" x 11" Paper
+    Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
     Then click print modal print button
     Then sign out
 

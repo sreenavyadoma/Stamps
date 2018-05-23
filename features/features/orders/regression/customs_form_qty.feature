@@ -7,7 +7,7 @@ Feature: Customs Form Qty > 99 is not saved correctly
   @customs_form_qty
   Scenario: Customs Form Qty
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province | postal_code | country  | phone  |  email  |
       | random | random  | random           | random | random   | random      | random   | France | random  | random  |

@@ -6,7 +6,7 @@ Feature: Print 1 single ply FSA CP72 label on on 8.5x11 - right side
   @print_layout_fsa_cp72_paper_single_ply
   Scenario: Print 1 single ply FSA CP72 label on on 8.5x11 - right side
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set order details ship-to domestic address to
       | full_name | company | street_address        |street_address_2|  city    | state | zip        | country       | phone  |  email |
       | MM   | 8.5x11  | 118 E Marine Corps Dr |                |Hagatna | GU    | 96910-5126 | United States | random | random |
@@ -21,7 +21,7 @@ Feature: Print 1 single ply FSA CP72 label on on 8.5x11 - right side
     Then close Customs Information form
 
     Then click orders toolbar print button
-    Then set Print modal Print-On to Shipping Label - 8 ½" x 11" Paper
+    Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
     Then set Orders print modal printer
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected

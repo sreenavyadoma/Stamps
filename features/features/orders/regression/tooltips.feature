@@ -8,7 +8,7 @@ Feature:  Tooltip Errors
   Scenario:  Customs Form Data Error
 
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Australia | random  | random  |
@@ -60,8 +60,8 @@ Feature:  Tooltip Errors
   Scenario:  Verify tooltips for all Print Media selections
 
     Then add new order
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PM Package
     Then set order details pounds to 1
     Then pause for 2 seconds
@@ -79,7 +79,7 @@ Feature:  Tooltip Errors
   Scenario: International service Tooltip Tests
 
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set Order Details Domestic Ship-To Country to Canada
     Then expect Order Details service Tooltip for "FCMI Large Envelope/Flat" to include "Ship up to 4 lb. and $400 worth of merchandise using your own large envelope or flat with pricing that varies by weight and country.||Envelope requirements:||Min. Dimensions: Must be more than 11 1/2" long, or more than 6 1/8" high, or more than 1/4" thick||Max. Dimensions: 15" x 12" x 3/4""
     Then expect Order Details service Tooltip for "FCMI Package/Thick Envelope" to include "Ship up to 4 lb. and $400 worth of merchandise using your own box or thick envelope with pricing that varies by weight and country.||Box requirements:||Length + widthth + height cannot exceed 36"||Length cannot exceed 24""
@@ -134,7 +134,7 @@ Feature:  Tooltip Errors
   Scenario: International service Tooltip Tests
 
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set Order Details Domestic Ship-To Country to Canada
     Then expect Order Details service Tooltip for "FCMI Large Envelope/Flat" to include "Ship up to 4 lb. and $400 worth of merchandise using your own large envelope or flat with pricing that varies by weight and country.||Envelope requirements:||Min. Dimensions: Must be more than 11 1/2" long, or more than 6 1/8" high, or more than 1/4" thick||Max. Dimensions: 15" x 12" x 3/4""
     Then expect Order Details service Tooltip for "FCMI Package/Thick Envelope" to include "Ship up to 4 lb. and $400 worth of merchandise using your own box or thick envelope with pricing that varies by weight and country.||Box requirements:||Length + widthth + height cannot exceed 36"||Length cannot exceed 24""

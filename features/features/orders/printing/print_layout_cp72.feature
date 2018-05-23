@@ -8,7 +8,7 @@ Feature: Print 1 Intl CP72 label
 
     #print_layout_cp72_4x6roll
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFR Envelope | 4x6 Roll  | random           | random           | random | random  | random      | France | random  | random  |
@@ -20,12 +20,12 @@ Feature: Print 1 Intl CP72 label
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then click orders toolbar print button
-    Then set Print modal Print-On to Roll - 4 x 6
+    Then set print modal print-on to Roll - 4 x 6
     Then click print modal print button
 
     #print_layout_cp72_5x8_left
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFR Envelope | 5.5x8.5  | random           | random           | random | random  | random      | Chile | random  | random  |
@@ -40,7 +40,7 @@ Feature: Print 1 Intl CP72 label
     Then close Customs Information form
 
     Then click orders toolbar print button
-    Then set Print modal Print-On to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
+    Then set print modal print-on to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then set Orders print modal printer
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
@@ -48,7 +48,7 @@ Feature: Print 1 Intl CP72 label
 
    #print_layout_cp72_5x8_right
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set order details ship-to international address to
       | full_name              | company   | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI PFR Envelope |  5.5x8.5 Right Side 1  | random       | random           | random | random  | random      | Argentina | random  | random  |
@@ -60,14 +60,14 @@ Feature: Print 1 Intl CP72 label
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then click orders toolbar print button
-    Then set Print modal Print-On to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
+    Then set print modal print-on to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
     Then click print modal print button
 
     #print_layout_cp72_5x8_single_ply
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI LFRB |  5.5x8.5 Left Side | random       | random           | random | random  | random      | Australia | random  | random  |
@@ -79,7 +79,7 @@ Feature: Print 1 Intl CP72 label
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then click orders toolbar print button
-    Then set Print modal Print-On to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
+    Then set print modal print-on to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then set Orders print modal printer
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
@@ -87,7 +87,7 @@ Feature: Print 1 Intl CP72 label
 
    #print_layout_cp72_paper_continuation
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI PFTE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
@@ -131,7 +131,7 @@ Feature: Print 1 Intl CP72 label
     Then close Customs Information form
     Then pause for 2 seconds
     Then click orders toolbar print button
-    Then set Print modal Print-On to Shipping Label - 8 ½" x 11" Paper
+    Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
     Then set Orders print modal printer
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
@@ -139,7 +139,7 @@ Feature: Print 1 Intl CP72 label
 
    #print_layout_cp72_paper_single_ply
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFRE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
@@ -151,7 +151,7 @@ Feature: Print 1 Intl CP72 label
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then click orders toolbar print button
-    Then set Print modal Print-On to Shipping Label - 8 ½" x 11" Paper
+    Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
     Then set Orders print modal printer
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
@@ -160,7 +160,7 @@ Feature: Print 1 Intl CP72 label
 
    #print_layout_cp72_roll_continuation
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set order details ship-to international address to
       | full_name     | company   | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | PMI LFRB |  4x6 Roll | random           | random           | random | random  | random      | Italy   | random  | random  |
@@ -202,13 +202,13 @@ Feature: Print 1 Intl CP72 label
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then click orders toolbar print button
-    Then set Print modal Print-On to Roll - 4" x 6" Shipping Label
+    Then set print modal print-on to Roll - 4" x 6" Shipping Label
     
     Then click print modal print button
 
    #print_layout_cp72_sdc1200_single_ply
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI PFTE |  sdc1200 Right Side 1  | random       | random           | random | random  | random      | Costa Rica | random  | random  |
@@ -220,7 +220,7 @@ Feature: Print 1 Intl CP72 label
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then click orders toolbar print button
-    Then set Print modal Print-On to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
+    Then set print modal print-on to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then set Orders print modal printer
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
@@ -228,7 +228,7 @@ Feature: Print 1 Intl CP72 label
 
    #print_layout_dpo_cp72_roll_single_ply
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set Order Details Domestic Ship-To Country to United States
     Then set order details ship-to domestic address to
       | full_name     | company       | street_address      | street_address_2| city | state | zip        | country       | phone  |  email |
@@ -241,13 +241,13 @@ Feature: Print 1 Intl CP72 label
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then click orders toolbar print button
-    Then set Print modal Print-On to Roll 418x614
+    Then set print modal print-on to Roll 418x614
     
     Then click print modal print button
 
    #print_layout_fsa_cp72_paper_single_ply
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set order details ship-to domestic address to
       | full_name | company | street_address        |street_address_2|  city    | state | zip        | country       | phone  |  email |
       | MM   | 8.5x11  | 118 E Marine Corps Dr |                |Hagatna | GU    | 96910-5126 | United States | random | random |
@@ -262,7 +262,7 @@ Feature: Print 1 Intl CP72 label
     Then close Customs Information form
 
     Then click orders toolbar print button
-    Then set Print modal Print-On to Shipping Label - 8 ½" x 11" Paper
+    Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
     Then set Orders print modal printer
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
@@ -271,7 +271,7 @@ Feature: Print 1 Intl CP72 label
 
    #print_layout_cp72_single_ply_apo_roll
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set order details ship-to domestic address to
       | full_name   | company      | street_address    |street_address_2|  city | state | zip    | country       | phone  |  email |
       | PSG LP | 4x6 roll | PSC 3 BOX 4120  |                      |APO  | AE     |  09021  | United States | random | random |
@@ -283,7 +283,7 @@ Feature: Print 1 Intl CP72 label
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then click orders toolbar print button
-    Then set Print modal Print-On to Roll - 4" x 6" Shipping Label
+    Then set print modal print-on to Roll - 4" x 6" Shipping Label
     
     Then click print modal print button
 

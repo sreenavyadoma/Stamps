@@ -29,7 +29,7 @@ Feature:  BVT tests for Orders
   Scenario:  BVT Add a new order
     Then sign-in to Orders
     Then add new order
-    Then set Order Details Ship-To to random address between zone 9
+    Then set order details ship-to to random address between zone 9
     Then set order details service to PM Package
     Then set order details pounds to 1
     Then set order details ounces to 1
@@ -49,73 +49,73 @@ Feature:  BVT tests for Orders
   @bvt_orders_ship_date
   Scenario: Ship Date defaults to today
     Then sign-in to Orders
-    Then Open Orders Settings General Settings
-    Then set Orders Settings General postdate to now +2 hours
-    Then close Orders Settings modal
+    Then open orders settings general settings
+    Then set orders settings general postdate to now +2 hours
+    Then close orders settings modal
     Then add new order
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
+    Then set order details ship-from to default
+    Then set order details ship-to to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then set order details ounces to 4
     Then set order details service to PM Flat Rate Envelope
     Then click orders toolbar print button
-    Then expect Print modal Ship Date is 0 days from today
-    Then close Print Modal
+    Then expect print modal ship date is 0 days from today
+    Then close print modal
 
-    Then Open Orders Settings General Settings
-    Then set Orders Settings General postdate to now -2 hours
-    Then close Orders Settings modal
+    Then open orders settings general settings
+    Then set orders settings general postdate to now -2 hours
+    Then close orders settings modal
     Then add new order
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
+    Then set order details ship-from to default
+    Then set order details ship-to to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then set order details ounces to 4
     Then set order details service to PM Flat Rate Envelope
     Then click orders toolbar print button
-    Then expect Print modal Ship Date is 1 days from today
-    Then close Print Modal
+    Then expect print modal ship date is 1 days from today
+    Then close print modal
 
-    Then Open Orders Settings General Settings
-    Then set Orders Settings General postdate to now +2 hours
-    Then close Orders Settings modal
+    Then open orders settings general settings
+    Then set orders settings general postdate to now +2 hours
+    Then close orders settings modal
     Then add new order
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
+    Then set order details ship-from to default
+    Then set order details ship-to to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then set order details ounces to 4
     Then set order details service to PM Flat Rate Envelope
     Then click orders toolbar print button
-    Then expect Print modal Ship Date is 0 days from today
-    Then set Print modal Ship Date to today
-    Then set Print modal Ship Date to today plus 1
-    Then set Print modal Ship Date to today plus 2
-    Then set Print modal Ship Date to today
-    Then expect Print modal Ship Date is 0 days from today
-    Then close Print Modal
-    Then Open Orders Settings General Settings
-    Then set Orders Settings General postdate to 5:00 p.m.
-    Then close Orders Settings modal
+    Then expect print modal ship date is 0 days from today
+    Then set print modal ship date to today
+    Then set print modal ship date to today plus 1
+    Then set print modal ship date to today plus 2
+    Then set print modal ship date to today
+    Then expect print modal ship date is 0 days from today
+    Then close print modal
+    Then open orders settings general settings
+    Then set orders settings general postdate to 5:00 p.m.
+    Then close orders settings modal
     Then sign out
 
   @bvt_orders_ship_date_calendar
   Scenario: Set Ship Date to today
     Then sign-in to Orders
-    Then Open Orders Settings General Settings
-    Then set Orders Settings General postdate to now +2 hours
-    Then close Orders Settings modal
+    Then open orders settings general settings
+    Then set orders settings general postdate to now +2 hours
+    Then close orders settings modal
     Then add new order
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
+    Then set order details ship-from to default
+    Then set order details ship-to to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then set order details ounces to 4
     Then set order details service to PM Flat Rate Envelope
     Then click orders toolbar print button
-    Then expect Print modal Ship Date is 0 days from today
+    Then expect print modal ship date is 0 days from today
     Then select Print modal Ship Date datepicker to today
     Then select Print modal Ship Date datepicker to today plus 1
     Then select Print modal Ship Date datepicker to today plus 2
     Then select Print modal Ship Date datepicker to today
-    Then expect Print modal Ship Date is 0 days from today
-    Then close Print Modal
-    Then Open Orders Settings General Settings
-    Then set Orders Settings General postdate to 5:00 p.m.
-    Then close Orders Settings modal
+    Then expect print modal ship date is 0 days from today
+    Then close print modal
+    Then open orders settings general settings
+    Then set orders settings general postdate to 5:00 p.m.
+    Then close orders settings modal
     Then sign out
 
   @bvt_international_shipping
@@ -168,8 +168,8 @@ Feature:  BVT tests for Orders
       |ship_from_zip  | full_name  | company    | street_address| street_address2 | city          | state       | zip    | country       | phone           |
       |90245          | Euan  | Betfair UK | 101 Mission Street | Suite 700       | San Francisco | California  | 94105  | United States | (415) 123-5555  |
     Then on Manage Shipping Address modal, delete all addresses
-    Then set Order Details Ship-From to San Francisco, CA
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to San Francisco, CA
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PM Package
     Then sign out
 
@@ -177,7 +177,7 @@ Feature:  BVT tests for Orders
   Scenario: Search shipstation orders
     Then sign-in to Orders
     Then add new order
-    Then set Order Details Ship-To to random address in zone 1
+    Then set order details ship-to to random address in zone 1
     Then set order details email to random
     Then set order details phone to random
     Then set order details service to PM Package

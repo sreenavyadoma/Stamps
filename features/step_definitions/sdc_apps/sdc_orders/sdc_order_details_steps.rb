@@ -1,5 +1,5 @@
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
+Then /^set order details ship-to to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
   step 'show order details form ship-to fields'
   TestData.hash[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address))
   if SdcEnv.new_framework
@@ -436,7 +436,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Tt]racking to (.*)$/ do |str|
   step 'Save Order Details data'
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Ff]rom to (?:Manage Shipping Addresses\.\.\.|(.*))$/ do |str|
+Then /^set order details ship-from to (?:Manage Shipping Addresses\.\.\.|(.*))$/ do |str|
   if SdcEnv.new_framework
     str ||= 'Manage Shipping Addresses...'
     ship_from = SdcOrders.order_details.ship_from

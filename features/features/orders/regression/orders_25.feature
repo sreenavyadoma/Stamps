@@ -9,7 +9,7 @@ Feature: 25 orders
 
     # International
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set order details ship-to international address to
       | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | 0123456789  | junk@stamps.com  |
@@ -23,7 +23,7 @@ Feature: 25 orders
     Then set order details service to FCMI Large Envelope/Flat
 
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set order details ship-to international address to
       | full_name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
       | random | random  | 123 Kangaroo Court  | random           | Perth  | Wallaby  | DEF 0C4      | Australia | 9876543210  | junk@stamps.com  |
@@ -39,8 +39,8 @@ Feature: 25 orders
     # First Class Mail
     Then add new order
     Then expect Order Details Order ID is truthy
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 1
     Then set order details length to 1
     Then set order details width to 1
@@ -52,8 +52,8 @@ Feature: 25 orders
 
     Then add new order
     Then expect Order Details Order ID is truthy
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 2
     Then set order details length to 1
     Then set order details width to 1
@@ -66,8 +66,8 @@ Feature: 25 orders
     #Priority Mail
     Then add new order
     Then expect Order Details Order ID is truthy
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then check Orders Grid row 1
     Then set order details ounces to 3
     Then set order details length to 1
@@ -78,8 +78,8 @@ Feature: 25 orders
 
     Then add new order
     Then expect Order Details Order ID is truthy
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 4
     Then set order details length to 1
     Then set order details width to 1
@@ -89,8 +89,8 @@ Feature: 25 orders
 
     Then add new order
     Then expect Order Details Order ID is truthy
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 5
     Then set order details length to 1
     Then set order details width to 1
@@ -101,8 +101,8 @@ Feature: 25 orders
 
     Then add new order
     Then expect Order Details Order ID is truthy
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 6
     Then set order details length to 1
     Then set order details width to 1
@@ -112,8 +112,8 @@ Feature: 25 orders
 
     Then add new order
     Then expect Order Details Order ID is truthy
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 7
     Then set order details length to 1
     Then set order details width to 1
@@ -124,8 +124,8 @@ Feature: 25 orders
 
     Then add new order
     Then expect Order Details Order ID is truthy
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 8
     Then set order details length to 1
     Then set order details width to 1
@@ -135,8 +135,8 @@ Feature: 25 orders
 
     Then add new order
     Then expect Order Details Order ID is truthy
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 9
     Then set order details length to 1
     Then set order details width to 1
@@ -147,8 +147,8 @@ Feature: 25 orders
 
     Then add new order
     Then expect Order Details Order ID is truthy
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 10
     Then set order details length to 1
     Then set order details width to 1
@@ -159,8 +159,8 @@ Feature: 25 orders
 
     Then add new order
     Then expect Order Details Order ID is truthy
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 11
     Then set order details length to 1
     Then set order details width to 1
@@ -171,8 +171,8 @@ Feature: 25 orders
 
     Then add new order
     Then expect Order Details Order ID is truthy
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 12
     Then set order details length to 1
     Then set order details width to 1
@@ -183,8 +183,8 @@ Feature: 25 orders
 
     Then add new order
     Then expect Order Details Order ID is truthy
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 13
     Then set order details length to 1
     Then set order details width to 1
@@ -195,8 +195,8 @@ Feature: 25 orders
 
     Then add new order
     Then expect Order Details Order ID is truthy
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 14
     Then set order details length to 1
     Then set order details width to 1
@@ -207,8 +207,8 @@ Feature: 25 orders
     # Priority Mail Express
     Then add new order
     Then expect Order Details Order ID is truthy
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 15
     Then set order details length to 1
     Then set order details width to 1
@@ -218,8 +218,8 @@ Feature: 25 orders
 
     Then add new order
     Then expect Order Details Order ID is truthy
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 16
     Then set order details length to 1
     Then set order details width to 1
@@ -229,8 +229,8 @@ Feature: 25 orders
 
     Then add new order
     Then expect Order Details Order ID is truthy
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 17
     Then set order details length to 1
     Then set order details width to 1
@@ -240,8 +240,8 @@ Feature: 25 orders
 
     Then add new order
     Then expect Order Details Order ID is truthy
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 18
     Then set order details length to 1
     Then set order details width to 1
@@ -251,8 +251,8 @@ Feature: 25 orders
 
     Then add new order
     Then expect Order Details Order ID is truthy
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 19
     Then set order details length to 1
     Then set order details width to 1
@@ -263,8 +263,8 @@ Feature: 25 orders
     # Media Mail
     Then add new order
     Then expect Order Details Order ID is truthy
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 20
     Then set order details length to 1
     Then set order details width to 1
@@ -276,8 +276,8 @@ Feature: 25 orders
     # Parcel Select
     Then add new order
     Then expect Order Details Order ID is truthy
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 21
     Then set order details length to 1
     Then set order details width to 1
@@ -288,8 +288,8 @@ Feature: 25 orders
 
     Then add new order
     Then expect Order Details Order ID is truthy
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 22
     Then set order details length to 1
     Then set order details width to 1
@@ -300,8 +300,8 @@ Feature: 25 orders
 
     Then add new order
     Then expect Order Details Order ID is truthy
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 23
     Then set order details length to 1
     Then set order details width to 1

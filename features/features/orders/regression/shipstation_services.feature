@@ -7,10 +7,10 @@
   @shipstation_services
   Scenario:  ShipStation & Services
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then check Orders Grid row 1
 
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details service to PM Large/Thick Envelope
     Then expect Order Details service is PM Large/Thick Envelope
