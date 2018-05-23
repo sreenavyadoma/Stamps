@@ -1,5 +1,19 @@
 module SdcMail
 
+  class SdcPrintOn < SdcPage
+    sdc_accessor :print_media
+
+    page_object(:drop_down) { { xpath: '//*[starts-with(@id, "printmediadroplist-")][contains(@id, "-trigger-picker")]' } }
+    page_object(:text_field, tag: :text_field) { { xpath: '//*[@name="PrintMedia"]' } }
+    page_objects(:selection_list) { { xpath: '//li[contains(@class, "x-boundlist-item")]' } }
+    page_object(:label) { { xpath: '//label[(text()="Print On:")]' } }
+
+    def selection(name, str)
+      self.class.print_media = SdcPrintMediaHelper.to_sym(str)
+      page_object(name) { { xpath: "//li[text()='#{str}']" } }
+    end
+  end
+
   def verifying_account_info
     klass = Class.new(SdcPage) do
       page_object(:verifying_account_info) { {xpath: '//*[contains(text(), "Verifying")]'} }
@@ -17,15 +31,15 @@ module SdcMail
   def print_form
     case SdcPrintOn.print_media.to_s
     when /stamps/
-      return Object.const_get('SdcPage').new.extend(SdcStampsForm)
+      return SdcPrintForm::Stamps.new
     when /shipping_label/
-      return Object.const_get('SdcPage').new.extend(SdcShippingLabelsForm)
+      return SdcPrintForm::ShippingLabels.new
     when /envelope/
-      return Object.const_get('SdcPage').new.extend(SdcEnvelopesForm)
+      return SdcPrintForm::Envelopes.new
     when /certified_mail/
-      return Object.const_get('SdcPage').new.extend(SdcCertifiedMailPrintForm)
+      return SdcPrintForm::CertifiedMail.new
     when /roll/
-      return Object.const_get('SdcPage').new.extend(SdcRollPrintForm)
+      return SdcPrintForm::Rolls.new
     else
       # ignore
     end
@@ -34,21 +48,30 @@ module SdcMail
   end
   module_function :print_form
 
-  # print preview should be part of print
   def print_preview
-    @print_preview ||= PrintPreviewPanel::PrintPreview.new(param).extend(PrintPreviewPanel::StampsPrintPreview)
+    case SdcPrintOn.print_media.to_s
+    when /stamps/
+      return SdcPrintPreview::Stamps.new
+    when /shipping_label/
+      return SdcPrintPreview::ShippingLabels.new
+    when /envelope/
+      return SdcPrintPreview::Envelopes.new
+    when /certified_mail/
+      return SdcPrintPreview::CertifiedMail.new
+    when /roll/
+      return SdcPrintPreview::Rolls.new
+    else
+      # ignore
+    end
+
+    raise ArgumentError, "Invalid print media: #{SdcPrintOn.print_media}"
   end
+  module_function :print_preview
 
   def mail_toolbar
-    @mail_toolbar ||= MailToolbar.new(param, print_media)
+    #@mail_toolbar ||= MailToolbar.new(param, print_media)
   end
-
-  def mail_external_sites
-    @mail_external_sites ||= MailExternalSites.new(param)
-  end
-
-  def print_media_obj
-  end
+  module_function :mail_toolbar
 
   def modals
     SdcMailFloatingModals

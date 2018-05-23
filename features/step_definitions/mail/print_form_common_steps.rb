@@ -58,7 +58,8 @@ end
 
 Then /^[Ss]elect [Pp]rint [Ff]orm [Ss]ervice (.*)$/ do |str|
 #  step "blur out on print form"
-  stamps.mail.print_form.service.select_service(TestData.hash[:service] = str)
+  stamps.mail.print_form.service.select_service(str)
+  TestData.hash[:service] = str
 end
 
 Then /^[Ee]xpect [Pp]rint [Ff]orm [Ss]ervice [Cc]ost [Ff]or (.*) is (.*)$/ do |service, cost|
