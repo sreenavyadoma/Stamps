@@ -82,7 +82,7 @@ Feature:  Mail BVT - Authentication
   Scenario: Address Cleansing
     Then sign-in to Mail
     Then select Print On Shipping Label - 8 ½" x 11" Paper
-    Then set Print form Mail-From to Automation - El Segundo, CA
+    #Then set Print form Mail-From to Automation - El Segundo, CA
 #    Then set Print form Mail-From to Manage Mailing Addresses...
     Then set print form mail-to country to United States
     Then set print form mail-to country to Brazil

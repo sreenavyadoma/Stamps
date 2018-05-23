@@ -128,18 +128,22 @@ Feature:  BVT tests for Orders
     Then set order details ounces to 4
     Then set order details service to PMI Flat Rate Envelope
     Then click Order Details form Customs Form button
-    Then add Customs Associated Item 1, description random, qty 1, Price 4, Made In Zimbabwe, Tariff 1
-    Then add Customs Associated Item 2, description random, qty 1, Price 4, Made In Japan, Tariff 1
-    Then add Customs Associated Item 3, description random, qty 1, Price 4, Made In France, Tariff 1
-    Then add Customs Associated Item 4, description random, qty 1, Price 4, Made In Philippines, Tariff 1
-    Then add Customs Associated Item 5, description random, qty 1, Price 4, Made In Czech Republic, Tariff 1
-    Then add Customs Associated Item 6, description random, qty 1, Price 4, Made In Denmark, Tariff 1
-    Then add Customs Associated Item 7, description random, qty 1, Price 4, Made In India, Tariff 1
-    Then add Customs Associated Item 8, description random, qty 1, Price 4, Made In Spain, Tariff 1
-    Then add Customs Associated Item 9, description random, qty 1, Price 4, Made In Ukraine, Tariff 1
-    Then add Customs Associated Item 10, description random, qty 1, Price 4, Made In Australia, Tariff 1
-    Then add Customs Associated Item 11, description random, qty 1, Price 4, Made In Norway, Tariff 1
-    Then add Customs Associated Item 1, description random, qty 1, Price 4, Made In United States, Tariff 1
+    # create items
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 4, Made In Zimbabwe, Tariff 1
+    Then add Customs Associated Item 2, Description random, Qty 1, Price 4, Made In Japan, Tariff 1
+    Then add Customs Associated Item 3, Description random, Qty 1, Price 4, Made In France, Tariff 1
+    Then add Customs Associated Item 4, Description random, Qty 1, Price 4, Made In Philippines, Tariff 1
+    Then add Customs Associated Item 5, Description random, Qty 1, Price 4, Made In Czech Republic, Tariff 1
+    Then add Customs Associated Item 6, Description random, Qty 1, Price 4, Made In Denmark, Tariff 1
+    Then add Customs Associated Item 7, Description random, Qty 1, Price 4, Made In Scotland (Great Britain), Tariff 1
+    Then add Customs Associated Item 8, Description random, Qty 1, Price 4, Made In Spain, Tariff 1
+    Then add Customs Associated Item 9, Description random, Qty 1, Price 4, Made In United Kingdom (Great Britain), Tariff 1
+    Then add Customs Associated Item 10, Description random, Qty 1, Price 4, Made In Australia, Tariff 1
+    Then add Customs Associated Item 11, Description random, Qty 1, Price 4, Made In Norway, Tariff 1
+    # edit item
+    Then edit Customs Associated Item 1, Description random, Qty 2, Price 4, Made In United States, Tariff 1
+    Then edit Customs Associated Item 2, Description random, Qty 2, Price 4, Made In United States, Tariff 1
+
     Then expect Customs Associated Item Grid count is 11
     Then set Customs Package Contents to Commercial Sample
     Then set Customs Package Contents to Gift

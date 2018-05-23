@@ -1,55 +1,5 @@
 module SdcMail
 
-  class SdcStamps < SdcPage
-    # include MailFrom
-    # include MailTo
-    # include Weight
-    # include Service
-    # include AdvancedOptions
-    # include PrintOnTextbox
-    # include StampsPrintPreview
-    # include PrintFormBlurOut
-
-    page_object(:search_results) { {xpath: ''} }
-
-    page_object(:chooser) { {xpath: ''} }
-    page_object(:verify) { {xpath: ''} }
-    chooser(:result_checkbox, :chooser, :verify,'class', 'selected' )
-
-    def present?
-      print_on_textbox.text.include?('Stamps')
-    end
-
-    def serial_number
-      if (cache[:serial_number].nil? || !cache[:serial_number].present?)
-        cache[:serial_number] = StampsTextbox.new(driver.text_field(css: '[id=sdc-mainpanel-nsserialtextfield-inputEl]'))
-      end
-      cache[:serial_number]
-    end
-
-    def stamp_amount
-      if cache[:stamp_amount].nil? || !cache[:stamp_amount].present? then
-        cache[:stamp_amount] = StampsNumberField.new(
-            driver.text_field(css: '[class*=sdc-mainpanel-stampsamountnumberfield]'),
-            driver.div(css: 'div[id^=printFormPanel-][id$=-innerCt]>div>div>div>div:nth-child(17)>div>div>div>div>div>div[id*=trigger-spinner]>div[class*=up]'),
-            driver.div(css: 'div[id^=printFormPanel-][id$=-innerCt]>div>div>div>div:nth-child(17)>div>div>div>div>div>div[id*=trigger-spinner]>div[class*=down]'))
-      else
-        cache[:stamp_amount]
-      end
-    end
-
-    def quantity
-      if cache[:quantity].nil? || !cache[:quantity].present? then
-        cache[:quantity] = StampsNumberField.new(
-            driver.text_field(css: 'div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(4)>div>div>div>div>div>div>input[id^=numberfield]'),
-            driver.div(css: 'div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(4)>div>div>div>div>div>div[id$=spinner]>div[class*=up]'),
-            driver.div(css: 'div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(4)>div>div>div>div>div>div[id$=spinner]>div[class*=down]'))
-      else
-        cache[:quantity]
-      end
-    end
-  end
-
   def verifying_account_info
     klass = Class.new(SdcPage) do
       page_object(:verifying_account_info) { {xpath: '//*[contains(text(), "Verifying")]'} }
@@ -69,18 +19,18 @@ module SdcMail
     when /stamps/
       return Object.const_get('SdcPage').new.extend(SdcStampsPrintForm)
     when /shipping_label/
-      return Object.const_get('SdcPage').new.extend(SdcStampsPrintForm)
+      return Object.const_get('SdcPage').new.extend(SdcShippingLabelPrintForm)
     when /envelope/
-      raise ArgumentError, 'Not Implemented'
+      return Object.const_get('SdcPage').new.extend(SdcEnvelopePrintForm)
     when /certified_mail/
-      raise ArgumentError, 'Not Implemented'
+      return Object.const_get('SdcPage').new.extend(SdcCertifiedMailPrintForm)
     when /roll/
-      raise ArgumentError, 'Not Implemented'
+      return Object.const_get('SdcPage').new.extend(SdcRollPrintForm)
     else
       # ignore
     end
 
-    raise ArgumentError, "Invalid print media: #{SdcEnv.print_media}"
+    raise ArgumentError, "Invalid print media: #{SdcPrintOn.print_media}"
   end
   module_function :print_form
 
