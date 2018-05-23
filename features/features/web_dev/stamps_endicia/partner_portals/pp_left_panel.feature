@@ -4,7 +4,7 @@ Feature: PP-MVP: Left Panel
   Background:
     Given Start test driver
 
-  @pp_left_panel_browser
+  @pp_left_panel
   Scenario: PP: Left Panel Validation Browser
 
   #Validate left panel on an unauthenticated page
