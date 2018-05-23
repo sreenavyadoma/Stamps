@@ -128,6 +128,7 @@ Feature:  BVT tests for Orders
     Then set Order Details Ounces to 4
     Then set Order Details service to PMI Flat Rate Envelope
     Then click Order Details form Customs Form button
+    # create items
     Then add Customs Associated Item 1, Description random, Qty 1, Price 4, Made In Zimbabwe, Tariff 1
     Then add Customs Associated Item 2, Description random, Qty 1, Price 4, Made In Japan, Tariff 1
     Then add Customs Associated Item 3, Description random, Qty 1, Price 4, Made In France, Tariff 1
@@ -139,7 +140,10 @@ Feature:  BVT tests for Orders
     Then add Customs Associated Item 9, Description random, Qty 1, Price 4, Made In United Kingdom (Great Britain), Tariff 1
     Then add Customs Associated Item 10, Description random, Qty 1, Price 4, Made In Australia, Tariff 1
     Then add Customs Associated Item 11, Description random, Qty 1, Price 4, Made In Norway, Tariff 1
-    Then add Customs Associated Item 1, Description random, Qty 1, Price 4, Made In United States, Tariff 1
+    # edit item
+    Then edit Customs Associated Item 1, Description random, Qty 2, Price 4, Made In United States, Tariff 1
+    Then edit Customs Associated Item 2, Description random, Qty 2, Price 4, Made In United States, Tariff 1
+
     Then expect Customs Associated Item Grid count is 11
     Then set Customs Package Contents to Commercial Sample
     Then set Customs Package Contents to Gift
