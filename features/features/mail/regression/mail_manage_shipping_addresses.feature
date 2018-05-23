@@ -11,4 +11,4 @@ Feature: Manage Shipping Addresses
     Then on Print form, set Mail From to Manage Shipping Addresses
     Then Mail Shipping Addresses: Close Modal
 
-    Then Sign out
+    Then sign out

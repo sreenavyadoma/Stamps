@@ -66,4 +66,4 @@ Feature: Mail Sample Shipping Label - SDC-1200 MM XM
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
-    Then Sign out
+    Then sign out

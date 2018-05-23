@@ -14,21 +14,21 @@ Feature:  Print new country orders
       | random | random  | random           | random           | random | random  | 12345      | Bonaire, Sint Eustatius and Saba | random  | random  |
 
     Then expect Order Details Ship-To Country is Bonaire, Sint Eustatius and Saba
-    Then set Order Details service to FCMI Large Envelope/Flat
-    Then set Order Details Ounces to 2
-    Then set Order Details Pounds to 2
-    Then on Order Details form, Add Item 1, Qty 1, ID Item 1 SKU, Description Item 1 Description
+    Then set order details service to FCMI Large Envelope/Flat
+    Then set order details ounces to 2
+    Then set order details pounds to 2
+    Then on order details form, add item 1, qty 1, id Item 1 SKU, description Item 1 Description
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
-    Then add Customs Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then Pause for 3 seconds
-    Then click Orders Toolbar Print button
+    Then pause for 3 seconds
+    Then click orders toolbar print button
     Then set Print modal Print-On to Shipping Label - 8 ½" x 11" Paper
     Then set Orders print modal printer
     Then click print modal print button
-    Then Sign out
+    Then sign out
 
 
   @country_code_curacao
@@ -40,21 +40,21 @@ Feature:  Print new country orders
       | random | random  | random           | random           | random | random  | 12345      | Curacao | random  | random  |
 
     Then expect Order Details Ship-To Country is Curacao
-    Then set Order Details service to FCMI Large Envelope/Flat
-    Then set Order Details Ounces to 2
-    Then set Order Details Pounds to 2
-    Then on Order Details form, Add Item 1, Qty 1, ID Item 1 SKU, Description Item 1 Description
+    Then set order details service to FCMI Large Envelope/Flat
+    Then set order details ounces to 2
+    Then set order details pounds to 2
+    Then on order details form, add item 1, qty 1, id Item 1 SKU, description Item 1 Description
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
-    Then add Customs Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then Pause for 3 seconds
-    Then click Orders Toolbar Print button
+    Then pause for 3 seconds
+    Then click orders toolbar print button
     Then set Print modal Print-On to Shipping Label - 8 ½" x 11" Paper
     Then set Orders print modal printer
     Then click print modal print button
-    Then Sign out
+    Then sign out
 
 
 

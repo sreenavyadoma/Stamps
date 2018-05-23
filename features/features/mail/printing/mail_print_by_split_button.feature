@@ -18,7 +18,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then Expect mail Print modal is present
     Then close mail Print modal
 
-    Then Sign out
+    Then sign out
 
   @mail_print_envelope_6
   Scenario: Print On: Envelope #6
@@ -41,7 +41,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then Print postage using split button
     Then Expect mail Print modal is present
     Then close mail Print modal
-    Then Sign out
+    Then sign out
 
   @mail_print_SDC_3930
   Scenario: Print SDC 3930 (with hidden postage)
@@ -55,7 +55,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then Print postage using split button
     Then Expect mail Print modal is present
     Then close mail Print modal
-    Then Sign out
+    Then sign out
 
   @mail_print_roll_4_1_8_x_6_1_4_fcm
   Scenario: Print on: Roll - 4 ⅛” x 6 ¼” - FCM
@@ -79,7 +79,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then Print postage using split button
     Then Expect mail Print modal is present
     Then close mail Print modal
-    Then Sign out
+    Then sign out
 
   @mail_stamps_series_b
   Scenario: Stamps Regression Series #B
@@ -108,4 +108,4 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then Print postage using split button
     Then Expect mail Print modal is present
     Then close mail Print modal
-    Then Sign out
+    Then sign out

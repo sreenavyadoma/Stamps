@@ -69,4 +69,4 @@ Feature: Mail Roll - 4" x 6" - MM XM
     Then set Mail Print modal Printer ZDesigner
     Then click Mail Print modal Print button
 
-    Then Sign out
+    Then sign out

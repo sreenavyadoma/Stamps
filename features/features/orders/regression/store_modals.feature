@@ -49,7 +49,7 @@ Feature:  All Store Management
       Then in Orders Toolbar, Refresh Orders
 
       Then Manage Stores: Close Modal
-      Then Sign out
+      Then sign out
 
 
   @amazon
@@ -100,7 +100,7 @@ Feature:  All Store Management
     Then in Orders Toolbar, Refresh Orders
 
     Then Manage Stores: Close Modal
-    Then Sign out
+    Then sign out
 
 
   @big_commerce
@@ -114,7 +114,7 @@ Feature:  All Store Management
     Then Big Commerce: Expect Login to your Bigcommerce admin link is present
     Then Marketplace: Close Modal
     Then Manage Stores: Close Modal
-    Then Sign out
+    Then sign out
 
 
   @etsy
@@ -127,7 +127,7 @@ Feature:  All Store Management
 
     Then Marketplace: Select Etsy
 
-    Then Pause for 1 second
+    Then pause for 1 second
     Then Etsy Store: Set Etsy Username to StampsDC
     Then Etsy Store: Find My Shops
     Then Etsy Store: Set Available Shops
@@ -139,7 +139,7 @@ Feature:  All Store Management
     Then Store Settings: Save
 
     # Reconnect Store
-    Then Pause for 1 second
+    Then pause for 1 second
     Then Manage Stores: Select Store random
     Then Manage Stores: Reconnect
     Then Etsy Store: Set Etsy Username to StampsDC
@@ -148,7 +148,7 @@ Feature:  All Store Management
     Then Etsy Store: Reconnect then sign in with Etsy credentials StampsDC/etsydevSTMP1234
 
     # Edit Store
-    Then Pause for 1 second
+    Then pause for 1 second
     Then Manage Stores: Select Store random
     Then Manage Stores: Edit
 
@@ -156,13 +156,13 @@ Feature:  All Store Management
     Then Store Settings: Save
 
     # Delete Store
-    Then Pause for 1 second
+    Then pause for 1 second
     Then Manage Stores: Select Store random
     Then Manage Stores: Delete
     Then in Orders Toolbar, Refresh Orders
 
     Then Manage Stores: Close Modal
-    Then Sign out
+    Then sign out
 
 
 
@@ -184,7 +184,7 @@ Feature:  All Store Management
 
     Then Marketplace: Close Modal
     Then Manage Stores: Close Modal
-    Then Sign out
+    Then sign out
 
 
   @paypal
@@ -216,7 +216,7 @@ Feature:  All Store Management
     Then PayPal: Expect Verification Email is sent to qawebclient@stamps.com
     Then PayPal: Close modal
     Then Manage Stores: Close Modal
-    Then Sign out
+    Then sign out
 
 
 
@@ -282,7 +282,7 @@ Feature:  All Store Management
     Then in Orders Toolbar, Refresh Orders
 
     Then Manage Stores: Close Modal
-    Then Sign out
+    Then sign out
 
 
 
@@ -334,7 +334,7 @@ Feature:  All Store Management
     Then Manage Stores: Delete All Stores
 
     Then Manage Stores: Close Modal
-    Then Sign out
+    Then sign out
 
 
 
@@ -385,8 +385,8 @@ Feature:  All Store Management
     Then Manage Stores: Delete All Stores
 
     Then Manage Stores: Close Modal
-    Then Pause for 1 second
-    Then Sign out
+    Then pause for 1 second
+    Then sign out
 
       #Then Store Settings: Set service Mapping 1, Requested Services random, Shipping service First-Class Mail Postcard
       #Then Store Settings: Set service Mapping 2, Requested Services random, Shipping service Priority Mail Package
@@ -424,7 +424,7 @@ Feature:  All Store Management
     Then in Orders Toolbar, Refresh Orders
     Then select Filter Panel tab Shipped
     Then select Filter Panel tab Awaiting Shipment
-    Then expect Orders Grid Store is random
+    Then expect orders grid store is random
 
     Then Manage Stores: Open Modal
 
@@ -443,7 +443,7 @@ Feature:  All Store Management
     Then in Orders Toolbar, Refresh Orders
     Then select Filter Panel tab Shipped
     Then select Filter Panel tab Awaiting Shipment
-    Then expect Orders Grid Store is random
+    Then expect orders grid store is random
 
     Then Manage Stores: Open Modal
 
@@ -462,13 +462,13 @@ Feature:  All Store Management
     Then in Orders Toolbar, Refresh Orders
     Then select Filter Panel tab Shipped
     Then select Filter Panel tab Awaiting Shipment
-    Then expect Orders Grid Store is random
+    Then expect orders grid store is random
 
     Then Manage Stores: Open Modal
 
     Then Manage Stores: Delete All Stores
     Then Manage Stores: Close Modal
-    Then Sign out
+    Then sign out
 
 
 

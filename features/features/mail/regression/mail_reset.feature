@@ -20,4 +20,4 @@ Feature: Resetting mail fields
     Then set Print form Ounces to 1
     Then select Print form service PM Flat Rate Envelope
     Then expect Advanced Options Extra Services Button is enabled
-    Then Sign out
+    Then sign out

@@ -66,4 +66,4 @@ Feature: Mail Sample Shipping Label - 5 ½” x 8 ½” - FCM PSG
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
-    Then Sign out
+    Then sign out

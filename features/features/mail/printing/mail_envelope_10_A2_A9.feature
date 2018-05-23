@@ -86,4 +86,4 @@ Feature: Envelope #10, #A2, #A9
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
-    Then Sign out
+    Then sign out

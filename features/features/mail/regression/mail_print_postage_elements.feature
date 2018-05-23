@@ -43,4 +43,4 @@ Feature: Verify Mail Elements Are Present
     Then expect Print form International Postcode Field is present
     Then expect Print form International Phone Field is present
 
-    Then Sign out
+    Then sign out

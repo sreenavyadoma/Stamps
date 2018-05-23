@@ -8,7 +8,7 @@ Feature: B-01746 Order Pagination
     Then Pagination control to go to last page is enabled
     Then User clicks last page pagination control
 
-    Then Sign out
+    Then sign out
 
 
   @page_last
@@ -23,5 +23,5 @@ Feature: B-01746 Order Pagination
     Then Set paging toolbar per page count to 100
     Then Expect page toolbar pagination count is correct
 
-    Then Sign out
+    Then sign out
 

@@ -1,4 +1,3 @@
-
 module SdcOrders
   class SdcOrderDetailsShipFrom < SdcPage
     page_object(:drop_down) { {xpath: '(//div[starts-with(@id, "shipfromdroplist")]/div[contains(@id, "trigger-picker")])[1]'} }
@@ -139,6 +138,27 @@ module SdcOrders
     sdc_number(:height, :oz_tf, :oz_inc, :oz_dec)
   end
 
+  class SdcOrderDetailsItem < SdcPage
+    def qty(num)
+      page_object("qty_tf#{num}", tag: :text_field) { { xpath: "(//*[@name='Quantity'])[#{num}]" } }
+      page_object("qty_inc#{num}") {{xpath: "(//*[@name='Quantity']/../following-sibling::*/div[contains(@class, 'up')])[#{num}]"}}
+      page_object("qty_dec#{num}") { { xpath: "(//*[@name='Quantity']/../following-sibling::*/div[contains(@class, 'down')])[#{num}]" } }
+      sdc_number("qty#{num}", "qty_tf#{num}", "qty_inc#{num}", "qty_dec#{num}")
+    end
+
+    def id(num)
+      page_object("id#{num}", tag: :text_field) { { xpath: "(//*[@name='SKU'])[#{num}]" } }
+    end
+
+    def description(num)
+      page_object("description#{num}", tag: :text_field) { { xpath: "(//*[@name='Description'])[#{num}]" } }
+    end
+
+    def delete(num)
+      page_object("delete#{num}") { { xpath: "(//span[contains(@class, 'remove')])[#{num}]" } }
+    end
+  end
+
   class SdcOrderDetails < SdcPage
     page_object(:title, required: true, timeout: 20) { {xpath: '//div[contains(@class, "singleorder-detailsform")]//label[contains(@class, "panel-header-text")]'} }
     page_object(:reference_num, required: true, timeout: 20) { {xpath: '//div[contains(@class, "reference-field-container")]//input'} }
@@ -146,6 +166,7 @@ module SdcOrders
     page_object(:weight_label, required: true, timeout: 20) { {xpath: '//*[contains(text(), "Weight:")]'} }
     page_object(:ship_to_label, required: true, timeout: 20) { {xpath: '//div[starts-with(@id, "singleOrderDetailsForm")]//label[text()="Ship To:"]'} }
     page_object(:order_id, required: true, timeout: 20) { {xpath: '(//*[contains(@class, "singleorder-detailsform")]//div[contains(@class, "sdc-toolbar")]//b)[1]'} }
+    page_object(:add_item) { {xpath: '//*[text()="Add Item"]'} }
 
     def ship_to
       SdcOrderDetailsShipTo.new
@@ -163,7 +184,7 @@ module SdcOrders
       SdcOrderDetailsService.new
     end
 
-    def insurance
+    def insure_for
       SdcOrderDetailsInsurance.new
     end
 
@@ -177,6 +198,10 @@ module SdcOrders
 
     def dimensions
       SdcOrderDetailsDimensions.new
+    end
+
+    def associated_item
+      SdcOrderDetailsItem.new
     end
   end
 end

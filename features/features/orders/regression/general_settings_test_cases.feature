@@ -44,7 +44,7 @@ Feature: General Settings Positive and Negative Test-cases
 
     Then In Settings modal, Close
 
-    Then Sign out
+    Then sign out
 
 
   @general_settings_postage_balance
@@ -99,7 +99,7 @@ Feature: General Settings Positive and Negative Test-cases
 
     Then In Settings modal, Close
 
-    Then Sign out
+    Then sign out
 
 
   @general_settings_postdate
@@ -229,7 +229,7 @@ Feature: General Settings Positive and Negative Test-cases
 
     Then In Settings modal, Close
 
-    Then Sign out
+    Then sign out
 
 
   @general_settings_reset_fields
@@ -239,7 +239,7 @@ Feature: General Settings Positive and Negative Test-cases
     Then In Settings modal, Open Reset Fields Modal
 
     Then Reset Fields:  Set Weight to 1 lb 1 oz
-    Then Pause for 3 seconds
+    Then pause for 3 seconds
     Then Reset Fields:  Close
     Then In Settings modal, Save
     Then click orders toolbar settings button
@@ -248,7 +248,7 @@ Feature: General Settings Positive and Negative Test-cases
     Then Reset Fields:  Expect Weight oz equals 1
 
     Then Reset Fields:  Set Dimensions to length 1, width 1, height 1
-    Then Pause for 3 seconds
+    Then pause for 3 seconds
     Then Reset Fields:  Close
     Then In Settings modal, Save
     Then click orders toolbar settings button
@@ -442,7 +442,7 @@ Feature: General Settings Positive and Negative Test-cases
 
     Then In Settings modal, Save
 
-    Then Sign out
+    Then sign out
 
 
   @general_settings_services
@@ -501,6 +501,6 @@ Feature: General Settings Positive and Negative Test-cases
 
     Then In Settings modal, Close
 
-    Then Sign out
+    Then sign out
 
 

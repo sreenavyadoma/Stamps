@@ -277,6 +277,15 @@ module Stamps
         #{hash['city']} #{hash['state']} #{hash['zip']}"
       end
 
+      def address_str_to_hash(str)
+        hash = {}
+        temp = str.split(/\n/)
+        hash[:name], hash[:company], hash[:street] = temp
+        hash[:city], hash[:state], hash[:zip], hash[:zip_full] = temp.last.split(/[,\s-]/).reject{|s| s.eql?('') || s.nil?}
+        hash[:zip_full] = "#{hash[:zip]}-#{hash[:zip_full]}"
+        hash.each_value(&:strip!)
+      end
+
       # Convert date string from format 12/3/2015 to Dec 3
       def mmddyy_to_mondd(date_str)
         collection = date_str.split '/'

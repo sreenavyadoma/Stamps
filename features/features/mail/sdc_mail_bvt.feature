@@ -95,11 +95,14 @@ Feature:  Mail BVT - Authentication
 #    Then expect Print form Domestic Address field displays Address Cleansing, BVT, 1350 Market Street, San Francisco, CA 94102-5401
 #    Then Sign out
 
-
   @mail_print_on_lov
   Scenario: Print-on list of values
     Then sign-in to Mail
     Then select Print On Shipping Label - 8 ½" x 11" Paper
+    Then select Print form service PM Package
+    Then select Print form service PM Flat Rate Envelope
+    Then select Print form service PM Medium Flat Rate Box
+
     Then select Print On Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then select Print On Shipping Label - 5 ½" x 8 ½"
     Then select Print On Envelope - #10, 4 ⅛" x 9 ½"

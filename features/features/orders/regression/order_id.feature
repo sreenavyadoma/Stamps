@@ -9,4 +9,4 @@ Feature: Saved Order ID Created
     Then add new order
     Then expect Order Details Order ID is truthy
     Then expect Order Details Order ID equals Grid Oder ID in row 1
-    Then Sign out
+    Then sign out

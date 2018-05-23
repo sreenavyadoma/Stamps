@@ -24,6 +24,6 @@ Feature: Registration
     Then load Web Apps Orders then sign-in expecting Security Questions
     Then add new order
     Then expect Order Details Order ID is the same as saved Order ID
-    Then Sign out
+    Then sign out
 
 

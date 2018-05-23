@@ -1,8 +1,8 @@
-Then /^[Aa]dd new order$/ do
+Then /^add new order$/ do
   step 'add order 0'
 end
 
-Then /^[Aa]dd [Oo]rder (\d+)$/ do |count|
+Then /^add order (\d+)$/ do |count|
   if SdcEnv.new_framework
     #todo TestData.store[:old_balance] = SdcWebsite.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
     #todo stamps.orders.orders_grid.grid_column(:checkbox).uncheck(1)
@@ -26,13 +26,13 @@ Then /^[Aa]dd [Oo]rder (\d+)$/ do |count|
 end
 
 Then /^Save Order Details data$/ do
-  step 'Expect Order Details is present'
+  step 'expect order details is present'
   if SdcEnv.new_framework
     TestData.hash[:country] = SdcOrders.order_details.ship_to.domestic.country.text_field.text_value
     TestData.hash[:service_cost] = SdcOrders.order_details.service.cost.text_value.dollar_amount_str.to_f.round(2)
     TestData.hash[:service] = SdcOrders.order_details.service.text_field.text_value
     TestData.hash[:ship_from] = SdcOrders.order_details.ship_from.text_field.text_value
-    TestData.hash[:insure_for_cost] = SdcOrders.order_details.insurance.cost.text_value.dollar_amount_str.to_f.round(2)
+    TestData.hash[:insure_for_cost] = SdcOrders.order_details.insure_for.cost.text_value.dollar_amount_str.to_f.round(2)
     TestData.hash[:total_ship_cost] = SdcOrders.order_details.footer.total_ship_cost.text_value.dollar_amount_str.to_f.round(2)
     TestData.hash[:awaiting_shipment_count] = SdcOrders.filter_panel.awaiting_shipment.count.text_value.to_f.round(2)
     if TestData.hash[:country] == "United States"
@@ -52,7 +52,7 @@ Then /^Save Order Details data$/ do
   end
 end
 
-Then /^[Cc]lick [Oo]rders [Tt]oolbar [Pp]rint [Bb]utton$/ do
+Then /^click orders toolbar print button$/ do
   step 'Save Order Details data'
   if SdcEnv.new_framework
     SdcOrders.order_details.footer.print.click

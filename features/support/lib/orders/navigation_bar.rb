@@ -332,7 +332,7 @@ module Stamps
         cache[:username].nil? ? cache[:username] = StampsField.new(driver.span id: 'userNameText') : cache[:username]
       end
       def sign_out_link
-        cache[:sign_out_link].nil? ? cache[:sign_out_link] = StampsField.new(driver.a(text: "Sign Out")) : cache[:sign_out_link]
+        cache[:sign_out_link].nil? ? cache[:sign_out_link] = StampsField.new(driver.a(text: "sign out")) : cache[:sign_out_link]
       end
 
       def present?

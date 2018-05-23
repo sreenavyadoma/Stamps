@@ -8,15 +8,15 @@ Feature: Orders print Modal Bugs
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
-    Then set Order Details service to PM Regional Rate Box A
-    Then set Order Details Ounces to 1
-    Then click Orders Toolbar Print button
+    Then set order details service to PM Regional Rate Box A
+    Then set order details ounces to 1
+    Then click orders toolbar print button
     Then set Print modal Print-On to Shipping Label - 8 ½" x 11" Paper
     Then set Orders print modal printer
     Then In Print modal, click Print button Sample
-    Then In Print modal, click Close Button
-    Then click Orders Toolbar Print button
+    Then in print modal, click close button
+    Then click orders toolbar print button
     Then set Print modal Print-On to Shipping Label - 8 ½" x 11" Paper
     Then set Orders print modal printer
     Then click print modal print button
-    Then Sign out
+    Then sign out

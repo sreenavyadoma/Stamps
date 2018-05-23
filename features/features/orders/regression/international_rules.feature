@@ -21,7 +21,7 @@ Feature: All International Rules
     Then expect Order Details service data error tooltip is "Service is required"
     Then expect Order Details Weight Lbs data error tooltip is "Weight cannot be 0"
     Then expect Order Details Weight Oz data error tooltip is "Weight cannot be 0"
-    Then Sign out
+    Then sign out
 
 
   @rules_international_cuba
@@ -32,8 +32,8 @@ Feature: All International Rules
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Cuba    | random  | random  |
 
-    Then set Order Details Ounces to 5
-    Then set Order Details service to PMI Flat Rate Envelope
+    Then set order details ounces to 5
+    Then set order details service to PMI Flat Rate Envelope
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Commercial Sample
     Then Expect Customs Internal Transaction Number is Required
@@ -50,12 +50,12 @@ Feature: All International Rules
     Then set Customs Package Contents to Other
     Then Expect Customs Internal Transaction Number is Required
 
-    Then add Customs Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, description random, qty 1, Price 3000, Made In United States, Tariff 10
     Then Expect Customs Internal Transaction Number is Required
     Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then Sign out
+    Then sign out
 
 
   @rules_international_iran
@@ -65,8 +65,8 @@ Feature: All International Rules
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Iran    | random  | random  |
-    Then set Order Details Ounces to 5
-    Then set Order Details service to PMI Flat Rate Envelope
+    Then set order details ounces to 5
+    Then set order details service to PMI Flat Rate Envelope
 
     Then click Order Details form Customs Form button
     Then Expect Customs Internal Transaction Number is Required
@@ -85,12 +85,12 @@ Feature: All International Rules
     Then set Customs Package Contents to Other
     Then Expect Customs Internal Transaction Number is Required
 
-    Then add Customs Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, description random, qty 1, Price 3000, Made In United States, Tariff 10
     Then Expect Customs Internal Transaction Number is Required
     Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then Sign out
+    Then sign out
 
 
 
@@ -109,9 +109,9 @@ Feature: All International Rules
       | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
 
-    Then set Order Details Ounces to 5
-    Then set Order Details service to PMI Flat Rate Envelope
-    Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
+    Then set order details ounces to 5
+    Then set order details service to PMI Flat Rate Envelope
+    Then on order details form, add item 1, qty 1, id random, description random
 
     Then click Order Details form Customs Form button
 
@@ -171,8 +171,8 @@ Feature: All International Rules
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then set Order Details service to FCMI Large Envelope/Flat
-    Then Sign out
+    Then set order details service to FCMI Large Envelope/Flat
+    Then sign out
 
 
 
@@ -183,8 +183,8 @@ Feature: All International Rules
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Democratic People's Republic of (North) Korea| random  | random  |
-    Then set Order Details Ounces to 5
-    Then set Order Details service to PMI Flat Rate Envelope
+    Then set order details ounces to 5
+    Then set order details service to PMI Flat Rate Envelope
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Commercial Sample
     Then Expect Customs Internal Transaction Number is Required
@@ -200,12 +200,12 @@ Feature: All International Rules
     Then Expect Customs Internal Transaction Number is Required
     Then set Customs Package Contents to Other
     Then Expect Customs Internal Transaction Number is Required
-    Then add Customs Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, description random, qty 1, Price 3000, Made In United States, Tariff 10
     Then Expect Customs Internal Transaction Number is Required
     Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then Sign out
+    Then sign out
 
 
 
@@ -217,10 +217,10 @@ Feature: All International Rules
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Sudan    | random  | random  |
 
-    Then set Order Details Ounces to 5
-    Then set Order Details service to PMI Flat Rate Envelope
+    Then set order details ounces to 5
+    Then set order details service to PMI Flat Rate Envelope
 
-  #Then set Order Details service to FCMI Large Envelope/Flat
+  #Then set order details service to FCMI Large Envelope/Flat
     Then click Order Details form Customs Form button
     Then Expect Customs Internal Transaction Number is Required
     Then set Customs Package Contents to Commercial Sample
@@ -238,12 +238,12 @@ Feature: All International Rules
     Then set Customs Package Contents to Other
     Then Expect Customs Internal Transaction Number is Required
 
-    Then add Customs Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, description random, qty 1, Price 3000, Made In United States, Tariff 10
     Then Expect Customs Internal Transaction Number is Required
     Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then Sign out
+    Then sign out
 
 
   @rules_international_syria
@@ -254,10 +254,10 @@ Feature: All International Rules
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Syria    | random  | random  |
 
-    Then set Order Details Ounces to 5
-    Then set Order Details service to PMI Flat Rate Envelope
+    Then set order details ounces to 5
+    Then set order details service to PMI Flat Rate Envelope
 
-  #Then set Order Details service to FCMI Large Envelope/Flat
+  #Then set order details service to FCMI Large Envelope/Flat
     Then click Order Details form Customs Form button
     Then Expect Customs Internal Transaction Number is Required
     Then set Customs Package Contents to Commercial Sample
@@ -275,12 +275,12 @@ Feature: All International Rules
     Then set Customs Package Contents to Other
     Then Expect Customs Internal Transaction Number is Required
 
-    Then add Customs Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, description random, qty 1, Price 3000, Made In United States, Tariff 10
     Then Expect Customs Internal Transaction Number is Required
     Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then Sign out
+    Then sign out
 
 
 
@@ -291,21 +291,21 @@ Feature: All International Rules
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
-    Then set Order Details Ounces to 5
-    Then set Order Details service to PMI Flat Rate Envelope
-    Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
-    Then set Order Details service to FCMI Large Envelope/Flat
+    Then set order details ounces to 5
+    Then set order details service to PMI Flat Rate Envelope
+    Then on order details form, add item 1, qty 1, id random, description random
+    Then set order details service to FCMI Large Envelope/Flat
     Then click Order Details form Customs Form button
-    Then add Customs Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, description random, qty 1, Price 3000, Made In United States, Tariff 10
     Then Expect Customs Internal Transaction Number is Required
-    Then add Customs Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, description random, qty 1, Price 1, Made In United States, Tariff 10
     Then Expect Customs Internal Transaction Number is Not required
-    Then add Customs Associated Item 1, Description random, Qty 1, Price 2501, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, description random, qty 1, Price 2501, Made In United States, Tariff 10
     Then Expect Customs Internal Transaction Number is Required
     Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then Sign out
+    Then sign out
 
 
 
@@ -316,9 +316,9 @@ Feature: All International Rules
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Philippines    | random  | random  |
-    Then set Order Details Ounces to 5
-    Then set Order Details service to PMI Flat Rate Envelope
-    Then set Order Details Ounces to 5
+    Then set order details ounces to 5
+    Then set order details service to PMI Flat Rate Envelope
+    Then set order details ounces to 5
     Then click Order Details form Customs Form button
     Then Expect Customs Internal Transaction Number is Not required
     Then set Customs Package Contents to Commercial Sample
@@ -339,7 +339,7 @@ Feature: All International Rules
     Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then Sign out
+    Then sign out
 
 
   @rules_international_name_stuff

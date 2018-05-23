@@ -14,7 +14,7 @@ Feature: Mail Shipping Label - Left Side, Mail Shipping Label - Right Side
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
-    Then Sign out
+    Then sign out
 
   @mail_print_label_right_side
   Scenario: Right Side Shipping Label - 8 ½” x 11” Paper
@@ -32,7 +32,7 @@ Feature: Mail Shipping Label - Left Side, Mail Shipping Label - Right Side
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
-    Then Sign out
+    Then sign out
 
   @mail_print_label_right_side
   Scenario: Right Side Shipping Label -  5 ½” x 8 ½”
@@ -48,7 +48,7 @@ Feature: Mail Shipping Label - Left Side, Mail Shipping Label - Right Side
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
-    Then Sign out
+    Then sign out
 
   @mail_print_label_right_side
   Scenario: Right Side Shipping Label -  SDC-1200
@@ -66,4 +66,4 @@ Feature: Mail Shipping Label - Left Side, Mail Shipping Label - Right Side
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
-    Then Sign out
+    Then sign out

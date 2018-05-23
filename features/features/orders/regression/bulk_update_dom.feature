@@ -12,20 +12,20 @@ Feature: Bulk Update Domestic
 #    Then set Order Details Ship-To International address to
 #      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
 #      | PMEI LFRE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
-#    Then set Order Details service to PMI Package/Flat/Thick Envelope
+#    Then set order details service to PMI Package/Flat/Thick Envelope
 #    Then set Order Details Weight to 2 lb 2 oz
-#    Then on Order Details form, Add Item 1, Qty 1, ID ID 1, Description Description 1
-#    #Then on Order Details form, Add Item 2, Qty 2, ID random string, Description random string
+#    Then on order details form, add item 1, qty 1, id ID 1, description Description 1
+#    #Then on order details form, add item 2, qty 2, id random string, description random string
 #    Then click Order Details form Customs Form button
 #
-#    Then add Customs Associated Item 1, Description random string, Qty 1, Price 1, Made In Canada, Tariff 1
-#    Then add Customs Associated Item 2, Description random string, Qty 1, Price 1, Made In Japan, Tariff 1
-#    Then add Customs Associated Item 3, Description random string, Qty 1, Price 1, Made In Canada, Tariff 1
-#    Then add Customs Associated Item 4, Description random string, Qty 1, Price 1, Made In Japan, Tariff 1
-#    Then add Customs Associated Item 5, Description random string, Qty 1, Price 1, Made In Canada, Tariff 1
-#    Then add Customs Associated Item 6, Description random string, Qty 1, Price 1, Made In Japan, Tariff 1
-#    Then add Customs Associated Item 7, Description random string, Qty 1, Price 1, Made In Canada, Tariff 1
-#    Then add Customs Associated Item 1, Description random string, Qty 2, Price 2, Made In United States, Tariff 2
+#    Then add Customs Associated Item 1, description random string, qty 1, Price 1, Made In Canada, Tariff 1
+#    Then add Customs Associated Item 2, description random string, qty 1, Price 1, Made In Japan, Tariff 1
+#    Then add Customs Associated Item 3, description random string, qty 1, Price 1, Made In Canada, Tariff 1
+#    Then add Customs Associated Item 4, description random string, qty 1, Price 1, Made In Japan, Tariff 1
+#    Then add Customs Associated Item 5, description random string, qty 1, Price 1, Made In Canada, Tariff 1
+#    Then add Customs Associated Item 6, description random string, qty 1, Price 1, Made In Japan, Tariff 1
+#    Then add Customs Associated Item 7, description random string, qty 1, Price 1, Made In Canada, Tariff 1
+#    Then add Customs Associated Item 1, description random string, qty 2, Price 2, Made In United States, Tariff 2
 
 #    Then check Customs form I agree to the USPS Privacy Act Statement
 #    Then close Customs Information form
@@ -34,12 +34,12 @@ Feature: Bulk Update Domestic
 #    Then add order 2
 #    #Then set Order Details Ship-From to default
 #    Then set Order Details Ship-To to random address between zone 8
-#    Then set Order Details service to PM Large Package
-#    Then set Order Details Pounds to 2
-#    Then set Order Details Ounces to 2
-#    Then set Order Details Length to 1
-#    Then set Order Details Width to 1
-#    Then set Order Details Height to 1
+#    Then set order details service to PM Large Package
+#    Then set order details pounds to 2
+#    Then set order details ounces to 2
+#    Then set order details length to 1
+#    Then set order details width to 1
+#    Then set order details height to 1
 
 
 
@@ -58,7 +58,7 @@ Feature: Bulk Update Domestic
 
     Then add order 1
     Then set Order Details Domestic Ship-To Country to Canada
-    Then set Order Details service to PMI Package/Flat/Thick Envelope
+    Then set order details service to PMI Package/Flat/Thick Envelope
 
     Then add order 2
     Then set order details service to PM Large Package
@@ -94,7 +94,7 @@ Feature: Bulk Update Domestic
 
     Then add order 4
     Then set Order Details Domestic Ship-To Country to Canada
-    Then set Order Details service to PMI Package/Flat/Thick Envelope
+    Then set order details service to PMI Package/Flat/Thick Envelope
 
 
     Then check order 3
@@ -120,7 +120,7 @@ Feature: Bulk Update Domestic
 
 
 
-    Then Sign out
+    Then sign out
 
   @bulk_update_dimensions
   Scenario: ORDERSAUTO-2261 Bulk Update: Dimensions controller
@@ -129,8 +129,8 @@ Feature: Bulk Update Domestic
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address in zone 1
-    Then set Order Details service to PM Package
-    Then set Order Details Pounds to 1
+    Then set order details service to PM Package
+    Then set order details pounds to 1
     Then check order details insure-for checkbox
     Then set order details insure-for to $21.55
     Then expect order details insure-for is correct
@@ -147,12 +147,12 @@ Feature: Bulk Update Domestic
     Then add order 2
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 8
-    Then set Order Details service to PM Large Package
-    Then set Order Details Pounds to 2
-    Then set Order Details Ounces to 2
-    Then set Order Details Length to 1
-    Then set Order Details Width to 1
-    Then set Order Details Height to 1
+    Then set order details service to PM Large Package
+    Then set order details pounds to 2
+    Then set order details ounces to 2
+    Then set order details length to 1
+    Then set order details width to 1
+    Then set order details height to 1
 
     #Check 1st two orders
     Then check order 1
@@ -234,14 +234,14 @@ Feature: Bulk Update Domestic
 
 
     Then click Bulk Update Update Order button
-    Then Pause for 2 seconds
+    Then pause for 2 seconds
 
     #Then Refresh the driver
 
     #verify fields in 1st order
     #Then check Orders Grid row 1
     #Then expect Order Details Ship From is correct
-    #Then expect Orders Grid service is PME Package/Flat/Thick Envelope
+    #Then expect orders grid service is PME Package/Flat/Thick Envelope
 
     #Then uncheck order 1
     #Then uncheck order 2
@@ -255,10 +255,10 @@ Feature: Bulk Update Domestic
     #verify fields in 2nd order
     #Then check order 2
     #Then expect Order Details Ship From is correct
-    #Then expect Orders Grid service is PME Package/Flat/Thick Envelope
-    #Then expect Order Details Pound is 2
+    #Then expect orders grid service is PME Package/Flat/Thick Envelope
+    #Then expect order details pound is 2
 
-    Then Sign out
+    Then sign out
 
   @bulk_update_dom
   Scenario: Bulk Update Domestic
@@ -266,15 +266,15 @@ Feature: Bulk Update Domestic
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address in zone 1
-    Then set Order Details service to PM Package
-    Then set Order Details Pounds to 1
+    Then set order details service to PM Package
+    Then set order details pounds to 1
 
     #Adding 2nd order
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address in zone 1
-    Then set Order Details service to PM Package
-    Then set Order Details Pounds to 1
+    Then set order details service to PM Package
+    Then set order details pounds to 1
 
     Then Refresh the driver
 
@@ -288,21 +288,21 @@ Feature: Bulk Update Domestic
     Then set Bulk Update Pounds to 1
     Then set Bulk Update Ounces to 1
     Then click Bulk Update Update Order button
-    Then Pause for 2 seconds
+    Then pause for 2 seconds
 
     Then Refresh the driver
 
     #verify fields in 1st order
     Then check Orders Grid row 1
     Then expect Order Details Ship From is default
-    Then expect Orders Grid service is PME Package/Flat/Thick Envelope
-    #Then expect Order Details Pound is 2
+    Then expect orders grid service is PME Package/Flat/Thick Envelope
+    #Then expect order details pound is 2
     Then uncheck Orders Grid row 1
 
     #verify fields in 2nd order
     Then check Orders Grid row 2
     Then expect Order Details Ship From is correct
-    Then expect Orders Grid service is PME Package/Flat/Thick Envelope
-    #Then expect Order Details Pound is 2
+    Then expect orders grid service is PME Package/Flat/Thick Envelope
+    #Then expect order details pound is 2
 
-    Then Sign out
+    Then sign out

@@ -7,4 +7,4 @@ Feature: FCM Package Rates
   Scenario: FCM Package
     Then run rate test FCM Package
     Then Rates: Number of failed test should be less than 1
-    Then Sign out
+    Then sign out

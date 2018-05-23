@@ -5,10 +5,10 @@ Feature: Item Details
 
   @item_details
   Scenario:  Item Details
-    Then Pause for 3 seconds
+    Then pause for 3 seconds
     Then check Orders Grid row 10
 
-    Then Pause for 3 seconds
+    Then pause for 3 seconds
 
     Then on Order Details form, Expand Store Items Ordered pane
     Then on Order Details form, Collapse Store Items Ordered pane
@@ -16,15 +16,15 @@ Feature: Item Details
     Then on Order Details form, Collapse Store Items Ordered pane
 
     Then uncheck Orders Grid row 10
-    Then Pause for 3 seconds
+    Then pause for 3 seconds
     Then check Orders Grid row 4
-    Then Pause for 3 seconds
+    Then pause for 3 seconds
 
     Then on Order Details form, Expand Store Items Ordered pane
-    Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
-    Then on Order Details form, Add Item 2, Qty 1, ID random, Description random
-    Then on Order Details form, Add Item 3, Qty 1, ID random, Description random
-    Then on Order Details form, Add Item 4, Qty 1, ID random, Description random
+    Then on order details form, add item 1, qty 1, id random, description random
+    Then on order details form, add item 2, qty 1, id random, description random
+    Then on order details form, add item 3, qty 1, id random, description random
+    Then on order details form, add item 4, qty 1, id random, description random
 
 
     Then on Order Details form, Collapse Manual Items Ordered pane
@@ -36,4 +36,4 @@ Feature: Item Details
     Then on Order Details form, Collapse Manual Items Ordered pane
 
 
-    Then Sign out
+    Then sign out

@@ -7,4 +7,4 @@ Feature: Order Pagination
   @page_next
   Scenario: Go to next page
 
-    Then Sign out
+    Then sign out

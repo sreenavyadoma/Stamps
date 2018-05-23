@@ -8,20 +8,20 @@ Feature: Address Cleansing
   Scenario: Address Cleansing
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To Domestic address to
+    Then set order details ship-to domestic address to
       | full_name              | company | street_address   | street_address_2 | city       | state | zip | country       |
       | Address Cleansing | No Zip  | 1990 E Grand Ave |                  | El Segundo | CA    |     | United States |
-    Then set Order Details service to PM Package
-    Then set Order Details Ounces to 1
-    Then set Order Details Pounds to 1
-    Then Pause for 2 seconds
-    Then expect Orders Grid Zip is 90245
-    Then expect Orders Grid Recipient is Address Cleansing
-    Then expect Orders Grid Company is No Zip
-    Then expect Orders Grid City is El Segundo
-    Then expect Orders Grid State is CA
+    Then set order details service to PM Package
+    Then set order details ounces to 1
+    Then set order details pounds to 1
+    Then pause for 2 seconds
+    Then expect orders grid zip is 90245
+    Then expect orders grid recipient is Address Cleansing
+    Then expect orders grid company is No Zip
+    Then expect orders grid city is El Segundo
+    Then expect orders grid state is CA
 
     Then add new order
     Then set Order Details Ship-To to random address between zone 1 and 4
-    Then set Order Details service to PM Package
-    Then Sign out
+    Then set order details service to PM Package
+    Then sign out

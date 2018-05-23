@@ -407,8 +407,8 @@ class SdcChooser < BasicObject
   def initialize(element, verify, property, value)
     @element = element
     @verify = verify
-    @property = property
-    @value = value
+    @property = property.to_s
+    @value = value.to_s
     # set_instance_variables(binding, *local_variables)
   end
 
