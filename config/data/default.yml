@@ -1079,7 +1079,7 @@ zone_1_through_4:
     zone2:
       1:
         street_address: 9310 Kearny Mesa Rd
-        city: San Diegocanada
+        city: San Diego
         state: CA
         zip: 92126
       2:
