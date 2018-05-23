@@ -125,7 +125,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails [Ss]ervice is (?:correct|(.*))$/ do |str|
   end
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]ervice to (.*)$/ do |str|
+Then /^set order details international service to (.*)$/ do |str|
   step 'expect order details is present'
   TestData.hash[:int_service] = stamps.orders.order_details.service.select(str).parse_service_name
   20.times do

@@ -7,7 +7,7 @@ Feature: Print 1 Intl CP72 label on sdc1200 - right side
   Scenario: Print 1 Intl CP72 label on sdc1200 - right side
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI PFTE |  sdc1200 Right Side 1  | random       | random           | random | random  | random      | Costa Rica | random  | random  |
     Then set order details service to PMEI Package/Flat/Thick Envelope

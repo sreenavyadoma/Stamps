@@ -10,7 +10,7 @@ Feature: Print 1 single ply APO CP72 label on 4x6 roll
     Then set order details ship-to domestic address to
       | full_name   | company      | street_address    |street_address_2|  city | state | zip    | country       | phone  |  email |
       | PSG LP | 4x6 roll | PSC 3 BOX 4120  |                      |APO  | AE     |  09021  | United States | random | random |
-    Then set Order Details Weight to 2 lb 1 oz
+    Then set order details weight to 2 lb 1 oz
     Then set order details service to PSG Package/Flat/Thick Envelope
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise

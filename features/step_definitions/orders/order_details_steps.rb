@@ -82,7 +82,7 @@ Then /^[Oo]n [Oo]rder [Dd]etails form, Delete Item (\d+)$/ do |item_number|
   item.delete.click
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails Weight to (\d+\.?\d*) lb (\d+\.?\d*) oz$/ do |pounds, ounces|
+Then /^set order details weight to (\d+\.?\d*) lb (\d+\.?\d*) oz$/ do |pounds, ounces|
   step "set order details pounds to #{pounds}"
   step "set order details ounces to #{ounces}"
 end
@@ -143,7 +143,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to a random country i
   step "set Order Details Domestic Ship-To Country to #{TestData.hash[:country]}"
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Ii]nternational address to$/ do |table|
+Then /^set order details ship-to international address to$/ do |table|
   TestData.hash[:country] = table.hashes.first['country']
   TestData.hash[:full_name] = table.hashes.first[:full_name].downcase.include?('random') ? TestHelper.rand_full_name : table.hashes.first['full_name']
   TestData.hash[:company] = table.hashes.first['company'].downcase.include?('random') ? TestHelper.rand_comp_name : table.hashes.first['company']

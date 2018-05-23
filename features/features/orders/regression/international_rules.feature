@@ -28,7 +28,7 @@ Feature: All International Rules
   Scenario: Cuba Internal Transaction Number Required
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Cuba    | random  | random  |
 
@@ -62,7 +62,7 @@ Feature: All International Rules
   Scenario: Iran Internal Transaction Number Required
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Iran    | random  | random  |
     Then set order details ounces to 5
@@ -105,7 +105,7 @@ Feature: All International Rules
     Then expect Order Details Customs Restrictions button is visible
     Then expect Order Details Customs Customs Form button is visible
 
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
 
@@ -180,7 +180,7 @@ Feature: All International Rules
   Scenario: North Korea Internal Transaction Number Required
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Democratic People's Republic of (North) Korea| random  | random  |
     Then set order details ounces to 5
@@ -213,7 +213,7 @@ Feature: All International Rules
   Scenario: Sudan Internal Transaction Number Required
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Sudan    | random  | random  |
 
@@ -250,7 +250,7 @@ Feature: All International Rules
   Scenario: Syria Internal Transaction Number Required
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Syria    | random  | random  |
 
@@ -288,7 +288,7 @@ Feature: All International Rules
   Scenario: Customs Form Internal Transaction Number Required for total over $2500
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then set order details ounces to 5
@@ -313,7 +313,7 @@ Feature: All International Rules
   Scenario: Internal Transaction # Not Required
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Philippines    | random  | random  |
     Then set order details ounces to 5

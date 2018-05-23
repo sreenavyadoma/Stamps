@@ -9,7 +9,7 @@ Feature:  Customs Form Item Grid
   Scenario:  Customs Form Grid - Add Items
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Zimbabwe | random  | random  |
     Then set order details service to PMI Flat Rate Envelope
@@ -29,7 +29,7 @@ Feature:  Customs Form Item Grid
   @international_customs_form_edit_delete_item
   Scenario:  Customs Form Item Grid - Edit/Delete
     Then add new order
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Japan | random  | random  |
     Then set order details ounces to 5

@@ -7,7 +7,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5 - right side
   Scenario: Print 1 Intl CP72 label on 5.5x8.5 - right side
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name              | company   | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI PFR Envelope |  5.5x8.5 Right Side 1  | random       | random           | random | random  | random      | Argentina | random  | random  |
     Then set order details service to PMEI Padded Flat Rate Envelope

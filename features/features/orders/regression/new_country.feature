@@ -9,11 +9,11 @@ Feature:  Print new country orders
   Scenario: Print Bonaire, Sincd t Eustatius, and Saba orders
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code| country                          | phone   |  email  |
       | random | random  | random           | random           | random | random  | 12345      | Bonaire, Sint Eustatius and Saba | random  | random  |
 
-    Then expect Order Details Ship-To Country is Bonaire, Sint Eustatius and Saba
+    Then expect order details ship-to country is Bonaire, Sint Eustatius and Saba
     Then set order details service to FCMI Large Envelope/Flat
     Then set order details ounces to 2
     Then set order details pounds to 2
@@ -35,11 +35,11 @@ Feature:  Print new country orders
   Scenario: Print Curacao
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code| country | phone   |  email  |
       | random | random  | random           | random           | random | random  | 12345      | Curacao | random  | random  |
 
-    Then expect Order Details Ship-To Country is Curacao
+    Then expect order details ship-to country is Curacao
     Then set order details service to FCMI Large Envelope/Flat
     Then set order details ounces to 2
     Then set order details pounds to 2

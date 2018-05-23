@@ -11,7 +11,7 @@ Feature: Print 1 single ply DPO CP72 label on 4⅛ x 6¼ roll
     Then set order details ship-to domestic address to
       | full_name     | company       | street_address      | street_address_2| city | state | zip        | country       | phone  |  email |
       | PSG PFTE | 4⅛ x 6¼ roll | UNIT 8400 BOX 0000  |                  |DPO  | AE    | 09498-9997 | United States | random | random |
-    Then set Order Details Weight to 3 lb 2 oz
+    Then set order details weight to 3 lb 2 oz
     Then set order details service to PSG Package/Flat/Thick Envelope
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Other

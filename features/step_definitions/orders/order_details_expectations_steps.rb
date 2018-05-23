@@ -94,7 +94,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails service Placeholder is (.*)$/ do |expectati
   expect(stamps.orders.order_details.service.textbox.placeholder).to eql expectation
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails Ship-To Country is (?:correct|(.*))$/ do |expectation|
+Then /^expect order details ship-to country is (?:correct|(.*))$/ do |expectation|
   expectation = (expectation.nil?) ? TestData.hash[:country] : expectation
   stamps.orders.order_details.wait_until_present(2)
   step 'expect order details is present'

@@ -11,7 +11,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     #print_two_up_expanded_cp72_5x8_left_print1
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFR Envelope | 5.5x8.5  | random           | random           | random | random  | random      | Chile | random  | random  |
     Then set order details service to PMI Package/Flat/Thick Envelope
@@ -35,7 +35,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     # 1 CP72 label 5 ½" x 8 ½" right side
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI PFR Envelope |  5.5x8.5 Right Side 1  | random       | random           | random | random  | random      | Argentina | random  | random  |
     Then set order details service to PMEI Padded Flat Rate Envelope
@@ -73,7 +73,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then set order details ounces to 1
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI LFR Box | 5.5x8.5  | random           | random           | random | random  | random      | Spain | random  | random  |
     Then set order details service to PMI Large Flat Rate Box
@@ -85,7 +85,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then close Customs Information form
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI Pkg-Flat-Env | 5.5x8.5 | random           | random           | random | random  | random      | Turkey | random  | random  |
     Then set order details service to PMEI Package/Flat/Thick Envelope
@@ -97,7 +97,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then close Customs Information form
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI FR Envelope | 5.5x8.5 | random           | random           | random | random  | random      | Argentina | random  | random  |
     Then set order details service to PMEI Flat Rate Envelope
@@ -141,7 +141,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then set order details ounces to 1
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI LFR Box | 5.5x8.5  | random           | random           | random | random  | random      | Spain | random  | random  |
     Then set order details service to PMI Large Flat Rate Box
@@ -153,7 +153,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then close Customs Information form
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI Pkg-Flat-Env | 5.5x8.5 | random           | random           | random | random  | random      | Turkey | random  | random  |
     Then set order details service to PMEI Package/Flat/Thick Envelope
@@ -165,7 +165,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then close Customs Information form
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI FR Envelope | 5.5x8.5 | random           | random           | random | random  | random      | Argentina | random  | random  |
     Then set order details service to PMEI Flat Rate Envelope

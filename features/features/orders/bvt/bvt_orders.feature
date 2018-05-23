@@ -55,11 +55,11 @@ Feature:  BVT tests for Orders
 
   # Order #2 (International)
     Then add order 2
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name     | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country | phone        |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone | Random email  |
-    Then set Order Details Weight to 0 lb 1 oz
-    Then set Order Details international service to PMEI Package/Flat/Thick Envelope
+    Then set order details weight to 0 lb 1 oz
+    Then set order details international service to PMEI Package/Flat/Thick Envelope
     Then blur out on order details form
 
   # Check 1st two orders

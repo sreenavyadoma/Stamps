@@ -9,11 +9,11 @@ Feature: Bulk Update Domestic
     # Adding 1st order
 #    Then add new order
 #    #Then set Order Details Ship-From to default
-#    Then set Order Details Ship-To International address to
+#    Then set order details ship-to international address to
 #      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
 #      | PMEI LFRE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
 #    Then set order details service to PMI Package/Flat/Thick Envelope
-#    Then set Order Details Weight to 2 lb 2 oz
+#    Then set order details weight to 2 lb 2 oz
 #    Then on order details form, add item 1, qty 1, id ID 1, description Description 1
 #    #Then on order details form, add item 2, qty 2, id random string, description random string
 #    Then click Order Details form Customs Form button

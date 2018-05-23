@@ -122,7 +122,7 @@ Feature:  BVT tests for Orders
   Scenario: BVT International Shipping
     Then sign-in to Orders
     Then add new order
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random      | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then set order details ounces to 4
@@ -181,7 +181,7 @@ Feature:  BVT tests for Orders
     Then set order details email to random
     Then set order details phone to random
     Then set order details service to PM Package
-    Then set Order Details Weight to 1 lb 1 oz
+    Then set order details weight to 1 lb 1 oz
     Then uncheck orders grid order id cached
     Then check orders grid order id cached
     Then search filtered Orders for cached Order ID

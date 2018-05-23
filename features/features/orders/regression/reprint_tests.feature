@@ -81,7 +81,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then set order details ship-to domestic address to
       | full_name   | company      | street_address    |street_address_2| city | state | zip    | country       | phone  |  email |
       | Reprint Test | 4x6 roll | PSC 3 BOX 4120  |                | APO  | AE     |  09021  | United States | 8885551212 | test@stamps.com |
-    Then set Order Details Weight to 2 lb 1 oz
+    Then set order details weight to 2 lb 1 oz
     Then set order details service to PSG Package/Flat/Thick Envelope
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
@@ -107,7 +107,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
 
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country    | phone   |  email  |
       | Reprint Test | 5.5x8.5 | random           | random           | random | random  | random      | Norway | random  | random  |
     Then set order details service to FCMI Large Envelope/Flat
@@ -138,7 +138,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
 
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country    | phone   |  email  |
       | Reprint Test | SDC-1200 | random           | random           | random | random  | random      | New Zealand | random  | random  |
     Then set order details service to PMI Large Flat Rate Box
@@ -173,7 +173,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then set order details ship-to domestic address to
       | full_name         | company            | street_address | street_address_2| city | state | zip        | country       | phone  |  email |
       | Reprint Test | 8.5x11 Plain Paper | PO Box 10281   |                 | Palau| PW    | 96940-0881 | United States | 8885551212 | test@stamps.com |
-    Then set Order Details Weight to 2 lb 1 oz
+    Then set order details weight to 2 lb 1 oz
     Then set order details service to MM Package/Flat/Thick Envelope
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise

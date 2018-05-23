@@ -9,7 +9,7 @@ Feature: Print 1 Domestic label on SDC-1200 4 ¼" x 6 ¾ right side
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to PM Package, SDC-1200 Right Side 1, 5912 83rd St., Lubbock TX 79424-3608
     Then set order details service to PM Package
-    Then set Order Details Weight to 1 lb 1 oz
+    Then set order details weight to 1 lb 1 oz
     Then set Order Details Dimensions to Length 1 Width 1 Height 1
     Then click orders toolbar print button
     Then set Print modal Print-On to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"

@@ -10,7 +10,7 @@ Feature: User Prints 1 FPO CN22 label on 8.5x11 - right side
     Then set order details ship-to domestic address to
       | full_name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | PM RR Box C | 8.5x11 Right Side 1 | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
-    Then set Order Details Weight to 2 lb 1 oz
+    Then set order details weight to 2 lb 1 oz
     Then set order details service to PSG Package/Flat/Thick Envelope
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
