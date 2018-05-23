@@ -9,14 +9,14 @@ Feature: Thermal Printer
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 5 and 8
-    Then set Order Details Pounds to 1
-    Then set Order Details Ounces to 1
-    Then set Order Details service to PM Package
-    Then set Order Details Width to 1
-    Then set Order Details Height to 1
-    Then set Order Details Length to 1
-    Then click Orders Toolbar Print button
+    Then set order details pounds to 1
+    Then set order details ounces to 1
+    Then set order details service to PM Package
+    Then set order details width to 1
+    Then set order details height to 1
+    Then set order details length to 1
+    Then click orders toolbar print button
     Then set Print modal Print-On to Roll - 4 x 6
     Then click print modal print button
-    Then Sign out
+    Then sign out
 

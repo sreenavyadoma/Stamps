@@ -11,15 +11,15 @@ Feature: Customs Form Qty > 99 is not saved correctly
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province | postal_code | country  | phone  |  email  |
       | random | random  | random           | random | random   | random      | random   | France | random  | random  |
-    Then set Order Details service to PMI Package/Flat/Thick Envelope
-    Then set Order Details Ounces to 1
+    Then set order details service to PMI Package/Flat/Thick Envelope
+    Then set order details ounces to 1
 
-    Then on Order Details form, Add Item 1
+    Then on order details form, add item 1
     Then set Order Details Qty to 1
     Then set Order Details ID to random
     Then set Order Details Description to random
 
-    Then on Order Details form, Add Item 2
+    Then on order details form, add item 2
     Then set Order Details Qty to 2
     Then set Order Details ID to random
     Then set Order Details Description to random
@@ -48,7 +48,7 @@ Feature: Customs Form Qty > 99 is not saved correctly
     Then check Orders Grid row 1
 
     Then click Order Details form Customs Form button
-    Then Pause for 2 seconds
+    Then pause for 2 seconds
     Then expect Customs Associated Item 1 Description is item 1
     Then expect Customs Associated Item 1 Quantity is 5
 
@@ -57,4 +57,4 @@ Feature: Customs Form Qty > 99 is not saved correctly
 
     Then close Customs Information form
 
-    Then Sign out
+    Then sign out

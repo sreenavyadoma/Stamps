@@ -15,7 +15,7 @@ Feature: B-01746 Order Pagination
     Then Set paging toolbar per page count to 100
     Then Expect page toolbar pagination count is correct
 
-    Then Sign out
+    Then sign out
 
   @page_first_on_first_page
   Scenario: Go to first page - User is on first page
@@ -24,7 +24,7 @@ Feature: B-01746 Order Pagination
     Then Pagination control to go to first page is disabled
     Then page control will state "Page 1 of x (where x is determined by server is the last page)"
 
-    Then Sign out
+    Then sign out
 
 
 

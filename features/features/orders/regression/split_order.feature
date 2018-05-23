@@ -7,16 +7,16 @@ Feature: ORDERSAUTO-3405 New Sprint 11/22/17 WEBAPPS-6706 Split Order: Automatic
   Scenario:  ORDERSAUTO-3405 New Sprint 11/22/17 WEBAPPS-6706 Split Order: Automatically Select New Order After Split
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To Domestic address to
+    Then set order details ship-to domestic address to
       | full_name       | company  | street_address      | city          | state | zip   | country       | phone           |  email            |
       | Split Order | Stamps  | 1990 E Grand Ave  | El Segundo | CA    | 90245 | United States |  |   |
-    Then set Order Details Phone to 4445554444
-    Then set Order Details Email to rtest@stamps.com
-    Then set Order Details service to PM Package
-    Then set Order Details Pounds to 1
+    Then set order details phone to 4445554444
+    Then set order details email to rtest@stamps.com
+    Then set order details service to PM Package
+    Then set order details pounds to 1
 
-    Then on Order Details form, Add Item 1, Qty 3, ID IDone, Description description 1
-    Then on Order Details form, Add Item 2, Qty 5, ID IDtwo, Description description 2
+    Then on order details form, add item 1, qty 3, id IDone, description description 1
+    Then on order details form, add item 2, qty 5, id IDtwo, description description 2
 
     Then select grid toolbar more actions item Split Order
     Then expect Split Order modal original order id is correct
@@ -29,15 +29,15 @@ Feature: ORDERSAUTO-3405 New Sprint 11/22/17 WEBAPPS-6706 Split Order: Automatic
     Then click Split Order modal confirm button
 
     Then expect new order from Split Order modal is selected in orders grid
-    Then expect Order Details ship-to Name is Split Order
-    Then expect Order Details ship-to Company Name is Stamps
-    Then expect Order Details Ship-To Cleansed Street Address is 1990 E Grand Ave
-    Then expect Order Details Ship-To Cleansed City is El Segundo
-    Then expect Order Details Ship-To Cleansed State is CA
-    Then expect Order Details Ship-To Cleansed Zip Plus 4 Code is 90245-5013
-    Then expect Order Details Ship-To Cleansed Zip Code is 90245
-    Then expect Order Details Ship-To Phone is 4445554444
+    Then expect order details ship-to name is Split Order
+    Then expect order details ship-to company name is Stamps
+    Then expect order details ship-to cleansed street address is 1990 E Grand Ave
+    Then expect order details ship-to cleansed city is El Segundo
+    Then expect order details ship-to cleansed state is CA
+    Then expect order details ship-to cleansed zip plus 4 code is 90245-5013
+    Then expect order details ship-to cleansed zip code is 90245
+    Then expect order details ship-to phone is 4445554444
     Then expect Order Details Ship-To Email is rtest@stamps.com
 
 
-    Then Sign out
+    Then sign out

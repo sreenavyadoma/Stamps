@@ -14,8 +14,8 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(
   step 'hide order details form Ship-To fields'
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Ss]ervice to (.*)$/ do |str|
-  step 'expect Order Details is present'
+Then /^set order details service to (.*)$/ do |str|
+  step 'expect order details is present'
   TestData.hash[:service] = str
   if SdcEnv.new_framework
     order_details = SdcOrders.order_details
@@ -40,7 +40,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]ervice to (.*)$/ do |str|
     TestData.hash[:service] = stamps.orders.order_details.service.select(str).parse_service_name
     expect(TestData.hash[:service]).to eql(str)
     20.times do
-      step 'blur out on Order Details form'
+      step 'blur out on order details form'
       sleep(0.015)
       break if stamps.orders.order_details.service.cost.text.dollar_amount_str.to_f.round(2) > 0
     end
@@ -48,7 +48,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]ervice to (.*)$/ do |str|
   step 'Save Order Details data'
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails Pounds to (\d+\.?\d*)$/ do |str|
+Then /^set order details pounds to (\d+\.?\d*)$/ do |str|
   TestData.hash[:pounds] = str
   if SdcEnv.new_framework
     order_details = SdcOrders.order_details
@@ -60,7 +60,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails Pounds to (\d+\.?\d*)$/ do |str|
   end
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails Ounces to (\d+\.?\d*)$/ do |str|
+Then /^set order details ounces to (\d+\.?\d*)$/ do |str|
   TestData.hash[:pounds] = str
   if SdcEnv.new_framework
     order_details = SdcOrders.order_details
@@ -72,7 +72,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails Ounces to (\d+\.?\d*)$/ do |str|
   end
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Ll]ength to (\d*)$/ do |number|
+Then /^set order details length to (\d*)$/ do |number|
   TestData.hash[:length] = number
   if SdcEnv.new_framework
     order_details = SdcOrders.order_details
@@ -87,7 +87,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ll]ength to (\d*)$/ do |number|
   step 'Save Order Details data'
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Ww]idth to (\d*)$/ do |number|
+Then /^set order details width to (\d*)$/ do |number|
   if SdcEnv.new_framework
     TestData.hash[:width] = number
     order_details = SdcOrders.order_details
@@ -102,7 +102,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ww]idth to (\d*)$/ do |number|
   step 'Save Order Details data'
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Hh]eight to (\d*)$/ do |number|
+Then /^set order details height to (\d*)$/ do |number|
   if SdcEnv.new_framework
     order_details = SdcOrders.order_details
     dimensions = order_details.dimensions
@@ -126,10 +126,10 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails [Ss]ervice is (?:correct|(.*))$/ do |str|
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]ervice to (.*)$/ do |str|
-  step 'expect Order Details is present'
+  step 'expect order details is present'
   TestData.hash[:int_service] = stamps.orders.order_details.service.select(str).parse_service_name
   20.times do
-    step 'blur out on Order Details form'
+    step 'blur out on order details form'
     sleep(0.015)
     break if stamps.orders.order_details.service.cost.text.dollar_amount_str.to_f.round(2) > 0
   end
@@ -137,7 +137,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]ervice to (.*)$/ do |str|
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ii]nternational [Ss]ervice is (?:correct|(.*))$/ do |expectation|
-  step 'expect Order Details is present'
+  step 'expect order details is present'
   expect(stamps.orders.order_details.service.textbox.text.parse_service_name).to eql((expectation.nil?) ? TestData.hash[:int_service] : expectation)
 end
 
@@ -363,7 +363,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Email to \"(.*)
   end
 end
 
-Then /^[Bb]lur out on [Oo]rder [Dd]etails form$/ do
+Then /^blur out on order details form$/ do
   count ||= 1
   if SdcEnv.new_framework
     count.to_i.times do
@@ -379,7 +379,7 @@ end
 
 Then /^[Cc]heck [Oo]rder [Dd]etails [Ii]nsure-[Ff]or [Cc]heckbox$/ do
   if SdcEnv.new_framework
-    SdcOrders.order_details.insurance.checkbox.check
+    SdcOrders.order_details.insure_for.checkbox.check
   else
     stamps.orders.order_details.insure_for.checkbox.check
   end
@@ -389,25 +389,25 @@ Then /^[Uu]ncheck [Oo]rder [Dd]etails [Ii]nsure-[Ff]or [Cc]heckbox$/ do
   stamps.orders.order_details.insure_for.checkbox.uncheck
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nsure-[Ff]or to \$(\d+\.\d{2})$/ do |str|
+Then /^set order details insure-for to \$(\d+\.\d{2})$/ do |str|
   step 'check order details insure-for checkbox'
   if SdcEnv.new_framework
-    SdcOrders.order_details.insurance.amount.set(TestData.hash[:insured_value] = str.to_f)
+    SdcOrders.order_details.insure_for.amount.set(TestData.hash[:insured_value] = str.to_f)
     10.times do
-      break if SdcOrders.order_details.insurance.cost.text_value.dollar_amount_str.to_f.round(2) > 0
-      step 'blur out on Order Details form'
+      break if SdcOrders.order_details.insure_for.cost.text_value.dollar_amount_str.to_f.round(2) > 0
+      step 'blur out on order details form'
     end
   else
     stamps.orders.order_details.insure_for.textbox.set(TestData.hash[:insured_value] = str.to_f)
     3.times do
-      step 'blur out on Order Details form'
+      step 'blur out on order details form'
       stamps.orders.modals.insurance_terms_conditions.agree if stamps.orders.modals.insurance_terms_conditions.present?
       break unless stamps.orders.modals.insurance_terms_conditions.present?
     end
 
     10.times do
       break if stamps.orders.order_details.insure_for.cost.text.dollar_amount_str.to_f.round(2) > 0
-      step 'blur out on Order Details form'
+      step 'blur out on order details form'
     end
   end
   step 'Save Order Details data'
@@ -424,13 +424,13 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Tt]racking to (.*)$/ do |str|
     expect(SdcOrders.order_details.tracking.text_field.text_value).to eql(str)
     10.times do
       break if SdcOrders.order_details.tracking.cost.text.dollar_amount_str.to_f.round(2) > 0
-      step 'blur out on Order Details form'
+      step 'blur out on order details form'
     end
   else
     stamps.orders.order_details.tracking.select(TestData.hash[:tracking] = str)
     10.times do
       break if stamps.orders.order_details.tracking.cost.text.dollar_amount_str.to_f.round(2) > 0
-      step 'blur out on Order Details form'
+      step 'blur out on order details form'
     end
   end
   step 'Save Order Details data'

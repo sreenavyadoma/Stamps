@@ -114,7 +114,7 @@ Feature:  All Store Management
       Then click order settings stores Delete confirmation button
       Then expect orders settings store saved nickname is not present in list
       Then click Done in orders settings store tab
-      Then Sign out
+      Then sign out
 
     @square_workflow
     Scenario: Square Store Workflow
@@ -162,5 +162,5 @@ Feature:  All Store Management
       Then select store settings requested service to service 2
       Then select store settings shipping service to FCM Large Envelope
       Then Click Save in Store Settings modal
-      Then Sign out
+      Then sign out
 

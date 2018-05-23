@@ -1,4 +1,4 @@
-# Order: OrderNumber, ShipName, ShipCompany, Username, +BuyerEmail +OrderItem: SKU, Description
+# Order: OrderNumber, ShipName, ShipCompany, Username, +BuyerEmail +OrderItem: SKU, description
 Feature:  Search Orders
 
   Background:
@@ -10,12 +10,12 @@ Feature:  Search Orders
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address in zone 1
-    Then set Order Details Email to random
-    Then set Order Details Phone to random
+    Then set order details email to random
+    Then set order details phone to random
     Then hide order details form Ship-To fields
-    Then set Order Details service to PM Package
+    Then set order details service to PM Package
     Then set Order Details Weight to 1 lb 1 oz
-    Then uncheck orders grid cached order id
+    Then uncheck orders grid order id cached
     Then select Filter Panel tab Shipped
 
     # Search for new order
@@ -44,7 +44,7 @@ Feature:  Search Orders
     Then expect Filter Panel search result count is greater than 0
     Then remove Filter Panel search results tab
     Then expect Filter Panel search results tab is not present
-    Then Sign out
+    Then sign out
 
 
   @search_orders_on_hold
@@ -53,10 +53,10 @@ Feature:  Search Orders
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address in zone 1
-    Then set Order Details Email to random
-    Then set Order Details Phone to random
+    Then set order details email to random
+    Then set order details phone to random
     Then hide order details form Ship-To fields
-    Then set Order Details service to PM Package
+    Then set order details service to PM Package
     Then set Order Details Weight to 1 lb 1 oz
 
     Then select Grid Toolbar Move menu item Move to On Hold
@@ -92,4 +92,4 @@ Feature:  Search Orders
     Then expect cached Order ID exist in the selected filter
     Then remove Filter Panel search results tab
     Then expect Filter Panel search results tab is not present
-    Then Sign out
+    Then sign out

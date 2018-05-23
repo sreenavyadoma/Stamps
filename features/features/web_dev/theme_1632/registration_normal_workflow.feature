@@ -57,7 +57,7 @@ Feature: Test Workflow - Theme 1632 Happy Path
 
     #Then add new order
     #Then expect Order Details Order ID is the same as saved Order ID
-    #Then Sign out
+    #Then sign out
 
 
 

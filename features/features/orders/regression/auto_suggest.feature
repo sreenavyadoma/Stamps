@@ -13,7 +13,7 @@ Feature: Domestic Address
     Then on Order Details form, select Ship-To auto-suggest item 1
     Then expect Order Details Domestic Ship-To Name is Firstname Lastname
     Then expect Order Details Domestic Ship-To Company is CompanyNameZoneOne
-    Then Sign out
+    Then sign out
 
   @auto_suggest_international
   Scenario: Select International Address
@@ -25,12 +25,12 @@ Feature: Domestic Address
     Then on Order Details form, select Ship-To auto-suggest item 1
     Then set Order Details International Ship-To auto-suggest address to partial name Flo
     Then on Order Details form, select Ship-To auto-suggest item 1
-    Then expect Order Details Ship-To Name is Venice Florence
+    Then expect order details ship-to name is Venice Florence
     Then expect Order Details International Ship-To Company is CompanyNameInternational
     Then expect Order Details International Ship-To Address 1 is Italian Street address
     Then expect Order Details International Ship-To City is ItalianCity
     Then expect Order Details International Ship-To Province is Rome
     Then expect Order Details International Ship-To Postal Code is Pisa
-    Then expect Order Details Ship-To Phone is 41511111111
+    Then expect order details ship-to phone is 41511111111
     Then expect Order Details Ship-To Email is autosuggest001.2@mailinator.com
-    Then Sign out
+    Then sign out

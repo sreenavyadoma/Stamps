@@ -253,7 +253,7 @@ end
 # Username Taken Model
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Username Taken model pop up header is (.*)$/ do |str|
-  step "Pause for 2 second"
+  step "pause for 2 second"
   expect(registration.membership.uname_model_header).to eql(str)
 end
 

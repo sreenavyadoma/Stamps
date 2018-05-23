@@ -14,7 +14,7 @@ Then /^[Ee]xpect [Pp]rint [Mm]odal Incomplete Order Error Message (.*)$/ do |exp
   expect(@incomplete_order_modal.error_message).to include(expectation)
 end
 
-Then /^[Ii]n [Pp]rint modal, click Close [Bb]utton$/ do
+Then /^in print modal, click close button$/ do
   if SdcEnv.new_framework
     SdcOrders.modals.print.close.click
   else
