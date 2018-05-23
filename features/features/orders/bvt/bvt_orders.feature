@@ -134,7 +134,7 @@ Feature:  BVT tests for Orders
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | India  | Random phone  | Random email  |
 
     Then expect Order Details Ship-To Country is correct
-    Then set Order Details Weight to 2 lb 2 oz
+    Then set order details weight to 2 lb 2 oz
     Then set order details service to PMI Package/Flat/Thick Envelope
     Then set order details insure-for to $100.25
     Then set order details reference number to Some random string

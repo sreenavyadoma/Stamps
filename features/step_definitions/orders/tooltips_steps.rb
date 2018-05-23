@@ -161,7 +161,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails Weight Lbs data error tooltip is \"(.*)\"$/
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails Weight Oz data error tooltip is \"(.*)\"$/ do |expectation|
-  #SdcLog.step "expect Order Details Weight Oz data error tooltip is #{expectation}"
+  #SdcLog.step "expect order details weight Oz data error tooltip is #{expectation}"
   textbox = stamps.orders.order_details.weight.oz.textbox
   20.times do
     textbox.scroll_into_view
@@ -187,7 +187,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails Weight Oz data error tooltip is \"(.*)\"$/ 
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails service data error tooltip is \"(.*)\"$/ do |expectation|
-  #SdcLog.step "expect Order Details Weight Oz data error tooltip is #{expectation}"
+  #SdcLog.step "expect order details weight Oz data error tooltip is #{expectation}"
   textbox = stamps.orders.order_details.service.textbox
   20.times do
     textbox.double_click

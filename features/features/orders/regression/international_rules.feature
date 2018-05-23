@@ -19,8 +19,8 @@ Feature: All International Rules
     Then expect Order Details International Phone data error tooltip is "A valid phone number is required"
 
     Then expect Order Details service data error tooltip is "Service is required"
-    Then expect Order Details Weight Lbs data error tooltip is "Weight cannot be 0"
-    Then expect Order Details Weight Oz data error tooltip is "Weight cannot be 0"
+    Then expect order details weight Lbs data error tooltip is "Weight cannot be 0"
+    Then expect order details weight Oz data error tooltip is "Weight cannot be 0"
     Then sign out
 
 

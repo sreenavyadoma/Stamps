@@ -76,7 +76,7 @@ Feature: January 2017 Rates for CPP User in Zone 1
   Scenario:  service Priority Mail Legal Flat Rate Envelope
     Then set Order Details Ship-To to random address in zone 1
     Then set order details service to PM Legal Flat Rate Envelope
-    Then set Order Details Weight to 10 lb 0 oz
+    Then set order details weight to 10 lb 0 oz
     Then expect order details service cost is 6.25
     Then set Order Details Tracking to USPS Tracking
     Then expect Order Details Total Ship Cost is 6.25

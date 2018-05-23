@@ -28,8 +28,8 @@ Feature:  service enabled/disabled tests
     Then check orders grid order id cached
     Then expect Order Details Domestic Address data error tooltip is "Ship To address is required"
     Then expect Order Details Domestic Email data error tooltip is "Please enter a valid email address"
-    Then expect Order Details Weight Lbs data error tooltip is "Weight cannot be 0"
-    Then expect Order Details Weight Oz data error tooltip is "Weight cannot be 0"
+    Then expect order details weight Lbs data error tooltip is "Weight cannot be 0"
+    Then expect order details weight Oz data error tooltip is "Weight cannot be 0"
     Then expect Order Details service data error tooltip is "Service is required"
     Then check orders grid order id cached
     Then set Order Details Ship-From to default
