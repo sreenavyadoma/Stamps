@@ -205,39 +205,39 @@ module PartnerPortal
   class << self
 
     def login_page
-      @login_page = PPLoginPage.new
+      PPLoginPage.new
     end
 
     def dashboard_page
-      @dashboard_page = PPDashboardPage.new
+      PPDashboardPage.new
     end
 
     def reset_password_page
-      @reset_password_page = PPResetPasswordPage.new
+      PPResetPasswordPage.new
     end
 
     def reset_password_confirm_page
-      @reset_password_confirm_page = PPResetPasswordConfirmationPage.new
+      PPResetPasswordConfirmationPage.new
     end
 
     def set_password_page
-      @set_password_page = PPSetPasswordPage.new
+      PPSetPasswordPage.new
     end
 
     def error_404_page
-      @error_404_page = PPError404Page.new
+      PPError404Page.new
     end
 
     def error_500_page
-      @error_500_page = PPError500Page.new
+      PPError500Page.new
     end
 
     def common_page
-      @stamps_endicia_common_page = PartnerPortal::Common.new
+      PartnerPortal::Common.new
     end
 
     def db_connection
-      @connection = PartnerPortalDB.new
+      PartnerPortalDB.new
     end
 
   end
