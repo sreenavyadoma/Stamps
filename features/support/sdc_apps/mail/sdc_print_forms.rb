@@ -49,8 +49,8 @@ module SdcMail
     module EmailTrackingContainer
       class EmailTracking < SdcPage
         text_field(:text_field, tag: :text_field) { { xpath: '//*[@id="sdc-mainpanel-emailtextfield-webpostage-inputEl"]' } }
-        page_object(:chooser) { { xpath: 'xxxxxxx' } }
-        page_object(:verify) { { xpath: 'xxxxxxx' } }
+        page_object(:chooser) { { xpath: '(//*[@id="appMainBodyContent-targetEl"]//div[starts-with(@id, "checkbox-")][contains(@id, "-innerWrapEl")]//input)[0]' } }
+        page_object(:verify) { { xpath: '(//div[@class="x-field x-form-item x-form-item-default x-form-type-checkbox x-box-item x-field-default x-hbox-form-item x-form-item-no-label x-form-cb-checked x-form-dirty"])[0]' } }
         chooser(:checkbox, :chooser, :verify, :class, :checked)
       end
 
