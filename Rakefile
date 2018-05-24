@@ -50,6 +50,11 @@ require 'cucumber/rake/task'
     t.cucumber_opts = "-p cuke_reports"
   end
 
+  Cucumber::Rake::Task.new(:pp_reset_password) do |t|
+    t.profile = 'pp_reset_password'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
 #END PARTNER PORTAL
 
 # END WEB DEV
