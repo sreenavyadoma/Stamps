@@ -94,3 +94,42 @@ Feature: PP-MVP: Dashboard Page Single Contract
     # Revenue Share USD($)
     Then PP: expect dashboard page the Revenue Share USD chart previous year chart data to be correct
     Then PP: expect dashboard page the Revenue Share USD chart current year chart data to be correct
+
+  @pp_dashboard_single_contract_export_data
+  Scenario: PP: Dashboard Page Single Contract Export Data Validation
+    #verify UI
+    Then PP: expect export data header to exists
+    Then PP: expect export data content to be Select a date range to export transaction level data as a CSV file.
+    Then PP: expect export from date label to be From:
+    Then PP: expect dashboard page from date field exists
+    Then PP: expect dashboard page from date date picker exists
+    Then PP: expect export to date label to be To:
+    Then PP: expect dashboard page to date field exists
+    Then PP: expect dashboard page to date date picker exists
+    Then PP: expect dashboard page download button exists
+
+     #validate different error messages of the fromdate and todate fields
+    Then PP: click on the dashboard page download button
+    Then PP: expect error message to be 6 characters minimum.
+    Then PP: set dashboard page from date field to 25/25/25
+    Then PP: set dashboard page to date field to 25/25/25
+    Then PP: click on the dashboard page download button
+    Then PP: expect error message of from date field to be Valid date required.
+    Then PP: expect error message of to date field to be Valid date required.
+    Then PP: set dashboard page from date field to 2/2/18
+    Then PP: set dashboard page to date field to 2/2/17
+    Then PP: click on the dashboard page download button
+    Then PP: expect error message to be To Date must be after From Date.
+
+    #verify functionality export of data
+    Then PP: set dashboard page from date field to 12/16/18
+    Then PP: set dashboard page to date field to 12/16/19
+    Then PP: click on the dashboard page download button
+    Then PP: expect error message text to be Error No data found for that date range. Please try again with different dates.
+    Then PP: set dashboard page from date field to 2/17/17
+    Then PP: set dashboard page to date field to 2/18/18
+    Then PP: click on the dashboard page download button
+    Then PP: expect download modal text to be Downloading Report Your report is being downloaded now. This may take a while for larger data sets.
+    Then PP: close out the download modal
+    Then PP: expect CSVfile to be downloaded
+    Then PP: Expect a record Download Data event is added in Audit Records for user
