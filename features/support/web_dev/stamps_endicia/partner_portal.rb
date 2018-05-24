@@ -52,13 +52,13 @@ module PartnerPortal
 
   class PPDashboardPage < SdcPage
     #welcome header
-    page_object(:dashboard_header) { { xpath: '//h1[contains(text(), "Dashboard")]' } }
+    page_object(:dashboard_header) { { xpath: ['//h1[contains(text(), "Dashboard")]'] } }
 
     #Contract header
-    page_object(:contract_header) { { class: 'dashboard__contract-header ng-star-inserted' } }
+    page_object(:contract_header) { { class: ['dashboard__contract-header ng-star-inserted'] } }
 
     #Last Updated On
-    page_object(:contract_last_updated_on) { { class: 'dashboard__contract-updated ng-star-inserted' } }
+    page_object(:contract_last_updated_on) { { class: ['dashboard__contract-updated ng-star-inserted'] } }
 
     #charts
     page_objects(:preferred_rates_qualified_transactions_usd_chart, index: 0) { { xpath: '//canvas[@class="chartjs-render-monitor"]' } }
