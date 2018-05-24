@@ -61,11 +61,11 @@ module Stamps
     def initialize
       env = ::SdcEnv.env.to_s
       server = data_for(:sql_server_pp, {})[env]['server']
-      database = data_for(:sql_server_pp, {})[SdcEnv.env]['database']
-      port = data_for(:sql_server_pp, {})[SdcEnv.env]['port']
-      username = data_for(:sql_server_pp, {})[SdcEnv.env]['username']
-      password = data_for(:sql_server_pp, {})[SdcEnv.env]['password']
-      azure = data_for(:sql_server_pp, {})[SdcEnv.env]['azure']
+      database = data_for(:sql_server_pp, {})[env]['database']
+      port = data_for(:sql_server_pp, {})[env]['port']
+      username = data_for(:sql_server_pp, {})[env]['username']
+      password = data_for(:sql_server_pp, {})[env]['password']
+      azure = data_for(:sql_server_pp, {})[env]['azure']
       @connection = SQLServerClient.new(server: server, database: database, username: username, password: password, port: port, azure:azure)
     end
 
