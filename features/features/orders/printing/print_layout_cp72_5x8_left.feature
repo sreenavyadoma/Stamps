@@ -13,12 +13,12 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5 - left side
     Then set order details service to PMI Package/Flat/Thick Envelope
     Then set order details ounces to 1
 
-    Then click Order Details form Customs Form button
-    Then set Customs Package Contents to Merchandise
-    Then add Customs Associated Item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
-    Then set Customs ITN Number to random
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then click order details form customs form button
+    Then set customs package contents to Merchandise
+    Then add customs associated item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
+    Then set customs itn number to random
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
 
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"

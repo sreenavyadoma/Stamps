@@ -247,16 +247,16 @@ Feature: 150 orders
 
     Then on order details form, add item 1, qty 1, id random, description random
 
-    Then click Order Details form Customs Form button
+    Then click order details form customs form button
 
-    Then set Customs Package Contents to Merchandise
-    Then set Customs Non-Delivery Options to Return to sender
-    Then set Customs Internal Transaction Number to Required
+    Then set customs package contents to Merchandise
+    Then set customs non-delivery options to Return to sender
+    Then set customs internal transaction number to Required
     Then set Customs More Info to random
-    Then set Customs ITN Number to random
+    Then set customs itn number to random
 
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
     Then set order details service to FCMI Large Envelope/Flat
 
     Then add new order
@@ -268,16 +268,16 @@ Feature: 150 orders
 
     Then on order details form, add item 1, qty 1, id random, description random
 
-    Then click Order Details form Customs Form button
+    Then click order details form customs form button
 
-    Then set Customs Package Contents to Merchandise
-    Then set Customs Non-Delivery Options to Return to sender
-    Then set Customs Internal Transaction Number to Required
+    Then set customs package contents to Merchandise
+    Then set customs non-delivery options to Return to sender
+    Then set customs internal transaction number to Required
     Then set Customs More Info to random
-    Then set Customs ITN Number to random
+    Then set customs itn number to random
 
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
     Then set order details service to PMI Flat Rate Envelope
 
     # First Class Mail
@@ -521,16 +521,16 @@ Feature: 150 orders
 
     Then on order details form, add item 1, qty 1, id random, description random
 
-    Then click Order Details form Customs Form button
+    Then click order details form customs form button
 
-    Then set Customs Package Contents to Merchandise
-    Then set Customs Non-Delivery Options to Return to sender
-    Then set Customs Internal Transaction Number to Required
+    Then set customs package contents to Merchandise
+    Then set customs non-delivery options to Return to sender
+    Then set customs internal transaction number to Required
     Then set Customs More Info to random
-    Then set Customs ITN Number to random
+    Then set customs itn number to random
 
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
     Then set order details service to FCMI Large Envelope/Flat
 
     Then add new order
@@ -542,16 +542,16 @@ Feature: 150 orders
 
     Then on order details form, add item 1, qty 1, id random, description random
 
-    Then click Order Details form Customs Form button
+    Then click order details form customs form button
 
-    Then set Customs Package Contents to Merchandise
-    Then set Customs Non-Delivery Options to Return to sender
-    Then set Customs Internal Transaction Number to Required
+    Then set customs package contents to Merchandise
+    Then set customs non-delivery options to Return to sender
+    Then set customs internal transaction number to Required
     Then set Customs More Info to random
-    Then set Customs ITN Number to random
+    Then set customs itn number to random
 
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
     Then set order details service to PMI Flat Rate Envelope
 
     # First Class Mail
@@ -794,16 +794,16 @@ Feature: 150 orders
 
     Then on order details form, add item 1, qty 1, id random, description random
 
-    Then click Order Details form Customs Form button
+    Then click order details form customs form button
 
-    Then set Customs Package Contents to Merchandise
-    Then set Customs Non-Delivery Options to Return to sender
-    Then set Customs Internal Transaction Number to Required
+    Then set customs package contents to Merchandise
+    Then set customs non-delivery options to Return to sender
+    Then set customs internal transaction number to Required
     Then set Customs More Info to random
-    Then set Customs ITN Number to random
+    Then set customs itn number to random
 
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
     Then set order details service to FCMI Large Envelope/Flat
 
     Then add new order
@@ -815,16 +815,16 @@ Feature: 150 orders
 
     Then on order details form, add item 1, qty 1, id random, description random
 
-    Then click Order Details form Customs Form button
+    Then click order details form customs form button
 
-    Then set Customs Package Contents to Merchandise
-    Then set Customs Non-Delivery Options to Return to sender
-    Then set Customs Internal Transaction Number to Required
+    Then set customs package contents to Merchandise
+    Then set customs non-delivery options to Return to sender
+    Then set customs internal transaction number to Required
     Then set Customs More Info to random
-    Then set Customs ITN Number to random
+    Then set customs itn number to random
 
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
     Then set order details service to PMI Flat Rate Envelope
 
     # First Class Mail
@@ -1068,16 +1068,16 @@ Feature: 150 orders
 
     Then on order details form, add item 1, qty 1, id random, description random
 
-    Then click Order Details form Customs Form button
+    Then click order details form customs form button
 
-    Then set Customs Package Contents to Merchandise
-    Then set Customs Non-Delivery Options to Return to sender
-    Then set Customs Internal Transaction Number to Required
+    Then set customs package contents to Merchandise
+    Then set customs non-delivery options to Return to sender
+    Then set customs internal transaction number to Required
     Then set Customs More Info to random
-    Then set Customs ITN Number to random
+    Then set customs itn number to random
 
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
     Then set order details service to FCMI Large Envelope/Flat
 
     Then add new order
@@ -1089,16 +1089,16 @@ Feature: 150 orders
 
     Then on order details form, add item 1, qty 1, id random, description random
 
-    Then click Order Details form Customs Form button
+    Then click order details form customs form button
 
-    Then set Customs Package Contents to Merchandise
-    Then set Customs Non-Delivery Options to Return to sender
-    Then set Customs Internal Transaction Number to Required
+    Then set customs package contents to Merchandise
+    Then set customs non-delivery options to Return to sender
+    Then set customs internal transaction number to Required
     Then set Customs More Info to random
-    Then set Customs ITN Number to random
+    Then set customs itn number to random
 
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
     Then set order details service to PMI Flat Rate Envelope
 
     # First Class Mail
@@ -1342,16 +1342,16 @@ Feature: 150 orders
 
     Then on order details form, add item 1, qty 1, id random, description random
 
-    Then click Order Details form Customs Form button
+    Then click order details form customs form button
 
-    Then set Customs Package Contents to Merchandise
-    Then set Customs Non-Delivery Options to Return to sender
-    Then set Customs Internal Transaction Number to Required
+    Then set customs package contents to Merchandise
+    Then set customs non-delivery options to Return to sender
+    Then set customs internal transaction number to Required
     Then set Customs More Info to random
-    Then set Customs ITN Number to random
+    Then set customs itn number to random
 
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
     Then set order details service to FCMI Large Envelope/Flat
 
     Then add new order
@@ -1363,16 +1363,16 @@ Feature: 150 orders
 
     Then on order details form, add item 1, qty 1, id random, description random
 
-    Then click Order Details form Customs Form button
+    Then click order details form customs form button
 
-    Then set Customs Package Contents to Merchandise
-    Then set Customs Non-Delivery Options to Return to sender
-    Then set Customs Internal Transaction Number to Required
+    Then set customs package contents to Merchandise
+    Then set customs non-delivery options to Return to sender
+    Then set customs internal transaction number to Required
     Then set Customs More Info to random
-    Then set Customs ITN Number to random
+    Then set customs itn number to random
 
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
     Then set order details service to PMI Flat Rate Envelope
 
     # First Class Mail
@@ -1616,16 +1616,16 @@ Feature: 150 orders
 
     Then on order details form, add item 1, qty 1, id random, description random
 
-    Then click Order Details form Customs Form button
+    Then click order details form customs form button
 
-    Then set Customs Package Contents to Merchandise
-    Then set Customs Non-Delivery Options to Return to sender
-    Then set Customs Internal Transaction Number to Required
+    Then set customs package contents to Merchandise
+    Then set customs non-delivery options to Return to sender
+    Then set customs internal transaction number to Required
     Then set Customs More Info to random
-    Then set Customs ITN Number to random
+    Then set customs itn number to random
 
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
     Then set order details service to FCMI Large Envelope/Flat
 
     Then add new order
@@ -1637,16 +1637,16 @@ Feature: 150 orders
 
     Then on order details form, add item 1, qty 1, id random, description random
 
-    Then click Order Details form Customs Form button
+    Then click order details form customs form button
 
-    Then set Customs Package Contents to Merchandise
-    Then set Customs Non-Delivery Options to Return to sender
-    Then set Customs Internal Transaction Number to Required
+    Then set customs package contents to Merchandise
+    Then set customs non-delivery options to Return to sender
+    Then set customs internal transaction number to Required
     Then set Customs More Info to random
-    Then set Customs ITN Number to random
+    Then set customs itn number to random
 
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
     Then set order details service to PMI Flat Rate Envelope
 
     Then sign out

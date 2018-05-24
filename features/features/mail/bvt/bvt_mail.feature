@@ -458,66 +458,66 @@ Feature: BVT for Mail page
       | random | random  | random           | random            | random | random   | random      | Italy | random  |
     Then set Print form Ounces to 3
     Then select Print form service PMI Flat Rate Envelope
-    Then click Print form Edit Customs Form button
+    Then click print form edit customs form button
 
-    Then expect Customs I agree to the USPS Privacy Act Statement is unchecked
-    Then set Customs Package Contents to Document
+    Then expect customs i agree to the usps privacy act statement is unchecked
+    Then set customs package contents to Document
 #Then set Customs More Info to some random string
-    Then set Customs Package Contents to Commercial Sample
-    Then expect Customs Package Contents is Commercial Sample
-    Then set Customs License Number to a random string
-    Then expect Customs License Number is correct
-    Then set Customs Certificate Number to some random string
-    Then expect Customs Certificate Number is correct
-    Then set Customs Invoice Number to a random string
-    Then expect Customs Invoice Number is correct
+    Then set customs package contents to Commercial Sample
+    Then expect customs package contents is Commercial Sample
+    Then set customs license number to a random string
+    Then expect customs license number is correct
+    Then set customs certificate number to some random string
+    Then expect customs certificate number is correct
+    Then set customs invoice number to a random string
+    Then expect customs invoice number is correct
 
-    Then set Customs Non-Delivery Options to Treat as abandoned
-    Then expect Customs Non-Delivery Options is Treat as abandoned
+    Then set customs non-delivery options to Treat as abandoned
+    Then expect customs non-delivery options is Treat as abandoned
 
-    Then set Customs Internal Transaction Number to Required
-    Then expect Customs Internal Transaction Number is Required
+    Then set customs internal transaction number to Required
+    Then expect customs internal transaction number is Required
 
-    Then set Customs ITN Number to ITN123
+    Then set customs itn number to ITN123
 
-    Then add Customs Associated Item 1, description Item 1, qty 1, Price 1, Made In United States, Tariff 1
-    Then add Customs Associated Item 2, description Item 2, qty 2, Price 2, Made In Japan, Tariff 2
-    Then add Customs Associated Item 3, description Random String, qty 3, Price 3, Made In Canada, Tariff 3
+    Then add customs associated item 1, description Item 1, qty 1, Price 1, Made In United States, Tariff 1
+    Then add customs associated item 2, description Item 2, qty 2, Price 2, Made In Japan, Tariff 2
+    Then add customs associated item 3, description Random String, qty 3, Price 3, Made In Canada, Tariff 3
 
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
 
-    Then click Print form Edit Customs Form button
+    Then click print form edit customs form button
     Then pause for 1 second
-    Then expect Customs Package Contents is Commercial Sample
-    Then expect Customs License Number is correct
-    Then expect Customs Certificate Number is correct
-    Then expect Customs Invoice Number is correct
+    Then expect customs package contents is Commercial Sample
+    Then expect customs license number is correct
+    Then expect customs certificate number is correct
+    Then expect customs invoice number is correct
 
-    Then expect Customs Non-Delivery Options is Treat as abandoned
-    Then expect Customs Internal Transaction Number is Required
+    Then expect customs non-delivery options is Treat as abandoned
+    Then expect customs internal transaction number is Required
     Then expect Customs ITN Number is correct
 
-    Then expect Customs Associated Item 1 Description is correct
-    Then expect Customs Associated Item 1 Quantity is correct
-    Then expect Customs Associated Item 1 Unit Price is correct
-    Then expect Customs Associated Item 1 Made In is correct
-    Then expect Customs Associated Item 1 Tariff is correct
+    Then expect customs associated item 1 Description is correct
+    Then expect customs associated item 1 Quantity is correct
+    Then expect customs associated item 1 Unit Price is correct
+    Then expect customs associated item 1 Made In is correct
+    Then expect customs associated item 1 Tariff is correct
 
-    Then expect Customs Associated Item 2 Description is correct
-    Then expect Customs Associated Item 2 Quantity is correct
-    Then expect Customs Associated Item 2 Unit Price is correct
-    Then expect Customs Associated Item 2 Made In is correct
+    Then expect customs associated item 2 Description is correct
+    Then expect customs associated item 2 Quantity is correct
+    Then expect customs associated item 2 Unit Price is correct
+    Then expect customs associated item 2 Made In is correct
 
-    Then expect Customs Associated Item 3 Description is correct
-    Then expect Customs Associated Item 3 Quantity is correct
-    Then expect Customs Associated Item 3 Unit Price is correct
-    Then expect Customs Associated Item 3 Made In is correct
-    Then expect Customs Associated Item 3 Tariff is correct
+    Then expect customs associated item 3 Description is correct
+    Then expect customs associated item 3 Quantity is correct
+    Then expect customs associated item 3 Unit Price is correct
+    Then expect customs associated item 3 Made In is correct
+    Then expect customs associated item 3 Tariff is correct
 
     Then expect Customs I agree to the USPS Privacy Act Statement is checked
     Then expect Customs Total Value is correct
-    Then close Customs Information form
+    Then close customs information form
 
 #Then Mail: Print International Postage
     Then sign out

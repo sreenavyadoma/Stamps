@@ -12,11 +12,11 @@ Feature: Print 1 single ply APO CP72 label on 4x6 roll
       | PSG LP | 4x6 roll | PSC 3 BOX 4120  |                      |APO  | AE     |  09021  | United States | random | random |
     Then set order details weight to 2 lb 1 oz
     Then set order details service to PSG Package/Flat/Thick Envelope
-    Then click Order Details form Customs Form button
-    Then set Customs Package Contents to Merchandise
-    Then add Customs Associated Item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then click order details form customs form button
+    Then set customs package contents to Merchandise
+    Then add customs associated item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
     Then click orders toolbar print button
     Then set print modal print-on to Roll - 4" x 6" Shipping Label
     Then click print modal print button Sample

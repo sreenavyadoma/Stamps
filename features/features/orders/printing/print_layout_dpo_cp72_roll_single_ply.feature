@@ -13,11 +13,11 @@ Feature: Print 1 single ply DPO CP72 label on 4⅛ x 6¼ roll
       | PSG PFTE | 4⅛ x 6¼ roll | UNIT 8400 BOX 0000  |                  |DPO  | AE    | 09498-9997 | United States | random | random |
     Then set order details weight to 3 lb 2 oz
     Then set order details service to PSG Package/Flat/Thick Envelope
-    Then click Order Details form Customs Form button
-    Then set Customs Package Contents to Other
-    Then add Customs Associated Item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then click order details form customs form button
+    Then set customs package contents to Other
+    Then add customs associated item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
     Then click orders toolbar print button
     Then set print modal print-on to Roll 418x614
     Then click print modal print button Sample

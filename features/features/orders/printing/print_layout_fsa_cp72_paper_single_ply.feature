@@ -13,12 +13,12 @@ Feature: Print 1 single ply FSA CP72 label on on 8.5x11 - right side
     Then set order details weight to 1 lb 2 oz
     Then set order details service to MM Package/Flat/Thick Envelope
 
-    Then click Order Details form Customs Form button
-    Then set Customs Package Contents to Other
-    Then add Customs Associated Item 1, description random, qty 1, Price 25, Made In United States, Tariff 10
+    Then click order details form customs form button
+    Then set customs package contents to Other
+    Then add customs associated item 1, description random, qty 1, Price 25, Made In United States, Tariff 10
     Then set Customs More Info to random
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
 
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper

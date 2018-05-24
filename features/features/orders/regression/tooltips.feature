@@ -14,25 +14,25 @@ Feature:  Tooltip Errors
       | random | random  | random           | random           | random | random  | random      | Australia | random  | random  |
 
     Then set order details service to PMI Flat Rate Envelope
-    Then click Order Details form Customs Form button
+    Then click order details form customs form button
     Then pause for 1 second
     Then Cancel Customs Form
     Then pause for 1 second
-    Then click Order Details form Customs Form button
-    Then check Customs form I agree to the USPS Privacy Act Statement
+    Then click order details form customs form button
+    Then check customs form i agree to the usps privacy act statement
     Then pause for 1 second
-    Then uncheck Customs form I agree to the USPS Privacy Act Statement
+    Then uncheck customs form i agree to the usps privacy act statement
     Then pause for 1 second
-    Then check Customs form I agree to the USPS Privacy Act Statement
+    Then check customs form i agree to the usps privacy act statement
     Then pause for 1 second
-    Then uncheck Customs form I agree to the USPS Privacy Act Statement
+    Then uncheck customs form i agree to the usps privacy act statement
 
-    Then expect Customs Associated Item Description Tooltip Error is Description is a required field
+    Then expect customs associated item Description Tooltip Error is Description is a required field
     Then expect Customs Qty Tooltip Error is Quantity must be greater than 0
     Then expect Customs Unit Price Tooltip Error is Value must be greater than 0
-    Then add Customs Associated Item 1, description random, qty 1, Price 50, Made In United States, Tariff 100
+    Then add customs associated item 1, description random, qty 1, Price 50, Made In United States, Tariff 100
     Then pause for 2 seconds
-    Then close Customs Information form
+    Then close customs information form
     Then sign out
 
 

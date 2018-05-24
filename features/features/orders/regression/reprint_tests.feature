@@ -83,11 +83,11 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
       | Reprint Test | 4x6 roll | PSC 3 BOX 4120  |                | APO  | AE     |  09021  | United States | 8885551212 | test@stamps.com |
     Then set order details weight to 2 lb 1 oz
     Then set order details service to PSG Package/Flat/Thick Envelope
-    Then click Order Details form Customs Form button
-    Then set Customs Package Contents to Merchandise
-    Then add Customs Associated Item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then click order details form customs form button
+    Then set customs package contents to Merchandise
+    Then add customs associated item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
 
     Then pause for 2 seconds
     Then click orders toolbar print button
@@ -113,11 +113,11 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then set order details service to FCMI Large Envelope/Flat
     Then set order details ounces to 1
 
-    Then click Order Details form Customs Form button
-    Then set Customs Package Contents to Gift
-    Then add Customs Associated Item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then click order details form customs form button
+    Then set customs package contents to Gift
+    Then add customs associated item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
 
     Then pause for 2 seconds
     Then click orders toolbar print button
@@ -144,11 +144,11 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then set order details service to PMI Large Flat Rate Box
     Then set order details ounces to 1
 
-    Then click Order Details form Customs Form button
-    Then set Customs Package Contents to Merchandise
-    Then add Customs Associated Item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then click order details form customs form button
+    Then set customs package contents to Merchandise
+    Then add customs associated item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
 
     Then pause for 2 seconds
     Then click orders toolbar print button
@@ -175,11 +175,11 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
       | Reprint Test | 8.5x11 Plain Paper | PO Box 10281   |                 | Palau| PW    | 96940-0881 | United States | 8885551212 | test@stamps.com |
     Then set order details weight to 2 lb 1 oz
     Then set order details service to MM Package/Flat/Thick Envelope
-    Then click Order Details form Customs Form button
-    Then set Customs Package Contents to Merchandise
-    Then add Customs Associated Item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then click order details form customs form button
+    Then set customs package contents to Merchandise
+    Then add customs associated item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
 
     Then pause for 2 seconds
     Then click orders toolbar print button

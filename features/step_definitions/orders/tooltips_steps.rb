@@ -60,7 +60,7 @@ Then /^Tooltips: Expect Customs Tooltip Error for Total Weight is (.+)$/ do |exp
 end
 
 Then /^[Oo]n Customs form, expect Associated Item Description Tooltip Error is (.*)$/ do |expectation|
-  #SdcLog.step "expect Customs Associated Item Description Tooltip Error is #{expectation}"
+  #SdcLog.step "expect customs associated item Description Tooltip Error is #{expectation}"
   stamps.common_modals.customs_form.should_not be_nil
   data_error_qtip = stamps.common_modals.customs_form.associated_items.item_number(1).description.data_error_qtip
   #SdcLog.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"

@@ -15,11 +15,11 @@ Feature: Single Order Details form Bugs
     Then set order details service to PMI Flat Rate Envelope
     Then set order details pounds to 0
     Then set order details ounces to 3
-    Then click Order Details form Customs Form button
-    Then add Customs Associated Item 1, description random, qty 1, Price 100.50, Made In Zimbabwe, Tariff 100
+    Then click order details form customs form button
+    Then add customs associated item 1, description random, qty 1, Price 100.50, Made In Zimbabwe, Tariff 100
     Then expect Customs Total Value is 100.50
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
 
     Then set Order Details Domestic Ship-To Country to United States
     Then set order details service to PM Package

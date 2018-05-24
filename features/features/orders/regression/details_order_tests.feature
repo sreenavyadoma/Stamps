@@ -188,17 +188,17 @@ Feature: All details tests for order
   Scenario:  International Flat
     Then add new order
     Then set order details ship-from to default
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | France  | random  | random  |
 
   # Priority Mail International Flat Rate Envelope
     Then set order details service to PMI Flat Rate Envelope
     Then expect Order Details service is PMI Flat Rate Envelope
-    Then click Order Details form Customs Form button
-    Then add Customs Associated Item 1, description random, qty 1, Price 1, Made In United States, Tariff 0
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then click order details form customs form button
+    Then add customs associated item 1, description random, qty 1, Price 1, Made In United States, Tariff 0
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
     Then expect order details pounds is 0
     Then expect order details ounces is 0
     Then expect orders grid service is Priority Mail International
@@ -209,10 +209,10 @@ Feature: All details tests for order
   # Priority Mail International Padded Flat Rate Envelope
     Then set order details service to PMI Padded Flat Rate Envelope
     Then expect Order Details service is PMI Padded Flat Rate Envelope
-    Then click Order Details form Customs Form button
-    Then add Customs Associated Item 1, description random, qty 1, Price 1, Made In United States, Tariff 0
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then click order details form customs form button
+    Then add customs associated item 1, description random, qty 1, Price 1, Made In United States, Tariff 0
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
     Then expect order details pounds is 0
     Then expect order details ounces is 0
     Then expect orders grid service is Priority Mail International
@@ -223,10 +223,10 @@ Feature: All details tests for order
   # Priority Mail International Legal Flat Rate Envelope
     Then set order details service to PMI Legal Flat Rate Envelope
     Then expect Order Details service is PMI Legal Flat Rate Envelope
-    Then click Order Details form Customs Form button
-    Then add Customs Associated Item 1, description random, qty 1, Price 1, Made In United States, Tariff 0
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then click order details form customs form button
+    Then add customs associated item 1, description random, qty 1, Price 1, Made In United States, Tariff 0
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
     Then expect order details pounds is 0
     Then expect order details ounces is 0
     Then expect orders grid service is Priority Mail International
@@ -237,10 +237,10 @@ Feature: All details tests for order
   # Priority Mail International Small Flat Rate Box
     Then set order details service to PMI Small Flat Rate Box
     Then expect Order Details service is PMI Small Flat Rate Box
-    Then click Order Details form Customs Form button
-    Then add Customs Associated Item 1, description random, qty 1, Price 1, Made In United States, Tariff 0
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then click order details form customs form button
+    Then add customs associated item 1, description random, qty 1, Price 1, Made In United States, Tariff 0
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
     Then expect order details pounds is 0
     Then expect order details ounces is 0
     Then expect orders grid service is Priority Mail International
@@ -251,10 +251,10 @@ Feature: All details tests for order
   # Priority Mail International Medium Flat Rate Box
     Then set order details service to PMI Medium Flat Rate Box
     Then expect Order Details service is PMI Medium Flat Rate Box
-    Then click Order Details form Customs Form button
-    Then add Customs Associated Item 1, description random, qty 1, Price 1, Made In United States, Tariff 0
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then click order details form customs form button
+    Then add customs associated item 1, description random, qty 1, Price 1, Made In United States, Tariff 0
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
     Then expect order details pounds is 0
     Then expect order details ounces is 0
     Then expect orders grid service is Priority Mail International
@@ -265,10 +265,10 @@ Feature: All details tests for order
   # Priority Mail International Large Flat Rate Box
     Then set order details service to PMI Large Flat Rate Box
     Then expect Order Details service is PMI Large Flat Rate Box
-    Then click Order Details form Customs Form button
-    Then add Customs Associated Item 1, description random, qty 1, Price 1, Made In United States, Tariff 0
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then click order details form customs form button
+    Then add customs associated item 1, description random, qty 1, Price 1, Made In United States, Tariff 0
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
     Then expect order details pounds is 0
     Then expect order details ounces is 0
     Then expect orders grid service is Priority Mail International
@@ -279,10 +279,10 @@ Feature: All details tests for order
   # PME International Flat Rate Envelope
     Then set order details service to PMEI Flat Rate Envelope
     Then expect Order Details service is PMEI Flat Rate Envelope
-    Then click Order Details form Customs Form button
-    Then add Customs Associated Item 1, description random, qty 1, Price 1, Made In United States, Tariff 0
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then click order details form customs form button
+    Then add customs associated item 1, description random, qty 1, Price 1, Made In United States, Tariff 0
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
     Then expect order details pounds is 0
     Then expect order details ounces is 0
     Then expect orders grid service is Priority Mail Express International
@@ -293,10 +293,10 @@ Feature: All details tests for order
   # PME International Padded Flat Rate Envelope
     Then set order details service to PMEI Padded Flat Rate Envelope
     Then expect Order Details service is PMEI Padded Flat Rate Envelope
-    Then click Order Details form Customs Form button
-    Then add Customs Associated Item 1, description random, qty 1, Price 1, Made In United States, Tariff 0
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then click order details form customs form button
+    Then add customs associated item 1, description random, qty 1, Price 1, Made In United States, Tariff 0
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
     Then expect order details pounds is 0
     Then expect order details ounces is 0
     Then expect orders grid service is Priority Mail Express International
@@ -307,10 +307,10 @@ Feature: All details tests for order
   # PME International Legal Flat Rate Envelope
     Then set order details service to PMEI Legal Flat Rate Envelope
     Then expect Order Details service is PMEI Legal Flat Rate Envelope
-    Then click Order Details form Customs Form button
-    Then add Customs Associated Item 1, description random, qty 1, Price 1, Made In United States, Tariff 0
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then click order details form customs form button
+    Then add customs associated item 1, description random, qty 1, Price 1, Made In United States, Tariff 0
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
     Then expect order details pounds is 0
     Then expect order details ounces is 0
     Then expect orders grid service is Priority Mail Express International
@@ -567,15 +567,15 @@ Feature: All details tests for order
   @details_services_int
   Scenario: service Selections for International Orders
     Then add new order
-    Then set Order Details Ship-To International address to
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Brazil  | random  | random  |
     Then set order details ounces to 1
     Then on order details form, add item 1, qty 1, id random, description random
-    Then click Order Details form Customs Form button
-    Then add Customs Associated Item 1, description random, qty 1, Price 1, Made In Brazil, Tariff 1
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then click order details form customs form button
+    Then add customs associated item 1, description random, qty 1, Price 1, Made In Brazil, Tariff 1
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
 
     Then set order details service to FCMI Large Envelope/Flat
     Then expect Order Details service is FCMI Large Envelope/Flat

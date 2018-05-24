@@ -30,25 +30,25 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
     * Decrement Customs Form Weight(oz) by 1
     * Expect Customs Weight(oz ) to be 1
 
-    * Set Customs Package Contents to Merchandise
+    * set customs package contents to Merchandise
     * Expect Customs Package Contents to be Merchandise
-    * Set Customs Package Contents to Document
+    * set customs package contents to Document
     * Expect Customs Package Contents to be Document
-    * Set Customs Package Contents to Gift
+    * set customs package contents to Gift
     * Expect Customs Package Contents to be Gift
-    * Set Customs Package Contents to Humanitarian Donation
+    * set customs package contents to Humanitarian Donation
     * Expect Customs Package Contents to be Humanitarian Donation
-    * Set Customs Package Contents to Returned Goods
+    * set customs package contents to Returned Goods
     * Expect Customs Package Contents to be Returned Goods
-    * Set Customs Package Contents to Other
+    * set customs package contents to Other
     * Expect Customs Package Contents to be Other
-    * Set Customs Package Contents to Merchandise
+    * set customs package contents to Merchandise
 
     * Set Customs More Info to random
 
-    * Set Customs Non-Delivery Options to Return To Sender
+    * set customs non-delivery options to Return To Sender
     * Expect Customs Non-Delivery Options to be Return To Sender
-    * Set Customs Non-Delivery Options to Treat as abandoned
+    * set customs non-delivery options to Treat as abandoned
     * Expect Customs Non-Delivery Options to be Treat as abandoned
 
     * Set Customs Internal Transaction # to Not Required
