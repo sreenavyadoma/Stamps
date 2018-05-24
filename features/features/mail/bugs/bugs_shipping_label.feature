@@ -8,7 +8,7 @@ Feature: Shipping Label bugs
     Then select print on Shipping Label - Paper
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service FCM Large Envelope
 
     Then select on Print Preview Panel, left side starting label

@@ -114,10 +114,24 @@ Then /^click save in manage print options$/ do
   save.safe_wait_while_present(timeout: 2)
 end
 
-Then /^[Ss]how Advanced Options$/ do
+Then /^show advanced options$/ do
   if SdcEnv.new_framework
-    SdcMail.print_form.show_advanced_options
-    expect(SdcMail.print_form.extra_services.text_value).to eql 'Select...'
+    SdcMail.print_form.show_advanced_options.click
+    hide = SdcMail.print_form.hide_advanced_options
+    hide.wait_until_present(timeout: 3)
+    expect(hide). to be_present, 'show advanced options failed'
+  else
+    stamps.mail.print_form.advanced_options.show
+    expect(stamps.mail.print_form.advanced_options).to be_present, 'Print Media error in Advanced Options. Check your feature file workflow.'
+  end
+end
+
+Then /^hide advanced options$/ do
+  if SdcEnv.new_framework
+    SdcMail.print_form.hide_advanced_options.click
+    show = SdcMail.print_form.show_advanced_options
+    show.wait_until_present(timeout: 3)
+    expect(show). to be_present, 'hide advanced options failed'
   else
     stamps.mail.print_form.advanced_options.show
     expect(stamps.mail.print_form.advanced_options).to be_present, 'Print Media error in Advanced Options. Check your feature file workflow.'

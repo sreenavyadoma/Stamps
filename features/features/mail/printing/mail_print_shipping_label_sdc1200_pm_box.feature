@@ -12,7 +12,7 @@ Feature: Mail Shipping Label - SDC-1200 - PM Box
     Then select print on Shipping Label - SDC-1200
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 5 through 8
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service PM Large Flat Rate Box
     Then Print Postage
     Then set Mail Print modal Printer
@@ -22,7 +22,7 @@ Feature: Mail Shipping Label - SDC-1200 - PM Box
     Then select print on Shipping Label - SDC-1200
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 5 through 8
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service PM Medium Flat Rate Box
     Then Print Postage
     Then set Mail Print modal Printer
@@ -32,7 +32,7 @@ Feature: Mail Shipping Label - SDC-1200 - PM Box
     Then select print on Shipping Label - SDC-1200
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1 through 4
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service PM Small Flat Rate Box
     Then Print Postage
     Then set Mail Print modal Printer
@@ -45,7 +45,7 @@ Feature: Mail Shipping Label - SDC-1200 - PM Box
     Then select print on Shipping Label - SDC-1200
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1 through 4
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service PM Regional Rate Box A
     Then Print Postage
     Then set Mail Print modal Printer
@@ -55,7 +55,7 @@ Feature: Mail Shipping Label - SDC-1200 - PM Box
     Then select print on Shipping Label - SDC-1200
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 5 through 8
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service PM Regional Rate Box B
     Then Print Postage
     Then set Mail Print modal Printer

@@ -13,7 +13,7 @@ Feature: Mail Sample Shipping Label - SDC-1200 - PM Envelope Package
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 5 through 8
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service PM Flat Rate Envelope
     Then Print Postage
     Then set Mail Print modal Printer
@@ -24,7 +24,7 @@ Feature: Mail Sample Shipping Label - SDC-1200 - PM Envelope Package
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 5 through 8
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service PM Large/Thick Envelope
     Then Print Postage
     Then set Mail Print modal Printer
@@ -35,7 +35,7 @@ Feature: Mail Sample Shipping Label - SDC-1200 - PM Envelope Package
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 5 through 8
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service PM Legal Flat Rate Envelope
     Then Print Postage
     Then set Mail Print modal Printer
@@ -46,7 +46,7 @@ Feature: Mail Sample Shipping Label - SDC-1200 - PM Envelope Package
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service PM Padded Flat Rate Envelope
     Then Print Postage
     Then set Mail Print modal Printer
@@ -60,7 +60,7 @@ Feature: Mail Sample Shipping Label - SDC-1200 - PM Envelope Package
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 5 through 8
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service PM Large Package
     Then set Dimensions to length 2 width 2 height 2
     Then Print Postage
@@ -72,7 +72,7 @@ Feature: Mail Sample Shipping Label - SDC-1200 - PM Envelope Package
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service PM Package
     Then Print Postage
     Then set Mail Print modal Printer

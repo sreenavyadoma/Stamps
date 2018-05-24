@@ -9,7 +9,7 @@ Feature: Mail Shipping Label - Left Side, Mail Shipping Label - Right Side
     Then select print on Shipping Label - SDC-1200
     Then set Print form Mail-From to default
     Then set print form mail-to random address in zone 1
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service PM Package
     Then Print Postage
     Then set Mail Print modal Printer
@@ -25,7 +25,7 @@ Feature: Mail Shipping Label - Left Side, Mail Shipping Label - Right Side
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
 
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service PM Package
 #    Then on Print form, select right side starting label
     Then select on Print Preview Panel, right side starting label
@@ -41,7 +41,7 @@ Feature: Mail Shipping Label - Left Side, Mail Shipping Label - Right Side
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service PM Package
 #    Then on Print form, select right side starting label
     Then select on Print Preview Panel, right side starting label
@@ -59,7 +59,7 @@ Feature: Mail Shipping Label - Left Side, Mail Shipping Label - Right Side
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
 
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service PM Package
 #    Then on Print form, select right side starting label
     Then select on Print Preview Panel, right side starting label
