@@ -6,7 +6,7 @@ Feature: Validate Buy more labels link
   @mail_buy_more_labels
   Scenario: Buy more labels link
 
-    Then select Print On Stamps
+    Then select print on Stamps
     Then click on buy more labels link
     Then expect buy more labels link NetStamps home button exists
 
