@@ -52,7 +52,7 @@ module PartnerPortal
 
   class PPDashboardPage < SdcPage
     #welcome header
-    page_object(:dashboard_header) { { xpath: ['//h1[contains(text(), "Dashboard")]'] } }
+    page_object(:dashboard_header) { { xpath: '//h1[contains(text(), "Dashboard")]' } }
 
     #Contract header
     page_object(:contract_header) { { class: ['dashboard__contract-header ng-star-inserted'] } }
