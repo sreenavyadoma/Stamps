@@ -9,9 +9,9 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to address random name, random company, 3217 Shasta Circle S., Los Angeles, CA 90065
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service PM Package
-    Then show Advanced Options
+    Then show advanced options
     Then expect Advanced Options Hide Label Value is checked
     Then select Advanced Options Extra Services
 

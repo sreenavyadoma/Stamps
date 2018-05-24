@@ -9,7 +9,7 @@ Feature: Mail Contacts Modal Bugs
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
     Then set Advanced Options Reference Number to 12345
     Then set Advanced Options Cost Code to 123
@@ -22,7 +22,7 @@ Feature: Mail Contacts Modal Bugs
     Then Search Contacts Modal for last printed contact
     Then Select Recently Printed Contact
     Then expect Print form Domestic Address field displays last printed contact
-    Then show Advanced Options
+    Then show advanced options
     Then Expect Advanced Options Reference Number is blank
     Then Expect Advanced Options Cost Code is None
     Then sign out

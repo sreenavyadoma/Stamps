@@ -11,7 +11,7 @@ Feature: Envelope #10, #A2, #A9
     Then select print on Envelope - 10
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service FCM Letter
     Then Print Postage
     Then set Mail Print modal Printer
@@ -21,7 +21,7 @@ Feature: Envelope #10, #A2, #A9
     Then select print on Envelope - 10
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1 through 4
-    Then set Print form Ounces to 3
+    Then set print form ounces to 3
     Then select print form service FCM Letter
     #Then on Envelope form, set Include Return Address to Unchecked
     #Then on Envelope form, set Include Delivery Address to Checked
@@ -36,7 +36,7 @@ Feature: Envelope #10, #A2, #A9
     Then select print on Envelope - 10
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1 through 4
-    Then set Print form Ounces to 3
+    Then set print form ounces to 3
     Then select print form service FCM Letter
     #Then on Envelope form, set Include Return Address to Unchecked
     #Then on Envelope form, set Include Delivery Address to Unchecked
@@ -51,7 +51,7 @@ Feature: Envelope #10, #A2, #A9
     Then select print on Envelope - 10
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1 through 4
-    Then set Print form Ounces to 2
+    Then set print form ounces to 2
     Then select print form service FCM Letter
     #Then on Envelope form, set Include Return Address to Checked
     #Then on Envelope form, set Include Delivery Address to Unchecked
@@ -68,7 +68,7 @@ Feature: Envelope #10, #A2, #A9
     Then select print on Envelope - A9
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 5 through 8
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service FCM Letter
     Then Print Postage
     Then set Mail Print modal Printer
@@ -80,7 +80,7 @@ Feature: Envelope #10, #A2, #A9
     Then select print on Envelope - A2
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 5 through 8
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service FCM Letter
     Then Print Postage
     Then set Mail Print modal Printer

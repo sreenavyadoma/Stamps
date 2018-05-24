@@ -13,8 +13,8 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” MM XM Paper
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
-    Then set Print form Pounds to 0
-    Then set Print form Ounces to 1
+    Then set print form pounds to 0
+    Then set print form ounces to 1
     Then select print form service MM Package/Flat/Thick Envelope
     Then Print Postage
     Then set Mail Print modal Printer
@@ -28,8 +28,8 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” MM XM Paper
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 5 through 8
-    Then set Print form Pounds to 0
-    Then set Print form Ounces to 1
+    Then set print form pounds to 0
+    Then set print form ounces to 1
     Then select print form service PME Flat Rate Envelope
     Then Print Postage
     Then set Mail Print modal Printer
@@ -40,8 +40,8 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” MM XM Paper
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
-    Then set Print form Pounds to 0
-    Then set Print form Ounces to 1
+    Then set print form pounds to 0
+    Then set print form ounces to 1
     Then select print form service PME Legal Flat Rate Envelope
     Then Print Postage
     Then set Mail Print modal Printer
@@ -52,7 +52,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” MM XM Paper
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service PME Package/Flat/Thick Envelope
     Then Print Postage
     Then set Mail Print modal Printer
@@ -63,7 +63,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” MM XM Paper
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 5 through 8
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service PME Flat Rate Envelope
     Then Print Postage
     Then set Mail Print modal Printer

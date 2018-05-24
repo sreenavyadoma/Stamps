@@ -11,10 +11,10 @@ Feature:Shipping Label Preview Panel
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     #Then select print form service Priority Mail Package
     Then select print form service PM Package
-    Then show Advanced Options
+    Then show advanced options
 
     # Hide Label Value Check-box
     Then check Advanced Options Hide Label Value

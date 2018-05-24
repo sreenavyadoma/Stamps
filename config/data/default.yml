@@ -116,6 +116,11 @@ mail_print_media:
   Roll 4x6: iconRoll,18
   Roll 418x614: iconRoll,19
 
+mail_tracking_service:
+  None: sdc-trackingdroplist-none
+  USPS Tracking: sdc-trackingdroplist-dc
+  Signature Required: sdc-trackingdroplist-sc
+
 mail_services:
   First Class: sdc-servicedroplist-fcletter
   Media Mail: sdc-servicedroplist-mmpackage

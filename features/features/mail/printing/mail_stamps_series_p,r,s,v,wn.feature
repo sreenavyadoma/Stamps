@@ -12,7 +12,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
     Then set Advanced Options Cost Code to None
     Then Print Postage
@@ -41,7 +41,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
     Then set Advanced Options Cost Code to None
     Then Print Postage
@@ -70,7 +70,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
     Then set Advanced Options Cost Code to None
     Then Print Postage
@@ -113,7 +113,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
     Then set Advanced Options Cost Code to None
     Then Print Postage
@@ -128,7 +128,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
     Then set Advanced Options Cost Code to None
     Then Print Postage
