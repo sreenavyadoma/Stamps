@@ -6,8 +6,7 @@ Feature: Manage Print Options
   @mail_manage_printing_options
   Scenario: Manage Print Options
     Then sign-in to Mail
-    Then select Print On Envelope - #10, 4 ⅛" x 9 ½"
-    Then select Print On Manage Printing Options...
+    Then select print on Manage Printing Options...
     Then expect manage print options modal is present
     Then check Stamps in manage print options
     Then check Shipping Label - 8 ½" x 11" Paper in manage print options

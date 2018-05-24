@@ -46,4 +46,4 @@ Feature: First time Mail sign in
     Then More Info: Expect More Info page is present
     Then More Info: Close More Info page
     Then What's New: Click Continue button
-    Then Sign out
+    Then sign out

@@ -45,4 +45,4 @@ Feature: Purchasing
     Then Buy Mail Purchase Approved: Click OK button
     Then Buy Mail: Expect customer balance increased by $35
 
-    Then Sign out
+    Then sign out

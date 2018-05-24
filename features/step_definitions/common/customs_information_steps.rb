@@ -321,7 +321,7 @@ Then /^[Ee]xpect Customs I agree to the USPS Privacy Act Statement is unchecked$
 end
 
 Then /^[Cc]lose Customs Information form$/ do
-  step 'Pause for 4 seconds'
+  step 'pause for 4 seconds'
   step 'Blur out on Customs form'
   step 'Save Customs Information form Total amount'
   if SdcEnv.new_framework
@@ -329,7 +329,7 @@ Then /^[Cc]lose Customs Information form$/ do
   else
     if SdcEnv.sdc_app == :orders
       stamps.common_modals.customs_form.close
-      step 'blur out on Order Details form'
+      step 'blur out on order details form'
       step 'Save Order Details data'
     end
     stamps.mail.print_form.mail_customs.edit_customs_form.close if SdcEnv.sdc_app == :mail
@@ -513,8 +513,19 @@ Then /^[Ee]xpect Customs Total Value is (?:correct|(.*))$/ do |expectation|
   end
 end
 
-Then /^[Aa]dd Customs Associated Item (\d+), Description (.*), Qty (\d+), Price (.+), Made In (.+), Tariff (.*)$/ do |item_number, description, qty, price, made_in, tariff|
+Then /^add Customs Associated Item (\d+), description (.*), qty (\d+), Price (.+), Made In (.+), Tariff (.*)$/ do |item_number, description, qty, price, made_in, tariff|
   step "add Customs Associated Item #{item_number}" if item_number > 1
+  step "scroll into view customs associated item #{item_number}"
+  step "set Customs Associated Item #{item_number} Description to #{description}"
+  step "set Customs Associated Item #{item_number} Qty to #{qty}"
+  step "set Customs Associated Item #{item_number} Unit Price to #{price}"
+  step "scroll into view customs associated item #{item_number}"
+  step "set Customs Associated Item #{item_number} Made In is Country to #{made_in}"
+  step "scroll into view customs associated item #{item_number}"
+  step "set Customs Associated Item #{item_number} Tarriff to #{tariff}"
+end
+
+Then /^edit customs associated item (\d+), description (.*), qty (\d+), Price (.+), Made In (.+), Tariff (.*)$/ do |item_number, description, qty, price, made_in, tariff|
   step "scroll into view customs associated item #{item_number}"
   step "set Customs Associated Item #{item_number} Description to #{description}"
   step "set Customs Associated Item #{item_number} Qty to #{qty}"

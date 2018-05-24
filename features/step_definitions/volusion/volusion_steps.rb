@@ -158,7 +158,7 @@ Then /^Volusion Checkout: Place Order$/ do
   @volusion_order_number = @checkout_page.place_order
 end
 
-Then /^Volusion Account: Sign out$/ do
+Then /^Volusion Account: sign out$/ do
   @volusion_login_page = @my_account_page.log_out
 end
 

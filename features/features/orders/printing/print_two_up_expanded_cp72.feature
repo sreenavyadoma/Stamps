@@ -14,14 +14,14 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFR Envelope | 5.5x8.5  | random           | random           | random | random  | random      | Chile | random  | random  |
-    Then set Order Details service to PMI Package/Flat/Thick Envelope
-    Then set Order Details Ounces to 1
+    Then set order details service to PMI Package/Flat/Thick Envelope
+    Then set order details ounces to 1
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
-    Then add Customs Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then click Orders Toolbar Print button
+    Then click orders toolbar print button
     Then set Print modal Print-On to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then set Orders print modal printer
     Then select Print modal left-side label
@@ -38,14 +38,14 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI PFR Envelope |  5.5x8.5 Right Side 1  | random       | random           | random | random  | random      | Argentina | random  | random  |
-    Then set Order Details service to PMEI Padded Flat Rate Envelope
-    Then set Order Details Ounces to 1
+    Then set order details service to PMEI Padded Flat Rate Envelope
+    Then set order details ounces to 1
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
-    Then add Customs Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then click Orders Toolbar Print button
+    Then click orders toolbar print button
     Then set Print modal Print-On to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then set Orders print modal printer
     Then select Print modal right-side label
@@ -59,28 +59,28 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to PME FR Envelope, 5.5x8.5, 26930 NE 152nd St., Duvall WA 98019-8316
-    Then set Order Details service to PME Flat Rate Envelope
-    Then set Order Details Ounces to 1
+    Then set order details service to PME Flat Rate Envelope
+    Then set order details ounces to 1
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to PME LFR Envelope, 5.5x8.5, 2105 Kietzke Ln, Reno NV 89502-3602
-    Then set Order Details service to PME Legal Flat Rate Envelope
-    Then set Order Details Ounces to 1
+    Then set order details service to PME Legal Flat Rate Envelope
+    Then set order details ounces to 1
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to PME PFR Envelope, 5.5x8.5, 557 County Rd. H, Fredonia WI 53021-9634
-    Then set Order Details service to PME Padded Flat Rate Envelope
-    Then set Order Details Ounces to 1
+    Then set order details service to PME Padded Flat Rate Envelope
+    Then set order details ounces to 1
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI LFR Box | 5.5x8.5  | random           | random           | random | random  | random      | Spain | random  | random  |
-    Then set Order Details service to PMI Large Flat Rate Box
-    Then set Order Details Ounces to 1
+    Then set order details service to PMI Large Flat Rate Box
+    Then set order details ounces to 1
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
-    Then add Customs Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then add new order
@@ -88,11 +88,11 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI Pkg-Flat-Env | 5.5x8.5 | random           | random           | random | random  | random      | Turkey | random  | random  |
-    Then set Order Details service to PMEI Package/Flat/Thick Envelope
-    Then set Order Details Ounces to 1
+    Then set order details service to PMEI Package/Flat/Thick Envelope
+    Then set order details ounces to 1
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
-    Then add Customs Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then add new order
@@ -100,11 +100,11 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI FR Envelope | 5.5x8.5 | random           | random           | random | random  | random      | Argentina | random  | random  |
-    Then set Order Details service to PMEI Flat Rate Envelope
-    Then set Order Details Ounces to 1
+    Then set order details service to PMEI Flat Rate Envelope
+    Then set order details ounces to 1
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
-    Then add Customs Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then check Orders Grid row 1
@@ -113,7 +113,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then check Orders Grid row 4
     Then check Orders Grid row 5
     Then check Orders Grid row 6
-    Then click Orders Toolbar Print button
+    Then click orders toolbar print button
     Then set Print modal Print-On to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then set Orders print modal printer
     Then select Print modal left-side label
@@ -127,28 +127,28 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to PME FR Envelope, 5.5x8.5, 26930 NE 152nd St., Duvall WA 98019-8316
-    Then set Order Details service to PME Flat Rate Envelope
-    Then set Order Details Ounces to 1
+    Then set order details service to PME Flat Rate Envelope
+    Then set order details ounces to 1
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to PME LFR Envelope, 5.5x8.5, 2105 Kietzke Ln, Reno NV 89502-3602
-    Then set Order Details service to PME Legal Flat Rate Envelope
-    Then set Order Details Ounces to 1
+    Then set order details service to PME Legal Flat Rate Envelope
+    Then set order details ounces to 1
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to PME PFR Envelope, 5.5x8.5, 557 County Rd. H, Fredonia WI 53021-9634
-    Then set Order Details service to PME Padded Flat Rate Envelope
-    Then set Order Details Ounces to 1
+    Then set order details service to PME Padded Flat Rate Envelope
+    Then set order details ounces to 1
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI LFR Box | 5.5x8.5  | random           | random           | random | random  | random      | Spain | random  | random  |
-    Then set Order Details service to PMI Large Flat Rate Box
-    Then set Order Details Ounces to 1
+    Then set order details service to PMI Large Flat Rate Box
+    Then set order details ounces to 1
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
-    Then add Customs Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then add new order
@@ -156,11 +156,11 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI Pkg-Flat-Env | 5.5x8.5 | random           | random           | random | random  | random      | Turkey | random  | random  |
-    Then set Order Details service to PMEI Package/Flat/Thick Envelope
-    Then set Order Details Ounces to 1
+    Then set order details service to PMEI Package/Flat/Thick Envelope
+    Then set order details ounces to 1
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
-    Then add Customs Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then add new order
@@ -168,11 +168,11 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI FR Envelope | 5.5x8.5 | random           | random           | random | random  | random      | Argentina | random  | random  |
-    Then set Order Details service to PMEI Flat Rate Envelope
-    Then set Order Details Ounces to 1
+    Then set order details service to PMEI Flat Rate Envelope
+    Then set order details ounces to 1
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
-    Then add Customs Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then check Orders Grid row 1
@@ -181,13 +181,13 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then check Orders Grid row 4
     Then check Orders Grid row 5
     Then check Orders Grid row 6
-    Then click Orders Toolbar Print button
+    Then click orders toolbar print button
     Then set Print modal Print-On to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then set Orders print modal printer
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
     Then click print modal print button
 
-    Then Sign out
+    Then sign out
 
 

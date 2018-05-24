@@ -8,24 +8,24 @@ Feature: Total Cost of Multiple Orders
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
-    Then set Order Details service to PM Flat Rate Envelope
-    Then set Order Details Pounds to 1
-    Then set Order Details Ounces to 1
+    Then set order details service to PM Flat Rate Envelope
+    Then set order details pounds to 1
+    Then set order details ounces to 1
 
 
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
-    Then set Order Details service to PM Flat Rate Envelope
-    Then set Order Details Pounds to 1
-    Then set Order Details Ounces to 1
+    Then set order details service to PM Flat Rate Envelope
+    Then set order details pounds to 1
+    Then set order details ounces to 1
 
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
-    Then set Order Details service to PM Flat Rate Envelope
-    Then set Order Details Pounds to 1
-    Then set Order Details Ounces to 1
+    Then set order details service to PM Flat Rate Envelope
+    Then set order details pounds to 1
+    Then set order details ounces to 1
 
     Then check Orders Grid row 1
     Then check Orders Grid row 2

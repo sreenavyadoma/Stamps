@@ -9,9 +9,9 @@ Feature: Print label preview should have image for FCM Large Envelope/Flat
     Then add new order
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 5 and 8
-    Then set Order Details Ounces to 1
-    Then set Order Details service to FCM Large Envelope/Flat
-    Then click Orders Toolbar Print button
+    Then set order details ounces to 1
+    Then set order details service to FCM Large Envelope/Flat
+    Then click orders toolbar print button
     Then set Print modal Print-On to Shipping Label - Paper
     Then expect Print Modal Preview label is displayed
     Then set Print modal Print-On to Shipping Label - SDC-1200
@@ -21,4 +21,4 @@ Feature: Print label preview should have image for FCM Large Envelope/Flat
     When Select Print Modal left-side label
     Then expect Print Modal Preview label is displayed
     Then Close Print Modal
-    Then Sign out
+    Then sign out

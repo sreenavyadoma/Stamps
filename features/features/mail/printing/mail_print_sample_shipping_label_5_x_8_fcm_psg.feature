@@ -9,23 +9,23 @@ Feature: Mail Sample Shipping Label - 5 ½” x 8 ½” - FCM PSG
   Scenario: Sample Shipping Label - 5 ½” x 8 ½” - FCM
 
     #mail_print_sample_shipping_label_5x8_fcm_large_envelope
-    Then select Print On Shipping Label - 5x8
+    Then select print on Shipping Label - 5x8
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 5 through 8
     Then set Print form Ounces to 1
-    Then select Print form service FCM Large Envelope/Flat
+    Then select print form service FCM Large Envelope/Flat
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_sample_shipping_label_5x8_fcm_package
-    Then select Print On Shipping Label - 5x8
+    Then select print on Shipping Label - 5x8
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set Print form Ounces to 1
-    Then select Print form service FCM Package/Thick Envelope
+    Then select print form service FCM Package/Thick Envelope
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
@@ -34,36 +34,36 @@ Feature: Mail Sample Shipping Label - 5 ½” x 8 ½” - FCM PSG
   Scenario: Sample Shipping Label - 5 ½” x 8 ½” - PSG
 
    #mail_print_sample_shipping_label_5x8_psg_large_package
-    Then select Print On Shipping Label - 5x8
+    Then select print on Shipping Label - 5x8
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 5 through 8
     Then set Print form Ounces to 1
-    Then select Print form service PSG Large Package
+    Then select print form service PSG Large Package
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_sample_shipping_label_5x8_psg_oversized_package
-    Then select Print On Shipping Label - 5x8
+    Then select print on Shipping Label - 5x8
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set Print form Ounces to 1
-    Then select Print form service PSG Oversized Package
+    Then select print form service PSG Oversized Package
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_sample_shipping_label_5x8_psg_package
-    Then select Print On Shipping Label - 5x8
+    Then select print on Shipping Label - 5x8
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 5 through 8
     Then set Print form Ounces to 1
-    Then select Print form service PSG Package/Flat/Thick Envelope
+    Then select print form service PSG Package/Flat/Thick Envelope
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
-    Then Sign out
+    Then sign out

@@ -12,18 +12,18 @@ Feature:  Customs Form Item Grid
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Zimbabwe | random  | random  |
-    Then set Order Details service to PMI Flat Rate Envelope
-    Then set Order Details Pounds to 3
-    Then set Order Details Ounces to 3
-    Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
+    Then set order details service to PMI Flat Rate Envelope
+    Then set order details pounds to 3
+    Then set order details ounces to 3
+    Then on order details form, add item 1, qty 1, id random, description random
     Then click Order Details form Customs Form button
-    Then add Customs Associated Item 1, Description random, Qty 1, Price 100.50, Made In Zimbabwe, Tariff 100
+    Then add Customs Associated Item 1, description random, qty 1, Price 100.50, Made In Zimbabwe, Tariff 100
     Then expect Customs Total Value is 100.50
-    Then add Customs Associated Item 2, Description random, Qty 1, Price 100.25, Made In Afghanistan, Tariff 100
+    Then add Customs Associated Item 2, description random, qty 1, Price 100.25, Made In Afghanistan, Tariff 100
     Then expect Customs Total Value is 200.75
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then Sign out
+    Then sign out
 
 
   @international_customs_form_edit_delete_item
@@ -32,15 +32,15 @@ Feature:  Customs Form Item Grid
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Japan | random  | random  |
-    Then set Order Details Ounces to 5
-    Then set Order Details service to PMI Flat Rate Envelope
-    Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
+    Then set order details ounces to 5
+    Then set order details service to PMI Flat Rate Envelope
+    Then on order details form, add item 1, qty 1, id random, description random
     Then click Order Details form Customs Form button
     Then expect Customs Associated Item Grid count is 1
-    Then add Customs Associated Item 1, Description random, Qty 1, Price 1000, Made In Japan, Tariff 100
-    Then add Customs Associated Item 2, Description random, Qty 2, Price 2000, Made In Afghanistan, Tariff 200
+    Then add Customs Associated Item 1, description random, qty 1, Price 1000, Made In Japan, Tariff 100
+    Then add Customs Associated Item 2, description random, qty 2, Price 2000, Made In Afghanistan, Tariff 200
     Then expect Customs Associated Item Grid count is 2
-    Then add Customs Associated Item 3, Description random, Qty 3, Price 3000, Made In Zimbabwe, Tariff 300
+    Then add Customs Associated Item 3, description random, qty 3, Price 3000, Made In Zimbabwe, Tariff 300
     Then expect Customs Associated Item Grid count is 3
     Then delete Customs form Associated Item 3
     Then expect Customs Associated Item Grid count is 2
@@ -48,4 +48,4 @@ Feature:  Customs Form Item Grid
     Then expect Customs Associated Item Grid count is 1
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then Sign out
+    Then sign out

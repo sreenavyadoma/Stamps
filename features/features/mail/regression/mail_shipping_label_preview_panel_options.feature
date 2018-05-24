@@ -6,14 +6,14 @@ Feature:Shipping Label Preview Panel
   @mail_print_shipping_label_preview_panel_options
   Scenario: Shipping Label Preview Panel
 
-    Then select Print On Shipping Label - 5x8
+    Then select print on Shipping Label - 5x8
 
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set Print form Ounces to 1
-    #Then select Print form service Priority Mail Package
-    Then select Print form service PM Package
+    #Then select print form service Priority Mail Package
+    Then select print form service PM Package
     Then show Advanced Options
 
     # Hide Label Value Check-box
@@ -37,5 +37,5 @@ Feature:Shipping Label Preview Panel
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
-    Then Sign out
+    Then sign out
 

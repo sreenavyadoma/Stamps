@@ -9,21 +9,21 @@ Feature: Mail Shipping Label - 8 ½” x 11” FCM PSG Paper
   Scenario: Shipping Label - 8 ½” x 11” FCM Paper
 
     #mail_print_shipping_label_8x11_fcm_large_envelope
-    Then select Print On Shipping Label - Paper
+    Then select print on Shipping Label - Paper
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Print form service FCM Large Envelope/Flat
+    Then select print form service FCM Large Envelope/Flat
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
     #mail_print_shipping_label_8x11_fcm_package
-    Then select Print On Shipping Label - Paper
+    Then select print on Shipping Label - Paper
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Print form service FCM Package/Thick Envelope
+    Then select print form service FCM Package/Thick Envelope
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
@@ -32,33 +32,33 @@ Feature: Mail Shipping Label - 8 ½” x 11” FCM PSG Paper
   Scenario: Shipping Label - 8 ½” x 11” PSG Paper
 
    #mail_print_shipping_label_8x11_psg_large_package
-    Then select Print On Shipping Label - Paper
+    Then select print on Shipping Label - Paper
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Print form service PSG Large Package
+    Then select print form service PSG Large Package
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_shipping_label_8x11_psg_oversized_package
-    Then select Print On Shipping Label - Paper
+    Then select print on Shipping Label - Paper
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Print form service PSG Oversized Package
+    Then select print form service PSG Oversized Package
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_shipping_label_8x11_psg_package
-    Then select Print On Shipping Label - Paper
+    Then select print on Shipping Label - Paper
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Print form service PSG Package/Flat/Thick Envelope
+    Then select print form service PSG Package/Flat/Thick Envelope
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
-    Then Sign out
+    Then sign out

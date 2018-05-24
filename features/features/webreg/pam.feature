@@ -28,6 +28,6 @@ Feature: PAM page
     Then On PAM AppCap Overrides page, set Allow High Risk Countries to Always On
     Then On PAM AppCap Overrides page, Submit
     Then store username to data file registration_pam
-    Then Pause for 4 seconds
+    Then pause for 4 seconds
 
 

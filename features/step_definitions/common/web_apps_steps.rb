@@ -92,7 +92,7 @@ Then /^[Ss]ign-in to [Ww]eb [Aa]pps as (.*), (.*)$/ do |username, password|
   expect(stamps.mail.sign_in_modal.mail_sign_in(username, password)).to eql(username) if SdcEnv.sdc_app == :mail
 end
 
-Then /^[Ss]ign out$/ do
+Then /^sign out$/ do
   if SdcEnv.new_framework
     #skip for now
   else

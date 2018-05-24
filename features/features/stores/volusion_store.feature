@@ -40,7 +40,7 @@ Feature: Volusion New Customer
     Then Volusion Checkout: Place Order
 
     Then Volusion Account: Click My Account
-    Then Volusion Account: Sign out
+    Then Volusion Account: sign out
 
     Then Volusion Login:  Set Email Address to qaclient@stamps.com
     Then Volusion Login:  Set Password to pass111

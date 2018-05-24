@@ -66,14 +66,14 @@ Feature: Registration
 
     Then load Web Apps Sign-in page
     Then Orders: Sign-in as new user ss_sctest_b4/password1
-    Then Pause for 2 seconds
+    Then pause for 2 seconds
     Then add new order
-    Then Pause for 1 second
+    Then pause for 1 second
     Then click orders toolbar settings button
     Then set general settings logoff to 2 hours
     Then In Settings modal, Save
     Then Navigation Bar: Customer Balance
     Then Navigation Bar: Wait while balance less than 5000
-    Then Sign out
+    Then sign out
     Then send username to standard out
-    Then Pause for 1 second
+    Then pause for 1 second

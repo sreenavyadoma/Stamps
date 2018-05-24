@@ -26,4 +26,4 @@ Feature: ShipStation Post Upgrade Path
     Then search Marketplace for store name opencart
     Then expect Marketplace modal Available in ShipStation Message present in opencart
 
-    Then Sign out
+    Then sign out

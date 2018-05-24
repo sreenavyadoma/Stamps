@@ -6,4 +6,4 @@ Feature: B-01746 Order Pagination
   @page_enabled
   Scenario: Number of orders is > 'number of orders per page' pagination control
 
-    Then Sign out
+    Then sign out
