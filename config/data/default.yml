@@ -9,12 +9,21 @@ setup:
     chromedriver: tbd
 
 sql_server_pp:
-  server: qa-clientdb14-v.corp.stamps.com
-  database: PartnerPortal
-  port: 1433
-  username: corp\lab
-  password: Sdcqatest623
-  azure: false
+   qacc:
+      server: qa-clientdb14-v.corp.stamps.com
+      database: PartnerPortal
+      port: 1433
+      username: corp\lab
+      password: Sdcqatest623
+      azure: false
+   stg:
+     server: vsdc04db.staging.stamps.com
+     database: PartnerPortal
+     port: 1433
+     username: corp\lab
+     password: Sdcqatest623
+     azure: false
+
 
 rates_test:
   rate_file: rate_file.xls
