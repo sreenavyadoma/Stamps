@@ -1,4 +1,4 @@
-default: --backtrace --profile rob
+default: --backtrace --profile mhossain1_cc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -28,6 +28,7 @@ saucelabs_iphonex_cc: --tags @saucelabs_poc MOBILE='iphone x' LOG_LEVEL=info  UR
 saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1
 saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1
 
+
 #mhossain1_cc: --tags @registration_normal_workflow WEB_APP=orders JENKINS=true URL=cc LOG_LEVEL=info BROWSER=ff MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
 #mhossain1_cc: --tags @registration_ui_validation_profile_page JENKINS=true URL=cc VERBOSE=true BROWSER=edge MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
 
@@ -37,8 +38,11 @@ saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=passw
 #mhossain1_cc: --tags @pp_dashboard_single_contract_ui_validaiton JENKINS=true URL=qacc BROWSER=ff USR=wteam@stamps.com PW=password1
 #mhossain1_cc: --tags @pp_dashboard_single_contract_ui_validaiton JENKINS=true URL=qacc BROWSER_MOBILE_EMULATOR=gc,'Pixel 2 XL' USR=wteam@stamps.com PW=password1
 #mhossain1_cc: --tags @pp_dashboard_single_contract_chart_data_validation JENKINS=true URL=qacc BROWSER=ff USR=wteam@stamps.com PW=password1
-#mhossain1_cc: --tags @pp_authenticate JENKINS=true URL=qacc BROWSER=ff USR=wteam@stamps.com PW=password1
-mhossain1_cc: --tags @pp_footer JENKINS=true URL=qacc BROWSER=ff USR=wteam@stamps.com PW=password1
+#mhossain1_cc: --tags @pp_authenticate JENKINS=true URL=qacc BROWSER=edge USR=wteam@stamps.com PW=password1
+#mhossain1_cc: --tags @pp_footer JENKINS=true URL=qacc BROWSER=ff USR=wteam@stamps.com PW=password1
+#mhossain1_cc: --tags @pp_left_panel JENKINS=true URL=qacc BROWSER=ff USR=wteam@stamps.com PW=password1
+#mhossain1_cc: --tags @pp_left_panel JENKINS=true URL=qacc BROWSER_MOBILE_EMULATOR=gc,'iPad' USR=wteam@stamps.com PW=password1
+mhossain1_cc: --tags @pp_left_panel_mobile JENKINS=true URL=qacc BROWSER_MOBILE_EMULATOR=gc,'Pixel 2 XL' USR=wteam@stamps.com PW=password1
 
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess  HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
@@ -555,3 +559,5 @@ pp_dashboard_single_contract_ui_validaiton: --tags @pp_dashboard_single_contract
 pp_dashboard_single_contract_chart_data_validation: --tags @pp_dashboard_single_contract_chart_data_validation --guess JENKINS=true
 pp_authenticate: --tags @pp_authenticate --guess JENKINS=true
 pp_footer: --tags @pp_footer --guess JENKINS=true
+pp_left_panel: --tags @pp_left_panel --guess JENKINS=true
+pp_left_panel_mobile: --tags @pp_left_panel_mobile --guess JENKINS=true
