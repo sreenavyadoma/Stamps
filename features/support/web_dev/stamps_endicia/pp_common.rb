@@ -10,17 +10,17 @@ module PartnerPortal
     #Partner Portal logo
     page_object(:partner_portal_logo)  { { xpath:  '//h3[contains(text(), "Partner Portal")]' } }
 
-    #Panel Dashboard
+    #Panel Content
     page_object(:panel_dashboard) { { xpath: '//a[contains(text(), "Dashboard")]' } }
     page_object(:panel_logout) { { xpath: '//a[contains(text(), "Logout")]' } }
+    page_object(:panel_usps_logo) { { class: ['sidebar-footer'] } }
+    page_object(:panel_partner_logo) { { class: ['sidebar-logo'] } }
 
     #xs viewport
     #hamburger button
     page_object(:hamburger_button_xs)  { { class:  ['hamburger hamburger-slider visible-xs'] } }
-
     #x button
     page_object(:x_button)  { { class:  ['hamburger hamburger-slider is-active visible-xs'] } }
-
     #Left Panel
     page_object(:panel_collapsed_xs)  { { class:  ['sidebar'] } }
     page_object(:panel_expanded_xs)  { { class:  ['sidebar sidebar_expanded-xs'] } }
@@ -28,7 +28,7 @@ module PartnerPortal
     #Normal viewport left panel
     page_object(:panel_hamburger) { { class: ['hamburger hamburger-slider hamburger-arrow hamburger-sidebar'] } }
     page_object(:panel_arrow) { { class: ['hamburger hamburger-slider is-active hamburger-arrow hamburger-sidebar'] } }
-
+    #Left Panel
     page_object(:panel_collapsed_lg)  { { class:  ['sidebar sidebar_collapsed'] } }
     page_object(:panel_expanded_lg)  { { class:  ['sidebar'] } }
 
@@ -40,6 +40,8 @@ module PartnerPortal
     page_object(:stamps_privacy_policy_link) { {xpath:  '//a[@href="https://www.stamps.com/privacy-policy/"]'} }
     page_object(:endicia_privacy_policy_link) { {xpath:  '//a[@href="https://www.endicia.com/policy/privacy-policy/"]'} }
 
+    #pop ups
+    page_object(:error_ok)  { { xpath:  '//button[@label="OK"]' } }
 
     def user_table_query(user, column)
       user = PartnerPortal.db_connection.execute("select * from [dbo].[sdct_PartnerPortal_User] where EmailAddress = '#{user}'")
@@ -123,6 +125,19 @@ module PartnerPortal
           'var d = new Date();
           d.setHours(d.getHours() - 3);
           window.localStorage.setItem("_ate", window.btoa(d.toString()));')
+    end
+
+    def partner_logo_query(user)
+      logo = PartnerPortal.db_connection.execute(
+        "select pp_user.EmailAddress, pp_account.AccountName, pp_asset.AssetPath
+        from [dbo].[sdct_PartnerPortal_Asset] as pp_asset
+        inner join [dbo].[sdct_PartnerPortal_Account] as pp_account on  pp_account.AssetId = pp_asset.AssetId
+        inner join [dbo].[sdct_PartnerPortal_User] as pp_user on pp_user.PartnerAccountId = pp_account.PartnerAccountId
+        where pp_user.EmailAddress = '#{user}'")
+
+      logo.each do |item|
+        return item['AssetPath']
+      end
     end
 
   end
