@@ -59,12 +59,13 @@ module Stamps
 
   class PartnerPortalDB < BasicObject
     def initialize
-      server = data_for(:sql_server_pp, {})[("#{SdcEnv.url}")]['server']
-      database = data_for(:sql_server_pp, {})['qacc']['database']
-      port = data_for(:sql_server_pp, {})[SdcEnv.url]['port']
-      username = data_for(:sql_server_pp, {})[SdcEnv.url]['username']
-      password = data_for(:sql_server_pp, {})[SdcEnv.url]['password']
-      azure = data_for(:sql_server_pp, {})[SdcEnv.url]['azure']
+      env = ::SdcEnv.env.to_s
+      server = data_for(:sql_server_pp, {})[env]['server']
+      database = data_for(:sql_server_pp, {})[SdcEnv.env]['database']
+      port = data_for(:sql_server_pp, {})[SdcEnv.env]['port']
+      username = data_for(:sql_server_pp, {})[SdcEnv.env]['username']
+      password = data_for(:sql_server_pp, {})[SdcEnv.env]['password']
+      azure = data_for(:sql_server_pp, {})[SdcEnv.env]['azure']
       @connection = SQLServerClient.new(server: server, database: database, username: username, password: password, port: port, azure:azure)
     end
 
