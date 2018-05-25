@@ -77,7 +77,7 @@ Then /^set print modal ship date to today plus (\d+)$/ do |day|
   step "expect print modal ship date dropdown is present"
   if SdcEnv.new_framework
     text_field = SdcOrders.modals.print.ship_date.text_field
-    date = TestHelper.today_plus(day)
+    date = TestHelper.shipdate_today_plus(day)
     text_field.set_attribute('value', date)
   else
     stamps.orders.modals.orders_print_modal.ship_date.textbox.set(TestHelper.today_plus(day))
@@ -92,7 +92,7 @@ Then /^set print modal ship date to today$/ do
   step "expect print modal ship date dropdown is present"
   if SdcEnv.new_framework
     text_field = SdcOrders.modals.print.ship_date.text_field
-    date = TestHelper.today_plus(0)
+    date = TestHelper.shipdate_today_plus(0)
     text_field.set_attribute('value', date)
   else
     stamps.orders.modals.orders_print_modal.ship_date.textbox.set(TestHelper.today_plus(0))

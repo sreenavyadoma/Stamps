@@ -330,9 +330,18 @@ module Stamps
         "#{hours}:00 a.m."
       end
 
-      # add +1 to day if day is a Sunday. We don't ship on Sundays.
       def shipdate_today_plus(day)
-        ((Date.today + day.to_i).wday.zero?) ? (Date.today + day.to_i + 1).strftime('%b %-d') : (Date.today + day.to_i).strftime('%b %-d')
+        days = []
+        count, d = 0, 0
+        loop do
+          while (Date.today + d.to_i).wday.zero? || Holidays.on(Date.today + d.to_i, :us).size != 0 || days.include?(d)
+            d += 1
+          end
+          days<<d
+          count += 1
+          break if count > day
+        end
+        (Date.today + days.last.to_i).strftime('%b %-d')
       end
 
       # takes a date string format "11/21/2017" and converts it to "Nov 21"
