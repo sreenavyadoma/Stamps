@@ -67,7 +67,7 @@ end
 Then /^expect customs non-delivery options is (?:correct|(.*))$/ do |expectation|
   expectation ||= TestData.hash[:customs_non_delivery_options]
   if SdcEnv.new_framework
-    expect(SdcWebsite.customs_form.non_delivery.text_field.text_value).to eql(expectation), 'Package Content is incorrect'
+    expect(SdcWebsite.customs_form.non_delivery.text_field.text_value).to eql(expectation)
   else
     actual = ''
     10.times do
@@ -147,7 +147,7 @@ Then /^set customs itn number to (?:(?:a|some) random string|(.*))$/ do |value|
   value ||= TestHelper.rand_alpha_numeric(8, 50)
   if SdcEnv.new_framework
     SdcWebsite.customs_form.itn.set(value) unless SdcWebsite.customs_form.itn.class_disabled?
-    step "expect Customs ITN Number is #{value}"
+    step "expect customs i agree to the usps privacy act statement is checked #{value}"
   else
     stamps.common_modals.customs_form.itn_number.set(value) if SdcEnv.sdc_app == :orders
     stamps.mail.print_form.mail_customs.edit_customs_form.itn_number.set(value) if SdcEnv.sdc_app == :mail
@@ -156,16 +156,11 @@ Then /^set customs itn number to (?:(?:a|some) random string|(.*))$/ do |value|
   TestData.hash[:customs_itn_no] = value
 end
 
-Then /^[Ee]xpect Customs ITN Number is (?:correct|(.*))$/ do |expectation|
+Then /^expect customs i agree to the usps privacy act statement is checked (?:correct|(.*))$/ do |expectation|
   expectation ||= TestData.hash[:customs_itn_no]
-  if SdcEnv.new_framework
-    expect(SdcWebsite.customs_form.itn.class_disabled?).to be(false), 'ITN number is disabled'
-    expect(SdcWebsite.customs_form.itn.text_value).to eql(expectation), 'ITN number is incorrect'
-  else
-    sleep(0.5)
-    expect(stamps.common_modals.customs_form.itn_number.text).to eql(expectation) if SdcEnv.sdc_app == :orders
-    expect(stamps.mail.print_form.mail_customs.edit_customs_form.itn_number.text).to eql(expectation) if SdcEnv.sdc_app == :mail
-  end
+  expect(SdcWebsite.customs_form.itn.class_disabled?).to be(false), 'ITN number is disabled'
+  expect(SdcWebsite.customs_form.itn.text_value).to eql(expectation)
+
 end
 
 Then /^set customs license number to (?:(?:a|some) random string|(.*))$/ do |value|

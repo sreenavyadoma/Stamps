@@ -357,9 +357,9 @@ Feature:  BVT tests for Orders
     Then expect customs certificate number is correct
     Then expect customs invoice number is correct
 
-     #Then expect customs non-delivery options is Treat as abandoned
-     #Then expect customs internal transaction number is Required
-     #Then expect Customs ITN Number is correct
+    Then expect customs non-delivery options is Treat as abandoned
+    Then expect customs internal transaction number is Required
+    Then expect customs i agree to the usps privacy act statement is checked correct
 
     Then expect customs associated item 1 Description is correct
     Then expect customs associated item 1 Quantity is correct
@@ -387,8 +387,8 @@ Feature:  BVT tests for Orders
     Then expect orders grid city is correct
     Then expect orders grid state is correct
     Then expect orders grid zip is correct
-     #Then expect orders grid phone is correct
-     #Then expect orders grid email is correct
+    Then expect orders grid phone is correct
+    Then expect orders grid email is correct
 
     Then expect orders grid qty. is 6
     Then expect orders grid item sku is Multiple
