@@ -515,7 +515,7 @@ Feature: BVT for Mail page
     Then expect customs associated item 3 Made In is correct
     Then expect customs associated item 3 Tariff is correct
 
-    Then expect Customs I agree to the USPS Privacy Act Statement is checked
+    Then expect customs i agree to the usps privacy act statement is checked
     Then expect Customs Total Value is correct
     Then close customs information form
 

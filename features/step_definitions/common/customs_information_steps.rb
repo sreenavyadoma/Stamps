@@ -269,14 +269,8 @@ Then /^check customs form i agree to the usps privacy act statement$/ do
   end
 end
 
-Then /^[Ee]xpect Customs I agree to the USPS Privacy Act Statement is checked$/ do
-  if SdcEnv.new_framework
-    expect(SdcWebsite.customs_form.agree.checked?).to be(true), 'I agree to the USPS Privacy Act Statement is not checked'
-  else
-    sleep(0.5)
-    expect(stamps.common_modals.customs_form.agree_to_terms.checked?).to be(true) if SdcEnv.sdc_app == :orders
-    expect(stamps.mail.print_form.mail_customs.edit_customs_form.agree_to_terms.checked?).to be(true) if SdcEnv.sdc_app == :mail
-  end
+Then /^expect customs i agree to the usps privacy act statement is checked$/ do
+  expect(SdcWebsite.customs_form.agree.checked?).to be(true), 'I agree to the USPS Privacy Act Statement is not checked'
 end
 
 Then /^[Uu]ncheck customs form i agree to the usps privacy act statement$/ do

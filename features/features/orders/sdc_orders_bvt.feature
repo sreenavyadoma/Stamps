@@ -283,7 +283,6 @@ Feature:  BVT tests for Orders
   Scenario:  Update ShipStation for International
     Then sign-in to Orders
     Then add new order
-#    Then blur out on order details form
     Then set order details ship-to international address to
       | full_name     | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country| phone         |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | India  | Random phone  | Random email  |
@@ -295,12 +294,10 @@ Feature:  BVT tests for Orders
     Then on order details form, add item 1, qty 1, id ID 1, description Description 1
     Then on order details form, add item 2, qty 2, id random string, description random string
     Then on order details form, add item 3, qty 3, id ID 3, description random string
-
     Then expect orders grid service is Priority Mail International
     Then expect orders grid service is PMI Package/Flat/Thick Envelope
     Then expect orders grid service is correct
 
-#  # Edit the customs form
     Then click order details form customs form button
     Then expect customs i agree to the usps privacy act statement is unchecked
     Then set customs package contents to Document
@@ -312,26 +309,20 @@ Feature:  BVT tests for Orders
     Then expect customs certificate number is correct
     Then set customs invoice number to a random string
     Then expect customs invoice number is correct
-
     Then set customs non-delivery options to Treat as abandoned
     Then expect customs non-delivery options is Treat as abandoned
-
     Then set customs internal transaction number to Required
     Then expect customs internal transaction number is Required
-
     Then set customs itn number to ITN123
-
     Then add customs associated item 1, description Item 1, qty 1, Price 1, Made In United States, Tariff 1
     Then add customs associated item 2, description Item 2, qty 2, Price 2, Made In Japan, Tariff 2
     Then add customs associated item 3, description Random String, qty 3, Price 3, Made In Canada, Tariff 3
-
     Then check customs form i agree to the usps privacy act statement
     Then close customs information form
 
     Then pause for 1 second
     Then blur out on order details form
     Then uncheck orders grid order id cached
-   #Then Refresh the driver
     Then pause for 3 seconds
     Then check orders grid order id cached
     Then pause for 2 seconds
@@ -345,26 +336,19 @@ Feature:  BVT tests for Orders
     Then expect order details international ship-to postal code is correct
     Then expect order details international ship-to phone is correct
     Then expect order details international ship-to email is correct
-
     Then expect order details reference number is correct
     Then expect order details service cost is correct
-
     Then expect order details pounds is 2
     Then expect order details ounces is 2
-
     Then expect order details associated item 1 qty is 1
     Then expect order details associated item 1 ID is ID 1
     Then expect order details associated item 1 Description is Description 1
-
     Then expect order details associated item 2 qty is 2
     Then expect order details associated item 2 ID is correct
     Then expect order details associated item 2 Description is correct
-
-
     Then expect order details associated item 3 qty is 3
     Then expect order details associated item 3 ID is ID 3
     Then expect order details associated item 3 Description is correct
-
     Then expect order details insure-for is correct
     Then click order details form customs form button
     Then pause for 2 second
@@ -382,19 +366,17 @@ Feature:  BVT tests for Orders
     Then expect customs associated item 1 Unit Price is correct
     Then expect customs associated item 1 Made In is correct
     Then expect customs associated item 1 Tariff is correct
-
     Then expect customs associated item 2 Description is correct
     Then expect customs associated item 2 Quantity is correct
     Then expect customs associated item 2 Unit Price is correct
     Then expect customs associated item 2 Made In is correct
-
     Then expect customs associated item 3 Description is correct
     Then expect customs associated item 3 Quantity is correct
     Then expect customs associated item 3 Unit Price is correct
     Then expect customs associated item 3 Made In is correct
     Then expect customs associated item 3 Tariff is correct
 
-      #Then expect Customs I agree to the USPS Privacy Act Statement is checked
+    Then expect customs i agree to the usps privacy act statement is checked
     Then expect Customs Total Value is correct
     Then close customs information form
 
