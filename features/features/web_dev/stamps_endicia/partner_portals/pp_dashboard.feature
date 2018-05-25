@@ -105,10 +105,10 @@ Feature: PP-MVP: Dashboard Page Single Contract
     Then PP: expect dashboard page from date date picker exists
     Then PP: expect export to date label to be To:
     Then PP: expect dashboard page to date field exists
-    Then PP: expect dashboard page to date date picker exists
+    Then PP: expect dashboard page to date picker exists
     Then PP: expect dashboard page download button exists
 
-     #validate different error messages of the fromdate and todate fields
+     #validate different error messages of the from date and to date fields
     Then PP: click on the dashboard page download button
     Then PP: expect error message to be 6 characters minimum.
     Then PP: set dashboard page from date field to 25/25/25

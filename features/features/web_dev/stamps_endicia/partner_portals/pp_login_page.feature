@@ -61,11 +61,11 @@ Feature: PP-MVP: Login Page
         Then PP: expect login page password tooltip count is 1
         Then PP: expect login page password tooltip index 1 to be 8 character minimum.
 
-      #Valiadate email and password can't be the same
-        Then PP: set login page email to abc1@stamps.com
-        Then PP: set login page password to abc1@stamps.com
-        Then PP: User clicks Log In
-        Then PP: expect login page password tooltip index 1 to be Cannot match email.
+#      #Valiadate email and password can't be the same
+#        Then PP: set login page email to abc1@stamps.com
+#        Then PP: set login page password to abc1@stamps.com
+#        Then PP: User clicks Log In
+#        Then PP: expect login page password tooltip index 1 to be Cannot match email.
 
 
       #validate incorrect email or password message

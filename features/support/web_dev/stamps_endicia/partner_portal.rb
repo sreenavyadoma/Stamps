@@ -79,7 +79,16 @@ module PartnerPortal
     page_objects(:active_customers_customers_chart_legends, index: 2) { { xpath:  '//ul[@class="ppchart__legend"]' } }
     page_objects(:revenue_share_chart_legends, index: 3) { { xpath:  '//ul[@class="ppchart__legend"]' } }
 
-    button(:submit) { { xpath: '//button[@label="Submit"]' } }
+    page_object(:export_data_header) { { xpath: '//h3[contains(text(), "Export Data")]' } }
+    page_object(:export_data_content) { { xpath: '//p[contains(text(), "Select a date range to export transaction level data as a CSV file.")]' } }
+    page_object(:from_label) { { class: [''] } }
+    text_field(:from_date_field, tag: :text_field, required: true) { { name: 'password' } }
+    page_object(:from_date_date_picker) { { class: [''] } }
+    page_object(:to_label) { { class: [''] } }
+    page_object(:to_date_field) { { class: [''] } }
+    page_object(:to_date_picker) { { class: [''] } }
+    button(:download) { { class: ['ui-button ui-widget ui-state-default ui-corner-all ui-button-text-empty'] } }
+
 
     def x_axis_month_abbreviations
       return SdcPage.browser.execute_script('return window.ChartsData.Charts.PrefRatesQualifiedPostageAmount.labels'),
@@ -122,10 +131,8 @@ module PartnerPortal
 
   end
 
-  ##
-  # 
   class PPResetPasswordConfirmationPage < SdcPage
-    #header todo-Mohammed this is redundant
+    #header
     page_object(:header) { { xpath:  '//h1[contains(text(), "Reset Email Sent")]'} }
 
     page_url { |env| "https://partner.#{env}.stamps.com/reset-password/request/confirmation" }
