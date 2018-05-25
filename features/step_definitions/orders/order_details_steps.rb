@@ -36,7 +36,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) Qty to (.*)$/ do |item_n
   TestData.hash[:details_associated_items][item_number] = {} unless TestData.hash[:details_associated_items].has_key?(item_number)
   TestData.hash[:details_associated_items][item_number][:item_qty] = qty
   if SdcEnv.new_framework
-    SdcOrders.order_details.associated_item.qty(1).set(TestData.hash[:details_associated_items][item_number][:item_qty])
+    SdcOrders.order_details.associated_item.item_qty(item_number).set(TestData.hash[:details_associated_items][item_number][:item_qty])
   else
     stamps.orders.order_details.items_ordered.item(item_number.to_i).item_qty.set(TestData.hash[:details_associated_items][item_number][:item_qty] )
   end
@@ -48,7 +48,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) ID to (.*)$/ do |item_nu
   TestData.hash[:details_associated_items][item_number] = {} unless TestData.hash[:details_associated_items].has_key?(item_number)
   TestData.hash[:details_associated_items][item_number][:item_id] = (str.downcase.include?('random') ? TestHelper.rand_alpha_numeric : str)
   if SdcEnv.new_framework
-    SdcOrders.order_details.associated_item.id(1).set(TestData.hash[:details_associated_items][item_number][:item_id])
+    SdcOrders.order_details.associated_item.id(item_number).set(TestData.hash[:details_associated_items][item_number][:item_id])
   else
     stamps.orders.order_details.items_ordered.item(item_number.to_i).item_id.set(TestData.hash[:details_associated_items][item_number][:item_id])
   end
@@ -60,7 +60,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) Description to (.*)$/ do
   TestData.hash[:details_associated_items][item_number] = {} unless TestData.hash[:details_associated_items].has_key?(item_number)
   TestData.hash[:details_associated_items][item_number][:item_description] = (str.downcase.include?('random') ? TestHelper.rand_alpha_numeric : str)
   if SdcEnv.new_framework
-    SdcOrders.order_details.associated_item.description(1).set(TestData.hash[:details_associated_items][item_number][:item_description])
+    SdcOrders.order_details.associated_item.description(item_number).set(TestData.hash[:details_associated_items][item_number][:item_description])
   else
     stamps.orders.order_details.items_ordered.item(item_number.to_i).item_description.set(TestData.hash[:details_associated_items][item_number][:item_description])
   end

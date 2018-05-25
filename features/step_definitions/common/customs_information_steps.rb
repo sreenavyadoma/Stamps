@@ -17,11 +17,7 @@ Then /^click (?:order details|print) form (?:edit customs|edit|customs) form but
 end
 
 Then /^[Ee]xpect [Cc]ustoms [Ff]orm is [Pp]resent$/ do
-  if SdcEnv.new_framework
-    expect(SdcWebsite.customs_form.title).to be_present, 'Customs form did not open'
-  else
-    expect(stamps.common_modals.customs_form).to be_present, 'Customs form did not open'
-  end
+  expect(SdcWebsite.customs_form.title).to be_present, 'Customs form did not open'
 end
 
 Then /^[Bb]lur [Oo]ut [Oo]n [Cc]ustoms [Ff]orm$/ do
@@ -51,13 +47,7 @@ end
 
 Then /^expect customs package contents is (?:correct|(.*))$/ do |expectation|
   expectation ||= TestData.hash[:customs_package_contents]
-  if SdcEnv.new_framework
-    expect(SdcWebsite.customs_form.package_contents.text_field.text_value).to eql(expectation), 'Package Content is incorrect'
-  else
-    sleep(0.15)
-    expect(stamps.common_modals.customs_form.package_contents.combobox.textbox.text).to eql(expectation) if SdcEnv.sdc_app == :orders
-    expect(stamps.mail.print_form.mail_customs.edit_customs_form.package_contents.combobox.textbox.text).to eql(expectation) if SdcEnv.sdc_app == :mail
-  end
+  expect(SdcWebsite.customs_form.package_contents.text_field.text_value).to eql(expectation), 'Package Content is incorrect'
 end
 
 Then /^set customs non-delivery options to (.*)$/ do |value|
@@ -112,13 +102,7 @@ end
 
 Then /^expect customs internal transaction number is (?:correct|(.*))$/ do |expectation|
   expectation ||= TestData.hash[:customs_internal_transaction_no]
-  if SdcEnv.new_framework
-    expect(SdcWebsite.customs_form.internal_transaction.text_field.text_value).to eql(expectation), 'Internal Transaction Number value is incorrect'
-  else
-    sleep(0.5)
-    expect(stamps.common_modals.customs_form.internal_transaction.textbox.text).to eql(expectation) if SdcEnv.sdc_app == :orders
-    expect(stamps.mail.print_form.mail_customs.edit_customs_form.internal_transaction.textbox.text).to eql(expectation) if SdcEnv.sdc_app == :mail
-  end
+  expect(SdcWebsite.customs_form.internal_transaction.text_field.text_value).to eql(expectation)
 end
 
 Then /^[Ss]et Customs More Info to (?:(?:a|some) random string|(.*))$/ do |value|
@@ -640,56 +624,26 @@ end
 
 Then /^expect customs associated item (\d+) Description is (.*)$/ do |item_number, expectation|
   expectation = expectation.eql?('correct') ? TestData.hash[:customs_associated_items][item_number][:description] : expectation
-  if SdcEnv.new_framework
-    expect(SdcWebsite.customs_form.item.item_description(item_number).text_value).to eql(expectation), "Description of Item ##{item_number} is incorrect"
-  else
-    sleep(0.5)
-    expect(stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).item_description.text).to eql(expectation) if SdcEnv.sdc_app == :orders
-    expect(stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).item_description.text).to eql(expectation) if SdcEnv.sdc_app == :mail
-  end
+  expect(SdcWebsite.customs_form.item.item_description(item_number).text_value).to eql(expectation), "Description of Item ##{item_number} is incorrect"
 end
 
 Then /^expect customs associated item (\d+) Quantity is (.*)$/ do |item_number, expectation|
   expectation = expectation.is_a?(Numeric) ? expectation : TestData.hash[:customs_associated_items][item_number][:quantity]
-  if SdcEnv.new_framework
-    expect(SdcWebsite.customs_form.item.qty(item_number).text_value.to_i).to eql(expectation.to_i), "Qty of Item ##{item_number} is incorrect"
-  else
-    sleep(0.5)
-    expect(stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).item_qty.textbox.text.to_i).to eql(expectation.to_i) if SdcEnv.sdc_app == :orders
-    expect(expectation.to_i).to eql(stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).item_qty.textbox.text.to_i) if SdcEnv.sdc_app == :mail
-  end
+  expect(SdcWebsite.customs_form.item.qty(item_number).value.to_i).to eql(expectation.to_i), "Qty of Item ##{item_number} is incorrect"
 end
 
 Then /^expect customs associated item (\d+) Unit Price is (.*)$/ do |item_number, expectation|
   expectation = expectation.is_a?(Numeric) ? expectation : TestData.hash[:customs_associated_items][item_number][:price]
-  if SdcEnv.new_framework
-    expect(SdcWebsite.customs_form.item.unit_price(item_number).text_value.to_f).to eql(expectation.to_f), "Unit Price of Item ##{item_number} is incorrect"
-  else
-    sleep(0.5)
-    expect(stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).unit_price.textbox.text.to_f).to eql(expectation.to_f) if SdcEnv.sdc_app == :orders
-    expect(stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).unit_price.textbox.text.to_f).to eql(expectation.to_f) if SdcEnv.sdc_app == :mail
-  end
+  expect(SdcWebsite.customs_form.item.unit_price(item_number).value.to_f).to eql(expectation.to_f), "Unit Price of Item ##{item_number} is incorrect"
 end
 
 Then /^expect customs associated item (\d+) Made In is (.*)$/ do |item_number, expectation|
   expectation = expectation.eql?('correct') ? TestData.hash[:customs_associated_items][item_number][:made_in] : expectation
-  if SdcEnv.new_framework
-    expect(SdcWebsite.customs_form.item.made_in.text_field(item_number).text_value).to eql(expectation), "Made In of Item ##{item_number} is incorrect"
-  else
-    sleep(0.5)
-    expect(stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).made_in.textbox.text).to eql(expectation) if SdcEnv.sdc_app == :orders
-    expect(stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).made_in.textbox.text).to eql(expectation) if SdcEnv.sdc_app == :mail
-  end
+  expect(SdcWebsite.customs_form.item.made_in.text_field(item_number).text_value).to eql(expectation), "Made In of Item ##{item_number} is incorrect"
 end
 
 Then /^expect customs associated item (\d+) Tariff is (.*)$/ do |item_number, expectation|
   expectation = expectation.eql?('correct') ? TestData.hash[:customs_associated_items][item_number][:tarriff] : expectation
-  if SdcEnv.new_framework
-    expect(dcWebsite.customs_form.item.hs_tariff(item_number).text_value.to_f).to eql(expectation.to_f), "Made In of Item ##{item_number} is incorrect"
-  else
-    sleep(0.5)
-    expect(stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).hs_tariff.text.to_f).to eql(expectation.to_f) if SdcEnv.sdc_app == :orders
-    expect(stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).hs_tariff.text.to_f).to eql(expectation.to_f) if SdcEnv.sdc_app == :mail
-  end
+  expect(SdcWebsite.customs_form.item.hs_tariff(item_number).text_value.to_f).to eql(expectation.to_f), "Made In of Item ##{item_number} is incorrect"
 end
 
