@@ -341,7 +341,7 @@ module Stamps
           count += 1
           break if count > day
         end
-        (Date.today + days.last.to_i).strftime('%b %-d')
+        (Date.today + days.last.to_i).strftime('%m/%d/%Y')
       end
 
       # takes a date string format "11/21/2017" and converts it to "Nov 21"

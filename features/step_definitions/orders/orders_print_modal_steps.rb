@@ -104,7 +104,7 @@ Then /^set print modal ship date to today$/ do
 end
 
 Then /^[Ss]elect [Pp]rint [Mm]odal [Ss]hip [Dd]ate [Dd]atepicker to (?:today|today plus (\d+))$/ do |day|
-  date = TestHelper.parse_date(TestHelper.today_plus(day))
+  date = TestHelper.parse_date(TestHelper.shipdate_today_plus(day))
   ship_date = SdcOrders.modals.print.ship_date
   ship_date.drop_down.click
   expect(ship_date.datepicker.head_link).to be_present, "Datepicker is not present"
