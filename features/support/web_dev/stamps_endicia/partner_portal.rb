@@ -35,16 +35,16 @@ module PartnerPortal
 
     def self.visit
       super(case SdcEnv.env
-              when :qacc
-                'qacc'
-              when :qasc
-                'sdcwebsite.qasc'
-              when :stg
-                'staging'
-              when :prod
-                ''
-              else
-                # ignore
+            when :qacc
+              'qacc'
+            when :qasc
+              'sdcwebsite.qasc'
+            when :stg
+              'staging'
+            when :prod
+              ''
+            else
+              # ignore
             end)
     end
 
@@ -87,10 +87,10 @@ module PartnerPortal
     button(:submit) { { xpath: '//button[@label="Submit"]' } }
 
     def x_axis_month_abbreviations
-     return SdcPage.browser.execute_script('return window.ChartsData.Charts.PrefRatesQualifiedPostageAmount.labels'),
-     SdcPage.browser.execute_script('return window.ChartsData.Charts.PrefRatesQualifiedPostageCount.labels'),
-     SdcPage.browser.execute_script('return window.ChartsData.Charts.ActiveCustomers.labels'),
-     SdcPage.browser.execute_script('return window.ChartsData.Charts.RevenueShare.labels')
+      return SdcPage.browser.execute_script('return window.ChartsData.Charts.PrefRatesQualifiedPostageAmount.labels'),
+          SdcPage.browser.execute_script('return window.ChartsData.Charts.PrefRatesQualifiedPostageCount.labels'),
+          SdcPage.browser.execute_script('return window.ChartsData.Charts.ActiveCustomers.labels'),
+          SdcPage.browser.execute_script('return window.ChartsData.Charts.RevenueShare.labels')
     end
 
   end
@@ -112,21 +112,23 @@ module PartnerPortal
 
     def self.visit
       super(case SdcEnv.env
-              when :qacc
-                'qacc'
-              when :qasc
-                'sdcwebsite.qasc'
-              when :stg
-                'staging'
-              when :prod
-                ''
-              else
-                # ignore
+            when :qacc
+              'qacc'
+            when :qasc
+              'sdcwebsite.qasc'
+            when :stg
+              'staging'
+            when :prod
+              ''
+            else
+              # ignore
             end)
     end
 
   end
 
+  ##
+  # 
   class PPResetPasswordConfirmationPage < SdcPage
     #header
     page_object(:header) { { xpath:  '//h1[contains(text(), "Reset Email Sent")]'} }
@@ -135,16 +137,16 @@ module PartnerPortal
 
     def self.visit
       super(case SdcEnv.env
-              when :qacc
-                'qacc'
-              when :qasc
-                'sdcwebsite.qasc'
-              when :stg
-                'staging'
-              when :prod
-                ''
-              else
-                # ignore
+            when :qacc
+              'qacc'
+            when :qasc
+              'sdcwebsite.qasc'
+            when :stg
+              'staging'
+            when :prod
+              ''
+            else
+              # ignore
             end)
     end
   end
@@ -154,16 +156,16 @@ module PartnerPortal
 
     def self.visit
       super(case SdcEnv.env
-              when :qacc
-                'qacc'
-              when :qasc
-                'sdcwebsite.qasc'
-              when :stg
-                'staging'
-              when :prod
-                ''
-              else
-                # ignore
+            when :qacc
+              'qacc'
+            when :qasc
+              'sdcwebsite.qasc'
+            when :stg
+              'staging'
+            when :prod
+              ''
+            else
+              # ignore
             end)
     end
   end
@@ -173,16 +175,16 @@ module PartnerPortal
 
     def self.visit
       super(case SdcEnv.env
-              when :qacc
-                'qacc'
-              when :qasc
-                'sdcwebsite.qasc'
-              when :stg
-                'staging'
-              when :prod
-                ''
-              else
-                # ignore
+            when :qacc
+              'qacc'
+            when :qasc
+              'sdcwebsite.qasc'
+            when :stg
+              'staging'
+            when :prod
+              ''
+            else
+              # ignore
             end)
     end
 
@@ -193,16 +195,16 @@ module PartnerPortal
 
     def self.visit
       super(case SdcEnv.env
-              when :qacc
-                'qacc'
-              when :qasc
-                'sdcwebsite.qasc'
-              when :stg
-                'staging'
-              when :prod
-                ''
-              else
-                # ignore
+            when :qacc
+              'qacc'
+            when :qasc
+              'sdcwebsite.qasc'
+            when :stg
+              'staging'
+            when :prod
+              ''
+            else
+              # ignore
             end)
     end
 
