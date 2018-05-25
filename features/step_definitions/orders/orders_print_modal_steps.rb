@@ -161,7 +161,7 @@ end
 Then /^expect print modal ship date is (\d+) (?:day|days) from today$/ do |day|
   step "expect print modal ship date dropdown is present"
   if SdcEnv.new_framework
-    expect(SdcOrders.modals.print.ship_date.text_field.text_value).to eql(TestHelper.date_printed(day))
+    expect(SdcOrders.modals.print.ship_date.text_field.text_value).to eql(TestHelper.shipdate_today_plus(day))
   else
     expect(stamps.orders.modals.orders_print_modal.ship_date.textbox.text).to eql(TestHelper.date_printed(day))
   end
