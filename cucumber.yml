@@ -1,4 +1,4 @@
-default: --backtrace --profile rob
+default: --backtrace --profile eli_dev
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -43,7 +43,7 @@ mhossain1_cc: --tags @pp_footer JENKINS=true URL=qacc BROWSER=ff USR=wteam@stamp
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess  HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 
-eli_dev: --tags @mail_manage_printing_options --guess  JENKINS=false HEALTHCHECK=true WEB_APP=mail URL=stg BROWSER=ff USR=hal9000stage25 PW=password1 PRINTER=Automation Printer NEW_FRAMEWORK=true
+eli_dev: --tags @mail_authentication --guess  JENKINS=false HEALTHCHECK=true WEB_APP=mail URL=stg BROWSER=ff USR=hal9000stage23 PW=password1 PRINTER=Automation Printer NEW_FRAMEWORK=true
 ray_dev: --tags @rates_parcel_select_ground --guess  JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff USR=default PW=pass111
 sap:              --tags @registration_orders WEB_APP=registration URL=cc --guess  BROWSER=ff MAX_WINDOW=false
 

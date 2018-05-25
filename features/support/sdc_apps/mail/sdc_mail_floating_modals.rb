@@ -13,7 +13,7 @@ module SdcMail
   end
 
   class SdcWhatsNew < SdcPage
-    page_object(:title) { {xpath: '//div[contains(text(), "What\'s New in Mail?")]'} }
+    page_object(:title) { {xpath: '//div[contains(text(), "What")]'} }
     page_object(:close) { {xpath: '//span[contains(text(), "Close")]'} }
     page_object(:more_info) { {xpath: '//span[contains(text(), "More Info")]'} }
   end

@@ -45,7 +45,7 @@ end
 
 
 Then /^close whats new modal in mail$/ do
-  if SdcMail.modals.whats_new.present?
+  if SdcMail.modals.whats_new.title.present?
     SdcMail.modals.whats_new.close.click
   end
 end
