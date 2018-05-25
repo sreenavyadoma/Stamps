@@ -405,6 +405,7 @@ Feature:  BVT tests for Orders
 
   @bvt_address_cleansing
   Scenario: BVT Address Cleansing
+    Then sign-in to Orders
     Then add new order
     Then set order details ship-to domestic address to
       | full_name     | company | street_address     | street_address_2| city          | state | zip | country       | phone          |  email           |
