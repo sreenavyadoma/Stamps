@@ -402,3 +402,21 @@ Feature:  BVT tests for Orders
 
     Then pause for 2 second
     Then sign out
+
+  @bvt_address_cleansing
+  Scenario: BVT Address Cleansing
+    Then add new order
+    Then set order details ship-to domestic address to
+      | full_name     | company | street_address     | street_address_2| city          | state | zip | country       | phone          |  email           |
+      | Euan Davidson | Betfair | 1350 Market Street |                 | San Francisco | CA    |     | United States | (415) 123-5555 | rtest@stamps.com |
+    Then set order details service to PM Package
+    Then set order details ounces to 1
+    Then blur out on order details form
+    Then pause for 2 seconds
+    Then expect orders grid recipient is Euan Davidson
+    Then expect orders grid company is Betfair
+    Then expect orders grid address is 1350 Market Street
+    Then expect orders grid city is San Francisco
+    Then expect orders grid state is CA
+    Then expect orders grid zip is 94102
+    Then sign out
