@@ -37,7 +37,7 @@ Feature:  Mail BVT - Authentication
     #Then check Shipping Label - 8 ½" x 11" Paper in Manage Print Options
     # Then click save on Manage Print Options
 
-#    Then show Advanced Options
+#    Then show advanced options
 #    Then expect Advanced Options Calculate Postage Amount radio button is present
 #    Then select Advanced Options Calculate Postage Amount
 #    Then expect Advanced Options Calculate Postage Amount is selected
@@ -66,7 +66,7 @@ Feature:  Mail BVT - Authentication
   @bvt_mail_piece_validation
   Scenario: Stamps B-Series
     Then select print on Stamps
-    Then show Advanced Options
+    Then show advanced options
     Then set Print form Serial Number to B12345
     Then select Advanced Options Specify Postage Amount
     Then set Print form Mail-From to default
@@ -90,7 +90,7 @@ Feature:  Mail BVT - Authentication
     Then set print form mail-to country to Japan
     Then set print form mail-to country to United States
     Then set print form mail-to to address to Address Cleansing, BVT, 1350 Market Street #2905, San Francisco, CA
-#    Then set Print form Ounces to 1
+#    Then set print form ounces to 1
 #    Then select print form service PM Package
 #    Then expect Print form Domestic Address field displays Address Cleansing, BVT, 1350 Market Street, San Francisco, CA 94102-5401
 #    Then Sign out
@@ -122,3 +122,64 @@ Feature:  Mail BVT - Authentication
     Then select print on Roll - 4 ⅛" x 6 ¼" Shipping Label
     Then select print on Stamps
     Then select print on Manage Printing Options...
+
+  @rob_test
+  Scenario: Advanced Options for Envelope - 10
+    Then select print on Shipping Label - 8 ½" x 11" Paper
+    #Then set Print form Mail-From to default
+    Then set print form mail-to to a random address in zone 1
+    Then select print form service PM Package
+    Then set print form pounds to 0
+    Then set print form ounces to 1
+
+    Then show advanced options
+    Then hide advanced options
+    Then show advanced options
+    #Then expect Advanced Options Extra Services Button is visible
+
+    Then set Advanced Options Mail Date to today
+    Then expect Advanced Options Mail Date field is present
+    Then set Advanced Options Mail Date to date 04/04/2017
+    Then expect Advanced Options Mail Date is 04/04/2017
+    Then set Advanced Options Mail Date to today
+    Then expect Advanced Options Mail Date is correct
+    Then set Advanced Options Mail Date to tomorrow
+    Then expect Advanced Options Mail Date is correct
+    Then set Advanced Options Mail Date to today plus 0
+    Then expect Advanced Options Mail Date is correct
+    Then set Advanced Options Mail Date to today plus 1
+    Then expect Advanced Options Mail Date is correct
+    Then set Advanced Options Mail Date to today plus 2
+    Then expect Advanced Options Mail Date is correct
+    Then set Advanced Options Mail Date to today plus 3
+    Then expect Advanced Options Mail Date is correct
+    Then set Advanced Options Mail Date to today plus 4
+    Then expect Advanced Options Mail Date is correct
+    Then set Advanced Options Mail Date to today plus 5
+    Then expect Advanced Options Mail Date is correct
+#
+#    Then expect Advanced Options include Return Address is present
+#    Then check Advanced Options include Return Address
+#    Then expect Advanced Options include Return Address is checked
+#    Then uncheck Advanced Options include Return Address
+#    Then expect Advanced Options include Return Address is unchecked
+#
+#    Then expect Advanced Options include Delivery Address is present
+#    Then check Advanced Options include Delivery Address
+#    Then expect Advanced Options include Delivery Address is checked
+#    Then uncheck Advanced Options include Delivery Address
+#    Then expect Advanced Options include Delivery Address is unchecked
+#
+#    Then expect Advanced Options include Postage is present
+#    Then check Advanced Options include Postage
+#    Then expect Advanced Options include Postage is checked
+#    Then uncheck Advanced Options include Postage
+#    Then expect Advanced Options include Postage is unchecked
+#
+#    Then expect Advanced Options Reference Number field is present
+#    Then set Advanced Options Reference Number to random string
+#    Then expect Advanced Options Reference Number is correct
+#
+#    Then expect Advanced Options Cost Code Field is present
+#    Then set Advanced Options Cost Code to None
+#    Then expect Advanced Options Cost Code is None

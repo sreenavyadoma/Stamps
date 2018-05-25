@@ -119,6 +119,27 @@ Feature: PP-MVP: Login Page
         Then PP: expect dashboard page header exist
         Then PP: Expect a record Login success event is added in Audit Records for user
 
+    @pp_reset_password
+    Scenario: PP: Reset Password Page Validation
+
+        Then PP: A user navigates to the login page
+        Then PP: User clicks Forgot Password link
+        Then PP: expect user is redirected to Reset Password Page
+        Then PP: expect reset password page email text field exists
+        Then PP: expect reset password page submit button exists
+        Then PP: expect reset password page icon exists
+        Then PP: expect global header exists
+        Then PP: expect footer to exists
+
+        Then PP: reset password page click on submit button
+        Then PP: expect reset password page email error message index 1 to be This field is required.
+        Then PP: set reset password page email to abc
+        Then PP: reset password page click on submit button
+        Then PP: expect reset password page email error message index 1 to be Valid email address required.
+        Then PP: set reset password page email to env value
+        Then PP: reset password page click on submit button
+        Then PP: expect reset email sent header exists
+
 
 
 

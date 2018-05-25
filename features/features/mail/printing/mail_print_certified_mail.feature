@@ -11,10 +11,10 @@ Feature: Print Certified Mail (with hidden postage)
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
-    Then set Print form Pounds to 0
-    Then set Print form Ounces to 1
+    Then set print form pounds to 0
+    Then set print form ounces to 1
     Then select print form service PM Package
-    Then show Advanced Options
+    Then show advanced options
     Then check Advanced Options Hide Label Value
     Then expect Advanced Options Hide Label Value is checked
     Then select print on Certified Mail Label - SDC-3610
@@ -29,10 +29,10 @@ Feature: Print Certified Mail (with hidden postage)
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
-    Then set Print form Pounds to 0
-    Then set Print form Ounces to 1
+    Then set print form pounds to 0
+    Then set print form ounces to 1
     Then select print form service PM Package
-    Then show Advanced Options
+    Then show advanced options
     Then check Advanced Options Hide Label Value
     Then expect Advanced Options Hide Label Value is checked
     Then select print on Certified Mail Label - SDC-3710
@@ -47,10 +47,10 @@ Feature: Print Certified Mail (with hidden postage)
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
-    Then set Print form Pounds to 0
-    Then set Print form Ounces to 1
+    Then set print form pounds to 0
+    Then set print form ounces to 1
     Then select print form service PM Package
-    Then show Advanced Options
+    Then show advanced options
     Then check Advanced Options Hide Label Value
     Then expect Advanced Options Hide Label Value is checked
     Then select print on Certified Mail Label - SDC-3910
@@ -65,10 +65,10 @@ Feature: Print Certified Mail (with hidden postage)
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
-    Then set Print form Pounds to 0
-    Then set Print form Ounces to 1
+    Then set print form pounds to 0
+    Then set print form ounces to 1
     Then select print form service PM Package
-    Then show Advanced Options
+    Then show advanced options
     Then check Advanced Options Hide Label Value
     Then expect Advanced Options Hide Label Value is checked
     Then select print on Certified Mail Label - SDC-3930
@@ -83,10 +83,10 @@ Feature: Print Certified Mail (with hidden postage)
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
-    Then set Print form Pounds to 0
-    Then set Print form Ounces to 1
+    Then set print form pounds to 0
+    Then set print form ounces to 1
     Then select print form service PM Package
-    Then show Advanced Options
+    Then show advanced options
     Then check Advanced Options Hide Label Value
     Then expect Advanced Options Hide Label Value is checked
     Then select print on Certified Mail Label - SDC-3810
@@ -101,10 +101,10 @@ Feature: Print Certified Mail (with hidden postage)
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
-    Then set Print form Pounds to 0
-    Then set Print form Ounces to 1
+    Then set print form pounds to 0
+    Then set print form ounces to 1
     Then select print form service PM Package
-    Then show Advanced Options
+    Then show advanced options
     Then check Advanced Options Hide Label Value
     Then expect Advanced Options Hide Label Value is checked
     Then select print on Certified Mail Label - SDC-3830

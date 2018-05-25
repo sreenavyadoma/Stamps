@@ -11,9 +11,9 @@ Feature: Stamps print media bugs
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
-    Then show Advanced Options
+    Then show advanced options
     Then check Advanced Options Hide Label Value
     Then select print on Envelope - 10
     Then Print Postage
@@ -25,7 +25,7 @@ Feature: Stamps print media bugs
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
     Then Print Postage
     Then click Mail Print modal Print button
@@ -58,7 +58,7 @@ Feature: Stamps print media bugs
     Then select print on Envelope - 10
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1 through 4
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service FCM Letter
     Then expect mail Print modal is present
     Then set Mail Print modal Printer

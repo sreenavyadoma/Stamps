@@ -12,7 +12,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” PM BOX Paper
     Then select print on Shipping Label - Paper
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service PM Large Flat Rate Box
     Then Print Postage
     Then set Mail Print modal Printer
@@ -22,7 +22,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” PM BOX Paper
     Then select print on Shipping Label - Paper
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service PM Medium Flat Rate Box
     Then Print Postage
     Then set Mail Print modal Printer
@@ -32,7 +32,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” PM BOX Paper
     Then select print on Shipping Label - Paper
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service PM Small Flat Rate Box
     Then Print Postage
     Then set Mail Print modal Printer
@@ -45,8 +45,8 @@ Feature: Mail Shipping Label - 8 ½” x 11” PM BOX Paper
     Then select print on Shipping Label - Paper
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1
-    Then set Print form Pounds to 0
-    Then set Print form Ounces to 1
+    Then set print form pounds to 0
+    Then set print form ounces to 1
     Then select print form service PM Regional Rate Box A
     Then Print Postage
     Then set Mail Print modal Printer
@@ -56,7 +56,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” PM BOX Paper
     Then select print on Shipping Label - Paper
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1
-    Then set Print form Ounces to 1
+    Then set print form ounces to 1
     Then select print form service PM Regional Rate Box B
     Then Print Postage
     Then set Mail Print modal Printer

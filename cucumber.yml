@@ -1,4 +1,4 @@
-default: --backtrace --profile eli_dev
+default: --backtrace --profile rob
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -11,7 +11,7 @@ samsung_galaxy_sauce: --tags @saucelabs_poc SAUCE_DEVICE=samsung_galaxy_sauce LO
 #todo-Rob set PRINTER=factory as default automation printer
 #robcm=ccpryiihrjz ccfb311osps4x print_dialog_ship_date bvt_international_shipping
 #rob: --tags @mail_advanced_options_stamps URL=cc BROWSER=ff LOG_LEVEL=debug HEALTHCHECK=true MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory NEW_FRAMEWORK=true DEBUG=true
-rob: --tags @mail_print_on_lov URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgugqex0q4 PW=pass111 PRINTER=factory NEW_FRAMEWORK=true #stgee1mtqvwdc0
+rob: --tags @rob_test URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgugqex0q4 PW=pass111 PRINTER=factory NEW_FRAMEWORK=true #stgee1mtqvwdc0
 #rob: --tags @mail_advanced_options_stamps URL=sc --guess LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=selenium  USR=scsejsglwa PW=pass111LOG_LEVEL=debug PRINTER=factory NEW_FRAMEWORK=true # c2jinmzmu64 schl0vlbfy2673 #19  schl0vlbfy2673
 #rob:  --tags @mail_print_on_lov URL=prod BROWSER=ff LOG_LEVEL=info USR=robcruz PW=Stamps#524113 LOG_LEVEL=debug NEW_FRAMEWORK=true MAX_WINDOW=false
 # USR=abqaprod1 PW=password1
@@ -28,6 +28,7 @@ saucelabs_iphonex_cc: --tags @saucelabs_poc MOBILE='iphone x' LOG_LEVEL=info  UR
 saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1
 saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1
 
+
 #mhossain1_cc: --tags @registration_normal_workflow WEB_APP=orders JENKINS=true URL=cc LOG_LEVEL=info BROWSER=ff MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
 #mhossain1_cc: --tags @registration_ui_validation_profile_page JENKINS=true URL=cc VERBOSE=true BROWSER=edge MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
 
@@ -37,9 +38,12 @@ saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=passw
 #mhossain1_cc: --tags @pp_dashboard_single_contract_ui_validaiton JENKINS=true URL=qacc BROWSER=ff USR=wteam@stamps.com PW=password1
 #mhossain1_cc: --tags @pp_dashboard_single_contract_ui_validaiton JENKINS=true URL=qacc BROWSER_MOBILE_EMULATOR=gc,'Pixel 2 XL' USR=wteam@stamps.com PW=password1
 #mhossain1_cc: --tags @pp_dashboard_single_contract_chart_data_validation JENKINS=true URL=qacc BROWSER=ff USR=wteam@stamps.com PW=password1
-#mhossain1_cc: --tags @pp_authenticate JENKINS=true URL=qacc BROWSER=ff USR=wteam@stamps.com PW=password1
-mhossain1_cc: --tags @pp_footer JENKINS=true URL=qacc BROWSER=ff USR=wteam@stamps.com PW=password1
-
+#mhossain1_cc: --tags @pp_authenticate JENKINS=true URL=qacc BROWSER=edge USR=wteam@stamps.com PW=password1
+#mhossain1_cc: --tags @pp_footer JENKINS=true URL=qacc BROWSER=ff USR=wteam@stamps.com PW=password1
+#mhossain1_cc: --tags @pp_left_panel JENKINS=true URL=qacc BROWSER=ff USR=wteam@stamps.com PW=password1
+#mhossain1_cc: --tags @pp_left_panel JENKINS=true URL=qacc BROWSER_MOBILE_EMULATOR=gc,'iPad' USR=wteam@stamps.com PW=password1
+#mhossain1_cc: --tags @pp_left_panel_mobile JENKINS=true URL=qacc BROWSER_MOBILE_EMULATOR=gc,'Pixel 2 XL' USR=wteam@stamps.com PW=password1
+mhossain1_cc: --tags @pp_reset_password JENKINS=true URL=qacc BROWSER=edge USR=lab@stamps.com PW=password1
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess  HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 
@@ -555,3 +559,6 @@ pp_dashboard_single_contract_ui_validaiton: --tags @pp_dashboard_single_contract
 pp_dashboard_single_contract_chart_data_validation: --tags @pp_dashboard_single_contract_chart_data_validation --guess JENKINS=true
 pp_authenticate: --tags @pp_authenticate --guess JENKINS=true
 pp_footer: --tags @pp_footer --guess JENKINS=true
+pp_left_panel: --tags @pp_left_panel --guess JENKINS=true
+pp_left_panel_mobile: --tags @pp_left_panel_mobile --guess JENKINS=true
+pp_reset_password: --tags @pp_reset_password --guess JENKINS=true

@@ -39,7 +39,23 @@ require 'cucumber/rake/task'
     t.profile = 'pp_footer'
     t.cucumber_opts = "-p cuke_reports"
   end
-  #END PARTNER PORTAL
+
+  Cucumber::Rake::Task.new(:pp_left_panel) do |t|
+    t.profile = 'pp_left_panel'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
+  Cucumber::Rake::Task.new(:pp_left_panel_mobile) do |t|
+    t.profile = 'pp_left_panel_mobile'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
+  Cucumber::Rake::Task.new(:pp_reset_password) do |t|
+    t.profile = 'pp_reset_password'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
+#END PARTNER PORTAL
 
 # END WEB DEV
 
