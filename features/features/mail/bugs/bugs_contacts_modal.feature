@@ -5,12 +5,12 @@ Feature: Mail Contacts Modal Bugs
 
   @bugs_contacts_modal
   Scenario: ORDERSAUTO_3243 Adding Contact from Mail should not Add Reference # Or Cost Code
-    Then select Print On Shipping Label - 5x8
+    Then select print on Shipping Label - 5x8
     Then set Print form Mail-From to default
     Then set print form mail-to Country to United States
     Then set print form mail-to to a random address in zone 1 through 4
-    Then set Print form Ounces to 1
-    Then select Print form service FCM Large Envelope/Flat
+    Then set print form ounces to 1
+    Then select print form service FCM Large Envelope/Flat
     Then set Advanced Options Reference Number to 12345
     Then set Advanced Options Cost Code to 123
     Then Print Postage
@@ -22,7 +22,7 @@ Feature: Mail Contacts Modal Bugs
     Then Search Contacts Modal for last printed contact
     Then Select Recently Printed Contact
     Then expect Print form Domestic Address field displays last printed contact
-    Then show Advanced Options
+    Then show advanced options
     Then Expect Advanced Options Reference Number is blank
     Then Expect Advanced Options Cost Code is None
     Then sign out

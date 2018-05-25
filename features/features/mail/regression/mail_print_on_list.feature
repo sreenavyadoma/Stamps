@@ -5,27 +5,27 @@ Feature: Print On List Of Values
 
   @mail_print_on_list_of_values
   Scenario: Print On List Of Values
-    #Then select Print On Manage Printing Options
+    #Then select print on Manage Printing Options
     #Then expect Manage Print Options modal is present
     #Then search Manage Print Options for Shipping Label - Paper
 
-    Then select Print On Stamps
-    Then select Print On Shipping Label - Paper
-    Then select Print On Shipping Label - SDC-1200
-    Then select Print On Shipping Label - 5x8
-    Then select Print On Envelope - 10
-    Then select Print On Envelope - 9
-    Then select Print On Envelope - A9
-    Then select Print On Envelope - 6
-    Then select Print On Envelope - A2
-    Then select Print On Envelope - 7
-    Then select Print On Envelope - 11
-    Then select Print On Envelope - 12
-    Then select Print On Certified Mail Label - SDC-3610
-    Then select Print On Certified Mail Label - SDC-3710
-    Then select Print On Certified Mail Label - SDC-3910
-    Then select Print On Certified Mail Label - SDC-3930
-    Then select Print On Certified Mail Label - SDC-3810
-    Then select Print On Roll 4x6
-    Then select Print On Roll 418x614
+    Then select print on Stamps
+    Then select print on Shipping Label - Paper
+    Then select print on Shipping Label - SDC-1200
+    Then select print on Shipping Label - 5x8
+    Then select print on Envelope - 10
+    Then select print on Envelope - 9
+    Then select print on Envelope - A9
+    Then select print on Envelope - 6
+    Then select print on Envelope - A2
+    Then select print on Envelope - 7
+    Then select print on Envelope - 11
+    Then select print on Envelope - 12
+    Then select print on Certified Mail Label - SDC-3610
+    Then select print on Certified Mail Label - SDC-3710
+    Then select print on Certified Mail Label - SDC-3910
+    Then select print on Certified Mail Label - SDC-3930
+    Then select print on Certified Mail Label - SDC-3810
+    Then select print on Roll 4x6
+    Then select print on Roll 418x614
     Then sign out

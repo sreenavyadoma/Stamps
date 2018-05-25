@@ -24,12 +24,11 @@ Then /^[Cc]heck Print form [Ee]mail [Tt]racking checkbox$/ do
   stamps.mail.print_form.email_tracking.email_checkbox.click
 end
 
-Then /^[Ss]et Print form [Pp]ounds to (\d+\.?\d*)$/ do |pounds|
+Then /^set print form pounds to (\d+\.?\d*)$/ do |pounds|
   stamps.mail.print_form.weight.pounds.set(TestData.hash[:pounds] = pounds)
 end
 
-# Then /^[Ss]et Print form [Oo]unces to (\d+)$/ do |ounces|
-Then /^[Ss]et Print form [Oo]unces to (\d+\.?\d*)$/ do |ounces|
+Then /^set print form ounces to (\d+\.?\d*)$/ do |ounces|
   stamps.mail.print_form.weight.ounces.set(TestData.hash[:ounces] = ounces)
 end
 
@@ -56,9 +55,28 @@ Then /^[Ee]xpect [Pp]rint [Ff]orm [Ss]ervice (.*) is not present in dropdown lis
   expect(stamps.mail.print_form.service.select_service(TestData.hash[:service] = service).present?).to be(false)
 end
 
-Then /^[Ss]elect [Pp]rint [Ff]orm [Ss]ervice (.*)$/ do |str|
-#  step "blur out on print form"
-  stamps.mail.print_form.service.select_service(TestData.hash[:service] = str)
+Then /^select print form service (.*)$/ do |str|
+  SdcLogger.debug "service: #{str}"
+  TestData.hash[:service] = str
+  if SdcEnv.new_framework
+    service = SdcMail.print_form.service
+    service.drop_down.click
+    service.service_element(:service, str)
+    service.inline_cost_element(:inline_cost, str)
+    service.drop_down.click unless service.service.present?
+    expect(service.service.present?).to be(true), "Service #{str} is not on list of values"
+    TestData.hash[:service_inline_cost] = service.inline_cost.text_value.dollar_amount_str
+    service.service.click
+    service.cost.wait_until_present(timeout: 3)
+    TestData.hash[:service_cost] = service.cost.text_value.dollar_amount_str
+
+    SdcLogger.debug "service_inline_cost: #{TestData.hash[:service_inline_cost]}"
+    SdcLogger.debug "service_cost: #{TestData.hash[:service_cost]}"
+    expect(service.text_field.text_value).to include str
+    expect(TestData.hash[:service_cost]).to eql(TestData.hash[:service_inline_cost])
+  else
+    stamps.mail.print_form.service.select_service(str)
+  end
 end
 
 Then /^[Ee]xpect [Pp]rint [Ff]orm [Ss]ervice [Cc]ost [Ff]or (.*) is (.*)$/ do |service, cost|

@@ -88,9 +88,81 @@ Then /^[Pp]P: [Ee]xpect Stamps Endicia Partner Portal Logo exists for mobile$/ d
     expect(PartnerPortal.common_page.sdc_endicia_logo_mobile). to be_present, 'Stamps Endicia Partner Portal Logo header DOES NOT exist mobile mode'
 end
 
-Then /^[Pp]P: [Ee]xpect [Hh]amburger button exists for mobile$/ do
-  PartnerPortal.common_page.hamburger_button_xs.wait_until_present(timeout: 10)
-  expect(PartnerPortal.common_page.hamburger_button_xs).to be_present, 'Hamburger button DOES NOT exist mobile mode'
+Then /^[Pp]P: [Ee]xpect [Dd]ashboard on left panel exists$/ do
+  PartnerPortal.common_page.panel_dashboard.wait_until_present(timeout: 10)
+  expect(PartnerPortal.common_page.panel_dashboard).to be_present, 'Dashboard on Left Panel DOES NOT exist'
+end
+
+Then /^PP: expect dashboard on left panel to be in (.*) state$/ do |status|
+ if status == 'active'
+  active = PartnerPortal.common_page.panel_dashboard.attribute_value 'class'
+  expect(active).to eql('active')
+ else
+  inactive = PartnerPortal.common_page.panel_dashboard.attribute_value 'class'
+  expect(inactive.present?).to eql('false')
+ end
+end
+
+Then /^PP: click on dashboard on left panel$/ do
+  PartnerPortal.common_page.panel_dashboard.wait_until_present(timeout: 10)
+  PartnerPortal.common_page.panel_dashboard.send_keys(:enter)
+end
+
+Then /^[Pp]P: [Cc]lick on [Ll]ogout on left panel$/ do
+  PartnerPortal.common_page.panel_logout.wait_until_present(timeout: 10)
+  PartnerPortal.common_page.panel_logout.send_keys(:enter)
+end
+
+Then /^[Pp]P: [Ee]xpect [Ll]ogout on left panel exists$/ do
+  PartnerPortal.common_page.panel_logout.wait_until_present(timeout: 10)
+  expect(PartnerPortal.common_page.panel_logout).to be_present, 'Logout on Left Panel DOES NOT exist'
+end
+
+Then /^PP: expect usps logo on left panel exists$/ do
+  PartnerPortal.common_page.panel_usps_logo.wait_until_present(timeout: 10)
+  expect(PartnerPortal.common_page.panel_usps_logo).to be_present, 'USPS on Left Panel DOES NOT exist'
+end
+
+
+Then /^[Pp]P: [Ee]xpect left panel to expand for browser$/ do
+  PartnerPortal.common_page.panel_expanded_lg.wait_until_present(timeout: 10)
+  expect(PartnerPortal.common_page.panel_expanded_lg).to be_present, 'Expanded Panel DOES NOT exist browser mode'
+end
+
+Then /^[Pp]P: [Ee]xpect left panel to collapse for browser$/ do
+  PartnerPortal.common_page.panel_collapsed_lg.wait_until_present(timeout: 10)
+  expect(PartnerPortal.common_page.panel_collapsed_lg).to be_present, 'Collapsed Panel DOES NOT exist browser mode'
+end
+
+Then /^PP: expect left panel does not exist for browser$/ do
+  expect(PartnerPortal.common_page.panel_expanded_lg).not_to be_present, 'Expanded Panel IS PRESENT browser mode'
+  expect(PartnerPortal.common_page.panel_collapsed_lg).not_to be_present, 'Collapsed Panel IS PRESENT browser mode'
+  expect(PartnerPortal.common_page.panel_arrow).not_to be_present, 'Arrow on left panel is PRESENT browser mode'
+  expect(PartnerPortal.common_page.panel_hamburger).not_to be_present, 'Hamburger button IS PRESENT browser mode'
+end
+
+Then /^[Pp]P: [Ee]xpect arrow on left panel does not exists for browser$/ do
+  expect(PartnerPortal.common_page.panel_arrow).not_to be_present, 'Arrow on left panel is PRESENT browser mode'
+end
+
+Then /^[Pp]P: [Ee]xpect arrow on left panel exists for browser$/ do
+  PartnerPortal.common_page.panel_arrow.wait_until_present(timeout: 10)
+  expect(PartnerPortal.common_page.panel_arrow).to be_present, 'Arrow on Panel DOES NOT exist browser mode'
+end
+
+
+Then /^[Pp]P: [Cc]lick on arrow on left panel$/ do
+  PartnerPortal.common_page.panel_arrow.wait_until_present(timeout: 10)
+  PartnerPortal.common_page.panel_arrow.click
+end
+
+Then /^PP: expect partner logo is unique to partner$/ do
+    step 'Establish Partner Portal db connection'
+    logo_expected = PartnerPortal.common_page.partner_logo_query(SdcEnv.usr)
+    step 'Close partner portal db connection'
+
+    logo_actual = PartnerPortal.common_page.panel_partner_logo.attribute_value 'src'
+    expect(logo_expected).to eql(logo_actual.split('com/').last)
 end
 
 Then /^[Pp]P: [Ee]xpect [Hh]amburger button exists for browser$/ do
@@ -100,6 +172,26 @@ end
 
 Then /^[Pp]P: [Ee]xpect [Hh]amburger button does not exists for browser$/ do
   expect(PartnerPortal.common_page.panel_hamburger).not_to be_present, 'Hamburger button IS PRESENT browser mode'
+end
+
+Then /^PP: click on hamburger button$/ do
+  PartnerPortal.common_page.panel_hamburger.wait_until_present(timeout: 10)
+  PartnerPortal.common_page.panel_hamburger.click
+end
+
+Then /^[Pp]P: [Ee]xpect left panel to expand for mobile$/ do
+  PartnerPortal.common_page.panel_expanded_xs.wait_until_present(timeout: 10)
+  expect(PartnerPortal.common_page.panel_expanded_xs).to be_present, 'Expanded Panel DOES NOT exist mobile mode'
+end
+
+Then /^[Pp]P: [Ee]xpect left panel to collapse for mobile$/ do
+  PartnerPortal.common_page.panel_collapsed_xs.wait_until_present(timeout: 10)
+  expect(PartnerPortal.common_page.panel_collapsed_xs).to be_present, 'Collapsed Panel DOES NOT exist mobile mode'
+end
+
+Then /^[Pp]P: [Ee]xpect [Hh]amburger button exists for mobile$/ do
+  PartnerPortal.common_page.hamburger_button_xs.wait_until_present(timeout: 10)
+  expect(PartnerPortal.common_page.hamburger_button_xs).to be_present, 'Hamburger button DOES NOT exist mobile mode'
 end
 
 Then /^[Pp]P: [Ee]xpect [Hh]amburger button does not exists for mobile$/ do
@@ -121,54 +213,11 @@ Then /^[Pp]P: [Ee]xpect [Xx] button does not exists$/ do
 end
 
 Then /^[Pp]P: [Cc]lick on [Xx] button$/ do
-    PartnerPortal.common_page.x_button.wait_until_present(timeout: 10)
-    PartnerPortal.common_page.x_button.click
+  PartnerPortal.common_page.x_button.wait_until_present(timeout: 10)
+  PartnerPortal.common_page.x_button.click
 end
 
-Then /^[Pp]P: [Ee]xpect [Dd]ashboard on left panel exists$/ do
-  PartnerPortal.common_page.panel_dashboard.wait_until_present(timeout: 10)
-  expect(PartnerPortal.common_page.panel_dashboard).to be_present, 'Dashboard on panel DOES NOT exist'
+#pop ups
+Then /^PP: click ok button on error pop up$/ do
+  PartnerPortal.common_page.error_ok.send_keys(:enter)
 end
-
-Then /^[Pp]P: [Cc]lick on Logout on left panel$/ do
-  PartnerPortal.common_page.panel_logout.wait_until_present(timeout: 10)
-  PartnerPortal.common_page.panel_logout.send_keys(:enter)
-end
-
-
-Then /^[Pp]P: [Ee]xpect left panel to expand for browser$/ do
-  PartnerPortal.common_page.panel_expanded_lg.wait_until_present(timeout: 10)
-  expect(PartnerPortal.common_page.panel_expanded_lg).to be_present, 'Expanded Panel DOES NOT exist browser mode'
-end
-
-Then /^[Pp]P: [Ee]xpect left panel to collapse for browser$/ do
-  PartnerPortal.common_page.panel_collapsed_lg.wait_until_present(timeout: 10)
-  expect(PartnerPortal.common_page.panel_collapsed_lg).to be_present, 'Collapsed Panel DOES NOT exist browser mode'
-end
-
-Then /^[Pp]P: [Ee]xpect left panel to expand for mobile$/ do
-  PartnerPortal.common_page.panel_expanded_xs.wait_until_present(timeout: 10)
-  expect(PartnerPortal.common_page.panel_expanded_xs).to be_present, 'Expanded Panel DOES NOT exist mobile mode'
-end
-
-Then /^[Pp]P: [Ee]xpect left panel to collapse for mobile$/ do
-  PartnerPortal.common_page.panel_collapsed_xs.wait_until_present(timeout: 10)
-  expect(PartnerPortal.common_page.panel_collapsed_xs).to be_present, 'Collapsed Panel DOES NOT exist mobile mode'
-end
-
-Then /^[Pp]P: [Ee]xpect arrow on left panel does not exists for browser$/ do
-  expect(PartnerPortal.common_page.panel_arrow).not_to be_present, 'Arrow on left panel is PRESENT mobile mode'
-end
-
-Then /^[Pp]P: [Ee]xpect arrow on left panel exists for browser$/ do
-  PartnerPortal.common_page.panel_arrow.wait_until_present(timeout: 10)
-  expect(PartnerPortal.common_page.panel_arrow).to be_present, 'Arrow on Panel DOES NOT exist browser mode'
-end
-
-
-Then /^[Pp]P: [Cc]lick on arrow on left panel$/ do
-  PartnerPortal.common_page.panel_arrow.wait_until_present(timeout: 10)
-  PartnerPortal.common_page.panel_arrow.click
-end
-
-

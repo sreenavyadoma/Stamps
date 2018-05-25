@@ -9,12 +9,21 @@ setup:
     chromedriver: tbd
 
 sql_server_pp:
-  server: qa-clientdb14-v.corp.stamps.com
-  database: PartnerPortal
-  port: 1433
-  username: corp\lab
-  password: Sdcqatest623
-  azure: false
+   qacc:
+      server: qa-clientdb14-v.corp.stamps.com
+      database: PartnerPortal
+      port: 1433
+      username: corp\lab
+      password: Sdcqatest623
+      azure: false
+   stg:
+     server: vsdc04db.staging.stamps.com
+     database: PartnerPortal
+     port: 1433
+     username: corp\lab
+     password: Sdcqatest623
+     azure: false
+
 
 rates_test:
   rate_file: rate_file.xls
@@ -106,6 +115,11 @@ mail_print_media:
   Certified Mail Label - SDC-3830: iconCertified,17
   Roll 4x6: iconRoll,18
   Roll 418x614: iconRoll,19
+
+mail_tracking_service:
+  None: sdc-trackingdroplist-none
+  USPS Tracking: sdc-trackingdroplist-dc
+  Signature Required: sdc-trackingdroplist-sc
 
 mail_services:
   First Class: sdc-servicedroplist-fcletter

@@ -5,7 +5,7 @@ Feature: Verify Mail Elements Are Present
 
   @mail_print_postage_fields
   Scenario: Print Mail Elements
-    Then select Print On Shipping Label - Paper
+    Then select print on Shipping Label - Paper
     Then expect Print form Print On Field is present
     Then expect Print form Mail From Field is present
     Then expect Print form Mail To Link is present
@@ -23,7 +23,7 @@ Feature: Verify Mail Elements Are Present
     Then expect Print form Insure For Price is present
     Then expect Print form Tracking Field is present
     Then expect Print form Tracking Price is present
-    Then show Advanced Options
+    Then show advanced options
     Then expect Print form Label Image Preview is present
     Then expect Print form Hide Mail Value check box is present
     Then expect Print form Print Receipt check box is present

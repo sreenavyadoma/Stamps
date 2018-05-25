@@ -1,6 +1,6 @@
 
-Then /^select Print On (.+)$/ do |str|
-  SdcLogger.debug "select Print On #{str}"
+Then /^select print on (.+)$/ do |str|
+  SdcLogger.debug "select print on #{str}"
   if SdcEnv.new_framework
     print_on = SdcMail.print_on
     print_on.text_field.wait_until_present(timeout: 6)
@@ -56,7 +56,7 @@ Then /^select Print On (.+)$/ do |str|
 end
 
 Then /^select all options in manage printing options/ do
-  step 'select Print On Manage Printing Options...'
+  step 'select print on Manage Printing Options...'
   step 'expect manage print options modal is present'
   step 'check Stamps in manage print options'
   step 'check Shipping Label - 8 ½" x 11" Paper in manage print options'
@@ -84,7 +84,7 @@ end
 Then /^check (.+) in manage print options$/ do |str|
   manage_print_options = SdcMail.modals.manage_print_options
   unless manage_print_options.search.present?
-    step 'select Print On Manage Printing Options...'
+    step 'select print on Manage Printing Options...'
   end
   step "search for #{str} in manage print options"
   SdcPage.browser.wait_until(timeout: 2) { manage_print_options.single_grid_item.text == str }
@@ -114,12 +114,16 @@ Then /^click save in manage print options$/ do
   save.safe_wait_while_present(timeout: 2)
 end
 
-Then /^[Ss]how Advanced Options$/ do
-  if SdcEnv.new_framework
-    SdcMail.print_form.show_advanced_options
-    expect(SdcMail.print_form.extra_services.text_value).to eql 'Select...'
-  else
-    stamps.mail.print_form.advanced_options.show
-    expect(stamps.mail.print_form.advanced_options).to be_present, 'Print Media error in Advanced Options. Check your feature file workflow.'
-  end
+Then /^show advanced options$/ do
+  SdcMail.print_form.show_advanced_options.click
+  hide = SdcMail.print_form.hide_advanced_options
+  hide.wait_until_present(timeout: 3)
+  expect(hide). to be_present, 'show advanced options failed'
+end
+
+Then /^hide advanced options$/ do
+  SdcMail.print_form.hide_advanced_options.click
+  show = SdcMail.print_form.show_advanced_options
+  show.wait_until_present(timeout: 3)
+  expect(show). to be_present, 'hide advanced options failed'
 end
