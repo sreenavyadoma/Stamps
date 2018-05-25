@@ -1,34 +1,29 @@
 module PartnerPortal
 
 
+  ##
+  # Partner Portal Login page HTML elements included in this page object are;
+  #  * Welcome content
+  #  * Error Message
+  #  * sdcEndica logo
+  #  * Partner Portal content
+  #  * Email textbox
+  #  * Password textbox
+  #  * Log In button
+  #  * Forgot Password? link
   class PPLoginPage < SdcPage
-    #Welcome content
     page_object(:welcome_content) { { xpath: '//p[contains(text(),"Welcome to the")]' } }
-
-    #Error Message
     page_object(:error_message) { { xpath: '//p[@class="text-center"]' } }
-
-    #sdcEndica logo
     page_object(:sdc_endicia_logo) { { xpath: '//img[@alt="Stamps.com Endicia | Partner Portal logo"]' } }
-
-    #Partner Portal content
     page_object(:partner_portal_content) {{ xpath: '//h3[contains(text(), "Partner Portal")]' }}
-
-    #Email textbox
     text_field(:email, tag: :text_field, required: true) { { name: 'email' } }
     page_object(:email_tooltip) { { xpath: '//*[@name="email"]/div/div' } }
     label(:email_placeholder) { { xpath: '//input[@placeholder="Email"]' } }
-
-    #Password textbox
     text_field(:password, tag: :text_field, required: true) { { name: 'password' } }
     page_object(:password_tooltip) { { xpath: '//*[@name="password"]/div/div' } }
     label(:password_placeholder) { { xpath: '//input[@placeholder="Password"]' } }
-
-    #Log In button
     button(:log_in) { { xpath: '//button[@label="Log In"]' } }
     button(:login_label) { { xpath: '//button[@label="Log In"]/span' } }
-
-    #Forgot Password? link
     link(:forgot_pw) { { xpath: '//a[@href="/reset-password/request"]' } }
 
     page_url { |env| "https://partner.#{env}.stamps.com/" }
@@ -130,7 +125,7 @@ module PartnerPortal
   ##
   # 
   class PPResetPasswordConfirmationPage < SdcPage
-    #header
+    #header todo-Mohammed this is redundant
     page_object(:header) { { xpath:  '//h1[contains(text(), "Reset Email Sent")]'} }
 
     page_url { |env| "https://partner.#{env}.stamps.com/reset-password/request/confirmation" }
