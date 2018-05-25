@@ -18,6 +18,7 @@ end
 
 Then /^on order details form, add item (\d+), qty (\d+), id (.+), description (.*)$/ do |item_number, qty, id, description|
   step "add order details associated item #{item_number}"
+  step "scroll into view order details associated item #{item_number}"
   step "set Order Details Associated Item #{item_number} Qty to #{qty}"
   step "set Order Details Associated Item #{item_number} ID to #{id}"
   step "set Order Details Associated Item #{item_number} Description to #{description}"
@@ -30,6 +31,13 @@ Then /^add order details associated item (\d+)$/ do |item_number|
     stamps.orders.order_details.items_ordered.item(item_number.to_i)
   end
 end
+
+Then /^scroll into view order details associated item (\d+)$/ do |item_number|
+  SdcOrders.order_details.associated_item.item_qty(item_number).scroll_into_view
+  SdcOrders.order_details.associated_item.description(item_number).scroll_into_view
+  SdcOrders.order_details.associated_item.id(item_number).scroll_into_view
+end
+
 
 Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) Qty to (.*)$/ do |item_number, qty|
   step 'expect order details is present'
