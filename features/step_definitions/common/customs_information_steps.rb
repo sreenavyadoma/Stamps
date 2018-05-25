@@ -1,7 +1,7 @@
 
 Then /^click (?:order details|print) form (?:edit customs|edit|customs) form button$/ do
   if SdcEnv.new_framework
-    SdcOrders.order_details.ship_to.international.customs_form.click
+    SdcOrders.order_details.ship_to.international.customs_form.scroll_into_view.click
   else
     10.times do
       if SdcEnv.sdc_app == :orders
