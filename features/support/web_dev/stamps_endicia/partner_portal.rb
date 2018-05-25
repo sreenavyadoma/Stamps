@@ -50,6 +50,13 @@ module PartnerPortal
 
   end
 
+  ##
+  # Partner Portal Dashboard page components;
+  #   welcome header
+  #   charts
+  #   charts title
+  #   chart Y-axis
+  #   chart legends
   class PPDashboardPage < SdcPage
     page_object(:dashboard_header) { { xpath: '//h1[contains(text(), "Dashboard")]' } }
 
