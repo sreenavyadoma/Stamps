@@ -51,44 +51,34 @@ module PartnerPortal
   end
 
   class PPDashboardPage < SdcPage
-    #welcome header
     page_object(:dashboard_header) { { xpath: '//h1[contains(text(), "Dashboard")]' } }
 
-    #Contract header
     page_object(:contract_header) { { class: ['dashboard__contract-header ng-star-inserted'] } }
 
-    #Last Updated On
     page_object(:contract_last_updated_on) { { class: ['dashboard__contract-updated ng-star-inserted'] } }
 
-    #charts
     page_objects(:preferred_rates_qualified_transactions_usd_chart, index: 0) { { xpath: '//canvas[@class="chartjs-render-monitor"]' } }
     page_objects(:preferred_rates_qualified_transactions_packages_chart, index: 1) { { xpath: '//canvas[@class="chartjs-render-monitor"]' } }
     page_objects(:active_customers_customers_chart, index: 2) { { xpath: '//canvas[@class="chartjs-render-monitor"]' } }
     page_objects(:revenue_share_chart, index: 3) { { xpath: '//canvas[@class="chartjs-render-monitor"]' } }
 
-    #charts title
     page_objects(:preferred_rates_qualified_transactions_usd_chart_title, index: 0) { { xpath: '//h4[@class="ppchart__title"]' } }
     page_objects(:preferred_rates_qualified_transactions_packages_chart_title, index: 1) { { xpath: '//h4[@class="ppchart__title"]' } }
     page_objects(:active_customers_customers_chart_title, index: 2) { { xpath: '//h4[@class="ppchart__title"]' } }
     page_objects(:revenue_share_chart_title, index: 3) { { xpath: '//h4[@class="ppchart__title"]' } }
 
-    #chart Y-axis
     page_objects(:preferred_rates_qualified_transactions_usd_y_axis, index: 0) { { xpath: '//div[@class="ppchart__chartlabel"]' } }
     page_objects(:preferred_rates_qualified_transactions_packages_chart_y_axis, index: 1) { { xpath: '//div[@class="ppchart__chartlabel"]' } }
     page_objects(:active_customers_customers_chart_y_axis, index: 2) { { xpath: '//div[@class="ppchart__chartlabel"]' } }
     page_objects(:revenue_share_chart_y_axis, index: 3) { { xpath: '//div[@class="ppchart__chartlabel"]' } }
 
-    #chart legends
     page_objects(:preferred_rates_qualified_transactions_usd_chart_legends, index: 0) { { xpath:  '//ul[@class="ppchart__legend"]' } }
     page_objects(:preferred_rates_qualified_transactions_packages_chart_legends, index: 1) { { xpath:  '//ul[@class="ppchart__legend"]' } }
     page_objects(:active_customers_customers_chart_legends, index: 2) { { xpath:  '//ul[@class="ppchart__legend"]' } }
     page_objects(:revenue_share_chart_legends, index: 3) { { xpath:  '//ul[@class="ppchart__legend"]' } }
 
-
-    #submit
     button(:submit) { { xpath: '//button[@label="Submit"]' } }
 
-    #x-axis months
     def x_axis_month_abbreviations
      return SdcPage.browser.execute_script('return window.ChartsData.Charts.PrefRatesQualifiedPostageAmount.labels'),
      SdcPage.browser.execute_script('return window.ChartsData.Charts.PrefRatesQualifiedPostageCount.labels'),
@@ -102,16 +92,12 @@ module PartnerPortal
     #sdcEndica content
     page_object(:header) { { xpath: '//h1[contains(text(), "Reset Password")]' } }
 
-    #Email
     text_field(:email, tag: :text_field, required: true) { { name: 'email' } }
 
-    #submit
     page_object(:submit) { { class: ['ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only'] } }
 
-    #icon
     page_object(:icon) { { xpath:  '//img[@alt="Reset password request icon image"]'} }
 
-    #error message
     page_object(:email_error) { { xpath:  '//*[@name="email"]/div/div'} }
 
 
