@@ -185,16 +185,10 @@ Then /^[Ee]xpect Customs ITN Number is (?:correct|(.*))$/ do |expectation|
 end
 
 Then /^set customs license number to (?:(?:a|some) random string|(.*))$/ do |value|
-  value ||= TestHelper.rand_alpha_numeric(2, 6)
-  if SdcEnv.new_framework
-    SdcWebsite.customs_form.license.set(value) if SdcWebsite.customs_form.license.present?
-    step "expect customs license number is #{value}"
-  else
-    stamps.common_modals.customs_form.license.set(value) if SdcEnv.sdc_app == :orders
-    stamps.mail.print_form.mail_customs.edit_customs_form.license.set(value) if SdcEnv.sdc_app == :mail
-  end
+  value ||= TestHelper.rand_alpha_numeric(min: 2, max: 6)
+  SdcWebsite.customs_form.license.set(value) if SdcWebsite.customs_form.license.present?
+  step "expect customs license number is #{value}"
   step 'Save Customs Information form Total amount'
-
   TestData.hash[:customs_license_no] = value
 end
 
@@ -202,7 +196,7 @@ Then /^expect customs license number is (?:correct|(.*))$/ do |expectation|
   expectation ||= TestData.hash[:customs_license_no]
   if SdcEnv.new_framework
     expect(SdcWebsite.customs_form.license).to be_present, 'License field is not present'
-    expect(SdcWebsite.customs_form.license.text_value).to eql(expectation), 'License value is incorrect'
+    expect(SdcWebsite.customs_form.license.text_value).to eql(expectation)
   else
     sleep(1)
     expect(stamps.common_modals.customs_form.license.text).to eql(expectation) if SdcEnv.sdc_app == :orders
@@ -212,7 +206,7 @@ Then /^expect customs license number is (?:correct|(.*))$/ do |expectation|
 end
 
 Then /^set customs certificate number to (?:(?:a|some) random string|(.*))$/ do |value|
-  value ||= TestHelper.rand_alpha_numeric(2, 8)
+  value ||= TestHelper.rand_alpha_numeric(min: 2, max: 8)
   if SdcEnv.new_framework
     SdcWebsite.customs_form.certificate.set(value) if SdcWebsite.customs_form.certificate.present?
     step "expect customs certificate number is #{value}"
@@ -239,7 +233,7 @@ Then /^expect customs certificate number is (?:correct|(.*))$/ do |expectation|
 end
 
 Then /^set customs invoice number to (?:(?:a|some) random string|(.*))$/ do |value|
-  value ||= TestHelper.rand_alpha_numeric(2, 10)
+  value ||= TestHelper.rand_alpha_numeric(min: 2, max: 10)
   if SdcEnv.new_framework
     SdcWebsite.customs_form.invoice.set(value) if SdcWebsite.customs_form.invoice.present?
     step "expect customs invoice number is #{value}"
@@ -477,7 +471,7 @@ Then /^[Ee]xpect Customs ITN Number is visible$/ do
   end
 end
 
-Then /^[Ee]xpect Customs Associated Item Grid count is (.+)$/ do |expectation|
+Then /^expect customs associated item grid count is (.+)$/ do |expectation|
   if SdcEnv.new_framework
     expect(SdcWebsite.customs_form.associated_items.size).to eql(expectation.to_i)
   else
@@ -536,7 +530,7 @@ Then /^edit customs associated item (\d+), description (.*), qty (\d+), Price (.
   step "set Customs Associated Item #{item_number} Tarriff to #{tariff}"
 end
 
-Then /^[Aa]dd Customs Associated Item (\d+)$/ do |item_number|
+Then /^add customs associated item (\d+)$/ do |item_number|
   if SdcEnv.new_framework
     SdcWebsite.customs_form.add_item.click
   else
@@ -568,11 +562,12 @@ Then /^[Ss]et Customs Associated Item (\d+) Description to (.*)$/ do |item_numbe
   TestData.hash[:customs_associated_items][item_number][:description] = value
 end
 
-Then /^[Ss]et Customs Associated Item (\d+) Qty to (\d+)$/ do |item_number, value|
+Then /^[Ss]et Customs Associated Item (\d+) Qty to (.*)$/ do |item_number, value|
+# Then /^[Ss]et Customs Associated Item (\d+) Qty to (\d+)$/ do |item_number, value|
   if SdcEnv.new_framework
     qty = SdcWebsite.customs_form.item.qty(item_number)
     qty.scroll_into_view
-    qty.set(value)
+    qty.set(value.to_i)
   else
     stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).item_qty.set(TestData.hash[:customs_associated_items][item_number][:quantity]) if SdcEnv.sdc_app == :orders
     stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).item_qty.set(TestData.hash[:customs_associated_items][item_number][:quantity]) if SdcEnv.sdc_app == :mail

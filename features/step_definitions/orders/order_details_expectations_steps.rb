@@ -30,10 +30,9 @@ Then /^expect order details ship-from and ship-from saved values are the same$/ 
 end
 
 Then /^expect order details associated item (\d+) qty is (?:correct|(\d+))$/ do |item_number, expectation|
-  stamps.orders.order_details.wait_until_present(2)
-  step 'expect order details is present'
   expectation = (expectation.nil?) ? TestData.hash[:details_associated_items][item_number][:item_qty] : expectation
-  expect(stamps.orders.order_details.items_ordered.item(item_number.to_i).item_qty.textbox.text).to eql expectation
+  step 'expect order details is present'
+  expect(SdcOrders.order_details.associated_item.qty(item_number).text_value).to eql(expectation)
 end
 
 Then /^expect order details associated item (\d+) ID is (?:correct|(.*))$/ do |item_number, expectation|

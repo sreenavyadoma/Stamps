@@ -36,16 +36,16 @@ Feature:  Customs Form Item Grid
     Then set order details service to PMI Flat Rate Envelope
     Then on order details form, add item 1, qty 1, id random, description random
     Then click order details form customs form button
-    Then expect customs associated item Grid count is 1
+    Then expect customs associated item grid count is 1
     Then add customs associated item 1, description random, qty 1, Price 1000, Made In Japan, Tariff 100
     Then add customs associated item 2, description random, qty 2, Price 2000, Made In Afghanistan, Tariff 200
-    Then expect customs associated item Grid count is 2
+    Then expect customs associated item grid count is 2
     Then add customs associated item 3, description random, qty 3, Price 3000, Made In Zimbabwe, Tariff 300
-    Then expect customs associated item Grid count is 3
+    Then expect customs associated item grid count is 3
     Then delete Customs form Associated Item 3
-    Then expect customs associated item Grid count is 2
+    Then expect customs associated item grid count is 2
     Then delete Customs form Associated Item 1
-    Then expect customs associated item Grid count is 1
+    Then expect customs associated item grid count is 1
     Then check customs form i agree to the usps privacy act statement
     Then close customs information form
     Then sign out
