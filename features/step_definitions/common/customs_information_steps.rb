@@ -562,12 +562,11 @@ Then /^[Ss]et Customs Associated Item (\d+) Description to (.*)$/ do |item_numbe
   TestData.hash[:customs_associated_items][item_number][:description] = value
 end
 
-Then /^[Ss]et Customs Associated Item (\d+) Qty to (.*)$/ do |item_number, value|
-# Then /^[Ss]et Customs Associated Item (\d+) Qty to (\d+)$/ do |item_number, value|
+Then /^[Ss]et Customs Associated Item (\d+) Qty to (\d+)$/ do |item_number, value|
   if SdcEnv.new_framework
     qty = SdcWebsite.customs_form.item.qty(item_number)
     qty.scroll_into_view
-    qty.set(value.to_i)
+    qty.set(value)
   else
     stamps.common_modals.customs_form.associated_items.item_number(item_number.to_i).item_qty.set(TestData.hash[:customs_associated_items][item_number][:quantity]) if SdcEnv.sdc_app == :orders
     stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).item_qty.set(TestData.hash[:customs_associated_items][item_number][:quantity]) if SdcEnv.sdc_app == :mail
