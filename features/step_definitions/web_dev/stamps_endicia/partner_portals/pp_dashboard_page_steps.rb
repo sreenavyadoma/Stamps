@@ -269,7 +269,18 @@ Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the (.*) # chart current year chart da
   expect(previous_year_data_expected).to match_array(previous_year_data_actual)
 end
 
+Then /^PP: expect export data header to exists$/ do
+  PartnerPortal.dashboard_page.export_data_header.wait_until_present(timeout: 5)
+  expect(PartnerPortal.dashboard_page.export_data_header).to be_present, 'Export Data header DOES NOT exist on dashboard page'
+end
 
+Then /^PP: expect export data content to be (.*)$/ do |str|
+  expect(PartnerPortal.dashboard_page.export_data_content.text_value.strip).to eql(str)
+end
+
+Then /^PP: expect export from date label to be (.*)$/ do |str|
+  expect(PartnerPortal.dashboard_page.from_label.text_value.strip).to eql(str)
+end
 
 Then /^[Pp]P: [Cc]lick submit in dashboard page$/ do
   PartnerPortal.dashboard_page.download.send_keys(:enter)
