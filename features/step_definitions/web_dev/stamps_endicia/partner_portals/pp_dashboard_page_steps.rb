@@ -31,7 +31,7 @@ Then /^[Pp]P: [Ee]xpect [Dd]ashboard [Pp]age the Last updated on: field to be pr
 end
 
 Then /^[Pp]P: [Ee]xpect [Dd]ashboard [Pp]age the Last updated on: field to be not present$/ do
-  expect(PartnerPortal.dashboard_page.contract_last_updated_on).not_to be_present, 'Last updated on DOES NOT exist on dashboard page'
+  expect(PartnerPortal.dashboard_page.contract_last_updated_on).not_to be_present, 'Last updated IS PRESENT on dashboard page'
 end
 
 Then /^[Pp]P: [Ee]xpect [Dd]ashboard [Pp]age the Last updated on: field displays correct date for (?:user|(.*))$/ do |user|

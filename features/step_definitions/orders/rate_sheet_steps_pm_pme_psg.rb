@@ -381,7 +381,7 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:execution_date]] = Time.now.strftime("%b %d, %Y %H:%M")
 
           step "set Order Details service to #{service}" if SdcEnv.sdc_app == :orders
-          step "select Print form service #{service}" if SdcEnv.sdc_app == :mail
+          step "select print form service #{service}" if SdcEnv.sdc_app == :mail
 
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:service_selected]] = TestData.hash[:service]
 

@@ -33,11 +33,20 @@ Then /^sign-in to Mail$/ do
 
   if SdcEnv.browser
     step 'click the Sign In button in Mail'
+    step 'close whats new modal in mail'
     step 'expect user is signed in'
   elsif SdcEnv.ios
     raise StandardError, 'Not Implemented'
   elsif SdcEnv.android
     raise StandardError, 'Not Implemented'
+  end
+end
+
+
+
+Then /^close whats new modal in mail$/ do
+  if SdcMail.modals.whats_new.title.present?
+    SdcMail.modals.whats_new.close.click
   end
 end
 
@@ -100,7 +109,7 @@ Then /^[Cc]lick the [Ss]ign [Ii]n button in [Mm]ail$/ do
     modal.sign_in_link.hover unless modal.sign_in.present?
     modal.sign_in.click
     SdcMail.verifying_account_info.safe_wait_until_present(timeout: 3)
-    SdcMail.verifying_account_info.wait_while_present(timeout: 8)
+    SdcMail.verifying_account_info.wait_while_present(timeout: 12)
   elsif SdcEnv.ios
     raise StandardError, 'Not Implemented'
   elsif SdcEnv.android
