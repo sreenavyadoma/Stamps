@@ -170,18 +170,25 @@ module SdcMail
     end
 
     module MailDateContainer
-      class MailDate < SdcPage
-        text_field(:text_field, tag: :text_field) { { xpath: '//input[starts-with(@id, "datefield-")]' } }
-        page_object(:picker_button) { { xpath: '//div[starts-with(@id, "datefield-")][contains(@id, "-trigger-picker")]' } }
+      class Picker < SdcPage
         page_object(:today) { { xpath: '//*[@class="x-datepicker-footer"]//span[contains(@id, "btnInnerEl")]' } }
 
-        def date_element(name, str)
-          page_object(name) { { xpath: "//div[text()='#{str}']" } }
+        def date_elements(name, str)
+          page_objects(name) { { xpath: "//div[text()='#{str}']" } }
         end
 
-        def date_label(str)
-          date_element(:date_label, str)
-          date_label.attribute_value('aria-label')
+        def today_element
+          page_object(:date_today) { { xpath: '//*[@class="x-datepicker-date"][@title="Today"]' } }
+        end
+
+      end
+
+      class MailDate < SdcPage
+        page_object(:picker_button) { { xpath: '//div[starts-with(@id, "datefield-")][contains(@id, "-trigger-picker")]' } }
+        text_field(:text_field, tag: :text_field) { { xpath: '//input[starts-with(@id, "datefield-")]' } }
+
+        def picker
+          Picker.new
         end
       end
 
@@ -227,18 +234,21 @@ module SdcMail
       include TrackingContainer
       include DimensionsContainer
       include ExtraServicesContainer
+      include MailDateContainer
     end
 
     class Envelopes < PrintFormBase
       include ExtraServicesContainer
       include InsuranceContainer
       include ExtraServicesContainer
+      include MailDateContainer
     end
 
     class CertifiedMail < PrintFormBase
       include EmailTrackingContainer
       include DimensionsContainer
       include InsuranceContainer
+      include MailDateContainer
 
       page_object(:cm_chooser) { { xpath: '//*[@id="sdc-mainpanel-cmcheckbox-inputEl"]' } }
       page_object(:cm_verify) { { xpath: '//*[@id="sdc-mainpanel-cmcheckbox"]' } }
@@ -267,6 +277,7 @@ module SdcMail
       include TrackingContainer
       include DimensionsContainer
       include ExtraServicesContainer
+      include MailDateContainer
     end
   end
 end

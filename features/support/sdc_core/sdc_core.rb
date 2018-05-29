@@ -98,20 +98,12 @@ class SdcPage < WatirDrops::PageObject
         instance_eval(args.first.to_s, __FILE__, __LINE__)
       end
     end
-
     alias text_field page_object
     alias button page_object
     alias label page_object
     alias selection page_object
     alias link page_object
 
-    # @param [String] name
-    # @param [String] tag
-    # @param [Integer] index
-    # @param [Boolean] required
-    # @param [Integer] timeout
-    # @param [Hash] block
-    # @return [SdcElement]
     def page_objects(name, tag: nil, index: nil, required: false, timeout: 15)
       list_name = index.nil? ? name : "#{name}s".to_sym
 
@@ -123,12 +115,6 @@ class SdcPage < WatirDrops::PageObject
         element(name, required: required) do
           SdcElement.new(instance_eval(list_name.to_s, __FILE__, __LINE__)[index])
         end
-      end
-
-      define_method :page_objects do |*args, &block|
-        SdcPage.page_objects(*args, &block)
-
-        instance_eval(args.first.to_s, __FILE__, __LINE__)
       end
     end
 
@@ -159,6 +145,12 @@ class SdcPage < WatirDrops::PageObject
 
   define_method :chooser do |*args|
     self.class.chooser(*args)
+
+    instance_eval(args.first.to_s, __FILE__, __LINE__)
+  end
+
+  define_method :page_objects do |*args, &block|
+    SdcPage.page_objects(*args, &block)
 
     instance_eval(args.first.to_s, __FILE__, __LINE__)
   end
@@ -236,7 +228,7 @@ class SdcElement < BasicObject
   end
 
   def set_attribute(name, value)
-    execute_script("return arguments[0].#{name}='#{value}'", @element)
+    execute_script("return arguments[0].#{name.to_s}='#{value.to_s}'", @element)
   end
 
   def safe_send_keys(*args, ctr: 1)
@@ -517,13 +509,13 @@ module SdcDriver
     def browser=(browser)
       @@browser = browser
     end
-    alias_method :driver=, :browser=
+    alias driver= browser=
 
 
     def browser
       @@browser
     end
-    alias_method :driver, :browser
+    alias driver browser
   end
 end
 
