@@ -56,21 +56,39 @@ Then /^set print form length to (\d+)$/ do |l|
   length = SdcMail.print_form.dimensions.length
   expect(length).to be_present, 'Length text field is not present'
   length.set(l)
+  expect(length.value.to_i).to eql l
   TestData.hash[:length] = l
 end
 
 Then /^set print form width to (\d+)$/ do |w|
-  width = SdcMail.print_form.dimensions.length
+  width = SdcMail.print_form.dimensions.width
   expect(width).to be_present, 'Width text field is not present'
   width.set(w)
+  expect(width.value.to_i).to eql w
   TestData.hash[:width] = w
 end
 
 Then /^set print form height to (\d+)$/ do |h|
-  height = SdcMail.print_form.dimensions.length
+  height = SdcMail.print_form.dimensions.height
   expect(height).to be_present, 'Height text field is not present'
   height.set(h)
+  expect(height.value.to_i).to eql h
   TestData.hash[:height] = h
+end
+
+Then /^expect print form length is (?:correct|(\d+))$/ do |h|
+  h = h.nil? ? TestData.hash[:length] : h
+  expect(SdcMail.print_form.dimensions.length.value.to_i).to eql h
+end
+
+Then /^expect print form width is (?:correct|(\d+))$/ do |h|
+  h = h.nil? ? TestData.hash[:width] : h
+  expect(SdcMail.print_form.dimensions.width.value.to_i).to eql h
+end
+
+Then /^expect print form height is (?:correct|(\d+))$/ do |h|
+  h = h.nil? ? TestData.hash[:height] : h
+  expect(SdcMail.print_form.dimensions.height.value.to_i).to eql h
 end
 
 # dimension expectations
