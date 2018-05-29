@@ -139,11 +139,11 @@ module SdcOrders
   end
 
   class SdcOrderDetailsItem < SdcPage
-    def qty(num)
-      page_object("qty_tf#{num}", tag: :text_field) { { xpath: "(//*[@name='Quantity'])[#{num}]" } }
-      page_object("qty_inc#{num}") {{xpath: "(//*[@name='Quantity']/../following-sibling::*/div[contains(@class, 'up')])[#{num}]"}}
-      page_object("qty_dec#{num}") { { xpath: "(//*[@name='Quantity']/../following-sibling::*/div[contains(@class, 'down')])[#{num}]" } }
-      sdc_number("qty#{num}", "qty_tf#{num}", "qty_inc#{num}", "qty_dec#{num}")
+    def item_qty(num)
+      page_object("qty_tf#{num}", tag: :text_field) { { xpath: "(//div[contains(@id, 'singleorderitem')]//*[@name='Quantity'])[#{num}]" } }
+      page_object("qty_inc#{num}") {{xpath: "(//div[contains(@id, 'singleorderitem')]//*[@name='Quantity']/../following-sibling::*/div[contains(@class, 'up')])[#{num}]"}}
+      page_object("qty_dec#{num}") { { xpath: "(//div[contains(@id, 'singleorderitem')]//*[@name='Quantity']/../following-sibling::*/div[contains(@class, 'down')])[#{num}]" } }
+      sdc_number("item_qty#{num}", "qty_tf#{num}", "qty_inc#{num}", "qty_dec#{num}")
     end
 
     def id(num)
@@ -154,8 +154,8 @@ module SdcOrders
       page_object("description#{num}", tag: :text_field) { { xpath: "(//*[@name='Description'])[#{num}]" } }
     end
 
-    def delete(num)
-      page_object("delete#{num}") { { xpath: "(//span[contains(@class, 'remove')])[#{num}]" } }
+    def delete_btn(num)
+      page_object("delete_btn#{num}") { { xpath: "(//span[contains(@class, 'remove')])[#{num}]" } }
     end
   end
 

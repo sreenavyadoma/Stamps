@@ -441,8 +441,8 @@ Then /^set order details ship-from to (?:Manage Shipping Addresses\.\.\.|(.*))$/
     str ||= 'Manage Shipping Addresses...'
     ship_from = SdcOrders.order_details.ship_from
     ship_from.selection_element(str)
-    ship_from.drop_down.click unless ship_from.selection.present?
-    ship_from.selection.click unless ship_from.selection.class_disabled?
+    ship_from.drop_down.scroll_into_view.click
+    ship_from.selection.scroll_into_view.click unless ship_from.selection.class_disabled?
     if ship_from.text_field.text_value == str || str == 'default'
       TestData.hash[:ship_from] = ship_from.text_field.text_value unless str == 'Manage Shipping Addresses...'
     end

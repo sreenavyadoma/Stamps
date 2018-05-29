@@ -32,7 +32,7 @@ end
 Then /^expect order details associated item (\d+) qty is (?:correct|(\d+))$/ do |item_number, expectation|
   expectation = (expectation.nil?) ? TestData.hash[:details_associated_items][item_number][:item_qty] : expectation
   step 'expect order details is present'
-  expect(SdcOrders.order_details.associated_item.qty(item_number).text_value).to eql(expectation)
+  expect(SdcOrders.order_details.associated_item.item_qty(item_number).value.to_i).to eql(expectation.to_i)    #todo Alex - change to .text_value once fixed
 end
 
 Then /^expect order details associated item (\d+) ID is (?:correct|(.*))$/ do |item_number, expectation|

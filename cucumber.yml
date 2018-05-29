@@ -1,4 +1,4 @@
-default: --backtrace --profile rob
+default: --backtrace --profile alex_orders
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -55,7 +55,7 @@ alex_mail:  --tags @mail_bvt_purchasing BROWSER=ff URL=stg USR=default PW=passwo
 alex_regress:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders URL=cc USR=abqacc10 PW=password1  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false
 alex_rates:  --tags @rates_fcm_package BROWSER=ff URL=qast USR=abqast2 PW=password1 WEB_APP=orders  --guess LOG_LEVEL=info HEALTHCHECK=false
 alex_rates_pmi:  --tags @rates_pmi_comm_plus_group_9 BROWSER=ff WEB_APP=orders URL=stg USR=abqast2 PW=password1  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false
-alex_orders:  --tags @bvt_shipstation_updates_international BROWSER=ff URL=stg USR=default PW=password1 NEW_FRAMEWORK=true --guess LOG_LEVEL=info HEALTHCHECK=false
+alex_orders:  --tags @bvt_orders_ship_date BROWSER=ff URL=stg USR=abqast2 PW=password1 NEW_FRAMEWORK=true --guess LOG_LEVEL=info HEALTHCHECK=false
 #alex_orders:  --tags @bvt_new_order BROWSER=ff URL=stg USR=abqast2 PW=password1 new_framework=true  --guess LOG_LEVEL=info HEALTHCHECK=false #abqast1
 alex_test:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders URL=qacc USR=abqacc10 PW=password1  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false
 
