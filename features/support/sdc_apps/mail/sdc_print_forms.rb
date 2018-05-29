@@ -72,7 +72,7 @@ module SdcMail
 
     module WeightContainer
       class Weight < SdcPage
-        text_field(:lbs_text_field, tag: :text_field) { { xpath: '//*[@name="Length"]' } }
+        text_field(:lbs_text_field, tag: :text_field) { { xpath: '//*[@name="WeightLbs"]' } }
         page_object(:lbs_increment) { { xpath: '//*[contains(@class,"pounds")]//*[contains(@class,"up")]' } }
         page_object(:lbs_decrement) { { xpath: '//*[contains(@class,"pounds")]//*[contains(@class,"down")]' } }
         sdc_number(:lbs, :lbs_text_field, :lbs_increment, :lbs_decrement)
@@ -102,7 +102,7 @@ module SdcMail
         text_field(:w_text_field, tag: :text_field) { { xpath: '//*[@name="Width"]' } }
         page_object(:w_increment) { { xpath: '(//div[starts-with(@id, "dimensionsview-")]//*[contains(@class, "up")])[1]' } }
         page_object(:w_decrement) { { xpath: '(//div[starts-with(@id, "dimensionsview-")]//*[contains(@class, "down")])[1]' } }
-        sdc_number(:width, :l_text_field, :l_increment, :l_decrement)
+        sdc_number(:width, :w_text_field, :w_increment, :w_decrement)
 
         text_field(:h_text_field, tag: :text_field) { { xpath: '//*[@name="Height"]' } }
         page_object(:h_increment) { { xpath: '(//div[starts-with(@id, "dimensionsview-")]//*[contains(@class, "up")])[2]' } }

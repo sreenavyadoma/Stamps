@@ -91,12 +91,6 @@ class SdcPage < WatirDrops::PageObject
       element(name.to_sym, required: required) do
         SdcFinder.element(browser, tag: tag, timeout: timeout, &block)
       end
-
-      define_method :page_object do |*args, &block|
-        SdcPage.page_object(*args, &block)
-
-        instance_eval(args.first.to_s, __FILE__, __LINE__)
-      end
     end
     alias text_field page_object
     alias button page_object
@@ -151,6 +145,12 @@ class SdcPage < WatirDrops::PageObject
 
   define_method :page_objects do |*args, &block|
     SdcPage.page_objects(*args, &block)
+
+    instance_eval(args.first.to_s, __FILE__, __LINE__)
+  end
+
+  define_method :page_object do |*args, &block|
+    SdcPage.page_object(*args, &block)
 
     instance_eval(args.first.to_s, __FILE__, __LINE__)
   end
@@ -453,7 +453,7 @@ end
 
 class SdcNumber < BasicObject
 
-  attr_reader :increment, :decrement
+  attr_reader :text_field, :increment, :decrement
 
   def initialize(text_field, increment, decrement)
     @text_field = text_field

@@ -38,12 +38,12 @@ end
 
 Then /^expect print form pounds is (?:correct|(\d+))$/ do |lbs|
   lbs = lbs.nil? ? TestData.hash[:lbs] : lbs
-  expect(SdcMail.print_form.weight.lbs.text_value).to eql lbs
+  expect(SdcMail.print_form.weight.lbs.value.to_i).to eql lbs
 end
 
 Then /^expect print form ounce is (?:correct|(\d+))$/ do |oz|
   oz = oz.nil? ? TestData.hash[:oz] : oz
-  expect(SdcMail.print_form.weight.oz.text_value).to eql oz
+  expect(SdcMail.print_form.weight.oz.value.to_i).to eql oz
 end
 
 Then /^set print form dimensions to length (\d+) width (\d+) height (\d+)$/ do |l, w, h|
