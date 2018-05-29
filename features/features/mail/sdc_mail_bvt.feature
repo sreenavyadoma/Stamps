@@ -128,10 +128,10 @@ Feature:  Mail BVT - Authentication
     Then sign-in to Mail
     Then select print on Shipping Label - 8 ½" x 11" Paper
     #Then set Print form Mail-From to default
-    Then set print form mail-to to a random address in zone 1
+    Then set print form mail-to to a random address in zone 8
     Then select print form service PM Package
-#    Then set print form pounds to 0
-#    Then set print form ounces to 1
+    Then set print form weight to lbs 1 oz 1
+    Then set print form dimensions to length 2 width 2 height 2
 
     Then show advanced options
     Then hide advanced options
