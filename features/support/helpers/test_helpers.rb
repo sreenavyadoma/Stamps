@@ -70,18 +70,6 @@ module Stamps
         str[0, index]
       end
 
-      def valid_ship_date(day)
-        ship_date = Date.today
-        day.to_i.times do
-          ship_date += 1
-          date = Date.civil(ship_date.year, ship_date.month, ship_date.day)
-          # break if Holidays.on(date, :us).size==0 && ship_date.wday!=0 # break if today is not a holiday and not a Sunday.
-          ship_date += 1 if !Holidays.on(date, :us).empty? # add 1 if today is a holiday
-          ship_date += 1 if ship_date.wday.zero? # add 1 if today is Sunday
-        end
-        ship_date.strftime('%m/%d/%Y')
-      end
-
       def shipdate_today_plus(day, format: '%b %-d')
         days = []
         count = 0
@@ -99,6 +87,12 @@ module Stamps
         date.strftime(format)
       end
 
+      def mail_date_text_field_format(day)
+        ship_month = shipdate_today_plus(day, format: '%m')
+        ship_day = shipdate_today_plus(day, format: '%d')
+        ship_year = shipdate_today_plus(day, format: '%Y')
+        "#{ship_month}/#{ship_day}/#{ship_year}"
+      end
 
       def is_whole_number?(number)
         number % 1.zero?

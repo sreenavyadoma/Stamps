@@ -103,10 +103,7 @@ end
 
 Then /^click mail ship date picker today plus (\d+)$/ do |day|
   step 'open mail ship date picker'
-  ship_month = TestHelper.shipdate_today_plus(day, format: '%m')
-  ship_day = TestHelper.shipdate_today_plus(day, format: '%d')
-  ship_year = TestHelper.shipdate_today_plus(day, format: '%Y')
-  TestData.hash[:mail_date] = "#{ship_month}/#{ship_day}/#{ship_year}"
+  TestData.hash[:mail_date] = TestHelper.mail_date_text_field_format(day)
 
   picker = SdcMail.print_form.mail_date.picker
   title = picker.today_element.attribute_value('title')
