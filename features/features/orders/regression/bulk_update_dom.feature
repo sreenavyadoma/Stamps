@@ -68,8 +68,8 @@ Feature: Bulk Update Domestic
 
     Then expect bulk update is present
 
-    Then set Bulk Update international service to FCMI Large Envelope/Flat
-    Then set Bulk Update domestic service to PME Padded Flat Rate Envelope
+    Then set bulk update international service to FCMI Large Envelope/Flat
+    Then set bulk update domestic service to PME Padded Flat Rate Envelope
 
     Then click Bulk Update Orders button
 
@@ -101,8 +101,8 @@ Feature: Bulk Update Domestic
     Then check order 4
     Then expect bulk update is present
 
-    Then set Bulk Update international service to FCMI Large Envelope/Flat
-    Then set Bulk Update domestic service to PME Padded Flat Rate Envelope
+    Then set bulk update international service to FCMI Large Envelope/Flat
+    Then set bulk update domestic service to PME Padded Flat Rate Envelope
 
     Then click Bulk Update Orders button
 
@@ -159,12 +159,12 @@ Feature: Bulk Update Domestic
     Then check order 2
 
     #Updating order details
-    #Then set Bulk Update Ship From to default
+    #Then set bulk update ship from to default
     #todo-BulkUpdate missing expectation for Ship From
 
     #Then check row 1
     #Then check row 2
-    Then set Bulk Update domestic service to PME Package/Flat/Thick Envelope
+    Then set bulk update domestic service to PME Package/Flat/Thick Envelope
     Then click Bulk Update Orders button
 
     Then uncheck row 2
@@ -172,14 +172,14 @@ Feature: Bulk Update Domestic
     Then set order details service to PM Large Package
 
     Then check row 2
-    Then set Bulk Update domestic service to PME Padded Flat Rate Envelope
+    Then set bulk update domestic service to PME Padded Flat Rate Envelope
     Then expect bulk update international service is PME Padded Flat Rate Envelope
 
     Then uncheck row 2
-    Then set Bulk Update domestic service to PME Package/Flat/Thick Envelope
+    Then set bulk update domestic service to PME Package/Flat/Thick Envelope
     Then check row 2
 
-    Then set Bulk Update Domestic service to PME Package/Flat/Thick Envelope
+    Then set bulk update domestic service to PME Package/Flat/Thick Envelope
     Then click Bulk Update Orders button
     #todo-BulkUpdate missing expectation for Domestic service
 
@@ -233,7 +233,7 @@ Feature: Bulk Update Domestic
     Then expect bulk update height is 0
 
 
-    Then click Bulk Update Update Order button
+    Then click bulk update update order button
     Then pause for 2 seconds
 
     #Then Refresh the driver
@@ -283,11 +283,11 @@ Feature: Bulk Update Domestic
     Then check Orders Grid row 2
 
     #Updating order details
-    Then set Bulk Update Ship From to default
-    Then set Bulk Update Domestic service to PME Package/Flat/Thick Envelope
+    Then set bulk update ship from to default
+    Then set bulk update domestic service to PME Package/Flat/Thick Envelope
     Then set Bulk Update Pounds to 1
     Then set Bulk Update Ounces to 1
-    Then click Bulk Update Update Order button
+    Then click bulk update update order button
     Then pause for 2 seconds
 
     Then Refresh the driver

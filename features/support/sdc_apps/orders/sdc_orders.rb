@@ -16,7 +16,7 @@ module SdcOrders
   module_function :order_details
 
   def bulk_update
-    raise ArgumentError, 'Not Implemented'
+    SdcBulkUpdate.new
   end
   module_function :bulk_update
 

@@ -1,5 +1,4 @@
-Then /^[Ss]et [Bb]ulk [Uu]pdate [Ss]hip [Ff]rom to (.*)$/ do |str|
-  #TestData.store[:bulk_ship_from] = stamps.orders.bulk_update.ship_from.select(str)
+Then /^set bulk update ship from to (.*)$/ do |str|
   TestData.hash[:bulk_ship_from] = SdcWebsite.orders.bulk_update.ship_from.select(str)
 end
 
@@ -75,7 +74,7 @@ Then /^[Dd]ecrement [Bb]ulk [Uu]pdate [Oo]unces by (.*)$/ do |str|
 end
 # End Bulk Update Weight steps
 
-Then /^[Ss]et [Bb]ulk [Uu]pdate [Dd]omestic [Ss]ervice to (.*)$/ do |str|
+Then /^set bulk update domestic service to (.*)$/ do |str|
   expect(stamps.orders.bulk_update.domestic_service.select(str).parse_service_name).to eql(TestData.hash[:bulk_dom_service] = str)
 end
 
@@ -83,7 +82,7 @@ Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Dd]omestic [Ss]ervice is (?:correct|(.*))$/ 
   expect(stamps.orders.bulk_update.domestic_service.textbox.text).to eql(str.nil? ? TestData.hash[:bulk_dom_service] : str)
 end
 
-Then /^[Ss]et [Bb]ulk [Uu]pdate [Ii]nternational [Ss]ervice to (.*)$/ do |str|
+Then /^set bulk update international service to (.*)$/ do |str|
   expect(stamps.orders.bulk_update.intl_service.select(str).parse_service_name).to eql(TestData.hash[:bulk_int_service] = str)
 end
 
@@ -172,7 +171,7 @@ Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Hh]eight is (?:correct|(.*))$/ do |str|
   expect(stamps.orders.bulk_update.dimensions.height.text).to eql((str.nil?) ? TestData.hash[:bulk_height] : str)
 end
 
-Then /^[Cc]lick [Bb]ulk [Uu]pdate [Uu]pdate [Oo]rder [Bb]utton$/ do
+Then /^click bulk update update order button$/ do
   stamps.orders.bulk_update.update_orders.click
   sleep 30
 end

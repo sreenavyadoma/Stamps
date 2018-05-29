@@ -278,3 +278,62 @@ Feature:  BVT tests for Orders
     Then click orders toolbar print button
     Then in print modal, click close button
     Then sign out
+
+  @bvt_bulk_update
+  Scenario: BVT Bulk Update International
+
+  # Order #1 (Domestic)
+#    Then in Orders Grid, Sort Order Date in Descending Order
+    Then sign-in to Orders
+    Then add order 1
+#    Then set Order Details Ship-From to default
+#    Then set Order Details Ship-To to random address in zone 1
+#    Then set order details service to PM Package
+#    Then set order details ounces to 1
+#    Then pause for 1 second
+#
+#  # Order #2 (International)
+#    Then add order 2
+#    Then set Order Details Ship-To International address to
+#      | full_name     | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country | phone        |  email        |
+#      | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone | Random email  |
+#    Then set Order Details Weight to 0 lb 1 oz
+#    Then set Order Details international service to PMEI Package/Flat/Thick Envelope
+#    Then blur out on order details form
+#
+#  # Check 1st two orders
+#    Then pause for 1 second
+#    Then check order 1
+#    Then pause for 1 second
+#    Then check order 2
+#    Then pause for 1 seconds
+#
+#  # Updating order details
+#    Then expect Bulk Update is present
+#    Then blur out on multi order details form
+#    Then set bulk update ship from to default
+#    Then set bulk update domestic service to PM Large Package
+#    Then set bulk update international service to PMI Package/Flat/Thick Envelope
+#    Then click bulk update update order button
+#
+#  # Uncheck both orders
+#    Then pause for 1 second
+#    Then uncheck order 1
+#    Then pause for 1 second
+#    Then uncheck order 2
+#    Then pause for 1 second
+#
+#  # verify fields in 1st order
+#    Then check order 1
+#    Then expect Order Details Ship From is correct
+#    Then expect Order Details service is PM Large Package
+#    Then pause for 1 second
+#    Then uncheck order 1
+#    Then pause for 1 second
+#
+#  # verify fields in 2nd order
+#    Then check order 2
+#    Then expect Order Details Ship From is correct
+#    Then expect Order Details international service is PMI Package/Flat/Thick Envelope
+#    Then uncheck order 2
+#    Then sign out
