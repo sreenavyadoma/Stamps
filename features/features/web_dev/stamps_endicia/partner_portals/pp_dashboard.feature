@@ -100,7 +100,7 @@ Feature: PP-MVP: Dashboard Page Single Contract
     #verify UI
     Then PP: expect export data header to exists
     Then PP: expect export data content to be Select a date range to export transaction level data as a CSV file.
-    Then PP: expect export from date label to be From:
+    #Then PP: expect export from date label to be From:
     Then PP: expect dashboard page from date field exists
     Then PP: expect dashboard page from date date picker exists
     Then PP: expect export to date label to be To:

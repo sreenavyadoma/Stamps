@@ -279,10 +279,28 @@ Then /^PP: expect export data content to be (.*)$/ do |str|
 end
 
 Then /^PP: expect export from date label to be (.*)$/ do |str|
-  expect(PartnerPortal.dashboard_page.from_label.text_value.strip).to eql(str)
+  expect(PartnerPortal.dashboard_page.from_label.first.text_value.strip).to eql(str)
 end
+
+Then /^PP: expect dashboard page from date field exists$/ do
+  expect(PartnerPortal.dashboard_page.from_date_field).to be_present, 'From Date field DOES NOT exist on dashboard page'
+end
+
+Then /^PP: expect dashboard page from date date picker exists$/ do
+  expect(PartnerPortal.dashboard_page.from_date_field).to be_present, 'From Date field DOES NOT exist on dashboard page'
+end
+
+Then /^PP: expect export to date label to be To:$/ do
+  expect(PartnerPortal.dashboard_page.to_label.first.text_value.strip).to eql(str)
+end
+
+Then /^PP: expect dashboard page to date field exists$/ do
+  expect(PartnerPortal.dashboard_page.to_date_field).to be_present, 'To Date field DOES NOT exist on dashboard page'
+end
+
 
 Then /^[Pp]P: [Cc]lick submit in dashboard page$/ do
   PartnerPortal.dashboard_page.download.send_keys(:enter)
 end
+
 

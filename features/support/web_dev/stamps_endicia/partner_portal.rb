@@ -81,7 +81,7 @@ module PartnerPortal
 
     page_object(:export_data_header) { { xpath: '//h3[contains(text(), "Export Data")]' } }
     page_object(:export_data_content) { { xpath: '//p[contains(text(), "Select a date range to export transaction level data as a CSV file.")]' } }
-    page_object(:from_label) { { class: ['form-group has-error::before'] } }
+    page_object(:from_label) { { class: ['form-group'] } }
     text_field(:from_date_field, tag: :text_field, required: true) { { name: 'startDate' } }
     page_object(:from_date_date_picker) { { class: ['ui-button-text ui-clickable'] } }
     page_object(:to_label) { { class: ['form-group'] } }
