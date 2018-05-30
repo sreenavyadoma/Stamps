@@ -1,10 +1,10 @@
 
-@pp_log_in_page_validation
 Feature: PP-MVP: Login Page
 
     Background:
         Given Start test driver
 
+    @pp_log_in_page_validation
     Scenario: PP: Login Page Validation
 
         Then PP: A user navigates to the login page

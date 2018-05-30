@@ -79,6 +79,7 @@ module PartnerPortal
     page_objects(:active_customers_customers_chart_legends, index: 2) { { xpath:  '//ul[@class="ppchart__legend"]' } }
     page_objects(:revenue_share_chart_legends, index: 3) { { xpath:  '//ul[@class="ppchart__legend"]' } }
 
+    #Export Data
     page_object(:export_data_header) { { xpath: '//h3[contains(text(), "Export Data")]' } }
     page_object(:export_data_content) { { xpath: '//p[contains(text(), "Select a date range to export transaction level data as a CSV file.")]' } }
     page_object(:from_label) { { class: ['form-group'] } }
