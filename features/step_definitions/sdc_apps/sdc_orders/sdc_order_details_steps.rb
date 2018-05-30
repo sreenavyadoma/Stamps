@@ -1,5 +1,5 @@
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
+Then /^set order details ship-to to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
   step 'show order details form ship-to fields'
   TestData.hash[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address))
   if SdcEnv.new_framework
@@ -125,7 +125,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails [Ss]ervice is (?:correct|(.*))$/ do |str|
   end
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]ervice to (.*)$/ do |str|
+Then /^set order details international service to (.*)$/ do |str|
   step 'expect order details is present'
   TestData.hash[:int_service] = stamps.orders.order_details.service.select(str).parse_service_name
   20.times do
@@ -436,13 +436,13 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Tt]racking to (.*)$/ do |str|
   step 'Save Order Details data'
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Ff]rom to (?:Manage Shipping Addresses\.\.\.|(.*))$/ do |str|
+Then /^set order details ship-from to (?:Manage Shipping Addresses\.\.\.|(.*))$/ do |str|
   if SdcEnv.new_framework
     str ||= 'Manage Shipping Addresses...'
     ship_from = SdcOrders.order_details.ship_from
     ship_from.selection_element(str)
-    ship_from.drop_down.click unless ship_from.selection.present?
-    ship_from.selection.click unless ship_from.selection.class_disabled?
+    ship_from.drop_down.scroll_into_view.click
+    ship_from.selection.scroll_into_view.click unless ship_from.selection.class_disabled?
     if ship_from.text_field.text_value == str || str == 'default'
       TestData.hash[:ship_from] = ship_from.text_field.text_value unless str == 'Manage Shipping Addresses...'
     end

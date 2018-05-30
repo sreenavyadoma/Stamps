@@ -18,6 +18,7 @@ end
 
 Then /^on order details form, add item (\d+), qty (\d+), id (.+), description (.*)$/ do |item_number, qty, id, description|
   step "add order details associated item #{item_number}"
+  step "scroll into view order details associated item #{item_number}"
   step "set Order Details Associated Item #{item_number} Qty to #{qty}"
   step "set Order Details Associated Item #{item_number} ID to #{id}"
   step "set Order Details Associated Item #{item_number} Description to #{description}"
@@ -31,12 +32,19 @@ Then /^add order details associated item (\d+)$/ do |item_number|
   end
 end
 
+Then /^scroll into view order details associated item (\d+)$/ do |item_number|
+  SdcOrders.order_details.associated_item.item_qty(item_number).scroll_into_view
+  SdcOrders.order_details.associated_item.description(item_number).scroll_into_view
+  SdcOrders.order_details.associated_item.id(item_number).scroll_into_view
+end
+
+
 Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) Qty to (.*)$/ do |item_number, qty|
   step 'expect order details is present'
   TestData.hash[:details_associated_items][item_number] = {} unless TestData.hash[:details_associated_items].has_key?(item_number)
   TestData.hash[:details_associated_items][item_number][:item_qty] = qty
   if SdcEnv.new_framework
-    SdcOrders.order_details.associated_item.qty(1).set(TestData.hash[:details_associated_items][item_number][:item_qty])
+    SdcOrders.order_details.associated_item.item_qty(item_number).set(TestData.hash[:details_associated_items][item_number][:item_qty])
   else
     stamps.orders.order_details.items_ordered.item(item_number.to_i).item_qty.set(TestData.hash[:details_associated_items][item_number][:item_qty] )
   end
@@ -48,7 +56,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) ID to (.*)$/ do |item_nu
   TestData.hash[:details_associated_items][item_number] = {} unless TestData.hash[:details_associated_items].has_key?(item_number)
   TestData.hash[:details_associated_items][item_number][:item_id] = (str.downcase.include?('random') ? TestHelper.rand_alpha_numeric : str)
   if SdcEnv.new_framework
-    SdcOrders.order_details.associated_item.id(1).set(TestData.hash[:details_associated_items][item_number][:item_id])
+    SdcOrders.order_details.associated_item.id(item_number).set(TestData.hash[:details_associated_items][item_number][:item_id])
   else
     stamps.orders.order_details.items_ordered.item(item_number.to_i).item_id.set(TestData.hash[:details_associated_items][item_number][:item_id])
   end
@@ -60,7 +68,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) Description to (.*)$/ do
   TestData.hash[:details_associated_items][item_number] = {} unless TestData.hash[:details_associated_items].has_key?(item_number)
   TestData.hash[:details_associated_items][item_number][:item_description] = (str.downcase.include?('random') ? TestHelper.rand_alpha_numeric : str)
   if SdcEnv.new_framework
-    SdcOrders.order_details.associated_item.description(1).set(TestData.hash[:details_associated_items][item_number][:item_description])
+    SdcOrders.order_details.associated_item.description(item_number).set(TestData.hash[:details_associated_items][item_number][:item_description])
   else
     stamps.orders.order_details.items_ordered.item(item_number.to_i).item_description.set(TestData.hash[:details_associated_items][item_number][:item_description])
   end
@@ -82,7 +90,7 @@ Then /^[Oo]n [Oo]rder [Dd]etails form, Delete Item (\d+)$/ do |item_number|
   item.delete.click
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails Weight to (\d+\.?\d*) lb (\d+\.?\d*) oz$/ do |pounds, ounces|
+Then /^set order details weight to (\d+\.?\d*) lb (\d+\.?\d*) oz$/ do |pounds, ounces|
   step "set order details pounds to #{pounds}"
   step "set order details ounces to #{ounces}"
 end
@@ -143,7 +151,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to a random country i
   step "set Order Details Domestic Ship-To Country to #{TestData.hash[:country]}"
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Ii]nternational address to$/ do |table|
+Then /^set order details ship-to international address to$/ do |table|
   TestData.hash[:country] = table.hashes.first['country']
   TestData.hash[:full_name] = table.hashes.first[:full_name].downcase.include?('random') ? TestHelper.rand_full_name : table.hashes.first['full_name']
   TestData.hash[:company] = table.hashes.first['company'].downcase.include?('random') ? TestHelper.rand_comp_name : table.hashes.first['company']

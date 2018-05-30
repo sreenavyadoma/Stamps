@@ -9,7 +9,7 @@ Then /^Verify Local Rating$/ do |table|
     #SdcLog.step "  --------------------------------------------------------------------------- "
     #SdcLog.step "  Test #{index}  ||  #{field["ship_from"]} ||  #{field["ship_to"]} ||  #{field["weight_oz"]} ||  #{field["weight_lb"]} ||  #{field["length"]} ||  #{field["height"]} ||  #{field["width"]} ||  #{field["service"]} ||  #{field["tracking"]}"
     #SdcLog.step "  --------------------------------------------------------------------------- "
-    step "set Order Details Ship-From to #{field["ship_from"]}"
+    step "set order details ship-from to #{field["ship_from"]}"
     step "set Order Details Ship-To Domestic address to #{field["ship_to"]}"
     step "set order details ounces to #{field["weight_oz"]}"
     step "set order details pounds to #{field["weight_lb"]}"

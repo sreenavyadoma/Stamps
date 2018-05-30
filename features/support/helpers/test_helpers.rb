@@ -24,20 +24,21 @@ module Stamps
         up = ('A'..'Z').to_a
         digits = ('0'..'9').to_a
         special = %w(- _ .)
-        SdcEnv.env.to_s  + (digits + down + up + special).shuffle[1..1].join +
+        SdcEnv.env.to_s + (digits + down + up + special).shuffle[1..1].join +
           [rand_samp_str(down), rand_samp_str(up), rand_samp_str(
-              digits)].concat((down + up + digits).sample(Random.rand(0..5))
-          ).shuffle.join
+            digits
+          )].concat((down + up + digits).sample(Random.rand(0..5))).shuffle.join
       end
 
       def rand_email
         "#{rand_usr}@mailinator.com".downcase
       end
 
-      def rand_alpha_numeric(min = 2, max = 10)
-        [rand_samp_str(('a'..'z').to_a), rand_samp_str(('A'..'Z').to_a),
-         rand_samp_str(('0'..'9').to_a)].concat((('a'..'z').to_a +
-            ('A'..'Z').to_a + ('0'..'9').to_a).sample(Random.rand(min..max))).shuffle.join
+      def rand_alpha_numeric(min: 2, max: 10)
+        # [rand_samp_str(('a'..'z').to_a), rand_samp_str(('A'..'Z').to_a),
+        #  rand_samp_str(('0'..'9').to_a)].concat((('a'..'z').to_a +
+        #     ('A'..'Z').to_a + ('0'..'9').to_a).sample(Random.rand(min..max))).shuffle.join
+        (('a'..'z').to_a + ('A'..'Z').to_a + ('0'..'9').to_a).sample(Random.rand(min..max)).shuffle.join
       end
 
       def rand_samp_str(arr)
@@ -56,7 +57,7 @@ module Stamps
         "Suite #{Random.rand(1..999)}"
       end
 
-      def state_fullname(state) #todo-Rob. This is wrong, fix it.
+      def state_fullname(state) # todo-Rob. This is wrong, fix it.
         if @states.nil?
           @states = {}
           @states['CA'] = 'California'
@@ -69,16 +70,28 @@ module Stamps
         str[0, index]
       end
 
-      def valid_ship_date(day)
-        ship_date = Date.today
-        day.to_i.times do
-          ship_date += 1
-          date = Date.civil(ship_date.year,ship_date.month,ship_date.day)
-          #break if Holidays.on(date, :us).size==0 && ship_date.wday!=0 # break if today is not a holiday and not a Sunday.
-          ship_date += 1 if Holidays.on(date, :us).size > 0 # add 1 if today is a holiday
-          ship_date += 1 if ship_date.wday.zero? # add 1 if today is Sunday
+      def shipdate_today_plus(day, format: '%b %-d')
+        days = []
+        count = 0
+        d = 0
+        loop do
+          while (Date.today + d.to_i).wday.zero? || !Holidays.on(Date.today + d.to_i, :us).empty? || days.include?(d)
+            d += 1
+          end
+          days << d
+          count += 1
+          break if count > day
         end
-        ship_date.strftime('%m/%d/%Y')
+
+        date = Date.today + days.last.to_i
+        date.strftime(format)
+      end
+
+      def mail_date_text_field_format(day)
+        ship_month = shipdate_today_plus(day, format: '%m')
+        ship_day = shipdate_today_plus(day, format: '%d')
+        ship_year = shipdate_today_plus(day, format: '%Y')
+        "#{ship_month}/#{ship_day}/#{ship_year}"
       end
 
       def is_whole_number?(number)
@@ -116,9 +129,9 @@ module Stamps
         formatted_address = ''
         if address_array.is_a?(Array)
           address_array.each_with_index do |field, index|
-            if index == address_array.size - 1 #if this is the last item in the string, don't append a new line
-              formatted_address = formatted_address + field.to_s.strip
-            else #(param_hash['full_name'].downcase.include? 'random') ? TestHelper.random_name : param_hash['full_name']
+            if index == address_array.size - 1 # if this is the last item in the string, don't append a new line
+              formatted_address += field.to_s.strip
+            else # (param_hash['full_name'].downcase.include? 'random') ? TestHelper.random_name : param_hash['full_name']
               formatted_address = formatted_address + ((field.to_s.strip.downcase.include? 'random') ? rand_full_name : field.to_s.strip) + "\n"
             end
           end
@@ -128,30 +141,30 @@ module Stamps
 
       def address_helper_zone(zone)
         case zone.downcase
-          when /zone 1 (?:through|and) 4/
-            rand_zone_1_4
-          when /zone 5 (?:through|and) 8/
-            rand_zone_5_8
-          when /zone 1/
-            rand_zone_1
-          when /zone 2/
-            rand_zone_2
-          when /zone 3/
-            rand_zone_3
-          when /zone 4/
-            rand_zone_4
-          when /zone 5/
-            rand_zone_5
-          when /zone 6/
-            rand_zone_6
-          when /zone 7/
-            rand_zone_7
-          when /zone 8/
-            rand_zone_8
-          when /zone 9/
-            rand_zone_9
-          else
-            return zone
+        when /zone 1 (?:through|and) 4/
+          rand_zone_1_4
+        when /zone 5 (?:through|and) 8/
+          rand_zone_5_8
+        when /zone 1/
+          rand_zone_1
+        when /zone 2/
+          rand_zone_2
+        when /zone 3/
+          rand_zone_3
+        when /zone 4/
+          rand_zone_4
+        when /zone 5/
+          rand_zone_5
+        when /zone 6/
+          rand_zone_6
+        when /zone 7/
+          rand_zone_7
+        when /zone 8/
+          rand_zone_8
+        when /zone 9/
+          rand_zone_9
+        else
+          return zone
         end
       end
 
@@ -243,13 +256,12 @@ module Stamps
       def url_prefix(*args)
         @url_hash = data_for(:url_prefix, {})
         case args.length
-          when 1
-            return @url_hash[args[0]]
-          else
-            return @url_hash[ENV['URL']]
+        when 1
+          return @url_hash[args[0]]
+        else
+          return @url_hash[ENV['URL']]
         end
       end
-
 
       def format_address(address)
         if address.is_a?(Hash)
@@ -281,7 +293,7 @@ module Stamps
         hash = {}
         temp = str.split(/\n/)
         hash[:name], hash[:company], hash[:street] = temp
-        hash[:city], hash[:state], hash[:zip], hash[:zip_full] = temp.last.split(/[,\s-]/).reject{|s| s.eql?('') || s.nil?}
+        hash[:city], hash[:state], hash[:zip], hash[:zip_full] = temp.last.split(/[,\s-]/).reject { |s| s.eql?('') || s.nil? }
         hash[:zip_full] = "#{hash[:zip]}-#{hash[:zip_full]}"
         hash.each_value(&:strip!)
       end
@@ -298,9 +310,9 @@ module Stamps
           collection = str.split '/'
           collection[0] = Date::MONTHNAMES[collection[0].to_i]
         else                                  # April 28, 2018
-          collection = str.split(/[\s\/,]/).delete_if{|s| s.empty?}
+          collection = str.split(/[\s\/,]/).delete_if { |s| s.empty? }
         end
-        {day: collection[1].sub(/^0/, ''), year: collection[2], month: collection[0]}
+        { day: collection[1].sub(/^0/, ''), year: collection[2], month: collection[0] }
       end
 
       # returns mm/dd/yyyy "10/26/2017"
@@ -325,13 +337,8 @@ module Stamps
         hours = Time.now.hour + hours
         return "12:00 a.m." if hours.zero?
         return "12:00 p.m." if hours == 12
-        return "#{hours-12}:00 p.m." if hours > 12
+        return "#{hours - 12}:00 p.m." if hours > 12
         "#{hours}:00 a.m."
-      end
-
-      # add +1 to day if day is a Sunday. We don't ship on Sundays.
-      def shipdate_today_plus(day)
-        ((Date.today + day.to_i).wday.zero?) ? (Date.today + day.to_i + 1).strftime('%b %-d') : (Date.today + day.to_i).strftime('%b %-d')
       end
 
       # takes a date string format "11/21/2017" and converts it to "Nov 21"
@@ -340,20 +347,20 @@ module Stamps
         str
       end
 
-      def date_printed(*args) #todo-Rob rework
+      def date_printed(*args) # todo-Rob rework
         case args.length
-          when 0
-            month = (Date.today.month.to_s.length == 1) ? "0#{Date.today.month}" : Date.today.month
-            day = (Date.today.day.length == 1) ? "0#{Date.today.day}" : Date.today.day
-            "#{month}/#{day}/#{Date.today.year}"
-          when 1
-            days_to_add = args[0].to_i
-            new_date = Date.today + days_to_add
-            month = (new_date.month.to_s.length == 1) ? "0#{new_date.month}" : new_date.month
-            day = (new_date.day.to_s.length == 1) ? "0#{new_date.day}" : new_date.day
-            "#{month}/#{day}/#{new_date.year}"
-          else
-            raise ArgumentError, 'Illegal number of arguments for date_from_today'
+        when 0
+          month = (Date.today.month.to_s.length == 1) ? "0#{Date.today.month}" : Date.today.month
+          day = (Date.today.day.length == 1) ? "0#{Date.today.day}" : Date.today.day
+          "#{month}/#{day}/#{Date.today.year}"
+        when 1
+          days_to_add = args[0].to_i
+          new_date = Date.today + days_to_add
+          month = (new_date.month.to_s.length == 1) ? "0#{new_date.month}" : new_date.month
+          day = (new_date.day.to_s.length == 1) ? "0#{new_date.day}" : new_date.day
+          "#{month}/#{day}/#{new_date.year}"
+        else
+          raise ArgumentError, 'Illegal number of arguments for date_from_today'
         end
       end
 
@@ -372,7 +379,7 @@ module Stamps
       end
 
       def format_weight(str)
-        #"1 lbs. 4 oz." -> "20"
+        # "1 lbs. 4 oz." -> "20"
         weight_array = str.split(' ')
         ((weight_array[0].to_i * 16) + weight_array[2].to_i).to_s
       end
@@ -386,32 +393,30 @@ module Stamps
       end
 
       def to_sym(str, delim)
-        #str.gsub(/[^0-9A-Za-z -]/, '').gsub(/\s+/,'_').gsub(/-+/, '_').downcase.to_sym
+        # str.gsub(/[^0-9A-Za-z -]/, '').gsub(/\s+/,'_').gsub(/-+/, '_').downcase.to_sym
         (strip str.gsub(/\W/, delim), delim).downcase.to_sym
       end
 
       def strip(* args)
         case args.length
-          when 2
-            string = args[0]
-            chars = args[1]
-            chars = Regexp.escape(chars)
-            string.gsub(/\A[#{chars}]+|[#{chars}]+\z/, '')
-          when 3
-            str = args[0]
-            char_to_remove = args[1]
-            substitute_char = args[2]
-            str.gsub(char_to_remove, substitute_char)
-          else
-            raise 'Illegal number of arguments for strip method.'
+        when 2
+          string = args[0]
+          chars = args[1]
+          chars = Regexp.escape(chars)
+          string.gsub(/\A[#{chars}]+|[#{chars}]+\z/, '')
+        when 3
+          str = args[0]
+          char_to_remove = args[1]
+          substitute_char = args[2]
+          str.gsub(char_to_remove, substitute_char)
+        else
+          raise 'Illegal number of arguments for strip method.'
         end
       end
 
       def to_bool(str)
         str.nil? ? false : str.downcase == 'true'
       end
-
     end
   end
 end
-

@@ -8,32 +8,32 @@ Feature: Bulk Update Domestic
 
     # Adding 1st order
 #    Then add new order
-#    #Then set Order Details Ship-From to default
-#    Then set Order Details Ship-To International address to
+#    #Then set order details ship-from to default
+#    Then set order details ship-to international address to
 #      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
 #      | PMEI LFRE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
 #    Then set order details service to PMI Package/Flat/Thick Envelope
-#    Then set Order Details Weight to 2 lb 2 oz
+#    Then set order details weight to 2 lb 2 oz
 #    Then on order details form, add item 1, qty 1, id ID 1, description Description 1
 #    #Then on order details form, add item 2, qty 2, id random string, description random string
-#    Then click Order Details form Customs Form button
+#    Then click order details form customs form button
 #
-#    Then add Customs Associated Item 1, description random string, qty 1, Price 1, Made In Canada, Tariff 1
-#    Then add Customs Associated Item 2, description random string, qty 1, Price 1, Made In Japan, Tariff 1
-#    Then add Customs Associated Item 3, description random string, qty 1, Price 1, Made In Canada, Tariff 1
-#    Then add Customs Associated Item 4, description random string, qty 1, Price 1, Made In Japan, Tariff 1
-#    Then add Customs Associated Item 5, description random string, qty 1, Price 1, Made In Canada, Tariff 1
-#    Then add Customs Associated Item 6, description random string, qty 1, Price 1, Made In Japan, Tariff 1
-#    Then add Customs Associated Item 7, description random string, qty 1, Price 1, Made In Canada, Tariff 1
-#    Then add Customs Associated Item 1, description random string, qty 2, Price 2, Made In United States, Tariff 2
+#    Then add customs associated item 1, description random string, qty 1, Price 1, Made In Canada, Tariff 1
+#    Then add customs associated item 2, description random string, qty 1, Price 1, Made In Japan, Tariff 1
+#    Then add customs associated item 3, description random string, qty 1, Price 1, Made In Canada, Tariff 1
+#    Then add customs associated item 4, description random string, qty 1, Price 1, Made In Japan, Tariff 1
+#    Then add customs associated item 5, description random string, qty 1, Price 1, Made In Canada, Tariff 1
+#    Then add customs associated item 6, description random string, qty 1, Price 1, Made In Japan, Tariff 1
+#    Then add customs associated item 7, description random string, qty 1, Price 1, Made In Canada, Tariff 1
+#    Then add customs associated item 1, description random string, qty 2, Price 2, Made In United States, Tariff 2
 
-#    Then check Customs form I agree to the USPS Privacy Act Statement
-#    Then close Customs Information form
+#    Then check customs form i agree to the usps privacy act statement
+#    Then close customs information form
 
     # Add 2nd order
 #    Then add order 2
-#    #Then set Order Details Ship-From to default
-#    Then set Order Details Ship-To to random address between zone 8
+#    #Then set order details ship-from to default
+#    Then set order details ship-to to random address between zone 8
 #    Then set order details service to PM Large Package
 #    Then set order details pounds to 2
 #    Then set order details ounces to 2
@@ -43,8 +43,8 @@ Feature: Bulk Update Domestic
 
 
 
-#    Then check Customs form I agree to the USPS Privacy Act Statement
-#    Then close Customs Information form
+#    Then check customs form i agree to the usps privacy act statement
+#    Then close customs information form
 
     # Check 1st two orders
 #    Then check order 1
@@ -127,8 +127,8 @@ Feature: Bulk Update Domestic
 
     #Adding 1st order
     Then add new order
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address in zone 1
+    Then set order details ship-from to default
+    Then set order details ship-to to random address in zone 1
     Then set order details service to PM Package
     Then set order details pounds to 1
     Then check order details insure-for checkbox
@@ -145,8 +145,8 @@ Feature: Bulk Update Domestic
     Then expect Order Details Ship Cost Total is correct
     #Add 2nd order
     Then add order 2
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 8
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 8
     Then set order details service to PM Large Package
     Then set order details pounds to 2
     Then set order details ounces to 2
@@ -264,15 +264,15 @@ Feature: Bulk Update Domestic
   Scenario: Bulk Update Domestic
     #Adding 1st order
     Then add new order
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address in zone 1
+    Then set order details ship-from to default
+    Then set order details ship-to to random address in zone 1
     Then set order details service to PM Package
     Then set order details pounds to 1
 
     #Adding 2nd order
     Then add new order
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address in zone 1
+    Then set order details ship-from to default
+    Then set order details ship-to to random address in zone 1
     Then set order details service to PM Package
     Then set order details pounds to 1
 

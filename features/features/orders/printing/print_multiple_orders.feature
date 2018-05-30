@@ -7,14 +7,14 @@ Feature: Print Multiple Orders
   @print_multiple_orders
   Scenario:  Print
     Then add new order
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PME Padded Flat Rate Envelope
     Then set order details ounces to 1
 
     Then add new order
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PME Padded Flat Rate Envelope
     Then set order details ounces to 1
 

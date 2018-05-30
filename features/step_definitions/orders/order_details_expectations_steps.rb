@@ -29,40 +29,39 @@ Then /^expect order details ship-from and ship-from saved values are the same$/ 
   end
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails Associated Item (\d+) Qty is (?:correct|(\d+))$/ do |item_number, expectation|
-  stamps.orders.order_details.wait_until_present(2)
-  step 'expect order details is present'
+Then /^expect order details associated item (\d+) qty is (?:correct|(\d+))$/ do |item_number, expectation|
   expectation = (expectation.nil?) ? TestData.hash[:details_associated_items][item_number][:item_qty] : expectation
-  expect(stamps.orders.order_details.items_ordered.item(item_number.to_i).item_qty.textbox.text).to eql expectation
+  step 'expect order details is present'
+  expect(SdcOrders.order_details.associated_item.item_qty(item_number).value.to_i).to eql(expectation.to_i)    #todo Alex - change to .text_value once fixed
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails Associated Item (\d+) ID is (?:correct|(.*))$/ do |item_number, expectation|
+Then /^expect order details associated item (\d+) ID is (?:correct|(.*))$/ do |item_number, expectation|
   stamps.orders.order_details.wait_until_present(2)
   step 'expect order details is present'
   expectation = (expectation.nil?) ? TestData.hash[:details_associated_items][item_number][:item_id] : expectation
   expect(stamps.orders.order_details.items_ordered.item(item_number.to_i).item_id.text).to eql expectation
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails Associated Item (\d+) Description is (?:correct|(.*))$/ do |item_number, expectation|
+Then /^expect order details associated item (\d+) Description is (?:correct|(.*))$/ do |item_number, expectation|
   stamps.orders.order_details.wait_until_present(2)
   step 'expect order details is present'
   expectation = (expectation.nil?) ? TestData.hash[:details_associated_items][item_number][:item_description] : expectation
   expect(stamps.orders.order_details.items_ordered.item(item_number.to_i).item_description.text).to eql expectation
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails Associated Item (\d+) Qty Placeholder is (.*)$/ do |item_number, expectation|
+Then /^expect order details associated item (\d+) qty placeholder is (.*)$/ do |item_number, expectation|
   stamps.orders.order_details.wait_until_present(2)
   step 'expect order details is present'
   expect(stamps.orders.order_details.items_ordered.item(item_number.to_i).qty.textbox.placeholder).to eql expectation
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails Associated Item (\d+) ID Placeholder is (.*)$/ do |item_number, expectation|
+Then /^expect order details associated item (\d+) ID Placeholder is (.*)$/ do |item_number, expectation|
   stamps.orders.order_details.wait_until_present(2)
   step 'expect order details is present'
   expect(stamps.orders.order_details.items_ordered.item(item_number.to_i).id.placeholder).to eql expectation
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails Associated Item (\d+) Description Placeholder is (.*)$/ do |item_number, expectation|
+Then /^expect order details associated item (\d+) Description Placeholder is (.*)$/ do |item_number, expectation|
   stamps.orders.order_details.wait_until_present(2)
   step 'expect order details is present'
   expect(stamps.orders.order_details.items_ordered.item(item_number.to_i).description.placeholder).to eql expectation
@@ -94,67 +93,67 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails service Placeholder is (.*)$/ do |expectati
   expect(stamps.orders.order_details.service.textbox.placeholder).to eql expectation
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails Ship-To Country is (?:correct|(.*))$/ do |expectation|
+Then /^expect order details ship-to country is (?:correct|(.*))$/ do |expectation|
   expectation = (expectation.nil?) ? TestData.hash[:country] : expectation
   stamps.orders.order_details.wait_until_present(2)
   step 'expect order details is present'
   expect(stamps.orders.order_details.ship_to.domestic.country.textbox.text).to eql expectation
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails International Ship-To Name is (?:correct|(.*))$/ do |expectation|
+Then /^expect order details international ship-to name is (?:correct|(.*))$/ do |expectation|
   expectation = TestData.hash[:full_name] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   step 'expect order details is present'
   expect(stamps.orders.order_details.ship_to.international.name.text).to eql(expectation)
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails International Ship-To Company is (?:correct|(.*))$/ do |expectation|
+Then /^expect order details international ship-to company is (?:correct|(.*))$/ do |expectation|
   expectation = TestData.hash[:company] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   step 'expect order details is present'
   expect(stamps.orders.order_details.ship_to.international.company.text).to eql expectation
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails International Ship-To Address 1 is (?:correct|(.*))$/ do |expectation|
+Then /^expect order details international ship-to address 1 is (?:correct|(.*))$/ do |expectation|
   expectation = TestData.hash[:street_address_1] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   step 'expect order details is present'
   expect(stamps.orders.order_details.ship_to.international.address_1.text).to eql expectation
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails International Ship-To Address 2 is (?:correct|(.*))$/ do |expectation|
+Then /^expect order details international ship-to address 2 is (?:correct|(.*))$/ do |expectation|
   expectation = TestData.hash[:street_address_2] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   step 'expect order details is present'
   expect(stamps.orders.order_details.ship_to.international.address_2.text).to eql expectation
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails International Ship-To City is (?:correct|(.*))$/ do |expectation|
+Then /^expect order details international ship-to city is (?:correct|(.*))$/ do |expectation|
   expectation = TestData.hash[:city] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   step 'expect order details is present'
   expect(stamps.orders.order_details.ship_to.international.city.text).to eql expectation
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails International Ship-To Province is (?:correct|(.*))$/ do |expectation|
+Then /^expect order details international ship-to province is (?:correct|(.*))$/ do |expectation|
   expectation = TestData.hash[:state] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.ship_to.international.province.text).to eql expectation
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails International Ship-To Postal Code is (?:correct|(.*))$/ do |expectation|
+Then /^expect order details international ship-to postal code is (?:correct|(.*))$/ do |expectation|
   expectation = TestData.hash[:zip] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.ship_to.international.postal_code.text).to eql expectation
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails International Ship-To Phone is (?:correct|(.*))$/ do |expectation|
+Then /^expect order details international ship-to phone is (?:correct|(.*))$/ do |expectation|
   expectation = TestData.hash[:phone] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.ship_to.international.phone.text).to eql expectation
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails International Ship-To Email is (?:correct|(.*))$/ do |expectation|
+Then /^expect order details international ship-to email is (?:correct|(.*))$/ do |expectation|
   expectation = TestData.hash[:email] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   step 'expect order details is present'

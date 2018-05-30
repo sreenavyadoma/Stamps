@@ -24,4 +24,4 @@ Feature: Envelopes BVT
     Then select print on Roll 4x6
     Then select print on Roll 418x614
 
-#set Order Details Ship-To to a random address in Zone 1 through 4
+#set order details ship-to to a random address in Zone 1 through 4

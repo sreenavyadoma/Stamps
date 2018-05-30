@@ -7,10 +7,10 @@ Feature: Tracking
   @tracking_defaults
   Scenario:  Print - First-Class Mail Envelope
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
 
-    Then set Order Details Ship-To to random address in zone 1
-    Then set Order Details Ship-To to random address in zone 1
+    Then set order details ship-to to random address in zone 1
+    Then set order details ship-to to random address in zone 1
 
     #Then set order details service to PME Flat Rate Envelope
     #Then expect Order Details service is PME Flat Rate Envelope

@@ -115,15 +115,17 @@ Then /^click save in manage print options$/ do
 end
 
 Then /^show advanced options$/ do
-  SdcMail.print_form.show_advanced_options.click
+  show = SdcMail.print_form.show_advanced_options
   hide = SdcMail.print_form.hide_advanced_options
+  show.click unless hide.present?
   hide.wait_until_present(timeout: 3)
   expect(hide). to be_present, 'show advanced options failed'
 end
 
 Then /^hide advanced options$/ do
-  SdcMail.print_form.hide_advanced_options.click
+  hide = SdcMail.print_form.hide_advanced_options
   show = SdcMail.print_form.show_advanced_options
+  hide.click unless show.present?
   show.wait_until_present(timeout: 3)
   expect(show). to be_present, 'hide advanced options failed'
 end

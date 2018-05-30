@@ -78,7 +78,7 @@ Feature:  Mail BVT - Authentication
     Then click Mail Print modal Print button
     Then Sign out
 
-  @rob_test
+  @rob_cccc
   Scenario: Address Cleansing
     Then sign-in to Mail
     Then select print on Shipping Label - 8 ½" x 11" Paper
@@ -93,7 +93,7 @@ Feature:  Mail BVT - Authentication
 #    Then set print form ounces to 1
 #    Then select print form service PM Package
 #    Then expect Print form Domestic Address field displays Address Cleansing, BVT, 1350 Market Street, San Francisco, CA 94102-5401
-#    Then Sign out
+    Then Sign out
 
   @mail_print_on_lov
   Scenario: Print-on list of values
@@ -125,38 +125,50 @@ Feature:  Mail BVT - Authentication
 
   @rob_test
   Scenario: Advanced Options for Envelope - 10
+    Then sign-in to Mail
     Then select print on Shipping Label - 8 ½" x 11" Paper
     #Then set Print form Mail-From to default
-    Then set print form mail-to to a random address in zone 1
+    Then set print form mail-to to a random address in zone 8
     Then select print form service PM Package
-    Then set print form pounds to 0
-    Then set print form ounces to 1
+    Then set print form weight to lbs 1 oz 1
+    Then set print form dimensions to length 2 width 2 height 2
 
     Then show advanced options
     Then hide advanced options
     Then show advanced options
     #Then expect Advanced Options Extra Services Button is visible
 
-    Then set Advanced Options Mail Date to today
-    Then expect Advanced Options Mail Date field is present
-    Then set Advanced Options Mail Date to date 04/04/2017
-    Then expect Advanced Options Mail Date is 04/04/2017
-    Then set Advanced Options Mail Date to today
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to tomorrow
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to today plus 0
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to today plus 1
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to today plus 2
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to today plus 3
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to today plus 4
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to today plus 5
-    Then expect Advanced Options Mail Date is correct
+    Then set mail ship date to 05/31/2018
+    Then open mail ship date picker
+    Then click today on mail ship date picker
+    Then click mail ship date picker today plus 0
+    Then click mail ship date picker today plus 1
+    Then click mail ship date picker today plus 2
+    Then click mail ship date picker today plus 3
+    Then click mail ship date picker today plus 4
+    Then click mail ship date picker today plus 5
+
+
+#    Then set Advanced Options Mail Date to today
+#    Then expect Advanced Options Mail Date field is present
+#    Then set Advanced Options Mail Date to date 04/04/2017
+#    Then expect Advanced Options Mail Date is 04/04/2017
+#    Then set Advanced Options Mail Date to today
+#    Then expect Advanced Options Mail Date is correct
+#    Then set Advanced Options Mail Date to tomorrow
+#    Then expect Advanced Options Mail Date is correct
+#    Then set Advanced Options Mail Date to today plus 0
+#    Then expect Advanced Options Mail Date is correct
+#    Then set Advanced Options Mail Date to today plus 1
+#    Then expect Advanced Options Mail Date is correct
+#    Then set Advanced Options Mail Date to today plus 2
+#    Then expect Advanced Options Mail Date is correct
+#    Then set Advanced Options Mail Date to today plus 3
+#    Then expect Advanced Options Mail Date is correct
+#    Then set Advanced Options Mail Date to today plus 4
+#    Then expect Advanced Options Mail Date is correct
+#    Then set Advanced Options Mail Date to today plus 5
+#    Then expect Advanced Options Mail Date is correct
 #
 #    Then expect Advanced Options include Return Address is present
 #    Then check Advanced Options include Return Address

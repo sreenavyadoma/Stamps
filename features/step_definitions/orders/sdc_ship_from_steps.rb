@@ -76,7 +76,7 @@ Then /^[Ee]xpect [Mm]anage [Ss]hipping [Aa]ddress all rows deleted$/ do
 end
 
 Then /^[Oo]pen [Mm]anage [Ss]hipping [Aa]ddress modal$/ do
-  step 'set Order Details Ship-From to Manage Shipping Addresses...'
+  step 'set order details ship-from to Manage Shipping Addresses...'
   step 'expect Manage Shipping Address modal is present'
 end
 
@@ -140,7 +140,7 @@ Then /^[Cc]lose [Mm]anage [Ss]hipping [Aa]ddress [Mm]odal$/ do
 end
 
 Then /^[Oo]n [Mm]anage [Ss]hipping [Aa]ddress [Mm]odal, edit address for name=\"(.*)\", company=\"(.*)\" and city=\"(.*)\" to:$/ do |name, company, city, new_address|
-  step 'set Order Details Ship-From to Manage Shipping Addresses...'
+  step 'set order details ship-from to Manage Shipping Addresses...'
   row_num = stamps.orders.modals.manage_shipping_addresses.locate_ship_from(name, company, city)
   if row_num > 0
     stamps.orders.modals.manage_shipping_addresses.select_row(row_num)

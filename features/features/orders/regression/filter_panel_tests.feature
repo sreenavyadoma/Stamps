@@ -82,7 +82,7 @@ Feature: Orders Filter Panel
     When In left Filter Panel, expect system displays expanded filters panel
 
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set Order Details Domestic Ship-To Country to United States
     Then set order details ship-to domestic address to
       | full_name   | company      | street_address      | city | state | zip        | country       | phone  |  email |
@@ -101,7 +101,7 @@ Feature: Orders Filter Panel
     Then expect orders grid zip is 92101
 
     Then click orders toolbar print button
-    Then set Print modal Print-On to Shipping Label - 8 ½" x 11" Paper
+    Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
     Then set Orders print modal printer
     Then click print modal print button
 
