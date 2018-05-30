@@ -53,6 +53,7 @@ module PartnerPortal
   #   chart Y-axis
   #   chart legends
   class PPDashboardPage < SdcPage
+
     page_object(:dashboard_header) { { xpath: '//h1[contains(text(), "Dashboard")]' } }
 
     page_object(:contract_header) { { class: ['dashboard__contract-header ng-star-inserted'] } }
@@ -82,13 +83,22 @@ module PartnerPortal
     #Export Data
     page_object(:export_data_header) { { xpath: '//h3[contains(text(), "Export Data")]' } }
     page_object(:export_data_content) { { xpath: '//p[contains(text(), "Select a date range to export transaction level data as a CSV file.")]' } }
-    page_object(:from_label) { { class: ['form-group'] } }
     text_field(:from_date_field, tag: :text_field, required: true) { { name: 'startDate' } }
     page_object(:from_date_date_picker) { { class: ['ui-button-text ui-clickable'] } }
-    page_object(:to_label) { { class: ['form-group'] } }
+    page_object(:from_date_error_message) { { xpath: '//div[@class="export-data__start-date"]/div/div' } }
     text_field(:to_date_field, tag: :text_field, required: true) { { name: 'endDate' } }
     page_object(:to_date_picker) { { class: ['ui-button-text ui-clickable'] } }
+    page_object(:to_date_error_message) { { xpath: '//div[@class="export-data__end-date"]/div/div' } }
     button(:download) { { class: ['ui-button ui-widget ui-state-default ui-corner-all ui-button-text-empty'] } }
+    def from_label
+      SdcPage.browser.execute_script('return window.getComputedStyle( document.getElementsByClassName("form-group")[0] , ":before").getPropertyValue("content")')
+    end
+    def to_label
+      SdcPage.browser.execute_script('return window.getComputedStyle( document.getElementsByClassName("form-group")[1] , ":before").getPropertyValue("content")')
+    end
+    page_object(:download_modal) { { class: ['ng-tns-c5-0 ui-dialog ui-widget ui-widget-content ui-corner-all ui-shadow ui-dialog-draggable ng-trigger ng-trigger-dialogState'] } }
+    page_object(:download_modal_header) { { xpath: '//h3[contains(text(), "Downloading Report")]' } }
+    page_object(:download_modal_p) { { xpath: '//ng-component[@class="ng-star-inserted"]/p' } }
 
 
     def x_axis_month_abbreviations

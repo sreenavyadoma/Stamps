@@ -52,10 +52,10 @@ Feature: PP-MVP: Dashboard Page Single Contract
      """
      Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec
      """
-   Then PP: expect dashboard page the Active Customers Chart legends to exist
-   Then PP: expect dashboard page the Active Customers Chart previous year legend to be last year date
-   Then PP: expect dashboard page the Active Customers Chart current year legends to be current year
-   Then PP: expect dashboard page the Active Customers Chart Current Month legends to be Current Month
+    Then PP: expect dashboard page the Active Customers Chart legends to exist
+    Then PP: expect dashboard page the Active Customers Chart previous year legend to be last year date
+    Then PP: expect dashboard page the Active Customers Chart current year legends to be current year
+    Then PP: expect dashboard page the Active Customers Chart Current Month legends to be Current Month
 
    # Revenue Share
     Then PP: expect dashboard page the Revenue Share Chart to exist
@@ -65,17 +65,17 @@ Feature: PP-MVP: Dashboard Page Single Contract
      """
      Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec
      """
-   Then PP: expect dashboard page the Revenue Share Chart legends to exist
-   Then PP: expect dashboard page the Revenue Share Chart previous year legend to be last year date
-   Then PP: expect dashboard page the Revenue Share Chart current year legends to be current year
-   Then PP: expect dashboard page the Revenue Share Chart Current Month legends to be Current Month
+    Then PP: expect dashboard page the Revenue Share Chart legends to exist
+    Then PP: expect dashboard page the Revenue Share Chart previous year legend to be last year date
+    Then PP: expect dashboard page the Revenue Share Chart current year legends to be current year
+    Then PP: expect dashboard page the Revenue Share Chart Current Month legends to be Current Month
 
   #Verify Last Updated On is not present
-   Then PP: navigate back to previous page
-   Then PP: set login page email to webdevauto3@stamps.com
-   Then PP: set login page password to password1
-   Then PP: User clicks Log In
-   Then PP: expect dashboard page the Last updated on: field to be not present
+    Then PP: navigate back to previous page
+    Then PP: set login page email to webdevauto3@stamps.com
+    Then PP: set login page password to password1
+    Then PP: User clicks Log In
+    Then PP: expect dashboard page the Last updated on: field to be not present
 
   @pp_dashboard_single_contract_chart_data_validation
   Scenario: PP: Dashboard Page Single Contract UI Validation
@@ -100,7 +100,7 @@ Feature: PP-MVP: Dashboard Page Single Contract
     #verify UI
     Then PP: expect export data header to exists
     Then PP: expect export data content to be Select a date range to export transaction level data as a CSV file.
-    #Then PP: expect export from date label to be From:
+    Then PP: expect export from date label to be From:
     Then PP: expect dashboard page from date field exists
     Then PP: expect dashboard page from date date picker exists
     Then PP: expect export to date label to be To:
@@ -108,28 +108,42 @@ Feature: PP-MVP: Dashboard Page Single Contract
     Then PP: expect dashboard page to date picker exists
     Then PP: expect dashboard page download button exists
 
-     #validate different error messages of the from date and to date fields
+   #validate different error messages of the from date and to date fields
     Then PP: click on the dashboard page download button
-    Then PP: expect error message to be 6 characters minimum.
+    Then PP: expect dashboard page from date field error message index 1 to be This field is required.
+    Then PP: expect dashboard page to date field error message index 1 to be This field is required.
     Then PP: set dashboard page from date field to 25/25/25
     Then PP: set dashboard page to date field to 25/25/25
-    Then PP: click on the dashboard page download button
-    Then PP: expect error message of from date field to be Valid date required.
-    Then PP: expect error message of to date field to be Valid date required.
+    Then PP: blur out on dashboard page
+    Then PP: expect dashboard page from date field error message index 1 to be This field is required.
+    Then PP: expect dashboard page to date field error message index 1 to be This field is required.
     Then PP: set dashboard page from date field to 2/2/18
     Then PP: set dashboard page to date field to 2/2/17
-    Then PP: click on the dashboard page download button
-    Then PP: expect error message to be To Date must be after From Date.
+    Then PP: blur out on dashboard page
+    Then PP: expect dashboard page from date field error message index 1 to be To Date must be after From Date.
+    Then PP: expect dashboard page to date field error message index 1 to be To Date must be after From Date.
 
-    #verify functionality export of data
-    Then PP: set dashboard page from date field to 12/16/18
-    Then PP: set dashboard page to date field to 12/16/19
-    Then PP: click on the dashboard page download button
-    Then PP: expect error message text to be Error No data found for that date range. Please try again with different dates.
-    Then PP: set dashboard page from date field to 2/17/17
-    Then PP: set dashboard page to date field to 2/18/18
-    Then PP: click on the dashboard page download button
-    Then PP: expect download modal text to be Downloading Report Your report is being downloaded now. This may take a while for larger data sets.
-    Then PP: close out the download modal
-    Then PP: expect CSVfile to be downloaded
-    Then PP: Expect a record Download Data event is added in Audit Records for user
+#    #verify functionality export of data
+     Then PP: set dashboard page from date field to 2/17/17
+     Then PP: set dashboard page to date field to 2/18/18
+     Then PP: click on the dashboard page download button
+     Then PP: expect dashboard page download modal exists
+     Then PP: expect dashboard page download modal header to be Downloading Report
+     Then PP: expect dashboard page download modal paragraph index 1 to be
+     """
+     Your report is being downloaded now. This may take a while for larger data sets.
+     """
+      Then PP: expect dashboard page download modal paragraph index 2 to be
+      """
+      In the meantime, you can close this window and continue to use the portal.
+      """
+
+     Then PP: expect download modal text to be Downloading Report Your report is being downloaded now. This may take a while for larger data sets.
+#    Then PP: close out the download modal
+#    Then PP: expect CSVfile to be downloaded
+#    Then PP: Expect a record Download Data event is added in Audit Records for user
+
+#  Then PP: set dashboard page from date field to 12/16/18
+#  Then PP: set dashboard page to date field to 12/16/19
+#  Then PP: click on the dashboard page download button
+#  Then PP: expect error message text to be Error No data found for that date range. Please try again with different dates.

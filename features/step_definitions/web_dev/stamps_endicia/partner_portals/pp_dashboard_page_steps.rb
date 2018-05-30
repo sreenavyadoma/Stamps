@@ -4,6 +4,11 @@ Then /^[Pp]P: [Ee]xpect [Dd]ashboard [Pp]age header exist$/ do
    expect(PartnerPortal.dashboard_page.dashboard_header).to be_present, 'Dashboard header DOES NOT exist on dashboard page'
 end
 
+Then /^PP: blur out on dashboard page$/ do
+  PartnerPortal.dashboard_page.dashboard_header.blur_out
+end
+
+
 Then /^[Pp]P: expect dashboard header on left panel exists$/ do
   expect(PartnerPortal.dashboard_page.panel_dashboard).to be_present 'Dashboard header on left panel  DOES NOT exist on dashboard page'
 end
@@ -279,7 +284,9 @@ Then /^PP: expect export data content to be (.*)$/ do |str|
 end
 
 Then /^PP: expect export from date label to be (.*)$/ do |str|
-  expect(PartnerPortal.dashboard_page.from_label.first.text_value.strip).to eql(str)
+  from_label = PartnerPortal.dashboard_page.from_label
+  from_label = from_label.delete('""')
+  expect(from_label).to eql(str)
 end
 
 Then /^PP: expect dashboard page from date field exists$/ do
@@ -287,20 +294,75 @@ Then /^PP: expect dashboard page from date field exists$/ do
 end
 
 Then /^PP: expect dashboard page from date date picker exists$/ do
-  expect(PartnerPortal.dashboard_page.from_date_field).to be_present, 'From Date field DOES NOT exist on dashboard page'
+  expect(PartnerPortal.dashboard_page.from_date_field).to be_present, 'From Date Picker DOES NOT exist on dashboard page'
 end
 
-Then /^PP: expect export to date label to be To:$/ do
-  expect(PartnerPortal.dashboard_page.to_label.first.text_value.strip).to eql(str)
+Then /^PP: expect export to date label to be (.*)$/ do |str|
+  to_label = PartnerPortal.dashboard_page.to_label
+  to_label = to_label.delete('""')
+  expect(to_label).to eql(str)
 end
 
 Then /^PP: expect dashboard page to date field exists$/ do
   expect(PartnerPortal.dashboard_page.to_date_field).to be_present, 'To Date field DOES NOT exist on dashboard page'
 end
 
+Then /^PP: expect dashboard page to date picker exists$/ do
+  expect(PartnerPortal.dashboard_page.to_date_picker).to be_present, 'To Date Picker DOES NOT exist on dashboard page'
+end
 
-Then /^[Pp]P: [Cc]lick submit in dashboard page$/ do
+Then /^PP: expect dashboard page from date field error message index (\d+) to be (.*)$/ do |index, str|
+  from_date_error_message = PartnerPortal.dashboard_page.from_date_error_message
+  from_date_error_message.wait_until_present(timeout: 5)
+  from_date_error_message = from_date_error_message.text_value.strip.split("\n")
+  expect(from_date_error_message[index.to_i - 1]).to eql(str)
+
+end
+
+Then /^PP: set dashboard page from date field to (.*)$/ do |str|
+  from_date_field =  PartnerPortal.dashboard_page.from_date_field
+  from_date_field.wait_until_present(timeout: 5)
+  from_date_field.set(str)
+end
+
+Then /^PP: set dashboard page to date field to (.*)$/ do |str|
+  to_date_field =  PartnerPortal.dashboard_page.to_date_field
+  to_date_field.wait_until_present(timeout: 5)
+  to_date_field.set(str)
+end
+
+Then /^PP: expect dashboard page to date field error message index (\d+) to be (.*)$/ do |index, str|
+  to_date_error_message = PartnerPortal.dashboard_page.to_date_error_message
+  to_date_error_message.wait_until_present(timeout: 5)
+  to_date_error_message = to_date_error_message.text_value.strip.split("\n")
+  expect(to_date_error_message[index.to_i - 1]).to eql(str)
+
+end
+
+Then /^PP: click on the dashboard page download button$/ do
   PartnerPortal.dashboard_page.download.send_keys(:enter)
 end
 
+Then /^PP: expect dashboard page download button exists$/ do
+  PartnerPortal.dashboard_page.download.wait_until_present(timeout: 5)
+  expect(PartnerPortal.dashboard_page.download).to be_present, 'Download button DOES NOT exist on dashboard page'
+end
 
+Then /^PP: expect dashboard page download modal exists$/ do
+  PartnerPortal.dashboard_page.download_modal.wait_until_present(timeout: 5)
+  expect(PartnerPortal.dashboard_page.download_modal).to be_present, 'Download modal DOES NOT exist on dashboard page'
+end
+
+Then /^PP: expect dashboard page download modal header to be (.*)$/ do |str|
+  PartnerPortal.dashboard_page.download_modal_header.wait_until_present(timeout: 5)
+  expect(PartnerPortal.dashboard_page.download_modal_header.text_value.strip).to eql(str)
+end
+
+Then /^PP: expect dashboard page download modal paragraph index (\d+) to be (.*)$/ do |str|
+  to_date_error_message = PartnerPortal.dashboard_page.to_date_error_message
+  to_date_error_message.wait_until_present(timeout: 5)
+  to_date_error_message = to_date_error_message.text_value.strip.split("\n")
+  expect(to_date_error_message[index.to_i - 1]).to eql(str)
+end
+
+download_modal_p
