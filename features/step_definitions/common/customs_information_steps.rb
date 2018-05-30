@@ -37,7 +37,7 @@ Then /^set customs non-delivery options to (.*)$/ do |value|
 end
 
 Then /^expect customs non-delivery options is (?:correct|(.*))$/ do |str|
-  str = str.nil? ? TestData.hash[:customs_non_delivery_options] : str
+  str ||= TestData.hash[:customs_non_delivery_options]
   expect(SdcWebsite.customs_form.non_delivery.text_field.text_value).to eql(str)
 end
 
@@ -99,10 +99,10 @@ Then /^expect customs i agree to the usps privacy act statement is checked (?:co
 end
 
 Then /^set customs license number to (?:(?:a|some) random string|(.*))$/ do |str|
-  str ||= TestHelper.rand_alpha_numeric(min: 2, max: 6)
+  str = str.nil? ? TestHelper.rand_alpha_numeric(min: 2, max: 6) : str
   customs_form = SdcWebsite.customs_form
   customs_form.license.wait_until_present(timeout: 5)
-  SdcWebsite.customs_form.license.set(str) if SdcWebsite.customs_form.license.present?
+  customs_form.license.set(str) if customs_form.license.present?
   step "expect customs license number is #{str}"
   step 'Save Customs Information form Total amount'
   TestData.hash[:customs_license_no] = str
@@ -115,97 +115,55 @@ Then /^expect customs license number is (?:correct|(.*))$/ do |str|
   step 'Save Customs Information form Total amount'
 end
 
-Then /^set customs certificate number to (?:(?:a|some) random string|(.*))$/ do |value|
-  value ||= TestHelper.rand_alpha_numeric(min: 2, max: 8)
-  if SdcEnv.new_framework
-    SdcWebsite.customs_form.certificate.set(value) if SdcWebsite.customs_form.certificate.present?
-    step "expect customs certificate number is #{value}"
-  else
-    stamps.common_modals.customs_form.certificate.set(value) if SdcEnv.sdc_app == :orders
-    stamps.mail.print_form.mail_customs.edit_customs_form.certificate.set(value) if SdcEnv.sdc_app == :mail
-  end
+Then /^set customs certificate number to (?:(?:a|some) random string|(.*))$/ do |str|
+  str = str.nil? ? TestHelper.rand_alpha_numeric(min: 2, max: 8) : str
+  customs_form = SdcWebsite.customs_form
+  customs_form.certificate.wait_until_present(timeout: 5)
+  customs_form.certificate.set(str) if customs_form.certificate.present?
+  step "expect customs certificate number is #{str}"
   step 'Save Customs Information form Total amount'
-
-  TestData.hash[:customs_certificate_no] = value
+  TestData.hash[:customs_certificate_no] = str
 end
 
-Then /^expect customs certificate number is (?:correct|(.*))$/ do |expectation|
-  expectation ||= TestData.hash[:customs_certificate_no]
-  if SdcEnv.new_framework
-    expect(SdcWebsite.customs_form.certificate).to be_present, 'Certificate Number is not present'
-    expect(SdcWebsite.customs_form.certificate.text_value).to eql(expectation), 'Certificate Number is incorrect'
-    expect(SdcWebsite.customs_form.certificate.text_value).to eql(expectation)
-  else
-    sleep(0.5)
-    expect(stamps.common_modals.customs_form.certificate.text).to eql(expectation) if SdcEnv.sdc_app == :orders
-    expect(stamps.mail.print_form.mail_customs.edit_customs_form.certificate.text).to eql(expectation) if SdcEnv.sdc_app == :mail
-  end
+Then /^expect customs certificate number is (?:correct|(.*))$/ do |str|
+  str = str.nil? ? TestData.hash[:customs_certificate_no] : str
+  customs_form = SdcWebsite.customs_form
+  customs_form.certificate.wait_until_present(timeout: 5)
+  expect(customs_form.certificate.text_value).to eql(str)
+  expect(customs_form.certificate.text_value).to eql(str)
 end
 
-Then /^set customs invoice number to (?:(?:a|some) random string|(.*))$/ do |value|
-  value ||= TestHelper.rand_alpha_numeric(min: 2, max: 10)
-  if SdcEnv.new_framework
-    SdcWebsite.customs_form.invoice.set(value) if SdcWebsite.customs_form.invoice.present?
-    step "expect customs invoice number is #{value}"
-  else
-    stamps.common_modals.customs_form.invoice.set(value) if SdcEnv.sdc_app == :orders
-    stamps.mail.print_form.mail_customs.edit_customs_form.invoice.set(value) if SdcEnv.sdc_app == :mail
-  end
+Then /^set customs invoice number to (?:(?:a|some) random string|(.*))$/ do |str|
+  str = str.nil? ? TestHelper.rand_alpha_numeric(min: 2, max: 10) : str
+  customs_form = SdcWebsite.customs_form
+  customs_form.invoice.wait_until_present(timeout: 5)
+  customs_form.invoice.set(str) if customs_form.invoice.present?
+  step "expect customs invoice number is #{str}"
   step 'Save Customs Information form Total amount'
-
-  TestData.hash[:customs_invoice_no] = value
+  TestData.hash[:customs_invoice_no] = str
 end
 
-Then /^expect customs invoice number is (?:correct|(.*))$/ do |expectation|
-  expectation = expectation.nil? ? TestData.hash[:customs_invoice_no] : expectation
-  if SdcEnv.new_framework
-    expect(SdcWebsite.customs_form.invoice).to be_present, 'Customs Invoice is not present'
-    expect(SdcWebsite.customs_form.invoice.text_value).to eql(expectation), 'Customs Invoice is incorrect'
-  else
-    sleep(0.5)
-    expect(stamps.common_modals.customs_form.invoice.text).to eql(expectation) if SdcEnv.sdc_app == :orders
-    expect(stamps.mail.print_form.mail_customs.edit_customs_form.invoice.text).to eql(expectation) if SdcEnv.sdc_app == :mail
-  end
+Then /^expect customs invoice number is (?:correct|(.*))$/ do |str|
+  str = str.nil? ? TestData.hash[:customs_invoice_no] : str
+  customs_form = SdcWebsite.customs_form
+  customs_form.invoice.wait_until_present(timeout: 5)
+  expect(customs_form.invoice.text_value).to eql(str)
 end
 
-Then /^[Dd]elete Customs Associated Item (\d+)$/ do |item_number|
-  if SdcEnv.new_framework
-    SdcWebsite.customs_form.item.delete(item_number).click
-  else
-    if SdcEnv.sdc_app == :orders
-      field = stamps.common_modals.customs_form.associated_items
-    else
-      field = stamps.mail.print_form.mail_customs.edit_customs_form.associated_items
-    end
-    if field.size > 1
-      field.item_number(item_number.to_i).delete.click_while_present
-    else
-      field.item_number(item_number.to_i).delete.click
-    end
-  end
-
+Then /^[Dd]elete Customs Associated Item (\d+)$/ do |item|
+  SdcWebsite.customs_form.item.delete(item).click
 end
 
 Then /^check customs form i agree to the usps privacy act statement$/ do
-  if SdcEnv.new_framework
-    SdcWebsite.customs_form.agree.check
-  else
-    stamps.common_modals.customs_form.agree_to_terms.check if SdcEnv.sdc_app == :orders
-    stamps.mail.print_form.mail_customs.edit_customs_form.agree_to_terms.check if SdcEnv.sdc_app == :mail
-  end
+  SdcWebsite.customs_form.agree.check
 end
 
 Then /^expect customs i agree to the usps privacy act statement is checked$/ do
-  expect(SdcWebsite.customs_form.agree.checked?).to be(true), 'I agree to the USPS Privacy Act Statement is not checked'
+  expect(SdcWebsite.customs_form.agree).to be_checked, 'I agree to the USPS Privacy Act Statement is not checked'
 end
 
 Then /^[Uu]ncheck customs form i agree to the usps privacy act statement$/ do
-  if SdcEnv.new_framework
-    SdcWebsite.customs_form.agree.uncheck
-  else
-    stamps.common_modals.customs_form.agree_to_terms.uncheck if SdcEnv.sdc_app == :orders
-    stamps.mail.print_form.mail_customs.edit_customs_form.agree_to_terms.uncheck if SdcEnv.sdc_app == :mail
-  end
+  SdcWebsite.customs_form.agree.uncheck
 end
 
 Then /^expect customs i agree to the usps privacy act statement is unchecked$/ do
@@ -218,37 +176,15 @@ Then /^close customs information form$/ do
   step 'pause for 4 seconds'
   step 'Blur out on Customs form'
   step 'Save Customs Information form Total amount'
-  if SdcEnv.new_framework
-    SdcWebsite.customs_form.close.click
-  else
-    if SdcEnv.sdc_app == :orders
-      stamps.common_modals.customs_form.close
-      step 'blur out on order details form'
-      step 'Save Order Details data'
-    end
-    stamps.mail.print_form.mail_customs.edit_customs_form.close if SdcEnv.sdc_app == :mail
-  end
+  SdcWebsite.customs_form.close.click
 end
 
 Then /^Cancel Customs Form$/ do
-  if SdcEnv.new_framework
-    SdcWebclient.customs_form.x_btn.click
-  else
-    step 'Blur out on Customs form'
-    expect(stamps.common_modals.customs_form.cancel).to be(false) if SdcEnv.sdc_app == :orders
-    expect(stamps.mail.print_form.mail_customs.edit_customs_form.cancel).to be(false) if SdcEnv.sdc_app == :mail
-  end
+  SdcWebclient.customs_form.x_btn.click
 end
 
 Then /^[Ee]xpect Customs USPS Privacy Act Warning is visible$/ do
-  if SdcEnv.new_framework
-    expect(SdcWebclient.customs_form.usps_warning).to be_present, 'USPS Warning is not present'
-  else
-    step 'Blur out on Customs form'
-    sleep(0.5)
-    expect(stamps.common_modals.customs_form.usps_privacy_act_warning.visible?).to be(true) if SdcEnv.sdc_app == :orders
-    expect(stamps.mail.print_form.mail_customs.edit_customs_form.usps_privacy_act_warning.visible?).to be(true) if SdcEnv.sdc_app == :mail
-  end
+  expect(SdcWebclient.customs_form.usps_warning).to be_present, 'USPS Warning is not present'
 end
 
 Then /^[Ee]xpect Customs USPS Privacy Act Warning is hidden$/ do
