@@ -1,6 +1,6 @@
 
 Then /^visit Mail$/ do
-  step 'initialize mail test parameters'
+  step 'initialize test parameters'
 
   env = case SdcEnv.env
         when :qacc
@@ -16,10 +16,6 @@ Then /^visit Mail$/ do
         end
 
   SdcMailLandingPage.visit(env)
-end
-
-Then /^initialize mail test parameters$/ do
-  # Mail Print Media
 end
 
 Then /^sign-in to Mail$/ do

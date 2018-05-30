@@ -11,7 +11,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - FCM_PSG
    #mail_print_roll_4_1_8_x_6_1_4_fcm_large_envelope
     Then select print on Roll 418x614
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
@@ -22,7 +22,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - FCM_PSG
    #mail_print_roll_4_1_8_x_6_1_4_fcm_package
     Then select print on Roll 418x614
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service FCM Package/Thick Envelope
@@ -35,7 +35,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - FCM_PSG
 
     Then select print on Roll 418x614
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 5 through 8
     Then set print form ounces to 1
     Then select print form service PSG Large Package
@@ -46,7 +46,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - FCM_PSG
    #mail_print_roll_4_1_8_x_6_1_4_psg_oversized_package
     Then select print on Roll 418x614
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 5 through 8
     Then set print form ounces to 1
     Then select print form service PSG Oversized Package
@@ -57,7 +57,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - FCM_PSG
    #mail_print_roll_4_1_8_x_6_1_4_psg_package
     Then select print on Roll 418x614
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 5 through 8
     Then set print form ounces to 1
     Then select print form service PSG Package/Flat/Thick Envelope

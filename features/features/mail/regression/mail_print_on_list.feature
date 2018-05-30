@@ -7,10 +7,10 @@ Feature: Print On List Of Values
   Scenario: Print On List Of Values
     #Then select print on Manage Printing Options
     #Then expect Manage Print Options modal is present
-    #Then search Manage Print Options for Shipping Label - Paper
+    #Then search Manage Print Options for Shipping Label - 8 ½" x 11" Paper
 
     Then select print on Stamps
-    Then select print on Shipping Label - Paper
+    Then select print on Shipping Label - 8 ½" x 11" Paper
     Then select print on Shipping Label - SDC-1200
     Then select print on Shipping Label - 5x8
     Then select print on Envelope - 10

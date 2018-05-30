@@ -39,7 +39,7 @@ Feature: Mail Shipping Label - SDC-1200 with receipt
     #mail_print_shipping_label_sdc1200_cn22
     Then select print on Shipping Label - SDC-1200
     Then set Print form Mail-From to default
-    Then set Print form Ship-To to international address
+    Then set print form ship-to to international address
       | name   | company | street_address_1 | street_address_2  | city   | province | postal_code | country| phone  |
       | cn22   | random  | random           | random            | random | random   | 12366      | India  | random |
     Then set print form ounces to 1
@@ -57,7 +57,7 @@ Feature: Mail Shipping Label - SDC-1200 with receipt
      #mail_print_shipping_label_sdc1200_cn72
     Then select print on Shipping Label - SDC-1200
     Then set Print form Mail-From to default
-    Then set Print form Ship-To to international address
+    Then set print form ship-to to international address
       | name   | company | street_address_1 | street_address_2  | city   | province | postal_code | country| phone  |
       | cn72   | random  | random           | random            | random | random   | 78954      | India  | random  |
     Then set print form ounces to 1

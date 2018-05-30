@@ -12,7 +12,7 @@ Feature:  service Selection & Order Grid Values
 
     Then set order details ounces to 1
     Then click orders toolbar print button
-    Then set print modal print-on to Shipping Label - Paper
+    Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
     Then set Orders print modal printer
     Then click print modal print button
     Then select Filter Panel tab Shipped
@@ -24,7 +24,7 @@ Feature:  service Selection & Order Grid Values
     Then set order details service to PSG Package/Flat/Thick Envelope
     Then set order details ounces to 1
     Then click orders toolbar print button
-    Then set print modal print-on to Shipping Label - Paper
+    Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
     Then set Orders print modal printer
     Then click print modal print button
     Then select Filter Panel tab Shipped
@@ -36,7 +36,7 @@ Feature:  service Selection & Order Grid Values
     Then set order details service to PSG Oversized Package
     Then set order details ounces to 1
     Then click orders toolbar print button
-    Then set print modal print-on to Shipping Label - Paper
+    Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
     Then set Orders print modal printer
     Then click print modal print button
     Then select Filter Panel tab Shipped

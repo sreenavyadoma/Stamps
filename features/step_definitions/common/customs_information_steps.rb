@@ -1,19 +1,6 @@
 
-Then /^click (?:order details|print) form (?:edit customs|edit|customs) form button$/ do
-  if SdcEnv.new_framework
-    SdcOrders.order_details.ship_to.international.customs_form.scroll_into_view.click
-  else
-    10.times do
-      if SdcEnv.sdc_app == :orders
-        stamps.orders.order_details.contents.customs_form.scroll_into_view
-        stamps.orders.order_details.contents.customs_form.click
-      end
-      stamps.common_modals.customs_form.wait_until_present(2)
-      break if stamps.common_modals.customs_form.present?
-    end
-    stamps.mail.print_form.mail_customs.edit_customs_form if SdcEnv.sdc_app == :mail
-  end
-  step 'expect customs form is present'
+Then /^click order details form (?:edit customs|edit|customs) form button$/ do
+  SdcOrders.order_details.contents.customs_form.click
 end
 
 Then /^[Ee]xpect [Cc]ustoms [Ff]orm is [Pp]resent$/ do
@@ -21,26 +8,16 @@ Then /^[Ee]xpect [Cc]ustoms [Ff]orm is [Pp]resent$/ do
 end
 
 Then /^[Bb]lur [Oo]ut [Oo]n [Cc]ustoms [Ff]orm$/ do
-  if SdcEnv.new_framework
-    SdcWebsite.customs_form.total.blur_out
-    SdcWebsite.customs_form.title.blur_out
-  else
-    count.to_i.times { stamps.common_modals.customs_form.blur_out } if SdcEnv.sdc_app == :orders
-    count.to_i.times { stamps.mail.print_form.mail_customs.edit_customs_form.blur_out } if SdcEnv.sdc_app == :mail
-  end
+  SdcWebsite.customs_form.total.blur_out
+  SdcWebsite.customs_form.title.blur_out
 end
 
 Then /^set customs package contents to (.*)$/ do |value|
-  if SdcEnv.new_framework
-    package_contents = SdcWebsite.customs_form.package_contents
-    package_contents.selection_element(name: :selection, value: value)
-    package_contents.drop_down.click unless package_contents.selection.present?
-    package_contents.selection.click unless package_contents.selection.class_disabled?
-    step "expect customs package contents is #{value}"
-  else
-    stamps.common_modals.customs_form.package_contents.select(value) if SdcEnv.sdc_app == :orders
-    stamps.mail.print_form.mail_customs.edit_customs_form.package_contents.select(value) if SdcEnv.sdc_app == :mail
-  end
+  package_contents = SdcWebsite.customs_form.package_contents
+  package_contents.selection_element(name: :selection, value: value)
+  package_contents.drop_down.click unless package_contents.selection.present?
+  package_contents.selection.click unless package_contents.selection.class_disabled?
+  step "expect customs package contents is #{value}"
   step 'Save Customs Information form Total amount'
   TestData.hash[:customs_package_contents] = value
 end
@@ -51,136 +28,90 @@ Then /^expect customs package contents is (?:correct|(.*))$/ do |expectation|
 end
 
 Then /^set customs non-delivery options to (.*)$/ do |value|
-  if SdcEnv.new_framework
-    non_delivery = SdcWebsite.customs_form.non_delivery
-    non_delivery.selection_element(name: :selection, value: value)
-    non_delivery.drop_down.click unless non_delivery.selection.present?
-    non_delivery.selection.click unless non_delivery.selection.class_disabled?
-    step "expect customs non-delivery options is #{value}"
-  else
-    stamps.common_modals.customs_form.non_delivery_options.select(value) if SdcEnv.sdc_app == :orders
-    stamps.mail.print_form.mail_customs.edit_customs_form.non_delivery_options.select(value) if SdcEnv.sdc_app == :mail
-  end
+  non_delivery = SdcWebsite.customs_form.non_delivery
+  non_delivery.selection_element(name: :selection, value: value)
+  non_delivery.drop_down.click unless non_delivery.selection.present?
+  non_delivery.selection.click unless non_delivery.selection.class_disabled?
+  step "expect customs non-delivery options is #{value}"
   TestData.hash[:customs_non_delivery_options] = value
 end
 
-Then /^expect customs non-delivery options is (?:correct|(.*))$/ do |expectation|
-  expectation ||= TestData.hash[:customs_non_delivery_options]
-  if SdcEnv.new_framework
-    expect(SdcWebsite.customs_form.non_delivery.text_field.text_value).to eql(expectation)
-  else
-    actual = ''
-    10.times do
-      if SdcEnv.sdc_app == :orders
-        actual = stamps.common_modals.customs_form.non_delivery_options.textbox.text
-        break if actual == expectation
-      end
-      if SdcEnv.sdc_app == :mail
-        actual = stamps.mail.print_form.mail_customs.edit_customs_form.non_delivery_options.textbox.text
-        break if actual == expectation
-      end
-    end
-    expect(stamps.common_modals.customs_form.non_delivery_options.textbox.text).to eql(expectation) if SdcEnv.sdc_app == :orders
-    expect(stamps.mail.print_form.mail_customs.edit_customs_form.non_delivery_options.textbox.text).to eql(expectation) if SdcEnv.sdc_app == :mail
-  end
+Then /^expect customs non-delivery options is (?:correct|(.*))$/ do |str|
+  str = str.nil? ? TestData.hash[:customs_non_delivery_options] : str
+  expect(SdcWebsite.customs_form.non_delivery.text_field.text_value).to eql(str)
 end
 
 Then /^set customs internal transaction number to (.*)$/ do |value|
-  if SdcEnv.new_framework
-    internal_transaction = SdcWebsite.customs_form.internal_transaction
-    internal_transaction.selection_element(name: :selection, value: value)
-    internal_transaction.drop_down.click unless internal_transaction.selection.present?
-    internal_transaction.selection.click unless internal_transaction.selection.class_disabled?
-    step "expect customs internal transaction number is #{value}"
-  else
-    stamps.common_modals.customs_form.internal_transaction.select(value) if SdcEnv.sdc_app == :orders
-    stamps.mail.print_form.mail_customs.edit_customs_form.internal_transaction.select(value) if SdcEnv.sdc_app == :mail
-  end
+  internal_transaction = SdcWebsite.customs_form.internal_transaction
+  internal_transaction.selection_element(name: :selection, value: value)
+  internal_transaction.drop_down.click unless internal_transaction.selection.present?
+  internal_transaction.selection.click unless internal_transaction.selection.class_disabled?
+  step "expect customs internal transaction number is #{value}"
   step 'Save Customs Information form Total amount'
   TestData.hash[:customs_internal_transaction_no] = value
 end
 
-Then /^expect customs internal transaction number is (?:correct|(.*))$/ do |expectation|
-  expectation ||= TestData.hash[:customs_internal_transaction_no]
-  expect(SdcWebsite.customs_form.internal_transaction.text_field.text_value).to eql(expectation)
+Then /^expect customs internal transaction number is (?:correct|(.*))$/ do |str|
+  str = str.nil? ? TestData.hash[:customs_internal_transaction_no] : str
+  expect(SdcWebsite.customs_form.internal_transaction.text_field.text_value).to eql(str)
 end
 
-Then /^[Ss]et Customs More Info to (?:(?:a|some) random string|(.*))$/ do |value|
-  value ||= TestHelper.rand_alpha_numeric(6, 18)
-  if SdcEnv.new_framework
-    SdcWebsite.customs_form.more_info.set(value) if SdcWebsite.customs_form.more_info.present?
-    step "expect Customs More Info is #{value}"
-  else
-    stamps.common_modals.customs_form.package_contents.contents.more_info.set(value) if SdcEnv.sdc_app == :orders
-    stamps.mail.print_form.mail_customs.edit_customs_form.package_contents.contents.more_info.set(value) if SdcEnv.sdc_app == :mail
-  end
+Then /^[Ss]et Customs More Info to (?:(?:a|some) random string|(.*))$/ do |str|
+  str = str.nil? ? TestHelper.rand_alpha_numeric(min: 6, max: 18) : str
+  SdcWebsite.customs_form.more_info.set(str) if SdcWebsite.customs_form.more_info.present?
+  step "expect Customs More Info is #{str}"
   step 'Save Customs Information form Total amount'
-  TestData.hash[:customs_more_info] = value
+  TestData.hash[:customs_more_info] = str
 end
 
-Then /^ [Ss]et Customs More Info to (?:(?:a|some) random string|(.*))$/ do |value|
-  value ||= TestHelper.rand_alpha_numeric(6, 18)
-  if SdcEnv.new_framework
-    SdcWebsite.customs_form.more_info.set(value) if SdcWebsite.customs_form.more_info.present?
-    step "expect Customs More Info is #{value}"
-  else
-    stamps.common_modals.customs_form.package_contents.contents.more_info.set(value) if SdcEnv.sdc_app == :orders
-    stamps.mail.print_form.mail_customs.edit_customs_form.package_contents.contents.more_info.set(value) if SdcEnv.sdc_app == :mail
-  end
+Then /^ [Ss]et Customs More Info to (?:(?:a|some) random string|(.*))$/ do |str|
+  str = str.nil? ? TestHelper.rand_alpha_numeric(min: 6, max: 18) : str
+  SdcWebsite.customs_form.more_info.set(str) if SdcWebsite.customs_form.more_info.present?
+  step "expect Customs More Info is #{str}"
   step 'Save Customs Information form Total amount'
-  TestData.hash[:customs_more_info] = value
+  TestData.hash[:customs_more_info] = str
 end
 
-Then /^[Ee]xpect Customs More Info is (?:correct|(.*))$/ do |expectation|
-  expectation ||= TestData.hash[:customs_more_info]
-  if SdcEnv.new_framework
-    expect(SdcWebsite.customs_form.more_info).to be_present, 'More Info field is not present'
-    expect(SdcWebsite.customs_form.more_info.text_value).to eql(expectation), 'More Info value is incorrect'
-  else
-    sleep(0.5)
-    expect(stamps.common_modals.customs_form.package_contents.contents.more_info.text).to eql(expectation) if SdcEnv.sdc_app == :orders
-    expect(stamps.mail.print_form.mail_customs.edit_customs_form.package_contents.contents.more_info.text).to eql(expectation) if SdcEnv.sdc_app == :mail
-  end
+Then /^[Ee]xpect Customs More Info is (?:correct|(.*))$/ do |str|
+  str = str.nil? ? TestData.hash[:customs_more_info] : str
+  customs_form = SdcWebsite.customs_form
+  customs_form.more_info.wait_until_present(timeout: 5)
+  expect(customs_form.more_info).to be_present, 'More Info field is not present'
+  expect(customs_form.more_info.text_value).to eql(str), 'More Info value is incorrect'
 end
 
-Then /^set customs itn number to (?:(?:a|some) random string|(.*))$/ do |value|
-  value ||= TestHelper.rand_alpha_numeric(8, 50)
-  if SdcEnv.new_framework
-    SdcWebsite.customs_form.itn.set(value) unless SdcWebsite.customs_form.itn.class_disabled?
-    step "expect customs i agree to the usps privacy act statement is checked #{value}"
-  else
-    stamps.common_modals.customs_form.itn_number.set(value) if SdcEnv.sdc_app == :orders
-    stamps.mail.print_form.mail_customs.edit_customs_form.itn_number.set(value) if SdcEnv.sdc_app == :mail
-  end
+Then /^set customs itn number to (?:(?:a|some) random string|(.*))$/ do |str|
+  str = str.nil? ? TestHelper.rand_alpha_numeric(min: 8, max: 50) : str
+  customs_form = SdcWebsite.customs_form
+  customs_form.itn.wait_until_present(timeout: 5)
+  customs_form.itn.set(str) unless customs_form.itn.class_disabled?
+  step "expect customs i agree to the usps privacy act statement is checked #{str}"
   step 'Save Customs Information form Total amount'
-  TestData.hash[:customs_itn_no] = value
+  TestData.hash[:customs_itn_no] = str
 end
 
-Then /^expect customs i agree to the usps privacy act statement is checked (?:correct|(.*))$/ do |expectation|
-  expectation ||= TestData.hash[:customs_itn_no]
-  expect(SdcWebsite.customs_form.itn.class_disabled?).to be(false), 'ITN number is disabled'
-  expect(SdcWebsite.customs_form.itn.text_value).to eql(expectation)
-
+Then /^expect customs i agree to the usps privacy act statement is checked (?:correct|(.*))$/ do |str|
+  str = str.nil? ? TestData.hash[:customs_itn_no] : str
+  customs_form = SdcWebsite.customs_form
+  customs_form.itn.wait_until_present(timeout: 5)
+  expect(customs_form.itn.class_disabled?).to be(false), 'ITN number is disabled'
+  expect(customs_form.itn.text_value).to eql(str)
 end
 
-Then /^set customs license number to (?:(?:a|some) random string|(.*))$/ do |value|
-  value ||= TestHelper.rand_alpha_numeric(min: 2, max: 6)
-  SdcWebsite.customs_form.license.set(value) if SdcWebsite.customs_form.license.present?
-  step "expect customs license number is #{value}"
+Then /^set customs license number to (?:(?:a|some) random string|(.*))$/ do |str|
+  str ||= TestHelper.rand_alpha_numeric(min: 2, max: 6)
+  customs_form = SdcWebsite.customs_form
+  customs_form.license.wait_until_present(timeout: 5)
+  SdcWebsite.customs_form.license.set(str) if SdcWebsite.customs_form.license.present?
+  step "expect customs license number is #{str}"
   step 'Save Customs Information form Total amount'
-  TestData.hash[:customs_license_no] = value
+  TestData.hash[:customs_license_no] = str
 end
 
-Then /^expect customs license number is (?:correct|(.*))$/ do |expectation|
-  expectation ||= TestData.hash[:customs_license_no]
-  if SdcEnv.new_framework
-    expect(SdcWebsite.customs_form.license).to be_present, 'License field is not present'
-    expect(SdcWebsite.customs_form.license.text_value).to eql(expectation)
-  else
-    sleep(1)
-    expect(stamps.common_modals.customs_form.license.text).to eql(expectation) if SdcEnv.sdc_app == :orders
-    expect(stamps.mail.print_form.mail_customs.edit_customs_form.license.text).to eql(expectation) if SdcEnv.sdc_app == :mail
-  end
+Then /^expect customs license number is (?:correct|(.*))$/ do |str|
+  str = str.nil? ? TestData.hash[:customs_license_no] : str
+  expect(SdcWebsite.customs_form.license).to be_present, 'License field is not present'
+  expect(SdcWebsite.customs_form.license.text_value).to eql(str)
   step 'Save Customs Information form Total amount'
 end
 
@@ -278,13 +209,9 @@ Then /^[Uu]ncheck customs form i agree to the usps privacy act statement$/ do
 end
 
 Then /^expect customs i agree to the usps privacy act statement is unchecked$/ do
-  if SdcEnv.new_framework
-    expect(SdcWebsite.customs_form.agree.checked?).to be(false), 'I agree to the USPS Privacy Act Statement is not unchecked'
-  else
-    sleep(0.05)
-    expect(stamps.common_modals.customs_form.agree_to_terms.checked?).not_to be(true) if SdcEnv.sdc_app == :orders
-    expect(stamps.mail.print_form.mail_customs.edit_customs_form.agree_to_terms.checked?).not_to be(true) if SdcEnv.sdc_app == :mail
-  end
+  customs_form = SdcWebsite.customs_form
+  customs_form.wait_until_present(timeout: 5)
+  expect(customs_form.agree.checked?).to be(false), 'I agree to the USPS Privacy Act Statement is not unchecked'
 end
 
 Then /^close customs information form$/ do
@@ -578,7 +505,7 @@ Then /^[Ss]et Customs Associated Item (\d+) Made In is Country to (.*)$/ do |ite
     selection.safe_wait_until_present(timeout: 2)
     drop_down.click unless selection.present?
     selection.scroll_into_view
-    selection.click
+    selection.safe_click
     drop_down.scroll_into_view
     text_field.scroll_into_view
     text_field.wait_until_present(timeout: 2)

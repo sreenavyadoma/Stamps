@@ -11,7 +11,7 @@ Feature: Mail Roll - 4" x 6" - MM XM
     #mail_print_roll_4x6_mm_package
     Then select print on Roll 4x6
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service MM Package/Flat/Thick Envelope
@@ -25,7 +25,7 @@ Feature: Mail Roll - 4" x 6" - MM XM
    #mail_print_roll_4x6_xm_fr_envelope
     Then select print on Roll 4x6
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 5 through 8
     Then set print form ounces to 1
     Then select print form service PME Flat Rate Envelope
@@ -36,7 +36,7 @@ Feature: Mail Roll - 4" x 6" - MM XM
    #mail_print_roll_4x6_xm_lfr_envelope
     Then select print on Roll 4x6
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 5 through 8
     Then set print form ounces to 1
     Then select print form service PME Legal Flat Rate Envelope
@@ -47,7 +47,7 @@ Feature: Mail Roll - 4" x 6" - MM XM
     #mail_print_roll_4x6_xm_pfr_envelope
     Then select print on Roll 4x6
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 5 through 8
     Then set print form ounces to 1
     Then select print form service PME Flat Rate Envelope
@@ -61,7 +61,7 @@ Feature: Mail Roll - 4" x 6" - MM XM
    #mail_print_roll_4x6_xm_package
     Then select print on Roll 4x6
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 5 through 8
     Then set print form ounces to 1
     Then select print form service PME Package/Flat/Thick Envelope

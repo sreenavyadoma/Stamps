@@ -85,7 +85,7 @@ module SdcWebsite
     end
 
     def selection(num, str)
-      page_object("selection#{num}") { { xpath: "(//li[text()='#{str}'])[#{num+1}]" } }
+      page_object("selection#{num}", timeout: 5) { { xpath: "(//li[text()='#{str}'])[#{num + 1}]" } }
     end
   end
 

@@ -45,9 +45,9 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
 
   @mail_print_SDC_3930
   Scenario: Print SDC 3930 (with hidden postage)
-    Then select print on Shipping Label - Paper
+    Then select print on Shipping Label - 8 ½" x 11" Paper
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form pounds to 0
     Then set print form ounces to 1
@@ -62,7 +62,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
   #mail_print_roll_4_1_8_x_6_1_4_fcm_large_envelope
     Then select print on Roll 418x614
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
@@ -72,7 +72,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
    #mail_print_roll_4x6_fcm_large_envelope
     Then select print on Roll 4x6
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
@@ -88,7 +88,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then set Print form Serial Number to B12345
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
     Then set Advanced Options Cost Code to None
@@ -101,7 +101,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then set Print form Serial Number to B12345
     Then select Advanced Options Specify Postage Amount
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then select print form service Media Mail
     Then set Print form Amount to 0.15
     Then set Advanced Options Cost Code to None

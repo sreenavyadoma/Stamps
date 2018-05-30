@@ -182,7 +182,7 @@ Then /^set order details ship-to domestic address to$/ do |table|
   if table.hashes.first['street_address_2'].nil?
     TestData.hash[:street_address_2] = ''
   else
-    TestData.hash[:street_address_2] = table.hashes.first['street_address_2'].downcase.include?('random') ? TestHelper.rand_alpha_numeric(2, 7) : table.hashes.first['street_address_2']
+    TestData.hash[:street_address_2] = table.hashes.first['street_address_2'].downcase.include?('random') ? TestHelper.rand_alpha_numeric(min: 2, max: 7) : table.hashes.first['street_address_2']
   end
   TestData.hash[:city] = table.hashes.first['city'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['city']
   TestData.hash[:state] = table.hashes.first['state'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['state']

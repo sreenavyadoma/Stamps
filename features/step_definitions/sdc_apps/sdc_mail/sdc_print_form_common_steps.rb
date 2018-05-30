@@ -3,6 +3,7 @@ Then /^select print on (.+)$/ do |str|
   SdcLogger.debug "select print on #{str}"
   if SdcEnv.new_framework
     print_on = SdcMail.print_on
+    step 'blur out on print form'
     print_on.text_field.wait_until_present(timeout: 6)
     unless TestData.hash[:print_on_arr]
       TestData.hash[:print_on_arr] = []
@@ -44,15 +45,21 @@ Then /^select print on (.+)$/ do |str|
       print_on.selection_element.safe_wait_until_present(timeout: 1)
       print_on.selection_element.click
     end
-    print_on.label.safe_click
-    print_on.label.double_click
-    print_on.label.safe_click
-    print_on.label.double_click
     expect(print_on.text_field.text_value).to eql(str) unless str.include? 'Manage'
   else
     stamps.mail.print_on(str)
   end
+  step 'blur out on print form'
   TestData.hash[:print_media] = str
+end
+
+Then /^blur out on print form$/ do
+  print_on = SdcMail.print_on
+  print_on.text_field.wait_until_present(timeout: 6)
+  print_on.label.safe_click
+  print_on.label.double_click
+  print_on.label.safe_click
+  print_on.label.double_click
 end
 
 Then /^select all options in manage printing options/ do
@@ -119,7 +126,6 @@ Then /^show advanced options$/ do
   hide = SdcMail.print_form.hide_advanced_options
   show.click unless hide.present?
   hide.wait_until_present(timeout: 3)
-  expect(hide). to be_present, 'show advanced options failed'
 end
 
 Then /^hide advanced options$/ do
@@ -127,5 +133,4 @@ Then /^hide advanced options$/ do
   show = SdcMail.print_form.show_advanced_options
   hide.click unless show.present?
   show.wait_until_present(timeout: 3)
-  expect(show). to be_present, 'hide advanced options failed'
 end
