@@ -52,8 +52,8 @@ Then /^fetch user credentials from MySQL$/ do
   end unless usr && pw
   expect(usr).to be_truthy
   expect(pw).to be_truthy
-  TestData.hash[:username] = usr
-  TestData.hash[:password] = pw
+  TestData.hash[:username] = usr unless TestData.hash[:username]
+  TestData.hash[:password] = pw unless TestData.hash[:password]
 end
 
 Then /^sign-in to Orders$/ do
