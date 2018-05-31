@@ -247,24 +247,24 @@ end
 Then /^add customs associated item (\d+), description (.*), qty (\d+), Price (.+), Made In (.+), Tariff (.*)$/ do |item_number, description, qty, price, made_in, tariff|
   step "add customs associated item #{item_number}" if item_number > 1
   step "scroll into view customs associated item #{item_number}"
-  step "set Customs Associated Item #{item_number} Description to #{description}"
-  step "set Customs Associated Item #{item_number} Qty to #{qty}"
-  step "set Customs Associated Item #{item_number} Unit Price to #{price}"
+  step "set customs associated item #{item_number} description to #{description}"
+  step "set customs associated item #{item_number} qty to #{qty}"
+  step "set customs associated item #{item_number} unit price to #{price}"
   step "scroll into view customs associated item #{item_number}"
-  step "set Customs Associated Item #{item_number} Made In is Country to #{made_in}"
+  step "set customs associated item #{item_number} made in #{made_in}"
   step "scroll into view customs associated item #{item_number}"
-  step "set Customs Associated Item #{item_number} Tarriff to #{tariff}"
+  step "set customs associated item #{item_number} Tarriff to #{tariff}"
 end
 
 Then /^edit customs associated item (\d+), description (.*), qty (\d+), Price (.+), Made In (.+), Tariff (.*)$/ do |item_number, description, qty, price, made_in, tariff|
   step "scroll into view customs associated item #{item_number}"
-  step "set Customs Associated Item #{item_number} Description to #{description}"
-  step "set Customs Associated Item #{item_number} Qty to #{qty}"
-  step "set Customs Associated Item #{item_number} Unit Price to #{price}"
+  step "set customs associated item #{item_number} description to #{description}"
+  step "set customs associated item #{item_number} qty to #{qty}"
+  step "set customs associated item #{item_number} unit price to #{price}"
   step "scroll into view customs associated item #{item_number}"
-  step "set Customs Associated Item #{item_number} Made In is Country to #{made_in}"
+  step "set customs associated item #{item_number} made in #{made_in}"
   step "scroll into view customs associated item #{item_number}"
-  step "set Customs Associated Item #{item_number} Tarriff to #{tariff}"
+  step "set customs associated item #{item_number} Tarriff to #{tariff}"
 end
 
 Then /^add customs associated item (\d+)$/ do |item_number|
@@ -281,7 +281,7 @@ Then /^scroll into view customs associated item (\d+)$/ do |item_number|
   item.delete(item_number).scroll_into_view
 end
 
-Then /^[Ss]et Customs Associated Item (\d+) Description to (.*)$/ do |item_number, value|
+Then /^set customs associated item (\d+) description to (.*)$/ do |item_number, value|
   TestData.hash[:customs_associated_items][item_number] ||= {}
   value = TestHelper.rand_alpha_numeric if value.casecmp('random').zero?
   SdcWebsite.customs_form.item.item_description(item_number).scroll_into_view.set(value)
@@ -289,7 +289,7 @@ Then /^[Ss]et Customs Associated Item (\d+) Description to (.*)$/ do |item_numbe
   TestData.hash[:customs_associated_items][item_number][:description] = value
 end
 
-Then /^[Ss]et Customs Associated Item (\d+) Qty to (\d+)$/ do |item_number, value|
+Then /^set customs associated item (\d+) qty to (\d+)$/ do |item_number, value|
   qty = SdcWebsite.customs_form.item.qty(item_number)
   qty.scroll_into_view
   qty.set(value)
@@ -298,7 +298,7 @@ Then /^[Ss]et Customs Associated Item (\d+) Qty to (\d+)$/ do |item_number, valu
   TestData.hash[:customs_associated_items][item_number][:quantity] = value
 end
 
-Then /^[Ss]et Customs Associated Item (\d+) Unit Price to (.*)$/ do |item_number, value|
+Then /^set customs associated item (\d+) unit price to (.*)$/ do |item_number, value|
   unit_price = SdcWebsite.customs_form.item.unit_price(item_number)
   unit_price.scroll_into_view
   unit_price.set(value)
@@ -306,8 +306,8 @@ Then /^[Ss]et Customs Associated Item (\d+) Unit Price to (.*)$/ do |item_number
   TestData.hash[:customs_associated_items][item_number] ||= {}
   TestData.hash[:customs_associated_items][item_number][:price] = value
 end
-
-Then /^[Ss]et Customs Associated Item (\d+) Made In is Country to (.*)$/ do |item_number, value|
+# set customs associated item (\d+) made in (.*)
+Then /^set customs associated item (\d+) made in (.*)$/ do |item_number, value|
   made_in = SdcWebsite.customs_form.item.made_in
   drop_down = made_in.drop_down(item_number)
   text_field = made_in.text_field(item_number)
@@ -328,7 +328,7 @@ Then /^[Ss]et Customs Associated Item (\d+) Made In is Country to (.*)$/ do |ite
   TestData.hash[:customs_associated_items][item_number][:made_in] = value
 end
 
-Then /^[Ss]et Customs Associated Item (\d+) Tarriff to (.*)$/ do |item_number, value|
+Then /^set customs associated item (\d+) Tarriff to (.*)$/ do |item_number, value|
   SdcWebsite.customs_form.item.hs_tariff(item_number).scroll_into_view.set(value)
   step 'Save Customs Information form Total amount'
   TestData.hash[:customs_associated_items][item_number] ||= {}
