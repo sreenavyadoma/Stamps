@@ -250,7 +250,7 @@ Feature:  BVT tests for Orders
     Then expect order details insure-for is 100.00
     Then expect order details tracking is correct
     Then expect order details tracking cost is correct
-    #Then expect order details reference number is correct
+    Then expect order details reference number is correct
 
     Then expect orders grid store is Manual Orders
     Then expect orders grid order id is the same as details form order id
@@ -339,7 +339,7 @@ Feature:  BVT tests for Orders
     Then expect order details reference number is correct
     Then expect order details service cost is correct
     Then expect order details pounds is 2
-    #Then expect order details ounces is 2
+    Then expect order details ounces is 2
     Then expect order details associated item 1 qty is 1
     Then expect order details associated item 1 ID is ID 1
     Then expect order details associated item 1 Description is Description 1
