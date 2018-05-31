@@ -358,11 +358,18 @@ Then /^PP: expect dashboard page download modal header to be (.*)$/ do |str|
   expect(PartnerPortal.dashboard_page.download_modal_header.text_value.strip).to eql(str)
 end
 
-Then /^PP: expect dashboard page download modal paragraph index (\d+) to be (.*)$/ do |str|
-  to_date_error_message = PartnerPortal.dashboard_page.to_date_error_message
-  to_date_error_message.wait_until_present(timeout: 5)
-  to_date_error_message = to_date_error_message.text_value.strip.split("\n")
-  expect(to_date_error_message[index.to_i - 1]).to eql(str)
+Then /^PP: expect dashboard page download modal paragraph index (\d+) to be$/ do |str|
+  download_modal_p = PartnerPortal.dashboard_page.to_date_error_message
+  download_modal_p.wait_until_present(timeout: 5)
+  download_modal_p = download_modal_p.text_value.strip.split("\n")
+  expect(download_modal_p[index.to_i - 1]).to eql(str)
 end
 
-download_modal_p
+Then /^PP: click on the dashboard page download modal ok button$/ do
+  PartnerPortal.dashboard_page.download_modal_ok.send_keys(:enter)
+end
+
+Then /^PP: expect CSV file to be downloaded$/ do
+  "C:\Users\lab\Downloads\Partnerportal_malvern-edc-emsrebate_050118_to_051718.csv"
+end
+

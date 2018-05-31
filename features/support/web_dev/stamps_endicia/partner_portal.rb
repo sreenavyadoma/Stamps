@@ -99,6 +99,12 @@ module PartnerPortal
     page_object(:download_modal) { { class: ['ng-tns-c5-0 ui-dialog ui-widget ui-widget-content ui-corner-all ui-shadow ui-dialog-draggable ng-trigger ng-trigger-dialogState'] } }
     page_object(:download_modal_header) { { xpath: '//h3[contains(text(), "Downloading Report")]' } }
     page_object(:download_modal_p) { { xpath: '//ng-component[@class="ng-star-inserted"]/p' } }
+    page_object(:download_modal_ok) { { class: ['ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only'] } }
+
+
+
+
+
 
 
     def x_axis_month_abbreviations

@@ -137,10 +137,9 @@ Feature: PP-MVP: Dashboard Page Single Contract
       """
       In the meantime, you can close this window and continue to use the portal.
       """
+     Then PP: click on the dashboard page download modal ok button
 
-     Then PP: expect download modal text to be Downloading Report Your report is being downloaded now. This may take a while for larger data sets.
-#    Then PP: close out the download modal
-#    Then PP: expect CSVfile to be downloaded
+     Then PP: expect CSV file to be downloaded
 #    Then PP: Expect a record Download Data event is added in Audit Records for user
 
 #  Then PP: set dashboard page from date field to 12/16/18
