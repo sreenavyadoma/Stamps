@@ -11,7 +11,7 @@ samsung_galaxy_sauce: --tags @saucelabs_poc SAUCE_DEVICE=samsung_galaxy_sauce LO
 #todo-Rob set PRINTER=factory as default automation printer
 #robcm=ccpryiihrjz ccfb311osps4x print_dialog_ship_date bvt_international_shipping
 #rob: --tags @mail_advanced_options_stamps URL=cc BROWSER=ff LOG_LEVEL=debug HEALTHCHECK=true MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory NEW_FRAMEWORK=true DEBUG=true
-rob: --tags @mail_bvt_international URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgvoc0kcnt6rw PW=pass111 PRINTER=factory NEW_FRAMEWORK=true #stgee1mtqvwdc0 stgvoc0kcnt6rw
+rob: --tags @bvt_ambigious_address URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgvoc0kcnt6rw PW=pass111 PRINTER=factory NEW_FRAMEWORK=true #stgee1mtqvwdc0 stgvoc0kcnt6rw
 #rob: --tags @mail_advanced_options_stamps URL=sc --guess LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=selenium  USR=scsejsglwa PW=pass111LOG_LEVEL=debug PRINTER=factory NEW_FRAMEWORK=true # c2jinmzmu64 schl0vlbfy2673 #19  schl0vlbfy2673
 #rob:  --tags @mail_print_on_lov URL=prod BROWSER=ff LOG_LEVEL=info USR=robcruz PW=Stamps#524113 LOG_LEVEL=debug NEW_FRAMEWORK=true MAX_WINDOW=false
 # USR=abqaprod1 PW=password1
