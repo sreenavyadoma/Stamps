@@ -157,9 +157,15 @@ class SdcTest
                 SdcPage.browser.driver.manage.timeouts.page_load = 12
               end
 
-            when :chrome
+              when :chrome
+              prefs = {
+                  download: {
+                      prompt_for_download: false,
+                      default_directory: 'C:\Download'
+                  }
+              }
               kill('taskkill /im chrome.exe /f')
-              SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+              SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, options: {prefs: prefs}, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
 
               SdcPage.browser.driver.manage.timeouts.page_load = 12
 
