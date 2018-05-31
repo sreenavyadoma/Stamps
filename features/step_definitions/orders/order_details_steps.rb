@@ -305,21 +305,13 @@ end
 Then /^expect order details ship-to phone is (.*)$/ do |expectation|
   step 'expect order details is present'
   step 'show order details form ship-to fields'
-  if SdcEnv.new_framework
-    expect(SdcOrders.order_details.ship_to.domestic.phone.text_value).to eql(expectation)
-  else
-    expect(stamps.orders.order_details.ship_to.domestic.phone.text).to eql expectation
-  end
+  expect(SdcOrders.order_details.ship_to.domestic.phone.text_value).to eql(expectation)
 end
 
 Then /^expect order details ship-to email is (.*)$/ do |expectation|
   step 'expect order details is present'
   step 'show order details form ship-to fields'
-  if SdcEnv.new_framework
-    expect(SdcOrders.order_details.ship_to.domestic.email.text_value).to eql(expectation)
-  else
-    expect(stamps.orders.order_details.ship_to.domestic.email.text).to eql expectation
-  end
+  expect(SdcOrders.order_details.ship_to.domestic.email.text_value).to eql(expectation)
 end
 
 Then /^[Ii]n Exact Address Not Found module, select row (\d+)$/ do |row|
@@ -408,8 +400,10 @@ Then /^[Dd]ecrement [Oo]rder [Dd]etails [Ii]nsure-[Ff]or by (\d*)$/ do |str|
 end
 
 Then /^set order details reference number to (.*)$/ do |str|
-  stamps.orders.order_details.reference_no.set(TestData.hash[:reference_no] = str.downcase.include?('random') ? TestHelper.rand_alpha_numeric : str)
-  step 'Save Order Details data'
+  str = str.casecmp('random').zero? ? TestHelper.rand_alpha_numeric : str
+  stamps.orders.order_details.reference_no.set(str)
+  TestData.hash[:reference_no] = str
+      step 'Save Order Details data'
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails Domestic [Ss]hip-[Tt]o Company is (.*)$/ do |str| #todo-Rob add is 'correct'
