@@ -359,7 +359,7 @@ Feature:  BVT tests for Orders
 
     Then expect customs non-delivery options is Treat as abandoned
     Then expect customs internal transaction number is Required
-    Then expect customs i agree to the usps privacy act statement is checked correct
+    #Then expect customs i agree to the usps privacy act statement is checked correct
 
     Then expect customs associated item 1 Description is correct
     Then expect customs associated item 1 Quantity is correct
@@ -376,7 +376,7 @@ Feature:  BVT tests for Orders
     Then expect customs associated item 3 Made In is correct
     Then expect customs associated item 3 Tariff is correct
 
-    Then expect customs i agree to the usps privacy act statement is checked
+    #Then expect customs i agree to the usps privacy act statement is checked
     Then expect Customs Total Value is correct
     Then close customs information form
 
