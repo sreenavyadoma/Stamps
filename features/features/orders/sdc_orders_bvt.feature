@@ -156,8 +156,8 @@ Feature:  BVT tests for Orders
     Then set customs internal transaction number to Not required
     Then check customs form i agree to the usps privacy act statement
     Then close customs information form
-    Then click orders toolbar print button
-    Then in print modal, click close button
+    #Then click orders toolbar print button
+    #Then in print modal, click close button
     Then sign out
 
   @bvt_shipping_address_management
