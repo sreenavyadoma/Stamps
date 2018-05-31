@@ -372,6 +372,6 @@ Then /^PP: click on the dashboard page download modal ok button$/ do
 end
 
 Then /^PP: expect CSV file to be downloaded$/ do
-  "C:\Users\lab\Downloads\Partnerportal_malvern-edc-emsrebate_050118_to_051718.csv"
+
 end
 
