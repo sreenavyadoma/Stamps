@@ -9,7 +9,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” MM XM Paper
   Scenario: Shipping Label - 8 ½” x 11” MM Paper
 
     #mail_print_shipping_label_8x11_mm_package
-    Then select print on Shipping Label - Paper
+    Then select print on Shipping Label - 8 ½" x 11" Paper
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1
     Then set print form ounces to 1
@@ -22,7 +22,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” MM XM Paper
   Scenario: Shipping Label - 8 ½” x 11” XM Paper
 
    #mail_print_shipping_label_8x11_xm_fr_envelope
-    Then select print on Shipping Label - Paper
+    Then select print on Shipping Label - 8 ½" x 11" Paper
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1
     Then set print form ounces to 1
@@ -32,7 +32,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” MM XM Paper
     Then click Mail Print modal Print button
 
    #mail_print_shipping_label_8x11_xm_lfr_envelope
-    Then select print on Shipping Label - Paper
+    Then select print on Shipping Label - 8 ½" x 11" Paper
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1
     Then set print form ounces to 1
@@ -42,7 +42,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” MM XM Paper
     Then click Mail Print modal Print button
 
    #mail_print_shipping_label_8x11_xm_package
-    Then select print on Shipping Label - Paper
+    Then select print on Shipping Label - 8 ½" x 11" Paper
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1
     Then set print form ounces to 1
@@ -52,7 +52,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” MM XM Paper
     Then click Mail Print modal Print button
 
    #mail_print_shipping_label_8x11_xm_pfr_envelope
-    Then select print on Shipping Label - Paper
+    Then select print on Shipping Label - 8 ½" x 11" Paper
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1
     Then set print form ounces to 1

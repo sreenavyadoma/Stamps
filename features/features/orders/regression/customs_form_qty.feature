@@ -15,30 +15,30 @@ Feature: Customs Form Qty > 99 is not saved correctly
     Then set order details ounces to 1
 
     Then on order details form, add item 1
-    Then set Order Details Qty to 1
+    Then set Order Details qty to 1
     Then set Order Details ID to random
-    Then set Order Details Description to random
+    Then set Order Details description to random
 
     Then on order details form, add item 2
-    Then set Order Details Qty to 2
+    Then set Order Details qty to 2
     Then set Order Details ID to random
-    Then set Order Details Description to random
+    Then set Order Details description to random
 
     Then click order details form customs form button
 
     Then add customs associated item 1
-    Then set Customs Associated Item 1 Description to item 1
-    Then set Customs Associated Item 1 Qty to 5
-    Then set Customs Associated Item 1 Unit Price to 11.11
-    Then set Customs Associated Item 1 Made In is Country to United States
-    Then set Customs Associated Item 1 Tarriff to 5
+    Then set customs associated item 1 description to item 1
+    Then set customs associated item 1 qty to 5
+    Then set customs associated item 1 unit price to 11.11
+    Then set customs associated item 1 made in United States
+    Then set customs associated item 1 Tarriff to 5
 
     Then add customs associated item 2
-    Then set Customs Associated Item 2 Description to item 2
-    Then set Customs Associated Item 2 Qty to 7
-    Then set Customs Associated Item 2 Unit Price to 22.22
-    Then set Customs Associated Item 2 Made In is Country to United States
-    Then set Customs Associated Item 1 Tarriff to 10
+    Then set customs associated item 2 description to item 2
+    Then set customs associated item 2 qty to 7
+    Then set customs associated item 2 unit price to 22.22
+    Then set customs associated item 2 made in United States
+    Then set customs associated item 1 Tarriff to 10
 
     Then check customs form i agree to the usps privacy act statement
 

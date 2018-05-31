@@ -13,7 +13,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then set Print form Serial Number to A12345
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
     Then set Advanced Options Cost Code to None
@@ -26,7 +26,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then set Print form Serial Number to A12345
     Then select Advanced Options Specify Postage Amount
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then select print form service Media Mail
     Then set Print form Amount to 0.15
     Then set Advanced Options Cost Code to None
@@ -41,7 +41,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then set Print form Serial Number to B12345
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
     Then set Advanced Options Cost Code to None
@@ -54,7 +54,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then set Print form Serial Number to B12345
     Then select Advanced Options Specify Postage Amount
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then select print form service Media Mail
     Then set Print form Amount to 0.15
     Then set Advanced Options Cost Code to None
@@ -69,7 +69,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then set Print form Serial Number to C12345
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
     Then set Advanced Options Cost Code to None
@@ -82,7 +82,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then set Print form Serial Number to C12345
     Then select Advanced Options Specify Postage Amount
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then select print form service Media Mail
     Then set Print form Amount to 0.15
     Then set Advanced Options Cost Code to None
@@ -97,7 +97,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then set Print form Serial Number to K12345
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
     Then set Advanced Options Cost Code to None
@@ -110,7 +110,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then set Print form Serial Number to K12345
     Then select Advanced Options Specify Postage Amount
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then select print form service Media Mail
     Then set Print form Amount to 0.15
     Then set Advanced Options Cost Code to None
@@ -125,7 +125,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then set Print form Serial Number to L12345
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
     Then set Advanced Options Cost Code to None
@@ -138,7 +138,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then set Print form Serial Number to L12345
     Then select Advanced Options Specify Postage Amount
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then select print form service Media Mail
     Then set Print form Amount to 0.15
     Then set Advanced Options Cost Code to None
@@ -153,7 +153,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then set Print form Serial Number to ML1234
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
     Then set Advanced Options Cost Code to None
@@ -166,7 +166,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then set Print form Serial Number to ML1234
     Then select Advanced Options Specify Postage Amount
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then select print form service Media Mail
     Then set Print form Amount to 0.15
     Then set Advanced Options Cost Code to None

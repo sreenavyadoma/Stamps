@@ -19,9 +19,9 @@ end
 Then /^on order details form, add item (\d+), qty (\d+), id (.+), description (.*)$/ do |item_number, qty, id, description|
   step "add order details associated item #{item_number}"
   step "scroll into view order details associated item #{item_number}"
-  step "set Order Details Associated Item #{item_number} Qty to #{qty}"
+  step "set Order Details Associated Item #{item_number} qty to #{qty}"
   step "set Order Details Associated Item #{item_number} ID to #{id}"
-  step "set Order Details Associated Item #{item_number} Description to #{description}"
+  step "set Order Details Associated Item #{item_number} description to #{description}"
 end
 
 Then /^add order details associated item (\d+)$/ do |item_number|
@@ -39,7 +39,7 @@ Then /^scroll into view order details associated item (\d+)$/ do |item_number|
 end
 
 
-Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) Qty to (.*)$/ do |item_number, qty|
+Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) qty to (.*)$/ do |item_number, qty|
   step 'expect order details is present'
   TestData.hash[:details_associated_items][item_number] = {} unless TestData.hash[:details_associated_items].has_key?(item_number)
   TestData.hash[:details_associated_items][item_number][:item_qty] = qty
@@ -63,7 +63,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) ID to (.*)$/ do |item_nu
   step 'Save Order Details data'
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) Description to (.*)$/ do |item_number, str|
+Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) description to (.*)$/ do |item_number, str|
   step 'expect order details is present'
   TestData.hash[:details_associated_items][item_number] = {} unless TestData.hash[:details_associated_items].has_key?(item_number)
   TestData.hash[:details_associated_items][item_number][:item_description] = (str.downcase.include?('random') ? TestHelper.rand_alpha_numeric : str)
@@ -182,7 +182,7 @@ Then /^set order details ship-to domestic address to$/ do |table|
   if table.hashes.first['street_address_2'].nil?
     TestData.hash[:street_address_2] = ''
   else
-    TestData.hash[:street_address_2] = table.hashes.first['street_address_2'].downcase.include?('random') ? TestHelper.rand_alpha_numeric(2, 7) : table.hashes.first['street_address_2']
+    TestData.hash[:street_address_2] = table.hashes.first['street_address_2'].downcase.include?('random') ? TestHelper.rand_alpha_numeric(min: 2, max: 7) : table.hashes.first['street_address_2']
   end
   TestData.hash[:city] = table.hashes.first['city'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['city']
   TestData.hash[:state] = table.hashes.first['state'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['state']

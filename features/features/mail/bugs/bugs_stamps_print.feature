@@ -9,7 +9,7 @@ Feature: Stamps print media bugs
 
     Then select print on Shipping Label - 5x8
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
@@ -23,7 +23,7 @@ Feature: Stamps print media bugs
     #mail_print_roll_4x6_fcm_large_envelope
     Then select print on Roll 4x6
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
@@ -53,7 +53,7 @@ Feature: Stamps print media bugs
   @bugs_stamps_print
   Scenario: E-mail field error validation - "Email is required." when printing Envelopes
 
-    Then select print on Shipping Label - Paper
+    Then select print on Shipping Label - 8 ½" x 11" Paper
     Then check Print form Email Tracking checkbox
     Then select print on Envelope - 10
     Then set Print form Mail-From to default

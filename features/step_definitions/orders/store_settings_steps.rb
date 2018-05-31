@@ -51,7 +51,7 @@ Then /^[Ss]et store service Mapping (\d+), Requested Services (.*), Shipping ser
   #StampsTest.log.step "Store Settings: Set Requested Services to random #{requested_services}"
   raise "Amazon Settings is not open.  Check your test workflow." if @store_settings.nil?
   service_mapping_item = @store_settings.service_mapping.item item_number.to_i
-  service_mapping_item.requested_services.set(requested_services.downcase.include? 'random') ? TestHelper.rand_alpha_numeric(4, 20) : requested_services
+  service_mapping_item.requested_services.set(requested_services.downcase.include? 'random') ? TestHelper.rand_alpha_numeric(min: 4, max: 20) : requested_services
   service_mapping_item.shipping_Service.select shipping_service
 end
 

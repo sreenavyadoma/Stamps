@@ -1,6 +1,6 @@
 
 Then /^visit Orders landing page$/ do
-  step 'initialize orders test parameters'
+  step 'initialize test parameters'
   step 'fetch user credentials from MySQL'
 
   env = case SdcEnv.env
@@ -19,7 +19,7 @@ Then /^visit Orders landing page$/ do
   SdcOrdersLandingPage.visit(env)
 end
 
-Then /^initialize orders test parameters$/ do
+Then /^initialize test parameters$/ do
   TestData.hash[:customs_associated_items] = {}
   TestData.hash[:service_mapping_items] = {}
   TestData.hash[:details_associated_items] = {}

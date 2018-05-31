@@ -6,7 +6,7 @@ Feature: Envelopes BVT
   @mail_services
   Scenario: Envelope
     Then select print on Stamps
-    Then select print on Shipping Label - Paper
+    Then select print on Shipping Label - 8 ½" x 11" Paper
     Then select print on Shipping Label - SDC-1200
     Then select print on Shipping Label - 5x8
     Then select print on Envelope - 10

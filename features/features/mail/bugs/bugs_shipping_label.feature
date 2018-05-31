@@ -5,7 +5,7 @@ Feature: Shipping Label bugs
 
   @bugs_shipping_label
   Scenario: WEBAPPS-6783 Reset Button Resets Starting Label Position after Print
-    Then select print on Shipping Label - Paper
+    Then select print on Shipping Label - 8 ½" x 11" Paper
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1
     Then set print form ounces to 1

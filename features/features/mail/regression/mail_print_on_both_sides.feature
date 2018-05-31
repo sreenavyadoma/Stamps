@@ -19,10 +19,10 @@ Feature: Mail Shipping Label - Left Side, Mail Shipping Label - Right Side
   @mail_print_label_right_side
   Scenario: Right Side Shipping Label - 8 ½” x 11” Paper
 
-    Then select print on Shipping Label - Paper
+    Then select print on Shipping Label - 8 ½" x 11" Paper
 
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 1 through 4
 
     Then set print form ounces to 1
@@ -39,7 +39,7 @@ Feature: Mail Shipping Label - Left Side, Mail Shipping Label - Right Side
 
     Then select print on Shipping Label - 5x8
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service PM Package
@@ -56,7 +56,7 @@ Feature: Mail Shipping Label - Left Side, Mail Shipping Label - Right Side
     Then select print on Shipping Label - SDC-1200
 
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 1 through 4
 
     Then set print form ounces to 1

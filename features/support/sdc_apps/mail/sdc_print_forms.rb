@@ -1,5 +1,6 @@
 module SdcMail
   module SdcPrintForm
+
     module MailFromContainer
       class MailFrom < SdcPage
         page_object(:drop_down) { { xpath: '//*[@id="sdc-mainpanel-shipfromdroplist-trigger-picker"]' } }
@@ -34,7 +35,8 @@ module SdcMail
         page_object(:city, tag: :text_field) { { xpath: '//input[@name="ShipCity"]' } }
         page_object(:province, tag: :text_field) { { xpath: '//input[@name="ShipState"]' } }
         page_object(:postal_code, tag: :text_field) { { xpath: '//input[@name="ShipPostalCode"]' } }
-        page_object(:phone, tag: :text_field) { { xpath: '//input[@name="ShipPhone"]' } }
+        page_objects(:phone, tag: :text_fields, index: 0) { { xpath: '//input[@name="ShipPhone"]' } }
+        page_objects(:int_phone, tag: :text_fields, index: 1) { { xpath: '//input[@name="ShipPhone"]' } }
 
         def selection(name, str)
           page_object(name) { { xpath: "//li[text()='#{str}']" } }
@@ -197,6 +199,11 @@ module SdcMail
       end
     end
 
+    class Contents < SdcPage
+      page_object(:customs_form) { { xpath: '//*[@id="sdc-mainpanel-editcustombtn-btnInnerEl"]' } }
+      page_object(:restrictions) { { xpath: '//a[contains(@class, "sdc-mainpanel-restrictionsbtn")]//*[contains(@id, "btnInnerEl")]' } }
+    end
+
     class PrintFormBase < SdcPage
       include MailFromContainer
       include MailToContainer
@@ -235,6 +242,10 @@ module SdcMail
       include DimensionsContainer
       include ExtraServicesContainer
       include MailDateContainer
+
+      def contents
+        Contents.new
+      end
     end
 
     class Envelopes < PrintFormBase
@@ -242,6 +253,7 @@ module SdcMail
       include InsuranceContainer
       include ExtraServicesContainer
       include MailDateContainer
+
     end
 
     class CertifiedMail < PrintFormBase
@@ -269,6 +281,7 @@ module SdcMail
       page_object(:rd_verify) { { xpath: '//input[contains(@class, "sdc-mainpanel-rdcheckbox")]/../../..' } }
       chooser(:restricted_delivery, :rd_chooser, :rd_verify, :class, :checked)
       page_object(:restricted_delivery_cost) { { xpath: '//*[@id="restrictedDeliveryCostLabel"]' } }
+
     end
 
     class Rolls < PrintFormBase
@@ -278,6 +291,10 @@ module SdcMail
       include DimensionsContainer
       include ExtraServicesContainer
       include MailDateContainer
+
+      def contents
+        Contents.new
+      end
     end
   end
 end

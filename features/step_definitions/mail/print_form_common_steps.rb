@@ -1,10 +1,6 @@
 # encoding: utf-8
 
 
-Then /^[Bb]lur out on [Pp]rint [Ff]orm$/ do
-  stamps.mail.print_form.blur_out
-end
-
 Then /^[Ss]et Print form Mail-From to (.*)$/ do |str|
   mail_from = SdcMail.print_form.mail_from
   mail_from.selection(:selection_element, str)
@@ -93,15 +89,15 @@ end
 
 # dimension expectations
 Then /^[Ee]xpect Print form Length is (?:correct|(\d+))$/ do |str|
-  expect(stamps.mail.print_form.dimensions.length.text.to_i).to eql(((str.nil?) ? TestData.hash[:length] : str).to_i)
+  expect(stamps.mail.print_form.dimensions.length.text.to_i).to eql((str.nil? ? TestData.hash[:length] : str).to_i)
 end
 
 Then /^[Ee]xpect Print form width is (?:correct|(\d+))$/ do |str|
-  expect(stamps.mail.print_form.dimensions.width.text.to_i).to eql(((str.nil?) ? TestData.hash[:width] : str).to_i)
+  expect(stamps.mail.print_form.dimensions.width.text.to_i).to eql((str.nil? ? TestData.hash[:width] : str).to_i)
 end
 
 Then /^[Ee]xpect Print form height is (?:correct|(\d+))$/ do |str|
-  expect(stamps.mail.print_form.dimensions.height.text.to_i).to eql(((str.nil?) ? TestData.hash[:height] : str).to_i)
+  expect(stamps.mail.print_form.dimensions.height.text.to_i).to eql((str.nil? ? TestData.hash[:height] : str).to_i)
 end
 
 Then /^[Ee]xpect [Pp]rint [Ff]orm [Ss]ervice (.*) is not present in dropdown list$/ do |service|
@@ -163,7 +159,27 @@ Then /^[Ee]xpect on [Pp]rint [Pp]review [Pp]anel, right side label is selected$/
   expect(stamps.mail.print_preview.right_selected?).to be(true), "Right Label image doesn't exists on Print form"
 end
 
-Then /^set print form mail-to [Cc]ountry to (.*)$/ do |str|
+Then /^[Ss]et Print Form Ship-To Country to a random country in PMI Flat Rate price group (.*)$/ do |group|
+  country_list = data_for(:country_groups_PMI_flat_rate, {})["group" + group].values
+  TestData.hash[:country] = country_list[rand(country_list.size)]
+  step "set print form mail-to country to #{TestData.hash[:country]}"
+end
+
+Then /^set print form ship-to to international address$/ do |table|
+  hash = table.hashes.first
+  step "set print form mail-to country to #{hash['country']}"
+  step "set print form name to #{hash['name']}"
+  step "set print form company to #{hash['company']}"
+  step "set print form address 1 to #{hash['street_address_1']}"
+  step "set print form address 2 to #{hash['street_address_2']}"
+  step "set print form province to #{hash['province']}"
+  step "set print form city to #{hash['city']}"
+  step "set print form postal code to #{hash['postal_code']}"
+  step "set print form phone to #{hash['phone']}"
+  TestData.hash[:address_hash] = hash
+end
+
+Then /^set print form mail-to country to (.*)$/ do |str|
   if SdcEnv.new_framework
     mail_to = SdcMail.print_form.mail_to
     mail_to.selection(:selection_element, str)
@@ -185,6 +201,129 @@ Then /^set print form mail-to [Cc]ountry to (.*)$/ do |str|
     expect(stamps.mail.print_form.service).to be_has_rates, "Mail service list of values does not have rates."
     expect(stamps.mail.print_form.mail_to.mail_to_country.textbox.text).to eql(TestData.hash[:country])
   end
+end
+
+Then /^set print form name to (.*)$/ do |str|
+  str = str.casecmp('random').zero? ? TestHelper.rand_full_name : str
+  mail_to = SdcMail.print_form.mail_to
+  mail_to.name.wait_until_present(timeout: 4)
+  mail_to.name.click
+  mail_to.name.set(str)
+  TestData.hash[:name] = str
+end
+
+Then /^set print form company to (.*)$/ do |str|
+  str = str.casecmp('random').zero? ? TestHelper.rand_full_name : str
+  mail_to = SdcMail.print_form.mail_to
+  mail_to.company.wait_until_present(timeout: 4)
+  mail_to.company.click
+  mail_to.company.set(str)
+  TestData.hash[:company] = str
+end
+
+Then /^set print form address 1 to (.*)$/ do |str|
+  str = str.casecmp('random').zero? ? TestHelper.rand_full_name : str
+  mail_to = SdcMail.print_form.mail_to
+  mail_to.address_1.wait_until_present(timeout: 4)
+  mail_to.address_1.click
+  mail_to.address_1.set(str)
+  TestData.hash[:address_1] = str
+end
+
+Then /^set print form address 2 to (.*)$/ do |str|
+  str = str.casecmp('random').zero? ? TestHelper.rand_full_name : str
+  mail_to = SdcMail.print_form.mail_to
+  mail_to.address_2.wait_until_present(timeout: 4)
+  mail_to.address_2.click
+  mail_to.address_2.set(str)
+  TestData.hash[:address_2] = str
+end
+
+Then /^set print form city to (.*)$/ do |str|
+  str = str.casecmp('random').zero? ? TestHelper.rand_full_name : str
+  mail_to = SdcMail.print_form.mail_to
+  mail_to.city.wait_until_present(timeout: 4)
+  mail_to.city.click
+  mail_to.city.set(str)
+  TestData.hash[:city] = str
+end
+
+Then /^set print form province to (.*)$/ do |str|
+  str = str.casecmp('random').zero? ? TestHelper.rand_full_name : str
+  mail_to = SdcMail.print_form.mail_to
+  mail_to.province.wait_until_present(timeout: 4)
+  mail_to.province.click
+  mail_to.province.set(str)
+  TestData.hash[:province] = str
+end
+
+Then /^set print form postal code to (.*)$/ do |str|
+  str = str.casecmp('random').zero? ? TestHelper.rand_full_name : str
+  mail_to = SdcMail.print_form.mail_to
+  mail_to.postal_code.wait_until_present(timeout: 4)
+  mail_to.postal_code.click
+  mail_to.postal_code.set(str)
+  TestData.hash[:postal_code] = str
+end
+
+Then /^set print form phone to (.*)$/ do |str|
+  str = str.casecmp('random').zero? ? TestHelper.rand_phone : str
+  mail_to = SdcMail.print_form.mail_to
+  phone = mail_to.phone
+  phone = mail_to.int_phone if mail_to.int_phone.present?
+  phone.wait_until_present(timeout: 4)
+  phone.click
+  phone.set(str)
+  TestData.hash[:phone] = str
+end
+
+Then /^click print form edit customs form button$/ do
+  SdcMail.print_form.contents.customs_form.click
+end
+
+##
+#
+#
+#
+#
+#
+#
+#
+#
+Then /^[Ee]xpect Print form Domestic Address Field is present$/ do
+  expect(stamps.mail.print_form.mail_to.mail_address.textarea).to be_present, "Print form Domestic Address Field is NOT present"
+end
+
+Then /^[Ee]xpect Print form International Name Field is present$/ do
+  expect(stamps.mail.print_form.mail_to.int_mail_address.name).to be_present, "Print form International Name Field is NOT present"
+end
+
+Then /^[Ee]xpect Print form International Company Field is present$/ do
+  expect(stamps.mail.print_form.mail_to.int_mail_address.company).to be_present, "Print form International Company Field is NOT present"
+end
+
+Then /^[Ee]xpect Print form International Address 1 Field is present$/ do
+  expect(stamps.mail.print_form.mail_to.int_mail_address.address_1).to be_present, "Print form International Address 1 Field is NOT present"
+end
+
+Then /^[Ee]xpect Print form International Address 2 Field is present$/ do
+  expect(stamps.mail.print_form.mail_to.int_mail_address.address_2).to be_present, "Print form International Address 2 Field is NOT present"
+end
+
+Then /^[Ee]xpect Print form International City Field is present$/ do
+  expect(stamps.mail.print_form.mail_to.int_mail_address.city).to be_present, "Print form International City Field is NOT present"
+end
+
+Then /^[Ee]xpect Print form International Province Field is present$/ do
+  expect(stamps.mail.print_form.mail_to.int_mail_address.province).to be_present, "Print form International Province Field is NOT present"
+end
+
+Then /^[Ee]xpect Print form International Postcode Field is present$/ do
+  expect(stamps.mail.print_form.mail_to.int_mail_address.postal_code).to be_present, "Print form International Postcode Field is NOT present"
+end
+
+Then /^[Ee]xpect Print form International Phone Field is present$/ do
+  expect(stamps.mail.print_form.mail_to.int_mail_address.phone).to be_present, "Print form International Phone Field is NOT present"
 end
 
 Then /^[Ss]ave Print Form Total Cost$/ do

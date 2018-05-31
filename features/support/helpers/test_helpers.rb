@@ -35,9 +35,6 @@ module Stamps
       end
 
       def rand_alpha_numeric(min: 2, max: 10)
-        # [rand_samp_str(('a'..'z').to_a), rand_samp_str(('A'..'Z').to_a),
-        #  rand_samp_str(('0'..'9').to_a)].concat((('a'..'z').to_a +
-        #     ('A'..'Z').to_a + ('0'..'9').to_a).sample(Random.rand(min..max))).shuffle.join
         (('a'..'z').to_a + ('A'..'Z').to_a + ('0'..'9').to_a).sample(Random.rand(min..max)).shuffle.join
       end
 
