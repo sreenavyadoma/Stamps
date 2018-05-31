@@ -336,7 +336,7 @@ Feature:  BVT tests for Orders
     Then expect order details international ship-to postal code is correct
     Then expect order details international ship-to phone is correct
     Then expect order details international ship-to email is correct
-    Then expect order details reference number is correct
+    #Then expect order details reference number is correct
     Then expect order details service cost is correct
     Then expect order details pounds is 2
     #Then expect order details ounces is 2
