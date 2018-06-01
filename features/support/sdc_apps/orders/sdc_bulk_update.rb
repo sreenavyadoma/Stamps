@@ -2,7 +2,8 @@ module Stamps
   module Orders
     class SdcBulkUpdate < SdcPage
       page_object(:title) { { xpath: '(//div[contains(@class, "multiorder-detailsform")]//label[contains(@class, "panel-header-text")])[1]' } }
-      page_object(:update_orders) { { xpath: '(//div[contains(@class, "update-control-row")]//*[contains(@id, "btnWrap")])[1]' } }
+      # page_object(:update_orders) { { xpath: '(//div[contains(@class, "update-control-row")]//*[contains(@id, "btnWrap")])[1]' } }
+      page_object(:update_orders) { { xpath: '//*[text()="Update Orders"]' } }
       page_object(:save_preset) { { xpath: '(//div[contains(@class, "update-control-row")]//*[contains(@id, "btnWrap")])[2]' } }
 
 

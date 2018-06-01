@@ -17,7 +17,10 @@ Then /^[Ss]ave [Mm]ulti [Oo]rder [Dd]etails [Dd]ata$/ do
 end
 
 Then /^click bulk update update order button$/ do
-  SdcOrders.bulk_update.update_orders.click
+  SdcPage.browser.execute_script( 'document.getElementsByClassName("x-btn-wrap x-btn-wrap-primary-medium ")[0].click()' )
+  # SdcOrders.bulk_update.update_orders.click
+
+  # sleep(5)
 end
 
 Then /^expect bulk update is present$/ do

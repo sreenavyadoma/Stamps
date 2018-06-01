@@ -6,8 +6,9 @@ Then /^add order (\d+)$/ do |count|
   if SdcEnv.new_framework
     #todo TestData.store[:old_balance] = SdcWebsite.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
     #todo stamps.orders.orders_grid.grid_column(:checkbox).uncheck(1)
-    SdcOrders.toolbar.add.wait_until_present(timeout: 10)
-    SdcOrders.grid.body.wait_until_present(timeout: 20)
+    # SdcOrders.toolbar.add.wait_until_present(timeout: 10)
+    # SdcOrders.grid.body.wait_until_present(timeout: 20)
+    step 'wait until orders available'
     SdcOrders.toolbar.add.click
     SdcOrders.order_details.title.wait_until_present(timeout: 10)
     SdcOrders.order_details.order_id.wait_until_present(timeout: 30)
@@ -22,6 +23,11 @@ Then /^add order (\d+)$/ do |count|
     step 'Save Order Details data'
   end
   TestData.hash[:ord_id_ctr] += 1
+end
+
+Then /^wait until orders available$/ do
+  SdcOrders.toolbar.add.wait_until_present(timeout: 10)
+  SdcOrders.grid.body.wait_until_present(timeout: 20)
 end
 
 Then /^Save Order Details data$/ do

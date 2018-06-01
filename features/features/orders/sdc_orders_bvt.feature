@@ -296,7 +296,7 @@ Feature:  BVT tests for Orders
 #    Then in print modal, click close button
 #    Then select Filter Panel tab Awaiting Shipment
     Then blur out on order details form
-#    Then pause for 1 second
+    Then pause for 2 second
 
 #    Then sign out
 #    Then sign-in to Orders
@@ -315,11 +315,11 @@ Feature:  BVT tests for Orders
 #          Then check Customs form I agree to the USPS Privacy Act Statement
 #          Then close Customs Information form
 
-#    Then blur out on order details form
 #    Then click orders toolbar print button
 #    Then in print modal, click close button
 #    Then select Filter Panel tab Awaiting Shipment
     Then blur out on order details form
+    Then pause for 2 second
 #    Then sign out
 #    Then sign-in to Orders
 #  # Check 1st two orders
@@ -338,6 +338,7 @@ Feature:  BVT tests for Orders
     Then set bulk update pounds to 0
     Then set bulk update ounces to 3
     Then click bulk update update order button
+    Then wait until orders available
 
 #  # Uncheck both orders
 #    Then pause for 1 second
@@ -350,6 +351,8 @@ Feature:  BVT tests for Orders
 #    Then check order 1
 #    Then expect order details ship from is correct
     Then expect Order Details service is PM Large Package
+    Then expect order details pound is 0
+    Then expect order details ounce is 3
 #    Then pause for 1 second
 #    Then uncheck order 1
 #    Then pause for 1 second
@@ -358,5 +361,7 @@ Feature:  BVT tests for Orders
 #    Then check order 2
 #    Then expect order details ship from is correct
     Then expect Order Details international service is PMI Package/Flat/Thick Envelope
+    Then expect order details pound is 0
+    Then expect order details ounce is 3
 #    Then uncheck order 2
     Then sign out
