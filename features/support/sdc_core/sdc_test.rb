@@ -149,11 +149,16 @@ class SdcTest
               unless SdcEnv.firefox_profile
                 SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
               else
-                profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(firefox_profile)
-                profile.assume_untrusted_certificate_issuer = true
-                profile['network.http.phishy-userpass-length'] = 255
-                SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, :profile => profile))
+                # profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(firefox_profile)
+                # profile.assume_untrusted_certificate_issuer = true
+                # profile['network.http.phishy-userpass-length'] = 255
 
+                profile = Selenium::WebDriver::Firefox::Profile.new
+                profile['browser.download.folderList'] = 2 # custom location
+                profile['browser.download.dir'] = download_directory
+                profile['browser.helperApps.neverAsk.saveToDisk'] = 'text/csv,application/pdf'
+                profile.assume_untrusted_certificate_issuer = true
+                SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, :profile => profile))
                 SdcPage.browser.driver.manage.timeouts.page_load = 12
               end
 
