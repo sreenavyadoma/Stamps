@@ -18,6 +18,7 @@ Then /^[Pp]P: scroll to buttom of the page$/ do
     SdcPage.browser.execute_script( 'window.scrollBy(0,document.body.scrollHeight)' )
 end
 
+
 Then /^[Pp]P: navigate back to previous page$/ do
   SdcPage.browser.back
 end
@@ -221,3 +222,4 @@ end
 Then /^PP: click ok button on error pop up$/ do
   PartnerPortal.common_page.error_ok.send_keys(:enter)
 end
+

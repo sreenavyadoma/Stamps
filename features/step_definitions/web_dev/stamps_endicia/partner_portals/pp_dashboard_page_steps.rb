@@ -322,13 +322,13 @@ end
 Then /^PP: set dashboard page from date field to (.*)$/ do |str|
   from_date_field =  PartnerPortal.dashboard_page.from_date_field
   from_date_field.wait_until_present(timeout: 5)
-  from_date_field.set(str)
+  from_date_field.set(TestData.hash[:from_date] = str)
 end
 
 Then /^PP: set dashboard page to date field to (.*)$/ do |str|
   to_date_field =  PartnerPortal.dashboard_page.to_date_field
   to_date_field.wait_until_present(timeout: 5)
-  to_date_field.set(str)
+  to_date_field.set(TestData.hash[:to_date] = str)
 end
 
 Then /^PP: expect dashboard page to date field error message index (\d+) to be (.*)$/ do |index, str|
@@ -368,10 +368,35 @@ end
 Then /^PP: click on the dashboard page download modal ok button$/ do
   PartnerPortal.dashboard_page.download_modal_ok.send_keys(:enter)
 
-  step 'pause for 20 second'
 end
 
-Then /^PP: expect CSV file to be downloaded$/ do
+Then /^PP: delete existing csv file$/ do
+contract= PartnerPortal.dashboard_page.contract_header.text_value.split(':').last.strip
+TestData.hash[:file_name_expected] = 'Partnerportal_'+ contract +'_'+  TestData.hash[:from_date].gsub('/', '') + '_to_' + TestData.hash[:to_date].gsub('/', '')+ '.csv'
+file = 'C:/Download/' + TestData.hash[:file_name_expected]
+File.delete(file) unless File.exist?(file) == false
+end
+
+
+Then /^PP: expect CSV file to be downloaded with correct file name$/ do
+
+  download_directory = 'C:\Download'
+
+  downloads_before = Dir.entries download_directory
+
+  1000000.times do
+    difference = Dir.entries(download_directory) - downloads_before
+    if  difference.size == 1
+      TestData.hash[:file_name]  =  difference.first
+      break
+    end
+    sleep 1
+  end
+
+  expect(TestData.hash[:file_name]).to eql(TestData.hash[:file_name_expected])
 
 end
+
+
+
 
