@@ -162,13 +162,12 @@ module SdcOrders
 
   class SdcOrderDetails < SdcPage
     page_object(:title, required: true, timeout: 20) { {xpath: '//div[contains(@class, "singleorder-detailsform")]//label[contains(@class, "panel-header-text")]'} }
-    page_object(:reference_num, required: true, timeout: 20) { {xpath: '//div[contains(@class, "reference-field-container")]//input'} }
     page_object(:service_label, required: true, timeout: 20) { {xpath: '(//*[contains(text(), "Service:")])[2]'} }
     page_object(:weight_label, required: true, timeout: 20) { {xpath: '//*[contains(text(), "Weight:")]'} }
     page_object(:ship_to_label, required: true, timeout: 20) { {xpath: '//div[starts-with(@id, "singleOrderDetailsForm")]//label[text()="Ship To:"]'} }
     page_object(:order_id, required: true, timeout: 20) { {xpath: '(//*[contains(@class, "singleorder-detailsform")]//div[contains(@class, "sdc-toolbar")]//b)[1]'} }
     page_object(:add_item) { {xpath: '//*[text()="Add Item"]'} }
-    page_object(:reference_num) { {xpath: ''} }
+    page_object(:reference_num, tag: :text_field) { {xpath: '//*[contains(@class, "reference-field-container")]//input'} }
 
     def ship_to
       SdcOrderDetailsShipTo.new
