@@ -56,38 +56,50 @@ Then /^fetch user credentials from MySQL$/ do
   end
 end
 
-Then /^sign-in to Orders$/ do
+Then /^sign-in to orders$/ do
   step 'visit Orders landing page'
   step "set Orders landing page username to #{TestData.hash[:username]}"
   step "set Orders landing page password to #{TestData.hash[:password]}"
 
+  step 'click sign-in button on browser' if SdcEnv.browser
+  step 'click sign-in button on ios' if SdcEnv.ios
+  step 'click sign-in button on android' if SdcEnv.android
+end
+
+Then /^click sign-in button on browser$/ do
   landing_page = SdcWebsite.landing_page
-
   signed_in_user = SdcWebsite.navigation.user_drop_down.signed_in_user
-  if SdcEnv.browser
-    if SdcEnv.sauce_device
-      step 'click Orders landing page sign-in button'
-      SdcWebsite.navigation.user_drop_down.signed_in_user.safe_wait_until_present(timeout: 15)
-    else
-      step 'click Orders landing page sign-in button'
-      signed_in_user.safe_wait_until_present(timeout: 5)
-      expect(signed_in_user.text_value).to eql(TestData.hash[:username])
-    end
 
-  elsif SdcEnv.ios
-    begin
-      landing_page.sign_in.click
-      landing_page.sign_in.send_keys(:enter)
-        #landing_page.sign_in.safe_send_keys(:enter)
-    rescue ::StandardError
-      # ignore
-    end
+  step 'click Orders landing page sign-in button'
 
-  elsif SdcEnv.android
-    SdcPage.browser.hide_keyboard
-    SdcPage.browser.action.move_to(landing_page.sign_in).click.perform
-    SdcPage.browser.action.move_to(landing_page.sign_in).send_keys(:enter).perform
-  end
+  SdcOrders.loading_orders.safe_wait_until_present(timeout: 5)
+  SdcOrders.loading_orders.wait_while_present(timeout: 40)
+
+  signed_in_user.wait_until_present(timeout: 5)
+  expect(signed_in_user.text_value).to eql(TestData.hash[:username])
+
+  # if SdcEnv.sauce_device
+  #   step 'click Orders landing page sign-in button'
+  #   signed_in_user.safe_wait_until_present(timeout: 15)
+  # else
+  #   step 'click Orders landing page sign-in button'
+  #   signed_in_user.safe_wait_until_present(timeout: 5)
+  #   expect(signed_in_user.text_value).to eql(TestData.hash[:username])
+  # end
+
+end
+
+Then /^click sign-in button on ios$/ do
+  landing_page = SdcWebsite.landing_page
+  landing_page.sign_in.click
+  landing_page.sign_in.send_keys(:enter)
+  #landing_page.sign_in.safe_send_keys(:enter)
+end
+
+Then /^click sign-in button on android$/ do
+  SdcPage.browser.hide_keyboard
+  SdcPage.browser.action.move_to(landing_page.sign_in).click.perform
+  SdcPage.browser.action.move_to(landing_page.sign_in).send_keys(:enter).perform
 end
 
 Then /^set Orders landing page username to (.+)$/ do |str|
