@@ -1,5 +1,11 @@
 Then /^set bulk update ship from to (.*)$/ do |str|
-  TestData.hash[:bulk_ship_from] = SdcWebsite.orders.bulk_update.ship_from.select(str)
+  ship_from = SdcOrders.bulk_update.ship_from
+  ship_from.selection_element(name: :selection, value: str)
+  ship_from.drop_down.click unless ship_from.selection.present?
+  ship_from.selection.click unless ship_from.selection.class_disabled?
+  TestData.hash[:bulk_ship_from] = str.eql?('default') ? ship_from.text_field.text_value : str
+  TestData.hash[:ship_from] = str.eql?('default') ? ship_from.text_field.text_value : str
+  expect(ship_from.text_field.text_value).to include(str) unless str.eql?('default')
 end
 
 Then /^[Bb]lur [Oo]ut on [Mm]ulti [Oo]rder [Dd]etails [Ff]orm(?:| (\d+)(?:| times))$/ do |count|
@@ -10,172 +16,186 @@ Then /^[Ss]ave [Mm]ulti [Oo]rder [Dd]etails [Dd]ata$/ do
   #pending
 end
 
-# Update bulk orders
-Then /^[Cc]lick [Bb]ulk [Uu]pdate [Oo]rders [Bb]utton$/ do
-  step 'expect bulk update orders button is present'
-  5.times do
-    stamps.orders.bulk_update.update_orders.click
-    stamps.orders.bulk_update.updating_orders.wait_while_present(3)
-    break unless stamps.orders.bulk_update.updating_orders.present?
-  end
+Then /^click bulk update update order button$/ do
+  SdcOrders.bulk_update.update_orders.click
 end
 
-Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Oo]rders [Bb]utton is present$/ do
-  20.times do
-    sleep(0.5) unless stamps.orders.bulk_update.update_orders.present?
-    break if stamps.orders.bulk_update.update_orders.present?
-  end
-  expect(stamps.orders.bulk_update.update_orders).to be_present, 'Bulk Update Orders button is not present'
+Then /^expect bulk update is present$/ do
+  expect(SdcOrders.bulk_update.title).to be_present, "Multi Order Details form is not present"
+end
+
+# Update bulk orders
+# Then /^[Cc]lick [Bb]ulk [Uu]pdate [Oo]rders [Bb]utton$/ do
+#   step 'expect bulk update orders button is present'
+#   5.times do
+#     stamps.orders.bulk_update.update_orders.click
+#     stamps.orders.bulk_update.updating_orders.wait_while_present(3)
+#     break unless stamps.orders.bulk_update.updating_orders.present?
+#   end
+# end
+
+Then /^expect bulk update orders button is present$/ do
+  expect(SdcOrders.bulk_update.update_orders).to be_present, 'Bulk Update Orders button is not present'
 end
 
 # Begin Bulk Update Weight steps
-Then /^[Ss]et [Bb]ulk [Uu]pdate [Pp]ounds to (.*)$/ do |str|
-  stamps.orders.bulk_update.weight.lbs.set(TestData.hash[:bulk_lbs] = str)
+Then /^set bulk update pounds to (.*)$/ do |str|
+  SdcOrders.bulk_update.weight.lbs.set(TestData.hash[:bulk_lbs] = str)
 end
 
-Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Pp]ounds is (?:correct|(.*))$/ do |str|
-  expect(stamps.orders.bulk_update.weight.lbs.text).to eql((str.nil?) ? TestData.hash[:bulk_lbs] : str)
+Then /^expect bulk update pounds is (?:correct|(.*))$/ do |str|
+  expect(SdcOrders.bulk_update.weight.lbs.value).to eql((str.nil?) ? TestData.hash[:bulk_lbs] : str)
 end
 
-Then /^[Ss]et [Bb]ulk [Uu]pdate [Oo]unces to (.*)$/ do |str|
-  stamps.orders.bulk_update.weight.oz.set(TestData.hash[:bulk_oz] = str)
+Then /^set bulk update ounces to (.*)$/ do |str|
+  SdcOrders.bulk_update.weight.oz.set(TestData.hash[:bulk_oz] = str)
 end
 
-Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Oo]unces is (?:correct|(.*))$/ do |str|
-  expect(stamps.orders.bulk_update.weight.oz.text).to eql((str.nil?) ? TestData.hash[:bulk_oz] : str)
+Then /^expect bulk update ounces is (?:correct|(.*))$/ do |str|
+  expect(SdcOrders.bulk_update.weight.oz.value).to eql((str.nil?) ? TestData.hash[:bulk_oz] : str)
 end
 
-Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Ww]eight is (checked|unchecked)$/ do |str|
-  expect(checked = stamps.orders.bulk_update.weight.checkbox.checked?).to be((str == 'checked') ? true : false), "Expectation: #{str}, got #{(checked) ? 'checked' : 'uncheck'}"
+Then /^expect bulk update weight is (checked|unchecked)$/ do |str|
+  expect(checked = SdcOrders.bulk_update.weight.weight_cb.checked?).to be((str == 'checked') ? true : false), "Expectation: #{str}, got #{(checked) ? 'checked' : 'uncheck'}"
 end
 
-Then /^[Cc]heck [Bb]ulk [Uu]pdate [Ww]eight$/ do
-  stamps.orders.bulk_update.weight.checkbox.check
+Then /^check bulk update weight$/ do
+  SdcOrders.bulk_update.weight.weight_cb.check
 end
 
-Then /^[Uu]ncheck [Bb]ulk [Uu]pdate [Ww]eight$/ do
-  stamps.orders.bulk_update.weight.checkbox.uncheck
+Then /^uncheck bulk update weight$/ do
+  SdcOrders.bulk_update.weight.weight_cb.uncheck
 end
 
-Then /^[Ii]ncrement [Bb]ulk [Uu]pdate [Pp]ounds by (.*)$/ do |str|
-  (TestData.hash[:bulk_lb_inc] = str).to_i.times {stamps.orders.bulk_update.weight.lbs.increment.click}
+Then /^increment bulk update pounds by (.*)$/ do |str|
+  (TestData.hash[:bulk_lb_inc] = str).to_i.times {SdcOrders.bulk_update.weight.lbs.increment.click}
 end
 
-Then /^[Dd]ecrement [Bb]ulk [Uu]pdate [Pp]ounds by (.*)$/ do |str|
-  (TestData.hash[:bulk_lb_dec] = str).to_i.times { stamps.orders.bulk_update.weight.lbs.decrement.click }
+Then /^decrement bulk update pounds by (.*)$/ do |str|
+  (TestData.hash[:bulk_lb_dec] = str).to_i.times { SdcOrders.bulk_update.weight.lbs.decrement.click }
 end
 
-Then /^[Ii]ncrement [Bb]ulk [Uu]pdate [Oo]unces by (.*)$/ do |str|
-  (TestData.hash[:bulk_oz_inc] = str).to_i.times {stamps.orders.bulk_update.weight.oz.increment.click}
+Then /^increment bulk update ounces by (.*)$/ do |str|
+  (TestData.hash[:bulk_oz_inc] = str).to_i.times {SdcOrders.bulk_update.weight.oz.increment.click}
 end
 
-Then /^[Dd]ecrement [Bb]ulk [Uu]pdate [Oo]unces by (.*)$/ do |str|
-  (TestData.hash[:bulk_oz_dec] = str).to_i.times {stamps.orders.bulk_update.weight.oz.decrement.click}
+Then /^decrement bulk update ounces by (.*)$/ do |str|
+  (TestData.hash[:bulk_oz_dec] = str).to_i.times {SdcOrders.bulk_update.weight.oz.decrement.click}
 end
 # End Bulk Update Weight steps
 
 Then /^set bulk update domestic service to (.*)$/ do |str|
-  expect(stamps.orders.bulk_update.domestic_service.select(str).parse_service_name).to eql(TestData.hash[:bulk_dom_service] = str)
+  TestData.hash[:bulk_dom_service] = str
+  TestData.hash[:service] = str
+  service = SdcOrders.bulk_update.dom_service
+  service.selection_element(name: :selection, value: str)
+  service.drop_down.click unless service.selection.present?
+  service.selection.click unless service.selection.class_disabled?
+  expect(service.text_field.text_value).to include(str)
 end
 
-Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Dd]omestic [Ss]ervice is (?:correct|(.*))$/ do |str|
-  expect(stamps.orders.bulk_update.domestic_service.textbox.text).to eql(str.nil? ? TestData.hash[:bulk_dom_service] : str)
+Then /^expect bulk update domestic service is (?:correct|(.*))$/ do |str|
+  expect(SdcOrders.bulk_update.dom_service.text_field.text_value).to eql(str.nil? ? TestData.hash[:bulk_dom_service] : str)
 end
 
 Then /^set bulk update international service to (.*)$/ do |str|
-  expect(stamps.orders.bulk_update.intl_service.select(str).parse_service_name).to eql(TestData.hash[:bulk_int_service] = str)
+  TestData.hash[:int_service] = str
+  service = SdcOrders.bulk_update.intl_service
+  service.selection_element(name: :selection, value: str)
+  service.drop_down.click unless service.selection.present?
+  service.selection.click unless service.selection.class_disabled?
+  expect(service.text_field.text_value).to include(str)
 end
 
-Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Ii]nternational [Ss]ervice is (?:correct|(.*))$/ do |str|
-  expect(stamps.orders.bulk_update.intl_service.textbox.text).to eql(str.nil? ? TestData.hash[:bulk_int_service] : str)
+Then /^expect bulk update international service is (?:correct|(.*))$/ do |str|
+  expect(SdcOrders.bulk_update.intl_service.text_field.text_value).to eql(str.nil? ? TestData.hash[:bulk_int_service] : str)
 end
 
-Then /^[Ss]et [Bb]ulk [Uu]pdate [Ii]nsurance to (.+)$/ do |str|
-  stamps.orders.bulk_update.insurance.select(str)
+Then /^set bulk update insurance to (.+)$/ do |str|
+  insurance = SdcOrders.bulk_update.insurance
+  insurance.selection_element(name: :selection, value: str)
+  insurance.drop_down.click unless insurance.selection.present?
+  insurance.selection.click unless insurance.selection.class_disabled?
+  expect(insurance.text_field.text_value).to include(str)
 end
 
-Then /^[Ss]et [Bb]ulk [Uu]pdate [Ii]nsure [Aa]mount to (.+)$/ do |str|
-  stamps.orders.bulk_update.insurance.select(str)
+Then /^set bulk update insure amount to (.+)$/ do |str|
+  stamps.orders.bulk_update.insure_amt.set(str)
 end
 
-Then /^[Ss]et [Bb]ulk [Uu]pdate [Tt]racking to (.+)$/ do |str|
-  #step "set Order Details Tracking to \"USPS Tracking\""
+Then /^set bulk update tracking to (.+)$/ do |str|
+  tracking = SdcOrders.bulk_update.tracking
+  tracking.selection_element(name: :selection, value: str)
+  tracking.drop_down.click unless tracking.selection.present?
+  tracking.selection.click unless tracking.selection.class_disabled?
+  expect(tracking.text_field.text_value).to include(str)
 end
 
-Then /^[Ss]et [Bb]ulk [Uu]pdate [Dd]imensions to [Ll]ength (\d+) [Ww]idth (\d+) [Hh]eight (\d+)$/ do |length, width, height|
+Then /^set bulk update dimensions to length (\d+) width (\d+) height (\d+)$/ do |length, width, height|
   step "set bulk update length to #{length}"
   step "set bulk update width to #{width}"
   step "set bulk update height to #{height}"
 end
 
-Then /^[Cc]heck [Bb]ulk [Uu]pdate [Dd]imensions$/ do
-  stamps.orders.bulk_update.dimensions.checkbox.check
+Then /^check bulk update dimensions$/ do
+  SdcOrders.bulk_update.dimensions.checkbox.check
 end
 
-Then /^[Uu]ncheck [Bb]ulk [Uu]pdate [Dd]imensions$/ do
-  stamps.orders.bulk_update.dimensions.checkbox.uncheck
+Then /^uncheck bulk update dimensions$/ do
+  SdcOrders.bulk_update.dimensions.checkbox.uncheck
 end
 
-Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Dd]imensions is (checked|unchecked)$/ do |str|
-  expect(checked = stamps.orders.bulk_update.dimensions.checkbox.checked?).to be((str == 'checked') ? true : false), "Expectation: #{str}, got #{(checked) ? 'checked' : 'uncheck'}"
+Then /^expect bulk update dimensions is (checked|unchecked)$/ do |str|
+  expect(checked = SdcOrders.bulk_update.dimensions.checkbox.checked?).to be((str == 'checked') ? true : false), "Expectation: #{str}, got #{(checked) ? 'checked' : 'uncheck'}"
 end
 
-Then /^[Ss]et [Bb]ulk [Uu]pdate [Ll]ength to (.*)$/ do |str|
-  stamps.orders.bulk_update.dimensions.length.set(TestData.hash[:bulk_length] = str)
+Then /^set bulk update length to (.*)$/ do |str|
+  SdcOrders.bulk_update.dimensions.length.set(TestData.hash[:bulk_length] = str)
   step "expect bulk update length is correct"
 end
 
-Then /^[Ii]ncrement [Bb]ulk [Uu]pdate [Ll]ength by (.*)$/ do |str|
-  (TestData.hash[:bulk_length_inc] = str).to_i.times {stamps.orders.bulk_update.dimensions.length.increment.click}
+Then /^increment bulk update length by (.*)$/ do |str|
+  (TestData.hash[:bulk_length_inc] = str).to_i.times {SdcOrders.bulk_update.dimensions.length.increment.click}
 end
 
-Then /^[Dd]ecrement [Bb]ulk [Uu]pdate [Ll]ength by (.*)$/ do |str|
-  (TestData.hash[:bulk_length_dec] = str).to_i.times {stamps.orders.bulk_update.dimensions.length.decrement.click}
+Then /^decrement bulk update length by (.*)$/ do |str|
+  (TestData.hash[:bulk_length_dec] = str).to_i.times {SdcOrders.bulk_update.dimensions.length.decrement.click}
 end
 
-Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Ll]ength is (?:correct|(.*))$/ do |str|
-  expect(stamps.orders.bulk_update.dimensions.length.text).to eql((str.nil?) ? TestData.hash[:bulk_length] : str)
+Then /^expect bulk update length is (?:correct|(.*))$/ do |str|
+  expect(SdcOrders.bulk_update.dimensions.length.value).to eql((str.nil?) ? TestData.hash[:bulk_length] : str)
 end
 
-Then /^[Ss]et [Bb]ulk [Uu]pdate [Ww]idth to (.*)$/ do |str|
-  stamps.orders.bulk_update.dimensions.width.set(TestData.hash[:bulk_width] = str)
+Then /^set bulk update width to (.*)$/ do |str|
+  SdcOrders.bulk_update.dimensions.width.set(TestData.hash[:bulk_width] = str)
   step "expect bulk update width is correct"
 end
 
-Then /^[Ii]ncrement [Bb]ulk [Uu]pdate [Ww]idth by (.*)$/ do |str|
-  (TestData.hash[:bulk_width_inc] = str).to_i.times {stamps.orders.bulk_update.dimensions.width.increment.click}
+Then /^increment bulk update width by (.*)$/ do |str|
+  (TestData.hash[:bulk_width_inc] = str).to_i.times {SdcOrders.bulk_update.dimensions.width.increment.click}
 end
 
-Then /^[Dd]ecrement [Bb]ulk [Uu]pdate [Ww]idth by (.*)$/ do |str|
-  (TestData.hash[:bulk_width_dec] = str).to_i.times {stamps.orders.bulk_update.dimensions.width.decrement.click}
+Then /^decrement bulk update width by (.*)$/ do |str|
+  (TestData.hash[:bulk_width_dec] = str).to_i.times {SdcOrders.bulk_update.dimensions.width.decrement.click}
 end
 
-Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Ww]idth is (?:correct|(.*))$/ do |str|
-  expect(stamps.orders.bulk_update.dimensions.width.text).to eql((str.nil?) ? TestData.hash[:bulk_width] : str)
+Then /^expect bulk update width is (?:correct|(.*))$/ do |str|
+  expect(SdcOrders.bulk_update.dimensions.width.value).to eql((str.nil?) ? TestData.hash[:bulk_width] : str)
 end
 
-Then /^[Ss]et [Bb]ulk [Uu]pdate [Hh]eight to (.*)$/ do |str|
-  stamps.orders.bulk_update.dimensions.height.set(TestData.hash[:bulk_height] = str)
+Then /^set bulk update height to (.*)$/ do |str|
+  SdcOrders.bulk_update.dimensions.height.set(TestData.hash[:bulk_height] = str)
   step "expect bulk update height is correct"
 end
 
-Then /^[Ii]ncrement [Bb]ulk [Uu]pdate [Hh]eight by (.*)$/ do |str|
-  (TestData.hash[:bulk_height_inc] = str).to_i.times {stamps.orders.bulk_update.dimensions.height.increment.click}
+Then /^increment bulk update height by (.*)$/ do |str|
+  (TestData.hash[:bulk_height_inc] = str).to_i.times {SdcOrders.bulk_update.dimensions.height.increment.click}
 end
 
-Then /^[Dd]ecrement [Bb]ulk [Uu]pdate [Hh]eight by (.*)$/ do |str|
-  (TestData.hash[:bulk_height_dec] = str).to_i.times {stamps.orders.bulk_update.dimensions.height.decrement.click}
+Then /^decrement bulk update height by (.*)$/ do |str|
+  (TestData.hash[:bulk_height_dec] = str).to_i.times {SdcOrders.bulk_update.dimensions.height.decrement.click}
 end
 
-Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Hh]eight is (?:correct|(.*))$/ do |str|
-  expect(stamps.orders.bulk_update.dimensions.height.text).to eql((str.nil?) ? TestData.hash[:bulk_height] : str)
-end
-
-Then /^click bulk update update order button$/ do
-  stamps.orders.bulk_update.update_orders.click
-  sleep 30
-end
-
-Then /^[Ee]xpect [Bb]ulk [Uu]pdate is present$/ do
-  expect(stamps.orders.bulk_update).to be_present, "Multi Order Details form is not present"
+Then /^expect bulk update height is (?:correct|(.*))$/ do |str|
+  expect(SdcOrders.bulk_update.dimensions.height.text).to eql((str.nil?) ? TestData.hash[:bulk_height] : str)
 end

@@ -120,7 +120,7 @@ Feature:  BVT tests for Orders
     Then pause for 1 second
     Then blur out on order details form
     Then uncheck orders grid order id cached
-   #Then Refresh the driver
+   #Then refresh the browser
     Then pause for 3 seconds
     Then check orders grid order id cached
     Then pause for 2 seconds

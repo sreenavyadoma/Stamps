@@ -285,22 +285,43 @@ Feature:  BVT tests for Orders
   # Order #1 (Domestic)
 #    Then in Orders Grid, Sort Order Date in Descending Order
     Then sign-in to Orders
-    Then add order 1
-#    Then set Order Details Ship-From to default
-#    Then set Order Details Ship-To to random address in zone 1
-#    Then set order details service to PM Package
-#    Then set order details ounces to 1
-#    Then pause for 1 second
-#
-#  # Order #2 (International)
-#    Then add order 2
-#    Then set Order Details Ship-To International address to
-#      | full_name     | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country | phone        |  email        |
-#      | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone | Random email  |
-#    Then set Order Details Weight to 0 lb 1 oz
-#    Then set Order Details international service to PMEI Package/Flat/Thick Envelope
+          Then add order 1
+    Then blur out on order details form
+          Then set Order Details Ship-From to default
+          Then set Order Details Ship-To to random address in zone 1
+          Then set order details service to PM Package
+          Then set order details ounces to 1
 #    Then blur out on order details form
-#
+#    Then click orders toolbar print button
+#    Then in print modal, click close button
+#    Then select Filter Panel tab Awaiting Shipment
+    Then blur out on order details form
+#    Then pause for 1 second
+
+#    Then sign out
+#    Then sign-in to Orders
+#  # Order #2 (International)
+          Then add order 2
+          Then blur out on order details form
+          Then set Order Details Ship-To International address to
+            | full_name     | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country | phone        |  email        |
+            | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone | Random email  |
+          Then set Order Details Weight to 0 lb 1 oz
+          Then set order details service to PMEI Package/Flat/Thick Envelope
+#          Then set Order Details international service to PMEI Package/Flat/Thick Envelope
+#          Then click Order Details form Customs Form button
+#          Then add Customs Associated Item 1, Description random, Qty 1, Price 4, Made In Zimbabwe, Tariff 1
+#          Then set Customs Package Contents to Gift
+#          Then check Customs form I agree to the USPS Privacy Act Statement
+#          Then close Customs Information form
+
+#    Then blur out on order details form
+#    Then click orders toolbar print button
+#    Then in print modal, click close button
+#    Then select Filter Panel tab Awaiting Shipment
+    Then blur out on order details form
+#    Then sign out
+#    Then sign-in to Orders
 #  # Check 1st two orders
 #    Then pause for 1 second
 #    Then check order 1
@@ -308,14 +329,16 @@ Feature:  BVT tests for Orders
 #    Then check order 2
 #    Then pause for 1 seconds
 #
-#  # Updating order details
-#    Then expect Bulk Update is present
-#    Then blur out on multi order details form
+  # Updating order details
+    Then expect bulk update is present
+#    Then blur out on multi order details form    #not needed? Alex
 #    Then set bulk update ship from to default
-#    Then set bulk update domestic service to PM Large Package
-#    Then set bulk update international service to PMI Package/Flat/Thick Envelope
-#    Then click bulk update update order button
-#
+    Then set bulk update domestic service to PM Large Package
+    Then set bulk update international service to PMI Package/Flat/Thick Envelope
+    Then set bulk update pounds to 0
+    Then set bulk update ounces to 3
+    Then click bulk update update order button
+
 #  # Uncheck both orders
 #    Then pause for 1 second
 #    Then uncheck order 1
@@ -325,15 +348,15 @@ Feature:  BVT tests for Orders
 #
 #  # verify fields in 1st order
 #    Then check order 1
-#    Then expect Order Details Ship From is correct
-#    Then expect Order Details service is PM Large Package
+#    Then expect order details ship from is correct
+    Then expect Order Details service is PM Large Package
 #    Then pause for 1 second
 #    Then uncheck order 1
 #    Then pause for 1 second
 #
 #  # verify fields in 2nd order
 #    Then check order 2
-#    Then expect Order Details Ship From is correct
-#    Then expect Order Details international service is PMI Package/Flat/Thick Envelope
+#    Then expect order details ship from is correct
+    Then expect Order Details international service is PMI Package/Flat/Thick Envelope
 #    Then uncheck order 2
-#    Then sign out
+    Then sign out

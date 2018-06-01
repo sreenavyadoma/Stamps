@@ -1,5 +1,3 @@
-
-
 Then /^[Oo]n [Oo]rder [Dd]etails form, Expand Manual Items Ordered pane$/ do
   stamps.orders.order_details.items_ordered.expand
 end
@@ -414,7 +412,6 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails Domestic [Ss]hip-[Tt]o Name is (.*)$/ do |s
   expect(stamps.orders.order_details.ship_to.domestic.textarea.text).to include(str)
 end
 
-#validating
-Then /^[Ee]xpect [Oo]rder [Dd]etails Ship From is (?:correct|(.*))$/ do |expectation|
-  expect(stamps.orders.order_details.single_ship_from.textbox.text).to include(expectation.nil? ? TestData.hash[:ship_from] : expectation)
+Then /^expect order details ship from is (?:correct|(.*))$/ do |expectation|
+  expect(SdcOrders.order_details.ship_from.text_field.text_value).to include(expectation.nil? ? TestData.hash[:ship_from] : expectation)
 end

@@ -117,13 +117,13 @@ Then /^set order details height to (\d*)$/ do |number|
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ss]ervice is (?:correct|(.*))$/ do |str|
-  service = str || TestData.hash[:service]
-  if SdcEnv.new_framework
-    expect(SdcOrders.order_details.service.text_field.text_value).to include(service)
-  else
-    expect(stamps.orders.order_details.service.textbox.text.parse_service_name).to eql((service.nil?) ? TestData.hash[:service] : service)
-  end
+  expect(SdcOrders.order_details.service.text_field.text_value).to include(str || TestData.hash[:service])
 end
+
+# Then /^expect order (\d+) details service is (?:correct|(.*))$/ do |num, str|
+#   service = str || TestData.hash[:service]
+#   expect(SdcOrders.order_details.service.text_field.text_value).to include(service)
+# end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]ervice to (.*)$/ do |str|
   step 'expect order details is present'
@@ -138,10 +138,8 @@ end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ii]nternational [Ss]ervice is (?:correct|(.*))$/ do |expectation|
   step 'expect order details is present'
-  expect(stamps.orders.order_details.service.textbox.text.parse_service_name).to eql((expectation.nil?) ? TestData.hash[:int_service] : expectation)
+  expect(SdcOrders.order_details.service.text_field.text_value).to include(expectation || TestData.hash[:int_service])
 end
-
-
 
 Then /^[Ww]ait [Uu]ntil [Oo]rder [Dd]etails [Pp]resent(?: (\d+), (.+)|)$/ do |iteration, delay|
   (iteration.zero? ? 20 : iteration).times do
@@ -371,6 +369,7 @@ Then /^blur out on order details form$/ do
       SdcOrders.order_details.weight_label.double_click
       SdcOrders.order_details.weight_label.click
       SdcOrders.order_details.service_label.double_click
+      SdcPage.browser.execute_script( 'document.getElementsByClassName("panel-header-text")[0].dispatchEvent(new Event("dblclick"));' )
     end
   else
     stamps.orders.order_details.blur_out(3)

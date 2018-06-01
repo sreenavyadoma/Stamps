@@ -11,7 +11,7 @@ Then /^Start test driver$/ do
   SdcTest.configure
 end
 
-Then /^Refresh the browser$/ do
+Then /^refresh the browser$/ do
   begin
     SdcDriver.browser.refresh
     sleep(2)

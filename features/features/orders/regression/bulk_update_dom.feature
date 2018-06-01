@@ -185,34 +185,34 @@ Feature: Bulk Update Domestic
 
     # set weight
     Then set Bulk Update Pounds to 1
-    Then expect bulk update Pounds is correct
-    Then set Bulk Update Ounces to 1
+    Then expect bulk update pounds is correct
+    Then set bulk update ounces to 1
     Then expect bulk update Ounces is correct
-    Then expect Bulk Update Weight is checked
-    Then uncheck Bulk Update Weight
-    Then expect Bulk Update Weight is unchecked
-    Then check Bulk Update Weight
-    Then expect Bulk Update Weight is checked
+    Then expect bulk update weight is checked
+    Then uncheck bulk update weight
+    Then expect bulk update weight is unchecked
+    Then check bulk update weight
+    Then expect bulk update weight is checked
     #increment/decrement pounds
     Then set Bulk Update Pounds to 0
     Then increment bulk update pounds by 8
     Then decrement bulk update pounds by 8
     Then expect bulk update pounds is 0
     #increment/decrement Ounces
-    Then set Bulk Update Ounces to 0
-    Then increment bulk update Ounces by 8
-    Then decrement bulk update Ounces by 8
+    Then set bulk update ounces to 0
+    Then increment bulk update ounces by 8
+    Then decrement bulk update ounces by 8
     Then expect bulk update Ounces is 0
 
     #set dimensions
-    Then set Bulk Update Length to 1
-    Then set Bulk Update Width to 1
-    Then set Bulk Update Height to 1
-    Then expect Bulk Update Dimensions is checked
-    Then uncheck Bulk Update Dimensions
-    Then expect Bulk Update Dimensions is unchecked
-    Then check Bulk Update Dimensions
-    Then expect Bulk Update Dimensions is checked
+    Then set bulk update length to 1
+    Then set bulk update width to 1
+    Then set bulk update height to 1
+    Then expect bulk update dimensions is checked
+    Then uncheck bulk update dimensions
+    Then expect bulk update dimensions is unchecked
+    Then check bulk update dimensions
+    Then expect bulk update dimensions is checked
     #increment/decrement length
     Then set bulk update length to 0
     Then increment bulk update length by 8
@@ -236,11 +236,11 @@ Feature: Bulk Update Domestic
     Then click bulk update update order button
     Then pause for 2 seconds
 
-    #Then Refresh the driver
+    #Then refresh the browser
 
     #verify fields in 1st order
     #Then check Orders Grid row 1
-    #Then expect Order Details Ship From is correct
+    #Then expect order details ship from is correct
     #Then expect orders grid service is PME Package/Flat/Thick Envelope
 
     #Then uncheck order 1
@@ -254,7 +254,7 @@ Feature: Bulk Update Domestic
 
     #verify fields in 2nd order
     #Then check order 2
-    #Then expect Order Details Ship From is correct
+    #Then expect order details ship from is correct
     #Then expect orders grid service is PME Package/Flat/Thick Envelope
     #Then expect order details pound is 2
 
@@ -276,7 +276,7 @@ Feature: Bulk Update Domestic
     Then set order details service to PM Package
     Then set order details pounds to 1
 
-    Then Refresh the driver
+    Then refresh the browser
 
     #Check 1st two orders
     Then check Orders Grid row 1
@@ -286,22 +286,22 @@ Feature: Bulk Update Domestic
     Then set bulk update ship from to default
     Then set bulk update domestic service to PME Package/Flat/Thick Envelope
     Then set Bulk Update Pounds to 1
-    Then set Bulk Update Ounces to 1
+    Then set bulk update ounces to 1
     Then click bulk update update order button
     Then pause for 2 seconds
 
-    Then Refresh the driver
+    Then refresh the browser
 
     #verify fields in 1st order
     Then check Orders Grid row 1
-    Then expect Order Details Ship From is default
+    Then expect order details ship from is default
     Then expect orders grid service is PME Package/Flat/Thick Envelope
     #Then expect order details pound is 2
     Then uncheck Orders Grid row 1
 
     #verify fields in 2nd order
     Then check Orders Grid row 2
-    Then expect Order Details Ship From is correct
+    Then expect order details ship from is correct
     Then expect orders grid service is PME Package/Flat/Thick Envelope
     #Then expect order details pound is 2
 
