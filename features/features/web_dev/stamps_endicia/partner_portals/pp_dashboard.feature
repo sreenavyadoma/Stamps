@@ -140,7 +140,7 @@ Feature: PP-MVP: Dashboard Page Single Contract
       """
      Then PP: click on the dashboard page download modal ok button
      Then PP: expect CSV file to be downloaded with correct file name
-     Then PP: Expect a record Download Data event is added in Audit Records for user
+     #Then PP: Expect a record Download Data event is added in Audit Records for user
 
 #  Then PP: set dashboard page from date field to 12/16/18
 #  Then PP: set dashboard page to date field to 12/16/19

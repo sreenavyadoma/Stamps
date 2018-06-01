@@ -84,10 +84,10 @@ module PartnerPortal
     page_object(:export_data_header) { { xpath: '//h3[contains(text(), "Export Data")]' } }
     page_object(:export_data_content) { { xpath: '//p[contains(text(), "Select a date range to export transaction level data as a CSV file.")]' } }
     text_field(:from_date_field, tag: :text_field, required: true) { { name: 'startDate' } }
-    page_object(:from_date_date_picker) { { class: ['ui-button-text ui-clickable'] } }
+    page_object(:from_date_date_picker) { { class: ['ui-datepicker-trigger ui-calendar-button ng-tns-c11-1 ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ng-star-inserted'] } }
     page_object(:from_date_error_message) { { xpath: '//div[@class="export-data__start-date"]/div/div' } }
     text_field(:to_date_field, tag: :text_field, required: true) { { name: 'endDate' } }
-    page_object(:to_date_picker) { { class: ['ui-button-text ui-clickable'] } }
+    page_object(:to_date_picker) { { class: ['ui-datepicker-trigger ui-calendar-button ng-tns-c11-2 ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ng-star-inserted'] } }
     page_object(:to_date_error_message) { { xpath: '//div[@class="export-data__end-date"]/div/div' } }
     button(:download) { { class: ['ui-button ui-widget ui-state-default ui-corner-all ui-button-text-empty'] } }
     def from_label
@@ -100,12 +100,6 @@ module PartnerPortal
     page_object(:download_modal_header) { { xpath: '//h3[contains(text(), "Downloading Report")]' } }
     page_objects(:download_modal_p) { { xpath: '//ng-component[@class="ng-star-inserted"]/p' } }
     page_object(:download_modal_ok) { { class: ['ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only'] } }
-
-
-
-
-
-
 
     def x_axis_month_abbreviations
       return SdcPage.browser.execute_script('return window.ChartsData.Charts.PrefRatesQualifiedPostageAmount.labels'),

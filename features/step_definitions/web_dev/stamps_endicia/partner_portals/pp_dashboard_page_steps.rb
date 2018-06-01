@@ -294,7 +294,7 @@ Then /^PP: expect dashboard page from date field exists$/ do
 end
 
 Then /^PP: expect dashboard page from date date picker exists$/ do
-  expect(PartnerPortal.dashboard_page.from_date_field).to be_present, 'From Date Picker DOES NOT exist on dashboard page'
+  expect(PartnerPortal.dashboard_page.from_date_date_picker).to be_present, 'From Date Picker DOES NOT exist on dashboard page'
 end
 
 Then /^PP: expect export to date label to be (.*)$/ do |str|
@@ -320,14 +320,20 @@ Then /^PP: expect dashboard page from date field error message index (\d+) to be
 end
 
 Then /^PP: set dashboard page from date field to (.*)$/ do |str|
+  PartnerPortal.dashboard_page.from_date_date_picker.click
+  PartnerPortal.dashboard_page.from_date_date_picker.click
+
   from_date_field =  PartnerPortal.dashboard_page.from_date_field
-  from_date_field.wait_until_present(timeout: 5)
+  from_date_field.clear
   from_date_field.set(TestData.hash[:from_date] = str)
 end
 
 Then /^PP: set dashboard page to date field to (.*)$/ do |str|
+  PartnerPortal.dashboard_page.to_date_picker.click
+  PartnerPortal.dashboard_page.to_date_picker.click
+
   to_date_field =  PartnerPortal.dashboard_page.to_date_field
-  to_date_field.wait_until_present(timeout: 5)
+  to_date_field.clear
   to_date_field.set(TestData.hash[:to_date] = str)
 end
 
@@ -367,24 +373,25 @@ end
 
 Then /^PP: click on the dashboard page download modal ok button$/ do
   PartnerPortal.dashboard_page.download_modal_ok.send_keys(:enter)
-
 end
 
 Then /^PP: delete existing csv file$/ do
-contract= PartnerPortal.dashboard_page.contract_header.text_value.split(':').last.strip
-TestData.hash[:file_name_expected] = 'Partnerportal_'+ contract +'_'+  TestData.hash[:from_date].gsub('/', '') + '_to_' + TestData.hash[:to_date].gsub('/', '')+ '.csv'
-file = 'C:/Download/' + TestData.hash[:file_name_expected]
-File.delete(file) unless File.exist?(file) == false
+
+  contract= PartnerPortal.dashboard_page.contract_header.text_value.split(':').last.strip
+  TestData.hash[:file_name_expected] = 'Partnerportal_'+ contract +'_'+  TestData.hash[:from_date].gsub('/', '') + '_to_' + TestData.hash[:to_date].gsub('/', '')+ '.csv'
+  file = "#{Dir.pwd}/binaries/download/" + TestData.hash[:file_name_expected]
+  File.delete(file) unless File.exist?(file) == false
+
 end
 
 
 Then /^PP: expect CSV file to be downloaded with correct file name$/ do
 
-  download_directory = 'C:\Download'
+  download_directory = "#{Dir.pwd}/binaries/download"
 
   downloads_before = Dir.entries download_directory
 
-  1000000.times do
+  600.times do
     difference = Dir.entries(download_directory) - downloads_before
     if  difference.size == 1
       TestData.hash[:file_name]  =  difference.first
