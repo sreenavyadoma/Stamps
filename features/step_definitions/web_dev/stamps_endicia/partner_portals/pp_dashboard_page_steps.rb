@@ -320,21 +320,16 @@ Then /^PP: expect dashboard page from date field error message index (\d+) to be
 end
 
 Then /^PP: set dashboard page from date field to (.*)$/ do |str|
-  PartnerPortal.dashboard_page.from_date_date_picker.click
-  PartnerPortal.dashboard_page.from_date_date_picker.click
-
   from_date_field =  PartnerPortal.dashboard_page.from_date_field
-  from_date_field.clear
   from_date_field.set(TestData.hash[:from_date] = str)
+
 end
 
-Then /^PP: set dashboard page to date field to (.*)$/ do |str|
-  PartnerPortal.dashboard_page.to_date_picker.click
-  PartnerPortal.dashboard_page.to_date_picker.click
 
+Then /^PP: set dashboard page to date field to (.*)$/ do |str|
   to_date_field =  PartnerPortal.dashboard_page.to_date_field
-  to_date_field.clear
   to_date_field.set(TestData.hash[:to_date] = str)
+
 end
 
 Then /^PP: expect dashboard page to date field error message index (\d+) to be (.*)$/ do |index, str|
