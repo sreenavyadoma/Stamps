@@ -34,7 +34,6 @@ Then /^scroll into view order details associated item (\d+)$/ do |item_number|
   associated_item.id(item_number).scroll_into_view
 end
 
-
 Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) qty to (.*)$/ do |item_number, qty|
   step 'expect order details is present'
   TestData.hash[:details_associated_items][item_number] = {} unless TestData.hash[:details_associated_items].has_key?(item_number)
