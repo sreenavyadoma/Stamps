@@ -391,14 +391,27 @@ Then /^PP: expect CSV file to be downloaded with correct file name$/ do
 
   downloads_before = Dir.entries download_directory
 
-  600.times do
-    difference = Dir.entries(download_directory) - downloads_before
-    if  difference.size == 1
-      TestData.hash[:file_name]  =  difference.first
-      break
-    end
-    sleep 1
+  case(SdcEnv.browser)
+    when :chrome
+      600.times do
+        difference = Dir.entries(download_directory) - downloads_before
+        if  difference.size == 1
+          TestData.hash[:file_name]  =  difference.first
+          break
+        end
+        sleep 1
+      end
+
+    when :firefox
+      600.times do
+        if  Dir.entries(download_directory).size == 3
+          TestData.hash[:file_name]  =  Dir.entries(download_directory)[2]
+          break
+        end
+        sleep 1
+      end
   end
+
 
   expect(TestData.hash[:file_name]).to eql(TestData.hash[:file_name_expected])
 

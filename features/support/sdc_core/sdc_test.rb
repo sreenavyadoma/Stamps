@@ -158,7 +158,7 @@ class SdcTest
                 profile = Selenium::WebDriver::Firefox::Profile.new
                 profile['browser.download.folderList'] = 2 # custom location
                 profile['browser.download.dir'] = download_directory
-                profile['browser.helperApps.neverAsk.saveToDisk'] = 'text/csv,application/pdf'
+                profile['browser.helperApps.neverAsk.saveToDisk'] = 'text/csv,application/pdf,image/png,application/x-zip-compressed,text/plain'
                 #profile.assume_untrusted_certificate_issuer = false
                 SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
                 SdcPage.browser.driver.manage.timeouts.page_load = 12
