@@ -95,7 +95,7 @@ Feature: PP-MVP: Dashboard Page Single Contract
     Then PP: expect dashboard page the Revenue Share USD chart previous year chart data to be correct
     Then PP: expect dashboard page the Revenue Share USD chart current year chart data to be correct
 
-  @pp_dashboard_single_contract_export_data
+  @pp_dashboard_single_contract_export_data_ui_validation
   Scenario: PP: Dashboard Page Single Contract Export Data Validation
     #verify UI
     Then PP: expect export data header to exists
