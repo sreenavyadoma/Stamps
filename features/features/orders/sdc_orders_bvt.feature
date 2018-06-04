@@ -427,7 +427,7 @@ Feature:  BVT tests for Orders
 
   # Order #1 (Domestic)
 #    Then in Orders Grid, Sort Order Date in Descending Order
-    Then sign-in to Orders
+    Then sign-in to orders
 #          Then add order 1
 #    Then blur out on order details form
 #          Then set Order Details Ship-From to default
