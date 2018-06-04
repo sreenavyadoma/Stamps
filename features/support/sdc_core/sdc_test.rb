@@ -163,7 +163,8 @@ class SdcTest
               prefs = {
                   download: {
                       prompt_for_download: false,
-                      default_directory: "#{Dir.pwd}/binaries/download"
+                      #default_directory: "#{Dir.pwd}/binaries/download"
+                      efault_directory: "#{Dir.pwd}/download"
                   }
               }
               kill('taskkill /im chrome.exe /f')
