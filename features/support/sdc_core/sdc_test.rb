@@ -149,7 +149,7 @@ class SdcTest
               unless SdcEnv.firefox_profile
                 SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
               else
-                download_directory = "#{Dir.pwd}/binaries/download"
+                download_directory = ['download_file_path']
                 download_directory.tr!('/', '\\') if Selenium::WebDriver::Platform.windows?
                 profile = Selenium::WebDriver::Firefox::Profile.new
                 profile['browser.download.folderList'] = 2 # custom location
@@ -163,8 +163,8 @@ class SdcTest
               prefs = {
                   download: {
                       prompt_for_download: false,
+                      default_directory: ['download_file_path']
                       #default_directory: "#{Dir.pwd}/binaries/download"
-                      default_directory: "#{Dir.pwd}/download"
                   }
               }
               kill('taskkill /im chrome.exe /f')
@@ -351,7 +351,7 @@ class SdcTest
     def browser_emulator_options(browser, device_name)
       prefs = {
           prompt_for_download: false,
-          default_directory: "#{Dir.pwd}/binaries/download"
+          default_directory: ['download_file_path']
       }
 
       case browser_selection(browser)

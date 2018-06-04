@@ -24,6 +24,8 @@ sql_server_pp:
      password: Sdcqatest623
      azure: false
 
+download:
+  download_file_path: C:\Stamps\binaries\download
 
 rates_test:
   rate_file: rate_file.xls
