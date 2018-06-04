@@ -155,20 +155,28 @@ Then /^[Dd]elete Customs Associated Item (\d+)$/ do |item|
 end
 
 Then /^check customs form i agree to the usps privacy act statement$/ do
-  SdcWebsite.customs_form.agree.check
+  customs_form = SdcWebsite.customs_form
+  customs_form.agree.wait_until_present(timeout: 5)
+  customs_form.agree.check
+  step 'expect customs i agree to the usps privacy act statement is checked'
 end
 
 Then /^expect customs i agree to the usps privacy act statement is checked$/ do
-  expect(SdcWebsite.customs_form.agree).to be_checked, 'I agree to the USPS Privacy Act Statement is not checked'
+  customs_form = SdcWebsite.customs_form
+  customs_form.agree.wait_until_present(timeout: 5)
+  expect(customs_form.agree.checked?).to be(true), 'I agree to the USPS Privacy Act Statement is not checked'
 end
 
 Then /^[Uu]ncheck customs form i agree to the usps privacy act statement$/ do
-  SdcWebsite.customs_form.agree.uncheck
+  customs_form = SdcWebsite.customs_form
+  customs_form.agree.wait_until_present(timeout: 5)
+  customs_form.agree.uncheck
+  step 'expect customs i agree to the usps privacy act statement is unchecked'
 end
 
 Then /^expect customs i agree to the usps privacy act statement is unchecked$/ do
   customs_form = SdcWebsite.customs_form
-  customs_form.wait_until_present(timeout: 5)
+  customs_form.agree.wait_until_present(timeout: 5)
   expect(customs_form.agree.checked?).to be(false), 'I agree to the USPS Privacy Act Statement is not unchecked'
 end
 

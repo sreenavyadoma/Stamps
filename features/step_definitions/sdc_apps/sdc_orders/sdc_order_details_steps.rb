@@ -28,9 +28,10 @@ Then /^add order details associated item (\d+)$/ do |item_number|
 end
 
 Then /^scroll into view order details associated item (\d+)$/ do |item_number|
-  SdcOrders.order_details.associated_item.item_qty(item_number).scroll_into_view
-  SdcOrders.order_details.associated_item.description(item_number).scroll_into_view
-  SdcOrders.order_details.associated_item.id(item_number).scroll_into_view
+  associated_item = SdcOrders.order_details.associated_item
+  associated_item.item_qty(item_number).scroll_into_view
+  associated_item.description(item_number).scroll_into_view
+  associated_item.id(item_number).scroll_into_view
 end
 
 

@@ -22,12 +22,12 @@ Feature:  BVT tests for Orders
 
   @authentication
   Scenario: Orders Authentication Test
-    Then sign-in to Orders
+    Then sign-in to orders
     Then sign-out of SDC Website
 
   @bvt_new_order
   Scenario:  BVT Add a new order
-    Then sign-in to Orders
+    Then sign-in to orders
     Then add new order
     Then set order details ship-to to random address between zone 9
     Then set order details service to PM Package
@@ -48,7 +48,7 @@ Feature:  BVT tests for Orders
 
   @bvt_orders_ship_date
   Scenario: Ship Date defaults to today
-    Then sign-in to Orders
+    Then sign-in to orders
     Then open orders settings general settings
     Then set orders settings general postdate to now +2 hours
     Then close orders settings modal
@@ -96,7 +96,7 @@ Feature:  BVT tests for Orders
 
   @bvt_orders_ship_date_calendar
   Scenario: Set Ship Date to today
-    Then sign-in to Orders
+    Then sign-in to orders
     Then open orders settings general settings
     Then set orders settings general postdate to now +2 hours
     Then close orders settings modal
@@ -120,7 +120,7 @@ Feature:  BVT tests for Orders
 
   @bvt_international_shipping
   Scenario: BVT International Shipping
-    Then sign-in to Orders
+    Then sign-in to orders
     Then add new order
     Then set order details ship-to international address to
       | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
@@ -162,7 +162,7 @@ Feature:  BVT tests for Orders
 
   @bvt_shipping_address_management
   Scenario: BVT Shipping Address
-    Then sign-in to Orders
+    Then sign-in to orders
     Then add new order
     Then on Manage Shipping Address modal, add address
       |ship_from_zip  | full_name  | company    | street_address| street_address2 | city          | state       | zip    | country       | phone           |
@@ -175,7 +175,7 @@ Feature:  BVT tests for Orders
 
   @bvt_shipstation_search
   Scenario: Search shipstation orders
-    Then sign-in to Orders
+    Then sign-in to orders
     Then add new order
     Then set order details ship-to to random address in zone 1
     Then set order details email to random
@@ -197,7 +197,7 @@ Feature:  BVT tests for Orders
 
   @bvt_shipstation_updates_domestic
   Scenario: Update ShipStation for Domestic
-    Then sign-in to Orders
+    Then sign-in to orders
     Then add new order
     Then set order details ship-to domestic address to
       | full_name       | company      | street_address   | street_address_2| city    | state | zip    | country  |
@@ -281,7 +281,7 @@ Feature:  BVT tests for Orders
 
   @bvt_shipstation_updates_international
   Scenario:  Update ShipStation for International
-    Then sign-in to Orders
+    Then sign-in to orders
     Then add new order
     Then set order details ship-to international address to
       | full_name     | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country| phone         |  email        |
@@ -359,7 +359,7 @@ Feature:  BVT tests for Orders
 
     Then expect customs non-delivery options is Treat as abandoned
     Then expect customs internal transaction number is Required
-    #Then expect customs i agree to the usps privacy act statement is checked correct
+    Then expect customs i agree to the usps privacy act statement is checked correct
 
     Then expect customs associated item 1 Description is correct
     Then expect customs associated item 1 Quantity is correct
@@ -405,7 +405,7 @@ Feature:  BVT tests for Orders
 
   @bvt_address_cleansing
   Scenario: BVT Address Cleansing
-    Then sign-in to Orders
+    Then sign-in to orders
     Then add new order
     Then set order details ship-to domestic address to
       | full_name     | company | street_address     | street_address_2| city          | state | zip | country       | phone          |  email           |
