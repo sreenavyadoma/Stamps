@@ -321,14 +321,14 @@ end
 
 Then /^PP: set dashboard page from date field to (.*)$/ do |str|
   from_date_field =  PartnerPortal.dashboard_page.from_date_field
-  from_date_field.set(TestData.hash[:from_date] = str)
+  from_date_field.send_keys(TestData.hash[:from_date] = str)
 
 end
 
 
 Then /^PP: set dashboard page to date field to (.*)$/ do |str|
   to_date_field =  PartnerPortal.dashboard_page.to_date_field
-  to_date_field.set(TestData.hash[:to_date] = str)
+  to_date_field.send_keys(TestData.hash[:to_date] = str)
 
 end
 
