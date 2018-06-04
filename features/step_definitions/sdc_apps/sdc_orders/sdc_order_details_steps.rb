@@ -350,7 +350,7 @@ Then /^set order details international service to (.*)$/ do |str|
   step 'Save Order Details data'
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails [Ii]nternational [Ss]ervice is (?:correct|(.*))$/ do |expectation|
+Then /^expect order details international service is (?:correct|(.*))$/ do |expectation|
   step 'expect order details is present'
   expect(SdcOrders.order_details.service.text_field.text_value).to include(expectation || TestData.hash[:int_service])
 end
