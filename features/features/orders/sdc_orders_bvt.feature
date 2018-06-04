@@ -436,7 +436,7 @@ Feature:  BVT tests for Orders
 #          Then set order details ounces to 1
 #
 #    Then blur out on order details form
-K
+
 
 #  # Order #2 (International)
 #          Then add order 2
