@@ -117,7 +117,7 @@ Feature: PP-MVP: Login Page
         Then PP: set login page password to env value
         Then PP: User clicks Log In
         Then PP: expect dashboard page header exist
-        Then PP: Expect a record Login success event is added in Audit Records for user
+        Then PP: Expect a record of Log Type 1 event is added in Audit Records for user
 
     @pp_reset_password
     Scenario: PP: Reset Password Page Validation

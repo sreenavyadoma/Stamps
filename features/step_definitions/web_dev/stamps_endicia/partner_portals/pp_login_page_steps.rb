@@ -119,12 +119,12 @@ Then /^[Pp]P: [Ee]xpect login page error message to be$/ do |str|
 end
 
 
-Then /^[Pp]P: Expect a record (.*) event is added in Audit Records for (?:user|(.*))/ do |log_info, user|
+Then /^[Pp]P: Expect a record of Log Type (\d+) event is added in Audit Records for (?:user|(.*))/ do |log_info, user|
   step 'Establish Partner Portal db connection'
 
   TestData.hash[:user_id] = PartnerPortal.common_page.user_table_query(((user.nil?) ? (SdcEnv.usr) :user), 'PartnerUserId')
 
-  TestData.hash[:login_status] = PartnerPortal.common_page.log_table_query(TestData.hash[:user_id], 'LogInfo')
+  TestData.hash[:login_status] = PartnerPortal.common_page.log_table_query(TestData.hash[:user_id], 'LogTypeId')
   TestData.hash[:date_created] = PartnerPortal.common_page.log_table_query(TestData.hash[:user_id], 'DateCreated')
 
   step 'Close partner portal db connection'

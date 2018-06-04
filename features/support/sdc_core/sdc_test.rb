@@ -149,20 +149,14 @@ class SdcTest
               unless SdcEnv.firefox_profile
                 SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
               else
-                # profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(firefox_profile)
-                # profile.assume_untrusted_certificate_issuer = true
-                # profile['network.http.phishy-userpass-length'] = 255
-
                 download_directory = "#{Dir.pwd}/binaries/download"
                 download_directory.tr!('/', '\\') if Selenium::WebDriver::Platform.windows?
                 profile = Selenium::WebDriver::Firefox::Profile.new
                 profile['browser.download.folderList'] = 2 # custom location
                 profile['browser.download.dir'] = download_directory
                 profile['browser.helperApps.neverAsk.saveToDisk'] = 'text/csv,application/pdf,image/png,application/x-zip-compressed,text/plain'
-                #profile.assume_untrusted_certificate_issuer = false
                 SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
                 SdcPage.browser.driver.manage.timeouts.page_load = 12
-
               end
 
               when :chrome
@@ -216,15 +210,15 @@ class SdcTest
           end
 
         elsif SdcEnv.browser_mobile_emulator
-          arg_arr = SdcEnv.browser_mobile_emulator.split(',')
+           arg_arr = SdcEnv.browser_mobile_emulator.split(',')
           if arg_arr.size != 2
             raise ArgumentError, "Wrong number of arguments. Expected 2, Got #{arg_arr.size}"
           end
           browser = arg_arr[0]
           device_name = arg_arr[1]
-          caps = browser_emulator_caps(browser, device_name)
-          driver = Selenium::WebDriver.for(:chrome, desired_capabilities: caps)
+          driver = browser_emulator_options(browser, device_name)
           SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(driver, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+          SdcPage.browser.driver.manage.timeouts.page_load = 12
 
         else
           raise ArgumentError, 'Device must be defined'
@@ -353,19 +347,22 @@ class SdcTest
 
     private
 
-    def browser_emulator_caps(browser, device_name)
-      opts = {
-        'mobileEmulation' => {
-          'deviceName' => device_name
-        }
+    def browser_emulator_options(browser, device_name)
+      prefs = {
+          prompt_for_download: false,
+          default_directory: "#{Dir.pwd}/binaries/download"
       }
+
       case browser_selection(browser)
-      when :chrome
-        return Selenium::WebDriver::Remote::Capabilities.chrome('chromeOptions' => opts)
-      when :firefox
-        return Selenium::WebDriver::Remote::Capabilities.firefox #firefox config goes here
-      else
-        raise ArgumentError, "Unsupported browser. #{browser}"
+        when :chrome
+          options = Selenium::WebDriver::Chrome::Options.new
+          options.add_emulation(device_name: device_name)
+          options.add_preference(:download, prefs)
+          return Selenium::WebDriver.for(:chrome, options: options)
+        when :firefox
+          return Selenium::WebDriver::Remote::Capabilities.firefox #firefox config goes here
+        else
+          raise ArgumentError, "Unsupported browser. #{browser}"
       end
     end
 

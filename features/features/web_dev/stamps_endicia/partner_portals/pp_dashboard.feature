@@ -139,8 +139,10 @@ Feature: PP-MVP: Dashboard Page Single Contract
       In the meantime, you can close this window and continue to use the portal.
       """
      Then PP: click on the dashboard page download modal ok button
+     Then PP: expect from date and to date are cleared
+     Then PP: Expect a record of Log Type 3 event is added in Audit Records for user
      Then PP: expect CSV file to be downloaded with correct file name
-     #Then PP: Expect a record Download Data event is added in Audit Records for user
+     Then PP: delete existing csv file
 
 #  Then PP: set dashboard page from date field to 12/16/18
 #  Then PP: set dashboard page to date field to 12/16/19
