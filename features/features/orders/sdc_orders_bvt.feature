@@ -335,6 +335,7 @@ Feature:  BVT tests for Orders
 #    Then set bulk update ship from to default
     Then set bulk update domestic service to PM Large Package
     Then set bulk update international service to PMI Package/Flat/Thick Envelope
+    Then check bulk update weight
     Then set bulk update pounds to 0
     Then set bulk update ounces to 3
     Then click bulk update update order button

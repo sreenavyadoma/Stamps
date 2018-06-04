@@ -123,6 +123,10 @@ Given /^[Ll]ogin and add order domestic$/ do
   step "set Order Details Domestic Ship-To Country to United States"
 end
 
+Then /^wait for js to stop$/ do
+  SdcPage.browser.wait_while { |b| b.execute_script("return Ext.Ajax.isLoading();") }
+end
+
 
 
 

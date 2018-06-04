@@ -17,10 +17,8 @@ Then /^[Ss]ave [Mm]ulti [Oo]rder [Dd]etails [Dd]ata$/ do
 end
 
 Then /^click bulk update update order button$/ do
-  SdcPage.browser.execute_script( 'document.getElementsByClassName("x-btn-wrap x-btn-wrap-primary-medium ")[0].click()' )
-  # SdcOrders.bulk_update.update_orders.click
-
-  # sleep(5)
+  step 'wait for js to stop'
+  SdcOrders.bulk_update.update_orders.click
 end
 
 Then /^expect bulk update is present$/ do
@@ -63,7 +61,7 @@ Then /^expect bulk update weight is (checked|unchecked)$/ do |str|
 end
 
 Then /^check bulk update weight$/ do
-  SdcOrders.bulk_update.weight.weight_cb.check
+  SdcOrders.bulk_update.weight.checkbox.check
 end
 
 Then /^uncheck bulk update weight$/ do

@@ -26,6 +26,7 @@ Then /^add order (\d+)$/ do |count|
 end
 
 Then /^wait until orders available$/ do
+  SdcPage.browser.wait_while { |b| b.execute_script("return Ext.Ajax.isLoading();") }
   SdcOrders.toolbar.add.wait_until_present(timeout: 10)
   SdcOrders.grid.body.wait_until_present(timeout: 20)
 end
