@@ -6,7 +6,7 @@ Feature: Envelopes BVT
   @mail_services
   Scenario: Envelope
     Then select print on Stamps
-    Then select print on Shipping Label - Paper
+    Then select print on Shipping Label - 8 ½" x 11" Paper
     Then select print on Shipping Label - SDC-1200
     Then select print on Shipping Label - 5x8
     Then select print on Envelope - 10
@@ -24,4 +24,4 @@ Feature: Envelopes BVT
     Then select print on Roll 4x6
     Then select print on Roll 418x614
 
-#set Order Details Ship-To to a random address in Zone 1 through 4
+#set order details ship-to to a random address in Zone 1 through 4

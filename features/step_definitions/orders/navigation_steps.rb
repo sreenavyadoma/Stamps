@@ -6,15 +6,15 @@ end
 
 =begin
 Then add new order
-Then set Order Details Ship-From to default
-Then set Order Details Ship-To to a random address in Zone 5 through 8
+Then set order details ship-from to default
+Then set order details ship-to to a random address in Zone 5 through 8
 Then set order details service to PM Package
 Then set order details ounces to 1
 Then set order details width to 1
 Then set order details length to 1
 Then set order details height to 1
 Then click orders toolbar print button
-Then set Print modal Print-On to Shipping Label - 8 ½" x 11" Paper
+Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
 Then set Orders print modal printer
 Then click print modal print button
 =end

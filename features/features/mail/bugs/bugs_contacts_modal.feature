@@ -7,7 +7,7 @@ Feature: Mail Contacts Modal Bugs
   Scenario: ORDERSAUTO_3243 Adding Contact from Mail should not Add Reference # Or Cost Code
     Then select print on Shipping Label - 5x8
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat

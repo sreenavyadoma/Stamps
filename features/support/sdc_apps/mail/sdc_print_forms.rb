@@ -1,5 +1,6 @@
 module SdcMail
   module SdcPrintForm
+
     module MailFromContainer
       class MailFrom < SdcPage
         page_object(:drop_down) { { xpath: '//*[@id="sdc-mainpanel-shipfromdroplist-trigger-picker"]' } }
@@ -34,7 +35,8 @@ module SdcMail
         page_object(:city, tag: :text_field) { { xpath: '//input[@name="ShipCity"]' } }
         page_object(:province, tag: :text_field) { { xpath: '//input[@name="ShipState"]' } }
         page_object(:postal_code, tag: :text_field) { { xpath: '//input[@name="ShipPostalCode"]' } }
-        page_object(:phone, tag: :text_field) { { xpath: '//input[@name="ShipPhone"]' } }
+        page_objects(:phone, tag: :text_fields, index: 0) { { xpath: '//input[@name="ShipPhone"]' } }
+        page_objects(:int_phone, tag: :text_fields, index: 1) { { xpath: '//input[@name="ShipPhone"]' } }
 
         def selection(name, str)
           page_object(name) { { xpath: "//li[text()='#{str}']" } }
@@ -72,7 +74,7 @@ module SdcMail
 
     module WeightContainer
       class Weight < SdcPage
-        text_field(:lbs_text_field, tag: :text_field) { { xpath: '//*[@name="Length"]' } }
+        text_field(:lbs_text_field, tag: :text_field) { { xpath: '//*[@name="WeightLbs"]' } }
         page_object(:lbs_increment) { { xpath: '//*[contains(@class,"pounds")]//*[contains(@class,"up")]' } }
         page_object(:lbs_decrement) { { xpath: '//*[contains(@class,"pounds")]//*[contains(@class,"down")]' } }
         sdc_number(:lbs, :lbs_text_field, :lbs_increment, :lbs_decrement)
@@ -102,7 +104,7 @@ module SdcMail
         text_field(:w_text_field, tag: :text_field) { { xpath: '//*[@name="Width"]' } }
         page_object(:w_increment) { { xpath: '(//div[starts-with(@id, "dimensionsview-")]//*[contains(@class, "up")])[1]' } }
         page_object(:w_decrement) { { xpath: '(//div[starts-with(@id, "dimensionsview-")]//*[contains(@class, "down")])[1]' } }
-        sdc_number(:width, :l_text_field, :l_increment, :l_decrement)
+        sdc_number(:width, :w_text_field, :w_increment, :w_decrement)
 
         text_field(:h_text_field, tag: :text_field) { { xpath: '//*[@name="Height"]' } }
         page_object(:h_increment) { { xpath: '(//div[starts-with(@id, "dimensionsview-")]//*[contains(@class, "up")])[2]' } }
@@ -170,24 +172,36 @@ module SdcMail
     end
 
     module MailDateContainer
-      class MailDate < SdcPage
-        text_field(:text_field, tag: :text_field) { { xpath: '//input[starts-with(@id, "datefield-")]' } }
-        page_object(:picker_button) { { xpath: '//div[starts-with(@id, "datefield-")][contains(@id, "-trigger-picker")]' } }
+      class Picker < SdcPage
         page_object(:today) { { xpath: '//*[@class="x-datepicker-footer"]//span[contains(@id, "btnInnerEl")]' } }
 
-        def date_element(name, str)
-          page_object(name) { { xpath: "//div[text()='#{str}']" } }
+        def date_elements(name, str)
+          page_objects(name) { { xpath: "//div[text()='#{str}']" } }
         end
 
-        def date_label(str)
-          date_element(:date_label, str)
-          date_label.attribute_value('aria-label')
+        def today_element
+          page_object(:date_today) { { xpath: '//*[@class="x-datepicker-date"][@title="Today"]' } }
+        end
+
+      end
+
+      class MailDate < SdcPage
+        page_object(:picker_button) { { xpath: '//div[starts-with(@id, "datefield-")][contains(@id, "-trigger-picker")]' } }
+        text_field(:text_field, tag: :text_field) { { xpath: '//input[starts-with(@id, "datefield-")]' } }
+
+        def picker
+          Picker.new
         end
       end
 
       def mail_date
         MailDate.new
       end
+    end
+
+    class Contents < SdcPage
+      page_object(:customs_form) { { xpath: '//*[@id="sdc-mainpanel-editcustombtn-btnInnerEl"]' } }
+      page_object(:restrictions) { { xpath: '//a[contains(@class, "sdc-mainpanel-restrictionsbtn")]//*[contains(@id, "btnInnerEl")]' } }
     end
 
     class PrintFormBase < SdcPage
@@ -227,18 +241,26 @@ module SdcMail
       include TrackingContainer
       include DimensionsContainer
       include ExtraServicesContainer
+      include MailDateContainer
+
+      def contents
+        Contents.new
+      end
     end
 
     class Envelopes < PrintFormBase
       include ExtraServicesContainer
       include InsuranceContainer
       include ExtraServicesContainer
+      include MailDateContainer
+
     end
 
     class CertifiedMail < PrintFormBase
       include EmailTrackingContainer
       include DimensionsContainer
       include InsuranceContainer
+      include MailDateContainer
 
       page_object(:cm_chooser) { { xpath: '//*[@id="sdc-mainpanel-cmcheckbox-inputEl"]' } }
       page_object(:cm_verify) { { xpath: '//*[@id="sdc-mainpanel-cmcheckbox"]' } }
@@ -259,6 +281,7 @@ module SdcMail
       page_object(:rd_verify) { { xpath: '//input[contains(@class, "sdc-mainpanel-rdcheckbox")]/../../..' } }
       chooser(:restricted_delivery, :rd_chooser, :rd_verify, :class, :checked)
       page_object(:restricted_delivery_cost) { { xpath: '//*[@id="restrictedDeliveryCostLabel"]' } }
+
     end
 
     class Rolls < PrintFormBase
@@ -267,6 +290,11 @@ module SdcMail
       include TrackingContainer
       include DimensionsContainer
       include ExtraServicesContainer
+      include MailDateContainer
+
+      def contents
+        Contents.new
+      end
     end
   end
 end

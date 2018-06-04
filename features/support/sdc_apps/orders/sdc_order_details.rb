@@ -88,10 +88,6 @@ module SdcOrders
     page_object(:email, tag: :text_field) { {xpath: '(//input[@name="BuyerEmail"])[2]'} }
     page_object(:show_less) { {xpath: '//div[contains(@id, "international")]//span[text()="Less"]'} }
 
-    page_object(:customs_form) { {xpath: '//*[contains(@class, "customs-btn-container")]//*[text()="Customs Form..."]'} }
-    page_object(:restrictions) { {xpath: ''} }
-    page_object(:reference_num) { {xpath: ''} }
-
     def country
       SdcShipToCountryIntl.new
     end
@@ -139,11 +135,11 @@ module SdcOrders
   end
 
   class SdcOrderDetailsItem < SdcPage
-    def qty(num)
-      page_object("qty_tf#{num}", tag: :text_field) { { xpath: "(//*[@name='Quantity'])[#{num}]" } }
-      page_object("qty_inc#{num}") {{xpath: "(//*[@name='Quantity']/../following-sibling::*/div[contains(@class, 'up')])[#{num}]"}}
-      page_object("qty_dec#{num}") { { xpath: "(//*[@name='Quantity']/../following-sibling::*/div[contains(@class, 'down')])[#{num}]" } }
-      sdc_number("qty#{num}", "qty_tf#{num}", "qty_inc#{num}", "qty_dec#{num}")
+    def item_qty(num)
+      page_object("qty_tf#{num}", tag: :text_field) { { xpath: "(//div[contains(@id, 'singleorderitem')]//*[@name='Quantity'])[#{num}]" } }
+      page_object("qty_inc#{num}") {{xpath: "(//div[contains(@id, 'singleorderitem')]//*[@name='Quantity']/../following-sibling::*/div[contains(@class, 'up')])[#{num}]"}}
+      page_object("qty_dec#{num}") { { xpath: "(//div[contains(@id, 'singleorderitem')]//*[@name='Quantity']/../following-sibling::*/div[contains(@class, 'down')])[#{num}]" } }
+      sdc_number("item_qty#{num}", "qty_tf#{num}", "qty_inc#{num}", "qty_dec#{num}")
     end
 
     def id(num)
@@ -154,19 +150,24 @@ module SdcOrders
       page_object("description#{num}", tag: :text_field) { { xpath: "(//*[@name='Description'])[#{num}]" } }
     end
 
-    def delete(num)
-      page_object("delete#{num}") { { xpath: "(//span[contains(@class, 'remove')])[#{num}]" } }
+    def delete_btn(num)
+      page_object("delete_btn#{num}") { { xpath: "(//span[contains(@class, 'remove')])[#{num}]" } }
     end
+  end
+
+  class Contents < SdcPage
+    page_object(:customs_form) { {xpath: '//*[text()="Customs Form..."]'} }
+    page_object(:restrictions) { {xpath: '//*[text()="Restrictions..."]'} }
   end
 
   class SdcOrderDetails < SdcPage
     page_object(:title, required: true, timeout: 20) { {xpath: '//div[contains(@class, "singleorder-detailsform")]//label[contains(@class, "panel-header-text")]'} }
-    page_object(:reference_num, required: true, timeout: 20) { {xpath: '//div[contains(@class, "reference-field-container")]//input'} }
     page_object(:service_label, required: true, timeout: 20) { {xpath: '(//*[contains(text(), "Service:")])[2]'} }
     page_object(:weight_label, required: true, timeout: 20) { {xpath: '//*[contains(text(), "Weight:")]'} }
     page_object(:ship_to_label, required: true, timeout: 20) { {xpath: '//div[starts-with(@id, "singleOrderDetailsForm")]//label[text()="Ship To:"]'} }
     page_object(:order_id, required: true, timeout: 20) { {xpath: '(//*[contains(@class, "singleorder-detailsform")]//div[contains(@class, "sdc-toolbar")]//b)[1]'} }
     page_object(:add_item) { {xpath: '//*[text()="Add Item"]'} }
+    page_object(:reference_num, tag: :text_field) { {xpath: '//*[contains(@class, "reference-field-container")]//input'} }
 
     def ship_to
       SdcOrderDetailsShipTo.new
@@ -202,6 +203,10 @@ module SdcOrders
 
     def associated_item
       SdcOrderDetailsItem.new
+    end
+
+    def contents
+      Contents.new
     end
   end
 end

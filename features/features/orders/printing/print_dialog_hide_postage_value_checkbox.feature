@@ -8,8 +8,8 @@ Feature: Add Hide Mail Value CheckBox to Print Dialog
   @print_dialog_hide_postage_value
   Scenario:  Hide Mail Value CheckBox
     Then add new order
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address in zone 1
+    Then set order details ship-from to default
+    Then set order details ship-to to random address in zone 1
     Then set order details service to PM Flat Rate Envelope
 
     Then click orders toolbar print button
@@ -29,8 +29,8 @@ Feature: Add Hide Mail Value CheckBox to Print Dialog
     Then click print modal print button
 
     Then add new order
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address in zone 1
+    Then set order details ship-from to default
+    Then set order details ship-to to random address in zone 1
     Then set order details service to PM Flat Rate Envelope
     Then click orders toolbar print button
     Then in Print modal, uncheck Hide Mail Value

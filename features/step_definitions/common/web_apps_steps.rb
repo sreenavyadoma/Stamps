@@ -16,7 +16,7 @@ Given /^(?:|(?:|[Aa] )(?:[Vv]alid |))[Uu]ser is signed in to Web Apps$/ do
 end
 
 Given /^[Ll]oad [Ww]eb [Aa]pps [Ss]ign-in page$/ do
-  step 'initialize orders test parameters'
+  step 'initialize test parameters'
   stamps.orders.landing_page.load_sign_in_page
 end
 
@@ -119,7 +119,7 @@ end
 Given /^[Ll]ogin and add order domestic$/ do
   step "a valid user is signed in to Web Apps"
   step "add new order"
-  step "set Order Details Ship-From to default"
+  step "set order details ship-from to default"
   step "set Order Details Domestic Ship-To Country to United States"
 end
 

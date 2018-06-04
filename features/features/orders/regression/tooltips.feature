@@ -8,31 +8,31 @@ Feature:  Tooltip Errors
   Scenario:  Customs Form Data Error
 
     Then add new order
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To International address to
+    Then set order details ship-from to default
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Australia | random  | random  |
 
     Then set order details service to PMI Flat Rate Envelope
-    Then click Order Details form Customs Form button
+    Then click order details form customs form button
     Then pause for 1 second
     Then Cancel Customs Form
     Then pause for 1 second
-    Then click Order Details form Customs Form button
-    Then check Customs form I agree to the USPS Privacy Act Statement
+    Then click order details form customs form button
+    Then check customs form i agree to the usps privacy act statement
     Then pause for 1 second
-    Then uncheck Customs form I agree to the USPS Privacy Act Statement
+    Then uncheck customs form i agree to the usps privacy act statement
     Then pause for 1 second
-    Then check Customs form I agree to the USPS Privacy Act Statement
+    Then check customs form i agree to the usps privacy act statement
     Then pause for 1 second
-    Then uncheck Customs form I agree to the USPS Privacy Act Statement
+    Then uncheck customs form i agree to the usps privacy act statement
 
-    Then expect Customs Associated Item Description Tooltip Error is Description is a required field
+    Then expect customs associated item Description Tooltip Error is Description is a required field
     Then expect Customs Qty Tooltip Error is Quantity must be greater than 0
     Then expect Customs Unit Price Tooltip Error is Value must be greater than 0
-    Then add Customs Associated Item 1, description random, qty 1, Price 50, Made In United States, Tariff 100
+    Then add customs associated item 1, description random, qty 1, Price 50, Made In United States, Tariff 100
     Then pause for 2 seconds
-    Then close Customs Information form
+    Then close customs information form
     Then sign out
 
 
@@ -60,13 +60,13 @@ Feature:  Tooltip Errors
   Scenario:  Verify tooltips for all Print Media selections
 
     Then add new order
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PM Package
     Then set order details pounds to 1
     Then pause for 2 seconds
     Then click orders toolbar print button
-    Then Tooltips: Expect Print Modal Print Media "Shipping Label - Paper" tooltip to include "Use any letter-size sheet of plain paper to print up to two 4” x 6” shipping labels, including postage, addresses, tracking barcode, and customs form.||Use any letter-size sheet of plain paper to print up to two 4” x 6” shipping labels, including postage, addresses, tracking barcode, and customs form.<br><br>Can be used to ship Large Envelopes, Packages, USPS Flat Rate Envelopes or Boxes, or USPS Regional Rate Boxes to any U.S. or international destination."
+    Then Tooltips: Expect Print Modal Print Media "Shipping Label - 8 ½" x 11" Paper" tooltip to include "Use any letter-size sheet of plain paper to print up to two 4” x 6” shipping labels, including postage, addresses, tracking barcode, and customs form.||Use any letter-size sheet of plain paper to print up to two 4” x 6” shipping labels, including postage, addresses, tracking barcode, and customs form.<br><br>Can be used to ship Large Envelopes, Packages, USPS Flat Rate Envelopes or Boxes, or USPS Regional Rate Boxes to any U.S. or international destination."
     Then Tooltips: Expect Print Modal Print Media "Shipping Label - SDC-1200, 4 ¼" x 6 ¾"" tooltip to include "Use these letter-sized label sheets with two 4 ¼” x 6 ¾” labels per sheet to print postage, addresses, tracking barcode, and customs form.||Can be used to ship Large Envelopes, Packages, USPS Flat Rate Envelopes or Boxes, or USPS Regional Rate Boxes to any U.S. or international destination."
     Then Tooltips: Expect Print Modal Print Media "Shipping Label - 5 ½" x 8 ½"" tooltip to include "Use these letter-sized label sheets with two 5 ½” x 8 ½” labels per sheet to print postage, addresses, and tracking barcode.||Can be used to ship Large Envelopes, Packages, USPS Flat Rate Envelopes or Boxes, or USPS Regional Rate Boxes to any U.S. destination.<br><br>Product Numbers:||Avery 5126, 8126, 5526, 5783, 15516, 18126, 85783"
     Then Tooltips: Expect Print Modal Print Media "Roll - 4" x 6" Shipping Label" tooltip to include "Use these 4” x 6” thermal label rolls to print postage, addresses, tracking barcode, and customs form.||Can be used to ship any mailpiece to any U.S. or international destination.||Compatible Printers:||Most Zebra/Eltron models and Samsung Bixolon SRP 770II."
@@ -79,7 +79,7 @@ Feature:  Tooltip Errors
   Scenario: International service Tooltip Tests
 
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set Order Details Domestic Ship-To Country to Canada
     Then expect Order Details service Tooltip for "FCMI Large Envelope/Flat" to include "Ship up to 4 lb. and $400 worth of merchandise using your own large envelope or flat with pricing that varies by weight and country.||Envelope requirements:||Min. Dimensions: Must be more than 11 1/2" long, or more than 6 1/8" high, or more than 1/4" thick||Max. Dimensions: 15" x 12" x 3/4""
     Then expect Order Details service Tooltip for "FCMI Package/Thick Envelope" to include "Ship up to 4 lb. and $400 worth of merchandise using your own box or thick envelope with pricing that varies by weight and country.||Box requirements:||Length + widthth + height cannot exceed 36"||Length cannot exceed 24""
@@ -134,7 +134,7 @@ Feature:  Tooltip Errors
   Scenario: International service Tooltip Tests
 
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set Order Details Domestic Ship-To Country to Canada
     Then expect Order Details service Tooltip for "FCMI Large Envelope/Flat" to include "Ship up to 4 lb. and $400 worth of merchandise using your own large envelope or flat with pricing that varies by weight and country.||Envelope requirements:||Min. Dimensions: Must be more than 11 1/2" long, or more than 6 1/8" high, or more than 1/4" thick||Max. Dimensions: 15" x 12" x 3/4""
     Then expect Order Details service Tooltip for "FCMI Package/Thick Envelope" to include "Ship up to 4 lb. and $400 worth of merchandise using your own box or thick envelope with pricing that varies by weight and country.||Box requirements:||Length + widthth + height cannot exceed 36"||Length cannot exceed 24""

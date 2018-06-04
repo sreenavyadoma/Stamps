@@ -1,5 +1,5 @@
 Then /^[Pp]repare environment for ratings test$/ do
-  step "select print on Shipping Label - Paper" if SdcEnv.sdc_app == :mail
+  step 'select print on Shipping Label - 8 ½" x 11" Paper' if SdcEnv.sdc_app == :mail
   step "add new order" if SdcEnv.sdc_app == :orders
 end
 
@@ -14,10 +14,10 @@ Then /^[Ee]xcel rate sheet is loaded$/ do
   expect("Rate File: #{@rate_file_loc}").to eql "Rate File does not exist!" unless File.exist?(@rate_file_loc)
   begin
     @rate_file = Spreadsheet.open(@rate_file_loc)
-  rescue Exception => e
+  rescue StandardError => e
     SdcLogger.info e.message
     SdcLogger.info e.backtrace.join("\n")
-    expect(e.message).to eql "Excel Rate File is opened by someone at a computer somewhere. Close the excel sheet before running the test again."
+    raise e, 'Cannot load rate sheet'
   end
   @failed_test_count = 0
   @rate_file.should_not be nil

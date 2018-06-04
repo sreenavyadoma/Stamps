@@ -57,9 +57,9 @@ module SdcWebsite
     end
 
     def qty(num)
-      page_object("qty_tf#{num}", tag: :text_field) { { xpath: "(//*[@name='Quantity'])[#{num}]" } }
-      page_object("qty_inc#{num}") {{xpath: "(//*[@name='Quantity']/../following-sibling::*/div[contains(@class, 'up')])[#{num}]"}}
-      page_object("qty_dec#{num}") { { xpath: "(//*[@name='Quantity']/../following-sibling::*/div[contains(@class, 'down')])[#{num}]" } }
+      page_object("qty_tf#{num}", tag: :text_field) { { xpath: "(//div[contains(@id, 'singlecustomsitem')]//*[@name='Quantity'])[#{num}]" } }
+      page_object("qty_inc#{num}") {{xpath: "(//div[contains(@id, 'singlecustomsitem')]//*[@name='Quantity']/../following-sibling::*/div[contains(@class, 'up')])[#{num}]"}}
+      page_object("qty_dec#{num}") { { xpath: "(//div[contains(@id, 'singlecustomsitem')]//*[@name='Quantity']/../following-sibling::*/div[contains(@class, 'down')])[#{num}]" } }
       sdc_number("qty#{num}", "qty_tf#{num}", "qty_inc#{num}", "qty_dec#{num}")
     end
 
@@ -85,7 +85,7 @@ module SdcWebsite
     end
 
     def selection(num, str)
-      page_object("selection#{num}") { { xpath: "(//li[text()='#{str}'])[#{num+1}]" } }
+      page_object("selection#{num}", timeout: 5) { { xpath: "(//li[text()='#{str}'])[#{num + 1}]" } }
     end
   end
 

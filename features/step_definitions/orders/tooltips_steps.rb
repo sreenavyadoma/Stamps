@@ -60,7 +60,7 @@ Then /^Tooltips: Expect Customs Tooltip Error for Total Weight is (.+)$/ do |exp
 end
 
 Then /^[Oo]n Customs form, expect Associated Item Description Tooltip Error is (.*)$/ do |expectation|
-  #SdcLog.step "expect Customs Associated Item Description Tooltip Error is #{expectation}"
+  #SdcLog.step "expect customs associated item Description Tooltip Error is #{expectation}"
   stamps.common_modals.customs_form.should_not be_nil
   data_error_qtip = stamps.common_modals.customs_form.associated_items.item_number(1).description.data_error_qtip
   #SdcLog.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
@@ -161,7 +161,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails Weight Lbs data error tooltip is \"(.*)\"$/
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails Weight Oz data error tooltip is \"(.*)\"$/ do |expectation|
-  #SdcLog.step "expect Order Details Weight Oz data error tooltip is #{expectation}"
+  #SdcLog.step "expect order details weight Oz data error tooltip is #{expectation}"
   textbox = stamps.orders.order_details.weight.oz.textbox
   20.times do
     textbox.scroll_into_view
@@ -187,7 +187,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails Weight Oz data error tooltip is \"(.*)\"$/ 
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails service data error tooltip is \"(.*)\"$/ do |expectation|
-  #SdcLog.step "expect Order Details Weight Oz data error tooltip is #{expectation}"
+  #SdcLog.step "expect order details weight Oz data error tooltip is #{expectation}"
   textbox = stamps.orders.order_details.service.textbox
   20.times do
     textbox.double_click

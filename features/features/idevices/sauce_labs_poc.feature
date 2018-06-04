@@ -5,4 +5,4 @@ Feature: Saucelabs POC Browser & Mobile
   @saucelabs_poc
   Scenario: Orders Authentication
     Then visit Orders landing page
-    Then sign-in to Orders
+    Then sign-in to orders

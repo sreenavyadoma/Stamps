@@ -6,7 +6,7 @@ Feature: ORDERSAUTO-3405 New Sprint 11/22/17 WEBAPPS-6706 Split Order: Automatic
   @split_order
   Scenario:  ORDERSAUTO-3405 New Sprint 11/22/17 WEBAPPS-6706 Split Order: Automatically Select New Order After Split
     Then add new order
-    Then set Order Details Ship-From to default
+    Then set order details ship-from to default
     Then set order details ship-to domestic address to
       | full_name       | company  | street_address      | city          | state | zip   | country       | phone           |  email            |
       | Split Order | Stamps  | 1990 E Grand Ave  | El Segundo | CA    | 90245 | United States |  |   |

@@ -8,7 +8,7 @@ Feature: BVT for Mail page
 
   @mail_bvt_address_cleansing
   Scenario: Address Cleansing
-    Then select print on Shipping Label - Paper
+    Then select print on Shipping Label - 8 ½" x 11" Paper
     Then set Print form Mail-From to default
     Then set print form mail-to country to United States
     Then set print form mail-to to address to Address Cleansing, BVT, 1350 Market Street, San Francisco, CA
@@ -320,8 +320,8 @@ Feature: BVT for Mail page
     # ------------------------------------------------------------ Shipping Labels Advanced Options
   @mail_bvt_advanced_options
   @mail_advanced_options_paper
-  Scenario: Advanced Options for Shipping Label - Paper
-    Then select print on Shipping Label - Paper
+  Scenario: Advanced Options for Shipping Label - 8 ½" x 11" Paper
+    Then select print on Shipping Label - 8 ½" x 11" Paper
 
     Then set Advanced Options Mail Date to today
     Then set Print form Mail-From to default
@@ -404,7 +404,7 @@ Feature: BVT for Mail page
   Scenario: Extra Services
     Then select print on Shipping Label - 5x8
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to address random name, random company, 3217 Shasta Circle S., Los Angeles, CA 90065
     Then set print form ounces to 1
     Then select print form service PM Padded Flat Rate Envelope
@@ -446,79 +446,6 @@ Feature: BVT for Mail page
     Then save Extra Services
     Then sign out
 
-  @mobile_mail_smoke_test
-  @mail_bvt_international
-  Scenario: International Shipping
-    Then select print on Shipping Label - Paper
-    Then set Print form Mail-From to default
-    Then show advanced options
-    Then set Advanced Options Mail Date to today
-    Then set Print form Ship-To to international address
-      | name   | company | street_address_1 | street_address_2  | city   | province | postal_code | country| phone  |
-      | random | random  | random           | random            | random | random   | random      | Italy | random  |
-    Then set print form ounces to 3
-    Then select print form service PMI Flat Rate Envelope
-    Then click Print form Edit Customs Form button
-
-    Then expect Customs I agree to the USPS Privacy Act Statement is unchecked
-    Then set Customs Package Contents to Document
-#Then set Customs More Info to some random string
-    Then set Customs Package Contents to Commercial Sample
-    Then expect Customs Package Contents is Commercial Sample
-    Then set Customs License Number to a random string
-    Then expect Customs License Number is correct
-    Then set Customs Certificate Number to some random string
-    Then expect Customs Certificate Number is correct
-    Then set Customs Invoice Number to a random string
-    Then expect Customs Invoice Number is correct
-
-    Then set Customs Non-Delivery Options to Treat as abandoned
-    Then expect Customs Non-Delivery Options is Treat as abandoned
-
-    Then set Customs Internal Transaction Number to Required
-    Then expect Customs Internal Transaction Number is Required
-
-    Then set Customs ITN Number to ITN123
-
-    Then add Customs Associated Item 1, description Item 1, qty 1, Price 1, Made In United States, Tariff 1
-    Then add Customs Associated Item 2, description Item 2, qty 2, Price 2, Made In Japan, Tariff 2
-    Then add Customs Associated Item 3, description Random String, qty 3, Price 3, Made In Canada, Tariff 3
-
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
-
-    Then click Print form Edit Customs Form button
-    Then pause for 1 second
-    Then expect Customs Package Contents is Commercial Sample
-    Then expect Customs License Number is correct
-    Then expect Customs Certificate Number is correct
-    Then expect Customs Invoice Number is correct
-
-    Then expect Customs Non-Delivery Options is Treat as abandoned
-    Then expect Customs Internal Transaction Number is Required
-    Then expect Customs ITN Number is correct
-
-    Then expect Customs Associated Item 1 Description is correct
-    Then expect Customs Associated Item 1 Quantity is correct
-    Then expect Customs Associated Item 1 Unit Price is correct
-    Then expect Customs Associated Item 1 Made In is correct
-    Then expect Customs Associated Item 1 Tariff is correct
-
-    Then expect Customs Associated Item 2 Description is correct
-    Then expect Customs Associated Item 2 Quantity is correct
-    Then expect Customs Associated Item 2 Unit Price is correct
-    Then expect Customs Associated Item 2 Made In is correct
-
-    Then expect Customs Associated Item 3 Description is correct
-    Then expect Customs Associated Item 3 Quantity is correct
-    Then expect Customs Associated Item 3 Unit Price is correct
-    Then expect Customs Associated Item 3 Made In is correct
-    Then expect Customs Associated Item 3 Tariff is correct
-
-    Then expect Customs I agree to the USPS Privacy Act Statement is checked
-    Then expect Customs Total Value is correct
-    Then close Customs Information form
-
 #Then Mail: Print International Postage
     Then sign out
 
@@ -536,9 +463,9 @@ Feature: BVT for Mail page
 
   @bvt_mail_piece_validation
   Scenario: Shipping Label - 8 ½" x 11" Paper
-    Then select print on Shipping Label - Paper
+    Then select print on Shipping Label - 8 ½" x 11" Paper
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 5 through 8
     Then set print form pounds to 0
     Then set print form ounces to 1
@@ -552,7 +479,7 @@ Feature: BVT for Mail page
   Scenario: Roll - 4" x 6" Shipping Label
     Then select print on Roll 4x6
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service PM Large Flat Rate Box
@@ -564,10 +491,10 @@ Feature: BVT for Mail page
 
   @bvt_mail_piece_validation
   Scenario: Certified Mail Label - SDC-3610
-#    Then select print on Shipping Label - Paper
+#    Then select print on Shipping Label - 8 ½" x 11" Paper
     Then select print on Certified Mail Label - SDC-3610
     Then set Print form Mail-From to default
-#    Then set print form mail-to Country to United States
+#    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form pounds to 0
     Then set print form ounces to 1
@@ -579,9 +506,9 @@ Feature: BVT for Mail page
 
   @bvt_mail_piece_validation
   Scenario: Shipping Label - 8 ½" x 11" Paper
-    Then select print on Shipping Label - Paper
+    Then select print on Shipping Label - 8 ½" x 11" Paper
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form pounds to 0
     Then set print form ounces to 1
@@ -670,9 +597,9 @@ Feature: BVT for Mail page
 
   @mail_service_validation
   Scenario: Shipping Label - 8 ½" x 11" Paper
-    Then select print on Shipping Label - Paper
+    Then select print on Shipping Label - 8 ½" x 11" Paper
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 5 through 8
     Then set print form pounds to 0
     Then set print form ounces to 1
@@ -686,7 +613,7 @@ Feature: BVT for Mail page
   Scenario: Roll - 4" x 6" Shipping Label
     Then select print on Roll 4x6
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service PM Large Flat Rate Box
@@ -697,10 +624,10 @@ Feature: BVT for Mail page
 
   @mail_service_validation
   Scenario: Certified Mail Label - SDC-3610
-#    Then select print on Shipping Label - Paper
+#    Then select print on Shipping Label - 8 ½" x 11" Paper
     Then select print on Certified Mail Label - SDC-3610
     Then set Print form Mail-From to default
-#    Then set print form mail-to Country to United States
+#    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form pounds to 0
     Then set print form ounces to 1
@@ -712,9 +639,9 @@ Feature: BVT for Mail page
 
   @mail_service_validation
   Scenario: Shipping Label - 8 ½" x 11" Paper
-    Then select print on Shipping Label - Paper
+    Then select print on Shipping Label - 8 ½" x 11" Paper
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form pounds to 0
     Then set print form ounces to 1

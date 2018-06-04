@@ -8,24 +8,24 @@ Feature:  Print new country orders
   @country_code_bonaire
   Scenario: Print Bonaire, Sincd t Eustatius, and Saba orders
     Then add new order
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To International address to
+    Then set order details ship-from to default
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code| country                          | phone   |  email  |
       | random | random  | random           | random           | random | random  | 12345      | Bonaire, Sint Eustatius and Saba | random  | random  |
 
-    Then expect Order Details Ship-To Country is Bonaire, Sint Eustatius and Saba
+    Then expect order details ship-to country is Bonaire, Sint Eustatius and Saba
     Then set order details service to FCMI Large Envelope/Flat
     Then set order details ounces to 2
     Then set order details pounds to 2
     Then on order details form, add item 1, qty 1, id Item 1 SKU, description Item 1 Description
-    Then click Order Details form Customs Form button
-    Then set Customs Package Contents to Merchandise
-    Then add Customs Associated Item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then click order details form customs form button
+    Then set customs package contents to Merchandise
+    Then add customs associated item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
     Then pause for 3 seconds
     Then click orders toolbar print button
-    Then set Print modal Print-On to Shipping Label - 8 ½" x 11" Paper
+    Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
     Then set Orders print modal printer
     Then click print modal print button
     Then sign out
@@ -34,24 +34,24 @@ Feature:  Print new country orders
   @country_code_curacao
   Scenario: Print Curacao
     Then add new order
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To International address to
+    Then set order details ship-from to default
+    Then set order details ship-to international address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code| country | phone   |  email  |
       | random | random  | random           | random           | random | random  | 12345      | Curacao | random  | random  |
 
-    Then expect Order Details Ship-To Country is Curacao
+    Then expect order details ship-to country is Curacao
     Then set order details service to FCMI Large Envelope/Flat
     Then set order details ounces to 2
     Then set order details pounds to 2
     Then on order details form, add item 1, qty 1, id Item 1 SKU, description Item 1 Description
-    Then click Order Details form Customs Form button
-    Then set Customs Package Contents to Merchandise
-    Then add Customs Associated Item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+    Then click order details form customs form button
+    Then set customs package contents to Merchandise
+    Then add customs associated item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
     Then pause for 3 seconds
     Then click orders toolbar print button
-    Then set Print modal Print-On to Shipping Label - 8 ½" x 11" Paper
+    Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
     Then set Orders print modal printer
     Then click print modal print button
     Then sign out

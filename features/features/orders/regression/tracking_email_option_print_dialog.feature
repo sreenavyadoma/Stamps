@@ -7,8 +7,8 @@ Feature: ORDERSAUTO-30 Add Tracking Email Option in Print Dialog
   @email_tracking_details
   Scenario:  ORDERSAUTO-30
     Then Add New Order
-    Then Order set Order Details Ship-From to default
-    Then Order set Order Details Ship-To to random address between zone 1 and 4
+    Then Order set order details ship-from to default
+    Then Order set order details ship-to to random address between zone 1 and 4
     Then Order set Order Details service to "PME Padded Flat Rate Envelope"
     Then Order set order details ounces to 1
     Then Open Print Modal

@@ -125,7 +125,7 @@ module PartnerPortal
   ##
   # 
   class PPResetPasswordConfirmationPage < SdcPage
-    #header todo-Mohammed this is redundant
+
     page_object(:header) { { xpath:  '//h1[contains(text(), "Reset Email Sent")]'} }
 
     page_url { |env| "https://partner.#{env}.stamps.com/reset-password/request/confirmation" }

@@ -190,7 +190,7 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
         SdcLogger.info "#{"#" * 80} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_number}"
 
         # Set address to proper zone
-        step "set Order Details Ship-To to random address between zone 1 and 4"  if SdcEnv.sdc_app == :orders
+        step "set order details ship-to to random address between zone 1 and 4"  if SdcEnv.sdc_app == :orders
         step "set print form mail-to to a random address in zone 1 through 4" if SdcEnv.sdc_app == :mail
         step "save Print Form Mail From" if SdcEnv.sdc_app == :mail
         # spreadsheet price for zone

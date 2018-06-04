@@ -7,9 +7,9 @@ Feature: Print Certified Mail (with hidden postage)
   @mail_print_SDC_3610_hidden_postage
   Scenario: Print SDC 3610 (with hidden postage)
 
-    Then select print on Shipping Label - Paper
+    Then select print on Shipping Label - 8 ½" x 11" Paper
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form pounds to 0
     Then set print form ounces to 1
@@ -25,9 +25,9 @@ Feature: Print Certified Mail (with hidden postage)
   @mail_print_SDC_3710_hidden_postage
   Scenario: Print SDC 3710 (with hidden postage)
 
-    Then select print on Shipping Label - Paper
+    Then select print on Shipping Label - 8 ½" x 11" Paper
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form pounds to 0
     Then set print form ounces to 1
@@ -43,9 +43,9 @@ Feature: Print Certified Mail (with hidden postage)
   @mail_print_SDC_3910_hidden_postage
   Scenario: Print SDC 3910 (with hidden postage)
 
-    Then select print on Shipping Label - Paper
+    Then select print on Shipping Label - 8 ½" x 11" Paper
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form pounds to 0
     Then set print form ounces to 1
@@ -61,9 +61,9 @@ Feature: Print Certified Mail (with hidden postage)
   @mail_print_SDC_3930_hidden_postage
   Scenario: Print SDC 3930 (with hidden postage)
 
-    Then select print on Shipping Label - Paper
+    Then select print on Shipping Label - 8 ½" x 11" Paper
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form pounds to 0
     Then set print form ounces to 1
@@ -79,9 +79,9 @@ Feature: Print Certified Mail (with hidden postage)
   @mail_print_SDC_3810_hidden_postage
   Scenario: Print SDC 3810 (with hidden postage)
 
-    Then select print on Shipping Label - Paper
+    Then select print on Shipping Label - 8 ½" x 11" Paper
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form pounds to 0
     Then set print form ounces to 1
@@ -97,9 +97,9 @@ Feature: Print Certified Mail (with hidden postage)
   @mail_print_SDC_3830_hidden_postage
   Scenario: Print SDC 3830 (with hidden postage)
 
-    Then select print on Shipping Label - Paper
+    Then select print on Shipping Label - 8 ½" x 11" Paper
     Then set Print form Mail-From to default
-    Then set print form mail-to Country to United States
+    Then set print form mail-to country to United States
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form pounds to 0
     Then set print form ounces to 1
