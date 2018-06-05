@@ -93,15 +93,3 @@ Feature:  BVT tests for Orders
     Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
     Then click print modal print button
     Then sign out
-
-
-  @bvt_purchasing
-  Scenario: BVT Purchasing $10
-    Then on Add Funds modal, purchase 10
-    Then on Add Funds modal, click Purchase button
-    Then Buy Mail Confirm Purchase: Expect text area contains, Please confirm your $10.00 postage purchase.
-    Then Buy Mail Confirm Transction: Click Confirm button
-    Then Buy Mail Purchase Approved: Expect text area contains, Your fund request for $10.00 has been approved.
-    Then Buy Mail Purchase Approved: Click OK button
-    Then Buy Mail: Expect customer balance increased by $10
-    Then sign out
