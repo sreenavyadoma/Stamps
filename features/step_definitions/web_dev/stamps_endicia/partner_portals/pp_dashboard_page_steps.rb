@@ -389,14 +389,14 @@ Then /^PP: delete existing csv file$/ do
 
   contract= PartnerPortal.dashboard_page.contract_header.text_value.split(':').last.strip
   TestData.hash[:file_name_expected] = 'Partnerportal_'+ contract +'_'+  TestData.hash[:from_date].gsub('/', '') + '_to_' + TestData.hash[:to_date].gsub('/', '')+ '.csv'
-  file = "#{Dir.pwd}/binaries/download/" + TestData.hash[:file_name_expected]
+  file = data_for(:download, {})['download_file_path'] + TestData.hash[:file_name_expected]
   File.delete(file) unless File.exist?(file) == false
 
 end
 
 
 Then /^PP: expect CSV file to be downloaded with correct file name$/ do
-  #download_directory = "#{Dir.pwd}/download"
+  #download_directory = "#{Dir.pwd}/binaries/download"
   download_directory = data_for(:download, {})['download_file_path']
   downloads_before = Dir.entries download_directory
 
@@ -429,7 +429,6 @@ Then /^PP: expect CSV file to be downloaded with correct file name$/ do
         end
         sleep 1
       end
-
   end
 
   case(SdcEnv.browser_mobile_emulator)
