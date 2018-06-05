@@ -11,7 +11,7 @@ Then /^Start test driver$/ do
   SdcTest.configure
 end
 
-Then /^Refresh the browser$/ do
+Then /^refresh the browser$/ do
   begin
     SdcDriver.browser.refresh
     sleep(2)
@@ -23,6 +23,7 @@ end
 Then /^pause for (\d+) second(?:|s)?$/ do |seconds|
   if SdcEnv.new_framework
     #skip for now
+    sleep(seconds.to_i)
   else
     begin
       sleep(seconds.to_i)

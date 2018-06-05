@@ -19,19 +19,16 @@ Then /^uncheck orders grid order id (cached|\d+)$/ do |order_id|
   end
 end
 
-When /^[Cc]heck(?: [O]rders)?(?: [Gg]rid)? [Rr]ow (\d+)$/ do |row|
+When /^[Cc]heck(?: [Oo]rders)?(?: [Gg]rid)? [Rr]ow (\d+)$/ do |row|
   stamps.orders.orders_grid.grid_column(:checkbox).check(row)
   expect(checked = stamps.orders.orders_grid.grid_column(:checkbox).checked?(
       row)).to be(true), "Row #{row} is #{checked ? 'checked' : 'unchecked'}"
 end
 
-When /^[Uu]ncheck(?: [O]rders)?(?: [Gg]rid)? [Rr]ow (\d+)$/ do |row|
-  if SdcEnv.new_framework
-    #todo - orders grid implementation
-  else
-    expect(stamps.orders.orders_grid.grid_column(:checkbox).uncheck(
-        row)).to be(false), "Unable to uncheck Orders Grid row #{row}"
-  end
+When /^[Uu]ncheck(?: [Oo]rders)?(?: [Gg]rid)? [Rr]ow (\d+)$/ do |row|
+  expect(stamps.orders.orders_grid.grid_column(:checkbox).uncheck(
+      row)).to be(false), "Unable to uncheck Orders Grid row #{row}"
+
 end
 
 Then /^expect orders grid store is (.*)$/ do |expectation|
