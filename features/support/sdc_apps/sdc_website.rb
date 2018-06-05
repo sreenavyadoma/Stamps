@@ -28,4 +28,9 @@ module SdcWebsite
   end
   module_function :customs_form
 
+  def exact_address_not_found
+    SdcExactAddressNotFound.new
+  end
+  module_function :exact_address_not_found
+
 end
