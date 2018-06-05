@@ -433,7 +433,6 @@ Feature:  BVT tests for Orders
     Then in exact address not found module, select row 2
     Then in exact address not found module click accept
     Then set order details service to PM Package
-#    Then pause for 2 seconds
     Then expect orders grid recipient is Juan Dela Cruz
     Then expect orders grid company is Betfair
     Then expect orders grid city is San Francisco
