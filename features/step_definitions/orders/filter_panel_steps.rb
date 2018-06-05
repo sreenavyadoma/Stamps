@@ -1,15 +1,20 @@
 
 Then /^[Ss]elect [Ff]ilter [Pp]anel tab (.*)$/ do |str|
+  # if SdcEnv.new_framework
   expect(['Shipped', 'Canceled', 'On Hold', 'Awaiting Shipment']).to include(str)
   case str
     when /Shipped/
-      stamps.orders.filter_panel.shipped.select
+      # stamps.orders.filter_panel.shipped.select
+      SdcOrders.filter_panel.shipped.click
     when /Canceled/
-      stamps.orders.filter_panel.canceled.select
+      # stamps.orders.filter_panel.canceled.select
+      SdcOrders.filter_panel.canceled.click
     when /On Hold/
-      stamps.orders.filter_panel.on_hold.select
+      # stamps.orders.filter_panel.on_hold.select
+      SdcOrders.filter_panel.on_hold.click
     when /Awaiting Shipment/
-      stamps.orders.filter_panel.awaiting_shipment.select
+      # stamps.orders.filter_panel.awaiting_shipment.select
+      SdcOrders.filter_panel.awaiting_shipment.link.click
     else
       # ignore
   end
@@ -17,8 +22,12 @@ Then /^[Ss]elect [Ff]ilter [Pp]anel tab (.*)$/ do |str|
 end
 
 Then /^[Ee]xpect selected [Ff]ilter is (.*)$/ do |expectation|
-  30.times { sleep(0.25); break if stamps.orders.filter_panel.selected_filter == expectation }
-  expect(stamps.orders.filter_panel.selected_filter).to eql expectation
+  if SdcEnv.new_framework
+    #skip for now
+  else
+    30.times { sleep(0.25); break if stamps.orders.filter_panel.selected_filter == expectation }
+    expect(stamps.orders.filter_panel.selected_filter).to eql expectation
+  end
 end
 
 Then /^[Ee]xpect cached Order ID exist in the selected filter$/ do
