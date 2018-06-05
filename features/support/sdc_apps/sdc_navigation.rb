@@ -16,6 +16,7 @@ module SdcNavigation
 
   class SdcNavigationBalance < SdcPage
     page_object(:link, tag: :a) { {xpath: '//*[text()="Balance"]/..'} }
+    page_object(:amount) { {xpath: '//*[contains(@class, "balance")]/a/strong/span'} }
     page_object(:buy_more, tag: :a) { {id: 'buyMorePostageLnk'} }
     page_object(:view_purchase_history, tag: :a) { {xpath: '//*[text()="View Purchase History"]'} }
     page_object(:change_payment_method, tag: :a) { {xpath: '//*[text()="Change Payment Method"]'} }
@@ -46,17 +47,29 @@ module SdcNavigation
     page_object(:auto_fund_account) { {xpath: '//*[text()="Auto-fund account"]'} }
     page_object(:earn_free_credit, tag: :a) { {xpath: '//*[text()="Earn free account credit"]'} }
 
-  #   radios
-  #   (name, chooser, verify, property, property_name)
-    page_object(:buy_10_chooser, tag: :input) { {id: 'sdc-purchasewin-10dradio'} }
-    page_object(:buy_10_verify) { {id: '//*[@id="sdc-purchasewin-10dradio"]/../span'} }
+    page_object(:buy_10_chooser) { {xpath: '//*[@id="sdc-purchasewin-10dradio"]/../label'} }
+    page_object(:buy_10_verify) { {xpath: '//*[@id="sdc-purchasewin-10dradio"]/../../..'} }
+    radio(:buy_10, :buy_10_chooser, :buy_10_verify, "class", "checked")
 
-    radio(:buy_10, :buy_10_chooser, :buy_10_verify, "class", "focus")
+    page_object(:buy_25_chooser) { {xpath: '//*[@id="sdc-purchasewin-25dradio"]/../label'} }
+    page_object(:buy_25_verify) { {xpath: '//*[@id="sdc-purchasewin-25dradio"]/../../..'} }
+    radio(:buy_25, :buy_25_chooser, :buy_25_verify, "class", "checked")
+
+    page_object(:buy_50_chooser) { {xpath: '//*[@id="sdc-purchasewin-50dradio"]/../label'} }
+    page_object(:buy_50_verify) { {xpath: '//*[@id="sdc-purchasewin-50dradio"]/../../..'} }
+    radio(:buy_50, :buy_50_chooser, :buy_50_verify, "class", "checked")
+
+    page_object(:buy_other_chooser) { {xpath: '//*[@id="sdc-purchasewin-otherdradio"]/../label'} }
+    page_object(:buy_other_verify) { {xpath: '//*[@id="sdc-purchasewin-otherdradio"]/../../..'} }
+    radio(:buy_other, :buy_other_chooser, :buy_other_verify, "class", "checked")
+
+    page_object(:buy_other_amount, tag: :input) { {id: 'sdc-purchasewin-otheramount'} }
   end
 
   class SdcNavBalanceCofirmTransaction < SdcPage
     page_object(:title) { {xpath: '//*[text()="Confirm Transaction"]'} }
     page_object(:confirm) { {xpath: '//*[text()="Confirm"]'} }
+    page_object(:body) { {xpath: '//*[@class="sdc-dialoguemodal-confirm-purchase"]'} }
   end
 
   class SdcNavBalanceProcessing < SdcPage
@@ -65,6 +78,7 @@ module SdcNavigation
 
   class SdcNavBalanceTransaction < SdcPage
     page_object(:title) { {xpath: '//*[text()="Transaction Complete"]'} }
+    page_object(:body) { {xpath: '//*[contains(text(), "Your fund request for")]'} }
     page_object(:ok_btn) { {xpath: '//*[text()="OK"]'} }
   end
 

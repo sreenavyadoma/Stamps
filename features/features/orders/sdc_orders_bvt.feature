@@ -425,13 +425,14 @@ Feature:  BVT tests for Orders
   @bvt_purchasing
   Scenario: BVT Purchasing $10
     Then sign-in to orders
+    Then save balance amount
     Then hover on navigation menu balance
     Then click on navigation menu buy more
-    Then on Add Funds modal, purchase 10
-    Then on Add Funds modal, click Purchase button
-    Then Buy Mail Confirm Purchase: Expect text area contains, Please confirm your $10.00 postage purchase.
-    Then Buy Mail Confirm Transction: Click Confirm button
-    Then Buy Mail Purchase Approved: Expect text area contains, Your fund request for $10.00 has been approved.
-    Then Buy Mail Purchase Approved: Click OK button
-    Then Buy Mail: Expect customer balance increased by $10
+    Then on add funds modal, purchase 10
+    Then on add funds modal, click purchase button
+    Then buy mail confirm purchase: expect text area contains, please confirm your $10.00 postage purchase.
+    Then buy mail confirm transction: click confirm button
+    Then buy mail purchase approved: expect text area contains, your fund request for $10.00 has been approved.
+    Then buy mail purchase approved: click ok button
+    Then buy mail: expect customer balance increased by $10
     Then sign out
