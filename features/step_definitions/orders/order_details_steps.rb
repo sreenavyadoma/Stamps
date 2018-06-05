@@ -69,6 +69,12 @@ Then /^in exact address not found module, select row (\d+)$/ do |row|
   expect(SdcWebsite.exact_address_not_found.address(row)).to be_set, "Address row wasn't selected!"
 end
 
+Then /^in exact address not found module click accept$/ do
+  SdcWebsite.exact_address_not_found.accept.click
+  expect(SdcWebsite.exact_address_not_found.title).not_to be_present, "Address modal is still present"
+end
+
+
 Then /^[Ii]ncrement [Oo]rder [Dd]etails Pounds by (\d*)$/ do |str|
   str.to_i.times { stamps.orders.order_details.weight.lb.increment.click }
 end

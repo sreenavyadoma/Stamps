@@ -109,13 +109,13 @@ end
 Then /^expect orders grid recipient is (?:correct|(.*))$/ do |expectation|
   step "pause for 2 seconds"
   expectation = TestData.hash[:full_name] if expectation.nil?
-  if SdcEnv.new_framework
-    #todo - orders grid implementation
-  else
+  # if SdcEnv.new_framework
+  #   #todo - orders grid implementation
+  # else
     expect(TestData.hash[:order_id].values.last).to be_truthy
     10.times { break if stamps.orders.orders_grid.grid_column(:recipient).data(TestData.hash[:order_id].values.last).eql? expectation }
     expect(stamps.orders.orders_grid.grid_column(:recipient).data(TestData.hash[:order_id].values.last)).to eql expectation
-  end
+  # end
 end
 
 Then /^expect orders grid company is (?:correct|(.*))$/ do |expectation|
