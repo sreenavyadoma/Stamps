@@ -1,4 +1,3 @@
-
 Then /^[Oo]n [Oo]rder [Dd]etails form, Expand Manual Items Ordered pane$/ do
   stamps.orders.order_details.items_ordered.expand
 end
@@ -64,20 +63,16 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to a random country i
   step "set Order Details Domestic Ship-To Country to #{TestData.hash[:country]}"
 end
 
-
-
-
-
-
-
-
-
-
-
-
-Then /^[Ii]n Exact Address Not Found module, select row (\d+)$/ do |row|
-  stamps.orders.order_details.ship_to.domestic.ambiguous.address_not_found.row row
+Then /^in exact address not found module, select row (\d+)$/ do |row|
+  SdcWebsite.exact_address_not_found.address(row).set
+  expect(SdcWebsite.exact_address_not_found.address(row)).to be_set, "Address row wasn't selected!"
 end
+
+Then /^in exact address not found module click accept$/ do
+  SdcWebsite.exact_address_not_found.accept.click
+  expect(SdcWebsite.exact_address_not_found.title).not_to be_present, "Address modal is still present"
+end
+
 
 Then /^[Ii]ncrement [Oo]rder [Dd]etails Pounds by (\d*)$/ do |str|
   str.to_i.times { stamps.orders.order_details.weight.lb.increment.click }
@@ -155,9 +150,8 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails Domestic [Ss]hip-[Tt]o Name is (.*)$/ do |s
   expect(stamps.orders.order_details.ship_to.domestic.textarea.text).to include(str)
 end
 
-#validating
-Then /^[Ee]xpect [Oo]rder [Dd]etails Ship From is (?:correct|(.*))$/ do |expectation|
-  expect(stamps.orders.order_details.single_ship_from.textbox.text).to include(expectation.nil? ? TestData.hash[:ship_from] : expectation)
+Then /^expect order details ship from is (?:correct|(.*))$/ do |expectation|
+  expect(SdcOrders.order_details.ship_from.text_field.text_value).to include(expectation.nil? ? TestData.hash[:ship_from] : expectation)
 end
 
 Then /^expect order details is present$/ do
@@ -443,10 +437,9 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails Panel is present$/ do
   expect(stamps.orders.order_details).to be_present
 end
 
-Then /^[Ee]xpect Exact Address Not Found module to appear/ do
-  stamps.orders.order_details.wait_until_present(2)
+Then /^expect exact address not found module to appear/ do
   step 'expect order details is present'
-  expect(stamps.orders.order_details.ship_to.domestic.ambiguous.address_not_found.window_title.text).to eql "Exact Address Not Found"
+  expect(SdcWebsite.exact_address_not_found.title).to be_present, "Exact Address Not Found modal is not present!"
 end
 
 Then /^expect order details reference number is (?:correct|(.*))$/ do |str|

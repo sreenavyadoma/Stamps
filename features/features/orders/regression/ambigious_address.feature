@@ -10,8 +10,8 @@ Feature: Ambigious Address
     Then set Order Details Ship-To ambiguous address to
       | full_name            | company                 | street_address      | city          | state | zip   | country       | phone  |  email |
       | Hillary Clinton | The White House         | 1390 Market Street  | San Francisco | CA    | 94102 | United States |        |        |
-    Then Expect Exact Address Not Found module to appear
-    Then In Exact Address Not Found module, select row 1
+    Then expect exact address not found module to appear
+    Then in exact address not found module, select row 1
     Then set order details ounces to 1
     Then set order details pounds to 1
     Then expect orders grid recipient is Hillary Clinton

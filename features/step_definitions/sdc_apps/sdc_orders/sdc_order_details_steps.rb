@@ -297,7 +297,7 @@ Then /^set order details ounces to (\d+\.?\d*)$/ do |str|
   weight = order_details.weight
   weight.oz.set(str)
   order_details.weight_label.blur_out(ctr: 2)
-  TestData.hash[:pounds] = str
+  TestData.hash[:ounces] = str
 end
 
 Then /^set order details length to (\d*)$/ do |str|
@@ -330,8 +330,7 @@ Then /^set order details height to (\d*)$/ do |str|
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ss]ervice is (?:correct|(.*))$/ do |str|
-  str ||= TestData.hash[:service]
-  expect(SdcOrders.order_details.service.text_field.text_value).to include(str)
+  expect(SdcOrders.order_details.service.text_field.text_value).to include(str || TestData.hash[:service])
 end
 
 Then /^set order details international service to (.*)$/ do |str|
@@ -345,12 +344,10 @@ Then /^set order details international service to (.*)$/ do |str|
   step 'Save Order Details data'
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails [Ii]nternational [Ss]ervice is (?:correct|(.*))$/ do |expectation|
+Then /^expect order details international service is (?:correct|(.*))$/ do |expectation|
   step 'expect order details is present'
-  expect(stamps.orders.order_details.service.textbox.text.parse_service_name).to eql((expectation.nil?) ? TestData.hash[:int_service] : expectation)
+  expect(SdcOrders.order_details.service.text_field.text_value).to include(expectation || TestData.hash[:int_service])
 end
-
-
 
 Then /^[Ww]ait [Uu]ntil [Oo]rder [Dd]etails [Pp]resent(?: (\d+), (.+)|)$/ do |iteration, delay|
   (iteration.zero? ? 20 : iteration).times do

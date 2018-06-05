@@ -22,62 +22,22 @@ Feature:  BVT tests for Orders
     Then expect orders grid zip is 94102
     Then sign out
 
-  @bvt_bulk_update
-  Scenario: BVT Bulk Update International
-
-  # Order #1 (Domestic)
-    Then in Orders Grid, Sort Order Date in Descending Order
-    Then add order 1
-    Then set order details ship-from to default
-    Then set order details ship-to to random address in zone 1
+  @bvt_address_cleansing
+  Scenario: BVT Address Cleansing
+    Then add new order
+    Then set order details ship-to domestic address to
+      | full_name     | company | street_address     | street_address_2| city          | state | zip | country       | phone          |  email           |
+      | Euan Davidson | Betfair | 1350 Market Street |                 | San Francisco | CA    |     | United States | (415) 123-5555 | rtest@stamps.com |
     Then set order details service to PM Package
     Then set order details ounces to 1
-    Then pause for 1 second
-
-  # Order #2 (International)
-    Then add order 2
-    Then set order details ship-to international address to
-      | full_name     | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country | phone        |  email        |
-      | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone | Random email  |
-    Then set order details weight to 0 lb 1 oz
-    Then set order details international service to PMEI Package/Flat/Thick Envelope
     Then blur out on order details form
-
-  # Check 1st two orders
-    Then pause for 1 second
-    Then check order 1
-    Then pause for 1 second
-    Then check order 2
-    Then pause for 1 seconds
-
-  # Updating order details
-    Then expect Bulk Update is present
-    Then blur out on multi order details form
-    Then set Bulk Update Ship From to default
-    Then set Bulk Update domestic service to PM Large Package
-    Then set Bulk Update International service to PMI Package/Flat/Thick Envelope
-    Then click Bulk Update Update Order button
-
-  # Uncheck both orders
-    Then pause for 1 second
-    Then uncheck order 1
-    Then pause for 1 second
-    Then uncheck order 2
-    Then pause for 1 second
-
-  # verify fields in 1st order
-    Then check order 1
-    Then expect Order Details Ship From is correct
-    Then expect Order Details service is PM Large Package
-    Then pause for 1 second
-    Then uncheck order 1
-    Then pause for 1 second
-
-  # verify fields in 2nd order
-    Then check order 2
-    Then expect Order Details Ship From is correct
-    Then expect Order Details international service is PMI Package/Flat/Thick Envelope
-    Then uncheck order 2
+    Then pause for 2 seconds
+    Then expect orders grid recipient is Euan Davidson
+    Then expect orders grid company is Betfair
+    Then expect orders grid address is 1350 Market Street
+    Then expect orders grid city is San Francisco
+    Then expect orders grid state is CA
+    Then expect orders grid zip is 94102
     Then sign out
 
   @bvt_printing
