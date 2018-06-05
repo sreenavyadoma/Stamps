@@ -2,14 +2,9 @@
 Then /^set order details ship-to to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
   step 'show order details form ship-to fields'
   TestData.hash[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address))
-  if SdcEnv.new_framework
-    order_details = SdcOrders.order_details
-    domestic = order_details.ship_to.domestic
-    domestic.address.click
-    domestic.address.set(TestData.hash[:ship_to_domestic])
-  else
-    stamps.orders.order_details.ship_to.domestic.set(TestData.hash[:ship_to_domestic])
-  end
+  domestic = SdcOrders.order_details.ship_to.domestic
+  domestic.address.click
+  domestic.address.set(TestData.hash[:ship_to_domestic])
   step 'Save Order Details data'
   step 'hide order details form Ship-To fields'
 end
@@ -33,7 +28,6 @@ Then /^scroll into view order details associated item (\d+)$/ do |item_number|
   associated_item.description(item_number).scroll_into_view
   associated_item.id(item_number).scroll_into_view
 end
-
 
 Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) qty to (.*)$/ do |item_number, qty|
   step 'expect order details is present'
