@@ -144,7 +144,3 @@ Feature: PP-MVP: Dashboard Page Single Contract
      Then PP: expect CSV file to be downloaded with correct file name
      Then PP: delete existing csv file
 
-#  Then PP: set dashboard page from date field to 12/16/18
-#  Then PP: set dashboard page to date field to 12/16/19
-#  Then PP: click on the dashboard page download button
-#  Then PP: expect error message text to be Error No data found for that date range. Please try again with different dates.
