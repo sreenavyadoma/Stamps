@@ -293,6 +293,12 @@ Then /^PP: expect dashboard page from date field exists$/ do
   expect(PartnerPortal.dashboard_page.from_date_field).to be_present, 'From Date field DOES NOT exist on dashboard page'
 end
 
+Then /^PP: expect dashboard page from data field placeholder to be (.*)$/ do |str|
+  expect(PartnerPortal.dashboard_page.from_date_field.attribute_value('placeholder')).to eql(str)
+end
+
+
+
 Then /^PP: expect dashboard page from date date picker exists$/ do
   expect(PartnerPortal.dashboard_page.from_date_date_picker).to be_present, 'From Date Picker DOES NOT exist on dashboard page'
 end
@@ -306,6 +312,12 @@ end
 Then /^PP: expect dashboard page to date field exists$/ do
   expect(PartnerPortal.dashboard_page.to_date_field).to be_present, 'To Date field DOES NOT exist on dashboard page'
 end
+
+Then /^PP: expect dashboard page to date field place holder to be (.*)$/ do |str|
+  expect(PartnerPortal.dashboard_page.to_date_field.attribute_value('placeholder')).to eql(str)
+end
+
+
 
 Then /^PP: expect dashboard page to date picker exists$/ do
   expect(PartnerPortal.dashboard_page.to_date_picker).to be_present, 'To Date Picker DOES NOT exist on dashboard page'
