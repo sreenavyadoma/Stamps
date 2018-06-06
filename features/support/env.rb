@@ -2,6 +2,7 @@ $LOAD_PATH << File.expand_path('../../lib', __FILE__)
 $LOAD_PATH << File.expand_path('lib/features/orders', __FILE__)
 $LOAD_PATH << File.expand_path('features/support/lib', __FILE__)
 
+require 'mysql2'
 require 'data_magic'
 require 'rake'
 require 'logger'

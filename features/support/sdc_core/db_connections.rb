@@ -20,12 +20,24 @@ module Stamps
 
   class UserCredentialsConn < BasicObject
     def initialize
-      host = data_for(:database, {})['mysql']['host']
-      username = data_for(:database, {})['mysql']['username']
-      password = data_for(:database, {})['mysql']['password']
-      @connection = MySqlConnDecorator.new(host: host, username: username, password: password)
+      # host = data_for(:database, {})['mysql']['host']
+      # username = data_for(:database, {})['mysql']['username']
+      # password = data_for(:database, {})['mysql']['password']
+      # #@connection = MySqlConnDecorator.new(host: host, username: username, password: password)
+
+      mysql2 = data_for(:database, {})['mysql2']
+      server = mysql2['server']
+      database = mysql2['database']
+      port = mysql2['port']
+      username = mysql2['username']
+      password = mysql2['password']
+      azure = mysql2['azure']
+      @connection = SQLServerClient.new(server: server, database: database, username: username, password: password, port: port, azure:azure)
+
       @connection.automatic_close = true
       @connection.select_db('stamps')
+
+
     end
 
     def respond_to_missing?(name, include_private = false)
