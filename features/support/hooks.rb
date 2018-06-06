@@ -10,7 +10,7 @@ include DataMagic
 include PartnerPortal
 
 Before do |scenario|
-  "#{Dir.getwd}/download"
+  Dir.mkdir("#{Dir.getwd}/download")
   SdcEnv.scenario = scenario
   SdcTest.start
 end
