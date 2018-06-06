@@ -295,7 +295,7 @@ class SdcTest
 
     def require_gems
       require 'appium_lib'
-      require 'appium_lib_core'
+      #require 'appium_lib_core'
       #require 'mysql2' if SdcEnv.usr.nil? || SdcEnv.usr.casecmp('default').zero?
 
       if /rates/.match(SdcEnv.scenario.tags[0].name)
