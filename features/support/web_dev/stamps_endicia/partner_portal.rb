@@ -108,6 +108,10 @@ module PartnerPortal
           SdcPage.browser.execute_script('return window.ChartsData.Charts.RevenueShare.labels')
     end
 
+    def pp_rand_date from = 0.0, to = Time.now
+        Time.at(from + rand * (to.to_f - from.to_f))
+    end
+
   end
 
   class PPResetPasswordPage < SdcPage

@@ -97,52 +97,54 @@ Feature: PP-MVP: Dashboard Page Single Contract
 
   @pp_dashboard_single_contract_export_data_ui_validation
   Scenario: PP: Dashboard Page Single Contract Export Data Validation
-    #verify UI
-    Then PP: expect export data header to exists
-    Then PP: expect export data content to be Select a date range to export transaction level data as a CSV file.
-    Then PP: expect export from date label to be From:
-    Then PP: expect dashboard page from date field exists
-    Then PP: expect dashboard page from data field placeholder to be MM/DD/YY
-    Then PP: expect dashboard page from date date picker exists
-    Then PP: expect export to date label to be To:
-    Then PP: expect dashboard page to date field exists
-    Then PP: expect dashboard page to date field place holder to be MM/DD/YY
-    Then PP: expect dashboard page to date picker exists
-    Then PP: expect dashboard page download button exists
-
-   #validate different error messages of the from date and to date fields
-    Then PP: click on the dashboard page download button
-    Then PP: expect dashboard page from date field error message index 1 to be This field is required.
-    Then PP: expect dashboard page to date field error message index 1 to be This field is required.
-    Then PP: set dashboard page from date field to 25/25/25
-    Then PP: set dashboard page to date field to 25/25/25
-    Then PP: blur out on dashboard page
-    Then PP: expect dashboard page from date field error message index 1 to be This field is required.
-    Then PP: expect dashboard page to date field error message index 1 to be This field is required.
-    Then PP: set dashboard page from date field to 2/2/18
-    Then PP: set dashboard page to date field to 2/2/17
-    Then PP: blur out on dashboard page
-    Then PP: expect dashboard page from date field error message index 1 to be To Date must be after From Date.
-    Then PP: expect dashboard page to date field error message index 1 to be To Date must be after From Date.
-
+#    #verify UI
+#    Then PP: expect export data header to exists
+#    Then PP: expect export data content to be Select a date range to export transaction level data as a CSV file.
+#    Then PP: expect export from date label to be From:
+#    Then PP: expect dashboard page from date field exists
+#    Then PP: expect dashboard page from data field placeholder to be MM/DD/YY
+#    Then PP: expect dashboard page from date date picker exists
+#    Then PP: expect export to date label to be To:
+#    Then PP: expect dashboard page to date field exists
+#    Then PP: expect dashboard page to date field place holder to be MM/DD/YY
+#    Then PP: expect dashboard page to date picker exists
+#    Then PP: expect dashboard page download button exists
+#
+#   #validate different error messages of the from date and to date fields
+#    Then PP: click on the dashboard page download button
+#    Then PP: expect dashboard page from date field error message index 1 to be This field is required.
+#    Then PP: expect dashboard page to date field error message index 1 to be This field is required.
+#    Then PP: set dashboard page from date field to 25/25/25
+#    Then PP: set dashboard page to date field to 25/25/25
+#    Then PP: blur out on dashboard page
+#    Then PP: expect dashboard page from date field error message index 1 to be This field is required.
+#    Then PP: expect dashboard page to date field error message index 1 to be This field is required.
+#    Then PP: set dashboard page from date field to 2/2/18
+#    Then PP: set dashboard page to date field to 2/2/17
+#    Then PP: blur out on dashboard page
+#    Then PP: expect dashboard page from date field error message index 1 to be To Date must be after From Date.
+#    Then PP: expect dashboard page to date field error message index 1 to be To Date must be after From Date.
+#
 #    #verify functionality export of data
-     Then PP: set dashboard page from date field to 02/16/17
-     Then PP: set dashboard page to date field to 02/18/18
-     Then PP: delete existing csv file
-     Then PP: click on the dashboard page download button
-     Then PP: expect dashboard page download modal exists
-     Then PP: expect dashboard page download modal header to be Downloading Report
-     Then PP: expect dashboard page download modal paragraph index 1 to be
-     """
-     Your report is being downloaded now. This may take a while for larger data sets.
-     """
-      Then PP: expect dashboard page download modal paragraph index 2 to be
-      """
-      In the meantime, you can close this window and continue to use the portal.
-      """
-     Then PP: click on the dashboard page download modal ok button
-     Then PP: expect from date and to date are cleared
-     Then PP: Expect a record of Log Type 3 event is added in Audit Records for user
-     Then PP: expect CSV file to be downloaded with correct file name
-     Then PP: delete existing csv file
+#    Then PP: set dashboard page from date field to 02/16/17
+#    Then PP: set dashboard page to date field to 02/18/18
+#    Then PP: delete existing csv file
+#    Then PP: click on the dashboard page download button
+#    Then PP: expect dashboard page download modal exists
+#    Then PP: expect dashboard page download modal header to be Downloading Report
+#    Then PP: expect dashboard page download modal paragraph index 1 to be
+#     """
+#     Your report is being downloaded now. This may take a while for larger data sets.
+#     """
+#    Then PP: expect dashboard page download modal paragraph index 2 to be
+#      """
+#      In the meantime, you can close this window and continue to use the portal.
+#      """
+#    Then PP: click on the dashboard page download modal ok button
+#    Then PP: expect from date and to date are cleared
+#    Then PP: Expect a record of Log Type 3 event is added in Audit Records for user
+#    Then PP: expect CSV file to be downloaded with correct file name
+#    Then PP: delete existing csv file
 
+
+    Then PP: dashboard page export data for 100 dates ranges

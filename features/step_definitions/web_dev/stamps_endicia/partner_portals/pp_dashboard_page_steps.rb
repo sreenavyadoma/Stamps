@@ -331,23 +331,28 @@ Then /^PP: expect dashboard page from date field error message index (\d+) to be
 
 end
 
-Then /^PP: set dashboard page from date field to (.*)$/ do |str|
+Then /^PP: set dashboard page from date field to (?:random date|(.*))$/ do |str|
+  step "PP: generate random date for from and to date fields"
+
   from_date_field =  PartnerPortal.dashboard_page.from_date_field
   while from_date_field.text_value != nil
     from_date_field.send_keys(:backspace)
   end
-  from_date_field.set(TestData.hash[:from_date] = str)
+
+  from_date_field.set(TestData.hash[:from_date] = (str.nil?) ? (TestData.hash[:from_date]) : str)
+  from_date_field.parent.click
 
 end
 
-Then /^PP: set dashboard page to date field to (.*)$/ do |str|
+Then /^PP: set dashboard page to date field to (?:random date|(.*))$/ do |str|
   to_date_field =  PartnerPortal.dashboard_page.to_date_field
 
   while to_date_field.text_value != nil
     to_date_field.send_keys(:backspace)
   end
 
-  to_date_field.set(TestData.hash[:to_date] = str)
+  to_date_field.set(TestData.hash[:to_date] = (str.nil?) ? (TestData.hash[:to_date]) : str)
+  to_date_field.parent.click
 end
 
 Then /^PP: expect from date and to date are cleared$/ do
@@ -462,5 +467,37 @@ Then /^PP: expect CSV file to be downloaded with correct file name$/ do
 end
 
 
+Then /^PP: generate random date for from and to date fields$/ do
+  last_update_on = PartnerPortal.dashboard_page.contract_last_updated_on.text_value.split(':').last.strip
+  date = last_update_on.split('/')
+  TestData.hash[:last_update_on] = date[2] + ',' + date[0] + ',' + date[1]
 
+  tmp = Date.strptime(last_update_on, "%m/%d/%Y")
+  from_date =  (tmp.year - rand(1..10)).to_s + ',' + tmp.month.to_s + ',' + tmp.day.to_s
+
+  rand_from_date = PartnerPortal.dashboard_page.pp_rand_date(Time.local(from_date), Time.local(TestData.hash[:last_update_on]))
+  from_date = rand_from_date.to_date.to_s.split('-')
+  TestData.hash[:from_date] = from_date[1].to_s + '/' + from_date[2].to_s + '/' + (from_date[0][2]+ from_date[0][3]).to_s
+
+  to_date = rand_from_date.to_date.to_s.gsub('-', ',')
+  to_date =  PartnerPortal.dashboard_page.pp_rand_date(Time.local(to_date), Time.local(TestData.hash[:last_update_on]))
+  to_date = to_date.to_date.to_s.split('-')
+  TestData.hash[:to_date] = to_date[1].to_s + '/' + to_date[2].to_s + '/' + (to_date[0][2]+ to_date[0][3]).to_s
+
+end
+
+Then /PP: dashboard page export data for (\d+) dates ranges$/ do |number|
+  number.times do
+    step "PP: set dashboard page from date field to random date"
+    step "PP: set dashboard page to date field to random date"
+    step "PP: delete existing csv file"
+    step "PP: click on the dashboard page download button"
+    step "PP: click on the dashboard page download modal ok button"
+    step "PP: expect from date and to date are cleared"
+    step "PP: Expect a record of Log Type 3 event is added in Audit Records for user"
+    step "PP: expect CSV file to be downloaded with correct file name"
+    step "PP: delete existing csv file"
+  end
+
+end
 
