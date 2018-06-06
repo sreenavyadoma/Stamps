@@ -60,6 +60,9 @@ Check mysql2 gem
 gem list mysql2
 
 
+gem install mysql2 --platform=ruby -- '--with-mysql-lib="C:\mysqlx64\lib" --with-mysql-include="C:\mysqlx64\include"'
+gem install mysql2 --no-rdoc --no-ri -- '--with-mysql-lib="C:\mysqlx64\lib" --with-mysql-include="C:\mysqlx64\include"'
+
 ======================================================================================================
 
   You've installed the binary version of mysql2.
