@@ -373,9 +373,6 @@ Then /^PP: expect dashboard page to date field error message index (\d+) to be (
 end
 
 Then /^PP: click on the dashboard page download button$/ do
-  Dir.mkdir("#{Dir.getwd}/download")
-  sleep 1
-  #Dir.exist?("#{Dir.getwd}/download")
   PartnerPortal.dashboard_page.download.send_keys(:enter)
 end
 
@@ -406,12 +403,10 @@ Then /^PP: click on the dashboard page download modal ok button$/ do
 end
 
 Then /^PP: delete existing csv file$/ do
-
   contract= PartnerPortal.dashboard_page.contract_header.text_value.split(':').last.strip
   TestData.hash[:file_name_expected] = 'Partnerportal_'+ contract +'_'+  TestData.hash[:from_date].gsub('/', '') + '_to_' + TestData.hash[:to_date].gsub('/', '')+ '.csv'
-  file = data_for(:download, {})['download_file_path'] + TestData.hash[:file_name_expected]
+  file = "#{Dir.getwd}/download" + TestData.hash[:file_name_expected]
   File.delete(file) unless File.exist?(file) == false
-
 end
 
 
