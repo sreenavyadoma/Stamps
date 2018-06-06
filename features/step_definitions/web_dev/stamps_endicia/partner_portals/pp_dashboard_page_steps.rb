@@ -413,8 +413,8 @@ end
 
 
 Then /^PP: expect CSV file to be downloaded with correct file name$/ do
-  #download_directory = "#{Dir.pwd}/binaries/download"
-  download_directory = data_for(:download, {})['download_file_path']
+  download_directory = "#{Dir.getwd}/download"
+  #download_directory = data_for(:download, {})['download_file_path']
   downloads_before = Dir.entries download_directory
 
   case(SdcEnv.browser)

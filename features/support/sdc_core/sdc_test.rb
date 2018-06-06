@@ -163,10 +163,13 @@ class SdcTest
               prefs = {
                   download: {
                       prompt_for_download: false,
-                      default_directory: data_for(:download, {})['download_file_path']
+                      #default_directory: data_for(:download, {})['download_file_path']
                       #default_directory: "#{Dir.pwd}/binaries/download"
+                      default_directory: "#{Dir.getwd}/download"
                   }
               }
+
+                File.dirname(__FILE__)
               kill('taskkill /im chrome.exe /f')
               SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, options: {prefs: prefs}, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
 
