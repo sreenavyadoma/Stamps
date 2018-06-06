@@ -19,19 +19,16 @@ Then /^uncheck orders grid order id (cached|\d+)$/ do |order_id|
   end
 end
 
-When /^[Cc]heck(?: [O]rders)?(?: [Gg]rid)? [Rr]ow (\d+)$/ do |row|
+When /^[Cc]heck(?: [Oo]rders)?(?: [Gg]rid)? [Rr]ow (\d+)$/ do |row|
   stamps.orders.orders_grid.grid_column(:checkbox).check(row)
   expect(checked = stamps.orders.orders_grid.grid_column(:checkbox).checked?(
       row)).to be(true), "Row #{row} is #{checked ? 'checked' : 'unchecked'}"
 end
 
-When /^[Uu]ncheck(?: [O]rders)?(?: [Gg]rid)? [Rr]ow (\d+)$/ do |row|
-  if SdcEnv.new_framework
-    #todo - orders grid implementation
-  else
-    expect(stamps.orders.orders_grid.grid_column(:checkbox).uncheck(
-        row)).to be(false), "Unable to uncheck Orders Grid row #{row}"
-  end
+When /^[Uu]ncheck(?: [Oo]rders)?(?: [Gg]rid)? [Rr]ow (\d+)$/ do |row|
+  expect(stamps.orders.orders_grid.grid_column(:checkbox).uncheck(
+      row)).to be(false), "Unable to uncheck Orders Grid row #{row}"
+
 end
 
 Then /^expect orders grid store is (.*)$/ do |expectation|
@@ -109,23 +106,15 @@ end
 Then /^expect orders grid recipient is (?:correct|(.*))$/ do |expectation|
   step "pause for 2 seconds"
   expectation = TestData.hash[:full_name] if expectation.nil?
-  if SdcEnv.new_framework
-    #todo - orders grid implementation
-  else
-    expect(TestData.hash[:order_id].values.last).to be_truthy
-    10.times { break if stamps.orders.orders_grid.grid_column(:recipient).data(TestData.hash[:order_id].values.last).eql? expectation }
-    expect(stamps.orders.orders_grid.grid_column(:recipient).data(TestData.hash[:order_id].values.last)).to eql expectation
-  end
+  expect(TestData.hash[:order_id].values.last).to be_truthy
+  10.times { break if stamps.orders.orders_grid.grid_column(:recipient).data(TestData.hash[:order_id].values.last).eql? expectation }
+  expect(stamps.orders.orders_grid.grid_column(:recipient).data(TestData.hash[:order_id].values.last)).to eql expectation
 end
 
 Then /^expect orders grid company is (?:correct|(.*))$/ do |expectation|
   expectation = TestData.hash[:company] if expectation.nil?
-  if SdcEnv.new_framework
-    #todo - orders grid implementation
-  else
-    10.times { break if stamps.orders.orders_grid.grid_column(:company).data(TestData.hash[:order_id].values.last).eql? expectation }
-    expect(stamps.orders.orders_grid.grid_column(:company).data(TestData.hash[:order_id].values.last)).to eql expectation
-  end
+  10.times { break if stamps.orders.orders_grid.grid_column(:company).data(TestData.hash[:order_id].values.last).eql? expectation }
+  expect(stamps.orders.orders_grid.grid_column(:company).data(TestData.hash[:order_id].values.last)).to eql expectation
 end
 
 Then /^expect orders grid address is (?:correct|(.*))$/ do |expectation|
@@ -140,32 +129,20 @@ end
 
 Then /^expect orders grid city is (?:correct|(.*))$/ do |expectation|
   expectation = TestData.hash[:city] if expectation.nil?
-  if SdcEnv.new_framework
-    #todo - orders grid implementation
-  else
-    10.times { break if stamps.orders.orders_grid.grid_column(:city).data(TestData.hash[:order_id].values.last).eql? expectation }
-    expect(stamps.orders.orders_grid.grid_column(:city).data(TestData.hash[:order_id].values.last)).to eql expectation
-  end
+  10.times { break if stamps.orders.orders_grid.grid_column(:city).data(TestData.hash[:order_id].values.last).eql? expectation }
+  expect(stamps.orders.orders_grid.grid_column(:city).data(TestData.hash[:order_id].values.last)).to eql expectation
 end
 
 Then /^expect orders grid state is (?:correct|(.*))$/ do |expectation|
   expectation = TestData.hash[:state] if expectation.nil?
-  if SdcEnv.new_framework
-    #todo - orders grid implementation
-  else
-    10.times { break if stamps.orders.orders_grid.grid_column(:state).data(TestData.hash[:order_id].values.last).eql? expectation }
-    expect(stamps.orders.orders_grid.grid_column(:state).data(TestData.hash[:order_id].values.last)).to eql expectation
-  end
+  10.times { break if stamps.orders.orders_grid.grid_column(:state).data(TestData.hash[:order_id].values.last).eql? expectation }
+  expect(stamps.orders.orders_grid.grid_column(:state).data(TestData.hash[:order_id].values.last)).to eql expectation
 end
 
 Then /^expect orders grid zip is (?:correct|(.*))$/ do |expectation|
   expectation = TestData.hash[:zip] if expectation.nil?
-  if SdcEnv.new_framework
-    #todo - orders grid implementation
-  else
-    10.times { break if stamps.orders.orders_grid.grid_column(:zip).data(TestData.hash[:order_id].values.last).eql? expectation }
-    expect(stamps.orders.orders_grid.grid_column(:zip).data(TestData.hash[:order_id].values.last)).to include(expectation)
-  end
+  10.times { break if stamps.orders.orders_grid.grid_column(:zip).data(TestData.hash[:order_id].values.last).eql? expectation }
+  expect(stamps.orders.orders_grid.grid_column(:zip).data(TestData.hash[:order_id].values.last)).to include(expectation)
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Country is (?:correct|(.*))$/ do |expectation|

@@ -59,6 +59,9 @@ Run Redmine's install `bundle install --without development test'
 Check mysql2 gem
 gem list mysql2
 
+gem install eventmachine --platform ruby
+gem install mysql2 --platform=ruby -- '--with-mysql-lib="C:\mysqlx64\lib" --with-mysql-include="C:\mysqlx64\include"'
+gem install mysql2 --no-rdoc --no-ri -- '--with-mysql-lib="C:\mysqlx64\lib" --with-mysql-include="C:\mysqlx64\include"'
 
 ======================================================================================================
 

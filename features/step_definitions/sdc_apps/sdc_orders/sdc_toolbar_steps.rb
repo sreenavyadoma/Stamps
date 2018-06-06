@@ -21,6 +21,12 @@ Then /^add order (\d+)$/ do |count|
   TestData.hash[:ord_id_ctr] += 1
 end
 
+Then /^wait until orders available$/ do
+  step 'wait for js to stop'
+  SdcOrders.toolbar.add.wait_until_present(timeout: 10)
+  SdcOrders.grid.body.wait_until_present(timeout: 20)
+end
+
 Then /^Save Order Details data$/ do
   step 'expect order details is present'
   TestData.hash[:country] = SdcOrders.order_details.ship_to.domestic.country.text_field.text_value
