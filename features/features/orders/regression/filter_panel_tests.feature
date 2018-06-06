@@ -102,7 +102,7 @@ Feature: Orders Filter Panel
 
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
-    Then set Orders print modal printer
+    Then set orders print modal printer
     Then click print modal print button
 
     Then select Filter Panel tab Shipped

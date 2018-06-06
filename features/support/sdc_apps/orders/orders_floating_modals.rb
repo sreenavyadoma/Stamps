@@ -97,8 +97,8 @@ module SdcOrders
       page_object(:text_field, tag: :text_field) { {id: 'sdc-printpostagewindow-printerdroplist-inputEl'} }
       page_object(:drop_down) { {id: 'sdc-printpostagewindow-printerdroplist-trigger-picker'} }
 
-      def selection(str)
-        page_object(:selection_obj) { {xpath: "//li[text()='#{str}']"} }
+      def selection_element(name: :selection, value: 'factory')
+        page_object(name) { {xpath: "//li[text()='#{value}']"} }
       end
     end
 
