@@ -374,6 +374,8 @@ end
 
 Then /^PP: click on the dashboard page download button$/ do
   Dir.mkdir("#{Dir.getwd}/download")
+  sleep 1
+  #Dir.exist?("#{Dir.getwd}/download")
   PartnerPortal.dashboard_page.download.send_keys(:enter)
 end
 
