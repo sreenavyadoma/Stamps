@@ -63,6 +63,22 @@ gem install eventmachine --platform ruby
 gem install mysql2 --platform=ruby -- '--with-mysql-lib="C:\mysqlx64\lib" --with-mysql-include="C:\mysqlx64\include"'
 gem install mysql2 --no-rdoc --no-ri -- '--with-mysql-lib="C:\mysqlx64\lib" --with-mysql-include="C:\mysqlx64\include"'
 
+gem install mysql2 --platform=ruby -- '--with-mysql-dir="C:\mysqlx64"'
+
+rake authentication BROWSER=ff URL=stg USR=default
+
+####
+Download C-Connector from MYSQL (note your version of Ruby -- if you're using 64 bit, download the 64 bit version)
+
+Unzip / Install the MYSQL C-Connector folder onto your HDD (don't have any spaces in the path)
+
+Run the following command: gem install mysql2 --platform=ruby -- '--with-mysql-dir="C:/your-mysql-connector-path"'
+
+This should install the gem with the files it needs
+
+Then you can copy libmysql.dll from C:/your-mysql-connector-path -> c:/your-ruby-install/bin`
+######
+
 ======================================================================================================
 
   You've installed the binary version of mysql2.
