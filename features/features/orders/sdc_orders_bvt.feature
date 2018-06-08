@@ -525,5 +525,8 @@ Feature:  BVT tests for Orders
     Then set orders print modal printer
     Then click print modal print button
     Then select orders filter shipped tab
+    Then select orders filter awaiting shippment tab
+    Then select orders filter shipped tab
+    Then in Orders Grid, Sort Order Date in Descending Order
     Then expect cached order id is in orders grid row 1
     Then sign out

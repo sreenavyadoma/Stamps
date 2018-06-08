@@ -15,7 +15,13 @@ Then /^[Ss]earch filtered Orders for cached Ship-To email$/ do
   step "search Orders for #{TestData.hash[:email]} expecting to find at least 1"
 end
 
+Then /^select orders filter awaiting shippment tab$/ do
+  step 'wait for js to stop'
+  SdcOrders.filter_panel.awaiting_shipment.link.click
+end
+
 Then /^select orders filter shipped tab$/ do
+  step 'wait for js to stop'
   SdcOrders.filter_panel.shipped.click
 end
 
