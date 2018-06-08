@@ -67,6 +67,13 @@ database:
     host: 172.16.13.237
     username: jenkins
     password: Jenkins123!
+  mysql2:
+    server: 172.16.13.237
+    database: stamps
+    port: 3306
+    username: jenkins
+    password: Jenkins123!
+    azure: false
 
 supported_stores:
   paypal: PayPal
