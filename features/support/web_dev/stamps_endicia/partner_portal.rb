@@ -26,16 +26,14 @@ module PartnerPortal
     button(:login_label) { { xpath: '//button[@label="Log In"]/span' } }
     link(:forgot_pw) { { xpath: '//a[@href="/reset-password/request"]' } }
 
-    page_url { |env| "https://partner.#{env}.stamps.com/" }
+    page_url { |env| "https://partner.#{env}stamps.com/" }
 
     def self.visit
       super(case SdcEnv.env
             when :qacc
-              'qacc'
-            when :qasc
-              'sdcwebsite.qasc'
+              'qacc.'
             when :stg
-              'staging'
+              'staging.'
             when :prod
               ''
             else
@@ -127,16 +125,14 @@ module PartnerPortal
     page_object(:email_error) { { xpath:  '//*[@name="email"]/div/div'} }
 
 
-    page_url { |env| "https://partner.#{env}.stamps.com/reset-password/request" }
+    page_url { |env| "https://partner.#{env}stamps.com/reset-password/request" }
 
     def self.visit
       super(case SdcEnv.env
             when :qacc
-              'qacc'
-            when :qasc
-              'sdcwebsite.qasc'
+              'qacc.'
             when :stg
-              'staging'
+              'staging.'
             when :prod
               ''
             else
@@ -150,16 +146,14 @@ module PartnerPortal
     #header
     page_object(:header) { { xpath:  '//h1[contains(text(), "Reset Email Sent")]'} }
 
-    page_url { |env| "https://partner.#{env}.stamps.com/reset-password/request/confirmation" }
+    page_url { |env| "https://partner.#{env}stamps.com/reset-password/request/confirmation" }
 
     def self.visit
       super(case SdcEnv.env
             when :qacc
-              'qacc'
-            when :qasc
-              'sdcwebsite.qasc'
+              'qacc.'
             when :stg
-              'staging'
+              'staging.'
             when :prod
               ''
             else
@@ -169,16 +163,14 @@ module PartnerPortal
   end
 
   class PPSetPasswordPage < SdcPage
-    page_url { |env| "https://partner.#{env}.stamps.com/set-password" }
+    page_url { |env| "https://partner.#{env}stamps.com/set-password" }
 
     def self.visit
       super(case SdcEnv.env
             when :qacc
-              'qacc'
-            when :qasc
-              'sdcwebsite.qasc'
+              'qacc.'
             when :stg
-              'staging'
+              'staging.'
             when :prod
               ''
             else
@@ -188,16 +180,14 @@ module PartnerPortal
   end
 
   class PPError404Page < SdcPage
-    page_url { |env| "https://partner.#{env}.stamps.com/error-404" }
+    page_url { |env| "https://partner.#{env}stamps.com/error-404" }
 
     def self.visit
       super(case SdcEnv.env
             when :qacc
-              'qacc'
-            when :qasc
-              'sdcwebsite.qasc'
+              'qacc.'
             when :stg
-              'staging'
+              'staging.'
             when :prod
               ''
             else
@@ -208,16 +198,14 @@ module PartnerPortal
   end
 
   class PPError500Page < SdcPage
-    page_url { |env| "https://partner.#{env}.stamps.com/error-500" }
+    page_url { |env| "https://partner.#{env}stamps.com/error-500" }
 
     def self.visit
       super(case SdcEnv.env
             when :qacc
-              'qacc'
-            when :qasc
-              'sdcwebsite.qasc'
+              'qacc.'
             when :stg
-              'staging'
+              'staging.'
             when :prod
               ''
             else
