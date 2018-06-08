@@ -524,5 +524,6 @@ Feature:  BVT tests for Orders
     Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
     Then set orders print modal printer
     Then click print modal print button
-    Then expect cached order id is not in orders grid row 1
+    Then select orders filter shipped tab
+    Then expect cached order id is in orders grid row 1
     Then sign out

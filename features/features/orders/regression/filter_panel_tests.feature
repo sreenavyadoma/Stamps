@@ -24,7 +24,7 @@ Feature: Orders Filter Panel
 
     Then add new order
     Then expect selected Filter is Awaiting Shipment
-    Then expect cached Order ID is in Orders Grid row 1
+    Then expect cached order id is in orders grid row 1
 
     Then check orders grid order id cached
     Then select Grid Toolbar Move menu item Move to On Hold

@@ -226,11 +226,7 @@ Then /^[Ss]elect [Pp]rinter \"(.*)\"$/ do |printer|
 end
 
 Then /^close print modal$/ do
-  if SdcEnv.new_framework
-    SdcOrders.modals.print.close.click
-  else
-    stamps.orders.modals.orders_print_modal.close
-  end
+  SdcOrders.modals.print.close.click
 end
 
 Then /^Close Reprint Modal$/ do
