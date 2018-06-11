@@ -142,10 +142,16 @@ class SdcTest
 
             when :edge
               kill('taskkill /im MicrosoftEdge.exe /f')
+              system 'C:\Stamps\binaries\edge_rdp_unlock.bat"'
+
               SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
 
             when :firefox
               kill('taskkill /im firefox.exe /f')
+              if SdcEnv.scenario.name.include? 'webdev_download'
+                Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
+              end
+
               unless SdcEnv.firefox_profile
                 SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
               else
@@ -168,6 +174,9 @@ class SdcTest
                   }
               }
               kill('taskkill /im chrome.exe /f')
+              if SdcEnv.scenario.name.include? 'webdev_download'
+                Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
+              end
               SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, options: {prefs: prefs}, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
 
               SdcPage.browser.driver.manage.timeouts.page_load = 12
@@ -211,6 +220,10 @@ class SdcTest
           end
 
         elsif SdcEnv.browser_mobile_emulator
+          if SdcEnv.scenario.name.include? 'webdev_download'
+            Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
+          end
+
            arg_arr = SdcEnv.browser_mobile_emulator.split(',')
           if arg_arr.size != 2
             raise ArgumentError, "Wrong number of arguments. Expected 2, Got #{arg_arr.size}"

@@ -8,7 +8,7 @@ module SdcEnv
   ANDROID = %i[samsung_galaxy nexus_5x].freeze unless Object.const_defined?('SdcEnv::ANDROID')
 
   class << self
-    attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :verbose,
+    attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :debug,
                   :printer, :browser, :hostname, :mobile, :scenario,
                   :sauce_device, :test_name, :log_level, :driver_log_level,
                   :browser_mobile_emulator, :android, :ios, :firefox_profile,
