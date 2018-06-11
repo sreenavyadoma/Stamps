@@ -287,7 +287,7 @@ class SdcTest
       SdcEnv.env ||= test_env(ENV['URL'])
       SdcEnv.max_window ||= ENV['MAX_WINDOW'].nil? ? true : ENV['MAX_WINDOW'].casecmp('true').zero?
       SdcEnv.jenkins = ENV['JENKINS'].nil? ? true : ENV['JENKINS'].casecmp('true').zero?
-      SdcEnv.web_dev = ENV['web_dev'] if ENV['WEB_DEV']
+      SdcEnv.web_dev = ENV['web_dev']
 
       #deprecated
       SdcEnv.sdc_app ||= ENV['WEB_APP'].downcase.to_sym unless ENV['WEB_APP'].nil?
