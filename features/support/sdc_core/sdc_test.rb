@@ -143,7 +143,7 @@ class SdcTest
             when :edge
               kill('taskkill /im MicrosoftEdge.exe /f')
 
-              system 'C:\Stamps\config\batch\edge_rdp_unlock.bat' if SdcEnv.jenkins true
+              system 'C:\Stamps\config\batch\edge_rdp_unlock.bat' if SdcEnv.jenkins
 
               SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
 
@@ -161,7 +161,7 @@ class SdcTest
                 SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
                 SdcPage.browser.driver.manage.timeouts.page_load = 12
 
-                if SdcEnv.web_dev true
+                if SdcEnv.web_dev
                   Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
                 end
               end
@@ -176,7 +176,7 @@ class SdcTest
               kill('taskkill /im chrome.exe /f')
               SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
 
-              if SdcEnv.web_dev true
+              if SdcEnv.web_dev
                 SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, options: {prefs: prefs}, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
                 Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
               end
@@ -236,10 +236,7 @@ class SdcTest
           SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(driver, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
           SdcPage.browser.driver.manage.timeouts.page_load = 12
 
-          if SdcEnv.web_dev true
-            Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
-          end
-
+          Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download") if SdcEnv.web_dev
         else
           raise ArgumentError, 'Device must be defined'
         end
@@ -291,6 +288,8 @@ class SdcTest
       SdcEnv.firefox_profile ||= ENV['FIREFOX_PROFILE']
       SdcEnv.new_framework ||= ENV['NEW_FRAMEWORK']
       SdcEnv.env ||= test_env(ENV['URL'])
+      SdcEnv.jenkins ||= ENV['JENKINS']
+      SdcEnv.web_dev ||= ENV['WEB_DEV']
       SdcEnv.max_window ||= ENV['MAX_WINDOW'].nil? ? true : ENV['MAX_WINDOW'].casecmp('true').zero?
 
       #deprecated
@@ -360,7 +359,7 @@ class SdcTest
       SdcLogger.debug "Tear down...\n"
       SdcPage.browser.quit
       SdcLogger.debug "Done.\n"
-      system 'C:\Stamps\config\batch\edge_rdp_lock.bat'
+      system 'C:\Stamps\config\batch\edge_rdp_unlock.bat' if SdcEnv.jenkins && SdcEnv.browser == 'edge'
     rescue StandardError => e
       SdcLogger.error e.message
       SdcLogger.error e.backtrace.join("\n")

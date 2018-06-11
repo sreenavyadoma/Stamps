@@ -43,7 +43,7 @@ saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=passw
 #mhossain1_cc: --tags @pp_left_panel JENKINS=true URL=qacc BROWSER_MOBILE_EMULATOR=gc,'iPad' USR=wteam@stamps.com PW=password1
 #mhossain1_cc: --tags @pp_left_panel_mobile JENKINS=true URL=qacc BROWSER_MOBILE_EMULATOR=gc,'Pixel 2 XL' USR=wteam@stamps.com PW=password1
 #mhossain1_cc: --tags @pp_reset_password JENKINS=true URL=qacc BROWSER=edge USR=lab@stamps.com PW=password1
-mhossain1_cc: --tags  @pp_dashboard_single_contract_export_data_ui_validation JENKINS=false URL=qacc BROWSER=edge USR=wteam@stamps.com PW=password1
+mhossain1_cc: --tags  @pp_dashboard_single_contract_export_data_ui_validation JENKINS=true URL=qacc BROWSER=edge USR=wteam@stamps.com PW=password1
 #mhossain1_cc: --tags  @pp_dashboard_single_contract_export_data_ui_validation JENKINS=true URL=qacc BROWSER_MOBILE_EMULATOR=gc,'iPhone 4' USR=wteam@stamps.com PW=password1
 #mhossain1_cc: --tags  @pp_dashboard_single_contract_export_data_ui_validation JENKINS=true URL=qacc BROWSER=ff USR=wteam@stamps.com PW=password1 FIREFOX_PROFILE=true
 
@@ -555,14 +555,14 @@ mail_hidden_postage: --tags  @mail_hidden_postage --guess  HEALTHCHECK=true PRIN
 mail_bug_ordersauto_3243: --tags  @mail_bug_ordersauto_3243 --guess  HEALTHCHECK=true PRINTER=factory
 mail_manage_printing_options: --tags @mail_manage_printing_options --guess  HEALTHCHECK=true NEW_FRAMEWORK=true
 #Partner Portal
-pp_log_in_page_validation: --tags @pp_log_in_page_validation --guess JENKINS=true  MAX_WINDOW=true
-pp_header_favicons_browser: --tags @pp_header_favicons_browser --guess JENKINS=true  MAX_WINDOW=true
-pp_header_favicons_browser_mobile: --tags @pp_header_favicons_browser_mobile --guess JENKINS=true
-pp_dashboard_single_contract_ui_validaiton: --tags @pp_dashboard_single_contract_ui_validaiton --guess JENKINS=true
-pp_dashboard_single_contract_chart_data_validation: --tags @pp_dashboard_single_contract_chart_data_validation --guess JENKINS=true
-pp_authenticate: --tags @pp_authenticate --guess JENKINS=true
-pp_footer: --tags @pp_footer --guess JENKINS=true
-pp_left_panel: --tags @pp_left_panel --guess JENKINS=true
-pp_left_panel_mobile: --tags @pp_left_panel_mobile --guess JENKINS=true
-pp_reset_password: --tags @pp_reset_password --guess JENKINS=true
-pp_dashboard_single_contract_export_data_ui_validation: --tags @pp_dashboard_single_contract_export_data_ui_validation --guess JENKINS=true
+pp_log_in_page_validation: --tags @pp_log_in_page_validation --guess JENKINS=true  MAX_WINDOW=true WEB_DEV=true
+pp_header_favicons_browser: --tags @pp_header_favicons_browser --guess JENKINS=true  MAX_WINDOW=true WEB_DEV=true
+pp_header_favicons_browser_mobile: --tags @pp_header_favicons_browser_mobile --guess JENKINS=true WEB_DEV=true
+pp_dashboard_single_contract_ui_validaiton: --tags @pp_dashboard_single_contract_ui_validaiton --guess JENKINS=true WEB_DEV=true
+pp_dashboard_single_contract_chart_data_validation: --tags @pp_dashboard_single_contract_chart_data_validation --guess JENKINS=true WEB_DEV=true
+pp_authenticate: --tags @pp_authenticate --guess JENKINS=true WEB_DEV=true
+pp_footer: --tags @pp_footer --guess JENKINS=true WEB_DEV=true
+pp_left_panel: --tags @pp_left_panel --guess JENKINS=true WEB_DEV=true
+pp_left_panel_mobile: --tags @pp_left_panel_mobile --guess JENKINS=true WEB_DEV=true
+pp_reset_password: --tags @pp_reset_password --guess JENKINS=true WEB_DEV=true
+pp_dashboard_single_contract_export_data_ui_validation: --tags @pp_dashboard_single_contract_export_data_ui_validation --guess JENKINS=true WEB_DEV=true
