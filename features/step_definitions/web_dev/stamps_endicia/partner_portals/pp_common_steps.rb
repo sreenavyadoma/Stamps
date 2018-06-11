@@ -164,6 +164,16 @@ Then /^PP: expect partner logo is unique to partner$/ do
 
     logo_actual = PartnerPortal.common_page.panel_partner_logo.attribute_value 'src'
     expect(logo_expected).to eql(logo_actual.split('com/').last)
+
+    step 'pause for 2 second'
+    SdcPage.browser.execute_script("window.open('blank', 'tab2')")
+    SdcPage.browser.windows.last.use
+    SdcPage.browser.goto(logo_actual)
+    title = SdcPage.browser.windows.last.title
+    SdcPage.browser.windows.last.close
+    expect(title).not_to include('404')
+    step 'pause for 2 second'
+
 end
 
 Then /^[Pp]P: [Ee]xpect [Hh]amburger button exists for browser$/ do
