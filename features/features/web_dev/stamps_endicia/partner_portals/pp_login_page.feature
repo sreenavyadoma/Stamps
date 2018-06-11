@@ -10,6 +10,7 @@ Feature: PP-MVP: Login Page
         Then PP: A user navigates to the login page
 
         #verify all content and fields are present
+        Then PP: expect login page title to be Stamps.com/Endicia | Partner Portal - Login
         Then PP: expect login page "Welcome to the" content to exist
         Then PP: expect login page "stamps.com endicia" logo to exist
         Then PP: expect login page "Partner Portal" content to exist

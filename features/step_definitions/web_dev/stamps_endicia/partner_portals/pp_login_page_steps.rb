@@ -8,8 +8,12 @@ Then /^[Pp]P: [Ee]xpect user is redirect to the login page$/ do
   step 'PP: Expect login page "Welcome to the" content to exist'
   step 'PP: Expect login page "stamps.com endicia" logo to exist'
   step 'PP: Expect login page "Partner Portal" content to exist'
+  step 'PP: expect login page error message not to be present'
 end
 
+Then /^PP: expect login page title to be (.*)$/ do |str|
+  expect(SdcPage.browser.title).to eql(str)
+end
 
 Then /^[Pp]P: [Ee]xpect login page "Welcome to the" content to exist$/ do
   expect(PartnerPortal.login_page.welcome_content).to be_present, '"Welcome to the content" DOES NOT exist on login page'
@@ -116,6 +120,10 @@ Then /^[Pp]P: [Ee]xpect login page error message to be$/ do |str|
   error_message = PartnerPortal.login_page.error_message
   error_message.wait_until_present(timeout: 10)
   expect(error_message.text_value.strip).to eql(str)
+end
+
+Then /^PP: expect login page error message not to be present$/ do
+  PartnerPortal.login_page.error_message.not_to be_present, "Login Page Error Message IS PRESENT"
 end
 
 
