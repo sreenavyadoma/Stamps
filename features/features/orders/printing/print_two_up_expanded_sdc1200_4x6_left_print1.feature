@@ -13,7 +13,7 @@ Feature: Print 1 Domestic label on SDC-1200 4 ¼" x 6 ¾ right side
     Then set Order Details Dimensions to Length 1 Width 1 Height 1
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
-    Then set Orders print modal printer
+    Then set orders print modal printer
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
     Then click print modal print button

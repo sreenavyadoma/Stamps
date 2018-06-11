@@ -48,12 +48,14 @@ Then /^expect orders grid order id is the same as details form order id$/ do
   end
 end
 
-Then /^[Ee]xpect cached Order ID is in [Oo]rders [Gg]rid [Rr]ow (\d+)$/ do |row|
-  15.times do
-    sleep(0.25);
-    break if stamps.orders.orders_grid.grid_column(:order_id).row(row) == TestData.hash[:order_id].values.last
-  end
+Then /^expect cached order id is in orders grid row (\d+)$/ do |row|
+  step 'wait for js to stop'
   expect(stamps.orders.orders_grid.grid_column(:order_id).row(row)).to eql TestData.hash[:order_id].values.last
+end
+
+Then /^expect cached order id is not in orders grid row (\d+)$/ do |row|
+  step 'wait for js to stop'
+  expect(stamps.orders.orders_grid.grid_column(:order_id).row(row)).not_to eql(TestData.hash[:order_id].values.last)
 end
 
 Then /^expect orders grid ship cost is the same as details form ship cost$/ do

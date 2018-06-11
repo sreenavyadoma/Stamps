@@ -12,11 +12,11 @@ Feature: Orders print Modal Bugs
     Then set order details ounces to 1
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
-    Then set Orders print modal printer
+    Then set orders print modal printer
     Then In Print modal, click Print button Sample
     Then in print modal, click close button
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
-    Then set Orders print modal printer
+    Then set orders print modal printer
     Then click print modal print button
     Then sign out

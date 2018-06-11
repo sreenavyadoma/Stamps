@@ -15,7 +15,7 @@ Feature: Set Print Ship Date to Today
     Then click orders toolbar print button
     Then set print modal ship date to today
     Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
-    Then set Orders print modal printer
+    Then set orders print modal printer
     Then click print modal print button
     Then pause for 2 seconds
     Then select Filter Panel tab Shipped
@@ -30,7 +30,7 @@ Feature: Set Print Ship Date to Today
     Then set order details service to PM Flat Rate Envelope
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
-    Then set Orders print modal printer
+    Then set orders print modal printer
     Then set print modal ship date to today plus 1
     Then click print modal print button
     Then pause for 2 seconds
@@ -46,7 +46,7 @@ Feature: Set Print Ship Date to Today
     Then set order details service to PM Flat Rate Envelope
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
-    Then set Orders print modal printer
+    Then set orders print modal printer
     Then set print modal ship date to today plus 2
     Then click print modal print button
     Then pause for 2 seconds
@@ -62,7 +62,7 @@ Feature: Set Print Ship Date to Today
     Then set order details service to PM Flat Rate Envelope
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
-    Then set Orders print modal printer
+    Then set orders print modal printer
     Then set print modal ship date to today plus 3
     Then click print modal print button
     Then pause for 2 seconds

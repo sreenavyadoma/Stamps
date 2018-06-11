@@ -13,7 +13,7 @@ Feature: Print Media - Shipping Label: 5 ½" x 8 ½"
     Then pause for 2 seconds
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
-    Then set Orders print modal printer
+    Then set orders print modal printer
     Then click print modal print button
     Then sign out
 

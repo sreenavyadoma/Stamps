@@ -5,6 +5,7 @@ Then /^set order details ship-to to(?: a |)(?: random address |)(?:to|in|between
   domestic = SdcOrders.order_details.ship_to.domestic
   domestic.address.click
   domestic.address.set(TestData.hash[:ship_to_domestic])
+  step 'wait for js to stop'
   step 'Save Order Details data'
   step 'hide order details form Ship-To fields'
 end

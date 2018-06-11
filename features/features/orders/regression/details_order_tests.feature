@@ -403,7 +403,7 @@ Feature: All details tests for order
     Then in Print modal, check Print Reference # on Shipping Label
     Then in Print modal, check Print Reference # on Shipping Label
     Then set print modal print-on to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
-    Then set Orders print modal printer
+    Then set orders print modal printer
     Then click print modal print button
     Then sign out
 

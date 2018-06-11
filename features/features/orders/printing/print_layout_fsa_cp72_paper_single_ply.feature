@@ -22,7 +22,7 @@ Feature: Print 1 single ply FSA CP72 label on on 8.5x11 - right side
 
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
-    Then set Orders print modal printer
+    Then set orders print modal printer
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
     Then click print modal print button Sample
