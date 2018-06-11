@@ -142,7 +142,8 @@ class SdcTest
 
             when :edge
               kill('taskkill /im MicrosoftEdge.exe /f')
-              system 'C:\Stamps\config\batch\edge_rdp_unlock.bat'
+
+              system 'C:\Stamps\config\batch\edge_rdp_unlock.bat' if SdcEnv.jenkins
 
               SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
 
@@ -159,7 +160,8 @@ class SdcTest
                 profile['browser.helperApps.neverAsk.saveToDisk'] = 'text/csv,application/pdf,image/png,application/x-zip-compressed,text/plain'
                 SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
                 SdcPage.browser.driver.manage.timeouts.page_load = 12
-                if SdcEnv.scenario.name.include? 'webdev_download'
+
+                if SdcEnv.web_dev = true
                   Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
                 end
               end
@@ -168,18 +170,22 @@ class SdcTest
               prefs = {
                   download: {
                       prompt_for_download: false,
-                      #default_directory: data_for(:download, {})['download_file_path']
                       default_directory: "#{Dir.getwd}/download"
                   }
               }
               kill('taskkill /im chrome.exe /f')
-              SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, options: {prefs: prefs}, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+              SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+
+              if SdcEnv.web_dev = true
+                SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, options: {prefs: prefs}, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+                Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
+              end
 
               SdcPage.browser.driver.manage.timeouts.page_load = 12
 
-              if SdcEnv.scenario.name.include? 'webdev_download'
-                Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
-              end
+              # if SdcEnv.scenario.name.include? 'webdev_download'
+              #   Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
+              # end
 
             when :chromeb
               kill('taskkill /im chrome.exe /f')
@@ -230,7 +236,7 @@ class SdcTest
           SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(driver, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
           SdcPage.browser.driver.manage.timeouts.page_load = 12
 
-          if SdcEnv.scenario.name.include? 'webdev_download'
+          if SdcEnv.web_dev = true
             Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
           end
 
