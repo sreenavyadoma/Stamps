@@ -37,7 +37,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then check Orders Grid row 2
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
-    Then set Orders print modal printer
+    Then set orders print modal printer
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
     Then click print modal print button
@@ -76,7 +76,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
 
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
-    Then set Orders print modal printer
+    Then set orders print modal printer
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
     Then click print modal print button
@@ -107,7 +107,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then close customs information form
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
-    Then set Orders print modal printer
+    Then set orders print modal printer
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
     Then click print modal print button
@@ -144,7 +144,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then check Orders Grid row 2
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
-    Then set Orders print modal printer
+    Then set orders print modal printer
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
     Then click print modal print button
@@ -181,7 +181,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then check Orders Grid row 2
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
-    Then set Orders print modal printer
+    Then set orders print modal printer
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
     Then click print modal print button

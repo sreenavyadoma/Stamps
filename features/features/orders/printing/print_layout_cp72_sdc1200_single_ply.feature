@@ -19,7 +19,7 @@ Feature: Print 1 Intl CP72 label on sdc1200 - right side
     Then close customs information form
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
-    Then set Orders print modal printer
+    Then set orders print modal printer
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
     Then click print modal print button

@@ -5,34 +5,6 @@ Feature:  BVT tests for Orders
   Background:
     Given a valid user is signed in to Web Apps
 
-  @bvt_address_cleansing
-  Scenario: BVT Address Cleansing
-    Then add new order
-    Then set order details ship-to domestic address to
-      | full_name     | company | street_address     | street_address_2| city          | state | zip | country       | phone          |  email           |
-      | Euan Davidson | Betfair | 1350 Market Street |                 | San Francisco | CA    |     | United States | (415) 123-5555 | rtest@stamps.com |
-    Then set order details service to PM Package
-    Then set order details ounces to 1
-    Then blur out on order details form
-    Then pause for 2 seconds
-    Then expect orders grid recipient is Euan Davidson
-    Then expect orders grid company is Betfair
-    Then expect orders grid address is 1350 Market Street
-    Then expect orders grid city is San Francisco
-    Then expect orders grid state is CA
-    Then expect orders grid zip is 94102
-    Then sign out
+# All BVTs moved to sdc_orders_bvt.feature
 
-  @bvt_printing
-  Scenario:  BVT Printing
-    Then add new order
-    Then set order details ship-to to random address between zone 5 and 8
-    Then set order details service to PM Package
-    Then set order details ounces to 1
-    Then set order details width to 1
-    Then set order details length to 1
-    Then set order details height to 1
-    Then click orders toolbar print button
-    Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
-    Then click print modal print button
-    Then sign out
+

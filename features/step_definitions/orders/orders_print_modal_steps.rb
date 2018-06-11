@@ -23,23 +23,27 @@ Then /^in print modal, click close button$/ do
 end
 
 Then /^[Ss]et [Pp]rint [Mm]odal [Pp]rinter to \"(.*)\"$/ do |printer|
-  step "Orders print modal printer dropdown is present"
+  step "orders print modal printer dropdown is present"
   stamps.orders.modals.orders_print_modal.printer.select(printer)
 end
 
-Then /^[Ss]et [Oo]rders [Pp]rint [Mm]odal [Pp]rinter ?(?:|(.*))$/ do |printer|
+Then /^set orders print modal printer ?(?:|(.*))$/ do |str|
   step "expect orders print modal is present"
-  step "Orders print modal printer dropdown is present"
-  expect(TestData.hash[:printer] = (printer.nil?) ? SdcEnv.printer : printer).to_not be_nil, "PRINTER parameter is not defined. Printing tests must define PRINTER value either in cucumber.yml file or in Jenkins."
+  step "orders print modal printer dropdown is present"
+  expect(TestData.hash[:printer] = (str.nil?) ? SdcEnv.printer : str).to_not be_nil, "PRINTER parameter is not defined. Printing tests must define PRINTER value either in cucumber.yml file or in Jenkins."
   if TestData.hash[:printer].include?('\\') #validate printer format
     expect(TestData.hash[:printer]).to match(/\\.+\.*/)
     TestData.hash[:printer] = /\\\\(.+)\\/.match(TestData.hash[:printer])[1]
   end
-  expect(stamps.orders.modals.orders_print_modal.printer.select(TestData.hash[:printer])).to_not be_nil, "Unable to select printer \"#{TestData.hash[:printer]}\". \nMake sure \"#{TestData.hash[:printer]}\" is configured for host #{SdcEnv.hostname}. \nUSR: #{TestData.hash[:username]}, #{SdcEnv.sdc_app.to_s.capitalize}(#{SdcEnv.env.upcase})"
+  printer = SdcOrders.modals.print.printer
+  printer.selection_element(value: TestData.hash[:printer])
+  printer.drop_down.click unless printer.selection.present?
+  printer.selection.click
+  expect(printer.text_field.text_value).to include(TestData.hash[:printer]), "Unable to select printer \"#{TestData.hash[:printer]}\". \nMake sure \"#{TestData.hash[:printer]}\" is configured for host #{SdcEnv.hostname}. \nUSR: #{TestData.hash[:username]}, #{SdcEnv.sdc_app.to_s.capitalize}(#{SdcEnv.env.upcase})"
 end
 
-Then /^[Oo]rders [Pp]rint [Mm]odal [Pp]rinter [Dd]rop[Dd]own is present$/ do
-  expect(stamps.orders.modals.orders_print_modal.printer).to be_present, "StampsConnect is not connected. You might need to re-login to this PC: #{SdcEnv.hostname}"
+Then /^orders print modal printer dropdown is present$/ do
+  expect(SdcOrders.modals.print.printer.drop_down).to be_present, "StampsConnect is not connected. You might need to re-login to this PC: #{SdcEnv.hostname}"
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal [Pp]rint [Mm]odal is [Pp]resent$/ do
@@ -47,11 +51,7 @@ Then /^[Ee]xpect [Pp]rint [Mm]odal [Pp]rint [Mm]odal is [Pp]resent$/ do
 end
 
 Then /^[Cc]lick [Pp]rint [Mm]odal [Pp]rint [Bb]utton$/ do
-  if SdcEnv.new_framework
-    SdcWebsite.orders.modals.print_modal.print.safe_click
-  else
-    stamps.orders.modals.orders_print_modal.print
-  end
+  SdcWebsite.orders.modals.print.print.click
 end
 
 Then /^[Cc]lick [Pp]rint [Mm]odal [Pp]rint [Bb]utton for SAS$/ do
@@ -59,7 +59,7 @@ Then /^[Cc]lick [Pp]rint [Mm]odal [Pp]rint [Bb]utton for SAS$/ do
 end
 #stamps.orders.modals.your_global_post_label_dialog.xxx
 Then /^[Ee]xpect [Oo]rders [Pp]rint [Mm]odal is [Pp]resent$/ do
-  expect(stamps.orders.modals.orders_print_modal).to be_present, "Orders Print modal is NOT present"
+  expect(SdcOrders.modals.print.title).to be_present, "Orders Print modal is NOT present"
 end
 
 Then /^[Pp]rint [Ss]hipping [Ll]abel for SAS$/ do
@@ -208,19 +208,12 @@ Then /^[Ee]xpect [Pp]rint [Mm]odal [Pp]review [Ll]abel is displayed$/ do
   expect(stamps.orders.modals.orders_print_modal.starting_label.label_displayed?).to be(true), "Label Preview Image is not Displayed"
 end
 
-
 Then /^set print modal print-on to (.*)$/ do |str|
-  if SdcEnv.new_framework
-    SdcOrders.modals.print.print_on.selection(str)
-    5.times do
-      SdcOrders.modals.print.print_on.drop_down.click unless SdcOrders.modals.print.print_on.selection_obj.present?
-      SdcOrders.modals.print.print_on.selection_obj.safe_click unless SdcOrders.modals.print.print_on.selection_obj.class_disabled?
-      break if SdcOrders.modals.print.print_on.text_field.text_value == str
-    end
-    expect(SdcOrders.modals.print.print_on.text_field.text_value).to eql(str)
-  else
-    stamps.orders.modals.orders_print_modal.printing_on.select(str)
-  end
+  print_on = SdcOrders.modals.print.print_on
+  print_on.selection(str)
+  print_on.drop_down.click unless print_on.selection_obj.present?
+  print_on.selection_obj.safe_click unless print_on.selection_obj.class_disabled?
+  expect(print_on.text_field.text_value).to eql(str)
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal [Pp]rinting On Label is (.*)$/ do |expectation|
@@ -228,16 +221,12 @@ Then /^[Ee]xpect [Pp]rint [Mm]odal [Pp]rinting On Label is (.*)$/ do |expectatio
 end
 
 Then /^[Ss]elect [Pp]rinter \"(.*)\"$/ do |printer|
-  step "Orders print modal printer dropdown is present"
+  step "orders print modal printer dropdown is present"
   stamps.orders.modals.orders_print_modal.printer.select(printer)
 end
 
 Then /^close print modal$/ do
-  if SdcEnv.new_framework
-    SdcOrders.modals.print.close.click
-  else
-    stamps.orders.modals.orders_print_modal.close
-  end
+  SdcOrders.modals.print.close.click
 end
 
 Then /^Close Reprint Modal$/ do

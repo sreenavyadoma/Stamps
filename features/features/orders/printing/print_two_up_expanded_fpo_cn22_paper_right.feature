@@ -19,7 +19,7 @@ Feature: User Prints 1 FPO CN22 label on 8.5x11 - right side
     Then close customs information form
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
-    Then set Orders print modal printer
+    Then set orders print modal printer
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
     Then click print modal print button Sample

@@ -509,3 +509,24 @@ Feature:  BVT tests for Orders
     Then expect orders grid state is CA
     Then expect orders grid zip is 94102
     Then sign out
+
+  @bvt_printing
+  Scenario:  BVT Printing
+    Then sign-in to orders
+    Then add new order
+    Then set order details ship-to to random address between zone 5 and 8
+    Then set order details service to PM Package
+    Then set order details ounces to 1
+    Then set order details width to 1
+    Then set order details length to 1
+    Then set order details height to 1
+    Then click orders toolbar print button
+    Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
+    Then set orders print modal printer
+    Then click print modal print button
+    Then select orders filter shipped tab
+    Then select orders filter awaiting shippment tab
+    Then select orders filter shipped tab
+    Then in Orders Grid, Sort Order Date in Descending Order
+    Then expect cached order id is in orders grid row 1
+    Then sign out
