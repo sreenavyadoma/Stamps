@@ -142,16 +142,12 @@ class SdcTest
 
             when :edge
               kill('taskkill /im MicrosoftEdge.exe /f')
-              system 'C:\Stamps\binaries\edge_rdp_unlock.bat"' if SdcEnv.jenkins
+              system 'C:\Stamps\config\batch\edge_rdp_unlock.bat'
 
               SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
 
             when :firefox
               kill('taskkill /im firefox.exe /f')
-              if SdcEnv.scenario.name.include? 'webdev_download'
-                Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
-              end
-
               unless SdcEnv.firefox_profile
                 SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
               else
@@ -163,6 +159,9 @@ class SdcTest
                 profile['browser.helperApps.neverAsk.saveToDisk'] = 'text/csv,application/pdf,image/png,application/x-zip-compressed,text/plain'
                 SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
                 SdcPage.browser.driver.manage.timeouts.page_load = 12
+                if SdcEnv.scenario.name.include? 'webdev_download'
+                  Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
+                end
               end
 
               when :chrome
@@ -174,12 +173,13 @@ class SdcTest
                   }
               }
               kill('taskkill /im chrome.exe /f')
-              if SdcEnv.scenario.name.include? 'webdev_download'
-                Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
-              end
               SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, options: {prefs: prefs}, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
 
               SdcPage.browser.driver.manage.timeouts.page_load = 12
+
+              if SdcEnv.scenario.name.include? 'webdev_download'
+                Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
+              end
 
             when :chromeb
               kill('taskkill /im chrome.exe /f')
@@ -220,11 +220,7 @@ class SdcTest
           end
 
         elsif SdcEnv.browser_mobile_emulator
-          if SdcEnv.scenario.name.include? 'webdev_download'
-            Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
-          end
-
-           arg_arr = SdcEnv.browser_mobile_emulator.split(',')
+          arg_arr = SdcEnv.browser_mobile_emulator.split(',')
           if arg_arr.size != 2
             raise ArgumentError, "Wrong number of arguments. Expected 2, Got #{arg_arr.size}"
           end
@@ -233,6 +229,10 @@ class SdcTest
           driver = browser_emulator_options(browser, device_name)
           SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(driver, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
           SdcPage.browser.driver.manage.timeouts.page_load = 12
+
+          if SdcEnv.scenario.name.include? 'webdev_download'
+            Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
+          end
 
         else
           raise ArgumentError, 'Device must be defined'
@@ -286,8 +286,6 @@ class SdcTest
       SdcEnv.new_framework ||= ENV['NEW_FRAMEWORK']
       SdcEnv.env ||= test_env(ENV['URL'])
       SdcEnv.max_window ||= ENV['MAX_WINDOW'].nil? ? true : ENV['MAX_WINDOW'].casecmp('true').zero?
-      SdcEnv.jenkins = ENV['JENKINS'].nil? ? true : ENV['JENKINS'].casecmp('true').zero?
-      SdcEnv.web_dev = ENV['web_dev']
 
       #deprecated
       SdcEnv.sdc_app ||= ENV['WEB_APP'].downcase.to_sym unless ENV['WEB_APP'].nil?
@@ -353,11 +351,10 @@ class SdcTest
       #   SdcLog.info "#{SdcPage.browser} closed."
       # end
 
-      system 'C:\Stamps\binaries\edge_rdp_lock.bat' if SdcEnv.browser = 'edge' && SdcEnv.jenkins
-
       SdcLogger.debug "Tear down...\n"
       SdcPage.browser.quit
       SdcLogger.debug "Done.\n"
+      system 'C:\Stamps\config\batch\edge_rdp_lock.bat'
     rescue StandardError => e
       SdcLogger.error e.message
       SdcLogger.error e.backtrace.join("\n")
