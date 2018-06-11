@@ -10,8 +10,6 @@ include DataMagic
 include PartnerPortal
 
 Before do |scenario|
-  Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
-  system 'C:\Stamps\binaries\edge_rdp_unlock.bat"' if SdcEnv.browser = 'edge'
   SdcEnv.scenario = scenario
   SdcTest.start
 end
