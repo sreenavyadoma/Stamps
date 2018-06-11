@@ -142,7 +142,7 @@ class SdcTest
 
             when :edge
               kill('taskkill /im MicrosoftEdge.exe /f')
-              system 'C:\Stamps\binaries\edge_rdp_unlock.bat'
+              system 'C:\Stamps\config\batch\edge_rdp_unlock.bat'
 
               SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
 
@@ -354,7 +354,7 @@ class SdcTest
       SdcLogger.debug "Tear down...\n"
       SdcPage.browser.quit
       SdcLogger.debug "Done.\n"
-      system 'C:\Stamps\binaries\edge_rdp_lock.bat' if SdcEnv.browser = 'edge'
+      system 'C:\Stamps\config\batch\edge_rdp_lock.bat'
     rescue StandardError => e
       SdcLogger.error e.message
       SdcLogger.error e.backtrace.join("\n")
