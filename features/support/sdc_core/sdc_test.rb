@@ -142,7 +142,7 @@ class SdcTest
 
             when :edge
               kill('taskkill /im MicrosoftEdge.exe /f')
-              system 'C:\Stamps\binaries\edge_rdp_unlock.bat"'
+              system 'C:\Stamps\binaries\edge_rdp_unlock.bat"' if SdcEnv.jenkins
 
               SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
 
@@ -286,6 +286,8 @@ class SdcTest
       SdcEnv.new_framework ||= ENV['NEW_FRAMEWORK']
       SdcEnv.env ||= test_env(ENV['URL'])
       SdcEnv.max_window ||= ENV['MAX_WINDOW'].nil? ? true : ENV['MAX_WINDOW'].casecmp('true').zero?
+      SdcEnv.jenkins = ENV['JENKINS'].nil? ? true : ENV['JENKINS'].casecmp('true').zero?
+      SdcEnv.web_dev = ENV['web_dev'] if ENV['WEB_DEV']
 
       #deprecated
       SdcEnv.sdc_app ||= ENV['WEB_APP'].downcase.to_sym unless ENV['WEB_APP'].nil?
@@ -350,6 +352,8 @@ class SdcTest
       #
       #   SdcLog.info "#{SdcPage.browser} closed."
       # end
+
+      system 'C:\Stamps\binaries\edge_rdp_lock.bat' if SdcEnv.browser = 'edge' && SdcEnv.jenkins
 
       SdcLogger.debug "Tear down...\n"
       SdcPage.browser.quit

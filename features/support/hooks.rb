@@ -15,7 +15,6 @@ Before do |scenario|
 end
 
 After do
-  system 'C:\Stamps\binaries\edge_rdp_lock.bat' if SdcEnv.browser = 'edge'
   SdcTest.teardown
   # Old framework
   @stamps = nil
