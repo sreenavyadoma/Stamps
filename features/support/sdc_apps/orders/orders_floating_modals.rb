@@ -148,8 +148,15 @@ module SdcOrders
 
     end
 
+    class PrintAllOrders < SdcPage
+      page_object(:title) { {xpath: '//*[text()="General"]'} }
+      page_object(:print_all) { {xpath: '//*[text()="Print All"]'} }
+      page_object(:cancel) { {xpath: '//*[text()="Cancel"]'} }
+      page_object(:x_btn) { {xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
+    end
+
     class OrdersSettingsModal < SdcPage
-      page_object(:general) { {xpath: '//*[text()="General"]'} }
+      page_object(:general) { {xpath: '//*[text()="Print All Orders"]'} }
       page_object(:stores) { {xpath: '//*[text()="Stores"]'} }
       page_object(:international) { {xpath: '//*[text()="International"]'} }
       page_object(:label_msgs) { {xpath: '//*[text()="Label Messages"]'} }
@@ -198,5 +205,10 @@ module SdcOrders
       DeleteShippingAddress.new
     end
     module_function :delete_shipping_address
+
+    def print_all
+      PrintAllOrders.new
+    end
+    module_function :print_all
   end
 end

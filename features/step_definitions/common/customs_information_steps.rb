@@ -56,7 +56,7 @@ Then /^expect customs internal transaction number is (?:correct|(.*))$/ do |str|
   expect(SdcWebsite.customs_form.internal_transaction.text_field.text_value).to eql(str)
 end
 
-Then /^[Ss]et Customs More Info to (?:(?:a|some) random string|(.*))$/ do |str|
+Then /^set customs more info to (?:random string|(.*))$/ do |str|
   str ||= TestHelper.rand_alpha_numeric(min: 6, max: 18)
   SdcWebsite.customs_form.more_info.set(str) if SdcWebsite.customs_form.more_info.present?
   step "expect Customs More Info is #{str}"
@@ -64,13 +64,13 @@ Then /^[Ss]et Customs More Info to (?:(?:a|some) random string|(.*))$/ do |str|
   TestData.hash[:customs_more_info] = str
 end
 
-Then /^ [Ss]et Customs More Info to (?:(?:a|some) random string|(.*))$/ do |str|
-  str ||= TestHelper.rand_alpha_numeric(min: 6, max: 18)
-  SdcWebsite.customs_form.more_info.set(str) if SdcWebsite.customs_form.more_info.present?
-  step "expect Customs More Info is #{str}"
-  step 'Save Customs Information form Total amount'
-  TestData.hash[:customs_more_info] = str
-end
+# Then /^ [Ss]et Customs More Info to (?:(?:a|some) random string|(.*))$/ do |str|
+#   str ||= TestHelper.rand_alpha_numeric(min: 6, max: 18)
+#   SdcWebsite.customs_form.more_info.set(str) if SdcWebsite.customs_form.more_info.present?
+#   step "expect Customs More Info is #{str}"
+#   step 'Save Customs Information form Total amount'
+#   TestData.hash[:customs_more_info] = str
+# end
 
 Then /^[Ee]xpect Customs More Info is (?:correct|(.*))$/ do |str|
   str ||= TestData.hash[:customs_more_info]
@@ -314,13 +314,12 @@ Then /^set customs associated item (\d+) unit price to (.*)$/ do |item_number, v
   TestData.hash[:customs_associated_items][item_number] ||= {}
   TestData.hash[:customs_associated_items][item_number][:price] = value
 end
-# set customs associated item (\d+) made in (.*)
+
 Then /^set customs associated item (\d+) made in (.*)$/ do |item_number, value|
   made_in = SdcWebsite.customs_form.item.made_in
   drop_down = made_in.drop_down(item_number)
   text_field = made_in.text_field(item_number)
   selection = made_in.selection(item_number, value)
-
   drop_down.scroll_into_view
   text_field.scroll_into_view
   drop_down.click

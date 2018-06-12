@@ -21,29 +21,29 @@ Feature:  Search Orders
     # Search for new order
     Then select Filter Panel tab Awaiting Shipment
     Then search filtered Orders for cached Order ID
-    Then expect Filter Panel search results tab is present
+    Then expect filter panel search results tab is present
     Then expect Filter Panel search result count is 1
     Then expect Filter Panel search result count is greater than 0
     Then remove Filter Panel search results tab
-    Then expect Filter Panel search results tab is not present
+    Then expect filter panel search results tab is not present
 
     # Search for Ship Name
     Then select Filter Panel tab Awaiting Shipment
     Then search filtered Orders for cached Ship-To full name
-    Then expect Filter Panel search results tab is present
+    Then expect filter panel search results tab is present
     Then expect Filter Panel search result count is 1
     Then expect Filter Panel search result count is greater than 0
     Then remove Filter Panel search results tab
-    Then expect Filter Panel search results tab is not present
+    Then expect filter panel search results tab is not present
 
     # Search for Ship Company
     Then select Filter Panel tab Awaiting Shipment
     Then search filtered Orders for cached Ship-To full name
-    Then expect Filter Panel search results tab is present
+    Then expect filter panel search results tab is present
     Then expect Filter Panel search result count is 1
     Then expect Filter Panel search result count is greater than 0
     Then remove Filter Panel search results tab
-    Then expect Filter Panel search results tab is not present
+    Then expect filter panel search results tab is not present
     Then sign out
 
 
@@ -68,28 +68,28 @@ Feature:  Search Orders
 
     # Search for new order
     Then search filtered Orders for cached Order ID
-    Then expect Filter Panel search results tab is present
+    Then expect filter panel search results tab is present
     Then expect Filter Panel search result count is 1
     Then expect cached order id is in orders grid row 1
     Then expect cached Order ID exist in the selected filter
     Then remove Filter Panel search results tab
-    Then expect Filter Panel search results tab is not present
+    Then expect filter panel search results tab is not present
 
     # Search for Ship Name
     Then search filtered Orders for cached Ship-To full name
-    Then expect Filter Panel search results tab is present
+    Then expect filter panel search results tab is present
     Then expect Filter Panel search result count is 1
     Then expect cached order id is in orders grid row 1
     Then expect cached Order ID exist in the selected filter
     Then remove Filter Panel search results tab
-    Then expect Filter Panel search results tab is not present
+    Then expect filter panel search results tab is not present
 
     # Search for Ship Company
     Then search filtered Orders for cached Ship-To Company name
-    Then expect Filter Panel search results tab is present
+    Then expect filter panel search results tab is present
     Then expect Filter Panel search result count is 1
     Then expect cached order id is in orders grid row 1
     Then expect cached Order ID exist in the selected filter
     Then remove Filter Panel search results tab
-    Then expect Filter Panel search results tab is not present
+    Then expect filter panel search results tab is not present
     Then sign out

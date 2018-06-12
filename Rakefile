@@ -1328,6 +1328,11 @@ Cucumber::Rake::Task.new(:bvt_purchasing) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:bvt_orders_ui_validation) do |t|
+  t.profile = 'bvt_orders_ui_validation'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:bvt_purchasing_cc) do |t|
   t.profile = 'bvt_purchasing_cc'
   t.cucumber_opts = "-p cuke_reports"

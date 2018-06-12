@@ -158,7 +158,7 @@ Then /^[Aa]dd random Ship-from address from (.*)$/ do |address|
   stamps.orders.order_details.single_ship_from.select('Manage Shipping Addresses').add.ship_from_address(TestData.hash[:ship_from_address])
 end
 
-Then /^[Oo]n Manage Shipping Address modal, add address$/ do |ship_from|
+Then /^on manage shipping address modal, add address$/ do |ship_from|
   TestData.hash[:ship_from_address] = ship_from.hashes.first
   TestData.hash[:ship_from_zip] = TestData.hash[:ship_from_address]['ship_from_zip']
   TestData.hash[:full_name] = TestData.hash[:ship_from_address][:full_name]
@@ -194,6 +194,41 @@ Then /^[Oo]n Manage Shipping Address modal, add address$/ do |ship_from|
   end
   step 'Close Manage Shipping Address modal'
 end
+
+# this step step def is only for private use - DO NOT use it in any feature file
+# address = '90245,Automation,1990 E Grand Avenue,El Segundo,California,90245,United States,4157944522'
+Then /^on manage shipping address modal, add address from string (.+)$/ do |ship_from|
+  ship_from_zip, company, street_address, city, state, zip, phone = ship_from.split(',')
+  TestData.hash[:ship_from_zip] = ship_from_zip
+  TestData.hash[:company] = company
+  TestData.hash[:street_address] = street_address
+  TestData.hash[:city] = city
+  TestData.hash[:state] = state
+  TestData.hash[:zip] = zip
+  TestData.hash[:phone] = phone
+
+  step 'Open Manage Shipping Address modal'
+  step 'Click Manage Shipping Address Add button'
+  modal = SdcOrders.modals.add_edit_shipping_address
+  modal.ship_from_zip.set(TestData.hash[:ship_from_zip])
+  modal.company.set(TestData.hash[:company])
+  modal.address.set(TestData.hash[:street_address])
+  modal.city.set(TestData.hash[:city])
+  modal.zip.set(TestData.hash[:zip])
+  modal.phone.set(TestData.hash[:phone])
+
+  modal.state.selection_element(TestData.hash[:state])
+  modal.state.drop_down.click unless modal.state.selection.present?
+  modal.state.selection.scroll_into_view
+  modal.state.selection.click unless modal.state.selection.class_disabled?
+  expect(modal.state.text_field.text_value).to include(TestData.hash[:state])
+  SdcOrders.modals.add_edit_shipping_address.save.click
+  SdcOrders.modals.manage_shipping_addresses.title.safe_wait_while_present(timeout: 2)
+  step 'Close Manage Shipping Address modal'
+end
+
+
+
 
 Then /^[Oo]n Manage Shipping Address modal, add address (\w+)$/ do |address|
   TestData.hash[:ship_from_address] = address.include?('random ship from zone 1 through 4') ? TestHelper.rand_ship_from_zone_1_4(SdcEnv.env) : address

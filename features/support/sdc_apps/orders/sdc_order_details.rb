@@ -55,8 +55,8 @@ module SdcOrders
     page_object(:drop_down) { {xpath: '(//div[contains(@id, "trackingdroplist")]//div[contains(@id, "trigger-picker")])[1]'} }
     page_object(:text_field) { {xpath: '(//input[contains(@id, "trackingdroplist")])[1]'} }
 
-    def selection(str)
-      page_object(:selection_obj) { {xpath: "//li//td[text()='#{str}']"} }
+    def selection_element(name: :selection, value: 'None')
+      page_object(name) { {xpath: "//li//td[text()='#{value}']"} }
     end
   end
 
