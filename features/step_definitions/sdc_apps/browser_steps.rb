@@ -19,7 +19,11 @@ Then /^configure saucelabs$/ do
   SdcLogger.info "SAUCE_ACCESS_KEY: #{SauceLabs.sauce_access_key}"
   SdcLogger.info "SELENIUM_STARTING_URL: #{SauceLabs.selenium_starting_url}"
   SdcLogger.info "SAUCE_ONDEMAND_BROWSERS: #{SauceLabs.sauce_on_demand_browsers}"
-
+  SdcLogger.info 'Jenkins....'
+  SdcLogger.info "JOB_NAME: #{ENV['JOB_NAME']}"
+  SdcLogger.info "JOB_BASE_NAME: #{ENV['JOB_BASE_NAME']}"
+  SdcLogger.info "BUILD_TAG: #{ENV['BUILD_TAG']}"
+  SdcLogger.info "BUILD_NUMBER: #{ENV['BUILD_NUMBER']}"
 end
 
 Then /^Start test driver$/ do
