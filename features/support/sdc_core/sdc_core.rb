@@ -16,6 +16,28 @@ module SdcEnv
   end
 end
 
+##
+# Variable
+# Description
+# SELENIUM_HOST  The hostname of the Selenium server
+# SELENIUM_PORT  The port of the Selenium server
+# SELENIUM_PLATFORM  The operating system of the selected browser
+# SELENIUM_VERSION  The version number of the selected browser
+# SELENIUM_BROWSER  The name of the selected browser
+# SELENIUM_DRIVER  Contains the operating system, version and browser name of the selected browser
+# SELENIUM_URL  The initial URL to load when the test begins
+# SAUCE_USERNAME  The user name used to invoke Sauce OnDemand
+# SAUCE_ACCESS_KEY  The access key for the user used to invoke Sauce OnDemand
+# SELENIUM_STARTING_URL  The value of the Starting URL field
+# SAUCE_ONDEMAND_BROWSERS  A JSON-formatted string representing browsers you selected for the job configuration
+module SauceLabs
+  class << self
+    attr_accessor :host, :port, :platform, :version, :browser, :driver, :url,
+                  :sauce_username, :sauce_access_key, :selenium_starting_url,
+                  :sauce_on_demand_browsers
+  end
+end
+
 module SdcFinder
 
   # @param [Browser] browser either Watir::Browser or Appium::Core::Driver

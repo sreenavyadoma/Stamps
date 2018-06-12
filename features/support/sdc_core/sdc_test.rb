@@ -17,33 +17,33 @@ class SdcTest
 
     def capabilities(device)
       case device
-        when :macos_safari
-          capabilities_config = {
+      when :macos_safari
+        capabilities_config = {
             :version => '11.0',
-              :platform => 'macOS 10.13',
-              :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
-          }
-          browser = :safari
+            :platform => 'macOS 10.13',
+            :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+        }
+        browser = :safari
 
-        when :macos_chrome
-          capabilities_config = {
+      when :macos_chrome
+        capabilities_config = {
             :version => '54.0',
-              :platform => 'macOS 10.13',
-              :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
-          }
-          browser = :chrome
+            :platform => 'macOS 10.13',
+            :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+        }
+        browser = :chrome
 
-        when :temp_device
-          capabilities_config = {
+      when :temp_device
+        capabilities_config = {
             :version => '16.16299',
-              :platform => 'Windows 10',
-              :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
-          }
-          browser = :edge
-        else
-          message = "Unsupported device. DEVICE=#{device}"
-          error = ArgumentError
-          raise error, message
+            :platform => 'Windows 10',
+            :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+        }
+        browser = :edge
+      else
+        message = "Unsupported device. DEVICE=#{device}"
+        error = ArgumentError
+        raise error, message
       end
 
       build_name = ENV['JENKINS_BUILD_NUMBER'] || ENV['SAUCE_BAMBOO_BUILDNUMBER'] || ENV['SAUCE_TC_BUILDNUMBER'] || ENV['SAUCE_BUILD_NAME']
@@ -53,7 +53,7 @@ class SdcTest
 
     def win10_edge_sauce
       capabilities_config = {
-        :version => '16.16299',
+          :version => '16.16299',
           :platform => 'Windows 10',
           :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
       }
@@ -70,7 +70,7 @@ class SdcTest
 
     def macos_chrome_sauce
       capabilities_config = {
-        :version => '65.0',
+          :version => '65.0',
           :platform => 'macOS 10.13',
           :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
       }
@@ -166,7 +166,7 @@ class SdcTest
                 end
               end
 
-              when :chrome
+            when :chrome
               prefs = {
                   download: {
                       prompt_for_download: false,
@@ -267,6 +267,19 @@ class SdcTest
         SdcLogger.error e.backtrace.join("\n")
         raise e
       end
+
+      # Sauce Labs settings
+      SauceLabs.host = ENV['SELENIUM_HOST']
+      SauceLabs.port = ENV['SELENIUM_PORT']
+      SauceLabs.platform = ENV['SELENIUM_PLATFORM']
+      SauceLabs.version = ENV['SELENIUM_VERSION']
+      SauceLabs.browser = ENV['SELENIUM_BROWSER']
+      SauceLabs.driver = ENV['SELENIUM_DRIVER']
+      SauceLabs.url = ENV['SELENIUM_URL']
+      SauceLabs.sauce_username = ENV['SAUCE_USERNAME']
+      SauceLabs.sauce_access_key = ENV['SAUCE_ACCESS_KEY']
+      SauceLabs.selenium_starting_url = ENV['SELENIUM_STARTING_URL']
+      SauceLabs.sauce_on_demand_browsers = ENV['SAUCE_ONDEMAND_BROWSERS']
 
       SdcEnv.sauce_device ||= ENV['SAUCE_DEVICE']
 
@@ -374,15 +387,15 @@ class SdcTest
       }
 
       case browser_selection(browser)
-        when :chrome
-          options = Selenium::WebDriver::Chrome::Options.new
-          options.add_emulation(device_name: device_name)
-          options.add_preference(:download, prefs)
-          return Selenium::WebDriver.for(:chrome, options: options)
-        when :firefox
-          return Selenium::WebDriver::Remote::Capabilities.firefox #firefox config goes here
-        else
-          raise ArgumentError, "Unsupported browser. #{browser}"
+      when :chrome
+        options = Selenium::WebDriver::Chrome::Options.new
+        options.add_emulation(device_name: device_name)
+        options.add_preference(:download, prefs)
+        return Selenium::WebDriver.for(:chrome, options: options)
+      when :firefox
+        return Selenium::WebDriver::Remote::Capabilities.firefox #firefox config goes here
+      else
+        raise ArgumentError, "Unsupported browser. #{browser}"
       end
     end
 
