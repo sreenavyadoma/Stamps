@@ -508,7 +508,7 @@ class SdcLogger
     end
 
     def respond_to_missing?(name, include_private = false)
-      logger.respond_to?(name, include_private)
+      logger.respond_to?(name, include_private) || super
     end
 
     def method_missing(method, *args)
