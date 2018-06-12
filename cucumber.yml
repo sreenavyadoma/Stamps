@@ -287,6 +287,7 @@ bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_internati
 bvt_shipstation_search: --tags @bvt_shipstation_search --guess  HEALTHCHECK=true NEW_FRAMEWORK=true
 bvt_orders_ship_date: --tags @bvt_orders_ship_date --guess  HEALTHCHECK=true WEB_APP=orders
 bvt_orders_ship_date_calendar: --tags @bvt_orders_ship_date_calendar --guess  HEALTHCHECK=true WEB_APP=orders
+bvt_orders_ui_validation: --tags @bvt_orders_ui_validation --guess  HEALTHCHECK=true WEB_APP=orders
 bvt_all_tests: --tags @bvt_all_tests --guess  HEALTHCHECK=true WEB_APP=orders
 
 dev_bvt_shipping_address_management: --tags @bvt_shipping_address_management --guess  HEALTHCHECK=false WEB_APP=orders
