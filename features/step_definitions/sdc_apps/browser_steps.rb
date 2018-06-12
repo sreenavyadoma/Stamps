@@ -24,6 +24,15 @@ Then /^configure saucelabs$/ do
   SdcLogger.info "JOB_BASE_NAME: #{ENV['JOB_BASE_NAME']}"
   SdcLogger.info "BUILD_TAG: #{ENV['BUILD_TAG']}"
   SdcLogger.info "BUILD_NUMBER: #{ENV['BUILD_NUMBER']}"
+  SdcLogger.info "BUILD_ID: #{ENV['BUILD_ID']}"
+  SdcLogger.info "NODE_NAME: #{ENV['NODE_NAME']}"
+  SdcLogger.info "EXECUTOR_NUMBER: #{ENV['EXECUTOR_NUMBER']}"
+  SdcLogger.info "NODE_LABELS: #{ENV['NODE_LABELS']}"
+  SdcLogger.info "WORKSPACE: #{ENV['WORKSPACE']}"
+  SdcLogger.info "JENKINS_URL: #{ENV['JENKINS_URL']}"
+  SdcLogger.info "BUILD_URL: #{ENV['BUILD_URL']}"
+  SdcLogger.info "JOB_URL: #{ENV['JOB_URL']}"
+
 end
 
 Then /^Start test driver$/ do

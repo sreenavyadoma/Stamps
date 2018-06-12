@@ -17,8 +17,7 @@ module SdcEnv
 end
 
 ##
-# Variable
-# Description
+# Variable Description
 # SELENIUM_HOST  The hostname of the Selenium server
 # SELENIUM_PORT  The port of the Selenium server
 # SELENIUM_PLATFORM  The operating system of the selected browser
@@ -31,6 +30,14 @@ end
 # SELENIUM_STARTING_URL  The value of the Starting URL field
 # SAUCE_ONDEMAND_BROWSERS  A JSON-formatted string representing browsers you selected for the job configuration
 module SauceLabs
+  class << self
+    attr_accessor :host, :port, :platform, :version, :browser, :driver, :url,
+                  :sauce_username, :sauce_access_key, :selenium_starting_url,
+                  :sauce_on_demand_browsers
+  end
+end
+
+module Jenkins
   class << self
     attr_accessor :host, :port, :platform, :version, :browser, :driver, :url,
                   :sauce_username, :sauce_access_key, :selenium_starting_url,
