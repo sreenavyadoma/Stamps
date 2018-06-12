@@ -9,17 +9,18 @@ end
 
 Then /^configure saucelabs$/ do
 
-  SauceLabs.host = ENV['SELENIUM_HOST']
-  SauceLabs.port = ENV['SELENIUM_PORT']
-  SauceLabs.platform = ENV['SELENIUM_PLATFORM']
-  SauceLabs.version = ENV['SELENIUM_VERSION']
-  SauceLabs.browser = ENV['SELENIUM_BROWSER']
-  SauceLabs.driver = ENV['SELENIUM_DRIVER']
-  SauceLabs.url = ENV['SELENIUM_URL']
-  SauceLabs.sauce_username = ENV['SAUCE_USERNAME']
-  SauceLabs.sauce_access_key = ENV['SAUCE_ACCESS_KEY']
-  SauceLabs.selenium_starting_url = ENV['SELENIUM_STARTING_URL']
-  SauceLabs.sauce_on_demand_browsers = ENV['SAUCE_ONDEMAND_BROWSERS']
+  SdcLogger.info "SELENIUM_HOST: #{SauceLabs.host}"
+  SdcLogger.info "SELENIUM_PORT: #{SauceLabs.port}"
+  SdcLogger.info "SELENIUM_PLATFORM: #{SauceLabs.platform}"
+  SdcLogger.info "SELENIUM_VERSION: #{SauceLabs.version}"
+  SdcLogger.info "SELENIUM_BROWSER: #{SauceLabs.browser}"
+  SdcLogger.info "SELENIUM_DRIVER: #{SauceLabs.driver}"
+  SdcLogger.info "SELENIUM_URL: #{SauceLabs.yyyyy}"
+  SdcLogger.info "SAUCE_USERNAME: #{SauceLabs.sauce_username}"
+  SdcLogger.info "SAUCE_ACCESS_KEY: #{SauceLabs.sauce_access_key}"
+  SdcLogger.info "SELENIUM_STARTING_URL: #{SauceLabs.selenium_starting_url}"
+  SdcLogger.info "SAUCE_ONDEMAND_BROWSERS: #{SauceLabs.sauce_on_demand_browsers}"
+
 end
 
 Then /^Start test driver$/ do
