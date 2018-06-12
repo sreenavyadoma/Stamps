@@ -8,14 +8,13 @@ Given /^I launched the browser$/ do
 end
 
 Then /^configure saucelabs$/ do
-
   SdcLogger.info "SELENIUM_HOST: #{SauceLabs.host}"
   SdcLogger.info "SELENIUM_PORT: #{SauceLabs.port}"
   SdcLogger.info "SELENIUM_PLATFORM: #{SauceLabs.platform}"
   SdcLogger.info "SELENIUM_VERSION: #{SauceLabs.version}"
   SdcLogger.info "SELENIUM_BROWSER: #{SauceLabs.browser}"
   SdcLogger.info "SELENIUM_DRIVER: #{SauceLabs.driver}"
-  SdcLogger.info "SELENIUM_URL: #{SauceLabs.yyyyy}"
+  SdcLogger.info "SELENIUM_URL: #{SauceLabs.url}"
   SdcLogger.info "SAUCE_USERNAME: #{SauceLabs.sauce_username}"
   SdcLogger.info "SAUCE_ACCESS_KEY: #{SauceLabs.sauce_access_key}"
   SdcLogger.info "SELENIUM_STARTING_URL: #{SauceLabs.selenium_starting_url}"

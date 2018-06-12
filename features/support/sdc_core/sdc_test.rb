@@ -131,6 +131,10 @@ class SdcTest
 
       SdcLogger.debug "Initializing test driver...\n"
 
+      if SauceLabs.browser
+
+      end
+
       if SdcEnv.sauce_device
         SdcPage.browser = SdcDriverDecorator.new(class_eval(SdcEnv.sauce_device.to_s))
 
@@ -370,7 +374,7 @@ class SdcTest
       # end
 
       SdcLogger.debug "Tear down...\n"
-      SdcPage.browser.quit
+      #SdcPage.browser.quit
       SdcLogger.debug "Done.\n"
       system 'C:\Stamps\config\batch\edge_rdp_unlock.bat' if SdcEnv.jenkins && SdcEnv.browser == 'edge'
     rescue StandardError => e
