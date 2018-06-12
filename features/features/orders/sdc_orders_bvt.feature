@@ -151,7 +151,7 @@ Feature:  BVT tests for Orders
     Then set customs package contents to Humanitarian Donation
     Then set customs package contents to Merchandise
     Then set customs package contents to Other
-    Then set Customs More Info to random
+    Then set customs more info to random
     Then set customs non-delivery options to Return to sender
     Then set customs internal transaction number to Not required
     Then check customs form i agree to the usps privacy act statement
@@ -164,7 +164,7 @@ Feature:  BVT tests for Orders
   Scenario: BVT Shipping Address
     Then sign-in to orders
     Then add new order
-    Then on Manage Shipping Address modal, add address
+    Then on manage shipping address modal, add address
       |ship_from_zip  | full_name  | company    | street_address| street_address2 | city          | state       | zip    | country       | phone           |
       |90245          | Euan  | Betfair UK | 101 Mission Street | Suite 700       | San Francisco | California  | 94105  | United States | (415) 123-5555  |
     Then on Manage Shipping Address modal, delete all addresses
@@ -185,14 +185,14 @@ Feature:  BVT tests for Orders
     Then uncheck orders grid order id cached
     Then check orders grid order id cached
     Then search filtered Orders for cached Order ID
-    Then expect Filter Panel search results tab is present
+    Then expect filter panel search results tab is present
     Then expect Filter Panel search result count is 1
     Then check orders grid order id cached
     Then expect Order Details Order ID equals Grid Order ID in row 1
     Then expect Order Details Order ID is the same as saved Order ID
     Then expect Filter Panel search result count is greater than 0
     Then remove Filter Panel search results tab
-    Then expect Filter Panel search results tab is not present
+    Then expect filter panel search results tab is not present
     Then sign out
 
   @bvt_shipstation_updates_domestic
@@ -529,4 +529,129 @@ Feature:  BVT tests for Orders
     Then select orders filter shipped tab
     Then in Orders Grid, Sort Order Date in Descending Order
     Then expect cached order id is in orders grid row 1
+    Then sign out
+
+  @bvt_orders_ui_validation
+  Scenario:  BVT UI Validation for Single Order Detail form
+    Then sign-in to orders
+    Then add new order
+    Then expect order details is present
+    Then set order details ship-from to default
+    Then set order details ship-to to random address between zone 5 and 8
+    Then set order details service to PM Package
+    Then set order details pounds to 0
+    Then set order details ounces to 1
+    Then set order details width to 1
+    Then set order details length to 1
+    Then set order details height to 1
+    Then set order details service to FCM Large Envelope/Flat
+    Then set order details service to FCM Package/Thick Envelope
+    Then set order details service to PM Large/Thick Envelope
+    Then set order details service to PM Package
+    Then set order details service to PM Large Package
+    Then set order details service to PM Flat Rate Envelope
+    Then set order details service to PM Padded Flat Rate Envelope
+    Then set order details service to PM Legal Flat Rate Envelope
+    Then set order details service to PM Small Flat Rate Box
+    Then set order details service to PM Medium Flat Rate Box
+    Then set order details service to PM Large Flat Rate Box
+    Then set order details service to PM Regional Rate Box A
+    Then set order details service to PM Regional Rate Box B
+    Then set order details service to PME Package/Flat/Thick Envelope
+    Then set order details service to PME Flat Rate Envelope
+    Then set order details service to PME Padded Flat Rate Envelope
+    Then set order details service to PME Legal Flat Rate Envelope
+    Then set order details service to MM Package/Flat/Thick Envelope
+    Then set order details service to PSG Package/Flat/Thick Envelope
+    Then set order details service to PSG Large Package
+    Then set order details service to PSG Oversized Package
+    Then set order details service to PM Package
+    Then check order details insure-for checkbox
+    Then uncheck order details insure-for checkbox
+    Then check order details insure-for checkbox
+    Then set order details insure-for to $11.99
+    Then set order details tracking to Signature Required
+    Then set order details tracking to USPS Tracking
+    Then set order details reference to STMPS111
+    Then on order details form, add item 1, qty 1, id ID 1, description Description 1
+    Then on order details form, add item 2, qty 2, id random string, description random string
+    Then on order details form, add item 3, qty 3, id ID 3, description random string
+    Then sign out
+
+  @bvt_orders_ui_validation
+  Scenario:  BVT UI Validation for Bulk Update form
+    Then sign-in to orders
+    Then add new order
+    Then expect order details is present
+    Then set order details ship-from to Automation - El Segundo, CA
+    Then set order details ship-to international address to
+      | full_name     | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country | phone        |  email        |
+      | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | Italy   | Random phone | Random email  |
+    Then set order details service to PMI Package/Flat/Thick Envelope
+    Then set order details pounds to 1
+    Then set order details ounces to 1
+    Then set order details service to FCMI Package/Thick Envelope
+    Then set order details service to PMI Package/Flat/Thick Envelope
+    Then set order details service to PMI Flat Rate Envelope
+    Then set order details service to PMI Padded Flat Rate Envelope
+    Then set order details service to PMI Legal Flat Rate Envelope
+    Then set order details service to PMI Small Flat Rate Box
+    Then set order details service to PMI Medium Flat Rate Box
+    Then set order details service to PMI Large Flat Rate Box
+    Then set order details service to PMEI Package/Flat/Thick Envelope
+    Then set order details service to PMEI Flat Rate Envelope
+    Then set order details service to PMEI Padded Flat Rate Envelope
+    Then set order details service to PMEI Legal Flat Rate Envelope
+    Then set order details service to PMI Package/Flat/Thick Envelope
+    Then check order details insure-for checkbox
+    Then uncheck order details insure-for checkbox
+    Then check order details insure-for checkbox
+    Then set order details insure-for to $11.99
+    Then set order details reference to STMPS111
+    Then on order details form, add item 1, qty 1, id ID 1, description Description 1
+    Then on order details form, add item 2, qty 2, id random string, description random string
+    Then click order details form customs form button
+    Then expect customs i agree to the usps privacy act statement is unchecked
+    Then set customs package contents to Document
+    Then set customs package contents to Gift
+    Then set customs package contents to Humanitarian Donation
+    Then set customs package contents to Merchandise
+    Then set customs package contents to Returned Goods
+    Then set customs package contents to Other
+    Then set customs more info to a random string
+    Then set customs package contents to Commercial Sample
+    Then set customs license number to a random string
+    Then set customs certificate number to some random string
+    Then set customs invoice number to a random string
+    Then set customs non-delivery options to Treat as abandoned
+    Then expect customs non-delivery options is Treat as abandoned
+    Then set customs non-delivery options to Return to sender
+    Then expect customs non-delivery options is Return to sender
+    Then set customs internal transaction number to Required
+    Then expect customs internal transaction number is Required
+    Then set customs itn number to ITN123
+    Then add customs associated item 1, description Item 1, qty 1, Price 1, Made In United States, Tariff 1
+    Then add customs associated item 2, description Item 2, qty 2, Price 2, Made In Japan, Tariff 2
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
+    Then sign out
+
+  @bvt_orders_ui_validation
+  Scenario:  BVT UI Validation for Filter tab and toolbar
+    Then sign-in to orders
+    Then expect filter panel search results tab is not present
+    Then expect orders filter awaiting shippment tab is present
+    Then expect orders filter shipped tab is present
+    Then expect orders filter canceled tab is present
+    Then expect orders filter on hold tab is present
+    Then search orders for random expecting to find at least 0
+    Then expect filter panel search results tab is present
+    Then remove filter panel search results tab
+    Then collapse orders filter panel
+    Then expand orders filter panel
+    Then expect orders toolbar print is present
+    Then expect orders toolbar add is present
+    Then expect orders toolbar move is present
+    Then expect orders toolbar tags is present
+    Then expect orders toolbar more actions is present
     Then sign out

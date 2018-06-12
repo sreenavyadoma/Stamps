@@ -16,7 +16,7 @@ Feature: Print 1 single ply FSA CP72 label on on 8.5x11 - right side
     Then click order details form customs form button
     Then set customs package contents to Other
     Then add customs associated item 1, description random, qty 1, Price 25, Made In United States, Tariff 10
-    Then set Customs More Info to random
+    Then set customs more info to random
     Then check customs form i agree to the usps privacy act statement
     Then close customs information form
 

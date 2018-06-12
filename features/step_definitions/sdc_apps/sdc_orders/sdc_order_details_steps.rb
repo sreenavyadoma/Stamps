@@ -6,10 +6,10 @@ Then /^set order details ship-to to(?: a |)(?: random address |)(?:to|in|between
   domestic.address.click
   domestic.address.set(TestData.hash[:ship_to_domestic])
   step 'wait for js to stop'
+  step 'blur out on order details form'
   step 'Save Order Details data'
   step 'hide order details form Ship-To fields'
 end
-
 
 Then /^on order details form, add item (\d+), qty (\d+), id (.+), description (.*)$/ do |item_number, qty, id, description|
   step "add order details associated item #{item_number}"
@@ -250,34 +250,22 @@ end
 Then /^set order details service to (.*)$/ do |str|
   step 'expect order details is present'
   TestData.hash[:service] = str
-  if SdcEnv.new_framework
-    order_details = SdcOrders.order_details
-    service = order_details.service
-    service.selection(name: :selection_element, str: str)
-    service.text_field.scroll_into_view
-    service.drop_down.scroll_into_view
-    service.drop_down.click
-    service.drop_down.click unless service.selection_element.present?
-    service.selection_element.click unless service.selection_element.class_disabled?
-    expect('expect Order Details service is correct')
-    order_details.weight_label.blur_out(ctr: 2)
-    order_details.service_label.blur_out(ctr: 2)
-    order_details.reference_num.blur_out(ctr: 2)
-    order_details.ship_to_label.blur_out(ctr: 2)
-    order_details.order_id.blur_out(ctr: 2)
-    order_details.title.blur_out(ctr: 2)
-
-    service.wait_until(timeout: 15) { service.cost.text_value.dollar_amount_str.to_f.round(2) > 0 }
-
-  else
-    TestData.hash[:service] = stamps.orders.order_details.service.select(str).parse_service_name
-    expect(TestData.hash[:service]).to eql(str)
-    20.times do
-      step 'blur out on order details form'
-      sleep(0.015)
-      break if stamps.orders.order_details.service.cost.text.dollar_amount_str.to_f.round(2) > 0
-    end
-  end
+  order_details = SdcOrders.order_details
+  service = order_details.service
+  service.selection(name: :selection_element, str: str)
+  service.text_field.scroll_into_view
+  service.drop_down.scroll_into_view
+  service.drop_down.click
+  service.drop_down.click unless service.selection_element.present?
+  service.selection_element.click unless service.selection_element.class_disabled?
+  expect(service.text_field.text_value).to include(str)
+  order_details.weight_label.blur_out(ctr: 2)
+  order_details.service_label.blur_out(ctr: 2)
+  order_details.reference_num.blur_out(ctr: 2)
+  order_details.ship_to_label.blur_out(ctr: 2)
+  order_details.order_id.blur_out(ctr: 2)
+  order_details.title.blur_out(ctr: 2)
+  service.wait_until(timeout: 15) { service.cost.text_value.dollar_amount_str.to_f.round(2) > 0 }
   step 'Save Order Details data'
 end
 
@@ -572,7 +560,7 @@ Then /^blur out on order details form$/ do
   end
 end
 
-Then /^[Cc]heck [Oo]rder [Dd]etails [Ii]nsure-[Ff]or [Cc]heckbox$/ do
+Then /^check order details insure-for checkbox$/ do
   if SdcEnv.new_framework
     SdcOrders.order_details.insure_for.checkbox.check
   else
@@ -580,73 +568,57 @@ Then /^[Cc]heck [Oo]rder [Dd]etails [Ii]nsure-[Ff]or [Cc]heckbox$/ do
   end
 end
 
-Then /^[Uu]ncheck [Oo]rder [Dd]etails [Ii]nsure-[Ff]or [Cc]heckbox$/ do
+Then /^uncheck order details insure-for checkbox$/ do
   stamps.orders.order_details.insure_for.checkbox.uncheck
 end
 
 Then /^set order details insure-for to \$(\d+\.\d{2})$/ do |str|
-  step 'check order details insure-for checkbox'
-  if SdcEnv.new_framework
-    SdcOrders.order_details.insure_for.amount.set(TestData.hash[:insured_value] = str.to_f)
-    10.times do
-      break if SdcOrders.order_details.insure_for.cost.text_value.dollar_amount_str.to_f.round(2) > 0
-      step 'blur out on order details form'
-    end
-  else
-    stamps.orders.order_details.insure_for.textbox.set(TestData.hash[:insured_value] = str.to_f)
-    3.times do
-      step 'blur out on order details form'
-      stamps.orders.modals.insurance_terms_conditions.agree if stamps.orders.modals.insurance_terms_conditions.present?
-      break unless stamps.orders.modals.insurance_terms_conditions.present?
-    end
-
-    10.times do
-      break if stamps.orders.order_details.insure_for.cost.text.dollar_amount_str.to_f.round(2) > 0
-      step 'blur out on order details form'
-    end
-  end
+  # step 'check order details insure-for checkbox'
+  SdcOrders.order_details.insure_for.amount.set(TestData.hash[:insured_value] = str.to_f)
+  # 10.times do
+  #   break if SdcOrders.order_details.insure_for.cost.text_value.dollar_amount_str.to_f.round(2) > 0
+  #   step 'blur out on order details form'
+  # end
+  step 'blur out on order details form'
   step 'Save Order Details data'
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Tt]racking to (.*)$/ do |str|
-  if SdcEnv.new_framework
-    SdcOrders.order_details.service.selection(str)
-    5.times do
-      SdcOrders.order_details.tracking.drop_down.click unless SdcOrders.order_details.tracking.selection_obj.present?
-      SdcOrders.order_details.tracking.selection_obj.safe_click unless SdcOrders.order_details.tracking.selection_obj.class_disabled?
-      break if SdcOrders.order_details.tracking.text_field.text_value == str
-    end
-    expect(SdcOrders.order_details.tracking.text_field.text_value).to eql(str)
-    10.times do
-      break if SdcOrders.order_details.tracking.cost.text.dollar_amount_str.to_f.round(2) > 0
-      step 'blur out on order details form'
-    end
-  else
-    stamps.orders.order_details.tracking.select(TestData.hash[:tracking] = str)
-    10.times do
-      break if stamps.orders.order_details.tracking.cost.text.dollar_amount_str.to_f.round(2) > 0
-      step 'blur out on order details form'
-    end
-  end
+Then /^set order details tracking to (.*)$/ do |str|
+  SdcOrders.order_details.tracking.selection_element(value: str)
+  SdcOrders.order_details.tracking.drop_down.click unless SdcOrders.order_details.tracking.selection.present?
+  SdcOrders.order_details.tracking.selection.safe_click unless SdcOrders.order_details.tracking.selection.class_disabled?
+  expect(SdcOrders.order_details.tracking.text_field.text_value).to eql(str)
+  # 10.times do
+  #   break if SdcOrders.order_details.tracking.cost.text.dollar_amount_str.to_f.round(2) > 0
+  #   step 'blur out on order details form'
+  # end
   step 'Save Order Details data'
 end
 
-Then /^set order details ship-from to (?:Manage Shipping Addresses\.\.\.|(.*))$/ do |str|
-  if SdcEnv.new_framework
-    str ||= 'Manage Shipping Addresses...'
-    ship_from = SdcOrders.order_details.ship_from
-    ship_from.selection_element(str)
+Then /^set order details reference to (.*)$/ do |str|
+  SdcOrders.order_details.reference_num.set(str)
+  expect(SdcOrders.order_details.reference_num.text_value).to eql(str)
+  step 'Save Order Details data'
+end
+
+Then /^set order details ship-from to (?:Manage Shipping Addresses\.\.\.|(.*)|default)$/ do |str|
+  if str.eql?('default')
+    str = 'Automation - El Segundo, CA'
+  elsif str.nil? || str.eql?('')
+    str = 'Manage Shipping Addresses...'
+  end
+  ship_from = SdcOrders.order_details.ship_from
+  ship_from.selection_element(str)
+  ship_from.drop_down.scroll_into_view.click
+  unless ship_from.selection.scroll_into_view.present?
     ship_from.drop_down.scroll_into_view.click
-    ship_from.selection.scroll_into_view.click unless ship_from.selection.class_disabled?
-    if ship_from.text_field.text_value == str || str == 'default'
-      TestData.hash[:ship_from] = ship_from.text_field.text_value unless str == 'Manage Shipping Addresses...'
-    end
-  else
-    if str.nil?
-      expect(stamps.orders.order_details.single_ship_from.select('Manage Shipping Addresses...')).to eql("Manage Shipping Addresses")
-    else
-      TestData.hash[:ship_from] = stamps.orders.order_details.single_ship_from.select(str)
-    end
+    step "on manage shipping address modal, add address from string 90245,Automation,1990 E Grand Avenue,El Segundo,California,90245,United States,4157944522"
+    ship_from.drop_down.scroll_into_view.click
+  end
+  ship_from.selection_element(str) unless ship_from.selection.present?
+  ship_from.selection.scroll_into_view.click
+  if ship_from.text_field.text_value == str || str == 'default'
+    TestData.hash[:ship_from] = ship_from.text_field.text_value unless str == 'Manage Shipping Addresses...'
   end
 end
 # @service_blur_out_field = StampsField.new(driver.label(text: 'Service:')) if @service_blur_out_field.nil? || !@service_blur_out_field.present?

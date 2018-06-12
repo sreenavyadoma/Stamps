@@ -48,3 +48,31 @@ Then /^click orders toolbar print button$/ do
   expect(SdcOrders.modals.print.title).to be_present
   expect(SdcOrders.modals.print.title.text_value).to match(/You have \d label ready to print/)
 end
+
+
+Then /^click orders toolbar print all button$/ do
+  step 'Save Order Details data'
+  SdcOrders.order_details.footer.print.click
+  expect(SdcOrders.modals.print.title).to be_present
+  expect(SdcOrders.modals.print.title.text_value).to match(/You have \d label ready to print/)
+end
+
+Then /^expect orders toolbar print is present$/ do
+  expect(SdcOrders.toolbar.print).to be_present, "Orders Toolbar Print is not present!"
+end
+
+Then /^expect orders toolbar add is present$/ do
+  expect(SdcOrders.toolbar.add).to be_present, "Orders Toolbar Add is not present!"
+end
+
+Then /^expect orders toolbar move is present$/ do
+  expect(SdcOrders.toolbar.move).to be_present, "Orders Toolbar Move is not present!"
+end
+
+Then /^expect orders toolbar tags is present$/ do
+  expect(SdcOrders.toolbar.tags).to be_present, "Orders Toolbar Tags button is not present!"
+end
+
+Then /^expect orders toolbar more actions is present$/ do
+  expect(SdcOrders.toolbar.more_actions).to be_present, "Orders Toolbar More Actions button is not present!"
+end

@@ -252,7 +252,7 @@ Feature: 150 orders
     Then set customs package contents to Merchandise
     Then set customs non-delivery options to Return to sender
     Then set customs internal transaction number to Required
-    Then set Customs More Info to random
+    Then set customs more info to random
     Then set customs itn number to random
 
     Then check customs form i agree to the usps privacy act statement
@@ -273,7 +273,7 @@ Feature: 150 orders
     Then set customs package contents to Merchandise
     Then set customs non-delivery options to Return to sender
     Then set customs internal transaction number to Required
-    Then set Customs More Info to random
+    Then set customs more info to random
     Then set customs itn number to random
 
     Then check customs form i agree to the usps privacy act statement
@@ -526,7 +526,7 @@ Feature: 150 orders
     Then set customs package contents to Merchandise
     Then set customs non-delivery options to Return to sender
     Then set customs internal transaction number to Required
-    Then set Customs More Info to random
+    Then set customs more info to random
     Then set customs itn number to random
 
     Then check customs form i agree to the usps privacy act statement
@@ -547,7 +547,7 @@ Feature: 150 orders
     Then set customs package contents to Merchandise
     Then set customs non-delivery options to Return to sender
     Then set customs internal transaction number to Required
-    Then set Customs More Info to random
+    Then set customs more info to random
     Then set customs itn number to random
 
     Then check customs form i agree to the usps privacy act statement
@@ -799,7 +799,7 @@ Feature: 150 orders
     Then set customs package contents to Merchandise
     Then set customs non-delivery options to Return to sender
     Then set customs internal transaction number to Required
-    Then set Customs More Info to random
+    Then set customs more info to random
     Then set customs itn number to random
 
     Then check customs form i agree to the usps privacy act statement
@@ -820,7 +820,7 @@ Feature: 150 orders
     Then set customs package contents to Merchandise
     Then set customs non-delivery options to Return to sender
     Then set customs internal transaction number to Required
-    Then set Customs More Info to random
+    Then set customs more info to random
     Then set customs itn number to random
 
     Then check customs form i agree to the usps privacy act statement
@@ -1073,7 +1073,7 @@ Feature: 150 orders
     Then set customs package contents to Merchandise
     Then set customs non-delivery options to Return to sender
     Then set customs internal transaction number to Required
-    Then set Customs More Info to random
+    Then set customs more info to random
     Then set customs itn number to random
 
     Then check customs form i agree to the usps privacy act statement
@@ -1094,7 +1094,7 @@ Feature: 150 orders
     Then set customs package contents to Merchandise
     Then set customs non-delivery options to Return to sender
     Then set customs internal transaction number to Required
-    Then set Customs More Info to random
+    Then set customs more info to random
     Then set customs itn number to random
 
     Then check customs form i agree to the usps privacy act statement
@@ -1347,7 +1347,7 @@ Feature: 150 orders
     Then set customs package contents to Merchandise
     Then set customs non-delivery options to Return to sender
     Then set customs internal transaction number to Required
-    Then set Customs More Info to random
+    Then set customs more info to random
     Then set customs itn number to random
 
     Then check customs form i agree to the usps privacy act statement
@@ -1368,7 +1368,7 @@ Feature: 150 orders
     Then set customs package contents to Merchandise
     Then set customs non-delivery options to Return to sender
     Then set customs internal transaction number to Required
-    Then set Customs More Info to random
+    Then set customs more info to random
     Then set customs itn number to random
 
     Then check customs form i agree to the usps privacy act statement
@@ -1621,7 +1621,7 @@ Feature: 150 orders
     Then set customs package contents to Merchandise
     Then set customs non-delivery options to Return to sender
     Then set customs internal transaction number to Required
-    Then set Customs More Info to random
+    Then set customs more info to random
     Then set customs itn number to random
 
     Then check customs form i agree to the usps privacy act statement
@@ -1642,7 +1642,7 @@ Feature: 150 orders
     Then set customs package contents to Merchandise
     Then set customs non-delivery options to Return to sender
     Then set customs internal transaction number to Required
-    Then set Customs More Info to random
+    Then set customs more info to random
     Then set customs itn number to random
 
     Then check customs form i agree to the usps privacy act statement

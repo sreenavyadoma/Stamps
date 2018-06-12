@@ -19,7 +19,7 @@ Feature:  Mail BVT - Authentication
 
     Then expect customs i agree to the usps privacy act statement is unchecked
     Then set customs package contents to Document
-#Then set Customs More Info to some random string
+#Then set customs more info to some random string
     Then set customs package contents to Commercial Sample
     Then expect customs package contents is Commercial Sample
     Then set customs license number to a random string

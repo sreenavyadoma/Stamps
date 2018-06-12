@@ -7,7 +7,7 @@ Feature:  Address Management
   @address_management
   Scenario: Address Management
     Then add new order
-    Then on Manage Shipping Address modal, add address
+    Then on manage shipping address modal, add address
       |ship_from_zip  | full_name  | company    | street_address     | street_address2 | city          | state       | zip    | country       | phone           |
       |90245          | Euan  | Betfair UK | 101 Mission Street | Suite 700       | San Francisco | California  | 94105  | United States | (415) 123-5555  |
     Then on Manage Shipping Address modal, edit address for name="Euan", company="Betfair UK" and city="San Francisco" to:
