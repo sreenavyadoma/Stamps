@@ -1,8 +1,6 @@
 class SdcTest
   class << self
     def sauce_endpoint
-      #"https://#{data_for(:sauce_endpoint, {})['username']}:#{data_for(:sauce_endpoint, {})['access_key']}@ondemand.saucelabs.com:443/wd/hub"
-      "https://robcruz:0e60dbc9-5bbf-425a-988b-f81c42d6b7ef@ondemand.saucelabs.com:443/wd/hub"
     end
 
     def sauce_edge
@@ -115,7 +113,7 @@ class SdcTest
               platformVersion: '7.1',
               platformName:  'Android',
               browserName: 'Chrome',
-              name: "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+              name: "#{Jenkins.job_name} - #{Jenkins.build_number}"
           },
           appium_lib: {
               sauce_username:   nil, # don't run on Sauce 'robcruz',
@@ -132,6 +130,20 @@ class SdcTest
       SdcLogger.debug "Initializing test driver...\n"
 
       if SauceLabs.browser
+        sauce_end_point = "https://#{SauceLabs.sauce_username}:#{SauceLabs.sauce_access_key}@ondemand.saucelabs.com:443/wd/hub"
+        capabilities_config = {
+            :version => '65.0',
+            :platform => 'macOS 10.13',
+            :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+        }
+
+        capabilities_config[:build] = Jenkins.build_tag || 'local'
+        caps = Selenium::WebDriver::Remote::Capabilities.send(:chrome, capabilities_config)
+
+        client = Selenium::WebDriver::Remote::Http::Default.new
+        client.timeout = 120
+
+        SdcPage.browser = Watir::Browser.new(:remote, {desired_capabilities: caps, http_client: client, url: sauce_end_point})
 
       end
 
@@ -272,7 +284,7 @@ class SdcTest
         raise e
       end
 
-      # Sauce Labs settings
+      # Saucelabs Environment Variables
       SauceLabs.host = ENV['SELENIUM_HOST']
       SauceLabs.port = ENV['SELENIUM_PORT']
       SauceLabs.platform = ENV['SELENIUM_PLATFORM']
@@ -284,6 +296,14 @@ class SdcTest
       SauceLabs.sauce_access_key = ENV['SAUCE_ACCESS_KEY']
       SauceLabs.selenium_starting_url = ENV['SELENIUM_STARTING_URL']
       SauceLabs.sauce_on_demand_browsers = ENV['SAUCE_ONDEMAND_BROWSERS']
+
+      # Jenkins Environment Variables
+      SauceLabs.job_name = ENV['JOB_NAME']
+      SauceLabs.job_base_name = ENV['JOB_BASE_NAME']
+      SauceLabs.build_tag = ENV['BUILD_TAG']
+      SauceLabs.build_number = ENV['BUILD_NUMBER']
+      SauceLabs.node_name = ENV['NODE_NAME']
+      SauceLabs.build_url = ENV['BUILD_URL']
 
       SdcEnv.sauce_device ||= ENV['SAUCE_DEVICE']
 

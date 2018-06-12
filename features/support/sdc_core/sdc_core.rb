@@ -37,11 +37,18 @@ module SauceLabs
   end
 end
 
+##
+# JOB_NAME  Name of the project of this build, such as "foo" or "foo/bar".
+# JOB_BASE_NAME  Short Name of the project of this build stripping off folder paths, such as "foo" for "bar/foo".
+# BUILD_TAG  String of "jenkins-${JOB_NAME}-${BUILD_NUMBER}". All forward slashes
+#           ("/") in the JOB_NAME are replaced with dashes ("-"). Convenient to put
+#           into a resource file, a jar file, etc for easier identification.
+# BUILD_NUMBER  The current build number, such as "153"
+# NODE_NAME Name of the agent if the build is on an agent, or "master" if run on master
+# BUILD_URL Full URL of this build, like http://server:port/jenkins/job/foo/15/
 module Jenkins
   class << self
-    attr_accessor :host, :port, :platform, :version, :browser, :driver, :url,
-                  :sauce_username, :sauce_access_key, :selenium_starting_url,
-                  :sauce_on_demand_browsers
+    attr_accessor :job_name, :job_base_name, :build_tag, :build_number, :node_name, :build_url
   end
 end
 
