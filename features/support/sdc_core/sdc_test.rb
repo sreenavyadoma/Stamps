@@ -143,8 +143,8 @@ class SdcTest
             when :edge
               kill('taskkill /im MicrosoftEdge.exe /f')
 
-              #system 'runas /profile /Administrator C:\Stamps\config\batch\edge_rdp_unlock.bat' if SdcEnv.jenkins
-              system "powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -command \"Start-Process  C:/Stamps/config/batch/edge_rdp_unlock.bat -Verb runas\"" if SdcEnv.jenkins
+              system 'C:\Stamps\config\batch\edge_rdp_unlock.bat' if SdcEnv.jenkins
+
 
               SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
 
