@@ -20,3 +20,6 @@ Then /^[Cc]lick Print form Mail To link/ do
   stamps.mail.print_form.mail_to.mail_to_link.click
 end
 
+# Then /^check print form email traching$/ do
+#   stamps.mail.print_form.mail_to.mail_to_link.click
+# end

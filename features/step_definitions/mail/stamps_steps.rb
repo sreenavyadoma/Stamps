@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-Then /^[Ss]et Print form Serial Number to (.*)$/ do |str|
+Then /^set print form serial number to (.*)$/ do |str|
   if str.include?('random')
     serial = case str.upcase
               when /A/
@@ -33,7 +33,8 @@ Then /^[Ss]et Print form Serial Number to (.*)$/ do |str|
   else
     serial = str
   end
-  stamps.mail.print_form.serial_number.set(serial)
+  # stamps.mail.print_form.serial_number.set(serial)
+  SdcMail.print_form.serial_number.set(serial)
 end
 
 Then /^[Ss]et Print form Amount to (\d*.?\d+)$/ do |value|
@@ -111,5 +112,22 @@ Then /^[Ee]xpect mail fields are reset$/ do
 end
 
 
+Then /^select print form calculate postage amount$/ do
+  SdcMail.print_form.calculate_postage_amount.select
+  expect(SdcMail.print_form.calculate_postage_amount.selected?).to be_truthy, "Calculate postage amount is not selected!"
+end
 
+Then /^select print form specify postage amount$/ do
+  SdcMail.print_form.specify_postage_amount.select
+  expect(SdcMail.print_form.specify_postage_amount.selected?).to be_truthy, "Specify postage amount is not selected!"
+end
 
+Then /^set print form stamp amount ([\d.]+)$/ do |value|
+  SdcMail.print_form.stamp_amount.set(value)
+  expect(SdcMail.print_form.stamp_amount.text_field.text_value.to_f).to eql(value.to_f)
+end
+
+Then /^set print form stamp quantity (\d+)$/ do |value|
+  SdcMail.print_form.stamp_amount.set(value)
+  expect(SdcMail.print_form.stamp_amount.text_field.text_value.to_f).to eql(value.to_f)
+end

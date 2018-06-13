@@ -8,7 +8,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
   Scenario: Stamps Regression Series #R
     Then pause for 1 second
     Then select print on Stamps
-    Then set Print form Serial Number to R12345
+    Then set print form serial number to R12345
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
     Then set print form mail-to country to United States
@@ -22,7 +22,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
    #mail_print_stamps_r_series_specify
     Then pause for 1 second
     Then select print on Stamps
-    Then set Print form Serial Number to R12345
+    Then set print form serial number to R12345
     Then select Advanced Options Specify Postage Amount
     Then set Print form Mail-From to default
     Then set print form mail-to country to United States
@@ -37,7 +37,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
   Scenario: Stamps Regression Series #S
     Then pause for 1 second
     Then select print on Stamps
-    Then set Print form Serial Number to S12345
+    Then set print form serial number to S12345
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
     Then set print form mail-to country to United States
@@ -51,7 +51,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
    #mail_print_stamps_s_series_specify
     Then pause for 1 second
     Then select print on Stamps
-    Then set Print form Serial Number to S12345
+    Then set print form serial number to S12345
     Then select Advanced Options Specify Postage Amount
     Then set Print form Mail-From to default
     Then set print form mail-to country to United States
@@ -66,7 +66,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
   Scenario: Stamps Regression Series #P
     Then pause for 1 second
     Then select print on Stamps
-    Then set Print form Serial Number to P12345
+    Then set print form serial number to P12345
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
     Then set print form mail-to country to United States
@@ -80,7 +80,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
    #mail_print_stamps_p_series_specify
     Then pause for 1 second
     Then select print on Stamps
-    Then set Print form Serial Number to P12345
+    Then set print form serial number to P12345
     Then select Advanced Options Specify Postage Amount
     Then set Print form Mail-From to default
     Then set print form mail-to country to United States
@@ -95,7 +95,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
   Scenario: Stamps Regression Series #WN
     Then pause for 1 second
     Then select print on Stamps
-    Then set Print form Serial Number to WN1234
+    Then set print form serial number to WN1234
     Then select Advanced Options Specify Postage Amount
     Then set Print form Mail-From to default
     Then set print form mail-to country to United States
@@ -109,7 +109,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
    #mail_print_stamps_wn_series_calculate
     Then pause for 1 second
     Then select print on Stamps
-    Then set Print form Serial Number to WN1234
+    Then set print form serial number to WN1234
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
     Then set print form mail-to country to United States
@@ -124,7 +124,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
   Scenario: Stamps Regression Series #V
     Then pause for 1 second
     Then select print on Stamps
-    Then set Print form Serial Number to V12345
+    Then set print form serial number to V12345
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
     Then set print form mail-to country to United States
@@ -138,7 +138,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
    #mail_print_stamps_v_series_specify
     Then pause for 1 second
     Then select print on Stamps
-    Then set Print form Serial Number to V12345
+    Then set print form serial number to V12345
     Then select Advanced Options Specify Postage Amount
     Then set Print form Mail-From to default
     Then set print form mail-to country to United States

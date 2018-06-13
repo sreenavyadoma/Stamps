@@ -5,7 +5,7 @@ Feature: Manage Print Options
 
   @mail_manage_printing_options
   Scenario: Manage Print Options
-    Then sign-in to Mail
+    Then sign-in to mail
     Then select print on Manage Printing Options...
     Then expect manage print options modal is present
     Then check Stamps in manage print options

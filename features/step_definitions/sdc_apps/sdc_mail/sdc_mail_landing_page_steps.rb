@@ -18,7 +18,7 @@ Then /^visit Mail$/ do
   SdcMailLandingPage.visit(env)
 end
 
-Then /^sign-in to Mail$/ do
+Then /^sign-in to mail$/ do
   step 'visit Mail'
   modal = SdcWebsite.navigation.mail_sign_in_modal
   modal.sign_in_link.wait_until_present(timeout: 10)

@@ -85,7 +85,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
   Scenario: Stamps Regression Series #B
    #mail_print_stamps_b_series_calculate
     Then select print on Stamps
-    Then set Print form Serial Number to B12345
+    Then set print form serial number to B12345
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
     Then set print form mail-to country to United States
@@ -98,7 +98,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
 
    #mail_print_stamps_b_series_specify
     Then select print on Stamps
-    Then set Print form Serial Number to B12345
+    Then set print form serial number to B12345
     Then select Advanced Options Specify Postage Amount
     Then set Print form Mail-From to default
     Then set print form mail-to country to United States
