@@ -160,7 +160,7 @@ class SdcTest
                 else
                   result = `nbtstat.exe -A #{putername}`
                 end
-                system 'C:\\windows\\sysnative\\C:\Stamps\config\batch\edge_rdp_unlock.bat'
+                result 'C:\\windows\\sysnative\\C:\Stamps\config\batch\edge_rdp_unlock.bat'
               end
               #system 'C:\Stamps\config\batch\edge_rdp_unlock.bat' if SdcEnv.jenkins
 
