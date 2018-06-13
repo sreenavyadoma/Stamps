@@ -154,7 +154,7 @@ class SdcTest
                   shell.ShellExecute("ruby", File.expand_path(__FILE__), nil, 'runas')
                   exit
                 end
-                system 'C:\Stamps\config\batch\edge_rdp_unlock.bat'
+                exec 'C:\Stamps\config\batch\edge_rdp_unlock.bat'
               end
               #system 'C:\Stamps\config\batch\edge_rdp_unlock.bat' if SdcEnv.jenkins
 
