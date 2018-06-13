@@ -1,4 +1,4 @@
-default: --backtrace --profile saucelabs
+default: --backtrace --profile saucelabs_local
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -15,7 +15,10 @@ rob: --tags @bvt_bulk_update URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=f
 #rob: --tags @mail_advanced_options_stamps URL=sc --guess LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=selenium  USR=scsejsglwa PW=pass111LOG_LEVEL=debug PRINTER=factory NEW_FRAMEWORK=true # c2jinmzmu64 schl0vlbfy2673 #19  schl0vlbfy2673
 #rob:  --tags @mail_print_on_lov URL=prod BROWSER=ff LOG_LEVEL=info USR=robcruz PW=Stamps#524113 LOG_LEVEL=debug NEW_FRAMEWORK=true MAX_WINDOW=false
 # USR=abqaprod1 PW=password1
+
 saucelabs: --tags @saucelabs LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug
+saucelabs_local: --tags @bvt_new_order URL=cc USR=cctruer0u PW=pass111 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef JOB_NAME='orders_bvt_qacc/saucelabs' SELENIUM_BROWSER=chrome
+
 #saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1
 #saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1
 

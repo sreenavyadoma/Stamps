@@ -61,7 +61,7 @@ Then /^sign-in to orders$/ do
   step "set Orders landing page username to #{TestData.hash[:username]}"
   step "set Orders landing page password to #{TestData.hash[:password]}"
 
-  step 'click sign-in button on browser' if SdcEnv.browser
+  step 'click sign-in button on browser' if SdcEnv.browser || SauceLabs.browser
   step 'click sign-in button on ios' if SdcEnv.ios
   step 'click sign-in button on android' if SdcEnv.android
 end
@@ -119,7 +119,7 @@ end
 
 Then /^[Ss]ign-out of SDC [Ww]ebsite$/ do
   user_drop_down = SdcNavigation.user_drop_down
-  user_drop_down.signed_in_user.safe_wait_until_present(timeout: 5)
+  user_drop_down.signed_in_user.wait_until_present(timeout: 5)
   user_drop_down.signed_in_user.hover
   user_drop_down.sign_out_link.safe_wait_until_present(timeout: 1)
   user_drop_down.sign_out_link.safe_click

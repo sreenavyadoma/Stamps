@@ -143,7 +143,7 @@ class SdcTest
         client = Selenium::WebDriver::Remote::Http::Default.new
         client.timeout = 120
 
-        SdcPage.browser = Watir::Browser.new(:remote, {desired_capabilities: caps, http_client: client, url: sauce_end_point})
+        SdcPage.browser = Watir::Browser.new(:remote, http_client: client, url: sauce_end_point)
 
       end
 
@@ -254,7 +254,7 @@ class SdcTest
 
           Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download") if SdcEnv.web_dev
         else
-          raise ArgumentError, 'Device must be defined'
+          # do nothing
         end
 
       end
@@ -298,12 +298,12 @@ class SdcTest
       SauceLabs.sauce_on_demand_browsers = ENV['SAUCE_ONDEMAND_BROWSERS']
 
       # Jenkins Environment Variables
-      SauceLabs.job_name = ENV['JOB_NAME']
-      SauceLabs.job_base_name = ENV['JOB_BASE_NAME']
-      SauceLabs.build_tag = ENV['BUILD_TAG']
-      SauceLabs.build_number = ENV['BUILD_NUMBER']
-      SauceLabs.node_name = ENV['NODE_NAME']
-      SauceLabs.build_url = ENV['BUILD_URL']
+      Jenkins.job_name = ENV['JOB_NAME']
+      Jenkins.job_base_name = ENV['JOB_BASE_NAME']
+      Jenkins.build_tag = ENV['BUILD_TAG']
+      Jenkins.build_number = ENV['BUILD_NUMBER']
+      Jenkins.node_name = ENV['NODE_NAME']
+      Jenkins.build_url = ENV['BUILD_URL']
 
       SdcEnv.sauce_device ||= ENV['SAUCE_DEVICE']
 

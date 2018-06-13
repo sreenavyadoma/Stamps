@@ -477,6 +477,14 @@ class SdcChooser < BasicObject
   alias uncheck unchoose
   alias unselect unchoose
 
+  def wait_until_chosen(timeout: 4)
+    @element.browser.wait_until(timeout: timeout) { chosen? }
+  end
+
+  def safe_wait_until_chosen(timeout: 4)
+    wait_until_chosen(timeout: timeout)
+  end
+
   def respond_to_missing?(name, include_private = false)
     @element.respond_to?(name, include_private) || super
   end
