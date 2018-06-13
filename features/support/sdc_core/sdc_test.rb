@@ -143,7 +143,20 @@ class SdcTest
             when :edge
               kill('taskkill /im MicrosoftEdge.exe /f')
 
-              system 'C:\Stamps\config\batch\edge_rdp_unlock.bat' if SdcEnv.jenkins
+              if SdcEnv.jenkins
+                def running_in_admin_mode?
+                  (`reg query HKU\\S-1-5-19 2>&1` =~ /ERROR/).nil?
+                end
+
+                unless running_in_admin_mode?
+                  require 'win32ole'
+                  shell = WIN32OLE.new('Shell.Application')
+                  shell.ShellExecute("ruby", File.expand_path(__FILE__), nil, 'runas')
+                  exit
+                end
+                system 'C:\Stamps\config\batch\edge_rdp_unlock.bat'
+              end
+              #system 'C:\Stamps\config\batch\edge_rdp_unlock.bat' if SdcEnv.jenkins
 
 
               SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
