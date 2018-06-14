@@ -43,16 +43,16 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then expect Extra Services Return Receipt is unchecked
     Then expect Extra Services Restricted Delivery is unchecked
 
-    Then set Extra Services COD to 20.00
+    Then set extra services cod to 20.00
     Then click value must be shown window Continue button
-    Then expect Extra Services COD Value is 20.00
+    Then expect extra services cod value is 20.00
     Then save Extra Services
     Then expect Advanced Options Hide Label Value is unchecked
     Then check Advanced Options Hide Label Value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Collect On Delivery
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
-    Then expect Extra Services COD Value is 0.00
+    Then expect extra services cod value is 0.00
 
     Then set Extra Services Handling to Live Animal (with Fee)
     Then click value must be shown window Continue button
@@ -66,7 +66,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then select Advanced Options Extra Services
     Then expect Extra Services Handling is Normal
 
-    Then close Extra Services
+    Then close extra services
     Then select print form service FCM Large Envelope/Flat
     Then select Advanced Options Extra Services
     Then set Extra Services Security to USPS Insurance
@@ -133,16 +133,16 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then expect Extra Services Return Receipt is unchecked
     Then expect Extra Services Restricted Delivery is unchecked
 
-    Then set Extra Services COD to 20.00
+    Then set extra services cod to 20.00
     Then click value must be shown window Continue button
-    Then expect Extra Services COD Value is 20.00
+    Then expect extra services cod value is 20.00
     Then save Extra Services
     Then expect Advanced Options Hide Label Value is unchecked
     Then check Advanced Options Hide Label Value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Collect on Delivery
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
-    Then expect Extra Services COD Value is None
+    Then expect extra services cod value is None
 
     Then set Extra Services Handling to Live Animal (with Fee)
     Then click value must be shown window Continue button
@@ -155,7 +155,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then select Advanced Options Extra Services
     Then expect Extra Services Handling is Normal
 
-    Then close Extra Services
+    Then close extra services
     Then select print form service FCM Large Envelope/Flat
     Then select Advanced Options Extra Services
     Then set Extra Services Security to USPS Insurance
@@ -184,16 +184,16 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then expect Extra Services Security is None
 
 
-    Then set Extra Services COD to 20.00
+    Then set extra services cod to 20.00
     Then click value must be shown window Continue button
-    Then expect Extra Services COD Value is 20.00
+    Then expect extra services cod value is 20.00
     Then save Extra Services
     Then expect Advanced Options Hide Label Value is unchecked
     Then check Advanced Options Hide Label Value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Collect on Delivery
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
-    Then expect Extra Services COD Value is None
+    Then expect extra services cod value is None
 
     Then set Extra Services Handling to Live Animal (with Fee)
     Then click value must be shown window Continue button
@@ -206,7 +206,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then select Advanced Options Extra Services
     Then expect Extra Services Handling is Normal
 
-    Then close Extra Services
+    Then close extra services
     Then select print form service FCM Large Envelope/Flat
     Then select Advanced Options Extra Services
     Then set Extra Services Security to USPS Insurance
@@ -235,7 +235,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then expect Extra Services Security is None
 
 
-    Then close Extra Services
+    Then close extra services
     Then select print form service PM Package
 
 
@@ -253,7 +253,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then set Extra Services Value to 30.00
     Then expect Extra Services Security Price to be 12.50
 
-    Then set Extra Services COD to 20.00
+    Then set extra services cod to 20.00
     Then expect Extra Services COD Price to be 5.65
 
     Then check Extra Services Return Receipt

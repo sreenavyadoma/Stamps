@@ -1,12 +1,16 @@
-
-Then /^[Ss]et Extra Services COD to (\d*.?\d+)$/ do |amount|
-  expect(stamps.mail.print_form.advanced_options.extra_services.cod).to be_present
-  stamps.mail.print_form.advanced_options.extra_services.cod.set(amount)
+Then /^expect extra services cod is present$/ do
+  expect(SdcMail.print_form.advanced_options.extra_services.cod).to be_present, "COD is not present!"
 end
 
-Then /^[Ee]xpect [Ee]xtra [Ss]ervices COD [Vv]alue is (\d*.?\d+)$/ do |amount|
-  expect(stamps.mail.print_form.advanced_options.extra_services.cod).to be_present
-  expect(stamps.mail.print_form.advanced_options.extra_services.cod.textbox.text).to eq amount
+Then /^set extra services cod to (\d*.?\d+)$/ do |amount|
+  step 'expect extra services cod is present'
+  SdcMail.print_form.advanced_options.extra_services.cod.set(amount)
+  step "expect extra services cod value is #{amount}"
+end
+
+Then /^expect extra services cod value is (\d*.?\d+)$/ do |amount|
+  step 'expect extra services cod is present'
+  expect(stamps.mail.print_form.advanced_options.extra_services.cod.value.to_f).to eql(amount.to_f)
 end
 
 Then /^[Ee]xpect Extra Services COD Price to be (\d*.?\d+)$/ do |expectation|
@@ -21,18 +25,27 @@ Then /^[Ss]ave Extra Services$/ do
   # stamps.mail.print_form.advanced_options.xtra_serv_panel.save
 end
 
-Then /^[Ee]xpect Extra Services is present$/ do
-  expect(stamps.mail.print_form.advanced_options.extra_services).to be_present
+Then /^expect extra services modal is present$/ do
+  expect(stamps.mail.print_form.advanced_options.extra_services).to be_present, "Extra services modal is not present"
 end
 
-Then /^[Cc]lose Extra Services$/ do
-  expect(stamps.mail.print_form.advanced_options.extra_services.save_field).to be_present
-  stamps.mail.print_form.advanced_options.extra_services.close
+Then /^expect extra services modal is not present$/ do
+  expect(stamps.mail.print_form.advanced_options.extra_services).not_to be_present, "Extra services modal is still present"
 end
 
-Then /^[Ss]et Extra Services Security to (.*)$/ do |str|
-  expect(stamps.mail.print_form.advanced_options.extra_services.security).to be_present
-  stamps.mail.print_form.advanced_options.extra_services.security.select(str)
+Then /^close extra services$/ do
+  step 'expect extra services modal is present'
+  SdcMailprint_form.advanced_options.extra_services.x_btn.click
+  step 'expect extra services modal is not present'
+end
+
+Then  /^expect extra services security is present$/ do |value|
+  expect(SdcMail.print_form.advanced_options.extra_services.security.drop_down).to be_present, "Extra services security is not present!"
+end
+
+Then /^[Ss]et Extra Services Security to (.*)$/ do |value|
+
+  stamps.mail.print_form.advanced_options.extra_services.security.select(value)
 end
 
 Then /^[Ee]xpect Extra Services Security is (.*)$/ do |str|

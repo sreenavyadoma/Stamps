@@ -8,9 +8,10 @@ Then /^[Ee]xpect Advanced Options responds to (.+) \((.+)\)$/ do |method_descrip
   expect(stamps.mail.print_form.advanced_options).to respond_to(method.to_sym), "Print media error. Advanced Options does not respond to #{method_description} (#{method})"
 end
 
-Then /^[Ss]elect Advanced Options Extra Services$/ do
+Then /^select advanced options extra services$/ do
   step 'Expect Advanced Options responds to Extra Services (extra_services)'
   stamps.mail.print_form.advanced_options.extra_services
+  # SdcMail.print_form.
 end
 
 Then /^[Ee]xpect Advanced Options Extra Services Button is (\w+)/ do |str|

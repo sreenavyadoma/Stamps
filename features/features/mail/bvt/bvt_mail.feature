@@ -418,7 +418,7 @@ Feature: BVT for Mail page
     Then set Extra Services Value to 30.00
     Then expect Extra Services Security Price to be 12.60
 
-    Then set Extra Services COD to 20.00
+    Then set extra services cod to 20.00
     Then expect Extra Services COD Price to be 5.70
 
     Then check Extra Services Return Receipt
