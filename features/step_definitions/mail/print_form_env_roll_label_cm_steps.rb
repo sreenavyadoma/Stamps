@@ -20,6 +20,26 @@ Then /^[Cc]lick Print form Mail To link/ do
   stamps.mail.print_form.mail_to.mail_to_link.click
 end
 
-# Then /^check print form email traching$/ do
-#   stamps.mail.print_form.mail_to.mail_to_link.click
-# end
+Then /^check print form email tracking$/ do
+  SdcMail.print_form.email_tracking.tracking_checkbox.check
+  expect(SdcMail.print_form.email_tracking.tracking_checkbox.checked?).to be_truthy, "Email Tracking is not checked"
+end
+
+Then /^set print form email tracking (.+)$/ do |value|
+  SdcMail.print_form.email_tracking.text_field.set(value)
+  expect(SdcMail.print_form.email_tracking.text_field.text_value).to eql(value)
+end
+
+Then /^set print form insure for ([\d.]+)$/ do |value|
+  SdcMail.print_form.insure_for.set(value)
+  expect(SdcMail.print_form.insure_for.value.to_f).to eql(value.to_f)
+end
+
+Then /^set print form tracking (.+)$/ do |value|
+  tracking = SdcMail.print_form.tracking
+  tracking.tracking_element(name: "selection", value: value)
+  tracking.drop_down.click unless tracking.selection.present?
+  expect(tracking.selection).to be_present, "#{value} is not present in Tracking list"
+  tracking.selection.click
+  expect(tracking.text_field.text_value).to include(value)
+end

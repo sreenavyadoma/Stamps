@@ -134,3 +134,15 @@ Then /^hide advanced options$/ do
   hide.click unless show.present?
   show.wait_until_present(timeout: 3)
 end
+
+Then /^set print form reference number (.+)$/ do |value|
+  SdcMail.print_form.advanced_options.reference_num.set(value)
+end
+
+Then /^set print form cost code (.+)$/ do |value|
+  cost_code = SdcMail.print_form.advanced_options.cost_code
+  cost_code.selection_element(value: value)
+  cost_code.drop_down.click unless cost_code.selection.present?
+  cost_code.selection.click
+  expect(cost_code.text_field.text_value).to include(value)
+end

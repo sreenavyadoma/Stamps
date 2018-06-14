@@ -118,16 +118,28 @@ Then /^select print form calculate postage amount$/ do
 end
 
 Then /^select print form specify postage amount$/ do
+  step 'show advanced options'
   SdcMail.print_form.specify_postage_amount.select
   expect(SdcMail.print_form.specify_postage_amount.selected?).to be_truthy, "Specify postage amount is not selected!"
 end
 
 Then /^set print form stamp amount ([\d.]+)$/ do |value|
+  step 'show advanced options'
   SdcMail.print_form.stamp_amount.set(value)
-  expect(SdcMail.print_form.stamp_amount.text_field.text_value.to_f).to eql(value.to_f)
+  expect(SdcMail.print_form.stamp_amount.value.to_f).to eql(value.to_f)
 end
 
 Then /^set print form stamp quantity (\d+)$/ do |value|
-  SdcMail.print_form.stamp_amount.set(value)
-  expect(SdcMail.print_form.stamp_amount.text_field.text_value.to_f).to eql(value.to_f)
+  SdcMail.print_form.quantity.set(value)
+  expect(SdcMail.print_form.quantity.value.to_f).to eql(value.to_f)
+end
+
+Then /^check print form print all$/ do
+  SdcMail.print_form.print_all.check
+  expect(SdcMail.print_form.print_all.checked?).to be_truthy, "Print All is not checked!"
+end
+
+Then /^uncheck print form print all$/ do
+  SdcMail.print_form.print_all.uncheck
+  expect(SdcMail.print_form.print_all.checked?).to be_falsey, "Print All is not checked!"
 end

@@ -278,65 +278,72 @@ Feature:  Mail BVT - Authentication
     Then select print form specify postage amount
 #    Then set Print form Mail-From to default
     Then set print form mail-to country to United States
-    Then select print on First Class
-    Then select print on Media Mail
+    Then select print form service for stamps First Class
+    Then select print form service for stamps Media Mail
     Then set print form stamp amount 1.23
     Then hide advanced options
     Then show advanced options
     Then select print form calculate postage amount
-    Then set print form weight to lbs 1 oz 1
-    Then select print on FCM Postcard
-    Then select print on FCM Letter
-    Then select print on FCM Large Envelope/Flat
-    Then select print on MM Package/Flat/Thick Envelope
-#    set ref number
-#    set cost code
-#    check print all
+    Then set print form weight to lbs 0 oz 1
+    Then select print form service for stamps FCM Postcard
+    Then select print form service for stamps FCM Letter
+    Then select print form service for stamps FCM Large Envelope/Flat
+    Then select print form service for stamps MM Package/Flat/Thick Envelope
+    Then set print form reference number STMP123
+    Then set print form cost code None
+    Then check print form print all
+    Then uncheck print form print all
     Then select print on Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
-    Then select print on Shipping Label - 5 ½" x 8 ½"
-    Then select print on Envelope - #10, 4 ⅛" x 9 ½"
-    Then select print on Envelope - #9, 3 ⅞" x 8 ⅞"
-    Then select print on Envelope - #A9, 5 ¾" x 8 ¾"
-    Then select print on Envelope - #6, 3 ⅝" x 6 ½"
-    Then select print on Envelope - #A2, 4 ⅜" x 5 ¾"
-    Then select print on Envelope - #7, 3 ⅞" x 7 ½"
-    Then select print on Envelope - #11, 4 ½" x 10 ⅜"
-    Then select print on Envelope - #12, 4 ¾" x 11"
-    Then select print on Certified Mail Label - SDC-3610
-    Then select print on Certified Mail Label - SDC-3710
-    Then select print on Certified Mail Label - SDC-3910
-    Then select print on Certified Mail Label - SDC-3930
-    Then select print on Certified Mail #11 Envelope - SDC-3810
-    Then select print on Certified Mail #11 Envelope - SDC-3830
-    Then select print on Roll - 4" x 6" Shipping Label
-    Then select print on Roll - 4 ⅛" x 6 ¼" Shipping Label
+#    Then select print on Shipping Label - 5 ½" x 8 ½"
+#    Then select print on Envelope - #10, 4 ⅛" x 9 ½"
+#    Then select print on Envelope - #9, 3 ⅞" x 8 ⅞"
+#    Then select print on Envelope - #A9, 5 ¾" x 8 ¾"
+#    Then select print on Envelope - #6, 3 ⅝" x 6 ½"
+#    Then select print on Envelope - #A2, 4 ⅜" x 5 ¾"
+#    Then select print on Envelope - #7, 3 ⅞" x 7 ½"
+#    Then select print on Envelope - #11, 4 ½" x 10 ⅜"
+#    Then select print on Envelope - #12, 4 ¾" x 11"
+#    Then select print on Certified Mail Label - SDC-3610
+#    Then select print on Certified Mail Label - SDC-3710
+#    Then select print on Certified Mail Label - SDC-3910
+#    Then select print on Certified Mail Label - SDC-3930
+#    Then select print on Certified Mail #11 Envelope - SDC-3810
+#    Then select print on Certified Mail #11 Envelope - SDC-3830
+#    Then select print on Roll - 4" x 6" Shipping Label
+#    Then select print on Roll - 4 ⅛" x 6 ¼" Shipping Label
     Then select print on Shipping Label - 8 ½" x 11" Paper
 
     #Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 8
-
-    Then select print form service FCM Large Envelope/Flat
-    Then select print form service FCM Package/Thick Envelope
-    Then select print form service PM Large/Thick Envelope
-    Then select print form service PM Large Package
-    Then select print form service PM Flat Rate Envelope
-    Then select print form service PM Padded Flat Rate Envelope
-    Then select print form service PM Legal Flat Rate Envelope
-    Then select print form service PM Small Flat Rate Box
-    Then select print form service PM Medium Flat Rate Box
-    Then select print form service PM Large Flat Rate Box
-    Then select print form service PM Regional Rate Box A
-    Then select print form service PM Regional Rate Box B
-    Then select print form service PME Package/Flat/Thick Envelope
-    Then select print form service PME Flat Rate Envelope
-    Then select print form service PME Padded Flat Rate Envelope
-    Then select print form service PME Legal Flat Rate Envelope
-    Then select print form service MM Package/Flat/Thick Envelope
-    Then select print form service PSG Package/Flat/Thick Envelope
-    Then select print form service PSG Large Package
-    Then select print form service PSG Oversized Package
+    Then check print form email tracking
+    Then set print form email tracking stamps@mailinator.com
+#    Then select print form service FCM Large Envelope/Flat
+#    Then select print form service FCM Package/Thick Envelope
+#    Then select print form service PM Large/Thick Envelope
+#    Then select print form service PM Large Package
+#    Then select print form service PM Flat Rate Envelope
+#    Then select print form service PM Padded Flat Rate Envelope
+#    Then select print form service PM Legal Flat Rate Envelope
+#    Then select print form service PM Small Flat Rate Box
+#    Then select print form service PM Medium Flat Rate Box
+#    Then select print form service PM Large Flat Rate Box
+#    Then select print form service PM Regional Rate Box A
+#    Then select print form service PM Regional Rate Box B
+#    Then select print form service PME Package/Flat/Thick Envelope
+#    Then select print form service PME Flat Rate Envelope
+#    Then select print form service PME Padded Flat Rate Envelope
+#    Then select print form service PME Legal Flat Rate Envelope
+#    Then select print form service MM Package/Flat/Thick Envelope
+#    Then select print form service PSG Package/Flat/Thick Envelope
+#    Then select print form service PSG Large Package
+#    Then select print form service PSG Oversized Package
     Then select print form service PM Package
 
     Then set print form weight to lbs 1 oz 1
     Then set print form dimensions to length 2 width 2 height 2
+    Then set print form tracking Signature Required
+    Then set print form tracking USPS Tracking
+
+#    add extra services
+
     Then sign out

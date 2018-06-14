@@ -130,8 +130,18 @@ Then /^select print form service (.*)$/ do |str|
   end
 end
 
+Then /^select print form service for stamps (.*)$/ do |str|
+  service = SdcMail.print_form.service
+  service.service_element(:service, str)
+  service.drop_down.click unless service.service.present?
+  expect(service.service.present?).to be(true), "Service #{str} is not on list of values"
+  service.service.click
+  expect(service.text_field.text_value).to include(str)
+  step 'blur out on print form'
+end
+
 Then /^[Ee]xpect [Pp]rint [Ff]orm [Ss]ervice [Cc]ost [Ff]or (.*) is (.*)$/ do |service, cost|
-  step "blur out on print form"
+  step 'blur out on print form'
   stamps.mail.print_form.service.service_cost(TestData.hash[:service] = service).to eql("$#{cost}")
 end
 
