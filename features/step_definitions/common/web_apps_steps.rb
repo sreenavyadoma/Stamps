@@ -1,6 +1,6 @@
 
 
-Then /^sign-in to Mail as (.+), (.+)$/ do |usr, pw|
+Then /^sign-in to mail as (.+), (.+)$/ do |usr, pw|
   stamps.mail.sign_in_modal.mail_sign_in(TestData.hash[:username] = usr, TestData.hash[:password] = pw)
 end
 

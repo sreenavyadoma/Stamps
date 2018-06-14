@@ -567,7 +567,7 @@ class SdcNumber < BasicObject
   attr_reader :text_field, :increment, :decrement
 
   def initialize(text_field, increment, decrement)
-    @text_field = text_field
+    @text_field = ::SdcElement.new(text_field)
     @increment = increment
     @decrement = decrement
   end
