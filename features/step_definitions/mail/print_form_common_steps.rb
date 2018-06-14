@@ -104,40 +104,26 @@ Then /^[Ee]xpect [Pp]rint [Ff]orm [Ss]ervice (.*) is not present in dropdown lis
   expect(stamps.mail.print_form.service.select_service(TestData.hash[:service] = service).present?).to be(false)
 end
 
+# Then /^select print form service for stamps (.*)$/ do |str|
+#   service = SdcMail.print_form.service
+#   service.service_element(:service, str)
+#   service.drop_down.click unless service.service.present?
+#   expect(service.service.present?).to be(true), "Service #{str} is not on list of values"
+#   service.service.click
+#   expect(service.text_field.text_value).to include(str)
+#   step 'blur out on print form'
+# end
+
 Then /^select print form service (.*)$/ do |str|
   SdcLogger.debug "service: #{str}"
   TestData.hash[:service] = str
-  if SdcEnv.new_framework
-    service = SdcMail.print_form.service
-    service.drop_down.click
-    service.service_element(:service, str)
-    service.inline_cost_element(:inline_cost, str)
-    service.drop_down.click unless service.service.present?
-    expect(service.service.present?).to be(true), "Service #{str} is not on list of values"
-
-    service_inline_cost = service.inline_cost.text_value.dollar_amount_str
-    SdcLogger.debug "service_inline_cost: #{service_inline_cost}"
-    expect(service_inline_cost.to_f).to be > 0
-
-    service.service.click
-    service.cost.wait_until_present(timeout: 3)
-    TestData.hash[:service_cost] = service.cost.text_value.dollar_amount_str
-
-    SdcLogger.debug "service_cost: #{TestData.hash[:service_cost]}"
-    expect(service.text_field.text_value).to include str
-  else
-    stamps.mail.print_form.service.select_service(str)
-  end
-end
-
-Then /^select print form service for stamps (.*)$/ do |str|
   service = SdcMail.print_form.service
+  service.drop_down.click
   service.service_element(:service, str)
+  service.inline_cost_element(:inline_cost, str)
   service.drop_down.click unless service.service.present?
-  expect(service.service.present?).to be(true), "Service #{str} is not on list of values"
   service.service.click
-  expect(service.text_field.text_value).to include(str)
-  step 'blur out on print form'
+  expect(service.text_field.text_value).to include str
 end
 
 Then /^[Ee]xpect [Pp]rint [Ff]orm [Ss]ervice [Cc]ost [Ff]or (.*) is (.*)$/ do |service, cost|

@@ -3,12 +3,7 @@
 
 Then /^set print form mail-to (?:|to )(?:|a )(?:|random )address(?: to| in| between|) (.*)$/ do |str|
   address = TestHelper.address_helper(str)
-  if SdcEnv.new_framework
-    SdcMail.print_form.mail_to.text_area.set(address)
-  else
-    stamps.mail.print_form.mail_to.mail_address.textarea.set(address)
-  end
-
+  SdcMail.print_form.mail_to.text_area.set(address)
   TestData.hash[:address] = address
 end
 

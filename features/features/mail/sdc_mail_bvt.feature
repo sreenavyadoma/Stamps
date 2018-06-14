@@ -278,17 +278,17 @@ Feature:  Mail BVT - Authentication
     Then select print form specify postage amount
 #    Then set Print form Mail-From to default
     Then set print form mail-to country to United States
-    Then select print form service for stamps First Class
-    Then select print form service for stamps Media Mail
+    Then select print form service First Class
+    Then select print form service Media Mail
     Then set print form stamp amount 1.23
     Then hide advanced options
     Then show advanced options
     Then select print form calculate postage amount
     Then set print form weight to lbs 0 oz 1
-    Then select print form service for stamps FCM Postcard
-    Then select print form service for stamps FCM Letter
-    Then select print form service for stamps FCM Large Envelope/Flat
-    Then select print form service for stamps MM Package/Flat/Thick Envelope
+    Then select print form service FCM Postcard
+    Then select print form service FCM Letter
+    Then select print form service FCM Large Envelope/Flat
+    Then select print form service MM Package/Flat/Thick Envelope
     Then set print form reference number STMP123
     Then set print form cost code None
     Then check print form print all
