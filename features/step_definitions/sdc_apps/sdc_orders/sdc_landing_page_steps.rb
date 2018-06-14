@@ -40,6 +40,9 @@ Then /^initialize test parameters$/ do
 end
 
 Then /^fetch user credentials from MySQL$/ do
+  if SdcEnv.usr.downcase == 'default'
+    raise "USR=default is not a valid username. Specify a valid username for #{SdcEnv.url}"
+  end
   unless TestData.hash[:username]
     if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default'
       credentials = SdcUserCredentials.fetch(SdcEnv.scenario.tags[0].name)
@@ -61,9 +64,13 @@ Then /^sign-in to orders$/ do
   step "set Orders landing page username to #{TestData.hash[:username]}"
   step "set Orders landing page password to #{TestData.hash[:password]}"
 
-  step 'click sign-in button on browser' if SdcEnv.browser || SauceLabs.browser
-  step 'click sign-in button on ios' if SdcEnv.ios
-  step 'click sign-in button on android' if SdcEnv.android
+  if SdcEnv.ios
+    step 'click sign-in button on ios'
+  elsif SdcEnv.android
+    step 'click sign-in button on android'
+  else
+    step 'click sign-in button on browser'
+  end
 end
 
 Then /^click sign-in button on browser$/ do

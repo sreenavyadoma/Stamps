@@ -63,7 +63,7 @@ class SdcTest
       client = Selenium::WebDriver::Remote::Http::Default.new
       client.timeout = 120
 
-      Watir::Browser.new(:remote, {desired_capabilities: caps, http_client: client, url: sauce_endpoint})
+      Watir::Browser.new(:remote, { desired_capabilities: caps, http_client: client, url: sauce_endpoint })
     end
 
     def macos_chrome_sauce
@@ -80,7 +80,7 @@ class SdcTest
       client = Selenium::WebDriver::Remote::Http::Default.new
       client.timeout = 120
 
-      Watir::Browser.new(:remote, {desired_capabilities: caps, http_client: client, url: sauce_endpoint})
+      Watir::Browser.new(:remote, { desired_capabilities: caps, http_client: client, url: sauce_endpoint })
     end
 
     def iphonex_sauce
@@ -129,22 +129,9 @@ class SdcTest
 
       SdcLogger.debug "Initializing test driver...\n"
 
-      if SauceLabs.browser
-        sauce_end_point = "https://#{SauceLabs.sauce_username}:#{SauceLabs.sauce_access_key}@ondemand.saucelabs.com:443/wd/hub"
-        capabilities_config = {
-            :version => '65.0',
-            :platform => 'macOS 10.13',
-            :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
-        }
-
-        capabilities_config[:build] = Jenkins.build_tag || 'local'
-        caps = Selenium::WebDriver::Remote::Capabilities.send(:chrome, capabilities_config)
-
-        client = Selenium::WebDriver::Remote::Http::Default.new
-        client.timeout = 120
-
-        SdcPage.browser = Watir::Browser.new(:remote, http_client: client, url: sauce_end_point)
-
+      if ENV['SELENIUM_BROWSER']
+        SdcPage.browser = SauceSession.new.create_browser
+        SdcPage.browser
       end
 
       if SdcEnv.sauce_device
@@ -193,7 +180,7 @@ class SdcTest
               SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
 
               if SdcEnv.web_dev
-                SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, options: {prefs: prefs}, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+                SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, options: { prefs: prefs }, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
                 Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
               end
 
@@ -285,25 +272,24 @@ class SdcTest
       end
 
       # Saucelabs Environment Variables
-      SauceLabs.host = ENV['SELENIUM_HOST']
-      SauceLabs.port = ENV['SELENIUM_PORT']
-      SauceLabs.platform = ENV['SELENIUM_PLATFORM']
-      SauceLabs.version = ENV['SELENIUM_VERSION']
-      SauceLabs.browser = ENV['SELENIUM_BROWSER']
-      SauceLabs.driver = ENV['SELENIUM_DRIVER']
-      SauceLabs.url = ENV['SELENIUM_URL']
-      SauceLabs.sauce_username = ENV['SAUCE_USERNAME']
-      SauceLabs.sauce_access_key = ENV['SAUCE_ACCESS_KEY']
-      SauceLabs.selenium_starting_url = ENV['SELENIUM_STARTING_URL']
-      SauceLabs.sauce_on_demand_browsers = ENV['SAUCE_ONDEMAND_BROWSERS']
-
-      # Jenkins Environment Variables
-      Jenkins.job_name = ENV['JOB_NAME']
-      Jenkins.job_base_name = ENV['JOB_BASE_NAME']
-      Jenkins.build_tag = ENV['BUILD_TAG']
-      Jenkins.build_number = ENV['BUILD_NUMBER']
-      Jenkins.node_name = ENV['NODE_NAME']
-      Jenkins.build_url = ENV['BUILD_URL']
+      #SauceLabs.browser = ENV['SELENIUM_BROWSER']
+      # SauceLabs.host = ENV['SELENIUM_HOST']
+      # SauceLabs.port = ENV['SELENIUM_PORT']
+      # SauceLabs.platform = ENV['SELENIUM_PLATFORM']
+      # SauceLabs.version = ENV['SELENIUM_VERSION']
+      # SauceLabs.driver = ENV['SELENIUM_DRIVER']
+      # SauceLabs.url = ENV['SELENIUM_URL']
+      # SauceLabs.sauce_username = ENV['SAUCE_USERNAME']
+      # SauceLabs.sauce_access_key = ENV['SAUCE_ACCESS_KEY']
+      # SauceLabs.selenium_starting_url = ENV['SELENIUM_STARTING_URL']
+      # SauceLabs.sauce_on_demand_browsers = ENV['SAUCE_ONDEMAND_BROWSERS']
+      # # Jenkins Environment Variables
+      # Jenkins.job_name = ENV['JOB_NAME']
+      # Jenkins.job_base_name = ENV['JOB_BASE_NAME']
+      # Jenkins.build_tag = ENV['BUILD_TAG']
+      # Jenkins.build_number = ENV['BUILD_NUMBER']
+      # Jenkins.node_name = ENV['NODE_NAME']
+      # Jenkins.build_url = ENV['BUILD_URL']
 
       SdcEnv.sauce_device ||= ENV['SAUCE_DEVICE']
 

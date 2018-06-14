@@ -4,6 +4,7 @@ cuke_reports: --format json --out report.json --backtrace -f pretty -r features 
 
 sign_in_win10_edge_sauce:  --tags @saucelabs_poc SAUCE_DEVICE=win10_edge_sauce LOG_LEVEL=debug  URL=prod USR=abqaprod1 PW=password1 HEADLESS=true
 sign_in_macos_chrome_sauce:  --tags @mail_authentication SAUCE_DEVICE=macos_chrome_sauce LOG_LEVEL=debug  URL=prod USR=abqaprod1 PW=password1 HEADLESS=true
+sign_in_macos_chrome_sauce:  --tags @mail_authentication SAUCE_DEVICE=macos_chrome_sauce LOG_LEVEL=debug  URL=prod USR=abqaprod1 PW=password1 HEADLESS=true
 iphonex_saucelabs: --tags @saucelabs_poc SAUCE_DEVICE=iphonex_sauce LOG_LEVEL=debug  URL=prod USR=abqaprod1 PW=password
 samsung_galaxy_sauce: --tags @saucelabs_poc SAUCE_DEVICE=samsung_galaxy_sauce LOG_LEVEL=debug  URL=prod USR=abqaprod1 PW=password
 
@@ -17,7 +18,7 @@ rob: --tags @bvt_bulk_update URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=f
 # USR=abqaprod1 PW=password1
 
 saucelabs: --tags @saucelabs LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug
-saucelabs_local: --tags @bvt_new_order URL=cc USR=cctruer0u PW=pass111 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef JOB_NAME='orders_bvt_qacc/saucelabs' SELENIUM_BROWSER=chrome
+saucelabs_local: --tags @bvt_new_order URL=cc USR=cctruer0u PW=pass111 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef JOB_NAME='orders_bvt_qacc/saucelabs' SELENIUM_BROWSER=chrome SELENIUM_VERSION=65.0 SELENIUM_PLATFORM='macOS 10.13'
 
 #saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1
 #saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1

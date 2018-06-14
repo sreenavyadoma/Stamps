@@ -16,6 +16,36 @@ module SdcEnv
   end
 end
 
+module SauceLabs
+  class << self
+    attr_accessor :host, :port, :platform, :version, :browser, :driver, :url,
+                  :sauce_username, :sauce_access_key, :selenium_starting_url,
+                  :sauce_on_demand_browsers
+  end
+end
+
+module Jenkins
+  class << self
+    attr_accessor :job_name, :job_base_name, :build_tag, :build_number, :node_name, :build_url
+  end
+end
+
+class SdcModel
+  class << self
+    def keys
+      @keys ||= []
+    end
+
+    def key(name, &block)
+      keys << name unless keys.include? name
+
+      define_method(name) do |*args|
+        self.instance_exec(*args, &block)
+      end
+    end
+  end
+end
+
 ##
 # Variable Description
 # SELENIUM_HOST  The hostname of the Selenium server
@@ -29,14 +59,6 @@ end
 # SAUCE_ACCESS_KEY  The access key for the user used to invoke Sauce OnDemand
 # SELENIUM_STARTING_URL  The value of the Starting URL field
 # SAUCE_ONDEMAND_BROWSERS  A JSON-formatted string representing browsers you selected for the job configuration
-module SauceLabs
-  class << self
-    attr_accessor :host, :port, :platform, :version, :browser, :driver, :url,
-                  :sauce_username, :sauce_access_key, :selenium_starting_url,
-                  :sauce_on_demand_browsers
-  end
-end
-
 ##
 # JOB_NAME  Name of the project of this build, such as "foo" or "foo/bar".
 # JOB_BASE_NAME  Short Name of the project of this build stripping off folder paths, such as "foo" for "bar/foo".
@@ -46,9 +68,54 @@ end
 # BUILD_NUMBER  The current build number, such as "153"
 # NODE_NAME Name of the agent if the build is on an agent, or "master" if run on master
 # BUILD_URL Full URL of this build, like http://server:port/jenkins/job/foo/15/
-module Jenkins
-  class << self
-    attr_accessor :job_name, :job_base_name, :build_tag, :build_number, :node_name, :build_url
+class SauceConfig < ::SdcModel
+  key(:sauce_username) { ENV['SAUCE_USERNAME'] }
+  key(:sauce_access_key) { ENV['SAUCE_ACCESS_KEY'] }
+  key(:selenium_host) { ENV['SELENIUM_HOST'] }
+  key(:selenium_port) { ENV['SELENIUM_PORT'] }
+  key(:selenium_platform) { ENV['SELENIUM_PLATFORM'] }
+  key(:selenium_version) { ENV['SELENIUM_VERSION'] }
+  key(:selenium_browser) { ENV['SELENIUM_BROWSER'] }
+  key(:selenium_driver) { ENV['SELENIUM_DRIVER'] }
+  key(:selenium_url) { ENV['SELENIUM_URL'] }
+  key(:selenium_starting_url) { ENV['SELENIUM_STARTING_URL'] }
+  key(:sauce_on_demand_browsers) { ENV['SAUCE_ONDEMAND_BROWSERS'] }
+  key(:job_name) { ENV['JOB_NAME'] }
+  key(:job_base_name) { ENV['JOB_BASE_NAME'] }
+  key(:build_tag) { ENV['BUILD_TAG'] }
+  key(:build_number) { ENV['BUILD_NUMBER'] }
+  key(:node_name) { ENV['NODE_NAME'] }
+  key(:build_url) { ENV['BUILD_URL'] }
+  key(:sauce_end_point) { "https://#{sauce_username}:#{sauce_access_key}@ondemand.saucelabs.com:443/wd/hub" }
+                       #"https://robcruz:0e60dbc9-5bbf-425a-988b-f81c42d6b7ef@ondemand.saucelabs.com:443/wd/hub"
+  def test_name
+    job_base_name || "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+  end
+
+  def build
+    build_tag || Socket.gethostname
+  end
+
+end
+
+class SauceSession
+  def initialize
+    @sauce_config = ::SauceConfig.new
+  end
+
+  def create_browser
+    caps_conf = {
+        :version => @sauce_config.selenium_version,
+        :platform => @sauce_config.selenium_platform,
+        :name => @sauce_config.test_name,
+        :build => @sauce_config.build
+    }
+
+    caps = Selenium::WebDriver::Remote::Capabilities.send(@sauce_config.selenium_browser, caps_conf)
+    client = Selenium::WebDriver::Remote::Http::Default.new
+    client.timeout = 120
+    url = @sauce_config.sauce_end_point
+    @browser = Watir::Browser.new(:remote, desired_capabilities: caps, http_client: client, url: url)
   end
 end
 
