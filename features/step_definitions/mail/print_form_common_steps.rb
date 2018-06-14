@@ -190,27 +190,17 @@ Then /^set print form ship-to to international address$/ do |table|
 end
 
 Then /^set print form mail-to country to (.*)$/ do |str|
-  if SdcEnv.new_framework
-    mail_to = SdcMail.print_form.mail_to
-    mail_to.selection(:selection_element, str)
-    text_field = mail_to.dom_text_field
-    text_field.safe_wait_until_present(timeout: 1)
-    text_field = mail_to.int_text_field if mail_to.int_text_field.present?
-    unless text_field.text_value.eql? str
-      text_field.set str
-      mail_to.selection_element.safe_wait_until_present(timeout: 2)
-      mail_to.selection_element.safe_click
-    end
-    expect(text_field.text_value).to eql str
-    sleep 2
-  else
-    20.times do
-      stamps.mail.print_form.mail_to.mail_to_country.select_country(TestData.hash[:country] = str)
-      break if stamps.mail.print_form.mail_to.mail_to_country.textbox.text.include?(TestData.hash[:country]) && stamps.mail.print_form.service.has_rates?
-    end
-    expect(stamps.mail.print_form.service).to be_has_rates, "Mail service list of values does not have rates."
-    expect(stamps.mail.print_form.mail_to.mail_to_country.textbox.text).to eql(TestData.hash[:country])
+  mail_to = SdcMail.print_form.mail_to
+  mail_to.selection(:selection_element, str)
+  text_field = mail_to.dom_text_field
+  text_field.safe_wait_until_present(timeout: 1)
+  text_field = mail_to.int_text_field if mail_to.int_text_field.present?
+  unless text_field.text_value.eql? str
+    text_field.set str
+    mail_to.selection_element.safe_wait_until_present(timeout: 2)
+    mail_to.selection_element.safe_click
   end
+  expect(text_field.text_value).to eql str
 end
 
 Then /^set print form name to (.*)$/ do |str|
