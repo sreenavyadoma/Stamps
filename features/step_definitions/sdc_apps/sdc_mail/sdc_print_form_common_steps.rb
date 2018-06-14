@@ -1,54 +1,50 @@
 
 Then /^select print on (.+)$/ do |str|
   SdcLogger.debug "select print on #{str}"
-  if SdcEnv.new_framework
-    print_on = SdcMail.print_on
-    step 'blur out on print form'
-    print_on.text_field.wait_until_present(timeout: 6)
-    unless TestData.hash[:print_on_arr]
-      TestData.hash[:print_on_arr] = []
-      print_on.drop_down.safe_click
-      print_on.selection_list.each do |element|
-        TestData.hash[:print_on_arr] << element.text
-      end
-      print_on.drop_down.safe_click
+  print_on = SdcMail.print_on
+  step 'blur out on print form'
+  print_on.text_field.wait_until_present(timeout: 6)
+  unless TestData.hash[:print_on_arr]
+    TestData.hash[:print_on_arr] = []
+    print_on.drop_down.safe_click
+    print_on.selection_list.each do |element|
+      TestData.hash[:print_on_arr] << element.text
     end
-
-    if TestData.hash[:print_on_arr].include? str
-      print_on.selection(:selection_element, str)
-      print_on.text_field.set_attribute('value', '')
-      print_on.text_field.set str
-      print_on.selection_element.safe_wait_until_present(timeout: 2)
-      print_on.selection_element.safe_click
-      print_on.selection_element.safe_wait_while_present(timeout: 2)
-    else
-      # bring in selection from Manage Printing Options modal
-      print_on.text_field.set_attribute('value', '')
-      print_on.text_field.set 'Manage Printing Options...'
-      print_on.selection(:selection_element, 'Manage Printing Options...')
-      print_on.selection_element.safe_wait_until_present(timeout: 2)
-      print_on.selection_element.safe_click
-      print_on.selection_element.safe_wait_while_present(timeout: 2)
-      step "check #{str} in manage print options"
-      step 'click save in manage print options'
-      # update the list
-      print_on.drop_down.safe_click
-      print_on.selection_list.each do |element|
-        TestData.hash[:print_on_arr] << element.text
-      end
-      print_on.drop_down.safe_click
-      # select print on
-      print_on.selection(:selection_element, str)
-      print_on.text_field.click
-      print_on.text_field.set_attribute('value', '')
-      print_on.text_field.set str
-      print_on.selection_element.safe_wait_until_present(timeout: 1)
-      print_on.selection_element.click
-    end
-    expect(print_on.text_field.text_value).to eql(str) unless str.include? 'Manage'
-  else
-    stamps.mail.print_on(str)
+    print_on.drop_down.safe_click
   end
+
+  if TestData.hash[:print_on_arr].include? str
+    print_on.selection(:selection_element, str)
+    print_on.text_field.set_attribute('value', '')
+    print_on.text_field.set str
+    print_on.selection_element.safe_wait_until_present(timeout: 2)
+    print_on.selection_element.safe_click
+    print_on.selection_element.safe_wait_while_present(timeout: 2)
+  else
+    # bring in selection from Manage Printing Options modal
+    print_on.text_field.set_attribute('value', '')
+    print_on.text_field.set 'Manage Printing Options...'
+    print_on.selection(:selection_element, 'Manage Printing Options...')
+    print_on.selection_element.safe_wait_until_present(timeout: 2)
+    print_on.selection_element.safe_click
+    print_on.selection_element.safe_wait_while_present(timeout: 2)
+    step "check #{str} in manage print options"
+    step 'click save in manage print options'
+    # update the list
+    print_on.drop_down.safe_click
+    print_on.selection_list.each do |element|
+      TestData.hash[:print_on_arr] << element.text
+    end
+    print_on.drop_down.safe_click
+    # select print on
+    print_on.selection(:selection_element, str)
+    print_on.text_field.click
+    print_on.text_field.set_attribute('value', '')
+    print_on.text_field.set str
+    print_on.selection_element.safe_wait_until_present(timeout: 1)
+    print_on.selection_element.click
+  end
+  expect(print_on.text_field.text_value).to eql(str) unless str.include? 'Manage'
   step 'blur out on print form'
   TestData.hash[:print_media] = str
 end
@@ -56,6 +52,8 @@ end
 Then /^blur out on print form$/ do
   print_on = SdcMail.print_on
   print_on.text_field.wait_until_present(timeout: 6)
+  print_on.label.safe_click
+  print_on.label.double_click
   print_on.label.safe_click
   print_on.label.double_click
   print_on.label.safe_click
