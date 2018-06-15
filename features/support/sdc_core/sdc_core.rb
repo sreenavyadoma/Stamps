@@ -82,6 +82,10 @@ class SauceConfig < ::SdcModel
     build_tag || Socket.gethostname
   end
 
+  def session_info(session_id)
+    "SauceOnDemandSessionID=<#{session_id}> job-name=<#{build}>"
+  end
+
 end
 
 class SauceSession
