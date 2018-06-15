@@ -360,10 +360,10 @@ class SdcTest
       #   SdcLog.info "#{SdcPage.browser} closed."
       # end
 
+      SdcLogger.info SdcEnv.sauce.session_info(SdcPage.browser.driver.session_id)
       SdcLogger.debug "Tear down...\n"
       SdcPage.browser.quit
       SdcLogger.debug "Done.\n"
-      SdcLogger.info SdcEnv.sauce.session_info(SdcPage.browser.driver.session_id)
       if SdcEnv.jenkins && SdcEnv.browser == 'edge'
         system 'C:\Stamps\config\batch\edge_rdp_unlock.bat'
       end
