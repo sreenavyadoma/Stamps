@@ -98,7 +98,8 @@ class SauceSession
         :version => @sauce_config.version,
         :platform => @sauce_config.platform,
         :name => @sauce_config.test_name,
-        :build => @sauce_config.build
+        :build => @sauce_config.build,
+        :extendedDebugging => true
     }
 
     caps = Selenium::WebDriver::Remote::Capabilities.send(@sauce_config.browser, caps_conf)
