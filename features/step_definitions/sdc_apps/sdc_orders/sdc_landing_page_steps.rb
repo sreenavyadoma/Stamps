@@ -61,7 +61,6 @@ Then /^fetch user credentials from MySQL$/ do
 end
 
 Then /^sign-in to orders$/ do
-  expect(true).to eql(false), 'Fail test'
   step 'visit Orders landing page'
   step "set Orders landing page username to #{TestData.hash[:username]}"
   step "set Orders landing page password to #{TestData.hash[:password]}"
