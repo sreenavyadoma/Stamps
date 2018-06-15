@@ -561,11 +561,7 @@ Then /^blur out on order details form$/ do
 end
 
 Then /^check order details insure-for checkbox$/ do
-  if SdcEnv.new_framework
-    SdcOrders.order_details.insure_for.checkbox.check
-  else
-    stamps.orders.order_details.insure_for.checkbox.check
-  end
+  SdcOrders.order_details.insure_for.checkbox.check
 end
 
 Then /^uncheck order details insure-for checkbox$/ do
@@ -573,8 +569,11 @@ Then /^uncheck order details insure-for checkbox$/ do
 end
 
 Then /^set order details insure-for to \$(\d+\.\d{2})$/ do |str|
-  # step 'check order details insure-for checkbox'
-  SdcOrders.order_details.insure_for.amount.set(TestData.hash[:insured_value] = str.to_f)
+  insure_for = SdcOrders.order_details.insure_for
+  insure_for.checkbox.check
+  insure_for.checkbox.safe_wait_until_chosen(timeout: 3)
+  expect(insure_for.checkbox.checked?). to be(true), 'Cannot check Insure-for checkbox'
+  insure_for.amount.set(TestData.hash[:insured_value] = str.to_f)
   # 10.times do
   #   break if SdcOrders.order_details.insure_for.cost.text_value.dollar_amount_str.to_f.round(2) > 0
   #   step 'blur out on order details form'

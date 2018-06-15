@@ -155,14 +155,9 @@ Then /^expect order details ship from is (?:correct|(.*))$/ do |expectation|
 end
 
 Then /^expect order details is present$/ do
-  if SdcEnv.new_framework
-    #step "wait until order details present"
-    SdcWebsite.orders.order_details.wait_until_present(timeout: 10)
-    expect(SdcWebsite.orders.order_details).to be_present, "Order Details form is not present"
-  else
-    stamps.orders.order_details.wait_until_present(4)
-    expect(stamps.orders.order_details).to be_present, "Order Details form is not present"
-  end
+  #step "wait until order details present"
+  SdcWebsite.orders.order_details.wait_until_present(timeout: 10)
+  expect(SdcWebsite.orders.order_details).to be_present, "Order Details form is not present"
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails is not present$/ do
@@ -450,11 +445,7 @@ end
 
 Then /^expect order details insure-for is (?:correct|(\d+\.\d{2}))$/ do |expectation|
   step 'expect order details is present'
-  if SdcEnv.new_framework
-    expect(SdcOrders.order_details.insure_for.amount.value.to_f.round(2)).to eql(expectation.nil? ? TestData.hash[:insured_value] : expectation.to_f)
-  else
-    expect(stamps.orders.order_details.insure_for.textbox.text.to_f.round(2)).to eql(expectation.nil? ? TestData.hash[:insured_value] : expectation.to_f)
-  end
+  expect(SdcOrders.order_details.insure_for.amount.value.to_f.round(2)).to eql(expectation.nil? ? TestData.hash[:insured_value] : expectation.to_f)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ii]nsure-[Ff]or [Cc]ost is (?:correct|(\d+\.\d{2}))$/ do |expectation|
@@ -531,11 +522,7 @@ end
 Then /^expect order details tracking cost is (?:correct|(\d+.\d*))$/ do |expectation|
   expectation = TestData.hash[:tracking_cost] if expectation.nil?
   step 'expect order details is present'
-  if SdcEnv.new_framework
-    expect(SdcOrders.order_details.tracking.cost.text_value.to_f.round(2)).to eql(expectation.nil? ? TestData.hash[:tracking_cost] : expectation)
-  else
-    expect(stamps.orders.order_details.tracking.cost.text.dollar_amount_str.to_f.round(2)).to eql(expectation.nil? ? TestData.hash[:tracking_cost] : expectation)
-  end
+  expect(SdcOrders.order_details.tracking.cost.text_value.to_f.round(2)).to eql(expectation.nil? ? TestData.hash[:tracking_cost] : expectation)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails Tracking [Cc]ost is greater than \$([0-9.]*)$/ do |expectation|

@@ -538,7 +538,7 @@ Feature: BVT for Mail page
   Scenario: Print form Specify Postage
     Then select print on Stamps
 
-    Then set Print form Serial Number to C12345
+    Then set print form serial number to C12345
     Then select Advanced Options Specify Postage Amount
     Then set Print form Mail-From to default
     Then select print form service Media Mail
@@ -549,7 +549,7 @@ Feature: BVT for Mail page
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
-    Then set Print form Serial Number to B12345
+    Then set print form serial number to B12345
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
     Then set print form ounces to 1
@@ -572,7 +572,7 @@ Feature: BVT for Mail page
   Scenario: Mail Service Validation for Stamps
     Then select print on Stamps
     Then show advanced options
-    Then set Print form Serial Number to B12345
+    Then set print form serial number to B12345
     Then select Advanced Options Specify Postage Amount
     Then set Print form Mail-From to default
     Then select print form service Media Mail

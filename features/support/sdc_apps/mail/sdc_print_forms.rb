@@ -51,9 +51,9 @@ module SdcMail
     module EmailTrackingContainer
       class EmailTracking < SdcPage
         text_field(:text_field, tag: :text_field) { { xpath: '//*[@id="sdc-mainpanel-emailtextfield-webpostage-inputEl"]' } }
-        page_object(:chooser) { { xpath: '(//*[@id="appMainBodyContent-targetEl"]//div[starts-with(@id, "checkbox-")][contains(@id, "-innerWrapEl")]//input)[0]' } }
-        page_object(:verify) { { xpath: '(//div[@class="x-field x-form-item x-form-item-default x-form-type-checkbox x-box-item x-field-default x-hbox-form-item x-form-item-no-label x-form-cb-checked x-form-dirty"])[0]' } }
-        chooser(:checkbox, :chooser, :verify, :class, :checked)
+        page_object(:tracking_chsr) { { xpath: '//*[text()="Email Tracking:"]/..//input' } }
+        page_object(:tracking_ver) { { xpath: '//*[text()="Email Tracking:"]/../div' } }
+        checkbox(:tracking_checkbox, :tracking_chsr, :tracking_ver, :class, :checked)
       end
 
       def email_tracking
@@ -69,6 +69,29 @@ module SdcMail
 
       def extra_services
         ExtraServices.new
+      end
+    end
+
+    module AdvancedOptionsContainer
+      class AdvancedOptions < SdcPage
+        page_object(:reference_num, tag: :text_field) { { xpath: '//*[text()="Reference #:"]/..//input' } }
+
+        def cost_code
+          AdvancedOptionsCostCode.new
+        end
+      end
+
+      class AdvancedOptionsCostCode < SdcPage
+        text_field(:text_field, tag: :text_field) { { xpath: '//input[contains(@id, "costcodesdroplist")]' } }
+        page_object(:drop_down) { { xpath: '//*[contains(@id, "costcodesdroplist")][contains(@class, "arrow")]' } }
+
+        def selection_element(name: 'selection', value: 'None')
+          page_object(name) { { xpath: "//li[text()='#{value}']" } }
+        end
+      end
+
+      def advanced_options
+        AdvancedOptions.new
       end
     end
 
@@ -157,8 +180,8 @@ module SdcMail
         page_object(:drop_down) { { xpath: '//*[@id="sdc-mainpanel-trackingdroplist-trigger-picker"]' } }
         page_object(:cost) { { xpath: '//*[@id="sdc-mainpanel-trackingpricelabel"]' } }
 
-        def tracking_element(name, str)
-          page_object(name) { { xpath: "//*[@id='#{data_for(:mail_tracking_service, {})[str]}']//td[@class='x-boundlist-item-text']" } }
+        def tracking_element(name: "selection", value: "None")
+          page_object(name) { { xpath: "//*[@id='#{data_for(:mail_tracking_service, {})[value]}']//td[@class='x-boundlist-item-text']" } }
         end
 
         def inline_cost_element(name, str)
@@ -209,6 +232,7 @@ module SdcMail
       include MailToContainer
       include WeightContainer
       include ServiceContainer
+      include AdvancedOptionsContainer
 
       page_object(:show_advanced_options) { { xpath: '//*[text()="Show Advanced Options"]' } }
       page_object(:hide_advanced_options) { { xpath: '//*[text()="Hide Advanced Options"]' } }
@@ -221,18 +245,27 @@ module SdcMail
 
       page_object(:calc_chooser) { { xpath: '//*[@id="sdc-mainpanel-calculatepostageradio-displayEl"]' } }
       page_object(:calc_verify) { { xpath: '//*[@id="sdc-mainpanel-calculatepostageradio"]' } }
-      chooser(:calculate_postage_amount, :del_chooser, :ret_verify,
+      chooser(:calculate_postage_amount, :calc_chooser, :calc_verify,
               :class, :checked)
 
       page_object(:spec_chooser) { { xpath: '//*[@id="sdc-mainpanel-specifypostageradio-displayEl"]' } }
-      page_object(:spc_verify) { { xpath: '//*[@id="sdc-mainpanel-specifypostageradio"]' } }
-      chooser(:specify_postage_amount, :del_chooser, :ret_verify,
+      page_object(:spec_verify) { { xpath: '//*[@id="sdc-mainpanel-specifypostageradio"]' } }
+      chooser(:specify_postage_amount, :spec_chooser, :spec_verify,
               :class, :checked)
 
       text_field(:qty_text_field, tag: :text_field) { { xpath: '//*[@name="NsQuantity"]' } }
       page_object(:qty_increment) { { xpath: '//*[contains(@id,"printPreviewPanel-")]//*[contains(@class,"up")]' } }
       page_object(:qty_decrement) { { xpath: '//*[contains(@id,"printPreviewPanel-")]//*[contains(@class,"down")]' } }
       sdc_number(:quantity, :qty_text_field, :qty_increment, :qty_decrement)
+
+      text_field(:amt_text_field, tag: :text_field) { { xpath: '//*[@name="NsSpecifyAmount"]' } }
+      page_object(:amt_increment) { { xpath: '//*[@name="NsSpecifyAmount"]/../..//*[contains(@class,"up")]' } }
+      page_object(:amt_decrement) { { xpath: '//*[@name="NsSpecifyAmount"]/../..//*[contains(@class,"down")]' } }
+      sdc_number(:stamp_amount, :amt_text_field, :amt_increment, :amt_decrement)
+
+      page_object(:print_all_chooser) { { xpath: '//*[text()="Print All"]/../span' } }
+      page_object(:print_all_verify) { { xpath: '//*[text()="Print All"]/../../..' } }
+      checkbox(:print_all, :print_all_chooser, :print_all_verify, 'class', 'checked')
     end
 
     class ShippingLabels < PrintFormBase

@@ -104,34 +104,30 @@ Then /^[Ee]xpect [Pp]rint [Ff]orm [Ss]ervice (.*) is not present in dropdown lis
   expect(stamps.mail.print_form.service.select_service(TestData.hash[:service] = service).present?).to be(false)
 end
 
+# Then /^select print form service for stamps (.*)$/ do |str|
+#   service = SdcMail.print_form.service
+#   service.service_element(:service, str)
+#   service.drop_down.click unless service.service.present?
+#   expect(service.service.present?).to be(true), "Service #{str} is not on list of values"
+#   service.service.click
+#   expect(service.text_field.text_value).to include(str)
+#   step 'blur out on print form'
+# end
+
 Then /^select print form service (.*)$/ do |str|
   SdcLogger.debug "service: #{str}"
   TestData.hash[:service] = str
-  if SdcEnv.new_framework
-    service = SdcMail.print_form.service
-    service.drop_down.click
-    service.service_element(:service, str)
-    service.inline_cost_element(:inline_cost, str)
-    service.drop_down.click unless service.service.present?
-    expect(service.service.present?).to be(true), "Service #{str} is not on list of values"
-
-    service_inline_cost = service.inline_cost.text_value.dollar_amount_str
-    SdcLogger.debug "service_inline_cost: #{service_inline_cost}"
-    expect(service_inline_cost.to_f).to be > 0
-
-    service.service.click
-    service.cost.wait_until_present(timeout: 3)
-    TestData.hash[:service_cost] = service.cost.text_value.dollar_amount_str
-
-    SdcLogger.debug "service_cost: #{TestData.hash[:service_cost]}"
-    expect(service.text_field.text_value).to include str
-  else
-    stamps.mail.print_form.service.select_service(str)
-  end
+  service = SdcMail.print_form.service
+  service.drop_down.click
+  service.service_element(:service, str)
+  service.inline_cost_element(:inline_cost, str)
+  service.drop_down.click unless service.service.present?
+  service.service.click
+  expect(service.text_field.text_value).to include str
 end
 
 Then /^[Ee]xpect [Pp]rint [Ff]orm [Ss]ervice [Cc]ost [Ff]or (.*) is (.*)$/ do |service, cost|
-  step "blur out on print form"
+  step 'blur out on print form'
   stamps.mail.print_form.service.service_cost(TestData.hash[:service] = service).to eql("$#{cost}")
 end
 
@@ -180,27 +176,17 @@ Then /^set print form ship-to to international address$/ do |table|
 end
 
 Then /^set print form mail-to country to (.*)$/ do |str|
-  if SdcEnv.new_framework
-    mail_to = SdcMail.print_form.mail_to
-    mail_to.selection(:selection_element, str)
-    text_field = mail_to.dom_text_field
-    text_field.safe_wait_until_present(timeout: 1)
-    text_field = mail_to.int_text_field if mail_to.int_text_field.present?
-    unless text_field.text_value.eql? str
-      text_field.set str
-      mail_to.selection_element.safe_wait_until_present(timeout: 2)
-      mail_to.selection_element.safe_click
-    end
-    expect(text_field.text_value).to eql str
-    sleep 2
-  else
-    20.times do
-      stamps.mail.print_form.mail_to.mail_to_country.select_country(TestData.hash[:country] = str)
-      break if stamps.mail.print_form.mail_to.mail_to_country.textbox.text.include?(TestData.hash[:country]) && stamps.mail.print_form.service.has_rates?
-    end
-    expect(stamps.mail.print_form.service).to be_has_rates, "Mail service list of values does not have rates."
-    expect(stamps.mail.print_form.mail_to.mail_to_country.textbox.text).to eql(TestData.hash[:country])
+  mail_to = SdcMail.print_form.mail_to
+  mail_to.selection(:selection_element, str)
+  text_field = mail_to.dom_text_field
+  text_field.safe_wait_until_present(timeout: 1)
+  text_field = mail_to.int_text_field if mail_to.int_text_field.present?
+  unless text_field.text_value.eql? str
+    text_field.set str
+    mail_to.selection_element.safe_wait_until_present(timeout: 2)
+    mail_to.selection_element.safe_click
   end
+  expect(text_field.text_value).to eql str
 end
 
 Then /^set print form name to (.*)$/ do |str|
