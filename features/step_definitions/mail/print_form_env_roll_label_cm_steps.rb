@@ -31,6 +31,7 @@ Then /^set print form insure for ([\d.]+)$/ do |value|
 end
 
 Then /^set print form tracking (.+)$/ do |value|
+  step 'wait for js to stop'
   tracking = SdcMail.print_form.tracking
   tracking.tracking_element(name: "selection", value: value)
   tracking.drop_down.click unless tracking.selection.present?

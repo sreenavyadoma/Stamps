@@ -43,14 +43,17 @@ Then  /^expect extra services security is present$/ do |value|
   expect(SdcMail.print_form.advanced_options.extra_services.security.drop_down).to be_present, "Extra services security is not present!"
 end
 
-Then /^[Ss]et Extra Services Security to (.*)$/ do |value|
-
-  stamps.mail.print_form.advanced_options.extra_services.security.select(value)
+Then /^set extra services security to (.*)$/ do |value|
+  security = SdcMail.print_form.advanced_options.extra_services.security
+  security.selection_element(name: 'selection', value: value)
+  security.drop_down.click unless security.selection.present?
+  expect(security.selection).to be_present, "#{value} is not present in Extra Services Security list"
+  security.selection.click
+  expect(security.text_field.text_value).to include(value)
 end
 
-Then /^[Ee]xpect Extra Services Security is (.*)$/ do |str|
-  expect(stamps.mail.print_form.advanced_options.extra_services.security).to be_present
-  expect(stamps.mail.print_form.advanced_options.extra_services.security.textbox.text).to eq str
+Then /^expect extra services security is (.*)$/ do |value|
+  expect(SdcMail.print_form.advanced_options.extra_services.security.text_field.text_value).to eql(value)
 end
 
 Then /^[Cc]lick value must be shown window Continue button$/ do
@@ -67,6 +70,10 @@ end
 Then /^[Ee]xpect Extra Services Security Price to be (\d*.?\d+)$/ do |expectation|
   20.times do break if stamps.mail.print_form.advanced_options.extra_services.security_price==expectation.to_f.round(2) end
   expect(stamps.mail.print_form.advanced_options.extra_services.security_price).to eql(expectation.to_f.round(2))
+end
+
+Then /^expect extra services security value is enabled$/ do
+  expect(SdcMail.print_form.advanced_options.extra_services.value.enabled?).to be_truthy, 'Extra services security value is disabled'
 end
 
 Then /^[Ss]et Extra Services Value to (\d*.?\d+)$/ do |value|

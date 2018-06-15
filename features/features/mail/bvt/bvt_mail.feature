@@ -411,7 +411,7 @@ Feature: BVT for Mail page
     Then expect Advanced Options Hide Label Value is checked
     Then select Advanced Options Extra Services
 
-    Then set Extra Services Security to Registered Mail
+    Then set extra services security to Registered Mail
     Then click value must be shown window Continue button
     Then expect Extra Services Security Price to be 11.90
 
