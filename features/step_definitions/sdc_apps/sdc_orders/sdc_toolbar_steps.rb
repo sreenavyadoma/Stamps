@@ -19,7 +19,6 @@ Then /^add order (\d+)$/ do |count|
   #todo expect(stamps.orders.orders_grid.grid_column(:checkbox).checked?(1)).to be(true), "Orders Grid checkbox 1 is unchecked!"
   step 'Save Order Details data'
   TestData.hash[:ord_id_ctr] += 1
-  expect(true).to eql(false), 'Fail test - rob'
 end
 
 Then /^wait until orders available$/ do
