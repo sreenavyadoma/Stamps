@@ -362,7 +362,7 @@ class SdcTest
       # end
 
       SdcLogger.debug "Tear down...\n"
-      #SdcPage.browser.quit
+      SdcPage.browser.quit
       SdcLogger.debug "Done.\n"
       system 'C:\Stamps\config\batch\edge_rdp_unlock.bat' if SdcEnv.jenkins && SdcEnv.browser == 'edge'
     rescue StandardError => e
