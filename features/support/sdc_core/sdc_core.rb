@@ -79,7 +79,7 @@ class SauceConfig < ::SdcModel
   end
 
   def build
-    build_tag || Socket.gethostname
+    "#{build_tag || Socket.gethostname}-#{SdcPage.browser.driver.session_id}"
   end
 
 end
