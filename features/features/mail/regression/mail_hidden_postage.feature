@@ -26,9 +26,9 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then select Advanced Options Extra Services
     Then expect Extra Services Return Receipt for Merchandise is unchecked
 
-    Then set Extra Services Security to Registered Mail
+    Then set extra services security to Registered Mail
     Then click value must be shown window Continue button
-    Then expect Extra Services Security is Registered Mail
+    Then expect extra services security is Registered Mail
     Then check Extra Services Return Receipt
     Then check Extra Services Restricted Delivery
     Then save Extra Services
@@ -39,7 +39,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Return Receipt
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
-    Then expect Extra Services Security is None
+    Then expect extra services security is None
     Then expect Extra Services Return Receipt is unchecked
     Then expect Extra Services Restricted Delivery is unchecked
 
@@ -69,7 +69,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then close extra services
     Then select print form service FCM Large Envelope/Flat
     Then select Advanced Options Extra Services
-    Then set Extra Services Security to USPS Insurance
+    Then set extra services security to USPS Insurance
     Then set Extra Services Value to 1.00
     Then check Extra Services Electronic Return Receipt
     Then click value must be shown window Continue button
@@ -82,16 +82,16 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then select Advanced Options Extra Services
     Then expect Extra Services Electronic Return Receipt is unchecked
 
-    Then set Extra Services Security to Certified Mail
+    Then set extra services security to Certified Mail
     Then click value must be shown window Continue button
-    Then expect Extra Services Security is Certified Mail
+    Then expect extra services security is Certified Mail
     Then save Extra Services
     Then expect Advanced Options Hide Label Value is unchecked
     Then check Advanced Options Hide Label Value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Certified Mail
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
-    Then expect Extra Services Security is None
+    Then expect extra services security is None
 
 
   @mail_hidden_postage_backlog_1
@@ -118,9 +118,9 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then select Advanced Options Extra Services
     Then extra Services Return Receipt for Merchandise is unchecked
 
-    Then set Extra Services Security to Registered Mail
+    Then set extra services security to Registered Mail
     Then click value must be shown window Continue button
-    Then expect Extra Services Security is Registered Mail
+    Then expect extra services security is Registered Mail
     Then check Extra Services Return Receipt
     Then check Extra Services Restricted Delivery
     Then save Extra Services
@@ -129,7 +129,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Registered Mail
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
-    Then expect Extra Services Security is None
+    Then expect extra services security is None
     Then expect Extra Services Return Receipt is unchecked
     Then expect Extra Services Restricted Delivery is unchecked
 
@@ -158,7 +158,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then close extra services
     Then select print form service FCM Large Envelope/Flat
     Then select Advanced Options Extra Services
-    Then set Extra Services Security to USPS Insurance
+    Then set extra services security to USPS Insurance
     Then set Extra Services Value to 1.00
     Then check Extra Services Electronic Return Receipt
     Then click value must be shown window Continue button
@@ -172,16 +172,16 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then expect Extra Services Electronic Return Receipt is unchecked
 
 
-    Then set Extra Services Security to Certified Mail
+    Then set extra services security to Certified Mail
     Then click value must be shown window Continue button
-    Then expect Extra Services Security is Certified Mail
+    Then expect extra services security is Certified Mail
     Then save Extra Services
     Then expect Advanced Options Hide Label Value is unchecked
     Then check Advanced Options Hide Label Value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Certified Mail
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
-    Then expect Extra Services Security is None
+    Then expect extra services security is None
 
 
     Then set extra services cod to 20.00
@@ -209,7 +209,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then close extra services
     Then select print form service FCM Large Envelope/Flat
     Then select Advanced Options Extra Services
-    Then set Extra Services Security to USPS Insurance
+    Then set extra services security to USPS Insurance
     Then set Extra Services Value to 1.00
     Then check Extra Services Electronic Return Receipt
     Then click value must be shown window Continue button
@@ -223,16 +223,16 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then expect Extra Services Electronic Return Receipt is unchecked
 
 
-    Then set Extra Services Security to Certified Mail
+    Then set extra services security to Certified Mail
     Then click value must be shown window Continue button
-    Then expect Extra Services Security is Certified Mail
+    Then expect extra services security is Certified Mail
     Then save Extra Services
     Then expect Advanced Options Hide Label Value is unchecked
     Then check Advanced Options Hide Label Value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Certified Mail
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
-    Then expect Extra Services Security is None
+    Then expect extra services security is None
 
 
     Then close extra services
