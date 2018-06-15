@@ -72,8 +72,8 @@ class SauceConfig < ::SdcModel
   key(:build_number) { ENV['BUILD_NUMBER'] }
   key(:node_name) { ENV['NODE_NAME'] }
   key(:build_url) { ENV['BUILD_URL'] }
-  key(:sauce_end_point) { "https://#{sauce_username}:#{sauce_access_key}@#{host}:#{port}/wd/hub" }
-                       #"https://robcruz:0e60dbc9-5bbf-425a-988b-f81c42d6b7ef@ondemand.saucelabs.com:443/wd/hub"
+  key(:sauce_end_point) { "https://#{sauce_username}:#{sauce_access_key}@#{host}:#{port}/wd/hub" } # "https://robcruz:0e60dbc9-5bbf-425a-988b-f81c42d6b7ef@ondemand.saucelabs.com:443/wd/hub"
+
   def test_name
     job_name || "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
   end
