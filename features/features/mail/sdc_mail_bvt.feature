@@ -345,7 +345,7 @@ Feature:  Mail BVT - Authentication
     Then set print form tracking USPS Tracking
 
 #    add extra services
-#    Then select advanced options extra services
+    Then select advanced options extra services
 
 
     Then sign out
