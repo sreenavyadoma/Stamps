@@ -12,7 +12,7 @@ module SdcEnv
                   :printer, :browser, :hostname, :mobile, :scenario,
                   :sauce_device, :test_name, :log_level, :driver_log_level,
                   :browser_mobile_emulator, :android, :ios, :firefox_profile,
-                  :new_framework, :max_window, :web_dev, :sauce
+                  :new_framework, :max_window, :web_dev, :jenkins, :sauce
   end
 end
 
