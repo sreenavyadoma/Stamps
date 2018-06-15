@@ -17,6 +17,7 @@ Then /^visit Orders landing page$/ do
         end
 
   SdcOrdersLandingPage.visit(env)
+  expect(SdcOrdersLandingPage.browser.url).to include('stamps')
 end
 
 Then /^initialize test parameters$/ do

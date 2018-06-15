@@ -136,7 +136,7 @@ class SdcTest
 
       if SdcEnv.sauce_device
         SdcPage.browser = SdcDriverDecorator.new(class_eval(SdcEnv.sauce_device.to_s))
-
+        SdcLogger.info "Session ID: #{SdcPage.browser.driver.session_id}"
       else
         if SdcEnv.browser
           begin
