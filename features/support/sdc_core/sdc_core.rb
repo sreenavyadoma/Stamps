@@ -99,6 +99,7 @@ class SauceSession
         :platform => @sauce_config.platform,
         :name => @sauce_config.test_name,
         :build => @sauce_config.build,
+        :idleTimeout => 120,
         :extendedDebugging => true
     }
 
