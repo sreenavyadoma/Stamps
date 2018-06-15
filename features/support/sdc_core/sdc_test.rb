@@ -131,13 +131,11 @@ class SdcTest
 
       if SdcEnv.sauce.browser
         SdcPage.browser = SauceSession.new.create_browser
-        SdcPage.browser
+        SdcLogger.info SdcEnv.sauce.session_info(SdcPage.browser.driver.session_id)
       end
 
       if SdcEnv.sauce_device
         SdcPage.browser = SdcDriverDecorator.new(class_eval(SdcEnv.sauce_device.to_s))
-        puts SdcEnv.sauce.session_info(SdcPage.browser.driver.session_id)
-        p SdcEnv.sauce.session_info(SdcPage.browser.driver.session_id)
       else
         if SdcEnv.browser
           begin
@@ -365,8 +363,7 @@ class SdcTest
       SdcLogger.debug "Tear down...\n"
       SdcPage.browser.quit
       SdcLogger.debug "Done.\n"
-      puts SdcEnv.sauce.session_info(SdcPage.browser.driver.session_id)
-      p SdcEnv.sauce.session_info(SdcPage.browser.driver.session_id)
+      SdcLogger.info SdcEnv.sauce.session_info(SdcPage.browser.driver.session_id)
       if SdcEnv.jenkins && SdcEnv.browser == 'edge'
         system 'C:\Stamps\config\batch\edge_rdp_unlock.bat'
       end
