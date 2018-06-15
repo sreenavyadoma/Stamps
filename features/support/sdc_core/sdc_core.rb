@@ -12,21 +12,7 @@ module SdcEnv
                   :printer, :browser, :hostname, :mobile, :scenario,
                   :sauce_device, :test_name, :log_level, :driver_log_level,
                   :browser_mobile_emulator, :android, :ios, :firefox_profile,
-                  :new_framework, :max_window, :web_dev, :jenkins
-  end
-end
-
-module SauceLabs
-  class << self
-    attr_accessor :host, :port, :platform, :version, :browser, :driver, :url,
-                  :sauce_username, :sauce_access_key, :selenium_starting_url,
-                  :sauce_on_demand_browsers
-  end
-end
-
-module Jenkins
-  class << self
-    attr_accessor :job_name, :job_base_name, :build_tag, :build_number, :node_name, :build_url
+                  :new_framework, :max_window, :web_dev, :sauce
   end
 end
 
@@ -71,14 +57,14 @@ end
 class SauceConfig < ::SdcModel
   key(:sauce_username) { ENV['SAUCE_USERNAME'] }
   key(:sauce_access_key) { ENV['SAUCE_ACCESS_KEY'] }
-  key(:selenium_host) { ENV['SELENIUM_HOST'] }
-  key(:selenium_port) { ENV['SELENIUM_PORT'] }
-  key(:selenium_platform) { ENV['SELENIUM_PLATFORM'] }
-  key(:selenium_version) { ENV['SELENIUM_VERSION'] }
-  key(:selenium_browser) { ENV['SELENIUM_BROWSER'] }
-  key(:selenium_driver) { ENV['SELENIUM_DRIVER'] }
-  key(:selenium_url) { ENV['SELENIUM_URL'] }
-  key(:selenium_starting_url) { ENV['SELENIUM_STARTING_URL'] }
+  key(:host) { ENV['SELENIUM_HOST'] }
+  key(:port) { ENV['SELENIUM_PORT'] }
+  key(:platform) { ENV['SELENIUM_PLATFORM'] }
+  key(:version) { ENV['SELENIUM_VERSION'] }
+  key(:browser) { ENV['SELENIUM_BROWSER'] }
+  key(:driver) { ENV['SELENIUM_DRIVER'] }
+  key(:url) { ENV['SELENIUM_URL'] }
+  key(:starting_url) { ENV['SELENIUM_STARTING_URL'] }
   key(:sauce_on_demand_browsers) { ENV['SAUCE_ONDEMAND_BROWSERS'] }
   key(:job_name) { ENV['JOB_NAME'] }
   key(:job_base_name) { ENV['JOB_BASE_NAME'] }
@@ -105,13 +91,13 @@ class SauceSession
 
   def create_browser
     caps_conf = {
-        :version => @sauce_config.selenium_version,
-        :platform => @sauce_config.selenium_platform,
+        :version => @sauce_config.version,
+        :platform => @sauce_config.platform,
         :name => @sauce_config.test_name,
         :build => @sauce_config.build
     }
 
-    caps = Selenium::WebDriver::Remote::Capabilities.send(@sauce_config.selenium_browser, caps_conf)
+    caps = Selenium::WebDriver::Remote::Capabilities.send(@sauce_config.browser, caps_conf)
     client = Selenium::WebDriver::Remote::Http::Default.new
     client.timeout = 120
     url = @sauce_config.sauce_end_point

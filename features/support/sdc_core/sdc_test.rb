@@ -113,7 +113,7 @@ class SdcTest
               platformVersion: '7.1',
               platformName:  'Android',
               browserName: 'Chrome',
-              name: "#{Jenkins.job_name} - #{Jenkins.build_number}"
+              name: "test name"
           },
           appium_lib: {
               sauce_username:   nil, # don't run on Sauce 'robcruz',
@@ -129,7 +129,7 @@ class SdcTest
 
       SdcLogger.debug "Initializing test driver...\n"
 
-      if ENV['SELENIUM_BROWSER']
+      if SdcEnv.sauce.browser
         SdcPage.browser = SauceSession.new.create_browser
         SdcPage.browser
       end
@@ -271,25 +271,7 @@ class SdcTest
         raise e
       end
 
-      # Saucelabs Environment Variables
-      #SauceLabs.browser = ENV['SELENIUM_BROWSER']
-      # SauceLabs.host = ENV['SELENIUM_HOST']
-      # SauceLabs.port = ENV['SELENIUM_PORT']
-      # SauceLabs.platform = ENV['SELENIUM_PLATFORM']
-      # SauceLabs.version = ENV['SELENIUM_VERSION']
-      # SauceLabs.driver = ENV['SELENIUM_DRIVER']
-      # SauceLabs.url = ENV['SELENIUM_URL']
-      # SauceLabs.sauce_username = ENV['SAUCE_USERNAME']
-      # SauceLabs.sauce_access_key = ENV['SAUCE_ACCESS_KEY']
-      # SauceLabs.selenium_starting_url = ENV['SELENIUM_STARTING_URL']
-      # SauceLabs.sauce_on_demand_browsers = ENV['SAUCE_ONDEMAND_BROWSERS']
-      # # Jenkins Environment Variables
-      # Jenkins.job_name = ENV['JOB_NAME']
-      # Jenkins.job_base_name = ENV['JOB_BASE_NAME']
-      # Jenkins.build_tag = ENV['BUILD_TAG']
-      # Jenkins.build_number = ENV['BUILD_NUMBER']
-      # Jenkins.node_name = ENV['NODE_NAME']
-      # Jenkins.build_url = ENV['BUILD_URL']
+      SdcEnv.sauce = ::SauceConfig.new
 
       SdcEnv.sauce_device ||= ENV['SAUCE_DEVICE']
 
