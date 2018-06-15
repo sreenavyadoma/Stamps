@@ -168,6 +168,33 @@ Feature:  Mail BVT - Authentication
 #    Then expect Print form Domestic Address field displays Address Cleansing, BVT, 1350 Market Street, San Francisco, CA 94102-5401
     Then Sign out
 
+  @sdc_mail_bvt_stamps
+  Scenario: Mail BVT-Stamps
+    Then sign-in to Mail
+    Then select print on Stamps
+
+    Then set Print form Serial Number to C12345
+    Then select Advanced Options Specify Postage Amount
+    #Then set Print form Mail-From to default
+    Then select print form service Media Mail
+    Then set Print form Amount to 2.85
+    Then set Print form Quantity to 1
+    #Then set Advanced Options Reference Number to Stamp3221
+    Then Print Postage
+    Then set Mail Print modal Printer
+    Then click Mail Print modal Print button
+
+    Then set Print form Serial Number to B12345
+    Then select Advanced Options Calculate Postage Amount
+    Then set Print form Mail-From to default
+    Then set print form ounces to 1
+    Then select print form service FCM Letter
+    Then Print Postage
+    Then set Mail Print modal Printer
+    Then click Mail Print modal Print button
+
+    Then sign out
+
   @mail_print_on_lov
   Scenario: Print-on list of values
     Then sign-in to Mail
