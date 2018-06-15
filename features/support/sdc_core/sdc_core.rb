@@ -75,7 +75,7 @@ class SauceConfig < ::SdcModel
   key(:sauce_end_point) { "https://#{sauce_username}:#{sauce_access_key}@ondemand.saucelabs.com:443/wd/hub" }
                        #"https://robcruz:0e60dbc9-5bbf-425a-988b-f81c42d6b7ef@ondemand.saucelabs.com:443/wd/hub"
   def test_name
-    job_base_name || "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+    job_name || "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
   end
 
   def build

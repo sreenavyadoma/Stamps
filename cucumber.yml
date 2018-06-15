@@ -18,7 +18,7 @@ rob: --tags @rob_test URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_W
 # USR=abqaprod1 PW=password1
 
 saucelabs: --tags @saucelabs LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug
-saucelabs_local: --tags @bvt_new_order URL=stg USR=stgvoc0kcnt6rw PW=pass111 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef JOB_NAME='orders_bvt_qacc/saucelabs' SELENIUM_BROWSER=chrome SELENIUM_VERSION=65.0 SELENIUM_PLATFORM='macOS 10.13'
+saucelabs_local: --tags @bvt_new_order URL=stg USR=stgvoc0kcnt6rw PW=pass111 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef JOB_NAME='orders_bvt_qacc/saucelabs' SELENIUM_BROWSER=chrome SELENIUM_VERSION=65.0 SELENIUM_PLATFORM='macOS 10.13' JOB_BASE_NAME=job_base_name
 
 #saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1
 #saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1
