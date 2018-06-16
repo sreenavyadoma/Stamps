@@ -345,7 +345,42 @@ Feature:  Mail BVT - Authentication
     Then set print form tracking USPS Tracking
 
 #    add extra services
-#    Then select advanced options extra services
+    Then select advanced options extra services
 
+#    security None
+#    security USPS
+#    security Registered
+#    value must be shown cancel
+#    security Registered
+#    value must be shown continue
+#    security
+#
+#    value increment
+#    value decrement
+#    value set
+#    rr check
+#    rr uncheck
+#    rd check
+#    rd uncheck
+#    cod present
+#    cod increment
+#    cod decrement
+#    cod set
+#    nnd check
+#    nnd uncheck
+#    handling hazardous
+#    --SCW xbtn
+#    --expect handl normal
+#    --handling hazardous
+#    SCW i agree
+#    handling animal
+#    SCW i agree
+#    handling animal fee
+#    SCW i agree
+#    check fragile
+#    --expect rd is not present
+#    check rrm
+#    check non rectangul
+#    check hold for pickup
 
     Then sign out

@@ -9,9 +9,7 @@ Then /^[Ee]xpect Advanced Options responds to (.+) \((.+)\)$/ do |method_descrip
 end
 
 Then /^select advanced options extra services$/ do
-  step 'Expect Advanced Options responds to Extra Services (extra_services)'
-  stamps.mail.print_form.advanced_options.extra_services
-  # SdcMail.print_form.
+  SdcMail.print_form.extra_services.button.click
 end
 
 Then /^[Ee]xpect Advanced Options Extra Services Button is (\w+)/ do |str|

@@ -412,23 +412,23 @@ Feature: BVT for Mail page
     Then select Advanced Options Extra Services
 
     Then set extra services security to Registered Mail
-    Then click value must be shown window Continue button
-    Then expect Extra Services Security Price to be 11.90
+    Then click value must be shown window continue button
+    Then expect extra services security price to be 11.90
 
     Then set Extra Services Value to 30.00
-    Then expect Extra Services Security Price to be 12.60
+    Then expect extra services security price to be 12.60
 
     Then set extra services cod to 20.00
-    Then expect Extra Services COD Price to be 5.70
+    Then expect extra services cod price to be 5.70
 
-    Then check Extra Services Return Receipt
-    Then expect Extra Services Return Receipt Price to be 2.75
+    Then check extra services return receipt
+    Then expect extra services return receipt price to be 2.75
 
-    Then check Extra Services Restricted Delivery
-    Then expect Extra Services Restricted Delivery Price to be 5.10
+    Then check extra services restricted delivery
+    Then expect extra services restricted delivery price to be 5.10
 
     Then check Extra Services Notice of Non-Delivery
-    Then expect Extra Services Notice of Non-Delivery Price to be 0.00
+    Then expect extra services notice of non-delivery price to be 0.00
 
     Then expect Extra Services Total Price to be 26.15
 
@@ -436,11 +436,11 @@ Feature: BVT for Mail page
 
     Then select Advanced Options Extra Services
 
-    Then expect Extra Services Security Price to be 12.60
-    Then expect Extra Services Return Receipt Price to be 2.75
-    Then expect Extra Services Restricted Delivery Price to be 5.10
-    Then expect Extra Services COD Price to be 5.70
-    Then expect Extra Services Notice of Non-Delivery Price to be 0.00
+    Then expect extra services security price to be 12.60
+    Then expect extra services return receipt price to be 2.75
+    Then expect extra services restricted delivery price to be 5.10
+    Then expect extra services cod price to be 5.70
+    Then expect extra services notice of non-delivery price to be 0.00
     Then expect Extra Services Total Price to be 26.15
 
     Then save Extra Services
