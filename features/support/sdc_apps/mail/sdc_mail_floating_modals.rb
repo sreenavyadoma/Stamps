@@ -179,3 +179,4 @@ module SdcMail
     module_function :special_contents_warning
   end
 end
+
