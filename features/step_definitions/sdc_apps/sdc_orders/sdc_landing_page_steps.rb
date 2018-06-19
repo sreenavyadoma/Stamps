@@ -80,7 +80,7 @@ Then /^click sign-in button on browser$/ do
 
   step 'click Orders landing page sign-in button'
 
-  SdcOrders.loading_orders.safe_wait_until_present(timeout: 5)
+  SdcOrders.loading_orders.safe_wait_until_present(timeout: 40)
   SdcOrders.loading_orders.wait_while_present(timeout: 40)
 
   signed_in_user.wait_until_present(timeout: 5)
