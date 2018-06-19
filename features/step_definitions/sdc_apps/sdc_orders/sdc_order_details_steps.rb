@@ -583,14 +583,11 @@ Then /^set order details insure-for to \$(\d+\.\d{2})$/ do |str|
 end
 
 Then /^set order details tracking to (.*)$/ do |str|
-  SdcOrders.order_details.tracking.selection_element(value: str)
-  SdcOrders.order_details.tracking.drop_down.click unless SdcOrders.order_details.tracking.selection.present?
-  SdcOrders.order_details.tracking.selection.safe_click unless SdcOrders.order_details.tracking.selection.class_disabled?
-  expect(SdcOrders.order_details.tracking.text_field.text_value).to eql(str)
-  # 10.times do
-  #   break if SdcOrders.order_details.tracking.cost.text.dollar_amount_str.to_f.round(2) > 0
-  #   step 'blur out on order details form'
-  # end
+  tracking = SdcOrders.order_details.tracking
+  tracking.selection_element(value: str)
+  tracking.drop_down.click unless tracking.selection.present?
+  tracking.selection.safe_click unless tracking.selection.class_disabled?
+  expect(tracking.text_field.text_value).to eql(str)
   step 'Save Order Details data'
 end
 
