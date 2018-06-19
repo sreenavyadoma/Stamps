@@ -62,8 +62,10 @@ end
 
 Then /^sign-in to orders$/ do
   step 'visit Orders landing page'
-  step "set Orders landing page username to #{TestData.hash[:username]}"
-  step "set Orders landing page password to #{TestData.hash[:password]}"
+  usr = TestData.hash[:username]
+  pw = TestData.hash[:password]
+  step "set Orders landing page username to #{usr}"
+  step "set Orders landing page password to #{pw}"
 
   if SdcEnv.ios
     step 'click sign-in button on ios'
