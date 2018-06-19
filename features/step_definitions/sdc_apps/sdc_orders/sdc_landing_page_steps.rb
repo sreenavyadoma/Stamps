@@ -42,7 +42,7 @@ end
 
 Then /^fetch user credentials from MySQL$/ do
   if SdcEnv.usr.downcase == 'default'
-    raise "USR=default is not a valid username. Specify a valid username for #{SdcEnv.url}"
+    raise "USR=default is not a valid username for #{SdcEnv.url}"
   end
   usr = SdcEnv.usr
   pw = SdcEnv.pw
