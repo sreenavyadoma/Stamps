@@ -17,23 +17,23 @@ Feature:Shipping Label Preview Panel
     Then show advanced options
 
     # Hide Label Value Check-box
-    Then check Advanced Options Hide Label Value
-    Then expect Advanced Options Hide Label Value is checked
-    Then uncheck Advanced Options Hide Label Value
-    Then expect Advanced Options Hide Label Value is unchecked
+    Then check advanced options hide label value
+    Then expect advanced options hide label value is checked
+    Then uncheck advanced options hide label value
+    Then expect advanced options hide label value is unchecked
     # Print Receipt Check-box
-    Then check Advanced Options Print Receipt
-    Then expect Advanced Options Print Receipt is checked
-    Then uncheck Advanced Options Print Receipt
-    Then expect Advanced Options Print Receipt is unchecked
+    Then check advanced options print receipt
+    Then expect advanced options print receipt is checked
+    Then uncheck advanced options print receipt
+    Then expect advanced options print receipt is unchecked
     # Print Reference Check-box
-    Then check Advanced Options Print Reference #
-    Then expect Advanced Options Print Reference # is checked
-    Then uncheck Advanced Options Print Reference #
-    Then expect Advanced Options Print Reference # is unchecked
+    Then check advanced options print reference #
+    Then expect advanced options print reference # is checked
+    Then uncheck advanced options print reference #
+    Then expect advanced options print reference # is unchecked
 
-    Then set Advanced Options Reference Number to random string
-    Then expect Advanced Options Reference Number is correct
+    Then set advanced options reference number to random string
+    Then expect advanced options reference number is correct
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button

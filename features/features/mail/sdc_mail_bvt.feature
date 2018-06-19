@@ -123,17 +123,17 @@ Feature:  Mail BVT - Authentication
 #    Then set print form mail-to country to United States
 #    Then select print form service FCM Letter
 #    Then set Print form Quantity to 1
-#    Then set Advanced Options Cost Code to None
+#    Then set advanced options cost code to None
 #
 #    Then expect Advanced Options Extra Services Button is visible
 #
-#    Then expect Advanced Options Reference Number field is present
-#    Then set Advanced Options Reference Number to random string
-#    Then expect Advanced Options Reference Number is correct
+#    Then expect advanced options reference number field is present
+#    Then set advanced options reference number to random string
+#    Then expect advanced options reference number is correct
 #
-#    Then expect Advanced Options Cost Code Field is present
-#    Then set Advanced Options Cost Code to None
-#    Then expect Advanced Options Cost Code is None
+#    Then expect advanced options cost code field is present
+#    Then set advanced options cost code to None
+#    Then expect advanced options cost code is None
 
 
   @bvt_mail_piece_validation
@@ -261,17 +261,19 @@ Feature:  Mail BVT - Authentication
 #    Then uncheck Advanced Options include Postage
 #    Then expect Advanced Options include Postage is unchecked
 #
-#    Then expect Advanced Options Reference Number field is present
-#    Then set Advanced Options Reference Number to random string
-#    Then expect Advanced Options Reference Number is correct
+#    Then expect advanced options reference number field is present
+#    Then set advanced options reference number to random string
+#    Then expect advanced options reference number is correct
 #
-#    Then expect Advanced Options Cost Code Field is present
-#    Then set Advanced Options Cost Code to None
-#    Then expect Advanced Options Cost Code is None
+#    Then expect advanced options cost code field is present
+#    Then set advanced options cost code to None
+#    Then expect advanced options cost code is None
 
   @mail_bvt_ui_validation
   Scenario: BVT Mail UI Validation for Print On options
     Then sign-in to mail
+
+#    STAMPS
     Then select print on Stamps
     Then set print form serial number to random
     Then blur out on print form
@@ -284,6 +286,8 @@ Feature:  Mail BVT - Authentication
     Then hide advanced options
     Then show advanced options
     Then select print form calculate postage amount
+    Then increment print form weight by lbs 2 oz 2
+    Then decrement print form weight by lbs 2 oz 2
     Then set print form weight to lbs 0 oz 1
     Then select print form service FCM Postcard
     Then select print form service FCM Letter
@@ -291,60 +295,67 @@ Feature:  Mail BVT - Authentication
     Then select print form service MM Package/Flat/Thick Envelope
     Then set print form reference number STMP123
     Then set print form cost code None
+    Then set print form stamp quantity 3
+    Then increment print form stamp quantity by 2
+    Then decrement print form stamp quantity by 2
     Then check print form print all
     Then uncheck print form print all
-#    Then select print on Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
-#    Then select print on Shipping Label - 5 ½" x 8 ½"
-#    Then select print on Envelope - #10, 4 ⅛" x 9 ½"
-#    Then select print on Envelope - #9, 3 ⅞" x 8 ⅞"
-#    Then select print on Envelope - #A9, 5 ¾" x 8 ¾"
-#    Then select print on Envelope - #6, 3 ⅝" x 6 ½"
-#    Then select print on Envelope - #A2, 4 ⅜" x 5 ¾"
-#    Then select print on Envelope - #7, 3 ⅞" x 7 ½"
-#    Then select print on Envelope - #11, 4 ½" x 10 ⅜"
-#    Then select print on Envelope - #12, 4 ¾" x 11"
-#    Then select print on Certified Mail Label - SDC-3610
-#    Then select print on Certified Mail Label - SDC-3710
-#    Then select print on Certified Mail Label - SDC-3910
-#    Then select print on Certified Mail Label - SDC-3930
-#    Then select print on Certified Mail #11 Envelope - SDC-3810
-#    Then select print on Certified Mail #11 Envelope - SDC-3830
-#    Then select print on Roll - 4" x 6" Shipping Label
-#    Then select print on Roll - 4 ⅛" x 6 ¼" Shipping Label
+
+#    PRINT ON MEDIA
+    Then select print on Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
+    Then select print on Shipping Label - 5 ½" x 8 ½"
+    Then select print on Envelope - #10, 4 ⅛" x 9 ½"
+    Then select print on Envelope - #9, 3 ⅞" x 8 ⅞"
+    Then select print on Envelope - #A9, 5 ¾" x 8 ¾"
+    Then select print on Envelope - #6, 3 ⅝" x 6 ½"
+    Then select print on Envelope - #A2, 4 ⅜" x 5 ¾"
+    Then select print on Envelope - #7, 3 ⅞" x 7 ½"
+    Then select print on Envelope - #11, 4 ½" x 10 ⅜"
+    Then select print on Envelope - #12, 4 ¾" x 11"
+    Then select print on Certified Mail Label - SDC-3610
+    Then select print on Certified Mail Label - SDC-3710
+    Then select print on Certified Mail Label - SDC-3910
+    Then select print on Certified Mail Label - SDC-3930
+    Then select print on Certified Mail #11 Envelope - SDC-3810
+    Then select print on Certified Mail #11 Envelope - SDC-3830
+    Then select print on Roll - 4" x 6" Shipping Label
+    Then select print on Roll - 4 ⅛" x 6 ¼" Shipping Label
     Then select print on Shipping Label - 8 ½" x 11" Paper
 
+#   PRINT SERVICE
     #Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 8
     Then check print form email tracking
     Then set print form email tracking stamps@mailinator.com
-#    Then select print form service FCM Large Envelope/Flat
-#    Then select print form service FCM Package/Thick Envelope
-#    Then select print form service PM Large/Thick Envelope
-#    Then select print form service PM Large Package
-#    Then select print form service PM Flat Rate Envelope
-#    Then select print form service PM Padded Flat Rate Envelope
-#    Then select print form service PM Legal Flat Rate Envelope
-#    Then select print form service PM Small Flat Rate Box
-#    Then select print form service PM Medium Flat Rate Box
-#    Then select print form service PM Large Flat Rate Box
-#    Then select print form service PM Regional Rate Box A
-#    Then select print form service PM Regional Rate Box B
-#    Then select print form service PME Package/Flat/Thick Envelope
-#    Then select print form service PME Flat Rate Envelope
-#    Then select print form service PME Padded Flat Rate Envelope
-#    Then select print form service PME Legal Flat Rate Envelope
-#    Then select print form service MM Package/Flat/Thick Envelope
-#    Then select print form service PSG Package/Flat/Thick Envelope
-#    Then select print form service PSG Large Package
-#    Then select print form service PSG Oversized Package
+    Then select print form service FCM Large Envelope/Flat
+    Then select print form service FCM Package/Thick Envelope
+    Then select print form service PM Large/Thick Envelope
+    Then select print form service PM Large Package
+    Then select print form service PM Flat Rate Envelope
+    Then select print form service PM Padded Flat Rate Envelope
+    Then select print form service PM Legal Flat Rate Envelope
+    Then select print form service PM Small Flat Rate Box
+    Then select print form service PM Medium Flat Rate Box
+    Then select print form service PM Large Flat Rate Box
+    Then select print form service PM Regional Rate Box A
+    Then select print form service PM Regional Rate Box B
+    Then select print form service PME Package/Flat/Thick Envelope
+    Then select print form service PME Flat Rate Envelope
+    Then select print form service PME Padded Flat Rate Envelope
+    Then select print form service PME Legal Flat Rate Envelope
+    Then select print form service MM Package/Flat/Thick Envelope
+    Then select print form service PSG Package/Flat/Thick Envelope
+    Then select print form service PSG Large Package
+    Then select print form service PSG Oversized Package
     Then select print form service PM Package
-
     Then set print form weight to lbs 1 oz 1
+    Then increment print form dimensions by length 2 width 2 height 2
+    Then decrement print form dimensions by length 2 width 2 height 2
     Then set print form dimensions to length 2 width 2 height 2
     Then set print form tracking Signature Required
     Then set print form tracking USPS Tracking
 
-#    add extra services
+#    EXTRA SERVICES
     Then select advanced options extra services
     Then check extra services fragile
     Then uncheck extra services fragile
@@ -358,12 +369,8 @@ Feature:  Mail BVT - Authentication
     Then uncheck extra services non-rectangular
     Then check extra services hold for pickup
     Then uncheck extra services hold for pickup
-#    Then set extra services security to None
     Then set extra services security to USPS Insurance
     Then set extra services security to Registered Mail
-
-
-#    Then set extra services security to None
     Then increment extra services security value by 2
     Then decrement extra services security value by 2
     Then set extra services security value to 3
@@ -375,7 +382,7 @@ Feature:  Mail BVT - Authentication
     Then increment extra services cod by 2
     Then decrement extra services cod by 2
     Then set extra services cod to 3
-    Then pause for 2 second
+    Then pause for 15 second
     Then check extra services notice of non-delivery
     Then uncheck extra services notice of non-delivery
     Then set extra services cod to 0
@@ -387,7 +394,14 @@ Feature:  Mail BVT - Authentication
     Then set extra services handling to Live Animal (with Fee)
     Then click special contents warning modal i agree
     Then set extra services handling to Normal
-
     Then close extra services
+
+#    ADVANCED OPTIONS
+    Then uncheck advanced options hide label value
+    Then check advanced options hide label value
+    Then check advanced options print receipt
+    Then uncheck advanced options print receipt
+    Then check advanced options print reference #
+    Then uncheck advanced options print reference #
 
     Then sign out

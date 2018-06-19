@@ -91,7 +91,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then set print form mail-to country to United States
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
-    Then set Advanced Options Cost Code to None
+    Then set advanced options cost code to None
     Then Print postage using split button
     Then Expect mail Print modal is present
     Then close mail Print modal
@@ -104,7 +104,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then set print form mail-to country to United States
     Then select print form service Media Mail
     Then set Print form Amount to 0.15
-    Then set Advanced Options Cost Code to None
+    Then set advanced options cost code to None
     Then Print postage using split button
     Then Expect mail Print modal is present
     Then close mail Print modal

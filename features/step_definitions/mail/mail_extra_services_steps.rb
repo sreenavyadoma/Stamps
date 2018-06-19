@@ -277,7 +277,7 @@ Then /^uncheck extra services non-rectangular$/ do
 end
 
 Then /^expect extra services non-rectangular is checked$/ do
-  expect(SdcMail.modals.extra_services.non_rectangular.checked?).to be(true), "Extra Services Non Rectangular is checked"
+  expect(SdcMail.modals.extra_services.non_rectangular.checked?).to be(true), "Extra Services Non Rectangular is not checked"
 end
 
 Then /^expect extra services non-rectangular is unchecked$/ do
@@ -289,21 +289,21 @@ Then /^expect extra services total price to be (\d*.?\d+)$/ do |expectation|
 end
 
 Then /^check extra services hold for pickup$/ do
-  SdcMail.modals.extra_services.hold_for_pickup.check unless SdcMail.modals.extra_services.hold_for_pickup.checked?
-  step 'expect extra services non-rectangular is checked'
+  SdcMail.modals.extra_services.hold_pickup.check unless SdcMail.modals.extra_services.hold_pickup.checked?
+  step 'expect extra services hold for pickup is checked'
 end
 
 Then /^uncheck extra services hold for pickup$/ do
-  SdcMail.modals.extra_services.hold_for_pickup.uncheck if SdcMail.modals.extra_services.hold_for_pickup.checked?
-  step 'expect extra services non-rectangular is unchecked'
+  SdcMail.modals.extra_services.hold_pickup.uncheck if SdcMail.modals.extra_services.hold_pickup.checked?
+  step 'expect extra services hold for pickup is unchecked'
 end
 
 Then /^expect extra services hold for pickup is checked$/ do
-  expect(SdcMail.modals.extra_services.hold_for_pickup.checked?).to be(true), "Extra Services Non Rectangular is checked"
+  expect(SdcMail.modals.extra_services.hold_pickup.checked?).to be(true), "Extra Services Non Rectangular is checked"
 end
 
 Then /^expect extra services hold for pickup is unchecked$/ do
-  expect(SdcMail.modals.extra_services.hold_for_pickup.checked?).to be(false), "Extra Services Non Rectangular is still checked"
+  expect(SdcMail.modals.extra_services.hold_pickup.checked?).to be(false), "Extra Services Non Rectangular is still checked"
 end
 
 Then /^expect extra services hold for pickup price to be (\d*.?\d+)$/ do |expectation|

@@ -12,15 +12,15 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then set print form ounces to 1
     Then select print form service PM Package
     Then show advanced options
-    Then expect Advanced Options Hide Label Value is checked
+    Then expect advanced options hide label value is checked
     Then select Advanced Options Extra Services
 
     Then check extra services return receipt for Merchandise
     Then click value must be shown window continue button
     Then expect extra services return receipt for merchandise is checked
     Then save Extra Services
-    Then expect Advanced Options Hide Label Value is unchecked
-    Then check Advanced Options Hide Label Value
+    Then expect advanced options hide label value is unchecked
+    Then check advanced options hide label value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Return Receipt for Merchandise
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
@@ -32,8 +32,8 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then check extra services return receipt
     Then check extra services restricted delivery
     Then save Extra Services
-    Then expect Advanced Options Hide Label Value is unchecked
-    Then check Advanced Options Hide Label Value
+    Then expect advanced options hide label value is unchecked
+    Then check advanced options hide label value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Registered Mail
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Restricted Delivery
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Return Receipt
@@ -47,8 +47,8 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then click value must be shown window continue button
     Then expect extra services cod value is 20.00
     Then save Extra Services
-    Then expect Advanced Options Hide Label Value is unchecked
-    Then check Advanced Options Hide Label Value
+    Then expect advanced options hide label value is unchecked
+    Then check advanced options hide label value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Collect On Delivery
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
@@ -59,8 +59,8 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then click special contents warning modal i agree
     Then expect Extra Services Handling is Live Animal (with Fee)
     Then save Extra Services
-    Then expect Advanced Options Hide Label Value is unchecked
-    Then check Advanced Options Hide Label Value
+    Then expect advanced options hide label value is unchecked
+    Then check advanced options hide label value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Live Animal with Fee
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
@@ -75,8 +75,8 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then click value must be shown window continue button
     Then expect Extra Services Electronic Return Receipt is checked
     Then save Extra Services
-    Then expect Advanced Options Hide Label Value is unchecked
-    Then check Advanced Options Hide Label Value
+    Then expect advanced options hide label value is unchecked
+    Then check advanced options hide label value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Electronic Return Receipt
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
@@ -86,8 +86,8 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then click value must be shown window continue button
     Then expect extra services security is Certified Mail
     Then save Extra Services
-    Then expect Advanced Options Hide Label Value is unchecked
-    Then check Advanced Options Hide Label Value
+    Then expect advanced options hide label value is unchecked
+    Then check advanced options hide label value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Certified Mail
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
@@ -111,8 +111,8 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then click value must be shown window continue button
     Then expect extra services return receipt for merchandise is checked
     Then save Extra Services
-    Then expect Advanced Options Hide Label Value is unchecked
-    Then check Advanced Options Hide Label Value
+    Then expect advanced options hide label value is unchecked
+    Then check advanced options hide label value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Return Receipt for Merchandise
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
@@ -124,8 +124,8 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then check extra services return receipt
     Then check extra services restricted delivery
     Then save Extra Services
-    Then expect Advanced Options Hide Label Value is unchecked
-    Then check Advanced Options Hide Label Value
+    Then expect advanced options hide label value is unchecked
+    Then check advanced options hide label value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Registered Mail
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
@@ -137,8 +137,8 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then click value must be shown window continue button
     Then expect extra services cod value is 20.00
     Then save Extra Services
-    Then expect Advanced Options Hide Label Value is unchecked
-    Then check Advanced Options Hide Label Value
+    Then expect advanced options hide label value is unchecked
+    Then check advanced options hide label value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Collect on Delivery
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
@@ -148,8 +148,8 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then click value must be shown window continue button
     Then expect Extra Services Handling is Live Animal (with Fee)
     Then save Extra Services
-    Then expect Advanced Options Hide Label Value is unchecked
-    Then check Advanced Options Hide Label Value
+    Then expect advanced options hide label value is unchecked
+    Then check advanced options hide label value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Live Animal with Fee
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
@@ -164,8 +164,8 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then click value must be shown window continue button
     Then expect Extra Services Electronic Return Receipt is checked
     Then save Extra Services
-    Then expect Advanced Options Hide Label Value is unchecked
-    Then check Advanced Options Hide Label Value
+    Then expect advanced options hide label value is unchecked
+    Then check advanced options hide label value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Electronic Return Receipt
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
@@ -176,8 +176,8 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then click value must be shown window continue button
     Then expect extra services security is Certified Mail
     Then save Extra Services
-    Then expect Advanced Options Hide Label Value is unchecked
-    Then check Advanced Options Hide Label Value
+    Then expect advanced options hide label value is unchecked
+    Then check advanced options hide label value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Certified Mail
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
@@ -188,8 +188,8 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then click value must be shown window continue button
     Then expect extra services cod value is 20.00
     Then save Extra Services
-    Then expect Advanced Options Hide Label Value is unchecked
-    Then check Advanced Options Hide Label Value
+    Then expect advanced options hide label value is unchecked
+    Then check advanced options hide label value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Collect on Delivery
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
@@ -199,8 +199,8 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then click value must be shown window continue button
     Then expect Extra Services Handling is Live Animal (with Fee)
     Then save Extra Services
-    Then expect Advanced Options Hide Label Value is unchecked
-    Then check Advanced Options Hide Label Value
+    Then expect advanced options hide label value is unchecked
+    Then check advanced options hide label value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Live Animal with Fee
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
@@ -215,8 +215,8 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then click value must be shown window continue button
     Then expect Extra Services Electronic Return Receipt is checked
     Then save Extra Services
-    Then expect Advanced Options Hide Label Value is unchecked
-    Then check Advanced Options Hide Label Value
+    Then expect advanced options hide label value is unchecked
+    Then check advanced options hide label value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Electronic Return Receipt
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
@@ -227,8 +227,8 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then click value must be shown window continue button
     Then expect extra services security is Certified Mail
     Then save Extra Services
-    Then expect Advanced Options Hide Label Value is unchecked
-    Then check Advanced Options Hide Label Value
+    Then expect advanced options hide label value is unchecked
+    Then check advanced options hide label value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Certified Mail
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services

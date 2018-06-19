@@ -15,8 +15,8 @@ Feature: Print Certified Mail (with hidden postage)
     Then set print form ounces to 1
     Then select print form service PM Package
     Then show advanced options
-    Then check Advanced Options Hide Label Value
-    Then expect Advanced Options Hide Label Value is checked
+    Then check advanced options hide label value
+    Then expect advanced options hide label value is checked
     Then select print on Certified Mail Label - SDC-3610
     Then Print Postage
     Then set Mail Print modal Printer
@@ -33,8 +33,8 @@ Feature: Print Certified Mail (with hidden postage)
     Then set print form ounces to 1
     Then select print form service PM Package
     Then show advanced options
-    Then check Advanced Options Hide Label Value
-    Then expect Advanced Options Hide Label Value is checked
+    Then check advanced options hide label value
+    Then expect advanced options hide label value is checked
     Then select print on Certified Mail Label - SDC-3710
     Then Print Postage
     Then set Mail Print modal Printer
@@ -51,8 +51,8 @@ Feature: Print Certified Mail (with hidden postage)
     Then set print form ounces to 1
     Then select print form service PM Package
     Then show advanced options
-    Then check Advanced Options Hide Label Value
-    Then expect Advanced Options Hide Label Value is checked
+    Then check advanced options hide label value
+    Then expect advanced options hide label value is checked
     Then select print on Certified Mail Label - SDC-3910
     Then Print Postage
     Then set Mail Print modal Printer
@@ -69,8 +69,8 @@ Feature: Print Certified Mail (with hidden postage)
     Then set print form ounces to 1
     Then select print form service PM Package
     Then show advanced options
-    Then check Advanced Options Hide Label Value
-    Then expect Advanced Options Hide Label Value is checked
+    Then check advanced options hide label value
+    Then expect advanced options hide label value is checked
     Then select print on Certified Mail Label - SDC-3930
     Then Print Postage
     Then set Mail Print modal Printer
@@ -87,8 +87,8 @@ Feature: Print Certified Mail (with hidden postage)
     Then set print form ounces to 1
     Then select print form service PM Package
     Then show advanced options
-    Then check Advanced Options Hide Label Value
-    Then expect Advanced Options Hide Label Value is checked
+    Then check advanced options hide label value
+    Then expect advanced options hide label value is checked
     Then select print on Certified Mail Label - SDC-3810
     Then Print Postage
     Then set Mail Print modal Printer
@@ -105,8 +105,8 @@ Feature: Print Certified Mail (with hidden postage)
     Then set print form ounces to 1
     Then select print form service PM Package
     Then show advanced options
-    Then check Advanced Options Hide Label Value
-    Then expect Advanced Options Hide Label Value is checked
+    Then check advanced options hide label value
+    Then expect advanced options hide label value is checked
     Then select print on Certified Mail Label - SDC-3830
     Then Print Postage
     Then set Mail Print modal Printer

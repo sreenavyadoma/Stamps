@@ -106,8 +106,8 @@ end
 #AB_ORDERSAUTO_3516
 Then /^[Ee]xpect mail fields are reset$/ do
   step "expect Print form Domestic Address field is empty"
-  step "expect Print form Pounds Field is 0"
-  step "expect Print form Ounces Field is 0"
+  step "expect print form pounds is 0"
+  step "expect print form ounces is 0"
   step "expect Print form service is empty"
 end
 
@@ -131,8 +131,24 @@ end
 
 Then /^set print form stamp quantity (\d+)$/ do |value|
   SdcMail.print_form.quantity.set(value)
-  expect(SdcMail.print_form.quantity.value.to_f).to eql(value.to_f)
+  step "expect print form stamp quantity is #{value}"
 end
+
+Then /^increment print form stamp quantity by (\d+)$/ do |value|
+  old_quantity = SdcMail.print_form.quantity.value
+  value.times do SdcMail.print_form.quantity.increment.click end
+  step "expect print form stamp quantity is #{old_quantity.to_i + value.to_i}"
+end
+Then /^decrement print form stamp quantity by (\d+)$/ do |value|
+  old_quantity = SdcMail.print_form.quantity.value
+  value.times do SdcMail.print_form.quantity.decrement.click end
+  step "expect print form stamp quantity is #{old_quantity.to_i - value.to_i}"
+end
+
+Then /^expect print form stamp quantity is (\d+)$/ do |value|
+  expect(SdcMail.print_form.quantity.value.to_i).to eql(value.to_i)
+end
+
 
 Then /^check print form print all$/ do
   SdcMail.print_form.print_all.check
