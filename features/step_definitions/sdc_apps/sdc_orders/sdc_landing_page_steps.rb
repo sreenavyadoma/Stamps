@@ -17,6 +17,9 @@ Then /^visit Orders landing page$/ do
         end
 
   SdcOrdersLandingPage.visit(env)
+  p "URL: #{SdcOrdersLandingPage.browser.url}"
+  SdcLogger.info "URL: #{SdcOrdersLandingPage.browser.url}"
+  SdcLogger.error "URL: #{SdcOrdersLandingPage.browser.url}"
   expect(SdcOrdersLandingPage.browser.url).to include('stamps')
 end
 
