@@ -94,6 +94,7 @@ end
 Then /^click sign-in button on ios$/ do
   landing_page = SdcWebsite.landing_page
   landing_page.sign_in.click
+  landing_page.sign_in.safe_click
   #landing_page.sign_in.safe_send_keys(:enter)
 end
 
