@@ -1,7 +1,7 @@
 
 Then /^visit Orders landing page$/ do
   step 'initialize test parameters'
-  #step 'fetch user credentials from MySQL'
+  step 'fetch user credentials from MySQL'
 
   env = case SdcEnv.env
         when :qacc
@@ -44,20 +44,12 @@ Then /^fetch user credentials from MySQL$/ do
   if SdcEnv.usr.downcase == 'default'
     raise "USR=default is not a valid username. Specify a valid username for #{SdcEnv.url}"
   end
-  unless TestData.hash[:username]
-    if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default'
-      credentials = SdcUserCredentials.fetch(SdcEnv.scenario.tags[0].name)
-      usr = credentials[:username]
-      pw = credentials[:password]
-    else
-      usr = SdcEnv.usr
-      pw = SdcEnv.pw
-    end
-    expect(usr).to be_truthy
-    expect(pw).to be_truthy
-    TestData.hash[:username] = usr
-    TestData.hash[:password] = pw
-  end
+  usr = SdcEnv.usr
+  pw = SdcEnv.pw
+  expect(usr).to be_truthy
+  expect(pw).to be_truthy
+  TestData.hash[:username] = usr
+  TestData.hash[:password] = pw
 end
 
 Then /^sign-in to orders$/ do
@@ -111,11 +103,11 @@ Then /^click sign-in button on android$/ do
   SdcPage.browser.action.move_to(landing_page.sign_in).send_keys(:enter).perform
 end
 
-Then /^set Orders landing page username to (.+)$/ do |str|
+Then /^set Orders landing page username to (.*)$/ do |str|
   SdcWebsite.landing_page.username.set(str)
 end
 
-Then /^set Orders landing page password to (.+)$/ do |str|
+Then /^set Orders landing page password to (.*)$/ do |str|
   SdcWebsite.landing_page.password.set(str)
 end
 
