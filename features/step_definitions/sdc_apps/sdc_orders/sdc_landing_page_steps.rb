@@ -83,7 +83,7 @@ Then /^click sign-in button on browser$/ do
   SdcOrders.loading_orders.safe_wait_until_present(timeout: 40)
   SdcOrders.loading_orders.wait_while_present(timeout: 40)
 
-  signed_in_user.wait_until_present(timeout: 5)
+  signed_in_user.wait_until_present(timeout: 20)
   expect(signed_in_user.text_value).to eql(TestData.hash[:username])
 
   # if SdcEnv.sauce_device
