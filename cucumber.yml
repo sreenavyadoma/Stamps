@@ -1,20 +1,29 @@
-default: --backtrace --profile alex_mail
+default: --backtrace --profile saucelabs_local
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
 sign_in_win10_edge_sauce:  --tags @saucelabs_poc SAUCE_DEVICE=win10_edge_sauce LOG_LEVEL=debug  URL=prod USR=abqaprod1 PW=password1 HEADLESS=true
+sign_in_macos_chrome_sauce:  --tags @mail_authentication SAUCE_DEVICE=macos_chrome_sauce LOG_LEVEL=debug  URL=prod USR=abqaprod1 PW=password1 HEADLESS=true
 sign_in_macos_chrome_sauce:  --tags @mail_authentication SAUCE_DEVICE=macos_chrome_sauce LOG_LEVEL=debug  URL=prod USR=abqaprod1 PW=password1 HEADLESS=true
 iphonex_saucelabs: --tags @saucelabs_poc SAUCE_DEVICE=iphonex_sauce LOG_LEVEL=debug  URL=prod USR=abqaprod1 PW=password
 samsung_galaxy_sauce: --tags @saucelabs_poc SAUCE_DEVICE=samsung_galaxy_sauce LOG_LEVEL=debug  URL=prod USR=abqaprod1 PW=password
 
 #todo-Rob WebReg consider removing webapp, username, password fields
 #todo-Rob set PRINTER=factory as default automation printer
-#robcm=ccpryiihrjz ccfb311osps4x print_dialog_ship_date bvt_international_shipping
-#rob: --tags @mail_advanced_options_stamps URL=cc BROWSER=ff LOG_LEVEL=debug HEALTHCHECK=true MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory NEW_FRAMEWORK=true DEBUG=true
-rob: --tags @rob_test URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=default PW=pass111 PRINTER=factory NEW_FRAMEWORK=true #stgee1mtqvwdc0 stgvoc0kcnt6rw
-#rob: --tags @mail_advanced_options_stamps URL=sc --guess LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=selenium  USR=scsejsglwa PW=pass111LOG_LEVEL=debug PRINTER=factory NEW_FRAMEWORK=true # c2jinmzmu64 schl0vlbfy2673 #19  schl0vlbfy2673
-#rob:  --tags @mail_print_on_lov URL=prod BROWSER=ff LOG_LEVEL=info USR=robcruz PW=Stamps#524113 LOG_LEVEL=debug NEW_FRAMEWORK=true MAX_WINDOW=false
+#robcm=ccpryiihrjz ccfb311osps4x print_dialog_ship_date bvt_international_shipping cchealthchk01
+#rob: --tags @mail_advanced_options_stamps URL=cc BROWSER=ff LOG_LEVEL=debug HEALTHCHECK=true MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory  DEBUG=true
+rob: --tags @rob_test URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=default PW=pass111 PRINTER=factory  #stgee1mtqvwdc0 stgvoc0kcnt6rw
+#rob: --tags @mail_advanced_options_stamps URL=sc --guess LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=selenium  USR=scsejsglwa PW=pass111LOG_LEVEL=debug PRINTER=factory  # c2jinmzmu64 schl0vlbfy2673 #19  schl0vlbfy2673
+#rob:  --tags @mail_print_on_lov URL=prod BROWSER=ff LOG_LEVEL=info USR=robcruz PW=Stamps#524113 LOG_LEVEL=debug  MAX_WINDOW=false
 # USR=abqaprod1 PW=password1
+
+saucelabs: --tags @saucelabs LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug
+#saucelabs_local: --tags @bvt_new_order URL=stg USR=stgvoc0kcnt6rw PW=pass111 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef JOB_NAME='orders_bvt_qacc/saucelabs' SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='macOS 10.13' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
+saucelabs_local: --tags @bvt_orders_ui_validation URL=prod USR=robcruz PW=Stamps#524113 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef JOB_NAME='orders_bvt_qacc/saucelabs' SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='macOS 10.13' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
+
+# C:\Users\lab>rake authentication URL=stg BROWSER=ff USR=stgvoc0kcnt6rw PW=pass111
+#saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1
+#saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1
 
 #bvt_orders_ship_date
 saucelabs_browser:  --tags @bvt_new_order BROWSER=gc LOG_LEVEL=info  URL=prod USR=default PW=password1 HEADLESS=true
@@ -50,7 +59,7 @@ mhossain1_cc: --tags @pp_log_in_page_validation JENKINS=true URL=qacc BROWSER=ff
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess  HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 
-eli_dev: --tags @mail_authentication --guess  JENKINS=false HEALTHCHECK=true WEB_APP=mail URL=stg BROWSER=ff USR=hal9000stage23 PW=password1 PRINTER=Automation Printer NEW_FRAMEWORK=true
+eli_dev: --tags @mail_authentication --guess  JENKINS=false HEALTHCHECK=true WEB_APP=mail URL=stg BROWSER=ff USR=hal9000stage23 PW=password1 PRINTER=Automation Printer 
 ray_dev: --tags @rates_parcel_select_ground --guess  JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff USR=default PW=pass111
 sap:              --tags @registration_orders WEB_APP=registration URL=cc --guess  BROWSER=ff MAX_WINDOW=false
 
@@ -58,8 +67,8 @@ alex_mail:  --tags @mail_bvt_ui_validation BROWSER=ff URL=stg USR=abqast2 PW=pas
 alex_regress:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders URL=cc USR=abqacc10 PW=password1  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false
 alex_rates:  --tags @rates_fcm_package BROWSER=ff URL=qast USR=abqast2 PW=password1 WEB_APP=orders  --guess LOG_LEVEL=info HEALTHCHECK=false
 alex_rates_pmi:  --tags @rates_pmi_comm_plus_group_9 BROWSER=ff WEB_APP=orders URL=stg USR=abqast2 PW=password1  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false
-#alex_orders:  --tags @bvt_shipstation_updates_international BROWSER=ff URL=prod USR=abqaprod2 PW=password1 NEW_FRAMEWORK=true PRINTER=factory --guess LOG_LEVEL=info HEALTHCHECK=false
-alex_orders:  --tags @bvt_orders_ui_validation BROWSER=ff URL=prod USR=abqaprod2 PW=password1 NEW_FRAMEWORK=true PRINTER=factory --guess LOG_LEVEL=info HEALTHCHECK=false
+#alex_orders:  --tags @bvt_shipstation_updates_international BROWSER=ff URL=prod USR=abqaprod2 PW=password1  PRINTER=factory --guess LOG_LEVEL=info HEALTHCHECK=false
+alex_orders:  --tags @bvt_orders_ui_validation BROWSER=ff URL=prod USR=abqaprod2 PW=password1  PRINTER=factory --guess LOG_LEVEL=info HEALTHCHECK=false
 #alex_orders:  --tags @bvt_new_order BROWSER=ff URL=stg USR=abqast2 PW=password1 new_framework=true  --guess LOG_LEVEL=info HEALTHCHECK=false #abqast1
 alex_test:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders URL=qacc USR=abqacc10 PW=password1  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false
 
@@ -242,10 +251,10 @@ search_orders_on_hold: --tags @search_orders_on_hold --guess  HEALTHCHECK=true W
 output_username: --tags @output_username --guess  HEALTHCHECK=true WEB_APP=orders
 generate_username: --tags @generate_username --guess  HEALTHCHECK=true WEB_APP=orders
 
-healthcheck: --tags @healthcheck --guess HEALTHCHECK=true NEW_FRAMEWORK=true
+healthcheck: --tags @healthcheck --guess HEALTHCHECK=true 
 
 authentication: --tags @authentication --guess  HEALTHCHECK=true WEB_APP=orders
-mail_authentication: --tags @mail_authentication --guess HEALTHCHECK=true NEW_FRAMEWORK=true
+mail_authentication: --tags @mail_authentication --guess HEALTHCHECK=true 
 
 customs_form_auto_calculate_weight: --tags @customs_form_auto_calculate_weight --guess  HEALTHCHECK=true WEB_APP=orders
 whats_new: --tags @whats_new --guess  HEALTHCHECK=true WEB_APP=orders
@@ -280,15 +289,15 @@ bvt_shipping_address_management: --tags @bvt_shipping_address_management --guess
 bvt_ambigious_address: --tags @bvt_ambigious_address --guess  HEALTHCHECK=true WEB_APP=orders
 bvt_bulk_update: --tags @bvt_bulk_update --guess  HEALTHCHECK=true WEB_APP=orders
 bvt_address_cleansing: --tags @bvt_address_cleansing --guess HEALTHCHECK=true WEB_APP=orders
-bvt_international_shipping: --tags @bvt_international_shipping --guess  HEALTHCHECK=true NEW_FRAMEWORK=true
-bvt_new_order: --tags @bvt_new_order --guess  HEALTHCHECK=true NEW_FRAMEWORK=true
+bvt_international_shipping: --tags @bvt_international_shipping --guess  HEALTHCHECK=true 
+bvt_new_order: --tags @bvt_new_order --guess  HEALTHCHECK=true LOG_LEVEL=info
 bvt_printing: --tags @bvt_printing --guess  HEALTHCHECK=true WEB_APP=orders PRINTER=factory
 bvt_purchasing: --tags @bvt_purchasing --guess  HEALTHCHECK=true WEB_APP=orders
 bvt_purchasing_cc: --tags @bvt_purchasing_cc --guess  HEALTHCHECK=true WEB_APP=orders USR=cchrvv6qp PW=pass111
 bvt_purchasing_stg: --tags @bvt_purchasing_stg --guess  HEALTHCHECK=true WEB_APP=orders USR=stgugqex0q4 PW=pass111
 bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic --guess  HEALTHCHECK=falsepa WEB_APP=orders
 bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess  HEALTHCHECK=false WEB_APP=orders
-bvt_shipstation_search: --tags @bvt_shipstation_search --guess  HEALTHCHECK=true NEW_FRAMEWORK=true
+bvt_shipstation_search: --tags @bvt_shipstation_search --guess  HEALTHCHECK=true 
 bvt_orders_ship_date: --tags @bvt_orders_ship_date --guess  HEALTHCHECK=true WEB_APP=orders
 bvt_orders_ship_date_calendar: --tags @bvt_orders_ship_date_calendar --guess  HEALTHCHECK=true WEB_APP=orders
 bvt_orders_ui_validation: --tags @bvt_orders_ui_validation --guess  HEALTHCHECK=true WEB_APP=orders
@@ -555,7 +564,7 @@ mail_fci_flats: --tags  @mail_fci_flats --guess  HEALTHCHECK=true PRINTER=factor
 mail_hidden_postage: --tags  @mail_hidden_postage --guess  HEALTHCHECK=true PRINTER=factory
 
 mail_bug_ordersauto_3243: --tags  @mail_bug_ordersauto_3243 --guess  HEALTHCHECK=true PRINTER=factory
-mail_manage_printing_options: --tags @mail_manage_printing_options --guess  HEALTHCHECK=true NEW_FRAMEWORK=true
+mail_manage_printing_options: --tags @mail_manage_printing_options --guess  HEALTHCHECK=true 
 #Partner Portal
 pp_log_in_page_validation: --tags @pp_log_in_page_validation --guess JENKINS=true  MAX_WINDOW=true WEB_DEV=true
 pp_header_favicons_browser: --tags @pp_header_favicons_browser --guess JENKINS=true  MAX_WINDOW=true WEB_DEV=true

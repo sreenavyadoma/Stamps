@@ -12,7 +12,102 @@ module SdcEnv
                   :printer, :browser, :hostname, :mobile, :scenario,
                   :sauce_device, :test_name, :log_level, :driver_log_level,
                   :browser_mobile_emulator, :android, :ios, :firefox_profile,
-                  :new_framework, :max_window, :web_dev, :jenkins
+                  :new_framework, :max_window, :web_dev, :jenkins, :sauce
+  end
+end
+
+class SdcModel
+  class << self
+    def keys
+      @keys ||= []
+    end
+
+    def key(name, &block)
+      keys << name unless keys.include? name
+
+      define_method(name) do |*args|
+        self.instance_exec(*args, &block)
+      end
+    end
+  end
+end
+
+##
+# Variable Description
+# SELENIUM_HOST  The hostname of the Selenium server
+# SELENIUM_PORT  The port of the Selenium server
+# SELENIUM_PLATFORM  The operating system of the selected browser
+# SELENIUM_VERSION  The version number of the selected browser
+# SELENIUM_BROWSER  The name of the selected browser
+# SELENIUM_DRIVER  Contains the operating system, version and browser name of the selected browser
+# SELENIUM_URL  The initial URL to load when the test begins
+# SAUCE_USERNAME  The user name used to invoke Sauce OnDemand
+# SAUCE_ACCESS_KEY  The access key for the user used to invoke Sauce OnDemand
+# SELENIUM_STARTING_URL  The value of the Starting URL field
+# SAUCE_ONDEMAND_BROWSERS  A JSON-formatted string representing browsers you selected for the job configuration
+##
+# JOB_NAME  Name of the project of this build, such as "foo" or "foo/bar".
+# JOB_BASE_NAME  Short Name of the project of this build stripping off folder paths, such as "foo" for "bar/foo".
+# BUILD_TAG  String of "jenkins-${JOB_NAME}-${BUILD_NUMBER}". All forward slashes
+#           ("/") in the JOB_NAME are replaced with dashes ("-"). Convenient to put
+#           into a resource file, a jar file, etc for easier identification.
+# BUILD_NUMBER  The current build number, such as "153"
+# NODE_NAME Name of the agent if the build is on an agent, or "master" if run on master
+# BUILD_URL Full URL of this build, like http://server:port/jenkins/job/foo/15/
+class SauceConfig < ::SdcModel
+  key(:sauce_username) { ENV['SAUCE_USERNAME'] }
+  key(:sauce_access_key) { ENV['SAUCE_ACCESS_KEY'] }
+  key(:host) { ENV['SELENIUM_HOST'] }
+  key(:port) { ENV['SELENIUM_PORT'] }
+  key(:platform) { ENV['SELENIUM_PLATFORM'] }
+  key(:version) { ENV['SELENIUM_VERSION'] }
+  key(:browser) { ENV['SELENIUM_BROWSER'] }
+  key(:driver) { ENV['SELENIUM_DRIVER'] }
+  key(:url) { ENV['SELENIUM_URL'] }
+  key(:starting_url) { ENV['SELENIUM_STARTING_URL'] }
+  key(:sauce_on_demand_browsers) { ENV['SAUCE_ONDEMAND_BROWSERS'] }
+  key(:job_name) { ENV['JOB_NAME'] }
+  key(:job_base_name) { ENV['JOB_BASE_NAME'] }
+  key(:build_tag) { ENV['BUILD_TAG'] }
+  key(:build_number) { ENV['BUILD_NUMBER'] }
+  key(:node_name) { ENV['NODE_NAME'] }
+  key(:build_url) { ENV['BUILD_URL'] }
+  key(:sauce_end_point) { "https://#{sauce_username}:#{sauce_access_key}@#{host}:#{port}/wd/hub" } # "https://robcruz:0e60dbc9-5bbf-425a-988b-f81c42d6b7ef@ondemand.saucelabs.com:443/wd/hub"
+
+  def test_name
+    job_name || "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+  end
+
+  def build
+    build_tag || Socket.gethostname
+  end
+
+  def session_info(session_id)
+    "SauceOnDemandSessionID=<#{session_id}> job-name=<#{test_name}>"
+  end
+
+end
+
+class SauceSession
+  def initialize
+    @sauce_config = ::SauceConfig.new
+  end
+
+  def create_browser
+    caps_conf = {
+        :version => @sauce_config.version,
+        :platform => @sauce_config.platform,
+        :name => @sauce_config.test_name,
+        :build => @sauce_config.build,
+        :idleTimeout => 120,
+        :extendedDebugging => true
+    }
+
+    caps = Selenium::WebDriver::Remote::Capabilities.send(@sauce_config.browser, caps_conf)
+    client = Selenium::WebDriver::Remote::Http::Default.new
+    client.timeout = 120
+    url = @sauce_config.sauce_end_point
+    @browser = Watir::Browser.new(:remote, desired_capabilities: caps, http_client: client, url: url)
   end
 end
 
@@ -441,6 +536,14 @@ class SdcChooser < BasicObject
   alias uncheck unchoose
   alias unselect unchoose
 
+  def wait_until_chosen(timeout: 4)
+    @element.browser.wait_until(timeout: timeout) { chosen? }
+  end
+
+  def safe_wait_until_chosen(timeout: 4)
+    wait_until_chosen(timeout: timeout)
+  end
+
   def respond_to_missing?(name, include_private = false)
     @element.respond_to?(name, include_private) || super
   end
@@ -486,7 +589,7 @@ class SdcLogger
     end
 
     def respond_to_missing?(name, include_private = false)
-      logger.respond_to?(name, include_private)
+      logger.respond_to?(name, include_private) || super
     end
 
     def method_missing(method, *args)
