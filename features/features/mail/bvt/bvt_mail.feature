@@ -430,7 +430,7 @@ Feature: BVT for Mail page
     Then check Extra Services Notice of Non-Delivery
     Then expect extra services notice of non-delivery price to be 0.00
 
-    Then expect Extra Services Total Price to be 26.15
+    Then expect extra services total price to be 26.15
 
     Then save Extra Services
 
@@ -441,7 +441,7 @@ Feature: BVT for Mail page
     Then expect extra services restricted delivery price to be 5.10
     Then expect extra services cod price to be 5.70
     Then expect extra services notice of non-delivery price to be 0.00
-    Then expect Extra Services Total Price to be 26.15
+    Then expect extra services total price to be 26.15
 
     Then save Extra Services
     Then sign out

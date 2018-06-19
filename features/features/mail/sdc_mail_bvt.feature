@@ -346,41 +346,48 @@ Feature:  Mail BVT - Authentication
 
 #    add extra services
     Then select advanced options extra services
+    Then check extra services fragile
+    Then uncheck extra services fragile
+    Then check extra services return receipt for merchandise
+    Then expect value must be shown modal is present
+    Then click value must be shown window continue button
+    Then click extra services form 3811
+    Then close form 3811 modal
+    Then uncheck extra services return receipt for merchandise
+    Then check extra services non-rectangular
+    Then uncheck extra services non-rectangular
+    Then check extra services hold for pickup
+    Then uncheck extra services hold for pickup
+#    Then set extra services security to None
+    Then set extra services security to USPS Insurance
+    Then set extra services security to Registered Mail
 
-#    security None
-#    security USPS
-#    security Registered
-#    value must be shown cancel
-#    security Registered
-#    value must be shown continue
-#    security
-#
-#    value increment
-#    value decrement
-#    value set
-#    rr check
-#    rr uncheck
-#    rd check
-#    rd uncheck
-#    cod present
-#    cod increment
-#    cod decrement
-#    cod set
-#    nnd check
-#    nnd uncheck
-#    handling hazardous
-#    --SCW xbtn
-#    --expect handl normal
-#    --handling hazardous
-#    SCW i agree
-#    handling animal
-#    SCW i agree
-#    handling animal fee
-#    SCW i agree
-#    check fragile
-#    --expect rd is not present
-#    check rrm
-#    check non rectangul
-#    check hold for pickup
+
+#    Then set extra services security to None
+    Then increment extra services security value by 2
+    Then decrement extra services security value by 2
+    Then set extra services security value to 3
+    Then set extra services security value to 0
+    Then check extra services return receipt
+    Then uncheck extra services return receipt
+    Then check extra services restricted delivery
+    Then uncheck extra services restricted delivery
+    Then increment extra services cod by 2
+    Then decrement extra services cod by 2
+    Then set extra services cod to 3
+    Then pause for 2 second
+    Then check extra services notice of non-delivery
+    Then uncheck extra services notice of non-delivery
+    Then set extra services cod to 0
+    Then blur out on extra services form
+    Then set extra services handling to Hazardous Materials
+    Then click special contents warning modal i agree
+    Then set extra services handling to Live Animal
+    Then click special contents warning modal i agree
+    Then set extra services handling to Live Animal (with Fee)
+    Then click special contents warning modal i agree
+    Then set extra services handling to Normal
+
+    Then close extra services
 
     Then sign out

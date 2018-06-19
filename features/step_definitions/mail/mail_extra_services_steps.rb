@@ -1,3 +1,7 @@
+Then /^blur out on extra services form$/ do
+  SdcMail.modals.extra_services.total.blur_out
+end
+
 Then /^expect extra services cod is present$/ do
   expect(SdcMail.modals.extra_services.cod).to be_present, "COD is not present!"
 end
@@ -67,11 +71,11 @@ end
 
 Then /^set extra services security to (.*)$/ do |value|
   security = SdcMail.modals.extra_services.security
-  security.selection_element(name: 'selection', value: value)
+  security.selection_element('selection', value)
   security.drop_down.click unless security.selection.present?
   expect(security.selection).to be_present, "#{value} is not present in Extra Services Security list"
   security.selection.click
-  expect(security.text_field.text_value).to include(value)
+  # expect(security.text_field.text_value).to include(value)
 end
 
 Then /^expect extra services security is (.*)$/ do |value|
@@ -88,7 +92,8 @@ end
 
 Then /^click value must be shown window continue button$/ do
   step 'expect value must be shown modal is present'
-  stamps.mail.print_form.advanced_options.value_must_be_shown.continue.click
+  SdcMail.modals.value_must_be_shown.continue.click
+  step 'expect value must be shown modal is not present'
 end
 
 Then /^expect special contents warning modal is present$/ do
@@ -140,9 +145,8 @@ Then /^expect extra services security value is (\d*.?\d+)$/ do |value|
 end
 
 Then /^set extra services handling to (.*)$/ do |str|
-  stamps.mail.print_form.advanced_options.extra_services.handling.select(str)
   handling = SdcMail.modals.extra_services.handling
-  handling.selection_element(name: "selection", value: str)
+  handling.selection_element("selection", str)
   handling.drop_down.click
   expect(handling.selection).to be_present, "Extra Services Handling selection element is not present in the list"
   handling.selection.click
@@ -198,16 +202,14 @@ Then /^expect extra services restricted delivery price to be (\d*.?\d+)$/ do |ex
   expect(SdcMail.modals.extra_services.restricted_delivery_price.text_value.dollar_amount_str.to_f.round(2)).to eql(expectation.to_f.round(2))
 end
 
-
-
 Then /^check extra services notice of non-delivery$/ do
   SdcMail.modals.extra_services.notice_non_delivery.check unless SdcMail.modals.extra_services.notice_non_delivery.checked?
-  step 'expect extra services restricted delivery is checked'
+  step 'expect extra services notice of non-delivery is checked'
 end
 
 Then /^uncheck extra services notice of non-delivery$/ do
   SdcMail.modals.extra_services.notice_non_delivery.uncheck if SdcMail.modals.extra_services.notice_non_delivery.checked?
-  step 'expect extra services restricted delivery is unchecked'
+  step 'expect extra services notice of non-delivery is unchecked'
 end
 
 Then /^expect extra services notice of non-delivery is checked$/ do
@@ -256,29 +258,92 @@ Then /^uncheck extra services return receipt for merchandise$/ do
   step 'expect extra services return receipt for merchandise is unchecked'
 end
 
-
-
-# TODO ON MONDAYYYYYYYYYYY!!!!!!!!!!!!!!!!!!!!!!!
 Then /^expect extra services return receipt for merchandise is checked$/ do
-  expect(stamps.mail.print_form.advanced_options.extra_services.return_receipt_merchandise.checked?).to be(true)
+  expect(SdcMail.modals.extra_services.return_receipt_merchandise.checked?).to be(true), "Extra Services Return Receiot for Merchandise is checked"
 end
 
 Then /^expect extra services return receipt for merchandise is unchecked$/ do
-  expect(stamps.mail.print_form.advanced_options.extra_services.return_receipt_merchandise.checked?).to be(false)
+  expect(SdcMail.modals.extra_services.return_receipt_merchandise.checked?).to be(false), "Extra Services Return Receiot for Merchandise is still checked"
+end
+
+Then /^check extra services non-rectangular$/ do
+  SdcMail.modals.extra_services.non_rectangular.check unless SdcMail.modals.extra_services.non_rectangular.checked?
+  step 'expect extra services non-rectangular is checked'
+end
+
+Then /^uncheck extra services non-rectangular$/ do
+  SdcMail.modals.extra_services.non_rectangular.uncheck if SdcMail.modals.extra_services.non_rectangular.checked?
+  step 'expect extra services non-rectangular is unchecked'
+end
+
+Then /^expect extra services non-rectangular is checked$/ do
+  expect(SdcMail.modals.extra_services.non_rectangular.checked?).to be(true), "Extra Services Non Rectangular is checked"
+end
+
+Then /^expect extra services non-rectangular is unchecked$/ do
+  expect(SdcMail.modals.extra_services.non_rectangular.checked?).to be(false), "Extra Services Non Rectangular is still checked"
+end
+
+Then /^expect extra services total price to be (\d*.?\d+)$/ do |expectation|
+  expect(SdcMail.modals.extra_services.total.text_value.to_f.round(2)).to eql(expectation.to_f.round(2))
+end
+
+Then /^check extra services hold for pickup$/ do
+  SdcMail.modals.extra_services.hold_for_pickup.check unless SdcMail.modals.extra_services.hold_for_pickup.checked?
+  step 'expect extra services non-rectangular is checked'
+end
+
+Then /^uncheck extra services hold for pickup$/ do
+  SdcMail.modals.extra_services.hold_for_pickup.uncheck if SdcMail.modals.extra_services.hold_for_pickup.checked?
+  step 'expect extra services non-rectangular is unchecked'
+end
+
+Then /^expect extra services hold for pickup is checked$/ do
+  expect(SdcMail.modals.extra_services.hold_for_pickup.checked?).to be(true), "Extra Services Non Rectangular is checked"
+end
+
+Then /^expect extra services hold for pickup is unchecked$/ do
+  expect(SdcMail.modals.extra_services.hold_for_pickup.checked?).to be(false), "Extra Services Non Rectangular is still checked"
+end
+
+Then /^expect extra services hold for pickup price to be (\d*.?\d+)$/ do |expectation|
+  expect(SdcMail.modals.extra_services.total.text_value.to_f.round(2)).to eql(expectation.to_f.round(2))
+end
+
+Then /^click extra services form 3811$/ do
+  step 'expect form 3811 modal is not present'
+  SdcMail.modals.extra_services.form_3811.click
+  step 'expect form 3811 modal is present'
+end
+
+Then /^click extra services label 200$/ do
+  step 'expect label 200 modal is not present'
+  SdcMail.modals.extra_services.label_200.click
+  step 'expect label 200 modal is present'
 end
 
 
 
 
+Then /^[Cc]lick [Cc]ontinue in [Hh]idden [Pp]ostage [Nn]ot [Aa]llowed modal$/ do
+  stamps.mail.mail_toolbar.hidden_postage_warning.continue
+end
 
+Then /^[Cc]lick [Cc]ancel in [Hh]idden [Pp]ostage [Nn]ot [Aa]llowed modal$/ do
+  stamps.mail.mail_toolbar.hidden_postage_warning.cancel
+end
 
+Then /^[Ee]xpect [Hh]idden [Pp]ostage [Nn]ot [Aa]llowed modal appears due to [Ee]xtra [Ss]ervice (.*)$/ do |service|
+  expect(stamps.mail.mail_toolbar.hidden_postage_warning.present?).to be(true)
+  expect(stamps.mail.mail_toolbar.hidden_postage_warning.extra_service(service).present?).to be(true)
+end
 
-
-Then /^[Cc]heck Extra Services Electronic Return Receipt$/ do
+# Electronic Return Receipt is removed from WEB APP??? Alex
+Then /^check extra services electronic return receipt$/ do
   stamps.mail.print_form.advanced_options.extra_services.electronic_return_receipt.check
 end
 
-Then /^[Uu]ncheck Extra Services Electronic Return Receipt$/ do
+Then /^uncheck extra services electronic return receipt$/ do
   stamps.mail.print_form.advanced_options.extra_services.electronic_return_receipt.uncheck
 end
 
@@ -304,29 +369,3 @@ end
 
 
 
-
-Then /^[Cc]heck Extra Services Non-Rectangular$/ do
-  stamps.mail.print_form.advanced_options.extra_services.non_rectangular.check
-end
-
-Then /^[Uu]ncheck Extra Services Non-Rectangular$/ do
-  stamps.mail.print_form.advanced_options.extra_services.non_rectangular.uncheck
-end
-
-Then /^[Ee]xpect Extra Services Total Price to be (\d*.?\d+)$/ do |expectation|
-  20.times do break if stamps.mail.print_form.advanced_options.extra_services.total_price==expectation.to_f.round(2) end
-  expect(stamps.mail.print_form.advanced_options.extra_services.total_price).to eql(expectation.to_f.round(2))
-end
-
-Then /^[Cc]lick [Cc]ontinue in [Hh]idden [Pp]ostage [Nn]ot [Aa]llowed modal$/ do
-  stamps.mail.mail_toolbar.hidden_postage_warning.continue
-end
-
-Then /^[Cc]lick [Cc]ancel in [Hh]idden [Pp]ostage [Nn]ot [Aa]llowed modal$/ do
-  stamps.mail.mail_toolbar.hidden_postage_warning.cancel
-end
-
-Then /^[Ee]xpect [Hh]idden [Pp]ostage [Nn]ot [Aa]llowed modal appears due to [Ee]xtra [Ss]ervice (.*)$/ do |service|
-  expect(stamps.mail.mail_toolbar.hidden_postage_warning.present?).to be(true)
-  expect(stamps.mail.mail_toolbar.hidden_postage_warning.extra_service(service).present?).to be(true)
-end

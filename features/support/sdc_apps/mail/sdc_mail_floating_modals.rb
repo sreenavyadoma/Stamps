@@ -30,6 +30,7 @@ module SdcMail
     page_object(:save) { {id: 'sdc-extraservices-savebtn-btnInnerEl'} }
     page_object(:label_200) { {xpath: '//u[text()="Label 200 or 200-N"]'} }
     page_object(:form_3811) { {xpath: '//u[text()="Form 3811"]'} }
+    page_object(:total) { { id: 'sdc-extraservices-totalcostlabel' } }
 
     text_field(:value_text_field, tag: :text_field) { { id: 'sdc-extraserviceswin-valuenumberfield-inputEl' } }
     page_object(:value_increment) { { xpath: '//*[@id="sdc-extraserviceswin-valuenumberfield-trigger-spinner"]//*[contains(@class,"up")]' } }
@@ -93,8 +94,8 @@ module SdcMail
     page_object(:drop_down) { { id: 'sdc-extraserviceswin-securitydroplist-trigger-picker' } }
     page_object(:text_field, tag: :text_field) { { id: 'sdc-extraserviceswin-securitydroplist-inputEl' } }
 
-    def selection_element(name, str)
-      page_object(name) { { xpath: "//li[text()='#{str}']" } }
+    def selection_element(name, value)
+      page_object(name) { { xpath: "//li[text()='#{value}']" } }
     end
   end
 
@@ -119,15 +120,15 @@ module SdcMail
 
   class SdcValueMustBeShown < SdcPage
     page_object(:title) { {xpath: '//div[text()="Value Must be Shown"]'} }
-    page_object(:continue) { {xpath: '//div[text()="Continue"]'} }
+    page_object(:continue) { {xpath: '//*[text()="Continue"]/../..'} }
     page_object(:cancel) { {xpath: '//div[text()="Cancel"]'} }
     page_object(:x_btn) { {xpath: '//div[text()="Value Must be Shown"]/../..//*[contains(@class, "close")]'} }
   end
 
   class SdcSpecialContentsWarning < SdcPage
-    page_object(:title) { {xpath: '//div[text()="Special Contents Warning"]'} }
-    page_object(:i_agree) { {xpath: '//div[text()="I Agree"]'} }
-    page_object(:more_info) { {xpath: '//div[text()="More Info"]'} }
+    page_object(:title) { {xpath: '//*[text()="Special Contents Warning"]'} }
+    page_object(:i_agree) { {xpath: '//*[text()="I Agree"]'} }
+    page_object(:more_info) { {xpath: '//*[text()="More Info"]'} }
     page_object(:x_btn) { {xpath: '//div[text()="Special Contents Warning"]/../..//*[contains(@class, "close")]'} }
   end
 
@@ -163,10 +164,10 @@ module SdcMail
     end
     module_function :label_200
 
-    def mode_3811
+    def form_3811
       SdcForm3811.new
     end
-    module_function :mode_3811
+    module_function :form_3811
 
     def value_must_be_shown
       SdcValueMustBeShown.new

@@ -71,7 +71,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then select Advanced Options Extra Services
     Then set extra services security to USPS Insurance
     Then set Extra Services Value to 1.00
-    Then check Extra Services Electronic Return Receipt
+    Then check extra services electronic return receipt
     Then click value must be shown window continue button
     Then expect Extra Services Electronic Return Receipt is checked
     Then save Extra Services
@@ -160,7 +160,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then select Advanced Options Extra Services
     Then set extra services security to USPS Insurance
     Then set Extra Services Value to 1.00
-    Then check Extra Services Electronic Return Receipt
+    Then check extra services electronic return receipt
     Then click value must be shown window continue button
     Then expect Extra Services Electronic Return Receipt is checked
     Then save Extra Services
@@ -211,7 +211,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then select Advanced Options Extra Services
     Then set extra services security to USPS Insurance
     Then set Extra Services Value to 1.00
-    Then check Extra Services Electronic Return Receipt
+    Then check extra services electronic return receipt
     Then click value must be shown window continue button
     Then expect Extra Services Electronic Return Receipt is checked
     Then save Extra Services
@@ -265,7 +265,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then check Extra Services Notice of Non-Delivery
     Then expect extra services notice of non-delivery price to be 0.00
 
-    Then expect Extra Services Total Price to be 25.85
+    Then expect extra services total price to be 25.85
 
     Then save Extra Services
 
@@ -276,7 +276,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then expect extra services restricted delivery price to be 4.95
     Then expect extra services cod price to be 5.65
     Then expect extra services notice of non-delivery price to be 0.00
-    Then expect Extra Services Total Price to be 25.85
+    Then expect extra services total price to be 25.85
 
     Then save Extra Services
     Then sign out
