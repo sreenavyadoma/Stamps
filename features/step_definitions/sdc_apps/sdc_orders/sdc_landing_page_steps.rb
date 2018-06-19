@@ -1,7 +1,7 @@
 
 Then /^visit Orders landing page$/ do
   step 'initialize test parameters'
-  step 'fetch user credentials from MySQL'
+  #step 'fetch user credentials from MySQL'
 
   env = case SdcEnv.env
         when :qacc
