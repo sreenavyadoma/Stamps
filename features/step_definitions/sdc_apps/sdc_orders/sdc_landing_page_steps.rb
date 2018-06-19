@@ -17,9 +17,6 @@ Then /^visit Orders landing page$/ do
         end
 
   SdcOrdersLandingPage.visit(env)
-  p "URL: #{SdcOrdersLandingPage.browser.url}"
-  SdcLogger.info "URL: #{SdcOrdersLandingPage.browser.url}"
-  SdcLogger.error "URL: #{SdcOrdersLandingPage.browser.url}"
   expect(SdcOrdersLandingPage.browser.url).to include('stamps')
 end
 
@@ -124,7 +121,8 @@ end
 Then /^click Orders landing page sign-in button$/ do
   SdcWebsite.landing_page.sign_in.wait_until_present(timeout: 3)
   SdcWebsite.landing_page.sign_in.click
-  SdcWebsite.orders.loading_orders.safe_wait_until_present(timeout: 5)
+  SdcWebsite.landing_page.sign_in.send_keys(:enter)
+  SdcWebsite.orders.loading_orders.safe_wait_until_present(timeout: 15)
   SdcWebsite.orders.loading_orders.wait_while_present(timeout: 40)
 end
 
