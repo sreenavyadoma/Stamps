@@ -144,6 +144,7 @@ class SdcTest
               kill('taskkill /im MicrosoftEdge.exe /f')
 
               if SdcEnv.jenkins
+                system("c:\\windows\\sysnative\\query.exe user");
                 def running_in_admin_mode?
                   (`reg query HKU\\S-1-5-19 2>&1` =~ /ERROR/).nil?
                 end
@@ -160,7 +161,7 @@ class SdcTest
                 else
                   result = `nbtstat.exe -A #{putername}`
                 end
-                result 'C:\\windows\\sysnative\\C:\Stamps\config\batch\edge_rdp_unlock.bat'
+                system 'C:\Stamps\config\batch\edge_rdp_unlock.bat'
               end
               #system 'C:\Stamps\config\batch\edge_rdp_unlock.bat' if SdcEnv.jenkins
 
