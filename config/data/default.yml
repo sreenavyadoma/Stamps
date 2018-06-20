@@ -133,7 +133,7 @@ mail_tracking_service:
 mail_services:
   First Class: sdc-servicedroplist-fcletter
   Media Mail: sdc-servicedroplist-mmpackage
-  FCM Post Card: sdc-servicedroplist-fcpostcard
+  FCM Postcard: sdc-servicedroplist-fcpostcard
   FCM Letter: sdc-servicedroplist-fcletter
   FCM Large Envelope/Flat: sdc-servicedroplist-fclargeenvelopeorflat
   FCM Package/Thick Envelope: sdc-servicedroplist-fcthickenvelope

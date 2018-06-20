@@ -1,0 +1,77 @@
+
+
+echo %SAUCE_USERNAME%
+echo %SAUCE_ACCESS_KEY%
+echo %SELENIUM_PLATFORM%
+echo %SELENIUM_BROWSER%
+echo %SELENIUM_VERSION%
+echo %SELENIUM_DRIVER%
+
+saucelabs :: Begin test...
+
+saucelabs :: Feature: Sauce Labs Configurations
+saucelabs :: Scenario: Sauce Labs
+saucelabs ::   Tags:
+saucelabs ::   Tag 1: @saucelabs
+saucelabs ::   Steps:
+saucelabs ::   Given configure saucelabs
+saucelabs ::   Then configure saucelabs
+saucelabs ::
+
+saucelabs :: SELENIUM_HOST: ondemand.saucelabs.com
+saucelabs :: SELENIUM_PORT: 4444
+saucelabs :: SELENIUM_PLATFORM: Mac 10.12
+saucelabs :: SELENIUM_VERSION: latest
+saucelabs :: SELENIUM_BROWSER: chrome
+saucelabs :: SELENIUM_DRIVER: sauce-ondemand:?os=Mac 10.12&browser=chrome&browser-version=latest&username=robcruz&access-key=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef
+saucelabs :: SELENIUM_URL:
+saucelabs :: SAUCE_USERNAME: robcruz
+saucelabs :: SAUCE_ACCESS_KEY: 0e60dbc9-5bbf-425a-988b-f81c42d6b7ef
+saucelabs :: SELENIUM_STARTING_URL:
+saucelabs :: SAUCE_ONDEMAND_BROWSERS: [{"os":"Mac 10.12","platform":"Mac 10.12","browser":"chrome","browser-version":"latest","long-name":"Google Chrome","long-version":"latest","url":"sauce-ondemand:?os=Mac 10.12&browser=chrome&browser-version=latest&username=robcruz&access-key=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef"}]
+saucelabs :: Jenkins....
+saucelabs :: JOB_NAME: orders_bvt_qacc/saucelabs
+saucelabs :: JOB_BASE_NAME: saucelabs
+saucelabs :: BUILD_TAG: jenkins-orders_bvt_qacc-saucelabs-9
+saucelabs :: BUILD_NUMBER: 9
+saucelabs :: BUILD_ID: 9
+saucelabs :: NODE_NAME: jenkinsvm23
+saucelabs :: EXECUTOR_NUMBER: 0
+saucelabs :: NODE_LABELS: jenkinsvm23
+saucelabs :: WORKSPACE: C:\Jenkins\workspace\orders_bvt_qacc\saucelabs
+saucelabs :: JENKINS_URL: http://sdcwebclient/
+saucelabs :: BUILD_URL: http://sdcwebclient/job/orders_bvt_qacc/job/saucelabs/9/
+saucelabs :: JOB_URL: http://sdcwebclient/job/orders_bvt_qacc/job/saucelabs/
+  Background:                 # features/features/orders/sauce_labs.feature:4
+    Given configure saucelabs # features/step_definitions/sdc_apps/browser_steps.rb:10
+saucelabs :: SELENIUM_HOST: ondemand.saucelabs.com
+saucelabs :: SELENIUM_PORT: 4444
+saucelabs :: SELENIUM_PLATFORM: Mac 10.12
+saucelabs :: SELENIUM_VERSION: latest
+saucelabs :: SELENIUM_BROWSER: chrome
+saucelabs :: SELENIUM_DRIVER: sauce-ondemand:?os=Mac 10.12&browser=chrome&browser-version=latest&username=robcruz&access-key=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef
+saucelabs :: SELENIUM_URL:
+saucelabs :: SAUCE_USERNAME: robcruz
+saucelabs :: SAUCE_ACCESS_KEY: 0e60dbc9-5bbf-425a-988b-f81c42d6b7ef
+saucelabs :: SELENIUM_STARTING_URL:
+saucelabs :: SAUCE_ONDEMAND_BROWSERS: [{"os":"Mac 10.12","platform":"Mac 10.12","browser":"chrome","browser-version":"latest","long-name":"Google Chrome","long-version":"latest","url":"sauce-ondemand:?os=Mac 10.12&browser=chrome&browser-version=latest&username=robcruz&access-key=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef"}]
+saucelabs :: Jenkins....
+saucelabs :: JOB_NAME: orders_bvt_qacc/saucelabs
+saucelabs :: JOB_BASE_NAME: saucelabs
+saucelabs :: BUILD_TAG: jenkins-orders_bvt_qacc-saucelabs-9
+saucelabs :: BUILD_NUMBER: 9
+saucelabs :: BUILD_ID: 9
+saucelabs :: NODE_NAME: jenkinsvm23
+saucelabs :: EXECUTOR_NUMBER: 0
+saucelabs :: NODE_LABELS: jenkinsvm23
+saucelabs :: WORKSPACE: C:\Jenkins\workspace\orders_bvt_qacc\saucelabs
+saucelabs :: JENKINS_URL: http://sdcwebclient/
+saucelabs :: BUILD_URL: http://sdcwebclient/job/orders_bvt_qacc/job/saucelabs/9/
+saucelabs :: JOB_URL: http://sdcwebclient/job/orders_bvt_qacc/job/saucelabs/
+
+  @saucelabs
+  Scenario: Sauce Labs       # features/features/orders/sauce_labs.feature:8
+    Then configure saucelabs # features/step_definitions/sdc_apps/browser_steps.rb:10
+saucelabs :: Tear down...
+
+saucelabs :: Done.

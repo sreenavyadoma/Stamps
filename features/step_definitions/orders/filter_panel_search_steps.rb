@@ -61,55 +61,27 @@ end
 
 Then /^search orders for (.*) expecting to find at least (\d+)$/ do |str, count|
   step "set Filter Panel Search textbox to #{str}"
-  if SdcEnv.new_framework
-    step "click Filter Panel Search button"
-    SdcOrders.loading_orders.wait_while_present(timeout: 10)
-    expect(SdcOrders.filter_panel.search_results.count.text_value.to_i).to be >= count.to_i
-  else
-    begin
-      15.times do
-        sleep(1)
-        step "click Filter Panel Search button"
-        sleep(1)
-        break if stamps.orders.filter_panel.search_orders.search_results.count >= count.to_i
-      end
-      expect(stamps.orders.filter_panel.search_orders.search_results).to be_present, "Couldn't find #{str} in Orders Grid"
-    end unless str.nil?||str.size==0
-  end
+  step "click Filter Panel Search button"
+  SdcOrders.loading_orders.wait_while_present(timeout: 10)
+  expect(SdcOrders.filter_panel.search_results.count.text_value.to_i).to be >= count.to_i
 end
 
 Then /^[Ss]et Filter Panel Search textbox to (.*)$/ do |str|
-  TestData.hash[:filter_panel_search_str]=str
-  if SdcEnv.new_framework
-    SdcOrders.filter_panel.search_orders.set(TestData.hash[:filter_panel_search_str])
-  else
-    stamps.orders.filter_panel.search_orders.textbox.set(TestData.hash[:filter_panel_search_str])
-  end
+  TestData.hash[:filter_panel_search_str] = str
+  SdcOrders.filter_panel.search_orders.set(TestData.hash[:filter_panel_search_str])
 end
 
 Then /^[Cc]lick Filter Panel Search [Bb]utton$/ do
-  if SdcEnv.new_framework
-    SdcOrders.filter_panel.search.safe_wait_while_present(timeout: 2)
-    SdcOrders.filter_panel.search.click
-  else
-    stamps.orders.filter_panel.search_orders.search_button.click
-  end
+  SdcOrders.filter_panel.search.safe_wait_while_present(timeout: 2)
+  SdcOrders.filter_panel.search.click
 end
 
 Then /^[Ee]xpect Filter Panel search result count is (\d+)$/ do |count|
-  if SdcEnv.new_framework
-    expect(SdcOrders.filter_panel.search_results.count.text_value.to_i).to eql(count.to_i)
-  else
-    expect(stamps.orders.filter_panel.search_orders.search_results.count).to eql count.to_i
-  end
+  expect(SdcOrders.filter_panel.search_results.count.text_value.to_i).to eql(count.to_i)
 end
 
 Then /^[Ee]xpect Filter Panel search result count is greater than (\d+)$/ do |count|
-  if SdcEnv.new_framework
-    expect(SdcOrders.filter_panel.search_results.count.text_value.to_i).to be >= count.to_i
-  else
-    expect(stamps.orders.filter_panel.search_results.count).to be > count.to_i
-  end
+  expect(SdcOrders.filter_panel.search_results.count.text_value.to_i).to be >= count.to_i
 end
 
 Then /^expect filter panel search results tab is present$/ do

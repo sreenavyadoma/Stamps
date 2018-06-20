@@ -32,12 +32,50 @@ Then /^set print form ounces to (\d+\.?\d*)$/ do |oz|
   TestData.hash[:oz] = oz
 end
 
+Then /^increment print form weight by lbs (\d+) oz (\d+)$/ do |lbs, oz|
+  step "increment print form pounds by #{lbs}"
+  step "increment print form ounces by #{oz}"
+end
+
+Then /^decrement print form weight by lbs (\d+) oz (\d+)$/ do |lbs, oz|
+  step "decrement print form pounds by #{lbs}"
+  step "decrement print form ounces by #{oz}"
+end
+
+Then /^increment print form pounds by (\d+)$/ do |lbs|
+  old_lbs = SdcMail.print_form.weight.lbs.text_field.text_value
+  lbs.times do SdcMail.print_form.weight.lbs.increment.click end
+  step "expect print form pounds is #{old_lbs.to_i + lbs.to_i}"
+  TestData.hash[:lbs] = lbs
+end
+
+Then /^increment print form ounces by (\d+)$/ do |oz|
+  old_oz = SdcMail.print_form.weight.oz.text_field.text_value
+  oz.times do SdcMail.print_form.weight.oz.increment.click end
+  step "expect print form ounces is #{old_oz.to_i + oz.to_i}"
+  TestData.hash[:oz] = oz
+end
+
+Then /^decrement print form pounds by (\d+)$/ do |lbs|
+  old_lbs = SdcMail.print_form.weight.lbs.text_field.text_value
+  lbs.times do SdcMail.print_form.weight.lbs.decrement.click end
+  step "expect print form pounds is #{old_lbs.to_i - lbs.to_i}"
+  TestData.hash[:lbs] = lbs
+end
+
+Then /^decrement print form ounces by (\d+)$/ do |oz|
+  old_oz = SdcMail.print_form.weight.oz.text_field.text_value
+  oz.times do SdcMail.print_form.weight.oz.decrement.click end
+  step "expect print form ounces is #{old_oz.to_i - oz.to_i}"
+  TestData.hash[:oz] = oz
+end
+
 Then /^expect print form pounds is (?:correct|(\d+))$/ do |lbs|
   lbs = lbs.nil? ? TestData.hash[:lbs] : lbs
   expect(SdcMail.print_form.weight.lbs.value.to_i).to eql lbs
 end
 
-Then /^expect print form ounce is (?:correct|(\d+))$/ do |oz|
+Then /^expect print form ounces is (?:correct|(\d+))$/ do |oz|
   oz = oz.nil? ? TestData.hash[:oz] : oz
   expect(SdcMail.print_form.weight.oz.value.to_i).to eql oz
 end
@@ -72,19 +110,73 @@ Then /^set print form height to (\d+)$/ do |h|
   TestData.hash[:height] = h
 end
 
+Then /^increment print form length by (\d+)$/ do |length|
+  old_length = SdcMail.print_form.dimensions.length.text_field.text_value
+  length.times do SdcMail.print_form.dimensions.length.increment.click end
+  step "expect print form length is #{old_length.to_i + length.to_i}"
+  TestData.hash[:length] = old_length.to_i + length.to_i
+end
+
+Then /^increment print form width by (\d+)$/ do |width|
+  old_width = SdcMail.print_form.dimensions.width.text_field.text_value
+  width.times do SdcMail.print_form.dimensions.width.increment.click end
+  step "expect print form width is #{old_width.to_i + width.to_i}"
+  TestData.hash[:width] = old_width.to_i + width.to_i
+end
+
+Then /^increment print form height by (\d+)$/ do |height|
+  old_height = SdcMail.print_form.dimensions.height.text_field.text_value
+  height.times do SdcMail.print_form.dimensions.height.increment.click end
+  step "expect print form height is #{old_height.to_i + height.to_i}"
+  TestData.hash[:height] = old_height.to_i + height.to_i
+end
+
+Then /^decrement print form length by (\d+)$/ do |length|
+  old_length = SdcMail.print_form.dimensions.length.text_field.text_value
+  length.times do SdcMail.print_form.dimensions.length.decrement.click end
+  step "expect print form length is #{old_length.to_i - length.to_i}"
+  TestData.hash[:length] = old_length.to_i + length.to_i
+end
+
+Then /^decrement print form width by (\d+)$/ do |width|
+  old_width = SdcMail.print_form.dimensions.width.text_field.text_value
+  width.times do SdcMail.print_form.dimensions.width.decrement.click end
+  step "expect print form width is #{old_width.to_i - width.to_i}"
+  TestData.hash[:width] = old_width.to_i + width.to_i
+end
+
+Then /^decrement print form height by (\d+)$/ do |height|
+  old_height = SdcMail.print_form.dimensions.height.text_field.text_value
+  height.times do SdcMail.print_form.dimensions.height.decrement.click end
+  step "expect print form height is #{old_height.to_i - height.to_i}"
+  TestData.hash[:height] = old_height.to_i + height.to_i
+end
+
+Then /^increment print form dimensions by length (\d+) width (\d+) height (\d+)$/ do |l, w, h|
+  step "increment print form length by #{l}"
+  step "increment print form width by #{w}"
+  step "increment print form height by #{h}"
+end
+
+Then /^decrement print form dimensions by length (\d+) width (\d+) height (\d+)$/ do |l, w, h|
+  step "decrement print form length by #{l}"
+  step "decrement print form width by #{w}"
+  step "decrement print form height by #{h}"
+end
+
 Then /^expect print form length is (?:correct|(\d+))$/ do |h|
   h = h.nil? ? TestData.hash[:length] : h
-  expect(SdcMail.print_form.dimensions.length.value.to_i).to eql h
+  expect(SdcMail.print_form.dimensions.length.value.to_i).to eql(h)
 end
 
 Then /^expect print form width is (?:correct|(\d+))$/ do |h|
   h = h.nil? ? TestData.hash[:width] : h
-  expect(SdcMail.print_form.dimensions.width.value.to_i).to eql h
+  expect(SdcMail.print_form.dimensions.width.value.to_i).to eql(h)
 end
 
 Then /^expect print form height is (?:correct|(\d+))$/ do |h|
   h = h.nil? ? TestData.hash[:height] : h
-  expect(SdcMail.print_form.dimensions.height.value.to_i).to eql h
+  expect(SdcMail.print_form.dimensions.height.value.to_i).to eql(h)
 end
 
 # dimension expectations
@@ -104,34 +196,30 @@ Then /^[Ee]xpect [Pp]rint [Ff]orm [Ss]ervice (.*) is not present in dropdown lis
   expect(stamps.mail.print_form.service.select_service(TestData.hash[:service] = service).present?).to be(false)
 end
 
+# Then /^select print form service for stamps (.*)$/ do |str|
+#   service = SdcMail.print_form.service
+#   service.service_element(:service, str)
+#   service.drop_down.click unless service.service.present?
+#   expect(service.service.present?).to be(true), "Service #{str} is not on list of values"
+#   service.service.click
+#   expect(service.text_field.text_value).to include(str)
+#   step 'blur out on print form'
+# end
+
 Then /^select print form service (.*)$/ do |str|
   SdcLogger.debug "service: #{str}"
   TestData.hash[:service] = str
-  if SdcEnv.new_framework
-    service = SdcMail.print_form.service
-    service.drop_down.click
-    service.service_element(:service, str)
-    service.inline_cost_element(:inline_cost, str)
-    service.drop_down.click unless service.service.present?
-    expect(service.service.present?).to be(true), "Service #{str} is not on list of values"
-
-    service_inline_cost = service.inline_cost.text_value.dollar_amount_str
-    SdcLogger.debug "service_inline_cost: #{service_inline_cost}"
-    expect(service_inline_cost.to_f).to be > 0
-
-    service.service.click
-    service.cost.wait_until_present(timeout: 3)
-    TestData.hash[:service_cost] = service.cost.text_value.dollar_amount_str
-
-    SdcLogger.debug "service_cost: #{TestData.hash[:service_cost]}"
-    expect(service.text_field.text_value).to include str
-  else
-    stamps.mail.print_form.service.select_service(str)
-  end
+  service = SdcMail.print_form.service
+  service.drop_down.click
+  service.service_element(:service, str)
+  service.inline_cost_element(:inline_cost, str)
+  service.drop_down.click unless service.service.present?
+  service.service.click
+  expect(service.text_field.text_value).to include str
 end
 
 Then /^[Ee]xpect [Pp]rint [Ff]orm [Ss]ervice [Cc]ost [Ff]or (.*) is (.*)$/ do |service, cost|
-  step "blur out on print form"
+  step 'blur out on print form'
   stamps.mail.print_form.service.service_cost(TestData.hash[:service] = service).to eql("$#{cost}")
 end
 
@@ -180,27 +268,17 @@ Then /^set print form ship-to to international address$/ do |table|
 end
 
 Then /^set print form mail-to country to (.*)$/ do |str|
-  if SdcEnv.new_framework
-    mail_to = SdcMail.print_form.mail_to
-    mail_to.selection(:selection_element, str)
-    text_field = mail_to.dom_text_field
-    text_field.safe_wait_until_present(timeout: 1)
-    text_field = mail_to.int_text_field if mail_to.int_text_field.present?
-    unless text_field.text_value.eql? str
-      text_field.set str
-      mail_to.selection_element.safe_wait_until_present(timeout: 2)
-      mail_to.selection_element.safe_click
-    end
-    expect(text_field.text_value).to eql str
-    sleep 2
-  else
-    20.times do
-      stamps.mail.print_form.mail_to.mail_to_country.select_country(TestData.hash[:country] = str)
-      break if stamps.mail.print_form.mail_to.mail_to_country.textbox.text.include?(TestData.hash[:country]) && stamps.mail.print_form.service.has_rates?
-    end
-    expect(stamps.mail.print_form.service).to be_has_rates, "Mail service list of values does not have rates."
-    expect(stamps.mail.print_form.mail_to.mail_to_country.textbox.text).to eql(TestData.hash[:country])
+  mail_to = SdcMail.print_form.mail_to
+  mail_to.selection(:selection_element, str)
+  text_field = mail_to.dom_text_field
+  text_field.safe_wait_until_present(timeout: 1)
+  text_field = mail_to.int_text_field if mail_to.int_text_field.present?
+  unless text_field.text_value.eql? str
+    text_field.set str
+    mail_to.selection_element.safe_wait_until_present(timeout: 2)
+    mail_to.selection_element.safe_click
   end
+  expect(text_field.text_value).to eql str
 end
 
 Then /^set print form name to (.*)$/ do |str|

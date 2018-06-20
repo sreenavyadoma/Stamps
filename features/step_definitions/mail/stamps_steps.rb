@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-Then /^[Ss]et Print form Serial Number to (.*)$/ do |str|
+Then /^set print form serial number to (.*)$/ do |str|
   if str.include?('random')
     serial = case str.upcase
               when /A/
@@ -33,7 +33,8 @@ Then /^[Ss]et Print form Serial Number to (.*)$/ do |str|
   else
     serial = str
   end
-  stamps.mail.print_form.serial_number.set(serial)
+  # stamps.mail.print_form.serial_number.set(serial)
+  SdcMail.print_form.serial_number.set(serial)
 end
 
 Then /^[Ss]et Print form Amount to (\d*.?\d+)$/ do |value|
@@ -105,11 +106,56 @@ end
 #AB_ORDERSAUTO_3516
 Then /^[Ee]xpect mail fields are reset$/ do
   step "expect Print form Domestic Address field is empty"
-  step "expect Print form Pounds Field is 0"
-  step "expect Print form Ounces Field is 0"
+  step "expect print form pounds is 0"
+  step "expect print form ounces is 0"
   step "expect Print form service is empty"
 end
 
 
+Then /^select print form calculate postage amount$/ do
+  SdcMail.print_form.calculate_postage_amount.select
+  expect(SdcMail.print_form.calculate_postage_amount.selected?).to be_truthy, "Calculate postage amount is not selected!"
+end
+
+Then /^select print form specify postage amount$/ do
+  step 'show advanced options'
+  SdcMail.print_form.specify_postage_amount.select
+  expect(SdcMail.print_form.specify_postage_amount.selected?).to be_truthy, "Specify postage amount is not selected!"
+end
+
+Then /^set print form stamp amount ([\d.]+)$/ do |value|
+  step 'show advanced options'
+  SdcMail.print_form.stamp_amount.set(value)
+  expect(SdcMail.print_form.stamp_amount.value.to_f).to eql(value.to_f)
+end
+
+Then /^set print form stamp quantity (\d+)$/ do |value|
+  SdcMail.print_form.quantity.set(value)
+  step "expect print form stamp quantity is #{value}"
+end
+
+Then /^increment print form stamp quantity by (\d+)$/ do |value|
+  old_quantity = SdcMail.print_form.quantity.value
+  value.times do SdcMail.print_form.quantity.increment.click end
+  step "expect print form stamp quantity is #{old_quantity.to_i + value.to_i}"
+end
+Then /^decrement print form stamp quantity by (\d+)$/ do |value|
+  old_quantity = SdcMail.print_form.quantity.value
+  value.times do SdcMail.print_form.quantity.decrement.click end
+  step "expect print form stamp quantity is #{old_quantity.to_i - value.to_i}"
+end
+
+Then /^expect print form stamp quantity is (\d+)$/ do |value|
+  expect(SdcMail.print_form.quantity.value.to_i).to eql(value.to_i)
+end
 
 
+Then /^check print form print all$/ do
+  SdcMail.print_form.print_all.check
+  expect(SdcMail.print_form.print_all.checked?).to be_truthy, "Print All is not checked!"
+end
+
+Then /^uncheck print form print all$/ do
+  SdcMail.print_form.print_all.uncheck
+  expect(SdcMail.print_form.print_all.checked?).to be_falsey, "Print All is not checked!"
+end

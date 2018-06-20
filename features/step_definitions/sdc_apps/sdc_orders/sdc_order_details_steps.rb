@@ -561,11 +561,7 @@ Then /^blur out on order details form$/ do
 end
 
 Then /^check order details insure-for checkbox$/ do
-  if SdcEnv.new_framework
-    SdcOrders.order_details.insure_for.checkbox.check
-  else
-    stamps.orders.order_details.insure_for.checkbox.check
-  end
+  SdcOrders.order_details.insure_for.checkbox.check
 end
 
 Then /^uncheck order details insure-for checkbox$/ do
@@ -573,8 +569,11 @@ Then /^uncheck order details insure-for checkbox$/ do
 end
 
 Then /^set order details insure-for to \$(\d+\.\d{2})$/ do |str|
-  # step 'check order details insure-for checkbox'
-  SdcOrders.order_details.insure_for.amount.set(TestData.hash[:insured_value] = str.to_f)
+  insure_for = SdcOrders.order_details.insure_for
+  insure_for.checkbox.check
+  insure_for.checkbox.safe_wait_until_chosen(timeout: 3)
+  expect(insure_for.checkbox.checked?). to be(true), 'Cannot check Insure-for checkbox'
+  insure_for.amount.set(TestData.hash[:insured_value] = str.to_f)
   # 10.times do
   #   break if SdcOrders.order_details.insure_for.cost.text_value.dollar_amount_str.to_f.round(2) > 0
   #   step 'blur out on order details form'
@@ -584,14 +583,11 @@ Then /^set order details insure-for to \$(\d+\.\d{2})$/ do |str|
 end
 
 Then /^set order details tracking to (.*)$/ do |str|
-  SdcOrders.order_details.tracking.selection_element(value: str)
-  SdcOrders.order_details.tracking.drop_down.click unless SdcOrders.order_details.tracking.selection.present?
-  SdcOrders.order_details.tracking.selection.safe_click unless SdcOrders.order_details.tracking.selection.class_disabled?
-  expect(SdcOrders.order_details.tracking.text_field.text_value).to eql(str)
-  # 10.times do
-  #   break if SdcOrders.order_details.tracking.cost.text.dollar_amount_str.to_f.round(2) > 0
-  #   step 'blur out on order details form'
-  # end
+  tracking = SdcOrders.order_details.tracking
+  tracking.selection_element(value: str)
+  tracking.drop_down.click unless tracking.selection.present?
+  tracking.selection.safe_click unless tracking.selection.class_disabled?
+  expect(tracking.text_field.text_value).to eql(str)
   step 'Save Order Details data'
 end
 

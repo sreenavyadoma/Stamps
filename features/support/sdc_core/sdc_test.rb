@@ -1,8 +1,6 @@
 class SdcTest
   class << self
     def sauce_endpoint
-      #"https://#{data_for(:sauce_endpoint, {})['username']}:#{data_for(:sauce_endpoint, {})['access_key']}@ondemand.saucelabs.com:443/wd/hub"
-      "https://robcruz:0e60dbc9-5bbf-425a-988b-f81c42d6b7ef@ondemand.saucelabs.com:443/wd/hub"
     end
 
     def sauce_edge
@@ -17,33 +15,33 @@ class SdcTest
 
     def capabilities(device)
       case device
-        when :macos_safari
-          capabilities_config = {
+      when :macos_safari
+        capabilities_config = {
             :version => '11.0',
-              :platform => 'macOS 10.13',
-              :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
-          }
-          browser = :safari
+            :platform => 'macOS 10.13',
+            :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+        }
+        browser = :safari
 
-        when :macos_chrome
-          capabilities_config = {
+      when :macos_chrome
+        capabilities_config = {
             :version => '54.0',
-              :platform => 'macOS 10.13',
-              :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
-          }
-          browser = :chrome
+            :platform => 'macOS 10.13',
+            :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+        }
+        browser = :chrome
 
-        when :temp_device
-          capabilities_config = {
+      when :temp_device
+        capabilities_config = {
             :version => '16.16299',
-              :platform => 'Windows 10',
-              :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
-          }
-          browser = :edge
-        else
-          message = "Unsupported device. DEVICE=#{device}"
-          error = ArgumentError
-          raise error, message
+            :platform => 'Windows 10',
+            :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+        }
+        browser = :edge
+      else
+        message = "Unsupported device. DEVICE=#{device}"
+        error = ArgumentError
+        raise error, message
       end
 
       build_name = ENV['JENKINS_BUILD_NUMBER'] || ENV['SAUCE_BAMBOO_BUILDNUMBER'] || ENV['SAUCE_TC_BUILDNUMBER'] || ENV['SAUCE_BUILD_NAME']
@@ -53,7 +51,7 @@ class SdcTest
 
     def win10_edge_sauce
       capabilities_config = {
-        :version => '16.16299',
+          :version => '16.16299',
           :platform => 'Windows 10',
           :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
       }
@@ -65,12 +63,12 @@ class SdcTest
       client = Selenium::WebDriver::Remote::Http::Default.new
       client.timeout = 120
 
-      Watir::Browser.new(:remote, {desired_capabilities: caps, http_client: client, url: sauce_endpoint})
+      Watir::Browser.new(:remote, { desired_capabilities: caps, http_client: client, url: sauce_endpoint })
     end
 
     def macos_chrome_sauce
       capabilities_config = {
-        :version => '65.0',
+          :version => '65.0',
           :platform => 'macOS 10.13',
           :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
       }
@@ -82,7 +80,7 @@ class SdcTest
       client = Selenium::WebDriver::Remote::Http::Default.new
       client.timeout = 120
 
-      Watir::Browser.new(:remote, {desired_capabilities: caps, http_client: client, url: sauce_endpoint})
+      Watir::Browser.new(:remote, { desired_capabilities: caps, http_client: client, url: sauce_endpoint })
     end
 
     def iphonex_sauce
@@ -115,7 +113,7 @@ class SdcTest
               platformVersion: '7.1',
               platformName:  'Android',
               browserName: 'Chrome',
-              name: "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+              name: "test name"
           },
           appium_lib: {
               sauce_username:   nil, # don't run on Sauce 'robcruz',
@@ -131,9 +129,13 @@ class SdcTest
 
       SdcLogger.debug "Initializing test driver...\n"
 
+      if SdcEnv.sauce.browser
+        SdcPage.browser = SauceSession.new.create_browser
+        SdcLogger.info SdcEnv.sauce.session_info(SdcPage.browser.driver.session_id)
+      end
+
       if SdcEnv.sauce_device
         SdcPage.browser = SdcDriverDecorator.new(class_eval(SdcEnv.sauce_device.to_s))
-
       else
         if SdcEnv.browser
           begin
@@ -193,7 +195,7 @@ class SdcTest
                 SdcPage.browser.driver.manage.timeouts.page_load = 12
               end
 
-              when :chrome
+            when :chrome
               prefs = {
                   download: {
                       prompt_for_download: false,
@@ -202,7 +204,7 @@ class SdcTest
               }
               kill('taskkill /im chrome.exe /f')
               if SdcEnv.web_dev
-                SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, options: {prefs: prefs}, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+                SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, options: { prefs: prefs }, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
                 Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
               else
                 SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
@@ -265,7 +267,7 @@ class SdcTest
 
           Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download/") if SdcEnv.web_dev
         else
-          raise ArgumentError, 'Device must be defined'
+          # do nothing
         end
 
       end
@@ -294,6 +296,8 @@ class SdcTest
         SdcLogger.error e.backtrace.join("\n")
         raise e
       end
+
+      SdcEnv.sauce = ::SauceConfig.new
 
       SdcEnv.sauce_device ||= ENV['SAUCE_DEVICE']
 
@@ -386,7 +390,9 @@ class SdcTest
       SdcLogger.debug "Tear down...\n"
       SdcPage.browser.quit
       SdcLogger.debug "Done.\n"
-      system 'C:\Stamps\config\batch\edge_rdp_unlock.bat' if SdcEnv.jenkins && SdcEnv.browser == 'edge'
+      if SdcEnv.jenkins && SdcEnv.browser == 'edge'
+        system 'C:\Stamps\config\batch\edge_rdp_unlock.bat'
+      end
     rescue StandardError => e
       SdcLogger.error e.message
       SdcLogger.error e.backtrace.join("\n")
@@ -401,15 +407,15 @@ class SdcTest
       }
 
       case browser_selection(browser)
-        when :chrome
-          options = Selenium::WebDriver::Chrome::Options.new
-          options.add_emulation(device_name: device_name)
-          options.add_preference(:download, prefs)
-          return Selenium::WebDriver.for(:chrome, options: options)
-        when :firefox
-          return Selenium::WebDriver::Remote::Capabilities.firefox #firefox config goes here
-        else
-          raise ArgumentError, "Unsupported browser. #{browser}"
+      when :chrome
+        options = Selenium::WebDriver::Chrome::Options.new
+        options.add_emulation(device_name: device_name)
+        options.add_preference(:download, prefs)
+        return Selenium::WebDriver.for(:chrome, options: options)
+      when :firefox
+        return Selenium::WebDriver::Remote::Capabilities.firefox #firefox config goes here
+      else
+        raise ArgumentError, "Unsupported browser. #{browser}"
       end
     end
 

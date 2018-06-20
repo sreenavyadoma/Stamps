@@ -50,25 +50,25 @@ Feature: BVT for Mail page
     Then set Advanced Options Mail Date to today plus 5
     Then expect Advanced Options Mail Date is correct
 
-    Then expect Advanced Options Hide Label Value is present
-    Then check Advanced Options Hide Label Value
-    Then expect Advanced Options Hide Label Value is checked
-    Then uncheck Advanced Options Hide Label Value
-    Then expect Advanced Options Hide Label Value is unchecked
+    Then expect advanced options hide label value is present
+    Then check advanced options hide label value
+    Then expect advanced options hide label value is checked
+    Then uncheck advanced options hide label value
+    Then expect advanced options hide label value is unchecked
 
-    Then expect Advanced Options Print Reference # is present
-    Then check Advanced Options Print Reference #
-    Then expect Advanced Options Print Reference # is checked
-    Then uncheck Advanced Options Print Reference #
-    Then expect Advanced Options Print Reference # is unchecked
+    Then expect advanced options print reference # is present
+    Then check advanced options print reference #
+    Then expect advanced options print reference # is checked
+    Then uncheck advanced options print reference #
+    Then expect advanced options print reference # is unchecked
 
-    Then expect Advanced Options Reference Number field is present
-    Then set Advanced Options Reference Number to random string
-    Then expect Advanced Options Reference Number is correct
+    Then expect advanced options reference number field is present
+    Then set advanced options reference number to random string
+    Then expect advanced options reference number is correct
 
-    Then expect Advanced Options Cost Code Field is present
-    Then set Advanced Options Cost Code to None
-    Then expect Advanced Options Cost Code is None
+    Then expect advanced options cost code field is present
+    Then set advanced options cost code to None
+    Then expect advanced options cost code is None
 
     # ------------------------------------------------------------ Envelopes Advanced Options
   @mail_bvt_advanced_options
@@ -121,13 +121,13 @@ Feature: BVT for Mail page
     Then uncheck Advanced Options include Postage
     Then expect Advanced Options include Postage is unchecked
 
-    Then expect Advanced Options Reference Number field is present
-    Then set Advanced Options Reference Number to random string
-    Then expect Advanced Options Reference Number is correct
+    Then expect advanced options reference number field is present
+    Then set advanced options reference number to random string
+    Then expect advanced options reference number is correct
 
-    Then expect Advanced Options Cost Code Field is present
-    Then set Advanced Options Cost Code to None
-    Then expect Advanced Options Cost Code is None
+    Then expect advanced options cost code field is present
+    Then set advanced options cost code to None
+    Then expect advanced options cost code is None
 
     # ------------------------------------------------------------ Certified Mail Advanced Options SDC-3710
   @mail_bvt_advanced_options
@@ -157,13 +157,13 @@ Feature: BVT for Mail page
 
     Then expect Advanced Options Mail Date field is present
 
-    Then expect Advanced Options Reference Number field is present
-    Then set Advanced Options Reference Number to random string
-    Then expect Advanced Options Reference Number is correct
+    Then expect advanced options reference number field is present
+    Then set advanced options reference number to random string
+    Then expect advanced options reference number is correct
 
-    Then expect Advanced Options Cost Code Field is present
-    Then set Advanced Options Cost Code to None
-    Then expect Advanced Options Cost Code is None
+    Then expect advanced options cost code field is present
+    Then set advanced options cost code to None
+    Then expect advanced options cost code is None
 
     # ------------------------------------------------------------ Certified Mail Advanced Options SDC-3610
   @mail_bvt_advanced_options
@@ -197,13 +197,13 @@ Feature: BVT for Mail page
 
     Then expect Advanced Options Mail Date field is present
 
-    Then expect Advanced Options Reference Number field is present
-    Then set Advanced Options Reference Number to random string
-    Then expect Advanced Options Reference Number is correct
+    Then expect advanced options reference number field is present
+    Then set advanced options reference number to random string
+    Then expect advanced options reference number is correct
 
-    Then expect Advanced Options Cost Code Field is present
-    Then set Advanced Options Cost Code to None
-    Then expect Advanced Options Cost Code is None
+    Then expect advanced options cost code field is present
+    Then set advanced options cost code to None
+    Then expect advanced options cost code is None
 
     # ------------------------------------------------------------ Certified Mail Advanced Options SDC-3910
   @mail_bvt_advanced_options
@@ -235,13 +235,13 @@ Feature: BVT for Mail page
 
     Then expect Advanced Options Mail Date field is present
 
-    Then expect Advanced Options Reference Number field is present
-    Then set Advanced Options Reference Number to random string
-    Then expect Advanced Options Reference Number is correct
+    Then expect advanced options reference number field is present
+    Then set advanced options reference number to random string
+    Then expect advanced options reference number is correct
 
-    Then expect Advanced Options Cost Code Field is present
-    Then set Advanced Options Cost Code to None
-    Then expect Advanced Options Cost Code is None
+    Then expect advanced options cost code field is present
+    Then set advanced options cost code to None
+    Then expect advanced options cost code is None
 
     # ------------------------------------------------------------ Certified Mail Advanced Options SDC-3930
   @mail_bvt_advanced_options
@@ -273,13 +273,13 @@ Feature: BVT for Mail page
 
     Then expect Advanced Options Mail Date field is present
 
-    Then expect Advanced Options Reference Number field is present
-    Then set Advanced Options Reference Number to random string
-    Then expect Advanced Options Reference Number is correct
+    Then expect advanced options reference number field is present
+    Then set advanced options reference number to random string
+    Then expect advanced options reference number is correct
 
-    Then expect Advanced Options Cost Code Field is present
-    Then set Advanced Options Cost Code to None
-    Then expect Advanced Options Cost Code is None
+    Then expect advanced options cost code field is present
+    Then set advanced options cost code to None
+    Then expect advanced options cost code is None
 
     # ------------------------------------------------------------ Certified Mail Advanced Options SDC-3810
   @mail_bvt_advanced_options
@@ -309,13 +309,13 @@ Feature: BVT for Mail page
 
     Then expect Advanced Options Mail Date field is present
 
-    Then expect Advanced Options Reference Number field is present
-    Then set Advanced Options Reference Number to random string
-    Then expect Advanced Options Reference Number is correct
+    Then expect advanced options reference number field is present
+    Then set advanced options reference number to random string
+    Then expect advanced options reference number is correct
 
-    Then expect Advanced Options Cost Code Field is present
-    Then set Advanced Options Cost Code to None
-    Then expect Advanced Options Cost Code is None
+    Then expect advanced options cost code field is present
+    Then set advanced options cost code to None
+    Then expect advanced options cost code is None
 
     # ------------------------------------------------------------ Shipping Labels Advanced Options
   @mail_bvt_advanced_options
@@ -349,31 +349,31 @@ Feature: BVT for Mail page
     Then set Advanced Options Mail Date to today plus 5
     Then expect Advanced Options Mail Date is correct
 
-    Then expect Advanced Options Hide Label Value is present
-    Then check Advanced Options Hide Label Value
-    Then expect Advanced Options Hide Label Value is checked
-    Then uncheck Advanced Options Hide Label Value
-    Then expect Advanced Options Hide Label Value is unchecked
+    Then expect advanced options hide label value is present
+    Then check advanced options hide label value
+    Then expect advanced options hide label value is checked
+    Then uncheck advanced options hide label value
+    Then expect advanced options hide label value is unchecked
 
-    Then expect Advanced Options Print Receipt is present
-    Then check Advanced Options Print Receipt
-    Then expect Advanced Options Print Receipt is checked
-    Then uncheck Advanced Options Print Receipt
-    Then expect Advanced Options Print Receipt is unchecked
+    Then expect advanced options print receipt is present
+    Then check advanced options print receipt
+    Then expect advanced options print receipt is checked
+    Then uncheck advanced options print receipt
+    Then expect advanced options print receipt is unchecked
 
-    Then expect Advanced Options Print Reference # is present
-    Then check Advanced Options Print Reference #
-    Then expect Advanced Options Print Reference # is checked
-    Then uncheck Advanced Options Print Reference #
-    Then expect Advanced Options Print Reference # is unchecked
+    Then expect advanced options print reference # is present
+    Then check advanced options print reference #
+    Then expect advanced options print reference # is checked
+    Then uncheck advanced options print reference #
+    Then expect advanced options print reference # is unchecked
 
-    Then expect Advanced Options Reference Number field is present
-    Then set Advanced Options Reference Number to random string
-    Then expect Advanced Options Reference Number is correct
+    Then expect advanced options reference number field is present
+    Then set advanced options reference number to random string
+    Then expect advanced options reference number is correct
 
-    Then expect Advanced Options Cost Code Field is present
-    Then set Advanced Options Cost Code to None
-    Then expect Advanced Options Cost Code is None
+    Then expect advanced options cost code field is present
+    Then set advanced options cost code to None
+    Then expect advanced options cost code is None
 
     Then sign out
 
@@ -408,40 +408,40 @@ Feature: BVT for Mail page
     Then set print form mail-to to address random name, random company, 3217 Shasta Circle S., Los Angeles, CA 90065
     Then set print form ounces to 1
     Then select print form service PM Padded Flat Rate Envelope
-    Then expect Advanced Options Hide Label Value is checked
+    Then expect advanced options hide label value is checked
     Then select Advanced Options Extra Services
 
-    Then set Extra Services Security to Registered Mail
-    Then click value must be shown window Continue button
-    Then expect Extra Services Security Price to be 11.90
+    Then set extra services security to Registered Mail
+    Then click value must be shown window continue button
+    Then expect extra services security price to be 11.90
 
     Then set Extra Services Value to 30.00
-    Then expect Extra Services Security Price to be 12.60
+    Then expect extra services security price to be 12.60
 
-    Then set Extra Services COD to 20.00
-    Then expect Extra Services COD Price to be 5.70
+    Then set extra services cod to 20.00
+    Then expect extra services cod price to be 5.70
 
-    Then check Extra Services Return Receipt
-    Then expect Extra Services Return Receipt Price to be 2.75
+    Then check extra services return receipt
+    Then expect extra services return receipt price to be 2.75
 
-    Then check Extra Services Restricted Delivery
-    Then expect Extra Services Restricted Delivery Price to be 5.10
+    Then check extra services restricted delivery
+    Then expect extra services restricted delivery price to be 5.10
 
     Then check Extra Services Notice of Non-Delivery
-    Then expect Extra Services Notice of Non-Delivery Price to be 0.00
+    Then expect extra services notice of non-delivery price to be 0.00
 
-    Then expect Extra Services Total Price to be 26.15
+    Then expect extra services total price to be 26.15
 
     Then save Extra Services
 
     Then select Advanced Options Extra Services
 
-    Then expect Extra Services Security Price to be 12.60
-    Then expect Extra Services Return Receipt Price to be 2.75
-    Then expect Extra Services Restricted Delivery Price to be 5.10
-    Then expect Extra Services COD Price to be 5.70
-    Then expect Extra Services Notice of Non-Delivery Price to be 0.00
-    Then expect Extra Services Total Price to be 26.15
+    Then expect extra services security price to be 12.60
+    Then expect extra services return receipt price to be 2.75
+    Then expect extra services restricted delivery price to be 5.10
+    Then expect extra services cod price to be 5.70
+    Then expect extra services notice of non-delivery price to be 0.00
+    Then expect extra services total price to be 26.15
 
     Then save Extra Services
     Then sign out
@@ -514,7 +514,7 @@ Feature: BVT for Mail page
     Then set print form ounces to 1
     Then select print form service PM Flat Rate Envelope
     Then show advanced options
-    Then check Advanced Options Print Receipt
+    Then check advanced options print receipt
     Then Print Label
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
@@ -538,18 +538,18 @@ Feature: BVT for Mail page
   Scenario: Print form Specify Postage
     Then select print on Stamps
 
-    Then set Print form Serial Number to C12345
+    Then set print form serial number to C12345
     Then select Advanced Options Specify Postage Amount
     Then set Print form Mail-From to default
     Then select print form service Media Mail
     Then set Print form Amount to 2.85
     Then set Print form Quantity to 1
-    Then set Advanced Options Reference Number to Stamp3221
+    Then set advanced options reference number to Stamp3221
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
-    Then set Print form Serial Number to B12345
+    Then set print form serial number to B12345
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
     Then set print form ounces to 1
@@ -572,7 +572,7 @@ Feature: BVT for Mail page
   Scenario: Mail Service Validation for Stamps
     Then select print on Stamps
     Then show advanced options
-    Then set Print form Serial Number to B12345
+    Then set print form serial number to B12345
     Then select Advanced Options Specify Postage Amount
     Then set Print form Mail-From to default
     Then select print form service Media Mail
@@ -647,7 +647,7 @@ Feature: BVT for Mail page
     Then set print form ounces to 1
     Then select print form service PM Flat Rate Envelope
     Then show advanced options
-    Then check Advanced Options Print Receipt
+    Then check advanced options print receipt
     Then Print Label
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
