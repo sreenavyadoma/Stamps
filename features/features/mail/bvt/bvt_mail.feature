@@ -103,23 +103,23 @@ Feature: BVT for Mail page
     Then set Advanced Options Mail Date to today plus 5
     Then expect Advanced Options Mail Date is correct
 
-    Then expect Advanced Options include Return Address is present
-    Then check Advanced Options include Return Address
-    Then expect Advanced Options include Return Address is checked
-    Then uncheck Advanced Options include Return Address
-    Then expect Advanced Options include Return Address is unchecked
+    Then expect advanced options include return address is present
+    Then check advanced options include return address
+    Then expect advanced options include return address is checked
+    Then uncheck advanced options include return address
+    Then expect advanced options include return address is unchecked
 
-    Then expect Advanced Options include Delivery Address is present
-    Then check Advanced Options include Delivery Address
-    Then expect Advanced Options include Delivery Address is checked
-    Then uncheck Advanced Options include Delivery Address
-    Then expect Advanced Options include Delivery Address is unchecked
+    Then expect advanced options include delivery address is present
+    Then check advanced options include delivery address
+    Then expect advanced options include delivery address is checked
+    Then uncheck advanced options include delivery address
+    Then expect advanced options include delivery address is unchecked
 
-    Then expect Advanced Options include Postage is present
-    Then check Advanced Options include Postage
-    Then expect Advanced Options include Postage is checked
-    Then uncheck Advanced Options include Postage
-    Then expect Advanced Options include Postage is unchecked
+    Then expect advanced options include postage is present
+    Then check advanced options include postage
+    Then expect advanced options include postage is checked
+    Then uncheck advanced options include postage
+    Then expect advanced options include postage is unchecked
 
     Then expect advanced options reference number field is present
     Then set advanced options reference number to random string
@@ -421,11 +421,11 @@ Feature: BVT for Mail page
     Then set extra services cod to 20.00
     Then expect extra services cod price to be 5.70
 
-    Then check extra services return receipt
-    Then expect extra services return receipt price to be 2.75
+    Then check extra services modal return receipt
+    Then expect extra services modal return receipt price to be 2.75
 
-    Then check extra services restricted delivery
-    Then expect extra services restricted delivery price to be 5.10
+    Then check extra services modal restricted delivery
+    Then expect extra services modal restricted delivery price to be 5.10
 
     Then check Extra Services Notice of Non-Delivery
     Then expect extra services notice of non-delivery price to be 0.00
@@ -437,8 +437,8 @@ Feature: BVT for Mail page
     Then select Advanced Options Extra Services
 
     Then expect extra services security price to be 12.60
-    Then expect extra services return receipt price to be 2.75
-    Then expect extra services restricted delivery price to be 5.10
+    Then expect extra services modal return receipt price to be 2.75
+    Then expect extra services modal restricted delivery price to be 5.10
     Then expect extra services cod price to be 5.70
     Then expect extra services notice of non-delivery price to be 0.00
     Then expect extra services total price to be 26.15

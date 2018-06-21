@@ -70,6 +70,14 @@ module SdcMail
     page_object(:hold_pickup_verify) { {xpath: '//*[@id="sdc-extraserviceswin-hfpucheckbox-bodyEl"]/..' } }
     checkbox(:hold_pickup, :hold_pickup_chooser, :hold_pickup_verify, 'class', 'checked')
 
+    page_object(:do_not_deliver_saturday_chooser) { {id: 'sdc-extraserviceswin-ndwcheckbox-displayEl'} }
+    page_object(:do_not_deliver_saturday_verify) { {xpath: '//*[@id="sdc-extraserviceswin-ndwcheckbox-bodyEl"]/..' } }
+    checkbox(:do_not_deliver_saturday, :do_not_deliver_saturday_chooser, :do_not_deliver_saturday_verify, 'class', 'checked')
+
+    page_object(:odd_shaped_chooser) { {id: 'sdc-extraserviceswin-oddcheckbox-displayEl'} }
+    page_object(:odd_shaped_verify) { {xpath: '//*[@id="sdc-extraserviceswin-oddcheckbox-displayEl"]/..' } }
+    checkbox(:odd_shaped, :odd_shaped_chooser, :odd_shaped_verify, 'class', 'checked')
+
     page_object(:security_price) { { id: 'sdc-extraserviceswin-securitypricelabel' } }
     page_object(:return_receipt_price) { { id: 'sdc-extraserviceswin-rrpricelabel' } }
     page_object(:restricted_delivery_price) { { id: 'sdc-extraserviceswin-rdpricelabel' } }
@@ -79,6 +87,8 @@ module SdcMail
     page_object(:fragile_price) { { id: 'sdc-extraserviceswin-shpricelabel' } }
     page_object(:return_receipt_m_price) { { id: 'sdc-extraserviceswin-rrmpricelabel' } }
     page_object(:hold_pickup_price) { { id: 'sdc-extraserviceswin-hfpupricelabel' } }
+    page_object(:do_not_deliver_saturday_price) { { id: 'sdc-extraserviceswin-ndwpricelabel' } }
+    page_object(:odd_shaped_price) { { id: 'sdc-extraserviceswin-oddpricelabel' } }
 
     def security
       SdcExtraServicesSecurity.new
@@ -132,6 +142,11 @@ module SdcMail
     page_object(:x_btn) { {xpath: '//div[text()="Special Contents Warning"]/../..//*[contains(@class, "close")]'} }
   end
 
+  class SdcServiceCommitments < SdcPage
+    page_object(:title) { {xpath: '//*[text()="Priority Mail Express Service Commitments"]'} }
+    page_object(:x_btn) { {xpath: '//div[text()="Priority Mail Express Service Commitments"]/../..//*[contains(@class, "close")]'} }
+  end
+
 
   module SdcMailFloatingModals
     def manage_print_options
@@ -178,6 +193,11 @@ module SdcMail
       SdcSpecialContentsWarning.new
     end
     module_function :special_contents_warning
+
+    def service_commitments
+      SdcServiceCommitments.new
+    end
+    module_function :service_commitments
   end
 end
 

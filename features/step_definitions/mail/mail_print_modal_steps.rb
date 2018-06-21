@@ -53,32 +53,3 @@ end
 Then /^Mail: in Print modal, Close$/ do
   stamps.mail.mail_toolbar.mail_print_modal.x_button.click
 end
-
-Then /^expect form 3811 modal is present$/ do
-  expect(SdcMail.modals.form_3811.title).to be_present, "Form 3811 modal is not present"
-end
-
-Then /^expect form 3811 modal is not present$/ do
-  expect(SdcMail.modals.form_3811.title).not_to be_present, "Form 3811 modal is still present"
-end
-
-Then /^close form 3811 modal$/ do
-  step 'expect form 3811 modal is present'
-  SdcMail.modals.form_3811.x_btn.click
-  step 'expect form 3811 modal is not present'
-end
-
-Then /^expect label 200 modal is present$/ do
-  expect(SdcMail.modals.label_200.title).to be_present, "Label 200 modal is not present"
-end
-
-Then /^expect label 200 modal is not present$/ do
-  expect(SdcMail.modals.label_200.title).not_to be_present, "Label 200 modal is still present"
-end
-
-Then /^close label 200 modal$/ do
-  step 'expect label 200 modal is present'
-  SdcMail.modals.label_200.x_btn.click
-  step 'expect label 200 modal is not present'
-end
-

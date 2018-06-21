@@ -243,23 +243,23 @@ Feature:  Mail BVT - Authentication
 #    Then set Advanced Options Mail Date to today plus 5
 #    Then expect Advanced Options Mail Date is correct
 #
-#    Then expect Advanced Options include Return Address is present
-#    Then check Advanced Options include Return Address
-#    Then expect Advanced Options include Return Address is checked
-#    Then uncheck Advanced Options include Return Address
-#    Then expect Advanced Options include Return Address is unchecked
+#    Then expect advanced options include return address is present
+#    Then check advanced options include return address
+#    Then expect advanced options include return address is checked
+#    Then uncheck advanced options include return address
+#    Then expect advanced options include return address is unchecked
 #
-#    Then expect Advanced Options include Delivery Address is present
-#    Then check Advanced Options include Delivery Address
-#    Then expect Advanced Options include Delivery Address is checked
-#    Then uncheck Advanced Options include Delivery Address
-#    Then expect Advanced Options include Delivery Address is unchecked
+#    Then expect advanced options include delivery address is present
+#    Then check advanced options include delivery address
+#    Then expect advanced options include delivery address is checked
+#    Then uncheck advanced options include delivery address
+#    Then expect advanced options include delivery address is unchecked
 #
-#    Then expect Advanced Options include Postage is present
-#    Then check Advanced Options include Postage
-#    Then expect Advanced Options include Postage is checked
-#    Then uncheck Advanced Options include Postage
-#    Then expect Advanced Options include Postage is unchecked
+#    Then expect advanced options include postage is present
+#    Then check advanced options include postage
+#    Then expect advanced options include postage is checked
+#    Then uncheck advanced options include postage
+#    Then expect advanced options include postage is unchecked
 #
 #    Then expect advanced options reference number field is present
 #    Then set advanced options reference number to random string
@@ -354,6 +354,7 @@ Feature:  Mail BVT - Authentication
     Then set print form dimensions to length 2 width 2 height 2
     Then set print form tracking Signature Required
     Then set print form tracking USPS Tracking
+#    insurance
 
 #    EXTRA SERVICES
     Then select advanced options extra services
@@ -375,10 +376,10 @@ Feature:  Mail BVT - Authentication
     Then decrement extra services security value by 2
     Then set extra services security value to 3
     Then set extra services security value to 0
-    Then check extra services return receipt
-    Then uncheck extra services return receipt
-    Then check extra services restricted delivery
-    Then uncheck extra services restricted delivery
+    Then check extra services modal return receipt
+    Then uncheck extra services modal return receipt
+    Then check extra services modal restricted delivery
+    Then uncheck extra services modal restricted delivery
     Then increment extra services cod by 2
     Then decrement extra services cod by 2
     Then set extra services cod to 3
@@ -395,6 +396,14 @@ Feature:  Mail BVT - Authentication
     Then click special contents warning modal i agree
     Then set extra services handling to Normal
     Then close extra services
+    Then select print form service PME Flat Rate Envelope
+    Then select advanced options extra services
+    Then check extra services do not deliver on saturday
+    Then uncheck extra services do not deliver on saturday
+    Then close extra services
+
+    Then click advanced options service commitments
+    Then close advanced options service commitments modal
 
 #    ADVANCED OPTIONS
     Then uncheck advanced options hide label value
@@ -405,3 +414,42 @@ Feature:  Mail BVT - Authentication
     Then uncheck advanced options print reference #
 
     Then sign out
+
+  @mail_bvt_ui_validation2
+  Scenario: BVT Mail UI Validation for Envelopes
+    Then sign-in to mail
+    Then select print on Envelope - #10, 4 ⅛" x 9 ½"
+    Then set print form mail-to to a random address in zone 8
+    Then set print form weight to lbs 1 oz 1
+    Then select print form service FCM Letter
+    Then select advanced options extra services
+    Then check extra services odd shaped/non-machinable
+    Then uncheck extra services odd shaped/non-machinable
+    Then close extra services
+    Then check advanced options include return address
+    Then uncheck advanced options include return address
+    Then check advanced options include delivery address
+    Then uncheck advanced options include delivery address
+    Then check advanced options include postage
+    Then uncheck advanced options include postage
+    Then sign out
+
+  @mail_bvt_ui_validation2
+  Scenario: BVT Mail UI Validation for Certified Mail 3610
+    Then sign-in to mail
+    Then select print on Certified Mail Label - SDC-3610
+    Then set print form mail-to to a random address in zone 8
+    Then set print form weight to lbs 1 oz 1
+    Then select print form service FCM Letter
+    Then check extra services return receipt
+    Then uncheck extra services return receipt
+    Then check extra services restricted delivery
+    Then uncheck extra services restricted delivery
+    Then select print on Certified Mail Label - SDC-3910
+    Then check extra services electronic return receipt
+    Then uncheck extra services electronic return receipt
+    Then sign out
+
+#  @mail_bvt_ui_validation2
+#  Scenario: BVT Mail UI Validation for Certified Mail 3910
+#    Then sign-in to mail
