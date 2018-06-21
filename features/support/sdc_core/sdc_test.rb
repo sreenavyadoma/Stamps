@@ -162,11 +162,14 @@ class SdcTest
                #  system "for /f 'skip=1 tokens=3' %%s in ('c:\\windows\\sysnative\\query.exe user') do (
                #            %windir%\sysnative\tscon.exe %%s /dest:console
                #          )"
-                system 'C:\Stamps\config\batch\edge_rdp_unlock.bat'
+                require 'win32ole'
+                shell = WIN32OLE.new('Shell.Application')
+                shell.ShellExecute('C:\Stamps\config\batch\edge_rdp_unlock.bat', 'runas')
+                #system 'C:\Stamps\config\batch\edge_rdp_unlock.bat'
               end
               #system 'C:\Stamps\config\batch\edge_rdp_unlock.bat' if SdcEnv.jenkins
 
-              sleep 10
+              sleep 5
               SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
 
             when :firefox
