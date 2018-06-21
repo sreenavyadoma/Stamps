@@ -157,12 +157,8 @@ class SdcTest
                   shell.ShellExecute("ruby", File.expand_path(__FILE__), nil, 'runas')
                   exit
                 end
-                # Check for x64, call appropriate command
-                if File.directory? '\\Windows\\SysWOW64' then
-                  result = `\\Windows\\sysnative\\nbtstat.exe -A #{putername}`
-                else
-                  result = `nbtstat.exe -A #{putername}`
-                end
+
+                system 'mklink c:\windows\cmd.exe c:\windows\system32\cmd.exe'
                 system 'C:\Stamps\config\batch\edge_rdp_unlock.bat'
               end
               #system 'C:\Stamps\config\batch\edge_rdp_unlock.bat' if SdcEnv.jenkins
