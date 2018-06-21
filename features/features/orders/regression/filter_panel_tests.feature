@@ -24,7 +24,7 @@ Feature: Orders Filter Panel
 
     Then add new order
     Then expect selected Filter is Awaiting Shipment
-    Then expect cached order id is in orders grid row 1
+    #Then expect cached order id is in orders grid row 1
 
     Then check orders grid order id cached
     Then select Grid Toolbar Move menu item Move to On Hold
@@ -93,12 +93,12 @@ Feature: Orders Filter Panel
     Then select Filter Panel tab Awaiting Shipment
     Then expect selected Filter is Awaiting Shipment
 
-    Then expect orders grid recipient is James Test
-    Then expect orders grid company is Domestic Company
-    Then expect orders grid address is 600 Front St Apt 220
-    Then expect orders grid city is San Diego
-    Then expect orders grid state is CA
-    Then expect orders grid zip is 92101
+    #Then expect orders grid recipient is James Test
+    #Then expect orders grid company is Domestic Company
+    #Then expect orders grid address is 600 Front St Apt 220
+    #Then expect orders grid city is San Diego
+    #Then expect orders grid state is CA
+    #Then expect orders grid zip is 92101
 
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
@@ -108,12 +108,12 @@ Feature: Orders Filter Panel
     Then select Filter Panel tab Shipped
     Then expect selected Filter is Shipped
 
-    Then expect orders grid recipient is James Test
-    Then expect orders grid company is Domestic Company
-    Then expect orders grid address is 600 Front St Apt 220
-    Then expect orders grid city is San Diego
-    Then expect orders grid state is CA
-    Then expect orders grid zip is 92101
+    #Then expect orders grid recipient is James Test
+    #Then expect orders grid company is Domestic Company
+    #Then expect orders grid address is 600 Front St Apt 220
+    #Then expect orders grid city is San Diego
+    #Then expect orders grid state is CA
+    #Then expect orders grid zip is 92101
 
     Then add new order
     Then expect selected Filter is Awaiting Shipment

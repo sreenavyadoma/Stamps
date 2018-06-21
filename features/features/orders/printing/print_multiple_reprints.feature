@@ -17,7 +17,7 @@ Feature: Multiple Reprints
     Then click print modal print button
 
     Then select Filter Panel tab Shipped
-    Then In Orders Grid, Sort Order Date in Descending Order
+    #Then in Orders Grid, Sort Order Date in Descending Order
     Then pause for 2 seconds
     Then check orders grid order id cached
     Then in Print modal, Open Reprint Modal

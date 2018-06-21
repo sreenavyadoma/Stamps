@@ -31,7 +31,7 @@ Feature: User Views Price Next to service Dropdown
     Then expect Order Details Service Cost inline price for "Parcel Select Ground Large Package" is greater than $0.01
     Then expect Order Details Service Cost inline price for "Parcel Select Ground Oversized Package" is greater than $0.01
     Then expect Order Details Service Cost inline price for "Media Mail Package" is greater than $0.01
-    Then expect orders grid pounds is 0
-    Then expect orders grid ounces is 0
-    Then expect orders grid weight is 0 lb. 0 oz.
+    #Then expect orders grid pounds is 0
+    #Then expect orders grid ounces is 0
+    #Then expect orders grid weight is 0 lb. 0 oz.
     Then sign out
