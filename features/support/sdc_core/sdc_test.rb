@@ -145,28 +145,28 @@ class SdcTest
             when :edge
               kill('taskkill /im MicrosoftEdge.exe /f')
 
-              if SdcEnv.jenkins
-                system("c:\\windows\\sysnative\\query.exe user");
-                def running_in_admin_mode?
-                  (`reg query HKU\\S-1-5-19 2>&1` =~ /ERROR/).nil?
-                end
+              # if SdcEnv.jenkins
+              #   system("c:\\windows\\sysnative\\query.exe user");
+              #   def running_in_admin_mode?
+              #     (`reg query HKU\\S-1-5-19 2>&1` =~ /ERROR/).nil?
+              #   end
+              #
+              #   unless running_in_admin_mode?
+              #     require 'win32ole'
+              #     shell = WIN32OLE.new('Shell.Application')
+              #     shell.ShellExecute("ruby", File.expand_path(__FILE__), nil, 'runas')
+              #     exit
+              #   end
+              #
+              #  # system 'mklink c:\windows\cmd.exe c:\windows\system32\cmd.exe'
+              #  #  system "for /f 'skip=1 tokens=3' %%s in ('c:\\windows\\sysnative\\query.exe user') do (
+              #  #            %windir%\sysnative\tscon.exe %%s /dest:console
+              #  #          )"
+              #  system 'C:\Stamps\config\batch\edge_rdp_unlock.bat'
+              # end
+              # #system 'C:\Stamps\config\batch\edge_rdp_unlock.bat' if SdcEnv.jenkins
 
-                unless running_in_admin_mode?
-                  require 'win32ole'
-                  shell = WIN32OLE.new('Shell.Application')
-                  shell.ShellExecute("ruby", File.expand_path(__FILE__), nil, 'runas')
-                  exit
-                end
 
-               # system 'mklink c:\windows\cmd.exe c:\windows\system32\cmd.exe'
-               #  system "for /f 'skip=1 tokens=3' %%s in ('c:\\windows\\sysnative\\query.exe user') do (
-               #            %windir%\sysnative\tscon.exe %%s /dest:console
-               #          )"
-               system 'C:\Stamps\config\batch\edge_rdp_unlock.bat'
-              end
-              #system 'C:\Stamps\config\batch\edge_rdp_unlock.bat' if SdcEnv.jenkins
-
-              sleep 5
               SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
 
             when :firefox
