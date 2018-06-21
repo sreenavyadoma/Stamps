@@ -160,13 +160,13 @@ class SdcTest
 
                # system 'mklink c:\windows\cmd.exe c:\windows\system32\cmd.exe'
                 system "for /f 'skip=1 tokens=3' %%s in ('c:\\windows\\sysnative\\query.exe user') do (
-                          %windir%\System32\tscon.exe %%s /dest:console
+                          %windir%\sysnative\tscon.exe %%s /dest:console
                         )"
                 #system 'C:\Stamps\config\batch\edge_rdp_unlock.bat'
               end
               #system 'C:\Stamps\config\batch\edge_rdp_unlock.bat' if SdcEnv.jenkins
 
-
+              sleep 10
               SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
 
             when :firefox
