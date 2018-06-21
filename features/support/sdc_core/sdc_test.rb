@@ -158,7 +158,8 @@ class SdcTest
                   exit
                 end
 
-                system 'mklink c:\windows\cmd.exe c:\windows\system32\cmd.exe'
+               # system 'mklink c:\windows\cmd.exe c:\windows\system32\cmd.exe'
+
                 system 'C:\Stamps\config\batch\edge_rdp_unlock.bat'
               end
               #system 'C:\Stamps\config\batch\edge_rdp_unlock.bat' if SdcEnv.jenkins
