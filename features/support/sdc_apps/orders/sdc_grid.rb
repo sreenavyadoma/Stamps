@@ -2,6 +2,15 @@
 module SdcGrid
 
   class GridItem < SdcPage
+    @@columns = {}
+
+    def self.set(property, value)
+      @@columns[property] = value
+    end
+
+    def self.get(property)
+      @@columns[property]
+    end
 
     def scroll_to_column(column)
       method_name = "scroll_to_#{column.to_s}"
@@ -59,7 +68,7 @@ module SdcGrid
     end
 
     def column_number(column)
-      if column_cache[column].nil?
+      if get(column).nil?
         xpath = '//div[starts-with(@id, "gridcolumn-")][contains(@id, "-textEl")]//span'
         columns = page_objects(:columns) { { xpath: xpath } }
         columns.each_with_index do |field, index|
@@ -71,19 +80,19 @@ module SdcGrid
                 else
                   column_text.key(text)
                 end
-          column_cache[key] = index + 1
+          set(key, index + 1)
         end
         scroll_to_column(:checkbox)
       end
-      column_cache[column]
+      get(column)
     end
 
     def row_number(order_id)
+      scroll_to_column(:order_id)
       col_num = column_number(:order_id)
       xpath = "//div[starts-with(@id, 'ordersGrid-')][contains(@id, 'innerCt')]//tbody//td[#{col_num}]//div"
       divs = page_objects(:row_number_divs) { { xpath: xpath } }
       divs.each_with_index do |field, index|
-        scroll_to_column(:order_id)
         return index + 1 if field.text.include?(order_id)
       end
 
@@ -116,8 +125,12 @@ module SdcGrid
 
     protected
 
-    def column_cache
-      @column_cache ||= {}
+    def get(property)
+      self.class.get(property)
+    end
+
+    def set(property, value)
+      self.class.set(property, value)
     end
 
     def column_text
