@@ -503,11 +503,11 @@ Feature:  BVT tests for Orders
     Then in exact address not found module, select row 2
     Then in exact address not found module click accept
     Then set order details service to PM Package
-    #Then expect orders grid recipient is Juan Dela Cruz
-    #Then expect orders grid company is Betfair
-    #Then expect orders grid city is San Francisco
-    #Then expect orders grid state is CA
-    #Then expect orders grid zip is 94102
+    Then expect orders grid recipient is Juan Dela Cruz
+    Then expect orders grid company is Betfair
+    Then expect orders grid city is San Francisco
+    Then expect orders grid state is CA
+    Then expect orders grid zip is 94102
     Then sign out
 
   @bvt_printing

@@ -128,16 +128,13 @@ module Stamps
           column_cache[column]
         end
 
-        # TODO-Rob Create a hash that keeps track of which row an order id is on. :locate row location for order_id
         def row_number(order_id)
-          7.times do
-            driver.divs(css: "[id^=ordersGrid-][id$=-body] table td:nth-child(#{column_number(:order_id)})>div").each_with_index do |field, index|
-              scroll_to_column(field)
-              if StampsField.new(field).text.include?(order_id)
-                #log.info "Order ID #{order_id}, Row #{index + 1}"
-                StampsField.new(field).wait_until_present
-                return index + 1
-              end
+          driver.divs(css: "[id^=ordersGrid-][id$=-body] table td:nth-child(#{column_number(:order_id)})>div").each_with_index do |field, index|
+            scroll_to_column(field)
+            if StampsField.new(field).text.include?(order_id)
+              #log.info "Order ID #{order_id}, Row #{index + 1}"
+              StampsField.new(field).wait_until_present
+              return index + 1
             end
           end
           raise ArgumentError, "Unable to locate row number for Order ID: #{order_id}"

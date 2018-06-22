@@ -87,8 +87,8 @@ Then /^set order details ship-to international address to$/ do |table|
   TestData.hash[:country] = table.hashes.first['country']
   TestData.hash[:full_name] = table.hashes.first[:full_name].downcase.include?('random') ? TestHelper.rand_full_name : table.hashes.first['full_name']
   TestData.hash[:company] = table.hashes.first['company'].downcase.include?('random') ? TestHelper.rand_comp_name : table.hashes.first['company']
-  TestData.hash[:street_address_1] = table.hashes.first['street_address_1'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['street_address_1']
-  TestData.hash[:street_address_2] = table.hashes.first['street_address_2'].downcase.include?('random') ? TestHelper.rand_suite : table.hashes.first['street_address_2']
+  TestData.hash[:street_address1] = table.hashes.first['street_address_1'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['street_address_1']
+  TestData.hash[:street_address2] = table.hashes.first['street_address_2'].downcase.include?('random') ? TestHelper.rand_suite : table.hashes.first['street_address_2']
   TestData.hash[:city] = table.hashes.first['city'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['city']
   TestData.hash[:state] = table.hashes.first['province'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['province']
   TestData.hash[:zip] = table.hashes.first['postal_code'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['postal_code']
@@ -98,8 +98,8 @@ Then /^set order details ship-to international address to$/ do |table|
   step "set Order Details Domestic Ship-To Country to #{TestData.hash[:country]}"
   step "set Order Details International Ship-To Name to \"#{TestData.hash[:full_name]}\""
   step "set Order Details International Ship-To Company to \"#{TestData.hash[:company]}\""
-  step "set Order Details International Ship-To Address 1 to \"#{TestData.hash[:street_address_1]}\""
-  step "set Order Details International Ship-To Address 2 to \"#{TestData.hash[:street_address_2]}\""
+  step "set Order Details International Ship-To Address 1 to \"#{TestData.hash[:street_address1]}\""
+  step "set Order Details International Ship-To Address 2 to \"#{TestData.hash[:street_address2]}\""
   step "set Order Details International Ship-To City to \"#{TestData.hash[:city]}\""
   step "set Order Details International Ship-To Province to \"#{TestData.hash[:state]}\""
   step "set Order Details International Ship-To Postal Code to \"#{TestData.hash[:zip]}\""
@@ -112,15 +112,15 @@ Then /^set order details ship-to domestic address to$/ do |table|
   TestData.hash[:company] = table.hashes.first['company'].downcase.include?('random') ? TestHelper.rand_comp_name : table.hashes.first['company']
   TestData.hash[:street_address] = table.hashes.first['street_address']
   if table.hashes.first['street_address_2'].nil?
-    TestData.hash[:street_address_2] = ''
+    TestData.hash[:street_address2] = ''
   else
-    TestData.hash[:street_address_2] = table.hashes.first['street_address_2'].downcase.include?('random') ? TestHelper.rand_alpha_numeric(min: 2, max: 7) : table.hashes.first['street_address_2']
+    TestData.hash[:street_address2] = table.hashes.first['street_address_2'].downcase.include?('random') ? TestHelper.rand_alpha_numeric(min: 2, max: 7) : table.hashes.first['street_address_2']
   end
   TestData.hash[:city] = table.hashes.first['city'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['city']
   TestData.hash[:state] = table.hashes.first['state'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['state']
   TestData.hash[:zip] = table.hashes.first['zip'].downcase.include?('random') ? TestHelper.rand_alpha_numeric : table.hashes.first['zip']
   TestData.hash[:country] = table.hashes.first['country'].size==0 ? 'United States' : table.hashes.first['country']
-  TestData.hash[:ship_to] = "#{TestData.hash[:full_name]},#{TestData.hash[:company]},#{TestData.hash[:street_address]},#{TestData.hash[:street_address_2]} ,#{TestData.hash[:city]} #{TestData.hash[:state]} #{TestData.hash[:zip]}"
+  TestData.hash[:ship_to] = "#{TestData.hash[:full_name]},#{TestData.hash[:company]},#{TestData.hash[:street_address]},#{TestData.hash[:street_address2]} ,#{TestData.hash[:city]} #{TestData.hash[:state]} #{TestData.hash[:zip]}"
 
   step "set Order Details Domestic Ship-To Country to #{TestData.hash[:country]}"
   step "set Order Details Ship-To text area to #{TestData.hash[:ship_to]}"
