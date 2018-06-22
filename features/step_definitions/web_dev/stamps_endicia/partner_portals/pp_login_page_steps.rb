@@ -123,7 +123,7 @@ Then /^[Pp]P: [Ee]xpect login page error message to be$/ do |str|
 end
 
 Then /^PP: expect login page error message not to be present$/ do
-  PartnerPortal.login_page.error_message.not_to be_present, "Login Page Error Message IS PRESENT"
+  expect(PartnerPortal.login_page.error_message).not_to be_present, "Login Page Error Message IS PRESENT"
 end
 
 
