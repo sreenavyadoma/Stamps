@@ -188,11 +188,6 @@ class SdcTest
               end
 
               SdcPage.browser.driver.manage.timeouts.page_load = 12
-
-              # if SdcEnv.scenario.name.include? 'webdev_download'
-              #   Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
-              # end
-
             when :chromeb
               kill('taskkill /im chrome.exe /f')
               Selenium::WebDriver::Chrome.path = data_for(:setup, {})['windows']['chromedriverbeta']
@@ -367,9 +362,6 @@ class SdcTest
       SdcLogger.debug "Tear down...\n"
       SdcPage.browser.quit
       SdcLogger.debug "Done.\n"
-      if SdcEnv.jenkins && SdcEnv.browser == 'edge'
-        system 'C:\Stamps\config\batch\edge_rdp_unlock.bat'
-      end
     rescue StandardError => e
       SdcLogger.error e.message
       SdcLogger.error e.backtrace.join("\n")
