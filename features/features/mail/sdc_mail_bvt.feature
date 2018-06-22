@@ -374,3 +374,44 @@ Feature:  Mail BVT - Authentication
 #    add extra services
 
     Then sign out
+
+  @mail_bvt_ship_date
+  Scenario: Ship Date defaults to today
+    Then sign-in to mail
+    Then open mail settings modal
+    Then set mail settings postdate to now +2 hours
+    Then close mail settings modal
+    #Then set order details ship-from to default
+    #Then set order details ship-to to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
+    #Then set order details ounces to 4
+    #Then set order details service to PM Flat Rate Envelope
+    Then expect print form ship date is 0 days from today
+
+    Then open mail settings modal
+    Then set mail settings postdate to now -2 hours
+    Then close mail settings modal
+    #Then set order details ship-from to default
+    #Then set order details ship-to to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
+    #Then set order details ounces to 4
+   # Then set order details service to PM Flat Rate Envelope
+    Then expect print form ship date is 1 days from today
+
+    Then open mail settings modal
+    Then set mail settings postdate to now +2 hours
+    Then close mail settings modal
+    #Then set order details ship-from to default
+    #Then set order details ship-to to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
+    #Then set order details ounces to 4
+    #Then set order details service to PM Flat Rate Envelope
+    Then expect print modal ship date is 0 days from today
+    Then set print form ship date to today
+    Then set print form ship date to today plus 1
+    Then set print form ship date to today plus 2
+    Then set print form ship date to today
+    Then expect print form ship date is 0 days from today
+    Then expect print modal ship date is 0 days from today
+
+    Then open mail settings modal
+    Then set mail settings postdate to 5:00 p.m.
+    Then close mail settings modal
+    Then sign out
