@@ -46,7 +46,7 @@ saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=passw
 
 #mhossain1_cc: --tags @pp_log_in_page_validation JENKINS=true URL=qacc BROWSER=ff DEBUG=false USR=wteam@stamps.com PW=password1
 #mhossain1_cc: --tags @pp_header_favicons_browser_mobile JENKINS=true URL=qacc BROWSER_MOBILE_EMULATOR=gc,'iPhone X' USR=wteam@stamps.com PW=password1
-#mhossain1_cc: --tags @pp_header_favicons_browser JENKINS=true URL=qacc BROWSER=ff USR=wteam@stamps.com PW=password1
+#mhossain1_cc: --tags @pp_header_favicons_browser JENKINS=true URL=stg BROWSER=ff USR=wteam@stamps.com PW=password1
 #mhossain1_cc: --tags @pp_dashboard_single_contract_ui_validaiton JENKINS=true URL=qacc BROWSER=ff USR=wteam@stamps.com PW=password1
 #mhossain1_cc: --tags @pp_dashboard_single_contract_ui_validaiton JENKINS=true URL=qacc BROWSER_MOBILE_EMULATOR=gc,'Pixel 2 XL' USR=wteam@stamps.com PW=password1
 #mhossain1_cc: --tags @pp_dashboard_single_contract_chart_data_validation JENKINS=true URL=qacc BROWSER=ff USR=wteam@stamps.com PW=password1
@@ -57,8 +57,8 @@ saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=passw
 #mhossain1_cc: --tags @pp_left_panel_mobile JENKINS=true URL=qacc BROWSER_MOBILE_EMULATOR=gc,'Pixel 2 XL' USR=wteam@stamps.com PW=password1
 #mhossain1_cc: --tags @pp_reset_password JENKINS=true URL=qacc BROWSER=edge USR=lab@stamps.com PW=password1
 #mhossain1_cc: --tags  @pp_dashboard_single_contract_export_data_ui_validation JENKINS=true URL=qacc BROWSER=edge USR=wteam@stamps.com PW=password1 Web_DEV=true
-#mhossain1_cc: --tags  @pp_dashboard_single_contract_export_data_ui_validation JENKINS=true URL=qacc BROWSER_MOBILE_EMULATOR=gc,'iPhone 4' USR=wteam@stamps.com PW=password1 WEB_DEV=true
-mhossain1_cc: --tags  @pp_dashboard_single_contract_export_data_ui_validation JENKINS=true URL=qacc BROWSER=ff USR=wteam@stamps.com PW=password1 FIREFOX_PROFILE=true WEB_DEV=true
+#mhossain1_cc: --tags  @pp_dashboard_single_contract_export_data_ui_validation JENKINS=true URL=stg BROWSER_MOBILE_EMULATOR=gc,'iPhone 4' USR=wteam@stamps.com PW=password1 WEB_DEV=true
+#mhossain1_cc: --tags  @pp_dashboard_single_contract_export_data_ui_validation JENKINS=true URL=stg BROWSER=ff USR=wteam@stamps.com PW=password1 FIREFOX_PROFILE=true WEB_DEV=true
 
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess  HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
