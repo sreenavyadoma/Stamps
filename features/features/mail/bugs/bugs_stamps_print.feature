@@ -14,7 +14,7 @@ Feature: Stamps print media bugs
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
     Then show advanced options
-    Then check Advanced Options Hide Label Value
+    Then check advanced options hide label value
     Then select print on Envelope - 10
     Then Print Postage
     Then set Mail Print modal Printer

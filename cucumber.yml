@@ -1,4 +1,5 @@
 default: --backtrace --profile saucelabs_local
+#default: --backtrace --profile rob
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -17,9 +18,15 @@ rob: --tags @rob_test URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_W
 #rob:  --tags @mail_print_on_lov URL=prod BROWSER=ff LOG_LEVEL=info USR=robcruz PW=Stamps#524113 LOG_LEVEL=debug  MAX_WINDOW=false
 # USR=abqaprod1 PW=password1
 
+#  stgvoc0kcnt6rw stgupr2smgtub
 saucelabs: --tags @saucelabs LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug
-saucelabs_local: --tags @bvt_new_order URL=stg USR=stgvoc0kcnt6rw PW=pass111 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef JOB_NAME='orders_bvt_qacc/saucelabs' SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='macOS 10.13' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
+saucelabs_local: --tags @bvt_bulk_update URL=stg USR=stg_hka7 PW=password1 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
+#saucelabs_local: --tags @bvt_orders_ship_date URL=prod USR=robcruz PW=Stamps#524113 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef JOB_NAME='orders_bvt_qacc/saucelabs' SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='macOS 10.13' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
 
+saucelabs_local_rob: --tags @bvt_bulk_update URL=stg USR=stg_hka6 PW=password1 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
+
+
+# C:\Users\lab>rake authentication URL=stg BROWSER=ff USR=stgvoc0kcnt6rw PW=pass111
 #saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1
 #saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1
 

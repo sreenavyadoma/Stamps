@@ -15,7 +15,7 @@ Feature: Mail Shipping Label - SDC-1200 with receipt
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
     Then show advanced options
-    Then check Advanced Options Print Receipt
+    Then check advanced options print receipt
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
@@ -31,7 +31,7 @@ Feature: Mail Shipping Label - SDC-1200 with receipt
     Then check customs form i agree to the usps privacy act statement
     Then close customs information form
     Then show advanced options
-    Then check Advanced Options Print Receipt
+    Then check advanced options print receipt
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
@@ -49,7 +49,7 @@ Feature: Mail Shipping Label - SDC-1200 with receipt
     Then check customs form i agree to the usps privacy act statement
     Then close customs information form
     Then show advanced options
-    Then check Advanced Options Print Receipt
+    Then check advanced options print receipt
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
@@ -67,7 +67,7 @@ Feature: Mail Shipping Label - SDC-1200 with receipt
     Then check customs form i agree to the usps privacy act statement
     Then close customs information form
     Then show advanced options
-    Then check Advanced Options Print Receipt
+    Then check advanced options print receipt
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button

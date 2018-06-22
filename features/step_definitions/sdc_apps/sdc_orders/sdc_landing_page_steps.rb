@@ -42,28 +42,22 @@ end
 
 Then /^fetch user credentials from MySQL$/ do
   if SdcEnv.usr.downcase == 'default'
-    raise "USR=default is not a valid username. Specify a valid username for #{SdcEnv.url}"
+    raise "USR=default is not a valid username for #{SdcEnv.url}"
   end
-  unless TestData.hash[:username]
-    if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default'
-      credentials = SdcUserCredentials.fetch(SdcEnv.scenario.tags[0].name)
-      usr = credentials[:username]
-      pw = credentials[:password]
-    else
-      usr = SdcEnv.usr
-      pw = SdcEnv.pw
-    end
-    expect(usr).to be_truthy
-    expect(pw).to be_truthy
-    TestData.hash[:username] = usr
-    TestData.hash[:password] = pw
-  end
+  usr = SdcEnv.usr
+  pw = SdcEnv.pw
+  expect(usr).to be_truthy
+  expect(pw).to be_truthy
+  TestData.hash[:username] = usr
+  TestData.hash[:password] = pw
 end
 
 Then /^sign-in to orders$/ do
   step 'visit Orders landing page'
-  step "set Orders landing page username to #{TestData.hash[:username]}"
-  step "set Orders landing page password to #{TestData.hash[:password]}"
+  usr = TestData.hash[:username]
+  pw = TestData.hash[:password]
+  step "set Orders landing page username to #{usr}"
+  step "set Orders landing page password to #{pw}"
 
   if SdcEnv.ios
     step 'click sign-in button on ios'
@@ -80,10 +74,10 @@ Then /^click sign-in button on browser$/ do
 
   step 'click Orders landing page sign-in button'
 
-  SdcOrders.loading_orders.safe_wait_until_present(timeout: 5)
+  SdcOrders.loading_orders.safe_wait_until_present(timeout: 40)
   SdcOrders.loading_orders.wait_while_present(timeout: 40)
 
-  signed_in_user.wait_until_present(timeout: 5)
+  signed_in_user.wait_until_present(timeout: 30)
   expect(signed_in_user.text_value).to eql(TestData.hash[:username])
 
   # if SdcEnv.sauce_device
@@ -100,7 +94,7 @@ end
 Then /^click sign-in button on ios$/ do
   landing_page = SdcWebsite.landing_page
   landing_page.sign_in.click
-  landing_page.sign_in.send_keys(:enter)
+  landing_page.sign_in.safe_click
   #landing_page.sign_in.safe_send_keys(:enter)
 end
 
@@ -110,19 +104,19 @@ Then /^click sign-in button on android$/ do
   SdcPage.browser.action.move_to(landing_page.sign_in).send_keys(:enter).perform
 end
 
-Then /^set Orders landing page username to (.+)$/ do |str|
+Then /^set Orders landing page username to (.*)$/ do |str|
   SdcWebsite.landing_page.username.set(str)
 end
 
-Then /^set Orders landing page password to (.+)$/ do |str|
+Then /^set Orders landing page password to (.*)$/ do |str|
   SdcWebsite.landing_page.password.set(str)
 end
 
 Then /^click Orders landing page sign-in button$/ do
   SdcWebsite.landing_page.sign_in.wait_until_present(timeout: 3)
   SdcWebsite.landing_page.sign_in.click
-  SdcWebsite.orders.loading_orders.safe_wait_until_present(timeout: 5)
-  SdcWebsite.orders.loading_orders.wait_while_present(timeout: 40)
+  SdcWebsite.orders.loading_orders.safe_wait_until_present(timeout: 15)
+  SdcWebsite.orders.loading_orders.wait_while_present(timeout: 70)
 end
 
 Then /^[Ss]ign-out of SDC [Ww]ebsite$/ do

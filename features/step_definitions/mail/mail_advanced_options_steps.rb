@@ -4,17 +4,16 @@ Then /^[Hh]ide Advanced Options$/ do
   stamps.mail.print_form.advanced_options.hide
 end
 
-Then /^[Ee]xpect Advanced Options responds to (.+) \((.+)\)$/ do |method_description, method|
+Then /^expect advanced options responds to (.+) \((.+)\)$/ do |method_description, method|
   expect(stamps.mail.print_form.advanced_options).to respond_to(method.to_sym), "Print media error. Advanced Options does not respond to #{method_description} (#{method})"
 end
 
-Then /^[Ss]elect Advanced Options Extra Services$/ do
-  step 'Expect Advanced Options responds to Extra Services (extra_services)'
-  stamps.mail.print_form.advanced_options.extra_services
+Then /^select advanced options extra services$/ do
+  SdcMail.print_form.extra_services.button.click
 end
 
 Then /^[Ee]xpect Advanced Options Extra Services Button is (\w+)/ do |str|
-  step 'Expect Advanced Options responds to Extra Services Button (extra_services_btn)'
+  step 'expect advanced options responds to Extra Services Button (extra_services_btn)'
   case str
   when /enabled/
     expect(stamps.mail.print_form.advanced_options.extra_services_btn.stamps_disabled?).to be(false), 'Extra Services Button is NOT enabled'
@@ -28,43 +27,43 @@ Then /^[Ee]xpect Advanced Options Extra Services Button is (\w+)/ do |str|
 end
 
 Then /^[Ss]elect Advanced Options Specify Postage Amount$/ do
-  step 'Expect Advanced Options responds to Specify Postage Amount (specify_postage_amount)'
+  step 'expect advanced options responds to Specify Postage Amount (specify_postage_amount)'
   stamps.mail.print_form.advanced_options.specify_postage_amount.select
 end
 
 Then /^[Ee]xpect Advanced Options Specify Postage Amount is selected$/ do
-  step 'Expect Advanced Options responds to Specify Postage Amount (specify_postage_amount)'
+  step 'expect advanced options responds to Specify Postage Amount (specify_postage_amount)'
   expect(stamps.mail.print_form.advanced_options.specify_postage_amount.selected?).to be(true), 'Specify Postage Amount was NOT selected'
 end
 
 Then /^[Ee]xpect Advanced Options Calculate Postage Amount radio button is present$/ do
-  step 'Expect Advanced Options responds to Calculate Postage Amount (calculate_postage_amount)'
+  step 'expect advanced options responds to Calculate Postage Amount (calculate_postage_amount)'
   expect(stamps.mail.print_form.advanced_options.calculate_postage_amount).to be_present, 'Stamps Calculate Postage Amount radio button is NOT present'
 end
 
 Then /^[Ee]xpect Advanced Options Specify Postage Amount radio button is present$/ do
-  step 'Expect Advanced Options responds to Calculate Postage Amount (calculate_postage_amount)'
+  step 'expect advanced options responds to Calculate Postage Amount (calculate_postage_amount)'
   expect(stamps.mail.print_form.advanced_options.specify_postage_amount).to be_present, 'Stamps Specify Postage Amount radio button is NOT present'
 end
 
 Then /^[Ss]elect Advanced Options Calculate Postage Amount$/ do
-  step 'Expect Advanced Options responds to Calculate Postage Amount (calculate_postage_amount)'
+  step 'expect advanced options responds to Calculate Postage Amount (calculate_postage_amount)'
   stamps.mail.print_form.advanced_options.calculate_postage_amount.select
 end
 
 Then /^[Ee]xpect Advanced Options Calculate Postage Amount is selected$/ do
-  step 'Expect Advanced Options responds to Calculate Postage Amount (calculate_postage_amount)'
+  step 'expect advanced options responds to Calculate Postage Amount (calculate_postage_amount)'
   expect(stamps.mail.print_form.advanced_options.calculate_postage_amount.selected?).to be(true), 'Calculate Postage Amount was NOT selected'
 end
 
 Then /^[Ee]xpect Advanced Options Mail Date field is present$/ do
-  step 'Expect Advanced Options responds to Mail Date (mail_date)'
+  step 'expect advanced options responds to Mail Date (mail_date)'
   expect(stamps.mail.print_form.advanced_options.mail_date.textbox).to be_present, 'Advanced Options Mail Date field is NOT present'
 end
 
 Then /^[Ss]et Advanced Options Mail Date to ((?:date|today plus|tomorrow|today|))? ?(.*)?$/ do |time_str, value|
   raise ''
-  step 'Expect Advanced Options responds to Mail Date (mail_date)'
+  step 'expect advanced options responds to Mail Date (mail_date)'
   TestData.hash[:mail_date] = case time_str
                               when /date/
                                 value
@@ -135,75 +134,75 @@ Then /^set mail ship date to (.+)$/ do |str|
 end
 
 Then /^[Ee]xpect Advanced Options Mail Date is (?:correct|(.*))$/ do |expectation|
-  step 'Expect Advanced Options responds to Mail Date (mail_date)'
+  step 'expect advanced options responds to Mail Date (mail_date)'
   expectation = TestData.hash[:mail_date] if expectation.nil?
   valid_date = Date.strptime(expectation, '%m/%d/%Y')
   expect(valid_date).not_to be_nil, "Invalid Date format. Expected date format mm/dd/YYYY (03/24/2017)  got #{expectation}"
   expect(stamps.mail.print_form.advanced_options.mail_date.textbox.text).to eql(expectation), "Advanced Options Mail Date is not #{expectation}"
 end
 
-Then /^[Ss]et Advanced Options Reference Number to (?:(?:a |some |)random string|(.*))$/ do |str|
-  step 'Expect Advanced Options responds to Reference Number (reference_number)'
+Then /^set advanced options reference number to (?:(?:a |some |)random string|(.*))$/ do |str|
+  step 'expect advanced options responds to Reference Number (reference_number)'
   TestData.hash[:reference_number] = str.nil? ? TestHelper.rand_alpha_numeric : str
   stamps.mail.print_form.advanced_options.reference_number.set(TestData.hash[:reference_number])
 end
 
-Then /^[Ee]xpect Advanced Options Reference Number field is present$/ do
-  step 'Expect Advanced Options responds to Reference Number (reference_number)'
+Then /^expect advanced options reference number field is present$/ do
+  step 'expect advanced options responds to Reference Number (reference_number)'
   expect(stamps.mail.print_form.advanced_options.reference_number.present?).to be(true), 'Reference Number field is NOT present'
 end
 
-Then /^[Ee]xpect Advanced Options Reference Number is (?:correct|(.*))$/ do |expectation|
-  step 'Expect Advanced Options responds to Reference Number (reference_number)'
+Then /^expect advanced options reference number is (?:correct|(.*))$/ do |expectation|
+  step 'expect advanced options responds to Reference Number (reference_number)'
   expectation = TestData.hash[:reference_number] if expectation.nil?
   expectation = '' if expectation.nil?
   expect(stamps.mail.print_form.advanced_options.reference_number.text).to eql(expectation), 'Advanced Options Reference Number is incorrect'
 end
 
 # this step confirms that there is no text in the Reference Number field
-Then /^[Ee]xpect Advanced Options Reference Number is blank$/ do
-  step 'Expect Advanced Options responds to Reference Number (reference_number)'
+Then /^expect advanced options reference number is blank$/ do
+  step 'expect advanced options responds to Reference Number (reference_number)'
   expect(stamps.mail.print_form.advanced_options.reference_number.text).to eql(''), 'Advanced Options Reference Number is incorrect'
 end
 
-Then /^[Ee]xpect Advanced Options Cost Code Field is present$/ do
-  step 'Expect Advanced Options responds to Cost Code (cost_code)'
+Then /^expect advanced options cost code field is present$/ do
+  step 'expect advanced options responds to Cost Code (cost_code)'
   expect(stamps.mail.print_form.advanced_options.cost_code.textbox).to be_present, 'Print form Cost Code Field is NOT present'
 end
 
-Then /^[Ss]et Advanced Options Cost Code to (.*)$/ do |str|
-  step 'Expect Advanced Options responds to Cost Code (cost_code)'
+Then /^set advanced options cost code to (.*)$/ do |str|
+  step 'expect advanced options responds to Cost Code (cost_code)'
   stamps.mail.print_form.advanced_options.cost_code.select(str)
 end
 
-Then /^[Ee]xpect Advanced Options Cost Code is (.*)$/ do |expectation|
-  step 'Expect Advanced Options responds to Cost Code (cost_code)'
+Then /^expect advanced options cost code is (.*)$/ do |expectation|
+  step 'expect advanced options responds to Cost Code (cost_code)'
   expect(stamps.mail.print_form.advanced_options.cost_code.textbox.text).to eql(expectation)
 end
 
 # Certified Mail
 Then /^[Ee]xpect Advanced Options Restricted Delivery is present$/ do
-  step 'Expect Advanced Options responds to Restricted Delivery (restricted_delivery)'
+  step 'expect advanced options responds to Restricted Delivery (restricted_delivery)'
   expect(stamps.mail.print_form.advanced_options.restricted_delivery).to be_present, 'Advanced Options include Restricted Delivery is NOT present'
 end
 
 Then /^[Cc]heck Advanced Options Restricted Delivery$/ do
-  step 'Expect Advanced Options responds to Restricted Delivery (restricted_delivery)'
+  step 'expect advanced options responds to Restricted Delivery (restricted_delivery)'
   stamps.mail.print_form.advanced_options.restricted_delivery.check
 end
 
 Then /^[Ee]xpect Advanced Options Restricted Delivery is checked$/ do
-  step 'Expect Advanced Options responds to Restricted Delivery (restricted_delivery)'
+  step 'expect advanced options responds to Restricted Delivery (restricted_delivery)'
   expect(stamps.mail.print_form.advanced_options.restricted_delivery.checked?).to be(true), 'Advanced Options include Restricted Delivery is NOT checked'
 end
 
 Then /^[Uu]ncheck Advanced Options Restricted Delivery$/ do
-  step 'Expect Advanced Options responds to Restricted Delivery (restricted_delivery)'
+  step 'expect advanced options responds to Restricted Delivery (restricted_delivery)'
   stamps.mail.print_form.advanced_options.restricted_delivery.uncheck
 end
 
 Then /^[Ee]xpect Advanced Options Restricted Delivery is unchecked$/ do
-  step 'Expect Advanced Options responds to Restricted Delivery (restricted_delivery)'
+  step 'expect advanced options responds to Restricted Delivery (restricted_delivery)'
   expect(stamps.mail.print_form.advanced_options.restricted_delivery.checked?).not_to be(true), 'Advanced Options include Restricted Delivery is NOT unchecked'
 end
 
@@ -294,151 +293,142 @@ Then /^[Ee]xpect Print Form Certified Mail is disabled$/ do
 end
 
 Then /^[Ee]xpect Advanced Options include Return Address is present$/ do
-  step 'Expect Advanced Options responds to Return Address (return_address)'
+  step 'expect advanced options responds to Return Address (return_address)'
   expect(stamps.mail.print_form.advanced_options.return_address).to be_present, 'Advanced Options include Return Address is NOT present'
 end
 
 Then /^[Cc]heck Advanced Options include Return Address$/ do
-  step 'Expect Advanced Options responds to Return Address (return_address)'
+  step 'expect advanced options responds to Return Address (return_address)'
   stamps.mail.print_form.advanced_options.return_address.check
 end
 
 Then /^[Ee]xpect Advanced Options include Return Address is checked$/ do
-  step 'Expect Advanced Options responds to Return Address (return_address)'
+  step 'expect advanced options responds to Return Address (return_address)'
   expect(stamps.mail.print_form.advanced_options.return_address.checked?).to be(true), 'Advanced Options include Return Address is NOT checked'
 end
 
 Then /^[Uu]ncheck Advanced Options include Return Address$/ do
-  step 'Expect Advanced Options responds to Return Address (return_address)'
+  step 'expect advanced options responds to Return Address (return_address)'
   stamps.mail.print_form.advanced_options.return_address.uncheck
 end
 
 Then /^[Ee]xpect Advanced Options include Return Address is unchecked$/ do
-  step 'Expect Advanced Options responds to Return Address (return_address)'
+  step 'expect advanced options responds to Return Address (return_address)'
   expect(stamps.mail.print_form.advanced_options.return_address.checked?).not_to be(true), 'Advanced Options include Return Address is NOT unchecked'
 end
 
 Then /^[Ee]xpect Advanced Options include Delivery Address is present$/ do
-  step 'Expect Advanced Options responds to Return Address (return_address)'
+  step 'expect advanced options responds to Return Address (return_address)'
   expect(stamps.mail.print_form.advanced_options.delivery_address).to be_present, 'Advanced Options include Delivery Address is NOT present'
 end
 
 Then /^[Cc]heck Advanced Options include Delivery Address$/ do
-  step 'Expect Advanced Options responds to Delivery Address (delivery_address)'
+  step 'expect advanced options responds to Delivery Address (delivery_address)'
   stamps.mail.print_form.advanced_options.delivery_address.check
 end
 
 Then /^[Ee]xpect Advanced Options include Delivery Address is checked$/ do
-  step 'Expect Advanced Options responds to Delivery Address (delivery_address)'
+  step 'expect advanced options responds to Delivery Address (delivery_address)'
   expect(stamps.mail.print_form.advanced_options.delivery_address.checked?).to be(true), 'Advanced Options include Delivery Address is NOT checked'
 end
 
 Then /^[Uu]ncheck Advanced Options include Delivery Address$/ do
-  step 'Expect Advanced Options responds to Delivery Address (delivery_address)'
+  step 'expect advanced options responds to Delivery Address (delivery_address)'
   stamps.mail.print_form.advanced_options.delivery_address.uncheck
 end
 
 Then /^[Ee]xpect Advanced Options include Delivery Address is unchecked$/ do
-  step 'Expect Advanced Options responds to Delivery Address (delivery_address)'
+  step 'expect advanced options responds to Delivery Address (delivery_address)'
   expect(stamps.mail.print_form.advanced_options.delivery_address.checked?).not_to be(true), 'Advanced Options include Delivery Address is NOT unchecked'
 end
 
 Then /^[Ee]xpect Advanced Options include Postage is present$/ do
-  step 'Expect Advanced Options responds to Postage (postage)'
+  step 'expect advanced options responds to Postage (postage)'
   expect(stamps.mail.print_form.advanced_options.postage).to be_present, 'Advanced Options include Postage is NOT present'
 end
 
 Then /^[Cc]heck Advanced Options include Postage$/ do
-  step 'Expect Advanced Options responds to Postage (postage)'
+  step 'expect advanced options responds to Postage (postage)'
   stamps.mail.print_form.advanced_options.postage.check
 end
 
 Then /^[Ee]xpect Advanced Options include Postage is checked$/ do
-  step 'Expect Advanced Options responds to Postage (postage)'
+  step 'expect advanced options responds to Postage (postage)'
   expect(stamps.mail.print_form.advanced_options.postage.checked?).to be(true), 'Advanced Options include Postage is NOT checked'
 end
 
 Then /^[Uu]ncheck Advanced Options include Postage$/ do
-  step 'Expect Advanced Options responds to Postage (postage)'
+  step 'expect advanced options responds to Postage (postage)'
   stamps.mail.print_form.advanced_options.postage.uncheck
 end
 
 Then /^[Ee]xpect Advanced Options include Postage is unchecked$/ do
-  step 'Expect Advanced Options responds to Postage (postage)'
+  step 'expect advanced options responds to Postage (postage)'
   expect(stamps.mail.print_form.advanced_options.postage.checked?).not_to be(true), 'Advanced Options include Postage is NOT unchecked'
 end
 
-Then /^[Ee]xpect Advanced Options Hide Label Value is present$/ do
-  step 'Expect Advanced Options responds to Hide Label (hide_label_value)'
-  expect(stamps.mail.print_form.advanced_options.hide_label_value).to be_present, 'Advanced Options Hide Label Value is NOT present'
+Then /^expect advanced options hide label value is present$/ do
+  expect(SdcMail.print_form.advanced_options.hide_label_value).to be_present, 'Advanced Options Hide Label Value is NOT present'
 end
 
-Then /^[Cc]heck Advanced Options Hide Label Value$/ do
-  step 'Expect Advanced Options responds to Hide Label (hide_label_value)'
-  stamps.mail.print_form.advanced_options.hide_label_value.check
+Then /^check advanced options hide label value$/ do
+  SdcMail.print_form.advanced_options.hide_label_value.check unless SdcMail.print_form.advanced_options.hide_label_value.checked?
+  step 'expect advanced options hide label value is checked'
 end
 
-Then /^[Ee]xpect Advanced Options Hide Label Value is checked$/ do
-  step 'Expect Advanced Options responds to Hide Label (hide_label_value)'
-  expect(stamps.mail.print_form.advanced_options.hide_label_value.checked?).to be(true), 'Advanced Options Hide Label Value is NOT checked'
+Then /^expect advanced options hide label value is checked$/ do
+  expect(SdcMail.print_form.advanced_options.hide_label_value.checked?).to be(true), 'Advanced Options Hide Label Value is NOT checked'
 end
 
-Then /^[Uu]ncheck Advanced Options Hide Label Value$/ do
-  step 'Expect Advanced Options responds to Hide Label (hide_label_value)'
-  stamps.mail.print_form.advanced_options.hide_label_value.uncheck
+Then /^uncheck advanced options hide label value$/ do
+  SdcMail.print_form.advanced_options.hide_label_value.uncheck if SdcMail.print_form.advanced_options.hide_label_value.checked?
+  step 'expect advanced options hide label value is unchecked'
 end
 
-Then /^[Ee]xpect Advanced Options Hide Label Value is unchecked$/ do
-  step 'Expect Advanced Options responds to Hide Label (hide_label_value)'
-  expect(stamps.mail.print_form.advanced_options.hide_label_value.checked?).not_to be(true), 'Advanced Options Hide Label Value is NOT unchecked'
+Then /^expect advanced options hide label value is unchecked$/ do
+  expect(SdcMail.print_form.advanced_options.hide_label_value.checked?).not_to be(true), 'Advanced Options Hide Label Value is NOT unchecked'
 end
 
-Then /^[Ee]xpect Advanced Options Print Receipt is present$/ do
-  step 'Expect Advanced Options responds to Print Receip (print_receipt)'
+Then /^expect advanced options print receipt is present$/ do
   expect(stamps.mail.print_form.advanced_options.print_receipt).to be_present, 'Advanced Options Print Receipt is NOT present'
 end
 
-Then /^[Cc]heck Advanced Options Print Receipt$/ do
-  step 'Expect Advanced Options responds to Print Receip (print_receipt)'
-  stamps.mail.print_form.advanced_options.print_receipt.check
+Then /^check advanced options print receipt$/ do
+  SdcMail.print_form.advanced_options.print_receipt.check unless SdcMail.print_form.advanced_options.print_receipt.checked?
+  step 'expect advanced options print receipt is checked'
 end
 
-Then /^[Ee]xpect Advanced Options Print Receipt is checked$/ do
-  step 'Expect Advanced Options responds to Print Receip (print_receipt)'
-  expect(stamps.mail.print_form.advanced_options.print_receipt.checked?).to be(true), 'Advanced Options Print Receipt is NOT checked'
+Then /^expect advanced options print receipt is checked$/ do
+  expect(SdcMail.print_form.advanced_options.print_receipt.checked?).to be(true), 'Advanced Options Print Receipt is NOT checked'
 end
 
-Then /^[Uu]ncheck Advanced Options Print Receipt$/ do
-  step 'Expect Advanced Options responds to Print Receip (print_receipt)'
-  stamps.mail.print_form.advanced_options.print_receipt.uncheck
+Then /^uncheck advanced options print receipt$/ do
+  SdcMail.print_form.advanced_options.print_receipt.uncheck if SdcMail.print_form.advanced_options.print_receipt.checked?
+  step 'expect advanced options print receipt is unchecked'
 end
 
-Then /^[Ee]xpect Advanced Options Print Receipt is unchecked$/ do
-  step 'Expect Advanced Options responds to Print Receip (print_receipt)'
-  expect(stamps.mail.print_form.advanced_options.print_receipt.checked?).not_to be(true), 'Advanced Options Print Receipt is NOT unchecked'
+Then /^expect advanced options print receipt is unchecked$/ do
+  expect(SdcMail.print_form.advanced_options.print_receipt.checked?).not_to be(true), 'Advanced Options Print Receipt is NOT unchecked'
 end
 
-Then /^[Ee]xpect Advanced Options Print Reference # is present$/ do
-  step 'Expect Advanced Options responds to Print Reference (print_reference_number)'
-  expect(stamps.mail.print_form.advanced_options.print_reference_number).to be_present, 'Advanced Options Print Reference # is NOT present'
+Then /^expect advanced options print reference # is present$/ do
+  expect(SdcMail.print_form.advanced_options.print_reference).to be_present, 'Advanced Options Print Reference # is NOT present'
 end
 
-Then /^[Cc]heck Advanced Options Print Reference \#$/ do
-  step 'Expect Advanced Options responds to Print Reference (print_reference_number)'
-  stamps.mail.print_form.advanced_options.print_reference_number.check
+Then /^check advanced options print reference \#$/ do
+  SdcMail.print_form.advanced_options.print_reference.check unless SdcMail.print_form.advanced_options.print_reference.checked?
+  step 'expect advanced options print reference # is checked'
 end
 
-Then /^[Ee]xpect Advanced Options Print Reference # is checked$/ do
-  step 'Expect Advanced Options responds to Print Reference (print_reference_number)'
-  expect(stamps.mail.print_form.advanced_options.print_reference_number.checked?).to be(true), 'Advanced Options Print Reference # is NOT checked'
+Then /^expect advanced options print reference # is checked$/ do
+  expect(SdcMail.print_form.advanced_options.print_reference.checked?).to be(true), 'Advanced Options Print Reference # is NOT checked'
 end
 
-Then /^[Uu]ncheck Advanced Options Print Reference \#$/ do
-  step 'Expect Advanced Options responds to Print Reference (print_reference_number)'
-  stamps.mail.print_form.advanced_options.print_reference_number.uncheck
+Then /^uncheck advanced options print reference \#$/ do
+  SdcMail.print_form.advanced_options.print_reference.uncheck if SdcMail.print_form.advanced_options.print_reference.checked?
+  step 'expect advanced options print reference # is unchecked'
 end
 
-Then /^[Ee]xpect Advanced Options Print Reference # is unchecked$/ do
-  step 'Expect Advanced Options responds to Print Reference (print_reference_number)'
-  expect(stamps.mail.print_form.advanced_options.print_reference_number.checked?).not_to be(true), 'Advanced Options Print Reference # is NOT unchecked'
+Then /^expect advanced options print reference # is unchecked$/ do
+  expect(SdcMail.print_form.advanced_options.print_reference.checked?).not_to be(true), 'Advanced Options Print Reference # is NOT unchecked'
 end
