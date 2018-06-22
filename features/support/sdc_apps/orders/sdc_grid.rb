@@ -5,18 +5,26 @@ module SdcGrid
 
     def scroll_to_column(column)
       method_name = "scroll_to_#{column.to_s}"
-      column_name = column_text[method_name]
-      page_object(method_name.to_sym) { { xpath: "//span[text()='#{column_name}']" } }
-      instance_eval(method_name).scroll_into_view
+      column_name = column_text[column]
+      xpath = "//span[text()='#{column_name}']"
+      field = if column.eql? :checkbox
+                xpath = '//div[starts-with(@id, "gridcolumn")][contains(@class, "x-column-header-checkbox")]'
+                page_object(:asdfsdf) { { xpath: xpath } }
+              else
+                page_object(method_name.to_sym, tag: :span) { { xpath: xpath } }
+              end
+      field.scroll_into_view
+      field
     end
 
     def grid_text_by_id(column, order_id)
-      scroll_to_column(column)
-      grid_text(column, row_number(order_id))
+      row = row_number(order_id)
+      grid_text(column, row)
     end
 
     def count
-      page_object(:grid_row_ct) { { xpath: '//div[starts-with(@id, "ordersGrid-")][contains(@id, "-normal-body")]//table' } }
+      xpath = '//div[starts-with(@id, "ordersGrid-")][contains(@id, "-normal-body")]//table'
+      grid_row_ct = page_object(:grid_row_ct) { { xpath: xpath } }
       begin
         ct = grid_row_ct.size.to_i
         return ct if ct > 0
@@ -33,51 +41,48 @@ module SdcGrid
 
     def grid_text(column, row)
       scroll_to_column(column)
-      StampsField.new(grid_field(column, row)).text
+      element = grid_field(column, row)
+      element.text_value
     end
 
     def grid_field(column, row)
       column_num = column_number(column).to_s
-      xpath = "//div[starts-with(@id, 'ordersGrid-')][contains(@id, 'innerCt')]//table[#{row.to_s}]//tbody//td[#{column_num}]//div"
+      parent = '//div[starts-with(@id, "ordersGrid-")][contains(@id, "innerCt")]'
+      xpath = "#{parent}//table[#{row.to_s}]//tbody//td[#{column_num}]//div"
       coordinates = "col#{column}xrow#{row}"
       page_object(coordinates.to_sym) { { xpath: xpath } }
-      instance_eval(coordinates)
     end
 
-    def grid_field_column_name(column_name, row)
-      grid_text(column_number(column_name), row)
+    def grid_field_column_name(column, row)
+      col = column_number(column)
+      grid_text(col, row)
     end
 
     def column_number(column)
       if column_cache[column].nil?
-        # columns = driver.spans(css: "div[id^=gridcolumn-][id$=-textEl]>span")
-        page_objects(:columns) { { xpath: '//div[starts-with(@id, "gridcolumn-")][contains(@id, "-textEl")]//span' } }
+        xpath = '//div[starts-with(@id, "gridcolumn-")][contains(@id, "-textEl")]//span'
+        columns = page_objects(:columns) { { xpath: xpath } }
         columns.each_with_index do |field, index|
-          text = field.text
-          key = column_text.key(text)
-          scroll_to_column(key)
+          element = ::SdcElement.new(field)
+          element.scroll_into_view
+          text = element.text_value
+          key = if index.zero?
+                  :checkbox
+                else
+                  column_text.key(text)
+                end
           column_cache[key] = index + 1
         end
+        scroll_to_column(:checkbox)
       end
       column_cache[column]
     end
 
     def row_number(order_id)
-      # 7.times do
-      #   driver.divs(css: "[id^=ordersGrid-][id$=-body] table td:nth-child(#{column_number(:order_id)})>div").each_with_index do |field, index|
-      #     scroll_to_column(field)
-      #     if StampsField.new(field).text.include?(order_id)
-      #       #log.info "Order ID #{order_id}, Row #{index + 1}"
-      #       StampsField.new(field).wait_until_present
-      #       return index + 1
-      #     end
-      #   end
-      # end
-
       col_num = column_number(:order_id)
       xpath = "//div[starts-with(@id, 'ordersGrid-')][contains(@id, 'innerCt')]//tbody//td[#{col_num}]//div"
-      page_objects(:row_number_divs) { { xpath: xpath } }
-      row_number_divs.each_with_index do |field, index|
+      divs = page_objects(:row_number_divs) { { xpath: xpath } }
+      divs.each_with_index do |field, index|
         scroll_to_column(:order_id)
         return index + 1 if field.text.include?(order_id)
       end
@@ -117,37 +122,37 @@ module SdcGrid
 
     def column_text
       @column_text ||= {
-          check_box: ' ',
-          hash: 'Store',
-          ship_cost: 'Ship Cost',
-          age: 'Age',
-          order_id: 'Order ID',
-          order_date: 'Order Date',
-          recipient: 'Recipient',
-          company: 'Company',
-          address: 'Address',
-          city: 'City',
-          state: 'State',
-          zip: 'Zip',
-          country: 'Country',
-          phone: 'Phone',
-          email: 'Email',
-          qty: 'Qty.',
-          item_sku: 'Item SKU',
-          item_name: 'Item Name',
-          ship_from: 'Ship From',
-          service: 'Service',
-          requested_service: 'Requested Service',
-          weight: 'Weight',
-          insured_value: 'Insured Value',
-          tracking_service: 'Tracking Service',
-          reference_no: 'Reference No.',
-          order_status: 'Order Status',
-          date_printed: 'Date Printed',
-          ship_date: 'Ship Date',
-          tracking_no: 'Tracking #',
-          order_total: 'Order Total',
-          source: 'Source'
+        checkbox: ' ',
+        store: 'Store',
+        ship_cost: 'Ship Cost',
+        age: 'Age',
+        order_id: 'Order ID',
+        order_date: 'Order Date',
+        recipient: 'Recipient',
+        company: 'Company',
+        address: 'Address',
+        city: 'City',
+        state: 'State',
+        zip: 'Zip',
+        country: 'Country',
+        phone: 'Phone',
+        email: 'Email',
+        qty: 'Qty.',
+        item_sku: 'Item SKU',
+        item_name: 'Item Name',
+        ship_from: 'Ship From',
+        service: 'Service',
+        requested_service: 'Requested Service',
+        weight: 'Weight',
+        insured_value: 'Insured Value',
+        tracking_service: 'Tracking Service',
+        reference_no: 'Reference No.',
+        order_status: 'Order Status',
+        date_printed: 'Date Printed',
+        ship_date: 'Ship Date',
+        tracking_no: 'Tracking #',
+        order_total: 'Order Total',
+        source: 'Source'
       }
     end
   end
@@ -176,11 +181,7 @@ module SdcGrid
 
     def row(row)
       scroll_into_view
-      8.times{
-        break if size > 0
-        sleep(0.35)
-      }
-      return "" if size.zero?
+      #browser.wait_until(timeout: 20) { !size.zero? }
       grid_text(:order_id, row)
     end
 
@@ -270,8 +271,8 @@ module SdcGrid
     end
 
     def data(order_id)
-      scroll_into_view
-      sleep(0.35)
+      #scroll_into_view
+      #sleep(0.35)
       grid_text_by_id(:recipient, order_id)
     end
 
@@ -816,7 +817,7 @@ module SdcGrid
     end
 
     def row(row)
-      grid_text(:check_box, row)
+      grid_text(:checkbox, row)
     end
 
     def edit(order_id)
@@ -879,13 +880,13 @@ module SdcGrid
       #log.info "Caching checked rows..."
       checked_rows = {}
       grid_total = count
-      if cache_count > 2 && cache_count < grid_total
-        cache_item_count = cache_count
-      elsif cache_count > grid_total
-        cache_item_count = grid_total
-      else
-        cache_item_count = cache_count
-      end
+      cache_item_count = if cache_count > 2 && cache_count < grid_total
+        cache_count
+                         elsif cache_count > grid_total
+        grid_total
+                         else
+        cache_count
+                         end
       #log.info "Number of rows to check:  #{cache_item_count}"
       1.upto(cache_item_count) { |row|
         checked = checked?(row)
@@ -969,8 +970,14 @@ module SdcGrid
     end
   end
 
+
   def body
-    SdcPage.page_object(:grid_body) { { xpath: '//div[starts-with(@id, "ordersGrid-")][contains(@id, "-normal-body")]' } }
+    xpath = '//div[starts-with(@id, "ordersGrid-")][contains(@id, "-normal-body")]'
+    klass = Class.new(SdcPage) do
+      page_object(:body) { { xpath: xpath } }
+    end
+
+    klass.new.body
   end
   module_function :body
 

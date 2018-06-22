@@ -239,13 +239,13 @@ class SdcPage < WatirDrops::PageObject
   end
 
   define_method :page_objects do |*args, &block|
-    SdcPage.page_objects(*args, &block)
+    self.class.page_objects(*args, &block)
 
     instance_eval(args.first.to_s, __FILE__, __LINE__)
   end
 
   define_method :page_object do |*args, &block|
-    SdcPage.page_object(*args, &block)
+    self.class.page_object(*args, &block)
 
     instance_eval(args.first.to_s, __FILE__, __LINE__)
   end
@@ -264,7 +264,7 @@ class SdcDriverDecorator < BasicObject
   end
 
   def respond_to_missing?(name, include_private = false)
-    @driver.respond_to?(name, include_private) || super
+    super || @driver.respond_to?(name, include_private)
   end
 
   def method_missing(method, *args, &block)
@@ -480,7 +480,7 @@ class SdcElement < BasicObject
   end
 
   def respond_to_missing?(name, include_private = false)
-    @element.respond_to?(name, include_private) || super
+    super || @element.respond_to?(name, include_private)
   end
 
   def method_missing(name, *args, &block)
@@ -545,7 +545,7 @@ class SdcChooser < BasicObject
   end
 
   def respond_to_missing?(name, include_private = false)
-    @element.respond_to?(name, include_private) || super
+    super || @element.respond_to?(name, include_private)
   end
 
   def method_missing(name, *args, &block)
@@ -565,7 +565,7 @@ class SdcNumber < BasicObject
   end
 
   def respond_to_missing?(name, include_private = false)
-    @text_field.respond_to?(name, include_private) || super
+    super || @text_field.respond_to?(name, include_private)
   end
 
   def method_missing(name, *args, &block)
@@ -589,7 +589,7 @@ class SdcLogger
     end
 
     def respond_to_missing?(name, include_private = false)
-      logger.respond_to?(name, include_private) || super
+      super || logger.respond_to?(name, include_private)
     end
 
     def method_missing(method, *args)

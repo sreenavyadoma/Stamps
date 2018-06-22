@@ -109,18 +109,7 @@ Then /^expect orders grid recipient is (?:correct|(.*))$/ do |expectation|
   expectation ||= TestData.hash[:full_name]
   order_id = TestData.hash[:order_id].values.last
   expect(order_id).to be_truthy
-
-
   actual_result = SdcGrid.grid_column(:recipient).data(order_id)
-
-  actual_result = SdcGrid.grid_column(:company).data(order_id)
-
-  actual_result = SdcGrid.grid_column(:address).data(order_id)
-
-  actual_result = SdcGrid.grid_column(:city).data(order_id)
-
-  actual_result = SdcGrid.grid_column(:state).data(order_id)
-
   expect(actual_result).to eql expectation
 end
 
@@ -143,15 +132,14 @@ end
 Then /^expect orders grid city is (?:correct|(.*))$/ do |expectation|
   expectation ||= TestData.hash[:city]
   order_id = TestData.hash[:order_id].values.last
-  actual_result = SdcGrid.grid_column(:state).data(order_id)
+  actual_result = SdcGrid.grid_column(:city).data(order_id)
   expect(actual_result).to eql expectation
 end
 
 Then /^expect orders grid state is (?:correct|(.*))$/ do |expectation|
   expectation ||= TestData.hash[:state]
-  expectation ||= TestData.hash[:city]
   order_id = TestData.hash[:order_id].values.last
-  actual_result = SdcGrid.grid_column(:city).data(order_id)
+  actual_result = SdcGrid.grid_column(:state).data(order_id)
   expect(actual_result).to eql expectation
 end
 

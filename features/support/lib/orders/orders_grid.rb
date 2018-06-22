@@ -8,7 +8,7 @@ module Stamps
 
         def column_text #todo-Rob implement data store
           @column_text ||= {
-              check_box: " ",
+              checkbox: " ",
               hash: "Store",
               ship_cost: "Ship Cost",
               age: "Age",
@@ -816,7 +816,7 @@ module Stamps
         end
 
         def row(row)
-          grid_text(:check_box, row)
+          grid_text(:checkbox, row)
         end
 
         def edit(order_id)
