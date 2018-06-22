@@ -1,5 +1,5 @@
 
-module SdcOrdersGrid
+module SdcGrid
 
   class GridItem < SdcPage
 
@@ -15,7 +15,7 @@ module SdcOrdersGrid
       grid_text(column, row_number(order_id))
     end
 
-    def row_count
+    def count
       page_object(:grid_row_ct) { { xpath: '//div[starts-with(@id, "ordersGrid-")][contains(@id, "-normal-body")]//table' } }
       begin
         ct = grid_row_ct.size.to_i
@@ -25,8 +25,7 @@ module SdcOrdersGrid
       end
       0
     end
-    alias_method :count, :row_count
-    alias_method :size, :row_count
+    alias_method :size, :count
 
     def empty?
       size.zero?
@@ -879,7 +878,7 @@ module SdcOrdersGrid
 
       #log.info "Caching checked rows..."
       checked_rows = {}
-      grid_total = row_count
+      grid_total = count
       if cache_count > 2 && cache_count < grid_total
         cache_item_count = cache_count
       elsif cache_count > grid_total
@@ -970,84 +969,80 @@ module SdcOrdersGrid
     end
   end
 
-  module SdcOrdersGrid
-
-    def body
-      SdcPage.page_object(:grid_body) { { xpath: '//div[starts-with(@id, "ordersGrid-")][contains(@id, "-normal-body")]' } }
-      grid_body
-    end
-    module_function :body
-
-    def grid_column(name)
-      body.wait_until_present(timeout: 15)
-      case(name)
-      when :checkbox
-        SdcGridCheckBox.new
-      when :hash
-        SdcStore.new
-      when :order_id
-        SdcOrderId.new
-      when :ship_cost
-        SdcShipCost.new
-      when :age
-        SdcAge.new
-      when :order_date
-        SdcOrderDate.new
-      when :recipient
-        SdcRecipient.new
-      when :company
-        SdcCompany.new
-      when :country
-        SdcCountry.new
-      when :address
-        SdcAddress.new
-      when :city
-        SdcCity.new
-      when :state
-        SdcState.new
-      when :zip
-        SdcZip.new
-      when :phone
-        SdcPhone.new
-      when :email
-        SdcEmail.new
-      when :qty
-        SdcQty.new
-      when :item_sku
-        SdcItemSKU.new
-      when :item_name
-        SdcItemName.new
-      when :ship_from
-        SdcShipFrom.new
-      when :service
-        SdcGridService.new
-      when :requested_service
-        SdcRequestedService.new
-      when :weight
-        SdcWeight.new
-      when :insured_value
-        SdcInsuredValue.new
-      when :tracking_service
-        SdcTrackingService.new
-      when :order_status
-        SdcOrderStatus.new
-      when :date_printed
-        SdcDatePrinted.new
-      when :ship_date
-        SdcShipDate.new
-      when :tracking_no
-        SdcTracking.new
-      when :order_total
-        SdcOrderTotal.new
-      when :source
-        SdcGridSource.new
-      when :reference_no
-        SdcReferenceNo.new
-      else
-        raise "Invalid column #{name}"
-      end
-    end
-    module_function :grid_column
-
+  def body
+    SdcPage.page_object(:grid_body) { { xpath: '//div[starts-with(@id, "ordersGrid-")][contains(@id, "-normal-body")]' } }
   end
+  module_function :body
+
+  def grid_column(name)
+    body.wait_until_present(timeout: 15)
+    case(name)
+    when :checkbox
+      SdcGridCheckBox.new
+    when :hash
+      SdcStore.new
+    when :order_id
+      SdcOrderId.new
+    when :ship_cost
+      SdcShipCost.new
+    when :age
+      SdcAge.new
+    when :order_date
+      SdcOrderDate.new
+    when :recipient
+      SdcRecipient.new
+    when :company
+      SdcCompany.new
+    when :country
+      SdcCountry.new
+    when :address
+      SdcAddress.new
+    when :city
+      SdcCity.new
+    when :state
+      SdcState.new
+    when :zip
+      SdcZip.new
+    when :phone
+      SdcPhone.new
+    when :email
+      SdcEmail.new
+    when :qty
+      SdcQty.new
+    when :item_sku
+      SdcItemSKU.new
+    when :item_name
+      SdcItemName.new
+    when :ship_from
+      SdcShipFrom.new
+    when :service
+      SdcGridService.new
+    when :requested_service
+      SdcRequestedService.new
+    when :weight
+      SdcWeight.new
+    when :insured_value
+      SdcInsuredValue.new
+    when :tracking_service
+      SdcTrackingService.new
+    when :order_status
+      SdcOrderStatus.new
+    when :date_printed
+      SdcDatePrinted.new
+    when :ship_date
+      SdcShipDate.new
+    when :tracking_no
+      SdcTracking.new
+    when :order_total
+      SdcOrderTotal.new
+    when :source
+      SdcGridSource.new
+    when :reference_no
+      SdcReferenceNo.new
+    else
+      raise "Invalid column #{name}"
+    end
+  end
+  module_function :grid_column
+
 end

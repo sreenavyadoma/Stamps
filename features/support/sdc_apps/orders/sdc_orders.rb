@@ -26,7 +26,7 @@ module SdcOrders
   module_function :toolbar
 
   def grid
-    SdcOrdersGrid
+    SdcGrid
   end
   module_function :grid
 
