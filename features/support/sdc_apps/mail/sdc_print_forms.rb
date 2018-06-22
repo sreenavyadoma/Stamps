@@ -76,6 +76,18 @@ module SdcMail
       class AdvancedOptions < SdcPage
         page_object(:reference_num, tag: :text_field) { { xpath: '//*[text()="Reference #:"]/..//input' } }
 
+        page_object(:hide_label_value_chooser) { {xpath: '//*[text()="Hide Label Value"]/../span'} }
+        page_object(:hide_label_value_verify) { {xpath: '//*[text()="Hide Label Value"]/../../..' } }
+        checkbox(:hide_label_value, :hide_label_value_chooser, :hide_label_value_verify, 'class', 'checked')
+
+        page_object(:print_receipt_chooser) { {xpath: '//*[text()="Print Receipt"]/../span'} }
+        page_object(:print_receipt_verify) { {xpath: '//*[text()="Print Receipt"]/../../..' } }
+        checkbox(:print_receipt, :print_receipt_chooser, :print_receipt_verify, 'class', 'checked')
+
+        page_object(:print_reference_chooser) { {xpath: '//*[text()="Print Reference #"]/../span'} }
+        page_object(:print_reference_verify) { {xpath: '//*[text()="Print Reference #"]/../../..' } }
+        checkbox(:print_reference, :print_reference_chooser, :print_reference_verify, 'class', 'checked')
+
         def cost_code
           AdvancedOptionsCostCode.new
         end
@@ -120,18 +132,18 @@ module SdcMail
     module DimensionsContainer
       class Dimensions < SdcPage
         text_field(:l_text_field, tag: :text_field) { { xpath: '//*[@name="Length"]' } }
-        page_object(:l_increment) { { xpath: '(//div[starts-with(@id, "dimensionsview-")]//*[contains(@class, "up")])[0]' } }
-        page_object(:l_decrement) { { xpath: '(//div[starts-with(@id, "dimensionsview-")]//*[contains(@class, "down")])[0]' } }
+        page_object(:l_increment) { { xpath: '(//div[starts-with(@id, "dimensionsview-")]//*[contains(@class, "up")])[1]' } }
+        page_object(:l_decrement) { { xpath: '(//div[starts-with(@id, "dimensionsview-")]//*[contains(@class, "down")])[1]' } }
         sdc_number(:length, :l_text_field, :l_increment, :l_decrement)
 
         text_field(:w_text_field, tag: :text_field) { { xpath: '//*[@name="Width"]' } }
-        page_object(:w_increment) { { xpath: '(//div[starts-with(@id, "dimensionsview-")]//*[contains(@class, "up")])[1]' } }
-        page_object(:w_decrement) { { xpath: '(//div[starts-with(@id, "dimensionsview-")]//*[contains(@class, "down")])[1]' } }
+        page_object(:w_increment) { { xpath: '(//div[starts-with(@id, "dimensionsview-")]//*[contains(@class, "up")])[2]' } }
+        page_object(:w_decrement) { { xpath: '(//div[starts-with(@id, "dimensionsview-")]//*[contains(@class, "down")])[2]' } }
         sdc_number(:width, :w_text_field, :w_increment, :w_decrement)
 
         text_field(:h_text_field, tag: :text_field) { { xpath: '//*[@name="Height"]' } }
-        page_object(:h_increment) { { xpath: '(//div[starts-with(@id, "dimensionsview-")]//*[contains(@class, "up")])[2]' } }
-        page_object(:h_decrement) { { xpath: '(//div[starts-with(@id, "dimensionsview-")]//*[contains(@class, "down")])[2]' } }
+        page_object(:h_increment) { { xpath: '(//div[starts-with(@id, "dimensionsview-")]//*[contains(@class, "up")])[3]' } }
+        page_object(:h_decrement) { { xpath: '(//div[starts-with(@id, "dimensionsview-")]//*[contains(@class, "down")])[3]' } }
         sdc_number(:height, :h_text_field, :h_increment, :h_decrement)
       end
 

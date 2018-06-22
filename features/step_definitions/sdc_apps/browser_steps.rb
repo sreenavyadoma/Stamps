@@ -50,7 +50,6 @@ end
 
 Then /^pause for (\d+) second(?:|s)?$/ do |seconds|
   if SdcEnv.new_framework
-    #skip for now
     sleep(seconds.to_i)
   else
     begin

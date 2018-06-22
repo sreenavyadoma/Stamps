@@ -1,0 +1,4 @@
+Notification: Success, Failure
+Base URL: https://hooks.slack.com/services/
+Integration Token: T1PQF6U7Q/BA9MBD1EX/5hFHJopIJdFRsCQhBLSD2xdK
+Project Channel: #automated_builds
