@@ -75,7 +75,7 @@ module SdcMail
     checkbox(:do_not_deliver_saturday, :do_not_deliver_saturday_chooser, :do_not_deliver_saturday_verify, 'class', 'checked')
 
     page_object(:odd_shaped_chooser) { {id: 'sdc-extraserviceswin-oddcheckbox-displayEl'} }
-    page_object(:odd_shaped_verify) { {xpath: '//*[@id="sdc-extraserviceswin-oddcheckbox-displayEl"]/..' } }
+    page_object(:odd_shaped_verify) { {xpath: '//*[@id="sdc-extraserviceswin-oddcheckbox-bodyEl"]/..' } }
     checkbox(:odd_shaped, :odd_shaped_chooser, :odd_shaped_verify, 'class', 'checked')
 
     page_object(:security_price) { { id: 'sdc-extraserviceswin-securitypricelabel' } }

@@ -354,7 +354,7 @@ Feature:  Mail BVT - Authentication
     Then set print form dimensions to length 2 width 2 height 2
     Then set print form tracking Signature Required
     Then set print form tracking USPS Tracking
-#    insurance
+    Then set print form insure for 100
 
 #    EXTRA SERVICES
     Then select advanced options extra services
@@ -415,12 +415,12 @@ Feature:  Mail BVT - Authentication
 
     Then sign out
 
-  @mail_bvt_ui_validation2
+  @mail_bvt_ui_validation
   Scenario: BVT Mail UI Validation for Envelopes
     Then sign-in to mail
     Then select print on Envelope - #10, 4 ⅛" x 9 ½"
-    Then set print form mail-to to a random address in zone 8
-    Then set print form weight to lbs 1 oz 1
+    Then set print form mail-to to a random address in zone 2
+    Then set print form weight to lbs 0 oz 1
     Then select print form service FCM Letter
     Then select advanced options extra services
     Then check extra services odd shaped/non-machinable
@@ -435,21 +435,90 @@ Feature:  Mail BVT - Authentication
     Then sign out
 
   @mail_bvt_ui_validation2
-  Scenario: BVT Mail UI Validation for Certified Mail 3610
+  Scenario: BVT Mail UI Validation for Certified Mail
     Then sign-in to mail
     Then select print on Certified Mail Label - SDC-3610
     Then set print form mail-to to a random address in zone 8
-    Then set print form weight to lbs 1 oz 1
+    Then set print form weight to lbs 0 oz 1
     Then select print form service FCM Letter
-    Then check extra services return receipt
-    Then uncheck extra services return receipt
+    Then check extra services electronic return receipt
+    Then uncheck extra services electronic return receipt
     Then check extra services restricted delivery
     Then uncheck extra services restricted delivery
     Then select print on Certified Mail Label - SDC-3910
-    Then check extra services electronic return receipt
-    Then uncheck extra services electronic return receipt
+    Then check extra services return receipt
+    Then uncheck extra services return receipt
     Then sign out
 
-#  @mail_bvt_ui_validation2
-#  Scenario: BVT Mail UI Validation for Certified Mail 3910
-#    Then sign-in to mail
+  @mail_bvt_ui_validation2
+  Scenario: BVT Mail UI Validation International form
+    Then sign-in to mail
+    Then select print on Shipping Label - 8 ½" x 11" Paper
+    #Then set Print form Mail-From to default
+    Then show advanced options
+    #Then set Advanced Options Mail Date to today
+    Then set print form ship-to to international address
+      | name   | company | street_address_1 | street_address_2  | city   | province | postal_code | country| phone  |
+      | random | random  | random           | random            | random | random   | random      | Italy | random  |
+    Then set print form weight to lbs 0 oz 1
+    Then select print form service PMI Flat Rate Envelope
+    Then click print form edit customs form button
+
+    Then expect customs i agree to the usps privacy act statement is unchecked
+    Then set customs package contents to Document
+#Then set customs more info to some random string
+    Then set customs package contents to Commercial Sample
+    Then expect customs package contents is Commercial Sample
+    Then set customs license number to a random string
+    Then expect customs license number is correct
+    Then set customs certificate number to some random string
+    Then expect customs certificate number is correct
+    Then set customs invoice number to a random string
+    Then expect customs invoice number is correct
+
+    Then set customs non-delivery options to Treat as abandoned
+    Then expect customs non-delivery options is Treat as abandoned
+
+    Then set customs internal transaction number to Required
+    Then expect customs internal transaction number is Required
+
+    Then set customs itn number to ITN123
+
+    Then add customs associated item 1, description Item 1, qty 1, Price 1, Made In United States, Tariff 1
+    Then add customs associated item 2, description Item 2, qty 2, Price 2, Made In Japan, Tariff 2
+    Then add customs associated item 3, description Random String, qty 3, Price 3, Made In Canada, Tariff 3
+
+    Then check customs form i agree to the usps privacy act statement
+    Then close customs information form
+
+    Then click print form edit customs form button
+    Then pause for 1 second
+    Then expect customs package contents is Commercial Sample
+    Then expect customs license number is correct
+    Then expect customs certificate number is correct
+    Then expect customs invoice number is correct
+
+    Then expect customs non-delivery options is Treat as abandoned
+    Then expect customs internal transaction number is Required
+    Then expect customs i agree to the usps privacy act statement is checked correct
+
+    Then expect customs associated item 1 Description is correct
+    Then expect customs associated item 1 Quantity is correct
+    Then expect customs associated item 1 Unit Price is correct
+    Then expect customs associated item 1 Made In is correct
+    Then expect customs associated item 1 Tariff is correct
+
+    Then expect customs associated item 2 Description is correct
+    Then expect customs associated item 2 Quantity is correct
+    Then expect customs associated item 2 Unit Price is correct
+    Then expect customs associated item 2 Made In is correct
+
+    Then expect customs associated item 3 Description is correct
+    Then expect customs associated item 3 Quantity is correct
+    Then expect customs associated item 3 Unit Price is correct
+    Then expect customs associated item 3 Made In is correct
+    Then expect customs associated item 3 Tariff is correct
+
+    Then expect customs i agree to the usps privacy act statement is checked
+    Then expect Customs Total Value is correct
+    Then close customs information form

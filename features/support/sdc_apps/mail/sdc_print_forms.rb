@@ -65,22 +65,6 @@ module SdcMail
       class ExtraServices < SdcPage
         page_object(:button) { { xpath: '//*[@id="sdc-mainpanel-extraservicesbtn-btnInnerEl"]' } }
         page_object(:cost) { { xpath: '//*[@id="sdc-mainpanel-extraservicespricelabel"]' } }
-
-        page_object(:certified_mail_chooser) { {id: 'sdc-mainpanel-cmcheckbox-displayEl'} }
-        page_object(:certified_mail_verify) { {xpath: '//*[@id="sdc-mainpanel-cmcheckbox-bodyEl"]/..' } }
-        checkbox(:certified_mail, :certified_mail_chooser, :certified_mail_verify, 'class', 'checked')
-
-        page_object(:return_receipt_chooser) { {id: 'sdc-mainpanel-rrcheckbox-displayEl'} }
-        page_object(:return_receipt_verify) { {xpath: '//*[@id="sdc-mainpanel-rrcheckbox-bodyEl"]/..' } }
-        checkbox(:return_receipt, :return_receipt_chooser, :return_receipt_verify, 'class', 'checked')
-
-        page_object(:electronic_return_receipt_chooser) { {id: 'sdc-mainpanel-rrecheckbox-displayEl'} }
-        page_object(:electronic_return_receipt_verify) { {xpath: '//*[@id="sdc-mainpanel-rrecheckbox-bodyEl"]/..' } }
-        checkbox(:electronic_return_receipt, :electronic_return_receipt_chooser, :electronic_return_receipt_verify, 'class', 'checked')
-
-        page_object(:restricted_delivery_chooser) { {xpath: '//span[contains(@class, "sdc-mainpanel-rdcheckbox")]'} }
-        page_object(:restricted_delivery_verify) { {xpath: '//span[contains(@class, "sdc-mainpanel-rdcheckbox")]/../../..' } }
-        checkbox(:restricted_delivery, :restricted_delivery_chooser, :restricted_delivery_verify, 'class', 'checked')
       end
 
       def extra_services
@@ -117,6 +101,22 @@ module SdcMail
         checkbox(:postage, :postage_chooser, :postage_verify, 'class', 'checked')
 
         page_object(:service_commitments) { { xpath: '//*[text()="Service Commitments"]' } }
+
+        page_object(:certified_mail_chooser) { {id: 'sdc-mainpanel-cmcheckbox-displayEl'} }
+        page_object(:certified_mail_verify) { {xpath: '//*[@id="sdc-mainpanel-cmcheckbox-bodyEl"]/..' } }
+        checkbox(:certified_mail, :certified_mail_chooser, :certified_mail_verify, 'class', 'checked')
+
+        page_object(:return_receipt_chooser) { {id: 'sdc-mainpanel-rrcheckbox-displayEl'} }
+        page_object(:return_receipt_verify) { {xpath: '//*[@id="sdc-mainpanel-rrcheckbox-bodyEl"]/..' } }
+        checkbox(:return_receipt, :return_receipt_chooser, :return_receipt_verify, 'class', 'checked')
+
+        page_object(:electronic_return_receipt_chooser) { {id: 'sdc-mainpanel-rrecheckbox-displayEl'} }
+        page_object(:electronic_return_receipt_verify) { {xpath: '//*[@id="sdc-mainpanel-rrecheckbox-bodyEl"]/..' } }
+        checkbox(:electronic_return_receipt, :electronic_return_receipt_chooser, :electronic_return_receipt_verify, 'class', 'checked')
+
+        page_object(:restricted_delivery_chooser) { {xpath: '//span[contains(@class, "sdc-mainpanel-rdcheckbox")]'} }
+        page_object(:restricted_delivery_verify) { {xpath: '//span[contains(@class, "sdc-mainpanel-rdcheckbox")]/../../..' } }
+        checkbox(:restricted_delivery, :restricted_delivery_chooser, :restricted_delivery_verify, 'class', 'checked')
 
         def cost_code
           AdvancedOptionsCostCode.new
@@ -204,10 +204,10 @@ module SdcMail
 
     module InsuranceContainer
       class Insurance < SdcPage
-        text_field(:text_field, tag: :text_field) { { xpath: '//*[@id="sdc-mainpanel-insureamtnumberfield-inputEl"]' } }
-        page_object(:increment) { { xpath: '//*[@id="sdc-mainpanel-insureamtnumberfield-trigger-spinner"]//*[contains(@class, "up")]' } }
-        page_object(:decrement) { { xpath: '//*[@id="sdc-mainpanel-insureamtnumberfield-trigger-spinner"]//*[contains(@class, "down")]' } }
-        sdc_number(:oz, :text_field, :increment, :decrement)
+        text_field(:insurance_text_field, tag: :text_field) { { xpath: '//*[@id="sdc-mainpanel-insureamtnumberfield-inputEl"]' } }
+        page_object(:insurance_increment) { { xpath: '//*[@id="sdc-mainpanel-insureamtnumberfield-trigger-spinner"]//*[contains(@class, "up")]' } }
+        page_object(:insurance_decrement) { { xpath: '//*[@id="sdc-mainpanel-insureamtnumberfield-trigger-spinner"]//*[contains(@class, "down")]' } }
+        sdc_number(:insurance, :insurance_text_field, :insurance_increment, :insurance_decrement)
         page_object(:cost) { { xpath: '//*[@id="sdc-mainpanel-insurancepricelabel"]' } }
       end
 
@@ -326,7 +326,6 @@ module SdcMail
     class Envelopes < PrintFormBase
       include ExtraServicesContainer
       include InsuranceContainer
-      include ExtraServicesContainer
       include MailDateContainer
 
     end

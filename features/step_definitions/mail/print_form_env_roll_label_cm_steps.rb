@@ -26,8 +26,8 @@ Then /^set print form email tracking (.+)$/ do |value|
 end
 
 Then /^set print form insure for ([\d.]+)$/ do |value|
-  SdcMail.print_form.insure_for.set(value)
-  expect(SdcMail.print_form.insure_for.value.to_f).to eql(value.to_f)
+  SdcMail.print_form.insure_for.insurance.set(value)
+  expect(SdcMail.print_form.insure_for.insurance.value.to_f).to eql(value.to_f)
 end
 
 Then /^set print form tracking (.+)$/ do |value|
