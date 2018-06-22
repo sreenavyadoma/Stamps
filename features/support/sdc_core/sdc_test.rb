@@ -159,7 +159,7 @@ class SdcTest
                 # end
                 #
                 # #system 'mklink c:\windows\cmd.exe c:\windows\system32\cmd.exe'
-                # system "for /f 'skip=1 tokens=3' %%s in ('c:\\windows\\sysnative\\query.exe user') do (
+                # system "for /f 'skip=1 tokens=3' %%s in ('c:\\windows\\sysnative\\query.exe user  %USERNAME%') do (
                 #             %windir%\\sysnative\\tscon.exe %%s /dest:console
                 #           )"
                 # # system 'C:\Stamps\config\batch\edge_rdp_unlock.bat'
