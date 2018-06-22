@@ -41,15 +41,20 @@ Then /^initialize test parameters$/ do
 end
 
 Then /^fetch user credentials from MySQL$/ do
-  if SdcEnv.usr.downcase == 'default'
-    raise "USR=default is not a valid username for #{SdcEnv.url}"
+  unless TestData.hash[:username]
+    if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default'
+      credentials = SdcUserCredentials.fetch(SdcEnv.scenario.tags[0].name)
+      usr = credentials[:username]
+      pw = credentials[:password]
+    else
+      usr = SdcEnv.usr
+      pw = SdcEnv.pw
+    end
+    expect(usr).to be_truthy
+    expect(pw).to be_truthy
+    TestData.hash[:username] = usr
+    TestData.hash[:password] = pw
   end
-  usr = SdcEnv.usr
-  pw = SdcEnv.pw
-  expect(usr).to be_truthy
-  expect(pw).to be_truthy
-  TestData.hash[:username] = usr
-  TestData.hash[:password] = pw
 end
 
 Then /^sign-in to orders$/ do
