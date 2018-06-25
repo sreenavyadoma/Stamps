@@ -499,3 +499,16 @@ Then /PP: dashboard page export data for (\d+) dates ranges$/ do |number|
 
 end
 
+
+Then /PP: open CSV file$/ do
+  require "csv"
+
+  output = CSV.read("C:/Stamps/download/test.csv").map do |row|
+    row.to_csv(:col_sep => "\t")
+  end
+  puts output
+
+end
+
+
+
