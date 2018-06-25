@@ -12,7 +12,7 @@ Feature: Add Missing Field Validation
     Then set order details email to @@
     Then set order details service to PM Large/Thick Envelope
     Then expect Order Details Domestic Email data error tooltip is "Please enter a valid email address"
-    Then expect Orders Grid Ship Cost error to contain "Please enter a valid email address"
+    #Then expect orders grid Ship Cost error to contain "Please enter a valid email address"
 
   #@validate_length
   #Scenario: Add Missing Validation Logic for Dimensions (Length) where service = Priority Mail AND Zone > 5
@@ -59,6 +59,6 @@ Feature: Add Missing Field Validation
     Then set order details length to 6
     Then set order details width to 6
     Then expect Order Details Dimensions Height data error tooltip is "Each dimension must be greater than 0"
-    Then expect Orders Grid Ship Cost error to contain "Each dimension must be greater than 0"
+    #Then expect orders grid Ship Cost error to contain "Each dimension must be greater than 0"
 
     Then sign out

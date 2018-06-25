@@ -10,10 +10,10 @@ Then /^add order (\d+)$/ do |count|
   toolbar = SdcOrders.toolbar
   order_details = SdcOrders.order_details
   toolbar.add.wait_until_present(timeout: 10)
-  SdcOrders.grid.body.wait_until_present(timeout: 20)
+  SdcGrid.body.wait_until_present(timeout: 30)
   toolbar.add.click
-  order_details.title.wait_until_present(timeout: 30)
-  order_details.order_id.wait_until_present(timeout: 10)
+  order_details.title.wait_until_present(timeout: 60)
+  order_details.order_id.wait_until_present(timeout: 20)
   TestData.hash[:order_id][count.to_i] = order_details.order_id.text_value.parse_digits
 
   #todo expect(stamps.orders.orders_grid.grid_column(:checkbox).checked?(1)).to be(true), "Orders Grid checkbox 1 is unchecked!"
