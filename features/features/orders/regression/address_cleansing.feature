@@ -15,11 +15,11 @@ Feature: Address Cleansing
     Then set order details ounces to 1
     Then set order details pounds to 1
     Then pause for 2 seconds
-    Then expect orders grid zip is 90245
-    Then expect orders grid recipient is Address Cleansing
-    Then expect orders grid company is No Zip
-    Then expect orders grid city is El Segundo
-    Then expect orders grid state is CA
+    #Then expect orders grid zip is 90245
+    #Then expect orders grid recipient is Address Cleansing
+    #Then expect orders grid company is No Zip
+    #Then expect orders grid city is El Segundo
+    #Then expect orders grid state is CA
 
     Then add new order
     Then set order details ship-to to random address between zone 1 and 4

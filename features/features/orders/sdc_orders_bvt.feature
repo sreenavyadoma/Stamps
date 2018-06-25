@@ -39,10 +39,10 @@ Feature:  BVT tests for Orders
     Then set order details height to 1
 #  # Orders Grid Operations
     #Then uncheck Orders Grid row 1
-    #Then expect orders grid pounds is 1
-    #Then expect orders grid ounces is 1
-    #Then expect orders grid weight is 1 lb. 1 oz.
-    #Then expect orders grid insured value is $1.00
+    ##Then expect orders grid pounds is 1
+    ##Then expect orders grid ounces is 1
+    ##Then expect orders grid weight is 1 lb. 1 oz.
+    ##Then expect orders grid insured value is $1.00
     #Then sign-out of SDC Website
 
 
@@ -212,9 +212,9 @@ Feature:  BVT tests for Orders
     Then set order details length to 1
     Then set order details width to 1
     Then set order details height to 1
-    Then expect orders grid service is Priority Mail
-    Then expect orders grid service is PM Package
-    Then expect orders grid service is correct
+    #Then expect orders grid service is Priority Mail
+    #Then expect orders grid service is PM Package
+    #Then expect orders grid service is correct
 
     Then set order details reference number to Update Orders To ShipStation
     Then on order details form, add item 1, qty 1, id Item 1 SKU, description Item 1 Description
@@ -252,28 +252,28 @@ Feature:  BVT tests for Orders
     Then expect order details tracking cost is correct
     Then expect order details reference number is correct
 
-    Then expect orders grid store is Manual Orders
-    Then expect orders grid order id is the same as details form order id
-    Then expect orders grid ship cost is the same as details form ship cost
-    Then expect orders grid age is < 24 hours
-    Then expect orders grid order date is populated
-    Then expect orders grid recipient is correct
-    Then expect orders grid company is Company Name
-    Then expect orders grid address is 777 N Orange Ave Apt 100
-    Then expect orders grid city is Orlando
-    Then expect orders grid state is FL
-    Then expect orders grid zip is 32801-1175
-    Then expect orders grid phone is 888-888-8888
-    Then expect orders grid email is rtest@stamps.com
-    Then expect orders grid qty. is 1
-    Then expect orders grid item sku is Item 1 SKU
-    Then expect orders grid item name is Item 1 Description
-    Then expect orders grid service is Priority Mail
-    Then expect orders grid weight is 1 lb. 1 oz.
-    Then expect orders grid order status is Awaiting Shipment
-    Then expect orders grid pounds is 1
-    Then expect orders grid ounces is 1
-    Then expect orders grid insured value is $100.00
+    #Then expect orders grid store is Manual Orders
+    #Then expect orders grid order id is the same as details form order id
+    #Then expect orders grid ship cost is the same as details form ship cost
+    #Then expect orders grid age is < 24 hours
+    #Then expect orders grid order date is populated
+    #Then expect orders grid recipient is correct
+    #Then expect orders grid company is Company Name
+    #Then expect orders grid address is 777 N Orange Ave Apt 100
+    #Then expect orders grid city is Orlando
+    #Then expect orders grid state is FL
+    #Then expect orders grid zip is 32801-1175
+    #Then expect orders grid phone is 888-888-8888
+    #Then expect orders grid email is rtest@stamps.com
+    #Then expect orders grid qty. is 1
+    #Then expect orders grid item sku is Item 1 SKU
+    #Then expect orders grid item name is Item 1 Description
+    #Then expect orders grid service is Priority Mail
+    #Then expect orders grid weight is 1 lb. 1 oz.
+    #Then expect orders grid order status is Awaiting Shipment
+    #Then expect orders grid pounds is 1
+    #Then expect orders grid ounces is 1
+    #Then expect orders grid insured value is $100.00
 
     Then click orders toolbar print button
     Then in print modal, click close button
@@ -294,9 +294,9 @@ Feature:  BVT tests for Orders
     Then on order details form, add item 1, qty 1, id ID 1, description Description 1
     Then on order details form, add item 2, qty 2, id random string, description random string
     Then on order details form, add item 3, qty 3, id ID 3, description random string
-    Then expect orders grid service is Priority Mail International
-    Then expect orders grid service is PMI Package/Flat/Thick Envelope
-    Then expect orders grid service is correct
+    #Then expect orders grid service is Priority Mail International
+    #Then expect orders grid service is PMI Package/Flat/Thick Envelope
+    #Then expect orders grid service is correct
 
     Then click order details form customs form button
     Then expect customs i agree to the usps privacy act statement is unchecked
@@ -380,25 +380,25 @@ Feature:  BVT tests for Orders
     Then expect Customs Total Value is correct
     Then close customs information form
 
-    Then expect orders grid recipient is correct
-    Then expect orders grid company is correct
-    Then expect Orders Grid Country is correct
-    Then expect orders grid address is correct
-    Then expect orders grid city is correct
-    Then expect orders grid state is correct
-    Then expect orders grid zip is correct
-    Then expect orders grid phone is correct
-    Then expect orders grid email is correct
+    #Then expect orders grid recipient is correct
+    #Then expect orders grid company is correct
+    #Then expect orders grid Country is correct
+    #Then expect orders grid address is correct
+    #Then expect orders grid city is correct
+    #Then expect orders grid state is correct
+    #Then expect orders grid zip is correct
+    #Then expect orders grid phone is correct
+    #Then expect orders grid email is correct
 
-    Then expect orders grid qty. is 6
-    Then expect orders grid item sku is Multiple
-    Then expect orders grid item name is Multiple
+    #Then expect orders grid qty. is 6
+    #Then expect orders grid item sku is Multiple
+    #Then expect orders grid item name is Multiple
 
-    Then expect orders grid service is Priority Mail International
-    Then expect orders grid pounds is correct
-    Then expect orders grid ounces is correct
+    #Then expect orders grid service is Priority Mail International
+    #Then expect orders grid pounds is correct
+    #Then expect orders grid ounces is correct
     Then expect order details insure-for is correct
-    Then expect orders grid order status is Awaiting Shipment
+    #Then expect orders grid order status is Awaiting Shipment
 
     Then pause for 2 second
     Then sign out
@@ -414,12 +414,12 @@ Feature:  BVT tests for Orders
     Then set order details ounces to 1
     Then blur out on order details form
     Then pause for 2 seconds
-    Then expect orders grid recipient is Euan Davidson
-    Then expect orders grid company is Betfair
-    Then expect orders grid address is 1350 Market Street
-    Then expect orders grid city is San Francisco
-    Then expect orders grid state is CA
-    Then expect orders grid zip is 94102
+    #Then expect orders grid recipient is Euan Davidson
+    #Then expect orders grid company is Betfair
+    #Then expect orders grid address is 1350 Market Street
+    #Then expect orders grid city is San Francisco
+    #Then expect orders grid state is CA
+    #Then expect orders grid zip is 94102
     Then sign out
 
   @bvt_purchasing
@@ -442,7 +442,7 @@ Feature:  BVT tests for Orders
   Scenario: BVT Bulk Update International
     Then sign-in to orders
   # Order #1 (Domestic)
-    Then in Orders Grid, Sort Order Date in Descending Order
+    #Then in Orders Grid, Sort Order Date in Descending Order
     Then add order 1
     Then blur out on order details form
     Then set order details ship-to to random address in zone 1
@@ -527,8 +527,8 @@ Feature:  BVT tests for Orders
     Then select orders filter shipped tab
     Then select orders filter awaiting shippment tab
     Then select orders filter shipped tab
-    Then in Orders Grid, Sort Order Date in Descending Order
-    Then expect cached order id is in orders grid row 1
+    #Then in Orders Grid, Sort Order Date in Descending Order
+    #Then expect cached order id is in orders grid row 1
     Then sign out
 
   @bvt_orders_ui_validation

@@ -203,12 +203,12 @@ module Stamps
           cache[:company]
         end
         def street_address_1
-          cache[:street_address_1] = StampsTextbox.new(driver.text_field name: 'Street1') if cache[:street_address_1].nil? || !cache[:street_address_1].present?
-          cache[:street_address_1]
+          cache[:street_address1] = StampsTextbox.new(driver.text_field name: 'Street1') if cache[:street_address1].nil? || !cache[:street_address1].present?
+          cache[:street_address1]
         end
         def street_address_2
-          cache[:street_address_2] = StampsTextbox.new(driver.text_field name: 'Street2') if cache[:street_address_2].nil? || !cache[:street_address_2].present?
-          cache[:street_address_2]
+          cache[:street_address2] = StampsTextbox.new(driver.text_field name: 'Street2') if cache[:street_address2].nil? || !cache[:street_address2].present?
+          cache[:street_address2]
         end
         def city
           cache[:city] = StampsTextbox.new(driver.text_field(name: 'City')) if cache[:city].nil? || !cache[:city].present?

@@ -21,8 +21,8 @@ Feature: Set Print Ship Date up to 5 days from now in Calendar
     Then click print modal print button
     Then pause for 2 seconds
     Then select Filter Panel tab Shipped
-    Then expect Orders Grid Ship Date for this order is correct
-    Then expect Orders Grid Date Printed for this order is correct
+    #Then expect orders grid Ship Date for this order is correct
+    #Then expect orders grid Date Printed for this order is correct
     Then sign out
 
   @print_dialog_ship_date_calendar
@@ -42,8 +42,8 @@ Feature: Set Print Ship Date up to 5 days from now in Calendar
     Then click print modal print button
     Then pause for 2 seconds
     Then select Filter Panel tab Shipped
-    Then expect Orders Grid Date Printed for this order is correct
-    Then expect Orders Grid Ship Date for this order is correct
+    #Then expect orders grid Date Printed for this order is correct
+    #Then expect orders grid Ship Date for this order is correct
     Then sign out
 
 
@@ -63,8 +63,8 @@ Feature: Set Print Ship Date up to 5 days from now in Calendar
     Then click print modal print button
     Then pause for 2 seconds
     Then select Filter Panel tab Shipped
-    Then expect Orders Grid Date Printed for this order is correct
-    Then expect Orders Grid Ship Date for this order is correct
+    #Then expect orders grid Date Printed for this order is correct
+    #Then expect orders grid Ship Date for this order is correct
     Then sign out
 
 
@@ -84,8 +84,8 @@ Feature: Set Print Ship Date up to 5 days from now in Calendar
     Then click print modal print button
     Then pause for 2 seconds
     Then select Filter Panel tab Shipped
-    Then expect Orders Grid Date Printed for this order is correct
-    Then expect Orders Grid Ship Date for this order is correct
+    #Then expect orders grid Date Printed for this order is correct
+    #Then expect orders grid Ship Date for this order is correct
     Then sign out
 
 
@@ -105,6 +105,6 @@ Feature: Set Print Ship Date up to 5 days from now in Calendar
     Then click print modal print button
     Then pause for 2 seconds
     Then select Filter Panel tab Shipped
-    Then expect Orders Grid Date Printed for this order is correct
-    Then expect Orders Grid Ship Date for this order is correct
+    #Then expect orders grid Date Printed for this order is correct
+    #Then expect orders grid Ship Date for this order is correct
     Then sign out
