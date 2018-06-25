@@ -12,6 +12,10 @@ module SdcGrid
       @@columns[property]
     end
 
+    def grid_container_locator_str
+      '//div[@class="x-grid-item-container"]'
+    end
+
     def scroll_to_column(column)
       method_name = "scroll_to_#{column.to_s}"
       column_name = column_text[column]
@@ -32,7 +36,7 @@ module SdcGrid
     end
 
     def count
-      xpath = '//div[starts-with(@id, "ordersGrid-")][contains(@id, "-normal-body")]//table'
+      xpath = "#{grid_container_locator_str}//table"
       grid_row_ct = page_object(:grid_row_ct) { { xpath: xpath } }
       begin
         ct = grid_row_ct.size.to_i
@@ -56,8 +60,7 @@ module SdcGrid
 
     def grid_field(column, row)
       column_num = column_number(column).to_s
-      parent = '//div[starts-with(@id, "ordersGrid-")][contains(@id, "innerCt")]'
-      xpath = "#{parent}//table[#{row.to_s}]//tbody//td[#{column_num}]//div"
+      xpath = "#{grid_container_locator_str}//table[#{row.to_s}]//tbody//td[#{column_num}]//div"
       coordinates = "col#{column}xrow#{row}"
       page_object(coordinates.to_sym) { { xpath: xpath } }
     end
@@ -69,7 +72,7 @@ module SdcGrid
 
     def column_number(column)
       if get(column).nil?
-        xpath = '//div[starts-with(@id, "gridcolumn-")][contains(@id, "-textEl")]//span'
+        xpath = '//span[@class="x-column-header-text-inner"]'
         columns = page_objects(:columns) { { xpath: xpath } }
         columns.each_with_index do |field, index|
           element = ::SdcElement.new(field)
@@ -90,7 +93,7 @@ module SdcGrid
     def row_number(order_id)
       scroll_to_column(:order_id)
       col_num = column_number(:order_id)
-      xpath = "//div[starts-with(@id, 'ordersGrid-')][contains(@id, 'innerCt')]//tbody//td[#{col_num}]//div"
+      xpath = "#{grid_container_locator_str}//tbody//td[#{col_num}]//div"
       divs = page_objects(:row_number_divs) { { xpath: xpath } }
       divs.each_with_index do |field, index|
         return index + 1 if field.text.include?(order_id)
@@ -170,6 +173,87 @@ module SdcGrid
     end
   end
 
+  class SdcGridCheckBox < GridItem
+    sdc_param(:chooser_xpath) { '//*[@id="sdc-mainpanel-calculatepostageradio-displayEl"]' }
+    page_object(:chooser) { { xpath: '//div[contains(@class, "x-column-header-checkbox")]//span' } }
+    page_object(:verify) { { xpath: '//div[contains(@class, "x-column-header-checkbox")]' } }
+    chooser(:checkbox_header, :chooser, :verify, :class, 'checker-on')
+
+    def scroll_into_view
+      scroll_to_column(:checkbox)
+    end
+
+    def checkbox(row)
+      scroll_into_view
+      chooser_xpath = "//table[#{row}]//div[@class='x-grid-row-checker']"
+      chooser_name = "grid_chooser_#{row}"
+      page_object(chooser_name) { { xpath: chooser_xpath } }
+      verify_xpath = "#{grid_container_locator_str}//table[1]"
+      verify_name = "grid_verify_#{row}"
+      page_object(verify_name) { { xpath: verify_xpath } }
+      grid_checkbox_name = "grid_checkbox_#{row}"
+      chooser(grid_checkbox_name, chooser_name, verify_name, :class, 'selected')
+      instance_eval(grid_checkbox_name)
+    end
+
+    def check_order_id(order_id)
+      scroll_into_view
+      row = row_number(order_id)
+      check(row)
+    end
+
+    def uncheck_order_id(order_id)
+      scroll_into_view
+      row = row_number(order_id)
+      uncheck(row)
+    end
+
+    def order_id_checked?(order_id)
+      scroll_into_view
+      row = row_number(order_id)
+      checked?(row)
+    end
+
+    def check(row)
+      checkbox = checkbox(row)
+      checkbox.check
+    end
+
+    def uncheck(row)
+      checkbox = checkbox(row)
+      checkbox.uncheck
+    end
+
+    def checked?(row)
+      checkbox = checkbox(row)
+      checkbox.checked?
+    end
+
+  end
+
+  class SdcStore < GridItem
+
+    def scroll_into_view
+      scroll_to_column(:hash)
+    end
+
+    def row(row)
+      grid_text(:hash, row)
+    end
+
+    def data(order_id)
+      grid_text_by_id(:hash, order_id)
+    end
+
+    def sort_ascending
+      sort_order(:hash, :sort_ascending)
+    end
+
+    def sort_descending
+      sort_order(:hash, :sort_descending)
+    end
+  end
+
   class SdcOrderId < GridItem
 
     def exist? order_id
@@ -198,29 +282,6 @@ module SdcGrid
       grid_text(:order_id, row)
     end
 
-  end
-
-  class SdcStore < GridItem
-
-    def scroll_into_view
-      scroll_to_column(:hash)
-    end
-
-    def row(row)
-      grid_text(:hash, row)
-    end
-
-    def data(order_id)
-      grid_text_by_id(:hash, order_id)
-    end
-
-    def sort_ascending
-      sort_order(:hash, :sort_ascending)
-    end
-
-    def sort_descending
-      sort_order(:hash, :sort_descending)
-    end
   end
 
   class SdcAge < GridItem
@@ -785,133 +846,6 @@ module SdcGrid
     def data(order_id)
       grid_text_by_id(:date_printed, order_id)
     end
-  end
-
-  class SdcGridCheckBox < GridItem
-
-    def scroll_into_view
-      StampsField.new(driver.spans(class: "x-column-header-text-inner").first).scroll_into_view
-    end
-
-    def checkbox_header
-      scroll_into_view
-      checkbox_field = driver.spans(class: "x-column-header-text-inner").first
-      check_verify_field = driver.div(css: "div[class*=x-column-header-checkbox]")
-      attribute = 'class'
-      attrib_value_check = "checker-on"
-      Stamps::WebApps::StampsCheckbox.new checkbox_field, check_verify_field, attribute, attrib_value_check
-    end
-
-    def check_all(*args)
-      scroll_into_view
-      if args.length == 1
-        if args[0].is_a? Hash
-          rows = args[0]
-          log.info "Restoring #{} checked orders..."
-        else
-          raise ArgumentError, "This method expects a Hash of Web Elements, got #{args[0].class}"
-        end
-        rows.each do |hash_field|
-          row_number = hash_field[0]
-          checked = hash_field[1]
-          if checked
-            check(row_number)
-            log.info "Row #{row_number} #{checked?(row_number)}"
-          end
-        end
-      else
-        checkbox_header.check
-      end
-    end
-
-    def uncheck_all
-      scroll_into_view
-      checkbox_header.uncheck
-    end
-
-    def row(row)
-      grid_text(:checkbox, row)
-    end
-
-    def edit(order_id)
-      check row_number(order_id)
-    end
-
-    def edit_order(order_id)
-      edit(order_id)
-    end
-
-    def check_order_id(order_id)
-      check(row_number(order_id))
-    end
-
-    def uncheck_order_id(order_id)
-      uncheck(row_number(order_id))
-    end
-
-    def checkbox_field(row)
-      StampsCheckbox.new(
-          driver.div(css: "[id^=ordersGrid] table:nth-child(#{row.to_s}) [class=x-grid-row-checker]"),
-          driver.table(css: "[id*=Grid] table:nth-child(#{row.to_s})"),
-          'class', 'selected')
-    end
-
-    def check(row)
-      begin
-        scroll_into_view
-        checkbox_field(row).check
-      end unless checked?(row)
-      checked?(row)
-    end
-
-    def uncheck(row)
-      if checked?(row)
-        scroll_into_view
-        if size > 0
-          checkbox_field(row).uncheck
-        end
-      end
-      checked?(row)
-    end
-
-    def checked?(row)
-      scroll_into_view
-      checkbox_field(row).checked?
-    end
-
-    def order_id_checked?(order_number)
-      scroll_into_view
-      checked?(row_number(order_number))
-    end
-
-    def checked_rows(*args)
-      cache_count = 5
-      if args.length == 1
-        cache_count = args[0]
-      end
-
-      #log.info "Caching checked rows..."
-      checked_rows = {}
-      grid_total = count
-      cache_item_count = if cache_count > 2 && cache_count < grid_total
-        cache_count
-                         elsif cache_count > grid_total
-        grid_total
-                         else
-        cache_count
-                         end
-      #log.info "Number of rows to check:  #{cache_item_count}"
-      1.upto(cache_item_count) { |row|
-        checked = checked?(row)
-        if checked
-          checked_rows[row] = checked
-        end
-        log.info "Row #{row} Checked? #{checked}.  Stored:  #{checked_rows[row]}"
-      }
-      #log.info "Checked rows cached."
-      checked_rows
-    end
-
   end
 
   class SdcTrackingService < GridItem

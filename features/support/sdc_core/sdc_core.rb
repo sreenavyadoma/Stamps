@@ -224,6 +224,12 @@ class SdcPage < WatirDrops::PageObject
                       instance_eval(decrement.to_s, __FILE__, __LINE__))
       end
     end
+
+    def sdc_param(name)
+      define_method(name) do |*args|
+        yield(*args)
+      end
+    end
   end
 
   define_method :sdc_number do |*args|
@@ -237,6 +243,8 @@ class SdcPage < WatirDrops::PageObject
 
     instance_eval(args.first.to_s, __FILE__, __LINE__)
   end
+  alias checkbox chooser
+  alias radio chooser
 
   define_method :page_objects do |*args, &block|
     self.class.page_objects(*args, &block)
@@ -249,6 +257,11 @@ class SdcPage < WatirDrops::PageObject
 
     instance_eval(args.first.to_s, __FILE__, __LINE__)
   end
+  alias text_field page_object
+  alias button page_object
+  alias label page_object
+  alias selection page_object
+  alias link page_object
 
 end
 

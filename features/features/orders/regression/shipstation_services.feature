@@ -8,7 +8,7 @@
   Scenario:  ShipStation & Services
     Then add new order
     Then set order details ship-from to default
-    Then check Orders Grid row 1
+    Then check row 1
 
     Then set order details ship-to to random address between zone 1 and 4
 

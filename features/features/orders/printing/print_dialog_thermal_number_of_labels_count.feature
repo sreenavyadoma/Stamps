@@ -28,9 +28,9 @@ Feature:  Requires x-number of label sheets
     Then set order details service to PM Small Flat Rate Box
     Then set order details weight to 1 lb 1 oz
 
-    Then check Orders Grid row 1
-    Then check Orders Grid row 2
-    Then check Orders Grid row 3
+    Then check row 1
+    Then check row 2
+    Then check row 3
 
     Then click orders toolbar print button
     Then set print modal print-on to Roll - 418x614

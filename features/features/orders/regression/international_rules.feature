@@ -10,7 +10,7 @@ Feature: All International Rules
     Then add new order
     Then set order details ship-from to default
     Then set Order Details Domestic Ship-To Country to Australia
-    Then check Orders Grid row 1
+    Then check row 1
 
     Then expect Order Details International Name data error tooltip is "A first and last name of at least two characters each is required"
     Then expect Order Details International Company data error tooltip is "Company name must be at least two characters long"

@@ -48,7 +48,7 @@ Feature: 25 orders
     Then set order details service to FCM Large Envelope/Flat
     Then set order details insure-for to $15.00
     Then set Order Details Tracking to "None"
-    Then check Orders Grid row 1
+    Then check row 1
 
     Then add new order
     Then expect Order Details Order ID is truthy
@@ -61,14 +61,14 @@ Feature: 25 orders
     Then set order details service to First-Class Mail Package/Thick Envelope
     Then set order details insure-for to $45.00
     Then set Order Details Tracking to USPS Tracking
-    Then check Orders Grid row 1
+    Then check row 1
 
     #Priority Mail
     Then add new order
     Then expect Order Details Order ID is truthy
     Then set order details ship-from to default
     Then set order details ship-to to random address between zone 1 and 4
-    Then check Orders Grid row 1
+    Then check row 1
     Then set order details ounces to 3
     Then set order details length to 1
     Then set order details width to 1
