@@ -98,9 +98,9 @@ module Stamps
           @rule_name
         end
 
-        def check_box
-          @check_box = StampsField.new(driver.span(text: '')) if @check_box.nil? || !@check_box.present?
-          @check_box
+        def checkbox
+          @checkbox = StampsField.new(driver.span(text: '')) if @checkbox.nil? || !@checkbox.present?
+          @checkbox
         end
 
         def close
@@ -137,9 +137,9 @@ module Stamps
           @rule_name
         end
 
-        def check_box
-          @check_box = StampsField.new(driver.span(text: '')) if @check_box.nil? || !@check_box.present?
-          @check_box
+        def checkbox
+          @checkbox = StampsField.new(driver.span(text: '')) if @checkbox.nil? || !@checkbox.present?
+          @checkbox
         end
 
         def close

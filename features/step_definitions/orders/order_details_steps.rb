@@ -265,14 +265,14 @@ Then /^expect order details international ship-to company is (?:correct|(.*))$/ 
 end
 
 Then /^expect order details international ship-to address 1 is (?:correct|(.*))$/ do |expectation|
-  expectation = TestData.hash[:street_address_1] if expectation.nil?
+  expectation = TestData.hash[:street_address1] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   step 'expect order details is present'
   expect(stamps.orders.order_details.ship_to.international.address_1.text).to eql expectation
 end
 
 Then /^expect order details international ship-to address 2 is (?:correct|(.*))$/ do |expectation|
-  expectation = TestData.hash[:street_address_2] if expectation.nil?
+  expectation = TestData.hash[:street_address2] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   step 'expect order details is present'
   expect(stamps.orders.order_details.ship_to.international.address_2.text).to eql expectation

@@ -424,7 +424,7 @@ Feature:  All Store Management
     Then in Orders Toolbar, Refresh Orders
     Then select Filter Panel tab Shipped
     Then select Filter Panel tab Awaiting Shipment
-    Then expect orders grid store is random
+    #Then expect orders grid store is random
 
     Then Manage Stores: Open Modal
 
@@ -443,7 +443,7 @@ Feature:  All Store Management
     Then in Orders Toolbar, Refresh Orders
     Then select Filter Panel tab Shipped
     Then select Filter Panel tab Awaiting Shipment
-    Then expect orders grid store is random
+    #Then expect orders grid store is random
 
     Then Manage Stores: Open Modal
 
@@ -462,7 +462,7 @@ Feature:  All Store Management
     Then in Orders Toolbar, Refresh Orders
     Then select Filter Panel tab Shipped
     Then select Filter Panel tab Awaiting Shipment
-    Then expect orders grid store is random
+    #Then expect orders grid store is random
 
     Then Manage Stores: Open Modal
 
