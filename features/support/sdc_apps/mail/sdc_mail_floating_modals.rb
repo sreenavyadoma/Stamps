@@ -161,11 +161,11 @@ module SdcMail
   class SdcManageFavorites < SdcPage
     page_object(:title) { {xpath: '//div[text()="Manage Favorites"]'} }
     page_object(:rename) { {xpath: '//*[text()="Rename"]'} }
-    page_object(:delete, tag: :text_field) { {xpath: '//*[text()="Delete"]'} }
+    page_object(:delete) { {xpath: '//*[text()="Delete"]'} }
     page_object(:x_btn) { {xpath: '//div[text()="Manage Favorites"]/../..//*[contains(@class, "close")]'} }
 
-    def seletion_element(name, num)
-      page_object(name) { {xpath: "(//*[contains(@id, 'managefavoritesmodal')]//tr)[#{num}]"} }
+    def selection_element(name, num)
+      page_object(name) { {xpath: "(//*[contains(@id, 'managefavoritesmodal')]//img)[#{num}]"} }
     end
 
     def rename_favorite
@@ -185,7 +185,7 @@ module SdcMail
 
     class SdcManageFavoritesDelete < SdcPage
       page_object(:title) { {xpath: '//div[text()="Delete Favorite"]'} }
-      page_object(:delete) { {xpath: '//*[text()="Delete"]'} }
+      page_object(:delete) { {xpath: '//*[text()="Delete"][contains(@class, "primary")]'} }
       page_object(:x_btn) { {xpath: '//div[text()="Delete Favorite"]/../..//*[contains(@class, "close")]'} }
     end
   end

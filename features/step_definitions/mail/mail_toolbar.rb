@@ -8,7 +8,7 @@ Then /^click mail toolbar feedback$/ do
 end
 
 Then /^click mail toolbar settings$/ do
-  SdcMail.toolbar.feedback.click
+  SdcMail.toolbar.settings.click
   step 'expect settings modal is present'
 end
 
@@ -23,6 +23,11 @@ end
 
 Then /^click mail toolbar print dropdown$/ do
   SdcMail.toolbar.print_dropdown.click
+  step 'hover on mail toolbar print tooltip'
+end
+
+Then /^hover on mail toolbar print tooltip$/ do
+  SdcMail.toolbar.print_tooltip.hover
 end
 
 Then /^click mail toolbar print (?:postage|label|stamps|envelope)$/ do
@@ -42,7 +47,12 @@ end
 
 Then /^click mail toolbar favorites$/ do
   step 'expect mail toolbar favorites is present'
-  SdcMail.toolbar.feedback.click
+  SdcMail.toolbar.favorites.click
+  step 'hover on mail toolbar favorites tooltip'
+end
+
+Then /^hover on mail toolbar favorites tooltip$/ do
+  SdcMail.toolbar.favorites_tooltip.hover
 end
 
 Then /^expect mail toolbar favorites is present$/ do

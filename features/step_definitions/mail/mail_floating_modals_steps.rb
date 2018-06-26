@@ -95,6 +95,8 @@ end
 
 Then /^select on manage favorites modal row (\d+)$/ do |num|
   SdcMail.modals.manage_favorites.selection_element("selection", num).click
+  # SdcMail.modals.manage_favorites.selection_element("selection", num)
+  # SdcMail.modals.manage_favorites.selection.click
 end
 
 Then /^click manage favorites modal rename$/ do
@@ -108,24 +110,24 @@ Then /^close manage favorites modal$/ do
 end
 
 Then /^expect manage favorites rename modal is present$/ do
-  expect(SdcMail.modals.manage_favorites.rename_favorites.title).to be_present, "Manage favorites rename is not present"
+  expect(SdcMail.modals.manage_favorites.rename_favorite.title).to be_present, "Manage favorites rename is not present"
 end
 
 Then /^expect manage favorites rename modal is not present$/ do
-  expect(SdcMail.modals.manage_favorites.rename_favorites.title).to be_present, "Manage favorites rename is still present"
+  expect(SdcMail.modals.manage_favorites.rename_favorite.title).not_to be_present, "Manage favorites rename is still present"
 end
 
 Then /^expect manage favorites delete modal is present$/ do
-  expect(SdcMail.modals.manage_favorites.delete_favorites.title).to be_present, "Manage favorites delete is not present"
+  expect(SdcMail.modals.manage_favorites.delete_favorite.title).to be_present, "Manage favorites delete is not present"
 end
 
 Then /^expect manage favorites delete modal is not present$/ do
-  expect(SdcMail.modals.manage_favorites.delete_favorites.title).to be_present, "Manage favorites delete is still present"
+  expect(SdcMail.modals.manage_favorites.delete_favorite.title).not_to be_present, "Manage favorites delete is still present"
 end
 
 Then /^set favorite modal rename name to random$/ do
   str = TestHelper.rand_alpha_numeric(min: 6, max: 18)
-  SdcMail.modals.save_as_favorite.rename_favorite.name.set(str)
+  SdcMail.modals.manage_favorites.rename_favorite.name.set(str)
   step "expect favorite modal rename name is #{str}"
 end
 
@@ -134,7 +136,7 @@ Then /^expect favorite modal rename name is (\w+)$/ do |value|
 end
 
 Then /^save favorite modal rename$/ do
-  SdcMail.modals.save_as_favorite.rename_favorite.save.click
+  SdcMail.modals.manage_favorites.rename_favorite.save.click
   step "expect manage favorites rename modal is not present"
 end
 
@@ -144,7 +146,7 @@ Then /^click manage favorites modal delete$/ do
 end
 
 Then /^click manage favorites delete modal delete button$/ do
-  SdcMail.modals.save_as_favorite.delete_favorite.delete.click
+  SdcMail.modals.manage_favorites.delete_favorite.delete.click
   step "expect manage favorites delete modal is not present"
 end
 

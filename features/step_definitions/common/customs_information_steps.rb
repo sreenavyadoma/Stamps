@@ -409,7 +409,7 @@ Then /^expect restrictions modal is present$/ do
 end
 
 Then /^expect restrictions modal is not present$/ do
-  expect(SdcWebsite.restrictions.title).to be_present, 'Restrictions modal is still present'
+  expect(SdcWebsite.restrictions.title).not_to be_present, 'Restrictions modal is still present'
 end
 
 Then /^click restrictions modal ok$/ do

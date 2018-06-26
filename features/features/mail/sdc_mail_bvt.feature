@@ -450,7 +450,7 @@ Feature:  Mail BVT - Authentication
     Then uncheck extra services return receipt
     Then sign out
 
-  @mail_bvt_ui_validation
+  @mail_bvt_ui_validation2
   Scenario: BVT Mail UI Validation International form
     Then sign-in to mail
     Then select print on Shipping Label - 8 ½" x 11" Paper
@@ -538,14 +538,16 @@ Feature:  Mail BVT - Authentication
   @mail_bvt_ui_validation
   Scenario: BVT Mail UI Validation of Toolbar
     Then sign-in to mail
+    Then select print on Shipping Label - 8 ½" x 11" Paper
     Then expect mail toolbar print is present
+    Then set print form mail-to to a random address in zone 8
+    Then select print form service PM Package
+    Then set print form weight to lbs 0 oz 1
+    Then set print form dimensions to length 2 width 2 height 2
     Then click mail toolbar print dropdown
-    Then click mail toolbar print label
     Then expect mail toolbar print label is present
     Then expect mail toolbar print sample is present
-
     Then click mail toolbar favorites
-    Then click mail toolbar save as favorite
     Then click mail toolbar save as favorite
     Then set save as favorite modal name to random
     Then check save as favorite modal include delivery address
@@ -556,24 +558,12 @@ Feature:  Mail BVT - Authentication
     Then click manage favorites modal rename
     Then set favorite modal rename name to random
     Then save favorite modal rename
-    Then select on manage favorites modal row 1
     Then click manage favorites modal delete
     Then click manage favorites delete modal delete button
     Then close manage favorites modal
     Then click mail toolbar reset button
     Then click mail toolbar feedback
+    Then close feedback modal
     Then click mail toolbar settings
-
-    #expect print present
-  # click dropdown
-  # expect print label present
-  # expect print sample present
-  # expect favorites present
-  # expect save as favorite present
-  # expect save as favorite modal present
-  # set save as favorite name random
-  # check save as favorite include delivery address
-  # click favorite dropdown
-  # click manage favorites
-  # expect manage favorites modal is present
-  # close manage favorites
+    Then close settings modal
+    Then sign out
