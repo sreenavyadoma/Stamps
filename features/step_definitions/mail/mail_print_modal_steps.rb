@@ -1,6 +1,3 @@
-Then /^Print (?:[Pp]ostage|[Ll]abel|[Ss]tamps|[Ee]nvelope)$/ do
-  stamps.mail.mail_toolbar.print_postage
-end
 
 Then /^Print (?:[Pp]ostage|[Ll]abel|[Ss]tamps|[Ee]nvelope) using [Ss]plit [Bb]utton$/ do
   stamps.mail.toolbar_menu.print_button.click

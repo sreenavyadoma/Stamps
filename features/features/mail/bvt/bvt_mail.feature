@@ -395,7 +395,7 @@ Feature: BVT for Mail page
     Then set print form ounces to 1
     Then select print form service FCM Letter
   #Then expect Print Form service cost for FCM Letter is N/A
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then sign out
@@ -456,7 +456,7 @@ Feature: BVT for Mail page
     Then set print form mail-to to a random address in zone 1
     Then set print form ounces to 1
     Then select print form service FCM Letter
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then sign out
@@ -470,7 +470,7 @@ Feature: BVT for Mail page
     Then set print form pounds to 0
     Then set print form ounces to 1
     Then select print form service PM Flat Rate Envelope
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then sign out
@@ -483,7 +483,7 @@ Feature: BVT for Mail page
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service PM Large Flat Rate Box
-    Then Print Postage
+    Then click mail statusbar print
 #    Then set Mail Print modal Printer Zebra LP 2844 on qa-printlab2016
     Then set Mail Print modal Printer ZDesigner LP 2844
     Then click Mail Print modal Print button
@@ -499,7 +499,7 @@ Feature: BVT for Mail page
     Then set print form pounds to 0
     Then set print form ounces to 1
     Then select print form service PM Package
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then sign out
@@ -515,7 +515,7 @@ Feature: BVT for Mail page
     Then select print form service PM Flat Rate Envelope
     Then show advanced options
     Then check advanced options print receipt
-    Then Print Label
+    Then click mail statusbar print label
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then sign out
@@ -545,7 +545,7 @@ Feature: BVT for Mail page
     Then set Print form Amount to 2.85
     Then set Print form Quantity to 1
     Then set advanced options reference number to Stamp3221
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
@@ -554,7 +554,7 @@ Feature: BVT for Mail page
     Then set Print form Mail-From to default
     Then set print form ounces to 1
     Then select print form service FCM Letter
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
@@ -578,7 +578,7 @@ Feature: BVT for Mail page
     Then select print form service Media Mail
     Then set Print form Amount to 2
     Then set Print form Quantity to 1
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then sign out
@@ -590,7 +590,7 @@ Feature: BVT for Mail page
     Then set print form mail-to to a random address in zone 1
     Then set print form ounces to 1
     Then select print form service FCM Letter
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then sign out
@@ -604,7 +604,7 @@ Feature: BVT for Mail page
     Then set print form pounds to 0
     Then set print form ounces to 1
     Then select print form service PM Flat Rate Envelope
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then sign out
@@ -617,7 +617,7 @@ Feature: BVT for Mail page
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service PM Large Flat Rate Box
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer Zebra LP 2844 on qa-printlab2016
     Then click Mail Print modal Print button
     Then sign out
@@ -632,7 +632,7 @@ Feature: BVT for Mail page
     Then set print form pounds to 0
     Then set print form ounces to 1
     Then select print form service PM Package
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then sign out
@@ -648,7 +648,7 @@ Feature: BVT for Mail page
     Then select print form service PM Flat Rate Envelope
     Then show advanced options
     Then check advanced options print receipt
-    Then Print Label
+    Then click mail statusbar print label
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then sign out

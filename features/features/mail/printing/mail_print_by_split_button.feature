@@ -28,7 +28,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service FCM Letter
-    Then Print postage using split button
+    Then click mail statusbar print using split button
     Then Expect mail Print modal is present
     Then close mail Print modal
 
@@ -38,7 +38,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then set print form mail-to to a random address in zone 5 through 8
     Then set print form ounces to 1
     Then select print form service FCM Letter
-    Then Print postage using split button
+    Then click mail statusbar print using split button
     Then Expect mail Print modal is present
     Then close mail Print modal
     Then sign out
@@ -52,7 +52,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then set print form pounds to 0
     Then set print form ounces to 1
     Then select print form service PM Package
-    Then Print postage using split button
+    Then click mail statusbar print using split button
     Then Expect mail Print modal is present
     Then close mail Print modal
     Then sign out
@@ -66,7 +66,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
-    Then Print postage using split button
+    Then click mail statusbar print using split button
     Then Expect mail Print modal is present
     Then close mail Print modal
    #mail_print_roll_4x6_fcm_large_envelope
@@ -76,7 +76,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
-    Then Print postage using split button
+    Then click mail statusbar print using split button
     Then Expect mail Print modal is present
     Then close mail Print modal
     Then sign out
@@ -92,7 +92,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
     Then set advanced options cost code to None
-    Then Print postage using split button
+    Then click mail statusbar print using split button
     Then Expect mail Print modal is present
     Then close mail Print modal
 
@@ -105,7 +105,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then select print form service Media Mail
     Then set Print form Amount to 0.15
     Then set advanced options cost code to None
-    Then Print postage using split button
+    Then click mail statusbar print using split button
     Then Expect mail Print modal is present
     Then close mail Print modal
     Then sign out

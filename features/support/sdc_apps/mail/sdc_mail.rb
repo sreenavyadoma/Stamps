@@ -70,10 +70,15 @@ module SdcMail
   end
   module_function :print_preview
 
-  def mail_toolbar
-    #@mail_toolbar ||= MailToolbar.new(param, print_media)
+  def toolbar
+    SdcMailToolbar.new
   end
-  module_function :mail_toolbar
+  module_function :toolbar
+
+  def statusbar
+    SdcMailStatusbar.new
+  end
+  module_function :statusbar
 
   def modals
     SdcMailFloatingModals

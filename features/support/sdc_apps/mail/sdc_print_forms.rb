@@ -266,7 +266,7 @@ module SdcMail
 
     class Contents < SdcPage
       page_object(:customs_form) { { xpath: '//*[@id="sdc-mainpanel-editcustombtn-btnInnerEl"]' } }
-      page_object(:restrictions) { { xpath: '//a[contains(@class, "sdc-mainpanel-restrictionsbtn")]//*[contains(@id, "btnInnerEl")]' } }
+      page_object(:restrictions) { { xpath: '//*[text()="Restrictions..."]' } }
     end
 
     class PrintFormBase < SdcPage

@@ -433,6 +433,10 @@ Then /^expect advanced options print reference # is unchecked$/ do
   expect(SdcMail.print_form.advanced_options.print_reference.checked?).not_to be(true), 'Advanced Options Print Reference # is NOT unchecked'
 end
 
+Then /^expect advanced options print reference # is disabled/ do
+  expect(SdcMail.print_form.advanced_options.print_reference.enabled?).to be(false), 'Advanced Options Print Reference # is NOT disabled!'
+end
+
 Then /^click advanced options service commitments$/ do
   SdcMail.print_form.advanced_options.service_commitments.click
   step 'expect service commitments modal is present'

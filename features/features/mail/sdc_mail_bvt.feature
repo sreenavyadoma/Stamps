@@ -146,7 +146,7 @@ Feature:  Mail BVT - Authentication
     Then select print form service Media Mail
     Then set Print form Amount to 2
     Then set Print form Quantity to 1
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then Sign out
@@ -434,7 +434,7 @@ Feature:  Mail BVT - Authentication
     Then uncheck advanced options include postage
     Then sign out
 
-  @mail_bvt_ui_validation2
+  @mail_bvt_ui_validation
   Scenario: BVT Mail UI Validation for Certified Mail
     Then sign-in to mail
     Then select print on Certified Mail Label - SDC-3610
@@ -450,7 +450,7 @@ Feature:  Mail BVT - Authentication
     Then uncheck extra services return receipt
     Then sign out
 
-  @mail_bvt_ui_validation2
+  @mail_bvt_ui_validation
   Scenario: BVT Mail UI Validation International form
     Then sign-in to mail
     Then select print on Shipping Label - 8 ½" x 11" Paper
@@ -461,7 +461,22 @@ Feature:  Mail BVT - Authentication
       | name   | company | street_address_1 | street_address_2  | city   | province | postal_code | country| phone  |
       | random | random  | random           | random            | random | random   | random      | Italy | random  |
     Then set print form weight to lbs 0 oz 1
+    Then select print form service FCMI Package/Thick Envelope
+    Then select print form service PMI Package/Flat/Thick Envelope
     Then select print form service PMI Flat Rate Envelope
+    Then select print form service PMI Padded Flat Rate Envelope
+    Then select print form service PMI Legal Flat Rate Envelope
+    Then select print form service PMI Small Flat Rate Box
+    Then select print form service PMI Medium Flat Rate Box
+    Then select print form service PMI Large Flat Rate Box
+    Then select print form service PMEI Package/Flat/Thick Envelope
+    Then select print form service PMEI Flat Rate Envelope
+    Then select print form service PMEI Padded Flat Rate Envelope
+    Then select print form service PMEI Legal Flat Rate Envelope
+    Then select print form service PMI Flat Rate Envelope
+
+    Then click print form restrictions button
+    Then click restrictions modal ok
     Then click print form edit customs form button
 
     Then expect customs i agree to the usps privacy act statement is unchecked
@@ -485,8 +500,8 @@ Feature:  Mail BVT - Authentication
     Then set customs itn number to ITN123
 
     Then add customs associated item 1, description Item 1, qty 1, Price 1, Made In United States, Tariff 1
-    Then add customs associated item 2, description Item 2, qty 2, Price 2, Made In Japan, Tariff 2
-    Then add customs associated item 3, description Random String, qty 3, Price 3, Made In Canada, Tariff 3
+    Then increment customs associated item 1 qty by 2
+    Then decrement customs associated item 1 qty by 2
 
     Then check customs form i agree to the usps privacy act statement
     Then close customs information form
@@ -508,17 +523,57 @@ Feature:  Mail BVT - Authentication
     Then expect customs associated item 1 Made In is correct
     Then expect customs associated item 1 Tariff is correct
 
-    Then expect customs associated item 2 Description is correct
-    Then expect customs associated item 2 Quantity is correct
-    Then expect customs associated item 2 Unit Price is correct
-    Then expect customs associated item 2 Made In is correct
-
-    Then expect customs associated item 3 Description is correct
-    Then expect customs associated item 3 Quantity is correct
-    Then expect customs associated item 3 Unit Price is correct
-    Then expect customs associated item 3 Made In is correct
-    Then expect customs associated item 3 Tariff is correct
-
     Then expect customs i agree to the usps privacy act statement is checked
     Then expect Customs Total Value is correct
     Then close customs information form
+
+    Then check advanced options hide label value
+    Then uncheck advanced options hide label value
+    Then check advanced options print receipt
+    Then uncheck advanced options print receipt
+    Then expect advanced options print reference # is disabled
+
+    Then sign out
+
+  @mail_bvt_ui_validation
+  Scenario: BVT Mail UI Validation of Toolbar
+    Then sign-in to mail
+    Then expect mail toolbar print is present
+    Then click mail toolbar print dropdown
+    Then click mail toolbar print label
+    Then expect mail toolbar print label is present
+    Then expect mail toolbar print sample is present
+
+    Then click mail toolbar favorites
+    Then click mail toolbar save as favorite
+    Then click mail toolbar save as favorite
+    Then set save as favorite modal name to random
+    Then check save as favorite modal include delivery address
+    Then save save as favorite modal
+    Then click mail toolbar favorites
+    Then click mail toolbar manage favorites
+    Then select on manage favorites modal row 1
+    Then click manage favorites modal rename
+    Then set favorite modal rename name to random
+    Then save favorite modal rename
+    Then select on manage favorites modal row 1
+    Then click manage favorites modal delete
+    Then click manage favorites delete modal delete button
+    Then close manage favorites modal
+    Then click mail toolbar reset button
+    Then click mail toolbar feedback
+    Then click mail toolbar settings
+
+    #expect print present
+  # click dropdown
+  # expect print label present
+  # expect print sample present
+  # expect favorites present
+  # expect save as favorite present
+  # expect save as favorite modal present
+  # set save as favorite name random
+  # check save as favorite include delivery address
+  # click favorite dropdown
+  # click manage favorites
+  # expect manage favorites modal is present
+  # close manage favorites

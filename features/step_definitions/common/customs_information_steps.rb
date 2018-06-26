@@ -306,6 +306,43 @@ Then /^set customs associated item (\d+) qty to (\d+)$/ do |item_number, value|
   TestData.hash[:customs_associated_items][item_number][:quantity] = value
 end
 
+
+Then /^increment customs associated item (\d+) qty by (\d+)$/ do |item_number, value|
+  qty = SdcWebsite.customs_form.item.qty(item_number)
+  old_qty = qty.value.to_i
+  qty.scroll_into_view
+  value.times do
+    qty.increment.click
+  end
+  step "expect customs associated item #{item_number} qty is #{old_qty+value}"
+  step 'Save Customs Information form Total amount'
+  TestData.hash[:customs_associated_items][item_number] ||= {}
+  TestData.hash[:customs_associated_items][item_number][:quantity] = old_qty+value
+end
+
+
+Then /^decrement customs associated item (\d+) qty by (\d+)$/ do |item_number, value|
+  qty = SdcWebsite.customs_form.item.qty(item_number)
+  old_qty = qty.value.to_i
+  qty.scroll_into_view
+  value.times do
+    qty.decrement.click
+  end
+  step "expect customs associated item #{item_number} qty is #{old_qty-value}"
+  step 'Save Customs Information form Total amount'
+  TestData.hash[:customs_associated_items][item_number] ||= {}
+  TestData.hash[:customs_associated_items][item_number][:quantity] = old_qty-value
+end
+
+Then /^expect customs associated item (\d+) qty is (\d+)$/ do |item_number, value|
+  qty = SdcWebsite.customs_form.item.qty(item_number)
+  qty.scroll_into_view
+  expect(qty.value.to_i).to eql(value.to_i)
+end
+
+
+
+
 Then /^set customs associated item (\d+) unit price to (.*)$/ do |item_number, value|
   unit_price = SdcWebsite.customs_form.item.unit_price(item_number)
   unit_price.scroll_into_view
@@ -367,3 +404,20 @@ Then /^expect customs associated item (\d+) Tariff is (?:correct|(.*))$/ do |ite
   expect(SdcWebsite.customs_form.item.hs_tariff(item_number).text_value.to_f).to eql(str.to_f)
 end
 
+Then /^expect restrictions modal is present$/ do
+  expect(SdcWebsite.restrictions.title).to be_present, 'Restrictions modal is not present'
+end
+
+Then /^expect restrictions modal is not present$/ do
+  expect(SdcWebsite.restrictions.title).to be_present, 'Restrictions modal is still present'
+end
+
+Then /^click restrictions modal ok$/ do
+  SdcWebsite.restrictions.ok.click
+  step 'expect restrictions modal is not present'
+end
+
+Then /^close restrictions modal$/ do
+  SdcWebsite.restrictions.x_btn.click
+  step 'expect restrictions modal is not present'
+end

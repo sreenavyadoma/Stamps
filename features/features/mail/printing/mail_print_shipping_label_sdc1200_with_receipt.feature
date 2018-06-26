@@ -16,7 +16,7 @@ Feature: Mail Shipping Label - SDC-1200 with receipt
     Then select print form service FCM Large Envelope/Flat
     Then show advanced options
     Then check advanced options print receipt
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
@@ -32,7 +32,7 @@ Feature: Mail Shipping Label - SDC-1200 with receipt
     Then close customs information form
     Then show advanced options
     Then check advanced options print receipt
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
@@ -50,7 +50,7 @@ Feature: Mail Shipping Label - SDC-1200 with receipt
     Then close customs information form
     Then show advanced options
     Then check advanced options print receipt
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
@@ -68,7 +68,7 @@ Feature: Mail Shipping Label - SDC-1200 with receipt
     Then close customs information form
     Then show advanced options
     Then check advanced options print receipt
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 

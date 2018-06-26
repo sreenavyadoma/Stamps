@@ -147,6 +147,59 @@ module SdcMail
     page_object(:x_btn) { {xpath: '//div[text()="Priority Mail Express Service Commitments"]/../..//*[contains(@class, "close")]'} }
   end
 
+  class SdcSaveAsFavorite < SdcPage
+    page_object(:title) { {xpath: '//div[text()="Save as Favorite"]'} }
+    page_object(:save) { {xpath: '//*[text()="Save"]'} }
+    page_object(:name, tag: :text_field) { {id: 'sdc-favorites-namefield-inputEl'} }
+    page_object(:x_btn) { {xpath: '//div[text()="Save as Favorite"]/../..//*[contains(@class, "close")]'} }
+
+    page_object(:include_delivery_adr_chooser) { {id: 'sdc-favorites-delivery-address-checkbox-displayEl'} }
+    page_object(:include_delivery_adr_verify) { {xpath: '//*[@id="sdc-favorites-delivery-address-checkbox-bodyEl"]/..' } }
+    checkbox(:include_delivery_adr, :include_delivery_adr_chooser, :include_delivery_adr_verify, 'class', 'checked')
+  end
+
+  class SdcManageFavorites < SdcPage
+    page_object(:title) { {xpath: '//div[text()="Manage Favorites"]'} }
+    page_object(:rename) { {xpath: '//*[text()="Rename"]'} }
+    page_object(:delete, tag: :text_field) { {xpath: '//*[text()="Delete"]'} }
+    page_object(:x_btn) { {xpath: '//div[text()="Manage Favorites"]/../..//*[contains(@class, "close")]'} }
+
+    def seletion_element(name, num)
+      page_object(name) { {xpath: "(//*[contains(@id, 'managefavoritesmodal')]//tr)[#{num}]"} }
+    end
+
+    def rename_favorite
+      SdcManageFavoritesRename.new
+    end
+
+    def delete_favorite
+      SdcManageFavoritesDelete.new
+    end
+
+    class SdcManageFavoritesRename < SdcPage
+      page_object(:title) { {xpath: '//div[text()="Rename Favorite"]'} }
+      page_object(:save) { {xpath: '//*[text()="Save"]'} }
+      page_object(:name, tag: :text_field) { {id: 'sdc-favorites-rename-namefield-inputEl'} }
+      page_object(:x_btn) { {xpath: '//div[text()="Rename Favorite"]/../..//*[contains(@class, "close")]'} }
+    end
+
+    class SdcManageFavoritesDelete < SdcPage
+      page_object(:title) { {xpath: '//div[text()="Delete Favorite"]'} }
+      page_object(:delete) { {xpath: '//*[text()="Delete"]'} }
+      page_object(:x_btn) { {xpath: '//div[text()="Delete Favorite"]/../..//*[contains(@class, "close")]'} }
+    end
+  end
+
+  class SdcFeedback < SdcPage
+    page_object(:title) { {xpath: '//div[text()="Feedback"]'} }
+    page_object(:x_btn) { {xpath: '//div[text()="Feedback"]/../..//*[contains(@class, "close")]'} }
+  end
+
+  class SdcSettings < SdcPage
+    page_object(:title) { {xpath: '//div[text()="Settings"]'} }
+    page_object(:x_btn) { {xpath: '//div[text()="Settings"]/../..//*[contains(@class, "close")]'} }
+  end
+
 
   module SdcMailFloatingModals
     def manage_print_options
@@ -198,6 +251,26 @@ module SdcMail
       SdcServiceCommitments.new
     end
     module_function :service_commitments
+
+    def save_as_favorite
+      SdcSaveAsFavorite.new
+    end
+    module_function :save_as_favorite
+
+    def manage_favorites
+      SdcManageFavorites.new
+    end
+    module_function :manage_favorites
+
+    def feedback
+      SdcFeedback.new
+    end
+    module_function :feedback
+
+    def settings
+      SdcSettings.new
+    end
+    module_function :settings
   end
 end
 
