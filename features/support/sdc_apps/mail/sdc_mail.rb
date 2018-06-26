@@ -79,4 +79,9 @@ module SdcMail
     SdcMailFloatingModals
   end
   module_function :modals
+
+  def toolbar
+    SdcMailToolbar.new
+  end
+  module_function :toolbar
 end

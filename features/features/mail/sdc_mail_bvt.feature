@@ -168,6 +168,33 @@ Feature:  Mail BVT - Authentication
 #    Then expect Print form Domestic Address field displays Address Cleansing, BVT, 1350 Market Street, San Francisco, CA 94102-5401
     Then Sign out
 
+  @sdc_mail_bvt_stamps
+  Scenario: Mail BVT-Stamps
+    Then sign-in to Mail
+    Then select print on Stamps
+
+    Then set Print form Serial Number to C12345
+    Then select Advanced Options Specify Postage Amount
+    #Then set Print form Mail-From to default
+    Then select print form service Media Mail
+    Then set Print form Amount to 2.85
+    Then set Print form Quantity to 1
+    #Then set Advanced Options Reference Number to Stamp3221
+    Then Print Postage
+    Then set Mail Print modal Printer
+    Then click Mail Print modal Print button
+
+    Then set Print form Serial Number to B12345
+    Then select Advanced Options Calculate Postage Amount
+    Then set Print form Mail-From to default
+    Then set print form ounces to 1
+    Then select print form service FCM Letter
+    Then Print Postage
+    Then set Mail Print modal Printer
+    Then click Mail Print modal Print button
+
+    Then sign out
+
   @mail_print_on_lov
   Scenario: Print-on list of values
     Then sign-in to mail
@@ -404,4 +431,43 @@ Feature:  Mail BVT - Authentication
     Then check advanced options print reference #
     Then uncheck advanced options print reference #
 
+    Then sign out
+
+  @mail_bvt_ship_date
+  Scenario: Change Ship Date and Postdate Time
+    Then sign-in to mail
+    Then open mail settings modal
+    Then set mail settings postdate to now +2 hours
+    Then close mail settings modal
+    Then select print on Shipping Label - 8 ½" x 11" Paper
+    Then set print form mail-to address to Address Cleansing, BVT, 1350 Market Street #2905, San Francisco, CA
+    Then set print form ounces to 4
+    Then select print form service PM Flat Rate Envelope
+    Then expect print form ship date is 0 days from today
+    Then open mail settings modal
+    Then set mail settings postdate to now -2 hours
+    Then close mail settings modal
+    Then expect settings link is present in notification bar
+    Then set print form mail-to to a random address in zone 1
+    Then set print form ounces to 2
+    Then select print form service PM Padded Flat Rate Envelope
+    Then expect print form ship date is 1 days from today
+    Then open mail settings modal
+    Then set mail settings postdate to now +2 hours
+    Then close mail settings modal
+    Then set print form ounces to 3
+    Then select print form service PM Legal Flat Rate Envelope
+    Then expect print form ship date is 0 days from today
+    Then set print form ship date to today
+    Then expect print form ship date is 0 days from today
+    Then set print form ship date to today plus 1
+    Then expect print form ship date is 1 day from today
+    Then set print form ship date to today plus 2
+    Then expect print form ship date is 2 days from today
+    Then set print form ship date to today
+    Then expect print form ship date is 0 days from today
+
+    Then open mail settings modal
+    Then set mail settings postdate to 5:00 p.m.
+    Then close mail settings modal
     Then sign out

@@ -63,7 +63,7 @@ mhossain1_cc: --tags @pp_header_favicons_browser_mobile JENKINS=true URL=qacc BR
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess  HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 
-eli_dev: --tags @mail_authentication --guess  JENKINS=false HEALTHCHECK=true WEB_APP=mail URL=stg BROWSER=ff USR=hal9000stage23 PW=password1 PRINTER=Automation Printer 
+eli_dev: --tags @mail_bvt_ship_date --guess  JENKINS=false HEALTHCHECK=true WEB_APP=mail URL=cc BROWSER=ff USR=hal9000qa12 PW=password1 PRINTER=Automation Printer
 ray_dev: --tags @rates_parcel_select_ground --guess  JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff USR=default PW=pass111
 sap:              --tags @registration_orders WEB_APP=registration URL=cc --guess  BROWSER=ff MAX_WINDOW=false
 
@@ -293,7 +293,7 @@ bvt_shipping_address_management: --tags @bvt_shipping_address_management --guess
 bvt_ambigious_address: --tags @bvt_ambigious_address --guess  HEALTHCHECK=true WEB_APP=orders
 bvt_bulk_update: --tags @bvt_bulk_update --guess  HEALTHCHECK=true WEB_APP=orders
 bvt_address_cleansing: --tags @bvt_address_cleansing --guess HEALTHCHECK=true WEB_APP=orders
-bvt_international_shipping: --tags @bvt_international_shipping --guess  HEALTHCHECK=true
+bvt_international_shipping: --tags @bvt_international_shipping --guess  HEALTHCHECK=true 
 bvt_new_order: --tags @bvt_new_order --guess  HEALTHCHECK=true LOG_LEVEL=info
 bvt_printing: --tags @bvt_printing --guess  HEALTHCHECK=true WEB_APP=orders PRINTER=factory
 bvt_purchasing: --tags @bvt_purchasing --guess  HEALTHCHECK=true WEB_APP=orders
@@ -301,7 +301,7 @@ bvt_purchasing_cc: --tags @bvt_purchasing_cc --guess  HEALTHCHECK=true WEB_APP=o
 bvt_purchasing_stg: --tags @bvt_purchasing_stg --guess  HEALTHCHECK=true WEB_APP=orders USR=stgugqex0q4 PW=pass111
 bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic --guess  HEALTHCHECK=falsepa WEB_APP=orders
 bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess  HEALTHCHECK=false WEB_APP=orders
-bvt_shipstation_search: --tags @bvt_shipstation_search --guess  HEALTHCHECK=true
+bvt_shipstation_search: --tags @bvt_shipstation_search --guess  HEALTHCHECK=true 
 bvt_orders_ship_date: --tags @bvt_orders_ship_date --guess  HEALTHCHECK=true WEB_APP=orders
 bvt_orders_ship_date_calendar: --tags @bvt_orders_ship_date_calendar --guess  HEALTHCHECK=true WEB_APP=orders
 bvt_orders_ui_validation: --tags @bvt_orders_ui_validation --guess  HEALTHCHECK=true WEB_APP=orders
@@ -480,6 +480,7 @@ bugs_stamps: --tags  @bugs_stamps --guess  HEALTHCHECK=true
 
 # MAIL
 mail_authentication: --tags  @mail_authentication --guess  HEALTHCHECK=true
+mail_bvt_ship_date:  --tags  @mail_bvt_ship_date --guess  HEALTHCHECK=true
 mail_bvt_address_cleansing: --tags  @mail_bvt_address_cleansing --guess  HEALTHCHECK=true
 mail_bvt_contacts: --tags  @mail_bvt_contacts --guess  HEALTHCHECK=true
 mail_bvt_envelopes: --tags  @mail_bvt_envelopes --guess  HEALTHCHECK=true PRINTER=factory

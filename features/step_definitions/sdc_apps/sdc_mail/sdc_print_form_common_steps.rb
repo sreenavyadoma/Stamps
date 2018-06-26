@@ -144,3 +144,27 @@ Then /^set print form cost code (.+)$/ do |value|
   cost_code.selection.click
   expect(cost_code.text_field.text_value).to include(value)
 end
+
+Then /^expect print form ship date is (\d+) (?:day|days) from today$/ do |day|
+  step "expect print form ship date dropdown is present"
+  expectation = TestHelper.mail_date_text_field_format(day)
+  actual_value = SdcOrders.modals.print.ship_date.text_field.text_value
+  expect(actual_value).to eql(expectation)
+end
+
+Then /^set print form ship date to today$/ do
+  step 'set print form ship date to today plus 0'
+end
+
+Then /^set print form ship date to today plus (\d+)$/ do |day|
+  step "expect print form ship date dropdown is present"
+  text_field = SdcOrders.modals.print.ship_date.text_field
+  date = TestHelper.mail_date_text_field_format(day)
+  text_field.set_attribute('value', date)
+  step "blur out on Print modal Ship date 5"
+  expect(text_field.value).to eql(date)
+end
+
+Then /^expect print form ship date dropdown is present$/ do
+  expect(SdcOrders.modals.print.ship_date.drop_down).to be_present, "Ship Date dropdown is not present. Check that StampsConnect is connected. You might need to re-login on this PC #{SdcEnv.hostname}"
+end
