@@ -21,8 +21,8 @@ module SdcGrid
       column_name = column_text[column]
       xpath = "//span[text()='#{column_name}']"
       field = if column.eql? :checkbox
-                xpath = '//div[starts-with(@id, "gridcolumn")][contains(@class, "x-column-header-checkbox")]'
-                page_object(:asdfsdf) { { xpath: xpath } }
+                xpath = '//div[contains(@class, "x-column-header-checkbox")]'
+                page_object(:checkbox) { { xpath: xpath } }
               else
                 page_object(method_name.to_sym, tag: :span) { { xpath: xpath } }
               end
@@ -192,7 +192,7 @@ module SdcGrid
       verify_name = "grid_verify_#{row}"
       page_object(verify_name) { { xpath: verify_xpath } }
       grid_checkbox_name = "grid_checkbox_#{row}"
-      chooser(grid_checkbox_name, chooser_name, verify_name, :class, 'selected')
+      SdcPage.chooser(grid_checkbox_name, chooser_name, verify_name, :class, 'selected')
       instance_eval(grid_checkbox_name)
     end
 
