@@ -45,10 +45,17 @@ Feature:  BVT tests for Orders
     ##Then expect orders grid insured value is $1.00
     #Then sign-out of SDC Website
 
-
   @bvt_orders_ship_date
   Scenario: Ship Date defaults to today
     Then sign-in to orders
+
+
+    Then check row 1
+    Then uncheck row 1
+    Then uncheck orders grid order id cached
+    Then check orders grid order id cached
+
+
     Then open orders settings general settings
     Then set orders settings general postdate to now +2 hours
     Then close orders settings modal
