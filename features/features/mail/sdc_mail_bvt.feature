@@ -440,7 +440,7 @@ Feature:  Mail BVT - Authentication
     Then set mail settings postdate to now +2 hours
     Then close mail settings modal
     Then select print on Shipping Label - 8 ½" x 11" Paper
-    Then set print form mail-to to a random address in zone 1
+    Then set print form mail-to address to Address Cleansing, BVT, 1350 Market Street #2905, San Francisco, CA
     Then set print form ounces to 4
     Then select print form service PM Flat Rate Envelope
     Then expect print form ship date is 0 days from today
