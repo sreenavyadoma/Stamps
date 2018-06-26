@@ -287,7 +287,7 @@ Feature:  BVT tests for Orders
     Then set order details ship-to international address to
       | full_name     | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country| phone         |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | India  | Random phone  | Random email  |
-    Then expect order details ship-to country is correct
+    #Then expect order details ship-to country is correct
     Then set order details weight to 2 lb 2 oz
     Then set order details service to PMI Package/Flat/Thick Envelope
     Then set order details insure-for to $100.25
