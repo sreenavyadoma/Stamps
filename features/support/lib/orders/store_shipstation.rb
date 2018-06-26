@@ -15,8 +15,8 @@ module Stamps
           (cache[:header].nil?||!cache[:header].present?)?cache[:header]=StampsField.new(driver.ps(css: "div[id^='dialoguemodal-'][id$='-body']>div>div>label>p").first):cache[:header]
         end
 
-        def check_box
-          (cache[:check_box].nil?||!cache[:check_box].present?)?cache[:check_box]=StampsField.new(driver.span(css: "div[id^='dialoguemodal-'][id$='-body']>div>div>div>div>div>span")):cache[:check_box]
+        def checkbox
+          (cache[:checkbox].nil?||!cache[:checkbox].present?)?cache[:checkbox]=StampsField.new(driver.span(css: "div[id^='dialoguemodal-'][id$='-body']>div>div>div>div>div>span")):cache[:checkbox]
         end
 
         def sign_in_to_shipstation
@@ -105,8 +105,8 @@ module Stamps
           (cache[:password].nil?||!cache[:password].present?)?cache[:password]=StampsTextbox.new(driver.text_field(css: "div[id^='shipstationloginview-'][id$='-targetEl']>div>div>div>div>div>div>div>div[class*='password']>div>div>div>input[id^='textfield-']")):cache[:password]
         end
 
-        def check_box
-          (cache[:check_box].nil?||!cache[:check_box].present?)?cache[:check_box]=StampsWatirCheckbox.new(driver.span(css: "div[id^='shipstationloginview-'][id$='-targetEl']>div>div>div>div>div[class*='checkbox']>div>div>span[id^='checkbox-'][id$='-displayEl']")):cache[:check_box]
+        def checkbox
+          (cache[:checkbox].nil?||!cache[:checkbox].present?)?cache[:checkbox]=StampsWatirCheckbox.new(driver.span(css: "div[id^='shipstationloginview-'][id$='-targetEl']>div>div>div>div>div[class*='checkbox']>div>div>span[id^='checkbox-'][id$='-displayEl']")):cache[:checkbox]
         end
 
         def login
