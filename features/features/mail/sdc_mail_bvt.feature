@@ -471,3 +471,12 @@ Feature:  Mail BVT - Authentication
     Then set mail settings postdate to 5:00 p.m.
     Then close mail settings modal
     Then sign out
+
+  @mail_bvt_contacts
+  Scenario: Contacts
+    Then sign-in to mail
+    Then select print on Shipping Label - 5x8
+      #    Then set Print form Mail-From to default
+    Then click print form mail to link
+    Then close search contacts modal
+    Then sign out

@@ -1,5 +1,5 @@
-Then /^[Ee]xpect Contacts Modal is Present/ do
-  expect(stamps.mail.print_form.mail_to.mail_to_link.click).to be_present
+Then /^expect contacts modal is present/ do
+  expect(SdcMail.modals.search_contacts.title).to be_present, "Seach Contacts modal is not present"
 end
 
 #search contact modal for the contact that was last printed, based on first and last name
@@ -29,4 +29,15 @@ Then /^[Ss]elect Recently Printed Contact$/ do
   address_name_array = address_array[0].split(" ")
   address_name_array_reversed = address_name_array[1] + ", " + address_name_array[0]
   stamps.mail.print_form.mail_to.mail_to_link.click.select address_name_array_reversed
+end
+
+Then /^expect search contacts modal is present$/ do
+  expect(SdcMail.modals.search_contacts.title).to be_present, "Seach Contacts modal is not present"
+end
+Then /^expect search contacts modal is not present$/ do
+  expect(SdcMail.modals.search_contacts.title).not_to be_present, "Seach Contacts modal is still present"
+end
+Then /^close search contacts modal$/ do
+  SdcMail.print_form.mail_to.x_btn.click
+  step 'expect search contacts modal is not present'
 end

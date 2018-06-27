@@ -377,15 +377,6 @@ Feature: BVT for Mail page
 
     Then sign out
 
-  @mail_bvt_contacts
-  Scenario: Contacts
-
-    Then select print on Shipping Label - 5x8
-    Then set Print form Mail-From to default
-    Then click Print form Mail To link
-    Then click Search Contacts close button
-    Then sign out
-
   @mobile_mail_smoke_test
   @mail_bvt_envelopes
   Scenario: Envelope
