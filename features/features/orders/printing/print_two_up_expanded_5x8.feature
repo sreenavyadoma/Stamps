@@ -30,8 +30,8 @@ Feature: Print 1 Domestic label on 5.5x8.5
     Then set order details ship-to to PS Large Package, 5.5x8.5, 7065 N Ingram Ave, Fresno CA 93650-1083
     Then set order details service to PSG Oversized Package
     Then set order details ounces to 1
-    Then check Orders Grid row 1
-    Then check Orders Grid row 2
+    Then check row 1
+    Then check row 2
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then set orders print modal printer
@@ -55,9 +55,9 @@ Feature: Print 1 Domestic label on 5.5x8.5
     Then set order details ship-to to FCM Pkg-Thick Env, 5.5x8.5, 2775 Stark Dr., Willoughby Hills OH 44094-9113
     Then set order details service to FCM Large Envelope/Flat
     Then set order details ounces to 1
-    Then check Orders Grid row 1
-    Then check Orders Grid row 2
-    Then check Orders Grid row 3
+    Then check row 1
+    Then check row 2
+    Then check row 3
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then set orders print modal printer
@@ -90,8 +90,8 @@ Feature: Print 1 Domestic label on 5.5x8.5
     Then set order details service to PM Large Package
     Then set order details ounces to 1
     Then set Order Details Dimensions to Length 1 Width 1 Height 1
-    Then check Orders Grid row 1
-    Then check Orders Grid row 2
+    Then check row 1
+    Then check row 2
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then set orders print modal printer

@@ -218,6 +218,10 @@ Then /^select print form service (.*)$/ do |str|
   expect(service.text_field.text_value).to include str
 end
 
+Then /^expect settings link is present in notification bar$/ do
+  SdcMail.modals.notification_bar.settings_link.safe_wait_until_present(timeout: 15)
+end
+
 Then /^[Ee]xpect [Pp]rint [Ff]orm [Ss]ervice [Cc]ost [Ff]or (.*) is (.*)$/ do |service, cost|
   step 'blur out on print form'
   stamps.mail.print_form.service.service_cost(TestData.hash[:service] = service).to eql("$#{cost}")

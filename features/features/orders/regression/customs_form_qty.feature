@@ -44,8 +44,8 @@ Feature: Customs Form Qty > 99 is not saved correctly
 
     Then close customs information form
 
-    Then uncheck Orders Grid row 1
-    Then check Orders Grid row 1
+    Then uncheck row 1
+    Then check row 1
 
     Then click order details form customs form button
     Then pause for 2 seconds

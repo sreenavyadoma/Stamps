@@ -31,8 +31,8 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - left side
     Then check customs form i agree to the usps privacy act statement
     Then close customs information form
 
-    Then check Orders Grid row 1
-    Then check Orders Grid row 2
+    Then check row 1
+    Then check row 2
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
     Then set orders print modal printer

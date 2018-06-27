@@ -224,6 +224,12 @@ class SdcPage < WatirDrops::PageObject
                       instance_eval(decrement.to_s, __FILE__, __LINE__))
       end
     end
+
+    def sdc_param(name)
+      define_method(name) do |*args|
+        yield(*args)
+      end
+    end
   end
 
   define_method :sdc_number do |*args|
@@ -237,18 +243,25 @@ class SdcPage < WatirDrops::PageObject
 
     instance_eval(args.first.to_s, __FILE__, __LINE__)
   end
+  alias checkbox chooser
+  alias radio chooser
 
   define_method :page_objects do |*args, &block|
-    SdcPage.page_objects(*args, &block)
+    self.class.page_objects(*args, &block)
 
     instance_eval(args.first.to_s, __FILE__, __LINE__)
   end
 
   define_method :page_object do |*args, &block|
-    SdcPage.page_object(*args, &block)
+    self.class.page_object(*args, &block)
 
     instance_eval(args.first.to_s, __FILE__, __LINE__)
   end
+  alias text_field page_object
+  alias button page_object
+  alias label page_object
+  alias selection page_object
+  alias link page_object
 
 end
 
@@ -264,7 +277,7 @@ class SdcDriverDecorator < BasicObject
   end
 
   def respond_to_missing?(name, include_private = false)
-    @driver.respond_to?(name, include_private) || super
+    super || @driver.respond_to?(name, include_private)
   end
 
   def method_missing(method, *args, &block)
@@ -480,7 +493,7 @@ class SdcElement < BasicObject
   end
 
   def respond_to_missing?(name, include_private = false)
-    @element.respond_to?(name, include_private) || super
+    super || @element.respond_to?(name, include_private)
   end
 
   def method_missing(name, *args, &block)
@@ -492,7 +505,7 @@ end
 class SdcChooser < BasicObject
 
   def initialize(element, verify, property, value)
-    @element = element
+    @element = SdcElement.new(element)
     @verify = verify
     @property = property.to_s
     @value = value.to_s
@@ -545,7 +558,7 @@ class SdcChooser < BasicObject
   end
 
   def respond_to_missing?(name, include_private = false)
-    @element.respond_to?(name, include_private) || super
+    super || @element.respond_to?(name, include_private)
   end
 
   def method_missing(name, *args, &block)
@@ -565,7 +578,7 @@ class SdcNumber < BasicObject
   end
 
   def respond_to_missing?(name, include_private = false)
-    @text_field.respond_to?(name, include_private) || super
+    super || @text_field.respond_to?(name, include_private)
   end
 
   def method_missing(name, *args, &block)
@@ -589,7 +602,7 @@ class SdcLogger
     end
 
     def respond_to_missing?(name, include_private = false)
-      logger.respond_to?(name, include_private) || super
+      super || logger.respond_to?(name, include_private)
     end
 
     def method_missing(method, *args)

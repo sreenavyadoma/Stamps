@@ -33,8 +33,8 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then add customs associated item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
     Then check customs form i agree to the usps privacy act statement
     Then close customs information form
-    Then check Orders Grid row 1
-    Then check Orders Grid row 2
+    Then check row 1
+    Then check row 2
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then set orders print modal printer
@@ -72,7 +72,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then check customs form i agree to the usps privacy act statement
     Then close customs information form
 
-    Then check Orders Grid row 2
+    Then check row 2
 
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
@@ -140,8 +140,8 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then add customs associated item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
     Then check customs form i agree to the usps privacy act statement
     Then close customs information form
-    Then check Orders Grid row 1
-    Then check Orders Grid row 2
+    Then check row 1
+    Then check row 2
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
     Then set orders print modal printer
@@ -177,8 +177,8 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then add customs associated item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
     Then check customs form i agree to the usps privacy act statement
     Then close customs information form
-    Then check Orders Grid row 1
-    Then check Orders Grid row 2
+    Then check row 1
+    Then check row 2
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then set orders print modal printer

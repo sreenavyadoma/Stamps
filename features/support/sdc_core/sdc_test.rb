@@ -145,8 +145,6 @@ class SdcTest
             when :edge
               kill('taskkill /im MicrosoftEdge.exe /f')
 
-              system 'C:\Stamps\config\batch\edge_rdp_unlock.bat' if SdcEnv.jenkins
-
               SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
 
             when :firefox
@@ -154,18 +152,24 @@ class SdcTest
               unless SdcEnv.firefox_profile
                 SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
               else
-                download_directory = "#{Dir.getwd}/download"
-                download_directory.tr!('/', '\\') if Selenium::WebDriver::Platform.windows?
-                profile = Selenium::WebDriver::Firefox::Profile.new
-                profile['browser.download.folderList'] = 2 # custom location
-                profile['browser.download.dir'] = download_directory
-                profile['browser.helperApps.neverAsk.saveToDisk'] = 'text/csv,application/pdf,image/png,application/x-zip-compressed,text/plain'
-                SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
-                SdcPage.browser.driver.manage.timeouts.page_load = 12
-
                 if SdcEnv.web_dev
+                  download_directory = "#{Dir.getwd}/download"
+                  download_directory.tr!('/', '\\') if Selenium::WebDriver::Platform.windows?
+                  profile = Selenium::WebDriver::Firefox::Profile.new
+                  profile['browser.download.folderList'] = 2 # custom location
+                  profile['browser.download.dir'] = download_directory
+                  profile['browser.helperApps.neverAsk.saveToDisk'] = 'text/csv,application/pdf,image/png,application/x-zip-compressed,text/plain'
+                  SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
                   Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
+                else
+                  profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(firefox_profile)
+                  profile.assume_untrusted_certificate_issuer = true
+                  profile['network.http.phishy-userpass-length'] = 255
+                  SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, :profile => profile))
+                  SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
                 end
+
+                SdcPage.browser.driver.manage.timeouts.page_load = 12
               end
 
             when :chrome
@@ -176,19 +180,14 @@ class SdcTest
                   }
               }
               kill('taskkill /im chrome.exe /f')
-              SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
-
               if SdcEnv.web_dev
                 SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, options: { prefs: prefs }, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
                 Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
+              else
+                SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
               end
 
               SdcPage.browser.driver.manage.timeouts.page_load = 12
-
-              # if SdcEnv.scenario.name.include? 'webdev_download'
-              #   Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
-              # end
-
             when :chromeb
               kill('taskkill /im chrome.exe /f')
               Selenium::WebDriver::Chrome.path = data_for(:setup, {})['windows']['chromedriverbeta']
@@ -238,7 +237,7 @@ class SdcTest
           SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(driver, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
           SdcPage.browser.driver.manage.timeouts.page_load = 12
 
-          Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download") if SdcEnv.web_dev
+          Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download/") if SdcEnv.web_dev
         else
           # do nothing
         end
@@ -303,15 +302,15 @@ class SdcTest
       #todo-Rob These should be in an orders/mail or sdc_apps environment variable container. This is a temp fix.
       SdcEnv.printer = ENV['PRINTER']
 
-      @web_apps_param = Stamps::WebApps::Param.new
-      @web_apps_param.log = SdcLogger
-      @web_apps_param.test_scenario
-      @web_apps_param.test_scenario
-      @web_apps_param.env = SdcEnv.env
-      @web_apps_param.usr = SdcEnv.usr
-      @web_apps_param.pw = SdcEnv.pw
-      @web_apps_param.printer = SdcEnv.printer
-      @web_apps_param.sdc_app = SdcEnv.sdc_app
+      # @web_apps_param = Stamps::WebApps::Param.new
+      # @web_apps_param.log = SdcLogger
+      # @web_apps_param.test_scenario
+      # @web_apps_param.test_scenario
+      # @web_apps_param.env = SdcEnv.env
+      # @web_apps_param.usr = SdcEnv.usr
+      # @web_apps_param.pw = SdcEnv.pw
+      # @web_apps_param.printer = SdcEnv.printer
+      # @web_apps_param.sdc_app = SdcEnv.sdc_app
 
       SdcLogger.debug "\n"
       SdcLogger.debug "Begin test...\n"
@@ -363,9 +362,6 @@ class SdcTest
       SdcLogger.debug "Tear down...\n"
       SdcPage.browser.quit
       SdcLogger.debug "Done.\n"
-      if SdcEnv.jenkins && SdcEnv.browser == 'edge'
-        system 'C:\Stamps\config\batch\edge_rdp_unlock.bat'
-      end
     rescue StandardError => e
       SdcLogger.error e.message
       SdcLogger.error e.backtrace.join("\n")

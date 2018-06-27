@@ -38,11 +38,11 @@ Feature:  BVT tests for Orders
     Then set order details width to 1
     Then set order details height to 1
 #  # Orders Grid Operations
-    #Then uncheck Orders Grid row 1
-    #Then expect orders grid pounds is 1
-    #Then expect orders grid ounces is 1
-    #Then expect orders grid weight is 1 lb. 1 oz.
-    #Then expect orders grid insured value is $1.00
+    #Then uncheck row 1
+    ##Then expect orders grid pounds is 1
+    ##Then expect orders grid ounces is 1
+    ##Then expect orders grid weight is 1 lb. 1 oz.
+    ##Then expect orders grid insured value is $1.00
     #Then sign-out of SDC Website
 
 
@@ -279,6 +279,7 @@ Feature:  BVT tests for Orders
     Then in print modal, click close button
     Then sign out
 
+
   @bvt_shipstation_updates_international
   Scenario:  Update ShipStation for International
     Then sign-in to orders
@@ -286,7 +287,7 @@ Feature:  BVT tests for Orders
     Then set order details ship-to international address to
       | full_name     | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country| phone         |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | India  | Random phone  | Random email  |
-    Then expect order details ship-to country is correct
+    #Then expect order details ship-to country is correct
     Then set order details weight to 2 lb 2 oz
     Then set order details service to PMI Package/Flat/Thick Envelope
     Then set order details insure-for to $100.25
@@ -382,7 +383,7 @@ Feature:  BVT tests for Orders
 
     Then expect orders grid recipient is correct
     Then expect orders grid company is correct
-    Then expect Orders Grid Country is correct
+    Then expect orders grid Country is correct
     Then expect orders grid address is correct
     Then expect orders grid city is correct
     Then expect orders grid state is correct
@@ -442,7 +443,7 @@ Feature:  BVT tests for Orders
   Scenario: BVT Bulk Update International
     Then sign-in to orders
   # Order #1 (Domestic)
-    Then in Orders Grid, Sort Order Date in Descending Order
+    #Then in Orders Grid, Sort Order Date in Descending Order
     Then add order 1
     Then blur out on order details form
     Then set order details ship-to to random address in zone 1
@@ -461,8 +462,8 @@ Feature:  BVT tests for Orders
     Then blur out on order details form
 
 #  Check 1st two orders
-    When check orders grid row 1
-    When check orders grid row 2
+    When check row 1
+    When check row 2
 
   # Updating order details
     Then expect bulk update is present
@@ -475,18 +476,18 @@ Feature:  BVT tests for Orders
     Then wait until orders available
 
 #  # Uncheck both orders
-    When uncheck orders grid row 1
-    When uncheck orders grid row 2
+    When uncheck row 1
+    When uncheck row 2
 
 #  # verify fields in 1st order
-    When check orders grid row 2
+    When check row 2
     Then expect Order Details service is PM Large Package
     Then expect order details pound is 0
     Then expect order details ounce is 3
-    When uncheck orders grid row 2
+    When uncheck row 2
 
 #  # verify fields in 2nd order
-    When check orders grid row 1
+    When check row 1
     Then expect order details international service is PMI Package/Flat/Thick Envelope
     Then expect order details pound is 0
     Then expect order details ounce is 3
@@ -527,8 +528,8 @@ Feature:  BVT tests for Orders
     Then select orders filter shipped tab
     Then select orders filter awaiting shippment tab
     Then select orders filter shipped tab
-    Then in Orders Grid, Sort Order Date in Descending Order
-    Then expect cached order id is in orders grid row 1
+    #Then in Orders Grid, Sort Order Date in Descending Order
+    #Then expect cached order id is in orders grid row 1
     Then sign out
 
   @bvt_orders_ui_validation

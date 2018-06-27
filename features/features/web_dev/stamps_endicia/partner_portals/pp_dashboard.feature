@@ -78,7 +78,7 @@ Feature: PP-MVP: Dashboard Page Single Contract
     Then PP: expect dashboard page the Last updated on: field to be not present
 
   @pp_dashboard_single_contract_chart_data_validation
-  Scenario: PP: Dashboard Page Single Contract UI Validation
+  Scenario: PP: Dashboard Page Single Contract Data Validation
     # Preferred Rates Qualified Transactions USD($)
     Then PP: expect dashboard page the Preferred Rates Qualified Postage Amount USD chart previous year chart data to be correct
     Then PP: expect dashboard page the Preferred Rates Qualified Postage Amount USD chart current year chart data to be correct
@@ -96,7 +96,7 @@ Feature: PP-MVP: Dashboard Page Single Contract
     Then PP: expect dashboard page the Revenue Share USD chart current year chart data to be correct
 
   @pp_dashboard_single_contract_export_data_ui_validation
-  Scenario: PP: Dashboard Page Single Contract Export Data Validation
+  Scenario: PP: Dashboard Page Single Contract Export Data UI Validation
     #verify UI
     Then PP: expect export data header to exists
     Then PP: expect export data content to be Select a date range to export transaction level data as a CSV file.
@@ -147,4 +147,5 @@ Feature: PP-MVP: Dashboard Page Single Contract
     Then PP: delete existing csv file
 
 
-    #Then PP: dashboard page export data for 100 dates ranges
+   #Then PP: dashboard page export data for 100 dates ranges
+

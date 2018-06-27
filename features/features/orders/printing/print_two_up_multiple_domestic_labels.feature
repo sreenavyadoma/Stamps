@@ -22,7 +22,7 @@ Feature: Print two labels on one sheet
     Then set order details weight to 1 lb 1 oz
     # Then set Order Details Tracking to Signature Required
 
-    Then check Orders Grid row 2
+    Then check row 2
 
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"

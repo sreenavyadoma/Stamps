@@ -154,7 +154,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set order details width to 1
     Then set order details height to 1
     Then set order details length to 1
-    Then check Orders Grid row 1
+    Then check row 1
 
     #Create order 2
     Then add new order
@@ -165,7 +165,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set order details width to 1
     Then set order details height to 1
     Then set order details length to 1
-    Then check Orders Grid row 1
+    Then check row 1
 
     #Create order 3
     Then add new order
@@ -176,11 +176,11 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set order details width to 1
     Then set order details height to 1
     Then set order details length to 1
-    Then check Orders Grid row 1
+    Then check row 1
 
-    Then check Orders Grid row 1
-    Then check Orders Grid row 2
-    Then check Orders Grid row 3
+    Then check row 1
+    Then check row 2
+    Then check row 3
 
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"

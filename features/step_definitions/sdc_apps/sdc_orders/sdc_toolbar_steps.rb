@@ -10,10 +10,10 @@ Then /^add order (\d+)$/ do |count|
   toolbar = SdcOrders.toolbar
   order_details = SdcOrders.order_details
   toolbar.add.wait_until_present(timeout: 10)
-  SdcOrders.grid.body.wait_until_present(timeout: 20)
+  SdcGrid.body.wait_until_present(timeout: 60)
   toolbar.add.click
-  order_details.title.wait_until_present(timeout: 30)
-  order_details.order_id.wait_until_present(timeout: 10)
+  order_details.title.wait_until_present(timeout: 60)
+  order_details.order_id.wait_until_present(timeout: 20)
   TestData.hash[:order_id][count.to_i] = order_details.order_id.text_value.parse_digits
 
   #todo expect(stamps.orders.orders_grid.grid_column(:checkbox).checked?(1)).to be(true), "Orders Grid checkbox 1 is unchecked!"
@@ -29,16 +29,17 @@ end
 
 Then /^Save Order Details data$/ do
   step 'expect order details is present'
-  TestData.hash[:country] = SdcOrders.order_details.ship_to.domestic.country.text_field.text_value
-  TestData.hash[:service_cost] = SdcOrders.order_details.service.cost.text_value.dollar_amount_str.to_f.round(2)
-  TestData.hash[:service] = SdcOrders.order_details.service.text_field.text_value
-  TestData.hash[:ship_from] = SdcOrders.order_details.ship_from.text_field.text_value
-  TestData.hash[:insure_for_cost] = SdcOrders.order_details.insure_for.cost.text_value.dollar_amount_str.to_f.round(2)
-  TestData.hash[:total_ship_cost] = SdcOrders.order_details.footer.total_ship_cost.text_value.dollar_amount_str.to_f.round(2)
+  order_details = SdcOrders.order_details
+  TestData.hash[:country] = order_details.ship_to.domestic.country.text_field.text_value
+  TestData.hash[:service_cost] = order_details.service.cost.text_value.dollar_amount_str.to_f.round(2)
+  TestData.hash[:service] = order_details.service.text_field.text_value
+  TestData.hash[:ship_from] = order_details.ship_from.text_field.text_value
+  TestData.hash[:insure_for_cost] = order_details.insure_for.cost.text_value.dollar_amount_str.to_f.round(2)
+  TestData.hash[:total_ship_cost] = order_details.footer.total_ship_cost.text_value.dollar_amount_str.to_f.round(2)
   TestData.hash[:awaiting_shipment_count] = SdcOrders.filter_panel.awaiting_shipment.count.text_value.to_f.round(2)
   if TestData.hash[:country] == "United States"
-    TestData.hash[:tracking_cost] = SdcOrders.order_details.tracking.cost.text_value.dollar_amount_str.to_f.round(2)
-    TestData.hash[:tracking] = SdcOrders.order_details.tracking.text_field.text_value
+    TestData.hash[:tracking_cost] = order_details.tracking.cost.text_value.dollar_amount_str.to_f.round(2)
+    TestData.hash[:tracking] = order_details.tracking.text_field.text_value
   end
 end
 

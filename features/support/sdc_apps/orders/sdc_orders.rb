@@ -3,7 +3,7 @@ module SdcOrders
 
   def loading_orders
     klass = Class.new(SdcPage) do
-      page_object(:loading) { {xpath: '//*[contains(text(), "Loading orders...")]'} }
+      page_object(:loading) { { xpath: '//*[contains(text(), "Loading orders...")]' } }
     end
 
     klass.new.loading
@@ -26,7 +26,7 @@ module SdcOrders
   module_function :toolbar
 
   def grid
-    SdcOrdersGrid.new
+    SdcGrid
   end
   module_function :grid
 

@@ -9,7 +9,7 @@ Then /^[Ee]xpect in [Ll]ooking for [Ss]hip[Ss]tation[?] dialog header contain (.
 end
 
 Then /^[Ee]xpect in [Ll]ooking for [Ss]hip[Ss]tation[?] dialog [Cc]heckBox is present$/ do
-  expect(stamps.orders.marketplace.shipstation.looking_for_shipstation.check_box.present?).to be(true), "Check box does not present in Looking for ShipStation? dialog"
+  expect(stamps.orders.marketplace.shipstation.looking_for_shipstation.checkbox.present?).to be(true), "Check box does not present in Looking for ShipStation? dialog"
 end
 
 Then /^[Ee]xpect in [Ll]ooking for [Ss]hip[Ss]tation[?] dialog [Ss]ign in to [Ss]hip[Ss]tation [Bb]utton exists$/ do
@@ -21,11 +21,11 @@ Then /^[Ee]xpect in [Ll]ooking for [Ss]hip[Ss]tation[?] dialog Close [Bb]utton e
 end
 
 Then /^[Cc]heck [Ll]ooking for [Ss]hip[Ss]tation[?] dialog don't show checkbox$/ do
-  stamps.orders.marketplace.shipstation.looking_for_shipstation.check_box.click
+  stamps.orders.marketplace.shipstation.looking_for_shipstation.checkbox.click
 end
 
 Then /^[Uu]n-[Cc]heck [Ll]ooking for [Ss]hip[Ss]tation[?] dialog don't show [Cc]heckbox$/ do
-  stamps.orders.marketplace.shipstation.looking_for_shipstation.check_box.click
+  stamps.orders.marketplace.shipstation.looking_for_shipstation.checkbox.click
 end
 
 Then /^[Cc]lick on [Ss]ign in to [Ss]hip[Ss]tation [Bb]utton$/ do
@@ -90,7 +90,7 @@ Then /^[Ee]xpect in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Pp]assword ex
 end
 
 Then /^[Ee]xpect in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Tt]erms [Aa]nd [Cc]onditions checkbox exists$/ do
-  expect(stamps.orders.marketplace.shipstation.activate_your_new_features.check_box.present?).to be(true), "Activate Your New Features dialog does not have checkbox"
+  expect(stamps.orders.marketplace.shipstation.activate_your_new_features.checkbox.present?).to be(true), "Activate Your New Features dialog does not have checkbox"
 end
 
 Then /^[Ee]xpect in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Ll]ogin Button exists$/ do
@@ -110,11 +110,11 @@ Then /^[Ee]xpect in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Pp]assword is
 end
 
 Then /^[Cc]heck in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Tt]erms [Aa]nd [Cc]onditions checkbox$/ do
-  stamps.orders.marketplace.shipstation.activate_your_new_features.check_box.click
+  stamps.orders.marketplace.shipstation.activate_your_new_features.checkbox.click
 end
 
 Then /^[Ee]xpect in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Tt]erms [Aa]nd [Cc]onditions is checked$/ do
-  expect(stamps.orders.marketplace.shipstation.activate_your_new_features.check_box.checked?).to be(false), "Checkbox does not checked"
+  expect(stamps.orders.marketplace.shipstation.activate_your_new_features.checkbox.checked?).to be(false), "Checkbox does not checked"
 end
 
 Then /^[Ee]xpect in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Pp]assword tooltip to be (.*)$/ do |str|

@@ -405,7 +405,7 @@ end
 Then /^PP: delete existing csv file$/ do
   contract= PartnerPortal.dashboard_page.contract_header.text_value.split(':').last.strip
   TestData.hash[:file_name_expected] = 'Partnerportal_'+ contract +'_'+  TestData.hash[:from_date].gsub('/', '') + '_to_' + TestData.hash[:to_date].gsub('/', '')+ '.csv'
-  file = "#{Dir.getwd}/download" + TestData.hash[:file_name_expected]
+  file = "#{Dir.getwd}/download/" + TestData.hash[:file_name_expected]
   File.delete(file) unless File.exist?(file) == false
 end
 
