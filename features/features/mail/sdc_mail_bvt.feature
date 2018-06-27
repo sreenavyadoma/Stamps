@@ -297,15 +297,12 @@ Feature:  Mail BVT - Authentication
 #    Then expect advanced options cost code is None
 
   @mail_bvt_ui_validation
-  Scenario: BVT Mail UI Validation for Print On options
+  Scenario: BVT Mail UI Validation for Stamps
     Then sign-in to mail
-
-#    STAMPS
     Then select print on Stamps
     Then set print form serial number to random
     Then blur out on print form
     Then select print form specify postage amount
-#    Then set Print form Mail-From to default
     Then set print form mail-to country to United States
     Then select print form service First Class
     Then select print form service Media Mail
@@ -327,6 +324,11 @@ Feature:  Mail BVT - Authentication
     Then decrement print form stamp quantity by 2
     Then check print form print all
     Then uncheck print form print all
+    Then sign out
+
+  @mail_bvt_ui_validation
+  Scenario: BVT Mail UI Validation for Print On options
+    Then sign-in to mail
 
 #    PRINT ON MEDIA
     Then select print on Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
@@ -382,6 +384,7 @@ Feature:  Mail BVT - Authentication
     Then set print form tracking Signature Required
     Then set print form tracking USPS Tracking
     Then set print form insure for 100
+    Then set print form insure for 0
 
 #    EXTRA SERVICES
     Then select advanced options extra services
@@ -425,8 +428,8 @@ Feature:  Mail BVT - Authentication
     Then close extra services
     Then select print form service PME Flat Rate Envelope
     Then select advanced options extra services
-    Then check extra services do not deliver on saturday
-    Then uncheck extra services do not deliver on saturday
+#    Then check extra services do not deliver on saturday
+#    Then uncheck extra services do not deliver on saturday
     Then close extra services
 
     Then click advanced options service commitments
@@ -508,7 +511,7 @@ Feature:  Mail BVT - Authentication
 
     Then expect customs i agree to the usps privacy act statement is unchecked
     Then set customs package contents to Document
-#Then set customs more info to some random string
+#    Then set customs more info to random string
     Then set customs package contents to Commercial Sample
     Then expect customs package contents is Commercial Sample
     Then set customs license number to a random string

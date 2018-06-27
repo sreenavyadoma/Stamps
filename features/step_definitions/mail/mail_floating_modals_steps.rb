@@ -7,7 +7,7 @@ Then /^expect service commitments modal is not present$/ do
 end
 
 Then /^close advanced options service commitments modal$/ do
-  expect(SdcMail.modals.service_commitments.title).not_to be_present, "Service Commitments modal is still present"
+  SdcMail.modals.service_commitments.x_btn.click
   step 'expect service commitments modal is not present'
 end
 
@@ -170,7 +170,7 @@ Then /^expect settings modal is not present$/ do
   expect(SdcMail.modals.settings.title).not_to be_present, "Settings modal is still present"
 end
 Then /^close settings modal$/ do
-  SdcMail.modals.settings.x_btn.click
+  SdcMail.modals.settings.close.click
   step 'expect settings modal is not present'
 end
 
