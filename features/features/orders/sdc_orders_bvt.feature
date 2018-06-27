@@ -45,15 +45,22 @@ Feature:  BVT tests for Orders
     ##Then expect orders grid insured value is $1.00
     #Then sign-out of SDC Website
 
-
   @bvt_orders_ship_date
   Scenario: Ship Date defaults to today
     Then sign-in to orders
+
+
+    Then check row 1
+    Then uncheck row 1
+    Then uncheck orders grid order id cached
+    Then check orders grid order id cached
+
+
     Then open orders settings general settings
     Then set orders settings general postdate to now +2 hours
     Then close orders settings modal
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then set order details ounces to 4
     Then set order details service to PM Flat Rate Envelope
@@ -65,7 +72,7 @@ Feature:  BVT tests for Orders
     Then set orders settings general postdate to now -2 hours
     Then close orders settings modal
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then set order details ounces to 4
     Then set order details service to PM Flat Rate Envelope
@@ -77,7 +84,7 @@ Feature:  BVT tests for Orders
     Then set orders settings general postdate to now +2 hours
     Then close orders settings modal
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then set order details ounces to 4
     Then set order details service to PM Flat Rate Envelope
@@ -101,7 +108,7 @@ Feature:  BVT tests for Orders
     Then set orders settings general postdate to now +2 hours
     Then close orders settings modal
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then set order details ounces to 4
     Then set order details service to PM Flat Rate Envelope
@@ -123,7 +130,7 @@ Feature:  BVT tests for Orders
     Then sign-in to orders
     Then add new order
     Then set order details ship-to international address to
-      | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
+      | full_name   | company | street_address1         | street_address2 | city   | province | postal_code  | country| phone   |  email  |
       | random      | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then set order details ounces to 4
     Then set order details service to PMI Flat Rate Envelope
@@ -200,7 +207,7 @@ Feature:  BVT tests for Orders
     Then sign-in to orders
     Then add new order
     Then set order details ship-to domestic address to
-      | full_name       | company      | street_address   | street_address_2| city    | state | zip    | country  |
+      | full_name       | company      | street_address   | street_address2| city    | state | zip    | country  |
       | First Last      | Company Name | 777 N Orange Ave | Apt 100         | Orlando | FL    | 32801  | United States |
     Then set order details phone to 888-888-8888
     Then set order details email to rtest@stamps.com
@@ -285,7 +292,7 @@ Feature:  BVT tests for Orders
     Then sign-in to orders
     Then add new order
     Then set order details ship-to international address to
-      | full_name     | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country| phone         |  email        |
+      | full_name     | company       | street_address1 | street_address2 | city          | province      | postal_code   | country| phone         |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | India  | Random phone  | Random email  |
     #Then expect order details ship-to country is correct
     Then set order details weight to 2 lb 2 oz
@@ -409,7 +416,7 @@ Feature:  BVT tests for Orders
     Then sign-in to orders
     Then add new order
     Then set order details ship-to domestic address to
-      | full_name     | company | street_address     | street_address_2| city          | state | zip | country       | phone          |  email           |
+      | full_name     | company | street_address     | street_address2| city          | state | zip | country       | phone          |  email           |
       | Euan Davidson | Betfair | 1350 Market Street |                 | San Francisco | CA    |     | United States | (415) 123-5555 | rtest@stamps.com |
     Then set order details service to PM Package
     Then set order details ounces to 1
@@ -455,7 +462,7 @@ Feature:  BVT tests for Orders
     Then add order 2
     Then blur out on order details form
     Then set order details ship-to international address to
-      | full_name     | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country | phone        |  email        |
+      | full_name     | company       | street_address1 | street_address2 | city          | province      | postal_code   | country | phone        |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone | Random email  |
     Then set order details weight to 0 lb 1 oz
     Then set order details service to PMEI Package/Flat/Thick Envelope
@@ -537,7 +544,7 @@ Feature:  BVT tests for Orders
     Then sign-in to orders
     Then add new order
     Then expect order details is present
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 5 and 8
     Then set order details service to PM Package
     Then set order details pounds to 0
@@ -586,7 +593,7 @@ Feature:  BVT tests for Orders
     Then expect order details is present
     Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
-      | full_name     | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country | phone        |  email        |
+      | full_name     | company       | street_address1 | street_address2 | city          | province      | postal_code   | country | phone        |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | Italy   | Random phone | Random email  |
     Then set order details service to PMI Package/Flat/Thick Envelope
     Then set order details pounds to 1

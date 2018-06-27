@@ -6,9 +6,9 @@ Feature: Auto-Calculate Customs Form Weight
   @customs_form_auto_calculate_weight
   Scenario: Auto-Calculate Customs Form Weight
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
-      | full_name   | company | street_address_1 | street_address_2 | city   | province | postal_code | country  | phone  |  email  |
+      | full_name   | company | street_address1 | street_address2 | city   | province | postal_code | country  | phone  |  email  |
       | random | random  | random           | random | random   | random      | random   | France | random  | random  |
     Then set order details service to PMI Package/Flat/Thick Envelope
     Then set order details ounces to 4

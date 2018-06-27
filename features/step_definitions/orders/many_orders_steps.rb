@@ -2,7 +2,7 @@ When /^Print (\d+) new orders with Address set to (.*) and service set to (.*)$/
   #StampsTest.log.step "Print #{count} new orders with Address set to #{address} and service set to #{service}"
   count.to_i.times {
     step "add new order"
-    step "set order details ship-from to default"
+    step "set order details ship-from to Automation - El Segundo, CA"
     #SETTING RECIPIENT ADDRESS
     step "set Order Details Ship-To address to #{address}"
     #SETTING SERVICE
@@ -16,7 +16,7 @@ Then /^Create (\d+) new orders with Address set to (.*) and service set to (.*)$
   #StampsTest.log.step "Create #{count} new orders with Address set to #{address} and service set to #{service}"
   count.to_i.times { |iteration|
     step "add new order"
-    step "set order details ship-from to default"
+    step "set order details ship-from to Automation - El Segundo, CA"
     #SETTING RECIPIENT ADDRESS
     step "set Order Details Ship-To address to #{address}"
     #SETTING SERVICE

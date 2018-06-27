@@ -8,7 +8,6 @@ Then /^set orders settings general postdate to (now [+-]\d+ hours|\d{1,2}:\d\d [
 end
 
 Then /^[Oo]pen [Oo]rders [Ss]ettings [Mm]odal$/ do
-  # step 'Wait until order toolbar present 40, 3'
   SdcOrders.toolbar.settings.click
   SdcOrders.modals.settings.title.wait_until_present(timeout: 5)
   # step 'Wait until Orders Settings Modal present 40, 3'
@@ -47,7 +46,6 @@ end
 
 #FIX
 Then /^open mail settings modal$/ do
-  # step 'Wait until order toolbar present 40, 3'
   SdcMail.toolbar.settings.click
   SdcMail.modals.settings.title.wait_until_present(timeout: 5)
   # step 'Wait until Orders Settings Modal present 40, 3'

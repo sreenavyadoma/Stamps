@@ -82,8 +82,8 @@ Feature: Orders Filter Panel
     When In left Filter Panel, expect system displays expanded filters panel
 
     Then add new order
-    Then set order details ship-from to default
-    Then set Order Details Domestic Ship-To Country to United States
+    Then set order details ship-from to Automation - El Segundo, CA
+    Then set order details domestic ship-to country to United States
     Then set order details ship-to domestic address to
       | full_name   | company      | street_address      | city | state | zip        | country       | phone  |  email |
       | James Test | Domestic Company | 600 Front St Apt 220 | San Diego | CA | 92101-6733 | United States | 8885551212 | test@stamps.com |

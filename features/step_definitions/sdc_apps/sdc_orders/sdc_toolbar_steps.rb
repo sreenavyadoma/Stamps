@@ -5,12 +5,11 @@ end
 Then /^add order (\d+)$/ do |count|
   #todo TestData.store[:old_balance] = SdcWebsite.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
   #todo stamps.orders.orders_grid.grid_column(:checkbox).uncheck(1)
-  #step 'Wait until order toolbar present 40, 3'
 
   toolbar = SdcOrders.toolbar
   order_details = SdcOrders.order_details
   toolbar.add.wait_until_present(timeout: 10)
-  SdcGrid.body.wait_until_present(timeout: 60)
+  SdcGrid.body.wait_until_present(timeout: 70)
   toolbar.add.click
   order_details.title.wait_until_present(timeout: 60)
   order_details.order_id.wait_until_present(timeout: 20)

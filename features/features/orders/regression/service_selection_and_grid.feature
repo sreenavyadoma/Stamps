@@ -6,7 +6,7 @@ Feature:  service Selection & Order Grid Values
   @parcel_select
   Scenario:  Rename Parcel Select
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PSG Package/Flat/Thick Envelope
 
@@ -19,7 +19,7 @@ Feature:  service Selection & Order Grid Values
     #Then expect orders grid service is Parcel Select Ground
 
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PSG Package/Flat/Thick Envelope
     Then set order details ounces to 1
@@ -31,7 +31,7 @@ Feature:  service Selection & Order Grid Values
     #Then expect orders grid service is Parcel Select Ground
 
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PSG Oversized Package
     Then set order details ounces to 1

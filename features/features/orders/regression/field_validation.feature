@@ -6,7 +6,7 @@ Feature: Add Missing Field Validation
   @validate_domestic
   Scenario: Add Missing Validation Logic for Domestic Fields
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
 
   #  Add Missing Validation Logic for Email
     Then set order details email to @@

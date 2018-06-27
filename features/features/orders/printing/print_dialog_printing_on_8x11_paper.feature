@@ -6,7 +6,7 @@ Feature: Print Media - Shipping Label: 8 ½" x 11" Paper
   @print_dialog_printing_on_8x11_paper
   Scenario:  Shipping Label: 8 ½" x 11" Paper
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PM Package
     Then set order details pounds to 1
