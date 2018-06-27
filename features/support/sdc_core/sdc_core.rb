@@ -505,7 +505,7 @@ end
 class SdcChooser < BasicObject
 
   def initialize(element, verify, property, value)
-    @element = SdcElement.new(element)
+    @element = ::SdcElement.new(element)
     @verify = verify
     @property = property.to_s
     @value = value.to_s
