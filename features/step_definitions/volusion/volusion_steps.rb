@@ -59,11 +59,11 @@ Then /^Volusion Shipping Address: Set Company to (.*)$/ do |value|
 end
 
 Then /^Volusion Shipping Address: Set Address 1 to (.*)$/ do |value|
-  @volusion_shipping_address.address_1.set(value)
+  @volusion_shipping_address.address1.set(value)
 end
 
 Then /^Volusion Shipping Address: Set Address 2 to (.*)$/ do |value|
-  @volusion_shipping_address.address_2.set(value)
+  @volusion_shipping_address.address2.set(value)
 end
 
 Then /^Volusion Shipping Address: Set City to (.*)$/ do |value|

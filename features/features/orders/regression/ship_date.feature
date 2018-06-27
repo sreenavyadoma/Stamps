@@ -31,7 +31,7 @@ Feature: Ship Date
   @ship_date
   Scenario:  set print modal ship date to 1 day from today
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PM Package
     Then click orders toolbar print button
@@ -44,7 +44,7 @@ Feature: Ship Date
   @ship_date
   Scenario:  set print modal ship date to 1 day from today
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PM Package
     Then click orders toolbar print button

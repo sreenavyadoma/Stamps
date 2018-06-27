@@ -282,7 +282,7 @@ module Stamps
       def address_hash_to_str(hash)
         "#{hash['full_name'].downcase.include?('random') ? rand_full_name : hash['full_name']}
         #{hash['company'].downcase.include?('random') ? rand_comp_name : hash['company']}
-        #{hash['street_address']} #{hash['street_address_2'].nil? ? '' : hash['street_address_2']}
+        #{hash['street_address']} #{hash['street_address2'].nil? ? '' : hash['street_address2']}
         #{hash['city']} #{hash['state']} #{hash['zip']}"
       end
 

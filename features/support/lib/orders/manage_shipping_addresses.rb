@@ -202,11 +202,11 @@ module Stamps
           cache[:company] = StampsTextbox.new(driver.text_field(name: 'Company')) if cache[:company].nil? || !cache[:company].present?
           cache[:company]
         end
-        def street_address_1
+        def street_address1
           cache[:street_address1] = StampsTextbox.new(driver.text_field name: 'Street1') if cache[:street_address1].nil? || !cache[:street_address1].present?
           cache[:street_address1]
         end
-        def street_address_2
+        def street_address2
           cache[:street_address2] = StampsTextbox.new(driver.text_field name: 'Street2') if cache[:street_address2].nil? || !cache[:street_address2].present?
           cache[:street_address2]
         end
@@ -248,8 +248,8 @@ module Stamps
           origin_zip.set table["ship_from_zip"]
           name.set(table[:full_name])
           company.set(table['company'])
-          street_address_1.set(table["street_address"])
-          street_address_2.set(table["street_address2"])
+          street_address1.set(table["street_address"])
+          street_address2.set(table["street_address2"])
           city.set(table['city'])
           state.select(table["state"])
           zip.set(table["zip"])

@@ -6,9 +6,9 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - left side
   @print_layout_cn22_paper_left_side
   Scenario: Print 2 Intl CN22 labels on 8.5x11 - left side
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
-      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+      | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI PFR Envelope | 8.5x11 Left Side | random           | random           | random | random  | random      | Germany | random  | random  |
     Then set order details service to PMI Padded Flat Rate Envelope
     Then set order details ounces to 1
@@ -19,9 +19,9 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - left side
     Then close customs information form
     Then add new order
 
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
-      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+      | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI LFR Envelope | 8.5x11 Right Side | random           | random           | random | random  | random      | Mexico | random  | random  |
     Then set order details service to PMI Legal Flat Rate Envelope
     Then set order details ounces to 1

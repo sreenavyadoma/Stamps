@@ -65,11 +65,11 @@ module Stamps
           StampsTextbox.new driver.text_field(name: "ShipCompanyName")
         end
 
-        def address_1
+        def address1
           StampsTextbox.new driver.text_field(name: "ShipAddress1")
         end
 
-        def address_2
+        def address2
           StampsTextbox.new driver.text_field(name: "ShipAddress2")
         end
 

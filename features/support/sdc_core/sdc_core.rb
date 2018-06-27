@@ -287,13 +287,7 @@ class SdcDriverDecorator < BasicObject
 
 end
 
-class SdcElement < BasicObject
-  include ::Watir::Waitable
-
-  def initialize(element)
-    @element = element
-  end
-
+module HtmlElementMethods
   def present?
     send(:displayed?) if respond_to?(:displayed?)
     send(:present?)
@@ -491,6 +485,15 @@ class SdcElement < BasicObject
     end
     send(:attribute, property_name).include?(property_value)
   end
+end
+
+class SdcElement < BasicObject
+  include ::HtmlElementMethods
+  include ::Watir::Waitable
+
+  def initialize(element)
+    @element = element
+  end
 
   def respond_to_missing?(name, include_private = false)
     super || @element.respond_to?(name, include_private)
@@ -503,6 +506,7 @@ class SdcElement < BasicObject
 end
 
 class SdcChooser < BasicObject
+  include ::HtmlElementMethods
 
   def initialize(element, verify, property, value)
     @element = ::SdcElement.new(element)
@@ -568,22 +572,23 @@ class SdcChooser < BasicObject
 end
 
 class SdcNumber < BasicObject
+  include ::HtmlElementMethods
 
   attr_reader :text_field, :increment, :decrement
 
   def initialize(text_field, increment, decrement)
-    @text_field = ::SdcElement.new(text_field)
+    @element = ::SdcElement.new(text_field)
     @increment = increment
     @decrement = decrement
   end
 
   def respond_to_missing?(name, include_private = false)
-    super || @text_field.respond_to?(name, include_private)
+    super || @element.respond_to?(name, include_private)
   end
 
   def method_missing(name, *args, &block)
     super unless @text_field.respond_to?(name)
-    @text_field.send(name, *args, &block)
+    @element.send(name, *args, &block)
   end
 end
 

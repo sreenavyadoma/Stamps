@@ -11,7 +11,7 @@ Feature:  Mail BVT - Authentication
     Then show advanced options
     #Then set Advanced Options Mail Date to today
     Then set print form ship-to to international address
-      | name   | company | street_address_1 | street_address_2  | city   | province | postal_code | country| phone  |
+      | name   | company | street_address1 | street_address2  | city   | province | postal_code | country| phone  |
       | random | random  | random           | random            | random | random   | random      | Italy | random  |
     Then set print form weight to lbs 0 oz 1
     Then select print form service PMI Flat Rate Envelope

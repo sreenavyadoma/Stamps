@@ -30,8 +30,8 @@ module SdcMail
         # International Address
         page_object(:name, tag: :text_field) { { xpath: '//input[@name="ShipName"]' } }
         page_object(:company, tag: :text_field) { { xpath: '//input[@name="ShipCompany"]' } }
-        page_object(:address_1, tag: :text_field) { { xpath: '//input[@name="ShipStreet1"]' } }
-        page_object(:address_2, tag: :text_field) { { xpath: '//input[@name="ShipStreet2"]' } }
+        page_object(:address1, tag: :text_field) { { xpath: '//input[@name="ShipStreet1"]' } }
+        page_object(:address2, tag: :text_field) { { xpath: '//input[@name="ShipStreet2"]' } }
         page_object(:city, tag: :text_field) { { xpath: '//input[@name="ShipCity"]' } }
         page_object(:province, tag: :text_field) { { xpath: '//input[@name="ShipState"]' } }
         page_object(:postal_code, tag: :text_field) { { xpath: '//input[@name="ShipPostalCode"]' } }
