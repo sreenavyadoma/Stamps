@@ -6,7 +6,7 @@ Feature: click print modal print button Sample - PME Package/Flat/Thick Envelope
   @print_sample_pme_package
   Scenario:  PME Package/Flat/Thick Envelope
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PME Package/Flat/Thick Envelope
     Then set order details ounces to 1

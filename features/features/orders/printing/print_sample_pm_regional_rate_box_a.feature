@@ -6,7 +6,7 @@ Feature: click print modal print button Sample - Priority Mail Regional Rate Box
   @print_sample_pm_regional_rate_box_a
   Scenario:  Priority Mail Regional Rate Box A
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PM Regional Rate Box A
     Then set order details ounces to 1

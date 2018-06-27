@@ -7,9 +7,9 @@ Feature: Address Cleansing
   @address_cleansing
   Scenario: Address Cleansing
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to domestic address to
-      | full_name              | company | street_address   | street_address_2 | city       | state | zip | country       |
+      | full_name              | company | street_address   | street_address2 | city       | state | zip | country       |
       | Address Cleansing | No Zip  | 1990 E Grand Ave |                  | El Segundo | CA    |     | United States |
     Then set order details service to PM Package
     Then set order details ounces to 1

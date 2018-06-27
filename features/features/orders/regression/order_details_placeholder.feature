@@ -18,7 +18,7 @@ Feature:  Order Details Form Placeholder default values
     Then expect order details associated item 1 ID Placeholder is ID #
     Then expect order details associated item 1 Description Placeholder is Description
 
-    Then set Order Details Domestic Ship-To Country to Curacao
+    Then set order details domestic ship-to country to Curacao
 
     Then expect Order Details Ship-To Name Placeholder is Name
     Then expect Order Details Ship-To Company Placeholder is Company

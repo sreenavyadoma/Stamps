@@ -6,9 +6,9 @@ Feature: Print 1 Intl CP72 label with continuation on 8.5x11 - left side
   @print_layout_cp72_paper_continuation
   Scenario: Print 1 Intl CP72 label with continuation on 8.5x11 - left side
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
-      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+      | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI PFTE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
     Then set order details service to PMI Flat Rate Envelope
     Then set order details weight to 1 lb 14 oz

@@ -8,9 +8,9 @@ Feature: Single Order Details form Bugs
   Scenario: ORDERSAUTO-3351 New Sprint 11/24/17 WEBAPPS-6838 User get on Print modal without Ship to Address
 
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
-      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+      | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Zimbabwe | random  | random  |
     Then set order details service to PMI Flat Rate Envelope
     Then set order details pounds to 0
@@ -21,7 +21,7 @@ Feature: Single Order Details form Bugs
     Then check customs form i agree to the usps privacy act statement
     Then close customs information form
 
-    Then set Order Details Domestic Ship-To Country to United States
+    Then set order details domestic ship-to country to United States
     Then set order details service to PM Package
     Then Print Order expecting error This order is not ready for printing:\nShip To address is required
 

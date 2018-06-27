@@ -6,9 +6,9 @@ Feature: Print 1 Intl CP72 label with continuation on on 4x6 Roll
   @print_layout_cp72_roll_continuation
   Scenario: Print 1 Intl CP72 label with continuation on on 4x6 Roll
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
-      | full_name     | company   | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
+      | full_name     | company   | street_address1 | street_address2 | city   | province| postal_code | country | phone   |  email  |
       | PMI LFRB |  4x6 Roll | random           | random           | random | random  | random      | Italy   | random  | random  |
     Then set order details service to PMI Large Flat Rate Box
     Then set order details weight to 2 lb 0 oz

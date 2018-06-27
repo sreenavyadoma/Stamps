@@ -8,9 +8,9 @@ Feature: Print 1 Intl CP72 label
 
     #print_layout_cp72_4x6roll
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
-      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+      | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFR Envelope | 4x6 Roll  | random           | random           | random | random  | random      | France | random  | random  |
     Then set order details service to PMI Package/Flat/Thick Envelope
     Then set order details ounces to 1
@@ -25,9 +25,9 @@ Feature: Print 1 Intl CP72 label
 
     #print_layout_cp72_5x8_left
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
-      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+      | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFR Envelope | 5.5x8.5  | random           | random           | random | random  | random      | Chile | random  | random  |
     Then set order details service to PMI Package/Flat/Thick Envelope
     Then set order details ounces to 1
@@ -48,9 +48,9 @@ Feature: Print 1 Intl CP72 label
 
    #print_layout_cp72_5x8_right
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
-      | full_name              | company   | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+      | full_name              | company   | street_address1 | street_address2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI PFR Envelope |  5.5x8.5 Right Side 1  | random       | random           | random | random  | random      | Argentina | random  | random  |
     Then set order details service to PMEI Padded Flat Rate Envelope
     Then set order details ounces to 1
@@ -67,9 +67,9 @@ Feature: Print 1 Intl CP72 label
 
     #print_layout_cp72_5x8_single_ply
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
-      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+      | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI LFRB |  5.5x8.5 Left Side | random       | random           | random | random  | random      | Australia | random  | random  |
     Then set order details service to PMI Large Flat Rate Box
     Then set order details ounces to 1
@@ -87,9 +87,9 @@ Feature: Print 1 Intl CP72 label
 
    #print_layout_cp72_paper_continuation
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
-      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+      | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI PFTE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
     Then set order details service to PMI Flat Rate Envelope
     Then set order details weight to 1 lb 14 oz
@@ -139,9 +139,9 @@ Feature: Print 1 Intl CP72 label
 
    #print_layout_cp72_paper_single_ply
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
-      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+      | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFRE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
     Then set order details service to PMI Package/Flat/Thick Envelope
     Then set order details ounces to 1
@@ -160,9 +160,9 @@ Feature: Print 1 Intl CP72 label
 
    #print_layout_cp72_roll_continuation
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
-      | full_name     | company   | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
+      | full_name     | company   | street_address1 | street_address2 | city   | province| postal_code | country | phone   |  email  |
       | PMI LFRB |  4x6 Roll | random           | random           | random | random  | random      | Italy   | random  | random  |
     Then set order details service to PMI Large Flat Rate Box
     Then set order details weight to 2 lb 0 oz
@@ -208,9 +208,9 @@ Feature: Print 1 Intl CP72 label
 
    #print_layout_cp72_sdc1200_single_ply
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
-      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+      | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI PFTE |  sdc1200 Right Side 1  | random       | random           | random | random  | random      | Costa Rica | random  | random  |
     Then set order details service to PMEI Package/Flat/Thick Envelope
     Then set order details ounces to 1
@@ -228,10 +228,10 @@ Feature: Print 1 Intl CP72 label
 
    #print_layout_dpo_cp72_roll_single_ply
     Then add new order
-    Then set order details ship-from to default
-    Then set Order Details Domestic Ship-To Country to United States
+    Then set order details ship-from to Automation - El Segundo, CA
+    Then set order details domestic ship-to country to United States
     Then set order details ship-to domestic address to
-      | full_name     | company       | street_address      | street_address_2| city | state | zip        | country       | phone  |  email |
+      | full_name     | company       | street_address      | street_address2| city | state | zip        | country       | phone  |  email |
       | PSG PFTE | 4⅛ x 6¼ roll | UNIT 8400 BOX 0000  |                  |DPO  | AE    | 09498-9997 | United States | random | random |
     Then set order details weight to 3 lb 2 oz
     Then set order details service to PSG Package/Flat/Thick Envelope
@@ -247,9 +247,9 @@ Feature: Print 1 Intl CP72 label
 
    #print_layout_fsa_cp72_paper_single_ply
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to domestic address to
-      | full_name | company | street_address        |street_address_2|  city    | state | zip        | country       | phone  |  email |
+      | full_name | company | street_address        |street_address2|  city    | state | zip        | country       | phone  |  email |
       | MM   | 8.5x11  | 118 E Marine Corps Dr |                |Hagatna | GU    | 96910-5126 | United States | random | random |
     Then set order details weight to 1 lb 2 oz
     Then set order details service to MM Package/Flat/Thick Envelope
@@ -271,9 +271,9 @@ Feature: Print 1 Intl CP72 label
 
    #print_layout_cp72_single_ply_apo_roll
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to domestic address to
-      | full_name   | company      | street_address    |street_address_2|  city | state | zip    | country       | phone  |  email |
+      | full_name   | company      | street_address    |street_address2|  city | state | zip    | country       | phone  |  email |
       | PSG LP | 4x6 roll | PSC 3 BOX 4120  |                      |APO  | AE     |  09021  | United States | random | random |
     Then set order details weight to 2 lb 1 oz
     Then set order details service to PSG Package/Flat/Thick Envelope

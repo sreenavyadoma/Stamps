@@ -8,7 +8,7 @@ Feature: Print two labels on one sheet
   Scenario: User Prints multiple Domestic labels
 
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 5 and 8
     Then set order details service to PM Flat Rate Envelope
     Then set order details weight to 1 lb 1 oz
@@ -16,7 +16,7 @@ Feature: Print two labels on one sheet
     # Then set Order Details Tracking to Signature Required
 
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PM Flat Rate Envelope
     Then set order details weight to 1 lb 1 oz
