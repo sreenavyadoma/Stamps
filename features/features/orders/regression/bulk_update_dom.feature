@@ -8,9 +8,9 @@ Feature: Bulk Update Domestic
 
     # Adding 1st order
 #    Then add new order
-#    #Then set order details ship-from to default
+#    #Then set order details ship-from to Automation - El Segundo, CA
 #    Then set order details ship-to international address to
-#      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+#      | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country   | phone   |  email  |
 #      | PMEI LFRE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
 #    Then set order details service to PMI Package/Flat/Thick Envelope
 #    Then set order details weight to 2 lb 2 oz
@@ -32,7 +32,7 @@ Feature: Bulk Update Domestic
 
     # Add 2nd order
 #    Then add order 2
-#    #Then set order details ship-from to default
+#    #Then set order details ship-from to Automation - El Segundo, CA
 #    Then set order details ship-to to random address between zone 8
 #    Then set order details service to PM Large Package
 #    Then set order details pounds to 2
@@ -57,7 +57,7 @@ Feature: Bulk Update Domestic
 
 
     Then add order 1
-    Then set Order Details Domestic Ship-To Country to Canada
+    Then set order details domestic ship-to country to Canada
     Then set order details service to PMI Package/Flat/Thick Envelope
 
     Then add order 2
@@ -93,7 +93,7 @@ Feature: Bulk Update Domestic
     Then set order details service to PM Large Package
 
     Then add order 4
-    Then set Order Details Domestic Ship-To Country to Canada
+    Then set order details domestic ship-to country to Canada
     Then set order details service to PMI Package/Flat/Thick Envelope
 
 
@@ -127,7 +127,7 @@ Feature: Bulk Update Domestic
 
     #Adding 1st order
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address in zone 1
     Then set order details service to PM Package
     Then set order details pounds to 1
@@ -145,7 +145,7 @@ Feature: Bulk Update Domestic
     Then expect Order Details Ship Cost Total is correct
     #Add 2nd order
     Then add order 2
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 8
     Then set order details service to PM Large Package
     Then set order details pounds to 2
@@ -239,7 +239,7 @@ Feature: Bulk Update Domestic
     #Then refresh the browser
 
     #verify fields in 1st order
-    #Then check Orders Grid row 1
+    #Then check row 1
     #Then expect order details ship from is correct
     ##Then expect orders grid service is PME Package/Flat/Thick Envelope
 
@@ -264,14 +264,14 @@ Feature: Bulk Update Domestic
   Scenario: Bulk Update Domestic
     #Adding 1st order
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address in zone 1
     Then set order details service to PM Package
     Then set order details pounds to 1
 
     #Adding 2nd order
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address in zone 1
     Then set order details service to PM Package
     Then set order details pounds to 1
@@ -279,8 +279,8 @@ Feature: Bulk Update Domestic
     Then refresh the browser
 
     #Check 1st two orders
-    Then check Orders Grid row 1
-    Then check Orders Grid row 2
+    Then check row 1
+    Then check row 2
 
     #Updating order details
     Then set bulk update ship from to default
@@ -293,14 +293,14 @@ Feature: Bulk Update Domestic
     Then refresh the browser
 
     #verify fields in 1st order
-    Then check Orders Grid row 1
+    Then check row 1
     Then expect order details ship from is default
     #Then expect orders grid service is PME Package/Flat/Thick Envelope
     #Then expect order details pound is 2
-    Then uncheck Orders Grid row 1
+    Then uncheck row 1
 
     #verify fields in 2nd order
-    Then check Orders Grid row 2
+    Then check row 2
     Then expect order details ship from is correct
     #Then expect orders grid service is PME Package/Flat/Thick Envelope
     #Then expect order details pound is 2

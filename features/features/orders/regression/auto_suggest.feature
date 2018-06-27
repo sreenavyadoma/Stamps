@@ -18,7 +18,7 @@ Feature: Domestic Address
   @auto_suggest_international
   Scenario: Select International Address
     Then add new order
-    Then set Order Details Domestic Ship-To Country to Italy
+    Then set order details domestic ship-to country to Italy
     Then set Order Details International Ship-To auto-suggest address to partial name Com
     Then expect Order Details auto-suggest pop-up entry for Firstname Firstname, Lastname Lastname, Company CompanyNameZoneOne
     Then expect Order Details auto-suggest pop-up entry for Firstname Venice, Lastname Florence, Company CompanyNameInternational

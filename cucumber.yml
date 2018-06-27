@@ -13,18 +13,19 @@ samsung_galaxy_sauce: --tags @saucelabs_poc SAUCE_DEVICE=samsung_galaxy_sauce LO
 #todo-Rob set PRINTER=factory as default automation printer
 #robcm=ccpryiihrjz ccfb311osps4x print_dialog_ship_date bvt_international_shipping cchealthchk01
 #rob: --tags @mail_advanced_options_stamps URL=cc BROWSER=ff LOG_LEVEL=debug HEALTHCHECK=true MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory  DEBUG=true
-rob: --tags @bvt_ambigious_address URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgee1mtqvwdc0 PW=pass111 PRINTER=factory  #stgee1mtqvwdc0 stgvoc0kcnt6rw
-#rob: --tags @mail_advanced_options_stamps URL=sc --guess LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=selenium  USR=scsejsglwa PW=pass111LOG_LEVEL=debug PRINTER=factory  # c2jinmzmu64 schl0vlbfy2673 #19  schl0vlbfy2673
-#rob:  --tags @mail_print_on_lov URL=prod BROWSER=ff LOG_LEVEL=info USR=robcruz PW=Stamps#524113 LOG_LEVEL=debug  MAX_WINDOW=false
+#rob: --tags @bvt_shipstation_updates_international URL=sc --guess LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=selenium  USR=scsejsglwa PW=pass111LOG_LEVEL=debug PRINTER=factory  # c2jinmzmu64 schl0vlbfy2673 #19  schl0vlbfy2673
+rob:  --tags @bvt_shipstation_updates_international URL=prod BROWSER=ff LOG_LEVEL=info USR=robcruz PW=Stamps#524113 LOG_LEVEL=debug  MAX_WINDOW=false
 # USR=abqaprod1 PW=password1
+
+#rob: --tags @bvt_shipstation_updates_international URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgee1mtqvwdc0 PW=pass111 PRINTER=factory  #stgee1mtqvwdc0 stgvoc0kcnt6rw stgshipint001
+rob_local: --tags @bvt_shipstation_updates_international URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgee1mtqvwdc0 PW=pass111 PRINTER=factory  #stgee1mtqvwdc0 stgvoc0kcnt6rw stgshipint001
+
 
 #  stgvoc0kcnt6rw stgupr2smgtub
 saucelabs: --tags @saucelabs LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug
 saucelabs_local: --tags @bvt_bulk_update URL=stg USR=stg_hka7 PW=password1 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
-#saucelabs_local: --tags @bvt_orders_ship_date URL=prod USR=robcruz PW=Stamps#524113 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef JOB_NAME='orders_bvt_qacc/saucelabs' SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='macOS 10.13' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
 
 saucelabs_local_rob: --tags @bvt_bulk_update URL=stg USR=stg_hka6 PW=password1 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
-
 
 # C:\Users\lab>rake authentication URL=stg BROWSER=ff USR=stgvoc0kcnt6rw PW=pass111
 #saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1
@@ -64,7 +65,7 @@ mhossain1_cc: --tags @pp_dashboard_single_contract_export_data_validation JENKIN
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess  HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 
-eli_dev: --tags @mail_authentication --guess  JENKINS=false HEALTHCHECK=true WEB_APP=mail URL=stg BROWSER=ff USR=hal9000stage23 PW=password1 PRINTER=Automation Printer 
+eli_dev: --tags @mail_bvt_ship_date --guess  JENKINS=false HEALTHCHECK=true WEB_APP=mail URL=cc BROWSER=ff USR=hal9000qa12 PW=password1 PRINTER=Automation Printer
 ray_dev: --tags @rates_parcel_select_ground --guess  JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff USR=default PW=pass111
 sap:              --tags @registration_orders WEB_APP=registration URL=cc --guess  BROWSER=ff MAX_WINDOW=false
 
@@ -481,6 +482,7 @@ bugs_stamps: --tags  @bugs_stamps --guess  HEALTHCHECK=true
 
 # MAIL
 mail_authentication: --tags  @mail_authentication --guess  HEALTHCHECK=true
+mail_bvt_ship_date:  --tags  @mail_bvt_ship_date --guess  HEALTHCHECK=true
 mail_bvt_address_cleansing: --tags  @mail_bvt_address_cleansing --guess  HEALTHCHECK=true
 mail_bvt_contacts: --tags  @mail_bvt_contacts --guess  HEALTHCHECK=true
 mail_bvt_envelopes: --tags  @mail_bvt_envelopes --guess  HEALTHCHECK=true PRINTER=factory

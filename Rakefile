@@ -67,16 +67,6 @@ require 'cucumber/rake/task'
 
 # BEGIN WEB REG
 
-Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
-  t.profile = 'xxxxxxxxxx'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
-  t.profile = 'xxxxxxxxxx'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
 Cucumber::Rake::Task.new(:saucelabs_local_rob) do |t|
   t.profile = 'saucelabs_local_rob'
   t.cucumber_opts = "-p cuke_reports"
@@ -232,11 +222,6 @@ Cucumber::Rake::Task.new(:registration_ui_validation_profile_page) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:xxxxxxxxxxxxx) do |t|
-  t.profile = 'xxxxxxxxxxxxx'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
 Cucumber::Rake::Task.new(:registration_ui_validation_add_validation_model) do |t|
   t.profile = 'registration_ui_validation_add_validation_model'
   t.cucumber_opts = "-p cuke_reports"
@@ -273,13 +258,13 @@ Cucumber::Rake::Task.new(:pam_db_user_appscap_provisioning) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:kaushal) do |t|
-  t.profile = 'kaushal'
+Cucumber::Rake::Task.new(:mail_bvt_advanced_options) do |t|
+  t.profile = 'mail_bvt_advanced_options'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_bvt_advanced_options) do |t|
-  t.profile = 'mail_bvt_advanced_options'
+Cucumber::Rake::Task.new(:mail_bvt_ship_date) do |t|
+  t.profile = 'mail_bvt_ship_date'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -1070,21 +1055,6 @@ Cucumber::Rake::Task.new(:rates_fcm_package) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
 Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_8x11_fcm_psg) do |t|
   t.profile = 'mail_print_sample_shipping_label_8x11_fcm_psg'
   t.cucumber_opts = "-p cuke_reports"
@@ -1116,12 +1086,6 @@ Cucumber::Rake::Task.new(:ray_dev) do |t|
 end
 
 #ORDERS
-
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
 
 Cucumber::Rake::Task.new(:poc_sc_firefox) do |t|
   t.profile = 'poc_sc_firefox'
@@ -2011,26 +1975,6 @@ end
 
 
 # MAIL
-
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
-  t.cucumber_opts = "-p cuke_reports"
-end
 
 Cucumber::Rake::Task.new(:mail_fci_flats) do |t|
   t.profile = 'mail_fci_flats'

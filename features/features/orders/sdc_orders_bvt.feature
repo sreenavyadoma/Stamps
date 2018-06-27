@@ -38,22 +38,29 @@ Feature:  BVT tests for Orders
     Then set order details width to 1
     Then set order details height to 1
 #  # Orders Grid Operations
-    #Then uncheck Orders Grid row 1
+    #Then uncheck row 1
     ##Then expect orders grid pounds is 1
     ##Then expect orders grid ounces is 1
     ##Then expect orders grid weight is 1 lb. 1 oz.
     ##Then expect orders grid insured value is $1.00
     #Then sign-out of SDC Website
 
-
   @bvt_orders_ship_date
   Scenario: Ship Date defaults to today
     Then sign-in to orders
+
+
+    Then check row 1
+    Then uncheck row 1
+    Then uncheck orders grid order id cached
+    Then check orders grid order id cached
+
+
     Then open orders settings general settings
     Then set orders settings general postdate to now +2 hours
     Then close orders settings modal
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then set order details ounces to 4
     Then set order details service to PM Flat Rate Envelope
@@ -65,7 +72,7 @@ Feature:  BVT tests for Orders
     Then set orders settings general postdate to now -2 hours
     Then close orders settings modal
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then set order details ounces to 4
     Then set order details service to PM Flat Rate Envelope
@@ -77,7 +84,7 @@ Feature:  BVT tests for Orders
     Then set orders settings general postdate to now +2 hours
     Then close orders settings modal
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then set order details ounces to 4
     Then set order details service to PM Flat Rate Envelope
@@ -101,7 +108,7 @@ Feature:  BVT tests for Orders
     Then set orders settings general postdate to now +2 hours
     Then close orders settings modal
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then set order details ounces to 4
     Then set order details service to PM Flat Rate Envelope
@@ -123,7 +130,7 @@ Feature:  BVT tests for Orders
     Then sign-in to orders
     Then add new order
     Then set order details ship-to international address to
-      | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
+      | full_name   | company | street_address1         | street_address2 | city   | province | postal_code  | country| phone   |  email  |
       | random      | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then set order details ounces to 4
     Then set order details service to PMI Flat Rate Envelope
@@ -200,7 +207,7 @@ Feature:  BVT tests for Orders
     Then sign-in to orders
     Then add new order
     Then set order details ship-to domestic address to
-      | full_name       | company      | street_address   | street_address_2| city    | state | zip    | country  |
+      | full_name       | company      | street_address   | street_address2| city    | state | zip    | country  |
       | First Last      | Company Name | 777 N Orange Ave | Apt 100         | Orlando | FL    | 32801  | United States |
     Then set order details phone to 888-888-8888
     Then set order details email to rtest@stamps.com
@@ -212,9 +219,9 @@ Feature:  BVT tests for Orders
     Then set order details length to 1
     Then set order details width to 1
     Then set order details height to 1
-    #Then expect orders grid service is Priority Mail
-    #Then expect orders grid service is PM Package
-    #Then expect orders grid service is correct
+    Then expect orders grid service is Priority Mail
+    Then expect orders grid service is PM Package
+    Then expect orders grid service is correct
 
     Then set order details reference number to Update Orders To ShipStation
     Then on order details form, add item 1, qty 1, id Item 1 SKU, description Item 1 Description
@@ -252,41 +259,42 @@ Feature:  BVT tests for Orders
     Then expect order details tracking cost is correct
     Then expect order details reference number is correct
 
-    #Then expect orders grid store is Manual Orders
-    #Then expect orders grid order id is the same as details form order id
-    #Then expect orders grid ship cost is the same as details form ship cost
-    #Then expect orders grid age is < 24 hours
-    #Then expect orders grid order date is populated
-    #Then expect orders grid recipient is correct
-    #Then expect orders grid company is Company Name
-    #Then expect orders grid address is 777 N Orange Ave Apt 100
-    #Then expect orders grid city is Orlando
-    #Then expect orders grid state is FL
-    #Then expect orders grid zip is 32801-1175
-    #Then expect orders grid phone is 888-888-8888
-    #Then expect orders grid email is rtest@stamps.com
-    #Then expect orders grid qty. is 1
-    #Then expect orders grid item sku is Item 1 SKU
-    #Then expect orders grid item name is Item 1 Description
-    #Then expect orders grid service is Priority Mail
-    #Then expect orders grid weight is 1 lb. 1 oz.
-    #Then expect orders grid order status is Awaiting Shipment
-    #Then expect orders grid pounds is 1
-    #Then expect orders grid ounces is 1
-    #Then expect orders grid insured value is $100.00
+    Then expect orders grid store is Manual Orders
+    Then expect orders grid order id is the same as details form order id
+    Then expect orders grid ship cost is the same as details form ship cost
+    Then expect orders grid age is < 24 hours
+    Then expect orders grid order date is populated
+    Then expect orders grid recipient is correct
+    Then expect orders grid company is Company Name
+    Then expect orders grid address is 777 N Orange Ave Apt 100
+    Then expect orders grid city is Orlando
+    Then expect orders grid state is FL
+    Then expect orders grid zip is 32801-1175
+    Then expect orders grid phone is 888-888-8888
+    Then expect orders grid email is rtest@stamps.com
+    Then expect orders grid qty. is 1
+    Then expect orders grid item sku is Item 1 SKU
+    Then expect orders grid item name is Item 1 Description
+    Then expect orders grid service is Priority Mail
+    Then expect orders grid weight is 1 lb. 1 oz.
+    Then expect orders grid order status is Awaiting Shipment
+    Then expect orders grid pounds is 1
+    Then expect orders grid ounces is 1
+    Then expect orders grid insured value is $100.00
 
     Then click orders toolbar print button
     Then in print modal, click close button
     Then sign out
+
 
   @bvt_shipstation_updates_international
   Scenario:  Update ShipStation for International
     Then sign-in to orders
     Then add new order
     Then set order details ship-to international address to
-      | full_name     | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country| phone         |  email        |
+      | full_name     | company       | street_address1 | street_address2 | city          | province      | postal_code   | country| phone         |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | India  | Random phone  | Random email  |
-    Then expect order details ship-to country is correct
+    #Then expect order details ship-to country is correct
     Then set order details weight to 2 lb 2 oz
     Then set order details service to PMI Package/Flat/Thick Envelope
     Then set order details insure-for to $100.25
@@ -294,9 +302,9 @@ Feature:  BVT tests for Orders
     Then on order details form, add item 1, qty 1, id ID 1, description Description 1
     Then on order details form, add item 2, qty 2, id random string, description random string
     Then on order details form, add item 3, qty 3, id ID 3, description random string
-    #Then expect orders grid service is Priority Mail International
-    #Then expect orders grid service is PMI Package/Flat/Thick Envelope
-    #Then expect orders grid service is correct
+    Then expect orders grid service is Priority Mail International
+    Then expect orders grid service is PMI Package/Flat/Thick Envelope
+    Then expect orders grid service is correct
 
     Then click order details form customs form button
     Then expect customs i agree to the usps privacy act statement is unchecked
@@ -380,25 +388,25 @@ Feature:  BVT tests for Orders
     Then expect Customs Total Value is correct
     Then close customs information form
 
-    #Then expect orders grid recipient is correct
-    #Then expect orders grid company is correct
-    #Then expect orders grid Country is correct
-    #Then expect orders grid address is correct
-    #Then expect orders grid city is correct
-    #Then expect orders grid state is correct
-    #Then expect orders grid zip is correct
-    #Then expect orders grid phone is correct
-    #Then expect orders grid email is correct
+    Then expect orders grid recipient is correct
+    Then expect orders grid company is correct
+    Then expect orders grid Country is correct
+    Then expect orders grid address is correct
+    Then expect orders grid city is correct
+    Then expect orders grid state is correct
+    Then expect orders grid zip is correct
+    Then expect orders grid phone is correct
+    Then expect orders grid email is correct
 
-    #Then expect orders grid qty. is 6
-    #Then expect orders grid item sku is Multiple
-    #Then expect orders grid item name is Multiple
+    Then expect orders grid qty. is 6
+    Then expect orders grid item sku is Multiple
+    Then expect orders grid item name is Multiple
 
-    #Then expect orders grid service is Priority Mail International
-    #Then expect orders grid pounds is correct
-    #Then expect orders grid ounces is correct
+    Then expect orders grid service is Priority Mail International
+    Then expect orders grid pounds is correct
+    Then expect orders grid ounces is correct
     Then expect order details insure-for is correct
-    #Then expect orders grid order status is Awaiting Shipment
+    Then expect orders grid order status is Awaiting Shipment
 
     Then pause for 2 second
     Then sign out
@@ -408,18 +416,18 @@ Feature:  BVT tests for Orders
     Then sign-in to orders
     Then add new order
     Then set order details ship-to domestic address to
-      | full_name     | company | street_address     | street_address_2| city          | state | zip | country       | phone          |  email           |
+      | full_name     | company | street_address     | street_address2| city          | state | zip | country       | phone          |  email           |
       | Euan Davidson | Betfair | 1350 Market Street |                 | San Francisco | CA    |     | United States | (415) 123-5555 | rtest@stamps.com |
     Then set order details service to PM Package
     Then set order details ounces to 1
     Then blur out on order details form
     Then pause for 2 seconds
-    #Then expect orders grid recipient is Euan Davidson
-    #Then expect orders grid company is Betfair
-    #Then expect orders grid address is 1350 Market Street
-    #Then expect orders grid city is San Francisco
-    #Then expect orders grid state is CA
-    #Then expect orders grid zip is 94102
+    Then expect orders grid recipient is Euan Davidson
+    Then expect orders grid company is Betfair
+    Then expect orders grid address is 1350 Market Street
+    Then expect orders grid city is San Francisco
+    Then expect orders grid state is CA
+    Then expect orders grid zip is 94102
     Then sign out
 
   @bvt_purchasing
@@ -454,15 +462,15 @@ Feature:  BVT tests for Orders
     Then add order 2
     Then blur out on order details form
     Then set order details ship-to international address to
-      | full_name     | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country | phone        |  email        |
+      | full_name     | company       | street_address1 | street_address2 | city          | province      | postal_code   | country | phone        |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone | Random email  |
     Then set order details weight to 0 lb 1 oz
     Then set order details service to PMEI Package/Flat/Thick Envelope
     Then blur out on order details form
 
 #  Check 1st two orders
-    When check orders grid row 1
-    When check orders grid row 2
+    When check row 1
+    When check row 2
 
   # Updating order details
     Then expect bulk update is present
@@ -475,18 +483,18 @@ Feature:  BVT tests for Orders
     Then wait until orders available
 
 #  # Uncheck both orders
-    When uncheck orders grid row 1
-    When uncheck orders grid row 2
+    When uncheck row 1
+    When uncheck row 2
 
 #  # verify fields in 1st order
-    When check orders grid row 2
+    When check row 2
     Then expect Order Details service is PM Large Package
     Then expect order details pound is 0
     Then expect order details ounce is 3
-    When uncheck orders grid row 2
+    When uncheck row 2
 
 #  # verify fields in 2nd order
-    When check orders grid row 1
+    When check row 1
     Then expect order details international service is PMI Package/Flat/Thick Envelope
     Then expect order details pound is 0
     Then expect order details ounce is 3
@@ -536,7 +544,7 @@ Feature:  BVT tests for Orders
     Then sign-in to orders
     Then add new order
     Then expect order details is present
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 5 and 8
     Then set order details service to PM Package
     Then set order details pounds to 0
@@ -585,7 +593,7 @@ Feature:  BVT tests for Orders
     Then expect order details is present
     Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
-      | full_name     | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country | phone        |  email        |
+      | full_name     | company       | street_address1 | street_address2 | city          | province      | postal_code   | country | phone        |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | Italy   | Random phone | Random email  |
     Then set order details service to PMI Package/Flat/Thick Envelope
     Then set order details pounds to 1

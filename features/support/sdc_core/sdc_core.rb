@@ -224,6 +224,12 @@ class SdcPage < WatirDrops::PageObject
                       instance_eval(decrement.to_s, __FILE__, __LINE__))
       end
     end
+
+    def sdc_param(name)
+      define_method(name) do |*args|
+        yield(*args)
+      end
+    end
   end
 
   define_method :sdc_number do |*args|
@@ -237,6 +243,8 @@ class SdcPage < WatirDrops::PageObject
 
     instance_eval(args.first.to_s, __FILE__, __LINE__)
   end
+  alias checkbox chooser
+  alias radio chooser
 
   define_method :page_objects do |*args, &block|
     self.class.page_objects(*args, &block)
@@ -249,6 +257,11 @@ class SdcPage < WatirDrops::PageObject
 
     instance_eval(args.first.to_s, __FILE__, __LINE__)
   end
+  alias text_field page_object
+  alias button page_object
+  alias label page_object
+  alias selection page_object
+  alias link page_object
 
 end
 
@@ -274,13 +287,7 @@ class SdcDriverDecorator < BasicObject
 
 end
 
-class SdcElement < BasicObject
-  include ::Watir::Waitable
-
-  def initialize(element)
-    @element = element
-  end
-
+module HtmlElementMethods
   def present?
     send(:displayed?) if respond_to?(:displayed?)
     send(:present?)
@@ -478,6 +485,15 @@ class SdcElement < BasicObject
     end
     send(:attribute, property_name).include?(property_value)
   end
+end
+
+class SdcElement < BasicObject
+  include ::HtmlElementMethods
+  include ::Watir::Waitable
+
+  def initialize(element)
+    @element = element
+  end
 
   def respond_to_missing?(name, include_private = false)
     super || @element.respond_to?(name, include_private)
@@ -490,9 +506,10 @@ class SdcElement < BasicObject
 end
 
 class SdcChooser < BasicObject
+  include ::HtmlElementMethods
 
   def initialize(element, verify, property, value)
-    @element = element
+    @element = ::SdcElement.new(element)
     @verify = verify
     @property = property.to_s
     @value = value.to_s
@@ -555,22 +572,23 @@ class SdcChooser < BasicObject
 end
 
 class SdcNumber < BasicObject
+  include ::HtmlElementMethods
 
   attr_reader :text_field, :increment, :decrement
 
   def initialize(text_field, increment, decrement)
-    @text_field = ::SdcElement.new(text_field)
+    @element = ::SdcElement.new(text_field)
     @increment = increment
     @decrement = decrement
   end
 
   def respond_to_missing?(name, include_private = false)
-    super || @text_field.respond_to?(name, include_private)
+    super || @element.respond_to?(name, include_private)
   end
 
   def method_missing(name, *args, &block)
     super unless @text_field.respond_to?(name)
-    @text_field.send(name, *args, &block)
+    @element.send(name, *args, &block)
   end
 end
 

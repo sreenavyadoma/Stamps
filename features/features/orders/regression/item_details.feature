@@ -6,7 +6,7 @@ Feature: Item Details
   @item_details
   Scenario:  Item Details
     Then pause for 3 seconds
-    Then check Orders Grid row 10
+    Then check row 10
 
     Then pause for 3 seconds
 
@@ -15,9 +15,9 @@ Feature: Item Details
     Then on Order Details form, Expand Store Items Ordered pane
     Then on Order Details form, Collapse Store Items Ordered pane
 
-    Then uncheck Orders Grid row 10
+    Then uncheck row 10
     Then pause for 3 seconds
-    Then check Orders Grid row 4
+    Then check row 4
     Then pause for 3 seconds
 
     Then on Order Details form, Expand Store Items Ordered pane

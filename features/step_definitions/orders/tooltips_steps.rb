@@ -333,7 +333,7 @@ end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails International Address 1 data error tooltip is \"(.*)\"$/ do |expectation|
   #SdcLog.step "expect Order Details International Address 1 data error tooltip is #{expectation}"
-  textbox = stamps.orders.order_details.ship_to.international.address_1
+  textbox = stamps.orders.order_details.ship_to.international.address1
 
   20.times do
     textbox.double_click

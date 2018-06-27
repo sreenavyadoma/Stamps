@@ -6,7 +6,7 @@ Feature: Orders print Modal Bugs
   @bugs_print_modal
   Scenario: ORDERSAUTO-3506 New Sprint 12/6/17 WEBAPPS-7078 Order is blocked after printing Sample label
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PM Regional Rate Box A
     Then set order details ounces to 1

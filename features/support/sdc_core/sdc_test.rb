@@ -302,15 +302,15 @@ class SdcTest
       #todo-Rob These should be in an orders/mail or sdc_apps environment variable container. This is a temp fix.
       SdcEnv.printer = ENV['PRINTER']
 
-      @web_apps_param = Stamps::WebApps::Param.new
-      @web_apps_param.log = SdcLogger
-      @web_apps_param.test_scenario
-      @web_apps_param.test_scenario
-      @web_apps_param.env = SdcEnv.env
-      @web_apps_param.usr = SdcEnv.usr
-      @web_apps_param.pw = SdcEnv.pw
-      @web_apps_param.printer = SdcEnv.printer
-      @web_apps_param.sdc_app = SdcEnv.sdc_app
+      # @web_apps_param = Stamps::WebApps::Param.new
+      # @web_apps_param.log = SdcLogger
+      # @web_apps_param.test_scenario
+      # @web_apps_param.test_scenario
+      # @web_apps_param.env = SdcEnv.env
+      # @web_apps_param.usr = SdcEnv.usr
+      # @web_apps_param.pw = SdcEnv.pw
+      # @web_apps_param.printer = SdcEnv.printer
+      # @web_apps_param.sdc_app = SdcEnv.sdc_app
 
       SdcLogger.debug "\n"
       SdcLogger.debug "Begin test...\n"
