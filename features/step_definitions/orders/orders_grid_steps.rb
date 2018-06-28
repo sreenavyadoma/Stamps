@@ -5,11 +5,13 @@ Then /^check orders grid order id (cached|\d+)$/ do |order_id|
              else
                TestData.hash[:order_id][order_id.to_i]
              end
-  checkbox = SdcGrid.grid_column(:checkbox)
+  check_column = SdcGrid.grid_column(:checkbox)
+  row = check_column.row_number(order_id)
+  checkbox = check_column.checkbox(row)
+
   checkbox.check_order_id(order_id)
   actual_result = checkbox.order_id_checked?(order_id)
-  err_msg = "Cannot check Order ID #{order_id}"
-  expect(actual_result).to be(true), err_msg
+  expect(actual_result).to be(true)
 end
 
 Then /^uncheck orders grid order id (cached|\d+)$/ do |order_id|
@@ -18,28 +20,25 @@ Then /^uncheck orders grid order id (cached|\d+)$/ do |order_id|
              else
                TestData.hash[:order_id][order_id.to_i]
              end
-  checkbox = SdcGrid.grid_column(:checkbox)
+  check_column = SdcGrid.grid_column(:checkbox)
+  row = check_column.row_number(order_id)
+  checkbox = check_column.checkbox(row)
+
   checkbox.uncheck_order_id(order_id)
   actual_result = checkbox.order_id_checked?(order_id)
-  err_msg = "Cannot check Order ID #{order_id}"
-  expect(actual_result).to be(false), err_msg
+  expect(actual_result).to be(false)
 end
 
 When /^check row (\d+)$/ do |row|
-  checkbox = SdcGrid.grid_column(:checkbox)
-  checkbox.check(row)
-  actual_result = checkbox.checked?(row)
-  err_msg = "Cannot check row #{row}"
-  expect(actual_result).to be(true), err_msg
+  checkbox = SdcGrid.grid_column(:checkbox).checkbox(row)
+  checkbox.check
+  expect(checkbox.checked?).to be(true)
 end
 
 When /^uncheck row (\d+)$/ do |row|
-  checkbox = SdcGrid.grid_column(:checkbox)
-  checkbox.uncheck(row)
-  actual_result = checkbox.checked?(row)
-  err_msg = "Cannot uncheck row #{row}"
-  expect(actual_result).to be(false), err_msg
-
+  checkbox = SdcGrid.grid_column(:checkbox).checkbox(row)
+  checkbox.uncheck
+  expect(checkbox.checked?).to be(false)
 end
 
 Then /^expect orders grid store is (.*)$/ do |expectation|

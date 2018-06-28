@@ -509,11 +509,10 @@ class SdcChooser < BasicObject
   include ::HtmlElementMethods
 
   def initialize(element, verify, property, value)
-    @element = ::SdcElement.new(element)
+    @element = element
     @verify = verify
     @property = property.to_s
     @value = value.to_s
-    # set_instance_variables(binding, *local_variables)
   end
 
   def chosen?

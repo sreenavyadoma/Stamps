@@ -291,6 +291,18 @@ Feature:  BVT tests for Orders
   Scenario:  Update ShipStation for International
     Then sign-in to orders
     Then add new order
+
+    Then check row 1
+    Then uncheck row 1
+
+    Then check row 3
+    Then uncheck row 3
+
+    Then uncheck orders grid order id cached
+    Then pause for 3 seconds
+    Then check orders grid order id cached
+
+
     Then set order details ship-to international address to
       | full_name     | company       | street_address1 | street_address2 | city          | province      | postal_code   | country| phone         |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | India  | Random phone  | Random email  |

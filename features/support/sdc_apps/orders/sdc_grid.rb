@@ -196,39 +196,6 @@ module SdcGrid
       instance_eval(grid_checkbox_name)
     end
 
-    def check_order_id(order_id)
-      scroll_into_view
-      row = row_number(order_id)
-      check(row)
-    end
-
-    def uncheck_order_id(order_id)
-      scroll_into_view
-      row = row_number(order_id)
-      uncheck(row)
-    end
-
-    def order_id_checked?(order_id)
-      scroll_into_view
-      row = row_number(order_id)
-      checked?(row)
-    end
-
-    def check(row)
-      checkbox = checkbox(row)
-      checkbox.check
-    end
-
-    def uncheck(row)
-      checkbox = checkbox(row)
-      checkbox.uncheck
-    end
-
-    def checked?(row)
-      checkbox = checkbox(row)
-      checkbox.checked?
-    end
-
   end
 
   class SdcStore < GridItem
