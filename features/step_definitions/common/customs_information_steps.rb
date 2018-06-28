@@ -309,7 +309,7 @@ end
 
 Then /^increment customs associated item (\d+) qty by (\d+)$/ do |item_number, value|
   qty = SdcWebsite.customs_form.item.qty(item_number)
-  old_qty = qty.value.to_i
+  old_qty = qty.text_value.to_i
   qty.scroll_into_view
   value.times do
     qty.increment.click
@@ -323,7 +323,7 @@ end
 
 Then /^decrement customs associated item (\d+) qty by (\d+)$/ do |item_number, value|
   qty = SdcWebsite.customs_form.item.qty(item_number)
-  old_qty = qty.value.to_i
+  old_qty = qty.text_value.to_i
   qty.scroll_into_view
   value.times do
     qty.decrement.click
@@ -337,7 +337,7 @@ end
 Then /^expect customs associated item (\d+) qty is (\d+)$/ do |item_number, value|
   qty = SdcWebsite.customs_form.item.qty(item_number)
   qty.scroll_into_view
-  expect(qty.value.to_i).to eql(value.to_i)
+  expect(qty.text_value.to_i).to eql(value.to_i)
 end
 
 
@@ -386,12 +386,12 @@ end
 
 Then /^expect customs associated item (\d+) Quantity is (?:correct|(.*))$/ do |item_number, str|
   str ||= TestData.hash[:customs_associated_items][item_number][:quantity]
-  expect(SdcWebsite.customs_form.item.qty(item_number).value.to_i).to eql(str.to_i)
+  expect(SdcWebsite.customs_form.item.qty(item_number).text_value.to_i).to eql(str.to_i)
 end
 
 Then /^expect customs associated item (\d+) Unit Price is (?:correct|(.*))$/ do |item_number, str|
   str ||= TestData.hash[:customs_associated_items][item_number][:price]
-  expect(SdcWebsite.customs_form.item.unit_price(item_number).value.to_f).to eql(str.to_f)
+  expect(SdcWebsite.customs_form.item.unit_price(item_number).text_value.to_f).to eql(str.to_f)
 end
 
 Then /^expect customs associated item (\d+) Made In is (?:correct|(.*))$/ do |item_number, str|

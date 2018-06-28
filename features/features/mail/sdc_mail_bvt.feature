@@ -480,7 +480,7 @@ Feature:  Mail BVT - Authentication
     Then uncheck extra services return receipt
     Then sign out
 
-  @mail_bvt_ui_validation2
+  @mail_bvt_ui_validation
   Scenario: BVT Mail UI Validation International form
     Then sign-in to mail
     Then select print on Shipping Label - 8 ½" x 11" Paper
@@ -561,7 +561,7 @@ Feature:  Mail BVT - Authentication
     Then uncheck advanced options hide label value
     Then check advanced options print receipt
     Then uncheck advanced options print receipt
-    Then expect advanced options print reference # is disabled
+#    Then expect advanced options print reference # is disabled
 
     Then sign out
 
