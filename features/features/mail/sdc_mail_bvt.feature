@@ -474,6 +474,7 @@ Feature:  Mail BVT - Authentication
 
   @mail_bvt_extra_services
   Scenario: Extra Services
+    Then sign-in to mail
     Then select print on Shipping Label - 5x8
 #    Then set Print form Mail-From to default
     Then set print form mail-to country to United States
