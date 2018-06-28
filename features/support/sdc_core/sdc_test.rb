@@ -165,7 +165,6 @@ class SdcTest
                   profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(firefox_profile)
                   profile.assume_untrusted_certificate_issuer = true
                   profile['network.http.phishy-userpass-length'] = 255
-                  SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, :profile => profile))
                   SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
                 end
 
