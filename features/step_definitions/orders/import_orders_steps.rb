@@ -145,8 +145,8 @@ Then /^Import Orders: File Upload: Set Filename to (.*)$/ do |filename|
 end
 
 Then /^Import Orders: Expect Imported Filename is (.*)$/ do |expectation|
-  actual_value = stamps.orders.orders_toolbar.import.filename_label
-  expect(actual_value).to eql expectation
+  result = stamps.orders.orders_toolbar.import.filename_label
+  expect(result).to eql expectation
 end
 
 

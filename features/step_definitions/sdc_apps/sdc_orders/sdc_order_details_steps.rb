@@ -356,8 +356,8 @@ end
 
 Then /^expect order details international service is (?:correct|(.*))$/ do |str|
   str ||= TestData.hash[:int_service]
-  actual_value = SdcOrders.order_details.service.text_field.text_value
-  expect(actual_value).to include(str)
+  result = SdcOrders.order_details.service.text_field.text_value
+  expect(result).to include(str)
 end
 
 Then /^[Hh]ide [Oo]rder [Dd]etails [Ff]orm [Ss]hip-[Tt]o [Ff]ields$/ do

@@ -411,7 +411,7 @@ module HtmlElementMethods
   end
 
   def safe_wait_while_present(timeout: nil, message: nil, interval: nil)
-    wait_while_present(timeout: timeout, interval: interval)
+    wait_while_present(timeout: timeout)
   rescue ::Watir::Wait::TimeoutError
     # ignore
   rescue ::Selenium::WebDriver::Error::TimeOutError
@@ -479,11 +479,17 @@ module HtmlElementMethods
     attribute_include?('class', 'checked')
   end
 
-  def attribute_include?(property_name, property_value)
-    if respond_to? :attribute_value
-      return send(:attribute_value, property_name).include?(property_value)
+  def attribute_include?(property, value)
+    result = if respond_to? :attribute_value
+            send(:attribute_value, property).include?(value)
+          else
+            send(:attribute, property).include?(value)
+          end
+
+    if result.casecmp('true').zero? || result.casecmp('false').zero?
+      return result.casecmp('true').zero?
     end
-    send(:attribute, property_name).include?(property_value)
+    result.include?(value)
   end
 end
 
@@ -509,11 +515,10 @@ class SdcChooser < BasicObject
   include ::HtmlElementMethods
 
   def initialize(element, verify, property, value)
-    @element = ::SdcElement.new(element)
+    @element = element
     @verify = verify
     @property = property.to_s
     @value = value.to_s
-    # set_instance_variables(binding, *local_variables)
   end
 
   def chosen?
@@ -522,7 +527,10 @@ class SdcChooser < BasicObject
              else
                @verify.send(:attribute, @property)
              end
-    return result.casecmp('true').zero? if result.casecmp('true').zero? || result .casecmp('false').zero?
+
+    if result.casecmp('true').zero? || result .casecmp('false').zero?
+      return result.casecmp('true').zero?
+    end
     result.include?(@value)
   end
 
@@ -574,12 +582,16 @@ end
 class SdcNumber < BasicObject
   include ::HtmlElementMethods
 
-  attr_reader :text_field, :increment, :decrement
+  attr_reader :increment, :decrement
 
   def initialize(text_field, increment, decrement)
-    @element = ::SdcElement.new(text_field)
+    @element = text_field
     @increment = increment
     @decrement = decrement
+  end
+
+  def text_field
+    @element
   end
 
   def respond_to_missing?(name, include_private = false)

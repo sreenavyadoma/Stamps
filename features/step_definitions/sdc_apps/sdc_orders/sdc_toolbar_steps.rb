@@ -10,6 +10,7 @@ Then /^add order (\d+)$/ do |count|
   order_details = SdcOrders.order_details
   toolbar.add.wait_until_present(timeout: 10)
   SdcGrid.body.wait_until_present(timeout: 70)
+  toolbar.add.wait_until_present(timeout: 10)
   toolbar.add.click
   order_details.title.wait_until_present(timeout: 60)
   order_details.order_id.wait_until_present(timeout: 20)
