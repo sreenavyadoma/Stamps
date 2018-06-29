@@ -486,8 +486,7 @@ module HtmlElementMethods
                send(:attribute, property).include?(value)
              end
 
-    if result == false || result == true
-      result
+    if [true, false].include? result
     elsif result.casecmp('true').zero? || result.casecmp('false').zero?
       return result.casecmp('true').zero?
     end
@@ -530,7 +529,7 @@ class SdcChooser < BasicObject
                @verify.send(:attribute, @property)
              end
 
-    if result == false || result == true
+    if [true, false].include? result
       result
     elsif result.casecmp('true').zero? || result .casecmp('false').zero?
       return result.casecmp('true').zero?
