@@ -520,19 +520,6 @@ Feature: BVT for Mail page
     Then click Mail Print modal Print button
     Then sign out
 
-  @mail_bvt_purchasing
-  Scenario: Purchasing $10
-
-    Then on add funds modal, purchase 10
-    Then on add funds modal, click purchase button
-    Then buy mail confirm purchase: expect text area contains, please confirm your $10.00 postage purchase.
-    Then buy mail confirm transction: click confirm button
-    Then buy mail purchase approved: expect text area contains, your fund request for $10.00 has been approved.
-    Then buy mail purchase approved: click ok button
-    Then buy mail: expect customer balance increased by $10
-
-    Then sign out
-
   @mobile_mail_smoke_test
   @mail_bvt_stamps
   Scenario: Print form Specify Postage
