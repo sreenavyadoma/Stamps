@@ -128,15 +128,14 @@ Feature:  BVT tests for Orders
     Then set order details service to PMI Flat Rate Envelope
     Then click order details form customs form button
     # create items
-    Then add customs associated item 1, description random, qty 1, Price 4, Made In Zimbabwe, Tariff 1
+    Then add customs associated item 1, description random, qty 1, Price 4, Made In Philippines, Tariff 1
     Then add customs associated item 2, description random, qty 1, Price 4, Made In Japan, Tariff 1
     Then add customs associated item 3, description random, qty 1, Price 4, Made In France, Tariff 1
-    Then add customs associated item 4, description random, qty 1, Price 4, Made In Philippines, Tariff 1
     # edit item
     Then edit customs associated item 1, description random, qty 2, Price 4, Made In United States, Tariff 1
     Then edit customs associated item 2, description random, qty 2, Price 4, Made In United States, Tariff 1
 
-    Then expect customs associated item grid count is 4
+    Then expect customs associated item grid count is 3
     Then set customs package contents to Commercial Sample
     Then set customs package contents to Gift
     Then set customs package contents to Document
