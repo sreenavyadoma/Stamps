@@ -487,6 +487,7 @@ module HtmlElementMethods
              end
 
     if [true, false].include? result
+      return result
     elsif result.casecmp('true').zero? || result.casecmp('false').zero?
       return result.casecmp('true').zero?
     end
