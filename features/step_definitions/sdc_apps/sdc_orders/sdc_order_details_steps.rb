@@ -532,15 +532,15 @@ Then /^expect order details service cost is (?:correct|(\d+.\d*))$/ do |str|
   expect(result).to eql(str.to_f.round(2))
 end
 
-Then /^expect order details pounds? (?:is (\d+)|and saved Pounds? are the same)$/ do |str|
-  str ||= TestData.hash[:pounds]
-  result = SdcOrders.order_details.weight.text_value.value.to_f
-  expect(result).to eql(str.to_f.round(2))
-end
-
 Then /^expect order details tracking cost is (?:correct|(\d+.\d*))$/ do |str|
   str ||= TestData.hash[:tracking_cost]
   result = SdcOrders.order_details.tracking.cost.text_value.to_f.round(2)
+  expect(result).to eql(str.to_f.round(2))
+end
+
+Then /^expect order details pounds? (?:is (\d+)|and saved Pounds? are the same)$/ do |str|
+  str ||= TestData.hash[:pounds]
+  result = SdcOrders.order_details.weight.lbs.text_value.to_f
   expect(result).to eql(str.to_f.round(2))
 end
 
