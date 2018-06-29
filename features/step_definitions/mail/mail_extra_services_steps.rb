@@ -14,7 +14,7 @@ end
 
 Then /^increment extra services cod by (\d+)$/ do |amount|
   step 'expect extra services cod is present'
-  cod_value = SdcMail.modals.extra_services.cod.value.to_f
+  cod_value = SdcMail.modals.extra_services.cod.text_value.to_f
   amount.times do
     SdcMail.modals.extra_services.cod.increment.click
   end
@@ -23,7 +23,7 @@ end
 
 Then /^decrement extra services cod by (\d+)$/ do |amount|
   step 'expect extra services cod is present'
-  cod_value = SdcMail.modals.extra_services.cod.value.to_f
+  cod_value = SdcMail.modals.extra_services.cod.text_value.to_f
   amount.times do
     SdcMail.modals.extra_services.cod.decrement.click
   end
@@ -32,7 +32,7 @@ end
 
 Then /^expect extra services cod value is (\d*.?\d+)$/ do |amount|
   step 'expect extra services cod is present'
-  expect(SdcMail.modals.extra_services.cod.value.to_f).to eql(amount.to_f)
+  expect(SdcMail.modals.extra_services.cod.text_value.to_f).to eql(amount.to_f)
 end
 
 Then /^expect extra services cod price to be (\d*.?\d+)$/ do |expectation|
@@ -124,7 +124,7 @@ Then /^set extra services security value to (\d*.?\d+)$/ do |value|
 end
 
 Then /^increment extra services security value by (\d+)$/ do |value|
-  price = SdcMail.modals.extra_services.value.value.to_f
+  price = SdcMail.modals.extra_services.value.text_value.to_f
   value.times do
     SdcMail.modals.extra_services.value.increment.click
   end
@@ -132,7 +132,7 @@ Then /^increment extra services security value by (\d+)$/ do |value|
 end
 
 Then /^decrement extra services security value by (\d+)$/ do |value|
-  price = SdcMail.modals.extra_services.value.value.to_f
+  price = SdcMail.modals.extra_services.value.text_value.to_f
   value.times do
     SdcMail.modals.extra_services.value.decrement.click
   end
@@ -140,7 +140,7 @@ Then /^decrement extra services security value by (\d+)$/ do |value|
 end
 
 Then /^expect extra services security value is (\d*.?\d+)$/ do |value|
-  expect(SdcMail.modals.extra_services.value.value.to_f).to eql(value.to_f)
+  expect(SdcMail.modals.extra_services.value.text_value.to_f).to eql(value.to_f)
 end
 
 Then /^set extra services handling to (.*)$/ do |str|
@@ -152,7 +152,7 @@ Then /^set extra services handling to (.*)$/ do |str|
 end
 
 Then /^expect extra services handling is (.*)$/ do |str|
-  expect(SdcMail.modals.extra_services.handling.taxt_field.text_value).to eql(str)
+  expect(SdcMail.modals.extra_services.handling.text_field.text_value).to eql(str)
 end
 
 Then /^check extra services modal return receipt$/ do

@@ -440,5 +440,6 @@ end
 
 Then /^click advanced options service commitments$/ do
   SdcMail.print_form.advanced_options.service_commitments.click
+  step 'pause for 15 seconds'
   step 'expect service commitments modal is present'
 end
