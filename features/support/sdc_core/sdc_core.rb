@@ -479,11 +479,15 @@ module HtmlElementMethods
     attribute_include?('class', 'checked')
   end
 
-  def attribute_include?(property_name, property_value)
-    if respond_to? :attribute_value
-      return send(:attribute_value, property_name).include?(property_value)
-    end
-    send(:attribute, property_name).include?(property_value)
+  def attribute_include?(property, value)
+    val = if respond_to? :attribute_value
+            send(:attribute_value, property).include?(value)
+          else
+            send(:attribute, property).include?(value)
+          end
+
+    return val.casecmp('true').zero? val.casecmp('true').zero? || val.casecmp('false').zero?
+    val.include?(value)
   end
 end
 

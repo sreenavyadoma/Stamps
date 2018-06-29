@@ -22,7 +22,7 @@ Then /^uncheck orders grid order id (cached|\d+)$/ do |order_id|
              end
   check_column = SdcGrid.grid_column(:checkbox)
   row = check_column.row_number(order_id)
-  checkbox = check_column.checkbox(row)
+  checkbox = check_column.checkbox_row(row)
 
   checkbox.uncheck_order_id(order_id)
   actual_result = checkbox.order_id_checked?(order_id)
@@ -30,13 +30,13 @@ Then /^uncheck orders grid order id (cached|\d+)$/ do |order_id|
 end
 
 When /^check row (\d+)$/ do |row|
-  checkbox = SdcGrid.grid_column(:checkbox).checkbox(row)
+  checkbox = SdcGrid.grid_column(:checkbox).checkbox_row(row)
   checkbox.check
   expect(checkbox.checked?).to be(true)
 end
 
 When /^uncheck row (\d+)$/ do |row|
-  checkbox = SdcGrid.grid_column(:checkbox).checkbox(row)
+  checkbox = SdcGrid.grid_column(:checkbox).checkbox_row(row)
   checkbox.uncheck
   expect(checkbox.checked?).to be(false)
 end
