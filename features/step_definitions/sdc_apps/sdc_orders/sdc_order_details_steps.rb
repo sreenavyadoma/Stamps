@@ -527,35 +527,29 @@ end
 
 Then /^expect order details service cost is (?:correct|(\d+.\d*))$/ do |str|
   str ||= TestData.hash[:service_cost]
-  actual_result = SdcOrders.order_details.service.cost.text_value
-  expect(SdcOrders.order_details.service.cost.text_value.dollar_amount_str.to_f.round(2)).to eql(str.to_f.round(2))
+  result = SdcOrders.order_details.service.cost.text_value.dollar_amount_str.to_f.round(2)
+  expect(result).to eql(str.to_f.round(2))
 end
 
-Then /^expect order details pounds? (?:is (\d+)|and saved Pounds? are the same)$/ do |expectation|
-  expectation ||= TestData.hash[:pounds]
-  step 'expect order details is present'
-  if SdcEnv.new_framework
-    # expect(SdcOrders.order_details.weight.lbs.text_value.to_f).to eql(expectation.to_f.round(2))
-    expect(SdcOrders.order_details.weight.lbs.value.to_f).to eql(expectation.to_f.round(2))
-  else
-    expect(stamps.orders.order_details.weight.lb.textbox.text.to_f).to eql expectation.to_f.round(2)
-  end
+Then /^expect order details pounds? (?:is (\d+)|and saved Pounds? are the same)$/ do |str|
+  str ||= TestData.hash[:pounds]
+  result = SdcOrders.order_details.weight.lbs.value.to_f
+  expect(result).to eql(str.to_f.round(2))
 end
 
-Then /^expect order details tracking cost is (?:correct|(\d+.\d*))$/ do |expectation|
-  expectation = TestData.hash[:tracking_cost] if expectation.nil?
-  step 'expect order details is present'
-  expect(SdcOrders.order_details.tracking.cost.text_value.to_f.round(2)).to eql(expectation.nil? ? TestData.hash[:tracking_cost] : expectation)
+Then /^expect order details tracking cost is (?:correct|(\d+.\d*))$/ do |str|
+  str ||= TestData.hash[:tracking_cost]
+  result = SdcOrders.order_details.tracking.cost.text_value.to_f.round(2)
+  expect(result).to eql(str.nil? ? TestData.hash[:tracking_cost] : str)
 end
 
 Then /^expect order details ounces? (?:is (\d+)|and saved Ounces? are the same)$/ do |str|
   str ||= TestData.hash[:ounces]
-  step 'expect order details is present'
-  expect(SdcOrders.order_details.weight.oz.value.to_f).to eql(str.to_f.round(2))
+  result = SdcOrders.order_details.weight.oz.value.to_f
+  expect(result).to eql(str.to_f.round(2))
 end
 
 Then /^expect order details length is (\d+)$/ do |expectation|
-  step 'expect order details is present'
   expect(SdcOrders.order_details.dimensions.length.value.to_f).to eql(expectation.to_f.round(2))
 end
 
@@ -571,7 +565,6 @@ end
 
 Then /^expect order details tracking is (?:correct|(.*))$/ do |expectation|
   expectation = TestData.hash[:tracking] if expectation.nil?
-  step 'expect order details is present'
   expect(SdcOrders.order_details.tracking.text_field.text_value).to eql(expectation)
 end
 
@@ -588,11 +581,7 @@ Then /^expect order details ship-from and ship-from saved values are the same$/ 
   end
   step 'expect order details is present'
   step "show order details form ship-to fields"
-  if SdcEnv.new_framework
-    expect(SdcOrders.order_details.ship_from.text_field.text_value).to eql(TestData.hash[:ship_from])
-  else
-    expect(stamps.orders.order_details.single_ship_from.textbox.text).to eql(TestData.hash[:ship_from])
-  end
+  expect(SdcOrders.order_details.ship_from.text_field.text_value).to eql(TestData.hash[:ship_from])
 end
 
 Then /^expect order details reference number is (?:correct|(.*))$/ do |str|
