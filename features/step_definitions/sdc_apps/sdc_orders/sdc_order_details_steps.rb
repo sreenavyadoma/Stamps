@@ -404,49 +404,49 @@ end
 Then /^set order details international ship-to company to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
   SdcOrders.order_details.ship_to.international.company.set(str)
-  TestData.hash[:int_ship_to_company] = str
+  TestData.hash[:company] = str
 end
 
 Then /^set order details international ship-to address 1 to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
   SdcOrders.order_details.ship_to.international.address1.set(str)
-  TestData.hash[:int_ship_to_address1] = str
+  TestData.hash[:address1] = str
 end
 
 Then /^set order details international ship-to address 2 to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
   SdcOrders.order_details.ship_to.international.address2.set(str)
-  TestData.hash[:int_ship_to_address2] = str
+  TestData.hash[:address2] = str
 end
 
 Then /^set order details international ship-to city to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
   SdcOrders.order_details.ship_to.international.city.set(str)
-  TestData.hash[:int_ship_to_city] = str
+  TestData.hash[:city] = str
 end
 
 Then /^set order details international ship-to province to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
   SdcOrders.order_details.ship_to.international.province.set(str)
-  TestData.hash[:int_ship_to_province] = str
+  TestData.hash[:province] = str
 end
 
 Then /^set order details international ship-to postal code to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
   SdcOrders.order_details.ship_to.international.postal_code.set(str)
-  TestData.hash[:int_ship_to_postal_code] = str
+  TestData.hash[:postal_code] = str
 end
 
 Then /^set order details international ship-to phone to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
   SdcOrders.order_details.ship_to.international.phone.set(str)
-  TestData.hash[:int_ship_to_phone] = str
+  TestData.hash[:phone] = str
 end
 
 Then /^set order details international ship-to email to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
   SdcOrders.order_details.ship_to.international.email.set(str)
-  TestData.hash[:int_ship_to_phone] = str
+  TestData.hash[:phone] = str
 end
 
 Then /^blur out on order details form$/ do
