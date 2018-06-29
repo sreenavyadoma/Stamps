@@ -417,7 +417,7 @@ Feature:  BVT tests for Orders
     Then add new order
     Then set order details ship-to domestic address to
       | full_name     | company | street_address     | street_address2| city          | state | zip | country       | phone          |  email           |
-      | Euan Davidson | Betfair | 1350 Market Street |                 | San Francisco | CA    |     | United States | (415) 123-5555 | rtest@stamps.com |
+      | Euan Davidson | Betfair | 1350 Market Street |                | San Francisco | CA    |     | United States | (415) 123-5555 | rtest@stamps.com |
     Then set order details service to PM Package
     Then set order details ounces to 1
     Then blur out on order details form
