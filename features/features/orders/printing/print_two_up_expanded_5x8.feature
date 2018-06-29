@@ -89,7 +89,7 @@ Feature: Print 1 Domestic label on 5.5x8.5
     Then set order details ship-to to PM Large Package, 5.5x8.5 Right Side 1, 26930 NE 152nd St., Duvall WA 98019-8316
     Then set order details service to PM Large Package
     Then set order details ounces to 1
-    Then set Order Details Dimensions to Length 1 Width 1 Height 1
+    Then set order details dimensions to length 1 width 1 height 1
     Then check row 1
     Then check row 2
     Then click orders toolbar print button

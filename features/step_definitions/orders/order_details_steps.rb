@@ -1,4 +1,16 @@
 
+Then /^expect order details associated item (\d+) qty placeholder is (.*)$/ do |item, str|
+  expect(stamps.orders.order_details.items_ordered.item(item.to_i).qty.textbox.placeholder).to eql str
+end
+
+Then /^expect order details associated item (\d+) ID Placeholder is (.*)$/ do |item, str|
+  expect(stamps.orders.order_details.items_ordered.item(item.to_i).id.placeholder).to eql str
+end
+
+Then /^expect order details associated item (\d+) Description Placeholder is (.*)$/ do |item, str|
+  expect(stamps.orders.order_details.items_ordered.item(item.to_i).description.placeholder).to eql str
+end
+
 Then /^[Oo]n [Oo]rder [Dd]etails form, Expand Manual Items Ordered pane$/ do
   stamps.orders.order_details.items_ordered.expand
 end
@@ -146,38 +158,6 @@ end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails is not present$/ do
   expect(stamps.orders.order_details.present?).to be(false), "Order Details form is present"
-end
-
-Then /^expect order details associated item (\d+) ID is (?:correct|(.*))$/ do |item_number, expectation|
-  stamps.orders.order_details.wait_until_present(2)
-  step 'expect order details is present'
-  expectation = (expectation.nil?) ? TestData.hash[:details_associated_items][item_number][:item_id] : expectation
-  expect(stamps.orders.order_details.items_ordered.item(item_number.to_i).item_id.text).to eql expectation
-end
-
-Then /^expect order details associated item (\d+) Description is (?:correct|(.*))$/ do |item_number, expectation|
-  stamps.orders.order_details.wait_until_present(2)
-  step 'expect order details is present'
-  expectation = (expectation.nil?) ? TestData.hash[:details_associated_items][item_number][:item_description] : expectation
-  expect(stamps.orders.order_details.items_ordered.item(item_number.to_i).item_description.text).to eql expectation
-end
-
-Then /^expect order details associated item (\d+) qty placeholder is (.*)$/ do |item_number, expectation|
-  stamps.orders.order_details.wait_until_present(2)
-  step 'expect order details is present'
-  expect(stamps.orders.order_details.items_ordered.item(item_number.to_i).qty.textbox.placeholder).to eql expectation
-end
-
-Then /^expect order details associated item (\d+) ID Placeholder is (.*)$/ do |item_number, expectation|
-  stamps.orders.order_details.wait_until_present(2)
-  step 'expect order details is present'
-  expect(stamps.orders.order_details.items_ordered.item(item_number.to_i).id.placeholder).to eql expectation
-end
-
-Then /^expect order details associated item (\d+) Description Placeholder is (.*)$/ do |item_number, expectation|
-  stamps.orders.order_details.wait_until_present(2)
-  step 'expect order details is present'
-  expect(stamps.orders.order_details.items_ordered.item(item_number.to_i).description.placeholder).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails Ship-To Address Placeholder is (.*)$/ do |expectation|
