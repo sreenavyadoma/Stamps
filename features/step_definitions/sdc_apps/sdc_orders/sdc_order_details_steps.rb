@@ -610,7 +610,7 @@ end
 
 Then /^expect order details associated item (\d+) qty is (?:correct|(\d+))$/ do |item, str|
   str ||= TestData.hash[:details_associated_items][item][:item_qty]
-  result = SdcOrders.order_details.associated_item.item_qty(item).value.to_i
+  result = SdcOrders.order_details.associated_item.item_qty(item).text_value.to_i
   expect(result).to eql(str.to_i)
 end
 
