@@ -1,4 +1,16 @@
 
+Then /^expect order details associated item (\d+) qty placeholder is (.*)$/ do |item, str|
+  expect(stamps.orders.order_details.items_ordered.item(item.to_i).qty.textbox.placeholder).to eql str
+end
+
+Then /^expect order details associated item (\d+) ID Placeholder is (.*)$/ do |item, str|
+  expect(stamps.orders.order_details.items_ordered.item(item.to_i).id.placeholder).to eql str
+end
+
+Then /^expect order details associated item (\d+) Description Placeholder is (.*)$/ do |item, str|
+  expect(stamps.orders.order_details.items_ordered.item(item.to_i).description.placeholder).to eql str
+end
+
 Then /^[Oo]n [Oo]rder [Dd]etails form, Expand Manual Items Ordered pane$/ do
   stamps.orders.order_details.items_ordered.expand
 end

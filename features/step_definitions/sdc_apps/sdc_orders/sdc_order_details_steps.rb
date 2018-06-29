@@ -507,35 +507,31 @@ Then /^set order details ship-from to (.+)$/ do |str|
   expect(actual_result).to eql str unless str == 'Manage Shipping Addresses...'
 end
 
+Then /^expect order details associated item (\d+) qty is (?:correct|(\d+))$/ do |item, str|
+  str ||= TestData.hash[:details_associated_items][item][:item_qty]
+  result = SdcOrders.order_details.associated_item.item_qty(item).text_value.to_i
+  expect(result).to eql(str.to_i)
+end
+
+Then /^expect order details associated item (\d+) ID is (?:correct|(.*))$/ do |item, str|
+  str ||= TestData.hash[:details_associated_items][item][:item_id]
+  result = SdcOrders.order_details.associated_item.id(item).text_value
+  expect(result).to eql str
+end
+
+Then /^expect order details associated item (\d+) Description is (?:correct|(.*))$/ do |item, str|
+  str ||= TestData.hash[:details_associated_items][item][:item_description]
+  result = SdcOrders.order_details.associated_item.description(item).text_value
+  expect(result).to eql str
+end
+
+
+
 
 
 
 
 # ---------------------------------------------------------------------------------------------------------
-
-
-Then /^expect order details associated item (\d+) ID is (?:correct|(.*))$/ do |item, str|
-  str ||= TestData.hash[:details_associated_items][item][:item_id]
-  expect(stamps.orders.order_details.items_ordered.item(item.to_i).item_id.text).to eql str
-end
-
-Then /^expect order details associated item (\d+) Description is (?:correct|(.*))$/ do |item, str|
-  str ||= TestData.hash[:details_associated_items][item][:item_description]
-  expect(stamps.orders.order_details.items_ordered.item(item.to_i).item_description.text).to eql str
-end
-
-Then /^expect order details associated item (\d+) qty placeholder is (.*)$/ do |item, str|
-  expect(stamps.orders.order_details.items_ordered.item(item.to_i).qty.textbox.placeholder).to eql str
-end
-
-Then /^expect order details associated item (\d+) ID Placeholder is (.*)$/ do |item, str|
-  expect(stamps.orders.order_details.items_ordered.item(item.to_i).id.placeholder).to eql str
-end
-
-Then /^expect order details associated item (\d+) Description Placeholder is (.*)$/ do |item, str|
-  expect(stamps.orders.order_details.items_ordered.item(item.to_i).description.placeholder).to eql str
-end
-
 
 
 
@@ -628,12 +624,6 @@ Then /^expect order details ship from is (?:correct|(.*))$/ do |str|
   str ||= TestData.hash[:ship_from]
   result = SdcOrders.order_details.ship_from.text_field.text_value
   expect(result).to include(str)
-end
-
-Then /^expect order details associated item (\d+) qty is (?:correct|(\d+))$/ do |item, str|
-  str ||= TestData.hash[:details_associated_items][item][:item_qty]
-  result = SdcOrders.order_details.associated_item.item_qty(item).text_value.to_i
-  expect(result).to eql(str.to_i)
 end
 
 Then /^expect order details ship-to country is (?:correct|(.*))$/ do |str|
