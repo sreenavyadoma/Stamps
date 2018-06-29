@@ -410,13 +410,13 @@ end
 Then /^set order details international ship-to address 1 to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
   SdcOrders.order_details.ship_to.international.address1.set(str)
-  TestData.hash[:address1] = str
+  TestData.hash[:street_address1] = str
 end
 
 Then /^set order details international ship-to address 2 to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
   SdcOrders.order_details.ship_to.international.address2.set(str)
-  TestData.hash[:address2] = str
+  TestData.hash[:street_address2] = str
 end
 
 Then /^set order details international ship-to city to (.*)$/ do |str|
