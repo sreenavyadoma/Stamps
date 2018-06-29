@@ -48,14 +48,6 @@ Feature:  BVT tests for Orders
   @bvt_orders_ship_date
   Scenario: Ship Date defaults to today
     Then sign-in to orders
-
-
-    Then check row 1
-    Then uncheck row 1
-    Then uncheck grid order id
-    Then check grid order id
-
-
     Then open orders settings general settings
     Then set orders settings general postdate to now +2 hours
     Then close orders settings modal
