@@ -211,56 +211,56 @@ Then /^expect order details ship-to name is (.*)$/ do |str|
   step 'expect order details is present'
   step 'show order details form ship-to fields'
   address = SdcOrders.order_details.ship_to.domestic.address.text_value
-  expectation = TestHelper.address_str_to_hash(address)[:name]
-  expect(expectation).to eql(str)
+  str = TestHelper.address_str_to_hash(address)[:name]
+  expect(str).to eql(str)
 end
 
 Then /^expect order details ship-to company name is (.*)$/ do |str|
   step 'expect order details is present'
   step 'show order details form ship-to fields'
   address = SdcOrders.order_details.ship_to.domestic.address.text_value
-  expectation = TestHelper.address_str_to_hash(address)[:company]
-  expect(expectation).to eql(str)
+  str = TestHelper.address_str_to_hash(address)[:company]
+  expect(str).to eql(str)
 end
 
 Then /^expect order details ship-to cleansed street address is (.*)$/ do |str|
   step 'expect order details is present'
   step 'show order details form ship-to fields'
   address = SdcOrders.order_details.ship_to.domestic.address.text_value
-  expectation = TestHelper.address_str_to_hash(address)[:street]
-  expect(expectation).to eql(str)
+  str = TestHelper.address_str_to_hash(address)[:street]
+  expect(str).to eql(str)
 end
 
 Then /^expect order details ship-to cleansed city is (.*)$/ do |str|
   step 'expect order details is present'
   step 'show order details form ship-to fields'
   address = SdcOrders.order_details.ship_to.domestic.address.text_value
-  expectation = TestHelper.address_str_to_hash(address)[:city]
-  expect(expectation).to eql(str)
+  str = TestHelper.address_str_to_hash(address)[:city]
+  expect(str).to eql(str)
 end
 
 Then /^expect order details ship-to cleansed state is (.*)$/ do |str|
   step 'expect order details is present'
   step 'show order details form ship-to fields'
   address = SdcOrders.order_details.ship_to.domestic.address.text_value
-  expectation = TestHelper.address_str_to_hash(address)[:state]
-  expect(expectation).to eql(str)
+  str = TestHelper.address_str_to_hash(address)[:state]
+  expect(str).to eql(str)
 end
 
 Then /^expect order details ship-to cleansed zip plus 4 code is (.*)$/ do |str|
   step 'expect order details is present'
   step 'show order details form ship-to fields'
   address = SdcOrders.order_details.ship_to.domestic.address.text_value
-  expectation = TestHelper.address_str_to_hash(address)[:zip_full]
-  expect(expectation).to eql(str)
+  str = TestHelper.address_str_to_hash(address)[:zip_full]
+  expect(str).to eql(str)
 end
 
 Then /^expect order details ship-to cleansed zip code is (.*)$/ do |str|
   step 'expect order details is present'
   step 'show order details form ship-to fields'
   address = SdcOrders.order_details.ship_to.domestic.address.text_value
-  expectation = TestHelper.address_str_to_hash(address)[:zip]
-  expect(expectation).to eql(str)
+  str = TestHelper.address_str_to_hash(address)[:zip]
+  expect(str).to eql(str)
 end
 
 Then /^expect order details ship-to phone is (.*)$/ do |str|
@@ -312,11 +312,11 @@ Then /^set order details ounces to (.+)$/ do |str|
 end
 
 Then /^set order details length to (\d*)$/ do |str|
-  TestData.hash[:length] = str
   order_details = SdcOrders.order_details
   dimensions = order_details.dimensions
   dimensions.length.wait_until_present(timeout: 5)
   dimensions.length.set(TestData.hash[:length])
+  TestData.hash[:length] = str
   step 'Save Order Details data'
 end
 
@@ -334,6 +334,7 @@ Then /^set order details height to (\d*)$/ do |str|
   dimensions = order_details.dimensions
   dimensions.height.wait_until_present(timeout: 5)
   dimensions.height.set(TestData.hash[:height] = str)
+  TestData.hash[:height] = str
   step 'Save Order Details data'
 end
 
@@ -446,7 +447,7 @@ end
 Then /^set order details international ship-to email to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
   SdcOrders.order_details.ship_to.international.email.set(str)
-  TestData.hash[:phone] = str
+  TestData.hash[:email] = str
 end
 
 Then /^blur out on order details form$/ do
@@ -527,52 +528,50 @@ end
 
 Then /^expect order details service cost is (?:correct|(\d+.\d*))$/ do |str|
   str ||= TestData.hash[:service_cost]
-  actual_result = SdcOrders.order_details.service.cost.text_value
-  expect(SdcOrders.order_details.service.cost.text_value.dollar_amount_str.to_f.round(2)).to eql(str.to_f.round(2))
+  result = SdcOrders.order_details.service.cost.text_value.dollar_amount_str.to_f.round(2)
+  expect(result).to eql(str.to_f.round(2))
 end
 
-Then /^expect order details pounds? (?:is (\d+)|and saved Pounds? are the same)$/ do |expectation|
-  expectation ||= TestData.hash[:pounds]
-  step 'expect order details is present'
-  if SdcEnv.new_framework
-    # expect(SdcOrders.order_details.weight.lbs.text_value.to_f).to eql(expectation.to_f.round(2))
-    expect(SdcOrders.order_details.weight.lbs.value.to_f).to eql(expectation.to_f.round(2))
-  else
-    expect(stamps.orders.order_details.weight.lb.textbox.text.to_f).to eql expectation.to_f.round(2)
-  end
+Then /^expect order details tracking cost is (?:correct|(\d+.\d*))$/ do |str|
+  str ||= TestData.hash[:tracking_cost]
+  result = SdcOrders.order_details.tracking.cost.text_value.to_f.round(2)
+  expect(result).to eql(str.to_f.round(2))
 end
 
-Then /^expect order details tracking cost is (?:correct|(\d+.\d*))$/ do |expectation|
-  expectation = TestData.hash[:tracking_cost] if expectation.nil?
-  step 'expect order details is present'
-  expect(SdcOrders.order_details.tracking.cost.text_value.to_f.round(2)).to eql(expectation.nil? ? TestData.hash[:tracking_cost] : expectation)
+Then /^expect order details pounds? (?:is (\d+)|and saved Pounds? are the same)$/ do |str|
+  str ||= TestData.hash[:pounds]
+  result = SdcOrders.order_details.weight.lbs.text_value.to_f
+  expect(result).to eql(str.to_f.round(2))
 end
 
 Then /^expect order details ounces? (?:is (\d+)|and saved Ounces? are the same)$/ do |str|
   str ||= TestData.hash[:ounces]
-  step 'expect order details is present'
-  expect(SdcOrders.order_details.weight.oz.value.to_f).to eql(str.to_f.round(2))
+  result = SdcOrders.order_details.weight.oz.text_value.to_f
+  expect(result).to eql(str.to_f.round(2))
 end
 
-Then /^expect order details length is (\d+)$/ do |expectation|
-  step 'expect order details is present'
-  expect(SdcOrders.order_details.dimensions.length.value.to_f).to eql(expectation.to_f.round(2))
+Then /^expect order details length is (\d+)$/ do |str|
+  str ||= TestData.hash[:length]
+  result = SdcOrders.order_details.dimensions.length.text_value.to_f
+  expect(result).to eql(str.to_f.round(2))
 end
 
-Then /^expect order details width is (\d+)$/ do |expectation|
-  step 'expect order details is present'
-  expect(SdcOrders.order_details.dimensions.width.value.to_f).to eql(expectation.to_f.round(2))
+Then /^expect order details width is (\d+)$/ do |str|
+  str ||= TestData.hash[:width]
+  result = SdcOrders.order_details.dimensions.width.text_value.to_f
+  expect(result).to eql(str.to_f.round(2))
 end
 
-Then /^expect order details height is (\d+)$/ do |expectation|
-  step 'expect order details is present'
-  expect(SdcOrders.order_details.dimensions.height.value.to_f).to eql(expectation.to_f.round(2))
+Then /^expect order details height is (\d+)$/ do |str|
+  str ||= TestData.hash[:height]
+  result = SdcOrders.order_details.dimensions.height.text_value.to_f
+  expect(result).to eql(str.to_f.round(2))
 end
 
-Then /^expect order details tracking is (?:correct|(.*))$/ do |expectation|
-  expectation = TestData.hash[:tracking] if expectation.nil?
-  step 'expect order details is present'
-  expect(SdcOrders.order_details.tracking.text_field.text_value).to eql(expectation)
+Then /^expect order details tracking is (?:correct|(.*))$/ do |str|
+  str = TestData.hash[:tracking] if str.nil?
+  result = SdcOrders.order_details.tracking.text_field.text_value
+  expect(result).to eql(str)
 end
 
 Then /^expect order details is present$/ do
@@ -581,18 +580,8 @@ Then /^expect order details is present$/ do
 end
 
 Then /^expect order details ship-from and ship-from saved values are the same$/ do
-  if SdcEnv.new_framework
-    #   todo - Alex complete this
-  else
-    stamps.orders.order_details.wait_until_present(2)
-  end
-  step 'expect order details is present'
-  step "show order details form ship-to fields"
-  if SdcEnv.new_framework
-    expect(SdcOrders.order_details.ship_from.text_field.text_value).to eql(TestData.hash[:ship_from])
-  else
-    expect(stamps.orders.order_details.single_ship_from.textbox.text).to eql(TestData.hash[:ship_from])
-  end
+  step 'show order details form ship-to fields'
+  expect(SdcOrders.order_details.ship_from.text_field.text_value).to eql(TestData.hash[:ship_from])
 end
 
 Then /^expect order details reference number is (?:correct|(.*))$/ do |str|
