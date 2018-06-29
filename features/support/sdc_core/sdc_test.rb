@@ -149,9 +149,7 @@ class SdcTest
 
             when :firefox
               kill('taskkill /im firefox.exe /f')
-              unless SdcEnv.firefox_profile
-                SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
-              else
+              if SdcEnv.firefox_profile
                 if SdcEnv.web_dev
                   download_directory = "#{Dir.getwd}/download"
                   download_directory.tr!('/', '\\') if Selenium::WebDriver::Platform.windows?
@@ -169,6 +167,8 @@ class SdcTest
                 end
 
                 SdcPage.browser.driver.manage.timeouts.page_load = 12
+              else
+                SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
               end
 
             when :chrome
