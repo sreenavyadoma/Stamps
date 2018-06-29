@@ -52,8 +52,8 @@ Feature:  BVT tests for Orders
 
     Then check row 1
     Then uncheck row 1
-    Then uncheck grid order id cached
-    Then check grid order id cached
+    Then uncheck grid order id
+    Then check grid order id
 
 
     Then open orders settings general settings
@@ -189,12 +189,12 @@ Feature:  BVT tests for Orders
     Then set order details phone to random
     Then set order details service to PM Package
     Then set order details weight to 1 lb 1 oz
-    Then uncheck grid order id cached
-    Then check grid order id cached
+    Then uncheck grid order id
+    Then check grid order id
     Then search filtered Orders for cached Order ID
     Then expect filter panel search results tab is present
     Then expect Filter Panel search result count is 1
-    Then check grid order id cached
+    Then check grid order id
     Then expect Order Details Order ID equals Grid Order ID in row 1
     Then expect Order Details Order ID is the same as saved Order ID
     Then expect Filter Panel search result count is greater than 0
@@ -230,10 +230,10 @@ Feature:  BVT tests for Orders
     Then blur out on order details form
     Then pause for 2 seconds
 
-    Then uncheck grid order id cached
+    Then uncheck grid order id
 
     Then pause for 2 seconds
-    Then check grid order id cached
+    Then check grid order id
     Then pause for 2 seconds
     Then blur out on order details form
 
@@ -294,7 +294,7 @@ Feature:  BVT tests for Orders
     Then set order details ship-to international address to
       | full_name     | company       | street_address1 | street_address2 | city          | province      | postal_code   | country| phone         |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | India  | Random phone  | Random email  |
-    #Then expect order details ship-to country is correct
+    Then expect order details ship-to country is correct
     Then set order details weight to 2 lb 2 oz
     Then set order details service to PMI Package/Flat/Thick Envelope
     Then set order details insure-for to $100.25
@@ -330,9 +330,9 @@ Feature:  BVT tests for Orders
 
     Then pause for 1 second
     Then blur out on order details form
-    Then uncheck grid order id cached
+    Then uncheck grid order id
     Then pause for 3 seconds
-    Then check grid order id cached
+    Then check grid order id
     Then pause for 2 seconds
 
     Then expect order details international ship-to name is correct
