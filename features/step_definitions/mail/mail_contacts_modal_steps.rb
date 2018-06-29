@@ -38,6 +38,6 @@ Then /^expect search contacts modal is not present$/ do
   expect(SdcMail.modals.search_contacts.title).not_to be_present, "Seach Contacts modal is still present"
 end
 Then /^close search contacts modal$/ do
-  SdcMail.print_form.mail_to.x_btn.click
+  SdcMail.modals.search_contacts.x_btn.click
   step 'expect search contacts modal is not present'
 end

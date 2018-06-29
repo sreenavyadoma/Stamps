@@ -475,7 +475,7 @@ Feature:  Mail BVT - Authentication
   @mail_bvt_contacts
   Scenario: Contacts
     Then sign-in to mail
-    Then select print on Shipping Label - 5x8
+    Then select print on Shipping Label - 5 ½" x 8 ½"
       #    Then set Print form Mail-From to default
     Then click print form mail to link
     Then close search contacts modal
