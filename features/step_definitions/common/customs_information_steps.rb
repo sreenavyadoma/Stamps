@@ -349,12 +349,12 @@ end
 
 Then /^expect customs associated item (\d+) Quantity is (?:correct|(.*))$/ do |item, str|
   str ||= TestData.hash[:customs_associated_items][item][:quantity]
-  expect(SdcWebsite.customs_form.item.qty(item).value.to_i).to eql(str.to_i)
+  expect(SdcWebsite.customs_form.item.qty(item).text_value.to_i).to eql(str.to_i)
 end
 
 Then /^expect customs associated item (\d+) Unit Price is (?:correct|(.*))$/ do |item, str|
   str ||= TestData.hash[:customs_associated_items][item][:price]
-  expect(SdcWebsite.customs_form.item.unit_price(item).value.to_f).to eql(str.to_f)
+  expect(SdcWebsite.customs_form.item.unit_price(item).text_value.to_f).to eql(str.to_f)
 end
 
 Then /^expect customs associated item (\d+) Made In is (?:correct|(.*))$/ do |item, str|
