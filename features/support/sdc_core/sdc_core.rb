@@ -486,7 +486,9 @@ module HtmlElementMethods
             send(:attribute, property).include?(value)
           end
 
-    if result.casecmp('true').zero? || result.casecmp('false').zero?
+    if result == true || result == false
+      return result
+    elsif result.casecmp('true').zero? || result.casecmp('false').zero?
       return result.casecmp('true').zero?
     end
     result.include?(value)
