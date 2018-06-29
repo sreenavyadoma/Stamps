@@ -145,7 +145,7 @@ Then /^expect orders grid city is (?:correct|(.*))$/ do |expectation|
 end
 
 Then /^expect orders grid state is (?:correct|(.*))$/ do |expectation|
-  expectation ||= TestData.hash[:state]
+  expectation ||= TestData.hash[:state] || TestData.hash[:province]
   order_id = TestData.hash[:order_id].values.last
   result = SdcGrid.grid_column(:state).data(order_id)
   expect(result).to eql expectation
