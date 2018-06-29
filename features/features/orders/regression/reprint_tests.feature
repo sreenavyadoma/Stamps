@@ -17,7 +17,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then In left Filter Panel, expect order moved to Shipped
 
     Then select Filter Panel tab Shipped
-    Then check orders grid order id cached
+    Then check grid order id
     Then in Print modal, Open Reprint Modal
     Then Label Unavailable:  Expect Visible
     Then pause for 5 seconds
@@ -41,7 +41,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then click print modal print button
 
     Then select Filter Panel tab Shipped
-    Then check orders grid order id cached
+    Then check grid order id
     Then in Print modal, Open Reprint Modal
     Then Close Reprint Modal
     Then sign out
@@ -65,7 +65,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then click print modal print button
 
     Then select Filter Panel tab Shipped
-    Then check orders grid order id cached
+    Then check grid order id
     Then in Print modal, Open Reprint Modal
     Then ReIn Print modal, Reprint
 
@@ -95,7 +95,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then click print modal print button
 
     Then select Filter Panel tab Shipped
-    Then check orders grid order id cached
+    Then check grid order id
     Then in Print modal, Open Reprint Modal
     Then ReIn Print modal, Reprint
 
@@ -126,7 +126,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then click print modal print button
 
     Then select Filter Panel tab Shipped
-    Then check orders grid order id cached
+    Then check grid order id
     Then in Print modal, Open Reprint Modal
     Then ReIn Print modal, Reprint
 
@@ -157,7 +157,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then click print modal print button
 
     Then select Filter Panel tab Shipped
-    Then check orders grid order id cached
+    Then check grid order id
     Then in Print modal, Open Reprint Modal
     Then ReIn Print modal, Reprint
 
@@ -188,7 +188,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then click print modal print button
 
     Then select Filter Panel tab Shipped
-    Then check orders grid order id cached
+    Then check grid order id
     Then in Print modal, Open Reprint Modal
     Then ReIn Print modal, Reprint
 
