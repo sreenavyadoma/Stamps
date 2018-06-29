@@ -481,13 +481,12 @@ module HtmlElementMethods
 
   def attribute_include?(property, value)
     result = if respond_to? :attribute_value
-            send(:attribute_value, property).include?(value)
-          else
-            send(:attribute, property).include?(value)
-          end
+               send(:attribute_value, property).include?(value)
+             else
+               send(:attribute, property).include?(value)
+             end
 
-    if result == true || result == false
-      return result
+    if [true, false].include? result
     elsif result.casecmp('true').zero? || result.casecmp('false').zero?
       return result.casecmp('true').zero?
     end
@@ -530,7 +529,9 @@ class SdcChooser < BasicObject
                @verify.send(:attribute, @property)
              end
 
-    if result.casecmp('true').zero? || result .casecmp('false').zero?
+    if [true, false].include? result
+      result
+    elsif result.casecmp('true').zero? || result .casecmp('false').zero?
       return result.casecmp('true').zero?
     end
     result.include?(@value)
