@@ -200,51 +200,36 @@ Then /^expect orders grid qty is (?:correct|(.*))$/ do |str|
   expect(result).to eql str.to_i
 end
 
-
-Then /^expect orders grid weight is (\d+) lb. (\d+) oz.$/ do |pounds, ounces|
-
-
-  expect(SdcGrid.grid_column(:weight).data(TestData.hash[:order_id].values.last)).to eql str
-end
-
-Then /^[Ee]xpect [Oo]rders [Gg]rid Weight\(lb\) is (.*)$/ do |str|
-
-
-  expect(SdcGrid.grid_column(:weight).lb(TestData.hash[:order_id].values.last)).to eql str
-end
-
-Then /^[Ee]xpect [Oo]rders [Gg]rid Weight\(oz\) is (.*)$/ do |str|
-
-
-  expect(SdcGrid.grid_column(:weight).oz(TestData.hash[:order_id].values.last)).to eql str
-end
 Then /^expect orders grid item sku is (.+)$/ do |str|
-
-
-  expect(SdcGrid.grid_column(:item_sku).data(TestData.hash[:order_id].values.last)).to eql str
+  order_id = TestData.hash[:order_id].values.last
+  result = SdcGrid.grid_column(:item_sku).data(order_id)
+  expect(result).to eql str
 end
 
 Then /^expect orders grid item name is (.+)$/ do |str|
+  order_id = TestData.hash[:order_id].values.last
+  result = SdcGrid.grid_column(:item_name).data(order_id)
+  expect(result).to eql str
+end
 
+Then /^expect orders grid weight is (\d+) lb. (\d+) oz.$/ do |lb, oz|
+  str = "#{lb} lbs. #{oz} oz."
+  order_id = TestData.hash[:order_id].values.last
+  result = SdcGrid.grid_column(:weight).data(order_id)
+  expect(result).to eql str
+end
 
-  expect(SdcGrid.grid_column(:item_name).data(TestData.hash[:order_id].values.last)).to eql str
+Then /^expect orders grid service is (?:correct|(.*))$/ do |str|
+  str ||= TestData.hash[:grid_service]
+  order_id = TestData.hash[:order_id].values.last
+  result = SdcGrid.grid_column(:service).data(order_id)
+  expect(result).to eql(str)
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Ship From is (.+)$/ do |str|
 
 
   expect(SdcGrid.grid_column(:ship_from).data(TestData.hash[:order_id].values.last)).to eql str
-end
-
-Then /^expect orders grid service is (?:correct|(.*))$/ do |str|
-  str = TestData.hash[:service] if str.nil?
-  str = TestData.hash[:service_look_up][str.split(' ').first].nil? ? str : TestData.hash[:service_look_up][str.split(' ').first]
-  if SdcEnv.new_framework
-    #todo - orders grid implementation
-  else
-    10.times { break if SdcGrid.grid_column(:service).data(TestData.hash[:order_id].values.last).eql? str }
-    expect(SdcGrid.grid_column(:service).data(TestData.hash[:order_id].values.last)).to eql(str)
-  end
 end
 
 Then /^expect orders grid insured value is \$(.+)$/ do |str|

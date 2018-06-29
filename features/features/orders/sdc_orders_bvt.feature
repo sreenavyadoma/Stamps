@@ -383,12 +383,12 @@ Feature:  BVT tests for Orders
     Then expect orders grid email is correct
 
     Then expect orders grid qty is correct
-#    Then expect orders grid item sku is Multiple
-#    Then expect orders grid item name is Multiple
-#
-#    Then expect orders grid service is Priority Mail International
-#    Then expect orders grid pounds is correct
-#    Then expect orders grid ounces is correct
+    Then expect orders grid item sku is Multiple
+    Then expect orders grid item name is Multiple
+    Then expect orders grid weight is 2 lb. 2 oz.
+
+    Then expect orders grid service is Priority Mail International
+    Then expect orders grid service is correct
 #    Then expect order details insure-for is correct
 #    Then expect orders grid order status is Awaiting Shipment
 

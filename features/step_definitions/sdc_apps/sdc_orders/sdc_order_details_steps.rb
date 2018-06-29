@@ -31,7 +31,7 @@ Then /^scroll into view order details associated item (\d+)$/ do |item|
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) qty to (.*)$/ do |item, qty|
-  step 'expect order details is present'
+  
   unless TestData.hash[:details_associated_items].has_key?(item)
     TestData.hash[:details_associated_items][item] = {}
   end
@@ -42,7 +42,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) qty to (.*)$/ do |item, 
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) ID to (.*)$/ do |item, str|
-  step 'expect order details is present'
+  
   TestData.hash[:details_associated_items][item] = {} unless TestData.hash[:details_associated_items].has_key?(item)
   str = TestHelper.rand_alpha_numeric if str.downcase.include?('random')
   SdcOrders.order_details.associated_item.id(item).set(str)
@@ -51,7 +51,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) ID to (.*)$/ do |item, s
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) description to (.*)$/ do |item, str|
-  step 'expect order details is present'
+  
   TestData.hash[:details_associated_items][item] = {} unless TestData.hash[:details_associated_items].has_key?(item)
   str = TestHelper.rand_alpha_numeric if str.downcase.include?('random')
   SdcOrders.order_details.associated_item.description(item).set(str)
@@ -162,7 +162,7 @@ Then /^set order details ship-to domestic address to$/ do |table|
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Aa]mbiguous [Aa]ddress to$/ do |table|
-  step 'expect order details is present'
+  
   address = TestHelper.format_address(table.hashes.first)
   stamps.orders.order_details.ship_to.domestic.set_ambiguous(address)
   TestData.hash[:ship_to_domestic] = address
@@ -209,7 +209,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails Order ID is the same as saved Order ID$/ do
 end
 
 Then /^expect order details ship-to name is (.*)$/ do |str|
-  step 'expect order details is present'
+  
   step 'show order details form ship-to fields'
   address = SdcOrders.order_details.ship_to.domestic.address.text_value
   str = TestHelper.address_str_to_hash(address)[:name]
@@ -217,7 +217,7 @@ Then /^expect order details ship-to name is (.*)$/ do |str|
 end
 
 Then /^expect order details ship-to company name is (.*)$/ do |str|
-  step 'expect order details is present'
+  
   step 'show order details form ship-to fields'
   address = SdcOrders.order_details.ship_to.domestic.address.text_value
   str = TestHelper.address_str_to_hash(address)[:company]
@@ -225,7 +225,7 @@ Then /^expect order details ship-to company name is (.*)$/ do |str|
 end
 
 Then /^expect order details ship-to cleansed street address is (.*)$/ do |str|
-  step 'expect order details is present'
+  
   step 'show order details form ship-to fields'
   address = SdcOrders.order_details.ship_to.domestic.address.text_value
   str = TestHelper.address_str_to_hash(address)[:street]
@@ -233,7 +233,7 @@ Then /^expect order details ship-to cleansed street address is (.*)$/ do |str|
 end
 
 Then /^expect order details ship-to cleansed city is (.*)$/ do |str|
-  step 'expect order details is present'
+  
   step 'show order details form ship-to fields'
   address = SdcOrders.order_details.ship_to.domestic.address.text_value
   str = TestHelper.address_str_to_hash(address)[:city]
@@ -241,7 +241,7 @@ Then /^expect order details ship-to cleansed city is (.*)$/ do |str|
 end
 
 Then /^expect order details ship-to cleansed state is (.*)$/ do |str|
-  step 'expect order details is present'
+  
   step 'show order details form ship-to fields'
   address = SdcOrders.order_details.ship_to.domestic.address.text_value
   str = TestHelper.address_str_to_hash(address)[:state]
@@ -249,7 +249,7 @@ Then /^expect order details ship-to cleansed state is (.*)$/ do |str|
 end
 
 Then /^expect order details ship-to cleansed zip plus 4 code is (.*)$/ do |str|
-  step 'expect order details is present'
+  
   step 'show order details form ship-to fields'
   address = SdcOrders.order_details.ship_to.domestic.address.text_value
   str = TestHelper.address_str_to_hash(address)[:zip_full]
@@ -257,7 +257,7 @@ Then /^expect order details ship-to cleansed zip plus 4 code is (.*)$/ do |str|
 end
 
 Then /^expect order details ship-to cleansed zip code is (.*)$/ do |str|
-  step 'expect order details is present'
+  
   step 'show order details form ship-to fields'
   address = SdcOrders.order_details.ship_to.domestic.address.text_value
   str = TestHelper.address_str_to_hash(address)[:zip]
@@ -265,20 +265,20 @@ Then /^expect order details ship-to cleansed zip code is (.*)$/ do |str|
 end
 
 Then /^expect order details ship-to phone is (.*)$/ do |str|
-  step 'expect order details is present'
   step 'show order details form ship-to fields'
   expect(SdcOrders.order_details.ship_to.domestic.phone.text_value).to eql(str)
 end
 
 Then /^expect order details ship-to email is (.*)$/ do |str|
-  step 'expect order details is present'
   step 'show order details form ship-to fields'
   expect(SdcOrders.order_details.ship_to.domestic.email.text_value).to eql(str)
 end
 
 Then /^set order details service to (.*)$/ do |str|
-  step 'expect order details is present'
   TestData.hash[:service] = str
+  key = str.split(' ').first
+  grid_service = TestData.hash[:service_look_up][key]
+  TestData.hash[:grid_service] = grid_service
   order_details = SdcOrders.order_details
   service = order_details.service
   service.selection(name: :selection_element, str: str)
@@ -346,7 +346,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails [Ss]ervice is (?:correct|(.*))$/ do |str|
 end
 
 Then /^set order details international service to (.*)$/ do |str|
-  step 'expect order details is present'
+  
   TestData.hash[:int_service] = stamps.orders.order_details.service.select(str).parse_service_name
   20.times do
     step 'blur out on order details form'
