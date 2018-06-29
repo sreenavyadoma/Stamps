@@ -37,6 +37,9 @@ end
 
 When /^uncheck row (\d+)$/ do |row|
   checkbox = SdcGrid.grid_column(:checkbox).checkbox_row(row)
+  checkbox = SdcGrid.grid_column(:checkbox).checkbox(2)
+  checkbox = SdcGrid.grid_column(:checkbox).checkbox(2)
+  checkbox = SdcGrid.grid_column(:checkbox).checkbox(row)
   checkbox.uncheck
   expect(checkbox.checked?).to be(false)
 end
