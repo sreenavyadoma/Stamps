@@ -515,7 +515,7 @@ class SdcChooser < BasicObject
   include ::HtmlElementMethods
 
   def initialize(element, verify, property, value)
-    @element = ::SdcElement.new(element)
+    @element = element
     @verify = verify
     @property = property.to_s
     @value = value.to_s
@@ -580,12 +580,16 @@ end
 class SdcNumber < BasicObject
   include ::HtmlElementMethods
 
-  attr_reader :text_field, :increment, :decrement
+  attr_reader :increment, :decrement
 
   def initialize(text_field, increment, decrement)
-    @element = ::SdcElement.new(text_field)
+    @element = text_field
     @increment = increment
     @decrement = decrement
+  end
+
+  def text_field
+    @element
   end
 
   def respond_to_missing?(name, include_private = false)
