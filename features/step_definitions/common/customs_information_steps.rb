@@ -344,26 +344,31 @@ end
 
 Then /^expect customs associated item (\d+) Description is (?:correct|(.*))$/ do |item, str|
   str ||= TestData.hash[:customs_associated_items][item][:description]
-  expect(SdcWebsite.customs_form.item.item_description(item).text_value).to eql(str)
+  result = SdcWebsite.customs_form.item.item_description(item).text_value
+  expect(result).to eql(str)
 end
 
 Then /^expect customs associated item (\d+) Quantity is (?:correct|(.*))$/ do |item, str|
   str ||= TestData.hash[:customs_associated_items][item][:quantity]
-  expect(SdcWebsite.customs_form.item.qty(item).text_value.to_i).to eql(str.to_i)
+  result = SdcWebsite.customs_form.item.qty(item).text_value.to_i
+  expect(result).to eql(str.to_i)
 end
 
 Then /^expect customs associated item (\d+) Unit Price is (?:correct|(.*))$/ do |item, str|
   str ||= TestData.hash[:customs_associated_items][item][:price]
-  expect(SdcWebsite.customs_form.item.unit_price(item).text_value.to_f).to eql(str.to_f)
+  result = SdcWebsite.customs_form.item.unit_price(item).text_value.to_f
+  expect(result).to eql(str.to_f)
 end
 
 Then /^expect customs associated item (\d+) Made In is (?:correct|(.*))$/ do |item, str|
   str ||= TestData.hash[:customs_associated_items][item][:made_in]
-  expect(SdcWebsite.customs_form.item.made_in.text_field(item).text_value).to eql(str)
+  result = SdcWebsite.customs_form.item.made_in.text_field(item).text_value
+  expect(result).to eql(str)
 end
 
 Then /^expect customs associated item (\d+) Tariff is (?:correct|(.*))$/ do |item, str|
   str ||= TestData.hash[:customs_associated_items][item][:tarriff]
-  expect(SdcWebsite.customs_form.item.hs_tariff(item).text_value.to_f).to eql(str.to_f)
+  result = SdcWebsite.customs_form.item.hs_tariff(item).text_value.to_f
+  expect(result).to eql(str.to_f)
 end
 
