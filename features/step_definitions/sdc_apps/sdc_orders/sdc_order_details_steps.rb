@@ -609,7 +609,7 @@ end
 
 Then /^expect order details insure-for is (?:correct|(\d+\.\d{2}))$/ do |str|
   str ||= TestData.hash[:insured_value]
-  result = SdcOrders.order_details.insure_for.amount.value.to_f.round(2)
+  result = SdcOrders.order_details.insure_for.amount.text_value.to_f.round(2)
   expect(result).to eql(str.to_f)
 end
 
