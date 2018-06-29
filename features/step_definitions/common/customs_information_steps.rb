@@ -280,13 +280,13 @@ Then /^add customs associated item (\d+)$/ do |item|
 end
 
 Then /^scroll into view customs associated item (\d+)$/ do |item|
-  item = SdcWebsite.customs_form.item
-  item.made_in.drop_down(item).scroll_into_view
-  item.item_description(item).scroll_into_view
-  item.hs_tariff(item).scroll_into_view
-  item.qty(item).scroll_into_view
-  item.unit_price(item).scroll_into_view
-  item.delete(item).scroll_into_view
+  element = SdcWebsite.customs_form.item
+  element.made_in.drop_down(item).scroll_into_view
+  element.item_description(item).scroll_into_view
+  element.hs_tariff(item).scroll_into_view
+  element.qty(item).scroll_into_view
+  element.unit_price(item).scroll_into_view
+  element.delete(item).scroll_into_view
 end
 
 Then /^set customs associated item (\d+) description to (.*)$/ do |item, value|
