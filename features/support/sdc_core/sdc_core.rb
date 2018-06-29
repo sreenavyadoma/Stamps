@@ -480,16 +480,16 @@ module HtmlElementMethods
   end
 
   def attribute_include?(property, value)
-    val = if respond_to? :attribute_value
+    result = if respond_to? :attribute_value
             send(:attribute_value, property).include?(value)
           else
             send(:attribute, property).include?(value)
           end
 
-    if val.casecmp('true').zero? || val.casecmp('false').zero?
-      return val.casecmp('true').zero?
+    if result.casecmp('true').zero? || result.casecmp('false').zero?
+      return result.casecmp('true').zero?
     end
-    val.include?(value)
+    result.include?(value)
   end
 end
 
@@ -519,7 +519,6 @@ class SdcChooser < BasicObject
     @verify = verify
     @property = property.to_s
     @value = value.to_s
-    # set_instance_variables(binding, *local_variables)
   end
 
   def chosen?
@@ -528,7 +527,10 @@ class SdcChooser < BasicObject
              else
                @verify.send(:attribute, @property)
              end
-    return result.casecmp('true').zero? if result.casecmp('true').zero? || result .casecmp('false').zero?
+
+    if result.casecmp('true').zero? || result .casecmp('false').zero?
+      return result.casecmp('true').zero?
+    end
     result.include?(@value)
   end
 
