@@ -47,7 +47,7 @@ end
 Then /^Mail Sign In: Expect Remember Username is checked$/ do
   fix me!
   #todo-fix username
-  expect(actual_value).to eql expectation
+  expect(result).to eql expectation
 end
 
 Then /^Mail Sign In: Set Remember Username to Unchecked$/ do
@@ -59,7 +59,7 @@ end
 Then /^Mail Sign In: Expect Remember Username is unchecked$/ do
   fix me
   #todo-fix username
-  expect(actual_value).to eql expectation
+  expect(result).to eql expectation
 end
 
 Then /^Mail Sign In: Expect WhatsNewModal is present$/ do

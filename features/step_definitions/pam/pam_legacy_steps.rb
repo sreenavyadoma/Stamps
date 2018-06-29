@@ -8,18 +8,18 @@ Then /^[Oo]n PAM Customer Search page, Verify user is found$/ do #todo-Mohammed 
   expectation = "Customer was found"
 
   if @pam_customer_profile_found
-    actual_value = expectation
+    result = expectation
   else
     case @customer_profile
       when Pam::CustomerNotFoundPage
-        actual_value = @customer_profile.text
+        result = @customer_profile.text
       when Pam::MeterInfoNotAvailableForAccount
-        actual_value = @customer_profile.text
+        result = @customer_profile.text
       else
         raise "Customer was not found!"
     end
   end
-  expect(actual_value).to eql expectation
+  expect(result).to eql expectation
 end
 
 Then /^[Oo]n PAM Customer Profile page, click Change Meter Limit link$/ do

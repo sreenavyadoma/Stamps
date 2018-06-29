@@ -1,32 +1,34 @@
 
-Then /^check orders grid order id (cached|\d+)$/ do |order_id|
-  order_id = if order_id.nil? || order_id == 'cached'
+Then /^check grid order id(?:| (\d*))$/ do |order_id|
+  order_id = if order_id.nil?
                TestData.hash[:order_id].values.last
-             else
+             elsif order_id.size < 2
                TestData.hash[:order_id][order_id.to_i]
+             else
+               order_id
              end
-  check_column = SdcGrid.grid_column(:checkbox)
-  row = check_column.row_number(order_id)
-  checkbox = check_column.checkbox(row)
-
-  checkbox.check_order_id(order_id)
-  actual_result = checkbox.order_id_checked?(order_id)
-  expect(actual_result).to be(true)
+  column = SdcGrid.grid_column(:checkbox)
+  row = column.row_number(order_id)
+  checkbox = column.checkbox_row(row)
+  checkbox.check
+  result = checkbox.checked?
+  expect(result).to be(true)
 end
 
-Then /^uncheck orders grid order id (cached|\d+)$/ do |order_id|
-  order_id = if order_id.nil? || order_id == 'cached'
+Then /^uncheck grid order id(?:| (\d*))$/ do |order_id|
+  order_id = if order_id.nil?
                TestData.hash[:order_id].values.last
-             else
+             elsif order_id.size < 2
                TestData.hash[:order_id][order_id.to_i]
+             else
+               order_id
              end
-  check_column = SdcGrid.grid_column(:checkbox)
-  row = check_column.row_number(order_id)
-  checkbox = check_column.checkbox_row(row)
-
-  checkbox.uncheck_order_id(order_id)
-  actual_result = checkbox.order_id_checked?(order_id)
-  expect(actual_result).to be(false)
+  column = SdcGrid.grid_column(:checkbox)
+  row = column.row_number(order_id)
+  checkbox = column.checkbox_row(row)
+  checkbox.uncheck
+  result = checkbox.checked?
+  expect(result).to be(false)
 end
 
 When /^check row (\d+)$/ do |row|
@@ -37,9 +39,6 @@ end
 
 When /^uncheck row (\d+)$/ do |row|
   checkbox = SdcGrid.grid_column(:checkbox).checkbox_row(row)
-  checkbox = SdcGrid.grid_column(:checkbox).checkbox(2)
-  checkbox = SdcGrid.grid_column(:checkbox).checkbox(2)
-  checkbox = SdcGrid.grid_column(:checkbox).checkbox(row)
   checkbox.uncheck
   expect(checkbox.checked?).to be(false)
 end
@@ -118,15 +117,15 @@ Then /^expect orders grid recipient is (?:correct|(.*))$/ do |expectation|
   expectation ||= TestData.hash[:full_name]
   order_id = TestData.hash[:order_id].values.last
   expect(order_id).to be_truthy
-  actual_result = SdcGrid.grid_column(:recipient).data(order_id)
-  expect(actual_result).to eql expectation
+  result = SdcGrid.grid_column(:recipient).data(order_id)
+  expect(result).to eql expectation
 end
 
 Then /^expect orders grid company is (?:correct|(.*))$/ do |expectation|
   expectation ||= TestData.hash[:company]
   order_id = TestData.hash[:order_id].values.last
-  actual_result = SdcGrid.grid_column(:company).data(order_id)
-  expect(actual_result).to eql expectation
+  result = SdcGrid.grid_column(:company).data(order_id)
+  expect(result).to eql expectation
 end
 
 Then /^expect orders grid address is (?:correct|(.*))$/ do |expectation|
@@ -134,22 +133,22 @@ Then /^expect orders grid address is (?:correct|(.*))$/ do |expectation|
   address2 = TestData.hash[:street_address2]
   expectation ||= "#{address1}#{(address2.scan(/(\w+)/).size > 0) ? " #{address2}" : ""}"
   order_id = TestData.hash[:order_id].values.last
-  actual_result = SdcGrid.grid_column(:address).data(order_id)
-  expect(actual_result).to eql expectation
+  result = SdcGrid.grid_column(:address).data(order_id)
+  expect(result).to eql expectation
 end
 
 Then /^expect orders grid city is (?:correct|(.*))$/ do |expectation|
   expectation ||= TestData.hash[:city]
   order_id = TestData.hash[:order_id].values.last
-  actual_result = SdcGrid.grid_column(:city).data(order_id)
-  expect(actual_result).to eql expectation
+  result = SdcGrid.grid_column(:city).data(order_id)
+  expect(result).to eql expectation
 end
 
 Then /^expect orders grid state is (?:correct|(.*))$/ do |expectation|
   expectation ||= TestData.hash[:state]
   order_id = TestData.hash[:order_id].values.last
-  actual_result = SdcGrid.grid_column(:state).data(order_id)
-  expect(actual_result).to eql expectation
+  result = SdcGrid.grid_column(:state).data(order_id)
+  expect(result).to eql expectation
 end
 
 Then /^expect orders grid zip is (?:correct|(.*))$/ do |expectation|
