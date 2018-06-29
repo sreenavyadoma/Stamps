@@ -11,65 +11,65 @@ Then /^set order details ship-to to(?: a |)(?: random address |)(?:to|in|between
   step 'hide order details form Ship-To fields'
 end
 
-Then /^on order details form, add item (\d+), qty (\d+), id (.+), description (.*)$/ do |item_number, qty, id, description|
-  step "add order details associated item #{item_number}"
-  step "scroll into view order details associated item #{item_number}"
-  step "set Order Details Associated Item #{item_number} qty to #{qty}"
-  step "set Order Details Associated Item #{item_number} ID to #{id}"
-  step "set Order Details Associated Item #{item_number} description to #{description}"
+Then /^on order details form, add item (\d+), qty (\d+), id (.+), description (.*)$/ do |item, qty, id, description|
+  step "add order details associated item #{item}"
+  step "scroll into view order details associated item #{item}"
+  step "set Order Details Associated Item #{item} qty to #{qty}"
+  step "set Order Details Associated Item #{item} ID to #{id}"
+  step "set Order Details Associated Item #{item} description to #{description}"
 end
 
-Then /^add order details associated item (\d+)$/ do |item_number|
+Then /^add order details associated item (\d+)$/ do |item|
   SdcOrders.order_details.add_item.click
 end
 
-Then /^scroll into view order details associated item (\d+)$/ do |item_number|
+Then /^scroll into view order details associated item (\d+)$/ do |item|
   associated_item = SdcOrders.order_details.associated_item
-  associated_item.item_qty(item_number).scroll_into_view
-  associated_item.description(item_number).scroll_into_view
-  associated_item.id(item_number).scroll_into_view
+  associated_item.item_qty(item).scroll_into_view
+  associated_item.description(item).scroll_into_view
+  associated_item.id(item).scroll_into_view
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) qty to (.*)$/ do |item_number, qty|
+Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) qty to (.*)$/ do |item, qty|
   step 'expect order details is present'
-  unless TestData.hash[:details_associated_items].has_key?(item_number)
-    TestData.hash[:details_associated_items][item_number] = {}
+  unless TestData.hash[:details_associated_items].has_key?(item)
+    TestData.hash[:details_associated_items][item] = {}
   end
-  SdcOrders.order_details.associated_item.item_qty(item_number).set(qty)
-  TestData.hash[:details_associated_items][item_number][:item_qty] = qty
+  SdcOrders.order_details.associated_item.item_qty(item).set(qty)
+  TestData.hash[:details_associated_items][item][:item_qty] = qty
   step 'Save Order Details data'
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) ID to (.*)$/ do |item_number, str|
+Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) ID to (.*)$/ do |item, str|
   step 'expect order details is present'
-  TestData.hash[:details_associated_items][item_number] = {} unless TestData.hash[:details_associated_items].has_key?(item_number)
+  TestData.hash[:details_associated_items][item] = {} unless TestData.hash[:details_associated_items].has_key?(item)
   str = TestHelper.rand_alpha_numeric if str.downcase.include?('random')
-  SdcOrders.order_details.associated_item.id(item_number).set(str)
-  TestData.hash[:details_associated_items][item_number][:item_id] = str
+  SdcOrders.order_details.associated_item.id(item).set(str)
+  TestData.hash[:details_associated_items][item][:item_id] = str
   step 'Save Order Details data'
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) description to (.*)$/ do |item_number, str|
+Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) description to (.*)$/ do |item, str|
   step 'expect order details is present'
-  TestData.hash[:details_associated_items][item_number] = {} unless TestData.hash[:details_associated_items].has_key?(item_number)
+  TestData.hash[:details_associated_items][item] = {} unless TestData.hash[:details_associated_items].has_key?(item)
   str = TestHelper.rand_alpha_numeric if str.downcase.include?('random')
-  SdcOrders.order_details.associated_item.description(item_number).set(str)
-  TestData.hash[:details_associated_items][item_number][:item_description] = str
+  SdcOrders.order_details.associated_item.description(item).set(str)
+  TestData.hash[:details_associated_items][item][:item_description] = str
   step 'Save Order Details data'
 end
 
-Then /^set order details dimensions to length (\d+) width (\d+) height (\d+)$/ do |length, width, height|
-  step "set order details length to #{length}"
-  step "set order details width to #{width}"
-  step "set order details height to #{height}"
+Then /^set order details dimensions to length (\d+) width (\d+) height (\d+)$/ do |l, w, h|
+  step "set order details length to #{l}"
+  step "set order details width to #{w}"
+  step "set order details height to #{h}"
 end
 
 Then /^[Oo]n [Oo]rder [Dd]etails form, Expand panel$/ do
   stamps.orders.order_details.expand
 end
 
-Then /^[Oo]n [Oo]rder [Dd]etails form, Delete Item (\d+)$/ do |item_number|
-  item = stamps.orders.order_details.items_ordered.item item_number.to_i
+Then /^[Oo]n [Oo]rder [Dd]etails form, Delete Item (\d+)$/ do |item|
+  item = stamps.orders.order_details.items_ordered.item item.to_i
   item.delete.click
 end
 
