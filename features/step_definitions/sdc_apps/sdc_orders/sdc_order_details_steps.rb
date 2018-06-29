@@ -662,13 +662,13 @@ Then /^expect order details international ship-to city is (?:correct|(.*))$/ do 
 end
 
 Then /^expect order details international ship-to province is (?:correct|(.*))$/ do |str|
-  str ||= TestData.hash[:state]
+  str ||= TestData.hash[:province]
   result = SdcOrders.order_details.ship_to.international.province.text_value
   expect(result).to eql str
 end
 
 Then /^expect order details international ship-to postal code is (?:correct|(.*))$/ do |str|
-  str ||= TestData.hash[:zip]
+  str ||= TestData.hash[:postal_code]
   result = SdcOrders.order_details.ship_to.international.postal_code.text_value
   expect(result).to eql str
 end
