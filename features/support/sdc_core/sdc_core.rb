@@ -411,7 +411,7 @@ module HtmlElementMethods
   end
 
   def safe_wait_while_present(timeout: nil, message: nil, interval: nil)
-    wait_while_present(timeout: timeout, interval: interval)
+    wait_while_present(timeout: timeout)
   rescue ::Watir::Wait::TimeoutError
     # ignore
   rescue ::Selenium::WebDriver::Error::TimeOutError
