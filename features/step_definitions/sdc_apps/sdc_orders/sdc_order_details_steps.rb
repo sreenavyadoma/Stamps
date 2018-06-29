@@ -397,7 +397,8 @@ end
 Then /^set order details international ship-to name to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
   SdcOrders.order_details.ship_to.international.name.set(str)
-  TestData.hash[:int_ship_to_name] = str
+  TestData.hash[:full_name] = str
+
 end
 
 Then /^set order details international ship-to company to (.*)$/ do |str|
