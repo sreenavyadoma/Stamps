@@ -446,7 +446,7 @@ end
 Then /^set order details international ship-to email to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
   SdcOrders.order_details.ship_to.international.email.set(str)
-  TestData.hash[:phone] = str
+  TestData.hash[:email] = str
 end
 
 Then /^blur out on order details form$/ do
