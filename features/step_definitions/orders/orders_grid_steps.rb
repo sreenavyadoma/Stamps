@@ -152,7 +152,7 @@ Then /^expect orders grid state is (?:correct|(.*))$/ do |str|
 end
 
 Then /^expect orders grid zip is (?:correct|(.*))$/ do |str|
-  str ||= TestData.hash[:zip]
+  str ||= TestData.hash[:zip] || TestData.hash[:postal_code]
   order_id = TestData.hash[:order_id].values.last
   result = SdcGrid.grid_column(:zip).data(order_id)
   expect(result).to include(str)
