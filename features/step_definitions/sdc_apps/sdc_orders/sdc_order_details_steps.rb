@@ -36,7 +36,8 @@ Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) qty to (.*)$/ do |item, 
     TestData.hash[:details_associated_items][item] = {}
   end
   SdcOrders.order_details.associated_item.item_qty(item).set(qty)
-  TestData.hash[:details_associated_items][item][:item_qty] = qty
+  TestData.hash[:details_associated_items][item][:item_qty] = qty.to_i
+  TestData.hash[:items_ordered_qty] += qty.to_i
   step 'Save Order Details data'
 end
 

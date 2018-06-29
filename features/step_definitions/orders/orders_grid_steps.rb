@@ -193,6 +193,14 @@ Then /^expect orders grid ounces is (?:correct|(.*))$/ do |str|
   expect(result).to eql str.to_i
 end
 
+Then /^expect orders grid qty is (?:correct|(.*))$/ do |str|
+  str ||= TestData.hash[:items_ordered_qty]
+  order_id = TestData.hash[:order_id].values.last
+  result = SdcGrid.grid_column(:qty).data(order_id)
+  expect(result).to eql str.to_i
+end
+
+
 Then /^expect orders grid weight is (\d+) lb. (\d+) oz.$/ do |pounds, ounces|
 
 
@@ -210,13 +218,6 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Weight\(oz\) is (.*)$/ do |str|
 
   expect(SdcGrid.grid_column(:weight).oz(TestData.hash[:order_id].values.last)).to eql str
 end
-
-Then /^expect orders grid qty. is (.+)$/ do |str|
-
-
-  expect(SdcGrid.grid_column(:qty).data(TestData.hash[:order_id].values.last)).to eql str.to_i
-end
-
 Then /^expect orders grid item sku is (.+)$/ do |str|
 
 

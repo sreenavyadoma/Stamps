@@ -253,6 +253,7 @@ Then /^[Ee]xpect Customs Total Value is (?:correct|(.*))$/ do |str|
 end
 
 Then /^add customs associated item (\d+), description (.*), qty (\d+), Price (.+), Made In (.+), Tariff (.*)$/ do |item, description, qty, price, made_in, tariff|
+  TestData.hash[:customs_items_qty] += 1
   step "add customs associated item #{item}" if item > 1
   step "scroll into view customs associated item #{item}"
   step "set customs associated item #{item} description to #{description}"

@@ -256,7 +256,7 @@ Feature:  BVT tests for Orders
     Then expect orders grid zip is 32801-1175
     Then expect orders grid phone is 888-888-8888
     Then expect orders grid email is rtest@stamps.com
-    Then expect orders grid qty. is 1
+    Then expect orders grid qty is 1
     Then expect orders grid item sku is Item 1 SKU
     Then expect orders grid item name is Item 1 Description
     Then expect orders grid service is Priority Mail
@@ -382,7 +382,7 @@ Feature:  BVT tests for Orders
     Then expect orders grid phone is correct
     Then expect orders grid email is correct
 
-#    Then expect orders grid qty. is correct
+    Then expect orders grid qty is correct
 #    Then expect orders grid item sku is Multiple
 #    Then expect orders grid item name is Multiple
 #
