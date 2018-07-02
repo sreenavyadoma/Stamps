@@ -93,16 +93,7 @@ Then /^[Ss]ign-in to [Ww]eb [Aa]pps as (.*), (.*)$/ do |username, password|
 end
 
 Then /^sign out$/ do
-  if SdcEnv.new_framework
-    #skip for now
-  else
-    begin
-      step "Navigation Bar: Customer Balance"
-      stamps.navigation_bar.username.sign_out
-    rescue
-      # ignore
-    end
-  end
+
 end
 
 Given /^Orders: Sign-in as new user (.*)\/(.*)$/ do |username, password|
