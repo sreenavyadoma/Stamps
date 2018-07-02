@@ -3,9 +3,6 @@ Then /^add new order$/ do
 end
 
 Then /^add order (\d+)$/ do |count|
-  #todo TestData.store[:old_balance] = SdcWebsite.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
-  #todo stamps.orders.orders_grid.grid_column(:checkbox).uncheck(1)
-
   toolbar = SdcOrders.toolbar
   order_details = SdcOrders.order_details
   initializing = SdcOrders.initializing_orders_db
@@ -20,8 +17,6 @@ Then /^add order (\d+)$/ do |count|
   expect(order_details.order_id.text_value).not_to eql ''
 
   TestData.hash[:order_id][count.to_i] = order_details.order_id.text_value.parse_digits
-
-  #todo expect(stamps.orders.orders_grid.grid_column(:checkbox).checked?(1)).to be(true), "Orders Grid checkbox 1 is unchecked!"
 
   step 'Save Order Details data'
   TestData.hash[:ord_id_ctr] += 1
