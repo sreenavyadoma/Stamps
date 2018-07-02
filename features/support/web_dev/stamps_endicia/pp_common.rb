@@ -150,13 +150,18 @@ module PartnerPortal
         from [dbo].[sdct_PartnerPortal_TransactionData]  as pp_trans_data
         inner join [dbo].[sdct_PartnerPortal_Contract] as pp_contract on pp_trans_data.ContractId = pp_contract.ContractId
         inner join [dbo].[sdct_PartnerPortal_User] as pp_user on pp_contract.PartnerAccountId = pp_user.PartnerAccountId
-        where pp_user.EmailAddress = '#{user}' and pp_trans_data.TransactionDateTime >= '2017-07-10' and  pp_trans_data.TransactionDateTime < DATEADD(DAY, 1 , CONVERT(DATE, '2017-07-10'))
+        where pp_user.EmailAddress = '#{user}' and pp_trans_data.TransactionDateTime >= '2017-10-07' and  pp_trans_data.TransactionDateTime < DATEADD(DAY, 1 , CONVERT(DATE, '2017-10-07'))
         ORDER BY  pp_trans_data.TransactionDateTime ASC")
       data_arr = []
-      data.each(:as => :array, :cache_rows => false) do |item|
-        #data_arr << item["#{column}"].to_f
-        data_arr << item.to_s
+      # data.each(:as => :array, :cache_rows => false) do |item|
+      #   #data_arr << item["#{column}"]
+      #  # data_arr << item.to_s
+      # end
+      data.each do |item|
+        data_arr << item['TransactionDateTime'].to_datetime
       end
+
+
       return data_arr
     end
 

@@ -502,15 +502,50 @@ end
 
 Then /PP: open CSV file$/ do
   require "csv"
-  replacements = [ [/\t/, ','], ['"\"', ''], ['\""', '']  ]
+  #replacements = [ [/\t/, ','], ['"\"', ''], ['\""', '']  ]
+
+  headers = ['Account number', 'Transaction Time', 'Transaction Type', 'Retail Rate', 'Payout Amount', 'Tracking Number', 'Weight', 'Zone', 'Package Length',
+             'Package Width', 'Package Height', 'Package Type','Mail Class', 'International Country Group', 'Origination Address ZIP',
+             'Destination Address ZIP', 'Destination Country', 'Extra Service Fee', 'Unique Transaction ID', 'Container Type', 'Is Cubic',
+             'Cubic Value', 'Is APF/AFO', 'Credit Card fee']
+
+  account_number, transaction_time, transaction_type, retail_rate,
+  payout_amount, tracking_number, weight, zone, package_length,
+  package_width,package_height, package_type, mail_class,
+  international_country_group, origination_address_ZIP,
+  destination_address_ZIP, destination_country,
+  extra_service_fee, unique_transaction_ID = []
+
   output = CSV.read("C:/Stamps/download/test.csv", encoding: "UTF-8", headers: true, header_converters: :symbol, converters: :all).map do |row|
     row.to_csv(:col_sep => '\t', row_sep: nil).gsub(/\t/, ',').sub!( /\A.{1}/m, '' ).chop
   end
 
-  # data = CSV.read("C:/Stamps/download/test.csv", { encoding: "UTF-8", headers: true, header_converters: :symbol, converters: :all})
-  # hashed_data = data.map { |d| d.to_hash }
+  output.each do |item|
+    account_number << item.split(',')[0].to_i
+    transaction_time << item.split(',')[1].to_datetime
+    transaction_type << item.split(',')[2].to_s
+    retail_rate << item.split(',')[3].to_f
+    payout_amount << item.split(',')[4].to_f
+    tracking_number << item.split(',')[5].to_i
+    weight <<  item.split(',')[6].to_i
+    zone << item.split(',')[7].to_i
+    package_length << item.split(',')[7].to_i
+    package_width << item.split(',')[8].to_i
+    package_height << item.split(',')[9].to_i
+    package_type << item.split(',')[10].to_s
+    mail_class << item.split(',')[11].to_s
+    international_country_group << item.split(',')[12].to_s
+    origination_address_ZIP << item.split(',')[13].to_i
+    destination_address_ZIP << item.split(',')[14].to_i
+    destination_country << item.split(',')[15].to_s
+    extra_service_fee << item.split(',')[16].to_i
+    unique_transaction_ID << item.split(',')[17].to_s
 
-  puts output
+
+  end
+
+
+puts output
 step 'establish partner portal db connection'
 TestData.hash[:tans_data] = PartnerPortal.common_page.tansaction_data('wteam@stamps.com', 'start_date','end_date', 'column')
 step 'Close partner portal db connection'
