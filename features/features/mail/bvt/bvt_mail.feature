@@ -377,15 +377,6 @@ Feature: BVT for Mail page
 
     Then sign out
 
-  @mail_bvt_contacts
-  Scenario: Contacts
-
-    Then select print on Shipping Label - 5x8
-    Then set Print form Mail-From to default
-    Then click Print form Mail To link
-    Then click Search Contacts close button
-    Then sign out
-
   @mobile_mail_smoke_test
   @mail_bvt_envelopes
   Scenario: Envelope
@@ -398,55 +389,6 @@ Feature: BVT for Mail page
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
-    Then sign out
-
-  @mail_bvt_extra_services
-  Scenario: Extra Services
-    Then select print on Shipping Label - 5x8
-    Then set Print form Mail-From to default
-    Then set print form mail-to country to United States
-    Then set print form mail-to to address random name, random company, 3217 Shasta Circle S., Los Angeles, CA 90065
-    Then set print form ounces to 1
-    Then select print form service PM Padded Flat Rate Envelope
-    Then expect advanced options hide label value is checked
-    Then select Advanced Options Extra Services
-
-    Then set extra services security to Registered Mail
-    Then click value must be shown window continue button
-    Then expect extra services security price to be 11.90
-
-    Then set Extra Services Value to 30.00
-    Then expect extra services security price to be 12.60
-
-    Then set extra services cod to 20.00
-    Then expect extra services cod price to be 5.70
-
-    Then check extra services return receipt
-    Then expect extra services return receipt price to be 2.75
-
-    Then check extra services restricted delivery
-    Then expect extra services restricted delivery price to be 5.10
-
-    Then check Extra Services Notice of Non-Delivery
-    Then expect extra services notice of non-delivery price to be 0.00
-
-    Then expect extra services total price to be 26.15
-
-    Then save Extra Services
-
-    Then select Advanced Options Extra Services
-
-    Then expect extra services security price to be 12.60
-    Then expect extra services return receipt price to be 2.75
-    Then expect extra services restricted delivery price to be 5.10
-    Then expect extra services cod price to be 5.70
-    Then expect extra services notice of non-delivery price to be 0.00
-    Then expect extra services total price to be 26.15
-
-    Then save Extra Services
-    Then sign out
-
-#Then Mail: Print International Postage
     Then sign out
 
   @bvt_mail_piece_validation
