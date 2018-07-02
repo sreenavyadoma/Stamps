@@ -75,14 +75,13 @@ end
 
 Then /^click sign-in button on browser$/ do
   landing_page = SdcWebsite.landing_page
-  signed_in_user = SdcWebsite.navigation.user_drop_down.signed_in_user
 
   step 'click Orders landing page sign-in button'
 
   SdcOrders.loading_orders.safe_wait_until_present(timeout: 5)
   SdcOrders.loading_orders.wait_while_present(timeout: 60)
-
-  signed_in_user.wait_until_present(timeout: 45)
+  SdcOrders.toolbar.add.wait_until_present(timeout: 30)
+  SdcGrid.body.wait_until_present(timeout: 70)
   expect(signed_in_user.text_value).to eql(TestData.hash[:username])
 
   # if SdcEnv.sauce_device
