@@ -50,13 +50,13 @@ end
 Then /^[Ee]xpect Print modal Total Cost is \$([0-9.]*)$/ do |expectation|
   begin
     print_window = stamps.orders.orders_toolbar.toolbar_print.click
-    actual_value = print_window.total_cost
+    result = print_window.total_cost
     10.times { |counter|
-      #log_expectation_eql "#{counter}. Print Window Total Cost", expectation, actual_value
-      break if actual_value.eql? expectation
-      actual_value = print_window.total_cost
+      #log_expectation_eql "#{counter}. Print Window Total Cost", expectation, result
+      break if result.eql? expectation
+      result = print_window.total_cost
     }
     print_window.close
-    expect(actual_value).to eql expectation
+    expect(result).to eql expectation
   end unless expectation.length.zero?
 end
