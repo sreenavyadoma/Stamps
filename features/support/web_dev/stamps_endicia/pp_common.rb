@@ -155,7 +155,7 @@ module PartnerPortal
       data_arr = []
       data.each(:as => :array, :cache_rows => false) do |item|
         #data_arr << item["#{column}"].to_f
-        data_arr << item
+        data_arr << item.to_s
       end
       return data_arr
     end

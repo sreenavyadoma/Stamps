@@ -503,14 +503,16 @@ end
 Then /PP: open CSV file$/ do
   require "csv"
   replacements = [ [/\t/, ','], ['"\"', ''], ['\""', '']  ]
-  output = CSV.read("C:/Stamps/download/test.csv").map do |row|
+  output = CSV.read("C:/Stamps/download/test.csv", encoding: "UTF-8", headers: true, header_converters: :symbol, converters: :all).map do |row|
     row.to_csv(:col_sep => '\t', row_sep: nil).gsub(/\t/, ',').sub!( /\A.{1}/m, '' ).chop
   end
 
-  puts output
+  # data = CSV.read("C:/Stamps/download/test.csv", { encoding: "UTF-8", headers: true, header_converters: :symbol, converters: :all})
+  # hashed_data = data.map { |d| d.to_hash }
 
+  puts output
 step 'establish partner portal db connection'
-TestData.hash[:partner_account_id] = PartnerPortal.common_page.tansaction_data('wteam@stamps.com', 'start_date','end_date', 'column')
+TestData.hash[:tans_data] = PartnerPortal.common_page.tansaction_data('wteam@stamps.com', 'start_date','end_date', 'column')
 step 'Close partner portal db connection'
 
   puts output
