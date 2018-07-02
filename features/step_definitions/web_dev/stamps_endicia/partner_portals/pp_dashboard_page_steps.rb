@@ -486,15 +486,15 @@ end
 
 Then /PP: dashboard page export data for (\d+) dates ranges$/ do |number|
   number.times do
-    step "PP: set dashboard page from date field to random date"
-    step "PP: set dashboard page to date field to random date"
-    step "PP: delete existing csv file"
-    step "PP: click on the dashboard page download button"
-    step "PP: click on the dashboard page download modal ok button"
-    step "PP: expect from date and to date are cleared"
-    step "PP: Expect a record of Log Type 3 event is added in Audit Records for user"
-    step "PP: expect CSV file to be downloaded with correct file name"
-    step "PP: delete existing csv file"
+    step 'PP: set dashboard page from date field to random date'
+    step 'PP: set dashboard page to date field to random date'
+    step 'PP: delete existing csv file'
+    step 'PP: click on the dashboard page download button'
+    step 'PP: click on the dashboard page download modal ok button'
+    step 'PP: expect from date and to date are cleared'
+    step 'PP: Expect a record of Log Type 3 event is added in Audit Records for user'
+    step 'PP: expect CSV file to be downloaded with correct file name'
+    step 'PP: delete existing csv file'
   end
 
 end
@@ -502,13 +502,23 @@ end
 
 Then /PP: open CSV file$/ do
   require "csv"
-
+  replacements = [ [/\t/, ','], ['"\"', ''], ['\""', '']  ]
   output = CSV.read("C:/Stamps/download/test.csv").map do |row|
-    row.to_csv(:col_sep => "\t")
+    row.to_csv(:col_sep => '\t', row_sep: nil).gsub(/\t/, ',').sub!( /\A.{1}/m, '' ).chop
   end
+
   puts output
 
+step 'establish partner portal db connection'
+TestData.hash[:partner_account_id] = PartnerPortal.common_page.tansaction_data('wteam@stamps.com', 'start_date','end_date', 'column')
+step 'Close partner portal db connection'
+
+  puts output
+
+
 end
+
+
 
 
 

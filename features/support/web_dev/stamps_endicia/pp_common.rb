@@ -140,8 +140,8 @@ module PartnerPortal
       end
     end
 
-    def tansaction_data(user,start_date,end_date )
-      "select pp_trans_data.AccountNumber, pp_trans_data.TransactionDateTime,  pp_trans_data.TransactionType,
+    def tansaction_data(user,start_date,end_date, column )
+      data = PartnerPortal.db_connection.execute( "select pp_trans_data.AccountNumber, pp_trans_data.TransactionDateTime,  pp_trans_data.TransactionType,
         pp_trans_data.RetailRate, pp_trans_data.PayoutAmount, pp_trans_data.TrackingNumber, pp_trans_data.Weight,
         pp_trans_data.Zone, pp_trans_data.PackageLength, pp_trans_data.PackageWidth,  pp_trans_data.PackageHeight,
         pp_trans_data.PackageType, pp_trans_data.MailClass, pp_trans_data.InternationalCountryGroup, pp_trans_data.OriginationAddressZip,
@@ -150,8 +150,14 @@ module PartnerPortal
         from [dbo].[sdct_PartnerPortal_TransactionData]  as pp_trans_data
         inner join [dbo].[sdct_PartnerPortal_Contract] as pp_contract on pp_trans_data.ContractId = pp_contract.ContractId
         inner join [dbo].[sdct_PartnerPortal_User] as pp_user on pp_contract.PartnerAccountId = pp_user.PartnerAccountId
-        where pp_user.EmailAddress = '#{user}' and pp_trans_data.TransactionDateTime >= '#{2017-07-10}' and  pp_trans_data.TransactionDateTime < DATEADD(DAY, 1 , CONVERT(DATE, '#{2017-07-10}'))
-        ORDER BY  pp_trans_data.TransactionDateTime ASC"
+        where pp_user.EmailAddress = '#{user}' and pp_trans_data.TransactionDateTime >= '2017-07-10' and  pp_trans_data.TransactionDateTime < DATEADD(DAY, 1 , CONVERT(DATE, '2017-07-10'))
+        ORDER BY  pp_trans_data.TransactionDateTime ASC")
+      data_arr = []
+      data.each(:as => :array, :cache_rows => false) do |item|
+        #data_arr << item["#{column}"].to_f
+        data_arr << item
+      end
+      return data_arr
     end
 
   end
