@@ -1,4 +1,4 @@
-Feature:  Mail BVT - Authentication
+Feature:  Mail BVT
 
   Background:
     Given Start test driver
