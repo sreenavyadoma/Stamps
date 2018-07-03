@@ -1203,7 +1203,7 @@ zone_5_through_8:
         zip: 76053
       4:
         street_address: 2601 Avenue of the Stars
-        street_address_2: Ste 100
+        street_address2: Ste 100
         city: Frisco
         state: TX
         zip: 75034

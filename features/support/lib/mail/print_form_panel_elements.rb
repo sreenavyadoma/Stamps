@@ -344,14 +344,14 @@ module Stamps
               driver.text_field(name: "ShipCompany")) : cache[:company]
         end
 
-        def address_1
-          (cache[:address_1].nil? || !cache[:address_1].present?) ? cache[:address_1] = StampsTextbox.new(
-              driver.text_field(name: "ShipStreet1")) : cache[:address_1]
+        def address1
+          (cache[:address1].nil? || !cache[:address1].present?) ? cache[:address1] = StampsTextbox.new(
+              driver.text_field(name: "ShipStreet1")) : cache[:address1]
         end
 
-        def address_2
-          (cache[:address_2].nil? || !cache[:address_2].present?) ? cache[:address_2] = StampsTextbox.new(
-              driver.text_field(name: "ShipStreet2")) : cache[:address_2]
+        def address2
+          (cache[:address2].nil? || !cache[:address2].present?) ? cache[:address2] = StampsTextbox.new(
+              driver.text_field(name: "ShipStreet2")) : cache[:address2]
         end
 
         def city

@@ -6,7 +6,7 @@ Feature: Print Media - Shipping Label: Stamps.com SDC-1200, 4 ¼" x 6 ¾"
   @print_dialog_printing_on_4x6_sdc1200
   Scenario:  Shipping Label: Stamps.com SDC-1200, 4 ¼" x 6 ¾"
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PM Package
     Then set order details pounds to 1

@@ -153,6 +153,13 @@ module SdcMail
       page_object(:x_btn) { {xpath: '//div[text()="Special Contents Warning"]/../..//*[contains(@class, "close")]'} }
     end
 
+    class SdcSearchContacts < SdcPage
+      page_object(:title) { {xpath: '//*[text()="Search Contacts"]'} }
+      page_object(:cancel) { {id: 'modalCancel'} }
+      page_object(:x_btn) { {xpath: '//div[text()="Search Contacts"]/../..//*[contains(@class, "close")]'} }
+
+    end
+
     def notification_bar
       SdcNotificationBar.new
     end
@@ -183,8 +190,6 @@ module SdcMail
     end
     module_function :settings
 
-
-
     def extra_services
       SdcExtraServices.new
     end
@@ -209,6 +214,11 @@ module SdcMail
       SdcSpecialContentsWarning.new
     end
     module_function :special_contents_warning
+
+    def search_contacts
+      SdcSearchContacts.new
+    end
+    module_function :search_contacts
   end
 end
 

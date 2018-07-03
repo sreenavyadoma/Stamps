@@ -8,9 +8,9 @@ Feature:  Customs Form Item Grid
   @international_customs_form_totals
   Scenario:  Customs Form Grid - Add Items
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
-      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+      | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Zimbabwe | random  | random  |
     Then set order details service to PMI Flat Rate Envelope
     Then set order details pounds to 3
@@ -30,7 +30,7 @@ Feature:  Customs Form Item Grid
   Scenario:  Customs Form Item Grid - Edit/Delete
     Then add new order
     Then set order details ship-to international address to
-      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+      | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Japan | random  | random  |
     Then set order details ounces to 5
     Then set order details service to PMI Flat Rate Envelope

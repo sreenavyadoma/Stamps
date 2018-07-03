@@ -8,14 +8,14 @@ Feature:  Search Orders
   Scenario: Search order
     # Search for New Order ID
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address in zone 1
     Then set order details email to random
     Then set order details phone to random
     Then hide order details form Ship-To fields
     Then set order details service to PM Package
     Then set order details weight to 1 lb 1 oz
-    Then uncheck orders grid order id cached
+    Then uncheck grid order id
     Then select Filter Panel tab Shipped
 
     # Search for new order
@@ -51,7 +51,7 @@ Feature:  Search Orders
   Scenario: Search Orders On Hold
     # Search for New Order ID
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address in zone 1
     Then set order details email to random
     Then set order details phone to random

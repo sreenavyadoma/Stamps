@@ -93,16 +93,7 @@ Then /^[Ss]ign-in to [Ww]eb [Aa]pps as (.*), (.*)$/ do |username, password|
 end
 
 Then /^sign out$/ do
-  if SdcEnv.new_framework
-    #skip for now
-  else
-    begin
-      step "Navigation Bar: Customer Balance"
-      stamps.navigation_bar.username.sign_out
-    rescue
-      # ignore
-    end
-  end
+
 end
 
 Given /^Orders: Sign-in as new user (.*)\/(.*)$/ do |username, password|
@@ -119,8 +110,8 @@ end
 Given /^[Ll]ogin and add order domestic$/ do
   step "a valid user is signed in to Web Apps"
   step "add new order"
-  step "set order details ship-from to default"
-  step "set Order Details Domestic Ship-To Country to United States"
+  step "set order details ship-from to Automation - El Segundo, CA"
+  step "set order details domestic ship-to country to United States"
 end
 
 Then /^wait for js to stop$/ do

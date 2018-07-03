@@ -262,8 +262,8 @@ Then /^set print form ship-to to international address$/ do |table|
   step "set print form mail-to country to #{hash['country']}"
   step "set print form name to #{hash['name']}"
   step "set print form company to #{hash['company']}"
-  step "set print form address 1 to #{hash['street_address_1']}"
-  step "set print form address 2 to #{hash['street_address_2']}"
+  step "set print form address 1 to #{hash['street_address1']}"
+  step "set print form address 2 to #{hash['street_address2']}"
   step "set print form province to #{hash['province']}"
   step "set print form city to #{hash['city']}"
   step "set print form postal code to #{hash['postal_code']}"
@@ -306,19 +306,19 @@ end
 Then /^set print form address 1 to (.*)$/ do |str|
   str = str.casecmp('random').zero? ? TestHelper.rand_full_name : str
   mail_to = SdcMail.print_form.mail_to
-  mail_to.address_1.wait_until_present(timeout: 4)
-  mail_to.address_1.click
-  mail_to.address_1.set(str)
-  TestData.hash[:address_1] = str
+  mail_to.address1.wait_until_present(timeout: 4)
+  mail_to.address1.click
+  mail_to.address1.set(str)
+  TestData.hash[:address1] = str
 end
 
 Then /^set print form address 2 to (.*)$/ do |str|
   str = str.casecmp('random').zero? ? TestHelper.rand_full_name : str
   mail_to = SdcMail.print_form.mail_to
-  mail_to.address_2.wait_until_present(timeout: 4)
-  mail_to.address_2.click
-  mail_to.address_2.set(str)
-  TestData.hash[:address_2] = str
+  mail_to.address2.wait_until_present(timeout: 4)
+  mail_to.address2.click
+  mail_to.address2.set(str)
+  TestData.hash[:address2] = str
 end
 
 Then /^set print form city to (.*)$/ do |str|
@@ -385,11 +385,11 @@ Then /^[Ee]xpect Print form International Company Field is present$/ do
 end
 
 Then /^[Ee]xpect Print form International Address 1 Field is present$/ do
-  expect(stamps.mail.print_form.mail_to.int_mail_address.address_1).to be_present, "Print form International Address 1 Field is NOT present"
+  expect(stamps.mail.print_form.mail_to.int_mail_address.address1).to be_present, "Print form International Address 1 Field is NOT present"
 end
 
 Then /^[Ee]xpect Print form International Address 2 Field is present$/ do
-  expect(stamps.mail.print_form.mail_to.int_mail_address.address_2).to be_present, "Print form International Address 2 Field is NOT present"
+  expect(stamps.mail.print_form.mail_to.int_mail_address.address2).to be_present, "Print form International Address 2 Field is NOT present"
 end
 
 Then /^[Ee]xpect Print form International City Field is present$/ do

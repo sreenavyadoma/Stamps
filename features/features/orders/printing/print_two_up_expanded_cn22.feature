@@ -10,9 +10,9 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
 
    #print_two_up_expanded_cn22_5x8_right_print2
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
-      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country    | phone   |  email  |
+      | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country    | phone   |  email  |
       | FCMI Lg Env-Flat | 5.5x8.5 Right Side 2 | random           | random           | random | random  | random      | Croatia | random  | random  |
     Then set order details service to FCMI Large Envelope/Flat
     Then set order details ounces to 1
@@ -22,9 +22,9 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then check customs form i agree to the usps privacy act statement
     Then close customs information form
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
-      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country    | phone   |  email  |
+      | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country    | phone   |  email  |
       | FCMI Pkg-Thick Env | 5.5x8.5 Right Side 1 | random           | random           | random | random  | random      | India | random  | random  |
     Then set order details service to FCMI Package/Thick Envelope
     Then set order details ounces to 1
@@ -47,9 +47,9 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
 
   #print_two_up_expanded_cn22_cp72_5x8_right_print2
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
-      | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
+      | full_name   | company | street_address1         | street_address2 | city   | province | postal_code  | country| phone   |  email  |
       | PMEI MFR Box | SDC-1200  | 234 Laurier Avenue West  | random     | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then set order details weight to 1 lb 1 oz
     Then set order details service to FCMI Large Envelope/Flat
@@ -60,9 +60,9 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then close customs information form
 
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
-      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country    | phone   |  email  |
+      | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country    | phone   |  email  |
       | FCMI Letter | SDC-1200  | random           | random           | random | random  | random      | Costa Rica | random  | random  |
     Then set order details service to PMI Flat Rate Envelope
     Then set order details weight to 1 lb 1 oz
@@ -86,9 +86,9 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
 
    #print_two_up_expanded_cn22_paper_left
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to domestic address to
-      | full_name        | company             | street_address  | street_address_2| city | state | zip        | country       | phone  |  email |
+      | full_name        | company             | street_address  | street_address2| city | state | zip        | country       | phone  |  email |
       | PM RR Box B | Domestic FPO 8.5x11 | PSC 473 BOX 12  |                 | FPO  | AP    | 96349-0001 | United States | random | random |
 
     Then set order details service to PM Regional Rate Box B
@@ -117,9 +117,9 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
 
    #print_two_up_expanded_cn22_paper_right
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
-      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+      | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI PFR Envelope | 8.5x11 Right Side 2 | random           | random           | random | random  | random      | Australia | random  | random  |
     Then set order details service to PMI Padded Flat Rate Envelope
     Then set order details ounces to 1
@@ -129,9 +129,9 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then check customs form i agree to the usps privacy act statement
     Then close customs information form
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
-      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+      | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI LFR Envelope | 8.5x11 Right Side 1 | random           | random           | random | random  | random      | Japan | random  | random  |
     Then set order details service to PMI Legal Flat Rate Envelope
     Then set order details ounces to 1
@@ -154,9 +154,9 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
 
    #print_two_up_expanded_cn22_sdc1200_left
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
-      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+      | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI Pkg-Flat-Env | SDC-1200  | random           | random           | random | random  | random      | Australia | random  | random  |
     Then set order details service to PMI Flat Rate Envelope
     Then set order details ounces to 1
@@ -166,9 +166,9 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then check customs form i agree to the usps privacy act statement
     Then close customs information form
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
-      | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
+      | full_name   | company | street_address1         | street_address2 | city   | province | postal_code  | country| phone   |  email  |
       | PMI FR Envelope | SDC-1200  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then set order details service to PMI Flat Rate Envelope
     Then set order details ounces to 1

@@ -287,13 +287,7 @@ class SdcDriverDecorator < BasicObject
 
 end
 
-class SdcElement < BasicObject
-  include ::Watir::Waitable
-
-  def initialize(element)
-    @element = element
-  end
-
+module HtmlElementMethods
   def present?
     send(:displayed?) if respond_to?(:displayed?)
     send(:present?)
@@ -417,7 +411,7 @@ class SdcElement < BasicObject
   end
 
   def safe_wait_while_present(timeout: nil, message: nil, interval: nil)
-    wait_while_present(timeout: timeout, interval: interval)
+    wait_while_present(timeout: timeout)
   rescue ::Watir::Wait::TimeoutError
     # ignore
   rescue ::Selenium::WebDriver::Error::TimeOutError
@@ -439,7 +433,7 @@ class SdcElement < BasicObject
       # ignore
     end
 
-    nil
+    ''
   end
 
   def click_while_present(*modifiers, ctr: 2)
@@ -485,11 +479,27 @@ class SdcElement < BasicObject
     attribute_include?('class', 'checked')
   end
 
-  def attribute_include?(property_name, property_value)
-    if respond_to? :attribute_value
-      return send(:attribute_value, property_name).include?(property_value)
+  def attribute_include?(property, value)
+    result = if respond_to? :attribute_value
+               send(:attribute_value, property).include?(value)
+             else
+               send(:attribute, property).include?(value)
+             end
+
+    return result if [true, false].include? result
+    if result.casecmp('true').zero? || result.casecmp('false').zero?
+      return result.casecmp('true').zero?
     end
-    send(:attribute, property_name).include?(property_value)
+    result.include?(value)
+  end
+end
+
+class SdcElement < BasicObject
+  include ::HtmlElementMethods
+  include ::Watir::Waitable
+
+  def initialize(element)
+    @element = element
   end
 
   def respond_to_missing?(name, include_private = false)
@@ -503,13 +513,13 @@ class SdcElement < BasicObject
 end
 
 class SdcChooser < BasicObject
+  include ::HtmlElementMethods
 
   def initialize(element, verify, property, value)
-    @element = SdcElement.new(element)
+    @element = element
     @verify = verify
     @property = property.to_s
     @value = value.to_s
-    # set_instance_variables(binding, *local_variables)
   end
 
   def chosen?
@@ -518,7 +528,11 @@ class SdcChooser < BasicObject
              else
                @verify.send(:attribute, @property)
              end
-    return result.casecmp('true').zero? if result.casecmp('true').zero? || result .casecmp('false').zero?
+
+    return result if [true, false].include? result
+    if result.casecmp('true').zero? || result .casecmp('false').zero?
+      return result.casecmp('true').zero?
+    end
     result.include?(@value)
   end
 
@@ -568,22 +582,27 @@ class SdcChooser < BasicObject
 end
 
 class SdcNumber < BasicObject
+  include ::HtmlElementMethods
 
-  attr_reader :text_field, :increment, :decrement
+  attr_reader :increment, :decrement
 
   def initialize(text_field, increment, decrement)
-    @text_field = ::SdcElement.new(text_field)
+    @element = text_field
     @increment = increment
     @decrement = decrement
   end
 
+  def text_field
+    @element
+  end
+
   def respond_to_missing?(name, include_private = false)
-    super || @text_field.respond_to?(name, include_private)
+    super || @element.respond_to?(name, include_private)
   end
 
   def method_missing(name, *args, &block)
     super unless @text_field.respond_to?(name)
-    @text_field.send(name, *args, &block)
+    @element.send(name, *args, &block)
   end
 end
 

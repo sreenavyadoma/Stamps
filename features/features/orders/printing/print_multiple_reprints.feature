@@ -7,7 +7,7 @@ Feature: Multiple Reprints
   Scenario: Multiple reprints in 24 hour period
 
     Then add new order
-    Then set order details ship-from to default
+    Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to MM Package/Flat/Thick Envelope, 5.5x8.5 Right Side 2, 4937 79th St., Sacramento CA 95820-6213
     Then set order details service to MM Package/Flat/Thick Envelope
     Then set order details ounces to 1
@@ -19,12 +19,12 @@ Feature: Multiple Reprints
     Then select Filter Panel tab Shipped
     #Then in Orders Grid, Sort Order Date in Descending Order
     Then pause for 2 seconds
-    Then check orders grid order id cached
+    Then check grid order id
     Then in Print modal, Open Reprint Modal
     Then ReIn Print modal, Reprint
     Then select Filter Panel tab Shipped
     Then pause for 2 seconds
-    Then check orders grid order id cached
+    Then check grid order id
     Then in Print modal, Open Reprint Modal
     Then ReIn Print modal, Reprint
 

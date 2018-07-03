@@ -11,9 +11,13 @@ Then /^[Ee]xpect Print form Mail To is disabled$/ do
   expect(stamps.mail.print_form.mail_to.enabled?).to be(true), "Print form Mail To is NOT disabled"
 end
 
-Then /^[Cc]lick Print form Mail To link/ do
-  stamps.mail.print_form.mail_to.mail_to_link.click
+Then /^click print form mail to link$/ do
+  # stamps.mail.print_form.mail_to.mail_to_link.click
+  SdcMail.print_form.mail_to.link.click
+  step 'expect search contacts modal is present'
 end
+
+
 
 Then /^check print form email tracking$/ do
   SdcMail.print_form.email_tracking.tracking_checkbox.check
