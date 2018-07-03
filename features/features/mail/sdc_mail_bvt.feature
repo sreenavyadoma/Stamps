@@ -173,7 +173,7 @@ Feature:  Mail BVT
     Then sign-in to Mail
     Then select print on Stamps
 
-    Then set Print form Serial Number to C12345
+    Then set print form serial number to C12345
     Then select Advanced Options Specify Postage Amount
     #Then set Print form Mail-From to default
     Then select print form service Media Mail
@@ -184,7 +184,7 @@ Feature:  Mail BVT
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
-    Then set Print form Serial Number to B12345
+    Then set print form serial number to B12345
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
     Then set print form ounces to 1
@@ -523,5 +523,16 @@ Feature:  Mail BVT
     Then buy mail purchase approved: expect text area contains, your fund request for $10.00 has been approved.
     Then buy mail purchase approved: click ok button
     Then buy mail: expect customer balance increased by $10
+    Then sign out
 
+  @mail_bvt_address_cleansing
+  Scenario: Address Cleansing
+    Then sign-in to mail
+    Then select print on Shipping Label - 8 ½" x 11" Paper
+#    Then set Print form Mail-From to default
+    Then set print form mail-to country to United States
+    Then set print form mail-to to address to Address Cleansing, Google, 1600 Amphitheatre Pkwy, Mountain View, CA 94043
+    Then set print form ounces to 1
+    Then select print form service PM Package
+    Then expect Print form Domestic Address field displays Address Cleansing, Google, 1600 Amphitheatre Pkwy, Mountain View, CA 94043-1351
     Then sign out
