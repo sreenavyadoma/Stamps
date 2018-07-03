@@ -70,23 +70,29 @@ module SdcGrid
       grid_text(col, row)
     end
 
-    def column_number(property)
-      column = get(property)
-      return column unless column.nil?
-      xpath = '//span[@class="x-column-header-text-inner"]'
-      columns = page_objects(:columns) { { xpath: xpath } }
-      columns.each_with_index do |field, index|
-        element = ::SdcElement.new(field)
-        element.scroll_into_view
-        text = element.text_value
-        key = if index.zero?
-                :checkbox
-              else
-                column_text.key(text)
-              end
-        set(key, index + 1)
+    def column_number(name)
+      column = get(name)
+      if column
+        column
+      else
+        xpath = '//span[@class="x-column-header-text-inner"]'
+        columns = page_objects(:columns) { { xpath: xpath } }
+        columns.each_with_index do |field, index|
+          element = ::SdcElement.new(field)
+          element.scroll_into_view
+          text = element.text_value
+          key = if index.zero?
+                  :checkbox
+                else
+                  column_text.key(text)
+                end
+          set(key, index + 1)
+
+          return get(name) if key.eql?(name)
+        end
       end
-      #scroll_to_column(:checkbox)
+
+      raise ArgumentError, "#{name} is not a valid column"
     end
 
     def row_number(order_id)
