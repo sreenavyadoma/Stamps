@@ -206,9 +206,9 @@ class SdcTest
               raise ArgumentError, "Invalid browser selection. #{test_driver}"
             end
 
-            SdcPage.browser.window.maximize if SdcEnv.max_window || SdcEnv.window_size.nil?
-
-            if SdcEnv.window_size.present?
+            if SdcEnv.max_window || SdcEnv.window_size.nil?
+              SdcPage.browser.window.maximize
+            else
               width, height = SdcEnv.window_size.split("x")
               begin
                 SdcPage.browser.window.resize_to(width, height)
@@ -217,6 +217,7 @@ class SdcTest
                 SdcPage.browser.window.maximize
               end
             end
+
 
           rescue StandardError => e
             SdcLogger.error e.message
