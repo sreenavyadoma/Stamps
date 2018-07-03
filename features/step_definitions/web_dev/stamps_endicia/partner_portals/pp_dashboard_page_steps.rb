@@ -501,57 +501,119 @@ end
 
 
 Then /PP: open CSV file$/ do
-  require "csv"
-  #replacements = [ [/\t/, ','], ['"\"', ''], ['\""', '']  ]
+  require 'csv'
 
-  headers = ['Account number', 'Transaction Time', 'Transaction Type', 'Retail Rate', 'Payout Amount', 'Tracking Number', 'Weight', 'Zone', 'Package Length',
-             'Package Width', 'Package Height', 'Package Type','Mail Class', 'International Country Group', 'Origination Address ZIP',
-             'Destination Address ZIP', 'Destination Country', 'Extra Service Fee', 'Unique Transaction ID', 'Container Type', 'Is Cubic',
-             'Cubic Value', 'Is APF/AFO', 'Credit Card fee']
+  headers_expected = ['Account number', 'Transaction Time', 'Transaction Type', 'Retail Rate', 'Payout Amount', 'Tracking Number', 'Weight', 'Zone', 'Package Length',
+                      'Package Width', 'Package Height', 'Package Type','Mail Class', 'International Country Group', 'Origination Address ZIP',
+                      'Destination Address ZIP', 'Destination Country', 'Extra Service Fee', 'Unique Transaction ID', 'Container Type', 'Is Cubic',
+                      'Cubic Value', 'Is APF/AFO', 'Credit Card fee']
 
-  account_number, transaction_time, transaction_type, retail_rate,
-  payout_amount, tracking_number, weight, zone, package_length,
-  package_width,package_height, package_type, mail_class,
-  international_country_group, origination_address_ZIP,
-  destination_address_ZIP, destination_country,
-  extra_service_fee, unique_transaction_ID = []
+  account_number = []
+  transaction_time = []
+  transaction_type = []
+  retail_rate = []
+  payout_amount = []
+  tracking_number = []
+  weight = []
+  zone = []
+  package_length = []
+  package_width = []
+  package_height = []
+  package_type = []
+  mail_class = []
+  international_country_group = []
+  origination_address_zip = []
+  destination_address_zip = []
+  destination_country = []
+  extra_service_fee = []
+  unique_transaction_id = []
+  container_type = []
+  is_cubic = []
+  cubic_value = []
+  is_apf_afo = []
+  credit_card_fee = []
+  tmp = []
 
-  output = CSV.read("C:/Stamps/download/test.csv", encoding: "UTF-8", headers: true, header_converters: :symbol, converters: :all).map do |row|
-    row.to_csv(:col_sep => '\t', row_sep: nil).gsub(/\t/, ',').sub!( /\A.{1}/m, '' ).chop
+  CSV.read("C:/Stamps/download/test.csv",  headers: true).map do |row|
+    tmp << row.headers
+    break
+  end
+  tmp2 = tmp.reject(&:empty?)
+  headers = tmp2[0][0].split(/\t/)
+
+
+  output = CSV.read("C:/Stamps/download/test.csv", headers: true).map do |row|
+    row.to_csv(:col_sep => /\t/, row_sep: nil).gsub(/\t/, ',').sub!( /\A.{1}/m, '' ).chop
   end
 
   output.each do |item|
     account_number << item.split(',')[0].to_i
-    transaction_time << item.split(',')[1].to_datetime
+    tmp = item.split(',')[1]
+    tmp2= tmp.split('/')
+    date = tmp2[1] + '/' + tmp2[0] + '/' + tmp2[2]
+    transaction_time << date.to_datetime
     transaction_type << item.split(',')[2].to_s
-    retail_rate << item.split(',')[3].to_f
-    payout_amount << item.split(',')[4].to_f
+    retail_rate << item.split(',')[3].gsub('$', '').to_f
+    payout_amount << item.split(',')[4].gsub('$', '').to_f
     tracking_number << item.split(',')[5].to_i
     weight <<  item.split(',')[6].to_i
-    zone << item.split(',')[7].to_i
-    package_length << item.split(',')[7].to_i
-    package_width << item.split(',')[8].to_i
-    package_height << item.split(',')[9].to_i
-    package_type << item.split(',')[10].to_s
-    mail_class << item.split(',')[11].to_s
-    international_country_group << item.split(',')[12].to_s
-    origination_address_ZIP << item.split(',')[13].to_i
-    destination_address_ZIP << item.split(',')[14].to_i
-    destination_country << item.split(',')[15].to_s
-    extra_service_fee << item.split(',')[16].to_i
-    unique_transaction_ID << item.split(',')[17].to_s
-
-
+    zone << item.split(',')[7].to_s
+    package_length << item.split(',')[8].to_i
+    package_width << item.split(',')[9].to_i
+    package_height << item.split(',')[10].to_i
+    package_type << item.split(',')[11].to_s
+    mail_class << item.split(',')[12].to_s
+    international_country_group << item.split(',')[13].to_s
+    origination_address_zip << item.split(',')[14].to_i
+    destination_address_zip << item.split(',')[15].to_i
+    destination_country << item.split(',')[16].to_s
+    extra_service_fee << item.split(',')[17].gsub('$', '').to_f
+    unique_transaction_id << item.split(',')[18].to_i
+    container_type << item.split(',')[19].to_s
+    is_cubic << item.split(',')[20].downcase
+    cubic_value << item.split(',')[21].to_s
+    is_apf_afo <<  item.split(',')[22].downcase
+    credit_card_fee << item.split(',')[23].gsub('$', '').to_f
   end
 
 
-puts output
 step 'establish partner portal db connection'
-TestData.hash[:tans_data] = PartnerPortal.common_page.tansaction_data('wteam@stamps.com', 'start_date','end_date', 'column')
+  TestData.hash[:account_number], TestData.hash[:transaction_time], TestData.hash[:transaction_type],
+  TestData.hash[:retail_rate], TestData.hash[:payout_amount], TestData.hash[:tracking_number],
+  TestData.hash[:weight], TestData.hash[:zone], TestData.hash[:package_length], TestData.hash[:package_width],
+  TestData.hash[:package_height], TestData.hash[:package_type], TestData.hash[:mail_class], TestData.hash[:international_country_group],
+  TestData.hash[:origination_address_zip],TestData.hash[:destination_address_zip], TestData.hash[:destination_country],
+  TestData.hash[:extra_service_fee], TestData.hash[:unique_transaction_id],TestData.hash[:container_type],
+  TestData.hash[:is_cubic], TestData.hash[:cubic_value], TestData.hash[:is_apf_afo],
+  TestData.hash[:credit_card_fee] = PartnerPortal.common_page.transaction_data(SdcEnv.usr, TestData.hash[:from_date], TestData.hash[:to_date])
 step 'Close partner portal db connection'
 
-  puts output
 
+
+  # expect(headers_expected).to match_array(headers)
+  # expect(TestData.hash[:account_number]).to match_array(account_number)
+  expect(TestData.hash[:transaction_time]).to match_array(transaction_time)
+  # expect(TestData.hash[:transaction_type]).to match_array(transaction_type)
+  # expect(TestData.hash[:payout_amount]).to match_array(payout_amount)
+  # expect(TestData.hash[:tracking_number]).to match_array(tracking_number)
+  # expect(TestData.hash[:weight]).to match_array(weight)
+  # expect(TestData.hash[:zone]).to match_array(zone)
+  # expect(TestData.hash[:package_length]).to match_array(package_length)
+  # expect(TestData.hash[:package_width]).to match_array(package_width)
+  # expect(TestData.hash[:package_height]).to match_array(package_height)
+  # expect(TestData.hash[:package_type]).to match_array(package_type)
+  # expect(TestData.hash[:mail_class]).to match_array(mail_class)
+  # expect(TestData.hash[:international_country_group]).to match_array(international_country_group)
+  # expect(TestData.hash[:origination_address_zip]).to match_array(origination_address_zip)
+  # expect(TestData.hash[:destination_address_zip]).to match_array(destination_address_zip)
+  # expect(TestData.hash[:destination_country]).to match_array(destination_country)
+  # expect(TestData.hash[:extra_service_fee]).to match_array(extra_service_fee)
+  # expect(TestData.hash[:unique_transaction_id]).to match_array(unique_transaction_id)
+  # expect(TestData.hash[:container_type]).to match_array(container_type)
+  # expect(TestData.hash[:is_cubic]).to match_array(is_cubic)
+  # expect(TestData.hash[:cubic_value]).to match_array(cubic_value)
+  # expect(TestData.hash[:is_apf_afo]).to match_array(is_apf_afo)
+  # expect(TestData.hash[:credit_card_fee]).to match_array(credit_card_fee)
 
 end
 

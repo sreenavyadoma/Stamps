@@ -140,29 +140,79 @@ module PartnerPortal
       end
     end
 
-    def tansaction_data(user,start_date,end_date, column )
-      data = PartnerPortal.db_connection.execute( "select pp_trans_data.AccountNumber, pp_trans_data.TransactionDateTime,  pp_trans_data.TransactionType,
-        pp_trans_data.RetailRate, pp_trans_data.PayoutAmount, pp_trans_data.TrackingNumber, pp_trans_data.Weight,
-        pp_trans_data.Zone, pp_trans_data.PackageLength, pp_trans_data.PackageWidth,  pp_trans_data.PackageHeight,
-        pp_trans_data.PackageType, pp_trans_data.MailClass, pp_trans_data.InternationalCountryGroup, pp_trans_data.OriginationAddressZip,
-        pp_trans_data.DestinationAddressZip, pp_trans_data.DestinationCountry, pp_trans_data.ExtraServiceFee, pp_trans_data.TransactionID,
-        pp_trans_data.ContainerType, pp_trans_data.IsCubic, pp_trans_data.CubicValue, pp_trans_data.IsApfAfo, pp_trans_data.CreditCardFee
-        from [dbo].[sdct_PartnerPortal_TransactionData]  as pp_trans_data
-        inner join [dbo].[sdct_PartnerPortal_Contract] as pp_contract on pp_trans_data.ContractId = pp_contract.ContractId
-        inner join [dbo].[sdct_PartnerPortal_User] as pp_user on pp_contract.PartnerAccountId = pp_user.PartnerAccountId
-        where pp_user.EmailAddress = '#{user}' and pp_trans_data.TransactionDateTime >= '2017-10-07' and  pp_trans_data.TransactionDateTime < DATEADD(DAY, 1 , CONVERT(DATE, '2017-10-07'))
-        ORDER BY  pp_trans_data.TransactionDateTime ASC")
-      data_arr = []
-      # data.each(:as => :array, :cache_rows => false) do |item|
-      #   #data_arr << item["#{column}"]
-      #  # data_arr << item.to_s
-      # end
+    def transaction_data(user,start_date,end_date)
+     data = PartnerPortal.db_connection.execute( "select pp_trans_data.AccountNumber, pp_trans_data.TransactionDateTime,  pp_trans_data.TransactionType,
+	   pp_trans_data.RetailRate, pp_trans_data.PayoutAmount, pp_trans_data.TrackingNumber, pp_trans_data.Weight,
+	   pp_trans_data.Zone, pp_trans_data.PackageLength, pp_trans_data.PackageWidth,  pp_trans_data.PackageHeight,
+	   pp_trans_data.PackageType, pp_trans_data.MailClass, pp_trans_data.InternationalCountryGroup, pp_trans_data.OriginationAddressZip,
+	   pp_trans_data.DestinationAddressZip, pp_trans_data.DestinationCountry, pp_trans_data.ExtraServiceFee, pp_trans_data.TransactionID,
+	   pp_trans_data.ContainerType, pp_trans_data.IsCubic, pp_trans_data.CubicValue, pp_trans_data.IsApfAfo, pp_trans_data.CreditCardFee
+	   from [dbo].[sdct_PartnerPortal_TransactionData]  as pp_trans_data
+	   inner join [dbo].[sdct_PartnerPortal_Contract] as pp_contract on pp_trans_data.ContractId = pp_contract.ContractId
+	   inner join [dbo].[sdct_PartnerPortal_User] as pp_user on pp_contract.PartnerAccountId = pp_user.PartnerAccountId
+	   where pp_user.EmailAddress = '#{user}' and pp_trans_data.TransactionDateTime >= '2017-10-07' and  pp_trans_data.TransactionDateTime < DATEADD(DAY, 1 , CONVERT(DATE, '2017-10-07'))
+	   ORDER BY  pp_trans_data.TransactionDateTime ASC")
+
+      account_number = []
+      transaction_time = []
+      transaction_type = []
+      retail_rate = []
+      payout_amount = []
+      tracking_number = []
+      weight = []
+      zone = []
+      package_length = []
+      package_width = []
+      package_height = []
+      package_type = []
+      mail_class = []
+      international_country_group = []
+      origination_address_zip = []
+      destination_address_zip = []
+      destination_country = []
+      extra_service_fee = []
+      unique_transaction_id = []
+      container_type = []
+      is_cubic = []
+      cubic_value = []
+      is_apf_afo = []
+      credit_card_fee = []
+
       data.each do |item|
-        data_arr << item['TransactionDateTime'].to_datetime
+        account_number << item['AccountNumber'].to_i
+        transaction_time << item['TransactionDateTime'].to_datetime
+        transaction_type << item['TransactionType'].to_s
+        retail_rate << item['RetailRate'].to_f
+        payout_amount << item['PayoutAmount'].to_f
+        tracking_number << item['TrackingNumber'].to_i
+        weight <<  item['Weight'].to_i
+        zone << item['Zone'].to_s
+        package_length << item['PackageLength'].to_i
+        package_width << item['PackageWidth'].to_i
+        package_height << item['PackageHeight'].to_i
+        package_type << item['PackageType'].to_s
+        mail_class << item['MailClass'].to_s
+        international_country_group << item['InternationalCountryGroup'].to_s
+        origination_address_zip << item['OriginationAddressZip'].to_i
+        destination_address_zip << item['DestinationAddressZip'].to_i
+        destination_country << item['DestinationCountry'].to_s
+        extra_service_fee << item['ExtraServiceFee'].to_f
+        unique_transaction_id << item['TransactionID'].to_i
+        container_type << item['ContainerType'].to_s
+        is_cubic << item['IsCubic'].to_s
+        cubic_value << item['CubicValue'].to_s
+        is_apf_afo <<  item['IsApfAfo'].to_s
+        credit_card_fee << item['CreditCardFee'].to_f
       end
 
-
-      return data_arr
+      return account_number, transaction_time, transaction_type, retail_rate,
+          payout_amount, tracking_number, weight, zone, package_length,
+          package_width,package_height, package_type, mail_class,
+          international_country_group, origination_address_zip,
+          destination_address_zip, destination_country,
+          extra_service_fee, unique_transaction_id, container_type,
+          is_cubic, cubic_value, is_apf_afo,
+          credit_card_fee
     end
 
   end
