@@ -10,6 +10,15 @@ module SdcOrders
   end
   module_function :loading_orders
 
+  def initializing_orders_db
+    klass = Class.new(SdcPage) do
+      page_object(:initializing_orders) { { xpath: '//*[text()="Initializing Order Database"]' } }
+    end
+
+    klass.new.initializing_orders
+  end
+  module_function :initializing_orders_db
+
   def order_details
     SdcOrderDetails.new
   end

@@ -17,8 +17,8 @@ Feature: Mail Contacts Modal Bugs
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
-    Then click Print form Mail To link
-    Then Expect Contacts Modal is Present
+    Then click print form mail to link
+    Then expect contacts modal is present
     Then Search Contacts Modal for last printed contact
     Then Select Recently Printed Contact
     Then expect Print form Domestic Address field displays last printed contact

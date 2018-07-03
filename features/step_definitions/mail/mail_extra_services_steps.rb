@@ -111,7 +111,7 @@ end
 
 Then /^expect extra services security price to be (\d*.?\d+)$/ do |expectation|
   SdcMail.modals.extra_services.security_price.wait_until_present(timeout: 5)
-  expect(SdcMail.modals.extra_services.security_price.dollar_amount_str.to_f.round(2)).to eql(expectation.to_f.round(2))
+  expect(SdcMail.modals.extra_services.security_price.text_value.dollar_amount_str.to_f.round(2)).to eql(expectation.to_f.round(2))
 end
 
 # why we need this?
@@ -284,7 +284,7 @@ Then /^expect extra services non-rectangular is unchecked$/ do
 end
 
 Then /^expect extra services total price to be (\d*.?\d+)$/ do |expectation|
-  expect(SdcMail.modals.extra_services.total.text_value.to_f.round(2)).to eql(expectation.to_f.round(2))
+  expect(SdcMail.modals.extra_services.total.text_value.dollar_amount_str.to_f.round(2)).to eql(expectation.to_f.round(2))
 end
 
 Then /^check extra services hold for pickup$/ do

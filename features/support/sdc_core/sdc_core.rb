@@ -433,7 +433,7 @@ module HtmlElementMethods
       # ignore
     end
 
-    nil
+    ''
   end
 
   def click_while_present(*modifiers, ctr: 2)

@@ -154,7 +154,7 @@ end
 
 Then /^[Pp]P: [Cc]lick on arrow on left panel$/ do
   PartnerPortal.common_page.panel_arrow.wait_until_present(timeout: 10)
-  PartnerPortal.common_page.panel_arrow.click
+  PartnerPortal.common_page.panel_arrow.click!
 end
 
 Then /^PP: expect partner logo is unique to partner$/ do
