@@ -688,5 +688,4 @@ Feature:  Mail BVT
     Then buy mail purchase approved: expect text area contains, your fund request for $10.00 has been approved.
     Then buy mail purchase approved: click ok button
     Then buy mail: expect customer balance increased by $10
-
     Then sign out
