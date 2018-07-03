@@ -12,7 +12,7 @@ module SdcGrid
       @@columns[property]
     end
 
-    def grid_container_locator_str
+    def grid_container
       '//div[@class="x-grid-item-container"]'
     end
 
@@ -36,7 +36,7 @@ module SdcGrid
     end
 
     def count
-      xpath = "#{grid_container_locator_str}//table"
+      xpath = "#{grid_container}//table"
       grid_row_ct = page_object(:grid_row_ct) { { xpath: xpath } }
       begin
         ct = grid_row_ct.size.to_i
@@ -60,7 +60,7 @@ module SdcGrid
 
     def grid_field(column, row)
       column_num = column_number(column).to_s
-      xpath = "#{grid_container_locator_str}//table[#{row.to_s}]//tbody//td[#{column_num}]//div"
+      xpath = "#{grid_container}//table[#{row.to_s}]//tbody//td[#{column_num}]//div"
       coordinates = "col#{column}xrow#{row}"
       page_object(coordinates.to_sym) { { xpath: xpath } }
     end
@@ -70,30 +70,29 @@ module SdcGrid
       grid_text(col, row)
     end
 
-    def column_number(column)
-      if get(column).nil?
-        xpath = '//span[@class="x-column-header-text-inner"]'
-        columns = page_objects(:columns) { { xpath: xpath } }
-        columns.each_with_index do |field, index|
-          element = ::SdcElement.new(field)
-          element.scroll_into_view
-          text = element.text_value
-          key = if index.zero?
-                  :checkbox
-                else
-                  column_text.key(text)
-                end
-          set(key, index + 1)
-        end
-        scroll_to_column(:checkbox)
+    def column_number(property)
+      column = get(property)
+      return column unless column.nil?
+      xpath = '//span[@class="x-column-header-text-inner"]'
+      columns = page_objects(:columns) { { xpath: xpath } }
+      columns.each_with_index do |field, index|
+        element = ::SdcElement.new(field)
+        element.scroll_into_view
+        text = element.text_value
+        key = if index.zero?
+                :checkbox
+              else
+                column_text.key(text)
+              end
+        set(key, index + 1)
       end
-      get(column)
+      #scroll_to_column(:checkbox)
     end
 
     def row_number(order_id)
       scroll_to_column(:order_id)
       col_num = column_number(:order_id)
-      xpath = "#{grid_container_locator_str}//tbody//td[#{col_num}]//div"
+      xpath = "#{grid_container}//tbody//td[#{col_num}]//div"
       divs = page_objects(:row_number_divs) { { xpath: xpath } }
       divs.each_with_index do |field, index|
         return index + 1 if field.text.include?(order_id)
@@ -188,7 +187,7 @@ module SdcGrid
       chooser_xpath = "//table[#{row}]//div[@class='x-grid-row-checker']"
       chooser_name = "grid_chooser_#{row}"
       page_object(chooser_name) { { xpath: chooser_xpath } }
-      verify_xpath = "#{grid_container_locator_str}//table[#{row}]"
+      verify_xpath = "#{grid_container}//table[#{row}]"
       verify_name = "grid_verify_#{row}"
       page_object(verify_name) { { xpath: verify_xpath } }
       grid_checkbox_name = "grid_checkbox_#{row}"
