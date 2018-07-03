@@ -70,10 +70,10 @@ module SdcGrid
       grid_text(col, row)
     end
 
-    def column_number(property)
+    def column_number(name)
       column = get(name)
       if column
-        column
+        return column
       else
         xpath = '//span[@class="x-column-header-text-inner"]'
         columns = page_objects(:columns) { { xpath: xpath } }
