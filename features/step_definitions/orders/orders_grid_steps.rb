@@ -4,8 +4,6 @@ Then /^check grid order id(?:| (\d*))$/ do |order_id|
                TestData.hash[:order_id].values.last
              elsif order_id.size < 2
                TestData.hash[:order_id][order_id.to_i]
-             else
-               order_id
              end
   column = SdcGrid.grid_column(:checkbox)
   row = column.row_number(order_id)
@@ -20,8 +18,6 @@ Then /^uncheck grid order id(?:| (\d*))$/ do |order_id|
                TestData.hash[:order_id].values.last
              elsif order_id.size < 2
                TestData.hash[:order_id][order_id.to_i]
-             else
-               order_id
              end
   column = SdcGrid.grid_column(:checkbox)
   row = column.row_number(order_id)
@@ -44,34 +40,37 @@ When /^uncheck row (\d+)$/ do |row|
 end
 
 Then /^expect orders grid store is (.*)$/ do |str|
-  TestData.hash[:store_name] = str.downcase.include?('random') ? TestData.hash[:store_name] : str
-  expect(SdcGrid.grid_column(:store).data(TestData.hash[:order_id].values.last)).to eql TestData.hash[:store_name]
+  order_id = if order_id.nil?
+               TestData.hash[:order_id].values.last
+             elsif order_id.size < 2
+               TestData.hash[:order_id][order_id.to_i]
+             end
+  column = SdcGrid.grid_column(:store)
+  result = column.data(order_id)
+  expect(result).to eql str
 end
 
-Then /^expect orders grid order id is the same as details form order id$/ do
-  if SdcEnv.new_framework
-    #todo - orders grid implementation
-  else
-    expect(stamps.orders.order_details.toolbar.order_id.text.parse_digits).to eql(SdcGrid.grid_column(:order_id).row(1))
-  end
+Then /^expect orders grid order id is (?:correct|(.*))$/ do |order_id|
+  order_id = if order_id.nil?
+               TestData.hash[:order_id].values.last
+             elsif order_id.size < 2
+               TestData.hash[:order_id][order_id.to_i]
+             end
+  column = SdcGrid.grid_column(:order_id)
+  result = column.data(order_id)
+  expect(result).to eql order_id
 end
 
-Then /^expect cached order id is in orders grid row (\d+)$/ do |row|
-  step 'wait for js to stop'
-  expect(SdcGrid.grid_column(:order_id).row(row)).to eql TestData.hash[:order_id].values.last
-end
-
-Then /^expect cached order id is not in orders grid row (\d+)$/ do |row|
-  step 'wait for js to stop'
-  expect(SdcGrid.grid_column(:order_id).row(row)).not_to eql(TestData.hash[:order_id].values.last)
-end
-
-Then /^expect orders grid ship cost is the same as details form ship cost$/ do
-  if SdcEnv.new_framework
-    #todo - orders grid implementation
-  else
-    expect(stamps.orders.order_details.footer.total_ship_cost.text.dollar_amount_str.to_f.round(2).to_s).to eql(SdcGrid.grid_column(:ship_cost).data(TestData.hash[:order_id].values.last))
-  end
+Then /^expect orders grid ship cost is (?:correct|(.*))$/ do |str|
+  str ||= TestData.hash[:total_ship_cost]
+  order_id = if order_id.nil?
+               TestData.hash[:order_id].values.last
+             elsif order_id.size < 2
+               TestData.hash[:order_id][order_id.to_i]
+             end
+  column = SdcGrid.grid_column(:ship_cost)
+  result = column.data(order_id)
+  expect(result).to eql str
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Date Printed for this order is (?:correct|(\d{2}\/\d{2}\/\d{4}))$/ do |str|

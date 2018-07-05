@@ -192,7 +192,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then add new order
     Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to domestic address to
-      | full_name            | company                 | street_address      | street_address2 |  city          | state | zip        | country       | phone  |  email |
+      | full_name            | company                 | street_address1      | street_address2 |  city          | state | zip        | country       | phone  |  email |
       | Jessie Joe      | The CN 22 House         | PSC 819 BOX 1       |                  | FPO           | AE    | 09645-0001 | United States |        |        |
     Then set order details service to PM Package
     Then set order details ounces to 5
@@ -211,7 +211,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then add new order
     Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to domestic address to
-      | full_name            | company                 | street_address      | street_address2| city          | state | zip        | country       | phone  |  email |
+      | full_name            | company                 | street_address1      | street_address2| city          | state | zip        | country       | phone  |  email |
       | Tammmy Moo      | The CP72 House          | Unit 15324          |                 | APO           | AP    | 96205-5324 | United States |        |        |
     Then set order details service to PM Package
     Then set order details pounds to 3

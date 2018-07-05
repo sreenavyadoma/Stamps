@@ -88,7 +88,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then add new order
     Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to domestic address to
-      | full_name        | company             | street_address  | street_address2| city | state | zip        | country       | phone  |  email |
+      | full_name        | company             | street_address1  | street_address2| city | state | zip        | country       | phone  |  email |
       | PM RR Box B | Domestic FPO 8.5x11 | PSC 473 BOX 12  |                 | FPO  | AP    | 96349-0001 | United States | random | random |
 
     Then set order details service to PM Regional Rate Box B

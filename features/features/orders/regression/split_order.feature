@@ -8,8 +8,8 @@ Feature: ORDERSAUTO-3405 New Sprint 11/22/17 WEBAPPS-6706 Split Order: Automatic
     Then add new order
     Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to domestic address to
-      | full_name       | company  | street_address      | city          | state | zip   | country       | phone           |  email            |
-      | Split Order | Stamps  | 1990 E Grand Ave  | El Segundo | CA    | 90245 | United States |  |   |
+      | full_name       | company  | street_address1      | city          | state | zip   | country       | phone   |  email            |
+      | Split Order | Stamps  | 1990 E Grand Ave  | El Segundo | CA    | 90245 | United States | random |  random |
     Then set order details phone to 4445554444
     Then set order details email to rtest@stamps.com
     Then set order details service to PM Package

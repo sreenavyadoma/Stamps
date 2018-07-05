@@ -8,12 +8,13 @@ Then /^add order (\d+)$/ do |count|
   initializing = SdcOrders.initializing_orders_db
   toolbar.add.wait_until_present(timeout: 10)
   toolbar.add.click
-  order_details.order_id.safe_wait_until_present(timeout: 20)
-  if initializing.present?
-    initializing.safe_wait_until_present(timeout: 20)
-    expect(initializing.text).not_to eql 'Initializing Order Database'
+  order_details.order_id.safe_wait_until_present(timeout: 70)
+  unless order_details.order_id.present?
+    if initializing.present?
+      initializing.safe_wait_until_present(timeout: 20)
+      expect(initializing.text).not_to eql 'Initializing Order Database'
+    end
   end
-  order_details.title.safe_wait_until_present(timeout: 50)
   expect(order_details.order_id.text_value).not_to eql ''
 
   TestData.hash[:order_id][count.to_i] = order_details.order_id.text_value.parse_digits

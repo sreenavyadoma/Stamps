@@ -9,7 +9,7 @@ Feature: All details tests for order
   Scenario: Priority Mail and Large Dimensions
     Then add new order
     Then set order details ship-to domestic address to
-      | full_name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
+      | full_name   | company      | street_address1    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
 
     Then set order details length to 20

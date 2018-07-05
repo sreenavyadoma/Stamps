@@ -31,7 +31,7 @@ Then /^scroll into view order details associated item (\d+)$/ do |item|
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) qty to (.*)$/ do |item, qty|
-  
+
   unless TestData.hash[:details_associated_items].has_key?(item)
     TestData.hash[:details_associated_items][item] = {}
   end
@@ -42,7 +42,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) qty to (.*)$/ do |item, 
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) ID to (.*)$/ do |item, str|
-  
+
   TestData.hash[:details_associated_items][item] = {} unless TestData.hash[:details_associated_items].has_key?(item)
   str = TestHelper.rand_alpha_numeric if str.downcase.include?('random')
   SdcOrders.order_details.associated_item.id(item).set(str)
@@ -51,7 +51,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) ID to (.*)$/ do |item, s
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) description to (.*)$/ do |item, str|
-  
+
   TestData.hash[:details_associated_items][item] = {} unless TestData.hash[:details_associated_items].has_key?(item)
   str = TestHelper.rand_alpha_numeric if str.downcase.include?('random')
   SdcOrders.order_details.associated_item.description(item).set(str)
@@ -136,20 +136,28 @@ Then /^set order details ship-to domestic address to$/ do |table|
 
   full_name = full_name.downcase.include?('random') ? TestHelper.rand_full_name : full_name
   company = company.downcase.include?('random') ? TestHelper.rand_comp_name : company
-  street_address2 ||= ''
-  street_address2 = if street_address2.downcase.include?('random')
-                      TestHelper.rand_alpha_numeric(min: 2, max: 7)
-                    else
-                      street_address2
-                    end
 
-  country = country.size.zero? ? 'United States' : country
-  phone = phone.downcase.include?('random') ? TestHelper.rand_alpha_numeric : phone
-  email = email.downcase.include?('random') ? TestHelper.rand_alpha_numeric : email
+  if street_address2 && street_address2.downcase.include?('random')
+    street_address2 = TestHelper.rand_alpha_numeric(min: 2, max: 7)
+  end
+
+  if country.nil? || country.size.zero?
+    country = 'United States'
+  end
+
+  if phone.nil? || phone.downcase.include?('random')
+    phone = TestHelper.rand_phone
+  end
+
+  if email.nil? || email.downcase.include?('random')
+    email = TestHelper.rand_email
+  end
   ship_to = "#{full_name},#{company},#{street_address1},#{street_address2},#{city} #{state} #{zip}"
 
   step "set order details domestic ship-to country to #{country}"
   step "set Order Details Ship-To text area to #{ship_to}"
+  step "set order details phone to #{phone}"
+  step "set order details email to #{email}"
 
   TestData.hash[:full_name] = full_name
   TestData.hash[:company] = company
@@ -157,12 +165,10 @@ Then /^set order details ship-to domestic address to$/ do |table|
   TestData.hash[:street_address2] = street_address2
   TestData.hash[:city] = city
   TestData.hash[:state] = state
-  TestData.hash[:phone] = phone
-  TestData.hash[:email] = email
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Aa]mbiguous [Aa]ddress to$/ do |table|
-  
+
   address = TestHelper.format_address(table.hashes.first)
   stamps.orders.order_details.ship_to.domestic.set_ambiguous(address)
   TestData.hash[:ship_to_domestic] = address
@@ -192,86 +198,69 @@ Then /^set order details email to (.*)$/ do |str|
   step 'Save Order Details data'
 end
 
+Then /^expect order details ship-to phone is (?:correct|(.*))$/ do |str|
+  step 'show order details form ship-to fields'
+  str ||= TestData.hash[:phone]
+  expect(SdcOrders.order_details.ship_to.domestic.phone.text_value).to eql(str)
+end
+
+Then /^expect order details ship-to email is (?:correct|(.*))$/ do |str|
+  step 'show order details form ship-to fields'
+  str ||= TestData.hash[:email]
+  expect(SdcOrders.order_details.ship_to.domestic.email.text_value).to eql(str)
+end
+
 Then /^[Oo]n [Oo]rder [Dd]etails form, [Hh]ide [Ii]nternational [Ss]hip-[Tt]o fields$/ do
   stamps.orders.order_details.ship_to.international.hide_ship_to_details
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails Order ID is truthy$/ do
-  expect(TestData.hash[:order_id].values.last.to_i).to be > 0
-end
-
-Then /^[Ee]xpect [Oo]rder [Dd]etails Order ID equals Grid Order ID in row (\d+)$/ do |row|
-
-end
-
-Then /^[Ee]xpect [Oo]rder [Dd]etails Order ID is the same as saved Order ID$/ do
-
-end
-
 Then /^expect order details ship-to name is (.*)$/ do |str|
-  
   step 'show order details form ship-to fields'
-  address = SdcOrders.order_details.ship_to.domestic.address.text_value
   str = TestHelper.address_str_to_hash(address)[:name]
-  expect(str).to eql(str)
+  result = SdcOrders.order_details.ship_to.domestic.address.text_value
+  expect(result).to eql(str)
 end
 
 Then /^expect order details ship-to company name is (.*)$/ do |str|
-  
   step 'show order details form ship-to fields'
-  address = SdcOrders.order_details.ship_to.domestic.address.text_value
   str = TestHelper.address_str_to_hash(address)[:company]
-  expect(str).to eql(str)
+  result = SdcOrders.order_details.ship_to.domestic.address.text_value
+  expect(stresultr).to eql(str)
 end
 
 Then /^expect order details ship-to cleansed street address is (.*)$/ do |str|
-  
   step 'show order details form ship-to fields'
-  address = SdcOrders.order_details.ship_to.domestic.address.text_value
   str = TestHelper.address_str_to_hash(address)[:street]
-  expect(str).to eql(str)
+  result = SdcOrders.order_details.ship_to.domestic.address.text_value
+  expect(result).to eql(str)
 end
 
 Then /^expect order details ship-to cleansed city is (.*)$/ do |str|
-  
   step 'show order details form ship-to fields'
-  address = SdcOrders.order_details.ship_to.domestic.address.text_value
   str = TestHelper.address_str_to_hash(address)[:city]
+  address = SdcOrders.order_details.ship_to.domestic.address.text_value
   expect(str).to eql(str)
 end
 
 Then /^expect order details ship-to cleansed state is (.*)$/ do |str|
-  
   step 'show order details form ship-to fields'
-  address = SdcOrders.order_details.ship_to.domestic.address.text_value
   str = TestHelper.address_str_to_hash(address)[:state]
-  expect(str).to eql(str)
+  result = SdcOrders.order_details.ship_to.domestic.address.text_value
+  expect(result).to eql(str)
 end
 
 Then /^expect order details ship-to cleansed zip plus 4 code is (.*)$/ do |str|
-  
   step 'show order details form ship-to fields'
-  address = SdcOrders.order_details.ship_to.domestic.address.text_value
   str = TestHelper.address_str_to_hash(address)[:zip_full]
-  expect(str).to eql(str)
+  result = SdcOrders.order_details.ship_to.domestic.address.text_value
+  expect(result).to eql(str)
 end
 
 Then /^expect order details ship-to cleansed zip code is (.*)$/ do |str|
-  
   step 'show order details form ship-to fields'
-  address = SdcOrders.order_details.ship_to.domestic.address.text_value
   str = TestHelper.address_str_to_hash(address)[:zip]
-  expect(str).to eql(str)
-end
-
-Then /^expect order details ship-to phone is (.*)$/ do |str|
-  step 'show order details form ship-to fields'
-  expect(SdcOrders.order_details.ship_to.domestic.phone.text_value).to eql(str)
-end
-
-Then /^expect order details ship-to email is (.*)$/ do |str|
-  step 'show order details form ship-to fields'
-  expect(SdcOrders.order_details.ship_to.domestic.email.text_value).to eql(str)
+  result = SdcOrders.order_details.ship_to.domestic.address.text_value
+  expect(result).to eql(str)
 end
 
 Then /^set order details service to (.*)$/ do |str|
@@ -315,8 +304,9 @@ end
 Then /^set order details length to (\d*)$/ do |str|
   order_details = SdcOrders.order_details
   dimensions = order_details.dimensions
-  dimensions.length.wait_until_present(timeout: 5)
-  dimensions.length.set(TestData.hash[:length])
+  dimensions.length.wait_until_present(timeout: 15)
+  dimensions.length.set(str)
+  expect(dimensions.length.text_value).to eql str
   TestData.hash[:length] = str
   step 'Save Order Details data'
 end
@@ -324,8 +314,9 @@ end
 Then /^set order details width to (\d*)$/ do |str|
   order_details = SdcOrders.order_details
   dimensions = order_details.dimensions
-  dimensions.width.wait_until_present(timeout: 5)
+  dimensions.width.wait_until_present(timeout: 15)
   dimensions.width.set(str)
+  expect(dimensions.width.text_value).to eql str
   TestData.hash[:width] = str
   step 'Save Order Details data'
 end
@@ -333,8 +324,9 @@ end
 Then /^set order details height to (\d*)$/ do |str|
   order_details = SdcOrders.order_details
   dimensions = order_details.dimensions
-  dimensions.height.wait_until_present(timeout: 5)
-  dimensions.height.set(TestData.hash[:height] = str)
+  dimensions.height.wait_until_present(timeout: 15)
+  dimensions.height.set(str)
+  expect(dimensions.height.text_value).to eql str
   TestData.hash[:height] = str
   step 'Save Order Details data'
 end
@@ -346,7 +338,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails [Ss]ervice is (?:correct|(.*))$/ do |str|
 end
 
 Then /^set order details international service to (.*)$/ do |str|
-  
+
   TestData.hash[:int_service] = stamps.orders.order_details.service.select(str).parse_service_name
   20.times do
     step 'blur out on order details form'
@@ -526,25 +518,6 @@ Then /^expect order details associated item (\d+) Description is (?:correct|(.*)
   expect(result).to eql str
 end
 
-
-
-
-
-
-
-# ---------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
 Then /^expect order details service cost is (?:correct|(\d+.\d*))$/ do |str|
   str ||= TestData.hash[:service_cost]
   result = SdcOrders.order_details.service.cost.text_value.dollar_amount_str.to_f.round(2)
@@ -600,12 +573,14 @@ end
 
 Then /^expect order details ship-from and ship-from saved values are the same$/ do
   step 'show order details form ship-to fields'
-  expect(SdcOrders.order_details.ship_from.text_field.text_value).to eql(TestData.hash[:ship_from])
+  result = SdcOrders.order_details.ship_from.text_field.text_value
+  expect(result).to eql(TestData.hash[:ship_from])
 end
 
 Then /^expect order details reference number is (?:correct|(.*))$/ do |str|
   str ||= TestData.hash[:reference_num]
-  expect(SdcOrders.order_details.reference_num.text_value).to eql(str)
+  result = SdcOrders.order_details.reference_num.text_value
+  expect(result).to eql(str)
 end
 
 Then /^expect order details insure-for is (?:correct|(\d+\.\d{2}))$/ do |str|

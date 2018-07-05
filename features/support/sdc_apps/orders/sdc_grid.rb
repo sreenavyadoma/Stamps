@@ -905,7 +905,7 @@ module SdcGrid
     case(name)
     when :checkbox
       SdcGridCheckBox.new
-    when :hash
+    when :store
       SdcStore.new
     when :order_id
       SdcOrderId.new
