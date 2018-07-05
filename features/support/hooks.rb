@@ -1,9 +1,9 @@
 # encoding: utf-8
 
 include Stamps
-include Stamps::WebApps
-include Stamps::Orders
-include Stamps::Mail
+#include Stamps::WebApps
+#include Stamps::Orders
+#include Stamps::Mail
 include RSpec
 include RSpec::Matchers
 include DataMagic
