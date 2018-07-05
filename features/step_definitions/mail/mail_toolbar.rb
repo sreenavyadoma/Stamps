@@ -27,7 +27,7 @@ Then /^click mail toolbar print dropdown$/ do
 end
 
 Then /^hover on mail toolbar print tooltip$/ do
-  SdcMail.toolbar.print_tooltip.hover
+  SdcMail.toolbar.print_tooltip.hover if SdcMail.toolbar.print_tooltip.present?
 end
 
 Then /^click mail toolbar print (?:postage|label|stamps|envelope)$/ do
