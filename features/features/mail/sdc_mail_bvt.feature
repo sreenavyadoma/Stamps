@@ -329,8 +329,6 @@ Feature:  Mail BVT
   @mail_bvt_ui_validation
   Scenario: BVT Mail UI Validation for Print On options
     Then sign-in to mail
-
-#    PRINT ON MEDIA
     Then select print on Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then select print on Shipping Label - 5 ½" x 8 ½"
     Then select print on Envelope - #10, 4 ⅛" x 9 ½"
@@ -350,9 +348,12 @@ Feature:  Mail BVT
     Then select print on Roll - 4" x 6" Shipping Label
     Then select print on Roll - 4 ⅛" x 6 ¼" Shipping Label
     Then select print on Shipping Label - 8 ½" x 11" Paper
+    Then sign out
 
-#   PRINT SERVICE
-    #Then set Print form Mail-From to default
+  @mail_bvt_ui_validation
+  Scenario: BVT Mail UI Validation for Print Services
+    Then sign-in to mail
+    Then select print on Shipping Label - 8 ½" x 11" Paper
     Then set print form mail-to to a random address in zone 8
     Then set print form email tracking stamps@mailinator.com
     Then select print form service FCM Large Envelope/Flat
