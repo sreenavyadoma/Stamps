@@ -252,74 +252,75 @@ Then /^[Ee]xpect Customs Total Value is (?:correct|(.*))$/ do |str|
   expect(customs_form.total.text_value.dollar_amount_str.to_f.round(2)).to eql(str)
 end
 
-Then /^add customs associated item (\d+), description (.*), qty (\d+), Price (.+), Made In (.+), Tariff (.*)$/ do |item_number, description, qty, price, made_in, tariff|
-  step "add customs associated item #{item_number}" if item_number > 1
-  step "scroll into view customs associated item #{item_number}"
-  step "set customs associated item #{item_number} description to #{description}"
-  step "set customs associated item #{item_number} qty to #{qty}"
-  step "set customs associated item #{item_number} unit price to #{price}"
-  step "scroll into view customs associated item #{item_number}"
-  step "set customs associated item #{item_number} made in #{made_in}"
-  step "scroll into view customs associated item #{item_number}"
-  step "set customs associated item #{item_number} Tarriff to #{tariff}"
+Then /^add customs associated item (\d+), description (.*), qty (\d+), Price (.+), Made In (.+), Tariff (.*)$/ do |item, description, qty, price, made_in, tariff|
+  TestData.hash[:customs_items_qty] += 1
+  step "add customs associated item #{item}" if item > 1
+  step "scroll into view customs associated item #{item}"
+  step "set customs associated item #{item} description to #{description}"
+  step "set customs associated item #{item} qty to #{qty}"
+  step "set customs associated item #{item} unit price to #{price}"
+  step "scroll into view customs associated item #{item}"
+  step "set customs associated item #{item} made in #{made_in}"
+  step "scroll into view customs associated item #{item}"
+  step "set customs associated item #{item} Tarriff to #{tariff}"
 end
 
-Then /^edit customs associated item (\d+), description (.*), qty (\d+), Price (.+), Made In (.+), Tariff (.*)$/ do |item_number, description, qty, price, made_in, tariff|
-  step "scroll into view customs associated item #{item_number}"
-  step "set customs associated item #{item_number} description to #{description}"
-  step "set customs associated item #{item_number} qty to #{qty}"
-  step "set customs associated item #{item_number} unit price to #{price}"
-  step "scroll into view customs associated item #{item_number}"
-  step "set customs associated item #{item_number} made in #{made_in}"
-  step "scroll into view customs associated item #{item_number}"
-  step "set customs associated item #{item_number} Tarriff to #{tariff}"
+Then /^edit customs associated item (\d+), description (.*), qty (\d+), Price (.+), Made In (.+), Tariff (.*)$/ do |item, description, qty, price, made_in, tariff|
+  step "scroll into view customs associated item #{item}"
+  step "set customs associated item #{item} description to #{description}"
+  step "set customs associated item #{item} qty to #{qty}"
+  step "set customs associated item #{item} unit price to #{price}"
+  step "scroll into view customs associated item #{item}"
+  step "set customs associated item #{item} made in #{made_in}"
+  step "scroll into view customs associated item #{item}"
+  step "set customs associated item #{item} Tarriff to #{tariff}"
 end
 
-Then /^add customs associated item (\d+)$/ do |item_number|
+Then /^add customs associated item (\d+)$/ do |item|
   SdcWebsite.customs_form.add_item.click
 end
 
-Then /^scroll into view customs associated item (\d+)$/ do |item_number|
-  item = SdcWebsite.customs_form.item
-  item.made_in.drop_down(item_number).scroll_into_view
-  item.item_description(item_number).scroll_into_view
-  item.hs_tariff(item_number).scroll_into_view
-  item.qty(item_number).scroll_into_view
-  item.unit_price(item_number).scroll_into_view
-  item.delete(item_number).scroll_into_view
+Then /^scroll into view customs associated item (\d+)$/ do |item|
+  element = SdcWebsite.customs_form.item
+  element.made_in.drop_down(item).scroll_into_view
+  element.item_description(item).scroll_into_view
+  element.hs_tariff(item).scroll_into_view
+  element.qty(item).scroll_into_view
+  element.unit_price(item).scroll_into_view
+  element.delete(item).scroll_into_view
 end
 
-Then /^set customs associated item (\d+) description to (.*)$/ do |item_number, value|
-  TestData.hash[:customs_associated_items][item_number] ||= {}
+Then /^set customs associated item (\d+) description to (.*)$/ do |item, value|
+  TestData.hash[:customs_associated_items][item] ||= {}
   value = TestHelper.rand_alpha_numeric if value.casecmp('random').zero?
-  SdcWebsite.customs_form.item.item_description(item_number).scroll_into_view.set(value)
+  SdcWebsite.customs_form.item.item_description(item).scroll_into_view.set(value)
   step 'Save Customs Information form Total amount'
-  TestData.hash[:customs_associated_items][item_number][:description] = value
+  TestData.hash[:customs_associated_items][item][:description] = value
 end
 
-Then /^set customs associated item (\d+) qty to (\d+)$/ do |item_number, value|
-  qty = SdcWebsite.customs_form.item.qty(item_number)
+Then /^set customs associated item (\d+) qty to (\d+)$/ do |item, value|
+  qty = SdcWebsite.customs_form.item.qty(item)
   qty.scroll_into_view
   qty.set(value)
   step 'Save Customs Information form Total amount'
-  TestData.hash[:customs_associated_items][item_number] ||= {}
-  TestData.hash[:customs_associated_items][item_number][:quantity] = value
+  TestData.hash[:customs_associated_items][item] ||= {}
+  TestData.hash[:customs_associated_items][item][:quantity] = value
 end
 
-Then /^set customs associated item (\d+) unit price to (.*)$/ do |item_number, value|
-  unit_price = SdcWebsite.customs_form.item.unit_price(item_number)
+Then /^set customs associated item (\d+) unit price to (.*)$/ do |item, value|
+  unit_price = SdcWebsite.customs_form.item.unit_price(item)
   unit_price.scroll_into_view
   unit_price.set(value)
   step 'Save Customs Information form Total amount'
-  TestData.hash[:customs_associated_items][item_number] ||= {}
-  TestData.hash[:customs_associated_items][item_number][:price] = value
+  TestData.hash[:customs_associated_items][item] ||= {}
+  TestData.hash[:customs_associated_items][item][:price] = value
 end
 
-Then /^set customs associated item (\d+) made in (.*)$/ do |item_number, value|
+Then /^set customs associated item (\d+) made in (.*)$/ do |item, value|
   made_in = SdcWebsite.customs_form.item.made_in
-  drop_down = made_in.drop_down(item_number)
-  text_field = made_in.text_field(item_number)
-  selection = made_in.selection(item_number, value)
+  drop_down = made_in.drop_down(item)
+  text_field = made_in.text_field(item)
+  selection = made_in.selection(item, value)
   drop_down.scroll_into_view
   text_field.scroll_into_view
   drop_down.click
@@ -331,39 +332,44 @@ Then /^set customs associated item (\d+) made in (.*)$/ do |item_number, value|
   text_field.scroll_into_view
   text_field.wait_until_present(timeout: 2)
   expect(text_field.text_value).to include value
-  TestData.hash[:customs_associated_items][item_number] ||= {}
-  TestData.hash[:customs_associated_items][item_number][:made_in] = value
+  TestData.hash[:customs_associated_items][item] ||= {}
+  TestData.hash[:customs_associated_items][item][:made_in] = value
 end
 
-Then /^set customs associated item (\d+) Tarriff to (.*)$/ do |item_number, value|
-  SdcWebsite.customs_form.item.hs_tariff(item_number).scroll_into_view.set(value)
+Then /^set customs associated item (\d+) Tarriff to (.*)$/ do |item, value|
+  SdcWebsite.customs_form.item.hs_tariff(item).scroll_into_view.set(value)
   step 'Save Customs Information form Total amount'
-  TestData.hash[:customs_associated_items][item_number] ||= {}
-  TestData.hash[:customs_associated_items][item_number][:tarriff] = value
+  TestData.hash[:customs_associated_items][item] ||= {}
+  TestData.hash[:customs_associated_items][item][:tarriff] = value
 end
 
-Then /^expect customs associated item (\d+) Description is (?:correct|(.*))$/ do |item_number, str|
-  str ||= TestData.hash[:customs_associated_items][item_number][:description]
-  expect(SdcWebsite.customs_form.item.item_description(item_number).text_value).to eql(str)
+Then /^expect customs associated item (\d+) Description is (?:correct|(.*))$/ do |item, str|
+  str ||= TestData.hash[:customs_associated_items][item][:description]
+  result = SdcWebsite.customs_form.item.item_description(item).text_value
+  expect(result).to eql(str)
 end
 
-Then /^expect customs associated item (\d+) Quantity is (?:correct|(.*))$/ do |item_number, str|
-  str ||= TestData.hash[:customs_associated_items][item_number][:quantity]
-  expect(SdcWebsite.customs_form.item.qty(item_number).value.to_i).to eql(str.to_i)
+Then /^expect customs associated item (\d+) Quantity is (?:correct|(.*))$/ do |item, str|
+  str ||= TestData.hash[:customs_associated_items][item][:quantity]
+  result = SdcWebsite.customs_form.item.qty(item).text_value.to_i
+  expect(result).to eql(str.to_i)
 end
 
-Then /^expect customs associated item (\d+) Unit Price is (?:correct|(.*))$/ do |item_number, str|
-  str ||= TestData.hash[:customs_associated_items][item_number][:price]
-  expect(SdcWebsite.customs_form.item.unit_price(item_number).value.to_f).to eql(str.to_f)
+Then /^expect customs associated item (\d+) Unit Price is (?:correct|(.*))$/ do |item, str|
+  str ||= TestData.hash[:customs_associated_items][item][:price]
+  result = SdcWebsite.customs_form.item.unit_price(item).text_value.to_f
+  expect(result).to eql(str.to_f)
 end
 
-Then /^expect customs associated item (\d+) Made In is (?:correct|(.*))$/ do |item_number, str|
-  str ||= TestData.hash[:customs_associated_items][item_number][:made_in]
-  expect(SdcWebsite.customs_form.item.made_in.text_field(item_number).text_value).to eql(str)
+Then /^expect customs associated item (\d+) Made In is (?:correct|(.*))$/ do |item, str|
+  str ||= TestData.hash[:customs_associated_items][item][:made_in]
+  result = SdcWebsite.customs_form.item.made_in.text_field(item).text_value
+  expect(result).to eql(str)
 end
 
-Then /^expect customs associated item (\d+) Tariff is (?:correct|(.*))$/ do |item_number, str|
-  str ||= TestData.hash[:customs_associated_items][item_number][:tarriff]
-  expect(SdcWebsite.customs_form.item.hs_tariff(item_number).text_value.to_f).to eql(str.to_f)
+Then /^expect customs associated item (\d+) Tariff is (?:correct|(.*))$/ do |item, str|
+  str ||= TestData.hash[:customs_associated_items][item][:tarriff]
+  result = SdcWebsite.customs_form.item.hs_tariff(item).text_value.to_f
+  expect(result).to eql(str.to_f)
 end
 

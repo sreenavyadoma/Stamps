@@ -1,4 +1,4 @@
-Feature:  Mail BVT - Authentication
+Feature:  Mail BVT
 
   Background:
     Given Start test driver
@@ -173,7 +173,7 @@ Feature:  Mail BVT - Authentication
     Then sign-in to Mail
     Then select print on Stamps
 
-    Then set Print form Serial Number to C12345
+    Then set print form serial number to C12345
     Then select Advanced Options Specify Postage Amount
     #Then set Print form Mail-From to default
     Then select print form service Media Mail
@@ -184,7 +184,7 @@ Feature:  Mail BVT - Authentication
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
-    Then set Print form Serial Number to B12345
+    Then set print form serial number to B12345
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
     Then set print form ounces to 1
@@ -470,4 +470,69 @@ Feature:  Mail BVT - Authentication
     Then open mail settings modal
     Then set mail settings postdate to 5:00 p.m.
     Then close mail settings modal
+    Then sign out
+
+  @mail_bvt_extra_services
+  Scenario: Extra Services
+    Then sign-in to mail
+    Then select print on Shipping Label - 5 ½" x 8 ½"
+    Then set print form mail-to country to United States
+    Then set print form mail-to to address random name, random company, 3217 Shasta Circle S., Los Angeles, CA 90065
+    Then set print form ounces to 1
+    Then select print form service PM Padded Flat Rate Envelope
+    Then expect advanced options hide label value is checked
+    Then select advanced options extra services
+    Then set extra services security to Registered Mail
+    Then click value must be shown window continue button
+    Then expect extra services security price to be 11.90
+    Then set extra services security value to 30.00
+    Then pause for 15 seconds
+    Then expect extra services security price to be 12.60
+    Then set extra services cod to 20.00
+    Then pause for 15 seconds
+    Then expect extra services cod price to be 5.70
+    Then check extra services return receipt
+    Then expect extra services return receipt price to be 2.75
+    Then check extra services restricted delivery
+    Then expect extra services restricted delivery price to be 5.10
+    Then check extra services notice of non-delivery
+    Then expect extra services notice of non-delivery price to be 0.00
+    Then pause for 15 seconds
+    Then expect extra services total price to be 26.15
+    Then save extra services
+    Then select advanced options extra services
+    Then expect extra services security price to be 12.60
+    Then expect extra services return receipt price to be 2.75
+    Then expect extra services restricted delivery price to be 5.10
+    Then expect extra services cod price to be 5.70
+    Then expect extra services notice of non-delivery price to be 0.00
+    Then expect extra services total price to be 26.15
+    Then save extra services
+    Then sign out
+
+  @mail_bvt_purchasing
+  Scenario: Purchasing $10
+    Then sign-in to mail
+    Then save balance amount
+    Then hover on navigation menu balance
+    Then click on navigation menu buy more
+    Then on add funds modal, purchase 10
+    Then on add funds modal, click purchase button
+    Then buy mail confirm purchase: expect text area contains, please confirm your $10.00 postage purchase.
+    Then buy mail confirm transction: click confirm button
+    Then buy mail purchase approved: expect text area contains, your fund request for $10.00 has been approved.
+    Then buy mail purchase approved: click ok button
+    Then buy mail: expect customer balance increased by $10
+    Then sign out
+
+  @mail_bvt_address_cleansing
+  Scenario: Address Cleansing
+    Then sign-in to mail
+    Then select print on Shipping Label - 8 ½" x 11" Paper
+#    Then set Print form Mail-From to default
+    Then set print form mail-to country to United States
+    Then set print form mail-to to address to Address Cleansing, Google, 1600 Amphitheatre Pkwy, Mountain View, CA 94043
+    Then set print form ounces to 1
+    Then select print form service PM Package
+    Then expect Print form Domestic Address field displays Address Cleansing, Google, 1600 Amphitheatre Pkwy, Mountain View, CA 94043-1351
     Then sign out

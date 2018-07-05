@@ -17,7 +17,8 @@ module SdcNavigation
   class SdcNavigationBalance < SdcPage
     page_object(:link, tag: :a) { {xpath: '//*[text()="Balance"]/..'} }
     page_object(:amount) { {xpath: '//*[contains(@class, "balance")]/a/strong/span'} }
-    page_object(:buy_more, tag: :a) { {id: 'buyMorePostageLnk'} }
+    # page_object(:buy_more, tag: :a) { {id: 'buyMorePostageLnk'} }
+    page_object(:buy_more, tag: :a) { {xpath: '//*[text()="Buy More"]'} }
     page_object(:view_purchase_history, tag: :a) { {xpath: '//*[text()="View Purchase History"]'} }
     page_object(:change_payment_method, tag: :a) { {xpath: '//*[text()="Change Payment Method"]'} }
 

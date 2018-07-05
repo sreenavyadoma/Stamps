@@ -15,7 +15,7 @@ Feature:  Search Orders
     Then hide order details form Ship-To fields
     Then set order details service to PM Package
     Then set order details weight to 1 lb 1 oz
-    Then uncheck grid order id cached
+    Then uncheck grid order id
     Then select Filter Panel tab Shipped
 
     # Search for new order

@@ -37,25 +37,17 @@ Feature:  BVT tests for Orders
     Then set order details length to 1
     Then set order details width to 1
     Then set order details height to 1
-#  # Orders Grid Operations
-    #Then uncheck row 1
-    ##Then expect orders grid pounds is 1
-    ##Then expect orders grid ounces is 1
-    ##Then expect orders grid weight is 1 lb. 1 oz.
-    ##Then expect orders grid insured value is $1.00
-    #Then sign-out of SDC Website
+  # Orders Grid Operations
+    Then uncheck row 1
+    Then expect orders grid pounds is 1
+    Then expect orders grid ounces is 1
+    Then expect orders grid weight is 1 lb. 1 oz.
+    Then expect orders grid insured value is $1.00
+    Then sign-out of SDC Website
 
   @bvt_orders_ship_date
   Scenario: Ship Date defaults to today
     Then sign-in to orders
-
-
-    Then check row 1
-    Then uncheck row 1
-    Then uncheck grid order id cached
-    Then check grid order id cached
-
-
     Then open orders settings general settings
     Then set orders settings general postdate to now +2 hours
     Then close orders settings modal
@@ -136,22 +128,14 @@ Feature:  BVT tests for Orders
     Then set order details service to PMI Flat Rate Envelope
     Then click order details form customs form button
     # create items
-    Then add customs associated item 1, description random, qty 1, Price 4, Made In Zimbabwe, Tariff 1
+    Then add customs associated item 1, description random, qty 1, Price 4, Made In Philippines, Tariff 1
     Then add customs associated item 2, description random, qty 1, Price 4, Made In Japan, Tariff 1
     Then add customs associated item 3, description random, qty 1, Price 4, Made In France, Tariff 1
-    Then add customs associated item 4, description random, qty 1, Price 4, Made In Philippines, Tariff 1
-    Then add customs associated item 5, description random, qty 1, Price 4, Made In Czech Republic, Tariff 1
-    Then add customs associated item 6, description random, qty 1, Price 4, Made In Denmark, Tariff 1
-    Then add customs associated item 7, description random, qty 1, Price 4, Made In Scotland (Great Britain), Tariff 1
-    Then add customs associated item 8, description random, qty 1, Price 4, Made In Spain, Tariff 1
-    Then add customs associated item 9, description random, qty 1, Price 4, Made In United Kingdom (Great Britain), Tariff 1
-    Then add customs associated item 10, description random, qty 1, Price 4, Made In Australia, Tariff 1
-    Then add customs associated item 11, description random, qty 1, Price 4, Made In Norway, Tariff 1
     # edit item
     Then edit customs associated item 1, description random, qty 2, Price 4, Made In United States, Tariff 1
     Then edit customs associated item 2, description random, qty 2, Price 4, Made In United States, Tariff 1
 
-    Then expect customs associated item grid count is 11
+    Then expect customs associated item grid count is 3
     Then set customs package contents to Commercial Sample
     Then set customs package contents to Gift
     Then set customs package contents to Document
@@ -189,12 +173,12 @@ Feature:  BVT tests for Orders
     Then set order details phone to random
     Then set order details service to PM Package
     Then set order details weight to 1 lb 1 oz
-    Then uncheck grid order id cached
-    Then check grid order id cached
+    Then uncheck grid order id
+    Then check grid order id
     Then search filtered Orders for cached Order ID
     Then expect filter panel search results tab is present
     Then expect Filter Panel search result count is 1
-    Then check grid order id cached
+    Then check grid order id
     Then expect Order Details Order ID equals Grid Order ID in row 1
     Then expect Order Details Order ID is the same as saved Order ID
     Then expect Filter Panel search result count is greater than 0
@@ -230,10 +214,10 @@ Feature:  BVT tests for Orders
     Then blur out on order details form
     Then pause for 2 seconds
 
-    Then uncheck grid order id cached
+    Then uncheck grid order id
 
     Then pause for 2 seconds
-    Then check grid order id cached
+    Then check grid order id
     Then pause for 2 seconds
     Then blur out on order details form
 
@@ -272,7 +256,7 @@ Feature:  BVT tests for Orders
     Then expect orders grid zip is 32801-1175
     Then expect orders grid phone is 888-888-8888
     Then expect orders grid email is rtest@stamps.com
-    Then expect orders grid qty. is 1
+    Then expect orders grid qty is 1
     Then expect orders grid item sku is Item 1 SKU
     Then expect orders grid item name is Item 1 Description
     Then expect orders grid service is Priority Mail
@@ -294,7 +278,7 @@ Feature:  BVT tests for Orders
     Then set order details ship-to international address to
       | full_name     | company       | street_address1 | street_address2 | city          | province      | postal_code   | country| phone         |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | India  | Random phone  | Random email  |
-    #Then expect order details ship-to country is correct
+    Then expect order details ship-to country is correct
     Then set order details weight to 2 lb 2 oz
     Then set order details service to PMI Package/Flat/Thick Envelope
     Then set order details insure-for to $100.25
@@ -303,7 +287,6 @@ Feature:  BVT tests for Orders
     Then on order details form, add item 2, qty 2, id random string, description random string
     Then on order details form, add item 3, qty 3, id ID 3, description random string
     Then expect orders grid service is Priority Mail International
-    Then expect orders grid service is PMI Package/Flat/Thick Envelope
     Then expect orders grid service is correct
 
     Then click order details form customs form button
@@ -330,9 +313,9 @@ Feature:  BVT tests for Orders
 
     Then pause for 1 second
     Then blur out on order details form
-    Then uncheck grid order id cached
+    Then uncheck grid order id
     Then pause for 3 seconds
-    Then check grid order id cached
+    Then check grid order id
     Then pause for 2 seconds
 
     Then expect order details international ship-to name is correct
@@ -398,17 +381,16 @@ Feature:  BVT tests for Orders
     Then expect orders grid phone is correct
     Then expect orders grid email is correct
 
-    Then expect orders grid qty. is 6
+    Then expect orders grid qty is correct
     Then expect orders grid item sku is Multiple
     Then expect orders grid item name is Multiple
+    Then expect orders grid weight is 2 lb. 2 oz.
 
     Then expect orders grid service is Priority Mail International
-    Then expect orders grid pounds is correct
-    Then expect orders grid ounces is correct
-    Then expect order details insure-for is correct
-    Then expect orders grid order status is Awaiting Shipment
+    Then expect orders grid service is correct
+#    Then expect order details insure-for is correct
+#    Then expect orders grid order status is Awaiting Shipment
 
-    Then pause for 2 second
     Then sign out
 
   @bvt_address_cleansing
@@ -416,7 +398,7 @@ Feature:  BVT tests for Orders
     Then sign-in to orders
     Then add new order
     Then set order details ship-to domestic address to
-      | full_name     | company | street_address     | street_address2| city          | state | zip | country       | phone          |  email           |
+      | full_name     | company | street_address     | street_address2 | city          | state | zip | country       | phone          |  email           |
       | Euan Davidson | Betfair | 1350 Market Street |                 | San Francisco | CA    |     | United States | (415) 123-5555 | rtest@stamps.com |
     Then set order details service to PM Package
     Then set order details ounces to 1

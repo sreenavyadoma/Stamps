@@ -12,7 +12,7 @@ module SdcEnv
                   :printer, :browser, :hostname, :mobile, :scenario,
                   :sauce_device, :test_name, :log_level, :driver_log_level,
                   :browser_mobile_emulator, :android, :ios, :firefox_profile,
-                  :new_framework, :max_window, :web_dev, :jenkins, :sauce
+                  :new_framework, :max_window, :window_size, :web_dev, :jenkins, :sauce
   end
 end
 
@@ -433,7 +433,7 @@ module HtmlElementMethods
       # ignore
     end
 
-    nil
+    ''
   end
 
   def click_while_present(*modifiers, ctr: 2)
@@ -481,11 +481,12 @@ module HtmlElementMethods
 
   def attribute_include?(property, value)
     result = if respond_to? :attribute_value
-            send(:attribute_value, property).include?(value)
-          else
-            send(:attribute, property).include?(value)
-          end
+               send(:attribute_value, property).include?(value)
+             else
+               send(:attribute, property).include?(value)
+             end
 
+    return result if [true, false].include? result
     if result.casecmp('true').zero? || result.casecmp('false').zero?
       return result.casecmp('true').zero?
     end
@@ -528,6 +529,7 @@ class SdcChooser < BasicObject
                @verify.send(:attribute, @property)
              end
 
+    return result if [true, false].include? result
     if result.casecmp('true').zero? || result .casecmp('false').zero?
       return result.casecmp('true').zero?
     end

@@ -43,8 +43,8 @@ When /^uncheck row (\d+)$/ do |row|
   expect(checkbox.checked?).to be(false)
 end
 
-Then /^expect orders grid store is (.*)$/ do |expectation|
-  TestData.hash[:store_name] = expectation.downcase.include?('random') ? TestData.hash[:store_name] : expectation
+Then /^expect orders grid store is (.*)$/ do |str|
+  TestData.hash[:store_name] = str.downcase.include?('random') ? TestData.hash[:store_name] : str
   expect(SdcGrid.grid_column(:store).data(TestData.hash[:order_id].values.last)).to eql TestData.hash[:store_name]
 end
 
@@ -93,13 +93,13 @@ Then /^[Ee]xpect Ship-To address is;$/ do |table|
   step "expect orders grid email is #{table.hashes.first[:email]}"
 end
 
-Then /^expect orders grid age is (.+)$/ do |expectation|
+Then /^expect orders grid age is (.+)$/ do |str|
   if SdcEnv.new_framework
     #todo - orders grid implementation
   else
     expect(TestData.hash[:order_id].values.last).to be_truthy
-    10.times { break if SdcGrid.grid_column(:age).data(TestData.hash[:order_id].values.last).eql? expectation }
-    expect(SdcGrid.grid_column(:age).data(TestData.hash[:order_id].values.last)).to eql expectation
+    10.times { break if SdcGrid.grid_column(:age).data(TestData.hash[:order_id].values.last).eql? str }
+    expect(SdcGrid.grid_column(:age).data(TestData.hash[:order_id].values.last)).to eql str
   end
 end
 
@@ -113,209 +113,158 @@ Then /^expect orders grid order date is populated$/ do
   end
 end
 
-Then /^expect orders grid recipient is (?:correct|(.*))$/ do |expectation|
-  expectation ||= TestData.hash[:full_name]
+Then /^expect orders grid recipient is (?:correct|(.*))$/ do |str|
+  str ||= TestData.hash[:full_name]
   order_id = TestData.hash[:order_id].values.last
   expect(order_id).to be_truthy
   result = SdcGrid.grid_column(:recipient).data(order_id)
-  expect(result).to eql expectation
+  expect(result).to eql str
 end
 
-Then /^expect orders grid company is (?:correct|(.*))$/ do |expectation|
-  expectation ||= TestData.hash[:company]
+Then /^expect orders grid company is (?:correct|(.*))$/ do |str|
+  str ||= TestData.hash[:company]
   order_id = TestData.hash[:order_id].values.last
   result = SdcGrid.grid_column(:company).data(order_id)
-  expect(result).to eql expectation
+  expect(result).to eql str
 end
 
-Then /^expect orders grid address is (?:correct|(.*))$/ do |expectation|
+Then /^expect orders grid address is (?:correct|(.*))$/ do |str|
   address1 = TestData.hash[:street_address1]
   address2 = TestData.hash[:street_address2]
-  expectation ||= "#{address1}#{(address2.scan(/(\w+)/).size > 0) ? " #{address2}" : ""}"
+  str ||= "#{address1}#{(address2.scan(/(\w+)/).size > 0) ? " #{address2}" : ""}"
   order_id = TestData.hash[:order_id].values.last
   result = SdcGrid.grid_column(:address).data(order_id)
-  expect(result).to eql expectation
+  expect(result).to eql str
 end
 
-Then /^expect orders grid city is (?:correct|(.*))$/ do |expectation|
-  expectation ||= TestData.hash[:city]
+Then /^expect orders grid city is (?:correct|(.*))$/ do |str|
+  str ||= TestData.hash[:city]
   order_id = TestData.hash[:order_id].values.last
   result = SdcGrid.grid_column(:city).data(order_id)
-  expect(result).to eql expectation
+  expect(result).to eql str
 end
 
-Then /^expect orders grid state is (?:correct|(.*))$/ do |expectation|
-  expectation ||= TestData.hash[:state]
+Then /^expect orders grid state is (?:correct|(.*))$/ do |str|
+  str ||= TestData.hash[:state] || TestData.hash[:province]
   order_id = TestData.hash[:order_id].values.last
   result = SdcGrid.grid_column(:state).data(order_id)
-  expect(result).to eql expectation
+  expect(result).to eql str
 end
 
-Then /^expect orders grid zip is (?:correct|(.*))$/ do |expectation|
-  expectation = TestData.hash[:zip] if expectation.nil?
-  10.times { break if SdcGrid.grid_column(:zip).data(TestData.hash[:order_id].values.last).eql? expectation }
-  expect(SdcGrid.grid_column(:zip).data(TestData.hash[:order_id].values.last)).to include(expectation)
+Then /^expect orders grid zip is (?:correct|(.*))$/ do |str|
+  str ||= TestData.hash[:zip] || TestData.hash[:postal_code]
+  order_id = TestData.hash[:order_id].values.last
+  result = SdcGrid.grid_column(:zip).data(order_id)
+  expect(result).to include(str)
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid Country is (?:correct|(.*))$/ do |expectation|
-  expectation = TestData.hash[:country] if expectation.nil?
+Then /^[Ee]xpect [Oo]rders [Gg]rid Country is (?:correct|(.*))$/ do |str|
+  str ||= TestData.hash[:country]
+  order_id = TestData.hash[:order_id].values.last
+  result = SdcGrid.grid_column(:country).data(order_id)
+  expect(result).to include(str)
+end
+
+Then /^expect orders grid email is (?:correct|(.*))$/ do |str|
+  str ||= TestData.hash[:email]
+  order_id = TestData.hash[:order_id].values.last
+  result = SdcGrid.grid_column(:email).data(order_id)
+  expect(result).to eql str
+end
+
+Then /^expect orders grid phone is (?:correct|(.*))$/ do |str|
+  str ||= TestData.hash[:phone]
+  order_id = TestData.hash[:order_id].values.last
+  result = SdcGrid.grid_column(:phone).data(order_id)
+  expect(result).to eql str
+end
+
+Then /^expect orders grid pounds is (?:correct|(.*))$/ do |str|
+  str ||= TestData.hash[:pounds]
+  order_id = TestData.hash[:order_id].values.last
+  result = SdcGrid.grid_column(:weight).lb(order_id)
+  expect(result).to eql str.to_i
+end
+
+Then /^expect orders grid ounces is (?:correct|(.*))$/ do |str|
+  str ||= TestData.hash[:ounces]
+  order_id = TestData.hash[:order_id].values.last
+  result = SdcGrid.grid_column(:weight).oz(order_id)
+  expect(result).to eql str.to_i
+end
+
+Then /^expect orders grid qty is (?:correct|(.*))$/ do |str|
+  str ||= TestData.hash[:items_ordered_qty]
+  order_id = TestData.hash[:order_id].values.last
+  result = SdcGrid.grid_column(:qty).data(order_id)
+  expect(result).to eql str.to_i
+end
+
+Then /^expect orders grid item sku is (.+)$/ do |str|
+  order_id = TestData.hash[:order_id].values.last
+  result = SdcGrid.grid_column(:item_sku).data(order_id)
+  expect(result).to eql str
+end
+
+Then /^expect orders grid item name is (.+)$/ do |str|
+  order_id = TestData.hash[:order_id].values.last
+  result = SdcGrid.grid_column(:item_name).data(order_id)
+  expect(result).to eql str
+end
+
+Then /^expect orders grid weight is (\d+) lb. (\d+) oz.$/ do |lb, oz|
+  str = "#{lb} lbs. #{oz} oz."
+  order_id = TestData.hash[:order_id].values.last
+  result = SdcGrid.grid_column(:weight).data(order_id)
+  expect(result).to eql str
+end
+
+Then /^expect orders grid service is (?:correct|(.*))$/ do |str|
+  str ||= TestData.hash[:grid_service]
+  order_id = TestData.hash[:order_id].values.last
+  result = SdcGrid.grid_column(:service).data(order_id)
+  expect(result).to eql(str)
+end
+
+Then /^[Ee]xpect [Oo]rders [Gg]rid Ship From is (.+)$/ do |str|
+
+
+  expect(SdcGrid.grid_column(:ship_from).data(TestData.hash[:order_id].values.last)).to eql str
+end
+
+Then /^expect orders grid insured value is \$(.+)$/ do |str|
   if SdcEnv.new_framework
     #todo - orders grid implementation
   else
-    10.times { break if SdcGrid.grid_column(:country).data(TestData.hash[:order_id].values.last).eql? expectation }
-    expect(SdcGrid.grid_column(:country).data(TestData.hash[:order_id].values.last)).to include(expectation)
+    10.times { break if SdcGrid.grid_column(:insured_value).data(TestData.hash[:order_id].values.last).eql? str }
+    expect(SdcGrid.grid_column(:insured_value).data(TestData.hash[:order_id].values.last)).to eql str.to_f.round(2)
   end
 end
 
-Then /^expect orders grid email is (?:correct|(.*))$/ do |expectation|
-  expectation = TestData.hash[:email] if expectation.nil?
+Then /^[Ee]xpect [Oo]rders [Gg]rid Reference No. is (.+)$/ do |str|
   if SdcEnv.new_framework
     #todo - orders grid implementation
   else
-    10.times { break if SdcGrid.grid_column(:email).data(TestData.hash[:order_id].values.last).eql? expectation }
-    expect(SdcGrid.grid_column(:email).data(TestData.hash[:order_id].values.last)).to eql expectation
+    10.times { break if SdcGrid.grid_column(:reference_no).data(TestData.hash[:order_id].values.last).eql? str }
+    expect(SdcGrid.grid_column(:reference_no).data(TestData.hash[:order_id].values.last)).to eql str
   end
 end
 
-Then /^expect orders grid phone is (?:correct|(.*))$/ do |expectation|
-  expectation = TestData.hash[:phone] if expectation.nil?
+Then /^[Ee]xpect [Oo]rders [Gg]rid Tracking service is (.+)$/ do |str|
   if SdcEnv.new_framework
     #todo - orders grid implementation
   else
-    10.times { break if SdcGrid.grid_column(:phone).data(TestData.hash[:order_id].values.last).eql? expectation }
-    expect(SdcGrid.grid_column(:phone).data(TestData.hash[:order_id].values.last)).to eql expectation
+    10.times { break if SdcGrid.grid_column(:tracking_service).data(TestData.hash[:order_id].values.last) == str }
+    expect(SdcGrid.grid_column(:tracking_service).data(TestData.hash[:order_id].values.last)).to eql str
   end
 end
 
-Then /^expect orders grid pounds is (?:correct|(.*))$/ do |expectation|
+Then /^expect orders grid order status is (.+)$/ do |str|
   if SdcEnv.new_framework
     #todo - orders grid implementation
   else
-    expectation = TestData.hash[:pounds] if expectation.nil?
-    10.times { break if SdcGrid.grid_column(:weight).lb(TestData.hash[:order_id].values.last).eql? expectation.to_i }
-    expect(SdcGrid.grid_column(:weight).lb(TestData.hash[:order_id].values.last)).to eql expectation.to_i
-  end
-
-end
-
-Then /^expect orders grid ounces is (?:correct|(.*))$/ do |expectation|
-  if SdcEnv.new_framework
-    #todo - orders grid implementation
-  else
-    expectation = TestData.hash[:ounces] if expectation.nil?
-    10.times { break if SdcGrid.grid_column(:weight).oz(TestData.hash[:order_id].values.last).eql? expectation.to_i }
-    expect(SdcGrid.grid_column(:weight).oz(TestData.hash[:order_id].values.last)).to eql expectation.to_i
-  end
-end
-
-Then /^expect orders grid weight is (\d+) lb. (\d+) oz.$/ do |pounds, ounces|
-  if SdcEnv.new_framework
-    #todo - orders grid implementation
-  else
-    expectation = "#{pounds} lbs. #{ounces} oz."
-    10.times { break if SdcGrid.grid_column(:weight).data(TestData.hash[:order_id].values.last).eql? expectation }
-    expect(SdcGrid.grid_column(:weight).data(TestData.hash[:order_id].values.last)).to eql expectation
-  end
-end
-
-Then /^[Ee]xpect [Oo]rders [Gg]rid Weight\(lb\) is (.*)$/ do |expectation|
-  if SdcEnv.new_framework
-    #todo - orders grid implementation
-  else
-    10.times { break if SdcGrid.grid_column(:weight).lb(TestData.hash[:order_id].values.last).eql? expectation }
-    expect(SdcGrid.grid_column(:weight).lb(TestData.hash[:order_id].values.last)).to eql expectation
-  end
-end
-
-Then /^[Ee]xpect [Oo]rders [Gg]rid Weight\(oz\) is (.*)$/ do |expectation|
-  if SdcEnv.new_framework
-    #todo - orders grid implementation
-  else
-    10.times { break if SdcGrid.grid_column(:weight).oz(TestData.hash[:order_id].values.last).eql? expectation }
-    expect(SdcGrid.grid_column(:weight).oz(TestData.hash[:order_id].values.last)).to eql expectation
-  end
-end
-
-Then /^expect orders grid qty. is (.+)$/ do |expectation|
-  if SdcEnv.new_framework
-    #todo - orders grid implementation
-  else
-    20.times { break if SdcGrid.grid_column(:qty).data(TestData.hash[:order_id].values.last).eql? expectation.to_i }
-    expect(SdcGrid.grid_column(:qty).data(TestData.hash[:order_id].values.last)).to eql expectation.to_i
-  end
-end
-
-Then /^expect orders grid item sku is (.+)$/ do |expectation|
-  if SdcEnv.new_framework
-    #todo - orders grid implementation
-  else
-    10.times { break if SdcGrid.grid_column(:item_sku).data(TestData.hash[:order_id].values.last).eql? expectation }
-    expect(SdcGrid.grid_column(:item_sku).data(TestData.hash[:order_id].values.last)).to eql expectation
-  end
-end
-
-Then /^expect orders grid item name is (.+)$/ do |expectation|
-  if SdcEnv.new_framework
-    #todo - orders grid implementation
-  else
-    10.times { break if SdcGrid.grid_column(:item_name).data(TestData.hash[:order_id].values.last).eql? expectation }
-    expect(SdcGrid.grid_column(:item_name).data(TestData.hash[:order_id].values.last)).to eql expectation
-  end
-end
-
-Then /^[Ee]xpect [Oo]rders [Gg]rid Ship From is (.+)$/ do |expectation|
-  if SdcEnv.new_framework
-    #todo - orders grid implementation
-  else
-    10.times { break if SdcGrid.grid_column(:ship_from).data(TestData.hash[:order_id].values.last).eql? expectation }
-    expect(SdcGrid.grid_column(:ship_from).data(TestData.hash[:order_id].values.last)).to eql expectation
-  end
-end
-
-Then /^expect orders grid service is (?:correct|(.*))$/ do |expectation|
-  expectation = TestData.hash[:service] if expectation.nil?
-  expectation = TestData.hash[:service_look_up][expectation.split(' ').first].nil? ? expectation : TestData.hash[:service_look_up][expectation.split(' ').first]
-  if SdcEnv.new_framework
-    #todo - orders grid implementation
-  else
-    10.times { break if SdcGrid.grid_column(:service).data(TestData.hash[:order_id].values.last).eql? expectation }
-    expect(SdcGrid.grid_column(:service).data(TestData.hash[:order_id].values.last)).to eql(expectation)
-  end
-end
-
-Then /^expect orders grid insured value is \$(.+)$/ do |expectation|
-  if SdcEnv.new_framework
-    #todo - orders grid implementation
-  else
-    10.times { break if SdcGrid.grid_column(:insured_value).data(TestData.hash[:order_id].values.last).eql? expectation }
-    expect(SdcGrid.grid_column(:insured_value).data(TestData.hash[:order_id].values.last)).to eql expectation.to_f.round(2)
-  end
-end
-
-Then /^[Ee]xpect [Oo]rders [Gg]rid Reference No. is (.+)$/ do |expectation|
-  if SdcEnv.new_framework
-    #todo - orders grid implementation
-  else
-    10.times { break if SdcGrid.grid_column(:reference_no).data(TestData.hash[:order_id].values.last).eql? expectation }
-    expect(SdcGrid.grid_column(:reference_no).data(TestData.hash[:order_id].values.last)).to eql expectation
-  end
-end
-
-Then /^[Ee]xpect [Oo]rders [Gg]rid Tracking service is (.+)$/ do |expectation|
-  if SdcEnv.new_framework
-    #todo - orders grid implementation
-  else
-    10.times { break if SdcGrid.grid_column(:tracking_service).data(TestData.hash[:order_id].values.last) == expectation }
-    expect(SdcGrid.grid_column(:tracking_service).data(TestData.hash[:order_id].values.last)).to eql expectation
-  end
-end
-
-Then /^expect orders grid order status is (.+)$/ do |expectation|
-  if SdcEnv.new_framework
-    #todo - orders grid implementation
-  else
-    10.times { break if SdcGrid.grid_column(:order_status).data(TestData.hash[:order_id].values.last) == expectation }
-    expect(SdcGrid.grid_column(:order_status).data(TestData.hash[:order_id].values.last)).to eql expectation
+    10.times { break if SdcGrid.grid_column(:order_status).data(TestData.hash[:order_id].values.last) == str }
+    expect(SdcGrid.grid_column(:order_status).data(TestData.hash[:order_id].values.last)).to eql str
   end
 end
 
@@ -328,29 +277,29 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Tracking Number is populated$/ do
   end
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid Order Total is (.+)$/ do |expectation|
+Then /^[Ee]xpect [Oo]rders [Gg]rid Order Total is (.+)$/ do |str|
   if SdcEnv.new_framework
     #todo - orders grid implementation
   else
-    10.times { break if SdcGrid.grid_column(:order_total).data(TestData.hash[:order_id].values.last).eql? expectation }
-    expect(SdcGrid.grid_column(:order_total).data(TestData.hash[:order_id].values.last)).to eql expectation
+    10.times { break if SdcGrid.grid_column(:order_total).data(TestData.hash[:order_id].values.last).eql? str }
+    expect(SdcGrid.grid_column(:order_total).data(TestData.hash[:order_id].values.last)).to eql str
   end
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid Ship Cost error to contain \"(.*)\"$/ do |expectation|
+Then /^[Ee]xpect [Oo]rders [Gg]rid Ship Cost error to contain \"(.*)\"$/ do |str|
   grid_order_id = SdcGrid.grid_column(:order_id).row 1
   ship_cost_error = SdcGrid.grid_column(:ship_cost).data_error grid_order_id
-  expect(ship_cost_error).to include(expectation)
+  expect(ship_cost_error).to include(str)
   ship_cost_error = SdcGrid.grid_column(:ship_cost).data_error "81453"
   ship_cost_error = SdcGrid.grid_column(:ship_cost).data_error "81408"
   ship_cost_error = SdcGrid.grid_column(:ship_cost).data_error "81407"
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid ship cost data error tooltip is \"(.*)\"$/ do |expectation|
-  #SdcLog.step "expect Orders Grid ship cost data error tooltip is #{expectation}"
+Then /^[Ee]xpect [Oo]rders [Gg]rid ship cost data error tooltip is \"(.*)\"$/ do |str|
+  #SdcLog.step "expect Orders Grid ship cost data error tooltip is #{str}"
   grid_order_id = SdcGrid.grid_column(:order_id).row 1
   grid_ship_cost = SdcGrid.grid_column(:ship_cost).data grid_order_id
-  error = grid_ship_cost.attribute_expectation "data-errorqtip"
-  #SdcLog.step "Test #{(error.include? expectation)?"Passed":"Failed"}"
-  expect(error).to include(expectation)
+  error = grid_ship_cost.attribute_str "data-errorqtip"
+  #SdcLog.step "Test #{(error.include? str)?"Passed":"Failed"}"
+  expect(error).to include(str)
 end
