@@ -99,6 +99,8 @@ module SdcMail
       page_object(:odd_shaped_verify) { {xpath: '//*[@id="sdc-extraserviceswin-oddcheckbox-bodyEl"]/..' } }
       checkbox(:odd_shaped, :odd_shaped_chooser, :odd_shaped_verify, 'class', 'checked')
 
+      page_object(:odd_shaped_tooltip) { {xpath: '//b[text()="Odd Shaped / Non-Machinable"]'} }
+
       page_object(:security_price) { { id: 'sdc-extraserviceswin-securitypricelabel' } }
       page_object(:return_receipt_price) { { id: 'sdc-extraserviceswin-rrpricelabel' } }
       page_object(:restricted_delivery_price) { { id: 'sdc-extraserviceswin-rdpricelabel' } }

@@ -52,7 +52,7 @@ Then /^click mail toolbar favorites$/ do
 end
 
 Then /^hover on mail toolbar favorites tooltip$/ do
-  SdcMail.toolbar.favorites_tooltip.hover
+  SdcMail.toolbar.favorites_tooltip.hover if SdcMail.toolbar.favorites_tooltip.present?
 end
 
 Then /^expect mail toolbar favorites is present$/ do

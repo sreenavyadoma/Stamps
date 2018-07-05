@@ -346,11 +346,13 @@ end
 Then /^check extra services odd shaped\/non-machinable$/ do
   SdcMail.modals.extra_services.odd_shaped.check unless SdcMail.modals.extra_services.odd_shaped.checked?
   step 'expect extra services odd shaped/non-machinable is checked'
+  step 'hover on extra services odd shaped/non-machinable tooltip'
 end
 
 Then /^uncheck extra services odd shaped\/non-machinable$/ do
   SdcMail.modals.extra_services.odd_shaped.uncheck if SdcMail.modals.extra_services.odd_shaped.checked?
   step 'expect extra services odd shaped/non-machinable is unchecked'
+  step 'hover on extra services odd shaped/non-machinable tooltip'
 end
 
 Then /^expect extra services odd shaped\/non-machinable is checked$/ do
@@ -365,6 +367,9 @@ Then /^expect extra services odd shaped\/non-machinable price to be (\d*.?\d+)$/
   expect(SdcMail.modals.extra_services.odd_shaped_price.text_value.to_f.round(2)).to eql(expectation.to_f.round(2))
 end
 
+Then /^hover on extra services odd shaped\/non-machinable tooltip$/ do
+  SdcMail.modals.extra_services.odd_shaped_tooltip.hover if SdcMail.modals.extra_services.odd_shaped_tooltip.present?
+end
 
 Then /^[Cc]lick [Cc]ontinue in [Hh]idden [Pp]ostage [Nn]ot [Aa]llowed modal$/ do
   stamps.mail.mail_toolbar.hidden_postage_warning.continue

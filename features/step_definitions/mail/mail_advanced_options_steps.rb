@@ -292,11 +292,6 @@ Then /^[Ee]xpect Print Form Certified Mail is disabled$/ do
   expect(stamps.mail.print_form.certified_mail.disabled?).to be(true), 'Print form include Certified Mail is enabled'
 end
 
-
-
-
-
-
 Then /^expect advanced options include return address is present$/ do
   expect(SdcMail.print_form.advanced_options.return_address).to be_present, 'Advanced Options include Return Address is NOT present'
 end
