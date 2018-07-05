@@ -150,7 +150,7 @@ module PartnerPortal
 	   from [dbo].[sdct_PartnerPortal_TransactionData]  as pp_trans_data
 	   inner join [dbo].[sdct_PartnerPortal_Contract] as pp_contract on pp_trans_data.ContractId = pp_contract.ContractId
 	   inner join [dbo].[sdct_PartnerPortal_User] as pp_user on pp_contract.PartnerAccountId = pp_user.PartnerAccountId
-	   where pp_user.EmailAddress = '#{user}' and pp_trans_data.TransactionDateTime >= '2017-10-07' and  pp_trans_data.TransactionDateTime < DATEADD(DAY, 1 , CONVERT(DATE, '2017-10-07'))
+	   where pp_user.EmailAddress = '#{user}' and pp_trans_data.TransactionDateTime >= '#{start_date}' and  pp_trans_data.TransactionDateTime < DATEADD(DAY, 1 , CONVERT(DATE, '#{end_date}'))
 	   ORDER BY  pp_trans_data.TransactionDateTime ASC")
 
       account_number = []
