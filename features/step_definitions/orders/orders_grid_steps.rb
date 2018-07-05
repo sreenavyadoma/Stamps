@@ -45,8 +45,7 @@ Then /^expect orders grid store is (.*)$/ do |str|
              elsif order_id.size < 2
                TestData.hash[:order_id][order_id.to_i]
              end
-  column = SdcGrid.grid_column(:store)
-  result = column.data(order_id)
+  result = SdcGrid.grid_column(:store).data(order_id)
   expect(result).to eql str
 end
 
@@ -56,8 +55,7 @@ Then /^expect orders grid order id is (?:correct|(.*))$/ do |order_id|
              elsif order_id.size < 2
                TestData.hash[:order_id][order_id.to_i]
              end
-  column = SdcGrid.grid_column(:order_id)
-  result = column.data(order_id)
+  result = SdcGrid.grid_column(:order_id).data(order_id)
   expect(result).to eql order_id
 end
 
@@ -68,8 +66,7 @@ Then /^expect orders grid ship cost is (?:correct|(.*))$/ do |str|
              elsif order_id.size < 2
                TestData.hash[:order_id][order_id.to_i]
              end
-  column = SdcGrid.grid_column(:ship_cost)
-  result = column.data(order_id)
+  result = SdcGrid.grid_column(:ship_cost).data(order_id)
   expect(result).to eql str
 end
 
@@ -81,35 +78,29 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Ship Date for this order is (?:correct|(\d{2}
   expect(SdcGrid.grid_column(:ship_date).data(TestData.hash[:order_id].values.last)).to eql(TestHelper.grid_date_format(str.nil? ? stamps.orders.modals.orders_print_modal.ship_date.textbox.text : str))
 end
 
-Then /^[Ee]xpect Ship-To address is;$/ do |table|
-  step "expect orders grid recipient is #{table.hashes.first[:name]}"
-  step "expect orders grid company is #{table.hashes.first['company']}"
-  step "expect orders grid address is #{table.hashes.first[:address]}"
-  step "expect orders grid city is #{table.hashes.first[:city]}"
-  step "expect orders grid state is #{table.hashes.first[:state]}"
-  step "expect orders grid zip is #{table.hashes.first[:zip]}"
-  step "expect orders grid phone is #{table.hashes.first[:phone]}"
-  step "expect orders grid email is #{table.hashes.first[:email]}"
-end
-
 Then /^expect orders grid age is (.+)$/ do |str|
-  if SdcEnv.new_framework
-    #todo - orders grid implementation
-  else
-    expect(TestData.hash[:order_id].values.last).to be_truthy
-    10.times { break if SdcGrid.grid_column(:age).data(TestData.hash[:order_id].values.last).eql? str }
-    expect(SdcGrid.grid_column(:age).data(TestData.hash[:order_id].values.last)).to eql str
-  end
+  order_id = if order_id.nil?
+               TestData.hash[:order_id].values.last
+             elsif order_id.size < 2
+               TestData.hash[:order_id][order_id.to_i]
+             end
+  result = SdcGrid.grid_column(:age).data(order_id)
+  expect(result).to eql str
 end
 
 Then /^expect orders grid order date is populated$/ do
-  if SdcEnv.new_framework
-    #todo - orders grid implementation
-  else
-    expect(TestData.hash[:order_id].values.last).to be_truthy
-    5.times { break if SdcGrid.grid_column(:order_date).data(TestData.hash[:order_id].values.last).size > 4 }
-    expect(SdcGrid.grid_column(:order_date).data(TestData.hash[:order_id].values.last).size).to be > 4
-  end
+  order_id = if order_id.nil?
+               TestData.hash[:order_id].values.last
+             elsif order_id.size < 2
+               TestData.hash[:order_id][order_id.to_i]
+             end
+  result = SdcGrid.grid_column(:order_date).data(order_id)
+  result_arr = result.split(' ')
+  expect(result_arr.size).to eql 2
+  abbr_month_name = result_arr.first
+  expect(Date::ABBR_MONTHNAMES).to include abbr_month_name
+  date = result_arr.last
+  expect((1..31).to_a).to include date
 end
 
 Then /^expect orders grid recipient is (?:correct|(.*))$/ do |str|
