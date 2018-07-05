@@ -129,6 +129,7 @@ Then /^set order details ship-to domestic address to$/ do |table|
   street_address1 = param['street_address1']
   street_address2 = param['street_address2']
   city = param['city']
+  state = param['state']
   phone = param['phone']
   email = param['email']
 
@@ -142,7 +143,6 @@ Then /^set order details ship-to domestic address to$/ do |table|
                     end
 
   city = city.downcase.include?('random') ? TestHelper.rand_alpha_numeric : city
-  state = state.downcase.include?('random') ? TestHelper.rand_alpha_numeric : state
   zip = zip.downcase.include?('random') ? TestHelper.rand_alpha_numeric : zip
   country = country.size.zero? ? 'United States' : country
   phone = phone.downcase.include?('random') ? TestHelper.rand_alpha_numeric : phone
@@ -157,6 +157,7 @@ Then /^set order details ship-to domestic address to$/ do |table|
   TestData.hash[:street_address1] = street_address1
   TestData.hash[:street_address2] = street_address2
   TestData.hash[:city] = city
+  TestData.hash[:state] = state
   TestData.hash[:phone] = phone
   TestData.hash[:email] = email
 end
