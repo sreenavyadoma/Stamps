@@ -354,7 +354,6 @@ Feature:  Mail BVT
 #   PRINT SERVICE
     #Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 8
-    Then check print form email tracking
     Then set print form email tracking stamps@mailinator.com
     Then select print form service FCM Large Envelope/Flat
     Then select print form service FCM Package/Thick Envelope
@@ -376,6 +375,14 @@ Feature:  Mail BVT
     Then select print form service PSG Package/Flat/Thick Envelope
     Then select print form service PSG Large Package
     Then select print form service PSG Oversized Package
+    Then sign out
+
+  @mail_bvt_ui_validation
+  Scenario: BVT Mail UI Validation - Extra Services
+    Then sign-in to mail
+    Then select print on Shipping Label - 8 ½" x 11" Paper
+    Then set print form mail-to to a random address in zone 8
+    Then set print form email tracking stamps@mailinator.com
     Then select print form service PM Package
     Then set print form weight to lbs 1 oz 1
     Then increment print form dimensions by length 2 width 2 height 2

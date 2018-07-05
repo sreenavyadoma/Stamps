@@ -51,9 +51,6 @@ module SdcMail
     module EmailTrackingContainer
       class EmailTracking < SdcPage
         text_field(:text_field, tag: :text_field) { { xpath: '//*[@id="sdc-mainpanel-emailtextfield-webpostage-inputEl"]' } }
-        page_object(:tracking_chsr) { { xpath: '//*[text()="Email Tracking:"]/..//input' } }
-        page_object(:tracking_ver) { { xpath: '//*[text()="Email Tracking:"]/../div' } }
-        checkbox(:tracking_checkbox, :tracking_chsr, :tracking_ver, :class, :checked)
       end
 
       def email_tracking

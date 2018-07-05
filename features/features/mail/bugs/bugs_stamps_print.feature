@@ -54,7 +54,6 @@ Feature: Stamps print media bugs
   Scenario: E-mail field error validation - "Email is required." when printing Envelopes
 
     Then select print on Shipping Label - 8 ½" x 11" Paper
-    Then check Print form Email Tracking checkbox
     Then select print on Envelope - 10
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1 through 4
