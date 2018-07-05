@@ -533,7 +533,7 @@ Then /PP: open CSV file and validate the data$/ do
   is_apf_afo = []
   credit_card_fee = []
   empty_csv_file = []
-
+  tmp = []
 
 
   CSV.read("#{Dir.getwd}/download/" + TestData.hash[:file_name],  headers: true).map do |row|
