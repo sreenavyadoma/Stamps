@@ -6,15 +6,22 @@ Then /^add order (\d+)$/ do |count|
   toolbar = SdcOrders.toolbar
   order_details = SdcOrders.order_details
   initializing = SdcOrders.initializing_orders_db
+  server_error = SdcOrders.modals.server_error
   toolbar.add.wait_until_present(timeout: 10)
   toolbar.add.click
-  order_details.order_id.safe_wait_until_present(timeout: 70)
+  order_details.order_id.safe_wait_until_present(timeout: 20)
+  if server_error.title.present?
+    error_msg = "#{server_error.title.text} - #{server_error.body.text}"
+    server_error.ok.safe_click
+    expect(error_msg).to eql ''
+  end
   unless order_details.order_id.present?
     if initializing.present?
       initializing.safe_wait_until_present(timeout: 20)
       expect(initializing.text).not_to eql 'Initializing Order Database'
     end
   end
+  order_details.order_id.safe_wait_until_present(timeout: 40)
   expect(order_details.order_id.text_value).not_to eql ''
 
   TestData.hash[:order_id][count.to_i] = order_details.order_id.text_value.parse_digits

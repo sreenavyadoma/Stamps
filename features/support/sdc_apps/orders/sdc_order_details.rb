@@ -69,7 +69,6 @@ module SdcOrders
     page_object(:phone, tag: :text_field) { {xpath: '(//input[@name="ShipPhone"])[1]'} }
     page_object(:email, tag: :text_field) { {xpath: '(//input[@name="BuyerEmail"])[1]'} }
     page_object(:address, tag: :textarea) { {xpath: '//textarea[contains(@id, "shiptotextarea")]'} }
-    page_object(:show_less) { {xpath: '//div[contains(@id, "domestic")]//span[text()="Less"]'} }
 
     def country
       SdcShipToCountryDom.new
@@ -94,7 +93,8 @@ module SdcOrders
   end
 
   class SdcOrderDetailsShipTo < SdcPage
-    page_object(:show_more) { {xpath: '//div[starts-with(@id, "shiptoview-addressCollapsed")]//a'} }
+    page_object(:show_details) { {xpath: '//div[starts-with(@id, "shiptoview-addressCollapsed")]//a'} }
+    page_object(:show_less) { {xpath: '//div[contains(@id, "domestic")]//span[text()="Less"]'} }
 
     def domestic
       SdcOrderDetailsDomestic.new

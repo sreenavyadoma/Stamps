@@ -199,7 +199,6 @@ Feature:  BVT tests for Orders
     Then set order details length to 1
     Then set order details width to 1
     Then set order details height to 1
-    Then expect orders grid service is Priority Mail
     Then expect orders grid service is correct
     Then expect orders grid service is correct
     Then expect order details ship-to phone is correct
@@ -257,7 +256,7 @@ Feature:  BVT tests for Orders
     Then expect orders grid qty is 1
     Then expect orders grid item sku is Item 1 SKU
     Then expect orders grid item name is Item 1 Description
-    Then expect orders grid service is Priority Mail
+    Then expect orders grid service is correct
     Then expect orders grid weight is 1 lb. 1 oz.
     Then expect orders grid order status is Awaiting Shipment
     Then expect orders grid pounds is 1
@@ -284,7 +283,6 @@ Feature:  BVT tests for Orders
     Then on order details form, add item 1, qty 1, id ID 1, description Description 1
     Then on order details form, add item 2, qty 2, id random string, description random string
     Then on order details form, add item 3, qty 3, id ID 3, description random string
-    Then expect orders grid service is Priority Mail International
     Then expect orders grid service is correct
 
     Then click order details form customs form button
@@ -384,7 +382,7 @@ Feature:  BVT tests for Orders
     Then expect orders grid item name is Multiple
     Then expect orders grid weight is 2 lb. 2 oz.
 
-    Then expect orders grid service is Priority Mail International
+    Then expect orders grid service is correct
     Then expect orders grid service is correct
 #    Then expect order details insure-for is correct
 #    Then expect orders grid order status is Awaiting Shipment

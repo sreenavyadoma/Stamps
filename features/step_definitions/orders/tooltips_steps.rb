@@ -100,7 +100,7 @@ Then /^[Oo]n Customs form, expect Ounces Tooltip Error is (.*)$/ do |expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails Domestic Address data error tooltip is \"(.*)\"$/ do |expectation|
-  step "show order details form ship-to fields"
+  step "show order ship-to details"
   textbox = stamps.orders.order_details.ship_to.domestic.textarea
   20.times do
     textbox.double_click
@@ -118,7 +118,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails Domestic Address data error tooltip is \"(.
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails Domestic Email data error tooltip is \"(.*)\"$/ do |expectation|
-  step "show order details form ship-to fields"
+  step "show order ship-to details"
   textbox = stamps.orders.order_details.ship_to.domestic.email
   20.times do
     textbox.double_click

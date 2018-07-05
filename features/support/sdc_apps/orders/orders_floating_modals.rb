@@ -216,5 +216,10 @@ module SdcOrders
       PrintAllOrders.new
     end
     module_function :print_all
+
+    def server_error
+      ServerError.new
+    end
+    module_function :server_error
   end
 end

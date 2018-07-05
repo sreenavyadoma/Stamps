@@ -241,7 +241,7 @@ Feature: Bulk Update Domestic
     #verify fields in 1st order
     #Then check row 1
     #Then expect order details ship from is correct
-    ##Then expect orders grid service is PME Package/Flat/Thick Envelope
+    #Then expect orders grid service is correct
 
     #Then uncheck order 1
     #Then uncheck order 2
@@ -255,7 +255,7 @@ Feature: Bulk Update Domestic
     #verify fields in 2nd order
     #Then check order 2
     #Then expect order details ship from is correct
-    ##Then expect orders grid service is PME Package/Flat/Thick Envelope
+    #Then expect orders grid service is correct
     #Then expect order details pound is 2
 
     Then sign out
@@ -295,14 +295,14 @@ Feature: Bulk Update Domestic
     #verify fields in 1st order
     Then check row 1
     Then expect order details ship from is default
-    #Then expect orders grid service is PME Package/Flat/Thick Envelope
+    Then expect orders grid service is correct
     #Then expect order details pound is 2
     Then uncheck row 1
 
     #verify fields in 2nd order
     Then check row 2
     Then expect order details ship from is correct
-    #Then expect orders grid service is PME Package/Flat/Thick Envelope
+    Then expect orders grid service is correct
     #Then expect order details pound is 2
 
     Then sign out
