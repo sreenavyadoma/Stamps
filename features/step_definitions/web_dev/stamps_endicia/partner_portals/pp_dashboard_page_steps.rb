@@ -335,7 +335,7 @@ Then /^PP: set dashboard page from date field to (?:random date|(.*))$/ do |str|
   step "PP: generate random date for from and to date fields"
 
   from_date_field =  PartnerPortal.dashboard_page.from_date_field
-  while from_date_field.text_value != nil
+  while from_date_field.text_value != ''
     from_date_field.send_keys(:backspace)
   end
 
@@ -347,7 +347,7 @@ end
 Then /^PP: set dashboard page to date field to (?:random date|(.*))$/ do |str|
   to_date_field =  PartnerPortal.dashboard_page.to_date_field
 
-  while to_date_field.text_value != nil
+  while to_date_field.text_value != ''
     to_date_field.send_keys(:backspace)
   end
 
@@ -359,8 +359,8 @@ Then /^PP: expect from date and to date are cleared$/ do
   to_date_field =  PartnerPortal.dashboard_page.to_date_field
   from_date_field =  PartnerPortal.dashboard_page.from_date_field
 
-  expect(to_date_field.text_value).to eql(nil)
-  expect(from_date_field.text_value).to eql(nil)
+  expect(to_date_field.text_value).to eql('')
+  expect(from_date_field.text_value).to eql('')
 end
 
 
@@ -532,7 +532,9 @@ Then /PP: open CSV file and validate the data$/ do
   cubic_value = []
   is_apf_afo = []
   credit_card_fee = []
-  tmp = []
+  empty_csv_file = []
+
+
 
   CSV.read("#{Dir.getwd}/download/" + TestData.hash[:file_name],  headers: true).map do |row|
     tmp << row.headers
@@ -547,33 +549,38 @@ Then /PP: open CSV file and validate the data$/ do
   end
 
   output.each do |item|
-    account_number << item.split(',')[0].to_i
-    tmp = item.split(',')[1]
-    tmp2= tmp.split('/')
-    date = tmp2[1] + '/' + tmp2[0] + '/' + tmp2[2]
-    transaction_time << date.to_datetime
-    transaction_type << item.split(',')[2].to_s
-    retail_rate << item.split(',')[3].gsub('$', '').to_f
-    payout_amount << item.split(',')[4].gsub('$', '').to_f
-    tracking_number << item.split(',')[5].to_i
-    weight <<  item.split(',')[6].to_i
-    zone << item.split(',')[7].to_s
-    package_length << item.split(',')[8].to_i
-    package_width << item.split(',')[9].to_i
-    package_height << item.split(',')[10].to_i
-    package_type << item.split(',')[11].to_s
-    mail_class << item.split(',')[12].to_s
-    international_country_group << item.split(',')[13].to_s
-    origination_address_zip << item.split(',')[14].to_i
-    destination_address_zip << item.split(',')[15].to_i
-    destination_country << item.split(',')[16].to_s
-    extra_service_fee << item.split(',')[17].gsub('$', '').to_f
-    unique_transaction_id << item.split(',')[18].to_i
-    container_type << item.split(',')[19].to_s
-    is_cubic << item.split(',')[20].downcase
-    cubic_value << item.split(',')[21].to_s
-    is_apf_afo <<  item.split(',')[22].downcase
-    credit_card_fee << item.split(',')[23].gsub('$', '').to_f
+    if item.split(',')[0] == "No data found for that date range.  Please try again with different dates."
+      empty_csv_file << item.split(',')[0]
+      expect(empty_csv_file).to match_array("No data found for that date range.  Please try again with different dates.")
+    else
+      account_number << item.split(',')[0].to_i
+      tmp = item.split(',')[1]
+      tmp2= tmp.split('/')
+      date = tmp2[1] + '/' + tmp2[0] + '/' + tmp2[2]
+      transaction_time << date.to_datetime
+      transaction_type << item.split(',')[2].to_s
+      retail_rate << item.split(',')[3].gsub('$', '').to_f
+      payout_amount << item.split(',')[4].gsub('$', '').to_f
+      tracking_number << item.split(',')[5].to_i
+      weight <<  item.split(',')[6].to_i
+      zone << item.split(',')[7].to_s
+      package_length << item.split(',')[8].to_i
+      package_width << item.split(',')[9].to_i
+      package_height << item.split(',')[10].to_i
+      package_type << item.split(',')[11].to_s
+      mail_class << item.split(',')[12].to_s
+      international_country_group << item.split(',')[13].to_s
+      origination_address_zip << item.split(',')[14].to_i
+      destination_address_zip << item.split(',')[15].to_i
+      destination_country << item.split(',')[16].gsub("\"(?-mix:\\t)\"", ',').to_s
+      extra_service_fee << item.split(',')[17].gsub('$', '').to_f
+      unique_transaction_id << item.split(',')[18].to_i
+      container_type << item.split(',')[19].to_s
+      is_cubic << item.split(',')[20].downcase
+      cubic_value << item.split(',')[21].to_s
+      is_apf_afo <<  item.split(',')[22].downcase
+      credit_card_fee << item.split(',')[23].gsub('$', '').to_f
+    end
   end
 
   date_from_tmp = TestData.hash[:from_date].split('/')
@@ -592,6 +599,7 @@ Then /PP: open CSV file and validate the data$/ do
       TestData.hash[:credit_card_fee] = PartnerPortal.common_page.transaction_data(SdcEnv.usr, from_date, to_date)
   step 'Close partner portal db connection'
 
+
   expect(headers_expected).to match_array(headers)
   expect(TestData.hash[:account_number]).to match_array(account_number)
   # expect(TestData.hash[:transaction_time]).to match_array(transaction_time)
@@ -608,7 +616,7 @@ Then /PP: open CSV file and validate the data$/ do
   expect(TestData.hash[:international_country_group]).to match_array(international_country_group)
   expect(TestData.hash[:origination_address_zip]).to match_array(origination_address_zip)
   expect(TestData.hash[:destination_address_zip]).to match_array(destination_address_zip)
-  #expect(TestData.hash[:destination_country]).to match_array(destination_country)
+  expect(TestData.hash[:destination_country]).to match_array(destination_country)
   expect(TestData.hash[:extra_service_fee]).to match_array(extra_service_fee)
   expect(TestData.hash[:unique_transaction_id]).to match_array(unique_transaction_id)
   expect(TestData.hash[:container_type]).to match_array(container_type)
