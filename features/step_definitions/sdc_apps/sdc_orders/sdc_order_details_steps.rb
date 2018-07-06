@@ -157,7 +157,6 @@ Then /^set order details ship-to domestic address to$/ do |table|
   step "set order details domestic ship-to country to #{country}"
   step "set Order Details Ship-To text area to #{ship_to}"
   step 'blur out on order details form'
-  step 'hide order ship-to details'
   step "set order details phone to #{phone}"
   step "set order details email to #{email}"
   step 'hide order ship-to details'
@@ -230,7 +229,7 @@ Then /^expect order details ship-to company name is (.*)$/ do |str|
   step 'show order ship-to details'
   str = TestHelper.address_str_to_hash(address)[:company]
   result = SdcOrders.order_details.ship_to.domestic.address.text_value
-  expect(stresultr).to eql(str)
+  expect(result).to eql(str)
 end
 
 Then /^expect order details ship-to cleansed street address is (.*)$/ do |str|
@@ -458,9 +457,12 @@ Then /^blur out on order details form(?:| (\d*) times)$/ do |iter|
   iter ||= 2
   order_details = SdcOrders.order_details
   order_details.weight_label.blur_out(ctr: iter)
+  order_details.ship_to.domestic.country.drop_down.click
   order_details.service_label.blur_out(ctr: iter)
   order_details.reference_num.blur_out(ctr: iter)
+  order_details.ship_to.domestic.country.drop_down.click
   order_details.ship_to_label.blur_out(ctr: iter)
+  order_details.ship_to.domestic.country.drop_down.click
   order_details.order_id.blur_out(ctr: iter)
   order_details.title.blur_out(ctr: iter)
 end
