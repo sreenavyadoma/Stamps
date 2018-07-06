@@ -128,6 +128,7 @@ end
 Then /^click sign in page sign-in button$/ do
   SdcWebsite.landing_page.sign_in.wait_until_present(timeout: 3)
   SdcWebsite.landing_page.sign_in.click
+  step 'expect print form is present'
 end
 
 Then /^click Orders landing page sign-in button$/ do
