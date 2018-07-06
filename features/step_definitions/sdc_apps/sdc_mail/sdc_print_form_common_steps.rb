@@ -3,6 +3,7 @@ Then /^select print on (.+)$/ do |str|
   SdcLogger.debug "select print on #{str}"
   print_on = SdcMail.print_on
   step 'blur out on print form'
+  step 'expect print form is present'
   print_on.text_field.wait_until_present(timeout: 6)
   unless TestData.hash[:print_on_arr]
     TestData.hash[:print_on_arr] = []
@@ -170,6 +171,6 @@ Then /^expect print form ship date dropdown is present$/ do
 end
 
 Then /^expect print form is present$/ do
-  SdcMail.print_form.print_on.drop_down.wait_until_present(timeout: 15)
-  expect(SdcMail.print_form.print_on.drop_down).to be_present, "Print form is not present"
+  SdcMail.print_on.drop_down.wait_until_present(timeout: 15)
+  expect(SdcMail.print_on.drop_down).to be_present, "Print form is not present"
 end
