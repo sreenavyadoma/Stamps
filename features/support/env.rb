@@ -17,6 +17,7 @@ require 'holidays'
 require 'watir'
 require 'watir_drops'
 require 'socket'
+require 'csv'
 
 require_relative 'sdc_core/sdc_patch'
 require_relative 'sdc_core/sdc_core'
