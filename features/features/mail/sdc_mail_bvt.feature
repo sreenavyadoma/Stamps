@@ -296,7 +296,7 @@ Feature:  Mail BVT
 #    Then set advanced options cost code to None
 #    Then expect advanced options cost code is None
 
-  @mail_bvt_ui_validation2
+  @mail_bvt_ui_validation
   Scenario: BVT Mail UI Validation for Stamps
     Then sign-in to mail
     Then select print on Stamps
@@ -326,7 +326,7 @@ Feature:  Mail BVT
     Then uncheck print form print all
     Then sign out
 
-  @mail_bvt_ui_validation2
+  @mail_bvt_ui_validation
   Scenario: BVT Mail UI Validation for Print On options
     Then sign-in to mail
     Then select print on Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
@@ -359,8 +359,8 @@ Feature:  Mail BVT
     Then select print form service FCM Large Envelope/Flat
     Then select print form service FCM Package/Thick Envelope
     Then select print form service PM Large/Thick Envelope
-    Then select print form service PM Large Package
     Then select print form service PM Flat Rate Envelope
+    Then select print form service PM Large Package
     Then select print form service PM Padded Flat Rate Envelope
     Then select print form service PM Legal Flat Rate Envelope
     Then select print form service PM Small Flat Rate Box
@@ -378,7 +378,7 @@ Feature:  Mail BVT
     Then select print form service PSG Oversized Package
     Then sign out
 
-  @mail_bvt_ui_validation2
+  @mail_bvt_ui_validation
   Scenario: BVT Mail UI Validation - Extra Services
     Then sign-in to mail
     Then select print on Shipping Label - 8 ½" x 11" Paper
@@ -453,7 +453,7 @@ Feature:  Mail BVT
 
     Then sign out
 
-  @mail_bvt_ui_validation2
+  @mail_bvt_ui_validation
   Scenario: BVT Mail UI Validation for Envelopes
     Then sign-in to mail
     Then select print on Envelope - #10, 4 ⅛" x 9 ½"
@@ -472,7 +472,7 @@ Feature:  Mail BVT
     Then uncheck advanced options include postage
     Then sign out
 
-  @mail_bvt_ui_validation2
+  @mail_bvt_ui_validation
   Scenario: BVT Mail UI Validation for Certified Mail
     Then sign-in to mail
     Then select print on Certified Mail Label - SDC-3610
@@ -488,7 +488,7 @@ Feature:  Mail BVT
     Then uncheck extra services return receipt
     Then sign out
 
-  @mail_bvt_ui_validation2
+  @mail_bvt_ui_validation
   Scenario: BVT Mail UI Validation International form
     Then sign-in to mail
     Then select print on Shipping Label - 8 ½" x 11" Paper
@@ -585,6 +585,7 @@ Feature:  Mail BVT
     Then click mail toolbar print dropdown
     Then expect mail toolbar print label is present
     Then expect mail toolbar print sample is present
+    Then blur out on print form
     Then click mail toolbar favorites
     Then pause for 15 seconds
     Then click mail toolbar save as favorite
