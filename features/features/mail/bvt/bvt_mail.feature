@@ -6,18 +6,6 @@ Feature: BVT for Mail page
   #Scenario: Mail Authentication Test
   #  Then sign out
 
-  @mail_bvt_address_cleansing
-  Scenario: Address Cleansing
-    Then select print on Shipping Label - 8 ½" x 11" Paper
-    Then set Print form Mail-From to default
-    Then set print form mail-to country to United States
-    Then set print form mail-to to address to Address Cleansing, BVT, 1350 Market Street, San Francisco, CA
-    Then set print form ounces to 1
-    Then select print form service PM Package
-    Then expect Print form Domestic Address field displays Address Cleansing, BVT, 1350 Market Street, San Francisco, CA 94102-5401
-    Then sign out
-
-
     # ------------------------------------------------------------ Rolls Advanced Options
   @mail_bvt_advanced_options
   @mail_advanced_options__rolls

@@ -287,7 +287,6 @@ Feature:  BVT tests for Orders
     Then on order details form, add item 2, qty 2, id random string, description random string
     Then on order details form, add item 3, qty 3, id ID 3, description random string
     Then expect orders grid service is Priority Mail International
-    Then expect orders grid service is PMI Package/Flat/Thick Envelope
     Then expect orders grid service is correct
 
     Then click order details form customs form button
