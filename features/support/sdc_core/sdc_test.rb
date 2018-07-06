@@ -206,9 +206,7 @@ class SdcTest
               raise ArgumentError, "Invalid browser selection. #{test_driver}"
             end
 
-            if SdcEnv.max_window || SdcEnv.window_size.nil?
-              SdcPage.browser.window.maximize
-            else
+            if SdcEnv.window_size
               width, height = SdcEnv.window_size.split("x")
               begin
                 SdcPage.browser.window.resize_to(width, height)
@@ -216,6 +214,8 @@ class SdcTest
               rescue Exception
                 SdcPage.browser.window.maximize
               end
+            else
+              SdcPage.browser.window.maximize
             end
 
 
@@ -303,8 +303,8 @@ class SdcTest
       SdcEnv.env ||= test_env(ENV['URL'])
       SdcEnv.jenkins ||= ENV['JENKINS']
       SdcEnv.web_dev ||= ENV['WEB_DEV']
-      SdcEnv.max_window ||= ENV['MAX_WINDOW'].nil? ? true : ENV['MAX_WINDOW'].casecmp('true').zero?
-      SdcEnv.window_size ||= ENV['window_size']
+      SdcEnv.window_size ||= ENV['WINDOW_SIZE']
+
 
       #deprecated
       SdcEnv.sdc_app ||= ENV['WEB_APP'].downcase.to_sym unless ENV['WEB_APP'].nil?

@@ -14,7 +14,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - PM Envelope Package
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service PM Flat Rate Envelope
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
@@ -24,7 +24,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - PM Envelope Package
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service PM Large/Thick Envelope
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
@@ -34,7 +34,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - PM Envelope Package
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service PM Legal Flat Rate Envelope
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
@@ -44,7 +44,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - PM Envelope Package
     Then set print form mail-to to a random address in zone 5 through 8
     Then set print form ounces to 1
     Then select print form service PM Padded Flat Rate Envelope
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
@@ -57,7 +57,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - PM Envelope Package
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service PM Large Package
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
@@ -67,7 +67,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - PM Envelope Package
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service PM Package
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 

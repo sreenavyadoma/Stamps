@@ -115,4 +115,10 @@ module SdcWebsite
       page_object(name) { { xpath: "//li[text()='#{value}']" } }
     end
   end
+
+  class SdcRestrictions < SdcPage
+    page_object(:title) { {xpath: '//div[text()="View Restrictions"]'} }
+    page_object(:ok) { {xpath: '//*[text()="OK"]/../..'} }
+    page_object(:x_btn) { {xpath: '//div[text()="View Restrictions"]/../..//*[contains(@class, "close")]'} }
+  end
 end

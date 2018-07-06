@@ -29,8 +29,8 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then set extra services security to Registered Mail
     Then click value must be shown window continue button
     Then expect extra services security is Registered Mail
-    Then check extra services return receipt
-    Then check extra services restricted delivery
+    Then check extra services modal return receipt
+    Then check extra services modal restricted delivery
     Then save Extra Services
     Then expect advanced options hide label value is unchecked
     Then check advanced options hide label value
@@ -40,8 +40,8 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
     Then expect extra services security is None
-    Then expect extra services return receipt is unchecked
-    Then expect extra services restricted delivery is unchecked
+    Then expect extra services modal return receipt is unchecked
+    Then expect extra services modal restricted delivery is unchecked
 
     Then set extra services cod to 20.00
     Then click value must be shown window continue button
@@ -73,14 +73,14 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then set Extra Services Value to 1.00
     Then check extra services electronic return receipt
     Then click value must be shown window continue button
-    Then expect Extra Services Electronic Return Receipt is checked
+    Then expect extra services electronic return receipt is checked
     Then save Extra Services
     Then expect advanced options hide label value is unchecked
     Then check advanced options hide label value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Electronic Return Receipt
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
-    Then expect Extra Services Electronic Return Receipt is unchecked
+    Then expect extra services electronic return receipt is unchecked
 
     Then set extra services security to Certified Mail
     Then click value must be shown window continue button
@@ -121,8 +121,8 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then set extra services security to Registered Mail
     Then click value must be shown window continue button
     Then expect extra services security is Registered Mail
-    Then check extra services return receipt
-    Then check extra services restricted delivery
+    Then check extra services modal return receipt
+    Then check extra services modal restricted delivery
     Then save Extra Services
     Then expect advanced options hide label value is unchecked
     Then check advanced options hide label value
@@ -130,8 +130,8 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
     Then expect extra services security is None
-    Then expect extra services return receipt is unchecked
-    Then expect extra services restricted delivery is unchecked
+    Then expect extra services modal return receipt is unchecked
+    Then expect extra services modal restricted delivery is unchecked
 
     Then set extra services cod to 20.00
     Then click value must be shown window continue button
@@ -162,14 +162,14 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then set Extra Services Value to 1.00
     Then check extra services electronic return receipt
     Then click value must be shown window continue button
-    Then expect Extra Services Electronic Return Receipt is checked
+    Then expect extra services electronic return receipt is checked
     Then save Extra Services
     Then expect advanced options hide label value is unchecked
     Then check advanced options hide label value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Electronic Return Receipt
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
-    Then expect Extra Services Electronic Return Receipt is unchecked
+    Then expect extra services electronic return receipt is unchecked
 
 
     Then set extra services security to Certified Mail
@@ -213,14 +213,14 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then set Extra Services Value to 1.00
     Then check extra services electronic return receipt
     Then click value must be shown window continue button
-    Then expect Extra Services Electronic Return Receipt is checked
+    Then expect extra services electronic return receipt is checked
     Then save Extra Services
     Then expect advanced options hide label value is unchecked
     Then check advanced options hide label value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Electronic Return Receipt
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
-    Then expect Extra Services Electronic Return Receipt is unchecked
+    Then expect extra services electronic return receipt is unchecked
 
 
     Then set extra services security to Certified Mail
@@ -256,11 +256,11 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then set extra services cod to 20.00
     Then expect extra services cod price to be 5.65
 
-    Then check extra services return receipt
-    Then expect extra services return receipt price to be 2.75
+    Then check extra services modal return receipt
+    Then expect extra services modal return receipt price to be 2.75
 
-    Then check extra services restricted delivery
-    Then expect extra services restricted delivery price to be 4.95
+    Then check extra services modal restricted delivery
+    Then expect extra services modal restricted delivery price to be 4.95
 
     Then check Extra Services Notice of Non-Delivery
     Then expect extra services notice of non-delivery price to be 0.00
@@ -272,8 +272,8 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then select Advanced Options Extra Services
 
     Then expect extra services security price to be 12.50
-    Then expect extra services return receipt price to be 2.75
-    Then expect extra services restricted delivery price to be 4.95
+    Then expect extra services modal return receipt price to be 2.75
+    Then expect extra services modal restricted delivery price to be 4.95
     Then expect extra services cod price to be 5.65
     Then expect extra services notice of non-delivery price to be 0.00
     Then expect extra services total price to be 25.85
