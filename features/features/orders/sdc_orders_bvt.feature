@@ -201,7 +201,7 @@ Feature:  BVT tests for Orders
     Then set order details height to 1
 
     Then set order details reference number to Update Orders To ShipStation
-    Then on order details form, add item 1, qty 1, id Item 1 SKU, description Item 1 Description
+    Then add order details item 1, qty 1, id Item 1 SKU, description Item 1 Description
 
   #Verify Single Order Details form was saved in ShipStation
     #Then expect order details ship-from is correct
@@ -275,9 +275,9 @@ Feature:  BVT tests for Orders
     Then set order details service to PMI Package/Flat/Thick Envelope
     Then set order details insure-for to 100.25
     Then set order details reference number to Some random string
-    Then on order details form, add item 1, qty 1, id ID 1, description Description 1
-    Then on order details form, add item 2, qty 2, id random string, description random string
-    Then on order details form, add item 3, qty 3, id ID 3, description random string
+    Then add order details item 1, qty 1, id ID 1, description Description 1
+    Then add order details item 2, qty 2, id random string, description random string
+    Then add order details item 3, qty 3, id ID 3, description random string
     Then expect orders grid service is correct
 
     Then click order details form customs form button
@@ -546,9 +546,9 @@ Feature:  BVT tests for Orders
     Then set order details tracking to Signature Required
     Then set order details tracking to USPS Tracking
     Then set order details reference to STMPS111
-    Then on order details form, add item 1, qty 1, id ID 1, description Description 1
-    Then on order details form, add item 2, qty 2, id random string, description random string
-    Then on order details form, add item 3, qty 3, id ID 3, description random string
+    Then add order details item 1, qty 1, id ID 1, description Description 1
+    Then add order details item 2, qty 2, id random string, description random string
+    Then add order details item 3, qty 3, id ID 3, description random string
     Then sign out
 
   @bvt_orders_ui_validation
@@ -581,8 +581,8 @@ Feature:  BVT tests for Orders
     Then check order details insure-for checkbox
     Then set order details insure-for to 11.99
     Then set order details reference to STMPS111
-    Then on order details form, add item 1, qty 1, id ID 1, description Description 1
-    Then on order details form, add item 2, qty 2, id random string, description random string
+    Then add order details item 1, qty 1, id ID 1, description Description 1
+    Then add order details item 2, qty 2, id random string, description random string
     Then click order details form customs form button
     Then expect customs i agree to the usps privacy act statement is unchecked
     Then set customs package contents to Document

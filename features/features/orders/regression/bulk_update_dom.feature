@@ -14,8 +14,8 @@ Feature: Bulk Update Domestic
 #      | PMEI LFRE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
 #    Then set order details service to PMI Package/Flat/Thick Envelope
 #    Then set order details weight to 2 lb 2 oz
-#    Then on order details form, add item 1, qty 1, id ID 1, description Description 1
-#    #Then on order details form, add item 2, qty 2, id random string, description random string
+#    Then add order details item 1, qty 1, id ID 1, description Description 1
+#    #Then add order details item 2, qty 2, id random string, description random string
 #    Then click order details form customs form button
 #
 #    Then add customs associated item 1, description random string, qty 1, Price 1, Made In Canada, Tariff 1

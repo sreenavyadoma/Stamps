@@ -15,8 +15,8 @@ Feature: ORDERSAUTO-3405 New Sprint 11/22/17 WEBAPPS-6706 Split Order: Automatic
     Then set order details service to PM Package
     Then set order details pounds to 1
 
-    Then on order details form, add item 1, qty 3, id IDone, description description 1
-    Then on order details form, add item 2, qty 5, id IDtwo, description description 2
+    Then add order details item 1, qty 3, id IDone, description description 1
+    Then add order details item 2, qty 5, id IDtwo, description description 2
 
     Then select grid toolbar more actions item Split Order
     Then expect Split Order modal original order id is correct

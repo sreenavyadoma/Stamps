@@ -571,7 +571,7 @@ Feature: All details tests for order
       | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Brazil  | random  | random  |
     Then set order details ounces to 1
-    Then on order details form, add item 1, qty 1, id random, description random
+    Then add order details item 1, qty 1, id random, description random
     Then click order details form customs form button
     Then add customs associated item 1, description random, qty 1, Price 1, Made In Brazil, Tariff 1
     Then check customs form i agree to the usps privacy act statement

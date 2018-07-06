@@ -13,7 +13,7 @@ Feature: 25 orders
     Then set order details ship-to international address to
       | full_name   | company | street_address1         | street_address2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | 0123456789  | junk@stamps.com  |
-    Then on order details form, add item 1, qty 1, id random, description random
+    Then add order details item 1, qty 1, id random, description random
     Then set order details ounces to 2
     Then set order details pounds to 2
     Then click order details form customs form button
@@ -27,7 +27,7 @@ Feature: 25 orders
     Then set order details ship-to international address to
       | full_name   | company | street_address1    | street_address2 | city   | province | postal_code  | country   | phone   |  email  |
       | random | random  | 123 Kangaroo Court  | random           | Perth  | Wallaby  | DEF 0C4      | Australia | 9876543210  | junk@stamps.com  |
-    Then on order details form, add item 1, qty 1, id random, description random
+    Then add order details item 1, qty 1, id random, description random
     Then set order details ounces to 2
     Then set order details pounds to 2
     Then click order details form customs form button

@@ -93,9 +93,9 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
 
     Then set order details service to PM Regional Rate Box B
     Then set order details weight to 2 lb 1 oz
-    Then on order details form, add item 1, qty 1, id random, description random
-    Then on order details form, add item 2, qty 2, id random, description random
-    Then on order details form, add item 3, qty 3, id random, description random
+    Then add order details item 1, qty 1, id random, description random
+    Then add order details item 2, qty 2, id random, description random
+    Then add order details item 3, qty 3, id random, description random
 
     Then on Order Details form, Delete Item 1
     Then on Order Details form, Delete Item 2
