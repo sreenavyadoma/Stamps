@@ -284,14 +284,15 @@ Then /^expect orders grid tracking number is populated$/ do
 end
 
 Then /^expect orders grid order total is (?:correct|(.*))$/ do |str|
-  str ||= TestData.hash[:total_ship_cost]
-  order_id = if order_id.nil?
-               TestData.hash[:order_id].values.last
-             elsif order_id.size < 2
-               TestData.hash[:order_id][order_id.to_i]
-             end
-  result = SdcGrid.grid_column(:ship_cost).data(order_id)
-  expect(result.dollar_amount_str.to_f).to eql str.to_f
+  pending
+  # str ||= TestData.hash[:total_ship_cost]
+  # order_id = if order_id.nil?
+  #              TestData.hash[:order_id].values.last
+  #            elsif order_id.size < 2
+  #              TestData.hash[:order_id][order_id.to_i]
+  #            end
+  # result = SdcGrid.grid_column(:ship_cost).data(order_id)
+  # expect(result.dollar_amount_str.to_f).to eql str.to_f
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Ship Cost error to contain \"(.*)\"$/ do |str|
