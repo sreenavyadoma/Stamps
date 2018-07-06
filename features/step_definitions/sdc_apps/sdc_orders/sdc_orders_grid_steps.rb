@@ -237,7 +237,8 @@ Then /^expect orders grid insured value is (?:correct|(.*))$/ do |str|
                TestData.hash[:order_id][order_id.to_i]
              end
   result = SdcGrid.grid_column(:insured_value).data(order_id)
-  expect(result).to eql str
+  cost = result.dollar_amount_str.to_f
+  expect(cost).to eql str.to_f
 end
 
 Then /^expect orders grid reference number is (?:correct|(.*))$/ do |str|
