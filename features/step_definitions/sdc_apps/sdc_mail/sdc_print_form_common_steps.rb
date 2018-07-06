@@ -2,8 +2,8 @@
 Then /^select print on (.+)$/ do |str|
   SdcLogger.debug "select print on #{str}"
   print_on = SdcMail.print_on
-  step 'blur out on print form'
   step 'expect print form is present'
+  step 'blur out on print form'
   print_on.text_field.wait_until_present(timeout: 6)
   unless TestData.hash[:print_on_arr]
     TestData.hash[:print_on_arr] = []
