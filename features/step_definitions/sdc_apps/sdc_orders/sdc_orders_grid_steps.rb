@@ -290,7 +290,7 @@ Then /^expect orders grid order total is (?:correct|(.*))$/ do |str|
              elsif order_id.size < 2
                TestData.hash[:order_id][order_id.to_i]
              end
-  result = SdcGrid.grid_column(:order_total).data(order_id)
+  result = SdcGrid.grid_column(:ship_cost).data(order_id)
   expect(result.dollar_amount_str.to_f).to eql str.to_f
 end
 
