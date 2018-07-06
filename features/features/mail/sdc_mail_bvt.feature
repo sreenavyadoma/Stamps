@@ -418,6 +418,7 @@ Feature:  Mail BVT
     Then uncheck extra services modal return receipt
     Then check extra services modal restricted delivery
     Then uncheck extra services modal restricted delivery
+    Then blur out on extra services form
     Then increment extra services cod by 2
     Then decrement extra services cod by 2
     Then set extra services cod to 3
