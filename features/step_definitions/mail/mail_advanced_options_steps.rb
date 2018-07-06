@@ -143,8 +143,8 @@ end
 
 Then /^set advanced options reference number to (?:(?:a |some |)random string|(.*))$/ do |str|
   step 'expect advanced options responds to Reference Number (reference_number)'
-  TestData.hash[:reference_number] = str.nil? ? TestHelper.rand_alpha_numeric : str
-  stamps.mail.print_form.advanced_options.reference_number.set(TestData.hash[:reference_number])
+  TestData.hash[:reference_no] = str.nil? ? TestHelper.rand_alpha_numeric : str
+  stamps.mail.print_form.advanced_options.reference_number.set(TestData.hash[:reference_no])
 end
 
 Then /^expect advanced options reference number field is present$/ do
@@ -154,7 +154,7 @@ end
 
 Then /^expect advanced options reference number is (?:correct|(.*))$/ do |expectation|
   step 'expect advanced options responds to Reference Number (reference_number)'
-  expectation = TestData.hash[:reference_number] if expectation.nil?
+  expectation = TestData.hash[:reference_no] if expectation.nil?
   expectation = '' if expectation.nil?
   expect(stamps.mail.print_form.advanced_options.reference_number.text).to eql(expectation), 'Advanced Options Reference Number is incorrect'
 end

@@ -15,21 +15,21 @@ Feature: in Orders Grid, Tracking & Order Status
     Then check order details insure-for checkbox
     Then set order details insure-for to $52.99
     Then pause for 1 second
-    #Then expect orders grid insured value is $52.99
+    #Then expect orders grid insured value is 52.99
     Then pause for 1 second
     Then uncheck order details insure-for checkbox
     Then set order details service to PM Package
     Then uncheck order details insure-for checkbox
-    # Then set Order Details Tracking to Signature Required
+    # Then set order details tracking to Signature Required
     Then pause for 2 seconds
-    #Then expect orders grid insured value is $0.00
+    #Then expect orders grid insured value is 0.00
     Then pause for 1 second
     Then sign out
 
   @grid_order_status
   Scenario: Order Status
     Then add new order
-    #Then expect orders grid order status is Awaiting Shipment
+    Then expect orders grid order status is Awaiting Shipment
     Then sign out
 
   @grid_ship_cost
@@ -45,19 +45,19 @@ Feature: in Orders Grid, Tracking & Order Status
   @grid_tracking
   Scenario: Tracking & Order Status
     Then add new order
-    #Then expect orders grid order status is Awaiting Shipment
+    Then expect orders grid order status is Awaiting Shipment
     Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 5
     Then set order details service to PM Large Package
-    Then set Order Details Tracking to USPS Tracking
+    Then set order details tracking to USPS Tracking
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
     #Then set orders print modal printer
     Then click print modal print button
     Then select Filter Panel tab Shipped
     ##Then in Orders Grid, Sort Order ID in Descending Order
-    #Then expect orders grid Tracking Number is populated
-    #Then expect orders grid order status is Shipped
+    Then expect orders grid tracking number is populated
+    Then expect orders grid order status is Shipped
     Then sign out
 

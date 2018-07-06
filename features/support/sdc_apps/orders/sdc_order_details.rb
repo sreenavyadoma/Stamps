@@ -166,8 +166,9 @@ module SdcOrders
     page_object(:weight_label, required: true, timeout: 20) { {xpath: '//*[contains(text(), "Weight:")]'} }
     page_object(:ship_to_label, required: true, timeout: 20) { {xpath: '//div[starts-with(@id, "singleOrderDetailsForm")]//label[text()="Ship To:"]'} }
     page_object(:order_id, required: true, timeout: 20) { {xpath: '(//*[contains(@class, "singleorder-detailsform")]//div[contains(@class, "sdc-toolbar")]//b)[1]'} }
-    page_object(:add_item) { {xpath: '//*[text()="Add Item"]'} }
     page_object(:reference_num, tag: :text_field) { {xpath: '//*[contains(@class, "reference-field-container")]//input'} }
+    page_object(:add_item) { {xpath: '//*[text()="Add Item"]'} }
+    page_objects(:items_ordered, index: 0) { { xpath: '//div[text()="Items Ordered"]' } }
 
     def ship_to
       SdcOrderDetailsShipTo.new

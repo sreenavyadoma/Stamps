@@ -331,6 +331,14 @@ module HtmlElementMethods
     send(:set, *args)
   end
 
+  def safe_set(*args)
+    begin
+      set(*args)
+    rescue Watir::Exception::UnknownObjectException
+      # ignore
+    end
+  end
+
   def set_attribute(name, value)
     execute_script("return arguments[0].#{name.to_s}='#{value.to_s}'", @element)
   end
@@ -462,8 +470,8 @@ module HtmlElementMethods
 
   def blur_out(ctr: 1)
     ctr.to_i.times do
-      safe_double_click
       safe_click
+      safe_double_click
     end
 
     self

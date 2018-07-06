@@ -124,7 +124,10 @@ module SdcGrid
                 end
           set(key, index + 1)
 
-          return get(name) if key.eql?(name)
+          if key.eql?(name)
+            scroll_to_column(name)
+            return get(name)
+          end
         end
       end
 
@@ -255,12 +258,28 @@ module SdcGrid
     unless GridItem.column_names.keys.include? name
       raise ArgumentError, "Invalid grid column: #{name}"
     end
-    if name.eql? :checkbox
+
+    case name
+    when :checkbox
       SdcGridCheckBox.new
+    when :weight
+      klass = Class.new(SdcGridItem) do
+        def lb order_id
+          data(order_id).scan(/\d+ lb./).first.scan(/\d/).first.to_i
+        end
+
+        def oz order_id
+          data(order_id).scan(/\d+ oz./).first.scan(/\d/).first.to_i
+        end
+      end
+
+      klass.new(name)
     else
       SdcGridItem.new(name)
     end
   end
   module_function :grid_column
+
+
 
 end

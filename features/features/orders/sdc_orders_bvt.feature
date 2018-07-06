@@ -42,7 +42,7 @@ Feature:  BVT tests for Orders
     Then expect orders grid pounds is 1
     Then expect orders grid ounces is 1
     Then expect orders grid weight is 1 lb. 1 oz.
-    Then expect orders grid insured value is $1.00
+    Then expect orders grid insured value is 1.00
     Then sign-out of SDC Website
 
   @bvt_orders_ship_date
@@ -195,31 +195,22 @@ Feature:  BVT tests for Orders
     Then set order details ounces to 1
     Then set order details service to PM Package
     Then set order details insure-for to $100.00
-    # Then set Order Details Tracking to Signature Required
+    Then set order details tracking to Signature Required
     Then set order details length to 1
     Then set order details width to 1
     Then set order details height to 1
-    Then expect orders grid service is correct
-    Then expect orders grid service is correct
-    Then expect order details ship-to phone is correct
-    Then expect order details ship-to email is correct
 
     Then set order details reference number to Update Orders To ShipStation
     Then on order details form, add item 1, qty 1, id Item 1 SKU, description Item 1 Description
 
-    Then pause for 2 seconds
-    Then blur out on order details form
-    Then pause for 2 seconds
-
-    Then uncheck grid order id
-
-    Then pause for 2 seconds
-    Then check grid order id
-    Then pause for 2 seconds
-    Then blur out on order details form
-
   #Verify Single Order Details form was saved in ShipStation
-    Then expect order details ship-from and ship-from saved values are the same
+    #Then expect order details ship-from is correct
+    #Then expect orders grid date printed is correct
+    #Then expect orders grid ship date is correct
+    Then expect orders grid service is correct
+    Then expect orders grid service is correct
+    Then expect order details ship-to phone is correct
+    Then expect order details ship-to email is correct
     Then expect order details ship-to name is First Last
     Then expect order details ship-to company name is Company Name
     Then expect order details ship-to cleansed street address is 777 N Orange Ave Apt 100
@@ -252,7 +243,9 @@ Feature:  BVT tests for Orders
     Then expect orders grid state is FL
     Then expect orders grid zip is 32801-1175
     Then expect orders grid phone is correct
+    Then expect orders grid tracking service is correct
     Then expect orders grid email is correct
+    Then expect orders grid reference number is correct
     Then expect orders grid qty is 1
     Then expect orders grid item sku is Item 1 SKU
     Then expect orders grid item name is Item 1 Description
@@ -261,7 +254,9 @@ Feature:  BVT tests for Orders
     Then expect orders grid order status is Awaiting Shipment
     Then expect orders grid pounds is 1
     Then expect orders grid ounces is 1
-    Then expect orders grid insured value is $100.00
+    Then expect orders grid insured value is 100.00
+    Then expect orders grid order total is correct
+    Then expect orders grid tracking number is populated
 
     Then click orders toolbar print button
     Then in print modal, click close button
@@ -385,7 +380,7 @@ Feature:  BVT tests for Orders
     Then expect orders grid service is correct
     Then expect orders grid service is correct
 #    Then expect order details insure-for is correct
-#    Then expect orders grid order status is Awaiting Shipment
+   Then expect orders grid order status is Awaiting Shipment
 
     Then sign out
 
