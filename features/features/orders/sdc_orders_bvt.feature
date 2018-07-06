@@ -257,10 +257,10 @@ Feature:  BVT tests for Orders
     Then expect orders grid insured value is 100.00
     #Then expect orders grid order total is correct
     #Then expect orders grid tracking number is populated
-
-    Then click orders toolbar print button
-    Then in print modal, click close button
-    Then sign out
+#
+#    Then click orders toolbar print button
+#    Then in print modal, click close button
+#    Then sign out
 
 
   @bvt_shipstation_updates_international
