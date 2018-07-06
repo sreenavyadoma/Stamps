@@ -49,8 +49,10 @@ Then /^Save Order Details data$/ do
   TestData.hash[:insure_for_cost] = order_details.insure_for.cost.text_value.dollar_amount_str.to_f.round(2)
   TestData.hash[:total_ship_cost] = order_details.footer.total_ship_cost.text_value.dollar_amount_str.to_f.round(2)
   TestData.hash[:awaiting_shipment_count] = SdcOrders.filter_panel.awaiting_shipment.count.text_value.to_f.round(2)
-  if TestData.hash[:country] == "United States"
+  if order_details.tracking.cost.present?
     TestData.hash[:tracking_cost] = order_details.tracking.cost.text_value.dollar_amount_str.to_f.round(2)
+  end
+  if order_details.tracking.text_field.present?
     TestData.hash[:tracking] = order_details.tracking.text_field.text_value
   end
 end

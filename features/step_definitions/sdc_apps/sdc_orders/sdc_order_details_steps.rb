@@ -495,8 +495,8 @@ Then /^set order details tracking to (.*)$/ do |str|
 end
 
 Then /^set order details reference to (.*)$/ do |str|
-  SdcOrders.order_details.reference_num.set(str)
-  TestData.hash[:reference_num] = str
+  SdcOrders.order_details.reference_no.set(str)
+  TestData.hash[:reference_no] = str
   step 'Save Order Details data'
 end
 
@@ -536,14 +536,16 @@ end
 
 Then /^expect order details service cost is (?:correct|(\d+.\d*))$/ do |str|
   str ||= TestData.hash[:service_cost]
-  result = SdcOrders.order_details.service.cost.text_value.dollar_amount_str.to_f.round(2)
-  expect(result).to eql(str.to_f.round(2))
+  result = SdcOrders.order_details.service.cost.text_value
+  cost = result.dollar_amount_str.to_f.round(2)
+  expect(cost).to eql(str.to_f.round(2))
 end
 
 Then /^expect order details tracking cost is (?:correct|(\d+.\d*))$/ do |str|
   str ||= TestData.hash[:tracking_cost]
-  result = SdcOrders.order_details.tracking.cost.text_value.to_f.round(2)
-  expect(result).to eql(str.to_f.round(2))
+  result = SdcOrders.order_details.tracking.cost.text_value
+  cost = result.dollar_amount_str.to_f.round(2)
+  expect(cost).to eql(str.to_f.round(2))
 end
 
 Then /^expect order details pounds? (?:is (\d+)|and saved Pounds? are the same)$/ do |str|
@@ -595,8 +597,8 @@ Then /^expect order details ship-from is (?:correct|(.*))$/ do
 end
 
 Then /^expect order details reference number is (?:correct|(.*))$/ do |str|
-  str ||= TestData.hash[:reference_num]
-  result = SdcOrders.order_details.reference_num.text_value
+  str ||= TestData.hash[:reference_no]
+  result = SdcOrders.order_details.reference_no.text_value
   expect(result).to eql(str)
 end
 
@@ -608,8 +610,8 @@ end
 
 Then /^set order details reference number to (.*)$/ do |str|
   str = str.downcase.include?('random') ? TestHelper.rand_alpha_numeric : str
-  SdcOrders.order_details.reference_num.set(str)
-  TestData.hash[:reference_num] = str
+  SdcOrders.order_details.reference_no.set(str)
+  TestData.hash[:reference_no] = str
   step 'Save Order Details data'
 end
 

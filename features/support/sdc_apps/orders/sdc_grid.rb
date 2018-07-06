@@ -38,7 +38,7 @@ module SdcGrid
           weight: 'Weight',
           insured_value: 'Insured Value',
           tracking_service: 'Tracking Service',
-          reference_no: 'Reference No.',
+          reference_no: 'Reference #',
           order_status: 'Order Status',
           date_printed: 'Date Printed',
           ship_date: 'Ship Date',
