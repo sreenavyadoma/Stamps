@@ -22,7 +22,7 @@ Then /^sign-in to mail$/ do
   step 'visit Mail'
   step 'fetch user credentials from MySQL'
   modal = SdcWebsite.navigation.mail_sign_in_modal
-  if SdcEnv.browser
+  if SdcEnv.browser || SdcEnv.sauce.browser
     if SdcEnv.width.to_i < 1195
       modal.hamburger_menu.click
       modal.sign_in.click
