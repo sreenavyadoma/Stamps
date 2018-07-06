@@ -45,7 +45,7 @@ Feature: 25 orders
     Then set order details width to 1
     Then set order details height to 1
     Then set order details service to FCM Large Envelope/Flat
-    Then set order details insure-for to $15.00
+    Then set order details insure-for to 15.00
     Then set order details tracking to "None"
     Then check row 1
 
@@ -58,7 +58,7 @@ Feature: 25 orders
     Then set order details width to 1
     Then set order details height to 1
     Then set order details service to First-Class Mail Package/Thick Envelope
-    Then set order details insure-for to $45.00
+    Then set order details insure-for to 45.00
     Then set order details tracking to USPS Tracking
     Then check row 1
 
@@ -95,7 +95,7 @@ Feature: 25 orders
     Then set order details width to 1
     Then set order details height to 1
     Then set order details service to PM Large Package
-    Then set order details insure-for to $145.00
+    Then set order details insure-for to 145.00
     # Then set order details tracking to Signature Required
 
     Then add new order
@@ -118,7 +118,7 @@ Feature: 25 orders
     Then set order details width to 1
     Then set order details height to 1
     Then set order details service to PM Padded Flat Rate Envelope
-    Then set order details insure-for to $98.00
+    Then set order details insure-for to 98.00
     Then set order details tracking to USPS Tracking
 
     Then add new order
@@ -141,7 +141,7 @@ Feature: 25 orders
     Then set order details width to 1
     Then set order details height to 1
     Then set order details service to PM Small Flat Rate Box
-    Then set order details insure-for to $30.00
+    Then set order details insure-for to 30.00
     # Then set order details tracking to Signature Required
 
     Then add new order
@@ -153,7 +153,7 @@ Feature: 25 orders
     Then set order details width to 1
     Then set order details height to 1
     Then set order details service to PM Medium Flat Rate Box
-    Then set order details insure-for to $45.00
+    Then set order details insure-for to 45.00
     # Then set order details tracking to Signature Required
 
     Then add new order
@@ -165,7 +165,7 @@ Feature: 25 orders
     Then set order details width to 1
     Then set order details height to 1
     Then set order details service to PM Large Flat Rate Box
-    Then set order details insure-for to $239.00
+    Then set order details insure-for to 239.00
     # Then set order details tracking to Signature Required
 
     Then add new order
@@ -177,7 +177,7 @@ Feature: 25 orders
     Then set order details width to 1
     Then set order details height to 1
     Then set order details service to PM Regional Rate Box A
-    Then set order details insure-for to $105.00
+    Then set order details insure-for to 105.00
     # Then set order details tracking to Signature Required
 
     Then add new order
@@ -189,7 +189,7 @@ Feature: 25 orders
     Then set order details width to 1
     Then set order details height to 1
     Then set order details service to PM Regional Rate Box B
-    Then set order details insure-for to $205.00
+    Then set order details insure-for to 205.00
     Then set order details tracking to USPS Tracking
 
     Then add new order
@@ -200,7 +200,7 @@ Feature: 25 orders
     Then set order details length to 1
     Then set order details width to 1
     Then set order details height to 1
-    Then set order details insure-for to $305.00
+    Then set order details insure-for to 305.00
     # Then set order details tracking to Signature Required
 
     # Priority Mail Express
@@ -269,7 +269,7 @@ Feature: 25 orders
     Then set order details width to 1
     Then set order details height to 1
     Then set order details service to MM Package/Flat/Thick Envelope
-    Then set order details insure-for to $56.00
+    Then set order details insure-for to 56.00
     # Then set order details tracking to Signature Required
 
     # Parcel Select
@@ -282,7 +282,7 @@ Feature: 25 orders
     Then set order details width to 1
     Then set order details height to 1
     Then set order details service to PSG Package/Flat/Thick Envelope
-    Then set order details insure-for to $345.00
+    Then set order details insure-for to 345.00
     Then set order details tracking to USPS Tracking
 
     Then add new order
@@ -294,7 +294,7 @@ Feature: 25 orders
     Then set order details width to 1
     Then set order details height to 1
     Then set order details service to PSG Package/Flat/Thick Envelope
-    Then set order details insure-for to $456.00
+    Then set order details insure-for to 456.00
     # Then set order details tracking to Signature Required
 
     Then add new order
@@ -306,6 +306,6 @@ Feature: 25 orders
     Then set order details width to 1
     Then set order details height to 1
     Then set order details service to PSG Oversized Package
-    Then set order details insure-for to $567.00
+    Then set order details insure-for to 567.00
     # Then set order details tracking to Signature Required
     Then sign out

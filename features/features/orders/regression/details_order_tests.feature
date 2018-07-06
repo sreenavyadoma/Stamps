@@ -40,7 +40,7 @@ Feature: All details tests for order
     Then set order details service to PM Package
     Then set order details ounces to 3
     Then set order details pounds to 2
-    Then set order details insure-for to $100.00
+    Then set order details insure-for to 100.00
     Then expect Order Details Insure-For Cost is greater than $1
     Then expect order details insure-for is 100
     Then set order details height to 1
@@ -55,7 +55,7 @@ Feature: All details tests for order
     Then expect order details ounces is 2
     Then set order details pounds to 1
     Then expect order details pounds is 1
-    Then set order details insure-for to $150
+    Then set order details insure-for to 150
     Then expect Order Details Insure-For Cost is greater than $1
     Then expect order details insure-for is 150
     Then set order details height to 2

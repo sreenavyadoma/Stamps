@@ -222,7 +222,9 @@ Then /^blur out on order details form$/ do
   order_details.weight_label.double_click
   order_details.service_label.double_click
   order_details.reference_no.double_click
-  order_details.ship_to_label.double_click
+  if order_details.ship_to_label.present?
+    order_details.ship_to_label.double_click
+  end
   order_details.order_id.double_click
   order_details.title.double_click
 end
@@ -473,7 +475,7 @@ Then /^uncheck order details insure-for checkbox$/ do
   stamps.orders.order_details.insure_for.checkbox.uncheck
 end
 
-Then /^set order details insure-for to \$(\d+\.\d{2})$/ do |str|
+Then /^set order details insure-for to (\d+\.\d{2})$/ do |str|
   insure_for = SdcOrders.order_details.insure_for
   insure_for.checkbox.check
   insure_for.checkbox.safe_wait_until_chosen(timeout: 3)

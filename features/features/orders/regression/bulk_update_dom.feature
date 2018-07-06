@@ -132,12 +132,12 @@ Feature: Bulk Update Domestic
     Then set order details service to PM Package
     Then set order details pounds to 1
     Then check order details insure-for checkbox
-    Then set order details insure-for to $21.55
+    Then set order details insure-for to 21.55
     Then expect order details insure-for is correct
-    Then set order details insure-for to $0.00
+    Then set order details insure-for to 0.00
     Then increment order details insure-for by 6
     Then expect order details insure-for is 6.00
-    Then set order details insure-for to $0.00
+    Then set order details insure-for to 0.00
     Then increment order details insure-for by 7
     Then expect order details insure-for is 7.00
     Then uncheck order details insure-for checkbox

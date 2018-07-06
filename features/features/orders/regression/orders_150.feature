@@ -14,7 +14,7 @@ Feature: 150 orders
 
     Then set order details ounces to 1
     Then set Order Details service to FCM Large Envelope/Flat
-    Then set order details insure-for to $15.00
+    Then set order details insure-for to 15.00
     Then set order details tracking to "None"
 
     Then add new order
@@ -23,7 +23,7 @@ Feature: 150 orders
 
     Then set order details ounces to 2
     Then set Order Details service to First-Class Mail Package/Thick Envelope
-    Then set order details insure-for to $45.00
+    Then set order details insure-for to 45.00
     Then set order details tracking to USPS Tracking
 
     #Priority Mail
@@ -50,7 +50,7 @@ Feature: 150 orders
 
     Then set order details pounds to 5
     Then set Order Details service to PM Large Package
-    Then set order details insure-for to $145.00
+    Then set order details insure-for to 145.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -67,7 +67,7 @@ Feature: 150 orders
 
     Then set order details ounces to 7
     Then set Order Details service to PM Padded Flat Rate Envelope
-    Then set order details insure-for to $98.00
+    Then set order details insure-for to 98.00
     Then set order details tracking to USPS Tracking
 
     Then add new order
@@ -84,7 +84,7 @@ Feature: 150 orders
 
     Then set order details ounces to 9
     Then set Order Details service to PM Small Flat Rate Box
-    Then set order details insure-for to $30.00
+    Then set order details insure-for to 30.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -93,7 +93,7 @@ Feature: 150 orders
 
     Then set order details ounces to 10
     Then set Order Details service to PM Medium Flat Rate Box
-    Then set order details insure-for to $45.00
+    Then set order details insure-for to 45.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -102,7 +102,7 @@ Feature: 150 orders
 
     Then set order details pounds to 11
     Then set Order Details service to PM Large Flat Rate Box
-    Then set order details insure-for to $239.00
+    Then set order details insure-for to 239.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -111,7 +111,7 @@ Feature: 150 orders
 
     Then set order details ounces to 12
     Then set Order Details service to PM Regional Rate Box A
-    Then set order details insure-for to $105.00
+    Then set order details insure-for to 105.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -120,7 +120,7 @@ Feature: 150 orders
 
     Then set order details ounces to 13
     Then set Order Details service to PM Regional Rate Box B
-    Then set order details insure-for to $205.00
+    Then set order details insure-for to 205.00
     Then set order details tracking to USPS Tracking
 
     Then add new order
@@ -128,7 +128,7 @@ Feature: 150 orders
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 14
-    Then set order details insure-for to $305.00
+    Then set order details insure-for to 305.00
     Then set order details tracking to Signature Required
 
     # Priority Mail Express
@@ -182,7 +182,7 @@ Feature: 150 orders
 
     Then set order details pounds to 20
     Then set Order Details service to MM Package/Flat/Thick Envelope
-    Then set order details insure-for to $56.00
+    Then set order details insure-for to 56.00
     Then set order details tracking to Signature Required
 
     # Parcel Select
@@ -194,7 +194,7 @@ Feature: 150 orders
 
     Then set order details pounds to 21
     Then set Order Details service to PSG Package/Flat/Thick Envelope
-    Then set order details insure-for to $345.00
+    Then set order details insure-for to 345.00
     Then set order details tracking to USPS Tracking
 
     Then add new order
@@ -204,7 +204,7 @@ Feature: 150 orders
 
     Then set order details pounds to 22
     Then set order details service to PSG Package/Flat/Thick Envelope
-    Then set order details insure-for to $456.00
+    Then set order details insure-for to 456.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -214,7 +214,7 @@ Feature: 150 orders
 
     Then set order details pounds to 23
     Then set Order Details service to PSG Oversized Package
-    Then set order details insure-for to $567.00
+    Then set order details insure-for to 567.00
     Then set order details tracking to Signature Required
 
     # International
@@ -270,7 +270,7 @@ Feature: 150 orders
 
     Then set order details ounces to 1
     Then set Order Details service to FCM Large Envelope/Flat
-    Then set order details insure-for to $15.00
+    Then set order details insure-for to 15.00
     Then set order details tracking to "None"
 
     Then add new order
@@ -280,7 +280,7 @@ Feature: 150 orders
 
     Then set order details ounces to 2
     Then set Order Details service to First-Class Mail Package/Thick Envelope
-    Then set order details insure-for to $45.00
+    Then set order details insure-for to 45.00
     Then set order details tracking to USPS Tracking
 
     #Priority Mail
@@ -310,7 +310,7 @@ Feature: 150 orders
 
     Then set order details pounds to 5
     Then set Order Details service to PM Large Package
-    Then set order details insure-for to $145.00
+    Then set order details insure-for to 145.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -329,7 +329,7 @@ Feature: 150 orders
 
     Then set order details ounces to 7
     Then set Order Details service to PM Padded Flat Rate Envelope
-    Then set order details insure-for to $98.00
+    Then set order details insure-for to 98.00
     Then set order details tracking to USPS Tracking
 
     Then add new order
@@ -348,7 +348,7 @@ Feature: 150 orders
 
     Then set order details ounces to 9
     Then set Order Details service to PM Small Flat Rate Box
-    Then set order details insure-for to $30.00
+    Then set order details insure-for to 30.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -358,7 +358,7 @@ Feature: 150 orders
 
     Then set order details ounces to 10
     Then set Order Details service to PM Medium Flat Rate Box
-    Then set order details insure-for to $45.00
+    Then set order details insure-for to 45.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -368,7 +368,7 @@ Feature: 150 orders
 
     Then set order details pounds to 11
     Then set Order Details service to PM Large Flat Rate Box
-    Then set order details insure-for to $239.00
+    Then set order details insure-for to 239.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -378,7 +378,7 @@ Feature: 150 orders
 
     Then set order details ounces to 12
     Then set Order Details service to PM Regional Rate Box A
-    Then set order details insure-for to $105.00
+    Then set order details insure-for to 105.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -388,7 +388,7 @@ Feature: 150 orders
 
     Then set order details ounces to 13
     Then set Order Details service to PM Regional Rate Box B
-    Then set order details insure-for to $205.00
+    Then set order details insure-for to 205.00
     Then set order details tracking to USPS Tracking
 
     Then add new order
@@ -397,7 +397,7 @@ Feature: 150 orders
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 14
-    Then set order details insure-for to $305.00
+    Then set order details insure-for to 305.00
     Then set order details tracking to Signature Required
 
     # Priority Mail Express
@@ -456,7 +456,7 @@ Feature: 150 orders
 
     Then set order details pounds to 20
     Then set Order Details service to MM Package/Flat/Thick Envelope
-    Then set order details insure-for to $56.00
+    Then set order details insure-for to 56.00
     Then set order details tracking to Signature Required
 
     # Parcel Select
@@ -468,7 +468,7 @@ Feature: 150 orders
 
     Then set order details pounds to 21
     Then set order details service to PSG Package/Flat/Thick Envelope
-    Then set order details insure-for to $345.00
+    Then set order details insure-for to 345.00
     Then set order details tracking to USPS Tracking
 
     Then add new order
@@ -478,7 +478,7 @@ Feature: 150 orders
 
     Then set order details pounds to 22
     Then set order details service to PSG Package/Flat/Thick Envelope
-    Then set order details insure-for to $456.00
+    Then set order details insure-for to 456.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -488,7 +488,7 @@ Feature: 150 orders
 
     Then set order details pounds to 23
     Then set Order Details service to PSG Oversized Package
-    Then set order details insure-for to $567.00
+    Then set order details insure-for to 567.00
     Then set order details tracking to Signature Required
 
     # International
@@ -544,7 +544,7 @@ Feature: 150 orders
 
     Then set order details ounces to 1
     Then set Order Details service to FCM Large Envelope/Flat
-    Then set order details insure-for to $15.00
+    Then set order details insure-for to 15.00
     Then set order details tracking to "None"
 
     Then add new order
@@ -554,7 +554,7 @@ Feature: 150 orders
 
     Then set order details ounces to 2
     Then set Order Details service to First-Class Mail Package/Thick Envelope
-    Then set order details insure-for to $45.00
+    Then set order details insure-for to 45.00
     Then set order details tracking to USPS Tracking
 
     #Priority Mail
@@ -584,7 +584,7 @@ Feature: 150 orders
 
     Then set order details pounds to 5
     Then set Order Details service to PM Large Package
-    Then set order details insure-for to $145.00
+    Then set order details insure-for to 145.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -603,7 +603,7 @@ Feature: 150 orders
 
     Then set order details ounces to 7
     Then set Order Details service to PM Padded Flat Rate Envelope
-    Then set order details insure-for to $98.00
+    Then set order details insure-for to 98.00
     Then set order details tracking to USPS Tracking
 
     Then add new order
@@ -622,7 +622,7 @@ Feature: 150 orders
 
     Then set order details ounces to 9
     Then set Order Details service to PM Small Flat Rate Box
-    Then set order details insure-for to $30.00
+    Then set order details insure-for to 30.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -632,7 +632,7 @@ Feature: 150 orders
 
     Then set order details ounces to 10
     Then set Order Details service to PM Medium Flat Rate Box
-    Then set order details insure-for to $45.00
+    Then set order details insure-for to 45.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -642,7 +642,7 @@ Feature: 150 orders
 
     Then set order details pounds to 11
     Then set Order Details service to PM Large Flat Rate Box
-    Then set order details insure-for to $239.00
+    Then set order details insure-for to 239.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -652,7 +652,7 @@ Feature: 150 orders
 
     Then set order details ounces to 12
     Then set Order Details service to PM Regional Rate Box A
-    Then set order details insure-for to $105.00
+    Then set order details insure-for to 105.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -662,7 +662,7 @@ Feature: 150 orders
 
     Then set order details ounces to 13
     Then set Order Details service to PM Regional Rate Box B
-    Then set order details insure-for to $205.00
+    Then set order details insure-for to 205.00
     Then set order details tracking to USPS Tracking
 
     Then add new order
@@ -670,7 +670,7 @@ Feature: 150 orders
     Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 14
-    Then set order details insure-for to $305.00
+    Then set order details insure-for to 305.00
     Then set order details tracking to Signature Required
 
     # Priority Mail Express
@@ -729,7 +729,7 @@ Feature: 150 orders
 
     Then set order details pounds to 20
     Then set Order Details service to MM Package/Flat/Thick Envelope
-    Then set order details insure-for to $56.00
+    Then set order details insure-for to 56.00
     Then set order details tracking to Signature Required
 
     # Parcel Select
@@ -741,7 +741,7 @@ Feature: 150 orders
 
     Then set order details pounds to 21
     Then set order details service to PSG Package/Flat/Thick Envelope
-    Then set order details insure-for to $345.00
+    Then set order details insure-for to 345.00
     Then set order details tracking to USPS Tracking
 
     Then add new order
@@ -751,7 +751,7 @@ Feature: 150 orders
 
     Then set order details pounds to 22
     Then set order details service to PSG Package/Flat/Thick Envelope
-    Then set order details insure-for to $456.00
+    Then set order details insure-for to 456.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -761,7 +761,7 @@ Feature: 150 orders
 
     Then set order details pounds to 23
     Then set Order Details service to PSG Oversized Package
-    Then set order details insure-for to $567.00
+    Then set order details insure-for to 567.00
     Then set order details tracking to Signature Required
 
     # International
@@ -817,7 +817,7 @@ Feature: 150 orders
 
     Then set order details ounces to 1
     Then set Order Details service to FCM Large Envelope/Flat
-    Then set order details insure-for to $15.00
+    Then set order details insure-for to 15.00
     Then set order details tracking to "None"
 
     Then add new order
@@ -827,7 +827,7 @@ Feature: 150 orders
 
     Then set order details ounces to 2
     Then set Order Details service to First-Class Mail Package/Thick Envelope
-    Then set order details insure-for to $45.00
+    Then set order details insure-for to 45.00
     Then set order details tracking to USPS Tracking
 
     #Priority Mail
@@ -857,7 +857,7 @@ Feature: 150 orders
 
     Then set order details pounds to 5
     Then set Order Details service to PM Large Package
-    Then set order details insure-for to $145.00
+    Then set order details insure-for to 145.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -876,7 +876,7 @@ Feature: 150 orders
 
     Then set order details ounces to 7
     Then set Order Details service to PM Padded Flat Rate Envelope
-    Then set order details insure-for to $98.00
+    Then set order details insure-for to 98.00
     Then set order details tracking to USPS Tracking
 
     Then add new order
@@ -895,7 +895,7 @@ Feature: 150 orders
 
     Then set order details ounces to 9
     Then set Order Details service to PM Small Flat Rate Box
-    Then set order details insure-for to $30.00
+    Then set order details insure-for to 30.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -905,7 +905,7 @@ Feature: 150 orders
 
     Then set order details ounces to 10
     Then set Order Details service to PM Medium Flat Rate Box
-    Then set order details insure-for to $45.00
+    Then set order details insure-for to 45.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -915,7 +915,7 @@ Feature: 150 orders
 
     Then set order details pounds to 11
     Then set Order Details service to PM Large Flat Rate Box
-    Then set order details insure-for to $239.00
+    Then set order details insure-for to 239.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -925,7 +925,7 @@ Feature: 150 orders
 
     Then set order details ounces to 12
     Then set Order Details service to PM Regional Rate Box A
-    Then set order details insure-for to $105.00
+    Then set order details insure-for to 105.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -935,7 +935,7 @@ Feature: 150 orders
 
     Then set order details ounces to 13
     Then set Order Details service to PM Regional Rate Box B
-    Then set order details insure-for to $205.00
+    Then set order details insure-for to 205.00
     Then set order details tracking to USPS Tracking
 
     Then add new order
@@ -944,7 +944,7 @@ Feature: 150 orders
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 14
-    Then set order details insure-for to $305.00
+    Then set order details insure-for to 305.00
     Then set order details tracking to Signature Required
 
     # Priority Mail Express
@@ -1003,7 +1003,7 @@ Feature: 150 orders
 
     Then set order details pounds to 20
     Then set Order Details service to MM Package/Flat/Thick Envelope
-    Then set order details insure-for to $56.00
+    Then set order details insure-for to 56.00
     Then set order details tracking to Signature Required
 
     # Parcel Select
@@ -1015,7 +1015,7 @@ Feature: 150 orders
 
     Then set order details pounds to 21
     Then set order details service to PSG Package/Flat/Thick Envelope
-    Then set order details insure-for to $345.00
+    Then set order details insure-for to 345.00
     Then set order details tracking to USPS Tracking
 
     Then add new order
@@ -1025,7 +1025,7 @@ Feature: 150 orders
 
     Then set order details pounds to 22
     Then set order details service to PSG Package/Flat/Thick Envelope
-    Then set order details insure-for to $456.00
+    Then set order details insure-for to 456.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -1035,7 +1035,7 @@ Feature: 150 orders
 
     Then set order details pounds to 23
     Then set Order Details service to PSG Oversized Package
-    Then set order details insure-for to $567.00
+    Then set order details insure-for to 567.00
     Then set order details tracking to Signature Required
 
     # International
@@ -1091,7 +1091,7 @@ Feature: 150 orders
 
     Then set order details ounces to 1
     Then set Order Details service to FCM Large Envelope/Flat
-    Then set order details insure-for to $15.00
+    Then set order details insure-for to 15.00
     Then set order details tracking to "None"
 
     Then add new order
@@ -1101,7 +1101,7 @@ Feature: 150 orders
 
     Then set order details ounces to 2
     Then set Order Details service to First-Class Mail Package/Thick Envelope
-    Then set order details insure-for to $45.00
+    Then set order details insure-for to 45.00
     Then set order details tracking to USPS Tracking
 
     #Priority Mail
@@ -1131,7 +1131,7 @@ Feature: 150 orders
 
     Then set order details pounds to 5
     Then set Order Details service to PM Large Package
-    Then set order details insure-for to $145.00
+    Then set order details insure-for to 145.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -1150,7 +1150,7 @@ Feature: 150 orders
 
     Then set order details ounces to 7
     Then set Order Details service to PM Padded Flat Rate Envelope
-    Then set order details insure-for to $98.00
+    Then set order details insure-for to 98.00
     Then set order details tracking to USPS Tracking
 
     Then add new order
@@ -1169,7 +1169,7 @@ Feature: 150 orders
 
     Then set order details ounces to 9
     Then set Order Details service to PM Small Flat Rate Box
-    Then set order details insure-for to $30.00
+    Then set order details insure-for to 30.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -1179,7 +1179,7 @@ Feature: 150 orders
 
     Then set order details ounces to 10
     Then set Order Details service to PM Medium Flat Rate Box
-    Then set order details insure-for to $45.00
+    Then set order details insure-for to 45.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -1189,7 +1189,7 @@ Feature: 150 orders
 
     Then set order details pounds to 11
     Then set Order Details service to PM Large Flat Rate Box
-    Then set order details insure-for to $239.00
+    Then set order details insure-for to 239.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -1199,7 +1199,7 @@ Feature: 150 orders
 
     Then set order details ounces to 12
     Then set Order Details service to PM Regional Rate Box A
-    Then set order details insure-for to $105.00
+    Then set order details insure-for to 105.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -1209,7 +1209,7 @@ Feature: 150 orders
 
     Then set order details ounces to 13
     Then set Order Details service to PM Regional Rate Box B
-    Then set order details insure-for to $205.00
+    Then set order details insure-for to 205.00
     Then set order details tracking to USPS Tracking
 
     Then add new order
@@ -1218,7 +1218,7 @@ Feature: 150 orders
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 14
-    Then set order details insure-for to $305.00
+    Then set order details insure-for to 305.00
     Then set order details tracking to Signature Required
 
     # Priority Mail Express
@@ -1277,7 +1277,7 @@ Feature: 150 orders
 
     Then set order details pounds to 20
     Then set Order Details service to MM Package/Flat/Thick Envelope
-    Then set order details insure-for to $56.00
+    Then set order details insure-for to 56.00
     Then set order details tracking to Signature Required
 
     # Parcel Select
@@ -1289,7 +1289,7 @@ Feature: 150 orders
 
     Then set order details pounds to 21
     Then set order details service to PSG Package/Flat/Thick Envelope
-    Then set order details insure-for to $345.00
+    Then set order details insure-for to 345.00
     Then set order details tracking to USPS Tracking
 
     Then add new order
@@ -1299,7 +1299,7 @@ Feature: 150 orders
 
     Then set order details pounds to 22
     Then set order details service to PSG Package/Flat/Thick Envelope
-    Then set order details insure-for to $456.00
+    Then set order details insure-for to 456.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -1309,7 +1309,7 @@ Feature: 150 orders
 
     Then set order details pounds to 23
     Then set Order Details service to PSG Oversized Package
-    Then set order details insure-for to $567.00
+    Then set order details insure-for to 567.00
     Then set order details tracking to Signature Required
 
     # International
@@ -1365,7 +1365,7 @@ Feature: 150 orders
 
     Then set order details ounces to 1
     Then set Order Details service to FCM Large Envelope/Flat
-    Then set order details insure-for to $15.00
+    Then set order details insure-for to 15.00
     Then set order details tracking to "None"
 
     Then add new order
@@ -1375,7 +1375,7 @@ Feature: 150 orders
 
     Then set order details ounces to 2
     Then set Order Details service to First-Class Mail Package/Thick Envelope
-    Then set order details insure-for to $45.00
+    Then set order details insure-for to 45.00
     Then set order details tracking to USPS Tracking
 
     #Priority Mail
@@ -1405,7 +1405,7 @@ Feature: 150 orders
 
     Then set order details pounds to 5
     Then set Order Details service to PM Large Package
-    Then set order details insure-for to $145.00
+    Then set order details insure-for to 145.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -1424,7 +1424,7 @@ Feature: 150 orders
 
     Then set order details ounces to 7
     Then set Order Details service to PM Padded Flat Rate Envelope
-    Then set order details insure-for to $98.00
+    Then set order details insure-for to 98.00
     Then set order details tracking to USPS Tracking
 
     Then add new order
@@ -1443,7 +1443,7 @@ Feature: 150 orders
 
     Then set order details ounces to 9
     Then set Order Details service to PM Small Flat Rate Box
-    Then set order details insure-for to $30.00
+    Then set order details insure-for to 30.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -1453,7 +1453,7 @@ Feature: 150 orders
 
     Then set order details ounces to 10
     Then set Order Details service to PM Medium Flat Rate Box
-    Then set order details insure-for to $45.00
+    Then set order details insure-for to 45.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -1463,7 +1463,7 @@ Feature: 150 orders
 
     Then set order details pounds to 11
     Then set Order Details service to PM Large Flat Rate Box
-    Then set order details insure-for to $239.00
+    Then set order details insure-for to 239.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -1473,7 +1473,7 @@ Feature: 150 orders
 
     Then set order details ounces to 12
     Then set Order Details service to PM Regional Rate Box A
-    Then set order details insure-for to $105.00
+    Then set order details insure-for to 105.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -1483,7 +1483,7 @@ Feature: 150 orders
 
     Then set order details ounces to 13
     Then set Order Details service to PM Regional Rate Box B
-    Then set order details insure-for to $205.00
+    Then set order details insure-for to 205.00
     Then set order details tracking to USPS Tracking
 
     Then add new order
@@ -1492,7 +1492,7 @@ Feature: 150 orders
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 14
-    Then set order details insure-for to $305.00
+    Then set order details insure-for to 305.00
     Then set order details tracking to Signature Required
 
     # Priority Mail Express
@@ -1551,7 +1551,7 @@ Feature: 150 orders
 
     Then set order details pounds to 20
     Then set Order Details service to MM Package/Flat/Thick Envelope
-    Then set order details insure-for to $56.00
+    Then set order details insure-for to 56.00
     Then set order details tracking to Signature Required
 
     # Parcel Select
@@ -1563,7 +1563,7 @@ Feature: 150 orders
 
     Then set order details pounds to 21
     Then set order details service to PSG Package/Flat/Thick Envelope
-    Then set order details insure-for to $345.00
+    Then set order details insure-for to 345.00
     Then set order details tracking to USPS Tracking
 
     Then add new order
@@ -1573,7 +1573,7 @@ Feature: 150 orders
 
     Then set order details pounds to 22
     Then set order details service to PSG Package/Flat/Thick Envelope
-    Then set order details insure-for to $456.00
+    Then set order details insure-for to 456.00
     Then set order details tracking to Signature Required
 
     Then add new order
@@ -1583,7 +1583,7 @@ Feature: 150 orders
 
     Then set order details pounds to 23
     Then set Order Details service to PSG Oversized Package
-    Then set order details insure-for to $567.00
+    Then set order details insure-for to 567.00
     Then set order details tracking to Signature Required
 
     # International

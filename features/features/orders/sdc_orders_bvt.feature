@@ -33,7 +33,7 @@ Feature:  BVT tests for Orders
     Then set order details service to PM Package
     Then set order details pounds to 1
     Then set order details ounces to 1
-    Then set order details insure-for to $1.00
+    Then set order details insure-for to 1.00
     Then set order details length to 1
     Then set order details width to 1
     Then set order details height to 1
@@ -194,7 +194,7 @@ Feature:  BVT tests for Orders
     Then set order details pounds to 1
     Then set order details ounces to 1
     Then set order details service to PM Package
-    Then set order details insure-for to $100.00
+    Then set order details insure-for to 100.00
     Then set order details tracking to Signature Required
     Then set order details length to 1
     Then set order details width to 1
@@ -273,7 +273,7 @@ Feature:  BVT tests for Orders
     Then expect order details ship-to country is correct
     Then set order details weight to 2 lb 2 oz
     Then set order details service to PMI Package/Flat/Thick Envelope
-    Then set order details insure-for to $100.25
+    Then set order details insure-for to 100.25
     Then set order details reference number to Some random string
     Then on order details form, add item 1, qty 1, id ID 1, description Description 1
     Then on order details form, add item 2, qty 2, id random string, description random string
@@ -301,13 +301,6 @@ Feature:  BVT tests for Orders
     Then add customs associated item 3, description Random String, qty 3, Price 3, Made In Canada, Tariff 3
     Then check customs form i agree to the usps privacy act statement
     Then close customs information form
-
-    Then pause for 1 second
-    Then blur out on order details form
-    Then uncheck grid order id
-    Then pause for 3 seconds
-    Then check grid order id
-    Then pause for 2 seconds
 
     Then expect order details international ship-to name is correct
     Then expect order details international ship-to company is correct
@@ -549,7 +542,7 @@ Feature:  BVT tests for Orders
     Then check order details insure-for checkbox
     Then uncheck order details insure-for checkbox
     Then check order details insure-for checkbox
-    Then set order details insure-for to $11.99
+    Then set order details insure-for to 11.99
     Then set order details tracking to Signature Required
     Then set order details tracking to USPS Tracking
     Then set order details reference to STMPS111
@@ -586,7 +579,7 @@ Feature:  BVT tests for Orders
     Then check order details insure-for checkbox
     Then uncheck order details insure-for checkbox
     Then check order details insure-for checkbox
-    Then set order details insure-for to $11.99
+    Then set order details insure-for to 11.99
     Then set order details reference to STMPS111
     Then on order details form, add item 1, qty 1, id ID 1, description Description 1
     Then on order details form, add item 2, qty 2, id random string, description random string

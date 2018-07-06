@@ -13,7 +13,7 @@ Feature: in Orders Grid, Tracking & Order Status
     Then set order details ounces to 5
     Then set order details service to PM Flat Rate Envelope
     Then check order details insure-for checkbox
-    Then set order details insure-for to $52.99
+    Then set order details insure-for to 52.99
     Then pause for 1 second
     #Then expect orders grid insured value is 52.99
     Then pause for 1 second
