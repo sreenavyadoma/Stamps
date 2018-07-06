@@ -354,6 +354,8 @@ Feature:  Mail BVT
   Scenario: BVT Mail UI Validation for Print Services
     Then sign-in to mail
     Then select print on Shipping Label - 8 ½" x 11" Paper
+    Then click print form mail to link
+    Then close search contacts modal
     Then set print form mail-to to a random address in zone 8
     Then set print form email tracking stamps@mailinator.com
     Then select print form service FCM Large Envelope/Flat

@@ -1,5 +1,5 @@
 
-default: --backtrace --profile rob
+default: --backtrace --profile alex_mail
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
