@@ -179,7 +179,7 @@ module PartnerPortal
       credit_card_fee = []
 
       data.each do |item|
-        account_number << item['AccountNumber'].to_i
+        account_number  << item['AccountNumber'].to_i
         transaction_time << item['TransactionDateTime'].to_datetime
         transaction_type << item['TransactionType'].to_s
         retail_rate << item['RetailRate'].to_f

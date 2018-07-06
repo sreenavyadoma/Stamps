@@ -500,9 +500,23 @@ Then /PP: dashboard page export data for (\d+) dates ranges$/ do |number|
 end
 
 
-Then /PP: open CSV file and validate the data$/ do
-  require 'csv'
+Then /PP: dashboard page export data data validation for (\d+) dates ranges$/ do |number|
+  number.times do
+    step 'PP: set dashboard page from date field to random date'
+    step 'PP: set dashboard page to date field to random date'
+    step 'PP: delete existing csv file'
+    step 'PP: click on the dashboard page download button'
+    step 'PP: click on the dashboard page download modal ok button'
+    step 'PP: expect from date and to date are cleared'
+    step 'PP: Expect a record of Log Type 3 event is added in Audit Records for user'
+    step 'PP: expect CSV file to be downloaded with correct file name'
+    step 'PP: dashboard page export data expect csv file transaction data matches database transaction data'
+    step 'PP: delete existing csv file'
+  end
 
+end
+
+Then /PP: dashboard page export data expect csv file transaction data matches database transaction data$/ do
   headers_expected = ['Account number', 'Transaction Time', 'Transaction Type', 'Retail Rate', 'Payout Amount', 'Tracking Number', 'Weight', 'Zone', 'Package Length',
                       'Package Width', 'Package Height', 'Package Type','Mail Class', 'International Country Group', 'Origination Address ZIP',
                       'Destination Address ZIP', 'Destination Country', 'Extra Service Fee', 'Unique Transaction ID', 'Container Type', 'Is Cubic',
@@ -582,28 +596,15 @@ Then /PP: open CSV file and validate the data$/ do
     end
   end
 
-  date_from_tmp = TestData.hash[:from_date].split('/')
-  from_date = ('20'+date_from_tmp[2]) + '-' + date_from_tmp[0] + '-' + date_from_tmp[1]
-  date_to_tmp = TestData.hash[:to_date].split('/')
-  to_date = ('20'+date_to_tmp[2]) + '-' + date_to_tmp[0] + '-' + date_to_tmp[1]
-
-  step 'establish partner portal db connection'
-  TestData.hash[:account_number], TestData.hash[:transaction_time], TestData.hash[:transaction_type],
-      TestData.hash[:retail_rate], TestData.hash[:payout_amount], TestData.hash[:tracking_number],
-      TestData.hash[:weight], TestData.hash[:zone], TestData.hash[:package_length], TestData.hash[:package_width],
-      TestData.hash[:package_height], TestData.hash[:package_type], TestData.hash[:mail_class], TestData.hash[:international_country_group],
-      TestData.hash[:origination_address_zip],TestData.hash[:destination_address_zip], TestData.hash[:destination_country],
-      TestData.hash[:extra_service_fee], TestData.hash[:unique_transaction_id],TestData.hash[:container_type],
-      TestData.hash[:is_cubic], TestData.hash[:cubic_value], TestData.hash[:is_apf_afo],
-      TestData.hash[:credit_card_fee] = PartnerPortal.common_page.transaction_data(SdcEnv.usr, from_date, to_date)
-  step 'Close partner portal db connection'
+  step 'PP: dashboard page export data retrieve transaction data from database'
 
   if TestData.hash[:account_number].empty?
+    expect(headers_expected).to match_array(headers)
     expect(empty_csv_file).to match_array("No data found for that date range.  Please try again with different dates.")
   else
     expect(headers_expected).to match_array(headers)
     expect(TestData.hash[:account_number]).to match_array(account_number)
-    # expect(TestData.hash[:transaction_time]).to match_array(transaction_time)
+    expect(TestData.hash[:transaction_time]).to match_array(transaction_time)
     expect(TestData.hash[:transaction_type]).to match_array(transaction_type)
     expect(TestData.hash[:payout_amount]).to match_array(payout_amount)
     expect(TestData.hash[:tracking_number]).to match_array(tracking_number)
@@ -629,6 +630,21 @@ Then /PP: open CSV file and validate the data$/ do
 end
 
 
+Then /PP: dashboard page export data retrieve transaction data from database$/ do
+  date_from_tmp = TestData.hash[:from_date].split('/')
+  from_date = ('20'+date_from_tmp[2]) + '-' + date_from_tmp[0] + '-' + date_from_tmp[1]
+  date_to_tmp = TestData.hash[:to_date].split('/')
+  to_date = ('20'+date_to_tmp[2]) + '-' + date_to_tmp[0] + '-' + date_to_tmp[1]
 
+  step 'establish partner portal db connection'
+  TestData.hash[:account_number], TestData.hash[:transaction_time], TestData.hash[:transaction_type],
+      TestData.hash[:retail_rate], TestData.hash[:payout_amount], TestData.hash[:tracking_number],
+      TestData.hash[:weight], TestData.hash[:zone], TestData.hash[:package_length], TestData.hash[:package_width],
+      TestData.hash[:package_height], TestData.hash[:package_type], TestData.hash[:mail_class], TestData.hash[:international_country_group],
+      TestData.hash[:origination_address_zip],TestData.hash[:destination_address_zip], TestData.hash[:destination_country],
+      TestData.hash[:extra_service_fee], TestData.hash[:unique_transaction_id],TestData.hash[:container_type],
+      TestData.hash[:is_cubic], TestData.hash[:cubic_value], TestData.hash[:is_apf_afo],
+      TestData.hash[:credit_card_fee] = PartnerPortal.common_page.transaction_data(SdcEnv.usr, from_date, to_date)
+  step 'Close partner portal db connection'
 
-
+end
