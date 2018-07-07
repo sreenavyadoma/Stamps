@@ -141,8 +141,9 @@ module PartnerPortal
     end
 
     def transaction_data(user,start_date,end_date)
+     #data = PartnerPortal.db_connection.execute( "select pp_trans_data.AccountNumber, CONVERT(VARCHAR, pp_trans_data.TransactionDateTime, 100) AS TransactionDateTime,  pp_trans_data.TransactionType,
      data = PartnerPortal.db_connection.execute( "select pp_trans_data.AccountNumber, pp_trans_data.TransactionDateTime,  pp_trans_data.TransactionType,
-	   pp_trans_data.RetailRate, pp_trans_data.PayoutAmount, pp_trans_data.TrackingNumber, pp_trans_data.Weight,
+     pp_trans_data.RetailRate, pp_trans_data.PayoutAmount, pp_trans_data.TrackingNumber, pp_trans_data.Weight,
 	   pp_trans_data.Zone, pp_trans_data.PackageLength, pp_trans_data.PackageWidth,  pp_trans_data.PackageHeight,
 	   pp_trans_data.PackageType, pp_trans_data.MailClass, pp_trans_data.InternationalCountryGroup, pp_trans_data.OriginationAddressZip,
 	   pp_trans_data.DestinationAddressZip, pp_trans_data.DestinationCountry, pp_trans_data.ExtraServiceFee, pp_trans_data.TransactionID,
