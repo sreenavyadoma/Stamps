@@ -61,7 +61,7 @@ require 'cucumber/rake/task'
   end
 
   Cucumber::Rake::Task.new(:pp_dashboard_single_contract_export_data_validation) do |t|
-    t.profile = 'pp_dashboard_single_contract_export_data_ui_validation'
+    t.profile = 'pp_dashboard_single_contract_export_data_validation'
     t.cucumber_opts = "-p cuke_reports"
   end
 
