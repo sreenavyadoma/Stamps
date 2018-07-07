@@ -585,3 +585,4 @@ pp_left_panel: --tags @pp_left_panel --guess JENKINS=true WEB_DEV=true
 pp_left_panel_mobile: --tags @pp_left_panel_mobile --guess JENKINS=true WEB_DEV=true
 pp_reset_password: --tags @pp_reset_password --guess JENKINS=true WEB_DEV=true
 pp_dashboard_single_contract_export_data_ui_validation: --tags @pp_dashboard_single_contract_export_data_ui_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
+pp_dashboard_single_contract_export_data_validation: --tags @pp_dashboard_single_contract_export_data_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
