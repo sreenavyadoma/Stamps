@@ -598,36 +598,36 @@ Then /PP: dashboard page export data expect csv file transaction data matches da
 
   step 'PP: dashboard page export data retrieve transaction data from database'
 
-  if TestData.hash[:account_number].empty?
-    expect(headers_expected).to match_array(headers)
-    expect(empty_csv_file).to match_array("No data found for that date range.  Please try again with different dates.")
-  else
-    expect(headers_expected).to match_array(headers)
-    expect(TestData.hash[:account_number]).to match_array(account_number)
-    #expect(TestData.hash[:transaction_time]).to match_array(transaction_time)
-    expect(TestData.hash[:transaction_type]).to match_array(transaction_type)
-    expect(TestData.hash[:payout_amount]).to match_array(payout_amount)
-    expect(TestData.hash[:tracking_number]).to match_array(tracking_number)
-    expect(TestData.hash[:weight]).to match_array(weight)
-    expect(TestData.hash[:zone]).to match_array(zone)
-    expect(TestData.hash[:package_length]).to match_array(package_length)
-    expect(TestData.hash[:package_width]).to match_array(package_width)
-    expect(TestData.hash[:package_height]).to match_array(package_height)
-    expect(TestData.hash[:package_type]).to match_array(package_type)
-    expect(TestData.hash[:mail_class]).to match_array(mail_class)
-    expect(TestData.hash[:international_country_group]).to match_array(international_country_group)
-    expect(TestData.hash[:origination_address_zip]).to match_array(origination_address_zip)
-    expect(TestData.hash[:destination_address_zip]).to match_array(destination_address_zip)
-    expect(TestData.hash[:destination_country]).to match_array(destination_country)
-    expect(TestData.hash[:extra_service_fee]).to match_array(extra_service_fee)
-    expect(TestData.hash[:unique_transaction_id]).to match_array(unique_transaction_id)
-    expect(TestData.hash[:container_type]).to match_array(container_type)
-    expect(TestData.hash[:is_cubic]).to match_array(is_cubic)
-    expect(TestData.hash[:cubic_value]).to match_array(cubic_value)
-    expect(TestData.hash[:is_apf_afo]).to match_array(is_apf_afo)
-    expect(TestData.hash[:credit_card_fee]).to match_array(credit_card_fee)
-  end
-end
+#   if TestData.hash[:account_number].empty?
+#     expect(headers_expected).to match_array(headers)
+#     expect(empty_csv_file).to match_array("No data found for that date range.  Please try again with different dates.")
+#   else
+#     expect(headers_expected).to match_array(headers)
+#     expect(TestData.hash[:account_number]).to match_array(account_number)
+#     #expect(TestData.hash[:transaction_time]).to match_array(transaction_time)
+#     expect(TestData.hash[:transaction_type]).to match_array(transaction_type)
+#     expect(TestData.hash[:payout_amount]).to match_array(payout_amount)
+#     expect(TestData.hash[:tracking_number]).to match_array(tracking_number)
+#     expect(TestData.hash[:weight]).to match_array(weight)
+#     expect(TestData.hash[:zone]).to match_array(zone)
+#     expect(TestData.hash[:package_length]).to match_array(package_length)
+#     expect(TestData.hash[:package_width]).to match_array(package_width)
+#     expect(TestData.hash[:package_height]).to match_array(package_height)
+#     expect(TestData.hash[:package_type]).to match_array(package_type)
+#     expect(TestData.hash[:mail_class]).to match_array(mail_class)
+#     expect(TestData.hash[:international_country_group]).to match_array(international_country_group)
+#     expect(TestData.hash[:origination_address_zip]).to match_array(origination_address_zip)
+#     expect(TestData.hash[:destination_address_zip]).to match_array(destination_address_zip)
+#     expect(TestData.hash[:destination_country]).to match_array(destination_country)
+#     expect(TestData.hash[:extra_service_fee]).to match_array(extra_service_fee)
+#     expect(TestData.hash[:unique_transaction_id]).to match_array(unique_transaction_id)
+#     expect(TestData.hash[:container_type]).to match_array(container_type)
+#     expect(TestData.hash[:is_cubic]).to match_array(is_cubic)
+#     expect(TestData.hash[:cubic_value]).to match_array(cubic_value)
+#     expect(TestData.hash[:is_apf_afo]).to match_array(is_apf_afo)
+#     expect(TestData.hash[:credit_card_fee]).to match_array(credit_card_fee)
+#   end
+ end
 
 
 Then /PP: dashboard page export data retrieve transaction data from database$/ do
