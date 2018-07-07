@@ -146,8 +146,29 @@ Feature: PP-MVP: Dashboard Page Single Contract
     Then PP: expect CSV file to be downloaded with correct file name
     Then PP: delete existing csv file
 
-    Then PP: dashboard page export data for 10 dates ranges
+   #Then PP: dashboard page export data for 10 dates ranges
 
   @pp_dashboard_single_contract_export_data_validation
   Scenario: PP: Dashboard Page Single Contract Export Date Data Validation
-    Then PP: dashboard page export data data validation for 10 dates ranges
+    Then PP: set dashboard page from date field to 07/01/17
+    Then PP: set dashboard page to date field to 07/15/17
+    Then PP: delete existing csv file
+    Then PP: click on the dashboard page download button
+    Then PP: expect dashboard page download modal exists
+    Then PP: expect dashboard page download modal header to be Downloading Report
+    Then PP: expect dashboard page download modal paragraph index 1 to be
+     """
+     Your report is being downloaded now. This may take a while for larger data sets.
+     """
+    Then PP: expect dashboard page download modal paragraph index 2 to be
+      """
+      In the meantime, you can close this window and continue to use the portal.
+      """
+    Then PP: click on the dashboard page download modal ok button
+    Then PP: expect from date and to date are cleared
+    Then PP: Expect a record of Log Type 3 event is added in Audit Records for user
+    Then PP: expect CSV file to be downloaded with correct file name
+    Then PP: dashboard page export data expect csv file transaction data matches database transaction data
+    Then PP: delete existing csv file
+
+  #Then PP: dashboard page export data data validation for 10 dates ranges
