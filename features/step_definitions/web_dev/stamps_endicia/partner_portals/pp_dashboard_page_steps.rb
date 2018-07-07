@@ -596,7 +596,7 @@ Then /PP: dashboard page export data expect csv file transaction data matches da
   #   end
   # end
 
-  step 'PP: dashboard page export data retrieve transaction data from database'
+ # step 'PP: dashboard page export data retrieve transaction data from database'
 
 #   if TestData.hash[:account_number].empty?
 #     expect(headers_expected).to match_array(headers)
