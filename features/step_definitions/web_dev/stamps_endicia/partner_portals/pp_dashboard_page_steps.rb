@@ -570,7 +570,7 @@ Then /PP: dashboard page export data expect csv file transaction data matches da
       tmp = item.split(',')[1]
       tmp2= tmp.split('/')
       date = tmp2[1] + '/' + tmp2[0] + '/' + tmp2[2]
-      transaction_time <<  date.to_datetime #to_time
+      transaction_time <<  date.to_time
       transaction_type << item.split(',')[2].to_s
       retail_rate << item.split(',')[3].gsub('$', '').to_f
       payout_amount << item.split(',')[4].gsub('$', '').to_f

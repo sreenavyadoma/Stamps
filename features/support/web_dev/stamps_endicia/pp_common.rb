@@ -181,7 +181,7 @@ module PartnerPortal
 
       data.each do |item|
         account_number  << item['AccountNumber'].to_i
-        transaction_time << item['TransactionDateTime'].to_datetime
+        transaction_time << item['TransactionDateTime']
         transaction_type << item['TransactionType'].to_s
         retail_rate << item['RetailRate'].to_f
         payout_amount << item['PayoutAmount'].to_f
