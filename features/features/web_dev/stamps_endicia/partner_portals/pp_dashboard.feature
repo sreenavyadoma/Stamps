@@ -156,19 +156,19 @@ Feature: PP-MVP: Dashboard Page Single Contract
     Then PP: click on the dashboard page download button
     Then PP: expect dashboard page download modal exists
     Then PP: expect dashboard page download modal header to be Downloading Report
-    Then PP: expect dashboard page download modal paragraph index 1 to be
-     """
-     Your report is being downloaded now. This may take a while for larger data sets.
-     """
-    Then PP: expect dashboard page download modal paragraph index 2 to be
-      """
-      In the meantime, you can close this window and continue to use the portal.
-      """
+#    Then PP: expect dashboard page download modal paragraph index 1 to be
+#     """
+#     Your report is being downloaded now. This may take a while for larger data sets.
+#     """
+#    Then PP: expect dashboard page download modal paragraph index 2 to be
+#      """
+#      In the meantime, you can close this window and continue to use the portal.
+#      """
     Then PP: click on the dashboard page download modal ok button
     Then PP: expect from date and to date are cleared
-    Then PP: Expect a record of Log Type 3 event is added in Audit Records for user
-    Then PP: expect CSV file to be downloaded with correct file name
+    #Then PP: Expect a record of Log Type 3 event is added in Audit Records for user
+    #Then PP: expect CSV file to be downloaded with correct file name
    # Then PP: dashboard page export data expect csv file transaction data matches database transaction data
-    Then PP: delete existing csv file
+   # Then PP: delete existing csv file
 
   #Then PP: dashboard page export data data validation for 10 dates ranges
