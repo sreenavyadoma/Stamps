@@ -517,6 +517,7 @@ Then /PP: dashboard page export data data validation for (\d+) dates ranges$/ do
 end
 
 Then /PP: dashboard page export data expect csv file transaction data matches database transaction data$/ do
+  sleep 10
   headers_expected = ['Account number', 'Transaction Time', 'Transaction Type', 'Retail Rate', 'Payout Amount', 'Tracking Number', 'Weight', 'Zone', 'Package Length',
                       'Package Width', 'Package Height', 'Package Type','Mail Class', 'International Country Group', 'Origination Address ZIP',
                       'Destination Address ZIP', 'Destination Country', 'Extra Service Fee', 'Unique Transaction ID', 'Container Type', 'Is Cubic',
@@ -549,84 +550,84 @@ Then /PP: dashboard page export data expect csv file transaction data matches da
   empty_csv_file = []
   tmp = []
 
-  #
-  # CSV.read("#{Dir.getwd}/download/" + TestData.hash[:file_name],  headers: true).map do |row|
-  #   tmp << row.headers
-  #   break
-  # end
-  # tmp2 = tmp.reject(&:empty?)
-  # headers = tmp2[0][0].split(/\t/)
-  #
-  #
-  # output = CSV.read("#{Dir.getwd}/download/" + TestData.hash[:file_name], headers: true).map do |row|
-  #   row.to_csv(:col_sep => /\t/, row_sep: nil).gsub(/\t/, ',').sub!( /\A.{1}/m, '' ).chop
-  # end
-  #
-  # output.each do |item|
-  #   if item.split(',')[0] == "No data found for that date range.  Please try again with different dates."
-  #     empty_csv_file << item.split(',')[0]
-  #   else
-  #     account_number << item.split(',')[0].to_i
-  #     tmp = item.split(',')[1]
-  #     tmp2= tmp.split('/')
-  #     date = tmp2[1] + '/' + tmp2[0] + '/' + tmp2[2]
-  #     transaction_time <<  date.to_time
-  #     transaction_type << item.split(',')[2].to_s
-  #     retail_rate << item.split(',')[3].gsub('$', '').to_f
-  #     payout_amount << item.split(',')[4].gsub('$', '').to_f
-  #     tracking_number << item.split(',')[5].to_i
-  #     weight <<  item.split(',')[6].to_i
-  #     zone << item.split(',')[7].to_s
-  #     package_length << item.split(',')[8].to_i
-  #     package_width << item.split(',')[9].to_i
-  #     package_height << item.split(',')[10].to_i
-  #     package_type << item.split(',')[11].to_s
-  #     mail_class << item.split(',')[12].to_s
-  #     international_country_group << item.split(',')[13].to_s
-  #     origination_address_zip << item.split(',')[14].to_i
-  #     destination_address_zip << item.split(',')[15].to_i
-  #     destination_country << item.split(',')[16].gsub("\"(?-mix:\\t)\"", ',').to_s
-  #     extra_service_fee << item.split(',')[17].gsub('$', '').to_f
-  #     unique_transaction_id << item.split(',')[18].to_i
-  #     container_type << item.split(',')[19].to_s
-  #     is_cubic << item.split(',')[20].downcase
-  #     cubic_value << item.split(',')[21].to_s
-  #     is_apf_afo <<  item.split(',')[22].downcase
-  #     credit_card_fee << item.split(',')[23].gsub('$', '').to_f
-  #   end
-  # end
 
- # step 'PP: dashboard page export data retrieve transaction data from database'
+  CSV.read("#{Dir.getwd}/download/" + TestData.hash[:file_name],  headers: true).map do |row|
+    tmp << row.headers
+    break
+  end
+  tmp2 = tmp.reject(&:empty?)
+  headers = tmp2[0][0].split(/\t/)
 
-#   if TestData.hash[:account_number].empty?
-#     expect(headers_expected).to match_array(headers)
-#     expect(empty_csv_file).to match_array("No data found for that date range.  Please try again with different dates.")
-#   else
-#     expect(headers_expected).to match_array(headers)
-#     expect(TestData.hash[:account_number]).to match_array(account_number)
-#     #expect(TestData.hash[:transaction_time]).to match_array(transaction_time)
-#     expect(TestData.hash[:transaction_type]).to match_array(transaction_type)
-#     expect(TestData.hash[:payout_amount]).to match_array(payout_amount)
-#     expect(TestData.hash[:tracking_number]).to match_array(tracking_number)
-#     expect(TestData.hash[:weight]).to match_array(weight)
-#     expect(TestData.hash[:zone]).to match_array(zone)
-#     expect(TestData.hash[:package_length]).to match_array(package_length)
-#     expect(TestData.hash[:package_width]).to match_array(package_width)
-#     expect(TestData.hash[:package_height]).to match_array(package_height)
-#     expect(TestData.hash[:package_type]).to match_array(package_type)
-#     expect(TestData.hash[:mail_class]).to match_array(mail_class)
-#     expect(TestData.hash[:international_country_group]).to match_array(international_country_group)
-#     expect(TestData.hash[:origination_address_zip]).to match_array(origination_address_zip)
-#     expect(TestData.hash[:destination_address_zip]).to match_array(destination_address_zip)
-#     expect(TestData.hash[:destination_country]).to match_array(destination_country)
-#     expect(TestData.hash[:extra_service_fee]).to match_array(extra_service_fee)
-#     expect(TestData.hash[:unique_transaction_id]).to match_array(unique_transaction_id)
-#     expect(TestData.hash[:container_type]).to match_array(container_type)
-#     expect(TestData.hash[:is_cubic]).to match_array(is_cubic)
-#     expect(TestData.hash[:cubic_value]).to match_array(cubic_value)
-#     expect(TestData.hash[:is_apf_afo]).to match_array(is_apf_afo)
-#     expect(TestData.hash[:credit_card_fee]).to match_array(credit_card_fee)
-#   end
+
+  output = CSV.read("#{Dir.getwd}/download/" + TestData.hash[:file_name], headers: true).map do |row|
+    row.to_csv(:col_sep => /\t/, row_sep: nil).gsub(/\t/, ',').sub!( /\A.{1}/m, '' ).chop
+  end
+
+  output.each do |item|
+    if item.split(',')[0] == "No data found for that date range.  Please try again with different dates."
+      empty_csv_file << item.split(',')[0]
+    else
+      account_number << item.split(',')[0].to_i
+      tmp = item.split(',')[1]
+      tmp2= tmp.split('/')
+      date = tmp2[1] + '/' + tmp2[0] + '/' + tmp2[2]
+      transaction_time <<  date.to_time
+      transaction_type << item.split(',')[2].to_s
+      retail_rate << item.split(',')[3].gsub('$', '').to_f
+      payout_amount << item.split(',')[4].gsub('$', '').to_f
+      tracking_number << item.split(',')[5].to_i
+      weight <<  item.split(',')[6].to_i
+      zone << item.split(',')[7].to_s
+      package_length << item.split(',')[8].to_i
+      package_width << item.split(',')[9].to_i
+      package_height << item.split(',')[10].to_i
+      package_type << item.split(',')[11].to_s
+      mail_class << item.split(',')[12].to_s
+      international_country_group << item.split(',')[13].to_s
+      origination_address_zip << item.split(',')[14].to_i
+      destination_address_zip << item.split(',')[15].to_i
+      destination_country << item.split(',')[16].gsub("\"(?-mix:\\t)\"", ',').to_s
+      extra_service_fee << item.split(',')[17].gsub('$', '').to_f
+      unique_transaction_id << item.split(',')[18].to_i
+      container_type << item.split(',')[19].to_s
+      is_cubic << item.split(',')[20].downcase
+      cubic_value << item.split(',')[21].to_s
+      is_apf_afo <<  item.split(',')[22].downcase
+      credit_card_fee << item.split(',')[23].gsub('$', '').to_f
+    end
+  end
+
+ step 'PP: dashboard page export data retrieve transaction data from database'
+
+  if TestData.hash[:account_number].empty?
+    expect(headers_expected).to match_array(headers)
+    expect(empty_csv_file).to match_array("No data found for that date range.  Please try again with different dates.")
+  else
+    expect(headers_expected).to match_array(headers)
+    expect(TestData.hash[:account_number]).to match_array(account_number)
+    #expect(TestData.hash[:transaction_time]).to match_array(transaction_time)
+    expect(TestData.hash[:transaction_type]).to match_array(transaction_type)
+    expect(TestData.hash[:payout_amount]).to match_array(payout_amount)
+    expect(TestData.hash[:tracking_number]).to match_array(tracking_number)
+    expect(TestData.hash[:weight]).to match_array(weight)
+    expect(TestData.hash[:zone]).to match_array(zone)
+    expect(TestData.hash[:package_length]).to match_array(package_length)
+    expect(TestData.hash[:package_width]).to match_array(package_width)
+    expect(TestData.hash[:package_height]).to match_array(package_height)
+    expect(TestData.hash[:package_type]).to match_array(package_type)
+    expect(TestData.hash[:mail_class]).to match_array(mail_class)
+    expect(TestData.hash[:international_country_group]).to match_array(international_country_group)
+    expect(TestData.hash[:origination_address_zip]).to match_array(origination_address_zip)
+    expect(TestData.hash[:destination_address_zip]).to match_array(destination_address_zip)
+    expect(TestData.hash[:destination_country]).to match_array(destination_country)
+    expect(TestData.hash[:extra_service_fee]).to match_array(extra_service_fee)
+    expect(TestData.hash[:unique_transaction_id]).to match_array(unique_transaction_id)
+    expect(TestData.hash[:container_type]).to match_array(container_type)
+    expect(TestData.hash[:is_cubic]).to match_array(is_cubic)
+    expect(TestData.hash[:cubic_value]).to match_array(cubic_value)
+    expect(TestData.hash[:is_apf_afo]).to match_array(is_apf_afo)
+    expect(TestData.hash[:credit_card_fee]).to match_array(credit_card_fee)
+  end
  end
 
 
