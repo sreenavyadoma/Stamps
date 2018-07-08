@@ -18,7 +18,7 @@ Feature: Print Certified Mail (with hidden postage)
     Then check advanced options hide label value
     Then expect advanced options hide label value is checked
     Then select print on Certified Mail Label - SDC-3610
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
@@ -36,7 +36,7 @@ Feature: Print Certified Mail (with hidden postage)
     Then check advanced options hide label value
     Then expect advanced options hide label value is checked
     Then select print on Certified Mail Label - SDC-3710
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
@@ -54,7 +54,7 @@ Feature: Print Certified Mail (with hidden postage)
     Then check advanced options hide label value
     Then expect advanced options hide label value is checked
     Then select print on Certified Mail Label - SDC-3910
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
@@ -72,7 +72,7 @@ Feature: Print Certified Mail (with hidden postage)
     Then check advanced options hide label value
     Then expect advanced options hide label value is checked
     Then select print on Certified Mail Label - SDC-3930
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
@@ -90,7 +90,7 @@ Feature: Print Certified Mail (with hidden postage)
     Then check advanced options hide label value
     Then expect advanced options hide label value is checked
     Then select print on Certified Mail Label - SDC-3810
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
@@ -108,6 +108,6 @@ Feature: Print Certified Mail (with hidden postage)
     Then check advanced options hide label value
     Then expect advanced options hide label value is checked
     Then select print on Certified Mail Label - SDC-3830
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button

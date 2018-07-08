@@ -147,12 +147,12 @@ Then /^[Dd]ecrement [Oo]rder [Dd]etails [Ii]nsure-[Ff]or by (\d*)$/ do |str|
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails Domestic [Ss]hip-[Tt]o Company is (.*)$/ do |str| #todo-Rob add is 'correct'
-  step 'show order details form ship-to fields'
+  step 'show order ship-to details'
   expect(stamps.orders.order_details.ship_to.domestic.textarea.text).to include(str)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails Domestic [Ss]hip-[Tt]o Name is (.*)$/ do |str|  #todo-Rob add is 'correct'
-  step 'show order details form ship-to fields'
+  step 'show order ship-to details'
   expect(stamps.orders.order_details.ship_to.domestic.textarea.text).to include(str)
 end
 
@@ -163,14 +163,14 @@ end
 Then /^[Ee]xpect [Oo]rder [Dd]etails Ship-To Address Placeholder is (.*)$/ do |expectation|
   stamps.orders.order_details.wait_until_present(2)
   step 'expect order details is present'
-  step "show order details form ship-to fields"
+  step "show order ship-to details"
   expect(stamps.orders.order_details.ship_to.domestic.textarea.placeholder).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails Ship-To Phone Placeholder is (.*)$/ do |expectation|
   stamps.orders.order_details.wait_until_present(2)
   step 'expect order details is present'
-  step "show order details form ship-to fields"
+  step "show order ship-to details"
   expect(stamps.orders.order_details.ship_to.domestic.phone.placeholder).to eql expectation
 end
 
@@ -203,7 +203,7 @@ end
 Then /^[Ee]xpect [Oo]rder [Dd]etails Domestic Ship-To fields are hidden$/ do
   stamps.orders.order_details.wait_until_present(2)
   step 'expect order details is present'
-  step "show order details form ship-to fields"
+  step "show order ship-to details"
   expect(stamps.orders.order_details.ship_to.domestic.textarea.present?).not_to be(true)
 end
 
@@ -408,7 +408,7 @@ end
 And /^[Ee]xpect [Oo]rder [Dd]etails Ship-To Textbox is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
   step 'expect order details is present'
-  step "show order details form ship-to fields"
+  step "show order ship-to details"
   expect(stamps.orders.order_details.ship_to.domestic.textarea.field.visible?).to be(true)
 end
 
@@ -421,14 +421,14 @@ end
 And /^[Ee]xpect [Oo]rder [Dd]etails Ship-To text area is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
   step 'expect order details is present'
-  step "show order details form ship-to fields"
+  step "show order ship-to details"
   expect(stamps.orders.order_details.ship_to.domestic.textarea.field.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails Phone Textbox is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
   step 'expect order details is present'
-  step "show order details form ship-to fields"
+  step "show order ship-to details"
   expect(stamps.orders.order_details.ship_to.domestic.phone.field.visible?).to be(true)
 end
 

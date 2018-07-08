@@ -1,5 +1,5 @@
-#default: --backtrace --profile saucelabs_local
-default: --backtrace --profile mhossain1_cc
+
+default: --backtrace --profile saucelabs_local
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -13,20 +13,20 @@ samsung_galaxy_sauce: --tags @saucelabs_poc SAUCE_DEVICE=samsung_galaxy_sauce LO
 #todo-Rob set PRINTER=factory as default automation printer
 # Initializing Order Database div
 #robcm=ccpryiihrjz ccfb311osps4x print_dialog_ship_date bvt_international_shipping cchealthchk01
-#rob: --tags @bvt_shipstation_updates_inter    Zxcvbnm.,hgfdsaertjkl;lkuytre321`3543national URL=cc BROWSER=ff LOG_LEVEL=debug HEALTHCHECK=true MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory  DEBUG=tr=-090
+rob: --tags @bvt_international_shipping URL=cc BROWSER=ff LOG_LEVEL=info HEALTHCHECK=true MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory
 #rob: --tags @bvt_shipstation_updates_international URL=sc --guess LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=selenium  USR=scsejsglwa PW=pass111LOG_LEVEL=debug PRINTER=factory  # c2jinmzmu64 schl0vlbfy2673 #19  schl0vlbfy2673
 
 # USR=abqaprod1 PW=password1
 
-rob: --tags @bvt_shipstation_updates_international URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgvoc0kcnt6rw PW=pass111 PRINTER=factory  #stgee1mtqvwdc0 stgvoc0kcnt6rw stgshipint001
+#rob: --tags @bvt_shipstation_updates_domestic URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgvoc0kcnt6rw PW=pass111 PRINTER=factory  #stgee1mtqvwdc0 stgvoc0kcnt6rw stgshipint001
 #rob: --tags @bvt_shipstation_updates_international URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stg_hka6 PW=password1 PRINTER=factory  #stgee1mtqvwdc0 stgvoc0kcnt6rw stgshipint001
 
 
 #  stgvoc0kcnt6rw stgupr2smgtub
 saucelabs: --tags @saucelabs LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug
 saucelabs_local: --tags @bvt_shipstation_updates_international URL=stg USR=stg_hka7 PW=password1 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
-
-saucelabs_local_rob: --tags @bvt_bulk_update URL=stg USR=stg_hka6 PW=password1 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
+# stg_hka6
+saucelabs_local_rob: --tags @bvt_bulk_update URL=stg USR=stgvoc0kcnt6rw PW=pass111 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
 
 # C:\Users\lab>rake authentication URL=stg BROWSER=ff USR=stgvoc0kcnt6rw PW=pass111
 #saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1
@@ -70,7 +70,7 @@ eli_dev: --tags @mail_bvt_ship_date --guess  JENKINS=false HEALTHCHECK=true WEB_
 ray_dev: --tags @rates_parcel_select_ground --guess  JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff USR=default PW=pass111
 sap:              --tags @registration_orders WEB_APP=registration URL=cc --guess  BROWSER=ff MAX_WINDOW=false
 
-alex_mail:  --tags @mail_bvt_address_cleansing BROWSER=ff URL=stg USR=abqast2 PW=password1 new_framework=true  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=true
+alex_mail:  --tags @mail_bvt_ui_validation BROWSER=gc URL=stg USR=stgzom0awk67 PW=pass111 new_framework=true  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=true
 alex_regress:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders URL=cc USR=abqacc10 PW=password1  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false
 alex_rates:  --tags @rates_fcm_package BROWSER=ff URL=qast USR=abqast2 PW=password1 WEB_APP=orders  --guess LOG_LEVEL=info HEALTHCHECK=false
 alex_rates_pmi:  --tags @rates_pmi_comm_plus_group_9 BROWSER=ff WEB_APP=orders URL=stg USR=abqast2 PW=password1  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false
@@ -492,6 +492,7 @@ mail_bvt_purchasing: --tags  @mail_bvt_purchasing --guess  HEALTHCHECK=true
 mail_bvt_stamps: --tags  @mail_bvt_stamps --guess  HEALTHCHECK=true PRINTER=factory
 mail_bvt_international: --tags  @mail_bvt_international --guess  HEALTHCHECK=true
 mail_reset: --tags  @mail_reset --guess  HEALTHCHECK=true
+mail_bvt_ui_validation: --tags  @mail_bvt_ui_validation --guess  HEALTHCHECK=true
 
 dev_mail_authentication: --tags  @mail_authentication --guess  HEALTHCHECK=false
 dev_mail_bvt_address_cleansing: --tags  @mail_bvt_address_cleansing --guess  HEALTHCHECK=false

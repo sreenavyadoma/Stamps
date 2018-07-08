@@ -111,7 +111,7 @@ Feature: All International Rules
 
     Then set order details ounces to 5
     Then set order details service to PMI Flat Rate Envelope
-    Then on order details form, add item 1, qty 1, id random, description random
+    Then add order details item 1, qty 1, id random, description random
 
     Then click order details form customs form button
 
@@ -293,7 +293,7 @@ Feature: All International Rules
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then set order details ounces to 5
     Then set order details service to PMI Flat Rate Envelope
-    Then on order details form, add item 1, qty 1, id random, description random
+    Then add order details item 1, qty 1, id random, description random
     Then set order details service to FCMI Large Envelope/Flat
     Then click order details form customs form button
     Then add customs associated item 1, description random, qty 1, Price 3000, Made In United States, Tariff 10

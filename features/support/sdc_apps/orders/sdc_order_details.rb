@@ -69,7 +69,6 @@ module SdcOrders
     page_object(:phone, tag: :text_field) { {xpath: '(//input[@name="ShipPhone"])[1]'} }
     page_object(:email, tag: :text_field) { {xpath: '(//input[@name="BuyerEmail"])[1]'} }
     page_object(:address, tag: :textarea) { {xpath: '//textarea[contains(@id, "shiptotextarea")]'} }
-    page_object(:show_less) { {xpath: '//div[contains(@id, "domestic")]//span[text()="Less"]'} }
 
     def country
       SdcShipToCountryDom.new
@@ -94,7 +93,8 @@ module SdcOrders
   end
 
   class SdcOrderDetailsShipTo < SdcPage
-    page_object(:show_more) { {xpath: '//div[starts-with(@id, "shiptoview-addressCollapsed")]//a'} }
+    page_object(:show_details) { {xpath: '//div[starts-with(@id, "shiptoview-addressCollapsed")]//a'} }
+    page_object(:show_less) { {xpath: '//div[contains(@id, "domestic")]//span[text()="Less"]'} }
 
     def domestic
       SdcOrderDetailsDomestic.new
@@ -166,8 +166,9 @@ module SdcOrders
     page_object(:weight_label, required: true, timeout: 20) { {xpath: '//*[contains(text(), "Weight:")]'} }
     page_object(:ship_to_label, required: true, timeout: 20) { {xpath: '//div[starts-with(@id, "singleOrderDetailsForm")]//label[text()="Ship To:"]'} }
     page_object(:order_id, required: true, timeout: 20) { {xpath: '(//*[contains(@class, "singleorder-detailsform")]//div[contains(@class, "sdc-toolbar")]//b)[1]'} }
+    page_object(:reference_no, tag: :text_field) { {xpath: '//*[contains(@class, "reference-field-container")]//input'} }
     page_object(:add_item) { {xpath: '//*[text()="Add Item"]'} }
-    page_object(:reference_num, tag: :text_field) { {xpath: '//*[contains(@class, "reference-field-container")]//input'} }
+    page_objects(:items_ordered, index: 0) { { xpath: '//div[text()="Items Ordered"]' } }
 
     def ship_to
       SdcOrderDetailsShipTo.new

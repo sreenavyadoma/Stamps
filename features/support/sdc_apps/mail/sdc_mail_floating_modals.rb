@@ -91,6 +91,16 @@ module SdcMail
       page_object(:hold_pickup_verify) { {xpath: '//*[@id="sdc-extraserviceswin-hfpucheckbox-bodyEl"]/..' } }
       checkbox(:hold_pickup, :hold_pickup_chooser, :hold_pickup_verify, 'class', 'checked')
 
+      page_object(:do_not_deliver_saturday_chooser) { {id: 'sdc-extraserviceswin-ndwcheckbox-displayEl'} }
+      page_object(:do_not_deliver_saturday_verify) { {xpath: '//*[@id="sdc-extraserviceswin-ndwcheckbox-bodyEl"]/..' } }
+      checkbox(:do_not_deliver_saturday, :do_not_deliver_saturday_chooser, :do_not_deliver_saturday_verify, 'class', 'checked')
+
+      page_object(:odd_shaped_chooser) { {id: 'sdc-extraserviceswin-oddcheckbox-displayEl'} }
+      page_object(:odd_shaped_verify) { {xpath: '//*[@id="sdc-extraserviceswin-oddcheckbox-bodyEl"]/..' } }
+      checkbox(:odd_shaped, :odd_shaped_chooser, :odd_shaped_verify, 'class', 'checked')
+
+      page_object(:odd_shaped_tooltip) { {xpath: '//b[text()="Odd Shaped / Non-Machinable"]'} }
+
       page_object(:security_price) { { id: 'sdc-extraserviceswin-securitypricelabel' } }
       page_object(:return_receipt_price) { { id: 'sdc-extraserviceswin-rrpricelabel' } }
       page_object(:restricted_delivery_price) { { id: 'sdc-extraserviceswin-rdpricelabel' } }
@@ -100,6 +110,8 @@ module SdcMail
       page_object(:fragile_price) { { id: 'sdc-extraserviceswin-shpricelabel' } }
       page_object(:return_receipt_m_price) { { id: 'sdc-extraserviceswin-rrmpricelabel' } }
       page_object(:hold_pickup_price) { { id: 'sdc-extraserviceswin-hfpupricelabel' } }
+      page_object(:do_not_deliver_saturday_price) { { id: 'sdc-extraserviceswin-ndwpricelabel' } }
+      page_object(:odd_shaped_price) { { id: 'sdc-extraserviceswin-oddpricelabel' } }
 
       def security
         SdcExtraServicesSecurity.new
@@ -164,6 +176,64 @@ module SdcMail
       SdcNotificationBar.new
     end
     module_function :notification_bar
+  class SdcServiceCommitments < SdcPage
+    page_object(:title) { {xpath: '//*[text()="Priority Mail Express Service Commitments"]'} }
+    page_object(:x_btn) { {xpath: '//div[text()="Priority Mail Express Service Commitments"]/../..//*[contains(@class, "close")]'} }
+  end
+
+  class SdcSaveAsFavorite < SdcPage
+    page_object(:title) { {xpath: '//div[text()="Save as Favorite"]'} }
+    page_object(:save) { {xpath: '//*[text()="Save"]'} }
+    page_object(:name, tag: :text_field) { {id: 'sdc-favorites-namefield-inputEl'} }
+    page_object(:x_btn) { {xpath: '//div[text()="Save as Favorite"]/../..//*[contains(@class, "close")]'} }
+
+    page_object(:include_delivery_adr_chooser) { {id: 'sdc-favorites-delivery-address-checkbox-displayEl'} }
+    page_object(:include_delivery_adr_verify) { {xpath: '//*[@id="sdc-favorites-delivery-address-checkbox-bodyEl"]/..' } }
+    checkbox(:include_delivery_adr, :include_delivery_adr_chooser, :include_delivery_adr_verify, 'class', 'checked')
+  end
+
+  class SdcManageFavorites < SdcPage
+    page_object(:title) { {xpath: '//div[text()="Manage Favorites"]'} }
+    page_object(:rename) { {xpath: '//*[text()="Rename"]'} }
+    page_object(:delete) { {xpath: '//*[text()="Delete"]'} }
+    page_object(:x_btn) { {xpath: '//div[text()="Manage Favorites"]/../..//*[contains(@class, "close")]'} }
+
+    def selection_element(name, num)
+      page_object(name) { {xpath: "(//*[contains(@id, 'managefavoritesmodal')]//img)[#{num}]"} }
+    end
+
+    def rename_favorite
+      SdcManageFavoritesRename.new
+    end
+
+    def delete_favorite
+      SdcManageFavoritesDelete.new
+    end
+
+    class SdcManageFavoritesRename < SdcPage
+      page_object(:title) { {xpath: '//div[text()="Rename Favorite"]'} }
+      page_object(:save) { {xpath: '//*[text()="Save"]'} }
+      page_object(:name, tag: :text_field) { {id: 'sdc-favorites-rename-namefield-inputEl'} }
+      page_object(:x_btn) { {xpath: '//div[text()="Rename Favorite"]/../..//*[contains(@class, "close")]'} }
+    end
+
+    class SdcManageFavoritesDelete < SdcPage
+      page_object(:title) { {xpath: '//div[text()="Delete Favorite"]'} }
+      page_object(:delete) { {xpath: '//*[text()="Delete"][contains(@class, "primary")]'} }
+      page_object(:x_btn) { {xpath: '//div[text()="Delete Favorite"]/../..//*[contains(@class, "close")]'} }
+    end
+  end
+
+  class SdcFeedback < SdcPage
+    page_object(:title) { {xpath: '//div[text()="Feedback"]'} }
+    page_object(:x_btn) { {xpath: '//div[text()="Feedback"]/../..//*[contains(@class, "close")]'} }
+  end
+
+  class SdcSettings < SdcPage
+    page_object(:title) { {xpath: '//div[text()="Settings"]'} }
+    page_object(:x_btn) { {xpath: '//div[text()="Settings"]/../..//*[contains(@class, "close")]'} }
+  end
+
 
     def manage_print_options
       SdcManagePrintOptions.new
@@ -214,6 +284,31 @@ module SdcMail
       SdcSpecialContentsWarning.new
     end
     module_function :special_contents_warning
+
+    def service_commitments
+      SdcServiceCommitments.new
+    end
+    module_function :service_commitments
+
+    def save_as_favorite
+      SdcSaveAsFavorite.new
+    end
+    module_function :save_as_favorite
+
+    def manage_favorites
+      SdcManageFavorites.new
+    end
+    module_function :manage_favorites
+
+    def feedback
+      SdcFeedback.new
+    end
+    module_function :feedback
+
+    # def settings
+    #   SdcSettings.new
+    # end
+    # module_function :settings
 
     def search_contacts
       SdcSearchContacts.new

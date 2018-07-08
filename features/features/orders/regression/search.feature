@@ -12,7 +12,7 @@ Feature:  Search Orders
     Then set order details ship-to to random address in zone 1
     Then set order details email to random
     Then set order details phone to random
-    Then hide order details form Ship-To fields
+    Then hide order ship-to details
     Then set order details service to PM Package
     Then set order details weight to 1 lb 1 oz
     Then uncheck grid order id
@@ -55,7 +55,7 @@ Feature:  Search Orders
     Then set order details ship-to to random address in zone 1
     Then set order details email to random
     Then set order details phone to random
-    Then hide order details form Ship-To fields
+    Then hide order ship-to details
     Then set order details service to PM Package
     Then set order details weight to 1 lb 1 oz
 
@@ -70,7 +70,6 @@ Feature:  Search Orders
     Then search filtered Orders for cached Order ID
     Then expect filter panel search results tab is present
     Then expect Filter Panel search result count is 1
-    #Then expect cached order id is in orders grid row 1
     Then expect cached Order ID exist in the selected filter
     Then remove Filter Panel search results tab
     Then expect filter panel search results tab is not present
@@ -79,7 +78,6 @@ Feature:  Search Orders
     Then search filtered Orders for cached Ship-To full name
     Then expect filter panel search results tab is present
     Then expect Filter Panel search result count is 1
-    #Then expect cached order id is in orders grid row 1
     Then expect cached Order ID exist in the selected filter
     Then remove Filter Panel search results tab
     Then expect filter panel search results tab is not present
@@ -88,7 +86,6 @@ Feature:  Search Orders
     Then search filtered Orders for cached Ship-To Company name
     Then expect filter panel search results tab is present
     Then expect Filter Panel search result count is 1
-    #Then expect cached order id is in orders grid row 1
     Then expect cached Order ID exist in the selected filter
     Then remove Filter Panel search results tab
     Then expect filter panel search results tab is not present

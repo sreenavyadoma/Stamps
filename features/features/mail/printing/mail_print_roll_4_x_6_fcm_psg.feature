@@ -15,7 +15,7 @@ Feature: Mail Roll - 4" x 6" - FCM PSG
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer ZDesigner
     Then click Mail Print modal Print button
 
@@ -26,7 +26,7 @@ Feature: Mail Roll - 4" x 6" - FCM PSG
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service FCM Package/Thick Envelope
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer ZDesigner
     Then click Mail Print modal Print button
 
@@ -40,7 +40,7 @@ Feature: Mail Roll - 4" x 6" - FCM PSG
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service PSG Large Package
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer ZDesigner
     Then click Mail Print modal Print button
 
@@ -51,7 +51,7 @@ Feature: Mail Roll - 4" x 6" - FCM PSG
     Then set print form mail-to to a random address in zone 5 through 8
     Then set print form ounces to 1
     Then select print form service PSG Oversized Package
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer ZDesigner
     Then click Mail Print modal Print button
 
@@ -62,7 +62,7 @@ Feature: Mail Roll - 4" x 6" - FCM PSG
     Then set print form mail-to to a random address in zone 5 through 8
     Then set print form ounces to 1
     Then select print form service PSG Package/Flat/Thick Envelope
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer ZDesigner
     Then click Mail Print modal Print button
 

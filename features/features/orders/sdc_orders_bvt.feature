@@ -33,7 +33,7 @@ Feature:  BVT tests for Orders
     Then set order details service to PM Package
     Then set order details pounds to 1
     Then set order details ounces to 1
-    Then set order details insure-for to $1.00
+    Then set order details insure-for to 1.00
     Then set order details length to 1
     Then set order details width to 1
     Then set order details height to 1
@@ -42,7 +42,7 @@ Feature:  BVT tests for Orders
     Then expect orders grid pounds is 1
     Then expect orders grid ounces is 1
     Then expect orders grid weight is 1 lb. 1 oz.
-    Then expect orders grid insured value is $1.00
+    Then expect orders grid insured value is 1.00
     Then sign-out of SDC Website
 
   @bvt_orders_ship_date
@@ -179,8 +179,6 @@ Feature:  BVT tests for Orders
     Then expect filter panel search results tab is present
     Then expect Filter Panel search result count is 1
     Then check grid order id
-    Then expect Order Details Order ID equals Grid Order ID in row 1
-    Then expect Order Details Order ID is the same as saved Order ID
     Then expect Filter Panel search result count is greater than 0
     Then remove Filter Panel search results tab
     Then expect filter panel search results tab is not present
@@ -191,38 +189,28 @@ Feature:  BVT tests for Orders
     Then sign-in to orders
     Then add new order
     Then set order details ship-to domestic address to
-      | full_name       | company      | street_address   | street_address2| city    | state | zip    | country  |
-      | First Last      | Company Name | 777 N Orange Ave | Apt 100         | Orlando | FL    | 32801  | United States |
-    Then set order details phone to 888-888-8888
-    Then set order details email to rtest@stamps.com
+      | full_name       | company      | street_address1   | street_address2| city    | state | zip    | country  | phone | email |
+      | First Last      | Company Name | 777 N Orange Ave | Apt 100         | Orlando | FL    | 32801  | United States | random | random |
     Then set order details pounds to 1
     Then set order details ounces to 1
     Then set order details service to PM Package
-    Then set order details insure-for to $100.00
-    # Then set Order Details Tracking to Signature Required
+    Then set order details insure-for to 100.00
+    Then set order details tracking to Signature Required
     Then set order details length to 1
     Then set order details width to 1
     Then set order details height to 1
-    Then expect orders grid service is Priority Mail
-    Then expect orders grid service is PM Package
-    Then expect orders grid service is correct
 
     Then set order details reference number to Update Orders To ShipStation
-    Then on order details form, add item 1, qty 1, id Item 1 SKU, description Item 1 Description
-
-    Then pause for 2 seconds
-    Then blur out on order details form
-    Then pause for 2 seconds
-
-    Then uncheck grid order id
-
-    Then pause for 2 seconds
-    Then check grid order id
-    Then pause for 2 seconds
-    Then blur out on order details form
+    Then add order details item 1, qty 1, id Item 1 SKU, description Item 1 Description
 
   #Verify Single Order Details form was saved in ShipStation
-    Then expect order details ship-from and ship-from saved values are the same
+    #Then expect order details ship-from is correct
+    #Then expect orders grid date printed is correct
+    #Then expect orders grid ship date is correct
+    Then expect orders grid service is correct
+    Then expect orders grid service is correct
+    Then expect order details ship-to phone is correct
+    Then expect order details ship-to email is correct
     Then expect order details ship-to name is First Last
     Then expect order details ship-to company name is Company Name
     Then expect order details ship-to cleansed street address is 777 N Orange Ave Apt 100
@@ -230,8 +218,8 @@ Feature:  BVT tests for Orders
     Then expect order details ship-to cleansed state is FL
     Then expect order details ship-to cleansed zip plus 4 code is 32801-1175
     Then expect order details ship-to cleansed zip code is 32801
-    Then expect order details ship-to phone is 888-888-8888
-    Then expect order details ship-to email is rtest@stamps.com
+    Then expect order details ship-to phone is correct
+    Then expect order details ship-to email is correct
     Then expect order details pound is 1
     Then expect order details ounce is 1
     Then expect order details length is 1
@@ -244,8 +232,8 @@ Feature:  BVT tests for Orders
     Then expect order details reference number is correct
 
     Then expect orders grid store is Manual Orders
-    Then expect orders grid order id is the same as details form order id
-    Then expect orders grid ship cost is the same as details form ship cost
+    Then expect orders grid order id is correct
+    Then expect orders grid ship cost is correct
     Then expect orders grid age is < 24 hours
     Then expect orders grid order date is populated
     Then expect orders grid recipient is correct
@@ -254,21 +242,25 @@ Feature:  BVT tests for Orders
     Then expect orders grid city is Orlando
     Then expect orders grid state is FL
     Then expect orders grid zip is 32801-1175
-    Then expect orders grid phone is 888-888-8888
-    Then expect orders grid email is rtest@stamps.com
+    Then expect orders grid phone is correct
+    Then expect orders grid tracking service is correct
+    Then expect orders grid email is correct
+    Then expect orders grid reference number is correct
     Then expect orders grid qty is 1
     Then expect orders grid item sku is Item 1 SKU
     Then expect orders grid item name is Item 1 Description
-    Then expect orders grid service is Priority Mail
+    Then expect orders grid service is correct
     Then expect orders grid weight is 1 lb. 1 oz.
     Then expect orders grid order status is Awaiting Shipment
     Then expect orders grid pounds is 1
     Then expect orders grid ounces is 1
-    Then expect orders grid insured value is $100.00
-
-    Then click orders toolbar print button
-    Then in print modal, click close button
-    Then sign out
+    Then expect orders grid insured value is 100.00
+    #Then expect orders grid order total is correct
+    #Then expect orders grid tracking number is populated
+#
+#    Then click orders toolbar print button
+#    Then in print modal, click close button
+#    Then sign out
 
 
   @bvt_shipstation_updates_international
@@ -281,12 +273,11 @@ Feature:  BVT tests for Orders
     Then expect order details ship-to country is correct
     Then set order details weight to 2 lb 2 oz
     Then set order details service to PMI Package/Flat/Thick Envelope
-    Then set order details insure-for to $100.25
+    Then set order details insure-for to 100.25
     Then set order details reference number to Some random string
-    Then on order details form, add item 1, qty 1, id ID 1, description Description 1
-    Then on order details form, add item 2, qty 2, id random string, description random string
-    Then on order details form, add item 3, qty 3, id ID 3, description random string
-    Then expect orders grid service is Priority Mail International
+    Then add order details item 1, qty 1, id ID 1, description Description 1
+    Then add order details item 2, qty 2, id random string, description random string
+    Then add order details item 3, qty 3, id ID 3, description random string
     Then expect orders grid service is correct
 
     Then click order details form customs form button
@@ -310,13 +301,6 @@ Feature:  BVT tests for Orders
     Then add customs associated item 3, description Random String, qty 3, Price 3, Made In Canada, Tariff 3
     Then check customs form i agree to the usps privacy act statement
     Then close customs information form
-
-    Then pause for 1 second
-    Then blur out on order details form
-    Then uncheck grid order id
-    Then pause for 3 seconds
-    Then check grid order id
-    Then pause for 2 seconds
 
     Then expect order details international ship-to name is correct
     Then expect order details international ship-to company is correct
@@ -386,10 +370,10 @@ Feature:  BVT tests for Orders
     Then expect orders grid item name is Multiple
     Then expect orders grid weight is 2 lb. 2 oz.
 
-    Then expect orders grid service is Priority Mail International
+    Then expect orders grid service is correct
     Then expect orders grid service is correct
 #    Then expect order details insure-for is correct
-#    Then expect orders grid order status is Awaiting Shipment
+   Then expect orders grid order status is Awaiting Shipment
 
     Then sign out
 
@@ -398,7 +382,7 @@ Feature:  BVT tests for Orders
     Then sign-in to orders
     Then add new order
     Then set order details ship-to domestic address to
-      | full_name     | company | street_address     | street_address2 | city          | state | zip | country       | phone          |  email           |
+      | full_name     | company | street_address1     | street_address2 | city          | state | zip | country       | phone          |  email           |
       | Euan Davidson | Betfair | 1350 Market Street |                 | San Francisco | CA    |     | United States | (415) 123-5555 | rtest@stamps.com |
     Then set order details service to PM Package
     Then set order details ounces to 1
@@ -518,7 +502,6 @@ Feature:  BVT tests for Orders
     Then select orders filter awaiting shippment tab
     Then select orders filter shipped tab
     #Then in Orders Grid, Sort Order Date in Descending Order
-    #Then expect cached order id is in orders grid row 1
     Then sign out
 
   @bvt_orders_ui_validation
@@ -559,13 +542,13 @@ Feature:  BVT tests for Orders
     Then check order details insure-for checkbox
     Then uncheck order details insure-for checkbox
     Then check order details insure-for checkbox
-    Then set order details insure-for to $11.99
+    Then set order details insure-for to 11.99
     Then set order details tracking to Signature Required
     Then set order details tracking to USPS Tracking
     Then set order details reference to STMPS111
-    Then on order details form, add item 1, qty 1, id ID 1, description Description 1
-    Then on order details form, add item 2, qty 2, id random string, description random string
-    Then on order details form, add item 3, qty 3, id ID 3, description random string
+    Then add order details item 1, qty 1, id ID 1, description Description 1
+    Then add order details item 2, qty 2, id random string, description random string
+    Then add order details item 3, qty 3, id ID 3, description random string
     Then sign out
 
   @bvt_orders_ui_validation
@@ -596,10 +579,10 @@ Feature:  BVT tests for Orders
     Then check order details insure-for checkbox
     Then uncheck order details insure-for checkbox
     Then check order details insure-for checkbox
-    Then set order details insure-for to $11.99
+    Then set order details insure-for to 11.99
     Then set order details reference to STMPS111
-    Then on order details form, add item 1, qty 1, id ID 1, description Description 1
-    Then on order details form, add item 2, qty 2, id random string, description random string
+    Then add order details item 1, qty 1, id ID 1, description Description 1
+    Then add order details item 2, qty 2, id random string, description random string
     Then click order details form customs form button
     Then expect customs i agree to the usps privacy act statement is unchecked
     Then set customs package contents to Document
