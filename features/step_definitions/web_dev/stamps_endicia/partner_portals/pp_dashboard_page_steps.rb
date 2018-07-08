@@ -374,6 +374,7 @@ end
 
 Then /^PP: click on the dashboard page download button$/ do
   PartnerPortal.dashboard_page.download.send_keys(:enter)
+  File.open('C:\Stamps\path.txt', 'w') { |file| file.write("#{Dir.getwd}/download/") }
 end
 
 Then /^PP: expect dashboard page download button exists$/ do
@@ -548,8 +549,6 @@ Then /PP: dashboard page export data expect csv file transaction data matches da
   credit_card_fee = []
   empty_csv_file = []
   tmp = []
-
-  File.open('C:\Stamps\path.txt', 'w') { |file| file.write("#{Dir.getwd}/download/") }
 
   CSV.read("#{Dir.getwd}/download/" + TestData.hash[:file_name],  headers: true).map do |row|
     tmp << row.headers
