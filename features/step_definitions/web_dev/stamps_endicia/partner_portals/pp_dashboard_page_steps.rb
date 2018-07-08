@@ -411,15 +411,16 @@ end
 
 
 Then /^PP: expect CSV file to be downloaded with correct file name$/ do
-  download_directory = "#{Dir.getwd}/download"
-  #download_directory = data_for(:download, {})['download_file_path']
-  downloads_before = Dir.entries download_directory
+   download_directory = "#{Dir.getwd}/download"
+  # #download_directory = data_for(:download, {})['download_file_path']
+   downloads_before = Dir.entries download_directory
 
   case(SdcEnv.browser)
     when :chrome
       600.times do
-        if  Dir.entries(download_directory).size == 3
-          TestData.hash[:file_name]  =  Dir.entries(download_directory)[2]
+        difference = Dir.entries(download_directory)
+        if difference.last.exclude?('.crdownload')
+          TestData.hash[:file_name]  =  difference.last
           break
         end
         sleep 1
@@ -448,8 +449,9 @@ Then /^PP: expect CSV file to be downloaded with correct file name$/ do
   case(SdcEnv.browser_mobile_emulator)
     when /\w/
       600.times do
-        if  Dir.entries(download_directory).size == 3
-          TestData.hash[:file_name]  =  Dir.entries(download_directory)[2]
+        difference = Dir.entries(download_directory)
+        if difference.last.exclude?('.crdownload')
+          TestData.hash[:file_name]  =  difference.last
           break
         end
         sleep 1
