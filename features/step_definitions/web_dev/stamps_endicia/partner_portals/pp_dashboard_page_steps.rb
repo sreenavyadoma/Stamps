@@ -517,7 +517,6 @@ Then /PP: dashboard page export data data validation for (\d+) dates ranges$/ do
 end
 
 Then /PP: dashboard page export data expect csv file transaction data matches database transaction data$/ do
-  sleep 10
   headers_expected = ['Account number', 'Transaction Time', 'Transaction Type', 'Retail Rate', 'Payout Amount', 'Tracking Number', 'Weight', 'Zone', 'Package Length',
                       'Package Width', 'Package Height', 'Package Type','Mail Class', 'International Country Group', 'Origination Address ZIP',
                       'Destination Address ZIP', 'Destination Country', 'Extra Service Fee', 'Unique Transaction ID', 'Container Type', 'Is Cubic',
@@ -550,7 +549,7 @@ Then /PP: dashboard page export data expect csv file transaction data matches da
   empty_csv_file = []
   tmp = []
 
-  File.open('C:\path.txt', 'w') { |file| file.write("#{Dir.getwd}/download/" + TestData.hash[:file_name]) }
+  File.open('C:\Stamps\path.txt', 'w') { |file| file.write("#{Dir.getwd}/download/") }
 
   CSV.read("#{Dir.getwd}/download/" + TestData.hash[:file_name],  headers: true).map do |row|
     tmp << row.headers
