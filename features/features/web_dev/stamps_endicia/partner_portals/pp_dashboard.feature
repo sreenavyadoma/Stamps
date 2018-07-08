@@ -166,7 +166,7 @@ Feature: PP-MVP: Dashboard Page Single Contract
 #      """
     Then PP: click on the dashboard page download modal ok button
     Then PP: expect from date and to date are cleared
-    #Then PP: Expect a record of Log Type 3 event is added in Audit Records for user
+    Then PP: Expect a record of Log Type 3 event is added in Audit Records for user
     #Then PP: expect CSV file to be downloaded with correct file name
    # Then PP: dashboard page export data expect csv file transaction data matches database transaction data
    # Then PP: delete existing csv file
