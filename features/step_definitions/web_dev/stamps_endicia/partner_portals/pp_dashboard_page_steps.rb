@@ -374,7 +374,6 @@ end
 
 Then /^PP: click on the dashboard page download button$/ do
   PartnerPortal.dashboard_page.download.send_keys(:enter)
-  File.open('C:\Stamps\path.txt', 'w') { |file| file.write("#{Dir.getwd}/download/") }
 end
 
 Then /^PP: expect dashboard page download button exists$/ do
