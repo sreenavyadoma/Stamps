@@ -550,7 +550,7 @@ Then /PP: dashboard page export data expect csv file transaction data matches da
   empty_csv_file = []
   tmp = []
 
-
+puts "#{Dir.getwd}/download/" + TestData.hash[:file_name]
   CSV.read("#{Dir.getwd}/download/" + TestData.hash[:file_name],  headers: true).map do |row|
     tmp << row.headers
     break
