@@ -29,5 +29,6 @@ require_relative 'sdc_apps/sdc_navigation'
 # web dev
 require_relative 'web_dev/stamps_endicia/partner_portal'
 
+require_relative 'helpers/test_helpers'
 
 World Stamps, SdcWebsite, SdcOrders, SdcMail, SdcNavigation, PartnerPortal
