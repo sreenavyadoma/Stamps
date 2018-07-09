@@ -8,6 +8,7 @@ include RSpec
 include RSpec::Matchers
 include DataMagic
 include PartnerPortal
+include WhiteLabel
 
 Before do |scenario|
   SdcEnv.scenario = scenario

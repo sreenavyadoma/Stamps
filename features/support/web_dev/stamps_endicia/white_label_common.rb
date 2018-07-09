@@ -1,7 +1,11 @@
-module WhileLabel
-  class Common < SdcPage
+module WhiteLabel
 
-    def self.sdcwr_visit
+  class Common < SdcPage
+    button(:get_started) { { class: ['btn btn-success btn-xs register']} }
+  end
+
+  class SDCWWebsite
+    def self.visit
       page_url { |env| "https://#{env}stamps.com/" }
       super(case SdcEnv.env
               when :qacc
@@ -14,10 +18,13 @@ module WhileLabel
                 # ignore
             end)
     end
+  end
+
+  class EWWebsite
 
     def self.visit
       page_url { |env| "https://#{env}endicia.com/" }
-          super(case SdcEnv.env
+      super(case SdcEnv.env
               when :qacc
                 'registration.qacc.'
               when :stg
@@ -28,7 +35,6 @@ module WhileLabel
                 # ignore
             end)
     end
-
-    button(:get_started) { { class: ['btn btn-success btn-xs register']} }
   end
+
 end
