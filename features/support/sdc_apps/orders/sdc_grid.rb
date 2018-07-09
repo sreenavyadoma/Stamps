@@ -262,6 +262,7 @@ module SdcGrid
     case name
     when :checkbox
       SdcGridCheckBox.new
+
     when :weight
       klass = Class.new(SdcGridItem) do
         def lb order_id
@@ -274,6 +275,7 @@ module SdcGrid
       end
 
       klass.new(name)
+
     else
       SdcGridItem.new(name)
     end
