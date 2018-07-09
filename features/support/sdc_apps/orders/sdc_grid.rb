@@ -253,14 +253,14 @@ module SdcGrid
   end
   module_function :body
 
-  def grid_column(name)
+  def grid_column(column)
     body.wait_until_present(timeout: 15)
 
-    unless GridItem.column_names.keys.include? name
-      raise ArgumentError, "Invalid grid column: #{name}"
+    unless GridItem.column_names.keys.include? column
+      raise ArgumentError, "Invalid grid column: #{column}"
     end
 
-    case name
+    case column
     when :checkbox
       SdcGridCheckBox.new
 
@@ -275,10 +275,10 @@ module SdcGrid
         end
       end
 
-      klass.new(name)
+      klass.new(column)
 
     else
-      SdcGridItem.new(name)
+      SdcGridItem.new(column)
     end
   end
   module_function :grid_column
