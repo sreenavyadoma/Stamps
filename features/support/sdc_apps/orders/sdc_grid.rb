@@ -66,7 +66,7 @@ module SdcGrid
       field
     end
 
-    def data(column, order_id)
+    def text_for_id(column, order_id)
       row = row_num(order_id)
       text_at(column, row)
     end
@@ -223,7 +223,7 @@ module SdcGrid
     end
 
     def data(order_id)
-      super(@column, order_id)
+      text_for_id(@column, order_id)
     end
 
     def element(row)
