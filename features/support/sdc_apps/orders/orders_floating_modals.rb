@@ -210,5 +210,6 @@ module SdcOrders
       PrintAllOrders.new
     end
     module_function :print_all
+
   end
 end

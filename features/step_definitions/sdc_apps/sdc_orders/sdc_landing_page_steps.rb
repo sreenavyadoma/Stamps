@@ -70,6 +70,7 @@ Then /^sign-in to orders$/ do
     step 'click sign-in button on android'
   else
     step 'click sign-in button on browser'
+    step 'close whats new modal in orders'
   end
 end
 
@@ -120,6 +121,12 @@ end
 Then /^click Orders landing page sign-in button$/ do
   SdcWebsite.landing_page.sign_in.wait_until_present(timeout: 3)
   SdcWebsite.landing_page.sign_in.click
+end
+
+Then /^close whats new modal in orders$/ do
+  if SdcWebsite.modals.whats_new.title.present?
+    SdcWebsite.modals.whats_new.close.click
+  end
 end
 
 Then /^[Ss]ign-out of SDC [Ww]ebsite$/ do
