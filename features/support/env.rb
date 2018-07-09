@@ -48,4 +48,4 @@ require_relative 'helpers/test_helpers'
 #require_relative 'lib/mail/print_form_panel_elements'
 #require_relative 'lib/mail/print_form_panel'
 
-World Stamps, SdcWebsite, SdcOrders, SdcMail, SdcNavigation, PartnerPortal
+World Stamps, SdcWebsite, SdcOrders, SdcMail, SdcNavigation, PartnerPortal, WhiteLabel
