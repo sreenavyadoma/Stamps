@@ -37,10 +37,6 @@ module SdcOrders
     end
   end
 
-  class InsuranceTerms < SdcPage
-
-  end
-
   class SdcDetailsInsurance < SdcPage
     page_object(:cost) { {xpath: '(//div[contains(@id, "singleOrderDetailsForm")]//div[7]//label[contains(@class, "component")])[2]'} }
 

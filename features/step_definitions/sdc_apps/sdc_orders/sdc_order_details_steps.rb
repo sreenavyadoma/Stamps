@@ -475,10 +475,23 @@ end
 
 Then /^set order details insure-for to (\d+\.\d{2})$/ do |str|
   insure_for = SdcOrders.order_details.insure_for
+  insurance_terms = SdcOrders.modals.insurance_terms
+
   insure_for.checkbox.check
   insure_for.checkbox.safe_wait_until_chosen(timeout: 3)
   expect(insure_for.checkbox.checked?). to be(true), 'Cannot check Insure-for checkbox'
   insure_for.amount.set(str)
+  insure_for.cost.double_click
+  insure_for.cost.safe_click
+  insurance_terms.title.safe_wait_until_present(timeout: 2)
+  if insurance_terms.title.present?
+    window_title = 'Stamps.com Insurance Terms and Conditions'
+    expect(insurance_terms.title.text).to eql window_title
+    insurance_terms.i_agree.wait_until_present(timeout: 1)
+    insurance_terms.i_agree.click
+    insurance_terms.i_agree.safe_click
+  end
+  insurance_terms.title.wait_while_present(timeout: 3)
   TestData.hash[:insured_value] = str.to_f
   step 'blur out on order details form'
   step 'Save Order Details data'

@@ -1,5 +1,14 @@
 module SdcOrders
   module OrdersFloatingModals
+
+    class InsuranceTerms < SdcPage
+      page_object(:title) { { xpath: '//div[text()="Stamps.com Insurance Terms and Conditions"]' } }
+      page_object(:terms_link) { { xpath: '//u[text()="Stamps.com Insurance Terms and Conditions"]' } }
+      page_object(:i_agree) { { xpath: '//a[contains(@class, "sdc-inseula-agreebtn")]//span[contains(@id, "btnInnerEl")]' } }
+      page_object(:cancel) { { xpath: '//a[contains(@class, "sdc-inseula-cancelbtn")]//span[contains(@id, "btnInnerEl")]' } }
+      page_object(:x_button) { { xpath: '//span[contains(@class, "sdc-icon-mobile-close-light")]' } }
+    end
+
     class ServerError < SdcPage
       page_object(:title) { { xpath: '//*[text()="Server Error"]' } }
       page_object(:body) { { xpath: '//div[contains(@class, "sdc-warning")]//div[contains(@id, "-innerCt")]' } }
@@ -221,5 +230,10 @@ module SdcOrders
       ServerError.new
     end
     module_function :server_error
+
+    def insurance_terms
+      InsuranceTerms.new
+    end
+    module_function :insurance_terms
   end
 end
