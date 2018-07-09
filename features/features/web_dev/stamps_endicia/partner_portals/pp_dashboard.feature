@@ -150,15 +150,4 @@ Feature: PP-MVP: Dashboard Page Single Contract
 
   @pp_dashboard_single_contract_export_data_validation
   Scenario: PP: Dashboard Page Single Contract Export Date Data Validation
-#    Then PP: set dashboard page from date field to 01/01/17
-#    Then PP: set dashboard page to date field to 07/15/18
-#    Then PP: delete existing csv file
-#    Then PP: click on the dashboard page download button
-#    Then PP: click on the dashboard page download modal ok button
-#    Then PP: expect from date and to date are cleared
-#    Then PP: Expect a record of Log Type 3 event is added in Audit Records for user
-#    Then PP: expect CSV file to be downloaded with correct file name
-#    Then PP: dashboard page export data expect csv file transaction data matches database transaction data
-#    Then PP: delete existing csv file
-
     Then PP: dashboard page export data data validation for 10 dates ranges
