@@ -255,6 +255,7 @@ module SdcGrid
 
   def grid_column(name)
     body.wait_until_present(timeout: 15)
+
     unless GridItem.column_names.keys.include? name
       raise ArgumentError, "Invalid grid column: #{name}"
     end
