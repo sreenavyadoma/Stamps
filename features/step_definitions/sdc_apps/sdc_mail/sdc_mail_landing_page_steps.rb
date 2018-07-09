@@ -15,7 +15,7 @@ Then /^visit Mail$/ do
           # ignore
         end
 
-  SdcMailLandingPage.visit(env)
+  SdcWebsite::SdcMailLandingPage.visit(env)
 end
 
 Then /^sign-in to mail$/ do

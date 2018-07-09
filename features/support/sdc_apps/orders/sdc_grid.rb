@@ -52,7 +52,7 @@ module SdcGrid
       '//div[@class="x-grid-item-container"]'
     end
 
-    def scroll_to_column(column)
+    def scroll_into_view(column)
       method_name = "scroll_to_#{column.to_s}"
       column_name = column_names[column]
       xpath = "//span[text()='#{column_name}']"
@@ -66,9 +66,9 @@ module SdcGrid
       field
     end
 
-    def grid_text_by_id(column, order_id)
-      row = row_number(order_id)
-      grid_text(column, row)
+    def data(column, order_id)
+      row = row_num(order_id)
+      text_at_row(column, row)
     end
 
     def count
@@ -88,13 +88,13 @@ module SdcGrid
       size.zero?
     end
 
-    def grid_text(column, row)
-      scroll_to_column(column)
-      element = grid_field(column, row)
+    def text_at_row(column, row)
+      scroll_into_view(column)
+      element = element(column, row)
       element.text_value
     end
 
-    def grid_field(column, row)
+    def element(column, row)
       column_num = column_number(column).to_s
       xpath = "#{grid_container}//table[#{row.to_s}]//tbody//td[#{column_num}]//div"
       coordinates = "col#{column}xrow#{row}"
@@ -103,7 +103,7 @@ module SdcGrid
 
     def grid_field_column_name(column, row)
       col = column_number(column)
-      grid_text(col, row)
+      text_at_row(col, row)
     end
 
     def column_number(name)
@@ -125,7 +125,7 @@ module SdcGrid
           set(key, index + 1)
 
           if key.eql?(name)
-            scroll_to_column(name)
+            scroll_into_view(name)
             col_num = get(name)
             return col_num
           end
@@ -136,8 +136,8 @@ module SdcGrid
       raise ArgumentError, error_message
     end
 
-    def row_number(order_id)
-      scroll_to_column(:order_id)
+    def row_num(order_id)
+      scroll_into_view(:order_id)
       col_num = column_number(:order_id)
       xpath = "#{grid_container}//tbody//td[#{col_num}]//div"
       divs = page_objects(:row_number_divs) { { xpath: xpath } }
@@ -192,7 +192,7 @@ module SdcGrid
     chooser(:checkbox_header, :chooser, :verify, :class, 'checker-on')
 
     def scroll_into_view
-      scroll_to_column(:checkbox)
+      super(:checkbox)
     end
 
     def checkbox_row(row)
@@ -215,23 +215,19 @@ module SdcGrid
     end
 
     def scroll_into_view
-      scroll_to_column(@column)
+      super(@column)
     end
 
-    def row(row)
-      grid_text(@column, row)
+    def text_at_row(row)
+      super(@column, row)
     end
 
     def data(order_id)
-      grid_text_by_id(@column, order_id)
-    end
-
-    def row_num(order_id)
-      row_number(order_id)
+      super(@column, order_id)
     end
 
     def element(row)
-      grid_field(@column, row)
+      super(@column, row)
     end
 
     def sort_ascending

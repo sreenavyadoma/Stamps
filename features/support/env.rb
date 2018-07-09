@@ -30,4 +30,4 @@ require_relative 'sdc_apps/sdc_navigation'
 require_relative 'web_dev/stamps_endicia/partner_portal'
 
 
-World SdcWebsite, SdcOrders, SdcMail, SdcNavigation, PartnerPortal
+World Stamps, SdcWebsite, SdcOrders, SdcMail, SdcNavigation, PartnerPortal
