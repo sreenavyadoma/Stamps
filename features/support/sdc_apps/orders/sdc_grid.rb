@@ -107,9 +107,9 @@ module SdcGrid
     end
 
     def column_number(name)
-      column = get(name)
-      if column
-        return column
+      col_num = get(name)
+      if col_num
+        return col_num
       else
         xpath = '//span[@class="x-column-header-text-inner"]'
         columns = page_objects(:columns) { { xpath: xpath } }
@@ -126,12 +126,14 @@ module SdcGrid
 
           if key.eql?(name)
             scroll_to_column(name)
-            return get(name)
+            col_num = get(name)
+            return col_num
           end
         end
       end
 
-      raise ArgumentError, "#{name} is not a valid column"
+      error_message = "Cannot find column number for #{name}"
+      raise ArgumentError, error_message
     end
 
     def row_number(order_id)
@@ -169,8 +171,6 @@ module SdcGrid
       # return "DESC" if  sort_order_span.attribute_value('class').include?("DESC")
       # nil
     end
-
-    protected
 
     def get(property)
       self.class.get(property)
