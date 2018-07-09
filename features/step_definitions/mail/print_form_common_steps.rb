@@ -286,7 +286,7 @@ Then /^set print form mail-to country to (.*)$/ do |str|
 end
 
 Then /^set print form name to (.*)$/ do |str|
-  str = str.casecmp('random').zero? ? SdcCore::TestHelper.rand_full_name : str
+  str = str.casecmp('random').zero? ? TestHelper.rand_full_name : str
   mail_to = SdcMail.print_form.mail_to
   mail_to.name.wait_until_present(timeout: 4)
   mail_to.name.click
@@ -295,7 +295,7 @@ Then /^set print form name to (.*)$/ do |str|
 end
 
 Then /^set print form company to (.*)$/ do |str|
-  str = str.casecmp('random').zero? ? SdcCore::TestHelper.rand_full_name : str
+  str = str.casecmp('random').zero? ? TestHelper.rand_full_name : str
   mail_to = SdcMail.print_form.mail_to
   mail_to.company.wait_until_present(timeout: 4)
   mail_to.company.click
@@ -304,7 +304,7 @@ Then /^set print form company to (.*)$/ do |str|
 end
 
 Then /^set print form address 1 to (.*)$/ do |str|
-  str = str.casecmp('random').zero? ? SdcCore::TestHelper.rand_full_name : str
+  str = str.casecmp('random').zero? ? TestHelper.rand_full_name : str
   mail_to = SdcMail.print_form.mail_to
   mail_to.address1.wait_until_present(timeout: 4)
   mail_to.address1.click
@@ -313,7 +313,7 @@ Then /^set print form address 1 to (.*)$/ do |str|
 end
 
 Then /^set print form address 2 to (.*)$/ do |str|
-  str = str.casecmp('random').zero? ? SdcCore::TestHelper.rand_full_name : str
+  str = str.casecmp('random').zero? ? TestHelper.rand_full_name : str
   mail_to = SdcMail.print_form.mail_to
   mail_to.address2.wait_until_present(timeout: 4)
   mail_to.address2.click
@@ -322,7 +322,7 @@ Then /^set print form address 2 to (.*)$/ do |str|
 end
 
 Then /^set print form city to (.*)$/ do |str|
-  str = str.casecmp('random').zero? ? SdcCore::TestHelper.rand_full_name : str
+  str = str.casecmp('random').zero? ? TestHelper.rand_full_name : str
   mail_to = SdcMail.print_form.mail_to
   mail_to.city.wait_until_present(timeout: 4)
   mail_to.city.click
@@ -331,7 +331,7 @@ Then /^set print form city to (.*)$/ do |str|
 end
 
 Then /^set print form province to (.*)$/ do |str|
-  str = str.casecmp('random').zero? ? SdcCore::TestHelper.rand_full_name : str
+  str = str.casecmp('random').zero? ? TestHelper.rand_full_name : str
   mail_to = SdcMail.print_form.mail_to
   mail_to.province.wait_until_present(timeout: 4)
   mail_to.province.click
@@ -340,7 +340,7 @@ Then /^set print form province to (.*)$/ do |str|
 end
 
 Then /^set print form postal code to (.*)$/ do |str|
-  str = str.casecmp('random').zero? ? SdcCore::TestHelper.rand_full_name : str
+  str = str.casecmp('random').zero? ? TestHelper.rand_full_name : str
   mail_to = SdcMail.print_form.mail_to
   mail_to.postal_code.wait_until_present(timeout: 4)
   mail_to.postal_code.click
@@ -349,7 +349,7 @@ Then /^set print form postal code to (.*)$/ do |str|
 end
 
 Then /^set print form phone to (.*)$/ do |str|
-  str = str.casecmp('random').zero? ? SdcCore::TestHelper.rand_phone : str
+  str = str.casecmp('random').zero? ? TestHelper.rand_phone : str
   mail_to = SdcMail.print_form.mail_to
   phone = mail_to.phone
   phone = mail_to.int_phone if mail_to.int_phone.present?

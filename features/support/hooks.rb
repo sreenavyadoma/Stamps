@@ -3,6 +3,11 @@
 include RSpec
 include RSpec::Matchers
 include DataMagic
+include SdcCore
+include SdcWebsite
+include SdcOrders
+include SdcMail
+include SdcNavigation
 include PartnerPortal
 
 Before do |scenario|

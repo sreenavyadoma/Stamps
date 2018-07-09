@@ -128,7 +128,7 @@ module SdcCore
           address_array.each_with_index do |field, index|
             if index == address_array.size - 1 # if this is the last item in the string, don't append a new line
               formatted_address += field.to_s.strip
-            else # (param_hash['full_name'].downcase.include? 'random') ? SdcCore::TestHelper.random_name : param_hash['full_name']
+            else # (param_hash['full_name'].downcase.include? 'random') ? TestHelper.random_name : param_hash['full_name']
               formatted_address = formatted_address + ((field.to_s.strip.downcase.include? 'random') ? rand_full_name : field.to_s.strip) + "\n"
             end
           end

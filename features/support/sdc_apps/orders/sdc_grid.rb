@@ -52,7 +52,7 @@ module SdcGrid
       '//div[@class="x-grid-item-container"]'
     end
 
-    def scroll_into_view(column)
+    def scroll_to(column)
       method_name = "scroll_to_#{column.to_s}"
       column_name = column_names[column]
       xpath = "//span[text()='#{column_name}']"
@@ -68,7 +68,7 @@ module SdcGrid
 
     def data(column, order_id)
       row = row_num(order_id)
-      text_at_row(column, row)
+      text_at(column, row)
     end
 
     def count
@@ -88,8 +88,8 @@ module SdcGrid
       size.zero?
     end
 
-    def text_at_row(column, row)
-      scroll_into_view(column)
+    def text_at(column, row)
+      scroll_to(column)
       element = element(column, row)
       element.text_value
     end
@@ -103,7 +103,7 @@ module SdcGrid
 
     def grid_field_column_name(column, row)
       col = column_number(column)
-      text_at_row(col, row)
+      text_at(col, row)
     end
 
     def column_number(name)
@@ -125,7 +125,7 @@ module SdcGrid
           set(key, index + 1)
 
           if key.eql?(name)
-            scroll_into_view(name)
+            scroll_to(name)
             col_num = get(name)
             return col_num
           end
@@ -137,7 +137,7 @@ module SdcGrid
     end
 
     def row_num(order_id)
-      scroll_into_view(:order_id)
+      scroll_to(:order_id)
       col_num = column_number(:order_id)
       xpath = "#{grid_container}//tbody//td[#{col_num}]//div"
       divs = page_objects(:row_number_divs) { { xpath: xpath } }
@@ -192,7 +192,7 @@ module SdcGrid
     chooser(:checkbox_header, :chooser, :verify, :class, 'checker-on')
 
     def scroll_into_view
-      super(:checkbox)
+      scroll_to(:checkbox)
     end
 
     def checkbox_row(row)
@@ -215,11 +215,11 @@ module SdcGrid
     end
 
     def scroll_into_view
-      super(@column)
+      scroll_to(@column)
     end
 
     def text_at_row(row)
-      super(@column, row)
+      text_at(@column, row)
     end
 
     def data(order_id)

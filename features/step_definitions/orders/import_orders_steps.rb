@@ -71,25 +71,25 @@ Then /^Import Orders: Randomize data in (.*)$/ do |filename|
     old_csv = CSV.read(import_old_loc)
     old_csv.each_with_index do |row, index|
       if index != 0
-        address = SdcCore::TestHelper.rand_zone_1_4(SdcEnv.env)
+        address = TestHelper.rand_zone_1_4(SdcEnv.env)
         row[2] = Random.rand(1..10)
-        row[3] = SdcCore::TestHelper.rand_full_name
-        row[4] = SdcCore::TestHelper.rand_full_name
-        row[5] = SdcCore::TestHelper.rand_comp_name
+        row[3] = TestHelper.rand_full_name
+        row[4] = TestHelper.rand_full_name
+        row[5] = TestHelper.rand_comp_name
         row[6] = address['street_address']
         row[9] = address['city']
         row[10] = address['state']
         row[11] = address['zip']
-        row[13] = SdcCore::TestHelper.rand_phone
-        row[14] = SdcCore::TestHelper.rand_email
+        row[13] = TestHelper.rand_phone
+        row[14] = TestHelper.rand_email
         row[15] = Random.rand(1..10)
         row[16] = Random.rand(1..10)
         row[17] = Random.rand(1..10)
         row[18] = Random.rand(1..10)
-        row[19] = SdcCore::TestHelper.rand_full_name
-        row[20] = SdcCore::TestHelper.rand_full_name
+        row[19] = TestHelper.rand_full_name
+        row[20] = TestHelper.rand_full_name
         row[21] = [true, false].sample
-        row[22] = SdcCore::TestHelper.rand_full_name
+        row[22] = TestHelper.rand_full_name
       end
       csv_out << row
     end
@@ -121,7 +121,7 @@ Then /^Import Orders: Expect first (.*) orders in CSV file (.*) match orders in 
       expect(stamps.orders.orders_grid.grid_column(:zip).data(order_id)).to eql(row[11]), "Expected Zip for order #{row[0]} is #{row[11]}, Zip in orders grid is #{stamps.orders.orders_grid.grid_column(:zip).data(order_id)}"
       expect(stamps.orders.orders_grid.grid_column(:phone).data(order_id)).to eql(row[13]), "Expected Phone for order #{row[0]} is #{row[13]}, Phone in orders grid is #{stamps.orders.orders_grid.grid_column(:phone).data(order_id)}"
       expect(stamps.orders.orders_grid.grid_column(:email).data(order_id)).to eql(row[14]), "Expected Email for order #{row[0]} is #{row[14]}, Email in orders grid is #{stamps.orders.orders_grid.grid_column(:email).data(order_id)}"
-      expect(SdcCore::TestHelper.format_weight(stamps.orders.orders_grid.grid_column(:weight).data(order_id))).to eql(row[15]), "Expected Weight for order #{row[0]} is #{row[15]}, Weight in orders grid is #{SdcCore::TestHelper.format_weight(stamps.orders.orders_grid.grid_column(:weight).data(order_id))}"
+      expect(TestHelper.format_weight(stamps.orders.orders_grid.grid_column(:weight).data(order_id))).to eql(row[15]), "Expected Weight for order #{row[0]} is #{row[15]}, Weight in orders grid is #{TestHelper.format_weight(stamps.orders.orders_grid.grid_column(:weight).data(order_id))}"
       SdcLogger.debug "Order # #{order_id} verified in Orders Grid"
     end
     break if counter >= num_orders

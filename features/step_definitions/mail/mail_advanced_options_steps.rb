@@ -102,13 +102,13 @@ end
 
 Then /^click mail ship date picker today plus (\d+)$/ do |day|
   step 'open mail ship date picker'
-  TestData.hash[:mail_date] = SdcCore::TestHelper.mail_date_text_field_format(day)
+  TestData.hash[:mail_date] = TestHelper.mail_date_text_field_format(day)
 
   picker = SdcMail.print_form.mail_date.picker
   title = picker.today_element.attribute_value('title')
   expect(title).to eql 'Today'
 
-  picker_day = SdcCore::TestHelper.shipdate_today_plus(day, format: '%-d')
+  picker_day = TestHelper.shipdate_today_plus(day, format: '%-d')
   picker.date_elements(:todays_date_elements, picker_day)
   picker.todays_date_elements.each do |element|
     unless element.parent.attribute_value('class').include?('disabled')
@@ -143,7 +143,7 @@ end
 
 Then /^set advanced options reference number to (?:(?:a |some |)random string|(.*))$/ do |str|
   step 'expect advanced options responds to Reference Number (reference_number)'
-  TestData.hash[:reference_no] = str.nil? ? SdcCore::TestHelper.rand_alpha_numeric : str
+  TestData.hash[:reference_no] = str.nil? ? TestHelper.rand_alpha_numeric : str
   stamps.mail.print_form.advanced_options.reference_number.set(TestData.hash[:reference_no])
 end
 

@@ -15,12 +15,12 @@ end
 Then /^[Ss]et [Pp]rofile [Pp]age [Ee]mail to (?:random value|(.*))$/ do |str|
   registration.profile.email.textbox.wait_until_present(10)
   expect(registration.profile.email.textbox).to be_present, "Profile page did not load properly, check your test."
-  registration.profile.email.textbox.set(TestData.hash[:email] = (str.nil?) ? (SdcCore::TestHelper.rand_email) : str)
+  registration.profile.email.textbox.set(TestData.hash[:email] = (str.nil?) ? (TestHelper.rand_email) : str)
   step "blur out on profile page"
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Uu]sername to (?:random value|(.*))$/ do |str|
-  registration.profile.account_username.textbox.set((TestData.hash[:username] = (str.nil?) ? (SdcCore::TestHelper.rand_usr(SdcEnv.env) ) : str))
+  registration.profile.account_username.textbox.set((TestData.hash[:username] = (str.nil?) ? (TestHelper.rand_usr(SdcEnv.env) ) : str))
   step "blur out on profile page"
 end
 
@@ -30,8 +30,8 @@ Then /^[Ee]xpect [Pp]rofile [Pp]age [Uu]sername is (?:correct|(.*))$/ do |str|
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Pp]assword to (?:random value|(.*))$/ do |str|
-  # registration.profile.account_password.set(TestData.store[:password]=(str.nil?)?"pass111":str) #SdcCore::TestHelper.random_password
-   registration.profile.account_password.textbox.set(TestData.hash[:account_password] = (str.nil?) ? SdcCore::TestHelper.rand_alpha_numeric(min: 5, max: 13) : str)
+  # registration.profile.account_password.set(TestData.store[:password]=(str.nil?)?"pass111":str) #TestHelper.random_password
+   registration.profile.account_password.textbox.set(TestData.hash[:account_password] = (str.nil?) ? TestHelper.rand_alpha_numeric(min: 5, max: 13) : str)
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Pp]assword is (?:correct|(.*))$/ do |str|

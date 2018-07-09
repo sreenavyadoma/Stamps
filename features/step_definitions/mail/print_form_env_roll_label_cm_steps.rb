@@ -2,7 +2,7 @@
 # common Print form steps for Envelope|Label|Roll|CM
 
 Then /^set print form mail-to (?:|to )(?:|a )(?:|random )address(?: to| in| between|) (.*)$/ do |str|
-  address = SdcCore::TestHelper.address_helper(str)
+  address = TestHelper.address_helper(str)
   SdcMail.print_form.mail_to.text_area.set(address)
   TestData.hash[:address] = address
 end
