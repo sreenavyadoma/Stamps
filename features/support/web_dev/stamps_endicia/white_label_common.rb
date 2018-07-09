@@ -1,10 +1,10 @@
 module WhiteLabel
 
   class Common < SdcPage
-    button(:get_started) { { class: ['btn btn-success btn-xs register']} }
+    button(:get_started) { { class: ['btn btn-success register'] } }
   end
 
-  class SDCWWebsite
+  class SDCWWebsite <SdcPage
     def self.visit
       page_url { |env| "https://#{env}stamps.com/" }
       super(case SdcEnv.env
@@ -20,7 +20,7 @@ module WhiteLabel
     end
   end
 
-  class EWWebsite
+  class EWWebsite < SdcPage
 
     def self.visit
       page_url { |env| "https://#{env}endicia.com/" }

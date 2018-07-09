@@ -1,5 +1,10 @@
 module WhiteLabel
-  class ProfilePage
+  class ProfilePage < SdcPage
+    text_field(:email, tag: :text_field, required: true) { { id: 'email' } }
+    text_field(:username, tag: :text_field, required: true) { { id: 'username' } }
+    text_field(:password, tag: :text_field, required: true) { { id: 'password' } }
+    text_field(:confirm_password, tag: :text_field, required: true) { { id: 'confirmPassword' } }
+    selection(:survey) { { id: 'usageType' } }
 
   end
 
