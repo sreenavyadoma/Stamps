@@ -90,11 +90,11 @@ module SdcGrid
 
     def text_at(column, row)
       scroll_to(column)
-      element = element(column, row)
+      element = element_at(column, row)
       element.text_value
     end
 
-    def element(column, row)
+    def element_at(column, row)
       column_num = column_number(column).to_s
       xpath = "#{grid_container}//table[#{row.to_s}]//tbody//td[#{column_num}]//div"
       coordinates = "col#{column}xrow#{row}"
@@ -227,7 +227,7 @@ module SdcGrid
     end
 
     def element(row)
-      super(@column, row)
+      element_at(@column, row)
     end
 
     def sort_ascending
