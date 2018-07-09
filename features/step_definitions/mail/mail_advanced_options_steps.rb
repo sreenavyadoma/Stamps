@@ -26,34 +26,28 @@ Then /^[Ee]xpect Advanced Options Extra Services Button is (\w+)/ do |str|
   end
 end
 
-Then /^[Ss]elect Advanced Options Specify Postage Amount$/ do
-  step 'expect advanced options responds to Specify Postage Amount (specify_postage_amount)'
-  stamps.mail.print_form.advanced_options.specify_postage_amount.select
+Then /^select advanced options specify postage amount$/ do
+  SdcMail.print_form.advanced_options.specify_postage_amount.select
 end
 
-Then /^[Ee]xpect Advanced Options Specify Postage Amount is selected$/ do
-  step 'expect advanced options responds to Specify Postage Amount (specify_postage_amount)'
-  expect(stamps.mail.print_form.advanced_options.specify_postage_amount.selected?).to be(true), 'Specify Postage Amount was NOT selected'
+Then /^expect advanced options specify postage amount is selected$/ do
+  expect(SdcMail.print_form.advanced_options.specify_postage_amount.selected?).to be(true), 'Specify Postage Amount was NOT selected'
 end
 
-Then /^[Ee]xpect Advanced Options Calculate Postage Amount radio button is present$/ do
-  step 'expect advanced options responds to Calculate Postage Amount (calculate_postage_amount)'
-  expect(stamps.mail.print_form.advanced_options.calculate_postage_amount).to be_present, 'Stamps Calculate Postage Amount radio button is NOT present'
+Then /^expect advanced options calculate postage amount radio button is present$/ do
+  expect(SdcMail.print_form.advanced_options.calculate_postage_amount).to be_present, 'Stamps Calculate Postage Amount radio button is NOT present'
 end
 
-Then /^[Ee]xpect Advanced Options Specify Postage Amount radio button is present$/ do
-  step 'expect advanced options responds to Calculate Postage Amount (calculate_postage_amount)'
-  expect(stamps.mail.print_form.advanced_options.specify_postage_amount).to be_present, 'Stamps Specify Postage Amount radio button is NOT present'
+Then /^expect advanced options specify postage amount radio button is present$/ do
+  expect(SdcMail.print_form.advanced_options.specify_postage_amount).to be_present, 'Stamps Specify Postage Amount radio button is NOT present'
 end
 
-Then /^[Ss]elect Advanced Options Calculate Postage Amount$/ do
-  step 'expect advanced options responds to Calculate Postage Amount (calculate_postage_amount)'
-  stamps.mail.print_form.advanced_options.calculate_postage_amount.select
+Then /^select advanced options calculate postage amount$/ do
+  SdcMail.print_form.advanced_options.calculate_postage_amount.select
 end
 
-Then /^[Ee]xpect Advanced Options Calculate Postage Amount is selected$/ do
-  step 'expect advanced options responds to Calculate Postage Amount (calculate_postage_amount)'
-  expect(stamps.mail.print_form.advanced_options.calculate_postage_amount.selected?).to be(true), 'Calculate Postage Amount was NOT selected'
+Then /^expect advanced options calculate postage amount is selected$/ do
+  expect(SdcMail.print_form.advanced_options.calculate_postage_amount.selected?).to be(true), 'Calculate Postage Amount was NOT selected'
 end
 
 Then /^[Ee]xpect Advanced Options Mail Date field is present$/ do

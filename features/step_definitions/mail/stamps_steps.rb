@@ -116,14 +116,14 @@ end
 
 
 Then /^select print form calculate postage amount$/ do
-  SdcMail.print_form.calculate_postage_amount.select
-  expect(SdcMail.print_form.calculate_postage_amount.selected?).to be_truthy, "Calculate postage amount is not selected!"
+  SdcMail.print_form.advanced_options.calculate_postage_amount.select
+  expect(SdcMail.print_form.advanced_options.calculate_postage_amount.selected?).to be_truthy, "Calculate postage amount is not selected!"
 end
 
 Then /^select print form specify postage amount$/ do
   step 'show advanced options'
-  SdcMail.print_form.specify_postage_amount.select
-  expect(SdcMail.print_form.specify_postage_amount.selected?).to be_truthy, "Specify postage amount is not selected!"
+  SdcMail.print_form.advanced_options.specify_postage_amount.select
+  expect(SdcMail.print_form.advanced_options.specify_postage_amount.selected?).to be_truthy, "Specify postage amount is not selected!"
 end
 
 Then /^set print form stamp amount ([\d.]+)$/ do |value|
