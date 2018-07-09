@@ -147,7 +147,7 @@ end
 
 Then /^expect print form ship date is (\d+) (?:day|days) from today$/ do |day|
   step "expect print form ship date dropdown is present"
-  expectation = TestHelper.mail_date_text_field_format(day)
+  expectation = SdcCore::TestHelper.mail_date_text_field_format(day)
   result = SdcOrders.modals.print.ship_date.text_field.text_value
   expect(result).to eql(expectation)
 end
@@ -159,7 +159,7 @@ end
 Then /^set print form ship date to today plus (\d+)$/ do |day|
   step "expect print form ship date dropdown is present"
   text_field = SdcOrders.modals.print.ship_date.text_field
-  date = TestHelper.mail_date_text_field_format(day)
+  date = SdcCore::TestHelper.mail_date_text_field_format(day)
   text_field.set_attribute('value', date)
   step "blur out on Print modal Ship date 5"
   expect(text_field.value).to eql(date)

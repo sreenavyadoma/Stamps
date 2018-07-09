@@ -356,7 +356,7 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           SdcLogger.info "#{"#" * 10} "
           SdcLogger.info "#{"#" * 50}"
 
-          if TestHelper.is_whole_number?(weight_lb)
+          if SdcCore::TestHelper.is_whole_number?(weight_lb)
             weight_lb = weight_lb.to_f
             TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:weight_lb]] = weight_lb
             TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:weight]] = "#{weight_lb} lb."

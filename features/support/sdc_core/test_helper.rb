@@ -1,4 +1,4 @@
-module Stamps
+module SdcCore
   module TestHelper
     class << self
       def user_credentials
@@ -25,9 +25,9 @@ module Stamps
         digits = ('0'..'9').to_a
         special = %w(- _ .)
         SdcEnv.env.to_s + (digits + down + up + special).shuffle[1..1].join +
-          [rand_samp_str(down), rand_samp_str(up), rand_samp_str(
-            digits
-          )].concat((down + up + digits).sample(Random.rand(0..5))).shuffle.join
+            [rand_samp_str(down), rand_samp_str(up), rand_samp_str(
+                digits
+            )].concat((down + up + digits).sample(Random.rand(0..5))).shuffle.join
       end
 
       def rand_email
@@ -128,7 +128,7 @@ module Stamps
           address_array.each_with_index do |field, index|
             if index == address_array.size - 1 # if this is the last item in the string, don't append a new line
               formatted_address += field.to_s.strip
-            else # (param_hash['full_name'].downcase.include? 'random') ? TestHelper.random_name : param_hash['full_name']
+            else # (param_hash['full_name'].downcase.include? 'random') ? SdcCore::TestHelper.random_name : param_hash['full_name']
               formatted_address = formatted_address + ((field.to_s.strip.downcase.include? 'random') ? rand_full_name : field.to_s.strip) + "\n"
             end
           end

@@ -1,5 +1,5 @@
 Then /^set store settings store nickname to (.*)$/ do |str|
-  nickname = (str.downcase.include?('random') ? TestHelper.rand_alpha_numeric : str)
+  nickname = (str.downcase.include?('random') ? SdcCore::TestHelper.rand_alpha_numeric : str)
   stamps.orders.marketplace.store_settings.store_nickname.set(TestData.hash[:store_nickname] = nickname)
 end
 
@@ -32,7 +32,7 @@ end
 
 Then /^[Ss]et store service Mapping (\d+) Requested Service to (.*)$/ do |mapping_number, value|
   TestData.hash[:service_mapping_items][mapping_number] = {} unless TestData.hash[:service_mapping_items].has_key?(mapping_number)
-  TestData.hash[:service_mapping_items][mapping_number][:requested_service] = (value.downcase.include?('random') ? TestHelper.rand_alpha_numeric : value)
+  TestData.hash[:service_mapping_items][mapping_number][:requested_service] = (value.downcase.include?('random') ? SdcCore::TestHelper.rand_alpha_numeric : value)
   stamps.orders.marketplace.store_settings.service_mapping_list.mapping_number(mapping_number.to_i).requested_service_mapping.set(TestData.hash[:service_mapping_items][mapping_number][:requested_service])
 end
 
@@ -51,7 +51,7 @@ Then /^[Ss]et store service Mapping (\d+), Requested Services (.*), Shipping ser
   #StampsTest.log.step "Store Settings: Set Requested Services to random #{requested_services}"
   raise "Amazon Settings is not open.  Check your test workflow." if @store_settings.nil?
   service_mapping_item = @store_settings.service_mapping.item item_number.to_i
-  service_mapping_item.requested_services.set(requested_services.downcase.include? 'random') ? TestHelper.rand_alpha_numeric(min: 4, max: 20) : requested_services
+  service_mapping_item.requested_services.set(requested_services.downcase.include? 'random') ? SdcCore::TestHelper.rand_alpha_numeric(min: 4, max: 20) : requested_services
   service_mapping_item.shipping_Service.select shipping_service
 end
 

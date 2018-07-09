@@ -58,7 +58,7 @@ Then /^save save as favorite modal$/ do
 end
 
 Then /^set save as favorite modal name to random$/ do
-  str = TestHelper.rand_alpha_numeric(min: 6, max: 18)
+  str = SdcCore::TestHelper.rand_alpha_numeric(min: 6, max: 18)
   SdcMail.modals.save_as_favorite.name.set(str)
   step "expect save as favorite name is #{str}"
 end
@@ -126,7 +126,7 @@ Then /^expect manage favorites delete modal is not present$/ do
 end
 
 Then /^set favorite modal rename name to random$/ do
-  str = TestHelper.rand_alpha_numeric(min: 6, max: 18)
+  str = SdcCore::TestHelper.rand_alpha_numeric(min: 6, max: 18)
   SdcMail.modals.manage_favorites.rename_favorite.name.set(str)
   step "expect favorite modal rename name is #{str}"
 end

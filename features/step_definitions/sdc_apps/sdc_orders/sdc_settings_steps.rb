@@ -1,5 +1,5 @@
 Then /^set orders settings general postdate to (now [+-]\d+ hours|\d{1,2}:\d\d [ap].m.)$/ do |time|
-  time = TestHelper.now_plus_hh(/[+-]\d+/.match(time).to_s.to_i) unless /^\d{1,2}:\d\d [ap].m.$/.match(time)
+  time = SdcCore::TestHelper.now_plus_hh(/[+-]\d+/.match(time).to_s.to_i) unless /^\d{1,2}:\d\d [ap].m.$/.match(time)
   settings = SdcOrders.modals.settings.general_settings
   settings.selection(time)
   settings.postdate_drop_down.click
@@ -36,7 +36,7 @@ end
 
 #OK
 Then /^set mail settings postdate to (now [+-]\d+ hours|\d{1,2}:\d\d [ap].m.)$/ do |time|
-  time = TestHelper.now_plus_hh(/[+-]\d+/.match(time).to_s.to_i) unless /^\d{1,2}:\d\d [ap].m.$/.match(time)
+  time = SdcCore::TestHelper.now_plus_hh(/[+-]\d+/.match(time).to_s.to_i) unless /^\d{1,2}:\d\d [ap].m.$/.match(time)
   settings = SdcMail.modals.settings
   settings.selection(time)
   settings.postdate_drop_down.click

@@ -270,7 +270,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age Username Taken model pop up Continue butt
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age Username Taken model pop up Username to (?:random value|(.*))$/ do |str|
-  registration.membership.uname_text_box.set(TestData.hash[:uname_text_box] = str.nil? ? TestHelper.rand_alpha_str.capitalize : str)
+  registration.membership.uname_text_box.set(TestData.hash[:uname_text_box] = str.nil? ? SdcCore::TestHelper.rand_alpha_str.capitalize : str)
 end
 
 Then /^[Cc]lick [Mm]embership [Pp]age Username Taken model pop up Continue [Bb]utton$/ do

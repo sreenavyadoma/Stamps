@@ -250,7 +250,7 @@ module PartnerPortal
     end
 
     def db_connection
-      PartnerPortalDB.new
+      SdcCore::PartnerPortalDB.new
     end
 
   end

@@ -1,4 +1,4 @@
-module Stamps
+module SdcCore
   class MySqlConnDecorator < BasicObject
     require 'mysql2'
 

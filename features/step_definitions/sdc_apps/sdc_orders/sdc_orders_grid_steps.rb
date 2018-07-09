@@ -78,11 +78,11 @@ Then /^expect orders grid date printed is (?:correct|(.*))$/ do |str|
                TestData.hash[:order_id][order_id.to_i]
              end
   result =SdcGrid.grid_column(:date_printed).data(order_id)
-  expect(result).to eql(TestHelper.grid_date_format(str.nil? ? Date.today.strftime("%b %-d") : str))
+  expect(result).to eql(SdcCore::TestHelper.grid_date_format(str.nil? ? Date.today.strftime("%b %-d") : str))
 end
 
 Then /^expect orders grid ship date is (?:correct|(.*))$/ do |str|
-  expect(SdcGrid.grid_column(:ship_date).data(TestData.hash[:order_id].values.last)).to eql(TestHelper.grid_date_format(str.nil? ? stamps.orders.modals.orders_print_modal.ship_date.textbox.text : str))
+  expect(SdcGrid.grid_column(:ship_date).data(TestData.hash[:order_id].values.last)).to eql(SdcCore::TestHelper.grid_date_format(str.nil? ? stamps.orders.modals.orders_print_modal.ship_date.textbox.text : str))
 end
 
 Then /^expect orders grid order date is populated$/ do

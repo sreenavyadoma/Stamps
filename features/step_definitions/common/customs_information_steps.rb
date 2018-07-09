@@ -57,7 +57,7 @@ Then /^expect customs internal transaction number is (?:correct|(.*))$/ do |str|
 end
 
 Then /^set customs more info to (?:random string|(.*))$/ do |str|
-  str ||= TestHelper.rand_alpha_numeric(min: 6, max: 18)
+  str ||= SdcCore::TestHelper.rand_alpha_numeric(min: 6, max: 18)
   SdcWebsite.customs_form.more_info.set(str) if SdcWebsite.customs_form.more_info.present?
   step "expect Customs More Info is #{str}"
   step 'Save Customs Information form Total amount'
@@ -65,7 +65,7 @@ Then /^set customs more info to (?:random string|(.*))$/ do |str|
 end
 
 # Then /^ [Ss]et Customs More Info to (?:(?:a|some) random string|(.*))$/ do |str|
-#   str ||= TestHelper.rand_alpha_numeric(min: 6, max: 18)
+#   str ||= SdcCore::TestHelper.rand_alpha_numeric(min: 6, max: 18)
 #   SdcWebsite.customs_form.more_info.set(str) if SdcWebsite.customs_form.more_info.present?
 #   step "expect Customs More Info is #{str}"
 #   step 'Save Customs Information form Total amount'
@@ -81,7 +81,7 @@ Then /^[Ee]xpect Customs More Info is (?:correct|(.*))$/ do |str|
 end
 
 Then /^set customs itn number to (?:(?:a|some) random string|(.*))$/ do |str|
-  str ||= TestHelper.rand_alpha_numeric(min: 8, max: 50)
+  str ||= SdcCore::TestHelper.rand_alpha_numeric(min: 8, max: 50)
   customs_form = SdcWebsite.customs_form
   customs_form.itn.wait_until_present(timeout: 5)
   customs_form.itn.set(str) unless customs_form.itn.class_disabled?
@@ -99,7 +99,7 @@ Then /^expect customs i agree to the usps privacy act statement is checked (?:co
 end
 
 Then /^set customs license number to (?:(?:a|some) random string|(.*))$/ do |str|
-  str ||= TestHelper.rand_alpha_numeric(min: 2, max: 6)
+  str ||= SdcCore::TestHelper.rand_alpha_numeric(min: 2, max: 6)
   customs_form = SdcWebsite.customs_form
   customs_form.license.wait_until_present(timeout: 5)
   customs_form.license.set(str) if customs_form.license.present?
@@ -116,7 +116,7 @@ Then /^expect customs license number is (?:correct|(.*))$/ do |str|
 end
 
 Then /^set customs certificate number to (?:(?:a|some) random string|(.*))$/ do |str|
-  str ||= TestHelper.rand_alpha_numeric(min: 2, max: 8)
+  str ||= SdcCore::TestHelper.rand_alpha_numeric(min: 2, max: 8)
   customs_form = SdcWebsite.customs_form
   customs_form.certificate.wait_until_present(timeout: 5)
   customs_form.certificate.set(str) if customs_form.certificate.present?
@@ -134,7 +134,7 @@ Then /^expect customs certificate number is (?:correct|(.*))$/ do |str|
 end
 
 Then /^set customs invoice number to (?:(?:a|some) random string|(.*))$/ do |str|
-  str ||= TestHelper.rand_alpha_numeric(min: 2, max: 10)
+  str ||= SdcCore::TestHelper.rand_alpha_numeric(min: 2, max: 10)
   customs_form = SdcWebsite.customs_form
   customs_form.invoice.wait_until_present(timeout: 5)
   customs_form.invoice.set(str) if customs_form.invoice.present?
@@ -293,7 +293,7 @@ end
 
 Then /^set customs associated item (\d+) description to (.*)$/ do |item, value|
   TestData.hash[:customs_associated_items][item] ||= {}
-  value = TestHelper.rand_alpha_numeric if value.casecmp('random').zero?
+  value = SdcCore::TestHelper.rand_alpha_numeric if value.casecmp('random').zero?
   SdcWebsite.customs_form.item.item_description(item).scroll_into_view.set(value)
   step 'Save Customs Information form Total amount'
   TestData.hash[:customs_associated_items][item][:description] = value
