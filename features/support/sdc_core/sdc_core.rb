@@ -12,7 +12,7 @@ module SdcEnv
                   :printer, :browser, :hostname, :mobile, :scenario,
                   :sauce_device, :test_name, :log_level, :driver_log_level,
                   :browser_mobile_emulator, :android, :ios, :firefox_profile,
-                  :new_framework, :max_window, :web_dev, :jenkins, :sauce
+                  :new_framework, :max_window, :window_size, :web_dev, :jenkins, :sauce
   end
 end
 
@@ -184,6 +184,7 @@ class SdcPage < WatirDrops::PageObject
 
     def page_object(name, tag: nil, required: false, timeout: 15, &block)
       element(name.to_sym, required: required) do
+        browser = self.class.browser
         SdcFinder.element(browser, tag: tag, timeout: timeout, &block)
       end
     end
@@ -197,6 +198,7 @@ class SdcPage < WatirDrops::PageObject
       list_name = index.nil? ? name : "#{name}s".to_sym
 
       elements(list_name) do
+        browser = self.class.browser
         SdcFinder.elements(browser, tag: tag, timeout: timeout) { yield }
       end
 
@@ -327,6 +329,14 @@ module HtmlElementMethods
   def set(*args)
     return send(:send_keys, *args) if is_a? ::Selenium::WebDriver::Element
     send(:set, *args)
+  end
+
+  def safe_set(*args)
+    begin
+      set(*args)
+    rescue Watir::Exception::UnknownObjectException
+      # ignore
+    end
   end
 
   def set_attribute(name, value)
@@ -460,8 +470,8 @@ module HtmlElementMethods
 
   def blur_out(ctr: 1)
     ctr.to_i.times do
-      safe_double_click
       safe_click
+      safe_double_click
     end
 
     self

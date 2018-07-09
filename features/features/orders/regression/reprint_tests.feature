@@ -54,7 +54,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then set order details ship-from to Automation - El Segundo, CA
     Then set order details domestic ship-to country to United States
     Then set order details ship-to domestic address to
-      | full_name         | company           | street_address  |street_address2|  city        | state| zip   | country       | phone  |  email |
+      | full_name         | company           | street_address1  |street_address2|  city        | state| zip   | country       | phone  |  email |
       | Reprint Test | 4.125 x 6.25 roll | 604 Arizona Ave |                | Santa Monica | CA   | 90401 | United States | 8885551212 | test@stamps.com |
     Then set order details service to PM Package
     Then set order details ounces to 1
@@ -79,7 +79,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then set order details ship-from to Automation - El Segundo, CA
     Then set order details domestic ship-to country to United States
     Then set order details ship-to domestic address to
-      | full_name   | company      | street_address    |street_address2| city | state | zip    | country       | phone  |  email |
+      | full_name   | company      | street_address1    |street_address2| city | state | zip    | country       | phone  |  email |
       | Reprint Test | 4x6 roll | PSC 3 BOX 4120  |                | APO  | AE     |  09021  | United States | 8885551212 | test@stamps.com |
     Then set order details weight to 2 lb 1 oz
     Then set order details service to PSG Package/Flat/Thick Envelope
@@ -171,7 +171,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then set order details ship-from to Automation - El Segundo, CA
     Then set order details domestic ship-to country to United States
     Then set order details ship-to domestic address to
-      | full_name         | company            | street_address | street_address2| city | state | zip        | country       | phone  |  email |
+      | full_name         | company            | street_address1 | street_address2| city | state | zip        | country       | phone  |  email |
       | Reprint Test | 8.5x11 Plain Paper | PO Box 10281   |                 | Palau| PW    | 96940-0881 | United States | 8885551212 | test@stamps.com |
     Then set order details weight to 2 lb 1 oz
     Then set order details service to MM Package/Flat/Thick Envelope

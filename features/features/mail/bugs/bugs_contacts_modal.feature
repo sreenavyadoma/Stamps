@@ -13,7 +13,7 @@ Feature: Mail Contacts Modal Bugs
     Then select print form service FCM Large Envelope/Flat
     Then set advanced options reference number to 12345
     Then set advanced options cost code to 123
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 

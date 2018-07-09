@@ -6,18 +6,6 @@ Feature: BVT for Mail page
   #Scenario: Mail Authentication Test
   #  Then sign out
 
-  @mail_bvt_address_cleansing
-  Scenario: Address Cleansing
-    Then select print on Shipping Label - 8 ½" x 11" Paper
-    Then set Print form Mail-From to default
-    Then set print form mail-to country to United States
-    Then set print form mail-to to address to Address Cleansing, BVT, 1350 Market Street, San Francisco, CA
-    Then set print form ounces to 1
-    Then select print form service PM Package
-    Then expect Print form Domestic Address field displays Address Cleansing, BVT, 1350 Market Street, San Francisco, CA 94102-5401
-    Then sign out
-
-
     # ------------------------------------------------------------ Rolls Advanced Options
   @mail_bvt_advanced_options
   @mail_advanced_options__rolls
@@ -103,23 +91,23 @@ Feature: BVT for Mail page
     Then set Advanced Options Mail Date to today plus 5
     Then expect Advanced Options Mail Date is correct
 
-    Then expect Advanced Options include Return Address is present
-    Then check Advanced Options include Return Address
-    Then expect Advanced Options include Return Address is checked
-    Then uncheck Advanced Options include Return Address
-    Then expect Advanced Options include Return Address is unchecked
+    Then expect advanced options include return address is present
+    Then check advanced options include return address
+    Then expect advanced options include return address is checked
+    Then uncheck advanced options include return address
+    Then expect advanced options include return address is unchecked
 
-    Then expect Advanced Options include Delivery Address is present
-    Then check Advanced Options include Delivery Address
-    Then expect Advanced Options include Delivery Address is checked
-    Then uncheck Advanced Options include Delivery Address
-    Then expect Advanced Options include Delivery Address is unchecked
+    Then expect advanced options include delivery address is present
+    Then check advanced options include delivery address
+    Then expect advanced options include delivery address is checked
+    Then uncheck advanced options include delivery address
+    Then expect advanced options include delivery address is unchecked
 
-    Then expect Advanced Options include Postage is present
-    Then check Advanced Options include Postage
-    Then expect Advanced Options include Postage is checked
-    Then uncheck Advanced Options include Postage
-    Then expect Advanced Options include Postage is unchecked
+    Then expect advanced options include postage is present
+    Then check advanced options include postage
+    Then expect advanced options include postage is checked
+    Then uncheck advanced options include postage
+    Then expect advanced options include postage is unchecked
 
     Then expect advanced options reference number field is present
     Then set advanced options reference number to random string
@@ -377,6 +365,15 @@ Feature: BVT for Mail page
 
     Then sign out
 
+#  @mail_bvt_contacts
+#  Scenario: Contacts
+#
+#    Then select print on Shipping Label - 5x8
+#    Then set Print form Mail-From to default
+#    Then click Print form Mail To link
+#    Then click Search Contacts close button
+#    Then sign out
+
   @mobile_mail_smoke_test
   @mail_bvt_envelopes
   Scenario: Envelope
@@ -386,7 +383,7 @@ Feature: BVT for Mail page
     Then set print form ounces to 1
     Then select print form service FCM Letter
   #Then expect Print Form service cost for FCM Letter is N/A
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then sign out
@@ -398,7 +395,7 @@ Feature: BVT for Mail page
     Then set print form mail-to to a random address in zone 1
     Then set print form ounces to 1
     Then select print form service FCM Letter
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then sign out
@@ -412,7 +409,7 @@ Feature: BVT for Mail page
     Then set print form pounds to 0
     Then set print form ounces to 1
     Then select print form service PM Flat Rate Envelope
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then sign out
@@ -425,7 +422,7 @@ Feature: BVT for Mail page
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service PM Large Flat Rate Box
-    Then Print Postage
+    Then click mail statusbar print
 #    Then set Mail Print modal Printer Zebra LP 2844 on qa-printlab2016
     Then set Mail Print modal Printer ZDesigner LP 2844
     Then click Mail Print modal Print button
@@ -441,7 +438,7 @@ Feature: BVT for Mail page
     Then set print form pounds to 0
     Then set print form ounces to 1
     Then select print form service PM Package
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then sign out
@@ -457,7 +454,7 @@ Feature: BVT for Mail page
     Then select print form service PM Flat Rate Envelope
     Then show advanced options
     Then check advanced options print receipt
-    Then Print Label
+    Then click mail statusbar print label
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then sign out
@@ -474,7 +471,7 @@ Feature: BVT for Mail page
     Then set Print form Amount to 2.85
     Then set Print form Quantity to 1
     Then set advanced options reference number to Stamp3221
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
@@ -483,7 +480,7 @@ Feature: BVT for Mail page
     Then set Print form Mail-From to default
     Then set print form ounces to 1
     Then select print form service FCM Letter
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
@@ -507,7 +504,7 @@ Feature: BVT for Mail page
     Then select print form service Media Mail
     Then set Print form Amount to 2
     Then set Print form Quantity to 1
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then sign out
@@ -519,7 +516,7 @@ Feature: BVT for Mail page
     Then set print form mail-to to a random address in zone 1
     Then set print form ounces to 1
     Then select print form service FCM Letter
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then sign out
@@ -533,7 +530,7 @@ Feature: BVT for Mail page
     Then set print form pounds to 0
     Then set print form ounces to 1
     Then select print form service PM Flat Rate Envelope
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then sign out
@@ -546,7 +543,7 @@ Feature: BVT for Mail page
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service PM Large Flat Rate Box
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer Zebra LP 2844 on qa-printlab2016
     Then click Mail Print modal Print button
     Then sign out
@@ -561,7 +558,7 @@ Feature: BVT for Mail page
     Then set print form pounds to 0
     Then set print form ounces to 1
     Then select print form service PM Package
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then sign out
@@ -577,7 +574,7 @@ Feature: BVT for Mail page
     Then select print form service PM Flat Rate Envelope
     Then show advanced options
     Then check advanced options print receipt
-    Then Print Label
+    Then click mail statusbar print label
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then sign out

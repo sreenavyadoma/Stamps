@@ -3162,6 +3162,12 @@ Cucumber::Rake::Task.new(:mail_manage_printing_options) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:mail_bvt_ui_validation) do |t|
+  t.profile = 'mail_bvt_ui_validation'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+
 
 #--------------------### Orders Bugs ##---------------------
 

@@ -16,8 +16,8 @@ Then /^visit Orders landing page$/ do
           # ignore
         end
 
-  SdcOrdersLandingPage.visit(env)
-  expect(SdcOrdersLandingPage.browser.url).to include('stamps')
+  SdcWebsite::SdcOrdersLandingPage.visit(env)
+  expect(SdcWebsite::SdcOrdersLandingPage.browser.url).to include('stamps')
 end
 
 Then /^initialize test parameters$/ do
@@ -120,6 +120,7 @@ end
 Then /^click Orders landing page sign-in button$/ do
   SdcWebsite.landing_page.sign_in.wait_until_present(timeout: 3)
   SdcWebsite.landing_page.sign_in.click
+  SdcWebsite.landing_page.sign_in.safe_wait_while_present(timeout: 60)
 end
 
 Then /^[Ss]ign-out of SDC [Ww]ebsite$/ do

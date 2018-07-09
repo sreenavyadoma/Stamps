@@ -8,7 +8,7 @@ Feature: Print 1 single ply APO CP72 label on 4x6 roll
     Then add new order
     Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to domestic address to
-      | full_name   | company      | street_address    |street_address2|  city | state | zip    | country       | phone  |  email |
+      | full_name   | company      | street_address1    |street_address2|  city | state | zip    | country       | phone  |  email |
       | PSG LP | 4x6 roll | PSC 3 BOX 4120  |                      |APO  | AE     |  09021  | United States | random | random |
     Then set order details weight to 2 lb 1 oz
     Then set order details service to PSG Package/Flat/Thick Envelope

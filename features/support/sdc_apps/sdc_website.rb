@@ -28,6 +28,11 @@ module SdcWebsite
   end
   module_function :customs_form
 
+  def restrictions
+    SdcRestrictions.new
+  end
+  module_function :restrictions
+
   def exact_address_not_found
     SdcExactAddressNotFound.new
   end

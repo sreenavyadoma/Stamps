@@ -14,8 +14,8 @@ Feature: Bulk Update Domestic
 #      | PMEI LFRE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
 #    Then set order details service to PMI Package/Flat/Thick Envelope
 #    Then set order details weight to 2 lb 2 oz
-#    Then on order details form, add item 1, qty 1, id ID 1, description Description 1
-#    #Then on order details form, add item 2, qty 2, id random string, description random string
+#    Then add order details item 1, qty 1, id ID 1, description Description 1
+#    #Then add order details item 2, qty 2, id random string, description random string
 #    Then click order details form customs form button
 #
 #    Then add customs associated item 1, description random string, qty 1, Price 1, Made In Canada, Tariff 1
@@ -132,12 +132,12 @@ Feature: Bulk Update Domestic
     Then set order details service to PM Package
     Then set order details pounds to 1
     Then check order details insure-for checkbox
-    Then set order details insure-for to $21.55
+    Then set order details insure-for to 21.55
     Then expect order details insure-for is correct
-    Then set order details insure-for to $0.00
+    Then set order details insure-for to 0.00
     Then increment order details insure-for by 6
     Then expect order details insure-for is 6.00
-    Then set order details insure-for to $0.00
+    Then set order details insure-for to 0.00
     Then increment order details insure-for by 7
     Then expect order details insure-for is 7.00
     Then uncheck order details insure-for checkbox
@@ -241,7 +241,7 @@ Feature: Bulk Update Domestic
     #verify fields in 1st order
     #Then check row 1
     #Then expect order details ship from is correct
-    ##Then expect orders grid service is PME Package/Flat/Thick Envelope
+    #Then expect orders grid service is correct
 
     #Then uncheck order 1
     #Then uncheck order 2
@@ -255,7 +255,7 @@ Feature: Bulk Update Domestic
     #verify fields in 2nd order
     #Then check order 2
     #Then expect order details ship from is correct
-    ##Then expect orders grid service is PME Package/Flat/Thick Envelope
+    #Then expect orders grid service is correct
     #Then expect order details pound is 2
 
     Then sign out
@@ -295,14 +295,14 @@ Feature: Bulk Update Domestic
     #verify fields in 1st order
     Then check row 1
     Then expect order details ship from is default
-    #Then expect orders grid service is PME Package/Flat/Thick Envelope
+    Then expect orders grid service is correct
     #Then expect order details pound is 2
     Then uncheck row 1
 
     #verify fields in 2nd order
     Then check row 2
     Then expect order details ship from is correct
-    #Then expect orders grid service is PME Package/Flat/Thick Envelope
+    Then expect orders grid service is correct
     #Then expect order details pound is 2
 
     Then sign out

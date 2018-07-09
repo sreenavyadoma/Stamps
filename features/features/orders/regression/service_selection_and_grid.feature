@@ -16,7 +16,7 @@ Feature:  service Selection & Order Grid Values
     Then set orders print modal printer
     Then click print modal print button
     Then select Filter Panel tab Shipped
-    #Then expect orders grid service is Parcel Select Ground
+    Then expect orders grid service is correct
 
     Then add new order
     Then set order details ship-from to Automation - El Segundo, CA
@@ -28,7 +28,7 @@ Feature:  service Selection & Order Grid Values
     Then set orders print modal printer
     Then click print modal print button
     Then select Filter Panel tab Shipped
-    #Then expect orders grid service is Parcel Select Ground
+    Then expect orders grid service is correct
 
     Then add new order
     Then set order details ship-from to Automation - El Segundo, CA
@@ -40,7 +40,7 @@ Feature:  service Selection & Order Grid Values
     Then set orders print modal printer
     Then click print modal print button
     Then select Filter Panel tab Shipped
-    #Then expect orders grid service is Parcel Select Ground
+    Then expect orders grid service is correct
 
     Then sign out
 

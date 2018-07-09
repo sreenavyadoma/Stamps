@@ -15,7 +15,7 @@ Feature:  Customs Form Item Grid
     Then set order details service to PMI Flat Rate Envelope
     Then set order details pounds to 3
     Then set order details ounces to 3
-    Then on order details form, add item 1, qty 1, id random, description random
+    Then add order details item 1, qty 1, id random, description random
     Then click order details form customs form button
     Then add customs associated item 1, description random, qty 1, Price 100.50, Made In Zimbabwe, Tariff 100
     Then expect Customs Total Value is 100.50
@@ -34,7 +34,7 @@ Feature:  Customs Form Item Grid
       | random | random  | random           | random           | random | random  | random      | Japan | random  | random  |
     Then set order details ounces to 5
     Then set order details service to PMI Flat Rate Envelope
-    Then on order details form, add item 1, qty 1, id random, description random
+    Then add order details item 1, qty 1, id random, description random
     Then click order details form customs form button
     Then expect customs associated item grid count is 1
     Then add customs associated item 1, description random, qty 1, Price 1000, Made In Japan, Tariff 100

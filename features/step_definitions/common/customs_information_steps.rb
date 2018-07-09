@@ -253,6 +253,7 @@ Then /^[Ee]xpect Customs Total Value is (?:correct|(.*))$/ do |str|
 end
 
 Then /^add customs associated item (\d+), description (.*), qty (\d+), Price (.+), Made In (.+), Tariff (.*)$/ do |item, description, qty, price, made_in, tariff|
+  TestData.hash[:customs_items_qty] ||= 0
   TestData.hash[:customs_items_qty] += 1
   step "add customs associated item #{item}" if item > 1
   step "scroll into view customs associated item #{item}"
@@ -305,6 +306,38 @@ Then /^set customs associated item (\d+) qty to (\d+)$/ do |item, value|
   step 'Save Customs Information form Total amount'
   TestData.hash[:customs_associated_items][item] ||= {}
   TestData.hash[:customs_associated_items][item][:quantity] = value
+end
+
+Then /^increment customs associated item (\d+) qty by (\d+)$/ do |item, value|
+  qty = SdcWebsite.customs_form.item.qty(item)
+  old_qty = qty.text_value.to_i
+  qty.scroll_into_view
+  value.times do
+    qty.increment.click
+  end
+  step "expect customs associated item #{item} qty is #{old_qty+value}"
+  step 'Save Customs Information form Total amount'
+  TestData.hash[:customs_associated_items][item] ||= {}
+  TestData.hash[:customs_associated_items][item][:quantity] = old_qty+value
+end
+
+Then /^decrement customs associated item (\d+) qty by (\d+)$/ do |item, value|
+  qty = SdcWebsite.customs_form.item.qty(item)
+  old_qty = qty.text_value.to_i
+  qty.scroll_into_view
+  value.times do
+    qty.decrement.click
+  end
+  step "expect customs associated item #{item} qty is #{old_qty-value}"
+  step 'Save Customs Information form Total amount'
+  TestData.hash[:customs_associated_items][item] ||= {}
+  TestData.hash[:customs_associated_items][item][:quantity] = old_qty-value
+end
+
+Then /^expect customs associated item (\d+) qty is (\d+)$/ do |item, value|
+  qty = SdcWebsite.customs_form.item.qty(item)
+  qty.scroll_into_view
+  expect(qty.text_value.to_i).to eql(value.to_i)
 end
 
 Then /^set customs associated item (\d+) unit price to (.*)$/ do |item, value|
@@ -373,3 +406,20 @@ Then /^expect customs associated item (\d+) Tariff is (?:correct|(.*))$/ do |ite
   expect(result).to eql(str.to_f)
 end
 
+Then /^expect restrictions modal is present$/ do
+  expect(SdcWebsite.restrictions.title).to be_present, 'Restrictions modal is not present'
+end
+
+Then /^expect restrictions modal is not present$/ do
+  expect(SdcWebsite.restrictions.title).not_to be_present, 'Restrictions modal is still present'
+end
+
+Then /^click restrictions modal ok$/ do
+  SdcWebsite.restrictions.ok.click
+  step 'expect restrictions modal is not present'
+end
+
+Then /^close restrictions modal$/ do
+  SdcWebsite.restrictions.x_btn.click
+  step 'expect restrictions modal is not present'
+end
