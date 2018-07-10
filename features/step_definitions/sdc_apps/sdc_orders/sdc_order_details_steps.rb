@@ -184,7 +184,7 @@ Then /^set order details ship-to text area to (.*)$/ do |address|
   ship_to = SdcOrders.order_details.ship_to
   step 'show order ship-to details'
   domestic = SdcOrders.order_details.ship_to.domestic
-  domestic.address.set!(address)
+  domestic.address.set(address)
   3.times do
     step 'blur out on order details form'
     break if ship_to.show_less.present?
@@ -198,7 +198,7 @@ Then /^set order details ship-to text area to (.*)$/ do |address|
     end
     domestic.address.safe_wait_until_present(timeout: 2)
     break if ship_to.show_less.present?
-    domestic.address.set!(address)
+    domestic.address.set(address)
     ship_to.show_less.safe_wait_until_present(timeout: 3)
   end
   TestData.hash[:ship_to_domestic] = address
@@ -219,12 +219,12 @@ end
 
 Then /^blur out on order details form$/ do
   order_details = SdcOrders.order_details
-  order_details.weight_label.double_click!
-  order_details.service_label.double_click!
-  order_details.reference_no.double_click!
-  order_details.ship_to_label.double_click! if order_details.ship_to_label.present?
-  order_details.order_id.double_click!
-  order_details.title.double_click!
+  order_details.weight_label.double_click
+  order_details.service_label.double_click
+  order_details.reference_no.double_click
+  order_details.ship_to_label.double_click if order_details.ship_to_label.present?
+  order_details.order_id.double_click
+  order_details.title.double_click
 end
 
 Then /^set order details phone to (.*)$/ do |str|

@@ -213,7 +213,7 @@ Feature:  BVT tests for Orders
     Then expect order details ship-to email is correct
     Then expect order details ship-to name is First Last
     Then expect order details ship-to company name is Company Name
-    Then expect order details ship-to cleansed street address is 777 N Orange Ave Apt 100
+    Then expect order details ship-to cleansed street address is 777 N Orange Ave
     Then expect order details ship-to cleansed city is Orlando
     Then expect order details ship-to cleansed state is FL
     Then expect order details ship-to cleansed zip plus 4 code is 32801-1175
