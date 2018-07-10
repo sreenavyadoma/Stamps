@@ -331,7 +331,7 @@ end
 Then /^set order details pounds to (.+)$/ do |str|
   order_details = SdcOrders.order_details
   weight = order_details.weight
-  weight.lbs.set!(str)
+  weight.lbs.set(str)
   TestData.hash[:pounds] = str
   step 'Save Order Details data'
 end
@@ -339,7 +339,7 @@ end
 Then /^set order details ounces to (.+)$/ do |str|
   order_details = SdcOrders.order_details
   weight = order_details.weight
-  weight.oz.set!(str)
+  weight.oz.set(str)
   TestData.hash[:ounces] = str
   step 'Save Order Details data'
 end
