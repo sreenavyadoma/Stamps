@@ -1,5 +1,5 @@
 module SdcOrders
-  class SdcDetailsShipFrom < SdcPage
+  class SdcOrderDetailsShipFrom < SdcPage
     page_object(:drop_down) { {xpath: '(//div[starts-with(@id, "shipfromdroplist")]/div[contains(@id, "trigger-picker")])[1]'} }
     page_object(:text_field) { {xpath: '(//input[starts-with(@id, "shipfromdroplist")])[1]'} }
 
@@ -27,7 +27,7 @@ module SdcOrders
     end
   end
 
-  class SdcDetailsService < SdcPage
+  class SdcOrderDetailsService < SdcPage
     page_object(:cost, required: true, timeout: 40) { {xpath: '(//div[contains(@id, "singleOrderDetailsForm")]//div[6]//label[contains(@class, "details-form-label")])[2]'} }
     page_object(:drop_down, required: true, timeout: 40) { {xpath: '(//div[contains(@id, "servicedroplist")]//div[contains(@id, "trigger-picker")])[1]'} }
     page_object(:text_field, required: true, timeout: 40) { {xpath: '(//input[contains(@id, "servicedroplist")])[1]'} }
@@ -37,11 +37,7 @@ module SdcOrders
     end
   end
 
-  class InsuranceTerms < SdcPage
-
-  end
-
-  class SdcDetailsInsurance < SdcPage
+  class SdcOrderDetailsInsurance < SdcPage
     page_object(:cost) { {xpath: '(//div[contains(@id, "singleOrderDetailsForm")]//div[7]//label[contains(@class, "component")])[2]'} }
 
     page_object(:chooser_elem) { {xpath: '//div[contains(@id, "singleOrderDetailsForm")]//div[7]//input[contains(@class, "checkbox")]'} }
@@ -54,7 +50,7 @@ module SdcOrders
     sdc_number(:amount, :text_f, :increment, :decrement)
   end
 
-  class SdcDetailsTracking < SdcPage
+  class SdcOrderDetailsTracking < SdcPage
     page_object(:cost) { {xpath: '//*[contains(@class, "selected_tracking_cost")]'} }
     page_object(:drop_down) { {xpath: '(//div[contains(@id, "trackingdroplist")]//div[contains(@id, "trigger-picker")])[1]'} }
     page_object(:text_field) { {xpath: '(//input[contains(@id, "trackingdroplist")])[1]'} }
@@ -64,7 +60,7 @@ module SdcOrders
     end
   end
 
-  class SdcDetailsFooter < SdcPage
+  class SdcOrderDetailsFooter < SdcPage
     label(:total_ship_cost) { {xpath: '//label[contains(@class, "total_cost")]'} }
     button(:print) { {xpath: '(//div[contains(@class, "footer")]//span[text()="Print"])[1]'} }
   end
@@ -96,7 +92,7 @@ module SdcOrders
     end
   end
 
-  class SdcDetailsShipTo < SdcPage
+  class SdcOrderDetailsShipTo < SdcPage
     page_object(:show_details) { {xpath: '//div[starts-with(@id, "shiptoview-addressCollapsed")]//a'} }
     page_object(:show_less) { {xpath: '//div[contains(@id, "domestic")]//span[text()="Less"]'} }
 
@@ -109,7 +105,7 @@ module SdcOrders
     end
   end
 
-  class SdcDetailsWeight < SdcPage
+  class SdcOrderDetailsWeight < SdcPage
     text_field(:lbs_tf, tag: :text_field) { {xpath: '(//div[contains(@class, "pounds-numberfield")]//input)[1]'} }
     page_object(:lbs_inc) { {xpath: '(//div[contains(@class, "pounds-numberfield")]//div[contains(@class, "x-form-spinner-up")])[1]'} }
     page_object(:lbs_dec) { {xpath: '(//div[contains(@class, "pounds-numberfield")]//div[contains(@class, "x-form-spinner-down")])[1]'} }
@@ -121,7 +117,7 @@ module SdcOrders
     sdc_number(:oz, :oz_tf, :oz_inc, :oz_dec)
   end
 
-  class SdcDetailsDimensions < SdcPage
+  class SdcOrderDetailsDimensions < SdcPage
     text_field(:len_tf, tag: :text_field) { {xpath: '(//*[contains(@class, "lengthnumberfield")])[1]'} }
     page_object(:len_inc) { {xpath: '(//*[contains(@class, "lengthnumberfield")]/../following-sibling::*/div[contains(@class, "up")])[1]'} }
     page_object(:len_dec) { {xpath: '(//*[contains(@class, "lengthnumberfield")]/../following-sibling::*/div[contains(@class, "down")])[1]'} }
@@ -138,7 +134,7 @@ module SdcOrders
     sdc_number(:height, :oz_tf, :oz_inc, :oz_dec)
   end
 
-  class SdcDetailsItem < SdcPage
+  class SdcOrderDetailsItem < SdcPage
     def item_qty(num)
       page_object("qty_tf#{num}", tag: :text_field) { { xpath: "(//div[contains(@id, 'singleorderitem')]//*[@name='Quantity'])[#{num}]" } }
       page_object("qty_inc#{num}") {{xpath: "(//div[contains(@id, 'singleorderitem')]//*[@name='Quantity']/../following-sibling::*/div[contains(@class, 'up')])[#{num}]"}}
@@ -175,39 +171,39 @@ module SdcOrders
     page_objects(:items_ordered, index: 0) { { xpath: '//div[text()="Items Ordered"]' } }
 
     def ship_to
-      SdcDetailsShipTo.new
+      SdcOrderDetailsShipTo.new
     end
 
     def ship_from
-      SdcDetailsShipFrom.new
+      SdcOrderDetailsShipFrom.new
     end
 
     def weight
-      SdcDetailsWeight.new
+      SdcOrderDetailsWeight.new
     end
 
     def service
-      SdcDetailsService.new
+      SdcOrderDetailsService.new
     end
 
     def insure_for
-      SdcDetailsInsurance.new
+      SdcOrderDetailsInsurance.new
     end
 
     def tracking
-      SdcDetailsTracking.new
+      SdcOrderDetailsTracking.new
     end
 
     def footer
-      SdcDetailsFooter.new
+      SdcOrderDetailsFooter.new
     end
 
     def dimensions
-      SdcDetailsDimensions.new
+      SdcOrderDetailsDimensions.new
     end
 
     def associated_item
-      SdcDetailsItem.new
+      SdcOrderDetailsItem.new
     end
 
     def contents
