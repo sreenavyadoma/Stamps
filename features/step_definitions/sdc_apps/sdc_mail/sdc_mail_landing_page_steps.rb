@@ -38,8 +38,7 @@ Then /^sign-in to mail$/ do
   end
 end
 
-
-
+#
 Then /^close whats new modal in mail$/ do
   whats_new = SdcWebsite.modals.whats_new
   if whats_new.title.present?

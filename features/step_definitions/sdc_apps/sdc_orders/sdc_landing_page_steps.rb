@@ -56,7 +56,7 @@ Then /^fetch user credentials from MySQL$/ do
     TestData.hash[:password] = pw
   end
 end
-
+#
 Then /^sign-in to orders$/ do
   step 'visit Orders landing page'
   usr = TestData.hash[:username]
@@ -125,6 +125,7 @@ Then /^click Orders landing page sign-in button$/ do
   landing_page.sign_in.safe_wait_while_present(timeout: 60)
 end
 
+#
 Then /^close whats new modal in orders$/ do
   whats_new = SdcWebsite.modals.whats_new
   if whats_new.title.present?
