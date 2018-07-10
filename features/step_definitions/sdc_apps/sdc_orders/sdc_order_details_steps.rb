@@ -484,6 +484,8 @@ Then /^set order details insure-for to (\d+\.\d{2})$/ do |str|
   insure_for.cost.double_click
   insure_for.cost.safe_click
   insurance_terms.title.safe_wait_until_present(timeout: 2)
+  # This is a work around, there's a bug in the code where there are more
+  # than one Terms and Conditions modal on top of each other.
   3.times do
     if insurance_terms.title.present?
       window_title = 'Stamps.com Insurance Terms and Conditions'
