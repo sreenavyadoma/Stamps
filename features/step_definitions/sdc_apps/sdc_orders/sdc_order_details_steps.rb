@@ -410,58 +410,58 @@ end
 
 Then /^set order details international ship-to name to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
-  SdcOrders.order_details.ship_to.international.name.set(str)
+  SdcOrders.order_details.ship_to.international.name.set!(str)
   TestData.hash[:full_name] = str
 
 end
 
 Then /^set order details international ship-to company to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
-  SdcOrders.order_details.ship_to.international.company.set(str)
+  SdcOrders.order_details.ship_to.international.company.set!(str)
   TestData.hash[:company] = str
 end
 
 Then /^set order details international ship-to address 1 to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
-  SdcOrders.order_details.ship_to.international.address1.set(str)
+  SdcOrders.order_details.ship_to.international.address1.set!(str)
   TestData.hash[:street_address1] = str
 end
 
 Then /^set order details international ship-to address 2 to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
-  SdcOrders.order_details.ship_to.international.address2.set(str)
+  SdcOrders.order_details.ship_to.international.address2.set!(str)
   TestData.hash[:street_address2] = str
 end
 
 Then /^set order details international ship-to city to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
-  SdcOrders.order_details.ship_to.international.city.set(str)
+  SdcOrders.order_details.ship_to.international.city.set!(str)
   TestData.hash[:city] = str
 end
 
 Then /^set order details international ship-to province to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
-  SdcOrders.order_details.ship_to.international.province.set(str)
+  SdcOrders.order_details.ship_to.international.province.set!(str)
   TestData.hash[:province] = str
 end
 
 Then /^set order details international ship-to postal code to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
-  SdcOrders.order_details.ship_to.international.postal_code.set(str)
+  SdcOrders.order_details.ship_to.international.postal_code.set!(str)
   TestData.hash[:postal_code] = str
 end
 
 Then /^set order details international ship-to phone to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
   step 'show order ship-to details'
-  SdcOrders.order_details.ship_to.international.phone.set(str)
+  SdcOrders.order_details.ship_to.international.phone.set!(str)
   TestData.hash[:phone] = str
 end
 
 Then /^set order details international ship-to email to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
   step 'show order ship-to details'
-  SdcOrders.order_details.ship_to.international.email.set(str)
+  SdcOrders.order_details.ship_to.international.email.set!(str)
   TestData.hash[:email] = str
 end
 
