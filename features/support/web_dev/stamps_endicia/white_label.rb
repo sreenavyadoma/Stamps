@@ -7,9 +7,9 @@ module WhiteLabel
     text_field(:confirm_password, tag: :text_field, required: true) { { id: 'confirmPassword' } }
 
     button(:survey) { { id: 'usageType' } }
-    text_field(:text_field) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="usageType"]'}}
+    text_field(:survey) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="usageType"]'}}
 
-    def selection(str, name = :selection_element)
+    def survey_selection(str, name = :survey_element)
       page_object(name) { { xpath: "//span[text()=' #{str} ']" } }
     end
 
