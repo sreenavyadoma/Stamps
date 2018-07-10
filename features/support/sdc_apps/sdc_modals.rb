@@ -6,6 +6,7 @@ module SdcMail
       page_object(:more_info) { {xpath: '//span[contains(text(), "More Info")]'} }
     end
 
+    #
     def whats_new
       SdcWhatsNew.new
     end
