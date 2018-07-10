@@ -9,7 +9,7 @@ module WhiteLabel
     button(:survey) { { id: 'usageType' } }
     text_field(:text_field) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="usageType"]'}}
 
-    def selection(name = :selection_element, str)
+    def selection(str, name = :selection_element)
       page_object(name, timeout: 5) { { xpath: "//span[text()=' #{str} ']" } }
     end
 
