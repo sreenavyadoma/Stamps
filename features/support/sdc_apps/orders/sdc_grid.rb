@@ -52,7 +52,7 @@ module SdcGrid
       '//div[@class="x-grid-item-container"]'
     end
 
-    def scroll_to_column(column)
+    def scroll_to(column)
       method_name = "scroll_to_#{column.to_s}"
       column_name = column_names[column]
       xpath = "//span[text()='#{column_name}']"
@@ -66,9 +66,9 @@ module SdcGrid
       field
     end
 
-    def grid_text_by_id(column, order_id)
-      row = row_number(order_id)
-      grid_text(column, row)
+    def text_for_id(column, order_id)
+      row = row_num(order_id)
+      text_at(column, row)
     end
 
     def count
@@ -88,13 +88,13 @@ module SdcGrid
       size.zero?
     end
 
-    def grid_text(column, row)
-      scroll_to_column(column)
-      element = grid_field(column, row)
+    def text_at(column, row)
+      scroll_to(column)
+      element = element_at(column, row)
       element.text_value
     end
 
-    def grid_field(column, row)
+    def element_at(column, row)
       column_num = column_number(column).to_s
       xpath = "#{grid_container}//table[#{row.to_s}]//tbody//td[#{column_num}]//div"
       coordinates = "col#{column}xrow#{row}"
@@ -103,13 +103,13 @@ module SdcGrid
 
     def grid_field_column_name(column, row)
       col = column_number(column)
-      grid_text(col, row)
+      text_at(col, row)
     end
 
     def column_number(name)
-      column = get(name)
-      if column
-        return column
+      col_num = get(name)
+      if col_num
+        return col_num
       else
         xpath = '//span[@class="x-column-header-text-inner"]'
         columns = page_objects(:columns) { { xpath: xpath } }
@@ -125,17 +125,19 @@ module SdcGrid
           set(key, index + 1)
 
           if key.eql?(name)
-            scroll_to_column(name)
-            return get(name)
+            scroll_to(name)
+            col_num = get(name)
+            return col_num
           end
         end
       end
 
-      raise ArgumentError, "#{name} is not a valid column"
+      error_message = "Cannot find column number for #{name}"
+      raise ArgumentError, error_message
     end
 
-    def row_number(order_id)
-      scroll_to_column(:order_id)
+    def row_num(order_id)
+      scroll_to(:order_id)
       col_num = column_number(:order_id)
       xpath = "#{grid_container}//tbody//td[#{col_num}]//div"
       divs = page_objects(:row_number_divs) { { xpath: xpath } }
@@ -170,8 +172,6 @@ module SdcGrid
       # nil
     end
 
-    protected
-
     def get(property)
       self.class.get(property)
     end
@@ -192,7 +192,7 @@ module SdcGrid
     chooser(:checkbox_header, :chooser, :verify, :class, 'checker-on')
 
     def scroll_into_view
-      scroll_to_column(:checkbox)
+      scroll_to(:checkbox)
     end
 
     def checkbox_row(row)
@@ -215,23 +215,19 @@ module SdcGrid
     end
 
     def scroll_into_view
-      scroll_to_column(@column)
+      scroll_to(@column)
     end
 
-    def row(row)
-      grid_text(@column, row)
+    def text_at_row(row)
+      text_at(@column, row)
     end
 
     def data(order_id)
-      grid_text_by_id(@column, order_id)
-    end
-
-    def row_num(order_id)
-      row_number(order_id)
+      text_for_id(@column, order_id)
     end
 
     def element(row)
-      grid_field(@column, row)
+      element_at(@column, row)
     end
 
     def sort_ascending
@@ -253,15 +249,17 @@ module SdcGrid
   end
   module_function :body
 
-  def grid_column(name)
+  def grid_column(column)
     body.wait_until_present(timeout: 15)
-    unless GridItem.column_names.keys.include? name
-      raise ArgumentError, "Invalid grid column: #{name}"
+
+    unless GridItem.column_names.keys.include? column
+      raise ArgumentError, "Invalid grid column: #{column}"
     end
 
-    case name
+    case column
     when :checkbox
       SdcGridCheckBox.new
+
     when :weight
       klass = Class.new(SdcGridItem) do
         def lb order_id
@@ -273,9 +271,10 @@ module SdcGrid
         end
       end
 
-      klass.new(name)
+      klass.new(column)
+
     else
-      SdcGridItem.new(name)
+      SdcGridItem.new(column)
     end
   end
   module_function :grid_column
