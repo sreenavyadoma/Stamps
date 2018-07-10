@@ -1,4 +1,4 @@
-module SdcMail
+module SdcWebsite
   module SdcModals
     class SdcWhatsNew < SdcPage
       page_object(:title) { {xpath: '//div[contains(text(), "What")]'} }
