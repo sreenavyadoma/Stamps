@@ -10,7 +10,7 @@ module WhiteLabel
     text_field(:text_field) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="usageType"]'}}
 
     def selection(str, name = :selection_element)
-      page_object(name, timeout: 5) { { xpath: "//span[text()=' #{str} ']" } }
+      page_object(name) { { xpath: "//span[text()=' #{str} ']" } }
     end
 
   end
