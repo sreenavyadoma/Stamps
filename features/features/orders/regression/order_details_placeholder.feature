@@ -12,7 +12,7 @@ Feature:  Order Details Form Placeholder default values
     Then expect Order Details Ship-To Email Placeholder is Email
     Then expect Order Details service Placeholder is Select a service ...
 
-    Then on order details form, add item 1
+    Then add order details item 1
 
     Then expect order details associated item 1 qty placeholder is Qty
     Then expect order details associated item 1 ID Placeholder is ID #

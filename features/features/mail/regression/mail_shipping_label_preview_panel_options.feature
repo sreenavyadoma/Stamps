@@ -34,7 +34,7 @@ Feature:Shipping Label Preview Panel
 
     Then set advanced options reference number to random string
     Then expect advanced options reference number is correct
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then sign out

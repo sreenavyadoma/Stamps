@@ -6,14 +6,23 @@ Then /^add order (\d+)$/ do |count|
   toolbar = SdcOrders.toolbar
   order_details = SdcOrders.order_details
   initializing = SdcOrders.initializing_orders_db
+  server_error = SdcOrders.modals.server_error
   toolbar.add.wait_until_present(timeout: 10)
   toolbar.add.click
-  order_details.order_id.safe_wait_until_present(timeout: 20)
-  if initializing.present?
-    initializing.safe_wait_until_present(timeout: 20)
-    expect(initializing.text).not_to eql 'Initializing Order Database'
+  order_details.title.safe_wait_until_present(timeout: 10)
+  if server_error.title.present?
+    error_msg = "#{server_error.title.text} - #{server_error.body.text}"
+    server_error.ok.safe_click
+    expect(error_msg).to eql ''
   end
-  order_details.title.safe_wait_until_present(timeout: 50)
+  unless order_details.order_id.present?
+    if initializing.present?
+      initializing.safe_wait_until_present(timeout: 20)
+      expect(initializing.text).not_to eql 'Initializing Order Database'
+    end
+  end
+  order_details.order_id.safe_wait_until_present(timeout: 20)
+  order_details.title.safe_wait_until_present(timeout: 20)
   expect(order_details.order_id.text_value).not_to eql ''
 
   TestData.hash[:order_id][count.to_i] = order_details.order_id.text_value.parse_digits
@@ -40,8 +49,10 @@ Then /^Save Order Details data$/ do
   TestData.hash[:insure_for_cost] = order_details.insure_for.cost.text_value.dollar_amount_str.to_f.round(2)
   TestData.hash[:total_ship_cost] = order_details.footer.total_ship_cost.text_value.dollar_amount_str.to_f.round(2)
   TestData.hash[:awaiting_shipment_count] = SdcOrders.filter_panel.awaiting_shipment.count.text_value.to_f.round(2)
-  if TestData.hash[:country] == "United States"
+  if order_details.tracking.cost.present?
     TestData.hash[:tracking_cost] = order_details.tracking.cost.text_value.dollar_amount_str.to_f.round(2)
+  end
+  if order_details.tracking.text_field.present?
     TestData.hash[:tracking] = order_details.tracking.text_field.text_value
   end
 end

@@ -14,12 +14,12 @@ Feature: Customs Form Qty > 99 is not saved correctly
     Then set order details service to PMI Package/Flat/Thick Envelope
     Then set order details ounces to 1
 
-    Then on order details form, add item 1
+    Then add order details item 1
     Then set Order Details qty to 1
     Then set Order Details ID to random
     Then set Order Details description to random
 
-    Then on order details form, add item 2
+    Then add order details item 2
     Then set Order Details qty to 2
     Then set Order Details ID to random
     Then set Order Details description to random

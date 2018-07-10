@@ -43,28 +43,28 @@ Then /^decrement print form weight by lbs (\d+) oz (\d+)$/ do |lbs, oz|
 end
 
 Then /^increment print form pounds by (\d+)$/ do |lbs|
-  old_lbs = SdcMail.print_form.weight.lbs.text_field.text_value
+  old_lbs = SdcMail.print_form.weight.lbs.text_value
   lbs.times do SdcMail.print_form.weight.lbs.increment.click end
   step "expect print form pounds is #{old_lbs.to_i + lbs.to_i}"
   TestData.hash[:lbs] = lbs
 end
 
 Then /^increment print form ounces by (\d+)$/ do |oz|
-  old_oz = SdcMail.print_form.weight.oz.text_field.text_value
+  old_oz = SdcMail.print_form.weight.oz.text_value
   oz.times do SdcMail.print_form.weight.oz.increment.click end
   step "expect print form ounces is #{old_oz.to_i + oz.to_i}"
   TestData.hash[:oz] = oz
 end
 
 Then /^decrement print form pounds by (\d+)$/ do |lbs|
-  old_lbs = SdcMail.print_form.weight.lbs.text_field.text_value
+  old_lbs = SdcMail.print_form.weight.lbs.text_value
   lbs.times do SdcMail.print_form.weight.lbs.decrement.click end
   step "expect print form pounds is #{old_lbs.to_i - lbs.to_i}"
   TestData.hash[:lbs] = lbs
 end
 
 Then /^decrement print form ounces by (\d+)$/ do |oz|
-  old_oz = SdcMail.print_form.weight.oz.text_field.text_value
+  old_oz = SdcMail.print_form.weight.oz.text_value
   oz.times do SdcMail.print_form.weight.oz.decrement.click end
   step "expect print form ounces is #{old_oz.to_i - oz.to_i}"
   TestData.hash[:oz] = oz
@@ -72,12 +72,12 @@ end
 
 Then /^expect print form pounds is (?:correct|(\d+))$/ do |lbs|
   lbs = lbs.nil? ? TestData.hash[:lbs] : lbs
-  expect(SdcMail.print_form.weight.lbs.value.to_i).to eql lbs
+  expect(SdcMail.print_form.weight.lbs.text_value.to_i).to eql lbs
 end
 
 Then /^expect print form ounces is (?:correct|(\d+))$/ do |oz|
   oz = oz.nil? ? TestData.hash[:oz] : oz
-  expect(SdcMail.print_form.weight.oz.value.to_i).to eql oz
+  expect(SdcMail.print_form.weight.oz.text_value.to_i).to eql oz
 end
 
 Then /^set print form dimensions to length (\d+) width (\d+) height (\d+)$/ do |l, w, h|
@@ -90,7 +90,7 @@ Then /^set print form length to (\d+)$/ do |l|
   length = SdcMail.print_form.dimensions.length
   expect(length).to be_present, 'Length text field is not present'
   length.set(l)
-  expect(length.value.to_i).to eql l
+  expect(length.text_value.to_i).to eql l
   TestData.hash[:length] = l
 end
 
@@ -98,7 +98,7 @@ Then /^set print form width to (\d+)$/ do |w|
   width = SdcMail.print_form.dimensions.width
   expect(width).to be_present, 'Width text field is not present'
   width.set(w)
-  expect(width.value.to_i).to eql w
+  expect(width.text_value.to_i).to eql w
   TestData.hash[:width] = w
 end
 
@@ -106,47 +106,47 @@ Then /^set print form height to (\d+)$/ do |h|
   height = SdcMail.print_form.dimensions.height
   expect(height).to be_present, 'Height text field is not present'
   height.set(h)
-  expect(height.value.to_i).to eql h
+  expect(height.text_value.to_i).to eql h
   TestData.hash[:height] = h
 end
 
 Then /^increment print form length by (\d+)$/ do |length|
-  old_length = SdcMail.print_form.dimensions.length.text_field.text_value
+  old_length = SdcMail.print_form.dimensions.length.text_value
   length.times do SdcMail.print_form.dimensions.length.increment.click end
   step "expect print form length is #{old_length.to_i + length.to_i}"
   TestData.hash[:length] = old_length.to_i + length.to_i
 end
 
 Then /^increment print form width by (\d+)$/ do |width|
-  old_width = SdcMail.print_form.dimensions.width.text_field.text_value
+  old_width = SdcMail.print_form.dimensions.width.text_value
   width.times do SdcMail.print_form.dimensions.width.increment.click end
   step "expect print form width is #{old_width.to_i + width.to_i}"
   TestData.hash[:width] = old_width.to_i + width.to_i
 end
 
 Then /^increment print form height by (\d+)$/ do |height|
-  old_height = SdcMail.print_form.dimensions.height.text_field.text_value
+  old_height = SdcMail.print_form.dimensions.height.text_value
   height.times do SdcMail.print_form.dimensions.height.increment.click end
   step "expect print form height is #{old_height.to_i + height.to_i}"
   TestData.hash[:height] = old_height.to_i + height.to_i
 end
 
 Then /^decrement print form length by (\d+)$/ do |length|
-  old_length = SdcMail.print_form.dimensions.length.text_field.text_value
+  old_length = SdcMail.print_form.dimensions.length.text_value
   length.times do SdcMail.print_form.dimensions.length.decrement.click end
   step "expect print form length is #{old_length.to_i - length.to_i}"
   TestData.hash[:length] = old_length.to_i + length.to_i
 end
 
 Then /^decrement print form width by (\d+)$/ do |width|
-  old_width = SdcMail.print_form.dimensions.width.text_field.text_value
+  old_width = SdcMail.print_form.dimensions.width.text_value
   width.times do SdcMail.print_form.dimensions.width.decrement.click end
   step "expect print form width is #{old_width.to_i - width.to_i}"
   TestData.hash[:width] = old_width.to_i + width.to_i
 end
 
 Then /^decrement print form height by (\d+)$/ do |height|
-  old_height = SdcMail.print_form.dimensions.height.text_field.text_value
+  old_height = SdcMail.print_form.dimensions.height.text_value
   height.times do SdcMail.print_form.dimensions.height.decrement.click end
   step "expect print form height is #{old_height.to_i - height.to_i}"
   TestData.hash[:height] = old_height.to_i + height.to_i
@@ -166,17 +166,17 @@ end
 
 Then /^expect print form length is (?:correct|(\d+))$/ do |h|
   h = h.nil? ? TestData.hash[:length] : h
-  expect(SdcMail.print_form.dimensions.length.value.to_i).to eql(h)
+  expect(SdcMail.print_form.dimensions.length.text_value.to_i).to eql(h)
 end
 
 Then /^expect print form width is (?:correct|(\d+))$/ do |h|
   h = h.nil? ? TestData.hash[:width] : h
-  expect(SdcMail.print_form.dimensions.width.value.to_i).to eql(h)
+  expect(SdcMail.print_form.dimensions.width.text_value.to_i).to eql(h)
 end
 
 Then /^expect print form height is (?:correct|(\d+))$/ do |h|
   h = h.nil? ? TestData.hash[:height] : h
-  expect(SdcMail.print_form.dimensions.height.value.to_i).to eql(h)
+  expect(SdcMail.print_form.dimensions.height.text_value.to_i).to eql(h)
 end
 
 # dimension expectations
@@ -362,6 +362,12 @@ end
 Then /^click print form edit customs form button$/ do
   SdcMail.print_form.contents.customs_form.click
 end
+
+Then /^click print form restrictions button$/ do
+  SdcMail.print_form.contents.restrictions.click
+  step 'expect restrictions modal is present'
+end
+
 
 ##
 #

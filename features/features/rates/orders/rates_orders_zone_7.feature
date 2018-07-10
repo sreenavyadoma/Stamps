@@ -18,7 +18,7 @@ Feature: January 2017 Rates for Core User in Zone 7
     Then set order details service to First-Class Mail Package/Thick Envelope
     Then set order details weight to 0 lb 8 oz
     Then expect order details service cost is 2.60
-    Then set Order Details Tracking to USPS Tracking
+    Then set order details tracking to USPS Tracking
     Then expect Order Details Total Ship Cost is 2.60
     Then sign out
 
@@ -28,7 +28,7 @@ Feature: January 2017 Rates for Core User in Zone 7
     Then set order details service to PM Large/Thick Envelope
     Then set order details weight to 33 lb 1 oz
     Then expect order details service cost is 64.26
-    Then set Order Details Tracking to USPS Tracking
+    Then set order details tracking to USPS Tracking
     Then expect Order Details Total Ship Cost is 64.26
     Then sign out
 
@@ -38,7 +38,7 @@ Feature: January 2017 Rates for Core User in Zone 7
     Then set order details service to PM Package
     Then set order details weight to 10 lb 1 oz
     Then expect order details service cost is 31.92
-    Then set Order Details Tracking to USPS Tracking
+    Then set order details tracking to USPS Tracking
     Then set order details length to 1
     Then set order details width to 1
     Then set order details height to 1
@@ -51,7 +51,7 @@ Feature: January 2017 Rates for Core User in Zone 7
     Then set order details service to PM Large Package
     Then set order details weight to 41 lb 1 oz
     Then expect order details service cost is 73.93
-    Then set Order Details Tracking to USPS Tracking
+    Then set order details tracking to USPS Tracking
     Then set order details length to 7
     Then set order details width to 25
     Then set order details height to 25
@@ -64,7 +64,7 @@ Feature: January 2017 Rates for Core User in Zone 7
     Then set order details service to PM Flat Rate Envelope
     Then set order details weight to 31 lb 1 oz
     Then expect order details service cost is 5.75
-    Then set Order Details Tracking to USPS Tracking
+    Then set order details tracking to USPS Tracking
     Then expect Order Details Total Ship Cost is 5.75
     Then sign out
 
@@ -74,7 +74,7 @@ Feature: January 2017 Rates for Core User in Zone 7
     Then set order details service to PM Padded Flat Rate Envelope
     Then set order details weight to 22 lb 1 oz
     Then expect order details service cost is 6.10
-    Then set Order Details Tracking to USPS Tracking
+    Then set order details tracking to USPS Tracking
     Then expect Order Details Total Ship Cost is 6.10
     Then sign out
 
@@ -84,7 +84,7 @@ Feature: January 2017 Rates for Core User in Zone 7
     Then set order details service to PM Legal Flat Rate Envelope
     Then set order details weight to 32 lb 1 oz
     Then expect order details service cost is 5.75
-    Then set Order Details Tracking to USPS Tracking
+    Then set order details tracking to USPS Tracking
     Then expect Order Details Total Ship Cost is 5.75
     Then sign out
 
@@ -94,7 +94,7 @@ Feature: January 2017 Rates for Core User in Zone 7
     Then set order details service to PM Small Flat Rate Box
     Then set order details weight to 54 lb 1 oz
     Then expect order details service cost is 6.10
-    Then set Order Details Tracking to USPS Tracking
+    Then set order details tracking to USPS Tracking
     Then expect Order Details Total Ship Cost is 6.10
     Then sign out
 
@@ -104,7 +104,7 @@ Feature: January 2017 Rates for Core User in Zone 7
     Then set order details service to PM Medium Flat Rate Box
     Then set order details weight to 45 lb 1 oz
     Then expect order details service cost is 11.95
-    Then set Order Details Tracking to USPS Tracking
+    Then set order details tracking to USPS Tracking
     Then expect Order Details Total Ship Cost is 11.95
     Then sign out
 
@@ -114,7 +114,7 @@ Feature: January 2017 Rates for Core User in Zone 7
     Then set order details service to PM Large Flat Rate Box
     Then set order details weight to 30 lb 1 oz
     Then expect order details service cost is 16.35
-    Then set Order Details Tracking to USPS Tracking
+    Then set order details tracking to USPS Tracking
     Then expect Order Details Total Ship Cost is 16.35
     Then sign out
 
@@ -124,7 +124,7 @@ Feature: January 2017 Rates for Core User in Zone 7
     Then set order details service to PM Regional Rate Box A
     Then set order details weight to 10 lb 1 oz
     Then expect order details service cost is 9.99
-    Then set Order Details Tracking to USPS Tracking
+    Then set order details tracking to USPS Tracking
     Then expect Order Details Total Ship Cost is 9.99
 
 
@@ -134,7 +134,7 @@ Feature: January 2017 Rates for Core User in Zone 7
     Then set order details service to PM Regional Rate Box B
     Then set order details weight to 30 lb 1 oz
     Then expect order details service cost is 17.93
-    Then set Order Details Tracking to USPS Tracking
+    Then set order details tracking to USPS Tracking
     Then expect Order Details Total Ship Cost is 17.93
 
   @local_rating_zone_7
@@ -143,7 +143,7 @@ Feature: January 2017 Rates for Core User in Zone 7
     Then set order details service to PME Package/Flat/Thick Envelope
     Then set order details weight to 22 lb 1 oz
     Then expect order details service cost is 122.31
-    Then set Order Details Tracking to USPS Tracking
+    Then set order details tracking to USPS Tracking
     Then expect Order Details Total Ship Cost is 122.31
     Then sign out
 
@@ -153,7 +153,7 @@ Feature: January 2017 Rates for Core User in Zone 7
     Then set order details service to PME Flat Rate Envelope
     Then set order details weight to 18 lb 1 oz
     Then expect order details service cost is 20.66
-    Then set Order Details Tracking to USPS Tracking
+    Then set order details tracking to USPS Tracking
     Then expect Order Details Total Ship Cost is 20.66
     Then sign out
 
@@ -163,7 +163,7 @@ Feature: January 2017 Rates for Core User in Zone 7
     Then set order details service to PME Padded Flat Rate Envelope
     Then set order details weight to 56 lb 1 oz
     Then expect order details service cost is 20.66
-    Then set Order Details Tracking to USPS Tracking
+    Then set order details tracking to USPS Tracking
     Then expect Order Details Total Ship Cost is 20.66
     Then sign out
 
@@ -173,7 +173,7 @@ Feature: January 2017 Rates for Core User in Zone 7
     Then set order details service to PME Legal Flat Rate Envelope
     Then set order details weight to 39 lb 15 oz
     Then expect order details service cost is 20.66
-    Then set Order Details Tracking to USPS Tracking
+    Then set order details tracking to USPS Tracking
     Then expect Order Details Total Ship Cost is 20.66
     Then sign out
 
@@ -183,7 +183,7 @@ Feature: January 2017 Rates for Core User in Zone 7
     Then set order details service to MM Package/Flat/Thick Envelope
     Then set order details weight to 65 lb 15 oz
     Then expect order details service cost is 35.22
-    Then set Order Details Tracking to USPS Tracking
+    Then set order details tracking to USPS Tracking
     Then expect Order Details Total Ship Cost is 35.22
     Then sign out
 
@@ -193,7 +193,7 @@ Feature: January 2017 Rates for Core User in Zone 7
     Then set order details service to PSG Package/Flat/Thick Envelope
     Then set order details weight to 37 lb 15 oz
     Then expect order details service cost is 68.02
-    Then set Order Details Tracking to USPS Tracking
+    Then set order details tracking to USPS Tracking
     Then expect Order Details Total Ship Cost is 68.02
     Then sign out
 
@@ -203,7 +203,7 @@ Feature: January 2017 Rates for Core User in Zone 7
     Then set order details service to PSG Package/Flat/Thick Envelope
     Then set order details weight to 58 lb 15 oz
     Then expect order details service cost is 91.52
-    Then set Order Details Tracking to USPS Tracking
+    Then set order details tracking to USPS Tracking
     Then expect Order Details Total Ship Cost is 91.52
     Then sign out
 
@@ -213,7 +213,7 @@ Feature: January 2017 Rates for Core User in Zone 7
     Then set order details service to PSG Oversized Package
     Then set order details weight to 47 lb 15 oz
     Then expect order details service cost is 141.62
-    Then set Order Details Tracking to USPS Tracking
+    Then set order details tracking to USPS Tracking
     Then expect Order Details Total Ship Cost is 141.62
     Then sign out
 

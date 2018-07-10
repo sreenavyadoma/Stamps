@@ -266,7 +266,7 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
 
           # Set Tracking
           begin
-            step "set Order Details Tracking to #{row[@rate_sheet_columns[:tracking]]}"  if SdcEnv.sdc_app == :orders
+            step "set order details tracking to #{row[@rate_sheet_columns[:tracking]]}"  if SdcEnv.sdc_app == :orders
           end unless row[@rate_sheet_columns[:tracking]].nil?
           # Write tracking to spreadsheet
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:tracking_selected]] = TestData.hash[:tracking]

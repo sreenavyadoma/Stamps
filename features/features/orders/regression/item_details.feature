@@ -21,10 +21,10 @@ Feature: Item Details
     Then pause for 3 seconds
 
     Then on Order Details form, Expand Store Items Ordered pane
-    Then on order details form, add item 1, qty 1, id random, description random
-    Then on order details form, add item 2, qty 1, id random, description random
-    Then on order details form, add item 3, qty 1, id random, description random
-    Then on order details form, add item 4, qty 1, id random, description random
+    Then add order details item 1, qty 1, id random, description random
+    Then add order details item 2, qty 1, id random, description random
+    Then add order details item 3, qty 1, id random, description random
+    Then add order details item 4, qty 1, id random, description random
 
 
     Then on Order Details form, Collapse Manual Items Ordered pane

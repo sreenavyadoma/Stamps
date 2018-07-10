@@ -17,7 +17,7 @@ Feature:  Print new country orders
     Then set order details service to FCMI Large Envelope/Flat
     Then set order details ounces to 2
     Then set order details pounds to 2
-    Then on order details form, add item 1, qty 1, id Item 1 SKU, description Item 1 Description
+    Then add order details item 1, qty 1, id Item 1 SKU, description Item 1 Description
     Then click order details form customs form button
     Then set customs package contents to Merchandise
     Then add customs associated item 1, description random, qty 1, Price 30, Made In United States, Tariff 10
@@ -43,7 +43,7 @@ Feature:  Print new country orders
     Then set order details service to FCMI Large Envelope/Flat
     Then set order details ounces to 2
     Then set order details pounds to 2
-    Then on order details form, add item 1, qty 1, id Item 1 SKU, description Item 1 Description
+    Then add order details item 1, qty 1, id Item 1 SKU, description Item 1 Description
     Then click order details form customs form button
     Then set customs package contents to Merchandise
     Then add customs associated item 1, description random, qty 1, Price 30, Made In United States, Tariff 10

@@ -18,7 +18,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
     Then set orders print modal printer
     #Then View Print On option Shipping Label 5.5 x 8.5 tooltip
-    #Then Expect Shipping Label 5.5 x 8.5 tool-tip to contain "Use these letter-sized label sheets with two 5 ½” x 8 ½” labels per sheet to print postage, addresses, and tracking barcode."
+    #Then Expect Shipping Label 5.5 x 8.5 tool-tip to contain "Use these letter-sized label sheets with two 5 ½” x 8 ½” labels per sheet to click mail statusbar print, addresses, and tracking barcode."
    # Then Expect Shipping Label 5.5 x 8.5 tool-tip to contain "Can be used to ship Large Envelopes, Packages, USPS Flat Rate Envelopes or Boxes, or USPS Regional Rate Boxes to any U.S. destination."
     #Then Expect Shipping Label 5.5 x 8.5 tool-tip to contain "Avery 5126, 8126, 5526, 5783, 15516, 18126, 85783"
     Then click print modal print button
@@ -192,7 +192,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then add new order
     Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to domestic address to
-      | full_name            | company                 | street_address      | street_address2 |  city          | state | zip        | country       | phone  |  email |
+      | full_name            | company                 | street_address1      | street_address2 |  city          | state | zip        | country       | phone  |  email |
       | Jessie Joe      | The CN 22 House         | PSC 819 BOX 1       |                  | FPO           | AE    | 09645-0001 | United States |        |        |
     Then set order details service to PM Package
     Then set order details ounces to 5
@@ -211,7 +211,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then add new order
     Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to domestic address to
-      | full_name            | company                 | street_address      | street_address2| city          | state | zip        | country       | phone  |  email |
+      | full_name            | company                 | street_address1      | street_address2| city          | state | zip        | country       | phone  |  email |
       | Tammmy Moo      | The CP72 House          | Unit 15324          |                 | APO           | AP    | 96205-5324 | United States |        |        |
     Then set order details service to PM Package
     Then set order details pounds to 3

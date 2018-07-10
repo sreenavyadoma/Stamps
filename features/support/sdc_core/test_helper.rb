@@ -1,4 +1,4 @@
-module Stamps
+module SdcCore
   module TestHelper
     class << self
       def user_credentials
@@ -25,9 +25,9 @@ module Stamps
         digits = ('0'..'9').to_a
         special = %w(- _ .)
         SdcEnv.env.to_s + (digits + down + up + special).shuffle[1..1].join +
-          [rand_samp_str(down), rand_samp_str(up), rand_samp_str(
-            digits
-          )].concat((down + up + digits).sample(Random.rand(0..5))).shuffle.join
+            [rand_samp_str(down), rand_samp_str(up), rand_samp_str(
+                digits
+            )].concat((down + up + digits).sample(Random.rand(0..5))).shuffle.join
       end
 
       def rand_email
