@@ -1,5 +1,5 @@
-module SdcWebsite
-  class SdcModals < SdcPage
+module SdcMail
+  module SdcModals
     class SdcWhatsNew < SdcPage
       page_object(:title) { {xpath: '//div[contains(text(), "What")]'} }
       page_object(:close) { {xpath: '//span[contains(text(), "Close")]'} }
@@ -9,5 +9,6 @@ module SdcWebsite
     def whats_new
       SdcWhatsNew.new
     end
+    module_function :whats_new
   end
 end
