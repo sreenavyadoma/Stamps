@@ -13,6 +13,10 @@ Then /^SDCWR: set profile page email to (.*)$/ do |str|
 end
 
 Then /^SDCWR: set Profile page Survey Question to (.*)$/ do |str|
-  WhiteLabel.profile_page.survey.click
-  WhiteLabel.profile_page.selection(:selection_element, str)
+  profile_page = WhiteLabel.profile_page
+  profile_page.text_field.click
+  profile_page.selection(str)
+  profile_page.selection_element.safe_wait_until_present(timeout: 2)
+  profile_page.selection_element.click
+  expect(profile_page.text_field.attribute_value('title').trim).to eql str
 end
