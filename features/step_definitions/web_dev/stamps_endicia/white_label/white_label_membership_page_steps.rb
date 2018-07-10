@@ -17,7 +17,7 @@ Then /^WL: set membership page company to (?:random value|(.*))$/ do |str|
   WhiteLabel.membership_page.company.set(TestData.hash[:company] = str.nil? ? TestHelper.rand_alpha_str  : str) if WhiteLabel.membership_page.company.present?
 end
 
-Then /^WL: set membership page address to (?:random value|(.*))$/ do |str|
+Then /^WL: set membership page address to (.*)$/ do |str|
   WhiteLabel.membership_page.address.set(TestData.hash[:address] = str)
 end
 
@@ -33,5 +33,16 @@ Then /^WL: set membership page personal info to(?: a |)(?: random info |)(?:to|i
   TestData.hash[:company] = TestData.hash[:personal_info]['company']
   TestData.hash[:ship_to_domestic] = TestHelper.format_address(address)
   TestData.hash[:phone_number_format] = TestData.hash[:personal_info][:phone_number_format]
+
+  step "WL: set membership page first name to #{TestData.store[:first_name]}"
+  step "WL: set membership page last name to #{TestData.store[:last_name]}"
+  step "WL: set membership page address to #{TestData.store[:street_address]}"
+  step "blur_out on membership page"
+  step "set Membership page City to #{TestData.store[:city]}"
+  step "select Membership page State #{TestData.store[:state]}"
+  step "blur_out on membership page"
+  step "set Membership page Zip to #{TestData.store[:zip]}"
+  step "set Membership page Phone to #{TestData.store[:phone_number_format]}"
+
 end
 
