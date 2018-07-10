@@ -17,3 +17,7 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: click profile page continue button
 
     #Membership Page
+    Then WL: set membership page first name to random value
+    Then WL: set membership page last name to random value
+    Then WL: set membership page company to random value
+    Then WL: set membership page address to 1990 East Grant Avenue

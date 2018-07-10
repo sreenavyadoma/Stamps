@@ -30,10 +30,10 @@ module WhiteLabel
     page_object(:state) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="state"]'}}
     text_field(:zip, tag: :text_field) { { id: 'zip' } }
     text_field(:phone, tag: :text_field, required: true) { { id: 'phone' } }
-    text_field(:cardholder_name, tag: :text_field, required: true) { { id: 'ccName' } }
-    text_field(:credit_card_number, tag: :text_field, required: true) { { id: 'ccNumber' } }
-    page_object(:credit_card_month) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="ccMonth"]'}}
-    page_object(:credit_card_year) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="ccYear"]'}}
+    text_field(:cc_name, tag: :text_field, required: true) { { id: 'ccName' } }
+    text_field(:cc_number, tag: :text_field, required: true) { { id: 'ccNumber' } }
+    page_object(:cc_month) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="ccMonth"]'}}
+    page_object(:cc_year) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="ccYear"]'}}
     page_object(:use_mailing_address_for_billing) {{id: 'useMailingAddressForBilling'}}
     page_object(:terms_conditions) {{id: 'termsConditions'}}
     button(:back) {{id: 'prev'}}
@@ -50,6 +50,11 @@ module WhiteLabel
     def profile_page
       ProfilePage.new
     end
+
+    def membership_page
+      MembershipPage.new
+    end
+
     def common_page
       Common.new
     end

@@ -2,19 +2,27 @@
 Then /^WL: set profile page email to (?:random value|(.*))$/ do |str|
   email = WhiteLabel.profile_page.email
   email.wait_until_present(timeout: 10)
-  email.set(TestData.hash[:email]=(str.nil?)?(TestHelper.rand_email):str)
+  if SdcEnv.usr
+    email.set(TestData.hash[:email]=(str.nil?)?(SdcEnv.usr) : str)
+  else
+    email.set(TestData.hash[:email]=(str.nil?)?(TestHelper.rand_email) : str)
+  end
 end
 
 Then /^WL: set profile page username to (?:random value|(.*))$/ do |str|
-  WhiteLabel.profile_page.username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr):str))
+  WhiteLabel.profile_page.username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
 end
 
 Then /^WL: set profile page password to (?:random value|(.*))$/ do |str|
-  WhiteLabel.profile_page.password.set (TestData.hash[:account_password]=(str.nil?)?TestHelper.rand_alpha_numeric(min:6, max:13):str)
+  if SdcEnv.pw
+    WhiteLabel.profile_page.password.set (TestData.hash[:account_password]=(str.nil?) ? SdcEnv.pw : str)
+  else
+    WhiteLabel.profile_page.password.set (TestData.hash[:account_password]=(str.nil?) ? TestHelper.rand_alpha_numeric(min:6, max:13) : str)
+  end
 end
 
 Then /^WL: set profile page re-type password to (?:same as previous password|(.*))$/ do |str|
-  WhiteLabel.profile_page.confirm_password.set(TestData.hash[:retype_password]=(str.nil?)?(TestData.hash[:account_password]):str)
+  WhiteLabel.profile_page.confirm_password.set(TestData.hash[:retype_password]=(str.nil?)?(TestData.hash[:account_password]) : str)
 end
 
 Then /^WL: set profile page survey question to (.*)$/ do |str|
@@ -37,7 +45,7 @@ end
 
 Then /^WL: set profile page promo code to (?:an empty string|(.*))$/ do |str|
   step 'WL: show profile page promo code textbox'
-  WhiteLabel.profile_page.promo_code_textbox.set(TestData.hash[:promo_code]=(str.nil?)?'':str)
+  WhiteLabel.profile_page.promo_code_textbox.set(TestData.hash[:promo_code]=(str.nil?)?'' : str)
 end
 
 Then /^WL: show profile page promo code textbox$/ do
