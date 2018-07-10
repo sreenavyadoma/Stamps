@@ -185,7 +185,7 @@ Then /^set order details ship-to text area to (.*)$/ do |address|
   step 'show order ship-to details'
   domestic = SdcOrders.order_details.ship_to.domestic
   domestic.address.set(address)
-  3.times do
+  5.times do
     step 'blur out on order details form'
     break if ship_to.show_less.present?
     ship_to.show_less.safe_wait_until_present(timeout: 3)
