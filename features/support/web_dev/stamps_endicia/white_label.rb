@@ -7,9 +7,40 @@ module WhiteLabel
     link(:promo_code_link) { { id: 'showPromoCode' } }
     text_field(:promo_code_textbox, tag: :text_field, required: true) { { id: 'promoCodeHidden' } }
     page_object(:survey) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="usageType"]'}}
+    page_object(:referrer_name) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="referrerName"]'}}
+    button(:continue) {{id: 'next'}}
 
     def survey_selection(str, name = :survey_element)
       page_object(name) { { xpath: "//span[text()=' #{str} ']" } }
+    end
+
+    def referrer_name_selection(str, name = :referrer_name_element)
+      page_object(name) { { xpath: "//span[text()='#{str}']" } }
+    end
+
+  end
+
+  class MembershipPage < SdcPage
+    text_field(:first_name, tag: :text_field, required: true) { { id: 'firstName' } }
+    text_field(:last_name, tag: :text_field, required: true) { { id: 'lastName' } }
+    text_field(:company, tag: :text_field) { { id: 'companyName' } }
+    text_field(:address, tag: :text_field, required: true) { { id: 'street' } }
+    text_field(:city, tag: :text_field, required: true) { { id: 'city' } }
+    text_field(:city, tag: :text_field, required: true) { { id: 'city' } }
+    page_object(:state) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="state"]'}}
+    text_field(:zip, tag: :text_field) { { id: 'zip' } }
+    text_field(:phone, tag: :text_field, required: true) { { id: 'phone' } }
+    text_field(:cardholder_name, tag: :text_field, required: true) { { id: 'ccName' } }
+    text_field(:credit_card_number, tag: :text_field, required: true) { { id: 'ccNumber' } }
+    page_object(:credit_card_month) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="ccMonth"]'}}
+    page_object(:credit_card_year) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="ccYear"]'}}
+    page_object(:use_mailing_address_for_billing) {{id: 'useMailingAddressForBilling'}}
+    page_object(:terms_conditions) {{id: 'termsConditions'}}
+    button(:back) {{id: 'prev'}}
+    button(:submit) {{id: 'next'}}
+
+    def dropdown_selection(str, name = :dropdown_element)
+      page_object(name) { { xpath: "//span[text()='#{str}']" } }
     end
 
   end

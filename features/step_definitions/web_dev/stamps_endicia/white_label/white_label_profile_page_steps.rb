@@ -10,18 +10,12 @@ Then /^WL: set profile page username to (?:random value|(.*))$/ do |str|
 end
 
 Then /^WL: set profile page password to (?:random value|(.*))$/ do |str|
-  WhiteLabel.profile_page.password.set (TestData.hash[:account_password]=(str.nil?)?TestHelper.rand_alpha_numeric:str)
+  WhiteLabel.profile_page.password.set (TestData.hash[:account_password]=(str.nil?)?TestHelper.rand_alpha_numeric(min:6, max:13):str)
 end
 
 Then /^WL: set profile page re-type password to (?:same as previous password|(.*))$/ do |str|
   WhiteLabel.profile_page.confirm_password.set(TestData.hash[:retype_password]=(str.nil?)?(TestData.hash[:account_password]):str)
 end
-
-Then /^WL: set profile page promo code to (?:an empty string|(.*))$/ do |str|
-  step "WL: show profile page promo code textbox"
-  WhiteLabel.profile_page.promo_code_textbox.set(TestData.hash[:promo_code]=(str.nil?)?'':str)
-end
-
 
 Then /^WL: set profile page survey question to (.*)$/ do |str|
   profile_page = WhiteLabel.profile_page
@@ -32,8 +26,25 @@ Then /^WL: set profile page survey question to (.*)$/ do |str|
   expect(profile_page.survey.attribute_value('title').strip).to eql str
 end
 
+Then /^WL: set profile page how did you hear about us\? to (.*)$/ do |str|
+  profile_page = WhiteLabel.profile_page
+  profile_page.referrer_name.click
+  profile_page.referrer_name_selection(str)
+  profile_page.referrer_name_element.safe_wait_until_present(timeout: 2)
+  profile_page.referrer_name_element.click
+  expect(profile_page.referrer_name.attribute_value('title').strip).to eql str
+end
+
+Then /^WL: set profile page promo code to (?:an empty string|(.*))$/ do |str|
+  step 'WL: show profile page promo code textbox'
+  WhiteLabel.profile_page.promo_code_textbox.set(TestData.hash[:promo_code]=(str.nil?)?'':str)
+end
 
 Then /^WL: show profile page promo code textbox$/ do
   WhiteLabel.profile_page.promo_code_link.click if  WhiteLabel.profile_page.promo_code_link.present?
-  expect(WhiteLabel.profile_page.promo_code_textbox).to be_present, "Unable to show Promo Code textbox upon clicking Show Promo Code link."
+  expect(WhiteLabel.profile_page.promo_code_textbox).to be_present, 'Unable to show Promo Code textbox upon clicking Show Promo Code link.'
+end
+
+Then /^WL: click profile page continue button$/ do
+  WhiteLabel.profile_page.continue.click
 end
