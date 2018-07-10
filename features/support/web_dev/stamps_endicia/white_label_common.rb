@@ -1,7 +1,8 @@
 module WhiteLabel
 
   class Common < SdcPage
-    button(:get_started) { { class: ['btn btn-success register'] } }
+    page_object(:stamps_logo) {{id: 'sdc-logo'}}
+    button(:get_started) { { class: ['btn btn-success btn-xs register'] } }
   end
 
   class SDCWWebsite <SdcPage
