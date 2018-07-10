@@ -484,14 +484,19 @@ Then /^set order details insure-for to (\d+\.\d{2})$/ do |str|
   insure_for.cost.double_click
   insure_for.cost.safe_click
   insurance_terms.title.safe_wait_until_present(timeout: 2)
-  if insurance_terms.title.present?
-    window_title = 'Stamps.com Insurance Terms and Conditions'
-    expect(insurance_terms.title.text).to eql window_title
-    insurance_terms.i_agree.wait_until_present(timeout: 1)
-    insurance_terms.i_agree.click
-    insurance_terms.i_agree.safe_click
+  3.times do
+    if insurance_terms.title.present?
+      window_title = 'Stamps.com Insurance Terms and Conditions'
+      expect(insurance_terms.title.text).to eql window_title
+      insurance_terms.i_agree_btns.each do |element|
+        wrapped_element = SdcElement.new(element)
+        wrapped_element.safe_wait_until_present(timeout: 2)
+        wrapped_element.safe_click
+      end
+    else
+      break
+    end
   end
-  insurance_terms.title.wait_while_present(timeout: 3)
   TestData.hash[:insured_value] = str.to_f
   step 'blur out on order details form'
   step 'Save Order Details data'

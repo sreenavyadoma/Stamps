@@ -4,9 +4,9 @@ module SdcOrders
     class InsuranceTerms < SdcPage
       page_object(:title) { { xpath: '//div[text()="Stamps.com Insurance Terms and Conditions"]' } }
       page_object(:terms_link) { { xpath: '//u[text()="Stamps.com Insurance Terms and Conditions"]' } }
-      page_object(:i_agree) { { xpath: '//a[contains(@class, "sdc-inseula-agreebtn")]//span[contains(@id, "btnInnerEl")]' } }
-      page_object(:cancel) { { xpath: '//a[contains(@class, "sdc-inseula-cancelbtn")]//span[contains(@id, "btnInnerEl")]' } }
       page_object(:x_button) { { xpath: '//span[contains(@class, "sdc-icon-mobile-close-light")]' } }
+      page_objects(:i_agree_btns) { { xpath: '//*[text()="I Agree"]' } }
+      page_objects(:cancel_btns) { { xpath: '//*[text()="Cancel"]' } }
     end
 
     class ServerError < SdcPage
