@@ -5,7 +5,7 @@ module WhiteLabel
     text_field(:password, tag: :text_field, required: true) { { id: 'password' } }
     text_field(:confirm_password, tag: :text_field, required: true) { { id: 'confirmPassword' } }
     link(:promo_code_link) { { id: 'showPromoCode' } }
-    text_field(:promo_code, tag: :text_field, required: true) { { id: 'promoCodeHidden' } }
+    text_field(:promo_code_textbox, tag: :text_field, required: true) { { id: 'promoCodeHidden' } }
     page_object(:survey) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="usageType"]'}}
 
     def survey_selection(str, name = :survey_element)

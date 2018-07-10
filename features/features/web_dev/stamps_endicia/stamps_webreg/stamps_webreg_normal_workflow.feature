@@ -10,3 +10,4 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: set profile page password to random value
     Then WL: set profile page re-type password to same as previous password
     Then WL: set profile page survey question to Individual/Home Office
+    Then WL: set profile page promo code to PR33-NH77
