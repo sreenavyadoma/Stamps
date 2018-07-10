@@ -119,14 +119,16 @@ Then /^set Orders landing page password to (.*)$/ do |str|
 end
 
 Then /^click Orders landing page sign-in button$/ do
-  SdcWebsite.landing_page.sign_in.wait_until_present(timeout: 3)
-  SdcWebsite.landing_page.sign_in.click
-  SdcWebsite.landing_page.sign_in.safe_wait_while_present(timeout: 60)
+  landing_page = SdcWebsite.landing_page
+  landing_page.sign_in.wait_until_present(timeout: 3)
+  landing_page.sign_in.click
+  landing_page.sign_in.safe_wait_while_present(timeout: 60)
 end
 
 Then /^close whats new modal in orders$/ do
-  if SdcWebsite.modals.whats_new.title.present?
-    SdcWebsite.modals.whats_new.close.click
+  whats_new = SdcWebsite.modals.whats_new
+  if whats_new.title.present?
+    whats_new.close.click
   end
 end
 
