@@ -16,8 +16,8 @@ module WhiteLabel
 
 
 
-    def dropdown_selection(str, name = :dropdown_element)
-      page_object(name) { { xpath: "//span[text()='#{str}']" } }
+    def dropdown_selection(str, index, name = :dropdown_element)
+      page_objects(name, index: index) { { xpath: "//span[contains(text(), \"#{str}\")]" } }
     end
   end
 

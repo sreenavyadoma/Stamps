@@ -12,11 +12,11 @@ module WhiteLabel
     button(:continue) {{id: 'next'}}
 
     def survey_selection(str, name = :survey_element)
-      page_object(name) { { xpath: "//span[text()=' #{str} ']" } }
+      page_object(name) { { xpath: "//span[contains(text(), ' #{str} ')]" } }
     end
 
     def referrer_name_selection(str, name = :referrer_name_element)
-      page_object(name) { { xpath: "//span[text()='#{str}']" } }
+      page_object(name) { { xpath: "//span[contains(text(), '#{str}')]" } }
     end
 
   end
@@ -41,13 +41,14 @@ module WhiteLabel
     button(:submit) {{id: 'next'}}
 
     def dropdown_selection(str, name = :dropdown_element)
-      page_object(name) { { xpath: "//span[text()='#{str}']" } }
+      page_object(name) { {xpath: "//span[text()='#{str}']"} }
     end
 
   end
 
   class ChooseSupplies < SdcPage
-    page_object(:place_order) {{id: 'mincartButtonTopDpawr'}}
+    page_object(:cs_header) { {xpath: '//h1[(contains(text(), "Customize your Welcome Kit"))]'} }
+    page_object(:place_order) { {id: 'mincartButtonTopDpawr'}}
   end
 
   class << self

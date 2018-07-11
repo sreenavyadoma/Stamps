@@ -17,7 +17,7 @@ Then /^WL: set profile page password to (?:random value|(.*))$/ do |str|
   if SdcEnv.pw
     WhiteLabel.profile_page.password.set (TestData.hash[:account_password]=(str.nil?) ? SdcEnv.pw : str)
   else
-    WhiteLabel.profile_page.password.set (TestData.hash[:account_password]=(str.nil?) ? TestHelper.rand_alpha_numeric(min:6, max:13) : str)
+    WhiteLabel.profile_page.password.set (TestData.hash[:account_password]=(str.nil?) ? TestHelper.rand_alpha_numeric(min:6, max:10) : str)
   end
 end
 

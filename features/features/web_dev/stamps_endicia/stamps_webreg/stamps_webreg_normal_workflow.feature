@@ -28,11 +28,15 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: click membership page submit button
 
     #Choose Supplies Page
+    Then WL: expect customize your welcome kit is present
     Then WL: click choose supplies page place order button
 
     #Security Question
-    Then WL: select Security Questions 1st security question What is your mother's maiden name?
-    Then WL: set Security Questions 1st security answer to random value
+    Then WL: select security questions first security question What is your mother's maiden name?
+    Then WL: set security questions first security answer to random value
+    Then WL: select security questions second security question What is your pet's name?
+    Then WL: set security questions second security answer to random value
 
-    Then WL: select Security Questions 2nd security question What is your pet's name?
-    Then WL: set Security Questions 2nd security answer to random value
+    Then WL: click security questions get stared button
+
+    Then WL: expect user is singed in to print
