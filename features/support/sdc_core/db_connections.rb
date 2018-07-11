@@ -82,12 +82,12 @@ module Stamps
   class SdcwSwwDB
     def initialize
       env = ::SdcEnv.env.to_s
-      server = data_for(:sql_server_pp, {})[env]['server']
-      database = data_for(:sql_server_pp, {})[env]['database']
-      port = data_for(:sql_server_pp, {})[env]['port']
-      username = data_for(:sql_server_pp, {})[env]['username']
-      password = data_for(:sql_server_pp, {})[env]['password']
-      azure = data_for(:sql_server_pp, {})[env]['azure']
+      server = data_for(:sql_server_sdcw_sww, {})[env]['server']
+      database = data_for(:sql_server_sdcw_sww, {})[env]['database']
+      port = data_for(:sql_server_sdcw_sww, {})[env]['port']
+      username = data_for(:sql_server_sdcw_sww, {})[env]['username']
+      password = data_for(:sql_server_sdcw_sww, {})[env]['password']
+      azure = data_for(:sql_server_sdcw_sww, {})[env]['azure']
       @connection = SQLServerClient.new(server: server, database: database, username: username, password: password, port: port, azure:azure)
     end
 

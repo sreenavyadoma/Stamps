@@ -76,6 +76,10 @@ module WhiteLabel
       EWWebsite.new
     end
 
+    def db_connection
+      SdcwSwwDB.new
+    end
+
   end
 
 end
