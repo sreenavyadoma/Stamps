@@ -92,6 +92,10 @@ Then /^WL: expect membership page Terms & Conditions is checked$/ do
   expect(WhiteLabel.membership_page.terms_conditions.checked?).to be(true)
 end
 
+Then /^WL: click membership page submit button$/ do
+  WhiteLabel.membership_page.submit.click
+end
+
 
 Then /^WL: set membership page personal info to(?: a |)(?: random info |)(?:to|in|between|) (.*)$/ do |address|
   stamps_logo = WhiteLabel.common_page.stamps_logo

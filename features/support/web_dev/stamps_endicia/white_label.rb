@@ -46,7 +46,7 @@ module WhiteLabel
 
   end
 
-  class ChooseSupplies
+  class ChooseSupplies < SdcPage
     page_object(:place_order) {{id: 'mincartButtonTopDpawr'}}
   end
 

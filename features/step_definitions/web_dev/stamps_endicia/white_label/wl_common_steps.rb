@@ -1,4 +1,4 @@
-Then /^WL: navigates to default registration page$/ do
+Then /^WL: navigates to default registration page for stamps$/ do
   SDCWWebsite.visit
   stamps_logo = WhiteLabel.common_page.stamps_logo
   stamps_logo.wait_until_present(timeout: 10)

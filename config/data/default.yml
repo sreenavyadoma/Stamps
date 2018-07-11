@@ -24,6 +24,22 @@ sql_server_pp:
      password: Sdcqatest623
      azure: false
 
+sql_server_sdcw_sww:
+   qacc:
+      server: v7z5h2jc8j.database.windows.net
+      database: stampswebsitedb-sdcqacc
+      port: 1433
+      username: stampswebsitedb-sdcqacc_user@v7z5h2jc8j
+      password: Qa@zure!
+      azure: false
+   stg:
+     server: q5zymesd76.database.windows.net
+     database: stampswebsitedb-sdcstaging
+     port: 1433
+     username: stampswebsitedb-sdcstaging_user@q5zymesd76
+     password: Qa@zure!
+     azure: false
+
 download:
   download_file_path: C:\Stamps\download\
 
