@@ -1,5 +1,6 @@
 Then /^Verify Local Rating$/ do |table|
-  #SdcLog.step "Verify Local Rating..."
+  pending
+  ##SdcLog.step "Verify Local Rating..."
   #results_file="local_rating_results.csv"
   order_details_form = stamps.orders.details
   parameter_array = table.hashes

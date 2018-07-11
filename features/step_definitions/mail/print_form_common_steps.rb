@@ -13,7 +13,8 @@ Then /^[Ss]et Print form Mail-From to (.*)$/ do |str|
 end
 
 Then /^[Cc]heck Print form [Ee]mail [Tt]racking checkbox$/ do
-  stamps.mail.print_form.email_tracking.email_checkbox.click
+  pending
+  # stamps.mail.print_form.email_tracking.email_checkbox.click
 end
 
 Then /^set print form weight to lbs (\d+) oz (\d+)$/ do |lbs, oz|
@@ -181,19 +182,23 @@ end
 
 # dimension expectations
 Then /^[Ee]xpect Print form Length is (?:correct|(\d+))$/ do |str|
-  expect(stamps.mail.print_form.dimensions.length.text.to_i).to eql((str.nil? ? TestData.hash[:length] : str).to_i)
+  pending
+  #expect(stamps.mail.print_form.dimensions.length.text.to_i).to eql((str.nil? ? TestData.hash[:length] : str).to_i)
 end
 
 Then /^[Ee]xpect Print form width is (?:correct|(\d+))$/ do |str|
-  expect(stamps.mail.print_form.dimensions.width.text.to_i).to eql((str.nil? ? TestData.hash[:width] : str).to_i)
+  pending
+  #expect(stamps.mail.print_form.dimensions.width.text.to_i).to eql((str.nil? ? TestData.hash[:width] : str).to_i)
 end
 
 Then /^[Ee]xpect Print form height is (?:correct|(\d+))$/ do |str|
-  expect(stamps.mail.print_form.dimensions.height.text.to_i).to eql((str.nil? ? TestData.hash[:height] : str).to_i)
+  pending
+  #expect(stamps.mail.print_form.dimensions.height.text.to_i).to eql((str.nil? ? TestData.hash[:height] : str).to_i)
 end
 
 Then /^[Ee]xpect [Pp]rint [Ff]orm [Ss]ervice (.*) is not present in dropdown list$/ do |service|
-  expect(stamps.mail.print_form.service.select_service(TestData.hash[:service] = service).present?).to be(false)
+  pending
+  #expect(stamps.mail.print_form.service.select_service(TestData.hash[:service] = service).present?).to be(false)
 end
 
 # Then /^select print form service for stamps (.*)$/ do |str|
@@ -223,32 +228,38 @@ Then /^expect settings link is present in notification bar$/ do
 end
 
 Then /^[Ee]xpect [Pp]rint [Ff]orm [Ss]ervice [Cc]ost [Ff]or (.*) is (.*)$/ do |service, cost|
-  step 'blur out on print form'
-  stamps.mail.print_form.service.service_cost(TestData.hash[:service] = service).to eql("$#{cost}")
+  pending
+  #stamps.mail.print_form.service.service_cost(TestData.hash[:service] = service).to eql("$#{cost}")
 end
 
 When /^[Pp]rint [Ll]abel$/ do
-  stamps.mail.mail_toolbar.print_label
+  pending
+  #stamps.mail.mail_toolbar.print_label
 end
 
 When /^[Cc]lick Print Sample button on Print form$/ do
-  @print_window = stamps.mail.mail_toolbar.print_sample
+  pending
+  #@print_window = stamps.mail.mail_toolbar.print_sample
 end
 
 When /^[Ss]elect on [Pp]rint [Pp]review [Pp]anel, [Ll]eft side starting label$/ do
-  stamps.mail.print_preview.select_left_label
+  pending
+  #stamps.mail.print_preview.select_left_label
 end
 
 Then /^[Ee]xpect on [Pp]rint [Pp]review [Pp]anel, left side label is selected$/ do
-  expect(stamps.mail.print_preview.left_selected?).to be(true), "Left Label image doesn't exists on Print form"
+  pending
+  #expect(stamps.mail.print_preview.left_selected?).to be(true), "Left Label image doesn't exists on Print form"
 end
 
 When /^[Ss]elect on [Pp]rint [Pp]review [Pp]anel, [Rr]ight side starting label$/ do
-  stamps.mail.print_preview.select_right_label
+  pending
+  #stamps.mail.print_preview.select_right_label
 end
 
 Then /^[Ee]xpect on [Pp]rint [Pp]review [Pp]anel, right side label is selected$/ do
-  expect(stamps.mail.print_preview.right_selected?).to be(true), "Right Label image doesn't exists on Print form"
+  pending
+  #expect(stamps.mail.print_preview.right_selected?).to be(true), "Right Label image doesn't exists on Print form"
 end
 
 Then /^[Ss]et Print Form Ship-To Country to a random country in PMI Flat Rate price group (.*)$/ do |group|
@@ -379,56 +390,69 @@ end
 #
 #
 Then /^[Ee]xpect Print form Domestic Address Field is present$/ do
-  expect(stamps.mail.print_form.mail_to.mail_address.textarea).to be_present, "Print form Domestic Address Field is NOT present"
+  pending
+  #expect(stamps.mail.print_form.mail_to.mail_address.textarea).to be_present, "Print form Domestic Address Field is NOT present"
 end
 
 Then /^[Ee]xpect Print form International Name Field is present$/ do
-  expect(stamps.mail.print_form.mail_to.int_mail_address.name).to be_present, "Print form International Name Field is NOT present"
+  pending
+  #expect(stamps.mail.print_form.mail_to.int_mail_address.name).to be_present, "Print form International Name Field is NOT present"
 end
 
 Then /^[Ee]xpect Print form International Company Field is present$/ do
-  expect(stamps.mail.print_form.mail_to.int_mail_address.company).to be_present, "Print form International Company Field is NOT present"
+  pending
+  #expect(stamps.mail.print_form.mail_to.int_mail_address.company).to be_present, "Print form International Company Field is NOT present"
 end
 
 Then /^[Ee]xpect Print form International Address 1 Field is present$/ do
-  expect(stamps.mail.print_form.mail_to.int_mail_address.address1).to be_present, "Print form International Address 1 Field is NOT present"
+  pending
+  #expect(stamps.mail.print_form.mail_to.int_mail_address.address1).to be_present, "Print form International Address 1 Field is NOT present"
 end
 
 Then /^[Ee]xpect Print form International Address 2 Field is present$/ do
-  expect(stamps.mail.print_form.mail_to.int_mail_address.address2).to be_present, "Print form International Address 2 Field is NOT present"
+  pending
+  #expect(stamps.mail.print_form.mail_to.int_mail_address.address2).to be_present, "Print form International Address 2 Field is NOT present"
 end
 
 Then /^[Ee]xpect Print form International City Field is present$/ do
-  expect(stamps.mail.print_form.mail_to.int_mail_address.city).to be_present, "Print form International City Field is NOT present"
+  pending
+  #expect(stamps.mail.print_form.mail_to.int_mail_address.city).to be_present, "Print form International City Field is NOT present"
 end
 
 Then /^[Ee]xpect Print form International Province Field is present$/ do
-  expect(stamps.mail.print_form.mail_to.int_mail_address.province).to be_present, "Print form International Province Field is NOT present"
+  pending
+  #expect(stamps.mail.print_form.mail_to.int_mail_address.province).to be_present, "Print form International Province Field is NOT present"
 end
 
 Then /^[Ee]xpect Print form International Postcode Field is present$/ do
-  expect(stamps.mail.print_form.mail_to.int_mail_address.postal_code).to be_present, "Print form International Postcode Field is NOT present"
+  pending
+  #expect(stamps.mail.print_form.mail_to.int_mail_address.postal_code).to be_present, "Print form International Postcode Field is NOT present"
 end
 
 Then /^[Ee]xpect Print form International Phone Field is present$/ do
-  expect(stamps.mail.print_form.mail_to.int_mail_address.phone).to be_present, "Print form International Phone Field is NOT present"
+  pending
+  #expect(stamps.mail.print_form.mail_to.int_mail_address.phone).to be_present, "Print form International Phone Field is NOT present"
 end
 
 Then /^[Ss]ave Print Form Total Cost$/ do
-  TestData.hash[:total_ship_cost] = stamps.mail.mail_toolbar.total
+  pending
+  #TestData.hash[:total_ship_cost] = stamps.mail.mail_toolbar.total
 end
 
 Then /^[Ss]ave Print Form Mail From$/ do
-  TestData.hash[:ship_from] = stamps.mail.print_form.mail_from.textbox.text
+  pending
+  #TestData.hash[:ship_from] = stamps.mail.print_form.mail_from.textbox.text
 end
 
 Then /^[Cc]lick on [Bb]uy [Mm]ore [Ll]abels link$/ do
-  stamps.mail.print_preview.buy_more_labels.link.click
+  pending
+  #stamps.mail.print_preview.buy_more_labels.link.click
 end
 
 #AB_ORDERSAUTO_3516
 Then /^[Ee]xpect Print form service is empty$/ do
-  expect(stamps.mail.print_form.service.textbox.text).eql?("")
+  pending
+  #expect(stamps.mail.print_form.service.textbox.text).eql?("")
 end
 
 

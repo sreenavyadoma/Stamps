@@ -8,7 +8,8 @@ Then /^set print form mail-to (?:|to )(?:|a )(?:|random )address(?: to| in| betw
 end
 
 Then /^[Ee]xpect Print form Mail To is disabled$/ do
-  expect(stamps.mail.print_form.mail_to.enabled?).to be(true), "Print form Mail To is NOT disabled"
+  pending
+  #expect(stamps.mail.print_form.mail_to.enabled?).to be(true), "Print form Mail To is NOT disabled"
 end
 
 Then /^click print form mail to link$/ do

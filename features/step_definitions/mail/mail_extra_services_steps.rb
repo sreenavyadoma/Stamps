@@ -372,16 +372,16 @@ Then /^hover on extra services odd shaped\/non-machinable tooltip$/ do
 end
 
 Then /^[Cc]lick [Cc]ontinue in [Hh]idden [Pp]ostage [Nn]ot [Aa]llowed modal$/ do
-  stamps.mail.mail_toolbar.hidden_postage_warning.continue
+  pending #stamps.mail.mail_toolbar.hidden_postage_warning.continue
 end
 
 Then /^[Cc]lick [Cc]ancel in [Hh]idden [Pp]ostage [Nn]ot [Aa]llowed modal$/ do
-  stamps.mail.mail_toolbar.hidden_postage_warning.cancel
+  pending #stamps.mail.mail_toolbar.hidden_postage_warning.cancel
 end
 
 Then /^[Ee]xpect [Hh]idden [Pp]ostage [Nn]ot [Aa]llowed modal appears due to [Ee]xtra [Ss]ervice (.*)$/ do |service|
-  expect(stamps.mail.mail_toolbar.hidden_postage_warning.present?).to be(true)
-  expect(stamps.mail.mail_toolbar.hidden_postage_warning.extra_service(service).present?).to be(true)
+  pending #expect(stamps.mail.mail_toolbar.hidden_postage_warning.present?).to be(true)
+  #expect(stamps.mail.mail_toolbar.hidden_postage_warning.extra_service(service).present?).to be(true)
 end
 
 

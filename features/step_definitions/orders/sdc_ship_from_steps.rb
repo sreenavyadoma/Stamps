@@ -95,7 +95,8 @@ end
 
 Then /^[Aa]dd random Ship-from address from (.*)$/ do |address|
   TestData.hash[:ship_from_address] = TestHelper.address_helper_zone(address)
-  stamps.orders.order_details.single_ship_from.select('Manage Shipping Addresses').add.ship_from_address(TestData.hash[:ship_from_address])
+  pending
+  #stamps.orders.order_details.single_ship_from.select('Manage Shipping Addresses').add.ship_from_address(TestData.hash[:ship_from_address])
 end
 
 Then /^on manage shipping address modal, add address$/ do |ship_from|
@@ -167,15 +168,18 @@ end
 
 
 Then /^[Oo]n Manage Shipping Address modal, add address (\w+)$/ do |address|
-  TestData.hash[:ship_from_address] = address.include?('random ship from zone 1 through 4') ? TestHelper.rand_ship_from_zone_1_4(SdcEnv.env) : address
-  stamps.orders.order_details.single_ship_from.select('Manage Shipping Addresses').add(TestData.hash[:ship_from_address])
+  # TestData.hash[:ship_from_address] = address.include?('random ship from zone 1 through 4') ? TestHelper.rand_ship_from_zone_1_4(SdcEnv.env) : address
+  pending
+    #stamps.orders.order_details.single_ship_from.select('Manage Shipping Addresses').add(TestData.hash[:ship_from_address])
 end
 
 Then /^[Oo]n Manage Shipping Address modal, set Manage Shipping Addresses to$/ do
-  stamps.orders.order_details.single_ship_from.select('Manage Shipping Addresses').add table.hashes.first
+  pending
+  #stamps.orders.order_details.single_ship_from.select('Manage Shipping Addresses').add table.hashes.first
 end
 
 Then /^[Oo]n Manage Shipping Address modal, expect selection has (.*)$/ do |address|
-  step "blur out on order details form"
+  pending
+  #step "blur out on order details form"
   #stamps.orders.order_details.single_ship_from.select("Manage Shipping Addresses").address_located?(test_data[:ship_from_address])).to be(true)
 end
