@@ -15,11 +15,7 @@ Then /^[Ee]xpect [Pp]rint [Mm]odal Incomplete Order Error Message (.*)$/ do |exp
 end
 
 Then /^in print modal, click close button$/ do
-  if SdcEnv.new_framework
-    SdcOrders.modals.print.close.click
-  else
-    stamps.orders.modals.orders_print_modal.close
-  end
+  SdcOrders.modals.print.close.click
 end
 
 Then /^[Ss]et [Pp]rint [Mm]odal [Pp]rinter to \"(.*)\"$/ do |printer|
@@ -123,37 +119,30 @@ Then /^[Cc]lear [Pp]rint [Mm]odal [Ss]hip [Dd]ate$/ do
 end
 
 Then /^[Bb]lur [Oo]ut [Oo]n [Pp]rint [Mm]odal [Ss]hip [Dd]ate (\d+)$/ do |count|
-  if SdcEnv.new_framework
-    count.times do
-      SdcOrders.modals.print.total.safe_click
-      SdcOrders.modals.print.total.safe_double_click
-      sleep(0.2)
-    end
-  else
-    stamps.orders.modals.orders_print_modal.ship_date.shipdate_label.click(10)
-    stamps.orders.modals.orders_print_modal.ship_date.shipdate_label.double_click(10)
-  end
+  pending
+  # count.times do
+  #   SdcOrders.modals.print.total.safe_click
+  #   SdcOrders.modals.print.total.safe_double_click
+  #   sleep(0.2)
+  # end
 end
 
 Then /^[Ss]et [Pp]rint [Mm]odal Ship Date [Cc]alendar to (?:today|today plus (\d+))$/ do |day|
-  step "expect print modal ship date dropdown is present"
-  stamps.orders.modals.orders_print_modal.ship_date.date_picker.today_plus(day.nil? ? '0' : day)  #If print date is today, set day increase to zero, otherwise set to 'day' value
-  step "expect print modal ship date is #{day} days from today"
+  pending
+  # step "expect print modal ship date dropdown is present"
+  # stamps.orders.modals.orders_print_modal.ship_date.date_picker.today_plus(day.nil? ? '0' : day)  #If print date is today, set day increase to zero, otherwise set to 'day' value
+  # step "expect print modal ship date is #{day} days from today"
 end
 
 Then /^expect print modal ship date is (\d+) (?:day|days) from today$/ do |day|
-  step "expect print modal ship date dropdown is present"
+  step 'expect print modal ship date dropdown is present'
   expectation = TestHelper.mail_date_text_field_format(day)
   result = SdcOrders.modals.print.ship_date.text_field.text_value
   expect(result).to eql(expectation)
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal [Ss]hip [Dd]ate [Dd]rop[Dd]own is present$/ do
-  if SdcEnv.new_framework
-    expect(SdcOrders.modals.print.ship_date.drop_down).to be_present, "Ship Date dropdown is not present. Check that StampsConnect is connected. You might need to re-login on this PC #{SdcEnv.hostname}"
-  else
-    expect(stamps.orders.modals.orders_print_modal.ship_date).to be_present, "Ship Date dropdown is not present. Check that StampsConnect is connected. You might need to re-login on this PC #{SdcEnv.hostname}"
-  end
+  expect(SdcOrders.modals.print.ship_date.drop_down).to be_present
 end
 
 Then /^[Ii]n [Pp]rint modal, check Hide Mail Value$/ do

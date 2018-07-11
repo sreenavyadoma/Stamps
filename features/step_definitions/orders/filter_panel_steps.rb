@@ -22,35 +22,41 @@ Then /^[Ss]elect [Ff]ilter [Pp]anel tab (.*)$/ do |str|
 end
 
 Then /^[Ee]xpect selected [Ff]ilter is (.*)$/ do |expectation|
-  if SdcEnv.new_framework
-    #skip for now
-  else
-    30.times { sleep(0.25); break if stamps.orders.filter_panel.selected_filter == expectation }
-    expect(stamps.orders.filter_panel.selected_filter).to eql expectation
-  end
+  pending
+
+  # if SdcEnv.new_framework
+  #   #skip for now
+  # else
+  #   30.times { sleep(0.25); break if stamps.orders.filter_panel.selected_filter == expectation }
+  #   expect(stamps.orders.filter_panel.selected_filter).to eql expectation
+  # end
 end
 
 Then /^[Ee]xpect cached Order ID exist in the selected filter$/ do
-  15.times do
-    sleep(0.10)
-    break if stamps.orders.orders_grid.grid_column(:order_id).row_num(TestData.hash[:order_id].values.last) > 0
-  end
-  expect(stamps.orders.orders_grid.grid_column(:order_id).row_num(TestData.hash[:order_id].values.last)).to be > 0
+  pending
+  # 15.times do
+  #   sleep(0.10)
+  #   break if stamps.orders.orders_grid.grid_column(:order_id).row_num(TestData.hash[:order_id].values.last) > 0
+  # end
+  # expect(stamps.orders.orders_grid.grid_column(:order_id).row_num(TestData.hash[:order_id].values.last)).to be > 0
 end
 
 Then /^Filter Panel: Collapse Panel$/ do
-  stamps.orders.filter_panel.menu_item.collapse.click
+  pending
+  #stamps.orders.filter_panel.menu_item.collapse.click
 end
 
 Then /^Filter Panel: Expand Panel$/ do
-  stamps.orders.filter_panel.menu_item.expand.click
+  pending
+  #stamps.orders.filter_panel.menu_item.expand.click
 end
 
 # todo-Rob In left Filter Panel, expect Shipped Tab Date Printed is today
 Then /^[Ii]n left Filter Panel, expect Shipped Tab Date Printed is today$/ do
-  today = TestHelper.now_plus_mon_dd 0
-  stamps.orders.filter_panel.shipped.select.date_printed.sort_descending
-  actual_print_date = stamps.orders.filter_panel.shipped.select.date_printed.row 1
+  pending
+  # today = TestHelper.now_plus_mon_dd 0
+  # stamps.orders.filter_panel.shipped.select.date_printed.sort_descending
+  # actual_print_date = stamps.orders.filter_panel.shipped.select.date_printed.row 1
 end
 
 # todo-Rob is this needed?
