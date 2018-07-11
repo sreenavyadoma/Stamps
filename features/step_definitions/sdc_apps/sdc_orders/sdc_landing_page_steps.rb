@@ -56,7 +56,7 @@ Then /^fetch user credentials from MySQL$/ do
     TestData.hash[:password] = pw
   end
 end
-#
+
 Then /^sign-in to orders$/ do
   step 'visit Orders landing page'
   usr = TestData.hash[:username]

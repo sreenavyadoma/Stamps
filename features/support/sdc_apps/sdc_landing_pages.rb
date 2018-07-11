@@ -1,4 +1,4 @@
-module Stamps
+module SdcWebsite
   ##
   # Orders Landing Page
   class SdcOrdersLandingPage < SdcPage

@@ -357,7 +357,7 @@ Feature:  BVT tests for Orders
 
     Then expect orders grid recipient is correct
     Then expect orders grid company is correct
-    Then expect orders grid Country is correct
+    Then expect orders grid country is correct
     Then expect orders grid address is correct
     Then expect orders grid city is correct
     Then expect orders grid state is correct

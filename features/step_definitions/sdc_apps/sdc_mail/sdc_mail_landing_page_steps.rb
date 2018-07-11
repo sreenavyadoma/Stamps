@@ -38,7 +38,8 @@ Then /^sign-in to mail$/ do
   end
 end
 
-#
+
+
 Then /^close whats new modal in mail$/ do
   if SdcMail.modals.whats_new.title.present?
     SdcMail.modals.whats_new.close.click

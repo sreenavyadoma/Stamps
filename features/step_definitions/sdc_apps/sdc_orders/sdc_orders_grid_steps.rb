@@ -6,7 +6,7 @@ Then /^check grid order id(?:| (\d*))$/ do |order_id|
                TestData.hash[:order_id][order_id.to_i]
              end
   column = SdcGrid.grid_column(:checkbox)
-  row = column.row_number(order_id)
+  row = column.row_num(order_id)
   checkbox = column.checkbox_row(row)
   checkbox.check
   result = checkbox.checked?
@@ -20,7 +20,7 @@ Then /^uncheck grid order id(?:| (\d*))$/ do |order_id|
                TestData.hash[:order_id][order_id.to_i]
              end
   column = SdcGrid.grid_column(:checkbox)
-  row = column.row_number(order_id)
+  row = column.row_num(order_id)
   checkbox = column.checkbox_row(row)
   checkbox.uncheck
   result = checkbox.checked?
