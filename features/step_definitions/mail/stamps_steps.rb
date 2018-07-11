@@ -37,16 +37,15 @@ Then /^set print form serial number to (.*)$/ do |str|
   SdcMail.print_form.serial_number.set(serial)
 end
 
-Then /^[Ss]et Print form Amount to (\d*.?\d+)$/ do |value|
-  TestData.hash[:stamp_amount] = value
-  stamps.mail.print_form.stamp_amount.set(TestData.hash[:stamp_amount])
-end
+# Then /^[Ss]et Print form Amount to (\d*.?\d+)$/ do |value|
+#   TestData.hash[:stamp_amount] = value
+#   stamps.mail.print_form.stamp_amount.set(TestData.hash[:stamp_amount])
+# end
 
-Then /^[Ss]et Print form Quantity to (\d+)$/ do |value|
-  TestData.hash[:quantity] = value
-  stamps.mail.print_form.quantity.set(TestData.hash[:quantity])
-end
-
+# Then /^[Ss]et Print form Quantity to (\d+)$/ do |value|
+#   TestData.hash[:quantity] = value
+#   stamps.mail.print_form.quantity.set(TestData.hash[:quantity])
+# end
 
 Then /^[Ee]xpect Print form Domestic Address field displays last printed contact$/ do
   20.times do

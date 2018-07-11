@@ -133,7 +133,7 @@ Then /^hide advanced options$/ do
   show.wait_until_present(timeout: 3)
 end
 
-Then /^set print form reference number (.+)$/ do |value|
+Then /^set print form advanced options reference number (.+)$/ do |value|
   SdcMail.print_form.advanced_options.reference_num.set(value)
 end
 

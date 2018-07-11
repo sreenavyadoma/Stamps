@@ -100,8 +100,8 @@ Feature: BVT for Mail page
     Then select advanced options specify postage amount
     Then set Print form Mail-From to default
     Then select print form service Media Mail
-    Then set Print form Amount to 2.85
-    Then set Print form Quantity to 1
+    Then set print form stamp amount 2.85
+    Then set print form stamp quantity 1
     Then set advanced options reference number to Stamp3221
     Then click mail statusbar print
     Then set Mail Print modal Printer
@@ -134,8 +134,8 @@ Feature: BVT for Mail page
     Then select advanced options specify postage amount
     Then set Print form Mail-From to default
     Then select print form service Media Mail
-    Then set Print form Amount to 2
-    Then set Print form Quantity to 1
+    Then set print form stamp amount 2
+    Then set print form stamp quantity 1
     Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button

@@ -27,7 +27,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set Print form Mail-From to default
     Then set print form mail-to country to United States
     Then select print form service Media Mail
-    Then set Print form Amount to 0.15
+    Then set print form stamp amount 0.15
     Then set advanced options cost code to None
     Then click mail statusbar print
     Then click Mail Print modal Print button
@@ -56,7 +56,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set Print form Mail-From to default
     Then set print form mail-to country to United States
     Then select print form service Media Mail
-    Then set Print form Amount to 0.15
+    Then set print form stamp amount 0.15
     Then set advanced options cost code to None
     Then click mail statusbar print
     Then click Mail Print modal Print button
@@ -85,7 +85,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set Print form Mail-From to default
     Then set print form mail-to country to United States
     Then select print form service Media Mail
-    Then set Print form Amount to 0.15
+    Then set print form stamp amount 0.15
     Then set advanced options cost code to None
     Then click mail statusbar print
     Then click Mail Print modal Print button
@@ -100,7 +100,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set Print form Mail-From to default
     Then set print form mail-to country to United States
     Then select print form service First Class
-    Then set Print form Amount to 0.15
+    Then set print form stamp amount 0.15
     Then set advanced options cost code to None
     Then click mail statusbar print
     Then pause for 1 second
@@ -143,7 +143,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set Print form Mail-From to default
     Then set print form mail-to country to United States
     Then select print form service Media Mail
-    Then set Print form Amount to 0.15
+    Then set print form stamp amount 0.15
     Then set advanced options cost code to None
     Then click mail statusbar print
     Then click Mail Print modal Print button

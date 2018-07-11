@@ -108,8 +108,8 @@ Feature:  Mail BVT
     Then select advanced options specify postage amount
     Then set Print form Mail-From to default
     Then select print form service Media Mail
-    Then set Print form Amount to 2
-    Then set Print form Quantity to 1
+    Then set print form stamp amount 2
+    Then set print form stamp quantity 1
     Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
@@ -141,8 +141,8 @@ Feature:  Mail BVT
     Then select advanced options specify postage amount
     #Then set Print form Mail-From to default
     Then select print form service Media Mail
-    Then set Print form Amount to 2.85
-    Then set Print form Quantity to 1
+    Then set print form stamp amount 2.85
+    Then set print form stamp quantity 1
     #Then set Advanced Options Reference Number to Stamp3221
     Then Print Postage
     Then set Mail Print modal Printer
@@ -281,7 +281,7 @@ Feature:  Mail BVT
     Then select print form service FCM Letter
     Then select print form service FCM Large Envelope/Flat
     Then select print form service MM Package/Flat/Thick Envelope
-    Then set print form reference number STMP123
+    Then set print form advanced options reference number STMP123
     Then set print form cost code None
     Then set print form stamp quantity 3
     Then increment print form stamp quantity by 2
@@ -699,20 +699,21 @@ Feature:  Mail BVT
     Then expect advanced options calculate postage amount is selected
     Then expect advanced options specify postage amount radio button is present
     Then select advanced options specify postage amount
-    Then expect Advanced Options Specify Postage Amount is selected
+    Then expect advanced options specify postage amount is selected
     Then set print form serial number to random C series
     Then select advanced options calculate postage amount
-    Then set Print form Mail-From to default
+#    Then set Print form Mail-From to default
     Then set print form mail-to country to United States
     Then select print form service FCM Letter
-    Then set Print form Quantity to 1
+    Then set print form stamp quantity 1
     Then set advanced options cost code to None
 
-    Then expect Advanced Options Extra Services Button is visible
+#    Then expect Advanced Options Extra Services Button is visible
 
     Then expect advanced options reference number field is present
     Then set advanced options reference number to random string
     Then expect advanced options reference number is correct
+#    set print form reference number
 
     Then expect advanced options cost code field is present
     Then set advanced options cost code to None

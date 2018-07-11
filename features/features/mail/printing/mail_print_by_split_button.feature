@@ -103,7 +103,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then set Print form Mail-From to default
     Then set print form mail-to country to United States
     Then select print form service Media Mail
-    Then set Print form Amount to 0.15
+    Then set print form stamp amount 0.15
     Then set advanced options cost code to None
     Then click mail statusbar print using split button
     Then Expect mail Print modal is present
