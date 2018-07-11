@@ -8,6 +8,7 @@ module WhiteLabel
     text_field(:promo_code_textbox, tag: :text_field, required: true) { { id: 'promoCodeHidden' } }
     page_object(:survey) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="usageType"]'}}
     page_object(:referrer_name) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="referrerName"]'}}
+    page_objects(:money_saving_offers,  index: 0) { {id: "optIn"} }
     button(:continue) {{id: 'next'}}
 
     def survey_selection(str, name = :survey_element)
@@ -45,6 +46,10 @@ module WhiteLabel
 
   end
 
+  class ChooseSupplies
+    page_object(:place_order) {{id: 'mincartButtonTopDpawr'}}
+  end
+
   class << self
 
     def profile_page
@@ -53,6 +58,10 @@ module WhiteLabel
 
     def membership_page
       MembershipPage.new
+    end
+
+    def choose_supplies
+      ChooseSupplies.new
     end
 
     def common_page

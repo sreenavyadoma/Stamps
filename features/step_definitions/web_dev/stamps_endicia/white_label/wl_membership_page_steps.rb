@@ -85,7 +85,7 @@ Then /^WL: set membership page credit card year to this year plus (\d+)$/ do |ye
 end
 
 Then /^WL: check membership page Terms & Conditions$/ do
-  WhiteLabel.membership_page.terms_conditions.click!
+  WhiteLabel.membership_page.terms_conditions.click! #unless WhiteLabel.membership_page.terms_conditions.checked?
 end
 
 Then /^WL: expect membership page Terms & Conditions is checked$/ do

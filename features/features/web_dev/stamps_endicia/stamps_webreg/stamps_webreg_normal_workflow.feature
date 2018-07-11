@@ -24,4 +24,5 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: select membership page credit card month Dec (12)
     Then WL: set membership page credit card year to this year plus 1
     Then WL: check membership page Terms & Conditions
-    Then WL: expect membership page Terms & Conditions is checked
+    #Then WL: expect membership page Terms & Conditions is checked
+    Then WL: click choose supplies page place order button
