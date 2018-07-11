@@ -1,6 +1,5 @@
 module SdcOrders
-  module OrdersFloatingModals
-
+  module SdcOrdersModals
     class InsuranceTerms < SdcPage
       page_object(:title) { { xpath: '//div[text()="Stamps.com Insurance Terms and Conditions"]' } }
       page_object(:terms_link) { { xpath: '//u[text()="Stamps.com Insurance Terms and Conditions"]' } }

@@ -150,7 +150,7 @@ Then /^expect orders grid zip is (?:correct|(.*))$/ do |str|
   expect(result).to include(str)
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid Country is (?:correct|(.*))$/ do |str|
+Then /^expect orders grid country is (?:correct|(.*))$/ do |str|
   str ||= TestData.hash[:country]
   order_id = TestData.hash[:order_id].values.last
   result = SdcGrid.grid_column(:country).data(order_id)
@@ -296,7 +296,7 @@ Then /^expect orders grid order total is (?:correct|(.*))$/ do |str|
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Ship Cost error to contain \"(.*)\"$/ do |str|
-  grid_order_id = SdcGrid.grid_column(:order_id).row 1
+  grid_order_id = SdcGrid.grid_column(:order_id).text_at_row 1
   ship_cost_error = SdcGrid.grid_column(:ship_cost).data_error grid_order_id
   expect(ship_cost_error).to include(str)
   ship_cost_error = SdcGrid.grid_column(:ship_cost).data_error "81453"
@@ -306,7 +306,7 @@ end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid ship cost data error tooltip is \"(.*)\"$/ do |str|
   #SdcLog.step "expect Orders Grid ship cost data error tooltip is #{str}"
-  grid_order_id = SdcGrid.grid_column(:order_id).row 1
+  grid_order_id = SdcGrid.grid_column(:order_id).text_at_row 1
   grid_ship_cost = SdcGrid.grid_column(:ship_cost).data grid_order_id
   error = grid_ship_cost.attribute_str "data-errorqtip"
   #SdcLog.step "Test #{(error.include? str)?"Passed":"Failed"}"
