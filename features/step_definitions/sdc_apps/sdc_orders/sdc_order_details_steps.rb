@@ -185,7 +185,7 @@ Then /^set order details ship-to text area to (.*)$/ do |address|
   step 'show order ship-to details'
   domestic = SdcOrders.order_details.ship_to.domestic
   domestic.address.set(address)
-  3.times do
+  5.times do
     step 'blur out on order details form'
     break if ship_to.show_less.present?
     ship_to.show_less.safe_wait_until_present(timeout: 3)
@@ -198,7 +198,7 @@ Then /^set order details ship-to text area to (.*)$/ do |address|
     end
     domestic.address.safe_wait_until_present(timeout: 2)
     break if ship_to.show_less.present?
-    domestic.address.safe_set(address)
+    domestic.address.set(address)
     ship_to.show_less.safe_wait_until_present(timeout: 3)
   end
   TestData.hash[:ship_to_domestic] = address
@@ -222,7 +222,7 @@ Then /^blur out on order details form$/ do
   order_details.weight_label.double_click
   order_details.service_label.double_click
   order_details.reference_no.double_click
-  order_details.ship_to_label.safe_double_click
+  order_details.ship_to_label.double_click if order_details.ship_to_label.present?
   order_details.order_id.double_click
   order_details.title.double_click
 end
@@ -412,7 +412,6 @@ Then /^set order details international ship-to name to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
   SdcOrders.order_details.ship_to.international.name.set(str)
   TestData.hash[:full_name] = str
-
 end
 
 Then /^set order details international ship-to company to (.*)$/ do |str|
@@ -475,10 +474,30 @@ end
 
 Then /^set order details insure-for to (\d+\.\d{2})$/ do |str|
   insure_for = SdcOrders.order_details.insure_for
+  insurance_terms = SdcOrders.modals.insurance_terms
+
   insure_for.checkbox.check
   insure_for.checkbox.safe_wait_until_chosen(timeout: 3)
   expect(insure_for.checkbox.checked?). to be(true), 'Cannot check Insure-for checkbox'
   insure_for.amount.set(str)
+  insure_for.cost.double_click
+  insure_for.cost.safe_click
+  insurance_terms.title.safe_wait_until_present(timeout: 2)
+  # This is a work around, there's a bug in the code where there are more
+  # than one Terms and Conditions modal on top of each other.
+  3.times do
+    if insurance_terms.title.present?
+      window_title = 'Stamps.com Insurance Terms and Conditions'
+      expect(insurance_terms.title.text).to eql window_title
+      insurance_terms.i_agree_btns.each do |element|
+        wrapped_element = SdcElement.new(element)
+        wrapped_element.safe_wait_until_present(timeout: 2)
+        wrapped_element.safe_click
+      end
+    else
+      break
+    end
+  end
   TestData.hash[:insured_value] = str.to_f
   step 'blur out on order details form'
   step 'Save Order Details data'

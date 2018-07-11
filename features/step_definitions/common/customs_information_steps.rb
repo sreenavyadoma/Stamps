@@ -293,7 +293,7 @@ end
 
 Then /^set customs associated item (\d+) description to (.*)$/ do |item, value|
   TestData.hash[:customs_associated_items][item] ||= {}
-  value = TestHelper.rand_alpha_numeric if value.casecmp('random').zero?
+  value = TestHelper.rand_alpha_numeric if value.downcase.include?('random')
   SdcWebsite.customs_form.item.item_description(item).scroll_into_view.set(value)
   step 'Save Customs Information form Total amount'
   TestData.hash[:customs_associated_items][item][:description] = value

@@ -38,4 +38,9 @@ module SdcWebsite
   end
   module_function :exact_address_not_found
 
+  def modals
+    SdcModals
+  end
+  module_function :modals
+
 end

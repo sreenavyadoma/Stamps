@@ -1,4 +1,4 @@
-module Stamps
+module SdcCore
   module TestHelper
     class << self
       def user_credentials

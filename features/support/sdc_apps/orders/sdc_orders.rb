@@ -45,7 +45,7 @@ module SdcOrders
   module_function :filter_panel
 
   def modals
-    OrdersFloatingModals
+    SdcOrdersModals
   end
   module_function :modals
 

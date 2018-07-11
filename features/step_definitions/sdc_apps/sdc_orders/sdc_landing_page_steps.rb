@@ -70,6 +70,7 @@ Then /^sign-in to orders$/ do
     step 'click sign-in button on android'
   else
     step 'click sign-in button on browser'
+    step 'close whats new modal in orders'
   end
 end
 
@@ -118,9 +119,17 @@ Then /^set Orders landing page password to (.*)$/ do |str|
 end
 
 Then /^click Orders landing page sign-in button$/ do
-  SdcWebsite.landing_page.sign_in.wait_until_present(timeout: 3)
-  SdcWebsite.landing_page.sign_in.click
-  SdcWebsite.landing_page.sign_in.safe_wait_while_present(timeout: 60)
+  landing_page = SdcWebsite.landing_page
+  landing_page.sign_in.wait_until_present(timeout: 3)
+  landing_page.sign_in.click
+  landing_page.sign_in.safe_wait_while_present(timeout: 60)
+end
+
+Then /^close whats new modal in orders$/ do
+  whats_new = SdcWebsite.modals.whats_new
+  if whats_new.title.present?
+    whats_new.close.click
+  end
 end
 
 Then /^[Ss]ign-out of SDC [Ww]ebsite$/ do
