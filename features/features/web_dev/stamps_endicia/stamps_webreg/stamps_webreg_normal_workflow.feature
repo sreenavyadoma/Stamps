@@ -29,3 +29,10 @@ Feature: Stamps WebReg: Normal Workflow
 
     #Choose Supplies Page
     Then WL: click choose supplies page place order button
+
+    #Security Question
+    Then WL: select Security Questions 1st security question What is your mother's maiden name?
+    Then WL: set Security Questions 1st security answer to random value
+
+    Then WL: select Security Questions 2nd security question What is your pet's name?
+    Then WL: set Security Questions 2nd security answer to random value

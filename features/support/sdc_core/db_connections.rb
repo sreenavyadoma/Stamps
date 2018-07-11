@@ -79,15 +79,15 @@ module Stamps
     end
   end
 
-  class StampsWebsiteDB
+  class SdcWebsiteDB
     def initialize
       env = ::SdcEnv.env.to_s
-      server = data_for(:sql_server_stampswebsite, {})[env]['server']
-      database = data_for(:sql_server_stampswebsite, {})[env]['database']
-      port = data_for(:sql_server_stampswebsite, {})[env]['port']
-      username = data_for(:sql_server_stampswebsite, {})[env]['username']
-      password = data_for(:sql_server_stampswebsite, {})[env]['password']
-      azure = data_for(:sql_server_stampswebsite, {})[env]['azure']
+      server = data_for(:sql_server_sdcwebsite, {})[env]['server']
+      database = data_for(:sql_server_sdcwebsite, {})[env]['database']
+      port = data_for(:sql_server_sdcwebsite, {})[env]['port']
+      username = data_for(:sql_server_sdcwebsite, {})[env]['username']
+      password = data_for(:sql_server_sdcwebsite, {})[env]['password']
+      azure = data_for(:sql_server_sdcwebsite, {})[env]['azure']
       @connection = SQLServerClient.new(server: server, database: database, username: username, password: password, port: port, azure:azure)
     end
 
