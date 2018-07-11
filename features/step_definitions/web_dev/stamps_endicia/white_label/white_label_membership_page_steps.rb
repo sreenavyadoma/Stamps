@@ -47,15 +47,15 @@ end
 
 
 Then /^WL: set membership page cardholder's name to (?:random value|(.*))$/ do |str|
-   cc_holder_name = WhiteLabel.membership_page.cc_holder_name.clear
-   TestData.hash[:card_holder_name] = str.nil? ? TestHelper.rand_full_name  : str
-   cc_holder_name.set(TestData.hash[:card_holder_name] = str)
+   cc_holder_name = WhiteLabel.membership_page.cc_holder_name
+   cc_holder_name.clear
+   cc_holder_name.set(TestData.hash[:card_holder_name] = str.nil? ? TestHelper.rand_full_name  : str)
 end
 
 Then /^WL: set membership page credit card number to (?:default value|(.*))$/ do |str|
-  TestData.hash[:cc_number] = str.nil? ? "4111111111111111"  : str
-  WhiteLabel.membership_page.cc_number.set(TestData.hash[:cc_number] = str)
+  WhiteLabel.membership_page.cc_number.set(TestData.hash[:cc_number] = str.nil? ? "4111111111111111"  : str)
 end
+
 
 Then /^WL: select membership page credit card month (.*)$/ do |str|
   membership_page = WhiteLabel.membership_page
