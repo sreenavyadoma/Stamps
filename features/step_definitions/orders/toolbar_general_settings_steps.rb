@@ -564,13 +564,13 @@ end
 Then /^Reset Fields:  Expect service Checked$/ do
 
   pending
-  # expect(@reset_fields.service.checked?).to be(true)
+  # pending #expect(@reset_fields.service.checked?).to be(true)
 end
 
 Then /^Reset Fields:  Expect service Unchecked$/ do
 
   pending
-  # expect(@reset_fields.service.checked?).not_to be(true)
+  # pending #expect(@reset_fields.service.checked?).not_to be(true)
 end
 
 Then /^Reset Fields:  Check Weight$/ do
@@ -588,13 +588,13 @@ end
 Then /^Reset Fields:  Expect Weight Checked$/ do
 
   pending
-  # expect(@reset_fields.weight.checkbox.checked?).to be(true)
+  # pending #expect(@reset_fields.weight.checkbox.checked?).to be(true)
 end
 
 Then /^Reset Fields:  Expect Weight Unchecked$/ do
 
   pending
-  #expect(@reset_fields.weight.checkbox.checked?).not_to be(true)
+  #pending #expect(@reset_fields.weight.checkbox.checked?).not_to be(true)
 end
 
 Then /^Reset Fields:  Check Dimensions$/ do
@@ -612,13 +612,13 @@ end
 Then /^Reset Fields:  Expect Dimensions Checked$/ do
 
   pending
-  # expect(@reset_fields.dimensions.checkbox.checked?).to be(true)
+  # pending #expect(@reset_fields.dimensions.checkbox.checked?).to be(true)
 end
 
 Then /^Reset Fields:  Expect Dimensions Unchecked$/ do
 
   pending
-  # expect(@reset_fields.dimensions.checkbox.checked?).not_to be(true)
+  # pending #expect(@reset_fields.dimensions.checkbox.checked?).not_to be(true)
 end
 
 Then /^Reset Fields:  Check Ship to Address$/ do
@@ -636,13 +636,13 @@ end
 Then /^Reset Fields:  Expect Ship to Address Checked$/ do
 
   pending
-  # expect(@reset_fields.ship_to_address.checked?).to be(true)
+  # pending #expect(@reset_fields.ship_to_address.checked?).to be(true)
 end
 
 Then /^Reset Fields:  Expect Ship to Address Unchecked$/ do
 
   pending
-  # expect(@reset_fields.ship_to_address.checked?).not_to be(true)
+  # pending #expect(@reset_fields.ship_to_address.checked?).not_to be(true)
 end
 
 Then /^Reset Fields:  Check Tracking$/ do
@@ -658,204 +658,230 @@ Then /^Reset Fields:  Uncheck Tracking$/ do
 end
 
 Then /^Reset Fields:  Expect Tracking Checked$/ do
-  expect(@reset_fields.tracking.checked?).to be(true)
+
+  pending
+  # pending #expect(@reset_fields.tracking.checked?).to be(true)
 end
 
 Then /^Reset Fields:  Expect Tracking Unchecked$/ do
-  expect(@reset_fields.tracking.checked?).not_to be(true)
+
+  pending
+  #  pending #expect(@reset_fields.tracking.checked?).not_to be(true)
 end
 
 Then /^Reset Fields:  Check Extra Services$/ do
-  @reset_fields.extra_services.check
+
+  pending
+  # @reset_fields.extra_services.check
 end
 
 Then /^Reset Fields:  Uncheck Extra Services$/ do
-  @reset_fields.extra_services.uncheck
+
+  pending
+  # @reset_fields.extra_services.uncheck
 end
 
 Then /^Reset Fields:  Expect Extra Services Checked$/ do
-  expect(@reset_fields.extra_services.checked?).to be(true)
+
+  pending
+  # pending #expect(@reset_fields.extra_services.checked?).to be(true)
 
 end
 
 Then /^Reset Fields:  Expect Extra Services Unchecked$/ do
-  expect(@reset_fields.extra_services.checked?).not_to be(true)
+
+  pending
+  # pending #expect(@reset_fields.extra_services.checked?).not_to be(true)
 end
 
 Then /^Reset Fields:  Check Insurance$/ do
-  @reset_fields.insurance.check
+
+  pending
+  # @reset_fields.insurance.check
 end
 
 Then /^Reset Fields:  Uncheck Insurance$/ do
-  @reset_fields.insurance.uncheck
+
+  pending
+  # @reset_fields.insurance.uncheck
 end
 
 Then /^Reset Fields:  Expect Insurance Checked$/ do
-  expect(@reset_fields.insurance.checked?).to be(true)
+
+  pending
+  # pending #expect(@reset_fields.insurance.checked?).to be(true)
 end
 
 Then /^Reset Fields:  Expect Insurance Unchecked$/ do
-  expect(@reset_fields.insurance.checked?).not_to be(true)
+
+  pending
+  # pending #expect(@reset_fields.insurance.checked?).not_to be(true)
 end
 
 Then /^Reset Fields:  Check Reference Numbers$/ do
-  @reset_fields.reference_numbers.check
+
+  pending
+  # @reset_fields.reference_numbers.check
 end
 
 Then /^Reset Fields:  Uncheck Reference Numbers$/ do
-  @reset_fields.reference_numbers.uncheck
+
+  pending
+  # @reset_fields.reference_numbers.uncheck
 end
 
 Then /^Reset Fields:  Expect Reference Numbers Checked$/ do
-  expect(@reset_fields.reference_numbers.checked?).to be(true)
+
+  pending
+  # pending #expect(@reset_fields.reference_numbers.checked?).to be(true)
 
 end
 
 Then /^Reset Fields:  Expect Reference Numbers Unchecked$/ do
-  expect(@reset_fields.reference_numbers.checked?).not_to be(true)
+  pending #expect(@reset_fields.reference_numbers.checked?).not_to be(true)
 end
 
 Then /^Reset Fields:  Check Cost Code$/ do
-  @reset_fields.cost_code.check
+  pending #@reset_fields.cost_code.check
 end
 
 Then /^Reset Fields:  Uncheck Cost Code$/ do
-  @reset_fields.cost_code.uncheck
+  pending #@reset_fields.cost_code.uncheck
 end
 
 Then /^Reset Fields:  Expect Cost Code Checked$/ do
-  expect(@reset_fields.cost_code.checked?).to be(true)
+  pending #expect(@reset_fields.cost_code.checked?).to be(true)
 end
 
 Then /^Reset Fields:  Expect Cost Code Unchecked$/ do
-  expect(@reset_fields.cost_code.checked?).not_to be(true)
+  pending #expect(@reset_fields.cost_code.checked?).not_to be(true)
 end
 
 Then /^Reset Fields:  Check Customs$/ do
-  @reset_fields.customs.check
+  pending #@reset_fields.customs.check
 end
 
 Then /^Reset Fields:  Uncheck Customs$/ do
-  @reset_fields.customs.uncheck
+  pending #@reset_fields.customs.uncheck
 end
 
 Then /^Reset Fields:  Expect Customs Checked$/ do
-  expect(@reset_fields.customs.checked?).to be(true)
+  pending #expect(@reset_fields.customs.checked?).to be(true)
 end
 
 Then /^Reset Fields:  Expect Customs Unchecked$/ do
-  expect(@reset_fields.customs.checked?).not_to be(true)
+  pending #expect(@reset_fields.customs.checked?).not_to be(true)
 end
 
 Then /^Reset Fields:  Check Quantity$/ do
-  @reset_fields.quantity.check
+  pending #@reset_fields.quantity.check
 end
 
 Then /^Reset Fields:  Uncheck Quantity$/ do
-  @reset_fields.quantity.uncheck
+  pending #@reset_fields.quantity.uncheck
 end
 
 Then /^Reset Fields:  Expect Quantity Checked$/ do
-  expect(@reset_fields.quantity.checked?).to be(true)
+  pending #expect(@reset_fields.quantity.checked?).to be(true)
 end
 
 Then /^Reset Fields:  Expect Quantity Unchecked$/ do
-  expect(@reset_fields.quantity.checked?).not_to be(true)
+  pending #expect(@reset_fields.quantity.checked?).not_to be(true)
 end
 
 Then /^Reset Fields:  Check Print form Amount$/ do
-  @reset_fields.stamps_amount.check
+  pending #@reset_fields.stamps_amount.check
 end
 
 Then /^Reset Fields:  Uncheck Print form Amount$/ do
-  @reset_fields.stamps_amount.uncheck
+  pending #@reset_fields.stamps_amount.uncheck
 end
 
 Then /^Reset Fields:  Expect Print form Amount Checked$/ do
-  expect(@reset_fields.stamps_amount.checked?).to be(true)
+  pending #expect(@reset_fields.stamps_amount.checked?).to be(true)
 end
 
 Then /^Reset Fields:  Expect Print form Amount Unchecked$/ do
-  expect(@reset_fields.stamps_amount.checked?).not_to be(true)
+  pending #expect(@reset_fields.stamps_amount.checked?).not_to be(true)
 end
 
 Then /^Reset Fields:  Check Auto-Advance Label Position$/ do
-  @reset_fields.auto_advance_label_position.check
+  pending #@reset_fields.auto_advance_label_position.check
 end
 
 Then /^Reset Fields:  Uncheck Auto-Advance Label Position$/ do
-  @reset_fields.auto_advance_label_position.uncheck
+  pending #@reset_fields.auto_advance_label_position.uncheck
 end
 
 Then /^Reset Fields:  Expect Auto-Advance Label Position Checked$/ do
-  expect(@reset_fields.auto_advance_label_position.checked?).to be(true)
+  pending #expect(@reset_fields.auto_advance_label_position.checked?).to be(true)
 end
 
 Then /^Reset Fields:  Expect Auto-Advance Label Position Unchecked$/ do
-  expect(@reset_fields.auto_advance_label_position.checked?).not_to be(true)
+  pending #expect(@reset_fields.auto_advance_label_position.checked?).not_to be(true)
 end
 
 Then /^Reset Fields:  Set Weight to (\d+) lb (\d+) oz$/ do |lb, oz|
   #SdcLog.step "Reset Fields:  Set Weight to #{lb} lb #{oz} oz"
-  step "Reset Fields:  Check Weight"
-  @reset_fields.weight.lb.set lb
-  @reset_fields.weight.oz.set oz
+  # step "Reset Fields:  Check Weight"
+  # pending #@reset_fields.weight.lb.set lb
+  pending #@reset_fields.weight.oz.set oz
 end
 
 Then /^Reset Fields:  Expect Weight lb equals (\d+)$/ do |lb|
-  SdcLogger.debug "Reset Fields:  Expect Weight lb equals #{lb}"
+  # SdcLogger.debug "Reset Fields:  Expect Weight lb equals #{lb}"
 
-  step "Reset Fields:  Check Weight"
-  expect(@reset_fields.weight.lb.textbox.text.to_i).to eql lb.to_i
+  # step "Reset Fields:  Check Weight"
+  pending #expect(@reset_fields.weight.lb.textbox.text.to_i).to eql lb.to_i
 end
 
 Then /^Reset Fields:  Expect Weight oz equals (\d+)$/ do |oz|
-  SdcLogger.debug "Reset Fields:  Expect Weight oz equals #{oz}"
-  step "Reset Fields:  Check Weight"
-  expect(@reset_fields.weight.oz.textbox.text.to_i).to eql oz.to_i
+  # SdcLogger.debug "Reset Fields:  Expect Weight oz equals #{oz}"
+  # step "Reset Fields:  Check Weight"
+  pending #expect(@reset_fields.weight.oz.textbox.text.to_i).to eql oz.to_i
 end
 
 Then /^Reset Fields:  Set Dimensions to length (\d+), width (\d+), height (\d+)$/ do |length, width, height|
-  SdcLogger.debug "Reset Fields:  Set Dimensions to length #{length}, width #{width}, height #{height}"
-  step "Reset Fields:  Check Dimensions"
-  @reset_fields.dimensions.length.set length
-  @reset_fields.dimensions.width.set width
-  @reset_fields.dimensions.height.set height
+  # SdcLogger.debug "Reset Fields:  Set Dimensions to length #{length}, width #{width}, height #{height}"
+  # step "Reset Fields:  Check Dimensions"
+  # pending #@reset_fields.dimensions.length.set length
+  # pending #@reset_fields.dimensions.width.set width
+  pending #@reset_fields.dimensions.height.set height
 end
 
 Then /^Reset Fields:  Expect Dimensions to length equals (\d+)$/ do |length|
-  SdcLogger.debug "Reset Fields:  Expect Dimensions to length equals #{length}"
-  step "Reset Fields:  Check Dimensions"
-  expect(@reset_fields.dimensions.length.textbox.text.to_i).to eql length.to_i
+  # SdcLogger.debug "Reset Fields:  Expect Dimensions to length equals #{length}"
+  # step "Reset Fields:  Check Dimensions"
+  pending #expect(@reset_fields.dimensions.length.textbox.text.to_i).to eql length.to_i
 end
 
 Then /^Reset Fields:  Expect Dimensions to width equals (\d+)$/ do |width|
   SdcLogger.debug "Reset Fields:  Expect Dimensions to width equals #{width}"
   step "Reset Fields:  Check Dimensions"
-  expect(@reset_fields.dimensions.width.textbox.text.to_i).to eql width.to_i
+  pending #expect(@reset_fields.dimensions.width.textbox.text.to_i).to eql width.to_i
 end
 
 Then /^Reset Fields:  Expect Dimensions to height equals (\d+)$/ do |height|
-  SdcLogger.debug "Reset Fields:  Expect Dimensions to height equals #{height}"
-  step "Reset Fields:  Check Dimensions"
-  expect(@reset_fields.dimensions.height.textbox.text.to_i).to eql height.to_i
+  # SdcLogger.debug "Reset Fields:  Expect Dimensions to height equals #{height}"
+  # step "Reset Fields:  Check Dimensions"
+  pending #expect(@reset_fields.dimensions.height.textbox.text.to_i).to eql height.to_i
 end
 
 Then /^Reset Fields:  Close$/ do
   #StampsTest.log.step "Reset Fields:  Close"
-  @reset_fields.close
+  pending #@reset_fields.close
 end
 
 Then /^[Ii]n Settings modal, Save$/ do
 
   #StampsTest.log.step "In Settings modal, Save"
-  stamps.orders.modals.orders_settings_modal.general_tab.save
+  pending #stamps.orders.modals.orders_settings_modal.general_tab.save
 end
 
 Then /^[Ii]n Settings modal, Close$/ do
 
   #StampsTest.log.step "In Settings modal, Close"
-  stamps.orders.modals.orders_settings_modal.general_tab.close
+  pending #stamps.orders.modals.orders_settings_modal.general_tab.close
 end
 
 
