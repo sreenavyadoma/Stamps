@@ -77,7 +77,7 @@ module WhiteLabel
     end
 
     def db_connection
-      SdcwSwwDB.new
+      StampsWebsiteDB.new
     end
 
   end
