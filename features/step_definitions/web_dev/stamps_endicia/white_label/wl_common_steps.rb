@@ -43,4 +43,3 @@ Then /^WL: expect user is singed in to print$/ do
   expect(signed_in_user.text_value).to include(TestData.hash[:username])
 end
 
-#expect(SdcWebsite.navigation.user_drop_down.signed_in_user.text_value).to include(TestData.hash[:username])
