@@ -12,11 +12,11 @@ module WhiteLabel
     button(:continue) {{id: 'next'}}
 
     def survey_selection(str, name = :survey_element)
-      page_object(name) { { xpath: "//span[contains(text(), ' #{str} ')]" } }
+      page_object(name) { {xpath: "//span[contains(text(), \" #{str} \")]" } }
     end
 
     def referrer_name_selection(str, name = :referrer_name_element)
-      page_object(name) { { xpath: "//span[contains(text(), '#{str}')]" } }
+      page_object(name) { { xpath: "//span[contains(text(), \"#{str}\")]" } }
     end
 
   end

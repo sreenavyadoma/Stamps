@@ -16,8 +16,8 @@ Then /^WL: select security questions first security question (.*)$/ do |str|
   expect(common_page.first_security_question.attribute_value('title').strip).to eql str
 end
 
-Then /^WL: set security questions first security answer to random value$/ do |str|
-  WhiteLabel.common_page.first_secret_answer.set(TestData.store[:first_security_answer] = (str.nil?) ? 'automation' : str)
+Then /^WL: set security questions first security answer to (?:random value|(.*))$/ do |str|
+  WhiteLabel.common_page.first_secret_answer.set(TestData.hash[:first_security_answer] = (str.nil?) ? TestHelper.rand_alpha_numeric(min:6, max:10) : str)
 end
 
 Then /^WL: select security questions second security question (.*)$/ do |str|
@@ -29,15 +29,15 @@ Then /^WL: select security questions second security question (.*)$/ do |str|
   expect(common_page.second_security_question.attribute_value('title').strip).to eql str
 end
 
-Then /^WL: set security questions second security answer to random value$/ do |str|
-  WhiteLabel.common_page.first_secret_answer.set(TestData.store[:first_security_answer] = (str.nil?) ? 'automation' : str)
+Then /^WL: set security questions second security answer to (?:random value|(.*))$/ do |str|
+  WhiteLabel.common_page.second_secret_answer.set(TestData.hash[:second_security_answer] = (str.nil?) ? TestHelper.rand_alpha_numeric(min:6, max:10) : str)
 end
 
-Then /^WL: click security questions get stared button$/ do |str|
+Then /^WL: click security questions get stared button$/ do
   WhiteLabel.common_page.sq_get_started.click
 end
 
-Then /^WL: expect user is singed in to print$/ do |str|
+Then /^WL: expect user is singed in to print$/ do
   signed_in_user =  SdcWebsite.navigation.user_drop_down.signed_in_user
   signed_in_user.wait_until_present(timeout: 30)
   expect(signed_in_user.text_value).to include(TestData.hash[:username])
