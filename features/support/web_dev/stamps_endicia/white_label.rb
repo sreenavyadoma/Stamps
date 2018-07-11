@@ -21,16 +21,16 @@ module WhiteLabel
   end
 
   class MembershipPage < SdcPage
+    page_object(:header) { {xpath: '//h1[(contains(text(), "Set up your personal Post Office"))]'} }
     text_field(:first_name, tag: :text_field, required: true) { { id: 'firstName' } }
     text_field(:last_name, tag: :text_field, required: true) { { id: 'lastName' } }
     text_field(:company, tag: :text_field) { { id: 'companyName' } }
     text_field(:address, tag: :text_field, required: true) { { id: 'street' } }
     text_field(:city, tag: :text_field, required: true) { { id: 'city' } }
-    text_field(:city, tag: :text_field, required: true) { { id: 'city' } }
     page_object(:state) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="state"]'}}
     text_field(:zip, tag: :text_field) { { id: 'zip' } }
     text_field(:phone, tag: :text_field, required: true) { { id: 'phone' } }
-    text_field(:cc_name, tag: :text_field, required: true) { { id: 'ccName' } }
+    text_field(:cc_holder_name, tag: :text_field, required: true) { { id: 'ccName' } }
     text_field(:cc_number, tag: :text_field, required: true) { { id: 'ccNumber' } }
     page_object(:cc_month) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="ccMonth"]'}}
     page_object(:cc_year) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="ccYear"]'}}

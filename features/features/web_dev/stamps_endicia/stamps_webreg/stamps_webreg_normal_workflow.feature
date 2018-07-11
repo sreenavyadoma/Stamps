@@ -17,7 +17,11 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: click profile page continue button
 
     #Membership Page
-    Then WL: set membership page first name to random value
-    Then WL: set membership page last name to random value
-    Then WL: set membership page company to random value
-    Then WL: set membership page address to 1990 East Grant Avenue
+   # Then WL: set membership page personal info to First Last, Company Name, 1390 market street #2900, san francisco, ca, 94102
+    Then WL: set membership page personal info to random info between zone 1 and 4
+    Then WL: set membership page cardholder's name to random value
+    Then WL: set membership page credit card number to default value
+    Then WL: select membership page credit card month Dec (12)
+    Then WL: set membership page credit card year to this year plus 1
+    Then WL: check membership page Terms & Conditions
+    Then WL: expect membership page Terms & Conditions is checked
