@@ -15,7 +15,7 @@ Then /^visit Mail$/ do
           # ignore
         end
 
-  SdcMailLandingPage.visit(env)
+  SdcWebsite::SdcMailLandingPage.visit(env)
 end
 
 Then /^sign-in to mail$/ do
@@ -65,7 +65,6 @@ Then /^set Mail username(?: to (.+)|)$/ do |usr|
   modal.sign_in_link.hover unless modal.username.present?
   modal.username.wait_until_present(timeout: 15)
   modal.username.set(usr)
-
 end
 
 Then /^set Mail password(?: to (.+)|)$/ do |pw|

@@ -8,7 +8,7 @@ Feature: Print 1 single ply FSA CP72 label on on 8.5x11 - right side
     Then add new order
     Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to domestic address to
-      | full_name | company | street_address        |street_address2|  city    | state | zip        | country       | phone  |  email |
+      | full_name | company | street_address1        |street_address2|  city    | state | zip        | country       | phone  |  email |
       | MM   | 8.5x11  | 118 E Marine Corps Dr |                |Hagatna | GU    | 96910-5126 | United States | random | random |
     Then set order details weight to 1 lb 2 oz
     Then set order details service to MM Package/Flat/Thick Envelope

@@ -231,7 +231,7 @@ Feature: Print 1 Intl CP72 label
     Then set order details ship-from to Automation - El Segundo, CA
     Then set order details domestic ship-to country to United States
     Then set order details ship-to domestic address to
-      | full_name     | company       | street_address      | street_address2| city | state | zip        | country       | phone  |  email |
+      | full_name     | company       | street_address1      | street_address2| city | state | zip        | country       | phone  |  email |
       | PSG PFTE | 4⅛ x 6¼ roll | UNIT 8400 BOX 0000  |                  |DPO  | AE    | 09498-9997 | United States | random | random |
     Then set order details weight to 3 lb 2 oz
     Then set order details service to PSG Package/Flat/Thick Envelope
@@ -249,7 +249,7 @@ Feature: Print 1 Intl CP72 label
     Then add new order
     Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to domestic address to
-      | full_name | company | street_address        |street_address2|  city    | state | zip        | country       | phone  |  email |
+      | full_name | company | street_address1        |street_address2|  city    | state | zip        | country       | phone  |  email |
       | MM   | 8.5x11  | 118 E Marine Corps Dr |                |Hagatna | GU    | 96910-5126 | United States | random | random |
     Then set order details weight to 1 lb 2 oz
     Then set order details service to MM Package/Flat/Thick Envelope
@@ -273,7 +273,7 @@ Feature: Print 1 Intl CP72 label
     Then add new order
     Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to domestic address to
-      | full_name   | company      | street_address    |street_address2|  city | state | zip    | country       | phone  |  email |
+      | full_name   | company      | street_address1    |street_address2|  city | state | zip    | country       | phone  |  email |
       | PSG LP | 4x6 roll | PSC 3 BOX 4120  |                      |APO  | AE     |  09021  | United States | random | random |
     Then set order details weight to 2 lb 1 oz
     Then set order details service to PSG Package/Flat/Thick Envelope

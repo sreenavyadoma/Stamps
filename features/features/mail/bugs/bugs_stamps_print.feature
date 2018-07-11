@@ -16,7 +16,7 @@ Feature: Stamps print media bugs
     Then show advanced options
     Then check advanced options hide label value
     Then select print on Envelope - 10
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
@@ -27,7 +27,7 @@ Feature: Stamps print media bugs
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
-    Then Print Postage
+    Then click mail statusbar print
     Then click Mail Print modal Print button
 
     Then sign out
@@ -54,7 +54,6 @@ Feature: Stamps print media bugs
   Scenario: E-mail field error validation - "Email is required." when printing Envelopes
 
     Then select print on Shipping Label - 8 ½" x 11" Paper
-    Then check Print form Email Tracking checkbox
     Then select print on Envelope - 10
     Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1 through 4

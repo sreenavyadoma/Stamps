@@ -16,7 +16,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” PM BOX Paper
     Then set print form pounds to 0
     Then set print form ounces to 1
     Then select print form service PM Large Flat Rate Box
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
@@ -28,7 +28,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” PM BOX Paper
     Then set print form pounds to 0
     Then set print form ounces to 1
     Then select print form service PM Medium Flat Rate Box
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
@@ -40,7 +40,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” PM BOX Paper
     Then set print form pounds to 0
     Then set print form ounces to 1
     Then select print form service PM Small Flat Rate Box
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
@@ -55,7 +55,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” PM BOX Paper
     Then set print form pounds to 0
     Then set print form ounces to 1
     Then select print form service PM Regional Rate Box A
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
@@ -67,7 +67,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” PM BOX Paper
     Then set print form pounds to 0
     Then set print form ounces to 1
     Then select print form service PM Regional Rate Box B
-    Then Print Postage
+    Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 

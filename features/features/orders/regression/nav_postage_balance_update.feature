@@ -9,7 +9,7 @@ Feature: Mail Balance
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 1
     Then set order details service to PM Package
-    Then set Order Details Tracking to USPS Tracking
+    Then set order details tracking to USPS Tracking
     Then pause for 1 second
     Then Save Order Details data
     Then click orders toolbar print button

@@ -17,7 +17,7 @@ Then /^Verify Local Rating$/ do |table|
     step "set order details height to #{field["height"]}"
     step "set order details width to #{field["width"]}"
     step "set Order Details service to #{field["service"]}"
-    step "set Order Details Tracking to #{field["tracking"]}"
+    step "set order details tracking to #{field["tracking"]}"
 
     #todo-Rob fix this grade school coding smells problem
     10.times do

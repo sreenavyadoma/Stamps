@@ -9,7 +9,7 @@ Feature: All details tests for order
   Scenario: Priority Mail and Large Dimensions
     Then add new order
     Then set order details ship-to domestic address to
-      | full_name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
+      | full_name   | company      | street_address1    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
 
     Then set order details length to 20
@@ -40,7 +40,7 @@ Feature: All details tests for order
     Then set order details service to PM Package
     Then set order details ounces to 3
     Then set order details pounds to 2
-    Then set order details insure-for to $100.00
+    Then set order details insure-for to 100.00
     Then expect Order Details Insure-For Cost is greater than $1
     Then expect order details insure-for is 100
     Then set order details height to 1
@@ -55,7 +55,7 @@ Feature: All details tests for order
     Then expect order details ounces is 2
     Then set order details pounds to 1
     Then expect order details pounds is 1
-    Then set order details insure-for to $150
+    Then set order details insure-for to 150
     Then expect Order Details Insure-For Cost is greater than $1
     Then expect order details insure-for is 150
     Then set order details height to 2
@@ -76,7 +76,7 @@ Feature: All details tests for order
     Then expect Order Details service is PM Flat Rate Envelope
     Then expect order details pounds is 0
     Then expect order details ounces is 0
-    #Then expect orders grid service is Priority Mail
+    Then expect orders grid service is correct
     Then click orders toolbar print button
     Then expect Print modal Print Modal is present
     Then in print modal, click close button
@@ -86,7 +86,7 @@ Feature: All details tests for order
     Then expect Order Details service is PM Padded Flat Rate Envelope
     Then expect order details pounds is 0
     Then expect order details ounces is 0
-    #Then expect orders grid service is Priority Mail
+    Then expect orders grid service is correct
     Then click orders toolbar print button
     Then expect Print modal Print Modal is present
     Then in print modal, click close button
@@ -96,7 +96,7 @@ Feature: All details tests for order
     Then expect Order Details service is PM Legal Flat Rate Envelope
     Then expect order details pounds is 0
     Then expect order details ounces is 0
-    #Then expect orders grid service is Priority Mail
+    Then expect orders grid service is correct
     Then click orders toolbar print button
     Then expect Print modal Print Modal is present
     Then in print modal, click close button
@@ -106,7 +106,7 @@ Feature: All details tests for order
     Then expect Order Details service is PM Small Flat Rate Box
     Then expect order details pounds is 0
     Then expect order details ounces is 0
-    #Then expect orders grid service is Priority Mail
+    Then expect orders grid service is correct
     Then click orders toolbar print button
     Then expect Print modal Print Modal is present
     Then in print modal, click close button
@@ -116,7 +116,7 @@ Feature: All details tests for order
     Then expect Order Details service is PM Medium Flat Rate Box
     Then expect order details pounds is 0
     Then expect order details ounces is 0
-    #Then expect orders grid service is Priority Mail
+    Then expect orders grid service is correct
     Then click orders toolbar print button
     Then expect Print modal Print Modal is present
     Then in print modal, click close button
@@ -126,7 +126,7 @@ Feature: All details tests for order
     Then expect Order Details service is PM Large Flat Rate Box
     Then expect order details pounds is 0
     Then expect order details ounces is 0
-    #Then expect orders grid service is Priority Mail
+    Then expect orders grid service is correct
     Then click orders toolbar print button
     Then expect Print modal Print Modal is present
     Then in print modal, click close button
@@ -136,7 +136,7 @@ Feature: All details tests for order
     Then expect Order Details service is PM Regional Rate Box A
     Then expect order details pounds is 0
     Then expect order details ounces is 0
-    #Then expect orders grid service is Priority Mail
+    Then expect orders grid service is correct
     Then click orders toolbar print button
     Then expect Print modal Print Modal is present
     Then in print modal, click close button
@@ -146,7 +146,7 @@ Feature: All details tests for order
     Then expect Order Details service is PM Regional Rate Box B
     Then expect order details pounds is 0
     Then expect order details ounces is 0
-    #Then expect orders grid service is Priority Mail
+    Then expect orders grid service is correct
     Then click orders toolbar print button
     Then expect Print modal Print Modal is present
     Then in print modal, click close button
@@ -156,7 +156,7 @@ Feature: All details tests for order
     Then expect Order Details service is PME Flat Rate Envelope
     Then expect order details pounds is 0
     Then expect order details ounces is 0
-    #Then expect orders grid service is Priority Mail Express
+    Then expect orders grid service is correct
     Then click orders toolbar print button
     Then expect Print modal Print Modal is present
     Then in print modal, click close button
@@ -166,7 +166,7 @@ Feature: All details tests for order
     Then expect Order Details service is PME Padded Flat Rate Envelope
     Then expect order details pounds is 0
     Then expect order details ounces is 0
-    #Then expect orders grid service is Priority Mail Express
+    Then expect orders grid service is correct
     Then click orders toolbar print button
     Then expect Print modal Print Modal is present
     Then in print modal, click close button
@@ -176,7 +176,7 @@ Feature: All details tests for order
     Then expect Order Details service is PME Legal Flat Rate Envelope
     Then expect order details pounds is 0
     Then expect order details ounces is 0
-    #Then expect orders grid service is Priority Mail Express
+    Then expect orders grid service is correct
     Then click orders toolbar print button
     Then expect Print modal Print Modal is present
     Then in print modal, click close button
@@ -201,7 +201,7 @@ Feature: All details tests for order
     Then close customs information form
     Then expect order details pounds is 0
     Then expect order details ounces is 0
-    #Then expect orders grid service is Priority Mail International
+    Then expect orders grid service is correct
     Then click orders toolbar print button
     Then expect Print modal Print Modal is present
     Then in print modal, click close button
@@ -215,7 +215,7 @@ Feature: All details tests for order
     Then close customs information form
     Then expect order details pounds is 0
     Then expect order details ounces is 0
-    #Then expect orders grid service is Priority Mail International
+    Then expect orders grid service is correct
     Then click orders toolbar print button
     Then expect Print modal Print Modal is present
     Then in print modal, click close button
@@ -229,7 +229,7 @@ Feature: All details tests for order
     Then close customs information form
     Then expect order details pounds is 0
     Then expect order details ounces is 0
-    #Then expect orders grid service is Priority Mail International
+    Then expect orders grid service is correct
     Then click orders toolbar print button
     Then expect Print modal Print Modal is present
     Then in print modal, click close button
@@ -243,7 +243,7 @@ Feature: All details tests for order
     Then close customs information form
     Then expect order details pounds is 0
     Then expect order details ounces is 0
-    #Then expect orders grid service is Priority Mail International
+    Then expect orders grid service is correct
     Then click orders toolbar print button
     Then expect Print modal Print Modal is present
     Then in print modal, click close button
@@ -257,7 +257,7 @@ Feature: All details tests for order
     Then close customs information form
     Then expect order details pounds is 0
     Then expect order details ounces is 0
-    #Then expect orders grid service is Priority Mail International
+    Then expect orders grid service is correct
     Then click orders toolbar print button
     Then expect Print modal Print Modal is present
     Then in print modal, click close button
@@ -271,7 +271,7 @@ Feature: All details tests for order
     Then close customs information form
     Then expect order details pounds is 0
     Then expect order details ounces is 0
-    #Then expect orders grid service is Priority Mail International
+    Then expect orders grid service is correct
     Then click orders toolbar print button
     Then expect Print modal Print Modal is present
     Then in print modal, click close button
@@ -285,7 +285,7 @@ Feature: All details tests for order
     Then close customs information form
     Then expect order details pounds is 0
     Then expect order details ounces is 0
-    #Then expect orders grid service is Priority Mail Express International
+    Then expect orders grid service is correct
     Then click orders toolbar print button
     Then expect Print modal Print Modal is present
     Then in print modal, click close button
@@ -299,7 +299,7 @@ Feature: All details tests for order
     Then close customs information form
     Then expect order details pounds is 0
     Then expect order details ounces is 0
-    #Then expect orders grid service is Priority Mail Express International
+    Then expect orders grid service is correct
     Then click orders toolbar print button
     Then expect Print modal Print Modal is present
     Then in print modal, click close button
@@ -313,7 +313,7 @@ Feature: All details tests for order
     Then close customs information form
     Then expect order details pounds is 0
     Then expect order details ounces is 0
-    #Then expect orders grid service is Priority Mail Express International
+    Then expect orders grid service is correct
     Then click orders toolbar print button
     Then expect Print modal Print Modal is present
     Then in print modal, click close button
@@ -571,7 +571,7 @@ Feature: All details tests for order
       | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Brazil  | random  | random  |
     Then set order details ounces to 1
-    Then on order details form, add item 1, qty 1, id random, description random
+    Then add order details item 1, qty 1, id random, description random
     Then click order details form customs form button
     Then add customs associated item 1, description random, qty 1, Price 1, Made In Brazil, Tariff 1
     Then check customs form i agree to the usps privacy act statement
@@ -691,7 +691,7 @@ Feature: All details tests for order
     Then set order details service to PM Package
     Then set order details ounces to 1
     Then set order details pounds to 1
-    # Then set Order Details Tracking to Signature Required
+    # Then set order details tracking to Signature Required
     Then set order details length to 1
     Then set order details width to 1
     Then set order details height to 1

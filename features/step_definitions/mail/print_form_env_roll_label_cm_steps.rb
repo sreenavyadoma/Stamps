@@ -12,16 +12,8 @@ Then /^[Ee]xpect Print form Mail To is disabled$/ do
 end
 
 Then /^click print form mail to link$/ do
-  # stamps.mail.print_form.mail_to.mail_to_link.click
   SdcMail.print_form.mail_to.link.click
   step 'expect search contacts modal is present'
-end
-
-
-
-Then /^check print form email tracking$/ do
-  SdcMail.print_form.email_tracking.tracking_checkbox.check
-  expect(SdcMail.print_form.email_tracking.tracking_checkbox.checked?).to be_truthy, "Email Tracking is not checked"
 end
 
 Then /^set print form email tracking (.+)$/ do |value|
@@ -30,8 +22,8 @@ Then /^set print form email tracking (.+)$/ do |value|
 end
 
 Then /^set print form insure for ([\d.]+)$/ do |value|
-  SdcMail.print_form.insure_for.set(value)
-  expect(SdcMail.print_form.insure_for.value.to_f).to eql(value.to_f)
+  SdcMail.print_form.insure_for.insurance.set(value)
+  expect(SdcMail.print_form.insure_for.insurance.text_value.to_f).to eql(value.to_f)
 end
 
 Then /^set print form tracking (.+)$/ do |value|
