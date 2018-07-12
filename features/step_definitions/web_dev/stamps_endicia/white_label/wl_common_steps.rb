@@ -39,7 +39,7 @@ end
 
 Then /^WL: expect user is singed in to print$/ do
   signed_in_user =  SdcWebsite.navigation.user_drop_down.signed_in_user
-  signed_in_user.wait_until_present(timeout: 30)
+  signed_in_user.wait_until_present(timeout: 60)
   expect(signed_in_user.text_value).to include(TestData.hash[:username])
 end
 
