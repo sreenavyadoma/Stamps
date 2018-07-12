@@ -71,12 +71,16 @@ Then /^set order details dimensions to length (\d+) width (\d+) height (\d+)$/ d
 end
 
 Then /^[Oo]n [Oo]rder [Dd]etails form, Expand panel$/ do
-  stamps.orders.order_details.expand
+
+  pending
+  #stamps.orders.order_details.expand
 end
 
 Then /^[Oo]n [Oo]rder [Dd]etails form, Delete Item (\d+)$/ do |item|
-  item = stamps.orders.order_details.items_ordered.item item.to_i
-  item.delete.click
+
+  pending
+  #item = stamps.orders.order_details.items_ordered.item item.to_i
+  # item.delete.click
 end
 
 Then /^set order details weight to (\d+\.?\d*) lb (\d+\.?\d*) oz$/ do |lbs, oz|
@@ -174,9 +178,11 @@ Then /^set order details ship-to domestic address to$/ do |table|
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Aa]mbiguous [Aa]ddress to$/ do |table|
-  address = TestHelper.format_address(table.hashes.first)
-  stamps.orders.order_details.ship_to.domestic.set_ambiguous(address)
-  TestData.hash[:ship_to_domestic] = address
+
+  pending
+  #address = TestHelper.format_address(table.hashes.first)
+  # stamps.orders.order_details.ship_to.domestic.set_ambiguous(address)
+  # TestData.hash[:ship_to_domestic] = address
 end
 
 Then /^set order details ship-to text area to (.*)$/ do |address|
@@ -256,7 +262,9 @@ Then /^expect order details ship-to email is (?:correct|(.*))$/ do |str|
 end
 
 Then /^[Oo]n [Oo]rder [Dd]etails form, [Hh]ide [Ii]nternational [Ss]hip-[Tt]o fields$/ do
-  stamps.orders.order_details.ship_to.international.hide_ship_to_details
+
+  pending
+  #stamps.orders.order_details.ship_to.international.hide_ship_to_details
 end
 
 Then /^expect order details ship-to name is (?:correct|(.*))$/ do |str|
@@ -469,7 +477,9 @@ Then /^check order details insure-for checkbox$/ do
 end
 
 Then /^uncheck order details insure-for checkbox$/ do
-  stamps.orders.order_details.insure_for.checkbox.uncheck
+
+  pending
+  #  stamps.orders.order_details.insure_for.checkbox.uncheck
 end
 
 Then /^set order details insure-for to (\d+\.\d{2})$/ do |str|

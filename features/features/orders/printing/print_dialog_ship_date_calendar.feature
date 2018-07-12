@@ -21,7 +21,7 @@ Feature: Set Print Ship Date up to 5 days from now in Calendar
     Then click print modal print button
     Then pause for 2 seconds
     Then select Filter Panel tab Shipped
-    #Then expect orders grid ship date is correct
+    Then expect orders grid ship date is correct
     #Then expect orders grid date printed is correct
     Then sign out
 
@@ -43,7 +43,7 @@ Feature: Set Print Ship Date up to 5 days from now in Calendar
     Then pause for 2 seconds
     Then select Filter Panel tab Shipped
     #Then expect orders grid date printed is correct
-    #Then expect orders grid ship date is correct
+    Then expect orders grid ship date is correct
     Then sign out
 
 
@@ -64,7 +64,7 @@ Feature: Set Print Ship Date up to 5 days from now in Calendar
     Then pause for 2 seconds
     Then select Filter Panel tab Shipped
     #Then expect orders grid date printed is correct
-    #Then expect orders grid ship date is correct
+    Then expect orders grid ship date is correct
     Then sign out
 
 
@@ -85,7 +85,7 @@ Feature: Set Print Ship Date up to 5 days from now in Calendar
     Then pause for 2 seconds
     Then select Filter Panel tab Shipped
     #Then expect orders grid date printed is correct
-    #Then expect orders grid ship date is correct
+    Then expect orders grid ship date is correct
     Then sign out
 
 
@@ -106,5 +106,5 @@ Feature: Set Print Ship Date up to 5 days from now in Calendar
     Then pause for 2 seconds
     Then select Filter Panel tab Shipped
     #Then expect orders grid date printed is correct
-    #Then expect orders grid ship date is correct
+    Then expect orders grid ship date is correct
     Then sign out

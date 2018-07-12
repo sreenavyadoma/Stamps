@@ -1,7 +1,7 @@
 
 module SdcGrid
 
-  class GridItem < SdcPage
+  class GridColumnBase < SdcPage
     @@column_number = {}
 
     def self.set(property, value)
@@ -52,15 +52,22 @@ module SdcGrid
       '//div[@class="x-grid-item-container"]'
     end
 
-    def scroll_to(column)
-      method_name = "scroll_to_#{column.to_s}"
-      column_name = column_names[column]
-      xpath = "//span[text()='#{column_name}']"
-      field = if column.eql? :checkbox
+    def column_xpath(column)
+      column = column_names[column] if column.class == Symbol
+      "//span[text()='#{column}']"
+    end
+
+    def header_element(column)
+      xpath = column_xpath(column)
+      page_object("header_element_#{column}") { { xpath: xpath } }
+    end
+
+    def scroll_to(col_sym)
+      field = if col_sym.eql? :checkbox
                 xpath = '//div[contains(@class, "x-column-header-checkbox")]'
                 page_object(:checkbox) { { xpath: xpath } }
               else
-                page_object(method_name.to_sym, tag: :span) { { xpath: xpath } }
+                header_element(col_sym)
               end
       field.scroll_into_view
       field
@@ -185,7 +192,7 @@ module SdcGrid
     end
   end
 
-  class SdcGridCheckBox < GridItem
+  class SdcGridCheckBox < GridColumnBase
     sdc_param(:chooser_xpath) { '//*[@id="sdc-mainpanel-calculatepostageradio-displayEl"]' }
     page_object(:chooser) { { xpath: '//div[contains(@class, "x-column-header-checkbox")]//span' } }
     page_object(:verify) { { xpath: '//div[contains(@class, "x-column-header-checkbox")]' } }
@@ -209,9 +216,19 @@ module SdcGrid
     end
   end
 
-  class SdcGridItem < GridItem
+  class SdcGridColumn < GridColumnBase
     def initialize(column)
       @column = column
+    end
+
+    def header_text
+      element = scroll_to(@column)
+      element.text_value
+    end
+
+    def present?
+      element = scroll_to(@column)
+      element.present?
     end
 
     def scroll_into_view
@@ -252,7 +269,7 @@ module SdcGrid
   def grid_column(column)
     body.wait_until_present(timeout: 15)
 
-    unless GridItem.column_names.keys.include? column
+    unless GridColumnBase.column_names.keys.include? column
       raise ArgumentError, "Invalid grid column: #{column}"
     end
 
@@ -261,7 +278,7 @@ module SdcGrid
       SdcGridCheckBox.new
 
     when :weight
-      klass = Class.new(SdcGridItem) do
+      klass = Class.new(SdcGridColumn) do
         def lb order_id
           data(order_id).scan(/\d+ lb./).first.scan(/\d/).first.to_i
         end
@@ -274,7 +291,7 @@ module SdcGrid
       klass.new(column)
 
     else
-      SdcGridItem.new(column)
+      SdcGridColumn.new(column)
     end
   end
   module_function :grid_column

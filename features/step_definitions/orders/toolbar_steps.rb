@@ -567,4 +567,4 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails International Email data error tooltip is \
 #   data_error_tooltip = textbox.data_error_qtip
 #   #SdcLog.step "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
 #   expect(data_error_tooltip).to include(expectation)
- end
+end

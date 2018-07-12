@@ -19,7 +19,7 @@ Feature: Set Print Ship Date to Today
     Then click print modal print button
     Then pause for 2 seconds
     Then select Filter Panel tab Shipped
-    #Then expect orders grid ship date is correct
+    Then expect orders grid ship date is correct
     #Then expect orders grid date printed is correct
 
   # Ship Date today + 1
@@ -35,7 +35,7 @@ Feature: Set Print Ship Date to Today
     Then click print modal print button
     Then pause for 2 seconds
     Then select Filter Panel tab Shipped
-    #Then expect orders grid ship date is correct
+    Then expect orders grid ship date is correct
     #Then expect orders grid date printed is correct
 
   # Ship Date Today + 2
@@ -52,7 +52,7 @@ Feature: Set Print Ship Date to Today
     Then pause for 2 seconds
     Then select Filter Panel tab Shipped
     #Then expect orders grid date printed is correct
-    #Then expect orders grid ship date is correct
+    Then expect orders grid ship date is correct
 
   # Ship Date Today + 3
     Then add new order
@@ -68,7 +68,7 @@ Feature: Set Print Ship Date to Today
     Then pause for 2 seconds
     Then select Filter Panel tab Shipped
     #Then expect orders grid date printed is correct
-    #Then expect orders grid ship date is correct
+    Then expect orders grid ship date is correct
     Then sign out
 
     

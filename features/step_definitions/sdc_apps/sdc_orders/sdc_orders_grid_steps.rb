@@ -70,19 +70,44 @@ Then /^expect orders grid ship cost is (?:correct|(.*))$/ do |str|
   expect(result.to_f).to eql str.to_f
 end
 
-Then /^expect orders grid date printed is (?:correct|(.*))$/ do |str|
-  str ||= Date.today.strftime("%b %-d")
+Then /^expect orders grid ship date is (?:correct|(.*))$/ do |str|
+  # Ship date is set after user prints label
+  str ||= TestData.hash[:ship_date]
   order_id = if order_id.nil?
                TestData.hash[:order_id].values.last
              elsif order_id.size < 2
                TestData.hash[:order_id][order_id.to_i]
              end
-  result =SdcGrid.grid_column(:date_printed).data(order_id)
-  expect(result).to eql(TestHelper.grid_date_format(str.nil? ? Date.today.strftime("%b %-d") : str))
+
+  column = SdcGrid.grid_column(:ship_date)
+  expect(column).to be_present
+  expect(column.header_text).to eql('Ship Date')
+  # Only validate if there's an actual ship date from printing label
+  if str
+    str = TestHelper.grid_date_format(str)
+    result = column.data(order_id)
+    expect(result).to eql(str)
+  end
 end
 
-Then /^expect orders grid ship date is (?:correct|(.*))$/ do |str|
-  expect(SdcGrid.grid_column(:ship_date).data(TestData.hash[:order_id].values.last)).to eql(TestHelper.grid_date_format(str.nil? ? stamps.orders.modals.orders_print_modal.ship_date.textbox.text : str))
+Then /^expect orders grid date printed is (?:correct|(.*))$/ do |str|
+  # Date printed is set after user prints label
+  str ||= TestData.hash[:date_printed]
+  order_id = if order_id.nil?
+               TestData.hash[:order_id].values.last
+             elsif order_id.size < 2
+               TestData.hash[:order_id][order_id.to_i]
+             end
+
+  column = SdcGrid.grid_column(:date_printed)
+  expect(column).to be_present
+  expect(column.header_text).to eql('Date Printed')
+  # Only validate if there's a print date after printing label
+  if str
+    str = TestHelper.grid_date_format(str)
+    result = column.data(order_id)
+    expect(result).to eql(str)
+  end
 end
 
 Then /^expect orders grid order date is populated$/ do
