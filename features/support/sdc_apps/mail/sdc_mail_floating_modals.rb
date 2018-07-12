@@ -1,6 +1,39 @@
 module SdcMail
   module SdcMailFloatingModals
 
+    class PrintModalPrinter < SdcPage
+      page_object(:text_field, tag: :text_field) { {xpath: '//input[contains(@name="printers")]' } }
+      page_object(:drop_down) { { id: 'sdc-printpostagewindow-printerdroplist-trigger-picker' } }
+
+      def selection_element(name: :selection, value: 'factory')
+        page_object(name) { { xpath: "//li[text()='#{value}']" } }
+      end
+    end
+
+    class PrintModalPaperTray < SdcPage
+      page_object(:text_field, tag: :text_field) { { id: 'sdc-printpostagewindow-printerdroplist-inputEl' } }
+      page_object(:drop_down) { { id: 'sdc-printpostagewindow-printerdroplist-trigger-picker' } }
+
+      def selection_element(name: :selection, value: 'factory')
+        page_object(name) { { xpath: "//li[text()='#{value}']" } }
+      end
+    end
+
+    class MailPrintModal < SdcPage
+      page_object(:search_option) { {xpath: '//div[contains(@class, "x-title-text")]'} }
+      page_object(:title) { { xpath: '//div[contains(@id, "printwindow")]//div[contains(text(),"You have")]' } }
+      page_object(:print) { { id: 'sdc-printwin-printbtn-btnWrap' } }
+      page_object(:close) { { xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]' } }
+
+      def print_on
+        PrintModalPrintOn.new
+      end
+
+      def printer
+        PrintModalPrinter.new
+      end
+    end
+
     class SdcNotificationBar < SdcPage
       page_object(:close) { {xpath: '//span[contains(@class, "sdc-icon-message-close-dark")]'} }
       page_object(:settings_link) { {xpath: '//span[text()="Settings"]'} }
@@ -235,6 +268,8 @@ module SdcMail
   end
 
 
+
+
     def manage_print_options
       SdcManagePrintOptions.new
     end
@@ -314,6 +349,11 @@ module SdcMail
       SdcSearchContacts.new
     end
     module_function :search_contacts
+
+    def print
+      MailPrintModal.new
+    end
+    module_function :print
   end
 end
 

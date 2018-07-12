@@ -170,28 +170,27 @@ Feature:  Mail BVT
 
   @sdc_mail_bvt_stamps
   Scenario: Mail BVT-Stamps
-    Then sign-in to Mail
+    Then sign-in to mail
     Then select print on Stamps
 
     Then set print form serial number to C12345
-    Then select Advanced Options Specify Postage Amount
+    Then select print form specify postage amount
     #Then set Print form Mail-From to default
     Then select print form service Media Mail
-    Then set Print form Amount to 2.85
-    Then set Print form Quantity to 1
-    #Then set Advanced Options Reference Number to Stamp3221
-    Then Print Postage
+    Then set print form stamp amount to 2.85
+    Then set print form stamp quantity to 1
+    Then click mail statusbar print stamps
     Then set Mail Print modal Printer
-    Then click Mail Print modal Print button
+    #Then click Mail Print modal Print button
 
     Then set print form serial number to B12345
-    Then select Advanced Options Calculate Postage Amount
-    Then set Print form Mail-From to default
+    Then select print form calculate postage amount
+    #Then set Print form Mail-From to default
     Then set print form ounces to 1
-    Then select print form service FCM Letter
-    Then Print Postage
-    Then set Mail Print modal Printer
-    Then click Mail Print modal Print button
+    Then select print form service FCM Large Envelope/Flat
+    #Then Print Postage
+    #Then set Mail Print modal Printer
+    #Then click Mail Print modal Print button
 
     Then sign out
 
