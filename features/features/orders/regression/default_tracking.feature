@@ -7,7 +7,7 @@ Feature: Tracking
   @tracking_defaults
   Scenario:  Print - First-Class Mail Envelope
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
 
     Then set order details ship-to to random address in zone 1
     Then set order details ship-to to random address in zone 1

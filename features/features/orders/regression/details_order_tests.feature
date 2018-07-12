@@ -35,7 +35,7 @@ Feature: All details tests for order
   Scenario: User edits an order
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address in zone 8
     Then set order details service to PM Package
     Then set order details ounces to 3
@@ -68,7 +68,7 @@ Feature: All details tests for order
   @details_flat_rate_no_weight_domestic
   Scenario:  Domestic Flat
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address in zone 1
 
   # Priority Mail Flat Rate Envelope
@@ -187,7 +187,7 @@ Feature: All details tests for order
   @details_flat_rate_no_weight_international
   Scenario:  International Flat
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
       | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | France  | random  | random  |
@@ -360,7 +360,7 @@ Feature: All details tests for order
   Scenario: User edits an order
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 5 and 8
     Then set order details service to PM Flat Rate Envelope
     Then set order details pounds to 3.5
@@ -387,7 +387,7 @@ Feature: All details tests for order
   @details_reference_no
   Scenario: Reference Number
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PM Large/Thick Envelope
     Then set order details ounces to 2
@@ -412,7 +412,7 @@ Feature: All details tests for order
   @details_services_dom
   Scenario: service Selections for Domestic Orders
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address in zone 1
     Then set order details ounces to 1
 
@@ -681,7 +681,7 @@ Feature: All details tests for order
   Scenario: Ship Cost Total
     Then add new order
     Then expect Order Details Total label is Total Ship Cost:
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then expect order details service cost is 0.00
     Then expect Order Details Insure-For Cost is 0.00
     Then expect order details tracking cost is 0.00

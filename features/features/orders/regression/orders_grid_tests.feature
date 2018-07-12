@@ -8,7 +8,7 @@ Feature: in Orders Grid, Tracking & Order Status
   @grid_insured_value
   Scenario: Tracking & Order Status
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 5
     Then set order details service to PM Flat Rate Envelope
@@ -35,7 +35,7 @@ Feature: in Orders Grid, Tracking & Order Status
   @grid_ship_cost
   Scenario: B-01743 Show Cost of Order in Ship Cost Grid
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 1
     Then set order details service to PM Small Flat Rate Box
@@ -46,7 +46,7 @@ Feature: in Orders Grid, Tracking & Order Status
   Scenario: Tracking & Order Status
     Then add new order
     Then expect orders grid order status is Awaiting Shipment
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 5
     Then set order details service to PM Large Package

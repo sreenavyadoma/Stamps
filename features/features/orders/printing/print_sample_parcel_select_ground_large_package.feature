@@ -6,7 +6,7 @@ Feature: click print modal print button Sample - Parcel Select Ground Large Pack
   @print_sample_parcel_select_ground_large_package
   Scenario:  Parcel Select Ground Large Package
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PSG Package/Flat/Thick Envelope
     Then set order details ounces to 1

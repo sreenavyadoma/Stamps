@@ -7,7 +7,7 @@ Feature: Multiple Reprints
   Scenario: Multiple reprints in 24 hour period
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to MM Package/Flat/Thick Envelope, 5.5x8.5 Right Side 2, 4937 79th St., Sacramento CA 95820-6213
     Then set order details service to MM Package/Flat/Thick Envelope
     Then set order details ounces to 1
