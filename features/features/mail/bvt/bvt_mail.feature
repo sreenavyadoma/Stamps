@@ -102,7 +102,7 @@ Feature: BVT for Mail page
     Then select print form service Media Mail
     Then set print form stamp amount 2.85
     Then set print form stamp quantity 1
-    Then set advanced options reference number to Stamp3221
+    Then set print form advanced options reference number to Stamp3221
     Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button

@@ -32,8 +32,8 @@ Feature:Shipping Label Preview Panel
     Then uncheck advanced options print reference #
     Then expect advanced options print reference # is unchecked
 
-    Then set advanced options reference number to random string
-    Then expect advanced options reference number is correct
+    Then set print form advanced options reference number to random string
+    Then expect print form advanced options reference number is correct
     Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button

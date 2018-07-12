@@ -385,8 +385,10 @@ Then /^[Ee]xpect [Hh]idden [Pp]ostage [Nn]ot [Aa]llowed modal appears due to [Ee
 end
 
 
+Then /^expect extra services electronic return receipt is present$/ do
+  expect(SdcMail.print_form.advanced_options.electronic_return_receipt).to be_present, 'Print form include Electronic Return Receipt is NOT present'
+end
 
-# Electronic Return Receipt is removed from WEB APP??? Alex
 Then /^check extra services electronic return receipt$/ do
   SdcMail.print_form.advanced_options.electronic_return_receipt.check  unless SdcMail.print_form.electronic_return_receipt.checked?
   step 'expect extra services electronic return receipt is checked'
@@ -403,6 +405,10 @@ end
 
 Then /^expect extra services electronic return receipt is unchecked$/ do
   expect(SdcMail.print_form.advanced_options.electronic_return_receipt.checked?).to be(false)
+end
+
+Then /^expect extra services restricted delivery is is present$/ do
+  expect(SdcMail.print_form.advanced_options.restricted_delivery).to be_present, 'Advanced Options include Restricted Delivery is NOT present'
 end
 
 Then /^check extra services restricted delivery$/ do
@@ -430,6 +436,13 @@ Then /^expect extra services restricted delivery price to be (\d*.?\d+)$/ do |ex
   expect(SdcMail.print_form.advanced_options.restricted_delivery_price.text_value.dollar_amount_str.to_f.round(2)).to eql(expectation.to_f.round(2))
 end
 
+Then /^expect extra services return receipt is present$/ do
+  expect(SdcMail.print_form.advanced_options.return_receipt).to be_present, 'Print form include Return Receipt is NOT present'
+end
+
+Then /^expect extra services return receipt is not present$/ do
+  expect(SdcMail.print_form.advanced_options.return_receipt).not_to be_present, 'Print form include Return Receipt is NOT present'
+end
 
 Then /^check extra services return receipt$/ do
   step 'blur out on print form'
@@ -451,15 +464,27 @@ Then /^expect extra services return receipt is unchecked$/ do
   expect(SdcMail.print_form.advanced_options.return_receipt.checked?).not_to be_truthy, "Extra Services return receipt is still checked"
 end
 
+Then /^expect extra services return receipt is disabled$/ do
+  expect(SdcMail.print_form.advanced_options.return_receipt.class_disabled?).not_to be_truthy, "Extra Services return receipt is not disabled"
+end
+
 Then /^expect extra services return receipt price to be (\d*.?\d+)$/ do |expectation|
   SdcMail.print_form.advanced_options.return_receipt_price.wait_until_present(timeout: 5)
   expect(SdcMail.print_form.advanced_options.return_receipt_price.text_value.dollar_amount_str.to_f.round(2)).to eql(expectation.to_f.round(2))
 end
 
 
+Then /^expect extra services certified mail is checked$/ do
+  expect(SdcMail.print_form.advanced_options.certified_mail.checked?).to be_truthy, "Extra Services return receipt is not checked"
+end
 
+Then /^expect extra services certified mail is present$/ do
+  expect(SdcMail.print_form.advanced_options.certified_mail).to be_present, "Extra Services return receipt is not checked"
+end
 
-
+Then /^expect extra services certified mail is disabled$/ do
+  expect(SdcMail.print_form.advanced_options.certified_mail.class_disabled?).to be_truthy, "Extra Services return receipt is not disabled"
+end
 
 
 

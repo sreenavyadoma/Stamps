@@ -14,7 +14,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set print form mail-to country to United States
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
-    Then set advanced options cost code to None
+    Then set print form advanced options cost code None
     Then click mail statusbar print
     Then pause for 1 second
     Then click Mail Print modal Print button
@@ -28,7 +28,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set print form mail-to country to United States
     Then select print form service Media Mail
     Then set print form stamp amount 0.15
-    Then set advanced options cost code to None
+    Then set print form advanced options cost code None
     Then click mail statusbar print
     Then click Mail Print modal Print button
     Then sign out
@@ -43,7 +43,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set print form mail-to country to United States
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
-    Then set advanced options cost code to None
+    Then set print form advanced options cost code None
     Then click mail statusbar print
     Then pause for 1 second
     Then click Mail Print modal Print button
@@ -57,7 +57,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set print form mail-to country to United States
     Then select print form service Media Mail
     Then set print form stamp amount 0.15
-    Then set advanced options cost code to None
+    Then set print form advanced options cost code None
     Then click mail statusbar print
     Then click Mail Print modal Print button
     Then sign out
@@ -72,7 +72,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set print form mail-to country to United States
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
-    Then set advanced options cost code to None
+    Then set print form advanced options cost code None
     Then click mail statusbar print
     Then pause for 1 second
     Then click Mail Print modal Print button
@@ -86,7 +86,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set print form mail-to country to United States
     Then select print form service Media Mail
     Then set print form stamp amount 0.15
-    Then set advanced options cost code to None
+    Then set print form advanced options cost code None
     Then click mail statusbar print
     Then click Mail Print modal Print button
     Then sign out
@@ -101,7 +101,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set print form mail-to country to United States
     Then select print form service First Class
     Then set print form stamp amount 0.15
-    Then set advanced options cost code to None
+    Then set print form advanced options cost code None
     Then click mail statusbar print
     Then pause for 1 second
     Then click Mail Print modal Print button
@@ -115,7 +115,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set print form mail-to country to United States
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
-    Then set advanced options cost code to None
+    Then set print form advanced options cost code None
     Then click mail statusbar print
     Then click Mail Print modal Print button
     Then sign out
@@ -130,7 +130,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set print form mail-to country to United States
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
-    Then set advanced options cost code to None
+    Then set print form advanced options cost code None
     Then click mail statusbar print
     Then pause for 1 second
     Then click Mail Print modal Print button
@@ -144,7 +144,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set print form mail-to country to United States
     Then select print form service Media Mail
     Then set print form stamp amount 0.15
-    Then set advanced options cost code to None
+    Then set print form advanced options cost code None
     Then click mail statusbar print
     Then click Mail Print modal Print button
     Then sign out

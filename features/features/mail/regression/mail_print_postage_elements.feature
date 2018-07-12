@@ -28,7 +28,7 @@ Feature: Verify Mail Elements Are Present
     Then expect Print form Hide Mail Value check box is present
     Then expect Print form Print Receipt check box is present
     Then expect Print form Print Reference Number check box is present
-    Then expect advanced options reference number field is present
+    Then expect print form advanced options reference number field is present
     Then expect advanced options cost code field is present
     Then expect Print form Mail Total is present
     Then expect Print form Print Sample Button is present

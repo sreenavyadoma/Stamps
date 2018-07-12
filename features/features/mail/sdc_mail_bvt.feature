@@ -143,7 +143,7 @@ Feature:  Mail BVT
     Then select print form service Media Mail
     Then set print form stamp amount 2.85
     Then set print form stamp quantity 1
-    #Then set Advanced Options Reference Number to Stamp3221
+    #Then set print form advanced options reference number to Stamp3221
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
@@ -200,7 +200,7 @@ Feature:  Mail BVT
     Then show advanced options
     Then hide advanced options
     Then show advanced options
-    #Then expect Advanced Options Extra Services Button is visible
+    #Then expect print form advanced options extra services button is visible
 
     Then set mail ship date to 05/31/2018
     Then open mail ship date picker
@@ -214,7 +214,7 @@ Feature:  Mail BVT
 
 
 #    Then set Advanced Options Mail Date to today
-#    Then expect Advanced Options Mail Date field is present
+#    Then expect print form advanced options mail date is present
 #    Then set Advanced Options Mail Date to date 04/04/2017
 #    Then expect Advanced Options Mail Date is 04/04/2017
 #    Then set Advanced Options Mail Date to today
@@ -252,13 +252,13 @@ Feature:  Mail BVT
 #    Then uncheck advanced options include postage
 #    Then expect advanced options include postage is unchecked
 #
-#    Then expect advanced options reference number field is present
-#    Then set advanced options reference number to random string
-#    Then expect advanced options reference number is correct
+#    Then expect print form advanced options reference number field is present
+#    Then set print form advanced options reference number to random string
+#    Then expect print form advanced options reference number is correct
 #
 #    Then expect advanced options cost code field is present
-#    Then set advanced options cost code to None
-#    Then expect advanced options cost code is None
+#    Then set print form advanced options cost code None
+#    Then expect print form advanced options cost code is None
 
   @mail_bvt_ui_validation
   Scenario: BVT Mail UI Validation for Stamps
@@ -281,8 +281,8 @@ Feature:  Mail BVT
     Then select print form service FCM Letter
     Then select print form service FCM Large Envelope/Flat
     Then select print form service MM Package/Flat/Thick Envelope
-    Then set print form advanced options reference number STMP123
-    Then set print form cost code None
+    Then set print form advanced options reference number to STMP123
+    Then set print form advanced options cost code None
     Then set print form stamp quantity 3
     Then increment print form stamp quantity by 2
     Then decrement print form stamp quantity by 2
@@ -585,7 +585,7 @@ Feature:  Mail BVT
     Then set print form mail-to address to Address Cleansing, BVT, 1350 Market Street #2905, San Francisco, CA
     Then set print form ounces to 4
     Then select print form service PM Flat Rate Envelope
-    Then expect print form ship date is 0 days from today
+    Then expect print form advanced options ship date is 0 days from today
     Then open mail settings modal
     Then set mail settings postdate to now -2 hours
     Then close mail settings modal
@@ -593,21 +593,21 @@ Feature:  Mail BVT
     Then set print form mail-to to a random address in zone 1
     Then set print form ounces to 2
     Then select print form service PM Padded Flat Rate Envelope
-    Then expect print form ship date is 1 days from today
+    Then expect print form advanced options ship date is 1 days from today
     Then open mail settings modal
     Then set mail settings postdate to now +2 hours
     Then close mail settings modal
     Then set print form ounces to 3
     Then select print form service PM Legal Flat Rate Envelope
-    Then expect print form ship date is 0 days from today
+    Then expect print form advanced options ship date is 0 days from today
     Then set print form ship date to today
-    Then expect print form ship date is 0 days from today
-    Then set print form ship date to today plus 1
-    Then expect print form ship date is 1 day from today
-    Then set print form ship date to today plus 2
-    Then expect print form ship date is 2 days from today
+    Then expect print form advanced options ship date is 0 days from today
+    Then set print form advanced options ship date to today plus 1
+    Then expect print form advanced options ship date is 1 day from today
+    Then set print form advanced options ship date to today plus 2
+    Then expect print form advanced options ship date is 2 days from today
     Then set print form ship date to today
-    Then expect print form ship date is 0 days from today
+    Then expect print form advanced options ship date is 0 days from today
 
     Then open mail settings modal
     Then set mail settings postdate to 5:00 p.m.
@@ -702,378 +702,272 @@ Feature:  Mail BVT
     Then expect advanced options specify postage amount is selected
     Then set print form serial number to random C series
     Then select advanced options calculate postage amount
-#    Then set Print form Mail-From to default
     Then set print form mail-to country to United States
     Then select print form service FCM Letter
     Then set print form stamp quantity 1
-    Then set advanced options cost code to None
-
-#    Then expect Advanced Options Extra Services Button is visible
-
-    Then expect advanced options reference number field is present
-    Then set advanced options reference number to random string
-    Then expect advanced options reference number is correct
-#    set print form reference number
-
+    Then set print form advanced options cost code None
+    Then expect print form advanced options reference number field is present
+    Then set print form advanced options reference number to random string
+    Then expect print form advanced options reference number is correct
     Then expect advanced options cost code field is present
-    Then set advanced options cost code to None
-    Then expect advanced options cost code is None
+    Then set print form advanced options cost code None
+    Then expect print form advanced options cost code is None
+    Then sign out
 
         # ------------------------------------------------------------ Rolls Advanced Options
   @mail_bvt_advanced_options
   @mail_advanced_options_rolls
   Scenario: Advanced Options for Roll 4x6
-    Then select print on Roll 4x6
-    Then set Advanced Options Mail Date to today
-    Then set Print form Mail-From to default
+    Then sign-in to mail
+    Then select print on Roll - 4" x 6" Shipping Label
+#    Then set Advanced Options Mail Date to today
+#    Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1
     Then select print form service PM Package
     Then show advanced options
-    Then expect Advanced Options Extra Services Button is visible
-
-    Then expect Advanced Options Mail Date field is present
-    Then set Advanced Options Mail Date to date 04/04/2017
-    Then expect Advanced Options Mail Date is 04/04/2017
-    Then set Advanced Options Mail Date to today
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to tomorrow
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to today plus 0
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to today plus 1
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to today plus 2
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to today plus 3
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to today plus 4
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to today plus 5
-    Then expect Advanced Options Mail Date is correct
-
+    Then expect print form advanced options extra services button is present
     Then expect advanced options hide label value is present
     Then check advanced options hide label value
     Then expect advanced options hide label value is checked
     Then uncheck advanced options hide label value
     Then expect advanced options hide label value is unchecked
-
     Then expect advanced options print reference # is present
     Then check advanced options print reference #
     Then expect advanced options print reference # is checked
     Then uncheck advanced options print reference #
     Then expect advanced options print reference # is unchecked
-
-    Then expect advanced options reference number field is present
-    Then set advanced options reference number to random string
-    Then expect advanced options reference number is correct
-
+    Then expect print form advanced options reference number field is present
+    Then set print form advanced options reference number to random string
+    Then expect print form advanced options reference number is correct
     Then expect advanced options cost code field is present
-    Then set advanced options cost code to None
-    Then expect advanced options cost code is None
+    Then set print form advanced options cost code None
+    Then expect print form advanced options cost code is None
 
     # ------------------------------------------------------------ Envelopes Advanced Options
   @mail_bvt_advanced_options
   @mail_advanced_options_envelope
   Scenario: Advanced Options for Envelope - 10
-    Then select print on Envelope - 10
-    Then set Advanced Options Mail Date to today
-    Then set Print form Mail-From to default
+    Then sign-in to mail
+    Then select print on Envelope - #10, 4 ⅛" x 9 ½"
+#    Then set Advanced Options Mail Date to today
+#    Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 2
     Then select print form service FCM Letter
     Then show advanced options
-    Then expect Advanced Options Extra Services Button is visible
-
-    Then expect Advanced Options Mail Date field is present
-    Then set Advanced Options Mail Date to date 04/04/2017
-    Then expect Advanced Options Mail Date is 04/04/2017
-    Then set Advanced Options Mail Date to today
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to tomorrow
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to today plus 0
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to today plus 1
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to today plus 2
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to today plus 3
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to today plus 4
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to today plus 5
-    Then expect Advanced Options Mail Date is correct
-
+    Then expect print form advanced options extra services button is present
     Then expect advanced options include return address is present
     Then check advanced options include return address
     Then expect advanced options include return address is checked
     Then uncheck advanced options include return address
     Then expect advanced options include return address is unchecked
-
     Then expect advanced options include delivery address is present
     Then check advanced options include delivery address
     Then expect advanced options include delivery address is checked
     Then uncheck advanced options include delivery address
     Then expect advanced options include delivery address is unchecked
-
     Then expect advanced options include postage is present
     Then check advanced options include postage
     Then expect advanced options include postage is checked
     Then uncheck advanced options include postage
     Then expect advanced options include postage is unchecked
-
-    Then expect advanced options reference number field is present
-    Then set advanced options reference number to random string
-    Then expect advanced options reference number is correct
-
+    Then expect print form advanced options reference number field is present
+    Then set print form advanced options reference number to random string
+    Then expect print form advanced options reference number is correct
     Then expect advanced options cost code field is present
-    Then set advanced options cost code to None
-    Then expect advanced options cost code is None
+    Then set print form advanced options cost code None
+    Then expect print form advanced options cost code is None
+    Then sign out
 
     # ------------------------------------------------------------ Certified Mail Advanced Options SDC-3710
   @mail_bvt_advanced_options
   @mail_advanced_options_cm3710
   Scenario: Advanced Options for Certified Mail Label - SDC-3710
+    Then sign-in to mail
     Then select print on Certified Mail Label - SDC-3710
-
     Then show advanced options
-
-    Then expect Print Form Certified Mail is checked
-    Then expect Print Form Certified Mail is visible
-    Then expect Print Form Certified Mail is disabled
-
-    Then expect Print Form Return Receipt is not visible
-
-    Then expect Print Form Electronic Return Receipt is present
-    Then check Print Form Electronic Return Receipt
-    Then expect Print Form Electronic Return Receipt is checked
-    Then uncheck Print Form Electronic Return Receipt
-    Then expect Print Form Electronic Return Receipt is unchecked
-
-    Then expect Advanced Options Restricted Delivery is present
-    Then check Advanced Options Restricted Delivery
-    Then expect Advanced Options Restricted Delivery is checked
-    Then uncheck Advanced Options Restricted Delivery
-    Then expect Advanced Options Restricted Delivery is unchecked
-
-    Then expect Advanced Options Mail Date field is present
-
-    Then expect advanced options reference number field is present
-    Then set advanced options reference number to random string
-    Then expect advanced options reference number is correct
-
+    Then expect extra services certified mail is checked
+    Then expect extra services certified mail is present
+#    Then expect extra services certified mail is disabled  #todo - Uncomment when class_disabled? method is working
+    Then expect extra services return receipt is not present
+    Then expect extra services electronic return receipt is present
+    Then check extra services electronic return receipt
+    Then expect extra services electronic return receipt is checked
+    Then uncheck extra services electronic return receipt
+    Then expect extra services electronic return receipt is unchecked
+    Then expect extra services restricted delivery is is present
+    Then check extra services restricted delivery
+    Then expect extra services restricted delivery is checked
+    Then uncheck extra services restricted delivery
+    Then expect extra services restricted delivery is unchecked
+    Then expect print form advanced options mail date is present
+    Then expect print form advanced options reference number field is present
+    Then set print form advanced options reference number to random string
+    Then expect print form advanced options reference number is correct
     Then expect advanced options cost code field is present
-    Then set advanced options cost code to None
-    Then expect advanced options cost code is None
+    Then set print form advanced options cost code None
+    Then expect print form advanced options cost code is None
+    Then sign out
 
     # ------------------------------------------------------------ Certified Mail Advanced Options SDC-3610
   @mail_bvt_advanced_options
   @mail_advanced_options_cm3610
   Scenario: Advanced Options for Certified Mail Label - SDC-3610
+    Then sign-in to mail
     Then select print on Certified Mail Label - SDC-3610
-
-    Then set Print form Mail-From to default
+#    Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1
     Then select print form service PM Package
-
     Then show advanced options
-
-    Then expect Print Form Certified Mail is checked
-    Then expect Print Form Certified Mail is visible
-    Then expect Print Form Certified Mail is disabled
-
-    Then expect Print Form Return Receipt is not visible
-
-    Then expect Print Form Electronic Return Receipt is present
-    Then check Print Form Electronic Return Receipt
-    Then expect Print Form Electronic Return Receipt is checked
-    Then uncheck Print Form Electronic Return Receipt
-    Then expect Print Form Electronic Return Receipt is unchecked
-
-    Then expect Advanced Options Restricted Delivery is present
-    Then check Advanced Options Restricted Delivery
-    Then expect Advanced Options Restricted Delivery is checked
-    Then uncheck Advanced Options Restricted Delivery
-    Then expect Advanced Options Restricted Delivery is unchecked
-
-    Then expect Advanced Options Mail Date field is present
-
-    Then expect advanced options reference number field is present
-    Then set advanced options reference number to random string
-    Then expect advanced options reference number is correct
-
+    Then expect extra services certified mail is checked
+    Then expect extra services certified mail is present
+#    Then expect extra services certified mail is disabled  #todo - Uncomment when class_disabled? method is working
+    Then expect extra services return receipt is not present
+    Then expect extra services electronic return receipt is present
+    Then check extra services electronic return receipt
+    Then expect extra services electronic return receipt is checked
+    Then uncheck extra services electronic return receipt
+    Then expect extra services electronic return receipt is unchecked
+    Then expect extra services restricted delivery is is present
+    Then check extra services restricted delivery
+    Then expect extra services restricted delivery is checked
+    Then uncheck extra services restricted delivery
+    Then expect extra services restricted delivery is unchecked
+    Then expect print form advanced options mail date is present
+    Then expect print form advanced options reference number field is present
+    Then set print form advanced options reference number to random string
+    Then expect print form advanced options reference number is correct
     Then expect advanced options cost code field is present
-    Then set advanced options cost code to None
-    Then expect advanced options cost code is None
+    Then set print form advanced options cost code None
+    Then expect print form advanced options cost code is None
+    Then sign out
 
     # ------------------------------------------------------------ Certified Mail Advanced Options SDC-3910
   @mail_bvt_advanced_options
   @mail_advanced_options_cm3910
   Scenario: Advanced Options for Certified Mail Label - SDC-3910
+    Then sign-in to mail
     Then select print on Certified Mail Label - SDC-3910
-
-    Then expect Print Form Certified Mail is checked
-    Then expect Print Form Certified Mail is visible
-    Then expect Print Form Certified Mail is disabled
-
-    Then expect Print Form Return Receipt is present
-    Then check Print Form Return Receipt
-    Then expect Print Form Return Receipt is checked
-    Then uncheck Print Form Return Receipt
-    Then expect Print Form Return Receipt is unchecked
-
-    Then expect Print Form Electronic Return Receipt is present
-    Then check Print Form Electronic Return Receipt
-    Then expect Print Form Electronic Return Receipt is checked
-    Then uncheck Print Form Electronic Return Receipt
-    Then expect Print Form Electronic Return Receipt is unchecked
-
-    Then expect Advanced Options Restricted Delivery is present
-    Then check Advanced Options Restricted Delivery
-    Then expect Advanced Options Restricted Delivery is checked
-    Then uncheck Advanced Options Restricted Delivery
-    Then expect Advanced Options Restricted Delivery is unchecked
-
-    Then expect Advanced Options Mail Date field is present
-
-    Then expect advanced options reference number field is present
-    Then set advanced options reference number to random string
-    Then expect advanced options reference number is correct
-
+    Then expect extra services certified mail is checked
+    Then expect extra services certified mail is present
+#    Then expect extra services certified mail is disabled  #todo - Uncomment when class_disabled? method is working
+    Then expect extra services return receipt is present
+    Then check extra services return receipt
+    Then expect extra services return receipt is checked
+    Then uncheck extra services return receipt
+    Then expect extra services return receipt is unchecked
+    Then expect extra services electronic return receipt is present
+    Then check extra services electronic return receipt
+    Then expect extra services electronic return receipt is checked
+    Then uncheck extra services electronic return receipt
+    Then expect extra services electronic return receipt is unchecked
+    Then expect extra services restricted delivery is is present
+    Then check extra services restricted delivery
+    Then expect extra services restricted delivery is checked
+    Then uncheck extra services restricted delivery
+    Then expect extra services restricted delivery is unchecked
+    Then expect print form advanced options mail date is present
+    Then expect print form advanced options reference number field is present
+    Then set print form advanced options reference number to random string
+    Then expect print form advanced options reference number is correct
     Then expect advanced options cost code field is present
-    Then set advanced options cost code to None
-    Then expect advanced options cost code is None
+    Then set print form advanced options cost code None
+    Then expect print form advanced options cost code is None
+    Then sign out
 
     # ------------------------------------------------------------ Certified Mail Advanced Options SDC-3930
   @mail_bvt_advanced_options
   @mail_advanced_options_3930
   Scenario: Advanced Options for Certified Mail Label - SDC-3930
+    Then sign-in to mail
     Then select print on Certified Mail Label - SDC-3930
-
-    Then expect Print Form Certified Mail is checked
-    Then expect Print Form Certified Mail is visible
-    Then expect Print Form Certified Mail is disabled
-
-    Then expect Print Form Return Receipt is present
-    Then check Print Form Return Receipt
-    Then expect Print Form Return Receipt is checked
-    Then uncheck Print Form Return Receipt
-    Then expect Print Form Return Receipt is unchecked
-
-    Then expect Print Form Electronic Return Receipt is present
-    Then check Print Form Electronic Return Receipt
-    Then expect Print Form Electronic Return Receipt is checked
-    Then uncheck Print Form Electronic Return Receipt
-    Then expect Print Form Electronic Return Receipt is unchecked
-
-    Then expect Advanced Options Restricted Delivery is present
-    Then check Advanced Options Restricted Delivery
-    Then expect Advanced Options Restricted Delivery is checked
-    Then uncheck Advanced Options Restricted Delivery
-    Then expect Advanced Options Restricted Delivery is unchecked
-
-    Then expect Advanced Options Mail Date field is present
-
-    Then expect advanced options reference number field is present
-    Then set advanced options reference number to random string
-    Then expect advanced options reference number is correct
-
+    Then expect extra services certified mail is checked
+    Then expect extra services certified mail is present
+#    Then expect extra services certified mail is disabled  #todo - Uncomment when class_disabled? method is working
+    Then expect extra services return receipt is present
+    Then check extra services return receipt
+    Then expect extra services return receipt is checked
+    Then uncheck extra services return receipt
+    Then expect extra services return receipt is unchecked
+    Then expect extra services electronic return receipt is present
+    Then check extra services electronic return receipt
+    Then expect extra services electronic return receipt is checked
+    Then uncheck extra services electronic return receipt
+    Then expect extra services electronic return receipt is unchecked
+    Then expect extra services restricted delivery is is present
+    Then check extra services restricted delivery
+    Then expect extra services restricted delivery is checked
+    Then uncheck extra services restricted delivery
+    Then expect extra services restricted delivery is unchecked
+    Then expect print form advanced options mail date is present
+    Then expect print form advanced options reference number field is present
+    Then set print form advanced options reference number to random string
+    Then expect print form advanced options reference number is correct
     Then expect advanced options cost code field is present
-    Then set advanced options cost code to None
-    Then expect advanced options cost code is None
+    Then set print form advanced options cost code None
+    Then expect print form advanced options cost code is None
+    Then sign out
 
     # ------------------------------------------------------------ Certified Mail Advanced Options SDC-3810
   @mail_bvt_advanced_options
   @mail_advanced_options_3810
   Scenario: Advanced Options for Certified Mail Label - SDC-3810
-    Then select print on Certified Mail Label - SDC-3810
-
-    Then expect Print Form Certified Mail is checked
-    Then expect Print Form Certified Mail is visible
-    Then expect Print Form Certified Mail is disabled
-
-    Then expect Print Form Return Receipt is visible
-    Then expect Print Form Return Receipt is disabled
-    Then expect Print Form Return Receipt is checked
-
-    Then expect Print Form Electronic Return Receipt is present
-    Then check Print Form Electronic Return Receipt
-    Then expect Print Form Electronic Return Receipt is checked
-    Then uncheck Print Form Electronic Return Receipt
-    Then expect Print Form Electronic Return Receipt is unchecked
-
-    Then expect Advanced Options Restricted Delivery is present
-    Then check Advanced Options Restricted Delivery
-    Then expect Advanced Options Restricted Delivery is checked
-    Then uncheck Advanced Options Restricted Delivery
-    Then expect Advanced Options Restricted Delivery is unchecked
-
-    Then expect Advanced Options Mail Date field is present
-
-    Then expect advanced options reference number field is present
-    Then set advanced options reference number to random string
-    Then expect advanced options reference number is correct
-
+    Then sign-in to mail
+    Then select print on Certified Mail #11 Envelope - SDC-3810
+    Then expect extra services certified mail is checked
+    Then expect extra services certified mail is present
+#    Then expect extra services certified mail is disabled  #todo - Uncomment when class_disabled? method is working
+    Then expect extra services return receipt is present
+#    Then expect extra services return receipt is disabled  #todo - Uncomment when class_disabled? method is working
+    Then expect extra services return receipt is checked
+    Then expect extra services electronic return receipt is present
+    Then check extra services electronic return receipt
+    Then expect extra services electronic return receipt is checked
+    Then uncheck extra services electronic return receipt
+    Then expect extra services electronic return receipt is unchecked
+    Then expect extra services restricted delivery is is present
+    Then check extra services restricted delivery
+    Then expect extra services restricted delivery is checked
+    Then uncheck extra services restricted delivery
+    Then expect extra services restricted delivery is unchecked
+    Then expect print form advanced options mail date is present
+    Then expect print form advanced options reference number field is present
+    Then set print form advanced options reference number to random string
+    Then expect print form advanced options reference number is correct
     Then expect advanced options cost code field is present
-    Then set advanced options cost code to None
-    Then expect advanced options cost code is None
+    Then set print form advanced options cost code None
+    Then expect print form advanced options cost code is None
+    Then sign out
 
     # ------------------------------------------------------------ Shipping Labels Advanced Options
   @mail_bvt_advanced_options
   @mail_advanced_options_paper
   Scenario: Advanced Options for Shipping Label - 8 ½" x 11" Paper
+    Then sign-in to mail
     Then select print on Shipping Label - 8 ½" x 11" Paper
-
-    Then set Advanced Options Mail Date to today
-    Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 1
     Then select print form service PM Package
     Then show advanced options
-
-    Then expect Advanced Options Extra Services Button is visible
-
-    Then expect Advanced Options Mail Date field is present
-    Then set Advanced Options Mail Date to today
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to tomorrow
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to today plus 0
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to today plus 1
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to today plus 2
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to today plus 3
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to today plus 4
-    Then expect Advanced Options Mail Date is correct
-    Then set Advanced Options Mail Date to today plus 5
-    Then expect Advanced Options Mail Date is correct
-
+    Then expect print form advanced options extra services button is present
     Then expect advanced options hide label value is present
     Then check advanced options hide label value
     Then expect advanced options hide label value is checked
     Then uncheck advanced options hide label value
     Then expect advanced options hide label value is unchecked
-
     Then expect advanced options print receipt is present
     Then check advanced options print receipt
     Then expect advanced options print receipt is checked
     Then uncheck advanced options print receipt
     Then expect advanced options print receipt is unchecked
-
     Then expect advanced options print reference # is present
     Then check advanced options print reference #
     Then expect advanced options print reference # is checked
     Then uncheck advanced options print reference #
     Then expect advanced options print reference # is unchecked
-
-    Then expect advanced options reference number field is present
-    Then set advanced options reference number to random string
-    Then expect advanced options reference number is correct
-
+    Then expect print form advanced options reference number field is present
+    Then set print form advanced options reference number to random string
+    Then expect print form advanced options reference number is correct
     Then expect advanced options cost code field is present
-    Then set advanced options cost code to None
-    Then expect advanced options cost code is None
-
+    Then set print form advanced options cost code None
+    Then expect print form advanced options cost code is None
     Then sign out

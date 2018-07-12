@@ -11,8 +11,8 @@ Feature: Mail Contacts Modal Bugs
     Then set print form mail-to to a random address in zone 1 through 4
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
-    Then set advanced options reference number to 12345
-    Then set advanced options cost code to 123
+    Then set print form advanced options reference number to 12345
+    Then set print form advanced options cost code 123
     Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
@@ -23,6 +23,6 @@ Feature: Mail Contacts Modal Bugs
     Then Select Recently Printed Contact
     Then expect Print form Domestic Address field displays last printed contact
     Then show advanced options
-    Then expect advanced options reference number is blank
-    Then expect advanced options cost code is None
+    Then expect print form advanced options reference number is blank
+    Then expect print form advanced options cost code is None
     Then sign out
