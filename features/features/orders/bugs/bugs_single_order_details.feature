@@ -8,7 +8,7 @@ Feature: Single Order Details form Bugs
   Scenario: ORDERSAUTO-3351 New Sprint 11/24/17 WEBAPPS-6838 User get on Print modal without Ship to Address
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
       | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Zimbabwe | random  | random  |

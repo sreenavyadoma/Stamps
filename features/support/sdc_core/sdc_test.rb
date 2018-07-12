@@ -305,7 +305,6 @@ class SdcTest
       SdcEnv.web_dev ||= ENV['WEB_DEV']
       SdcEnv.window_size ||= ENV['WINDOW_SIZE']
 
-
       #deprecated
       SdcEnv.sdc_app ||= ENV['WEB_APP'].downcase.to_sym unless ENV['WEB_APP'].nil?
       require_gems

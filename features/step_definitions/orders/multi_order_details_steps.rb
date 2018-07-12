@@ -9,7 +9,8 @@ Then /^set bulk update ship from to (.*)$/ do |str|
 end
 
 Then /^[Bb]lur [Oo]ut on [Mm]ulti [Oo]rder [Dd]etails [Ff]orm(?:| (\d+)(?:| times))$/ do |count|
-  stamps.orders.bulk_update.blur_out(count)
+  pending
+  #stamps.orders.bulk_update.blur_out(count)
 end
 
 Then /^[Ss]ave [Mm]ulti [Oo]rder [Dd]etails [Dd]ata$/ do
@@ -121,7 +122,8 @@ Then /^set bulk update insurance to (.+)$/ do |str|
 end
 
 Then /^set bulk update insure amount to (.+)$/ do |str|
-  stamps.orders.bulk_update.insure_amt.set(str)
+  pending
+  #stamps.orders.bulk_update.insure_amt.set(str)
 end
 
 Then /^set bulk update tracking to (.+)$/ do |str|

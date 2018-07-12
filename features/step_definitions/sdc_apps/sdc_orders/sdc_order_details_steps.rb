@@ -71,12 +71,16 @@ Then /^set order details dimensions to length (\d+) width (\d+) height (\d+)$/ d
 end
 
 Then /^[Oo]n [Oo]rder [Dd]etails form, Expand panel$/ do
-  stamps.orders.order_details.expand
+
+  pending
+  #stamps.orders.order_details.expand
 end
 
 Then /^[Oo]n [Oo]rder [Dd]etails form, Delete Item (\d+)$/ do |item|
-  item = stamps.orders.order_details.items_ordered.item item.to_i
-  item.delete.click
+
+  pending
+  #item = stamps.orders.order_details.items_ordered.item item.to_i
+  # item.delete.click
 end
 
 Then /^set order details weight to (\d+\.?\d*) lb (\d+\.?\d*) oz$/ do |lbs, oz|
@@ -174,9 +178,11 @@ Then /^set order details ship-to domestic address to$/ do |table|
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Aa]mbiguous [Aa]ddress to$/ do |table|
-  address = TestHelper.format_address(table.hashes.first)
-  stamps.orders.order_details.ship_to.domestic.set_ambiguous(address)
-  TestData.hash[:ship_to_domestic] = address
+
+  pending
+  #address = TestHelper.format_address(table.hashes.first)
+  # stamps.orders.order_details.ship_to.domestic.set_ambiguous(address)
+  # TestData.hash[:ship_to_domestic] = address
 end
 
 Then /^set order details ship-to text area to (.*)$/ do |address|
@@ -256,7 +262,9 @@ Then /^expect order details ship-to email is (?:correct|(.*))$/ do |str|
 end
 
 Then /^[Oo]n [Oo]rder [Dd]etails form, [Hh]ide [Ii]nternational [Ss]hip-[Tt]o fields$/ do
-  stamps.orders.order_details.ship_to.international.hide_ship_to_details
+
+  pending
+  #stamps.orders.order_details.ship_to.international.hide_ship_to_details
 end
 
 Then /^expect order details ship-to name is (?:correct|(.*))$/ do |str|
@@ -469,7 +477,9 @@ Then /^check order details insure-for checkbox$/ do
 end
 
 Then /^uncheck order details insure-for checkbox$/ do
-  stamps.orders.order_details.insure_for.checkbox.uncheck
+
+  pending
+  #  stamps.orders.order_details.insure_for.checkbox.uncheck
 end
 
 Then /^set order details insure-for to (\d+\.\d{2})$/ do |str|
@@ -520,19 +530,25 @@ Then /^set order details reference to (.*)$/ do |str|
 end
 
 Then /^set order details ship-from to (.+)$/ do |str|
-  TestData.hash[:ship_from] = str
   ship_from = SdcOrders.order_details.ship_from
-  ship_from.selection_element(str)
-  ship_from.drop_down.scroll_into_view.click
-  unless ship_from.selection.scroll_into_view.present?
-    ship_from.drop_down.scroll_into_view.click
-    step "on manage shipping address modal, add address from string 90245,Automation,1990 E Grand Avenue,El Segundo,California,90245,United States,4157944522"
-    ship_from.drop_down.scroll_into_view.click
+  unless ship_from.text_field.text_value.eql? str
+    ship_from.selection_element(str)
+    ship_from.drop_down.scroll_into_view.click unless ship_from.selection.present?
+    if ship_from.selection.present?
+      ship_from.selection.scroll_into_view.click
+    else
+      address = '90245,Automation,1990 E Grand Avenue,El Segundo,California,90245,United States,4157944522'
+      step "add default ship-from shipping address #{address}"
+      ship_from.selection_element(str)
+      ship_from.drop_down.click unless ship_from.selection.present?
+      ship_from.selection.click
+    end
   end
-  ship_from.selection_element(str) unless ship_from.selection.present?
-  ship_from.selection.scroll_into_view.click
-  actual_result = ship_from.text_field.text_value
-  expect(actual_result).to eql str unless str == 'Manage Shipping Addresses...'
+  unless str.eql? 'Manage Shipping Addresses...'
+    result = ship_from.text_field.text_value
+    expect(result).to eql str
+  end
+  TestData.hash[:ship_from] = str
 end
 
 Then /^expect order details associated item (\d+) qty is (?:correct|(\d+))$/ do |item, str|
@@ -609,10 +625,11 @@ Then /^expect order details is present$/ do
   expect(order_details).to be_present
 end
 
-Then /^expect order details ship-from is (?:correct|(.*))$/ do
+Then /^expect order details ship-from is (?:correct|(.*))$/ do |str|
   step 'show order ship-to details'
+  str ||= TestData.hash[:ship_from]
   result = SdcOrders.order_details.ship_from.text_field.text_value
-  expect(result).to eql(TestData.hash[:ship_from])
+  expect(result).to eql(str)
 end
 
 Then /^expect order details reference number is (?:correct|(.*))$/ do |str|

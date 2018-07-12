@@ -9,7 +9,7 @@ Feature: 150 orders
     # First Class Mail
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 1
@@ -18,7 +18,7 @@ Feature: 150 orders
     Then set order details tracking to "None"
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 2
@@ -29,7 +29,7 @@ Feature: 150 orders
     #Priority Mail
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 3
@@ -37,7 +37,7 @@ Feature: 150 orders
     Then set order details tracking to USPS Tracking
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 4
@@ -45,7 +45,7 @@ Feature: 150 orders
     Then set order details tracking to Signature Required
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 5
@@ -54,7 +54,7 @@ Feature: 150 orders
     Then set order details tracking to Signature Required
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 6
@@ -62,7 +62,7 @@ Feature: 150 orders
     Then set order details tracking to Signature Required
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 7
@@ -71,7 +71,7 @@ Feature: 150 orders
     Then set order details tracking to USPS Tracking
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 8
@@ -79,7 +79,7 @@ Feature: 150 orders
     Then set order details tracking to Signature Required
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 9
@@ -88,7 +88,7 @@ Feature: 150 orders
     Then set order details tracking to Signature Required
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 10
@@ -97,7 +97,7 @@ Feature: 150 orders
     Then set order details tracking to Signature Required
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 11
@@ -106,7 +106,7 @@ Feature: 150 orders
     Then set order details tracking to Signature Required
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 12
@@ -115,7 +115,7 @@ Feature: 150 orders
     Then set order details tracking to Signature Required
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 13
@@ -124,7 +124,7 @@ Feature: 150 orders
     Then set order details tracking to USPS Tracking
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 14
@@ -134,7 +134,7 @@ Feature: 150 orders
     # Priority Mail Express
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 15
@@ -142,7 +142,7 @@ Feature: 150 orders
     Then set order details tracking to Signature Required
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 16
@@ -150,7 +150,7 @@ Feature: 150 orders
     Then set order details tracking to USPS Tracking
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 17
@@ -158,7 +158,7 @@ Feature: 150 orders
     Then set order details tracking to Signature Required
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 18
@@ -167,7 +167,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 19
@@ -177,7 +177,7 @@ Feature: 150 orders
     # Media Mail
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 20
@@ -189,7 +189,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 21
@@ -199,7 +199,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 22
@@ -209,7 +209,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 23
@@ -220,7 +220,7 @@ Feature: 150 orders
     # International
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
 
     Then set order details ship-to international address to
       | full_name   | company | street_address1         | street_address2 | city   | province | postal_code  | country| phone   |  email  |
@@ -241,7 +241,7 @@ Feature: 150 orders
     Then set order details service to FCMI Large Envelope/Flat
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
 
     Then set order details ship-to international address to
       | full_name   | company | street_address1    | street_address2 | city   | province | postal_code  | country   | phone   |  email  |
@@ -265,7 +265,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 1
@@ -275,7 +275,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 2
@@ -287,7 +287,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 3
@@ -296,7 +296,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 4
@@ -305,7 +305,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 5
@@ -315,7 +315,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 6
@@ -324,7 +324,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 7
@@ -334,7 +334,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 8
@@ -343,7 +343,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 9
@@ -353,7 +353,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 10
@@ -363,7 +363,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 11
@@ -373,7 +373,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 12
@@ -383,7 +383,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 13
@@ -393,7 +393,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 14
@@ -404,7 +404,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 15
@@ -413,7 +413,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 16
@@ -422,7 +422,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 17
@@ -431,7 +431,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 18
@@ -440,7 +440,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 19
@@ -451,7 +451,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 20
@@ -463,7 +463,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 21
@@ -473,7 +473,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 22
@@ -483,7 +483,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 23
@@ -494,7 +494,7 @@ Feature: 150 orders
     # International
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
 
     Then set order details ship-to international address to
       | full_name   | company | street_address1         | street_address2 | city   | province | postal_code  | country | phone       |  email           |
@@ -515,7 +515,7 @@ Feature: 150 orders
     Then set order details service to FCMI Large Envelope/Flat
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
 
     Then set order details ship-to international address to
       | full_name   | company | street_address1    | street_address2 | city   | province | postal_code  | country   | phone   |  email  |
@@ -539,7 +539,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 1
@@ -549,7 +549,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 2
@@ -561,7 +561,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 3
@@ -570,7 +570,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 4
@@ -579,7 +579,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 5
@@ -589,7 +589,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 6
@@ -598,7 +598,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 7
@@ -608,7 +608,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 8
@@ -617,7 +617,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 9
@@ -627,7 +627,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 10
@@ -637,7 +637,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 11
@@ -647,7 +647,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 12
@@ -657,7 +657,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 13
@@ -667,7 +667,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 14
     Then set order details insure-for to 305.00
@@ -677,7 +677,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 15
@@ -686,7 +686,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 16
@@ -695,7 +695,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 17
@@ -704,7 +704,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 18
@@ -713,7 +713,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 19
@@ -724,7 +724,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 20
@@ -736,7 +736,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 21
@@ -746,7 +746,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 22
@@ -756,7 +756,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 23
@@ -767,7 +767,7 @@ Feature: 150 orders
     # International
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
 
     Then set order details ship-to international address to
       | full_name   | company | street_address1         | street_address2 | city   | province | postal_code  | country| phone   |  email  |
@@ -788,7 +788,7 @@ Feature: 150 orders
     Then set order details service to FCMI Large Envelope/Flat
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
 
     Then set order details ship-to international address to
       | full_name   | company | street_address1    | street_address2 | city   | province | postal_code  | country   | phone   |  email  |
@@ -812,7 +812,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 1
@@ -822,7 +822,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 2
@@ -834,7 +834,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 3
@@ -843,7 +843,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 4
@@ -852,7 +852,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 5
@@ -862,7 +862,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 6
@@ -871,7 +871,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 7
@@ -881,7 +881,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 8
@@ -890,7 +890,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 9
@@ -900,7 +900,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 10
@@ -910,7 +910,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 11
@@ -920,7 +920,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 12
@@ -930,7 +930,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 13
@@ -940,7 +940,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 14
@@ -951,7 +951,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 15
@@ -960,7 +960,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 16
@@ -969,7 +969,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 17
@@ -978,7 +978,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 18
@@ -987,7 +987,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 19
@@ -998,7 +998,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 20
@@ -1010,7 +1010,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 21
@@ -1020,7 +1020,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 22
@@ -1030,7 +1030,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 23
@@ -1041,7 +1041,7 @@ Feature: 150 orders
     # International
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
 
     Then set order details ship-to international address to
       | full_name   | company | street_address1         | street_address2 | city   | province | postal_code  | country     | phone       |  email  |
@@ -1062,7 +1062,7 @@ Feature: 150 orders
     Then set order details service to FCMI Large Envelope/Flat
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
 
     Then set order details ship-to international address to
       | full_name   | company | street_address1    | street_address2 | city   | province | postal_code  | country   | phone   |  email  |
@@ -1086,7 +1086,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 1
@@ -1096,7 +1096,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 2
@@ -1108,7 +1108,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 3
@@ -1117,7 +1117,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 4
@@ -1126,7 +1126,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 5
@@ -1136,7 +1136,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 6
@@ -1145,7 +1145,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 7
@@ -1155,7 +1155,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 8
@@ -1164,7 +1164,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 9
@@ -1174,7 +1174,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 10
@@ -1184,7 +1184,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 11
@@ -1194,7 +1194,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 12
@@ -1204,7 +1204,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 13
@@ -1214,7 +1214,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 14
@@ -1225,7 +1225,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 15
@@ -1234,7 +1234,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 16
@@ -1243,7 +1243,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 17
@@ -1252,7 +1252,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 18
@@ -1261,7 +1261,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 19
@@ -1272,7 +1272,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 20
@@ -1284,7 +1284,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 21
@@ -1294,7 +1294,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 22
@@ -1304,7 +1304,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 23
@@ -1315,7 +1315,7 @@ Feature: 150 orders
     # International
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
 
     Then set order details ship-to international address to
       | full_name   | company | street_address1         | street_address2 | city   | province | postal_code  | country| phone   |  email  |
@@ -1336,7 +1336,7 @@ Feature: 150 orders
     Then set order details service to FCMI Large Envelope/Flat
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
 
     Then set order details ship-to international address to
       | full_name   | company | street_address1    | street_address2 | city   | province | postal_code  | country   | phone   |  email  |
@@ -1360,7 +1360,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 1
@@ -1370,7 +1370,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 2
@@ -1382,7 +1382,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 3
@@ -1391,7 +1391,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 4
@@ -1400,7 +1400,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 5
@@ -1410,7 +1410,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 6
@@ -1419,7 +1419,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 7
@@ -1429,7 +1429,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 8
@@ -1438,7 +1438,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 9
@@ -1448,7 +1448,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 10
@@ -1458,7 +1458,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 11
@@ -1468,7 +1468,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 12
@@ -1478,7 +1478,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 13
@@ -1488,7 +1488,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 14
@@ -1499,7 +1499,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details ounces to 15
@@ -1508,7 +1508,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 16
@@ -1517,7 +1517,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 17
@@ -1526,7 +1526,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 18
@@ -1535,7 +1535,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 19
@@ -1546,7 +1546,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 20
@@ -1558,7 +1558,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 21
@@ -1568,7 +1568,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 22
@@ -1578,7 +1578,7 @@ Feature: 150 orders
 
     Then add new order
     
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
 
     Then set order details pounds to 23
@@ -1589,7 +1589,7 @@ Feature: 150 orders
     # International
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
 
     Then set order details ship-to international address to
       | full_name   | company | street_address1         | street_address2 | city   | province | postal_code  | country   | phone       |  email  |
@@ -1610,7 +1610,7 @@ Feature: 150 orders
     Then set order details service to FCMI Large Envelope/Flat
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
 
     Then set order details ship-to international address to
       | full_name   | company | street_address1    | street_address2 | city   | province | postal_code  | country  | phone   |  email  |

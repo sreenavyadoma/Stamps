@@ -7,7 +7,7 @@ Feature: User Views Price Next to service Dropdown
   @inline_service_rates
   Scenario:  User Views Price Next to service Dropdown
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then expect order details service cost is 0.00
     Then expect Order Details Service Cost inline price for "FCM Package" is greater than $0.01

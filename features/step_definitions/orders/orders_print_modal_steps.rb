@@ -1,30 +1,31 @@
 
 
 Then /^[Ii]n [Pp]rint [Mm]odal, click [Pp]rint button Incomplete Order$/ do
-  @incomplete_order_modal = stamps.orders.orders_toolbar.toolbar_print.click #todo-Rob move @incomplete_order_modal to stamps.orders.modals.incomplete_order_modal
-  expect("Incomplete Order Modal did not open").to eql "click print modal print button Incomplete Order" unless @incomplete_order_modal.instance_of? Orders::Toolbar::PrintIncompleteOrderError
+  pending
+  # @incomplete_order_modal = stamps.orders.orders_toolbar.toolbar_print.click
+  # unless @incomplete_order_modal.instance_of? Orders::Toolbar::PrintIncompleteOrderError
+  #   expect("Incomplete Order Modal did not open").to eql "click print modal print button Incomplete Order"
+  # end
 end
 
 Then /^[Cc]lick Orders Toolbar Print button expecting incomplete order$/ do
-  @incomplete_order_modal = stamps.orders.orders_toolbar.toolbar_print.click #this needs to change
-  expect("Incomplete Order Modal did not open").to eql "click print modal print button Incomplete Order" unless @incomplete_order_modal.instance_of? Orders::Toolbar::PrintIncompleteOrderError
+  pending
+  #  @incomplete_order_modal = stamps.orders.orders_toolbar.toolbar_print.click #this needs to change
+  # expect("Incomplete Order Modal did not open").to eql "click print modal print button Incomplete Order" unless @incomplete_order_modal.instance_of? Orders::Toolbar::PrintIncompleteOrderError
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal Incomplete Order Error Message (.*)$/ do |expectation|
-  expect(@incomplete_order_modal.error_message).to include(expectation)
+  # expect(@incomplete_order_modal.error_message).to include(expectation)
 end
 
 Then /^in print modal, click close button$/ do
-  if SdcEnv.new_framework
-    SdcOrders.modals.print.close.click
-  else
-    stamps.orders.modals.orders_print_modal.close
-  end
+  SdcOrders.modals.print.close.click
 end
 
 Then /^[Ss]et [Pp]rint [Mm]odal [Pp]rinter to \"(.*)\"$/ do |printer|
-  step "orders print modal printer dropdown is present"
-  stamps.orders.modals.orders_print_modal.printer.select(printer)
+  pending
+  #step "orders print modal printer dropdown is present"
+  # stamps.orders.modals.orders_print_modal.printer.select(printer)
 end
 
 Then /^set orders print modal printer ?(?:|(.*))$/ do |str|
@@ -47,7 +48,8 @@ Then /^orders print modal printer dropdown is present$/ do
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal [Pp]rint [Mm]odal is [Pp]resent$/ do
-  expect(stamps.orders.modals.orders_print_modal).to be_present, "Orders Print Modal is not present"
+  pending
+  #expect(stamps.orders.modals.orders_print_modal).to be_present, "Orders Print Modal is not present"
 end
 
 Then /^[Cc]lick [Pp]rint [Mm]odal [Pp]rint [Bb]utton$/ do
@@ -55,9 +57,10 @@ Then /^[Cc]lick [Pp]rint [Mm]odal [Pp]rint [Bb]utton$/ do
 end
 
 Then /^[Cc]lick [Pp]rint [Mm]odal [Pp]rint [Bb]utton for SAS$/ do
-    expect(stamps.orders.modals.orders_print_modal.print_fci_sas).to eql("Your GlobalPost Label"), "Your GlobalPost Label window is not present"
+  pending
+  #  expect(stamps.orders.modals.orders_print_modal.print_fci_sas).to eql("Your GlobalPost Label"), "Your GlobalPost Label window is not present"
 end
-#stamps.orders.modals.your_global_post_label_dialog.xxx
+
 Then /^[Ee]xpect [Oo]rders [Pp]rint [Mm]odal is [Pp]resent$/ do
   expect(SdcOrders.modals.print.title).to be_present, "Orders Print modal is NOT present"
 end
@@ -69,7 +72,8 @@ Then /^[Pp]rint [Ss]hipping [Ll]abel for SAS$/ do
 end
 
 Then /^ReIn [Pp]rint modal, Reprint$/ do
-  stamps.orders.orders_toolbar.reprint.reprint
+  pending
+  #stamps.orders.orders_toolbar.reprint.reprint
 end
 
 Then /^set print modal ship date to today$/ do
@@ -123,37 +127,30 @@ Then /^[Cc]lear [Pp]rint [Mm]odal [Ss]hip [Dd]ate$/ do
 end
 
 Then /^[Bb]lur [Oo]ut [Oo]n [Pp]rint [Mm]odal [Ss]hip [Dd]ate (\d+)$/ do |count|
-  if SdcEnv.new_framework
-    count.times do
-      SdcOrders.modals.print.total.safe_click
-      SdcOrders.modals.print.total.safe_double_click
-      sleep(0.2)
-    end
-  else
-    stamps.orders.modals.orders_print_modal.ship_date.shipdate_label.click(10)
-    stamps.orders.modals.orders_print_modal.ship_date.shipdate_label.double_click(10)
-  end
+  pending
+  # count.times do
+  #   SdcOrders.modals.print.total.safe_click
+  #   SdcOrders.modals.print.total.safe_double_click
+  #   sleep(0.2)
+  # end
 end
 
 Then /^[Ss]et [Pp]rint [Mm]odal Ship Date [Cc]alendar to (?:today|today plus (\d+))$/ do |day|
-  step "expect print modal ship date dropdown is present"
-  stamps.orders.modals.orders_print_modal.ship_date.date_picker.today_plus(day.nil? ? '0' : day)  #If print date is today, set day increase to zero, otherwise set to 'day' value
-  step "expect print modal ship date is #{day} days from today"
+  pending
+  # step "expect print modal ship date dropdown is present"
+  # stamps.orders.modals.orders_print_modal.ship_date.date_picker.today_plus(day.nil? ? '0' : day)  #If print date is today, set day increase to zero, otherwise set to 'day' value
+  # step "expect print modal ship date is #{day} days from today"
 end
 
 Then /^expect print modal ship date is (\d+) (?:day|days) from today$/ do |day|
-  step "expect print modal ship date dropdown is present"
+  step 'expect print modal ship date dropdown is present'
   expectation = TestHelper.mail_date_text_field_format(day)
   result = SdcOrders.modals.print.ship_date.text_field.text_value
   expect(result).to eql(expectation)
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal [Ss]hip [Dd]ate [Dd]rop[Dd]own is present$/ do
-  if SdcEnv.new_framework
-    expect(SdcOrders.modals.print.ship_date.drop_down).to be_present, "Ship Date dropdown is not present. Check that StampsConnect is connected. You might need to re-login on this PC #{SdcEnv.hostname}"
-  else
-    expect(stamps.orders.modals.orders_print_modal.ship_date).to be_present, "Ship Date dropdown is not present. Check that StampsConnect is connected. You might need to re-login on this PC #{SdcEnv.hostname}"
-  end
+  expect(SdcOrders.modals.print.ship_date.drop_down).to be_present
 end
 
 Then /^[Ii]n [Pp]rint modal, check Hide Mail Value$/ do
@@ -161,51 +158,62 @@ Then /^[Ii]n [Pp]rint modal, check Hide Mail Value$/ do
 end
 
 Then /^[Ii]n [Pp]rint modal, uncheck Hide Mail Value$/ do
-  stamps.orders.modals.orders_print_modal.print_options.hide_postage_value.uncheck
+  pending
+  #stamps.orders.modals.orders_print_modal.print_options.hide_postage_value.uncheck
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal Hide Mail Value CheckBox is checked$/ do
-  30.times do
-    stamps.orders.modals.orders_print_modal.click
-    break if stamps.orders.modals.orders_print_modal.print_options.hide_postage_value.checked?
-  end
-  expect(stamps.orders.modals.orders_print_modal.print_options.hide_postage_value.checked?).to be(true)
+  pending
+  #  # 30.times do
+  #   stamps.orders.modals.orders_print_modal.click
+  #   break if stamps.orders.modals.orders_print_modal.print_options.hide_postage_value.checked?
+  # end
+  # expect(stamps.orders.modals.orders_print_modal.print_options.hide_postage_value.checked?).to be(true)
 end
 
 Then /^[Ii]n [Pp]rint modal, check Email Tracking Details to Recipients$/ do
-  stamps.orders.modals.orders_print_modal.print_options.email_tracking.check
+  pending
+  #stamps.orders.modals.orders_print_modal.print_options.email_tracking.check
 end
 
 Then /^[Ii]n [Pp]rint modal, uncheck Email Tracking Details to Recipients$/ do
-  stamps.orders.modals.orders_print_modal.print_options.email_tracking.uncheck
+  pending
+  #stamps.orders.modals.orders_print_modal.print_options.email_tracking.uncheck
 end
 
 Then /^[Ii]n [Pp]rint modal, uncheck [Pp]rint Reference # on Shipping Label$/ do
-  stamps.orders.modals.orders_print_modal.print_options.print_reference_no.uncheck
+  pending
+  #stamps.orders.modals.orders_print_modal.print_options.print_reference_no.uncheck
 end
 
 Then /^[Ii]n [Pp]rint modal, check [Pp]rint Reference # on Shipping Label$/ do
-  stamps.orders.modals.orders_print_modal.print_options.print_reference_no.check
+  pending
+  #stamps.orders.modals.orders_print_modal.print_options.print_reference_no.check
 end
 
 When /^[Ss]elect [Pp]rint [Mm]odal left-side label$/ do
-  stamps.orders.modals.orders_print_modal.starting_label.select_left_label
+  pending
+  #stamps.orders.modals.orders_print_modal.starting_label.select_left_label
 end
 
 When /^[Ss]elect [Pp]rint [Mm]odal right-side label$/ do
-  stamps.orders.modals.orders_print_modal.starting_label.select_right_label
+  pending
+  #stamps.orders.modals.orders_print_modal.starting_label.select_right_label
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal right-side label is selected$/ do
-  expect(stamps.orders.modals.orders_print_modal.starting_label.right_selected?).to be(true)
+  pending
+  #expect(stamps.orders.modals.orders_print_modal.starting_label.right_selected?).to be(true)
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal left-side label is selected$/ do
-  expect(stamps.orders.modals.orders_print_modal.starting_label.left_selected?).to be(true)
+  pending
+  #expect(stamps.orders.modals.orders_print_modal.starting_label.left_selected?).to be(true)
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal [Pp]review [Ll]abel is displayed$/ do
-  expect(stamps.orders.modals.orders_print_modal.starting_label.label_displayed?).to be(true), "Label Preview Image is not Displayed"
+  pending
+  #expect(stamps.orders.modals.orders_print_modal.starting_label.label_displayed?).to be(true), "Label Preview Image is not Displayed"
 end
 
 Then /^set print modal print-on to (.*)$/ do |str|
@@ -217,12 +225,14 @@ Then /^set print modal print-on to (.*)$/ do |str|
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal [Pp]rinting On Label is (.*)$/ do |expectation|
-  expect(stamps.orders.modals.orders_print_modal.printing_on.label.text).to eql expectation
+  pending
+  #expect(stamps.orders.modals.orders_print_modal.printing_on.label.text).to eql expectation
 end
 
 Then /^[Ss]elect [Pp]rinter \"(.*)\"$/ do |printer|
-  step "orders print modal printer dropdown is present"
-  stamps.orders.modals.orders_print_modal.printer.select(printer)
+  # step "orders print modal printer dropdown is present"
+  pending
+    #stamps.orders.modals.orders_print_modal.printer.select(printer)
 end
 
 Then /^close print modal$/ do
@@ -234,70 +244,73 @@ Then /^Close Reprint Modal$/ do
 end
 
 Then /^[\w]lose Label Unavailable Modal$/ do
-  stamps.orders.orders_toolbar.ok.close
+  pending
+  #stamps.orders.orders_toolbar.ok.close
 end
 
 
 #todo-Rob Rework print_expecting_error
 Then /^Print Order expecting error (.*)$/ do |error_message|
-  modal = stamps.orders.orders_toolbar.toolbar_print.print_expecting_error  #updated reference for printer_expecting_error
-  error_message = error_message.gsub("\\n","\n") #reformatting newline character to match actual character in modal
-  actual = modal.error_message
-  modal.ok
-  expect(actual).to include error_message
+  pending
+  #modal = stamps.orders.orders_toolbar.toolbar_print.print_expecting_error  #updated reference for printer_expecting_error
+  # error_message = error_message.gsub("\\n","\n") #reformatting newline character to match actual character in modal
+  # actual = modal.error_message
+  # modal.ok
+  # expect(actual).to include error_message
 end
 
 Then /^[Pp]rint expecting (.*) selected orders have errors and cannot be printed. To print the remaining orders, click Continue.$/ do |error_message|
-  modal = stamps.orders.modals.orders_print_modal.print_expecting_error
-  actual = modal.error_message
-  modal.continue.print
-  expect(actual).to eql "#{error_message} selected orders have errors and cannot be printed.\nTo mail the remaining orders, click Continue."
+  pending
+  #modal = stamps.orders.modals.orders_print_modal.print_expecting_error
+  # actual = modal.error_message
+  # modal.continue.print
+  # expect(actual).to eql "#{error_message} selected orders have errors and cannot be printed.\nTo mail the remaining orders, click Continue."
 end
 
 Then /^[Pp]rint expecting invalid address error$/ do
-  stamps.orders.modals.orders_print_modal.print_invalid_address.close
+  pending
+  #stamps.orders.modals.orders_print_modal.print_invalid_address.close
 end
 
 When /^[Pp]rint expecting rating error$/ do
-  modal = stamps.orders.modals.orders_print_modal.print_expecting_rating_error
-  actual = modal.error_message
-  modal.close
-  expect(actual).to include "An error occurred while attempting to rate your mail"
+  pending
+  #modal = stamps.orders.modals.orders_print_modal.print_expecting_rating_error
+  # actual = modal.error_message
+  # modal.close
+  # expect(actual).to include "An error occurred while attempting to rate your mail"
 end
 
 When /^[Pp]rint expecting some orders can not be printed$/ do
-  modal = stamps.orders.modals.orders_print_modal.print_expecting_error
-  actual = modal.error_message
-  modal.continue.print
-  expect(actual).to include "To mail the remaining orders, click Continue"
+  pending
+  #modal = stamps.orders.modals.orders_print_modal.print_expecting_error
+  # actual = modal.error_message
+  # modal.continue.print
+  # expect(actual).to include "To mail the remaining orders, click Continue"
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal Title is \"You have (.*) label\(s\) ready to print\"$/ do |expectation|
-  actual = stamps.orders.modals.orders_print_modal.label_count
-  stamps.orders.modals.orders_print_modal.close
-  expect("You have #{actual} label(s) ready to mail").to eql("You have #{expectation} label(s) ready to mail")
+  pending
+  #actual = stamps.orders.modals.orders_print_modal.label_count
+  # stamps.orders.modals.orders_print_modal.close
+  # expect("You have #{actual} label(s) ready to mail").to eql("You have #{expectation} label(s) ready to mail")
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal number of required label sheets is (\d+)$/ do |sheets|
-  expect(stamps.orders.modals.orders_print_modal.label_count).to eql(sheets.to_i)
+  pending
+  #expect(stamps.orders.modals.orders_print_modal.label_count).to eql(sheets.to_i)
 end
 
 Then /^[Pp]rint raises a [Pp]rinting Error/ do
-  expect(stamps.orders.print.print_sample_expecting_error).to raise_error(PrintingError)
+  pending
+  #expect(stamps.orders.print.print_sample_expecting_error).to raise_error(PrintingError)
 end
 
 Then /^[Ii]n [Pp]rint modal, click [Pp]rint button Sample$/ do
-  stamps.orders.modals.orders_print_modal.print_sample
+  pending
+  #stamps.orders.modals.orders_print_modal.print_sample
 end
 
 Then /^[Ii]n [Pp]rint modal, click [Pp]rint button Sample raises a [Pp]rinting Error/ do
-  expect(stamps.orders.modals.orders_print_modal.print_sample_expecting_error).to raise_error(PrintingError)
-end
-
-Then /^[Ee]xpect (.*) pane selected$/ do |value|
-
-end
-
-Then /^[Ss]elect (.*) pane$/ do |value|
-
+  pending
+  #expect(stamps.orders.modals.orders_print_modal.print_sample_expecting_error).to raise_error(PrintingError)
 end

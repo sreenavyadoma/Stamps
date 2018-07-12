@@ -8,7 +8,7 @@ Feature: Set Print Ship Date up to 5 days from now in Calendar
   Scenario: Set Ship Date to tomorrow
   # Ship Date today + 1
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to FCM Large Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then set order details ounces to 4
     Then set order details service to FCM Large Envelope/Flat
@@ -21,7 +21,7 @@ Feature: Set Print Ship Date up to 5 days from now in Calendar
     Then click print modal print button
     Then pause for 2 seconds
     Then select Filter Panel tab Shipped
-    #Then expect orders grid ship date is correct
+    Then expect orders grid ship date is correct
     #Then expect orders grid date printed is correct
     Then sign out
 
@@ -29,7 +29,7 @@ Feature: Set Print Ship Date up to 5 days from now in Calendar
   Scenario: Set Ship Date to 2 days from now
   # Ship Date Today + 2
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to FCM Large Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then set order details ounces to 4
     Then set order details service to FCM Large Envelope/Flat
@@ -43,14 +43,14 @@ Feature: Set Print Ship Date up to 5 days from now in Calendar
     Then pause for 2 seconds
     Then select Filter Panel tab Shipped
     #Then expect orders grid date printed is correct
-    #Then expect orders grid ship date is correct
+    Then expect orders grid ship date is correct
     Then sign out
 
 
   Scenario: Set Ship Date to 3 days from now
   # Ship Date Today + 3
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to FCM Large Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then set order details ounces to 4
     Then set order details service to FCM Large Envelope/Flat
@@ -64,14 +64,14 @@ Feature: Set Print Ship Date up to 5 days from now in Calendar
     Then pause for 2 seconds
     Then select Filter Panel tab Shipped
     #Then expect orders grid date printed is correct
-    #Then expect orders grid ship date is correct
+    Then expect orders grid ship date is correct
     Then sign out
 
 
   Scenario: Set Ship Date to 4 days from now
       # Ship Date Today + 4
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to FCM Large Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then set order details ounces to 4
     Then set order details service to FCM Large Envelope/Flat
@@ -85,14 +85,14 @@ Feature: Set Print Ship Date up to 5 days from now in Calendar
     Then pause for 2 seconds
     Then select Filter Panel tab Shipped
     #Then expect orders grid date printed is correct
-    #Then expect orders grid ship date is correct
+    Then expect orders grid ship date is correct
     Then sign out
 
 
   Scenario: Set Ship Date to 5 days from now
   # Ship Date Today + 5
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to FCM Large Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then set order details ounces to 4
     Then set order details service to FCM Large Envelope/Flat
@@ -106,5 +106,5 @@ Feature: Set Print Ship Date up to 5 days from now in Calendar
     Then pause for 2 seconds
     Then select Filter Panel tab Shipped
     #Then expect orders grid date printed is correct
-    #Then expect orders grid ship date is correct
+    Then expect orders grid ship date is correct
     Then sign out

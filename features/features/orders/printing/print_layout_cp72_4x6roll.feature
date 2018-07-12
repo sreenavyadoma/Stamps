@@ -6,7 +6,7 @@ Feature: Print 1 Intl CP72 label on 4x6 Roll
   @print_layout_cp72_4x6roll
   Scenario: Print 1 Intl CP72 label on 4x6 Roll
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
       | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFR Envelope | 4x6 Roll  | random           | random           | random | random  | random      | France | random  | random  |

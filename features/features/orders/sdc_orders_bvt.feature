@@ -52,7 +52,7 @@ Feature:  BVT tests for Orders
     Then set orders settings general postdate to now +2 hours
     Then close orders settings modal
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then set order details ounces to 4
     Then set order details service to PM Flat Rate Envelope
@@ -64,7 +64,7 @@ Feature:  BVT tests for Orders
     Then set orders settings general postdate to now -2 hours
     Then close orders settings modal
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then set order details ounces to 4
     Then set order details service to PM Flat Rate Envelope
@@ -76,7 +76,7 @@ Feature:  BVT tests for Orders
     Then set orders settings general postdate to now +2 hours
     Then close orders settings modal
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then set order details ounces to 4
     Then set order details service to PM Flat Rate Envelope
@@ -100,7 +100,7 @@ Feature:  BVT tests for Orders
     Then set orders settings general postdate to now +2 hours
     Then close orders settings modal
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then set order details ounces to 4
     Then set order details service to PM Flat Rate Envelope
@@ -159,7 +159,7 @@ Feature:  BVT tests for Orders
       |ship_from_zip  | full_name  | company    | street_address| street_address2 | city          | state       | zip    | country       | phone           |
       |90245          | Euan  | Betfair UK | 101 Mission Street | Suite 700       | San Francisco | California  | 94105  | United States | (415) 123-5555  |
     Then on Manage Shipping Address modal, delete all addresses
-    Then set order details ship-from to San Francisco, CA
+    #Then set order details ship-from to San Francisco, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PM Package
     Then sign out
@@ -204,9 +204,9 @@ Feature:  BVT tests for Orders
     Then add order details item 1, qty 1, id Item 1 SKU, description Item 1 Description
 
   #Verify Single Order Details form was saved in ShipStation
-    #Then expect order details ship-from is correct
-    #Then expect orders grid date printed is correct
-    #Then expect orders grid ship date is correct
+    Then expect order details ship-from is correct
+    Then expect orders grid date printed is correct
+    Then expect orders grid ship date is correct
     Then expect orders grid service is correct
     Then expect orders grid service is correct
     Then expect order details ship-to phone is correct
@@ -231,6 +231,7 @@ Feature:  BVT tests for Orders
     Then expect order details tracking cost is correct
     Then expect order details reference number is correct
 
+    Then expect orders grid service ship-from is correct
     Then expect orders grid store is Manual Orders
     Then expect orders grid order id is correct
     Then expect orders grid ship cost is correct
@@ -355,6 +356,7 @@ Feature:  BVT tests for Orders
     Then expect Customs Total Value is correct
     Then close customs information form
 
+    Then expect orders grid service ship-from is correct
     Then expect orders grid recipient is correct
     Then expect orders grid company is correct
     Then expect orders grid country is correct
@@ -509,7 +511,7 @@ Feature:  BVT tests for Orders
     Then sign-in to orders
     Then add new order
     Then expect order details is present
-    Then set order details ship-from to Automation - El Segundo, CA
+    ##Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 5 and 8
     Then set order details service to PM Package
     Then set order details pounds to 0
@@ -540,7 +542,7 @@ Feature:  BVT tests for Orders
     Then set order details service to PSG Oversized Package
     Then set order details service to PM Package
     Then check order details insure-for checkbox
-    Then uncheck order details insure-for checkbox
+    #Then uncheck order details insure-for checkbox
     Then check order details insure-for checkbox
     Then set order details insure-for to 11.99
     Then set order details tracking to Signature Required
@@ -556,7 +558,7 @@ Feature:  BVT tests for Orders
     Then sign-in to orders
     Then add new order
     Then expect order details is present
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
       | full_name     | company       | street_address1 | street_address2 | city          | province      | postal_code   | country | phone        |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | Italy   | Random phone | Random email  |
@@ -577,7 +579,7 @@ Feature:  BVT tests for Orders
     Then set order details service to PMEI Legal Flat Rate Envelope
     Then set order details service to PMI Package/Flat/Thick Envelope
     Then check order details insure-for checkbox
-    Then uncheck order details insure-for checkbox
+    #Then uncheck order details insure-for checkbox
     Then check order details insure-for checkbox
     Then set order details insure-for to 11.99
     Then set order details reference to STMPS111

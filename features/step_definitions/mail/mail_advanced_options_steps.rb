@@ -1,11 +1,12 @@
 
 
 Then /^[Hh]ide Advanced Options$/ do
-  stamps.mail.print_form.advanced_options.hide
+  pending #stamps.mail.print_form.advanced_options.hide
 end
 
 Then /^expect advanced options responds to (.+) \((.+)\)$/ do |method_description, method|
-  expect(stamps.mail.print_form.advanced_options).to respond_to(method.to_sym), "Print media error. Advanced Options does not respond to #{method_description} (#{method})"
+  pending
+  #expect(stamps.mail.print_form.advanced_options).to respond_to(method.to_sym)
 end
 
 Then /^select advanced options extra services$/ do
@@ -86,22 +87,23 @@ Then /^expect print form advanced options mail date field is present$/ do
 end
 
 Then /^[Ss]et Advanced Options Mail Date to ((?:date|today plus|tomorrow|today|))? ?(.*)?$/ do |time_str, value|
-  raise ''
-  TestData.hash[:mail_date] = case time_str
-                              when /date/
-                                value
-                              when /today plus/
-                                (Date.today + value.to_i).strftime('%m/%d/%Y')
-                              when /today/
-                                Date.today.strftime('%m/%d/%Y')
-                              when /tomorrow/
-                                (Date.today + 1).strftime('%m/%d/%Y')
-                              else
-                                Date.today.strftime('%m/%d/%Y')
-                              end
-  expect(stamps.mail.print_form.advanced_options.mail_date.textbox).to be_present
-  stamps.mail.print_form.advanced_options.mail_date.textbox.set(TestData.hash[:mail_date])
-  expect(stamps.mail.print_form.advanced_options.mail_date.textbox.text).to eql(TestData.hash[:mail_date])
+  pending
+  # step 'expect advanced options responds to Mail Date (mail_date)'
+  # TestData.hash[:mail_date] = case time_str
+  #                             when /date/
+  #                               value
+  #                             when /today plus/
+  #                               (Date.today + value.to_i).strftime('%m/%d/%Y')
+  #                             when /today/
+  #                               Date.today.strftime('%m/%d/%Y')
+  #                             when /tomorrow/
+  #                               (Date.today + 1).strftime('%m/%d/%Y')
+  #                             else
+  #                               Date.today.strftime('%m/%d/%Y')
+  #                             end
+  # expect(stamps.mail.print_form.advanced_options.mail_date.textbox).to be_present
+  # stamps.mail.print_form.advanced_options.mail_date.textbox.set(TestData.hash[:mail_date])
+  # expect(stamps.mail.print_form.advanced_options.mail_date.textbox.text).to eql(TestData.hash[:mail_date])
 end
 
 Then /^open mail ship date picker$/ do
@@ -157,11 +159,12 @@ Then /^set mail ship date to (.+)$/ do |str|
 end
 
 Then /^[Ee]xpect Advanced Options Mail Date is (?:correct|(.*))$/ do |expectation|
-  step 'expect advanced options responds to Mail Date (mail_date)'
-  expectation = TestData.hash[:mail_date] if expectation.nil?
-  valid_date = Date.strptime(expectation, '%m/%d/%Y')
-  expect(valid_date).not_to be_nil, "Invalid Date format. Expected date format mm/dd/YYYY (03/24/2017)  got #{expectation}"
-  expect(stamps.mail.print_form.advanced_options.mail_date.textbox.text).to eql(expectation), "Advanced Options Mail Date is not #{expectation}"
+  pending
+  # step 'expect advanced options responds to Mail Date (mail_date)'
+  # expectation = TestData.hash[:mail_date] if expectation.nil?
+  # valid_date = Date.strptime(expectation, '%m/%d/%Y')
+  # expect(valid_date).not_to be_nil, "Invalid Date format"
+  # expect(stamps.mail.print_form.advanced_options.mail_date.textbox.text).to eql(expectation)
 end
 
 Then /^set print form advanced options reference number to (?:(?:a |some |)random string|(.*))$/ do |value|
@@ -235,7 +238,8 @@ end
 # end
 
 Then /^[Ee]xpect Print form responds to (.+) \((.+)\)$/ do |method_description, method|
-  expect(stamps.mail.print_form).to respond_to(method.to_sym), "Print media error. Print form does not respond to #{method_description} (#{method})"
+  pending
+  # expect(stamps.mail.print_form).to respond_to(method.to_sym), "Print media error. Print form does not respond to #{method_description} (#{method})"
 end
 
 # Then /^check extra services electronic return receipt$/ do

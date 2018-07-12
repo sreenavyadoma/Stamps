@@ -6,7 +6,7 @@ Feature: click print modal print button Sample - Priority Mail Flat Rate Envelop
   @print_sample_pm_flat_rate_envelope
   Scenario:  Priority Mail Flat Rate Envelope
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PM Flat Rate Envelope
     Then set order details ounces to 1
