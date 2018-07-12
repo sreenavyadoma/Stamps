@@ -45,6 +45,7 @@ end
 
 Then /^[Ss]et Print form Quantity to (\d+)$/ do |value|
   # TestData.hash[:quantity] = value
+  #
   pending
     #stamps.mail.print_form.quantity.set(TestData.hash[:quantity])
 end
