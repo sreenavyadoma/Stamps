@@ -58,7 +58,7 @@ module SdcGrid
     end
 
     def header_element(column)
-      if col_sym.eql? :checkbox
+      if column.eql? :checkbox
         xpath = '//div[contains(@class, "x-column-header-checkbox")]'
         page_object(:header_element_checkbox) { { xpath: xpath } }
       else
