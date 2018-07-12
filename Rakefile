@@ -67,6 +67,14 @@ require 'cucumber/rake/task'
 
 #END PARTNER PORTAL
 
+#BEGIN STAMPS WEB REG
+  Cucumber::Rake::Task.new(:sdcwr_normal_workflow) do |t|
+    t.profile = 'sdcwr_normal_workflow'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
+# END STAMPS WEB REG
+
 # END WEB DEV
 
 
