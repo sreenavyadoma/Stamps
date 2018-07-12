@@ -17,9 +17,9 @@ Feature: in Orders Grid, Tracking & Order Status
     Then pause for 1 second
     #Then expect orders grid insured value is 52.99
     Then pause for 1 second
-    Then uncheck order details insure-for checkbox
+    #Then uncheck order details insure-for checkbox
     Then set order details service to PM Package
-    Then uncheck order details insure-for checkbox
+    #Then uncheck order details insure-for checkbox
     # Then set order details tracking to Signature Required
     Then pause for 2 seconds
     #Then expect orders grid insured value is 0.00

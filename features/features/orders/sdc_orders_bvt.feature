@@ -542,7 +542,7 @@ Feature:  BVT tests for Orders
     Then set order details service to PSG Oversized Package
     Then set order details service to PM Package
     Then check order details insure-for checkbox
-    Then uncheck order details insure-for checkbox
+    #Then uncheck order details insure-for checkbox
     Then check order details insure-for checkbox
     Then set order details insure-for to 11.99
     Then set order details tracking to Signature Required
@@ -579,7 +579,7 @@ Feature:  BVT tests for Orders
     Then set order details service to PMEI Legal Flat Rate Envelope
     Then set order details service to PMI Package/Flat/Thick Envelope
     Then check order details insure-for checkbox
-    Then uncheck order details insure-for checkbox
+    #Then uncheck order details insure-for checkbox
     Then check order details insure-for checkbox
     Then set order details insure-for to 11.99
     Then set order details reference to STMPS111
