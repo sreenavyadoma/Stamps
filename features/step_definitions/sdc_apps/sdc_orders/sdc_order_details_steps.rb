@@ -531,18 +531,23 @@ end
 
 Then /^set order details ship-from to (.+)$/ do |str|
   ship_from = SdcOrders.order_details.ship_from
-  ship_from.selection_element(str)
-  ship_from.drop_down.scroll_into_view.click
-  unless ship_from.selection.scroll_into_view.present?
-    ship_from.drop_down.scroll_into_view.click
-    address = '90245,Automation,1990 E Grand Avenue,El Segundo,California,90245,United States,4157944522'
-    step "add default ship-from shipping address #{address}"
-    ship_from.drop_down.scroll_into_view.click
+  unless ship_from.text_field.text_value.eql? str
+    ship_from.selection_element(str)
+    ship_from.drop_down.scroll_into_view.click unless ship_from.selection.present?
+    if ship_from.selection.present?
+      ship_from.selection.scroll_into_view.click
+    else
+      address = '90245,Automation,1990 E Grand Avenue,El Segundo,California,90245,United States,4157944522'
+      step "add default ship-from shipping address #{address}"
+      ship_from.selection_element(str)
+      ship_from.drop_down.click unless ship_from.selection.present?
+      ship_from.selection.click
+    end
   end
-  ship_from.selection_element(str) unless ship_from.selection.present?
-  ship_from.selection.scroll_into_view.click
-  result = ship_from.text_field.text_value
-  expect(result).to eql str unless str.eql? 'Manage Shipping Addresses...'
+  unless str.eql? 'Manage Shipping Addresses...'
+    result = ship_from.text_field.text_value
+    expect(result).to eql str
+  end
   TestData.hash[:ship_from] = str
 end
 
