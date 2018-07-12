@@ -5,7 +5,7 @@ Feature: Mail Balance
   Scenario: Update Mail Balance After Each Print
     Given a valid user is signed in to Web Apps
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 1
     Then set order details service to PM Package

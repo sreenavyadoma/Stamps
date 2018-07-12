@@ -6,7 +6,7 @@ Feature: Print Media - Shipping Label: 5 ½" x 8 ½"
   @print_dialog_printing_on_5x8_shipping_label
   Scenario:  Shipping Label: 5 ½" x 8 ½"
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PM Package
     Then set order details pounds to 1

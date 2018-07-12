@@ -8,14 +8,14 @@ Feature: 10 orders
 
     # First Class Mail
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 1
     Then set order details service to PM Package
     Then set order details insure-for to 15.00
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 1
     Then set order details service to PM Package
@@ -25,28 +25,28 @@ Feature: 10 orders
     #Priority Mail
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 1
     Then set order details service to PM Package
     # Then set order details tracking to Signature Required
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 1
     Then set order details service to PM Large Package
     # Then set order details tracking to Signature Required
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 1
     Then set order details service to PM Legal Flat Rate Envelope
     # Then set order details tracking to Signature Required
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 1
     Then set order details service to PM Regional Rate Box A
@@ -56,14 +56,14 @@ Feature: 10 orders
     # Priority Mail Express
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 1
     Then set order details service to PME Package/Flat/Thick Envelope
     # Then set order details tracking to Signature Required
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 11
     Then set order details service to PME Padded Flat Rate Envelope
@@ -72,7 +72,7 @@ Feature: 10 orders
     # Media Mail
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 3
     Then set order details service to MM Package/Flat/Thick Envelope
@@ -82,7 +82,7 @@ Feature: 10 orders
     # Parcel Select
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 10
     Then set order details service to PSG Package/Flat/Thick Envelope
@@ -97,14 +97,14 @@ Feature: 10 orders
     # First Class Mail
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 1
     Then set order details service to PM Package
     Then set order details insure-for to 15.00
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 1
     Then set order details service to PM Package
@@ -114,28 +114,28 @@ Feature: 10 orders
     #Priority Mail
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 1
     Then set order details service to PM Package
     # Then set order details tracking to Signature Required
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 1
     Then set order details service to PM Large Package
     # Then set order details tracking to Signature Required
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 1
     Then set order details service to PM Legal Flat Rate Envelope
     # Then set order details tracking to Signature Required
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 1
     Then set order details service to PM Regional Rate Box A
@@ -145,14 +145,14 @@ Feature: 10 orders
     # Priority Mail Express
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 1
     Then set order details service to PME Package/Flat/Thick Envelope
     # Then set order details tracking to Signature Required
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 11
     Then set order details service to PME Padded Flat Rate Envelope
@@ -161,7 +161,7 @@ Feature: 10 orders
     # Media Mail
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 3
     Then set order details service to MM Package/Flat/Thick Envelope
@@ -171,7 +171,7 @@ Feature: 10 orders
     # Parcel Select
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 10
     Then set order details service to PSG Package/Flat/Thick Envelope
@@ -182,14 +182,14 @@ Feature: 10 orders
     # First Class Mail
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 1
     Then set order details service to PM Package
     Then set order details insure-for to 15.00
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 1
     Then set order details service to PM Package
@@ -199,28 +199,28 @@ Feature: 10 orders
     #Priority Mail
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 1
     Then set order details service to PM Package
     # Then set order details tracking to Signature Required
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 1
     Then set order details service to PM Large Package
     # Then set order details tracking to Signature Required
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 1
     Then set order details service to PM Legal Flat Rate Envelope
     # Then set order details tracking to Signature Required
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 1
     Then set order details service to PM Regional Rate Box A
@@ -230,14 +230,14 @@ Feature: 10 orders
     # Priority Mail Express
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 1
     Then set order details service to PME Package/Flat/Thick Envelope
     # Then set order details tracking to Signature Required
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 11
     Then set order details service to PME Padded Flat Rate Envelope
@@ -246,7 +246,7 @@ Feature: 10 orders
     # Media Mail
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details ounces to 3
     Then set order details service to MM Package/Flat/Thick Envelope
@@ -256,7 +256,7 @@ Feature: 10 orders
     # Parcel Select
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details pounds to 10
     Then set order details service to PSG Package/Flat/Thick Envelope

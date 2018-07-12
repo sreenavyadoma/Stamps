@@ -6,7 +6,7 @@ Feature: Print 1 Intl CP72 label on sdc1200 - right side
   @print_layout_cp72_sdc1200_single_ply
   Scenario: Print 1 Intl CP72 label on sdc1200 - right side
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
       | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI PFTE |  sdc1200 Right Side 1  | random       | random           | random | random  | random      | Costa Rica | random  | random  |

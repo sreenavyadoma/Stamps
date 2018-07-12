@@ -8,7 +8,7 @@ Feature: Change Starting Label Position
   Scenario:  Print Modal Starting Label
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PME Padded Flat Rate Envelope
     Then set order details ounces to 1
@@ -20,7 +20,7 @@ Feature: Change Starting Label Position
     Then click print modal print button
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PME Padded Flat Rate Envelope
     Then set order details ounces to 1

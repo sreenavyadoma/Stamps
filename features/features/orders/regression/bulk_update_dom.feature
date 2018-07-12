@@ -8,7 +8,7 @@ Feature: Bulk Update Domestic
 
     # Adding 1st order
 #    Then add new order
-#    #Then set order details ship-from to Automation - El Segundo, CA
+#    ##Then set order details ship-from to Automation - El Segundo, CA
 #    Then set order details ship-to international address to
 #      | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country   | phone   |  email  |
 #      | PMEI LFRE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
@@ -32,7 +32,7 @@ Feature: Bulk Update Domestic
 
     # Add 2nd order
 #    Then add order 2
-#    #Then set order details ship-from to Automation - El Segundo, CA
+#    ##Then set order details ship-from to Automation - El Segundo, CA
 #    Then set order details ship-to to random address between zone 8
 #    Then set order details service to PM Large Package
 #    Then set order details pounds to 2
@@ -127,7 +127,7 @@ Feature: Bulk Update Domestic
 
     #Adding 1st order
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address in zone 1
     Then set order details service to PM Package
     Then set order details pounds to 1
@@ -140,12 +140,12 @@ Feature: Bulk Update Domestic
     Then set order details insure-for to 0.00
     Then increment order details insure-for by 7
     Then expect order details insure-for is 7.00
-    Then uncheck order details insure-for checkbox
+    #Then uncheck order details insure-for checkbox
     Then expect order details insure-for is 0.00
     Then expect Order Details Ship Cost Total is correct
     #Add 2nd order
     Then add order 2
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 8
     Then set order details service to PM Large Package
     Then set order details pounds to 2
@@ -264,14 +264,14 @@ Feature: Bulk Update Domestic
   Scenario: Bulk Update Domestic
     #Adding 1st order
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address in zone 1
     Then set order details service to PM Package
     Then set order details pounds to 1
 
     #Adding 2nd order
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address in zone 1
     Then set order details service to PM Package
     Then set order details pounds to 1

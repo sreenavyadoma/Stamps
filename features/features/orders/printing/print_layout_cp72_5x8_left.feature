@@ -6,7 +6,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5 - left side
   @print_layout_cp72_5x8_left
   Scenario: Print 1 Intl CP72 label on 5.5x8.5 - left side
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
       | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFR Envelope | 5.5x8.5  | random           | random           | random | random  | random      | Chile | random  | random  |

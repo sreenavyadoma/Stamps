@@ -7,7 +7,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
 
   Scenario: Print - Shipping Label: 5 ½" x 8 ½"
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 5 and 8
     Then set order details ounces to 2
     Then set order details service to PM Package
@@ -26,7 +26,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
 
   Scenario: Print - Shipping Label: 8 ½" x 11" Paper
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 5 and 8
     Then set order details ounces to 2
     Then set order details service to PM Package
@@ -39,7 +39,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then click print modal print button
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 5 and 8
     Then set order details ounces to 2
     Then set order details service to PM Package
@@ -51,7 +51,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then click print modal print button
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 5 and 8
     Then set order details ounces to 2
     Then set order details service to PM Package
@@ -64,7 +64,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
 
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 5 and 8
     Then set order details ounces to 2
     Then set order details service to PM Package
@@ -76,7 +76,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then click print modal print button
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 5 and 8
     Then set order details ounces to 2
     Then set order details service to PM Package
@@ -90,7 +90,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
 
   Scenario: Print - Shipping Label: Stamps.com SDC-1200, 4 ¼" x 6 ¾"
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 5 and 8
     Then set order details ounces to 2
     Then set order details service to PM Package
@@ -104,7 +104,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
 
   Scenario: Print - Shipping Label: 5 ½" x 8 ½"
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 5 and 8
     Then set order details ounces to 2
     Then set order details service to PM Package
@@ -118,7 +118,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
 
   Scenario: Print - Roll - 4" x 6" Shipping Label
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 5 and 8
     Then set order details ounces to 2
     Then set order details service to PM Package
@@ -132,7 +132,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
 
   Scenario: Print - Roll 418x614
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 5 and 8
     Then set order details ounces to 2
     Then set order details service to PM Package
@@ -147,7 +147,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
   Scenario: Multi Order Printing - Shipping Label: 5 ½" x 8 ½"
     #Create order 1
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 5 and 8
     Then set order details ounces to 2
     Then set order details service to PM Package
@@ -158,7 +158,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
 
     #Create order 2
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 5 and 8
     Then set order details ounces to 2
     Then set order details service to PM Package
@@ -169,7 +169,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
 
     #Create order 3
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 5 and 8
     Then set order details ounces to 2
     Then set order details service to PM Package
@@ -190,7 +190,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
 
   Scenario:  User prints postage for CN22 Shipping Label 5.5 x 8.5
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to domestic address to
       | full_name            | company                 | street_address1      | street_address2 |  city          | state | zip        | country       | phone  |  email |
       | Jessie Joe      | The CN 22 House         | PSC 819 BOX 1       |                  | FPO           | AE    | 09645-0001 | United States |        |        |
@@ -209,7 +209,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
 
   Scenario:  User prints postage for CP72 Shipping Label 5.5 x 8.5
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to domestic address to
       | full_name            | company                 | street_address1      | street_address2| city          | state | zip        | country       | phone  |  email |
       | Tammmy Moo      | The CP72 House          | Unit 15324          |                 | APO           | AP    | 96205-5324 | United States |        |        |
