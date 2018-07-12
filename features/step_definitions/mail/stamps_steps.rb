@@ -37,13 +37,14 @@ Then /^set print form serial number to (.*)$/ do |str|
 end
 
 Then /^[Ss]et Print form Amount to (\d*.?\d+)$/ do |value|
-  TestData.hash[:stamp_amount] = value
+  # TestData.hash[:stamp_amount] = value
+
   pending
     #stamps.mail.print_form.stamp_amount.set(TestData.hash[:stamp_amount])
 end
 
 Then /^[Ss]et Print form Quantity to (\d+)$/ do |value|
-  TestData.hash[:quantity] = value
+  # TestData.hash[:quantity] = value
   pending
     #stamps.mail.print_form.quantity.set(TestData.hash[:quantity])
 end
@@ -113,13 +114,13 @@ end
 
 Then /^select print form calculate postage amount$/ do
   SdcMail.print_form.calculate_postage_amount.select
-  expect(SdcMail.print_form.calculate_postage_amount.selected?).to be_truthy, "Calculate postage amount is not selected!"
+  expect(SdcMail.print_form.calculate_postage_amount.selected?).to be_truthy
 end
 
 Then /^select print form specify postage amount$/ do
   step 'show advanced options'
   SdcMail.print_form.specify_postage_amount.select
-  expect(SdcMail.print_form.specify_postage_amount.selected?).to be_truthy, "Specify postage amount is not selected!"
+  expect(SdcMail.print_form.specify_postage_amount.selected?).to be_truthy
 end
 
 Then /^set print form stamp amount ([\d.]+)$/ do |value|
@@ -151,10 +152,10 @@ end
 
 Then /^check print form print all$/ do
   SdcMail.print_form.print_all.check
-  expect(SdcMail.print_form.print_all.checked?).to be_truthy, "Print All is not checked!"
+  expect(SdcMail.print_form.print_all.checked?).to be_truthy
 end
 
 Then /^uncheck print form print all$/ do
   SdcMail.print_form.print_all.uncheck
-  expect(SdcMail.print_form.print_all.checked?).to be_falsey, "Print All is not checked!"
+  expect(SdcMail.print_form.print_all.checked?).to be_falsey
 end
