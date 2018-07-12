@@ -52,6 +52,7 @@ Then /^[Ss]et PAM Customer Search page username from parameter file$/ do
 end
 
 Then /^Orders: Sign-in using username and password from parameter file$/ do
-  stamps.orders.landing_page.sign_in(TestData.hash[:username], TestData.hash[:password])
+  pending
+  #stamps.orders.landing_page.sign_in(TestData.hash[:username], TestData.hash[:password])
 end
 
