@@ -530,19 +530,20 @@ Then /^set order details reference to (.*)$/ do |str|
 end
 
 Then /^set order details ship-from to (.+)$/ do |str|
-  TestData.hash[:ship_from] = str
   ship_from = SdcOrders.order_details.ship_from
   ship_from.selection_element(str)
   ship_from.drop_down.scroll_into_view.click
   unless ship_from.selection.scroll_into_view.present?
     ship_from.drop_down.scroll_into_view.click
-    step "on manage shipping address modal, add address from string 90245,Automation,1990 E Grand Avenue,El Segundo,California,90245,United States,4157944522"
+    address = '90245,Automation,1990 E Grand Avenue,El Segundo,California,90245,United States,4157944522'
+    step "add default ship-from shipping address #{address}"
     ship_from.drop_down.scroll_into_view.click
   end
   ship_from.selection_element(str) unless ship_from.selection.present?
   ship_from.selection.scroll_into_view.click
-  actual_result = ship_from.text_field.text_value
-  expect(actual_result).to eql str unless str == 'Manage Shipping Addresses...'
+  result = ship_from.text_field.text_value
+  expect(result).to eql str unless str.eql? 'Manage Shipping Addresses...'
+  TestData.hash[:ship_from] = str
 end
 
 Then /^expect order details associated item (\d+) qty is (?:correct|(\d+))$/ do |item, str|
@@ -619,10 +620,11 @@ Then /^expect order details is present$/ do
   expect(order_details).to be_present
 end
 
-Then /^expect order details ship-from is (?:correct|(.*))$/ do
+Then /^expect order details ship-from is (?:correct|(.*))$/ do |str|
   step 'show order ship-to details'
+  str ||= TestData.hash[:ship_from]
   result = SdcOrders.order_details.ship_from.text_field.text_value
-  expect(result).to eql(TestData.hash[:ship_from])
+  expect(result).to eql(str)
 end
 
 Then /^expect order details reference number is (?:correct|(.*))$/ do |str|

@@ -134,7 +134,7 @@ end
 
 # this step step def is only for private use - DO NOT use it in any feature file
 # address = '90245,Automation,1990 E Grand Avenue,El Segundo,California,90245,United States,4157944522'
-Then /^on manage shipping address modal, add address from string (.+)$/ do |ship_from|
+Then /^add default ship-from shipping address (.+)$/ do |ship_from|
   ship_from_zip, company, street_address, city, state, zip, phone = ship_from.split(',')
   TestData.hash[:ship_from_zip] = ship_from_zip
   TestData.hash[:company] = company

@@ -53,22 +53,22 @@ module SdcGrid
     end
 
     def column_xpath(column)
-      column = column_names[column] if column.class == Symbol
+      column = column_names[column] if column.class.eql?(Symbol)
       "//span[text()='#{column}']"
     end
 
     def header_element(column)
-      xpath = column_xpath(column)
-      page_object("header_element_#{column}") { { xpath: xpath } }
+      if col_sym.eql? :checkbox
+        xpath = '//div[contains(@class, "x-column-header-checkbox")]'
+        page_object(:header_element_checkbox) { { xpath: xpath } }
+      else
+        xpath = column_xpath(column)
+        page_object("header_element_#{column}") { { xpath: xpath } }
+      end
     end
 
-    def scroll_to(col_sym)
-      field = if col_sym.eql? :checkbox
-                xpath = '//div[contains(@class, "x-column-header-checkbox")]'
-                page_object(:checkbox) { { xpath: xpath } }
-              else
-                header_element(col_sym)
-              end
+    def scroll_to(column)
+      field = header_element(column)
       field.scroll_into_view
       field
     end
@@ -105,7 +105,9 @@ module SdcGrid
       column_num = column_number(column).to_s
       xpath = "#{grid_container}//table[#{row.to_s}]//tbody//td[#{column_num}]//div"
       coordinates = "col#{column}xrow#{row}"
-      page_object(coordinates.to_sym) { { xpath: xpath } }
+      element = page_object(coordinates.to_sym) { { xpath: xpath } }
+      element.scroll_into_view
+      element
     end
 
     def grid_field_column_name(column, row)
@@ -132,7 +134,7 @@ module SdcGrid
           set(key, index + 1)
 
           if key.eql?(name)
-            scroll_to(name)
+            #scroll_to(name)
             col_num = get(name)
             return col_num
           end
@@ -222,12 +224,12 @@ module SdcGrid
     end
 
     def header_text
-      element = scroll_to(@column)
+      element = scroll_into_view
       element.text_value
     end
 
     def present?
-      element = scroll_to(@column)
+      element = scroll_into_view
       element.present?
     end
 

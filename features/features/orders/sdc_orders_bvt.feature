@@ -204,7 +204,7 @@ Feature:  BVT tests for Orders
     Then add order details item 1, qty 1, id Item 1 SKU, description Item 1 Description
 
   #Verify Single Order Details form was saved in ShipStation
-    #Then expect order details ship-from is correct
+    Then expect order details ship-from is correct
     Then expect orders grid date printed is correct
     Then expect orders grid ship date is correct
     Then expect orders grid service is correct
@@ -231,6 +231,7 @@ Feature:  BVT tests for Orders
     Then expect order details tracking cost is correct
     Then expect order details reference number is correct
 
+    Then expect orders grid service ship-from is correct
     Then expect orders grid store is Manual Orders
     Then expect orders grid order id is correct
     Then expect orders grid ship cost is correct
@@ -355,6 +356,7 @@ Feature:  BVT tests for Orders
     Then expect Customs Total Value is correct
     Then close customs information form
 
+    Then expect orders grid service ship-from is correct
     Then expect orders grid recipient is correct
     Then expect orders grid company is correct
     Then expect orders grid country is correct
