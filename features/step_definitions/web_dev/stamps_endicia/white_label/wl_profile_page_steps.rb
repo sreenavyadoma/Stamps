@@ -2,6 +2,7 @@
 Then /^WL: set profile page email to (?:random value|(.*))$/ do |str|
   email = WhiteLabel.profile_page.email
   email.wait_until_present(timeout: 30)
+  TestData.hash[:atg_promotion] =  WhiteLabel.choose_supplies.atg_promotion
   if SdcEnv.usr
     sleep 1
     email.set(TestData.hash[:email]=(str.nil?)?(SdcEnv.usr) : str)

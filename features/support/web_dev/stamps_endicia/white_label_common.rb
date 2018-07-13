@@ -21,7 +21,7 @@ module WhiteLabel
     def source_id_query(source_id)
       if source_id.nil?
         source_id = WhiteLabel.db_connection.execute(
-            "select TOP 1 *
+          "select TOP 1 *
           from [dbo].sdct_SW_Source as sw_source
           inner join [dbo].sdct_SW_Offer as sw_offer on sw_offer.OfferId = sw_source.OfferId
           ORDER BY NEWID()")
@@ -30,7 +30,7 @@ module WhiteLabel
         end
       else
         source_id = WhiteLabel.db_connection.execute(
-            "select *
+          "select *
           from [dbo].sdct_SW_Source as sw_source
           inner join [dbo].sdct_SW_Offer as sw_offer on sw_offer.OfferId = sw_source.OfferId
           where sw_source.SourceId = '#{source_id}'")

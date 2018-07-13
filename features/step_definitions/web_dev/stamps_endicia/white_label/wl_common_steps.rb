@@ -7,11 +7,10 @@ Then /^WL: close stamps website db connection$/ do
 end
 
 Then /^WL: navigates to default registration page for stamps with the following source id (?:random value|(.*))$/ do |str|
+  step 'WL: establish stamps website db connection'
+  common_page = WhiteLabel.common_page
   if str.nil?
-    common_page = WhiteLabel.common_page
-    step 'WL: establish stamps website db connection'
-    TestData.hash[:source_id] , TestData.hash[:content]  = common_page.source_id_query('')
-    step 'WL: close stamps website db connection'
+    TestData.hash[:source_id] , TestData.hash[:content]  = common_page.source_id_query(nil)
     if TestData.hash[:content].include? 'SecurityQuestionsBeforeRegistration'
       hash = Hash.from_xml(TestData.hash[:content])
       TestData.hash[:security_questions_before_registration]  = hash['root']['SecurityQuestionsBeforeRegistration']
@@ -20,9 +19,16 @@ Then /^WL: navigates to default registration page for stamps with the following 
     end
   else
     TestData.hash[:source_id] , TestData.hash[:content]  = common_page.source_id_query(str)
+    if TestData.hash[:content].include? 'SecurityQuestionsBeforeRegistration'
+      hash = Hash.from_xml(TestData.hash[:content])
+      TestData.hash[:security_questions_before_registration]  = hash['root']['SecurityQuestionsBeforeRegistration']
+    else
+      TestData.hash[:security_questions_before_registration] = 'true'
+    end
   end
 
-  SDCWWebsite.visit
+  step 'WL: close stamps website db connection'
+  #SDCWWebsite.visit
   common_page.stamps_logo.wait_until_present(timeout: 10)
   common_page.get_started.click!
 
