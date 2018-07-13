@@ -6,17 +6,20 @@ Then /^WL: close stamps website db connection$/ do
   WhiteLabel.db_connection.close
 end
 
-Then /^WL: navigates to default registration page for stamps$/ do
-  common_page = WhiteLabel.common_page
-  step 'WL: establish stamps website db connection'
-  TestData.hash[:source_id] , TestData.hash[:content]  = common_page.source_id_query
-  step 'WL: close stamps website db connection'
-
-  if TestData.hash[:content].include? 'SecurityQuestionsBeforeRegistration'
-    hash = Hash.from_xml(TestData.hash[:content])
-    TestData.hash[:security_questions_before_registration]  = hash['root']['SecurityQuestionsBeforeRegistration']
+Then /^WL: navigates to default registration page for stamps with the following source id (?:random value|(.*))$/ do |str|
+  if str.nil?
+    common_page = WhiteLabel.common_page
+    step 'WL: establish stamps website db connection'
+    TestData.hash[:source_id] , TestData.hash[:content]  = common_page.source_id_query('')
+    step 'WL: close stamps website db connection'
+    if TestData.hash[:content].include? 'SecurityQuestionsBeforeRegistration'
+      hash = Hash.from_xml(TestData.hash[:content])
+      TestData.hash[:security_questions_before_registration]  = hash['root']['SecurityQuestionsBeforeRegistration']
+    else
+      TestData.hash[:security_questions_before_registration] = 'true'
+    end
   else
-    TestData.hash[:security_questions_before_registration] = 'true'
+    TestData.hash[:source_id] , TestData.hash[:content]  = common_page.source_id_query(str)
   end
 
   SDCWWebsite.visit

@@ -55,7 +55,7 @@ module WhiteLabel
     page_object(:addr_std_addr_orig) { {xpah: '//div[@id="addrOrig"]/p[2]'} }
     page_object(:addr_std_addr_new_lbl) { {xpah: '//div[@id="addrNew"]/p[1]'} }
     page_object(:addr_std_addr_new) { {xpah: '//div[@id="addrNew"]/p[2]'} }
-    button(:addr_std_continue) {{class: ['btnAddrValOkay']}}
+    button(:addr_std_continue) {{id: 'btnAddrValOkay'}}
     button(:addr_std_cancel) {{xpath: '//div[@class="modal-footer"]/button[1]'}}
     page_objects(:addr_std_close, index: 1) {{xpath: '//button[@class="close"]'}}
 
@@ -78,6 +78,11 @@ module WhiteLabel
   class ChooseSupplies < SdcPage
     page_object(:cs_header) { {xpath: '//h1[(contains(text(), "Customize your Welcome Kit"))]'} }
     page_object(:place_order) { {id: 'mincartButtonTopDpawr'}}
+
+   def atg_promotion
+      SdcPage.browser.execute_script('return WR.model.session.atgPromotion')
+   end
+
   end
 
   class << self

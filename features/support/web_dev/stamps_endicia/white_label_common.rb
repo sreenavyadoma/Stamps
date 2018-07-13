@@ -18,21 +18,26 @@ module WhiteLabel
       page_objects(name, index: index) { { xpath: "//span[contains(text(), \"#{str}\")]" } }
     end
 
-    def source_id_query
-     source_id = WhiteLabel.db_connection.execute(
-         "select TOP 1 *
+    def source_id_query(source_id)
+      if source_id.nil?
+        source_id = WhiteLabel.db_connection.execute(
+            "select TOP 1 *
           from [dbo].sdct_SW_Source as sw_source
           inner join [dbo].sdct_SW_Offer as sw_offer on sw_offer.OfferId = sw_source.OfferId
           ORDER BY NEWID()")
-         # "select *
-         #  from [dbo].sdct_SW_Source as sw_source
-         #  inner join [dbo].sdct_SW_Offer as sw_offer on sw_offer.OfferId = sw_source.OfferId
-         #  where sw_source.SourceId = 'si00001331'")
-
-      source_id.each do |item|
+        source_id.each do |item|
           return item['SourceId'], item['Content']
+        end
+      else
+        source_id = WhiteLabel.db_connection.execute(
+            "select *
+          from [dbo].sdct_SW_Source as sw_source
+          inner join [dbo].sdct_SW_Offer as sw_offer on sw_offer.OfferId = sw_source.OfferId
+          where sw_source.SourceId = '#{source_id}'")
+        source_id.each do |item|
+          return item['SourceId'], item['Content']
+        end
       end
-
     end
 
   end

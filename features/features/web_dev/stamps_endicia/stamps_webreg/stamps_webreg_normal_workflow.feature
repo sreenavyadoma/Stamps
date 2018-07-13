@@ -5,7 +5,7 @@ Feature: Stamps WebReg: Normal Workflow
   @sdcwr_normal_workflow
   Scenario: Stamps WebReg: Normal Workflow
    # Profile Page
-    Then WL: navigates to default registration page for stamps
+    Then WL: navigates to default registration page for stamps with the following source id random value
     Then WL: set profile page email to random value
     Then WL: set profile page username to random value
     Then WL: set profile page password to random value
@@ -30,7 +30,7 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: select membership page state FL
     Then WL: blur_out on membership page
     Then WL: set membership page zip to 34451
-    Then WL: set membership page phone to 956656658
+    Then WL: set membership page phone to 9566566585456
 
 
 
@@ -45,6 +45,7 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: click membership page submit button
 
     #Address Standardized
+    Then WL: check if address standardized is present then click continue
 
     #postage meter address
     Then WL: check if postage meter address is present then set the value

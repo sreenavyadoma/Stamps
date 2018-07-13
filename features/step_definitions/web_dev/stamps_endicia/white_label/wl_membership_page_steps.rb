@@ -126,6 +126,17 @@ Then /^WL: set membership page personal info to(?: a |)(?: random info |)(?:to|i
 
 end
 
+
+Then /^WL: check if address standardized is present then click continue$/ do
+  addr_std_continue = WhiteLabel.membership_page.addr_std_continue
+  addr_std_continue.wait_until_present(timeout: 5) rescue false
+  if addr_std_continue.present? == true
+    addr_std_continue.click
+  else
+    #ignore
+  end
+end
+
 Then /^WL: check if postage meter address is present then set the value$/ do
   meter_street = WhiteLabel.membership_page.meter_street
   meter_street.wait_until_present(timeout: 5) rescue false
