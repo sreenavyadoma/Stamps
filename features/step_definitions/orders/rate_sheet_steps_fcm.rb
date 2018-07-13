@@ -271,7 +271,8 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
           # Write tracking to spreadsheet
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:tracking_selected]] = TestData.hash[:tracking]
           # sleep(0.525)
-          step 'wait for js to stop'
+          # step 'wait for js to stop'
+          step 'pause for 1 second'
           # get total cost actual value from UI
           step 'Save Order Details data' if SdcEnv.sdc_app == :orders
           step 'save print form total cost' if SdcEnv.sdc_app == :mail
