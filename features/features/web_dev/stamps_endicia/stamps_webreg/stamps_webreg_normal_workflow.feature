@@ -20,21 +20,7 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: click profile page continue button
 
     #Membership Page
-    #Then WL: set membership page personal info to random info between zone 1 and 4
-    Then WL: set membership page first name to abc
-    Then WL: set membership page last name to abc
-    Then WL: set membership page company to abc
-    Then WL: set membership page address to PO Box 2951 US-41
-    Then WL: blur_out on membership page
-    Then WL: set membership page city to Inverness
-    Then WL: select membership page state FL
-    Then WL: blur_out on membership page
-    Then WL: set membership page zip to 34451
-    Then WL: set membership page phone to 9566566585456
-
-
-
-
+    Then WL: set membership page personal info to random info between zone 1 and 4
     Then WL: set membership page cardholder's name to random value
     Then WL: set membership page credit card number to default value
     Then WL: select membership page credit card month Dec (12)
