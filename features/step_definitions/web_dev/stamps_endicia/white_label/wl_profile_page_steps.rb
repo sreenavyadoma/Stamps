@@ -1,10 +1,12 @@
 
 Then /^WL: set profile page email to (?:random value|(.*))$/ do |str|
   email = WhiteLabel.profile_page.email
-  email.wait_until_present(timeout: 10)
+  email.wait_until_present(timeout: 30)
   if SdcEnv.usr
+    sleep 1
     email.set(TestData.hash[:email]=(str.nil?)?(SdcEnv.usr) : str)
   else
+    sleep 1
     email.set(TestData.hash[:email]=(str.nil?)?(TestHelper.rand_email) : str)
   end
 end

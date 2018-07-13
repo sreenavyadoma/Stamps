@@ -7,12 +7,15 @@ Feature: Stamps WebReg: Normal Workflow
    # Profile Page
     Then WL: navigates to default registration page for stamps
     Then WL: set profile page email to random value
-    Then WL: set profile page username to random value
+    Then WL: set profile page username to webreg01
     Then WL: set profile page password to random value
     Then WL: set profile page re-type password to same as previous password
     Then WL: set profile page survey question to Individual/Home Office
     Then WL: set profile page how did you hear about us? to Television Commercial
     Then WL: set profile page promo code to PR33-NH77
+
+    #Security Question before registration
+    Then WL: if security question is present before registration then set the values
 
     Then WL: click profile page continue button
 
@@ -27,16 +30,15 @@ Feature: Stamps WebReg: Normal Workflow
 
     Then WL: click membership page submit button
 
+    #Username  Taken
+    Then WL: if username taken is present then set username to random value
+    Then WL: click username taken continue button
+
     #Choose Supplies Page
     Then WL: expect customize your welcome kit is present
     Then WL: click choose supplies page place order button
 
-    #Security Question
-    Then WL: select security questions first security question What is your mother's maiden name?
-    Then WL: set security questions first security answer to random value
-    Then WL: select security questions second security question What is your pet's name?
-    Then WL: set security questions second security answer to random value
-
-    Then WL: click security questions get stared button
+    #Security Question after registration
+    Then WL: if security question is present after registration then set the values
 
     Then WL: expect user is singed in to print
