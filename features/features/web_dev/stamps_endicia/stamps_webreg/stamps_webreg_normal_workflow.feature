@@ -34,6 +34,8 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: if username taken is present then set username to random value
     Then WL: click username taken continue button
 
+    #
+
     #Choose Supplies Page
     Then WL: expect customize your welcome kit is present
     Then WL: click choose supplies page place order button

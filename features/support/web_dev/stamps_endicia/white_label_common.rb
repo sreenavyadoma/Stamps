@@ -14,14 +14,6 @@ module WhiteLabel
     text_field(:second_secret_answer, tag: :text_field, required: true) { { id: 'secretAnswer2' } }
     button(:sq_get_started) { { id: 'startPrinting' } }
 
-    #username taken
-    page_object(:username_taken_header) { {xpath: '//h3[(contains(text(), "Username Taken"))]'} }
-    page_objects(:username_taken_p1, index: 0) { {id: 'prev-username'} }
-    page_objects(:username_taken_p2, index: 1) { {id: 'prev-username'} }
-    text_field(:new_username, tag: :text_field, required: true) { { id: 'newUsername' } }
-    button(:username_taken_continue_btn) {{id: 'btnUserNameTakenContinue'}}
-    button(:username_taken_close_btn) {{class: ['close']}}
-
     def dropdown_selection(str, index, name = :dropdown_element)
       page_objects(name, index: index) { { xpath: "//span[contains(text(), \"#{str}\")]" } }
     end

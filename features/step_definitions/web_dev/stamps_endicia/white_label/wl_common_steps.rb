@@ -80,21 +80,6 @@ Then /^WL: if security question is present after registration then set the value
 end
 
 
-Then /^WL: if username taken is present then set username to (?:random value|(.*))$/ do |str|
-  sleep 10
-  if WhiteLabel.common_page.new_username.present? == true
-    WhiteLabel.common_page.new_username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
-  else
-    #ignore
-  end
-end
-
-Then /^Then WL: click username taken continue button$/ do
-  WhiteLabel.common_page.username_taken_continue_btn.click
-end
-
-
-
 
 Then /^WL: expect user is singed in to print$/ do
   signed_in_user =  SdcWebsite.navigation.user_drop_down.signed_in_user

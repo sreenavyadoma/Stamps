@@ -40,6 +40,23 @@ module WhiteLabel
     button(:back) {{id: 'prev'}}
     button(:submit) {{id: 'next'}}
 
+    #username taken
+    page_object(:username_taken_header) { {xpath: '//h3[(contains(text(), "Username Taken"))]'} }
+    page_objects(:username_taken_p1, index: 0) { {id: 'prev-username'} }
+    page_objects(:username_taken_p2, index: 1) { {id: 'prev-username'} }
+    text_field(:new_username, tag: :text_field, required: true) { { id: 'newUsername' } }
+    button(:username_taken_continue_btn) {{id: 'btnUserNameTakenContinue'}}
+    button(:username_taken_close_btn) {{class: ['close']}}
+
+    #postage meter address
+    page_object(:meter_header) { {xpath: '//h1[(contains(text(), "An additional postage meter address is required"))]'} }
+    page_object(:meter_p) { {xpath: '//div[@class="col-xs-12"]/p'} }
+    text_field(:meter_street, tag: :text_field, required: true) { { id: 'meterStreet' } }
+    text_field(:meter_city, tag: :text_field, required: true) { { id: 'meterCity' } }
+    page_object(:state) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="meterState"]'}}
+    text_field(:meter_city, tag: :text_field, required: true) { { id: 'meterZip' } }
+
+
     def dropdown_selection(str, name = :dropdown_element)
       page_object(name) { {xpath: "//span[text()='#{str}']"} }
     end
