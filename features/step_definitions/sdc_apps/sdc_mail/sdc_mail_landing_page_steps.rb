@@ -27,14 +27,14 @@ Then /^sign-in to mail$/ do
   step "set Mail username to #{TestData.hash[:username]}"
   step "set Mail password to #{TestData.hash[:password]}"
 
-  if SdcEnv.browser
-    step 'click the Sign In button in Mail'
-    step 'close whats new modal in mail'
-    step 'expect user is signed in'
-  elsif SdcEnv.ios
+  if SdcEnv.ios
     raise StandardError, 'Not Implemented'
   elsif SdcEnv.android
     raise StandardError, 'Not Implemented'
+  else
+    step 'click the Sign In button in Mail'
+    step 'close whats new modal in mail'
+    step 'expect user is signed in'
   end
 end
 
@@ -100,16 +100,16 @@ end
 Then /^[Cc]lick the [Ss]ign [Ii]n button in [Mm]ail$/ do
   modal = SdcWebsite.navigation.mail_sign_in_modal
   #verifying_account_info = SdcMail.verifying_account_info
-  if SdcEnv.browser
+  if SdcEnv.ios
+    raise StandardError, 'Not Implemented'
+  elsif SdcEnv.android
+    raise StandardError, 'Not Implemented'
+  else
     modal.sign_in_link.wait_until_present(timeout: 3)
     modal.sign_in_link.hover unless modal.sign_in.present?
     modal.sign_in.click
     SdcMail.verifying_account_info.safe_wait_until_present(timeout: 3)
     SdcMail.verifying_account_info.wait_while_present(timeout: 12)
-  elsif SdcEnv.ios
-    raise StandardError, 'Not Implemented'
-  elsif SdcEnv.android
-    raise StandardError, 'Not Implemented'
   end
 end
 
