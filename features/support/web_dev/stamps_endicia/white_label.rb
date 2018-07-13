@@ -48,12 +48,24 @@ module WhiteLabel
     button(:username_taken_continue_btn) {{id: 'btnUserNameTakenContinue'}}
     button(:username_taken_close_btn) {{class: ['close']}}
 
+    #address standardized
+    page_object(:addr_std_header) { {xpath: '//h3[(contains(text(), "Your address has been standardized"))]'} }
+    page_object(:addr_std_p) { {id: 'instructions'} }
+    page_object(:addr_std_addr_orig_lbl) { {xpah: '//div[@id="addrOrig"]/p[1]'} }
+    page_object(:addr_std_addr_orig) { {xpah: '//div[@id="addrOrig"]/p[2]'} }
+    page_object(:addr_std_addr_new_lbl) { {xpah: '//div[@id="addrNew"]/p[1]'} }
+    page_object(:addr_std_addr_new) { {xpah: '//div[@id="addrNew"]/p[2]'} }
+    button(:addr_std_continue) {{class: ['btnAddrValOkay']}}
+    button(:addr_std_cancel) {{xpath: '//div[@class="modal-footer"]/button[1]'}}
+    page_objects(:addr_std_close, index: 1) {{xpath: '//button[@class="close"]'}}
+
+
     #postage meter address
     page_object(:meter_header) { {xpath: '//h1[(contains(text(), "An additional postage meter address is required"))]'} }
     page_object(:meter_p) { {xpath: '//div[@class="col-xs-12"]/p'} }
     text_field(:meter_street, tag: :text_field, required: true) { { id: 'meterStreet' } }
     text_field(:meter_city, tag: :text_field, required: true) { { id: 'meterCity' } }
-    page_object(:state) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="meterState"]'}}
+    page_object(:meter_state) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="meterState"]'}}
     text_field(:meter_city, tag: :text_field, required: true) { { id: 'meterZip' } }
 
 

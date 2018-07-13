@@ -7,7 +7,7 @@ Feature: Stamps WebReg: Normal Workflow
    # Profile Page
     Then WL: navigates to default registration page for stamps
     Then WL: set profile page email to random value
-    Then WL: set profile page username to webreg01
+    Then WL: set profile page username to random value
     Then WL: set profile page password to random value
     Then WL: set profile page re-type password to same as previous password
     Then WL: set profile page survey question to Individual/Home Office
@@ -32,9 +32,7 @@ Feature: Stamps WebReg: Normal Workflow
 
     #Username  Taken
     Then WL: if username taken is present then set username to random value
-    Then WL: click username taken continue button
 
-    #
 
     #Choose Supplies Page
     Then WL: expect customize your welcome kit is present

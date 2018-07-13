@@ -127,9 +127,16 @@ Then /^WL: set membership page personal info to(?: a |)(?: random info |)(?:to|i
 end
 
 Then /^WL: if username taken is present then set username to (?:random value|(.*))$/ do |str|
-  sleep 10
+  # sleep 3
+  # if WhiteLabel.membership_page.new_username.present? == true
+  #   WhiteLabel.membership_page.new_username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
+  # else
+  #   #ignore
+  # end
+  WhiteLabel.membership_page.new_username.wait_until_present(timeout: 3) rescue false
   if WhiteLabel.membership_page.new_username.present? == true
     WhiteLabel.membership_page.new_username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
+    step 'WL: click username taken continue button'
   else
     #ignore
   end

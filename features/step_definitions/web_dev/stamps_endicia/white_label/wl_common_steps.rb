@@ -82,14 +82,20 @@ end
 
 
 Then /^WL: expect user is singed in to print$/ do
-  signed_in_user =  SdcWebsite.navigation.user_drop_down.signed_in_user
-  5.times do
-    if signed_in_user.present? == true
-      break
-    end
+  if SdcPage.browser.alert.exists?
+    SdcPage.browser.alert.close
   end
-  SdcPage.browser.refresh
-  signed_in_user.wait_until_present(timeout: 30)
+  signed_in_user =  SdcWebsite.navigation.user_drop_down.signed_in_user
+  signed_in_user.wait_until_present(timeout: 10) rescue false
+  if  signed_in_user.present? == false
+    SdcPage.browser.refresh
+  end
+  WhiteLabel.choose_supplies.place_order.wait_until_present(timeout: 5) rescue false
+  if WhiteLabel.choose_supplies.place_order.present? == true
+    WhiteLabel.choose_supplies.place_order.wait_until_present(timeout: 10)
+    WhiteLabel.choose_supplies.place_order.click!
+  end
+  signed_in_user.wait_until_present(timeout: 60)
   expect(signed_in_user.text_value).to include(TestData.hash[:username])
 end
 
