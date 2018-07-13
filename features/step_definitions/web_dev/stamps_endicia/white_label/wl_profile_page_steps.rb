@@ -45,9 +45,10 @@ Then /^WL: set profile page how did you hear about us\? to (.*)$/ do |str|
   expect(profile_page.referrer_name.attribute_value('title').strip).to eql str
 end
 
-Then /^WL: set profile page promo code to (?:an empty string|(.*))$/ do |str|
+Then /^WL: set profile page promo code to (?:source id promo code|(.*))$/ do |str|
   step 'WL: show profile page promo code textbox'
-  WhiteLabel.profile_page.promo_code_textbox.set(TestData.hash[:promo_code]=(str.nil?)?'' : str)
+  profile_page  = WhiteLabel.profile_page
+  profile_page.promo_code_textbox.set(TestData.hash[:promo_code]=(str.nil?)? profile_page.promo_code_textbox.text_value : str)
 end
 
 Then /^WL: show profile page promo code textbox$/ do

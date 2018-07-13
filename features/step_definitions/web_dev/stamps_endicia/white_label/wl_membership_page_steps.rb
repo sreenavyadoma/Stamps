@@ -126,16 +126,60 @@ Then /^WL: set membership page personal info to(?: a |)(?: random info |)(?:to|i
 
 end
 
+Then /^WL: check if postage meter address is present then set the value$/ do
+  meter_street = WhiteLabel.membership_page.meter_street
+  meter_street.wait_until_present(timeout: 5) rescue false
+  if meter_street.present? == true
+    step 'WL: set postage meter address between zone 1 and 4'
+    step 'WL: click membership page submit button'
+  else
+    #ignore
+  end
+end
+
+Then /^WL: set postage meter address between (.*)$/ do |address|
+  TestData.hash[:personal_info] = TestHelper.address_helper_zone(address) #combine this
+
+  TestData.hash[:street_address] = TestData.hash[:personal_info]['street_address']
+  TestData.hash[:city] = TestData.hash[:personal_info]['city']
+  TestData.hash[:state] = TestData.hash[:personal_info]['state']
+  TestData.hash[:zip] = TestData.hash[:personal_info]['zip']
+
+  step "WL: set postage meter address to #{TestData.hash[:street_address]}"
+  step "WL: set postage meter city to #{TestData.hash[:city]}"
+  step "WL: select postage meter state #{TestData.hash[:state]}"
+  step "WL: set postage meter zip to #{TestData.hash[:zip]}"
+end
+
+Then /^WL: set postage meter address to (.*)$/ do |str|
+  WhiteLabel.membership_page.meter_street.set(TestData.hash[:address] = str)
+end
+
+
+Then /^WL: set postage meter city to (.*)$/ do |str|
+  WhiteLabel.membership_page.meter_city.set(TestData.hash[:city] = str)
+end
+
+Then /^WL: select postage meter state (.*)$/ do |str|
+  membership_page = WhiteLabel.membership_page
+  membership_page.meter_state.click
+  membership_page.dropdown_selection(str)
+  membership_page.dropdown_element.safe_wait_until_present(timeout: 2)
+  membership_page.dropdown_element.click
+  step "WL: blur_out on membership page"
+  TestData.hash[:state] =  membership_page.meter_state.attribute_value('title').strip
+  expect(TestData.hash[:state].strip).to eql str
+end
+
+Then /^WL: set postage meter zip to (.*)$/ do |str|
+  WhiteLabel.membership_page.meter_zip.set(TestData.hash[:zip] = str)
+end
+
 Then /^WL: if username taken is present then set username to (?:random value|(.*))$/ do |str|
-  # sleep 3
-  # if WhiteLabel.membership_page.new_username.present? == true
-  #   WhiteLabel.membership_page.new_username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
-  # else
-  #   #ignore
-  # end
-  WhiteLabel.membership_page.new_username.wait_until_present(timeout: 3) rescue false
-  if WhiteLabel.membership_page.new_username.present? == true
-    WhiteLabel.membership_page.new_username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
+  new_username =  WhiteLabel.membership_page.new_username
+  new_username.wait_until_present(timeout: 5) rescue false
+  if new_username.present? == true
+    new_username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
     step 'WL: click username taken continue button'
   else
     #ignore

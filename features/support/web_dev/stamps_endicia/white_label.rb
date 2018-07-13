@@ -66,7 +66,7 @@ module WhiteLabel
     text_field(:meter_street, tag: :text_field, required: true) { { id: 'meterStreet' } }
     text_field(:meter_city, tag: :text_field, required: true) { { id: 'meterCity' } }
     page_object(:meter_state) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="meterState"]'}}
-    text_field(:meter_city, tag: :text_field, required: true) { { id: 'meterZip' } }
+    text_field(:meter_zip, tag: :text_field, required: true) { { id: 'meterZip' } }
 
 
     def dropdown_selection(str, name = :dropdown_element)
