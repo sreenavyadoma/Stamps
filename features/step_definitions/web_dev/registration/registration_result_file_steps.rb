@@ -32,13 +32,11 @@ end
 
 Then /^[Ss]ave username to (?:default parameter file|parameter file (.*))$/ do |filename|
   data_file = registration_parameter_file(filename)
-  sleep(0.25)
   File.open(data_file, 'w+') {|f| f.write("username: #{TestData.hash[:username]}\n")}
 end
 
 Then /^[Ss]ave password to (?:default parameter file|parameter file (.*))$/ do |filename|
   data_file = registration_parameter_file(filename)
-  sleep(0.25)
   File.open(data_file, 'a+') {|f| f.write("password: #{TestData.hash[:password]}\n")}
 end
 
