@@ -192,7 +192,7 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
         # Set address to proper zone
         step "set order details ship-to to random address between zone 1 and 4"  if SdcEnv.sdc_app == :orders
         step "set print form mail-to to a random address in zone 1 through 4" if SdcEnv.sdc_app == :mail
-        step "save Print Form Mail From" if SdcEnv.sdc_app == :mail
+        step "save print form mail from" if SdcEnv.sdc_app == :mail
         # spreadsheet price for zone
 
         if row[zone_column] == nil
@@ -230,8 +230,8 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
           step "set order details pounds to 0" if SdcEnv.sdc_app == :orders
           step "set order details ounces to 0" if SdcEnv.sdc_app == :orders
 
-          step "set Print form Pounds to 0" if SdcEnv.sdc_app == :mail
-          step "set Print form Ounces to 0" if SdcEnv.sdc_app == :mail
+          step "set print form pounds to 0" if SdcEnv.sdc_app == :mail
+          step "set print form ounces to 0" if SdcEnv.sdc_app == :mail
 
           # Set weight per spreadsheet
 
@@ -247,9 +247,9 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:weight_oz]] = weight_oz
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:weight]] = "#{weight_oz} oz."
           step "set order details ounces to #{weight_oz}"  if SdcEnv.sdc_app == :orders
-          step "set Print form Ounces to #{weight_oz}"  if SdcEnv.sdc_app == :mail
+          step "set print form ounces to #{weight_oz}"  if SdcEnv.sdc_app == :mail
 
-          sleep(0.025)
+          # sleep(0.025)
 
           # Set Service
           row[@rate_sheet_columns[:service]].should_not be nil
@@ -270,20 +270,21 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
           end unless row[@rate_sheet_columns[:tracking]].nil?
           # Write tracking to spreadsheet
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:tracking_selected]] = TestData.hash[:tracking]
-          sleep(0.525)
+          # sleep(0.525)
+          step 'wait for js to stop'
           # get total cost actual value from UI
           step 'Save Order Details data' if SdcEnv.sdc_app == :orders
-          step "save Print Form Total Cost" if SdcEnv.sdc_app == :mail
+          step 'save print form total cost' if SdcEnv.sdc_app == :mail
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:total_ship_cost]] = (TestData.hash[:total_ship_cost].to_f * 100).round / 100.0
 
           # Set weight to 0
-          if SdcEnv.sdc_app == :mail
-            step "set Print form Pounds to 0"
-            step "set Print form Ounces to 0"
-          elsif SdcEnv.sdc_app == :orders
-            step "set order details pounds to 0"
-            step "set order details ounces to 0"
-          end
+          # if SdcEnv.sdc_app == :mail
+          #   step "set print form pounds to 0"
+          #   step "set print form ounces to 0"
+          # elsif SdcEnv.sdc_app == :orders
+          #   step "set order details pounds to 0"
+          #   step "set order details ounces to 0"
+          # end
           expectation_f = (TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:zone]].to_f * 100).round / 100.0
           total_ship_cost_f = (TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:total_ship_cost]].to_f * 100).round / 100.0
 
@@ -318,7 +319,7 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
   #end
 
   result_sheet = param_sheet.gsub(/\s+/, "")
-  @result_filename = "#{data_for(:rates_test, {})['results_dir']}\\#{result_sheet}_#{ENV['WEB_APP'].downcase}_#{ENV['URL'].downcase}_Zone_#{zone}_#{Time.now.strftime("%Y.%m.%d.%H.%M")}.xls"
+  @result_filename = "#{data_for(:rates_test, {})['results_dir']}\\#{result_sheet}_#{SdcEnv.sdc_app.downcase}_#{ENV['URL'].downcase}_Zone_#{zone}_#{Time.now.strftime("%Y.%m.%d.%H.%M")}.xls"
   TestData.hash[:result_file].write @result_filename
   TestData.hash[:result_sheet].each_with_index do |row, row_number|
     begin

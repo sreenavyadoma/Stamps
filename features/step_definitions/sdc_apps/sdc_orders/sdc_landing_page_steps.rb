@@ -72,6 +72,7 @@ Then /^sign-in to orders$/ do
     step 'click sign-in button on browser'
     step 'close whats new modal in orders'
   end
+  SdcEnv.sdc_app = :orders
 end
 
 Then /^click sign-in button on browser$/ do

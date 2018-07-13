@@ -36,6 +36,7 @@ Then /^sign-in to mail$/ do
   elsif SdcEnv.android
     raise StandardError, 'Not Implemented'
   end
+  SdcEnv.sdc_app = :mail
 end
 
 
