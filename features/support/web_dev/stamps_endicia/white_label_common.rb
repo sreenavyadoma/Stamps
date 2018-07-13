@@ -14,6 +14,9 @@ module WhiteLabel
     text_field(:second_secret_answer, tag: :text_field, required: true) { { id: 'secretAnswer2' } }
     button(:sq_get_started) { { id: 'startPrinting' } }
 
+    #account created
+    button(:account_created_continue) { {id: 'pawrContinue'} }
+
     def dropdown_selection(str, index, name = :dropdown_element)
       page_objects(name, index: index) { { xpath: "//span[contains(text(), \"#{str}\")]" } }
     end

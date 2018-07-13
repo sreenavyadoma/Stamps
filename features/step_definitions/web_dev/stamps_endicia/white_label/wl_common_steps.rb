@@ -28,7 +28,7 @@ Then /^WL: navigates to default registration page for stamps with the following 
   end
 
   step 'WL: close stamps website db connection'
-  #SDCWWebsite.visit
+  SDCWWebsite.visit
   common_page.stamps_logo.wait_until_present(timeout: 10)
   common_page.get_started.click!
 
@@ -103,6 +103,9 @@ Then /^WL: expect user is singed in to print$/ do
   if WhiteLabel.choose_supplies.place_order.present? == true
     WhiteLabel.choose_supplies.place_order.wait_until_present(timeout: 10)
     WhiteLabel.choose_supplies.place_order.click!
+  end
+  if WhiteLabel.common_page.account_created_continue.present?
+    WhiteLabel.common_page.account_created_continue.click
   end
   signed_in_user.wait_until_present(timeout: 60)
   expect(signed_in_user.text_value).to include(TestData.hash[:username])

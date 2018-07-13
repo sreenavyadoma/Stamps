@@ -1,4 +1,13 @@
-Then /^WL: expect customize your welcome kit is present$/ do
+Then /^WL: check choose supplies page is present then verify the page and click place order button$/ do
+  if TestData.hash[:atg_promotion] == ''
+    #ignore
+  else
+    step 'WL: expect choose supplies page customize your welcome kit is present'
+    step 'WL: click choose supplies page place order button'
+  end
+end
+
+Then /^WL: expect choose supplies page customize your welcome kit is present$/ do
   cs_header =  WhiteLabel.choose_supplies.cs_header
   cs_header.wait_until_present(timeout: 50)
   expect(cs_header).to be_present, 'Customize your Welcome Kit is NOT present'

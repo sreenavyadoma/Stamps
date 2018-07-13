@@ -23,6 +23,7 @@ module WhiteLabel
 
   class MembershipPage < SdcPage
     page_object(:header) { {xpath: '//h1[(contains(text(), "Set up your personal Post Office"))]'} }
+    page_object(:membership_bread_crumb) { {xpath: '//li[@id="breadcrumb_Membership"]/span'} }
     text_field(:first_name, tag: :text_field, required: true) { { id: 'firstName' } }
     text_field(:last_name, tag: :text_field, required: true) { { id: 'lastName' } }
     text_field(:company, tag: :text_field) { { id: 'companyName' } }

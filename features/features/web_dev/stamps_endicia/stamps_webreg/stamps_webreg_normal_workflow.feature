@@ -53,10 +53,8 @@ Feature: Stamps WebReg: Normal Workflow
     #Username  Taken
     Then WL: if username taken is present then set username to random value
 
-
     #Choose Supplies Page
-    Then WL: expect customize your welcome kit is present
-    Then WL: click choose supplies page place order button
+    Then WL: check choose supplies page is present then verify the page and click place order button
 
     #Security Question after registration
     Then WL: if security question is present after registration then set the values

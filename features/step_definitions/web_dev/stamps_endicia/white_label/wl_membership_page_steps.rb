@@ -1,5 +1,5 @@
 Then /^WL: blur_out on membership page$/ do
-  WhiteLabel.membership_page.header.blur_out
+  WhiteLabel.membership_page.membership_bread_crumb.blur_out
 end
 
 Then /^WL: set membership page first name to (?:random value|(.*))$/ do |str|
