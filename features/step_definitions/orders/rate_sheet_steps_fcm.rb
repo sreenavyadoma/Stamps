@@ -234,7 +234,6 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
           step "set print form ounces to 0" if SdcEnv.sdc_app == :mail
 
           # Set weight per spreadsheet
-
           weight_oz = row[@rate_sheet_columns[:weight_oz]]
           SdcLogger.info "#{"#" * 10} "
           SdcLogger.info "#{"#" * 10} Weight: #{weight_oz}"
@@ -242,14 +241,11 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
           SdcLogger.info "#{"#" * 10} "
           SdcLogger.info "#{"#" * 50}"
 
-
           weight_oz = weight_oz.to_f
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:weight_oz]] = weight_oz
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:weight]] = "#{weight_oz} oz."
           step "set order details ounces to #{weight_oz}"  if SdcEnv.sdc_app == :orders
           step "set print form ounces to #{weight_oz}"  if SdcEnv.sdc_app == :mail
-
-          # sleep(0.025)
 
           # Set Service
           row[@rate_sheet_columns[:service]].should_not be nil
@@ -270,22 +266,12 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
           end unless row[@rate_sheet_columns[:tracking]].nil?
           # Write tracking to spreadsheet
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:tracking_selected]] = TestData.hash[:tracking]
-          # sleep(0.525)
-          # step 'wait for js to stop'
           step 'pause for 1 second'
           # get total cost actual value from UI
           step 'Save Order Details data' if SdcEnv.sdc_app == :orders
           step 'save print form total cost' if SdcEnv.sdc_app == :mail
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:total_ship_cost]] = (TestData.hash[:total_ship_cost].to_f * 100).round / 100.0
 
-          # Set weight to 0
-          # if SdcEnv.sdc_app == :mail
-          #   step "set print form pounds to 0"
-          #   step "set print form ounces to 0"
-          # elsif SdcEnv.sdc_app == :orders
-          #   step "set order details pounds to 0"
-          #   step "set order details ounces to 0"
-          # end
           expectation_f = (TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:zone]].to_f * 100).round / 100.0
           total_ship_cost_f = (TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:total_ship_cost]].to_f * 100).round / 100.0
 
