@@ -75,7 +75,8 @@ class SauceConfig < ::SdcModel
   key(:build_url) { ENV['BUILD_URL'] }
   key(:screen_resolution) { ENV['SCREEN_RESOLUTION'] || '1280x1024' }
   key(:idle_timeout) { ENV['IDLE_TIMEOUT'] || 120 }
-  key(:sauce_end_point) { "https://#{sauce_username}:#{sauce_access_key}@#{host}:#{port}/wd/hub" } # "https://robcruz:0e60dbc9-5bbf-425a-988b-f81c42d6b7ef@ondemand.saucelabs.com:443/wd/hub"
+  key(:sauce_end_point) { "https://#{sauce_username}:#{sauce_access_key}@#{host}:#{port}/wd/hub" }
+  # "https://robcruz:0e60dbc9-5bbf-425a-988b-f81c42d6b7ef@ondemand.saucelabs.com:443/wd/hub"
 
   def test_name
     job_name || "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
@@ -283,7 +284,7 @@ class SdcDriverDecorator < BasicObject
   end
 
   def respond_to_missing?(name, include_private = false)
-    super || @driver.respond_to?(name, include_private)
+    @driver.respond_to?(name, include_private) || super
   end
 
   def method_missing(method, *args, &block)
@@ -517,7 +518,7 @@ class SdcElement < BasicObject
   end
 
   def respond_to_missing?(name, include_private = false)
-    super || @element.respond_to?(name, include_private)
+    @element.respond_to?(name, include_private) || super
   end
 
   def method_missing(name, *args, &block)
@@ -586,7 +587,7 @@ class SdcChooser < BasicObject
   end
 
   def respond_to_missing?(name, include_private = false)
-    super || @element.respond_to?(name, include_private)
+    @element.respond_to?(name, include_private) || super
   end
 
   def method_missing(name, *args, &block)
@@ -611,7 +612,7 @@ class SdcNumber < BasicObject
   end
 
   def respond_to_missing?(name, include_private = false)
-    super || @element.respond_to?(name, include_private)
+    @element.respond_to?(name, include_private) || super
   end
 
   def method_missing(name, *args, &block)
@@ -635,7 +636,7 @@ class SdcLogger
     end
 
     def respond_to_missing?(name, include_private = false)
-      super || logger.respond_to?(name, include_private)
+      logger.respond_to?(name, include_private) || super
     end
 
     def method_missing(method, *args)
