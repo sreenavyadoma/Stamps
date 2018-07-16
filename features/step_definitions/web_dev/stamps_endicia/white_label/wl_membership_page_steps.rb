@@ -138,13 +138,13 @@ Then /^WL: check if address standardized is present then click continue$/ do
 end
 
 Then /^WL: check if postage meter address is present then set the value$/ do
-  meter_street = WhiteLabel.membership_page.meter_street
-  meter_street.wait_until_present(timeout: 5) rescue false
-  if meter_street.present? == true
+  membership_page = WhiteLabel.membership_page
+  if TestData.hash[:street_address].include? 'PO Box'
+    membership_page.meter_street.wait_until_present(timeout: 5)
     step 'WL: set postage meter address between zone 1 and 4'
     step 'WL: click membership page submit button'
   else
-    #ignore
+    expect(membership_page.meter_header).not_to be_present('Additional Postage Meter Address Page IS PRESENT for domestic address')
   end
 end
 

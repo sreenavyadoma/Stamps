@@ -20,7 +20,7 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: click profile page continue button
 
     #Membership Page
-    Then WL: set membership page personal info to random info between zone 1 and 4
+    Then WL: set membership page personal info to random info between zone 9
     Then WL: set membership page cardholder's name to random value
     Then WL: set membership page credit card number to default value
     Then WL: select membership page credit card month Dec (12)

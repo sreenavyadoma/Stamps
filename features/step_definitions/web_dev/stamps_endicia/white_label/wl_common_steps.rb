@@ -31,7 +31,7 @@ Then /^WL: navigates to default registration page for stamps with the following 
   SDCWWebsite.visit
   common_page.stamps_logo.wait_until_present(timeout: 10)
   common_page.get_started.click!
-
+  print "#Sourceid = {TestData.hash[:source_id]}"
 end
 
 Then /^WL: select security questions first security question (.*)$/ do |str|
