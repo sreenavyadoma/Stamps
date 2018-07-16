@@ -33,7 +33,7 @@ Then /^select advanced options specify postage amount$/ do
 end
 
 Then /^expect advanced options specify postage amount is selected$/ do
-  expect(SdcMail.print_form.advanced_options.specify_postage_amount.selected?).to be(true), 'Specify Postage Amount was NOT selected'
+  expect(SdcMail.print_form.advanced_options.specify_postage_amount.selected?).to be(true)
 end
 
 Then /^expect advanced options calculate postage amount radio button is present$/ do
