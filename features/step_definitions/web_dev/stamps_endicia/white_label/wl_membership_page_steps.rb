@@ -190,9 +190,10 @@ Then /^WL: if username taken is present then set username to (?:random value|(.*
   username_taken  = WhiteLabel.common_page.username_query(TestData.hash[:username])
   membership_page =  WhiteLabel.membership_page
   if username_taken == ''
-    expect(membership_page.username_taken_header).not_to be_present('Username Taken Modals is PRESENT when user DOES NOT EXISTS')
+    expect(membership_page.username_taken_header).not_to be_present, 'Username Taken Modals is PRESENT when user DOES NOT EXISTS'
   else
     membership_page.new_username.wait_until_present(timeout: 5)
+    expect(membership_page.username_taken_header).to be_present, 'Username Taken Modals is NOT PRESENT for an EXISTING USER'
     membership_page.new_username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
     step 'WL: click username taken continue button'
   end
