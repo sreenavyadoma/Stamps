@@ -96,21 +96,33 @@ Then /^WL: expect user is singed in to print$/ do
   if SdcPage.browser.alert.exists?
     SdcPage.browser.alert.close
   end
-  signed_in_user =  SdcWebsite.navigation.user_drop_down.signed_in_user
-  signed_in_user.wait_until_present(timeout: 10) rescue false
-  if  signed_in_user.present? == false
+
+  print_stamps_logo =  WhiteLabel.common_page.print_stamps_logo
+  print_stamps_logo.wait_until_present(timeout: 10) rescue false
+
+  if print_stamps_logo.present? == false
     SdcPage.browser.refresh
   end
+
   WhiteLabel.choose_supplies.place_order.wait_until_present(timeout: 5) rescue false
-  if WhiteLabel.choose_supplies.place_order.present? == true
+  if WhiteLabel.choose_supplies.place_order.present?
     WhiteLabel.choose_supplies.place_order.wait_until_present(timeout: 10)
     WhiteLabel.choose_supplies.place_order.click!
   end
+
   if WhiteLabel.common_page.account_created_continue.present?
     WhiteLabel.common_page.account_created_continue.click
   end
-  signed_in_user.wait_until_present(timeout: 60) rescue false
-  expect(SdcPage.browser.url).to include('printext')
-  #expect(signed_in_user.text_value).to include(TestData.hash[:username])
+
+  print_stamps_logo.wait_until_present(timeout: 60) rescue false
+  case  SdcEnv.env
+    when :qacc
+      'qacc.'
+    when :stg
+      'staging.'
+    when ''
+      #ignore
+  end
+  expect(SdcPage.browser.url).to include("https://print.#{env}.")
 end
 

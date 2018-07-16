@@ -5,6 +5,9 @@ module WhiteLabel
     page_object(:stamps_logo) {{id: 'sdc-logo'}}
     button(:get_started) { { class: ['btn btn-success btn-xs register'] } }
 
+    #Print
+    page_object(:print_stamps_logo) {{class: ['sdcLogo']}}
+
     #security questions
     page_object(:sq_header) {{xpath: '//h1[(contains(text(), "Before you start printing postage, make sure your account is protected."))]'}}
     page_object(:security_question) {{xpath: '//h2[(contains(text(), "To protect your account, please answer these security questions:"))]'}}
