@@ -138,6 +138,8 @@ Then /^click Orders landing page sign-in button$/ do
     landing_page.sign_in.click
     if landing_page.invalid_username_password.present?
       landing_page.sign_in.click
+    else
+      break
     end
   end
   expect(landing_page.invalid_username_password.text_value).to eql('')
