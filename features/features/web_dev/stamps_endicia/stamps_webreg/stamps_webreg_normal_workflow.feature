@@ -12,7 +12,7 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: set profile page re-type password to same as previous password
     Then WL: set profile page survey question to Individual/Home Office
     Then WL: set profile page how did you hear about us? to Television Commercial
-    Then WL: set profile page promo code to source id promo code
+    Then WL: expect profile page promo code to equal source id promo code
 
     #Security Question before registration
     Then WL: if security question is present before registration then set the values
