@@ -144,7 +144,7 @@ Then /^WL: check if postage meter address is present then set the value$/ do
     step 'WL: set postage meter address between zone 1 and 4'
     step 'WL: click membership page submit button'
   else
-    expect(membership_page.meter_header).not_to be_present('Additional Postage Meter Address Page IS PRESENT for domestic address')
+    expect(membership_page.meter_header).not_to be_present, 'Additional Postage Meter Address Page IS PRESENT for domestic address'
   end
 end
 
