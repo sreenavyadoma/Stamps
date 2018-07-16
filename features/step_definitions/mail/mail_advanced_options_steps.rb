@@ -16,13 +16,13 @@ end
 Then /^expect print form advanced options extra services button is (\w+)/ do |str|
   case str
   when /enabled/
-    expect(SdcMail.print_form.extra_services.class_disabled?).to be(false), 'Extra Services Button is NOT enabled'
+    expect(SdcMail.print_form.extra_services.class_disabled?).to be(false)
   when /disabled/
-    expect(SdcMail.print_form.extra_services.class_disabled?).to be(true), 'Extra Services Button is NOT disabled'
+    expect(SdcMail.print_form.extra_services.class_disabled?).to be(true)
   when /visible/
-    expect(SdcMail.print_form.extra_services).to be_visible, 'Extra Services Button is NOT visible'
+    expect(SdcMail.print_form.extra_services).to be_visible
   when /present/
-    expect(SdcMail.print_form.extra_services).to be_present, 'Extra Services Button is NOT present'
+    expect(SdcMail.print_form.extra_services).to be_present
   else
     raise ArgumentError, "#{str} is not implemented."
   end
@@ -33,15 +33,15 @@ Then /^select advanced options specify postage amount$/ do
 end
 
 Then /^expect advanced options specify postage amount is selected$/ do
-  expect(SdcMail.print_form.advanced_options.specify_postage_amount.selected?).to be(true), 'Specify Postage Amount was NOT selected'
+  expect(SdcMail.print_form.advanced_options.specify_postage_amount.selected?).to be(true)
 end
 
 Then /^expect advanced options calculate postage amount radio button is present$/ do
-  expect(SdcMail.print_form.advanced_options.calculate_postage_amount).to be_present, 'Stamps Calculate Postage Amount radio button is NOT present'
+  expect(SdcMail.print_form.advanced_options.calculate_postage_amount).to be_present
 end
 
 Then /^expect advanced options specify postage amount radio button is present$/ do
-  expect(SdcMail.print_form.advanced_options.specify_postage_amount).to be_present, 'Stamps Specify Postage Amount radio button is NOT present'
+  expect(SdcMail.print_form.advanced_options.specify_postage_amount).to be_present
 end
 
 Then /^select advanced options calculate postage amount$/ do
@@ -49,7 +49,7 @@ Then /^select advanced options calculate postage amount$/ do
 end
 
 Then /^expect advanced options calculate postage amount is selected$/ do
-  expect(SdcMail.print_form.advanced_options.calculate_postage_amount.selected?).to be(true), 'Calculate Postage Amount was NOT selected'
+  expect(SdcMail.print_form.advanced_options.calculate_postage_amount.selected?).to be(true)
 end
 
 Then /^expect print form advanced options ship date is (\d+) (?:day|days) from today$/ do |day|
@@ -74,7 +74,7 @@ end
 
 Then /^expect print form advanced options mail date is present$/ do
   # todo - Change this to be SdcMail..., not SdcOrders. Maybe move same PO to common files.
-  expect(SdcOrders.modals.print.ship_date.drop_down).to be_present, "Ship Date dropdown is not present. Check that StampsConnect is connected. You might need to re-login on this PC #{SdcEnv.hostname}"
+  expect(SdcOrders.modals.print.ship_date.drop_down).to be_present
 end
 
 
@@ -83,7 +83,7 @@ end
 
 
 Then /^expect print form advanced options mail date field is present$/ do
-  expect(SdcMail.print_form.advanced_options.mail_date).to be_present, 'Advanced Options Mail Date field is NOT present'
+  expect(SdcMail.print_form.advanced_options.mail_date).to be_present
 end
 
 Then /^[Ss]et Advanced Options Mail Date to ((?:date|today plus|tomorrow|today|))? ?(.*)?$/ do |time_str, value|
@@ -173,7 +173,7 @@ Then /^set print form advanced options reference number to (?:(?:a |some |)rando
 end
 
 Then /^expect print form advanced options reference number field is present$/ do
-  expect(SdcMail.print_form.advanced_options.reference_num).to be_present, 'Reference Number field is NOT present'
+  expect(SdcMail.print_form.advanced_options.reference_num).to be_present
 end
 
 Then /^expect print form advanced options reference number is (?:correct|(.*))$/ do |expectation|
@@ -188,7 +188,7 @@ Then /^expect print form advanced options reference number is blank$/ do
 end
 
 Then /^expect advanced options cost code field is present$/ do
-  expect(SdcMail.print_form.advanced_options.cost_code).to be_present, 'Print form Cost Code Field is NOT present'
+  expect(SdcMail.print_form.advanced_options.cost_code).to be_present
 end
 
 
@@ -306,7 +306,7 @@ end
 
 
 Then /^expect advanced options include return address is present$/ do
-  expect(SdcMail.print_form.advanced_options.return_address).to be_present, 'Advanced Options include Return Address is NOT present'
+  expect(SdcMail.print_form.advanced_options.return_address).to be_present
 end
 
 Then /^check advanced options include return address$/ do
@@ -315,7 +315,7 @@ Then /^check advanced options include return address$/ do
 end
 
 Then /^expect advanced options include return address is checked$/ do
-  expect(SdcMail.print_form.advanced_options.return_address.checked?).to be(true), 'Advanced Options include Return Address is NOT checked'
+  expect(SdcMail.print_form.advanced_options.return_address.checked?).to be(true)
 end
 
 Then /^uncheck advanced options include return address$/ do
@@ -324,11 +324,11 @@ Then /^uncheck advanced options include return address$/ do
 end
 
 Then /^expect advanced options include return address is unchecked$/ do
-  expect(SdcMail.print_form.advanced_options.return_address.checked?).not_to be(true), 'Advanced Options include Return Address is NOT unchecked'
+  expect(SdcMail.print_form.advanced_options.return_address.checked?).not_to be(true)
 end
 
 Then /^expect advanced options include delivery address is present$/ do
-  expect(SdcMail.print_form.advanced_options.delivery_address).to be_present, 'Advanced Options include Delivery Address is NOT present'
+  expect(SdcMail.print_form.advanced_options.delivery_address).to be_present
 end
 
 Then /^check advanced options include delivery address$/ do
@@ -337,7 +337,7 @@ Then /^check advanced options include delivery address$/ do
 end
 
 Then /^expect advanced options include delivery address is checked$/ do
-  expect(SdcMail.print_form.advanced_options.delivery_address.checked?).to be(true), 'Advanced Options include Delivery Address is NOT checked'
+  expect(SdcMail.print_form.advanced_options.delivery_address.checked?).to be(true)
 end
 
 Then /^uncheck advanced options include delivery address$/ do
@@ -346,11 +346,11 @@ Then /^uncheck advanced options include delivery address$/ do
 end
 
 Then /^expect advanced options include delivery address is unchecked$/ do
-  expect(SdcMail.print_form.advanced_options.delivery_address.checked?).not_to be(true), 'Advanced Options include Delivery Address is NOT unchecked'
+  expect(SdcMail.print_form.advanced_options.delivery_address.checked?).not_to be(true)
 end
 
 Then /^expect advanced options include postage is present$/ do
-  expect(SdcMail.print_form.advanced_options.postage).to be_present, 'Advanced Options include Postage is NOT present'
+  expect(SdcMail.print_form.advanced_options.postage).to be_present
 end
 
 Then /^check advanced options include postage$/ do
@@ -359,7 +359,7 @@ Then /^check advanced options include postage$/ do
 end
 
 Then /^expect advanced options include postage is checked$/ do
-  expect(SdcMail.print_form.advanced_options.postage.checked?).to be(true), 'Advanced Options include Postage is NOT checked'
+  expect(SdcMail.print_form.advanced_options.postage.checked?).to be(true)
 end
 
 Then /^uncheck advanced options include postage$/ do
@@ -368,7 +368,7 @@ Then /^uncheck advanced options include postage$/ do
 end
 
 Then /^expect advanced options include postage is unchecked$/ do
-  expect(SdcMail.print_form.advanced_options.postage.checked?).not_to be(true), 'Advanced Options include Postage is NOT unchecked'
+  expect(SdcMail.print_form.advanced_options.postage.checked?).not_to be(true)
 end
 
 
@@ -376,7 +376,7 @@ end
 
 
 Then /^expect advanced options hide label value is present$/ do
-  expect(SdcMail.print_form.advanced_options.hide_label_value).to be_present, 'Advanced Options Hide Label Value is NOT present'
+  expect(SdcMail.print_form.advanced_options.hide_label_value).to be_present
 end
 
 Then /^check advanced options hide label value$/ do
@@ -385,7 +385,7 @@ Then /^check advanced options hide label value$/ do
 end
 
 Then /^expect advanced options hide label value is checked$/ do
-  expect(SdcMail.print_form.advanced_options.hide_label_value.checked?).to be(true), 'Advanced Options Hide Label Value is NOT checked'
+  expect(SdcMail.print_form.advanced_options.hide_label_value.checked?).to be(true)
 end
 
 Then /^uncheck advanced options hide label value$/ do
@@ -394,11 +394,11 @@ Then /^uncheck advanced options hide label value$/ do
 end
 
 Then /^expect advanced options hide label value is unchecked$/ do
-  expect(SdcMail.print_form.advanced_options.hide_label_value.checked?).not_to be(true), 'Advanced Options Hide Label Value is NOT unchecked'
+  expect(SdcMail.print_form.advanced_options.hide_label_value.checked?).not_to be(true)
 end
 
 Then /^expect advanced options print receipt is present$/ do
-  expect(SdcMail.print_form.advanced_options.print_receipt).to be_present, 'Advanced Options Print Receipt is NOT present'
+  expect(SdcMail.print_form.advanced_options.print_receipt).to be_present
 end
 
 Then /^check advanced options print receipt$/ do
@@ -407,7 +407,7 @@ Then /^check advanced options print receipt$/ do
 end
 
 Then /^expect advanced options print receipt is checked$/ do
-  expect(SdcMail.print_form.advanced_options.print_receipt.checked?).to be(true), 'Advanced Options Print Receipt is NOT checked'
+  expect(SdcMail.print_form.advanced_options.print_receipt.checked?).to be(true)
 end
 
 Then /^uncheck advanced options print receipt$/ do
@@ -416,11 +416,11 @@ Then /^uncheck advanced options print receipt$/ do
 end
 
 Then /^expect advanced options print receipt is unchecked$/ do
-  expect(SdcMail.print_form.advanced_options.print_receipt.checked?).not_to be(true), 'Advanced Options Print Receipt is NOT unchecked'
+  expect(SdcMail.print_form.advanced_options.print_receipt.checked?).not_to be(true)
 end
 
 Then /^expect advanced options print reference # is present$/ do
-  expect(SdcMail.print_form.advanced_options.print_reference).to be_present, 'Advanced Options Print Reference # is NOT present'
+  expect(SdcMail.print_form.advanced_options.print_reference).to be_present
 end
 
 Then /^check advanced options print reference \#$/ do
@@ -429,7 +429,7 @@ Then /^check advanced options print reference \#$/ do
 end
 
 Then /^expect advanced options print reference # is checked$/ do
-  expect(SdcMail.print_form.advanced_options.print_reference.checked?).to be(true), 'Advanced Options Print Reference # is NOT checked'
+  expect(SdcMail.print_form.advanced_options.print_reference.checked?).to be(true)
 end
 
 Then /^uncheck advanced options print reference \#$/ do
@@ -438,12 +438,12 @@ Then /^uncheck advanced options print reference \#$/ do
 end
 
 Then /^expect advanced options print reference # is unchecked$/ do
-  expect(SdcMail.print_form.advanced_options.print_reference.checked?).not_to be(true), 'Advanced Options Print Reference # is NOT unchecked'
+  expect(SdcMail.print_form.advanced_options.print_reference.checked?).not_to be(true)
 end
 
 Then /^expect advanced options print reference # is disabled/ do
   # expect(SdcMail.print_form.advanced_options.print_reference.class_disabled?).to be(true), 'Advanced Options Print Reference # is NOT disabled!'
-  expect(SdcMail.print_form.advanced_options.print_reference.check?(attr: 'class', value: 'disabled')).to be(true), 'Advanced Options Print Reference # is NOT disabled!'
+  expect(SdcMail.print_form.advanced_options.print_reference.check?(attr: 'class', value: 'disabled')).to be(true)
 end
 
 Then /^click advanced options service commitments$/ do
