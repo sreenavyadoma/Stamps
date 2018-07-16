@@ -1,5 +1,5 @@
 
-default: --backtrace --profile stampswebclient
+default: --backtrace --profile saucelabs_local_rob
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
