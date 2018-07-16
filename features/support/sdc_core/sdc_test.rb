@@ -218,7 +218,6 @@ class SdcTest
               SdcPage.browser.window.maximize
             end
 
-
           rescue StandardError => e
             SdcLogger.error e.message
             SdcLogger.error e.backtrace.join("\n")
@@ -253,6 +252,8 @@ class SdcTest
         end
 
       end
+      SdcEnv.width = SdcPage.browser.window.size.width
+      SdcEnv.height = SdcPage.browser.window.size.height
     end
 
     def start

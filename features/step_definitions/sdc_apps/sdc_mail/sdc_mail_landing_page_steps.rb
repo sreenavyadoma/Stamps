@@ -20,17 +20,24 @@ end
 
 Then /^sign-in to mail$/ do
   step 'visit Mail'
-  modal = SdcWebsite.navigation.mail_sign_in_modal
-  modal.sign_in_link.wait_until_present(timeout: 10)
   step 'fetch user credentials from MySQL'
-  modal.sign_in_link.hover
-  step "set Mail username to #{TestData.hash[:username]}"
-  step "set Mail password to #{TestData.hash[:password]}"
-
-  if SdcEnv.browser
-    step 'click the Sign In button in Mail'
-    step 'close whats new modal in mail'
-    step 'expect user is signed in'
+  modal = SdcWebsite.navigation.mail_sign_in_modal
+  if SdcEnv.browser || SdcEnv.sauce.browser
+    if SdcEnv.width.to_i < 1195
+      modal.hamburger_menu.click
+      modal.sign_in.click
+      step "set sign in page username to #{TestData.hash[:username]}"
+      step "set sign in page password to #{TestData.hash[:password]}"
+      step 'click sign in page sign-in button'
+    else
+      modal.sign_in_link.wait_until_present(timeout: 10)
+      modal.sign_in_link.hover
+      step "set Mail username to #{TestData.hash[:username]}"
+      step "set Mail password to #{TestData.hash[:password]}"
+      step 'click the Sign In button in Mail'
+      step 'close whats new modal in mail'
+      step 'expect user is signed in'
+    end
   elsif SdcEnv.ios
     raise StandardError, 'Not Implemented'
   elsif SdcEnv.android

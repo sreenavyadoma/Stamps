@@ -119,10 +119,31 @@ Then /^set Orders landing page password to (.*)$/ do |str|
   SdcWebsite.landing_page.password.set(str)
 end
 
+Then /^set sign in page username to (.*)$/ do |str|
+  SdcWebsite.landing_page.username.set(str)
+end
+
+Then /^set sign in page password to (.*)$/ do |str|
+  SdcWebsite.landing_page.password.set(str)
+end
+
+Then /^click sign in page sign-in button$/ do
+  SdcWebsite.landing_page.sign_in.wait_until_present(timeout: 3)
+  SdcWebsite.landing_page.sign_in.click
+end
+
 Then /^click Orders landing page sign-in button$/ do
   landing_page = SdcWebsite.landing_page
   landing_page.sign_in.wait_until_present(timeout: 3)
   landing_page.sign_in.click
+  3.times do
+    if landing_page.invalid_username_password.present?
+      landing_page.sign_in.click
+    else
+      break
+    end
+  end
+  expect(landing_page.invalid_username_password.text_value).to eql('')
   landing_page.sign_in.safe_wait_while_present(timeout: 60)
 end
 

@@ -19,13 +19,15 @@ samsung_galaxy_sauce: --tags @saucelabs_poc SAUCE_DEVICE=samsung_galaxy_sauce LO
 # USR=abqaprod1 PW=password1
 
 #rob: --tags @bvt_shipstation_updates_domestic URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgvoc0kcnt6rw PW=pass111 PRINTER=factory  #stgee1mtqvwdc0 stgvoc0kcnt6rw stgshipint001
-rob: --tags @bvt_orders_ui_validation URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=AutoSAS_ST07 PW=pass111 PRINTER=factory  #stgee1mtqvwdc0 stgvoc0kcnt6rw stgshipint001
+rob: --tags @bvt_shipstation_updates_domestic URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=AutoSAS_ST07 PW=pass111 PRINTER=factory  #stgee1mtqvwdc0 stgvoc0kcnt6rw stgshipint001
 
 #  stgvoc0kcnt6rw stgupr2smgtub
 saucelabs: --tags @saucelabs LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug
 saucelabs_local: --tags @bvt_shipstation_updates_domestic URL=stg USR=stg_hka7 PW=password1 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
 # stg_hka6
 saucelabs_local_rob: --tags @bvt_shipstation_updates_domestic URL=stg USR=AutoSAS_ST11 PW=pass111 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
+
+stampswebclient: --tags @bvt_shipstation_updates_international URL=stg USR=AutoSAS_ST11 PW=pass111 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=stampswebclient SAUCE_ACCESS_KEY=46370b39-eb3d-4cc4-b4b3-09490b041b3b SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
 
 # C:\Users\lab>rake authentication URL=stg BROWSER=ff USR=stgvoc0kcnt6rw PW=pass111
 #saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1
@@ -77,6 +79,7 @@ alex_rates_pmi:  --tags @rates_pmi_comm_plus_group_9 BROWSER=ff WEB_APP=orders U
 alex_orders:  --tags @bvt_orders_ui_validation BROWSER=ff URL=prod USR=abqaprod2 PW=password1  PRINTER=factory --guess LOG_LEVEL=info HEALTHCHECK=false
 #alex_orders:  --tags @bvt_new_order BROWSER=ff URL=stg USR=abqast2 PW=password1 new_framework=true  --guess LOG_LEVEL=info HEALTHCHECK=false #abqast1
 alex_test:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders URL=qacc USR=abqacc10 PW=password1  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false
+saucelabs_alex: --tags @mail_bvt_address_cleansing URL=stg USR=abqast2 PW=password1 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=alexbaranovskyi SAUCE_ACCESS_KEY=bcd50193-981d-4890-9bce-b18d3097f373 SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
 
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess  HEALTHCHECK=true WEB_APP=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess  HEALTHCHECK=true WEB_APP=xxxxxxxxxx
