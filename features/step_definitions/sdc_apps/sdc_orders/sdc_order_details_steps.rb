@@ -228,7 +228,8 @@ Then /^blur out on order details form$/ do
   order_details.weight_label.double_click
   order_details.service_label.double_click
   order_details.reference_no.double_click
-  order_details.ship_to_label.double_click if order_details.ship_to_label.present?
+  step 'show order ship-to details'
+  order_details.ship_to_label.double_click
   order_details.order_id.double_click
   order_details.title.double_click
 end

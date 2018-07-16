@@ -97,17 +97,22 @@ module SdcGrid
 
     def text_at(column, row)
       scroll_to(column)
-      element = element_at(column, row)
+      element = element_at_row(column, row)
       element.text_value
     end
 
-    def element_at(column, row)
+    def element_at_row(column, row)
       column_num = column_number(column).to_s
       xpath = "#{grid_container}//table[#{row.to_s}]//tbody//td[#{column_num}]//div"
       coordinates = "col#{column}xrow#{row}"
       element = page_object(coordinates.to_sym) { { xpath: xpath } }
       element.scroll_into_view
       element
+    end
+
+    def element_for_id(column,order_id)
+      row = row_num(order_id)
+      element_at_row(column, row)
     end
 
     def grid_field_column_name(column, row)
@@ -246,7 +251,11 @@ module SdcGrid
     end
 
     def element(row)
-      element_at(@column, row)
+      element_at_row(@column, row)
+    end
+
+    def element_for_id(order_id)
+      super(@column, order_id)
     end
 
     def sort_ascending
