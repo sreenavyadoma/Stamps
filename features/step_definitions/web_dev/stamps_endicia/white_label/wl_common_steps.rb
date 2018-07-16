@@ -33,7 +33,7 @@ Then /^WL: navigates to default registration page for stamps with the following 
   common_page.get_started.click!
 
   TestData.hash[:username_taken] = WhiteLabel.common_page.username_query(TestData.hash[:username])
-  print "Sourceid = #{TestData.hash[:source_id]}"
+  print "Sourceid = #{TestData.hash[:source_id]}\n"
 end
 
 Then /^WL: select security questions first security question (.*)$/ do |str|
@@ -115,14 +115,14 @@ Then /^WL: expect user is singed in to print$/ do
   end
 
   print_stamps_logo.wait_until_present(timeout: 60) rescue false
+
   case  SdcEnv.env
     when :qacc
-      'qacc.'
+      expect(SdcPage.browser.url).to include('https://print.qacc.stamps.com')
     when :stg
-      'staging.'
+      expect(SdcPage.browser.url).to include('https://print.staging.stamps.com')
     when ''
-      #ignore
+      expect(SdcPage.browser.url).to include('https://print.stamps.com')
   end
-  expect(SdcPage.browser.url).to include("https://print.#{env}.")
 end
 
