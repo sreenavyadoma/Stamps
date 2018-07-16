@@ -232,7 +232,16 @@ end
 
 Then /^expect orders grid item name is (.+)$/ do |str|
   order_id = TestData.hash[:order_id].values.last
-  result = SdcGrid.grid_column(:item_name).data(order_id)
+  column = SdcGrid.grid_column(:item_name)
+  element = column.element_for_id(order_id)
+  5.times do
+    break if element.text_value.size.eql? str.size
+    element.scroll_into_view
+    element.click
+    element.double_click
+    SdcPage.browser.wait_until(timeout: 2) { element.text_value.size.eql? str.size }
+  end
+  result = column.data(order_id)
   expect(result).to eql str
 end
 
