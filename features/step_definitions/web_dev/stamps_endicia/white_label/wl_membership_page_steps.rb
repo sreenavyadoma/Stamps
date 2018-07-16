@@ -188,7 +188,7 @@ end
 
 Then /^WL: if username taken is present then set username to (?:random value|(.*))$/ do |str|
   membership_page =  WhiteLabel.membership_page
-  if TestData.hash[:username_taken].empty? == true
+  if TestData.hash[:username_taken].empty?
     expect(membership_page.username_taken_header).not_to be_present, 'Username Taken Modals is PRESENT when user DOES NOT EXISTS'
   else
     membership_page.new_username.wait_until_present(timeout: 5)
