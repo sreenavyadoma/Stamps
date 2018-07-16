@@ -138,6 +138,7 @@ Then /^click Orders landing page sign-in button$/ do
   3.times do
     if landing_page.invalid_username_password.present?
       landing_page.sign_in.click
+      landing_page.invalid_username_password.safe_wait_while_present(timeout: 1)
     else
       break
     end
