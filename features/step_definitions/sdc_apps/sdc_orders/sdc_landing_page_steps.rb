@@ -134,7 +134,7 @@ end
 Then /^click Orders landing page sign-in button$/ do
   landing_page = SdcWebsite.landing_page
   landing_page.sign_in.wait_until_present(timeout: 3)
-  3.times do
+  5.times do
     landing_page.sign_in.click
     if landing_page.invalid_username_password.present?
       landing_page.sign_in.click
