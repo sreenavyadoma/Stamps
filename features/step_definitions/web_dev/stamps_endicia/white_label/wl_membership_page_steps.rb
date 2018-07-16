@@ -187,13 +187,14 @@ Then /^WL: set postage meter zip to (.*)$/ do |str|
 end
 
 Then /^WL: if username taken is present then set username to (?:random value|(.*))$/ do |str|
-  new_username =  WhiteLabel.membership_page.new_username
-  new_username.wait_until_present(timeout: 5) rescue false
-  if new_username.present? == true
-    new_username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
-    step 'WL: click username taken continue button'
+  username_taken  = WhiteLabel.common_page.username_query(TestData.hash[:username])
+  membership_page =  WhiteLabel.membership_page
+  if username_taken == ''
+    expect(membership_page.username_taken_header).not_to be_present('Username Taken Modals is PRESENT when user DOES NOT EXISTS')
   else
-    #ignore
+    membership_page.new_username.wait_until_present(timeout: 5)
+    membership_page.new_username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
+    step 'WL: click username taken continue button'
   end
 end
 

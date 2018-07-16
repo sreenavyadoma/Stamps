@@ -1,9 +1,9 @@
 Then /^WL: establish stamps website db connection$/ do
-  WhiteLabel.db_connection
+  WhiteLabel.sdc_db_connection
 end
 
 Then /^WL: close stamps website db connection$/ do
-  WhiteLabel.db_connection.close
+  WhiteLabel.sdc_db_connection.close
 end
 
 Then /^WL: navigates to default registration page for stamps with the following source id (?:random value|(.*))$/ do |str|

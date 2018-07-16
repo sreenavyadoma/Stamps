@@ -112,8 +112,12 @@ module WhiteLabel
       EWWebsite.new
     end
 
-    def db_connection
+    def sdc_db_connection
       SdcWebsiteDB.new
+    end
+
+    def bridge_db_connection
+      VBridgeDB.new
     end
 
   end

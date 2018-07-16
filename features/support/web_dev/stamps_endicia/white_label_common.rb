@@ -23,7 +23,7 @@ module WhiteLabel
 
     def source_id_query(source_id)
       if source_id.nil?
-        source_id = WhiteLabel.db_connection.execute(
+        source_id = WhiteLabel.sdc_db_connection.execute(
           "select TOP 1 *
           from [dbo].sdct_SW_Source as sw_source
           inner join [dbo].sdct_SW_Offer as sw_offer on sw_offer.OfferId = sw_source.OfferId
@@ -32,7 +32,7 @@ module WhiteLabel
           return item['SourceId'], item['Content']
         end
       else
-        source_id = WhiteLabel.db_connection.execute(
+        source_id = WhiteLabel.sdc_db_connection.execute(
           "select *
           from [dbo].sdct_SW_Source as sw_source
           inner join [dbo].sdct_SW_Offer as sw_offer on sw_offer.OfferId = sw_source.OfferId
@@ -40,6 +40,16 @@ module WhiteLabel
         source_id.each do |item|
           return item['SourceId'], item['Content']
         end
+      end
+    end
+
+    def username_query(username)
+      username = WhiteLabel.bridge_db_connection.execute(
+          "SELECT *
+           FROM [Bridge].[dbo].[sdct_Bridge_User]
+           where UserName = '#{username}'")
+      username.each do |item|
+        return item['UserName']
       end
     end
 

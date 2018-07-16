@@ -40,6 +40,22 @@ sql_server_sdcwebsite:
      password: Qa@zure!
      azure: true
 
+sql_server_vbridge:
+   qacc:
+      server: qa-clientdb08-v
+      database: Bridge
+      port: 1433
+      username: corp\lab
+      password: Sdcqatest623
+      azure: false
+   stg:
+     server: vbridgedb.staging.stamps.com
+     database: Bridge
+     port: 1433
+     username: corp\lab
+     password: Sdcqatest623
+     azure: false
+
 download:
   download_file_path: C:\Stamps\download\
 
