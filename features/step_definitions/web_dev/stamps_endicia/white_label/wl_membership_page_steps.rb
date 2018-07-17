@@ -194,9 +194,9 @@ Then /^WL: if username taken is present then set username to (?:random value|(.*
     membership_page.new_username.wait_until_present(timeout: 5)
     expect(membership_page.username_taken_header).to be_present, 'Username Taken Modals is NOT PRESENT for an EXISTING USER'
     membership_page.new_username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
+    print "UserName = #{TestData.hash[:username]}\n"
     step 'WL: click username taken continue button'
   end
-  print "UserName = #{TestData.hash[:username]}\n"
 end
 
 Then /^WL: click username taken continue button$/ do
