@@ -434,14 +434,12 @@ Then /^[Ee]xpect Print form International Phone Field is present$/ do
   #expect(stamps.mail.print_form.mail_to.int_mail_address.phone).to be_present, "Print form International Phone Field is NOT present"
 end
 
-Then /^[Ss]ave Print Form Total Cost$/ do
-  pending
-  #TestData.hash[:total_ship_cost] = stamps.mail.mail_toolbar.total
+Then /^save print form total cost$/ do
+  TestData.hash[:total_ship_cost] = SdcMail.statusbar.total.text_value.dollar_amount_str.to_f
 end
 
-Then /^[Ss]ave Print Form Mail From$/ do
-  pending
-  #TestData.hash[:ship_from] = stamps.mail.print_form.mail_from.textbox.text
+Then /^save print form mail from$/ do
+  TestData.hash[:ship_from] = SdcMail.print_form.mail_from.text_field.text_value
 end
 
 Then /^[Cc]lick on [Bb]uy [Mm]ore [Ll]abels link$/ do
