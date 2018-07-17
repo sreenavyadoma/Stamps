@@ -1,13 +1,13 @@
-Feature: Registration Membership page validation Theme 1632
+Feature: Stamps WebReg: Membership Page
 
   Background:
-    Given I loaded the default registration page
+    Given Start test driver
 
-  @registration_ui_validation_membership_page
+  @sdcwr_normal_workflow_membership_page_ui_validation
   Scenario: Membership Page Validation
 
     # Profile Page
-    Then set Profile page Email to random value
+    Then WL: set profile page email to random value
     Then set Profile page Username to random value
     Then set Profile page Password to random value
     Then set Profile page Re-type password to same as previous password
