@@ -83,18 +83,41 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to a random country i
   step "set order details domestic ship-to country to #{TestData.hash[:country]}"
 end
 
-Then /^expect exact address not found module to appear/ do
-  expect(SdcWebsite.exact_address_not_found.title).to be_present, "Exact Address Not Found modal is not present!"
+Then /^set order details ship-to ambiguous address to$/ do |table|
+  address = TestHelper.format_address(table.hashes.first)
+  order_details = SdcOrders.order_details
+  exact_address_not_found = SdcWebsite.exact_address_not_found
+  order_details.ship_to.domestic.address.set(address)
+  3.times do
+    order_details.weight_label.double_click
+    order_details.service_label.double_click
+    order_details.reference_no.double_click
+    order_details.ship_to_label.double_click
+    order_details.ship_to.domestic.address.set(address)
+    order_details.order_id.double_click
+    order_details.title.double_click
+    exact_address_not_found.title.safe_wait_until_present(timeout: 1)
+    break if exact_address_not_found.title.present?
+  end
+  step 'expect exact address not found window title is Exact Address Not Found'
+  TestData.hash[:ship_to_domestic] = address
 end
 
-Then /^in exact address not found module, select row (\d+)$/ do |row|
-  SdcWebsite.exact_address_not_found.address(row).set
-  expect(SdcWebsite.exact_address_not_found.address(row)).to be_set, "Address row wasn't selected!"
+Then /^expect exact address not found window title is (.+)$/ do |str|
+  result = SdcWebsite.exact_address_not_found.title.text_value
+  expect(result).to eql(str)
 end
 
-Then /^in exact address not found module click accept$/ do
+Then /^select exact address not found row (\d+)$/ do |row|
+  element = SdcWebsite.exact_address_not_found.address(row)
+  element.set
+  result = element.value.to_i + 1
+  expect(result).to eql(row)
+end
+
+Then /^click exact address not found accept button$/ do
   SdcWebsite.exact_address_not_found.accept.click
-  expect(SdcWebsite.exact_address_not_found.title).not_to be_present, "Address modal is still present"
+  expect(SdcWebsite.exact_address_not_found.title).not_to be_present
 end
 
 

@@ -474,11 +474,11 @@ Feature:  BVT tests for Orders
     Then sign-in to orders
     Then add new order
     Then set order details ship-to ambiguous address to
-      | full_name       | company  | street_address      | city          | state | zip   | country       | phone           |  email            |
-      | Juan Dela Cruz | Betfair  | 1390 Market Street  | San Francisco | CA    | 94102 | United States | (415) 123-5555  | rtest@stamps.com  |
-    Then expect exact address not found module to appear
-    Then in exact address not found module, select row 2
-    Then in exact address not found module click accept
+      | full_name      | company  | street_address      | city          | state | zip   | country       | phone           |  email           |
+      | Juan Dela Cruz | Betfair  | 1390 Market Street  | San Francisco | CA    | 94102 | United States | (415) 123-5555  | rtest@stamps.com |
+    Then expect exact address not found window title is Exact Address Not Found
+    Then select exact address not found row 2
+    Then click exact address not found accept button
     Then set order details service to PM Package
     Then expect orders grid recipient is Juan Dela Cruz
     Then expect orders grid company is Betfair

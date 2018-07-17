@@ -177,14 +177,6 @@ Then /^set order details ship-to domestic address to$/ do |table|
   TestData.hash[:state] = state
 end
 
-Then /^set Order Details Ship-To ambiguous address to$/ do |table|
-  address = TestHelper.format_address(table.hashes.first)
-  order_details = SdcOrders.order_details
-  order_details.ship_to.domestic.address.set(address)
-  step 'blur out on order details form'
-  TestData.hash[:ship_to_domestic] = address
-end
-
 Then /^set order details ship-to text area to (.*)$/ do |address|
   address = TestHelper.format_address(address)
   ship_to = SdcOrders.order_details.ship_to
