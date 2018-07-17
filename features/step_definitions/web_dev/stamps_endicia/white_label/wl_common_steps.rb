@@ -34,7 +34,7 @@ Then /^WL: navigates to default registration page for stamps with the following 
   SDCWWebsite.visit
   common_page.stamps_logo.wait_until_present(timeout: 10)
 
-  expect(SdcPage.browser.url).to include(TestData.hash[:target_url])
+  expect(SdcPage.browser.url).to include(TestData.hash[:target_url].to_s)
 
   common_page.get_started.click!
 
