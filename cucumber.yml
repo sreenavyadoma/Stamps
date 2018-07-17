@@ -228,6 +228,7 @@ rates_pmi_comm_plus_group_16:  --tags @rates_pmi_comm_plus_group_16 --guess LOG_
 rates_pmi_comm_plus_group_17:  --tags @rates_pmi_comm_plus_group_17 --guess LOG_LEVEL=info HEALTHCHECK=true
 
 rates_fcm_package:   --tags @rates_fcm_package --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_mail_fcm_package:   --tags @rates_mail_fcm_package --guess LOG_LEVEL=info HEALTHCHECK=true
 
 bvt_mail_piece_validation: --tags @bvt_mail_piece_validation --guess  HEALTHCHECK=true PRINTER=factory
 
