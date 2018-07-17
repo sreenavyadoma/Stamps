@@ -460,7 +460,7 @@ Feature: BVT for Mail page
     Then sign out
 
   @mobile_mail_smoke_test
-  @mail_bvt_stamps
+
   Scenario: Print form Specify Postage
     Then select print on Stamps
 
