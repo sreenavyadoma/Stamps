@@ -32,7 +32,9 @@ module WhiteLabel
     text_field(:address, tag: :text_field, required: true) { { id: 'street' } }
     page_object(:address_help_block) { {xpath: '//li[@id="personalinfo"]/div/div[4]/div/div/span'} }
     text_field(:city, tag: :text_field, required: true) { { id: 'city' } }
+    page_objects(:city_help_block, index: 0) { {xpath: '//div[@class="col-xs-12 col-lg-5 gut-lg-form-r-half"]/div/div/span'} }
     page_object(:state) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="state"]'}}
+    page_objects(:state_help_block, index: 0) { {xpath:  '//div[@class="col-xs-12 col-sm-6 col-lg-3 gut-sm-form-r-half gut-lg-form-half"]/div[1]/div/span'} }
     text_field(:zip, tag: :text_field) { { id: 'zip' } }
     text_field(:phone, tag: :text_field, required: true) { { id: 'phone' } }
     text_field(:cc_holder_name, tag: :text_field, required: true) { { id: 'ccName' } }
@@ -49,7 +51,9 @@ module WhiteLabel
     page_object(:billing_addr_header) {{id: 'billingAddressForm'}}
     text_field(:billing_addr, tag: :text_field, required: true) { { id: 'billingStreet' } }
     text_field(:billing_city, tag: :text_field, required: true) { { id: 'billingCity' } }
+    page_objects(:billing_city_help_block, index: 1) { {xpath: '//div[@class="col-xs-12 col-lg-5 gut-lg-form-r-half"]/div/div/span'} }
     page_object(:billing_state) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="billingState"]'}}
+    page_objects(:billing_state_help_block, index: 1) { {xpath:  '//div[@class="col-xs-12 col-sm-6 col-lg-3 gut-sm-form-r-half gut-lg-form-half"]/div[1]/div/span'} }
     text_field(:billing_zip, tag: :text_field, required: true) { { id: 'billingZip' } }
 
 
