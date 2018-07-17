@@ -113,11 +113,13 @@ Then /^select exact address not found row (\d+)$/ do |row|
   element.set
   result = element.value.to_i + 1
   expect(result).to eql(row)
+  expect(element.set?).to eql(true)
 end
 
 Then /^click exact address not found accept button$/ do
-  SdcWebsite.exact_address_not_found.accept.click
-  expect(SdcWebsite.exact_address_not_found.title).not_to be_present
+  exact_address_not_found = SdcWebsite.exact_address_not_found
+  exact_address_not_found.accept.click
+  expect(exact_address_not_found.title).not_to be_present
 end
 
 
