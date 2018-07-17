@@ -168,7 +168,7 @@ Feature:  Mail BVT
 #    Then expect Print form Domestic Address field displays Address Cleansing, BVT, 1350 Market Street, San Francisco, CA 94102-5401
     Then Sign out
 
-  @sdc_mail_bvt_stamps
+  @mail_bvt_stamps
   Scenario: Mail BVT-Stamps
     Then sign-in to mail
     Then select print on Stamps
