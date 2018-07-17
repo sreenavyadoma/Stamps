@@ -39,9 +39,11 @@ module WhiteLabel
     text_field(:phone, tag: :text_field, required: true) { { id: 'phone' } }
     page_object(:phone_help_block) {{xpath: '//li[@id="personalinfo"]/div/div[8]/div/div/span'}}
     text_field(:cc_holder_name, tag: :text_field, required: true) { { id: 'ccName' } }
-    page_object(:cc_holder_block) {{xpath: '//li[@id="creditcard"]/div/div[contains(@class, "col-xs-12")]/div[contains(@class, "form-group has-error")]/div/span'}}
+    page_object(:cc_holder_help_block) {{xpath: '//li[@id="creditcard"]/div/div[contains(@class, "col-xs-12")]/div[contains(@class, "form-group has-error")]/div/span'}}
     text_field(:cc_number, tag: :text_field, required: true) { { id: 'ccNumber' } }
+    page_object(:cc_number_help_block) {{xpath: '//li[@id="creditcard"]/div/div[2]/div/div[2]/span'}}
     page_object(:cc_month) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="ccMonth"]'}}
+    page_object(:cc_month_help_block) {{xpath: '//div[contains(@class, "gut-xs-form-r-half")]/div/div[2]/span'}}
     page_object(:cc_year) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="ccYear"]'}}
     page_object(:use_mailing_address_for_billing) {{id: 'useMailingAddressForBilling'}}
     page_object(:terms_conditions) {{id: 'termsConditions'}}
