@@ -399,13 +399,13 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:total_ship_cost]] = (TestData.hash[:total_ship_cost].to_f * 100).round / 100.0
 
           # Set weight to 0
-          if SdcEnv.sdc_app == :mail
-            step "set print form pounds to 0"
-            step "set print form ounces to 0"
-          elsif SdcEnv.sdc_app == :orders
-            step "set order details pounds to 0"
-            step "set order details ounces to 0"
-          end
+          # if SdcEnv.sdc_app == :mail
+          #   step "set print form pounds to 0"
+          #   step "set print form ounces to 0"
+          # elsif SdcEnv.sdc_app == :orders
+          #   step "set order details pounds to 0"
+          #   step "set order details ounces to 0"
+          # end
           expectation_f = (TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:zone]].to_f * 100).round / 100.0
           total_ship_cost_f = (TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:total_ship_cost]].to_f * 100).round / 100.0
 
