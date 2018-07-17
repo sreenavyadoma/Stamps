@@ -357,7 +357,7 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           SdcLogger.info "#{"#" * 50}"
 
           if TestHelper.is_whole_number?(weight_lb)
-            weight_lb = weight_lb.to_f
+            weight_lb = weight_lb.to_i
             TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:weight_lb]] = weight_lb
             TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:weight]] = "#{weight_lb} lb."
             step "set order details pounds to #{weight_lb}"  if SdcEnv.sdc_app == :orders
@@ -391,7 +391,8 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           end unless row[@rate_sheet_columns[:tracking]].nil?
           # Write tracking to spreadsheet
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:tracking_selected]] = TestData.hash[:tracking]
-          sleep(0.525)
+          # sleep(0.525)
+          step 'pause for 1 second'
           # get total cost actual value from UI
           step 'Save Order Details data' if SdcEnv.sdc_app == :orders
           step "save print form total cost" if SdcEnv.sdc_app == :mail
@@ -435,7 +436,7 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
   end
 
   result_sheet = param_sheet.gsub(/\s+/, "")
-  @result_filename = "#{data_for(:rates_test, {})['results_dir']}\\#{result_sheet}_#{ENV['WEB_APP'].downcase}_#{ENV['URL'].downcase}_Zone_#{zone}_#{Time.now.strftime("%Y.%m.%d.%H.%M")}.xls"
+  @result_filename = "#{data_for(:rates_test, {})['results_dir']}\\#{result_sheet}_#{SdcEnv.sdc_app.downcase}_#{ENV['URL'].downcase}_Zone_#{zone}_#{Time.now.strftime("%Y.%m.%d.%H.%M")}.xls"
   TestData.hash[:result_file].write @result_filename
   TestData.hash[:result_sheet].each_with_index do |row, row_number|
     begin
