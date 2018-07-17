@@ -15,6 +15,7 @@ end
 
 When /^[Cc]lick [Mm]ail [Pp]rint modal Print [Bb]utton$/ do
   SdcMail.modals.print.button.click
+  sleep(3.5)
 end
 
 Then /^set mail print modal printer ?(?:|(.*))$/ do |str|
