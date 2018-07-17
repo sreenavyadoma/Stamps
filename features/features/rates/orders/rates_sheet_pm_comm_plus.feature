@@ -1,7 +1,10 @@
 Feature: PM Comm Plus Rates
 
   Background:
-    Given Login and configure rate tests
+    Given Start test driver
+    Given sign-in to mail
+    Given excel rate sheet is loaded
+    Given prepare environment for ratings test
 
   @rates_pm_comm_plus_zone_1
   Scenario: PM Comm Plus Zone 1
