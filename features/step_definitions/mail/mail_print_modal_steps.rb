@@ -14,15 +14,22 @@ Then /^[Ee]xpect [Pp]rint [Ff]orm [Ww]arning [Mm]essage is (.*)/ do |str|
 end
 
 When /^[Cc]lick [Mm]ail [Pp]rint modal Print [Bb]utton$/ do
-  stamps.mail.mail_toolbar.print_postage.print
+  SdcMail.modals.print.button.click
 end
 
-Then /^[Ss]et [Mm]ail [Pp]rint modal Printer ?(?:|(.*))$/ do |printer|
-  TestData.hash[:printer] = printer.nil? ? SdcEnv.printer : printer
-  expect(TestData.hash[:printer]).to match(/\\.+\.*/) if TestData.hash[:printer].include?('\\')
-  step "expect mail print modal is present"
-  expect(stamps.mail.mail_toolbar.print_postage.mail_printer).to be_present, "Unable to print on printer #{TestData.hash[:printer]}. Check that StampsConnect is pointing to #{SdcEnv.env} on this PC."
-  expect(stamps.mail.mail_toolbar.print_postage.mail_printer.select_printer(TestData.hash[:printer])).to_not be(false), "Unable to select printer #{printer}. The printer does not exist in Printer drop-down list of values."
+Then /^set mail print modal printer ?(?:|(.*))$/ do |str|
+  #step "expect orders print modal is present"
+  #step "orders print modal printer dropdown is present"
+  expect(TestData.hash[:printer] = (str.nil?) ? SdcEnv.printer : str).to_not be_nil, "PRINTER parameter is not defined. Printing tests must define PRINTER value either in cucumber.yml file or in Jenkins."
+  if TestData.hash[:printer].include?('\\') #validate printer format
+    expect(TestData.hash[:printer]).to match(/\\.+\.*/)
+    TestData.hash[:printer] = /\\\\(.+)\\/.match(TestData.hash[:printer])[1]
+  end
+  printer = SdcMail.modals.print.printer
+  printer.selection_element(value: TestData.hash[:printer])
+  printer.drop_down.click unless printer.selection.present?
+  printer.selection.click
+  expect(printer.text_field.text_value).to include(TestData.hash[:printer]), "Unable to select printer \"#{TestData.hash[:printer]}\". \nMake sure \"#{TestData.hash[:printer]}\" is configured for host #{SdcEnv.hostname}. \nUSR: #{TestData.hash[:username]}, #{SdcEnv.sdc_app.to_s.capitalize}(#{SdcEnv.env.upcase})"
 end
 
 Then /^[Cc]lose [Mm]ail [Pp]rint [Mm]odal$/ do

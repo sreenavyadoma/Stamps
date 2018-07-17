@@ -2,8 +2,8 @@ module SdcMail
   module SdcMailFloatingModals
 
     class PrintModalPrinter < SdcPage
-      page_object(:text_field, tag: :text_field) { {xpath: '//input[contains(@name="printers")]' } }
-      page_object(:drop_down) { { id: 'sdc-printpostagewindow-printerdroplist-trigger-picker' } }
+      page_object(:text_field) { {xpath: '//input[contains(@name, "printers")]' } }
+      page_object(:drop_down) { { xpath: '//input[contains(@name, "printers")]/parent::*/parent::*/div[contains(@id, "trigger-picker")]' } }
 
       def selection_element(name: :selection, value: 'factory')
         page_object(name) { { xpath: "//li[text()='#{value}']" } }
@@ -20,13 +20,12 @@ module SdcMail
     end
 
     class MailPrintModal < SdcPage
-      page_object(:search_option) { {xpath: '//div[contains(@class, "x-title-text")]'} }
-      page_object(:title) { { xpath: '//div[contains(@id, "printwindow")]//div[contains(text(),"You have")]' } }
-      page_object(:print) { { id: 'sdc-printwin-printbtn-btnWrap' } }
+      page_object(:title) { { xpath: '//div[contains(@id, "title")]//div[contains(text(),"Print")]' } }
+      page_object(:button) { { xpath: '//span[contains(@id, "sdc-printwin-printbtn-btnInnerEl")]' } }
       page_object(:close) { { xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]' } }
 
-      def print_on
-        PrintModalPrintOn.new
+      def paper_tray
+        PrintModalPaperTray.new
       end
 
       def printer

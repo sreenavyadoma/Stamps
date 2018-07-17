@@ -175,22 +175,22 @@ Feature:  Mail BVT
 
     Then set print form serial number to C12345
     Then select print form specify postage amount
-    #Then set Print form Mail-From to default
+    Then set Print form Mail-From to Automation - El Segundo, CA
     Then select print form service Media Mail
     Then set print form stamp amount to 2.85
     Then set print form stamp quantity to 1
     Then click mail statusbar print stamps
-    Then set Mail Print modal Printer
-    #Then click Mail Print modal Print button
+    Then set mail print modal printer
+    Then click Mail Print modal Print button
 
     Then set print form serial number to B12345
     Then select print form calculate postage amount
-    #Then set Print form Mail-From to default
+    Then set Print form Mail-From to Automation - El Segundo, CA
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
-    #Then Print Postage
-    #Then set Mail Print modal Printer
-    #Then click Mail Print modal Print button
+    Then click mail statusbar print stamps
+    Then set mail print modal printer
+    Then click Mail Print modal Print button
 
     Then sign out
 
