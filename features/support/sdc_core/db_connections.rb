@@ -79,6 +79,50 @@ module SdcCore
     end
   end
 
+  class SdcWebsiteDB < BasicObject
+    def initialize
+      env = ::SdcEnv.env.to_s
+      server = data_for(:sql_server_sdcwebsite, {})[env]['server']
+      database = data_for(:sql_server_sdcwebsite, {})[env]['database']
+      port = data_for(:sql_server_sdcwebsite, {})[env]['port']
+      username = data_for(:sql_server_sdcwebsite, {})[env]['username']
+      password = data_for(:sql_server_sdcwebsite, {})[env]['password']
+      azure = data_for(:sql_server_sdcwebsite, {})[env]['azure']
+      @connection = SQLServerClient.new(server: server, database: database, username: username, password: password, port: port, azure:azure)
+    end
+
+    def respond_to_missing?(name, include_private = false)
+      @connection.respond_to?(name, include_private) || super
+    end
+
+    def method_missing(name, *args, &block)
+      super unless @connection.respond_to?(name)
+      @connection.send(name, *args, &block)
+    end
+  end
+
+  class VBridgeDB < BasicObject
+    def initialize
+      env = ::SdcEnv.env.to_s
+      server = data_for(:sql_server_vbridge, {})[env]['server']
+      database = data_for(:sql_server_vbridge, {})[env]['database']
+      port = data_for(:sql_server_vbridge, {})[env]['port']
+      username = data_for(:sql_server_vbridge, {})[env]['username']
+      password = data_for(:sql_server_vbridge, {})[env]['password']
+      azure = data_for(:sql_server_vbridge, {})[env]['azure']
+      @connection = SQLServerClient.new(server: server, database: database, username: username, password: password, port: port, azure:azure)
+    end
+
+    def respond_to_missing?(name, include_private = false)
+      @connection.respond_to?(name, include_private) || super
+    end
+
+    def method_missing(name, *args, &block)
+      super unless @connection.respond_to?(name)
+      @connection.send(name, *args, &block)
+    end
+  end
+
 end
 
 
