@@ -37,15 +37,15 @@ Then /^select print on (.+)$/ do |str|
     end
     print_on.drop_down.safe_click
     # select print on
-    #print_on.selection(:selection_element, str)
-    #print_on.text_field.click
-    #print_on.text_field.set_attribute('value', '')
-    #print_on.text_field.set str
-    #print_on.selection_element.safe_wait_until_present(timeout: 1)
-    #print_on.selection_element.click
+    print_on.selection(:selection_element, str)
+    print_on.text_field.click
+    print_on.text_field.set_attribute('value', '')
+    print_on.text_field.set str
+    print_on.selection_element.safe_wait_until_present(timeout: 1)
+    print_on.selection_element.click
   end
   expect(print_on.text_field.text_value).to eql(str) unless str.include? 'Manage'
-  step 'blur out on print form'
+  #step 'blur out on print form'
   TestData.hash[:print_media] = str
 end
 
