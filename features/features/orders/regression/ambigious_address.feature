@@ -7,8 +7,8 @@ Feature: Ambigious Address
   Scenario: Exact Address Not Found
     Then add new order
     #Then set order details ship-from to Automation - El Segundo, CA
-    Then set Order Details Ship-To ambiguous address to
-      | full_name            | company                 | street_address      | city          | state | zip   | country       | phone  |  email |
+    Then set order details ship-to ambiguous address to
+      | full_name       | company                 | street_address      | city          | state | zip   | country       | phone  |  email |
       | Hillary Clinton | The White House         | 1390 Market Street  | San Francisco | CA    | 94102 | United States |        |        |
     Then expect exact address not found module to appear
     Then in exact address not found module, select row 1

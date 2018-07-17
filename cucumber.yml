@@ -19,7 +19,7 @@ samsung_galaxy_sauce: --tags @saucelabs_poc SAUCE_DEVICE=samsung_galaxy_sauce LO
 # USR=abqaprod1 PW=password1
 
 #rob: --tags @bvt_shipstation_updates_domestic URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgvoc0kcnt6rw PW=pass111 PRINTER=factory  #stgee1mtqvwdc0 stgvoc0kcnt6rw stgshipint001
-rob: --tags @bvt_shipstation_updates_domestic URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=AutoSAS_ST07 PW=pass111 PRINTER=factory  #stgee1mtqvwdc0 stgvoc0kcnt6rw stgshipint001
+rob: --tags @bvt_ambigious_address URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgvoc0kcnt6rw PW=pass111 PRINTER=factory  #stgee1mtqvwdc0 stgvoc0kcnt6rw stgshipint001
 
 #  stgvoc0kcnt6rw stgupr2smgtub
 saucelabs: --tags @saucelabs LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug

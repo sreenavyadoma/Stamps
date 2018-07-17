@@ -83,6 +83,10 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to a random country i
   step "set order details domestic ship-to country to #{TestData.hash[:country]}"
 end
 
+Then /^expect exact address not found module to appear/ do
+  expect(SdcWebsite.exact_address_not_found.title).to be_present, "Exact Address Not Found modal is not present!"
+end
+
 Then /^in exact address not found module, select row (\d+)$/ do |row|
   SdcWebsite.exact_address_not_found.address(row).set
   expect(SdcWebsite.exact_address_not_found.address(row)).to be_set, "Address row wasn't selected!"
@@ -351,12 +355,6 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails Panel is present$/ do
   # stamps.orders.order_details.wait_until_present(2)
   # step 'expect order details is present'
   # expect(stamps.orders.order_details).to be_present
-end
-
-Then /^expect exact address not found module to appear/ do
-  pending
-  #step 'expect order details is present'
-  # expect(SdcWebsite.exact_address_not_found.title).to be_present, "Exact Address Not Found modal is not present!"
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ii]nsure-[Ff]or [Cc]ost is (?:correct|(\d+\.\d{2}))$/ do |expectation|
