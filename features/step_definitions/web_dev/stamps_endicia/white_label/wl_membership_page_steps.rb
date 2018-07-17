@@ -202,3 +202,11 @@ end
 Then /^WL: click username taken continue button$/ do
   WhiteLabel.membership_page.username_taken_continue_btn.click
 end
+
+Then /^WL: uncheck membership page billing address same as mailing address$/ do
+  WhiteLabel.membership_page.billing_addr_checkbox.uncheck
+end
+
+Then /^WL: expect membership page billing address same as mailing address is checked$/ do
+    expect(WhiteLabel.membership_page.billing_addr_checkbox.checked?).to eql(true)
+end

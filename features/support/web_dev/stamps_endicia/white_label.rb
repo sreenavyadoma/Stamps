@@ -25,14 +25,21 @@ module WhiteLabel
     page_object(:header) { {xpath: '//h1[(contains(text(), "Set up your personal Post Office"))]'} }
     page_object(:membership_bread_crumb) { {xpath: '//li[@id="breadcrumb_Membership"]/span'} }
     text_field(:first_name, tag: :text_field, required: true) { { id: 'firstName' } }
+    page_object(:first_name_help_block) { {xpath: '//div[@class="col-xs-12 col-sm-6 gut-sm-form-r-half"]/div/div/span'} }
     text_field(:last_name, tag: :text_field, required: true) { { id: 'lastName' } }
+    page_object(:last_name_help_block) { {xpath: '//div[@class="col-xs-12 col-sm-6 gut-sm-form-l-half"]/div/div/span'} }
     text_field(:company, tag: :text_field) { { id: 'companyName' } }
     text_field(:address, tag: :text_field, required: true) { { id: 'street' } }
+    page_object(:address_help_block) { {xpath: '//li[@id="personalinfo"]/div/div[4]/div/div/span'} }
     text_field(:city, tag: :text_field, required: true) { { id: 'city' } }
+    page_object(:city_help_block) { {xpath: '//*[@id="personalinfo"]/div/div[contains(@class, "col-lg-5")]/div/div/span'} }
     page_object(:state) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="state"]'}}
+    page_object(:state_help_block) { {xpath:  '//*[@id="personalinfo"]/div/div[contains(@class, "col-lg-3")]/div/div[@class="help-block filled"]/span'} }
     text_field(:zip, tag: :text_field) { { id: 'zip' } }
     text_field(:phone, tag: :text_field, required: true) { { id: 'phone' } }
+    page_object(:phone_help_block) {{xpath: '//li[@id="personalinfo"]/div/div[8]/div/div/span'}}
     text_field(:cc_holder_name, tag: :text_field, required: true) { { id: 'ccName' } }
+    page_object(:cc_holder_block) {{xpath: '//li[@id="creditcard"]/div/div[contains(@class, "col-xs-12")]/div[contains(@class, "form-group has-error")]/div/span'}}
     text_field(:cc_number, tag: :text_field, required: true) { { id: 'ccNumber' } }
     page_object(:cc_month) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="ccMonth"]'}}
     page_object(:cc_year) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="ccYear"]'}}
@@ -40,6 +47,16 @@ module WhiteLabel
     page_object(:terms_conditions) {{id: 'termsConditions'}}
     button(:back) {{id: 'prev'}}
     button(:submit) {{id: 'next'}}
+
+    #Billing Address
+    page_object(:billing_addr_checkbox) {{id: 'useMailingAddressForBilling'}}
+    page_object(:billing_addr_header) {{id: 'billingAddressForm'}}
+    text_field(:billing_addr, tag: :text_field, required: true) { { id: 'billingStreet' } }
+    text_field(:billing_city, tag: :text_field, required: true) { { id: 'billingCity' } }
+    page_objects(:billing_city_help_block, index: 1) { {xpath: '//div[@class="col-xs-12 col-lg-5 gut-lg-form-r-half"]/div/div/span'} }
+    page_object(:billing_state) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="billingState"]'}}
+    page_objects(:billing_state_help_block, index: 1) { {xpath:  '//div[@class="col-xs-12 col-sm-6 col-lg-3 gut-sm-form-r-half gut-lg-form-half"]/div[1]/div/span'} }
+    text_field(:billing_zip, tag: :text_field, required: true) { { id: 'billingZip' } }
 
     #username taken
     page_object(:username_taken_header) { {xpath: '//h3[(contains(text(), "Username Taken"))]'} }
@@ -59,7 +76,6 @@ module WhiteLabel
     button(:addr_std_continue) {{id: 'btnAddrValOkay'}}
     button(:addr_std_cancel) {{xpath: '//div[@class="modal-footer"]/button[1]'}}
     page_objects(:addr_std_close, index: 1) {{xpath: '//button[@class="close"]'}}
-
 
     #postage meter address
     page_object(:meter_header) { {xpath: '//h1[(contains(text(), "An additional postage meter address is required"))]'} }
