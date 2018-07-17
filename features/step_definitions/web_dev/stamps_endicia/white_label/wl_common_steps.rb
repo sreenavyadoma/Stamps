@@ -97,24 +97,11 @@ Then /^WL: expect user is singed in to print$/ do
     SdcPage.browser.alert.close
   end
 
-  print_stamps_logo =  WhiteLabel.common_page.print_stamps_logo
-  print_stamps_logo.wait_until_present(timeout: 10) rescue false
-
-  if print_stamps_logo.present? == false
-    SdcPage.browser.refresh
-  end
-
-  WhiteLabel.choose_supplies.place_order.wait_until_present(timeout: 5) rescue false
-  if WhiteLabel.choose_supplies.place_order.present?
-    WhiteLabel.choose_supplies.place_order.wait_until_present(timeout: 10)
-    WhiteLabel.choose_supplies.place_order.click!
-  end
-
   if WhiteLabel.common_page.account_created_continue.present?
     WhiteLabel.common_page.account_created_continue.click
   end
 
-  print_stamps_logo.wait_until_present(timeout: 60) rescue false
+  WhiteLabel.common_page.print_stamps_logo.wait_until_present(timeout: 60) rescue false
 
   case  SdcEnv.env
     when :qacc

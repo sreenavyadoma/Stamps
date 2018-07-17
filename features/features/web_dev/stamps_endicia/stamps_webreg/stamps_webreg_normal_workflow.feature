@@ -33,7 +33,7 @@ Feature: Stamps WebReg: Normal Workflow
     #Address Standardized
     Then WL: check if address standardized is present then click continue
 
-    #postage meter address
+    #Postage Meter Address
     Then WL: check if postage meter address is present then set the value
 
     #Username  Taken
