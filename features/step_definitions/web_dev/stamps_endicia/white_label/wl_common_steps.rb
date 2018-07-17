@@ -79,7 +79,7 @@ Then /^WL: if security question is present before registration then set the valu
     step "WL: select security questions second security question What is your pet's name?"
     step 'WL: set security questions second security answer to random value'
   else
-    #ignore
+    expect(WhiteLabel.common_page.first_security_question).not_to be_present, 'First Security Question IS PRESENT before registration, when it should be PRESENT AFTER REGISTRATION'
   end
 end
 
@@ -91,7 +91,7 @@ Then /^WL: if security question is present after registration then set the value
     step 'WL: set security questions second security answer to random value'
     step 'WL: click security questions get stared button'
   else
-    #ignore
+    expect(WhiteLabel.common_page.second_security_question).not_to be_present, 'Second Security Question IS PRESENT after registration, when it should be PRESENT BEFORE REGISTRATION'
   end
 end
 
