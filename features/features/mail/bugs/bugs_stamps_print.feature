@@ -38,7 +38,7 @@ Feature: Stamps print media bugs
   #mail_print_stamps_l_series_calculate
     Then select print on Stamps
     Then set print form serial number to L12345
-    Then select Advanced Options Calculate Postage Amount
+    Then select advanced options calculate postage amount
     Then expect Print form service Media Mail is not present in dropdown list
 
   @bugs_stamps_print
@@ -47,7 +47,7 @@ Feature: Stamps print media bugs
    #mail_print_stamps_ml_series_calculate
     Then select print on Stamps
     Then set print form serial number to ML1234
-    Then select Advanced Options Calculate Postage Amount
+    Then select advanced options calculate postage amount
     Then expect Print form service Media Mail is not present in dropdown list
 
   @bugs_stamps_print

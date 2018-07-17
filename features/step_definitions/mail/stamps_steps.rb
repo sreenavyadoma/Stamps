@@ -36,20 +36,15 @@ Then /^set print form serial number to (.*)$/ do |str|
   SdcMail.print_form.serial_number.set(serial)
 end
 
-Then /^[Ss]et Print form Amount to (\d*.?\d+)$/ do |value|
-  # TestData.hash[:stamp_amount] = value
+# Then /^[Ss]et Print form Amount to (\d*.?\d+)$/ do |value|
+#   TestData.hash[:stamp_amount] = value
+#   stamps.mail.print_form.stamp_amount.set(TestData.hash[:stamp_amount])
+# end
 
-  pending
-    #stamps.mail.print_form.stamp_amount.set(TestData.hash[:stamp_amount])
-end
-
-Then /^[Ss]et Print form Quantity to (\d+)$/ do |value|
-  # TestData.hash[:quantity] = value
-  #
-  pending
-    #stamps.mail.print_form.quantity.set(TestData.hash[:quantity])
-end
-
+# Then /^[Ss]et Print form Quantity to (\d+)$/ do |value|
+#   TestData.hash[:quantity] = value
+#   stamps.mail.print_form.quantity.set(TestData.hash[:quantity])
+# end
 
 Then /^[Ee]xpect Print form Domestic Address field displays last printed contact$/ do
   pending
@@ -114,14 +109,14 @@ end
 
 
 Then /^select print form calculate postage amount$/ do
-  SdcMail.print_form.calculate_postage_amount.select
-  expect(SdcMail.print_form.calculate_postage_amount.selected?).to be_truthy
+  SdcMail.print_form.advanced_options.calculate_postage_amount.select
+  expect(SdcMail.print_form.advanced_options.calculate_postage_amount.selected?).to be_truthy
 end
 
 Then /^select print form specify postage amount$/ do
   step 'show advanced options'
-  SdcMail.print_form.specify_postage_amount.select
-  expect(SdcMail.print_form.specify_postage_amount.selected?).to be_truthy
+  SdcMail.print_form.advanced_options.specify_postage_amount.select
+  expect(SdcMail.print_form.advanced_options.specify_postage_amount.selected?).to be_truthy
 end
 
 Then /^set print form stamp amount ([\d.]+)$/ do |value|
