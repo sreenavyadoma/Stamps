@@ -11,12 +11,12 @@ Then /^WL: set profile page email to (?:random value|(.*))$/ do |str|
     email.set(TestData.hash[:email]=(str.nil?)?(TestHelper.rand_email) : str)
   end
 
-  print "Email = #{TestData.hash[:email]}"
+  print "Email = #{TestData.hash[:email]}\n"
 end
 
 Then /^WL: set profile page username to (?:random value|(.*))$/ do |str|
   WhiteLabel.profile_page.username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
-  print "UserName = #{TestData.hash[:username]}"
+  print "UserName = #{TestData.hash[:username]}\n"
 end
 
 Then /^WL: set profile page password to (?:random value|(.*))$/ do |str|
@@ -25,7 +25,7 @@ Then /^WL: set profile page password to (?:random value|(.*))$/ do |str|
   else
     WhiteLabel.profile_page.password.set (TestData.hash[:account_password]=(str.nil?) ? '1' + TestHelper.rand_alpha_numeric(min:6, max:10) : str)
   end
-  print "Password = #{TestData.hash[:account_password]}"
+  print "Password = #{TestData.hash[:account_password]}\n"
 end
 
 Then /^WL: set profile page re-type password to (?:same as previous password|(.*))$/ do |str|

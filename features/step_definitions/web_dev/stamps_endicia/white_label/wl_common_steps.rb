@@ -10,7 +10,7 @@ Then /^WL: navigates to default registration page for stamps with the following 
   step 'WL: establish stamps website db connection'
   common_page = WhiteLabel.common_page
   if str.nil?
-    TestData.hash[:source_id] , TestData.hash[:content], TestData.hash[:promo_code], TestData.hash[:offer_id]  = common_page.source_id_query(nil)
+    TestData.hash[:source_id] , TestData.hash[:content], TestData.hash[:promo_code], TestData.hash[:offer_id], TestData.hash[:target_url]  = common_page.source_id_query(nil)
     if TestData.hash[:content].include? 'SecurityQuestionsBeforeRegistration'
       hash = Hash.from_xml(TestData.hash[:content])
       TestData.hash[:security_questions_before_registration]  = hash['root']['SecurityQuestionsBeforeRegistration']
@@ -18,7 +18,7 @@ Then /^WL: navigates to default registration page for stamps with the following 
       TestData.hash[:security_questions_before_registration] = 'true'
     end
   else
-    TestData.hash[:source_id] , TestData.hash[:content], TestData.hash[:promo_code], TestData.hash[:offer_id]  = common_page.source_id_query(str)
+    TestData.hash[:source_id] , TestData.hash[:content], TestData.hash[:promo_code], TestData.hash[:offer_id], TestData.hash[:target_url]  = common_page.source_id_query(str)
     if TestData.hash[:content].include? 'SecurityQuestionsBeforeRegistration'
       hash = Hash.from_xml(TestData.hash[:content])
       TestData.hash[:security_questions_before_registration]  = hash['root']['SecurityQuestionsBeforeRegistration']
@@ -28,12 +28,17 @@ Then /^WL: navigates to default registration page for stamps with the following 
   end
 
   step 'WL: close stamps website db connection'
+
+  print "Sourceid = #{TestData.hash[:source_id]}\n"
+
   SDCWWebsite.visit
   common_page.stamps_logo.wait_until_present(timeout: 10)
+
+  expect(SdcPage.browser.url).to include(TestData.hash[:target_url])
+
   common_page.get_started.click!
 
   TestData.hash[:username_taken] = WhiteLabel.common_page.username_query(TestData.hash[:username])
-  print "Sourceid = #{TestData.hash[:source_id]}\n"
 end
 
 Then /^WL: select security questions first security question (.*)$/ do |str|

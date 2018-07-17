@@ -196,6 +196,7 @@ Then /^WL: if username taken is present then set username to (?:random value|(.*
     membership_page.new_username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
     step 'WL: click username taken continue button'
   end
+  print "UserName = #{TestData.hash[:username]}\n"
 end
 
 Then /^WL: click username taken continue button$/ do
