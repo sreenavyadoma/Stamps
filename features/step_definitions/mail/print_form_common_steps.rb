@@ -28,6 +28,14 @@ Then /^set print form pounds to (\d+\.?\d*)$/ do |lbs|
   TestData.hash[:lbs] = lbs
 end
 
+Then /^set print form pounds to (\d+) by arrows/ do |lbs|
+  iterations = lbs.to_i - SdcMail.print_form.weight.lbs.text_value.to_i
+  iterations.abs.times do SdcMail.print_form.weight.lbs.increment.click end if iterations > 0
+  iterations.abs.times do SdcMail.print_form.weight.lbs.decrement.click end if iterations < 0
+  step "expect print form pounds is #{lbs}"
+  TestData.hash[:lbs] = lbs
+end
+
 Then /^set print form ounces to (\d+\.?\d*)$/ do |oz|
   SdcMail.print_form.weight.oz.set(oz)
   TestData.hash[:oz] = oz
