@@ -177,7 +177,7 @@ Feature:  Mail BVT
     Then select print form specify postage amount
     Then set Print form Mail-From to Automation - El Segundo, CA
     Then select print form service Media Mail
-    Then set print form stamp amount to 2.85
+    Then set print form stamp amount to 3.00
     Then set print form stamp quantity to 1
     Then click mail statusbar print stamps
     Then set mail print modal printer
