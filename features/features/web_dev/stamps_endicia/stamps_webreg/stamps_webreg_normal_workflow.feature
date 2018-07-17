@@ -45,4 +45,4 @@ Feature: Stamps WebReg: Normal Workflow
     #Security Question after registration
     Then WL: if security question is present after registration then set the values
 
-    Then WL: expect user is singed in to print
+    Then WL: expect user is navigated to print page

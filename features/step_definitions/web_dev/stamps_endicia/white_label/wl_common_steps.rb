@@ -97,7 +97,7 @@ end
 
 
 
-Then /^WL: expect user is singed in to print$/ do
+Then /^WL: expect user is navigated to print page$/ do
   if SdcPage.browser.alert.exists?
     SdcPage.browser.alert.close
   end
