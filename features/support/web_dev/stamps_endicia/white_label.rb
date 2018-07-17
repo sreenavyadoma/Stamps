@@ -25,9 +25,12 @@ module WhiteLabel
     page_object(:header) { {xpath: '//h1[(contains(text(), "Set up your personal Post Office"))]'} }
     page_object(:membership_bread_crumb) { {xpath: '//li[@id="breadcrumb_Membership"]/span'} }
     text_field(:first_name, tag: :text_field, required: true) { { id: 'firstName' } }
+    page_object(:first_name_help_block) { {xpath: '//div[@class="col-xs-12 col-sm-6 gut-sm-form-r-half"]/div/div/span'} }
     text_field(:last_name, tag: :text_field, required: true) { { id: 'lastName' } }
+    page_object(:last_name_help_block) { {xpath: '//div[@class="col-xs-12 col-sm-6 gut-sm-form-l-half"]/div/div/span'} }
     text_field(:company, tag: :text_field) { { id: 'companyName' } }
     text_field(:address, tag: :text_field, required: true) { { id: 'street' } }
+    page_object(:address_help_block) { {xpath: '//li[@id="personalinfo"]/div/div[4]/div/div/span'} }
     text_field(:city, tag: :text_field, required: true) { { id: 'city' } }
     page_object(:state) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="state"]'}}
     text_field(:zip, tag: :text_field) { { id: 'zip' } }
@@ -40,6 +43,18 @@ module WhiteLabel
     page_object(:terms_conditions) {{id: 'termsConditions'}}
     button(:back) {{id: 'prev'}}
     button(:submit) {{id: 'next'}}
+
+    #Billing Address
+    page_object(:billing_addr_checkbox) {{id: 'useMailingAddressForBilling'}}
+    page_object(:billing_addr_header) {{id: 'billingAddressForm'}}
+    text_field(:billing_addr, tag: :text_field, required: true) { { id: 'billingStreet' } }
+    text_field(:billing_city, tag: :text_field, required: true) { { id: 'billingCity' } }
+    page_object(:billing_state) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="billingState"]'}}
+    text_field(:billing_zip, tag: :text_field, required: true) { { id: 'billingZip' } }
+
+
+
+
 
     #username taken
     page_object(:username_taken_header) { {xpath: '//h3[(contains(text(), "Username Taken"))]'} }
@@ -59,7 +74,6 @@ module WhiteLabel
     button(:addr_std_continue) {{id: 'btnAddrValOkay'}}
     button(:addr_std_cancel) {{xpath: '//div[@class="modal-footer"]/button[1]'}}
     page_objects(:addr_std_close, index: 1) {{xpath: '//button[@class="close"]'}}
-
 
     #postage meter address
     page_object(:meter_header) { {xpath: '//h1[(contains(text(), "An additional postage meter address is required"))]'} }

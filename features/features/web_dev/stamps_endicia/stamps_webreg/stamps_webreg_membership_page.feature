@@ -3,24 +3,27 @@ Feature: Stamps WebReg: Membership Page
   Background:
     Given Start test driver
 
-  @sdcwr_normal_workflow_membership_page_ui_validation
+  @sdcwr_membership_page_ui_validation
   Scenario: Membership Page Validation
 
     # Profile Page
+    Then WL: navigates to default registration page for stamps with the following source id 100-TES-WB001
     Then WL: set profile page email to random value
-    Then set Profile page Username to random value
-    Then set Profile page Password to random value
-    Then set Profile page Re-type password to same as previous password
-    Then set Profile page Survey Question to Both mailing and shipping
-    Then set How did you hear about us? to Magazine Ad
-    Then set Profile page Promo Code to PR33-NH77
+    Then WL: set profile page username to random value
+    Then WL: set profile page password to random value
+    Then WL: set profile page re-type password to same as previous password
+    Then WL: set profile page survey question to Both mailing and shipping
+    Then WL: set profile page how did you hear about us? to Magazine Ad
+    Then WL: set Profile page Promo Code to PR33-NH77
+
     Then continue to Membership page
 
     # Membership Page
     # Membership Page Validate Single Help block tooltips
-    Then uncheck Membership page Billing address same as mailing address
-    Then click Membership page Continue button
-    Then expect Membership page First Name tooltip to be This field is required
+    Then WL: expect membership page billing address same as mailing address is checked
+    Then WL: uncheck membership page billing address same as mailing address
+    Then WL: click membership page submit button
+    Then WL: expect Membership page First Name tooltip to be This field is required
     Then expect Membership page Last Name tooltip to be This field is required
     Then expect Membership page Address tooltip to be This field is required
     Then expect Membership page City tooltip to be This field is required
