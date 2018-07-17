@@ -53,8 +53,8 @@ module WhiteLabel
     #Billing Address
     page_object(:billing_addr_checkbox) {{id: 'useMailingAddressForBilling'}}
     page_object(:billing_addr_header) {{id: 'billingAddressForm'}}
-    page_object(:billing_addr_help_block) {{xpath: '//li[@id="creditcard"]/div/div[6]/div[contains(@class, "billingAddressForm")]/div/span'}}
     text_field(:billing_addr, tag: :text_field, required: true) { { id: 'billingStreet' } }
+    page_object(:billing_addr_help_block) {{xpath: '//li[@id="creditcard"]/div/div[6]/div[contains(@class, "billingAddressForm")]/div/span'}}
     text_field(:billing_city, tag: :text_field, required: true) { { id: 'billingCity' } }
     page_objects(:billing_city_help_block, index: 1) { {xpath: '//div[@class="col-xs-12 col-lg-5 gut-lg-form-r-half"]/div/div/span'} }
     page_object(:billing_state) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="billingState"]'}}
