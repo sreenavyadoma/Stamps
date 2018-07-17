@@ -351,10 +351,10 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
 
           # Set weight to 0
           # step "set order details pounds to 0" if SdcEnv.sdc_app == :orders
-          # step "set order details ounces to 0" if SdcEnv.sdc_app == :orders
+          step "set order details ounces to 0" if SdcEnv.sdc_app == :orders
           #
           # step "set print form pounds to 0" if SdcEnv.sdc_app == :mail
-          # step "set print form ounces to 0" if SdcEnv.sdc_app == :mail
+          step "set print form ounces to 0" if SdcEnv.sdc_app == :mail
 
           # Set weight per spreadsheet
           #row[@rate_sheet_columns[:weight_lb]].should_not be nil
