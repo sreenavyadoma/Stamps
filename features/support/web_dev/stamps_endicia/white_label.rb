@@ -82,7 +82,13 @@ module WhiteLabel
 
     #Side Credit Card
     page_object(:cc_info_header) { {xpath: '//h3[contains(text(), "Is my credit card information safe?")]'} }
-    page_object(:need_mailing_info_p) { {xpath:  '//li[@id="sidecreditcard"]/div[2]/p[1]'} }
+    page_object(:cc_info_header_p) { {xpath:  '//li[@id="sidecreditcard"]/div[2]/p[1]'} }
+    page_object(:pricing_and_billing_header) { {xpath: '//div[@id="pricing-and-billing"]/h3'} }
+    page_object(:pricing_and_billing_p) { {xpath:  '//div[@id="pricing-and-billing"]/p'} }
+    page_object(:cancel_anytime_header) { {xpath: '//li[@id="sidecreditcard"]/div/h3[2]'} }
+    page_object(:cancel_anytime_p) { {xpath: '//li[@id="sidecreditcard"]/div/p[2]'} }
+
+    link(:bonus_offer_details) { {id: 'offerDetails'} }
 
 
     #username taken
