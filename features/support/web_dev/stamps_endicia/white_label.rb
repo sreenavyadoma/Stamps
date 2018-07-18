@@ -72,6 +72,19 @@ module WhiteLabel
     text_field(:billing_zip, tag: :text_field, required: true) { { id: 'billingZip' } }
     page_object(:billing_state_help_block) { {xpath:  '//li[@id="creditcard"]/div/div[contains(@class, "col-lg-4")]/div/div/span'} }
 
+    #Side Mailing Info
+    page_object(:need_mailing_info_header) { {xpath:  '//div[@id="need-mailing-info"]/h3'} }
+    page_object(:need_mailing_info_p) { {xpath:  '//div[@id="need-mailing-info"]/p'} }
+    page_object(:change_mailing_addr_header) { {xpath:  '//div[@id="change-mailing-address"]/h3'} }
+    page_object(:change_mailing_addr_p) { {xpath:  '//div[@id="change-mailing-address"]/p'} }
+    page_object(:outside_my_office_header) { {xpath:  '//div[@id="outside-my-office"]/h3'} }
+    page_object(:outside_my_office_p) { {xpath:  '//div[@id="outside-my-office"]/p'} }
+
+    #Side Credit Card
+    page_object(:cc_info_header) { {xpath: '//h3[contains(text(), "Is my credit card information safe?")]'} }
+    page_object(:need_mailing_info_p) { {xpath:  '//li[@id="sidecreditcard"]/div[2]/p[1]'} }
+
+
     #username taken
     page_object(:username_taken_header) { {xpath: '//h3[(contains(text(), "Username Taken"))]'} }
     page_objects(:username_taken_p1, index: 0) { {id: 'prev-username'} }
