@@ -106,7 +106,7 @@ Then /^WL: expect user is navigated to print page$/ do
     WhiteLabel.common_page.account_created_continue.click
   end
 
-  WhiteLabel.common_page.print_stamps_logo.wait_until_present(timeout: 60) rescue false
+  WhiteLabel.common_page.print_stamps_logo.wait_until_present(timeout: 120) rescue false
 
   case  SdcEnv.env
     when :qacc
