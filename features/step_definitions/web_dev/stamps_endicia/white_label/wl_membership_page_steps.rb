@@ -82,8 +82,7 @@ Then /^WL: select membership page state (.*)$/ do |str|
 end
 
 Then /^WL: expect membership page state is (?:correct|(.*))$/ do |str|
-  state = WhiteLabel.membership_page.state
-  expect(membership_page.state.attribute_value('title').strip).to eql(str.nil? ? TestData.hash[:state] : str)
+  expect(WhiteLabel.membership_page.state.attribute_value('title').strip).to eql(str.nil? ? TestData.hash[:state] : str)
 end
 
 Then /^WL: expect membership page state tooltip to be (.*)$/ do |str|
@@ -91,15 +90,23 @@ Then /^WL: expect membership page state tooltip to be (.*)$/ do |str|
 end
 
 Then /^WL: set membership page zip to (.*)$/ do |str|
-  WhiteLabel.membership_page.zip.set(TestData.hash[:city] = str)
+  WhiteLabel.membership_page.zip.set(TestData.hash[:zip] = str)
 end
 
-Then /^WL: set membership page phone to (.*)$/ do |str|
-  WhiteLabel.membership_page.phone.set(TestData.hash[:phone] = str)
+Then /^WL: expect membership page zip is (?:correct|(.*))$/ do |str|
+  expect(WhiteLabel.membership_page.zip.text_value.strip).to eql(str.nil? ? TestData.hash[:zip] : str)
+end
+
+Then /^WL: set membership page phone to (?:random value|(.*))$/ do |str|
+  WhiteLabel.membership_page.phone.set(TestData.hash[:phone] = str.nil? ? TestHelper.rand_phone_format : str)
 end
 
 Then /^WL: expect membership page phone tooltip to be (.*)$/ do |str|
   expect(WhiteLabel.membership_page.phone_help_block.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect membership page phone is (?:correct|(.*))$/ do |str|
+  expect(WhiteLabel.membership_page.phone.text_value.strip).to eql(str.nil? ? TestData.hash[:phone] : str)
 end
 
 Then /^WL: set membership page personal info to(?: a |)(?: random info |)(?:to|in|between|) (.*)$/ do |address|
@@ -137,12 +144,20 @@ Then /^WL: set membership page cardholder's name to (?:random value|(.*))$/ do |
    cc_holder_name.set(TestData.hash[:card_holder_name] = str.nil? ? TestHelper.rand_full_name  : str)
 end
 
+Then /^WL: expect membership page cardholder's name is (?:correct|(.*))$/ do |str|
+  expect(WhiteLabel.membership_page.cc_holder_name.text_value.strip).to eql(str.nil? ? TestData.hash[:cc_holder_name] : str)
+end
+
 Then /WL: expect membership page cardholder's name tooltip to be (.*)$/ do |str|
   expect(WhiteLabel.membership_page.cc_holder_name_help_block.text_value.strip).to eql(str)
 end
 
 Then /^WL: set membership page credit card number to (?:default value|(.*))$/ do |str|
   WhiteLabel.membership_page.cc_number.set(TestData.hash[:cc_number] = str.nil? ? "4111111111111111"  : str)
+end
+
+Then /^WL: expect membership page credit card number is (?:correct|(.*))$/ do |str|
+  expect(WhiteLabel.membership_page.cc_number.text_value.strip).to eql(str.nil? ? TestData.hash[:cc_number] : str)
 end
 
 Then /^WL: expect membership page credit card number tooltip to be (.*)$/ do |str|
@@ -158,6 +173,10 @@ Then /^WL: select membership page credit card month (.*)$/ do |str|
   step "WL: blur_out on membership page"
   TestData.hash[:cc_month] =  membership_page.cc_month.attribute_value('title').strip
   expect(TestData.hash[:cc_month].strip).to eql str
+end
+
+Then /^WL: expect membership page month is (?:correct|(.*))$/ do |str|
+  expect(WhiteLabel.membership_page.cc_month.attribute_value('title').strip).to eql(str.nil? ? TestData.hash[:cc_month] : str)
 end
 
 Then /^WL: expect membership page month tooltip to be (.*)$/ do |str|
@@ -183,6 +202,9 @@ Then /^WL: set membership page credit card year to this year plus (\d+)$/ do |ye
   step "WL: select membership page credit card year #{Date.today.year + year.to_i}"
 end
 
+Then /^WL: expect membership page credit card year is (?:correct|(.*))$/ do |str|
+  expect(WhiteLabel.membership_page.cc_year.attribute_value('title').strip).to eql(str.nil? ? TestData.hash[:cc_year] : str)
+end
 
 Then /^WL: uncheck membership page billing address same as mailing address$/ do
   billing_addr_checkbox = WhiteLabel.membership_page.billing_addr_checkbox
