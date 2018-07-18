@@ -11,6 +11,7 @@ module SdcOrders
               end
 
       page_object(:selection) { { xpath: xpath } }
+    end
   end
 
   class SdcShipToCountryDom < SdcPage
