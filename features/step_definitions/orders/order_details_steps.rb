@@ -109,7 +109,10 @@ Then /^expect exact address not found window title is (.+)$/ do |str|
 end
 
 Then /^select exact address not found row (\d+)$/ do |row|
-  element = SdcWebsite.exact_address_not_found.address(row)
+  not_found = SdcWebsite.exact_address_not_found
+  not_found.title.safe_wait_until_present(timeout: 3)
+  element = not_found.element_at_row(row)
+  element.scroll_into_view
   element.set
   result = element.value.to_i + 1
   expect(result).to eql(row)
