@@ -88,23 +88,22 @@ Then /^set order details ship-to ambiguous address to$/ do |table|
   order_details = SdcOrders.order_details
   exact_address_not_found = SdcWebsite.exact_address_not_found
   order_details.ship_to.domestic.address.set(address)
-  3.times do
-    order_details.weight_label.double_click
-    order_details.service_label.double_click
-    order_details.reference_no.double_click
-    order_details.ship_to_label.double_click
-    order_details.ship_to.domestic.address.set(address)
-    order_details.order_id.double_click
-    order_details.title.double_click
-    exact_address_not_found.title.safe_wait_until_present(timeout: 1)
-    break if exact_address_not_found.title.present?
-  end
+  order_details.weight_label.double_click
+  order_details.service_label.double_click
+  order_details.reference_no.double_click
+  order_details.ship_to_label.double_click
+  order_details.ship_to.domestic.address.set(address)
+  order_details.order_id.double_click
+  order_details.title.double_click
+  exact_address_not_found.title.safe_wait_until_present(timeout: 3)
   step 'expect exact address not found window title is Exact Address Not Found'
   TestData.hash[:ship_to_domestic] = address
 end
 
 Then /^expect exact address not found window title is (.+)$/ do |str|
-  result = SdcWebsite.exact_address_not_found.title.text_value
+  not_found = SdcWebsite.exact_address_not_found
+  not_found.title.safe_wait_until_present(timeout: 3)
+  result =not_found.title.text_value
   expect(result).to eql(str)
 end
 
