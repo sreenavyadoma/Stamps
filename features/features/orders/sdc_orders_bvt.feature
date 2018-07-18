@@ -477,7 +477,7 @@ Feature:  BVT tests for Orders
       | full_name      | company  | street_address      | city          | state | zip   | country       | phone           |  email           |
       | Juan Dela Cruz | Betfair  | 1390 Market Street  | San Francisco | CA    | 94102 | United States | (415) 123-5555  | rtest@stamps.com |
     Then expect exact address not found window title is Exact Address Not Found
-    Then select exact address not found row 2
+    Then select exact address not found row 5
     Then click exact address not found accept button
     Then set order details service to PM Package
     Then expect orders grid recipient is Juan Dela Cruz
