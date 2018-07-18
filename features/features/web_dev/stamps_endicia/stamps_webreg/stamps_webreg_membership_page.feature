@@ -66,14 +66,14 @@ Feature: Stamps WebReg: Membership Page
     Then WL: set membership page company to random value
     Then WL: expect membership page company is correct
 
-    Then set Membership page Address to 1350 Market Street Apt 2901
-    Then expect Membership page Address is correct
+    Then WL: set membership page address to 1350 Market Street Apt 2901
+    Then WL: expect membership page address is correct
 
-    Then set Membership page City to San Francisco
-    Then expect Membership page City is correct
+    Then WL: set membership page city to San Francisco
+    Then WL: expect membership page city is correct
 
-    Then select Membership page State CA
-    Then expect Membership page State is correct
+    Then WL: select membership page state CA
+    Then WL: expect membership page state is correct
 
     Then set Membership page Zip to 94102
     Then expect Membership page Zip is correct

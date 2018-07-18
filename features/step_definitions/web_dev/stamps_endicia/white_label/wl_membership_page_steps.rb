@@ -47,12 +47,23 @@ Then /^WL: set membership page address to (.*)$/ do |str|
   WhiteLabel.membership_page.address.set(TestData.hash[:address] = str)
 end
 
+Then /^WL: expect membership page address is (?:correct|(.*))$/ do |str|
+  address = WhiteLabel.membership_page.address
+  expect(address.text_value.strip).to eql(str.nil? ? TestData.hash[:address] : str)
+end
+
+
 Then /^WL: expect membership page address tooltip to be (.*)$/ do |str|
   expect(WhiteLabel.membership_page.address_help_block.text_value.strip).to eql(str)
 end
 
 Then /^WL: set membership page city to (.*)$/ do |str|
   WhiteLabel.membership_page.city.set(TestData.hash[:city] = str)
+end
+
+Then /^WL: expect membership page city is (?:correct|(.*))$/ do |str|
+  city = WhiteLabel.membership_page.city
+  expect(city.text_value.strip).to eql(str.nil? ? TestData.hash[:city] : str)
 end
 
 Then /^WL: expect membership page city tooltip to be (.*)$/ do |str|
@@ -68,7 +79,11 @@ Then /^WL: select membership page state (.*)$/ do |str|
   step "WL: blur_out on membership page"
   TestData.hash[:state] = membership_page.state.attribute_value('title').strip
   expect(TestData.hash[:state].strip).to eql str
+end
 
+Then /^WL: expect membership page state is (?:correct|(.*))$/ do |str|
+  state = WhiteLabel.membership_page.state
+  expect(membership_page.state.attribute_value('title').strip).to eql(str.nil? ? TestData.hash[:state] : str)
 end
 
 Then /^WL: expect membership page state tooltip to be (.*)$/ do |str|
