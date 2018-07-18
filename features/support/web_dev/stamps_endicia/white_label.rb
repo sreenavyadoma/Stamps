@@ -24,6 +24,8 @@ module WhiteLabel
   class MembershipPage < SdcPage
     page_object(:header) { {xpath: '//h1[(contains(text(), "Set up your personal Post Office"))]'} }
     page_object(:membership_bread_crumb) { {xpath: '//li[@id="breadcrumb_Membership"]/span'} }
+
+    #Personal Info
     text_field(:first_name, tag: :text_field, required: true) { { id: 'firstName' } }
     page_object(:first_name_help_block) { {xpath: '//div[@class="col-xs-12 col-sm-6 gut-sm-form-r-half"]/div/div/span'} }
     text_field(:last_name, tag: :text_field, required: true) { { id: 'lastName' } }
@@ -38,6 +40,9 @@ module WhiteLabel
     text_field(:zip, tag: :text_field) { { id: 'zip' } }
     text_field(:phone, tag: :text_field, required: true) { { id: 'phone' } }
     page_object(:phone_help_block) {{xpath: '//li[@id="personalinfo"]/div/div[8]/div/div/span'}}
+
+    #Credit Card
+    page_object(:cc_auth) {{id: 'auth-copy'}}
     text_field(:cc_holder_name, tag: :text_field, required: true) { { id: 'ccName' } }
     page_object(:cc_holder_help_block) {{xpath: '//li[@id="creditcard"]/div/div[contains(@class, "col-xs-12")]/div[contains(@class, "form-group has-error")]/div/span'}}
     text_field(:cc_number, tag: :text_field, required: true) { { id: 'ccNumber' } }
@@ -46,13 +51,18 @@ module WhiteLabel
     page_object(:cc_month_help_block) {{xpath: '//div[contains(@class, "gut-xs-form-r-half")]/div/div[2]/span'}}
     page_object(:cc_year) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="ccYear"]'}}
     page_object(:cc_year_help_block) {{xpath: '//div[contains(@class, "gut-xs-form-l-half")]/div/div[2]/span'}}
+
+    #Term and Conditions
     page_object(:terms_conditions) {{id: 'termsConditions'}}
+    page_object(:terms_conditions_help_block) { {xpath: '//li[@id="terms"]/div/div/div/div[2]/span'} }
+    link(:terms_conditions_link) { {class: ['termsLabel terms-conditions-link']} }
+
     button(:back) {{id: 'prev'}}
     button(:submit) {{id: 'next'}}
 
     #Billing Address
     page_object(:billing_addr_checkbox) {{id: 'useMailingAddressForBilling'}}
-    page_object(:billing_addr_header) {{id: 'billingAddressForm'}}
+    page_object(:billing_addr_header) {{class: ['billingAddressForm']}}
     text_field(:billing_addr, tag: :text_field, required: true) { { id: 'billingStreet' } }
     page_object(:billing_addr_help_block) {{xpath: '//li[@id="creditcard"]/div/div[6]/div[contains(@class, "billingAddressForm")]/div/span'}}
     text_field(:billing_city, tag: :text_field, required: true) { { id: 'billingCity' } }
@@ -61,6 +71,7 @@ module WhiteLabel
     page_object(:billing_state_help_block) { {xpath:  '//li[@id="creditcard"]/div/div[contains(@class, "col-lg-3")]/div/div[2]/span'} }
     text_field(:billing_zip, tag: :text_field, required: true) { { id: 'billingZip' } }
     page_object(:billing_state_help_block) { {xpath:  '//li[@id="creditcard"]/div/div[contains(@class, "col-lg-4")]/div/div/span'} }
+
     #username taken
     page_object(:username_taken_header) { {xpath: '//h3[(contains(text(), "Username Taken"))]'} }
     page_objects(:username_taken_p1, index: 0) { {id: 'prev-username'} }
