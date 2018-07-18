@@ -123,3 +123,18 @@ Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Mm]oney-saving offers and new products 
   expect(WhiteLabel.profile_page.money_saving_offers_checkbox.checked?).not_to be(true), "Expected Profile Money-saving offers and new products is checked. Got unchecked"
 end
 
+Then /^WL: [Ee]xpect Profile page Email tooltip index (\d+) to be (.*)$/ do |index, str|
+  expect(WhiteLabel.profile_page.email_tooltip1.text(index.to_i - 1)).to eql(str)
+end
+
+Then /^WL: [Ee]xpect Profile page [Uu]sername tooltip index (\d+) to be (.*)$/ do |index, str|
+  expect(WhiteLabel.profile_page.username_tooltip1.text(index.to_i - 1)).to eql(str)
+end
+
+Then /^WL: [Ee]xpect Profile page [Pp]assword tooltip index (\d+) to be (.*)$/ do |index, str|
+  expect(WhiteLabel.profile_page.password_tooltip1.text(index.to_i - 1)).to eql(str)
+end
+
+Then /^WL: [Ee]xpect Profile page Re-Password tooltip index (\d+) to be (.*)$/ do |index, str|
+  expect(WhiteLabel.profile_page.confirm_password_tooltip1.text(index.to_i - 1)).to eql(str)
+end

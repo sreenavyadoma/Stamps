@@ -23,11 +23,11 @@ Feature: Stamps WebReg: Profile Page
       ###Then WL: expect Profile page Money-saving offers and new products is unchecked
 
     # Validate Single Help block tooltips
-    Then continue to Membership page
-    Then expect Profile page Email tooltip index 1 to be This field is required
-    Then expect Profile page username tooltip index 1 to be This field is required
-    Then expect Profile page password tooltip index 1 to be This field is required
-    Then expect Profile page Re-Password tooltip index 1 to be This field is required
+      #Then continue to Membership page
+    Then WL: expect Profile page Email tooltip index 1 to be This field is required
+    Then WL: expect Profile page username tooltip index 1 to be This field is required
+    Then WL: expect Profile page password tooltip index 1 to be This field is required
+    Then WL: expect Profile page Re-Password tooltip index 1 to be This field is required
 
   #Verifying all fields present and set Negative values for tooltip Validation
     Then expect Profile page email exists

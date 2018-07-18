@@ -8,9 +8,14 @@ module WhiteLabel
     page_object(:side_opt_in_text) {{xpath: '//li[@id="sideoptin"]/div/div/label/span'}}
     page_object(:money_saving_offers_checkbox, tag: :checkbox) {{xpath: '//li[@id="sideoptin"]/div/div'}}
     text_field(:email, tag: :text_field, required: true) { { id: 'email' } }
+    text_field(:email_tooltip1, tag: :text_field, required: true) { { xpath: '//li[@id="email"]/div/div/div/div/span' } }
+    text_field(:email_tooltip2, tag: :text_field, required: true) { { xpath: '//li[@id="sideoptin"]/div/div/label/span' } }
     text_field(:username, tag: :text_field, required: true) { { id: 'username' } }
+    text_field(:username_tooltip1, tag: :text_field, required: true) { { xpath: '//li[@id="sideoptin"]/div/div/label/span' } }
     text_field(:password, tag: :text_field, required: true) { { id: 'password' } }
+    text_field(:password_tooltip1, tag: :text_field, required: true) { { xpath: '//li[@id="sideoptin"]/div/div/label/span' } }
     text_field(:confirm_password, tag: :text_field, required: true) { { id: 'confirmPassword' } }
+    text_field(:confirm_password_tooltip1, tag: :text_field, required: true) { { xpath: '//li[@id="sideoptin"]/div/div/label/span' } }
     link(:promo_code_link) { { id: 'showPromoCode' } }
     text_field(:promo_code_textbox, tag: :text_field, required: true) { { id: 'promoCodeHidden' } }
     page_object(:survey) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="usageType"]'}}
