@@ -72,7 +72,7 @@ module WhiteLabel
     page_object(:billing_state) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="billingState"]'}}
     page_object(:billing_state_help_block) { {xpath:  '//li[@id="creditcard"]/div/div[contains(@class, "col-lg-3")]/div/div[2]/span'} }
     text_field(:billing_zip, tag: :text_field, required: true) { { id: 'billingZip' } }
-    page_object(:billing_state_help_block) { {xpath:  '//li[@id="creditcard"]/div/div[contains(@class, "col-lg-4")]/div/div/span'} }
+    page_object(:billing_zip_help_block) { {xpath:  '//li[@id="creditcard"]/div/div[contains(@class, "col-lg-4")]/div/div/span'} }
 
     #Side Mailing Info
     page_object(:need_mailing_info_header) { {xpath:  '//div[@id="need-mailing-info"]/h3'} }

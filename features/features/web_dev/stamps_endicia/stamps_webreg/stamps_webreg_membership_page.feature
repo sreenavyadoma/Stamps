@@ -12,11 +12,11 @@ Feature: Stamps WebReg: Membership Page
     Then WL: set profile page username to random value
     Then WL: set profile page password to random value
     Then WL: set profile page re-type password to same as previous password
-    Then WL: set profile page survey question to Both mailing and shipping
-    Then WL: set profile page how did you hear about us? to Magazine Ad
-    Then WL: set Profile page Promo Code to PR33-NH77
+    Then WL: set profile page survey question to Business Use - Both mailing and shipping
+    Then WL: set profile page how did you hear about us? to Received Mailer
+    Then WL: set profile page promo code to PR33-NH77
 
-    Then continue to Membership page
+    Then WL: click profile page continue button
 
     # Membership Page
     # Membership Page Validate Help block tooltips
@@ -38,32 +38,33 @@ Feature: Stamps WebReg: Membership Page
     # Membership Page Billing Address Help block tooltips
     Then WL: expect membership page billing address tooltip to be This field is required
     Then WL: expect membership page billing city tooltip to be This field is required
-    Then expect Membership page Billing State tooltip to be This field is required
-    Then expect Membership page Billing Zip tooltip to be This field is required
+    Then WL: expect membership page billing state tooltip to be This field is required
+    Then WL: expect membership page billing zip tooltip to be This field is required
 
-    Then expect Membership page Terms & Conditions tooltip to be You must agree to the Terms & Conditions to proceed.
+    #Membership Page Terms & Conditions
+    Then WL: expect membership page terms & conditions tooltip to be You must agree to the Terms & Conditions to proceed.
 
     # Membership Page tooltips with In-valid inputs
     Then pause for 1 second
-    Then set Membership page First Name to 1
-    Then set Membership page Last Name to 2
-    Then set Membership page Phone to 128889
-    Then set Membership page Credit Card Number to 1234
-    Then click Membership page Submit button
-    Then expect Membership page First Name tooltip 0 to be Invalid character in name
-    Then expect Membership page Last Name tooltip 0 to be Invalid character in name
-    Then expect Membership page Credit Card Number tooltip 0 to be Invalid credit card number
+    Then WL: set membership page first name to 1
+    Then WL: set membership page last name to 2
+    Then WL: set membership page phone to 128889
+    Then WL: set membership page credit card number to 1234
+    Then WL: click membership page submit button
+    Then WL: expect membership page first name tooltip to be Invalid character in name
+    Then WL: expect membership page last name tooltip to be Invalid character in name
+    Then WL: expect membership page credit card number tooltip to be Invalid credit card number
 
     # Membership Page Valid Inputs
     Then pause for 1 second
-    Then set Membership page First Name to random value
-    Then expect Membership page First Name is correct
+    Then WL: set membership page first name to random value
+    Then WL: expect membership page first name is correct
 
-    Then set Membership page Last Name to random value
-    Then expect Membership page Last Name is correct
+    Then WL: set membership page last name to random value
+    Then WL: expect membership page last name is correct
 
-    Then set Membership page Company to random value
-    Then expect Membership page Company is correct
+    Then WL: set membership page company to random value
+    Then WL: expect membership page company is correct
 
     Then set Membership page Address to 1350 Market Street Apt 2901
     Then expect Membership page Address is correct

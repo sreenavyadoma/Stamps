@@ -8,6 +8,11 @@ Then /^WL: set membership page first name to (?:random value|(.*))$/ do |str|
   first_name.set(TestData.hash[:first_name] = str.nil? ? TestHelper.rand_alpha_str.capitalize  : str)
 end
 
+Then /^WL: expect membership page first name is (?:correct|(.*))$/ do |str|
+  first_name = WhiteLabel.membership_page.first_name
+  expect(first_name.text_value.strip).to eql(str.nil? ? TestData.hash[:first_name] : str)
+end
+
 Then /^WL: expect membership page first name tooltip to be (.*)$/ do |str|
   first_name_help_block = WhiteLabel.membership_page.first_name_help_block
   first_name_help_block.wait_until_present(timeout: 10)
@@ -19,6 +24,11 @@ Then /^WL: set membership page last name to (?:random value|(.*))$/ do |str|
   last_name.set(TestData.hash[:last_name] = str.nil? ? TestHelper.rand_alpha_str.capitalize  : str)
 end
 
+Then /^WL: expect membership page last name is (?:correct|(.*))$/ do |str|
+  last_name = WhiteLabel.membership_page.last_name
+  expect(last_name.text_value.strip).to eql(str.nil? ? TestData.hash[:last_name] : str)
+end
+
 Then /^WL: expect membership page last name tooltip to be (.*)$/ do |str|
   last_name_help_block = WhiteLabel.membership_page.last_name_help_block
   expect(last_name_help_block.text_value.strip).to eql(str)
@@ -26,6 +36,11 @@ end
 
 Then /^WL: set membership page company to (?:random value|(.*))$/ do |str|
   WhiteLabel.membership_page.company.set(TestData.hash[:company] = str.nil? ? TestHelper.rand_alpha_str  : str) if WhiteLabel.membership_page.company.present?
+end
+
+Then /^WL: expect membership page company is (?:correct|(.*))$/ do |str|
+  company = WhiteLabel.membership_page.company
+  expect(company.text_value.strip).to eql(str.nil? ? TestData.hash[:company] : str)
 end
 
 Then /^WL: set membership page address to (.*)$/ do |str|
@@ -107,7 +122,7 @@ Then /^WL: set membership page cardholder's name to (?:random value|(.*))$/ do |
    cc_holder_name.set(TestData.hash[:card_holder_name] = str.nil? ? TestHelper.rand_full_name  : str)
 end
 
-Then /WL: expect membership page cardholder's name tooltip to be(.*)$/ do |str|
+Then /WL: expect membership page cardholder's name tooltip to be (.*)$/ do |str|
   expect(WhiteLabel.membership_page.cc_holder_name_help_block.text_value.strip).to eql(str)
 end
 
@@ -115,7 +130,7 @@ Then /^WL: set membership page credit card number to (?:default value|(.*))$/ do
   WhiteLabel.membership_page.cc_number.set(TestData.hash[:cc_number] = str.nil? ? "4111111111111111"  : str)
 end
 
-Then /^WL: expect membership page credit Card number tooltip to be (.*)$/ do |str|
+Then /^WL: expect membership page credit card number tooltip to be (.*)$/ do |str|
   expect(WhiteLabel.membership_page.cc_number_help_block.text_value.strip).to eql(str)
 end
 
@@ -155,7 +170,16 @@ end
 
 
 Then /^WL: uncheck membership page billing address same as mailing address$/ do
-  WhiteLabel.membership_page.billing_addr_checkbox.uncheck
+  billing_addr_checkbox = WhiteLabel.membership_page.billing_addr_checkbox
+  if billing_addr_checkbox.attribute_value('checked') == 'true'
+    billing_addr_checkbox.click
+  end
+end
+
+Then /^WL: expect membership page billing address same as mailing address is checked$/ do
+  billing_addr_checkbox = WhiteLabel.membership_page.billing_addr_checkbox
+  billing_addr_checkbox.wait_until_present(timeout: 5)
+  expect(billing_addr_checkbox.attribute_value('checked')).to eql('true')
 end
 
 Then /^WL: expect membership page billing address tooltip to be (.*)$/ do |str|
@@ -166,6 +190,15 @@ Then /^WL: expect membership page billing city tooltip to be (.*)$/ do |str|
   expect(WhiteLabel.membership_page.billing_city_help_block.text_value.strip).to eql(str)
 end
 
+Then /^WL: expect membership page billing state tooltip to be (.*)$/ do |str|
+  expect(WhiteLabel.membership_page.billing_state_help_block.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect membership page billing zip tooltip to be (.*)$/ do |str|
+  expect(WhiteLabel.membership_page.billing_zip_help_block.text_value.strip).to eql(str)
+end
+
+
 Then /^WL: check membership page Terms & Conditions$/ do
   WhiteLabel.membership_page.terms_conditions.click! #unless WhiteLabel.membership_page.terms_conditions.checked?
 end
@@ -173,6 +206,10 @@ end
 
 Then /^WL: expect membership page Terms & Conditions is checked$/ do
   expect(WhiteLabel.membership_page.terms_conditions.checked?).to be(true)
+end
+
+Then /^WL: expect membership page terms & conditions tooltip to be (.*)$/ do |str|
+  expect(WhiteLabel.membership_page.terms_conditions_help_block.text_value.strip).to eql(str)
 end
 
 
@@ -252,10 +289,6 @@ Then /^WL: click username taken continue button$/ do
   WhiteLabel.membership_page.username_taken_continue_btn.click
 end
 
-
-Then /^WL: expect membership page billing address same as mailing address is checked$/ do
-    expect(WhiteLabel.membership_page.billing_addr_checkbox.checked?).to eql(true)
-end
 
 
 Then /^WL: click membership page submit button$/ do
