@@ -365,27 +365,23 @@ Then /^run rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, group
         TestData.hash[:pounds] = (row[@rate_sheet_columns[:weight_lb]]).to_i
 
         # Set country to proper group
-
-        if (row[@rate_sheet_columns[:service]]).include? "PMEI Flat Rate"
-          if group < 9
+        if row[@rate_sheet_columns[:service]].include?('PMEI')
+          if row[@rate_sheet_columns[:service]].include?('Flat Rate') && group < 9
             step "set order details domestic ship-to country to a random country in PMEI Flat Rate price group #{group}" if SdcEnv.sdc_app == :orders
             step "set Print Form Ship-To Country to a random country in PMEI Flat Rate price group #{group}" if SdcEnv.sdc_app == :mail
+          elsif row[@rate_sheet_columns[:service]].include?('Package')
+            step "set order details domestic ship-to country to a random country in PMEI price group #{group}" if SdcEnv.sdc_app == :orders
+            step "set Print Form Ship-To Country to a random country in PMEI price group #{group}" if SdcEnv.sdc_app == :mail
           end
-        elsif (row[@rate_sheet_columns[:service]]).include? "PMEI Package"
-          step "set order details domestic ship-to country to a random country in PMEI price group #{group}" if SdcEnv.sdc_app == :orders
-          step "set Print Form Ship-To Country to a random country in PMEI price group #{group}" if SdcEnv.sdc_app == :mail
-        end
-
-        if (row[@rate_sheet_columns[:service]]).include? "PMI Flat Rate"
-          if group < 9
+        elsif row[@rate_sheet_columns[:service]].include?('PMI')
+          if row[@rate_sheet_columns[:service]].include?('Flat Rate') && group < 9
             step "set order details domestic ship-to country to a random country in PMI Flat Rate price group #{group}" if SdcEnv.sdc_app == :orders
             step "set Print Form Ship-To Country to a random country in PMI Flat Rate price group #{group}" if SdcEnv.sdc_app == :mail
+          elsif row[@rate_sheet_columns[:service]].include?('Package')
+            step "set order details domestic ship-to country to a random country in PMI price group #{group}" if SdcEnv.sdc_app == :orders
+            step "set Print Form Ship-To Country to a random country in PMI price group #{group}" if SdcEnv.sdc_app == :mail
           end
-        elsif (row[@rate_sheet_columns[:service]]).include? "PMI Package"
-          step "set order details domestic ship-to country to a random country in PMI price group #{group}" if SdcEnv.sdc_app == :orders
-          step "set Print Form Ship-To Country to a random country in PMI price group #{group}" if SdcEnv.sdc_app == :mail
         end
-
 
         # spreadsheet price for group
 
@@ -437,7 +433,7 @@ Then /^run rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, group
           SdcLogger.info "#{"#" * 50}"
 
           if TestHelper.is_whole_number?(weight_lb)
-            weight_lb = weight_lb.to_f
+            weight_lb = weight_lb.to_i
             TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:weight_lb]] = weight_lb
             TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:weight]] = "#{weight_lb} lb."
             step "set order details pounds to #{weight_lb}" if SdcEnv.sdc_app == :orders
