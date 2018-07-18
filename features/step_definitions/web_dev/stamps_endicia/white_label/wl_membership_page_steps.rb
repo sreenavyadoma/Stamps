@@ -8,9 +8,20 @@ Then /^WL: set membership page first name to (?:random value|(.*))$/ do |str|
   first_name.set(TestData.hash[:first_name] = str.nil? ? TestHelper.rand_alpha_str.capitalize  : str)
 end
 
+Then /^WL: expect membership page first name tooltip to be (.*)$/ do |str|
+  first_name_help_block = WhiteLabel.membership_page.first_name_help_block
+  first_name_help_block.wait_until_present(timeout: 10)
+  expect(first_name_help_block.text_value.strip).to eql(str)
+end
+
 Then /^WL: set membership page last name to (?:random value|(.*))$/ do |str|
   last_name = WhiteLabel.membership_page.last_name
   last_name.set(TestData.hash[:last_name] = str.nil? ? TestHelper.rand_alpha_str.capitalize  : str)
+end
+
+Then /^WL: expect membership page last name tooltip to be (.*)$/ do |str|
+  last_name_help_block = WhiteLabel.membership_page.last_name_help_block
+  expect(last_name_help_block.text_value.strip).to eql(str)
 end
 
 Then /^WL: set membership page company to (?:random value|(.*))$/ do |str|
@@ -21,8 +32,16 @@ Then /^WL: set membership page address to (.*)$/ do |str|
   WhiteLabel.membership_page.address.set(TestData.hash[:address] = str)
 end
 
+Then /^WL: expect membership page address tooltip to be (.*)$/ do |str|
+  expect(WhiteLabel.membership_page.address_help_block.text_value.strip).to eql(str)
+end
+
 Then /^WL: set membership page city to (.*)$/ do |str|
   WhiteLabel.membership_page.city.set(TestData.hash[:city] = str)
+end
+
+Then /^WL: expect membership page city tooltip to be (.*)$/ do |str|
+  expect(WhiteLabel.membership_page.city_help_block.text_value.strip).to eql(str)
 end
 
 Then /^WL: select membership page state (.*)$/ do |str|
@@ -37,6 +56,10 @@ Then /^WL: select membership page state (.*)$/ do |str|
 
 end
 
+Then /^WL: expect membership page state tooltip to be (.*)$/ do |str|
+  expect(WhiteLabel.membership_page.state_help_block.text_value.strip).to eql str
+end
+
 Then /^WL: set membership page zip to (.*)$/ do |str|
   WhiteLabel.membership_page.zip.set(TestData.hash[:city] = str)
 end
@@ -45,57 +68,9 @@ Then /^WL: set membership page phone to (.*)$/ do |str|
   WhiteLabel.membership_page.phone.set(TestData.hash[:phone] = str)
 end
 
-
-Then /^WL: set membership page cardholder's name to (?:random value|(.*))$/ do |str|
-   cc_holder_name = WhiteLabel.membership_page.cc_holder_name
-   cc_holder_name.clear
-   cc_holder_name.set(TestData.hash[:card_holder_name] = str.nil? ? TestHelper.rand_full_name  : str)
+Then /^WL: expect membership page phone tooltip to be (.*)$/ do |str|
+  expect(WhiteLabel.membership_page.phone_help_block.text_value.strip).to eql(str)
 end
-
-Then /^WL: set membership page credit card number to (?:default value|(.*))$/ do |str|
-  WhiteLabel.membership_page.cc_number.set(TestData.hash[:cc_number] = str.nil? ? "4111111111111111"  : str)
-end
-
-
-Then /^WL: select membership page credit card month (.*)$/ do |str|
-  membership_page = WhiteLabel.membership_page
-  membership_page.cc_month.click
-  membership_page.dropdown_selection(str)
-  membership_page.dropdown_element.safe_wait_until_present(timeout: 2)
-  membership_page.dropdown_element.click
-  step "WL: blur_out on membership page"
-  TestData.hash[:cc_month] =  membership_page.cc_month.attribute_value('title').strip
-  expect(TestData.hash[:cc_month].strip).to eql str
-end
-
-
-Then /^WL: select membership page credit card year (.*)$/ do |str|
-  membership_page = WhiteLabel.membership_page
-  membership_page.cc_year.click
-  membership_page.dropdown_selection(str)
-  membership_page.dropdown_element.safe_wait_until_present(timeout: 2)
-  membership_page.dropdown_element.click
-  step "WL: blur_out on membership page"
-  TestData.hash[:cc_month] = membership_page.cc_year.attribute_value('title').strip
-  expect(TestData.hash[:cc_month].strip).to eql str
-end
-
-Then /^WL: set membership page credit card year to this year plus (\d+)$/ do |year|
-  step "WL: select membership page credit card year #{Date.today.year + year.to_i}"
-end
-
-Then /^WL: check membership page Terms & Conditions$/ do
-  WhiteLabel.membership_page.terms_conditions.click! #unless WhiteLabel.membership_page.terms_conditions.checked?
-end
-
-Then /^WL: expect membership page Terms & Conditions is checked$/ do
-  expect(WhiteLabel.membership_page.terms_conditions.checked?).to be(true)
-end
-
-Then /^WL: click membership page submit button$/ do
-  WhiteLabel.membership_page.submit.click
-end
-
 
 Then /^WL: set membership page personal info to(?: a |)(?: random info |)(?:to|in|between|) (.*)$/ do |address|
   stamps_logo = WhiteLabel.common_page.stamps_logo
@@ -124,6 +99,76 @@ Then /^WL: set membership page personal info to(?: a |)(?: random info |)(?:to|i
   step "WL: set membership page zip to #{TestData.hash[:zip]}"
   step "WL: set membership page phone to #{TestData.hash[:phone_number_format]}"
 
+end
+
+Then /^WL: set membership page cardholder's name to (?:random value|(.*))$/ do |str|
+   cc_holder_name = WhiteLabel.membership_page.cc_holder_name
+   cc_holder_name.clear
+   cc_holder_name.set(TestData.hash[:card_holder_name] = str.nil? ? TestHelper.rand_full_name  : str)
+end
+
+Then /WL: expect membership page cardholder's name tooltip to be(.*)$/ do |str|
+  expect(WhiteLabel.membership_page.cc_holder_name_help_block.text_value.strip).to eql(str)
+end
+
+Then /^WL: set membership page credit card number to (?:default value|(.*))$/ do |str|
+  WhiteLabel.membership_page.cc_number.set(TestData.hash[:cc_number] = str.nil? ? "4111111111111111"  : str)
+end
+
+Then /^WL: expect membership page credit Card number tooltip to be (.*)$/ do |str|
+  expect(WhiteLabel.membership_page.cc_number_help_block.text_value.strip).to eql(str)
+end
+
+Then /^WL: select membership page credit card month (.*)$/ do |str|
+  membership_page = WhiteLabel.membership_page
+  membership_page.cc_month.click
+  membership_page.dropdown_selection(str)
+  membership_page.dropdown_element.safe_wait_until_present(timeout: 2)
+  membership_page.dropdown_element.click
+  step "WL: blur_out on membership page"
+  TestData.hash[:cc_month] =  membership_page.cc_month.attribute_value('title').strip
+  expect(TestData.hash[:cc_month].strip).to eql str
+end
+
+Then /^WL: expect membership page month tooltip to be (.*)$/ do |str|
+  expect(WhiteLabel.membership_page.cc_month_help_block.text_value.strip).to eql(str)
+end
+
+Then /^WL: select membership page credit card year (.*)$/ do |str|
+  membership_page = WhiteLabel.membership_page
+  membership_page.cc_year.click
+  membership_page.dropdown_selection(str)
+  membership_page.dropdown_element.safe_wait_until_present(timeout: 2)
+  membership_page.dropdown_element.click
+  step "WL: blur_out on membership page"
+  TestData.hash[:cc_month] = membership_page.cc_year.attribute_value('title').strip
+  expect(TestData.hash[:cc_month].strip).to eql str
+end
+
+Then /^WL: expect membership page year tooltip to be (.*)$/ do |str|
+  expect(WhiteLabel.membership_page.cc_year_help_block.text_value.strip).to eql(str)
+end
+
+Then /^WL: set membership page credit card year to this year plus (\d+)$/ do |year|
+  step "WL: select membership page credit card year #{Date.today.year + year.to_i}"
+end
+
+
+Then /^WL: uncheck membership page billing address same as mailing address$/ do
+  WhiteLabel.membership_page.billing_addr_checkbox.uncheck
+end
+
+Then /^WL: expect Membership page Billing Address tooltip to be (.*)$/ do |str|
+  expect(WhiteLabel.membership_page.billing_addr_help_block.text_value.strip).to eql(str)
+end
+
+Then /^WL: check membership page Terms & Conditions$/ do
+  WhiteLabel.membership_page.terms_conditions.click! #unless WhiteLabel.membership_page.terms_conditions.checked?
+end
+
+
+Then /^WL: expect membership page Terms & Conditions is checked$/ do
+  expect(WhiteLabel.membership_page.terms_conditions.checked?).to be(true)
 end
 
 
@@ -203,10 +248,12 @@ Then /^WL: click username taken continue button$/ do
   WhiteLabel.membership_page.username_taken_continue_btn.click
 end
 
-Then /^WL: uncheck membership page billing address same as mailing address$/ do
-  WhiteLabel.membership_page.billing_addr_checkbox.uncheck
-end
 
 Then /^WL: expect membership page billing address same as mailing address is checked$/ do
     expect(WhiteLabel.membership_page.billing_addr_checkbox.checked?).to eql(true)
+end
+
+
+Then /^WL: click membership page submit button$/ do
+  WhiteLabel.membership_page.submit.click
 end

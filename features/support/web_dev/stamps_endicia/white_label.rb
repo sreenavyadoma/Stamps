@@ -44,13 +44,15 @@ module WhiteLabel
     #Credit Card
     page_object(:cc_auth) {{id: 'auth-copy'}}
     text_field(:cc_holder_name, tag: :text_field, required: true) { { id: 'ccName' } }
-    page_object(:cc_holder_help_block) {{xpath: '//li[@id="creditcard"]/div/div[contains(@class, "col-xs-12")]/div[contains(@class, "form-group has-error")]/div/span'}}
+    page_object(:cc_holder_name_help_block) {{xpath: '//li[@id="creditcard"]/div/div[contains(@class, "col-xs-12")]/div[contains(@class, "form-group has-error")]/div/span'}}
     text_field(:cc_number, tag: :text_field, required: true) { { id: 'ccNumber' } }
     page_object(:cc_number_help_block) {{xpath: '//li[@id="creditcard"]/div/div[2]/div/div[2]/span'}}
     page_object(:cc_month) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="ccMonth"]'}}
     page_object(:cc_month_help_block) {{xpath: '//div[contains(@class, "gut-xs-form-r-half")]/div/div[2]/span'}}
     page_object(:cc_year) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="ccYear"]'}}
     page_object(:cc_year_help_block) {{xpath: '//div[contains(@class, "gut-xs-form-l-half")]/div/div[2]/span'}}
+    page_object(:cc_stamps_logo) {{xpath: '//div[@id="creditcard-auth"]/div[1]/img'}}
+    page_object(:cc_usps_logo) {{xpath: '//*[@id="creditcard-auth"]/div[2]/img'}}
 
     #Term and Conditions
     page_object(:terms_conditions) {{id: 'termsConditions'}}

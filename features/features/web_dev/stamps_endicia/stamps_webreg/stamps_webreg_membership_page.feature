@@ -19,23 +19,24 @@ Feature: Stamps WebReg: Membership Page
     Then continue to Membership page
 
     # Membership Page
-    # Membership Page Validate Single Help block tooltips
+    # Membership Page Validate Help block tooltips
     Then WL: expect membership page billing address same as mailing address is checked
     Then WL: uncheck membership page billing address same as mailing address
     Then WL: click membership page submit button
-    Then WL: expect Membership page First Name tooltip to be This field is required
-    Then expect Membership page Last Name tooltip to be This field is required
-    Then expect Membership page Address tooltip to be This field is required
-    Then expect Membership page City tooltip to be This field is required
-    Then expect Membership page State tooltip to be This field is required
-    Then expect Membership page Phone tooltip to be This field is required
-    Then expect Membership page Cardholder's Name tooltip to be This field is required
-    Then expect Membership page Credit Card Number tooltip to be This field is required
-    Then expect Membership page Month tooltip to be This field is required
-    Then expect Membership page Year tooltip to be This field is required
 
-    # Membership Page Billing Address Single Help block tooltips
-    Then expect Membership page Billing Address tooltip to be This field is required
+    Then WL: expect membership page first name tooltip to be This field is required
+    Then WL: expect membership page last name tooltip to be This field is required
+    Then WL: expect membership page address tooltip to be This field is required
+    Then WL: expect membership page city tooltip to be This field is required
+    Then WL: expect membership page state tooltip to be This field is required
+    Then WL: expect membership page phone tooltip to be This field is required
+    Then WL: expect membership page cardholder's name tooltip to be This field is required
+    Then WL: expect membership page credit card number tooltip to be This field is required
+    Then WL: expect membership page month tooltip to be This field is required
+    Then WL: expect membership page year tooltip to be This field is required
+
+    # Membership Page Billing Address Help block tooltips
+    Then WL: expect Membership page Billing Address tooltip to be This field is required
     Then expect Membership page Billing City tooltip to be This field is required
     Then expect Membership page Billing State tooltip to be This field is required
     Then expect Membership page Billing Zip tooltip to be This field is required
