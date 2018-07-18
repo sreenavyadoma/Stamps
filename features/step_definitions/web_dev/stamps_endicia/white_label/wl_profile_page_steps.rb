@@ -84,13 +84,42 @@ Then /^WL: [Ee]xpect [Rr]egistration navigation bar USPS logo exists$/ do
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile bread crumbs is (.*)$/ do |str|
-  expect(WhiteLabel.profile_page.profile_bread_crumb).to eql(str), "Profile Bread crumb does not exist "
+  expect(WhiteLabel.profile_page.profile_bread_crumb.text).to eql(str), "Profile Bread crumb does not exist "
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age header contain (.*)$/ do |str|
-  expect(WhiteLabel.profile_page.header).to eql(str)
+  expect(WhiteLabel.profile_page.header.text).to eql(str)
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age paragraph contain (.*)$/ do |str|
-  expect(WhiteLabel.profile_page.text).to eql(str)
+  expect(WhiteLabel.profile_page.side_acct_text.text).to eql(str)
 end
+
+Then /^WL: [Ee]xpect Profile page SideContent Side Account header is (.*)$/ do |str|
+  expect(WhiteLabel.profile_page.side_acct_header.text).to eql(str)
+end
+
+Then /^WL: [Ee]xpect Profile page Money-saving offers and new products header is \"(.*)\"$/ do |str|
+  expect(WhiteLabel.profile_page.side_opt_in_header.text).to eql(str)
+end
+
+Then /^WL: [Ee]xpect [Pp]rofile [Pp]age content under Money-saving offers and new products (.*)$/ do |str|
+  expect(WhiteLabel.profile_page.side_opt_in_text.text).to eql(str)
+end
+
+Then /^WL: [Cc]heck [Pp]rofile [Pp]age [Mm]oney-saving offers and new products$/ do
+  WhiteLabel.profile_page.money_saving_offers_checkbox.click! unless WhiteLabel.profile_page.money_saving_offers_checkbox.checked?
+end
+
+Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Mm]oney-saving offers and new products is checked$/ do
+  expect(WhiteLabel.profile_page.money_saving_offers_checkbox.checked?).to be(true), "Profile Money-saving offers and new products is not checked. Got checked"
+end
+
+Then /^WL: uncheck [Pp]rofile [Pp]age [Mm]oney-saving offers and new products$/ do
+  WhiteLabel.profile_page.money_saving_offers_checkbox.fire_event(:click)
+end
+
+Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Mm]oney-saving offers and new products is unchecked$/ do
+  expect(WhiteLabel.profile_page.money_saving_offers_checkbox.checked?).not_to be(true), "Expected Profile Money-saving offers and new products is checked. Got unchecked"
+end
+

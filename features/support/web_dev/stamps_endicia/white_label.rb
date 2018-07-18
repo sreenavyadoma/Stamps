@@ -2,7 +2,11 @@ module WhiteLabel
   class ProfilePage < SdcPage
     page_object(:profile_bread_crumb) { {xpath: '//li[@id="breadcrumb_Profile"]/span'} }
     page_object(:header) { {xpath: '//h1[(contains(text(), "Sign up and avoid trips to the Post Office"))]'} }
-    page_object(:text) {{xpath: '//li[@id="sideaccount"]/p'}}
+    page_object(:side_acct_header) { {xpath: '//h3[(contains(text(), "Why do I need to create an account?"))]'} }
+    page_object(:side_acct_text) {{xpath: '//li[@id="sideaccount"]/p'}}
+    page_object(:side_opt_in_header) { {xpath: '//h3[(contains(text(), "Money-saving offers and new products"))]'} }
+    page_object(:side_opt_in_text) {{xpath: '//li[@id="sideoptin"]/div/div/label/span'}}
+    page_object(:money_saving_offers_checkbox, tag: :checkbox) {{xpath: '//li[@id="sideoptin"]/div/div'}}
     text_field(:email, tag: :text_field, required: true) { { id: 'email' } }
     text_field(:username, tag: :text_field, required: true) { { id: 'username' } }
     text_field(:password, tag: :text_field, required: true) { { id: 'password' } }

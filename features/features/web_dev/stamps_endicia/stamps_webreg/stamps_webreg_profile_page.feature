@@ -11,18 +11,16 @@ Feature: Stamps WebReg: Profile Page
     #Verifying all content present
     #Then WL: expect Registration navigation bar Stamps logo exists
     #Then WL: expect Registration navigation bar USPS logo exists
-    Then WL: expect Profile bread crumbs is Profile
-    Then WL: expect Profile page header contain Sign up and avoid trips to the Post Office
-    Then WL: expect Profile page paragraph contain The USPS requires you to register your name, telephone number and physical address from which your postage will be printed. This information will be used to create your Stamps.com account.
-    Then expect Profile page SideContent Side Account header is Why do I need to create an account?
-    Then expect Profile page Money-saving offers and new products header is "Money-saving offers and new products"
-    Then expect Profile page content under Money-saving offers and new products Send me special money-saving offers and information on new products and services from Stamps.com and its partners.
-    Then check Profile page Money-saving offers and new products
-    Then expect Profile page Money-saving offers and new products is checked
-    Then uncheck Profile page Money-saving offers and new products
-    Then expect Profile page Money-saving offers and new products is unchecked
-    Then expect Profile page Privacy Policy link exists
-    Then expect Profile page copyright link exists
+    #Then WL: expect Profile bread crumbs is Profile
+    #Then WL: expect Profile page header contain Sign up and avoid trips to the Post Office
+    #Then WL: expect Profile page paragraph contain The USPS requires you to register your name, telephone number and physical address from which your postage will be printed. This information will be used to create your Stamps.com account.
+    #Then WL: expect Profile page SideContent Side Account header is Why do I need to create an account?
+    #Then WL: expect Profile page Money-saving offers and new products header is "Money-saving offers and new products"
+    #Then WL: expect Profile page content under Money-saving offers and new products Send me special money-saving offers and information on new products and services from Stamps.com and its partners.
+      ###Then WL: expect Profile page Money-saving offers and new products is checked
+      ###Then WL: check Profile page Money-saving offers and new products
+      ###Then WL: uncheck Profile page Money-saving offers and new products
+      ###Then WL: expect Profile page Money-saving offers and new products is unchecked
 
     # Validate Single Help block tooltips
     Then continue to Membership page
