@@ -243,25 +243,72 @@ Then /^WL: expect membership page billing address same as mailing address is che
   expect(billing_addr_checkbox.attribute_value('checked')).to eql('true')
 end
 
-Then /^WL: expect membership page billing address is present$/ do
+Then /^WL: expect membership page billing address textbox is present$/ do
   expect(WhiteLabel.membership_page.billing_addr).to be_present, 'Billing Address IS NOT PRESENT'
 end
 
-Then /^WL: expect membership page billing address is not present$/ do
+Then /^WL: expect membership page billing address textbox is not present$/ do
   expect(WhiteLabel.membership_page.billing_addr).not_to be_present, 'Billing Address IS PRESENT'
 end
 
+Then /^WL: set membership page billing address to (.*)$/ do |str|
+  billing_addr = WhiteLabel.membership_page.billing_addr
+  billing_addr.clear
+  WhiteLabel.membership_page.billing_addr.set(TestData.hash[:billing_addr] = str)
+  step "WL: blur_out on membership page"
+end
+
+Then /^WL: expect membership page billing address is (?:correct|(.*))$/ do |str|
+  expect(WhiteLabel.membership_page.billing_addr.text_value.strip).to eql(str.nil? ? TestData.hash[:billing_addr] : str)
+end
 
 Then /^WL: expect membership page billing address tooltip to be (.*)$/ do |str|
   expect(WhiteLabel.membership_page.billing_addr_help_block.text_value.strip).to eql(str)
+end
+
+Then /^WL: set membership page billing city to (.*)$/ do |str|
+  billing_city = WhiteLabel.membership_page.billing_city
+  billing_city.clear
+  WhiteLabel.membership_page.billing_city.set(TestData.hash[:billing_city] = str)
+  step "WL: blur_out on membership page"
+end
+
+Then /^WL: expect membership page billing city is (?:correct|(.*))$/ do |str|
+  expect(WhiteLabel.membership_page.billing_city.text_value.strip).to eql(str.nil? ? TestData.hash[:billing_city] : str)
 end
 
 Then /^WL: expect membership page billing city tooltip to be (.*)$/ do |str|
   expect(WhiteLabel.membership_page.billing_city_help_block.text_value.strip).to eql(str)
 end
 
+Then /^WL: select membership page billing state (.*)$/ do |str|
+  membership_page = WhiteLabel.membership_page
+  membership_page.billing_state.click
+  membership_page.dropdown_selection(str)
+  membership_page.dropdown_element.safe_wait_until_present(timeout: 2)
+  membership_page.dropdown_element.click
+  step "WL: blur_out on membership page"
+  TestData.hash[:billing_state] =  membership_page.billing_state.attribute_value('title').strip
+  expect(TestData.hash[:billing_state].strip).to eql str
+end
+
+Then /^WL: expect membership page billing state is (?:correct|(.*))$/ do |str|
+  expect(WhiteLabel.membership_page.billing_state.attribute_value('title').strip).to eql(str.nil? ? TestData.hash[:billing_state] : str)
+end
+
 Then /^WL: expect membership page billing state tooltip to be (.*)$/ do |str|
   expect(WhiteLabel.membership_page.billing_state_help_block.text_value.strip).to eql(str)
+end
+
+Then /^WL: set membership page billing zip to (.*)$/ do |str|
+  billing_zip = WhiteLabel.membership_page.billing_zip
+  billing_zip.clear
+  billing_zip.set(TestData.hash[:billing_zip] = str)
+  step "WL: blur_out on membership page"
+end
+
+Then /^WL: expect membership page billing zip is (?:correct|(.*))$/ do |str|
+  expect(WhiteLabel.membership_page.billing_zip.text_value.strip).to eql(str.nil? ? TestData.hash[:billing_zip] : str)
 end
 
 Then /^WL: expect membership page billing zip tooltip to be (.*)$/ do |str|
@@ -269,7 +316,7 @@ Then /^WL: expect membership page billing zip tooltip to be (.*)$/ do |str|
 end
 
 
-Then /^WL: check membership page Terms & Conditions$/ do
+Then /^WL: check membership page terms & conditions$/ do
   WhiteLabel.membership_page.terms_conditions.click! #unless WhiteLabel.membership_page.terms_conditions.checked?
 end
 

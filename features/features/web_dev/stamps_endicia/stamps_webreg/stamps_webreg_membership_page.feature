@@ -66,7 +66,7 @@ Feature: Stamps WebReg: Membership Page
 #    Then WL: set membership page company to random value
 #    Then WL: expect membership page company is correct
 #
-#    Then WL: set membership page address to 1350 Market Street Apt 2901
+#     Then WL: set membership page address to 1350 Market Street Apt 2901
 #    Then WL: expect membership page address is correct
 #
 #    Then WL: set membership page city to San Francisco
@@ -98,7 +98,7 @@ Feature: Stamps WebReg: Membership Page
 #    Then WL: select membership page credit card month Apr (04)
 #    Then WL: select membership page credit card month Mar (03)
 #    Then WL: select membership page credit card month Feb (02)
-#    Then WL: select membership page credit card month Jan (01)
+#     Then WL: select membership page credit card month Jan (01)
 #
 #    Then WL: expect membership page month is correct
 #
@@ -108,25 +108,25 @@ Feature: Stamps WebReg: Membership Page
 #    Then WL: expect membership page credit card year is correct
 
     # Verify Billing Address present and Validate fields
-    Then WL: expect membership page billing address is present
+    Then WL: expect membership page billing address textbox is present
 
     Then WL: check membership page billing address same as mailing address
     Then WL: expect membership page billing address same as mailing address is checked
-    Then WL: expect membership page billing address is not present
+    Then WL: expect membership page billing address textbox is not present
 
-    Then uncheck Membership page Billing address same as mailing address
+   Then WL: uncheck membership page billing address same as mailing address
 
-    Then set Membership page Billing Address to 1350 Market Street Apt 2901
-    Then expect Membership page Billing Address is correct
-    Then set Membership page Billing City to San Francisco
-    Then expect Membership page Billing City is correct
-    Then select Membership page Billing State CA
-    Then expect Membership page Billing State is correct
-    Then set Membership page Billing Zip to 94102
-    Then expect Membership page Billing Zip is correct
+    Then WL: set membership page billing address to 1350 Market Street Apt 2901
+    Then WL: expect membership page billing address is correct
+    Then WL: set membership page billing city to San Francisco
+    Then WL: expect membership page billing city is correct
+    Then WL: select membership page billing state CA
+    Then WL: expect membership page billing state is correct
+    Then WL: set membership page billing zip to 94102
+    Then WL: expect membership page billing zip is correct
 
-    Then check Membership page Billing address same as mailing address
-    Then check Membership page Terms & Conditions
+    Then WL: check membership page billing address same as mailing address
+    Then WL: check membership page terms & conditions
     Then expect Membership page Terms & Conditions is checked
 
     # Verify Physical Address Zone wise
