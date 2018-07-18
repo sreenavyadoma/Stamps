@@ -297,13 +297,9 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
   pass_format = Spreadsheet::Format.new :color => :green, :weight => :bold
   # Set weight and services
 
-
-
   step "set order details ship-to to a random address in Zone #{zone}"  if SdcEnv.sdc_app == :orders
   step "set print form mail-to to a random address in zone #{zone}" if SdcEnv.sdc_app == :mail
   step "save print form mail from" if SdcEnv.sdc_app == :mail
-
-
 
   @rate_sheet.each_with_index do |row, row_number|
     @row = row
@@ -312,12 +308,7 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
       if row_number > 0
         SdcLogger.info "#{"#" * 80} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_number}"
 
-        # Set address to proper zone
-        # step "set order details ship-to to a random address in Zone #{zone}"  if SdcEnv.sdc_app == :orders
-        # step "set print form mail-to to a random address in zone #{zone}" if SdcEnv.sdc_app == :mail
-        # step "save print form mail from" if SdcEnv.sdc_app == :mail
         # spreadsheet price for zone
-
         if row[zone_column] == nil
           SdcLogger.info "#{"#" * 10} "
           SdcLogger.info "#{"#" * 10} "
@@ -349,11 +340,8 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:ship_to_domestic]] = TestData.hash[:ship_to_domestic]  if SdcEnv.sdc_app == :orders
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:ship_to_domestic]] = TestData.hash[:address]  if SdcEnv.sdc_app == :mail
 
-          # Set weight to 0
-          # step "set order details pounds to 0" if SdcEnv.sdc_app == :orders
+          # Set ounces to 0
           step "set order details ounces to 0" if SdcEnv.sdc_app == :orders
-          #
-          # step "set print form pounds to 0" if SdcEnv.sdc_app == :mail
           step "set print form ounces to 0" if SdcEnv.sdc_app == :mail
 
           # Set weight per spreadsheet
@@ -411,14 +399,6 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           step "save print form total cost" if SdcEnv.sdc_app == :mail
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:total_ship_cost]] = (TestData.hash[:total_ship_cost].to_f * 100).round / 100.0
 
-          # Set weight to 0
-          # if SdcEnv.sdc_app == :mail
-          #   step "set print form pounds to 0"
-          #   step "set print form ounces to 0"
-          # elsif SdcEnv.sdc_app == :orders
-          #   step "set order details pounds to 0"
-          #   step "set order details ounces to 0"
-          # end
           expectation_f = (TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:zone]].to_f * 100).round / 100.0
           total_ship_cost_f = (TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:total_ship_cost]].to_f * 100).round / 100.0
 
