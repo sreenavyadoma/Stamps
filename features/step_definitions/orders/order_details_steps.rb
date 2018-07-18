@@ -83,14 +83,46 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to a random country i
   step "set order details domestic ship-to country to #{TestData.hash[:country]}"
 end
 
-Then /^in exact address not found module, select row (\d+)$/ do |row|
-  SdcWebsite.exact_address_not_found.address(row).set
-  expect(SdcWebsite.exact_address_not_found.address(row)).to be_set, "Address row wasn't selected!"
+Then /^set order details ship-to ambiguous address to$/ do |table|
+  address = TestHelper.format_address(table.hashes.first)
+  order_details = SdcOrders.order_details
+  exact_address_not_found = SdcWebsite.exact_address_not_found
+  order_details.ship_to.domestic.address.set(address)
+  order_details.weight_label.double_click
+  order_details.service_label.double_click
+  order_details.reference_no.double_click
+  order_details.ship_to_label.double_click
+  order_details.ship_to.domestic.address.set(address)
+  order_details.order_id.double_click
+  order_details.title.double_click
+  exact_address_not_found.title.safe_wait_until_present(timeout: 3)
+  step 'expect exact address not found window title is Exact Address Not Found'
+  TestData.hash[:ship_to_domestic] = address
 end
 
-Then /^in exact address not found module click accept$/ do
-  SdcWebsite.exact_address_not_found.accept.click
-  expect(SdcWebsite.exact_address_not_found.title).not_to be_present, "Address modal is still present"
+Then /^expect exact address not found window title is (.+)$/ do |str|
+  not_found = SdcWebsite.exact_address_not_found
+  not_found.title.safe_wait_until_present(timeout: 3)
+  result =not_found.title.text_value
+  expect(result).to eql(str)
+end
+
+Then /^select exact address not found row (\d+)$/ do |row|
+  not_found = SdcWebsite.exact_address_not_found
+  not_found.title.safe_wait_until_present(timeout: 3)
+  element = not_found.element_at_row(row)
+  element.safe_wait_until_present(timeout: 2)
+  element.scroll_into_view
+  element.set
+  result = element.value.to_i + 1
+  expect(result).to eql(row)
+  expect(element.set?).to eql(true)
+end
+
+Then /^click exact address not found accept button$/ do
+  exact_address_not_found = SdcWebsite.exact_address_not_found
+  exact_address_not_found.accept.click
+  expect(exact_address_not_found.title).not_to be_present
 end
 
 
@@ -351,12 +383,6 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails Panel is present$/ do
   # stamps.orders.order_details.wait_until_present(2)
   # step 'expect order details is present'
   # expect(stamps.orders.order_details).to be_present
-end
-
-Then /^expect exact address not found module to appear/ do
-  pending
-  #step 'expect order details is present'
-  # expect(SdcWebsite.exact_address_not_found.title).to be_present, "Exact Address Not Found modal is not present!"
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ii]nsure-[Ff]or [Cc]ost is (?:correct|(\d+\.\d{2}))$/ do |expectation|

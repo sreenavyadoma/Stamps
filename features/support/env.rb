@@ -30,6 +30,6 @@ require_relative 'sdc_apps/sdc_navigation'
 
 # web dev
 require_relative 'web_dev/stamps_endicia/partner_portal'
-
+require_relative 'web_dev/stamps_endicia/white_label'
 
 World SdcCore, SdcWebsite, SdcOrders, SdcMail, SdcNavigation, PartnerPortal

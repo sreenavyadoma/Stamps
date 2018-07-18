@@ -341,7 +341,7 @@ Then /^PP: set dashboard page from date field to (?:random date|(.*))$/ do |str|
 
   from_date_field.set(TestData.hash[:from_date] = (str.nil?) ? (TestData.hash[:from_date]) : str)
   from_date_field.parent.click
-
+  print "From: #{TestData.hash[:from_date]}\n"
 end
 
 Then /^PP: set dashboard page to date field to (?:random date|(.*))$/ do |str|
@@ -353,6 +353,7 @@ Then /^PP: set dashboard page to date field to (?:random date|(.*))$/ do |str|
 
   to_date_field.set(TestData.hash[:to_date] = (str.nil?) ? (TestData.hash[:to_date]) : str)
   to_date_field.parent.click
+  print "To:: #{TestData.hash[:to_date]}\n"
 end
 
 Then /^PP: expect from date and to date are cleared$/ do
@@ -603,7 +604,7 @@ Then /PP: dashboard page export data expect csv file transaction data matches da
   else
     expect(headers_expected).to match_array(headers)
     expect(TestData.hash[:account_number]).to match_array(account_number)
-    #expect(TestData.hash[:transaction_time]).to match_array(transaction_time)
+    #expect(TestData.hash[:transaction_time]).to match_array(transaction_time)  #TODO-MH fix after PP-523 bug is fix
     expect(TestData.hash[:transaction_type]).to match_array(transaction_type)
     expect(TestData.hash[:payout_amount]).to match_array(payout_amount)
     expect(TestData.hash[:tracking_number]).to match_array(tracking_number)

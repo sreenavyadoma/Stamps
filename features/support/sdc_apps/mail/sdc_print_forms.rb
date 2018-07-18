@@ -115,6 +115,16 @@ module SdcMail
         page_object(:restricted_delivery_verify) { {xpath: '//span[contains(@class, "sdc-mainpanel-rdcheckbox")]/../../..' } }
         checkbox(:restricted_delivery, :restricted_delivery_chooser, :restricted_delivery_verify, 'class', 'checked')
 
+        page_object(:calc_chooser) { { xpath: '//*[@id="sdc-mainpanel-calculatepostageradio-displayEl"]' } }
+        page_object(:calc_verify) { { xpath: '//*[@id="sdc-mainpanel-calculatepostageradio"]' } }
+        chooser(:calculate_postage_amount, :calc_chooser, :calc_verify,
+                :class, :checked)
+
+        page_object(:spec_chooser) { { xpath: '//*[@id="sdc-mainpanel-specifypostageradio-displayEl"]' } }
+        page_object(:spec_verify) { { xpath: '//*[@id="sdc-mainpanel-specifypostageradio"]' } }
+        chooser(:specify_postage_amount, :spec_chooser, :spec_verify,
+                :class, :checked)
+
         def cost_code
           AdvancedOptionsCostCode.new
         end
@@ -279,18 +289,19 @@ module SdcMail
 
     class Stamps < PrintFormBase
       include ExtraServicesContainer
+      include AdvancedOptionsContainer
 
       page_object(:serial_number, tag: :text_field) { { xpath: '//*[@name="NsSerial"]' } }
 
-      page_object(:calc_chooser) { { xpath: '//*[@id="sdc-mainpanel-calculatepostageradio-displayEl"]' } }
-      page_object(:calc_verify) { { xpath: '//*[@id="sdc-mainpanel-calculatepostageradio"]' } }
-      chooser(:calculate_postage_amount, :calc_chooser, :calc_verify,
-              :class, :checked)
-
-      page_object(:spec_chooser) { { xpath: '//*[@id="sdc-mainpanel-specifypostageradio-displayEl"]' } }
-      page_object(:spec_verify) { { xpath: '//*[@id="sdc-mainpanel-specifypostageradio"]' } }
-      chooser(:specify_postage_amount, :spec_chooser, :spec_verify,
-              :class, :checked)
+      # page_object(:calc_chooser) { { xpath: '//*[@id="sdc-mainpanel-calculatepostageradio-displayEl"]' } }
+      # page_object(:calc_verify) { { xpath: '//*[@id="sdc-mainpanel-calculatepostageradio"]' } }
+      # chooser(:calculate_postage_amount, :calc_chooser, :calc_verify,
+      #         :class, :checked)
+      #
+      # page_object(:spec_chooser) { { xpath: '//*[@id="sdc-mainpanel-specifypostageradio-displayEl"]' } }
+      # page_object(:spec_verify) { { xpath: '//*[@id="sdc-mainpanel-specifypostageradio"]' } }
+      # chooser(:specify_postage_amount, :spec_chooser, :spec_verify,
+      #         :class, :checked)
 
       text_field(:qty_text_field, tag: :text_field) { { xpath: '//*[@name="NsQuantity"]' } }
       page_object(:qty_increment) { { xpath: '//*[contains(@id,"printPreviewPanel-")]//*[contains(@class,"up")]' } }

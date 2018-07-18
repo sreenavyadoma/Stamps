@@ -9,6 +9,7 @@ include SdcOrders
 include SdcMail
 include SdcNavigation
 include PartnerPortal
+include WhiteLabel
 
 Before do |scenario|
   SdcEnv.scenario = scenario

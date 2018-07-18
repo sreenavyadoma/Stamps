@@ -100,52 +100,16 @@ Feature:  Mail BVT
     Then click the Sign In button in Mail
     Then expect Mail Sign In Modal error Your username or password is invalid.
 
-    # ------------------------------------------------------------ Stamps Advanced Options
-  @mail_bvt_advanced_options
-  @mail_advanced_options_stamps
-  Scenario: Advanced Options for Stamps
-    Then sign-in to mail
-    Then select print on Stamps
-
-    #Then check Shipping Label - 8 ½" x 11" Paper in Manage Print Options
-    # Then click save on Manage Print Options
-
-#    Then show advanced options
-#    Then expect Advanced Options Calculate Postage Amount radio button is present
-#    Then select Advanced Options Calculate Postage Amount
-#    Then expect Advanced Options Calculate Postage Amount is selected
-#    Then expect Advanced Options Specify Postage Amount radio button is present
-#    Then select Advanced Options Specify Postage Amount
-#    Then expect Advanced Options Specify Postage Amount is selected
-#    Then set print form serial number to random C series
-#    Then select Advanced Options Calculate Postage Amount
-#    Then set Print form Mail-From to default
-#    Then set print form mail-to country to United States
-#    Then select print form service FCM Letter
-#    Then set Print form Quantity to 1
-#    Then set advanced options cost code to None
-#
-#    Then expect Advanced Options Extra Services Button is visible
-#
-#    Then expect advanced options reference number field is present
-#    Then set advanced options reference number to random string
-#    Then expect advanced options reference number is correct
-#
-#    Then expect advanced options cost code field is present
-#    Then set advanced options cost code to None
-#    Then expect advanced options cost code is None
-
-
   @bvt_mail_piece_validation
   Scenario: Stamps B-Series
     Then select print on Stamps
     Then show advanced options
     Then set print form serial number to B12345
-    Then select Advanced Options Specify Postage Amount
+    Then select advanced options specify postage amount
     Then set Print form Mail-From to default
     Then select print form service Media Mail
-    Then set Print form Amount to 2
-    Then set Print form Quantity to 1
+    Then set print form stamp amount 2
+    Then set print form stamp quantity 1
     Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
@@ -174,18 +138,18 @@ Feature:  Mail BVT
     Then select print on Stamps
 
     Then set print form serial number to C12345
-    Then select Advanced Options Specify Postage Amount
+    Then select advanced options specify postage amount
     #Then set Print form Mail-From to default
     Then select print form service Media Mail
-    Then set Print form Amount to 2.85
-    Then set Print form Quantity to 1
-    #Then set Advanced Options Reference Number to Stamp3221
+    Then set print form stamp amount 2.85
+    Then set print form stamp quantity 1
+    #Then set print form advanced options reference number to Stamp3221
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
     Then set print form serial number to B12345
-    Then select Advanced Options Calculate Postage Amount
+    Then select advanced options calculate postage amount
     Then set Print form Mail-From to default
     Then set print form ounces to 1
     Then select print form service FCM Letter
@@ -236,7 +200,7 @@ Feature:  Mail BVT
     Then show advanced options
     Then hide advanced options
     Then show advanced options
-    #Then expect Advanced Options Extra Services Button is visible
+    #Then expect print form advanced options extra services button is visible
 
     Then set mail ship date to 05/31/2018
     Then open mail ship date picker
@@ -250,7 +214,7 @@ Feature:  Mail BVT
 
 
 #    Then set Advanced Options Mail Date to today
-#    Then expect Advanced Options Mail Date field is present
+#    Then expect print form advanced options mail date is present
 #    Then set Advanced Options Mail Date to date 04/04/2017
 #    Then expect Advanced Options Mail Date is 04/04/2017
 #    Then set Advanced Options Mail Date to today
@@ -288,13 +252,13 @@ Feature:  Mail BVT
 #    Then uncheck advanced options include postage
 #    Then expect advanced options include postage is unchecked
 #
-#    Then expect advanced options reference number field is present
-#    Then set advanced options reference number to random string
-#    Then expect advanced options reference number is correct
+#    Then expect print form advanced options reference number field is present
+#    Then set print form advanced options reference number to random string
+#    Then expect print form advanced options reference number is correct
 #
 #    Then expect advanced options cost code field is present
-#    Then set advanced options cost code to None
-#    Then expect advanced options cost code is None
+#    Then set print form advanced options cost code None
+#    Then expect print form advanced options cost code is None
 
   @mail_bvt_ui_validation
   Scenario: BVT Mail UI Validation for Stamps
@@ -317,8 +281,8 @@ Feature:  Mail BVT
     Then select print form service FCM Letter
     Then select print form service FCM Large Envelope/Flat
     Then select print form service MM Package/Flat/Thick Envelope
-    Then set print form reference number STMP123
-    Then set print form cost code None
+    Then set print form advanced options reference number to STMP123
+    Then set print form advanced options cost code None
     Then set print form stamp quantity 3
     Then increment print form stamp quantity by 2
     Then decrement print form stamp quantity by 2
@@ -621,7 +585,7 @@ Feature:  Mail BVT
     Then set print form mail-to address to Address Cleansing, BVT, 1350 Market Street #2905, San Francisco, CA
     Then set print form ounces to 4
     Then select print form service PM Flat Rate Envelope
-    Then expect print form ship date is 0 days from today
+    Then expect print form advanced options ship date is 0 days from today
     Then open mail settings modal
     Then set mail settings postdate to now -2 hours
     Then close mail settings modal
@@ -629,21 +593,21 @@ Feature:  Mail BVT
     Then set print form mail-to to a random address in zone 1
     Then set print form ounces to 2
     Then select print form service PM Padded Flat Rate Envelope
-    Then expect print form ship date is 1 days from today
+    Then expect print form advanced options ship date is 1 days from today
     Then open mail settings modal
     Then set mail settings postdate to now +2 hours
     Then close mail settings modal
     Then set print form ounces to 3
     Then select print form service PM Legal Flat Rate Envelope
-    Then expect print form ship date is 0 days from today
+    Then expect print form advanced options ship date is 0 days from today
     Then set print form ship date to today
-    Then expect print form ship date is 0 days from today
-    Then set print form ship date to today plus 1
-    Then expect print form ship date is 1 day from today
-    Then set print form ship date to today plus 2
-    Then expect print form ship date is 2 days from today
+    Then expect print form advanced options ship date is 0 days from today
+    Then set print form advanced options ship date to today plus 1
+    Then expect print form advanced options ship date is 1 day from today
+    Then set print form advanced options ship date to today plus 2
+    Then expect print form advanced options ship date is 2 days from today
     Then set print form ship date to today
-    Then expect print form ship date is 0 days from today
+    Then expect print form advanced options ship date is 0 days from today
 
     Then open mail settings modal
     Then set mail settings postdate to 5:00 p.m.
@@ -713,4 +677,37 @@ Feature:  Mail BVT
     Then set print form ounces to 1
     Then select print form service PM Package
     Then expect Print form Domestic Address field displays Address Cleansing, Google, 1600 Amphitheatre Pkwy, Mountain View, CA 94043-1351
+    Then sign out
+
+    # ------------------------------------------------------------ Shipping Labels Advanced Options
+  @mail_bvt_advanced_options
+  @mail_advanced_options_paper
+  Scenario: Advanced Options for Shipping Label - 8 ½" x 11" Paper
+    Then sign-in to mail
+    Then select print on Shipping Label - 8 ½" x 11" Paper
+    Then set print form mail-to to a random address in zone 1
+    Then select print form service PM Package
+    Then show advanced options
+    Then expect print form advanced options extra services button is present
+    Then expect advanced options hide label value is present
+    Then check advanced options hide label value
+    Then expect advanced options hide label value is checked
+    Then uncheck advanced options hide label value
+    Then expect advanced options hide label value is unchecked
+    Then expect advanced options print receipt is present
+    Then check advanced options print receipt
+    Then expect advanced options print receipt is checked
+    Then uncheck advanced options print receipt
+    Then expect advanced options print receipt is unchecked
+    Then expect advanced options print reference # is present
+    Then check advanced options print reference #
+    Then expect advanced options print reference # is checked
+    Then uncheck advanced options print reference #
+    Then expect advanced options print reference # is unchecked
+    Then expect print form advanced options reference number field is present
+    Then set print form advanced options reference number to random string
+    Then expect print form advanced options reference number is correct
+    Then expect advanced options cost code field is present
+    Then set print form advanced options cost code None
+    Then expect print form advanced options cost code is None
     Then sign out

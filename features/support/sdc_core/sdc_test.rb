@@ -131,7 +131,7 @@ class SdcTest
 
       if SdcEnv.sauce.browser
         SdcPage.browser = SauceSession.new.create_browser
-        SdcLogger.info SdcEnv.sauce.session_info(SdcPage.browser.driver.session_id)
+        SdcLogger.debug SdcEnv.sauce.session_info(SdcPage.browser.driver.session_id)
       end
 
       if SdcEnv.sauce_device
