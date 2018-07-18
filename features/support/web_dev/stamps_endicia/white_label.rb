@@ -1,5 +1,8 @@
 module WhiteLabel
   class ProfilePage < SdcPage
+    page_object(:profile_bread_crumb) { {xpath: '//li[@id="breadcrumb_Profile"]/span'} }
+    page_object(:header) { {xpath: '//h1[(contains(text(), "Sign up and avoid trips to the Post Office"))]'} }
+    page_object(:text) {{xpath: '//li[@id="sideaccount"]/p'}}
     text_field(:email, tag: :text_field, required: true) { { id: 'email' } }
     text_field(:username, tag: :text_field, required: true) { { id: 'username' } }
     text_field(:password, tag: :text_field, required: true) { { id: 'password' } }
@@ -10,6 +13,8 @@ module WhiteLabel
     page_object(:referrer_name) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="referrerName"]'}}
     page_objects(:money_saving_offers,  index: 0) { {id: "optIn"} }
     button(:continue) {{id: 'next'}}
+    page_object(:stamps_logo) {{id: 'sdc-logo'}}
+    page_object(:usps_logo) {{xpath: '//div[@id="nav-usps-vendor"]'}}
 
     def survey_selection(str, name = :survey_element)
       page_object(name) { {xpath: "//span[contains(text(), \" #{str} \")]" } }

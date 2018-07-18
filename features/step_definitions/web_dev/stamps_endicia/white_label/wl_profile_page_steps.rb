@@ -70,3 +70,27 @@ end
 Then /^WL: click profile page continue button$/ do
   WhiteLabel.profile_page.continue.click
 end
+
+
+
+##---------UI Validation------##
+
+Then /^WL: [Ee]xpect [Rr]egistration navigation bar Stamps logo exists$/ do
+  expect(WhiteLabel.profile_page.stamps_logo).to be_present, "Stamps logo doesn't exists on navigation bar"
+end
+
+Then /^WL: [Ee]xpect [Rr]egistration navigation bar USPS logo exists$/ do
+  expect(WhiteLabel.profile_page.usps_logo).to be_present, "USPS logo doesn't exists on navigation bar"
+end
+
+Then /^WL: [Ee]xpect [Pp]rofile bread crumbs is (.*)$/ do |str|
+  expect(WhiteLabel.profile_page.profile_bread_crumb).to eql(str), "Profile Bread crumb does not exist "
+end
+
+Then /^WL: [Ee]xpect [Pp]rofile [Pp]age header contain (.*)$/ do |str|
+  expect(WhiteLabel.profile_page.header).to eql(str)
+end
+
+Then /^WL: [Ee]xpect [Pp]rofile [Pp]age paragraph contain (.*)$/ do |str|
+  expect(WhiteLabel.profile_page.text).to eql(str)
+end
