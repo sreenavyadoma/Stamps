@@ -87,7 +87,7 @@ class SauceConfig < ::SdcModel
   end
 
   def session_info(session_id)
-    "SauceOnDemandSessionID=<#{session_id}> job-name=<#{test_name}>"
+    "SauceOnDemandSessionID=#{session_id} job-name=#{test_name}"
   end
 
 end
