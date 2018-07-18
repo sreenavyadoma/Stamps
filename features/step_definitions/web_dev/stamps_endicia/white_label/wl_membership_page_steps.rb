@@ -158,8 +158,12 @@ Then /^WL: uncheck membership page billing address same as mailing address$/ do
   WhiteLabel.membership_page.billing_addr_checkbox.uncheck
 end
 
-Then /^WL: expect Membership page Billing Address tooltip to be (.*)$/ do |str|
+Then /^WL: expect membership page billing address tooltip to be (.*)$/ do |str|
   expect(WhiteLabel.membership_page.billing_addr_help_block.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect membership page billing city tooltip to be (.*)$/ do |str|
+  expect(WhiteLabel.membership_page.billing_city_help_block.text_value.strip).to eql(str)
 end
 
 Then /^WL: check membership page Terms & Conditions$/ do

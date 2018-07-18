@@ -36,8 +36,8 @@ Feature: Stamps WebReg: Membership Page
     Then WL: expect membership page year tooltip to be This field is required
 
     # Membership Page Billing Address Help block tooltips
-    Then WL: expect Membership page Billing Address tooltip to be This field is required
-    Then expect Membership page Billing City tooltip to be This field is required
+    Then WL: expect membership page billing address tooltip to be This field is required
+    Then WL: expect membership page billing city tooltip to be This field is required
     Then expect Membership page Billing State tooltip to be This field is required
     Then expect Membership page Billing Zip tooltip to be This field is required
 
