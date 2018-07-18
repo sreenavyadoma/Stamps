@@ -5,7 +5,9 @@ end
 Then /^WL: set membership page first name to (?:random value|(.*))$/ do |str|
   first_name = WhiteLabel.membership_page.first_name
   first_name.wait_until_present(timeout: 10)
+  first_name.clear
   first_name.set(TestData.hash[:first_name] = str.nil? ? TestHelper.rand_alpha_str.capitalize  : str)
+  step "WL: blur_out on membership page"
 end
 
 Then /^WL: expect membership page first name is (?:correct|(.*))$/ do |str|
@@ -21,7 +23,9 @@ end
 
 Then /^WL: set membership page last name to (?:random value|(.*))$/ do |str|
   last_name = WhiteLabel.membership_page.last_name
+  last_name.clear
   last_name.set(TestData.hash[:last_name] = str.nil? ? TestHelper.rand_alpha_str.capitalize  : str)
+  step "WL: blur_out on membership page"
 end
 
 Then /^WL: expect membership page last name is (?:correct|(.*))$/ do |str|
@@ -44,7 +48,10 @@ Then /^WL: expect membership page company is (?:correct|(.*))$/ do |str|
 end
 
 Then /^WL: set membership page address to (.*)$/ do |str|
+  address = WhiteLabel.membership_page.address
+  address.clear
   WhiteLabel.membership_page.address.set(TestData.hash[:address] = str)
+  step "WL: blur_out on membership page"
 end
 
 Then /^WL: expect membership page address is (?:correct|(.*))$/ do |str|
@@ -58,7 +65,10 @@ Then /^WL: expect membership page address tooltip to be (.*)$/ do |str|
 end
 
 Then /^WL: set membership page city to (.*)$/ do |str|
-  WhiteLabel.membership_page.city.set(TestData.hash[:city] = str)
+   city = WhiteLabel.membership_page.city
+   city.clear
+   city.set(TestData.hash[:city] = str)
+   step "WL: blur_out on membership page"
 end
 
 Then /^WL: expect membership page city is (?:correct|(.*))$/ do |str|
@@ -98,7 +108,10 @@ Then /^WL: expect membership page zip is (?:correct|(.*))$/ do |str|
 end
 
 Then /^WL: set membership page phone to (?:random value|(.*))$/ do |str|
-  WhiteLabel.membership_page.phone.set(TestData.hash[:phone] = str.nil? ? TestHelper.rand_phone_format : str)
+  phone = WhiteLabel.membership_page.phone
+  phone.clear
+  phone.set(TestData.hash[:phone] = str.nil? ? TestHelper.rand_phone_format : str)
+  step "WL: blur_out on membership page"
 end
 
 Then /^WL: expect membership page phone tooltip to be (.*)$/ do |str|
@@ -142,10 +155,11 @@ Then /^WL: set membership page cardholder's name to (?:random value|(.*))$/ do |
    cc_holder_name = WhiteLabel.membership_page.cc_holder_name
    cc_holder_name.clear
    cc_holder_name.set(TestData.hash[:card_holder_name] = str.nil? ? TestHelper.rand_full_name  : str)
+    step 'WL: blur_out on membership page'
 end
 
 Then /^WL: expect membership page cardholder's name is (?:correct|(.*))$/ do |str|
-  expect(WhiteLabel.membership_page.cc_holder_name.text_value.strip).to eql(str.nil? ? TestData.hash[:cc_holder_name] : str)
+  expect(WhiteLabel.membership_page.cc_holder_name.text_value.strip).to eql(str.nil? ? TestData.hash[:card_holder_name] : str)
 end
 
 Then /WL: expect membership page cardholder's name tooltip to be (.*)$/ do |str|
@@ -153,11 +167,14 @@ Then /WL: expect membership page cardholder's name tooltip to be (.*)$/ do |str|
 end
 
 Then /^WL: set membership page credit card number to (?:default value|(.*))$/ do |str|
-  WhiteLabel.membership_page.cc_number.set(TestData.hash[:cc_number] = str.nil? ? "4111111111111111"  : str)
+  cc_number = WhiteLabel.membership_page.cc_number
+  cc_number.clear
+  cc_number.set(TestData.hash[:cc_number] = str.nil? ? "4111111111111111"  : str)
+  step 'WL: blur_out on membership page'
 end
 
 Then /^WL: expect membership page credit card number is (?:correct|(.*))$/ do |str|
-  expect(WhiteLabel.membership_page.cc_number.text_value.strip).to eql(str.nil? ? TestData.hash[:cc_number] : str)
+  expect(WhiteLabel.membership_page.cc_number.text_value.strip.delete(' ')).to eql(str.nil? ? TestData.hash[:cc_number] : str)
 end
 
 Then /^WL: expect membership page credit card number tooltip to be (.*)$/ do |str|
@@ -190,8 +207,8 @@ Then /^WL: select membership page credit card year (.*)$/ do |str|
   membership_page.dropdown_element.safe_wait_until_present(timeout: 2)
   membership_page.dropdown_element.click
   step "WL: blur_out on membership page"
-  TestData.hash[:cc_month] = membership_page.cc_year.attribute_value('title').strip
-  expect(TestData.hash[:cc_month].strip).to eql str
+  TestData.hash[:cc_year] = membership_page.cc_year.attribute_value('title').strip
+  expect(TestData.hash[:cc_year].strip).to eql str
 end
 
 Then /^WL: expect membership page year tooltip to be (.*)$/ do |str|
@@ -213,11 +230,27 @@ Then /^WL: uncheck membership page billing address same as mailing address$/ do
   end
 end
 
+Then /^WL: check membership page billing address same as mailing address$/ do
+  billing_addr_checkbox = WhiteLabel.membership_page.billing_addr_checkbox
+  if billing_addr_checkbox.attribute_value('checked') == nil
+    billing_addr_checkbox.click
+  end
+end
+
 Then /^WL: expect membership page billing address same as mailing address is checked$/ do
   billing_addr_checkbox = WhiteLabel.membership_page.billing_addr_checkbox
   billing_addr_checkbox.wait_until_present(timeout: 5)
   expect(billing_addr_checkbox.attribute_value('checked')).to eql('true')
 end
+
+Then /^WL: expect membership page billing address is present$/ do
+  expect(WhiteLabel.membership_page.billing_addr).to be_present, 'Billing Address IS NOT PRESENT'
+end
+
+Then /^WL: expect membership page billing address is not present$/ do
+  expect(WhiteLabel.membership_page.billing_addr).not_to be_present, 'Billing Address IS PRESENT'
+end
+
 
 Then /^WL: expect membership page billing address tooltip to be (.*)$/ do |str|
   expect(WhiteLabel.membership_page.billing_addr_help_block.text_value.strip).to eql(str)
