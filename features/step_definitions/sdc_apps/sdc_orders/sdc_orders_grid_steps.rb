@@ -1,3 +1,12 @@
+Then /^check row for order (\d+)$/ do |num|
+  order_id = TestData.hash[:order_id][num]
+  step "check grid order id #{order_id}"
+end
+
+Then /^uncheck row for order (\d+)$/ do |num|
+  order_id = TestData.hash[:order_id][num]
+  step "uncheck grid order id #{order_id}"
+end
 
 Then /^check grid order id(?:| (\d*))$/ do |order_id|
   order_id = if order_id.nil?

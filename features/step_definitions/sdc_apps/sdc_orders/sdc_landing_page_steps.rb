@@ -85,16 +85,6 @@ Then /^click sign-in button on browser$/ do
   SdcOrders.loading_orders.safe_wait_while_present(timeout: 15)
   SdcGrid.body.safe_wait_until_present(timeout: 20)
   expect(toolbar.add).to be_present
-
-  # if SdcEnv.sauce_device
-  #   step 'click Orders landing page sign-in button'
-  #   signed_in_user.safe_wait_until_present(timeout: 15)
-  # else
-  #   step 'click Orders landing page sign-in button'
-  #   signed_in_user.safe_wait_until_present(timeout: 5)
-  #   expect(signed_in_user.text_value).to eql(TestData.hash[:username])
-  # end
-
 end
 
 Then /^click sign-in button on ios$/ do
@@ -144,7 +134,6 @@ Then /^click Orders landing page sign-in button$/ do
     end
   end
   expect(landing_page.invalid_username_password.text_value).to eql('')
-  landing_page.sign_in.safe_wait_while_present(timeout: 60)
 end
 
 Then /^close whats new modal in orders$/ do
