@@ -56,11 +56,11 @@ module WhiteLabel
     text_field(:billing_addr, tag: :text_field, required: true) { { id: 'billingStreet' } }
     page_object(:billing_addr_help_block) {{xpath: '//li[@id="creditcard"]/div/div[6]/div[contains(@class, "billingAddressForm")]/div/span'}}
     text_field(:billing_city, tag: :text_field, required: true) { { id: 'billingCity' } }
-    page_objects(:billing_city_help_block) { {xpath: '//*[@id="creditcard"]/div/div[contains(@class, "col-lg-5")]/div/div/span'} }
+    page_object(:billing_city_help_block) { {xpath: '//*[@id="creditcard"]/div/div[contains(@class, "col-lg-5")]/div/div/span'} }
     page_object(:billing_state) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="billingState"]'}}
-    page_objects(:billing_state_help_block, index: 1) { {xpath:  '//div[@class="col-xs-12 col-sm-6 col-lg-3 gut-sm-form-r-half gut-lg-form-half"]/div[1]/div/span'} }
+    page_object(:billing_state_help_block) { {xpath:  '//li[@id="creditcard"]/div/div[contains(@class, "col-lg-3")]/div/div[2]/span'} }
     text_field(:billing_zip, tag: :text_field, required: true) { { id: 'billingZip' } }
-
+    page_object(:billing_state_help_block) { {xpath:  '//li[@id="creditcard"]/div/div[contains(@class, "col-lg-4")]/div/div/span'} }
     #username taken
     page_object(:username_taken_header) { {xpath: '//h3[(contains(text(), "Username Taken"))]'} }
     page_objects(:username_taken_p1, index: 0) { {id: 'prev-username'} }
