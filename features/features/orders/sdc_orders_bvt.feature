@@ -38,11 +38,11 @@ Feature:  BVT tests for Orders
     Then set order details width to 1
     Then set order details height to 1
   # Orders Grid Operations
-    Then uncheck row 1
-    Then expect orders grid pounds is 1
-    Then expect orders grid ounces is 1
-    Then expect orders grid weight is 1 lb. 1 oz.
-    Then expect orders grid insured value is 1.00
+#    Then uncheck row 1
+#    Then expect orders grid pounds is 1
+#    Then expect orders grid ounces is 1
+#    Then expect orders grid weight is 1 lb. 1 oz.
+#    Then expect orders grid insured value is 1.00
     Then sign-out of SDC Website
 
   @bvt_orders_ship_date
