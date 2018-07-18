@@ -1,24 +1,24 @@
-Then /^[Rr]un rate test PMI Comm Base in Country Price Group (\d+)$/ do |group|
+Then /^run rate test PMI Comm Base in Country Price Group (\d+)$/ do |group|
   param_sheet = data_for(:rates_test, {})['rates_pmi_comm_base']
   step "run rate sheet #{param_sheet} in Country Price Group #{group}"
 end
 
-Then /^[Rr]un rate test PMI Comm Plus in Country Price Group (\d+)$/ do |group|
+Then /^run rate test PMI Comm Plus in Country Price Group (\d+)$/ do |group|
   param_sheet = data_for(:rates_test, {})['rates_pmi_comm_plus']
   step "run rate sheet #{param_sheet} in Country Price Group #{group}"
 end
 
-Then /^[Rr]un rate test PMEI Comm Base in Country Price Group (\d+)$/ do |group|
+Then /^run rate test PMEI Comm Base in Country Price Group (\d+)$/ do |group|
   param_sheet = data_for(:rates_test, {})['rates_pmei_comm_base']
   step "run rate sheet #{param_sheet} in Country Price Group #{group}"
 end
 
-Then /^[Rr]un rate test PMEI Comm Plus in Country Price Group (\d+)$/ do |group|
+Then /^run rate test PMEI Comm Plus in Country Price Group (\d+)$/ do |group|
   param_sheet = data_for(:rates_test, {})['rates_pmei_comm_plus']
   step "run rate sheet #{param_sheet} in Country Price Group #{group}"
 end
 
-Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, group|
+Then /^run rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, group|
   group = group.to_i
 
   TestData.hash[:result_file] = Spreadsheet::Workbook.new
@@ -419,10 +419,10 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
           # Set weight to 0
           SdcLogger.info "#{"#" * 10} Desired Weight: #{row[@rate_sheet_columns[:weight_lb]]}"
           if SdcEnv.sdc_app == :orders
-            step "set order details pounds to 0"
+            # step "set order details pounds to 0"
             step "set order details ounces to 0"
           elsif SdcEnv.sdc_app == :mail
-            step "set print form pounds to 0"
+            # step "set print form pounds to 0"
             step "set print form ounces to 0"
           end
 
@@ -441,7 +441,7 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
             TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:weight_lb]] = weight_lb
             TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:weight]] = "#{weight_lb} lb."
             step "set order details pounds to #{weight_lb}" if SdcEnv.sdc_app == :orders
-            step "set print form pounds to #{weight_lb}" if SdcEnv.sdc_app == :mail
+            step "set print form pounds to #{weight_lb} by arrows" if SdcEnv.sdc_app == :mail
           else
             weight_oz = Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_f       #AB_ORDERSAUTO_3580 - IDE bug, Weight require 2 parameters
             #SdcLog.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
@@ -472,13 +472,13 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:total_ship_cost]] = (TestData.hash[:total_ship_cost].to_f * 100).round / 100.0
 
           # Set weight to 0
-          if SdcEnv.sdc_app == :orders
-            step "set order details pounds to 0"
-            step "set order details ounces to 0"
-          elsif SdcEnv.sdc_app == :mail
-            step "set print form pounds to 0"
-            step "set print form ounces to 0"
-          end
+          # if SdcEnv.sdc_app == :orders
+          #   step "set order details pounds to 0"
+          #   step "set order details ounces to 0"
+          # elsif SdcEnv.sdc_app == :mail
+          #   step "set print form pounds to 0 by arrows"
+          #   step "set print form ounces to 0"
+          # end
 
 
           expectation_f = (TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:group]].to_f * 100).round / 100.0
@@ -515,7 +515,8 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
  # end
 
   result_sheet = param_sheet.gsub(/\s+/, "")
-  @result_filename = "#{data_for(:rates_test, {})['results_dir']}\\#{result_sheet}_#{ENV['WEB_APP'].downcase}_#{ENV['URL'].downcase}_Group_#{group}_#{Time.now.strftime("%Y.%m.%d.%H.%M")}.xls"
+  @result_filename = "#{data_for(:rates_test, {})['results_dir']}\\#{result_sheet}_#{SdcEnv.sdc_app.downcase}_#{ENV['URL'].downcase}_Group_#{group}_#{Time.now.strftime("%Y.%m.%d.%H.%M")}.xls"
+
   TestData.hash[:result_file].write @result_filename
   TestData.hash[:result_sheet].each_with_index do |row, row_number|
     begin
