@@ -32,7 +32,7 @@ stampswebclient: --tags @bvt_shipstation_updates_international URL=stg USR=AutoS
 # C:\Users\lab>rake authentication URL=stg BROWSER=ff USR=stgvoc0kcnt6rw PW=pass111
 #saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1
 #saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1
-
+bin\sc -u robcruz -k 0e60dbc9-5bbf-425a-988b-f81c42d6b7ef --no-remove-colliding-tunnels
 #bvt_orders_ship_date
 saucelabs_browser:  --tags @bvt_new_order BROWSER=gc LOG_LEVEL=info  URL=prod USR=default PW=password1 HEADLESS=true
 saucelabs_iphonex: --tags @saucelabs_poc IOS=iphonex LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1
