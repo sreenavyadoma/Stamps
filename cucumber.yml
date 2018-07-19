@@ -1,5 +1,5 @@
 
-default: --backtrace --profile rob
+default: --backtrace --profile mhossain1_cc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -579,3 +579,4 @@ pp_dashboard_single_contract_export_data_ui_validation: --tags @pp_dashboard_sin
 pp_dashboard_single_contract_export_data_validation: --tags @pp_dashboard_single_contract_export_data_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 #Stamps WebReg
 sdcwr_normal_workflow:  --tags @sdcwr_normal_workflow --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
+sdcwr_membership_page_ui_validation:  --tags @sdcwr_membership_page_ui_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
