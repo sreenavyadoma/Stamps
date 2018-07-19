@@ -83,7 +83,7 @@ end
 Then /^WL: select membership page state (.*)$/ do |str|
   membership_page = WhiteLabel.membership_page
   membership_page.state.click
-  membership_page.dropdown_selection(str)
+  membership_page.dropdown_selection(str, 0)
   membership_page.dropdown_element.safe_wait_until_present(timeout: 2)
   membership_page.dropdown_element.click
   step "WL: blur_out on membership page"
@@ -110,7 +110,11 @@ end
 Then /^WL: set membership page phone to (?:random value|(.*))$/ do |str|
   phone = WhiteLabel.membership_page.phone
   phone.clear
-  phone.set(TestData.hash[:phone] = str.nil? ? TestHelper.rand_phone_format : str)
+  rand_phone = TestHelper.rand_phone_format
+  phone.set(TestData.hash[:phone] = str.nil? ? rand_phone : str)
+  if phone.text_value.strip != TestData.hash[:phone]
+    phone.set(TestData.hash[:phone] = str.nil? ? rand_phone : str)
+  end
   step "WL: blur_out on membership page"
 end
 
@@ -119,6 +123,7 @@ Then /^WL: expect membership page phone tooltip to be (.*)$/ do |str|
 end
 
 Then /^WL: expect membership page phone is (?:correct|(.*))$/ do |str|
+
   expect(WhiteLabel.membership_page.phone.text_value.strip).to eql(str.nil? ? TestData.hash[:phone] : str)
 end
 
@@ -184,7 +189,7 @@ end
 Then /^WL: select membership page credit card month (.*)$/ do |str|
   membership_page = WhiteLabel.membership_page
   membership_page.cc_month.click
-  membership_page.dropdown_selection(str)
+  membership_page.dropdown_selection(str, 0)
   membership_page.dropdown_element.safe_wait_until_present(timeout: 2)
   membership_page.dropdown_element.click
   step "WL: blur_out on membership page"
@@ -203,7 +208,7 @@ end
 Then /^WL: select membership page credit card year (.*)$/ do |str|
   membership_page = WhiteLabel.membership_page
   membership_page.cc_year.click
-  membership_page.dropdown_selection(str)
+  membership_page.dropdown_selection(str, 0)
   membership_page.dropdown_element.safe_wait_until_present(timeout: 2)
   membership_page.dropdown_element.click
   step "WL: blur_out on membership page"
@@ -284,7 +289,7 @@ end
 Then /^WL: select membership page billing state (.*)$/ do |str|
   membership_page = WhiteLabel.membership_page
   membership_page.billing_state.click
-  membership_page.dropdown_selection(str)
+  membership_page.dropdown_selection(str, 1)
   membership_page.dropdown_element.safe_wait_until_present(timeout: 2)
   membership_page.dropdown_element.click
   step "WL: blur_out on membership page"
