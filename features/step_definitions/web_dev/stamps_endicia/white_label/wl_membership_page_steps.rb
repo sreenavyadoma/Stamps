@@ -60,6 +60,17 @@ Then /^WL: set membership page address to (.*)$/ do |str|
   step "WL: blur_out on membership page"
 end
 
+Then /^WL: click membership page address$/ do
+   WhiteLabel.membership_page.address.click
+end
+
+Then /WL: select membership page address autocomplete first result$/ do
+  address_auto_complete  = WhiteLabel.membership_page.address_auto_complete
+  address_auto_complete.wait_until_present(timeout: 2)
+  address_auto_complete.click
+  step "WL: blur_out on membership page"
+end
+
 Then /^WL: expect membership page address is (?:correct|(.*))$/ do |str|
   address = WhiteLabel.membership_page.address
   expect(address.text_value.strip).to eql(str.nil? ? TestData.hash[:address] : str)
@@ -275,6 +286,17 @@ Then /^WL: set membership page billing address to (.*)$/ do |str|
   while billing_addr.text_value.strip == ''
     billing_addr.set(TestData.hash[:billing_addr] = str)
   end
+  step "WL: blur_out on membership page"
+end
+
+Then /^WL: click membership page billing address$/ do
+  WhiteLabel.membership_page.billing_addr.click
+end
+
+Then /WL: select membership page billing address autocomplete first result$/ do
+  billing_addr_auto_complete  = WhiteLabel.membership_page.billing_addr_auto_complete
+  billing_addr_auto_complete.wait_until_present(timeout: 2)
+  billing_addr_auto_complete.click
   step "WL: blur_out on membership page"
 end
 
