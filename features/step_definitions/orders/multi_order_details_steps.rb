@@ -88,9 +88,10 @@ end
 
 Then /^set bulk update domestic service to (.*)$/ do |str|
   service = SdcOrders.bulk_update.dom_service
-  service.selection_element(name: :selection, value: str)
-  service.drop_down.click unless service.selection.present?
-  service.selection.click unless service.selection.class_disabled?
+  service.drop_down.click
+  selection = service.selection_element(name: :selection, value: str)
+  selection.safe_wait_until_present(timeout: 2)
+  selection.scroll_into_view.safe_click
   expect(service.text_field.text_value).to include(str)
   TestData.hash[:bulk_dom_service] = str
 end
@@ -101,9 +102,10 @@ end
 
 Then /^set bulk update international service to (.*)$/ do |str|
   service = SdcOrders.bulk_update.intl_service
-  service.selection_element(name: :selection, value: str)
-  service.drop_down.click unless service.selection.present?
-  service.selection.click unless service.selection.class_disabled?
+  service.drop_down.click
+  selection = service.selection_element(name: :selection, index: 2, value: str)
+  selection.safe_wait_until_present(timeout: 2)
+  selection.scroll_into_view.safe_click
   expect(service.text_field.text_value).to include(str)
   TestData.hash[:bulk_int_service] = str
 end

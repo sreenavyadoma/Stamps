@@ -9,7 +9,7 @@ Then /^uncheck row for order (\d+)$/ do |num|
 end
 
 Then /^check grid order id(?:| (\d*))$/ do |order_id|
-  order_id = if order_id.nil?
+  order_id ||= if order_id.nil?
                TestData.hash[:order_id].values.last
              elsif order_id.size < 2
                TestData.hash[:order_id][order_id.to_i]
@@ -23,7 +23,7 @@ Then /^check grid order id(?:| (\d*))$/ do |order_id|
 end
 
 Then /^uncheck grid order id(?:| (\d*))$/ do |order_id|
-  order_id = if order_id.nil?
+  order_id ||= if order_id.nil?
                TestData.hash[:order_id].values.last
              elsif order_id.size < 2
                TestData.hash[:order_id][order_id.to_i]

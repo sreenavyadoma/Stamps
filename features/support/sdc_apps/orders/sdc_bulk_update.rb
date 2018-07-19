@@ -90,8 +90,8 @@ module SdcOrders
     page_object(:drop_down, required: true, timeout: 40) { { xpath: '(//div[contains(@id, "servicedroplist")]//div[contains(@id, "trigger-picker")])[3]' } }
     page_object(:text_field, required: true, timeout: 40) { { xpath: '(//input[contains(@id, "servicedroplist")])[3]' } }
 
-    def selection_element(name: :selection, value: 'Manage Service Options...')
-      page_object(name) { { xpath: "(//li[@id='#{data_for(:orders_services, {})[value]}'])[2]" } }
+    def selection_element(name: :selection, index: 2, value: 'Manage Service Options...')
+      page_object(name) { { xpath: "(//li[@id='#{data_for(:orders_services, {})[value]}'])[#{index}]" } }
     end
   end
 
