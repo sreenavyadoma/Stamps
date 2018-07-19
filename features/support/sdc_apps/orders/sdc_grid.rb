@@ -156,7 +156,9 @@ module SdcGrid
       xpath = "#{grid_container}//tbody//td[#{col_num}]//div"
       divs = page_objects(:row_number_divs) { { xpath: xpath } }
       divs.each_with_index do |field, index|
-        return index + 1 if field.text.include?(order_id)
+        element = SdcElement.new(field)
+        element.scroll_into_view
+        return index + 1 if element.text.include?(order_id)
       end
 
       raise ArgumentError, "Cannot locate Order ID #{order_id}"

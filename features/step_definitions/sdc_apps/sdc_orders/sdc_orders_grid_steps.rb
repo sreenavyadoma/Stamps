@@ -1,10 +1,14 @@
 Then /^check row for order (\d+)$/ do |num|
   order_id = TestData.hash[:order_id][num]
+  SdcGrid.body.wait_until_present(timeout: 10)
+  sleep 1 unless SauceSession.config.build_number
   step "check grid order id #{order_id}"
 end
 
 Then /^uncheck row for order (\d+)$/ do |num|
   order_id = TestData.hash[:order_id][num]
+  SdcGrid.body.wait_until_present(timeout: 10)
+  sleep 1 unless SauceSession.config.build_number
   step "uncheck grid order id #{order_id}"
 end
 
@@ -14,6 +18,8 @@ Then /^check grid order id(?:| (\d*))$/ do |order_id|
              elsif order_id.size < 2
                TestData.hash[:order_id][order_id.to_i]
              end
+  SdcGrid.body.wait_until_present(timeout: 10)
+  sleep 1 unless SauceSession.config.build_number
   column = SdcGrid.grid_column(:checkbox)
   row = column.row_num(order_id)
   checkbox = column.checkbox_row(row)
@@ -27,7 +33,9 @@ Then /^uncheck grid order id(?:| (\d*))$/ do |order_id|
                TestData.hash[:order_id].values.last
              elsif order_id.size < 2
                TestData.hash[:order_id][order_id.to_i]
-             end
+               end
+  SdcGrid.body.wait_until_present(timeout: 10)
+  sleep 1 unless SauceSession.config.build_number
   column = SdcGrid.grid_column(:checkbox)
   row = column.row_num(order_id)
   checkbox = column.checkbox_row(row)
@@ -37,12 +45,14 @@ Then /^uncheck grid order id(?:| (\d*))$/ do |order_id|
 end
 
 When /^check row (\d+)$/ do |row|
+  SdcGrid.body.wait_until_present(timeout: 10)
   checkbox = SdcGrid.grid_column(:checkbox).checkbox_row(row)
   checkbox.check
   expect(checkbox.checked?).to be(true)
 end
 
 When /^uncheck row (\d+)$/ do |row|
+  SdcGrid.body.wait_until_present(timeout: 10)
   checkbox = SdcGrid.grid_column(:checkbox).checkbox_row(row)
   checkbox.uncheck
   expect(checkbox.checked?).to be(false)

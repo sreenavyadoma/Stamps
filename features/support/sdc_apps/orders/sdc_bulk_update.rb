@@ -77,8 +77,10 @@ module SdcOrders
     page_object(:drop_down, required: true, timeout: 40) { { xpath: '(//div[contains(@id, "servicedroplist")]//div[contains(@id, "trigger-picker")])[2]' } }
     page_object(:text_field, required: true, timeout: 40) { { xpath: '(//input[contains(@id, "servicedroplist")])[2]' } }
 
-    def selection_element(name: :selection, value: 'Manage Service Options...')
-      page_object(name) { { xpath: "//li[@id='#{data_for(:orders_services, {})[value]}']" } }
+    def selection_elements(name: :selection, value: 'Manage Service Options...')
+      id = data_for(:orders_services, {})[value]
+      xpath = "//li[@id='#{id}']"
+      page_objects(name) { { xpath: xpath } }
     end
   end
 
@@ -90,8 +92,10 @@ module SdcOrders
     page_object(:drop_down, required: true, timeout: 40) { { xpath: '(//div[contains(@id, "servicedroplist")]//div[contains(@id, "trigger-picker")])[3]' } }
     page_object(:text_field, required: true, timeout: 40) { { xpath: '(//input[contains(@id, "servicedroplist")])[3]' } }
 
-    def selection_element(name: :selection, index: 2, value: 'Manage Service Options...')
-      page_object(name) { { xpath: "(//li[@id='#{data_for(:orders_services, {})[value]}'])[#{index}]" } }
+    def selection_elements(name: :selection, value: 'Manage Service Options...')
+      id = data_for(:orders_services, {})[value]
+      xpath = "//li[@id='#{id}']"
+      page_objects(name) { { xpath: xpath } }
     end
   end
 
