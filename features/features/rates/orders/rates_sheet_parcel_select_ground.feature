@@ -1,7 +1,10 @@
 Feature: Parcel Select Ground Rates
 
   Background:
-    Given Login and configure rate tests
+    Given Start test driver
+    Given sign-in to mail
+    Given excel rate sheet is loaded
+    Given prepare environment for ratings test
 
   @rates_parcel_select_ground_zone_1
   Scenario: Parcel Select Ground Zone 1
