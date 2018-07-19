@@ -359,7 +359,6 @@ Then /^run rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
             TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:weight]] = "#{weight_lb} lb."
             step "set order details pounds to #{weight_lb}"  if SdcEnv.sdc_app == :orders
             step "set print form pounds to #{weight_lb} by arrows"  if SdcEnv.sdc_app == :mail
-            # step "set print form pounds to #{weight_lb}"  if SdcEnv.sdc_app == :mail
           else
             weight_oz = Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_f
             #SdcLog.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
