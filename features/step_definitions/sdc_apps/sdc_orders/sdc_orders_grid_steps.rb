@@ -1,14 +1,14 @@
 Then /^check row for order (\d+)$/ do |num|
   order_id = TestData.hash[:order_id][num]
   SdcGrid.body.wait_until_present(timeout: 10)
-  sleep 1 unless SauceSession.config.build_number
+  sleep 7 unless SauceSession.config.build_number
   step "check grid order id #{order_id}"
 end
 
 Then /^uncheck row for order (\d+)$/ do |num|
   order_id = TestData.hash[:order_id][num]
   SdcGrid.body.wait_until_present(timeout: 10)
-  sleep 1 unless SauceSession.config.build_number
+  sleep 7 unless SauceSession.config.build_number
   step "uncheck grid order id #{order_id}"
 end
 

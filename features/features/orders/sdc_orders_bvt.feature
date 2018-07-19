@@ -427,22 +427,15 @@ Feature:  BVT tests for Orders
     Then set order details ounces to 1
     Then blur out on order details form
 
+#  # Order #2 (International)
     Then add order 2
     Then blur out on order details form
-    Then set order details ship-to to random address in zone 2
-    Then set order details service to PM Package
-    Then set order details ounces to 1
+    Then set order details ship-to international address to
+      | full_name     | company       | street_address1 | street_address2 | city          | province      | postal_code   | country | phone        |  email        |
+      | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone | Random email  |
+    Then set order details weight to 0 lb 1 oz
+    Then set order details service to PMI Flat Rate Envelope
     Then blur out on order details form
-
-#  # Order #2 (International)
-#    Then add order 2
-#    Then blur out on order details form
-#    Then set order details ship-to international address to
-#      | full_name     | company       | street_address1 | street_address2 | city          | province      | postal_code   | country | phone        |  email        |
-#      | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone | Random email  |
-#    Then set order details weight to 0 lb 1 oz
-#    Then set order details service to PMI Flat Rate Envelope
-#    Then blur out on order details form
 
 #  Check 1st two orders
     Then check row for order 1
@@ -451,7 +444,7 @@ Feature:  BVT tests for Orders
   # Updating order details
     Then expect bulk update is present
     Then set bulk update domestic service to PM Large Package
-    #Then set bulk update international service to PMI Package/Flat/Thick Envelope
+    Then set bulk update international service to PMI Package/Flat/Thick Envelope
     Then check bulk update weight
     Then set bulk update pounds to 0
     Then set bulk update ounces to 3
@@ -471,7 +464,7 @@ Feature:  BVT tests for Orders
 
 #  # verify fields in 2nd order
     Then check row for order 2
-    #Then expect order details international service is PMI Package/Flat/Thick Envelope
+    Then expect order details international service is PMI Package/Flat/Thick Envelope
     Then expect order details pound is 0
     Then expect order details ounce is 3
     Then sign out
