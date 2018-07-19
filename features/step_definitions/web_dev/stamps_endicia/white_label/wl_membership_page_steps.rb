@@ -322,14 +322,20 @@ Then /^WL: expect membership page billing zip tooltip to be (.*)$/ do |str|
   expect(WhiteLabel.membership_page.billing_zip_help_block.text_value.strip).to eql(str)
 end
 
-
 Then /^WL: check membership page terms & conditions$/ do
-  WhiteLabel.membership_page.terms_conditions.click! #unless WhiteLabel.membership_page.terms_conditions.checked?
+  WhiteLabel.membership_page.terms_conditions.click! unless WhiteLabel.membership_page.billing_addr_enable_disable.attribute_value('class')== 'form-group checkbox'
 end
 
+Then /^WL: uncheck membership page terms & conditions$/ do
+  WhiteLabel.membership_page.terms_conditions.click! unless WhiteLabel.membership_page.billing_addr_enable_disable.attribute_value('class')== 'form-group checkbox has-error'
+end
 
-Then /^WL: expect membership page Terms & Conditions is checked$/ do
-  expect(WhiteLabel.membership_page.terms_conditions.checked?).to be(true)
+Then /^WL: expect membership page terms & conditions is checked$/ do
+  expect(WhiteLabel.membership_page.billing_addr_enable_disable.attribute_value('class')).to eql('form-group checkbox')
+end
+
+Then /^WL: expect membership page Terms & Conditions is unchecked$/ do
+  expect(WhiteLabel.membership_page.billing_addr_enable_disable.attribute_value('class')).to eql('form-group checkbox has-error')
 end
 
 Then /^WL: expect membership page terms & conditions tooltip to be (.*)$/ do |str|

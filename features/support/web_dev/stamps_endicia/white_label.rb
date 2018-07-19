@@ -64,6 +64,7 @@ module WhiteLabel
 
     #Billing Address
     page_object(:billing_addr_checkbox) {{id: 'useMailingAddressForBilling'}}
+    page_object(:billing_addr_enable_disable) { {xpath: '//li[@id="terms"]/div/div/div'} }
     page_object(:billing_addr_header) {{class: ['billingAddressForm']}}
     text_field(:billing_addr, tag: :text_field, required: true) { { id: 'billingStreet' } }
     page_object(:billing_addr_help_block) {{xpath: '//li[@id="creditcard"]/div/div[6]/div[contains(@class, "billingAddressForm")]/div/span'}}

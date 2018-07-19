@@ -126,11 +126,12 @@ Feature: Stamps WebReg: Membership Page
     Then WL: expect membership page billing zip is correct
 
     Then WL: check membership page billing address same as mailing address
+    Then WL: expect membership page Terms & Conditions is unchecked
     Then WL: check membership page terms & conditions
-    Then expect Membership page Terms & Conditions is checked
+    Then WL: expect membership page terms & conditions is checked
 
     # Verify Physical Address Zone wise
-    Then set Membership page member address to random address between zone 1 and 4
+    Then WL: set Membership page member address to random address between zone 1 and 4
     Then expect Membership page Address is correct
     Then expect Membership page City is correct
     Then expect Membership page State is correct
