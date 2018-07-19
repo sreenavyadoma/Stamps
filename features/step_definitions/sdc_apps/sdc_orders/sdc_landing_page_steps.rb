@@ -71,6 +71,8 @@ Then /^sign-in to orders$/ do
   else
     step 'click sign-in button on browser'
     step 'close whats new modal in orders'
+    step 'complete orders tutorial'
+    step 'close shipstation upgrade modal'
   end
 end
 
@@ -128,6 +130,13 @@ end
 Then /^close whats new modal in orders$/ do
   whats_new = SdcWebsite.modals.whats_new
   if whats_new.title.present?
+    whats_new.close.click
+  end
+end
+
+Then /^complete orders tutorial$/ do
+  whats_new = SdcWebsite.modals.whats_new
+  if SdcWebsite.modals.orders_tutorial.title.present?
     whats_new.close.click
   end
 end

@@ -195,6 +195,36 @@ module SdcOrders
       end
     end
 
+    class OrdersTutorialModal1 < SdcPage
+      page_object(:title) { { xpath: '//*[text()="Welcome!"]' } }
+      page_object(:next) { { xpath: '//*[text()="Next"]' } }
+    end
+
+    class OrdersTutorialModal2 < SdcPage
+      page_object(:title) { { xpath: '//*[text()="Add Manual Order"]' } }
+      page_object(:next) { { xpath: '//*[text()="Next"]' } }
+    end
+
+    class OrdersTutorialModal3 < SdcPage
+      page_object(:title) { { xpath: '//*[text()="Import from CSV"]' } }
+      page_object(:next) { { xpath: '//*[text()="Next"]' } }
+    end
+
+    class OrdersTutorialModal4 < SdcPage
+      page_object(:title) { { xpath: '//*[text()="Import from Stores"]' } }
+      page_object(:next) { { xpath: '//*[text()="Next"]' } }
+    end
+
+    class OrdersTutorialModal5 < SdcPage
+      page_object(:title) { { xpath: '//*[text()="Learn More"]' } }
+      page_object(:next) { { xpath: '//*[text()="Next"]' } }
+    end
+
+    class ShipstationUpgradeModal < SdcPage
+      page_object(:title) { { xpath: '//*[text()="Add Advanced Shipping Features!"]' } }
+      page_object(:close) { { xpath: '//*[contains(@class, "x-btn-icon-el")]' } }
+    end
+
     def print
       OrdersPrintModal.new
     end
@@ -234,5 +264,36 @@ module SdcOrders
       InsuranceTerms.new
     end
     module_function :insurance_terms
+
+    def tutorial_step_1
+      OrdersTutorialModal1.new
+    end
+    module_function :tutorial_step_1
+
+    def tutorial_step_2
+      OrdersTutorialModal2.new
+    end
+    module_function :tutorial_step_2
+
+    def tutorial_step_3
+      OrdersTutorialModal3.new
+    end
+    module_function :tutorial_step_3
+
+    def tutorial_step_4
+      OrdersTutorialModal4.new
+    end
+    module_function :tutorial_step_4
+
+    def tutorial_step_5
+      OrdersTutorialModal5.new
+    end
+    module_function :tutorial_step_5
+
+    def shipstation_upgrade_modal
+      ShipstationUpgradeModal.new
+    end
+    module_function :shipstation_upgrade_modal
+
   end
 end
