@@ -131,7 +131,7 @@ class SdcTest
 
       if SdcEnv.sauce.browser
         SdcPage.browser = SauceSession.new.create_browser
-        SdcLogger.info SdcEnv.sauce.session_info(SdcPage.browser.driver.session_id)
+        SdcLogger.debug SdcEnv.sauce.session_info(SdcPage.browser.driver.session_id)
       end
 
       if SdcEnv.sauce_device
@@ -218,7 +218,6 @@ class SdcTest
               SdcPage.browser.window.maximize
             end
 
-
           rescue StandardError => e
             SdcLogger.error e.message
             SdcLogger.error e.backtrace.join("\n")
@@ -253,6 +252,8 @@ class SdcTest
         end
 
       end
+      SdcEnv.width = SdcPage.browser.window.size.width
+      SdcEnv.height = SdcPage.browser.window.size.height
     end
 
     def start
@@ -304,7 +305,6 @@ class SdcTest
       SdcEnv.jenkins ||= ENV['JENKINS']
       SdcEnv.web_dev ||= ENV['WEB_DEV']
       SdcEnv.window_size ||= ENV['WINDOW_SIZE']
-
 
       #deprecated
       SdcEnv.sdc_app ||= ENV['WEB_APP'].downcase.to_sym unless ENV['WEB_APP'].nil?

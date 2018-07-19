@@ -1,3 +1,12 @@
+Then /^check row for order (\d+)$/ do |num|
+  order_id = TestData.hash[:order_id][num]
+  step "check grid order id #{order_id}"
+end
+
+Then /^uncheck row for order (\d+)$/ do |num|
+  order_id = TestData.hash[:order_id][num]
+  step "uncheck grid order id #{order_id}"
+end
 
 Then /^check grid order id(?:| (\d*))$/ do |order_id|
   order_id = if order_id.nil?
@@ -6,7 +15,7 @@ Then /^check grid order id(?:| (\d*))$/ do |order_id|
                TestData.hash[:order_id][order_id.to_i]
              end
   column = SdcGrid.grid_column(:checkbox)
-  row = column.row_number(order_id)
+  row = column.row_num(order_id)
   checkbox = column.checkbox_row(row)
   checkbox.check
   result = checkbox.checked?
@@ -20,7 +29,7 @@ Then /^uncheck grid order id(?:| (\d*))$/ do |order_id|
                TestData.hash[:order_id][order_id.to_i]
              end
   column = SdcGrid.grid_column(:checkbox)
-  row = column.row_number(order_id)
+  row = column.row_num(order_id)
   checkbox = column.checkbox_row(row)
   checkbox.uncheck
   result = checkbox.checked?
@@ -70,19 +79,44 @@ Then /^expect orders grid ship cost is (?:correct|(.*))$/ do |str|
   expect(result.to_f).to eql str.to_f
 end
 
-Then /^expect orders grid date printed is (?:correct|(.*))$/ do |str|
-  str ||= Date.today.strftime("%b %-d")
+Then /^expect orders grid ship date is (?:correct|(.*))$/ do |str|
+  # Ship date is set after user prints label
+  str ||= TestData.hash[:ship_date]
   order_id = if order_id.nil?
                TestData.hash[:order_id].values.last
              elsif order_id.size < 2
                TestData.hash[:order_id][order_id.to_i]
              end
-  result =SdcGrid.grid_column(:date_printed).data(order_id)
-  expect(result).to eql(TestHelper.grid_date_format(str.nil? ? Date.today.strftime("%b %-d") : str))
+
+  column = SdcGrid.grid_column(:ship_date)
+  expect(column).to be_present
+  expect(column.header_text).to eql('Ship Date')
+  # Only validate if there's an actual ship date from printing label
+  if str
+    str = TestHelper.grid_date_format(str)
+    result = column.data(order_id)
+    expect(result).to eql(str)
+  end
 end
 
-Then /^expect orders grid ship date is (?:correct|(.*))$/ do |str|
-  expect(SdcGrid.grid_column(:ship_date).data(TestData.hash[:order_id].values.last)).to eql(TestHelper.grid_date_format(str.nil? ? stamps.orders.modals.orders_print_modal.ship_date.textbox.text : str))
+Then /^expect orders grid date printed is (?:correct|(.*))$/ do |str|
+  # Date printed is set after user prints label
+  str ||= TestData.hash[:date_printed]
+  order_id = if order_id.nil?
+               TestData.hash[:order_id].values.last
+             elsif order_id.size < 2
+               TestData.hash[:order_id][order_id.to_i]
+             end
+
+  column = SdcGrid.grid_column(:date_printed)
+  expect(column).to be_present
+  expect(column.header_text).to eql('Date Printed')
+  # Only validate if there's a print date after printing label
+  if str
+    str = TestHelper.grid_date_format(str)
+    result = column.data(order_id)
+    expect(result).to eql(str)
+  end
 end
 
 Then /^expect orders grid order date is populated$/ do
@@ -150,7 +184,7 @@ Then /^expect orders grid zip is (?:correct|(.*))$/ do |str|
   expect(result).to include(str)
 end
 
-Then /^[Ee]xpect [Oo]rders [Gg]rid Country is (?:correct|(.*))$/ do |str|
+Then /^expect orders grid country is (?:correct|(.*))$/ do |str|
   str ||= TestData.hash[:country]
   order_id = TestData.hash[:order_id].values.last
   result = SdcGrid.grid_column(:country).data(order_id)
@@ -168,6 +202,13 @@ Then /^expect orders grid phone is (?:correct|(.*))$/ do |str|
   str ||= TestData.hash[:phone]
   order_id = TestData.hash[:order_id].values.last
   result = SdcGrid.grid_column(:phone).data(order_id)
+  expect(result).to eql str
+end
+
+Then /^expect orders grid weight is (\d+) lb. (\d+) oz.$/ do |lb, oz|
+  str = "#{lb} lbs. #{oz} oz."
+  order_id = TestData.hash[:order_id].values.last
+  result = SdcGrid.grid_column(:weight).data(order_id)
   expect(result).to eql str
 end
 
@@ -200,14 +241,16 @@ end
 
 Then /^expect orders grid item name is (.+)$/ do |str|
   order_id = TestData.hash[:order_id].values.last
-  result = SdcGrid.grid_column(:item_name).data(order_id)
-  expect(result).to eql str
-end
-
-Then /^expect orders grid weight is (\d+) lb. (\d+) oz.$/ do |lb, oz|
-  str = "#{lb} lbs. #{oz} oz."
-  order_id = TestData.hash[:order_id].values.last
-  result = SdcGrid.grid_column(:weight).data(order_id)
+  column = SdcGrid.grid_column(:item_name)
+  element = column.element_for_id(order_id)
+  5.times do
+    break if element.text_value.size.eql? str.size
+    element.scroll_into_view
+    element.click
+    element.double_click
+    SdcPage.browser.wait_until(timeout: 2) { element.text_value.size.eql? str.size }
+  end
+  result = column.data(order_id)
   expect(result).to eql str
 end
 
@@ -296,7 +339,7 @@ Then /^expect orders grid order total is (?:correct|(.*))$/ do |str|
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Ship Cost error to contain \"(.*)\"$/ do |str|
-  grid_order_id = SdcGrid.grid_column(:order_id).row 1
+  grid_order_id = SdcGrid.grid_column(:order_id).text_at_row 1
   ship_cost_error = SdcGrid.grid_column(:ship_cost).data_error grid_order_id
   expect(ship_cost_error).to include(str)
   ship_cost_error = SdcGrid.grid_column(:ship_cost).data_error "81453"
@@ -306,7 +349,7 @@ end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid ship cost data error tooltip is \"(.*)\"$/ do |str|
   #SdcLog.step "expect Orders Grid ship cost data error tooltip is #{str}"
-  grid_order_id = SdcGrid.grid_column(:order_id).row 1
+  grid_order_id = SdcGrid.grid_column(:order_id).text_at_row 1
   grid_ship_cost = SdcGrid.grid_column(:ship_cost).data grid_order_id
   error = grid_ship_cost.attribute_str "data-errorqtip"
   #SdcLog.step "Test #{(error.include? str)?"Passed":"Failed"}"

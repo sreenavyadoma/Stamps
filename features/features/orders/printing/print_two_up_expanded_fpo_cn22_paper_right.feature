@@ -6,7 +6,7 @@ Feature: User Prints 1 FPO CN22 label on 8.5x11 - right side
   @print_two_up_expanded_fpo_cn22_paper_right
   Scenario: User Prints 1 FPO CN22 label on 8.5x11 - right side
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to domestic address to
       | full_name   | company      | street_address1    | city | state | zip    | country       | phone  |  email |
       | PM RR Box C | 8.5x11 Right Side 1 | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |

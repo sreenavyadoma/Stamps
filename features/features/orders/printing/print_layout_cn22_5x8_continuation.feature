@@ -6,7 +6,7 @@ Feature: Print 1 Intl CP72 label with continuation on 5.5x8.5 - left side
   @print_layout_cn22_5x8_continuation
   Scenario: Print 1 Intl CP72 label with continuation on 5.5x8.5 - left side
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
       | full_name      | company            | street_address1 | street_address2 | city   | province| postal_code | country     | phone   |  email  |
       | PMEI PFTE |  5.5x8.5 Left Side | random           | random           | random | random  | random      | Philippines | random  | random  |

@@ -29,7 +29,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
   Scenario: User Reprints Order - Closes Reprint Modal before reprint
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PM Package
     Then set order details pounds to 1
@@ -51,7 +51,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
   Scenario: User Reprints Order - Domestic
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details domestic ship-to country to United States
     Then set order details ship-to domestic address to
       | full_name         | company           | street_address1  |street_address2|  city        | state| zip   | country       | phone  |  email |
@@ -76,7 +76,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
   Scenario: User Reprints Order - APO | CP72
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details domestic ship-to country to United States
     Then set order details ship-to domestic address to
       | full_name   | company      | street_address1    |street_address2| city | state | zip    | country       | phone  |  email |
@@ -106,7 +106,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
   Scenario: User Reprints Order - International | CN22
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
       | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country    | phone   |  email  |
       | Reprint Test | 5.5x8.5 | random           | random           | random | random  | random      | Norway | random  | random  |
@@ -137,7 +137,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
   Scenario: User Reprints Order - International | CP72
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details ship-to international address to
       | full_name   | company | street_address1 | street_address2 | city   | province| postal_code | country    | phone   |  email  |
       | Reprint Test | SDC-1200 | random           | random           | random | random  | random      | New Zealand | random  | random  |
@@ -168,7 +168,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
   Scenario: User Reprints Order - US Territory | CP72
 
     Then add new order
-    Then set order details ship-from to Automation - El Segundo, CA
+    #Then set order details ship-from to Automation - El Segundo, CA
     Then set order details domestic ship-to country to United States
     Then set order details ship-to domestic address to
       | full_name         | company            | street_address1 | street_address2| city | state | zip        | country       | phone  |  email |

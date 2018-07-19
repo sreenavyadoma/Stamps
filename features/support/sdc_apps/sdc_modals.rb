@@ -1,5 +1,6 @@
-module SdcMail
+module SdcWebsite
   module SdcModals
+
     class SdcWhatsNew < SdcPage
       page_object(:title) { {xpath: '//div[contains(text(), "What")]'} }
       page_object(:close) { {xpath: '//span[contains(text(), "Close")]'} }

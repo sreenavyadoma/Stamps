@@ -146,7 +146,6 @@ Feature: PP-MVP: Dashboard Page Single Contract
     Then PP: expect CSV file to be downloaded with correct file name
     Then PP: delete existing csv file
 
-   #Then PP: dashboard page export data for 10 dates ranges
 
   @pp_dashboard_single_contract_export_data_validation
   Scenario: PP: Dashboard Page Single Contract Export Date Data Validation

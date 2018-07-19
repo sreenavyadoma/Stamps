@@ -168,3 +168,8 @@ end
 Then /^expect print form ship date dropdown is present$/ do
   expect(SdcOrders.modals.print.ship_date.drop_down).to be_present, "Ship Date dropdown is not present. Check that StampsConnect is connected. You might need to re-login on this PC #{SdcEnv.hostname}"
 end
+
+Then /^expect print form is present$/ do
+  SdcMail.print_on.drop_down.wait_until_present(timeout: 15)
+  expect(SdcMail.print_on.drop_down).to be_present, "Print form is not present"
+end

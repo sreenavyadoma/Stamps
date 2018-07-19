@@ -49,15 +49,7 @@ Then /^refresh the browser$/ do
 end
 
 Then /^pause for (\d+) second(?:|s)?$/ do |seconds|
-  if SdcEnv.new_framework
-    sleep(seconds.to_i)
-  else
-    begin
-      sleep(seconds.to_i)
-    rescue
-      # ignore
-    end
-  end
+  sleep(seconds.to_i)
 end
 
 

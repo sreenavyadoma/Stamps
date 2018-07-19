@@ -5,6 +5,7 @@ end
 Then /^add order (\d+)$/ do |count|
   toolbar = SdcOrders.toolbar
   order_details = SdcOrders.order_details
+  ship_from = order_details.ship_from
   initializing = SdcOrders.initializing_orders_db
   server_error = SdcOrders.modals.server_error
   toolbar.add.wait_until_present(timeout: 10)
@@ -24,13 +25,16 @@ Then /^add order (\d+)$/ do |count|
   order_details.order_id.safe_wait_until_present(timeout: 20)
   order_details.title.safe_wait_until_present(timeout: 20)
   expect(order_details.order_id.text_value).not_to eql ''
-
-  TestData.hash[:order_id][count.to_i] = order_details.order_id.text_value.parse_digits
+  sleep 1
+  order_id = order_details.order_id.text_value.parse_digits
+  TestData.hash[:order_id][count.to_i] = order_id
 
   step 'Save Order Details data'
   TestData.hash[:ord_id_ctr] += 1
   TestData.hash[:items_ordered_qty] = 0
   TestData.hash[:customs_items_qty] = 0
+  ship_from = ship_from.text_field.text_value
+  TestData.hash[:ship_from] = ship_from
 end
 
 Then /^wait until orders available$/ do

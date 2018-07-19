@@ -10,14 +10,14 @@ Feature: Resetting mail fields
     Then set print form mail-to random address in zone 1
     Then set print form ounces to 1
     Then show advanced options
-    Then expect Advanced Options Extra Services Button is disabled
+    Then expect print form advanced options extra services button is disabled
     Then select print form service PM Flat Rate Envelope
-    Then expect Advanced Options Extra Services Button is enabled
+    Then expect print form advanced options extra services button is enabled
     Then click Mail toolbar menu reset button
     Then expect mail fields are reset
-    Then expect Advanced Options Extra Services Button is disabled
+    Then expect print form advanced options extra services button is disabled
     Then set print form mail-to random address in zone 1
     Then set print form ounces to 1
     Then select print form service PM Flat Rate Envelope
-    Then expect Advanced Options Extra Services Button is enabled
+    Then expect print form advanced options extra services button is enabled
     Then sign out

@@ -12,7 +12,8 @@ module SdcEnv
                   :printer, :browser, :hostname, :mobile, :scenario,
                   :sauce_device, :test_name, :log_level, :driver_log_level,
                   :browser_mobile_emulator, :android, :ios, :firefox_profile,
-                  :new_framework, :max_window, :window_size, :web_dev, :jenkins, :sauce
+                  :new_framework, :window_size, :web_dev, :jenkins, :sauce,
+                  :width, :height
   end
 end
 
@@ -72,7 +73,10 @@ class SauceConfig < ::SdcModel
   key(:build_number) { ENV['BUILD_NUMBER'] }
   key(:node_name) { ENV['NODE_NAME'] }
   key(:build_url) { ENV['BUILD_URL'] }
-  key(:sauce_end_point) { "https://#{sauce_username}:#{sauce_access_key}@#{host}:#{port}/wd/hub" } # "https://robcruz:0e60dbc9-5bbf-425a-988b-f81c42d6b7ef@ondemand.saucelabs.com:443/wd/hub"
+  key(:screen_resolution) { ENV['SCREEN_RESOLUTION'] || '1280x1024' }
+  key(:idle_timeout) { ENV['IDLE_TIMEOUT'] || 120 }
+  key(:sauce_end_point) { "https://#{sauce_username}:#{sauce_access_key}@#{host}:#{port}/wd/hub" }
+  # "https://robcruz:0e60dbc9-5bbf-425a-988b-f81c42d6b7ef@ondemand.saucelabs.com:443/wd/hub"
 
   def test_name
     job_name || "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
@@ -83,7 +87,7 @@ class SauceConfig < ::SdcModel
   end
 
   def session_info(session_id)
-    "SauceOnDemandSessionID=<#{session_id}> job-name=<#{test_name}>"
+    "SauceOnDemandSessionID=#{session_id} job-name=#{test_name}"
   end
 
 end
@@ -99,7 +103,8 @@ class SauceSession
         :platform => @sauce_config.platform,
         :name => @sauce_config.test_name,
         :build => @sauce_config.build,
-        :idleTimeout => 120,
+        :idleTimeout => @sauce_config.idle_timeout,
+        :screenResolution => @sauce_config.screen_resolution,
         :extendedDebugging => true
     }
 
@@ -279,7 +284,7 @@ class SdcDriverDecorator < BasicObject
   end
 
   def respond_to_missing?(name, include_private = false)
-    super || @driver.respond_to?(name, include_private)
+    @driver.respond_to?(name, include_private) || super
   end
 
   def method_missing(method, *args, &block)
@@ -513,7 +518,7 @@ class SdcElement < BasicObject
   end
 
   def respond_to_missing?(name, include_private = false)
-    super || @element.respond_to?(name, include_private)
+    @element.respond_to?(name, include_private) || super
   end
 
   def method_missing(name, *args, &block)
@@ -582,7 +587,7 @@ class SdcChooser < BasicObject
   end
 
   def respond_to_missing?(name, include_private = false)
-    super || @element.respond_to?(name, include_private)
+    @element.respond_to?(name, include_private) || super
   end
 
   def method_missing(name, *args, &block)
@@ -607,7 +612,7 @@ class SdcNumber < BasicObject
   end
 
   def respond_to_missing?(name, include_private = false)
-    super || @element.respond_to?(name, include_private)
+    @element.respond_to?(name, include_private) || super
   end
 
   def method_missing(name, *args, &block)
@@ -631,7 +636,7 @@ class SdcLogger
     end
 
     def respond_to_missing?(name, include_private = false)
-      super || logger.respond_to?(name, include_private)
+      logger.respond_to?(name, include_private) || super
     end
 
     def method_missing(method, *args)

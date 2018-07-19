@@ -38,9 +38,9 @@ String.class_eval do
   end
 
   ##
-  # str=$34.68 returns 34.68
+  # str=$34.68 returns 34.68 | str = "Total: $123.3" -> "123.3"
   def dollar_amount_str
-    self.delete('$').delete(',')
+    self.delete('[Tt]otal: ').delete('$').delete(',')
   end
 
   ##

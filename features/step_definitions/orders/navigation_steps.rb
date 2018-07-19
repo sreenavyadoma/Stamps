@@ -7,22 +7,26 @@ Then /^on add funds modal, purchase 10$/ do
 end
 
 Then /^on add funds modal, purchase 25$/ do
-  TestData.hash[:old_balance] = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
+  pending
+  #TestData.hash[:old_balance] = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
   SdcWebsite.navigation.balance.add_funds.buy_25.select
 end
 
 Then /^on add funds modal, purchase 50$/ do
-  TestData.hash[:old_balance] = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
+  pending
+  #TestData.hash[:old_balance] = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
   SdcWebsite.navigation.balance.add_funds.buy_50.select
 end
 
 Then /^on add funds modal, purchase 100$/ do
-  TestData.hash[:old_balance] = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
+  pending
+  #TestData.hash[:old_balance] = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
   SdcWebsite.navigation.balance.add_funds.buy_100.select
 end
 
 Then /^on add funds modal, purchase other amount (\d+)$/ do |amount|
-  TestData.hash[:old_balance] = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
+  pending
+  #TestData.hash[:old_balance] = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
   SdcWebsite.navigation.balance.add_funds.buy_other.select
   SdcWebsite.navigation.balance.add_funds.buy_other_amount.set(amount)
 end

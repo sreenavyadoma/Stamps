@@ -1,7 +1,7 @@
 
 module SdcGrid
 
-  class GridItem < SdcPage
+  class GridColumnBase < SdcPage
     @@column_number = {}
 
     def self.set(property, value)
@@ -52,16 +52,23 @@ module SdcGrid
       '//div[@class="x-grid-item-container"]'
     end
 
+    def column_xpath(column)
+      column = column_names[column] if column.class.eql?(Symbol)
+      "//span[text()='#{column}']"
+    end
+
+    def header_element(column)
+      if column.eql? :checkbox
+        xpath = '//div[contains(@class, "x-column-header-checkbox")]'
+        page_object(:header_element_checkbox) { { xpath: xpath } }
+      else
+        xpath = column_xpath(column)
+        page_object("header_element_#{column}") { { xpath: xpath } }
+      end
+    end
+
     def scroll_to(column)
-      method_name = "scroll_to_#{column.to_s}"
-      column_name = column_names[column]
-      xpath = "//span[text()='#{column_name}']"
-      field = if column.eql? :checkbox
-                xpath = '//div[contains(@class, "x-column-header-checkbox")]'
-                page_object(:checkbox) { { xpath: xpath } }
-              else
-                page_object(method_name.to_sym, tag: :span) { { xpath: xpath } }
-              end
+      field = header_element(column)
       field.scroll_into_view
       field
     end
@@ -90,15 +97,22 @@ module SdcGrid
 
     def text_at(column, row)
       scroll_to(column)
-      element = element_at(column, row)
+      element = element_at_row(column, row)
       element.text_value
     end
 
-    def element_at(column, row)
+    def element_at_row(column, row)
       column_num = column_number(column).to_s
       xpath = "#{grid_container}//table[#{row.to_s}]//tbody//td[#{column_num}]//div"
       coordinates = "col#{column}xrow#{row}"
-      page_object(coordinates.to_sym) { { xpath: xpath } }
+      element = page_object(coordinates.to_sym) { { xpath: xpath } }
+      element.scroll_into_view
+      element
+    end
+
+    def element_for_id(column,order_id)
+      row = row_num(order_id)
+      element_at_row(column, row)
     end
 
     def grid_field_column_name(column, row)
@@ -125,7 +139,7 @@ module SdcGrid
           set(key, index + 1)
 
           if key.eql?(name)
-            scroll_to(name)
+            #scroll_to(name)
             col_num = get(name)
             return col_num
           end
@@ -185,7 +199,7 @@ module SdcGrid
     end
   end
 
-  class SdcGridCheckBox < GridItem
+  class SdcGridCheckBox < GridColumnBase
     sdc_param(:chooser_xpath) { '//*[@id="sdc-mainpanel-calculatepostageradio-displayEl"]' }
     page_object(:chooser) { { xpath: '//div[contains(@class, "x-column-header-checkbox")]//span' } }
     page_object(:verify) { { xpath: '//div[contains(@class, "x-column-header-checkbox")]' } }
@@ -209,9 +223,19 @@ module SdcGrid
     end
   end
 
-  class SdcGridItem < GridItem
+  class SdcGridColumn < GridColumnBase
     def initialize(column)
       @column = column
+    end
+
+    def header_text
+      element = scroll_into_view
+      element.text_value
+    end
+
+    def present?
+      element = scroll_into_view
+      element.present?
     end
 
     def scroll_into_view
@@ -227,7 +251,11 @@ module SdcGrid
     end
 
     def element(row)
-      element_at(@column, row)
+      element_at_row(@column, row)
+    end
+
+    def element_for_id(order_id)
+      super(@column, order_id)
     end
 
     def sort_ascending
@@ -252,7 +280,7 @@ module SdcGrid
   def grid_column(column)
     body.wait_until_present(timeout: 15)
 
-    unless GridItem.column_names.keys.include? column
+    unless GridColumnBase.column_names.keys.include? column
       raise ArgumentError, "Invalid grid column: #{column}"
     end
 
@@ -261,7 +289,7 @@ module SdcGrid
       SdcGridCheckBox.new
 
     when :weight
-      klass = Class.new(SdcGridItem) do
+      klass = Class.new(SdcGridColumn) do
         def lb order_id
           data(order_id).scan(/\d+ lb./).first.scan(/\d/).first.to_i
         end
@@ -274,7 +302,7 @@ module SdcGrid
       klass.new(column)
 
     else
-      SdcGridItem.new(column)
+      SdcGridColumn.new(column)
     end
   end
   module_function :grid_column

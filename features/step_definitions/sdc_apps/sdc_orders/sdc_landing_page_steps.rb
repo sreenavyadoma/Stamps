@@ -56,7 +56,7 @@ Then /^fetch user credentials from MySQL$/ do
     TestData.hash[:password] = pw
   end
 end
-#
+
 Then /^sign-in to orders$/ do
   step 'visit Orders landing page'
   usr = TestData.hash[:username]
@@ -72,6 +72,7 @@ Then /^sign-in to orders$/ do
     step 'click sign-in button on browser'
     step 'close whats new modal in orders'
   end
+  SdcEnv.sdc_app = :orders
 end
 
 Then /^click sign-in button on browser$/ do
@@ -81,20 +82,9 @@ Then /^click sign-in button on browser$/ do
   step 'click Orders landing page sign-in button'
 
   SdcOrders.loading_orders.safe_wait_until_present(timeout: 5)
-  SdcOrders.loading_orders.wait_while_present(timeout: 60)
-  toolbar.add.wait_until_present(timeout: 30)
-  SdcGrid.body.wait_until_present(timeout: 70)
+  SdcOrders.loading_orders.safe_wait_while_present(timeout: 15)
+  SdcGrid.body.safe_wait_until_present(timeout: 20)
   expect(toolbar.add).to be_present
-
-  # if SdcEnv.sauce_device
-  #   step 'click Orders landing page sign-in button'
-  #   signed_in_user.safe_wait_until_present(timeout: 15)
-  # else
-  #   step 'click Orders landing page sign-in button'
-  #   signed_in_user.safe_wait_until_present(timeout: 5)
-  #   expect(signed_in_user.text_value).to eql(TestData.hash[:username])
-  # end
-
 end
 
 Then /^click sign-in button on ios$/ do
@@ -118,11 +108,32 @@ Then /^set Orders landing page password to (.*)$/ do |str|
   SdcWebsite.landing_page.password.set(str)
 end
 
+Then /^set sign in page username to (.*)$/ do |str|
+  SdcWebsite.landing_page.username.set(str)
+end
+
+Then /^set sign in page password to (.*)$/ do |str|
+  SdcWebsite.landing_page.password.set(str)
+end
+
+Then /^click sign in page sign-in button$/ do
+  SdcWebsite.landing_page.sign_in.wait_until_present(timeout: 3)
+  SdcWebsite.landing_page.sign_in.click
+end
+
 Then /^click Orders landing page sign-in button$/ do
   landing_page = SdcWebsite.landing_page
   landing_page.sign_in.wait_until_present(timeout: 3)
   landing_page.sign_in.click
-  landing_page.sign_in.safe_wait_while_present(timeout: 60)
+  3.times do
+    if landing_page.invalid_username_password.present?
+      landing_page.sign_in.click
+      landing_page.invalid_username_password.safe_wait_while_present(timeout: 1)
+    else
+      break
+    end
+  end
+  expect(landing_page.invalid_username_password.text_value).to eql('')
 end
 
 Then /^close whats new modal in orders$/ do

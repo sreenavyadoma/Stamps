@@ -32,26 +32,25 @@ end
 
 Then /^[Ss]ave username to (?:default parameter file|parameter file (.*))$/ do |filename|
   data_file = registration_parameter_file(filename)
-  sleep(0.25)
   File.open(data_file, 'w+') {|f| f.write("username: #{TestData.hash[:username]}\n")}
 end
 
 Then /^[Ss]ave password to (?:default parameter file|parameter file (.*))$/ do |filename|
   data_file = registration_parameter_file(filename)
-  sleep(0.25)
   File.open(data_file, 'a+') {|f| f.write("password: #{TestData.hash[:password]}\n")}
 end
 
 Then /^[Oo]n PAM Customer Search page, set username from parameter file$/ do
   SdcLogger.info "On PAM Customer Search page, set username from parameter file"
-  step "On PAM Customer Search page, set username to #{SdcTest['username']}"
+  step "On PAM Customer Search page, set username to #{TestData.hash['username']}"
 end
 
 Then /^[Ss]et PAM Customer Search page username from parameter file$/ do
-  step "set PAM Customer Search page username to #{SdcTest['username']}"
+  step "set PAM Customer Search page username to #{TestData.hash['username']}"
 end
 
 Then /^Orders: Sign-in using username and password from parameter file$/ do
-  stamps.orders.landing_page.sign_in(TestData.hash[:username], TestData.hash[:password])
+  pending
+  #stamps.orders.landing_page.sign_in(TestData.hash[:username], TestData.hash[:password])
 end
 

@@ -2,7 +2,22 @@ module SdcNavigation
   class SignedInUser < SdcPage
     page_object(:signed_in_user, tag: :a) { {id: 'username'} }
     page_object(:sign_out_link, tag: :a) { {id: 'signOutLink'} }
+  end
 
+  class SignedInUserTablet < SdcPage
+    page_object(:hamburger){{xpath: '//div[contains(@class, "nav-collapse")]//div[contains(@class, "tablet")]'}}
+    page_object(:my_account){{xpath: '//a[text()="My Account"]'}}
+    page_object(:manage_account){{xpath: '//*[contains(@class, "nav-item")]//a[text()="Manage Account"]'}}
+    page_object(:legal_terms){{xpath: '//*[contains(@class, "nav-item")]//a[text()="Legal Terms"]'}}
+    page_object(:sign_out){{id: 'signOutLink'}}
+
+    page_object(:balance){{xpath: '//a[text()=" Balance"]'}}
+    page_object(:buy_more){{xpath: '//*[contains(@class, "nav-item")]//a[text()="Buy More"]'}}
+    page_object(:view_purchase_history){{xpath: '//*[contains(@class, "nav-item")]//a[text()="View Purchase History"]'}}
+    page_object(:change_payment_method){{xpath: '//*[contains(@class, "nav-item")]//a[text()="Change Payment Method"]'}}
+
+    page_object(:supplies){{xpath: '(//a[text()="Supplies"])[2]'}}
+    page_object(:help){{xpath: '(//a[text()="Help"])[2]'}}
   end
 
   class MailSignInModal < SdcPage
@@ -12,6 +27,13 @@ module SdcNavigation
     page_object(:sign_in){{id: 'signInButton'}}
     page_object(:remember_username, tag: :checkbox) { {id: 'rememberUser'} }
     page_object(:invalid_sign_in) { {xpath: '//div[contains(@id, "InvalidUsernamePasswordMsg")]//label'} }
+  end
+
+  class MailSignInModalTablet < SdcPage
+    page_object(:hamburger_menu){{xpath: '//div[contains(@class, "nav-collapse")]//div[contains(@class, "tablet")]'}}
+    page_object(:supplies){{xpath: '(//a[text()="Supplies"])[2]'}}
+    page_object(:sign_in){{xpath: '//a[text()="Sign In"]'}}
+    page_object(:help){{xpath: '(//a[text()="Help"])[2]'}}
   end
 
   class SdcNavigationBalance < SdcPage
@@ -89,7 +111,12 @@ module SdcNavigation
   module_function :user_drop_down
 
   def mail_sign_in_modal
-    MailSignInModal.new
+    # MailSignInModal.new
+    if SdcEnv.width.to_i < 1195
+      MailSignInModalTablet.new
+    else
+      MailSignInModal.new
+    end
   end
   module_function :mail_sign_in_modal
 
