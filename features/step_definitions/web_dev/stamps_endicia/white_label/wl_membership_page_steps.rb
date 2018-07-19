@@ -112,7 +112,7 @@ Then /^WL: set membership page phone to (?:random value|(.*))$/ do |str|
   phone.clear
   rand_phone = TestHelper.rand_phone_format
   phone.set(TestData.hash[:phone] = str.nil? ? rand_phone : str)
-  if phone.text_value.strip != TestData.hash[:phone]
+  while phone.text_value.strip == ''
     phone.set(TestData.hash[:phone] = str.nil? ? rand_phone : str)
   end
   step "WL: blur_out on membership page"
