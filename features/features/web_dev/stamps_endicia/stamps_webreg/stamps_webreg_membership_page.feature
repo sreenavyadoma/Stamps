@@ -81,6 +81,9 @@ Feature: Stamps WebReg: Membership Page
     Then WL: set membership page phone to random value
     Then WL: expect membership page phone is correct
 
+    #
+
+    #Credit Card
     Then WL: set membership page cardholder's name to random value
     Then WL: expect membership page cardholder's name is correct
 
