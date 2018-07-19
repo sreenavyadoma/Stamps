@@ -415,10 +415,8 @@ Then /^run rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, group
           # Set weight to 0
           SdcLogger.info "#{"#" * 10} Desired Weight: #{row[@rate_sheet_columns[:weight_lb]]}"
           if SdcEnv.sdc_app == :orders
-            # step "set order details pounds to 0"
             step "set order details ounces to 0"
           elsif SdcEnv.sdc_app == :mail
-            # step "set print form pounds to 0"
             step "set print form ounces to 0"
           end
 
@@ -466,16 +464,6 @@ Then /^run rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, group
           step 'Save Order Details data' if SdcEnv.sdc_app == :orders
           step "save print form total cost" if SdcEnv.sdc_app == :mail
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:total_ship_cost]] = (TestData.hash[:total_ship_cost].to_f * 100).round / 100.0
-
-          # Set weight to 0
-          # if SdcEnv.sdc_app == :orders
-          #   step "set order details pounds to 0"
-          #   step "set order details ounces to 0"
-          # elsif SdcEnv.sdc_app == :mail
-          #   step "set print form pounds to 0 by arrows"
-          #   step "set print form ounces to 0"
-          # end
-
 
           expectation_f = (TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:group]].to_f * 100).round / 100.0
           total_ship_cost_f = (TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:total_ship_cost]].to_f * 100).round / 100.0
