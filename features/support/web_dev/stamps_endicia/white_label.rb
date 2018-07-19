@@ -125,6 +125,11 @@ module WhiteLabel
       page_objects(name, index: index) { {xpath: "//span[text()='#{str}']"} }
     end
 
+    def billing_dropdown_selection(str, name = :dropdown_element)
+      page_object(name) { {xpath: "//li[@id='creditcard']/div/div[contains(@class, 'col-sm-6')]/div/div[contains(@class, 'dropup open')]/div/ul/li/a/span[text()='#{str}']"} }
+    end
+
+    "//li[@id='creditcard']/div/div[8]/div/div[1]/div/ul/li/a/span"
   end
 
   class ChooseSupplies < SdcPage

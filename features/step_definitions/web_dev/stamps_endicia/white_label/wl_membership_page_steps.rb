@@ -111,10 +111,12 @@ Then /^WL: set membership page phone to (?:random value|(.*))$/ do |str|
   phone = WhiteLabel.membership_page.phone
   phone.clear
   rand_phone = TestHelper.rand_phone_format
-  phone.set(TestData.hash[:phone] = str.nil? ? rand_phone : str)
+  #phone.set(TestData.hash[:phone] = str.nil? ? rand_phone : str)
+
   while phone.text_value.strip == ''
     phone.set(TestData.hash[:phone] = str.nil? ? rand_phone : str)
   end
+
   step "WL: blur_out on membership page"
 end
 
@@ -244,7 +246,7 @@ end
 
 Then /^WL: expect membership page billing address same as mailing address is checked$/ do
   billing_addr_checkbox = WhiteLabel.membership_page.billing_addr_checkbox
-  billing_addr_checkbox.wait_until_present(timeout: 5)
+  billing_addr_checkbox.safe_wait_until_present(timeout: 5)
   expect(billing_addr_checkbox.attribute_value('checked')).to eql('true')
 end
 
@@ -289,7 +291,7 @@ end
 Then /^WL: select membership page billing state (.*)$/ do |str|
   membership_page = WhiteLabel.membership_page
   membership_page.billing_state.click
-  membership_page.dropdown_selection(str, 1)
+  membership_page.billing_dropdown_selection(str)
   membership_page.dropdown_element.safe_wait_until_present(timeout: 2)
   membership_page.dropdown_element.click
   step "WL: blur_out on membership page"
