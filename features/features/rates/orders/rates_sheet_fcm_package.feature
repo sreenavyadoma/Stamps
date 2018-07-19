@@ -1,7 +1,6 @@
 Feature: FCM Package Rates
 
   Background:
-#    Given login and configure rate tests
     Given Start test driver
     Given sign-in to mail
     Given excel rate sheet is loaded

@@ -1,29 +1,29 @@
-Then /^[Rr]un rate test PME Comm Base in Zone (\d+)$/ do |zone|
+Then /^run rate test PME Comm Base in Zone (\d+)$/ do |zone|
   param_sheet = data_for(:rates_test, {})['rates_pme_comm_base']
   step "run rate sheet #{param_sheet} in Zone #{zone}"
 end
 
-Then /^[Rr]un rate test PME Comm Plus in Zone (\d+)$/ do |zone|
+Then /^run rate test PME Comm Plus in Zone (\d+)$/ do |zone|
   param_sheet = data_for(:rates_test, {})['rates_pme_comm_plus']
   step "run rate sheet #{param_sheet} in Zone #{zone}"
 end
 
-Then /^[Rr]un rate test PM Comm Base in Zone (\d+)$/ do |zone|
+Then /^run rate test PM Comm Base in Zone (\d+)$/ do |zone|
   param_sheet = data_for(:rates_test, {})['rates_pm_comm_base']
   step "run rate sheet #{param_sheet} in Zone #{zone}"
 end
 
-Then /^[Rr]un rate test PM Comm Plus in Zone (\d+)$/ do |zone|
+Then /^run rate test PM Comm Plus in Zone (\d+)$/ do |zone|
   param_sheet = data_for(:rates_test, {})['rates_pm_comm_plus']
   step "run rate sheet #{param_sheet} in Zone #{zone}"
 end
 
-Then /^[Rr]un rate test Parcel Select Ground in Zone (\d+)$/ do |zone|
+Then /^run rate test Parcel Select Ground in Zone (\d+)$/ do |zone|
   param_sheet = data_for(:rates_test, {})['rates_parcel_select_ground']
   step "run rate sheet #{param_sheet} in Zone #{zone}"
 end
 
-Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
+Then /^run rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
   zone = zone.to_i
 
   TestData.hash[:result_file] = Spreadsheet::Workbook.new
@@ -359,7 +359,6 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
             TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:weight]] = "#{weight_lb} lb."
             step "set order details pounds to #{weight_lb}"  if SdcEnv.sdc_app == :orders
             step "set print form pounds to #{weight_lb} by arrows"  if SdcEnv.sdc_app == :mail
-            # step "set print form pounds to #{weight_lb}"  if SdcEnv.sdc_app == :mail
           else
             weight_oz = Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_f
             #SdcLog.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
