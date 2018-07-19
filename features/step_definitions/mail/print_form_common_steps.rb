@@ -219,6 +219,7 @@ Then /^select print form service (.*)$/ do |str|
   service.service_element(:service, str)
   service.inline_cost_element(:inline_cost, str)
   service.drop_down.click unless service.service.present?
+  service.service.scroll_into_view
   service.service.click
   expect(service.text_field.text_value).to include str
 end

@@ -132,29 +132,28 @@ Feature:  Mail BVT
 #    Then expect Print form Domestic Address field displays Address Cleansing, BVT, 1350 Market Street, San Francisco, CA 94102-5401
     Then Sign out
 
-  @sdc_mail_bvt_stamps
+  @mail_bvt_stamps
   Scenario: Mail BVT-Stamps
-    Then sign-in to Mail
+    Then sign-in to mail
     Then select print on Stamps
 
     Then set print form serial number to C12345
-    Then select advanced options specify postage amount
-    #Then set Print form Mail-From to default
+    Then select print form specify postage amount
+    Then set Print form Mail-From to Automation - El Segundo, CA
     Then select print form service Media Mail
-    Then set print form stamp amount 2.85
-    Then set print form stamp quantity 1
-    #Then set print form advanced options reference number to Stamp3221
-    Then Print Postage
-    Then set Mail Print modal Printer
+    Then set print form stamp amount to 3.00
+    Then set print form stamp quantity to 1
+    Then click mail statusbar print stamps
+    Then set mail print modal printer
     Then click Mail Print modal Print button
 
     Then set print form serial number to B12345
-    Then select advanced options calculate postage amount
-    Then set Print form Mail-From to default
+    Then select print form calculate postage amount
+    Then set Print form Mail-From to Automation - El Segundo, CA
     Then set print form ounces to 1
-    Then select print form service FCM Letter
-    Then Print Postage
-    Then set Mail Print modal Printer
+    Then select print form service FCM Large Envelope/Flat
+    Then click mail statusbar print stamps
+    Then set mail print modal printer
     Then click Mail Print modal Print button
 
     Then sign out
@@ -261,16 +260,19 @@ Feature:  Mail BVT
 #    Then expect print form advanced options cost code is None
 
   @mail_bvt_ui_validation
-  Scenario: BVT Mail UI Validation for Stamps
+  Scenario: BVT Mail UI Validation for Print On options
     Then sign-in to mail
+
+#    STAMPS
     Then select print on Stamps
     Then set print form serial number to random
     Then blur out on print form
     Then select print form specify postage amount
+#    Then set Print form Mail-From to default
     Then set print form mail-to country to United States
     Then select print form service First Class
     Then select print form service Media Mail
-    Then set print form stamp amount 1.23
+    #Then set print form stamp amount 1.23
     Then hide advanced options
     Then show advanced options
     Then select print form calculate postage amount
@@ -283,7 +285,7 @@ Feature:  Mail BVT
     Then select print form service MM Package/Flat/Thick Envelope
     Then set print form advanced options reference number to STMP123
     Then set print form advanced options cost code None
-    Then set print form stamp quantity 3
+    #Then set print form stamp quantity 3
     Then increment print form stamp quantity by 2
     Then decrement print form stamp quantity by 2
     Then check print form print all
