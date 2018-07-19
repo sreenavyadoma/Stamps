@@ -129,7 +129,6 @@ module WhiteLabel
       page_object(name) { {xpath: "//li[@id='creditcard']/div/div[contains(@class, 'col-sm-6')]/div/div[contains(@class, 'dropup open')]/div/ul/li/a/span[text()='#{str}']"} }
     end
 
-    "//li[@id='creditcard']/div/div[8]/div/div[1]/div/ul/li/a/span"
   end
 
   class ChooseSupplies < SdcPage
