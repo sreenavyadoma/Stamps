@@ -70,14 +70,24 @@ Feature: Stamps WebReg: Profile Page
     Then WL: expect Profile page promo code tooltip 1 to be Invalid promo code
 
     # Validating all fields with correct values
-    Then set Profile page Email to random value
+    Then WL: set profile page email to random value
     Then expect Profile page Email is correct
-    Then set Profile page Username to random value
+    Then WL: set profile page username to random value
     Then expect Profile page Username is correct
-    Then set Profile page Password to random value
+    Then WL: set profile page password to random value
     Then expect Profile page Password is correct
-    Then set Profile page Re-type password to same as previous password
+    Then WL: set profile page re-type password to same as previous password
     Then expect Profile page Re-Type password is correct
+
+
+
+
+
+
+
+    Then WL: set profile page survey question to Individual/Home Office
+    Then WL: set profile page how did you hear about us? to Television Commercial
+    Then WL: expect profile page promo code to equal source id promo code
 
     # Validate Survey Question options
     Then set Profile page Survey Question to Mostly shipping

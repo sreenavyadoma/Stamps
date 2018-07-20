@@ -75,24 +75,24 @@ Then /^WL: [Ee]xpect [Pp]rofile [Pp]age promo code link exists$/ do
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age promo code exists$/ do
-  expect(WhiteLabel.profile_page.promo_code_textbox).to be_present, "Profile promo code textbox DOES NOT exist"
+  expect(WhiteLabel.profile_page.promo_code).to be_present, "Profile promo code textbox DOES NOT exist"
 end
 
 Then /^WL: expect profile page promo code to equal source id promo code$/ do
   step 'WL: show profile page promo code'
   profile_page = WhiteLabel.profile_page
-  expect(profile_page.promo_code_textbox.text_value.strip).to eql(TestData.hash[:promo_code])
+  expect(profile_page.promo_code.text_value.strip).to eql(TestData.hash[:promo_code])
 end
 
 Then /^WL: set profile page promo code to (?:an empty string|(.*))$/ do |str|
   step 'WL: show profile page promo code'
   profile_page  = WhiteLabel.profile_page
-  profile_page.promo_code_textbox.set(TestData.hash[:promo_code]=(str.nil?)? '' : str)
+  profile_page.promo_code.set(TestData.hash[:promo_code]=(str.nil?)? '' : str)
 end
 
 Then /^WL: show profile page promo code$/ do
   WhiteLabel.profile_page.promo_code_link.click if  WhiteLabel.profile_page.promo_code_link.present?
-  expect(WhiteLabel.profile_page.promo_code_textbox).to be_present, 'Unable to show Promo Code textbox upon clicking Show Promo Code link.'
+  expect(WhiteLabel.profile_page.promo_code).to be_present, 'Unable to show Promo Code textbox upon clicking Show Promo Code link.'
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age CONTINUE button exists$/ do
@@ -203,4 +203,11 @@ Then /^WL: [Ee]xpect Profile page Re-Password tooltip index (\d+) to be (.*)$/ d
   confirm_password_tooltip.wait_until_present(timeout: 5)
   TestData.hash[:confirm_password_tooltip] = confirm_password_tooltip.text_value.split("\n")
   expect(TestData.hash[:confirm_password_tooltip][index.to_i - 1]).to eql(str)
+end
+
+Then /^WL: [Ee]xpect Profile page [Pp]romo [Cc]ode tooltip (\d+) to be (.*)$/ do |index, str|
+  promo_code_tooltip = WhiteLabel.profile_page.promo_code_tooltip
+  promo_code_tooltip.wait_until_present(timeout: 5)
+  TestData.hash[:promo_code_tooltip] = promo_code_tooltip.text_value.split("\n")
+  expect(TestData.hash[:promo_code_tooltip][index.to_i - 1]).to eql(str)
 end
