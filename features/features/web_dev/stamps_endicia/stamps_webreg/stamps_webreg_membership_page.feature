@@ -201,9 +201,11 @@ Feature: Stamps WebReg: Membership Page
     """
 
     Then WL: click membership page bonus offer details
-    Then WL: expect membership page bonus offer header to be Your Stamps.com Offer
+    Then WL: expect membership page your stamps.com offer module to be present
 
     Then WL: uncheck membership page terms & conditions
     Then WL: expect membership page terms & conditions is unchecked
     Then WL: check membership page terms & conditions
+    Then WL: click membership page terms & conditions link
+    Then WL expect membership page terms and conditions module is present
 

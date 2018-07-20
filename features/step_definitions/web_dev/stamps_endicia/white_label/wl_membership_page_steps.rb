@@ -420,6 +420,15 @@ Then /^WL: expect membership page terms & conditions tooltip to be (.*)$/ do |st
   expect(WhiteLabel.membership_page.terms_conditions_help_block.text_value.strip).to eql(str)
 end
 
+Then /^WL: click membership page terms & conditions link$/ do
+  WhiteLabel.membership_page.terms_conditions_link.click
+end
+
+Then /^WL expect membership page terms and conditions module is present$/ do
+  terms_conditions_header = WhiteLabel.membership_page.terms_conditions_header
+  terms_conditions_header.wait_until_present(timeout: 2)
+  expect(terms_conditions_header).to be_present, 'Terms and Conditions IS NOT PRESENT'
+end
 
 Then /^WL: check if address standardized is present then click continue$/ do
   addr_std_continue = WhiteLabel.membership_page.addr_std_continue
@@ -555,5 +564,11 @@ end
 
 Then /^WL: click membership page bonus offer details$/ do
   WhiteLabel.membership_page.bonus_offer_details.click
+end
+
+Then /^WL: expect membership page your stamps.com offer module to be present$/ do
+  bonus_offer_details_header  = WhiteLabel.membership_page.bonus_offer_details_header
+  bonus_offer_details_header.wait_until_present(timeout: 2)
+  expect(bonus_offer_details_header).to be_present, 'Your Stamps.com Offer IS NOT PRESENT'
 end
 

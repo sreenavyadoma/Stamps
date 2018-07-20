@@ -59,6 +59,7 @@ module WhiteLabel
     page_object(:terms_conditions) {{id: 'termsConditions'}}
     page_object(:terms_conditions_help_block) { {xpath: '//li[@id="terms"]/div/div/div/div[2]/span'} }
     link(:terms_conditions_link) { {class: ['termsLabel terms-conditions-link']} }
+    page_object(:terms_conditions_header) { {xpath: '//h3[(contains(text(), "Terms and Conditions"))]'} }
 
     button(:back) {{id: 'prev'}}
     button(:submit) {{id: 'next'}}
@@ -94,7 +95,7 @@ module WhiteLabel
     page_object(:cancel_anytime_p) { {xpath: '//li[@id="sidecreditcard"]/div/p[2]'} }
 
     link(:bonus_offer_details) { {id: 'offerDetails'} }
-
+    page_object(:bonus_offer_details_header) { {xpath: '//h3[contains(text(), "Your Stamps.com Offer")]'} }
 
     #username taken
     page_object(:username_taken_header) { {xpath: '//h3[(contains(text(), "Username Taken"))]'} }
