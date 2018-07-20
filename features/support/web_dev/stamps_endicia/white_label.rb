@@ -95,6 +95,7 @@ module WhiteLabel
     page_object(:cancel_anytime_p) { {xpath: '//li[@id="sidecreditcard"]/div/p[2]'} }
 
     link(:bonus_offer_details) { {id: 'offerDetails'} }
+    button(:bonus_offer_details_x) { {class: ['close']} }
     page_object(:bonus_offer_details_header) { {xpath: '//h3[contains(text(), "Your Stamps.com Offer")]'} }
 
     #username taken

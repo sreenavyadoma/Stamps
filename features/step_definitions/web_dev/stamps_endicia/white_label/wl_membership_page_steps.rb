@@ -566,6 +566,10 @@ Then /^WL: click membership page bonus offer details$/ do
   WhiteLabel.membership_page.bonus_offer_details.click
 end
 
+Then /^WL: click membership page bonus offer details x button$/ do
+  WhiteLabel.membership_page.bonus_offer_details_x.click
+end
+
 Then /^WL: expect membership page your stamps.com offer module to be present$/ do
   bonus_offer_details_header  = WhiteLabel.membership_page.bonus_offer_details_header
   bonus_offer_details_header.wait_until_present(timeout: 2)
