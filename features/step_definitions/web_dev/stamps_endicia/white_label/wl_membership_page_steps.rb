@@ -18,6 +18,7 @@ Then /^WL: expect membership page first name is (?:correct|(.*))$/ do |str|
 end
 
 Then /^WL: expect membership page first name tooltip to be (.*)$/ do |str|
+  step "WL: blur_out on membership page"
   first_name_help_block = WhiteLabel.membership_page.first_name_help_block
   first_name_help_block.wait_until_present(timeout: 10)
   expect(first_name_help_block.text_value.strip).to eql(str)
@@ -149,6 +150,7 @@ end
 
 Then /^WL: set membership page personal info to(?: a |)(?: random info |)(?:to|in|between|) (.*)$/ do |address|
   stamps_logo = WhiteLabel.common_page.stamps_logo
+  stamps_logo.scroll_into_view
   stamps_logo.wait_until_present(timeout: 10)
 
   TestData.hash[:personal_info] = TestHelper.address_helper_zone(address) #combine this
@@ -255,14 +257,14 @@ end
 Then /^WL: uncheck membership page billing address same as mailing address$/ do
   billing_addr_checkbox = WhiteLabel.membership_page.billing_addr_checkbox
   if billing_addr_checkbox.attribute_value('checked') == 'true'
-    billing_addr_checkbox.click
+    billing_addr_checkbox.click!
   end
 end
 
 Then /^WL: check membership page billing address same as mailing address$/ do
   billing_addr_checkbox = WhiteLabel.membership_page.billing_addr_checkbox
   if billing_addr_checkbox.attribute_value('checked') == nil
-    billing_addr_checkbox.click
+    billing_addr_checkbox.click!
   end
 end
 
@@ -282,6 +284,8 @@ end
 
 Then /^WL: set membership page billing address to (.*)$/ do |str|
   billing_addr = WhiteLabel.membership_page.billing_addr
+  billing_addr.scroll_into_view
+  billing_addr.wait_until_present(timeout: 2)
   billing_addr.clear
   while billing_addr.text_value.strip == ''
     billing_addr.set(TestData.hash[:billing_addr] = str)
@@ -402,11 +406,14 @@ Then /^WL: uncheck membership page terms & conditions$/ do
 end
 
 Then /^WL: expect membership page terms & conditions is checked$/ do
+  step "WL: blur_out on membership page"
   expect(WhiteLabel.membership_page.billing_addr_enable_disable.attribute_value('class')).to eql('form-group checkbox')
 end
 
 Then /^WL: expect membership page terms & conditions is unchecked$/ do
-  expect(WhiteLabel.membership_page.billing_addr_enable_disable.attribute_value('class')).to eql('form-group checkbox has-error')
+  membership_page = WhiteLabel.membership_page
+  membership_page.submit.click
+  expect(membership_page.billing_addr_enable_disable.attribute_value('class')).to eql('form-group checkbox has-error')
 end
 
 Then /^WL: expect membership page terms & conditions tooltip to be (.*)$/ do |str|
@@ -490,8 +497,63 @@ Then /^WL: click username taken continue button$/ do
   WhiteLabel.membership_page.username_taken_continue_btn.click
 end
 
-
-
 Then /^WL: click membership page submit button$/ do
   WhiteLabel.membership_page.submit.click
+  step 'pause for 1 second'
 end
+
+#Side content
+Then /^WL: expect membership page need mailing info header to be$/ do |str|
+  expect(WhiteLabel.membership_page.need_mailing_info_header.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect membership page need mailing info paragraph to be$/ do |str|
+  expect(WhiteLabel.membership_page.need_mailing_info_p.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect membership page change mailing address header to be$/ do |str|
+  expect(WhiteLabel.membership_page.change_mailing_addr_header.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect membership page change mailing address paragraph to be$/ do |str|
+  expect(WhiteLabel.membership_page.change_mailing_addr_p.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect membership page outside my office header to be$/ do |str|
+  expect(WhiteLabel.membership_page.outside_my_office_header.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect membership page outside my office paragraph to be$/ do |str|
+  expect(WhiteLabel.membership_page.outside_my_office_p.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect membership page credit card information safe header to be$/ do |str|
+  expect(WhiteLabel.membership_page.cc_info_header.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect membership page credit card information safe paragraph to be$/ do |str|
+  expect(WhiteLabel.membership_page.cc_info_header_p.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect membership page pricing and billing header to be$/ do |str|
+  expect(WhiteLabel.membership_page.pricing_and_billing_header.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect membership page pricing and billing paragraph to be$/ do |str|
+  hash = Hash.from_xml(TestData.hash[:content])
+  plan_rate  = hash['root']['PlanRate']
+  expect(WhiteLabel.membership_page.pricing_and_billing_p.text_value.strip).to eql(str.gsub('plan_rate', plan_rate))
+end
+
+Then /^WL: expect membership page cancel anytime header to be$/ do |str|
+  expect(WhiteLabel.membership_page.cancel_anytime_header.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect membership page cancel anytime paragraph to be$/ do |str|
+  expect(WhiteLabel.membership_page.cancel_anytime_p.text_value.strip).to eql(str)
+end
+
+Then /^WL: click membership page bonus offer details$/ do
+  WhiteLabel.membership_page.bonus_offer_details.click
+end
+
