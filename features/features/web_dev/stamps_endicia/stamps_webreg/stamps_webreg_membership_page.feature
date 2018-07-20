@@ -82,6 +82,7 @@ Feature: Stamps WebReg: Membership Page
     Then WL: expect membership page phone is correct
 
     #Autocomplete Profile Address
+    Then pause for 1 second
     Then WL: set membership page address to 1990 E
     Then WL: click membership page address
     Then WL: select membership page address autocomplete first result
@@ -237,3 +238,4 @@ Feature: Stamps WebReg: Membership Page
     Then WL: uncheck membership page terms & conditions
     Then WL: expect membership page terms & conditions is unchecked
     Then WL: check membership page terms & conditions
+
