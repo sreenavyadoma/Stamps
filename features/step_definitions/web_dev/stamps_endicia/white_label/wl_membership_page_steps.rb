@@ -212,6 +212,11 @@ Then /^WL: expect membership page credit card number tooltip to be (.*)$/ do |st
   expect(WhiteLabel.membership_page.cc_number_help_block.text_value.strip).to eql(str)
 end
 
+Then /^WL: expect membership page credit card visa is present$/ do
+  expect(WhiteLabel.membership_page.cc_number_help_block.text_value.strip).to eql(str)
+end
+
+
 Then /^WL: select membership page credit card month (.*)$/ do |str|
   membership_page = WhiteLabel.membership_page
   membership_page.cc_month.click
@@ -412,7 +417,10 @@ end
 
 Then /^WL: expect membership page terms & conditions is unchecked$/ do
   membership_page = WhiteLabel.membership_page
+  membership_page.submit.scroll_into_view
+  step 'pause for 1 second'
   membership_page.submit.click
+  membership_page.billing_addr_enable_disable.wait_until_present(timeout: 2)
   expect(membership_page.billing_addr_enable_disable.attribute_value('class')).to eql('form-group checkbox has-error')
 end
 
@@ -421,10 +429,15 @@ Then /^WL: expect membership page terms & conditions tooltip to be (.*)$/ do |st
 end
 
 Then /^WL: click membership page terms & conditions link$/ do
+  WhiteLabel.membership_page.terms_conditions_link.scroll_into_view
   WhiteLabel.membership_page.terms_conditions_link.click
 end
 
-Then /^WL expect membership page terms and conditions module is present$/ do
+Then /^WL: click membership page terms & conditions modal x button$/ do
+  WhiteLabel.membership_page.modal_x.click
+end
+
+Then /^WL: expect membership page terms and conditions modal is present$/ do
   terms_conditions_header = WhiteLabel.membership_page.terms_conditions_header
   terms_conditions_header.wait_until_present(timeout: 2)
   expect(terms_conditions_header).to be_present, 'Terms and Conditions IS NOT PRESENT'
@@ -562,15 +575,15 @@ Then /^WL: expect membership page cancel anytime paragraph to be$/ do |str|
   expect(WhiteLabel.membership_page.cancel_anytime_p.text_value.strip).to eql(str)
 end
 
-Then /^WL: click membership page bonus offer details$/ do
+Then /^WL: click membership page bonus offer details link$/ do
   WhiteLabel.membership_page.bonus_offer_details.click
 end
 
-Then /^WL: click membership page bonus offer details x button$/ do
-  WhiteLabel.membership_page.bonus_offer_details_x.click
+Then /^WL: click membership page bonus offer details modal x button$/ do
+  WhiteLabel.membership_page.modal_x.click
 end
 
-Then /^WL: expect membership page your stamps.com offer module to be present$/ do
+Then /^WL: expect membership page your stamps.com offer modal to be present$/ do
   bonus_offer_details_header  = WhiteLabel.membership_page.bonus_offer_details_header
   bonus_offer_details_header.wait_until_present(timeout: 2)
   expect(bonus_offer_details_header).to be_present, 'Your Stamps.com Offer IS NOT PRESENT'

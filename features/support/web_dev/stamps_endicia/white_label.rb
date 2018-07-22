@@ -24,6 +24,7 @@ module WhiteLabel
   class MembershipPage < SdcPage
     page_object(:header) { {xpath: '//h1[(contains(text(), "Set up your personal Post Office"))]'} }
     page_object(:membership_bread_crumb) { {xpath: '//li[@id="breadcrumb_Membership"]/span'} }
+    button(:modal_x) { {class: ['close']} }
 
     #Personal Info
     text_field(:first_name, tag: :text_field, required: true) { { id: 'firstName' } }
@@ -47,6 +48,10 @@ module WhiteLabel
     text_field(:cc_holder_name, tag: :text_field, required: true) { { id: 'ccName' } }
     page_object(:cc_holder_name_help_block) {{xpath: '//li[@id="creditcard"]/div/div[contains(@class, "col-xs-12")]/div[contains(@class, "form-group has-error")]/div/span'}}
     text_field(:cc_number, tag: :text_field, required: true) { { id: 'ccNumber' } }
+    page_object(:cc_visa) {{id: 'visa'}}
+    page_object(:cc_mastercard) {{id: 'mastercard'}}
+    page_object(:cc_discover) {{id: 'discover'}}
+    page_object(:cc_amex) {{id: 'amex'}}
     page_object(:cc_number_help_block) {{xpath: '//li[@id="creditcard"]/div/div[2]/div/div[2]/span'}}
     page_object(:cc_month) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="ccMonth"]'}}
     page_object(:cc_month_help_block) {{xpath: '//div[contains(@class, "gut-xs-form-r-half")]/div/div[2]/span'}}
@@ -95,7 +100,6 @@ module WhiteLabel
     page_object(:cancel_anytime_p) { {xpath: '//li[@id="sidecreditcard"]/div/p[2]'} }
 
     link(:bonus_offer_details) { {id: 'offerDetails'} }
-    button(:bonus_offer_details_x) { {class: ['close']} }
     page_object(:bonus_offer_details_header) { {xpath: '//h3[contains(text(), "Your Stamps.com Offer")]'} }
 
     #username taken
