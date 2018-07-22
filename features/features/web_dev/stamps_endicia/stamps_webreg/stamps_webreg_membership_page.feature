@@ -82,22 +82,30 @@ Feature: Stamps WebReg: Membership Page
     Then WL: expect membership page phone is correct
 
     #Credit Card
+    Then WL: expect membership page credit card stamps logo is present
+    Then WL: expect membership page credit card usps logo is present
+    Then WL: expect membership page credit card authorization text to be
+    """
+    Postage Account
+    Credit Card Authorization
+    """
+
     Then WL: set membership page cardholder's name to random value
     Then WL: expect membership page cardholder's name is correct
 
-    Then WL: set membership page credit card number to 4111 1111 1111 1111
+    Then WL: set membership page credit card number to 4111111111111111
     Then WL: expect membership page credit card number is correct
     Then WL: expect membership page credit card visa is present
 
-    Then WL: set membership page credit card number to 5111 1111 1111 1111
+    Then WL: set membership page credit card number to 5111111111111111
     Then WL: expect membership page credit card number is correct
     Then WL: expect membership page credit card mastercard is present
 
-    Then WL: set membership page credit card number to 6011 3636 6299 3134
+    Then WL: set membership page credit card number to 6011363662993134
     Then WL: expect membership page credit card number is correct
     Then WL: expect membership page credit card discover is present
 
-    Then WL: set membership page credit card number to 3488 711787 15194
+    Then WL: set membership page credit card number to 348871178715194
     Then WL: expect membership page credit card number is correct
     Then WL: expect membership page credit card american express is present
 

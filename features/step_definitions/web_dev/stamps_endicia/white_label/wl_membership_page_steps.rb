@@ -178,6 +178,19 @@ Then /^WL: set membership page personal info to(?: a |)(?: random info |)(?:to|i
 
 end
 
+Then /^WL: expect membership page credit card stamps logo is present$/ do
+  expect(WhiteLabel.membership_page.cc_stamps_logo).to be_present, 'cc stamps logo IS NOT PRESENT'
+end
+
+Then /^WL: expect membership page credit card usps logo is present$/ do
+  expect(WhiteLabel.membership_page.cc_usps_logo).to be_present, 'cc usps logo IS NOT PRESENT'
+end
+
+Then /^WL: expect membership page credit card authorization text to be$/ do |str|
+  expect(WhiteLabel.membership_page.cc_auth.text_value.strip).to eql(str)
+end
+
+
 Then /^WL: set membership page cardholder's name to (?:random value|(.*))$/ do |str|
    cc_holder_name = WhiteLabel.membership_page.cc_holder_name
    cc_holder_name.clear
@@ -213,9 +226,20 @@ Then /^WL: expect membership page credit card number tooltip to be (.*)$/ do |st
 end
 
 Then /^WL: expect membership page credit card visa is present$/ do
-  expect(WhiteLabel.membership_page.cc_number_help_block.text_value.strip).to eql(str)
+  expect(WhiteLabel.membership_page.cc_visa).to be_present, 'Visa img IS NOT PRESENT'
 end
 
+Then /^WL: expect membership page credit card mastercard is present$/ do
+  expect(WhiteLabel.membership_page.cc_mastercard).to be_present, 'Mastercard img IS NOT PRESENT'
+end
+
+Then /^WL: expect membership page credit card discover is present$/ do
+  expect(WhiteLabel.membership_page.cc_discover).to be_present, 'Discover img IS NOT PRESENT'
+end
+
+Then /^WL: expect membership page credit card american express is present$/ do
+  expect(WhiteLabel.membership_page.cc_amex).to be_present, 'American Express img IS NOT PRESENT'
+end
 
 Then /^WL: select membership page credit card month (.*)$/ do |str|
   membership_page = WhiteLabel.membership_page
@@ -430,6 +454,7 @@ end
 
 Then /^WL: click membership page terms & conditions link$/ do
   WhiteLabel.membership_page.terms_conditions_link.scroll_into_view
+  step 'pause for 1 second'
   WhiteLabel.membership_page.terms_conditions_link.click
 end
 
