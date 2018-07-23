@@ -157,7 +157,7 @@ Then /^WL: [Ee]xpect [Pp]rofile [Pp]age content under Money-saving offers and ne
 end
 
 Then /^WL: [Cc]heck [Pp]rofile [Pp]age [Mm]oney-saving offers and new products$/ do
-  WhiteLabel.profile_page.money_saving_offers_checkbox.click! unless WhiteLabel.profile_page.money_saving_offers_checkbox.checked?
+  WhiteLabel.profile_page.money_saving_offers_checkbox.check unless WhiteLabel.profile_page.money_saving_offers_checkbox.checked?
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Mm]oney-saving offers and new products is checked$/ do
@@ -165,7 +165,7 @@ Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Mm]oney-saving offers and new products 
 end
 
 Then /^WL: uncheck [Pp]rofile [Pp]age [Mm]oney-saving offers and new products$/ do
-  WhiteLabel.profile_page.money_saving_offers_checkbox.fire_event(:click)
+  WhiteLabel.profile_page.money_saving_offers_checkbox.check
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Mm]oney-saving offers and new products is unchecked$/ do
