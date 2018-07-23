@@ -1063,15 +1063,64 @@ Cucumber::Rake::Task.new(:rates_pmi_comm_plus_group_17) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:rates_fcm_package) do |t|
-  t.profile = 'rates_fcm_package'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
 Cucumber::Rake::Task.new(:rates_mail_fcm_package) do |t|
   t.profile = 'rates_mail_fcm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
+
+#RATES ORDERS
+
+Cucumber::Rake::Task.new(:rates_orders_fcm_package) do |t|
+  t.profile = 'rates_orders_fcm_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_orders_parcel_select_ground_zone_1) do |t|
+  t.profile = 'rates_orders_parcel_select_ground_zone_1'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_orders_parcel_select_ground_zone_2) do |t|
+  t.profile = 'rates_orders_parcel_select_ground_zone_2'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_orders_parcel_select_ground_zone_3) do |t|
+  t.profile = 'rates_orders_parcel_select_ground_zone_3'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_orders_parcel_select_ground_zone_4) do |t|
+  t.profile = 'rates_orders_parcel_select_ground_zone_4'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_orders_parcel_select_ground_zone_5) do |t|
+  t.profile = 'rates_orders_parcel_select_ground_zone_5'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_orders_parcel_select_ground_zone_6) do |t|
+  t.profile = 'rates_orders_parcel_select_ground_zone_6'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_orders_parcel_select_ground_zone_7) do |t|
+  t.profile = 'rates_orders_parcel_select_ground_zone_7'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_orders_parcel_select_ground_zone_8) do |t|
+  t.profile = 'rates_orders_parcel_select_ground_zone_8'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_orders_parcel_select_ground_zone_9) do |t|
+  t.profile = 'rates_orders_parcel_select_ground_zone_9'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+#END RATES ORDERS
 
 Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_8x11_fcm_psg) do |t|
   t.profile = 'mail_print_sample_shipping_label_8x11_fcm_psg'
