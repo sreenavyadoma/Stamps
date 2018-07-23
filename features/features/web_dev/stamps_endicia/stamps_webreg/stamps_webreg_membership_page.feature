@@ -231,3 +231,107 @@ Feature: Stamps WebReg: Membership Page
     Then WL: click membership page terms & conditions link
     Then WL: expect membership page terms and conditions modal is present
     Then WL: click membership page terms & conditions modal x button
+
+  @sdcwr_membership_page_ui_addr_validation
+  Scenario: Membership Page Address Validation
+    #Autocomplete Billing Address
+    Then WL: set membership page billing address to 15 World
+    Then WL: click membership page billing address
+    Then WL: select membership page billing address autocomplete first result
+    Then WL: expect membership page billing address is 15 World Way
+    Then WL: expect membership page billing city is Los Angeles
+    Then WL: expect membership page billing state is CA
+    Then WL: expect membership page billing zip is 90045
+
+
+    #Autocomplete Profile Address
+    Then pause for 1 second
+    Then WL: set membership page address to 1990 E
+    Then WL: click membership page address
+    Then WL: select membership page address autocomplete first result
+    Then WL: expect membership page address is 1990 E Grand Ave
+    Then WL: expect membership page city is El Segundo
+    Then WL: expect membership page state is CA
+    Then WL: expect membership page zip is 90245
+
+        # Verify Physical Address Zone wise
+    Then WL: set membership page personal info to random info between zone 1 and zone 4
+    Then WL: expect membership page address is correct
+    Then WL: expect membership page city is correct
+    Then WL: expect membership page state is correct
+    Then WL: expect membership page zip is correct
+
+    Then pause for 1 second
+    Then WL: set membership page personal info to random info between zone 5 and zone 8
+    Then WL: expect membership page address is correct
+    Then WL: expect membership page city is correct
+    Then WL: expect membership page state is correct
+    Then WL: expect membership page zip is correct
+
+    Then pause for 1 second
+    Then WL: set membership page personal info to random info between zone 1
+    Then WL: expect membership page address is correct
+    Then WL: expect membership page city is correct
+    Then WL: expect membership page state is correct
+    Then WL: expect membership page zip is correct
+
+    Then pause for 1 second
+    Then WL: set membership page personal info to random info between zone 2
+    Then WL: expect membership page address is correct
+    Then WL: expect membership page city is correct
+    Then WL: expect membership page state is correct
+    Then WL: expect membership page zip is correct
+
+    Then pause for 1 second
+    Then WL: set membership page personal info to random info between zone 3
+    Then WL: expect membership page address is correct
+    Then WL: expect membership page city is correct
+    Then WL: expect membership page state is correct
+    Then WL: expect membership page zip is correct
+
+    Then pause for 1 second
+    Then WL: set membership page personal info to random info between zone 4
+    Then WL: expect membership page address is correct
+    Then WL: expect membership page city is correct
+    Then WL: expect membership page state is correct
+    Then WL: expect membership page zip is correct
+
+    Then pause for 1 second
+    Then WL: set membership page personal info to random info between zone 5
+    Then WL: expect membership page address is correct
+    Then WL: expect membership page city is correct
+    Then WL: expect membership page state is correct
+    Then WL: expect membership page zip is correct
+
+    Then pause for 1 second
+    Then WL: set membership page personal info to random info between zone 6
+    Then WL: expect membership page address is correct
+    Then WL: expect membership page city is correct
+    Then WL: expect membership page state is correct
+    Then WL: expect membership page zip is correct
+
+    Then pause for 1 second
+    Then WL: set membership page personal info to random info between zone 7
+    Then WL: expect membership page address is correct
+    Then WL: expect membership page city is correct
+    Then WL: expect membership page state is correct
+    Then WL: expect membership page zip is correct
+
+    Then pause for 1 second
+    Then WL: set membership page personal info to random info between zone 8
+    Then WL: expect membership page address is correct
+    Then WL: expect membership page city is correct
+    Then WL: expect membership page state is correct
+    Then WL: expect membership page zip is correct
+
+    Then pause for 1 second
+    Then WL: set membership page personal info to random info between zone 9
+    Then WL: expect membership page address is correct
+    Then WL: expect membership page city is correct
+    Then WL: expect membership page state is correct
+    Then WL: expect membership page zip is correct
+
+
+
+
+
