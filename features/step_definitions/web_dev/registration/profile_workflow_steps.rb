@@ -84,7 +84,6 @@ end
 Then /^[Ss]et [Pp]rofile [Pp]age [Pp]romo [Cc]ode to (?:an empty string|(.*))$/ do |str|
   step "show profile page promo code textbox"
   registration.profile.promo_code.textbox.set(TestData.hash[:promo_code] = (str.nil?) ? '' : str)
-
 end
 
 Then /^[Ee]xpect Profile page [Pp]romo [Cc]ode tooltip (\d+) to be (.*)$/ do |index, str|

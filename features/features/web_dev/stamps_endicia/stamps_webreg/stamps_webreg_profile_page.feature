@@ -71,33 +71,21 @@ Feature: Stamps WebReg: Profile Page
 
     # Validating all fields with correct values
     Then WL: set profile page email to random value
-    Then WL: expect Profile page Email is correct
     Then WL: set profile page username to random value
-    Then WL: expect Profile page Username is correct
     Then WL: set profile page password to random value
-    Then WL: expect Profile page Password is correct
     Then WL: set profile page re-type password to same as previous password
-    Then expect Profile page Re-Type password is correct
-
-
-
-
-
-
-
-    Then WL: set profile page survey question to Individual/Home Office
-    Then WL: set profile page how did you hear about us? to Television Commercial
-    Then WL: expect profile page promo code to equal source id promo code
 
     # Validate Survey Question options
     Then WL: set profile page survey question to Individual/Home Office
-    Then expect Profile page Survey Question is correct
-    Then WL: set profile page survey question to Both mailing and shipping
-    Then expect Profile page Survey Question is correct
+    Then WL: set profile page survey question to Business Use - Both mailing and shipping
     Then WL: set profile page survey question to Business Use - Mostly mailing (letters/postcards/flats)
-    Then expect Profile page Survey Question is correct
-    Then WL: set profile page survey question to Individual
-    Then expect Profile page Survey Question is correct
+    Then WL: set profile page survey question to Business/Ecommerce Use - Mostly shipping packages
 
-    Then set How did you hear about us? to Web Search
-    Then set Profile page promo code to PR33-NH77
+    Then WL: set profile page how did you hear about us? to Television Commercial
+    Then WL: set profile page how did you hear about us? to Web Search
+    Then WL: set profile page how did you hear about us? to Received Mailer
+    Then WL: set profile page how did you hear about us? to Recommended by Friend
+    Then WL: set profile page how did you hear about us? to Radio/Podcast/Streaming Audio
+    Then WL: set profile page how did you hear about us? to Other
+
+    Then WL: expect profile page promo code to equal source id promo code
