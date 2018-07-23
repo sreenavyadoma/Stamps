@@ -161,7 +161,7 @@ Then /^WL: [Cc]heck [Pp]rofile [Pp]age [Mm]oney-saving offers and new products$/
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Mm]oney-saving offers and new products is checked$/ do
-  expect(WhiteLabel.profile_page.money_saving_offers_checkbox.checked?).to be(true), "Profile Money-saving offers and new products is not checked. Got checked"
+  expect(WhiteLabel.profile_page.money_saving_offers_checkbox.checked?).not_to be(true), "Profile Money-saving offers and new products is not checked. Got checked"
 end
 
 Then /^WL: uncheck [Pp]rofile [Pp]age [Mm]oney-saving offers and new products$/ do
@@ -169,7 +169,7 @@ Then /^WL: uncheck [Pp]rofile [Pp]age [Mm]oney-saving offers and new products$/ 
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Mm]oney-saving offers and new products is unchecked$/ do
-  expect(WhiteLabel.profile_page.money_saving_offers_checkbox.checked?).not_to be(true), "Expected Profile Money-saving offers and new products is checked. Got unchecked"
+  expect(WhiteLabel.profile_page.money_saving_offers_checkbox.checked?).to be(false), "Expected Profile Money-saving offers and new products is checked. Got unchecked"
 end
 
 Then /^WL: [Ee]xpect Profile page Email tooltip count is (.*)$/ do |count|

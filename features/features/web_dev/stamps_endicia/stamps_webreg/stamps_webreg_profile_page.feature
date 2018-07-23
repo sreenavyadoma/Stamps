@@ -18,10 +18,10 @@ Feature: Stamps WebReg: Profile Page
     Then WL: expect Profile page SideContent Side Account header is Why do I need to create an account?
     Then WL: expect Profile page Money-saving offers and new products header is "Money-saving offers and new products"
     Then WL: expect Profile page content under Money-saving offers and new products Send me special money-saving offers and information on new products and services from Stamps.com and its partners.
-    #Then WL: expect Profile page Money-saving offers and new products is checked
+    Then WL: expect Profile page Money-saving offers and new products is checked
     Then WL: uncheck Profile page Money-saving offers and new products
     Then WL: check Profile page Money-saving offers and new products
-    #Then WL: expect Profile page Money-saving offers and new products is unchecked
+    Then WL: expect Profile page Money-saving offers and new products is unchecked
 
     # Validate Single Help block tooltips
     Then WL: click profile page continue button
