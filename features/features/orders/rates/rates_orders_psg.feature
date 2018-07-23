@@ -2,7 +2,7 @@ Feature: Parcel Select Ground Rates
 
   Background:
     Given Start test driver
-    Given sign-in to mail
+    Given sign-in to orders
     Given excel rate sheet is loaded
     Given prepare environment for ratings test
 

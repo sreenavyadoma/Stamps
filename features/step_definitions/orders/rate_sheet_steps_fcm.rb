@@ -182,6 +182,12 @@ Then /^run rate sheet (.*)$/ do |param_sheet|
   fail_format = Spreadsheet::Format.new :color => :red, :weight => :bold
   pass_format = Spreadsheet::Format.new :color => :green, :weight => :bold
   # Set weight and services
+
+  # Set address to proper zone
+  step "set order details ship-to to random address between zone 1 and 4"  if SdcEnv.sdc_app == :orders
+  step "set print form mail-to to a random address in zone 1 through 4" if SdcEnv.sdc_app == :mail
+  step "save print form mail from" if SdcEnv.sdc_app == :mail
+
   @rate_sheet.each_with_index do |row, row_number|
     @row = row
     TestData.hash[:result_sheet].row(0)[TestData.hash[:result_sheet_columns][:zone]] = "zone#{zone}"
@@ -190,9 +196,9 @@ Then /^run rate sheet (.*)$/ do |param_sheet|
         SdcLogger.info "#{"#" * 80} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_number}"
 
         # Set address to proper zone
-        step "set order details ship-to to random address between zone 1 and 4"  if SdcEnv.sdc_app == :orders
-        step "set print form mail-to to a random address in zone 1 through 4" if SdcEnv.sdc_app == :mail
-        step "save print form mail from" if SdcEnv.sdc_app == :mail
+        # step "set order details ship-to to random address between zone 1 and 4"  if SdcEnv.sdc_app == :orders
+        # step "set print form mail-to to a random address in zone 1 through 4" if SdcEnv.sdc_app == :mail
+        # step "save print form mail from" if SdcEnv.sdc_app == :mail
         # spreadsheet price for zone
 
         if row[zone_column] == nil

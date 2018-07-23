@@ -377,7 +377,7 @@ Then /^run rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           # record execution time as time service was selected.
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:execution_date]] = Time.now.strftime("%b %d, %Y %H:%M")
 
-          step "set Order Details service to #{service}" if SdcEnv.sdc_app == :orders
+          step "set order details service to #{service}" if SdcEnv.sdc_app == :orders
           step "select print form service #{service}" if SdcEnv.sdc_app == :mail
 
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:service_selected]] = TestData.hash[:service]
@@ -390,7 +390,8 @@ Then /^run rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:tracking_selected]] = TestData.hash[:tracking]
           # sleep(0.525)
           step 'wait for js to stop'
-          step 'blur out on print form'
+          step 'blur out on print form' if SdcEnv.sdc_app == :mail
+          step 'blur out on order details form' if SdcEnv.sdc_app == :orders
           step 'pause for 1 second'
 
           # get total cost actual value from UI

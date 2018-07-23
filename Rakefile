@@ -1069,7 +1069,6 @@ Cucumber::Rake::Task.new(:rates_mail_fcm_package) do |t|
 end
 
 #RATES ORDERS
-
 Cucumber::Rake::Task.new(:rates_orders_fcm_package) do |t|
   t.profile = 'rates_orders_fcm_package'
   t.cucumber_opts = "-p cuke_reports"
