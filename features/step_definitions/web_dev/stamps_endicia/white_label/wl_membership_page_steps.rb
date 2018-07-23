@@ -587,9 +587,15 @@ Then /^WL: expect membership page pricing and billing header to be$/ do |str|
 end
 
 Then /^WL: expect membership page pricing and billing paragraph to be$/ do |str|
-  hash = Hash.from_xml(TestData.hash[:content])
-  plan_rate  = hash['root']['PlanRate']
-  expect(WhiteLabel.membership_page.pricing_and_billing_p.text_value.strip).to eql(str.gsub('plan_rate', plan_rate))
+  plan_sku = WhiteLabel.common_page.plan_sku
+
+  step 'WL: establish stamps website db connection'
+  plan_rate =  WhiteLabel.common_page.plan_query(TestData.hash[:offer_id], plan_sku )
+  step 'WL: close stamps website db connection'
+  # hash = Hash.from_xml(TestData.hash[:content])
+  # plan_rate  = hash['root']['PlanRate']
+  #
+  expect(WhiteLabel.membership_page.pricing_and_billing_p.text_value.strip).to eql(str.gsub('plan_rate', plan_rate.to_s))
 end
 
 Then /^WL: expect membership page cancel anytime header to be$/ do |str|

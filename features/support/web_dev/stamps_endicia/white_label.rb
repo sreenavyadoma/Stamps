@@ -184,6 +184,11 @@ module WhiteLabel
       VBridgeDB.new
     end
 
+    def stamp_mart_db_connection
+      StampMartDB.new
+    end
+
+
   end
 
 end
