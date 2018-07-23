@@ -26,7 +26,6 @@ end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Uu]sername is (?:correct|(.*))$/ do |str|
   expect(registration.profile.account_username.textbox.text).to eql((str.nil?) ? TestData.hash[:username] : str)
-
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Pp]assword to (?:random value|(.*))$/ do |str|

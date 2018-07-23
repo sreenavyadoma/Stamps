@@ -3,6 +3,10 @@ Then /^WL: [Ee]xpect [Pp]rofile [Pp]age email exists$/ do
   expect(WhiteLabel.profile_page.email).to be_present, "Email textbox DOES NOT exists on profile page"
 end
 
+Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Ee]mail is (?:correct|(.*))$/ do |str|
+  expect(WhiteLabel.profile_page.email).to eql((str.nil?)?TestData.hash[:email]:str)
+end
+
 Then /^WL: set profile page email to (?:random value|(.*))$/ do |str|
   email = WhiteLabel.profile_page.email
   email.wait_until_present(timeout: 30)
@@ -27,6 +31,10 @@ Then /^WL: set profile page username to (?:random value|(.*))$/ do |str|
   print "UserName = #{TestData.hash[:username]}\n"
 end
 
+Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Uu]sername is (?:correct|(.*))$/ do |str|
+  expect(TestData.hash[:username]).to eql((str.nil?) ? TestData.hash[:username] : str)
+end
+
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age password exists$/ do
   expect(WhiteLabel.profile_page.password).to be_present, "Password textbox DOES NOT exist on profile page"
 end
@@ -40,12 +48,20 @@ Then /^WL: set profile page password to (?:random value|(.*))$/ do |str|
   print "Password = #{TestData.hash[:account_password]}\n"
 end
 
+Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Pp]assword is (?:correct|(.*))$/ do |str|
+  expect(TestData.hash[:account_password]).to eql((str.nil?) ? TestData.hash[:account_password] : str)
+end
+
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age retype password exists$/ do
   expect(WhiteLabel.profile_page.confirm_password).to be_present, "Retype password textbox DOES NOT exist on profile page"
 end
 
 Then /^WL: set profile page re-type password to (?:same as previous password|(.*))$/ do |str|
   WhiteLabel.profile_page.confirm_password.set(TestData.hash[:retype_password]=(str.nil?)?(TestData.hash[:account_password]) : str)
+end
+
+Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Rr]e-[Tt]ype [Pp]assword is (?:correct|(.*))$/ do |str|
+  expect(TestData.hash[:retype_password]).to eql((str.nil?) ? TestData.hash[:retype_password] : str)
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Ss]urvey [Qq]uestion exists$/ do

@@ -71,11 +71,11 @@ Feature: Stamps WebReg: Profile Page
 
     # Validating all fields with correct values
     Then WL: set profile page email to random value
-    Then expect Profile page Email is correct
+    Then WL: expect Profile page Email is correct
     Then WL: set profile page username to random value
-    Then expect Profile page Username is correct
+    Then WL: expect Profile page Username is correct
     Then WL: set profile page password to random value
-    Then expect Profile page Password is correct
+    Then WL: expect Profile page Password is correct
     Then WL: set profile page re-type password to same as previous password
     Then expect Profile page Re-Type password is correct
 
@@ -90,13 +90,13 @@ Feature: Stamps WebReg: Profile Page
     Then WL: expect profile page promo code to equal source id promo code
 
     # Validate Survey Question options
-    Then set Profile page Survey Question to Mostly shipping
+    Then WL: set profile page survey question to Individual/Home Office
     Then expect Profile page Survey Question is correct
-    Then set Profile page Survey Question to Both mailing and shipping
+    Then WL: set profile page survey question to Both mailing and shipping
     Then expect Profile page Survey Question is correct
-    Then set Profile page Survey Question to Business Use - Mostly mailing (letters/postcards/flats)
+    Then WL: set profile page survey question to Business Use - Mostly mailing (letters/postcards/flats)
     Then expect Profile page Survey Question is correct
-    Then set Profile page Survey Question to Individual
+    Then WL: set profile page survey question to Individual
     Then expect Profile page Survey Question is correct
 
     Then set How did you hear about us? to Web Search
