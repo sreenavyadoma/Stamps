@@ -1,5 +1,5 @@
 
-default: --backtrace --profile saucelabs_local_rob
+default: --backtrace --profile alex_rates
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -60,7 +60,7 @@ sap:              --tags @registration_orders WEB_APP=registration URL=cc --gues
 
 alex_mail:  --tags @rates_pm_comm_base_zone_1 BROWSER=firefox URL=stg USR=abqast2 PW=password1 new_framework=true  --guess LOG_LEVEL=info HEALTHCHECK=false
 alex_regress:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders URL=cc USR=abqacc10 PW=password1  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false
-alex_rates:  --tags @rates_fcm_package BROWSER=ff URL=qast USR=abqast2 PW=password1 WEB_APP=orders  --guess LOG_LEVEL=info HEALTHCHECK=false
+alex_rates:  --tags @rates_orders_fcm_package BROWSER=ff URL=stg USR=abqast2 PW=password1 WEB_APP=orders  --guess LOG_LEVEL=info HEALTHCHECK=false
 alex_rates_pmi:  --tags @rates_pmi_comm_plus_group_9 BROWSER=ff WEB_APP=orders URL=stg USR=abqast2 PW=password1  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false
 #alex_orders:  --tags @bvt_shipstation_updates_international BROWSER=ff URL=prod USR=abqaprod2 PW=password1  PRINTER=factory --guess LOG_LEVEL=info HEALTHCHECK=false
 alex_orders:  --tags @bvt_orders_ui_validation BROWSER=ff URL=prod USR=abqaprod2 PW=password1  PRINTER=factory --guess LOG_LEVEL=info HEALTHCHECK=false
@@ -214,8 +214,20 @@ rates_pmi_comm_plus_group_15:  --tags @rates_pmi_comm_plus_group_15 --guess LOG_
 rates_pmi_comm_plus_group_16:  --tags @rates_pmi_comm_plus_group_16 --guess LOG_LEVEL=info HEALTHCHECK=true
 rates_pmi_comm_plus_group_17:  --tags @rates_pmi_comm_plus_group_17 --guess LOG_LEVEL=info HEALTHCHECK=true
 
-rates_fcm_package:   --tags @rates_fcm_package --guess LOG_LEVEL=info HEALTHCHECK=true
 rates_mail_fcm_package:   --tags @rates_mail_fcm_package --guess LOG_LEVEL=info HEALTHCHECK=true
+#RATES ORDERS -------------------------------------------------------------
+rates_orders_fcm_package:   --tags @rates_orders_fcm_package --guess LOG_LEVEL=info HEALTHCHECK=true
+
+rates_orders_parcel_select_ground_zone_1:  --tags @rates_orders_parcel_select_ground_zone_1 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_parcel_select_ground_zone_2:  --tags @rates_orders_parcel_select_ground_zone_2 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_parcel_select_ground_zone_3:  --tags @rates_orders_parcel_select_ground_zone_3 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_parcel_select_ground_zone_4:  --tags @rates_orders_parcel_select_ground_zone_4 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_parcel_select_ground_zone_5:  --tags @rates_orders_parcel_select_ground_zone_5 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_parcel_select_ground_zone_6:  --tags @rates_orders_parcel_select_ground_zone_6 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_parcel_select_ground_zone_7:  --tags @rates_orders_parcel_select_ground_zone_7 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_parcel_select_ground_zone_8:  --tags @rates_orders_parcel_select_ground_zone_8 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_parcel_select_ground_zone_9:  --tags @rates_orders_parcel_select_ground_zone_9 --guess LOG_LEVEL=info HEALTHCHECK=true
+#END RATES ORDERS -------------------------------------------------------------
 
 bvt_mail_piece_validation: --tags @bvt_mail_piece_validation --guess  HEALTHCHECK=true PRINTER=factory
 

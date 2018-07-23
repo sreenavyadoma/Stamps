@@ -255,7 +255,7 @@ Then /^run rate sheet (.*)$/ do |param_sheet|
           # record execution time as time service was selected.
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:execution_date]] = Time.now.strftime("%b %d, %Y %H:%M")
 
-          step "set Order Details service to #{service}" if SdcEnv.sdc_app == :orders
+          step "set order details service to #{service}" if SdcEnv.sdc_app == :orders
           step "select print form service #{service}" if SdcEnv.sdc_app == :mail
 
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:service_selected]] = TestData.hash[:service]
@@ -268,7 +268,7 @@ Then /^run rate sheet (.*)$/ do |param_sheet|
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:tracking_selected]] = TestData.hash[:tracking]
           step 'pause for 1 second'
           # get total cost actual value from UI
-          step 'Save Order Details data' if SdcEnv.sdc_app == :orders
+          step 'save order details data' if SdcEnv.sdc_app == :orders
           step 'save print form total cost' if SdcEnv.sdc_app == :mail
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:total_ship_cost]] = (TestData.hash[:total_ship_cost].to_f * 100).round / 100.0
 

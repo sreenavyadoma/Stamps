@@ -394,7 +394,7 @@ Then /^run rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           step 'pause for 1 second'
 
           # get total cost actual value from UI
-          step 'Save Order Details data' if SdcEnv.sdc_app == :orders
+          step 'save order details data' if SdcEnv.sdc_app == :orders
           step "save print form total cost" if SdcEnv.sdc_app == :mail
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:total_ship_cost]] = (TestData.hash[:total_ship_cost].to_f * 100).round / 100.0
 
