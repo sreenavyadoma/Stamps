@@ -7,14 +7,18 @@ Then /^WL: set membership page first name to (?:random value|(.*))$/ do |str|
   first_name.wait_until_present(timeout: 10)
   first_name.clear
   while first_name.text_value.strip == ''
-    first_name.set(TestData.hash[:first_name] = str.nil? ? TestHelper.rand_alpha_str.capitalize  : str)
+    str ||=  TestHelper.rand_alpha_str.capitalize
+    first_name.set(str)
   end
   step "WL: blur_out on membership page"
+  TestData.hash[:first_name] = str
 end
 
 Then /^WL: expect membership page first name is (?:correct|(.*))$/ do |str|
   first_name = WhiteLabel.membership_page.first_name
-  expect(first_name.text_value.strip).to eql(str.nil? ? TestData.hash[:first_name] : str)
+  str ||= TestData.hash[:first_name]
+  expect(first_name.text_value.strip).to eql(str)
+  TestData.hash[:first_name] = str
 end
 
 Then /^WL: expect membership page first name tooltip to be (.*)$/ do |str|
@@ -28,14 +32,19 @@ Then /^WL: set membership page last name to (?:random value|(.*))$/ do |str|
   last_name = WhiteLabel.membership_page.last_name
   last_name.clear
   while last_name.text_value.strip == ''
-    last_name.set(TestData.hash[:last_name] = str.nil? ? TestHelper.rand_alpha_str.capitalize  : str)
+    str ||= TestHelper.rand_alpha_str.capitalize
+    last_name.set(str)
   end
   step "WL: blur_out on membership page"
+  TestData.hash[:last_name] = str
 end
 
 Then /^WL: expect membership page last name is (?:correct|(.*))$/ do |str|
   last_name = WhiteLabel.membership_page.last_name
-  expect(last_name.text_value.strip).to eql(str.nil? ? TestData.hash[:last_name] : str)
+  str ||= TestData.hash[:last_name]
+  expect(last_name.text_value.strip).to eql(str)
+
+  TestData.hash[:last_name] = str
 end
 
 Then /^WL: expect membership page last name tooltip to be (.*)$/ do |str|
@@ -44,21 +53,27 @@ Then /^WL: expect membership page last name tooltip to be (.*)$/ do |str|
 end
 
 Then /^WL: set membership page company to (?:random value|(.*))$/ do |str|
-  WhiteLabel.membership_page.company.set(TestData.hash[:company] = str.nil? ? TestHelper.rand_alpha_str  : str) if WhiteLabel.membership_page.company.present?
+  str ||= TestHelper.rand_alpha_str
+  WhiteLabel.membership_page.company.set(str)
+  TestData.hash[:company] = str
 end
 
 Then /^WL: expect membership page company is (?:correct|(.*))$/ do |str|
   company = WhiteLabel.membership_page.company
-  expect(company.text_value.strip).to eql(str.nil? ? TestData.hash[:company] : str)
+  str ||= TestData.hash[:company]
+  expect(company.text_value.strip).to eql(str)
+
+  TestData.hash[:company] = str
 end
 
 Then /^WL: set membership page address to (.*)$/ do |str|
   address = WhiteLabel.membership_page.address
   address.clear
   while address.text_value.strip == ''
-    WhiteLabel.membership_page.address.set(TestData.hash[:address] = str)
+    WhiteLabel.membership_page.address.set(str)
   end
   step "WL: blur_out on membership page"
+  TestData.hash[:address] = str
 end
 
 Then /^WL: click membership page address$/ do
@@ -75,7 +90,10 @@ end
 
 Then /^WL: expect membership page address is (?:correct|(.*))$/ do |str|
   address = WhiteLabel.membership_page.address
-  expect(address.text_value.strip).to eql(str.nil? ? TestData.hash[:address] : str)
+  str ||= TestData.hash[:address]
+  expect(address.text_value.strip).to eql(str)
+
+  TestData.hash[:address] = str
 end
 
 
@@ -86,13 +104,18 @@ end
 Then /^WL: set membership page city to (.*)$/ do |str|
    city = WhiteLabel.membership_page.city
    city.clear
-   city.set(TestData.hash[:city] = str)
+   city.set(str)
    step "WL: blur_out on membership page"
+
+   TestData.hash[:city] = str
 end
 
 Then /^WL: expect membership page city is (?:correct|(.*))$/ do |str|
   city = WhiteLabel.membership_page.city
-  expect(city.text_value.strip).to eql(str.nil? ? TestData.hash[:city] : str)
+  str ||= TestData.hash[:city]
+  expect(city.text_value.strip).to eql(str)
+
+  TestData.hash[:city] = str
 end
 
 Then /^WL: expect membership page city tooltip to be (.*)$/ do |str|
@@ -122,12 +145,15 @@ Then /^WL: set membership page zip to (.*)$/ do |str|
   zip = WhiteLabel.membership_page.zip
   zip.clear
   while zip.text_value.strip == ''
-    zip.set(TestData.hash[:zip] = str)
+    zip.set(str)
   end
+  TestData.hash[:zip] = str
 end
 
 Then /^WL: expect membership page zip is (?:correct|(.*))$/ do |str|
-  expect(WhiteLabel.membership_page.zip.text_value.strip).to eql(str.nil? ? TestData.hash[:zip] : str)
+  str ||= TestData.hash[:zip]
+  expect(WhiteLabel.membership_page.zip.text_value.strip).to eql(str)
+  TestData.hash[:zip] = str
 end
 
 Then /^WL: set membership page phone to (?:random value|(.*))$/ do |str|
@@ -135,8 +161,10 @@ Then /^WL: set membership page phone to (?:random value|(.*))$/ do |str|
   phone.clear
   rand_phone = TestHelper.rand_phone_format
   while phone.text_value.strip == ''
-    phone.set(TestData.hash[:phone] = str.nil? ? rand_phone : str)
+    str ||= rand_phone
+    phone.set(str)
   end
+  TestData.hash[:phone] = str
   step "WL: blur_out on membership page"
 end
 
@@ -145,8 +173,9 @@ Then /^WL: expect membership page phone tooltip to be (.*)$/ do |str|
 end
 
 Then /^WL: expect membership page phone is (?:correct|(.*))$/ do |str|
-
-  expect(WhiteLabel.membership_page.phone.text_value.strip).to eql(str.nil? ? TestData.hash[:phone] : str)
+  str ||= TestData.hash[:phone]
+  expect(WhiteLabel.membership_page.phone.text_value.strip).to eql(str)
+  TestData.hash[:phone] = str
 end
 
 Then /^WL: set membership page personal info to(?: a |)(?: random info |)(?:to|in|between|) (.*)$/ do |address|
@@ -180,29 +209,38 @@ Then /^WL: set membership page personal info to(?: a |)(?: random info |)(?:to|i
 end
 
 Then /^WL: expect membership page credit card stamps logo is present$/ do
-  expect(WhiteLabel.membership_page.cc_stamps_logo).to be_present, 'cc stamps logo IS NOT PRESENT'
+  expect(WhiteLabel.membership_page.cc_stamps_logo).to be_present
 end
 
 Then /^WL: expect membership page credit card usps logo is present$/ do
-  expect(WhiteLabel.membership_page.cc_usps_logo).to be_present, 'cc usps logo IS NOT PRESENT'
+  expect(WhiteLabel.membership_page.cc_usps_logo).to be_present
 end
 
 Then /^WL: expect membership page credit card authorization text to be$/ do |str|
-  expect(WhiteLabel.membership_page.cc_auth.text_value.strip).to eql(str)
+  actual = []
+  expected= str.split("\n")
+  tmp = WhiteLabel.membership_page.cc_auth.text_value.strip.split("\n")
+  actual << tmp[0].strip
+  actual << tmp[1].strip
+
+  expect(actual).to match_array(expected)
 end
 
 
 Then /^WL: set membership page cardholder's name to (?:random value|(.*))$/ do |str|
    cc_holder_name = WhiteLabel.membership_page.cc_holder_name
    cc_holder_name.clear
+   str ||= TestHelper.rand_full_name
    while cc_holder_name.text_value.strip == ''
-     cc_holder_name.set(TestData.hash[:card_holder_name] = str.nil? ? TestHelper.rand_full_name  : str)
+     cc_holder_name.set(TestData.hash[:card_holder_name] =str)
    end
     step 'WL: blur_out on membership page'
 end
 
 Then /^WL: expect membership page cardholder's name is (?:correct|(.*))$/ do |str|
-  expect(WhiteLabel.membership_page.cc_holder_name.text_value.strip).to eql(str.nil? ? TestData.hash[:card_holder_name] : str)
+  str ||= TestData.hash[:card_holder_name]
+  expect(WhiteLabel.membership_page.cc_holder_name.text_value.strip).to eql(str)
+  TestData.hash[:card_holder_name]= str
 end
 
 Then /WL: expect membership page cardholder's name tooltip to be (.*)$/ do |str|
@@ -213,13 +251,17 @@ Then /^WL: set membership page credit card number to (?:default value|(.*))$/ do
   cc_number = WhiteLabel.membership_page.cc_number
   cc_number.clear
   while cc_number.text_value == ''
-    cc_number.set(TestData.hash[:cc_number] = str.nil? ? "4111111111111111"  : str)
+    str ||= '4111111111111111'
+    cc_number.set(str)
   end
+  TestData.hash[:cc_number] = str
   step 'WL: blur_out on membership page'
 end
 
 Then /^WL: expect membership page credit card number is (?:correct|(.*))$/ do |str|
-  expect(WhiteLabel.membership_page.cc_number.text_value.strip.delete(' ')).to eql(str.nil? ? TestData.hash[:cc_number] : str)
+  str ||= TestData.hash[:cc_number]
+  expect(WhiteLabel.membership_page.cc_number.text_value.strip.delete(' ')).to eql(str)
+  TestData.hash[:cc_number] = str
 end
 
 Then /^WL: expect membership page credit card number tooltip to be (.*)$/ do |str|
@@ -227,19 +269,19 @@ Then /^WL: expect membership page credit card number tooltip to be (.*)$/ do |st
 end
 
 Then /^WL: expect membership page credit card visa is present$/ do
-  expect(WhiteLabel.membership_page.cc_visa).to be_present, 'Visa img IS NOT PRESENT'
+  expect(WhiteLabel.membership_page.cc_visa).to be_present
 end
 
 Then /^WL: expect membership page credit card mastercard is present$/ do
-  expect(WhiteLabel.membership_page.cc_mastercard).to be_present, 'Mastercard img IS NOT PRESENT'
+  expect(WhiteLabel.membership_page.cc_mastercard).to be_present
 end
 
 Then /^WL: expect membership page credit card discover is present$/ do
-  expect(WhiteLabel.membership_page.cc_discover).to be_present, 'Discover img IS NOT PRESENT'
+  expect(WhiteLabel.membership_page.cc_discover).to be_present
 end
 
 Then /^WL: expect membership page credit card american express is present$/ do
-  expect(WhiteLabel.membership_page.cc_amex).to be_present, 'American Express img IS NOT PRESENT'
+  expect(WhiteLabel.membership_page.cc_amex).to be_present
 end
 
 Then /^WL: select membership page credit card month (.*)$/ do |str|
@@ -254,7 +296,9 @@ Then /^WL: select membership page credit card month (.*)$/ do |str|
 end
 
 Then /^WL: expect membership page month is (?:correct|(.*))$/ do |str|
-  expect(WhiteLabel.membership_page.cc_month.attribute_value('title').strip).to eql(str.nil? ? TestData.hash[:cc_month] : str)
+  str ||=  TestData.hash[:cc_month]
+  expect(WhiteLabel.membership_page.cc_month.attribute_value('title').strip).to eql(str)
+  TestData.hash[:cc_month] = str
 end
 
 Then /^WL: expect membership page month tooltip to be (.*)$/ do |str|
@@ -281,7 +325,9 @@ Then /^WL: set membership page credit card year to this year plus (\d+)$/ do |ye
 end
 
 Then /^WL: expect membership page credit card year is (?:correct|(.*))$/ do |str|
-  expect(WhiteLabel.membership_page.cc_year.attribute_value('title').strip).to eql(str.nil? ? TestData.hash[:cc_year] : str)
+  str ||= TestData.hash[:cc_year]
+  expect(WhiteLabel.membership_page.cc_year.attribute_value('title').strip).to eql(str)
+  TestData.hash[:cc_year] = str
 end
 
 Then /^WL: uncheck membership page billing address same as mailing address$/ do
@@ -305,11 +351,11 @@ Then /^WL: expect membership page billing address same as mailing address is che
 end
 
 Then /^WL: expect membership page billing header to be present$/ do
-  expect(WhiteLabel.membership_page.billing_addr_header).to be_present, 'Billing Header IS NOT PRESENT'
+  expect(WhiteLabel.membership_page.billing_addr_header).to be_present
 end
 
 Then /^WL: expect membership page billing header not to be present$/ do
-  expect(WhiteLabel.membership_page.billing_addr_header).not_to be_present, 'Billing Header IS PRESENT'
+  expect(WhiteLabel.membership_page.billing_addr_header).not_to be_present
 end
 
 Then /^WL: set membership page billing address to (.*)$/ do |str|
@@ -336,7 +382,9 @@ Then /WL: select membership page billing address autocomplete first result$/ do
 end
 
 Then /^WL: expect membership page billing address is (?:correct|(.*))$/ do |str|
-  expect(WhiteLabel.membership_page.billing_addr.text_value.strip).to eql(str.nil? ? TestData.hash[:billing_addr] : str)
+  str ||= TestData.hash[:billing_addr]
+  expect(WhiteLabel.membership_page.billing_addr.text_value.strip).to eql(str)
+  TestData.hash[:billing_addr] = str
 end
 
 Then /^WL: expect membership page billing address tooltip to be (.*)$/ do |str|
@@ -344,24 +392,27 @@ Then /^WL: expect membership page billing address tooltip to be (.*)$/ do |str|
 end
 
 Then /^WL: expect membership page billing address to be present$/ do
-  expect(WhiteLabel.membership_page.billing_addr).to be_present, 'Billing Address IS NOT PRESENT'
+  expect(WhiteLabel.membership_page.billing_addr).to be_present
 end
 
 Then /^WL: expect membership page billing address not to be present$/ do
-  expect(WhiteLabel.membership_page.billing_addr).not_to be_present, 'Billing Address IS PRESENT'
+  expect(WhiteLabel.membership_page.billing_addr).not_to be_present
 end
 
 Then /^WL: set membership page billing city to (.*)$/ do |str|
   billing_city = WhiteLabel.membership_page.billing_city
   billing_city.clear
   while billing_city.text_value.strip == ''
-    billing_city.set(TestData.hash[:billing_city] = str)
+    billing_city.set(str)
   end
   step "WL: blur_out on membership page"
+  TestData.hash[:billing_city] = str
 end
 
 Then /^WL: expect membership page billing city is (?:correct|(.*))$/ do |str|
-  expect(WhiteLabel.membership_page.billing_city.text_value.strip).to eql(str.nil? ? TestData.hash[:billing_city] : str)
+  str ||= TestData.hash[:billing_city]
+  expect(WhiteLabel.membership_page.billing_city.text_value.strip).to eql( str )
+  TestData.hash[:billing_city] = str
 end
 
 Then /^WL: expect membership page billing city tooltip to be (.*)$/ do |str|
@@ -369,11 +420,11 @@ Then /^WL: expect membership page billing city tooltip to be (.*)$/ do |str|
 end
 
 Then /^WL: expect membership page billing city to be present$/ do
-  expect(WhiteLabel.membership_page.billing_city).to be_present, 'Billing City IS NOT PRESENT'
+  expect(WhiteLabel.membership_page.billing_city).to be_present
 end
 
 Then /^WL: expect membership page billing city not to be present$/ do
-  expect(WhiteLabel.membership_page.billing_city).not_to be_present, 'Billing City IS PRESENT'
+  expect(WhiteLabel.membership_page.billing_city).not_to be_present
 end
 
 Then /^WL: select membership page billing state (.*)$/ do |str|
@@ -388,7 +439,9 @@ Then /^WL: select membership page billing state (.*)$/ do |str|
 end
 
 Then /^WL: expect membership page billing state is (?:correct|(.*))$/ do |str|
-  expect(WhiteLabel.membership_page.billing_state.attribute_value('title').strip).to eql(str.nil? ? TestData.hash[:billing_state] : str)
+  str ||= TestData.hash[:billing_state]
+  expect(WhiteLabel.membership_page.billing_state.attribute_value('title').strip).to eql(str)
+  TestData.hash[:billing_state] = str
 end
 
 Then /^WL: expect membership page billing state tooltip to be (.*)$/ do |str|
@@ -396,24 +449,27 @@ Then /^WL: expect membership page billing state tooltip to be (.*)$/ do |str|
 end
 
 Then /^WL: expect membership page billing state to be present$/ do
-  expect(WhiteLabel.membership_page.billing_state).to be_present, 'Billing State IS PRESENT'
+  expect(WhiteLabel.membership_page.billing_state).to be_present
 end
 
 Then /^WL: expect membership page billing state not to be present$/ do
-  expect(WhiteLabel.membership_page.billing_state).not_to be_present, 'Billing State IS NOT PRESENT'
+  expect(WhiteLabel.membership_page.billing_state).not_to be_present
 end
 
 Then /^WL: set membership page billing zip to (.*)$/ do |str|
   billing_zip = WhiteLabel.membership_page.billing_zip
   billing_zip.clear
   while billing_zip.text_value.strip == ''
-    billing_zip.set(TestData.hash[:billing_zip] = str)
+    billing_zip.set(str)
   end
-   step "WL: blur_out on membership page"
+  step "WL: blur_out on membership page"
+  TestData.hash[:billing_zip] = str
 end
 
 Then /^WL: expect membership page billing zip is (?:correct|(.*))$/ do |str|
-  expect(WhiteLabel.membership_page.billing_zip.text_value.strip).to eql(str.nil? ? TestData.hash[:billing_zip] : str)
+  str ||= TestData.hash[:billing_zip]
+  expect(WhiteLabel.membership_page.billing_zip.text_value.strip).to eql(str)
+  TestData.hash[:billing_zip] = str
 end
 
 Then /^WL: expect membership page billing zip tooltip to be (.*)$/ do |str|
@@ -421,24 +477,30 @@ Then /^WL: expect membership page billing zip tooltip to be (.*)$/ do |str|
 end
 
 Then /^WL: expect membership page billing zip to be present$/ do
-  expect(WhiteLabel.membership_page.billing_zip).to be_present, 'Billing Zip IS NOT PRESENT'
+  expect(WhiteLabel.membership_page.billing_zip).to be_present
 end
 
 Then /^WL: expect membership page billing zip not to be present$/ do
-  expect(WhiteLabel.membership_page.billing_zip).not_to be_present, 'Billing Zip IS PRESENT'
+  expect(WhiteLabel.membership_page.billing_zip).not_to be_present
 end
 
 Then /^WL: check membership page terms & conditions$/ do
-  WhiteLabel.membership_page.terms_conditions.click! unless WhiteLabel.membership_page.billing_addr_enable_disable.attribute_value('class')== 'form-group checkbox'
+  mm_page = WhiteLabel.membership_page
+  att_value = mm_page.billing_addr_enable_disable.attribute_value('class')
+  mm_page.terms_conditions.click! unless att_value== 'form-group checkbox'
 end
 
 Then /^WL: uncheck membership page terms & conditions$/ do
-  WhiteLabel.membership_page.terms_conditions.click! unless WhiteLabel.membership_page.billing_addr_enable_disable.attribute_value('class')== 'form-group checkbox has-error'
+  mm_page = WhiteLabel.membership_page
+  att_value = mm_page.billing_addr_enable_disable.attribute_value('class')
+  mm_page.terms_conditions.click! unless att_value== 'form-group checkbox has-error'
 end
 
 Then /^WL: expect membership page terms & conditions is checked$/ do
+  mm_page = WhiteLabel.membership_page
   step "WL: blur_out on membership page"
-  expect(WhiteLabel.membership_page.billing_addr_enable_disable.attribute_value('class')).to eql('form-group checkbox')
+  att_value = mm_page.billing_addr_enable_disable.attribute_value('class')
+  expect(att_value).to eql('form-group checkbox')
 end
 
 Then /^WL: expect membership page terms & conditions is unchecked$/ do
@@ -447,7 +509,8 @@ Then /^WL: expect membership page terms & conditions is unchecked$/ do
   step 'pause for 1 second'
   membership_page.submit.click
   membership_page.billing_addr_enable_disable.wait_until_present(timeout: 2)
-  expect(membership_page.billing_addr_enable_disable.attribute_value('class')).to eql('form-group checkbox has-error')
+  att_value = membership_page.billing_addr_enable_disable.attribute_value('class')
+  expect(att_value).to eql('form-group checkbox has-error')
 end
 
 Then /^WL: expect membership page terms & conditions tooltip to be (.*)$/ do |str|
@@ -467,7 +530,7 @@ end
 Then /^WL: expect membership page terms and conditions modal is present$/ do
   terms_conditions_header = WhiteLabel.membership_page.terms_conditions_header
   terms_conditions_header.wait_until_present(timeout: 2)
-  expect(terms_conditions_header).to be_present, 'Terms and Conditions IS NOT PRESENT'
+  expect(terms_conditions_header).to be_present
 end
 
 Then /^WL: check if address standardized is present then click continue$/ do
@@ -487,7 +550,7 @@ Then /^WL: check if postage meter address is present then set the value$/ do
     step 'WL: set postage meter address between zone 5 and 8'
     step 'WL: click membership page submit button'
   else
-    expect(membership_page.meter_header).not_to be_present, 'Additional Postage Meter Address Page IS PRESENT for domestic address'
+    expect(membership_page.meter_header).not_to be_present
   end
 end
 
@@ -532,10 +595,10 @@ end
 Then /^WL: if username taken is present then set username to (?:random value|(.*))$/ do |str|
   membership_page =  WhiteLabel.membership_page
   if TestData.hash[:username_taken].empty?
-    expect(membership_page.username_taken_header).not_to be_present, 'Username Taken Modals is PRESENT when user DOES NOT EXISTS'
+    expect(membership_page.username_taken_header).not_to be_present
   else
     membership_page.new_username.wait_until_present(timeout: 5)
-    expect(membership_page.username_taken_header).to be_present, 'Username Taken Modals is NOT PRESENT for an EXISTING USER'
+    expect(membership_page.username_taken_header).to be_present
     membership_page.new_username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
     print "UserName = #{TestData.hash[:username]}\n"
     step 'WL: click username taken continue button'
@@ -594,9 +657,6 @@ Then /^WL: expect membership page pricing and billing paragraph to be$/ do |str|
   step 'WL: establish stamps website db connection'
   plan_rate =  WhiteLabel.common_page.plan_query(TestData.hash[:offer_id], plan_sku )
   step 'WL: close stamps website db connection'
-  # hash = Hash.from_xml(TestData.hash[:content])
-  # plan_rate  = hash['root']['PlanRate']
-  #
   expect(WhiteLabel.membership_page.pricing_and_billing_p.text_value.strip).to eql(str.gsub('plan_rate', plan_rate.to_s))
 end
 
@@ -619,6 +679,6 @@ end
 Then /^WL: expect membership page your stamps.com offer modal to be present$/ do
   bonus_offer_details_header  = WhiteLabel.membership_page.bonus_offer_details_header
   bonus_offer_details_header.wait_until_present(timeout: 2)
-  expect(bonus_offer_details_header).to be_present, 'Your Stamps.com Offer IS NOT PRESENT'
+  expect(bonus_offer_details_header).to be_present
 end
 

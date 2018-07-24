@@ -75,8 +75,8 @@ module WhiteLabel
   end
 
   class SDCWWebsite <SdcPage
-    def self.visit
-      page_url { |env| "https://#{env}stamps.com/?source=#{TestData.hash[:source_id]}" }
+    def self.visit(str)
+      page_url { |env| "https://#{env}stamps.com/?source=#{str}" }
       super(case SdcEnv.env
               when :qacc
                 'sdcwebsite.qacc.'
