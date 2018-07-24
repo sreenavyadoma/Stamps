@@ -81,7 +81,7 @@ Then /^click sign-in button on browser$/ do
 
   step 'click Orders landing page sign-in button'
 
-  SdcOrders.loading_orders.safe_wait_until_present(timeout: 5)
+  SdcOrders.loading_orders.safe_wait_until_present(timeout: 4)
   SdcOrders.loading_orders.safe_wait_while_present(timeout: 15)
   SdcGrid.body.safe_wait_until_present(timeout: 20)
   expect(toolbar.add).to be_present
@@ -125,15 +125,11 @@ Then /^click Orders landing page sign-in button$/ do
   landing_page = SdcWebsite.landing_page
   landing_page.sign_in.wait_until_present(timeout: 3)
   landing_page.sign_in.click
-  3.times do
-    if landing_page.invalid_username_password.present?
-      landing_page.sign_in.click
-      landing_page.invalid_username_password.safe_wait_while_present(timeout: 1)
-    else
-      break
-    end
+  landing_page.invalid_username.safe_wait_while_present(timeout: 1)
+  if landing_page.invalid_username.present?
+    str = landing_page.invalid_username.text_value
+    expect(str).to eql('')
   end
-  expect(landing_page.invalid_username_password.text_value).to eql('')
 end
 
 Then /^close whats new modal in orders$/ do
