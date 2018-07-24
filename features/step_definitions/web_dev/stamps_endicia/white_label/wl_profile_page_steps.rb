@@ -68,5 +68,18 @@ Then /^WL: show profile page promo code textbox$/ do
 end
 
 Then /^WL: click profile page continue button$/ do
-  WhiteLabel.profile_page.continue.click
+    WhiteLabel.profile_page.continue.click
+    step 'pause for 1 second'
+end
+
+Then /^WL: set profile page default values$/ do
+  step 'WL: navigates to default registration page for stamps with the following source id 100-TES-WB001'
+  step 'WL: set profile page email to random value'
+  step 'WL: set profile page username to random value'
+  step 'WL: set profile page password to random value'
+  step 'WL: set profile page re-type password to same as previous password'
+  step 'WL: set profile page survey question to Business Use - Both mailing and shipping'
+  step 'WL: set profile page how did you hear about us? to Received Mailer'
+  step 'WL: set profile page promo code to PR33-NH77'
+  step 'WL: click profile page continue button'
 end

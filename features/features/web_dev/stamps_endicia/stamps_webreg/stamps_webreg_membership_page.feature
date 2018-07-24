@@ -232,8 +232,22 @@ Feature: Stamps WebReg: Membership Page
     Then WL: expect membership page terms and conditions modal is present
     Then WL: click membership page terms & conditions modal x button
 
-  @sdcwr_membership_page_ui_addr_validation
+  @sdcwr_membership_page_addr_validation
   Scenario: Membership Page Address Validation
+
+    Then WL: set profile page default values
+
+        #Autocomplete Profile Address
+    Then pause for 1 second
+    Then WL: set membership page address to 1990 E
+    Then WL: click membership page address
+    Then WL: select membership page address autocomplete first result
+    Then WL: expect membership page address is 1990 E Grand Ave
+    Then WL: expect membership page city is El Segundo
+    Then WL: expect membership page state is CA
+    Then WL: expect membership page zip is 90245
+
+    Then WL: uncheck membership page billing address same as mailing address
     #Autocomplete Billing Address
     Then WL: set membership page billing address to 15 World
     Then WL: click membership page billing address
@@ -244,17 +258,9 @@ Feature: Stamps WebReg: Membership Page
     Then WL: expect membership page billing zip is 90045
 
 
-    #Autocomplete Profile Address
-    Then pause for 1 second
-    Then WL: set membership page address to 1990 E
-    Then WL: click membership page address
-    Then WL: select membership page address autocomplete first result
-    Then WL: expect membership page address is 1990 E Grand Ave
-    Then WL: expect membership page city is El Segundo
-    Then WL: expect membership page state is CA
-    Then WL: expect membership page zip is 90245
 
-        # Verify Physical Address Zone wise
+
+    # Verify Physical Address Zone wise
     Then WL: set membership page personal info to random info between zone 1 and zone 4
     Then WL: expect membership page address is correct
     Then WL: expect membership page city is correct

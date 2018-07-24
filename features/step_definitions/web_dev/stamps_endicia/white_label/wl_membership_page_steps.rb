@@ -63,12 +63,13 @@ end
 
 Then /^WL: click membership page address$/ do
    WhiteLabel.membership_page.address.click
+   step 'pause for 1 second'
 end
 
 Then /WL: select membership page address autocomplete first result$/ do
   address_auto_complete  = WhiteLabel.membership_page.address_auto_complete
   address_auto_complete.wait_until_present(timeout: 2)
-  address_auto_complete.click
+  address_auto_complete.click!
   step "WL: blur_out on membership page"
 end
 
@@ -313,8 +314,8 @@ end
 
 Then /^WL: set membership page billing address to (.*)$/ do |str|
   billing_addr = WhiteLabel.membership_page.billing_addr
-  billing_addr.scroll_into_view
   billing_addr.wait_until_present(timeout: 2)
+  billing_addr.scroll_into_view
   billing_addr.clear
   while billing_addr.text_value.strip == ''
     billing_addr.set(TestData.hash[:billing_addr] = str)
@@ -324,6 +325,7 @@ end
 
 Then /^WL: click membership page billing address$/ do
   WhiteLabel.membership_page.billing_addr.click
+  step 'pause for 1 second'
 end
 
 Then /WL: select membership page billing address autocomplete first result$/ do
