@@ -8,7 +8,7 @@ end
 
 # todo-Mohammed Please make the following changes
 # 1. We need to keep our code up to 120 characters per line for readability. Anything over 120 lines should go to the
-# next line of the code.
+# next line of code.
 # 2.  We should only use TestData.hash[:param] if we need to pass parameters on step definition to other step
 # definitions, otherwise, we should use a local variable.
 # 2.a If you need to use TestData.hash[:param], do the assignment at the very end of the step definition. This is to
