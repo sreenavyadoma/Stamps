@@ -43,6 +43,7 @@ Then /^WL: expect membership page last name is (?:correct|(.*))$/ do |str|
   last_name = WhiteLabel.membership_page.last_name
   str ||= TestData.hash[:last_name]
   expect(last_name.text_value.strip).to eql(str)
+
   TestData.hash[:last_name] = str
 end
 
@@ -61,6 +62,7 @@ Then /^WL: expect membership page company is (?:correct|(.*))$/ do |str|
   company = WhiteLabel.membership_page.company
   str ||= TestData.hash[:company]
   expect(company.text_value.strip).to eql(str)
+
   TestData.hash[:company] = str
 end
 
@@ -68,9 +70,10 @@ Then /^WL: set membership page address to (.*)$/ do |str|
   address = WhiteLabel.membership_page.address
   address.clear
   while address.text_value.strip == ''
-    WhiteLabel.membership_page.address.set(TestData.hash[:address] = str)
+    WhiteLabel.membership_page.address.set(str)
   end
   step "WL: blur_out on membership page"
+  TestData.hash[:address] = str
 end
 
 Then /^WL: click membership page address$/ do
@@ -86,7 +89,10 @@ end
 
 Then /^WL: expect membership page address is (?:correct|(.*))$/ do |str|
   address = WhiteLabel.membership_page.address
-  expect(address.text_value.strip).to eql(str.nil? ? TestData.hash[:address] : str)
+  str ||= TestData.hash[:address]
+  expect(address.text_value.strip).to eql(str)
+
+  TestData.hash[:address] = str
 end
 
 
@@ -97,13 +103,18 @@ end
 Then /^WL: set membership page city to (.*)$/ do |str|
    city = WhiteLabel.membership_page.city
    city.clear
-   city.set(TestData.hash[:city] = str)
+   city.set(str)
    step "WL: blur_out on membership page"
+
+   TestData.hash[:city] = str
 end
 
 Then /^WL: expect membership page city is (?:correct|(.*))$/ do |str|
   city = WhiteLabel.membership_page.city
-  expect(city.text_value.strip).to eql(str.nil? ? TestData.hash[:city] : str)
+  str ||= TestData.hash[:city]
+  expect(city.text_value.strip).to eql(str)
+
+  TestData.hash[:city] = str
 end
 
 Then /^WL: expect membership page city tooltip to be (.*)$/ do |str|
@@ -133,12 +144,15 @@ Then /^WL: set membership page zip to (.*)$/ do |str|
   zip = WhiteLabel.membership_page.zip
   zip.clear
   while zip.text_value.strip == ''
-    zip.set(TestData.hash[:zip] = str)
+    zip.set(str)
   end
+  TestData.hash[:zip] = str
 end
 
 Then /^WL: expect membership page zip is (?:correct|(.*))$/ do |str|
-  expect(WhiteLabel.membership_page.zip.text_value.strip).to eql(str.nil? ? TestData.hash[:zip] : str)
+  str ||= TestData.hash[:zip]
+  expect(WhiteLabel.membership_page.zip.text_value.strip).to eql(str)
+  TestData.hash[:zip] = str
 end
 
 Then /^WL: set membership page phone to (?:random value|(.*))$/ do |str|
@@ -146,8 +160,10 @@ Then /^WL: set membership page phone to (?:random value|(.*))$/ do |str|
   phone.clear
   rand_phone = TestHelper.rand_phone_format
   while phone.text_value.strip == ''
-    phone.set(TestData.hash[:phone] = str.nil? ? rand_phone : str)
+    str ||= rand_phone
+    phone.set(str)
   end
+  TestData.hash[:phone] = str
   step "WL: blur_out on membership page"
 end
 
@@ -156,8 +172,9 @@ Then /^WL: expect membership page phone tooltip to be (.*)$/ do |str|
 end
 
 Then /^WL: expect membership page phone is (?:correct|(.*))$/ do |str|
-
-  expect(WhiteLabel.membership_page.phone.text_value.strip).to eql(str.nil? ? TestData.hash[:phone] : str)
+  str ||= TestData.hash[:phone]
+  expect(WhiteLabel.membership_page.phone.text_value.strip).to eql(str)
+  TestData.hash[:phone] = str
 end
 
 Then /^WL: set membership page personal info to(?: a |)(?: random info |)(?:to|in|between|) (.*)$/ do |address|
@@ -206,14 +223,17 @@ end
 Then /^WL: set membership page cardholder's name to (?:random value|(.*))$/ do |str|
    cc_holder_name = WhiteLabel.membership_page.cc_holder_name
    cc_holder_name.clear
+   str ||= TestHelper.rand_full_name
    while cc_holder_name.text_value.strip == ''
-     cc_holder_name.set(TestData.hash[:card_holder_name] = str.nil? ? TestHelper.rand_full_name  : str)
+     cc_holder_name.set(TestData.hash[:card_holder_name] =str)
    end
     step 'WL: blur_out on membership page'
 end
 
 Then /^WL: expect membership page cardholder's name is (?:correct|(.*))$/ do |str|
-  expect(WhiteLabel.membership_page.cc_holder_name.text_value.strip).to eql(str.nil? ? TestData.hash[:card_holder_name] : str)
+  str ||= TestData.hash[:card_holder_name]
+  expect(WhiteLabel.membership_page.cc_holder_name.text_value.strip).to eql(str)
+  TestData.hash[:card_holder_name]= str
 end
 
 Then /WL: expect membership page cardholder's name tooltip to be (.*)$/ do |str|
