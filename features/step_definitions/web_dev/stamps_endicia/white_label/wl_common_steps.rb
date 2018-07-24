@@ -26,17 +26,15 @@ Then /^WL: navigates to default registration page for stamps with the following 
       security_questions_before_reg = 'true'
     end
   end
-
   step 'WL: close stamps website db connection'
-
-  print "Sourceid = #{source_id}\n"
 
   SDCWWebsite.visit
   common_page.stamps_logo.wait_until_present(timeout: 10)
-
   expect(SdcPage.browser.url).to include(target_url.to_s)
 
   common_page.get_started.click!
+
+  print "Sourceid = #{source_id}\n"
 
   TestData.hash[:source_id] = source_id
   TestData.hash[:content] = content
