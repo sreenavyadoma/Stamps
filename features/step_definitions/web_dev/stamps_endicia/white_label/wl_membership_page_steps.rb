@@ -84,7 +84,8 @@ end
 Then /WL: select membership page address autocomplete first result$/ do
   address_auto_complete  = WhiteLabel.membership_page.address_auto_complete
   address_auto_complete.wait_until_present(timeout: 2)
-  address_auto_complete.click!
+  address_auto_complete.focus
+  address_auto_complete.click
   step "WL: blur_out on membership page"
 end
 
