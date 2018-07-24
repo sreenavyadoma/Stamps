@@ -179,11 +179,11 @@ Then /^WL: set membership page personal info to(?: a |)(?: random info |)(?:to|i
 end
 
 Then /^WL: expect membership page credit card stamps logo is present$/ do
-  expect(WhiteLabel.membership_page.cc_stamps_logo).to be_present, 'cc stamps logo IS NOT PRESENT'
+  expect(WhiteLabel.membership_page.cc_stamps_logo).to be_present
 end
 
 Then /^WL: expect membership page credit card usps logo is present$/ do
-  expect(WhiteLabel.membership_page.cc_usps_logo).to be_present, 'cc usps logo IS NOT PRESENT'
+  expect(WhiteLabel.membership_page.cc_usps_logo).to be_present
 end
 
 Then /^WL: expect membership page credit card authorization text to be$/ do |str|
@@ -226,19 +226,19 @@ Then /^WL: expect membership page credit card number tooltip to be (.*)$/ do |st
 end
 
 Then /^WL: expect membership page credit card visa is present$/ do
-  expect(WhiteLabel.membership_page.cc_visa).to be_present, 'Visa img IS NOT PRESENT'
+  expect(WhiteLabel.membership_page.cc_visa).to be_present
 end
 
 Then /^WL: expect membership page credit card mastercard is present$/ do
-  expect(WhiteLabel.membership_page.cc_mastercard).to be_present, 'Mastercard img IS NOT PRESENT'
+  expect(WhiteLabel.membership_page.cc_mastercard).to be_present
 end
 
 Then /^WL: expect membership page credit card discover is present$/ do
-  expect(WhiteLabel.membership_page.cc_discover).to be_present, 'Discover img IS NOT PRESENT'
+  expect(WhiteLabel.membership_page.cc_discover).to be_present
 end
 
 Then /^WL: expect membership page credit card american express is present$/ do
-  expect(WhiteLabel.membership_page.cc_amex).to be_present, 'American Express img IS NOT PRESENT'
+  expect(WhiteLabel.membership_page.cc_amex).to be_present
 end
 
 Then /^WL: select membership page credit card month (.*)$/ do |str|
@@ -304,11 +304,11 @@ Then /^WL: expect membership page billing address same as mailing address is che
 end
 
 Then /^WL: expect membership page billing header to be present$/ do
-  expect(WhiteLabel.membership_page.billing_addr_header).to be_present, 'Billing Header IS NOT PRESENT'
+  expect(WhiteLabel.membership_page.billing_addr_header).to be_present
 end
 
 Then /^WL: expect membership page billing header not to be present$/ do
-  expect(WhiteLabel.membership_page.billing_addr_header).not_to be_present, 'Billing Header IS PRESENT'
+  expect(WhiteLabel.membership_page.billing_addr_header).not_to be_present
 end
 
 Then /^WL: set membership page billing address to (.*)$/ do |str|
@@ -342,11 +342,11 @@ Then /^WL: expect membership page billing address tooltip to be (.*)$/ do |str|
 end
 
 Then /^WL: expect membership page billing address to be present$/ do
-  expect(WhiteLabel.membership_page.billing_addr).to be_present, 'Billing Address IS NOT PRESENT'
+  expect(WhiteLabel.membership_page.billing_addr).to be_present
 end
 
 Then /^WL: expect membership page billing address not to be present$/ do
-  expect(WhiteLabel.membership_page.billing_addr).not_to be_present, 'Billing Address IS PRESENT'
+  expect(WhiteLabel.membership_page.billing_addr).not_to be_present
 end
 
 Then /^WL: set membership page billing city to (.*)$/ do |str|
@@ -367,11 +367,11 @@ Then /^WL: expect membership page billing city tooltip to be (.*)$/ do |str|
 end
 
 Then /^WL: expect membership page billing city to be present$/ do
-  expect(WhiteLabel.membership_page.billing_city).to be_present, 'Billing City IS NOT PRESENT'
+  expect(WhiteLabel.membership_page.billing_city).to be_present
 end
 
 Then /^WL: expect membership page billing city not to be present$/ do
-  expect(WhiteLabel.membership_page.billing_city).not_to be_present, 'Billing City IS PRESENT'
+  expect(WhiteLabel.membership_page.billing_city).not_to be_present
 end
 
 Then /^WL: select membership page billing state (.*)$/ do |str|
@@ -394,11 +394,11 @@ Then /^WL: expect membership page billing state tooltip to be (.*)$/ do |str|
 end
 
 Then /^WL: expect membership page billing state to be present$/ do
-  expect(WhiteLabel.membership_page.billing_state).to be_present, 'Billing State IS PRESENT'
+  expect(WhiteLabel.membership_page.billing_state).to be_present
 end
 
 Then /^WL: expect membership page billing state not to be present$/ do
-  expect(WhiteLabel.membership_page.billing_state).not_to be_present, 'Billing State IS NOT PRESENT'
+  expect(WhiteLabel.membership_page.billing_state).not_to be_present
 end
 
 Then /^WL: set membership page billing zip to (.*)$/ do |str|
@@ -419,11 +419,11 @@ Then /^WL: expect membership page billing zip tooltip to be (.*)$/ do |str|
 end
 
 Then /^WL: expect membership page billing zip to be present$/ do
-  expect(WhiteLabel.membership_page.billing_zip).to be_present, 'Billing Zip IS NOT PRESENT'
+  expect(WhiteLabel.membership_page.billing_zip).to be_present
 end
 
 Then /^WL: expect membership page billing zip not to be present$/ do
-  expect(WhiteLabel.membership_page.billing_zip).not_to be_present, 'Billing Zip IS PRESENT'
+  expect(WhiteLabel.membership_page.billing_zip).not_to be_present
 end
 
 Then /^WL: check membership page terms & conditions$/ do
@@ -485,7 +485,7 @@ Then /^WL: check if postage meter address is present then set the value$/ do
     step 'WL: set postage meter address between zone 5 and 8'
     step 'WL: click membership page submit button'
   else
-    expect(membership_page.meter_header).not_to be_present, 'Additional Postage Meter Address Page IS PRESENT for domestic address'
+    expect(membership_page.meter_header).not_to be_present
   end
 end
 
@@ -530,10 +530,10 @@ end
 Then /^WL: if username taken is present then set username to (?:random value|(.*))$/ do |str|
   membership_page =  WhiteLabel.membership_page
   if TestData.hash[:username_taken].empty?
-    expect(membership_page.username_taken_header).not_to be_present, 'Username Taken Modals is PRESENT when user DOES NOT EXISTS'
+    expect(membership_page.username_taken_header).not_to be_present
   else
     membership_page.new_username.wait_until_present(timeout: 5)
-    expect(membership_page.username_taken_header).to be_present, 'Username Taken Modals is NOT PRESENT for an EXISTING USER'
+    expect(membership_page.username_taken_header).to be_present
     membership_page.new_username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
     print "UserName = #{TestData.hash[:username]}\n"
     step 'WL: click username taken continue button'
@@ -617,6 +617,6 @@ end
 Then /^WL: expect membership page your stamps.com offer modal to be present$/ do
   bonus_offer_details_header  = WhiteLabel.membership_page.bonus_offer_details_header
   bonus_offer_details_header.wait_until_present(timeout: 2)
-  expect(bonus_offer_details_header).to be_present, 'Your Stamps.com Offer IS NOT PRESENT'
+  expect(bonus_offer_details_header).to be_present
 end
 
