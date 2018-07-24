@@ -1,6 +1,13 @@
 
-
 Then /^navigate to contacts$/ do
+
+end
+
+Then /^navigate to orders$/ do
+
+end
+
+Then /^navigate to mail$/ do
 
 end
 
