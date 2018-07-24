@@ -216,7 +216,13 @@ Then /^WL: expect membership page credit card usps logo is present$/ do
 end
 
 Then /^WL: expect membership page credit card authorization text to be$/ do |str|
-  expect(WhiteLabel.membership_page.cc_auth.text_value.strip).to eql(str)
+  actual = []
+  expected= str.split("\n")
+  tmp = WhiteLabel.membership_page.cc_auth.text_value.strip.split("\n")
+  actual << tmp[0].strip
+  actual << tmp[1].strip
+
+  expect(actual).to match_array(expected)
 end
 
 
