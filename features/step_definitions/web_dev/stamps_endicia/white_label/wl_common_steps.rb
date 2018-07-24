@@ -41,12 +41,12 @@ Then /^WL: navigates to default registration page for stamps with the following 
 
   step 'WL: close stamps website db connection'
 
-  print "Sourceid = #{TestData.hash[:source_id]}\n"
+  print "Sourceid = #{source_id}\n"
 
   SDCWWebsite.visit
   common_page.stamps_logo.wait_until_present(timeout: 10)
 
-  expect(SdcPage.browser.url).to include(TestData.hash[:target_url].to_s)
+  expect(SdcPage.browser.url).to include(target_url.to_s)
 
   common_page.get_started.click!
   # This tells people that you're going to use these parameters maybe for
