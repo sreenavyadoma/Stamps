@@ -7,7 +7,7 @@ Then /^WL: close stamps website db connection$/ do
 end
 
 # todo-Mohammed Please make the following changes
-# 1. We need to keep our code up to 120 characters per line for readability. Anything over 320 lines should go to the
+# 1. We need to keep our code up to 120 characters per line for readability. Anything over 120 lines should go to the
 # next line of the code.
 # 2.  We should only use TestData.hash[:param] if we need to pass parameters on step definition to other step
 # definitions, otherwise, we should use a local variable.
