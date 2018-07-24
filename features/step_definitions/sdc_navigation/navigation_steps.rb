@@ -8,13 +8,13 @@ end
 
 Then /^navigate to orders$/ do
   SdcNavigation.orders.click
-  SdcOrders.loading_orders.safe_wait_until_present(timeout: 3)
+  SdcOrders.loading_orders.safe_wait_until_present(timeout: 7)
   SdcOrders.loading_orders.safe_wait_while_present(timeout: 10)
   SdcGrid.body.wait_until_present(timeout: 20)
 end
 
 Then /^navigate to mail$/ do
-  SdcNavigation.contacts.click
+  SdcNavigation.mail.click
   # wait for mail to be fully loaded before moving on
 end
 
