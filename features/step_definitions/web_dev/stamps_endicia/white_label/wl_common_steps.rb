@@ -22,21 +22,20 @@ end
 Then /^WL: navigates to default registration page for stamps with the following source id (?:random value|(.*))$/ do |str|
   step 'WL: establish stamps website db connection'
   common_page = WhiteLabel.common_page
+  source_id, content, promo_code, offer_id, target_url = common_page.source_id_query(nil)
   if str.nil?
-    TestData.hash[:source_id], TestData.hash[:content], TestData.hash[:promo_code], TestData.hash[:offer_id], TestData.hash[:target_url]  = common_page.source_id_query(nil)
-    if TestData.hash[:content].include? 'SecurityQuestionsBeforeRegistration'
-      hash = Hash.from_xml(TestData.hash[:content])
-      TestData.hash[:security_questions_before_registration]  = hash['root']['SecurityQuestionsBeforeRegistration']
+    if content.include? 'SecurityQuestionsBeforeRegistration'
+      hash = Hash.from_xml(content)
+      security_questions_before_registration = hash['root']['SecurityQuestionsBeforeRegistration']
     else
-      TestData.hash[:security_questions_before_registration] = 'true'
+      security_questions_before_registration = 'true'
     end
   else
-    TestData.hash[:source_id], TestData.hash[:content], TestData.hash[:promo_code], TestData.hash[:offer_id], TestData.hash[:target_url]  = common_page.source_id_query(str)
     if TestData.hash[:content].include? 'SecurityQuestionsBeforeRegistration'
       hash = Hash.from_xml(TestData.hash[:content])
-      TestData.hash[:security_questions_before_registration]  = hash['root']['SecurityQuestionsBeforeRegistration']
+      security_questions_before_registration = hash['root']['SecurityQuestionsBeforeRegistration']
     else
-      TestData.hash[:security_questions_before_registration] = 'true'
+      security_questions_before_registration = 'true'
     end
   end
 
@@ -52,7 +51,47 @@ Then /^WL: navigates to default registration page for stamps with the following 
   common_page.get_started.click!
 
   TestData.hash[:username_taken] = WhiteLabel.common_page.username_query(TestData.hash[:username])
+  TestData.hash[:security_questions_before_registration] = security_questions_before_registration
+  TestData.hash[:source_id] = source_id
+  TestData.hash[:promo_code] = promo_code
+  TestData.hash[:offer_id] = offer_id
+  TestData.hash[:target_url] = target_url
 end
+
+# Then /^WL: navigates to default registration page for stamps with the following source id (?:random value|(.*))$/ do |str|
+#   step 'WL: establish stamps website db connection'
+#   common_page = WhiteLabel.common_page
+#   if str.nil?
+#     TestData.hash[:source_id] , TestData.hash[:content], TestData.hash[:promo_code], TestData.hash[:offer_id], TestData.hash[:target_url]  = common_page.source_id_query(nil)
+#     if TestData.hash[:content].include? 'SecurityQuestionsBeforeRegistration'
+#       hash = Hash.from_xml(TestData.hash[:content])
+#       TestData.hash[:security_questions_before_registration]  = hash['root']['SecurityQuestionsBeforeRegistration']
+#     else
+#       TestData.hash[:security_questions_before_registration] = 'true'
+#     end
+#   else
+#     TestData.hash[:source_id] , TestData.hash[:content], TestData.hash[:promo_code], TestData.hash[:offer_id], TestData.hash[:target_url]  = common_page.source_id_query(str)
+#     if TestData.hash[:content].include? 'SecurityQuestionsBeforeRegistration'
+#       hash = Hash.from_xml(TestData.hash[:content])
+#       TestData.hash[:security_questions_before_registration]  = hash['root']['SecurityQuestionsBeforeRegistration']
+#     else
+#       TestData.hash[:security_questions_before_registration] = 'true'
+#     end
+#   end
+#
+#   step 'WL: close stamps website db connection'
+#
+#   print "Sourceid = #{TestData.hash[:source_id]}\n"
+#
+#   SDCWWebsite.visit
+#   common_page.stamps_logo.wait_until_present(timeout: 10)
+#
+#   expect(SdcPage.browser.url).to include(TestData.hash[:target_url].to_s)
+#
+#   common_page.get_started.click!
+#
+#   TestData.hash[:username_taken] = WhiteLabel.common_page.username_query(TestData.hash[:username])
+# end
 
 Then /^WL: select security questions first security question (.*)$/ do |str|
   common_page = WhiteLabel.common_page
@@ -104,7 +143,9 @@ Then /^WL: if security question is present after registration then set the value
     step 'WL: set security questions second security answer to random value'
     step 'WL: click security questions get stared button'
   else
-    expect(WhiteLabel.common_page.second_security_question).not_to be_present, 'Second Security Question IS PRESENT after registration, when it should be PRESENT BEFORE REGISTRATION'
+    # @todo-mohammad here's an example.
+    #expect(WhiteLabel.common_page.second_security_question).not_to be_present, 'Second Security Question IS PRESENT after registration, when it should be PRESENT BEFORE REGISTRATION'
+    expect(WhiteLabel.common_page.second_security_question).not_to be_present
   end
 end
 
