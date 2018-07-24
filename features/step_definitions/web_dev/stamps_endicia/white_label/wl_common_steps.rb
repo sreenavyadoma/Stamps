@@ -28,8 +28,7 @@ Then /^WL: navigates to default registration page for stamps with the following 
   end
   step 'WL: close stamps website db connection'
 
-  TestData.hash[:source_id] = source_id
-  SDCWWebsite.visit
+  SDCWWebsite.visit(source_id)
   common_page.stamps_logo.wait_until_present(timeout: 10)
   expect(SdcPage.browser.url).to include(target_url.to_s)
 
@@ -55,7 +54,9 @@ Then /^WL: select security questions first security question (.*)$/ do |str|
 end
 
 Then /^WL: set security questions first security answer to (?:random value|(.*))$/ do |str|
-  WhiteLabel.common_page.first_secret_answer.set(TestData.hash[:first_security_answer] = (str.nil?) ? TestHelper.rand_alpha_numeric(min:6, max:10) : str)
+  str ||= TestHelper.rand_alpha_numeric(min:6, max:10)
+  WhiteLabel.common_page.first_secret_answer.set(str)
+  TestData.hash[:first_security_answer] = str
 end
 
 Then /^WL: select security questions second security question (.*)$/ do |str|
