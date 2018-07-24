@@ -6,7 +6,7 @@ Feature: Stamps WebReg: Profile Page
   @sdcwr_profile_page_ui_validation
   Scenario: Profile Page Validation
 
-    Then WL: navigates to default registration page for stamps with the following source id 100-TES-WB001
+    Then WL: navigates to default registration page for stamps with the following source id si00001331
 
     #Verifying all content present
     Then pause for 5 seconds
@@ -44,7 +44,7 @@ Feature: Stamps WebReg: Profile Page
     Then WL: show profile page promo code
     Then WL: expect Profile page promo code exists
     Then WL: expect profile page promo code to equal source id promo code
-    Then WL: set profile page promo code to p
+    Then WL: set profile page promo code to test1234567
     Then WL: expect Profile page CONTINUE button exists
     Then WL: click profile page continue button
 

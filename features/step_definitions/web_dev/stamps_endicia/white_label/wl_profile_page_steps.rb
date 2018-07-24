@@ -1,6 +1,6 @@
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age email exists$/ do
-  expect(WhiteLabel.profile_page.email).to be_present, "Email textbox DOES NOT exists on profile page"
+  expect(WhiteLabel.profile_page.email).to be_present
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Ee]mail is (?:correct|(.*))$/ do |str|
@@ -10,6 +10,11 @@ end
 Then /^WL: set profile page email to (?:random value|(.*))$/ do |str|
   email = WhiteLabel.profile_page.email
   email.wait_until_present(timeout: 30)
+  email.clear
+  while email.text_value.strip == ''
+    str ||=  TestHelper.rand_alpha_str.capitalize
+    email.set(str)
+  end
   TestData.hash[:atg_promotion] =  WhiteLabel.choose_supplies.atg_promotion
   if SdcEnv.usr
     sleep 1
@@ -23,7 +28,7 @@ Then /^WL: set profile page email to (?:random value|(.*))$/ do |str|
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age username exists$/ do
-  expect(WhiteLabel.profile_page.username).to be_present, "Username textbox DOES NOT exist on profile page"
+  expect(WhiteLabel.profile_page.username).to be_present
 end
 
 Then /^WL: set profile page username to (?:random value|(.*))$/ do |str|
@@ -37,7 +42,7 @@ Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Uu]sername is (?:correct|(.*))$/ do |st
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age password exists$/ do
-  expect(WhiteLabel.profile_page.password).to be_present, "Password textbox DOES NOT exist on profile page"
+  expect(WhiteLabel.profile_page.password).to be_present
 end
 
 Then /^WL: set profile page password to (?:random value|(.*))$/ do |str|
@@ -54,7 +59,7 @@ Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Pp]assword is (?:correct|(.*))$/ do |st
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age retype password exists$/ do
-  expect(WhiteLabel.profile_page.confirm_password).to be_present, "Retype password textbox DOES NOT exist on profile page"
+  expect(WhiteLabel.profile_page.confirm_password).to be_present
 end
 
 Then /^WL: set profile page re-type password to (?:same as previous password|(.*))$/ do |str|
@@ -66,7 +71,7 @@ Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Rr]e-[Tt]ype [Pp]assword is (?:correct|
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Ss]urvey [Qq]uestion exists$/ do
-  expect(WhiteLabel.profile_page.survey).to be_present, "Survey Question DOES NOT exist on profile page"
+  expect(WhiteLabel.profile_page.survey).to be_present
 end
 
 Then /^WL: set profile page survey question to (.*)$/ do |str|
@@ -88,11 +93,11 @@ Then /^WL: set profile page how did you hear about us\? to (.*)$/ do |str|
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age promo code link exists$/ do
-  expect(WhiteLabel.profile_page.promo_code_link).to be_present, "Promo code link DOES NOT exist on profile page"
+  expect(WhiteLabel.profile_page.promo_code_link).to be_present
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age promo code exists$/ do
-  expect(WhiteLabel.profile_page.promo_code).to be_present, "Profile promo code textbox DOES NOT exist"
+  expect(WhiteLabel.profile_page.promo_code).to be_present
 end
 
 Then /^WL: expect profile page promo code to equal source id promo code$/ do
@@ -113,7 +118,7 @@ Then /^WL: show profile page promo code$/ do
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age CONTINUE button exists$/ do
-  expect(WhiteLabel.profile_page.continue).to be_present, "CONTINUE button doesn't exists on Profile Page"
+  expect(WhiteLabel.profile_page.continue).to be_present
 end
 
 Then /^WL: click profile page continue button$/ do
@@ -126,15 +131,15 @@ end
 Then /^WL: [Ee]xpect [Rr]egistration navigation bar Stamps logo exists$/ do
   stamps_logo = WhiteLabel.profile_page.stamps_logo
   stamps_logo.wait_until_present(timeout: 60)
-  expect(WhiteLabel.profile_page.stamps_logo).to be_present, "Stamps logo doesn't exists on navigation bar"
+  expect(WhiteLabel.profile_page.stamps_logo).to be_present
 end
 
 Then /^WL: [Ee]xpect [Rr]egistration navigation bar USPS logo exists$/ do
-  expect(WhiteLabel.profile_page.usps_logo).to be_present, "USPS logo doesn't exists on navigation bar"
+  expect(WhiteLabel.profile_page.usps_logo).to be_present
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile bread crumbs is (.*)$/ do |str|
-  expect(WhiteLabel.profile_page.profile_bread_crumb.text).to eql(str), "Profile Bread crumb does not exist "
+  expect(WhiteLabel.profile_page.profile_bread_crumb.text).to eql(str)
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age header contain (.*)$/ do |str|
@@ -162,7 +167,7 @@ Then /^WL: [Cc]heck [Pp]rofile [Pp]age [Mm]oney-saving offers and new products$/
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Mm]oney-saving offers and new products is checked$/ do
-  expect(WhiteLabel.profile_page.money_saving_offers_checkbox.checked?).not_to be(true), "Profile Money-saving offers and new products is not checked. Got checked"
+  expect(WhiteLabel.profile_page.money_saving_offers_checkbox.checked?).not_to be(true)
 end
 
 Then /^WL: uncheck [Pp]rofile [Pp]age [Mm]oney-saving offers and new products$/ do
@@ -170,7 +175,7 @@ Then /^WL: uncheck [Pp]rofile [Pp]age [Mm]oney-saving offers and new products$/ 
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Mm]oney-saving offers and new products is unchecked$/ do
-  expect(WhiteLabel.profile_page.money_saving_offers_checkbox.checked?).to be(false), "Expected Profile Money-saving offers and new products is checked. Got unchecked"
+  expect(WhiteLabel.profile_page.money_saving_offers_checkbox.checked?).to be(false)
 end
 
 Then /^WL: [Ee]xpect Profile page Email tooltip count is (.*)$/ do |count|
