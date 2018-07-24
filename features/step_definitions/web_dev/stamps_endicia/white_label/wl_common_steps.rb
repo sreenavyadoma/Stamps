@@ -6,11 +6,22 @@ Then /^WL: close stamps website db connection$/ do
   WhiteLabel.sdc_db_connection.close
 end
 
+# todo-Mohammed Please make the following changes
+# 1. We need to keep our code up to 120 characters per line for readability. Anything over 320 lines should go to the
+# next line of the code.
+# 2.  We should only use TestData.hash[:param] if we need to pass parameters on step definition to other step
+# definitions, otherwise, we should use a local variable.
+# 2.a If you need to use TestData.hash[:param], do the assignment at the very end of the step definition. This is to
+# indicate that you will use it's value else where.
+# 3.  We will no longer use descriptions since it's redundant, instead of doing this;
+# expect(Some.object).to be_present, "Object was not present"
+# we should do this;
+# expect(Some.object).to be_present
 Then /^WL: navigates to default registration page for stamps with the following source id (?:random value|(.*))$/ do |str|
   step 'WL: establish stamps website db connection'
   common_page = WhiteLabel.common_page
   if str.nil?
-    TestData.hash[:source_id] , TestData.hash[:content], TestData.hash[:promo_code], TestData.hash[:offer_id], TestData.hash[:target_url]  = common_page.source_id_query(nil)
+    TestData.hash[:source_id], TestData.hash[:content], TestData.hash[:promo_code], TestData.hash[:offer_id], TestData.hash[:target_url]  = common_page.source_id_query(nil)
     if TestData.hash[:content].include? 'SecurityQuestionsBeforeRegistration'
       hash = Hash.from_xml(TestData.hash[:content])
       TestData.hash[:security_questions_before_registration]  = hash['root']['SecurityQuestionsBeforeRegistration']
@@ -18,7 +29,7 @@ Then /^WL: navigates to default registration page for stamps with the following 
       TestData.hash[:security_questions_before_registration] = 'true'
     end
   else
-    TestData.hash[:source_id] , TestData.hash[:content], TestData.hash[:promo_code], TestData.hash[:offer_id], TestData.hash[:target_url]  = common_page.source_id_query(str)
+    TestData.hash[:source_id], TestData.hash[:content], TestData.hash[:promo_code], TestData.hash[:offer_id], TestData.hash[:target_url]  = common_page.source_id_query(str)
     if TestData.hash[:content].include? 'SecurityQuestionsBeforeRegistration'
       hash = Hash.from_xml(TestData.hash[:content])
       TestData.hash[:security_questions_before_registration]  = hash['root']['SecurityQuestionsBeforeRegistration']
