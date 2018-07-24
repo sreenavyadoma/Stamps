@@ -135,7 +135,9 @@ Then /^WL: select membership page state (.*)$/ do |str|
 end
 
 Then /^WL: expect membership page state is (?:correct|(.*))$/ do |str|
-  expect(WhiteLabel.membership_page.state.attribute_value('title').strip).to eql(str.nil? ? TestData.hash[:state] : str)
+  str ||= TestData.hash[:state]
+  expect(WhiteLabel.membership_page.state.attribute_value('title').strip).to eql(str)
+  TestData.hash[:state] = str
 end
 
 Then /^WL: expect membership page state tooltip to be (.*)$/ do |str|
