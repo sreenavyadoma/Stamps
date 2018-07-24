@@ -484,18 +484,21 @@ end
 
 Then /^WL: check membership page terms & conditions$/ do
   mm_page = WhiteLabel.membership_page
-  mm_page.terms_conditions.click! unless mm_page.billing_addr_enable_disable.attribute_value('class')== 'form-group checkbox'
+  att_value = mm_page.billing_addr_enable_disable.attribute_value('class')
+  mm_page.terms_conditions.click! unless att_value== 'form-group checkbox'
 end
 
 Then /^WL: uncheck membership page terms & conditions$/ do
   mm_page = WhiteLabel.membership_page
-  mm_page.terms_conditions.click! unless mm_page.billing_addr_enable_disable.attribute_value('class')== 'form-group checkbox has-error'
+  att_value = mm_page.billing_addr_enable_disable.attribute_value('class')
+  mm_page.terms_conditions.click! unless att_value== 'form-group checkbox has-error'
 end
 
 Then /^WL: expect membership page terms & conditions is checked$/ do
   mm_page = WhiteLabel.membership_page
   step "WL: blur_out on membership page"
-  expect(mm_page.billing_addr_enable_disable.attribute_value('class')).to eql('form-group checkbox')
+  att_value = mm_page.billing_addr_enable_disable.attribute_value('class')
+  expect(att_value).to eql('form-group checkbox')
 end
 
 Then /^WL: expect membership page terms & conditions is unchecked$/ do
@@ -504,7 +507,8 @@ Then /^WL: expect membership page terms & conditions is unchecked$/ do
   step 'pause for 1 second'
   membership_page.submit.click
   membership_page.billing_addr_enable_disable.wait_until_present(timeout: 2)
-  expect(membership_page.billing_addr_enable_disable.attribute_value('class')).to eql('form-group checkbox has-error')
+  att_value = membership_page.billing_addr_enable_disable.attribute_value('class')
+  expect(att_value).to eql('form-group checkbox has-error')
 end
 
 Then /^WL: expect membership page terms & conditions tooltip to be (.*)$/ do |str|
