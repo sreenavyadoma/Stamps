@@ -244,13 +244,17 @@ Then /^WL: set membership page credit card number to (?:default value|(.*))$/ do
   cc_number = WhiteLabel.membership_page.cc_number
   cc_number.clear
   while cc_number.text_value == ''
-    cc_number.set(TestData.hash[:cc_number] = str.nil? ? "4111111111111111"  : str)
+    str ||= '4111111111111111'
+    cc_number.set(str)
   end
+  TestData.hash[:cc_number] = str
   step 'WL: blur_out on membership page'
 end
 
 Then /^WL: expect membership page credit card number is (?:correct|(.*))$/ do |str|
-  expect(WhiteLabel.membership_page.cc_number.text_value.strip.delete(' ')).to eql(str.nil? ? TestData.hash[:cc_number] : str)
+  str ||= TestData.hash[:cc_number]
+  expect(WhiteLabel.membership_page.cc_number.text_value.strip.delete(' ')).to eql(str)
+  TestData.hash[:cc_number] = str
 end
 
 Then /^WL: expect membership page credit card number tooltip to be (.*)$/ do |str|
@@ -285,7 +289,9 @@ Then /^WL: select membership page credit card month (.*)$/ do |str|
 end
 
 Then /^WL: expect membership page month is (?:correct|(.*))$/ do |str|
-  expect(WhiteLabel.membership_page.cc_month.attribute_value('title').strip).to eql(str.nil? ? TestData.hash[:cc_month] : str)
+  str ||=  TestData.hash[:cc_month]
+  expect(WhiteLabel.membership_page.cc_month.attribute_value('title').strip).to eql(str)
+  TestData.hash[:cc_month] = str
 end
 
 Then /^WL: expect membership page month tooltip to be (.*)$/ do |str|
@@ -312,7 +318,9 @@ Then /^WL: set membership page credit card year to this year plus (\d+)$/ do |ye
 end
 
 Then /^WL: expect membership page credit card year is (?:correct|(.*))$/ do |str|
-  expect(WhiteLabel.membership_page.cc_year.attribute_value('title').strip).to eql(str.nil? ? TestData.hash[:cc_year] : str)
+  str ||= TestData.hash[:cc_year]
+  expect(WhiteLabel.membership_page.cc_year.attribute_value('title').strip).to eql(str)
+  TestData.hash[:cc_year] = str
 end
 
 Then /^WL: uncheck membership page billing address same as mailing address$/ do
@@ -366,7 +374,9 @@ Then /WL: select membership page billing address autocomplete first result$/ do
 end
 
 Then /^WL: expect membership page billing address is (?:correct|(.*))$/ do |str|
-  expect(WhiteLabel.membership_page.billing_addr.text_value.strip).to eql(str.nil? ? TestData.hash[:billing_addr] : str)
+  str ||= TestData.hash[:billing_addr]
+  expect(WhiteLabel.membership_page.billing_addr.text_value.strip).to eql(str)
+  TestData.hash[:billing_addr] = str
 end
 
 Then /^WL: expect membership page billing address tooltip to be (.*)$/ do |str|
@@ -385,13 +395,16 @@ Then /^WL: set membership page billing city to (.*)$/ do |str|
   billing_city = WhiteLabel.membership_page.billing_city
   billing_city.clear
   while billing_city.text_value.strip == ''
-    billing_city.set(TestData.hash[:billing_city] = str)
+    billing_city.set(str)
   end
   step "WL: blur_out on membership page"
+  TestData.hash[:billing_city] = str
 end
 
 Then /^WL: expect membership page billing city is (?:correct|(.*))$/ do |str|
-  expect(WhiteLabel.membership_page.billing_city.text_value.strip).to eql(str.nil? ? TestData.hash[:billing_city] : str)
+  str ||= TestData.hash[:billing_city]
+  expect(WhiteLabel.membership_page.billing_city.text_value.strip).to eql( str )
+  TestData.hash[:billing_city] = str
 end
 
 Then /^WL: expect membership page billing city tooltip to be (.*)$/ do |str|
@@ -418,7 +431,9 @@ Then /^WL: select membership page billing state (.*)$/ do |str|
 end
 
 Then /^WL: expect membership page billing state is (?:correct|(.*))$/ do |str|
-  expect(WhiteLabel.membership_page.billing_state.attribute_value('title').strip).to eql(str.nil? ? TestData.hash[:billing_state] : str)
+  str ||= TestData.hash[:billing_state]
+  expect(WhiteLabel.membership_page.billing_state.attribute_value('title').strip).to eql(str)
+  TestData.hash[:billing_state] = str
 end
 
 Then /^WL: expect membership page billing state tooltip to be (.*)$/ do |str|
@@ -437,13 +452,16 @@ Then /^WL: set membership page billing zip to (.*)$/ do |str|
   billing_zip = WhiteLabel.membership_page.billing_zip
   billing_zip.clear
   while billing_zip.text_value.strip == ''
-    billing_zip.set(TestData.hash[:billing_zip] = str)
+    billing_zip.set(str)
   end
-   step "WL: blur_out on membership page"
+  step "WL: blur_out on membership page"
+  TestData.hash[:billing_zip] = str
 end
 
 Then /^WL: expect membership page billing zip is (?:correct|(.*))$/ do |str|
-  expect(WhiteLabel.membership_page.billing_zip.text_value.strip).to eql(str.nil? ? TestData.hash[:billing_zip] : str)
+  str ||= TestData.hash[:billing_zip]
+  expect(WhiteLabel.membership_page.billing_zip.text_value.strip).to eql(str)
+  TestData.hash[:billing_zip] = str
 end
 
 Then /^WL: expect membership page billing zip tooltip to be (.*)$/ do |str|
@@ -459,16 +477,19 @@ Then /^WL: expect membership page billing zip not to be present$/ do
 end
 
 Then /^WL: check membership page terms & conditions$/ do
-  WhiteLabel.membership_page.terms_conditions.click! unless WhiteLabel.membership_page.billing_addr_enable_disable.attribute_value('class')== 'form-group checkbox'
+  mm_page = WhiteLabel.membership_page
+  mm_page.terms_conditions.click! unless mm_page.billing_addr_enable_disable.attribute_value('class')== 'form-group checkbox'
 end
 
 Then /^WL: uncheck membership page terms & conditions$/ do
-  WhiteLabel.membership_page.terms_conditions.click! unless WhiteLabel.membership_page.billing_addr_enable_disable.attribute_value('class')== 'form-group checkbox has-error'
+  mm_page = WhiteLabel.membership_page
+  mm_page.terms_conditions.click! unless mm_page.billing_addr_enable_disable.attribute_value('class')== 'form-group checkbox has-error'
 end
 
 Then /^WL: expect membership page terms & conditions is checked$/ do
+  mm_page = WhiteLabel.membership_page
   step "WL: blur_out on membership page"
-  expect(WhiteLabel.membership_page.billing_addr_enable_disable.attribute_value('class')).to eql('form-group checkbox')
+  expect(mm_page.billing_addr_enable_disable.attribute_value('class')).to eql('form-group checkbox')
 end
 
 Then /^WL: expect membership page terms & conditions is unchecked$/ do
@@ -497,7 +518,7 @@ end
 Then /^WL: expect membership page terms and conditions modal is present$/ do
   terms_conditions_header = WhiteLabel.membership_page.terms_conditions_header
   terms_conditions_header.wait_until_present(timeout: 2)
-  expect(terms_conditions_header).to be_present, 'Terms and Conditions IS NOT PRESENT'
+  expect(terms_conditions_header).to be_present
 end
 
 Then /^WL: check if address standardized is present then click continue$/ do
@@ -624,9 +645,6 @@ Then /^WL: expect membership page pricing and billing paragraph to be$/ do |str|
   step 'WL: establish stamps website db connection'
   plan_rate =  WhiteLabel.common_page.plan_query(TestData.hash[:offer_id], plan_sku )
   step 'WL: close stamps website db connection'
-  # hash = Hash.from_xml(TestData.hash[:content])
-  # plan_rate  = hash['root']['PlanRate']
-  #
   expect(WhiteLabel.membership_page.pricing_and_billing_p.text_value.strip).to eql(str.gsub('plan_rate', plan_rate.to_s))
 end
 
