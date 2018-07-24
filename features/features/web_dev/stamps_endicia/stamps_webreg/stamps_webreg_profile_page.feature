@@ -88,4 +88,6 @@ Feature: Stamps WebReg: Profile Page
     Then WL: set profile page how did you hear about us? to Radio/Podcast/Streaming Audio
     Then WL: set profile page how did you hear about us? to Other
 
+    # Validate Promo code
+    Then WL: set profile page promo code to 522MB
     Then WL: expect profile page promo code to equal source id promo code
