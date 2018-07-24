@@ -227,6 +227,44 @@ rates_orders_parcel_select_ground_zone_6:  --tags @rates_orders_parcel_select_gr
 rates_orders_parcel_select_ground_zone_7:  --tags @rates_orders_parcel_select_ground_zone_7 --guess LOG_LEVEL=info HEALTHCHECK=true
 rates_orders_parcel_select_ground_zone_8:  --tags @rates_orders_parcel_select_ground_zone_8 --guess LOG_LEVEL=info HEALTHCHECK=true
 rates_orders_parcel_select_ground_zone_9:  --tags @rates_orders_parcel_select_ground_zone_9 --guess LOG_LEVEL=info HEALTHCHECK=true
+
+rates_orders_pme_comm_base_zone_1:  --tags @rates_orders_pme_comm_base_zone_1 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pme_comm_base_zone_2:  --tags @rates_orders_pme_comm_base_zone_2 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pme_comm_base_zone_3:  --tags @rates_orders_pme_comm_base_zone_3 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pme_comm_base_zone_4:  --tags @rates_orders_pme_comm_base_zone_4 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pme_comm_base_zone_5:  --tags @rates_orders_pme_comm_base_zone_5 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pme_comm_base_zone_6:  --tags @rates_orders_pme_comm_base_zone_6 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pme_comm_base_zone_7:  --tags @rates_orders_pme_comm_base_zone_7 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pme_comm_base_zone_8:  --tags @rates_orders_pme_comm_base_zone_8 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pme_comm_base_zone_9:  --tags @rates_orders_pme_comm_base_zone_9 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pme_comm_plus_zone_1:  --tags @rates_orders_pme_comm_plus_zone_1 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pme_comm_plus_zone_2:  --tags @rates_orders_pme_comm_plus_zone_2 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pme_comm_plus_zone_3:  --tags @rates_orders_pme_comm_plus_zone_3 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pme_comm_plus_zone_4:  --tags @rates_orders_pme_comm_plus_zone_4 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pme_comm_plus_zone_5:  --tags @rates_orders_pme_comm_plus_zone_5 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pme_comm_plus_zone_6:  --tags @rates_orders_pme_comm_plus_zone_6 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pme_comm_plus_zone_7:  --tags @rates_orders_pme_comm_plus_zone_7 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pme_comm_plus_zone_8:  --tags @rates_orders_pme_comm_plus_zone_8 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pme_comm_plus_zone_9:  --tags @rates_orders_pme_comm_plus_zone_9 --guess LOG_LEVEL=info HEALTHCHECK=true
+
+rates_orders_pm_comm_base_zone_1:  --tags @rates_orders_pm_comm_base_zone_1 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pm_comm_base_zone_2:  --tags @rates_orders_pm_comm_base_zone_2 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pm_comm_base_zone_3:  --tags @rates_orders_pm_comm_base_zone_3 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pm_comm_base_zone_4:  --tags @rates_orders_pm_comm_base_zone_4 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pm_comm_base_zone_5:  --tags @rates_orders_pm_comm_base_zone_5 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pm_comm_base_zone_6:  --tags @rates_orders_pm_comm_base_zone_6 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pm_comm_base_zone_7:  --tags @rates_orders_pm_comm_base_zone_7 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pm_comm_base_zone_8:  --tags @rates_orders_pm_comm_base_zone_8 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pm_comm_base_zone_9:  --tags @rates_orders_pm_comm_base_zone_9 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pm_comm_plus_zone_1:  --tags @rates_orders_pm_comm_plus_zone_1 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pm_comm_plus_zone_2:  --tags @rates_orders_pm_comm_plus_zone_2 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pm_comm_plus_zone_3:  --tags @rates_orders_pm_comm_plus_zone_3 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pm_comm_plus_zone_4:  --tags @rates_orders_pm_comm_plus_zone_4 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pm_comm_plus_zone_5:  --tags @rates_orders_pm_comm_plus_zone_5 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pm_comm_plus_zone_6:  --tags @rates_orders_pm_comm_plus_zone_6 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pm_comm_plus_zone_7:  --tags @rates_orders_pm_comm_plus_zone_7 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pm_comm_plus_zone_8:  --tags @rates_orders_pm_comm_plus_zone_8 --guess LOG_LEVEL=info HEALTHCHECK=true
+rates_orders_pm_comm_plus_zone_9:  --tags @rates_orders_pm_comm_plus_zone_9 --guess LOG_LEVEL=info HEALTHCHECK=true
 #END RATES ORDERS -------------------------------------------------------------
 
 bvt_mail_piece_validation: --tags @bvt_mail_piece_validation --guess  HEALTHCHECK=true PRINTER=factory
