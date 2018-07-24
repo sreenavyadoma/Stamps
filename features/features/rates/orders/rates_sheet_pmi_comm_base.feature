@@ -1,7 +1,10 @@
 Feature: PMI Comm Base Rates
 
   Background:
-    Given Login and configure rate tests
+    Given Start test driver
+    Given sign-in to mail
+    Given excel rate sheet is loaded
+    Given prepare environment for ratings test
 
   @rates_pmi_comm_base_group_1
   Scenario: PMI Comm Base Group 1

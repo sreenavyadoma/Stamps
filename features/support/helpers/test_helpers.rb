@@ -92,7 +92,7 @@ module SdcCore
       end
 
       def is_whole_number?(number)
-        number % 1.zero?
+        (number % 1).zero?
       end
 
       def is_numeric?(str)

@@ -1,7 +1,10 @@
 Feature: PME Comm Base Rates
 
   Background:
-    Given Login and configure rate tests
+    Given Start test driver
+    Given sign-in to mail
+    Given excel rate sheet is loaded
+    Given prepare environment for ratings test
 
   @rates_pme_comm_base_zone_1
   Scenario: PME Comm Base Zone 1
