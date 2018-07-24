@@ -59,6 +59,7 @@ Then /^WL: navigates to default registration page for stamps with the following 
   TestData.hash[:target_url] = target_url
 end
 
+# Original code;
 # Then /^WL: navigates to default registration page for stamps with the following source id (?:random value|(.*))$/ do |str|
 #   step 'WL: establish stamps website db connection'
 #   common_page = WhiteLabel.common_page
