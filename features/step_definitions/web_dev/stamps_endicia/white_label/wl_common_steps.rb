@@ -50,7 +50,7 @@ Then /^WL: navigates to default registration page for stamps with the following 
 
   common_page.get_started.click!
   # This tells people that you're going to use these parameters maybe for
-  # validation elsewhere
+  # validation, else where
   TestData.hash[:username_taken] = WhiteLabel.common_page.username_query(TestData.hash[:username])
   TestData.hash[:security_questions_before_registration] = security_questions_before_registration
   TestData.hash[:source_id] = source_id
