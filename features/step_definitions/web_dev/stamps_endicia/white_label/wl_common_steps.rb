@@ -17,6 +17,8 @@ end
 # expect(Some.object).to be_present, "Object was not present"
 # we should do this;
 # expect(Some.object).to be_present
+#
+# Please make the change for all step definitions.
 Then /^WL: navigates to default registration page for stamps with the following source id (?:random value|(.*))$/ do |str|
   step 'WL: establish stamps website db connection'
   common_page = WhiteLabel.common_page
