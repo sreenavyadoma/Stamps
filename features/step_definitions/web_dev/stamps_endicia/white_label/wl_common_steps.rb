@@ -98,7 +98,6 @@ Then /^WL: if security question is present after registration then set the value
     step 'WL: click security questions get stared button'
   else
     expect(WhiteLabel.common_page.second_security_question).not_to be_present
-
   end
 end
 
