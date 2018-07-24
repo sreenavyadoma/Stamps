@@ -38,11 +38,11 @@ Feature:  BVT tests for Orders
     Then set order details width to 1
     Then set order details height to 1
   # Orders Grid Operations
-    Then uncheck row 1
-    Then expect orders grid pounds is 1
-    Then expect orders grid ounces is 1
-    Then expect orders grid weight is 1 lb. 1 oz.
-    Then expect orders grid insured value is 1.00
+#    Then uncheck row 1
+#    Then expect orders grid pounds is 1
+#    Then expect orders grid ounces is 1
+#    Then expect orders grid weight is 1 lb. 1 oz.
+#    Then expect orders grid insured value is 1.00
     Then sign-out of SDC Website
 
   @bvt_orders_ship_date
@@ -438,8 +438,8 @@ Feature:  BVT tests for Orders
     Then blur out on order details form
 
 #  Check 1st two orders
-    When check row 1
-    When check row 2
+    Then check row for order 1
+    Then check row for order 2
 
   # Updating order details
     Then expect bulk update is present
@@ -452,18 +452,18 @@ Feature:  BVT tests for Orders
     Then wait until orders available
 
 #  # Uncheck both orders
-    When uncheck row 1
-    When uncheck row 2
+    Then uncheck row for order 1
+    Then uncheck row for order 2
 
 #  # verify fields in 1st order
-    When check row 2
+    Then check row for order 1
     Then expect Order Details service is PM Large Package
     Then expect order details pound is 0
     Then expect order details ounce is 3
-    When uncheck row 2
+    Then uncheck row for order 1
 
 #  # verify fields in 2nd order
-    When check row 1
+    Then check row for order 2
     Then expect order details international service is PMI Package/Flat/Thick Envelope
     Then expect order details pound is 0
     Then expect order details ounce is 3
@@ -477,7 +477,7 @@ Feature:  BVT tests for Orders
       | full_name      | company  | street_address      | city          | state | zip   | country       | phone           |  email           |
       | Juan Dela Cruz | Betfair  | 1390 Market Street  | San Francisco | CA    | 94102 | United States | (415) 123-5555  | rtest@stamps.com |
     Then expect exact address not found window title is Exact Address Not Found
-    Then select exact address not found row 2
+    Then select exact address not found row 5
     Then click exact address not found accept button
     Then set order details service to PM Package
     Then expect orders grid recipient is Juan Dela Cruz

@@ -1,5 +1,15 @@
 module SdcOrders
   module SdcOrdersModals
+    class SdcExactAddressNotFound < SdcPage
+      page_object(:title) { { xpath: '//*[text()="Exact Address Not Found"]' } }
+      page_object(:accept) { { xpath: '//*[text()="Accept"]' } }
+
+      def element_at_row(index)
+        xpath = "(//input[@name='addrAmbig'])[#{index}]"
+        page_object("item_description#{index}", tag: :radio) { { xpath: xpath } }
+      end
+    end
+
     class InsuranceTerms < SdcPage
       page_object(:title) { { xpath: '//div[text()="Stamps.com Insurance Terms and Conditions"]' } }
       page_object(:terms_link) { { xpath: '//u[text()="Stamps.com Insurance Terms and Conditions"]' } }
@@ -234,5 +244,10 @@ module SdcOrders
       InsuranceTerms.new
     end
     module_function :insurance_terms
+
+    def exact_address_not_found
+      SdcExactAddressNotFound.new
+    end
+    module_function :exact_address_not_found
   end
 end

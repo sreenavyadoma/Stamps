@@ -33,11 +33,6 @@ module SdcWebsite
   end
   module_function :restrictions
 
-  def exact_address_not_found
-    SdcExactAddressNotFound.new
-  end
-  module_function :exact_address_not_found
-
   def modals
     SdcModals
   end

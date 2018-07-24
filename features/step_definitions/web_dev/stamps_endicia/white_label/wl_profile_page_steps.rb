@@ -29,6 +29,7 @@ end
 Then /^WL: set profile page username to (?:random value|(.*))$/ do |str|
   WhiteLabel.profile_page.username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
   print "UserName = #{TestData.hash[:username]}\n"
+  TestData.hash[:username_taken] = WhiteLabel.common_page.username_query(TestData.hash[:username])
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Uu]sername is (?:correct|(.*))$/ do |str|

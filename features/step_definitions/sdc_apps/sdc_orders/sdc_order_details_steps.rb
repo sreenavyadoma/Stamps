@@ -221,7 +221,9 @@ Then /^blur out on order details form$/ do
   order_details.service_label.double_click
   order_details.reference_no.double_click
   step 'show order ship-to details'
-  order_details.ship_to_label.double_click
+  if order_details.ship_to_label.present?
+    order_details.ship_to_label.safe_click
+  end
   order_details.order_id.double_click
   order_details.title.double_click
 end
@@ -312,7 +314,6 @@ Then /^expect order details ship-to cleansed zip code is (.*)$/ do |str|
 end
 
 Then /^set order details service to (.*)$/ do |str|
-  TestData.hash[:service] = str
   key = str.split(' ').first
   grid_service = TestData.hash[:service_look_up][key]
   TestData.hash[:grid_service] = grid_service
@@ -327,6 +328,7 @@ Then /^set order details service to (.*)$/ do |str|
   expect(service.text_field.text_value).to include(str)
   service.wait_until(timeout: 15) { service.cost.text_value.dollar_amount_str.to_f.round(2) > 0 }
   step 'Save Order Details data'
+  TestData.hash[:service] = str
 end
 
 Then /^set order details pounds to (.+)$/ do |str|

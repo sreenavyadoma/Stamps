@@ -123,6 +123,28 @@ module SdcCore
     end
   end
 
+  class StampMartDB < BasicObject
+    def initialize
+      env = ::SdcEnv.env.to_s
+      server = data_for(:sql_server_stampmart, {})[env]['server']
+      database = data_for(:sql_server_stampmart, {})[env]['database']
+      port = data_for(:sql_server_stampmart, {})[env]['port']
+      username = data_for(:sql_server_stampmart, {})[env]['username']
+      password = data_for(:sql_server_stampmart, {})[env]['password']
+      azure = data_for(:sql_server_stampmart, {})[env]['azure']
+      @connection = SQLServerClient.new(server: server, database: database, username: username, password: password, port: port, azure:azure)
+    end
+
+    def respond_to_missing?(name, include_private = false)
+      @connection.respond_to?(name, include_private) || super
+    end
+
+    def method_missing(name, *args, &block)
+      super unless @connection.respond_to?(name)
+      @connection.send(name, *args, &block)
+    end
+  end
+
 end
 
 
