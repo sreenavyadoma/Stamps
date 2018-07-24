@@ -81,10 +81,9 @@ Then /^WL: click membership page address$/ do
    step 'pause for 1 second'
 end
 
-Then /WL: select membership page address autocomplete first result$/ do
-  address_auto_complete  = WhiteLabel.membership_page.address_auto_complete
+Then /WL: select membership page address autocomplete index (\d+)$/ do |index|
+  address_auto_complete = WhiteLabel.membership_page.address_auto_complete(:index, index.to_i - 1)
   address_auto_complete.wait_until_present(timeout: 2)
-  address_auto_complete.focus
   address_auto_complete.click
   step "WL: blur_out on membership page"
 end

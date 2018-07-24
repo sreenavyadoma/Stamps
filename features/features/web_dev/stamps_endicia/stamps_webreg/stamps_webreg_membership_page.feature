@@ -241,7 +241,8 @@ Feature: Stamps WebReg: Membership Page
     Then pause for 1 second
     Then WL: set membership page address to 1990 E
     Then WL: click membership page address
-    Then WL: select membership page address autocomplete first result
+    Then WL: select membership page address autocomplete index 2
+    #Then WL: select membership page address autocomplete first result
     Then WL: expect membership page address is 1990 E Grand Ave
     Then WL: expect membership page city is El Segundo
     Then WL: expect membership page state is CA

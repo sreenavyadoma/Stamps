@@ -33,7 +33,7 @@ module WhiteLabel
     page_object(:last_name_help_block) { {xpath: '//div[@class="col-xs-12 col-sm-6 gut-sm-form-l-half"]/div/div/span'} }
     text_field(:company, tag: :text_field) { { id: 'companyName' } }
     text_field(:address, tag: :text_field, required: true) { { id: 'street' } }
-    page_objects(:address_auto_complete, index: 0) {{xpath: '//div[@class="pac-container pac-logo"]/div/span[3]'}}
+    page_object(:address_auto_complete) {{xpath: '//div[@class="pac-container pac-logo"]/div'}}
     page_object(:address_help_block) { {xpath: '//li[@id="personalinfo"]/div/div[4]/div/div/span'} }
     text_field(:city, tag: :text_field, required: true) { { id: 'city' } }
     page_object(:city_help_block) { {xpath: '//*[@id="personalinfo"]/div/div[contains(@class, "col-lg-5")]/div/div/span'} }
