@@ -36,6 +36,7 @@ Then /^WL: navigates to default registration page for stamps with the following 
 
   print "Sourceid = #{source_id}\n"
 
+  TestData.hash[:source_id] = source_id
   TestData.hash[:content] = content
   TestData.hash[:promo_code] = promo_code
   TestData.hash[:offer_id] = offer_id
@@ -69,7 +70,9 @@ Then /^WL: select security questions second security question (.*)$/ do |str|
 end
 
 Then /^WL: set security questions second security answer to (?:random value|(.*))$/ do |str|
-  WhiteLabel.common_page.second_secret_answer.set(TestData.hash[:second_security_answer] = (str.nil?) ? TestHelper.rand_alpha_numeric(min:6, max:10) : str)
+  str ||= TestHelper.rand_alpha_numeric(min:6, max:10)
+  WhiteLabel.common_page.second_secret_answer.set(str)
+  TestData.hash[:second_security_answer] = str
 end
 
 Then /^WL: click security questions get stared button$/ do

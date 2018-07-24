@@ -7,14 +7,18 @@ Then /^WL: set membership page first name to (?:random value|(.*))$/ do |str|
   first_name.wait_until_present(timeout: 10)
   first_name.clear
   while first_name.text_value.strip == ''
-    first_name.set(TestData.hash[:first_name] = str.nil? ? TestHelper.rand_alpha_str.capitalize  : str)
+    str ||=  TestHelper.rand_alpha_str.capitalize
+    first_name.set(str)
   end
   step "WL: blur_out on membership page"
+  TestData.hash[:first_name] = str
 end
 
 Then /^WL: expect membership page first name is (?:correct|(.*))$/ do |str|
   first_name = WhiteLabel.membership_page.first_name
-  expect(first_name.text_value.strip).to eql(str.nil? ? TestData.hash[:first_name] : str)
+  str ||= TestData.hash[:first_name]
+  expect(first_name.text_value.strip).to eql(str)
+  TestData.hash[:first_name] = str
 end
 
 Then /^WL: expect membership page first name tooltip to be (.*)$/ do |str|
@@ -28,14 +32,18 @@ Then /^WL: set membership page last name to (?:random value|(.*))$/ do |str|
   last_name = WhiteLabel.membership_page.last_name
   last_name.clear
   while last_name.text_value.strip == ''
-    last_name.set(TestData.hash[:last_name] = str.nil? ? TestHelper.rand_alpha_str.capitalize  : str)
+    str ||= TestHelper.rand_alpha_str.capitalize
+    last_name.set(str)
   end
   step "WL: blur_out on membership page"
+  TestData.hash[:last_name] = str
 end
 
 Then /^WL: expect membership page last name is (?:correct|(.*))$/ do |str|
   last_name = WhiteLabel.membership_page.last_name
-  expect(last_name.text_value.strip).to eql(str.nil? ? TestData.hash[:last_name] : str)
+  str ||= TestData.hash[:last_name]
+  expect(last_name.text_value.strip).to eql(str)
+  TestData.hash[:last_name] = str
 end
 
 Then /^WL: expect membership page last name tooltip to be (.*)$/ do |str|
@@ -44,12 +52,16 @@ Then /^WL: expect membership page last name tooltip to be (.*)$/ do |str|
 end
 
 Then /^WL: set membership page company to (?:random value|(.*))$/ do |str|
-  WhiteLabel.membership_page.company.set(TestData.hash[:company] = str.nil? ? TestHelper.rand_alpha_str  : str) if WhiteLabel.membership_page.company.present?
+  str ||= TestHelper.rand_alpha_str
+  WhiteLabel.membership_page.company.set(str)
+  TestData.hash[:company] = str
 end
 
 Then /^WL: expect membership page company is (?:correct|(.*))$/ do |str|
   company = WhiteLabel.membership_page.company
-  expect(company.text_value.strip).to eql(str.nil? ? TestData.hash[:company] : str)
+  str ||= TestData.hash[:company]
+  expect(company.text_value.strip).to eql(str)
+  TestData.hash[:company] = str
 end
 
 Then /^WL: set membership page address to (.*)$/ do |str|
