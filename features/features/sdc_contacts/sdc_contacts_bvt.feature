@@ -5,12 +5,14 @@ Feature:  Contacts BVT
 
   @sdc_contacts_bvt_1
   Scenario: Contacts BVT Scenario 1 description goes here
-    Then sign-in to mail
+    Then sign-in to orders
     Then navigate to contacts
+    Then navigate to orders
+    Then navigate to mail
 
   @sdc_contacts_bvt_2
   Scenario: Contacts BVT Scenario 2 description goes here
-    Then sign-in to mail
+    Then sign-in to orders
     Then navigate to contacts
     Then navigate to orders
     Then navigate to mail

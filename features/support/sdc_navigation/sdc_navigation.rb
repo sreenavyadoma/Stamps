@@ -47,22 +47,18 @@ module SdcNavigation
     def add_funds
       SdcNavBalanceAddFunds.new
     end
-    module_function :add_funds
 
     def confirm_transaction
       SdcNavBalanceCofirmTransaction.new
     end
-    module_function :confirm_transaction
 
     def processing_purchase
       SdcNavBalanceProcessing.new
     end
-    module_function :processing_purchase
 
     def transaction_complete
       SdcNavBalanceTransaction.new
     end
-    module_function :transaction_complete
   end
 
   class SdcNavBalanceAddFunds < SdcPage

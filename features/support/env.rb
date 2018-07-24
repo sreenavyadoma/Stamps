@@ -24,9 +24,9 @@ require_relative 'sdc_core/sdc_core'
 require_relative 'sdc_core/sdc_test'
 require_relative 'sdc_core/db_connections'
 require_relative 'sdc_apps/sdc_website'
+require_relative 'sdc_navigation/sdc_navigation'
 require_relative 'sdc_apps/orders/sdc_orders'
 require_relative 'sdc_apps/mail/sdc_mail'
-require_relative 'sdc_apps/ation/sdc_navigation'
 
 # web dev
 require_relative 'web_dev/stamps_endicia/partner_portal'

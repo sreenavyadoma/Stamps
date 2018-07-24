@@ -1,14 +1,17 @@
 
 Then /^navigate to contacts$/ do
-
+  SdcNavigation.contacts.click
+  # wait for contacts to be fully loaded before moving on
 end
 
 Then /^navigate to orders$/ do
-
+  SdcNavigation.orders.click
+  SdcGrid.body.wait_until_present(timeout: 20)
 end
 
 Then /^navigate to mail$/ do
-
+  SdcNavigation.contacts.click
+  # wait for mail to be fully loaded before moving on
 end
 
 Then /^save balance amount$/ do
