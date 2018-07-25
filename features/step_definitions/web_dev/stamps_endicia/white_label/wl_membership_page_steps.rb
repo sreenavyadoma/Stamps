@@ -2,6 +2,11 @@ Then /^WL: blur_out on membership page$/ do
   WhiteLabel.membership_page.membership_bread_crumb.blur_out
 end
 
+Then /^WL: click modal x button$/ do
+  WhiteLabel.membership_page.modal_x.click
+  step 'pause for 1 second'
+end
+
 Then /^WL: set membership page first name to (?:random value|(.*))$/ do |str|
   first_name = WhiteLabel.membership_page.first_name
   first_name.wait_until_present(timeout: 10)
@@ -488,14 +493,15 @@ end
 
 Then /^WL: check membership page terms & conditions$/ do
   mm_page = WhiteLabel.membership_page
+  mm_page.terms_conditions.scroll_into_view
   att_value = mm_page.billing_addr_enable_disable.attribute_value('class')
-  mm_page.terms_conditions.click! unless att_value== 'form-group checkbox'
+  mm_page.terms_conditions.click! unless att_value== 'form-group checkbox has-error'
 end
 
 Then /^WL: uncheck membership page terms & conditions$/ do
   mm_page = WhiteLabel.membership_page
   att_value = mm_page.billing_addr_enable_disable.attribute_value('class')
-  mm_page.terms_conditions.click! unless att_value== 'form-group checkbox has-error'
+  mm_page.terms_conditions.click! unless att_value== 'form-group checkbox'
 end
 
 Then /^WL: expect membership page terms & conditions is checked$/ do
@@ -682,5 +688,37 @@ Then /^WL: expect membership page your stamps.com offer modal to be present$/ do
   bonus_offer_details_header  = WhiteLabel.membership_page.bonus_offer_details_header
   bonus_offer_details_header.wait_until_present(timeout: 2)
   expect(bonus_offer_details_header).to be_present
+end
+
+Then /^WL: expect membership page invalid address modal header to be Invalid Address$/ do
+  invalid_addr_header = WhiteLabel.membership_page.invalid_addr_header
+  invalid_addr_header.wait_until_present(timeout: 2)
+  expect(invalid_addr_header).to be_present
+end
+
+Then /^WL: expect membership page invalid address modal paragraph to be$/ do |str|
+  expect(WhiteLabel.membership_page.invalid_addr_p.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect membership page standardized addr modal header to be (.*)$/ do |str|
+  addr_std_header  = WhiteLabel.membership_page.addr_std_header
+  addr_std_header.wait_until_present(timeout: 2)
+  expect(addr_std_header).to eql(str)
+end
+
+Then /^WL: expect membership page standardized addr modal paragraph to be$/ do |str|
+  addr_std_p  = WhiteLabel.membership_page.addr_std_p
+  addr_std_p.wait_until_present(timeout: 2)
+  expect(addr_std_p).to eql(str)
+end
+
+
+
+Then /^WL: set membership page default values$/ do
+  step 'WL: set membership page personal info to random info between zone 5 and zone 8'
+  step 'WL: set membership page credit card number to 4111111111111111'
+  step 'WL: select membership page credit card month Dec (12)'
+  step 'WL: set membership page credit card year to this year plus 1'
+  step 'WL: check membership page terms & conditions'
 end
 

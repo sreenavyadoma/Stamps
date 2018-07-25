@@ -237,163 +237,95 @@ Feature: Stamps WebReg: Membership Page
 
     Then WL: set profile page default values
 
-    #Autocomplete Profile Address
-    Then pause for 1 second
-    Then WL: set membership page address to 1990 E
-    Then WL: click membership page address
+#    #Autocomplete Profile Address
+#    Then pause for 1 second
+#    Then WL: set membership page address to 1990 E
+#    Then WL: click membership page address
+#
+#    Then WL: select membership page address autocomplete index 1
+#    Then WL: expect membership page address is 1990 E Grand Ave
+#    Then WL: expect membership page city is El Segundo
+#    Then WL: expect membership page state is CA
+#    Then WL: expect membership page zip is 90245
+#
+#    Then WL: click membership page address
+#    Then WL: select membership page address autocomplete index 2
+#    Then WL: expect membership page address is 1990 E Grand Ave
+#    Then WL: expect membership page city is Alhambra
+#    Then WL: expect membership page state is CA
+#    Then WL: expect membership page zip is 91801
+#
+#    Then WL: click membership page address
+#    Then WL: select membership page address autocomplete index 3
+#    Then WL: expect membership page address is 1990 E Grand Ave
+#    Then WL: expect membership page city is Pomona
+#    Then WL: expect membership page state is CA
+#    Then WL: expect membership page zip is 91766
+#
+#    Then WL: click membership page address
+#    Then WL: select membership page address autocomplete index 4
+#    Then WL: expect membership page address is 1990 E Grand Ave
+#    Then WL: expect membership page city is Escondido
+#    Then WL: expect membership page state is CA
+#    Then WL: expect membership page zip is 92027
+#
+#    Then WL: click membership page address
+#    Then WL: select membership page address autocomplete index 5
+#    Then WL: expect membership page address is 1990 E Grand Ave
+#    Then WL: expect membership page city is Arroyo Grande
+#    Then WL: expect membership page state is CA
+#    Then WL: expect membership page zip is 93420
+#
+#    #Autocomplete Billing Address
+#    Then WL: uncheck membership page billing address same as mailing address
+#    Then WL: set membership page billing address to 15 World
+#
+#    Then WL: click membership page billing address
+#    Then WL: select membership page billing address autocomplete index 1
+#    Then WL: expect membership page billing address is 15 World Way
+#    Then WL: expect membership page billing city is Los Angeles
+#    Then WL: expect membership page billing state is CA
+#    Then WL: expect membership page billing zip is 90045
+#
+#    Then WL: click membership page billing address
+#    Then WL: select membership page billing address autocomplete index 2
+#    Then WL: expect membership page billing address is 15 World Way
+#    Then WL: expect membership page billing city is Los Angeles
+#    Then WL: expect membership page billing state is CA
+#    Then WL: expect membership page billing zip is 90045
+#
+#    Then WL: click membership page billing address
+#    Then WL: select membership page billing address autocomplete index 3
+#    Then WL: expect membership page billing address is Center of the World Dr
+#    Then WL: expect membership page billing city is Felicity
+#    Then WL: expect membership page billing state is CA
+#    Then WL: expect membership page billing zip is 92283
+#
+#    Then WL: click membership page billing address
+#    Then WL: select membership page billing address autocomplete index 1
+#    Then WL: expect membership page billing address is Center of the World Dr
+#    Then WL: expect membership page billing city is Winterhaven
+#    Then WL: expect membership page billing state is CA
+#    Then WL: expect membership page billing zip is 92283
+#
+#    Then WL: click membership page billing address
+#    Then WL: select membership page billing address autocomplete index 2
+#    Then WL: expect membership page billing address is Center of the World Rd
+#    Then WL: expect membership page billing city is Canon
+#    Then WL: expect membership page billing state is GA
+#    Then WL: expect membership page billing zip is 30520
 
-    Then WL: select membership page address autocomplete index 1
-    Then WL: expect membership page address is 1990 E Grand Ave
-    Then WL: expect membership page city is El Segundo
-    Then WL: expect membership page state is CA
-    Then WL: expect membership page zip is 90245
+    #Invalid Address Modal
+    Then WL: set membership page default values
+    Then WL: set membership page address to kdjfkd
+    Then WL: click membership page submit button
+    Then WL: expect membership page invalid address modal header to be Invalid Address
+    Then WL: expect membership page invalid address modal paragraph to be
+    """
+    Your address does not appear to be a valid USPS mailing address. Please verify that it is entered correctly. If you need assistance, please contact customer support at 1-888-434-0055, Monday - Friday, 6 a.m. - 6 p.m. Pacific Time.
+    """
+    Then WL: click modal x button
 
-    Then WL: click membership page address
-    Then WL: select membership page address autocomplete index 2
-    Then WL: expect membership page address is 1990 E Grand Ave
-    Then WL: expect membership page city is Alhambra
-    Then WL: expect membership page state is CA
-    Then WL: expect membership page zip is 91801
-
-    Then WL: click membership page address
-    Then WL: select membership page address autocomplete index 3
-    Then WL: expect membership page address is 1990 E Grand Ave
-    Then WL: expect membership page city is Pomona
-    Then WL: expect membership page state is CA
-    Then WL: expect membership page zip is 91766
-
-    Then WL: click membership page address
-    Then WL: select membership page address autocomplete index 4
-    Then WL: expect membership page address is 1990 E Grand Ave
-    Then WL: expect membership page city is Escondido
-    Then WL: expect membership page state is CA
-    Then WL: expect membership page zip is 92027
-
-    Then WL: click membership page address
-    Then WL: select membership page address autocomplete index 5
-    Then WL: expect membership page address is 1990 E Grand Ave
-    Then WL: expect membership page city is Arroyo Grande
-    Then WL: expect membership page state is CA
-    Then WL: expect membership page zip is 93420
-
-    #Autocomplete Billing Address
-    Then WL: uncheck membership page billing address same as mailing address
-    Then WL: set membership page billing address to 15 World
-
-    Then WL: click membership page billing address
-    Then WL: select membership page billing address autocomplete index 1
-    Then WL: expect membership page billing address is 15 World Way
-    Then WL: expect membership page billing city is Los Angeles
-    Then WL: expect membership page billing state is CA
-    Then WL: expect membership page billing zip is 90045
-
-    Then WL: click membership page billing address
-    Then WL: select membership page billing address autocomplete index 2
-    Then WL: expect membership page billing address is 15 World Way
-    Then WL: expect membership page billing city is Los Angeles
-    Then WL: expect membership page billing state is CA
-    Then WL: expect membership page billing zip is 90045
-
-    Then WL: click membership page billing address
-    Then WL: select membership page billing address autocomplete index 3
-    Then WL: expect membership page billing address is Center of the World Dr
-    Then WL: expect membership page billing city is Felicity
-    Then WL: expect membership page billing state is CA
-    Then WL: expect membership page billing zip is 92283
-
-    Then WL: click membership page billing address
-    Then WL: select membership page billing address autocomplete index 1
-    Then WL: expect membership page billing address is Center of the World Dr
-    Then WL: expect membership page billing city is Winterhaven
-    Then WL: expect membership page billing state is CA
-    Then WL: expect membership page billing zip is 92283
-
-    Then WL: click membership page billing address
-    Then WL: select membership page billing address autocomplete index 2
-    Then WL: expect membership page billing address is Center of the World Rd
-    Then WL: expect membership page billing city is Canon
-    Then WL: expect membership page billing state is GA
-    Then WL: expect membership page billing zip is 30520
-
-    # Verify Physical Address Zone wise
-    Then WL: set membership page personal info to random info between zone 1 and zone 4
-    Then WL: expect membership page address is correct
-    Then WL: expect membership page city is correct
-    Then WL: expect membership page state is correct
-    Then WL: expect membership page zip is correct
-
-    Then pause for 1 second
-    Then WL: set membership page personal info to random info between zone 5 and zone 8
-    Then WL: expect membership page address is correct
-    Then WL: expect membership page city is correct
-    Then WL: expect membership page state is correct
-    Then WL: expect membership page zip is correct
-
-    Then pause for 1 second
-    Then WL: set membership page personal info to random info between zone 1
-    Then WL: expect membership page address is correct
-    Then WL: expect membership page city is correct
-    Then WL: expect membership page state is correct
-    Then WL: expect membership page zip is correct
-
-    Then pause for 1 second
-    Then WL: set membership page personal info to random info between zone 2
-    Then WL: expect membership page address is correct
-    Then WL: expect membership page city is correct
-    Then WL: expect membership page state is correct
-    Then WL: expect membership page zip is correct
-
-    Then pause for 1 second
-    Then WL: set membership page personal info to random info between zone 3
-    Then WL: expect membership page address is correct
-    Then WL: expect membership page city is correct
-    Then WL: expect membership page state is correct
-    Then WL: expect membership page zip is correct
-
-    Then pause for 1 second
-    Then WL: set membership page personal info to random info between zone 4
-    Then WL: expect membership page address is correct
-    Then WL: expect membership page city is correct
-    Then WL: expect membership page state is correct
-    Then WL: expect membership page zip is correct
-
-    Then pause for 1 second
-    Then WL: set membership page personal info to random info between zone 5
-    Then WL: expect membership page address is correct
-    Then WL: expect membership page city is correct
-    Then WL: expect membership page state is correct
-    Then WL: expect membership page zip is correct
-
-    Then pause for 1 second
-    Then WL: set membership page personal info to random info between zone 6
-    Then WL: expect membership page address is correct
-    Then WL: expect membership page city is correct
-    Then WL: expect membership page state is correct
-    Then WL: expect membership page zip is correct
-
-    Then pause for 1 second
-    Then WL: set membership page personal info to random info between zone 7
-    Then WL: expect membership page address is correct
-    Then WL: expect membership page city is correct
-    Then WL: expect membership page state is correct
-    Then WL: expect membership page zip is correct
-
-    Then pause for 1 second
-    Then WL: set membership page personal info to random info between zone 8
-    Then WL: expect membership page address is correct
-    Then WL: expect membership page city is correct
-    Then WL: expect membership page state is correct
-    Then WL: expect membership page zip is correct
-
-    Then pause for 1 second
-    Then WL: set membership page personal info to random info between zone 9
-    Then WL: expect membership page address is correct
-    Then WL: expect membership page city is correct
-    Then WL: expect membership page state is correct
-    Then WL: expect membership page zip is correct
-
- @sdcwr_membership_page_postage_meter_addr
- Scenario: Membership Page Standardized/Postage Meter Address  Validation
     #Standardize Address Modal
     Then WL: set membership page address to PO Box 2951 US-41
     Then WL: set membership page city to Inverness
@@ -404,7 +336,7 @@ Feature: Stamps WebReg: Membership Page
     Then WL: click membership page submit button
 
     Then WL: expect membership page standardized addr modal header to be Your address has been standardized
-    Then WL: expect membership page standardized addr modal paragraph to ne
+    Then WL: expect membership page standardized addr modal paragraph to be
     """
     The USPS PC Postage™ program requires that the address used on your account be standardized for more efficient mail processing. The corrected portions are in bold below.
     """

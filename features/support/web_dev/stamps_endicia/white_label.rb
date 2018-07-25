@@ -142,6 +142,10 @@ module WhiteLabel
     button(:username_taken_continue_btn) {{id: 'btnUserNameTakenContinue'}}
     button(:username_taken_close_btn) {{class: ['close']}}
 
+    #Invalid Address
+    page_object(:invalid_addr_header) { {xpath: '//h3[(contains(text(), "Invalid Address"))]'} }
+    page_object(:invalid_addr_p) { {id: 'errorDescription'} }
+
     #address standardized
     page_object(:addr_std_header) { {xpath: '//h3[(contains(text(), "Your address has been standardized"))]'} }
     page_object(:addr_std_p) { {id: 'instructions'} }
