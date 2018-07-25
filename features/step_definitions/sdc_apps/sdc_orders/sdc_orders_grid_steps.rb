@@ -153,6 +153,7 @@ Then /^expect orders grid recipient is (?:correct|(.*))$/ do |str|
   str ||= TestData.hash[:full_name]
   order_id = TestData.hash[:order_id].values.last
   expect(order_id).to be_truthy
+  sleep 2 unless SauceSession.config.build_number
   result = SdcGrid.grid_column(:recipient).data(order_id)
   expect(result).to eql str
 end
