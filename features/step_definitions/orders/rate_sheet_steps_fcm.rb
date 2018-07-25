@@ -1,9 +1,9 @@
-Then /^[Rr]un rate test FCM Package$/ do
+Then /^run rate test FCM Package$/ do
   param_sheet = data_for(:rates_test, {})['rates_fcm_package']
   step "run rate sheet #{param_sheet}"
 end
 
-Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
+Then /^run rate sheet (.*)$/ do |param_sheet|
   zone = 1
 
   #TestData.store[:starting_time]=Time.now

@@ -272,7 +272,6 @@ module SdcGrid
     klass = Class.new(SdcPage) do
       page_object(:body) { { xpath: xpath } }
     end
-
     klass.new.body
   end
   module_function :body
@@ -298,7 +297,6 @@ module SdcGrid
           data(order_id).scan(/\d+ oz./).first.scan(/\d/).first.to_i
         end
       end
-
       klass.new(column)
 
     else
