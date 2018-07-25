@@ -340,18 +340,19 @@ Feature: Stamps WebReg: Membership Page
     """
     The USPS PC Postage™ program requires that the address used on your account be standardized for more efficient mail processing. The corrected portions are in bold below.
     """
-    Then WL: expect membership page standardized addr modal original address header to be Original Address:
-    Then WL: expect membership page standardized addr modal original address to be Original Address:
+    Then WL: expect membership page standardized addr modal original address label to be Original Address:
+    Then WL: expect membership page standardized addr modal original address to be
     """
     PO Box 2951 US-41
     Inverness FL 34450
     """
-    Then WL: expect membership page standardized addr modal standardized by the usps header to be Standardized by the USPS:
-    Then WL: expect membership page standardized addr modal standardized by the usps address to be Standardized by the USPS:
+    Then WL: expect membership page standardized addr modal standardized by the usps label to be Standardized by the USPS:
+    Then WL: expect membership page standardized addr modal standardized by the usps address to be
     """
     PO Box 2951
     Inverness FL 34451-2951
     """
+    Then WL: click membership page standardized addr modal continue button
 
 
 

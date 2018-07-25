@@ -155,7 +155,6 @@ module WhiteLabel
     page_object(:addr_std_addr_new) { {xpah: '//div[@id="addrNew"]/p[2]'} }
     button(:addr_std_continue) {{id: 'btnAddrValOkay'}}
     button(:addr_std_cancel) {{xpath: '//div[@class="modal-footer"]/button[1]'}}
-    page_objects(:addr_std_close, index: 1) {{xpath: '//button[@class="close"]'}}
 
     #postage meter address
     page_object(:meter_header) { {xpath: '//h1[(contains(text(), "An additional postage meter address is required"))]'} }

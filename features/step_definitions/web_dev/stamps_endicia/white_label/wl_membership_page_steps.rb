@@ -7,6 +7,11 @@ Then /^WL: click modal x button$/ do
   step 'pause for 1 second'
 end
 
+Then /^WL: click membership page submit button$/ do
+  WhiteLabel.membership_page.submit.click
+  step 'pause for 1 second'
+end
+
 Then /^WL: set membership page first name to (?:random value|(.*))$/ do |str|
   first_name = WhiteLabel.membership_page.first_name
   first_name.wait_until_present(timeout: 10)
@@ -541,6 +546,42 @@ Then /^WL: expect membership page terms and conditions modal is present$/ do
   expect(terms_conditions_header).to be_present
 end
 
+############################################################################Standardized Address Modal##################
+Then /^WL: expect membership page standardized addr modal header to be (.*)$/ do |str|
+  addr_std_header  = WhiteLabel.membership_page.addr_std_header
+  addr_std_header.wait_until_present(timeout: 2)
+  expect(addr_std_header).to eql(str)
+end
+
+Then /^WL: expect membership page standardized addr modal paragraph to be$/ do |str|
+  addr_std_p  = WhiteLabel.membership_page.addr_std_p
+  expect(addr_std_p).to eql(str)
+end
+
+Then /^WL: expect membership page standardized addr modal original address label to be (.*)$/ do |str|
+  addr_std_addr_orig_lbl  = WhiteLabel.membership_page.addr_std_addr_orig_lbl
+  expect(addr_std_addr_orig_lbl).to eql(str)
+end
+
+Then /^WL: expect membership page standardized addr modal original address to be$/ do |str|
+  addr_std_addr_orig  = WhiteLabel.membership_page.addr_std_addr_orig
+  expect(addr_std_addr_orig).to eql(str)
+end
+
+Then /^WL: expect membership page standardized addr modal standardized by the usps label to be (.*)$/ do |str|
+  addr_std_addr_new_lbl  = WhiteLabel.membership_page.addr_std_addr_new_lbl
+  expect(addr_std_addr_new_lbl).to eql(str)
+end
+
+Then /^WL: expect membership page standardized addr modal standardized by the usps address to be$/ do |str|
+  addr_std_addr_new  = WhiteLabel.membership_page.addr_std_addr_new
+  expect(addr_std_addr_new).to eql(str)
+end
+
+Then /^WL: click membership page standardized addr modal continue button$/ do
+  WhiteLabel.membership_page.addr_std_continue.click
+end
+
 Then /^WL: check if address standardized is present then click continue$/ do
   addr_std_continue = WhiteLabel.membership_page.addr_std_continue
   addr_std_continue.wait_until_present(timeout: 5) rescue false
@@ -551,6 +592,7 @@ Then /^WL: check if address standardized is present then click continue$/ do
   end
 end
 
+###################################################################Postage Meter Address################################
 Then /^WL: check if postage meter address is present then set the value$/ do
   membership_page = WhiteLabel.membership_page
   if TestData.hash[:street_address].include? 'PO Box'
@@ -613,14 +655,11 @@ Then /^WL: if username taken is present then set username to (?:random value|(.*
   end
 end
 
+#######################################################################Username Taken Modal#############################
 Then /^WL: click username taken continue button$/ do
   WhiteLabel.membership_page.username_taken_continue_btn.click
 end
 
-Then /^WL: click membership page submit button$/ do
-  WhiteLabel.membership_page.submit.click
-  step 'pause for 1 second'
-end
 
 #Side content
 Then /^WL: expect membership page need mailing info header to be$/ do |str|
@@ -690,6 +729,7 @@ Then /^WL: expect membership page your stamps.com offer modal to be present$/ do
   expect(bonus_offer_details_header).to be_present
 end
 
+####################################Invalid Address Modal###############################################################
 Then /^WL: expect membership page invalid address modal header to be Invalid Address$/ do
   invalid_addr_header = WhiteLabel.membership_page.invalid_addr_header
   invalid_addr_header.wait_until_present(timeout: 2)
@@ -699,19 +739,6 @@ end
 Then /^WL: expect membership page invalid address modal paragraph to be$/ do |str|
   expect(WhiteLabel.membership_page.invalid_addr_p.text_value.strip).to eql(str)
 end
-
-Then /^WL: expect membership page standardized addr modal header to be (.*)$/ do |str|
-  addr_std_header  = WhiteLabel.membership_page.addr_std_header
-  addr_std_header.wait_until_present(timeout: 2)
-  expect(addr_std_header).to eql(str)
-end
-
-Then /^WL: expect membership page standardized addr modal paragraph to be$/ do |str|
-  addr_std_p  = WhiteLabel.membership_page.addr_std_p
-  addr_std_p.wait_until_present(timeout: 2)
-  expect(addr_std_p).to eql(str)
-end
-
 
 
 Then /^WL: set membership page default values$/ do
