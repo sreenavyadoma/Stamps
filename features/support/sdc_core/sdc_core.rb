@@ -92,19 +92,20 @@ class SauceConfig < ::SdcModel
 
 end
 
-class SauceSession
-  def initialize
-    @sauce_config = ::SauceConfig.new
+module SauceSession
+  def config
+    @config ||= ::SauceConfig.new
   end
+  module_function :config
 
-  def create_browser
+  def browser
     caps_conf = {
-        :version => @sauce_config.version,
-        :platform => @sauce_config.platform,
-        :name => @sauce_config.test_name,
-        :build => @sauce_config.build,
-        :idleTimeout => @sauce_config.idle_timeout,
-        :screenResolution => @sauce_config.screen_resolution,
+        :version => config.version,
+        :platform => config.platform,
+        :name => config.test_name,
+        :build => config.build,
+        :idleTimeout => config.idle_timeout,
+        :screenResolution => config.screen_resolution,
         :extendedDebugging => true
     }
 
@@ -114,6 +115,7 @@ class SauceSession
     url = @sauce_config.sauce_end_point
     @browser = Watir::Browser.new(:remote, desired_capabilities: caps, http_client: client, url: url)
   end
+  module_function :browser
 end
 
 module SdcFinder
@@ -545,6 +547,7 @@ class SdcChooser < BasicObject
              end
 
     return result if [true, false].include? result
+
     if result.casecmp('true').zero? || result .casecmp('false').zero?
       return result.casecmp('true').zero?
     end
@@ -556,8 +559,8 @@ class SdcChooser < BasicObject
 
   def choose(iter: 3)
     iter.times do
-      click
       break if chosen?
+      click
     end
 
     chosen?

@@ -434,7 +434,7 @@ Feature:  BVT tests for Orders
       | full_name     | company       | street_address1 | street_address2 | city          | province      | postal_code   | country | phone        |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone | Random email  |
     Then set order details weight to 0 lb 1 oz
-    Then set order details service to PMEI Package/Flat/Thick Envelope
+    Then set order details service to PMI Flat Rate Envelope
     Then blur out on order details form
 
 #  Check 1st two orders
