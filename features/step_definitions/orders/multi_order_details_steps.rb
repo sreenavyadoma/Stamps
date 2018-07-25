@@ -87,13 +87,12 @@ end
 # End Bulk Update Weight steps
 
 Then /^set bulk update domestic service to (.*)$/ do |str|
-  TestData.hash[:bulk_dom_service] = str
-  TestData.hash[:service] = str
   service = SdcOrders.bulk_update.dom_service
   service.selection_element(name: :selection, value: str)
   service.drop_down.click unless service.selection.present?
   service.selection.click unless service.selection.class_disabled?
   expect(service.text_field.text_value).to include(str)
+  TestData.hash[:bulk_dom_service] = str
 end
 
 Then /^expect bulk update domestic service is (?:correct|(.*))$/ do |str|
@@ -101,12 +100,12 @@ Then /^expect bulk update domestic service is (?:correct|(.*))$/ do |str|
 end
 
 Then /^set bulk update international service to (.*)$/ do |str|
-  TestData.hash[:int_service] = str
   service = SdcOrders.bulk_update.intl_service
   service.selection_element(name: :selection, value: str)
   service.drop_down.click unless service.selection.present?
   service.selection.click unless service.selection.class_disabled?
   expect(service.text_field.text_value).to include(str)
+  TestData.hash[:bulk_int_service] = str
 end
 
 Then /^expect bulk update international service is (?:correct|(.*))$/ do |str|

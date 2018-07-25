@@ -36,15 +36,16 @@ Then /^set print form serial number to (.*)$/ do |str|
   SdcMail.print_form.serial_number.set(serial)
 end
 
-# Then /^[Ss]et Print form Amount to (\d*.?\d+)$/ do |value|
-#   TestData.hash[:stamp_amount] = value
-#   stamps.mail.print_form.stamp_amount.set(TestData.hash[:stamp_amount])
-# end
+Then /^[Ss]et Print form Amount to (\d*.?\d+)$/ do |value|
+  TestData.hash[:stamp_amount] = value
+  SdcMail.print_form.amt_text_field.set(TestData.hash[:stamp_amount])
+end
 
-# Then /^[Ss]et Print form Quantity to (\d+)$/ do |value|
-#   TestData.hash[:quantity] = value
-#   stamps.mail.print_form.quantity.set(TestData.hash[:quantity])
-# end
+Then /^[Ss]et Print form Quantity to (\d+)$/ do |value|
+  TestData.hash[:quantity] = value
+  SdcMail.print_form.qty_text_field.set(TestData.hash[:quantity])
+end
+
 
 Then /^[Ee]xpect Print form Domestic Address field displays last printed contact$/ do
   pending
@@ -119,13 +120,13 @@ Then /^select print form specify postage amount$/ do
   expect(SdcMail.print_form.advanced_options.specify_postage_amount.selected?).to be_truthy
 end
 
-Then /^set print form stamp amount ([\d.]+)$/ do |value|
+Then /^set print form stamp amount to ([\d.]+)$/ do |value|
   step 'show advanced options'
   SdcMail.print_form.stamp_amount.set(value)
   expect(SdcMail.print_form.stamp_amount.text_value.to_f).to eql(value.to_f)
 end
 
-Then /^set print form stamp quantity (\d+)$/ do |value|
+Then /^set print form stamp quantity to (\d+)$/ do |value|
   SdcMail.print_form.quantity.set(value)
   step "expect print form stamp quantity is #{value}"
 end
