@@ -94,25 +94,29 @@ end
 
 module SauceSession
   def config
-    @config ||= ::SauceConfig.new
+    @config ||= SauceConfig.new
   end
   module_function :config
 
   def browser
-    caps_conf = {
-        :version => config.version,
-        :platform => config.platform,
-        :name => config.test_name,
-        :build => config.build,
-        :idleTimeout => config.idle_timeout,
-        :screenResolution => config.screen_resolution,
-        :extendedDebugging => true
-    }
-
-    caps = Selenium::WebDriver::Remote::Capabilities.send(@sauce_config.browser, caps_conf)
+    begin
+      caps_conf = {
+          :version => config.version,
+          :platform => config.platform,
+          :name => config.test_name,
+          :build => config.build,
+          :idleTimeout => config.idle_timeout,
+          :screenResolution => config.screen_resolution,
+          :extendedDebugging => true
+      }
+    rescue Exception => e
+      SdcLogger.debug e.message
+      SdcLogger.debug e.backtrace.join("\n")
+    end
+    caps = Selenium::WebDriver::Remote::Capabilities.send(config.browser, caps_conf)
     client = Selenium::WebDriver::Remote::Http::Default.new
-    client.timeout = 120
-    url = @sauce_config.sauce_end_point
+    client.timeout = config.idle_timeout
+    url = config.sauce_end_point
     @browser = Watir::Browser.new(:remote, desired_capabilities: caps, http_client: client, url: url)
   end
   module_function :browser
