@@ -237,29 +237,83 @@ Feature: Stamps WebReg: Membership Page
 
     Then WL: set profile page default values
 
-        #Autocomplete Profile Address
+    #Autocomplete Profile Address
     Then pause for 1 second
     Then WL: set membership page address to 1990 E
     Then WL: click membership page address
-    Then WL: select membership page address autocomplete index 2
-    #Then WL: select membership page address autocomplete first result
+
+    Then WL: select membership page address autocomplete index 1
     Then WL: expect membership page address is 1990 E Grand Ave
     Then WL: expect membership page city is El Segundo
     Then WL: expect membership page state is CA
     Then WL: expect membership page zip is 90245
 
-    Then WL: uncheck membership page billing address same as mailing address
+    Then WL: click membership page address
+    Then WL: select membership page address autocomplete index 2
+    Then WL: expect membership page address is 1990 E Grand Ave
+    Then WL: expect membership page city is Alhambra
+    Then WL: expect membership page state is CA
+    Then WL: expect membership page zip is 91801
+
+    Then WL: click membership page address
+    Then WL: select membership page address autocomplete index 3
+    Then WL: expect membership page address is 1990 E Grand Ave
+    Then WL: expect membership page city is Pomona
+    Then WL: expect membership page state is CA
+    Then WL: expect membership page zip is 91766
+
+    Then WL: click membership page address
+    Then WL: select membership page address autocomplete index 4
+    Then WL: expect membership page address is 1990 E Grand Ave
+    Then WL: expect membership page city is Escondido
+    Then WL: expect membership page state is CA
+    Then WL: expect membership page zip is 92027
+
+    Then WL: click membership page address
+    Then WL: select membership page address autocomplete index 5
+    Then WL: expect membership page address is 1990 E Grand Ave
+    Then WL: expect membership page city is Arroyo Grande
+    Then WL: expect membership page state is CA
+    Then WL: expect membership page zip is 93420
+
     #Autocomplete Billing Address
+    Then WL: uncheck membership page billing address same as mailing address
     Then WL: set membership page billing address to 15 World
+
     Then WL: click membership page billing address
-    Then WL: select membership page billing address autocomplete first result
+    Then WL: select membership page billing address autocomplete index 1
     Then WL: expect membership page billing address is 15 World Way
     Then WL: expect membership page billing city is Los Angeles
     Then WL: expect membership page billing state is CA
     Then WL: expect membership page billing zip is 90045
 
+    Then WL: click membership page billing address
+    Then WL: select membership page billing address autocomplete index 2
+    Then WL: expect membership page billing address is 15 World Way
+    Then WL: expect membership page billing city is Los Angeles
+    Then WL: expect membership page billing state is CA
+    Then WL: expect membership page billing zip is 90045
 
+    Then WL: click membership page billing address
+    Then WL: select membership page billing address autocomplete index 3
+    Then WL: expect membership page billing address is Center of the World Dr
+    Then WL: expect membership page billing city is Felicity
+    Then WL: expect membership page billing state is CA
+    Then WL: expect membership page billing zip is 92283
 
+    Then WL: click membership page billing address
+    Then WL: select membership page billing address autocomplete index 1
+    Then WL: expect membership page billing address is Center of the World Dr
+    Then WL: expect membership page billing city is Winterhaven
+    Then WL: expect membership page billing state is CA
+    Then WL: expect membership page billing zip is 92283
+
+    Then WL: click membership page billing address
+    Then WL: select membership page billing address autocomplete index 2
+    Then WL: expect membership page billing address is Center of the World Rd
+    Then WL: expect membership page billing city is Canon
+    Then WL: expect membership page billing state is GA
+    Then WL: expect membership page billing zip is 30520
 
     # Verify Physical Address Zone wise
     Then WL: set membership page personal info to random info between zone 1 and zone 4
@@ -337,6 +391,37 @@ Feature: Stamps WebReg: Membership Page
     Then WL: expect membership page city is correct
     Then WL: expect membership page state is correct
     Then WL: expect membership page zip is correct
+
+ @sdcwr_membership_page_postage_meter_addr
+ Scenario: Membership Page Standardized/Postage Meter Address  Validation
+    #Standardize Address Modal
+    Then WL: set membership page address to PO Box 2951 US-41
+    Then WL: set membership page city to Inverness
+    Then WL: select membership page state FL
+    Then WL: set membership page zip to 34450
+    Then WL: check membership page billing address same as mailing address
+    Then WL: check membership page terms & conditions
+    Then WL: click membership page submit button
+
+    Then WL: expect membership page standardized addr modal header to be Your address has been standardized
+    Then WL: expect membership page standardized addr modal paragraph to ne
+    """
+    The USPS PC Postage™ program requires that the address used on your account be standardized for more efficient mail processing. The corrected portions are in bold below.
+    """
+    Then WL: expect membership page standardized addr modal original address header to be Original Address:
+    Then WL: expect membership page standardized addr modal original address to be Original Address:
+    """
+    PO Box 2951 US-41
+    Inverness FL 34450
+    """
+    Then WL: expect membership page standardized addr modal standardized by the usps header to be Standardized by the USPS:
+    Then WL: expect membership page standardized addr modal standardized by the usps address to be Standardized by the USPS:
+    """
+    PO Box 2951
+    Inverness FL 34451-2951
+    """
+
+
 
 
 

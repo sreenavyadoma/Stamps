@@ -33,7 +33,6 @@ module WhiteLabel
     page_object(:last_name_help_block) { {xpath: '//div[@class="col-xs-12 col-sm-6 gut-sm-form-l-half"]/div/div/span'} }
     text_field(:company, tag: :text_field) { { id: 'companyName' } }
     text_field(:address, tag: :text_field, required: true) { { id: 'street' } }
-    page_object(:address_auto_complete) {{xpath: '//div[@class="pac-container pac-logo"]/div'}}
     page_object(:address_help_block) { {xpath: '//li[@id="personalinfo"]/div/div[4]/div/div/span'} }
     text_field(:city, tag: :text_field, required: true) { { id: 'city' } }
     page_object(:city_help_block) { {xpath: '//*[@id="personalinfo"]/div/div[contains(@class, "col-lg-5")]/div/div/span'} }
@@ -42,6 +41,23 @@ module WhiteLabel
     text_field(:zip, tag: :text_field) { { id: 'zip' } }
     text_field(:phone, tag: :text_field, required: true) { { id: 'phone' } }
     page_object(:phone_help_block) {{xpath: '//li[@id="personalinfo"]/div/div[8]/div/div/span'}}
+
+    def address_auto_complete(index)
+        if index ==  1
+          page_objects(:address_auto_complete_1, index: 0) {{xpath: '//body[@id="membership-page"]/div[6]/div'}}
+        elsif index == 2
+          page_objects(:address_auto_complete_2, index: 1) {{xpath: '//body[@id="membership-page"]/div[6]/div'}}
+        elsif index ==  3
+          page_objects(:address_auto_complete_3, index: 2) {{xpath: '//body[@id="membership-page"]/div[6]/div'}}
+        elsif index ==  4
+          page_objects(:address_auto_complete_4, index: 3) {{xpath: '//body[@id="membership-page"]/div[6]/div'}}
+        elsif index == 5
+          page_objects(:address_auto_complete_5, index: 4) {{xpath: '//body[@id="membership-page"]/div[6]/div'}}
+        else
+          #ignore
+      end
+    end
+
 
     #Credit Card
     page_object(:cc_auth) {{id: 'auth-copy'}}
@@ -74,7 +90,7 @@ module WhiteLabel
     page_object(:billing_addr_enable_disable) { {xpath: '//li[@id="terms"]/div/div/div'} }
     page_object(:billing_addr_header) {{class: ['billingAddressForm']}}
     text_field(:billing_addr, tag: :text_field, required: true) { { id: 'billingStreet' } }
-    page_objects(:billing_addr_auto_complete, index: 1) {{xpath: '//div[@class="pac-container pac-logo"]/div/span[2]/span'}}
+    #page_objects(:billing_addr_auto_complete, index: 1) {{xpath: '//div[@class="pac-container pac-logo"]/div/span[2]/span'}}
     page_object(:billing_addr_help_block) {{xpath: '//li[@id="creditcard"]/div/div[6]/div[contains(@class, "billingAddressForm")]/div/span'}}
     text_field(:billing_city, tag: :text_field, required: true) { { id: 'billingCity' } }
     page_object(:billing_city_help_block) { {xpath: '//*[@id="creditcard"]/div/div[contains(@class, "col-lg-5")]/div/div/span'} }
@@ -82,6 +98,22 @@ module WhiteLabel
     page_object(:billing_state_help_block) { {xpath:  '//li[@id="creditcard"]/div/div[contains(@class, "col-lg-3")]/div/div[2]/span'} }
     text_field(:billing_zip, tag: :text_field, required: true) { { id: 'billingZip' } }
     page_object(:billing_zip_help_block) { {xpath:  '//li[@id="creditcard"]/div/div[contains(@class, "col-lg-4")]/div/div/span'} }
+
+    def billing_addr_auto_complete(index)
+      if index ==  1
+        page_objects(:billing_addr_auto_complete_1, index: 0) {{xpath: '//body[@id="membership-page"]/div[7]/div'}}
+      elsif index == 2
+        page_objects(:billing_addr_auto_complete_2, index: 1) {{xpath: '//body[@id="membership-page"]/div[7]/div'}}
+      elsif index ==  3
+        page_objects(:billing_addr_auto_complete_3, index: 2) {{xpath: '//body[@id="membership-page"]/div[7]/div'}}
+      elsif index ==  4
+        page_objects(:billing_addr_auto_complete_4, index: 3) {{xpath: '//body[@id="membership-page"]/div[7]/div'}}
+      elsif index == 5
+        page_objects(:billing_addr_auto_complete_5, index: 4) {{xpath: '//body[@id="membership-page"]/div[7]/div'}}
+      else
+        #ignore
+      end
+    end
 
     #Side Mailing Info
     page_object(:need_mailing_info_header) { {xpath:  '//div[@id="need-mailing-info"]/h3'} }
