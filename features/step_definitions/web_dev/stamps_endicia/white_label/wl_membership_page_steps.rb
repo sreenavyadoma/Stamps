@@ -1,5 +1,6 @@
 Then /^WL: blur_out on membership page$/ do
   WhiteLabel.membership_page.membership_bread_crumb.blur_out
+  step 'pause for 1 second'
 end
 
 Then /^WL: click modal x button$/ do
@@ -8,9 +9,16 @@ Then /^WL: click modal x button$/ do
 end
 
 Then /^WL: click membership page submit button$/ do
+  step 'pause for 1 second'
   WhiteLabel.membership_page.submit.click
   step 'pause for 1 second'
 end
+
+Then /^WL: click membership page back button$/ do
+  WhiteLabel.membership_page.back.click
+  step 'pause for 1 second'
+end
+
 
 Then /^WL: set membership page first name to (?:random value|(.*))$/ do |str|
   first_name = WhiteLabel.membership_page.first_name
@@ -499,20 +507,22 @@ end
 Then /^WL: check membership page terms & conditions$/ do
   mm_page = WhiteLabel.membership_page
   mm_page.terms_conditions.scroll_into_view
-  att_value = mm_page.billing_addr_enable_disable.attribute_value('class')
-  mm_page.terms_conditions.click! unless att_value== 'form-group checkbox has-error'
+  att_value = mm_page.addr_enable_disable_check.attribute_value('class')
+  mm_page.terms_conditions.click! if att_value == 'form-group checkbox has-error'
 end
 
 Then /^WL: uncheck membership page terms & conditions$/ do
   mm_page = WhiteLabel.membership_page
-  att_value = mm_page.billing_addr_enable_disable.attribute_value('class')
-  mm_page.terms_conditions.click! unless att_value== 'form-group checkbox'
+  mm_page.terms_conditions.scroll_into_view
+  step "WL: blur_out on membership page"
+  att_value = mm_page.addr_enable_disable_check.attribute_value('class')
+  mm_page.terms_conditions.click! if att_value == 'form-group checkbox'
 end
 
 Then /^WL: expect membership page terms & conditions is checked$/ do
   mm_page = WhiteLabel.membership_page
   step "WL: blur_out on membership page"
-  att_value = mm_page.billing_addr_enable_disable.attribute_value('class')
+  att_value = mm_page.addr_enable_disable_check.attribute_value('class')
   expect(att_value).to eql('form-group checkbox')
 end
 
@@ -521,8 +531,8 @@ Then /^WL: expect membership page terms & conditions is unchecked$/ do
   membership_page.submit.scroll_into_view
   step 'pause for 1 second'
   membership_page.submit.click
-  membership_page.billing_addr_enable_disable.wait_until_present(timeout: 2)
-  att_value = membership_page.billing_addr_enable_disable.attribute_value('class')
+  membership_page.addr_enable_disable_check.wait_until_present(timeout: 2)
+  att_value = membership_page.addr_enable_disable_check.attribute_value('class')
   expect(att_value).to eql('form-group checkbox has-error')
 end
 
@@ -550,36 +560,41 @@ end
 Then /^WL: expect membership page standardized addr modal header to be (.*)$/ do |str|
   addr_std_header  = WhiteLabel.membership_page.addr_std_header
   addr_std_header.wait_until_present(timeout: 2)
-  expect(addr_std_header).to eql(str)
+  expect(addr_std_header.text_value.strip).to eql(str)
 end
 
 Then /^WL: expect membership page standardized addr modal paragraph to be$/ do |str|
   addr_std_p  = WhiteLabel.membership_page.addr_std_p
-  expect(addr_std_p).to eql(str)
+  expect(addr_std_p.text_value.strip).to eql(str)
 end
 
 Then /^WL: expect membership page standardized addr modal original address label to be (.*)$/ do |str|
-  addr_std_addr_orig_lbl  = WhiteLabel.membership_page.addr_std_addr_orig_lbl
-  expect(addr_std_addr_orig_lbl).to eql(str)
+  membership_page  = WhiteLabel.membership_page
+  if membership_page.addr_std_addr_orig_lbl.present? == false
+    membership_page.submit.doube_click
+    membership_page.submit.click
+  end
+  expect(addr_std_addr_orig_lbl.text_value.strip).to eql(str)
 end
 
 Then /^WL: expect membership page standardized addr modal original address to be$/ do |str|
   addr_std_addr_orig  = WhiteLabel.membership_page.addr_std_addr_orig
-  expect(addr_std_addr_orig).to eql(str)
+  expect(addr_std_addr_orig.text_value.strip).to eql(str)
 end
 
 Then /^WL: expect membership page standardized addr modal standardized by the usps label to be (.*)$/ do |str|
   addr_std_addr_new_lbl  = WhiteLabel.membership_page.addr_std_addr_new_lbl
-  expect(addr_std_addr_new_lbl).to eql(str)
+  expect(addr_std_addr_new_lbl.text_value.strip).to eql(str)
 end
 
 Then /^WL: expect membership page standardized addr modal standardized by the usps address to be$/ do |str|
   addr_std_addr_new  = WhiteLabel.membership_page.addr_std_addr_new
-  expect(addr_std_addr_new).to eql(str)
+  expect(addr_std_addr_new.text_value.strip).to eql(str)
 end
 
 Then /^WL: click membership page standardized addr modal continue button$/ do
   WhiteLabel.membership_page.addr_std_continue.click
+  step 'pause for 1 second'
 end
 
 Then /^WL: check if address standardized is present then click continue$/ do
@@ -593,6 +608,12 @@ Then /^WL: check if address standardized is present then click continue$/ do
 end
 
 ###################################################################Postage Meter Address################################
+Then /^WL expect membership page postage meter addr to be (.*)$/ do |str|
+  meter_header = WhiteLabel.membership_page.meter_header
+  meter_header.wait_until_present(timeout: 5)
+  expect(meter_header.text_value.strip).to eql(str)
+end
+
 Then /^WL: check if postage meter address is present then set the value$/ do
   membership_page = WhiteLabel.membership_page
   if TestData.hash[:street_address].include? 'PO Box'
@@ -660,8 +681,7 @@ Then /^WL: click username taken continue button$/ do
   WhiteLabel.membership_page.username_taken_continue_btn.click
 end
 
-
-#Side content
+##################################################Side content##########################################################
 Then /^WL: expect membership page need mailing info header to be$/ do |str|
   expect(WhiteLabel.membership_page.need_mailing_info_header.text_value.strip).to eql(str)
 end
@@ -742,6 +762,7 @@ end
 
 
 Then /^WL: set membership page default values$/ do
+  step 'WL: click membership page submit button'
   step 'WL: set membership page personal info to random info between zone 5 and zone 8'
   step 'WL: set membership page credit card number to 4111111111111111'
   step 'WL: select membership page credit card month Dec (12)'

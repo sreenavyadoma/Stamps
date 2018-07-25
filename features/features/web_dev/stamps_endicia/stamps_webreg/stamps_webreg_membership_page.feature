@@ -353,7 +353,15 @@ Feature: Stamps WebReg: Membership Page
     Inverness FL 34451-2951
     """
     Then WL: click membership page standardized addr modal continue button
+    Then WL: click membership page back button
+    Then WL: expect membership page address is PO Box 2951
+    Then WL: expect membership page city is Inverness
+    Then WL: expect membership page state is FL
+    Then WL: expect membership page zip is 34451-2951
 
+    Then WL: click membership page submit button
+
+    Then WL expect membership page postage meter addr to be An additional postage meter address is required
 
 
 

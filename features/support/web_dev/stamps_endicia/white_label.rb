@@ -25,6 +25,8 @@ module WhiteLabel
     page_object(:header) { {xpath: '//h1[(contains(text(), "Set up your personal Post Office"))]'} }
     page_object(:membership_bread_crumb) { {xpath: '//li[@id="breadcrumb_Membership"]/span'} }
     button(:modal_x) { {class: ['close']} }
+    button(:back) {{id: 'prev'}}
+    button(:submit) {{id: 'next'}}
 
     #Personal Info
     text_field(:first_name, tag: :text_field, required: true) { { id: 'firstName' } }
@@ -78,19 +80,15 @@ module WhiteLabel
 
     #Term and Conditions
     page_object(:terms_conditions) {{id: 'termsConditions'}}
+    page_object(:addr_enable_disable_check) { {xpath: '//li[@id="terms"]/div/div/div'} }
     page_object(:terms_conditions_help_block) { {xpath: '//li[@id="terms"]/div/div/div/div[2]/span'} }
     link(:terms_conditions_link) { {class: ['termsLabel terms-conditions-link']} }
     page_object(:terms_conditions_header) { {xpath: '//h3[(contains(text(), "Terms and Conditions"))]'} }
 
-    button(:back) {{id: 'prev'}}
-    button(:submit) {{id: 'next'}}
-
     #Billing Address
     page_object(:billing_addr_checkbox) {{id: 'useMailingAddressForBilling'}}
-    page_object(:billing_addr_enable_disable) { {xpath: '//li[@id="terms"]/div/div/div'} }
     page_object(:billing_addr_header) {{class: ['billingAddressForm']}}
     text_field(:billing_addr, tag: :text_field, required: true) { { id: 'billingStreet' } }
-    #page_objects(:billing_addr_auto_complete, index: 1) {{xpath: '//div[@class="pac-container pac-logo"]/div/span[2]/span'}}
     page_object(:billing_addr_help_block) {{xpath: '//li[@id="creditcard"]/div/div[6]/div[contains(@class, "billingAddressForm")]/div/span'}}
     text_field(:billing_city, tag: :text_field, required: true) { { id: 'billingCity' } }
     page_object(:billing_city_help_block) { {xpath: '//*[@id="creditcard"]/div/div[contains(@class, "col-lg-5")]/div/div/span'} }
@@ -149,10 +147,10 @@ module WhiteLabel
     #address standardized
     page_object(:addr_std_header) { {xpath: '//h3[(contains(text(), "Your address has been standardized"))]'} }
     page_object(:addr_std_p) { {id: 'instructions'} }
-    page_object(:addr_std_addr_orig_lbl) { {xpah: '//div[@id="addrOrig"]/p[1]'} }
-    page_object(:addr_std_addr_orig) { {xpah: '//div[@id="addrOrig"]/p[2]'} }
-    page_object(:addr_std_addr_new_lbl) { {xpah: '//div[@id="addrNew"]/p[1]'} }
-    page_object(:addr_std_addr_new) { {xpah: '//div[@id="addrNew"]/p[2]'} }
+    page_object(:addr_std_addr_orig_lbl) { {xpah: '//*[@id="addrOrig"]/p[1]'} }
+    page_object(:addr_std_addr_orig) { {xpah: '//*[@id="addrOrig"]/p[2]'} }
+    page_object(:addr_std_addr_new_lbl) { {xpah: '//*[@id="addrNew"]/p[1]'} }
+    page_object(:addr_std_addr_new) { {xpah: '//*[@id="addrNew"]/p[2]'} }
     button(:addr_std_continue) {{id: 'btnAddrValOkay'}}
     button(:addr_std_cancel) {{xpath: '//div[@class="modal-footer"]/button[1]'}}
 
