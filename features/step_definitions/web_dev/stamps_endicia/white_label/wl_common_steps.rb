@@ -165,3 +165,24 @@ Then /^WL: click username taken continue button$/ do
   WhiteLabel.membership_page.username_taken_continue_btn.click
 end
 
+Then /^WL: expect username taken header to be (.*)$/ do |str|
+  username_taken_header = WhiteLabel.membership_page.username_taken_header
+  username_taken_header.wait_until_present(timeout: 2)
+  expect(username_taken_header.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect username taken paragraph to be$/ do |str|
+  username_taken_p = WhiteLabel.membership_page.username_taken_p
+  actual = username_taken_p.text_value.strip.gsub(/\P{ASCII}/, '')
+  expected = str.gsub('USERNAME', TestData.hash[:username])
+
+  expect(expected).to eql(actual)
+end
+
+Then /^WL: expect username taken tooltip to be (.*)$/ do |str|
+  membership_page = WhiteLabel.membership_page
+  membership_page.new_username.clear
+  membership_page.new_username.send_keys(:tab)
+  expect(membership_page.new_username_help_block.text_value.strip).to eql(str)
+end
+

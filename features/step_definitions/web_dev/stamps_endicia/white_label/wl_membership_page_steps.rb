@@ -568,26 +568,26 @@ end
 
 Then /^WL: expect membership page standardized addr modal original address label to be (.*)$/ do |str|
   membership_page  = WhiteLabel.membership_page
-  # if membership_page.addr_std_addr_orig_lbl.present? == false
-  #   membership_page.submit.doube_click
-  #   membership_page.submit.click
-  # end
-  expect(membership_page.addr_std_addr_orig_lbl.text_value.strip).to eql(str)
+  text = membership_page.addr_std_addr_orig.text_value.strip.split("\n")[0]
+  expect(str).to eql(text.strip)
 end
 
 Then /^WL: expect membership page standardized addr modal original address to be$/ do |str|
   addr_std_addr_orig  = WhiteLabel.membership_page.addr_std_addr_orig
-  expect(addr_std_addr_orig.text_value.strip).to eql(str)
+  text = addr_std_addr_orig.text_value.strip.gsub("Original Address:\n",'')
+  expect(text.strip).to eql(str)
 end
 
 Then /^WL: expect membership page standardized addr modal standardized by the usps label to be (.*)$/ do |str|
-  addr_std_addr_new_lbl  = WhiteLabel.membership_page.addr_std_addr_new_lbl
-  expect(addr_std_addr_new_lbl.text_value.strip).to eql(str)
+  addr_std_addr_new  = WhiteLabel.membership_page.addr_std_addr_new
+  text = addr_std_addr_new.text_value.strip.split("\n")[0]
+  expect(text.strip).to eql(str)
 end
 
 Then /^WL: expect membership page standardized addr modal standardized by the usps address to be$/ do |str|
   addr_std_addr_new  = WhiteLabel.membership_page.addr_std_addr_new
-  expect(addr_std_addr_new.text_value.strip).to eql(str)
+  text = addr_std_addr_new.text_value.strip.gsub("Standardized by the USPS:\n",'')
+  expect(text.strip).to eql(str)
 end
 
 Then /^WL: click membership page standardized addr modal continue button$/ do

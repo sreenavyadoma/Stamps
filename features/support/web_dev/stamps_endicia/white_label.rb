@@ -102,9 +102,9 @@ module WhiteLabel
 
     #username taken
     page_object(:username_taken_header) { {xpath: '//h3[(contains(text(), "Username Taken"))]'} }
-    page_objects(:username_taken_p1, index: 0) { {id: 'prev-username'} }
-    page_objects(:username_taken_p2, index: 1) { {id: 'prev-username'} }
+    page_object(:username_taken_p) { {id: 'prev-username'} }
     text_field(:new_username, tag: :text_field, required: true) { { id: 'newUsername' } }
+    page_object(:new_username_help_block) { {class: 'help-block filled'} }
     button(:username_taken_continue_btn) {{id: 'btnUserNameTakenContinue'}}
     button(:username_taken_close_btn) {{class: ['close']}}
 
@@ -115,10 +115,8 @@ module WhiteLabel
     #address Standardized
     page_object(:addr_std_header) { {xpath: '//h3[(contains(text(), "Your address has been standardized"))]'} }
     page_object(:addr_std_p) { {id: 'instructions'} }
-    page_object(:addr_std_addr_orig_lbl) { {xpah: '//*[@id="addrOrig"]/p[1]'} }
-    page_object(:addr_std_addr_orig) { {xpah: '//*[@id="addrOrig"]/p[2]'} }
-    page_object(:addr_std_addr_new_lbl) { {xpah: '//*[@id="addrNew"]/p[1]'} }
-    page_object(:addr_std_addr_new) { {xpah: '//*[@id="addrNew"]/p[2]'} }
+    page_object(:addr_std_addr_orig) { {id: 'addrOrig'} }
+    page_object(:addr_std_addr_new) { {id: 'addrNew'} }
     button(:addr_std_continue) {{id: 'btnAddrValOkay'}}
     button(:addr_std_cancel) {{xpath: '//div[@class="modal-footer"]/button[1]'}}
 
