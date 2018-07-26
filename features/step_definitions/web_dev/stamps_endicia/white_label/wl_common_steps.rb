@@ -52,8 +52,7 @@ Then /^WL: select security questions first security question (.*)$/ do |str|
   common_page.dropdown_element.safe_wait_until_present(timeout: 2)
   common_page.dropdown_element.click
   TestData.hash[:first_security_question] = common_page.first_security_question.attribute_value('title').strip
-  expect(common_page.first_security_question.attribute_value('title').strip).to eql str
-  TestData.hash[:first_security_question] = str
+  expect(TestData.hash[:first_security_question]).to eql str
 end
 
 Then /^WL: [Ee]xpect first security question tooltip index (\d+) to be (.*)$/ do |index, str|
@@ -66,7 +65,7 @@ end
 Then /^WL: [Ee]xpect security questions first security question is (?:correct|(.*))$/ do |str|
   first_security_question = WhiteLabel.common_page.first_security_question
   str ||= TestData.hash[:first_security_question]
-  expect(first_security_question.text_value.strip).to eql(str)
+  expect(first_security_question.title).to eql(str)
   TestData.hash[:first_security_question] = str
 end
 
@@ -90,8 +89,7 @@ Then /^WL: select security questions second security question (.*)$/ do |str|
   common_page.dropdown_element.safe_wait_until_present(timeout: 2)
   common_page.dropdown_element.click
   TestData.hash[:second_security_question] = common_page.second_security_question.attribute_value('title').strip
-  expect(common_page.second_security_question.attribute_value('title').strip).to eql str
-  TestData.hash[:second_security_question] = str
+  expect(TestData.hash[:second_security_question]).to eql str
 end
 
 Then /^WL: [Ee]xpect second security question tooltip index (\d+) to be (.*)$/ do |index, str|
@@ -104,7 +102,7 @@ end
 Then /^WL: [Ee]xpect security questions second security question is (?:correct|(.*))$/ do |str|
   second_security_question = WhiteLabel.common_page.second_security_question
   str ||= TestData.hash[:second_security_question]
-  expect(second_security_question.text_value.strip).to eql(str)
+  expect(second_security_question.title).to eql(str)
   TestData.hash[:second_security_question] = str
 end
 
@@ -123,6 +121,10 @@ end
 
 Then /^WL: click security questions get stared button$/ do
   WhiteLabel.common_page.sq_get_started.click
+end
+
+Then /^WL: [Ee]xpect security question modal does not exists$/ do
+  expect(WhiteLabel.common_page.security_question).not_to be_present
 end
 
 Then /^WL: if security question is present before registration then set the values$/ do

@@ -208,7 +208,7 @@ end
 
 Then /^WL: [Ss]how [Pp]rofile [Pp]age [Pp]romo [Cc]ode$/ do
   WhiteLabel.profile_page.promo_code_link.click if  WhiteLabel.profile_page.promo_code_link.present?
-  expect(WhiteLabel.profile_page.promo_code).to be_present, 'Unable to show Promo Code textbox upon clicking Show Promo Code link.'
+  expect(WhiteLabel.profile_page.promo_code).to be_present
 end
 
 #.......survey quetion......#
@@ -226,7 +226,7 @@ end
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Ss]urvey [Qq]uestion is (?:correct|(.*))$/ do |str|
   survey = WhiteLabel.profile_page.survey
   str ||= TestData.hash[:survey]
-  expect(survey.text_value.strip).to eql(str)
+  expect(survey.title).to eql(str)
   TestData.hash[:survey] = str
 end
 
@@ -243,7 +243,7 @@ end
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age how did you hear about us option is (?:correct|(.*))$/ do |str|
   referrer_name = WhiteLabel.profile_page.referrer_name
   str ||= TestData.hash[:referrer_name]
-  expect(referrer_name.text_value.strip).to eql(str)
+  expect(referrer_name.title).to eql(str)
   TestData.hash[:referrer_name] = str
 end
 
@@ -268,7 +268,7 @@ Then /^WL: [Ee]xpect [Rr]egistration navigation bar USPS [Ll]ogo exists$/ do
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile bread crumbs is (.*)$/ do |str|
-  expect(WhiteLabel.profile_page.profile_bread_crumb.text).to eql(str)
+  expect(WhiteLabel.profile_page.profile_bread_crumb.text_value.strip).to eql(str)
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age header contain (.*)$/ do |str|
@@ -280,11 +280,11 @@ Then /^WL: [Ee]xpect [Pp]rofile [Pp]age paragraph contain$/ do |str|
 end
 
 Then /^WL: [Ee]xpect Profile page SideContent Side Account header is (.*)$/ do |str|
-  expect(WhiteLabel.profile_page.side_acct_header.text).to eql(str)
+  expect(WhiteLabel.profile_page.side_acct_header.text_value.strip).to eql(str)
 end
 
 Then /^WL: [Ee]xpect Profile page Money-saving offers and new products header is \"(.*)\"$/ do |str|
-  expect(WhiteLabel.profile_page.side_opt_in_header.text).to eql(str)
+  expect(WhiteLabel.profile_page.side_opt_in_header.text_value.strip).to eql(str)
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age content under Money-saving offers and new products$/ do |str|

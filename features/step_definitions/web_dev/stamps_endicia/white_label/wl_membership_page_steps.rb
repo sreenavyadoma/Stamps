@@ -5,7 +5,7 @@ end
 Then /^WL: [Ee]xpect membership page bread crumbs is (.*)$/ do |str|
   membership_bread_crumb = WhiteLabel.membership_page.membership_bread_crumb
   membership_bread_crumb.safe_wait_until_present(timeout: 30)
-  expect(membership_bread_crumb.text).to eql(str)
+  expect(membership_bread_crumb.text_value.strip).to eql(str)
 end
 
 Then /^WL: set membership page first name to (?:random value|(.*))$/ do |str|
