@@ -164,6 +164,7 @@ Then /^Verify Health Check for (.+)$/ do |str|
           else
             # ignore
           end
+
         when /address/
           case SdcEnv.env
           when :qacc
@@ -177,6 +178,7 @@ Then /^Verify Health Check for (.+)$/ do |str|
           else
             # ignore
           end
+
         when /or reports/
           case SdcEnv.env
           when :qacc
@@ -190,6 +192,7 @@ Then /^Verify Health Check for (.+)$/ do |str|
           else
             # ignore
           end
+
         when /postage/
           case SdcEnv.env
           when :qacc
