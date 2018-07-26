@@ -23,7 +23,7 @@ Then /^click bulk update update order button$/ do
   bulk.title.safe_wait_until_present(timeout: 2)
   bulk.save_preset.safe_wait_until_present(timeout: 2)
   bulk.update_orders.safe_wait_until_present(timeout: 2)
-  sleep 4 unless SauceSession.config.build_number
+  sleep 4 unless TestSession.env.build_number
   bulk.update_orders.click
   loading = SdcOrders.loading_orders
   loading.safe_wait_until_present(timeout: 2)
@@ -32,7 +32,7 @@ Then /^click bulk update update order button$/ do
   updating.safe_wait_until_present(timeout: 2)
   updating.safe_wait_while_present(timeout: 2)
   SdcGrid.body.wait_until_present(timeout: 10)
-  sleep 2 unless SauceSession.config.build_number
+  sleep 2 unless TestSession.env.build_number
   step 'wait for js to stop'
 end
 

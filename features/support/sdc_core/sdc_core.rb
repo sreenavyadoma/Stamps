@@ -55,7 +55,8 @@ end
 # BUILD_NUMBER  The current build number, such as "153"
 # NODE_NAME Name of the agent if the build is on an agent, or "master" if run on master
 # BUILD_URL Full URL of this build, like http://server:port/jenkins/job/foo/15/
-class SauceConfig < ::SdcModel
+#
+class EnvironmentVariables < ::SdcModel
   key(:sauce_username) { ENV['SAUCE_USERNAME'] }
   key(:sauce_access_key) { ENV['SAUCE_ACCESS_KEY'] }
   key(:host) { ENV['SELENIUM_HOST'] }
@@ -64,6 +65,7 @@ class SauceConfig < ::SdcModel
   key(:version) { ENV['SELENIUM_VERSION'] }
   key(:browser) { ENV['SELENIUM_BROWSER'] }
   key(:driver) { ENV['SELENIUM_DRIVER'] }
+  key(:sauce_build_name) { ENV['SAUCE_BUILD_NAME'] }
   key(:url) { ENV['SELENIUM_URL'] }
   key(:starting_url) { ENV['SELENIUM_STARTING_URL'] }
   key(:sauce_on_demand_browsers) { ENV['SAUCE_ONDEMAND_BROWSERS'] }
@@ -74,9 +76,11 @@ class SauceConfig < ::SdcModel
   key(:node_name) { ENV['NODE_NAME'] }
   key(:build_url) { ENV['BUILD_URL'] }
   key(:screen_resolution) { ENV['SCREEN_RESOLUTION'] || '1280x1024' }
-  key(:idle_timeout) { ENV['IDLE_TIMEOUT'] || 120 }
+  key(:idle_timeout) { ENV['IDLE_TIMEOUT'] || 150 }
   key(:sauce_end_point) { "https://#{sauce_username}:#{sauce_access_key}@#{host}:#{port}/wd/hub" }
-  # "https://robcruz:0e60dbc9-5bbf-425a-988b-f81c42d6b7ef@ondemand.saucelabs.com:443/wd/hub"
+
+  key(:device) { ENV['SELENIUM_DEVICE'] }
+  key(:device_orientation) { ENV['SELENIUM_DEVICE_ORIENTATION'] }
 
   def test_name
     job_name || "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
@@ -92,34 +96,60 @@ class SauceConfig < ::SdcModel
 
 end
 
-module SauceSession
-  def config
-    @config ||= SauceConfig.new
+module TestSession
+  def env
+    @env ||= EnvironmentVariables.new
   end
-  module_function :config
+  module_function :env
 
-  def browser
-    begin
-      caps_conf = {
-          :version => config.version,
-          :platform => config.platform,
-          :name => config.test_name,
-          :build => config.build,
-          :idleTimeout => config.idle_timeout,
-          :screenResolution => config.screen_resolution,
-          :extendedDebugging => true
-      }
-    rescue Exception => e
-      SdcLogger.debug e.message
-      SdcLogger.debug e.backtrace.join("\n")
+  def driver
+    if env.device
+      begin
+        desired_caps = {
+            caps: {
+                name: env.test_name,
+                appiumVersion: '1.7.2',
+                deviceName:    env.device,
+                deviceOrientation: env.device_orientation,
+                platformVersion: env.version,
+                platformName:  'iOS',
+                browserName: 'Safari'
+            },
+            appium_lib: {
+                sauce_username:   env.sauce_username,
+                sauce_access_key: env.sauce_access_key,
+                wait: env.idle_timeout
+            }
+        }
+      rescue
+        # ignore
+      end
+      @driver = Appium::Driver.new(desired_caps, false).start_driver
+    else
+      begin
+        desired_caps = {
+            :name => env.test_name,
+            :version => env.version,
+            :platform => env.platform,
+            :build => env.build,
+            :idleTimeout => env.idle_timeout,
+            :screenResolution => env.screen_resolution,
+            :extendedDebugging => true
+        }
+      rescue
+        # ignore
+      end
+      caps = Selenium::WebDriver::Remote::Capabilities.send(env.browser, desired_caps)
+      client = Selenium::WebDriver::Remote::Http::Default.new
+      client.timeout = env.idle_timeout
+      url = env.sauce_end_point
+      @driver = Watir::Browser.new(:remote, desired_capabilities: caps, http_client: client, url: url)
     end
-    caps = Selenium::WebDriver::Remote::Capabilities.send(config.browser, caps_conf)
-    client = Selenium::WebDriver::Remote::Http::Default.new
-    client.timeout = config.idle_timeout
-    url = config.sauce_end_point
-    @browser = Watir::Browser.new(:remote, desired_capabilities: caps, http_client: client, url: url)
+
+    @driver
   end
-  module_function :browser
+  module_function :driver
+
 end
 
 module SdcFinder
