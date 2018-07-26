@@ -20,7 +20,6 @@ module SdcMail
     klass = Class.new(SdcPage) do
       page_object(:verifying_account_info) { {xpath: '//*[contains(text(), "Verifying")]'} }
     end
-
     klass.new.verifying_account_info
   end
   module_function :verifying_account_info

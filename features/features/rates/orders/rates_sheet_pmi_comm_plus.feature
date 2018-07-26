@@ -1,13 +1,17 @@
 Feature: PMI Comm Plus Rates
 
   Background:
-    Given Login and configure rate tests
+    Given Start test driver
+    Given sign-in to mail
+    Given excel rate sheet is loaded
+    Given prepare environment for ratings test
 
   @rates_pmi_comm_plus_group_1
   Scenario: PMI Comm Plus Group 1
     Then run rate test PMI Comm Plus in Country Price Group 1
     Then Rates: Number of failed test should be less than 1
     Then sign out
+
   @rates_pmi_comm_plus_group_2
   Scenario: PMI Comm Plus Group 2
     #Then set

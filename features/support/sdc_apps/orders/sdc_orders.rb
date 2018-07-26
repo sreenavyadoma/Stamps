@@ -5,16 +5,23 @@ module SdcOrders
     klass = Class.new(SdcPage) do
       page_object(:loading) { { xpath: '//*[contains(text(), "Loading orders...")]' } }
     end
-
     klass.new.loading
   end
   module_function :loading_orders
+
+  def updating_orders
+    klass = Class.new(SdcPage) do
+      page_object(:updating) { { xpath: '//*[text()="Updating Orders"]' } }
+    end
+
+    klass.new.updating
+  end
+  module_function :updating_orders
 
   def initializing_orders_db
     klass = Class.new(SdcPage) do
       page_object(:initializing_orders) { { xpath: '//*[text()="Initializing Order Database"]' } }
     end
-
     klass.new.initializing_orders
   end
   module_function :initializing_orders_db
