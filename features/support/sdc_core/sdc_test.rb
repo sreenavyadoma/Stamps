@@ -130,7 +130,7 @@ class SdcTest
       SdcLogger.debug "Initializing test driver...\n"
 
       if SdcEnv.sauce.browser
-        SdcPage.browser = SauceSession.new.create_browser
+        SdcPage.browser = SauceSession.browser
         SdcLogger.debug SdcEnv.sauce.session_info(SdcPage.browser.driver.session_id)
       end
 
