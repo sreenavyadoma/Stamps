@@ -236,6 +236,8 @@ Feature: Stamps WebReg: Membership Page
   Scenario: Membership Page Address Validation
 
     Then WL: set profile page default values
+    Then WL: set profile page username to webreg1
+    Then WL: click profile page continue button
 
 #    #Autocomplete Profile Address
 #    Then pause for 1 second
@@ -317,14 +319,14 @@ Feature: Stamps WebReg: Membership Page
 
     #Invalid Address Modal
     Then WL: set membership page default values
-    Then WL: set membership page address to kdjfkd
-    Then WL: click membership page submit button
-    Then WL: expect membership page invalid address modal header to be Invalid Address
-    Then WL: expect membership page invalid address modal paragraph to be
-    """
-    Your address does not appear to be a valid USPS mailing address. Please verify that it is entered correctly. If you need assistance, please contact customer support at 1-888-434-0055, Monday - Friday, 6 a.m. - 6 p.m. Pacific Time.
-    """
-    Then WL: click modal x button
+#    Then WL: set membership page address to kdjfkd
+#    Then WL: click membership page submit button
+#    Then WL: expect membership page invalid address modal header to be Invalid Address
+#    Then WL: expect membership page invalid address modal paragraph to be
+#    """
+#    Your address does not appear to be a valid USPS mailing address. Please verify that it is entered correctly. If you need assistance, please contact customer support at 1-888-434-0055, Monday - Friday, 6 a.m. - 6 p.m. Pacific Time.
+#    """
+#    Then WL: click modal x button
 
     #Exact Address not Found
     Then WL: set membership page address to 5211 Pacific Concourse Dr
@@ -333,11 +335,18 @@ Feature: Stamps WebReg: Membership Page
     Then WL: set membership page zip to 90045
     Then WL: click membership page submit button
     Then WL: expect membership page exact addr modal header to be Exact address not found
-    # Then WL: expect membership page exact addr modal paragraph to be
-#    """
-#    The USPS address standardization system could not find your exact address. Select an address from the list below that best matches it:
-#    """
+    Then WL: expect membership page exact addr modal paragraph to be
+    """
+    The USPS address standardization system could not find your exact address. Select an address from the list below that best matches it:
+    """
+    Then WL: select membership page exact addr modal radio button index 1
     Then WL: click modal continue button
+    Then WL: click modal x button
+    Then WL: expect membership page address is 5211 Pacific Concourse Dr Apt 1102
+    Then WL: expect membership page city is Los Angeles
+    Then WL: expect membership page state is CA
+    Then WL: expect membership page zip is 90045-6908
+
 
     #Standardize Address Modal
     Then WL: set membership page address to PO Box 2951 US-41

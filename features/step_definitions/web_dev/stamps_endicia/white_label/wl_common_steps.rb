@@ -138,4 +138,9 @@ Then /^WL: click modal cancle button$/ do
 end
 
 
+Then /^WL: click modal x button$/ do
+  WhiteLabel.membership_page.modal_x.click
+  step 'pause for 1 second'
+end
+
 

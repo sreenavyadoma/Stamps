@@ -18,6 +18,7 @@ Then /^WL: set profile page username to (?:random value|(.*))$/ do |str|
   WhiteLabel.profile_page.username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
   print "UserName = #{TestData.hash[:username]}\n"
   TestData.hash[:username_taken] = WhiteLabel.common_page.username_query(TestData.hash[:username])
+  step 'WL: blur_out on membership page'
 end
 
 Then /^WL: set profile page password to (?:random value|(.*))$/ do |str|
@@ -82,5 +83,4 @@ Then /^WL: set profile page default values$/ do
   step 'WL: set profile page survey question to Business Use - Both mailing and shipping'
   step 'WL: set profile page how did you hear about us? to Received Mailer'
   step 'WL: set profile page promo code to PR33-NH77'
-  step 'WL: click profile page continue button'
 end

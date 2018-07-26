@@ -3,11 +3,6 @@ Then /^WL: blur_out on membership page$/ do
   step 'pause for 1 second'
 end
 
-Then /^WL: click modal x button$/ do
-  WhiteLabel.membership_page.modal_x.click
-  step 'pause for 1 second'
-end
-
 Then /^WL: click membership page submit button$/ do
   step 'pause for 1 second'
   WhiteLabel.membership_page.submit.click
@@ -146,7 +141,7 @@ Then /^WL: select membership page state (.*)$/ do |str|
   membership_page.dropdown_selection(str, 0)
   membership_page.dropdown_element.safe_wait_until_present(timeout: 2)
   membership_page.dropdown_element.click
-  step "WL: blur_out on membership page"
+  step 'WL: blur_out on membership page'
   TestData.hash[:state] = membership_page.state.attribute_value('title').strip
   expect(TestData.hash[:state].strip).to eql str
 end
@@ -548,7 +543,7 @@ Then /^WL: click membership page terms & conditions link$/ do
 end
 
 Then /^WL: click membership page terms & conditions modal x button$/ do
-  WhiteLabel.membership_page.modal_x.click
+  WhiteLabel.common_page.modal_x.click
 end
 
 Then /^WL: expect membership page terms and conditions modal is present$/ do
@@ -752,7 +747,7 @@ Then /^WL: click membership page bonus offer details link$/ do
 end
 
 Then /^WL: click membership page bonus offer details modal x button$/ do
-  WhiteLabel.membership_page.modal_x.click
+  WhiteLabel.common_page.modal_x.click
 end
 
 Then /^WL: expect membership page your stamps.com offer modal to be present$/ do
@@ -784,3 +779,12 @@ end
 Then /^WL: expect membership page exact addr modal header to be (.*)$/ do |str|
   expect(WhiteLabel.membership_page.exact_addr_header.text_value.strip).to eql(str)
 end
+
+Then /^WL: expect membership page exact addr modal paragraph to be$/ do |str|
+  expect(WhiteLabel.membership_page.exact_addr_p.text_value.strip).to eql(str)
+end
+
+Then /^WL: select membership page exact addr modal radio button index (\d+)$/ do |index|
+  WhiteLabel.membership_page.exact_addr_choice[index-1].click
+end
+

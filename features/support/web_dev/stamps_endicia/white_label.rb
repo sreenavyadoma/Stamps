@@ -24,7 +24,6 @@ module WhiteLabel
   class MembershipPage < SdcPage
     page_object(:header) { {xpath: '//h1[(contains(text(), "Set up your personal Post Office"))]'} }
     page_object(:membership_bread_crumb) { {xpath: '//li[@id="breadcrumb_Membership"]/span'} }
-    button(:modal_x) { {class: ['close']} }
     button(:back) {{id: 'prev'}}
     button(:submit) {{id: 'next'}}
 
@@ -157,7 +156,7 @@ module WhiteLabel
     #Exact Address
     page_object(:exact_addr_header) { {xpath: '//h3[(contains(text(), "Exact address not found"))]'} }
     page_object(:exact_addr_p) { {id: 'instructions'} }
-    page_objects(:exact_addr_choice, index:1) { {xpath: '//table[@class="table table-striped"]/tbody/tr'} }
+    page_objects(:exact_addr_choice) { {xpath: '//table[@class="table table-striped"]/tbody/tr'} }
 
     #postage meter address
     page_object(:meter_header) { {xpath: '//h1[(contains(text(), "An additional postage meter address is required"))]'} }
