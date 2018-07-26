@@ -128,7 +128,11 @@ class SdcTest
 
       if TestSession.env.browser || TestSession.env.device
         SdcPage.browser = TestSession.driver
-        SdcLogger.debug SdcEnv.sauce.session_info(SdcPage.browser.driver.session_id)
+        if TestSession.env.browser
+          SdcLogger.debug SdcEnv.sauce.session_info(SdcPage.browser.driver.session_id)
+        else
+          SdcLogger.debug SdcEnv.sauce.session_info(SdcPage.browser.session_id)
+        end
 
       elsif SdcEnv.browser
         begin

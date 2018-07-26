@@ -4,6 +4,7 @@ Feature:  BVT tests for Orders
     Given Start test driver
 
   @healthcheck
+  @orders_healthcheck
   Scenario: Orders Healthcheck
     Then Verify Health Check for Orders
 

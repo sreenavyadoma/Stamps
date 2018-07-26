@@ -108,12 +108,13 @@ module TestSession
         desired_caps = {
             caps: {
                 name: env.test_name,
-                appiumVersion: '1.7.2',
-                deviceName:    env.device,
+                appiumVersion: '1.8.1',
+                deviceName: env.device,
                 deviceOrientation: env.device_orientation,
-                platformVersion: env.version,
-                platformName:  'iOS',
-                browserName: 'Safari'
+                platformVersion: '11.2', #env.version,
+                platformName: 'iOS',
+                browserName: 'Safari',
+                automationName: 'XCUITest'
             },
             appium_lib: {
                 sauce_username:   env.sauce_username,
