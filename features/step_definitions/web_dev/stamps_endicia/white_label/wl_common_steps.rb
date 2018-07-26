@@ -139,8 +139,29 @@ end
 
 
 Then /^WL: click modal x button$/ do
-  WhiteLabel.membership_page.modal_x.click
+  WhiteLabel.common_page.modal_x.click
   step 'pause for 1 second'
 end
 
+######################Username Taken Modal#############################
+Then /^WL: if username taken is present then set username to (?:random value|(.*))$/ do |str|
+  membership_page =  WhiteLabel.membership_page
+  if TestData.hash[:username_taken].empty?
+    expect(membership_page.username_taken_header).not_to be_present
+  else
+    membership_page.new_username.wait_until_present(timeout: 5)
+    expect(membership_page.username_taken_header).to be_present
+    membership_page.new_username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
+    print "UserName = #{TestData.hash[:username]}\n"
+    step 'WL: click username taken continue button'
+  end
+end
+
+Then /^WL: set username taken to (?:random value|(.*))/ do |str|
+  WhiteLabel.membership_page.new_username.set((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
+end
+
+Then /^WL: click username taken continue button$/ do
+  WhiteLabel.membership_page.username_taken_continue_btn.click
+end
 

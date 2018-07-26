@@ -10,7 +10,9 @@ Then /^WL: click membership page submit button$/ do
 end
 
 Then /^WL: click membership page back button$/ do
-  WhiteLabel.membership_page.back.click
+  back =  WhiteLabel.membership_page.back
+  back.wait_until_present(timeout: 2)
+  back.click
   step 'pause for 1 second'
 end
 
@@ -90,12 +92,12 @@ Then /^WL: set membership page address to (.*)$/ do |str|
 end
 
 Then /^WL: click membership page address$/ do
-   WhiteLabel.membership_page.address.click
-   step 'pause for 1 second'
+  WhiteLabel.membership_page.address.click
+  step 'pause for 1 second'
 end
 
 Then /WL: select membership page address autocomplete index (\d+)$/ do |index|
-  address_auto_complete = WhiteLabel.membership_page.address_auto_complete(index)
+  address_auto_complete = WhiteLabel.membership_page.address_auto_complete[index-1]
   address_auto_complete.wait_until_present(timeout: 2)
   address_auto_complete.click
   step "WL: blur_out on membership page"
@@ -115,12 +117,12 @@ Then /^WL: expect membership page address tooltip to be (.*)$/ do |str|
 end
 
 Then /^WL: set membership page city to (.*)$/ do |str|
-   city = WhiteLabel.membership_page.city
-   city.clear
-   city.set(str)
-   step "WL: blur_out on membership page"
+  city = WhiteLabel.membership_page.city
+  city.clear
+  city.set(str)
+  step "WL: blur_out on membership page"
 
-   TestData.hash[:city] = str
+  TestData.hash[:city] = str
 end
 
 Then /^WL: expect membership page city is (?:correct|(.*))$/ do |str|
@@ -243,13 +245,13 @@ end
 
 
 Then /^WL: set membership page cardholder's name to (?:random value|(.*))$/ do |str|
-   cc_holder_name = WhiteLabel.membership_page.cc_holder_name
-   cc_holder_name.clear
-   str ||= TestHelper.rand_full_name
-   while cc_holder_name.text_value.strip == ''
-     cc_holder_name.set(TestData.hash[:card_holder_name] =str)
-   end
-    step 'WL: blur_out on membership page'
+  cc_holder_name = WhiteLabel.membership_page.cc_holder_name
+  cc_holder_name.clear
+  str ||= TestHelper.rand_full_name
+  while cc_holder_name.text_value.strip == ''
+    cc_holder_name.set(TestData.hash[:card_holder_name] =str)
+  end
+  step 'WL: blur_out on membership page'
 end
 
 Then /^WL: expect membership page cardholder's name is (?:correct|(.*))$/ do |str|
@@ -390,7 +392,7 @@ Then /^WL: click membership page billing address$/ do
 end
 
 Then /WL: select membership page billing address autocomplete index (\d+)$/ do |index|
-  billing_addr_auto_complete = WhiteLabel.membership_page.billing_addr_auto_complete(index)
+  billing_addr_auto_complete = WhiteLabel.membership_page.billing_addr_auto_complete[index-1]
   billing_addr_auto_complete.wait_until_present(timeout: 2)
   billing_addr_auto_complete.click
   step "WL: blur_out on membership page"
@@ -654,7 +656,7 @@ end
 Then /^WL: select postage meter state (.*)$/ do |str|
   membership_page = WhiteLabel.membership_page
   membership_page.meter_state.click
-  membership_page.dropdown_selection(str)
+  membership_page.dropdown_selection(str, 0)
   membership_page.dropdown_element.safe_wait_until_present(timeout: 2)
   membership_page.dropdown_element.click
   step "WL: blur_out on membership page"
@@ -668,24 +670,6 @@ end
 
 Then /^WL: set postage meter zip to (.*)$/ do |str|
   WhiteLabel.membership_page.meter_zip.set(TestData.hash[:zip] = str)
-end
-
-Then /^WL: if username taken is present then set username to (?:random value|(.*))$/ do |str|
-  membership_page =  WhiteLabel.membership_page
-  if TestData.hash[:username_taken].empty?
-    expect(membership_page.username_taken_header).not_to be_present
-  else
-    membership_page.new_username.wait_until_present(timeout: 5)
-    expect(membership_page.username_taken_header).to be_present
-    membership_page.new_username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
-    print "UserName = #{TestData.hash[:username]}\n"
-    step 'WL: click username taken continue button'
-  end
-end
-
-#######################################################################Username Taken Modal#############################
-Then /^WL: click username taken continue button$/ do
-  WhiteLabel.membership_page.username_taken_continue_btn.click
 end
 
 ##################################################Side content##########################################################
@@ -777,7 +761,9 @@ end
 
 ##########################Exact Address##################################################################
 Then /^WL: expect membership page exact addr modal header to be (.*)$/ do |str|
-  expect(WhiteLabel.membership_page.exact_addr_header.text_value.strip).to eql(str)
+  exact_addr_header = WhiteLabel.membership_page.exact_addr_header
+  exact_addr_header.wait_until_present(timeout: 2)
+  expect(exact_addr_header.text_value.strip).to eql(str)
 end
 
 Then /^WL: expect membership page exact addr modal paragraph to be$/ do |str|
@@ -785,6 +771,8 @@ Then /^WL: expect membership page exact addr modal paragraph to be$/ do |str|
 end
 
 Then /^WL: select membership page exact addr modal radio button index (\d+)$/ do |index|
-  WhiteLabel.membership_page.exact_addr_choice[index-1].click
+  exact_addr_choice = WhiteLabel.membership_page.exact_addr_choice
+  #exact_addr_choice.scroll_into_view
+  exact_addr_choice[index].click
 end
 
