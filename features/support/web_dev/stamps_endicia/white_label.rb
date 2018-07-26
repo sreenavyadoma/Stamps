@@ -144,7 +144,7 @@ module WhiteLabel
     page_object(:invalid_addr_header) { {xpath: '//h3[(contains(text(), "Invalid Address"))]'} }
     page_object(:invalid_addr_p) { {id: 'errorDescription'} }
 
-    #address standardized
+    #address Standardized
     page_object(:addr_std_header) { {xpath: '//h3[(contains(text(), "Your address has been standardized"))]'} }
     page_object(:addr_std_p) { {id: 'instructions'} }
     page_object(:addr_std_addr_orig_lbl) { {xpah: '//*[@id="addrOrig"]/p[1]'} }
@@ -154,12 +154,19 @@ module WhiteLabel
     button(:addr_std_continue) {{id: 'btnAddrValOkay'}}
     button(:addr_std_cancel) {{xpath: '//div[@class="modal-footer"]/button[1]'}}
 
+    #Exact Address
+    page_object(:exact_addr_header) { {xpath: '//h3[(contains(text(), "Exact address not found"))]'} }
+    page_object(:exact_addr_p) { {id: 'instructions'} }
+
     #postage meter address
     page_object(:meter_header) { {xpath: '//h1[(contains(text(), "An additional postage meter address is required"))]'} }
     page_object(:meter_p) { {xpath: '//div[@class="col-xs-12"]/p'} }
     text_field(:meter_street, tag: :text_field, required: true) { { id: 'meterStreet' } }
+    page_object(:meter_street_help_block) { {xpath: '//div[@class="form-group fancy-input has-error"]/div'} }
     text_field(:meter_city, tag: :text_field, required: true) { { id: 'meterCity' } }
+    page_object(:meter_city_help_block) { {xpath:'//div[@class="col-xs-12 col-lg-5 gut-lg-form-r-half"]/div/div'} }
     page_object(:meter_state) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="meterState"]'}}
+    page_object(:meter_state_help_block) { {xpath: '//div[contains(@class, "col-xs-12 col-sm-6 col-lg-3")]/div/div[2]'} }
     text_field(:meter_zip, tag: :text_field, required: true) { { id: 'meterZip' } }
 
 

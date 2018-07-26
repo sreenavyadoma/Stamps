@@ -507,6 +507,7 @@ end
 Then /^WL: check membership page terms & conditions$/ do
   mm_page = WhiteLabel.membership_page
   mm_page.terms_conditions.scroll_into_view
+  mm_page.terms_conditions.send_keys(:tab)
   att_value = mm_page.addr_enable_disable_check.attribute_value('class')
   mm_page.terms_conditions.click! if att_value == 'form-group checkbox has-error'
 end
@@ -514,7 +515,7 @@ end
 Then /^WL: uncheck membership page terms & conditions$/ do
   mm_page = WhiteLabel.membership_page
   mm_page.terms_conditions.scroll_into_view
-  step "WL: blur_out on membership page"
+  mm_page.terms_conditions.send_keys(:tab)
   att_value = mm_page.addr_enable_disable_check.attribute_value('class')
   mm_page.terms_conditions.click! if att_value == 'form-group checkbox'
 end
@@ -570,11 +571,11 @@ end
 
 Then /^WL: expect membership page standardized addr modal original address label to be (.*)$/ do |str|
   membership_page  = WhiteLabel.membership_page
-  if membership_page.addr_std_addr_orig_lbl.present? == false
-    membership_page.submit.doube_click
-    membership_page.submit.click
-  end
-  expect(addr_std_addr_orig_lbl.text_value.strip).to eql(str)
+  # if membership_page.addr_std_addr_orig_lbl.present? == false
+  #   membership_page.submit.doube_click
+  #   membership_page.submit.click
+  # end
+  expect(membership_page.addr_std_addr_orig_lbl.text_value.strip).to eql(str)
 end
 
 Then /^WL: expect membership page standardized addr modal original address to be$/ do |str|
@@ -608,7 +609,7 @@ Then /^WL: check if address standardized is present then click continue$/ do
 end
 
 ###################################################################Postage Meter Address################################
-Then /^WL expect membership page postage meter addr to be (.*)$/ do |str|
+Then /^WL: expect postage meter page address to be (.*)$/ do |str|
   meter_header = WhiteLabel.membership_page.meter_header
   meter_header.wait_until_present(timeout: 5)
   expect(meter_header.text_value.strip).to eql(str)
@@ -643,9 +644,16 @@ Then /^WL: set postage meter address to (.*)$/ do |str|
   WhiteLabel.membership_page.meter_street.set(TestData.hash[:address] = str)
 end
 
+Then /^WL: expect postage meter address tooltip to be (.*)$/ do |str|
+  expect(WhiteLabel.membership_page.meter_street_help_block.text_value.strip).to eql(str)
+end
 
 Then /^WL: set postage meter city to (.*)$/ do |str|
   WhiteLabel.membership_page.meter_city.set(TestData.hash[:city] = str)
+end
+
+Then /^WL: expect postage meter city tooltip to be (.*)$/ do |str|
+  expect(WhiteLabel.membership_page.meter_city_help_block.text_value.strip).to eql(str)
 end
 
 Then /^WL: select postage meter state (.*)$/ do |str|
@@ -657,6 +665,10 @@ Then /^WL: select postage meter state (.*)$/ do |str|
   step "WL: blur_out on membership page"
   TestData.hash[:state] =  membership_page.meter_state.attribute_value('title').strip
   expect(TestData.hash[:state].strip).to eql str
+end
+
+Then /^WL: expect postage meter state tooltip to be (.*)$/ do |str|
+  expect(WhiteLabel.membership_page.meter_state_help_block.text_value.strip).to eql(str)
 end
 
 Then /^WL: set postage meter zip to (.*)$/ do |str|
@@ -760,9 +772,7 @@ Then /^WL: expect membership page invalid address modal paragraph to be$/ do |st
   expect(WhiteLabel.membership_page.invalid_addr_p.text_value.strip).to eql(str)
 end
 
-
 Then /^WL: set membership page default values$/ do
-  step 'WL: click membership page submit button'
   step 'WL: set membership page personal info to random info between zone 5 and zone 8'
   step 'WL: set membership page credit card number to 4111111111111111'
   step 'WL: select membership page credit card month Dec (12)'
@@ -770,3 +780,7 @@ Then /^WL: set membership page default values$/ do
   step 'WL: check membership page terms & conditions'
 end
 
+##########################Exact Address##################################################################
+Then /^WL: expect membership page exact addr modal header to be (.*)$/ do |str|
+  expect(WhiteLabel.membership_page.exact_addr_header.text_value.strip).to eql(str)
+end

@@ -326,6 +326,19 @@ Feature: Stamps WebReg: Membership Page
     """
     Then WL: click modal x button
 
+    #Exact Address not Found
+    Then WL: set membership page address to 5211 Pacific Concourse Dr
+    Then WL: set membership page city to Los Angeles
+    Then WL: select membership page state CA
+    Then WL: set membership page zip to 90045
+    Then WL: click membership page submit button
+    Then WL: expect membership page exact addr modal header to be Exact address not found
+    # Then WL: expect membership page exact addr modal paragraph to be
+    """
+    The USPS address standardization system could not find your exact address. Select an address from the list below that best matches it:
+    """
+    Then WL: click modal continue button
+
     #Standardize Address Modal
     Then WL: set membership page address to PO Box 2951 US-41
     Then WL: set membership page city to Inverness
@@ -335,23 +348,23 @@ Feature: Stamps WebReg: Membership Page
     Then WL: check membership page terms & conditions
     Then WL: click membership page submit button
 
-    Then WL: expect membership page standardized addr modal header to be Your address has been standardized
-    Then WL: expect membership page standardized addr modal paragraph to be
-    """
-    The USPS PC Postage™ program requires that the address used on your account be standardized for more efficient mail processing. The corrected portions are in bold below.
-    """
-    Then WL: expect membership page standardized addr modal original address label to be Original Address:
-    Then WL: expect membership page standardized addr modal original address to be
-    """
-    PO Box 2951 US-41
-    Inverness FL 34450
-    """
-    Then WL: expect membership page standardized addr modal standardized by the usps label to be Standardized by the USPS:
-    Then WL: expect membership page standardized addr modal standardized by the usps address to be
-    """
-    PO Box 2951
-    Inverness FL 34451-2951
-    """
+#    Then WL: expect membership page standardized addr modal header to be Your address has been standardized
+#    Then WL: expect membership page standardized addr modal paragraph to be
+#    """
+#    The USPS PC Postage™ program requires that the address used on your account be standardized for more efficient mail processing. The corrected portions are in bold below.
+#    """
+#    Then WL: expect membership page standardized addr modal original address label to be Original Address:
+#    Then WL: expect membership page standardized addr modal original address to be
+#    """
+#    PO Box 2951 US-41
+#    Inverness FL 34450
+#    """
+#    Then WL: expect membership page standardized addr modal standardized by the usps label to be Standardized by the USPS:
+#    Then WL: expect membership page standardized addr modal standardized by the usps address to be
+#    """
+#    PO Box 2951
+#    Inverness FL 34451-2951
+#    """
     Then WL: click membership page standardized addr modal continue button
     Then WL: click membership page back button
     Then WL: expect membership page address is PO Box 2951
@@ -361,9 +374,14 @@ Feature: Stamps WebReg: Membership Page
 
     Then WL: click membership page submit button
 
-    Then WL expect membership page postage meter addr to be An additional postage meter address is required
-
-
+    Then WL: expect postage meter page address to be An additional postage meter address is required
+    Then WL: click membership page submit button
+    Then WL: expect postage meter address tooltip to be This field is required
+    Then WL: expect postage meter city tooltip to be This field is required
+    Then WL: expect postage meter state tooltip to be This field is required
+    Then WL: set postage meter address between zone 5 and zone 8
+    Then WL: click membership page submit button
+    Then WL: expect choose supplies page customize your welcome kit is present
 
 
 

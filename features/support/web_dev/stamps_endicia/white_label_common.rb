@@ -5,6 +5,10 @@ module WhiteLabel
     page_object(:stamps_logo) {{id: 'sdc-logo'}}
     button(:get_started) { { class: ['btn btn-success btn-xs register'] } }
 
+    #modal
+    button(:modal_continue) {{id: 'btnAddrValOkay'}}
+    button(:modal_cancel) {{xpath: '//div[@class="modal-footer"]/button[1]'}}
+
     #Print
     page_object(:print_stamps_logo) {{class: ['sdcLogo']}}
 

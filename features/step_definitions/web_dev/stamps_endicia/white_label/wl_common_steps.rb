@@ -123,3 +123,19 @@ Then /^WL: expect user is navigated to print page$/ do
   end
 end
 
+Then /^WL: click modal continue button$/ do
+  modal_continue = WhiteLabel.common_page.modal_continue
+  modal_continue.wait_until_present(timeout: 2)
+  modal_continue.click
+  step 'pause for 1 second'
+end
+
+Then /^WL: click modal cancle button$/ do
+  modal_cancel = WhiteLabel.common_page.modal_cancel
+  modal_cancel.wait_until_present(timeout: 2)
+  modal_cancel.click
+  step 'pause for 1 second'
+end
+
+
+
