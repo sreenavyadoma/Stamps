@@ -334,9 +334,9 @@ Feature: Stamps WebReg: Membership Page
     Then WL: click membership page submit button
     Then WL: expect membership page exact addr modal header to be Exact address not found
     # Then WL: expect membership page exact addr modal paragraph to be
-    """
-    The USPS address standardization system could not find your exact address. Select an address from the list below that best matches it:
-    """
+#    """
+#    The USPS address standardization system could not find your exact address. Select an address from the list below that best matches it:
+#    """
     Then WL: click modal continue button
 
     #Standardize Address Modal

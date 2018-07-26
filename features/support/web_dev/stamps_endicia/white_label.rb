@@ -157,6 +157,7 @@ module WhiteLabel
     #Exact Address
     page_object(:exact_addr_header) { {xpath: '//h3[(contains(text(), "Exact address not found"))]'} }
     page_object(:exact_addr_p) { {id: 'instructions'} }
+    page_objects(:exact_addr_choice, index:1) { {xpath: '//table[@class="table table-striped"]/tbody/tr'} }
 
     #postage meter address
     page_object(:meter_header) { {xpath: '//h1[(contains(text(), "An additional postage meter address is required"))]'} }
