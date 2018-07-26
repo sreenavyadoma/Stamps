@@ -347,6 +347,17 @@ Then /^set order details ounces to (.+)$/ do |str|
   step 'save order details data'
 end
 
+Then /^set order details ounces to (.+) by arrows$/ do |val|
+  oz = SdcOrders.order_details.weight.oz
+  iterations = val.to_i - oz.text_value.to_i
+  iterations.abs.times do oz.increment.click end if iterations > 0
+  iterations.abs.times do oz.decrement.click end if iterations < 0
+  step "expect order details ounces is #{val.to_i}"
+  TestData.hash[:ounces] = oz.text_value
+  step 'save order details data'
+
+end
+
 Then /^set order details length to (\d*)$/ do |str|
   order_details = SdcOrders.order_details
   dimensions = order_details.dimensions
