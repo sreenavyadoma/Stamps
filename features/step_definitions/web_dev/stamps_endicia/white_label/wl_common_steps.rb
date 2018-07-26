@@ -50,7 +50,7 @@ Then /^WL: select security questions first security question (.*)$/ do |str|
   common_page.first_security_question.click
   common_page.dropdown_selection(str, 0)
   common_page.dropdown_element.safe_wait_until_present(timeout: 2)
-  #common_page.dropdown_element.click
+  common_page.dropdown_element.click
   TestData.hash[:first_security_question] = common_page.first_security_question.attribute_value('title').strip
   expect(common_page.first_security_question.attribute_value('title').strip).to eql str
   TestData.hash[:first_security_question] = str

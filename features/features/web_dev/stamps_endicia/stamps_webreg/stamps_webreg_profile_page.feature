@@ -154,7 +154,6 @@ Feature: Stamps WebReg: Profile Page
     Then WL: expect security questions second security question is correct
 
     Then WL: if security question is present before registration then set the values
-
     Then WL: click profile page CONTINUE button
 
     # Validate navigate to Membership page
