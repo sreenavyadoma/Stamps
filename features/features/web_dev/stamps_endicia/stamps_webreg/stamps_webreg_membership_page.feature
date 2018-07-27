@@ -319,14 +319,12 @@ Feature: Stamps WebReg: Membership Page
 #    Then WL: expect membership page billing zip is 30520
 
     #Verify Physical Address Zone wise
-    Then WL: set membership page personal info to random info between zone 1 and zone 4
+    Then WL: set membership page personal info to random info between zone 1 and zone 3
     Then WL: expect membership page address is correct
     Then WL: expect membership page city is correct
     Then WL: expect membership page state is correct
     Then WL: expect membership page zip is correct
     Then WL: click membership page submit button
-
-    Then WL: click membership page standardized addr modal x button
     Then WL: click modal x button
 
     Then pause for 1 second
@@ -348,7 +346,6 @@ Feature: Stamps WebReg: Membership Page
     Then WL: expect membership page state is correct
     Then WL: expect membership page zip is correct
     Then WL: click membership page submit button
-    Then WL: click membership page standardized addr modal x button
     Then WL: click modal x button
 
     Then pause for 1 second
@@ -370,22 +367,7 @@ Feature: Stamps WebReg: Membership Page
     Then WL: expect membership page state is correct
     Then WL: expect membership page zip is correct
     Then WL: click membership page submit button
-    Then WL: click membership page standardized addr modal x button
     Then WL: click modal x button
-
-    Then pause for 1 second
-    Then WL: set membership page personal info to random info between zone 4
-    Then WL: expect membership page address is correct
-    Then WL: expect membership page city is correct
-    Then WL: expect membership page state is correct
-    Then WL: expect membership page zip is correct
-    Then WL: click membership page submit button
-
-    Then WL: click membership page standardized addr modal x button
-    Then WL: click modal x button
-    Then WL: click membership page back button
-    Then WL: set profile page username to webreg1
-    Then WL: click profile page continue button
 
     Then pause for 1 second
     Then WL: set membership page personal info to random info between zone 5
@@ -394,8 +376,10 @@ Feature: Stamps WebReg: Membership Page
     Then WL: expect membership page state is correct
     Then WL: expect membership page zip is correct
     Then WL: click membership page submit button
-    Then WL: click membership page standardized addr modal x button
+
     Then WL: click modal x button
+    Then WL: set profile page username to webreg1
+    Then WL: click profile page continue button
 
     Then pause for 1 second
     Then WL: set membership page personal info to random info between zone 6
@@ -438,8 +422,6 @@ Feature: Stamps WebReg: Membership Page
     Then WL: expect membership page state is correct
     Then WL: expect membership page zip is correct
     Then WL: click membership page submit button
-
-    Then WL: click membership page standardized addr modal x button
     Then WL: click membership page back button
 
     #Invalid Address Modal
