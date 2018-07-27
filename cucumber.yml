@@ -56,12 +56,6 @@ alex_orders:  --tags @bvt_orders_ui_validation BROWSER=ff URL=prod USR=abqaprod2
 alex_test:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders URL=qacc USR=abqacc10 PW=password1  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false
 saucelabs_alex: --tags @rates_pme_comm_base_zone_1 URL=stg USR=abqast2 PW=password1 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=alexbaranovskyi SAUCE_ACCESS_KEY=bcd50193-981d-4890-9bce-b18d3097f373 SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
 
-xxxxxxxxxx: --tags @xxxxxxxxxx --guess  HEALTHCHECK=true WEB_APP=xxxxxxxxxx
-xxxxxxxxxx: --tags @xxxxxxxxxx --guess  HEALTHCHECK=true WEB_APP=xxxxxxxxxx
-xxxxxxxxxx: --tags @xxxxxxxxxx --guess  HEALTHCHECK=true WEB_APP=xxxxxxxxxx
-xxxxxxxxxx: --tags @xxxxxxxxxx --guess  HEALTHCHECK=true WEB_APP=xxxxxxxxxx
-xxxxxxxxxx: --tags @xxxxxxxxxx --guess  HEALTHCHECK=true WEB_APP=xxxxxxxxxx
-
 mail_print_envelope_11: --tags @mail_print_envelope_11 --guess  HEALTHCHECK=false PRINTER=factory
 
 poc_stg_chrome: --tags @authentication --guess  HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff
@@ -207,14 +201,12 @@ rates_mail_fcm_package:   --tags @rates_mail_fcm_package --guess LOG_LEVEL=info 
 
 bvt_mail_piece_validation: --tags @bvt_mail_piece_validation --guess  HEALTHCHECK=true PRINTER=factory
 
-xxxxxxxxxx: --tags @xxxxxxxxxx --guess  HEALTHCHECK=true WEB_APP=xxxxxxxxxx
 
 # PAM
 pam_db_user_appscap_provisioning:  --tags @pam_db_user_appscap_provisioning --guess  HEALTHCHECK=true WEB_APP=pam --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false
 
 mail_bvt_advanced_options: --tags @mail_bvt_advanced_options --guess  HEALTHCHECK=true
 
-registration_normal_workflow: --tags @registration_normal_workflofoxw WEB_APP=registration --guess  MAX_WINDOW=true
 registration_profile_page_ui_validation: --tags @registration_profile_page_ui_validation WEB_APP=registration --guess  MAX_WINDOW=true
 registration_membership_page_ui_validation: --tags @registration_membership_page_ui_validation WEB_APP=registration --guess  MAX_WINDOW=true
 registration_normal_workflow: --tags @registration_normal_workflow WEB_APP=registration --guess  MAX_WINDOW=true
@@ -239,7 +231,6 @@ generate_username: --tags @generate_username --guess  HEALTHCHECK=true WEB_APP=o
 healthcheck: --tags @healthcheck --guess HEALTHCHECK=true
 
 authentication: --tags @authentication --guess  HEALTHCHECK=true LOG_LEVEL=debug
-mail_authentication: --tags @mail_authentication --guess HEALTHCHECK=true LOG_LEVEL=debug
 
 customs_form_auto_calculate_weight: --tags @customs_form_auto_calculate_weight --guess  HEALTHCHECK=true WEB_APP=orders
 whats_new: --tags @whats_new --guess  HEALTHCHECK=true WEB_APP=orders
@@ -253,9 +244,6 @@ pam_ach_purchase_100k: --tags @pam_ach_purchase_100k --guess  HEALTHCHECK=true W
 registration_meter_limit_100k: --tags @registration_meter_limit_100k --guess  HEALTHCHECK=true WEB_APP=Registration
 pam_meter_limit_100k: --tags @pam_meter_limit_100k --guess  HEALTHCHECK=true WEB_APP=Registration
 
-details_non_integer_lb: --tags @details_non_integer_lb --guess  HEALTHCHECK=true WEB_APP=orders
-grid_order_status: --tags @grid_order_status --guess  HEALTHCHECK=true WEB_APP=orders
-tooltips_improvements: --tags @tooltips_improvements --guess  HEALTHCHECK=true WEB_APP=orders
 
 # --------------------------  ORDERS Bugs
 bugs_orders_filter_panel: --tags @bugs_orders_filter_panel --guess  HEALTHCHECK=true WEB_APP=orders
@@ -396,6 +384,8 @@ stores_shipstation_preupgrade: --tags @stores_shipstation_preupgrade --guess  HE
 orders_fci_flats: --tags @orders_fci_flats --guess  HEALTHCHECK=true WEB_APP=orders
 print_label_preview_image: --tags @print_label_preview_image --guess  HEALTHCHECK=true WEB_APP=orders
 split_order: --tags @split_order --guess  HEALTHCHECK=true WEB_APP=orders
+details_non_integer_lb: --tags @details_non_integer_lb --guess  HEALTHCHECK=true WEB_APP=orders
+tooltips_improvements: --tags @tooltips_improvements --guess  HEALTHCHECK=true WEB_APP=orders
 
 # REGRESSION NOT INCLUDED
 grid_column_order: --tags @grid_column_order --guess  HEALTHCHECK=true WEB_APP=orders

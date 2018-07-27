@@ -20,7 +20,6 @@ Feature:  BVT tests for Orders
   Scenario: Postage Tools Healthcheck
     Then Verify Health Check for Postage Tools
 
-
   @authentication
   Scenario: Orders Authentication Test
     Then sign-in to orders
