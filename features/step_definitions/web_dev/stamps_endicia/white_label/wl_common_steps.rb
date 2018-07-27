@@ -119,8 +119,13 @@ Then /^WL: [Ee]xpect second security answer tooltip index (\d+) to be (.*)$/ do 
   expect(TestData.hash[:second_security_answer_help_block][index.to_i - 1]).to eql(str)
 end
 
-Then /^WL: click security questions get stared button$/ do
-  WhiteLabel.common_page.sq_get_started.click
+Then /^WL: click security questions get started button$/ do
+  #WhiteLabel.common_page.sq_get_started.click
+end
+
+Then /^WL: [Ee]xpect security questions get started button exists$/ do
+  WhiteLabel.common_page.sq_get_started.wait_until_present(timeout: 50)
+  expect(WhiteLabel.common_page.sq_get_started).to be_present
 end
 
 Then /^WL: [Ee]xpect security question modal does not exists$/ do
