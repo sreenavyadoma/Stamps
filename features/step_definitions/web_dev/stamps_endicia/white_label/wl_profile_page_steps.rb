@@ -232,19 +232,28 @@ end
 
 Then /^WL: [Ss]et [Pp]rofile [Pp]age [Hh]ow [Dd]id [Yy]ou [Hh]ear [Aa]bout [Uu]s\? to (.*)$/ do |str|
   profile_page = WhiteLabel.profile_page
-  profile_page.referrer_name.click
-  profile_page.referrer_name_selection(str)
-  profile_page.referrer_name_element.safe_wait_until_present(timeout: 2)
-  profile_page.referrer_name_element.click
-  expect(profile_page.referrer_name.attribute_value('title').strip).to eql str
-  TestData.hash[:referrer_name] = str
+  if profile_page.referrer_name.present? == true
+    profile_page.referrer_name.click
+    profile_page.referrer_name_selection(str)
+    profile_page.referrer_name_element.safe_wait_until_present(timeout: 2)
+    profile_page.referrer_name_element.click
+    TestData.hash[:referrer_name] = profile_page.referrer_name.attribute_value('title').strip
+    expect(TestData.hash[:referrer_name]).to eql str
+  else
+    #ignore
+  end
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age how did you hear about us option is (?:correct|(.*))$/ do |str|
   referrer_name = WhiteLabel.profile_page.referrer_name
   str ||= TestData.hash[:referrer_name]
+
+  if referrer_name.present? == true
   expect(referrer_name.title).to eql(str)
   TestData.hash[:referrer_name] = str
+  else
+    #ignore
+  end
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age CONTINUE button exists$/ do
