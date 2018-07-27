@@ -45,11 +45,16 @@ end
 
 Then /^WL: set profile page how did you hear about us\? to (.*)$/ do |str|
   profile_page = WhiteLabel.profile_page
+  if profile_page.referrer_name.present?
   profile_page.referrer_name.click
   profile_page.referrer_name_selection(str)
   profile_page.referrer_name_element.safe_wait_until_present(timeout: 2)
   profile_page.referrer_name_element.click
   expect(profile_page.referrer_name.attribute_value('title').strip).to eql str
+  else
+    #ignore
+  end
+
 end
 
 Then /^WL: expect profile page promo code to equal source id promo code$/ do

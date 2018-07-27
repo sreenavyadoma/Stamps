@@ -112,12 +112,14 @@ module WhiteLabel
     page_object(:invalid_addr_header) { {xpath: '//h3[(contains(text(), "Invalid Address"))]'} }
     page_object(:invalid_addr_p) { {id: 'errorDescription'} }
 
+
     #address Standardized
     page_object(:addr_std_header) { {xpath: '//h3[(contains(text(), "Your address has been standardized"))]'} }
     page_object(:addr_std_p) { {id: 'instructions'} }
     page_object(:addr_std_addr_orig) { {id: 'addrOrig'} }
     page_object(:addr_std_addr_new) { {id: 'addrNew'} }
     button(:addr_std_continue) {{id: 'btnAddrValOkay'}}
+    page_objects(:address_std_x, index: 1) {{class: ['close']}}
     button(:addr_std_cancel) {{xpath: '//div[@class="modal-footer"]/button[1]'}}
 
     #Exact Address

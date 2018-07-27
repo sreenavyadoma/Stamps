@@ -139,7 +139,9 @@ end
 
 
 Then /^WL: click modal x button$/ do
-  WhiteLabel.common_page.modal_x.click
+  modal_x = WhiteLabel.common_page.modal_x
+  modal_x.wait_until_present(timeout: 2)
+  modal_x.click
   step 'pause for 1 second'
 end
 

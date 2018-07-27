@@ -8,7 +8,7 @@ module WhiteLabel
     #modal
     button(:modal_continue) {{id: 'btnAddrValOkay'}}
     button(:modal_cancel) {{xpath: '//div[@class="modal-footer"]/button[1]'}}
-    button(:modal_x) { {class: ['close']} }
+    page_objects(:modal_x, index: 0) { {class: ['close']} }
 
     #Print
     page_object(:print_stamps_logo) {{class: ['sdcLogo']}}

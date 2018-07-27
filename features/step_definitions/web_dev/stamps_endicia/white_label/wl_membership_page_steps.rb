@@ -595,6 +595,11 @@ Then /^WL: click membership page standardized addr modal continue button$/ do
   step 'pause for 1 second'
 end
 
+Then /^WL: click membership page standardized addr modal x button$/ do
+  WhiteLabel.membership_page.address_std_x.click
+  step 'pause for 1 second'
+end
+
 Then /^WL: check if address standardized is present then click continue$/ do
   addr_std_continue = WhiteLabel.membership_page.addr_std_continue
   addr_std_continue.wait_until_present(timeout: 5) rescue false
