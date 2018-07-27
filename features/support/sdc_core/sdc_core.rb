@@ -117,7 +117,7 @@ module TestSession
                 automationName: 'XCUITest'
             },
             appium_lib: {
-                sauce_username:   env.sauce_username,
+                sauce_username: env.sauce_username,
                 sauce_access_key: env.sauce_access_key,
                 wait: env.idle_timeout
             }
