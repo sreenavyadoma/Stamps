@@ -240,7 +240,7 @@ Feature: Stamps WebReg: Membership Page
     Then WL: click profile page continue button
     Then WL: set membership page default values
 
-#    #Autocomplete Profile Address
+    #Autocomplete Profile Address
 #    Then pause for 1 second
 #    Then WL: set membership page address to 1990 E
 #    Then WL: click membership page address
@@ -388,10 +388,7 @@ Feature: Stamps WebReg: Membership Page
     Then WL: expect membership page state is correct
     Then WL: expect membership page zip is correct
     Then WL: click membership page submit button
-
     Then WL: click modal x button
-    Then WL: set profile page username to webreg1
-    Then WL: click profile page continue button
 
     Then pause for 1 second
     Then WL: set membership page personal info to random info between zone 7
@@ -400,8 +397,10 @@ Feature: Stamps WebReg: Membership Page
     Then WL: expect membership page state is correct
     Then WL: expect membership page zip is correct
     Then WL: click membership page submit button
-    Then WL: click membership page standardized addr modal x button
+
     Then WL: click modal x button
+    Then WL: set profile page username to webreg1
+    Then WL: click profile page continue button
 
     Then pause for 1 second
     Then WL: set membership page personal info to random info between zone 8
@@ -410,10 +409,7 @@ Feature: Stamps WebReg: Membership Page
     Then WL: expect membership page state is correct
     Then WL: expect membership page zip is correct
     Then WL: click membership page submit button
-
     Then WL: click modal x button
-    Then WL: set profile page username to webreg1
-    Then WL: click profile page continue button
 
     Then pause for 1 second
     Then WL: set membership page personal info to random info between zone 9
