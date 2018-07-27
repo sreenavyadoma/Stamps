@@ -26,7 +26,6 @@ end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Uu]sername is (?:correct|(.*))$/ do |str|
   expect(registration.profile.account_username.textbox.text).to eql((str.nil?) ? TestData.hash[:username] : str)
-
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Pp]assword to (?:random value|(.*))$/ do |str|
@@ -85,7 +84,6 @@ end
 Then /^[Ss]et [Pp]rofile [Pp]age [Pp]romo [Cc]ode to (?:an empty string|(.*))$/ do |str|
   step "show profile page promo code textbox"
   registration.profile.promo_code.textbox.set(TestData.hash[:promo_code] = (str.nil?) ? '' : str)
-
 end
 
 Then /^[Ee]xpect Profile page [Pp]romo [Cc]ode tooltip (\d+) to be (.*)$/ do |index, str|
