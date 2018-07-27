@@ -12,7 +12,7 @@ end
 Then /^WL: click membership page back button$/ do
   back =  WhiteLabel.membership_page.back
   back.wait_until_present(timeout: 2)
-  back.click
+  back.click if back.present?
   step 'pause for 1 second'
 end
 
@@ -596,8 +596,13 @@ Then /^WL: click membership page standardized addr modal continue button$/ do
 end
 
 Then /^WL: click membership page standardized addr modal x button$/ do
-  WhiteLabel.membership_page.address_std_x.click
-  step 'pause for 1 second'
+  address_std_x = WhiteLabel.membership_page.address_std_x
+  if address_std_x.present?
+    address_std_x.click
+    step 'pause for 1 second'
+  else
+    #ignore
+  end
 end
 
 Then /^WL: check if address standardized is present then click continue$/ do
