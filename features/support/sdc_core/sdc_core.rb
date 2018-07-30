@@ -351,6 +351,7 @@ module HtmlElementMethods
   end
 
   def set_attribute(name, value)
+    value.gsub!("\n", "\\n") if value.include? "\n"
     execute_script("return arguments[0].#{name.to_s}='#{value.to_s}'", @element)
   end
 
