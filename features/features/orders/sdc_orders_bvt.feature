@@ -233,7 +233,6 @@ Feature:  BVT tests for Orders
     Then expect orders grid age is < 24 hours
     Then expect orders grid order date is populated
     Then expect orders grid recipient is correct
-    Then expect orders grid company is Company Name
     Then expect orders grid address is 777 N Orange Ave Apt 100
     Then expect orders grid city is Orlando
     Then expect orders grid state is FL
