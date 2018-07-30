@@ -65,7 +65,7 @@ module WhiteLabel
       username = WhiteLabel.bridge_db_connection.execute(
          "select TOP 1 *
           FROM [Bridge].[dbo].[sdct_Bridge_User]
-          where EmailAddress IS NOT NULL
+          where EmailAddress IS NOT NULL and UserName NOT like '%\%'
           ORDER BY NEWID()")
       username.each do |item|
         return item['UserName']
