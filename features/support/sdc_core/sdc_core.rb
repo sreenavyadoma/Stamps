@@ -226,7 +226,7 @@ class SdcPage < WatirDrops::PageObject
 
     def visit(*args)
       new.tap do |page|
-        page.goto(*args)
+        page.get(*args)
         exception = Selenium::WebDriver::Error::WebDriverError
         message = "Expected to be on #{page.class}, but conditions not met"
         if page.page_verifiable?
@@ -237,6 +237,10 @@ class SdcPage < WatirDrops::PageObject
           end
         end
       end
+    end
+
+    def get(*args)
+      browser.get page_url(*args)
     end
 
     def page_object(name, tag: nil, required: false, timeout: 15, &block)
