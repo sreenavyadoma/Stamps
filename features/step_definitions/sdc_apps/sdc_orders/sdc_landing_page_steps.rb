@@ -42,18 +42,8 @@ end
 
 Then /^fetch user credentials from MySQL$/ do
   unless TestData.hash[:username]
-    if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default'
-      credentials = SdcUserCredentials.fetch(SdcEnv.scenario.tags[0].name)
-      usr = credentials[:username]
-      pw = credentials[:password]
-    else
-      usr = SdcEnv.usr
-      pw = SdcEnv.pw
-    end
-    expect(usr).to be_truthy
-    expect(pw).to be_truthy
-    TestData.hash[:username] = usr
-    TestData.hash[:password] = pw
+    TestData.hash[:username] = SdcEnv.usr
+    TestData.hash[:password] = SdcEnv.pw
   end
 end
 
