@@ -42,7 +42,7 @@ end
 
 Then /^fetch user credentials from MySQL$/ do
   unless TestData.hash[:username]
-    if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default'
+    if SdcEnv.usr.downcase == 'default'
       credentials = SdcUserCredentials.fetch(SdcEnv.scenario.tags[0].name)
       usr = credentials[:username]
       pw = credentials[:password]
@@ -50,8 +50,6 @@ Then /^fetch user credentials from MySQL$/ do
       usr = SdcEnv.usr
       pw = SdcEnv.pw
     end
-    expect(usr).to be_truthy
-    expect(pw).to be_truthy
     TestData.hash[:username] = usr
     TestData.hash[:password] = pw
   end
@@ -81,8 +79,8 @@ Then /^click sign-in button on browser$/ do
 
   step 'click Orders landing page sign-in button'
 
-  SdcOrders.loading_orders.safe_wait_until_present(timeout: 4)
-  SdcOrders.loading_orders.safe_wait_while_present(timeout: 15)
+  SdcOrders.loading_orders.safe_wait_until_present(timeout: 10)
+  SdcOrders.loading_orders.safe_wait_while_present(timeout: 30)
   SdcGrid.body.safe_wait_until_present(timeout: 20)
   expect(toolbar.add).to be_present
 end
