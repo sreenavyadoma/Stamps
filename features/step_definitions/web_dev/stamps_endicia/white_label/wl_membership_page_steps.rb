@@ -99,8 +99,9 @@ end
 Then /WL: select membership page address autocomplete index (\d+)$/ do |index|
   address_auto_complete = WhiteLabel.membership_page.address_auto_complete[index-1]
   address_auto_complete.wait_until_present(timeout: 2)
+  address_auto_complete.hover if SdcEnv.browser == :firefox
   address_auto_complete.click
-  step "WL: blur_out on membership page"
+  step 'WL: blur_out on membership page'
 end
 
 Then /^WL: expect membership page address is (?:correct|(.*))$/ do |str|
@@ -387,13 +388,16 @@ Then /^WL: set membership page billing address to (.*)$/ do |str|
 end
 
 Then /^WL: click membership page billing address$/ do
-  WhiteLabel.membership_page.billing_addr.click
+  billing_addr= WhiteLabel.membership_page.billing_addr
+  billing_addr.scroll_into_view
+  billing_addr.click
   step 'pause for 1 second'
 end
 
 Then /WL: select membership page billing address autocomplete index (\d+)$/ do |index|
   billing_addr_auto_complete = WhiteLabel.membership_page.billing_addr_auto_complete[index-1]
   billing_addr_auto_complete.wait_until_present(timeout: 2)
+  billing_addr_auto_complete.hover if SdcEnv.browser == :firefox
   billing_addr_auto_complete.click
   step "WL: blur_out on membership page"
 end
@@ -622,6 +626,11 @@ Then /^WL: expect postage meter page address to be (.*)$/ do |str|
   expect(meter_header.text_value.strip).to eql(str)
 end
 
+Then /^WL: expect postage meter page address paragraph to be$/ do |str|
+  meter_p = WhiteLabel.membership_page.meter_p
+  expect(meter_p.text_value.strip).to eql(str)
+end
+
 Then /^WL: check if postage meter address is present then set the value$/ do
   membership_page = WhiteLabel.membership_page
   if TestData.hash[:street_address].include? 'PO Box'
@@ -782,7 +791,6 @@ end
 
 Then /^WL: select membership page exact addr modal radio button index (\d+)$/ do |index|
   exact_addr_choice = WhiteLabel.membership_page.exact_addr_choice
-  #exact_addr_choice.scroll_into_view
   exact_addr_choice[index].click
 end
 

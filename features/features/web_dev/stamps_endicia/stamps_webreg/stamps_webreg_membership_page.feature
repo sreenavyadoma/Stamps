@@ -281,42 +281,46 @@ Feature: Stamps WebReg: Membership Page
 
     #Autocomplete Billing Address
     Then WL: uncheck membership page billing address same as mailing address
-    Then WL: set membership page billing address to 15 World
+    Then WL: set membership page billing address to 47 W 13th St
 
     Then WL: click membership page billing address
     Then WL: select membership page billing address autocomplete index 1
-    Then WL: expect membership page billing address is 15 World Way
-    Then WL: expect membership page billing city is Los Angeles
+    Then WL: expect membership page billing address is 47 W 13th St
+    Then WL: expect membership page billing city is Upland
     Then WL: expect membership page billing state is CA
-    Then WL: expect membership page billing zip is 90045
+    Then WL: expect membership page billing zip is 91786
 
+    Then WL: set membership page billing address to 47 W 13th St
     Then WL: click membership page billing address
     Then WL: select membership page billing address autocomplete index 2
-    Then WL: expect membership page billing address is 15 World Way
+    Then WL: expect membership page billing address is 47 W 13th St
     Then WL: expect membership page billing city is Los Angeles
     Then WL: expect membership page billing state is CA
-    Then WL: expect membership page billing zip is 90045
+    Then WL: expect membership page billing zip is 90731
 
+    Then WL: set membership page billing address to 47 W 13th St
     Then WL: click membership page billing address
     Then WL: select membership page billing address autocomplete index 3
-    Then WL: expect membership page billing address is Center of the World Dr
-    Then WL: expect membership page billing city is Felicity
+    Then WL: expect membership page billing address is W 13th St
+    Then WL: expect membership page billing city is Azusa
     Then WL: expect membership page billing state is CA
-    Then WL: expect membership page billing zip is 92283
+    Then WL: expect membership page billing zip is 91702
 
+    Then WL: set membership page billing address to 47 W 13th St
     Then WL: click membership page billing address
-    Then WL: select membership page billing address autocomplete index 1
-    Then WL: expect membership page billing address is Center of the World Dr
-    Then WL: expect membership page billing city is Winterhaven
+    Then WL: select membership page billing address autocomplete index 4
+    Then WL: expect membership page billing address is 47 W 13th St
+    Then WL: expect membership page billing city is San Bernardino
     Then WL: expect membership page billing state is CA
-    Then WL: expect membership page billing zip is 92283
+    Then WL: expect membership page billing zip is 92405
 
+    Then WL: set membership page billing address to 47 W 13th St
     Then WL: click membership page billing address
-    Then WL: select membership page billing address autocomplete index 2
-    Then WL: expect membership page billing address is Center of the World Rd
-    Then WL: expect membership page billing city is Canon
-    Then WL: expect membership page billing state is GA
-    Then WL: expect membership page billing zip is 30520
+    Then WL: select membership page billing address autocomplete index 5
+    Then WL: expect membership page billing address is 47 W 13th St
+    Then WL: expect membership page billing city is Merced
+    Then WL: expect membership page billing state is CA
+    Then WL: expect membership page billing zip is 95341
 
     #Verify Physical Address Zone wise
     Then WL: set membership page personal info to random info between zone 1 and zone 3
@@ -362,7 +366,7 @@ Feature: Stamps WebReg: Membership Page
     """
     The USPS address standardization system could not find your exact address. Select an address from the list below that best matches it:
     """
-    Then WL: select membership page exact addr modal radio button index 1
+    Then WL: select membership page exact addr modal radio button index 2
     Then WL: click modal continue button
     Then WL: set username taken to webreg1
     Then WL: click username taken continue button
@@ -407,15 +411,22 @@ Feature: Stamps WebReg: Membership Page
     Then WL: expect membership page zip is 34451-2951
 
     Then WL: click membership page submit button
-
+    
+    #Postage meter Address Validation 
     Then WL: expect postage meter page address to be An additional postage meter address is required
+    Then WL: expect postage meter page address paragraph to be
+    """
+    Your mailing address has been standardized and accepted. However, this address cannot be used as your official USPS Postage Meter Address.
+    Please provide an additional physical address (not a PO Box) where you will use your Stamps.com account to print postage.
+    """
     Then WL: click membership page submit button
     Then WL: expect postage meter address tooltip to be This field is required
     Then WL: expect postage meter city tooltip to be This field is required
     Then WL: expect postage meter state tooltip to be This field is required
     Then WL: set postage meter address between zone 5 and zone 8
     Then WL: click membership page submit button
-
+    
+    Then WL: expect username taken header to be Username Taken
 
 
 
