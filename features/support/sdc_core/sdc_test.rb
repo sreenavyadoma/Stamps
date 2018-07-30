@@ -130,8 +130,12 @@ class SdcTest
         SdcPage.browser = TestSession.driver
         if TestSession.env.browser
           SdcLogger.debug SdcEnv.sauce.session_info(SdcPage.browser.driver.session_id)
-        else
+          SdcEnv.width = SdcPage.browser.window.size.width
+          SdcEnv.height = SdcPage.browser.window.size.height
+        elsif TestSession.env.device
           SdcLogger.debug SdcEnv.sauce.session_info(SdcPage.browser.session_id)
+        else
+          # ignore
         end
 
       elsif SdcEnv.browser
@@ -220,48 +224,12 @@ class SdcTest
           SdcLogger.error e.backtrace.join("\n")
           raise e, 'Browser driver failed to start'
         end
+        SdcEnv.width = SdcPage.browser.window.size.width
+        SdcEnv.height = SdcPage.browser.window.size.height
       else
         # do nothing
       end
 
-      # if SdcEnv.sauce.browser
-      # end
-      #
-      # if SdcEnv.sauce_device
-      #   SdcPage.browser = SdcDriverDecorator.new(class_eval(SdcEnv.sauce_device.to_s))
-      # else
-      #   if SdcEnv.browser
-      #
-      #   elsif SdcEnv.mobile
-      #     begin
-      #       SdcPage.browser = SdcDriverDecorator.new(SdcAppiumDriver.new(SdcEnv.mobile).core_driver.start_driver)
-      #       SdcPage.browser.manage.timeouts.implicit_wait = 180
-      #
-      #     rescue StandardError => e
-      #       SdcLogger.error e.message
-      #       SdcLogger.error e.backtrace.join("\n")
-      #       raise e, 'Appium driver failed to start'
-      #     end
-      #
-      #   elsif SdcEnv.browser_mobile_emulator
-      #     arg_arr = SdcEnv.browser_mobile_emulator.split(',')
-      #     if arg_arr.size != 2
-      #       raise ArgumentError, "Wrong number of arguments. Expected 2, Got #{arg_arr.size}"
-      #     end
-      #     browser = arg_arr[0]
-      #     device_name = arg_arr[1]
-      #     driver = browser_emulator_options(browser, device_name)
-      #     SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(driver, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
-      #     SdcPage.browser.driver.manage.timeouts.page_load = 12
-      #
-      #     Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download/") if SdcEnv.web_dev
-      #   else
-      #     # do nothing
-      #   end
-      #
-      # end
-      SdcEnv.width = SdcPage.browser.window.size.width
-      SdcEnv.height = SdcPage.browser.window.size.height
     end
 
     def start
@@ -476,3 +444,43 @@ class SdcTest
     end
   end
 end
+
+
+
+
+# if SdcEnv.sauce.browser
+# end
+#
+# if SdcEnv.sauce_device
+#   SdcPage.browser = SdcDriverDecorator.new(class_eval(SdcEnv.sauce_device.to_s))
+# else
+#   if SdcEnv.browser
+#
+#   elsif SdcEnv.mobile
+#     begin
+#       SdcPage.browser = SdcDriverDecorator.new(SdcAppiumDriver.new(SdcEnv.mobile).core_driver.start_driver)
+#       SdcPage.browser.manage.timeouts.implicit_wait = 180
+#
+#     rescue StandardError => e
+#       SdcLogger.error e.message
+#       SdcLogger.error e.backtrace.join("\n")
+#       raise e, 'Appium driver failed to start'
+#     end
+#
+#   elsif SdcEnv.browser_mobile_emulator
+#     arg_arr = SdcEnv.browser_mobile_emulator.split(',')
+#     if arg_arr.size != 2
+#       raise ArgumentError, "Wrong number of arguments. Expected 2, Got #{arg_arr.size}"
+#     end
+#     browser = arg_arr[0]
+#     device_name = arg_arr[1]
+#     driver = browser_emulator_options(browser, device_name)
+#     SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(driver, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+#     SdcPage.browser.driver.manage.timeouts.page_load = 12
+#
+#     Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download/") if SdcEnv.web_dev
+#   else
+#     # do nothing
+#   end
+#
+# end

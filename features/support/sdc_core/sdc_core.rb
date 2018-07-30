@@ -224,6 +224,21 @@ class SdcPage < WatirDrops::PageObject
 
   class << self
 
+    def visit(*args)
+      new.tap do |page|
+        page.goto(*args)
+        exception = Selenium::WebDriver::Error::WebDriverError
+        message = "Expected to be on #{page.class}, but conditions not met"
+        if page.page_verifiable?
+          begin
+            page.wait_until(&:on_page?)
+          rescue Watir::Wait::TimeoutError
+            raise exception, message
+          end
+        end
+      end
+    end
+
     def page_object(name, tag: nil, required: false, timeout: 15, &block)
       element(name.to_sym, required: required) do
         browser = self.class.browser
