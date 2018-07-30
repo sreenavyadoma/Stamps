@@ -61,6 +61,17 @@ module WhiteLabel
       end
     end
 
+    def existing_username_query
+      username = WhiteLabel.bridge_db_connection.execute(
+         "select TOP 1 *
+          FROM [Bridge].[dbo].[sdct_Bridge_User]
+          where EmailAddress IS NOT NULL
+          ORDER BY NEWID()")
+      username.each do |item|
+        return item['UserName']
+      end
+    end
+
     def plan_query(offer_id, sku)
      data = WhiteLabel.stamp_mart_db_connection.execute(
       "select  offer_pricing_plans.OfferID, offer_pricing_plans.PlanID, pricing_plans.SKU, pricing_plans.MonthlyBaseFee

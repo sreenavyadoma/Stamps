@@ -148,7 +148,7 @@ end
 ######################Username Taken Modal#############################
 Then /^WL: if username taken is present then set username to (?:random value|(.*))$/ do |str|
   membership_page =  WhiteLabel.membership_page
-  if TestData.hash[:username_taken].empty?
+  if TestData.hash[:username_taken] == TestData.hash[:username]
     expect(membership_page.username_taken_header).not_to be_present
   else
     membership_page.new_username.wait_until_present(timeout: 5)
@@ -160,7 +160,15 @@ Then /^WL: if username taken is present then set username to (?:random value|(.*
 end
 
 Then /^WL: set username taken to (?:random value|(.*))/ do |str|
-  WhiteLabel.membership_page.new_username.set((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
+  new_username = WhiteLabel.membership_page.new_username
+  new_username.set((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
+  new_username.send_keys(:tab)
+  print "UserName Taken = #{TestData.hash[:username]}\n"
+end
+
+Then /^WL: set username taken username to an existing username from db$/ do
+  existing_usr = WhiteLabel.common_page.existing_username_query
+  step "WL: set username taken to #{existing_usr}"
 end
 
 Then /^WL: click username taken continue button$/ do
@@ -168,23 +176,25 @@ Then /^WL: click username taken continue button$/ do
 end
 
 Then /^WL: expect username taken header to be (.*)$/ do |str|
-  username_taken_header = WhiteLabel.membership_page.username_taken_header
-  username_taken_header.wait_until_present(timeout: 2)
-  expect(username_taken_header.text_value.strip).to eql(str)
+  membership_page = WhiteLabel.membership_page
+  membership_page.username_taken_header.wait_until_present(timeout: 15)
+  expect(membership_page.username_taken_header.text_value.strip).to eql(str)
+
+  membership_page.new_username.send_keys(:tab)
 end
 
 Then /^WL: expect username taken paragraph to be$/ do |str|
   username_taken_p = WhiteLabel.membership_page.username_taken_p
   actual = username_taken_p.text_value.strip.gsub(/\P{ASCII}/, '')
-  expected = str.gsub('USERNAME', TestData.hash[:username])
+  expected = str.gsub('USERNAME', TestData.hash[:username].strip)
 
   expect(expected).to eql(actual)
 end
 
 Then /^WL: expect username taken tooltip to be (.*)$/ do |str|
   membership_page = WhiteLabel.membership_page
-  membership_page.new_username.clear
   membership_page.new_username.send_keys(:tab)
+  membership_page.new_username_help_block.wait_until_present(timeout: 2)
   expect(membership_page.new_username_help_block.text_value.strip).to eql(str)
 end
 

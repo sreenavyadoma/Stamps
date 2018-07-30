@@ -433,14 +433,44 @@ Feature: Stamps WebReg: Membership Page
   @sdcwr_membership_page_username_taken_validation
   Scenario: Membership Page Username Taken Validation
     Then WL: set profile page default values
-    Then WL: set profile page username to webreg1
+    Then WL: set pp username to an existing username from db
     Then WL: click profile page continue button
     Then WL: set membership page default values
-
     Then WL: click membership page submit button
+
     Then WL: expect username taken header to be Username Taken
     Then WL: expect username taken paragraph to be
     """
     The username you have selected (USERNAME) is already in use.
     Please enter a different username and try again.
     """
+    Then WL: expect username taken tooltip to be This field is required
+    Then WL: set username taken to a
+    Then WL: expect username taken tooltip to be 2 character minimum
+    Then WL: set username taken username to an existing username from db
+    Then WL: click username taken continue button
+    Then WL: expect username taken header to be Username Taken
+
+    Then WL: click modal x button
+
+    Then WL: set membership page address to PO Box 659
+    Then WL: set membership page city to Kosrae
+    Then WL: select membership page state FM
+    Then WL: set membership page zip to 96944
+
+    Then WL: click membership page submit button
+    Then WL: set pp username to an existing username from db
+    Then WL: click profile page continue button
+    Then WL: click membership page submit button
+
+    Then WL: set postage meter address between zone 5 and zone 8
+    Then WL: click membership page submit button
+
+    Then WL: expect username taken header to be Username Taken
+    Then WL: set username taken username to an existing username from db
+    Then WL: click username taken continue button
+    Then WL: expect username taken header to be Username Taken
+
+    Then WL: set username taken to random value
+    Then WL: click username taken continue button
+    Then WL: expect choose supplies page customize your welcome kit is present
