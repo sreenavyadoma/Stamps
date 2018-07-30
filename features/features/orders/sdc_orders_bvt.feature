@@ -191,7 +191,7 @@ Feature:  BVT tests for Orders
     Then add new order
     Then set order details ship-to domestic address to
       | full_name       | company      | street_address1   | street_address2| city    | state | zip    | country  | phone | email |
-      | First Last      | Company Name | 777 N Orange Ave | Apt 100         | Orlando | FL    | 32801  | United States | random | random |
+      | First Last      | Company Name | 777 N Orange Ave | Apt 100         | Orlando | FL    |   | United States | random | random |
     Then set order details pounds to 1
     Then set order details ounces to 1
     Then set order details service to PM Package
@@ -213,12 +213,6 @@ Feature:  BVT tests for Orders
     Then expect order details ship-to phone is correct
     Then expect order details ship-to email is correct
     Then expect order details ship-to name is First Last
-    Then expect order details ship-to company name is Company Name
-    Then expect order details ship-to cleansed street address is 777 N Orange Ave Apt 100
-    Then expect order details ship-to cleansed city is Orlando
-    Then expect order details ship-to cleansed state is FL
-    Then expect order details ship-to cleansed zip plus 4 code is 32801-1175
-    Then expect order details ship-to cleansed zip code is 32801
     Then expect order details ship-to phone is correct
     Then expect order details ship-to email is correct
     Then expect order details pound is 1
