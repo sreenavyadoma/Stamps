@@ -15,7 +15,8 @@ Then /^WL: set profile page email to (?:random value|(.*))$/ do |str|
 end
 
 Then /^WL: set profile page username to (?:random value|(.*))$/ do |str|
-  WhiteLabel.profile_page.username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
+  profile_page = WhiteLabel.profile_page
+  profile_page.username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
   print "UserName = #{TestData.hash[:username]}\n"
   TestData.hash[:username_taken] = WhiteLabel.common_page.username_query(TestData.hash[:username])
   step 'WL: blur_out on membership page'

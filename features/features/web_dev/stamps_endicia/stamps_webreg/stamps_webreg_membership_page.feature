@@ -430,3 +430,17 @@ Feature: Stamps WebReg: Membership Page
 
 
 
+  @sdcwr_membership_page_username_taken_validation
+  Scenario: Membership Page Username Taken Validation
+    Then WL: set profile page default values
+    Then WL: set profile page username to webreg1
+    Then WL: click profile page continue button
+    Then WL: set membership page default values
+
+    Then WL: click membership page submit button
+    Then WL: expect username taken header to be Username Taken
+    Then WL: expect username taken paragraph to be
+    """
+    The username you have selected (USERNAME) is already in use.
+    Please enter a different username and try again.
+    """
