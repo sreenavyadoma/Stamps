@@ -44,6 +44,18 @@ Then /^WL: navigates to default registration page for stamps with the following 
   TestData.hash[:security_questions_before_registration] = security_questions_before_reg
 end
 
+Then /^WL: [Ee]xpect security questions header to be (.*)$/ do |str|
+  sq_header = WhiteLabel.common_page.sq_header
+  sq_header.wait_until_present(timeout: 100)
+  expect(sq_header.text_value).to eql(str)
+end
+
+Then /^WL: [Ee]xpect security questions title to be (.*)$/ do |str|
+  security_question_title = WhiteLabel.common_page.security_question
+  security_question_title.wait_until_present(timeout: 5)
+  expect(security_question_title.text_value).to eql(str)
+end
+
 Then /^WL: select security questions first security question (.*)$/ do |str|
   common_page = WhiteLabel.common_page
   common_page.first_security_question.wait_until_present(timeout: 30)
@@ -120,7 +132,7 @@ Then /^WL: [Ee]xpect second security answer tooltip index (\d+) to be (.*)$/ do 
 end
 
 Then /^WL: click security questions get started button$/ do
-  #WhiteLabel.common_page.sq_get_started.click
+  WhiteLabel.common_page.sq_get_started.click
 end
 
 Then /^WL: [Ee]xpect security questions get started button exists$/ do
@@ -149,7 +161,7 @@ Then /^WL: if security question is present after registration then set the value
     step 'WL: set security questions first security answer to random value'
     step "WL: select security questions second security question What is your pet's name?"
     step 'WL: set security questions second security answer to random value'
-    step 'WL: click security questions get stared button'
+    step 'WL: click security questions get started button'
   else
     expect(WhiteLabel.common_page.second_security_question).not_to be_present
   end

@@ -570,3 +570,4 @@ pp_dashboard_single_contract_export_data_validation: --tags @pp_dashboard_single
 sdcwr_normal_workflow:  --tags @sdcwr_normal_workflow --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 sdcwr_membership_page_ui_validation:  --tags @sdcwr_membership_page_ui_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 sdcwr_profile_page_ui_validation: --tags @sdcwr_profile_page_ui_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
+sdcwr_security_quetions_ui_validation: --tags @sdcwr_security_quetions_ui_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true

@@ -16,6 +16,8 @@ Feature: Stamps WebReg: Security Quetions Workflow
     Then WL: set profile page survey question to Individual/Home Office
     Then WL: set profile page how did you hear about us? to Television Commercial
 
+    Then WL: if security question is present before registration then set the values
+
     Then WL: click profile page CONTINUE button
 
     #Membership Page
@@ -39,13 +41,10 @@ Feature: Stamps WebReg: Security Quetions Workflow
     Then WL: check choose supplies page is present then verify the page and click place order button
 
     #Security Question UI Validation
+    Then WL: expect security questions header to be Before you start printing postage, make sure your account is protected.
+    Then WL: expect security questions title to be To protect your account, please answer these security questions:
     Then WL: expect security questions get started button exists
     Then WL: click security questions get started button
-
-    Then WL: expect first security question tooltip index 1 to be This field is required
-    Then WL: expect first security answer tooltip index 1 to be This field is required
-    Then WL: expect second security question tooltip index 1 to be This field is required
-    Then WL: expect second security answer tooltip index 1 to be This field is required
 
     Then WL: select security questions first security question What is your mother's maiden name?
     Then WL: expect security questions first security question is correct
@@ -80,7 +79,7 @@ Feature: Stamps WebReg: Security Quetions Workflow
     Then WL: select security questions second security question What is the name of your first school?
     Then WL: expect security questions second security question is correct
 
-    Then WL: if security question is present before registration then set the values
+    Then WL: if security question is present after registration then set the values
 
     #Validate user navigate to Print page
     Then WL: expect user is navigated to print page
