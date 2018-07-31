@@ -93,7 +93,6 @@ Then /^WL: click profile page continue button$/ do
 end
 
 Then /^WL: set profile page default values$/ do
-  step 'WL: navigates to default registration page for stamps with the following source id 100-TES-WB001'
   step 'WL: set profile page email to random value'
   step 'WL: set profile page username to random value'
   step 'WL: set profile page password to random value'

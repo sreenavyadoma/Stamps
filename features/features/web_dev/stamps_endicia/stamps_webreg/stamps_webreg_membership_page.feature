@@ -7,7 +7,7 @@ Feature: Stamps WebReg: Membership Page
   Scenario: Membership Page Validation
 
     # Profile Page
-    Then WL: navigates to default registration page for stamps with the following source id 100-TES-WB001
+    Then WL: navigates to default registration page for stamps with the following offer id 399
     Then WL: set profile page email to random value
     Then WL: set profile page username to random value
     Then WL: set profile page password to random value
@@ -234,7 +234,7 @@ Feature: Stamps WebReg: Membership Page
 
   @sdcwr_membership_page_addr_validation
   Scenario: Membership Page Address Validation
-
+    Then WL: navigates to default registration page for stamps with the following offer id 399
     Then WL: set profile page default values
     Then WL: set pp username to an existing username from db
     Then WL: click profile page continue button
@@ -431,6 +431,7 @@ Feature: Stamps WebReg: Membership Page
 
   @sdcwr_membership_page_username_taken_validation
   Scenario: Membership Page Username Taken Validation
+    Then WL: navigates to default registration page for stamps with the following offer id 399
     Then WL: set profile page default values
     Then WL: set pp username to an existing username from db
     Then WL: click profile page continue button
