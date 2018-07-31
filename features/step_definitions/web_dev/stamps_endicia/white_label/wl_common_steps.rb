@@ -179,8 +179,6 @@ Then /^WL: expect username taken header to be (.*)$/ do |str|
   membership_page = WhiteLabel.membership_page
   membership_page.username_taken_header.wait_until_present(timeout: 15)
   expect(membership_page.username_taken_header.text_value.strip).to eql(str)
-
-  #membership_page.new_username.send_keys(:tab)
 end
 
 Then /^WL: expect username taken paragraph to be$/ do |str|
