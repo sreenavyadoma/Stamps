@@ -236,7 +236,7 @@ Feature: Stamps WebReg: Membership Page
   Scenario: Membership Page Address Validation
 
     Then WL: set profile page default values
-    Then WL: set profile page username to webreg1
+    Then WL: set pp username to an existing username from db
     Then WL: click profile page continue button
     Then WL: set membership page default values
 
@@ -340,7 +340,7 @@ Feature: Stamps WebReg: Membership Page
     Then WL: click membership page submit button
 
     Then WL: click modal x button
-    Then WL: set profile page username to webreg1
+    Then WL: set pp username to an existing username from db
     Then WL: click profile page continue button
 
 
@@ -368,7 +368,7 @@ Feature: Stamps WebReg: Membership Page
     """
     Then WL: select membership page exact addr modal radio button index 2
     Then WL: click modal continue button
-    Then WL: set username taken to webreg1
+    Then WL: set username taken username to an existing username from db
     Then WL: click username taken continue button
     Then WL: click membership page standardized addr modal x button
     Then WL: expect membership page address is 5211 Pacific Concourse Dr Apt 1102
@@ -471,6 +471,13 @@ Feature: Stamps WebReg: Membership Page
     Then WL: click username taken continue button
     Then WL: expect username taken header to be Username Taken
 
-    Then WL: set username taken to random value
+    Then WL: set username taken to \abc
     Then WL: click username taken continue button
-    Then WL: expect choose supplies page customize your welcome kit is present
+    Then WL: expect an error occurred modal head to be An Error Occurred
+    Then WL: expect an error occurred modal paragraph to be
+    """
+    An unexpected error occurred, please try again. If the problem persists please contact customer support at 1‑888‑434‑0055, Monday - Friday, 6 a.m. - 6 p.m. Pacific Time.
+    """
+    Then WL: expect an error occurred modal error code to be Error Code: 2820099
+    Then WL: expect an error occurred modal error description to include Username cannot be have backslashes
+    Then WL: click modal x button

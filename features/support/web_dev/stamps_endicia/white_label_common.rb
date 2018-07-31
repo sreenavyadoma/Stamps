@@ -25,6 +25,14 @@ module WhiteLabel
     #account created
     button(:account_created_continue) { {id: 'pawrContinue'} }
 
+    #An Error Occurred
+    page_object(:error_occurred_header) {{xpath: '//h3[(contains(text(), "An Error Occurred"))]'}}
+    page_object(:error_occurred_p) {{id: 'unexpected'}}
+    page_object(:error_occurred_error_code) {{id: 'errorCode'}}
+    page_object(:error_occurred_error_description) {{id: 'errorDescription'}}
+
+
+
     def dropdown_selection(str, index, name = :dropdown_element)
       page_objects(name, index: index) { { xpath: "//span[contains(text(), \"#{str}\")]" } }
     end
@@ -65,7 +73,7 @@ module WhiteLabel
       username = WhiteLabel.bridge_db_connection.execute(
          "select TOP 1 *
           FROM [Bridge].[dbo].[sdct_Bridge_User]
-          where EmailAddress IS NOT NULL and UserName NOT like '%\%'
+          where EmailAddress IS NOT NULL and UserName NOT like '%\\%'
           ORDER BY NEWID()")
       username.each do |item|
         return item['UserName']

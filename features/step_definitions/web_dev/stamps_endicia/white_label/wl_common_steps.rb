@@ -198,3 +198,22 @@ Then /^WL: expect username taken tooltip to be (.*)$/ do |str|
   expect(membership_page.new_username_help_block.text_value.strip).to eql(str)
 end
 
+#######################An Error Occurred####################################
+Then /^WL: expect an error occurred modal head to be (.*)$/ do |str|
+  error_occurred_header = WhiteLabel.common_page.error_occurred_header
+  error_occurred_header.wait_until_present(timeout: 2)
+  expect(error_occurred_header.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect an error occurred modal paragraph to be$/ do |str|
+  expect(WhiteLabel.common_page.error_occurred_p.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect an error occurred modal error code to be (.*)$/ do |str|
+  expect(WhiteLabel.common_page.error_occurred_error_code.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect an error occurred modal error description to include (.*)$/ do |str|
+  expect(WhiteLabel.common_page.error_occurred_error_description.text_value.strip).to include(str)
+end
+
