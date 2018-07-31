@@ -56,6 +56,14 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Uu]sername to (?:random value|(.*))$/ do |
   username = WhiteLabel.profile_page.username
   username.wait_until_present(timeout: 10)
   username.clear
+  # todo-Rob this is a bug, don't use infinite lool. Instead, do a few tries and fail it after.
+  # for example;
+  # 5.times do
+  #   str ||=  TestHelper.rand_alpha_str.capitalize
+  #   username.set(str)
+  #   break unless username.text_value.strip == ''
+  # end
+
   while username.text_value.strip == ''
     str ||=  TestHelper.rand_alpha_str.capitalize
     username.set(str)
