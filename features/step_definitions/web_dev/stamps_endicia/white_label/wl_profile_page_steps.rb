@@ -60,9 +60,14 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Uu]sername to (?:random value|(.*))$/ do |
     str ||=  TestHelper.rand_alpha_str.capitalize
     username.set(str)
   end
-  username.set ((TestData.hash[:username_taken]=(str.nil?)?(TestHelper.rand_usr) : str))
-  print "UserName = #{TestData.hash[:username_taken]}\n"
-  TestData.hash[:username_taken] = WhiteLabel.common_page.username_query(TestData.hash[:username_taken])
+
+  # todo-Kaushal this complicated looking code can be rewritten, see following line of code.
+  # username.set ((TestData.hash[:username_taken]=(str.nil?)?(TestHelper.rand_usr) : str))
+
+  str ||= TestHelper.rand_usr
+  username.set str
+
+  print "UserName = #{str}\n"
   TestData.hash[:username_taken] = str
 end
 
