@@ -117,9 +117,9 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Pp]assword to (?:random value|(.*))$/ do |
   end
 
   if SdcEnv.pw
-    password.set (TestData.hash[:account_password]=(str.nil?) ? SdcEnv.pw : str)
+    password.set (TestData.hash[:account_password]=(str.nil?) ? SdcEnv.pw : str) #todo-Kaushal fix this
   else
-    password.set (TestData.hash[:account_password]=(str.nil?) ? '1' + TestHelper.rand_alpha_numeric(min:6, max:10) : str)
+    password.set (TestData.hash[:account_password]=(str.nil?) ? '1' + TestHelper.rand_alpha_numeric(min:6, max:10) : str) #todo-Kaushal fix this
   end
   print "Password = #{TestData.hash[:account_password]}\n"
   TestData.hash[:account_password] = str
@@ -130,7 +130,7 @@ Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Pp]assword is (?:correct|(.*))$/ do |st
   str ||= TestData.hash[:account_password]
   expect(account_password.text_value.strip).to eql(str)
   TestData.hash[:account_password] = str
-  expect(TestData.hash[:account_password]).to eql((str.nil?) ? TestData.hash[:account_password] : str)
+  expect(TestData.hash[:account_password]).to eql((str.nil?) ? TestData.hash[:account_password] : str) #todo-Kaushal fix this
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Pp]assword tooltip count is (.*)$/ do |count|
@@ -162,7 +162,7 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Rr]e-type [Pp]assword to (?:same as previo
     confirm_password.set(str)
   end
 
-  confirm_password.set(TestData.hash[:retype_password]=(str.nil?)?(TestData.hash[:account_password]) : str)
+  confirm_password.set(TestData.hash[:retype_password]=(str.nil?)?(TestData.hash[:account_password]) : str) #todo-Kaushal fix this
   TestData.hash[:retype_password] = str
 end
 
@@ -216,7 +216,7 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Pp]romo [Cc]ode to (?:an empty string|(.*)
     str ||=  TestHelper.rand_alpha_str.capitalize
     promo_code.set(str)
   end
-  promo_code.set(TestData.hash[:promo_code]=(str.nil?)? '' : str)
+  promo_code.set(TestData.hash[:promo_code]=(str.nil?)? '' : str) #todo-Kaushal fix this
   TestData.hash[:promo_code] = str
 end
 
@@ -247,6 +247,9 @@ end
 Then /^WL: [Ss]et [Pp]rofile [Pp]age [Hh]ow [Dd]id [Yy]ou [Hh]ear [Aa]bout [Uu]s\? to (.*)$/ do |str|
   profile_page = WhiteLabel.profile_page
   if profile_page.referrer_name.present? == true
+    #todo-Kaushal fix this. you can simply say,
+    # if profile_page.referrer_name.present? instead of;
+    # if profile_page.referrer_name.present? == true
     profile_page.referrer_name.click
     profile_page.referrer_name_selection(str)
     profile_page.referrer_name_element.safe_wait_until_present(timeout: 2)
@@ -262,7 +265,7 @@ Then /^WL: [Ee]xpect [Pp]rofile [Pp]age how did you hear about us option is (?:c
   referrer_name = WhiteLabel.profile_page.referrer_name
   str ||= TestData.hash[:referrer_name]
 
-  if referrer_name.present? == true
+  if referrer_name.present? == true #todo-Kaushal fix this
   expect(referrer_name.title).to eql(str)
   TestData.hash[:referrer_name] = str
   else
