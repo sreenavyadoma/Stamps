@@ -46,3 +46,8 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: if security question is present after registration then set the values
 
     Then WL: expect user is navigated to print page
+
+  @sdcwr_offer_573_workflow
+  Scenario: Stamps WebReg: Normal Workflow
+    Then WL: navigates to default registration page for stamps with the following source id random value
+    Then WL: set profile page default values
