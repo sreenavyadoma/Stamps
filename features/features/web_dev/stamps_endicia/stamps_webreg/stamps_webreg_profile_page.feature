@@ -160,6 +160,6 @@ Feature: Stamps WebReg: Profile Page
     Then WL: expect membership page bread crumbs is Membership
 
     # Validate Security Quetions Modal does not present
-    Then WL: navigates to default registration page for stamps with the following source id 100-TES-WB001
+    Then WL: navigates to default registration page for stamps with the following offer id 399
     Then pause for 5 seconds
     Then WL: expect security question modal does not exists
