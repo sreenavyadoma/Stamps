@@ -28,22 +28,23 @@ module WhiteLabel
       page_objects(name, index: index) { { xpath: "//span[contains(text(), \"#{str}\")]" } }
     end
 
-    def source_id_query(source_id)
-      if source_id.nil?
+    def source_id_query(offer_id)
+      if offer_id.nil?
         source_id = WhiteLabel.sdc_db_connection.execute(
-          "select TOP 1 *
-          from [dbo].sdct_SW_Source as sw_source
-          inner join [dbo].sdct_SW_Offer as sw_offer on sw_offer.OfferId = sw_source.OfferId
-          ORDER BY NEWID()")
+         "select TOP 1 *
+         from [dbo].sdct_SW_Source as sw_source
+         inner join [dbo].sdct_SW_Offer as sw_offer on sw_offer.OfferId = sw_source.OfferId
+         ORDER BY NEWID()")
         source_id.each do |item|
           return item['SourceId'], item['Content'], item['PromoCode'], item['OfferId'], item['TargetUrl']
         end
       else
         source_id = WhiteLabel.sdc_db_connection.execute(
-          "select *
-          from [dbo].sdct_SW_Source as sw_source
-          inner join [dbo].sdct_SW_Offer as sw_offer on sw_offer.OfferId = sw_source.OfferId
-          where sw_source.SourceId = '#{source_id}'")
+            "select TOP 1 *
+         from [dbo].sdct_SW_Source as sw_source
+         inner join [dbo].sdct_SW_Offer as sw_offer on sw_offer.OfferId = sw_source.OfferId
+              where sw_offer.OfferId = #{offer_id}
+         ORDER BY NEWID()")
         source_id.each do |item|
           return item['SourceId'], item['Content'], item['PromoCode'], item['OfferId'], item['TargetUrl']
         end
@@ -61,15 +62,15 @@ module WhiteLabel
     end
 
     def plan_query(offer_id, sku)
-     data = WhiteLabel.stamp_mart_db_connection.execute(
-      "select  offer_pricing_plans.OfferID, offer_pricing_plans.PlanID, pricing_plans.SKU, pricing_plans.MonthlyBaseFee
+      data = WhiteLabel.stamp_mart_db_connection.execute(
+          "select  offer_pricing_plans.OfferID, offer_pricing_plans.PlanID, pricing_plans.SKU, pricing_plans.MonthlyBaseFee
        from [dbo].[smt_pricingplans] as pricing_plans
        inner join  [dbo].[smt_OfferPricingPlans] as offer_pricing_plans on  offer_pricing_plans.PlanID = pricing_plans.PlanID
        where offer_pricing_plans.OfferID = #{offer_id} and pricing_plans.SKU = #{sku}")
 
-     data.each do |item|
-       return item['MonthlyBaseFee']
-     end
+      data.each do |item|
+        return item['MonthlyBaseFee']
+      end
     end
 
     def plan_sku

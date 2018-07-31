@@ -491,7 +491,7 @@ end
 Then /^WL: check membership page terms & conditions$/ do
   mm_page = WhiteLabel.membership_page
   att_value = mm_page.billing_addr_enable_disable.attribute_value('class')
-  mm_page.terms_conditions.click! unless att_value== 'form-group checkbox'
+  mm_page.terms_conditions.click!
 end
 
 Then /^WL: uncheck membership page terms & conditions$/ do

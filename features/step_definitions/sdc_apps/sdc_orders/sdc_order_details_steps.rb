@@ -13,10 +13,12 @@ end
 
 Then /^add order details item (\d+), qty (\d+), id (.+), description (.*)$/ do |item, qty, id, description|
   step "add order details associated item #{item}"
+  step 'blur out on order details form'
   step "scroll into view order details associated item #{item}"
   step "set Order Details Associated Item #{item} qty to #{qty}"
   step "set Order Details Associated Item #{item} ID to #{id}"
   step "set Order Details Associated Item #{item} description to #{description}"
+  step 'blur out on order details form'
 end
 
 Then /^add order details associated item (\d+)$/ do |item|
@@ -175,29 +177,28 @@ Then /^set order details ship-to domestic address to$/ do |table|
   TestData.hash[:street_address2] = street_address2
   TestData.hash[:city] = city
   TestData.hash[:state] = state
+
+
+  address = SdcOrders.order_details.ship_to.domestic.address.text_value
+  result = TestHelper.address_str_to_hash(address)[:company]
+  result
 end
 
 Then /^set order details ship-to text area to (.*)$/ do |address|
   address = TestHelper.format_address(address)
-  ship_to = SdcOrders.order_details.ship_to
+  order_details = SdcOrders.order_details
+  ship_to = order_details.ship_to
   step 'show order ship-to details'
   domestic = SdcOrders.order_details.ship_to.domestic
-  domestic.address.set(address)
   5.times do
-    step 'blur out on order details form'
-    break if ship_to.show_less.present?
-    ship_to.show_less.safe_wait_until_present(timeout: 3)
-    if ship_to.show_less.present?
-      break
-    else
-      country = order_details.ship_to.domestic.country
-      country.drop_down.safe_click
-      country.drop_down.safe_click
-    end
-    domestic.address.safe_wait_until_present(timeout: 2)
-    break if ship_to.show_less.present?
     domestic.address.set(address)
-    ship_to.show_less.safe_wait_until_present(timeout: 3)
+    order_details.weight_label.click
+    order_details.service_label.double_click
+    order_details.order_id.double_click
+    order_details.reference_no_label.double_click
+    order_details.title.double_click
+    ship_to.show_less.safe_wait_until_present(timeout: 2)
+    break if ship_to.show_less.present?
   end
   TestData.hash[:ship_to_domestic] = address
   step 'Save Order Details data'
@@ -217,14 +218,15 @@ end
 
 Then /^blur out on order details form$/ do
   order_details = SdcOrders.order_details
-  order_details.weight_label.double_click
+  order_details.reference_no_label.double_click
+  order_details.weight_label.click
   order_details.service_label.double_click
-  order_details.reference_no.double_click
-  step 'show order ship-to details'
-  if order_details.ship_to_label.present?
-    order_details.ship_to_label.safe_click
-  end
+  # step 'show order ship-to details'
+  # if order_details.ship_to_label.present?
+  #   order_details.ship_to_label.safe_click
+  # end
   order_details.order_id.double_click
+  order_details.reference_no_label.double_click
   order_details.title.double_click
 end
 
