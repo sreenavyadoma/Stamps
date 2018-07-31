@@ -429,7 +429,6 @@ Feature: Stamps WebReg: Membership Page
     Then WL: expect username taken header to be Username Taken
 
 
-
   @sdcwr_membership_page_username_taken_validation
   Scenario: Membership Page Username Taken Validation
     Then WL: set profile page default values
