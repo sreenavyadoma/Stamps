@@ -80,8 +80,8 @@ Then /^click sign-in button on browser$/ do
   step 'click Orders landing page sign-in button'
 
   SdcOrders.loading_orders.safe_wait_until_present(timeout: 10)
-  SdcOrders.loading_orders.safe_wait_while_present(timeout: 30)
-  SdcGrid.body.safe_wait_until_present(timeout: 20)
+  SdcOrders.loading_orders.safe_wait_while_present(timeout: 60)
+  SdcGrid.body.safe_wait_until_present(timeout: 30)
   expect(toolbar.add).to be_present
 end
 
