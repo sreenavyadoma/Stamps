@@ -31,7 +31,17 @@ module WhiteLabel
     page_object(:error_occurred_error_code) {{id: 'errorCode'}}
     page_object(:error_occurred_error_description) {{id: 'errorDescription'}}
 
+    #Offer 573 Landing Page
+    page_object(:offer_573_header) {{id: 'hpHeader'}}
+    page_object(:offer_573_p) {{id: 'hpSubheader'}}
+    page_object(:offer_573_p2) {{id: 'hpUpgrade'}}
+    page_object(:offer_573_img) {{xpath: '//img[contains(@src, "webreg/images/shippingLabels.png")]'}}
 
+    #offer 592 Landing Page
+    page_object(:offer_592_header) {{xpath: '//h1[(contains(text(), "Congratulations on your new account!"))]'}}
+    page_objects(:offer_592_p) {{xpath: '//div[@id="averyCongrats"]/p'}}
+    page_object(:offer_592_continue) {{id: 'averyReturn'}}
+    page_objects(:offer_592_avery) {{class: ['site-logo__link']}}
 
     def dropdown_selection(str, index, name = :dropdown_element)
       page_objects(name, index: index) { { xpath: "//span[contains(text(), \"#{str}\")]" } }

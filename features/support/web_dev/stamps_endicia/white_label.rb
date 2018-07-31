@@ -151,6 +151,7 @@ module WhiteLabel
 
   class ChooseSupplies < SdcPage
     page_object(:cs_header) { {xpath: '//h1[(contains(text(), "Customize your Welcome Kit"))]'} }
+    page_object(:cs_paragraph) {{xpath: '//div[@class="container welcomeTextBucket"]/section/p'}}
     page_object(:place_order) { {id: 'mincartButtonTopDpawr'}}
 
    def atg_promotion

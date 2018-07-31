@@ -10,7 +10,20 @@ end
 Then /^WL: expect choose supplies page customize your welcome kit is present$/ do
   cs_header =  WhiteLabel.choose_supplies.cs_header
   cs_header.wait_until_present(timeout: 50)
+  step 'pause for 1 second'
   expect(cs_header).to be_present, "Customize your Welcome Kit is NOT present, ATG Promotion: #{TestData.hash[:atg_promotion]}"
+end
+
+Then /^WL: expect choose supplies page header to be (.*)$/ do |str|
+  cs_header =  WhiteLabel.choose_supplies.cs_header
+  cs_header.wait_until_present(timeout: 50)
+  step 'pause for 1 second'
+  expect(cs_header.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect choose supplies page paragraph to be$/ do |str|
+  cs_paragraph = WhiteLabel.choose_supplies.cs_paragraph
+  expect(cs_paragraph.text_value.strip).to eql(str)
 end
 
 Then /^WL: click choose supplies page place order button$/ do

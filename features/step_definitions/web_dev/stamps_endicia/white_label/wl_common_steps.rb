@@ -216,3 +216,53 @@ Then /^WL: expect an error occurred modal error description to include (.*)$/ do
   expect(WhiteLabel.common_page.error_occurred_error_description.text_value.strip).to include(str)
 end
 
+######################Offer 573 Landing Page#########################################
+Then /^WL: expect offer 573 landing page header to be (.*)$/ do |str|
+  SdcPage.browser.alert.close if SdcPage.browser.alert.exists?
+
+  offer_573_header = WhiteLabel.common_page.offer_573_header
+  offer_573_header.wait_until_present(timeout: 30)
+  step 'pause for 1 second'
+  expect(offer_573_header.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect offer 573 landing page sub header paragraph to be$/ do |str|
+  expect(WhiteLabel.common_page.offer_573_p.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect offer 573 landing page hp upgrade paragraph to be$/ do |str|
+  expect(WhiteLabel.common_page.offer_573_p2.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect offer 573 landing page shipping labels img is present$/ do
+  expect(WhiteLabel.common_page.offer_573_img).to be_present
+end
+
+##########################Offer 592 Landing Page#######################
+
+Then /^WL: expect offer 592 landing page header to be (.*)$/ do |str|
+  SdcPage.browser.alert.close if SdcPage.browser.alert.exists?
+
+  offer_592_header = WhiteLabel.common_page.offer_592_header
+  offer_592_header.wait_until_present(timeout: 50)
+  step 'pause for 1 second'
+  expect(offer_592_header.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect offer 592 landing page paragraph index (\d+) to be$/ do |index, str|
+  expect(WhiteLabel.common_page.offer_592_p[index-1].inner_text.strip).to eql(str)
+end
+
+Then /^WL: click offer 592 landing page continue button$/ do
+  WhiteLabel.common_page.offer_592_continue.click
+end
+
+Then /^WL: expect offer 592 landing page avery img is present$/ do
+  SdcPage.browser.alert.close if SdcPage.browser.alert.exists?
+
+  offer_592_avery = WhiteLabel.common_page.offer_592_avery
+  offer_592_avery[0].wait_until_present(timeout: 50)
+  step 'pause for 1 second'
+  expect(offer_592_avery[0]).to be_present
+  expect(SdcPage.browser.url).to include("avery.com/myavery")
+end
