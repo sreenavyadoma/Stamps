@@ -318,7 +318,7 @@ Then /^WL: [Ee]xpect [Pp]rofile [Pp]age content under Money-saving offers and ne
 end
 
 Then /^WL: [Cc]heck [Pp]rofile [Pp]age [Mm]oney-saving offers and new products$/ do
-  WhiteLabel.profile_page.money_saving_offers_checkbox.check unless WhiteLabel.profile_page.money_saving_offers_checkbox.checked?
+  WhiteLabel.profile_page.money_saving_offers_checkbox.check
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Mm]oney-saving offers and new products is checked$/ do
