@@ -63,7 +63,8 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Uu]sername to (?:random value|(.*))$/ do |
   #   username.set(str)
   #   break unless username.text_value.strip == ''
   # end
-
+  # Then do an assertion after the loop, like this;
+  # expect(username.text_value.strip).not_to eql('')
   while username.text_value.strip == ''
     str ||=  TestHelper.rand_alpha_str.capitalize
     username.set(str)
