@@ -6,7 +6,7 @@ Then /^WL: close stamps website db connection$/ do
   WhiteLabel.sdc_db_connection.close
 end
 
-Then /^WL: navigates to default registration page for stamps with the following source id (?:random value|(.*))$/ do |str|
+Then /^WL: navigates to default registration page for stamps with the following offer id (?:random value|(.*))$/ do |str|
   step 'WL: establish stamps website db connection'
   common_page = WhiteLabel.common_page
   if str.nil?

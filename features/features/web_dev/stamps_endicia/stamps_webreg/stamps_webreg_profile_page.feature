@@ -6,7 +6,7 @@ Feature: Stamps WebReg: Profile Page
   @sdcwr_profile_page_ui_validation
   Scenario: Profile Page Validation
 
-    Then WL: navigates to default registration page for stamps with the following source id si10211832
+    Then WL: navigates to default registration page for stamps with the following offer id 391
 
     #Verifying all content present
     Then pause for 5 seconds
