@@ -26,13 +26,15 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Ee]mail to (?:random value|(.*))$/ do |str
   TestData.hash[:atg_promotion] =  WhiteLabel.choose_supplies.atg_promotion
   if SdcEnv.usr
     sleep 1
-    email.set(TestData.hash[:email]=(str.nil?)?(SdcEnv.usr) : str)
+    str ||= TestData.hash[:email]
+    email.set(tr)
   else
     sleep 1
-    email.set(TestData.hash[:email]=(str.nil?)?(TestHelper.rand_email) : str)
+    str ||= TestData.hash[:email]
+    email.set(str)
   end
 
-  print "Email = #{TestData.hash[:email]}\n"
+  SdcLogger.info "Email = #{TestData.hash[:email]}\n"
   TestData.hash[:email] = str
 end
 
@@ -68,8 +70,10 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Uu]sername to (?:random value|(.*))$/ do |
   end
   expect(username.text_value.strip).not_to eql('')
 
-  username.set((TestData.hash[:username_taken]=(str.nil?)?(TestHelper.rand_usr) : str))
-  print "UserName = #{str}\n"
+  str ||= TestData.hash[:username_taken]
+  username.set(str)
+  
+  SdcLogger.info "UserName = #{str}\n"
   TestData.hash[:username_taken] = str
 end
 
@@ -113,13 +117,13 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Pp]assword to (?:random value|(.*))$/ do |
   expect(password.text_value.strip).not_to eql('')
 
   if SdcEnv.pw
-    str ||= TestData.hash[:account_password]=(str.nil?) ? SdcEnv.pw : str
+    str ||= TestData.hash[:account_password]
     password.set (str)
   else
-    str ||= TestData.hash[:account_password]=(str.nil?) ? '1' + TestHelper.rand_alpha_numeric(min:6, max:10) : str
+    str ||= '1' + TestHelper.rand_alpha_numeric(min:6, max:10)
     password.set (str)
   end
-  print "Password = #{TestData.hash[:account_password]}\n"
+  SdcLogger.info "Password = #{TestData.hash[:account_password]}\n"
   TestData.hash[:account_password] = str
 end
 
@@ -161,9 +165,8 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Rr]e-type [Pp]assword to (?:same as previo
   end
   expect(confirm_password.text_value.strip).not_to eql('')
 
-  str ||= TestData.hash[:retype_password]=(str.nil?)?(TestData.hash[:account_password]) : str
+  str ||= TestData.hash[:retype_password]
   confirm_password.set(str)
-  TestData.hash[:retype_password] = str
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Rr]e-[Tt]ype [Pp]assword is (?:correct|(.*))$/ do |str|
@@ -215,8 +218,9 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Pp]romo [Cc]ode to (?:an empty string|(.*)
     str ||=  TestHelper.rand_alpha_str.capitalize
     promo_code.set(str)
   end
-  promo_code.set(TestData.hash[:promo_code]=(str.nil?)? '' : str)
-  TestData.hash[:promo_code] = str
+
+  str ||= TestData.hash[:promo_code]
+  promo_code.set(str)
 end
 
 Then /^WL: [Ss]how [Pp]rofile [Pp]age [Pp]romo [Cc]ode$/ do
