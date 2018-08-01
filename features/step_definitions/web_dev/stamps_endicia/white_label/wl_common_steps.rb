@@ -33,8 +33,7 @@ Then /^WL: navigates to default registration page for stamps with the following 
   expect(SdcPage.browser.url).to include(target_url.to_s)
 
   common_page.get_started.click!
-
-  print "Sourceid = #{source_id}\n"
+  SdcLogger.info "Sourceid = #{source_id}"
 
   TestData.hash[:source_id] = source_id
   TestData.hash[:content] = content
@@ -154,7 +153,8 @@ Then /^WL: if username taken is present then set username to (?:random value|(.*
     membership_page.new_username.wait_until_present(timeout: 5)
     expect(membership_page.username_taken_header).to be_present
     membership_page.new_username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
-    print "UserName = #{TestData.hash[:username]}\n"
+
+    SdcLogger.info "UserName = #{TestData.hash[:username]}"
     step 'WL: click username taken continue button'
   end
 end
@@ -163,7 +163,7 @@ Then /^WL: set username taken to (?:random value|(.*))/ do |str|
   new_username = WhiteLabel.membership_page.new_username
   new_username.set((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
   new_username.send_keys(:tab)
-  print "UserName Taken = #{TestData.hash[:username]}\n"
+  SdcLogger.info "UserName Taken = #{TestData.hash[:username]}"
 end
 
 Then /^WL: set username taken username to an existing username from db$/ do

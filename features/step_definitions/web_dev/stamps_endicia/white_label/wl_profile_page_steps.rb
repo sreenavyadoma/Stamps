@@ -10,7 +10,8 @@ Then /^WL: set profile page email to (?:random value|(.*))$/ do |str|
     email.set(TestData.hash[:email]=(str.nil?)?(TestHelper.rand_email) : str)
   end
 
-  print "Email = #{TestData.hash[:email]}\n"
+  SdcLogger.info "Email = #{TestData.hash[:email]}"
+
   TestData.hash[:atg_promotion] =  WhiteLabel.choose_supplies.atg_promotion
 end
 
@@ -20,7 +21,7 @@ Then /^WL: set profile page username to (?:random value|(.*))$/ do |str|
 
   profile_page.username.set(str)
   step 'WL: blur_out on membership page'
-  print "UserName = #{str}\n"
+  SdcLogger.info "Username = #{str}"
 
   TestData.hash[:username_taken] = WhiteLabel.common_page.username_query(str)
   TestData.hash[:username] = str
@@ -38,7 +39,8 @@ Then /^WL: set profile page password to (?:random value|(.*))$/ do |str|
     str ||= '1' + TestHelper.rand_alpha_numeric(min:6, max:10)
     WhiteLabel.profile_page.password.set (TestData.hash[:account_password] = str)
   end
-  print "Password = #{TestData.hash[:account_password]}\n"
+
+  SdcLogger.info "Password = #{TestData.hash[:account_password]}"
 end
 
 Then /^WL: set profile page re-type password to (?:same as previous password|(.*))$/ do |str|
