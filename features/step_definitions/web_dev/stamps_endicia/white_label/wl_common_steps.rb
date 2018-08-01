@@ -232,11 +232,6 @@ Then /^WL: expect user is navigated to print page$/ do
   end
 
   common_page= WhiteLabel.common_page
-
-  # if common_page.account_created_continue.present?
-  #   common_page.account_created_continue.click
-  # end
-
   common_page.print_stamps_logo.wait_until_present(timeout: 120) rescue false
 
   case  SdcEnv.env
