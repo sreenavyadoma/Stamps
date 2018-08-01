@@ -158,8 +158,8 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Rr]e-type [Pp]assword to (?:same as previo
   confirm_password.wait_until_present(timeout: 10)
   confirm_password.clear
 
+  str ||= TestData.hash[:account_password]
   7.times do
-    str ||=  TestData.hash[:account_password]
     confirm_password.set(str)
     break unless confirm_password.text_value.strip == ''
   end
@@ -215,8 +215,8 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Pp]romo [Cc]ode to (?:an empty string|(.*)
   promo_code.wait_until_present(timeout: 10)
   promo_code.clear
 
+  str ||= TestHelper.rand_alpha_str.capitalize
   5.times do
-    str ||=  TestHelper.rand_alpha_str.capitalize
     promo_code.set(str)
     break unless promo_code.text_value.strip == ''
   end
