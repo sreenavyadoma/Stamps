@@ -43,12 +43,14 @@ module WhiteLabel
     #Print Landing Page
     page_object(:print_stamps_logo) {{class: ['sdcLogo']}}
     page_object(:print_username) {{id: 'userNameText'}}
+    page_object(:print_edge_detail_link) {{id: 'moreInformationDropdownSpan'}}
+    page_object(:print_edge_go_on_link) {{id: 'invalidcert_continue'}}
 
     def dropdown_selection(str, index, name = :dropdown_element)
       page_objects(name, index: index) { { xpath: "//span[contains(text(), \"#{str}\")]" } }
     end
 
-    def source_id_query(offer_id)
+    def sdc_website_source_id_query(offer_id)
       if offer_id.nil?
         source_id = WhiteLabel.sdc_db_connection.execute(
           "select TOP 1 *
@@ -68,6 +70,15 @@ module WhiteLabel
         source_id.each do |item|
           return item['SourceId'], item['Content'], item['PromoCode'], item['OfferId'], item['TargetUrl']
         end
+      end
+    end
+
+    def stamps_mart_source_id_query(source_id)
+      source_id = WhiteLabel.stamp_mart_db_connection.execute(
+      "select * FROM [Stampmart].[dbo].[smt_PromotionOffers]
+       where PromoCode = '#{source_id}'")
+     source_id.each do |item|
+        return item['OfferId'], item['PromoCode']
       end
     end
 

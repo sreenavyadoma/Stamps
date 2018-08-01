@@ -10,7 +10,7 @@ Then /^WL: navigates to default registration page for stamps with the following 
   step 'WL: establish stamps website db connection'
   common_page = WhiteLabel.common_page
   if str.nil?
-    source_id, content, promo_code, offer_id, target_url = common_page.source_id_query(nil)
+    source_id, content, promo_code, offer_id, target_url = common_page.sdc_website_source_id_query(nil)
     if content.include? 'SecurityQuestionsBeforeRegistration'
       hash = Hash.from_xml(content)
       security_questions_before_reg  = hash['root']['SecurityQuestionsBeforeRegistration']
@@ -18,7 +18,7 @@ Then /^WL: navigates to default registration page for stamps with the following 
       security_questions_before_reg = 'true'
     end
   else
-    source_id, content, promo_code, offer_id, target_url  = common_page.source_id_query(str)
+    source_id, content, promo_code, offer_id, target_url  = common_page.sdc_website_source_id_query(str)
     if content.include? 'SecurityQuestionsBeforeRegistration'
       hash = Hash.from_xml(content)
       security_questions_before_reg  = hash['root']['SecurityQuestionsBeforeRegistration']
@@ -43,6 +43,11 @@ Then /^WL: navigates to default registration page for stamps with the following 
   TestData.hash[:target_url] = target_url
   TestData.hash[:security_questions_before_registration] = security_questions_before_reg
 end
+
+Then /^expect db matches$/ do
+
+end
+
 ###################Security Question######################
 Then /^WL: select security questions first security question (.*)$/ do |str|
   common_page = WhiteLabel.common_page
@@ -232,6 +237,10 @@ Then /^WL: expect user is navigated to print page$/ do
   end
 
   common_page= WhiteLabel.common_page
+  common_page.print_edge_detail_link.safe_wait_until_present(timeout: 10)
+  common_page.print_edge_detail_link.click if common_page.print_edge_detail_link.present?
+  common_page.print_cert_error.click if common_page.print_cert_error.present?
+
   common_page.print_stamps_logo.wait_until_present(timeout: 120) rescue false
 
   case  SdcEnv.env
