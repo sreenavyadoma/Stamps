@@ -16,21 +16,19 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Ee]mail to (?:random value|(.*))$/ do |str
   email.wait_until_present(timeout: 30)
   email.clear
 
+  str ||= TestHelper.rand_email.capitalize
   15.times do
-    str ||=  TestHelper.rand_email.capitalize
     email.set(str)
     break unless email.text_value.strip == ''
   end
   expect(email.text_value.strip).not_to eql('')
 
-  TestData.hash[:atg_promotion] =  WhiteLabel.choose_supplies.atg_promotion
+  TestData.hash[:atg_promotion] = WhiteLabel.choose_supplies.atg_promotion
   if SdcEnv.usr
     sleep 1
-    str ||= TestData.hash[:email]
     email.set(str)
   else
     sleep 1
-    str ||= TestData.hash[:email]
     email.set(str)
   end
 
@@ -63,16 +61,15 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Uu]sername to (?:random value|(.*))$/ do |
   username.wait_until_present(timeout: 10)
   username.clear
 
+  str ||= TestHelper.rand_alpha_str.capitalize
   15.times do
-    str ||=  TestHelper.rand_alpha_str.capitalize
     username.set(str)
     break unless username.text_value.strip == ''
   end
   expect(username.text_value.strip).not_to eql('')
 
-  str ||= TestData.hash[:username_taken]
   username.set(str)
-  
+
   SdcLogger.info "UserName = #{str}\n"
   TestData.hash[:username_taken] = str
 end
@@ -109,18 +106,16 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Pp]assword to (?:random value|(.*))$/ do |
   password.wait_until_present(timeout: 10)
   password.clear
 
+  str ||= '1' + TestHelper.rand_alpha_numeric(min: 6, max: 10)
   7.times do
-    str ||=  '1' + TestHelper.rand_alpha_numeric(min:6, max:10)
     password.set(str)
     break unless password.text_value.strip == ''
   end
   expect(password.text_value.strip).not_to eql('')
 
   if SdcEnv.pw
-    str ||= TestData.hash[:account_password]
-    password.set (str)
+    password.set (TestData.hash[:account_password])
   else
-    str ||= '1' + TestHelper.rand_alpha_numeric(min:6, max:10)
     password.set (str)
   end
   SdcLogger.info "Password = #{TestData.hash[:account_password]}\n"
@@ -165,7 +160,6 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Rr]e-type [Pp]assword to (?:same as previo
   end
   expect(confirm_password.text_value.strip).not_to eql('')
 
-  str ||= TestData.hash[:retype_password]
   confirm_password.set(str)
 end
 
@@ -223,11 +217,13 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Pp]romo [Cc]ode to (?:an empty string|(.*)
   expect(promo_code.text_value.strip).not_to eql('')
 
   str ||= TestData.hash[:promo_code]
+  #todo-code review str will never get assigned TestData.hash[:promo_code] since it will never be null at this point
+  # if str gets a value from line 218, then it will never be null at line 225
   promo_code.set(str)
 end
 
 Then /^WL: [Ss]how [Pp]rofile [Pp]age [Pp]romo [Cc]ode$/ do
-  WhiteLabel.profile_page.promo_code_link.click if  WhiteLabel.profile_page.promo_code_link.present?
+  WhiteLabel.profile_page.promo_code_link.click if WhiteLabel.profile_page.promo_code_link.present?
   expect(WhiteLabel.profile_page.promo_code).to be_present
 end
 
