@@ -114,9 +114,9 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Pp]assword to (?:random value|(.*))$/ do |
   expect(password.text_value.strip).not_to eql('')
 
   if SdcEnv.pw
-    password.set (TestData.hash[:account_password])
+    password.set(TestData.hash[:account_password])
   else
-    password.set (str)
+    password.set(str)
   end
   SdcLogger.info "Password = #{TestData.hash[:account_password]}\n"
   TestData.hash[:account_password] = str
