@@ -99,5 +99,4 @@ Then /^WL: set profile page default values$/ do
   step 'WL: set profile page re-type password to same as previous password'
   step 'WL: set profile page survey question to Business Use - Both mailing and shipping'
   step 'WL: set profile page how did you hear about us? to Received Mailer'
-  #step 'WL: set profile page promo code to PR33-NH77'
 end

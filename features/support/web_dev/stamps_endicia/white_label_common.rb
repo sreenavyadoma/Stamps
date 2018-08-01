@@ -10,9 +10,6 @@ module WhiteLabel
     button(:modal_cancel) {{xpath: '//div[@class="modal-footer"]/button[1]'}}
     page_objects(:modal_x, index: 0) { {class: ['close']} }
 
-    #Print
-    page_object(:print_stamps_logo) {{class: ['sdcLogo']}}
-
     #security questions
     page_object(:sq_header) {{xpath: '//h1[(contains(text(), "Before you start printing postage, make sure your account is protected."))]'}}
     page_object(:security_question) {{xpath: '//h2[(contains(text(), "To protect your account, please answer these security questions:"))]'}}
@@ -42,6 +39,10 @@ module WhiteLabel
     page_objects(:offer_592_p) {{xpath: '//div[@id="averyCongrats"]/p'}}
     page_object(:offer_592_continue) {{id: 'averyReturn'}}
     page_objects(:offer_592_avery) {{class: ['site-logo__link']}}
+
+    #Print Landing Page
+    page_object(:print_stamps_logo) {{class: ['sdcLogo']}}
+    page_object(:print_username) {{id: 'userNameText'}}
 
     def dropdown_selection(str, index, name = :dropdown_element)
       page_objects(name, index: index) { { xpath: "//span[contains(text(), \"#{str}\")]" } }

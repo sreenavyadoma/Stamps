@@ -43,7 +43,7 @@ Then /^WL: navigates to default registration page for stamps with the following 
   TestData.hash[:target_url] = target_url
   TestData.hash[:security_questions_before_registration] = security_questions_before_reg
 end
-
+###################Security Question######################
 Then /^WL: select security questions first security question (.*)$/ do |str|
   common_page = WhiteLabel.common_page
   common_page.first_security_question.wait_until_present(timeout: 30)
@@ -100,49 +100,6 @@ Then /^WL: if security question is present after registration then set the value
   else
     expect(WhiteLabel.common_page.second_security_question).not_to be_present
   end
-end
-
-Then /^WL: expect user is navigated to print page$/ do
-  if SdcPage.browser.alert.exists?
-    SdcPage.browser.alert.close
-  end
-
-  if WhiteLabel.common_page.account_created_continue.present?
-    WhiteLabel.common_page.account_created_continue.click
-  end
-
-  WhiteLabel.common_page.print_stamps_logo.wait_until_present(timeout: 120) rescue false
-
-  case  SdcEnv.env
-    when :qacc
-      expect(SdcPage.browser.url).to include('https://print.qacc.stamps.com')
-    when :stg
-      expect(SdcPage.browser.url).to include('https://print.staging.stamps.com')
-    when ''
-      expect(SdcPage.browser.url).to include('https://print.stamps.com')
-  end
-end
-
-Then /^WL: click modal continue button$/ do
-  modal_continue = WhiteLabel.common_page.modal_continue
-  modal_continue.wait_until_present(timeout: 2)
-  modal_continue.click
-  step 'pause for 1 second'
-end
-
-Then /^WL: click modal cancle button$/ do
-  modal_cancel = WhiteLabel.common_page.modal_cancel
-  modal_cancel.wait_until_present(timeout: 2)
-  modal_cancel.click
-  step 'pause for 1 second'
-end
-
-
-Then /^WL: click modal x button$/ do
-  modal_x = WhiteLabel.common_page.modal_x
-  modal_x.wait_until_present(timeout: 2)
-  modal_x.click if modal_x.present?
-  step 'pause for 1 second'
 end
 
 ######################Username Taken Modal#############################
@@ -265,4 +222,53 @@ Then /^WL: expect offer 592 landing page avery img is present$/ do
   step 'pause for 1 second'
   expect(offer_592_avery[0]).to be_present
   expect(SdcPage.browser.url).to include("avery.com/myavery")
+end
+
+############Printing Landing Page##############################
+Then /^WL: expect user is navigated to print page$/ do
+  step 'pause for 2 second'
+  if SdcPage.browser.alert.exists?
+    SdcPage.browser.alert.close
+  end
+
+  common_page= WhiteLabel.common_page
+
+  # if common_page.account_created_continue.present?
+  #   common_page.account_created_continue.click
+  # end
+
+  common_page.print_stamps_logo.wait_until_present(timeout: 120) rescue false
+
+  case  SdcEnv.env
+    when :qacc
+      expect(SdcPage.browser.url).to include('https://print.qacc.stamps.com')
+    when :stg
+      expect(SdcPage.browser.url).to include('https://print.staging.stamps.com')
+    when ''
+      expect(SdcPage.browser.url).to include('https://print.stamps.com')
+  end
+  expect(common_page.print_username.attribute_value('title').strip).to eql(TestData.hash[:username])
+end
+
+###############Modal##############################
+Then /^WL: click modal continue button$/ do
+  modal_continue = WhiteLabel.common_page.modal_continue
+  modal_continue.wait_until_present(timeout: 2)
+  modal_continue.click
+  step 'pause for 1 second'
+end
+
+Then /^WL: click modal cancel button$/ do
+  modal_cancel = WhiteLabel.common_page.modal_cancel
+  modal_cancel.wait_until_present(timeout: 2)
+  modal_cancel.click
+  step 'pause for 1 second'
+end
+
+
+Then /^WL: click modal x button$/ do
+  modal_x = WhiteLabel.common_page.modal_x
+  modal_x.wait_until_present(timeout: 2)
+  modal_x.click if modal_x.present?
+  step 'pause for 1 second'
 end

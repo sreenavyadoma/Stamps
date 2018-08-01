@@ -48,7 +48,7 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: expect user is navigated to print page
 
   @sdcwr_offer_573_workflow
-  Scenario: Stamps WebReg: Normal Workflow
+  Scenario: Stamps WebReg: Offer 573 Workflow
     #Profile Page
     Then WL: navigates to default registration page for stamps with the following offer id 573
     Then WL: set profile page default values
@@ -64,7 +64,7 @@ Feature: Stamps WebReg: Normal Workflow
 
     #Choose Supplies Page
     Then WL: expect choose supplies page header to be Customize your Welcome Kit
-    Then WL: expect choose supplies page paragraph to be
+    Then WL: expect choose supplies page paragraph index 1 to be
     """
     Thank you for signing up for Stamps.com. Your free Welcome Kit is on its way. Customize your welcome kits with HP specific products by selecting the options below.
     """
@@ -84,7 +84,7 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: expect offer 573 landing page shipping labels img is present
 
   @sdcwr_offer_592_workflow
-  Scenario: Stamps WebReg: Normal Workflow
+  Scenario: Stamps WebReg: Offer 592 Workflow
   #Profile Page
     Then WL: navigates to default registration page for stamps with the following offer id 592
     Then WL: set profile page default values
@@ -98,7 +98,7 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: set membership page default values
     Then WL: click membership page submit button
 
-  #Offer 592 Landing Page
+  #Offer 592 Conformation/Landing Page
     Then WL: expect offer 592 landing page header to be Congratulations on your new account!
     Then WL: expect offer 592 landing page paragraph index 1 to be
     """
@@ -111,3 +111,27 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: click offer 592 landing page continue button
 
     Then WL: expect offer 592 landing page avery img is present
+
+  @sdcwr_offer_399_workflow
+  Scenario: Stamps WebReg: Default Offer Workflow
+    Then WL: navigates to default registration page for stamps with the following offer id 399
+    Then WL: set profile page default values
+    Then WL: click profile page continue button
+    Then WL: set membership page default values
+    Then WL: click membership page submit button
+
+    Then WL: check choose supplies page is present then verify the page and click place order button
+    Then WL: expect choose supplies page header to be Customize your Welcome Kit
+#    Then WL: select choose supplies postal scale selection 2
+#    Then WL: select choose supplies original NetStamps label sheet selection 2
+#    Then WL: select choose supplies patriotic NetStamps label sheet selection 1
+#    Then WL: select choose supplies postage, delivery, and return address labels selection 1
+    Then WL: click choose supplies page place order button
+
+
+    Then WL: select security questions first security question What is your pet's name?
+    Then WL: set security questions first security answer to Leopard
+    Then WL: select security questions second security question What is the make and model of your first car?
+    Then WL: set security questions second security answer to Reventon
+    Then WL: click security questions get stared button
+    Then WL: expect user is navigated to print page
