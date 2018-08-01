@@ -552,7 +552,7 @@ pp_reset_password: --tags @pp_reset_password --guess JENKINS=true WEB_DEV=true
 pp_dashboard_single_contract_export_data_ui_validation: --tags @pp_dashboard_single_contract_export_data_ui_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 pp_dashboard_single_contract_export_data_validation: --tags @pp_dashboard_single_contract_export_data_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 #Stamps WebReg
-sdcwr_normal_workflow:  --tags @sdcwr_normal_workflow --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
-sdcwr_membership_page_ui_validation:  --tags @sdcwr_membership_page_ui_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
-sdcwr_membership_page_addr_validation: --tags @sdcwr_membership_page_addr_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
-sdcwr_membership_page_username_taken_validation: --tags @sdcwr_membership_page_username_taken_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
+sdcwr_normal_workflow:  --tags @sdcwr_normal_workflow --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
+sdcwr_membership_page_ui_validation:  --tags @sdcwr_membership_page_ui_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
+sdcwr_membership_page_addr_validation: --tags @sdcwr_membership_page_addr_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
+sdcwr_membership_page_username_taken_validation: --tags @sdcwr_membership_page_username_taken_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
