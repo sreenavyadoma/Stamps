@@ -116,22 +116,30 @@ Feature: Stamps WebReg: Normal Workflow
   Scenario: Stamps WebReg: Default Offer Workflow
     Then WL: navigates to default registration page for stamps with the following offer id 399
     Then WL: set profile page default values
+    Then WL: set profile page promo code to PR33-NH77
     Then WL: click profile page continue button
     Then WL: set membership page default values
     Then WL: click membership page submit button
 
-    Then WL: check choose supplies page is present then verify the page and click place order button
     Then WL: expect choose supplies page header to be Customize your Welcome Kit
-#    Then WL: select choose supplies postal scale selection 2
-#    Then WL: select choose supplies original NetStamps label sheet selection 2
-#    Then WL: select choose supplies patriotic NetStamps label sheet selection 1
-#    Then WL: select choose supplies postage, delivery, and return address labels selection 1
+    Then WL: expect choose supplies page paragraph index 1 to be
+    """
+    Thank you for signing up for Stamps.com. Your free Welcome Kit is on its way. Included in the kit is a set of label sheets for printing stamps or shipping labels.
+    """
+    Then WL: expect choose supplies page paragraph index 3 to be
+    """
+    If you want to add a free postal scale (just pay S&H) or additional labels or supplies, please select below.
+    """
+    Then WL: select choose supplies postal scale selection 2
+    Then WL: select choose supplies original NetStamps label sheet selection 2
+    Then WL: select choose supplies patriotic NetStamps label sheet selection 1
+    Then WL: select choose supplies postage, delivery, and return address labels selection 1
     Then WL: click choose supplies page place order button
 
 
     Then WL: select security questions first security question What is your pet's name?
-    Then WL: set security questions first security answer to Leopard
+    Then WL: set security questions first security answer to random value
     Then WL: select security questions second security question What is the make and model of your first car?
-    Then WL: set security questions second security answer to Reventon
+    Then WL: set security questions second security answer to random value
     Then WL: click security questions get stared button
     Then WL: expect user is navigated to print page

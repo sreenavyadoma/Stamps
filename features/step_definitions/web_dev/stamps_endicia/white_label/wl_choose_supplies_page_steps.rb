@@ -3,10 +3,6 @@ Then /^WL: check choose supplies page is present then verify the page and click 
     expect(WhiteLabel.choose_supplies.cs_header).not_to be_present, 'Choose Supplies Page is PRESENT when there is no ATG Promotion'
   else
     step 'WL: expect choose supplies page is present'
-    step 'WL: expect choose supplies page header to be Customize your Welcome Kit'
-    step 'WL: expect choose supplies page paragraph index 1 to be'
-    step 'WL: expect choose supplies page paragraph index 3 to be'
-    step 'WL: select choose supplies postal scale selection 2'
     step 'WL: click choose supplies page place order button'
   end
 end
@@ -15,7 +11,7 @@ Then /^WL: expect choose supplies page is present$/ do
   cs_header =  WhiteLabel.choose_supplies.cs_header
   cs_header.wait_until_present(timeout: 50)
   step 'pause for 1 second'
-  expect(cs_header).to be_present, "Choose Supplies Page IS NOT present, ATG Promotion: #{TestData.hash[:atg_promotion]}"
+  expect(cs_header).to be_present, "Choose Supplies Page is NOT present, ATG Promotion: #{TestData.hash[:atg_promotion]}"
 end
 
 Then /^WL: expect choose supplies page header to be (.*)$/ do |str|
@@ -27,22 +23,7 @@ end
 
 Then /^WL: expect choose supplies page paragraph index (\d+) to be$/ do |index, str|
   cs_paragraph = WhiteLabel.choose_supplies.cs_paragraph
-  case index
-    when 1
-      if str.nil?
-        expected = "Thank you for signing up for Stamps.com. Your free Welcome Kit is on its way. Included in the kit is a set of label sheets for printing stamps or shipping labels."
-        expect(cs_paragraph[index-1].inner_text.strip).to eql(expected)
-      else
-        expect(cs_paragraph[index-1].inner_text.strip).to eql(str)
-      end
-    when 3
-      if str.nil?
-        expected = "If you want to add a free postal scale (just pay S&H) or additional labels or supplies, please select below."
-        expect(cs_paragraph[index-1].inner_text.strip).to eql(expected)
-      else
-        expect(cs_paragraph[index-1].inner_text.strip).to eql(str)
-      end
-  end
+  expect(cs_paragraph[index-1].inner_text.strip).to eql(str)
 end
 
 Then /^WL: select choose supplies postal scale selection (\d+)$/ do |index|
