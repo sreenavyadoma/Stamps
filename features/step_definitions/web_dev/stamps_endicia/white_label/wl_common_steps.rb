@@ -33,8 +33,7 @@ Then /^WL: navigates to default registration page for stamps with the following 
   expect(SdcPage.browser.url).to include(target_url.to_s)
 
   common_page.get_started.click!
-
-  print "Sourceid = #{source_id}\n"
+  SdcLogger.info "Sourceid = #{source_id}"
 
   TestData.hash[:source_id] = source_id
   TestData.hash[:content] = content
@@ -44,11 +43,19 @@ Then /^WL: navigates to default registration page for stamps with the following 
   TestData.hash[:security_questions_before_registration] = security_questions_before_reg
 end
 
-Then /^expect db matches$/ do
-
+###################Security Question######################
+Then /^WL: [Ee]xpect security questions header to be (.*)$/ do |str|
+  sq_header = WhiteLabel.common_page.sq_header
+  sq_header.wait_until_present(timeout: 100)
+  expect(sq_header.text_value).to eql(str)
 end
 
-###################Security Question######################
+Then /^WL: [Ee]xpect security questions title to be (.*)$/ do |str|
+  security_question_title = WhiteLabel.common_page.security_question
+  security_question_title.wait_until_present(timeout: 5)
+  expect(security_question_title.text_value).to eql(str)
+end
+
 Then /^WL: select security questions first security question (.*)$/ do |str|
   common_page = WhiteLabel.common_page
   common_page.first_security_question.wait_until_present(timeout: 30)
@@ -56,7 +63,22 @@ Then /^WL: select security questions first security question (.*)$/ do |str|
   common_page.dropdown_selection(str, 0)
   common_page.dropdown_element.safe_wait_until_present(timeout: 2)
   common_page.dropdown_element.click
-  expect(common_page.first_security_question.attribute_value('title').strip).to eql str
+  TestData.hash[:first_security_question] = common_page.first_security_question.attribute_value('title').strip
+  expect(TestData.hash[:first_security_question]).to eql str
+end
+
+Then /^WL: [Ee]xpect first security question tooltip index (\d+) to be (.*)$/ do |index, str|
+  first_security_question_help_block = WhiteLabel.common_page.first_security_question_help_block
+  first_security_question_help_block.wait_until_present(timeout: 5)
+  TestData.hash[:first_security_question_help_block] = first_security_question_help_block.text_value.split("\n")
+  expect(TestData.hash[:first_security_question_help_block][index.to_i - 1]).to eql(str)
+end
+
+Then /^WL: [Ee]xpect security questions first security question is (?:correct|(.*))$/ do |str|
+  first_security_question = WhiteLabel.common_page.first_security_question
+  str ||= TestData.hash[:first_security_question]
+  expect(first_security_question.title).to eql(str)
+  TestData.hash[:first_security_question] = str
 end
 
 Then /^WL: set security questions first security answer to (?:random value|(.*))$/ do |str|
@@ -65,13 +87,35 @@ Then /^WL: set security questions first security answer to (?:random value|(.*))
   TestData.hash[:first_security_answer] = str
 end
 
+Then /^WL: [Ee]xpect first security answer tooltip index (\d+) to be (.*)$/ do |index, str|
+  first_security_answer_help_block = WhiteLabel.common_page.first_security_answer_help_block
+  first_security_answer_help_block.wait_until_present(timeout: 5)
+  TestData.hash[:first_security_answer_help_block] = first_security_answer_help_block.text_value.split("\n")
+  expect(TestData.hash[:first_security_answer_help_block][index.to_i - 1]).to eql(str)
+end
+
 Then /^WL: select security questions second security question (.*)$/ do |str|
   common_page = WhiteLabel.common_page
   common_page.second_security_question.click
   common_page.dropdown_selection(str, 1)
   common_page.dropdown_element.safe_wait_until_present(timeout: 2)
   common_page.dropdown_element.click
-  expect(common_page.second_security_question.attribute_value('title').strip).to eql str
+  TestData.hash[:second_security_question] = common_page.second_security_question.attribute_value('title').strip
+  expect(TestData.hash[:second_security_question]).to eql str
+end
+
+Then /^WL: [Ee]xpect second security question tooltip index (\d+) to be (.*)$/ do |index, str|
+  second_security_question_help_block = WhiteLabel.common_page.second_security_question_help_block
+  second_security_question_help_block.wait_until_present(timeout: 5)
+  TestData.hash[:second_security_question_help_block] = second_security_question_help_block.text_value.split("\n")
+  expect(TestData.hash[:second_security_question_help_block][index.to_i - 1]).to eql(str)
+end
+
+Then /^WL: [Ee]xpect security questions second security question is (?:correct|(.*))$/ do |str|
+  second_security_question = WhiteLabel.common_page.second_security_question
+  str ||= TestData.hash[:second_security_question]
+  expect(second_security_question.title).to eql(str)
+  TestData.hash[:second_security_question] = str
 end
 
 Then /^WL: set security questions second security answer to (?:random value|(.*))$/ do |str|
@@ -80,8 +124,24 @@ Then /^WL: set security questions second security answer to (?:random value|(.*)
   TestData.hash[:second_security_answer] = str
 end
 
-Then /^WL: click security questions get stared button$/ do
+Then /^WL: [Ee]xpect second security answer tooltip index (\d+) to be (.*)$/ do |index, str|
+  second_security_answer_help_block = WhiteLabel.common_page.second_security_answer_help_block
+  second_security_answer_help_block.wait_until_present(timeout: 5)
+  TestData.hash[:second_security_answer_help_block] = second_security_answer_help_block.text_value.split("\n")
+  expect(TestData.hash[:second_security_answer_help_block][index.to_i - 1]).to eql(str)
+end
+
+Then /^WL: click security questions get started button$/ do
   WhiteLabel.common_page.sq_get_started.click
+end
+
+Then /^WL: [Ee]xpect security questions get started button exists$/ do
+  WhiteLabel.common_page.sq_get_started.wait_until_present(timeout: 50)
+  expect(WhiteLabel.common_page.sq_get_started).to be_present
+end
+
+Then /^WL: [Ee]xpect security question modal does not exists$/ do
+  expect(WhiteLabel.common_page.security_question).not_to be_present
 end
 
 Then /^WL: if security question is present before registration then set the values$/ do
@@ -101,7 +161,7 @@ Then /^WL: if security question is present after registration then set the value
     step 'WL: set security questions first security answer to random value'
     step "WL: select security questions second security question What is your pet's name?"
     step 'WL: set security questions second security answer to random value'
-    step 'WL: click security questions get stared button'
+    step 'WL: click security questions get started button'
   else
     expect(WhiteLabel.common_page.second_security_question).not_to be_present
   end
@@ -116,7 +176,8 @@ Then /^WL: if username taken is present then set username to (?:random value|(.*
     membership_page.new_username.wait_until_present(timeout: 5)
     expect(membership_page.username_taken_header).to be_present
     membership_page.new_username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
-    print "UserName = #{TestData.hash[:username]}\n"
+
+    SdcLogger.info "UserName = #{TestData.hash[:username]}"
     step 'WL: click username taken continue button'
   end
 end
@@ -125,7 +186,7 @@ Then /^WL: set username taken to (?:random value|(.*))/ do |str|
   new_username = WhiteLabel.membership_page.new_username
   new_username.set((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
   new_username.send_keys(:tab)
-  print "UserName Taken = #{TestData.hash[:username]}\n"
+  SdcLogger.info "UserName Taken = #{TestData.hash[:username]}"
 end
 
 Then /^WL: set username taken username to an existing username from db$/ do

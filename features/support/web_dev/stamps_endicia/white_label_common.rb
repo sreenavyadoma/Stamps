@@ -14,9 +14,13 @@ module WhiteLabel
     page_object(:sq_header) {{xpath: '//h1[(contains(text(), "Before you start printing postage, make sure your account is protected."))]'}}
     page_object(:security_question) {{xpath: '//h2[(contains(text(), "To protect your account, please answer these security questions:"))]'}}
     page_objects(:first_security_question, index: 0) {{xpath: '//div[contains(@class, "secretQuestion")]/button'}}
+    page_objects(:first_security_question_help_block,  index: 0) { {xpath: '//*[@id="secretquestions"]/div/div/div/span'} }
     text_field(:first_secret_answer, tag: :text_field, required: true) { { id: 'secretAnswer1' } }
+    page_objects(:first_security_answer_help_block,  index: 0) { {xpath: '//*[@id="secretquestions"]/div/div/div/span'} }
     page_objects(:second_security_question, index: 1) {{xpath: '//div[contains(@class, "secretQuestion")]/button'}}
+    page_objects(:second_security_question_help_block,  index: 0) { {xpath: '//*[@id="secretquestions"]/div/div/div/span'} }
     text_field(:second_secret_answer, tag: :text_field, required: true) { { id: 'secretAnswer2' } }
+    page_objects(:second_security_answer_help_block,  index: 0) { {xpath: '//*[@id="secretquestions"]/div/div/div/span'} }
     button(:sq_get_started) { { id: 'startPrinting' } }
 
     #account created
@@ -110,9 +114,9 @@ module WhiteLabel
        inner join  [dbo].[smt_OfferPricingPlans] as offer_pricing_plans on  offer_pricing_plans.PlanID = pricing_plans.PlanID
        where offer_pricing_plans.OfferID = #{offer_id} and pricing_plans.SKU = #{sku}")
 
-     data.each do |item|
-       return item['MonthlyBaseFee']
-     end
+      data.each do |item|
+        return item['MonthlyBaseFee']
+      end
     end
 
     def plan_sku
