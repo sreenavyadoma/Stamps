@@ -11,7 +11,7 @@ Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Ee]mail is (?:correct|(.*))$/ do |str|
   TestData.hash[:email] = str
 end
 
-Then /^WL: [Ss]et [Pp]rofile [Pp]age [Ee]mail to (?:random value|(.*))$/ do |str|
+Then /^WL: set profile page email to (?:random value|(.*))$/ do |str|
   email = WhiteLabel.profile_page.email
   email.wait_until_present(timeout: 30)
   email.clear
@@ -28,7 +28,7 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Ee]mail to (?:random value|(.*))$/ do |str
     email.set(TestData.hash[:email]=(str.nil?)?(TestHelper.rand_email) : str)
   end
 
-  print "Email = #{TestData.hash[:email]}\n"
+  SdcLogger.info "Email = #{TestData.hash[:email]}\n"
   TestData.hash[:email] = str
 end
 
@@ -53,6 +53,20 @@ Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Uu]sername exists$/ do
 end
 
 Then /^WL: set profile page username to (?:random value|(.*))$/ do |str|
+  str ||= TestHelper.rand_usr
+  profile_page = WhiteLabel.profile_page
+
+  profile_page.username.set(str)
+  step 'WL: blur_out on membership page'
+  SdcLogger.info "Username = #{str}"
+
+  TestData.hash[:username_taken] = WhiteLabel.common_page.username_query(str)
+  TestData.hash[:username] = str
+end
+
+Then /^WL: set pp username to an existing username from db$/ do
+   existing_usr = WhiteLabel.common_page.existing_username_query
+   step "WL: set profile page username to #{existing_usr}"
   username = WhiteLabel.profile_page.username
   username.wait_until_present(timeout: 10)
   username.clear
@@ -93,7 +107,7 @@ Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Pp]assword exists$/ do
   expect(WhiteLabel.profile_page.password).to be_present
 end
 
-Then /^WL: [Ss]et [Pp]rofile [Pp]age [Pp]assword to (?:random value|(.*))$/ do |str|
+Then /^WL: set profile page password to (?:random value|(.*))$/ do |str|
   password = WhiteLabel.profile_page.password
   password.wait_until_present(timeout: 10)
   password.clear
@@ -102,6 +116,7 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Pp]assword to (?:random value|(.*))$/ do |
     password.set(str)
   end
 
+  str ||= '1' + TestHelper.rand_alpha_numeric(min:6, max:10)
   if SdcEnv.pw
     password.set (TestData.hash[:account_password]=(str.nil?) ? SdcEnv.pw : str)
   else
@@ -207,7 +222,9 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Pp]romo [Cc]ode to (?:an empty string|(.*)
 end
 
 Then /^WL: set profile page re-type password to (?:same as previous password|(.*))$/ do |str|
-  WhiteLabel.profile_page.confirm_password.set(TestData.hash[:retype_password]=(str.nil?)?(TestData.hash[:account_password]) : str)
+  str ||= TestData.hash[:account_password]
+  WhiteLabel.profile_page.confirm_password.set(str)
+  TestData.hash[:retype_password] = str
 end
 
 Then /^WL: set profile page survey question to (.*)$/ do |str|
@@ -245,7 +262,7 @@ Then /^WL: [Ee]xpect [Pp]rofile [Pp]age how did you hear about us option is (?:c
   referrer_name = WhiteLabel.profile_page.referrer_name
   str ||= TestData.hash[:referrer_name]
 
-  if referrer_name.present? == true
+  if referrer_name.present?
   expect(referrer_name.title).to eql(str)
   TestData.hash[:referrer_name] = str
   else
@@ -255,7 +272,7 @@ end
 
 Then /^WL: show profile page promo code textbox$/ do
   WhiteLabel.profile_page.promo_code_link.click if  WhiteLabel.profile_page.promo_code_link.present?
-  expect(WhiteLabel.profile_page.promo_code_textbox).to be_present, 'Unable to show Promo Code textbox upon clicking Show Promo Code link.'
+  expect(WhiteLabel.profile_page.promo_code_textbox).to be_present
 end
 
 Then /^WL: [Cc]lick [Pp]rofile [Pp]age CONTINUE button$/ do
@@ -313,6 +330,7 @@ end
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Mm]oney-saving offers and new products is unchecked$/ do
   expect(WhiteLabel.profile_page.money_saving_offers_checkbox.checked?).to be(false)
 end
+
 Then /^WL: set profile page default values$/ do
   step 'WL: navigates to default registration page for stamps with the following source id 100-TES-WB001'
   step 'WL: set profile page email to random value'

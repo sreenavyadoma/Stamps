@@ -33,8 +33,7 @@ Then /^WL: navigates to default registration page for stamps with the following 
   expect(SdcPage.browser.url).to include(target_url.to_s)
 
   common_page.get_started.click!
-
-  print "Sourceid = #{source_id}\n"
+  SdcLogger.info "Sourceid = #{source_id}"
 
   TestData.hash[:source_id] = source_id
   TestData.hash[:content] = content
@@ -213,19 +212,28 @@ end
 ######################Username Taken Modal#############################
 Then /^WL: if username taken is present then set username to (?:random value|(.*))$/ do |str|
   membership_page =  WhiteLabel.membership_page
-  if TestData.hash[:username_taken].empty?
+  if TestData.hash[:username_taken] == TestData.hash[:username]
     expect(membership_page.username_taken_header).not_to be_present
   else
     membership_page.new_username.wait_until_present(timeout: 5)
     expect(membership_page.username_taken_header).to be_present
     membership_page.new_username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
-    print "UserName = #{TestData.hash[:username]}\n"
+
+    SdcLogger.info "UserName = #{TestData.hash[:username]}"
     step 'WL: click username taken continue button'
   end
 end
 
 Then /^WL: set username taken to (?:random value|(.*))/ do |str|
-  WhiteLabel.membership_page.new_username.set((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
+  new_username = WhiteLabel.membership_page.new_username
+  new_username.set((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
+  new_username.send_keys(:tab)
+  SdcLogger.info "UserName Taken = #{TestData.hash[:username]}"
+end
+
+Then /^WL: set username taken username to an existing username from db$/ do
+  existing_usr = WhiteLabel.common_page.existing_username_query
+  step "WL: set username taken to #{existing_usr}"
 end
 
 Then /^WL: click username taken continue button$/ do
@@ -233,23 +241,43 @@ Then /^WL: click username taken continue button$/ do
 end
 
 Then /^WL: expect username taken header to be (.*)$/ do |str|
-  username_taken_header = WhiteLabel.membership_page.username_taken_header
-  username_taken_header.wait_until_present(timeout: 2)
-  expect(username_taken_header.text_value.strip).to eql(str)
+  membership_page = WhiteLabel.membership_page
+  membership_page.username_taken_header.wait_until_present(timeout: 15)
+  expect(membership_page.username_taken_header.text_value.strip).to eql(str)
 end
 
 Then /^WL: expect username taken paragraph to be$/ do |str|
   username_taken_p = WhiteLabel.membership_page.username_taken_p
   actual = username_taken_p.text_value.strip.gsub(/\P{ASCII}/, '')
-  expected = str.gsub('USERNAME', TestData.hash[:username])
+  expected = str.gsub('USERNAME', TestData.hash[:username].strip)
 
   expect(expected).to eql(actual)
 end
 
 Then /^WL: expect username taken tooltip to be (.*)$/ do |str|
   membership_page = WhiteLabel.membership_page
-  membership_page.new_username.clear
   membership_page.new_username.send_keys(:tab)
+  membership_page.new_username.send_keys(:tab)
+  membership_page.new_username_help_block.wait_until_present(timeout: 2)
   expect(membership_page.new_username_help_block.text_value.strip).to eql(str)
+end
+
+#######################An Error Occurred####################################
+Then /^WL: expect an error occurred modal head to be (.*)$/ do |str|
+  error_occurred_header = WhiteLabel.common_page.error_occurred_header
+  error_occurred_header.wait_until_present(timeout: 5)
+  expect(error_occurred_header.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect an error occurred modal paragraph to be$/ do |str|
+  expect(WhiteLabel.common_page.error_occurred_p.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect an error occurred modal error code to be (.*)$/ do |str|
+  expect(WhiteLabel.common_page.error_occurred_error_code.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect an error occurred modal error description to include (.*)$/ do |str|
+  expect(WhiteLabel.common_page.error_occurred_error_description.text_value.strip).to include(str)
 end
 

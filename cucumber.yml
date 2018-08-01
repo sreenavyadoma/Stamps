@@ -5,7 +5,6 @@ cuke_reports: --format json --out report.json --backtrace -f pretty -r features 
 
 sign_in_win10_edge_sauce:  --tags @saucelabs_poc SAUCE_DEVICE=win10_edge_sauce LOG_LEVEL=debug  URL=prod USR=abqaprod1 PW=password1 HEADLESS=true
 sign_in_macos_chrome_sauce:  --tags @mail_authentication SAUCE_DEVICE=macos_chrome_sauce LOG_LEVEL=debug  URL=prod USR=abqaprod1 PW=password1 HEADLESS=true
-sign_in_macos_chrome_sauce:  --tags @mail_authentication SAUCE_DEVICE=macos_chrome_sauce LOG_LEVEL=debug  URL=prod USR=abqaprod1 PW=password1 HEADLESS=true
 iphonex_saucelabs: --tags @saucelabs_poc SAUCE_DEVICE=iphonex_sauce LOG_LEVEL=debug  URL=prod USR=abqaprod1 PW=password
 samsung_galaxy_sauce: --tags @saucelabs_poc SAUCE_DEVICE=samsung_galaxy_sauce LOG_LEVEL=debug  URL=prod USR=abqaprod1 PW=password
 
@@ -15,10 +14,10 @@ samsung_galaxy_sauce: --tags @saucelabs_poc SAUCE_DEVICE=samsung_galaxy_sauce LO
 #saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1
 #bvt_orders_ship_date
 #robcm=ccpryiihrjz ccfb311osps4x print_dialog_ship_date bvt_international_shipping cchealthchk01 stgvoc0kcnt6rw stgupr2smgtub
-#rob: --tags @bvt_shipstation_updates_domestic URL=cc BROWSER=ff LOG_LEVEL=info HEALTHCHECK=true MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory
+rob: --tags @bvt_shipstation_updates_domestic URL=cc BROWSER=ff LOG_LEVEL=info HEALTHCHECK=true MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory
 #rob: --tags @bvt_shipstation_updates_international URL=sc --guess LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=selenium  USR=scsejsglwa PW=pass111LOG_LEVEL=debug PRINTER=factory  # c2jinmzmu64 schl0vlbfy2673 #19  schl0vlbfy2673
 #rob: --tags @bvt_shipstation_updates_domestic URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgvoc0kcnt6rw PW=pass111 PRINTER=factory  # stgvoc0kcnt6rw stgshipint001
-rob: --tags @bvt_bulk_update URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgom0dqgzppy PW=pass111 PRINTER=factory  #stgee1mtqvwdc0 stgvoc0kcnt6rw  stgom0dqgzppy
+#rob: --tags @healthcheck URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgom0dqgzppy PW=pass111 PRINTER=factory  #stgee1mtqvwdc0 stgvoc0kcnt6rw  stgom0dqgzppy
 saucelabs: --tags @saucelabs LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug
 saucelabs_local: --tags @bvt_shipstation_updates_domestic URL=stg USR=stg_hka7 PW=password1 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
 saucelabs_local_rob: --tags @bvt_shipstation_updates_domestic URL=stg USR=AutoSAS_ST11 PW=pass111 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
@@ -33,10 +32,9 @@ saucelabs_iphonex_cc: --tags @saucelabs_poc MOBILE='iphone x' LOG_LEVEL=info  UR
 #mhossain1_cc: --tags @pp_header_favicons_browser_mobile JENKINS=true URL=qacc BROWSER_MOBILE_EMULATOR=gc,'iPhone X' USR=wteam@stamps.com PW=password1
 #mhossain1_cc: --tags @pp_log_in_page_validation JENKINS=true URL=stg BROWSER=ff USR=wteam@stamps.com PW=password1 FIREFOX_PROFILE=true WEB_DEV=true
 
-mhossain1_cc: --tags @sdcwr_membership_page_addr_validation JENKINS=true URL=stg BROWSER=ff FIREFOX_PROFILE=true WEB_DEV=true #USR=qawebdevelopment@stamps.com PW=password1
+mhossain1_cc: --tags @sdcwr_membership_page_username_taken_validation JENKINS=true URL=stg BROWSER=edge FIREFOX_PROFILE=true WEB_DEV=true LOG_LEVEL=info #USR=qawebdevelopment@stamps.com PW=password1
 
 kaushal_cc: --tags @sdcwr_security_quetions_ui_validation JENKINS=true URL=stg BROWSER=ff FIREFOX_PROFILE=true WEB_DEV=true #USR=qawebdevelopment@stamps.com PW=password1
-
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess  HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 
@@ -555,8 +553,9 @@ pp_reset_password: --tags @pp_reset_password --guess JENKINS=true WEB_DEV=true
 pp_dashboard_single_contract_export_data_ui_validation: --tags @pp_dashboard_single_contract_export_data_ui_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 pp_dashboard_single_contract_export_data_validation: --tags @pp_dashboard_single_contract_export_data_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 #Stamps WebReg
-sdcwr_normal_workflow:  --tags @sdcwr_normal_workflow --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
-sdcwr_membership_page_ui_validation:  --tags @sdcwr_membership_page_ui_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
-sdcwr_membership_page_addr_validation: --tags @sdcwr_membership_page_addr_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
+sdcwr_normal_workflow:  --tags @sdcwr_normal_workflow --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
+sdcwr_membership_page_ui_validation:  --tags @sdcwr_membership_page_ui_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
+sdcwr_membership_page_addr_validation: --tags @sdcwr_membership_page_addr_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
+sdcwr_membership_page_username_taken_validation: --tags @sdcwr_membership_page_username_taken_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
+dcwr_security_quetions_ui_validation: --tags @sdcwr_security_quetions_ui_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 sdcwr_profile_page_ui_validation: --tags @sdcwr_profile_page_ui_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
-sdcwr_security_quetions_ui_validation: --tags @sdcwr_security_quetions_ui_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
