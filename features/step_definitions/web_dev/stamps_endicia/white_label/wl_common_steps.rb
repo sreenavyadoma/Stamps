@@ -123,3 +123,68 @@ Then /^WL: expect user is navigated to print page$/ do
   end
 end
 
+Then /^WL: click modal continue button$/ do
+  modal_continue = WhiteLabel.common_page.modal_continue
+  modal_continue.wait_until_present(timeout: 2)
+  modal_continue.click
+  step 'pause for 1 second'
+end
+
+Then /^WL: click modal cancle button$/ do
+  modal_cancel = WhiteLabel.common_page.modal_cancel
+  modal_cancel.wait_until_present(timeout: 2)
+  modal_cancel.click
+  step 'pause for 1 second'
+end
+
+
+Then /^WL: click modal x button$/ do
+  modal_x = WhiteLabel.common_page.modal_x
+  modal_x.wait_until_present(timeout: 2)
+  modal_x.click if modal_x.present?
+  step 'pause for 1 second'
+end
+
+######################Username Taken Modal#############################
+Then /^WL: if username taken is present then set username to (?:random value|(.*))$/ do |str|
+  membership_page =  WhiteLabel.membership_page
+  if TestData.hash[:username_taken].empty?
+    expect(membership_page.username_taken_header).not_to be_present
+  else
+    membership_page.new_username.wait_until_present(timeout: 5)
+    expect(membership_page.username_taken_header).to be_present
+    membership_page.new_username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
+    print "UserName = #{TestData.hash[:username]}\n"
+    step 'WL: click username taken continue button'
+  end
+end
+
+Then /^WL: set username taken to (?:random value|(.*))/ do |str|
+  WhiteLabel.membership_page.new_username.set((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
+end
+
+Then /^WL: click username taken continue button$/ do
+  WhiteLabel.membership_page.username_taken_continue_btn.click
+end
+
+Then /^WL: expect username taken header to be (.*)$/ do |str|
+  username_taken_header = WhiteLabel.membership_page.username_taken_header
+  username_taken_header.wait_until_present(timeout: 2)
+  expect(username_taken_header.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect username taken paragraph to be$/ do |str|
+  username_taken_p = WhiteLabel.membership_page.username_taken_p
+  actual = username_taken_p.text_value.strip.gsub(/\P{ASCII}/, '')
+  expected = str.gsub('USERNAME', TestData.hash[:username])
+
+  expect(expected).to eql(actual)
+end
+
+Then /^WL: expect username taken tooltip to be (.*)$/ do |str|
+  membership_page = WhiteLabel.membership_page
+  membership_page.new_username.clear
+  membership_page.new_username.send_keys(:tab)
+  expect(membership_page.new_username_help_block.text_value.strip).to eql(str)
+end
+

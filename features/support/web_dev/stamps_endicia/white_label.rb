@@ -24,7 +24,8 @@ module WhiteLabel
   class MembershipPage < SdcPage
     page_object(:header) { {xpath: '//h1[(contains(text(), "Set up your personal Post Office"))]'} }
     page_object(:membership_bread_crumb) { {xpath: '//li[@id="breadcrumb_Membership"]/span'} }
-    button(:modal_x) { {class: ['close']} }
+    button(:back) {{id: 'prev'}}
+    button(:submit) {{id: 'next'}}
 
     #Personal Info
     text_field(:first_name, tag: :text_field, required: true) { { id: 'firstName' } }
@@ -33,8 +34,8 @@ module WhiteLabel
     page_object(:last_name_help_block) { {xpath: '//div[@class="col-xs-12 col-sm-6 gut-sm-form-l-half"]/div/div/span'} }
     text_field(:company, tag: :text_field) { { id: 'companyName' } }
     text_field(:address, tag: :text_field, required: true) { { id: 'street' } }
-    page_objects(:address_auto_complete, index: 0) {{xpath: '//div[@class="pac-container pac-logo"]/div/span[2]/span'}}
     page_object(:address_help_block) { {xpath: '//li[@id="personalinfo"]/div/div[4]/div/div/span'} }
+    page_objects(:address_auto_complete) {{xpath: '//body[@id="membership-page"]/div[6]/div'}}
     text_field(:city, tag: :text_field, required: true) { { id: 'city' } }
     page_object(:city_help_block) { {xpath: '//*[@id="personalinfo"]/div/div[contains(@class, "col-lg-5")]/div/div/span'} }
     page_object(:state) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="state"]'}}
@@ -62,20 +63,17 @@ module WhiteLabel
 
     #Term and Conditions
     page_object(:terms_conditions) {{id: 'termsConditions'}}
+    page_object(:addr_enable_disable_check) { {xpath: '//li[@id="terms"]/div/div/div'} }
     page_object(:terms_conditions_help_block) { {xpath: '//li[@id="terms"]/div/div/div/div[2]/span'} }
     link(:terms_conditions_link) { {class: ['termsLabel terms-conditions-link']} }
     page_object(:terms_conditions_header) { {xpath: '//h3[(contains(text(), "Terms and Conditions"))]'} }
 
-    button(:back) {{id: 'prev'}}
-    button(:submit) {{id: 'next'}}
-
     #Billing Address
     page_object(:billing_addr_checkbox) {{id: 'useMailingAddressForBilling'}}
-    page_object(:billing_addr_enable_disable) { {xpath: '//li[@id="terms"]/div/div/div'} }
     page_object(:billing_addr_header) {{class: ['billingAddressForm']}}
     text_field(:billing_addr, tag: :text_field, required: true) { { id: 'billingStreet' } }
-    page_objects(:billing_addr_auto_complete, index: 1) {{xpath: '//div[@class="pac-container pac-logo"]/div/span[2]/span'}}
     page_object(:billing_addr_help_block) {{xpath: '//li[@id="creditcard"]/div/div[6]/div[contains(@class, "billingAddressForm")]/div/span'}}
+    page_objects(:billing_addr_auto_complete) {{xpath: '//body[@id="membership-page"]/div[7]/div'}}
     text_field(:billing_city, tag: :text_field, required: true) { { id: 'billingCity' } }
     page_object(:billing_city_help_block) { {xpath: '//*[@id="creditcard"]/div/div[contains(@class, "col-lg-5")]/div/div/span'} }
     page_object(:billing_state) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="billingState"]'}}
@@ -104,29 +102,40 @@ module WhiteLabel
 
     #username taken
     page_object(:username_taken_header) { {xpath: '//h3[(contains(text(), "Username Taken"))]'} }
-    page_objects(:username_taken_p1, index: 0) { {id: 'prev-username'} }
-    page_objects(:username_taken_p2, index: 1) { {id: 'prev-username'} }
+    page_object(:username_taken_p) { {id: 'prev-username'} }
     text_field(:new_username, tag: :text_field, required: true) { { id: 'newUsername' } }
+    page_object(:new_username_help_block) { {class: 'help-block filled'} }
     button(:username_taken_continue_btn) {{id: 'btnUserNameTakenContinue'}}
     button(:username_taken_close_btn) {{class: ['close']}}
 
-    #address standardized
+    #Invalid Address
+    page_object(:invalid_addr_header) { {xpath: '//h3[(contains(text(), "Invalid Address"))]'} }
+    page_object(:invalid_addr_p) { {id: 'errorDescription'} }
+
+
+    #address Standardized
     page_object(:addr_std_header) { {xpath: '//h3[(contains(text(), "Your address has been standardized"))]'} }
     page_object(:addr_std_p) { {id: 'instructions'} }
-    page_object(:addr_std_addr_orig_lbl) { {xpah: '//div[@id="addrOrig"]/p[1]'} }
-    page_object(:addr_std_addr_orig) { {xpah: '//div[@id="addrOrig"]/p[2]'} }
-    page_object(:addr_std_addr_new_lbl) { {xpah: '//div[@id="addrNew"]/p[1]'} }
-    page_object(:addr_std_addr_new) { {xpah: '//div[@id="addrNew"]/p[2]'} }
+    page_object(:addr_std_addr_orig) { {id: 'addrOrig'} }
+    page_object(:addr_std_addr_new) { {id: 'addrNew'} }
     button(:addr_std_continue) {{id: 'btnAddrValOkay'}}
+    page_objects(:address_std_x, index: 1) {{class: ['close']}}
     button(:addr_std_cancel) {{xpath: '//div[@class="modal-footer"]/button[1]'}}
-    page_objects(:addr_std_close, index: 1) {{xpath: '//button[@class="close"]'}}
+
+    #Exact Address
+    page_object(:exact_addr_header) { {xpath: '//h3[(contains(text(), "Exact address not found"))]'} }
+    page_object(:exact_addr_p) { {id: 'instructions'} }
+    page_objects(:exact_addr_choice) { {xpath: '//table[@class="table table-striped"]/tbody/tr/td'} }
 
     #postage meter address
     page_object(:meter_header) { {xpath: '//h1[(contains(text(), "An additional postage meter address is required"))]'} }
     page_object(:meter_p) { {xpath: '//div[@class="col-xs-12"]/p'} }
     text_field(:meter_street, tag: :text_field, required: true) { { id: 'meterStreet' } }
+    page_object(:meter_street_help_block) { {xpath: '//div[@class="form-group fancy-input has-error"]/div'} }
     text_field(:meter_city, tag: :text_field, required: true) { { id: 'meterCity' } }
+    page_object(:meter_city_help_block) { {xpath:'//div[@class="col-xs-12 col-lg-5 gut-lg-form-r-half"]/div/div'} }
     page_object(:meter_state) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="meterState"]'}}
+    page_object(:meter_state_help_block) { {xpath: '//div[contains(@class, "col-xs-12 col-sm-6 col-lg-3")]/div/div[2]'} }
     text_field(:meter_zip, tag: :text_field, required: true) { { id: 'meterZip' } }
 
 

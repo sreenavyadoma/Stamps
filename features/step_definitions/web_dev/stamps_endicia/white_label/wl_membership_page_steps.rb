@@ -1,6 +1,21 @@
 Then /^WL: blur_out on membership page$/ do
   WhiteLabel.membership_page.membership_bread_crumb.blur_out
+  step 'pause for 1 second'
 end
+
+Then /^WL: click membership page submit button$/ do
+  step 'pause for 1 second'
+  WhiteLabel.membership_page.submit.click
+  step 'pause for 1 second'
+end
+
+Then /^WL: click membership page back button$/ do
+  back =  WhiteLabel.membership_page.back
+  back.wait_until_present(timeout: 2)
+  back.click if back.present?
+  step 'pause for 1 second'
+end
+
 
 Then /^WL: set membership page first name to (?:random value|(.*))$/ do |str|
   first_name = WhiteLabel.membership_page.first_name
@@ -77,14 +92,16 @@ Then /^WL: set membership page address to (.*)$/ do |str|
 end
 
 Then /^WL: click membership page address$/ do
-   WhiteLabel.membership_page.address.click
+  WhiteLabel.membership_page.address.click
+  step 'pause for 1 second'
 end
 
-Then /WL: select membership page address autocomplete first result$/ do
-  address_auto_complete  = WhiteLabel.membership_page.address_auto_complete
+Then /WL: select membership page address autocomplete index (\d+)$/ do |index|
+  address_auto_complete = WhiteLabel.membership_page.address_auto_complete[index-1]
   address_auto_complete.wait_until_present(timeout: 2)
+  address_auto_complete.hover if SdcEnv.browser == :firefox
   address_auto_complete.click
-  step "WL: blur_out on membership page"
+  step 'WL: blur_out on membership page'
 end
 
 Then /^WL: expect membership page address is (?:correct|(.*))$/ do |str|
@@ -101,12 +118,12 @@ Then /^WL: expect membership page address tooltip to be (.*)$/ do |str|
 end
 
 Then /^WL: set membership page city to (.*)$/ do |str|
-   city = WhiteLabel.membership_page.city
-   city.clear
-   city.set(str)
-   step "WL: blur_out on membership page"
+  city = WhiteLabel.membership_page.city
+  city.clear
+  city.set(str)
+  step "WL: blur_out on membership page"
 
-   TestData.hash[:city] = str
+  TestData.hash[:city] = str
 end
 
 Then /^WL: expect membership page city is (?:correct|(.*))$/ do |str|
@@ -127,13 +144,15 @@ Then /^WL: select membership page state (.*)$/ do |str|
   membership_page.dropdown_selection(str, 0)
   membership_page.dropdown_element.safe_wait_until_present(timeout: 2)
   membership_page.dropdown_element.click
-  step "WL: blur_out on membership page"
+  step 'WL: blur_out on membership page'
   TestData.hash[:state] = membership_page.state.attribute_value('title').strip
   expect(TestData.hash[:state].strip).to eql str
 end
 
 Then /^WL: expect membership page state is (?:correct|(.*))$/ do |str|
-  expect(WhiteLabel.membership_page.state.attribute_value('title').strip).to eql(str.nil? ? TestData.hash[:state] : str)
+  str ||= TestData.hash[:state]
+  expect(WhiteLabel.membership_page.state.attribute_value('title').strip).to eql(str)
+  TestData.hash[:state] = str
 end
 
 Then /^WL: expect membership page state tooltip to be (.*)$/ do |str|
@@ -227,13 +246,13 @@ end
 
 
 Then /^WL: set membership page cardholder's name to (?:random value|(.*))$/ do |str|
-   cc_holder_name = WhiteLabel.membership_page.cc_holder_name
-   cc_holder_name.clear
-   str ||= TestHelper.rand_full_name
-   while cc_holder_name.text_value.strip == ''
-     cc_holder_name.set(TestData.hash[:card_holder_name] =str)
-   end
-    step 'WL: blur_out on membership page'
+  cc_holder_name = WhiteLabel.membership_page.cc_holder_name
+  cc_holder_name.clear
+  str ||= TestHelper.rand_full_name
+  while cc_holder_name.text_value.strip == ''
+    cc_holder_name.set(TestData.hash[:card_holder_name] =str)
+  end
+  step 'WL: blur_out on membership page'
 end
 
 Then /^WL: expect membership page cardholder's name is (?:correct|(.*))$/ do |str|
@@ -359,8 +378,8 @@ end
 
 Then /^WL: set membership page billing address to (.*)$/ do |str|
   billing_addr = WhiteLabel.membership_page.billing_addr
-  billing_addr.scroll_into_view
   billing_addr.wait_until_present(timeout: 2)
+  billing_addr.scroll_into_view
   billing_addr.clear
   while billing_addr.text_value.strip == ''
     billing_addr.set(TestData.hash[:billing_addr] = str)
@@ -369,12 +388,16 @@ Then /^WL: set membership page billing address to (.*)$/ do |str|
 end
 
 Then /^WL: click membership page billing address$/ do
-  WhiteLabel.membership_page.billing_addr.click
+  billing_addr= WhiteLabel.membership_page.billing_addr
+  billing_addr.scroll_into_view
+  billing_addr.click
+  step 'pause for 1 second'
 end
 
-Then /WL: select membership page billing address autocomplete first result$/ do
-  billing_addr_auto_complete  = WhiteLabel.membership_page.billing_addr_auto_complete
+Then /WL: select membership page billing address autocomplete index (\d+)$/ do |index|
+  billing_addr_auto_complete = WhiteLabel.membership_page.billing_addr_auto_complete[index-1]
   billing_addr_auto_complete.wait_until_present(timeout: 2)
+  billing_addr_auto_complete.hover if SdcEnv.browser == :firefox
   billing_addr_auto_complete.click
   step "WL: blur_out on membership page"
 end
@@ -484,20 +507,24 @@ end
 
 Then /^WL: check membership page terms & conditions$/ do
   mm_page = WhiteLabel.membership_page
-  att_value = mm_page.billing_addr_enable_disable.attribute_value('class')
-  mm_page.terms_conditions.click! unless att_value== 'form-group checkbox'
+  mm_page.terms_conditions.scroll_into_view
+  mm_page.terms_conditions.send_keys(:tab)
+  att_value = mm_page.addr_enable_disable_check.attribute_value('class')
+  mm_page.terms_conditions.click! if att_value == 'form-group checkbox has-error'
 end
 
 Then /^WL: uncheck membership page terms & conditions$/ do
   mm_page = WhiteLabel.membership_page
-  att_value = mm_page.billing_addr_enable_disable.attribute_value('class')
-  mm_page.terms_conditions.click! unless att_value== 'form-group checkbox has-error'
+  mm_page.terms_conditions.scroll_into_view
+  mm_page.terms_conditions.send_keys(:tab)
+  att_value = mm_page.addr_enable_disable_check.attribute_value('class')
+  mm_page.terms_conditions.click! if att_value == 'form-group checkbox'
 end
 
 Then /^WL: expect membership page terms & conditions is checked$/ do
   mm_page = WhiteLabel.membership_page
   step "WL: blur_out on membership page"
-  att_value = mm_page.billing_addr_enable_disable.attribute_value('class')
+  att_value = mm_page.addr_enable_disable_check.attribute_value('class')
   expect(att_value).to eql('form-group checkbox')
 end
 
@@ -506,8 +533,8 @@ Then /^WL: expect membership page terms & conditions is unchecked$/ do
   membership_page.submit.scroll_into_view
   step 'pause for 1 second'
   membership_page.submit.click
-  membership_page.billing_addr_enable_disable.wait_until_present(timeout: 2)
-  att_value = membership_page.billing_addr_enable_disable.attribute_value('class')
+  membership_page.addr_enable_disable_check.wait_until_present(timeout: 2)
+  att_value = membership_page.addr_enable_disable_check.attribute_value('class')
   expect(att_value).to eql('form-group checkbox has-error')
 end
 
@@ -522,13 +549,64 @@ Then /^WL: click membership page terms & conditions link$/ do
 end
 
 Then /^WL: click membership page terms & conditions modal x button$/ do
-  WhiteLabel.membership_page.modal_x.click
+  WhiteLabel.common_page.modal_x.click
 end
 
 Then /^WL: expect membership page terms and conditions modal is present$/ do
   terms_conditions_header = WhiteLabel.membership_page.terms_conditions_header
   terms_conditions_header.wait_until_present(timeout: 2)
   expect(terms_conditions_header).to be_present
+end
+
+############################################################################Standardized Address Modal##################
+Then /^WL: expect membership page standardized addr modal header to be (.*)$/ do |str|
+  addr_std_header  = WhiteLabel.membership_page.addr_std_header
+  addr_std_header.wait_until_present(timeout: 2)
+  expect(addr_std_header.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect membership page standardized addr modal paragraph to be$/ do |str|
+  addr_std_p  = WhiteLabel.membership_page.addr_std_p
+  expect(addr_std_p.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect membership page standardized addr modal original address label to be (.*)$/ do |str|
+  membership_page  = WhiteLabel.membership_page
+  text = membership_page.addr_std_addr_orig.text_value.strip.split("\n")[0]
+  expect(str).to eql(text.strip)
+end
+
+Then /^WL: expect membership page standardized addr modal original address to be$/ do |str|
+  addr_std_addr_orig  = WhiteLabel.membership_page.addr_std_addr_orig
+  text = addr_std_addr_orig.text_value.strip.gsub("Original Address:\n",'')
+  expect(text.strip).to eql(str)
+end
+
+Then /^WL: expect membership page standardized addr modal standardized by the usps label to be (.*)$/ do |str|
+  addr_std_addr_new  = WhiteLabel.membership_page.addr_std_addr_new
+  text = addr_std_addr_new.text_value.strip.split("\n")[0]
+  expect(text.strip).to eql(str)
+end
+
+Then /^WL: expect membership page standardized addr modal standardized by the usps address to be$/ do |str|
+  addr_std_addr_new  = WhiteLabel.membership_page.addr_std_addr_new
+  text = addr_std_addr_new.text_value.strip.gsub("Standardized by the USPS:\n",'')
+  expect(text.strip).to eql(str)
+end
+
+Then /^WL: click membership page standardized addr modal continue button$/ do
+  WhiteLabel.membership_page.addr_std_continue.click
+  step 'pause for 1 second'
+end
+
+Then /^WL: click membership page standardized addr modal x button$/ do
+  address_std_x = WhiteLabel.membership_page.address_std_x
+  if address_std_x.present?
+    address_std_x.click
+    step 'pause for 1 second'
+  else
+    #ignore
+  end
 end
 
 Then /^WL: check if address standardized is present then click continue$/ do
@@ -539,6 +617,18 @@ Then /^WL: check if address standardized is present then click continue$/ do
   else
     #ignore
   end
+end
+
+###################################################################Postage Meter Address################################
+Then /^WL: expect postage meter page address to be (.*)$/ do |str|
+  meter_header = WhiteLabel.membership_page.meter_header
+  meter_header.wait_until_present(timeout: 5)
+  expect(meter_header.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect postage meter page address paragraph to be$/ do |str|
+  meter_p = WhiteLabel.membership_page.meter_p
+  expect(meter_p.text_value.strip).to eql(str)
 end
 
 Then /^WL: check if postage meter address is present then set the value$/ do
@@ -570,15 +660,22 @@ Then /^WL: set postage meter address to (.*)$/ do |str|
   WhiteLabel.membership_page.meter_street.set(TestData.hash[:address] = str)
 end
 
+Then /^WL: expect postage meter address tooltip to be (.*)$/ do |str|
+  expect(WhiteLabel.membership_page.meter_street_help_block.text_value.strip).to eql(str)
+end
 
 Then /^WL: set postage meter city to (.*)$/ do |str|
   WhiteLabel.membership_page.meter_city.set(TestData.hash[:city] = str)
 end
 
+Then /^WL: expect postage meter city tooltip to be (.*)$/ do |str|
+  expect(WhiteLabel.membership_page.meter_city_help_block.text_value.strip).to eql(str)
+end
+
 Then /^WL: select postage meter state (.*)$/ do |str|
   membership_page = WhiteLabel.membership_page
   membership_page.meter_state.click
-  membership_page.dropdown_selection(str)
+  membership_page.dropdown_selection(str, 0)
   membership_page.dropdown_element.safe_wait_until_present(timeout: 2)
   membership_page.dropdown_element.click
   step "WL: blur_out on membership page"
@@ -586,33 +683,15 @@ Then /^WL: select postage meter state (.*)$/ do |str|
   expect(TestData.hash[:state].strip).to eql str
 end
 
+Then /^WL: expect postage meter state tooltip to be (.*)$/ do |str|
+  expect(WhiteLabel.membership_page.meter_state_help_block.text_value.strip).to eql(str)
+end
+
 Then /^WL: set postage meter zip to (.*)$/ do |str|
   WhiteLabel.membership_page.meter_zip.set(TestData.hash[:zip] = str)
 end
 
-Then /^WL: if username taken is present then set username to (?:random value|(.*))$/ do |str|
-  membership_page =  WhiteLabel.membership_page
-  if TestData.hash[:username_taken].empty?
-    expect(membership_page.username_taken_header).not_to be_present
-  else
-    membership_page.new_username.wait_until_present(timeout: 5)
-    expect(membership_page.username_taken_header).to be_present
-    membership_page.new_username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
-    print "UserName = #{TestData.hash[:username]}\n"
-    step 'WL: click username taken continue button'
-  end
-end
-
-Then /^WL: click username taken continue button$/ do
-  WhiteLabel.membership_page.username_taken_continue_btn.click
-end
-
-Then /^WL: click membership page submit button$/ do
-  WhiteLabel.membership_page.submit.click
-  step 'pause for 1 second'
-end
-
-#Side content
+##################################################Side content##########################################################
 Then /^WL: expect membership page need mailing info header to be$/ do |str|
   expect(WhiteLabel.membership_page.need_mailing_info_header.text_value.strip).to eql(str)
 end
@@ -671,12 +750,47 @@ Then /^WL: click membership page bonus offer details link$/ do
 end
 
 Then /^WL: click membership page bonus offer details modal x button$/ do
-  WhiteLabel.membership_page.modal_x.click
+  WhiteLabel.common_page.modal_x.click
 end
 
 Then /^WL: expect membership page your stamps.com offer modal to be present$/ do
   bonus_offer_details_header  = WhiteLabel.membership_page.bonus_offer_details_header
   bonus_offer_details_header.wait_until_present(timeout: 2)
   expect(bonus_offer_details_header).to be_present
+end
+
+####################################Invalid Address Modal###############################################################
+Then /^WL: expect membership page invalid address modal header to be Invalid Address$/ do
+  invalid_addr_header = WhiteLabel.membership_page.invalid_addr_header
+  invalid_addr_header.wait_until_present(timeout: 2)
+  expect(invalid_addr_header).to be_present
+end
+
+Then /^WL: expect membership page invalid address modal paragraph to be$/ do |str|
+  expect(WhiteLabel.membership_page.invalid_addr_p.text_value.strip).to eql(str)
+end
+
+Then /^WL: set membership page default values$/ do
+  step 'WL: set membership page personal info to random info between zone 5 and zone 8'
+  step 'WL: set membership page credit card number to 4111111111111111'
+  step 'WL: select membership page credit card month Dec (12)'
+  step 'WL: set membership page credit card year to this year plus 1'
+  step 'WL: check membership page terms & conditions'
+end
+
+##########################Exact Address##################################################################
+Then /^WL: expect membership page exact addr modal header to be (.*)$/ do |str|
+  exact_addr_header = WhiteLabel.membership_page.exact_addr_header
+  exact_addr_header.wait_until_present(timeout: 2)
+  expect(exact_addr_header.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect membership page exact addr modal paragraph to be$/ do |str|
+  expect(WhiteLabel.membership_page.exact_addr_p.text_value.strip).to eql(str)
+end
+
+Then /^WL: select membership page exact addr modal radio button index (\d+)$/ do |index|
+  exact_addr_choice = WhiteLabel.membership_page.exact_addr_choice
+  exact_addr_choice[index].click
 end
 

@@ -18,6 +18,7 @@ Then /^WL: set profile page username to (?:random value|(.*))$/ do |str|
   WhiteLabel.profile_page.username.set ((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
   print "UserName = #{TestData.hash[:username]}\n"
   TestData.hash[:username_taken] = WhiteLabel.common_page.username_query(TestData.hash[:username])
+  step 'WL: blur_out on membership page'
 end
 
 Then /^WL: set profile page password to (?:random value|(.*))$/ do |str|
@@ -44,11 +45,16 @@ end
 
 Then /^WL: set profile page how did you hear about us\? to (.*)$/ do |str|
   profile_page = WhiteLabel.profile_page
+  if profile_page.referrer_name.present?
   profile_page.referrer_name.click
   profile_page.referrer_name_selection(str)
   profile_page.referrer_name_element.safe_wait_until_present(timeout: 2)
   profile_page.referrer_name_element.click
   expect(profile_page.referrer_name.attribute_value('title').strip).to eql str
+  else
+    #ignore
+  end
+
 end
 
 Then /^WL: expect profile page promo code to equal source id promo code$/ do
@@ -69,5 +75,17 @@ Then /^WL: show profile page promo code textbox$/ do
 end
 
 Then /^WL: click profile page continue button$/ do
-  WhiteLabel.profile_page.continue.click
+    WhiteLabel.profile_page.continue.click
+    step 'pause for 1 second'
+end
+
+Then /^WL: set profile page default values$/ do
+  step 'WL: navigates to default registration page for stamps with the following source id 100-TES-WB001'
+  step 'WL: set profile page email to random value'
+  step 'WL: set profile page username to random value'
+  step 'WL: set profile page password to random value'
+  step 'WL: set profile page re-type password to same as previous password'
+  step 'WL: set profile page survey question to Business Use - Both mailing and shipping'
+  step 'WL: set profile page how did you hear about us? to Received Mailer'
+  step 'WL: set profile page promo code to PR33-NH77'
 end
