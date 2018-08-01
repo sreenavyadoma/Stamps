@@ -34,7 +34,7 @@ Then /^WL: navigates to default registration page for stamps with the following 
 
   common_page.get_started.click!
 
-  print "Sourceid = #{source_id}\n"
+  SdcLogger.info "Sourceid = #{source_id}\n"
 
   TestData.hash[:source_id] = source_id
   TestData.hash[:content] = content

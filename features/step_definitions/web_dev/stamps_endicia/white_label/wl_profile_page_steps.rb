@@ -27,7 +27,7 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Ee]mail to (?:random value|(.*))$/ do |str
   if SdcEnv.usr
     sleep 1
     str ||= TestData.hash[:email]
-    email.set(tr)
+    email.set(str)
   else
     sleep 1
     str ||= TestData.hash[:email]
@@ -214,10 +214,13 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Pp]romo [Cc]ode to (?:an empty string|(.*)
   promo_code = WhiteLabel.profile_page.promo_code
   promo_code.wait_until_present(timeout: 10)
   promo_code.clear
-  while promo_code.text_value.strip == ''
+
+  5.times do
     str ||=  TestHelper.rand_alpha_str.capitalize
     promo_code.set(str)
+    break unless promo_code.text_value.strip == ''
   end
+  expect(promo_code.text_value.strip).not_to eql('')
 
   str ||= TestData.hash[:promo_code]
   promo_code.set(str)

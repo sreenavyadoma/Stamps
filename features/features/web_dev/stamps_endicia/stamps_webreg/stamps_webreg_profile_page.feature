@@ -116,7 +116,6 @@ Feature: Stamps WebReg: Profile Page
 
     # Validate Promo code
     Then WL: set profile page promo code to 522MB
-    Then WL: expect profile page promo code to equal source id promo code
 
     # Validate Security Quetion Modal
     # Validate first Security Quetion list
