@@ -33,7 +33,7 @@ bvtsauce00009cc - bvt_shipping_address_management
 bvtsauce00010cc - bvt_shipstation_updates_domestic
 bvtsauce00011cc - bvt_shipstation_updates_international
 bvtsauce00012cc - bvt_bulk_update
-bvtsauce00013cc -
+bvtsauce00013cc - bvt_shipstation_search
 bvtsauce00014cc
 bvtsauce00015cc
 bvtsauce00016cc
