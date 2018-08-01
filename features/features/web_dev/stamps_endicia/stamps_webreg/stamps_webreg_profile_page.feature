@@ -116,7 +116,6 @@ Feature: Stamps WebReg: Profile Page
 
     # Validate Promo code
     Then WL: set profile page promo code to 522MB
-    Then WL: expect profile page promo code to equal source id promo code
 
     # Validate Security Quetion Modal
     # Validate first Security Quetion list
@@ -160,6 +159,6 @@ Feature: Stamps WebReg: Profile Page
     Then WL: expect membership page bread crumbs is Membership
 
     # Validate Security Quetions Modal does not present
-    Then WL: navigates to default registration page for stamps with the following source id 100-TES-WB001
+    Then WL: navigates to default registration page for stamps with the following offer id 399
     Then pause for 5 seconds
     Then WL: expect security question modal does not exists

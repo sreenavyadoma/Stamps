@@ -111,6 +111,7 @@ Then /^WL: set profile page password to (?:random value|(.*))$/ do |str|
     password.set(str)
     break if password.text_value.strip == ''
   end
+  expect(password.text_value.strip).not_to eql('')
 
   print "Password = #{TestData.hash[:account_password]}\n"
   TestData.hash[:account_password] = str
@@ -147,16 +148,14 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Rr]e-type [Pp]assword to (?:same as previo
   confirm_password.wait_until_present(timeout: 10)
   confirm_password.clear
 
+  str ||= TestData.hash[:account_password]
   7.times do
-
-    break if confirm_password.text_value.strip.eql? ''
-  end
-  while confirm_password.text_value.strip.eql? ''
     confirm_password.set(str)
+    break unless confirm_password.text_value.strip == ''
   end
+  expect(confirm_password.text_value.strip).not_to eql('')
 
-  confirm_password.set(TestData.hash[:retype_password]=(str.nil?)?(TestData.hash[:account_password]) : str)
-  TestData.hash[:retype_password] = str
+  confirm_password.set(str)
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Rr]e-[Tt]ype [Pp]assword is (?:correct|(.*))$/ do |str|
@@ -205,18 +204,29 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Pp]romo [Cc]ode to (?:an empty string|(.*)
   promo_code = WhiteLabel.profile_page.promo_code
   promo_code.wait_until_present(timeout: 10)
   promo_code.clear
-  while promo_code.text_value.strip == ''
-    str ||= TestHelper.rand_alpha_str.capitalize
+
+  str ||= TestHelper.rand_alpha_str.capitalize
+  5.times do
     promo_code.set(str)
+    break unless promo_code.text_value.strip == ''
   end
-  promo_code.set(TestData.hash[:promo_code]=(str.nil?)? '' : str)
-  TestData.hash[:promo_code] = str
+  expect(promo_code.text_value.strip).not_to eql('')
+
+  str ||= TestData.hash[:promo_code]
+  #todo-code review str will never get assigned TestData.hash[:promo_code] since it will never be null at this point
+  # if str gets a value from line 218, then it will never be null at line 225
+  promo_code.set(str)
 end
 
 Then /^WL: set profile page re-type password to (?:same as previous password|(.*))$/ do |str|
   str ||= TestData.hash[:account_password]
   WhiteLabel.profile_page.confirm_password.set(str)
   TestData.hash[:retype_password] = str
+end
+
+Then /^WL: [Ss]how [Pp]rofile [Pp]age [Pp]romo [Cc]ode$/ do
+  WhiteLabel.profile_page.promo_code_link.click if WhiteLabel.profile_page.promo_code_link.present?
+  expect(WhiteLabel.profile_page.promo_code).to be_present
 end
 
 Then /^WL: set profile page survey question to (.*)$/ do |str|
@@ -247,7 +257,6 @@ Then /^WL: set profile page how did you hear about us\? to (.*)$/ do |str|
   else
     #ignore
   end
-
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age how did you hear about us option is (?:correct|(.*))$/ do |str|
@@ -308,7 +317,7 @@ Then /^WL: [Ee]xpect [Pp]rofile [Pp]age content under Money-saving offers and ne
 end
 
 Then /^WL: [Cc]heck [Pp]rofile [Pp]age [Mm]oney-saving offers and new products$/ do
-  WhiteLabel.profile_page.money_saving_offers_checkbox.check unless WhiteLabel.profile_page.money_saving_offers_checkbox.checked?
+  WhiteLabel.profile_page.money_saving_offers_checkbox.check
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Mm]oney-saving offers and new products is checked$/ do
