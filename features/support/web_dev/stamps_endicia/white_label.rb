@@ -1,15 +1,31 @@
 module WhiteLabel
   class ProfilePage < SdcPage
+    page_object(:profile_bread_crumb) { {xpath: '//li[@id="breadcrumb_Profile"]/span'} }
+    page_object(:header) { {xpath: '//h1[(contains(text(), "Sign up and avoid trips to the Post Office"))]'} }
+    page_object(:side_acct_header) { {xpath: '//h3[(contains(text(), "Why do I need to create an account?"))]'} }
+    page_object(:side_acct_text) {{xpath: '//li[@id="sideaccount"]/p'}}
+    page_object(:side_opt_in_header) { {xpath: '//h3[(contains(text(), "Money-saving offers and new products"))]'} }
+    page_object(:side_opt_in_text) {{xpath: '//li[@id="sideoptin"]/div/div/label/span'}}
+    page_object(:money_saving_offers_checkbox_chooser) { {xpath: '//li[@id="sideoptin"]/div/div'} }
+    page_object(:money_saving_offers_checkbox_verify) { {id: 'sideoptin'} }
+    checkbox(:money_saving_offers_checkbox, :money_saving_offers_checkbox_chooser, :money_saving_offers_checkbox_verify, 'class', 'checked')
     text_field(:email, tag: :text_field, required: true) { { id: 'email' } }
+    page_objects(:email_tooltip,  index: 0) { {xpath: '//*[@id="email"]/div/div/div/div/span'} }
     text_field(:username, tag: :text_field, required: true) { { id: 'username' } }
+    page_objects(:username_tooltip,  index: 0) { {xpath: '//*[@id="accountinfo"]/div/div/div/span'} }
     text_field(:password, tag: :text_field, required: true) { { id: 'password' } }
+    page_objects(:password_tooltip,  index: 1) { {xpath: '//*[@id="accountinfo"]/div/div/div/span'} }
     text_field(:confirm_password, tag: :text_field, required: true) { { id: 'confirmPassword' } }
+    page_objects(:confirm_password_tooltip,  index: 2) { {xpath: '//*[@id="accountinfo"]/div/div/div/span'} }
     link(:promo_code_link) { { id: 'showPromoCode' } }
-    text_field(:promo_code_textbox, tag: :text_field, required: true) { { id: 'promoCodeHidden' } }
+    text_field(:promo_code, tag: :text_field, required: true) { { id: 'promoCodeHidden' } }
+    page_objects(:promo_code_tooltip,  index: 0) { {xpath: '//*[@id="promocode"]/div/div/div/div/span'} }
     page_object(:survey) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="usageType"]'}}
     page_object(:referrer_name) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="referrerName"]'}}
     page_objects(:money_saving_offers,  index: 0) { {id: "optIn"} }
     button(:continue) {{id: 'next'}}
+    page_object(:stamps_logo) {{id: 'sdc-logo'}}
+    page_object(:usps_logo) {{xpath: '//div[@id="nav-usps-vendor"]'}}
 
     def survey_selection(str, name = :survey_element)
       page_object(name) { {xpath: "//span[contains(text(), \" #{str} \")]" } }
