@@ -15,21 +15,14 @@ Then /^WL: set profile page email to (?:random value|(.*))$/ do |str|
   email = WhiteLabel.profile_page.email
   email.wait_until_present(timeout: 30)
   email.clear
+  str ||= TestHelper.rand_email.capitalize
   while email.text_value.strip == ''
-    str ||=  TestHelper.rand_email.capitalize
     email.set(str)
   end
-  TestData.hash[:atg_promotion] =  WhiteLabel.choose_supplies.atg_promotion
-  if SdcEnv.usr
-    sleep 1
-    email.set(TestData.hash[:email]=(str.nil?)?(SdcEnv.usr) : str)
-  else
-    sleep 1
-    email.set(TestData.hash[:email]=(str.nil?)?(TestHelper.rand_email) : str)
-  end
+  TestData.hash[:atg_promotion] = WhiteLabel.choose_supplies.atg_promotion
+  TestData.hash[:email] = str
 
   SdcLogger.info "Email = #{TestData.hash[:email]}\n"
-  TestData.hash[:email] = str
 end
 
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Ee]mail tooltip [Cc]ount is (.*)$/ do |count|
@@ -65,13 +58,13 @@ Then /^WL: set profile page username to (?:random value|(.*))$/ do |str|
 end
 
 Then /^WL: set pp username to an existing username from db$/ do
-   existing_usr = WhiteLabel.common_page.existing_username_query
-   step "WL: set profile page username to #{existing_usr}"
+  existing_usr = WhiteLabel.common_page.existing_username_query
+  step "WL: set profile page username to #{existing_usr}"
   username = WhiteLabel.profile_page.username
   username.wait_until_present(timeout: 10)
   username.clear
+  str ||= TestHelper.rand_alpha_str.capitalize
   while username.text_value.strip == ''
-    str ||=  TestHelper.rand_alpha_str.capitalize
     username.set(str)
   end
   username.set ((TestData.hash[:username_taken]=(str.nil?)?(TestHelper.rand_usr) : str))
@@ -111,17 +104,14 @@ Then /^WL: set profile page password to (?:random value|(.*))$/ do |str|
   password = WhiteLabel.profile_page.password
   password.wait_until_present(timeout: 10)
   password.clear
-  while password.text_value.strip == ''
-    str ||=  '1' + TestHelper.rand_alpha_numeric(min:6, max:10)
-    password.set(str)
-  end
 
   str ||= '1' + TestHelper.rand_alpha_numeric(min:6, max:10)
-  if SdcEnv.pw
-    password.set (TestData.hash[:account_password]=(str.nil?) ? SdcEnv.pw : str)
-  else
-    password.set (TestData.hash[:account_password]=(str.nil?) ? '1' + TestHelper.rand_alpha_numeric(min:6, max:10) : str)
+
+  7.times do
+    password.set(str)
+    break if password.text_value.strip == ''
   end
+
   print "Password = #{TestData.hash[:account_password]}\n"
   TestData.hash[:account_password] = str
 end
@@ -148,8 +138,6 @@ Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Pp]assword tooltip index (\d+) to be (.
   expect(TestData.hash[:password_tooltip][index.to_i - 1]).to eql(str)
 end
 
-#.......re-type Password......#
-
 Then /^WL: [Ee]xpect [Pp]rofile [Pp]age [Rr]e-[Tt]ype [Pp]assword exists$/ do
   expect(WhiteLabel.profile_page.confirm_password).to be_present
 end
@@ -158,8 +146,12 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Rr]e-type [Pp]assword to (?:same as previo
   confirm_password = WhiteLabel.profile_page.confirm_password
   confirm_password.wait_until_present(timeout: 10)
   confirm_password.clear
-  while confirm_password.text_value.strip == ''
-    str ||=  TestData.hash[:account_password]
+
+  7.times do
+
+    break if confirm_password.text_value.strip.eql? ''
+  end
+  while confirm_password.text_value.strip.eql? ''
     confirm_password.set(str)
   end
 
@@ -214,7 +206,7 @@ Then /^WL: [Ss]et [Pp]rofile [Pp]age [Pp]romo [Cc]ode to (?:an empty string|(.*)
   promo_code.wait_until_present(timeout: 10)
   promo_code.clear
   while promo_code.text_value.strip == ''
-    str ||=  TestHelper.rand_alpha_str.capitalize
+    str ||= TestHelper.rand_alpha_str.capitalize
     promo_code.set(str)
   end
   promo_code.set(TestData.hash[:promo_code]=(str.nil?)? '' : str)
@@ -247,11 +239,11 @@ end
 Then /^WL: set profile page how did you hear about us\? to (.*)$/ do |str|
   profile_page = WhiteLabel.profile_page
   if profile_page.referrer_name.present?
-  profile_page.referrer_name.click
-  profile_page.referrer_name_selection(str)
-  profile_page.referrer_name_element.safe_wait_until_present(timeout: 2)
-  profile_page.referrer_name_element.click
-  expect(profile_page.referrer_name.attribute_value('title').strip).to eql str
+    profile_page.referrer_name.click
+    profile_page.referrer_name_selection(str)
+    profile_page.referrer_name_element.safe_wait_until_present(timeout: 2)
+    profile_page.referrer_name_element.click
+    expect(profile_page.referrer_name.attribute_value('title').strip).to eql str
   else
     #ignore
   end
@@ -263,15 +255,15 @@ Then /^WL: [Ee]xpect [Pp]rofile [Pp]age how did you hear about us option is (?:c
   str ||= TestData.hash[:referrer_name]
 
   if referrer_name.present?
-  expect(referrer_name.title).to eql(str)
-  TestData.hash[:referrer_name] = str
+    expect(referrer_name.title).to eql(str)
+    TestData.hash[:referrer_name] = str
   else
     #ignore
   end
 end
 
 Then /^WL: show profile page promo code textbox$/ do
-  WhiteLabel.profile_page.promo_code_link.click if  WhiteLabel.profile_page.promo_code_link.present?
+  WhiteLabel.profile_page.promo_code_link.click if WhiteLabel.profile_page.promo_code_link.present?
   expect(WhiteLabel.profile_page.promo_code_textbox).to be_present
 end
 
