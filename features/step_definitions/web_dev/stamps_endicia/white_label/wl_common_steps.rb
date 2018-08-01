@@ -1,3 +1,14 @@
+Then /^WL: expect registration navigation bar stamps logo exists$/ do
+  stamps_logo = WhiteLabel.common_page.stamps_logo
+  stamps_logo.wait_until_present(timeout: 60)
+  expect(stamps_logo).to be_present
+end
+
+Then /^WL: expect registration navigation bar usps logo exists$/ do
+  expect(WhiteLabel.common_page.usps_logo).to be_present
+end
+
+
 Then /^WL: establish stamps website db connection$/ do
   WhiteLabel.sdc_db_connection
 end
@@ -91,7 +102,7 @@ Then /^WL: [Ee]xpect first security answer tooltip index (\d+) to be (.*)$/ do |
   first_security_answer_help_block = WhiteLabel.common_page.first_security_answer_help_block
   first_security_answer_help_block.wait_until_present(timeout: 5)
   TestData.hash[:first_security_answer_help_block] = first_security_answer_help_block.text_value.split("\n")
-  expect(TestData.hash[:first_security_answer_help_block][index.to_i - 1]).to eql(str)
+  expect(TestData.hash[:first_security_answer_help_block][index - 1]).to eql(str)
 end
 
 Then /^WL: select security questions second security question (.*)$/ do |str|
@@ -108,7 +119,7 @@ Then /^WL: [Ee]xpect second security question tooltip index (\d+) to be (.*)$/ d
   second_security_question_help_block = WhiteLabel.common_page.second_security_question_help_block
   second_security_question_help_block.wait_until_present(timeout: 5)
   TestData.hash[:second_security_question_help_block] = second_security_question_help_block.text_value.split("\n")
-  expect(TestData.hash[:second_security_question_help_block][index.to_i - 1]).to eql(str)
+  expect(TestData.hash[:second_security_question_help_block][index - 1]).to eql(str)
 end
 
 Then /^WL: [Ee]xpect security questions second security question is (?:correct|(.*))$/ do |str|
@@ -128,7 +139,7 @@ Then /^WL: [Ee]xpect second security answer tooltip index (\d+) to be (.*)$/ do 
   second_security_answer_help_block = WhiteLabel.common_page.second_security_answer_help_block
   second_security_answer_help_block.wait_until_present(timeout: 5)
   TestData.hash[:second_security_answer_help_block] = second_security_answer_help_block.text_value.split("\n")
-  expect(TestData.hash[:second_security_answer_help_block][index.to_i - 1]).to eql(str)
+  expect(TestData.hash[:second_security_answer_help_block][index - 1]).to eql(str)
 end
 
 Then /^WL: click security questions get started button$/ do

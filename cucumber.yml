@@ -32,7 +32,7 @@ saucelabs_iphonex_cc: --tags @saucelabs_poc MOBILE='iphone x' LOG_LEVEL=info  UR
 #mhossain1_cc: --tags @pp_header_favicons_browser_mobile JENKINS=true URL=qacc BROWSER_MOBILE_EMULATOR=gc,'iPhone X' USR=wteam@stamps.com PW=password1
 #mhossain1_cc: --tags @pp_log_in_page_validation JENKINS=true URL=stg BROWSER=ff USR=wteam@stamps.com PW=password1 FIREFOX_PROFILE=true WEB_DEV=true
 
-mhossain1_cc: --tags @sdcwr_offer_399_workflow JENKINS=true URL=stg BROWSER=edge FIREFOX_PROFILE=true WEB_DEV=true #USR=qawebdevelopment@stamps.com PW=password1
+mhossain1_cc: --tags @sdcwr_profile_page_ui_validation JENKINS=true URL=stg BROWSER=edge FIREFOX_PROFILE=true WEB_DEV=true #USR=qawebdevelopment@stamps.com PW=password1
 
 kaushal_cc: --tags @sdcwr_profile_page_ui_validation JENKINS=true URL=stg BROWSER=edge FIREFOX_PROFILE=true WEB_DEV=true #USR=qawebdevelopment@stamps.com PW=password1
 

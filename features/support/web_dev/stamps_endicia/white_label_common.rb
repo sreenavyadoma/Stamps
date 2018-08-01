@@ -4,6 +4,7 @@ module WhiteLabel
     #stamps website
     page_object(:stamps_logo) {{id: 'sdc-logo'}}
     button(:get_started) { { class: ['btn btn-success btn-xs register'] } }
+    page_object(:usps_logo) {{xpath: '//div[@id="nav-usps-vendor"]'}}
 
     #modal
     button(:modal_continue) {{id: 'btnAddrValOkay'}}

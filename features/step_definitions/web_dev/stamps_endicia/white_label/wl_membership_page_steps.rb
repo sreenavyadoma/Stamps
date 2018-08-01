@@ -3,6 +3,10 @@ Then /^WL: blur_out on membership page$/ do
   step 'pause for 1 second'
 end
 
+Then /^WL: expect membership page bread crumbs is (.*)/ do |str|
+  expect(WhiteLabel.membership_page.membership_bread_crumb.text_value.strip).to eql(str)
+end
+
 Then /^WL: click membership page submit button$/ do
   step 'pause for 1 second'
   WhiteLabel.membership_page.submit.click
