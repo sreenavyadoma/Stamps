@@ -227,7 +227,7 @@ Then /^WL: set profile page survey question to (.*)$/ do |str|
   profile_page.survey.click
   profile_page.survey_selection(str)
   profile_page.survey_element.safe_wait_until_present(timeout: 2)
-  profile_page.survey_element.click
+  profile_page.survey_element.click!
   expect(profile_page.survey.attribute_value('title').strip).to eql str
   TestData.hash[:survey] = str
 end
@@ -245,7 +245,7 @@ Then /^WL: set profile page how did you hear about us\? to (.*)$/ do |str|
     profile_page.referrer_name.click
     profile_page.referrer_name_selection(str)
     profile_page.referrer_name_element.safe_wait_until_present(timeout: 2)
-    profile_page.referrer_name_element.click
+    profile_page.referrer_name_element.click!
     TestData.hash[:referrer_name] = profile_page.referrer_name.attribute_value('title').strip
     expect(TestData.hash[:referrer_name]).to eql str
   else

@@ -18,6 +18,8 @@ Then /^WL: close stamps website db connection$/ do
 end
 
 Then /^WL: navigates to default registration page for stamps with the following offer id (?:random value|(.*))$/ do |str|
+  SdcPage.browser.cookies.clear
+
   step 'WL: establish stamps website db connection'
   common_page = WhiteLabel.common_page
   if str.nil?
@@ -62,7 +64,11 @@ Then /^WL: expect security questions header to be (.*)$/ do |str|
 end
 
 Then /^WL: expect profile security questions header to be (.*)$/ do |str|
-  WhiteLabel.common_page.sq_header_profile.to eql(str)
+  expect(WhiteLabel.common_page.sq_header_profile.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect profile security questions header is not present$/ do
+  expect(WhiteLabel.common_page.sq_header_profile).not_to be_present
 end
 
 Then /^WL: expect security questions title to be (.*)$/ do |str|
@@ -144,6 +150,14 @@ Then /^WL: expect second security answer tooltip index (\d+) to be (.*)$/ do |in
   second_security_answer_help_block.wait_until_present(timeout: 5)
   help_block = second_security_answer_help_block.text_value.split("\n")
   expect(help_block[index - 1]).to eql(str)
+end
+
+Then /^WL: expect security question page tooltip to be (.*)$/ do |str|
+  sq_page_sq_help_block =  WhiteLabel.common_page.sq_page_sq_help_block
+  expect(sq_page_sq_help_block[0].inner_text.strip).to eql(str)
+  expect(sq_page_sq_help_block[1].inner_text.strip).to eql(str)
+  expect(sq_page_sq_help_block[2].inner_text.strip).to eql(str)
+  expect(sq_page_sq_help_block[3].inner_text.strip).to eql(str)
 end
 
 Then /^WL: click security questions get started button$/ do
@@ -313,9 +327,12 @@ Then /^WL: expect user is navigated to print page$/ do
   end
 
   common_page= WhiteLabel.common_page
+
+  if SdcEnv.browser == :edge
   common_page.print_edge_detail_link.safe_wait_until_present(timeout: 10)
   common_page.print_edge_detail_link.click if common_page.print_edge_detail_link.present?
   common_page.print_cert_error.click if common_page.print_cert_error.present?
+  end
 
   common_page.print_stamps_logo.wait_until_present(timeout: 120) rescue false
 

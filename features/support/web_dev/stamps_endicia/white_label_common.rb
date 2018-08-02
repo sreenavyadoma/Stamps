@@ -23,6 +23,9 @@ module WhiteLabel
     page_objects(:second_security_question_help_block,  index: 0) { {xpath: '//*[@id="secretquestions"]/div/div/div/span'} }
     text_field(:second_secret_answer, tag: :text_field, required: true) { { id: 'secretAnswer2' } }
     page_objects(:second_security_answer_help_block,  index: 0) { {xpath: '//*[@id="secretquestions"]/div/div/div/span'} }
+    page_objects(:sq_page_sq_help_block) { {xpath: '//div[@class="form-group has-error"]/span'} }
+
+
     button(:sq_get_started) { { id: 'startPrinting' } }
 
     #account created

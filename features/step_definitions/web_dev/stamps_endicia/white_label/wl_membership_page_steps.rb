@@ -4,7 +4,9 @@ Then /^WL: blur_out on membership page$/ do
 end
 
 Then /^WL: expect membership page bread crumbs is (.*)/ do |str|
-  expect(WhiteLabel.membership_page.membership_bread_crumb.text_value.strip).to eql(str)
+  membership_bread_crumb = WhiteLabel.membership_page.membership_bread_crumb
+  membership_bread_crumb.wait_until_present(timeout: 10)
+  expect(membership_bread_crumb.text_value.strip).to eql(str)
 end
 
 Then /^WL: click membership page submit button$/ do
