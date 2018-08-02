@@ -6,7 +6,7 @@ Feature: Stamps WebReg: Profile Page
   @sdcwr_profile_page_ui_validation
   Scenario: Profile Page Validation
 
-    Then WL: navigates to default registration page for stamps with the following offer id 391
+    Then WL: navigates to default registration page for stamps with the following offer id 399
 
     #Verifying all content present
     Then pause for 5 seconds
@@ -118,41 +118,6 @@ Feature: Stamps WebReg: Profile Page
 
     #Validate Promo code
     Then WL: set profile page promo code to 522MB
-
-    #Validate Security Question Modal
-    #Validate first Security Question list
-    Then WL: select security questions first security question What is your mother's maiden name?
-    Then WL: expect security questions first security question is correct
-    Then WL: select security questions first security question What is your pet's name?
-    Then WL: expect security questions first security question is correct
-    Then WL: select security questions first security question What is your city of birth?
-    Then WL: expect security questions first security question is correct
-    Then WL: select security questions first security question What was your high school mascot?
-    Then WL: expect security questions first security question is correct
-    Then WL: select security questions first security question What is your father's birthplace?
-    Then WL: expect security questions first security question is correct
-    Then WL: select security questions first security question What street did you grow up on?
-    Then WL: expect security questions first security question is correct
-    Then WL: select security questions first security question What is the name of your first school?
-    Then WL: expect security questions first security question is correct
-    Then WL: select security questions first security question What is the make and model of your first car?
-    Then WL: expect security questions first security question is correct
-
-    #Validate second Security Question list
-    Then WL: select security questions second security question What is your mother's maiden name?
-    Then WL: expect security questions second security question is correct
-    Then WL: select security questions second security question What is your pet's name?
-    Then WL: expect security questions second security question is correct
-    Then WL: select security questions second security question What is your city of birth?
-    Then WL: expect security questions second security question is correct
-    Then WL: select security questions second security question What was your high school mascot?
-    Then WL: expect security questions second security question is correct
-    Then WL: select security questions second security question What is your father's birthplace?
-    Then WL: expect security questions second security question is correct
-    Then WL: select security questions second security question What street did you grow up on?
-    Then WL: expect security questions second security question is correct
-    Then WL: select security questions second security question What is the name of your first school?
-    Then WL: expect security questions second security question is correct
 
     Then WL: click profile page continue button
 

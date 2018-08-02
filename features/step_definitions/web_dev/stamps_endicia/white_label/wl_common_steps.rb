@@ -61,6 +61,10 @@ Then /^WL: expect security questions header to be (.*)$/ do |str|
   expect(sq_header.text_value).to eql(str)
 end
 
+Then /^WL: expect profile security questions header to be (.*)$/ do |str|
+  WhiteLabel.common_page.sq_header_profile.to eql(str)
+end
+
 Then /^WL: expect security questions title to be (.*)$/ do |str|
   security_question_title = WhiteLabel.common_page.security_question
   security_question_title.wait_until_present(timeout: 5)

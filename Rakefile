@@ -83,8 +83,8 @@ require 'cucumber/rake/task'
     t.cucumber_opts = "-p cuke_reports"
   end
 
-  Cucumber::Rake::Task.new(:sdcwr_security_quetions_ui_validation) do |t|
-    t.profile = 'sdcwr_security_quetions_ui_validation'
+  Cucumber::Rake::Task.new(:sdcwr_security_question_page_validation) do |t|
+    t.profile = 'sdcwr_security_question_page_validation'
     t.cucumber_opts = "-p cuke_reports"
   end
 
