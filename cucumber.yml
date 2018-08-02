@@ -559,3 +559,6 @@ sdcwr_membership_page_addr_validation: --tags @sdcwr_membership_page_addr_valida
 sdcwr_membership_page_username_taken_validation: --tags @sdcwr_membership_page_username_taken_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
 sdcwr_security_question_page_validation: --tags @sdcwr_security_question_page_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
 sdcwr_profile_page_ui_validation: --tags @sdcwr_profile_page_ui_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
+sdcwr_offer_573_workflow: --tags @sdcwr_offer_573_workflow --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
+sdcwr_offer_592_workflow:  --tags @sdcwr_offer_592_workflow --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
+sdcwr_offer_399_workflow: --tags @sdcwr_offer_399_workflow --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info

@@ -97,6 +97,22 @@ require 'cucumber/rake/task'
     t.profile = 'sdcwr_membership_page_username_taken_validation'
     t.cucumber_opts = "-p cuke_reports"
   end
+
+  Cucumber::Rake::Task.new(:sdcwr_offer_573_workflow) do |t|
+    t.profile = 'sdcwr_offer_573_workflow'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
+  Cucumber::Rake::Task.new(:sdcwr_offer_592_workflow) do |t|
+    t.profile = 'sdcwr_offer_592_workflow'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
+  Cucumber::Rake::Task.new(:sdcwr_offer_399_workflow) do |t|
+    t.profile = 'sdcwr_offer_399_workflow'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
 # END STAMPS WEB REG
 
 # END WEB DEV
