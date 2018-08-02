@@ -2,7 +2,7 @@ Feature: Stamps WebReg: Normal Workflow
   Background:
     Given Start test driver
 
-  @sdcwr_normal_workflow
+  @sdcwr_random_workflow
   Scenario: Stamps WebReg: Normal Workflow
    # Profile Page
     Then WL: navigates to default registration page for stamps with the following offer id random value
