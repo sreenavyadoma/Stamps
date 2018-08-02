@@ -81,8 +81,8 @@ end
 Then /^WL: expect first security question tooltip index (\d+) to be (.*)$/ do |index, str|
   first_security_question_help_block = WhiteLabel.common_page.first_security_question_help_block
   first_security_question_help_block.wait_until_present(timeout: 5)
-  TestData.hash[:first_security_question_help_block] = first_security_question_help_block.text_value.split("\n")
-  expect(TestData.hash[:first_security_question_help_block][index.to_i - 1]).to eql(str)
+  help_block_text = first_security_question_help_block.text_value.split("\n")
+  expect(help_block_text[index - 1]).to eql(str)
 end
 
 Then /^WL: expect security questions first security question is (?:correct|(.*))$/ do |str|
@@ -98,11 +98,11 @@ Then /^WL: set security questions first security answer to (?:random value|(.*))
   TestData.hash[:first_security_answer] = str
 end
 
-Then /^WL: [Ee]xpect first security answer tooltip index (\d+) to be (.*)$/ do |index, str|
+Then /^WL: expect first security answer tooltip index (\d+) to be (.*)$/ do |index, str|
   first_security_answer_help_block = WhiteLabel.common_page.first_security_answer_help_block
   first_security_answer_help_block.wait_until_present(timeout: 5)
-  TestData.hash[:first_security_answer_help_block] = first_security_answer_help_block.text_value.split("\n")
-  expect(TestData.hash[:first_security_answer_help_block][index - 1]).to eql(str)
+  help_block_text = first_security_answer_help_block.text_value.split("\n")
+  expect(help_block_text[index - 1]).to eql(str)
 end
 
 Then /^WL: select security questions second security question (.*)$/ do |str|
@@ -115,14 +115,14 @@ Then /^WL: select security questions second security question (.*)$/ do |str|
   expect(TestData.hash[:second_security_question]).to eql str
 end
 
-Then /^WL: [Ee]xpect second security question tooltip index (\d+) to be (.*)$/ do |index, str|
+Then /^WL: expect second security question tooltip index (\d+) to be (.*)$/ do |index, str|
   second_security_question_help_block = WhiteLabel.common_page.second_security_question_help_block
   second_security_question_help_block.wait_until_present(timeout: 5)
-  TestData.hash[:second_security_question_help_block] = second_security_question_help_block.text_value.split("\n")
-  expect(TestData.hash[:second_security_question_help_block][index - 1]).to eql(str)
+  help_block = second_security_question_help_block.text_value.split("\n")
+  expect(help_block[index - 1]).to eql(str)
 end
 
-Then /^WL: [Ee]xpect security questions second security question is (?:correct|(.*))$/ do |str|
+Then /^WL: expect security questions second security question is (?:correct|(.*))$/ do |str|
   second_security_question = WhiteLabel.common_page.second_security_question
   str ||= TestData.hash[:second_security_question]
   expect(second_security_question.title).to eql(str)
@@ -135,11 +135,11 @@ Then /^WL: set security questions second security answer to (?:random value|(.*)
   TestData.hash[:second_security_answer] = str
 end
 
-Then /^WL: [Ee]xpect second security answer tooltip index (\d+) to be (.*)$/ do |index, str|
+Then /^WL: expect second security answer tooltip index (\d+) to be (.*)$/ do |index, str|
   second_security_answer_help_block = WhiteLabel.common_page.second_security_answer_help_block
   second_security_answer_help_block.wait_until_present(timeout: 5)
-  TestData.hash[:second_security_answer_help_block] = second_security_answer_help_block.text_value.split("\n")
-  expect(TestData.hash[:second_security_answer_help_block][index - 1]).to eql(str)
+  help_block = second_security_answer_help_block.text_value.split("\n")
+  expect(help_block[index - 1]).to eql(str)
 end
 
 Then /^WL: click security questions get started button$/ do
