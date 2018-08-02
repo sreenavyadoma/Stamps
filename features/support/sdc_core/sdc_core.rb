@@ -127,7 +127,7 @@ module SdcFinder
   # @param [Browser] browser either Watir::Browser or Appium::Core::Driver
   # @param [String]  HTML tag
   # @param [Integer] timeout in seconds
-  def element(browser, tag: nil, timeout: 15)
+  def element(browser, tag: nil, timeout: 60)
     if browser.is_a? Watir::Browser
       if tag
         element = instance_eval("browser.#{tag}(#{yield})", __FILE__, __LINE__)
@@ -159,7 +159,7 @@ module SdcFinder
   end
   module_function :element
 
-  def elements(browser, tag: nil, timeout: 15)
+  def elements(browser, tag: nil, timeout: 60)
     if browser.is_a? Watir::Browser
       if tag
         begin
@@ -193,7 +193,7 @@ class SdcPage < WatirDrops::PageObject
 
   class << self
 
-    def page_object(name, tag: nil, required: false, timeout: 15, &block)
+    def page_object(name, tag: nil, required: false, timeout: 60, &block)
       element(name.to_sym, required: required) do
         browser = self.class.browser
         SdcFinder.element(browser, tag: tag, timeout: timeout, &block)
@@ -205,7 +205,7 @@ class SdcPage < WatirDrops::PageObject
     alias selection page_object
     alias link page_object
 
-    def page_objects(name, tag: nil, index: nil, required: false, timeout: 15)
+    def page_objects(name, tag: nil, index: nil, required: false, timeout: 60)
       list_name = index.nil? ? name : "#{name}s".to_sym
 
       elements(list_name) do
@@ -372,7 +372,7 @@ module HtmlElementMethods
       begin
         break unless present?
         safe_send_keys(*args)
-        safe_wait_while_present(timeout: 1)
+        safe_wait_while_present(timeout: 2)
       rescue ::StandardError
         # ignore
       end
@@ -403,7 +403,7 @@ module HtmlElementMethods
     self
   end
 
-  def wait_until_present(timeout: nil, message: nil, interval: nil)
+  def wait_until_present(timeout: 60, message: nil, interval: nil)
     if respond_to? :wait_until_present
       send(:wait_until_present, timeout: timeout, interval: interval)
     else
@@ -413,7 +413,7 @@ module HtmlElementMethods
     self
   end
 
-  def wait_while_present(timeout: nil, message: nil, interval: nil)
+  def wait_while_present(timeout: 60, message: nil, interval: nil)
     if respond_to? :wait_while_present
       send(:wait_while_present, timeout: timeout)
     else
@@ -423,7 +423,7 @@ module HtmlElementMethods
     self
   end
 
-  def safe_wait_until_present(timeout: nil, message: nil, interval: nil)
+  def safe_wait_until_present(timeout: 60, message: nil, interval: nil)
     wait_until_present(timeout: timeout, interval: interval)
   rescue ::Watir::Wait::TimeoutError
     # ignore
@@ -432,7 +432,7 @@ module HtmlElementMethods
     # ignored
   end
 
-  def safe_wait_while_present(timeout: nil, message: nil, interval: nil)
+  def safe_wait_while_present(timeout: 60, message: nil, interval: nil)
     wait_while_present(timeout: timeout)
   rescue ::Watir::Wait::TimeoutError
     # ignore
@@ -586,11 +586,11 @@ class SdcChooser < BasicObject
   alias uncheck unchoose
   alias unselect unchoose
 
-  def wait_until_chosen(timeout: 4)
+  def wait_until_chosen(timeout: 10)
     @element.browser.wait_until(timeout: timeout) { chosen? }
   end
 
-  def safe_wait_until_chosen(timeout: 4)
+  def safe_wait_until_chosen(timeout: 10)
     wait_until_chosen(timeout: timeout)
   end
 
