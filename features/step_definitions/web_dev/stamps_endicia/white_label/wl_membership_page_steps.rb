@@ -27,10 +27,13 @@ Then /^WL: set membership page first name to (?:random value|(.*))$/ do |str|
   first_name = WhiteLabel.membership_page.first_name
   first_name.wait_until_present(timeout: 10)
   first_name.clear
-  while first_name.text_value.strip == ''
-    str ||=  TestHelper.rand_alpha_str.capitalize
+
+  str ||=  TestHelper.rand_alpha_str.capitalize
+  5.times do
     first_name.set(str)
+    break unless first_name.text_value.strip == ''
   end
+
   step "WL: blur_out on membership page"
   TestData.hash[:first_name] = str
 end
@@ -52,10 +55,13 @@ end
 Then /^WL: set membership page last name to (?:random value|(.*))$/ do |str|
   last_name = WhiteLabel.membership_page.last_name
   last_name.clear
-  while last_name.text_value.strip == ''
-    str ||= TestHelper.rand_alpha_str.capitalize
+
+  str ||=  TestHelper.rand_alpha_str.capitalize
+  5.times do
     last_name.set(str)
+    break unless last_name.text_value.strip == ''
   end
+
   step "WL: blur_out on membership page"
   TestData.hash[:last_name] = str
 end
@@ -90,9 +96,12 @@ end
 Then /^WL: set membership page address to (.*)$/ do |str|
   address = WhiteLabel.membership_page.address
   address.clear
-  while address.text_value.strip == ''
-    WhiteLabel.membership_page.address.set(str)
+
+  5.times do
+    address.set(str)
+    break unless address.text_value.strip == ''
   end
+
   step "WL: blur_out on membership page"
   TestData.hash[:address] = str
 end
