@@ -203,21 +203,30 @@ end
 
 Then /^WL: set profile page promo code to (?:an empty string|(.*))$/ do |str|
   step 'WL: show profile page promo code'
-  promo_code = WhiteLabel.profile_page.promo_code
-  promo_code.wait_until_present(timeout: 10)
-  promo_code.clear
+  profile_page = WhiteLabel.profile_page
+  step'pause for 1 second'
 
   5.times do
-    promo_code.set(str)
-    break unless promo_code.text_value.strip == ''
+    if profile_page.promo_code_tooltip.present?
+      profile_page.promo_code.clear
+      profile_page.promo_code.set(str)
+      break unless profile_page.promo_code.text_value.strip == ''
+    else
+      profile_page.promo_code_hidden.clear
+      profile_page.promo_code_hidden.set(str)
+      break unless profile_page.promo_code_hidden.text_value.strip == ''
+    end
   end
-  expect(promo_code.text_value.strip).not_to eql('')
 end
 
 Then /^WL: show profile page promo code$/ do
   profile_page = WhiteLabel.profile_page
   profile_page.promo_code_link.click if profile_page.promo_code_link.present?
-  expect(profile_page.promo_code).to be_present
+  if profile_page.promo_code_tooltip.present?
+   expect(profile_page.promo_code).to be_present
+  else
+    expect(profile_page.promo_code_hidden).to be_present
+  end
 end
 
 #.......survey quetion......#
@@ -270,7 +279,9 @@ Then /^WL: expect profile page continue button exists$/ do
 end
 
 Then /^WL: click profile page continue button$/ do
-  WhiteLabel.profile_page.continue.click
+  step 'pause for 1 second'
+  WhiteLabel.profile_page.continue.click!
+  step 'pause for 1 second'
 end
 
 ##---------UI Validation------##

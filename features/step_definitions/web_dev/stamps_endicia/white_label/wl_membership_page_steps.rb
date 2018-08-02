@@ -146,10 +146,10 @@ end
 
 Then /^WL: select membership page state (.*)$/ do |str|
   membership_page = WhiteLabel.membership_page
-  membership_page.state.click
+  membership_page.state.click!
   membership_page.dropdown_selection(str, 0)
   membership_page.dropdown_element.safe_wait_until_present(timeout: 2)
-  membership_page.dropdown_element.click
+  membership_page.dropdown_element.click!
   step 'WL: blur_out on membership page'
   TestData.hash[:state] = membership_page.state.attribute_value('title').strip
   expect(TestData.hash[:state].strip).to eql str
@@ -761,7 +761,7 @@ end
 
 Then /^WL: expect membership page your stamps.com offer modal to be present$/ do
   bonus_offer_details_header  = WhiteLabel.membership_page.bonus_offer_details_header
-  bonus_offer_details_header.wait_until_present(timeout: 2)
+  bonus_offer_details_header.wait_until_present(timeout: 5)
   expect(bonus_offer_details_header).to be_present
 end
 

@@ -224,7 +224,7 @@ Then /^WL: set username taken username to an existing username from db$/ do
 end
 
 Then /^WL: click username taken continue button$/ do
-  WhiteLabel.membership_page.username_taken_continue_btn.click
+  WhiteLabel.membership_page.username_taken_continue_btn.click!
 end
 
 Then /^WL: expect username taken header to be (.*)$/ do |str|

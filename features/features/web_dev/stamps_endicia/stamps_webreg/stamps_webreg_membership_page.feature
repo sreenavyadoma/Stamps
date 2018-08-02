@@ -236,6 +236,7 @@ Feature: Stamps WebReg: Membership Page
   Scenario: Membership Page Address Validation
     Then WL: navigates to default registration page for stamps with the following offer id 399
     Then WL: set profile page default values
+    Then WL: set profile page promo code to PR33-NH77
     Then WL: set pp username to an existing username from db
     Then WL: click profile page continue button
     Then WL: set membership page default values
@@ -433,6 +434,7 @@ Feature: Stamps WebReg: Membership Page
   Scenario: Membership Page Username Taken Validation
     Then WL: navigates to default registration page for stamps with the following offer id 399
     Then WL: set profile page default values
+    Then WL: set profile page promo code to PR33-NH77
     Then WL: set pp username to an existing username from db
     Then WL: click profile page continue button
     Then WL: set membership page default values
