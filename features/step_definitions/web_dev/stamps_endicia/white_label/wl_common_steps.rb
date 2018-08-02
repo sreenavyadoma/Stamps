@@ -56,7 +56,7 @@ Then /^WL: navigates to default registration page for stamps with the following 
   TestData.hash[:security_questions_before_registration] = security_questions_before_reg
 end
 
-###################Security Question######################
+#...................Security Question.....................#
 Then /^WL: expect security questions header to be (.*)$/ do |str|
   sq_header = WhiteLabel.common_page.sq_header
   sq_header.wait_until_present(timeout: 100)
@@ -196,7 +196,7 @@ Then /^WL: if security question is present after registration then set the value
   end
 end
 
-######################Username Taken Modal#############################
+#...............................Username Taken Modal....................#
 Then /^WL: if username taken is present then set username to (?:random value|(.*))$/ do |str|
   membership_page =  WhiteLabel.membership_page
   if TestData.hash[:username_taken] == TestData.hash[:username]
@@ -249,7 +249,7 @@ Then /^WL: expect username taken tooltip to be (.*)$/ do |str|
   expect(membership_page.new_username_help_block.text_value.strip).to eql(str)
 end
 
-#######################An Error Occurred####################################
+#.........................An Error Occurred..............................#
 Then /^WL: expect an error occurred modal head to be (.*)$/ do |str|
   error_occurred_header = WhiteLabel.common_page.error_occurred_header
   error_occurred_header.wait_until_present(timeout: 5)
@@ -268,7 +268,7 @@ Then /^WL: expect an error occurred modal error description to include (.*)$/ do
   expect(WhiteLabel.common_page.error_occurred_error_description.text_value.strip).to include(str)
 end
 
-######################Offer 573 Landing Page#########################################
+#................................Offer 573 Landing Page..............................#
 Then /^WL: expect offer 573 landing page header to be (.*)$/ do |str|
   SdcPage.browser.alert.close if SdcPage.browser.alert.exists?
 
@@ -290,8 +290,7 @@ Then /^WL: expect offer 573 landing page shipping labels img is present$/ do
   expect(WhiteLabel.common_page.offer_573_img).to be_present
 end
 
-##########################Offer 592 Landing Page#######################
-
+#..........................Offer 592 Landing Page.............................#
 Then /^WL: expect offer 592 landing page header to be (.*)$/ do |str|
   SdcPage.browser.alert.close if SdcPage.browser.alert.exists?
 
@@ -319,7 +318,7 @@ Then /^WL: expect offer 592 landing page avery img is present$/ do
   expect(SdcPage.browser.url).to include("avery.com/myavery")
 end
 
-############Printing Landing Page##############################
+#.............................Printing Landing Page..............................#
 Then /^WL: expect user is navigated to print page$/ do
   step 'pause for 2 second'
   if SdcPage.browser.alert.exists?
@@ -347,7 +346,7 @@ Then /^WL: expect user is navigated to print page$/ do
   expect(common_page.print_username.attribute_value('title').strip).to eql(TestData.hash[:username])
 end
 
-###############Modal##############################
+#..................................Modal....................#
 Then /^WL: click modal continue button$/ do
   modal_continue = WhiteLabel.common_page.modal_continue
   modal_continue.wait_until_present(timeout: 2)
