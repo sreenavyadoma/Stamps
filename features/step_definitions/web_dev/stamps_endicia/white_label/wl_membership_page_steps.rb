@@ -595,7 +595,7 @@ Then /^WL: expect membership page terms and conditions modal is present$/ do
   expect(terms_conditions_header).to be_present
 end
 
-############################################################################Standardized Address Modal##################
+#..................................Standardized Address Modal.......................................#
 Then /^WL: expect membership page standardized addr modal header to be (.*)$/ do |str|
   addr_std_header  = WhiteLabel.membership_page.addr_std_header
   addr_std_header.wait_until_present(timeout: 2)
@@ -656,7 +656,7 @@ Then /^WL: check if address standardized is present then click continue$/ do
   end
 end
 
-###################################################################Postage Meter Address################################
+#..........................Postage Meter Address.....................................#
 Then /^WL: expect postage meter page address to be (.*)$/ do |str|
   meter_header = WhiteLabel.membership_page.meter_header
   meter_header.wait_until_present(timeout: 5)
@@ -728,7 +728,7 @@ Then /^WL: set postage meter zip to (.*)$/ do |str|
   WhiteLabel.membership_page.meter_zip.set(TestData.hash[:zip] = str)
 end
 
-##################################################Side content##########################################################
+#....................................Side content........................................#
 Then /^WL: expect membership page need mailing info header to be$/ do |str|
   expect(WhiteLabel.membership_page.need_mailing_info_header.text_value.strip).to eql(str)
 end
@@ -796,7 +796,7 @@ Then /^WL: expect membership page your stamps.com offer modal to be present$/ do
   expect(bonus_offer_details_header).to be_present
 end
 
-####################################Invalid Address Modal###############################################################
+#........................................Invalid Address Modal...................................#
 Then /^WL: expect membership page invalid address modal header to be Invalid Address$/ do
   invalid_addr_header = WhiteLabel.membership_page.invalid_addr_header
   invalid_addr_header.wait_until_present(timeout: 2)
@@ -815,7 +815,7 @@ Then /^WL: set membership page default values$/ do
   step 'WL: check membership page terms & conditions'
 end
 
-##########################Exact Address##################################################################
+#.............................Exact Address..........................................#
 Then /^WL: expect membership page exact addr modal header to be (.*)$/ do |str|
   exact_addr_header = WhiteLabel.membership_page.exact_addr_header
   exact_addr_header.wait_until_present(timeout: 2)
