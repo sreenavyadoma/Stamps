@@ -87,7 +87,7 @@ module WhiteLabel
       "select * FROM [Stampmart].[dbo].[smt_PromotionOffers]
        where PromoCode = '#{source_id}'")
      source_id.each do |item|
-        return item['OfferId'], item['PromoCode']
+        return item['OfferID'], item['PromoCode']
       end
     end
 

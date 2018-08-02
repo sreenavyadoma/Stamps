@@ -56,6 +56,12 @@ Then /^WL: navigates to default registration page for stamps with the following 
   TestData.hash[:security_questions_before_registration] = security_questions_before_reg
 end
 
+Then /^WL: expect offer id and source id are the same between sdc_website and stamp_mart db$/ do
+  offer_id, source_id = WhiteLabel.common_page.stamps_mart_source_id_query(TestData.hash[:source_id])
+  expect(offer_id).to eql(TestData.hash[:offer_id])
+  expect(source_id).to eql(TestData.hash[:source_id])
+end
+
 #...................Security Question.....................#
 Then /^WL: expect security questions header to be (.*)$/ do |str|
   sq_header = WhiteLabel.common_page.sq_header
@@ -330,7 +336,7 @@ Then /^WL: expect user is navigated to print page$/ do
   if SdcEnv.browser == :edge
   common_page.print_edge_detail_link.safe_wait_until_present(timeout: 10)
   common_page.print_edge_detail_link.click if common_page.print_edge_detail_link.present?
-  common_page.print_cert_error.click if common_page.print_cert_error.present?
+  common_page.print_edge_go_on_link.click if common_page.print_edge_go_on_link.present?
   end
 
   common_page.print_stamps_logo.wait_until_present(timeout: 120) rescue false

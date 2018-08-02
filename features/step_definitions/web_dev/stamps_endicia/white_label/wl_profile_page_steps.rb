@@ -329,6 +329,7 @@ Then /^WL: expect profile page money-saving offers and new products is unchecked
 end
 
 Then /^WL: set profile page default values$/ do
+  step 'WL: expect offer id and source id are the same between sdc_website and stamp_mart db'
   step 'WL: set profile page email to random value'
   step 'WL: set profile page username to random value'
   step 'WL: set profile page password to random value'
