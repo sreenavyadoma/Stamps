@@ -514,9 +514,12 @@ end
 Then /^WL: set membership page billing zip to (.*)$/ do |str|
   billing_zip = WhiteLabel.membership_page.billing_zip
   billing_zip.clear
-  while billing_zip.text_value.strip == ''
+
+  5.times do
     billing_zip.set(str)
+    break unless billing_zip.text_value.strip == ''
   end
+
   step "WL: blur_out on membership page"
   TestData.hash[:billing_zip] = str
 end
