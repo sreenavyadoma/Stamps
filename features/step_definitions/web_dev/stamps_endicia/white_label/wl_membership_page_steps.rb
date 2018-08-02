@@ -177,9 +177,12 @@ end
 Then /^WL: set membership page zip to (.*)$/ do |str|
   zip = WhiteLabel.membership_page.zip
   zip.clear
-  while zip.text_value.strip == ''
+
+  5.times do
     zip.set(str)
+    break unless zip.text_value.strip == ''
   end
+
   TestData.hash[:zip] = str
 end
 
@@ -192,11 +195,13 @@ end
 Then /^WL: set membership page phone to (?:random value|(.*))$/ do |str|
   phone = WhiteLabel.membership_page.phone
   phone.clear
-  rand_phone = TestHelper.rand_phone_format
-  while phone.text_value.strip == ''
-    str ||= rand_phone
+
+  str ||= TestHelper.rand_phone_format
+  5.times do
     phone.set(str)
+    break unless phone.text_value.strip == ''
   end
+
   TestData.hash[:phone] = str
   step "WL: blur_out on membership page"
 end
@@ -264,9 +269,13 @@ Then /^WL: set membership page cardholder's name to (?:random value|(.*))$/ do |
   cc_holder_name = WhiteLabel.membership_page.cc_holder_name
   cc_holder_name.clear
   str ||= TestHelper.rand_full_name
-  while cc_holder_name.text_value.strip == ''
-    cc_holder_name.set(TestData.hash[:card_holder_name] =str)
+
+  5.times do
+    cc_holder_name.set(str)
+    break unless cc_holder_name.text_value.strip == ''
   end
+
+  TestData.hash[:card_holder_name] =str
   step 'WL: blur_out on membership page'
 end
 
@@ -283,10 +292,13 @@ end
 Then /^WL: set membership page credit card number to (?:default value|(.*))$/ do |str|
   cc_number = WhiteLabel.membership_page.cc_number
   cc_number.clear
-  while cc_number.text_value == ''
-    str ||= '4111111111111111'
+  str ||= '4111111111111111'
+
+  5.times do
     cc_number.set(str)
+    break unless cc_number.text_value == ''
   end
+
   TestData.hash[:cc_number] = str
   step 'WL: blur_out on membership page'
 end
