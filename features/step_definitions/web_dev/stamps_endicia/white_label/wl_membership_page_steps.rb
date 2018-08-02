@@ -408,9 +408,13 @@ Then /^WL: set membership page billing address to (.*)$/ do |str|
   billing_addr.wait_until_present(timeout: 2)
   billing_addr.scroll_into_view
   billing_addr.clear
-  while billing_addr.text_value.strip == ''
-    billing_addr.set(TestData.hash[:billing_addr] = str)
+
+  5.times do
+    billing_addr.set(str)
+    break unless billing_addr.text_value.strip == ''
   end
+
+  TestData.hash[:billing_addr] = str
   step "WL: blur_out on membership page"
 end
 
@@ -450,9 +454,12 @@ end
 Then /^WL: set membership page billing city to (.*)$/ do |str|
   billing_city = WhiteLabel.membership_page.billing_city
   billing_city.clear
-  while billing_city.text_value.strip == ''
+
+  5.times do
     billing_city.set(str)
+    break unless billing_city.text_value.strip == ''
   end
+
   step "WL: blur_out on membership page"
   TestData.hash[:billing_city] = str
 end
