@@ -121,7 +121,7 @@ Then /^WL: set profile page password to (?:random value|(.*))$/ do |str|
   end
   expect(password.text_value.strip).not_to eql('')
 
-  SdcLogger.info  "Password = #{TestData.hash[:account_password]}"
+  SdcLogger.info  "Password = #{str}"
   TestData.hash[:account_password] = str
 end
 
