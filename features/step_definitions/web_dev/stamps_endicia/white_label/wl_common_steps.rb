@@ -55,13 +55,13 @@ Then /^WL: navigates to default registration page for stamps with the following 
 end
 
 ###################Security Question######################
-Then /^WL: [Ee]xpect security questions header to be (.*)$/ do |str|
+Then /^WL: expect security questions header to be (.*)$/ do |str|
   sq_header = WhiteLabel.common_page.sq_header
   sq_header.wait_until_present(timeout: 100)
   expect(sq_header.text_value).to eql(str)
 end
 
-Then /^WL: [Ee]xpect security questions title to be (.*)$/ do |str|
+Then /^WL: expect security questions title to be (.*)$/ do |str|
   security_question_title = WhiteLabel.common_page.security_question
   security_question_title.wait_until_present(timeout: 5)
   expect(security_question_title.text_value).to eql(str)
@@ -78,14 +78,14 @@ Then /^WL: select security questions first security question (.*)$/ do |str|
   expect(TestData.hash[:first_security_question]).to eql str
 end
 
-Then /^WL: [Ee]xpect first security question tooltip index (\d+) to be (.*)$/ do |index, str|
+Then /^WL: expect first security question tooltip index (\d+) to be (.*)$/ do |index, str|
   first_security_question_help_block = WhiteLabel.common_page.first_security_question_help_block
   first_security_question_help_block.wait_until_present(timeout: 5)
   TestData.hash[:first_security_question_help_block] = first_security_question_help_block.text_value.split("\n")
   expect(TestData.hash[:first_security_question_help_block][index.to_i - 1]).to eql(str)
 end
 
-Then /^WL: [Ee]xpect security questions first security question is (?:correct|(.*))$/ do |str|
+Then /^WL: expect security questions first security question is (?:correct|(.*))$/ do |str|
   first_security_question = WhiteLabel.common_page.first_security_question
   str ||= TestData.hash[:first_security_question]
   expect(first_security_question.title).to eql(str)
@@ -146,12 +146,12 @@ Then /^WL: click security questions get started button$/ do
   WhiteLabel.common_page.sq_get_started.click
 end
 
-Then /^WL: [Ee]xpect security questions get started button exists$/ do
+Then /^WL: expect security questions get started button exists$/ do
   WhiteLabel.common_page.sq_get_started.wait_until_present(timeout: 50)
   expect(WhiteLabel.common_page.sq_get_started).to be_present
 end
 
-Then /^WL: [Ee]xpect security question modal does not exists$/ do
+Then /^WL: expect security question modal does not exists$/ do
   expect(WhiteLabel.common_page.security_question).not_to be_present
 end
 

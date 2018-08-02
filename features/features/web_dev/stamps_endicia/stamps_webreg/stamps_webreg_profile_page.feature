@@ -119,8 +119,8 @@ Feature: Stamps WebReg: Profile Page
     #Validate Promo code
     Then WL: set profile page promo code to 522MB
 
-    #Validate Security Quetion Modal
-    #Validate first Security Quetion list
+    #Validate Security Question Modal
+    #Validate first Security Question list
     Then WL: select security questions first security question What is your mother's maiden name?
     Then WL: expect security questions first security question is correct
     Then WL: select security questions first security question What is your pet's name?
@@ -138,7 +138,7 @@ Feature: Stamps WebReg: Profile Page
     Then WL: select security questions first security question What is the make and model of your first car?
     Then WL: expect security questions first security question is correct
 
-    #Validate second Security Quetion list
+    #Validate second Security Question list
     Then WL: select security questions second security question What is your mother's maiden name?
     Then WL: expect security questions second security question is correct
     Then WL: select security questions second security question What is your pet's name?
@@ -154,15 +154,10 @@ Feature: Stamps WebReg: Profile Page
     Then WL: select security questions second security question What is the name of your first school?
     Then WL: expect security questions second security question is correct
 
-    Then WL: if security question is present before registration then set the values
     Then WL: click profile page continue button
 
     #Validate navigate to Membership page
     Then WL: expect membership page bread crumbs is Membership
 
-    #Validate Security Quetions Modal does not present
-    Then WL: navigates to default registration page for stamps with the following offer id 399
-    Then pause for 5 seconds
-    Then WL: expect security question modal does not exists
 
 

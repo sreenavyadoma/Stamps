@@ -21,24 +21,16 @@ Then /^WL: set profile page email to (?:random value|(.*))$/ do |str|
   email.wait_until_present(timeout: 30)
   email.clear
 
-  15.times do
-    str ||=  TestHelper.rand_email.capitalize
+  str ||=  TestHelper.rand_email.capitalize
+  5.times do
     email.set(str)
     break unless email.text_value.strip == ''
   end
   expect(email.text_value.strip).not_to eql('')
 
   TestData.hash[:atg_promotion] =  WhiteLabel.choose_supplies.atg_promotion
-  if SdcEnv.usr
-    sleep 1
-    email.set(TestData.hash[:email]=(str.nil?)?(SdcEnv.usr) : str)
-  else
-    sleep 1
-    email.set(TestData.hash[:email]=(str.nil?)?(TestHelper.rand_email) : str)
-  end
-
   TestData.hash[:email] = str
-  SdcLogger.info "Email = #{TestData.hash[:email]}\n"
+  SdcLogger.info "Email = #{TestData.hash[:email]}"
 end
 
 Then /^WL: expect profile page email tooltip count is (.*)$/ do |count|
@@ -52,7 +44,7 @@ Then /^WL: expect profile page email tooltip index (\d+) to be (.*)$/ do |index,
   email_tooltip = WhiteLabel.profile_page.email_tooltip
   email_tooltip.wait_until_present(timeout: 5)
   TestData.hash[:email_tooltip] = email_tooltip.text_value.split("\n")
-  expect(TestData.hash[:email_tooltip][index.to_i - 1]).to eql(str)
+  expect(TestData.hash[:email_tooltip][index - 1]).to eql(str)
 end
 
 #.......Username......#
@@ -66,39 +58,34 @@ Then /^WL: set profile page username to (?:random value|(.*))$/ do |str|
   username.wait_until_present(timeout: 10)
   username.clear
 
-  15.times do
-    str ||=  TestHelper.rand_alpha_str.capitalize
-    username.set(str)
-    break unless username.text_value.strip == ''
+  str ||= TestHelper.rand_usr.capitalize
+  if SdcEnv.usr
+    5.times do
+      username.set( SdcEnv.usr)
+      break unless username.text_value.strip == ''
+    end
+  else
+    5.times do
+      username.set(str)
+      break unless username.text_value.strip == ''
+    end
   end
   expect(username.text_value.strip).not_to eql('')
-
-  username.set((TestData.hash[:username_taken]=(str.nil?)?(TestHelper.rand_usr) : str))
-  SdcLogger.info "UserName = #{str}\n"
-  TestData.hash[:username_taken] = str
+  TestData.hash[:username_taken] = WhiteLabel.common_page.username_query(TestData.hash[:username_taken])
+  SdcLogger.info "UserName = #{str}"
+  TestData.hash[:username] = str
 end
 
 Then /^WL: set pp username to an existing username from db$/ do
   existing_usr = WhiteLabel.common_page.existing_username_query
   step "WL: set profile page username to #{existing_usr}"
-  username = WhiteLabel.profile_page.username
-  username.wait_until_present(timeout: 10)
-  username.clear
-  str ||= TestHelper.rand_alpha_str.capitalize
-  while username.text_value.strip == ''
-    username.set(str)
-  end
-  username.set ((TestData.hash[:username_taken]=(str.nil?)?(TestHelper.rand_usr) : str))
-  SdcLogger.info "UserName = #{TestData.hash[:username_taken]}\n"
-  TestData.hash[:username_taken] = WhiteLabel.common_page.username_query(TestData.hash[:username_taken])
-  TestData.hash[:username_taken] = str
 end
 
 Then /^WL: expect profile page username is (?:correct|(.*))$/ do |str|
   username = WhiteLabel.profile_page.username
-  str ||= TestData.hash[:username_taken]
+  str ||= TestData.hash[:username]
   expect(username.text_value.strip).to eql(str)
-  TestData.hash[:username_taken] = str
+  TestData.hash[:username] = str
 end
 
 Then /^WL: expect profile page username tooltip count is (.*)$/ do |count|
@@ -127,14 +114,14 @@ Then /^WL: set profile page password to (?:random value|(.*))$/ do |str|
   password.clear
 
   str ||= '1' + TestHelper.rand_alpha_numeric(min:6, max:10)
-  password.set(str)
 
   5.times do
-    break if password.text_value.strip == ''
+    password.set(str)
+    break unless password.text_value.strip == ''
   end
   expect(password.text_value.strip).not_to eql('')
 
-  print "Password = #{TestData.hash[:account_password]}\n"
+  SdcLogger.info  "Password = #{TestData.hash[:account_password]}"
   TestData.hash[:account_password] = str
 end
 
@@ -164,42 +151,27 @@ Then /^WL: expect profile page re-type password exists$/ do
   expect(WhiteLabel.profile_page.confirm_password).to be_present
 end
 
-=begin
 Then /^WL: set profile page re-type password to (?:same as previous password|(.*))$/ do |str|
   confirm_password = WhiteLabel.profile_page.confirm_password
-  confirm_password.wait_until_present(timeout: 10)
-  confirm_password.clear
-
   str ||= TestData.hash[:account_password]
-  7.times do
+  5.times do
     confirm_password.set(str)
-    break unless confirm_password.text_value.strip == ''
+    break unless confirm_password.text_value == ''
   end
-  expect(confirm_password.text_value.strip).not_to eql('')
-
-  str ||= TestData.hash[:retype_password]=(str.nil?)?(TestData.hash[:account_password]) : str
-  confirm_password.set(str)
-  TestData.hash[:retype_password] = str
-end
-=end
-
-Then /^WL: set profile page re-type password to (?:same as previous password|(.*))$/ do |str|
-  str ||= TestData.hash[:account_password]
-  WhiteLabel.profile_page.confirm_password.set(str)
   TestData.hash[:retype_password] = str
 end
 
 Then /^WL: expect profile page re-type password is (?:correct|(.*))$/ do |str|
   retype_password = WhiteLabel.profile_page.confirm_password
   str ||= TestData.hash[:retype_password]
-  expect(retype_password.text_value.strip).to eql((str.nil?) ? TestData.hash[:retype_password] : str)
+  expect(retype_password.text_value.strip).to eql(str)
 end
 
 Then /^WL: expect profile page re-type password tooltip index (\d+) to be (.*)$/ do |index, str|
   confirm_password_tooltip = WhiteLabel.profile_page.confirm_password_tooltip
   confirm_password_tooltip.wait_until_present(timeout: 5)
-  TestData.hash[:confirm_password_tooltip] = confirm_password_tooltip.text_value.split("\n")
-  expect(TestData.hash[:confirm_password_tooltip][index.to_i - 1]).to eql(str)
+  tooltip_text = confirm_password_tooltip.text_value.split("\n")
+  expect(tooltip_text[index - 1]).to eql(str)
 end
 
 #.......promo code......#
@@ -207,8 +179,8 @@ end
 Then /^WL: expect profile page promo code tooltip (\d+) to be (.*)$/ do |index, str|
   promo_code_tooltip = WhiteLabel.profile_page.promo_code_tooltip
   promo_code_tooltip.wait_until_present(timeout: 5)
-  TestData.hash[:promo_code_tooltip] = promo_code_tooltip.text_value.split("\n")
-  expect(TestData.hash[:promo_code_tooltip][index.to_i - 1]).to eql(str)
+  tooltip_text = promo_code_tooltip.text_value.split("\n")
+  expect(tooltip_text[index - 1]).to eql(str)
 end
 
 Then /^WL: expect profile page survey question exists$/ do
@@ -217,11 +189,6 @@ end
 
 Then /^WL: expect profile page promo code link exists$/ do
   expect(WhiteLabel.profile_page.promo_code_link).to be_present
-end
-
-Then /^WL: show profile page promo code textbox$/ do
-  WhiteLabel.profile_page.promo_code_link.click if WhiteLabel.profile_page.promo_code_link.present?
-  expect(WhiteLabel.profile_page.promo_code_textbox).to be_present
 end
 
 Then /^WL: expect profile page promo code exists$/ do
@@ -240,20 +207,17 @@ Then /^WL: set profile page promo code to (?:an empty string|(.*))$/ do |str|
   promo_code.wait_until_present(timeout: 10)
   promo_code.clear
 
-  str ||= TestHelper.rand_alpha_str.capitalize
   5.times do
     promo_code.set(str)
     break unless promo_code.text_value.strip == ''
   end
   expect(promo_code.text_value.strip).not_to eql('')
-
-  str ||= TestData.hash[:promo_code]
-  promo_code.set(str)
 end
 
 Then /^WL: show profile page promo code$/ do
-  WhiteLabel.profile_page.promo_code_link.click if  WhiteLabel.profile_page.promo_code_link.present?
-  expect(WhiteLabel.profile_page.promo_code).to be_present
+  profile_page = WhiteLabel.profile_page
+  profile_page.promo_code_link.click if profile_page.promo_code_link.present?
+  expect(profile_page.promo_code).to be_present
 end
 
 #.......survey quetion......#
@@ -305,7 +269,7 @@ Then /^WL: expect profile page continue button exists$/ do
   expect(WhiteLabel.profile_page.continue).to be_present
 end
 
-Then /^WL: [Cc]lick profile page continue button$/ do
+Then /^WL: click profile page continue button$/ do
   WhiteLabel.profile_page.continue.click
 end
 
@@ -354,12 +318,10 @@ Then /^WL: expect profile page money-saving offers and new products is unchecked
 end
 
 Then /^WL: set profile page default values$/ do
-  step 'WL: navigates to default registration page for stamps with the following source id 100-TES-WB001'
   step 'WL: set profile page email to random value'
   step 'WL: set profile page username to random value'
   step 'WL: set profile page password to random value'
   step 'WL: set profile page re-type password to same as previous password'
   step 'WL: set profile page survey question to Business Use - Both mailing and shipping'
   step 'WL: set profile page how did you hear about us? to Received Mailer'
-  step 'WL: set profile page promo code to PR33-NH77'
 end
