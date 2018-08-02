@@ -58,8 +58,12 @@ end
 
 Then /^WL: expect offer id and source id are the same between sdc_website and stamp_mart db$/ do
   offer_id, source_id = WhiteLabel.common_page.stamps_mart_source_id_query(TestData.hash[:source_id])
+  wr_offer_id = WhiteLabel.common_page.wr_model_session_offer
+
   expect(offer_id).to eql(TestData.hash[:offer_id])
+  expect(wr_offer_id).to eql(TestData.hash[:offer_id])
   expect(source_id).to eql(TestData.hash[:source_id])
+
 end
 
 #...................Security Question.....................#

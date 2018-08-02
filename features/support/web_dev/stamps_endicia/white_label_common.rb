@@ -128,6 +128,11 @@ module WhiteLabel
       SdcPage.browser.execute_script('return WR.model.session.reg.planSku')
     end
 
+    def wr_model_session_offer
+      SdcPage.browser.execute_script('return WR.model.session.offer')
+    end
+
+
   end
 
   class SDCWWebsite <SdcPage
