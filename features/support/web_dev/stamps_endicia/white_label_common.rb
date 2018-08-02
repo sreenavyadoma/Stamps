@@ -137,7 +137,7 @@ module WhiteLabel
 
   class SDCWWebsite <SdcPage
     def self.visit(str)
-      page_url { |env| "https://#{env}stamps.com/?source=#{str}" }
+      page_url { |env| "https://#{env}stamps.com/?source=#{str}&mboxDisable=1" }
       super(case SdcEnv.env
               when :qacc
                 'sdcwebsite.qacc.'

@@ -451,7 +451,7 @@ Feature: Stamps WebReg: Membership Page
     Then WL: expect username taken tooltip to be 2 character minimum
     Then WL: set username taken username to an existing username from db
     Then WL: click username taken continue button
-    Then WL: expect username taken header to be Username Taken
+    #Then WL: expect username taken header to be Username Taken
 
     Then WL: click modal x button
 
