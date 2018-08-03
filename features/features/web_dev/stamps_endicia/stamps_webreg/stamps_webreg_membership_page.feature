@@ -8,12 +8,7 @@ Feature: Stamps WebReg: Membership Page
 
     # Profile Page
     Then WL: navigates to default registration page for stamps with the following offer id 399
-    Then WL: set profile page email to random value
-    Then WL: set profile page username to random value
-    Then WL: set profile page password to random value
-    Then WL: set profile page re-type password to same as previous password
-    Then WL: set profile page survey question to Business Use - Both mailing and shipping
-    Then WL: set profile page how did you hear about us? to Received Mailer
+    Then WL: set profile page default values
     Then WL: set profile page promo code to PR33-NH77
 
     Then WL: click profile page continue button
