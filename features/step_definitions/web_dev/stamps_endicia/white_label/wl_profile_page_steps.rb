@@ -210,20 +210,27 @@ Then /^WL: expect profile page promo code to equal source id promo code$/ do
   end
 end
 
-Then /^WL: set profile page promo code to (?:default|(.*))$/ do |str|
+Then /^WL: set profile page promo code to (.*)$/ do |str|
   step 'WL: show profile page promo code'
   profile_page = WhiteLabel.profile_page
   step'pause for 1 second'
 
-  str ||= TestData.hash[:promo_code]
+  if str == 'default'
+    str = TestData.hash[:promo_code]
+  elsif str ==  'empty'
+    str = ''
+  else
+    str = str
+  end
+
   5.times do
     if profile_page.promo_code.present?
-       profile_page.promo_code.clear
-       profile_page.promo_code.set(str)
-       break unless profile_page.promo_code.text_value.strip == ''
+      profile_page.promo_code.clear
+      profile_page.promo_code.set(str)
+      break unless profile_page.promo_code.text_value.strip == ''
     else
-       profile_page.promo_code_hidden.clear
-       profile_page.promo_code_hidden.set(str)
+      profile_page.promo_code_hidden.clear
+      profile_page.promo_code_hidden.set(str)
       break unless profile_page.promo_code_hidden.text_value.strip == ''
     end
   end

@@ -22,7 +22,7 @@ Then /^WL: click membership page back button$/ do
   step 'pause for 1 second'
 end
 
-Then /^WL: expect membership page header to be present$/ do
+Then /^WL: expect membership page header exists$/ do
   header = WhiteLabel.membership_page.header
   header.wait_until_present(timeout: 10)
   expect(header).to be_present

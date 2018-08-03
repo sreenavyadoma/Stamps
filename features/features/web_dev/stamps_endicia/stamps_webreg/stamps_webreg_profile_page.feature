@@ -115,17 +115,17 @@ Feature: Stamps WebReg: Profile Page
     #Validate Promo code
     Then WL: set profile page promo code to default
     Then WL: click profile page continue button
-    Then WL: expect membership page header to be present
+    Then WL: expect membership page header exists
     Then WL: click membership page back button
 
     Then WL: set profile page promo code to 522MB
     Then WL: click profile page continue button
-    Then WL: expect membership page header to be present
+    Then WL: expect membership page header exists
     Then WL: click membership page back button
 
-    Then WL: set profile page promo code to ""
+    Then WL: set profile page promo code to empty
     Then WL: click profile page continue button
-    Then WL: expect membership page header to be present
+    Then WL: expect membership page header exists
 
 
 
