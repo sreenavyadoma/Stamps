@@ -609,7 +609,7 @@ end
 #..................................Standardized Address Modal.......................................#
 Then /^WL: expect membership page standardized addr modal header to be (.*)$/ do |str|
   addr_std_header  = WhiteLabel.membership_page.addr_std_header
-  addr_std_header.wait_until_present(timeout: 2)
+  addr_std_header.wait_until_present(timeout: 5)
   expect(addr_std_header.text_value.strip).to eql(str)
 end
 

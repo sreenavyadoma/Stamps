@@ -7,7 +7,7 @@ Feature: Stamps WebReg: Membership Page
   Scenario: Membership Page Validation
 
     # Profile Page
-    Then WL: navigates to default registration page for stamps with the following offer id 399
+    Then WL: navigates to default registration page for stamps with the following offer id 404
     Then WL: set profile page default values
     Then WL: set profile page promo code to PR33-NH77
 
@@ -230,7 +230,7 @@ Feature: Stamps WebReg: Membership Page
 
   @sdcwr_membership_page_addr_validation
   Scenario: Membership Page Address Validation
-    Then WL: navigates to default registration page for stamps with the following offer id 399
+    Then WL: navigates to default registration page for stamps with the following offer id 511
     Then WL: set profile page default values
     Then WL: set profile page promo code to PR33-NH77
     Then WL: set pp username to an existing username from db
@@ -428,7 +428,7 @@ Feature: Stamps WebReg: Membership Page
 
   @sdcwr_membership_page_username_taken_validation
   Scenario: Membership Page Username Taken Validation
-    Then WL: navigates to default registration page for stamps with the following offer id 399
+    Then WL: navigates to default registration page for stamps with the following offer id 404
     Then WL: set profile page default values
     Then WL: set profile page promo code to PR33-NH77
     Then WL: set pp username to an existing username from db

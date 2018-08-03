@@ -59,7 +59,7 @@ Then /^WL: expect offer id and source id are the same between sdc_website and st
   offer_id, source_id = WhiteLabel.common_page.stamps_mart_source_id_query(TestData.hash[:source_id])
   wr_offer_id = WhiteLabel.common_page.wr_model_session_offer
 
-  expect(offer_id).to eql(TestData.hash[:offer_id]) , 'sdc_website and stamp_mart offer id are not same'
+  expect(TestData.hash[:offer_id]).to eql(offer_id) , 'sdc_website and stamp_mart offer id are not same'
   expect(wr_offer_id).to eql(offer_id), 'wr_web_page and stamp_mart offer id are not same'
   expect(source_id).to eql(TestData.hash[:source_id]), 'sdc_website and stamp_mart source id are not same'
 
