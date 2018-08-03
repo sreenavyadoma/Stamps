@@ -1,5 +1,5 @@
 
-default: --backtrace --profile saucelabs
+default: --backtrace --profile sauce_browser
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -244,9 +244,6 @@ registration_ach_purchase_100k: --tags @registration_ach_purchase_100k --guess  
 pam_ach_purchase_100k: --tags @pam_ach_purchase_100k --guess  HEALTHCHECK=true WEB_APP=Registration
 registration_meter_limit_100k: --tags @registration_meter_limit_100k --guess  HEALTHCHECK=true WEB_APP=Registration
 pam_meter_limit_100k: --tags @pam_meter_limit_100k --guess  HEALTHCHECK=true WEB_APP=Registration
-
-details_non_integer_lb: --tags @details_non_integer_lb --guess  HEALTHCHECK=true WEB_APP=orders
-tooltips_improvements: --tags @tooltips_improvements --guess  HEALTHCHECK=true WEB_APP=orders
 
 # --------------------------  ORDERS Bugs
 bugs_orders_filter_panel: --tags @bugs_orders_filter_panel --guess  HEALTHCHECK=true WEB_APP=orders
