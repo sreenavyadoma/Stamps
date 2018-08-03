@@ -127,20 +127,20 @@ class SdcTest
 
       if TestSession.env.selenium_browser
         SdcPage.browser = TestSession.cloud_browser
-        SdcLogger.debug TestSession.session_info(SdcPage.browser.driver.session_id)
+        SdcLogger.debug TestSession.env.session_info(SdcPage.browser.driver.session_id)
         SdcEnv.width = SdcPage.browser.window.size.width
         SdcEnv.height = SdcPage.browser.window.size.height
 
       elsif TestSession.env.selenium_device
         SdcPage.browser = TestSession.cloud_device
-        SdcLogger.debug TestSession.session_info(SdcPage.browser.session_id)
+        SdcLogger.debug TestSession.env.session_info(SdcPage.browser.session_id)
 
       elsif TestSession.env.local_browser
         SdcPage.browser = TestSession.local_browser
         SdcEnv.width = SdcPage.browser.window.size.width
         SdcEnv.height = SdcPage.browser.window.size.height
       else
-        # do nothing
+        raise ArgumentError, 'Test driver did not initialize.'
       end
 
     end

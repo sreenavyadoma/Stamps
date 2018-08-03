@@ -92,7 +92,7 @@ module TestSession
     key(:sauce_on_demand_browsers) { ENV['SAUCE_ONDEMAND_BROWSERS'] }
     key(:screen_resolution) { ENV['SCREEN_RESOLUTION'] || '1280x1024' }
     key(:idle_timeout) { ENV['IDLE_TIMEOUT'] || 150 }
-    key(:sauce_end_point) { "https://#{sauce_username}:#{sauce_access_key}@#{host}:#{port}/wd/hub" }
+    key(:sauce_end_point) { "https://#{sauce_username}:#{sauce_access_key}@#{selenium_host}:#{selenium_port}/wd/hub" }
     # cloud mobile
     key(:selenium_device) { ENV['SELENIUM_DEVICE'] }
     key(:device_orientation) { ENV['SELENIUM_DEVICE_ORIENTATION'] }
@@ -175,21 +175,23 @@ module TestSession
     begin
       desired_caps = {
           :name => env.test_name,
-          :version => env.version,
-          :platform => env.platform,
+          :version => env.selenium_version,
+          :platform => env.selenium_platform,
           :build => env.build,
           :idleTimeout => env.idle_timeout,
           :screenResolution => env.screen_resolution,
           :extendedDebugging => true
       }
-    rescue
-      # ignore
+      caps = Selenium::WebDriver::Remote::Capabilities.send(env.selenium_browser, desired_caps)
+      client = Selenium::WebDriver::Remote::Http::Default.new
+      client.timeout = env.idle_timeout
+      url = env.sauce_end_point
+      @driver = Watir::Browser.new(:remote, desired_capabilities: caps, http_client: client, url: url)
+    rescue StandardError => e
+      SdcLogger.error e.message
+      SdcLogger.error e.backtrace.join("\n")
+      raise e
     end
-    caps = Selenium::WebDriver::Remote::Capabilities.send(env.browser, desired_caps)
-    client = Selenium::WebDriver::Remote::Http::Default.new
-    client.timeout = env.idle_timeout
-    url = env.sauce_end_point
-    @driver = Watir::Browser.new(:remote, desired_capabilities: caps, http_client: client, url: url)
   end
   module_function :cloud_browser
 
