@@ -9,24 +9,29 @@ iphonex_saucelabs: --tags @saucelabs_poc SAUCE_DEVICE=iphonex_sauce LOG_LEVEL=de
 samsung_galaxy_sauce: --tags @saucelabs_poc SAUCE_DEVICE=samsung_galaxy_sauce LOG_LEVEL=debug  URL=prod USR=abqaprod1 PW=password
 
 
-# C:\Users\lab>rake authentication URL=stg BROWSER=ff USR=stgvoc0kcnt6rw PW=pass111
-#saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1
-#saucelabs: --tags @saucelabs_poc LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1
-#bvt_orders_ship_date
 #robcm=ccpryiihrjz ccfb311osps4x print_dialog_ship_date bvt_international_shipping cchealthchk01 stgvoc0kcnt6rw stgupr2smgtub
-rob: --tags @bvt_shipstation_updates_domestic URL=cc BROWSER=ff LOG_LEVEL=info HEALTHCHECK=true MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory
+#rob: --tags @bvt_shipstation_updates_domestic URL=cc BROWSER=ff LOG_LEVEL=info HEALTHCHECK=true MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory
 #rob: --tags @bvt_shipstation_updates_international URL=sc --guess LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=selenium  USR=scsejsglwa PW=pass111LOG_LEVEL=debug PRINTER=factory  # c2jinmzmu64 schl0vlbfy2673 #19  schl0vlbfy2673
 #rob: --tags @bvt_shipstation_updates_domestic URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgvoc0kcnt6rw PW=pass111 PRINTER=factory  # stgvoc0kcnt6rw stgshipint001
-#rob: --tags @healthcheck URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgom0dqgzppy PW=pass111 PRINTER=factory  #stgee1mtqvwdc0 stgvoc0kcnt6rw  stgom0dqgzppy
-saucelabs: --tags @saucelabs LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug
-saucelabs_local: --tags @bvt_shipstation_updates_domestic URL=stg USR=stg_hka7 PW=password1 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
-saucelabs_local_rob: --tags @bvt_shipstation_updates_domestic URL=stg USR=AutoSAS_ST11 PW=pass111 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
+
+sauce_browser: --tags @bvt_shipstation_updates_domestic URL=stg USR=stgvoc0kcnt6rw PW=pass111 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Mac 10.10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
+#sauce_browser: --tags @bvt_shipstation_updates_domestic URL=sc USR=scsejsglwa PW=pass111 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Mac 10.10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
+#sauce_browser: --tags @bvt_shipstation_updates_domestic URL=cc USR=cctruer0u PW=pass111 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Mac 10.10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
+
+saucelabs_local_rob: --tags @rob URL=stg USR=AutoSAS_ST11 PW=pass111 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
 stampswebclient: --tags @bvt_shipstation_updates_international URL=stg USR=AutoSAS_ST11 PW=pass111 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=stampswebclient SAUCE_ACCESS_KEY=46370b39-eb3d-4cc4-b4b3-09490b041b3b SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
 saucelabs_browser:  --tags @bvt_new_order BROWSER=gc LOG_LEVEL=info  URL=prod USR=default PW=password1 HEADLESS=true
-saucelabs_iphonex: --tags @saucelabs_poc IOS=iphonex LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1
 saucelabs_iphone8: --tags @saucelabs_poc IOS=iphone8 LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1
+saucelabs_samsung_galaxy: --tags @saucelabs_poc ANDROID=samsung_galaxy LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1
 saucelabs_browser_cc:  --tags @saucelabs_poc BROWSER=ff LOG_LEVEL=info  URL=cc USR=ccfb311osps4x PW=pass111
 saucelabs_iphonex_cc: --tags @saucelabs_poc MOBILE='iphone x' LOG_LEVEL=info  URL=cc USR=ccfb311osps4x PW=pass111
+
+saucelabs_iphonex: --tags @saucelabs_poc IOS=iphonex LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1
+rob: --tags @bvt_shipstation_updates_domestic URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgom0dqgzppy PW=pass111 PRINTER=factory WEB_APP=orders #stgee1mtqvwdc0 stgvoc0kcnt6rw  stgom0dqgzppy
+xxxxxxx: --tags @healthcheck URL=stg USR=AutoSAS_ST11 PW=pass111 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
+mobile_local: --tags @orders_healthcheck URL=stg USR=AutoSAS_ST11 PW=pass111 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SELENIUM_DEVICE='iPhone X' SELENIUM_DEVICE_ORIENTATION=portrait
+mobile_sauce: --tags @orders_healthcheck URL=stg USR=AutoSAS_ST11 PW=pass111 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SELENIUM_DEVICE='iPhone X' SELENIUM_DEVICE_ORIENTATION=portrait SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443 SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef
+
 
 #mhossain1_cc: --tags @registration_normal_workflow WEB_APP=orders JENKINS=true URL=cc LOG_LEVEL=info BROWSER=ff MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
 #mhossain1_cc: --tags @pp_header_favicons_browser_mobile JENKINS=true URL=qacc BROWSER_MOBILE_EMULATOR=gc,'iPhone X' USR=wteam@stamps.com PW=password1
@@ -197,7 +202,6 @@ rates_mail_fcm_package:   --tags @rates_mail_fcm_package --guess LOG_LEVEL=info 
 
 bvt_mail_piece_validation: --tags @bvt_mail_piece_validation --guess  HEALTHCHECK=true PRINTER=factory
 
-xxxxxxxxxx: --tags @xxxxxxxxxx --guess  HEALTHCHECK=true WEB_APP=xxxxxxxxxx
 
 # PAM
 pam_db_user_appscap_provisioning:  --tags @pam_db_user_appscap_provisioning --guess  HEALTHCHECK=true WEB_APP=pam --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false
@@ -383,6 +387,8 @@ stores_shipstation_preupgrade: --tags @stores_shipstation_preupgrade --guess  HE
 orders_fci_flats: --tags @orders_fci_flats --guess  HEALTHCHECK=true WEB_APP=orders
 print_label_preview_image: --tags @print_label_preview_image --guess  HEALTHCHECK=true WEB_APP=orders
 split_order: --tags @split_order --guess  HEALTHCHECK=true WEB_APP=orders
+details_non_integer_lb: --tags @details_non_integer_lb --guess  HEALTHCHECK=true WEB_APP=orders
+tooltips_improvements: --tags @tooltips_improvements --guess  HEALTHCHECK=true WEB_APP=orders
 
 # REGRESSION NOT INCLUDED
 grid_column_order: --tags @grid_column_order --guess  HEALTHCHECK=true WEB_APP=orders

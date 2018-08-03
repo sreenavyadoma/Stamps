@@ -4,6 +4,7 @@ Feature:  BVT tests for Orders
     Given Start test driver
 
   @healthcheck
+  @orders_healthcheck
   Scenario: Orders Healthcheck
     Then Verify Health Check for Orders
 
@@ -18,7 +19,6 @@ Feature:  BVT tests for Orders
   @healthcheck
   Scenario: Postage Tools Healthcheck
     Then Verify Health Check for Postage Tools
-
 
   @authentication
   Scenario: Orders Authentication Test

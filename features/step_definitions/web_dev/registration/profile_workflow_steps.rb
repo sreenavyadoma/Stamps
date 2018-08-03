@@ -20,7 +20,7 @@ Then /^[Ss]et [Pp]rofile [Pp]age [Ee]mail to (?:random value|(.*))$/ do |str|
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Uu]sername to (?:random value|(.*))$/ do |str|
-  registration.profile.account_username.textbox.set((TestData.hash[:username] = (str.nil?) ? (TestHelper.rand_usr(SdcEnv.env) ) : str))
+  registration.profile.account_username.textbox.set((TestData.hash[:username] = (str.nil?) ? (TestHelper.rand_usr(TestSession.env.url) ) : str))
   step "blur out on profile page"
 end
 
