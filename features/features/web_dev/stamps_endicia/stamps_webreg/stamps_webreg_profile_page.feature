@@ -6,7 +6,7 @@ Feature: Stamps WebReg: Profile Page
   @sdcwr_profile_page_ui_validation
   Scenario: Profile Page Validation
 
-    Then WL: navigates to default registration page for stamps with the following offer id 399
+    Then WL: navigates to default registration page for stamps with the following offer id 404
 
     #Verifying all content present
     Then pause for 5 seconds
@@ -36,10 +36,6 @@ Feature: Stamps WebReg: Profile Page
     Then WL: expect profile page username tooltip index 1 to be This field is required
     Then WL: expect profile page password tooltip index 1 to be This field is required
     Then WL: expect profile page re-type password tooltip index 1 to be This field is required
-    Then WL: expect first security question tooltip index 1 to be This field is required
-    Then WL: expect first security answer tooltip index 1 to be This field is required
-    Then WL: expect second security question tooltip index 1 to be This field is required
-    Then WL: expect second security answer tooltip index 1 to be This field is required
 
     #Verifying all fields present and set Negative values for tooltip Validation
     Then WL: expect profile page email exists

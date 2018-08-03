@@ -18,7 +18,7 @@ Then /^WL: close stamps website db connection$/ do
 end
 
 Then /^WL: navigates to default registration page for stamps with the following offer id (?:random value|(.*))$/ do |str|
-  SdcPage.browser.cookies.clear
+  #SdcPage.browser.cookies.clear
 
   step 'WL: establish stamps website db connection'
   common_page = WhiteLabel.common_page

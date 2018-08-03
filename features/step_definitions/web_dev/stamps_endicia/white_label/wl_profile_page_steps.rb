@@ -192,13 +192,22 @@ Then /^WL: expect profile page promo code link exists$/ do
 end
 
 Then /^WL: expect profile page promo code exists$/ do
-  expect(WhiteLabel.profile_page.promo_code).to be_present
+  profile_page = WhiteLabel.profile_page
+  if profile_page.promo_code.present?
+    expect(profile_page.promo_code).to be_present
+  else
+    expect(profile_page.promo_code_hidden).to be_present
+  end
 end
 
 Then /^WL: expect profile page promo code to equal source id promo code$/ do
   step 'WL: show profile page promo code'
   profile_page = WhiteLabel.profile_page
-  expect(profile_page.promo_code.text_value.strip).to eql(TestData.hash[:promo_code])
+  if profile_page.promo_code.present?
+     expect(profile_page.promo_code.text_value.strip).to eql(TestData.hash[:promo_code])
+  else
+    expect(profile_page.promo_code_hidden.text_value.strip).to eql(TestData.hash[:promo_code])
+  end
 end
 
 Then /^WL: set profile page promo code to (?:an empty string|(.*))$/ do |str|
@@ -207,13 +216,13 @@ Then /^WL: set profile page promo code to (?:an empty string|(.*))$/ do |str|
   step'pause for 1 second'
 
   5.times do
-    if profile_page.promo_code_tooltip.present?
-      profile_page.promo_code.clear
-      profile_page.promo_code.set(str)
-      break unless profile_page.promo_code.text_value.strip == ''
+    if profile_page.promo_code.present?
+       profile_page.promo_code.clear
+       profile_page.promo_code.set(str)
+       break unless profile_page.promo_code.text_value.strip == ''
     else
-      profile_page.promo_code_hidden.clear
-      profile_page.promo_code_hidden.set(str)
+       profile_page.promo_code_hidden.clear
+       profile_page.promo_code_hidden.set(str)
       break unless profile_page.promo_code_hidden.text_value.strip == ''
     end
   end
@@ -222,7 +231,7 @@ end
 Then /^WL: show profile page promo code$/ do
   profile_page = WhiteLabel.profile_page
   profile_page.promo_code_link.click if profile_page.promo_code_link.present?
-  if profile_page.promo_code_tooltip.present?
+  if profile_page.promo_code.present?
    expect(profile_page.promo_code).to be_present
   else
     expect(profile_page.promo_code_hidden).to be_present
