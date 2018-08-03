@@ -3,7 +3,7 @@ Then /^visit Orders landing page$/ do
   step 'initialize test parameters'
   step 'fetch user credentials from MySQL'
 
-  env = case SdcEnv.env
+  env = case TestSession.env.url
         when :qacc
           'ext.qacc'
         when :qasc
@@ -17,7 +17,7 @@ Then /^visit Orders landing page$/ do
         end
 
   SdcOrdersLandingPage.visit(env)
-  expect(SdcOrdersLandingPage.browser.url).to include('stamps')
+  expect(SdcOrdersLandingPage.browser.url).to include('stamps.com')
 end
 
 Then /^initialize test parameters$/ do
@@ -42,13 +42,13 @@ end
 
 Then /^fetch user credentials from MySQL$/ do
   unless TestData.hash[:username]
-    if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default'
+    if TestSession.env.usr.nil? || TestSession.env.usr.downcase == 'default'
       credentials = SdcUserCredentials.fetch(SdcEnv.scenario.tags[0].name)
       usr = credentials[:username]
       pw = credentials[:password]
     else
-      usr = SdcEnv.usr
-      pw = SdcEnv.pw
+      usr = TestSession.env.usr
+      pw = TestSession.env.pw
     end
     expect(usr).to be_truthy
     expect(pw).to be_truthy
@@ -72,7 +72,7 @@ Then /^sign-in to orders$/ do
     step 'click sign-in button on browser'
     step 'close whats new modal in orders'
   end
-  SdcEnv.sdc_app = :orders
+  SdcGlobal.web_app = :orders
 end
 
 Then /^click sign-in button on browser$/ do
@@ -152,7 +152,7 @@ Then /^Verify Health Check for (.+)$/ do |str|
 
   env = case str.downcase
         when /orders/
-          case SdcEnv.env
+          case TestSession.env.url
           when :qacc
             'printext.qacc'
           when :qasc
@@ -166,7 +166,7 @@ Then /^Verify Health Check for (.+)$/ do |str|
           end
 
         when /address/
-          case SdcEnv.env
+          case TestSession.env.url
           when :qacc
             'printext.qacc'
           when :qasc
@@ -180,7 +180,7 @@ Then /^Verify Health Check for (.+)$/ do |str|
           end
 
         when /or reports/
-          case SdcEnv.env
+          case TestSession.env.url
           when :qacc
             'orext.qacc'
           when :qasc
@@ -194,7 +194,7 @@ Then /^Verify Health Check for (.+)$/ do |str|
           end
 
         when /postage/
-          case SdcEnv.env
+          case TestSession.env.url
           when :qacc
             'orext.qacc'
           when :qasc
@@ -224,6 +224,6 @@ Then /^Verify Health Check for (.+)$/ do |str|
         end
 
   SdcHealthCheck.visit([env, app])
-  expect(SdcHealthCheck.browser.text).to include("All tests passed") if SdcEnv.health_check
+  expect(SdcHealthCheck.browser.text).to include("All tests passed") if TestSession.env.health_check
 end
 

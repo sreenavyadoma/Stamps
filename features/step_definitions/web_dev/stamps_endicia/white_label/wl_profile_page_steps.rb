@@ -3,9 +3,9 @@ Then /^WL: set profile page email to (?:random value|(.*))$/ do |str|
   email = WhiteLabel.profile_page.email
   email.wait_until_present(timeout: 30)
   TestData.hash[:atg_promotion] =  WhiteLabel.choose_supplies.atg_promotion
-  if SdcEnv.usr
+  if TestSession.env.usr
     sleep 1
-    email.set(TestData.hash[:email]=(str.nil?)?(SdcEnv.usr) : str)
+    email.set(TestData.hash[:email]=(str.nil?)?(TestSession.env.usr) : str)
   else
     sleep 1
     email.set(TestData.hash[:email]=(str.nil?)?(TestHelper.rand_email) : str)
@@ -21,8 +21,8 @@ Then /^WL: set profile page username to (?:random value|(.*))$/ do |str|
 end
 
 Then /^WL: set profile page password to (?:random value|(.*))$/ do |str|
-  if SdcEnv.pw
-    WhiteLabel.profile_page.password.set (TestData.hash[:account_password]=(str.nil?) ? SdcEnv.pw : str)
+  if TestSession.env.pw
+    WhiteLabel.profile_page.password.set (TestData.hash[:account_password]=(str.nil?) ? TestSession.env.pw : str)
   else
     WhiteLabel.profile_page.password.set (TestData.hash[:account_password]=(str.nil?) ? '1' + TestHelper.rand_alpha_numeric(min:6, max:10) : str)
   end

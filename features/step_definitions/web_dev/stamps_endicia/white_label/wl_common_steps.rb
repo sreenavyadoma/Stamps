@@ -113,7 +113,7 @@ Then /^WL: expect user is navigated to print page$/ do
 
   WhiteLabel.common_page.print_stamps_logo.wait_until_present(timeout: 120) rescue false
 
-  case  SdcEnv.env
+  case  TestSession.env.url
     when :qacc
       expect(SdcPage.browser.url).to include('https://print.qacc.stamps.com')
     when :stg

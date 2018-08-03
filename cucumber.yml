@@ -1,5 +1,5 @@
 
-default: --backtrace --profile mobile_local
+default: --backtrace --profile rob
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -28,7 +28,7 @@ saucelabs_browser_cc:  --tags @saucelabs_poc BROWSER=ff LOG_LEVEL=info  URL=cc U
 saucelabs_iphonex_cc: --tags @saucelabs_poc MOBILE='iphone x' LOG_LEVEL=info  URL=cc USR=ccfb311osps4x PW=pass111
 
 saucelabs_iphonex: --tags @saucelabs_poc IOS=iphonex LOG_LEVEL=info  URL=prod USR=abqaprod1 PW=password1
-rob: --tags @bvt_bulk_update URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgom0dqgzppy PW=pass111 PRINTER=factory  #stgee1mtqvwdc0 stgvoc0kcnt6rw  stgom0dqgzppy
+rob: --tags @bvt_shipstation_updates_international URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgom0dqgzppy PW=pass111 PRINTER=factory WEB_APP=orders #stgee1mtqvwdc0 stgvoc0kcnt6rw  stgom0dqgzppy
 xxxxxxx: --tags @healthcheck URL=stg USR=AutoSAS_ST11 PW=pass111 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
 mobile_local: --tags @orders_healthcheck URL=stg USR=AutoSAS_ST11 PW=pass111 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SELENIUM_DEVICE='iPhone X' SELENIUM_DEVICE_ORIENTATION=portrait
 mobile_sauce: --tags @orders_healthcheck URL=stg USR=AutoSAS_ST11 PW=pass111 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SELENIUM_DEVICE='iPhone X' SELENIUM_DEVICE_ORIENTATION=portrait SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443 SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef
