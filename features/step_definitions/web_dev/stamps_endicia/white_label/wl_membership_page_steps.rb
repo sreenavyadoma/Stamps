@@ -22,6 +22,17 @@ Then /^WL: click membership page back button$/ do
   step 'pause for 1 second'
 end
 
+Then /^WL: expect membership page header to be present$/ do
+  header = WhiteLabel.membership_page.header
+  header.wait_until_present(timeout: 10)
+  expect(header).to be_present
+end
+
+Then /^WL: expect membership page header to be (.*)$/ do |str|
+  header = WhiteLabel.membership_page.header
+  header.wait_until_present(timeout: 10)
+  expect(header.text_value.strip).to eql(str)
+end
 
 Then /^WL: set membership page first name to (?:random value|(.*))$/ do |str|
   first_name = WhiteLabel.membership_page.first_name

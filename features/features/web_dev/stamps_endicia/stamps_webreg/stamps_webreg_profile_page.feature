@@ -113,9 +113,13 @@ Feature: Stamps WebReg: Profile Page
     Then WL: expect profile page how did you hear about us option is correct
 
     #Validate Promo code
-    Then WL: set profile page promo code to 522MB
-
+    Then WL: set profile page promo code to default
     Then WL: click profile page continue button
+    Then WL: expect membership page header to be present
+    Then WL: click membership page back button
+    Then WL: set profile page promo code to 522MB
+    Then WL: click profile page continue button
+    Then WL: set profile page promo code to
 
     #Validate navigate to Membership page
     Then WL: expect membership page bread crumbs is Membership

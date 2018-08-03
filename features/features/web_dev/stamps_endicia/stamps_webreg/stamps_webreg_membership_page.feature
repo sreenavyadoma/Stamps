@@ -23,6 +23,7 @@ Feature: Stamps WebReg: Membership Page
     Then WL: expect membership page billing address same as mailing address is checked
     Then WL: uncheck membership page billing address same as mailing address
     Then WL: click membership page submit button
+    Then WL: expect membership page header to be Set up your personal Post Office
 
     Then WL: expect membership page first name tooltip to be This field is required
     Then WL: expect membership page last name tooltip to be This field is required
