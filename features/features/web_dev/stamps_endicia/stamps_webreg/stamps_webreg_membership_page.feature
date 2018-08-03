@@ -9,7 +9,6 @@ Feature: Stamps WebReg: Membership Page
     # Profile Page
     Then WL: navigates to default registration page for stamps with the following offer id 404
     Then WL: set profile page default values
-    Then WL: set profile page promo code to PR33-NH77
 
     Then WL: click profile page continue button
 
