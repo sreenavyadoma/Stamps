@@ -113,6 +113,10 @@ require 'cucumber/rake/task'
     t.cucumber_opts = "-p cuke_reports"
   end
 
+  Cucumber::Rake::Task.new(:sdcwr_choose_supplies_page_not_present_workflow) do |t|
+    t.profile = 'sdcwr_choose_supplies_page_not_present_workflow'
+    t.cucumber_opts = "-p cuke_reports"
+  end
 # END STAMPS WEB REG
 
 # END WEB DEV
