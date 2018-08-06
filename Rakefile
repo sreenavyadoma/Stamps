@@ -117,6 +117,11 @@ require 'cucumber/rake/task'
     t.profile = 'sdcwr_choose_supplies_page_not_present_workflow'
     t.cucumber_opts = "-p cuke_reports"
   end
+
+  Cucumber::Rake::Task.new(:ewwr_profile_page_ui_validation) do |t|
+    t.profile = 'ewwr_profile_page_ui_validation'
+    t.cucumber_opts = "-p cuke_reports"
+  end
 # END STAMPS WEB REG
 
 # END WEB DEV
