@@ -74,6 +74,7 @@ module TestSession
     # cloud settings
     key(:sauce_username) { ENV['SAUCE_USERNAME'] }
     key(:sauce_access_key) { ENV['SAUCE_ACCESS_KEY'] }
+    key(:tunnel_identifier) { ENV['TUNNEL_IDENTIFIER'] }
     key(:selenium_host) { ENV['SELENIUM_HOST'] }
     key(:selenium_port) { ENV['SELENIUM_PORT'] }
     key(:selenium_platform) { ENV['SELENIUM_PLATFORM'] }
@@ -150,7 +151,8 @@ module TestSession
               platformVersion: '11.2', #env.version,
               platformName: 'iOS',
               browserName: 'Safari',
-              automationName: 'XCUITest'
+              automationName: 'XCUITest',
+              :tunnelIdentifier => env.tunnel_identifier
           },
           appium_lib: {
               sauce_username: env.sauce_username,
@@ -174,7 +176,8 @@ module TestSession
           :build => env.build,
           :idleTimeout => env.idle_timeout,
           :screenResolution => env.screen_resolution,
-          :extendedDebugging => true
+          :extendedDebugging => true,
+          :tunnelIdentifier => env.tunnel_identifier
       }
       caps = Selenium::WebDriver::Remote::Capabilities.send(env.selenium_browser, desired_caps)
       client = Selenium::WebDriver::Remote::Http::Default.new

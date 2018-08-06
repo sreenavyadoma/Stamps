@@ -1,2 +1,3 @@
-bin\sc -u robcruz -k 0e60dbc9-5bbf-425a-988b-f81c42d6b7ef --no-remove-colliding-tunnels
-./bin/sc -u robcruz -k 0e60dbc9-5bbf-425a-988b-f81c42d6b7ef --no-remove-colliding-tunnels
+bin\sc -u robcruz -k 0e60dbc9-5bbf-425a-988b-f81c42d6b7ef --no-remove-colliding-tunnels --tunnel-identifier robs_mac
+./bin/sc -u robcruz -k 0e60dbc9-5bbf-425a-988b-f81c42d6b7ef --no-remove-colliding-tunnels --tunnel-identifier robs_mac
+
