@@ -7,6 +7,10 @@ Then /^WL: check choose supplies page is present then verify the page and click 
   end
 end
 
+Then /^WL: expect offer does not include an atg promotion$/ do
+    expect(TestData.hash[:atg_promotion]).to eql('')
+end
+
 Then /^WL: expect choose supplies page is present$/ do
   cs_header =  WhiteLabel.choose_supplies.cs_header
   cs_header.wait_until_present(timeout: 50)
