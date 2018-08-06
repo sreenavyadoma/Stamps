@@ -1,7 +1,7 @@
 module WhiteLabel
   class ProfilePage < SdcPage
     page_object(:profile_bread_crumb) { {xpath: '//li[@id="breadcrumb_Profile"]/span'} }
-    page_object(:header) { {xpath: '//h1[(contains(text(), "Sign up and avoid trips to the Post Office"))]'} }
+    page_object(:header) { {xpath: '//div[@id="page"]/div/div/h1'} }
     page_object(:side_acct_header) { {xpath: '//h3[(contains(text(), "Why do I need to create an account?"))]'} }
     page_object(:side_acct_text) {{xpath: '//li[@id="sideaccount"]/p'}}
     page_object(:side_opt_in_header) { {xpath: '//h3[(contains(text(), "Money-saving offers and new products"))]'} }

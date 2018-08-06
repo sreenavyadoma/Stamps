@@ -8,7 +8,7 @@ module WhiteLabel
 
     #endicia website
     page_object(:ew_logo) {{id: 'logo'}}
-    page_object(:ew_get_started) {{id: 'marketingbutton_0_divAction'}}
+    page_object(:ew_get_started) {{class: ['btn pull-right color-ffffff btn-orange']}}
 
     #modal
     button(:modal_continue) {{id: 'btnAddrValOkay'}}
@@ -157,13 +157,13 @@ module WhiteLabel
 
   class EWWebsite < SdcPage
 
-    def self.visit(str)
-      page_url { |env| "https://#{env}endicia.com/" }
+    def self.visit
+      page_url { |env| "https://#{env}.endicia.com/registration/"}
       super(case SdcEnv.env
               when :qacc
-                'registration.qacc.'
+                'registrationext.qacc'
               when :stg
-                'registration.staging.'
+                'registration.staging'
               when :prod
                 ''
               else

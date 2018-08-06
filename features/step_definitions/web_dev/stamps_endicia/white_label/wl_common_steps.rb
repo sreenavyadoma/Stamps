@@ -1,4 +1,8 @@
-Then /^WL: expect registration navigation bar stamps logo exists$/ do
+#................Endicia Website.................#
+
+
+#............Stamps Website......................#
+Then /^WL: expect registration navigation bar stamps or endicia logo exists$/ do
   stamps_logo = WhiteLabel.common_page.stamps_logo
   stamps_logo.wait_until_present(timeout: 60)
   expect(stamps_logo).to be_present
@@ -67,11 +71,11 @@ Then /^WL: navigates to default registration page for endicia with the following
   end
   step 'WL: close stamps website db connection'
 
-  EWWebsite.visit(source_id)
-  common_page.ew_logo.wait_until_present(timeout: 10)
-  expect(SdcPage.browser.url).to include(target_url.to_s)
+  EWWebsite.visit
+  #common_page.ew_logo.wait_until_present(timeout: 10)
+  #expect(SdcPage.browser.url).to include(target_url.to_s)
 
-  common_page.ew_get_started.click!
+  #common_page.ew_get_started.click
   SdcLogger.info "Sourceid = #{source_id}"
 
   TestData.hash[:source_id] = source_id

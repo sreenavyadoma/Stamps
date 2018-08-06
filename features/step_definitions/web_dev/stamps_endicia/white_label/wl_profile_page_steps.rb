@@ -27,6 +27,7 @@ Then /^WL: set profile page email to (?:random value|(.*))$/ do |str|
     break unless email.text_value.strip == ''
   end
   expect(email.text_value.strip).not_to eql('')
+  step 'WL: blur_out on profile page'
 
   TestData.hash[:atg_promotion] =  WhiteLabel.choose_supplies.atg_promotion
   TestData.hash[:email] = str
@@ -71,6 +72,7 @@ Then /^WL: set profile page username to (?:random value|(.*))$/ do |str|
     end
   end
   expect(username.text_value.strip).not_to eql('')
+  step "WL: blur_out on profile page"
   TestData.hash[:username_taken] = WhiteLabel.common_page.username_query(TestData.hash[:username_taken])
   SdcLogger.info "UserName = #{str}"
   TestData.hash[:username] = str
@@ -120,7 +122,7 @@ Then /^WL: set profile page password to (?:random value|(.*))$/ do |str|
     break unless password.text_value.strip == ''
   end
   expect(password.text_value.strip).not_to eql('')
-
+  step 'WL: blur_out on profile page'
   SdcLogger.info  "Password = #{str}"
   TestData.hash[:account_password] = str
 end
@@ -158,6 +160,7 @@ Then /^WL: set profile page re-type password to (?:same as previous password|(.*
     confirm_password.set(str)
     break unless confirm_password.text_value == ''
   end
+  step 'WL: blur_out on profile page'
   TestData.hash[:retype_password] = str
 end
 
@@ -234,6 +237,7 @@ Then /^WL: set profile page promo code to (.*)$/ do |str|
       break unless profile_page.promo_code_hidden.text_value.strip == ''
     end
   end
+  step 'WL: blur_out on profile page'
 end
 
 Then /^WL: show profile page promo code$/ do
@@ -255,6 +259,7 @@ Then /^WL: set profile page survey question to (.*)$/ do |str|
   profile_page.survey_element.safe_wait_until_present(timeout: 2)
   profile_page.survey_element.click!
   expect(profile_page.survey.attribute_value('title').strip).to eql str
+  step 'WL: blur_out on profile page'
   TestData.hash[:survey] = str
 end
 
@@ -273,6 +278,7 @@ Then /^WL: set profile page how did you hear about us\? to (.*)$/ do |str|
     profile_page.referrer_name_element.safe_wait_until_present(timeout: 2)
     profile_page.referrer_name_element.click!
     TestData.hash[:referrer_name] = profile_page.referrer_name.attribute_value('title').strip
+    step 'WL: blur_out on profile page'
     expect(TestData.hash[:referrer_name]).to eql str
   else
     #ignore
@@ -309,8 +315,8 @@ end
 
 Then /^WL: expect profile page header contain (.*)$/ do |str|
   header = WhiteLabel.profile_page.header
-  header.wait_until_present(timeout: 10)
-  expect(header.text).to eql(str)
+  header.wait_until_present(timeout: 60)
+  expect(header.text_value).to eql(str)
 end
 
 Then /^WL: expect profile page paragraph contain$/ do |str|
