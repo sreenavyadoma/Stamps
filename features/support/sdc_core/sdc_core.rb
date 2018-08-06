@@ -518,7 +518,8 @@ class SdcDriverDecorator < BasicObject
 
 end
 
-module HtmlElementMethods
+module SdcElementHelper
+  include ::Watir::Waitable
   def present?
     send(:displayed?) if respond_to?(:displayed?)
     send(:present?)
@@ -734,8 +735,7 @@ module HtmlElementMethods
 end
 
 class SdcElement < BasicObject
-  include ::HtmlElementMethods
-  include ::Watir::Waitable
+  include ::SdcElementHelper
 
   def initialize(element)
     @element = element
@@ -752,7 +752,7 @@ class SdcElement < BasicObject
 end
 
 class SdcChooser < BasicObject
-  include ::HtmlElementMethods
+  include ::SdcElementHelper
 
   def initialize(element, verify, property, value)
     @element = element
@@ -822,7 +822,7 @@ class SdcChooser < BasicObject
 end
 
 class SdcNumber < BasicObject
-  include ::HtmlElementMethods
+  include ::SdcElementHelper
 
   attr_reader :increment, :decrement
 
