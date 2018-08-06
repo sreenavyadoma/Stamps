@@ -86,11 +86,20 @@ module TestSession
     key(:selenium_starting_url) { ENV['SELENIUM_STARTING_URL'] }
     key(:sauce_on_demand_browsers) { ENV['SAUCE_ONDEMAND_BROWSERS'] }
     key(:screen_resolution) { ENV['SCREEN_RESOLUTION'] || '1280x1024' }
-    key(:idle_timeout) { ENV['IDLE_TIMEOUT'] || 150 }
+    key(:idle_timeout) { ENV['IDLE_TIMEOUT'] || 300 }
     key(:sauce_end_point) { "https://#{sauce_username}:#{sauce_access_key}@#{selenium_host}:#{selenium_port}/wd/hub" }
     # cloud mobile
     key(:selenium_device) { ENV['SELENIUM_DEVICE'] }
-    key(:device_orientation) { ENV['SELENIUM_DEVICE_ORIENTATION'] }
+    key(:device_orientation) { ENV['SELENIUM_DEVICE_ORIENTATION'] || 'portrait'}
+    key(:automation_name) { ENV['AUTOMATION_NAME'] || 'XCUITest' }
+    key(:appium_version) { ENV['APPIUM_VERSION'] || '1.8.1' }
+    # key(:XXXXXXX) { ENV['XXXXXXX'] }
+    # key(:XXXXXXX) { ENV['XXXXXXX'] }
+    # key(:XXXXXXX) { ENV['XXXXXXX'] }
+    # key(:XXXXXXX) { ENV['XXXXXXX'] }
+    # key(:XXXXXXX) { ENV['XXXXXXX'] }
+    # key(:XXXXXXX) { ENV['XXXXXXX'] }
+    # key(:XXXXXXX) { ENV['XXXXXXX'] }
     # local browser
     key(:local_browser) { (ENV['BROWSER'] || ENV['LOCAL_BROWSER']).to_sym }
     # test settings
@@ -140,18 +149,26 @@ module TestSession
   end
   module_function :env
 
-  def cloud_device
+  # name: env.test_name,
+  #     appiumVersion: '1.8.1',
+  #     deviceName: env.device,
+  #     deviceOrientation: env.device_orientation,
+  #     platformVersion: '11.2', #env.version,
+  #     platformName: 'iOS',
+  #     browserName: 'Safari',
+  #     automationName: 'XCUITest'
+  def selenium_device
     begin
       desired_caps = {
           caps: {
-              name: env.test_name,
-              appiumVersion: '1.8.1',
-              deviceName: env.device,
-              deviceOrientation: env.device_orientation,
-              platformVersion: '11.2', #env.version,
-              platformName: 'iOS',
-              browserName: 'Safari',
-              automationName: 'XCUITest',
+              :name => env.test_name,
+              :appiumVersion => env.appium_version,
+              :deviceName => env.selenium_device,
+              :deviceOrientation => env.device_orientation,
+              :platformVersion => env.selenium_version,
+              :platformName => env.selenium_platform,
+              :browserName => env.selenium_browser,
+              :automationName => env.automation_name,
               :tunnelIdentifier => env.tunnel_identifier
           },
           appium_lib: {
@@ -160,14 +177,16 @@ module TestSession
               wait: env.idle_timeout
           }
       }
-    rescue
-      # ignore
-    end
-    @driver = Appium::Driver.new(desired_caps, false).start_driver
-  end
-  module_function :cloud_device
 
-  def cloud_browser
+      @driver = Appium::Driver.new(desired_caps, false).start_driver
+    rescue StandardError => e
+      SdcLogger.error e.message
+      SdcLogger.error e.backtrace.join("\n")
+    end
+  end
+  module_function :selenium_device
+
+  def selenium_browser
     begin
       desired_caps = {
           :name => env.test_name,
@@ -190,7 +209,7 @@ module TestSession
       raise e
     end
   end
-  module_function :cloud_browser
+  module_function :selenium_browser
 
   def local_browser
     begin
@@ -365,7 +384,8 @@ class SdcPage < WatirDrops::PageObject
     def visit(*args)
       new.tap do |page|
         if TestSession.env.selenium_device
-          page.get(*args)
+          url = page.page_url(args[0])
+          page.get(url)
         else
           page.goto(*args)
         end

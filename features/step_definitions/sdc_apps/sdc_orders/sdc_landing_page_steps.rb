@@ -17,7 +17,11 @@ Then /^visit Orders landing page$/ do
         end
 
   SdcOrdersLandingPage.visit(env)
-  expect(SdcOrdersLandingPage.browser.url).to include('stamps.com')
+  if TestSession.env.selenium_device
+    expect(SdcOrdersLandingPage.browser.current_url).to include('stamps.com')
+  else
+    expect(SdcOrdersLandingPage.browser.url).to include('stamps.com')
+  end
 end
 
 Then /^initialize test parameters$/ do
