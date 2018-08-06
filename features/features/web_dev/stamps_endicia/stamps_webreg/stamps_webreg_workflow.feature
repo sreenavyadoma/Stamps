@@ -156,4 +156,5 @@ Feature: Stamps WebReg: Normal Workflow
 
     Then WL: set membership page default values
     Then WL: click membership page submit button
+    Then WL: expect atg
     Then WL: expect user is navigated to print page
