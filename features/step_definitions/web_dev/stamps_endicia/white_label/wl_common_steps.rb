@@ -46,6 +46,7 @@ Then /^WL: navigates to default registration page for stamps with the following 
 
   common_page.get_started.click!
   SdcLogger.info "Sourceid = #{source_id}"
+  SdcLogger.info "Offerid = #{offer_id}"
 
   TestData.hash[:source_id] = source_id
   TestData.hash[:content] = content
@@ -54,6 +55,33 @@ Then /^WL: navigates to default registration page for stamps with the following 
   TestData.hash[:target_url] = target_url
   TestData.hash[:security_questions_before_registration] = security_questions_before_reg
 end
+
+Then /^WL: navigates to default registration page for endicia with the following offer id (?:random value|(.*))$/ do |str|
+
+  step 'WL: establish stamps website db connection'
+  common_page = WhiteLabel.common_page
+  if str.nil?
+    source_id, content, promo_code, offer_id, target_url = common_page.sdc_website_source_id_query(nil)
+  else
+    source_id, content, promo_code, offer_id, target_url  = common_page.sdc_website_source_id_query(str)
+  end
+  step 'WL: close stamps website db connection'
+
+  EWWebsite.visit(source_id)
+  common_page.ew_logo.wait_until_present(timeout: 10)
+  expect(SdcPage.browser.url).to include(target_url.to_s)
+
+  common_page.ew_get_started.click!
+  SdcLogger.info "Sourceid = #{source_id}"
+
+  TestData.hash[:source_id] = source_id
+  TestData.hash[:content] = content
+  TestData.hash[:promo_code] = promo_code
+  TestData.hash[:offer_id] = offer_id
+  TestData.hash[:target_url] = target_url
+
+end
+
 
 Then /^WL: expect offer id and source id are the same between sdc_website and stamp_mart db$/ do
   offer_id, source_id = WhiteLabel.common_page.stamps_mart_source_id_query(TestData.hash[:source_id])

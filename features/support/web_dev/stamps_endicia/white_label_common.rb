@@ -6,6 +6,10 @@ module WhiteLabel
     button(:get_started) { { class: ['btn btn-success btn-xs register'] } }
     page_object(:usps_logo) {{xpath: '//div[@id="nav-usps-vendor"]'}}
 
+    #endicia website
+    page_object(:ew_logo) {{id: 'logo'}}
+    page_object(:ew_get_started) {{id: 'marketingbutton_0_divAction'}}
+
     #modal
     button(:modal_continue) {{id: 'btnAddrValOkay'}}
     button(:modal_cancel) {{xpath: '//div[@class="modal-footer"]/button[1]'}}
@@ -153,7 +157,7 @@ module WhiteLabel
 
   class EWWebsite < SdcPage
 
-    def self.visit
+    def self.visit(str)
       page_url { |env| "https://#{env}endicia.com/" }
       super(case SdcEnv.env
               when :qacc
