@@ -18,7 +18,8 @@ module WhiteLabel
     text_field(:confirm_password, tag: :text_field, required: true) { { id: 'confirmPassword' } }
     page_objects(:confirm_password_tooltip,  index: 2) { {xpath: '//*[@id="accountinfo"]/div/div/div/span'} }
     link(:promo_code_link) { { id: 'showPromoCode' } }
-    text_field(:promo_code, tag: :text_field, required: true) { { id: 'promoCodeHidden' } }
+    text_field(:promo_code, tag: :text_field, required: true) { { id: 'promoCode' } }
+    text_field(:promo_code_hidden, tag: :text_field, required: true) { { id: 'promoCodeHidden' } }
     page_objects(:promo_code_tooltip,  index: 0) { {xpath: '//*[@id="promocode"]/div/div/div/div/span'} }
     page_object(:survey) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="usageType"]'}}
     page_object(:referrer_name) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="referrerName"]'}}
