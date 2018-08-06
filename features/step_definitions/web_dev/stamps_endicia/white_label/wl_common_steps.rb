@@ -7,7 +7,9 @@ Then /^WL: expect registration navigation bar stamps logo exists$/ do
 end
 
 Then /^WL: expect registration navigation bar usps logo exists$/ do
-  expect(WhiteLabel.common_page.usps_logo).to be_present
+  usps_logo = WhiteLabel.common_page.usps_logo
+  usps_logo.wait_until_present(timeout: 2)
+  expect(usps_logo).to be_present
 end
 
 Then /^WL: expect registration navigation bar header text exists$/ do
@@ -22,7 +24,10 @@ Then /^WL: expect registration container privacy policy link exists$/ do
 end
 
 Then /^WL: click registration container privacy policy link$/ do
-  WhiteLabel.common_page.privacy_policy.click
+  pp = WhiteLabel.common_page.privacy_policy
+  pp.wait_until_present(timeout: 5)
+  pp.scroll_into_view
+  pp.click
 end
 
 Then /^WL: expect privacy policy modal header is (.*)$/ do |str|
@@ -50,6 +55,7 @@ end
 Then /^WL: click registration container copyright link$/ do
   copyright = WhiteLabel.common_page.copyright
   copyright.wait_until_present(timeout: 5)
+  copyright.scroll_into_view
   copyright.click
 end
 
@@ -501,6 +507,7 @@ end
 
 Then /^WL: click modal x button$/ do
   modal_x = WhiteLabel.common_page.modal_x
+  modal_x.scroll_into_view
   modal_x.wait_until_present(timeout: 2)
   modal_x.click if modal_x.present?
   step 'pause for 1 second'
