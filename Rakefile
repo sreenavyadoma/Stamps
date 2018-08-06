@@ -122,6 +122,7 @@ require 'cucumber/rake/task'
     t.profile = 'ewwr_profile_page_ui_validation'
     t.cucumber_opts = "-p cuke_reports"
   end
+
 # END STAMPS WEB REG
 
 # END WEB DEV

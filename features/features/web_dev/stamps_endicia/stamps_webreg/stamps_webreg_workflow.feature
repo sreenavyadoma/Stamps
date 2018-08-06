@@ -48,7 +48,7 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: expect user is navigated to print page
 
   @sdcwr_offer_573_workflow
-  Scenario: Stamps WebReg: Offer 573 Workflow
+  Scenario: Stamps WebReg: Offer 573 HP Landing Page Workflow
     #Profile Page
     Then WL: navigates to default registration page for stamps with the following offer id 573
     Then WL: set profile page default values
@@ -84,7 +84,7 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: expect offer 573 landing page shipping labels img is present
 
   @sdcwr_offer_592_workflow
-  Scenario: Stamps WebReg: Offer 592 Workflow
+  Scenario: Stamps WebReg: Offer 592 Avery Landing Page Workflow
   #Profile Page
     Then WL: navigates to default registration page for stamps with the following offer id 592
     Then WL: set profile page default values
@@ -113,7 +113,7 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: expect offer 592 landing page avery img is present
 
   @sdcwr_offer_399_workflow
-  Scenario: Stamps WebReg: Default Offer Workflow
+  Scenario: Stamps WebReg: Default Offer Print Landing Page Workflow
     Then WL: navigates to default registration page for stamps with the following offer id 399
     Then WL: set profile page default values
     Then WL: set profile page promo code to PR33-NH77
