@@ -4,6 +4,7 @@ module WhiteLabel
     #stamps website
     page_object(:stamps_logo) {{id: 'sdc-logo'}}
     button(:get_started) { { class: ['btn btn-success btn-xs register'] } }
+    page_object(:usps_logo) {{xpath: '//div[@id="nav-usps-vendor"]'}}
 
     #modal
     button(:modal_continue) {{id: 'btnAddrValOkay'}}
@@ -13,8 +14,42 @@ module WhiteLabel
     #Print
     page_object(:print_stamps_logo) {{class: ['sdcLogo']}}
 
+    #Header
+    page_object(:stamps_logo) {{id: 'sdc-logo'}}
+    page_objects(:usps_logo, index: 0) {{xpath: '//div[@id="nav-usps-vendor"]'}}
+    page_objects(:header_text, index: 1) {{xpath: '//div[@id="nav-usps-vendor"]/ul/li'}}
+
+    #Footer
+    page_object(:privacy_policy) {{xpath: '//*[@data-pgtitle="Privacy Policy"]'}}
+    page_object(:norton_logo) { {id: 'verisign-norton'} }
+
+    #privacy policy modal
+    page_object(:pp_header) {{xpath: '//a[@class="get-content"][@data-pgtitle="Privacy Policy"]'}}
+    page_object(:pp_body_header) {{xpath: '//h1[(contains(text(), "Stamps.com Privacy Policy"))]'}}
+    button(:pp_close) {{class: 'close'}}
+
+    #Copyright modal
+    page_object(:copyright) {{xpath: '//a[@class="get-content"][@data-pgtitle="Copyright"]'}}
+    page_object(:copyright_header) {{xpath: '//h3[(contains(text(), "Stamps.com Website Terms of Use and Copyright Notice"))]'}}
+    button(:copyright_close) {{class: 'close'}}
+
+    #Live chat modal
+    page_object(:live_chat) {{id: 'live-chat'}}
+    page_object(:chat_launch) {{id: 'chat-launch-pg'}}
+    page_object(:chat_header) {{xpath: '//h1[(contains(text(), "Stamps.com"))]'}}
+
+    #pro active chat
+    page_object(:proactive_chat) {{id: 'proactiveChat'}}
+    page_object(:proactive_chat_header) {{xpath: '//*[(contains(text(), "Stamps.com Chat"))]'}}
+    page_object(:stamps_icon) {{class: 'rn_SyndicatedChatLogoImageDiv'}}
+    page_object(:proactive_chat_header_label) {{xpath: '//*[(contains(text(), "Have a question? Ask me!"))]'}}
+    button(:accept) {{id: 'rn_DialogButton_rn_Dialog_0_0-button'}}
+    button(:decline) {{id: 'rn_DialogButton_rn_Dialog_0_1-button'}}
+
+
     #security questions
     page_object(:sq_header) {{xpath: '//h1[(contains(text(), "Before you start printing postage, make sure your account is protected."))]'}}
+    page_object(:sq_header_profile) {{xpath: '//h2[(contains(text(), "Please answer these security questions:"))]'}}
     page_object(:security_question) {{xpath: '//h2[(contains(text(), "To protect your account, please answer these security questions:"))]'}}
     page_objects(:first_security_question, index: 0) {{xpath: '//div[contains(@class, "secretQuestion")]/button'}}
     page_objects(:first_security_question_help_block,  index: 0) { {xpath: '//*[@id="secretquestions"]/div/div/div/span'} }
@@ -24,6 +59,9 @@ module WhiteLabel
     page_objects(:second_security_question_help_block,  index: 0) { {xpath: '//*[@id="secretquestions"]/div/div/div/span'} }
     text_field(:second_secret_answer, tag: :text_field, required: true) { { id: 'secretAnswer2' } }
     page_objects(:second_security_answer_help_block,  index: 0) { {xpath: '//*[@id="secretquestions"]/div/div/div/span'} }
+    page_objects(:sq_page_sq_help_block) { {xpath: '//div[@class="form-group has-error"]/span'} }
+
+
     button(:sq_get_started) { { id: 'startPrinting' } }
 
     #account created
@@ -35,7 +73,23 @@ module WhiteLabel
     page_object(:error_occurred_error_code) {{id: 'errorCode'}}
     page_object(:error_occurred_error_description) {{id: 'errorDescription'}}
 
+    #Offer 573 Landing Page
+    page_object(:offer_573_header) {{id: 'hpHeader'}}
+    page_object(:offer_573_p) {{id: 'hpSubheader'}}
+    page_object(:offer_573_p2) {{id: 'hpUpgrade'}}
+    page_object(:offer_573_img) {{xpath: '//img[contains(@src, "webreg/images/shippingLabels.png")]'}}
 
+    #offer 592 Landing Page
+    page_object(:offer_592_header) {{xpath: '//h1[(contains(text(), "Congratulations on your new account!"))]'}}
+    page_objects(:offer_592_p) {{xpath: '//div[@id="averyCongrats"]/p'}}
+    page_object(:offer_592_continue) {{id: 'averyReturn'}}
+    page_objects(:offer_592_avery) {{class: ['site-logo__link']}}
+
+    #Print Landing Page
+    page_object(:print_stamps_logo) {{class: ['sdcLogo']}}
+    page_object(:print_username) {{id: 'userNameText'}}
+    page_object(:print_edge_detail_link) {{id: 'moreInformationDropdownSpan'}}
+    page_object(:print_edge_go_on_link) {{id: 'invalidcert_continue'}}
 
     def dropdown_selection(str, index, name = :dropdown_element)
       page_objects(name, index: index) { { xpath: "//span[contains(text(), \"#{str}\")]" } }
