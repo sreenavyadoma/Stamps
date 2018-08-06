@@ -157,7 +157,8 @@ module TestSession
               platformVersion: '11.2', #env.version,
               platformName: 'iOS',
               browserName: 'Safari',
-              automationName: 'XCUITest'
+              automationName: 'XCUITest',
+              :tunnelIdentifier => env.tunnel_identifier
           },
           appium_lib: {
               sauce_username: env.sauce_username,
