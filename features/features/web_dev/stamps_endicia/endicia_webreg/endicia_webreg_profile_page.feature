@@ -9,9 +9,6 @@ Feature: Endicia WebReg: Profile Page
     Then WL: navigates to default registration page for endicia with the following offer id 707
 
     #Verifying all content present
-    #Then pause for 5 seconds
-#    Then WL: expect registration navigation bar stamps or endicia logo exists
-#    Then WL: expect registration navigation bar usps logo exists
     Then WL: expect profile page header contain Better Shipping Starts Here
     Then WL: expect profile bread crumbs is Profile
 

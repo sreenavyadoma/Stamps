@@ -72,10 +72,7 @@ Then /^WL: navigates to default registration page for endicia with the following
   step 'WL: close stamps website db connection'
 
   EWWebsite.visit
-  #common_page.ew_logo.wait_until_present(timeout: 10)
-  #expect(SdcPage.browser.url).to include(target_url.to_s)
 
-  #common_page.ew_get_started.click
   SdcLogger.info "Sourceid = #{source_id}"
 
   TestData.hash[:source_id] = source_id
