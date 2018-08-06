@@ -40,6 +40,7 @@ mobile_sauce: --tags @healthcheck URL=stg USR=AutoSAS_ST11 PW=pass111 LOG_LEVEL=
 
 
 
+
 #mobile_sauce: --tags @orders_healthcheck URL=stg USR=AutoSAS_ST11 PW=pass111 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SELENIUM_DEVICE='iPhone X' SELENIUM_DEVICE_ORIENTATION=portrait SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443 SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef
 
 
