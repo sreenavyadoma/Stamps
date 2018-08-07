@@ -228,15 +228,6 @@ Then /^Verify Health Check for (.+)$/ do |str|
         end
 
   SdcHealthCheck.visit([env, app])
-
-  if TestSession.env.browser_test
-    if TestSession.env.health_check
-      expect(SdcHealthCheck.browser.text).to include('All tests passed')
-    end
-  elsif TestSession.env.ios_test
-    if TestSession.env.health_check
-      expect(SdcHealthCheck.browser.page_source).to include('All tests passed')
-    end
-  end
+  expect(SdcHealthCheck.new.body.text).to include('All tests passed')
 end
 

@@ -6,11 +6,11 @@ class SdcTest
 
       if TestSession.env.mobile_device
         SdcPage.browser = TestSession.selenium_device
-        SdcLogger.debug TestSession.env.session_info(SdcPage.browser.session_id)
+        print TestSession.env.session_info(SdcPage.browser.session_id)
 
       elsif TestSession.env.sauce_browser
         SdcPage.browser = TestSession.selenium_browser
-        SdcLogger.debug TestSession.env.session_info(SdcPage.browser.driver.session_id)
+        print TestSession.env.session_info(SdcPage.browser.driver.session_id)
         SdcEnv.width = SdcPage.browser.window.size.width
         SdcEnv.height = SdcPage.browser.window.size.height
 
