@@ -100,11 +100,24 @@ module TestSession
     key(:automation_name) { ENV['AUTOMATION_NAME'] || 'XCUITest' }
     key(:appium_version) { ENV['APPIUM_VERSION'] || '1.8.1' }
     # test helper
-    key(:sauce_browser) { ['Windows', 'windows', 'Mac', 'mac'].include? selenium_platform.split(' ').first }
+    key(:sauce_browser) do
+      oss = ['Windows', 'windows', 'Mac', 'mac']
+      if selenium_platform
+        oss.include? selenium_platform.split(' ').first
+      end
+    end
     key(:local_browser) { ENV['BROWSER'].to_sym if ENV['BROWSER'] }
     key(:browser_test) { sauce_browser || local_browser }
-    key(:ios_test) { ['iOS', 'ios'].include? selenium_platform.split(' ').first }
-    key(:android_test) { ['android'].include? selenium_platform.split(' ').first }
+    key(:ios_test) do
+      if selenium_platform
+        ['iOS', 'ios'].include? selenium_platform.split(' ').first
+      end
+    end
+    key(:android_test) do
+      if selenium_platform
+        ['android'].include? selenium_platform.split(' ').first
+      end
+    end
     key(:mobile_device) { ios_test || android_test }
     # test settings
     key(:window_size) { ENV['WINDOW_SIZE'] }
@@ -162,7 +175,7 @@ module TestSession
   #     browserName: 'Safari',
   #     automationName: 'XCUITest'
   def selenium_device
-    begin
+    
       desired_caps = {
           caps: {
               :name => env.test_name,
@@ -187,12 +200,12 @@ module TestSession
       SdcLogger.error e.message
       SdcLogger.error e.backtrace.join("\n")
       raise e
-    end
+    
   end
   module_function :selenium_device
 
   def selenium_browser
-    begin
+    
       desired_caps = {
           :name => env.test_name,
           :version => env.selenium_version,
@@ -212,12 +225,12 @@ module TestSession
       SdcLogger.error e.message
       SdcLogger.error e.backtrace.join("\n")
       raise e
-    end
+    
   end
   module_function :selenium_browser
 
   def local_browser
-    begin
+    
       # Watir.always_locate = true
       case(env.local_browser)
 
@@ -302,7 +315,7 @@ module TestSession
       SdcLogger.error e.message
       SdcLogger.error e.backtrace.join("\n")
       raise e, 'Browser driver failed to start'
-    end
+    
   end
   module_function :local_browser
 
@@ -561,11 +574,11 @@ module SdcElementHelper
   end
 
   def safe_set(*args)
-    begin
+    
       set(*args)
     rescue Watir::Exception::UnknownObjectException
       # ignore
-    end
+    
   end
 
   def set_attribute(name, value)
