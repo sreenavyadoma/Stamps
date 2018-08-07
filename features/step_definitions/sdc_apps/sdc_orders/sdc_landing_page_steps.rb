@@ -230,6 +230,8 @@ Then /^Verify Health Check for (.+)$/ do |str|
         end
 
   SdcHealthCheck.visit([env, app])
-  expect(SdcHealthCheck.new.body.text).to include('All tests passed')
+  body = SdcHealthCheck.new.body
+  body.safe_wait_until_present(timeout: 10)
+  expect(body.text).to include('All tests passed')
 end
 
