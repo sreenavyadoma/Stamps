@@ -1,3 +1,18 @@
+#................Endicia Website.................#
+
+
+#............Stamps Website......................#
+Then /^WL: expect registration navigation bar stamps or endicia logo exists$/ do
+  stamps_logo = WhiteLabel.common_page.stamps_logo
+  stamps_logo.wait_until_present(timeout: 60)
+  expect(stamps_logo).to be_present
+end
+
+Then /^WL: expect registration navigation bar usps logo exists$/ do
+  expect(WhiteLabel.common_page.usps_logo).to be_present
+end
+
+
 Then /^WL: establish stamps website db connection$/ do
   WhiteLabel.sdc_db_connection
 end
@@ -7,10 +22,11 @@ Then /^WL: close stamps website db connection$/ do
 end
 
 Then /^WL: navigates to default registration page for stamps with the following offer id (?:random value|(.*))$/ do |str|
+
   step 'WL: establish stamps website db connection'
   common_page = WhiteLabel.common_page
   if str.nil?
-    source_id, content, promo_code, offer_id, target_url = common_page.source_id_query(nil)
+    source_id, content, promo_code, offer_id, target_url = common_page.sdc_website_source_id_query(nil)
     if content.include? 'SecurityQuestionsBeforeRegistration'
       hash = Hash.from_xml(content)
       security_questions_before_reg  = hash['root']['SecurityQuestionsBeforeRegistration']
@@ -18,7 +34,7 @@ Then /^WL: navigates to default registration page for stamps with the following 
       security_questions_before_reg = 'true'
     end
   else
-    source_id, content, promo_code, offer_id, target_url  = common_page.source_id_query(str)
+    source_id, content, promo_code, offer_id, target_url  = common_page.sdc_website_source_id_query(str)
     if content.include? 'SecurityQuestionsBeforeRegistration'
       hash = Hash.from_xml(content)
       security_questions_before_reg  = hash['root']['SecurityQuestionsBeforeRegistration']
@@ -34,6 +50,7 @@ Then /^WL: navigates to default registration page for stamps with the following 
 
   common_page.get_started.click!
   SdcLogger.info "Sourceid = #{source_id}"
+  SdcLogger.info "Offerid = #{offer_id}"
 
   TestData.hash[:source_id] = source_id
   TestData.hash[:content] = content
@@ -43,13 +60,56 @@ Then /^WL: navigates to default registration page for stamps with the following 
   TestData.hash[:security_questions_before_registration] = security_questions_before_reg
 end
 
-Then /^WL: [Ee]xpect security questions header to be (.*)$/ do |str|
+Then /^WL: navigates to default registration page for endicia with the following offer id (?:random value|(.*))$/ do |str|
+
+  step 'WL: establish stamps website db connection'
+  common_page = WhiteLabel.common_page
+  if str.nil?
+    source_id, content, promo_code, offer_id, target_url = common_page.sdc_website_source_id_query(nil)
+  else
+    source_id, content, promo_code, offer_id, target_url  = common_page.sdc_website_source_id_query(str)
+  end
+  step 'WL: close stamps website db connection'
+
+  EWWebsite.visit
+
+  SdcLogger.info "Sourceid = #{source_id}"
+
+  TestData.hash[:source_id] = source_id
+  TestData.hash[:content] = content
+  TestData.hash[:promo_code] = promo_code
+  TestData.hash[:offer_id] = offer_id
+  TestData.hash[:target_url] = target_url
+
+end
+
+
+Then /^WL: expect offer id and source id are the same between sdc_website and stamp_mart db$/ do
+  offer_id, source_id = WhiteLabel.common_page.stamps_mart_source_id_query(TestData.hash[:source_id])
+  wr_offer_id = WhiteLabel.common_page.wr_model_session_offer
+
+  expect(TestData.hash[:offer_id]).to eql(offer_id) , 'sdc_website and stamp_mart offer id are not same'
+  expect(wr_offer_id).to eql(offer_id), 'wr_web_page and stamp_mart offer id are not same'
+  expect(source_id).to eql(TestData.hash[:source_id]), 'sdc_website and stamp_mart source id are not same'
+
+end
+
+#...................Security Question.....................#
+Then /^WL: expect security questions header to be (.*)$/ do |str|
   sq_header = WhiteLabel.common_page.sq_header
   sq_header.wait_until_present(timeout: 100)
   expect(sq_header.text_value).to eql(str)
 end
 
-Then /^WL: [Ee]xpect security questions title to be (.*)$/ do |str|
+Then /^WL: expect profile security questions header to be (.*)$/ do |str|
+  expect(WhiteLabel.common_page.sq_header_profile.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect profile security questions header is not present$/ do
+  expect(WhiteLabel.common_page.sq_header_profile).not_to be_present
+end
+
+Then /^WL: expect security questions title to be (.*)$/ do |str|
   security_question_title = WhiteLabel.common_page.security_question
   security_question_title.wait_until_present(timeout: 5)
   expect(security_question_title.text_value).to eql(str)
@@ -66,14 +126,14 @@ Then /^WL: select security questions first security question (.*)$/ do |str|
   expect(TestData.hash[:first_security_question]).to eql str
 end
 
-Then /^WL: [Ee]xpect first security question tooltip index (\d+) to be (.*)$/ do |index, str|
+Then /^WL: expect first security question tooltip index (\d+) to be (.*)$/ do |index, str|
   first_security_question_help_block = WhiteLabel.common_page.first_security_question_help_block
   first_security_question_help_block.wait_until_present(timeout: 5)
-  TestData.hash[:first_security_question_help_block] = first_security_question_help_block.text_value.split("\n")
-  expect(TestData.hash[:first_security_question_help_block][index.to_i - 1]).to eql(str)
+  help_block_text = first_security_question_help_block.text_value.split("\n")
+  expect(help_block_text[index - 1]).to eql(str)
 end
 
-Then /^WL: [Ee]xpect security questions first security question is (?:correct|(.*))$/ do |str|
+Then /^WL: expect security questions first security question is (?:correct|(.*))$/ do |str|
   first_security_question = WhiteLabel.common_page.first_security_question
   str ||= TestData.hash[:first_security_question]
   expect(first_security_question.title).to eql(str)
@@ -86,11 +146,11 @@ Then /^WL: set security questions first security answer to (?:random value|(.*))
   TestData.hash[:first_security_answer] = str
 end
 
-Then /^WL: [Ee]xpect first security answer tooltip index (\d+) to be (.*)$/ do |index, str|
+Then /^WL: expect first security answer tooltip index (\d+) to be (.*)$/ do |index, str|
   first_security_answer_help_block = WhiteLabel.common_page.first_security_answer_help_block
   first_security_answer_help_block.wait_until_present(timeout: 5)
-  TestData.hash[:first_security_answer_help_block] = first_security_answer_help_block.text_value.split("\n")
-  expect(TestData.hash[:first_security_answer_help_block][index.to_i - 1]).to eql(str)
+  help_block_text = first_security_answer_help_block.text_value.split("\n")
+  expect(help_block_text[index - 1]).to eql(str)
 end
 
 Then /^WL: select security questions second security question (.*)$/ do |str|
@@ -103,14 +163,14 @@ Then /^WL: select security questions second security question (.*)$/ do |str|
   expect(TestData.hash[:second_security_question]).to eql str
 end
 
-Then /^WL: [Ee]xpect second security question tooltip index (\d+) to be (.*)$/ do |index, str|
+Then /^WL: expect second security question tooltip index (\d+) to be (.*)$/ do |index, str|
   second_security_question_help_block = WhiteLabel.common_page.second_security_question_help_block
   second_security_question_help_block.wait_until_present(timeout: 5)
-  TestData.hash[:second_security_question_help_block] = second_security_question_help_block.text_value.split("\n")
-  expect(TestData.hash[:second_security_question_help_block][index.to_i - 1]).to eql(str)
+  help_block = second_security_question_help_block.text_value.split("\n")
+  expect(help_block[index - 1]).to eql(str)
 end
 
-Then /^WL: [Ee]xpect security questions second security question is (?:correct|(.*))$/ do |str|
+Then /^WL: expect security questions second security question is (?:correct|(.*))$/ do |str|
   second_security_question = WhiteLabel.common_page.second_security_question
   str ||= TestData.hash[:second_security_question]
   expect(second_security_question.title).to eql(str)
@@ -123,23 +183,31 @@ Then /^WL: set security questions second security answer to (?:random value|(.*)
   TestData.hash[:second_security_answer] = str
 end
 
-Then /^WL: [Ee]xpect second security answer tooltip index (\d+) to be (.*)$/ do |index, str|
+Then /^WL: expect second security answer tooltip index (\d+) to be (.*)$/ do |index, str|
   second_security_answer_help_block = WhiteLabel.common_page.second_security_answer_help_block
   second_security_answer_help_block.wait_until_present(timeout: 5)
-  TestData.hash[:second_security_answer_help_block] = second_security_answer_help_block.text_value.split("\n")
-  expect(TestData.hash[:second_security_answer_help_block][index.to_i - 1]).to eql(str)
+  help_block = second_security_answer_help_block.text_value.split("\n")
+  expect(help_block[index - 1]).to eql(str)
+end
+
+Then /^WL: expect security question page tooltip to be (.*)$/ do |str|
+  sq_page_sq_help_block =  WhiteLabel.common_page.sq_page_sq_help_block
+  expect(sq_page_sq_help_block[0].inner_text.strip).to eql(str)
+  expect(sq_page_sq_help_block[1].inner_text.strip).to eql(str)
+  expect(sq_page_sq_help_block[2].inner_text.strip).to eql(str)
+  expect(sq_page_sq_help_block[3].inner_text.strip).to eql(str)
 end
 
 Then /^WL: click security questions get started button$/ do
   WhiteLabel.common_page.sq_get_started.click
 end
 
-Then /^WL: [Ee]xpect security questions get started button exists$/ do
+Then /^WL: expect security questions get started button exists$/ do
   WhiteLabel.common_page.sq_get_started.wait_until_present(timeout: 50)
   expect(WhiteLabel.common_page.sq_get_started).to be_present
 end
 
-Then /^WL: [Ee]xpect security question modal does not exists$/ do
+Then /^WL: expect security question modal does not exists$/ do
   expect(WhiteLabel.common_page.security_question).not_to be_present
 end
 
@@ -166,50 +234,7 @@ Then /^WL: if security question is present after registration then set the value
   end
 end
 
-Then /^WL: expect user is navigated to print page$/ do
-  if SdcPage.browser.alert.exists?
-    SdcPage.browser.alert.close
-  end
-
-  if WhiteLabel.common_page.account_created_continue.present?
-    WhiteLabel.common_page.account_created_continue.click
-  end
-
-  WhiteLabel.common_page.print_stamps_logo.wait_until_present(timeout: 120) rescue false
-
-  case  TestSession.env.url
-    when :qacc
-      expect(SdcPage.browser.url).to include('https://print.qacc.stamps.com')
-    when :stg
-      expect(SdcPage.browser.url).to include('https://print.staging.stamps.com')
-    when ''
-      expect(SdcPage.browser.url).to include('https://print.stamps.com')
-  end
-end
-
-Then /^WL: click modal continue button$/ do
-  modal_continue = WhiteLabel.common_page.modal_continue
-  modal_continue.wait_until_present(timeout: 2)
-  modal_continue.click
-  step 'pause for 1 second'
-end
-
-Then /^WL: click modal cancle button$/ do
-  modal_cancel = WhiteLabel.common_page.modal_cancel
-  modal_cancel.wait_until_present(timeout: 2)
-  modal_cancel.click
-  step 'pause for 1 second'
-end
-
-
-Then /^WL: click modal x button$/ do
-  modal_x = WhiteLabel.common_page.modal_x
-  modal_x.wait_until_present(timeout: 2)
-  modal_x.click if modal_x.present?
-  step 'pause for 1 second'
-end
-
-######################Username Taken Modal#############################
+#...............................Username Taken Modal....................#
 Then /^WL: if username taken is present then set username to (?:random value|(.*))$/ do |str|
   membership_page =  WhiteLabel.membership_page
   if TestData.hash[:username_taken] == TestData.hash[:username]
@@ -237,7 +262,7 @@ Then /^WL: set username taken username to an existing username from db$/ do
 end
 
 Then /^WL: click username taken continue button$/ do
-  WhiteLabel.membership_page.username_taken_continue_btn.click
+  WhiteLabel.membership_page.username_taken_continue_btn.click!
 end
 
 Then /^WL: expect username taken header to be (.*)$/ do |str|
@@ -262,7 +287,7 @@ Then /^WL: expect username taken tooltip to be (.*)$/ do |str|
   expect(membership_page.new_username_help_block.text_value.strip).to eql(str)
 end
 
-#######################An Error Occurred####################################
+#.........................An Error Occurred..............................#
 Then /^WL: expect an error occurred modal head to be (.*)$/ do |str|
   error_occurred_header = WhiteLabel.common_page.error_occurred_header
   error_occurred_header.wait_until_present(timeout: 5)
@@ -281,3 +306,103 @@ Then /^WL: expect an error occurred modal error description to include (.*)$/ do
   expect(WhiteLabel.common_page.error_occurred_error_description.text_value.strip).to include(str)
 end
 
+#................................Offer 573 Landing Page..............................#
+Then /^WL: expect offer 573 landing page header to be (.*)$/ do |str|
+  SdcPage.browser.alert.close if SdcPage.browser.alert.exists?
+
+  offer_573_header = WhiteLabel.common_page.offer_573_header
+  offer_573_header.wait_until_present(timeout: 30)
+  step 'pause for 1 second'
+  expect(offer_573_header.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect offer 573 landing page sub header paragraph to be$/ do |str|
+  expect(WhiteLabel.common_page.offer_573_p.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect offer 573 landing page hp upgrade paragraph to be$/ do |str|
+  expect(WhiteLabel.common_page.offer_573_p2.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect offer 573 landing page shipping labels img is present$/ do
+  expect(WhiteLabel.common_page.offer_573_img).to be_present
+end
+
+#..........................Offer 592 Landing Page.............................#
+Then /^WL: expect offer 592 landing page header to be (.*)$/ do |str|
+  SdcPage.browser.alert.close if SdcPage.browser.alert.exists?
+
+  offer_592_header = WhiteLabel.common_page.offer_592_header
+  offer_592_header.wait_until_present(timeout: 50)
+  step 'pause for 1 second'
+  expect(offer_592_header.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect offer 592 landing page paragraph index (\d+) to be$/ do |index, str|
+  expect(WhiteLabel.common_page.offer_592_p[index-1].inner_text.strip).to eql(str)
+end
+
+Then /^WL: click offer 592 landing page continue button$/ do
+  WhiteLabel.common_page.offer_592_continue.click
+end
+
+Then /^WL: expect offer 592 landing page avery img is present$/ do
+  SdcPage.browser.alert.close if SdcPage.browser.alert.exists?
+
+  offer_592_avery = WhiteLabel.common_page.offer_592_avery
+  offer_592_avery[0].wait_until_present(timeout: 50)
+  step 'pause for 1 second'
+  expect(offer_592_avery[0]).to be_present
+  expect(SdcPage.browser.url).to include("avery.com/myavery")
+end
+
+#.............................Printing Landing Page..............................#
+Then /^WL: expect user is navigated to print page$/ do
+  step 'pause for 2 second'
+  if SdcPage.browser.alert.exists?
+    SdcPage.browser.alert.close
+  end
+
+  common_page= WhiteLabel.common_page
+
+  if SdcEnv.browser == :edge
+  common_page.print_edge_detail_link.safe_wait_until_present(timeout: 10)
+  common_page.print_edge_detail_link.click if common_page.print_edge_detail_link.present?
+  common_page.print_edge_go_on_link.click if common_page.print_edge_go_on_link.present?
+  end
+
+  common_page.print_stamps_logo.wait_until_present(timeout: 120) rescue false
+
+  case  SdcEnv.env
+    when :qacc
+      expect(SdcPage.browser.url).to include('https://print.qacc.stamps.com')
+    when :stg
+      expect(SdcPage.browser.url).to include('https://print.staging.stamps.com')
+    when ''
+      expect(SdcPage.browser.url).to include('https://print.stamps.com')
+  end
+  expect(common_page.print_username.attribute_value('title').strip).to eql(TestData.hash[:username])
+end
+
+#..................................Modal....................#
+Then /^WL: click modal continue button$/ do
+  modal_continue = WhiteLabel.common_page.modal_continue
+  modal_continue.wait_until_present(timeout: 2)
+  modal_continue.click
+  step 'pause for 1 second'
+end
+
+Then /^WL: click modal cancel button$/ do
+  modal_cancel = WhiteLabel.common_page.modal_cancel
+  modal_cancel.wait_until_present(timeout: 2)
+  modal_cancel.click
+  step 'pause for 1 second'
+end
+
+
+Then /^WL: click modal x button$/ do
+  modal_x = WhiteLabel.common_page.modal_x
+  modal_x.wait_until_present(timeout: 2)
+  modal_x.click if modal_x.present?
+  step 'pause for 1 second'
+end

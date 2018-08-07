@@ -1,29 +1,27 @@
-Feature: Stamps WebReg: Profile Page
+Feature: Endicia WebReg: Profile Page
 
   Background:
     Given Start test driver
 
-  @sdcwr_profile_page_ui_validation
+  @ewwr_profile_page_ui_validation
   Scenario: Profile Page Validation
 
-    Then WL: navigates to default registration page for stamps with the following offer id 404
+    Then WL: navigates to default registration page for endicia with the following offer id 707
 
     #Verifying all content present
-    Then pause for 5 seconds
-    Then WL: expect registration navigation bar stamps logo exists
-    Then WL: expect registration navigation bar usps logo exists
+    Then WL: expect profile page header contain Better Shipping Starts Here
     Then WL: expect profile bread crumbs is Profile
 
-    Then WL: expect profile page header contain Sign up and avoid trips to the Post Office
+    #Side Content
+    Then WL: expect profile page side content side account header is Why do I need to create an account?
     Then WL: expect profile page paragraph contain
     """
-    The USPS requires you to register your name, telephone number and physical address from which your postage will be printed. This information will be used to create your Stamps.com account.
+    The USPS requires you to register your name, telephone number and physical address from which your postage will be printed. This information will be used to create your Endicia account.
     """
-    Then WL: expect profile page side content side account header is Why do I need to create an account?
     Then WL: expect profile page money-saving offers and new products header is "Money-saving offers and new products"
     Then WL: expect profile page content under money-saving offers and new products
     """
-    Send me special money-saving offers and information on new products and services from Stamps.com and its partners.
+    Send me special money-saving offers and information on new products and services from Endicia and its partners.
     """
     Then WL: expect profile page money-saving offers and new products is checked
     Then WL: uncheck profile page money-saving offers and new products
@@ -50,7 +48,7 @@ Feature: Stamps WebReg: Profile Page
     Then WL: expect profile page promo code link exists
     Then WL: show profile page promo code
     Then WL: expect profile page promo code exists
-    Then WL: expect profile page promo code to equal source id promo code
+    #Then WL: expect profile page promo code to equal source id promo code
     Then WL: set profile page promo code to test1234567
     Then WL: expect profile page continue button exists
     Then WL: click profile page continue button
@@ -118,15 +116,6 @@ Feature: Stamps WebReg: Profile Page
     Then WL: expect membership page header exists
     Then WL: click membership page back button
 
-    Then WL: set profile page promo code to 522MB
-    Then WL: click profile page continue button
-    Then WL: expect membership page header exists
-    Then WL: click membership page back button
-
     Then WL: set profile page promo code to empty
     Then WL: click profile page continue button
     Then WL: expect membership page header exists
-
-
-
-

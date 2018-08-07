@@ -1,7 +1,7 @@
 module WhiteLabel
   class ProfilePage < SdcPage
     page_object(:profile_bread_crumb) { {xpath: '//li[@id="breadcrumb_Profile"]/span'} }
-    page_object(:header) { {xpath: '//h1[(contains(text(), "Sign up and avoid trips to the Post Office"))]'} }
+    page_object(:header) { {xpath: '//div[@id="page"]/div/div/h1'} }
     page_object(:side_acct_header) { {xpath: '//h3[(contains(text(), "Why do I need to create an account?"))]'} }
     page_object(:side_acct_text) {{xpath: '//li[@id="sideaccount"]/p'}}
     page_object(:side_opt_in_header) { {xpath: '//h3[(contains(text(), "Money-saving offers and new products"))]'} }
@@ -18,7 +18,8 @@ module WhiteLabel
     text_field(:confirm_password, tag: :text_field, required: true) { { id: 'confirmPassword' } }
     page_objects(:confirm_password_tooltip,  index: 2) { {xpath: '//*[@id="accountinfo"]/div/div/div/span'} }
     link(:promo_code_link) { { id: 'showPromoCode' } }
-    text_field(:promo_code, tag: :text_field, required: true) { { id: 'promoCodeHidden' } }
+    text_field(:promo_code, tag: :text_field, required: true) { { id: 'promoCode' } }
+    text_field(:promo_code_hidden, tag: :text_field, required: true) { { id: 'promoCodeHidden' } }
     page_objects(:promo_code_tooltip,  index: 0) { {xpath: '//*[@id="promocode"]/div/div/div/div/span'} }
     page_object(:survey) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="usageType"]'}}
     page_object(:referrer_name) {{xpath: '//button[contains(@class, "dropdown-toggle")][@data-id="referrerName"]'}}
@@ -167,6 +168,15 @@ module WhiteLabel
 
   class ChooseSupplies < SdcPage
     page_object(:cs_header) { {xpath: '//h1[(contains(text(), "Customize your Welcome Kit"))]'} }
+    page_objects(:cs_paragraph) {{xpath: '//div[@class="container welcomeTextBucket"]/section/p'}}
+    page_objects(:cs_postal_scale) {{xpath: '//div[@id="midCopyContent"]/div[2]/div[2]/ul/li/input[1]'}}
+    page_objects(:cs_original_net_stamps) {{xpath: '//div[@id="midCopyContent"]/div[3]/div[3]/ul/li/input[1]'}}
+    page_objects(:cs_patriotic_net_stamps) {{xpath: '//div[@id="midCopyContent"]/div[3]/div[6]/ul/li/input[1]'}}
+    page_objects(:cs_postage_delivery_return_addr) {{xpath: '//div[@id="midCopyContent"]/div[3]/div[9]/ul/li/input[1]'}}
+    page_objects(:cs_thermal_printers) {{xpath: '//div[@id="midCopyContent"]/div[3]/div[12]/ul/li/input[1]'}}
+    page_objects(:cs_net_stamps) {{xpath: '//div[@id="midCopyContent"]/div[3]/div[15]/ul/li/input[1]'}}
+    page_objects(:cs_business_envelopes) {{xpath: '//div[@id="midCopyContent"]/div[3]/div[18]/ul/li/input[1]'}}
+    page_objects(:cs_large_mailers) {{xpath: '//*[@id="midCopyContent"]/div[3]/div[21]/ul/li/input[1]'}}
     page_object(:place_order) { {id: 'mincartButtonTopDpawr'}}
 
    def atg_promotion

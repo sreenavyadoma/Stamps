@@ -68,8 +68,23 @@ require 'cucumber/rake/task'
 #END PARTNER PORTAL
 
 #BEGIN STAMPS WEB REG
-  Cucumber::Rake::Task.new(:sdcwr_normal_workflow) do |t|
+  Cucumber::Rake::Task.new(:sdcwr_random_workflow) do |t|
     t.profile = 'sdcwr_normal_workflow'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
+  Cucumber::Rake::Task.new(:sdcwr_offer_573_workflow) do |t|
+    t.profile = 'sdcwr_offer_573_workflow'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
+  Cucumber::Rake::Task.new(:sdcwr_offer_592_workflow) do |t|
+    t.profile = 'sdcwr_offer_592_workflow'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
+  Cucumber::Rake::Task.new(:sdcwr_offer_399_workflow) do |t|
+    t.profile = 'sdcwr_offer_399_workflow'
     t.cucumber_opts = "-p cuke_reports"
   end
 
@@ -83,8 +98,8 @@ require 'cucumber/rake/task'
     t.cucumber_opts = "-p cuke_reports"
   end
 
-  Cucumber::Rake::Task.new(:sdcwr_security_quetions_ui_validation) do |t|
-    t.profile = 'sdcwr_security_quetions_ui_validation'
+  Cucumber::Rake::Task.new(:sdcwr_security_question_page_validation) do |t|
+    t.profile = 'sdcwr_security_question_page_validation'
     t.cucumber_opts = "-p cuke_reports"
   end
 
@@ -97,6 +112,17 @@ require 'cucumber/rake/task'
     t.profile = 'sdcwr_membership_page_username_taken_validation'
     t.cucumber_opts = "-p cuke_reports"
   end
+
+  Cucumber::Rake::Task.new(:sdcwr_choose_supplies_page_not_present_workflow) do |t|
+    t.profile = 'sdcwr_choose_supplies_page_not_present_workflow'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
+  Cucumber::Rake::Task.new(:ewwr_profile_page_ui_validation) do |t|
+    t.profile = 'ewwr_profile_page_ui_validation'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
 # END STAMPS WEB REG
 
 # END WEB DEV

@@ -7,14 +7,8 @@ Feature: Stamps WebReg: Membership Page
   Scenario: Membership Page Validation
 
     # Profile Page
-    Then WL: navigates to default registration page for stamps with the following source id 100-TES-WB001
-    Then WL: set profile page email to random value
-    Then WL: set profile page username to random value
-    Then WL: set profile page password to random value
-    Then WL: set profile page re-type password to same as previous password
-    Then WL: set profile page survey question to Business Use - Both mailing and shipping
-    Then WL: set profile page how did you hear about us? to Received Mailer
-    Then WL: set profile page promo code to PR33-NH77
+    Then WL: navigates to default registration page for stamps with the following offer id 404
+    Then WL: set profile page default values
 
     Then WL: click profile page continue button
 
@@ -23,6 +17,7 @@ Feature: Stamps WebReg: Membership Page
     Then WL: expect membership page billing address same as mailing address is checked
     Then WL: uncheck membership page billing address same as mailing address
     Then WL: click membership page submit button
+    Then WL: expect membership page header to be Set up your personal Post Office
 
     Then WL: expect membership page first name tooltip to be This field is required
     Then WL: expect membership page last name tooltip to be This field is required
@@ -234,7 +229,7 @@ Feature: Stamps WebReg: Membership Page
 
   @sdcwr_membership_page_addr_validation
   Scenario: Membership Page Address Validation
-
+    Then WL: navigates to default registration page for stamps with the following offer id 721
     Then WL: set profile page default values
     Then WL: set pp username to an existing username from db
     Then WL: click profile page continue button
@@ -431,7 +426,9 @@ Feature: Stamps WebReg: Membership Page
 
   @sdcwr_membership_page_username_taken_validation
   Scenario: Membership Page Username Taken Validation
+    Then WL: navigates to default registration page for stamps with the following offer id 404
     Then WL: set profile page default values
+    Then WL: set profile page promo code to PR33-NH77
     Then WL: set pp username to an existing username from db
     Then WL: click profile page continue button
     Then WL: set membership page default values
@@ -448,7 +445,7 @@ Feature: Stamps WebReg: Membership Page
     Then WL: expect username taken tooltip to be 2 character minimum
     Then WL: set username taken username to an existing username from db
     Then WL: click username taken continue button
-    Then WL: expect username taken header to be Username Taken
+    #Then WL: expect username taken header to be Username Taken
 
     Then WL: click modal x button
 
