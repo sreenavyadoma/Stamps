@@ -406,8 +406,8 @@ Feature: Stamps WebReg: Membership Page
     Then WL: expect membership page zip is 34451-2951
 
     Then WL: click membership page submit button
-    
-    #Postage meter Address Validation 
+
+    #Postage meter Address Validation
     Then WL: expect postage meter page address to be An additional postage meter address is required
     Then WL: expect postage meter page address paragraph to be
     """
@@ -420,7 +420,7 @@ Feature: Stamps WebReg: Membership Page
     Then WL: expect postage meter state tooltip to be This field is required
     Then WL: set postage meter address between zone 5 and zone 8
     Then WL: click membership page submit button
-    
+
     Then WL: expect username taken header to be Username Taken
 
 

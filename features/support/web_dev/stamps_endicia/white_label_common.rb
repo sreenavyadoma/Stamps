@@ -5,6 +5,7 @@ module WhiteLabel
     page_object(:stamps_logo) {{id: 'sdc-logo'}}
     button(:get_started) { { class: ['btn btn-success btn-xs register'] } }
     page_object(:usps_logo) {{xpath: '//div[@id="nav-usps-vendor"]'}}
+    page_object(:usps_logo) {{xpath: '//div[@id="nav-usps-vendor"]'}}
 
     #endicia website
     page_object(:ew_logo) {{id: 'logo'}}
@@ -14,6 +15,42 @@ module WhiteLabel
     button(:modal_continue) {{id: 'btnAddrValOkay'}}
     button(:modal_cancel) {{xpath: '//div[@class="modal-footer"]/button[1]'}}
     page_objects(:modal_x, index: 0) { {class: ['close']} }
+
+    #Print
+    page_object(:print_stamps_logo) {{class: ['sdcLogo']}}
+
+    #Header
+    page_object(:stamps_logo) {{id: 'sdc-logo'}}
+    page_objects(:usps_logo, index: 0) {{xpath: '//div[@id="nav-usps-vendor"]'}}
+    page_objects(:header_text, index: 1) {{xpath: '//div[@id="nav-usps-vendor"]/ul/li'}}
+
+    #Footer
+    page_object(:privacy_policy) {{xpath: '//*[@data-pgtitle="Privacy Policy"]'}}
+    page_object(:norton_logo) { {id: 'verisign-norton'} }
+
+    #privacy policy modal
+    page_object(:pp_header) {{xpath: '//a[@class="get-content"][@data-pgtitle="Privacy Policy"]'}}
+    page_object(:pp_body_header) {{xpath: '//h1[(contains(text(), "Stamps.com Privacy Policy"))]'}}
+    button(:pp_close) {{class: 'close'}}
+
+    #Copyright modal
+    page_object(:copyright) {{xpath: '//a[@class="get-content"][@data-pgtitle="Copyright"]'}}
+    page_object(:copyright_header) {{xpath: '//h3[(contains(text(), "Stamps.com Website Terms of Use and Copyright Notice"))]'}}
+    button(:copyright_close) {{class: 'close'}}
+
+    #Live chat modal
+    page_object(:live_chat) {{id: 'live-chat'}}
+    page_object(:chat_launch) {{id: 'chat-launch-pg'}}
+    page_object(:chat_header) {{xpath: '//h1[(contains(text(), "Stamps.com"))]'}}
+
+    #pro active chat
+    page_object(:proactive_chat) {{id: 'proactiveChat'}}
+    page_object(:proactive_chat_header) {{xpath: '//*[(contains(text(), "Stamps.com Chat"))]'}}
+    page_object(:stamps_icon) {{class: 'rn_SyndicatedChatLogoImageDiv'}}
+    page_object(:proactive_chat_header_label) {{xpath: '//*[(contains(text(), "Have a question? Ask me!"))]'}}
+    button(:accept) {{id: 'rn_DialogButton_rn_Dialog_0_0-button'}}
+    button(:decline) {{id: 'rn_DialogButton_rn_Dialog_0_1-button'}}
+
 
     #security questions
     page_object(:sq_header) {{xpath: '//h1[(contains(text(), "Before you start printing postage, make sure your account is protected."))]'}}
