@@ -99,15 +99,13 @@ module TestSession
     key(:device_orientation) { ENV['SELENIUM_DEVICE_ORIENTATION'] || 'portrait'}
     key(:automation_name) { ENV['AUTOMATION_NAME'] || 'XCUITest' }
     key(:appium_version) { ENV['APPIUM_VERSION'] || '1.8.1' }
-    # key(:XXXXXXX) { ENV['XXXXXXX'] }
-    # key(:XXXXXXX) { ENV['XXXXXXX'] }
-    # key(:XXXXXXX) { ENV['XXXXXXX'] }
-    # key(:XXXXXXX) { ENV['XXXXXXX'] }
-    # key(:XXXXXXX) { ENV['XXXXXXX'] }
-    # key(:XXXXXXX) { ENV['XXXXXXX'] }
-    # key(:XXXXXXX) { ENV['XXXXXXX'] }
-    # local browser
-    key(:local_browser) { (ENV['BROWSER'] || ENV['LOCAL_BROWSER']).to_sym }
+    # test helper
+    key(:sauce_browser) { ['Windows', 'windows', 'Mac', 'mac'].include? selenium_platform.split(' ').first }
+    key(:local_browser) { ENV['BROWSER'].to_sym if ENV['BROWSER'] }
+    key(:browser_test) { sauce_browser || local_browser }
+    key(:ios_test) { ['iOS', 'ios'].include? selenium_platform.split(' ').first }
+    key(:android_test) { ['android'].include? selenium_platform.split(' ').first }
+    key(:mobile_device) { ios_test || android_test }
     # test settings
     key(:window_size) { ENV['WINDOW_SIZE'] }
     key(:web_dev) { ENV['WEB_DEV'] }
@@ -188,6 +186,7 @@ module TestSession
     rescue StandardError => e
       SdcLogger.error e.message
       SdcLogger.error e.backtrace.join("\n")
+      raise e
     end
   end
   module_function :selenium_device
