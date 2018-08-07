@@ -1,19 +1,25 @@
 Then /^check row for order (\d+)$/ do |num|
   order_id = TestData.hash[:order_id][num]
+  SdcGrid.body.wait_until_present(timeout: 10)
+  sleep 7 unless TestSession.env.build_number
   step "check grid order id #{order_id}"
 end
 
 Then /^uncheck row for order (\d+)$/ do |num|
   order_id = TestData.hash[:order_id][num]
+  SdcGrid.body.wait_until_present(timeout: 10)
+  sleep 7 unless TestSession.env.build_number
   step "uncheck grid order id #{order_id}"
 end
 
 Then /^check grid order id(?:| (\d*))$/ do |order_id|
-  order_id = if order_id.nil?
+  order_id ||= if order_id.nil?
                TestData.hash[:order_id].values.last
              elsif order_id.size < 2
                TestData.hash[:order_id][order_id.to_i]
              end
+  SdcGrid.body.wait_until_present(timeout: 10)
+  sleep 1 unless TestSession.env.build_number
   column = SdcGrid.grid_column(:checkbox)
   row = column.row_num(order_id)
   checkbox = column.checkbox_row(row)
@@ -23,11 +29,13 @@ Then /^check grid order id(?:| (\d*))$/ do |order_id|
 end
 
 Then /^uncheck grid order id(?:| (\d*))$/ do |order_id|
-  order_id = if order_id.nil?
+  order_id ||= if order_id.nil?
                TestData.hash[:order_id].values.last
              elsif order_id.size < 2
                TestData.hash[:order_id][order_id.to_i]
-             end
+               end
+  SdcGrid.body.wait_until_present(timeout: 10)
+  sleep 1 unless TestSession.env.build_number
   column = SdcGrid.grid_column(:checkbox)
   row = column.row_num(order_id)
   checkbox = column.checkbox_row(row)
@@ -37,12 +45,14 @@ Then /^uncheck grid order id(?:| (\d*))$/ do |order_id|
 end
 
 When /^check row (\d+)$/ do |row|
+  SdcGrid.body.wait_until_present(timeout: 10)
   checkbox = SdcGrid.grid_column(:checkbox).checkbox_row(row)
   checkbox.check
   expect(checkbox.checked?).to be(true)
 end
 
 When /^uncheck row (\d+)$/ do |row|
+  SdcGrid.body.wait_until_present(timeout: 10)
   checkbox = SdcGrid.grid_column(:checkbox).checkbox_row(row)
   checkbox.uncheck
   expect(checkbox.checked?).to be(false)
@@ -143,6 +153,7 @@ Then /^expect orders grid recipient is (?:correct|(.*))$/ do |str|
   str ||= TestData.hash[:full_name]
   order_id = TestData.hash[:order_id].values.last
   expect(order_id).to be_truthy
+  sleep 2 unless TestSession.env.build_number
   result = SdcGrid.grid_column(:recipient).data(order_id)
   expect(result).to eql str
 end

@@ -168,7 +168,7 @@ end
 
 
 Then /^[Oo]n Manage Shipping Address modal, add address (\w+)$/ do |address|
-  # TestData.hash[:ship_from_address] = address.include?('random ship from zone 1 through 4') ? TestHelper.rand_ship_from_zone_1_4(SdcEnv.env) : address
+  # TestData.hash[:ship_from_address] = address.include?('random ship from zone 1 through 4') ? TestHelper.rand_ship_from_zone_1_4(TestSession.env.url) : address
   pending
     #stamps.orders.order_details.single_ship_from.select('Manage Shipping Addresses').add(TestData.hash[:ship_from_address])
 end

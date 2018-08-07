@@ -29,7 +29,7 @@ module PartnerPortal
     page_url { |env| "https://partner.#{env}stamps.com/" }
 
     def self.visit
-      super(case SdcEnv.env
+      super(case TestSession.env.url
             when :qacc
               'qacc.'
             when :stg
@@ -128,7 +128,7 @@ module PartnerPortal
     page_url { |env| "https://partner.#{env}stamps.com/reset-password/request" }
 
     def self.visit
-      super(case SdcEnv.env
+      super(case TestSession.env.url
             when :qacc
               'qacc.'
             when :stg
@@ -149,7 +149,7 @@ module PartnerPortal
     page_url { |env| "https://partner.#{env}stamps.com/reset-password/request/confirmation" }
 
     def self.visit
-      super(case SdcEnv.env
+      super(case TestSession.env.url
             when :qacc
               'qacc.'
             when :stg
@@ -166,7 +166,7 @@ module PartnerPortal
     page_url { |env| "https://partner.#{env}stamps.com/set-password" }
 
     def self.visit
-      super(case SdcEnv.env
+      super(case TestSession.env.url
             when :qacc
               'qacc.'
             when :stg
@@ -183,7 +183,7 @@ module PartnerPortal
     page_url { |env| "https://partner.#{env}stamps.com/error-404" }
 
     def self.visit
-      super(case SdcEnv.env
+      super(case TestSession.env.url
             when :qacc
               'qacc.'
             when :stg
@@ -201,7 +201,7 @@ module PartnerPortal
     page_url { |env| "https://partner.#{env}stamps.com/error-500" }
 
     def self.visit
-      super(case SdcEnv.env
+      super(case TestSession.env.url
             when :qacc
               'qacc.'
             when :stg

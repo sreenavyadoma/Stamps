@@ -1,10 +1,10 @@
 Then /^prepare environment for ratings test$/ do
-  step 'select print on Shipping Label - 8 ½" x 11" Paper' if SdcEnv.sdc_app == :mail
-  step 'add new order' if SdcEnv.sdc_app == :orders
+  step 'select print on Shipping Label - 8 ½" x 11" Paper' if SdcGlobal.web_app == :mail
+  step 'add new order' if SdcGlobal.web_app == :orders
 end
 
 Then /^excel rate sheet is loaded$/ do
-  expect([:orders, :mail]).to include(SdcEnv.sdc_app)
+  expect([:orders, :mail]).to include(SdcGlobal.web_app)
   Spreadsheet.client_encoding = 'UTF-8'
   rate_file = data_for(:rates_test, {})['rate_file']
   source_file = "#{data_for(:rates_test, {})['source_dir']}\\#{rate_file}"
@@ -26,8 +26,8 @@ end
 
 # Then /^login and configure rate tests$/ do
 #   step 'Start test driver'
-#   step 'sign-in to mail' if SdcEnv.sdc_app == :mail
-#   step 'sign-in to orders' if SdcEnv.sdc_app == :order
+#   step 'sign-in to mail' if SdcGlobal.web_app == :mail
+#   step 'sign-in to orders' if SdcGlobal.web_app == :order
 #   step 'excel rate sheet is loaded'
 # end
 

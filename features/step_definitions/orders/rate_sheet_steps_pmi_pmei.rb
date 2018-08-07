@@ -367,19 +367,19 @@ Then /^run rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, group
         # Set country to proper group
         if row[@rate_sheet_columns[:service]].include?('PMEI')
           if row[@rate_sheet_columns[:service]].include?('Flat Rate') && group < 9
-            step "set order details domestic ship-to country to a random country in PMEI Flat Rate price group #{group}" if SdcEnv.sdc_app == :orders
-            step "set Print Form Ship-To Country to a random country in PMEI Flat Rate price group #{group}" if SdcEnv.sdc_app == :mail
+            step "set order details domestic ship-to country to a random country in PMEI Flat Rate price group #{group}" if SdcGlobal.web_app == :orders
+            step "set Print Form Ship-To Country to a random country in PMEI Flat Rate price group #{group}" if SdcGlobal.web_app == :mail
           elsif row[@rate_sheet_columns[:service]].include?('Package')
-            step "set order details domestic ship-to country to a random country in PMEI price group #{group}" if SdcEnv.sdc_app == :orders
-            step "set Print Form Ship-To Country to a random country in PMEI price group #{group}" if SdcEnv.sdc_app == :mail
+            step "set order details domestic ship-to country to a random country in PMEI price group #{group}" if SdcGlobal.web_app == :orders
+            step "set Print Form Ship-To Country to a random country in PMEI price group #{group}" if SdcGlobal.web_app == :mail
           end
         elsif row[@rate_sheet_columns[:service]].include?('PMI')
           if row[@rate_sheet_columns[:service]].include?('Flat Rate') && group < 9
-            step "set order details domestic ship-to country to a random country in PMI Flat Rate price group #{group}" if SdcEnv.sdc_app == :orders
-            step "set Print Form Ship-To Country to a random country in PMI Flat Rate price group #{group}" if SdcEnv.sdc_app == :mail
+            step "set order details domestic ship-to country to a random country in PMI Flat Rate price group #{group}" if SdcGlobal.web_app == :orders
+            step "set Print Form Ship-To Country to a random country in PMI Flat Rate price group #{group}" if SdcGlobal.web_app == :mail
           elsif row[@rate_sheet_columns[:service]].include?('Package')
-            step "set order details domestic ship-to country to a random country in PMI price group #{group}" if SdcEnv.sdc_app == :orders
-            step "set Print Form Ship-To Country to a random country in PMI price group #{group}" if SdcEnv.sdc_app == :mail
+            step "set order details domestic ship-to country to a random country in PMI price group #{group}" if SdcGlobal.web_app == :orders
+            step "set Print Form Ship-To Country to a random country in PMI price group #{group}" if SdcGlobal.web_app == :mail
           end
         end
 
@@ -414,9 +414,9 @@ Then /^run rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, group
 
           # Set weight to 0
           SdcLogger.info "#{"#" * 10} Desired Weight: #{row[@rate_sheet_columns[:weight_lb]]}"
-          if SdcEnv.sdc_app == :orders
+          if SdcGlobal.web_app == :orders
             step "set order details ounces to 0"
-          elsif SdcEnv.sdc_app == :mail
+          elsif SdcGlobal.web_app == :mail
             step "set print form ounces to 0"
           end
 
@@ -434,15 +434,15 @@ Then /^run rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, group
             weight_lb = weight_lb.to_i
             TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:weight_lb]] = weight_lb
             TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:weight]] = "#{weight_lb} lb."
-            step "set order details pounds to #{weight_lb}" if SdcEnv.sdc_app == :orders
-            step "set print form pounds to #{weight_lb} by arrows" if SdcEnv.sdc_app == :mail
+            step "set order details pounds to #{weight_lb}" if SdcGlobal.web_app == :orders
+            step "set print form pounds to #{weight_lb} by arrows" if SdcGlobal.web_app == :mail
           else
             weight_oz = Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_f       #AB_ORDERSAUTO_3580 - IDE bug, Weight require 2 parameters
             #SdcLog.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
             TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:weight]] = "#{weight_oz} oz."
             TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:weight_lb]] = weight_oz
-            step "set order details ounces to #{weight_oz}" if SdcEnv.sdc_app == :orders
-            step "set print form ounces to #{weight_oz}" if SdcEnv.sdc_app == :mail
+            step "set order details ounces to #{weight_oz}" if SdcGlobal.web_app == :orders
+            step "set print form ounces to #{weight_oz}" if SdcGlobal.web_app == :mail
           end
           sleep(0.025)
 
@@ -455,14 +455,14 @@ Then /^run rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, group
           # record execution time as time service was selected.
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:execution_date]] = Time.now.strftime("%b %d, %Y %H:%M")
 
-          step "set Order Details service to #{service}" if SdcEnv.sdc_app == :orders
-          step "select print form service #{service}" if SdcEnv.sdc_app == :mail
+          step "set Order Details service to #{service}" if SdcGlobal.web_app == :orders
+          step "select print form service #{service}" if SdcGlobal.web_app == :mail
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:service_selected]] = TestData.hash[:service]
           sleep(0.525)
 
           # get total cost actual value from UI
-          step 'save order details data' if SdcEnv.sdc_app == :orders
-          step "save print form total cost" if SdcEnv.sdc_app == :mail
+          step 'save order details data' if SdcGlobal.web_app == :orders
+          step "save print form total cost" if SdcGlobal.web_app == :mail
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:total_ship_cost]] = (TestData.hash[:total_ship_cost].to_f * 100).round / 100.0
 
           expectation_f = (TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:group]].to_f * 100).round / 100.0
@@ -499,7 +499,7 @@ Then /^run rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, group
  # end
 
   result_sheet = param_sheet.gsub(/\s+/, "")
-  @result_filename = "#{data_for(:rates_test, {})['results_dir']}\\#{result_sheet}_#{SdcEnv.sdc_app.downcase}_#{ENV['URL'].downcase}_Group_#{group}_#{Time.now.strftime("%Y.%m.%d.%H.%M")}.xls"
+  @result_filename = "#{data_for(:rates_test, {})['results_dir']}\\#{result_sheet}_#{SdcGlobal.web_app.downcase}_#{ENV['URL'].downcase}_Group_#{group}_#{Time.now.strftime("%Y.%m.%d.%H.%M")}.xls"
 
   TestData.hash[:result_file].write @result_filename
   TestData.hash[:result_sheet].each_with_index do |row, row_number|

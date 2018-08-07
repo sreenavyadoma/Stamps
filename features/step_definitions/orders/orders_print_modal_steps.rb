@@ -31,7 +31,7 @@ end
 Then /^set orders print modal printer ?(?:|(.*))$/ do |str|
   step "expect orders print modal is present"
   step "orders print modal printer dropdown is present"
-  expect(TestData.hash[:printer] = (str.nil?) ? SdcEnv.printer : str).to_not be_nil, "PRINTER parameter is not defined. Printing tests must define PRINTER value either in cucumber.yml file or in Jenkins."
+  expect(TestData.hash[:printer] = (str.nil?) ? TestSession.env.printer : str).to_not be_nil, "PRINTER parameter is not defined. Printing tests must define PRINTER value either in cucumber.yml file or in Jenkins."
   if TestData.hash[:printer].include?('\\') #validate printer format
     expect(TestData.hash[:printer]).to match(/\\.+\.*/)
     TestData.hash[:printer] = /\\\\(.+)\\/.match(TestData.hash[:printer])[1]
@@ -40,7 +40,7 @@ Then /^set orders print modal printer ?(?:|(.*))$/ do |str|
   printer.selection_element(value: TestData.hash[:printer])
   printer.drop_down.click unless printer.selection.present?
   printer.selection.click
-  expect(printer.text_field.text_value).to include(TestData.hash[:printer]), "Unable to select printer \"#{TestData.hash[:printer]}\". \nMake sure \"#{TestData.hash[:printer]}\" is configured for host #{SdcEnv.hostname}. \nUSR: #{TestData.hash[:username]}, #{SdcEnv.sdc_app.to_s.capitalize}(#{SdcEnv.env.upcase})"
+  expect(printer.text_field.text_value).to include(TestData.hash[:printer]), "Unable to select printer \"#{TestData.hash[:printer]}\". \nMake sure \"#{TestData.hash[:printer]}\" is configured for host #{SdcEnv.hostname}. \nUSR: #{TestData.hash[:username]}, #{SdcGlobal.web_app.to_s.capitalize}(#{TestSession.env.url.upcase})"
 end
 
 Then /^orders print modal printer dropdown is present$/ do

@@ -59,7 +59,7 @@ module SdcCore
 
   class PartnerPortalDB < BasicObject
     def initialize
-      env = ::SdcEnv.env.to_s
+      env = ::TestSession.env.url.to_s
       server = data_for(:sql_server_pp, {})[env]['server']
       database = data_for(:sql_server_pp, {})[env]['database']
       port = data_for(:sql_server_pp, {})[env]['port']
@@ -81,7 +81,7 @@ module SdcCore
 
   class SdcWebsiteDB < BasicObject
     def initialize
-      env = ::SdcEnv.env.to_s
+      env = ::TestSession.env.url.to_s
       server = data_for(:sql_server_sdcwebsite, {})[env]['server']
       database = data_for(:sql_server_sdcwebsite, {})[env]['database']
       port = data_for(:sql_server_sdcwebsite, {})[env]['port']
@@ -103,13 +103,35 @@ module SdcCore
 
   class VBridgeDB < BasicObject
     def initialize
-      env = ::SdcEnv.env.to_s
+      env = ::TestSession.env.url.to_s
       server = data_for(:sql_server_vbridge, {})[env]['server']
       database = data_for(:sql_server_vbridge, {})[env]['database']
       port = data_for(:sql_server_vbridge, {})[env]['port']
       username = data_for(:sql_server_vbridge, {})[env]['username']
       password = data_for(:sql_server_vbridge, {})[env]['password']
       azure = data_for(:sql_server_vbridge, {})[env]['azure']
+      @connection = SQLServerClient.new(server: server, database: database, username: username, password: password, port: port, azure:azure)
+    end
+
+    def respond_to_missing?(name, include_private = false)
+      @connection.respond_to?(name, include_private) || super
+    end
+
+    def method_missing(name, *args, &block)
+      super unless @connection.respond_to?(name)
+      @connection.send(name, *args, &block)
+    end
+  end
+
+  class StampMartDB < BasicObject
+    def initialize
+      env = ::TestSession.env.url.to_s
+      server = data_for(:sql_server_stampmart, {})[env]['server']
+      database = data_for(:sql_server_stampmart, {})[env]['database']
+      port = data_for(:sql_server_stampmart, {})[env]['port']
+      username = data_for(:sql_server_stampmart, {})[env]['username']
+      password = data_for(:sql_server_stampmart, {})[env]['password']
+      azure = data_for(:sql_server_stampmart, {})[env]['azure']
       @connection = SQLServerClient.new(server: server, database: database, username: username, password: password, port: port, azure:azure)
     end
 

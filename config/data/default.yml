@@ -56,8 +56,21 @@ sql_server_vbridge:
      password: Sdcqatest623
      azure: false
 
-download:
-  download_file_path: C:\Stamps\download\
+sql_server_stampmart:
+   qacc:
+      server:
+      database:
+      port: 1433
+      username:
+      password:
+      azure: false
+   stg:
+     server: sdc11db01.stage02.aws.local
+     database: StampMart
+     port: 1433
+     username: qalab
+     password: StampsQA!
+     azure: false
 
 rates_test:
   rate_file: rate_file.xls

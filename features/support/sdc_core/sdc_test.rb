@@ -1,262 +1,33 @@
 class SdcTest
   class << self
-    def sauce_endpoint
-    end
-
-    def sauce_edge
-      caps = Selenium::WebDriver::Remote::Capabilities.edge
-      caps['platform'] = 'Windows 10'
-      caps['version'] = '16.16299'
-      client = Selenium::WebDriver::Remote::Http::Default.new
-      client.timeout = 180
-
-      Watir::Browser.new :remote, { desired_capabilities: caps, http_client: client, url: sauce_endpoint }
-    end
-
-    def capabilities(device)
-      case device
-      when :macos_safari
-        capabilities_config = {
-            :version => '11.0',
-            :platform => 'macOS 10.13',
-            :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
-        }
-        browser = :safari
-
-      when :macos_chrome
-        capabilities_config = {
-            :version => '54.0',
-            :platform => 'macOS 10.13',
-            :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
-        }
-        browser = :chrome
-
-      when :temp_device
-        capabilities_config = {
-            :version => '16.16299',
-            :platform => 'Windows 10',
-            :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
-        }
-        browser = :edge
-      else
-        message = "Unsupported device. DEVICE=#{device}"
-        error = ArgumentError
-        raise error, message
-      end
-
-      build_name = ENV['JENKINS_BUILD_NUMBER'] || ENV['SAUCE_BAMBOO_BUILDNUMBER'] || ENV['SAUCE_TC_BUILDNUMBER'] || ENV['SAUCE_BUILD_NAME']
-      capabilities_config[:build] = build_name unless build_name.nil?
-      Selenium::WebDriver::Remote::Capabilities.send(browser, capabilities_config)
-    end
-
-    def win10_edge_sauce
-      capabilities_config = {
-          :version => '16.16299',
-          :platform => 'Windows 10',
-          :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
-      }
-
-      build_name = ENV['JENKINS_BUILD_NUMBER'] || ENV['SAUCE_BAMBOO_BUILDNUMBER'] || ENV['SAUCE_TC_BUILDNUMBER'] || ENV['SAUCE_BUILD_NAME']
-      capabilities_config[:build] = build_name unless build_name.nil?
-      caps = Selenium::WebDriver::Remote::Capabilities.send(:edge, capabilities_config)
-
-      client = Selenium::WebDriver::Remote::Http::Default.new
-      client.timeout = 120
-
-      Watir::Browser.new(:remote, { desired_capabilities: caps, http_client: client, url: sauce_endpoint })
-    end
-
-    def macos_chrome_sauce
-      capabilities_config = {
-          :version => '65.0',
-          :platform => 'macOS 10.13',
-          :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
-      }
-
-      build_name = ENV['JENKINS_BUILD_NUMBER'] || ENV['SAUCE_BAMBOO_BUILDNUMBER'] || ENV['SAUCE_TC_BUILDNUMBER'] || ENV['SAUCE_BUILD_NAME']
-      capabilities_config[:build] = build_name unless build_name.nil?
-      caps = Selenium::WebDriver::Remote::Capabilities.send(:chrome, capabilities_config)
-
-      client = Selenium::WebDriver::Remote::Http::Default.new
-      client.timeout = 120
-
-      Watir::Browser.new(:remote, { desired_capabilities: caps, http_client: client, url: sauce_endpoint })
-    end
-
-    def iphonex_sauce
-      desired_caps = {
-          caps: {
-              appiumVersion: '1.7.2',
-              deviceName:    'iPhone X Simulator',
-              deviceOrientation: 'portrait',
-              platformVersion: '11.2',
-              platformName:  'iOS',
-              browserName: 'Safari',
-              name: "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
-          },
-          appium_lib: {
-              sauce_username:   'robcruz', #nil, # don't run on Sauce
-              sauce_access_key: '0e60dbc9-5bbf-425a-988b-f81c42d6b7ef', #nil,
-              wait: 120
-          }
-      }
-
-      Appium::Driver.new(desired_caps, false).start_driver
-    end
-
-    def samsung_galaxy_sauce
-      desired_caps = {
-          caps: {
-              appiumVersion: '1.7.2',
-              deviceName:    'Samsung Galaxy S8 GoogleAPI Emulator',
-              deviceOrientation: 'portrait',
-              platformVersion: '7.1',
-              platformName:  'Android',
-              browserName: 'Chrome',
-              name: "test name"
-          },
-          appium_lib: {
-              sauce_username:   nil, # don't run on Sauce 'robcruz',
-              sauce_access_key: nil, # '0e60dbc9-5bbf-425a-988b-f81c42d6b7ef', #
-              wait: 120
-          }
-      }
-
-      Appium::Driver.new(desired_caps, false).start_driver
-    end
 
     def configure
-
       SdcLogger.debug "Initializing test driver...\n"
 
-      if SdcEnv.sauce.browser
-        SdcPage.browser = SauceSession.new.create_browser
-        SdcLogger.debug SdcEnv.sauce.session_info(SdcPage.browser.driver.session_id)
-      end
+      if TestSession.env.mobile_device
+        SdcPage.browser = TestSession.selenium_device
+        print TestSession.env.session_info(SdcPage.browser.session_id)
 
-      if SdcEnv.sauce_device
-        SdcPage.browser = SdcDriverDecorator.new(class_eval(SdcEnv.sauce_device.to_s))
+      elsif TestSession.env.sauce_browser
+        SdcPage.browser = TestSession.selenium_browser
+        print TestSession.env.session_info(SdcPage.browser.driver.session_id)
+        SdcEnv.width = SdcPage.browser.window.size.width
+        SdcEnv.height = SdcPage.browser.window.size.height
+
+      elsif TestSession.env.local_browser
+        SdcPage.browser = TestSession.local_browser
+        SdcEnv.width = SdcPage.browser.window.size.width
+        SdcEnv.height = SdcPage.browser.window.size.height
       else
-        if SdcEnv.browser
-          begin
-            # Watir.always_locate = true
-            case(SdcEnv.browser)
-
-            when :edge
-              kill('taskkill /im MicrosoftEdge.exe /f')
-
-              SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
-
-            when :firefox
-              kill('taskkill /im firefox.exe /f')
-              if SdcEnv.firefox_profile
-                if SdcEnv.web_dev
-                  download_directory = "#{Dir.getwd}/download"
-                  download_directory.tr!('/', '\\') if Selenium::WebDriver::Platform.windows?
-                  profile = Selenium::WebDriver::Firefox::Profile.new
-                  profile['browser.download.folderList'] = 2 # custom location
-                  profile['browser.download.dir'] = download_directory
-                  profile['browser.helperApps.neverAsk.saveToDisk'] = 'text/csv,application/pdf,image/png,application/x-zip-compressed,text/plain'
-                  SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
-                  Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
-                else
-                  profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(firefox_profile)
-                  profile.assume_untrusted_certificate_issuer = true
-                  profile['network.http.phishy-userpass-length'] = 255
-                  SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
-                end
-
-                SdcPage.browser.driver.manage.timeouts.page_load = 12
-              else
-                SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
-              end
-
-            when :chrome
-              prefs = {
-                  download: {
-                      prompt_for_download: false,
-                      default_directory: "#{Dir.getwd}/download"
-                  }
-              }
-              kill('taskkill /im chrome.exe /f')
-              if SdcEnv.web_dev
-                SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, options: { prefs: prefs }, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
-                Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
-              else
-                SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
-              end
-
-              SdcPage.browser.driver.manage.timeouts.page_load = 12
-            when :chromeb
-              kill('taskkill /im chrome.exe /f')
-              Selenium::WebDriver::Chrome.path = data_for(:setup, {})['windows']['chromedriverbeta']
-              SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
-
-              SdcPage.browser.driver.manage.timeouts.page_load = 12
-
-            when :ie
-              kill('taskkill /im iexplore.exe /f')
-              SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:ie))
-
-            when :safari
-              kill("killall 'Safari Technology Preview'")
-              SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(:safari, technology_preview: true))
-
-            else
-              raise ArgumentError, "Invalid browser selection. #{test_driver}"
-            end
-
-            if SdcEnv.window_size
-              width, height = SdcEnv.window_size.split("x")
-              begin
-                SdcPage.browser.window.resize_to(width, height)
-                SdcPage.browser.window.move_to(0, 0)
-              rescue Exception
-                SdcPage.browser.window.maximize
-              end
-            else
-              SdcPage.browser.window.maximize
-            end
-
-          rescue StandardError => e
-            SdcLogger.error e.message
-            SdcLogger.error e.backtrace.join("\n")
-            raise e, 'Browser driver failed to start'
-          end
-
-        elsif SdcEnv.mobile
-          begin
-            SdcPage.browser = SdcDriverDecorator.new(SdcAppiumDriver.new(SdcEnv.mobile).core_driver.start_driver)
-            SdcPage.browser.manage.timeouts.implicit_wait = 180
-
-          rescue StandardError => e
-            SdcLogger.error e.message
-            SdcLogger.error e.backtrace.join("\n")
-            raise e, 'Appium driver failed to start'
-          end
-
-        elsif SdcEnv.browser_mobile_emulator
-          arg_arr = SdcEnv.browser_mobile_emulator.split(',')
-          if arg_arr.size != 2
-            raise ArgumentError, "Wrong number of arguments. Expected 2, Got #{arg_arr.size}"
-          end
-          browser = arg_arr[0]
-          device_name = arg_arr[1]
-          driver = browser_emulator_options(browser, device_name)
-          SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(driver, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
-          SdcPage.browser.driver.manage.timeouts.page_load = 12
-
-          Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download/") if SdcEnv.web_dev
-        else
-          # do nothing
-        end
-
+        error_msg = 'Cannot determine if this is a browser, iOS or Android test'
+        raise ArgumentError, error_msg
       end
-      SdcEnv.width = SdcPage.browser.window.size.width
-      SdcEnv.height = SdcPage.browser.window.size.height
+
     end
 
     def start
+      require_gems
+
       ::SdcEnv.log_level ||= ENV['LOG_LEVEL']
       ::SdcEnv.driver_log_level ||= ENV['DRIVER_LOG_LEVEL']
 
@@ -279,50 +50,6 @@ class SdcTest
         SdcLogger.error e.backtrace.join("\n")
         raise e
       end
-
-      SdcEnv.sauce = ::SauceConfig.new
-
-      SdcEnv.sauce_device ||= ENV['SAUCE_DEVICE']
-
-      if SdcEnv.sauce_device
-        SdcEnv::BROWSERS.each { |browser| SdcEnv.browser = browser if SdcEnv.sauce_device.eql? browser.to_s }
-        SdcEnv::IOS.each { |device| SdcEnv.ios = device if SdcEnv.sauce_device.eql? device.to_s }
-        SdcEnv::ANDROID.each { |device| SdcEnv.android = device if SdcEnv.sauce_device.eql? device.to_s }
-      else
-        SdcEnv.browser ||= browser_selection(ENV['BROWSER'])
-        SdcEnv.browser_mobile_emulator ||= ENV['BROWSER_MOBILE_EMULATOR']
-        SdcEnv.ios ||= ENV['IOS']
-        SdcEnv.android ||= ENV['ANDROID']
-      end
-
-      SdcEnv.mobile = SdcEnv.ios || SdcEnv.android
-      SdcEnv.health_check ||= ENV['HEALTHCHECK']
-      SdcEnv.usr = ENV['USR']
-      SdcEnv.pw = ENV['PW']
-      SdcEnv.firefox_profile ||= ENV['FIREFOX_PROFILE']
-      SdcEnv.new_framework ||= ENV['NEW_FRAMEWORK']
-      SdcEnv.env ||= test_env(ENV['URL'])
-      SdcEnv.jenkins ||= ENV['JENKINS']
-      SdcEnv.web_dev ||= ENV['WEB_DEV']
-      SdcEnv.window_size ||= ENV['WINDOW_SIZE']
-
-      #deprecated
-      SdcEnv.sdc_app ||= ENV['WEB_APP'].downcase.to_sym unless ENV['WEB_APP'].nil?
-      require_gems
-
-      #todo-Rob These should be in an orders/mail or sdc_apps environment variable container. This is a temp fix.
-      SdcEnv.printer = ENV['PRINTER']
-
-      # @web_apps_param = Stamps::WebApps::Param.new
-      # @web_apps_param.log = SdcLogger
-      # @web_apps_param.test_scenario
-      # @web_apps_param.test_scenario
-      # @web_apps_param.env = SdcEnv.env
-      # @web_apps_param.usr = SdcEnv.usr
-      # @web_apps_param.pw = SdcEnv.pw
-      # @web_apps_param.printer = SdcEnv.printer
-      # @web_apps_param.sdc_app = SdcEnv.sdc_app
-
       SdcLogger.debug "\n"
       SdcLogger.debug "Begin test...\n"
       SdcLogger.debug "Feature: #{SdcEnv.scenario.feature}"
@@ -337,7 +64,7 @@ class SdcTest
     def require_gems
       require 'appium_lib'
       require 'appium_lib_core'
-      #require 'mysql2' if SdcEnv.usr.nil? || SdcEnv.usr.casecmp('default').zero?
+      #require 'mysql2' if TestSession.env.usr.nil? || TestSession.env.usr.casecmp('default').zero?
 
       if /rates/.match(SdcEnv.scenario.tags[0].name)
         require 'spreadsheet'
@@ -399,13 +126,6 @@ class SdcTest
       end
     end
 
-    def kill(str)
-
-      stdout, stdeerr, status = Open3.capture3(str)
-    rescue
-      # ignore
-
-    end
 
     def mobile(str)
       str.nil? ? str : str.downcase.delete(' ').to_sym
@@ -468,3 +188,4 @@ class SdcTest
     end
   end
 end
+

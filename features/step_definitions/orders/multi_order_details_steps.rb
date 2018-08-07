@@ -19,11 +19,25 @@ end
 
 Then /^click bulk update update order button$/ do
   step 'wait for js to stop'
-  SdcOrders.bulk_update.update_orders.click
+  bulk = SdcOrders.bulk_update
+  bulk.title.safe_wait_until_present(timeout: 2)
+  bulk.save_preset.safe_wait_until_present(timeout: 2)
+  bulk.update_orders.safe_wait_until_present(timeout: 2)
+  sleep 4 unless TestSession.env.build_number
+  bulk.update_orders.click
+  loading = SdcOrders.loading_orders
+  loading.safe_wait_until_present(timeout: 2)
+  loading.safe_wait_while_present(timeout: 2)
+  updating = SdcOrders.updating_orders
+  updating.safe_wait_until_present(timeout: 2)
+  updating.safe_wait_while_present(timeout: 2)
+  SdcGrid.body.wait_until_present(timeout: 10)
+  sleep 2 unless TestSession.env.build_number
+  step 'wait for js to stop'
 end
 
 Then /^expect bulk update is present$/ do
-  expect(SdcOrders.bulk_update.title).to be_present, "Multi Order Details form is not present"
+  expect(SdcOrders.bulk_update.title).to be_present
 end
 
 # Update bulk orders
@@ -88,24 +102,36 @@ end
 
 Then /^set bulk update domestic service to (.*)$/ do |str|
   service = SdcOrders.bulk_update.dom_service
-  service.selection_element(name: :selection, value: str)
-  service.drop_down.click unless service.selection.present?
-  service.selection.click unless service.selection.class_disabled?
+  service.drop_down.wait_until_present(timeout: 3)
+  service.drop_down.click
+  selections = service.selection_elements(name: :selection, value: str)
+  selections.each do |element|
+    if element.present?
+      element.scroll_into_view
+      element.click
+    end
+  end
   expect(service.text_field.text_value).to include(str)
   TestData.hash[:bulk_dom_service] = str
 end
 
-Then /^expect bulk update domestic service is (?:correct|(.*))$/ do |str|
-  expect(SdcOrders.bulk_update.dom_service.text_field.text_value).to eql(str.nil? ? TestData.hash[:bulk_dom_service] : str)
-end
-
 Then /^set bulk update international service to (.*)$/ do |str|
   service = SdcOrders.bulk_update.intl_service
-  service.selection_element(name: :selection, value: str)
-  service.drop_down.click unless service.selection.present?
-  service.selection.click unless service.selection.class_disabled?
+  service.drop_down.wait_until_present(timeout: 3)
+  service.drop_down.click
+  selections = service.selection_elements(name: :selection, value: str)
+  selections.each do |element|
+    if element.present?
+      element.scroll_into_view
+      element.click
+    end
+  end
   expect(service.text_field.text_value).to include(str)
   TestData.hash[:bulk_int_service] = str
+end
+
+Then /^expect bulk update domestic service is (?:correct|(.*))$/ do |str|
+  expect(SdcOrders.bulk_update.dom_service.text_field.text_value).to eql(str.nil? ? TestData.hash[:bulk_dom_service] : str)
 end
 
 Then /^expect bulk update international service is (?:correct|(.*))$/ do |str|

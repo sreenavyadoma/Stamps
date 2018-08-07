@@ -6,19 +6,9 @@ Feature:  BVT tests for Orders
   @healthcheck
   Scenario: Orders Healthcheck
     Then Verify Health Check for Orders
-
-  @healthcheck
-  Scenario: Address Book Healthcheck
     Then Verify Health Check for Address Book
-
-  @healthcheck
-  Scenario: OR Reports Healthcheck
     Then Verify Health Check for OR Reports
-
-  @healthcheck
-  Scenario: Postage Tools Healthcheck
     Then Verify Health Check for Postage Tools
-
 
   @authentication
   Scenario: Orders Authentication Test
@@ -191,7 +181,7 @@ Feature:  BVT tests for Orders
     Then add new order
     Then set order details ship-to domestic address to
       | full_name       | company      | street_address1   | street_address2| city    | state | zip    | country  | phone | email |
-      | First Last      | Company Name | 777 N Orange Ave | Apt 100         | Orlando | FL    | 32801  | United States | random | random |
+      | First Last      | Company Name | 777 N Orange Ave | Apt 100         | Orlando | FL    |   | United States | random | random |
     Then set order details pounds to 1
     Then set order details ounces to 1
     Then set order details service to PM Package
@@ -213,12 +203,6 @@ Feature:  BVT tests for Orders
     Then expect order details ship-to phone is correct
     Then expect order details ship-to email is correct
     Then expect order details ship-to name is First Last
-    Then expect order details ship-to company name is Company Name
-    Then expect order details ship-to cleansed street address is 777 N Orange Ave Apt 100
-    Then expect order details ship-to cleansed city is Orlando
-    Then expect order details ship-to cleansed state is FL
-    Then expect order details ship-to cleansed zip plus 4 code is 32801-1175
-    Then expect order details ship-to cleansed zip code is 32801
     Then expect order details ship-to phone is correct
     Then expect order details ship-to email is correct
     Then expect order details pound is 1
@@ -239,7 +223,6 @@ Feature:  BVT tests for Orders
     Then expect orders grid age is < 24 hours
     Then expect orders grid order date is populated
     Then expect orders grid recipient is correct
-    Then expect orders grid company is Company Name
     Then expect orders grid address is 777 N Orange Ave Apt 100
     Then expect orders grid city is Orlando
     Then expect orders grid state is FL
@@ -434,7 +417,7 @@ Feature:  BVT tests for Orders
       | full_name     | company       | street_address1 | street_address2 | city          | province      | postal_code   | country | phone        |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone | Random email  |
     Then set order details weight to 0 lb 1 oz
-    Then set order details service to PMEI Package/Flat/Thick Envelope
+    Then set order details service to PMI Flat Rate Envelope
     Then blur out on order details form
 
 #  Check 1st two orders

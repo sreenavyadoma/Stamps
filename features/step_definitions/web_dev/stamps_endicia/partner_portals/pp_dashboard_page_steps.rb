@@ -24,7 +24,7 @@ Then /^[Pp]P: [Ee]xpect [Dd]ashboard [Pp]age the correct contract is being displ
   TestData.hash[:contract_display_name_actual] = contract_header.text_value.split(':').last.strip
 
   step 'establish partner portal db connection'
-  TestData.hash[:partner_account_id] = PartnerPortal.common_page.user_table_query(((user.nil?) ? (SdcEnv.usr) :user), 'PartnerAccountId')
+  TestData.hash[:partner_account_id] = PartnerPortal.common_page.user_table_query(((user.nil?) ? (TestSession.env.usr) :user), 'PartnerAccountId')
   TestData.hash[:contract_display_name] = PartnerPortal.common_page.contract_table_query(TestData.hash[:partner_account_id], 'DisplayName')
   step 'Close partner portal db connection'
 
@@ -45,7 +45,7 @@ Then /^[Pp]P: [Ee]xpect [Dd]ashboard [Pp]age the Last updated on: field displays
   TestData.hash[:last_update_on_actual]=  Date.strptime(actual_date, '%m/%d/%Y')
 
   step 'establish partner portal db connection'
-  TestData.hash[:partner_account_id] = PartnerPortal.common_page.user_table_query(((user.nil?) ? (SdcEnv.usr) :user), 'PartnerAccountId')
+  TestData.hash[:partner_account_id] = PartnerPortal.common_page.user_table_query(((user.nil?) ? (TestSession.env.usr) :user), 'PartnerAccountId')
   TestData.hash[:last_update_on] = PartnerPortal.common_page.contract_table_query(TestData.hash[:partner_account_id], 'DateLastUpdated')
   step 'Close partner portal db connection'
 
@@ -232,7 +232,7 @@ Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the (.*) USD chart previous year chart
   previous_year_data_actual = previous_year_data.reject { |item| item.blank? }
 
   step 'establish partner portal db connection'
-  previous_year_data_expected =  PartnerPortal.common_page.chart_data_query(SdcEnv.usr, chart, legends[0], 'Amount' )
+  previous_year_data_expected =  PartnerPortal.common_page.chart_data_query(TestSession.env.usr, chart, legends[0], 'Amount' )
   step 'Close partner portal db connection'
 
   expect(previous_year_data_expected).to match_array(previous_year_data_actual)
@@ -244,7 +244,7 @@ Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the (.*) USD chart current year chart 
   previous_year_data_actual = previous_year_data.reject { |item| item.blank? }
 
   step 'establish partner portal db connection'
-  previous_year_data_expected =  PartnerPortal.common_page.chart_data_query(SdcEnv.usr, chart, legends[1], 'Amount' )
+  previous_year_data_expected =  PartnerPortal.common_page.chart_data_query(TestSession.env.usr, chart, legends[1], 'Amount' )
   step 'Close partner portal db connection'
 
   expect(previous_year_data_expected).to match_array(previous_year_data_actual)
@@ -256,7 +256,7 @@ Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the (.*) # chart previous year chart d
   previous_year_data_actual = previous_year_data.reject { |item| item.blank? }
 
   step 'establish partner portal db connection'
-  previous_year_data_expected =  PartnerPortal.common_page.chart_data_query(SdcEnv.usr, chart, legends[0], 'Count' )
+  previous_year_data_expected =  PartnerPortal.common_page.chart_data_query(TestSession.env.usr, chart, legends[0], 'Count' )
   step 'Close partner portal db connection'
 
   expect(previous_year_data_expected).to match_array(previous_year_data_actual)
@@ -268,7 +268,7 @@ Then /^[Pp]P: [Ee]xpect [Dd]ashboard page the (.*) # chart current year chart da
   previous_year_data_actual = previous_year_data.reject { |item| item.blank? }
 
   step 'establish partner portal db connection'
-  previous_year_data_expected =  PartnerPortal.common_page.chart_data_query(SdcEnv.usr, chart, legends[1], 'Count' )
+  previous_year_data_expected =  PartnerPortal.common_page.chart_data_query(TestSession.env.usr, chart, legends[1], 'Count' )
   step 'Close partner portal db connection'
 
   expect(previous_year_data_expected).to match_array(previous_year_data_actual)
@@ -341,7 +341,7 @@ Then /^PP: set dashboard page from date field to (?:random date|(.*))$/ do |str|
 
   from_date_field.set(TestData.hash[:from_date] = (str.nil?) ? (TestData.hash[:from_date]) : str)
   from_date_field.parent.click
-  print "From: #{TestData.hash[:from_date]}\n"
+  SdcLogger.info "From: #{TestData.hash[:from_date]}\n"
 end
 
 Then /^PP: set dashboard page to date field to (?:random date|(.*))$/ do |str|
@@ -353,7 +353,7 @@ Then /^PP: set dashboard page to date field to (?:random date|(.*))$/ do |str|
 
   to_date_field.set(TestData.hash[:to_date] = (str.nil?) ? (TestData.hash[:to_date]) : str)
   to_date_field.parent.click
-  print "To:: #{TestData.hash[:to_date]}\n"
+  SdcLogger.info "To:: #{TestData.hash[:to_date]}\n"
 end
 
 Then /^PP: expect from date and to date are cleared$/ do
@@ -644,7 +644,7 @@ Then /PP: dashboard page export data retrieve transaction data from database$/ d
       TestData.hash[:origination_address_zip],TestData.hash[:destination_address_zip], TestData.hash[:destination_country],
       TestData.hash[:extra_service_fee], TestData.hash[:unique_transaction_id],TestData.hash[:container_type],
       TestData.hash[:is_cubic], TestData.hash[:cubic_value], TestData.hash[:is_apf_afo],
-      TestData.hash[:credit_card_fee] = PartnerPortal.common_page.transaction_data(SdcEnv.usr, from_date, to_date)
+      TestData.hash[:credit_card_fee] = PartnerPortal.common_page.transaction_data(TestSession.env.usr, from_date, to_date)
   step 'Close partner portal db connection'
 
 end

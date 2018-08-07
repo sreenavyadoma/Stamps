@@ -25,7 +25,7 @@ Then /^add order (\d+)$/ do |count|
   order_details.order_id.safe_wait_until_present(timeout: 20)
   order_details.title.safe_wait_until_present(timeout: 20)
   expect(order_details.order_id.text_value).not_to eql ''
-  sleep 1
+  sleep 1 unless TestSession.env.build_number
   order_id = order_details.order_id.text_value.parse_digits
   TestData.hash[:order_id][count.to_i] = order_id
 

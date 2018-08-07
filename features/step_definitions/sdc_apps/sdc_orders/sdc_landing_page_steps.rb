@@ -3,7 +3,7 @@ Then /^visit Orders landing page$/ do
   step 'initialize test parameters'
   step 'fetch user credentials from MySQL'
 
-  env = case SdcEnv.env
+  env = case TestSession.env.url
         when :qacc
           'ext.qacc'
         when :qasc
@@ -17,7 +17,11 @@ Then /^visit Orders landing page$/ do
         end
 
   SdcOrdersLandingPage.visit(env)
-  expect(SdcOrdersLandingPage.browser.url).to include('stamps')
+  if TestSession.env.selenium_device
+    expect(SdcOrdersLandingPage.browser.current_url).to include('stamps.com')
+  else
+    expect(SdcOrdersLandingPage.browser.url).to include('stamps.com')
+  end
 end
 
 Then /^initialize test parameters$/ do
@@ -42,16 +46,14 @@ end
 
 Then /^fetch user credentials from MySQL$/ do
   unless TestData.hash[:username]
-    if SdcEnv.usr.nil? || SdcEnv.usr.downcase == 'default'
+    if TestSession.env.usr.nil? || TestSession.env.usr.downcase == 'default'
       credentials = SdcUserCredentials.fetch(SdcEnv.scenario.tags[0].name)
       usr = credentials[:username]
       pw = credentials[:password]
     else
-      usr = SdcEnv.usr
-      pw = SdcEnv.pw
+      usr = TestSession.env.usr
+      pw = TestSession.env.pw
     end
-    expect(usr).to be_truthy
-    expect(pw).to be_truthy
     TestData.hash[:username] = usr
     TestData.hash[:password] = pw
   end
@@ -72,7 +74,7 @@ Then /^sign-in to orders$/ do
     step 'click sign-in button on browser'
     step 'close whats new modal in orders'
   end
-  SdcEnv.sdc_app = :orders
+  SdcGlobal.web_app = :orders
 end
 
 Then /^click sign-in button on browser$/ do
@@ -81,9 +83,9 @@ Then /^click sign-in button on browser$/ do
 
   step 'click Orders landing page sign-in button'
 
-  SdcOrders.loading_orders.safe_wait_until_present(timeout: 5)
-  SdcOrders.loading_orders.safe_wait_while_present(timeout: 15)
-  SdcGrid.body.safe_wait_until_present(timeout: 20)
+  SdcOrders.loading_orders.safe_wait_until_present(timeout: 10)
+  SdcOrders.loading_orders.safe_wait_while_present(timeout: 60)
+  SdcGrid.body.safe_wait_until_present(timeout: 30)
   expect(toolbar.add).to be_present
 end
 
@@ -101,11 +103,15 @@ Then /^click sign-in button on android$/ do
 end
 
 Then /^set Orders landing page username to (.*)$/ do |str|
-  SdcWebsite.landing_page.username.set(str)
+  landing_page = SdcWebsite.landing_page
+  landing_page.username.wait_until_present(timeout: 90)
+  landing_page.username.set(str)
 end
 
 Then /^set Orders landing page password to (.*)$/ do |str|
-  SdcWebsite.landing_page.password.set(str)
+  landing_page = SdcWebsite.landing_page
+  landing_page.password.wait_until_present(timeout: 60)
+  landing_page.password.set(str)
 end
 
 Then /^set sign in page username to (.*)$/ do |str|
@@ -125,15 +131,11 @@ Then /^click Orders landing page sign-in button$/ do
   landing_page = SdcWebsite.landing_page
   landing_page.sign_in.wait_until_present(timeout: 3)
   landing_page.sign_in.click
-  3.times do
-    if landing_page.invalid_username_password.present?
-      landing_page.sign_in.click
-      landing_page.invalid_username_password.safe_wait_while_present(timeout: 1)
-    else
-      break
-    end
+  landing_page.invalid_username.safe_wait_while_present(timeout: 1)
+  if landing_page.invalid_username.present?
+    str = landing_page.invalid_username.text_value
+    expect(str).to eql('')
   end
-  expect(landing_page.invalid_username_password.text_value).to eql('')
 end
 
 Then /^close whats new modal in orders$/ do
@@ -156,7 +158,7 @@ Then /^Verify Health Check for (.+)$/ do |str|
 
   env = case str.downcase
         when /orders/
-          case SdcEnv.env
+          case TestSession.env.url
           when :qacc
             'printext.qacc'
           when :qasc
@@ -168,8 +170,9 @@ Then /^Verify Health Check for (.+)$/ do |str|
           else
             # ignore
           end
+
         when /address/
-          case SdcEnv.env
+          case TestSession.env.url
           when :qacc
             'printext.qacc'
           when :qasc
@@ -181,8 +184,9 @@ Then /^Verify Health Check for (.+)$/ do |str|
           else
             # ignore
           end
+
         when /or reports/
-          case SdcEnv.env
+          case TestSession.env.url
           when :qacc
             'orext.qacc'
           when :qasc
@@ -194,8 +198,9 @@ Then /^Verify Health Check for (.+)$/ do |str|
           else
             # ignore
           end
+
         when /postage/
-          case SdcEnv.env
+          case TestSession.env.url
           when :qacc
             'orext.qacc'
           when :qasc
@@ -224,7 +229,9 @@ Then /^Verify Health Check for (.+)$/ do |str|
           raise ArgumentError, "Healthcheck not supported for #{str}"
         end
 
-  SdcHealthCheck.visit(env, app)
-  expect(SdcHealthCheck.browser.text).to include("All tests passed") if SdcEnv.health_check
+  SdcHealthCheck.visit([env, app])
+  body = SdcHealthCheck.new.body
+  body.safe_wait_until_present(timeout: 10)
+  expect(body.text).to include('All tests passed')
 end
 
