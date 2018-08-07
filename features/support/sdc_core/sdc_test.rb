@@ -4,11 +4,11 @@ class SdcTest
     def configure
       SdcLogger.debug "Initializing test driver...\n"
 
-      if TestSession.env.selenium_device
+      if TestSession.env.mobile_device
         SdcPage.browser = TestSession.selenium_device
         SdcLogger.debug TestSession.env.session_info(SdcPage.browser.session_id)
 
-      elsif TestSession.env.selenium_browser
+      elsif TestSession.env.sauce_browser
         SdcPage.browser = TestSession.selenium_browser
         SdcLogger.debug TestSession.env.session_info(SdcPage.browser.driver.session_id)
         SdcEnv.width = SdcPage.browser.window.size.width
@@ -19,7 +19,8 @@ class SdcTest
         SdcEnv.width = SdcPage.browser.window.size.width
         SdcEnv.height = SdcPage.browser.window.size.height
       else
-        raise ArgumentError, 'Test driver did not initialize.'
+        error_msg = 'Cannot determine if this is a browser, iOS or Android test'
+        raise ArgumentError, error_msg
       end
 
     end
