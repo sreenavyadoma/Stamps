@@ -206,7 +206,6 @@ Feature:  BVT tests for Orders
     Then expect orders grid age is < 24 hours
     Then expect orders grid order date is populated
     Then expect orders grid recipient is correct
-    Then expect orders grid company is Company Name
     Then expect orders grid address is 777 N Orange Ave Apt 100
     Then expect orders grid city is Orlando
     Then expect orders grid state is FL
@@ -235,24 +234,41 @@ Feature:  BVT tests for Orders
     Then expect order details ship-to phone is correct
     # expect order details ship-to email is correct
     Then expect order details ship-to email is correct
+    # expect order details ship-to name is First Last
     Then expect order details ship-to name is First Last
-    Then expect order details ship-to company name is Company Name
+    # expect order details ship-to cleansed street address is 777 N Orange Ave Apt 100
     Then expect order details ship-to cleansed street address is 777 N Orange Ave Apt 100
+    # expect order details ship-to cleansed city is Orlando
     Then expect order details ship-to cleansed city is Orlando
+    # expect order details ship-to cleansed state is FL
     Then expect order details ship-to cleansed state is FL
+    # expect order details ship-to cleansed zip plus 4 code is 32801-1175
     Then expect order details ship-to cleansed zip plus 4 code is 32801-1175
+    # expect order details ship-to cleansed zip code is 32801
     Then expect order details ship-to cleansed zip code is 32801
+    # expect order details ship-to phone is correct
     Then expect order details ship-to phone is correct
+    # expect order details ship-to email is correct
     Then expect order details ship-to email is correct
+    # expect order details pound is 1
     Then expect order details pound is 1
+    # expect order details ounce is 1
     Then expect order details ounce is 1
+    # expect order details length is 1
     Then expect order details length is 1
+    # expect order details width is 1
     Then expect order details width is 1
+    # expect order details height is 1
     Then expect order details height is 1
+    # expect order details service cost is correct
     Then expect order details service cost is correct
+    # expect order details insure-for is 100.00
     Then expect order details insure-for is 100.00
+    # expect order details tracking is correct
     Then expect order details tracking is correct
+    # expect order details tracking cost is correct
     Then expect order details tracking cost is correct
+    # expect order details reference number is correct
     Then expect order details reference number is correct
 
 #    Then click orders toolbar print button
@@ -354,7 +370,6 @@ Feature:  BVT tests for Orders
 
     Then expect orders grid service ship-from is correct
     Then expect orders grid recipient is correct
-    Then expect orders grid company is correct
     Then expect orders grid country is correct
     Then expect orders grid address is correct
     Then expect orders grid city is correct
@@ -387,7 +402,6 @@ Feature:  BVT tests for Orders
     Then blur out on order details form
     Then pause for 2 seconds
     Then expect orders grid recipient is Euan Davidson
-    Then expect orders grid company is Betfair
     Then expect orders grid address is 1350 Market Street
     Then expect orders grid city is San Francisco
     Then expect orders grid state is CA
@@ -476,7 +490,6 @@ Feature:  BVT tests for Orders
     Then click exact address not found accept button
     Then set order details service to PM Package
     Then expect orders grid recipient is Juan Dela Cruz
-    Then expect orders grid company is Betfair
     Then expect orders grid city is San Francisco
     Then expect orders grid state is CA
     Then expect orders grid zip is 94102
