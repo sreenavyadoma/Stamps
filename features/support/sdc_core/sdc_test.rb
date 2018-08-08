@@ -33,7 +33,7 @@ class SdcTest
       require_gems
 
       begin
-        SdcLogger.level = TestSession.env.test_log_level || :error
+        SdcLogger.level = TestSession.env.test_log_level if TestSession.env.test_log_level
         if TestSession.env.selenium_log_level
           Selenium::WebDriver.logger.level = TestSession.env.selenium_log_level
         end
