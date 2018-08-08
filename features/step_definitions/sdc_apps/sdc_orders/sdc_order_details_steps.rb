@@ -628,8 +628,8 @@ end
 Then /^expect order details width is (\d+)$/ do |str|
   str ||= TestData.hash[:width]
   dimensions = SdcOrders.order_details.dimensions
-  dimensions.scroll_into_view
-  dimensions.wait_until_present(timeout: 10)
+  dimensions.width.scroll_into_view
+  dimensions.width.wait_until_present(timeout: 10)
   result = dimensions.width.text_value.to_f
   expect(result).to eql(str.to_f.round(2))
 end
@@ -637,8 +637,8 @@ end
 Then /^expect order details height is (\d+)$/ do |str|
   str ||= TestData.hash[:height]
   dimensions = SdcOrders.order_details.dimensions
-  dimensions.scroll_into_view
-  dimensions.wait_until_present(timeout: 10)
+  dimensions.height.scroll_into_view
+  dimensions.height.wait_until_present(timeout: 10)
   result = dimensions.height.text_value.to_f
   expect(result).to eql(str.to_f.round(2))
 end
