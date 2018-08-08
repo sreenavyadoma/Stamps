@@ -36,6 +36,7 @@ class SdcTest
         SdcLogger.level = :error
         Selenium::WebDriver.logger.level = :error
 
+        #
         # SdcLogger.level = TestSession.env.test_log_level if TestSession.env.test_log_level
         # if TestSession.env.selenium_log_level
         #   Selenium::WebDriver.logger.level = TestSession.env.selenium_log_level
