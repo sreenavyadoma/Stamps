@@ -126,7 +126,7 @@ module TestSession
     key(:pw) { ENV['PW'] }
     key(:usr) { ENV['USR'] }
     key(:healthcheck) do
-      (ENV['HEALTHCHECK'].casecmp('true') if ENV['HEALTHCHECK']) || false
+      ENV['HEALTHCHECK'].casecmp('true') if ENV['HEALTHCHECK']
     end
     key(:printer) { ENV['PRINTER'] }
     key(:web_app) { ENV['WEB_APP'].downcase.to_sym unless ENV['WEB_APP'].nil? }
