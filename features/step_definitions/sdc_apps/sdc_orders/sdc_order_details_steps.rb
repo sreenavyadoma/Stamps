@@ -623,7 +623,9 @@ end
 Then /^expect order details ship-from is (?:correct|(.*))$/ do |str|
   step 'show order ship-to details'
   str ||= TestData.hash[:ship_from]
-  result = SdcOrders.order_details.ship_from.text_field.text_value
+  ship_from = SdcOrders.order_details.ship_from
+  ship_from.text_field.scroll_into_view
+  result = ship_from.text_field.text_value
   expect(result).to eql(str)
 end
 

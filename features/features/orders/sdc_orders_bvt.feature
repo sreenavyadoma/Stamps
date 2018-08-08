@@ -196,10 +196,6 @@ Feature:  BVT tests for Orders
 
   #Verify Single Order Details form was saved in ShipStation
     Then expect order details ship-from is correct
-    Then expect orders grid date printed is correct
-    Then expect orders grid ship date is correct
-    Then expect orders grid service is correct
-    Then expect orders grid service is correct
     Then expect order details ship-to phone is correct
     Then expect order details ship-to email is correct
     Then expect order details ship-to name is First Last
@@ -221,7 +217,11 @@ Feature:  BVT tests for Orders
     Then expect order details tracking is correct
     Then expect order details tracking cost is correct
     Then expect order details reference number is correct
-
+    # verify Orders Grid values
+    Then expect orders grid date printed is correct
+    Then expect orders grid ship date is correct
+    Then expect orders grid service is correct
+    Then expect orders grid service is correct
     Then expect orders grid service ship-from is correct
     Then expect orders grid store is Manual Orders
     Then expect orders grid order id is correct
