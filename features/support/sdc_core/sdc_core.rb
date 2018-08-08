@@ -659,6 +659,7 @@ module SdcElementHelper
     # ignore
   rescue ::Selenium::WebDriver::Error::TimeOutError
     # ignore
+  rescue ::Selenium::WebDriver::Error::StaleElementReferenceError
     # ignored
   end
 
@@ -667,6 +668,8 @@ module SdcElementHelper
   rescue ::Watir::Wait::TimeoutError
     # ignore
   rescue ::Selenium::WebDriver::Error::TimeOutError
+    # ignore
+  rescue ::Selenium::WebDriver::Error::StaleElementReferenceError
     # ignore
   end
 

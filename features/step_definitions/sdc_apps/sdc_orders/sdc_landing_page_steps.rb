@@ -67,11 +67,9 @@ Then /^sign-in to orders$/ do
   step "set Orders landing page username to #{usr}"
   step "set Orders landing page password to #{pw}"
 
-  if SdcEnv.ios
+  if TestSession.env.ios_test
     step 'click sign-in button on ios'
-  elsif SdcEnv.android
-    step 'click sign-in button on android'
-  else
+  elsif TestSession.env.browser_test
     step 'click sign-in button on browser'
     step 'close whats new modal in orders'
   end
@@ -83,9 +81,12 @@ Then /^click sign-in button on browser$/ do
   toolbar = SdcOrders.toolbar
 
   step 'click Orders landing page sign-in button'
+  step 'loading orders...'
+end
 
+Then /^loading orders...$/ do
   loading_orders = SdcOrders.loading_orders
-  loading_orders.safe_wait_until_present(timeout: 20)
+  loading_orders.safe_wait_until_present(timeout: 30)
   loading_orders.safe_wait_while_present(timeout: 60)
   SdcGrid.body.safe_wait_until_present(timeout: 80)
   expect(toolbar.add).to be_present
@@ -93,9 +94,8 @@ end
 
 Then /^click sign-in button on ios$/ do
   landing_page = SdcWebsite.landing_page
-  landing_page.sign_in.click
-  landing_page.sign_in.safe_click
-  #landing_page.sign_in.safe_send_keys(:enter)
+  landing_page.sign_in.send_keys :enter
+  step 'loading orders...'
 end
 
 Then /^click sign-in button on android$/ do
