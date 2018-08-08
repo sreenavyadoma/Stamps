@@ -185,7 +185,7 @@ module TestSession
         :deviceOrientation => env.device_orientation,
         :platformVersion => env.selenium_version,
         :platformName => env.selenium_platform,
-        :browserName => env.sauce_browser,
+        :browserName => env.selenium_browser,
         :automationName => env.automation_name,
         :tunnelIdentifier => env.tunnel_identifier
       },
