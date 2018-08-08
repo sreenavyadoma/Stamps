@@ -4,12 +4,12 @@ default: --backtrace --profile sauce_browser
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
 # tests: bvt_shipstation_updates_domestic
-local_mobile: --tags @healthcheck URL=stg USR=AutoSAS_ST11 PW=pass111 SELENIUM_DEVICE='iPhone X 11.3' SELENIUM_PLATFORM=iOS SELENIUM_BROWSER=Safari SELENIUM_VERSION=11.3 LOG_LEVEL=debug HEALTHCHECK=true
+local_mobile: --tags @healthcheck URL=stg USR=AutoSAS_ST11 PW=pass111 SELENIUM_DEVICE='iPhone X 11.3' SELENIUM_PLATFORM=iOS SELENIUM_BROWSER=Safari SELENIUM_VERSION=11.3 HEALTHCHECK=true
 sauce_mobile: --tags @healthcheck URL=stg USR=AutoSAS_ST11 PW=pass111 SELENIUM_DEVICE='iPhone X' SELENIUM_PLATFORM=iOS SELENIUM_BROWSER=Safari SELENIUM_VERSION=11.3 SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443 SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef TUNNEL_IDENTIFIER=robs_mac LOG_LEVEL=info HEALTHCHECK=true
-sauce_browser: --tags @authentication URL=stg USR=stgvoc0kcnt6rw PW=pass111 SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Mac 10.10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443 TUNNEL_IDENTIFIER=robs_mac LOG_LEVEL=debug HEALTHCHECK=true
-#local_browser: --tags @bvt_shipstation_updates_domestic URL=stg BROWSER=ff MAX_WINDOW=false USR=stgom0dqgzppy PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=debug HEALTHCHECK=true
-local_browser: --tags @healthcheck URL=cc BROWSER=ff MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=debug HEALTHCHECK=true
-#local_browser: --tags @bvt_shipstation_updates_domestic URL=sc BROWSER=ff MAX_WINDOW=false USR=scsejsglwa PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=debug HEALTHCHECK=true
+sauce_browser: --tags @authentication URL=stg USR=stgvoc0kcnt6rw PW=pass111 SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Mac 10.10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443 TUNNEL_IDENTIFIER=robs_mac LOG_LEVEL=info HEALTHCHECK=true
+#local_browser: --tags @bvt_shipstation_updates_domestic URL=stg BROWSER=ff MAX_WINDOW=false USR=stgom0dqgzppy PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=info HEALTHCHECK=true
+local_browser: --tags @healthcheck URL=cc BROWSER=ff MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=info HEALTHCHECK=true
+#local_browser: --tags @bvt_shipstation_updates_domestic URL=sc BROWSER=ff MAX_WINDOW=false USR=scsejsglwa PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=info HEALTHCHECK=true
 
 #mhossain1_cc: --tags @registration_normal_workflow WEB_APP=orders JENKINS=true URL=cc LOG_LEVEL=info BROWSER=ff MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
 #mhossain1_cc: --tags @pp_header_favicons_browser_mobile JENKINS=true URL=qacc BROWSER_MOBILE_EMULATOR=gc,'iPhone X' USR=wteam@stamps.com PW=password1
@@ -33,7 +33,7 @@ alex_rates_pmi:  --tags @rates_pmi_comm_plus_group_9 BROWSER=ff WEB_APP=orders U
 alex_orders:  --tags @bvt_orders_ui_validation BROWSER=ff URL=prod USR=abqaprod2 PW=password1  PRINTER=factory --guess LOG_LEVEL=info HEALTHCHECK=false
 #alex_orders:  --tags @bvt_new_order BROWSER=ff URL=stg USR=abqast2 PW=password1 new_framework=true  --guess LOG_LEVEL=info #abqast1
 alex_test:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders URL=qacc USR=abqacc10 PW=password1  --guess LOG_LEVEL=info MAX_WINDOW=false
-saucelabs_alex: --tags @rates_pme_comm_base_zone_1 URL=stg USR=abqast2 PW=password1 LOG_LEVEL=debug SELENIUM_PORT=443
+saucelabs_alex: --tags @rates_pme_comm_base_zone_1 URL=stg USR=abqast2 PW=password1 LOG_LEVEL=info SELENIUM_PORT=443
 
 mail_print_envelope_11: --tags @mail_print_envelope_11 --guess  PRINTER=factory
 
@@ -209,7 +209,7 @@ generate_username: --tags @generate_username --guess  HEALTHCHECK=true WEB_APP=o
 
 healthcheck: --tags @healthcheck --guess HEALTHCHECK=true
 
-authentication: --tags @authentication --guess  HEALTHCHECK=true LOG_LEVEL=debug
+authentication: --tags @authentication --guess  HEALTHCHECK=true LOG_LEVEL=info
 
 customs_form_auto_calculate_weight: --tags @customs_form_auto_calculate_weight --guess  HEALTHCHECK=true WEB_APP=orders
 whats_new: --tags @whats_new --guess  HEALTHCHECK=true WEB_APP=orders

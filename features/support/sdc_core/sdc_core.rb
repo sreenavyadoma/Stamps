@@ -114,8 +114,12 @@ module TestSession
     end
     key(:mobile_device) { ios_test || android_test }
     # test settings
-    key(:test_log_level) { ENV['LOG_LEVEL'] }
-    key(:selenium_log_level) { ENV['SELENIUM_LOG_LEVEL'] }
+    key(:test_log_level) do
+      ENV['LOG_LEVEL'].to_sym if ENV['LOG_LEVEL']
+    end
+    key(:selenium_log_level) do
+      ENV['SELENIUM_LOG_LEVEL'].to_sym if ENV['SELENIUM_LOG_LEVEL']
+    end
     key(:window_size) { ENV['WINDOW_SIZE'] }
     key(:web_dev) { ENV['WEB_DEV'] }
     key(:firefox_profile) { ENV['FIREFOX_PROFILE'] }
