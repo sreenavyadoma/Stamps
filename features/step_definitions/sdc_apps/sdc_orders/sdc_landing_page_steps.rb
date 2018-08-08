@@ -235,5 +235,10 @@ Then /^Verify Health Check for (.+)$/ do |str|
   body = SdcHealthCheck.new.body
   body.safe_wait_until_present(timeout: 10)
   expect(body.text).to include('All tests passed')
+  print "\n"
+  print "\n"
+  print body.text
+  print "\n"
+  print "\n"
 end
 
