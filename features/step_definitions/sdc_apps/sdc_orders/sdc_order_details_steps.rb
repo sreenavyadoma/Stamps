@@ -184,6 +184,8 @@ Then /^set order details ship-to domestic address to$/ do |table|
   result
 end
 
+# order_id = TestData.hash[:order_id].values.last
+# result = SdcGrid.grid_column(:phone).data(order_id)
 Then /^set order details ship-to text area to (.*)$/ do |address|
   address = TestHelper.format_address(address)
   order_details = SdcOrders.order_details
@@ -275,42 +277,60 @@ end
 Then /^expect order details ship-to company name is (?:correct|(.*))$/ do |str|
   step 'show order ship-to details'
   str ||= TestData.hash[:company]
-  address = SdcOrders.order_details.ship_to.domestic.address.text_value
+  domestic = SdcOrders.order_details.ship_to.domestic
+  domestic.address.scroll_into_view
+  domestic.address.wait_until_present(timeout: 10)
+  address = domestic.address.text_value
   result = TestHelper.address_str_to_hash(address)[:company]
   expect(result).to eql(str)
 end
 
 Then /^expect order details ship-to cleansed street address is (.*)$/ do |str|
   step 'show order ship-to details'
-  address = SdcOrders.order_details.ship_to.domestic.address.text_value
+  domestic = SdcOrders.order_details.ship_to.domestic
+  domestic.address.scroll_into_view
+  domestic.address.wait_until_present(timeout: 10)
+  address = domestic.address.text_value
   result = TestHelper.address_str_to_hash(address)[:street]
   expect(result).to eql(str)
 end
 
 Then /^expect order details ship-to cleansed city is (.*)$/ do |str|
   step 'show order ship-to details'
-  address = SdcOrders.order_details.ship_to.domestic.address.text_value
+  domestic = SdcOrders.order_details.ship_to.domestic
+  domestic.address.scroll_into_view
+  domestic.address.wait_until_present(timeout: 10)
+  address = domestic.address.text_value
   result = TestHelper.address_str_to_hash(address)[:city]
   expect(result).to eql(str)
 end
 
 Then /^expect order details ship-to cleansed state is (.*)$/ do |str|
   step 'show order ship-to details'
-  address = SdcOrders.order_details.ship_to.domestic.address.text_value
+  domestic = SdcOrders.order_details.ship_to.domestic
+  domestic.address.scroll_into_view
+  domestic.address.wait_until_present(timeout: 10)
+  address = domestic.address.text_value
   result = TestHelper.address_str_to_hash(address)[:state]
   expect(result).to eql(str)
 end
 
 Then /^expect order details ship-to cleansed zip plus 4 code is (.*)$/ do |str|
   step 'show order ship-to details'
-  address = SdcOrders.order_details.ship_to.domestic.address.text_value
+  domestic = SdcOrders.order_details.ship_to.domestic
+  domestic.address.scroll_into_view
+  domestic.address.wait_until_present(timeout: 10)
+  address = domestic.address.text_value
   result = TestHelper.address_str_to_hash(address)[:zip_full]
   expect(result).to eql(str)
 end
 
 Then /^expect order details ship-to cleansed zip code is (.*)$/ do |str|
   step 'show order ship-to details'
-  address = SdcOrders.order_details.ship_to.domestic.address.text_value
+  domestic = SdcOrders.order_details.ship_to.domestic
+  domestic.address.scroll_into_view
+  domestic.address.wait_until_present(timeout: 10)
+  address = domestic.address.text_value
   result = TestHelper.address_str_to_hash(address)[:zip]
   expect(result).to eql(str)
 end
@@ -582,37 +602,55 @@ end
 
 Then /^expect order details pounds? (?:is (\d+)|and saved Pounds? are the same)$/ do |str|
   str ||= TestData.hash[:pounds]
-  result = SdcOrders.order_details.weight.lbs.text_value.to_f
+  weight = SdcOrders.order_details.weight
+  weight.lbs.scroll_into_view
+  weight.lbs.wait_until_present(timeout: 10)
+  result = weight.lbs.text_value.to_f
   expect(result).to eql(str.to_f.round(2))
 end
 
 Then /^expect order details ounces? (?:is (\d+)|and saved Ounces? are the same)$/ do |str|
   str ||= TestData.hash[:ounces]
-  result = SdcOrders.order_details.weight.oz.text_value.to_f
+  weight = SdcOrders.order_details.weight
+  weight.oz.scroll_into_view
+  weight.oz.wait_until_present(timeout: 10)
+  result = weight.oz.text_value.to_f
   expect(result).to eql(str.to_f.round(2))
 end
 
 Then /^expect order details length is (\d+)$/ do |str|
   str ||= TestData.hash[:length]
-  result = SdcOrders.order_details.dimensions.length.text_value.to_f
+  dimensions = SdcOrders.order_details.dimensions
+  dimensions.length.scroll_into_view
+  dimensions.length.wait_until_present(timeout: 10)
+  result = dimensions.length.text_value.to_f
   expect(result).to eql(str.to_f.round(2))
 end
 
 Then /^expect order details width is (\d+)$/ do |str|
   str ||= TestData.hash[:width]
-  result = SdcOrders.order_details.dimensions.width.text_value.to_f
+  dimensions = SdcOrders.order_details.dimensions
+  dimensions.width.scroll_into_view
+  dimensions.width.wait_until_present(timeout: 10)
+  result = dimensions.width.text_value.to_f
   expect(result).to eql(str.to_f.round(2))
 end
 
 Then /^expect order details height is (\d+)$/ do |str|
   str ||= TestData.hash[:height]
-  result = SdcOrders.order_details.dimensions.height.text_value.to_f
+  dimensions = SdcOrders.order_details.dimensions
+  dimensions.height.scroll_into_view
+  dimensions.height.wait_until_present(timeout: 10)
+  result = dimensions.height.text_value.to_f
   expect(result).to eql(str.to_f.round(2))
 end
 
 Then /^expect order details tracking is (?:correct|(.*))$/ do |str|
   str ||= TestData.hash[:tracking]
-  result = SdcOrders.order_details.tracking.text_field.text_value
+  tracking = SdcOrders.order_details.tracking
+  tracking.text_field.scroll_into_view
+  tracking.text_field.wait_until_present(timeout: 10)
+  result = tracking.text_field.text_value
   expect(result).to eql(str)
 end
 
@@ -625,7 +663,10 @@ end
 Then /^expect order details ship-from is (?:correct|(.*))$/ do |str|
   step 'show order ship-to details'
   str ||= TestData.hash[:ship_from]
-  result = SdcOrders.order_details.ship_from.text_field.text_value
+  ship_from = SdcOrders.order_details.ship_from
+  ship_from.text_field.scroll_into_view
+  ship_from.text_field.wait_until_present(timeout: 10)
+  result = ship_from.text_field.text_value
   expect(result).to eql(str)
 end
 

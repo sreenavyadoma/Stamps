@@ -19,6 +19,9 @@ Then /^visit Mail$/ do
 end
 
 Then /^sign-in to mail$/ do
+  SdcEnv.width = SdcPage.browser.window.size.width
+  SdcEnv.height = SdcPage.browser.window.size.height
+
   step 'visit Mail'
   step 'fetch user credentials from MySQL'
   modal = SdcWebsite.navigation.mail_sign_in_modal

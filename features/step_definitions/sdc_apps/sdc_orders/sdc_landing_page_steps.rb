@@ -17,7 +17,7 @@ Then /^visit Orders landing page$/ do
         end
 
   SdcOrdersLandingPage.visit(env)
-  if TestSession.env.selenium_device
+  if TestSession.env.mobile_device
     expect(SdcOrdersLandingPage.browser.current_url).to include('stamps.com')
   else
     expect(SdcOrdersLandingPage.browser.url).to include('stamps.com')
@@ -47,7 +47,7 @@ end
 Then /^fetch user credentials from MySQL$/ do
   unless TestData.hash[:username]
     if TestSession.env.usr.nil? || TestSession.env.usr.downcase == 'default'
-      credentials = SdcUserCredentials.fetch(SdcEnv.scenario.tags[0].name)
+      credentials = SdcUserCredentials.fetch(SdcGlobal.scenario.tags[0].name)
       usr = credentials[:username]
       pw = credentials[:password]
     else
@@ -83,9 +83,9 @@ Then /^click sign-in button on browser$/ do
 
   step 'click Orders landing page sign-in button'
 
-  SdcOrders.loading_orders.safe_wait_until_present(timeout: 10)
+  SdcOrders.loading_orders.safe_wait_until_present(timeout: 20)
   SdcOrders.loading_orders.safe_wait_while_present(timeout: 60)
-  SdcGrid.body.safe_wait_until_present(timeout: 30)
+  SdcGrid.body.safe_wait_until_present(timeout: 80)
   expect(toolbar.add).to be_present
 end
 

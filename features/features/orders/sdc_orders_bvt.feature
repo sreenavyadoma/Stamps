@@ -194,28 +194,11 @@ Feature:  BVT tests for Orders
     Then set order details reference number to Update Orders To ShipStation
     Then add order details item 1, qty 1, id Item 1 SKU, description Item 1 Description
 
-  #Verify Single Order Details form was saved in ShipStation
-    Then expect order details ship-from is correct
+    # verify Orders Grid values
     Then expect orders grid date printed is correct
     Then expect orders grid ship date is correct
     Then expect orders grid service is correct
     Then expect orders grid service is correct
-    Then expect order details ship-to phone is correct
-    Then expect order details ship-to email is correct
-    Then expect order details ship-to name is First Last
-    Then expect order details ship-to phone is correct
-    Then expect order details ship-to email is correct
-    Then expect order details pound is 1
-    Then expect order details ounce is 1
-    Then expect order details length is 1
-    Then expect order details width is 1
-    Then expect order details height is 1
-    Then expect order details service cost is correct
-    Then expect order details insure-for is 100.00
-    Then expect order details tracking is correct
-    Then expect order details tracking cost is correct
-    Then expect order details reference number is correct
-
     Then expect orders grid service ship-from is correct
     Then expect orders grid store is Manual Orders
     Then expect orders grid order id is correct
@@ -242,7 +225,40 @@ Feature:  BVT tests for Orders
     Then expect orders grid insured value is 100.00
     #Then expect orders grid order total is correct
     #Then expect orders grid tracking number is populated
-#
+
+  #Verify Single Order Details form was saved in ShipStation
+    #expect order details ship-from is correct
+    Then expect order details ship-from is correct
+    #expect order details ship-to phone is correct
+    # expect order details ship-to phone is correct
+    Then expect order details ship-to phone is correct
+    # expect order details ship-to email is correct
+    Then expect order details ship-to email is correct
+    # expect order details ship-to phone is correct
+    Then expect order details ship-to phone is correct
+    # expect order details ship-to email is correct
+    Then expect order details ship-to email is correct
+    # expect order details pound is 1
+    Then expect order details pound is 1
+    # expect order details ounce is 1
+    Then expect order details ounce is 1
+    # expect order details length is 1
+    Then expect order details length is 1
+    # expect order details width is 1
+    Then expect order details width is 1
+    # expect order details height is 1
+    Then expect order details height is 1
+    # expect order details service cost is correct
+    Then expect order details service cost is correct
+    # expect order details insure-for is 100.00
+    Then expect order details insure-for is 100.00
+    # expect order details tracking is correct
+    Then expect order details tracking is correct
+    # expect order details tracking cost is correct
+    Then expect order details tracking cost is correct
+    # expect order details reference number is correct
+    Then expect order details reference number is correct
+
 #    Then click orders toolbar print button
 #    Then in print modal, click close button
 #    Then sign out
@@ -342,7 +358,6 @@ Feature:  BVT tests for Orders
 
     Then expect orders grid service ship-from is correct
     Then expect orders grid recipient is correct
-    Then expect orders grid company is correct
     Then expect orders grid country is correct
     Then expect orders grid address is correct
     Then expect orders grid city is correct
@@ -375,7 +390,6 @@ Feature:  BVT tests for Orders
     Then blur out on order details form
     Then pause for 2 seconds
     Then expect orders grid recipient is Euan Davidson
-    Then expect orders grid company is Betfair
     Then expect orders grid address is 1350 Market Street
     Then expect orders grid city is San Francisco
     Then expect orders grid state is CA
@@ -464,7 +478,6 @@ Feature:  BVT tests for Orders
     Then click exact address not found accept button
     Then set order details service to PM Package
     Then expect orders grid recipient is Juan Dela Cruz
-    Then expect orders grid company is Betfair
     Then expect orders grid city is San Francisco
     Then expect orders grid state is CA
     Then expect orders grid zip is 94102
