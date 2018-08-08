@@ -92,19 +92,6 @@ class SdcTest
       end
     end
 
-
-    def mobile(str)
-      str.nil? ? str : str.downcase.delete(' ').to_sym
-    end
-
-    def is_ios?(str)
-      str.nil? ? str : SdcEnv::IOS.include?(str.to_sym)
-    end
-
-    def is_android?(str)
-      str.nil? ? str : SdcEnv::ANDROID.include?(str.to_sym)
-    end
-
     def browser_selection(str)
       if str
         case str.downcase
