@@ -177,6 +177,8 @@ Then /^set order details ship-to domestic address to$/ do |table|
   TestData.hash[:state] = state
 end
 
+# order_id = TestData.hash[:order_id].values.last
+# result = SdcGrid.grid_column(:phone).data(order_id)
 Then /^set order details ship-to text area to (.*)$/ do |address|
   address = TestHelper.format_address(address)
   ship_to = SdcOrders.order_details.ship_to
@@ -599,8 +601,8 @@ end
 Then /^expect order details pounds? (?:is (\d+)|and saved Pounds? are the same)$/ do |str|
   str ||= TestData.hash[:pounds]
   weight = SdcOrders.order_details.weight
-  weight.scroll_into_view
-  weight.wait_until_present(timeout: 10)
+  weight.lbs.scroll_into_view
+  weight.lbs.wait_until_present(timeout: 10)
   result = weight.lbs.text_value.to_f
   expect(result).to eql(str.to_f.round(2))
 end
@@ -608,8 +610,8 @@ end
 Then /^expect order details ounces? (?:is (\d+)|and saved Ounces? are the same)$/ do |str|
   str ||= TestData.hash[:ounces]
   weight = SdcOrders.order_details.weight
-  weight.scroll_into_view
-  weight.wait_until_present(timeout: 10)
+  weight.oz.scroll_into_view
+  weight.oz.wait_until_present(timeout: 10)
   result = weight.oz.text_value.to_f
   expect(result).to eql(str.to_f.round(2))
 end
@@ -617,8 +619,8 @@ end
 Then /^expect order details length is (\d+)$/ do |str|
   str ||= TestData.hash[:length]
   dimensions = SdcOrders.order_details.dimensions
-  dimensions.scroll_into_view
-  dimensions.wait_until_present(timeout: 10)
+  dimensions.length.scroll_into_view
+  dimensions.length.wait_until_present(timeout: 10)
   result = dimensions.length.text_value.to_f
   expect(result).to eql(str.to_f.round(2))
 end
