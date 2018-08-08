@@ -33,10 +33,13 @@ class SdcTest
       require_gems
 
       begin
-        SdcLogger.level = TestSession.env.test_log_level if TestSession.env.test_log_level
-        if TestSession.env.selenium_log_level
-          Selenium::WebDriver.logger.level = TestSession.env.selenium_log_level
-        end
+        SdcLogger.level = :error
+        Selenium::WebDriver.logger.level = :error
+
+        # SdcLogger.level = TestSession.env.test_log_level if TestSession.env.test_log_level
+        # if TestSession.env.selenium_log_level
+        #   Selenium::WebDriver.logger.level = TestSession.env.selenium_log_level
+        # end
         SdcLogger.progname = SdcGlobal.scenario.tags[0].name[1.. -1]
 
       rescue StandardError => e
