@@ -349,7 +349,6 @@ Feature:  BVT tests for Orders
 
     Then expect orders grid service is correct
     Then expect orders grid service is correct
-#    Then expect order details insure-for is correct
    Then expect orders grid order status is Awaiting Shipment
 
     Then sign out
