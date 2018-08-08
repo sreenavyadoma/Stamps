@@ -27,12 +27,6 @@ Feature:  BVT tests for Orders
     Then set order details length to 1
     Then set order details width to 1
     Then set order details height to 1
-  # Orders Grid Operations
-#    Then uncheck row 1
-#    Then expect orders grid pounds is 1
-#    Then expect orders grid ounces is 1
-#    Then expect orders grid weight is 1 lb. 1 oz.
-#    Then expect orders grid insured value is 1.00
     Then sign-out of SDC Website
 
   @bvt_orders_ship_date
@@ -226,36 +220,20 @@ Feature:  BVT tests for Orders
     #Then expect orders grid tracking number is populated
 
   #Verify Single Order Details form was saved in ShipStation
-    #expect order details ship-from is correct
     Then expect order details ship-from is correct
-    #expect order details ship-to phone is correct
-    # expect order details ship-to phone is correct
     Then expect order details ship-to phone is correct
-    # expect order details ship-to email is correct
     Then expect order details ship-to email is correct
-    # expect order details ship-to phone is correct
     Then expect order details ship-to phone is correct
-    # expect order details ship-to email is correct
     Then expect order details ship-to email is correct
-    # expect order details pound is 1
     Then expect order details pound is 1
-    # expect order details ounce is 1
     Then expect order details ounce is 1
-    # expect order details length is 1
     Then expect order details length is 1
-    # expect order details width is 1
     Then expect order details width is 1
-    # expect order details height is 1
     Then expect order details height is 1
-    # expect order details service cost is correct
     Then expect order details service cost is correct
-    # expect order details insure-for is 100.00
     Then expect order details insure-for is 100.00
-    # expect order details tracking is correct
     Then expect order details tracking is correct
-    # expect order details tracking cost is correct
     Then expect order details tracking cost is correct
-    # expect order details reference number is correct
     Then expect order details reference number is correct
 
 #    Then click orders toolbar print button
