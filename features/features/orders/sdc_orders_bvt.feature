@@ -234,18 +234,6 @@ Feature:  BVT tests for Orders
     Then expect order details ship-to phone is correct
     # expect order details ship-to email is correct
     Then expect order details ship-to email is correct
-    # expect order details ship-to name is First Last
-    Then expect order details ship-to name is First Last
-    # expect order details ship-to cleansed street address is 777 N Orange Ave Apt 100
-    Then expect order details ship-to cleansed street address is 777 N Orange Ave Apt 100
-    # expect order details ship-to cleansed city is Orlando
-    Then expect order details ship-to cleansed city is Orlando
-    # expect order details ship-to cleansed state is FL
-    Then expect order details ship-to cleansed state is FL
-    # expect order details ship-to cleansed zip plus 4 code is 32801-1175
-    Then expect order details ship-to cleansed zip plus 4 code is 32801-1175
-    # expect order details ship-to cleansed zip code is 32801
-    Then expect order details ship-to cleansed zip code is 32801
     # expect order details ship-to phone is correct
     Then expect order details ship-to phone is correct
     # expect order details ship-to email is correct
