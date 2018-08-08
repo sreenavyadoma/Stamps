@@ -89,7 +89,7 @@ module TestSession
     key(:idle_timeout) { ENV['IDLE_TIMEOUT'] || 300 }
     key(:sauce_end_point) { "https://#{sauce_username}:#{sauce_access_key}@#{selenium_host}:#{selenium_port}/wd/hub" }
     # cloud mobile
-    key(:mobile_device) { ENV['SELENIUM_DEVICE'] }
+    key(:selenium_device) { ENV['SELENIUM_DEVICE'] }
     key(:device_orientation) { ENV['SELENIUM_DEVICE_ORIENTATION'] || 'portrait'}
     key(:automation_name) { ENV['AUTOMATION_NAME'] || 'XCUITest' }
     key(:appium_version) { ENV['APPIUM_VERSION'] || '1.8.1' }
@@ -181,7 +181,7 @@ module TestSession
       caps: {
         :name => env.test_name,
         :appiumVersion => env.appium_version,
-        :deviceName => env.mobile_device,
+        :deviceName => env.selenium_device,
         :deviceOrientation => env.device_orientation,
         :platformVersion => env.selenium_version,
         :platformName => env.selenium_platform,
@@ -398,7 +398,6 @@ end
 class SdcPage < WatirDrops::PageObject
 
   class << self
-
     def visit(*args)
       new.tap do |page|
         if TestSession.env.mobile_device
