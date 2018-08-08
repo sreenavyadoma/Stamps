@@ -77,14 +77,12 @@ Then /^sign-in to orders$/ do
 end
 
 Then /^click sign-in button on browser$/ do
-  landing_page = SdcWebsite.landing_page
-  toolbar = SdcOrders.toolbar
-
   step 'click Orders landing page sign-in button'
   step 'loading orders...'
 end
 
 Then /^loading orders...$/ do
+  toolbar = SdcOrders.toolbar
   loading_orders = SdcOrders.loading_orders
   loading_orders.safe_wait_until_present(timeout: 30)
   loading_orders.safe_wait_while_present(timeout: 60)
