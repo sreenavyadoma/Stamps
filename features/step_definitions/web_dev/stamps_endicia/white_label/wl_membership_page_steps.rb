@@ -257,7 +257,7 @@ Then /^WL: set membership page personal info to(?: a |)(?: random info |)(?:to|i
 
 end
 
-Then /^WL: expect membership page credit card stamps logo is present$/ do
+Then /^WL: expect membership page credit card (?:stamps|endicia) logo is present$/ do
   expect(WhiteLabel.membership_page.cc_stamps_logo).to be_present
 end
 
