@@ -34,7 +34,9 @@ class SdcTest
 
       begin
         SdcLogger.level = TestSession.env.test_log_level || :error
-        Selenium::WebDriver.logger.level = TestSession.env.selenium_log_level || :error
+        if TestSession.env.selenium_log_level
+          Selenium::WebDriver.logger.level = TestSession.env.selenium_log_level
+        end
         SdcLogger.progname = SdcGlobal.scenario.tags[0].name[1.. -1]
 
       rescue StandardError => e
