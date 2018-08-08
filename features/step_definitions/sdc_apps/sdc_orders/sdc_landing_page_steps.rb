@@ -60,6 +60,7 @@ Then /^fetch user credentials from MySQL$/ do
 end
 
 Then /^sign-in to orders$/ do
+  step 'Verify Health Check for Orders' if TestSession.env.healthcheck
   step 'visit Orders landing page'
   usr = TestData.hash[:username]
   pw = TestData.hash[:password]
@@ -83,8 +84,9 @@ Then /^click sign-in button on browser$/ do
 
   step 'click Orders landing page sign-in button'
 
-  SdcOrders.loading_orders.safe_wait_until_present(timeout: 20)
-  SdcOrders.loading_orders.safe_wait_while_present(timeout: 60)
+  loading_orders = SdcOrders.loading_orders
+  loading_orders.safe_wait_until_present(timeout: 20)
+  loading_orders.safe_wait_while_present(timeout: 60)
   SdcGrid.body.safe_wait_until_present(timeout: 80)
   expect(toolbar.add).to be_present
 end

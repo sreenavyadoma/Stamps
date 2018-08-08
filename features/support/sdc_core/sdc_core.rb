@@ -115,13 +115,15 @@ module TestSession
     key(:mobile_device) { ios_test || android_test }
     # test settings
     key(:test_log_level) { ENV['LOG_LEVEL'] }
-    key(:selenium_log_level) { ENV['SELENIUM_LOG_LEVEL'] }
+    key(:selenium_log_level) { ENV['SELENIUM_LOG_LEVEL'] || :error }
     key(:window_size) { ENV['WINDOW_SIZE'] }
     key(:web_dev) { ENV['WEB_DEV'] }
     key(:firefox_profile) { ENV['FIREFOX_PROFILE'] }
     key(:pw) { ENV['PW'] }
     key(:usr) { ENV['USR'] }
-    key(:health_check) { ENV['HEALTHCHECK'] }
+    key(:healthcheck) do
+      (ENV['HEALTHCHECK'].casecmp('true') if ENV['HEALTHCHECK']) || false
+    end
     key(:printer) { ENV['PRINTER'] }
     key(:web_app) { ENV['WEB_APP'].downcase.to_sym unless ENV['WEB_APP'].nil? }
     key(:url) do
