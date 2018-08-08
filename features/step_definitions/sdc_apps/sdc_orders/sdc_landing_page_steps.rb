@@ -17,7 +17,7 @@ Then /^visit Orders landing page$/ do
         end
 
   SdcOrdersLandingPage.visit(env)
-  if TestSession.env.selenium_device
+  if TestSession.env.mobile_device
     expect(SdcOrdersLandingPage.browser.current_url).to include('stamps.com')
   else
     expect(SdcOrdersLandingPage.browser.url).to include('stamps.com')
@@ -47,7 +47,7 @@ end
 Then /^fetch user credentials from MySQL$/ do
   unless TestData.hash[:username]
     if TestSession.env.usr.nil? || TestSession.env.usr.downcase == 'default'
-      credentials = SdcUserCredentials.fetch(SdcEnv.scenario.tags[0].name)
+      credentials = SdcUserCredentials.fetch(SdcGlobal.scenario.tags[0].name)
       usr = credentials[:username]
       pw = credentials[:password]
     else

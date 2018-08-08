@@ -5,45 +5,29 @@ class SdcTest
       SdcLogger.debug "Initializing test driver...\n"
 
       if TestSession.env.mobile_device
-        SdcPage.browser = TestSession.selenium_device
+        SdcPage.browser = TestSession.mobile_device
         print TestSession.env.session_info(SdcPage.browser.session_id)
 
       elsif TestSession.env.sauce_browser
-        SdcPage.browser = TestSession.selenium_browser
+        SdcPage.browser = TestSession.sauce_browser
         print TestSession.env.session_info(SdcPage.browser.driver.session_id)
-        SdcEnv.width = SdcPage.browser.window.size.width
-        SdcEnv.height = SdcPage.browser.window.size.height
 
       elsif TestSession.env.local_browser
         SdcPage.browser = TestSession.local_browser
-        SdcEnv.width = SdcPage.browser.window.size.width
-        SdcEnv.height = SdcPage.browser.window.size.height
+
       else
         error_msg = 'Cannot determine if this is a browser, iOS or Android test'
         raise ArgumentError, error_msg
       end
-
     end
 
     def start
       require_gems
 
-      ::SdcEnv.log_level ||= ENV['LOG_LEVEL']
-      ::SdcEnv.driver_log_level ||= ENV['DRIVER_LOG_LEVEL']
-
       begin
-        SdcLogger.level = if SdcEnv.log_level
-                            SdcEnv.log_level
-                          else
-                            :error
-                          end
-
-        Selenium::WebDriver.logger.level = if SdcEnv.driver_log_level
-                                             SdcEnv.driver_log_level
-                                           else
-                                             :error
-                                           end
-        SdcLogger.progname = SdcEnv.scenario.tags[0].name[1.. -1]
+        SdcLogger.level = TestSession.env.test_log_level || :error
+        Selenium::WebDriver.logger.level = TestSession.env.selenium_log_level || :error
+        SdcLogger.progname = SdcGlobal.scenario.tags[0].name[1.. -1]
 
       rescue StandardError => e
         SdcLogger.error e.message
@@ -52,12 +36,12 @@ class SdcTest
       end
       SdcLogger.debug "\n"
       SdcLogger.debug "Begin test...\n"
-      SdcLogger.debug "Feature: #{SdcEnv.scenario.feature}"
-      SdcLogger.debug "Scenario: #{SdcEnv.scenario.name}"
+      SdcLogger.debug "Feature: #{SdcGlobal.scenario.feature}"
+      SdcLogger.debug "Scenario: #{SdcGlobal.scenario.name}"
       SdcLogger.debug '  Tags:'
-      SdcEnv.scenario.tags.each_with_index { |tag, index| SdcLogger.debug "  Tag #{index + 1}: #{tag.name}" }
+      SdcGlobal.scenario.tags.each_with_index { |tag, index| SdcLogger.debug "  Tag #{index + 1}: #{tag.name}" }
       SdcLogger.debug '  Steps:'
-      SdcEnv.scenario.test_steps.each { |steps| SdcLogger.debug "  #{steps.source.last.keyword}#{steps.text}" }
+      SdcGlobal.scenario.test_steps.each { |steps| SdcLogger.debug "  #{steps.source.last.keyword}#{steps.text}" }
       SdcLogger.debug "\n"
     end
 
@@ -66,7 +50,7 @@ class SdcTest
       require 'appium_lib_core'
       #require 'mysql2' if TestSession.env.usr.nil? || TestSession.env.usr.casecmp('default').zero?
 
-      if /rates/.match(SdcEnv.scenario.tags[0].name)
+      if /rates/.match(SdcGlobal.scenario.tags[0].name)
         require 'spreadsheet'
         require "csv"
         include Spreadsheet
@@ -80,10 +64,14 @@ class SdcTest
     end
 
     def teardown
+      SdcLogger.debug "Tear down...\n"
+      SdcPage.browser.quit
+      SdcLogger.debug "Done.\n"
+
       # if SdcEnv.sauce_device
       #   sessionid = SdcPage.browser.send(:bridge).session_id
-      #   jobname = "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
-      #   if SdcEnv.scenario.passed?
+      #   jobname = "#{SdcGlobal.scenario.feature.name} - #{SdcGlobal.scenario.name}"
+      #   if SdcGlobal.scenario.passed?
       #     SauceWhisk::Jobs.pass_job sessionid
       #   else
       #     SauceWhisk::Jobs.fail_job sessionid
@@ -97,12 +85,8 @@ class SdcTest
       #   SdcLog.info "#{SdcPage.browser} closed."
       # end
 
-      SdcLogger.debug "Tear down...\n"
-      SdcPage.browser.quit
-      SdcLogger.debug "Done.\n"
-    rescue StandardError => e
-      SdcLogger.error e.message
-      SdcLogger.error e.backtrace.join("\n")
+    rescue
+      # ignore
     end
 
     private
