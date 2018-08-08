@@ -79,7 +79,7 @@ module TestSession
     key(:selenium_port) { ENV['SELENIUM_PORT'] }
     key(:selenium_platform) { ENV['SELENIUM_PLATFORM'] }
     key(:selenium_version) { ENV['SELENIUM_VERSION'] }
-    key(:sauce_browser) { ENV['SELENIUM_BROWSER'] }
+    key(:selenium_browser) { ENV['SELENIUM_BROWSER'] }
     key(:selenium_driver) { ENV['SELENIUM_DRIVER'] }
     key(:sauce_build_name) { ENV['SAUCE_BUILD_NAME'] }
     key(:selenium_url) { ENV['SELENIUM_URL'] }
@@ -210,7 +210,7 @@ module TestSession
       :extendedDebugging => true,
       :tunnelIdentifier => env.tunnel_identifier
     }
-    caps = Selenium::WebDriver::Remote::Capabilities.send(env.sauce_browser, desired_caps)
+    caps = Selenium::WebDriver::Remote::Capabilities.send(env.selenium_browser, desired_caps)
     client = Selenium::WebDriver::Remote::Http::Default.new
     client.timeout = env.idle_timeout
     url = env.sauce_end_point
