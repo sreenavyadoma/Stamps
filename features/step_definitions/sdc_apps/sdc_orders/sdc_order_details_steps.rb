@@ -646,8 +646,8 @@ end
 Then /^expect order details tracking is (?:correct|(.*))$/ do |str|
   str ||= TestData.hash[:tracking]
   tracking = SdcOrders.order_details.tracking
-  tracking.scroll_into_view
-  tracking.wait_until_present(timeout: 10)
+  tracking.text_field.scroll_into_view
+  tracking.text_field.wait_until_present(timeout: 10)
   result = tracking.text_field.text_value
   expect(result).to eql(str)
 end
