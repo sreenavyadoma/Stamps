@@ -157,6 +157,20 @@ module SdcNavigation
   end
   module_function :contacts
 
+  def contacts_sign_in_modal
+      ContactsSignInModal.new
+     end
+  module_function :contacts_sign_in_modal
+
+  class ContactsSignInModal < SdcPage
+    page_object(:contacts_sign_in_link,required: 40) { { xpath: '//a[contains(@class, "signInLink")]' } }
+    page_object(:contacts_username, tag: :text_field) { { id: 'UserNameTextBox' } }
+    page_object(:contacts_password, tag: :text_field) { { id: 'PasswordTextBox' } }
+    page_object(:contacts_sign_in) { { id: 'signInButton' } }
+    page_object(:contacts_remember_username, tag: :checkbox) { { id: 'rememberUser' } }
+    page_object(:contacts_invalid_sign_in) { { xpath: '//div[contains(@id, "InvalidUsernamePasswordMsg")]//label' } }
+  end
+
   def reports
     klass = Class.new(SdcPage) do
       page_object(:reports_page) { { xpath: '//a[text()="Reports"]' } }

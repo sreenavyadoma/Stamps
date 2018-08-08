@@ -18,6 +18,11 @@ module SdcWebsite
   end
   module_function :mail
 
+  def contacts
+    SdcContacts
+  end
+  module_function :contacts
+
   def navigation
     SdcNavigation
   end

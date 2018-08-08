@@ -1,9 +1,11 @@
-
 Then /^navigate to contacts$/ do
   SdcNavigation.contacts.click
-  header = SdcContacts.header
-  header.page_title.wait_until_present(timeout: 20)
-  expect(header.page_title.text_value).to eql('Contacts')
+  SdcContacts.contacts_body.safe_wait_until_present(timeout: 20)
+  #SdcContacts.contacts_toolbar.safe_wait_untill_present(timeout: 20)
+  #SdcContacts.wait(timeout: 30)
+  # loading_contacts.safe_wait_untill_present(timeout: 20)
+#  header.page_title.wait_until_present(timeout: 20)
+  #expect(header.page_title.text_value).to eql('Contacts')
 end
 
 Then /^navigate to orders$/ do

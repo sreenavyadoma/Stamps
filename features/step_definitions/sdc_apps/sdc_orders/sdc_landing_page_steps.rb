@@ -84,7 +84,8 @@ Then /^click sign-in button on browser$/ do
   SdcOrders.loading_orders.safe_wait_until_present(timeout: 4)
   SdcOrders.loading_orders.safe_wait_while_present(timeout: 15)
   SdcGrid.body.safe_wait_until_present(timeout: 20)
-  expect(toolbar.add).to be_present
+  #expect(toolbar.add).to be_present
+  toolbar.add.safe_wait_until_present(timeout: 10)
 end
 
 Then /^click sign-in button on ios$/ do

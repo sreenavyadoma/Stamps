@@ -1,47 +1,66 @@
 module SdcContacts
-  class AddressBookHeader < SdcPage
-    page_object(:page_title) { { xpath: '//h1[text()="Contacts"]' } }
+
+  def verifying_account
+    klass = Class.new(SdcPage) do
+      page_object(:verifying_account) { {xpath: '//*[contains(text(), "Verifying")]'} }
+    end
+    klass.new.verifying_account
+  end
+  module_function :verifying_account
+
+  def contacts_toolbar
+    ContactsToolbar.new
+  end
+  module_function :contacts_toolbar
+
+  def contacts_delete_message_box
+    DeleteContactMessageBox.new
+  end
+  module_function :contacts_delete_message_box
+
+  def contacts_left_navigation_panel
+    ContactsLeftNavigation.new
+  end
+  module_function :contacts_left_navigation_panel
+
+  def contacts_filter_panel
+    ContactsFilter.new
   end
 
-  class AddressBookFilter < SdcPage
-    page_object(:search) { { xpath: '//div[contains(@class, "searchContainer sui_search")]//input' } }
+  def contacts_grid
+    ContactsGrid.new
   end
+  module_function :contacts_grid
 
-  class AddressBookList < SdcPage
-    # address book list page objects goes here.
+  def contacts_detail
+    ContactsDetailsPanel.new
   end
+  module_function :contacts_detail
 
-  class AddressBookDetail < SdcPage
-    # address book detail page objects goes here.
+  def contacts_cost_code
+    ContactsCostCode.new
   end
+  module_function :contacts_cost_code
 
-  class NewVersionLink < SdcPage
-    # address book detail page objects goes here.
+  def contacts_country
+    ContactsCountry.new
   end
+  module_function :contacts_country
 
-  def header
-    AddressBookHeader.new
+  def contacts_group
+    ContactsGroup.new
   end
-  module_function :header
+  module_function :contacts_group
 
-  def new_version_link
-    NewVersionLink.new
+  def contacts_state
+    ContactsState.new
   end
-  module_function :new_version_link
+  module_function :contacts_state
 
-  def address_book_filter
-    AddressBookFilter.new
+  def contacts_email_error
+    ContactsEmailErrorMessage.new
   end
-  module_function :address_book_filter
+  module_function :contacts_email_error
 
-  def address_book_list
-    AddressBookList.new
-  end
-  module_function :address_book_list
-
-  def address_book_detail
-    AddressBookDetail.new
-  end
-  module_function :address_book_detail
 
 end
