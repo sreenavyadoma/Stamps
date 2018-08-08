@@ -6,11 +6,19 @@ class SdcTest
 
       if TestSession.env.mobile_device
         SdcPage.browser = TestSession.mobile_device
+        print "\n"
+        print "\n"
         print TestSession.env.session_info(SdcPage.browser.session_id)
+        print "\n"
+        print "\n"
 
       elsif TestSession.env.sauce_browser
         SdcPage.browser = TestSession.sauce_browser
+        print "\n"
+        print "\n"
         print TestSession.env.session_info(SdcPage.browser.driver.session_id)
+        print "\n"
+        print "\n"
 
       elsif TestSession.env.local_browser
         SdcPage.browser = TestSession.local_browser
