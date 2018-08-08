@@ -29,3 +29,20 @@ details_dimensions_hidden_pm_large_package
 #stgee1mtqvwdc0 stgvoc0kcnt6rw  stgom0dqgzppy
 #mobile_sauce: --tags @orders_healthcheck URL=stg USR=AutoSAS_ST11 PW=pass111 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=robcruz SELENIUM_DEVICE='iPhone X' SELENIUM_DEVICE_ORIENTATION=portrait SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443 SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef
 
+
+      # if SdcEnv.sauce_device
+      #   sessionid = SdcPage.browser.send(:bridge).session_id
+      #   jobname = "#{SdcGlobal.scenario.feature.name} - #{SdcGlobal.scenario.name}"
+      #   if SdcGlobal.scenario.passed?
+      #     SauceWhisk::Jobs.pass_job sessionid
+      #   else
+      #     SauceWhisk::Jobs.fail_job sessionid
+      #   end
+      #
+      #   SdcLog.info "SauceOnDemandSessionID=#{sessionid} job-name=#{jobname}"
+      # else
+      #
+      #   SdcUserCredentials.close
+      #
+      #   SdcLog.info "#{SdcPage.browser} closed."
+      # end

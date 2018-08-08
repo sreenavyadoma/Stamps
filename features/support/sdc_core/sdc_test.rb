@@ -48,7 +48,6 @@ class SdcTest
     def require_gems
       require 'appium_lib'
       require 'appium_lib_core'
-      #require 'mysql2' if TestSession.env.usr.nil? || TestSession.env.usr.casecmp('default').zero?
 
       if /rates/.match(SdcGlobal.scenario.tags[0].name)
         require 'spreadsheet'
@@ -67,23 +66,6 @@ class SdcTest
       SdcLogger.debug "Tear down...\n"
       SdcPage.browser.quit
       SdcLogger.debug "Done.\n"
-
-      # if SdcEnv.sauce_device
-      #   sessionid = SdcPage.browser.send(:bridge).session_id
-      #   jobname = "#{SdcGlobal.scenario.feature.name} - #{SdcGlobal.scenario.name}"
-      #   if SdcGlobal.scenario.passed?
-      #     SauceWhisk::Jobs.pass_job sessionid
-      #   else
-      #     SauceWhisk::Jobs.fail_job sessionid
-      #   end
-      #
-      #   SdcLog.info "SauceOnDemandSessionID=#{sessionid} job-name=#{jobname}"
-      # else
-      #
-      #   SdcUserCredentials.close
-      #
-      #   SdcLog.info "#{SdcPage.browser} closed."
-      # end
 
     rescue
       # ignore
