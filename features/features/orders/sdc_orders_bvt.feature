@@ -194,29 +194,6 @@ Feature:  BVT tests for Orders
     Then set order details reference number to Update Orders To ShipStation
     Then add order details item 1, qty 1, id Item 1 SKU, description Item 1 Description
 
-  #Verify Single Order Details form was saved in ShipStation
-    Then expect order details ship-from is correct
-    Then expect order details ship-to phone is correct
-    Then expect order details ship-to email is correct
-    Then expect order details ship-to name is First Last
-    Then expect order details ship-to company name is Company Name
-    Then expect order details ship-to cleansed street address is 777 N Orange Ave Apt 100
-    Then expect order details ship-to cleansed city is Orlando
-    Then expect order details ship-to cleansed state is FL
-    Then expect order details ship-to cleansed zip plus 4 code is 32801-1175
-    Then expect order details ship-to cleansed zip code is 32801
-    Then expect order details ship-to phone is correct
-    Then expect order details ship-to email is correct
-    Then expect order details pound is 1
-    Then expect order details ounce is 1
-    Then expect order details length is 1
-    Then expect order details width is 1
-    Then expect order details height is 1
-    Then expect order details service cost is correct
-    Then expect order details insure-for is 100.00
-    Then expect order details tracking is correct
-    Then expect order details tracking cost is correct
-    Then expect order details reference number is correct
     # verify Orders Grid values
     Then expect orders grid date printed is correct
     Then expect orders grid ship date is correct
@@ -249,7 +226,35 @@ Feature:  BVT tests for Orders
     Then expect orders grid insured value is 100.00
     #Then expect orders grid order total is correct
     #Then expect orders grid tracking number is populated
-#
+
+  #Verify Single Order Details form was saved in ShipStation
+    #expect order details ship-from is correct
+    Then expect order details ship-from is correct
+    #expect order details ship-to phone is correct
+    # expect order details ship-to phone is correct
+    Then expect order details ship-to phone is correct
+    # expect order details ship-to email is correct
+    Then expect order details ship-to email is correct
+    Then expect order details ship-to name is First Last
+    Then expect order details ship-to company name is Company Name
+    Then expect order details ship-to cleansed street address is 777 N Orange Ave Apt 100
+    Then expect order details ship-to cleansed city is Orlando
+    Then expect order details ship-to cleansed state is FL
+    Then expect order details ship-to cleansed zip plus 4 code is 32801-1175
+    Then expect order details ship-to cleansed zip code is 32801
+    Then expect order details ship-to phone is correct
+    Then expect order details ship-to email is correct
+    Then expect order details pound is 1
+    Then expect order details ounce is 1
+    Then expect order details length is 1
+    Then expect order details width is 1
+    Then expect order details height is 1
+    Then expect order details service cost is correct
+    Then expect order details insure-for is 100.00
+    Then expect order details tracking is correct
+    Then expect order details tracking cost is correct
+    Then expect order details reference number is correct
+
 #    Then click orders toolbar print button
 #    Then in print modal, click close button
 #    Then sign out
