@@ -189,7 +189,6 @@ Feature:  BVT tests for Orders
     Then add order details item 1, qty 1, id Item 1 SKU, description Item 1 Description
 
     # verify Orders Grid values
-    Then expect orders grid ship date is correct
     Then expect orders grid service is correct
     Then expect orders grid service is correct
     Then expect orders grid service ship-from is correct
