@@ -201,7 +201,6 @@ module TestSession
     SdcLogger.error e.message
     SdcLogger.error e.backtrace.join("\n")
     raise e
-
   end
   module_function :mobile_device
 
@@ -225,7 +224,6 @@ module TestSession
     SdcLogger.error e.message
     SdcLogger.error e.backtrace.join("\n")
     raise e
-
   end
   module_function :sauce_browser
 
@@ -532,7 +530,7 @@ end
 module SdcElementHelper
   include ::Watir::Waitable
   def present?
-    send(:displayed?) if respond_to?(:displayed?)
+    return send(:displayed?) if respond_to?(:displayed?)
     send(:present?)
   end
 
@@ -585,10 +583,10 @@ module SdcElementHelper
     execute_script("return arguments[0].#{name.to_s}='#{value.to_s}'", @element)
   end
 
-  def safe_send_keys(*args, ctr: 1)
-    ctr.to_i.times do
+  def safe_send_keys(arg, iteration: 1)
+    iteration.to_i.times do
       begin
-        send(:send_keys, *args)
+        send(:send_keys, arg)
       rescue ::StandardError
         # ignore
       end
@@ -597,12 +595,12 @@ module SdcElementHelper
     self
   end
 
-  def send_keys_while_present(*args, ctr: 1)
-    ctr.to_i.times do
+  def send_keys_while_present(arg, iteration: 1, timeout: 2)
+    iteration.to_i.times do
       begin
-        break unless present?
-        safe_send_keys(*args)
-        safe_wait_while_present(timeout: 2)
+        break unless send(:present?)
+        send(:send_keys, arg)
+        wait_while_present(timeout: timeout)
       rescue ::StandardError
         # ignore
       end
@@ -637,7 +635,7 @@ module SdcElementHelper
     if respond_to? :wait_until_present
       send(:wait_until_present, timeout: timeout, interval: interval)
     else
-      wait_until(timeout: timeout, interval: interval, &:present?)
+      Appium::Core::Wait.until_true(timeout: 60, message: message, interval: interval) { present? }
     end
 
     self
@@ -647,7 +645,7 @@ module SdcElementHelper
     if respond_to? :wait_while_present
       send(:wait_while_present, timeout: timeout)
     else
-      wait_while(timeout: timeout, interval: interval, &:present?)
+      Appium::Core::Wait.until_true(timeout: 60, message: message, interval: interval) { !present? }
     end
 
     self
