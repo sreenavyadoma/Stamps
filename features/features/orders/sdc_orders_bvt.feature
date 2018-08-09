@@ -21,7 +21,7 @@ Feature:  BVT tests for Orders
   Scenario:  BVT Add a new order
     Then sign-in to orders
     Then add new order
-    Then set order details ship-to to random address between zone 9
+    Then set order details ship-to to random address in zone 9
     Then set order details service to PM Package
     Then set order details pounds to 1
     Then set order details ounces to 1

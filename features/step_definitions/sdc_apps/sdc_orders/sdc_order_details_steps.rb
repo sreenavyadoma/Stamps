@@ -1,14 +1,19 @@
 
 Then /^set order details ship-to to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
   step 'show order ship-to details'
-  TestData.hash[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address))
-  domestic = SdcOrders.order_details.ship_to.domestic
-  domestic.address.click
-  domestic.address.set(TestData.hash[:ship_to_domestic])
-  step 'wait for js to stop'
-  step 'blur out on order details form'
-  step 'Save Order Details data'
+  hash = TestHelper.address_helper_zone(address)
+  full_name = hash[:full_name]
+  company = hash[:company]
+  street_address1 = hash[:street_address]
+  street_address2 = hash[:street_address2]
+  city = hash[:city]
+  state = hash[:city]
+  zip = hash[:zip]
+  ship_to = "#{full_name},#{company},#{street_address1},#{street_address2},#{city} #{state} #{zip}"
+
+  step "set order details ship-to text area to #{ship_to}"
   step 'hide order ship-to details'
+  TestData.hash[:ship_to_domestic] = hash
 end
 
 Then /^add order details item (\d+), qty (\d+), id (.+), description (.*)$/ do |item, qty, id, description|
@@ -100,15 +105,15 @@ end
 Then /^set order details ship-to international address to$/ do |table|
   param = table.hashes.first
   country = param['country']
-  full_name = param['full_name']
-  company = param['company']
+  full_name = param[:full_name]
+  company = param[:company]
   street_address1 = param['street_address1']
-  street_address2 = param['street_address2']
-  city = param['city']
+  street_address2 = param[:street_address2]
+  city = param[:city]
   province = param['province']
   postal_code = param['postal_code']
-  phone = param['phone']
-  email = param['email']
+  phone = param[:phone]
+  email = param[:email]
 
   full_name = full_name.downcase.include?('random') ? TestHelper.rand_full_name : full_name
   company = company.downcase.include?('random') ? TestHelper.rand_comp_name : company
@@ -135,15 +140,15 @@ end
 Then /^set order details ship-to domestic address to$/ do |table|
   param = table.hashes.first
   country = param['country']
-  full_name = param['full_name']
-  company = param['company']
+  full_name = param[:full_name]
+  company = param[:company]
   street_address1 = param['street_address1']
-  street_address2 = param['street_address2']
-  city = param['city']
-  state = param['state']
-  zip = param['zip']
-  phone = param['phone']
-  email = param['email']
+  street_address2 = param[:street_address2]
+  city = param[:city]
+  state = param[:state]
+  zip = param[:zip]
+  phone = param[:phone]
+  email = param[:email]
 
   full_name = full_name.downcase.include?('random') ? TestHelper.rand_full_name : full_name
   company = company.downcase.include?('random') ? TestHelper.rand_comp_name : company
@@ -372,6 +377,7 @@ end
 Then /^set order details length to (\d*)$/ do |str|
   order_details = SdcOrders.order_details
   dimensions = order_details.dimensions
+  dimensions.length.wait_until_present(timeout: 10)
   dimensions.length.set(str)
   expect(dimensions.length.text_value).to eql str
   TestData.hash[:length] = str
@@ -381,6 +387,7 @@ end
 Then /^set order details width to (\d*)$/ do |str|
   order_details = SdcOrders.order_details
   dimensions = order_details.dimensions
+  dimensions.width.wait_until_present(timeout: 10)
   dimensions.width.set(str)
   expect(dimensions.width.text_value).to eql str
   TestData.hash[:width] = str
@@ -390,6 +397,7 @@ end
 Then /^set order details height to (\d*)$/ do |str|
   order_details = SdcOrders.order_details
   dimensions = order_details.dimensions
+  dimensions.height.wait_until_present(timeout: 10)
   dimensions.height.set(str)
   expect(dimensions.height.text_value).to eql str
   TestData.hash[:height] = str

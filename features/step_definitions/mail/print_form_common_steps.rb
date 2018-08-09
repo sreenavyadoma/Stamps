@@ -281,13 +281,13 @@ Then /^set print form ship-to to international address$/ do |table|
   hash = table.hashes.first
   step "set print form mail-to country to #{hash['country']}"
   step "set print form name to #{hash['name']}"
-  step "set print form company to #{hash['company']}"
+  step "set print form company to #{hash[:company]}"
   step "set print form address 1 to #{hash['street_address1']}"
-  step "set print form address 2 to #{hash['street_address2']}"
+  step "set print form address 2 to #{hash[:street_address2]}"
   step "set print form province to #{hash['province']}"
-  step "set print form city to #{hash['city']}"
+  step "set print form city to #{hash[:city]}"
   step "set print form postal code to #{hash['postal_code']}"
-  step "set print form phone to #{hash['phone']}"
+  step "set print form phone to #{hash[:phone]}"
   TestData.hash[:address_hash] = hash
 end
 

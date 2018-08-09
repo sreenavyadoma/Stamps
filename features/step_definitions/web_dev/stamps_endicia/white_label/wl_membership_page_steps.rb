@@ -234,15 +234,15 @@ Then /^WL: set membership page personal info to(?: a |)(?: random info |)(?:to|i
 
   TestData.hash[:personal_info] = TestHelper.address_helper_zone(address) #combine this
 
-  TestData.hash[:first_name] = TestData.hash[:personal_info]['first_name'] #combine this in address_helper_zone
-  TestData.hash[:last_name] = TestData.hash[:personal_info]['last_name']
-  TestData.hash[:street_address] = TestData.hash[:personal_info]['street_address']
-  TestData.hash[:city] = TestData.hash[:personal_info]['city']
-  TestData.hash[:state] = TestData.hash[:personal_info]['state']
-  TestData.hash[:zip] = TestData.hash[:personal_info]['zip']
-  TestData.hash[:company] = TestData.hash[:personal_info]['company']
+  TestData.hash[:first_name] = TestData.hash[:personal_info][:first_name] #combine this in address_helper_zone
+  TestData.hash[:last_name] = TestData.hash[:personal_info][:last_name]
+  TestData.hash[:street_address] = TestData.hash[:personal_info][:street_address]
+  TestData.hash[:city] = TestData.hash[:personal_info][:city]
+  TestData.hash[:state] = TestData.hash[:personal_info][:state]
+  TestData.hash[:zip] = TestData.hash[:personal_info][:zip]
+  TestData.hash[:company] = TestData.hash[:personal_info][:company]
   TestData.hash[:ship_to_domestic] = TestHelper.format_address(TestData.hash[:personal_info])
-  TestData.hash[:phone_number_format] =  TestData.hash[:personal_info]['phone_number_format']
+  TestData.hash[:phone_number_format] =  TestData.hash[:personal_info][:phone_number_format]
 
   step "WL: set membership page first name to #{TestData.hash[:first_name]}"
   step "WL: set membership page last name to #{TestData.hash[:last_name]}"
@@ -693,10 +693,10 @@ end
 Then /^WL: set postage meter address between (.*)$/ do |address|
   TestData.hash[:personal_info] = TestHelper.address_helper_zone(address) #combine this
 
-  TestData.hash[:street_address] = TestData.hash[:personal_info]['street_address']
-  TestData.hash[:city] = TestData.hash[:personal_info]['city']
-  TestData.hash[:state] = TestData.hash[:personal_info]['state']
-  TestData.hash[:zip] = TestData.hash[:personal_info]['zip']
+  TestData.hash[:street_address] = TestData.hash[:personal_info][:street_address]
+  TestData.hash[:city] = TestData.hash[:personal_info][:city]
+  TestData.hash[:state] = TestData.hash[:personal_info][:state]
+  TestData.hash[:zip] = TestData.hash[:personal_info][:zip]
 
   step "WL: set postage meter address to #{TestData.hash[:street_address]}"
   step "WL: set postage meter city to #{TestData.hash[:city]}"

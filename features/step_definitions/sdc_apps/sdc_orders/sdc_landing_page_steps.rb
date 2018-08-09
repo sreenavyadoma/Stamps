@@ -98,15 +98,16 @@ end
 Then /^loading orders...$/ do
   toolbar = SdcOrders.toolbar
   loading_orders = SdcOrders.loading_orders
-  print 'loading_orders.safe_wait_until_present(timeout: 30)...'
+  SdcLogger.debug 'loading_orders.safe_wait_until_present(timeout: 30)...'
   loading_orders.safe_wait_until_present(timeout: 30)
-  print 'loading_orders.safe_wait_while_present(timeout: 60)...'
+  SdcLogger.debug 'loading_orders.safe_wait_while_present(timeout: 60)...'
   loading_orders.safe_wait_while_present(timeout: 60)
-  print 'SdcGrid.body.safe_wait_until_present(timeout: 60)...'
+  SdcLogger.debug 'SdcGrid.body.safe_wait_until_present(timeout: 60)...'
   SdcGrid.body.safe_wait_until_present(timeout: 60)
-  print 'expect(toolbar.add).to be_present...'
+  SdcLogger.debug 'expect(toolbar.add).to be_present...'
   expect(toolbar.add).to be_present
-  print 'loading orders... done!'
+  expect(SdcOrders.loading_orders.text).not_to eql('') if SdcOrders.loading_orders.present?
+  SdcLogger.debug 'loading orders... done!'
 end
 
 Then /^set Orders landing page username to (.*)$/ do |str|
