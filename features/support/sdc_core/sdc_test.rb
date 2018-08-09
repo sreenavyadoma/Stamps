@@ -27,9 +27,12 @@ class SdcTest
         error_msg = 'Cannot determine if this is a browser, iOS or Android test'
         raise ArgumentError, error_msg
       end
+
+      SdcLogger.debug 'SdcTest.configure... done!'
     end
 
     def start
+      SdcLogger.debug 'start... '
       require_gems
 
       begin
