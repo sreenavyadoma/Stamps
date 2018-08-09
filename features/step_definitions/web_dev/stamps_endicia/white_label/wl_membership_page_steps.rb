@@ -829,7 +829,7 @@ end
 #.............................Exact Address..........................................#
 Then /^WL: expect membership page exact addr modal header to be (.*)$/ do |str|
   exact_addr_header = WhiteLabel.membership_page.exact_addr_header
-  exact_addr_header.wait_until_present(timeout: 2)
+  exact_addr_header.wait_until_present(timeout: 5)
   expect(exact_addr_header.text_value.strip).to eql(str)
 end
 
