@@ -59,10 +59,10 @@ sql_server_vbridge:
 sql_server_stampmart:
    qacc:
       server:
-      database:
+      database: StampMart
       port: 1433
-      username:
-      password:
+      username: corp\lab
+      password: Sdcqatest623
       azure: false
    stg:
      server: sdc11db01.stage02.aws.local
