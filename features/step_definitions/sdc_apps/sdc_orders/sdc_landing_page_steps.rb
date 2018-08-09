@@ -75,6 +75,7 @@ Then /^sign-in to orders$/ do
   TestData.hash[:username] = usr
   TestData.hash[:password] = pw
   SdcGlobal.web_app = :orders
+  SdcLogger.debug 'sign-in to orders... done!'
 end
 
 Then /^browser: click sign-in button$/ do
