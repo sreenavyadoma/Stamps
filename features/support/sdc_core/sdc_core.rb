@@ -635,7 +635,7 @@ module SdcElementHelper
     if respond_to? :wait_until_present
       send(:wait_until_present, timeout: timeout, interval: interval)
     else
-      Appium::Core::Wait.until_true(timeout: 60, message: message, interval: interval) { present? }
+      Appium::Core::Wait.until_true(timeout: 60, message: message) { present? }
     end
 
     self
@@ -645,7 +645,7 @@ module SdcElementHelper
     if respond_to? :wait_while_present
       send(:wait_while_present, timeout: timeout)
     else
-      Appium::Core::Wait.until_true(timeout: 60, message: message, interval: interval) { !present? }
+      Appium::Core::Wait.until_true(timeout: 60, message: message) { !present? }
     end
 
     self
