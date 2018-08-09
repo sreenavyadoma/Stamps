@@ -635,7 +635,7 @@ module SdcElementHelper
     if respond_to? :wait_until_present
       send(:wait_until_present, timeout: timeout, interval: interval)
     else
-      Appium::Core::Wait.until_true(timeout: 60, message: message) { present? }
+      Appium::Core::Wait.until_true(timeout: timeout, message: message) { present? }
     end
 
     self
@@ -645,7 +645,7 @@ module SdcElementHelper
     if respond_to? :wait_while_present
       send(:wait_while_present, timeout: timeout)
     else
-      Appium::Core::Wait.until_true(timeout: 60, message: message) { !present? }
+      Appium::Core::Wait.until_true(timeout: timeout, message: message) { !present? }
     end
 
     self
@@ -654,6 +654,8 @@ module SdcElementHelper
   def safe_wait_until_present(timeout: 60, message: nil, interval: nil)
     wait_until_present(timeout: timeout, interval: interval)
   rescue ::Watir::Wait::TimeoutError
+    # ignore
+  rescue ::Appium::Core::Wait::TimeoutError
     # ignore
   rescue ::Selenium::WebDriver::Error::TimeOutError
     # ignore
@@ -664,6 +666,8 @@ module SdcElementHelper
   def safe_wait_while_present(timeout: 60, message: nil, interval: nil)
     wait_while_present(timeout: timeout)
   rescue ::Watir::Wait::TimeoutError
+    # ignore
+  rescue ::Appium::Core::Wait::TimeoutError
     # ignore
   rescue ::Selenium::WebDriver::Error::TimeOutError
     # ignore
