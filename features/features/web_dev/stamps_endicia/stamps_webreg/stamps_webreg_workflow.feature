@@ -158,3 +158,19 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: click membership page submit button
     Then WL: expect offer does not include an atg promotion
     Then WL: expect user is navigated to print page
+
+  @sdcwr_session_state_data_validation
+  Scenario: Stamps WebReg: Session State Data Validation
+    Then WL: navigates to default registration page for stamps with the following offer id 404
+    Then WL: set profile page default values
+    Then WL: click profile page continue button
+    Then WL: set membership page default values
+    Then WL: click membership page back button
+
+    #Validate profile page data is still present
+    Then WL: expect profile page email is correct
+    Then WL: expect profile page username is correct
+    Then WL: expect profile page password is correct
+    Then WL: expect profile page re-type password is correct
+    Then WL: expect profile page survey question is correct
+    Then WL: expect profile page promo code is correct

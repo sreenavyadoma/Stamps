@@ -73,7 +73,7 @@ Then /^WL: set profile page username to (?:random value|(.*))$/ do |str|
   end
   expect(username.text_value.strip).not_to eql('')
   step "WL: blur_out on profile page"
-  TestData.hash[:username_taken] = WhiteLabel.common_page.username_query(TestData.hash[:username_taken])
+  #TestData.hash[:username_taken] = WhiteLabel.common_page.username_query(TestData.hash[:username_taken])
   SdcLogger.info "UserName = #{str}"
   TestData.hash[:username] = str
 end
@@ -186,10 +186,6 @@ Then /^WL: expect profile page promo code tooltip (\d+) to be (.*)$/ do |index, 
   expect(tooltip_text[index - 1]).to eql(str)
 end
 
-Then /^WL: expect profile page survey question exists$/ do
-  expect(WhiteLabel.profile_page.survey).to be_present
-end
-
 Then /^WL: expect profile page promo code link exists$/ do
   expect(WhiteLabel.profile_page.promo_code_link).to be_present
 end
@@ -237,6 +233,7 @@ Then /^WL: set profile page promo code to (.*)$/ do |str|
       break unless profile_page.promo_code_hidden.text_value.strip == ''
     end
   end
+  TestData.hash[:promo_code] = str
   step 'WL: blur_out on profile page'
 end
 
@@ -250,7 +247,22 @@ Then /^WL: show profile page promo code$/ do
   end
 end
 
+Then /^WL: expect profile page promo code is correct$/do
+  step 'WL: show profile page promo code'
+  step 'pause for 1 second'
+  profile_page = WhiteLabel.profile_page
+  if profile_page.promo_code.present?
+    expect(profile_page.promo_code.text_value.strip).to eql(TestData.hash[:promo_code])
+  else
+    expect(profile_page.promo_code_hidden.text_value.strip).to eql(TestData.hash[:promo_code])
+  end
+end
+
 #.......survey quetion......#
+
+Then /^WL: expect profile page survey question exists$/ do
+  expect(WhiteLabel.profile_page.survey).to be_present
+end
 
 Then /^WL: set profile page survey question to (.*)$/ do |str|
   profile_page = WhiteLabel.profile_page
