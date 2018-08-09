@@ -201,6 +201,7 @@ Feature: Endicia WebReg: Membership Page
     Pricing and billing details
     """
 
+
     Then WL: expect membership page pricing and billing paragraph to be
     """
     If you decide to continue past the trial, you will be charged a service fee of just $plan_rate per month. This includes the month following registration. For your convenience, your Endicia service will continue uninterrupted unless you decide to cancel. No service fee will be charged if you cancel within the trial period. Your credit card may also be used to pay for postage and optional services.
@@ -222,3 +223,4 @@ Feature: Endicia WebReg: Membership Page
     Then WL: click membership page terms & conditions link
     Then WL: expect membership page terms and conditions modal is present
     Then WL: click membership page terms & conditions modal x button
+
