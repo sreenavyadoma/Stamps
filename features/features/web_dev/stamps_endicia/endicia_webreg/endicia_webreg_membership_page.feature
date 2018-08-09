@@ -223,4 +223,3 @@ Feature: Endicia WebReg: Membership Page
     Then WL: click membership page terms & conditions link
     Then WL: expect membership page terms and conditions modal is present
     Then WL: click membership page terms & conditions modal x button
-
