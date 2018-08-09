@@ -92,7 +92,12 @@ end
 
 Then /^click sign-in button on ios$/ do
   landing_page = SdcWebsite.landing_page
-  landing_page.sign_in.send_keys :enter
+  5.times do
+    landing_page.sign_in.send_keys :enter
+    landing_page.sign_in.safe_wait_while_present(timeout: 1)
+    break unless landing_page.sign_in.present?
+  end
+  expect(landing_page.sign_in).not_to be_present
   step 'loading orders...'
 end
 
