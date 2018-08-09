@@ -1,7 +1,6 @@
 
 Then /^visit Orders landing page$/ do
   step 'initialize test parameters'
-  step 'fetch user credentials from MySQL'
 
   env = case TestSession.env.url
         when :qacc
@@ -62,35 +61,28 @@ end
 Then /^sign-in to orders$/ do
   step 'Verify Health Check for Orders' if TestSession.env.healthcheck
   step 'visit Orders landing page'
-  usr = TestData.hash[:username]
-  pw = TestData.hash[:password]
+  usr = TestSession.env.usr
+  pw = TestSession.env.pw
   step "set Orders landing page username to #{usr}"
   step "set Orders landing page password to #{pw}"
 
   if TestSession.env.ios_test
-    step 'click sign-in button on ios'
+    step 'ios: click sign-in button'
   elsif TestSession.env.browser_test
-    step 'click sign-in button on browser'
+    step 'browser: click sign-in button'
     step 'close whats new modal in orders'
   end
+  TestData.hash[:username] = usr
+  TestData.hash[:password] = pw
   SdcGlobal.web_app = :orders
 end
 
-Then /^click sign-in button on browser$/ do
+Then /^browser: click sign-in button$/ do
   step 'click Orders landing page sign-in button'
   step 'loading orders...'
 end
 
-Then /^loading orders...$/ do
-  toolbar = SdcOrders.toolbar
-  loading_orders = SdcOrders.loading_orders
-  loading_orders.safe_wait_until_present(timeout: 30)
-  loading_orders.safe_wait_while_present(timeout: 60)
-  SdcGrid.body.safe_wait_until_present(timeout: 80)
-  expect(toolbar.add).to be_present
-end
-
-Then /^click sign-in button on ios$/ do
+Then /^ios: click sign-in button$/ do
   landing_page = SdcWebsite.landing_page
   landing_page.sign_in.send_keys_while_present(iteration: 3, timeout: 4)
   step 'loading orders...'
@@ -100,6 +92,15 @@ Then /^click sign-in button on android$/ do
   SdcPage.browser.hide_keyboard
   SdcPage.browser.action.move_to(landing_page.sign_in).click.perform
   SdcPage.browser.action.move_to(landing_page.sign_in).send_keys(:enter).perform
+end
+
+Then /^loading orders...$/ do
+  toolbar = SdcOrders.toolbar
+  loading_orders = SdcOrders.loading_orders
+  loading_orders.safe_wait_until_present(timeout: 30)
+  loading_orders.safe_wait_while_present(timeout: 60)
+  SdcGrid.body.safe_wait_until_present(timeout: 80)
+  expect(toolbar.add).to be_present
 end
 
 Then /^set Orders landing page username to (.*)$/ do |str|
