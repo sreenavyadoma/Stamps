@@ -101,14 +101,14 @@ end
 
 Then /^on manage shipping address modal, add address$/ do |ship_from|
   TestData.hash[:ship_from_address] = ship_from.hashes.first
-  TestData.hash[:ship_from_zip] = TestData.hash[:ship_from_address]['ship_from_zip']
+  TestData.hash[:ship_from_zip] = TestData.hash[:ship_from_address][:ship_from_zip]
   TestData.hash[:full_name] = TestData.hash[:ship_from_address][:full_name]
-  TestData.hash[:company] = TestData.hash[:ship_from_address]['company']
-  TestData.hash[:street_address] = TestData.hash[:ship_from_address]['street_address']
-  TestData.hash[:street_address2] = TestData.hash[:ship_from_address]['street_address2']
-  TestData.hash[:city] = TestData.hash[:ship_from_address]['city']
-  TestData.hash[:state] = TestData.hash[:ship_from_address]['state']
-  TestData.hash[:zip] = TestData.hash[:ship_from_address]['zip']
+  TestData.hash[:company] = TestData.hash[:ship_from_address][:company]
+  TestData.hash[:street_address] = TestData.hash[:ship_from_address][:street_address]
+  TestData.hash[:street_address2] = TestData.hash[:ship_from_address][:street_address2]
+  TestData.hash[:city] = TestData.hash[:ship_from_address][:city]
+  TestData.hash[:state] = TestData.hash[:ship_from_address][:state]
+  TestData.hash[:zip] = TestData.hash[:ship_from_address][:zip]
   TestData.hash[:phone] = TestData.hash[:ship_from_address][:phone]
   step 'Open Manage Shipping Address modal'
   step 'Click Manage Shipping Address Add button'

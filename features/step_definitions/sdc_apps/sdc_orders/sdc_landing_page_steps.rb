@@ -1,7 +1,6 @@
 
 Then /^visit Orders landing page$/ do
   step 'initialize test parameters'
-  step 'fetch user credentials from MySQL'
 
   env = case TestSession.env.url
         when :qacc
@@ -62,46 +61,53 @@ end
 Then /^sign-in to orders$/ do
   step 'Verify Health Check for Orders' if TestSession.env.healthcheck
   step 'visit Orders landing page'
-  usr = TestData.hash[:username]
-  pw = TestData.hash[:password]
+  usr = TestSession.env.usr
+  pw = TestSession.env.pw
   step "set Orders landing page username to #{usr}"
   step "set Orders landing page password to #{pw}"
 
-  if SdcEnv.ios
-    step 'click sign-in button on ios'
-  elsif SdcEnv.android
-    step 'click sign-in button on android'
-  else
-    step 'click sign-in button on browser'
+  if TestSession.env.ios_test
+    step 'ios: click sign-in button'
+  elsif TestSession.env.browser_test
+    step 'browser: click sign-in button'
     step 'close whats new modal in orders'
   end
+  TestData.hash[:username] = usr
+  TestData.hash[:password] = pw
   SdcGlobal.web_app = :orders
+  print 'sign-in to orders... done!'
 end
 
-Then /^click sign-in button on browser$/ do
-  landing_page = SdcWebsite.landing_page
-  toolbar = SdcOrders.toolbar
-
+Then /^browser: click sign-in button$/ do
   step 'click Orders landing page sign-in button'
-
-  loading_orders = SdcOrders.loading_orders
-  loading_orders.safe_wait_until_present(timeout: 20)
-  loading_orders.safe_wait_while_present(timeout: 60)
-  SdcGrid.body.safe_wait_until_present(timeout: 80)
-  expect(toolbar.add).to be_present
+  step 'loading orders...'
 end
 
-Then /^click sign-in button on ios$/ do
+Then /^ios: click sign-in button$/ do
   landing_page = SdcWebsite.landing_page
-  landing_page.sign_in.click
-  landing_page.sign_in.safe_click
-  #landing_page.sign_in.safe_send_keys(:enter)
+  landing_page.sign_in.send_keys_while_present(iteration: 3, timeout: 4)
+  step 'loading orders...'
 end
 
 Then /^click sign-in button on android$/ do
   SdcPage.browser.hide_keyboard
   SdcPage.browser.action.move_to(landing_page.sign_in).click.perform
   SdcPage.browser.action.move_to(landing_page.sign_in).send_keys(:enter).perform
+end
+
+Then /^loading orders...$/ do
+  toolbar = SdcOrders.toolbar
+  loading_orders = SdcOrders.loading_orders
+  SdcLogger.debug 'loading_orders.safe_wait_until_present(timeout: 30)...'
+  loading_orders.safe_wait_until_present(timeout: 30)
+  SdcLogger.debug 'loading_orders.safe_wait_while_present(timeout: 60)...'
+  loading_orders.safe_wait_while_present(timeout: 60)
+  SdcLogger.debug 'SdcGrid.body.safe_wait_until_present(timeout: 60)...'
+  SdcGrid.body.safe_wait_until_present(timeout: 60)
+  SdcLogger.debug 'expect(toolbar.add).to be_present...'
+  expect(toolbar.add).to be_present
+  expect(SdcOrders.loading_orders.text).not_to eql('') if SdcOrders.loading_orders.present?
+  SdcLogger.debug 'loading orders... done!'
 end
 
 Then /^set Orders landing page username to (.*)$/ do |str|
@@ -148,12 +154,14 @@ Then /^close whats new modal in orders$/ do
 end
 
 Then /^[Ss]ign-out of SDC [Ww]ebsite$/ do
-  user_drop_down = SdcNavigation.user_drop_down
-  user_drop_down.signed_in_user.wait_until_present(timeout: 5)
-  user_drop_down.signed_in_user.hover
-  user_drop_down.sign_out_link.safe_wait_until_present(timeout: 1)
-  user_drop_down.sign_out_link.safe_click
-  SdcWebsite.landing_page.username.safe_wait_until_present(timeout: 4)
+  if TestSession.env.browser_test
+    user_drop_down = SdcNavigation.user_drop_down
+    user_drop_down.signed_in_user.wait_until_present(timeout: 5)
+    user_drop_down.signed_in_user.hover
+    user_drop_down.sign_out_link.safe_wait_until_present(timeout: 1)
+    user_drop_down.sign_out_link.safe_click
+    SdcWebsite.landing_page.username.safe_wait_until_present(timeout: 4)
+  end
 end
 
 Then /^Verify Health Check for (.+)$/ do |str|

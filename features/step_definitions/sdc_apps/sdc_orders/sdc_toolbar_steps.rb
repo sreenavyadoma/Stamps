@@ -9,7 +9,10 @@ Then /^add order (\d+)$/ do |count|
   initializing = SdcOrders.initializing_orders_db
   server_error = SdcOrders.modals.server_error
   toolbar.add.wait_until_present(timeout: 10)
-  toolbar.add.click
+
+  toolbar.add.click if TestSession.env.browser_test
+  toolbar.add.send_keys(:enter) if TestSession.env.ios_test
+
   order_details.title.safe_wait_until_present(timeout: 10)
   if server_error.title.present?
     error_msg = "#{server_error.title.text} - #{server_error.body.text}"
