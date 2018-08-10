@@ -492,7 +492,7 @@ Feature:  BVT tests for Orders
     Then set order details width to 1
     Then set order details length to 1
     Then set order details height to 1
-    Then set order details service to FCM Large Envelope/Flat
+    #Then set order details service to FCM Large Envelope/Flat
     Then set order details service to FCM Package/Thick Envelope
     Then set order details service to PM Large/Thick Envelope
     Then set order details service to PM Package
