@@ -39,6 +39,15 @@ Then /^sign-in to mail$/ do
     step 'close whats new modal in mail'
     step 'expect user is signed in'
   end
+
+  rating_error = SdcWebsite.rating_error
+  rating_error.safe_wait_until_present(timeout: 2)
+  if rating_error.present?
+    error_msg = rating_error.body.text_value
+    rating_error.ok.click
+    expect(error_msg).to eql('')
+  end
+
   TestData.hash[:username] = usr
   TestData.hash[:password] = pw
 end
