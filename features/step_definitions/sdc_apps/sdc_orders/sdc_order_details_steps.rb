@@ -677,11 +677,13 @@ end
 Then /^expect order details ship-from is (?:correct|(.*))$/ do |str|
   step 'show order ship-to details'
   str ||= TestData.hash[:ship_from]
-  ship_from = SdcOrders.order_details.ship_from
-  ship_from.text_field.scroll_into_view
-  ship_from.text_field.wait_until_present(timeout: 10)
-  result = ship_from.text_field.text_value
-  expect(result).to eql(str)
+  if str
+    ship_from = SdcOrders.order_details.ship_from
+    ship_from.text_field.scroll_into_view
+    ship_from.text_field.wait_until_present(timeout: 10)
+    result = ship_from.text_field.text_value
+    expect(result).to eql(str)
+  end
 end
 
 Then /^expect order details reference number is (?:correct|(.*))$/ do |str|
