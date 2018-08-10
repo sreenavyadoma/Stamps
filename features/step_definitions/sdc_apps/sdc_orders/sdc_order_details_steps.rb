@@ -540,9 +540,15 @@ end
 
 Then /^set order details tracking to (.*)$/ do |str|
   tracking = SdcOrders.order_details.tracking
-  tracking.selection_element(value: str)
-  tracking.drop_down.click unless tracking.selection.present?
-  tracking.selection.safe_click unless tracking.selection.class_disabled?
+  selection = tracking.selection_element(value: str)
+  tracking.drop_down.click
+  3.times do
+    selection.scroll_into_view
+    selection.wait_until_present(timeout: 2)
+    selection.safe_click
+    break if tracking.text_field.text_value.eql?(str)
+    tracking.drop_down.click unless selection.present?
+  end
   expect(tracking.text_field.text_value).to eql(str)
   TestData.hash[:tracking] = str
   step 'Save Order Details data'

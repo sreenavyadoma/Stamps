@@ -196,9 +196,9 @@ Feature:  BVT tests for Orders
     Then expect orders grid store is Manual Orders
     Then expect orders grid order id is correct
     Then expect orders grid ship cost is correct
-    Then expect orders grid age is < 24 hours
+    #Then expect orders grid age is < 24 hours
     Then expect orders grid order date is populated
-    Then expect orders grid recipient is correct
+    #Then expect orders grid recipient is correct
     Then expect orders grid address is 777 N Orange Ave Apt 100
     Then expect orders grid city is Orlando
     Then expect orders grid state is FL
@@ -350,7 +350,6 @@ Feature:  BVT tests for Orders
 
     Then expect orders grid service is correct
     Then expect orders grid service is correct
-#    Then expect order details insure-for is correct
    Then expect orders grid order status is Awaiting Shipment
 
     Then sign out
@@ -464,7 +463,7 @@ Feature:  BVT tests for Orders
   Scenario:  BVT Printing
     Then sign-in to orders
     Then add new order
-    Then set order details ship-to to random address between zone 5 and 8
+    Then set order details ship-to to random address in zone 8
     Then set order details service to PM Package
     Then set order details ounces to 1
     Then set order details width to 1
@@ -481,19 +480,20 @@ Feature:  BVT tests for Orders
     Then sign out
 
   @bvt_orders_ui_validation
+  @bvt_orders_ui_validation_order_details
   Scenario:  BVT UI Validation for Single Order Detail form
     Then sign-in to orders
     Then add new order
     Then expect order details is present
     ##Then set order details ship-from to Automation - El Segundo, CA
-    Then set order details ship-to to random address between zone 5 and 8
+    Then set order details ship-to to random address in zone 9
     Then set order details service to PM Package
     Then set order details pounds to 0
     Then set order details ounces to 1
     Then set order details width to 1
     Then set order details length to 1
     Then set order details height to 1
-    Then set order details service to FCM Large Envelope/Flat
+    #Then set order details service to FCM Large Envelope/Flat
     Then set order details service to FCM Package/Thick Envelope
     Then set order details service to PM Large/Thick Envelope
     Then set order details service to PM Package
@@ -519,7 +519,6 @@ Feature:  BVT tests for Orders
     #Then uncheck order details insure-for checkbox
     Then check order details insure-for checkbox
     Then set order details insure-for to 11.99
-    Then set order details tracking to Signature Required
     Then set order details tracking to USPS Tracking
     Then set order details reference to STMPS111
     Then add order details item 1, qty 1, id ID 1, description Description 1

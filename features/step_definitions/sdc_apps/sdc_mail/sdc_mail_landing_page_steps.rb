@@ -19,13 +19,10 @@ Then /^visit Mail$/ do
 end
 
 Then /^sign-in to mail$/ do
-  SdcEnv.width = SdcPage.browser.window.size.width
-  SdcEnv.height = SdcPage.browser.window.size.height
-
   step 'visit Mail'
   step 'fetch user credentials from MySQL'
   modal = SdcWebsite.navigation.mail_sign_in_modal
-  if SdcEnv.width.to_i < 1195
+  if TestSession.env.mobile_device || SdcPage.browser.window.size.width < 1195
     modal.hamburger_menu.click
     modal.sign_in.click
     step "set sign in page username to #{TestData.hash[:username]}"
