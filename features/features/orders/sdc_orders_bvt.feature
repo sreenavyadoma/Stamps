@@ -480,6 +480,7 @@ Feature:  BVT tests for Orders
     Then sign out
 
   @bvt_orders_ui_validation
+  @bvt_orders_ui_validation_order_details
   Scenario:  BVT UI Validation for Single Order Detail form
     Then sign-in to orders
     Then add new order

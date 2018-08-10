@@ -217,7 +217,7 @@ module SdcCore
         us_states = data_for(:us_states, {})
         hash = {}
         hash[:street_address] = address['street_address']
-        hash[:street_address2] = address['street_address2'] || rand_suite
+        hash[:street_address2] = address['street_address2']
         hash[:city] = address['city']
         hash[:state] = address['state']
         hash[:zip] = address['zip']
