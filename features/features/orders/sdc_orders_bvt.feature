@@ -519,7 +519,6 @@ Feature:  BVT tests for Orders
     #Then uncheck order details insure-for checkbox
     Then check order details insure-for checkbox
     Then set order details insure-for to 11.99
-    Then set order details tracking to Signature Required
     Then set order details tracking to USPS Tracking
     Then set order details reference to STMPS111
     Then add order details item 1, qty 1, id ID 1, description Description 1
