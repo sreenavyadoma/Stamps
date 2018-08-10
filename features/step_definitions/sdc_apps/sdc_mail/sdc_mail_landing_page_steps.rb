@@ -40,9 +40,9 @@ Then /^sign-in to mail$/ do
     step 'expect user is signed in'
   end
 
-  rating_error = SdcWebsite.rating_error
-  rating_error.safe_wait_until_present(timeout: 2)
-  if rating_error.present?
+  rating_error = SdcWebsite.modals.rating_error
+  rating_error.body.safe_wait_until_present(timeout: 2)
+  if rating_error.body.present?
     error_msg = rating_error.body.text_value
     rating_error.ok.click
     expect(error_msg).to eql('')

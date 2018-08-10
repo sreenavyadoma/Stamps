@@ -156,8 +156,8 @@ Then /^click Orders landing page sign-in button$/ do
     expect(str).to eql('')
   end
   landing_page.sign_in.safe_wait_while_present(timeout: 10)
-  rating_error.safe_wait_until_present(timeout: 2)
-  if rating_error.present?
+  rating_error.body.safe_wait_until_present(timeout: 2)
+  if rating_error.body.present?
     error_msg = rating_error.body.text_value
     rating_error.ok.click
     expect(error_msg).to eql('')
