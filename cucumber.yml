@@ -1,13 +1,13 @@
 
-default: --backtrace --profile local_mobile
+default: --backtrace --profile local_browser
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
 # tests: bvt_shipstation_updates_domestic
 local_mobile: --tags @bvt_new_order URL=stg USR=stgom0dqgzppy PW=pass111 SELENIUM_DEVICE='iPhone X 11.3' SELENIUM_PLATFORM=iOS SELENIUM_BROWSER=Safari SELENIUM_VERSION=11.3 LOG_LEVEL=debug
 #local_mobile: --tags @bvt_new_order URL=cc USR=cctruer0u PW=pass111 SELENIUM_DEVICE='iPhone X 11.3' SELENIUM_PLATFORM=iOS SELENIUM_BROWSER=Safari SELENIUM_VERSION=11.3 LOG_LEVEL=debug
-#local_browser: --tags @bvt_shipstation_updates_domestic URL=stg BROWSER=ff MAX_WINDOW=false USR=stgom0dqgzppy PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=info
-#local_browser: --tags @bvt_new_order URL=cc BROWSER=ff MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=info
+#local_browser: --tags @bvt_orders_ui_validation URL=stg BROWSER=ff MAX_WINDOW=false USR=stgom0dqgzppy PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=info
+local_browser: --tags @bvt_orders_ui_validation URL=cc BROWSER=ff MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=info
 #local_browser: --tags @bvt_shipstation_updates_domestic URL=sc BROWSER=ff MAX_WINDOW=false USR=scsejsglwa PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=info
 sauce_mobile: --tags @healthcheck URL=stg USR=stgom0dqgzppy PW=pass111 SELENIUM_DEVICE='iPhone X Simulator' SELENIUM_PLATFORM=iOS SELENIUM_BROWSER=Safari SELENIUM_VERSION=11.3 SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443 SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef TUNNEL_IDENTIFIER=robs_mac LOG_LEVEL=info
 sauce_browser: --tags @authentication URL=stg USR=stgvoc0kcnt6rw PW=pass111 SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Mac 10.10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443 TUNNEL_IDENTIFIER=robs_mac LOG_LEVEL=info
