@@ -819,7 +819,7 @@ Then /^WL: expect membership page invalid address modal paragraph to be$/ do |st
 end
 
 Then /^WL: set membership page default values$/ do
-  step 'WL: set membership page personal info to random info between zone 5 and zone 8'
+  step 'WL: set membership page personal info to random info between zone 1 and zone 4'
   step 'WL: set membership page credit card number to 4111111111111111'
   step 'WL: select membership page credit card month Dec (12)'
   step 'WL: set membership page credit card year to this year plus 1'
