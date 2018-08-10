@@ -90,7 +90,7 @@ end
 Then /^ios: click sign-in button$/ do
   landing_page = SdcWebsite.landing_page
   landing_page.sign_in.send_keys_while_present(iteration: 3, timeout: 4)
-  landing_page.username.safe_wait_while_present(timeout: 15) if SdcGlobal.web_app.eql?(:mail)
+  landing_page.username.safe_wait_while_present(timeout: 5) if SdcGlobal.web_app.eql?(:mail)
   step 'loading orders...' if SdcGlobal.web_app.eql?(:orders)
 end
 
