@@ -463,7 +463,7 @@ Feature:  BVT tests for Orders
   Scenario:  BVT Printing
     Then sign-in to orders
     Then add new order
-    Then set order details ship-to to random address between zone 5 and 8
+    Then set order details ship-to to random address in zone 8
     Then set order details service to PM Package
     Then set order details ounces to 1
     Then set order details width to 1

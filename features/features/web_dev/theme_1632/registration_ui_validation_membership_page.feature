@@ -133,7 +133,7 @@ Feature: Registration Membership page validation Theme 1632
     Then expect Membership page State is correct
     Then expect Membership page Zip is correct
 
-    Then set Membership page member address to random address between zone 5 and 8
+    Then set Membership page member address to random address in zone 8
     Then expect Membership page Address is correct
     Then expect Membership page City is correct
     Then expect Membership page State is correct
