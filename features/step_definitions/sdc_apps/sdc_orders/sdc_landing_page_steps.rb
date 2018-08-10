@@ -1,5 +1,6 @@
 
 Then /^visit Orders landing page$/ do
+  SdcGlobal.web_app = :orders
   step 'initialize test parameters'
 
   env = case TestSession.env.url
@@ -63,6 +64,10 @@ Then /^sign-in to orders$/ do
   step 'visit Orders landing page'
   usr = TestSession.env.usr
   pw = TestSession.env.pw
+  step "sign-in to orders with #{usr}/#{pw}"
+end
+
+Then /^sign-in to orders with (.+)\/(.+)$/ do |usr, pw|
   step "set Orders landing page username to #{usr}"
   step "set Orders landing page password to #{pw}"
 
@@ -70,17 +75,16 @@ Then /^sign-in to orders$/ do
     step 'ios: click sign-in button'
   elsif TestSession.env.browser_test
     step 'browser: click sign-in button'
-    step 'close whats new modal in orders'
+    step 'close whats new modal in orders' if SdcGlobal.web_app.eql? :orders
   end
   TestData.hash[:username] = usr
   TestData.hash[:password] = pw
-  SdcGlobal.web_app = :orders
   print 'sign-in to orders... done!'
 end
 
 Then /^browser: click sign-in button$/ do
   step 'click Orders landing page sign-in button'
-  step 'loading orders...'
+  step 'loading orders...'  if SdcGlobal.web_app.eql? :orders
 end
 
 Then /^ios: click sign-in button$/ do
@@ -123,27 +127,33 @@ Then /^set Orders landing page password to (.*)$/ do |str|
 end
 
 Then /^set sign in page username to (.*)$/ do |str|
-  SdcWebsite.landing_page.username.set(str)
+  landing_page = SdcWebsite.landing_page
+  landing_page.username.wait_until_present(timeout: 10)
+  landing_page.username.set(str)
 end
 
 Then /^set sign in page password to (.*)$/ do |str|
-  SdcWebsite.landing_page.password.set(str)
+  landing_page = SdcWebsite.landing_page
+  landing_page.password.wait_until_present(timeout: 10)
+  landing_page.password.set(str)
 end
 
 Then /^click sign in page sign-in button$/ do
-  SdcWebsite.landing_page.sign_in.wait_until_present(timeout: 3)
-  SdcWebsite.landing_page.sign_in.click
+  landing_page = SdcWebsite.landing_page
+  landing_page.sign_in.wait_until_present(timeout: 10)
+  landing_pagee.sign_in.click
 end
 
 Then /^click Orders landing page sign-in button$/ do
   landing_page = SdcWebsite.landing_page
   landing_page.sign_in.wait_until_present(timeout: 3)
   landing_page.sign_in.click
-  landing_page.invalid_username.safe_wait_while_present(timeout: 1)
+  landing_page.invalid_username.safe_wait_while_present(timeout: 2)
   if landing_page.invalid_username.present?
     str = landing_page.invalid_username.text_value
     expect(str).to eql('')
   end
+  landing_page.sign_in.safe_wait_while_present(timeout: 5)
 end
 
 Then /^close whats new modal in orders$/ do
