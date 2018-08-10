@@ -84,13 +84,13 @@ end
 
 Then /^browser: click sign-in button$/ do
   step 'click Orders landing page sign-in button'
-  step 'loading orders...'  if SdcGlobal.web_app.eql? :orders
+  step 'loading orders...' if SdcGlobal.web_app.eql? :orders
 end
 
 Then /^ios: click sign-in button$/ do
   landing_page = SdcWebsite.landing_page
   landing_page.sign_in.send_keys_while_present(iteration: 3, timeout: 4)
-  step 'loading orders...'
+  step 'loading orders...' if SdcGlobal.web_app.eql? :orders
 end
 
 Then /^click sign-in button on android$/ do
