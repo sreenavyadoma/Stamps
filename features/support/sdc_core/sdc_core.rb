@@ -80,7 +80,11 @@ module TestSession
     key(:selenium_platform) { ENV['SELENIUM_PLATFORM'] }
     key(:selenium_version) { ENV['SELENIUM_VERSION'] }
     key(:selenium_browser) do
-      ENV['SELENIUM_BROWSER'] = 'edge' if ENV['SELENIUM_BROWSER'].eql?('MicrosoftEdge')
+      if ENV['SELENIUM_BROWSER'] && ENV['SELENIUM_BROWSER'].eql?('MicrosoftEdge')
+        ENV['SELENIUM_BROWSER'] = 'edge'
+      else
+        ENV['SELENIUM_BROWSER']
+      end
     end
     key(:selenium_driver) { ENV['SELENIUM_DRIVER'] }
     key(:sauce_build_name) { ENV['SAUCE_BUILD_NAME'] }
