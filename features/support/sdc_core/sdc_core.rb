@@ -12,7 +12,7 @@ module SdcEnv
                   :printer, :browser, :hostname, :mobile, :scenario,
                   :sauce_device, :test_name, :driver_log_level,
                   :browser_mobile_emulator, :android, :ios, :firefox_profile,
-                  :new_framework, :window_size, :web_dev, :jenkins, :sauce,
+                  :new_framework, :web_dev, :jenkins, :sauce,
                   :width, :height
   end
 end
@@ -299,7 +299,7 @@ module TestSession
     end
 
     if env.window_size
-      width, height = env.window_size.split("x")
+      width, height = env.window_size.downcase.split("x")
       begin
         @driver.window.resize_to(width, height)
         @driver.window.move_to(0, 0)
