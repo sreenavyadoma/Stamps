@@ -275,8 +275,8 @@ Feature:  BVT tests for Orders
     Then expect customs internal transaction number is Required
     Then set customs itn number to ITN123
     Then add customs associated item 1, description Item 1, qty 1, Price 1, Made In United States, Tariff 1
-    Then add customs associated item 2, description Item 2, qty 2, Price 2, Made In Japan, Tariff 2
-    Then add customs associated item 3, description Random String, qty 3, Price 3, Made In Canada, Tariff 3
+#    Then add customs associated item 2, description Item 2, qty 2, Price 2, Made In Japan, Tariff 2
+#    Then add customs associated item 3, description Random String, qty 3, Price 3, Made In Canada, Tariff 3
     Then check customs form i agree to the usps privacy act statement
     Then close customs information form
 
@@ -319,15 +319,15 @@ Feature:  BVT tests for Orders
     Then expect customs associated item 1 Unit Price is correct
     Then expect customs associated item 1 Made In is correct
     Then expect customs associated item 1 Tariff is correct
-    Then expect customs associated item 2 Description is correct
-    Then expect customs associated item 2 Quantity is correct
-    Then expect customs associated item 2 Unit Price is correct
-    Then expect customs associated item 2 Made In is correct
-    Then expect customs associated item 3 Description is correct
-    Then expect customs associated item 3 Quantity is correct
-    Then expect customs associated item 3 Unit Price is correct
-    Then expect customs associated item 3 Made In is correct
-    Then expect customs associated item 3 Tariff is correct
+#    Then expect customs associated item 2 Description is correct
+#    Then expect customs associated item 2 Quantity is correct
+#    Then expect customs associated item 2 Unit Price is correct
+#    Then expect customs associated item 2 Made In is correct
+#    Then expect customs associated item 3 Description is correct
+#    Then expect customs associated item 3 Quantity is correct
+#    Then expect customs associated item 3 Unit Price is correct
+#    Then expect customs associated item 3 Made In is correct
+#    Then expect customs associated item 3 Tariff is correct
 
     #Then expect customs i agree to the usps privacy act statement is checked
     Then expect Customs Total Value is correct
