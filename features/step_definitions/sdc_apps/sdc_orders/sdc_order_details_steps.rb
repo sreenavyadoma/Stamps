@@ -423,7 +423,7 @@ Then /^set order details domestic ship-to country to (.*)$/ do |str|
   selection = country.selection(str)
   country.drop_down.click
   country.drop_down.click unless selection.present?
-  selection.click
+  selection.safe_click
   actual_result = country.text_field.text_value
   expect(actual_result).to eql str
   TestData.hash[:country] = str
