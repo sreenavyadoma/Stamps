@@ -334,7 +334,8 @@ Feature:  BVT tests for Orders
     Then close customs information form
 
     Then expect orders grid service ship-from is correct
-    Then expect orders grid recipient is correct
+    #todo-rob revisit grid
+    #Then expect orders grid recipient is correct
     Then expect orders grid country is correct
     Then expect orders grid address is correct
     Then expect orders grid city is correct
