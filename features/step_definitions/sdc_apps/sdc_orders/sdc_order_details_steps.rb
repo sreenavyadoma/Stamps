@@ -420,9 +420,9 @@ end
 Then /^set order details domestic ship-to country to (.*)$/ do |str|
   step 'show order ship-to details'
   country = SdcOrders.order_details.ship_to.domestic.country
-  selection = country.selection(str)
   country.drop_down.click
-  country.drop_down.click unless selection.present?
+  selection = country.selection(str)
+  selection.scroll_into_view
   selection.safe_click
   actual_result = country.text_field.text_value
   expect(actual_result).to eql str
@@ -432,9 +432,9 @@ end
 Then /^set order details international ship-to country to (.*)$/ do |str|
   step 'show order ship-to details'
   country = SdcOrders.order_details.ship_to.international.country
-  selection = country.selection(str)
   country.drop_down.click
-  country.drop_down.click unless selection.present?
+  selection = country.selection(str)
+  selection.scroll_into_view
   selection.click
   actual_result = country.text_field.text_value
   expect(actual_result).to eql str
