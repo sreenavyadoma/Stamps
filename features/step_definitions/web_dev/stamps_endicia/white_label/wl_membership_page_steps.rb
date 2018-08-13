@@ -125,7 +125,7 @@ end
 Then /WL: select membership page address autocomplete index (\d+)$/ do |index|
   address_auto_complete = WhiteLabel.membership_page.address_auto_complete[index-1]
   address_auto_complete.wait_until_present(timeout: 2)
-  address_auto_complete.hover if SdcEnv.browser == :firefox
+  address_auto_complete.hover if TestSession.env.local_browser == :ff || :firefox
   address_auto_complete.click
   step 'WL: blur_out on membership page'
 end
@@ -439,7 +439,7 @@ end
 Then /WL: select membership page billing address autocomplete index (\d+)$/ do |index|
   billing_addr_auto_complete = WhiteLabel.membership_page.billing_addr_auto_complete[index-1]
   billing_addr_auto_complete.wait_until_present(timeout: 2)
-  billing_addr_auto_complete.hover if SdcEnv.browser == :firefox
+  billing_addr_auto_complete.hover if TestSession.env.local_browser == :ff || :firefox
   billing_addr_auto_complete.click
   step "WL: blur_out on membership page"
 end
@@ -683,7 +683,7 @@ Then /^WL: check if postage meter address is present then set the value$/ do
   membership_page = WhiteLabel.membership_page
   if TestData.hash[:street_address].include? 'PO Box'
     membership_page.meter_street.wait_until_present(timeout: 5)
-    step 'WL: set postage meter address between zone 5 and 8'
+    step 'WL: set postage meter address in zone 8'
     step 'WL: click membership page submit button'
   else
     expect(membership_page.meter_header).not_to be_present
@@ -781,6 +781,13 @@ Then /^WL: expect membership page pricing and billing paragraph to be$/ do |str|
 
   step 'WL: establish stamps website db connection'
   plan_rate =  WhiteLabel.common_page.plan_query(TestData.hash[:offer_id], plan_sku )
+  step 'WL: close stamps website db connection'
+  expect(WhiteLabel.membership_page.pricing_and_billing_p.text_value.strip).to eql(str.gsub('plan_rate', plan_rate.to_s))
+end
+
+Then /^WL: expect membership page pricing and billing paragraph for offer (.*) and plan sku (.*) to be (.*)$/ do |offer, plan_sku, str|
+  step 'WL: establish stamps website db connection'
+  plan_rate =  WhiteLabel.common_page.plan_query(offer, plan_sku)
   step 'WL: close stamps website db connection'
   expect(WhiteLabel.membership_page.pricing_and_billing_p.text_value.strip).to eql(str.gsub('plan_rate', plan_rate.to_s))
 end

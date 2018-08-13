@@ -60,9 +60,9 @@ Then /^WL: set profile page username to (?:random value|(.*))$/ do |str|
   username.clear
 
   str ||= TestHelper.rand_usr.capitalize
-  if SdcEnv.usr
+  if TestSession.env.usr
     5.times do
-      username.set( SdcEnv.usr)
+      username.set( TestSession.env.usr)
       break unless username.text_value.strip == ''
     end
   else
@@ -116,10 +116,16 @@ Then /^WL: set profile page password to (?:random value|(.*))$/ do |str|
   password.clear
 
   str ||= '1' + TestHelper.rand_alpha_numeric(min:6, max:10)
-
-  5.times do
-    password.set(str)
-    break unless password.text_value.strip == ''
+  if TestSession.env.pw
+    5.times do
+      password.set(TestSession.env.pw)
+      break unless password.text_value.strip == ''
+    end
+  else
+    5.times do
+      password.set(str)
+      break unless password.text_value.strip == ''
+    end
   end
   expect(password.text_value.strip).not_to eql('')
   step 'WL: blur_out on profile page'
@@ -203,9 +209,9 @@ Then /^WL: expect profile page promo code to equal source id promo code$/ do
   step 'WL: show profile page promo code'
   profile_page = WhiteLabel.profile_page
   if profile_page.promo_code.present?
-     expect(profile_page.promo_code.text_value.strip).to eql(TestData.hash[:promo_code])
+     expect(profile_page.promo_code.text_value.strip).to eql(TestData.hash[:promo_code].strip)
   else
-    expect(profile_page.promo_code_hidden.text_value.strip).to eql(TestData.hash[:promo_code])
+    expect(profile_page.promo_code_hidden.text_value.strip).to eql(TestData.hash[:promo_code].strip)
   end
 end
 
@@ -233,7 +239,7 @@ Then /^WL: set profile page promo code to (.*)$/ do |str|
       break unless profile_page.promo_code_hidden.text_value.strip == ''
     end
   end
-  TestData.hash[:promo_code] = str
+  TestData.hash[:set_promo_code] = str
   step 'WL: blur_out on profile page'
 end
 
@@ -252,9 +258,9 @@ Then /^WL: expect profile page promo code is correct$/ do
   step 'pause for 1 second'
   profile_page = WhiteLabel.profile_page
   if profile_page.promo_code.present?
-    expect(profile_page.promo_code.text_value.strip).to eql(TestData.hash[:promo_code])
+    expect(profile_page.promo_code.text_value.strip).to eql( TestData.hash[:set_promo_code])
   else
-    expect(profile_page.promo_code_hidden.text_value.strip).to eql(TestData.hash[:promo_code])
+    expect(profile_page.promo_code_hidden.text_value.strip).to eql( TestData.hash[:set_promo_code])
   end
 end
 

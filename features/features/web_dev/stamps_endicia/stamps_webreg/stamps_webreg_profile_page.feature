@@ -122,15 +122,6 @@ Feature: Stamps WebReg: Profile Page
     """
     Then WL: click membership page back button
 
-    Then WL: set profile page promo code to 522MB
-    Then WL: click profile page continue button
-    Then WL: expect membership page header exists
-    Then WL: expect membership page pricing and billing paragraph to be
-    """
-    If you decide to continue past the trial, you will be charged a service fee of just $plan_rate per month. This includes the month following registration. For your convenience, your Stamps.com service will continue uninterrupted unless you decide to cancel. No service fee will be charged if you cancel within the trial period. Your credit card may also be used to pay for postage and optional services.
-    """
-    Then WL: click membership page back button
-
     Then WL: set profile page promo code to empty
     Then WL: click profile page continue button
     Then WL: expect membership page header exists
@@ -140,13 +131,17 @@ Feature: Stamps WebReg: Profile Page
     """
     Then WL: click membership page back button
 
-    Then WL: set profile page promo code to 693-lnOR12
+    Then WL: set profile page promo code to 522MS
     Then WL: click profile page continue button
     Then WL: expect membership page header exists
-    Then WL: expect membership page pricing and billing paragraph to be
-    """
-    If you decide to continue past the trial, you will be charged a service fee of just $plan_rate per month. This includes the month following registration. For your convenience, your Stamps.com service will continue uninterrupted unless you decide to cancel. No service fee will be charged if you cancel within the trial period. Your credit card may also be used to pay for postage and optional services.
-    """
+    Then WL: expect membership page pricing and billing paragraph for offer 511 and plan sku 01020088 to be If you decide to continue past the trial, you will be charged a service fee of just $plan_rate per month. This includes the month following registration. For your convenience, your Stamps.com service will continue uninterrupted unless you decide to cancel. No service fee will be charged if you cancel within the trial period. Your credit card may also be used to pay for postage and optional services.
+    Then WL: click membership page back button
+
+
+    Then WL: set profile page promo code to P5ZQ-XSZ9
+    Then WL: click profile page continue button
+    Then WL: expect membership page header exists
+    Then WL: expect membership page pricing and billing paragraph for offer 593 and plan sku 01020144 to be If you decide to continue past the trial, you will be charged a service fee of just $plan_rate per month. This includes the month following registration. For your convenience, your Stamps.com service will continue uninterrupted unless you decide to cancel. No service fee will be charged if you cancel within the trial period. Your credit card may also be used to pay for postage and optional services.
 
 
 

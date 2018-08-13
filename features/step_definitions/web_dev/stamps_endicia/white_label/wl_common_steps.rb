@@ -249,6 +249,14 @@ Then /^WL: [Ee]xpect security questions title to be (.*)$/ do |str|
   expect(security_question_title.text_value).to eql(str)
 end
 
+Then /^WL: expect profile security questions header to be (.*)$/ do |str|
+  expect(WhiteLabel.common_page.sq_header_profile.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect profile security questions header is not present$/ do
+  expect(WhiteLabel.common_page.sq_header_profile).not_to be_present
+end
+
 Then /^WL: select security questions first security question (.*)$/ do |str|
   common_page = WhiteLabel.common_page
   common_page.first_security_question.wait_until_present(timeout: 30)

@@ -12,7 +12,7 @@ module SdcEnv
                   :printer, :browser, :hostname, :mobile, :scenario,
                   :sauce_device, :test_name, :driver_log_level,
                   :browser_mobile_emulator, :android, :ios, :firefox_profile,
-                  :new_framework, :window_size, :web_dev, :jenkins, :sauce,
+                  :new_framework, :web_dev, :jenkins, :sauce,
                   :width, :height
   end
 end
@@ -79,7 +79,13 @@ module TestSession
     key(:selenium_port) { ENV['SELENIUM_PORT'] }
     key(:selenium_platform) { ENV['SELENIUM_PLATFORM'] }
     key(:selenium_version) { ENV['SELENIUM_VERSION'] }
-    key(:selenium_browser) { ENV['SELENIUM_BROWSER'] }
+    key(:selenium_browser) do
+      if ENV['SELENIUM_BROWSER'] && ENV['SELENIUM_BROWSER'].eql?('MicrosoftEdge')
+        ENV['SELENIUM_BROWSER'] = 'edge'
+      else
+        ENV['SELENIUM_BROWSER']
+      end
+    end
     key(:selenium_driver) { ENV['SELENIUM_DRIVER'] }
     key(:sauce_build_name) { ENV['SAUCE_BUILD_NAME'] }
     key(:selenium_url) { ENV['SELENIUM_URL'] }
@@ -297,7 +303,7 @@ module TestSession
     end
 
     if env.window_size
-      width, height = env.window_size.split("x")
+      width, height = env.window_size.downcase.split("x")
       begin
         @driver.window.resize_to(width, height)
         @driver.window.move_to(0, 0)

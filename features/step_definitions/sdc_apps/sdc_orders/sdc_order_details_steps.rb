@@ -225,16 +225,18 @@ end
 
 Then /^blur out on order details form$/ do
   order_details = SdcOrders.order_details
-  order_details.reference_no_label.double_click
+  order_details.reference_no_label.scroll_into_view
+  order_details.reference_no_label.safe_double_click
+  order_details.weight_label.scroll_into_view
   order_details.weight_label.click
-  order_details.service_label.double_click
-  # step 'show order ship-to details'
-  # if order_details.ship_to_label.present?
-  #   order_details.ship_to_label.safe_click
-  # end
-  order_details.order_id.double_click
-  order_details.reference_no_label.double_click
-  order_details.title.double_click
+  order_details.service_label.scroll_into_view
+  order_details.service_label.safe_double_click
+  order_details.order_id.scroll_into_view
+  order_details.order_id.safe_double_click
+  order_details.reference_no_label.scroll_into_view
+  order_details.reference_no_label.safe_double_click
+  order_details.title.scroll_into_view
+  order_details.title.safe_double_click
 end
 
 Then /^set order details phone to (.*)$/ do |str|
@@ -420,10 +422,10 @@ end
 Then /^set order details domestic ship-to country to (.*)$/ do |str|
   step 'show order ship-to details'
   country = SdcOrders.order_details.ship_to.domestic.country
-  selection = country.selection(str)
   country.drop_down.click
-  country.drop_down.click unless selection.present?
-  selection.click
+  selection = country.selection(str)
+  selection.scroll_into_view
+  selection.safe_click
   actual_result = country.text_field.text_value
   expect(actual_result).to eql str
   TestData.hash[:country] = str
@@ -432,9 +434,9 @@ end
 Then /^set order details international ship-to country to (.*)$/ do |str|
   step 'show order ship-to details'
   country = SdcOrders.order_details.ship_to.international.country
-  selection = country.selection(str)
   country.drop_down.click
-  country.drop_down.click unless selection.present?
+  selection = country.selection(str)
+  selection.scroll_into_view
   selection.click
   actual_result = country.text_field.text_value
   expect(actual_result).to eql str
@@ -510,12 +512,12 @@ end
 Then /^set order details insure-for to (\d+\.\d{2})$/ do |str|
   insure_for = SdcOrders.order_details.insure_for
   insurance_terms = SdcOrders.modals.insurance_terms
-
+  insure_for.checkbox.scroll_into_view
   insure_for.checkbox.check
   insure_for.checkbox.safe_wait_until_chosen(timeout: 3)
   expect(insure_for.checkbox.checked?). to be(true), 'Cannot check Insure-for checkbox'
   insure_for.amount.set(str)
-  insure_for.cost.double_click
+  insure_for.cost.scroll_into_view
   insure_for.cost.safe_click
   insurance_terms.title.safe_wait_until_present(timeout: 2)
   # This is a work around, there's a bug in the code where there are more
@@ -540,9 +542,15 @@ end
 
 Then /^set order details tracking to (.*)$/ do |str|
   tracking = SdcOrders.order_details.tracking
-  tracking.selection_element(value: str)
-  tracking.drop_down.click unless tracking.selection.present?
-  tracking.selection.safe_click unless tracking.selection.class_disabled?
+  selection = tracking.selection_element(value: str)
+  tracking.drop_down.click
+  3.times do
+    selection.scroll_into_view
+    selection.wait_until_present(timeout: 2)
+    selection.safe_click
+    break if tracking.text_field.text_value.eql?(str)
+    tracking.drop_down.click unless selection.present?
+  end
   expect(tracking.text_field.text_value).to eql(str)
   TestData.hash[:tracking] = str
   step 'Save Order Details data'
@@ -671,11 +679,13 @@ end
 Then /^expect order details ship-from is (?:correct|(.*))$/ do |str|
   step 'show order ship-to details'
   str ||= TestData.hash[:ship_from]
-  ship_from = SdcOrders.order_details.ship_from
-  ship_from.text_field.scroll_into_view
-  ship_from.text_field.wait_until_present(timeout: 10)
-  result = ship_from.text_field.text_value
-  expect(result).to eql(str)
+  if str
+    ship_from = SdcOrders.order_details.ship_from
+    ship_from.text_field.scroll_into_view
+    ship_from.text_field.wait_until_present(timeout: 10)
+    result = ship_from.text_field.text_value
+    expect(result).to eql(str)
+  end
 end
 
 Then /^expect order details reference number is (?:correct|(.*))$/ do |str|

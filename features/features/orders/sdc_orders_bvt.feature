@@ -196,11 +196,11 @@ Feature:  BVT tests for Orders
     Then expect orders grid store is Manual Orders
     Then expect orders grid order id is correct
     Then expect orders grid ship cost is correct
-    Then expect orders grid age is < 24 hours
+    #Then expect orders grid age is < 24 hours
     Then expect orders grid order date is populated
-    Then expect orders grid recipient is correct
+    #Then expect orders grid recipient is correct
     Then expect orders grid address is 777 N Orange Ave Apt 100
-    Then expect orders grid city is Orlando
+    #Then expect orders grid city is Orlando
     Then expect orders grid state is FL
     Then expect orders grid zip is 32801-1175
     Then expect orders grid phone is correct
@@ -275,8 +275,8 @@ Feature:  BVT tests for Orders
     Then expect customs internal transaction number is Required
     Then set customs itn number to ITN123
     Then add customs associated item 1, description Item 1, qty 1, Price 1, Made In United States, Tariff 1
-    Then add customs associated item 2, description Item 2, qty 2, Price 2, Made In Japan, Tariff 2
-    Then add customs associated item 3, description Random String, qty 3, Price 3, Made In Canada, Tariff 3
+#    Then add customs associated item 2, description Item 2, qty 2, Price 2, Made In Japan, Tariff 2
+#    Then add customs associated item 3, description Random String, qty 3, Price 3, Made In Canada, Tariff 3
     Then check customs form i agree to the usps privacy act statement
     Then close customs information form
 
@@ -319,22 +319,23 @@ Feature:  BVT tests for Orders
     Then expect customs associated item 1 Unit Price is correct
     Then expect customs associated item 1 Made In is correct
     Then expect customs associated item 1 Tariff is correct
-    Then expect customs associated item 2 Description is correct
-    Then expect customs associated item 2 Quantity is correct
-    Then expect customs associated item 2 Unit Price is correct
-    Then expect customs associated item 2 Made In is correct
-    Then expect customs associated item 3 Description is correct
-    Then expect customs associated item 3 Quantity is correct
-    Then expect customs associated item 3 Unit Price is correct
-    Then expect customs associated item 3 Made In is correct
-    Then expect customs associated item 3 Tariff is correct
+#    Then expect customs associated item 2 Description is correct
+#    Then expect customs associated item 2 Quantity is correct
+#    Then expect customs associated item 2 Unit Price is correct
+#    Then expect customs associated item 2 Made In is correct
+#    Then expect customs associated item 3 Description is correct
+#    Then expect customs associated item 3 Quantity is correct
+#    Then expect customs associated item 3 Unit Price is correct
+#    Then expect customs associated item 3 Made In is correct
+#    Then expect customs associated item 3 Tariff is correct
 
     #Then expect customs i agree to the usps privacy act statement is checked
     Then expect Customs Total Value is correct
     Then close customs information form
 
     Then expect orders grid service ship-from is correct
-    Then expect orders grid recipient is correct
+    #todo-rob revisit grid
+    #Then expect orders grid recipient is correct
     Then expect orders grid country is correct
     Then expect orders grid address is correct
     Then expect orders grid city is correct
@@ -463,7 +464,7 @@ Feature:  BVT tests for Orders
   Scenario:  BVT Printing
     Then sign-in to orders
     Then add new order
-    Then set order details ship-to to random address between zone 5 and 8
+    Then set order details ship-to to random address in zone 8
     Then set order details service to PM Package
     Then set order details ounces to 1
     Then set order details width to 1
@@ -480,19 +481,20 @@ Feature:  BVT tests for Orders
     Then sign out
 
   @bvt_orders_ui_validation
+  @bvt_orders_ui_validation_order_details
   Scenario:  BVT UI Validation for Single Order Detail form
     Then sign-in to orders
     Then add new order
     Then expect order details is present
     ##Then set order details ship-from to Automation - El Segundo, CA
-    Then set order details ship-to to random address between zone 5 and 8
+    Then set order details ship-to to random address in zone 9
     Then set order details service to PM Package
     Then set order details pounds to 0
     Then set order details ounces to 1
     Then set order details width to 1
     Then set order details length to 1
     Then set order details height to 1
-    Then set order details service to FCM Large Envelope/Flat
+    #Then set order details service to FCM Large Envelope/Flat
     Then set order details service to FCM Package/Thick Envelope
     Then set order details service to PM Large/Thick Envelope
     Then set order details service to PM Package
@@ -518,7 +520,6 @@ Feature:  BVT tests for Orders
     #Then uncheck order details insure-for checkbox
     Then check order details insure-for checkbox
     Then set order details insure-for to 11.99
-    Then set order details tracking to Signature Required
     Then set order details tracking to USPS Tracking
     Then set order details reference to STMPS111
     Then add order details item 1, qty 1, id ID 1, description Description 1
