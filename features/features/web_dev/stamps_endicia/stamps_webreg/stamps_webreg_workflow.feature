@@ -171,7 +171,7 @@ Feature: Stamps WebReg: Normal Workflow
 
     Then WL: set membership page default values
     Then WL: uncheck membership page billing address same as mailing address
-    Then WL: set memer
+    Then WL: set membership page cardholder's name to random value
     Then WL: set membership page billing address to 1990 E Grand Ave
     Then WL: set membership page billing city to El Segundo
     Then WL: select membership page billing state CA
@@ -187,15 +187,17 @@ Feature: Stamps WebReg: Normal Workflow
 
     #Validate Membership page data are present
     Then WL: expect membership page default values are correct
+    Then WL: expect membership page credit card number is ************1111
     Then WL: expect membership page billing state is correct
     Then WL: expect membership page billing city is correct
     Then WL: expect membership page billing state is correct
     Then WL: expect membership page billing zip is correct
     
-    Then WL: set membership page address to Po Box 7 Manchester Square
+    Then WL: set membership page address to Po Box 7
     Then WL: set membership page city to Manchester
     Then WL: select membership page state KY
-    Then WL: set membership page billing zip to 40962
+    Then WL: set membership page billing zip to 40962-0007
+    Then WL: click membership page submit button
     Then WL: click membership page standardized addr modal continue button
 
     Then WL: set postage meter address between zone 5 and zone 8
