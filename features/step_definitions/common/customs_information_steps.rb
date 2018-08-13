@@ -356,10 +356,12 @@ Then /^set customs associated item (\d+) made in (.*)$/ do |item, value|
   selection = made_in.selection(item, value)
   drop_down.scroll_into_view
   text_field.scroll_into_view
+  drop_down.wait_until_present(timeout: 5)
   drop_down.click
   selection.safe_wait_until_present(timeout: 2)
   drop_down.click unless selection.present?
   selection.scroll_into_view
+  selection.safe_wait_until_present(timeout: 2)
   selection.safe_click
   drop_down.scroll_into_view
   text_field.scroll_into_view

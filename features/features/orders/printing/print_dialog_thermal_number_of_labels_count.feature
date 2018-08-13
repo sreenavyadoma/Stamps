@@ -17,7 +17,7 @@ Feature:  Requires x-number of label sheets
     Then in print modal, click close button
 
     Then add new order
-    Then set order details ship-to to random address between zone 5 and 8
+    Then set order details ship-to to random address in zone 8
     Then set order details service to PM Flat Rate Envelope
     Then set order details weight to 1 lb 1 oz
 

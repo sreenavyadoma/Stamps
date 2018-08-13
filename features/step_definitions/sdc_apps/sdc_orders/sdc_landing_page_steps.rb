@@ -1,7 +1,7 @@
 
 Then /^visit Orders landing page$/ do
+  SdcGlobal.web_app = :orders
   step 'initialize test parameters'
-  step 'fetch user credentials from MySQL'
 
   env = case TestSession.env.url
         when :qacc
@@ -17,7 +17,7 @@ Then /^visit Orders landing page$/ do
         end
 
   SdcOrdersLandingPage.visit(env)
-  if TestSession.env.selenium_device
+  if TestSession.env.mobile_device
     expect(SdcOrdersLandingPage.browser.current_url).to include('stamps.com')
   else
     expect(SdcOrdersLandingPage.browser.url).to include('stamps.com')
@@ -47,7 +47,7 @@ end
 Then /^fetch user credentials from MySQL$/ do
   unless TestData.hash[:username]
     if TestSession.env.usr.nil? || TestSession.env.usr.downcase == 'default'
-      credentials = SdcUserCredentials.fetch(SdcEnv.scenario.tags[0].name)
+      credentials = SdcUserCredentials.fetch(SdcGlobal.scenario.tags[0].name)
       usr = credentials[:username]
       pw = credentials[:password]
     else
@@ -60,46 +60,59 @@ Then /^fetch user credentials from MySQL$/ do
 end
 
 Then /^sign-in to orders$/ do
+  step 'Verify Health Check for Orders' if TestSession.env.healthcheck
   step 'visit Orders landing page'
-  usr = TestData.hash[:username]
-  pw = TestData.hash[:password]
+  usr = TestSession.env.usr
+  pw = TestSession.env.pw
+  step "sign-in to orders with #{usr}/#{pw}"
+end
+
+Then /^sign-in to orders with (.+)\/(.+)$/ do |usr, pw|
   step "set Orders landing page username to #{usr}"
   step "set Orders landing page password to #{pw}"
 
-  if SdcEnv.ios
-    step 'click sign-in button on ios'
-  elsif SdcEnv.android
-    step 'click sign-in button on android'
-  else
-    step 'click sign-in button on browser'
-    step 'close whats new modal in orders'
+  if TestSession.env.ios_test
+    step 'ios: click sign-in button'
+  elsif TestSession.env.browser_test
+    step 'browser: click sign-in button'
+    step 'close whats new modal in orders' if SdcGlobal.web_app.eql? :orders
   end
-  SdcGlobal.web_app = :orders
+  TestData.hash[:username] = usr
+  TestData.hash[:password] = pw
+  print 'sign-in to orders... done!'
 end
 
-Then /^click sign-in button on browser$/ do
-  landing_page = SdcWebsite.landing_page
-  toolbar = SdcOrders.toolbar
-
+Then /^browser: click sign-in button$/ do
   step 'click Orders landing page sign-in button'
-
-  SdcOrders.loading_orders.safe_wait_until_present(timeout: 10)
-  SdcOrders.loading_orders.safe_wait_while_present(timeout: 60)
-  SdcGrid.body.safe_wait_until_present(timeout: 30)
-  expect(toolbar.add).to be_present
+  step 'loading orders...' if SdcGlobal.web_app.eql? :orders
 end
 
-Then /^click sign-in button on ios$/ do
+Then /^ios: click sign-in button$/ do
   landing_page = SdcWebsite.landing_page
-  landing_page.sign_in.click
-  landing_page.sign_in.safe_click
-  #landing_page.sign_in.safe_send_keys(:enter)
+  landing_page.sign_in.send_keys_while_present(iteration: 3, timeout: 4)
+  landing_page.username.safe_wait_while_present(timeout: 5) if SdcGlobal.web_app.eql?(:mail)
+  step 'loading orders...' if SdcGlobal.web_app.eql?(:orders)
 end
 
 Then /^click sign-in button on android$/ do
   SdcPage.browser.hide_keyboard
   SdcPage.browser.action.move_to(landing_page.sign_in).click.perform
   SdcPage.browser.action.move_to(landing_page.sign_in).send_keys(:enter).perform
+end
+
+Then /^loading orders...$/ do
+  toolbar = SdcOrders.toolbar
+  loading_orders = SdcOrders.loading_orders
+  SdcLogger.debug 'loading_orders.safe_wait_until_present(timeout: 30)...'
+  loading_orders.safe_wait_until_present(timeout: 30)
+  SdcLogger.debug 'loading_orders.safe_wait_while_present(timeout: 60)...'
+  loading_orders.safe_wait_while_present(timeout: 60)
+  SdcLogger.debug 'SdcGrid.body.safe_wait_until_present(timeout: 60)...'
+  SdcGrid.body.safe_wait_until_present(timeout: 60)
+  SdcLogger.debug 'expect(toolbar.add).to be_present...'
+  expect(toolbar.add).to be_present
+  expect(SdcOrders.loading_orders.text).not_to eql('') if SdcOrders.loading_orders.present?
+  SdcLogger.debug 'loading orders... done!'
 end
 
 Then /^set Orders landing page username to (.*)$/ do |str|
@@ -115,27 +128,33 @@ Then /^set Orders landing page password to (.*)$/ do |str|
 end
 
 Then /^set sign in page username to (.*)$/ do |str|
-  SdcWebsite.landing_page.username.set(str)
+  landing_page = SdcWebsite.landing_page
+  landing_page.username.wait_until_present(timeout: 10)
+  landing_page.username.set(str)
 end
 
 Then /^set sign in page password to (.*)$/ do |str|
-  SdcWebsite.landing_page.password.set(str)
+  landing_page = SdcWebsite.landing_page
+  landing_page.password.wait_until_present(timeout: 10)
+  landing_page.password.set(str)
 end
 
 Then /^click sign in page sign-in button$/ do
-  SdcWebsite.landing_page.sign_in.wait_until_present(timeout: 3)
-  SdcWebsite.landing_page.sign_in.click
+  landing_page = SdcWebsite.landing_page
+  landing_page.sign_in.wait_until_present(timeout: 10)
+  landing_pagee.sign_in.click
 end
 
 Then /^click Orders landing page sign-in button$/ do
   landing_page = SdcWebsite.landing_page
   landing_page.sign_in.wait_until_present(timeout: 3)
   landing_page.sign_in.click
-  landing_page.invalid_username.safe_wait_while_present(timeout: 1)
+  landing_page.invalid_username.safe_wait_while_present(timeout: 2)
   if landing_page.invalid_username.present?
     str = landing_page.invalid_username.text_value
     expect(str).to eql('')
   end
+  landing_page.sign_in.safe_wait_while_present(timeout: 5)
 end
 
 Then /^close whats new modal in orders$/ do
@@ -146,12 +165,14 @@ Then /^close whats new modal in orders$/ do
 end
 
 Then /^[Ss]ign-out of SDC [Ww]ebsite$/ do
-  user_drop_down = SdcNavigation.user_drop_down
-  user_drop_down.signed_in_user.wait_until_present(timeout: 5)
-  user_drop_down.signed_in_user.hover
-  user_drop_down.sign_out_link.safe_wait_until_present(timeout: 1)
-  user_drop_down.sign_out_link.safe_click
-  SdcWebsite.landing_page.username.safe_wait_until_present(timeout: 4)
+  if TestSession.env.browser_test
+    user_drop_down = SdcNavigation.user_drop_down
+    user_drop_down.signed_in_user.wait_until_present(timeout: 5)
+    user_drop_down.signed_in_user.hover
+    user_drop_down.sign_out_link.safe_wait_until_present(timeout: 1)
+    user_drop_down.sign_out_link.safe_click
+    SdcWebsite.landing_page.username.safe_wait_until_present(timeout: 4)
+  end
 end
 
 Then /^Verify Health Check for (.+)$/ do |str|
@@ -233,5 +254,10 @@ Then /^Verify Health Check for (.+)$/ do |str|
   body = SdcHealthCheck.new.body
   body.safe_wait_until_present(timeout: 10)
   expect(body.text).to include('All tests passed')
+  print "\n"
+  print "\n"
+  print body.text
+  print "\n"
+  print "\n"
 end
 

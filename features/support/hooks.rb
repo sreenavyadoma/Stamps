@@ -12,7 +12,7 @@ include PartnerPortal
 include WhiteLabel
 
 Before do |scenario|
-  SdcEnv.scenario = scenario
+  SdcGlobal.scenario = scenario
   SdcTest.start
 end
 

@@ -1,5 +1,6 @@
 bin\sc -u robcruz -k 0e60dbc9-5bbf-425a-988b-f81c42d6b7ef --no-remove-colliding-tunnels --tunnel-identifier robs_mac
-./bin/sc -u robcruz -k 0e60dbc9-5bbf-425a-988b-f81c42d6b7ef --no-remove-colliding-tunnels --tunnel-identifier robs_mac
+
+
 
 
     # def sauce_edge
@@ -18,7 +19,7 @@ bin\sc -u robcruz -k 0e60dbc9-5bbf-425a-988b-f81c42d6b7ef --no-remove-colliding-
     #     capabilities_config = {
     #         :version => '11.0',
     #         :platform => 'macOS 10.13',
-    #         :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+    #         :name => "#{SdcGlobal.scenario.feature.name} - #{SdcGlobal.scenario.name}"
     #     }
     #     browser = :safari
     #
@@ -26,7 +27,7 @@ bin\sc -u robcruz -k 0e60dbc9-5bbf-425a-988b-f81c42d6b7ef --no-remove-colliding-
     #     capabilities_config = {
     #         :version => '54.0',
     #         :platform => 'macOS 10.13',
-    #         :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+    #         :name => "#{SdcGlobal.scenario.feature.name} - #{SdcGlobal.scenario.name}"
     #     }
     #     browser = :chrome
     #
@@ -34,7 +35,7 @@ bin\sc -u robcruz -k 0e60dbc9-5bbf-425a-988b-f81c42d6b7ef --no-remove-colliding-
     #     capabilities_config = {
     #         :version => '16.16299',
     #         :platform => 'Windows 10',
-    #         :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+    #         :name => "#{SdcGlobal.scenario.feature.name} - #{SdcGlobal.scenario.name}"
     #     }
     #     browser = :edge
     #   else
@@ -52,7 +53,7 @@ bin\sc -u robcruz -k 0e60dbc9-5bbf-425a-988b-f81c42d6b7ef --no-remove-colliding-
     #   capabilities_config = {
     #       :version => '16.16299',
     #       :platform => 'Windows 10',
-    #       :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+    #       :name => "#{SdcGlobal.scenario.feature.name} - #{SdcGlobal.scenario.name}"
     #   }
     #
     #   build_name = ENV['JENKINS_BUILD_NUMBER'] || ENV['SAUCE_BAMBOO_BUILDNUMBER'] || ENV['SAUCE_TC_BUILDNUMBER'] || ENV['SAUCE_BUILD_NAME']
@@ -69,7 +70,7 @@ bin\sc -u robcruz -k 0e60dbc9-5bbf-425a-988b-f81c42d6b7ef --no-remove-colliding-
     #   capabilities_config = {
     #       :version => '65.0',
     #       :platform => 'macOS 10.13',
-    #       :name => "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+    #       :name => "#{SdcGlobal.scenario.feature.name} - #{SdcGlobal.scenario.name}"
     #   }
     #
     #   build_name = ENV['JENKINS_BUILD_NUMBER'] || ENV['SAUCE_BAMBOO_BUILDNUMBER'] || ENV['SAUCE_TC_BUILDNUMBER'] || ENV['SAUCE_BUILD_NAME']
@@ -91,7 +92,7 @@ bin\sc -u robcruz -k 0e60dbc9-5bbf-425a-988b-f81c42d6b7ef --no-remove-colliding-
     #           platformVersion: '11.2',
     #           platformName:  'iOS',
     #           browserName: 'Safari',
-    #           name: "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+    #           name: "#{SdcGlobal.scenario.feature.name} - #{SdcGlobal.scenario.name}"
     #       },
     #       appium_lib: {
     #           sauce_username:   'robcruz', #nil, # don't run on Sauce

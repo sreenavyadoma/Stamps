@@ -9,7 +9,7 @@ Feature: Print two labels on one sheet
 
     Then add new order
     #Then set order details ship-from to Automation - El Segundo, CA
-    Then set order details ship-to to random address between zone 5 and 8
+    Then set order details ship-to to random address in zone 8
     Then set order details service to PM Flat Rate Envelope
     Then set order details weight to 1 lb 1 oz
     Then set order details dimensions to length 1 width 1 height 1

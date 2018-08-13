@@ -111,8 +111,7 @@ module SdcNavigation
   module_function :user_drop_down
 
   def mail_sign_in_modal
-    # MailSignInModal.new
-    if SdcEnv.width.to_i < 1195
+    if TestSession.env.mobile_device || SdcPage.browser.window.size.width < 1195
       MailSignInModalTablet.new
     else
       MailSignInModal.new
