@@ -1,14 +1,22 @@
-Then /^On Left Navigation menu search contact (.*)$/ do |str|
-  SdcContacts.contacts_left_navigation_panel.search_contacts.set(str)
-  SdcContacts.contacts_left_navigation_panel.search_icon.click
+Then /^[Oo]n [Ll]eft [Nn]avigation [Mm]enu [Ss]earch [Cc]ontact (.*)$/ do |str|
+  contacts_left_navigation= SdcContacts.contacts_left_navigation_panel
+  contacts_left_navigation.search_contacts.safe_wait_until_present(timeout: 20)
+  contacts_left_navigation.search_contacts.set(str)
+  contacts_left_navigation.search_icon.safe_wait_until_present(timeout: 20)
+  contacts_left_navigation.search_icon.click
+  contacts_grid = SdcContacts.contacts_body
+  contacts_grid.safe_wait_until_present(timeout: 20)
+
   end
 
-  Then /^aloha[Ss]et Filter Panel Search textbox to (.*)$/ do |str|
-    TestData.hash[:filter_panel_search_str] = str
-    SdcOrders.filter_panel.search_orders.set(TestData.hash[:filter_panel_search_str])
+  Then /^[Ss]et [Cc]ontacts [Ff]ilter [Pp]anel [Ss]earch [Tt]extbox [Tt]o (.*)$/ do |str|
+    contacts_left_navigation= SdcContacts.contacts_left_navigation_panel
+    contacts_left_navigation.search_contacts.safe_wait_until_present(timeout: 15)
+    contacts_left_navigation.search_contacts.set(str)
   end
 
-  Then /^aloha[Cc]lick Filter Panel Search [Bb]utton$/ do
-    SdcOrders.filter_panel.search.safe_wait_while_present(timeout: 2)
-    SdcOrders.filter_panel.search.click
-    end
+  Then /^[Cc]lick [Cc]ontacts [Ff]ilter [Pp]anel [Ss]earch [Bb]utton$/ do
+    contacts_left_navigation= SdcContacts.contacts_left_navigation_panel
+    contacts_left_navigation.search_icon.safe_wait_until_present(timeout: 15)
+    contacts_left_navigation.search_icon.click
+  end

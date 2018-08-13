@@ -1,5 +1,13 @@
 module SdcContacts
 
+  def loading_contacts
+    klass = Class.new(SdcPage) do
+      page_object(:loading) { { xpath: '//*[contains(text(), "Loading contacts...")]' } }
+    end
+    klass.new.loading
+  end
+  module_function :loading_contacts
+
   def verifying_account
     klass = Class.new(SdcPage) do
       page_object(:verifying_account) { {xpath: '//*[contains(text(), "Verifying")]'} }
@@ -28,7 +36,7 @@ module SdcContacts
   end
 
   def contacts_grid
-    ContactsGrid.new
+    EmptyContactsGrid.new
   end
   module_function :contacts_grid
 
@@ -62,5 +70,9 @@ module SdcContacts
   end
   module_function :contacts_email_error
 
+  def contacts_grid_header
+    ContactsGridColumnBase.new
+  end
+  module_function :contacts_grid_header
 
 end
