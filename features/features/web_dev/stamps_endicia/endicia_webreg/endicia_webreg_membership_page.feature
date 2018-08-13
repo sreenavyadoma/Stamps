@@ -404,7 +404,7 @@ Feature: Endicia WebReg: Membership Page
     Then WL: expect postage meter address tooltip to be This field is required
     Then WL: expect postage meter city tooltip to be This field is required
     Then WL: expect postage meter state tooltip to be This field is required
-    Then WL: set postage meter address between zone 5 and zone 8
+    Then WL: set postage meter address between zone 1 and zone 4
     Then WL: click membership page submit button
 
   @sdcwr_membership_page_username_taken_validation
