@@ -60,9 +60,9 @@ Then /^WL: set profile page username to (?:random value|(.*))$/ do |str|
   username.clear
 
   str ||= TestHelper.rand_usr.capitalize
-  if SdcEnv.usr
+  if TestSession.env.usr
     5.times do
-      username.set( SdcEnv.usr)
+      username.set( TestSession.env.usr)
       break unless username.text_value.strip == ''
     end
   else
@@ -116,10 +116,16 @@ Then /^WL: set profile page password to (?:random value|(.*))$/ do |str|
   password.clear
 
   str ||= '1' + TestHelper.rand_alpha_numeric(min:6, max:10)
-
-  5.times do
-    password.set(str)
-    break unless password.text_value.strip == ''
+  if TestSession.env.pw
+    5.times do
+      password.set(TestSession.env.pw)
+      break unless password.text_value.strip == ''
+    end
+  else
+    5.times do
+      password.set(str)
+      break unless password.text_value.strip == ''
+    end
   end
   expect(password.text_value.strip).not_to eql('')
   step 'WL: blur_out on profile page'
