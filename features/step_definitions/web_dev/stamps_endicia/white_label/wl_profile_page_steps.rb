@@ -247,7 +247,7 @@ Then /^WL: show profile page promo code$/ do
   end
 end
 
-Then /^WL: expect profile page promo code is correct$/do
+Then /^WL: expect profile page promo code is correct$/ do
   step 'WL: show profile page promo code'
   step 'pause for 1 second'
   profile_page = WhiteLabel.profile_page
