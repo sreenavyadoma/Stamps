@@ -125,7 +125,7 @@ end
 Then /WL: select membership page address autocomplete index (\d+)$/ do |index|
   address_auto_complete = WhiteLabel.membership_page.address_auto_complete[index-1]
   address_auto_complete.wait_until_present(timeout: 2)
-  address_auto_complete.hover if SdcEnv.browser == :firefox
+  address_auto_complete.hover if TestSession.env.local_browser == :ff || :firefox
   address_auto_complete.click
   step 'WL: blur_out on membership page'
 end
@@ -238,7 +238,7 @@ Then /^WL: set membership page personal info to(?: a |)(?: random info |)(?:to|i
   TestData.hash[:last_name] = TestData.hash[:personal_info][:last_name]
   TestData.hash[:street_address] = TestData.hash[:personal_info][:street_address]
   TestData.hash[:city] = TestData.hash[:personal_info][:city]
-  TestData.hash[:state] = TestData.hash[:personal_info][:state]
+  TestData.hash[:state] = TestData.hash[:personal_info][:state_abbrev]
   TestData.hash[:zip] = TestData.hash[:personal_info][:zip]
   TestData.hash[:company] = TestData.hash[:personal_info][:company]
   TestData.hash[:ship_to_domestic] = TestHelper.format_address(TestData.hash[:personal_info])
@@ -439,7 +439,7 @@ end
 Then /WL: select membership page billing address autocomplete index (\d+)$/ do |index|
   billing_addr_auto_complete = WhiteLabel.membership_page.billing_addr_auto_complete[index-1]
   billing_addr_auto_complete.wait_until_present(timeout: 2)
-  billing_addr_auto_complete.hover if SdcEnv.browser == :firefox
+  billing_addr_auto_complete.hover if TestSession.env.local_browser == :ff || :firefox
   billing_addr_auto_complete.click
   step "WL: blur_out on membership page"
 end
@@ -695,7 +695,7 @@ Then /^WL: set postage meter address between (.*)$/ do |address|
 
   TestData.hash[:street_address] = TestData.hash[:personal_info][:street_address]
   TestData.hash[:city] = TestData.hash[:personal_info][:city]
-  TestData.hash[:state] = TestData.hash[:personal_info][:state]
+  TestData.hash[:state] = TestData.hash[:personal_info][:state_abbrev]
   TestData.hash[:zip] = TestData.hash[:personal_info][:zip]
 
   step "WL: set postage meter address to #{TestData.hash[:street_address]}"
