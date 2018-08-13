@@ -19,7 +19,7 @@ module SdcOrders
     page_object(:text_field) { { xpath: '//input[contains(@id, "matltocountrydroplist")]' } }
 
     def selection(str)
-      page_object(:selection_obj) { { xpath: "//li[text()='#{str}']" } }
+      SdcElement.new(page_objects(:selections) { { xpath: "//li[text()='#{str}']" } }.last)
     end
   end
 
@@ -28,7 +28,7 @@ module SdcOrders
     page_object(:text_field) { { xpath: '//div[contains(@id, "shiptoview-international")]//input[contains(@id, "combo")]' } }
 
     def selection(str)
-      page_object(:selection_obj) { { xpath: "//li[text()='#{str}']" } }
+      SdcElement.new(page_objects(:selections) { { xpath: "//li[text()='#{str}']" } }.last)
     end
   end
 
