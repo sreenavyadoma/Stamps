@@ -708,12 +708,20 @@ Then /^WL: set postage meter address to (.*)$/ do |str|
   WhiteLabel.membership_page.meter_street.set(TestData.hash[:address] = str)
 end
 
+Then /^WL: expect postage meter address is correct$/ do
+  expect(WhiteLabel.membership_page.meter_street.text_value.strip).to eql(TestData.hash[:address])
+end
+
 Then /^WL: expect postage meter address tooltip to be (.*)$/ do |str|
   expect(WhiteLabel.membership_page.meter_street_help_block.text_value.strip).to eql(str)
 end
 
 Then /^WL: set postage meter city to (.*)$/ do |str|
   WhiteLabel.membership_page.meter_city.set(TestData.hash[:city] = str)
+end
+
+Then /^WL: expect postage meter city is correct$/ do
+  expect(WhiteLabel.membership_page.meter_city.text_value.strip).to eql(TestData.hash[:city])
 end
 
 Then /^WL: expect postage meter city tooltip to be (.*)$/ do |str|
@@ -731,12 +739,27 @@ Then /^WL: select postage meter state (.*)$/ do |str|
   expect(TestData.hash[:state].strip).to eql str
 end
 
+Then /^WL: expect postage meter state is correct$/ do
+  expect(WhiteLabel.membership_page.meter_city.attribute_value('title').strip).to eql(TestData.hash[:state])
+end
+
 Then /^WL: expect postage meter state tooltip to be (.*)$/ do |str|
   expect(WhiteLabel.membership_page.meter_state_help_block.text_value.strip).to eql(str)
 end
 
 Then /^WL: set postage meter zip to (.*)$/ do |str|
   WhiteLabel.membership_page.meter_zip.set(TestData.hash[:zip] = str)
+end
+
+Then /^WL: expect postage meter zip is correct$/ do
+  expect(WhiteLabel.membership_page.meter_zip.text_value.strip).to eql(TestData.hash[:zip])
+end
+
+Then /^WL: expect postage meter values are correct$/ do
+  step 'WL: expect postage meter address is correct'
+  step 'WL: expect postage meter city is correct'
+  step 'WL: expect postage meter state is correct'
+  step 'WL: expect postage meter zip is correct'
 end
 
 #....................................Side content........................................#
@@ -825,14 +848,6 @@ Then /^WL: expect membership page invalid address modal paragraph to be$/ do |st
   expect(WhiteLabel.membership_page.invalid_addr_p.text_value.strip).to eql(str)
 end
 
-Then /^WL: set membership page default values$/ do
-  step 'WL: set membership page personal info to random info between zone 5 and zone 8'
-  step 'WL: set membership page credit card number to 4111111111111111'
-  step 'WL: select membership page credit card month Dec (12)'
-  step 'WL: set membership page credit card year to this year plus 1'
-  step 'WL: check membership page terms & conditions'
-end
-
 #.............................Exact Address..........................................#
 Then /^WL: expect membership page exact addr modal header to be (.*)$/ do |str|
   exact_addr_header = WhiteLabel.membership_page.exact_addr_header
@@ -849,3 +864,26 @@ Then /^WL: select membership page exact addr modal radio button index (\d+)$/ do
   exact_addr_choice[index].click
 end
 
+Then /^WL: set membership page default values$/ do
+  step 'WL: set membership page personal info to random info between zone 5 and zone 8'
+  step "WL: set membership page cardholder's name to random value"
+  step 'WL: set membership page credit card number to 4111111111111111'
+  step 'WL: select membership page credit card month Dec (12)'
+  step 'WL: set membership page credit card year to this year plus 1'
+  step 'WL: check membership page terms & conditions'
+end
+
+Then /^WL: expect membership page default values are correct$/ do
+  step 'WL: expect membership page first name is correct'
+  step 'WL: expect membership page last name is correct'
+  step 'WL: expect membership page company is correct'
+  step 'WL: expect membership page address is correct'
+  step 'WL: expect membership page city is correct'
+  step 'WL: expect membership page state is correct'
+  step 'WL: expect membership page zip is correct'
+  step 'WL: expect membership page phone is correct'
+  step "WL: expect membership page cardholder's name is correct"
+  step 'WL: expect membership page credit card number is correct'
+  step 'WL: expect membership page month is correct'
+  step 'WL: expect membership page credit card year is correct'
+end
