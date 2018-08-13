@@ -161,11 +161,19 @@ Feature: Stamps WebReg: Normal Workflow
 
   @sdcwr_session_state_data_validation
   Scenario: Stamps WebReg: Session State Data Validation
-    Then WL: navigates to default registration page for stamps with the following offer id 404
+    Then WL: navigates to default registration page for stamps with the following offer id 350
     Then WL: set profile page default values
+    Then WL: select security questions first security question What is your mother's maiden name?
+    Then WL: select security questions second security question What is your pet's name?
     Then WL: click profile page continue button
+
     Then WL: set membership page default values
     Then WL: click membership page back button
+    Then WL: uncheck membership page billing address same as mailing address
+    Then WL: set membership page billing address to 1990 E Grand Ave
+    Then WL: set membership page billing city to El Segundo
+    Then WL: select membership page billing state CA
+    Then WL: set membership page billing zip to 90245
 
     #Validate profile page data are present
     Then WL: expect profile page email is correct
@@ -173,6 +181,8 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: expect profile page password is correct
     Then WL: expect profile page re-type password is correct
     Then WL: expect profile page survey question is correct
+    Then WL: expect security questions first security question is correct
+    Then WL: expect security questions second security question is correct
     Then WL: expect profile page promo code is correct
 
     Then WL: click profile page continue button
@@ -190,5 +200,10 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: expect membership page credit card number is correct
     Then WL: expect membership page month is correct
     Then WL: expect membership page credit card year is correct
+    Then WL: expect membership page billing state is correct
+    Then WL: expect membership page billing city is correct
+    Then WL: expect membership page billing state is correct
+    Then WL: expect membership page billing zip is correct
+
 
 
