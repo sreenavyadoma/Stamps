@@ -785,6 +785,13 @@ Then /^WL: expect membership page pricing and billing paragraph to be$/ do |str|
   expect(WhiteLabel.membership_page.pricing_and_billing_p.text_value.strip).to eql(str.gsub('plan_rate', plan_rate.to_s))
 end
 
+Then /^WL: expect membership page pricing and billing paragraph for offer (.*) and plan sku (.*) to be (.*)$/ do |offer, plan_sku, str|
+  step 'WL: establish stamps website db connection'
+  plan_rate =  WhiteLabel.common_page.plan_query(offer, plan_sku)
+  step 'WL: close stamps website db connection'
+  expect(WhiteLabel.membership_page.pricing_and_billing_p.text_value.strip).to eql(str.gsub('plan_rate', plan_rate.to_s))
+end
+
 Then /^WL: expect membership page cancel anytime header to be$/ do |str|
   expect(WhiteLabel.membership_page.cancel_anytime_header.text_value.strip).to eql(str)
 end

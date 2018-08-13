@@ -167,10 +167,28 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: set membership page default values
     Then WL: click membership page back button
 
-    #Validate profile page data is still present
+    #Validate profile page data are present
     Then WL: expect profile page email is correct
     Then WL: expect profile page username is correct
     Then WL: expect profile page password is correct
     Then WL: expect profile page re-type password is correct
     Then WL: expect profile page survey question is correct
     Then WL: expect profile page promo code is correct
+
+    Then WL: click profile page continue button
+
+    #Validate Membership page data are present
+    Then WL: expect membership page first name is correct
+    Then WL: expect membership page last name is correct
+    Then WL: expect membership page company is correct
+    Then WL: expect membership page address is correct
+    Then WL: expect membership page city is correct
+    Then WL: expect membership page state is correct
+    Then WL: expect membership page zip is correct
+    Then WL: expect membership page phone is correct
+    Then WL: expect membership page cardholder's name is correct
+    Then WL: expect membership page credit card number is correct
+    Then WL: expect membership page month is correct
+    Then WL: expect membership page credit card year is correct
+
+

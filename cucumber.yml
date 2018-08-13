@@ -33,7 +33,7 @@ sauce_browser: --tags @healthcheck URL=stg USR=stgvoc0kcnt6rw PW=pass111 LOG_LEV
 #mhossain1_cc: --tags @pp_header_favicons_browser_mobile JENKINS=true URL=qacc BROWSER_MOBILE_EMULATOR=gc,'iPhone X' USR=wteam@stamps.com PW=password1
 #mhossain1_cc: --tags @pp_log_in_page_validation JENKINS=true URL=stg BROWSER=ff USR=wteam@stamps.com PW=password1 FIREFOX_PROFILE=true WEB_DEV=true
 
-mhossain1_cc: --tags @sdcwr_membership_page_username_taken_validation JENKINS=true URL=stg BROWSER=edge FIREFOX_PROFILE=true WEB_DEV=true LOG_LEVEL=info #USR=qawebdevelopment@stamps.com PW=password1
+mhossain1_cc: --tags @sdcwr_profile_page_ui_validation JENKINS=true URL=qacc BROWSER=ff FIREFOX_PROFILE=true WEB_DEV=true LOG_LEVEL=info #USR=qawebdevelopment@stamps.com PW=password1
 
 kaushal_cc: --tags @sdcwr_profile_page_ui_validation JENKINS=true URL=stg BROWSER=edge FIREFOX_PROFILE=true WEB_DEV=true #USR=qawebdevelopment@stamps.com PW=password1
 

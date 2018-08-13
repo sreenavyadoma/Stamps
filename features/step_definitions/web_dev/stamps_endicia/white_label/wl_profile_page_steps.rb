@@ -203,9 +203,9 @@ Then /^WL: expect profile page promo code to equal source id promo code$/ do
   step 'WL: show profile page promo code'
   profile_page = WhiteLabel.profile_page
   if profile_page.promo_code.present?
-     expect(profile_page.promo_code.text_value.strip).to eql(TestData.hash[:promo_code])
+     expect(profile_page.promo_code.text_value.strip).to eql(TestData.hash[:promo_code].strip)
   else
-    expect(profile_page.promo_code_hidden.text_value.strip).to eql(TestData.hash[:promo_code])
+    expect(profile_page.promo_code_hidden.text_value.strip).to eql(TestData.hash[:promo_code].strip)
   end
 end
 
@@ -233,7 +233,7 @@ Then /^WL: set profile page promo code to (.*)$/ do |str|
       break unless profile_page.promo_code_hidden.text_value.strip == ''
     end
   end
-  TestData.hash[:promo_code] = str
+  TestData.hash[:set_promo_code] = str
   step 'WL: blur_out on profile page'
 end
 
@@ -247,14 +247,14 @@ Then /^WL: show profile page promo code$/ do
   end
 end
 
-Then /^WL: expect profile page promo code is correct$/do
+Then /^WL: expect profile page promo code is correct$/ do
   step 'WL: show profile page promo code'
   step 'pause for 1 second'
   profile_page = WhiteLabel.profile_page
   if profile_page.promo_code.present?
-    expect(profile_page.promo_code.text_value.strip).to eql(TestData.hash[:promo_code])
+    expect(profile_page.promo_code.text_value.strip).to eql( TestData.hash[:set_promo_code])
   else
-    expect(profile_page.promo_code_hidden.text_value.strip).to eql(TestData.hash[:promo_code])
+    expect(profile_page.promo_code_hidden.text_value.strip).to eql( TestData.hash[:set_promo_code])
   end
 end
 
