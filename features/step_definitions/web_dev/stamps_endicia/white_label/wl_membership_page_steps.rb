@@ -238,7 +238,7 @@ Then /^WL: set membership page personal info to(?: a |)(?: random info |)(?:to|i
   TestData.hash[:last_name] = TestData.hash[:personal_info][:last_name]
   TestData.hash[:street_address] = TestData.hash[:personal_info][:street_address]
   TestData.hash[:city] = TestData.hash[:personal_info][:city]
-  TestData.hash[:state] = TestData.hash[:personal_info][:state]
+  TestData.hash[:state] = TestData.hash[:personal_info][:state_abbrev]
   TestData.hash[:zip] = TestData.hash[:personal_info][:zip]
   TestData.hash[:company] = TestData.hash[:personal_info][:company]
   TestData.hash[:ship_to_domestic] = TestHelper.format_address(TestData.hash[:personal_info])
@@ -695,7 +695,7 @@ Then /^WL: set postage meter address between (.*)$/ do |address|
 
   TestData.hash[:street_address] = TestData.hash[:personal_info][:street_address]
   TestData.hash[:city] = TestData.hash[:personal_info][:city]
-  TestData.hash[:state] = TestData.hash[:personal_info][:state]
+  TestData.hash[:state] = TestData.hash[:personal_info][:state_abbrev]
   TestData.hash[:zip] = TestData.hash[:personal_info][:zip]
 
   step "WL: set postage meter address to #{TestData.hash[:street_address]}"
@@ -819,7 +819,7 @@ Then /^WL: expect membership page invalid address modal paragraph to be$/ do |st
 end
 
 Then /^WL: set membership page default values$/ do
-  step 'WL: set membership page personal info to random info between zone 1 and zone 4'
+  step 'WL: set membership page personal info to random info between zone 5 and zone 8'
   step 'WL: set membership page credit card number to 4111111111111111'
   step 'WL: select membership page credit card month Dec (12)'
   step 'WL: set membership page credit card year to this year plus 1'

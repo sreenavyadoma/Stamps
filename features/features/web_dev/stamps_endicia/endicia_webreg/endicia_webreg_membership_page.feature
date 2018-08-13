@@ -231,18 +231,6 @@ Feature: Endicia WebReg: Membership Page
     Then WL: click profile page continue button
     #Then WL: set membership page default values
 
-    ######### Need to remove #########
-    Then WL: set membership page first name to random value
-    Then WL: set membership page last name to random value
-    Then WL: set membership page company to random value
-    Then WL: set membership page phone to random value
-    Then WL: set membership page credit card number to 4111111111111111
-    Then WL: select membership page credit card month Dec (12)
-    Then WL: select membership page credit card year 2026
-    Then WL: check membership page terms & conditions
-    ##################################
-
-
     #Autocomplete Profile Address
     Then pause for 1 second
     Then WL: set membership page address to 1990 E
@@ -326,17 +314,7 @@ Feature: Endicia WebReg: Membership Page
     Then WL: expect membership page billing zip is 95341
 
     #Verify Physical Address Zone wise
-    #Then WL: set membership page personal info to random info between zone 1 and zone 4
-
-
-    ######### Need to remove #########
-    Then WL: set membership page address to 1350 Market Street Apt 2901
-    Then WL: set membership page city to San Francisco
-    Then WL: select membership page state CA
-    Then WL: set membership page zip to 94102
-    ##################################
-
-
+    Then WL: set membership page personal info to random info between zone 1 and zone 4
     Then WL: expect membership page zip is correct
     Then WL: expect membership page address is correct
     Then WL: expect membership page city is correct
@@ -344,24 +322,14 @@ Feature: Endicia WebReg: Membership Page
     Then WL: expect membership page zip is correct
 
     Then pause for 1 second
-    #Then WL: set membership page personal info to random info between zone 5 and zone 8
-
-
-    ######### Need to remove #########
-    Then WL: set membership page address to 1350 Market Street Apt 2901
-    Then WL: set membership page city to San Francisco
-    Then WL: select membership page state CA
-    Then WL: set membership page zip to 94102
-    ##################################
-
-
+    Then WL: set membership page personal info to random info between zone 5 and zone 8
     Then WL: expect membership page address is correct
     Then WL: expect membership page city is correct
     Then WL: expect membership page state is correct
     Then WL: expect membership page zip is correct
 
     #Invalid Address Modal
-    #Then WL: set membership page default values
+    Then WL: set membership page default values
     Then WL: set membership page address to kdjfkd
     Then WL: click membership page submit button
     Then WL: expect membership page invalid address modal header to be Invalid Address
@@ -436,16 +404,59 @@ Feature: Endicia WebReg: Membership Page
     Then WL: expect postage meter address tooltip to be This field is required
     Then WL: expect postage meter city tooltip to be This field is required
     Then WL: expect postage meter state tooltip to be This field is required
-    #Then WL: set postage meter address between zone 5 and zone 8
-
-
-    ######### Need to remove #########
-    Then WL: set postage meter address to 1990 E grand Ave
-    Then WL: set postage meter city to El Segundo
-    Then WL: select postage meter state CA
-    Then WL: set postage meter zip to 90245
-    ##############################
-
-
+    Then WL: set postage meter address between zone 5 and zone 8
     Then WL: click membership page submit button
 
+  @sdcwr_membership_page_username_taken_validation
+  Scenario: Membership Page Username Taken Validation
+    Then WL: navigates to default registration page for stamps with the following offer id 404
+    Then WL: set profile page default values
+    Then WL: set profile page promo code to PR33-NH77
+    Then WL: set pp username to an existing username from db
+    Then WL: click profile page continue button
+    Then WL: set membership page default values
+    Then WL: click membership page submit button
+
+    Then WL: expect username taken header to be Username Taken
+    Then WL: expect username taken paragraph to be
+    """
+    The username you have selected (USERNAME) is already in use.
+    Please enter a different username and try again.
+    """
+    Then WL: expect username taken tooltip to be This field is required
+    Then WL: set username taken to a
+    Then WL: expect username taken tooltip to be 2 character minimum
+    Then WL: set username taken username to an existing username from db
+    Then WL: click username taken continue button
+    #Then WL: expect username taken header to be Username Taken
+
+    Then WL: click modal x button
+
+    Then WL: set membership page address to PO Box 659
+    Then WL: set membership page city to Kosrae
+    Then WL: select membership page state FM
+    Then WL: set membership page zip to 96944
+
+    Then WL: click membership page submit button
+    Then WL: set pp username to an existing username from db
+    Then WL: click profile page continue button
+    Then WL: click membership page submit button
+
+    Then WL: set postage meter address between zone 5 and zone 8
+    Then WL: click membership page submit button
+
+    Then WL: expect username taken header to be Username Taken
+    Then WL: set username taken username to an existing username from db
+    Then WL: click username taken continue button
+    Then WL: expect username taken header to be Username Taken
+
+    Then WL: set username taken to \abc
+    Then WL: click username taken continue button
+    Then WL: expect an error occurred modal head to be An Error Occurred
+    Then WL: expect an error occurred modal paragraph to be
+    """
+    An unexpected error occurred, please try again. If the problem persists please contact customer support at 1‑888‑434‑0055, Monday - Friday, 6 a.m. - 6 p.m. Pacific Time.
+    """
+    Then WL: expect an error occurred modal error code to be Error Code: 2820099
+    Then WL: expect an error occurred modal error description to include Username cannot be have backslashes
+    Then WL: click modal x button
