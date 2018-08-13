@@ -2,6 +2,7 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
+# Contacts
 
 #BEGIN WEB DEV
   #BEGIN PARTNER PORTAL
