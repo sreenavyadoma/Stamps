@@ -223,7 +223,7 @@ module SdcCore
         hash[:zip] = address['zip']
         hash[:ship_from_zip] = address['zip']
         hash[:state_abbrev] = address['state']
-        hash[:state] = us_states[address['state_abbrev']]
+        hash[:state] = us_states[hash[:state_abbrev]]
         hash[:first_name] = rand_alpha_str.capitalize
         hash[:last_name] = rand_alpha_str.capitalize
         hash[:full_name] = "#{hash[:first_name]} #{hash[:last_name]}"
