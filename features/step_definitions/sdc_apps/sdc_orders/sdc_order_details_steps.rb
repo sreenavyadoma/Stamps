@@ -1,14 +1,19 @@
 
 Then /^set order details ship-to to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
   step 'show order ship-to details'
-  TestData.hash[:ship_to_domestic] = TestHelper.format_address(TestHelper.address_helper_zone(address))
-  domestic = SdcOrders.order_details.ship_to.domestic
-  domestic.address.click
-  domestic.address.set(TestData.hash[:ship_to_domestic])
-  step 'wait for js to stop'
-  step 'blur out on order details form'
-  step 'save order details data'
+  hash = TestHelper.address_helper_zone(address)
+  full_name = hash[:full_name]
+  company = hash[:company]
+  street_address1 = hash[:street_address]
+  street_address2 = hash[:street_address2]
+  city = hash[:city]
+  state = hash[:city]
+  zip = hash[:zip]
+  ship_to = "#{full_name},#{company},#{street_address1},#{street_address2},#{city} #{state} #{zip}"
+
+  step "set order details ship-to text area to #{ship_to}"
   step 'hide order ship-to details'
+  TestData.hash[:ship_to_domestic] = hash
 end
 
 Then /^add order details item (\d+), qty (\d+), id (.+), description (.*)$/ do |item, qty, id, description|
@@ -100,15 +105,15 @@ end
 Then /^set order details ship-to international address to$/ do |table|
   param = table.hashes.first
   country = param['country']
-  full_name = param['full_name']
-  company = param['company']
+  full_name = param[:full_name]
+  company = param[:company]
   street_address1 = param['street_address1']
-  street_address2 = param['street_address2']
-  city = param['city']
+  street_address2 = param[:street_address2]
+  city = param[:city]
   province = param['province']
   postal_code = param['postal_code']
-  phone = param['phone']
-  email = param['email']
+  phone = param[:phone]
+  email = param[:email]
 
   full_name = full_name.downcase.include?('random') ? TestHelper.rand_full_name : full_name
   company = company.downcase.include?('random') ? TestHelper.rand_comp_name : company
@@ -135,15 +140,15 @@ end
 Then /^set order details ship-to domestic address to$/ do |table|
   param = table.hashes.first
   country = param['country']
-  full_name = param['full_name']
-  company = param['company']
+  full_name = param[:full_name]
+  company = param[:company]
   street_address1 = param['street_address1']
-  street_address2 = param['street_address2']
-  city = param['city']
-  state = param['state']
-  zip = param['zip']
-  phone = param['phone']
-  email = param['email']
+  street_address2 = param[:street_address2]
+  city = param[:city]
+  state = param[:state]
+  zip = param[:zip]
+  phone = param[:phone]
+  email = param[:email]
 
   full_name = full_name.downcase.include?('random') ? TestHelper.rand_full_name : full_name
   company = company.downcase.include?('random') ? TestHelper.rand_comp_name : company
@@ -184,6 +189,8 @@ Then /^set order details ship-to domestic address to$/ do |table|
   result
 end
 
+# order_id = TestData.hash[:order_id].values.last
+# result = SdcGrid.grid_column(:phone).data(order_id)
 Then /^set order details ship-to text area to (.*)$/ do |address|
   address = TestHelper.format_address(address)
   order_details = SdcOrders.order_details
@@ -218,16 +225,18 @@ end
 
 Then /^blur out on order details form$/ do
   order_details = SdcOrders.order_details
-  order_details.reference_no_label.double_click
+  order_details.reference_no_label.scroll_into_view
+  order_details.reference_no_label.safe_double_click
+  order_details.weight_label.scroll_into_view
   order_details.weight_label.click
-  order_details.service_label.double_click
-  # step 'show order ship-to details'
-  # if order_details.ship_to_label.present?
-  #   order_details.ship_to_label.safe_click
-  # end
-  order_details.order_id.double_click
-  order_details.reference_no_label.double_click
-  order_details.title.double_click
+  order_details.service_label.scroll_into_view
+  order_details.service_label.safe_double_click
+  order_details.order_id.scroll_into_view
+  order_details.order_id.safe_double_click
+  order_details.reference_no_label.scroll_into_view
+  order_details.reference_no_label.safe_double_click
+  order_details.title.scroll_into_view
+  order_details.title.safe_double_click
 end
 
 Then /^set order details phone to (.*)$/ do |str|
@@ -275,42 +284,60 @@ end
 Then /^expect order details ship-to company name is (?:correct|(.*))$/ do |str|
   step 'show order ship-to details'
   str ||= TestData.hash[:company]
-  address = SdcOrders.order_details.ship_to.domestic.address.text_value
+  domestic = SdcOrders.order_details.ship_to.domestic
+  domestic.address.scroll_into_view
+  domestic.address.wait_until_present(timeout: 10)
+  address = domestic.address.text_value
   result = TestHelper.address_str_to_hash(address)[:company]
   expect(result).to eql(str)
 end
 
 Then /^expect order details ship-to cleansed street address is (.*)$/ do |str|
   step 'show order ship-to details'
-  address = SdcOrders.order_details.ship_to.domestic.address.text_value
+  domestic = SdcOrders.order_details.ship_to.domestic
+  domestic.address.scroll_into_view
+  domestic.address.wait_until_present(timeout: 10)
+  address = domestic.address.text_value
   result = TestHelper.address_str_to_hash(address)[:street]
   expect(result).to eql(str)
 end
 
 Then /^expect order details ship-to cleansed city is (.*)$/ do |str|
   step 'show order ship-to details'
-  address = SdcOrders.order_details.ship_to.domestic.address.text_value
+  domestic = SdcOrders.order_details.ship_to.domestic
+  domestic.address.scroll_into_view
+  domestic.address.wait_until_present(timeout: 10)
+  address = domestic.address.text_value
   result = TestHelper.address_str_to_hash(address)[:city]
   expect(result).to eql(str)
 end
 
 Then /^expect order details ship-to cleansed state is (.*)$/ do |str|
   step 'show order ship-to details'
-  address = SdcOrders.order_details.ship_to.domestic.address.text_value
+  domestic = SdcOrders.order_details.ship_to.domestic
+  domestic.address.scroll_into_view
+  domestic.address.wait_until_present(timeout: 10)
+  address = domestic.address.text_value
   result = TestHelper.address_str_to_hash(address)[:state]
   expect(result).to eql(str)
 end
 
 Then /^expect order details ship-to cleansed zip plus 4 code is (.*)$/ do |str|
   step 'show order ship-to details'
-  address = SdcOrders.order_details.ship_to.domestic.address.text_value
+  domestic = SdcOrders.order_details.ship_to.domestic
+  domestic.address.scroll_into_view
+  domestic.address.wait_until_present(timeout: 10)
+  address = domestic.address.text_value
   result = TestHelper.address_str_to_hash(address)[:zip_full]
   expect(result).to eql(str)
 end
 
 Then /^expect order details ship-to cleansed zip code is (.*)$/ do |str|
   step 'show order ship-to details'
-  address = SdcOrders.order_details.ship_to.domestic.address.text_value
+  domestic = SdcOrders.order_details.ship_to.domestic
+  domestic.address.scroll_into_view
+  domestic.address.wait_until_present(timeout: 10)
+  address = domestic.address.text_value
   result = TestHelper.address_str_to_hash(address)[:zip]
   expect(result).to eql(str)
 end
@@ -363,6 +390,7 @@ end
 Then /^set order details length to (\d*)$/ do |str|
   order_details = SdcOrders.order_details
   dimensions = order_details.dimensions
+  dimensions.length.wait_until_present(timeout: 10)
   dimensions.length.set(str)
   expect(dimensions.length.text_value).to eql str
   TestData.hash[:length] = str
@@ -372,6 +400,7 @@ end
 Then /^set order details width to (\d*)$/ do |str|
   order_details = SdcOrders.order_details
   dimensions = order_details.dimensions
+  dimensions.width.wait_until_present(timeout: 10)
   dimensions.width.set(str)
   expect(dimensions.width.text_value).to eql str
   TestData.hash[:width] = str
@@ -381,6 +410,7 @@ end
 Then /^set order details height to (\d*)$/ do |str|
   order_details = SdcOrders.order_details
   dimensions = order_details.dimensions
+  dimensions.height.wait_until_present(timeout: 10)
   dimensions.height.set(str)
   expect(dimensions.height.text_value).to eql str
   TestData.hash[:height] = str
@@ -403,10 +433,10 @@ end
 Then /^set order details domestic ship-to country to (.*)$/ do |str|
   step 'show order ship-to details'
   country = SdcOrders.order_details.ship_to.domestic.country
-  selection = country.selection(str)
   country.drop_down.click
-  country.drop_down.click unless selection.present?
-  selection.click
+  selection = country.selection(str)
+  selection.scroll_into_view
+  selection.safe_click
   actual_result = country.text_field.text_value
   expect(actual_result).to eql str
   TestData.hash[:country] = str
@@ -415,9 +445,9 @@ end
 Then /^set order details international ship-to country to (.*)$/ do |str|
   step 'show order ship-to details'
   country = SdcOrders.order_details.ship_to.international.country
-  selection = country.selection(str)
   country.drop_down.click
-  country.drop_down.click unless selection.present?
+  selection = country.selection(str)
+  selection.scroll_into_view
   selection.click
   actual_result = country.text_field.text_value
   expect(actual_result).to eql str
@@ -426,57 +456,101 @@ end
 
 Then /^set order details international ship-to name to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
-  SdcOrders.order_details.ship_to.international.name.set(str)
+  international = SdcOrders.order_details.ship_to.international
+  international.name.wait_until_present(timeout: 2)
+  international.name.send_keys(:enter)
+  international.name.send_keys(:tab)
+  international.name.set(str)
+  international.name.click
   TestData.hash[:full_name] = str
 end
 
 Then /^set order details international ship-to company to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
-  SdcOrders.order_details.ship_to.international.company.set(str)
+  international = SdcOrders.order_details.ship_to.international
+  international.company.wait_until_present(timeout: 2)
+  international.company.send_keys(:enter)
+  international.company.send_keys(:tab)
+  international.company.set(str)
+  international.company.click
   TestData.hash[:company] = str
 end
 
 Then /^set order details international ship-to address 1 to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
-  SdcOrders.order_details.ship_to.international.address1.set(str)
+  international = SdcOrders.order_details.ship_to.international
+  international.address1.wait_until_present(timeout: 2)
+  international.address1.send_keys(:enter)
+  international.address1.send_keys(:tab)
+  international.address1.set(str)
+  international.address1.click
   TestData.hash[:street_address1] = str
 end
 
 Then /^set order details international ship-to address 2 to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
-  SdcOrders.order_details.ship_to.international.address2.set(str)
+  international = SdcOrders.order_details.ship_to.international
+  international.address2.wait_until_present(timeout: 2)
+  international.address2.send_keys(:enter)
+  international.address2.send_keys(:tab)
+  international.address2.set(str)
+  international.address2.click
   TestData.hash[:street_address2] = str
 end
 
 Then /^set order details international ship-to city to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
-  SdcOrders.order_details.ship_to.international.city.set(str)
+  international = SdcOrders.order_details.ship_to.international
+  international.city.wait_until_present(timeout: 2)
+  international.city.send_keys(:enter)
+  international.city.send_keys(:tab)
+  international.city.set(str)
+  international.city.click
   TestData.hash[:city] = str
 end
 
 Then /^set order details international ship-to province to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
-  SdcOrders.order_details.ship_to.international.province.set(str)
+  international = SdcOrders.order_details.ship_to.international
+  international.province.wait_until_present(timeout: 2)
+  international.province.send_keys(:enter)
+  international.province.send_keys(:tab)
+  international.province.set(str)
+  international.province.click
   TestData.hash[:province] = str
 end
 
 Then /^set order details international ship-to postal code to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
-  SdcOrders.order_details.ship_to.international.postal_code.set(str)
+  international = SdcOrders.order_details.ship_to.international
+  international.postal_code.wait_until_present(timeout: 2)
+  international.postal_code.send_keys(:enter)
+  international.postal_code.send_keys(:tab)
+  international.postal_code.set(str)
+  international.postal_code.click
   TestData.hash[:postal_code] = str
 end
 
 Then /^set order details international ship-to phone to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
   step 'show order ship-to details'
-  SdcOrders.order_details.ship_to.international.phone.set(str)
+  international = SdcOrders.order_details.ship_to.international
+  international.phone.wait_until_present(timeout: 2)
+  international.phone.send_keys(:enter)
+  international.phone.send_keys(:tab)
+  international.phone.set(str)
+  international.phone.click
   TestData.hash[:phone] = str
 end
 
 Then /^set order details international ship-to email to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
   step 'show order ship-to details'
-  SdcOrders.order_details.ship_to.international.email.set(str)
+  international = SdcOrders.order_details.ship_to.international
+  international.email.wait_until_present(timeout: 2)
+  international.email.send_keys(:enter)
+  international.email.send_keys(:tab)
+  international.email.set(str)
   TestData.hash[:email] = str
 end
 
@@ -493,12 +567,12 @@ end
 Then /^set order details insure-for to (\d+\.\d{2})$/ do |str|
   insure_for = SdcOrders.order_details.insure_for
   insurance_terms = SdcOrders.modals.insurance_terms
-
+  insure_for.checkbox.scroll_into_view
   insure_for.checkbox.check
   insure_for.checkbox.safe_wait_until_chosen(timeout: 3)
   expect(insure_for.checkbox.checked?). to be(true), 'Cannot check Insure-for checkbox'
   insure_for.amount.set(str)
-  insure_for.cost.double_click
+  insure_for.cost.scroll_into_view
   insure_for.cost.safe_click
   insurance_terms.title.safe_wait_until_present(timeout: 2)
   # This is a work around, there's a bug in the code where there are more
@@ -523,9 +597,15 @@ end
 
 Then /^set order details tracking to (.*)$/ do |str|
   tracking = SdcOrders.order_details.tracking
-  tracking.selection_element(value: str)
-  tracking.drop_down.click unless tracking.selection.present?
-  tracking.selection.safe_click unless tracking.selection.class_disabled?
+  selection = tracking.selection_element(value: str)
+  tracking.drop_down.click
+  3.times do
+    selection.scroll_into_view
+    selection.wait_until_present(timeout: 2)
+    selection.safe_click
+    break if tracking.text_field.text_value.eql?(str)
+    tracking.drop_down.click unless selection.present?
+  end
   expect(tracking.text_field.text_value).to eql(str)
   TestData.hash[:tracking] = str
   step 'save order details data'
@@ -593,37 +673,55 @@ end
 
 Then /^expect order details pounds? (?:is (\d+)|and saved Pounds? are the same)$/ do |str|
   str ||= TestData.hash[:pounds]
-  result = SdcOrders.order_details.weight.lbs.text_value.to_f
+  weight = SdcOrders.order_details.weight
+  weight.lbs.scroll_into_view
+  weight.lbs.wait_until_present(timeout: 10)
+  result = weight.lbs.text_value.to_f
   expect(result).to eql(str.to_f.round(2))
 end
 
 Then /^expect order details ounces? (?:is (\d+)|and saved Ounces? are the same)$/ do |str|
   str ||= TestData.hash[:ounces]
-  result = SdcOrders.order_details.weight.oz.text_value.to_f
+  weight = SdcOrders.order_details.weight
+  weight.oz.scroll_into_view
+  weight.oz.wait_until_present(timeout: 10)
+  result = weight.oz.text_value.to_f
   expect(result).to eql(str.to_f.round(2))
 end
 
 Then /^expect order details length is (\d+)$/ do |str|
   str ||= TestData.hash[:length]
-  result = SdcOrders.order_details.dimensions.length.text_value.to_f
+  dimensions = SdcOrders.order_details.dimensions
+  dimensions.length.scroll_into_view
+  dimensions.length.wait_until_present(timeout: 10)
+  result = dimensions.length.text_value.to_f
   expect(result).to eql(str.to_f.round(2))
 end
 
 Then /^expect order details width is (\d+)$/ do |str|
   str ||= TestData.hash[:width]
-  result = SdcOrders.order_details.dimensions.width.text_value.to_f
+  dimensions = SdcOrders.order_details.dimensions
+  dimensions.width.scroll_into_view
+  dimensions.width.wait_until_present(timeout: 10)
+  result = dimensions.width.text_value.to_f
   expect(result).to eql(str.to_f.round(2))
 end
 
 Then /^expect order details height is (\d+)$/ do |str|
   str ||= TestData.hash[:height]
-  result = SdcOrders.order_details.dimensions.height.text_value.to_f
+  dimensions = SdcOrders.order_details.dimensions
+  dimensions.height.scroll_into_view
+  dimensions.height.wait_until_present(timeout: 10)
+  result = dimensions.height.text_value.to_f
   expect(result).to eql(str.to_f.round(2))
 end
 
 Then /^expect order details tracking is (?:correct|(.*))$/ do |str|
   str ||= TestData.hash[:tracking]
-  result = SdcOrders.order_details.tracking.text_field.text_value
+  tracking = SdcOrders.order_details.tracking
+  tracking.text_field.scroll_into_view
+  tracking.text_field.wait_until_present(timeout: 10)
+  result = tracking.text_field.text_value
   expect(result).to eql(str)
 end
 
@@ -636,8 +734,13 @@ end
 Then /^expect order details ship-from is (?:correct|(.*))$/ do |str|
   step 'show order ship-to details'
   str ||= TestData.hash[:ship_from]
-  result = SdcOrders.order_details.ship_from.text_field.text_value
-  expect(result).to eql(str)
+  if str
+    ship_from = SdcOrders.order_details.ship_from
+    ship_from.text_field.scroll_into_view
+    ship_from.text_field.wait_until_present(timeout: 10)
+    result = ship_from.text_field.text_value
+    expect(result).to eql(str)
+  end
 end
 
 Then /^expect order details reference number is (?:correct|(.*))$/ do |str|

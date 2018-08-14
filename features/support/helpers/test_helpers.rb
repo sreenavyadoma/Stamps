@@ -128,7 +128,7 @@ module SdcCore
           address_array.each_with_index do |field, index|
             if index == address_array.size - 1 # if this is the last item in the string, don't append a new line
               formatted_address += field.to_s.strip
-            else # (param_hash['full_name'].downcase.include? 'random') ? TestHelper.random_name : param_hash['full_name']
+            else # (param_hash[:full_name].downcase.include? 'random') ? TestHelper.random_name : param_hash[:full_name]
               formatted_address = formatted_address + ((field.to_s.strip.downcase.include? 'random') ? rand_full_name : field.to_s.strip) + "\n"
             end
           end
@@ -213,35 +213,39 @@ module SdcCore
         rand_shipping_data(data_rand_zone_5_8)
       end
 
-      def rand_ship_from_zone_1_4
-        us_states = data_for(:us_states, {}) if us_states.nil?
-        shipping = rand_shipping_data(data_rand_zone_1_4)
-        shipping['ship_from_zip'] = shipping['zip']
-        shipping['state_abbrev'] = shipping['state']
-        shipping['state'] = us_states[shipping['state_abbrev']]
-        shipping['street_address2'] = rand_suite
-        shipping
+      def rand_shipping_data(address)
+        us_states = data_for(:us_states, {})
+        hash = {}
+        hash[:street_address] = address['street_address']
+        hash[:street_address2] = address['street_address2']
+        hash[:city] = address['city']
+        hash[:state] = address['state']
+        hash[:zip] = address['zip']
+        hash[:ship_from_zip] = address['zip']
+        hash[:state_abbrev] = address['state']
+        hash[:state] = us_states[hash[:state_abbrev]]
+        hash[:first_name] = rand_alpha_str.capitalize
+        hash[:last_name] = rand_alpha_str.capitalize
+        hash[:full_name] = "#{hash[:first_name]} #{hash[:last_name]}"
+        hash[:company] = rand_comp_name
+        hash[:phone] = rand_phone
+        hash[:phone_number_format] = rand_phone_format
+        hash[:email] = rand_email
+        hash
       end
 
-      def rand_ship_from_zone_5_8
-        us_states = data_for(:us_states, {}) if us_states.nil?
-        shipping = rand_shipping_data(data_rand_zone_5_8)
-        shipping['ship_from_zip'] = shipping['zip']
-        shipping['state_abbrev'] = shipping['state']
-        shipping['state'] = us_states[shipping['state_abbrev']]
-        shipping['street_address2'] = rand_suite
-        shipping
+      def data_rand_zone_1_4
+        data = data_for(:zone_1_through_4, {}).values
+        zones = data[rand(data.size)]
+        addresses = zones.values
+        addresses[rand(addresses.size)]
       end
 
-      def rand_shipping_data(hash_data)
-        hash_data['first_name'] = rand_alpha_str.capitalize
-        hash_data['last_name'] = rand_alpha_str.capitalize
-        hash_data['full_name'] = "#{hash_data['first_name']} #{hash_data['last_name']}"
-        hash_data['company'] = rand_comp_name
-        hash_data['phone'] = rand_phone
-        hash_data['phone_number_format'] = rand_phone_format
-        hash_data['email'] = rand_email
-        hash_data
+      def data_rand_zone_5_8
+        data = data_for(:zone_5_through_8, {}).values
+        zones = data[rand(data.size)]
+        addresses = zones.values
+        addresses[rand(addresses.size)]
       end
 
       def rand_login_credentials
@@ -280,10 +284,10 @@ module SdcCore
       end
 
       def address_hash_to_str(hash)
-        "#{hash['full_name'].downcase.include?('random') ? rand_full_name : hash['full_name']}
-        #{hash['company'].downcase.include?('random') ? rand_comp_name : hash['company']}
-        #{hash['street_address']} #{hash['street_address2'].nil? ? '' : hash['street_address2']}
-        #{hash['city']} #{hash['state']} #{hash['zip']}"
+        "#{hash[:full_name].downcase.include?('random') ? rand_full_name : hash[:full_name]}
+        #{hash[:company].downcase.include?('random') ? rand_comp_name : hash[:company]}
+        #{hash[:street_address]} #{hash[:street_address2].nil? ? '' : hash[:street_address2]}
+        #{hash[:city]} #{hash[:state]} #{hash[:zip]}"
       end
 
       def address_str_to_hash(str)
@@ -359,20 +363,6 @@ module SdcCore
         else
           raise ArgumentError, 'Illegal number of arguments for date_from_today'
         end
-      end
-
-      def data_rand_zone_1_4
-        data = data_for(:zone_1_through_4, {}).values
-        zones = data[rand(data.size)]
-        addresses = zones.values
-        addresses[rand(addresses.size)]
-      end
-
-      def data_rand_zone_5_8
-        data = data_for(:zone_5_through_8, {}).values
-        zones = data[rand(data.size)]
-        addresses = zones.values
-        addresses[rand(addresses.size)]
       end
 
       def format_weight(str)

@@ -361,7 +361,7 @@ Feature: All details tests for order
 
     Then add new order
     #Then set order details ship-from to Automation - El Segundo, CA
-    Then set order details ship-to to random address between zone 5 and 8
+    Then set order details ship-to to random address in zone 8
     Then set order details service to PM Flat Rate Envelope
     Then set order details pounds to 3.5
     Then expect order details pounds is 3

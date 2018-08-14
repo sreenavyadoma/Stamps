@@ -1,5 +1,6 @@
 
 Then /^visit Mail$/ do
+  SdcGlobal.web_app = :mail
   step 'initialize test parameters'
 
   env = case TestSession.env.url
@@ -19,25 +20,27 @@ Then /^visit Mail$/ do
 end
 
 Then /^sign-in to mail$/ do
+  step 'Verify Health Check for Orders' if TestSession.env.healthcheck
   step 'visit Mail'
-  step 'fetch user credentials from MySQL'
+  usr = TestSession.env.usr
+  pw = TestSession.env.pw
   modal = SdcWebsite.navigation.mail_sign_in_modal
-  if SdcEnv.width.to_i < 1195
+  if TestSession.env.mobile_device || SdcPage.browser.window.size.width < 1195
     modal.hamburger_menu.click
+    modal.sign_in.wait_until_present(timeout: 5)
     modal.sign_in.click
-    step "set sign in page username to #{TestData.hash[:username]}"
-    step "set sign in page password to #{TestData.hash[:password]}"
-    step 'click sign in page sign-in button'
+    step "sign-in to orders with #{usr}/#{pw}"
   else
     modal.sign_in_link.wait_until_present(timeout: 10)
     modal.sign_in_link.hover
-    step "set Mail username to #{TestData.hash[:username]}"
-    step "set Mail password to #{TestData.hash[:password]}"
+    step "set Mail username to #{usr}"
+    step "set Mail password to #{pw}"
     step 'click the Sign In button in Mail'
     step 'close whats new modal in mail'
     step 'expect user is signed in'
   end
-  SdcGlobal.web_app = :mail
+  TestData.hash[:username] = usr
+  TestData.hash[:password] = pw
 end
 
 

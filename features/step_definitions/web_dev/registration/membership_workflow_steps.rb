@@ -17,13 +17,13 @@ end
 Then /^[Ss]et [Mm]embership [Pp]age [Mm]ember [Aa]ddress to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
   address = TestHelper.address_helper_zone(address) #combine this
 
-  TestData.hash[:first_name] = address['first_name'] #combine this in address_helper_zone
-  TestData.hash[:last_name] = address['last_name']
-  TestData.hash[:street_address] = address['street_address']
-  TestData.hash[:city] = address['city']
-  TestData.hash[:state] = address['state']
-  TestData.hash[:zip] = address['zip']
-  TestData.hash[:company] = address['company']
+  TestData.hash[:first_name] = address[:first_name] #combine this in address_helper_zone
+  TestData.hash[:last_name] = address[:last_name]
+  TestData.hash[:street_address] = address[:street_address]
+  TestData.hash[:city] = address[:city]
+  TestData.hash[:state] = address[:state]
+  TestData.hash[:zip] = address[:zip]
+  TestData.hash[:company] = address[:company]
   TestData.hash[:ship_to_domestic] = TestHelper.format_address(address)
   TestData.hash[:phone_number_format] = address[:phone_number_format]
 
@@ -187,11 +187,11 @@ end
 Then /^[Ss]et [Mm]embership [Pp]age [Mm]ember [Bb]illing [Aa]ddress to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
   address = TestHelper.address_helper_zone(address) #combine this
 
-  TestData.hash[:street_address] = address['street_address']
-  TestData.hash[:city] = address['city']
-  TestData.hash[:state] = address['state']
-  TestData.hash[:zip] = address['zip']
-  TestData.hash[:phone_number_format] = address['phone_number_format']
+  TestData.hash[:street_address] = address[:street_address]
+  TestData.hash[:city] = address[:city]
+  TestData.hash[:state] = address[:state]
+  TestData.hash[:zip] = address[:zip]
+  TestData.hash[:phone_number_format] = address[:phone_number_format]
 
   step "set Membership page Billing Address to #{TestData.hash[:street_address]}"
   step "set Membership page Billing City to #{TestData.hash[:city]}"

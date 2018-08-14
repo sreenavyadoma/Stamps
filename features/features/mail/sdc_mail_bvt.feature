@@ -100,6 +100,11 @@ Feature:  Mail BVT
     Then click the Sign In button in Mail
     Then expect Mail Sign In Modal error Your username or password is invalid.
 
+  @mail_authentication_mobile
+  Scenario: Mail - Authentication
+    Then sign-in to mail
+    #Then Sign out
+
   @bvt_mail_piece_validation
   Scenario: Stamps B-Series
     Then select print on Stamps

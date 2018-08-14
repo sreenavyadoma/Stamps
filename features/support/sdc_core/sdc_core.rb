@@ -10,16 +10,16 @@ module SdcEnv
   class << self
     attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :debug,
                   :printer, :browser, :hostname, :mobile, :scenario,
-                  :sauce_device, :test_name, :log_level, :driver_log_level,
+                  :sauce_device, :test_name, :driver_log_level,
                   :browser_mobile_emulator, :android, :ios, :firefox_profile,
-                  :new_framework, :window_size, :web_dev, :jenkins, :sauce,
+                  :new_framework, :web_dev, :jenkins, :sauce,
                   :width, :height
   end
 end
 
 module SdcGlobal
   class << self
-    attr_accessor :web_app
+    attr_accessor :web_app, :scenario
   end
 end
 
@@ -79,7 +79,13 @@ module TestSession
     key(:selenium_port) { ENV['SELENIUM_PORT'] }
     key(:selenium_platform) { ENV['SELENIUM_PLATFORM'] }
     key(:selenium_version) { ENV['SELENIUM_VERSION'] }
-    key(:selenium_browser) { ENV['SELENIUM_BROWSER'] }
+    key(:selenium_browser) do
+      if ENV['SELENIUM_BROWSER'] && ENV['SELENIUM_BROWSER'].eql?('MicrosoftEdge')
+        ENV['SELENIUM_BROWSER'] = 'edge'
+      else
+        ENV['SELENIUM_BROWSER']
+      end
+    end
     key(:selenium_driver) { ENV['SELENIUM_DRIVER'] }
     key(:sauce_build_name) { ENV['SAUCE_BUILD_NAME'] }
     key(:selenium_url) { ENV['SELENIUM_URL'] }
@@ -114,12 +120,20 @@ module TestSession
     end
     key(:mobile_device) { ios_test || android_test }
     # test settings
+    key(:test_log_level) do
+      ENV['LOG_LEVEL'].to_sym if ENV['LOG_LEVEL']
+    end
+    key(:selenium_log_level) do
+      ENV['SELENIUM_LOG_LEVEL'].to_sym if ENV['SELENIUM_LOG_LEVEL']
+    end
     key(:window_size) { ENV['WINDOW_SIZE'] }
     key(:web_dev) { ENV['WEB_DEV'] }
     key(:firefox_profile) { ENV['FIREFOX_PROFILE'] }
     key(:pw) { ENV['PW'] }
     key(:usr) { ENV['USR'] }
-    key(:health_check) { ENV['HEALTHCHECK'] }
+    key(:healthcheck) do
+      (ENV['HEALTHCHECK'].casecmp('true') if ENV['HEALTHCHECK']) || true
+    end
     key(:printer) { ENV['PRINTER'] }
     key(:web_app) { ENV['WEB_APP'].downcase.to_sym unless ENV['WEB_APP'].nil? }
     key(:url) do
@@ -141,9 +155,9 @@ module TestSession
       end
     end
 
-  def test_name
-    job_name || "#{Socket.gethostname} - #{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
-  end
+    def test_name
+      job_name || "#{SdcGlobal.scenario.feature.name} - #{SdcGlobal.scenario.name}"
+    end
 
     def build
       build_tag || Socket.gethostname
@@ -168,148 +182,144 @@ module TestSession
   #     platformName: 'iOS',
   #     browserName: 'Safari',
   #     automationName: 'XCUITest'
-  def selenium_device
-    
-      desired_caps = {
-          caps: {
-              :name => env.test_name,
-              :appiumVersion => env.appium_version,
-              :deviceName => env.selenium_device,
-              :deviceOrientation => env.device_orientation,
-              :platformVersion => env.selenium_version,
-              :platformName => env.selenium_platform,
-              :browserName => env.selenium_browser,
-              :automationName => env.automation_name,
-              :tunnelIdentifier => env.tunnel_identifier
-          },
-          appium_lib: {
-              sauce_username: env.sauce_username,
-              sauce_access_key: env.sauce_access_key,
-              wait: env.idle_timeout
-          }
+  def mobile_device
+    desired_caps = {
+      caps: {
+        :name => env.test_name,
+        :appiumVersion => env.appium_version,
+        :deviceName => env.selenium_device,
+        :deviceOrientation => env.device_orientation,
+        :platformVersion => env.selenium_version,
+        :platformName => env.selenium_platform,
+        :browserName => env.selenium_browser,
+        :automationName => env.automation_name,
+        :tunnelIdentifier => env.tunnel_identifier
+      },
+      appium_lib: {
+        :sauce_username => env.sauce_username,
+        :sauce_access_key => env.sauce_access_key,
+        :wait => env.idle_timeout
       }
+    }
 
-      @driver = Appium::Driver.new(desired_caps, false).start_driver
-    rescue StandardError => e
-      SdcLogger.error e.message
-      SdcLogger.error e.backtrace.join("\n")
-      raise e
-    
+    @driver = Appium::Driver.new(desired_caps, false).start_driver
+  rescue StandardError => e
+    SdcLogger.error e.message
+    SdcLogger.error e.backtrace.join("\n")
+    raise e
   end
-  module_function :selenium_device
+  module_function :mobile_device
 
-  def selenium_browser
-    
-      desired_caps = {
-          :name => env.test_name,
-          :version => env.selenium_version,
-          :platform => env.selenium_platform,
-          :build => env.build,
-          :idleTimeout => env.idle_timeout,
-          :screenResolution => env.screen_resolution,
-          :extendedDebugging => true,
-          :tunnelIdentifier => env.tunnel_identifier
-      }
-      caps = Selenium::WebDriver::Remote::Capabilities.send(env.selenium_browser, desired_caps)
-      client = Selenium::WebDriver::Remote::Http::Default.new
-      client.timeout = env.idle_timeout
-      url = env.sauce_end_point
-      @driver = Watir::Browser.new(:remote, desired_capabilities: caps, http_client: client, url: url)
-    rescue StandardError => e
-      SdcLogger.error e.message
-      SdcLogger.error e.backtrace.join("\n")
-      raise e
-    
+  def sauce_browser
+    desired_caps = {
+      :name => env.test_name,
+      :version => env.selenium_version,
+      :platform => env.selenium_platform,
+      :build => env.build,
+      :idleTimeout => env.idle_timeout,
+      :screenResolution => env.screen_resolution,
+      :extendedDebugging => true,
+      :tunnelIdentifier => env.tunnel_identifier
+    }
+    caps = Selenium::WebDriver::Remote::Capabilities.send(env.selenium_browser, desired_caps)
+    client = Selenium::WebDriver::Remote::Http::Default.new
+    client.timeout = env.idle_timeout
+    url = env.sauce_end_point
+    @driver = Watir::Browser.new(:remote, desired_capabilities: caps, http_client: client, url: url)
+  rescue StandardError => e
+    SdcLogger.error e.message
+    SdcLogger.error e.backtrace.join("\n")
+    raise e
   end
-  module_function :selenium_browser
+  module_function :sauce_browser
 
   def local_browser
-    
+
       # Watir.always_locate = true
-      case(env.local_browser)
+    case(env.local_browser)
 
-      when :edge
-        kill('taskkill /im MicrosoftEdge.exe /f')
+    when :edge
+      kill('taskkill /im MicrosoftEdge.exe /f')
 
-        @driver = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
+      @driver = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
 
-      when :ff, :firefox
-        kill('taskkill /im firefox.exe /f')
-        if env.firefox_profile
-          if env.web_dev
-            download_directory = "#{Dir.getwd}/download"
-            download_directory.tr!('/', '\\') if Selenium::WebDriver::Platform.windows?
-            profile = Selenium::WebDriver::Firefox::Profile.new
-            profile['browser.download.folderList'] = 2 # custom location
-            profile['browser.download.dir'] = download_directory
-            profile['browser.helperApps.neverAsk.saveToDisk'] = 'text/csv,application/pdf,image/png,application/x-zip-compressed,text/plain'
-            @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
-            Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
-          else
-            profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(env.firefox_profile)
-            profile.assume_untrusted_certificate_issuer = true
-            profile['network.http.phishy-userpass-length'] = 255
-            @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
-          end
-
-          @driver.driver.manage.timeouts.page_load = 60
-        else
-          @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
-        end
-
-      when :gc, :chrome
-        prefs = {
-            download: {
-                prompt_for_download: false,
-                default_directory: "#{Dir.getwd}/download"
-            }
-        }
-        kill('taskkill /im chrome.exe /f')
+    when :ff, :firefox
+      kill('taskkill /im firefox.exe /f')
+      if env.firefox_profile
         if env.web_dev
-          @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, options: { prefs: prefs }, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+          download_directory = "#{Dir.getwd}/download"
+          download_directory.tr!('/', '\\') if Selenium::WebDriver::Platform.windows?
+          profile = Selenium::WebDriver::Firefox::Profile.new
+          profile['browser.download.folderList'] = 2 # custom location
+          profile['browser.download.dir'] = download_directory
+          profile['browser.helperApps.neverAsk.saveToDisk'] = 'text/csv,application/pdf,image/png,application/x-zip-compressed,text/plain'
+          @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
           Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
         else
-          @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+          profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(env.firefox_profile)
+          profile.assume_untrusted_certificate_issuer = true
+          profile['network.http.phishy-userpass-length'] = 255
+          @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
         end
 
         @driver.driver.manage.timeouts.page_load = 60
-      when :chromeb
-        kill('taskkill /im chrome.exe /f')
-        Selenium::WebDriver::Chrome.path = data_for(:setup, {})['windows']['chromedriverbeta']
-        @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
-
-        @driver.driver.manage.timeouts.page_load = 60
-
-      when :ie
-        kill('taskkill /im iexplore.exe /f')
-        @driver = SdcDriverDecorator.new(Watir::Browser.new(:ie))
-
-      when :safari
-        kill("killall 'Safari Technology Preview'")
-        @driver = SdcDriverDecorator.new(Watir::Browser.new(:safari, technology_preview: true))
-
       else
-        raise ArgumentError, "Invalid browser selection. #{env.local_browser}"
+        @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
       end
 
-      if env.window_size
-        width, height = env.window_size.split("x")
-        begin
-          @driver.window.resize_to(width, height)
-          @driver.window.move_to(0, 0)
-        rescue Exception
-          @driver.window.maximize
-        end
+    when :gc, :chrome
+      prefs = {
+        download: {
+          prompt_for_download: false,
+          default_directory: "#{Dir.getwd}/download"
+        }
+      }
+      kill('taskkill /im chrome.exe /f')
+      if env.web_dev
+        @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, options: { prefs: prefs }, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+        Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
       else
+        @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+      end
+
+      @driver.driver.manage.timeouts.page_load = 60
+    when :chromeb
+      kill('taskkill /im chrome.exe /f')
+      Selenium::WebDriver::Chrome.path = data_for(:setup, {})['windows']['chromedriverbeta']
+      @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+
+      @driver.driver.manage.timeouts.page_load = 60
+
+    when :ie
+      kill('taskkill /im iexplore.exe /f')
+      @driver = SdcDriverDecorator.new(Watir::Browser.new(:ie))
+
+    when :safari
+      kill("killall 'Safari Technology Preview'")
+      @driver = SdcDriverDecorator.new(Watir::Browser.new(:safari, technology_preview: true))
+
+    else
+      raise ArgumentError, "Invalid browser selection. #{env.local_browser}"
+    end
+
+    if env.window_size
+      width, height = env.window_size.downcase.split("x")
+      begin
+        @driver.window.resize_to(width, height)
+        @driver.window.move_to(0, 0)
+      rescue Exception
         @driver.window.maximize
       end
-      @driver
+    else
+      @driver.window.maximize
+    end
+    @driver
 
-    rescue StandardError => e
-      SdcLogger.error e.message
-      SdcLogger.error e.backtrace.join("\n")
-      raise e, 'Browser driver failed to start'
-    
+  rescue StandardError => e
+    SdcLogger.error e.message
+    SdcLogger.error e.backtrace.join("\n")
+    raise e, 'Browser driver failed to start'
+
   end
   module_function :local_browser
 
@@ -392,10 +402,9 @@ end
 class SdcPage < WatirDrops::PageObject
 
   class << self
-
     def visit(*args)
       new.tap do |page|
-        if TestSession.env.selenium_device
+        if TestSession.env.mobile_device
           url = page.page_url(args[0])
           page.get(url)
         else
@@ -527,7 +536,7 @@ end
 module SdcElementHelper
   include ::Watir::Waitable
   def present?
-    send(:displayed?) if respond_to?(:displayed?)
+    return send(:displayed?) if respond_to?(:displayed?)
     send(:present?)
   end
 
@@ -568,11 +577,11 @@ module SdcElementHelper
   end
 
   def safe_set(*args)
-    
-      set(*args)
-    rescue Watir::Exception::UnknownObjectException
+
+    set(*args)
+  rescue Watir::Exception::UnknownObjectException
       # ignore
-    
+
   end
 
   def set_attribute(name, value)
@@ -580,10 +589,10 @@ module SdcElementHelper
     execute_script("return arguments[0].#{name.to_s}='#{value.to_s}'", @element)
   end
 
-  def safe_send_keys(*args, ctr: 1)
-    ctr.to_i.times do
+  def safe_send_keys(arg, iteration: 1)
+    iteration.to_i.times do
       begin
-        send(:send_keys, *args)
+        send(:send_keys, arg)
       rescue ::StandardError
         # ignore
       end
@@ -592,12 +601,12 @@ module SdcElementHelper
     self
   end
 
-  def send_keys_while_present(*args, ctr: 1)
-    ctr.to_i.times do
+  def send_keys_while_present(arg, iteration: 1, timeout: 2)
+    iteration.to_i.times do
       begin
-        break unless present?
-        safe_send_keys(*args)
-        safe_wait_while_present(timeout: 2)
+        break unless send(:present?)
+        send(:send_keys, arg)
+        wait_while_present(timeout: timeout)
       rescue ::StandardError
         # ignore
       end
@@ -632,7 +641,7 @@ module SdcElementHelper
     if respond_to? :wait_until_present
       send(:wait_until_present, timeout: timeout, interval: interval)
     else
-      wait_until(timeout: timeout, interval: interval, &:present?)
+      Appium::Core::Wait.until_true(timeout: timeout, message: message) { present? }
     end
 
     self
@@ -642,7 +651,7 @@ module SdcElementHelper
     if respond_to? :wait_while_present
       send(:wait_while_present, timeout: timeout)
     else
-      wait_while(timeout: timeout, interval: interval, &:present?)
+      Appium::Core::Wait.until_true(timeout: timeout, message: message) { !present? }
     end
 
     self
@@ -652,8 +661,11 @@ module SdcElementHelper
     wait_until_present(timeout: timeout, interval: interval)
   rescue ::Watir::Wait::TimeoutError
     # ignore
+  rescue ::Appium::Core::Wait::TimeoutError
+    # ignore
   rescue ::Selenium::WebDriver::Error::TimeOutError
     # ignore
+  rescue ::Selenium::WebDriver::Error::StaleElementReferenceError
     # ignored
   end
 
@@ -661,7 +673,11 @@ module SdcElementHelper
     wait_while_present(timeout: timeout)
   rescue ::Watir::Wait::TimeoutError
     # ignore
+  rescue ::Appium::Core::Wait::TimeoutError
+    # ignore
   rescue ::Selenium::WebDriver::Error::TimeOutError
+    # ignore
+  rescue ::Selenium::WebDriver::Error::StaleElementReferenceError
     # ignore
   end
 
