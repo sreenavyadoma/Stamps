@@ -3,6 +3,14 @@ Then /^WL: navigate to (.*)$/ do |str|
   step 'pause for 2 second'
 end
 
+Then /^WL: save cookies$/ do
+ SdcPage.browser.cookies.save '.cookies'
+end
+
+Then /WL: load cookies$/ do
+  SdcPage.browser.cookies.load '.cookies'
+end
+
 Then /^WL: navigate back$/ do
   SdcPage.browser.back
   step 'pause for 2 second'
