@@ -229,9 +229,3 @@ Feature: Stamps WebReg: Normal Workflow
      #Validate Postage Meter Page data are present
     Then WL: expect postage meter values are correct
     Then WL: navigates to www.google.com
-    Then WL:
-
-
-
-
-

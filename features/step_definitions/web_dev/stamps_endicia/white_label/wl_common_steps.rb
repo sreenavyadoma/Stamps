@@ -1,4 +1,4 @@
-Then /^WL: navigates to (.*)$/ do |str|
+Then /^WL: navigate to (.*)$/ do |str|
   SdcPage.browser.goto str
 end
 

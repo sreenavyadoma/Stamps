@@ -226,10 +226,10 @@ Feature: Endicia WebReg: Membership Page
 
   @ewwr_membership_page_addr_validation
   Scenario: Membership Page Address Validation
-    Then WL: navigates to default registration page for endicia with the following offer id 721
+    Then WL: navigates to default registration page for endicia with the following offer id 707
     Then WL: set profile page default values
     Then WL: click profile page continue button
-    #Then WL: set membership page default values
+    Then WL: set membership page default values
 
     #Autocomplete Profile Address
     Then pause for 1 second
