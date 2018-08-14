@@ -1,6 +1,13 @@
-Then /^WL: navigates to (.*)$/ do |str|
+Then /^WL: navigate to (.*)$/ do |str|
   SdcPage.browser.goto str
+  step 'pause for 2 second'
 end
+
+Then /^WL: navigate back$/ do
+  SdcPage.browser.back
+  step 'pause for 2 second'
+end
+
 
 #..................................Modal....................#
 Then /^WL: click modal continue button$/ do

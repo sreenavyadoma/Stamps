@@ -51,6 +51,7 @@ end
 
 Then /^WL: expect membership page first name is (?:correct|(.*))$/ do |str|
   first_name = WhiteLabel.membership_page.first_name
+  first_name.wait_until_present(timeout: 5)
   str ||= TestData.hash[:first_name]
   step 'pause for 1 second'
   expect(first_name.text_value.strip).to eql(str)
@@ -706,11 +707,26 @@ Then /^WL: set postage meter address between (.*)$/ do |address|
 end
 
 Then /^WL: set postage meter address to (.*)$/ do |str|
-  WhiteLabel.membership_page.meter_street.set(TestData.hash[:postage_street_address] = str)
+  meter_street = WhiteLabel.membership_page.meter_street
+  meter_street.wait_until_present(timeout: 5)
+
+  5.times do
+    meter_street.clear
+    meter_street.set(str)
+    break unless meter_street.text_value.strip == ''
+  end
+
+  TestData.hash[:postage_street_address] = str
 end
 
-Then /^WL: expect postage meter address is correct$/ do
-  expect(WhiteLabel.membership_page.meter_street.text_value.strip).to eql(TestData.hash[:postage_street_address])
+Then /^WL: expect postage meter address is (?:correct|(.*))$/ do |str|
+  meter_street = WhiteLabel.membership_page.meter_street
+  meter_street.wait_until_present(timeout: 5)
+  str ||= TestData.hash[:postage_street_address]
+  step 'pause for 1 second'
+  expect(meter_street.text_value.strip).to eql(str)
+
+  TestData.hash[:postage_street_address] = str
 end
 
 Then /^WL: expect postage meter address tooltip to be (.*)$/ do |str|
@@ -718,11 +734,22 @@ Then /^WL: expect postage meter address tooltip to be (.*)$/ do |str|
 end
 
 Then /^WL: set postage meter city to (.*)$/ do |str|
-  WhiteLabel.membership_page.meter_city.set(TestData.hash[:postage_city] = str)
+  meter_city = WhiteLabel.membership_page.meter_city
+
+  5.times do
+    meter_city.clear
+    meter_city.set(str)
+    break unless meter_city.text_value.strip == ''
+  end
+
+  TestData.hash[:postage_city] = str
 end
 
-Then /^WL: expect postage meter city is correct$/ do
-  expect(WhiteLabel.membership_page.meter_city.text_value.strip).to eql(TestData.hash[:postage_city])
+Then /^WL: expect postage meter city is (?:correct|(.*))$/ do |str|
+  meter_city = WhiteLabel.membership_page.meter_city
+  str ||= TestData.hash[:postage_city]
+  expect(meter_city.text_value.strip).to eql(str)
+  TestData.hash[:postage_city]= str
 end
 
 Then /^WL: expect postage meter city tooltip to be (.*)$/ do |str|
@@ -740,8 +767,11 @@ Then /^WL: select postage meter state (.*)$/ do |str|
   expect(TestData.hash[:postage_state].strip).to eql str
 end
 
-Then /^WL: expect postage meter state is correct$/ do
-  expect(WhiteLabel.membership_page.meter_state.attribute_value('title').strip).to eql(TestData.hash[:postage_state])
+Then /^WL: expect postage meter state is (?:correct|(.*))$/ do |str|
+  meter_state = WhiteLabel.membership_page.meter_state
+  str ||=  TestData.hash[:postage_state]
+  expect(meter_state.attribute_value('title').strip).to eql(str)
+  TestData.hash[:postage_state] = str
 end
 
 Then /^WL: expect postage meter state tooltip to be (.*)$/ do |str|
@@ -752,8 +782,12 @@ Then /^WL: set postage meter zip to (.*)$/ do |str|
   WhiteLabel.membership_page.meter_zip.set(TestData.hash[:postage_zip] = str)
 end
 
-Then /^WL: expect postage meter zip is correct$/ do
-  expect(WhiteLabel.membership_page.meter_zip.text_value.strip).to eql(TestData.hash[:postage_zip])
+Then /^WL: expect postage meter zip is (?:correct|(.*))$/ do |str|
+  meter_zip = WhiteLabel.membership_page.meter_zip
+  str ||= TestData.hash[:postage_zip]
+  expect(meter_zip.text_value.strip).to eql(str)
+
+  TestData.hash[:postage_zip] = str
 end
 
 Then /^WL: expect postage meter values are correct$/ do

@@ -198,7 +198,6 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: select membership page state KY
     Then WL: set membership page zip to 40962-0007
     Then WL: click membership page submit button
-    #Then WL: click membership page standardized addr modal continue button
 
     Then WL: set postage meter address between zone 5 and zone 8
 
@@ -228,9 +227,19 @@ Feature: Stamps WebReg: Normal Workflow
 
      #Validate Postage Meter Page data are present
     Then WL: expect postage meter values are correct
-    Then WL: navigates to www.google.com
-    Then WL:
 
+
+    Then WL: navigate to www.google.com
+    Then WL: navigate back
+
+    #Validate profile page data are present
+    Then WL: set profile page password to random value
+    Then WL: set profile page re-type password to same as previous password
+    Then WL: expect profile page default values are correct
+    Then WL: expect security questions first security question is correct
+    Then WL: expect security questions second security question is correct
+
+    Then WL: click profile page continue button
 
 
 
