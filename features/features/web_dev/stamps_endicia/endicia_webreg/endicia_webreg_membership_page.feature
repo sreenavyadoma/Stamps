@@ -426,7 +426,6 @@ Feature: Endicia WebReg: Membership Page
     Then WL: set username taken to a
     Then WL: expect username taken tooltip to be 2 character minimum
     Then WL: set username taken username to an existing username from db
-    #Then WL: click username taken continue button
 
     Then WL: click modal x button
 
@@ -449,7 +448,7 @@ Feature: Endicia WebReg: Membership Page
     Then pause for 2 seconds
     Then WL: expect username taken header to be Username Taken
 
-    Then WL: set username taken to \abc
+    Then WL: set username taken to \abc/
     Then WL: click username taken continue button
     Then WL: expect an error occurred modal head to be An Error Occurred
     Then WL: expect an error occurred modal paragraph to be
