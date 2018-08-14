@@ -52,6 +52,7 @@ end
 Then /^WL: expect membership page first name is (?:correct|(.*))$/ do |str|
   first_name = WhiteLabel.membership_page.first_name
   str ||= TestData.hash[:first_name]
+  step 'pause for 1 second'
   expect(first_name.text_value.strip).to eql(str)
   TestData.hash[:first_name] = str
 end
@@ -740,7 +741,7 @@ Then /^WL: select postage meter state (.*)$/ do |str|
 end
 
 Then /^WL: expect postage meter state is correct$/ do
-  expect(WhiteLabel.membership_page.meter_city.attribute_value('title').strip).to eql(TestData.hash[:postage_state])
+  expect(WhiteLabel.membership_page.meter_state.attribute_value('title').strip).to eql(TestData.hash[:postage_state])
 end
 
 Then /^WL: expect postage meter state tooltip to be (.*)$/ do |str|

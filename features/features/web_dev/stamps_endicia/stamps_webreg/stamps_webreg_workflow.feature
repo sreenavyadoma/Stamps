@@ -196,15 +196,16 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: set membership page address to Po Box 7
     Then WL: set membership page city to Manchester
     Then WL: select membership page state KY
-    Then WL: set membership page billing zip to 40962-0007
+    Then WL: set membership page zip to 40962-0007
     Then WL: click membership page submit button
-    Then WL: click membership page standardized addr modal continue button
+    #Then WL: click membership page standardized addr modal continue button
 
     Then WL: set postage meter address between zone 5 and zone 8
 
     #Validate Membership page data are present
     Then WL: click membership page back button
     Then WL: expect membership page default values are correct
+    Then WL: expect membership page credit card number is ************1111
     Then WL: expect membership page billing state is correct
     Then WL: expect membership page billing city is correct
     Then WL: expect membership page billing state is correct
@@ -227,7 +228,8 @@ Feature: Stamps WebReg: Normal Workflow
 
      #Validate Postage Meter Page data are present
     Then WL: expect postage meter values are correct
-
+    Then WL: navigates to www.google.com
+    Then WL:
 
 
 
