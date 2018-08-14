@@ -258,9 +258,9 @@ Then /^WL: expect profile page promo code is correct$/ do
   step 'pause for 1 second'
   profile_page = WhiteLabel.profile_page
   if profile_page.promo_code.present?
-    expect(profile_page.promo_code.text_value.strip).to eql( TestData.hash[:set_promo_code])
+    expect(profile_page.promo_code.text_value.strip).to eql(TestData.hash[:set_promo_code])
   else
-    expect(profile_page.promo_code_hidden.text_value.strip).to eql( TestData.hash[:set_promo_code])
+    expect(profile_page.promo_code_hidden.text_value.strip).to eql(TestData.hash[:set_promo_code])
   end
 end
 
@@ -376,5 +376,15 @@ Then /^WL: set profile page default values$/ do
   step 'WL: set profile page re-type password to same as previous password'
   step 'WL: set profile page survey question to Business Use - Both mailing and shipping'
   step 'WL: set profile page how did you hear about us? to Received Mailer'
- # step 'WL: expect offer id and source id are the same between sdc_website and stamp_mart db'
+  step 'WL: set profile page promo code to default'
+  step 'WL: expect offer id and source id are the same between sdc_website and stamp_mart db'
+end
+
+Then /^WL: expect profile page default values are correct$/ do
+  step 'WL: expect profile page email is correct'
+  step 'WL: expect profile page username is correct'
+  step 'WL: expect profile page password is correct'
+  step 'WL: expect profile page re-type password is correct'
+  step 'WL: expect profile page survey question is correct'
+  step 'WL: expect profile page promo code is correct'
 end

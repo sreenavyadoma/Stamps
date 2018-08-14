@@ -1,147 +1,29 @@
-
-################ Header ############
-Then /^WL: expect registration navigation bar stamps logo exists$/ do
-  stamps_logo = WhiteLabel.common_page.stamps_logo
-  stamps_logo.wait_until_present(timeout: 60)
-  expect(stamps_logo).to be_present
+Then /^WL: navigates to (.*)$/ do |str|
+  SdcPage.browser.goto str
 end
 
-Then /^WL: expect registration navigation bar usps logo exists$/ do
-  usps_logo = WhiteLabel.common_page.usps_logo
-  usps_logo.wait_until_present(timeout: 2)
-  expect(usps_logo).to be_present
+#..................................Modal....................#
+Then /^WL: click modal continue button$/ do
+  modal_continue = WhiteLabel.common_page.modal_continue
+  modal_continue.wait_until_present(timeout: 2)
+  modal_continue.click
+  step 'pause for 1 second'
 end
 
-Then /^WL: expect registration navigation bar header text exists$/ do
-  expect(WhiteLabel.common_page.header_text).to be_present
+Then /^WL: click modal cancel button$/ do
+  modal_cancel = WhiteLabel.common_page.modal_cancel
+  modal_cancel.wait_until_present(timeout: 2)
+  modal_cancel.click
+  step 'pause for 1 second'
 end
 
-############ Footer ###########
 
-#### privacy policy ####
-Then /^WL: expect registration container privacy policy link exists$/ do
-  expect(WhiteLabel.common_page.privacy_policy).to be_present
+Then /^WL: click modal x button$/ do
+  modal_x = WhiteLabel.common_page.modal_x
+  modal_x.wait_until_present(timeout: 2)
+  modal_x.click if modal_x.present?
+  step 'pause for 1 second'
 end
-
-Then /^WL: click registration container privacy policy link$/ do
-  pp = WhiteLabel.common_page.privacy_policy
-  pp.wait_until_present(timeout: 5)
-  pp.scroll_into_view
-  pp.click
-end
-
-Then /^WL: expect privacy policy modal header is (.*)$/ do |str|
-  pp_header = WhiteLabel.common_page.pp_header
-  pp_header.wait_until_present(timeout: 5)
-  pp_header.scroll_into_view
-  str ||= TestData.hash[:pp_header]
-  expect(pp_header.text_value.strip).to eql(str)
-end
-
-Then /^WL: expect privacy policy modal body header is (.*)$/ do |str|
-  pp_body_header = WhiteLabel.common_page.pp_body_header
-  pp_body_header.wait_until_present(timeout: 5)
-  pp_body_header.scroll_into_view
-  'pause for 1 second'
-  str ||= TestData.hash[:pp_body_header]
-  expect(pp_body_header.text_value.strip).to eql(str)
-end
-
-#### copyright ####
-Then /^WL: expect registration container copyright exists$/ do
-  expect(WhiteLabel.common_page.copyright).to be_present
-end
-
-Then /^WL: click registration container copyright link$/ do
-  copyright = WhiteLabel.common_page.copyright
-  copyright.wait_until_present(timeout: 5)
-  copyright.scroll_into_view
-  copyright.click
-end
-
-Then /^WL: expect copyright modal header is (.*)$/ do |str|
-  copyright_header = WhiteLabel.common_page.copyright_header
-  copyright_header.wait_until_present(timeout: 5)
-  copyright_header.scroll_into_view
-  'pause for 1 second'
-  str ||= TestData.hash[:copyright_header]
-  expect(copyright_header.text_value.strip).to eql(str)
-end
-
-Then /^WL: expect registration container norton logo exists$/ do
-  expect(WhiteLabel.common_page.norton_logo).to be_present
-end
-
-#### live chat ####
-Then /^WL: expect registration contact live chat button exists$/ do
-  expect(WhiteLabel.common_page.live_chat).to be_present
-end
-
-Then /^WL: click live chat button$/ do
-  WhiteLabel.common_page.live_chat.click
-  step "pause for 1 second"
-end
-
-Then /^WL: expect registration chat launch modal is present$/ do
-  SdcPage.browser.windows.last.use
-  chat_launch = WhiteLabel.common_page.chat_launch
-  chat_launch.wait_until_present(timeout: 5)
-  expect(WhiteLabel.common_page.chat_launch).to be_present
-end
-
-Then /^WL: expect registration chat launch modal header is (.*)$/ do |str|
-  chat_header = WhiteLabel.common_page.chat_header
-  chat_header.wait_until_present(timeout: 5)
-  chat_header.scroll_into_view
-  'pause for 1 second'
-  str ||= TestData.hash[:chat_header]
-  expect(chat_header.text_value.strip).to eql(str)
-end
-
-Then /^WL: close chat launch modal$/ do
-  SdcPage.browser.windows.last.close
-end
-
-#### proactive chat ####
-Then /^WL: expect proactive chat dialog exists$/ do
-  pro_chat = WhiteLabel.common_page
-  pro_chat.sdc_chat
-  pro_chat.proactive_chat.wait_until_present(timeout: 15)
-  expect(pro_chat.proactive_chat).to be_present
-end
-
-Then /^WL: expect proactive chat header is (.*)$/ do |str|
-  proactive_chat_header = WhiteLabel.common_page.proactive_chat_header
-  proactive_chat_header.wait_until_present(timeout: 5)
-  str ||= TestData.hash[:proactive_chat_header]
-  expect(proactive_chat_header.text_value.strip).to eql(str)
-end
-
-Then /^WL: expect proactive chat logo exists$/ do
-  expect(WhiteLabel.common_page.stamps_icon).to be_present
-end
-
-Then /^WL: expect proactive chat accept button exists$/ do
-  expect(WhiteLabel.common_page.accept).to be_present
-end
-
-Then /^WL: expect proactive chat decline button exists$/ do
-  expect(WhiteLabel.common_page.decline).to be_present
-end
-
-Then /^WL: click decline button$/ do
-  WhiteLabel.common_page.decline.click
-end
-
-Then /^WL: expect proactive chat header label is (.*)$/ do |str|
-  proactive_chat_header_label = WhiteLabel.common_page.proactive_chat_header_label
-  proactive_chat_header_label.wait_until_present(timeout: 5)
-  str ||= TestData.hash[:proactive_chat_header_label]
-  expect(proactive_chat_header_label.text_value.strip).to eql(str)
-end
-
-#................Endicia Website.................#
-
 
 #............Stamps Website......................#
 Then /^WL: expect registration navigation bar stamps or endicia logo exists$/ do
@@ -157,10 +39,6 @@ end
 
 Then /^WL: close stamps website db connection$/ do
   WhiteLabel.sdc_db_connection.close
-end
-
-Then /^WL: navigates to production registration page$/ do
-  SdcPage.browser.goto 'https://registration.stamps.com/registration/'
 end
 
 Then /^WL: navigates to default registration page for stamps with the following offer id (?:random value|(.*))$/ do |str|
@@ -526,25 +404,144 @@ Then /^WL: expect user is navigated to print page$/ do
   expect(common_page.print_username.attribute_value('title').strip).to eql(TestData.hash[:username])
 end
 
-#..................................Modal....................#
-Then /^WL: click modal continue button$/ do
-  modal_continue = WhiteLabel.common_page.modal_continue
-  modal_continue.wait_until_present(timeout: 2)
-  modal_continue.click
-  step 'pause for 1 second'
+
+################ Header ############
+Then /^WL: expect registration navigation bar stamps logo exists$/ do
+  stamps_logo = WhiteLabel.common_page.stamps_logo
+  stamps_logo.wait_until_present(timeout: 60)
+  expect(stamps_logo).to be_present
 end
 
-Then /^WL: click modal cancel button$/ do
-  modal_cancel = WhiteLabel.common_page.modal_cancel
-  modal_cancel.wait_until_present(timeout: 2)
-  modal_cancel.click
-  step 'pause for 1 second'
+Then /^WL: expect registration navigation bar usps logo exists$/ do
+  usps_logo = WhiteLabel.common_page.usps_logo
+  usps_logo.wait_until_present(timeout: 2)
+  expect(usps_logo).to be_present
 end
 
+Then /^WL: expect registration navigation bar header text exists$/ do
+  expect(WhiteLabel.common_page.header_text).to be_present
+end
 
-Then /^WL: click modal x button$/ do
-  modal_x = WhiteLabel.common_page.modal_x
-  modal_x.wait_until_present(timeout: 2)
-  modal_x.click if modal_x.present?
-  step 'pause for 1 second'
+############ Footer ###########
+
+#### privacy policy ####
+Then /^WL: expect registration container privacy policy link exists$/ do
+  expect(WhiteLabel.common_page.privacy_policy).to be_present
+end
+
+Then /^WL: click registration container privacy policy link$/ do
+  pp = WhiteLabel.common_page.privacy_policy
+  pp.wait_until_present(timeout: 5)
+  pp.scroll_into_view
+  pp.click
+end
+
+Then /^WL: expect privacy policy modal header is (.*)$/ do |str|
+  pp_header = WhiteLabel.common_page.pp_header
+  pp_header.wait_until_present(timeout: 5)
+  pp_header.scroll_into_view
+  str ||= TestData.hash[:pp_header]
+  expect(pp_header.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect privacy policy modal body header is (.*)$/ do |str|
+  pp_body_header = WhiteLabel.common_page.pp_body_header
+  pp_body_header.wait_until_present(timeout: 5)
+  pp_body_header.scroll_into_view
+  'pause for 1 second'
+  str ||= TestData.hash[:pp_body_header]
+  expect(pp_body_header.text_value.strip).to eql(str)
+end
+
+#### copyright ####
+Then /^WL: expect registration container copyright exists$/ do
+  expect(WhiteLabel.common_page.copyright).to be_present
+end
+
+Then /^WL: click registration container copyright link$/ do
+  copyright = WhiteLabel.common_page.copyright
+  copyright.wait_until_present(timeout: 5)
+  copyright.scroll_into_view
+  copyright.click
+end
+
+Then /^WL: expect copyright modal header is (.*)$/ do |str|
+  copyright_header = WhiteLabel.common_page.copyright_header
+  copyright_header.wait_until_present(timeout: 5)
+  copyright_header.scroll_into_view
+  'pause for 1 second'
+  str ||= TestData.hash[:copyright_header]
+  expect(copyright_header.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect registration container norton logo exists$/ do
+  expect(WhiteLabel.common_page.norton_logo).to be_present
+end
+
+#### live chat ####
+Then /^WL: expect registration contact live chat button exists$/ do
+  expect(WhiteLabel.common_page.live_chat).to be_present
+end
+
+Then /^WL: click live chat button$/ do
+  WhiteLabel.common_page.live_chat.click
+  step "pause for 1 second"
+end
+
+Then /^WL: expect registration chat launch modal is present$/ do
+  SdcPage.browser.windows.last.use
+  chat_launch = WhiteLabel.common_page.chat_launch
+  chat_launch.wait_until_present(timeout: 5)
+  expect(WhiteLabel.common_page.chat_launch).to be_present
+end
+
+Then /^WL: expect registration chat launch modal header is (.*)$/ do |str|
+  chat_header = WhiteLabel.common_page.chat_header
+  chat_header.wait_until_present(timeout: 5)
+  chat_header.scroll_into_view
+  'pause for 1 second'
+  str ||= TestData.hash[:chat_header]
+  expect(chat_header.text_value.strip).to eql(str)
+end
+
+Then /^WL: close chat launch modal$/ do
+  SdcPage.browser.windows.last.close
+end
+
+#### proactive chat ####
+Then /^WL: expect proactive chat dialog exists$/ do
+  pro_chat = WhiteLabel.common_page
+  pro_chat.sdc_chat
+  pro_chat.proactive_chat.wait_until_present(timeout: 15)
+  expect(pro_chat.proactive_chat).to be_present
+end
+
+Then /^WL: expect proactive chat header is (.*)$/ do |str|
+  proactive_chat_header = WhiteLabel.common_page.proactive_chat_header
+  proactive_chat_header.wait_until_present(timeout: 5)
+  str ||= TestData.hash[:proactive_chat_header]
+  expect(proactive_chat_header.text_value.strip).to eql(str)
+end
+
+Then /^WL: expect proactive chat logo exists$/ do
+  expect(WhiteLabel.common_page.stamps_icon).to be_present
+end
+
+Then /^WL: expect proactive chat accept button exists$/ do
+  expect(WhiteLabel.common_page.accept).to be_present
+end
+
+Then /^WL: expect proactive chat decline button exists$/ do
+  expect(WhiteLabel.common_page.decline).to be_present
+end
+
+Then /^WL: click decline button$/ do
+  WhiteLabel.common_page.decline.click
+end
+
+Then /^WL: expect proactive chat header label is (.*)$/ do |str|
+  proactive_chat_header_label = WhiteLabel.common_page.proactive_chat_header_label
+  proactive_chat_header_label.wait_until_present(timeout: 5)
+  str ||= TestData.hash[:proactive_chat_header_label]
+  expect(proactive_chat_header_label.text_value.strip).to eql(str)
 end
