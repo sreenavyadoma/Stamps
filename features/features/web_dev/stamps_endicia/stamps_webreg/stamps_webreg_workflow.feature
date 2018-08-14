@@ -225,9 +225,9 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: expect membership page billing zip is correct
     Then WL: click membership page submit button
 
-     #Validate Postage Meter Page data are present
-    Then WL: expect postage meter values are correct
-
+#    #Validate Postage Meter Page data are present
+#    Then WL: expect postage meter values are correct
+#
 #    Then WL: save cookies
 #    Then WL: navigate to www.google.com
 #    Then WL: navigate back

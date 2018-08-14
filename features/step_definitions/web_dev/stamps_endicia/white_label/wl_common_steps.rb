@@ -4,11 +4,11 @@ Then /^WL: navigate to (.*)$/ do |str|
 end
 
 Then /^WL: save cookies$/ do
- SdcPage.browser.cookies.save '.cookies'
+ SdcPage.browser.cookies.save './download/cookies'
 end
 
 Then /WL: load cookies$/ do
-  SdcPage.browser.cookies.load '.cookies'
+  SdcPage.browser.cookies.load '.download/cookies'
 end
 
 Then /^WL: navigate back$/ do
