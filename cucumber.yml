@@ -19,7 +19,7 @@ sauce_browser: --tags @bvt_shipstation_updates_international URL=cc USR=bvtsauce
 
 mhossain1_cc: --tags @sdcwr_session_state_data_validation JENKINS=true URL=stg BROWSER=ff FIREFOX_PROFILE=true WEB_DEV=true LOG_LEVEL=info #USR=qawebdevelopment@stamps.com PW=password1
 
-kaushal_cc: --tags @ewwr_membership_page_addr_validation JENKINS=true URL=qacc BROWSER=ff FIREFOX_PROFILE=true WEB_DEV=true #USR=qawebdevelopment@stamps.com PW=password1
+kaushal_cc: --tags @ewwr_membership_page_username_taken_validation JENKINS=true URL=qacc BROWSER=ff FIREFOX_PROFILE=true WEB_DEV=true #USR=qawebdevelopment@stamps.com PW=password1
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess BROWSER=ff MAX_WINDOW=false
 

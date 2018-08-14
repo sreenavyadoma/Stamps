@@ -279,6 +279,7 @@ end
 Then /^WL: set username taken to (?:random value|(.*))/ do |str|
   new_username = WhiteLabel.membership_page.new_username
   new_username.set((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
+  new_username.click
   new_username.send_keys(:tab)
   SdcLogger.info "UserName Taken = #{TestData.hash[:username]}"
 end
@@ -308,9 +309,10 @@ end
 
 Then /^WL: expect username taken tooltip to be (.*)$/ do |str|
   membership_page = WhiteLabel.membership_page
+  membership_page.new_username.click
   membership_page.new_username.send_keys(:tab)
   membership_page.new_username.send_keys(:tab)
-  membership_page.new_username_help_block.wait_until_present(timeout: 2)
+  membership_page.new_username_help_block.wait_until_present(timeout: 3)
   expect(membership_page.new_username_help_block.text_value.strip).to eql(str)
 end
 

@@ -409,9 +409,8 @@ Feature: Endicia WebReg: Membership Page
 
   @ewwr_membership_page_username_taken_validation
   Scenario: Membership Page Username Taken Validation
-    Then WL: navigates to default registration page for stamps with the following offer id 404
+    Then WL: navigates to default registration page for endicia with the following offer id 707
     Then WL: set profile page default values
-    Then WL: set profile page promo code to PR33-NH77
     Then WL: set pp username to an existing username from db
     Then WL: click profile page continue button
     Then WL: set membership page default values
@@ -427,8 +426,7 @@ Feature: Endicia WebReg: Membership Page
     Then WL: set username taken to a
     Then WL: expect username taken tooltip to be 2 character minimum
     Then WL: set username taken username to an existing username from db
-    Then WL: click username taken continue button
-    #Then WL: expect username taken header to be Username Taken
+    #Then WL: click username taken continue button
 
     Then WL: click modal x button
 
@@ -442,12 +440,13 @@ Feature: Endicia WebReg: Membership Page
     Then WL: click profile page continue button
     Then WL: click membership page submit button
 
-    Then WL: set postage meter address between zone 5 and zone 8
+    Then WL: set postage meter address between zone 1 and zone 4
     Then WL: click membership page submit button
 
     Then WL: expect username taken header to be Username Taken
     Then WL: set username taken username to an existing username from db
     Then WL: click username taken continue button
+    Then pause for 2 seconds
     Then WL: expect username taken header to be Username Taken
 
     Then WL: set username taken to \abc
@@ -455,7 +454,7 @@ Feature: Endicia WebReg: Membership Page
     Then WL: expect an error occurred modal head to be An Error Occurred
     Then WL: expect an error occurred modal paragraph to be
     """
-    An unexpected error occurred, please try again. If the problem persists please contact customer support at 1‑888‑434‑0055, Monday - Friday, 6 a.m. - 6 p.m. Pacific Time.
+    An unexpected error occurred, please try again. If the problem persists please contact customer support at 1‑877‑522‑8510, Monday - Friday, 6 a.m. - 6 p.m. Pacific Time.
     """
     Then WL: expect an error occurred modal error code to be Error Code: 2820099
     Then WL: expect an error occurred modal error description to include Username cannot be have backslashes
