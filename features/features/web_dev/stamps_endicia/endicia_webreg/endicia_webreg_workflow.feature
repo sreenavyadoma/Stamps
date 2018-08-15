@@ -20,6 +20,6 @@ Feature: Endicia WebReg: Profile Page
 
     Then WL: click security questions get started button
 
-    Then WL: expect user is navigated to print page
+    Then WL: expect user is navigated to print page for endicia
 
 

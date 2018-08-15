@@ -249,7 +249,9 @@ Then /^WL: expect security question page tooltip to be (.*)$/ do |str|
 end
 
 Then /^WL: click security questions get started button$/ do
+  step 'pause for 2 second'
   WhiteLabel.common_page.sq_get_started.click
+  step 'pause for 2 second'
 end
 
 Then /^WL: expect security questions get started button exists$/ do
@@ -408,7 +410,7 @@ Then /^WL: expect offer 592 landing page avery img is present$/ do
 end
 
 #.............................Printing Landing Page..............................#
-Then /^WL: expect user is navigated to print page$/ do
+Then /^WL: expect user is navigated to print page for (.*)$/ do |str|
   step 'pause for 2 second'
   if SdcPage.browser.alert.exists?
     SdcPage.browser.alert.close
@@ -426,11 +428,23 @@ Then /^WL: expect user is navigated to print page$/ do
 
   case TestSession.env.url
     when :qacc
+      if str == 'stamps'
       expect(SdcPage.browser.url).to include('https://print.qacc.stamps.com')
+      else
+        expect(SdcPage.browser.url).to include('https://printext.qacc.endicia.com')
+      end
     when :stg
-      expect(SdcPage.browser.url).to include('https://print.staging.stamps.com')
+      if str == 'stamps'
+        expect(SdcPage.browser.url).to include('https://print.staging.stamps.com')
+      else
+        expect(SdcPage.browser.url).to include('https://printext.staging.endicia.com')
+      end
     when ''
-      expect(SdcPage.browser.url).to include('https://print.stamps.com')
+      if str == 'stamps'
+        expect(SdcPage.browser.url).to include('https://print.stamps.com')
+      else
+        expect(SdcPage.browser.url).to include('https://printext.endicia.com')
+      end
   end
   expect(common_page.print_username.attribute_value('title').strip).to eql(TestData.hash[:username])
 end
