@@ -49,11 +49,11 @@ sql_server_vbridge:
     password: Sdcqatest623
     azure: false
   stg:
-    server: vbridgedb.staging.stamps.com
+    server: bridgedb01.stage02.aws.local
     database: Bridge
     port: 1433
-    username: corp\lab
-    password: Sdcqatest623
+    username: qalab
+    password: StampsQA!
     azure: false
 
 sql_server_stampmart:
