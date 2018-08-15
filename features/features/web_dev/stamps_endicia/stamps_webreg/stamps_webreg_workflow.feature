@@ -192,7 +192,7 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: expect membership page billing city is correct
     Then WL: expect membership page billing state is correct
     Then WL: expect membership page billing zip is correct
-    
+
     Then WL: set membership page address to Po Box 7
     Then WL: set membership page city to Manchester
     Then WL: select membership page state KY
@@ -225,23 +225,9 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: expect membership page billing zip is correct
     Then WL: click membership page submit button
 
-#    #Validate Postage Meter Page data are present
-#    Then WL: expect postage meter values are correct
-#
-#    Then WL: save cookies
-#    Then WL: navigate to www.google.com
-#    Then WL: navigate back
-#    Then WL: load cookies
-#
-#
-#    #Validate profile page data are present
-#    Then WL: set profile page password to random value
-#    Then WL: set profile page re-type password to same as previous password
-#    Then WL: expect profile page default values are correct
-#    Then WL: expect security questions first security question is correct
-#    Then WL: expect security questions second security question is correct
-#
-#    Then WL: click profile page continue button
+    #Validate Postage Meter Page data are present
+    Then WL: expect postage meter values are correct
+
 
 
 
