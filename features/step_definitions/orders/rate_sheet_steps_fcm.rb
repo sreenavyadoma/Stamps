@@ -184,9 +184,11 @@ Then /^run rate sheet (.*)$/ do |param_sheet|
   # Set weight and services
 
   # Set address to proper zone
-  step "set order details ship-to to random address between zone 1 and 4"  if SdcGlobal.web_app == :orders
-  step "set print form mail-to to a random address in zone 1 through 4" if SdcGlobal.web_app == :mail
-  step "save print form mail from" if SdcGlobal.web_app == :mail
+  step 'set order details ship-to to random address between zone 1 and 4'  if SdcGlobal.web_app == :orders
+  step 'set print form mail-to to a random address in zone 1 through 4' if SdcGlobal.web_app == :mail
+  step 'save print form mail from' if SdcGlobal.web_app == :mail
+  step 'save order details data' if SdcGlobal.web_app == :orders
+
 
   @rate_sheet.each_with_index do |row, row_number|
     @row = row

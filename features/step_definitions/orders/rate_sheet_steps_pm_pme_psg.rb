@@ -300,6 +300,7 @@ Then /^run rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
   step "set order details ship-to to a random address in Zone #{zone}"  if SdcGlobal.web_app == :orders
   step "set print form mail-to to a random address in zone #{zone}" if SdcGlobal.web_app == :mail
   step "save print form mail from" if SdcGlobal.web_app == :mail
+  step 'save order details data' if SdcGlobal.web_app == :orders
 
   @rate_sheet.each_with_index do |row, row_number|
     @row = row

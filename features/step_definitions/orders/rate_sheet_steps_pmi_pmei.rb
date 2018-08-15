@@ -1,24 +1,24 @@
-Then /^run rate test PMI Comm Base in Country Price Group (\d+)$/ do |group|
+Then /^run rate test PMI Comm Base in country price group (\d+)$/ do |group|
   param_sheet = data_for(:rates_test, {})['rates_pmi_comm_base']
-  step "run rate sheet #{param_sheet} in Country Price Group #{group}"
+  step "run rate sheet #{param_sheet} in country price group #{group}"
 end
 
-Then /^run rate test PMI Comm Plus in Country Price Group (\d+)$/ do |group|
+Then /^run rate test PMI Comm Plus in country price group (\d+)$/ do |group|
   param_sheet = data_for(:rates_test, {})['rates_pmi_comm_plus']
-  step "run rate sheet #{param_sheet} in Country Price Group #{group}"
+  step "run rate sheet #{param_sheet} in country price group #{group}"
 end
 
-Then /^run rate test PMEI Comm Base in Country Price Group (\d+)$/ do |group|
+Then /^run rate test PMEI Comm Base in country price group (\d+)$/ do |group|
   param_sheet = data_for(:rates_test, {})['rates_pmei_comm_base']
-  step "run rate sheet #{param_sheet} in Country Price Group #{group}"
+  step "run rate sheet #{param_sheet} in country price group #{group}"
 end
 
-Then /^run rate test PMEI Comm Plus in Country Price Group (\d+)$/ do |group|
+Then /^run rate test PMEI Comm Plus in country price group (\d+)$/ do |group|
   param_sheet = data_for(:rates_test, {})['rates_pmei_comm_plus']
-  step "run rate sheet #{param_sheet} in Country Price Group #{group}"
+  step "run rate sheet #{param_sheet} in country price group #{group}"
 end
 
-Then /^run rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, group|
+Then /^run rate sheet (.*) in country price group (\d+)$/ do |param_sheet, group|
   group = group.to_i
 
   TestData.hash[:result_file] = Spreadsheet::Workbook.new
