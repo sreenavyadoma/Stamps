@@ -259,7 +259,7 @@ Then /^WL: set membership page personal info to(?: a |)(?: random info |)(?:to|i
 
 end
 
-Then /^WL: expect membership page credit card stamps logo is present$/ do
+Then /^WL: expect membership page credit card (?:stamps|endicia) logo is present$/ do
   expect(WhiteLabel.membership_page.cc_stamps_logo).to be_present
 end
 
@@ -889,7 +889,7 @@ end
 #.............................Exact Address..........................................#
 Then /^WL: expect membership page exact addr modal header to be (.*)$/ do |str|
   exact_addr_header = WhiteLabel.membership_page.exact_addr_header
-  exact_addr_header.wait_until_present(timeout: 2)
+  exact_addr_header.wait_until_present(timeout: 5)
   expect(exact_addr_header.text_value.strip).to eql(str)
 end
 
