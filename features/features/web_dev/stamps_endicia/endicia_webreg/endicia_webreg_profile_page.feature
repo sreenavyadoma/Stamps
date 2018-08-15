@@ -116,6 +116,6 @@ Feature: Endicia WebReg: Profile Page
     Then WL: expect membership page header exists
     Then WL: click membership page back button
 
-    Then WL: set profile page promo code to emptys
+    Then WL: set profile page promo code to empty
     Then WL: click profile page continue button
     Then WL: expect membership page header exists
