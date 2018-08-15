@@ -32,7 +32,6 @@ Then /^configure saucelabs$/ do
   # SdcLogger.info "JENKINS_URL: #{ENV['JENKINS_URL']}"
   # SdcLogger.info "BUILD_URL: #{ENV['BUILD_URL']}"
   # SdcLogger.info "JOB_URL: #{ENV['JOB_URL']}"
-
 end
 
 Then /^Start test driver$/ do
