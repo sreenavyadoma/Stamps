@@ -19,10 +19,10 @@ end
 Then /^WL: set profile page email to (?:random value|(.*))$/ do |str|
   email = WhiteLabel.profile_page.email
   email.wait_until_present(timeout: 30)
-  email.clear
 
   str ||=  TestHelper.rand_email.capitalize
   5.times do
+    email.clear
     email.set(str)
     break unless email.text_value.strip == ''
   end
@@ -136,6 +136,7 @@ end
 Then /^WL: expect profile page password is (?:correct|(.*))$/ do |str|
   account_password = WhiteLabel.profile_page.password
   str ||= TestData.hash[:account_password]
+  str = '' if str == 'empty'
   expect(account_password.text_value.strip).to eql((str.nil?) ? TestData.hash[:account_password] : str)
 end
 
@@ -173,6 +174,7 @@ end
 Then /^WL: expect profile page re-type password is (?:correct|(.*))$/ do |str|
   retype_password = WhiteLabel.profile_page.confirm_password
   str ||= TestData.hash[:retype_password]
+  str = '' if str == 'empty'
   expect(retype_password.text_value.strip).to eql(str)
 end
 

@@ -181,7 +181,9 @@ Feature: Stamps WebReg: Normal Workflow
     #Validate profile page data are present
     Then WL: expect profile page default values are correct
     Then WL: expect security questions first security question is correct
+    Then WL: expect security questions first security answer is correct
     Then WL: expect security questions second security question is correct
+    Then WL: expect security questions second security answer is correct
 
     Then WL: click profile page continue button
 
@@ -228,6 +230,35 @@ Feature: Stamps WebReg: Normal Workflow
     #Validate Postage Meter Page data are present
     Then WL: expect postage meter values are correct
 
+    Then WL: browser refresh
+    Then WL: navigate to www.google.com
+    Then WL: navigate back
+
+    #Validate profile page data are present
+    Then WL: expect profile page password is empty
+    Then WL: expect profile page re-type password is empty
+    Then WL: expect security questions first security question is correct
+    Then WL: expect security questions first security answer is empty
+    Then WL: expect security questions second security question is correct
+    Then WL: expect security questions second security answer is empty
+
+    Then WL: set profile page password to random value
+    Then WL: set profile page re-type password to same as previous password
+    Then WL: set security questions first security answer to random value
+    Then WL: set security questions second security answer to random value
+    Then WL: expect profile page default values are correct
+
+    Then WL: click profile page continue button
+
+    Then WL: expect membership page credit card number is empty
+    Then WL: expect membership page terms & conditions is unchecked
+    Then WL: set membership page credit card number to default value
+    Then WL: expect membership page default values are correct
+
+    Then WL: check membership page terms & conditions
+    Then WL: click membership page submit button
+
+    Then WL: expect postage meter values are correct
 
 
 
