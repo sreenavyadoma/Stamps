@@ -450,6 +450,7 @@ Feature: Endicia WebReg: Membership Page
 
     Then WL: set username taken to \abc/
     Then WL: click username taken continue button
+    Then pause for 2 seconds
     Then WL: expect an error occurred modal head to be An Error Occurred
     Then WL: expect an error occurred modal paragraph to be
     """
