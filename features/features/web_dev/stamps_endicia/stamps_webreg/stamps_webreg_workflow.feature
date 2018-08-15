@@ -52,8 +52,8 @@ Feature: Stamps WebReg: Normal Workflow
     #Profile Page
     Then WL: navigates to default registration page for stamps with the following offer id 573
     Then WL: set profile page default values
-    Then WL: select security questions first security question What is your father's birthplace? 
-    Then WL: set security questions first security answer to Los Angeles 
+    Then WL: select security questions first security question What is your father's birthplace?
+    Then WL: set security questions first security answer to Los Angeles
     Then WL: select security questions second security question What was your high school mascot?
     Then WL: set security questions second security answer to Tigar
     Then WL: click profile page continue button
@@ -250,6 +250,7 @@ Feature: Stamps WebReg: Normal Workflow
 
     Then WL: click profile page continue button
 
+    #Validate Membership page data are present
     Then WL: expect membership page credit card number is empty
     Then WL: expect membership page terms & conditions is unchecked
     Then WL: set membership page credit card number to default value
@@ -258,6 +259,7 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: check membership page terms & conditions
     Then WL: click membership page submit button
 
+    #Validate Postage Meter Page data are present
     Then WL: expect postage meter values are correct
 
 
