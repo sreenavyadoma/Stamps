@@ -6,7 +6,7 @@ Feature: Stamps WebReg: Header Footer Validation
   @sdcwr_header_footer_validation
   Scenario: Header Footer Validation
 
-    Then WL: navigates to production registration page
+    Then WL: navigate to https://registration.stamps.com/registration/
     Then WL: navigates to default registration page for stamps with the following offer id 404
 
 
