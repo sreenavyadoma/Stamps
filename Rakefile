@@ -144,6 +144,11 @@ require 'cucumber/rake/task'
     t.cucumber_opts = "-p cuke_reports"
   end
 
+  Cucumber::Rake::Task.new(:ewwr_security_question_page_validation) do |t|
+    t.profile = 'ewwr_security_question_page_validation'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
 # END STAMPS WEB REG
 
 # END WEB DEV
