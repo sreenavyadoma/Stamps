@@ -379,7 +379,7 @@ Then /^WL: set profile page default values$/ do
   step 'WL: set profile page survey question to Business Use - Both mailing and shipping'
   step 'WL: set profile page how did you hear about us? to Received Mailer'
   step 'WL: set profile page promo code to default'
-  #step 'WL: expect offer id and source id are the same between sdc_website and stamp_mart db'
+  step 'WL: expect offer id and source id are the same between sdc_website and stamp_mart db'
 end
 
 Then /^WL: expect profile page default values are correct$/ do
