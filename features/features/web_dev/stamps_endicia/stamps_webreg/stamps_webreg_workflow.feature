@@ -216,7 +216,9 @@ Feature: Stamps WebReg: Normal Workflow
     #Validate profile page data are present
     Then WL: expect profile page default values are correct
     Then WL: expect security questions first security question is correct
+    Then WL: expect security questions first security answer is correct
     Then WL: expect security questions second security question is correct
+    Then WL: expect security questions second security answer is correct
 
     #Validate Membership page data are present
     Then WL: click profile page continue button
