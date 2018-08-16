@@ -1,8 +1,178 @@
+OS X Latest Chrome - Staging
+bvtstgosxgc0001
+bvtstgosxgc0002
+bvtstgosxgc0003
+bvtstgosxgc0004
+bvtstgosxgc0005
+bvtstgosxgc0006
+bvtstgosxgc0007
+bvtstgosxgc0008
+bvtstgosxgc0009
+bvtstgosxgc0010
+bvtstgosxgc0011
+bvtstgosxgc0012
+bvtstgosxgc0013
+bvtstgosxgc0014
+bvtstgosxgc0015
+bvtstgosxgc0016
+bvtstgosxgc0017
+bvtstgosxgc0018
+bvtstgosxgc0019
+
+Win10 Chrome Beta - Staging
+bvtstgw10gcb001
+bvtstgw10gcb002
+bvtstgw10gcb003
+bvtstgw10gcb004
+bvtstgw10gcb005
+bvtstgw10gcb006
+bvtstgw10gcb007
+bvtstgw10gcb008
+bvtstgw10gcb009
+bvtstgw10gcb010
+bvtstgw10gcb011
+bvtstgw10gcb012
+bvtstgw10gcb013
+bvtstgw10gcb014
+bvtstgw10gcb015
+bvtstgw10gcb016
+bvtstgw10gcb017
+bvtstgw10gcb018
+bvtstgw10gcb019
+
+Win10 Latest MS Edge - Staging
+bvtstgw10edg001
+bvtstgw10edg002
+bvtstgw10edg003
+bvtstgw10edg004
+bvtstgw10edg005
+bvtstgw10edg006
+bvtstgw10edg007
+bvtstgw10edg008
+bvtstgw10edg009
+bvtstgw10edg010
+bvtstgw10edg011
+bvtstgw10edg012
+bvtstgw10edg013
+bvtstgw10edg014
+bvtstgw10edg015
+bvtstgw10edg016
+bvtstgw10edg017
+bvtstgw10edg018
+bvtstgw10edg019
+
+Win7 Latest Firefox - Staging
+bvtstgw7ff00001
+bvtstgw7ff00002
+bvtstgw7ff00003
+bvtstgw7ff00004
+bvtstgw7ff00005
+bvtstgw7ff00006
+bvtstgw7ff00007
+bvtstgw7ff00008
+bvtstgw7ff00009
+bvtstgw7ff00010
+bvtstgw7ff00011
+bvtstgw7ff00012
+bvtstgw7ff00013
+bvtstgw7ff00014
+bvtstgw7ff00015
+bvtstgw7ff00016
+bvtstgw7ff00017
+bvtstgw7ff00018
+bvtstgw7ff00019
+
+OS X Latest Chrome - QACC
+bvtccosxgc1
+bvtccosxgc2
+bvtccosxgc3
+bvtccosxgc4
+bvtccosxgc5
+bvtccosxgc6
+bvtccosxgc7
+bvtccosxgc8
+bvtccosxgc9
+bvtccosxgc10
+bvtccosxgc11
+bvtccosxgc12
+bvtccosxgc13
+bvtccosxgc14
+bvtccosxgc15
+bvtccosxgc16
+bvtccosxgc17
+bvtccosxgc18
+bvtccosxgc19
+
+Win10 Chrome Beta - QACC
+bvtccw10gcb1
+bvtccw10gcb2
+bvtccw10gcb3
+bvtccw10gcb4
+bvtccw10gcb5
+bvtccw10gcb6
+bvtccw10gcb7
+bvtccw10gcb8
+bvtccw10gcb9
+bvtccw10gcb10
+bvtccw10gcb11
+bvtccw10gcb12
+bvtccw10gcb13
+bvtccw10gcb14
+bvtccw10gcb15
+bvtccw10gcb16
+bvtccw10gcb17
+bvtccw10gcb18
+bvtccw10gcb19
+
+Win10 Latest MS Edge - QACC
+bvtccw10edg1
+bvtccw10edg2
+bvtccw10edg3
+bvtccw10edg4
+bvtccw10edg5
+bvtccw10edg6
+bvtccw10edg7
+bvtccw10edg8
+bvtccw10edg9
+bvtccw10edg10
+bvtccw10edg11
+bvtccw10edg12
+bvtccw10edg13
+bvtccw10edg14
+bvtccw10edg15
+bvtccw10edg16
+bvtccw10edg17
+bvtccw10edg18
+bvtccw10edg19
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+stghkgtpwkxhk8
+stgi3eicvj8d7b - bvt_address_cleansing_win10_chrome_beta
+
 cinoauthstg001
 sauce0001 - sdcwebclient bvt_shipstation_updates_domestic
 sauce0002 - sdcwebclient authentication
 sauce0003 - mobile_orders_bvt_stg/job/authentication/
-sauce0004 - bvt_ambigious_address_mac10_chrome
+sauce0004 - bvt_ambigious_address_mac_chrome
 sauce0005 - authentication_win10_edge
 sauce0006
 sauce0007
@@ -14,12 +184,16 @@ sauce0011
 sauce0012
 sauce0013
 sauce0014
-sauce0015
-sauce0016
+sauce0015 - bvt_shipstation_updates_domestic_osx_chrome
+sauce0016 - bvt_shipstation_updates_international_win10_chrome_beta
 sauce0017 - sdcwebclient bvt_shipstation_updates_domestic
-sauce0018
+sauce0018 - bvt_shipstation_updates_international_win7_firefox
 sauce0019
 sauce0020
+
+
+
+
 
 bvtsauce00001cc - authentication
 bvtsauce00002cc - bvt_address_cleansing
