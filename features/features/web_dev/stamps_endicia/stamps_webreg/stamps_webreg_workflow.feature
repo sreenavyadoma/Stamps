@@ -52,8 +52,8 @@ Feature: Stamps WebReg: Normal Workflow
     #Profile Page
     Then WL: navigates to default registration page for stamps with the following offer id 573
     Then WL: set profile page default values
-    Then WL: select security questions first security question What is your father's birthplace? 
-    Then WL: set security questions first security answer to Los Angeles 
+    Then WL: select security questions first security question What is your father's birthplace?
+    Then WL: set security questions first security answer to Los Angeles
     Then WL: select security questions second security question What was your high school mascot?
     Then WL: set security questions second security answer to Tigar
     Then WL: click profile page continue button
@@ -181,7 +181,9 @@ Feature: Stamps WebReg: Normal Workflow
     #Validate profile page data are present
     Then WL: expect profile page default values are correct
     Then WL: expect security questions first security question is correct
+    Then WL: expect security questions first security answer is correct
     Then WL: expect security questions second security question is correct
+    Then WL: expect security questions second security answer is correct
 
     Then WL: click profile page continue button
 
@@ -192,7 +194,7 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: expect membership page billing city is correct
     Then WL: expect membership page billing state is correct
     Then WL: expect membership page billing zip is correct
-    
+
     Then WL: set membership page address to Po Box 7
     Then WL: set membership page city to Manchester
     Then WL: select membership page state KY
@@ -225,21 +227,40 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: expect membership page billing zip is correct
     Then WL: click membership page submit button
 
-     #Validate Postage Meter Page data are present
+    #Validate Postage Meter Page data are present
     Then WL: expect postage meter values are correct
 
-
+    Then WL: browser refresh
     Then WL: navigate to www.google.com
     Then WL: navigate back
 
     #Validate profile page data are present
+    Then WL: expect profile page password is empty
+    Then WL: expect profile page re-type password is empty
+    Then WL: expect security questions first security question is correct
+    Then WL: expect security questions first security answer is empty
+    Then WL: expect security questions second security question is correct
+    Then WL: expect security questions second security answer is empty
+
     Then WL: set profile page password to random value
     Then WL: set profile page re-type password to same as previous password
+    Then WL: set security questions first security answer to random value
+    Then WL: set security questions second security answer to random value
     Then WL: expect profile page default values are correct
-    Then WL: expect security questions first security question is correct
-    Then WL: expect security questions second security question is correct
 
     Then WL: click profile page continue button
+
+    #Validate Membership page data are present
+    Then WL: expect membership page credit card number is empty
+    Then WL: expect membership page terms & conditions is unchecked
+    Then WL: set membership page credit card number to default value
+    Then WL: expect membership page default values are correct
+
+    Then WL: check membership page terms & conditions
+    Then WL: click membership page submit button
+
+    #Validate Postage Meter Page data are present
+    Then WL: expect postage meter values are correct
 
 
 

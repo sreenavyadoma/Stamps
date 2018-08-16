@@ -304,10 +304,10 @@ end
 
 Then /^WL: set membership page credit card number to (?:default value|(.*))$/ do |str|
   cc_number = WhiteLabel.membership_page.cc_number
-  cc_number.clear
   str ||= '4111111111111111'
 
   5.times do
+    cc_number.clear
     cc_number.set(str)
     break unless cc_number.text_value == ''
   end
@@ -317,8 +317,11 @@ Then /^WL: set membership page credit card number to (?:default value|(.*))$/ do
 end
 
 Then /^WL: expect membership page credit card number is (?:correct|(.*))$/ do |str|
+  cc_number = WhiteLabel.membership_page.cc_number
+  cc_number.wait_until_present(timeout: 5)
   str ||= TestData.hash[:cc_number]
-  expect(WhiteLabel.membership_page.cc_number.text_value.strip.delete(' ')).to eql(str)
+  str = '' if str == 'empty'
+  expect(cc_number.text_value.strip.delete(' ')).to eql(str)
   TestData.hash[:cc_number] = str
 end
 

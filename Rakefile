@@ -124,6 +124,20 @@ require 'cucumber/rake/task'
     t.cucumber_opts = "-p cuke_reports"
   end
 
+  Cucumber::Rake::Task.new(:sdcwr_session_state_data_validation) do |t|
+    t.profile = 'sdcwr_session_state_data_validation'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
+  Cucumber::Rake::Task.new(:ewwr_profile_page_ui_validation) do |t|
+    t.profile = 'ewwr_profile_page_ui_validation'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
+# END STAMPS WEB REG
+
+#BEGIN ENDICIA WEB REG
+
   Cucumber::Rake::Task.new(:ewwr_profile_page_ui_validation) do |t|
     t.profile = 'ewwr_profile_page_ui_validation'
     t.cucumber_opts = "-p cuke_reports"
@@ -135,8 +149,8 @@ require 'cucumber/rake/task'
   end
 
   Cucumber::Rake::Task.new(:ewwr_membership_page_addr_validation) do |t|
-  t.profile = 'ewwr_membership_page_addr_validation'
-  t.cucumber_opts = "-p cuke_reports"
+    t.profile = 'ewwr_membership_page_addr_validation'
+    t.cucumber_opts = "-p cuke_reports"
   end
 
   Cucumber::Rake::Task.new(:ewwr_membership_page_username_taken_validation) do |t|
@@ -144,7 +158,32 @@ require 'cucumber/rake/task'
     t.cucumber_opts = "-p cuke_reports"
   end
 
-# END STAMPS WEB REG
+  Cucumber::Rake::Task.new(:ewwr_offer_707_workflow) do |t|
+    t.profile = 'ewwr_offer_707_workflow'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
+  Cucumber::Rake::Task.new(:ewwr_security_question_page_validation) do |t|
+    t.profile = 'ewwr_security_question_page_validation'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
+  Cucumber::Rake::Task.new(:ewwr_membership_page_ui_validation) do |t|
+    t.profile = 'ewwr_membership_page_ui_validation'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
+  Cucumber::Rake::Task.new(:ewwr_membership_page_addr_validation) do |t|
+    t.profile = 'ewwr_membership_page_addr_validation'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
+  Cucumber::Rake::Task.new(:ewwr_membership_page_username_taken_validation) do |t|
+    t.profile = 'ewwr_membership_page_username_taken_validation'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
+# END ENDICIA WEB REG
 
 # END WEB DEV
 

@@ -3,6 +3,11 @@ Then /^WL: navigate to (.*)$/ do |str|
   step 'pause for 2 second'
 end
 
+Then /WL: browser refresh$/ do
+  SdcPage.browser.refresh
+  step 'pause for 2 second'
+end
+
 Then /^WL: navigate back$/ do
   SdcPage.browser.back
   step 'pause for 2 second'
@@ -173,6 +178,15 @@ Then /^WL: set security questions first security answer to (?:random value|(.*))
   TestData.hash[:first_security_answer] = str
 end
 
+Then /WL: expect security questions first security answer is (?:correct|(.*))$/ do |str|
+  first_secret_answer =  WhiteLabel.common_page.first_secret_answer
+  first_secret_answer.wait_until_present(timeout: 5)
+  str ||= TestData.hash[:first_security_answer]
+  str = '' if str == 'empty'
+  expect(first_secret_answer.text_value.strip).to eql(str)
+  TestData.hash[:first_security_answer] = str
+end
+
 Then /^WL: expect first security answer tooltip index (\d+) to be (.*)$/ do |index, str|
   first_security_answer_help_block = WhiteLabel.common_page.first_security_answer_help_block
   first_security_answer_help_block.wait_until_present(timeout: 5)
@@ -210,6 +224,15 @@ Then /^WL: set security questions second security answer to (?:random value|(.*)
   TestData.hash[:second_security_answer] = str
 end
 
+Then /WL: expect security questions second security answer is (?:correct|(.*))$/ do |str|
+  second_secret_answer =  WhiteLabel.common_page.second_secret_answer
+  second_secret_answer.wait_until_present(timeout: 5)
+  str ||= TestData.hash[:second_security_answer]
+  str = '' if str == 'empty'
+  expect(second_secret_answer.text_value.strip).to eql(str)
+  TestData.hash[:second_secret_answer] = str
+end
+
 Then /^WL: expect second security answer tooltip index (\d+) to be (.*)$/ do |index, str|
   second_security_answer_help_block = WhiteLabel.common_page.second_security_answer_help_block
   second_security_answer_help_block.wait_until_present(timeout: 5)
@@ -226,7 +249,11 @@ Then /^WL: expect security question page tooltip to be (.*)$/ do |str|
 end
 
 Then /^WL: click security questions get started button$/ do
-  WhiteLabel.common_page.sq_get_started.click
+  step 'pause for 2 seconds'
+  sq_get_started = WhiteLabel.common_page.sq_get_started
+  sq_get_started.wait_until_present(timeout: 2)
+  sq_get_started.click!
+  step 'pause for 2 seconds'
 end
 
 Then /^WL: expect security questions get started button exists$/ do
