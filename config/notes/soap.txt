@@ -188,7 +188,7 @@ sauce0015 - bvt_shipstation_updates_domestic_osx_chrome
 sauce0016 - bvt_shipstation_updates_international_win10_chrome_beta
 sauce0017 - sdcwebclient bvt_shipstation_updates_domestic
 sauce0018 - bvt_shipstation_updates_international_win7_firefox
-sauce0019
+sauce0019 - bvt_orders_ui_validation_win10_edge
 sauce0020
 
 
