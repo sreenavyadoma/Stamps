@@ -25,8 +25,14 @@ module SWWR
     #Side Content
     page_object(:signup_header) { {xpath: '//div[@id="reasons-to-signup"]/h2'} }
     page_object(:signup_one_header) { {xpath: '//div[@id="reasons-to-signup-one"]/div[2]/div/h3'} }
-    page_object(:signup_one_p) { {xpath: '//div[@id="reasons-to-signup-one"]/div[2]/div/p'} }
-    page_object(:signup_one_icon) { {xpath: '//div[@id="reasons-to-signup-one"]/div[2]/div/h3'} }
+    page_object(:signup_one_p) { {xpath: '//div[@id="reasons-to-signup-one"]/div[2]/div/p'}}
+    page_object(:signup_two_header) { {xpath: '//div[@id="reasons-to-signup-two"]/div[2]/div/h3'}}
+    page_object(:signup_two_p) { {xpath: '//div[@id="reasons-to-signup-two"]/div[2]/div/p'}}
+    page_object(:signup_three_header) { {xpath: '//div[@id="reasons-to-signup-three"]/div[2]/div/h3'}}
+    page_object(:signup_three_p) { {xpath: '//div[@id="reasons-to-signup-three"]/div[2]/div/h3'}}
+    page_objects(:signup_icon) { {class: ['swicon swicon-adj'] }}
+
+    page_object(:checkbox) { {xpath: '//div[@id="optInDiv"]/div/label'}}
 
 
   end
