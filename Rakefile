@@ -155,6 +155,11 @@ require 'cucumber/rake/task'
     t.cucumber_opts = "-p cuke_reports"
   end
 
+  Cucumber::Rake::Task.new(:ewwr_session_state_data_validation) do |t|
+    t.profile = 'ewwr_session_state_data_validation'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
 # END ENDICIA WEB REG
 
 # END WEB DEV
