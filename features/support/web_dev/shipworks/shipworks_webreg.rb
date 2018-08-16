@@ -32,8 +32,10 @@ module SWWR
     page_object(:signup_three_p) { {xpath: '//div[@id="reasons-to-signup-three"]/div[2]/div/h3'}}
     page_objects(:signup_icon) { {class: ['swicon swicon-adj'] }}
 
-    page_object(:checkbox) { {xpath: '//div[@id="optInDiv"]/div/label'}}
+    page_object(:checkbox) { {xpath: '//div[@id="optInDiv"]/div/input'}}
+    page_object(:checkbox_label) { {xpath: '//div[@id="optInDiv"]/div/label'}}
 
+    page_object(:continue) { {id: 'next'}}
 
   end
 

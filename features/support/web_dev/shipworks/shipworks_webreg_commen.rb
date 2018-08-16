@@ -5,6 +5,9 @@ module SWWR
     page_object(:shipworks_logo) {{class: ['logo-wrap']}}
     page_objects(:try_it_free) { { class: ['register dtm'] } }
 
+    #Breadcrumb
+    page_objects(:create_account_breadcrumb) { { xpath: '//span[@class="breadcrumb-text"]' } }
+
     def dropdown_selection(str, index, name = :dropdown_element)
       page_objects(name, index: index) { { xpath: "//span[contains(text(), \"#{str}\")]" } }
     end
