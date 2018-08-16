@@ -1,4 +1,4 @@
-Feature: Endicia WebReg: Profile Page
+Feature: Endicia WebReg: Workflow
 
   Background:
     Given Start test driver
