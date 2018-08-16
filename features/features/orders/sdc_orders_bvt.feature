@@ -254,8 +254,8 @@ Feature:  BVT tests for Orders
     Then set order details insure-for to 100.25
     Then set order details reference number to a random string
     Then add order details item 1, qty 1, id ID 1, description Description 1
-    Then add order details item 2, qty 2, id random string, description random string
-    Then add order details item 3, qty 3, id ID 3, description random string
+#    Then add order details item 2, qty 2, id random string, description random string
+#    Then add order details item 3, qty 3, id ID 3, description random string
     Then expect orders grid service is correct
 
     Then click order details form customs form button
@@ -296,12 +296,12 @@ Feature:  BVT tests for Orders
     Then expect order details associated item 1 qty is 1
     Then expect order details associated item 1 ID is ID 1
     Then expect order details associated item 1 Description is Description 1
-    Then expect order details associated item 2 qty is 2
-    Then expect order details associated item 2 ID is correct
-    Then expect order details associated item 2 Description is correct
-    Then expect order details associated item 3 qty is 3
-    Then expect order details associated item 3 ID is ID 3
-    Then expect order details associated item 3 Description is correct
+#    Then expect order details associated item 2 qty is 2
+#    Then expect order details associated item 2 ID is correct
+#    Then expect order details associated item 2 Description is correct
+#    Then expect order details associated item 3 qty is 3
+#    Then expect order details associated item 3 ID is ID 3
+#    Then expect order details associated item 3 Description is correct
     Then expect order details insure-for is correct
     Then click order details form customs form button
     Then pause for 2 second
