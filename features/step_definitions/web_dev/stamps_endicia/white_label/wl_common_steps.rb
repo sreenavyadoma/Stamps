@@ -249,9 +249,11 @@ Then /^WL: expect security question page tooltip to be (.*)$/ do |str|
 end
 
 Then /^WL: click security questions get started button$/ do
-  step 'pause for 2 second'
-  WhiteLabel.common_page.sq_get_started.click
-  step 'pause for 2 second'
+  step 'pause for 2 seconds'
+  sq_get_started = WhiteLabel.common_page.sq_get_started
+  sq_get_started.wait_until_present(timeout: 2)
+  sq_get_started.click
+  step 'pause for 2 seconds'
 end
 
 Then /^WL: expect security questions get started button exists$/ do

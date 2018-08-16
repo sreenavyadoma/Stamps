@@ -90,7 +90,7 @@ end
 Then /^ios: click sign-in button$/ do
   landing_page = SdcWebsite.landing_page
   landing_page.sign_in.send_keys_while_present(iteration: 3, timeout: 4)
-  landing_page.username.safe_wait_while_present(timeout: 5) if SdcGlobal.web_app.eql?(:mail)
+  landing_page.username.safe_wait_while_present(timeout: 10) if SdcGlobal.web_app.eql?(:mail)
   step 'loading orders...' if SdcGlobal.web_app.eql?(:orders)
 end
 
@@ -146,6 +146,7 @@ Then /^click sign in page sign-in button$/ do
 end
 
 Then /^click Orders landing page sign-in button$/ do
+  rating_error = SdcWebsite.modals.rating_error
   landing_page = SdcWebsite.landing_page
   landing_page.sign_in.wait_until_present(timeout: 3)
   landing_page.sign_in.click
@@ -154,7 +155,13 @@ Then /^click Orders landing page sign-in button$/ do
     str = landing_page.invalid_username.text_value
     expect(str).to eql('')
   end
-  landing_page.sign_in.safe_wait_while_present(timeout: 5)
+  landing_page.sign_in.safe_wait_while_present(timeout: 10)
+  rating_error.body.safe_wait_until_present(timeout: 2)
+  if rating_error.body.present?
+    error_msg = rating_error.body.text_value
+    rating_error.ok.click
+    expect(error_msg).to eql('')
+  end
 end
 
 Then /^close whats new modal in orders$/ do
