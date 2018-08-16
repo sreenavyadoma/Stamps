@@ -106,6 +106,7 @@ Then /^WL: navigates to default registration page for endicia with the following
   EWWebsite.visit
 
   SdcLogger.info "Sourceid = #{source_id}"
+  SdcLogger.info "Sourceid = #{offer_id}"
 
   TestData.hash[:source_id] = source_id
   TestData.hash[:content] = content

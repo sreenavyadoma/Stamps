@@ -17,7 +17,7 @@ sauce_browser: --tags @bvt_shipstation_updates_international URL=cc USR=bvtsauce
 #mhossain1_cc: --tags @pp_header_favicons_browser_mobile JENKINS=true URL=qacc BROWSER_MOBILE_EMULATOR=gc,'iPhone X' USR=wteam@stamps.com PW=password1
 #mhossain1_cc: --tags @pp_log_in_page_validation JENKINS=true URL=stg BROWSER=ff USR=wteam@stamps.com PW=password1 FIREFOX_PROFILE=true WEB_DEV=true
 
-mhossain1_cc: --tags @ewwr_session_state_data_validation JENKINS=true URL=stg BROWSER=chrome FIREFOX_PROFILE=true WEB_DEV=true LOG_LEVEL=info #USR=qawebdevelopment@stamps.com PW=password1
+mhossain1_cc: --tags @swwr_create_your_account_page_validation JENKINS=true URL=stg BROWSER=chrome FIREFOX_PROFILE=true WEB_DEV=true LOG_LEVEL=info #USR=qawebdevelopment@stamps.com PW=password1
 
 kaushal_cc: --tags @ewwr_security_question_page_validation JENKINS=true URL=stg BROWSER=edge FIREFOX_PROFILE=true WEB_DEV=true #USR=qawebdevelopment@stamps.com PW=password1
 
