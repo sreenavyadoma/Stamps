@@ -52,6 +52,7 @@ end
 Then /^WL: expect membership page first name is (?:correct|(.*))$/ do |str|
   first_name = WhiteLabel.membership_page.first_name
   str ||= TestData.hash[:first_name]
+  step 'pause for 1 second'
   expect(first_name.text_value.strip).to eql(str)
   TestData.hash[:first_name] = str
 end
@@ -125,7 +126,7 @@ end
 Then /WL: select membership page address autocomplete index (\d+)$/ do |index|
   address_auto_complete = WhiteLabel.membership_page.address_auto_complete[index-1]
   address_auto_complete.wait_until_present(timeout: 2)
-  address_auto_complete.hover if SdcEnv.browser == :firefox
+  address_auto_complete.hover if TestSession.env.local_browser == :ff || :firefox
   address_auto_complete.click
   step 'WL: blur_out on membership page'
 end
@@ -238,7 +239,7 @@ Then /^WL: set membership page personal info to(?: a |)(?: random info |)(?:to|i
   TestData.hash[:last_name] = TestData.hash[:personal_info][:last_name]
   TestData.hash[:street_address] = TestData.hash[:personal_info][:street_address]
   TestData.hash[:city] = TestData.hash[:personal_info][:city]
-  TestData.hash[:state] = TestData.hash[:personal_info][:state]
+  TestData.hash[:state] = TestData.hash[:personal_info][:state_abbrev]
   TestData.hash[:zip] = TestData.hash[:personal_info][:zip]
   TestData.hash[:company] = TestData.hash[:personal_info][:company]
   TestData.hash[:ship_to_domestic] = TestHelper.format_address(TestData.hash[:personal_info])
@@ -439,7 +440,7 @@ end
 Then /WL: select membership page billing address autocomplete index (\d+)$/ do |index|
   billing_addr_auto_complete = WhiteLabel.membership_page.billing_addr_auto_complete[index-1]
   billing_addr_auto_complete.wait_until_present(timeout: 2)
-  billing_addr_auto_complete.hover if SdcEnv.browser == :firefox
+  billing_addr_auto_complete.hover if TestSession.env.local_browser == :ff || :firefox
   billing_addr_auto_complete.click
   step "WL: blur_out on membership page"
 end
@@ -693,19 +694,23 @@ end
 Then /^WL: set postage meter address between (.*)$/ do |address|
   TestData.hash[:personal_info] = TestHelper.address_helper_zone(address) #combine this
 
-  TestData.hash[:street_address] = TestData.hash[:personal_info][:street_address]
-  TestData.hash[:city] = TestData.hash[:personal_info][:city]
-  TestData.hash[:state] = TestData.hash[:personal_info][:state]
-  TestData.hash[:zip] = TestData.hash[:personal_info][:zip]
+  TestData.hash[:postage_street_address] = TestData.hash[:personal_info][:street_address]
+  TestData.hash[:postage_city] = TestData.hash[:personal_info][:city]
+  TestData.hash[:postage_state] = TestData.hash[:personal_info][:state_abbrev]
+  TestData.hash[:postage_zip] = TestData.hash[:personal_info][:zip]
 
-  step "WL: set postage meter address to #{TestData.hash[:street_address]}"
-  step "WL: set postage meter city to #{TestData.hash[:city]}"
-  step "WL: select postage meter state #{TestData.hash[:state]}"
-  step "WL: set postage meter zip to #{TestData.hash[:zip]}"
+  step "WL: set postage meter address to #{TestData.hash[:postage_street_address]}"
+  step "WL: set postage meter city to #{TestData.hash[:postage_city]}"
+  step "WL: select postage meter state #{TestData.hash[:postage_state]}"
+  step "WL: set postage meter zip to #{TestData.hash[:postage_zip]}"
 end
 
 Then /^WL: set postage meter address to (.*)$/ do |str|
-  WhiteLabel.membership_page.meter_street.set(TestData.hash[:address] = str)
+  WhiteLabel.membership_page.meter_street.set(TestData.hash[:postage_street_address] = str)
+end
+
+Then /^WL: expect postage meter address is correct$/ do
+  expect(WhiteLabel.membership_page.meter_street.text_value.strip).to eql(TestData.hash[:postage_street_address])
 end
 
 Then /^WL: expect postage meter address tooltip to be (.*)$/ do |str|
@@ -713,7 +718,11 @@ Then /^WL: expect postage meter address tooltip to be (.*)$/ do |str|
 end
 
 Then /^WL: set postage meter city to (.*)$/ do |str|
-  WhiteLabel.membership_page.meter_city.set(TestData.hash[:city] = str)
+  WhiteLabel.membership_page.meter_city.set(TestData.hash[:postage_city] = str)
+end
+
+Then /^WL: expect postage meter city is correct$/ do
+  expect(WhiteLabel.membership_page.meter_city.text_value.strip).to eql(TestData.hash[:postage_city])
 end
 
 Then /^WL: expect postage meter city tooltip to be (.*)$/ do |str|
@@ -727,8 +736,12 @@ Then /^WL: select postage meter state (.*)$/ do |str|
   membership_page.dropdown_element.safe_wait_until_present(timeout: 2)
   membership_page.dropdown_element.click
   step "WL: blur_out on membership page"
-  TestData.hash[:state] =  membership_page.meter_state.attribute_value('title').strip
-  expect(TestData.hash[:state].strip).to eql str
+  TestData.hash[:postage_state] =  membership_page.meter_state.attribute_value('title').strip
+  expect(TestData.hash[:postage_state].strip).to eql str
+end
+
+Then /^WL: expect postage meter state is correct$/ do
+  expect(WhiteLabel.membership_page.meter_state.attribute_value('title').strip).to eql(TestData.hash[:postage_state])
 end
 
 Then /^WL: expect postage meter state tooltip to be (.*)$/ do |str|
@@ -736,7 +749,18 @@ Then /^WL: expect postage meter state tooltip to be (.*)$/ do |str|
 end
 
 Then /^WL: set postage meter zip to (.*)$/ do |str|
-  WhiteLabel.membership_page.meter_zip.set(TestData.hash[:zip] = str)
+  WhiteLabel.membership_page.meter_zip.set(TestData.hash[:postage_zip] = str)
+end
+
+Then /^WL: expect postage meter zip is correct$/ do
+  expect(WhiteLabel.membership_page.meter_zip.text_value.strip).to eql(TestData.hash[:postage_zip])
+end
+
+Then /^WL: expect postage meter values are correct$/ do
+  step 'WL: expect postage meter address is correct'
+  step 'WL: expect postage meter city is correct'
+  step 'WL: expect postage meter state is correct'
+  step 'WL: expect postage meter zip is correct'
 end
 
 #....................................Side content........................................#
@@ -785,6 +809,13 @@ Then /^WL: expect membership page pricing and billing paragraph to be$/ do |str|
   expect(WhiteLabel.membership_page.pricing_and_billing_p.text_value.strip).to eql(str.gsub('plan_rate', plan_rate.to_s))
 end
 
+Then /^WL: expect membership page pricing and billing paragraph for offer (.*) and plan sku (.*) to be (.*)$/ do |offer, plan_sku, str|
+  step 'WL: establish stamps website db connection'
+  plan_rate =  WhiteLabel.common_page.plan_query(offer, plan_sku)
+  step 'WL: close stamps website db connection'
+  expect(WhiteLabel.membership_page.pricing_and_billing_p.text_value.strip).to eql(str.gsub('plan_rate', plan_rate.to_s))
+end
+
 Then /^WL: expect membership page cancel anytime header to be$/ do |str|
   expect(WhiteLabel.membership_page.cancel_anytime_header.text_value.strip).to eql(str)
 end
@@ -818,14 +849,6 @@ Then /^WL: expect membership page invalid address modal paragraph to be$/ do |st
   expect(WhiteLabel.membership_page.invalid_addr_p.text_value.strip).to eql(str)
 end
 
-Then /^WL: set membership page default values$/ do
-  step 'WL: set membership page personal info to random info between zone 5 and zone 8'
-  step 'WL: set membership page credit card number to 4111111111111111'
-  step 'WL: select membership page credit card month Dec (12)'
-  step 'WL: set membership page credit card year to this year plus 1'
-  step 'WL: check membership page terms & conditions'
-end
-
 #.............................Exact Address..........................................#
 Then /^WL: expect membership page exact addr modal header to be (.*)$/ do |str|
   exact_addr_header = WhiteLabel.membership_page.exact_addr_header
@@ -842,3 +865,24 @@ Then /^WL: select membership page exact addr modal radio button index (\d+)$/ do
   exact_addr_choice[index].click
 end
 
+Then /^WL: set membership page default values$/ do
+  step 'WL: set membership page personal info to random info between zone 5 and zone 8'
+  step 'WL: set membership page credit card number to 4111111111111111'
+  step 'WL: select membership page credit card month Dec (12)'
+  step 'WL: set membership page credit card year to this year plus 1'
+  step 'WL: check membership page terms & conditions'
+end
+
+Then /^WL: expect membership page default values are correct$/ do
+  step 'WL: expect membership page first name is correct'
+  step 'WL: expect membership page last name is correct'
+  step 'WL: expect membership page company is correct'
+  step 'WL: expect membership page address is correct'
+  step 'WL: expect membership page city is correct'
+  step 'WL: expect membership page state is correct'
+  step 'WL: expect membership page zip is correct'
+  step 'WL: expect membership page phone is correct'
+  step "WL: expect membership page cardholder's name is correct"
+  step 'WL: expect membership page month is correct'
+  step 'WL: expect membership page credit card year is correct'
+end
