@@ -18,7 +18,7 @@ Feature: Endicia WebReg: Workflow
     Then WL: select security questions second security question What is the make and model of your first car?
     Then WL: set security questions second security answer to random value
 
-    Then WL: click security questions get started button
+    Then WL: click security questions get started buttona
 
     Then WL: expect user is navigated to print page for endicia
 
