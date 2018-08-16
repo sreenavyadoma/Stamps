@@ -431,19 +431,19 @@ Then /^WL: expect user is navigated to print page for (.*)$/ do |str|
       if str == 'stamps'
       expect(SdcPage.browser.url).to include('https://print.qacc.stamps.com')
       else
-        expect(SdcPage.browser.url).to include('https://printext.qacc.endicia.com')
+        expect(SdcPage.browser.url).to include('https://print.qacc.endicia.com')
       end
     when :stg
       if str == 'stamps'
         expect(SdcPage.browser.url).to include('https://print.staging.stamps.com')
       else
-        expect(SdcPage.browser.url).to include('https://printext.staging.endicia.com')
+        expect(SdcPage.browser.url).to include('https://print.staging.endicia.com')
       end
     when ''
       if str == 'stamps'
         expect(SdcPage.browser.url).to include('https://print.stamps.com')
       else
-        expect(SdcPage.browser.url).to include('https://printext.endicia.com')
+        expect(SdcPage.browser.url).to include('https://print.endicia.com')
       end
   end
   expect(common_page.print_username.attribute_value('title').strip).to eql(TestData.hash[:username])
