@@ -740,20 +740,27 @@ end
 
 Then /^expect order details insure-for is (?:correct|(\d+\.\d{2}))$/ do |str|
   str ||= TestData.hash[:insured_value]
-  result = SdcOrders.order_details.insure_for.amount.text_value.to_f.round(2)
+  insure_for = SdcOrders.order_details.insure_for
+  insure_for.amount.scroll_into_view
+  result = insure_for.amount.text_value.to_f.round(2)
   expect(result).to eql(str.to_f)
 end
 
-Then /^set order details reference number to (.*)$/ do |str|
-  str = str.downcase.include?('random') ? TestHelper.rand_alpha_numeric : str
-  SdcOrders.order_details.reference_no.set(str)
+Then /^set order details reference number to (?:a random string|(.*))$/ do |str|
+  str ||= TestHelper.rand_alpha_numeric
+  order_details = SdcOrders.order_details
+  order_details.reference_no.scroll_into_view
+  order_details.reference_no.set(str)
+  order_details.reference_no.click
   TestData.hash[:reference_no] = str
   step 'Save Order Details data'
 end
 
 Then /^expect order details ship from is (?:correct|(.*))$/ do |str|
   str ||= TestData.hash[:ship_from]
-  result = SdcOrders.order_details.ship_from.text_field.text_value
+  ship_from = SdcOrders.order_details.ship_from
+  ship_from.text_field.scroll_into_view
+  result = ship_from.text_field.text_value
   expect(result).to include(str)
 end
 

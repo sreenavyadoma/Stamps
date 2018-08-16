@@ -252,7 +252,7 @@ Feature:  BVT tests for Orders
     Then set order details weight to 2 lb 2 oz
     Then set order details service to PMI Package/Flat/Thick Envelope
     Then set order details insure-for to 100.25
-    Then set order details reference number to Some random string
+    Then set order details reference number to a random string
     Then add order details item 1, qty 1, id ID 1, description Description 1
     Then add order details item 2, qty 2, id random string, description random string
     Then add order details item 3, qty 3, id ID 3, description random string
