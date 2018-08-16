@@ -19,7 +19,14 @@ module SWWR
     page_object(:promo_code_checked) {{class: ['form-group show'] }}
     page_object(:promo_code_no, index: 1) {{xpath: '//label[@class="md-radio"]/input'}}
     page_object(:promo_code_checked) {{class: ['form-group hide'] }}
+    text_field(:promo_code, tag: :text_field) { { id: 'promoCode' } }
+    page_object(:promo_code_help_block) { {xpath: '//div[@class="form-group show fancy-input has-error"]/span/span[2]'} }
 
+    #Side Content
+    page_object(:signup_header) { {xpath: '//div[@id="reasons-to-signup"]/h2'} }
+    page_object(:signup_one_header) { {xpath: '//div[@id="reasons-to-signup-one"]/div[2]/div/h3'} }
+    page_object(:signup_one_p) { {xpath: '//div[@id="reasons-to-signup-one"]/div[2]/div/p'} }
+    page_object(:signup_one_icon) { {xpath: '//div[@id="reasons-to-signup-one"]/div[2]/div/h3'} }
 
 
   end
