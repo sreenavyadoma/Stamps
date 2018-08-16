@@ -1,7 +1,7 @@
 module SWWR
 
   class CreateYourAccount < SdcPage
-
+    page_object(:create_your_account_header) { {xpath: '//div[@id="page"]/div/div/h1'} }
   end
 
   class MembershipPage < SdcPage
