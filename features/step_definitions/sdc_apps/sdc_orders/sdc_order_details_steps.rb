@@ -442,6 +442,24 @@ Then /^set order details domestic ship-to country to (.*)$/ do |str|
   TestData.hash[:country] = str
 end
 
+Then /^set order details international ship-to country to a random country in (.*) price group (.*)$/ do |str, number|
+  group = case str
+    when /PMI/
+      :country_groups_PMI
+    when /PMEI/
+      :country_groups_PMEI
+    when /PMI Flat Rate/
+      :country_groups_PMI_flat_rate
+    when /PMEI Flat Rate/
+      :country_groups_PMEI_flat_rate
+  end
+  country_list = data_for(group, {})["group" + number].values
+  TestData.hash[:country] = country_list[rand(country_list.size)].sub!(/\|.*$/, '')
+  # return if SdcOrders.order_details.ship_to.international.country.text_field.text_value.eql?(TestData.hash[:country])
+  step "set order details international ship-to country to #{TestData.hash[:country]}" unless
+      SdcOrders.order_details.ship_to.international.country.text_field.text_value.eql?(TestData.hash[:country])
+end
+
 Then /^set order details international ship-to country to (.*)$/ do |str|
   step 'show order ship-to details'
   country = SdcOrders.order_details.ship_to.international.country

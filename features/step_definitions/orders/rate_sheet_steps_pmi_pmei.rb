@@ -353,6 +353,10 @@ Then /^run rate sheet (.*) in country price group (\d+)$/ do |param_sheet, group
   format = Spreadsheet::Format.new :color => :blue, :pattern_fg_color => :yellow, :pattern => 1
   fail_format = Spreadsheet::Format.new :color => :red, :weight => :bold
   pass_format = Spreadsheet::Format.new :color => :green, :weight => :bold
+
+  # Workaround for selecting international countries. We need to switch domestic form to international
+  step 'set order details domestic ship-to country to Mexico'
+
   # Set weight and services
   @rate_sheet.each_with_index do |row, row_number|
     @row = row
@@ -367,18 +371,18 @@ Then /^run rate sheet (.*) in country price group (\d+)$/ do |param_sheet, group
         # Set country to proper group
         if row[@rate_sheet_columns[:service]].include?('PMEI')
           if row[@rate_sheet_columns[:service]].include?('Flat Rate') && group < 9
-            step "set order details domestic ship-to country to a random country in PMEI Flat Rate price group #{group}" if SdcGlobal.web_app == :orders
+            step "set order details international ship-to country to a random country in PMEI Flat Rate price group #{group}" if SdcGlobal.web_app == :orders
             step "set Print Form Ship-To Country to a random country in PMEI Flat Rate price group #{group}" if SdcGlobal.web_app == :mail
           elsif row[@rate_sheet_columns[:service]].include?('Package')
-            step "set order details domestic ship-to country to a random country in PMEI price group #{group}" if SdcGlobal.web_app == :orders
+            step "set order details international ship-to country to a random country in PMEI price group #{group}" if SdcGlobal.web_app == :orders
             step "set Print Form Ship-To Country to a random country in PMEI price group #{group}" if SdcGlobal.web_app == :mail
           end
         elsif row[@rate_sheet_columns[:service]].include?('PMI')
           if row[@rate_sheet_columns[:service]].include?('Flat Rate') && group < 9
-            step "set order details domestic ship-to country to a random country in PMI Flat Rate price group #{group}" if SdcGlobal.web_app == :orders
+            step "set order details international ship-to country to a random country in PMI Flat Rate price group #{group}" if SdcGlobal.web_app == :orders
             step "set Print Form Ship-To Country to a random country in PMI Flat Rate price group #{group}" if SdcGlobal.web_app == :mail
           elsif row[@rate_sheet_columns[:service]].include?('Package')
-            step "set order details domestic ship-to country to a random country in PMI price group #{group}" if SdcGlobal.web_app == :orders
+            step "set order details international ship-to country to a random country in PMI price group #{group}" if SdcGlobal.web_app == :orders
             step "set Print Form Ship-To Country to a random country in PMI price group #{group}" if SdcGlobal.web_app == :mail
           end
         end
@@ -455,7 +459,7 @@ Then /^run rate sheet (.*) in country price group (\d+)$/ do |param_sheet, group
           # record execution time as time service was selected.
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:execution_date]] = Time.now.strftime("%b %d, %Y %H:%M")
 
-          step "set Order Details service to #{service}" if SdcGlobal.web_app == :orders
+          step "set order details service to #{service}" if SdcGlobal.web_app == :orders
           step "select print form service #{service}" if SdcGlobal.web_app == :mail
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:service_selected]] = TestData.hash[:service]
           sleep(0.525)
