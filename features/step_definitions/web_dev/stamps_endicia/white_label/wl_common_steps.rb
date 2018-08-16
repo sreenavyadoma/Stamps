@@ -31,6 +31,7 @@ end
 
 
 Then /^WL: click modal x button$/ do
+  step 'pause for 1 second'
   modal_x = WhiteLabel.common_page.modal_x
   modal_x.wait_until_present(timeout: 2)
   modal_x.click if modal_x.present?
@@ -457,10 +458,17 @@ Then /^WL: expect registration navigation bar header text exists$/ do
   expect(WhiteLabel.common_page.header_text).to be_present
 end
 
+Then /^WL: expect registration navigation bar endicia logo exists$/ do
+  endicia_logo = WhiteLabel.common_page.ew_logo
+  endicia_logo.wait_until_present(timeout: 60)
+  expect(endicia_logo).to be_present
+end
+
 ############ Footer ###########
 
 #### privacy policy ####
 Then /^WL: expect registration container privacy policy link exists$/ do
+  'pause for 1 second'
   expect(WhiteLabel.common_page.privacy_policy).to be_present
 end
 
