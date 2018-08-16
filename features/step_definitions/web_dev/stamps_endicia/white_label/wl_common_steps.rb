@@ -412,7 +412,7 @@ Then /^WL: expect offer 592 landing page avery img is present$/ do
 end
 
 #.............................Printing Landing Page..............................#
-Then /^WL: expect user is navigated to print page$/ do
+Then /^WL: expect user is navigated to print page for (.*)$/ do |str|
   step 'pause for 2 second'
   if SdcPage.browser.alert.exists?
     SdcPage.browser.alert.close
@@ -430,11 +430,23 @@ Then /^WL: expect user is navigated to print page$/ do
 
   case TestSession.env.url
     when :qacc
+      if str == 'stamps'
       expect(SdcPage.browser.url).to include('https://print.qacc.stamps.com')
+      else
+        expect(SdcPage.browser.url).to include('https://print.qacc.endicia.com')
+      end
     when :stg
-      expect(SdcPage.browser.url).to include('https://print.staging.stamps.com')
+      if str == 'stamps'
+        expect(SdcPage.browser.url).to include('https://print.staging.stamps.com')
+      else
+        expect(SdcPage.browser.url).to include('https://print.staging.endicia.com')
+      end
     when ''
-      expect(SdcPage.browser.url).to include('https://print.stamps.com')
+      if str == 'stamps'
+        expect(SdcPage.browser.url).to include('https://print.stamps.com')
+      else
+        expect(SdcPage.browser.url).to include('https://print.endicia.com')
+      end
   end
   expect(common_page.print_username.attribute_value('title').strip).to eql(TestData.hash[:username])
 end

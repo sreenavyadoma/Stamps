@@ -45,7 +45,7 @@ Feature: Stamps WebReg: Normal Workflow
     #Security Question after registration
     Then WL: if security question is present after registration then set the values
 
-    Then WL: expect user is navigated to print page
+    Then WL: expect user is navigated to print page for stamps
 
   @sdcwr_offer_573_workflow
   Scenario: Stamps WebReg: Offer 573 HP Landing Page Workflow
@@ -142,7 +142,7 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: select security questions second security question What is the make and model of your first car?
     Then WL: set security questions second security answer to random value
     Then WL: click security questions get started button
-    Then WL: expect user is navigated to print page
+    Then WL: expect user is navigated to print page for stamps
 
   @sdcwr_choose_supplies_page_not_present_workflow
   Scenario: Stamps WebReg: Choose Supplies Page Not Preset Workflow
@@ -157,7 +157,7 @@ Feature: Stamps WebReg: Normal Workflow
     Then WL: set membership page default values
     Then WL: click membership page submit button
     Then WL: expect offer does not include an atg promotion
-    Then WL: expect user is navigated to print page
+    Then WL: expect user is navigated to print page for stamps
 
   @sdcwr_session_state_data_validation
   Scenario: Stamps WebReg: Session State Data Validation

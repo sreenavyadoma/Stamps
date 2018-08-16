@@ -2,7 +2,6 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
-# Contacts
 
 #BEGIN WEB DEV
   #BEGIN PARTNER PORTAL
@@ -128,16 +127,13 @@ require 'cucumber/rake/task'
     t.profile = 'sdcwr_session_state_data_validation'
     t.cucumber_opts = "-p cuke_reports"
   end
-
-  Cucumber::Rake::Task.new(:ewwr_profile_page_ui_validation) do |t|
-    t.profile = 'ewwr_profile_page_ui_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+# END STAMPS WEB REG
 
 # END STAMPS WEB REG
 
 #BEGIN ENDICIA WEB REG
 
+#BEGIN ENDICIA WEB REG
   Cucumber::Rake::Task.new(:ewwr_profile_page_ui_validation) do |t|
     t.profile = 'ewwr_profile_page_ui_validation'
     t.cucumber_opts = "-p cuke_reports"
