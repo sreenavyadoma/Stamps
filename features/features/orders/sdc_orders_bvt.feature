@@ -254,8 +254,6 @@ Feature:  BVT tests for Orders
     Then set order details insure-for to 100.25
     Then set order details reference number to a random string
     Then add order details item 1, qty 1, id ID 1, description Description 1
-#    Then add order details item 2, qty 2, id random string, description random string
-#    Then add order details item 3, qty 3, id ID 3, description random string
     Then expect orders grid service is correct
 
     Then click order details form customs form button
@@ -275,8 +273,6 @@ Feature:  BVT tests for Orders
     Then expect customs internal transaction number is Required
     Then set customs itn number to ITN123
     Then add customs associated item 1, description Item 1, qty 1, Price 1, Made In United States, Tariff 1
-#    Then add customs associated item 2, description Item 2, qty 2, Price 2, Made In Japan, Tariff 2
-#    Then add customs associated item 3, description Random String, qty 3, Price 3, Made In Canada, Tariff 3
     Then check customs form i agree to the usps privacy act statement
     Then close customs information form
 
@@ -296,12 +292,6 @@ Feature:  BVT tests for Orders
     Then expect order details associated item 1 qty is 1
     Then expect order details associated item 1 ID is ID 1
     Then expect order details associated item 1 Description is Description 1
-#    Then expect order details associated item 2 qty is 2
-#    Then expect order details associated item 2 ID is correct
-#    Then expect order details associated item 2 Description is correct
-#    Then expect order details associated item 3 qty is 3
-#    Then expect order details associated item 3 ID is ID 3
-#    Then expect order details associated item 3 Description is correct
     Then expect order details insure-for is correct
     Then click order details form customs form button
     Then pause for 2 second
@@ -319,17 +309,6 @@ Feature:  BVT tests for Orders
     Then expect customs associated item 1 Unit Price is correct
     Then expect customs associated item 1 Made In is correct
     Then expect customs associated item 1 Tariff is correct
-#    Then expect customs associated item 2 Description is correct
-#    Then expect customs associated item 2 Quantity is correct
-#    Then expect customs associated item 2 Unit Price is correct
-#    Then expect customs associated item 2 Made In is correct
-#    Then expect customs associated item 3 Description is correct
-#    Then expect customs associated item 3 Quantity is correct
-#    Then expect customs associated item 3 Unit Price is correct
-#    Then expect customs associated item 3 Made In is correct
-#    Then expect customs associated item 3 Tariff is correct
-
-    #Then expect customs i agree to the usps privacy act statement is checked
     Then expect Customs Total Value is correct
     Then close customs information form
 
@@ -345,8 +324,6 @@ Feature:  BVT tests for Orders
     Then expect orders grid email is correct
 
     Then expect orders grid qty is correct
-    Then expect orders grid item sku is Multiple
-    Then expect orders grid item name is Multiple
     Then expect orders grid weight is 2 lb. 2 oz.
 
     Then expect orders grid service is correct
