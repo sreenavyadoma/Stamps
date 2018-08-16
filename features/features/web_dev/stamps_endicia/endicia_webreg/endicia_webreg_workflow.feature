@@ -13,10 +13,10 @@ Feature: Endicia WebReg: Workflow
     Then WL: set membership page default values
     Then WL: click membership page submit button
 
-    Then WL: select security questions first security question What is your father's birthplace?
-    Then WL: set security questions first security answer to Los Angeles
-    Then WL: select security questions second security question What was your high school mascot?
-    Then WL: set security questions second security answer to Tigar
+    Then WL: select security questions first security question What street did you grow up on?
+    Then WL: set security questions first security answer to Grand Ave
+    Then WL: select security questions second security question What is the make and model of your first car?
+    Then WL: set security questions second security answer to random value
 
     Then WL: click security questions get started button
 
