@@ -19,11 +19,13 @@ end
 Then /^add order details item (\d+), qty (\d+), id (.+), description (.*)$/ do |item, qty, id, description|
   step "add order details associated item #{item}"
   step 'blur out on order details form'
+  step 'check for server error'
   step "scroll into view order details associated item #{item}"
   step "set Order Details Associated Item #{item} qty to #{qty}"
   step "set Order Details Associated Item #{item} ID to #{id}"
   step "set Order Details Associated Item #{item} description to #{description}"
   step 'blur out on order details form'
+  step 'check for server error'
 end
 
 Then /^add order details associated item (\d+)$/ do |item|
