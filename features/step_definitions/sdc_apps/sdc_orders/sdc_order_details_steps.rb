@@ -12,13 +12,13 @@ Then /^set order details ship-to to(?: a |)(?: random address |)(?:to|in|between
   ship_to = "#{full_name},#{company},#{street_address1},#{street_address2},#{city} #{state} #{zip}"
 
   step "set order details ship-to text area to #{ship_to}"
+  step 'check for server error'
   TestData.hash[:ship_to_domestic] = hash
 end
 
 Then /^add order details item (\d+), qty (\d+), id (.+), description (.*)$/ do |item, qty, id, description|
   step "add order details associated item #{item}"
   step 'blur out on order details form'
-  step 'check for server error'
   step "scroll into view order details associated item #{item}"
   step "set Order Details Associated Item #{item} qty to #{qty}"
   step "set Order Details Associated Item #{item} ID to #{id}"
@@ -360,6 +360,7 @@ Then /^set order details service to (.*)$/ do |str|
   service.selection_element.click unless service.selection_element.class_disabled?
   expect(service.text_field.text_value).to include(str)
   service.wait_until(timeout: 15) { service.cost.text_value.dollar_amount_str.to_f.round(2) > 0 }
+  step 'check for server error'
   step 'Save Order Details data'
   TestData.hash[:service] = str
 end
