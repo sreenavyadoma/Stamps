@@ -93,7 +93,7 @@ module TestSession
     key(:sauce_on_demand_browsers) { ENV['SAUCE_ONDEMAND_BROWSERS'] }
     key(:screen_resolution) { ENV['SCREEN_RESOLUTION'] || '1280x1024' }
     key(:extendedDebugging) { ENV['EXTENDED_DEBUGGING'] || false }
-    key(:idle_timeout) { ENV['IDLE_TIMEOUT'] || 180 }
+    key(:idle_timeout) { ENV['IDLE_TIMEOUT'] || 120 }
     key(:appium_wait) { ENV['APPIUM_WAIT'] || 300 }
     key(:sauce_end_point) { "https://#{sauce_username}:#{sauce_access_key}@#{selenium_host}:#{selenium_port}/wd/hub" }
     # cloud mobile

@@ -5,11 +5,11 @@ end
 
 Then /^[Oo]n [Mm]anage [Ss]hipping [Aa]ddress modal, delete all addresses$/ do
   step 'Open Manage Shipping Address modal'
-  step 'On Manage Shipping Address modal, delete all rows'
-  step 'Close Manage Shipping Address modal'
+  step 'delete all rows on manage shipping address modal'
+  step 'close manage shipping address modal'
 end
 
-Then /^[Oo]n [Mm]anage [Ss]hipping [Aa]ddress modal, delete all rows$/ do
+Then /^delete all rows on manage shipping address modal$/ do
   while SdcOrders.modals.manage_shipping_addresses.addresses.count > 1 do
     step "On Manage Shipping Address modal, delete row #{1}"
   end
@@ -73,7 +73,7 @@ Then /^[Ee]xpect [Aa]dd [Ss]hipping [Aa]ddress [Mm]odal is present$/ do
   expect(SdcOrders.modals.add_edit_shipping_address.title).to be_present
 end
 
-Then /^[Cc]lose [Mm]anage [Ss]hipping [Aa]ddress [Mm]odal$/ do
+Then /^close manage shipping address modal$/ do
   SdcOrders.modals.manage_shipping_addresses.x_btn.click
   step 'expect Manage Shipping Address modal is not present'
 end
@@ -129,7 +129,7 @@ Then /^on manage shipping address modal, add address$/ do |ship_from|
   expect(modal.state.text_field.text_value).to include(TestData.hash[:state])
   SdcOrders.modals.add_edit_shipping_address.save.click
   SdcOrders.modals.manage_shipping_addresses.title.safe_wait_while_present(timeout: 2)
-  step 'Close Manage Shipping Address modal'
+  step 'close manage shipping address modal'
 end
 
 # this step step def is only for private use - DO NOT use it in any feature file
@@ -161,7 +161,7 @@ Then /^add default ship-from shipping address (.+)$/ do |ship_from|
   expect(modal.state.text_field.text_value).to include(TestData.hash[:state])
   SdcOrders.modals.add_edit_shipping_address.save.click
   SdcOrders.modals.manage_shipping_addresses.title.safe_wait_while_present(timeout: 2)
-  step 'Close Manage Shipping Address modal'
+  step 'close manage shipping address modal'
 end
 
 
