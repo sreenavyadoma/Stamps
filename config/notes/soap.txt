@@ -1,4 +1,20 @@
 OS X Latest Chrome - Staging
+bvtstgosxgc1
+bvtstgosxgc2
+bvtstgosxgc3
+bvtstgosxgc4
+bvtstgosxgc5
+bvtstgosxgc6
+bvtstgosxgc7
+bvtstgosxgc8
+bvtstgosxgc9
+bvtstgosxgc10
+bvtstgosxgc11
+bvtstgosxgc12
+bvtstgosxgc13
+bvtstgosxgc14
+bvtstgosxgc15
+bvtstgosxgc16
 bvtstgosxgc0001
 bvtstgosxgc0002
 bvtstgosxgc0003
@@ -20,6 +36,22 @@ bvtstgosxgc0018
 bvtstgosxgc0019
 
 Win10 Chrome Beta - Staging
+bvtstgw10gc1
+bvtstgw10gc2
+bvtstgw10gc3
+bvtstgw10gc4
+bvtstgw10gc5
+bvtstgw10gc6
+bvtstgw10gc7
+bvtstgw10gc8
+bvtstgw10gc9
+bvtstgw10gc10
+bvtstgw10gc11
+bvtstgw10gc12
+bvtstgw10gc13
+bvtstgw10gc14
+bvtstgw10gc15
+bvtstgw10gc16
 bvtstgw10gcb001
 bvtstgw10gcb002
 bvtstgw10gcb003
@@ -41,6 +73,22 @@ bvtstgw10gcb018
 bvtstgw10gcb019
 
 Win10 Latest MS Edge - Staging
+bvtstgw10edg1
+bvtstgw10edg2
+bvtstgw10edg3
+bvtstgw10edg4
+bvtstgw10edg5
+bvtstgw10edg6
+bvtstgw10edg7
+bvtstgw10edg8
+bvtstgw10edg9
+bvtstgw10edg10
+bvtstgw10edg11
+bvtstgw10edg12
+bvtstgw10edg13
+bvtstgw10edg14
+bvtstgw10edg15
+bvtstgw10edg16
 bvtstgw10edg001
 bvtstgw10edg002
 bvtstgw10edg003
@@ -62,6 +110,24 @@ bvtstgw10edg018
 bvtstgw10edg019
 
 Win7 Latest Firefox - Staging
+bvtstgw7ff1
+bvtstgw7ff2
+bvtstgw7ff3
+bvtstgw7ff4
+bvtstgw7ff5
+bvtstgw7ff6
+bvtstgw7ff7
+bvtstgw7ff8
+bvtstgw7ff9
+bvtstgw7ff10
+bvtstgw7ff11
+bvtstgw7ff12
+bvtstgw7ff13
+bvtstgw7ff14
+bvtstgw7ff15
+bvtstgw7ff16
+bvtstgw7ff17
+bvtstgw7ff18
 bvtstgw7ff00001
 bvtstgw7ff00002
 bvtstgw7ff00003
@@ -177,10 +243,10 @@ sauce0005 - authentication_win10_edge
 sauce0006
 sauce0007
 sauce0008
-sauce0009
+sauce0009 - bvt_shipstation_search_win7_firefox
 sauce0010 - bvt_international_shipping_win10_chrome_beta
 sauce0011 - bvt_shipstation_updates_international_mac_chrome
-sauce0012 - xxxxx
+sauce0012 -
 sauce0013 - bvt_ambigious_address_win10_edge
 sauce0014 - bvt_international_shipping_mac_chrome
 sauce0015 - bvt_shipstation_updates_domestic_osx_chrome
