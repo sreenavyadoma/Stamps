@@ -21,7 +21,7 @@ Feature:  BVT tests for Orders
   Scenario:  BVT Add a new order
     Then sign-in to orders
     Then add new order
-    Then set order details ship-to to 2622 New Banner Ln, Herndon, VA, 20171
+    Then set order details ship-to to Full Name, BVT New Order, 2622 New Banner Ln, Herndon, VA, 20171
     Then set order details email to random
     Then set order details phone to random
     Then set order details service to PM Package
