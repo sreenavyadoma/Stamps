@@ -173,9 +173,11 @@ Then /^set order details ship-to domestic address to$/ do |table|
   ship_to = "#{full_name},#{company},#{street_address1},#{street_address2},#{city} #{state} #{zip}"
 
   step "set order details domestic ship-to country to #{country}"
+  step 'check for server error'
   step "set order details ship-to text area to #{ship_to}"
   step "set order details phone to #{phone}"
   step "set order details email to #{email}"
+  step 'check for server error'
   step 'hide order ship-to details'
 
   TestData.hash[:full_name] = full_name
