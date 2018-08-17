@@ -200,14 +200,14 @@ Then /^set order details ship-to text area to (.*)$/ do |address|
   ship_to = order_details.ship_to
   step 'show order ship-to details'
   domestic = SdcOrders.order_details.ship_to.domestic
-  5.times do
+  3.times do
     domestic.address.set(address)
-    order_details.weight_label.click
-    order_details.service_label.double_click
-    order_details.order_id.double_click
-    order_details.reference_no_label.double_click
-    order_details.title.double_click
-    ship_to.show_less.safe_wait_until_present(timeout: 2)
+    order_details.weight_label.click if order_details.weight_label.present?
+    order_details.service_label.double_click if order_details.service_label.present?
+    order_details.order_id.double_click if order_details.order_id.present?
+    order_details.reference_no_label.double_click if reference_no_label.title.present?
+    order_details.title.double_click if order_details.title.present?
+    ship_to.show_less.safe_wait_until_present(timeout: 1)
     break if ship_to.show_less.present?
   end
   TestData.hash[:ship_to_domestic] = address
