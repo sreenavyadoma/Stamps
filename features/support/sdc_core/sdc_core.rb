@@ -772,6 +772,14 @@ class SdcElement < BasicObject
     @element.respond_to?(name, include_private) || super
   end
 
+  def double_click
+    begin
+      @element.double_click
+    rescue
+      # ignore
+    end
+  end
+
   def method_missing(name, *args, &block)
     super unless @element.respond_to?(name)
     @element.send(name, *args, &block)
