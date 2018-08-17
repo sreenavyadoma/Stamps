@@ -243,17 +243,17 @@ Then /^blur out on order details form$/ do
   step 'check for server error'
 end
 
-Then /^set order details phone to (.*)$/ do |str|
+Then /^set order details phone to (?:random|(.*))$/ do |str|
   step 'show order ship-to details'
-  str = str.downcase.include?('random') ? TestHelper.rand_phone : str
+  str ||= TestHelper.rand_phone
   SdcOrders.order_details.ship_to.domestic.phone.set(str)
   TestData.hash[:phone] = str
   step 'Save Order Details data'
 end
 
-Then /^set order details email to (.*)$/ do |str|
+Then /^set order details email to (?:random|(.*))$/ do |str|
   step 'show order ship-to details'
-  str = str.downcase.include?('random') ? TestHelper.rand_email : str
+  str ||= TestHelper.rand_email
   SdcOrders.order_details.ship_to.domestic.email.set(str)
   TestData.hash[:email] = str
   step 'Save Order Details data'
