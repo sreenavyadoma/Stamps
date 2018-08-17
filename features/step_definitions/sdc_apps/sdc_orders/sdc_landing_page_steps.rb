@@ -149,7 +149,7 @@ Then /^click Orders landing page sign-in button$/ do
   rating_error = SdcWebsite.modals.rating_error
   landing_page = SdcWebsite.landing_page
   landing_page.sign_in.wait_until_present(timeout: 3)
-  3.times do
+  4.times do
     landing_page.sign_in.click
     landing_page.sign_in.safe_wait_while_present(timeout: 2)
     break unless landing_page.sign_in.present?
