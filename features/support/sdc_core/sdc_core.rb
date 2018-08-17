@@ -92,7 +92,9 @@ module TestSession
     key(:selenium_starting_url) { ENV['SELENIUM_STARTING_URL'] }
     key(:sauce_on_demand_browsers) { ENV['SAUCE_ONDEMAND_BROWSERS'] }
     key(:screen_resolution) { ENV['SCREEN_RESOLUTION'] || '1280x1024' }
-    key(:idle_timeout) { ENV['IDLE_TIMEOUT'] || 300 }
+    key(:extendedDebugging) { ENV['EXTENDED_DEBUGGING'] || false }
+    key(:idle_timeout) { ENV['IDLE_TIMEOUT'] || 180 }
+    key(:appium_wait) { ENV['APPIUM_WAIT'] || 300 }
     key(:sauce_end_point) { "https://#{sauce_username}:#{sauce_access_key}@#{selenium_host}:#{selenium_port}/wd/hub" }
     # cloud mobile
     key(:selenium_device) { ENV['SELENIUM_DEVICE'] }
@@ -193,12 +195,14 @@ module TestSession
         :platformName => env.selenium_platform,
         :browserName => env.selenium_browser,
         :automationName => env.automation_name,
-        :tunnelIdentifier => env.tunnel_identifier
+        :extendedDebugging => env.extendedDebugging,
+        :tunnelIdentifier => env.tunnel_identifier,
+        :idleTimeout => env.idle_timeout
       },
       appium_lib: {
         :sauce_username => env.sauce_username,
         :sauce_access_key => env.sauce_access_key,
-        :wait => env.idle_timeout
+        :wait => env.appium_wait
       }
     }
 
@@ -218,8 +222,9 @@ module TestSession
       :build => env.build,
       :idleTimeout => env.idle_timeout,
       :screenResolution => env.screen_resolution,
-      :extendedDebugging => true,
-      :tunnelIdentifier => env.tunnel_identifier
+      :extendedDebugging => env.extendedDebugging,
+      :tunnelIdentifier => env.tunnel_identifier,
+      :idleTimeout => env.idle_timeout
     }
     caps = Selenium::WebDriver::Remote::Capabilities.send(env.selenium_browser, desired_caps)
     client = Selenium::WebDriver::Remote::Http::Default.new
