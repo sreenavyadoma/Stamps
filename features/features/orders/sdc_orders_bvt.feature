@@ -21,7 +21,7 @@ Feature:  BVT tests for Orders
   Scenario:  BVT Add a new order
     Then sign-in to orders
     Then add new order
-    Then set order details ship-to to random address in zone 9
+    Then set order details ship-to to random address in zone 7
     Then set order details service to PM Package
     Then set order details pounds to 1
     Then set order details ounces to 1
@@ -118,8 +118,8 @@ Feature:  BVT tests for Orders
     Then add customs associated item 2, description random, qty 1, Price 4, Made In Japan, Tariff 1
     Then add customs associated item 3, description random, qty 1, Price 4, Made In France, Tariff 1
     # edit item
-    Then edit customs associated item 1, description random, qty 2, Price 4, Made In United States, Tariff 1
-    Then edit customs associated item 2, description random, qty 2, Price 4, Made In United States, Tariff 1
+    Then edit customs associated item 1, description random, qty 2, Price 4.00, Made In United States, Tariff 1
+    Then edit customs associated item 2, description random, qty 2, Price 4.00, Made In United States, Tariff 1
 
     Then expect customs associated item grid count is 3
     Then set customs package contents to Commercial Sample

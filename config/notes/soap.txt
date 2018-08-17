@@ -1,6 +1,6 @@
 Mac Latest Chrome - Staging
-bvtstgosxgc1 - rob cukes
-bvtstgosxgc2
+bvtstgosxgc1 rob cukes
+bvtstgosxgc2 mac_chrome_bvt_shipping_address_management
 bvtstgosxgc3
 bvtstgosxgc4
 bvtstgosxgc5
@@ -110,7 +110,7 @@ bvtstgw10edg018
 bvtstgw10edg019
 
 Win7 Latest Firefox - Staging
-bvtstgw7ff1
+bvtstgw7ff1 win7_firefox_bvt_new_order
 bvtstgw7ff2
 bvtstgw7ff3
 bvtstgw7ff4
