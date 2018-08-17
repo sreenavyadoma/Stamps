@@ -568,7 +568,7 @@ module SdcElementHelper
     begin
       send(:focus)
       send(:hover)
-    rescue ::StandardError
+    rescue
       # ignore
     end
 
@@ -627,14 +627,6 @@ module SdcElementHelper
     end
 
     self
-  end
-
-  def safe_hover
-    begin
-      @element.hover
-    rescue
-      # ignore
-    end
   end
 
   def double_click
