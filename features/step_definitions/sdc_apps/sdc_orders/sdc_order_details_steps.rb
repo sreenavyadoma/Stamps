@@ -241,6 +241,7 @@ Then /^blur out on order details form$/ do
   order_details.reference_no_label.safe_double_click
   order_details.title.scroll_into_view
   order_details.title.safe_double_click
+  step 'check for server error'
 end
 
 Then /^set order details phone to (.*)$/ do |str|
