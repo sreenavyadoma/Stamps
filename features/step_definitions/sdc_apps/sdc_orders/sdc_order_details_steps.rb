@@ -7,7 +7,7 @@ Then /^set order details ship-to to(?: a |)(?: random address |)(?:to|in|between
   street_address1 = hash[:street_address]
   street_address2 = hash[:street_address2]
   city = hash[:city]
-  state = hash[:city]
+  state = hash[:state]
   zip = hash[:zip]
   ship_to = "#{full_name},#{company},#{street_address1},#{street_address2},#{city} #{state} #{zip}"
 
