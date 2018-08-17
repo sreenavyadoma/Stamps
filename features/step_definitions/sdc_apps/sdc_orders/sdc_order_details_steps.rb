@@ -205,7 +205,7 @@ Then /^set order details ship-to text area to (.*)$/ do |address|
     order_details.weight_label.click if order_details.weight_label.present?
     order_details.service_label.double_click if order_details.service_label.present?
     order_details.order_id.double_click if order_details.order_id.present?
-    order_details.reference_no_label.double_click if reference_no_label.title.present?
+    order_details.reference_no_label.double_click if order_details.reference_no_label.title.present?
     order_details.title.double_click if order_details.title.present?
     ship_to.show_less.safe_wait_until_present(timeout: 1)
     break if ship_to.show_less.present?
