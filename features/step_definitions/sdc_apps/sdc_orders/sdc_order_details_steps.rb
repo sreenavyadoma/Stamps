@@ -203,6 +203,7 @@ Then /^set order details ship-to text area to (.*)$/ do |address|
   3.times do
     domestic.address.set(address)
     order_details.weight_label.click if order_details.weight_label.present?
+    break if ship_to.show_less.present?
     order_details.service_label.double_click if order_details.service_label.present?
     order_details.order_id.double_click if order_details.order_id.present?
     order_details.reference_no_label.double_click if order_details.reference_no_label.title.present?
