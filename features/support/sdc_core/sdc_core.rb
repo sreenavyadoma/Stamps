@@ -220,7 +220,6 @@ module TestSession
       :version => env.selenium_version,
       :platform => env.selenium_platform,
       :build => env.build,
-      :idleTimeout => env.idle_timeout,
       :screenResolution => env.screen_resolution,
       :extendedDebugging => env.extendedDebugging,
       :tunnelIdentifier => env.tunnel_identifier,
