@@ -27,7 +27,7 @@ Feature:  BVT tests for Orders
     Then set order details service to PM Package
     Then set order details pounds to 1
     Then set order details ounces to 1
-    Then set order details insure-for to 1.00
+    Then set order details insure-for to 50.00
     Then sign-out of SDC Website
 
   @bvt_orders_ship_date
