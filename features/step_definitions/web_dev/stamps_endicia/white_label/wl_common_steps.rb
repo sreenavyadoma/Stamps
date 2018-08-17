@@ -469,6 +469,38 @@ Then /^WL: expect registration navigation bar header text exists$/ do
   expect(WhiteLabel.common_page.header_text).to be_present
 end
 
+Then /^WL: expect registration navigation bar learn more dropdown exists$/ do
+  learn_more_dropdown = WhiteLabel.common_page.learn_more_dropdown
+  learn_more_dropdown.wait_until_present(timeout: 2)
+  expect(learn_more_dropdown).to be_present
+end
+
+Then /^WL: expect registration navigation bar get started button exists$/ do
+  get_started = WhiteLabel.common_page.get_started_btn
+  get_started.wait_until_present(timeout: 2)
+  expect(get_started).to be_present
+end
+
+Then /^WL: expect registration navigation bar login button exists$/ do
+  login = WhiteLabel.common_page.login
+  login.wait_until_present(timeout: 2)
+  expect(login).to be_present
+end
+
+Then /^WL: expect registration navigation bar microphone text is (.*)$/ do |str|
+  microphone_text = WhiteLabel.common_page.microphone_text
+  microphone_text.wait_until_present(timeout: 1)
+  str ||= TestData.hash[:microphone_text]
+  expect(microphone_text.text_value.gsub(/\n/, '')).to eql(str)
+end
+
+Then /^WL: expect registration navigation bar radio image exists$/ do
+  get_started = WhiteLabel.common_page.get_started_btn
+  get_started.wait_until_present(timeout: 2)
+  expect(get_started).to be_present
+end
+
+
 ############ Footer ###########
 
 #### privacy policy ####
