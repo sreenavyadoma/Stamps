@@ -12,7 +12,6 @@ Then /^set order details ship-to to(?: a |)(?: random address |)(?:to|in|between
   ship_to = "#{full_name},#{company},#{street_address1},#{street_address2},#{city} #{state} #{zip}"
 
   step "set order details ship-to text area to #{ship_to}"
-  step 'hide order ship-to details'
   TestData.hash[:ship_to_domestic] = hash
 end
 
