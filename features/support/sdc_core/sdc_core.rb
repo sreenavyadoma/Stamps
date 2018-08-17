@@ -629,6 +629,22 @@ module SdcElementHelper
     self
   end
 
+  def safe_hover
+    begin
+      @element.hover
+    rescue
+      # ignore
+    end
+  end
+
+  def double_click
+    begin
+      @element.double_click
+    rescue
+      # ignore
+    end
+  end
+
   def safe_double_click(ctr: 1)
     ctr.to_i.times do
       begin
@@ -770,14 +786,6 @@ class SdcElement < BasicObject
 
   def respond_to_missing?(name, include_private = false)
     @element.respond_to?(name, include_private) || super
-  end
-
-  def double_click
-    begin
-      @element.double_click
-    rescue
-      # ignore
-    end
   end
 
   def method_missing(name, *args, &block)
