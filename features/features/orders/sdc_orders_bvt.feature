@@ -21,14 +21,11 @@ Feature:  BVT tests for Orders
   Scenario:  BVT Add a new order
     Then sign-in to orders
     Then add new order
-    Then set order details ship-to to random address in zone 7
+    Then set order details ship-to to random address in zone 1
     Then set order details service to PM Package
     Then set order details pounds to 1
     Then set order details ounces to 1
     Then set order details insure-for to 1.00
-    Then set order details length to 1
-    Then set order details width to 1
-    Then set order details height to 1
     Then sign-out of SDC Website
 
   @bvt_orders_ship_date
