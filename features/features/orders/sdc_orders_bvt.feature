@@ -21,12 +21,15 @@ Feature:  BVT tests for Orders
   Scenario:  BVT Add a new order
     Then sign-in to orders
     Then add new order
-    Then set order details ship-to to random address in zone 1
+    Then set order details ship-to to 2622 New Banner Ln, Herndon, VA, 20171
     Then set order details email to random
     Then set order details phone to random
     Then set order details service to PM Package
     Then set order details pounds to 1
     Then set order details ounces to 1
+    Then set order details length to 1
+    Then set order details width to 1
+    Then set order details height to 1
     Then set order details insure-for to 50.00
     Then sign-out of SDC Website
 
