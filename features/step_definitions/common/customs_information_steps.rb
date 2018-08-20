@@ -315,10 +315,10 @@ Then /^increment customs associated item (\d+) qty by (\d+)$/ do |item, value|
   value.times do
     qty.increment.click
   end
-  step "expect customs associated item #{item} qty is #{old_qty+value}"
+  step "expect customs associated item #{item} qty is #{old_qty + value}"
   step 'Save Customs Information form Total amount'
   TestData.hash[:customs_associated_items][item] ||= {}
-  TestData.hash[:customs_associated_items][item][:quantity] = old_qty+value
+  TestData.hash[:customs_associated_items][item][:quantity] = old_qty + value
 end
 
 Then /^decrement customs associated item (\d+) qty by (\d+)$/ do |item, value|
@@ -328,10 +328,10 @@ Then /^decrement customs associated item (\d+) qty by (\d+)$/ do |item, value|
   value.times do
     qty.decrement.click
   end
-  step "expect customs associated item #{item} qty is #{old_qty-value}"
+  step "expect customs associated item #{item} qty is #{old_qty - value}"
   step 'Save Customs Information form Total amount'
   TestData.hash[:customs_associated_items][item] ||= {}
-  TestData.hash[:customs_associated_items][item][:quantity] = old_qty-value
+  TestData.hash[:customs_associated_items][item][:quantity] = old_qty - value
 end
 
 Then /^expect customs associated item (\d+) qty is (\d+)$/ do |item, value|
@@ -342,7 +342,6 @@ end
 
 Then /^set customs associated item (\d+) unit price to (.*)$/ do |item, value|
   unit_price = SdcWebsite.customs_form.item.unit_price(item)
-  unit_price.scroll_into_view
   unit_price.set(value)
   step 'Save Customs Information form Total amount'
   TestData.hash[:customs_associated_items][item] ||= {}

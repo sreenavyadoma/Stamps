@@ -57,20 +57,20 @@ sql_server_vbridge:
     azure: false
 
 sql_server_stampmart:
-   qacc:
-      server: sdc11db01.qa02.aws.local
-      database: StampMart
-      port: 1433
-      username: qalab
-      password: StampsQA!
-      azure: false
-   stg:
-     server: sdc11db01.stage02.aws.local
-     database: StampMart
-     port: 1433
-     username: qalab
-     password: StampsQA!
-     azure: false
+  qacc:
+    server: sdc11db01.qa02.aws.local
+    database: Stampmart
+    port: 1433
+    username: qalab
+    password: StampsQA!
+    azure: false
+  stg:
+    server: sdc11db01.stage02.aws.local
+    database: StampMart
+    port: 1433
+    username: qalab
+    password: StampsQA!
+    azure: false
 
 rates_test:
   rate_file: rate_file.xls

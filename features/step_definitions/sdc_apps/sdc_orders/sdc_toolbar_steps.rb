@@ -7,18 +7,15 @@ Then /^add order (\d+)$/ do |count|
   order_details = SdcOrders.order_details
   ship_from = order_details.ship_from
   initializing = SdcOrders.initializing_orders_db
-  server_error = SdcOrders.modals.server_error
   toolbar.add.wait_until_present(timeout: 10)
 
   toolbar.add.click if TestSession.env.browser_test
   toolbar.add.send_keys(:enter) if TestSession.env.ios_test
 
   order_details.title.safe_wait_until_present(timeout: 10)
-  if server_error.title.present?
-    error_msg = "#{server_error.title.text} - #{server_error.body.text}"
-    server_error.ok.safe_click
-    expect(error_msg).to eql ''
-  end
+
+  step 'check for server error'
+
   unless order_details.order_id.present?
     if initializing.present?
       initializing.safe_wait_until_present(timeout: 20)
@@ -38,6 +35,16 @@ Then /^add order (\d+)$/ do |count|
   TestData.hash[:customs_items_qty] = 0
   ship_from = ship_from.text_field.text_value
   TestData.hash[:ship_from] = ship_from
+end
+
+Then /^check for server error$/ do
+  server_error = SdcOrders.modals.server_error
+  error_msg = nil
+  if server_error.title.present?
+    error_msg = "#{server_error.title.text} - #{server_error.body.text}"
+    SdcLogger.error error_msg
+  end
+  expect(error_msg).to be_nil
 end
 
 Then /^wait until orders available$/ do
