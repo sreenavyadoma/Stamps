@@ -2,5 +2,9 @@ Grid issues
 Then expect orders grid service ship-from is correct
 
 
+  @bvt_orders_ui_validation_order_details
+    Then add order details item 1, qty 1, id ID 1, description Description 1
+
+
 
 
