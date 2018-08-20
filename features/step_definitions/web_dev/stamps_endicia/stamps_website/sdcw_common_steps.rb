@@ -17,5 +17,5 @@ end
 Then /^SDCW: click learn more->small office mailers link$/ do
   common_page = StampsWebsite.common_page
   common_page.learn_more.hover
-
+  common_page.small_office_mailers.click
 end
