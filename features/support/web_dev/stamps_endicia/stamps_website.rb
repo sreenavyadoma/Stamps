@@ -22,10 +22,6 @@ module StampsWebsite
       Common.new
     end
 
-    def sdcw_website
-      SDCWWebsite.new
-    end
-
     def sdc_db_connection
       SdcWebsiteDB.new
     end
