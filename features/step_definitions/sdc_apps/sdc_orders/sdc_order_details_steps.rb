@@ -265,13 +265,21 @@ end
 Then /^expect order details ship-to phone is (?:correct|(.*))$/ do |str|
   step 'show order ship-to details'
   str ||= TestData.hash[:phone]
-  expect(SdcOrders.order_details.ship_to.domestic.phone.text_value).to eql(str)
+  domestic = SdcOrders.order_details.ship_to.domestic
+  domestic.phone.scroll_into_view
+  domestic.phone.wait_until_present(timeout: 10)
+  result = domestic.phone.text_value
+  expect(result.strip).to eql(str)
 end
 
 Then /^expect order details ship-to email is (?:correct|(.*))$/ do |str|
   step 'show order ship-to details'
   str ||= TestData.hash[:email]
-  expect(SdcOrders.order_details.ship_to.domestic.email.text_value).to eql(str)
+  domestic = SdcOrders.order_details.ship_to.domestic
+  domestic.email.scroll_into_view
+  domestic.email.wait_until_present(timeout: 10)
+  result = domestic.email.text_value
+  expect(result.strip).to eql(str)
 end
 
 Then /^[Oo]n [Oo]rder [Dd]etails form, [Hh]ide [Ii]nternational [Ss]hip-[Tt]o fields$/ do

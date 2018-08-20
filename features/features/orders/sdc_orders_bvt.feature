@@ -222,7 +222,6 @@ Feature:  BVT tests for Orders
     #Then expect orders grid tracking number is populated
 
   #Verify Single Order Details form was saved in ShipStation
-    #Then expect order details ship-from is correct
     Then expect order details ship-to phone is correct
     Then expect order details ship-to email is correct
     Then expect order details ship-to phone is correct
