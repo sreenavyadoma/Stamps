@@ -5,6 +5,19 @@ module StampsWebsite
 
   class PostageOnlinePage < SdcPage
 
+    page_url { |env| "https://#{env}stamps.com/postage-online/?mboxDisable=1" }
+    def self.visit
+      super(case TestSession.env.url
+              when :qacc
+                'sdcwebsite.qacc.'
+              when :stg
+                'sdcwebsite.staging.'
+              when :prod
+                ''
+              else
+                # ignore
+            end)
+    end
   end
 
 
