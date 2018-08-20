@@ -2,7 +2,7 @@ module SWWR
 
   class CreateYourAccount < SdcPage
     page_object(:create_your_account_header) { {xpath: '//div[@class="webreg-form-case-1"]/h1'} }
-    page_Object(:create_your_account_header_p) { {xpath: '//div[@class="webreg-form-case-1"]/p'} }
+    page_object(:create_your_account_header_p) { {xpath: '//div[@class="webreg-form-case-1"]/p'} }
     text_field(:email, tag: :text_field, required: true) { { id: 'email' } }
     page_object(:email_help_block,  index: 0) { {xpath: '//li[@class="module webreg_email"]/div/div/div/span/span[2]'} }
     text_field(:password, tag: :text_field, required: true) { { id: 'passwordEle' }}
