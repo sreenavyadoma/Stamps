@@ -1,6 +1,5 @@
-cc=cctruer0u
-sc=scsejsglwa
-stg=stgee1mtqvwdc0
+Grid issues
+Then expect orders grid service ship-from is correct
 
 
 

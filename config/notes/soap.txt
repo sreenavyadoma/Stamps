@@ -1,7 +1,7 @@
 Mac Latest Chrome - Staging
 bvtstgosxgc1 rob cukes
 bvtstgosxgc2 mac_chrome_bvt_shipping_address_management
-bvtstgosxgc3
+bvtstgosxgc3 mac_chrome » bvt_address_cleansing
 bvtstgosxgc4
 bvtstgosxgc5
 bvtstgosxgc6
@@ -36,15 +36,15 @@ bvtstgosxgc0018
 bvtstgosxgc0019
 
 Win10 Chrome Beta - Staging
-bvtstgw10gc1
-bvtstgw10gc2
-bvtstgw10gc3
-bvtstgw10gc4
-bvtstgw10gc5
-bvtstgw10gc6
-bvtstgw10gc7
-bvtstgw10gc8
-bvtstgw10gc9
+bvtstgw10gc1 win10_chrome_beta » bvt_address_cleansing
+bvtstgw10gc2 win10_chrome_beta » bvt_ambigious_address
+bvtstgw10gc3 win10_chrome_beta » bvt_international_shipping
+bvtstgw10gc4 win10_chrome_beta » bvt_new_order
+bvtstgw10gc5 win10_chrome_beta » bvt_orders_ui_validation
+bvtstgw10gc6 win10_chrome_beta » bvt_shipstation_search
+bvtstgw10gc7 win10_chrome_beta » bvt_shipstation_updates_domestic
+bvtstgw10gc8 win10_chrome_beta » bvt_shipstation_updates_international
+bvtstgw10gc9 win10_chrome_beta » bvt_shipping_address_management
 bvtstgw10gc10
 bvtstgw10gc11
 bvtstgw10gc12
@@ -307,7 +307,8 @@ mobile000015stg
 
 
 
-
+rob
+stgi3eicvj8d7b
 
 
 
