@@ -4,3 +4,5 @@ Then /^SDCW: navigate to home page$/ do
   stamps_logo.wait_until_present(timeout: 10)
   expect(stamps_logo).to be_present
 end
+
+
