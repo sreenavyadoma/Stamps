@@ -3,8 +3,10 @@ module StampsWebsite
     #stamps website
     page_object(:stamps_logo) {{id: 'sdc-logo'}}
     button(:get_started) { { class: ['btn btn-success btn-xs register'] } }
-    page_object(:usps_logo) {{xpath: '//div[@id="nav-usps-vendor"]'}}
-    page_object(:usps_logo) {{xpath: '//div[@id="nav-usps-vendor"]'}}
+
+    def dropdown(str, name = :element)
+      page_object(name) { {xpath: "//span[contains(text(), \" #{str} \")]" } }
+    end
   end
 
   class SDCWWebsite <SdcPage
