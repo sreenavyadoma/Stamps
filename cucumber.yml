@@ -556,3 +556,5 @@ ewwr_membership_page_username_taken_validation: --tags @ewwr_membership_page_use
 ewwr_security_question_page_validation: --tags @ewwr_security_question_page_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
 ewwr_offer_707_workflow: --tags @ewwr_offer_707_workflow --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
 ewwr_session_state_data_validation: --tags @ewwr_session_state_data_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
+#Shipworks WebReg
+swwr_create_your_account_page_validation: --tags @swwr_create_your_account_page_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
