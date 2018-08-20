@@ -150,28 +150,13 @@ require 'cucumber/rake/task'
     t.cucumber_opts = "-p cuke_reports"
   end
 
-  Cucumber::Rake::Task.new(:ewwr_offer_707_workflow) do |t|
-    t.profile = 'ewwr_offer_707_workflow'
-    t.cucumber_opts = "-p cuke_reports"
-  end
-
   Cucumber::Rake::Task.new(:ewwr_security_question_page_validation) do |t|
     t.profile = 'ewwr_security_question_page_validation'
     t.cucumber_opts = "-p cuke_reports"
   end
 
-  Cucumber::Rake::Task.new(:ewwr_membership_page_ui_validation) do |t|
-    t.profile = 'ewwr_membership_page_ui_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
-
-  Cucumber::Rake::Task.new(:ewwr_membership_page_addr_validation) do |t|
-    t.profile = 'ewwr_membership_page_addr_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
-
-  Cucumber::Rake::Task.new(:ewwr_membership_page_username_taken_validation) do |t|
-    t.profile = 'ewwr_membership_page_username_taken_validation'
+  Cucumber::Rake::Task.new(:ewwr_offer_707_workflow) do |t|
+    t.profile = 'ewwr_offer_707_workflow'
     t.cucumber_opts = "-p cuke_reports"
   end
 
@@ -181,6 +166,14 @@ require 'cucumber/rake/task'
   end
 
 # END ENDICIA WEB REG
+
+# BEGIN SHIPWORKS WEB REG
+  Cucumber::Rake::Task.new(:swwr_create_your_account_page_validation) do |t|
+    t.profile = 'swwr_create_your_account_page_validation'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+# END SHIPWORKS WEB REG
+
 
 # END WEB DEV
 

@@ -177,14 +177,15 @@ Then /^close whats new modal in orders$/ do
 end
 
 Then /^[Ss]ign-out of SDC [Ww]ebsite$/ do
-  if TestSession.env.browser_test
-    user_drop_down = SdcNavigation.user_drop_down
-    user_drop_down.signed_in_user.wait_until_present(timeout: 5)
-    user_drop_down.signed_in_user.hover
-    user_drop_down.sign_out_link.safe_wait_until_present(timeout: 1)
-    user_drop_down.sign_out_link.safe_click
-    SdcWebsite.landing_page.username.safe_wait_until_present(timeout: 4)
-  end
+  # if TestSession.env.browser_test
+  #   user_drop_down = SdcNavigation.user_drop_down
+  #   user_drop_down.signed_in_user.wait_until_present(timeout: 5)
+  #   user_drop_down.signed_in_user.safe_hover
+  #   user_drop_down.signed_in_user.safe_click unless user_drop_down.sign_out_link.present?
+  #   user_drop_down.sign_out_link.safe_wait_until_present(timeout: 1)
+  #   user_drop_down.sign_out_link.safe_click
+  #   SdcWebsite.landing_page.username.safe_wait_until_present(timeout: 4)
+  # end
 end
 
 Then /^Verify Health Check for (.+)$/ do |str|

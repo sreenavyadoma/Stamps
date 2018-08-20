@@ -1,0 +1,26 @@
+module StampsWebsite
+  class Common < SdcPage
+    #stamps website
+    page_object(:stamps_logo) {{id: 'sdc-logo'}}
+    button(:get_started) { { class: ['btn btn-success btn-xs register'] } }
+    page_object(:usps_logo) {{xpath: '//div[@id="nav-usps-vendor"]'}}
+    page_object(:usps_logo) {{xpath: '//div[@id="nav-usps-vendor"]'}}
+  end
+
+  class SDCWWebsite <SdcPage
+    def self.visit
+      page_url { |env| "https://#{env}stamps.com/?mboxDisable=1" }
+      super(case TestSession.env.url
+              when :qacc
+                'sdcwebsite.qacc.'
+              when :stg
+                'sdcwebsite.staging.'
+              when :prod
+                ''
+              else
+                # ignore
+            end)
+    end
+  end
+
+end

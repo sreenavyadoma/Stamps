@@ -1,19 +1,21 @@
 
-Then /^set order details ship-to to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
+Then /^set order details ship-to to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |str|
   step 'show order ship-to details'
-  hash = TestHelper.address_helper_zone(address)
-  full_name = hash[:full_name]
-  company = hash[:company]
-  street_address1 = hash[:street_address]
-  street_address2 = hash[:street_address2]
-  city = hash[:city]
-  state = hash[:state]
-  zip = hash[:zip]
-  ship_to = "#{full_name},#{company},#{street_address1},#{street_address2},#{city} #{state} #{zip}"
+  address = TestHelper.address_helper_zone(str)
+  if address.is_a? Hash
+    full_name = address[:full_name]
+    company = address[:company]
+    street_address1 = address[:street_address]
+    street_address2 = address[:street_address2]
+    city = address[:city]
+    state = address[:state]
+    zip = address[:zip]
+    str = "#{full_name},#{company},#{street_address1},#{street_address2},#{city} #{state} #{zip}"
+  end
 
-  step "set order details ship-to text area to #{ship_to}"
+  step "set order details ship-to text area to #{str}"
   step 'check for server error'
-  TestData.hash[:ship_to_domestic] = hash
+  TestData.hash[:ship_to_domestic] = address
 end
 
 Then /^add order details item (\d+), qty (\d+), id (.+), description (.*)$/ do |item, qty, id, description|
@@ -203,9 +205,10 @@ Then /^set order details ship-to text area to (.*)$/ do |address|
   3.times do
     domestic.address.set(address)
     order_details.weight_label.click if order_details.weight_label.present?
+    break if ship_to.show_less.present?
     order_details.service_label.double_click if order_details.service_label.present?
     order_details.order_id.double_click if order_details.order_id.present?
-    order_details.reference_no_label.double_click if reference_no_label.title.present?
+    order_details.reference_no_label.double_click if order_details.reference_no_label.title.present?
     order_details.title.double_click if order_details.title.present?
     ship_to.show_less.safe_wait_until_present(timeout: 1)
     break if ship_to.show_less.present?
