@@ -4,7 +4,7 @@ module StampsWebsite
     page_object(:stamps_logo) {{id: 'sdc-logo'}}
     button(:get_started) { { class: ['btn btn-success btn-xs register'] } }
     page_object(:learn_more) { {class: ['dropdown-toggle']} }
-
+    link(:small_office_mailers) { {xpath: '//a[contains(text(),"Small Office Mailers")]' } }
     def dropdown(str, name = :element)
       page_object(name) { {xpath: "//span[contains(text(), \" #{str} \")]" } }
     end
