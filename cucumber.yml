@@ -69,11 +69,6 @@ alex_orders:  --tags @bvt_orders_ui_validation BROWSER=ff URL=prod USR=abqaprod2
 alex_test:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders URL=qacc USR=abqacc10 PW=password1  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false
 saucelabs_alex: --tags @rates_pme_comm_base_zone_1 URL=stg USR=abqast2 PW=password1 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=alexbaranovskyi SAUCE_ACCESS_KEY=bcd50193-981d-4890-9bce-b18d3097f373 SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
 
-
-aloha: --tags @sdc_contacts_delete_from_top_navigation URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
-
-#aloha: --tags @sdc_contacts_bvt_2 URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
-
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess  HEALTHCHECK=true WEB_APP=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess  HEALTHCHECK=true WEB_APP=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess  HEALTHCHECK=true WEB_APP=xxxxxxxxxx
@@ -586,3 +581,11 @@ pp_dashboard_single_contract_export_data_validation: --tags @pp_dashboard_single
 #Stamps WebReg
 sdcwr_normal_workflow:  --tags @sdcwr_normal_workflow --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 sdcwr_membership_page_ui_validation:  --tags @sdcwr_membership_page_ui_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
+
+#Contacts
+#aloha: --tags @sdc_contacts_delete_multiple_from_top_navigation URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
+#aloha: --tags @sdc_contacts_delete_single_from_top_navigation URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
+#aloha: --tags @sdc_contacts_bvt_2 URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
+#aloha: --tags @sdc_contacts_bvt_1 URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
+#aloha: --tags @sdc_contacts_delete_single_from_details_menu URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
+aloha: --tags @sdc_contacts_edit_existing_contacts_detail_name_expand URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1

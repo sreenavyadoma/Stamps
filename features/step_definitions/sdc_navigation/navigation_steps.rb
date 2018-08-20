@@ -1,6 +1,8 @@
 Then /^navigate to contacts$/ do
-  SdcNavigation.contacts.safe_wait_until_present(timeout: 30)
+  SdcNavigation.contacts.safe_wait_until_present(timeout: 60)
+  sleep(5)
   SdcNavigation.contacts.click
+  SdcContacts.loading_contacts.safe_wait_until_present(timeout: 60)
   SdcContacts.contacts_body.safe_wait_until_present(timeout: 20)
 end
 

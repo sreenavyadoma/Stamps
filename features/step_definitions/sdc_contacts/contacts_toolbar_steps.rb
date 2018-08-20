@@ -1,6 +1,8 @@
 Then /^[Cc]lick [Cc]ontacts [Aa]dd [Bb]utton$/ do
   toolbar =SdcContacts.contacts_toolbar
-  toolbar.add.safe_wait_until_present(timeout: 30)
+  toolbar.add.safe_wait_until_present(timeout: 10)
+  toolbar.add.wait_until_present(timeout: 10)
+  sleep(5)
   toolbar.add.click
 end
 

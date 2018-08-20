@@ -1,7 +1,46 @@
 Then /^[Ss]et [Cc]ontact [Dd]etails [Nn]ame [Tt]o (.*)$/ do |str|
   contacts_detail= SdcContacts.contacts_detail
-  contacts_detail.name.wait_until_present(timeout: 15)
+  contacts_detail.name.safe_wait_until_present(timeout: 15)
   contacts_detail.name.set(str)
+end
+
+Then /^Click on Contact Details Panel Name Expand Button$/ do
+  contacts_detail= SdcContacts.contacts_detail
+  contacts_detail.name_expand.safe_wait_until_present(timeout: 15)
+  contacts_detail.name_expand.click
+end
+
+Then /^[Ss]et [Cc]ontact [Dd]etails [Nn]ame [Pp]refix [Tt]o (.*)$/ do |str|
+  name_pre = SdcContacts.contacts_name_prefix
+  name_pre.prefix_selection(value: str)
+  name_pre.prefix_drop_down.click unless name_pre.selection.present?
+  name_pre.prefix_text_field.set(str)
+  name_pre.prefix_selection.safe_click
+  expect(name_pre.prefix_text_field.text_value).to include(str)
+end
+
+Then /^[Ss]et [Cc]ontact [Dd]etails [Ff]irst[Nn]ame [Tt]o (.*)$/ do |str|
+  contacts_detail= SdcContacts.contacts_detail
+  contacts_detail.first_name.safe_wait_until_present(timeout: 15)
+  contacts_detail.first_name.set(str)
+end
+
+Then /^[Ss]et [Cc]ontact [Dd]etails [Mm]iddle[Nn]ame [Tt]o (.*)$/ do |str|
+  contacts_detail= SdcContacts.contacts_detail
+  contacts_detail.middle_name.safe_wait_until_present(timeout: 15)
+  contacts_detail.middle_name.set(str)
+end
+
+Then /^[Ss]et [Cc]ontact [Dd]etails [Ll]ast[Nn]ame [Tt]o (.*)$/ do |str|
+  contacts_detail= SdcContacts.contacts_detail
+  contacts_detail.last_name.safe_wait_until_present(timeout: 15)
+  contacts_detail.last_name.set(str)
+end
+
+Then /^[Ss]et [Cc]ontact [Dd]etails [Ss]uffix [Tt]o (.*)$/ do |str|
+  contacts_detail= SdcContacts.contacts_detail
+  contacts_detail.name_suffix.safe_wait_until_present(timeout: 15)
+  contacts_detail.name_suffix.set(str)
 end
 
 Then /^[Ss]et [Cc]ontact [Dd]etails [Cc]ompany [Tt]o (.*)$/ do |str|
@@ -106,3 +145,34 @@ Then /^expect email error is not displayed$/ do
   error= SdcContacts.contacts_email_error.email_error
   error.present?.eql("false")
 end
+
+Then /^[Cc]lick [Oo]n [Cc]ontact [Dd]etails [Mm]enu [Dd]ropdown$/ do
+  toolbar_menu = SdcContacts.contacts_detail_toolbar_menu
+  toolbar_menu.menu_button.safe_wait_until_present(timeout: 10)
+  toolbar_menu.menu_button.wait_until_present(timeout: 10)
+  toolbar_menu.menu_button.click
+end
+
+Then /^[Ss]elect (.*) from dropdown menu$/ do |menu_item|
+  toolbar_menu = SdcContacts.contacts_detail_toolbar_menu
+  case menu_item
+  when menu_item.eql("Print Postage")
+    toolbar_menu.menu_print_postage.wait_until_present(timeout: 10)
+    toolbar_menu.menu_print_postage.click
+  when menu_item.eql("Delete")
+    toolbar_menu.menu_delete.wait_until_present(timeout: 10)
+    toolbar_menu.menu_delete.click
+  when menu_item.eql("Collapse Panel")
+    toolbar_menu.menu_collapse_panel.wait_until_present(timeout: 10)
+    toolbar_menu.menu_collapse_panel.click
+  else
+    failure_message
+  end
+end
+
+  Then /^[Ee]xpand [Cc]ollapsed [Cc]ontact [Dd]etails [Pp]anel$/ do
+    contact_detail = SdcContacts.contacts_detail
+    contact_detail.expand_button.wait_until_present(timeout: 10)
+    contact_detail.expand_button.flash
+    contact_detail.expand_button.click
+  end

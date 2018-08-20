@@ -559,7 +559,6 @@ class SdcChooser < BasicObject
       click
       break if chosen?
     end
-
     chosen?
   end
 

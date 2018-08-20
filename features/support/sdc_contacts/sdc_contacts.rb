@@ -16,6 +16,16 @@ module SdcContacts
   end
   module_function :verifying_account
 
+  def contacts_left_navigation_panel
+    ContactsLeftNavigation.new
+  end
+  module_function :contacts_left_navigation_panel
+
+  def contacts_filter_panel
+    ContactsFilter.new
+  end
+
+  #-----Contacts Tool Bar---------
   def contacts_toolbar
     ContactsToolbar.new
   end
@@ -26,29 +36,23 @@ module SdcContacts
   end
   module_function :contacts_delete_message_box
 
-  def contacts_left_navigation_panel
-    ContactsLeftNavigation.new
-  end
-  module_function :contacts_left_navigation_panel
 
-  def contacts_filter_panel
-    ContactsFilter.new
-  end
 
-  def contacts_grid
-    EmptyContactsGrid.new
-  end
-  module_function :contacts_grid
-
+  #--------Details Panel---------
   def contacts_detail
     ContactsDetailsPanel.new
   end
   module_function :contacts_detail
 
-  def contacts_cost_code
-    ContactsCostCode.new
+  def contacts_detail_toolbar_menu
+    ContactsDetailsToolBarMenu.new
   end
-  module_function :contacts_cost_code
+  module_function :contacts_detail_toolbar_menu
+
+  def contacts_name_prefix
+    ContactsNamePrefix.new
+  end
+  module_function :contacts_name_prefix
 
   def contacts_country
     ContactsCountry.new
@@ -60,6 +64,11 @@ module SdcContacts
   end
   module_function :contacts_group
 
+  def contacts_cost_code
+    ContactsCostCode.new
+  end
+  module_function :contacts_cost_code
+
   def contacts_state
     ContactsState.new
   end
@@ -70,9 +79,9 @@ module SdcContacts
   end
   module_function :contacts_email_error
 
-  def contacts_grid_header
+  def contacts_column
     ContactsGridColumnBase.new
   end
-  module_function :contacts_grid_header
+  module_function :contacts_column
 
 end
