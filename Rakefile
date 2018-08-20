@@ -166,13 +166,15 @@ require 'cucumber/rake/task'
   end
 
 # END ENDICIA WEB REG
+
+# BEGIN SHIPWORKS WEB REG
   Cucumber::Rake::Task.new(:swwr_create_your_account_page_validation) do |t|
     t.profile = 'swwr_create_your_account_page_validation'
     t.cucumber_opts = "-p cuke_reports"
   end
-#BEGIN SHIPWORKS WEB REG
-
 # END SHIPWORKS WEB REG
+
+
 # END WEB DEV
 
 
