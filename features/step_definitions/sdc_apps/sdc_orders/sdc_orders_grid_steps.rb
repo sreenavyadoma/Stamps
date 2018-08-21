@@ -220,14 +220,14 @@ Then /^expect orders grid weight is (\d+) lb. (\d+) oz.$/ do |lb, oz|
   str = "#{lb} lbs. #{oz} oz."
   order_id = TestData.hash[:order_id].values.last
   result = SdcGrid.grid_column(:weight).data(order_id)
-  expect(result.strip).to eql str
+  expect(result).to eql str
 end
 
 Then /^expect orders grid pounds is (?:correct|(.*))$/ do |str|
   str ||= TestData.hash[:pounds]
   order_id = TestData.hash[:order_id].values.last
   result = SdcGrid.grid_column(:weight).lb(order_id)
-  expect(result.strip).to eql str.to_i
+  expect(result).to eql str.to_i
 end
 
 Then /^expect orders grid ounces is (?:correct|(.*))$/ do |str|

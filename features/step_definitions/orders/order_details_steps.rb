@@ -105,7 +105,7 @@ end
 Then /^expect exact address not found window title is (.+)$/ do |str|
   not_found = SdcOrders.modals.exact_address_not_found
   not_found.title.safe_wait_until_present(timeout: 3)
-  result =not_found.title.text_value
+  result = not_found.title.text_value
   expect(result).to eql(str)
 end
 
