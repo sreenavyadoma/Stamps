@@ -130,6 +130,7 @@ module TestSession
     end
     key(:window_size) { ENV['WINDOW_SIZE'] }
     key(:web_dev) { ENV['WEB_DEV'] }
+    key(:browser_mobile_emulator) { ENV['BROWSER_MOBILE_EMULATOR'] }
     key(:firefox_profile) { ENV['FIREFOX_PROFILE'] }
     key(:pw) { ENV['PW'] }
     key(:usr) { ENV['USR'] }
