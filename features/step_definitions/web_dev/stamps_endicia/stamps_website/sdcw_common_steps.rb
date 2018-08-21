@@ -17,7 +17,12 @@ Then /^SDCW: click stamps website logo$/ do
 end
 
 Then /^SDCW: click get started button$/ do
-  StampsWebsite.common_page.get_started.click!
+  common_page = StampsWebsite.common_page
+  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+    common_page.get_started_xs.click!
+  else
+   common_page.get_started.click!
+  end
   step 'pause for 2 second'
   case TestSession.env.url
     when :qacc
@@ -30,7 +35,7 @@ Then /^SDCW: click get started button$/ do
 end
 
 Then /^SDCW: click get log in button$/ do
-  StampsWebsite.common_page.log_in.click!
+    StampsWebsite.common_page.log_in.click!
   step 'pause for 2 second'
   case TestSession.env.url
     when :qacc
@@ -42,15 +47,53 @@ Then /^SDCW: click get log in button$/ do
   end
 end
 
-Then /^SDCW: click learn more->small office mailers link$/ do
-  common_page = StampsWebsite.common_page
-  if TestSession.env.local_browser == :edge
-    common_page.learn_more.click
-  else
-    common_page.learn_more.hover
-  end
+Then /^SDCW: click hamburger button$/ do
+  menu_xs = StampsWebsite.common_page.menu_xs
+  menu_xs.wait_until_present(timeout: 5)
+  att_value = menu_xs.attribute_value 'class'
+  menu_xs.click if att_value == 'navbar-toggle collapsed'
+  step 'pause for 1 second'
+  expect(menu_xs.attribute_value 'class').to eql('navbar-toggle')
+end
 
-  common_page.small_office_mailers.click
+Then /^SDCW: click hamburger --> get started link$/ do
+  step 'SDCW: click hamburger button'
+
+  StampsWebsite.common_page.get_started_xs.click
+  step 'pause for 2 second'
+  case TestSession.env.url
+    when :qacc
+      expect(SdcPage.browser.url).to eql('https://qa-registration.stamps.com/registration/#!&p=profile')
+    when :stg
+      expect(SdcPage.browser.url).to eql('https://staging-registration.stamps.com/registration/#!&p=profile')
+    when :prod
+      expect(SdcPage.browser.url).to eql('https://registration.stamps.com/registration/#!&p=profile')
+  end
+end
+
+Then /^SDCW: click hamburger --> learn more$/ do
+  step 'SDCW: click hamburger button'
+  menu_learn_more_xs = StampsWebsite.common_page.menu_learn_more_xs
+  att_value = menu_learn_more_xs.attribute_value 'class'
+  menu_learn_more_xs.click if att_value == 'list-group-item list-group-item-success collapsed'
+  step 'pause for 1 second'
+  expect(menu_learn_more_xs.attribute_value 'class').to eql('list-group-item list-group-item-success')
+end
+
+Then /^SDCW: click learn more --> small office mailers link$/ do
+
+  common_page = StampsWebsite.common_page
+  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+    step 'SDCW: click hamburger --> learn more'
+    common_page.small_office_mailers_xs.click
+  else
+    if TestSession.env.local_browser == :edge
+      common_page.learn_more.click
+    else
+      common_page.learn_more.hover
+    end
+    common_page.small_office_mailers.click
+  end
   step 'pause for 1 second'
   case TestSession.env.url
     when :qacc
@@ -62,14 +105,20 @@ Then /^SDCW: click learn more->small office mailers link$/ do
   end
 end
 
-Then /^SDCW: click learn more->online sellers link$/ do
+Then /^SDCW: click learn more --> online sellers link$/ do
+
   common_page = StampsWebsite.common_page
-  if TestSession.env.local_browser == :edge
-    common_page.learn_more.click
+  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+    step 'SDCW: click hamburger --> learn more'
+    common_page.online_sellers_xs.click
   else
-    common_page.learn_more.hover
+    if TestSession.env.local_browser == :edge
+      common_page.learn_more.click
+    else
+      common_page.learn_more.hover
+    end
+    common_page.online_sellers.click
   end
-  common_page.online_sellers.click
   step 'pause for 1 second'
 
   case TestSession.env.url
@@ -82,14 +131,19 @@ Then /^SDCW: click learn more->online sellers link$/ do
   end
 end
 
-Then /^SDCW: click learn more->warehouse shippers link$/ do
+Then /^SDCW: click learn more --> warehouse shippers link$/ do
   common_page = StampsWebsite.common_page
-  if TestSession.env.local_browser == :edge
-    common_page.learn_more.click
+  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+    step 'SDCW: click hamburger --> learn more'
+    common_page.warehouse_shippers_xs.click
   else
-    common_page.learn_more.hover
+    if TestSession.env.local_browser == :edge
+      common_page.learn_more.click
+    else
+      common_page.learn_more.hover
+    end
+    common_page.warehouse_shippers.click
   end
-  common_page.warehouse_shippers.click
   step 'pause for 1 second'
 
   case TestSession.env.url
@@ -102,15 +156,19 @@ Then /^SDCW: click learn more->warehouse shippers link$/ do
   end
 end
 
-Then /^SDCW: click learn more->corporate postage solutions link$/ do
+Then /^SDCW: click learn more --> corporate postage solutions link$/ do
   common_page = StampsWebsite.common_page
-
-  if TestSession.env.local_browser == :edge
-    common_page.learn_more.click
+  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+    step 'SDCW: click hamburger --> learn more'
+    common_page.corporate_postage_solutions_xs.click
   else
-    common_page.learn_more.hover
+    if TestSession.env.local_browser == :edge
+      common_page.learn_more.click
+    else
+      common_page.learn_more.hover
+    end
+    common_page.corporate_postage_solutions.click
   end
-  common_page.corporate_postage_solutions.click
   step 'pause for 1 second'
 
   case TestSession.env.url
