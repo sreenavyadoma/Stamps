@@ -3,6 +3,11 @@ require 'cucumber'
 require 'cucumber/rake/task'
 
 
+Cucumber::Rake::Task.new(:sdc_contacts_delete_single_from_top_navigation) do |t|
+  t.profile = 'sdc_contacts_delete_single_from_top_navigation'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 #BEGIN WEB DEV
   #BEGIN PARTNER PORTAL
   Cucumber::Rake::Task.new(:pp_log_in_page_validation) do |t|

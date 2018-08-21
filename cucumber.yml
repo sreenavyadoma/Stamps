@@ -584,8 +584,13 @@ sdcwr_membership_page_ui_validation:  --tags @sdcwr_membership_page_ui_validatio
 
 #Contacts
 #aloha: --tags @sdc_contacts_delete_multiple_from_top_navigation URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
-#aloha: --tags @sdc_contacts_delete_single_from_top_navigation URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
+aloha: --tags @sdc_contacts_delete_single_from_top_navigation URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
 #aloha: --tags @sdc_contacts_bvt_2 URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
 #aloha: --tags @sdc_contacts_bvt_1 URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
+#aloha: --tags @sdc_contact_orders_print_shipping_label_contact_saves URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false WEB_APP=orders USR=tcs_core002 PW=password1
+#print_dialog_printing_on_5x8_shipping_label: --tags @print_dialog_printing_on_5x8_shipping_label --guess  HEALTHCHECK=true WEB_APP=orders PRINTER=factory
 #aloha: --tags @sdc_contacts_delete_single_from_details_menu URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
-aloha: --tags @sdc_contacts_edit_existing_contacts_detail_name_expand URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
+#aloha: --tags @sdc_contacts_edit_existing_contacts_detail_name_expand URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
+#aloha: --tags @sdc_contacts_show_all_columns URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
+
+sdc_contacts_delete_single_from_top_navigation: --tags @sdc_contacts_delete_single_from_top_navigation URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
