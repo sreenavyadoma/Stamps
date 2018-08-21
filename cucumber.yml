@@ -1,5 +1,5 @@
 
-default: --backtrace --profile local_mobile
+default: --backtrace --profile kaushal_cc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -15,12 +15,12 @@ sauce_mobile: --tags @mail_authentication_mobile URL=stg USR=sauce0020 PW=pass11
 sauce_browser: --tags @bvt_shipstation_updates_domestic URL=cc USR=cctruer0u PW=pass111 SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=firefox SELENIUM_VERSION=latest SELENIUM_PLATFORM='Mac 10.12' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443 TUNNEL_IDENTIFIER=rob LOG_LEVEL=info SCREEN_RESOLUTION=1152x864
 
 #mhossain1_cc: --tags @registration_normal_workflow WEB_APP=orders JENKINS=true URL=cc LOG_LEVEL=info BROWSER=ff MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
-#mhossain1_cc: --tags @pp_header_favicons_browser_mobile JENKINS=true URL=qacc BROWSER_MOBILE_EMULATOR=gc,'iPhone X' USR=wteam@stamps.com PW=password1
+#mhossain1_cc: --tags @pp_header_favicons_browser_mobile JENKINS=true URL=qacc BROWSER=gc BROWSER_MOBILE_EMULATOR=gc,'iPhone X' USR=wteam@stamps.com PW=password1 WEB_DEV=true
 #mhossain1_cc: --tags @pp_log_in_page_validation JENKINS=true URL=stg BROWSER=ff USR=wteam@stamps.com PW=password1 FIREFOX_PROFILE=true WEB_DEV=true
 
-mhossain1_cc: --tags @ewwr_session_state_data_validation JENKINS=true URL=stg BROWSER=chrome FIREFOX_PROFILE=true WEB_DEV=true LOG_LEVEL=info #USR=qawebdevelopment@stamps.com PW=password1
+mhossain1_cc: --tags @sdcw_postage_online_page_validation_mobile JENKINS=true URL=stg BROWSER=ff BROWSER=gc BROWSER_MOBILE_EMULATOR=gc,'iPhone X' FIREFOX_PROFILE=true WEB_DEV=true LOG_LEVEL=info #USR=qawebdevelopment@stamps.com PW=password1
 
-kaushal_cc: --tags @ewwr_security_question_page_validation JENKINS=true URL=stg BROWSER=edge FIREFOX_PROFILE=true WEB_DEV=true #USR=qawebdevelopment@stamps.com PW=password1
+kaushal_cc: --tags @sdc_website_homepage JENKINS=true URL=stg BROWSER=ff FIREFOX_PROFILE=true WEB_DEV=true #USR=qawebdevelopment@stamps.com PW=password1
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess BROWSER=ff MAX_WINDOW=false
 
@@ -431,8 +431,7 @@ bugs_stamps_print: --tags @bugs_stamps_print --guess
 bugs_stamps: --tags @bugs_stamps --guess 
 
 # MAIL
-mail_authentication: --tags @mail_authentication --guess
-mail_authentication_mobile: --tags @mail_authentication_mobile --guess
+mail_authentication: --tags @mail_authentication --guess 
 mail_bvt_ship_date: --tags @mail_bvt_ship_date --guess 
 mail_bvt_address_cleansing: --tags @mail_bvt_address_cleansing --guess 
 mail_bvt_contacts: --tags @mail_bvt_contacts --guess 
@@ -555,6 +554,8 @@ ewwr_profile_page_ui_validation: --tags @ewwr_profile_page_ui_validation --guess
 ewwr_membership_page_ui_validation: --tags @ewwr_membership_page_ui_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
 ewwr_membership_page_addr_validation: --tags @ewwr_membership_page_addr_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
 ewwr_membership_page_username_taken_validation: --tags @ewwr_membership_page_username_taken_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
+ewwr_security_question_page_validation: --tags @ewwr_security_question_page_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
 ewwr_offer_707_workflow: --tags @ewwr_offer_707_workflow --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
 ewwr_session_state_data_validation: --tags @ewwr_session_state_data_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
-ewwr_security_question_page_validation: --tags @ewwr_security_question_page_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
+#Shipworks WebReg
+swwr_create_your_account_page_validation: --tags @swwr_create_your_account_page_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info

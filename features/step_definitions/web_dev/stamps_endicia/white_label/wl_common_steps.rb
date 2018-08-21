@@ -106,6 +106,7 @@ Then /^WL: navigates to default registration page for endicia with the following
   EWWebsite.visit
 
   SdcLogger.info "Sourceid = #{source_id}"
+  SdcLogger.info "Sourceid = #{offer_id}"
 
   TestData.hash[:source_id] = source_id
   TestData.hash[:content] = content
@@ -252,7 +253,7 @@ Then /^WL: click security questions get started button$/ do
   step 'pause for 2 seconds'
   sq_get_started = WhiteLabel.common_page.sq_get_started
   sq_get_started.wait_until_present(timeout: 2)
-  sq_get_started.click!
+  sq_get_started.click
   step 'pause for 2 seconds'
 end
 
@@ -467,6 +468,12 @@ end
 
 Then /^WL: expect registration navigation bar header text exists$/ do
   expect(WhiteLabel.common_page.header_text).to be_present
+end
+
+Then /^WL: expect registration navigation bar get started button exists$/ do
+  get_started = WhiteLabel.common_page.get_started_btn
+  get_started.wait_until_present(timeout: 2)
+  expect(get_started).to be_present
 end
 
 ############ Footer ###########
