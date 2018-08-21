@@ -128,7 +128,7 @@ stgmacff15 mac_firefox » bvt_shipstation_updates_international
 stgmacff16 ok
 stgmacff18 ok
 stgmacff19 ok
-stgmacff20 ok
+stgmacff20 mail_authentication_iphonex
 
 
 =================================================
