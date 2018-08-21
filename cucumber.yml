@@ -14,7 +14,7 @@ sauce_mobile: --tags @mail_authentication_mobile URL=stg USR=sauce0020 PW=pass11
 sauce_browser: --tags @bvt_new_order URL=cc USR=cctruer0u PW=pass111 SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=firefox SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 2008' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443 TUNNEL_IDENTIFIER=rob LOG_LEVEL=info
 
 #mhossain1_cc: --tags @registration_normal_workflow WEB_APP=orders JENKINS=true URL=cc LOG_LEVEL=info BROWSER=ff MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
-mhossain1_cc: --tags @pp_header_favicons_browser_mobile JENKINS=true URL=qacc BROWSER_MOBILE_EMULATOR=gc,'iPhone X' USR=wteam@stamps.com PW=password1 WEB_DEV=true
+mhossain1_cc: --tags @pp_header_favicons_browser_mobile JENKINS=true URL=qacc BROWSER=gc BROWSER_MOBILE_EMULATOR=gc,'iPhone X' USR=wteam@stamps.com PW=password1 WEB_DEV=true
 #mhossain1_cc: --tags @pp_log_in_page_validation JENKINS=true URL=stg BROWSER=ff USR=wteam@stamps.com PW=password1 FIREFOX_PROFILE=true WEB_DEV=true
 
 #mhossain1_cc: --tags @sdcw_postage_online_page_validation JENKINS=true URL=stg BROWSER=ff FIREFOX_PROFILE=true WEB_DEV=true LOG_LEVEL=info #USR=qawebdevelopment@stamps.com PW=password1

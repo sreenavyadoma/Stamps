@@ -3,11 +3,13 @@ module StampsWebsite
     #stamps website
     page_object(:stamps_logo) {{id: 'sdc-logo'}}
     button(:get_started) { { class: ['btn btn-success btn-xs register'] } }
+    button(:log_in) { { class: ['btn btn-info btn-xs login'] } }
     page_object(:learn_more) { {class: ['dropdown-toggle']} }
     page_objects(:small_office_mailers, index: 0) { {xpath: '//a[contains(text(),"Small Office Mailers")]' } }
     page_objects(:online_sellers, index: 0) { {xpath: '//a[contains(text(),"Online Sellers")]' } }
     page_objects(:warehouse_shippers, index: 0) { {xpath: '//a[contains(text(),"Warehouse Shippers")]' } }
     page_objects(:corporate_postage_solutions, index: 0) { {xpath: '//a[contains(text(),"Corporate Postage Solutions")]' } }
+    page_object(:faq) { {xpath: '//a[contains(text(),"FAQ")]'} }
 
 
     def dropdown(str, name = :element)

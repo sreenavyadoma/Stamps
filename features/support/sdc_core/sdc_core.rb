@@ -280,8 +280,23 @@ module TestSession
       }
       kill('taskkill /im chrome.exe /f')
       if env.web_dev
-        @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, options: { prefs: prefs }, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
-        Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
+          if env.browser_mobile_emulator
+            kill('taskkill /im chrome.exe /f')
+            arg_arr = env.browser_mobile_emulator.split(',')
+            if arg_arr.size != 2
+              raise ArgumentError, "Wrong number of arguments. Expected 2, Got #{arg_arr.size}"
+            end
+            browser = arg_arr[0]
+            device_name = arg_arr[1]
+            driver = SdcTest.browser_emulator_options(browser, device_name)
+            @driver = SdcDriverDecorator.new(Watir::Browser.new(driver, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+            @driver.driver.manage.timeouts.page_load = 60
+
+            Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download/") if TestSession.env.web_dev
+          else
+            @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, options: { prefs: prefs }, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+            Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
+          end
       else
         @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
       end
@@ -303,21 +318,6 @@ module TestSession
       @driver = SdcDriverDecorator.new(Watir::Browser.new(:safari, technology_preview: true))
     else
       raise ArgumentError, "Invalid browser selection. #{env.local_browser}"
-    end
-
-    if env.browser_mobile_emulator
-      kill('taskkill /im chrome.exe /f')
-      arg_arr = env.browser_mobile_emulator.split(',')
-      if arg_arr.size != 2
-        raise ArgumentError, "Wrong number of arguments. Expected 2, Got #{arg_arr.size}"
-      end
-      browser = arg_arr[0]
-      device_name = arg_arr[1]
-      driver = browser_emulator_options(browser, device_name)
-      @driver = SdcDriverDecorator.new(Watir::Browser.new(driver, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
-      @driver.driver.manage.timeouts.page_load = 60
-
-      Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download/") if TestSession.env.web_dev
     end
 
     if env.window_size
