@@ -239,8 +239,7 @@ module TestSession
   module_function :sauce_browser
 
   def local_browser
-
-      # Watir.always_locate = true
+          # Watir.always_locate = true
     case(env.local_browser)
 
     when :edge
@@ -302,22 +301,23 @@ module TestSession
     when :safari
       kill("killall 'Safari Technology Preview'")
       @driver = SdcDriverDecorator.new(Watir::Browser.new(:safari, technology_preview: true))
+    else
+      raise ArgumentError, "Invalid browser selection. #{env.local_browser}"
+    end
 
-    when :browser_mobile_emulator
+    if env.browser_mobile_emulator
       kill('taskkill /im chrome.exe /f')
-      arg_arr = SdcEnv.browser_mobile_emulator.split(',')
+      arg_arr = env.browser_mobile_emulator.split(',')
       if arg_arr.size != 2
         raise ArgumentError, "Wrong number of arguments. Expected 2, Got #{arg_arr.size}"
       end
       browser = arg_arr[0]
       device_name = arg_arr[1]
       driver = browser_emulator_options(browser, device_name)
-      SdcPage.browser = SdcDriverDecorator.new(Watir::Browser.new(driver, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
-      SdcPage.browser.driver.manage.timeouts.page_load = 12
+      @driver = SdcDriverDecorator.new(Watir::Browser.new(driver, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+      @driver.driver.manage.timeouts.page_load = 60
 
       Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download/") if TestSession.env.web_dev
-    else
-      raise ArgumentError, "Invalid browser selection. #{env.local_browser}"
     end
 
     if env.window_size
