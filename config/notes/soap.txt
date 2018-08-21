@@ -115,6 +115,30 @@ sauce0018
 sauce0019
 sauce0020
 
+MacOS Firefox
+stgmacff1 ok
+stgmacff2 ok
+stgmacff3 x
+stgmacff4 ok
+stgmacff5 ok
+stgmacff6 x
+stgmacff7 x
+stgmacff8 ok
+stgmacff9 ok
+stgmacff10 ok
+stgmacff11 x
+stgmacff12 x
+stgmacff13 x
+stgmacff14 ok
+stgmacff15 ok
+stgmacff16 ok
+stgmacff17 x
+stgmacff18 ok
+stgmacff19 ok
+stgmacff20 ok
+stgmacff21 x
+
+
 =================================================
 
 OS X Latest Chrome QACC

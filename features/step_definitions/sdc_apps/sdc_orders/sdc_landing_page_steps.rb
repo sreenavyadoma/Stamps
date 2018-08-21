@@ -106,12 +106,11 @@ Then /^loading orders...$/ do
   SdcLogger.debug 'loading_orders.safe_wait_until_present(timeout: 30)...'
   loading_orders.safe_wait_until_present(timeout: 30)
   SdcLogger.debug 'loading_orders.safe_wait_while_present(timeout: 60)...'
-  loading_orders.safe_wait_while_present(timeout: 60)
+  loading_orders.safe_wait_while_present(timeout: 90)
   SdcLogger.debug 'SdcGrid.body.safe_wait_until_present(timeout: 60)...'
-  SdcGrid.body.safe_wait_until_present(timeout: 60)
+  SdcGrid.body.safe_wait_until_present(timeout: 90)
   SdcLogger.debug 'expect(toolbar.add).to be_present...'
   expect(toolbar.add).to be_present
-  expect(SdcOrders.loading_orders.text).not_to eql('') if SdcOrders.loading_orders.present?
   SdcLogger.debug 'loading orders... done!'
 end
 
