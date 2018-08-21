@@ -3,8 +3,13 @@ module StampsWebsite
     #stamps website
     page_object(:stamps_logo) {{id: 'sdc-logo'}}
     button(:get_started) { { class: ['btn btn-success btn-xs register'] } }
-    page_object(:usps_logo) {{xpath: '//div[@id="nav-usps-vendor"]'}}
-    page_object(:usps_logo) {{xpath: '//div[@id="nav-usps-vendor"]'}}
+    #page_object(:usps_logo) {{xpath: '//div[@id="nav-usps-vendor"]'}}
+    #page_object(:usps_logo) {{xpath: '//div[@id="nav-usps-vendor"]'}}
+
+    #footer
+    page_objects(:usps_logo,  index: 1) {{xpath: '//figure[@id="usps-logo-words"]/img'}}
+    page_objects(:usps_logo_caption,  index: 1) {{xpath: '//figure[@id="usps-logo-words"]/figcaption'}}
+    page_object(:copyright) { {xpath: '//p[@class="copyright hidden-xs"]/a'} }
   end
 
   class SDCWWebsite <SdcPage
