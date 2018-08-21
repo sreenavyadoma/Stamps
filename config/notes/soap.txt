@@ -116,27 +116,19 @@ sauce0019
 sauce0020
 
 MacOS Firefox
-stgmacff1 ok
-stgmacff2 ok
-stgmacff3 x
-stgmacff4 ok
-stgmacff5 ok
-stgmacff6 x
-stgmacff7 x
-stgmacff8 ok
-stgmacff9 ok
-stgmacff10 ok
-stgmacff11 x
-stgmacff12 x
-stgmacff13 x
-stgmacff14 ok
-stgmacff15 ok
+stgmacff1 mac_firefox » bvt_address_cleansing
+stgmacff2 mac_firefox » bvt_ambigious_address
+stgmacff4 mac_firefox » bvt_international_shipping
+stgmacff5 mac_firefox » bvt_new_order
+stgmacff8 mac_firefox » bvt_orders_ui_validation
+stgmacff9 mac_firefox » bvt_shipping_address_management
+stgmacff10 mac_firefox » bvt_shipstation_search
+stgmacff14 mac_firefox » bvt_shipstation_updates_domestic
+stgmacff15 mac_firefox » bvt_shipstation_updates_international
 stgmacff16 ok
-stgmacff17 x
 stgmacff18 ok
 stgmacff19 ok
 stgmacff20 ok
-stgmacff21 x
 
 
 =================================================

@@ -87,17 +87,17 @@ Then /^set order details ship-to ambiguous address to$/ do |table|
   address = TestHelper.format_address(table.hashes.first)
   order_details = SdcOrders.order_details
   exact_address_not_found = SdcOrders.modals.exact_address_not_found
-  order_details.ship_to.domestic.address.set(address)
-  order_details.weight_label.double_click
-  order_details.service_label.double_click
-  order_details.reference_no.double_click
-  order_details.ship_to_label.double_click
-  unless  exact_address_not_found.title.present?
+  5.times do
     order_details.ship_to.domestic.address.set(address)
+    order_details.weight_label.safe_double_click
+    order_details.service_label.safe_double_click
+    order_details.reference_no.safe_double_click
+    order_details.ship_to_label.safe_double_click
+    order_details.order_id.double_click
+    order_details.title.double_click
+    exact_address_not_found.title.safe_wait_until_present(timeout: 1)
+    break if exact_address_not_found.title.present?
   end
-  order_details.order_id.double_click
-  order_details.title.double_click
-  exact_address_not_found.title.safe_wait_until_present(timeout: 3)
   step 'expect exact address not found window title is Exact Address Not Found'
   TestData.hash[:ship_to_domestic] = address
 end
