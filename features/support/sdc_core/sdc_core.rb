@@ -281,7 +281,6 @@ module TestSession
       kill('taskkill /im chrome.exe /f')
       if env.web_dev
           if env.browser_mobile_emulator
-            kill('taskkill /im chrome.exe /f')
             arg_arr = env.browser_mobile_emulator.split(',')
             if arg_arr.size != 2
               raise ArgumentError, "Wrong number of arguments. Expected 2, Got #{arg_arr.size}"
