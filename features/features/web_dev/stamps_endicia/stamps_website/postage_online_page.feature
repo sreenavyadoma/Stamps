@@ -9,5 +9,7 @@ Feature: Stamps Website: Postage Online Page
     Then SDCW: navigate back
     Then SDCW: click learn more->small office mailers link
     Then SDCW: navigate back
+    Then SDCW: click learn more->online sellers link
+    Then SDCW: navigate back
 
 
