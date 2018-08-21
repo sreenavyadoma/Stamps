@@ -1,4 +1,4 @@
-Feature: Stamps Website: Home Page
+Feature: Stamps Website: Header Footer
 
   Background:
     Given Start test driver
@@ -26,9 +26,3 @@ Feature: Stamps Website: Home Page
     Then SDCW: click on see offer details link
 
 
-    Then SDCW: expect stamps website footer usps logo exists
-    Then SDCW: expect stamps website footer usps logo words is Stamps.com is an independent vendor of the USPS.
-    Then SDCW: expect stamps website footer copyright exists
-    Then SDCW: expect stamps website footer copyright text is Copyright © 1998-2018 Stamps.com Inc.
-    Then SDCW: click on copyright link
-    Then SDCW: navigate back

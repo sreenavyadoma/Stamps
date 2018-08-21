@@ -220,6 +220,10 @@ Then /^SDCW: expect stamps website footer copyright text is (.*)$/ do |str|
   expect(copyright.text_value.strip).to eql(str)
 end
 
+Then /^SDCW: page redirects to (.*)$/ do |str|
+  sdcw_page = TestSession.env.url
+end
+
 Then /^SDCW: click on copyright link$/ do
-  StampsWebsite.common_page.copyright.clicksdc
+  StampsWebsite.common_page.copyright.click
 end
