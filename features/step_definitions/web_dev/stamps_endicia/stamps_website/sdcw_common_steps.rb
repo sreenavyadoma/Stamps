@@ -192,6 +192,7 @@ Then /^SDCW: click FAQ$/ do
     when :prod
       expect(SdcPage.browser.url).to eql('https://stamps.com/postage-online/faqs/')
   end
+end
 
 
 ########### footer ############
@@ -217,4 +218,8 @@ end
 Then /^SDCW: expect stamps website footer copyright text is (.*)$/ do |str|
   copyright = StampsWebsite.common_page.copyright
   expect(copyright.text_value.strip).to eql(str)
+end
+
+Then /^SDCW: click on copyright link$/ do
+  StampsWebsite.common_page.copyright.clicksdc
 end

@@ -24,8 +24,6 @@ module StampsWebsite
     def dropdown(str, name = :element)
       page_object(name) { {xpath: "//span[contains(text(), \" #{str} \")]" } }
     end
-    #page_object(:usps_logo) {{xpath: '//div[@id="nav-usps-vendor"]'}}
-    #page_object(:usps_logo) {{xpath: '//div[@id="nav-usps-vendor"]'}}
 
     #footer
     page_objects(:usps_logo,  index: 1) {{xpath: '//figure[@id="usps-logo-words"]/img'}}
