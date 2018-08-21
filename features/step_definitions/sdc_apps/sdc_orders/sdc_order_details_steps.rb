@@ -269,7 +269,7 @@ Then /^expect order details ship-to phone is (?:correct|(.*))$/ do |str|
   domestic.phone.scroll_into_view
   domestic.phone.wait_until_present(timeout: 10)
   result = domestic.phone.text_value
-  expect(result.strip).to eql(str)
+  expect(result).to eql(str)
 end
 
 Then /^expect order details ship-to email is (?:correct|(.*))$/ do |str|
@@ -279,7 +279,7 @@ Then /^expect order details ship-to email is (?:correct|(.*))$/ do |str|
   domestic.email.scroll_into_view
   domestic.email.wait_until_present(timeout: 10)
   result = domestic.email.text_value
-  expect(result.strip).to eql(str)
+  expect(result).to eql(str)
 end
 
 Then /^[Oo]n [Oo]rder [Dd]etails form, [Hh]ide [Ii]nternational [Ss]hip-[Tt]o fields$/ do
