@@ -2,8 +2,6 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
-
-#BEGIN WEB DEV
 #BEGIN PARTNER PORTAL
 Cucumber::Rake::Task.new(:pp_log_in_page_validation) do |t|
   t.profile = 'pp_log_in_page_validation'
