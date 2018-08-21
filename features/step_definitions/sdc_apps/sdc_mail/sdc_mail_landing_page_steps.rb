@@ -52,7 +52,7 @@ end
 Then /^mobile: sign-in to mail as (.+)\/(.+)$/ do |usr, pw|
   modal = SdcWebsite.navigation.mail_sign_in_modal
   modal.hamburger_menu.click
-  modal.sign_in.wait_until_present(timeout: 5)
+  modal.sign_in.safe_wait_until_present(timeout: 5)
   modal.sign_in.click
   step "sign-in to orders with #{usr}/#{pw}"
 end
