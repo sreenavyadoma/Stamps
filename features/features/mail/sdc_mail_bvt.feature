@@ -103,7 +103,7 @@ Feature:  Mail BVT
   @mail_authentication_mobile
   Scenario: Mail - Authentication
     Then sign-in to mail
-    #Then Sign out
+    Then Sign out
 
   @bvt_mail_piece_validation
   Scenario: Stamps B-Series

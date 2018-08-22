@@ -45,7 +45,7 @@ end
 
 
 Then /^sign out$/ do
-
+  SdcWebsite.navigation.user_drop_down.signed_in_user
 end
 
 Then /^wait for js to stop$/ do

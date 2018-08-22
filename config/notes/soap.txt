@@ -26,8 +26,8 @@ bvtstgw10gc6 win10_chrome_beta » bvt_shipstation_search
 bvtstgw10gc7 win10_chrome_beta » bvt_shipstation_updates_domestic
 bvtstgw10gc8 win10_chrome_beta » bvt_shipstation_updates_international
 bvtstgw10gc9 win10_chrome_beta » bvt_shipping_address_management
-bvtstgw10gc10 win10_chrome_beta » bvt_orders_ship_date
-bvtstgw10gc11
+bvtstgw10gc10
+bvtstgw10gc11 win10_chrome_beta » bvt_orders_ship_date
 bvtstgw10gc12
 bvtstgw10gc13
 bvtstgw10gc14
@@ -70,7 +70,7 @@ bvtstgw7ff14
 bvtstgw7ff15
 bvtstgw7ff16
 bvtstgw7ff17
-bvtstgw7ff18
+bvtstgw7ff18 rob
 
 
 Win7 Internet Explorer Staging

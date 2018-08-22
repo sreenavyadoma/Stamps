@@ -1,7 +1,8 @@
 module SdcNavigation
   class SignedInUser < SdcPage
-    page_object(:signed_in_user, tag: :a) { { id: 'username' } }
-    page_object(:sign_out_link, tag: :a) { { id: 'signOutLink' } }
+    page_object(:signed_in_user) { { xpath: '//span[@id="userNameText"]' } }
+    page_object(:browser_sign_out_link) { { xpath: '//*[contains(@class, "hide-on-device")]//a[@id="signOutLink"]' } }
+    page_object(:device_sign_out_link) { { xpath: '//*[contains(@class, "device-nav")]//a[@id="signOutLink"]' } }
   end
 
   class SignedInUserTablet < SdcPage
