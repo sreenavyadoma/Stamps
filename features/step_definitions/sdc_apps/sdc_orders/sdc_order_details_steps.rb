@@ -768,6 +768,8 @@ Then /^set order details reference number to (?:a random string|(.*))$/ do |str|
   order_details.reference_no.scroll_into_view
   order_details.reference_no.set(str)
   order_details.reference_no.click
+  order_detailsreference_no_label.click
+  order_detailsreference_no_label.click
   TestData.hash[:reference_no] = str
   step 'Save Order Details data'
 end
