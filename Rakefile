@@ -1354,6 +1354,7 @@ Cucumber::Rake::Task.new(:rates_orders_pm_comm_plus_zone_9) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+# todo - complete rates tasks for PMI & PMEI
 #END RATES ORDERS
 
 Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_8x11_fcm_psg) do |t|
