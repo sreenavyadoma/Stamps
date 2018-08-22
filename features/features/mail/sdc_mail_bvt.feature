@@ -103,7 +103,7 @@ Feature:  Mail BVT
   @mail_authentication_mobile
   Scenario: Mail - Authentication
     Then sign-in to mail
-    Then Sign out
+    Then sign out
 
   @bvt_mail_piece_validation
   Scenario: Stamps B-Series
@@ -118,7 +118,7 @@ Feature:  Mail BVT
     Then click mail statusbar print
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
-    Then Sign out
+    Then sign out
 
   @rob_cccc
   Scenario: Address Cleansing
@@ -135,7 +135,7 @@ Feature:  Mail BVT
 #    Then set print form ounces to 1
 #    Then select print form service PM Package
 #    Then expect Print form Domestic Address field displays Address Cleansing, BVT, 1350 Market Street, San Francisco, CA 94102-5401
-    Then Sign out
+    Then sign out
 
   @mail_bvt_stamps
   Scenario: Mail BVT-Stamps

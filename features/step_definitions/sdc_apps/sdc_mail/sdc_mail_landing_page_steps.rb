@@ -24,6 +24,8 @@ Then /^sign-in to mail$/ do
   step 'visit Mail'
   usr = TestSession.env.usr
   pw = TestSession.env.pw
+  TestData.hash[:username] = usr
+  TestData.hash[:password] = pw
   if TestSession.env.mobile_device
     step "mobile: sign-in to mail as #{usr}/#{pw}"
   elsif SdcPage.browser.window.size.width < 1195
@@ -33,9 +35,21 @@ Then /^sign-in to mail$/ do
     step "browser: sign-in to mail as #{usr}/#{pw}"
     step 'mail rating error'
   end
+end
 
-  TestData.hash[:username] = usr
-  TestData.hash[:password] = pw
+Then /^sign out$/ do
+  if TestSession.env.browser_test
+    user_drop_down = SdcWebsite.navigation.user_drop_down
+    landing_page = SdcWebsite.landing_page
+    4.times do
+      user_drop_down.signed_in_user.hover
+      user_drop_down.sign_out_link.safe_wait_until_present(timeout: 1)
+      user_drop_down.sign_out_link.click
+      landing_page.username.safe_wait_until_present(timeout: 2)
+      break if landing_page.username.present?
+    end
+    landing_page.username.safe_wait_until_present(timeout: 2)
+  end
 end
 
 Then /^browser: sign-in to mail as (.+)\/(.+)$/ do |usr, pw|
@@ -77,8 +91,9 @@ Then /^close whats new modal in mail$/ do
 end
 
 Then /^expect user is signed in$/ do
-  SdcWebsite.navigation.user_drop_down.signed_in_user.wait_until_present(timeout: 15, interval: 0.2)
-  expect(SdcWebsite.navigation.user_drop_down.signed_in_user.text_value).to include(TestData.hash[:username])
+  user_drop_down = SdcWebsite.navigation.user_drop_down
+  user_drop_down.signed_in_user.wait_until_present(timeout: 15, interval: 0.2)
+  expect(user_drop_down.signed_in_user.text_value).to eql TestData.hash[:username]
 end
 
 Then /^set Mail username(?: to (.+)|)$/ do |usr|

@@ -3,6 +3,13 @@ module SdcNavigation
     page_object(:signed_in_user) { { xpath: '//span[@id="userNameText"]' } }
     page_object(:browser_sign_out_link) { { xpath: '//*[contains(@class, "hide-on-device")]//a[@id="signOutLink"]' } }
     page_object(:device_sign_out_link) { { xpath: '//*[contains(@class, "device-nav")]//a[@id="signOutLink"]' } }
+    page_object(:sign_out_link) do
+      if TestSession.env.mobile_device || SdcPage.browser.window.size.width < 1195
+        { xpath: '//*[contains(@class, "device-nav")]//a[@id="signOutLink"]' }
+      else
+        { xpath: '//*[contains(@class, "hide-on-device")]//a[@id="signOutLink"]' }
+      end
+    end
   end
 
   class SignedInUserTablet < SdcPage
