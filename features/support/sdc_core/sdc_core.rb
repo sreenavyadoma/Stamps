@@ -130,7 +130,7 @@ module TestSession
     end
     key(:window_size) { ENV['WINDOW_SIZE'] }
     key(:web_dev) { ENV['WEB_DEV'] }
-    key(:browser_mobile_emulator) { ENV['BROWSER_MOBILE_EMULATOR'] }
+    key(:browser_mobile_emulator) { ENV['BROWSER_MOBILE_EMULATOR']}
     key(:firefox_profile) { ENV['FIREFOX_PROFILE'] }
     key(:pw) { ENV['PW'] }
     key(:usr) { ENV['USR'] }
@@ -315,6 +315,7 @@ module TestSession
     when :safari
       kill("killall 'Safari Technology Preview'")
       @driver = SdcDriverDecorator.new(Watir::Browser.new(:safari, technology_preview: true))
+
     else
       raise ArgumentError, "Invalid browser selection. #{env.local_browser}"
     end

@@ -20,6 +20,8 @@ module StampsWebsite
     page_objects(:online_sellers_xs, index: 1) { {xpath: '//a[contains(text(),"Online Sellers")]' } }
     page_objects(:warehouse_shippers_xs, index: 1) { {xpath: '//a[contains(text(),"Warehouse Shippers")]' } }
     page_objects(:corporate_postage_solutions_xs, index: 1) { {xpath: '//a[contains(text(),"Corporate Postage Solutions")]' } }
+    page_objects(:corporate_postage_solutions_xs, index: 0) { {xpath: '//a[contains(text(),"Customer Support")]' } }
+
 
     def dropdown(str, name = :element)
       page_object(name) { {xpath: "//span[contains(text(), \" #{str} \")]" } }
