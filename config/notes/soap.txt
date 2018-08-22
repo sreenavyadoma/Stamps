@@ -1,39 +1,243 @@
-cinoauthstg001
-sauce0001 - sdcwebclient bvt_shipstation_updates_domestic
-sauce0002 - sdcwebclient authentication
-sauce0003 - mobile_orders_bvt_stg/job/authentication/
-sauce0004
-sauce0005 -
-sauce0006
-sauce0007
-sauce0008
-sauce0009
-sauce0010 - bvt_international_shipping_win10_chrome_beta
-sauce0011
+Mac Latest Chrome Staging
+bvtstgosxgc1 rob cukes
+bvtstgosxgc2 mac_chrome_bvt_shipping_address_management
+bvtstgosxgc3 mac_chrome » bvt_address_cleansing
+bvtstgosxgc4
+bvtstgosxgc5
+bvtstgosxgc6
+bvtstgosxgc7
+bvtstgosxgc8
+bvtstgosxgc9
+bvtstgosxgc10
+bvtstgosxgc11
+bvtstgosxgc12
+bvtstgosxgc13
+bvtstgosxgc14
+bvtstgosxgc15
+bvtstgosxgc16
+
+Win10 Chrome Beta Staging
+bvtstgw10gc1 win10_chrome_beta » bvt_address_cleansing
+bvtstgw10gc2 win10_chrome_beta » bvt_ambigious_address
+bvtstgw10gc3 win10_chrome_beta » bvt_international_shipping
+bvtstgw10gc4 win10_chrome_beta » bvt_new_order
+bvtstgw10gc5 win10_chrome_beta » bvt_orders_ui_validation
+bvtstgw10gc6 win10_chrome_beta » bvt_shipstation_search
+bvtstgw10gc7 win10_chrome_beta » bvt_shipstation_updates_domestic
+bvtstgw10gc8 win10_chrome_beta » bvt_shipstation_updates_international
+bvtstgw10gc9 win10_chrome_beta » bvt_shipping_address_management
+bvtstgw10gc10
+bvtstgw10gc11
+bvtstgw10gc12
+bvtstgw10gc13
+bvtstgw10gc14
+bvtstgw10gc15
+bvtstgw10gc16
+
+Win10 Latest MS Edge Staging
+bvtstgw10edg1 win10_edge » bvt_address_cleansing
+bvtstgw10edg2 win10_edge » bvt_ambigious_address
+bvtstgw10edg3 win10_edge » bvt_international_shipping
+bvtstgw10edg4 win10_edge » bvt_new_order
+bvtstgw10edg5 win10_edge » bvt_orders_ui_validation
+bvtstgw10edg6 win10_edge » bvt_shipping_address_management
+bvtstgw10edg7 win10_edge » bvt_shipstation_search
+bvtstgw10edg8 win10_edge » bvt_shipstation_updates_domestic
+bvtstgw10edg9 win10_edge » bvt_shipstation_updates_international
+bvtstgw10edg10
+bvtstgw10edg11
+bvtstgw10edg12
+bvtstgw10edg13
+bvtstgw10edg14
+bvtstgw10edg15
+bvtstgw10edg16
+
+Win7 Latest Firefox Staging
+bvtstgw7ff1 win7_firefox » bvt_address_cleansing
+bvtstgw7ff2 win7_firefox » bvt_ambigious_address
+bvtstgw7ff3 win7_firefox » bvt_international_shipping
+bvtstgw7ff4 win7_firefox » bvt_new_order
+bvtstgw7ff5 win7_firefox » bvt_orders_ui_validation
+bvtstgw7ff6 win7_firefox » bvt_shipping_address_management
+bvtstgw7ff7 win7_firefox » bvt_shipstation_search
+bvtstgw7ff8 win7_firefox » bvt_shipstation_updates_domestic
+bvtstgw7ff9 win7_firefox » bvt_shipstation_updates_international
+bvtstgw7ff10
+bvtstgw7ff11
+bvtstgw7ff12
+bvtstgw7ff13
+bvtstgw7ff14
+bvtstgw7ff15
+bvtstgw7ff16
+bvtstgw7ff17
+bvtstgw7ff18
+
+
+Win7 Internet Explorer Staging
+bvtstgw7ie1
+bvtstgw7ie2
+bvtstgw7ie3
+bvtstgw7ie4
+bvtstgw7ie5
+bvtstgw7ie6
+bvtstgw7ie7
+bvtstgw7ie8
+bvtstgw7ie9
+bvtstgw7ie10
+bvtstgw7ie11
+bvtstgw7ie12
+bvtstgw7ie13
+bvtstgw7ie14
+bvtstgw7ie15
+bvtstgw7ie16
+bvtstgw7ie17
+bvtstgw7ie18
+bvtstgw7ie19
+bvtstgw7ie20
+sauce0001 win7_internet_explorer » bvt_address_cleansing
+sauce0002 win7_internet_explorer » bvt_ambigious_address
+sauce0003 win7_internet_explorer » bvt_international_shipping
+sauce0004 win7_internet_explorer » bvt_new_order
+sauce0005 win7_internet_explorer » bvt_orders_ui_validation
+sauce0006 win7_internet_explorer » bvt_shipping_address_management
+sauce0007 win7_internet_explorer » bvt_shipstation_search
+sauce0008 win7_internet_explorer » bvt_shipstation_updates_domestic
+sauce0009 win7_internet_explorer » bvt_shipstation_updates_international
+sauce0010
 sauce0011
 sauce0012
 sauce0013
 sauce0014
 sauce0015
 sauce0016
-sauce0017 - sdcwebclient bvt_shipstation_updates_domestic
+sauce0017
 sauce0018
 sauce0019
 sauce0020
 
-bvtsauce00001cc - authentication
-bvtsauce00002cc - bvt_address_cleansing
-bvtsauce00003cc - bvt_ambigious_address
-bvtsauce00004cc - bvt_international_shipping
-bvtsauce00005cc - bvt_new_order
-bvtsauce00006cc - bvt_orders_ship_date
-bvtsauce00007cc - bvt_orders_ui_validation
-bvtsauce00008cc - bvt_purchasing
-bvtsauce00009cc - bvt_shipping_address_management
-bvtsauce00010cc - bvt_shipstation_updates_domestic
-bvtsauce00011cc - bvt_shipstation_updates_international
-bvtsauce00012cc - bvt_bulk_update
-bvtsauce00013cc - bvt_shipstation_search
+MacOS Firefox
+stgmacff1 mac_firefox » bvt_address_cleansing
+stgmacff2 mac_firefox » bvt_ambigious_address
+stgmacff4 mac_firefox » bvt_international_shipping
+stgmacff5 mac_firefox » bvt_new_order
+stgmacff8 mac_firefox » bvt_orders_ui_validation
+stgmacff9 mac_firefox » bvt_shipping_address_management
+stgmacff10 mac_firefox » bvt_shipstation_search
+stgmacff14 mac_firefox » bvt_shipstation_updates_domestic
+stgmacff15 mac_firefox » bvt_shipstation_updates_international
+stgmacff16 ok
+stgmacff18 ok
+stgmacff19 ok
+stgmacff20 mail_authentication_iphonex
+
+
+=================================================
+
+OS X Latest Chrome QACC
+bvtccosxgc1
+bvtccosxgc2
+bvtccosxgc3
+bvtccosxgc4
+bvtccosxgc5
+bvtccosxgc6
+bvtccosxgc7
+bvtccosxgc8
+bvtccosxgc9
+bvtccosxgc10
+bvtccosxgc11
+bvtccosxgc12
+bvtccosxgc13
+bvtccosxgc14
+bvtccosxgc15
+bvtccosxgc16
+bvtccosxgc17
+bvtccosxgc18
+bvtccosxgc19
+
+Win10 Chrome Beta QACC
+bvtccw10gcb1
+bvtccw10gcb2
+bvtccw10gcb3
+bvtccw10gcb4
+bvtccw10gcb5
+bvtccw10gcb6
+bvtccw10gcb7
+bvtccw10gcb8
+bvtccw10gcb9
+bvtccw10gcb10
+bvtccw10gcb11
+bvtccw10gcb12
+bvtccw10gcb13
+bvtccw10gcb14
+bvtccw10gcb15
+bvtccw10gcb16
+bvtccw10gcb17
+bvtccw10gcb18
+bvtccw10gcb19
+
+Win10 Latest MS Edge QACC
+bvtccw10edg1
+bvtccw10edg2
+bvtccw10edg3
+bvtccw10edg4
+bvtccw10edg5
+bvtccw10edg6
+bvtccw10edg7
+bvtccw10edg8
+bvtccw10edg9
+bvtccw10edg10
+bvtccw10edg11
+bvtccw10edg12
+bvtccw10edg13
+bvtccw10edg14
+bvtccw10edg15
+bvtccw10edg16
+bvtccw10edg17
+bvtccw10edg18
+bvtccw10edg19
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+stghkgtpwkxhk8
+stgi3eicvj8d7b bvt_address_cleansing_win10_chrome_beta
+cinoauthstg001
+
+
+
+
+
+
+bvtsauce00001cc authentication
+bvtsauce00002cc bvt_address_cleansing
+bvtsauce00003cc bvt_ambigious_address
+bvtsauce00004cc bvt_international_shipping
+bvtsauce00005cc bvt_new_order
+bvtsauce00006cc bvt_orders_ship_date
+bvtsauce00007cc bvt_orders_ui_validation
+bvtsauce00008cc bvt_purchasing
+bvtsauce00009cc bvt_shipping_address_management
+bvtsauce00010cc bvt_shipstation_updates_domestic
+bvtsauce00011cc bvt_shipstation_updates_international
+bvtsauce00012cc bvt_bulk_update
+bvtsauce00013cc bvt_shipstation_search
 bvtsauce00014cc
 bvtsauce00015cc
 bvtsauce00016cc
@@ -68,7 +272,8 @@ mobile000015stg
 
 
 
-
+rob
+stgi3eicvj8d7b
 
 
 

@@ -25,7 +25,7 @@ Then /^open orders settings general settings$/ do
   step 'Open Orders settings modal'
   SdcOrders.modals.settings.general.click
   SdcOrders.modals.settings.general_settings.title.wait_until_present(timeout: 40, interval: 0.2)
-  expect(SdcOrders.modals.settings.general_settings.title).to be_present, "Order Settings modal is not present"
+  expect(SdcOrders.modals.settings.general_settings.title.text).to eql 'General Settings'
 end
 
 Then /^close orders settings modal$/ do

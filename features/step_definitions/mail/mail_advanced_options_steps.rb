@@ -68,7 +68,7 @@ Then /^set print form advanced options ship date to today plus (\d+)$/ do |day|
   text_field = SdcOrders.modals.print.ship_date.text_field
   date = TestHelper.mail_date_text_field_format(day)
   text_field.set_attribute('value', date)
-  step 'blur out on Print modal Ship date 5'
+  step 'blur out on print modal ship date 5'
   expect(text_field.value).to eql(date)
 end
 
@@ -167,9 +167,13 @@ Then /^[Ee]xpect Advanced Options Mail Date is (?:correct|(.*))$/ do |expectatio
   # expect(stamps.mail.print_form.advanced_options.mail_date.textbox.text).to eql(expectation)
 end
 
-Then /^set print form advanced options reference number to (?:(?:a |some |)random string|(.*))$/ do |value|
-  TestData.hash[:reference_no] = value.nil? ? TestHelper.rand_alpha_numeric : value
-  SdcMail.print_form.advanced_options.reference_num.set(TestData.hash[:reference_no])
+Then /^set print form advanced options reference number to (?:(?:a |some |)random string|(.*))$/ do |str|
+  str ||= TestHelper.rand_alpha_numeric
+  advanced_options = SdcMail.print_form.advanced_options
+  advanced_options.reference_num.scroll_into_view
+  advanced_options.reference_num.set(str)
+  advanced_options.reference_num.click
+  TestData.hash[:reference_no] = str
 end
 
 Then /^expect print form advanced options reference number field is present$/ do

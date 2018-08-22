@@ -1,19 +1,21 @@
 
-Then /^set order details ship-to to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
+Then /^set order details ship-to to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |str|
   step 'show order ship-to details'
-  hash = TestHelper.address_helper_zone(address)
-  full_name = hash[:full_name]
-  company = hash[:company]
-  street_address1 = hash[:street_address]
-  street_address2 = hash[:street_address2]
-  city = hash[:city]
-  state = hash[:city]
-  zip = hash[:zip]
-  ship_to = "#{full_name},#{company},#{street_address1},#{street_address2},#{city} #{state} #{zip}"
+  address = TestHelper.address_helper_zone(str)
+  if address.is_a? Hash
+    full_name = address[:full_name]
+    company = address[:company]
+    street_address1 = address[:street_address]
+    street_address2 = address[:street_address2]
+    city = address[:city]
+    state = address[:state]
+    zip = address[:zip]
+    str = "#{full_name},#{company},#{street_address1},#{street_address2},#{city} #{state} #{zip}"
+  end
 
-  step "set order details ship-to text area to #{ship_to}"
-  step 'hide order ship-to details'
-  TestData.hash[:ship_to_domestic] = hash
+  step "set order details ship-to text area to #{str}"
+  step 'check for server error'
+  TestData.hash[:ship_to_domestic] = address
 end
 
 Then /^add order details item (\d+), qty (\d+), id (.+), description (.*)$/ do |item, qty, id, description|
@@ -24,6 +26,7 @@ Then /^add order details item (\d+), qty (\d+), id (.+), description (.*)$/ do |
   step "set Order Details Associated Item #{item} ID to #{id}"
   step "set Order Details Associated Item #{item} description to #{description}"
   step 'blur out on order details form'
+  step 'check for server error'
 end
 
 Then /^add order details associated item (\d+)$/ do |item|
@@ -171,9 +174,11 @@ Then /^set order details ship-to domestic address to$/ do |table|
   ship_to = "#{full_name},#{company},#{street_address1},#{street_address2},#{city} #{state} #{zip}"
 
   step "set order details domestic ship-to country to #{country}"
+  step 'check for server error'
   step "set order details ship-to text area to #{ship_to}"
   step "set order details phone to #{phone}"
   step "set order details email to #{email}"
+  step 'check for server error'
   step 'hide order ship-to details'
 
   TestData.hash[:full_name] = full_name
@@ -197,14 +202,15 @@ Then /^set order details ship-to text area to (.*)$/ do |address|
   ship_to = order_details.ship_to
   step 'show order ship-to details'
   domestic = SdcOrders.order_details.ship_to.domestic
-  5.times do
+  3.times do
     domestic.address.set(address)
-    order_details.weight_label.click
-    order_details.service_label.double_click
-    order_details.order_id.double_click
-    order_details.reference_no_label.double_click
-    order_details.title.double_click
-    ship_to.show_less.safe_wait_until_present(timeout: 2)
+    order_details.weight_label.click if order_details.weight_label.present?
+    break if ship_to.show_less.present?
+    order_details.service_label.double_click if order_details.service_label.present?
+    order_details.order_id.double_click if order_details.order_id.present?
+    order_details.reference_no_label.double_click if order_details.reference_no_label.title.present?
+    order_details.title.double_click if order_details.title.present?
+    ship_to.show_less.safe_wait_until_present(timeout: 1)
     break if ship_to.show_less.present?
   end
   TestData.hash[:ship_to_domestic] = address
@@ -237,19 +243,20 @@ Then /^blur out on order details form$/ do
   order_details.reference_no_label.safe_double_click
   order_details.title.scroll_into_view
   order_details.title.safe_double_click
+  step 'check for server error'
 end
 
-Then /^set order details phone to (.*)$/ do |str|
+Then /^set order details phone to (?:random|(.*))$/ do |str|
   step 'show order ship-to details'
-  str = str.downcase.include?('random') ? TestHelper.rand_phone : str
+  str ||= TestHelper.rand_phone
   SdcOrders.order_details.ship_to.domestic.phone.set(str)
   TestData.hash[:phone] = str
   step 'save order details data'
 end
 
-Then /^set order details email to (.*)$/ do |str|
+Then /^set order details email to (?:random|(.*))$/ do |str|
   step 'show order ship-to details'
-  str = str.downcase.include?('random') ? TestHelper.rand_email : str
+  str ||= TestHelper.rand_email
   SdcOrders.order_details.ship_to.domestic.email.set(str)
   TestData.hash[:email] = str
   step 'save order details data'
@@ -258,13 +265,21 @@ end
 Then /^expect order details ship-to phone is (?:correct|(.*))$/ do |str|
   step 'show order ship-to details'
   str ||= TestData.hash[:phone]
-  expect(SdcOrders.order_details.ship_to.domestic.phone.text_value).to eql(str)
+  domestic = SdcOrders.order_details.ship_to.domestic
+  domestic.phone.scroll_into_view
+  domestic.phone.wait_until_present(timeout: 10)
+  result = domestic.phone.text_value
+  expect(result).to eql(str)
 end
 
 Then /^expect order details ship-to email is (?:correct|(.*))$/ do |str|
   step 'show order ship-to details'
   str ||= TestData.hash[:email]
-  expect(SdcOrders.order_details.ship_to.domestic.email.text_value).to eql(str)
+  domestic = SdcOrders.order_details.ship_to.domestic
+  domestic.email.scroll_into_view
+  domestic.email.wait_until_present(timeout: 10)
+  result = domestic.email.text_value
+  expect(result).to eql(str)
 end
 
 Then /^[Oo]n [Oo]rder [Dd]etails form, [Hh]ide [Ii]nternational [Ss]hip-[Tt]o fields$/ do
@@ -356,6 +371,7 @@ Then /^set order details service to (.*)$/ do |str|
   service.selection_element.click unless service.selection_element.class_disabled?
   expect(service.text_field.text_value).to include(str)
   service.wait_until(timeout: 15) { service.cost.text_value.dollar_amount_str.to_f.round(2) > 0 }
+  step 'check for server error'
   step 'save order details data'
   TestData.hash[:service] = str
 end
@@ -619,7 +635,7 @@ Then /^set order details tracking to (.*)$/ do |str|
   tracking.drop_down.click
   3.times do
     selection.scroll_into_view
-    selection.wait_until_present(timeout: 2)
+    selection.safe_wait_until_present(timeout: 1)
     selection.safe_click
     break if tracking.text_field.text_value.eql?(str)
     tracking.drop_down.click unless selection.present?
@@ -769,20 +785,27 @@ end
 
 Then /^expect order details insure-for is (?:correct|(\d+\.\d{2}))$/ do |str|
   str ||= TestData.hash[:insured_value]
-  result = SdcOrders.order_details.insure_for.amount.text_value.to_f.round(2)
+  insure_for = SdcOrders.order_details.insure_for
+  insure_for.amount.scroll_into_view
+  result = insure_for.amount.text_value.to_f.round(2)
   expect(result).to eql(str.to_f)
 end
 
-Then /^set order details reference number to (.*)$/ do |str|
-  str = str.downcase.include?('random') ? TestHelper.rand_alpha_numeric : str
-  SdcOrders.order_details.reference_no.set(str)
+Then /^set order details reference number to (?:a random string|(.*))$/ do |str|
+  str ||= TestHelper.rand_alpha_numeric
+  order_details = SdcOrders.order_details
+  order_details.reference_no.scroll_into_view
+  order_details.reference_no.set(str)
+  order_details.reference_no.click
   TestData.hash[:reference_no] = str
   step 'save order details data'
 end
 
 Then /^expect order details ship from is (?:correct|(.*))$/ do |str|
   str ||= TestData.hash[:ship_from]
-  result = SdcOrders.order_details.ship_from.text_field.text_value
+  ship_from = SdcOrders.order_details.ship_from
+  ship_from.text_field.scroll_into_view
+  result = ship_from.text_field.text_value
   expect(result).to include(str)
 end
 

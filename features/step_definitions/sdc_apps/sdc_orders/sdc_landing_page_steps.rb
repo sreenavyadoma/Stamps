@@ -90,7 +90,6 @@ end
 Then /^ios: click sign-in button$/ do
   landing_page = SdcWebsite.landing_page
   landing_page.sign_in.send_keys_while_present(iteration: 3, timeout: 4)
-  landing_page.username.safe_wait_while_present(timeout: 5) if SdcGlobal.web_app.eql?(:mail)
   step 'loading orders...' if SdcGlobal.web_app.eql?(:orders)
 end
 
@@ -106,12 +105,11 @@ Then /^loading orders...$/ do
   SdcLogger.debug 'loading_orders.safe_wait_until_present(timeout: 30)...'
   loading_orders.safe_wait_until_present(timeout: 30)
   SdcLogger.debug 'loading_orders.safe_wait_while_present(timeout: 60)...'
-  loading_orders.safe_wait_while_present(timeout: 60)
+  loading_orders.safe_wait_while_present(timeout: 90)
   SdcLogger.debug 'SdcGrid.body.safe_wait_until_present(timeout: 60)...'
-  SdcGrid.body.safe_wait_until_present(timeout: 60)
+  SdcGrid.body.safe_wait_until_present(timeout: 90)
   SdcLogger.debug 'expect(toolbar.add).to be_present...'
   expect(toolbar.add).to be_present
-  expect(SdcOrders.loading_orders.text).not_to eql('') if SdcOrders.loading_orders.present?
   SdcLogger.debug 'loading orders... done!'
 end
 
@@ -146,15 +144,27 @@ Then /^click sign in page sign-in button$/ do
 end
 
 Then /^click Orders landing page sign-in button$/ do
+  rating_error = SdcWebsite.modals.rating_error
   landing_page = SdcWebsite.landing_page
   landing_page.sign_in.wait_until_present(timeout: 3)
   landing_page.sign_in.click
+  3.times do
+    landing_page.sign_in.safe_wait_while_present(timeout: 2)
+    break unless landing_page.sign_in.present?
+    landing_page.sign_in.safe_click if landing_page.sign_in.present?
+  end
   landing_page.invalid_username.safe_wait_while_present(timeout: 2)
   if landing_page.invalid_username.present?
     str = landing_page.invalid_username.text_value
     expect(str).to eql('')
   end
-  landing_page.sign_in.safe_wait_while_present(timeout: 5)
+  landing_page.sign_in.safe_wait_while_present(timeout: 10)
+  rating_error.body.safe_wait_until_present(timeout: 2)
+  if rating_error.body.present?
+    error_msg = rating_error.body.text_value
+    rating_error.ok.click
+    expect(error_msg).to eql('')
+  end
 end
 
 Then /^close whats new modal in orders$/ do
@@ -165,14 +175,15 @@ Then /^close whats new modal in orders$/ do
 end
 
 Then /^[Ss]ign-out of SDC [Ww]ebsite$/ do
-  if TestSession.env.browser_test
-    user_drop_down = SdcNavigation.user_drop_down
-    user_drop_down.signed_in_user.wait_until_present(timeout: 5)
-    user_drop_down.signed_in_user.hover
-    user_drop_down.sign_out_link.safe_wait_until_present(timeout: 1)
-    user_drop_down.sign_out_link.safe_click
-    SdcWebsite.landing_page.username.safe_wait_until_present(timeout: 4)
-  end
+  # if TestSession.env.browser_test
+  #   user_drop_down = SdcNavigation.user_drop_down
+  #   user_drop_down.signed_in_user.wait_until_present(timeout: 5)
+  #   user_drop_down.signed_in_user.safe_hover
+  #   user_drop_down.signed_in_user.safe_click unless user_drop_down.sign_out_link.present?
+  #   user_drop_down.sign_out_link.safe_wait_until_present(timeout: 1)
+  #   user_drop_down.sign_out_link.safe_click
+  #   SdcWebsite.landing_page.username.safe_wait_until_present(timeout: 4)
+  # end
 end
 
 Then /^Verify Health Check for (.+)$/ do |str|
