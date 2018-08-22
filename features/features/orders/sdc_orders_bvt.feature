@@ -463,7 +463,7 @@ Feature:  BVT tests for Orders
     Then add new order
     Then expect order details is present
     ##Then set order details ship-from to Automation - El Segundo, CA
-    Then set order details ship-to to random address in zone 9
+    Then set order details ship-to to random address in zone 7
     Then set order details service to PM Package
     Then set order details pounds to 0
     Then set order details ounces to 1
