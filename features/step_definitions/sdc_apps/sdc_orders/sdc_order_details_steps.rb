@@ -606,7 +606,7 @@ Then /^set order details tracking to (.*)$/ do |str|
   tracking.drop_down.click
   3.times do
     selection.scroll_into_view
-    selection.wait_until_present(timeout: 2)
+    selection.safe_wait_until_present(timeout: 2)
     selection.safe_click
     break if tracking.text_field.text_value.eql?(str)
     tracking.drop_down.click unless selection.present?
