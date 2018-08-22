@@ -44,7 +44,7 @@ bvtstgw10edg6 win10_edge » bvt_shipping_address_management
 bvtstgw10edg7 win10_edge » bvt_shipstation_search
 bvtstgw10edg8 win10_edge » bvt_shipstation_updates_domestic
 bvtstgw10edg9 win10_edge » bvt_shipstation_updates_international
-bvtstgw10edg10
+bvtstgw10edg10 win10_edge » bvt_orders_ship_date
 bvtstgw10edg11
 bvtstgw10edg12
 bvtstgw10edg13

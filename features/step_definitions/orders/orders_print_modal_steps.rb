@@ -144,8 +144,12 @@ Then /^expect print modal ship date is (\d+) (?:day|days) from today$/ do |day|
   step 'expect print modal ship date drop down is present'
   expectation = TestHelper.mail_date_text_field_format(day)
   ship_date = SdcOrders.modals.print.ship_date
-  SdcPage.browser.wait_until(timeout: 3) do
-    ship_date.text_field.text_value.eql? expectation
+  begin
+    SdcPage.browser.wait_until(timeout: 3) do
+      ship_date.text_field.text_value.eql? expectation
+    end
+  rescue
+    # ignore
   end
   result = ship_date.text_field.text_value
   expect(result).to eql(expectation)
