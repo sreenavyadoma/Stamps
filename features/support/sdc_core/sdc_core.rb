@@ -109,7 +109,7 @@ module TestSession
     key(:sauce_browser) do
       oss = ['Windows', 'windows', 'Mac', 'mac']
       if selenium_platform
-        oss.include? selenium_platform.split(' ').first
+        oss.include?(selenium_platform.split(' ').first)
       end
     end
     key(:local_browser) { ENV['BROWSER'].to_sym if ENV['BROWSER'] }
