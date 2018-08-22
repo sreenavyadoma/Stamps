@@ -31,5 +31,6 @@ require_relative 'sdc_apps/mail/sdc_mail'
 # web dev
 require_relative 'web_dev/stamps_endicia/partner_portal'
 require_relative 'web_dev/stamps_endicia/white_label'
+require_relative 'web_dev/shipworks/shipworks_webreg'
 
 World SdcCore, SdcWebsite, SdcOrders, SdcMail, SdcNavigation, PartnerPortal
