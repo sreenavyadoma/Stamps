@@ -180,7 +180,7 @@ module SdcOrders
     end
 
     class OrdersSettingsModal < SdcPage
-      page_object(:general) { { xpath: '//*[text()="Print All Orders"]' } }
+      page_object(:general) { { xpath: '//span[text()="General"]' } }
       page_object(:stores) { { xpath: '//*[text()="Stores"]' } }
       page_object(:international) { { xpath: '//*[text()="International"]' } }
       page_object(:label_msgs) { { xpath: '//*[text()="Label Messages"]' } }
@@ -189,19 +189,19 @@ module SdcOrders
       page_object(:close) { { xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]' } }
 
       def general_settings
-        @general_settings ||= SdcOrdersModalsSettingsGeneral.new
+        SdcOrdersModalsSettingsGeneral.new
       end
 
       def stores_settings
-        @stores_settings ||= OrdersSettingsStores.new
+        OrdersSettingsStores.new
       end
 
       def int_settings
-        @intl_settings ||= SdcOrdersSettingsInt.new
+        SdcOrdersSettingsInt.new
       end
 
       def label_msgs_settings
-        @label_msgs_settings ||= OrdersSettingsLabel.new
+        OrdersSettingsLabel.new
       end
     end
 
