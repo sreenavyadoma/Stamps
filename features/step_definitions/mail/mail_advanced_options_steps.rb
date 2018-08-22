@@ -68,7 +68,7 @@ Then /^set print form advanced options ship date to today plus (\d+)$/ do |day|
   text_field = SdcOrders.modals.print.ship_date.text_field
   date = TestHelper.mail_date_text_field_format(day)
   text_field.set_attribute('value', date)
-  step 'blur out on Print modal Ship date 5'
+  step 'blur out on print modal ship date 5'
   expect(text_field.value).to eql(date)
 end
 
