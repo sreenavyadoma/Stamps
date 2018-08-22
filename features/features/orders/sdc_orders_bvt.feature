@@ -222,10 +222,6 @@ Feature:  BVT tests for Orders
     #Then expect orders grid tracking number is populated
 
   #Verify Single Order Details form was saved in ShipStation
-    Then expect order details ship-to phone is correct
-    Then expect order details ship-to email is correct
-    Then expect order details ship-to phone is correct
-    Then expect order details ship-to email is correct
     Then expect order details pound is 1
     Then expect order details ounce is 1
     Then expect order details length is 1
@@ -236,6 +232,8 @@ Feature:  BVT tests for Orders
     Then expect order details tracking is correct
     Then expect order details tracking cost is correct
     Then expect order details reference number is correct
+    Then expect order details ship-to email is correct
+    Then expect order details ship-to phone is correct
 
 #    Then click orders toolbar print button
 #    Then in print modal, click close button
