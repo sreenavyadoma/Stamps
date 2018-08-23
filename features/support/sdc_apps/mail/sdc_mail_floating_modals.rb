@@ -37,6 +37,7 @@ module SdcMail
       page_object(:close) { {xpath: '//span[contains(@class, "sdc-icon-message-close-dark")]'} }
       page_object(:settings_link) { {xpath: '//span[text()="Settings"]'} }
     end
+
     class SdcManagePrintOptions < SdcPage
       page_object(:search, tag: :text_field) { {xpath: '//input[@placeholder="Search"]'} }
       page_object(:save) { {xpath: '//span[contains(text(), "Save")]'} }
@@ -198,42 +199,20 @@ module SdcMail
 
     end
 
-    def notification_bar
-      SdcNotificationBar.new
-    end
-    module_function :notification_bar
-  class SdcServiceCommitments < SdcPage
-    page_object(:title) { {xpath: '//*[text()="Priority Mail Express Service Commitments"]'} }
-    page_object(:x_btn) { {xpath: '//div[text()="Priority Mail Express Service Commitments"]/../..//*[contains(@class, "close")]'} }
-  end
-
-  class SdcSaveAsFavorite < SdcPage
-    page_object(:title) { {xpath: '//div[text()="Save as Favorite"]'} }
-    page_object(:save) { {xpath: '//*[text()="Save"]'} }
-    page_object(:name, tag: :text_field) { {id: 'sdc-favorites-namefield-inputEl'} }
-    page_object(:x_btn) { {xpath: '//div[text()="Save as Favorite"]/../..//*[contains(@class, "close")]'} }
-
-    page_object(:include_delivery_adr_chooser) { {id: 'sdc-favorites-delivery-address-checkbox-displayEl'} }
-    page_object(:include_delivery_adr_verify) { {xpath: '//*[@id="sdc-favorites-delivery-address-checkbox-bodyEl"]/..' } }
-    checkbox(:include_delivery_adr, :include_delivery_adr_chooser, :include_delivery_adr_verify, 'class', 'checked')
-  end
-
-  class SdcManageFavorites < SdcPage
-    page_object(:title) { {xpath: '//div[text()="Manage Favorites"]'} }
-    page_object(:rename) { {xpath: '//*[text()="Rename"]'} }
-    page_object(:delete) { {xpath: '//*[text()="Delete"]'} }
-    page_object(:x_btn) { {xpath: '//div[text()="Manage Favorites"]/../..//*[contains(@class, "close")]'} }
-
-    def selection_element(name, num)
-      page_object(name) { {xpath: "(//*[contains(@id, 'managefavoritesmodal')]//img)[#{num}]"} }
+    class SdcServiceCommitments < SdcPage
+      page_object(:title) { {xpath: '//*[text()="Priority Mail Express Service Commitments"]'} }
+      page_object(:x_btn) { {xpath: '//div[text()="Priority Mail Express Service Commitments"]/../..//*[contains(@class, "close")]'} }
     end
 
-    def rename_favorite
-      SdcManageFavoritesRename.new
-    end
+    class SdcSaveAsFavorite < SdcPage
+      page_object(:title) { {xpath: '//div[text()="Save as Favorite"]'} }
+      page_object(:save) { {xpath: '//*[text()="Save"]'} }
+      page_object(:name, tag: :text_field) { {id: 'sdc-favorites-namefield-inputEl'} }
+      page_object(:x_btn) { {xpath: '//div[text()="Save as Favorite"]/../..//*[contains(@class, "close")]'} }
 
-    def delete_favorite
-      SdcManageFavoritesDelete.new
+      page_object(:include_delivery_adr_chooser) { {id: 'sdc-favorites-delivery-address-checkbox-displayEl'} }
+      page_object(:include_delivery_adr_verify) { {xpath: '//*[@id="sdc-favorites-delivery-address-checkbox-bodyEl"]/..' } }
+      checkbox(:include_delivery_adr, :include_delivery_adr_chooser, :include_delivery_adr_verify, 'class', 'checked')
     end
 
     class SdcManageFavoritesRename < SdcPage
@@ -248,100 +227,107 @@ module SdcMail
       page_object(:delete) { {xpath: '//*[text()="Delete"][contains(@class, "primary")]'} }
       page_object(:x_btn) { {xpath: '//div[text()="Delete Favorite"]/../..//*[contains(@class, "close")]'} }
     end
-  end
 
-  class SdcFeedback < SdcPage
-    page_object(:title) { {xpath: '//div[text()="Feedback"]'} }
-    page_object(:x_btn) { {xpath: '//div[text()="Feedback"]/../..//*[contains(@class, "close")]'} }
-  end
+    class SdcManageFavorites < SdcPage
+      page_object(:title) { {xpath: '//div[text()="Manage Favorites"]'} }
+      page_object(:rename) { {xpath: '//*[text()="Rename"]'} }
+      page_object(:delete) { {xpath: '//*[text()="Delete"]'} }
+      page_object(:x_btn) { {xpath: '//div[text()="Manage Favorites"]/../..//*[contains(@class, "close")]'} }
 
-  class SdcSettings < SdcPage
-    page_object(:title) { {xpath: '//div[text()="Settings"]'} }
-    page_object(:x_btn) { {xpath: '//div[text()="Settings"]/../..//*[contains(@class, "close")]'} }
-  end
+      def selection_element(name, num)
+        page_object(name) { {xpath: "(//*[contains(@id, 'managefavoritesmodal')]//img)[#{num}]"} }
+      end
 
+      def rename_favorite
+        SdcManageFavoritesRename.new
+      end
 
-
-
-    def manage_print_options
-      SdcManagePrintOptions.new
+      def delete_favorite
+        SdcManageFavoritesDelete.new
+      end
     end
-    module_function :manage_print_options
 
-    def manage_shipping_addresses
-      SdcManageShippingAddresses.new
+    class SdcFeedback < SdcPage
+      page_object(:title) { {xpath: '//div[text()="Feedback"]'} }
+      page_object(:x_btn) { {xpath: '//div[text()="Feedback"]/../..//*[contains(@class, "close")]'} }
     end
-    module_function :manage_shipping_addresses
 
-    def edit_mailing_address
-      SdcEditMailingAddress.new
+    class SdcSettings < SdcPage
+      page_object(:title) { {xpath: '//div[text()="Settings"]'} }
+      page_object(:x_btn) { {xpath: '//div[text()="Settings"]/../..//*[contains(@class, "close")]'} }
     end
-    module_function :edit_mailing_address
 
-    def settings
-      MailSettingsModal.new
+
+    class << self
+      def notification_bar
+        SdcNotificationBar.new
+      end
+
+      def manage_print_options
+        SdcManagePrintOptions.new
+      end
+
+      def manage_shipping_addresses
+        SdcManageShippingAddresses.new
+      end
+
+      def edit_mailing_address
+        SdcEditMailingAddress.new
+      end
+
+      def settings
+        MailSettingsModal.new
+      end
+
+      def extra_services
+        SdcExtraServices.new
+      end
+
+      def label_200
+        SdcLabel200.new
+      end
+
+      def form_3811
+        SdcForm3811.new
+      end
+
+      def value_must_be_shown
+        SdcValueMustBeShown.new
+      end
+
+      def special_contents_warning
+        SdcSpecialContentsWarning.new
+      end
+
+      def service_commitments
+        SdcServiceCommitments.new
+      end
+
+      def save_as_favorite
+        SdcSaveAsFavorite.new
+      end
+
+      def manage_favorites
+        SdcManageFavorites.new
+      end
+
+      def feedback
+        SdcFeedback.new
+      end
+
+      def search_contacts
+        SdcSearchContacts.new
+      end
+
+      def print
+        MailPrintModal.new
+      end
+
+      # def settings
+      #   SdcSettings.new
+      # end
     end
-    module_function :settings
 
-    def extra_services
-      SdcExtraServices.new
-    end
-    module_function :extra_services
-
-    def label_200
-      SdcLabel200.new
-    end
-    module_function :label_200
-
-    def form_3811
-      SdcForm3811.new
-    end
-    module_function :form_3811
-
-    def value_must_be_shown
-      SdcValueMustBeShown.new
-    end
-    module_function :value_must_be_shown
-
-    def special_contents_warning
-      SdcSpecialContentsWarning.new
-    end
-    module_function :special_contents_warning
-
-    def service_commitments
-      SdcServiceCommitments.new
-    end
-    module_function :service_commitments
-
-    def save_as_favorite
-      SdcSaveAsFavorite.new
-    end
-    module_function :save_as_favorite
-
-    def manage_favorites
-      SdcManageFavorites.new
-    end
-    module_function :manage_favorites
-
-    def feedback
-      SdcFeedback.new
-    end
-    module_function :feedback
-
-    # def settings
-    #   SdcSettings.new
-    # end
-    # module_function :settings
-
-    def search_contacts
-      SdcSearchContacts.new
-    end
-    module_function :search_contacts
-
-    def print
-      MailPrintModal.new
-    end
-    module_function :print
   end
 end
 

@@ -16,76 +16,70 @@ module SdcMail
     end
   end
 
-  def verifying_account_info
-    klass = Class.new(SdcPage) do
-      page_object(:verifying_account_info) { {xpath: '//*[contains(text(), "Verifying")]'} }
-    end
-    klass.new.verifying_account_info
-  end
-  module_function :verifying_account_info
-
-  def print_on
-    SdcPrintOn.new
-  end
-  module_function :print_on
-
-  def print_form
-    case SdcPrintOn.print_media.to_s
-    when /stamps/
-      return SdcPrintForm::Stamps.new
-    when /shipping_label/
-      return SdcPrintForm::ShippingLabels.new
-    when /envelope/
-      return SdcPrintForm::Envelopes.new
-    when /certified_mail/
-      return SdcPrintForm::CertifiedMail.new
-    when /roll/
-      return SdcPrintForm::Rolls.new
-    else
-      # ignore
+  class << self
+    def verifying_account_info
+      klass = Class.new(SdcPage) do
+        page_object(:verifying_account_info) { {xpath: '//*[contains(text(), "Verifying")]'} }
+      end
+      klass.new.verifying_account_info
     end
 
-    raise ArgumentError, "Invalid print media: #{SdcPrintOn.print_media}"
-  end
-  module_function :print_form
-
-  def print_preview
-    case SdcPrintOn.print_media.to_s
-    when /stamps/
-      return SdcPrintPreview::Stamps.new
-    when /shipping_label/
-      return SdcPrintPreview::ShippingLabels.new
-    when /envelope/
-      return SdcPrintPreview::Envelopes.new
-    when /certified_mail/
-      return SdcPrintPreview::CertifiedMail.new
-    when /roll/
-      return SdcPrintPreview::Rolls.new
-    else
-      # ignore
+    def print_on
+      SdcPrintOn.new
     end
 
-    raise ArgumentError, "Invalid print media: #{SdcPrintOn.print_media}"
-  end
-  module_function :print_preview
+    def print_form
+      case SdcPrintOn.print_media.to_s
+      when /stamps/
+        return SdcPrintForm::Stamps.new
+      when /shipping_label/
+        return SdcPrintForm::ShippingLabels.new
+      when /envelope/
+        return SdcPrintForm::Envelopes.new
+      when /certified_mail/
+        return SdcPrintForm::CertifiedMail.new
+      when /roll/
+        return SdcPrintForm::Rolls.new
+      else
+        # ignore
+      end
 
-  def toolbar
-    SdcMailToolbar.new
-  end
-  module_function :toolbar
+      raise ArgumentError, "Invalid print media: #{SdcPrintOn.print_media}"
+    end
 
-  def statusbar
-    SdcMailStatusbar.new
-  end
-  module_function :statusbar
+    def print_preview
+      case SdcPrintOn.print_media.to_s
+      when /stamps/
+        return SdcPrintPreview::Stamps.new
+      when /shipping_label/
+        return SdcPrintPreview::ShippingLabels.new
+      when /envelope/
+        return SdcPrintPreview::Envelopes.new
+      when /certified_mail/
+        return SdcPrintPreview::CertifiedMail.new
+      when /roll/
+        return SdcPrintPreview::Rolls.new
+      else
+        # ignore
+      end
 
-  def modals
-    SdcMailFloatingModals
+      raise ArgumentError, "Invalid print media: #{SdcPrintOn.print_media}"
+    end
+
+    def toolbar
+      SdcMailToolbar.new
+    end
+
+    def statusbar
+      SdcMailStatusbar.new
+    end
+
+    def modals
+      SdcMailFloatingModals
+    end
+    #
+    # def toolbar
+    #   SdcMailToolbar.new
+    # end
   end
-  module_function :modals
-  #
-  # def toolbar
-  #   SdcMailToolbar.new
-  # end
-  # module_function :toolbar
 end

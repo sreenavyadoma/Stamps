@@ -19,29 +19,26 @@ module SdcContacts
     # address book detail page objects goes here.
   end
 
-  def header
-    AddressBookHeader.new
-  end
-  module_function :header
+  class << self
+    def header
+      AddressBookHeader.new
+    end
 
-  def new_version_link
-    NewVersionLink.new
-  end
-  module_function :new_version_link
+    def new_version_link
+      NewVersionLink.new
+    end
 
-  def address_book_filter
-    AddressBookFilter.new
-  end
-  module_function :address_book_filter
+    def address_book_filter
+      AddressBookFilter.new
+    end
 
-  def address_book_list
-    AddressBookList.new
-  end
-  module_function :address_book_list
+    def address_book_list
+      AddressBookList.new
+    end
 
-  def address_book_detail
-    AddressBookDetail.new
+    def address_book_detail
+      AddressBookDetail.new
+    end
   end
-  module_function :address_book_detail
 
 end
