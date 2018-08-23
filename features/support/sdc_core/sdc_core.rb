@@ -173,6 +173,9 @@ module TestSession
       "SauceOnDemandSessionID=#{session_id} job-name=#{test_name}"
     end
 
+    def responsive
+      mobile_device || SdcPage.browser.window.size.width < 1195
+    end
   end
 
   def env

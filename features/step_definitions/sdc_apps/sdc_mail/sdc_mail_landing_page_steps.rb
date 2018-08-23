@@ -38,17 +38,21 @@ Then /^sign-in to mail$/ do
 end
 
 Then /^sign out$/ do
-  if TestSession.env.browser_test
-    user_drop_down = SdcWebsite.navigation.user_drop_down
-    landing_page = SdcWebsite.landing_page
-    4.times do
-      user_drop_down.signed_in_user.hover
-      user_drop_down.sign_out_link.safe_wait_until_present(timeout: 1)
-      user_drop_down.sign_out_link.click
+  begin
+    unless TestSession.env.responsive
+      user_drop_down = SdcWebsite.navigation.user_drop_down
+      landing_page = SdcWebsite.landing_page
+      4.times do
+        user_drop_down.signed_in_user.hover
+        user_drop_down.sign_out_link.safe_wait_until_present(timeout: 1)
+        user_drop_down.sign_out_link.click
+        landing_page.username.safe_wait_until_present(timeout: 1)
+        break if landing_page.username.present?
+      end
       landing_page.username.safe_wait_until_present(timeout: 2)
-      break if landing_page.username.present?
     end
-    landing_page.username.safe_wait_until_present(timeout: 2)
+  rescue
+    # ignore
   end
 end
 

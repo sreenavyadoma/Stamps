@@ -15,7 +15,7 @@ Feature:  BVT tests for Orders
     # sign-in to orders
     Then sign-in to orders
     # sign-out of SDC Website
-    Then sign-out of SDC Website
+
 
   @bvt_new_order
   Scenario:  BVT Add a new order
@@ -31,7 +31,7 @@ Feature:  BVT tests for Orders
     Then set order details width to 1
     Then set order details height to 1
     Then set order details insure-for to 50.00
-    Then sign-out of SDC Website
+
 
   @bvt_orders_ship_date
   Scenario: Ship Date defaults to today

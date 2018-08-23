@@ -79,7 +79,7 @@ Feature:  Mail BVT
   @mail_authentication
   Scenario: Mail - Authentication
     Then sign-in to mail
-    Then sign-out of SDC Website
+
     Then visit Mail
     Then open sign in modal in Mail
     Then set Mail username
@@ -89,7 +89,7 @@ Feature:  Mail BVT
     Then check Remember Username
     Then click the Sign In button in Mail
     Then expect user is signed in
-    Then sign-out of SDC Website
+
     Then visit Mail
     Then open sign in modal in Mail
     Then expect username is present in Mail username field
@@ -102,7 +102,8 @@ Feature:  Mail BVT
 
   @mail_authentication_mobile
   Scenario: Mail - Authentication
-    Then sign-in to mail
+    #Then sign-in to mail
+    Then sign-in to orders
     Then sign out
 
   @bvt_mail_piece_validation
