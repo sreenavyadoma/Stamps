@@ -526,18 +526,18 @@ mail_hidden_postage: --tags @mail_hidden_postage --guess PRINTER=factory
 mail_bug_ordersauto_3243: --tags @mail_bug_ordersauto_3243 --guess PRINTER=factory
 mail_manage_printing_options: --tags @mail_manage_printing_options --guess 
 #Partner Portal
-pp_log_in_page_validation: --tags @pp_log_in_page_validation --guess JENKINS=true MAX_WINDOW=true
-pp_header_favicons_browser: --tags @pp_header_favicons_browser --guess JENKINS=true MAX_WINDOW=true
+pp_log_in_page_validation: --tags @pp_log_in_page_validation --guess JENKINS=true
+pp_header_favicons_browser: --tags @pp_header_favicons_browser --guess JENKINS=true
 pp_header_favicons_browser_mobile: --tags @pp_header_favicons_browser_mobile --guess JENKINS=true
-pp_dashboard_single_contract_ui_validaiton: --tags @pp_dashboard_single_contract_ui_validaiton --guess JENKINS=true
-pp_dashboard_single_contract_chart_data_validation: --tags @pp_dashboard_single_contract_chart_data_validation --guess JENKINS=true
+pp_dashboard_single_contract_ui_validaiton: --tags @pp_dashboard_single_contract_ui_validaiton --guess JENKINS=true LOG_LEVEL=info
+pp_dashboard_single_contract_chart_data_validation: --tags @pp_dashboard_single_contract_chart_data_validation --guess JENKINS=true LOG_LEVEL=info
 pp_authenticate: --tags @pp_authenticate --guess JENKINS=true
 pp_footer: --tags @pp_footer --guess JENKINS=true
 pp_left_panel: --tags @pp_left_panel --guess JENKINS=true
 pp_left_panel_mobile: --tags @pp_left_panel_mobile --guess JENKINS=true
 pp_reset_password: --tags @pp_reset_password --guess JENKINS=true
-pp_dashboard_single_contract_export_data_ui_validation: --tags @pp_dashboard_single_contract_export_data_ui_validation --guess JENKINS=true
-pp_dashboard_single_contract_export_data_validation: --tags @pp_dashboard_single_contract_export_data_validation --guess JENKINS=true
+pp_dashboard_single_contract_export_data_ui_validation: --tags @pp_dashboard_single_contract_export_data_ui_validation --guess JENKINS=true LOG_LEVEL=info
+pp_dashboard_single_contract_export_data_validation: --tags @pp_dashboard_single_contract_export_data_validation --guess JENKINS=true LOG_LEVEL=info
 #Stamps Website
 sdcw_postage_online_page_validation: --tags @sdcw_postage_online_page_validation --guess JENKINS=true LOG_LEVEL=info
 #Stamps WebReg
