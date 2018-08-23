@@ -534,7 +534,6 @@ Feature:  BVT tests for Orders
     Then set order details insure-for to 11.99
     Then set order details reference to STMPS111
     Then add order details item 1, qty 1, id ID 1, description Description 1
-    Then add order details item 2, qty 2, id random string, description random string
     Then click order details form customs form button
     Then expect customs i agree to the usps privacy act statement is unchecked
     Then set customs package contents to Document
