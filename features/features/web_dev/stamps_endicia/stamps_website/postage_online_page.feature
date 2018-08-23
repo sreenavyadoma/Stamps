@@ -39,5 +39,9 @@ Feature: Stamps Website: Postage Online Page
     Then SDCW: navigate back
     Then SDCW: click learn more --> corporate postage solutions link
     Then SDCW: navigate back
-#    Then SDCW: click FAQ
-#    Then SDCW: navigate back
+    Then SDCW: click FAQ
+    Then SDCW: navigate back
+    Then SDCW: click hamburger --> customer support
+    Then SDCW: click hamburger --> customer log-in
+    Then SDCW: navigate back
+    Then SDCW: click hamburger --> call us 1-888-434-0055

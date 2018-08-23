@@ -24,6 +24,7 @@ Then /^SDCW: click get started button$/ do
    common_page.get_started.click!
   end
   step 'pause for 2 second'
+  step 'WL: expect profile page email exists'
   case TestSession.env.url
     when :qacc
       expect(SdcPage.browser.url).to eql('https://qacc-registration.stamps.com/registration/#!&p=profile')
@@ -47,6 +48,26 @@ Then /^SDCW: click get log in button$/ do
   end
 end
 
+Then /^SDCW: click FAQ$/ do
+   common_page = StampsWebsite.common_page
+  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+    step 'SDCW: click hamburger button'
+    common_page.faq_xs.click
+  else
+    common_page.faq.click
+  end
+
+  step 'pause for 1 second'
+  case TestSession.env.url
+    when :qacc
+      expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/postage-online/faqs/')
+    when :stg
+      expect(SdcPage.browser.url).to eql('https://sdcwebsite.staging.stamps.com/postage-online/faqs/')
+    when :prod
+      expect(SdcPage.browser.url).to eql('https://stamps.com/postage-online/faqs/')
+  end
+end
+
 Then /^SDCW: click hamburger button$/ do
   menu_xs = StampsWebsite.common_page.menu_xs
   menu_xs.wait_until_present(timeout: 5)
@@ -58,9 +79,9 @@ end
 
 Then /^SDCW: click hamburger --> get started link$/ do
   step 'SDCW: click hamburger button'
-
   StampsWebsite.common_page.get_started_xs.click
   step 'pause for 2 second'
+  step 'WL: expect profile page email exists'
   case TestSession.env.url
     when :qacc
       expect(SdcPage.browser.url).to eql('https://qa-registration.stamps.com/registration/#!&p=profile')
@@ -181,15 +202,32 @@ Then /^SDCW: click learn more --> corporate postage solutions link$/ do
   end
 end
 
-Then /^SDCW: click FAQ$/ do
-  StampsWebsite.common_page.faq.click
-  step 'pause for 1 second'
+Then /^SDCW: click hamburger --> customer support$/ do
+  step 'SDCW: click hamburger button'
+  StampsWebsite.common_page.customer_support_xs.click
+  step 'pause for 5 second'
+  url =  SdcPage.browser.windows.last.url
+  SdcPage.browser.windows.last.close
+  expect(url).to eql('https://stamps--tst.custhelp.com/app/answers/list')
+end
+
+Then /^SDCW: click hamburger --> customer log-in/ do
+  step 'SDCW: click hamburger button'
+  StampsWebsite.common_page.customer_log_in_xs.click
+  step 'pause for 2 second'
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/postage-online/faqs/')
+      expect(SdcPage.browser.url).to eql('https://print.qacc.stamps.com/SignIn/')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.staging.stamps.com/postage-online/faqs/')
+      expect(SdcPage.browser.url).to eql('https://print.testing.stamps.com/SignIn/')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://stamps.com/postage-online/faqs/')
+      expect(SdcPage.browser.url).to eql('https://print.stamps.com/SignIn/')
   end
+end
+
+Then /^SDCW: click hamburger --> call us 1-888-434-0055/ do
+  step 'SDCW: click hamburger button'
+  StampsWebsite.common_page.call_us_xs.click
+  step 'pause for 2 second'
+  SdcPage.browser.alert.text
 end
