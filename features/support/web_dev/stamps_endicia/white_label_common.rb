@@ -8,7 +8,7 @@ module WhiteLabel
     page_object(:usps_logo) {{xpath: '//div[@id="nav-usps-vendor"]'}}
 
     #endicia website
-    page_object(:ew_logo) {{id: 'logo'}}
+    page_object(:ew_logo) {{id: 'sdc-logo'}}
     page_object(:ew_get_started) {{class: ['btn pull-right color-ffffff btn-orange']}}
 
     #modal
@@ -30,12 +30,12 @@ module WhiteLabel
 
     #privacy policy modal
     page_object(:pp_header) {{xpath: '//a[@class="get-content"][@data-pgtitle="Privacy Policy"]'}}
-    page_object(:pp_body_header) {{xpath: '//h1[(contains(text(), "Stamps.com Privacy Policy"))]'}}
+    page_object(:pp_body_header) {{xpath: '//h1[(contains(text(), "Privacy Policy"))]'}}
     button(:pp_close) {{class: 'close'}}
 
     #Copyright modal
     page_object(:copyright) {{xpath: '//a[@class="get-content"][@data-pgtitle="Copyright"]'}}
-    page_object(:copyright_header) {{xpath: '//h3[(contains(text(), "Stamps.com Website Terms of Use and Copyright Notice"))]'}}
+    page_object(:copyright_header) {{xpath: '//h3[(contains(text(), "Website Terms of Use and Copyright Notice"))]'}}
     button(:copyright_close) {{class: 'close'}}
 
     #Live chat modal

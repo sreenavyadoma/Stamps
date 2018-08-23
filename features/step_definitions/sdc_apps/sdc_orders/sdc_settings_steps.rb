@@ -1,17 +1,21 @@
 Then /^set orders settings general postdate to (now [+-]\d+ hours|\d{1,2}:\d\d [ap].m.)$/ do |time|
   time = TestHelper.now_plus_hh(/[+-]\d+/.match(time).to_s.to_i) unless /^\d{1,2}:\d\d [ap].m.$/.match(time)
   settings = SdcOrders.modals.settings.general_settings
-  settings.selection(time)
-  settings.postdate_drop_down.click
-  settings.selection_obj.scroll_into_view.click
-  expect(settings.postdate_text_field.text_value).to include(time), "Postdate was not selected"
+  3.times do
+    selection = settings.selection(time)
+    settings.postdate_drop_down.click
+    selection.scroll_into_view
+    selection.click
+    break if settings.postdate_text_field.text_value.include?(time)
+  end
+  expect(settings.postdate_text_field.text_value).to include(time)
 end
 
 Then /^[Oo]pen [Oo]rders [Ss]ettings [Mm]odal$/ do
   SdcOrders.toolbar.settings.click
   SdcOrders.modals.settings.title.wait_until_present(timeout: 5)
   # step 'Wait until Orders Settings Modal present 40, 3'
-  expect(SdcOrders.modals.settings.title).to be_present, "Order Settings modal is not present"
+  expect(SdcOrders.modals.settings.title).to be_present
 end
 
 Then /^[Ww]ait [Uu]ntil [Oo]rders [Ss]ettings [Mm]odal [Pp]resent(?: (\d+), (.+)|)$/ do |iteration, delay|
@@ -25,7 +29,7 @@ Then /^open orders settings general settings$/ do
   step 'Open Orders settings modal'
   SdcOrders.modals.settings.general.click
   SdcOrders.modals.settings.general_settings.title.wait_until_present(timeout: 40, interval: 0.2)
-  expect(SdcOrders.modals.settings.general_settings.title).to be_present, "Order Settings modal is not present"
+  expect(SdcOrders.modals.settings.general_settings.title.text).to eql 'General Settings'
 end
 
 Then /^close orders settings modal$/ do

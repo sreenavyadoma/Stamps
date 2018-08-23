@@ -44,10 +44,6 @@ Then /^[Ee]xpect Security Questions successfully set dialog contain (.*)/ do |st
 end
 
 
-Then /^sign out$/ do
-
-end
-
 Then /^wait for js to stop$/ do
   SdcPage.browser.wait_while { |b| b.execute_script("return Ext.Ajax.isLoading();") }
 end

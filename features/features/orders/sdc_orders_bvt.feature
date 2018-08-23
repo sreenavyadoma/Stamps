@@ -144,11 +144,11 @@ Feature:  BVT tests for Orders
   Scenario: BVT Shipping Address
     Then sign-in to orders
     Then add new order
-    Then on manage shipping address modal, add address
-      |ship_from_zip  | full_name  | company    | street_address| street_address2 | city          | state       | zip    | country       | phone           |
-      |90245          | Euan  | Betfair UK | 101 Mission Street | Suite 700       | San Francisco | California  | 94105  | United States | (415) 123-5555  |
-    Then on Manage Shipping Address modal, delete all addresses
-    #Then set order details ship-from to San Francisco, CA
+    Then add new address to manage shipping address
+      |ship_from_zip  | full_name     | company    | street_address     | street_address2 | city          | state       | zip    | country       | phone           |
+      |90245          | Euan Davidson | Betfair UK | 101 Mission Street | Suite 700       | San Francisco | California  | 94105  | United States | (415) 123-5555  |
+    Then delete all addresses on manage shipping address modal
+    Then set order details ship-from to Euan Davidson - San Francisco, CA
     Then set order details ship-to to random address between zone 1 and 4
     Then set order details service to PM Package
     Then sign out
@@ -222,11 +222,6 @@ Feature:  BVT tests for Orders
     #Then expect orders grid tracking number is populated
 
   #Verify Single Order Details form was saved in ShipStation
-    Then expect order details ship-from is correct
-    Then expect order details ship-to phone is correct
-    Then expect order details ship-to email is correct
-    Then expect order details ship-to phone is correct
-    Then expect order details ship-to email is correct
     Then expect order details pound is 1
     Then expect order details ounce is 1
     Then expect order details length is 1
@@ -237,6 +232,8 @@ Feature:  BVT tests for Orders
     Then expect order details tracking is correct
     Then expect order details tracking cost is correct
     Then expect order details reference number is correct
+    Then expect order details ship-to email is correct
+    Then expect order details ship-to phone is correct
 
 #    Then click orders toolbar print button
 #    Then in print modal, click close button
@@ -466,7 +463,7 @@ Feature:  BVT tests for Orders
     Then add new order
     Then expect order details is present
     ##Then set order details ship-from to Automation - El Segundo, CA
-    Then set order details ship-to to random address in zone 9
+    Then set order details ship-to to random address in zone 7
     Then set order details service to PM Package
     Then set order details pounds to 0
     Then set order details ounces to 1

@@ -90,7 +90,6 @@ end
 Then /^ios: click sign-in button$/ do
   landing_page = SdcWebsite.landing_page
   landing_page.sign_in.send_keys_while_present(iteration: 3, timeout: 4)
-  landing_page.username.safe_wait_while_present(timeout: 10) if SdcGlobal.web_app.eql?(:mail)
   step 'loading orders...' if SdcGlobal.web_app.eql?(:orders)
 end
 
@@ -106,12 +105,11 @@ Then /^loading orders...$/ do
   SdcLogger.debug 'loading_orders.safe_wait_until_present(timeout: 30)...'
   loading_orders.safe_wait_until_present(timeout: 30)
   SdcLogger.debug 'loading_orders.safe_wait_while_present(timeout: 60)...'
-  loading_orders.safe_wait_while_present(timeout: 60)
+  loading_orders.safe_wait_while_present(timeout: 90)
   SdcLogger.debug 'SdcGrid.body.safe_wait_until_present(timeout: 60)...'
-  SdcGrid.body.safe_wait_until_present(timeout: 60)
+  SdcGrid.body.safe_wait_until_present(timeout: 90)
   SdcLogger.debug 'expect(toolbar.add).to be_present...'
   expect(toolbar.add).to be_present
-  expect(SdcOrders.loading_orders.text).not_to eql('') if SdcOrders.loading_orders.present?
   SdcLogger.debug 'loading orders... done!'
 end
 

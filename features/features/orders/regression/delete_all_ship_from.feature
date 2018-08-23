@@ -7,5 +7,5 @@ Feature:  Delete Ship From
   @delete_all_shipping_addresses
   Scenario: regression
     Then add new order
-    Then on Manage Shipping Address modal, delete all addresses
+    Then delete all addresses on manage shipping address modal
     Then sign out

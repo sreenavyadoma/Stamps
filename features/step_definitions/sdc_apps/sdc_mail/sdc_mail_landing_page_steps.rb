@@ -24,22 +24,54 @@ Then /^sign-in to mail$/ do
   step 'visit Mail'
   usr = TestSession.env.usr
   pw = TestSession.env.pw
-  modal = SdcWebsite.navigation.mail_sign_in_modal
-  if TestSession.env.mobile_device || SdcPage.browser.window.size.width < 1195
-    modal.hamburger_menu.click
-    modal.sign_in.wait_until_present(timeout: 5)
-    modal.sign_in.click
-    step "sign-in to orders with #{usr}/#{pw}"
+  TestData.hash[:username] = usr
+  TestData.hash[:password] = pw
+  if TestSession.env.mobile_device
+    step "mobile: sign-in to mail as #{usr}/#{pw}"
+  elsif SdcPage.browser.window.size.width < 1195
+    step "mobile: sign-in to mail as #{usr}/#{pw}"
+    step 'mail rating error'
   else
-    modal.sign_in_link.wait_until_present(timeout: 10)
-    modal.sign_in_link.hover
-    step "set Mail username to #{usr}"
-    step "set Mail password to #{pw}"
-    step 'click the Sign In button in Mail'
-    step 'close whats new modal in mail'
-    step 'expect user is signed in'
+    step "browser: sign-in to mail as #{usr}/#{pw}"
+    step 'mail rating error'
   end
+end
 
+Then /^sign out$/ do
+  if TestSession.env.browser_test
+    user_drop_down = SdcWebsite.navigation.user_drop_down
+    landing_page = SdcWebsite.landing_page
+    4.times do
+      user_drop_down.signed_in_user.hover
+      user_drop_down.sign_out_link.safe_wait_until_present(timeout: 1)
+      user_drop_down.sign_out_link.click
+      landing_page.username.safe_wait_until_present(timeout: 2)
+      break if landing_page.username.present?
+    end
+    landing_page.username.safe_wait_until_present(timeout: 2)
+  end
+end
+
+Then /^browser: sign-in to mail as (.+)\/(.+)$/ do |usr, pw|
+  modal = SdcWebsite.navigation.mail_sign_in_modal
+  modal.sign_in_link.wait_until_present(timeout: 10)
+  modal.sign_in_link.hover
+  step "set Mail username to #{usr}"
+  step "set Mail password to #{pw}"
+  step 'click the Sign In button in Mail'
+  step 'close whats new modal in mail'
+  step 'expect user is signed in'
+end
+
+Then /^mobile: sign-in to mail as (.+)\/(.+)$/ do |usr, pw|
+  modal = SdcWebsite.navigation.mail_sign_in_modal
+  modal.hamburger_menu.click
+  modal.sign_in.safe_wait_until_present(timeout: 5)
+  modal.sign_in.click
+  step "sign-in to orders with #{usr}/#{pw}"
+end
+
+Then /^mail rating error$/ do
   rating_error = SdcWebsite.modals.rating_error
   rating_error.body.safe_wait_until_present(timeout: 2)
   if rating_error.body.present?
@@ -47,9 +79,6 @@ Then /^sign-in to mail$/ do
     rating_error.ok.click
     expect(error_msg).to eql('')
   end
-
-  TestData.hash[:username] = usr
-  TestData.hash[:password] = pw
 end
 
 
@@ -62,8 +91,9 @@ Then /^close whats new modal in mail$/ do
 end
 
 Then /^expect user is signed in$/ do
-  SdcWebsite.navigation.user_drop_down.signed_in_user.wait_until_present(timeout: 15, interval: 0.2)
-  expect(SdcWebsite.navigation.user_drop_down.signed_in_user.text_value).to include(TestData.hash[:username])
+  user_drop_down = SdcWebsite.navigation.user_drop_down
+  user_drop_down.signed_in_user.wait_until_present(timeout: 15, interval: 0.2)
+  expect(user_drop_down.signed_in_user.text_value).to eql TestData.hash[:username]
 end
 
 Then /^set Mail username(?: to (.+)|)$/ do |usr|

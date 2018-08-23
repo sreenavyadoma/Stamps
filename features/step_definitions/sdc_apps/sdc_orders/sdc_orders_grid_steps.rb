@@ -105,7 +105,7 @@ Then /^expect orders grid ship date is (?:correct|(.*))$/ do |str|
   if str
     str = TestHelper.grid_date_format(str)
     result = column.data(order_id)
-    expect(result).to eql(str)
+    expect(result.strip).to eql(str)
   end
 end
 
@@ -125,7 +125,7 @@ Then /^expect orders grid date printed is (?:correct|(.*))$/ do |str|
   if str
     str = TestHelper.grid_date_format(str)
     result = column.data(order_id)
-    expect(result).to eql(str)
+    expect(result.strip).to eql(str)
   end
 end
 
@@ -136,7 +136,7 @@ Then /^expect orders grid order date is populated$/ do
                TestData.hash[:order_id][order_id.to_i]
              end
   result = SdcGrid.grid_column(:order_date).data(order_id)
-  expect(result).not_to eql('')
+  expect(result.strip).not_to eql('')
 end
 
 Then /^expect orders grid age is (.+)$/ do |str|
@@ -155,14 +155,14 @@ Then /^expect orders grid recipient is (?:correct|(.*))$/ do |str|
   expect(order_id).to be_truthy
   sleep 2 unless TestSession.env.build_number
   result = SdcGrid.grid_column(:recipient).data(order_id)
-  expect(result).to eql str
+  expect(result.strip).to eql str
 end
 
 Then /^expect orders grid company is (?:correct|(.*))$/ do |str|
   str ||= TestData.hash[:company]
   order_id = TestData.hash[:order_id].values.last
   result = SdcGrid.grid_column(:company).data(order_id)
-  expect(result).to eql str
+  expect(result.strip).to eql str
 end
 
 Then /^expect orders grid address is (?:correct|(.*))$/ do |str|
@@ -171,49 +171,49 @@ Then /^expect orders grid address is (?:correct|(.*))$/ do |str|
   str ||= "#{address1}#{(address2.scan(/(\w+)/).size > 0) ? " #{address2}" : ""}"
   order_id = TestData.hash[:order_id].values.last
   result = SdcGrid.grid_column(:address).data(order_id)
-  expect(result).to eql str
+  expect(result.strip).to eql str
 end
 
 Then /^expect orders grid city is (?:correct|(.*))$/ do |str|
   str ||= TestData.hash[:city]
   order_id = TestData.hash[:order_id].values.last
   result = SdcGrid.grid_column(:city).data(order_id)
-  expect(result).to eql str
+  expect(result.strip).to eql str
 end
 
 Then /^expect orders grid state is (?:correct|(.*))$/ do |str|
   str ||= TestData.hash[:state] || TestData.hash[:province]
   order_id = TestData.hash[:order_id].values.last
   result = SdcGrid.grid_column(:state).data(order_id)
-  expect(result).to eql str
+  expect(result.strip).to eql str
 end
 
 Then /^expect orders grid zip is (?:correct|(.*))$/ do |str|
   str ||= TestData.hash[:zip] || TestData.hash[:postal_code]
   order_id = TestData.hash[:order_id].values.last
   result = SdcGrid.grid_column(:zip).data(order_id)
-  expect(result).to include(str)
+  expect(result.strip).to include(str)
 end
 
 Then /^expect orders grid country is (?:correct|(.*))$/ do |str|
   str ||= TestData.hash[:country]
   order_id = TestData.hash[:order_id].values.last
   result = SdcGrid.grid_column(:country).data(order_id)
-  expect(result).to include(str)
+  expect(result.strip).to include(str)
 end
 
 Then /^expect orders grid email is (?:correct|(.*))$/ do |str|
   str ||= TestData.hash[:email]
   order_id = TestData.hash[:order_id].values.last
   result = SdcGrid.grid_column(:email).data(order_id)
-  expect(result).to eql str
+  expect(result.strip).to eql str
 end
 
 Then /^expect orders grid phone is (?:correct|(.*))$/ do |str|
   str ||= TestData.hash[:phone]
   order_id = TestData.hash[:order_id].values.last
   result = SdcGrid.grid_column(:phone).data(order_id)
-  expect(result).to eql str
+  expect(result.strip).to eql str
 end
 
 Then /^expect orders grid weight is (\d+) lb. (\d+) oz.$/ do |lb, oz|
@@ -247,7 +247,7 @@ end
 Then /^expect orders grid item sku is (.+)$/ do |str|
   order_id = TestData.hash[:order_id].values.last
   result = SdcGrid.grid_column(:item_sku).data(order_id)
-  expect(result).to eql str
+  expect(result.strip).to eql str
 end
 
 Then /^expect orders grid item name is (.+)$/ do |str|
@@ -262,7 +262,7 @@ Then /^expect orders grid item name is (.+)$/ do |str|
     SdcPage.browser.wait_until(timeout: 2) { element.text_value.size.eql? str.size }
   end
   result = column.data(order_id)
-  expect(result).to eql str
+  expect(result.strip).to eql str
 end
 
 Then /^expect orders grid service is (?:correct|(.*))$/ do |str|
@@ -280,7 +280,7 @@ Then /^expect orders grid service ship-from is (?:correct|(.*))$/ do |str|
                TestData.hash[:order_id][order_id.to_i]
              end
   result = SdcGrid.grid_column(:ship_from).data(order_id)
-  expect(result).to eql str
+  expect(result.strip).to eql str
 end
 
 Then /^expect orders grid insured value is (?:correct|(.*))$/ do |str|
@@ -303,7 +303,7 @@ Then /^expect orders grid reference number is (?:correct|(.*))$/ do |str|
                TestData.hash[:order_id][order_id.to_i]
              end
   result = SdcGrid.grid_column(:reference_no).data(order_id)
-  expect(result).to eql str
+  expect(result.strip).to eql str
 end
 
 Then /^expect orders grid tracking service is (?:correct|(.*))$/ do |str|
@@ -314,7 +314,7 @@ Then /^expect orders grid tracking service is (?:correct|(.*))$/ do |str|
                TestData.hash[:order_id][order_id.to_i]
              end
   result = SdcGrid.grid_column(:tracking_service).data(order_id)
-  expect(result).to eql str
+  expect(result.strip).to eql str
 end
 
 Then /^expect orders grid order status is (.+)$/ do |str|
@@ -324,7 +324,7 @@ Then /^expect orders grid order status is (.+)$/ do |str|
                TestData.hash[:order_id][order_id.to_i]
              end
   result = SdcGrid.grid_column(:order_status).data(order_id)
-  expect(result).to eql str
+  expect(result.strip).to eql str
 end
 
 Then /^expect orders grid tracking number is populated$/ do
@@ -334,7 +334,7 @@ Then /^expect orders grid tracking number is populated$/ do
                TestData.hash[:order_id][order_id.to_i]
              end
   result = SdcGrid.grid_column(:tracking_no).data(order_id)
-  expect(result).not_to eql ''
+  expect(result.strip).not_to eql ''
 end
 
 Then /^expect orders grid order total is (?:correct|(.*))$/ do |str|

@@ -265,13 +265,21 @@ end
 Then /^expect order details ship-to phone is (?:correct|(.*))$/ do |str|
   step 'show order ship-to details'
   str ||= TestData.hash[:phone]
-  expect(SdcOrders.order_details.ship_to.domestic.phone.text_value).to eql(str)
+  domestic = SdcOrders.order_details.ship_to.domestic
+  domestic.phone.scroll_into_view
+  domestic.phone.wait_until_present(timeout: 10)
+  result = domestic.phone.text_value
+  expect(result).to eql(str)
 end
 
 Then /^expect order details ship-to email is (?:correct|(.*))$/ do |str|
   step 'show order ship-to details'
   str ||= TestData.hash[:email]
-  expect(SdcOrders.order_details.ship_to.domestic.email.text_value).to eql(str)
+  domestic = SdcOrders.order_details.ship_to.domestic
+  domestic.email.scroll_into_view
+  domestic.email.wait_until_present(timeout: 10)
+  result = domestic.email.text_value
+  expect(result).to eql(str)
 end
 
 Then /^[Oo]n [Oo]rder [Dd]etails form, [Hh]ide [Ii]nternational [Ss]hip-[Tt]o fields$/ do
@@ -598,7 +606,7 @@ Then /^set order details tracking to (.*)$/ do |str|
   tracking.drop_down.click
   3.times do
     selection.scroll_into_view
-    selection.wait_until_present(timeout: 2)
+    selection.safe_wait_until_present(timeout: 1)
     selection.safe_click
     break if tracking.text_field.text_value.eql?(str)
     tracking.drop_down.click unless selection.present?
@@ -760,6 +768,8 @@ Then /^set order details reference number to (?:a random string|(.*))$/ do |str|
   order_details.reference_no.scroll_into_view
   order_details.reference_no.set(str)
   order_details.reference_no.click
+  order_details.reference_no_label.click
+  order_details.reference_no_label.click
   TestData.hash[:reference_no] = str
   step 'Save Order Details data'
 end
