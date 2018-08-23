@@ -19,7 +19,7 @@ end
 
 module SdcGlobal
   class << self
-    attr_accessor :web_app, :scenario
+    attr_accessor :web_app, :scenario, :web_dev_device
   end
 end
 
@@ -292,6 +292,7 @@ module TestSession
         kill('taskkill /im chrome.exe /f')
         device_name = env.local_browser.to_s.gsub('gc','').gsub('_', ' ').strip
         driver = SdcTest.browser_emulator_options(device_name)
+        SdcGlobal.web_dev_device = device_name
         @driver = SdcDriverDecorator.new(Watir::Browser.new(driver, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
         @driver.driver.manage.timeouts.page_load = 60
 

@@ -18,7 +18,7 @@ end
 
 Then /^SDCW: click get started button$/ do
   common_page = StampsWebsite.common_page
-  if TestSession.env.local_browser.include('gc_') || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
     common_page.get_started_xs.click!
   else
    common_page.get_started.click!
@@ -50,7 +50,7 @@ end
 
 Then /^SDCW: click FAQ$/ do
    common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
     step 'SDCW: click hamburger button'
     common_page.faq_xs.click
   else
@@ -107,7 +107,7 @@ end
 Then /^SDCW: click learn more --> small office mailers link$/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
     step 'SDCW: click hamburger --> learn more'
     common_page.small_office_mailers_xs.click
   else
@@ -132,7 +132,7 @@ end
 Then /^SDCW: click learn more --> online sellers link$/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
     step 'SDCW: click hamburger --> learn more'
     common_page.online_sellers_xs.click
   else
@@ -157,7 +157,7 @@ end
 
 Then /^SDCW: click learn more --> warehouse shippers link$/ do
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
     step 'SDCW: click hamburger --> learn more'
     common_page.warehouse_shippers_xs.click
   else
@@ -182,7 +182,7 @@ end
 
 Then /^SDCW: click learn more --> corporate postage solutions link$/ do
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
     step 'SDCW: click hamburger --> learn more'
     common_page.corporate_postage_solutions_xs.click
   else
