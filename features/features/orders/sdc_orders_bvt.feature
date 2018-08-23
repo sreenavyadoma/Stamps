@@ -456,8 +456,7 @@ Feature:  BVT tests for Orders
     #Then in Orders Grid, Sort Order Date in Descending Order
     Then sign out
 
-  @bvt_orders_ui_validation
-  @bvt_orders_ui_validation_order_details
+  @bvt_orders_ui_validation_order_details_form
   Scenario:  BVT UI Validation for Single Order Detail form
     Then sign-in to orders
     Then add new order
@@ -501,9 +500,24 @@ Feature:  BVT tests for Orders
     Then add order details item 1, qty 1, id ID 1, description Description 1
     Then add order details item 2, qty 2, id random string, description random string
     Then add order details item 3, qty 3, id ID 3, description random string
+    Then expect filter panel search results tab is not present
+    Then expect orders filter awaiting shippment tab is present
+    Then expect orders filter shipped tab is present
+    Then expect orders filter canceled tab is present
+    Then expect orders filter on hold tab is present
+    Then search orders for random expecting to find at least 0
+    Then expect filter panel search results tab is present
+    Then remove filter panel search results tab
+    Then collapse orders filter panel
+    Then expand orders filter panel
+    Then expect orders toolbar print is present
+    Then expect orders toolbar add is present
+    Then expect orders toolbar move is present
+    Then expect orders toolbar tags is present
+    Then expect orders toolbar more actions is present
     Then sign out
 
-  @bvt_orders_ui_validation
+  @bvt_orders_ui_validation_bulk_update_form
   Scenario:  BVT UI Validation for Bulk Update form
     Then sign-in to orders
     Then add new order
@@ -558,24 +572,4 @@ Feature:  BVT tests for Orders
     Then add customs associated item 2, description Item 2, qty 2, Price 2, Made In Japan, Tariff 2
     Then check customs form i agree to the usps privacy act statement
     Then close customs information form
-    Then sign out
-
-  @bvt_orders_ui_validation
-  Scenario:  BVT UI Validation for Filter tab and toolbar
-    Then sign-in to orders
-    Then expect filter panel search results tab is not present
-    Then expect orders filter awaiting shippment tab is present
-    Then expect orders filter shipped tab is present
-    Then expect orders filter canceled tab is present
-    Then expect orders filter on hold tab is present
-    Then search orders for random expecting to find at least 0
-    Then expect filter panel search results tab is present
-    Then remove filter panel search results tab
-    Then collapse orders filter panel
-    Then expand orders filter panel
-    Then expect orders toolbar print is present
-    Then expect orders toolbar add is present
-    Then expect orders toolbar move is present
-    Then expect orders toolbar tags is present
-    Then expect orders toolbar more actions is present
     Then sign out
