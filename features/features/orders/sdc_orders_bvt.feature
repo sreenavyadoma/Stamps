@@ -517,7 +517,7 @@ Feature:  BVT tests for Orders
     Then expect orders toolbar more actions is present
     Then sign out
 
-  @bvt_bulk_update_form_validation
+  @bvt_form_validation_bulk_update
   Scenario:  BVT UI Validation for Bulk Update form
     Then sign-in to orders
     Then add new order
