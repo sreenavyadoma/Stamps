@@ -1,20 +1,8 @@
 Mac Latest Chrome Staging
-bvtstgosxgc1 rob cukes
+bvtstgosxgc1 mac_chrome » bvt_form_validation_bulk_update
 bvtstgosxgc2 mac_chrome_bvt_shipping_address_management
 bvtstgosxgc3 mac_chrome » bvt_address_cleansing
 bvtstgosxgc4 bvt_orders_ship_date
-bvtstgosxgc5 mac_chrome » bvt_form_validation_bulk_update
-bvtstgosxgc6
-bvtstgosxgc7
-bvtstgosxgc8
-bvtstgosxgc9
-bvtstgosxgc10
-bvtstgosxgc11
-bvtstgosxgc12
-bvtstgosxgc13
-bvtstgosxgc14
-bvtstgosxgc15
-bvtstgosxgc16
 
 Win10 Chrome Beta Staging
 bvtstgw10gc1 win10_chrome_beta » bvt_address_cleansing
