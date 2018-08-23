@@ -14,7 +14,7 @@ Feature:  BVT tests for Orders
   Scenario: Orders Authentication Test
     # sign-in to orders
     Then sign-in to orders
-    # sign-out of SDC Website
+    Then sign out
 
 
   @bvt_new_order
