@@ -18,7 +18,7 @@ end
 
 Then /^SDCW: click get started button$/ do
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if TestSession.env.local_browser.include('gc_') || TestSession.env.mobile_device
     common_page.get_started_xs.click!
   else
    common_page.get_started.click!
