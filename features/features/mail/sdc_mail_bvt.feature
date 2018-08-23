@@ -102,8 +102,8 @@ Feature:  Mail BVT
 
   @mail_authentication_mobile
   Scenario: Mail - Authentication
-    #Then sign-in to mail
-    Then sign-in to orders
+    Then sign-in to mail
+    #Then sign-in to orders
     Then sign out
 
   @bvt_mail_piece_validation
