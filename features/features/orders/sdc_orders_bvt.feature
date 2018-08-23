@@ -456,7 +456,7 @@ Feature:  BVT tests for Orders
     #Then in Orders Grid, Sort Order Date in Descending Order
     Then sign out
 
-  @bvt_orders_ui_validation_order_details_form
+  @bvt_orders_details_form_validation
   Scenario:  BVT UI Validation for Single Order Detail form
     Then sign-in to orders
     Then add new order
@@ -517,7 +517,7 @@ Feature:  BVT tests for Orders
     Then expect orders toolbar more actions is present
     Then sign out
 
-  @bvt_orders_ui_validation_bulk_update_form
+  @bvt_bulk_update_form_validation
   Scenario:  BVT UI Validation for Bulk Update form
     Then sign-in to orders
     Then add new order
