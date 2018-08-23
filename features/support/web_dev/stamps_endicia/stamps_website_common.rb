@@ -20,7 +20,6 @@ module StampsWebsite
     page_objects(:online_sellers_xs, index: 1) { {xpath: '//a[contains(text(),"Online Sellers")]' } }
     page_objects(:warehouse_shippers_xs, index: 1) { {xpath: '//a[contains(text(),"Warehouse Shippers")]' } }
     page_objects(:corporate_postage_solutions_xs, index: 1) { {xpath: '//a[contains(text(),"Corporate Postage Solutions")]' } }
-    page_objects(:corporate_postage_solutions_xs, index: 0) { {xpath: '//a[contains(text(),"Customer Support")]' } }
     page_objects(:faq_xs, index: 1) { {xpath: '//a[contains(text(),"FAQ")]'} }
     page_objects(:customer_support_xs, index: 0) { {xpath: '//a[contains(text(),"Customer Support")]'} }
     page_object(:customer_log_in_xs) { {xpath: '//a[contains(text(),"Customer Log-in")]'} }

@@ -71,6 +71,7 @@ end
 Then /^SDCW: click hamburger button$/ do
   menu_xs = StampsWebsite.common_page.menu_xs
   menu_xs.wait_until_present(timeout: 5)
+  step 'pause for 1 second'
   att_value = menu_xs.attribute_value 'class'
   menu_xs.click if att_value == 'navbar-toggle collapsed'
   step 'pause for 1 second'
@@ -95,6 +96,8 @@ end
 Then /^SDCW: click hamburger --> learn more$/ do
   step 'SDCW: click hamburger button'
   menu_learn_more_xs = StampsWebsite.common_page.menu_learn_more_xs
+  menu_learn_more_xs.wait_until_present(timeout: 5)
+  step 'pause for 1 second'
   att_value = menu_learn_more_xs.attribute_value 'class'
   menu_learn_more_xs.click if att_value == 'list-group-item list-group-item-success collapsed'
   step 'pause for 1 second'
@@ -165,7 +168,7 @@ Then /^SDCW: click learn more --> warehouse shippers link$/ do
     end
     common_page.warehouse_shippers.click
   end
-  step 'pause for 1 second'
+  step 'pause for 2 second'
 
   case TestSession.env.url
     when :qacc
@@ -190,7 +193,7 @@ Then /^SDCW: click learn more --> corporate postage solutions link$/ do
     end
     common_page.corporate_postage_solutions.click
   end
-  step 'pause for 1 second'
+  step 'pause for 2 second'
 
   case TestSession.env.url
     when :qacc
@@ -217,17 +220,58 @@ Then /^SDCW: click hamburger --> customer log-in/ do
   step 'pause for 2 second'
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://print.qacc.stamps.com/SignIn/')
+      expect(SdcPage.browser.url).to eql('https://print.qacc.stamps.com/SignIn/?')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://print.testing.stamps.com/SignIn/')
+      expect(SdcPage.browser.url).to eql('https://print.testing.stamps.com/SignIn/?')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://print.stamps.com/SignIn/')
+      expect(SdcPage.browser.url).to eql('https://print.stamps.com/SignIn/?')
   end
 end
 
-Then /^SDCW: click hamburger --> call us 1-888-434-0055/ do
+Then /^SDCW: expect hamburger --> call us 1-888-434-0055 to be present/ do
   step 'SDCW: click hamburger button'
-  StampsWebsite.common_page.call_us_xs.click
-  step 'pause for 2 second'
-  SdcPage.browser.alert.text
+  call_us_xs = StampsWebsite.common_page.call_us_xs
+  expect(call_us_xs.text_value).to be_present
+  expect(call_us_xs.text_value).to eql('Call Us 1-888-434-0055')
+end
+
+
+Then /^SDCW: verify default elements on header for browser$/ do
+  step 'SDCW: navigate to postage online page'
+  step 'SDCW: click stamps website logo'
+  step 'SDCW: navigate back'
+  step 'SDCW: click get started button'
+  step 'SDCW: navigate back'
+  step 'SDCW: click get log in button'
+  step 'SDCW: navigate back'
+  step 'SDCW: click learn more --> small office mailers link'
+  step 'SDCW: navigate back'
+  step 'SDCW: click learn more --> online sellers link'
+  step 'SDCW: navigate back'
+  step 'SDCW: click learn more --> warehouse shippers link'
+  step 'SDCW: navigate back'
+  step 'SDCW: click learn more --> corporate postage solutions link'
+  step 'SDCW: navigate back'
+end
+
+Then /^SDCW: verify default elements on header for mobile$/ do
+  step 'SDCW: navigate to postage online page'
+  step 'SDCW: click stamps website logo'
+  step 'SDCW: navigate back'
+  step 'SDCW: click get started button'
+  step 'SDCW: navigate back'
+  step 'SDCW: click hamburger --> get started link'
+  step 'SDCW: navigate back'
+  step 'SDCW: click learn more --> small office mailers link'
+  step 'SDCW: navigate back'
+  step 'SDCW: click learn more --> online sellers link'
+  step 'SDCW: navigate back'
+  step 'SDCW: click learn more --> warehouse shippers link'
+  step 'SDCW: navigate back'
+  step 'SDCW: click learn more --> corporate postage solutions link'
+  step 'SDCW: navigate back'
+  step 'SDCW: click hamburger --> customer support'
+  step 'SDCW: click hamburger --> customer log-in'
+  step 'SDCW: navigate back'
+  step 'SDCW: expect hamburger --> call us 1-888-434-0055 to be present'
 end
