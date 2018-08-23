@@ -1433,8 +1433,8 @@ Cucumber::Rake::Task.new(:bvt_purchasing) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:bvt_orders_details_form_validation) do |t|
-  t.profile = 'bvt_orders_details_form_validation'
+Cucumber::Rake::Task.new(:bvt_form_validation_orders_details) do |t|
+  t.profile = 'bvt_form_validation_orders_details'
   t.cucumber_opts = "-p cuke_reports"
 end
 

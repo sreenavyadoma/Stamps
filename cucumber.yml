@@ -255,7 +255,7 @@ bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_internati
 bvt_shipstation_search: --tags @bvt_shipstation_search --guess 
 bvt_orders_ship_date: --tags @bvt_orders_ship_date --guess WEB_APP=orders
 bvt_orders_ship_date_calendar: --tags @bvt_orders_ship_date_calendar --guess WEB_APP=orders
-bvt_orders_details_form_validation: --tags @bvt_orders_details_form_validation --guess WEB_APP=orders
+bvt_form_validation_orders_details: --tags @bvt_form_validation_orders_details --guess WEB_APP=orders
 bvt_form_validation_bulk_update: --tags @bvt_form_validation_bulk_update --guess WEB_APP=orders
 bvt_all_tests: --tags @bvt_all_tests --guess WEB_APP=orders
 

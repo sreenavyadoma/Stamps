@@ -456,7 +456,7 @@ Feature:  BVT tests for Orders
     #Then in Orders Grid, Sort Order Date in Descending Order
     Then sign out
 
-  @bvt_orders_details_form_validation
+  @bvt_form_validation_orders_details
   Scenario:  BVT UI Validation for Single Order Detail form
     Then sign-in to orders
     Then add new order
