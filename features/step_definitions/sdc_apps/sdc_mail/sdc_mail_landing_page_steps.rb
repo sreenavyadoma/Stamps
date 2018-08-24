@@ -28,7 +28,7 @@ Then /^sign-in to mail$/ do
   TestData.hash[:password] = pw
   if TestSession.env.mobile_device
     step "mobile: sign-in to mail as #{usr}/#{pw}"
-  elsif SdcPage.browser.window.size.width < 1195
+  elsif TestSession.env.responsive
     step "mobile: sign-in to mail as #{usr}/#{pw}"
     step 'mail rating error'
   else
@@ -96,7 +96,7 @@ end
 
 Then /^expect user is signed in$/ do
   user_drop_down = SdcWebsite.navigation.user_drop_down
-  user_drop_down.signed_in_user.wait_until_present(timeout: 15, interval: 0.2)
+  user_drop_down.signed_in_user.safe_wait_until_present(timeout: 30)
   expect(user_drop_down.signed_in_user.text_value).to eql TestData.hash[:username]
 end
 
@@ -158,7 +158,7 @@ Then /^[Cc]lick the [Ss]ign [Ii]n button in [Mm]ail$/ do
     modal.sign_in_link.hover unless modal.sign_in.present?
     modal.sign_in.click
     verifying.safe_wait_until_present(timeout: 20)
-    verifying.safe_wait_while_present(timeout: 60)
+    verifying.safe_wait_while_present(timeout: 70)
   end
 end
 
