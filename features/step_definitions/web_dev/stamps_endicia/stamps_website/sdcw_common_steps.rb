@@ -752,3 +752,124 @@ Then /^SDCW: click footer contact us$/ do
       expect(SdcPage.browser.url).to eql('https://stamps.com/contact-us/')
   end
 end
+
+#### developers ####
+Then /^SDCW: click footer developer overview$/ do
+
+  common_page = StampsWebsite.common_page
+  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+    # common_page.small_office_mailers_xs.click to do
+  else
+    if TestSession.env.local_browser == :edge
+      common_page.developer_overview.click
+    else
+      common_page.developer_overview.scroll_into_view
+      common_page.developer_overview.hover
+      common_page.developer_overview.click
+    end
+  end
+  step 'pause for 3 second'
+  SdcPage.browser.window(:title => "Stamps.com").use
+
+  case TestSession.env.url
+    when :qacc
+      expect(SdcPage.browser.url).to eql('https://developer.qacc.stamps.com/developer/')
+    when :stg
+      expect(SdcPage.browser.url).to eql('https://developer.staging.stamps.com/developer/')
+    when :prod
+      expect(SdcPage.browser.url).to eql('https://stamps.com/developer/')
+  end
+
+  SdcPage.browser.window(:title => "Stamps.com").close
+  step 'pause for 1 second'
+end
+
+Then /^SDCW: click footer developer registration$/ do
+
+  common_page = StampsWebsite.common_page
+  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+    # common_page.small_office_mailers_xs.click to do
+  else
+    if TestSession.env.local_browser == :edge
+      common_page.developer_reg.click
+    else
+      common_page.developer_reg.scroll_into_view
+      common_page.developer_reg.hover
+      common_page.developer_reg.click
+    end
+  end
+  step 'pause for 3 second'
+  SdcPage.browser.window(index: 1).use
+
+  case TestSession.env.url
+    when :qacc
+      expect(SdcPage.browser.url).to eql('https://developer.qacc.stamps.com/developer/register/')
+    when :stg
+      expect(SdcPage.browser.url).to eql('https://developer.staging.stamps.com/developer/register/')
+    when :prod
+      expect(SdcPage.browser.url).to eql('https://stamps.com/developer/register/')
+  end
+
+  SdcPage.browser.window(index: 1).close
+  step 'pause for 1 second'
+end
+
+Then /^SDCW: click footer developer reference guide$/ do
+
+  common_page = StampsWebsite.common_page
+  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+    # common_page.small_office_mailers_xs.click to do
+  else
+    if TestSession.env.local_browser == :edge
+      common_page.developer_reff.click
+    else
+      common_page.developer_reff.scroll_into_view
+      common_page.developer_reff.hover
+      common_page.developer_reff.click
+    end
+  end
+  step 'pause for 3 second'
+  SdcPage.browser.window(:title => "Stamps.com (SWSIM) – API Reference Guide").use
+
+  case TestSession.env.url
+    when :qacc
+      expect(SdcPage.browser.url).to eql('https://developer.qacc.stamps.com/developer/docs/swsimv71.html#stamps-api-reference-guide')
+    when :stg
+      expect(SdcPage.browser.url).to eql('https://developer.staging.stamps.com/developer/docs/swsimv71.html#stamps-api-reference-guide')
+    when :prod
+      expect(SdcPage.browser.url).to eql('https://developer.stamps.com/developer/docs/swsimv71.html#stamps-api-reference-guide')
+  end
+
+  SdcPage.browser.window(:title => "Stamps.com (SWSIM) – API Reference Guide").close
+  step 'pause for 1 second'
+end
+
+Then /^SDCW: click footer developer products$/ do
+
+  common_page = StampsWebsite.common_page
+  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+    # common_page.small_office_mailers_xs.click to do
+  else
+    if TestSession.env.local_browser == :edge
+      common_page.developer_products.click
+    else
+      common_page.developer_products.scroll_into_view
+      common_page.developer_products.hover
+      common_page.developer_products.click
+    end
+  end
+  step 'pause for 3 second'
+  SdcPage.browser.window(:title => "Stamps.com").use
+
+  case TestSession.env.url
+    when :qacc
+      expect(SdcPage.browser.url).to eql('https://developer.qacc.stamps.com/developer/products/')
+    when :stg
+      expect(SdcPage.browser.url).to eql('https://developer.staging.stamps.com/developer/products/')
+    when :prod
+      expect(SdcPage.browser.url).to eql('https://developer.stamps.com/developer/products/')
+  end
+
+  SdcPage.browser.window(:title => "Stamps.com").close
+  step 'pause for 1 second'
+end

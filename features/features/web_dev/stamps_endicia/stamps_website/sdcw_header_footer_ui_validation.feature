@@ -57,4 +57,4 @@ Feature: Stamps Website: Header Footer
     Then SDCW: click footer developer overview
     Then SDCW: click footer developer registration
     Then SDCW: click footer developer reference guide
-    Then SDCW: click footer products
+    Then SDCW: click footer developer products
