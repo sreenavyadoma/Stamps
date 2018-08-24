@@ -399,6 +399,20 @@ Then /^SDCW: click footer supplies$/ do
       common_page.footer_supplies.click
     end
   end
+  step 'pause for 3 seconds'
+  SdcPage.browser.window(:title => "Product Catalog | Stamps.com").use
+
+  case TestSession.env.url
+    when :qacc
+      expect(SdcPage.browser.url).to eql('https://store.corp.stamps.com/Store/')
+    when :stg
+      expect(SdcPage.browser.url).to eql('https://store.staging.stamps.com/Store/')
+    when :prod
+      expect(SdcPage.browser.url).to eql('https://store.corp.stamps.com/Store/')
+  end
+
+  SdcPage.browser.window(:title => "Product Catalog | Stamps.com").close
+  step 'pause for 1 second'
 end
 
 ####### support #####
@@ -871,5 +885,140 @@ Then /^SDCW: click footer developer products$/ do
   end
 
   SdcPage.browser.window(:title => "Stamps.com").close
+  step 'pause for 1 second'
+end
+
+####### follow us #####
+Then /^SDCW: click footer facebook$/ do
+
+  common_page = StampsWebsite.common_page
+  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+    # common_page.small_office_mailers_xs.click to do
+  else
+    if TestSession.env.local_browser == :edge
+      common_page.facebook.click
+    else
+      common_page.facebook.scroll_into_view
+      common_page.facebook.hover
+      common_page.facebook.click
+    end
+  end
+  step 'pause for 3 second'
+  SdcPage.browser.window(:title => "Stamps.com - Home | Facebook").use
+
+  expect(SdcPage.browser.url).to eql('https://www.facebook.com/stamps.com/')
+
+  SdcPage.browser.window(:title => "Stamps.com - Home | Facebook").close
+  step 'pause for 1 second'
+end
+
+Then /^SDCW: click footer twitter/ do
+
+  common_page = StampsWebsite.common_page
+  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+    # common_page.small_office_mailers_xs.click to do
+  else
+    if TestSession.env.local_browser == :edge
+      common_page.twitter.click
+    else
+      common_page.twitter.scroll_into_view
+      common_page.twitter.hover
+      common_page.twitter.click
+    end
+  end
+  step 'pause for 3 second'
+  SdcPage.browser.window(:title => "Stamps.com (@StampsCom) | Twitter").use
+
+  expect(SdcPage.browser.url).to eql('https://twitter.com/stampscom/')
+
+  SdcPage.browser.window(:title => "Stamps.com (@StampsCom) | Twitter").close
+  step 'pause for 1 second'
+end
+
+Then /^SDCW: click footer google plus/ do
+
+  common_page = StampsWebsite.common_page
+  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+    # common_page.small_office_mailers_xs.click to do
+  else
+    if TestSession.env.local_browser == :edge
+      common_page.google_plus.click
+    else
+      common_page.google_plus.scroll_into_view
+      common_page.google_plus.hover
+      common_page.google_plus.click
+    end
+  end
+  step 'pause for 3 second'
+  SdcPage.browser.window(:title => "Stamps.com - Google+").use
+
+  expect(SdcPage.browser.url).to eql('https://plus.google.com/+stampscom')
+
+  SdcPage.browser.window(:title => "Stamps.com - Google+").close
+  step 'pause for 1 second'
+end
+
+Then /^SDCW: click footer youtube/ do
+
+  common_page = StampsWebsite.common_page
+  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+    # common_page.small_office_mailers_xs.click to do
+  else
+    if TestSession.env.local_browser == :edge
+      common_page.youtube.click
+    else
+      common_page.youtube.scroll_into_view
+      common_page.youtube.hover
+      common_page.youtube.click
+    end
+  end
+  step 'pause for 3 second'
+  SdcPage.browser.window(index: 1).use
+
+  expect(SdcPage.browser.url).to eql('https://www.youtube.com/user/StampscomVideo')
+
+  SdcPage.browser.window(index: 1).close
+  step 'pause for 1 second'
+end
+
+Then /^SDCW: click footer linkedin/ do
+
+  common_page = StampsWebsite.common_page
+  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+    # common_page.small_office_mailers_xs.click to do
+  else
+    if TestSession.env.local_browser == :edge
+      common_page.linkedin.click
+    else
+      common_page.linkedin.scroll_into_view
+      common_page.linkedin.hover
+      common_page.linkedin.click
+    end
+  end
+  step 'pause for 3 second'
+  SdcPage.browser.window(:title => "LinkedIn: Log In or Sign Up").close
+  step 'pause for 1 second'
+end
+
+Then /^SDCW: click footer blog/ do
+
+  common_page = StampsWebsite.common_page
+  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+    # common_page.small_office_mailers_xs.click to do
+  else
+    if TestSession.env.local_browser == :edge
+      common_page.blog.click
+    else
+      common_page.blog.scroll_into_view
+      common_page.blog.hover
+      common_page.blog.click
+    end
+  end
+  step 'pause for 3 second'
+  SdcPage.browser.window(:title => "Stamps.com Blog - Tips and Info on USPS Shipping Software").use
+
+  expect(SdcPage.browser.url).to eql('http://blog.stamps.com/')
+
+  SdcPage.browser.window(:title => "Stamps.com Blog - Tips and Info on USPS Shipping Software").close
   step 'pause for 1 second'
 end
