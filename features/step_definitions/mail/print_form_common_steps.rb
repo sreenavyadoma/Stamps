@@ -225,11 +225,11 @@ Then /^select print form service (.*)$/ do |str|
   TestData.hash[:service] = str
   service = SdcMail.print_form.service
   service.drop_down.click
-  service.service_element(:service, str)
-  service.inline_cost_element(:inline_cost, str)
-  service.drop_down.click unless service.service.present?
-  service.service.scroll_into_view
-  service.service.click
+  service_element = service.service_element(:service, str)
+  #service.inline_cost_element(:inline_cost, str)
+  service.drop_down.click unless service_element.present?
+  service_element.scroll_into_view
+  service_element.click
   expect(service.text_field.text_value).to include str
 end
 
