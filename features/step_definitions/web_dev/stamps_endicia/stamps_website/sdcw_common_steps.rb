@@ -472,7 +472,7 @@ Then /^SDCW: click footer how to videos$/ do
     end
   end
   step 'pause for 5 second'
-  SdcPage.browser.window(:title => "(16) Stamps.com - YouTube").use
+  SdcPage.browser.window(:title => "Stamps.com - YouTube").use
 
   case TestSession.env.url
     when :qacc
@@ -483,7 +483,7 @@ Then /^SDCW: click footer how to videos$/ do
       expect(SdcPage.browser.url).to eql('https://www.youtube.com/user/StampscomVideo')
   end
 
-  SdcPage.browser.window(:title => "(16) Stamps.com - YouTube").close
+  SdcPage.browser.window(:title => "Stamps.com - YouTube").close
   step 'pause for 1 second'
 end
 
@@ -540,4 +540,215 @@ Then /^SDCW: click footer system status$/ do
 
   SdcPage.browser.window(:title => "Status.Stamps.com Status").close
   step 'pause for 1 second'
+end
+
+####### company stuff #####
+Then /^SDCW: click footer about us$/ do
+
+  common_page = StampsWebsite.common_page
+  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+    # common_page.small_office_mailers_xs.click to do
+  else
+    if TestSession.env.local_browser == :edge
+      common_page.about_us.click
+    else
+      common_page.about_us.scroll_into_view
+      common_page.about_us.hover
+      common_page.about_us.click
+    end
+  end
+  step 'pause for 1 second'
+  case TestSession.env.url
+    when :qacc
+      expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/company-info/')
+    when :stg
+      expect(SdcPage.browser.url).to eql('https://sdcwebsite.staging.stamps.com/company-info/')
+    when :prod
+      expect(SdcPage.browser.url).to eql('https://stamps.com/company-info/')
+  end
+end
+
+Then /^SDCW: click footer shipping partners$/ do
+
+  common_page = StampsWebsite.common_page
+  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+    # common_page.small_office_mailers_xs.click to do
+  else
+    if TestSession.env.local_browser == :edge
+      common_page.shipping_partners.click
+    else
+      common_page.shipping_partners.scroll_into_view
+      common_page.shipping_partners.hover
+      common_page.shipping_partners.click
+    end
+  end
+  step 'pause for 1 second'
+  case TestSession.env.url
+    when :qacc
+      expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/shipping/integrations/')
+    when :stg
+      expect(SdcPage.browser.url).to eql('https://sdcwebsite.staging.stamps.com/shipping/integrations/')
+    when :prod
+      expect(SdcPage.browser.url).to eql('https://stamps.com/shipping/integrations/')
+  end
+end
+
+Then /^SDCW: click footer privacy policy$/ do
+
+  common_page = StampsWebsite.common_page
+  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+    # common_page.small_office_mailers_xs.click to do
+  else
+    if TestSession.env.local_browser == :edge
+      common_page.privacy_policy.click
+    else
+      common_page.privacy_policy.scroll_into_view
+      common_page.privacy_policy.hover
+      common_page.privacy_policy.click
+    end
+  end
+  step 'pause for 1 second'
+  case TestSession.env.url
+    when :qacc
+      expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/privacy-policy/')
+    when :stg
+      expect(SdcPage.browser.url).to eql('https://sdcwebsite.staging.stamps.com/privacy-policy/')
+    when :prod
+      expect(SdcPage.browser.url).to eql('https://stamps.com/privacy-policy/')
+  end
+end
+
+Then /^SDCW: click footer investor info$/ do
+
+  common_page = StampsWebsite.common_page
+  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+    # common_page.small_office_mailers_xs.click to do
+  else
+    if TestSession.env.local_browser == :edge
+      common_page.investor_info.click
+    else
+      common_page.investor_info.scroll_into_view
+      common_page.investor_info.hover
+      common_page.investor_info.click
+    end
+  end
+  step 'pause for 3 second'
+  SdcPage.browser.window(:title => "Investor Relations | Stamps.com").use
+
+  case TestSession.env.url
+    when :qacc
+      expect(SdcPage.browser.url).to eql('http://investor.stamps.com/')
+    when :stg
+      expect(SdcPage.browser.url).to eql('http://investor.stamps.com/')
+    when :prod
+      expect(SdcPage.browser.url).to eql('http://investor.stamps.com/')
+  end
+
+  SdcPage.browser.window(:title => "Investor Relations | Stamps.com").close
+  step 'pause for 1 second'
+end
+
+Then /^SDCW: click footer careers$/ do
+
+  common_page = StampsWebsite.common_page
+  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+    # common_page.small_office_mailers_xs.click to do
+  else
+    if TestSession.env.local_browser == :edge
+      common_page.careers.click
+    else
+      common_page.careers.scroll_into_view
+      common_page.careers.hover
+      common_page.careers.click
+    end
+  end
+  step 'pause for 3 second'
+  SdcPage.browser.window(:title => "Careers Center |").use
+
+  case TestSession.env.url
+    when :qacc
+      expect(SdcPage.browser.url).to eql('https://careers-stamps.icims.com/jobs/intro?hashed=-435738745&mobile=false&width=970&height=500&bga=true&needsRedirect=false&jan1offset=-480&jun1offset=-420')
+    when :stg
+      expect(SdcPage.browser.url).to eql('https://careers-stamps.icims.com/jobs/intro?hashed=-435738745&mobile=false&width=970&height=500&bga=true&needsRedirect=false&jan1offset=-480&jun1offset=-420')
+    when :prod
+      expect(SdcPage.browser.url).to eql('https://careers-stamps.icims.com/jobs/intro?hashed=-435738745&mobile=false&width=970&height=500&bga=true&needsRedirect=false&jan1offset=-480&jun1offset=-420')
+  end
+
+  SdcPage.browser.window(:title => "Careers Center |").close
+  step 'pause for 1 second'
+end
+
+Then /^SDCW: click footer affiliates$/ do
+
+  common_page = StampsWebsite.common_page
+  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+    # common_page.small_office_mailers_xs.click to do
+  else
+    if TestSession.env.local_browser == :edge
+      common_page.affiliates.click
+    else
+      common_page.affiliates.scroll_into_view
+      common_page.affiliates.hover
+      common_page.affiliates.click
+    end
+  end
+  step 'pause for 3 second'
+  case TestSession.env.url
+    when :qacc
+      expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/affiliates/')
+    when :stg
+      expect(SdcPage.browser.url).to eql('https://sdcwebsite.staging.stamps.com/affiliates/')
+    when :prod
+      expect(SdcPage.browser.url).to eql('https://stamps.com/affiliates/')
+  end
+end
+
+Then /^SDCW: click footer site map$/ do
+
+  common_page = StampsWebsite.common_page
+  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+    # common_page.small_office_mailers_xs.click to do
+  else
+    if TestSession.env.local_browser == :edge
+      common_page.site_map.click
+    else
+      common_page.site_map.scroll_into_view
+      common_page.site_map.hover
+      common_page.site_map.click
+    end
+  end
+  step 'pause for 1 second'
+  case TestSession.env.url
+    when :qacc
+      expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/sitemap/')
+    when :stg
+      expect(SdcPage.browser.url).to eql('https://sdcwebsite.staging.stamps.com/sitemap/')
+    when :prod
+      expect(SdcPage.browser.url).to eql('https://stamps.com/sitemap/')
+  end
+end
+
+Then /^SDCW: click footer contact us$/ do
+
+  common_page = StampsWebsite.common_page
+  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+    # common_page.small_office_mailers_xs.click to do
+  else
+    if TestSession.env.local_browser == :edge
+      common_page.contact_us.click
+    else
+      common_page.contact_us.scroll_into_view
+      common_page.contact_us.hover
+      common_page.contact_us.click
+    end
+  end
+  step 'pause for 1 second'
+  case TestSession.env.url
+    when :qacc
+      expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/contact-us/')
+    when :stg
+      expect(SdcPage.browser.url).to eql('https://sdcwebsite.staging.stamps.com/contact-us/')
+    when :prod
+      expect(SdcPage.browser.url).to eql('https://stamps.com/contact-us/')
+  end
 end

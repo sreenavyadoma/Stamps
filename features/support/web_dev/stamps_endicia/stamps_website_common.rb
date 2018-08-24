@@ -39,7 +39,7 @@ module StampsWebsite
     ## supports ##
     page_object(:download_software) {{xpath: '//ul/li/a[contains(@href , "download")]'}}
     page_object(:customer_support) {{xpath: '//ul/li/a[contains(@href , "custhelp")]'}}
-    page_objects(:how_to_videos,  index: 0) {{xpath: '//ul/li/a[contains(@href , "StampscomVideo")]'}}
+    page_object(:how_to_videos) {{xpath: '//ul/li/a[contains(text() , "How To Videos")]'}}
     page_object(:faq) {{xpath: '//ul/li/a[contains(@href , "faqs")]'}}
     page_object(:system_status) {{xpath: '//ul/li/a[contains(@href , "status")]'}}
     ## company stuff ##
@@ -48,21 +48,21 @@ module StampsWebsite
     page_object(:privacy_policy) {{xpath: '//ul/li/a[contains(@href , "privacy-policy")]'}}
     page_object(:investor_info) {{xpath: '//ul/li/a[contains(@href , "investor")]'}}
     page_object(:careers) {{xpath: '//ul/li/a[contains(@href , "careers")]'}}
-    page_object(:Affiliates) {{xpath: '//ul/li/a[contains(@href , "affiliates")]'}}
+    page_object(:affiliates) {{xpath: '//ul/li/a[contains(@href , "affiliates")]'}}
     page_object(:site_map) {{xpath: '//ul/li/a[contains(@href , "sitemap")]'}}
     page_object(:contact_us) {{xpath: '//ul/li/a[contains(@href , "contact-us")]'}}
     ## developers ##
-    page_objects(:footer_supplies,  index: 5) {{xpath: '//div[@id="footer-default-content"]/div[@class="col-sm-2"]/ul/li'}}
-    page_objects(:footer_supplies,  index: 5) {{xpath: '//div[@id="footer-default-content"]/div[@class="col-sm-2"]/ul/li'}}
-    page_objects(:footer_supplies,  index: 5) {{xpath: '//div[@id="footer-default-content"]/div[@class="col-sm-2"]/ul/li'}}
-    page_objects(:footer_supplies,  index: 5) {{xpath: '//div[@id="footer-default-content"]/div[@class="col-sm-2"]/ul/li'}}
+    page_objects(:developer_overview, index: 0) {{xpath: '//ul/li/a[contains(@href , "developer")]'}}
+    page_object(:developer_reg) {{xpath: '//ul/li/a[contains(@href , "register")]'}}
+    page_object(:developer_reff) {{xpath: '//ul/li/a[contains(@href , "docs")]'}}
+    page_object(:developer_products) {{xpath: '//ul/li/a[contains(@href , "products")]'}}
     ## follow us ##
-    page_objects(:footer_supplies,  index: 5) {{xpath: '//div[@id="footer-default-content"]/div[@class="col-sm-2"]/ul/li'}}
-    page_objects(:footer_supplies,  index: 5) {{xpath: '//div[@id="footer-default-content"]/div[@class="col-sm-2"]/ul/li'}}
-    page_objects(:footer_supplies,  index: 5) {{xpath: '//div[@id="footer-default-content"]/div[@class="col-sm-2"]/ul/li'}}
-    page_objects(:footer_supplies,  index: 1) {{xpath: '//ul[@id="products-list"]/li/a[contains(@href , "StampscomVideo)]'}}
-    page_objects(:footer_supplies,  index: 5) {{xpath: '//div[@id="footer-default-content"]/div[@class="col-sm-2"]/ul/li'}}
-    page_objects(:footer_supplies,  index: 5) {{xpath: '//div[@id="footer-default-content"]/div[@class="col-sm-2"]/ul/li'}}
+    page_object(:facebook) {{xpath: '//ul/li/a[contains(@href , "facebook.com")]'}}
+    page_object(:twitter) {{xpath: '//ul/li/a[contains(@href , "twitter.com")]'}}
+    page_object(:google_plus) {{xpath: '//ul/li/a[contains(@href , "plus.google.com")]'}}
+    page_object(:youtube) {{xpath: '//ul/li/a[contains(text() , "YouTube")]'}}
+    page_object(:linkedin) {{xpath: '//ul/li/a[contains(@href , "linkedin")]'}}
+    page_object(:blog) {{xpath: '//ul/li/a[contains(@href , "blog")]'}}
 
   end
 
