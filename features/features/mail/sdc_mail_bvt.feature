@@ -78,8 +78,6 @@ Feature:  Mail BVT
   @mail_authentication
   Scenario: Mail - Authentication
     Then sign-in to mail
-
-    Then visit Mail
     Then open sign in modal in Mail
     Then set Mail username
     Then set Mail password
@@ -103,20 +101,6 @@ Feature:  Mail BVT
   Scenario: Mail - Authentication
     Then sign-in to mail
     #Then sign-in to orders
-    Then sign out
-
-  @bvt_mail_piece_validation
-  Scenario: Stamps B-Series
-    Then select print on Stamps
-    Then show advanced options
-    Then set print form serial number to B12345
-    Then select advanced options specify postage amount
-    Then select print form service Media Mail
-    Then set print form stamp amount 2
-    Then set print form stamp quantity 1
-    Then click mail statusbar print
-    Then set Mail Print modal Printer
-    Then click Mail Print modal Print button
     Then sign out
 
   @rob_cccc

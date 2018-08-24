@@ -136,6 +136,7 @@ Then /^increment print form stamp quantity by (\d+)$/ do |value|
   value.times do SdcMail.print_form.quantity.increment.click end
   step "expect print form stamp quantity is #{old_quantity.to_i + value.to_i}"
 end
+
 Then /^decrement print form stamp quantity by (\d+)$/ do |value|
   old_quantity = SdcMail.print_form.quantity.text_value
   value.times do SdcMail.print_form.quantity.decrement.click end
