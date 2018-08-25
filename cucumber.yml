@@ -1,5 +1,5 @@
 
-default: --backtrace --profile kaushal_cc
+default: --backtrace --profile ks_mob_cc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -20,7 +20,9 @@ sauce_browser: --tags @bvt_shipstation_updates_domestic URL=cc USR=cctruer0u PW=
 
 mhossain1_cc: --tags @sdcw_postage_online_page_validation_mobile JENKINS=true URL=stg BROWSER=ff BROWSER=gc BROWSER_MOBILE_EMULATOR=gc,'iPhone X' FIREFOX_PROFILE=true WEB_DEV=true LOG_LEVEL=info #USR=qawebdevelopment@stamps.com PW=password1
 
-kaushal_cc: --tags @sdc_website_header_footer JENKINS=true URL=stg BROWSER=chrome FIREFOX_PROFILE=true WEB_DEV=true #USR=qawebdevelopment@stamps.com PW=password1
+
+ks_mob_cc: --tags @sdc_website_header_footer JENKINS=true URL=stg BROWSER=ff BROWSER=gc BROWSER_MOBILE_EMULATOR=gc,'iPhone X' FIREFOX_PROFILE=true WEB_DEV=true LOG_LEVEL=info #USR=qawebdevelopment@stamps.com PW=password1
+kaushal_cc: --tags @sdc_website_header_footer JENKINS=true URL=stg BROWSER=edge FIREFOX_PROFILE=true WEB_DEV=true #USR=qawebdevelopment@stamps.com PW=password1
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess BROWSER=ff MAX_WINDOW=false
 

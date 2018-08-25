@@ -9,35 +9,35 @@ Feature: Stamps Website: Header Footer
     Then SDCW: navigate to home page
 
     ######## footer #######
-    Then SDCW: expect stamps website footer usps logo exists
-    Then SDCW: expect stamps website footer usps logo words is Stamps.com is an independent vendor of the USPS.
-    Then SDCW: expect stamps website footer copyright exists
-    Then SDCW: expect stamps website footer copyright text is Copyright © 1998-2018 Stamps.com Inc.
-    Then SDCW: click footer copyright link
-    Then SDCW: navigate back
+#    Then SDCW: expect stamps website footer usps logo exists
+#    Then SDCW: expect stamps website footer usps logo words is Stamps.com is an independent vendor of the USPS.
+#    Then SDCW: expect stamps website footer copyright exists
+#    Then SDCW: expect stamps website footer copyright text is Copyright © 1998-2018 Stamps.com Inc.
+#    Then SDCW: click footer copyright link
+#    Then SDCW: navigate back
 
     ### products ###
-    Then SDCW: click footer small office mailers
-    Then SDCW: navigate back
-    Then SDCW: click footer online sellers
-    Then SDCW: navigate back
-    Then SDCW: click footer warehouse shippers
-    Then SDCW: navigate back
-    Then SDCW: click footer corporate postage solutions
-    Then SDCW: navigate back
-    Then SDCW: click footer photo stamps
-    Then SDCW: click footer supplies
+#    Then SDCW: click footer small office mailers
+#    Then SDCW: navigate back
+#    Then SDCW: click footer online sellers
+#    Then SDCW: navigate back
+#    Then SDCW: click footer warehouse shippers
+#    Then SDCW: navigate back
+#    Then SDCW: click footer corporate postage solutions
+#    Then SDCW: navigate back
+#    Then SDCW: click footer photo stamps
+#    Then SDCW: click footer supplies
 
-    ## support ###
-    Then SDCW: click footer download software
-    Then SDCW: navigate back
-    Then SDCW: click footer customer support
-    Then SDCW: click footer how to videos
-    Then SDCW: click footer faq
-    Then SDCW: navigate back
-    Then SDCW: click footer system status
+    ### support ###
+#    Then SDCW: click footer download software
+#    Then SDCW: navigate back
+#    Then SDCW: click footer customer support
+#    Then SDCW: click footer how to videos
+#    Then SDCW: click footer faq
+#    Then SDCW: navigate back
+#    Then SDCW: click footer system status
 
-  ### company stuff ###
+  ## company stuff ###
     Then SDCW: click footer about us
     Then SDCW: navigate back
     Then SDCW: click footer shipping partners
@@ -52,17 +52,17 @@ Feature: Stamps Website: Header Footer
     Then SDCW: navigate back
     Then SDCW: click footer contact us
     Then SDCW: navigate back
-
-  ### developers ###
-    Then SDCW: click footer developer overview
-    Then SDCW: click footer developer registration
-    Then SDCW: click footer developer reference guide
-    Then SDCW: click footer developer products
-
-  ### follow us ###
-    Then SDCW: click footer facebook
-    Then SDCW: click footer twitter
-    Then SDCW: click footer google plus
-    Then SDCW: click footer youtube
-    Then SDCW: click footer linkedin
-    Then SDCW: click footer blog
+#
+#  ### developers ###
+#    Then SDCW: click footer developer overview
+#    Then SDCW: click footer developer registration
+#    Then SDCW: click footer developer reference guide
+#    Then SDCW: click footer developer products
+#
+#  ### follow us ###
+#    Then SDCW: click footer facebook
+#    Then SDCW: click footer twitter
+#    Then SDCW: click footer google plus
+#    Then SDCW: click footer youtube
+#    Then SDCW: click footer linkedin
+#    Then SDCW: click footer blog

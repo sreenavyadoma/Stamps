@@ -64,6 +64,48 @@ module StampsWebsite
     page_object(:linkedin) {{xpath: '//ul/li/a[contains(@href , "linkedin")]'}}
     page_object(:blog) {{xpath: '//ul/li/a[contains(@href , "blog")]'}}
 
+
+    ############## mobile footer #############
+    ## products ##
+    page_object(:footer_products_menu_xs) {{xpath: '//div[@class="collapse list-group panel visible-xs"]/a[contains(@href , "#products-menu")]'}}
+    page_object(:footer_office_mailers_xs) {{xpath: '//div[@id="products-menu"]/a[contains(@href , "postage-online")]'}}
+    page_object(:footer_online_sellers_xs) {{xpath: '//div[@id="products-menu"]/a[contains(@href , "shipping")]'}}
+    page_object(:footer_warehouse_shippers_xs) {{xpath: '//div[@id="products-menu"]/a[contains(@href , "warehouse")]'}}
+    page_object(:footer_corporate_postage_solutions_xs) {{xpath: '//div[@id="products-menu"]/a[contains(@href , "enterprise")]'}}
+    page_object(:footer_photo_stamps_xs) {{xpath: '//div[@id="products-menu"]/a[contains(@href , "photo")]'}}
+    page_object(:footer_supplies_xs) {{xpath: '//div[@id="products-menu"]/a[contains(@href , "store")]'}}
+    ## supports ##
+    page_object(:footer_support_menu_xs) {{xpath: '//div[@class="collapse list-group panel visible-xs"]/a[contains(@href , "#support-menu")]'}}
+    page_object(:download_software_xs) {{xpath: '//div[@id="support-menu"]/a[contains(@href , "download")]'}}
+    page_object(:customer_support_xs) {{xpath: '//div[@id="support-menu"]/a[contains(@href , "custhelp")]'}}
+    page_object(:how_to_videos_xs) {{xpath: '//div[@id="support-menu"]/a[contains(text() , "How To Videos")]'}}
+    page_object(:faq_xs) {{xpath: '//div[@id="support-menu"]/a[contains(@href , "faqs")]'}}
+    page_object(:system_status_xs) {{xpath: '//div[@id="support-menu"]/a[contains(@href , "status")]'}}
+    ## company stuff ##
+    page_object(:footer_company_stuff_menu_xs) {{xpath: '//div[@class="collapse list-group panel visible-xs"]/a[contains(@href , "#company-menu")]'}}
+    page_objects(:about_us_xs,  index: 0) {{xpath: '//div[@id="company-menu"]/a[contains(@href , "company-info")]'}}
+    page_object(:shipping_partners_xs) {{xpath: '//div[@id="company-menu"]/a[contains(@href , "integration")]'}}
+    page_object(:privacy_policy_xs) {{xpath: '//div[@id="company-menu"]/a[contains(@href , "privacy-policy")]'}}
+    page_object(:investor_info_xs) {{xpath: '//div[@id="company-menu"]/a[contains(@href , "investor")]'}}
+    page_object(:careers_xs) {{xpath: '//div[@id="company-menu"]/a[contains(@href , "careers")]'}}
+    page_object(:affiliates_xs) {{xpath: '//div[@id="company-menu"]/a[contains(@href , "affiliates")]'}}
+    page_object(:site_map_xs) {{xpath: '//div[@id="company-menu"]/a[contains(@href , "sitemap")]'}}
+    page_object(:contact_us_xs) {{xpath: '//div[@id="company-menu"]/a[contains(@href , "contact-us")]'}}
+    ## developers ##
+    page_object(:footer_developers_menu_xs) {{xpath: '//div[@class="collapse list-group panel visible-xs"]/a[contains(@href , "#developers-menu")]'}}
+    page_objects(:developer_overview_xs, index: 0) {{xpath: '//ul/li/a[contains(@href , "developer")]'}}
+    page_object(:developer_reg_xs) {{xpath: '//ul/li/a[contains(@href , "register")]'}}
+    page_object(:developer_reff_xs) {{xpath: '//ul/li/a[contains(@href , "docs")]'}}
+    page_object(:developer_products_xs) {{xpath: '//ul/li/a[contains(@href , "products")]'}}
+    ## follow us ##
+    page_object(:footer_follow_us_menu_xs) {{xpath: '//div[@class="collapse list-group panel visible-xs"]/a[contains(@href , "#followus-menu")]'}}
+    page_object(:facebook_xs) {{xpath: '//ul/li/a[contains(@href , "facebook.com")]'}}
+    page_object(:twitter_xs) {{xpath: '//ul/li/a[contains(@href , "twitter.com")]'}}
+    page_object(:google_plus_xs) {{xpath: '//ul/li/a[contains(@href , "plus.google.com")]'}}
+    page_object(:youtube_xs) {{xpath: '//ul/li/a[contains(text() , "YouTube")]'}}
+    page_object(:linkedin_xs) {{xpath: '//ul/li/a[contains(@href , "linkedin")]'}}
+    page_object(:blog_xs) {{xpath: '//ul/li/a[contains(@href , "blog")]'}}
+
   end
 
   class SDCWWebsite <SdcPage
