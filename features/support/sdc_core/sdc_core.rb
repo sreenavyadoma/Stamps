@@ -144,18 +144,18 @@ module TestSession
     key(:url) do
       if ENV['URL']
         case ENV['URL'].downcase
-        when /stg/
-          :stg
-        when /cc/
-          :qacc
-        when /sc/
-          :qasc
-        when /rat/
-          :rating
-        when /prod/
-          :prod
-        else
-          ENV['URL'].downcase.to_sym
+          when /stg/
+            :stg
+          when /cc/
+            :qacc
+          when /sc/
+            :qasc
+          when /rat/
+            :rating
+          when /prod/
+            :prod
+          else
+            ENV['URL'].downcase.to_sym
         end
       end
     end
@@ -246,98 +246,98 @@ module TestSession
       # Watir.always_locate = true
       case(env.local_browser)
 
-      when :edge
-        kill('taskkill /im MicrosoftEdge.exe /f')
+        when :edge
+          kill('taskkill /im MicrosoftEdge.exe /f')
 
-        @driver = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
+          @driver = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
 
-      when :ff, :firefox
-        kill('taskkill /im firefox.exe /f')
-        if TestSession.env.firefox_profile
-          profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(env.firefox_profile)
-          profile.assume_untrusted_certificate_issuer = true
-          profile['network.http.phishy-userpass-length'] = 255
-          @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
-          @driver.driver.manage.timeouts.page_load = 60
-        else
-          @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
-        end
-
-      when :gc, :chrome
-        kill('taskkill /im chrome.exe /f')
-        @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
-
-      when :ff_web_dev
-        kill('taskkill /im firefox.exe /f')
-        download_directory = "#{Dir.getwd}/download"
-        download_directory.tr!('/', '\\') if Selenium::WebDriver::Platform.windows?
-        profile = Selenium::WebDriver::Firefox::Profile.new
-        profile['browser.download.folderList'] = 2 # custom location
-        profile['browser.download.dir'] = download_directory
-        profile['browser.helperApps.neverAsk.saveToDisk'] = 'text/csv,application/pdf,image/png,application/x-zip-compressed,text/plain'
-        @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
-        Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
-      when :ff, :firefox
-        kill('taskkill /im firefox.exe /f')
-        if env.firefox_profile
-          if env.web_dev
-            download_directory = "#{Dir.getwd}/download"
-            download_directory.tr!('/', '\\') if Selenium::WebDriver::Platform.windows?
-            profile = Selenium::WebDriver::Firefox::Profile.new
-            profile['browser.download.folderList'] = 2 # custom location
-            profile['browser.download.dir'] = download_directory
-            profile['browser.helperApps.neverAsk.saveToDisk'] = 'text/csv,application/pdf,image/png,application/x-zip-compressed,text/plain'
-            @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
-            Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
-          else
+        when :ff, :firefox
+          kill('taskkill /im firefox.exe /f')
+          if TestSession.env.firefox_profile
             profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(env.firefox_profile)
             profile.assume_untrusted_certificate_issuer = true
             profile['network.http.phishy-userpass-length'] = 255
             @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
+            @driver.driver.manage.timeouts.page_load = 60
+          else
+            @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
           end
 
-      when :gc_web_dev
-        prefs = {
-            download: {
-                prompt_for_download: false,
-                default_directory: "#{Dir.getwd}/download"
-            }
-        }
-        kill('taskkill /im chrome.exe /f')
-        @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, options: { prefs: prefs }, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
-        Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
-        @driver.driver.manage.timeouts.page_load = 60
+        when :gc, :chrome
+          kill('taskkill /im chrome.exe /f')
+          @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
 
-      when :gc_iPhone_X, :gc_iPhone_4, :gc_iPad, :gc_Pixel_2_XL, :gc_Pixel_2
-        kill('taskkill /im chrome.exe /f')
-        device_name = env.local_browser.to_s.gsub('gc','').gsub('_', ' ').strip
-        driver = SdcTest.browser_emulator_options(device_name)
-        SdcGlobal.web_dev_device = device_name unless device_name.include? 'iPad'
-        @driver = SdcDriverDecorator.new(Watir::Browser.new(driver, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
-        @driver.driver.manage.timeouts.page_load = 60
+        when :ff_web_dev
+          kill('taskkill /im firefox.exe /f')
+          download_directory = "#{Dir.getwd}/download"
+          download_directory.tr!('/', '\\') if Selenium::WebDriver::Platform.windows?
+          profile = Selenium::WebDriver::Firefox::Profile.new
+          profile['browser.download.folderList'] = 2 # custom location
+          profile['browser.download.dir'] = download_directory
+          profile['browser.helperApps.neverAsk.saveToDisk'] = 'text/csv,application/pdf,image/png,application/x-zip-compressed,text/plain'
+          @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
+          Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
 
-        Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download/")
+        when :ff, :firefox
+          kill('taskkill /im firefox.exe /f')
+          if env.firefox_profile
+              download_directory = "#{Dir.getwd}/download"
+              download_directory.tr!('/', '\\') if Selenium::WebDriver::Platform.windows?
+              profile = Selenium::WebDriver::Firefox::Profile.new
+              profile['browser.download.folderList'] = 2 # custom location
+              profile['browser.download.dir'] = download_directory
+              profile['browser.helperApps.neverAsk.saveToDisk'] = 'text/csv,application/pdf,image/png,application/x-zip-compressed,text/plain'
+              @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
+              Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
+            else
+              profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(env.firefox_profile)
+              profile.assume_untrusted_certificate_issuer = true
+              profile['network.http.phishy-userpass-length'] = 255
+              @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
+            end
 
-        @driver.driver.manage.timeouts.page_load = 60
+        when :gc_web_dev
+          prefs = {
+              download: {
+                  prompt_for_download: false,
+                  default_directory: "#{Dir.getwd}/download"
+              }
+          }
+          kill('taskkill /im chrome.exe /f')
+          @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, options: { prefs: prefs }, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+          Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
+          @driver.driver.manage.timeouts.page_load = 60
 
-      when :chromeb
-        kill('taskkill /im chrome.exe /f')
-        Selenium::WebDriver::Chrome.path = data_for(:setup, {})['windows']['chromedriverbeta']
-        @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+        when :gc_iPhone_X, :gc_iPhone_4, :gc_iPad, :gc_Pixel_2_XL, :gc_Pixel_2
+          kill('taskkill /im chrome.exe /f')
+          device_name = env.local_browser.to_s.gsub('gc','').gsub('_', ' ').strip
+          driver = SdcTest.browser_emulator_options(device_name)
+          SdcGlobal.web_dev_device = device_name unless device_name.include? 'iPad'
+          @driver = SdcDriverDecorator.new(Watir::Browser.new(driver, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+          @driver.driver.manage.timeouts.page_load = 60
 
-        @driver.driver.manage.timeouts.page_load = 60
+          Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download/")
 
-      when :ie
-        kill('taskkill /im iexplore.exe /f')
-        @driver = SdcDriverDecorator.new(Watir::Browser.new(:ie))
+          @driver.driver.manage.timeouts.page_load = 60
 
-      when :safari
-        kill("killall 'Safari Technology Preview'")
-        @driver = SdcDriverDecorator.new(Watir::Browser.new(:safari, technology_preview: true))
+        when :chromeb
+          kill('taskkill /im chrome.exe /f')
+          Selenium::WebDriver::Chrome.path = data_for(:setup, {})['windows']['chromedriverbeta']
+          @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
 
-      else
-        raise ArgumentError, "Invalid browser selection. #{env.local_browser}"
-    end
+          @driver.driver.manage.timeouts.page_load = 60
+
+        when :ie
+          kill('taskkill /im iexplore.exe /f')
+          @driver = SdcDriverDecorator.new(Watir::Browser.new(:ie))
+
+        when :safari
+          kill("killall 'Safari Technology Preview'")
+          @driver = SdcDriverDecorator.new(Watir::Browser.new(:safari, technology_preview: true))
+
+        else
+          raise ArgumentError, "Invalid browser selection. #{env.local_browser}"
+      end
 
       if env.window_size
         width, height = env.window_size.downcase.split("x")
@@ -616,7 +616,7 @@ module SdcElementHelper
 
     set(*args)
   rescue Watir::Exception::UnknownObjectException
-      # ignore
+    # ignore
 
   end
 
