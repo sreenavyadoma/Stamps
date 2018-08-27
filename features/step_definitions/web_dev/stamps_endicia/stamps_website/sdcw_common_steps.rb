@@ -701,6 +701,7 @@ Then /^SDCW: click footer about us$/ do
 
     common_page.about_us_xs.hover
     common_page.about_us_xs.click
+
   else
     if TestSession.env.local_browser == :edge
       common_page.about_us.click
