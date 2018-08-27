@@ -185,6 +185,19 @@ end
 
 # END ENDICIA WEB REG
 
+# BEGIN STAMPS WEBSITE
+  Cucumber::Rake::Task.new(:sdcw_postage_online_page_validation) do |t|
+    t.profile = 'sdcw_postage_online_page_validation'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+
+  Cucumber::Rake::Task.new(:sdcw_postage_online_page_validation_mobile) do |t|
+    t.profile = 'sdcw_postage_online_page_validation_mobile'
+    t.cucumber_opts = "-p cuke_reports"
+  end
+# END STAMPS WEBSITE
+
+
 # BEGIN SHIPWORKS WEB REG
   Cucumber::Rake::Task.new(:swwr_create_your_account_page_validation) do |t|
     t.profile = 'swwr_create_your_account_page_validation'
@@ -195,8 +208,6 @@ end
 
 # END WEB DEV
 
-
-# BEGIN WEB REG
 
 Cucumber::Rake::Task.new(:saucelabs_local_rob) do |t|
   t.profile = 'saucelabs_local_rob'
