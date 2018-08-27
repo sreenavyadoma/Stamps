@@ -23,6 +23,11 @@ module WhiteLabel
     page_object(:stamps_logo) {{id: 'sdc-logo'}}
     page_objects(:usps_logo, index: 0) {{xpath: '//div[@id="nav-usps-vendor"]'}}
     page_objects(:header_text, index: 1) {{xpath: '//div[@id="nav-usps-vendor"]/ul/li'}}
+    page_object(:learn_more_dropdown) {{class: 'dropdown-toggle'}}
+    button(:login) { { class: ['btn btn-info btn-xs login'] } }
+    page_object(:microphone_text) {{xpath: '//div[@id="microphone"]/p'}}
+    page_object(:get_started_btn) {{xpath: '//button[@class="btn btn-success btn-xs register"]'}}
+    page_object(:radio_image) {{xpath: '//img[@src="https://www.stamps.com/assets/images/home/sm55.png"]'}}
 
     #Footer
     page_object(:privacy_policy) {{xpath: '//*[@data-pgtitle="Privacy Policy"]'}}
