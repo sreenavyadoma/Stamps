@@ -292,7 +292,7 @@ module TestSession
         kill('taskkill /im chrome.exe /f')
         device_name = env.local_browser.to_s.gsub('gc','').gsub('_', ' ').strip
         driver = SdcTest.browser_emulator_options(device_name)
-        SdcGlobal.web_dev_device = device_name
+        SdcGlobal.web_dev_device = device_name unless device_name.include? 'iPad'
         @driver = SdcDriverDecorator.new(Watir::Browser.new(driver, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
         @driver.driver.manage.timeouts.page_load = 60
 
