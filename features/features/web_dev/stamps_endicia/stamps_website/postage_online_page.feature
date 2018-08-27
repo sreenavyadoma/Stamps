@@ -8,7 +8,7 @@ Feature: Stamps Website: Postage Online Page
     Then SDCW: click FAQ
     Then SDCW: navigate back
 
-  @sdcw_postage_online_page_validation_mobile`
+  @sdcw_postage_online_page_validation_mobile
   Scenario: Stamps Website Mobile: Postage Website Validation
     Then SDCW: verify default elements on header for mobile
     Then SDCW: click FAQ
