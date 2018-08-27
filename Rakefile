@@ -159,21 +159,6 @@ require 'cucumber/rake/task'
       t.cucumber_opts = "-p cuke_reports"
     end
 
-    Cucumber::Rake::Task.new(:ewwr_membership_page_ui_validation) do |t|
-      t.profile = 'ewwr_membership_page_ui_validation'
-      t.cucumber_opts = "-p cuke_reports"
-    end
-
-    Cucumber::Rake::Task.new(:ewwr_membership_page_addr_validation) do |t|
-      t.profile = 'ewwr_membership_page_addr_validation'
-      t.cucumber_opts = "-p cuke_reports"
-    end
-
-    Cucumber::Rake::Task.new(:ewwr_membership_page_username_taken_validation) do |t|
-      t.profile = 'ewwr_membership_page_username_taken_validation'
-      t.cucumber_opts = "-p cuke_reports"
-    end
-
     Cucumber::Rake::Task.new(:ewwr_header_footer_validation) do |t|
       t.profile = 'ewwr_header_footer_validation'
       t.cucumber_opts = "-p cuke_reports"
