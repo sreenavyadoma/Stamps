@@ -14,14 +14,14 @@ module SdcWebsite
       page_object(:more_info) { { xpath: '//span[contains(text(), "More Info")]' } }
     end
 
-    def whats_new
-      SdcWhatsNew.new
-    end
-    module_function :whats_new
+    class << self
+      def whats_new
+        SdcWhatsNew.new
+      end
 
-    def rating_error
-      SdcRatingError.new
+      def rating_error
+        SdcRatingError.new
+      end
     end
-    module_function :rating_error
   end
 end

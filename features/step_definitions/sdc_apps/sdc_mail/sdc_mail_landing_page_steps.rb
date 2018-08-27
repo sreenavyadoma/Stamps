@@ -28,7 +28,7 @@ Then /^sign-in to mail$/ do
   TestData.hash[:password] = pw
   if TestSession.env.mobile_device
     step "mobile: sign-in to mail as #{usr}/#{pw}"
-  elsif SdcPage.browser.window.size.width < 1195
+  elsif TestSession.env.responsive
     step "mobile: sign-in to mail as #{usr}/#{pw}"
     step 'mail rating error'
   else
@@ -38,17 +38,21 @@ Then /^sign-in to mail$/ do
 end
 
 Then /^sign out$/ do
-  if TestSession.env.browser_test
-    user_drop_down = SdcWebsite.navigation.user_drop_down
-    landing_page = SdcWebsite.landing_page
-    4.times do
-      user_drop_down.signed_in_user.hover
-      user_drop_down.sign_out_link.safe_wait_until_present(timeout: 1)
-      user_drop_down.sign_out_link.click
+  begin
+    unless TestSession.env.responsive
+      user_drop_down = SdcWebsite.navigation.user_drop_down
+      landing_page = SdcWebsite.landing_page
+      4.times do
+        user_drop_down.signed_in_user.hover
+        user_drop_down.sign_out_link.safe_wait_until_present(timeout: 1)
+        user_drop_down.sign_out_link.click
+        landing_page.username.safe_wait_until_present(timeout: 1)
+        break if landing_page.username.present?
+      end
       landing_page.username.safe_wait_until_present(timeout: 2)
-      break if landing_page.username.present?
     end
-    landing_page.username.safe_wait_until_present(timeout: 2)
+  rescue
+    # ignore
   end
 end
 
@@ -92,7 +96,7 @@ end
 
 Then /^expect user is signed in$/ do
   user_drop_down = SdcWebsite.navigation.user_drop_down
-  user_drop_down.signed_in_user.wait_until_present(timeout: 15, interval: 0.2)
+  user_drop_down.signed_in_user.safe_wait_until_present(timeout: 30)
   expect(user_drop_down.signed_in_user.text_value).to eql TestData.hash[:username]
 end
 
@@ -149,11 +153,12 @@ Then /^[Cc]lick the [Ss]ign [Ii]n button in [Mm]ail$/ do
   elsif SdcEnv.android
     raise StandardError, 'Not Implemented'
   else
+    verifying = SdcMail.verifying_account_info
     modal.sign_in_link.wait_until_present(timeout: 3)
     modal.sign_in_link.hover unless modal.sign_in.present?
     modal.sign_in.click
-    SdcMail.verifying_account_info.safe_wait_until_present(timeout: 3)
-    SdcMail.verifying_account_info.wait_while_present(timeout: 12)
+    verifying.safe_wait_until_present(timeout: 20)
+    verifying.safe_wait_while_present(timeout: 70)
   end
 end
 

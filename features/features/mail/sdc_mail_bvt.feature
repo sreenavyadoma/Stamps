@@ -7,7 +7,6 @@ Feature:  Mail BVT
   Scenario: International Shipping
     Then sign-in to mail
     Then select print on Shipping Label - 8 ½" x 11" Paper
-    #Then set Print form Mail-From to default
     Then show advanced options
     #Then set Advanced Options Mail Date to today
     Then set print form ship-to to international address
@@ -79,8 +78,6 @@ Feature:  Mail BVT
   @mail_authentication
   Scenario: Mail - Authentication
     Then sign-in to mail
-    Then sign-out of SDC Website
-    Then visit Mail
     Then open sign in modal in Mail
     Then set Mail username
     Then set Mail password
@@ -89,7 +86,7 @@ Feature:  Mail BVT
     Then check Remember Username
     Then click the Sign In button in Mail
     Then expect user is signed in
-    Then sign-out of SDC Website
+
     Then visit Mail
     Then open sign in modal in Mail
     Then expect username is present in Mail username field
@@ -103,28 +100,13 @@ Feature:  Mail BVT
   @mail_authentication_mobile
   Scenario: Mail - Authentication
     Then sign-in to mail
-    Then sign out
-
-  @bvt_mail_piece_validation
-  Scenario: Stamps B-Series
-    Then select print on Stamps
-    Then show advanced options
-    Then set print form serial number to B12345
-    Then select advanced options specify postage amount
-    Then set Print form Mail-From to default
-    Then select print form service Media Mail
-    Then set print form stamp amount 2
-    Then set print form stamp quantity 1
-    Then click mail statusbar print
-    Then set Mail Print modal Printer
-    Then click Mail Print modal Print button
+    #Then sign-in to orders
     Then sign out
 
   @rob_cccc
   Scenario: Address Cleansing
     Then sign-in to mail
     Then select print on Shipping Label - 8 ½" x 11" Paper
-    #Then set Print form Mail-From to Automation - El Segundo, CA
 #    Then set Print form Mail-From to Manage Mailing Addresses...
     Then set print form mail-to country to United States
     Then set print form mail-to country to Brazil
@@ -141,26 +123,15 @@ Feature:  Mail BVT
   Scenario: Mail BVT-Stamps
     Then sign-in to mail
     Then select print on Stamps
-
     Then set print form serial number to C12345
     Then select print form specify postage amount
-    Then set Print form Mail-From to Automation - El Segundo, CA
     Then select print form service Media Mail
     Then set print form stamp amount to 3.00
     Then set print form stamp quantity to 1
-    Then click mail statusbar print stamps
-    Then set mail print modal printer
-    Then click Mail Print modal Print button
-
     Then set print form serial number to B12345
     Then select print form calculate postage amount
-    Then set Print form Mail-From to Automation - El Segundo, CA
     Then set print form ounces to 1
     Then select print form service FCM Large Envelope/Flat
-    Then click mail statusbar print stamps
-    Then set mail print modal printer
-    Then click Mail Print modal Print button
-
     Then sign out
 
   @mail_print_on_lov
@@ -195,7 +166,6 @@ Feature:  Mail BVT
   Scenario: Advanced Options for Envelope - 10
     Then sign-in to mail
     Then select print on Shipping Label - 8 ½" x 11" Paper
-    #Then set Print form Mail-From to default
     Then set print form mail-to to a random address in zone 8
     Then select print form service PM Package
     Then set print form weight to lbs 1 oz 1
@@ -273,7 +243,6 @@ Feature:  Mail BVT
     Then set print form serial number to random
     Then blur out on print form
     Then select print form specify postage amount
-#    Then set Print form Mail-From to default
     Then set print form mail-to country to United States
     Then select print form service First Class
     Then select print form service Media Mail
@@ -466,7 +435,6 @@ Feature:  Mail BVT
   Scenario: BVT Mail UI Validation International form
     Then sign-in to mail
     Then select print on Shipping Label - 8 ½" x 11" Paper
-    #Then set Print form Mail-From to default
     Then show advanced options
     #Then set Advanced Options Mail Date to today
     Then set print form ship-to to international address
@@ -678,7 +646,6 @@ Feature:  Mail BVT
   Scenario: Address Cleansing
     Then sign-in to mail
     Then select print on Shipping Label - 8 ½" x 11" Paper
-#    Then set Print form Mail-From to default
     Then set print form mail-to country to United States
     Then set print form mail-to to address to Address Cleansing, Google, 1600 Amphitheatre Pkwy, Mountain View, CA 94043
     Then set print form ounces to 1

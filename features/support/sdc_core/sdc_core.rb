@@ -72,11 +72,11 @@ module TestSession
     key(:node_name) { ENV['NODE_NAME'] }
     key(:build_url) { ENV['BUILD_URL'] }
     # cloud settings
-    key(:sauce_username) { ENV['SAUCE_USERNAME'] }
-    key(:sauce_access_key) { ENV['SAUCE_ACCESS_KEY'] }
     key(:tunnel_identifier) { ENV['TUNNEL_IDENTIFIER'] }
-    key(:selenium_host) { ENV['SELENIUM_HOST'] }
-    key(:selenium_port) { ENV['SELENIUM_PORT'] }
+    key(:sauce_username) { ENV['SAUCE_USERNAME'] || 'robcruz' }
+    key(:sauce_access_key) { ENV['SAUCE_ACCESS_KEY'] || '0e60dbc9-5bbf-425a-988b-f81c42d6b7ef'}
+    key(:selenium_host) { ENV['SELENIUM_HOST'] || 'ondemand.saucelabs.com' }
+    key(:selenium_port) { ENV['SELENIUM_PORT'] || 443 }
     key(:selenium_platform) { ENV['SELENIUM_PLATFORM'] }
     key(:selenium_version) { ENV['SELENIUM_VERSION'] }
     key(:selenium_browser) do
@@ -144,18 +144,18 @@ module TestSession
     key(:url) do
       if ENV['URL']
         case ENV['URL'].downcase
-          when /stg/
-            :stg
-          when /cc/
-            :qacc
-          when /sc/
-            :qasc
-          when /rat/
-            :rating
-          when /prod/
-            :prod
-          else
-            ENV['URL'].downcase.to_sym
+        when /stg/
+          :stg
+        when /cc/
+          :qacc
+        when /sc/
+          :qasc
+        when /rat/
+          :rating
+        when /prod/
+          :prod
+        else
+          ENV['URL'].downcase.to_sym
         end
       end
     end
@@ -172,77 +172,79 @@ module TestSession
       "SauceOnDemandSessionID=#{session_id} job-name=#{test_name}"
     end
 
+    def responsive
+      mobile_device || SdcPage.browser.window.size.width < 1195
+    end
   end
 
-  def env
-    @env ||= SdcEnvVars.new
-  end
-  module_function :env
+  class << self
+    def env
+      @env ||= SdcEnvVars.new
+    end
 
-  # name: env.test_name,
-  #     appiumVersion: '1.8.1',
-  #     deviceName: env.device,
-  #     deviceOrientation: env.device_orientation,
-  #     platformVersion: '11.2', #env.version,
-  #     platformName: 'iOS',
-  #     browserName: 'Safari',
-  #     automationName: 'XCUITest'
-  def mobile_device
-    desired_caps = {
-        caps: {
-            :name => env.test_name,
-            :appiumVersion => env.appium_version,
-            :deviceName => env.selenium_device,
-            :deviceOrientation => env.device_orientation,
-            :platformVersion => env.selenium_version,
-            :platformName => env.selenium_platform,
-            :browserName => env.selenium_browser,
-            :automationName => env.automation_name,
-            :extendedDebugging => env.extendedDebugging,
-            :tunnelIdentifier => env.tunnel_identifier,
-            :idleTimeout => env.idle_timeout
-        },
-        appium_lib: {
-            :sauce_username => env.sauce_username,
-            :sauce_access_key => env.sauce_access_key,
-            :wait => env.appium_wait
-        }
-    }
+    # name: env.test_name,
+    #     appiumVersion: '1.8.1',
+    #     deviceName: env.device,
+    #     deviceOrientation: env.device_orientation,
+    #     platformVersion: '11.2', #env.version,
+    #     platformName: 'iOS',
+    #     browserName: 'Safari',
+    #     automationName: 'XCUITest'
+    def mobile_device
+      desired_caps = {
+          caps: {
+              :name => env.test_name,
+              :appiumVersion => env.appium_version,
+              :deviceName => env.selenium_device,
+              :deviceOrientation => env.device_orientation,
+              :platformVersion => env.selenium_version,
+              :platformName => env.selenium_platform,
+              :browserName => env.selenium_browser,
+              :automationName => env.automation_name,
+              :extendedDebugging => env.extendedDebugging,
+              :tunnelIdentifier => env.tunnel_identifier,
+              :idleTimeout => env.idle_timeout
+          },
+          appium_lib: {
+              :sauce_username => env.sauce_username,
+              :sauce_access_key => env.sauce_access_key,
+              :wait => env.appium_wait
+          }
+      }
 
-    @driver = Appium::Driver.new(desired_caps, false).start_driver
-  rescue StandardError => e
-    SdcLogger.error e.message
-    SdcLogger.error e.backtrace.join("\n")
-    raise e
-  end
-  module_function :mobile_device
+      @driver = Appium::Driver.new(desired_caps, false).start_driver
+    rescue StandardError => e
+      SdcLogger.error e.message
+      SdcLogger.error e.backtrace.join("\n")
+      raise e
+    end
 
-  def sauce_browser
-    desired_caps = {
-        :name => env.test_name,
-        :version => env.selenium_version,
-        :platform => env.selenium_platform,
-        :build => env.build,
-        :screenResolution => env.screen_resolution,
-        :extendedDebugging => env.extendedDebugging,
-        :tunnelIdentifier => env.tunnel_identifier,
-        :idleTimeout => env.idle_timeout
-    }
-    caps = Selenium::WebDriver::Remote::Capabilities.send(env.selenium_browser, desired_caps)
-    client = Selenium::WebDriver::Remote::Http::Default.new
-    client.timeout = env.idle_timeout
-    url = env.sauce_end_point
-    @driver = Watir::Browser.new(:remote, desired_capabilities: caps, http_client: client, url: url)
-  rescue StandardError => e
-    SdcLogger.error e.message
-    SdcLogger.error e.backtrace.join("\n")
-    raise e
-  end
-  module_function :sauce_browser
+    def sauce_browser
+      desired_caps = {
+          :name => env.test_name,
+          :version => env.selenium_version,
+          :platform => env.selenium_platform,
+          :build => env.build,
+          :screenResolution => env.screen_resolution,
+          :extendedDebugging => env.extendedDebugging,
+          :tunnelIdentifier => env.tunnel_identifier,
+          :idleTimeout => env.idle_timeout
+      }
+      caps = Selenium::WebDriver::Remote::Capabilities.send(env.selenium_browser, desired_caps)
+      client = Selenium::WebDriver::Remote::Http::Default.new
+      client.timeout = env.idle_timeout
+      url = env.sauce_end_point
+      @driver = Watir::Browser.new(:remote, desired_capabilities: caps, http_client: client, url: url)
+    rescue StandardError => e
+      SdcLogger.error e.message
+      SdcLogger.error e.backtrace.join("\n")
+      raise e
+    end
 
-  def local_browser
-    # Watir.always_locate = true
-    case(env.local_browser)
+    def local_browser
+
+      # Watir.always_locate = true
+      case(env.local_browser)
 
       when :edge
         kill('taskkill /im MicrosoftEdge.exe /f')
@@ -275,6 +277,24 @@ module TestSession
         profile['browser.helperApps.neverAsk.saveToDisk'] = 'text/csv,application/pdf,image/png,application/x-zip-compressed,text/plain'
         @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
         Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
+      when :ff, :firefox
+        kill('taskkill /im firefox.exe /f')
+        if env.firefox_profile
+          if env.web_dev
+            download_directory = "#{Dir.getwd}/download"
+            download_directory.tr!('/', '\\') if Selenium::WebDriver::Platform.windows?
+            profile = Selenium::WebDriver::Firefox::Profile.new
+            profile['browser.download.folderList'] = 2 # custom location
+            profile['browser.download.dir'] = download_directory
+            profile['browser.helperApps.neverAsk.saveToDisk'] = 'text/csv,application/pdf,image/png,application/x-zip-compressed,text/plain'
+            @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
+            Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
+          else
+            profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(env.firefox_profile)
+            profile.assume_untrusted_certificate_issuer = true
+            profile['network.http.phishy-userpass-length'] = 255
+            @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
+          end
 
       when :gc_web_dev
         prefs = {
@@ -319,100 +339,99 @@ module TestSession
         raise ArgumentError, "Invalid browser selection. #{env.local_browser}"
     end
 
-    if env.window_size
-      width, height = env.window_size.downcase.split("x")
-      begin
-        @driver.window.resize_to(width, height)
-        @driver.window.move_to(0, 0)
-      rescue Exception
+      if env.window_size
+        width, height = env.window_size.downcase.split("x")
+        begin
+          @driver.window.resize_to(width, height)
+          @driver.window.move_to(0, 0)
+        rescue Exception
+          @driver.window.maximize
+        end
+      else
         @driver.window.maximize
       end
-    else
-      @driver.window.maximize
+      @driver
+
+    rescue StandardError => e
+      SdcLogger.error e.message
+      SdcLogger.error e.backtrace.join("\n")
+      raise e, 'Browser driver failed to start'
+
     end
-    @driver
 
-  rescue StandardError => e
-    SdcLogger.error e.message
-    SdcLogger.error e.backtrace.join("\n")
-    raise e, 'Browser driver failed to start'
-
+    def kill(str)
+      stdout, stdeerr, status = Open3.capture3(str)
+    rescue
+      # ignore
+    end
   end
-  module_function :local_browser
-
-  def kill(str)
-    stdout, stdeerr, status = Open3.capture3(str)
-  rescue
-    # ignore
-  end
-  module_function :kill
 
 end
 
 module SdcFinder
 
-  # @param [Browser] browser either Watir::Browser or Appium::Core::Driver
-  # @param [String]  HTML tag
-  # @param [Integer] timeout in seconds
-  def element(browser, tag: nil, timeout: 60)
-    if browser.is_a? Watir::Browser
-      if tag
-        element = instance_eval("browser.#{tag}(#{yield})", __FILE__, __LINE__)
-        result = Watir::Wait.until(timeout: timeout) { element }
-        if result
+  class << self
+    # @param [Browser] browser either Watir::Browser or Appium::Core::Driver
+    # @param [String]  HTML tag
+    # @param [Integer] timeout in seconds
+    def element(browser, tag: nil, timeout: 60)
+      if browser.is_a? Watir::Browser
+        if tag
           element = instance_eval("browser.#{tag}(#{yield})", __FILE__, __LINE__)
-          return SdcElement.new(element)
+          result = Watir::Wait.until(timeout: timeout) { element }
+          if result
+            element = instance_eval("browser.#{tag}(#{yield})", __FILE__, __LINE__)
+            return SdcElement.new(element)
+          end
+        else
+          element = browser.element(yield)
+          result = Watir::Wait.until(timeout: timeout) { element }
+          if result
+            element = browser.element(yield)
+            return SdcElement.new(element)
+          end
         end
       else
-        element = browser.element(yield)
+        element = browser.find_element(yield)
         result = Watir::Wait.until(timeout: timeout) { element }
         if result
-          element = browser.element(yield)
+          element = browser.find_element(yield)
           return SdcElement.new(element)
         end
       end
-    else
-      element = browser.find_element(yield)
-      result = Watir::Wait.until(timeout: timeout) { element }
-      if result
-        element = browser.find_element(yield)
-        return SdcElement.new(element)
-      end
+
+      message = "Cannot locate element #{yield}"
+      error = Selenium::WebDriver::Error::NoSuchElementError
+      raise error, message
     end
 
-    message = "Cannot locate element #{yield}"
-    error = Selenium::WebDriver::Error::NoSuchElementError
-    raise error, message
-  end
-  module_function :element
-
-  def elements(browser, tag: nil, timeout: 60)
-    if browser.is_a? Watir::Browser
-      if tag
-        begin
-          code = "browser.#{tag}(#{yield})"
-          elements = instance_eval(code, __FILE__, __LINE__)
+    def elements(browser, tag: nil, timeout: 60)
+      if browser.is_a? Watir::Browser
+        if tag
+          begin
+            code = "browser.#{tag}(#{yield})"
+            elements = instance_eval(code, __FILE__, __LINE__)
+            result = Watir::Wait.until(timeout: timeout) { elements }
+            return instance_eval(code, __FILE__, __LINE__) if result
+          rescue Selenium::WebDriver::Error::TimeOutError
+            # ignore
+          end
+        else
+          elements = browser.elements(yield)
           result = Watir::Wait.until(timeout: timeout) { elements }
-          return instance_eval(code, __FILE__, __LINE__) if result
-        rescue Selenium::WebDriver::Error::TimeOutError
-          # ignore
+          return browser.elements(yield) if result
         end
       else
-        elements = browser.elements(yield)
+        elements = browser.find_elements(yield)
         result = Watir::Wait.until(timeout: timeout) { elements }
-        return browser.elements(yield) if result
+        return browser.find_elements(yield) if result
       end
-    else
-      elements = browser.find_elements(yield)
-      result = Watir::Wait.until(timeout: timeout) { elements }
-      return browser.find_elements(yield) if result
-    end
 
-    message = "Cannot locate elements #{yield}"
-    error = Selenium::WebDriver::Error::NoSuchElementError
-    raise error, message
+      message = "Cannot locate elements #{yield}"
+      error = Selenium::WebDriver::Error::NoSuchElementError
+      raise error, message
+    end
   end
-  module_function :elements
 
 end
 
@@ -597,7 +616,7 @@ module SdcElementHelper
 
     set(*args)
   rescue Watir::Exception::UnknownObjectException
-    # ignore
+      # ignore
 
   end
 

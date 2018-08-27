@@ -1,15 +1,7 @@
 module SdcNavigation
   class SignedInUser < SdcPage
     page_object(:signed_in_user) { { xpath: '//span[@id="userNameText"]' } }
-    page_object(:browser_sign_out_link) { { xpath: '//*[contains(@class, "hide-on-device")]//a[@id="signOutLink"]' } }
-    page_object(:device_sign_out_link) { { xpath: '//*[contains(@class, "device-nav")]//a[@id="signOutLink"]' } }
-    page_object(:sign_out_link) do
-      if TestSession.env.mobile_device || SdcPage.browser.window.size.width < 1195
-        { xpath: '//*[contains(@class, "device-nav")]//a[@id="signOutLink"]' }
-      else
-        { xpath: '//*[contains(@class, "hide-on-device")]//a[@id="signOutLink"]' }
-      end
-    end
+    page_object(:sign_out_link) { { xpath: '//a[text()="Sign Out"]' } }
   end
 
   class SignedInUserTablet < SdcPage
@@ -113,62 +105,56 @@ module SdcNavigation
     page_object(:ok_btn) { { xpath: '//*[text()="OK"]' } }
   end
 
-  def user_drop_down
-    SignedInUser.new
-  end
-  module_function :user_drop_down
+  class << self
+    def user_drop_down
+      SignedInUser.new
+    end
 
-  def mail_sign_in_modal
-    if TestSession.env.mobile_device || SdcPage.browser.window.size.width < 1195
-      MailSignInModalTablet.new
-    else
-      MailSignInModal.new
+    def mail_sign_in_modal
+      if TestSession.env.responsive
+        MailSignInModalTablet.new
+      else
+        MailSignInModal.new
+      end
+    end
+
+    def balance
+      SdcNavigationBalance.new
+    end
+
+    def mail
+      klass = Class.new(SdcPage) do
+        page_object(:mail_page) { { xpath: '//a[text()="Mail"]' } }
+      end
+      klass.new.mail_page
+    end
+
+    def orders
+      klass = Class.new(SdcPage) do
+        page_object(:orders_page) { { xpath: '//a[text()="Orders"]' } }
+      end
+      klass.new.orders_page
+    end
+
+    def products
+      klass = Class.new(SdcPage) do
+        page_object(:products_page) { { xpath: '//a[text()="Products"]' } }
+      end
+      klass.new.products_page
+    end
+
+    def contacts
+      klass = Class.new(SdcPage) do
+        page_object(:contacts_page) { { xpath: '//a[text()="Contacts"]' } }
+      end
+      klass.new.contacts_page
+    end
+
+    def reports
+      klass = Class.new(SdcPage) do
+        page_object(:reports_page) { { xpath: '//a[text()="Reports"]' } }
+      end
+      klass.new.reports_page
     end
   end
-  module_function :mail_sign_in_modal
-
-  def balance
-    SdcNavigationBalance.new
-  end
-  module_function :balance
-
-  def mail
-    klass = Class.new(SdcPage) do
-      page_object(:mail_page) { { xpath: '//a[text()="Mail"]' } }
-    end
-    klass.new.mail_page
-  end
-  module_function :mail
-
-  def orders
-    klass = Class.new(SdcPage) do
-      page_object(:orders_page) { { xpath: '//a[text()="Orders"]' } }
-    end
-    klass.new.orders_page
-  end
-  module_function :orders
-
-  def products
-    klass = Class.new(SdcPage) do
-      page_object(:products_page) { { xpath: '//a[text()="Products"]' } }
-    end
-    klass.new.products_page
-  end
-  module_function :products
-
-  def contacts
-    klass = Class.new(SdcPage) do
-      page_object(:contacts_page) { { xpath: '//a[text()="Contacts"]' } }
-    end
-    klass.new.contacts_page
-  end
-  module_function :contacts
-
-  def reports
-    klass = Class.new(SdcPage) do
-      page_object(:reports_page) { { xpath: '//a[text()="Reports"]' } }
-    end
-    klass.new.reports_page
-  end
-  module_function :reports
 end
