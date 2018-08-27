@@ -3,6 +3,10 @@ Then /^SDCW: navigate back$/ do
   step 'pause for 1 second'
 end
 
+Then /^SDCW: page redirects to (.*)$/ do |str|
+  sdcw_page = TestSession.env.url
+end
+
 Then /^SDCW: blur_out on page$/ do
   StampsWebsite.common_page.stamps_logo.blur_out
   step 'pause for 1 second'
@@ -318,14 +322,10 @@ Then /^SDCW: expect stamps website footer copyright text is (.*)$/ do |str|
   expect(copyright.text_value.strip).to eql(str)
 end
 
-Then /^SDCW: page redirects to (.*)$/ do |str|
-  sdcw_page = TestSession.env.url
-end
-
 Then /^SDCW: click footer copyright link$/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device|| TestSession.env.mobile_device
     common_page.copyright_xs.click
   else
     if TestSession.env.local_browser == :edge
@@ -350,7 +350,7 @@ end
 ######## Products #######
 Then /^SDCW: click footer small office mailers$/ do
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device|| TestSession.env.mobile_device
 
     common_page.footer_products_menu_xs.scroll_into_view
     common_page.footer_products_menu_xs.click!
@@ -381,7 +381,7 @@ Then /^SDCW: click footer online sellers$/ do
   step 'SDCW: blur_out on page'
   step 'pause for 1 second'
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device|| TestSession.env.mobile_device
 
     common_page.footer_products_menu_xs.scroll_into_view
     common_page.footer_products_menu_xs.click!
@@ -411,7 +411,7 @@ end
 Then /^SDCW: click footer warehouse shippers$/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device|| TestSession.env.mobile_device
 
     common_page.footer_products_menu_xs.scroll_into_view
     common_page.footer_products_menu_xs.click!
@@ -441,7 +441,7 @@ end
 Then /^SDCW: click footer corporate postage solutions$/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device|| TestSession.env.mobile_device
 
     common_page.footer_products_menu_xs.scroll_into_view
     common_page.footer_products_menu_xs.click!
@@ -471,7 +471,7 @@ end
 Then /^SDCW: click footer photo stamps$/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
 
     common_page.footer_products_menu_xs.scroll_into_view
     common_page.footer_products_menu_xs.click!
@@ -506,7 +506,7 @@ end
 Then /^SDCW: click footer supplies$/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
 
     common_page.footer_products_menu_xs.scroll_into_view
     common_page.footer_supplies_xs.hover
@@ -542,7 +542,7 @@ end
 Then /^SDCW: click footer download software$/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
 
     common_page.footer_support_menu_xs.scroll_into_view
     common_page.footer_support_menu_xs.click!
@@ -572,7 +572,7 @@ end
 Then /^SDCW: click footer customer support$/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
 
     common_page.footer_support_menu_xs.scroll_into_view
     common_page.footer_support_menu_xs.click!
@@ -607,7 +607,7 @@ end
 Then /^SDCW: click footer how to videos$/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
 
     common_page.footer_support_menu_xs.scroll_into_view
     common_page.footer_support_menu_xs.click!
@@ -626,7 +626,7 @@ Then /^SDCW: click footer how to videos$/ do
   step 'pause for 5 second'
   SdcPage.browser.window(:title => "Stamps.com - YouTube").use
 
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
     expect(SdcPage.browser.url).to eql('https://m.youtube.com/user/StampscomVideo')
   else
     expect(SdcPage.browser.url).to eql('https://www.youtube.com/user/StampscomVideo')
@@ -639,7 +639,7 @@ end
 Then /^SDCW: click footer faq$/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
 
     common_page.footer_support_menu_xs.scroll_into_view
     common_page.footer_support_menu_xs.click!
@@ -669,7 +669,7 @@ end
 Then /^SDCW: click footer system status$/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
 
     common_page.footer_support_menu_xs.scroll_into_view
     common_page.footer_support_menu_xs.click!
@@ -705,7 +705,7 @@ end
 Then /^SDCW: click footer about us$/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
 
     common_page.footer_company_stuff_menu_xs.scroll_into_view
     common_page.footer_company_stuff_menu_xs.click!
@@ -736,7 +736,7 @@ end
 Then /^SDCW: click footer shipping partners$/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
 
     common_page.footer_company_stuff_menu_xs.scroll_into_view
     common_page.footer_company_stuff_menu_xs.click!
@@ -766,7 +766,7 @@ end
 Then /^SDCW: click footer privacy policy$/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
 
     common_page.footer_company_stuff_menu_xs.scroll_into_view
     common_page.footer_company_stuff_menu_xs.click!
@@ -796,7 +796,7 @@ end
 Then /^SDCW: click footer investor info$/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
 
     common_page.footer_company_stuff_menu_xs.scroll_into_view
     common_page.footer_company_stuff_menu_xs.click!
@@ -831,7 +831,7 @@ end
 Then /^SDCW: click footer careers$/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
 
     common_page.footer_company_stuff_menu_xs.scroll_into_view
 
@@ -849,7 +849,7 @@ Then /^SDCW: click footer careers$/ do
   step 'pause for 3 second'
   SdcPage.browser.window(:title => "Careers Center |").use
 
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
     expect(SdcPage.browser.url.include? 'https://careers-stamps.icims.com/jobs/intro?hashed=-435738745&mobile=true&')
   else
     expect(SdcPage.browser.url).to eql('https://careers-stamps.icims.com/jobs/intro?hashed=-435738745&mobile=false&width=970&height=500&bga=true&needsRedirect=false&jan1offset=-480&jun1offset=-420')
@@ -862,7 +862,7 @@ end
 Then /^SDCW: click footer affiliates$/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
 
     common_page.footer_company_stuff_menu_xs.scroll_into_view
 
@@ -891,7 +891,7 @@ end
 Then /^SDCW: click footer site map$/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
 
     common_page.footer_company_stuff_menu_xs.scroll_into_view
     common_page.footer_company_stuff_menu_xs.click!
@@ -921,7 +921,7 @@ end
 Then /^SDCW: click footer contact us$/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
 
     common_page.footer_company_stuff_menu_xs.scroll_into_view
     common_page.footer_company_stuff_menu_xs.click!
@@ -952,7 +952,7 @@ end
 Then /^SDCW: click footer developer overview$/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
     common_page.developer_overview_xs.click
   else
     if TestSession.env.local_browser == :edge
@@ -982,7 +982,7 @@ end
 Then /^SDCW: click footer developer registration$/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
     common_page.developer_reg_xs.click
   else
     if TestSession.env.local_browser == :edge
@@ -1012,7 +1012,7 @@ end
 Then /^SDCW: click footer developer reference guide$/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
     common_page.developer_reff_xs.click
   else
     if TestSession.env.local_browser == :edge
@@ -1042,7 +1042,7 @@ end
 Then /^SDCW: click footer developer products$/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
     common_page.developer_products_xs.click
   else
     if TestSession.env.local_browser == :edge
@@ -1073,7 +1073,7 @@ end
 Then /^SDCW: click footer facebook$/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
     common_page.facebook_xs.click
   else
     if TestSession.env.local_browser == :edge
@@ -1096,7 +1096,7 @@ end
 Then /^SDCW: click footer twitter/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
     common_page.twitter_xs.click
   else
     if TestSession.env.local_browser == :edge
@@ -1119,7 +1119,7 @@ end
 Then /^SDCW: click footer google plus/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
     common_page.google_plus_xs.click
   else
     if TestSession.env.local_browser == :edge
@@ -1142,7 +1142,7 @@ end
 Then /^SDCW: click footer youtube/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
     common_page.youtube_xs.click
   else
     if TestSession.env.local_browser == :edge
@@ -1165,7 +1165,7 @@ end
 Then /^SDCW: click footer linkedin/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
     common_page.linkedin_xs.click
   else
     if TestSession.env.local_browser == :edge
@@ -1184,7 +1184,7 @@ end
 Then /^SDCW: click footer blog/ do
 
   common_page = StampsWebsite.common_page
-  if TestSession.env.browser_mobile_emulator || TestSession.env.mobile_device
+  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
     common_page.blog_xs.click
   else
     if TestSession.env.local_browser == :edge
