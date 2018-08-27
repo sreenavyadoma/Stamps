@@ -27,7 +27,7 @@ Then /^SDCW: click get started button$/ do
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
     common_page.get_started_xs.click!
   else
-   common_page.get_started.click!
+    common_page.get_started.click!
   end
   step 'pause for 2 second'
   step 'WL: expect profile page email exists'
@@ -45,9 +45,9 @@ Then /^SDCW: click get started button$/ do
 end
 
 Then /^SDCW: click get log in button$/ do
-    StampsWebsite.common_page.log_in.click!
+  StampsWebsite.common_page.log_in.click!
   step 'pause for 2 second'
-    url = SdcPage.browser.url
+  url = SdcPage.browser.url
   case TestSession.env.url
     when :qacc
       expect(url).to eql('https://print.qacc.stamps.com/SignIn/')
@@ -59,7 +59,7 @@ Then /^SDCW: click get log in button$/ do
 end
 
 Then /^SDCW: click FAQ$/ do
-   common_page = StampsWebsite.common_page
+  common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
     step 'SDCW: click hamburger button'
     common_page.faq_header_xs.click
@@ -67,8 +67,8 @@ Then /^SDCW: click FAQ$/ do
     common_page.faq_header_xs.click
   end
 
-  step 'pause for 1 second'
-   url = SdcPage.browser.url
+  step 'pause for 2 second'
+  url = SdcPage.browser.url
   case TestSession.env.url
     when :qacc
       expect(url).to eql('https://sdcwebsite.qacc.stamps.com/postage-online/faqs/')
