@@ -1,214 +1,214 @@
 require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
+# BEGIN WEB DEV
 
-
-#BEGIN WEB DEV
   #BEGIN PARTNER PORTAL
-  Cucumber::Rake::Task.new(:pp_log_in_page_validation) do |t|
-    t.profile = 'pp_log_in_page_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:pp_log_in_page_validation) do |t|
+      t.profile = 'pp_log_in_page_validation'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:pp_header_favicons_browser) do |t|
-    t.profile = 'pp_header_favicons_browser'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:pp_header_favicons_browser) do |t|
+      t.profile = 'pp_header_favicons_browser'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:pp_header_favicons_browser_mobile) do |t|
-    t.profile = 'pp_header_favicons_browser_mobile'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:pp_header_favicons_browser_mobile) do |t|
+      t.profile = 'pp_header_favicons_browser_mobile'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:pp_dashboard_single_contract_ui_validaiton) do |t|
-    t.profile = 'pp_dashboard_single_contract_ui_validaiton'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:pp_dashboard_single_contract_ui_validaiton) do |t|
+      t.profile = 'pp_dashboard_single_contract_ui_validaiton'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:pp_dashboard_single_contract_chart_data_validation) do |t|
-    t.profile = 'pp_dashboard_single_contract_chart_data_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:pp_dashboard_single_contract_chart_data_validation) do |t|
+      t.profile = 'pp_dashboard_single_contract_chart_data_validation'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:pp_authenticate) do |t|
-    t.profile = 'pp_authenticate'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:pp_authenticate) do |t|
+      t.profile = 'pp_authenticate'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:pp_footer) do |t|
-    t.profile = 'pp_footer'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:pp_footer) do |t|
+      t.profile = 'pp_footer'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:pp_left_panel) do |t|
-    t.profile = 'pp_left_panel'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:pp_left_panel) do |t|
+      t.profile = 'pp_left_panel'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:pp_left_panel_mobile) do |t|
-    t.profile = 'pp_left_panel_mobile'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:pp_left_panel_mobile) do |t|
+      t.profile = 'pp_left_panel_mobile'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:pp_reset_password) do |t|
-    t.profile = 'pp_reset_password'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:pp_reset_password) do |t|
+      t.profile = 'pp_reset_password'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:pp_dashboard_single_contract_export_data_ui_validation) do |t|
-    t.profile = 'pp_dashboard_single_contract_export_data_ui_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:pp_dashboard_single_contract_export_data_ui_validation) do |t|
+      t.profile = 'pp_dashboard_single_contract_export_data_ui_validation'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:pp_dashboard_single_contract_export_data_validation) do |t|
-    t.profile = 'pp_dashboard_single_contract_export_data_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:pp_dashboard_single_contract_export_data_validation) do |t|
+      t.profile = 'pp_dashboard_single_contract_export_data_validation'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-#END PARTNER PORTAL
+  #END PARTNER PORTAL
 
-#BEGIN STAMPS WEB REG
-  Cucumber::Rake::Task.new(:sdcwr_random_workflow) do |t|
-    t.profile = 'sdcwr_normal_workflow'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+  #BEGIN STAMPS WEB REG
+    Cucumber::Rake::Task.new(:sdcwr_random_workflow) do |t|
+      t.profile = 'sdcwr_normal_workflow'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:sdcwr_offer_573_workflow) do |t|
-    t.profile = 'sdcwr_offer_573_workflow'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:sdcwr_offer_573_workflow) do |t|
+      t.profile = 'sdcwr_offer_573_workflow'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:sdcwr_offer_592_workflow) do |t|
-    t.profile = 'sdcwr_offer_592_workflow'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:sdcwr_offer_592_workflow) do |t|
+      t.profile = 'sdcwr_offer_592_workflow'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:sdcwr_offer_399_workflow) do |t|
-    t.profile = 'sdcwr_offer_399_workflow'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:sdcwr_offer_399_workflow) do |t|
+      t.profile = 'sdcwr_offer_399_workflow'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:sdcwr_membership_page_ui_validation) do |t|
-    t.profile = 'sdcwr_membership_page_ui_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:sdcwr_membership_page_ui_validation) do |t|
+      t.profile = 'sdcwr_membership_page_ui_validation'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:sdcwr_profile_page_ui_validation) do |t|
-    t.profile = 'sdcwr_profile_page_ui_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:sdcwr_profile_page_ui_validation) do |t|
+      t.profile = 'sdcwr_profile_page_ui_validation'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:sdcwr_security_question_page_validation) do |t|
-    t.profile = 'sdcwr_security_question_page_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:sdcwr_security_question_page_validation) do |t|
+      t.profile = 'sdcwr_security_question_page_validation'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:sdcwr_header_footer_validation) do |t|
-    t.profile = 'sdcwr_header_footer_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:sdcwr_header_footer_validation) do |t|
+      t.profile = 'sdcwr_header_footer_validation'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:sdcwr_membership_page_addr_validation) do |t|
-    t.profile = 'sdcwr_membership_page_addr_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:sdcwr_membership_page_addr_validation) do |t|
+      t.profile = 'sdcwr_membership_page_addr_validation'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:sdcwr_membership_page_username_taken_validation) do |t|
-    t.profile = 'sdcwr_membership_page_username_taken_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:sdcwr_membership_page_username_taken_validation) do |t|
+      t.profile = 'sdcwr_membership_page_username_taken_validation'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:sdcwr_choose_supplies_page_not_present_workflow) do |t|
-    t.profile = 'sdcwr_choose_supplies_page_not_present_workflow'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:sdcwr_choose_supplies_page_not_present_workflow) do |t|
+      t.profile = 'sdcwr_choose_supplies_page_not_present_workflow'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:sdcwr_session_state_data_validation) do |t|
-    t.profile = 'sdcwr_session_state_data_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
-# END STAMPS WEB REG
+    Cucumber::Rake::Task.new(:sdcwr_session_state_data_validation) do |t|
+      t.profile = 'sdcwr_session_state_data_validation'
+      t.cucumber_opts = "-p cuke_reports"
+    end
+  # END STAMPS WEB REG
 
-#BEGIN ENDICIA WEB REG
-  Cucumber::Rake::Task.new(:ewwr_profile_page_ui_validation) do |t|
-    t.profile = 'ewwr_profile_page_ui_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+  #BEGIN ENDICIA WEB REG
+    Cucumber::Rake::Task.new(:ewwr_profile_page_ui_validation) do |t|
+      t.profile = 'ewwr_profile_page_ui_validation'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:ewwr_membership_page_ui_validation) do |t|
-    t.profile = 'ewwr_membership_page_ui_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:ewwr_membership_page_ui_validation) do |t|
+      t.profile = 'ewwr_membership_page_ui_validation'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:ewwr_membership_page_addr_validation) do |t|
-    t.profile = 'ewwr_membership_page_addr_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:ewwr_membership_page_addr_validation) do |t|
+      t.profile = 'ewwr_membership_page_addr_validation'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:ewwr_membership_page_username_taken_validation) do |t|
-    t.profile = 'ewwr_membership_page_username_taken_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:ewwr_membership_page_username_taken_validation) do |t|
+      t.profile = 'ewwr_membership_page_username_taken_validation'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:ewwr_offer_707_workflow) do |t|
-    t.profile = 'ewwr_offer_707_workflow'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:ewwr_offer_707_workflow) do |t|
+      t.profile = 'ewwr_offer_707_workflow'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:ewwr_security_question_page_validation) do |t|
-    t.profile = 'ewwr_security_question_page_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:ewwr_security_question_page_validation) do |t|
+      t.profile = 'ewwr_security_question_page_validation'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:ewwr_membership_page_ui_validation) do |t|
-    t.profile = 'ewwr_membership_page_ui_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:ewwr_membership_page_ui_validation) do |t|
+      t.profile = 'ewwr_membership_page_ui_validation'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:ewwr_membership_page_addr_validation) do |t|
-    t.profile = 'ewwr_membership_page_addr_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:ewwr_membership_page_addr_validation) do |t|
+      t.profile = 'ewwr_membership_page_addr_validation'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:ewwr_membership_page_username_taken_validation) do |t|
-    t.profile = 'ewwr_membership_page_username_taken_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:ewwr_membership_page_username_taken_validation) do |t|
+      t.profile = 'ewwr_membership_page_username_taken_validation'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:ewwr_header_footer_validation) do |t|
-    t.profile = 'ewwr_header_footer_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:ewwr_header_footer_validation) do |t|
+      t.profile = 'ewwr_header_footer_validation'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-  Cucumber::Rake::Task.new(:ewwr_session_state_data_validation) do |t|
-    t.profile = 'ewwr_session_state_data_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+    Cucumber::Rake::Task.new(:ewwr_session_state_data_validation) do |t|
+      t.profile = 'ewwr_session_state_data_validation'
+      t.cucumber_opts = "-p cuke_reports"
+    end
 
-# END ENDICIA WEB REG
+  # END ENDICIA WEB REG
 
-# BEGIN STAMPS WEBSITE
-  Cucumber::Rake::Task.new(:sdcw_postage_online_page_validation) do |t|
-    t.profile = 'sdcw_postage_online_page_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+  # BEGIN STAMPS WEBSITE
+      Cucumber::Rake::Task.new(:sdcw_postage_online_page_validation) do |t|
+        t.profile = 'sdcw_postage_online_page_validation'
+        t.cucumber_opts = "-p cuke_reports"
+      end
 
-  Cucumber::Rake::Task.new(:sdcw_postage_online_page_validation_mobile) do |t|
-    t.profile = 'sdcw_postage_online_page_validation_mobile'
-    t.cucumber_opts = "-p cuke_reports"
-  end
-# END STAMPS WEBSITE
+      Cucumber::Rake::Task.new(:sdcw_postage_online_page_validation_mobile) do |t|
+        t.profile = 'sdcw_postage_online_page_validation_mobile'
+        t.cucumber_opts = "-p cuke_reports"
+      end
+  # END STAMPS WEBSITE
 
 
-# BEGIN SHIPWORKS WEB REG
-  Cucumber::Rake::Task.new(:swwr_create_your_account_page_validation) do |t|
-    t.profile = 'swwr_create_your_account_page_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
-# END SHIPWORKS WEB REG
+  # BEGIN SHIPWORKS WEB REG
+    Cucumber::Rake::Task.new(:swwr_create_your_account_page_validation) do |t|
+      t.profile = 'swwr_create_your_account_page_validation'
+      t.cucumber_opts = "-p cuke_reports"
+    end
+  # END SHIPWORKS WEB REG
 
 
 # END WEB DEV
+
 
 Cucumber::Rake::Task.new(:saucelabs_local_rob) do |t|
   t.profile = 'saucelabs_local_rob'
