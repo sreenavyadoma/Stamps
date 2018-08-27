@@ -278,24 +278,6 @@ module TestSession
           @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
           Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
 
-        when :ff, :firefox
-          kill('taskkill /im firefox.exe /f')
-          if env.firefox_profile
-              download_directory = "#{Dir.getwd}/download"
-              download_directory.tr!('/', '\\') if Selenium::WebDriver::Platform.windows?
-              profile = Selenium::WebDriver::Firefox::Profile.new
-              profile['browser.download.folderList'] = 2 # custom location
-              profile['browser.download.dir'] = download_directory
-              profile['browser.helperApps.neverAsk.saveToDisk'] = 'text/csv,application/pdf,image/png,application/x-zip-compressed,text/plain'
-              @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
-              Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
-            else
-              profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(env.firefox_profile)
-              profile.assume_untrusted_certificate_issuer = true
-              profile['network.http.phishy-userpass-length'] = 255
-              @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
-            end
-
         when :gc_web_dev
           prefs = {
               download: {
