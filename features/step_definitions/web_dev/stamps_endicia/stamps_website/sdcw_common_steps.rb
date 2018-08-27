@@ -123,7 +123,7 @@ Then /^SDCW: click learn more --> small office mailers link$/ do
     end
     common_page.small_office_mailers.click
   end
-  step 'pause for 1 second'
+  step 'pause for 2 second'
   case TestSession.env.url
     when :qacc
       expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/postage-online/')
@@ -148,7 +148,7 @@ Then /^SDCW: click learn more --> online sellers link$/ do
     end
     common_page.online_sellers.click
   end
-  step 'pause for 1 second'
+  step 'pause for 2 second'
 
   case TestSession.env.url
     when :qacc
