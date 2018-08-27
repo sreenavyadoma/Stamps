@@ -11,13 +11,14 @@ end
 Then /^SDCW: click stamps website logo$/ do
   StampsWebsite.common_page.stamps_logo.click
   step 'pause for 1 second'
+  url = SdcPage.browser.url
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/')
+      expect(url).to eql('https://sdcwebsite.qacc.stamps.com/')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.staging.stamps.com/')
+      expect(url).to eql('https://sdcwebsite.staging.stamps.com/')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://www.stamps.com/')
+      expect(url).to eql('https://www.stamps.com/')
   end
 end
 
@@ -30,26 +31,30 @@ Then /^SDCW: click get started button$/ do
   end
   step 'pause for 2 second'
   step 'WL: expect profile page email exists'
+
+  url = SdcPage.browser.url
+
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://qacc-registration.stamps.com/registration/#!&p=profile')
+      expect(url).to eql('https://qacc-registration.stamps.com/registration/#!&p=profile')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://staging-registration.stamps.com/registration/#!&p=profile')
+      expect(url).to eql('https://staging-registration.stamps.com/registration/#!&p=profile')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://registration.stamps.com/registration/#!&p=profile')
+      expect(url).to eql('https://registration.stamps.com/registration/#!&p=profile')
   end
 end
 
 Then /^SDCW: click get log in button$/ do
     StampsWebsite.common_page.log_in.click!
   step 'pause for 2 second'
+    url = SdcPage.browser.url
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://print.qacc.stamps.com/SignIn/')
+      expect(url).to eql('https://print.qacc.stamps.com/SignIn/')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://print.testing.stamps.com/SignIn/')
+      expect(url).to eql('https://print.testing.stamps.com/SignIn/')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://print.stamps.com/SignIn/')
+      expect(url).to eql('https://print.stamps.com/SignIn/')
   end
 end
 
@@ -57,19 +62,20 @@ Then /^SDCW: click FAQ$/ do
    common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
     step 'SDCW: click hamburger button'
-    common_page.faq_xs.click
+    common_page.faq_header_xs.click
   else
-    common_page.faq.click
+    common_page.faq_header_xs.click
   end
 
   step 'pause for 1 second'
+   url = SdcPage.browser.url
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/postage-online/faqs/')
+      expect(url).to eql('https://sdcwebsite.qacc.stamps.com/postage-online/faqs/')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.staging.stamps.com/postage-online/faqs/')
+      expect(url).to eql('https://sdcwebsite.staging.stamps.com/postage-online/faqs/')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://stamps.com/postage-online/faqs/')
+      expect(url).to eql('https://stamps.com/postage-online/faqs/')
   end
 end
 
@@ -79,7 +85,7 @@ Then /^SDCW: click hamburger button$/ do
   step 'pause for 1 second'
   att_value = menu_xs.attribute_value 'class'
   menu_xs.click if att_value == 'navbar-toggle collapsed'
-  step 'pause for 1 second'
+  step 'pause for 2 second'
   expect(menu_xs.attribute_value 'class').to eql('navbar-toggle')
 end
 
@@ -88,13 +94,14 @@ Then /^SDCW: click hamburger --> get started link$/ do
   StampsWebsite.common_page.get_started_xs.click
   step 'pause for 2 second'
   step 'WL: expect profile page email exists'
+  url = SdcPage.browser.url
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://qa-registration.stamps.com/registration/#!&p=profile')
+      expect(url).to eql('https://qa-registration.stamps.com/registration/#!&p=profile')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://staging-registration.stamps.com/registration/#!&p=profile')
+      expect(url).to eql('https://staging-registration.stamps.com/registration/#!&p=profile')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://registration.stamps.com/registration/#!&p=profile')
+      expect(url).to eql('https://registration.stamps.com/registration/#!&p=profile')
   end
 end
 
@@ -124,13 +131,14 @@ Then /^SDCW: click learn more --> small office mailers link$/ do
     common_page.small_office_mailers.click
   end
   step 'pause for 2 second'
+  url = SdcPage.browser.url
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/postage-online/')
+      expect(url).to eql('https://sdcwebsite.qacc.stamps.com/postage-online/')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.staging.stamps.com/postage-online/')
+      expect(url).to eql('https://sdcwebsite.staging.stamps.com/postage-online/')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://stamps.com/postage-online/')
+      expect(url).to eql('https://stamps.com/postage-online/')
   end
 end
 
@@ -149,14 +157,14 @@ Then /^SDCW: click learn more --> online sellers link$/ do
     common_page.online_sellers.click
   end
   step 'pause for 2 second'
-
+  url = SdcPage.browser.url
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/shipping/')
+      expect(url).to eql('https://sdcwebsite.qacc.stamps.com/shipping/')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.staging.stamps.com/shipping/')
+      expect(url).to eql('https://sdcwebsite.staging.stamps.com/shipping/')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://stamps.com/shipping/')
+      expect(url).to eql('https://stamps.com/shipping/')
   end
 end
 
@@ -174,14 +182,15 @@ Then /^SDCW: click learn more --> warehouse shippers link$/ do
     common_page.warehouse_shippers.click
   end
   step 'pause for 2 second'
+  url = SdcPage.browser.url
 
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/warehouse/')
+      expect(url).to eql('https://sdcwebsite.qacc.stamps.com/warehouse/')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.staging.stamps.com/warehouse/')
+      expect(url).to eql('https://sdcwebsite.staging.stamps.com/warehouse/')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://stamps.com/warehouse/')
+      expect(url).to eql('https://stamps.com/warehouse/')
   end
 end
 
@@ -199,21 +208,21 @@ Then /^SDCW: click learn more --> corporate postage solutions link$/ do
     common_page.corporate_postage_solutions.click
   end
   step 'pause for 2 second'
-
+  url = SdcPage.browser.url
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/enterprise/')
+      expect(url).to eql('https://sdcwebsite.qacc.stamps.com/enterprise/')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.staging.stamps.com/enterprise/')
+      expect(url).to eql('https://sdcwebsite.staging.stamps.com/enterprise/')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://stamps.com/enterprise/')
+      expect(url).to eql('https://stamps.com/enterprise/')
   end
 end
 
 Then /^SDCW: click hamburger --> customer support$/ do
   step 'SDCW: click hamburger button'
-  StampsWebsite.common_page.customer_support_xs.click
-  step 'pause for 5 second'
+  StampsWebsite.common_page.customer_support_header_xs.click
+  step 'pause for 2 second'
   url =  SdcPage.browser.windows.last.url
   SdcPage.browser.windows.last.close
   expect(url).to eql('https://stamps--tst.custhelp.com/app/answers/list')
@@ -222,14 +231,16 @@ end
 Then /^SDCW: click hamburger --> customer log-in/ do
   step 'SDCW: click hamburger button'
   StampsWebsite.common_page.customer_log_in_xs.click
+
   step 'pause for 2 second'
+  url = SdcPage.browser.url
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://print.qacc.stamps.com/SignIn/?')
+      expect(url).to eql('https://print.qacc.stamps.com/SignIn/?')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://print.testing.stamps.com/SignIn/?')
+      expect(url).to eql('https://print.testing.stamps.com/SignIn/?')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://print.stamps.com/SignIn/?')
+      expect(url).to eql('https://print.stamps.com/SignIn/?')
   end
 end
 
