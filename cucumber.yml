@@ -20,9 +20,7 @@ sauce_browser: --tags @bvt_orders_ui_validation URL=stg USR=bvtstgw7ff8 PW=pass1
 
 mhossain1_cc: --tags @sdc_website_header_footer URL=stg BROWSER=gc_iPhone_X LOG_LEVEL=info #USR=wteam@stamps.com PW=password1
 
-
-ks_mob_cc: --tags @sdc_website_header_footer JENKINS=true URL=stg BROWSER=ff BROWSER=gc BROWSER_MOBILE_EMULATOR=gc,'iPhone X' FIREFOX_PROFILE=true WEB_DEV=true LOG_LEVEL=info #USR=qawebdevelopment@stamps.com PW=password1
-kaushal_cc: --tags @sdc_website_header_footer JENKINS=true URL=stg BROWSER=edge FIREFOX_PROFILE=true WEB_DEV=true #USR=qawebdevelopment@stamps.com PW=password1
+kaushal_cc: --tags @ewwr_security_question_page_validation URL=stg BROWSER=edge #USR=qawebdevelopment@stamps.com PW=password1
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess BROWSER=ff MAX_WINDOW=false
 
