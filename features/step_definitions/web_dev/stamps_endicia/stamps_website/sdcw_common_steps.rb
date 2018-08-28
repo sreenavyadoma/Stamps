@@ -296,6 +296,56 @@ Then /^SDCW: verify default elements on header for mobile$/ do
   step 'SDCW: expect hamburger --> call us 1-888-434-0055 to be present'
 end
 
+Then /^SDCW: verify default elements on footer for browser$/ do
+  step 'SDCW: expect stamps website footer usps logo exists'
+  step 'SDCW: expect stamps website footer usps logo words is Stamps.com is an independent vendor of the USPS.'
+  step 'SDCW: expect stamps website footer copyright exists'
+  step 'SDCW: expect stamps website footer copyright text is Copyright © 1998-2018 Stamps.com Inc.'
+  step 'SDCW: click footer copyright link'
+  step 'SDCW: navigate back'
+  step 'SDCW: click footer small office mailers'
+  step 'SDCW: navigate back'
+  step 'SDCW: click footer online sellers'
+  step 'SDCW: navigate back'
+  step 'SDCW: click footer warehouse shippers'
+  step 'SDCW: navigate back'
+  step 'SDCW: click footer corporate postage solutions'
+  step 'SDCW: navigate back'
+  step 'SDCW: click footer photo stamps'
+  step 'SDCW: click footer supplies'
+  step 'SDCW: click footer download software'
+  step 'SDCW: navigate back'
+  step 'SDCW: click footer customer support'
+  step 'SDCW: click footer how to videos'
+  step 'SDCW: click footer faq'
+  step 'SDCW: navigate back'
+  step 'SDCW: click footer system status'
+  step 'SDCW: click footer about us'
+  step 'SDCW: navigate back'
+  step 'SDCW: click footer shipping partners'
+  step 'SDCW: navigate back'
+  step 'SDCW: click footer privacy policy'
+  step 'SDCW: navigate back'
+  step 'SDCW: click footer investor info'
+  step 'SDCW: click footer careers'
+  step 'SDCW: click footer affiliates'
+  step 'SDCW: navigate back'
+  step 'SDCW: click footer site map'
+  step 'SDCW: navigate back'
+  step 'SDCW: click footer contact us'
+  step 'SDCW: navigate back'
+  step 'SDCW: click footer developer overview'
+  step 'SDCW: click footer developer registration'
+  step 'SDCW: click footer developer reference guide'
+  step 'SDCW: click footer developer products'
+  step 'SDCW: click footer facebook'
+  step 'SDCW: click footer twitter'
+  step 'SDCW: click footer google plus'
+  step 'SDCW: click footer youtube'
+  step 'SDCW: click footer linkedin'
+  step 'SDCW: click footer blog'
+
+end
 
 ########### footer ############
 
@@ -337,13 +387,14 @@ Then /^SDCW: click footer copyright link$/ do
     end
   end
   step 'pause for 1 second'
+  url = SdcPage.browser.url
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/site/copyright/#copyright')
+      expect(url).to eql('https://sdcwebsite.qacc.stamps.com/site/copyright/#copyright')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.staging.stamps.com/site/copyright/#copyright')
+      expect(url).to eql('https://sdcwebsite.staging.stamps.com/site/copyright/#copyright')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://stamps.com/site/copyright/#copyright')
+      expect(url).to eql('https://stamps.com/site/copyright/#copyright')
   end
 end
 
@@ -367,19 +418,18 @@ Then /^SDCW: click footer small office mailers$/ do
     end
   end
   step 'pause for 1 second'
+  url = SdcPage.browser.url
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/postage-online/')
+      expect(url).to eql('https://sdcwebsite.qacc.stamps.com/postage-online/')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.staging.stamps.com/postage-online/')
+      expect(url).to eql('https://sdcwebsite.staging.stamps.com/postage-online/')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://stamps.com/postage-online/')
+      expect(url).to eql('https://stamps.com/postage-online/')
   end
 end
 
 Then /^SDCW: click footer online sellers$/ do
-  step 'SDCW: blur_out on page'
-  step 'pause for 1 second'
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device|| TestSession.env.mobile_device
 
@@ -398,13 +448,15 @@ Then /^SDCW: click footer online sellers$/ do
     end
   end
   step 'pause for 1 second'
+  url = SdcPage.browser.url
+
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/shipping/')
+      expect(url).to eql('https://sdcwebsite.qacc.stamps.com/shipping/')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.staging.stamps.com/shipping/')
+      expect(url).to eql('https://sdcwebsite.staging.stamps.com/shipping/')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://stamps.com/shipping/')
+      expect(url).to eql('https://stamps.com/shipping/')
   end
 end
 
@@ -428,13 +480,14 @@ Then /^SDCW: click footer warehouse shippers$/ do
     end
   end
   step 'pause for 1 second'
+  url = SdcPage.browser.url
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/warehouse/')
+      expect(url).to eql('https://sdcwebsite.qacc.stamps.com/warehouse/')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.staging.stamps.com/warehouse/')
+      expect(url).to eql('https://sdcwebsite.staging.stamps.com/warehouse/')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://stamps.com/warehouse/')
+      expect(url).to eql('https://stamps.com/warehouse/')
   end
 end
 
@@ -458,13 +511,14 @@ Then /^SDCW: click footer corporate postage solutions$/ do
     end
   end
   step 'pause for 1 second'
+  url = SdcPage.browser.url
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/enterprise/')
+      expect(url).to eql('https://sdcwebsite.qacc.stamps.com/enterprise/')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.staging.stamps.com/enterprise/')
+      expect(url).to eql('https://sdcwebsite.staging.stamps.com/enterprise/')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://stamps.com/enterprise/')
+      expect(url).to eql('https://stamps.com/enterprise/')
   end
 end
 
@@ -487,25 +541,26 @@ Then /^SDCW: click footer photo stamps$/ do
       common_page.footer_photo_stamps.click
     end
   end
-  step 'pause for 3 seconds'
-  SdcPage.browser.window(:title => "Photo Stamps, PhotoStamps, Personalized Stamps, Custom Postage").use
+  step 'pause for 3 second'
+  url = SdcPage.browser.windows.last.url
+  SdcPage.browser.windows.last.close
 
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://photo.corp.stamps.com/Store/')
+      expect(url).to eql('https://photo.corp.stamps.com/Store/')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://photo.staging.stamps.com/Store/')
+      expect(url).to eql('https://photo.staging.stamps.com/Store/')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://photo.corp.stamps.com/Store/')
+      expect(url).to eql('https://photo.corp.stamps.com/Store/')
   end
 
-  SdcPage.browser.window(:title => "Photo Stamps, PhotoStamps, Personalized Stamps, Custom Postage").close
   step 'pause for 1 second'
 end
 
 Then /^SDCW: click footer supplies$/ do
 
   common_page = StampsWebsite.common_page
+
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
 
     common_page.footer_products_menu_xs.scroll_into_view
@@ -515,26 +570,29 @@ Then /^SDCW: click footer supplies$/ do
     common_page.footer_supplies_xs.click
   else
     if TestSession.env.local_browser == :edge
+      common_page.footer_supplies.wait_until_present(timeout: 10)
       common_page.footer_supplies.click
     else
+      common_page.footer_supplies.wait_until_present(timeout: 10)
       common_page.footer_supplies.scroll_into_view
       common_page.footer_supplies.hover
       common_page.footer_supplies.click
     end
   end
-  step 'pause for 3 seconds'
-  SdcPage.browser.window(:title => "Product Catalog | Stamps.com").use
-
+  step 'pause for 1 second'
+  SdcPage.browser.windows.last.use
+  common_page.stamps_store_logo.wait_until_present(timeout: 15)
+  url = SdcPage.browser.windows.last.url
+  SdcPage.browser.windows.last.close
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://store.corp.stamps.com/Store/')
+      expect(url).to eql('https://store.corp.stamps.com/Store/')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://store.staging.stamps.com/Store/')
+      expect(url).to eql('https://store.staging.stamps.com/Store/')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://store.corp.stamps.com/Store/')
+      expect(url).to eql('https://store.corp.stamps.com/Store/')
   end
 
-  SdcPage.browser.window(:title => "Product Catalog | Stamps.com").close
   step 'pause for 1 second'
 end
 
@@ -559,13 +617,14 @@ Then /^SDCW: click footer download software$/ do
     end
   end
   step 'pause for 1 second'
+  url = SdcPage.browser.url
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/download/')
+      expect(url).to eql('https://sdcwebsite.qacc.stamps.com/download/')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.staging.stamps.com/download/')
+      expect(url).to eql('https://sdcwebsite.staging.stamps.com/download/')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://stamps.com/download/')
+      expect(url).to eql('https://stamps.com/download/')
   end
 end
 
@@ -589,19 +648,19 @@ Then /^SDCW: click footer customer support$/ do
     end
   end
   step 'pause for 3 second'
-  SdcPage.browser.window(:title => "Support Home Page").use
+
+  url =  SdcPage.browser.windows.last.url
+  SdcPage.browser.windows.last.close
 
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://stamps--tst.custhelp.com/')
+      expect(url).to eql('https://stamps--tst.custhelp.com/')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://stamps--tst.custhelp.com/')
+      expect(url).to eql('https://stamps--tst.custhelp.com/')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://stamps--tst.custhelp.com/')
+      expect(url).to eql('https://stamps--tst.custhelp.com/')
   end
 
-  SdcPage.browser.window(:title => "Support Home Page").close
-  step 'pause for 1 second'
 end
 
 Then /^SDCW: click footer how to videos$/ do
@@ -624,16 +683,15 @@ Then /^SDCW: click footer how to videos$/ do
     end
   end
   step 'pause for 5 second'
-  SdcPage.browser.window(:title => "Stamps.com - YouTube").use
+  url =  SdcPage.browser.windows.last.url
+  SdcPage.browser.windows.last.close
 
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-    expect(SdcPage.browser.url).to eql('https://m.youtube.com/user/StampscomVideo')
+    expect(url).to eql('https://m.youtube.com/user/StampscomVideo')
   else
-    expect(SdcPage.browser.url).to eql('https://www.youtube.com/user/StampscomVideo')
+    expect(url).to eql('https://www.youtube.com/user/StampscomVideo')
   end
 
-  SdcPage.browser.window(:title => "Stamps.com - YouTube").close
-  step 'pause for 1 second'
 end
 
 Then /^SDCW: click footer faq$/ do
@@ -656,13 +714,15 @@ Then /^SDCW: click footer faq$/ do
     end
   end
   step 'pause for 1 second'
+  url = SdcPage.browser.url
+
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/postage-online/faqs/')
+      expect(url).to eql('https://sdcwebsite.qacc.stamps.com/postage-online/faqs/')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.staging.stamps.com/postage-online/faqs/')
+      expect(url).to eql('https://sdcwebsite.staging.stamps.com/postage-online/faqs/')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://stamps.com/postage-online/faqs')
+      expect(url).to eql('https://stamps.com/postage-online/faqs')
   end
 end
 
@@ -686,19 +746,18 @@ Then /^SDCW: click footer system status$/ do
     end
   end
   step 'pause for 3 second'
-  SdcPage.browser.window(:title => "Status.Stamps.com Status").use
+  url =  SdcPage.browser.windows.last.url
+  SdcPage.browser.windows.last.close
 
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://status.stamps.com/')
+      expect(url).to eql('https://status.stamps.com/')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://status.stamps.com/')
+      expect(url).to eql('https://status.stamps.com/')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://status.stamps.com/')
+      expect(url).to eql('https://status.stamps.com/')
   end
 
-  SdcPage.browser.window(:title => "Status.Stamps.com Status").close
-  step 'pause for 1 second'
 end
 
 ####### company stuff #####
@@ -723,13 +782,14 @@ Then /^SDCW: click footer about us$/ do
     end
   end
   step 'pause for 1 second'
+  url = SdcPage.browser.url
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/company-info/')
+      expect(url).to eql('https://sdcwebsite.qacc.stamps.com/company-info/')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.staging.stamps.com/company-info/')
+      expect(url).to eql('https://sdcwebsite.staging.stamps.com/company-info/')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://stamps.com/company-info/')
+      expect(url).to eql('https://stamps.com/company-info/')
   end
 end
 
@@ -753,13 +813,14 @@ Then /^SDCW: click footer shipping partners$/ do
     end
   end
   step 'pause for 1 second'
+  url = SdcPage.browser.url
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/shipping/integrations/')
+      expect(url).to eql('https://sdcwebsite.qacc.stamps.com/shipping/integrations/')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.staging.stamps.com/shipping/integrations/')
+      expect(url).to eql('https://sdcwebsite.staging.stamps.com/shipping/integrations/')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://stamps.com/shipping/integrations/')
+      expect(url).to eql('https://stamps.com/shipping/integrations/')
   end
 end
 
@@ -783,13 +844,14 @@ Then /^SDCW: click footer privacy policy$/ do
     end
   end
   step 'pause for 1 second'
+  url = SdcPage.browser.url
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/privacy-policy/')
+      expect(url).to eql('https://sdcwebsite.qacc.stamps.com/privacy-policy/')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.staging.stamps.com/privacy-policy/')
+      expect(url).to eql('https://sdcwebsite.staging.stamps.com/privacy-policy/')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://stamps.com/privacy-policy/')
+      expect(url).to eql('https://stamps.com/privacy-policy/')
   end
 end
 
@@ -813,19 +875,18 @@ Then /^SDCW: click footer investor info$/ do
     end
   end
   step 'pause for 3 second'
-  SdcPage.browser.window(:title => "Investor Relations | Stamps.com").use
+  url =  SdcPage.browser.windows.last.url
+  SdcPage.browser.windows.last.close
 
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('http://investor.stamps.com/')
+      expect(url).to eql('http://investor.stamps.com/')
     when :stg
-      expect(SdcPage.browser.url).to eql('http://investor.stamps.com/')
+      expect(url).to eql('http://investor.stamps.com/')
     when :prod
-      expect(SdcPage.browser.url).to eql('http://investor.stamps.com/')
+      expect(url).to eql('http://investor.stamps.com/')
   end
 
-  SdcPage.browser.window(:title => "Investor Relations | Stamps.com").close
-  step 'pause for 1 second'
 end
 
 Then /^SDCW: click footer careers$/ do
@@ -847,16 +908,16 @@ Then /^SDCW: click footer careers$/ do
     end
   end
   step 'pause for 3 second'
-  SdcPage.browser.window(:title => "Careers Center |").use
+
+  url =  SdcPage.browser.windows.last.url
+  SdcPage.browser.windows.last.close
 
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-    expect(SdcPage.browser.url.include? 'https://careers-stamps.icims.com/jobs/intro?hashed=-435738745&mobile=true&')
+    expect(url.include? 'https://careers-stamps.icims.com/jobs/intro?hashed=-435738745&mobile=true&')
   else
-    expect(SdcPage.browser.url).to eql('https://careers-stamps.icims.com/jobs/intro?hashed=-435738745&mobile=false&width=970&height=500&bga=true&needsRedirect=false&jan1offset=-480&jun1offset=-420')
+    expect(url).to eql('https://careers-stamps.icims.com/jobs/intro?hashed=-435738745&mobile=false&width=970&height=500&bga=true&needsRedirect=false&jan1offset=-480&jun1offset=-420')
   end
 
-  SdcPage.browser.window(:title => "Careers Center |").close
-  step 'pause for 1 second'
 end
 
 Then /^SDCW: click footer affiliates$/ do
@@ -878,13 +939,15 @@ Then /^SDCW: click footer affiliates$/ do
     end
   end
   step 'pause for 3 second'
+  url = SdcPage.browser.url
+
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/affiliates/')
+      expect(url).to eql('https://sdcwebsite.qacc.stamps.com/affiliates/')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.staging.stamps.com/affiliates/')
+      expect(url).to eql('https://sdcwebsite.staging.stamps.com/affiliates/')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://stamps.com/affiliates/')
+      expect(url).to eql('https://stamps.com/affiliates/')
   end
 end
 
@@ -908,13 +971,15 @@ Then /^SDCW: click footer site map$/ do
     end
   end
   step 'pause for 1 second'
+  url = SdcPage.browser.url
+
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/sitemap/')
+      expect(url).to eql('https://sdcwebsite.qacc.stamps.com/sitemap/')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.staging.stamps.com/sitemap/')
+      expect(url).to eql('https://sdcwebsite.staging.stamps.com/sitemap/')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://stamps.com/sitemap/')
+      expect(url).to eql('https://stamps.com/sitemap/')
   end
 end
 
@@ -938,13 +1003,14 @@ Then /^SDCW: click footer contact us$/ do
     end
   end
   step 'pause for 1 second'
+  url = SdcPage.browser.url
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.qacc.stamps.com/contact-us/')
+      expect(url).to eql('https://sdcwebsite.qacc.stamps.com/contact-us/')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://sdcwebsite.staging.stamps.com/contact-us/')
+      expect(url).to eql('https://sdcwebsite.staging.stamps.com/contact-us/')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://stamps.com/contact-us/')
+      expect(url).to eql('https://stamps.com/contact-us/')
   end
 end
 
@@ -964,19 +1030,18 @@ Then /^SDCW: click footer developer overview$/ do
     end
   end
   step 'pause for 3 second'
-  SdcPage.browser.window(:title => "Stamps.com").use
+  url =  SdcPage.browser.windows.last.url
+  SdcPage.browser.windows.last.close
 
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://developer.qacc.stamps.com/developer/')
+      expect(url).to eql('https://developer.qacc.stamps.com/developer/')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://developer.staging.stamps.com/developer/')
+      expect(url).to eql('https://developer.staging.stamps.com/developer/')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://stamps.com/developer/')
+      expect(url).to eql('https://stamps.com/developer/')
   end
 
-  SdcPage.browser.window(:title => "Stamps.com").close
-  step 'pause for 1 second'
 end
 
 Then /^SDCW: click footer developer registration$/ do
@@ -994,19 +1059,19 @@ Then /^SDCW: click footer developer registration$/ do
     end
   end
   step 'pause for 3 second'
-  SdcPage.browser.window(index: 1).use
+
+  url =  SdcPage.browser.windows.last.url
+  SdcPage.browser.windows.last.close
 
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://developer.qacc.stamps.com/developer/register/')
+      expect(url).to eql('https://developer.qacc.stamps.com/developer/register/')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://developer.staging.stamps.com/developer/register/')
+      expect(url).to eql('https://developer.staging.stamps.com/developer/register/')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://stamps.com/developer/register/')
+      expect(url).to eql('https://stamps.com/developer/register/')
   end
 
-  SdcPage.browser.window(index: 1).close
-  step 'pause for 1 second'
 end
 
 Then /^SDCW: click footer developer reference guide$/ do
@@ -1024,19 +1089,19 @@ Then /^SDCW: click footer developer reference guide$/ do
     end
   end
   step 'pause for 3 second'
-  SdcPage.browser.window(:title => "Stamps.com (SWSIM) – API Reference Guide").use
+
+  url =  SdcPage.browser.windows.last.url
+  SdcPage.browser.windows.last.close
 
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://developer.qacc.stamps.com/developer/docs/swsimv71.html#stamps-api-reference-guide')
+      expect(url).to eql('https://developer.qacc.stamps.com/developer/docs/swsimv71.html#stamps-api-reference-guide')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://developer.staging.stamps.com/developer/docs/swsimv71.html#stamps-api-reference-guide')
+      expect(url).to eql('https://developer.staging.stamps.com/developer/docs/swsimv71.html#stamps-api-reference-guide')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://developer.stamps.com/developer/docs/swsimv71.html#stamps-api-reference-guide')
+      expect(url).to eql('https://developer.stamps.com/developer/docs/swsimv71.html#stamps-api-reference-guide')
   end
 
-  SdcPage.browser.window(:title => "Stamps.com (SWSIM) – API Reference Guide").close
-  step 'pause for 1 second'
 end
 
 Then /^SDCW: click footer developer products$/ do
@@ -1054,19 +1119,19 @@ Then /^SDCW: click footer developer products$/ do
     end
   end
   step 'pause for 3 second'
-  SdcPage.browser.window(:title => "Stamps.com").use
+
+  url =  SdcPage.browser.windows.last.url
+  SdcPage.browser.windows.last.close
 
   case TestSession.env.url
     when :qacc
-      expect(SdcPage.browser.url).to eql('https://developer.qacc.stamps.com/developer/products/')
+      expect(url).to eql('https://developer.qacc.stamps.com/developer/products/')
     when :stg
-      expect(SdcPage.browser.url).to eql('https://developer.staging.stamps.com/developer/products/')
+      expect(url).to eql('https://developer.staging.stamps.com/developer/products/')
     when :prod
-      expect(SdcPage.browser.url).to eql('https://developer.stamps.com/developer/products/')
+      expect(url).to eql('https://developer.stamps.com/developer/products/')
   end
 
-  SdcPage.browser.window(:title => "Stamps.com").close
-  step 'pause for 1 second'
 end
 
 ####### follow us #####
@@ -1085,12 +1150,12 @@ Then /^SDCW: click footer facebook$/ do
     end
   end
   step 'pause for 3 second'
-  SdcPage.browser.window(:title => "Stamps.com - Home | Facebook").use
 
-  expect(SdcPage.browser.url).to eql('https://www.facebook.com/stamps.com/')
+  url =  SdcPage.browser.windows.last.url
+  SdcPage.browser.windows.last.close
 
-  SdcPage.browser.window(:title => "Stamps.com - Home | Facebook").close
-  step 'pause for 1 second'
+  expect(url).to eql('https://www.facebook.com/stamps.com/')
+
 end
 
 Then /^SDCW: click footer twitter/ do
@@ -1108,12 +1173,12 @@ Then /^SDCW: click footer twitter/ do
     end
   end
   step 'pause for 3 second'
-  SdcPage.browser.window(:title => "Stamps.com (@StampsCom) | Twitter").use
 
-  expect(SdcPage.browser.url).to eql('https://twitter.com/stampscom/')
+  url =  SdcPage.browser.windows.last.url
+  SdcPage.browser.windows.last.close
 
-  SdcPage.browser.window(:title => "Stamps.com (@StampsCom) | Twitter").close
-  step 'pause for 1 second'
+  expect(url).to eql('https://twitter.com/stampscom/')
+
 end
 
 Then /^SDCW: click footer google plus/ do
@@ -1131,12 +1196,10 @@ Then /^SDCW: click footer google plus/ do
     end
   end
   step 'pause for 3 second'
-  SdcPage.browser.window(:title => "Stamps.com - Google+").use
+  url =  SdcPage.browser.windows.last.url
+  SdcPage.browser.windows.last.close
+  expect(url).to eql('https://plus.google.com/+stampscom')
 
-  expect(SdcPage.browser.url).to eql('https://plus.google.com/+stampscom')
-
-  SdcPage.browser.window(:title => "Stamps.com - Google+").close
-  step 'pause for 1 second'
 end
 
 Then /^SDCW: click footer youtube/ do
@@ -1154,12 +1217,12 @@ Then /^SDCW: click footer youtube/ do
     end
   end
   step 'pause for 3 second'
-  SdcPage.browser.window(index: 1).use
 
-  expect(SdcPage.browser.url).to eql('https://www.youtube.com/user/StampscomVideo')
+  url =  SdcPage.browser.windows.last.url
+  SdcPage.browser.windows.last.close
 
-  SdcPage.browser.window(index: 1).close
-  step 'pause for 1 second'
+  expect(url).to eql('https://www.youtube.com/user/StampscomVideo')
+
 end
 
 Then /^SDCW: click footer linkedin/ do
@@ -1177,8 +1240,10 @@ Then /^SDCW: click footer linkedin/ do
     end
   end
   step 'pause for 3 second'
-  SdcPage.browser.window(:title => "LinkedIn: Log In or Sign Up").close
-  step 'pause for 1 second'
+  url =  SdcPage.browser.windows.last.url
+  SdcPage.browser.windows.last.close
+
+  expect(url).to include('https://www.linkedin.com/')
 end
 
 Then /^SDCW: click footer blog/ do
@@ -1196,10 +1261,9 @@ Then /^SDCW: click footer blog/ do
     end
   end
   step 'pause for 3 second'
-  SdcPage.browser.window(:title => "Stamps.com Blog - Tips and Info on USPS Shipping Software").use
 
-  expect(SdcPage.browser.url).to eql('http://blog.stamps.com/')
+  url =  SdcPage.browser.windows.last.url
+  SdcPage.browser.windows.last.close
+  expect(url).to eql('http://blog.stamps.com/')
 
-  SdcPage.browser.window(:title => "Stamps.com Blog - Tips and Info on USPS Shipping Software").close
-  step 'pause for 1 second'
 end

@@ -1,6 +1,7 @@
 module StampsWebsite
   class Common < SdcPage
     #stamps website
+    page_object(:stamps_store_logo) {{id: 'stamps-logo'}}
     page_object(:stamps_logo) {{id: 'sdc-logo'}}
     button(:get_started) { { class: ['btn btn-success btn-xs register'] } }
     button(:log_in) { { class: ['btn btn-info btn-xs login'] } }
