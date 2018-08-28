@@ -302,38 +302,25 @@ Then /^SDCW: verify default elements on footer for browser$/ do
   step 'SDCW: expect stamps website footer copyright exists'
   step 'SDCW: expect stamps website footer copyright text is Copyright © 1998-2018 Stamps.com Inc.'
   step 'SDCW: click footer copyright link'
-  step 'SDCW: navigate back'
   step 'SDCW: click footer small office mailers'
-  step 'SDCW: navigate back'
   step 'SDCW: click footer online sellers'
-  step 'SDCW: navigate back'
   step 'SDCW: click footer warehouse shippers'
-  step 'SDCW: navigate back'
   step 'SDCW: click footer corporate postage solutions'
-  step 'SDCW: navigate back'
   step 'SDCW: click footer photo stamps'
   step 'SDCW: click footer supplies'
   step 'SDCW: click footer download software'
-  step 'SDCW: navigate back'
   step 'SDCW: click footer customer support'
   step 'SDCW: click footer how to videos'
   step 'SDCW: click footer faq'
-  step 'SDCW: navigate back'
   step 'SDCW: click footer system status'
   step 'SDCW: click footer about us'
-  step 'SDCW: navigate back'
   step 'SDCW: click footer shipping partners'
-  step 'SDCW: navigate back'
   step 'SDCW: click footer privacy policy'
-  step 'SDCW: navigate back'
   step 'SDCW: click footer investor info'
   step 'SDCW: click footer careers'
   step 'SDCW: click footer affiliates'
-  step 'SDCW: navigate back'
   step 'SDCW: click footer site map'
-  step 'SDCW: navigate back'
   step 'SDCW: click footer contact us'
-  step 'SDCW: navigate back'
   step 'SDCW: click footer developer overview'
   step 'SDCW: click footer developer registration'
   step 'SDCW: click footer developer reference guide'
@@ -344,11 +331,24 @@ Then /^SDCW: verify default elements on footer for browser$/ do
   step 'SDCW: click footer youtube'
   step 'SDCW: click footer linkedin'
   step 'SDCW: click footer blog'
-
 end
 
-########### footer ############
+Then /^SDCW: verify default elements on footer for mobile$/ do
+  step 'SDCW: click footer small office mailers'
+  step 'SDCW: click footer online sellers'
+  step 'SDCW: click footer warehouse shippers'
+  step 'SDCW: click footer corporate postage solutions'
+  step 'SDCW: click footer photo stamps'
+  step 'SDCW: click footer supplies'
+  step 'SDCW: collapse footer products mobile'
+  step 'SDCW: click footer download software'
+  step 'SDCW: click footer customer support'
+  step 'SDCW: click footer how to videos'
+  step 'SDCW: click footer faq'
+  step 'SDCW: click footer system status'
+end
 
+#........footer...........#
 Then /^SDCW: expect stamps website footer usps logo exists$/ do
   usps_logo = StampsWebsite.common_page.usps_logo
   usps_logo.wait_until_present(timeout: 2)
@@ -396,25 +396,39 @@ Then /^SDCW: click footer copyright link$/ do
     when :prod
       expect(url).to eql('https://stamps.com/site/copyright/#copyright')
   end
+
+  step 'SDCW: navigate back'
 end
 
 ######## Products #######
+#
+Then /^SDCW: expand footer products mobile$/ do
+  common_page = StampsWebsite.common_page
+  common_page.footer_products_xs.scroll_into_view
+  status = common_page.footer_products_xs.attribute_value  'class'
+  common_page.footer_products_xs.click if status.include? 'collapsed'
+end
+
+Then /^SDCW: collapse footer products mobile$/ do
+  common_page = StampsWebsite.common_page
+  common_page.footer_products_xs.scroll_into_view
+  status = common_page.footer_products_xs.attribute_value  'class'
+  common_page.footer_products_xs.click if status.exclude? 'collapsed'
+end
+
 Then /^SDCW: click footer small office mailers$/ do
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device|| TestSession.env.mobile_device
 
-    common_page.footer_products_menu_xs.scroll_into_view
-    common_page.footer_products_menu_xs.click!
-
-    common_page.footer_office_mailers_xs.hover
-    common_page.footer_office_mailers_xs.click
+    step 'SDCW: expand footer products mobile'
+    common_page.footer_office_mailers[2].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.footer_office_mailers.click
+      common_page.footer_office_mailers[3].click
     else
-      common_page.footer_office_mailers.scroll_into_view
-      common_page.footer_office_mailers.hover
-      common_page.footer_office_mailers.click
+      common_page.footer_office_mailers[3].scroll_into_view
+      common_page.footer_office_mailers[3].hover
+      common_page.footer_office_mailers[3].click
     end
   end
   step 'pause for 1 second'
@@ -427,24 +441,21 @@ Then /^SDCW: click footer small office mailers$/ do
     when :prod
       expect(url).to eql('https://stamps.com/postage-online/')
   end
+  step 'SDCW: navigate back'
 end
 
 Then /^SDCW: click footer online sellers$/ do
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device|| TestSession.env.mobile_device
-
-    common_page.footer_products_menu_xs.scroll_into_view
-    common_page.footer_products_menu_xs.click!
-
-    common_page.footer_online_sellers_xs.hover
-    common_page.footer_online_sellers_xs.click
+    step 'SDCW: expand footer products mobile'
+    common_page.footer_online_sellers[2].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.footer_online_sellers.click
+      common_page.footer_online_sellers[3].click
     else
-      common_page.footer_online_sellers.scroll_into_view
-      common_page.footer_online_sellers.hover
-      common_page.footer_online_sellers.click
+      common_page.footer_online_sellers[3].scroll_into_view
+      common_page.footer_online_sellers[3].hover
+      common_page.footer_online_sellers[3].click
     end
   end
   step 'pause for 1 second'
@@ -458,25 +469,22 @@ Then /^SDCW: click footer online sellers$/ do
     when :prod
       expect(url).to eql('https://stamps.com/shipping/')
   end
+  step 'SDCW: navigate back'
 end
 
 Then /^SDCW: click footer warehouse shippers$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device|| TestSession.env.mobile_device
-
-    common_page.footer_products_menu_xs.scroll_into_view
-    common_page.footer_products_menu_xs.click!
-
-    common_page.footer_online_sellers_xs.hover
-    common_page.footer_warehouse_shippers_xs.click
+    step 'SDCW: expand footer products mobile'
+    common_page.footer_warehouse_shippers[2].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.footer_warehouse_shippers.click
+      common_page.footer_warehouse_shippers[3].click
     else
-      common_page.footer_warehouse_shippers.scroll_into_view
-      common_page.footer_warehouse_shippers.hover
-      common_page.footer_warehouse_shippers.click
+      common_page.footer_warehouse_shippers[3].scroll_into_view
+      common_page.footer_warehouse_shippers[3].hover
+      common_page.footer_warehouse_shippers[3].click
     end
   end
   step 'pause for 1 second'
@@ -489,25 +497,22 @@ Then /^SDCW: click footer warehouse shippers$/ do
     when :prod
       expect(url).to eql('https://stamps.com/warehouse/')
   end
+  step 'SDCW: navigate back'
 end
 
 Then /^SDCW: click footer corporate postage solutions$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device|| TestSession.env.mobile_device
-
-    common_page.footer_products_menu_xs.scroll_into_view
-    common_page.footer_products_menu_xs.click!
-
-    common_page.footer_online_sellers_xs.hover
-    common_page.footer_corporate_postage_solutions_xs.click
+    step 'SDCW: expand footer products mobile'
+    common_page.footer_corporate_postage_solutions[2].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.footer_corporate_postage_solutions.click
+      common_page.footer_corporate_postage_solutions[3].click
     else
-      common_page.footer_corporate_postage_solutions.scroll_into_view
-      common_page.footer_corporate_postage_solutions.hover
-      common_page.footer_corporate_postage_solutions.click
+      common_page.footer_corporate_postage_solutions[3].scroll_into_view
+      common_page.footer_corporate_postage_solutions[3].hover
+      common_page.footer_corporate_postage_solutions[3].click
     end
   end
   step 'pause for 1 second'
@@ -520,25 +525,22 @@ Then /^SDCW: click footer corporate postage solutions$/ do
     when :prod
       expect(url).to eql('https://stamps.com/enterprise/')
   end
+  step 'SDCW: navigate back'
 end
 
 Then /^SDCW: click footer photo stamps$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-
-    common_page.footer_products_menu_xs.scroll_into_view
-    common_page.footer_products_menu_xs.click!
-
-    common_page.footer_online_sellers_xs.hover
-    common_page.footer_photo_stamps_xs.click
+    step 'SDCW: expand footer products mobile'
+    common_page.footer_photo_stamps[0].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.footer_photo_stamps.click
+      common_page.footer_photo_stamps[1].click
     else
-      common_page.footer_photo_stamps.scroll_into_view
-      common_page.footer_photo_stamps.hover
-      common_page.footer_photo_stamps.click
+      common_page.footer_photo_stamps[1].scroll_into_view
+      common_page.footer_photo_stamps[1].hover
+      common_page.footer_photo_stamps[1].click
     end
   end
   step 'pause for 3 second'
@@ -558,25 +560,20 @@ Then /^SDCW: click footer photo stamps$/ do
 end
 
 Then /^SDCW: click footer supplies$/ do
-
   common_page = StampsWebsite.common_page
 
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-
-    common_page.footer_products_menu_xs.scroll_into_view
-    common_page.footer_supplies_xs.hover
-
-    common_page.footer_products_menu_xs.click
-    common_page.footer_supplies_xs.click
+    step 'SDCW: expand footer products mobile'
+    common_page.footer_supplies[0].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.footer_supplies.wait_until_present(timeout: 10)
-      common_page.footer_supplies.click
+      common_page.footer_supplies[1].wait_until_present(timeout: 10)
+      common_page.footer_supplies[1].click
     else
-      common_page.footer_supplies.wait_until_present(timeout: 10)
-      common_page.footer_supplies.scroll_into_view
-      common_page.footer_supplies.hover
-      common_page.footer_supplies.click
+      common_page.footer_supplies[1].wait_until_present(timeout: 10)
+      common_page.footer_supplies[1].scroll_into_view
+      common_page.footer_supplies[1].hover
+      common_page.footer_supplies[1].click
     end
   end
   step 'pause for 1 second'
@@ -596,27 +593,30 @@ Then /^SDCW: click footer supplies$/ do
   step 'pause for 1 second'
 end
 
-####### support #####
+#......Support.......#
+Then /^SDCW: expand footer support mobile$/ do
+  common_page = StampsWebsite.common_page
+  common_page.footer_support_xs.scroll_into_view
+  status = common_page.footer_support_xs.attribute_value  'class'
+  common_page.footer_support_xs.click if status.include? 'collapsed'
+end
+
 Then /^SDCW: click footer download software$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-
-    common_page.footer_support_menu_xs.scroll_into_view
-    common_page.footer_support_menu_xs.click!
-
-    common_page.download_software_xs.hover
-    common_page.download_software_xs.click
+    step 'SDCW: expand footer support mobile'
+    common_page.download_software[0].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.download_software.click
+      common_page.download_software[1].click
     else
-      common_page.download_software.scroll_into_view
-      common_page.download_software.hover
-      common_page.download_software.click
+      common_page.download_software[1].scroll_into_view
+      common_page.download_software[1].hover
+      common_page.download_software[1].click
     end
   end
-  step 'pause for 1 second'
+  step 'pause for 3 second'
   url = SdcPage.browser.url
   case TestSession.env.url
     when :qacc
@@ -626,25 +626,23 @@ Then /^SDCW: click footer download software$/ do
     when :prod
       expect(url).to eql('https://stamps.com/download/')
   end
+
+  step 'SDCW: navigate back'
 end
 
 Then /^SDCW: click footer customer support$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-
-    common_page.footer_support_menu_xs.scroll_into_view
-    common_page.footer_support_menu_xs.click!
-
-    common_page.customer_support_xs.hover
-    common_page.customer_support_xs.click
+    step 'SDCW: expand footer support mobile'
+    common_page.customer_support[1].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.customer_support.click
+      common_page.customer_support[2].click
     else
-      common_page.customer_support.scroll_into_view
-      common_page.customer_support.hover
-      common_page.customer_support.click
+      common_page.customer_support[2].scroll_into_view
+      common_page.customer_support[2].hover
+      common_page.customer_support[2].click
     end
   end
   step 'pause for 3 second'
@@ -667,19 +665,15 @@ Then /^SDCW: click footer how to videos$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-
-    common_page.footer_support_menu_xs.scroll_into_view
-    common_page.footer_support_menu_xs.click!
-
-    common_page.how_to_videos_xs.hover
-    common_page.how_to_videos_xs.click
+    step 'SDCW: expand footer support mobile'
+    common_page.how_to_videos[0].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.how_to_videos.click
+      common_page.how_to_videos[1].click
     else
-      common_page.how_to_videos.scroll_into_view
-      common_page.how_to_videos.hover
-      common_page.how_to_videos.click
+      common_page.how_to_videos[1].scroll_into_view
+      common_page.how_to_videos[1].hover
+      common_page.how_to_videos[1].click
     end
   end
   step 'pause for 5 second'
@@ -698,19 +692,15 @@ Then /^SDCW: click footer faq$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-
-    common_page.footer_support_menu_xs.scroll_into_view
-    common_page.footer_support_menu_xs.click!
-
-    common_page.faq_xs.hover
-    common_page.faq_xs.click
+    step 'SDCW: expand footer support mobile'
+    common_page.faq[0].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.faq.click
+      common_page.faq[1].click
     else
-      common_page.faq.scroll_into_view
-      common_page.faq.hover
-      common_page.faq.click
+      common_page.faq[1].scroll_into_view
+      common_page.faq[1].hover
+      common_page.faq[1].click
     end
   end
   step 'pause for 1 second'
@@ -724,25 +714,22 @@ Then /^SDCW: click footer faq$/ do
     when :prod
       expect(url).to eql('https://stamps.com/postage-online/faqs')
   end
+  step 'SDCW: navigate back'
 end
 
 Then /^SDCW: click footer system status$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-
-    common_page.footer_support_menu_xs.scroll_into_view
-    common_page.footer_support_menu_xs.click!
-
-    common_page.system_status_xs.hover
-    common_page.system_status_xs.click
+    step 'SDCW: expand footer support mobile'
+    common_page.system_status[0].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.system_status.click
+      common_page.system_status[1].click
     else
-      common_page.system_status.scroll_into_view
-      common_page.system_status.hover
-      common_page.system_status.click
+      common_page.system_status[1].scroll_into_view
+      common_page.system_status[1].hover
+      common_page.system_status[1].click
     end
   end
   step 'pause for 3 second'
@@ -791,6 +778,7 @@ Then /^SDCW: click footer about us$/ do
     when :prod
       expect(url).to eql('https://stamps.com/company-info/')
   end
+  step 'SDCW: navigate back'
 end
 
 Then /^SDCW: click footer shipping partners$/ do
@@ -822,6 +810,7 @@ Then /^SDCW: click footer shipping partners$/ do
     when :prod
       expect(url).to eql('https://stamps.com/shipping/integrations/')
   end
+  step 'SDCW: navigate back'
 end
 
 Then /^SDCW: click footer privacy policy$/ do
@@ -853,6 +842,7 @@ Then /^SDCW: click footer privacy policy$/ do
     when :prod
       expect(url).to eql('https://stamps.com/privacy-policy/')
   end
+  step 'SDCW: navigate back'
 end
 
 Then /^SDCW: click footer investor info$/ do
@@ -949,6 +939,8 @@ Then /^SDCW: click footer affiliates$/ do
     when :prod
       expect(url).to eql('https://stamps.com/affiliates/')
   end
+
+  step 'SDCW: navigate back'
 end
 
 Then /^SDCW: click footer site map$/ do
@@ -981,6 +973,7 @@ Then /^SDCW: click footer site map$/ do
     when :prod
       expect(url).to eql('https://stamps.com/sitemap/')
   end
+  step 'SDCW: navigate back'
 end
 
 Then /^SDCW: click footer contact us$/ do
@@ -1012,6 +1005,7 @@ Then /^SDCW: click footer contact us$/ do
     when :prod
       expect(url).to eql('https://stamps.com/contact-us/')
   end
+  step 'SDCW: navigate back'
 end
 
 #### developers ####
