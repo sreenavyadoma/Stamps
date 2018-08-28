@@ -242,6 +242,7 @@ module TestSession
 
     def local_browser
 
+      chrome_switches = %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)
       # Watir.always_locate = true
       case(env.local_browser)
 
@@ -264,7 +265,7 @@ module TestSession
 
       when :gc, :chrome
         kill('taskkill /im chrome.exe /f')
-        @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+        @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: chrome_switches))
 
       when :ff_web_dev
         kill('taskkill /im firefox.exe /f')
@@ -285,16 +286,16 @@ module TestSession
             }
         }
         kill('taskkill /im chrome.exe /f')
-        @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, options: { prefs: prefs }, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+        @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, options: { prefs: prefs }, switches: chrome_switches))
         Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
         @driver.driver.manage.timeouts.page_load = 60
 
       when :gc_iPhone_X, :gc_iPhone_4, :gc_iPad, :gc_Pixel_2_XL, :gc_Pixel_2
         kill('taskkill /im chrome.exe /f')
-        device_name = env.local_browser.to_s.gsub('gc','').gsub('_', ' ').strip
+        device_name = env.local_browser.to_s.gsub('gc', '').gsub('_', ' ').strip
         driver = SdcTest.browser_emulator_options(device_name)
         SdcGlobal.web_dev_device = device_name unless device_name.include? 'iPad'
-        @driver = SdcDriverDecorator.new(Watir::Browser.new(driver, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+        @driver = SdcDriverDecorator.new(Watir::Browser.new(driver, switches: chrome_switches))
         @driver.driver.manage.timeouts.page_load = 60
 
         Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download/")
@@ -304,7 +305,7 @@ module TestSession
       when :chromeb
         kill('taskkill /im chrome.exe /f')
         Selenium::WebDriver::Chrome.path = data_for(:setup, {})['windows']['chromedriverbeta']
-        @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+        @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: chrome_switches))
 
         @driver.driver.manage.timeouts.page_load = 60
 
