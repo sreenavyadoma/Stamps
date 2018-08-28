@@ -82,27 +82,18 @@ class SdcTest
       # ignore
     end
 
-    private
-
-    def browser_emulator_options(browser, device_name)
+    def browser_emulator_options(device_name)
       prefs = {
           prompt_for_download: false,
           default_directory: "#{Dir.getwd}/download"
       }
-
-      case browser_selection(browser)
-      when :chrome
-        options = Selenium::WebDriver::Chrome::Options.new
-        options.add_emulation(device_name: device_name)
-        options.add_preference(:download, prefs)
-        return Selenium::WebDriver.for(:chrome, options: options)
-      when :firefox
-        return Selenium::WebDriver::Remote::Capabilities.firefox #firefox config goes here
-      else
-        raise ArgumentError, "Unsupported browser. #{browser}"
-      end
+          options = Selenium::WebDriver::Chrome::Options.new
+          options.add_emulation(device_name: device_name)
+          options.add_preference(:download, prefs)
+          return Selenium::WebDriver.for(:chrome, options: options)
     end
 
+    private
     def browser_selection(str)
       if str
         case str.downcase

@@ -6,7 +6,9 @@ end
 #.......Email......#
 
 Then /^WL: expect profile page email exists$/ do
-  expect(WhiteLabel.profile_page.email).to be_present
+   email = WhiteLabel.profile_page.email
+   email.wait_until_present(timeout: 5)
+  expect(email).to be_present
 end
 
 Then /^WL: expect profile page email is (?:correct|(.*))$/ do |str|

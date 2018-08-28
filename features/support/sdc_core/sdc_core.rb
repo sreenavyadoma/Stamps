@@ -19,7 +19,7 @@ end
 
 module SdcGlobal
   class << self
-    attr_accessor :web_app, :scenario
+    attr_accessor :web_app, :scenario, :web_dev_device
   end
 end
 
@@ -73,10 +73,8 @@ module TestSession
     key(:build_url) { ENV['BUILD_URL'] }
     # cloud settings
     key(:tunnel_identifier) { ENV['TUNNEL_IDENTIFIER'] }
-    key(:sauce_username) { ENV['SAUCE_USERNAME'] || 'robcruz' }
-    key(:sauce_access_key) { ENV['SAUCE_ACCESS_KEY'] || '0e60dbc9-5bbf-425a-988b-f81c42d6b7ef'}
-    key(:selenium_host) { ENV['SELENIUM_HOST'] || 'ondemand.saucelabs.com' }
-    key(:selenium_port) { ENV['SELENIUM_PORT'] || 443 }
+    key(:selenium_host) { ENV['SELENIUM_HOST'] }
+    key(:selenium_port) { ENV['SELENIUM_PORT'] }
     key(:selenium_platform) { ENV['SELENIUM_PLATFORM'] }
     key(:selenium_version) { ENV['SELENIUM_VERSION'] }
     key(:selenium_browser) do
@@ -254,29 +252,32 @@ module TestSession
 
       when :ff, :firefox
         kill('taskkill /im firefox.exe /f')
-        if env.firefox_profile
-          if env.web_dev
-            download_directory = "#{Dir.getwd}/download"
-            download_directory.tr!('/', '\\') if Selenium::WebDriver::Platform.windows?
-            profile = Selenium::WebDriver::Firefox::Profile.new
-            profile['browser.download.folderList'] = 2 # custom location
-            profile['browser.download.dir'] = download_directory
-            profile['browser.helperApps.neverAsk.saveToDisk'] = 'text/csv,application/pdf,image/png,application/x-zip-compressed,text/plain'
-            @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
-            Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
-          else
-            profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(env.firefox_profile)
-            profile.assume_untrusted_certificate_issuer = true
-            profile['network.http.phishy-userpass-length'] = 255
-            @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
-          end
-
+        if TestSession.env.firefox_profile
+          profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(env.firefox_profile)
+          profile.assume_untrusted_certificate_issuer = true
+          profile['network.http.phishy-userpass-length'] = 255
+          @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
           @driver.driver.manage.timeouts.page_load = 60
         else
           @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
         end
 
       when :gc, :chrome
+        kill('taskkill /im chrome.exe /f')
+        @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+
+      when :ff_web_dev
+        kill('taskkill /im firefox.exe /f')
+        download_directory = "#{Dir.getwd}/download"
+        download_directory.tr!('/', '\\') if Selenium::WebDriver::Platform.windows?
+        profile = Selenium::WebDriver::Firefox::Profile.new
+        profile['browser.download.folderList'] = 2 # custom location
+        profile['browser.download.dir'] = download_directory
+        profile['browser.helperApps.neverAsk.saveToDisk'] = 'text/csv,application/pdf,image/png,application/x-zip-compressed,text/plain'
+        @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
+        Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
+
+      when :gc_web_dev
         prefs = {
             download: {
                 prompt_for_download: false,
@@ -284,14 +285,22 @@ module TestSession
             }
         }
         kill('taskkill /im chrome.exe /f')
-        if env.web_dev
-          @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, options: { prefs: prefs }, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
-          Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
-        else
-          @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
-        end
+        @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, options: { prefs: prefs }, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+        Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
+        @driver.driver.manage.timeouts.page_load = 60
+
+      when :gc_iPhone_X, :gc_iPhone_4, :gc_iPad, :gc_Pixel_2_XL, :gc_Pixel_2
+        kill('taskkill /im chrome.exe /f')
+        device_name = env.local_browser.to_s.gsub('gc','').gsub('_', ' ').strip
+        driver = SdcTest.browser_emulator_options(device_name)
+        SdcGlobal.web_dev_device = device_name unless device_name.include? 'iPad'
+        @driver = SdcDriverDecorator.new(Watir::Browser.new(driver, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)))
+        @driver.driver.manage.timeouts.page_load = 60
+
+        Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download/")
 
         @driver.driver.manage.timeouts.page_load = 60
+
       when :chromeb
         kill('taskkill /im chrome.exe /f')
         Selenium::WebDriver::Chrome.path = data_for(:setup, {})['windows']['chromedriverbeta']
@@ -322,13 +331,13 @@ module TestSession
       else
         @driver.window.maximize
       end
+
       @driver
 
     rescue StandardError => e
       SdcLogger.error e.message
       SdcLogger.error e.backtrace.join("\n")
       raise e, 'Browser driver failed to start'
-
     end
 
     def kill(str)
@@ -337,6 +346,7 @@ module TestSession
       # ignore
     end
   end
+  module_function :kill
 
 end
 
@@ -404,6 +414,7 @@ module SdcFinder
       raise error, message
     end
   end
+  module_function :elements
 
 end
 
@@ -588,7 +599,7 @@ module SdcElementHelper
 
     set(*args)
   rescue Watir::Exception::UnknownObjectException
-      # ignore
+    # ignore
 
   end
 
