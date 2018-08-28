@@ -347,7 +347,6 @@ module TestSession
       # ignore
     end
   end
-  module_function :kill
 
 end
 
@@ -415,7 +414,6 @@ module SdcFinder
       raise error, message
     end
   end
-  module_function :elements
 
 end
 
