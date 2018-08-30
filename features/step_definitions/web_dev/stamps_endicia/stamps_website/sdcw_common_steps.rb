@@ -314,7 +314,7 @@ Then /^SDCW: verify default elements on footer for browser$/ do
   step 'SDCW: click footer faq'
   step 'SDCW: click footer system status'
   step 'SDCW: click company stuff --> about us'
-  step 'SDCW: click footer shipping partners'
+  step 'SDCW: click company stuff --> shipping partners'
   step 'SDCW: click footer privacy policy'
   step 'SDCW: click footer investor info'
   step 'SDCW: click footer careers'
@@ -348,6 +348,7 @@ Then /^SDCW: verify default elements on footer for mobile$/ do
   step 'SDCW: click footer system status'
   step 'SDCW: collapse footer support mobile'
   step 'SDCW: click company stuff --> about us'
+  step 'SDCW: click company stuff --> shipping partners'
 end
 
 #........footer...........#
@@ -800,7 +801,7 @@ Then /^SDCW: click company stuff --> about us$/ do
   step 'SDCW: navigate back'
 end
 
-Then /^SDCW: click footer shipping partners$/ do
+Then /^SDCW: click company stuff --> shipping partners$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
