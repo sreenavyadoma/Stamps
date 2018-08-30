@@ -50,8 +50,9 @@ module StampsWebsite
     page_objects(:faq) {{xpath: '//a[contains(text(), "FAQ")]'}}
     page_objects(:system_status) {{xpath: '//a[contains(text(), "System Status")]'}}
     ## company stuff ##
-    page_objects(:about_us,  index: 0) {{xpath: '//ul/li/a[contains(@href , "company-info")]'}}
-    page_object(:shipping_partners) {{xpath: '//ul/li/a[contains(@href , "integration")]'}}
+    page_object(:footer_company_stuff_xs) { {xpath: '//a[@href="#company-menu"]'} }
+    page_objects(:about_us) {{xpath: '//a[contains(text(), "About Us")]'}}
+    page_objects(:shipping_partners) {{xpath: '//a[contains(text(), "Shipping Partners")]'}}
     page_object(:privacy_policy) {{xpath: '//ul/li/a[contains(@href , "privacy-policy")]'}}
     page_object(:investor_info) {{xpath: '//ul/li/a[contains(@href , "investor")]'}}
     page_object(:careers) {{xpath: '//ul/li/a[contains(@href , "careers")]'}}
@@ -73,21 +74,6 @@ module StampsWebsite
 
 
     ############## mobile footer #############
-    ## products ##
-    page_object(:footer_products_menu_xs) {{xpath: '//div[@class="collapse list-group panel visible-xs"]/a[contains(@href , "#products-menu")]'}}
-    page_object(:footer_office_mailers_xs) {{xpath: '//div[@id="products-menu"]/a[contains(@href , "postage-online")]'}}
-    page_object(:footer_online_sellers_xs) {{xpath: '//div[@id="products-menu"]/a[contains(@href , "shipping")]'}}
-    page_object(:footer_warehouse_shippers_xs) {{xpath: '//div[@id="products-menu"]/a[contains(@href , "warehouse")]'}}
-    page_object(:footer_corporate_postage_solutions_xs) {{xpath: '//div[@id="products-menu"]/a[contains(@href , "enterprise")]'}}
-    page_object(:footer_photo_stamps_xs) {{xpath: '//div[@id="products-menu"]/a[contains(@href , "photo")]'}}
-    page_object(:footer_supplies_xs) {{xpath: '//div[@id="products-menu"]/a[contains(@href , "store")]'}}
-    ## supports ##
-    page_object(:footer_support_menu_xs) {{xpath: '//div[@class="collapse list-group panel visible-xs"]/a[contains(@href , "#support-menu")]'}}
-    page_object(:download_software_xs) {{xpath: '//div[@id="support-menu"]/a[contains(@href , "download")]'}}
-    page_object(:customer_support_xs) {{xpath: '//div[@id="support-menu"]/a[contains(@href , "custhelp")]'}}
-    page_object(:how_to_videos_xs) {{xpath: '//div[@id="support-menu"]/a[contains(text() , "How To Videos")]'}}
-    page_object(:faq_xs) {{xpath: '//div[@id="support-menu"]/a[contains(@href , "faqs")]'}}
-    page_object(:system_status_xs) {{xpath: '//div[@id="support-menu"]/a[contains(@href , "status")]'}}
     ## company stuff ##
     page_object(:footer_company_stuff_menu_xs) {{xpath: '//div[@class="collapse list-group panel visible-xs"]/a[contains(@href , "#company-menu")]'}}
     page_objects(:about_us_xs,  index: 0) {{xpath: '//div[@id="company-menu"]/a[contains(@href , "company-info")]'}}

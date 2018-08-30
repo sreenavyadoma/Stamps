@@ -313,7 +313,7 @@ Then /^SDCW: verify default elements on footer for browser$/ do
   step 'SDCW: click footer how to videos'
   step 'SDCW: click footer faq'
   step 'SDCW: click footer system status'
-  step 'SDCW: click footer about us'
+  step 'SDCW: click company stuff --> about us'
   step 'SDCW: click footer shipping partners'
   step 'SDCW: click footer privacy policy'
   step 'SDCW: click footer investor info'
@@ -346,6 +346,8 @@ Then /^SDCW: verify default elements on footer for mobile$/ do
   step 'SDCW: click footer how to videos'
   step 'SDCW: click footer faq'
   step 'SDCW: click footer system status'
+  step 'SDCW: collapse footer support mobile'
+  step 'SDCW: click company stuff --> about us'
 end
 
 #........footer...........#
@@ -601,6 +603,13 @@ Then /^SDCW: expand footer support mobile$/ do
   common_page.footer_support_xs.click if status.include? 'collapsed'
 end
 
+Then /^SDCW: collapse footer support mobile$/ do
+  common_page = StampsWebsite.common_page
+  common_page.footer_support_xs.scroll_into_view
+  status = common_page.footer_support_xs.attribute_value  'class'
+  common_page.footer_support_xs.click if status.exclude? 'collapsed'
+end
+
 Then /^SDCW: click footer download software$/ do
 
   common_page = StampsWebsite.common_page
@@ -748,24 +757,34 @@ Then /^SDCW: click footer system status$/ do
 end
 
 ####### company stuff #####
-Then /^SDCW: click footer about us$/ do
+Then /^SDCW: expand footer company stuff mobile$/ do
+  common_page = StampsWebsite.common_page
+  common_page.footer_company_stuff_xs.scroll_into_view
+  status = common_page.footer_company_stuff_xs.attribute_value  'class'
+  common_page.footer_company_stuff_xs.click if status.include? 'collapsed'
+end
+
+Then /^SDCW: collapse footer company stuff mobile$/ do
+  common_page = StampsWebsite.common_page
+  common_page.footer_company_stuff_xs.scroll_into_view
+  status = common_page.footer_company_stuff_xs.attribute_value  'class'
+  common_page.footer_company_stuff_xs.click if status.exclude? 'collapsed'
+end
+
+Then /^SDCW: click company stuff --> about us$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-
-    common_page.footer_company_stuff_menu_xs.scroll_into_view
-    common_page.footer_company_stuff_menu_xs.click!
-
-    common_page.about_us_xs.hover
-    common_page.about_us_xs.click
+    step 'SDCW: expand footer company stuff mobile'
+    common_page.about_us[0].click
 
   else
     if TestSession.env.local_browser == :edge
-      common_page.about_us.click
+      common_page.about_us[1].click
     else
-      common_page.about_us.scroll_into_view
-      common_page.about_us.hover
-      common_page.about_us.click
+      common_page.about_us[1].scroll_into_view
+      common_page.about_us[1].hover
+      common_page.about_us[1].click
     end
   end
   step 'pause for 1 second'
@@ -785,19 +804,15 @@ Then /^SDCW: click footer shipping partners$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-
-    common_page.footer_company_stuff_menu_xs.scroll_into_view
-    common_page.footer_company_stuff_menu_xs.click!
-
-    common_page.shipping_partners_xs.hover
-    common_page.shipping_partners_xs.click
+    step 'SDCW: expand footer company stuff mobile'
+    common_page.shipping_partners[0].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.shipping_partners.click
+      common_page.shipping_partners[1].click
     else
-      common_page.shipping_partners.scroll_into_view
-      common_page.shipping_partners.hover
-      common_page.shipping_partners.click
+      common_page.shipping_partners[1].scroll_into_view
+      common_page.shipping_partners[1].hover
+      common_page.shipping_partners[1].click
     end
   end
   step 'pause for 1 second'
