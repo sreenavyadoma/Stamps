@@ -1,20 +1,40 @@
 Mac Latest Chrome Staging
-bvtstgosxgc1 rob cukes
+bvtstgosxgc1 mac_chrome » bvt_form_validation_bulk_update
 bvtstgosxgc2 mac_chrome_bvt_shipping_address_management
 bvtstgosxgc3 mac_chrome » bvt_address_cleansing
-bvtstgosxgc4
-bvtstgosxgc5
-bvtstgosxgc6
-bvtstgosxgc7
-bvtstgosxgc8
-bvtstgosxgc9
-bvtstgosxgc10
-bvtstgosxgc11
-bvtstgosxgc12
-bvtstgosxgc13
-bvtstgosxgc14
-bvtstgosxgc15
-bvtstgosxgc16
+bvtstgosxgc4 bvt_orders_ship_date
+stgmacgc1 mac_chrome » mail_bvt_advanced_options
+stgmacgc2 mac_chrome » mail_bvt_stamps
+stgmacgc3 mac_chrome » mail_bvt_address_cleansing
+stgmacgc4
+stgmacgc5
+stgmacgc6
+stgmacgc7
+stgmacgc8
+stgmacgc9
+stgmacgc10
+stgmacgc11
+stgmacgc12
+stgmacgc13
+stgmacgc14
+stgmacgc15
+stgmacgc16
+stgmacgc17
+stgmacgc18
+stgmacgc19
+stgmacgc20
+stgmacgc21
+stgmacgc22
+stgmacgc23
+stgmacgc24
+stgmacgc25
+stgmacgc26
+stgmacgc27
+stgmacgc28
+stgmacgc29
+stgmacgc30
+stgmacgc31
+stgmacgc32
 
 Win10 Chrome Beta Staging
 bvtstgw10gc1 win10_chrome_beta » bvt_address_cleansing
@@ -27,12 +47,42 @@ bvtstgw10gc7 win10_chrome_beta » bvt_shipstation_updates_domestic
 bvtstgw10gc8 win10_chrome_beta » bvt_shipstation_updates_international
 bvtstgw10gc9 win10_chrome_beta » bvt_shipping_address_management
 bvtstgw10gc10
-bvtstgw10gc11
+bvtstgw10gc11 win10_chrome_beta » bvt_orders_ship_date
 bvtstgw10gc12
 bvtstgw10gc13
 bvtstgw10gc14
 bvtstgw10gc15
 bvtstgw10gc16
+stgw10gcb1
+stgw10gcb2
+stgw10gcb3
+stgw10gcb4
+stgw10gcb5
+stgw10gcb6
+stgw10gcb7
+stgw10gcb8
+stgw10gcb9
+stgw10gcb10
+stgw10gcb11
+stgw10gcb12
+stgw10gcb13
+stgw10gcb14
+stgw10gcb15
+stgw10gcb16
+stgw10gcb17
+stgw10gcb18
+stgw10gcb19
+stgw10gcb20
+stgw10gcb21
+stgw10gcb22
+stgw10gcb23
+stgw10gcb24
+stgw10gcb25
+stgw10gcb26
+stgw10gcb27
+stgw10gcb28
+stgw10gcb29
+stgw10gcb30
 
 Win10 Latest MS Edge Staging
 bvtstgw10edg1 win10_edge » bvt_address_cleansing
@@ -44,13 +94,43 @@ bvtstgw10edg6 win10_edge » bvt_shipping_address_management
 bvtstgw10edg7 win10_edge » bvt_shipstation_search
 bvtstgw10edg8 win10_edge » bvt_shipstation_updates_domestic
 bvtstgw10edg9 win10_edge » bvt_shipstation_updates_international
-bvtstgw10edg10
+bvtstgw10edg10 win10_edge » bvt_orders_ship_date
 bvtstgw10edg11
 bvtstgw10edg12
 bvtstgw10edg13
 bvtstgw10edg14
 bvtstgw10edg15
 bvtstgw10edg16
+stgw10edg1
+stgw10edg2
+stgw10edg3
+stgw10edg4
+stgw10edg5
+stgw10edg6
+stgw10edg7
+stgw10edg8
+stgw10edg9
+stgw10edg10
+stgw10edg11
+stgw10edg12
+stgw10edg13
+stgw10edg14
+stgw10edg15
+stgw10edg16
+stgw10edg17
+stgw10edg18
+stgw10edg19
+stgw10edg20
+stgw10edg21
+stgw10edg22
+stgw10edg23
+stgw10edg24
+stgw10edg25
+stgw10edg26
+stgw10edg27
+stgw10edg28
+stgw10edg29
+stgw10edg30
 
 Win7 Latest Firefox Staging
 bvtstgw7ff1 win7_firefox » bvt_address_cleansing
@@ -70,8 +150,37 @@ bvtstgw7ff14
 bvtstgw7ff15
 bvtstgw7ff16
 bvtstgw7ff17
-bvtstgw7ff18
-
+bvtstgw7ff18 rob
+stgw7ff1
+stgw7ff2
+stgw7ff3
+stgw7ff4
+stgw7ff5
+stgw7ff6
+stgw7ff7
+stgw7ff8
+stgw7ff9
+stgw7ff10
+stgw7ff11
+stgw7ff12
+stgw7ff13
+stgw7ff14
+stgw7ff15
+stgw7ff16
+stgw7ff17
+stgw7ff18
+stgw7ff19
+stgw7ff20
+stgw7ff21
+stgw7ff22
+stgw7ff23
+stgw7ff24
+stgw7ff25
+stgw7ff26
+stgw7ff27
+stgw7ff28
+stgw7ff29
+stgw7ff30
 
 Win7 Internet Explorer Staging
 bvtstgw7ie1
@@ -94,6 +203,36 @@ bvtstgw7ie17
 bvtstgw7ie18
 bvtstgw7ie19
 bvtstgw7ie20
+stgw7ie1
+stgw7ie2
+stgw7ie3
+stgw7ie4
+stgw7ie5
+stgw7ie6
+stgw7ie7
+stgw7ie8
+stgw7ie9
+stgw7ie10
+stgw7ie11
+stgw7ie12
+stgw7ie13
+stgw7ie14
+stgw7ie15
+stgw7ie16
+stgw7ie17
+stgw7ie18
+stgw7ie19
+stgw7ie20
+stgw7ie21
+stgw7ie22
+stgw7ie23
+stgw7ie24
+stgw7ie25
+stgw7ie26
+stgw7ie27
+stgw7ie28
+stgw7ie29
+stgw7ie30
 sauce0001 win7_internet_explorer » bvt_address_cleansing
 sauce0002 win7_internet_explorer » bvt_ambigious_address
 sauce0003 win7_internet_explorer » bvt_international_shipping
@@ -123,7 +262,7 @@ stgmacff5 mac_firefox » bvt_new_order
 stgmacff8 mac_firefox » bvt_orders_ui_validation
 stgmacff9 mac_firefox » bvt_shipping_address_management
 stgmacff10 mac_firefox » bvt_shipstation_search
-stgmacff14 mac_firefox » bvt_shipstation_updates_domestic
+stgmacff14 mac_firefox » bvt_orders_ship_date
 stgmacff15 mac_firefox » bvt_shipstation_updates_international
 stgmacff16 ok
 stgmacff18 ok
@@ -245,7 +384,7 @@ bvtsauce00017cc
 bvtsauce00018cc
 bvtsauce000019cc
 bvtsauce00019cc
-bvtsauce00020cc
+bvtsauce00020cc rob cukes
 
 
 bvtsauce00001sc

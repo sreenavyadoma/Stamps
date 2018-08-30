@@ -29,7 +29,7 @@ Feature: Manage Print Options
     Then check Roll - 4" x 6" Shipping Label in manage print options
     Then check Roll - 4 ⅛" x 6 ¼" Shipping Label in manage print options
     Then click save in manage print options
-    Then Sign out
+    Then sign out
 
 
 

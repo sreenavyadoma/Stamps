@@ -168,6 +168,7 @@ module SdcOrders
     class SdcOrdersSettingsInt < SdcPage
 
     end
+
     class OrdersSettingsLabel < SdcPage
 
     end
@@ -205,49 +206,42 @@ module SdcOrders
       end
     end
 
-    def print
-      OrdersPrintModal.new
-    end
-    module_function :print
+    class << self
+      def print
+        OrdersPrintModal.new
+      end
 
-    def settings
-      OrdersSettingsModal.new
-    end
-    module_function :settings
+      def settings
+        OrdersSettingsModal.new
+      end
 
-    def manage_shipping_addresses
-      ManageShippingAddresses.new
-    end
-    module_function :manage_shipping_addresses
+      def manage_shipping_addresses
+        ManageShippingAddresses.new
+      end
 
-    def add_edit_shipping_address
-      AddEditShippingAddress.new
-    end
-    module_function :add_edit_shipping_address
+      def add_edit_shipping_address
+        AddEditShippingAddress.new
+      end
 
-    def delete_shipping_address
-      DeleteShippingAddress.new
-    end
-    module_function :delete_shipping_address
+      def delete_shipping_address
+        DeleteShippingAddress.new
+      end
 
-    def print_all
-      PrintAllOrders.new
-    end
-    module_function :print_all
+      def print_all
+        PrintAllOrders.new
+      end
 
-    def server_error
-      ServerError.new
-    end
-    module_function :server_error
+      def server_error
+        ServerError.new
+      end
 
-    def insurance_terms
-      InsuranceTerms.new
-    end
-    module_function :insurance_terms
+      def insurance_terms
+        InsuranceTerms.new
+      end
 
-    def exact_address_not_found
-      SdcExactAddressNotFound.new
+      def exact_address_not_found
+        SdcExactAddressNotFound.new
+      end
     end
-    module_function :exact_address_not_found
   end
 end

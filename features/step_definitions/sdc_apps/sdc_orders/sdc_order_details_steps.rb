@@ -20,7 +20,6 @@ end
 
 Then /^add order details item (\d+), qty (\d+), id (.+), description (.*)$/ do |item, qty, id, description|
   step "add order details associated item #{item}"
-  step 'blur out on order details form'
   step "scroll into view order details associated item #{item}"
   step "set Order Details Associated Item #{item} qty to #{qty}"
   step "set Order Details Associated Item #{item} ID to #{id}"
@@ -797,6 +796,8 @@ Then /^set order details reference number to (?:a random string|(.*))$/ do |str|
   order_details.reference_no.scroll_into_view
   order_details.reference_no.set(str)
   order_details.reference_no.click
+  order_details.reference_no_label.click
+  order_details.reference_no_label.click
   TestData.hash[:reference_no] = str
   step 'save order details data'
 end

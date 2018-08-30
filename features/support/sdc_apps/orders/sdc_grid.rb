@@ -269,44 +269,42 @@ module SdcGrid
     end
   end
 
-  def body
-    xpath = '//div[starts-with(@id, "ordersGrid-")][contains(@id, "-normal-body")]'
-    klass = Class.new(SdcPage) do
-      page_object(:body) { { xpath: xpath } }
-    end
-    klass.new.body
-  end
-  module_function :body
-
-  def grid_column(column)
-    body.wait_until_present(timeout: 15)
-
-    unless GridColumnBase.column_names.keys.include? column
-      raise ArgumentError, "Invalid grid column: #{column}"
-    end
-
-    case column
-    when :checkbox
-      SdcGridCheckBox.new
-
-    when :weight
-      klass = Class.new(SdcGridColumn) do
-        def lb order_id
-          data(order_id).scan(/\d+ lb./).first.scan(/\d/).first.to_i
-        end
-
-        def oz order_id
-          data(order_id).scan(/\d+ oz./).first.scan(/\d/).first.to_i
-        end
+  class << self
+    def body
+      xpath = '//div[starts-with(@id, "ordersGrid-")][contains(@id, "-normal-body")]'
+      klass = Class.new(SdcPage) do
+        page_object(:body) { { xpath: xpath } }
       end
-      klass.new(column)
+      klass.new.body
+    end
 
-    else
-      SdcGridColumn.new(column)
+    def grid_column(column)
+      body.wait_until_present(timeout: 15)
+
+      unless GridColumnBase.column_names.keys.include? column
+        raise ArgumentError, "Invalid grid column: #{column}"
+      end
+
+      case column
+      when :checkbox
+        SdcGridCheckBox.new
+
+      when :weight
+        klass = Class.new(SdcGridColumn) do
+          def lb order_id
+            data(order_id).scan(/\d+ lb./).first.scan(/\d/).first.to_i
+          end
+
+          def oz order_id
+            data(order_id).scan(/\d+ oz./).first.scan(/\d/).first.to_i
+          end
+        end
+        klass.new(column)
+
+      else
+        SdcGridColumn.new(column)
+      end
     end
   end
-  module_function :grid_column
-
-
 
 end

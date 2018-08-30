@@ -416,7 +416,7 @@ Then /^PP: expect CSV file to be downloaded with correct file name$/ do
   # #download_directory = data_for(:download, {})['download_file_path']
    downloads_before = Dir.entries download_directory
 
-  case(SdcEnv.browser)
+  case(TestSession.env.local_browser)
     when :chrome
       600.times do
         difference = Dir.entries(download_directory)
@@ -447,7 +447,7 @@ Then /^PP: expect CSV file to be downloaded with correct file name$/ do
       end
   end
 
-  case(SdcEnv.browser_mobile_emulator)
+  case(SdcGlobal.web_dev_device)
     when /\w/
       600.times do
         difference = Dir.entries(download_directory)

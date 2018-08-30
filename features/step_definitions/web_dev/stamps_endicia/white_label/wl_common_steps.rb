@@ -31,7 +31,9 @@ end
 
 
 Then /^WL: click modal x button$/ do
+  step 'pause for 1 second'
   modal_x = WhiteLabel.common_page.modal_x
+  modal_x.scroll_into_view
   modal_x.wait_until_present(timeout: 2)
   modal_x.click if modal_x.present?
   step 'pause for 1 second'
@@ -106,6 +108,7 @@ Then /^WL: navigates to default registration page for endicia with the following
   EWWebsite.visit
 
   SdcLogger.info "Sourceid = #{source_id}"
+  SdcLogger.info "Sourceid = #{offer_id}"
 
   TestData.hash[:source_id] = source_id
   TestData.hash[:content] = content
@@ -252,7 +255,7 @@ Then /^WL: click security questions get started button$/ do
   step 'pause for 2 seconds'
   sq_get_started = WhiteLabel.common_page.sq_get_started
   sq_get_started.wait_until_present(timeout: 2)
-  sq_get_started.click!
+  sq_get_started.click
   step 'pause for 2 seconds'
 end
 
@@ -469,10 +472,17 @@ Then /^WL: expect registration navigation bar header text exists$/ do
   expect(WhiteLabel.common_page.header_text).to be_present
 end
 
+Then /^WL: expect registration navigation bar endicia logo exists$/ do
+  endicia_logo = WhiteLabel.common_page.ew_logo
+  endicia_logo.wait_until_present(timeout: 60)
+  expect(endicia_logo).to be_present
+end
+
 ############ Footer ###########
 
 #### privacy policy ####
 Then /^WL: expect registration container privacy policy link exists$/ do
+  'pause for 1 second'
   expect(WhiteLabel.common_page.privacy_policy).to be_present
 end
 

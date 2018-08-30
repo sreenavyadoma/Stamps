@@ -7,7 +7,7 @@ module SdcMail
         page_object(:text_field, tag: :text_field) { { xpath: '//*[@name="ShipFrom"]' } }
 
         def selection(name, str)
-          page_object(name) { { xpath: "//li[text()='#{str}']" } }
+          page_object(name) { { xpath: "//li[contains(text(), '#{str}')]" } }
         end
       end
 

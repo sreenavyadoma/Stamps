@@ -6,21 +6,21 @@ cuke_reports: --format json --out report.json --backtrace -f pretty -r features 
 # tests: bvt_shipstation_updates_domestic
 local_mobile: --tags @mail_authentication_mobile URL=stg USR=sauce0020 PW=pass111 SELENIUM_DEVICE='iPhone X 11.3' SELENIUM_PLATFORM=iOS SELENIUM_BROWSER=Safari SELENIUM_VERSION=11.3 LOG_LEVEL=debug
 #local_mobile: --tags @bvt_new_order URL=cc USR=cctruer0u PW=pass111 SELENIUM_DEVICE='iPhone X 11.3' SELENIUM_PLATFORM=iOS SELENIUM_BROWSER=Safari SELENIUM_VERSION=11.3 LOG_LEVEL=debug
-local_browser: --tags @bvt_orders_ship_date URL=stg BROWSER=ff MAX_WINDOW=false USR=bvtstgosxgc1 PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=info WINDOW_SIZE=1280x1020
+local_browser: --tags @mail_bvt_stamps URL=stg BROWSER=ff MAX_WINDOW=false USR=bvtstgosxgc1 PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=info WINDOW_SIZE=1280x1020
 #local_browser: --tags @mail_authentication_mobile URL=cc BROWSER=ff MAX_WINDOW=false USR=bvtsauce00020cc PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=info WINDOW_SIZE=1000x900
 #local_browser: --tags @bvt_shipstation_updates_domestic URL=sc BROWSER=ff MAX_WINDOW=false USR=scsejsglwa PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=info
-sauce_mobile: --tags @mail_authentication_mobile URL=stg USR=sauce0020 PW=pass111 SELENIUM_DEVICE='iPhone X Simulator' SELENIUM_PLATFORM=iOS SELENIUM_BROWSER=Safari SELENIUM_VERSION=11.3 SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443 SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef TUNNEL_IDENTIFIER=rob LOG_LEVEL=info
-#sauce_browser: --tags @bvt_shipstation_updates_domestic URL=stg USR=stgvoc0kcnt6rw PW=pass111 SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Mac 10.10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443 TUNNEL_IDENTIFIER=rob LOG_LEVEL=info
-#sauce_browser: --tags @bvt_orders_ui_validation URL=cc USR=cctruer0u PW=pass111 SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=firefox SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 2008' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443 TUNNEL_IDENTIFIER=rob LOG_LEVEL=info
-sauce_browser: --tags @bvt_shipstation_updates_domestic URL=cc USR=cctruer0u PW=pass111 SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=firefox SELENIUM_VERSION=latest SELENIUM_PLATFORM='Mac 10.12' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443 TUNNEL_IDENTIFIER=rob LOG_LEVEL=info SCREEN_RESOLUTION=1152x864
-
+sauce_mobile: --tags @mail_authentication_mobile URL=stg USR=sauce0020 PW=pass111 SELENIUM_DEVICE='iPhone X Simulator' SELENIUM_PLATFORM=iOS SELENIUM_BROWSER=Safari SELENIUM_VERSION=11.3TUNNEL_IDENTIFIER=rob LOG_LEVEL=info
+#sauce_browser: --tags @bvt_shipstation_updates_domestic URL=stg USR=stgvoc0kcnt6rw PW=pass111SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Mac 10.10' TUNNEL_IDENTIFIER=rob LOG_LEVEL=info
+sauce_browser: --tags @bvt_orders_ui_validation URL=stg USR=bvtstgw7ff8 PW=pass111SELENIUM_BROWSER=firefox SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 2008'TUNNEL_IDENTIFIER=rob LOG_LEVEL=info
+#sauce_browser: --tags @bvt_orders_ui_validation URL=cc USR=cctruer0u PW=pass111SELENIUM_BROWSER=firefox SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 2008' TUNNEL_IDENTIFIER=rob LOG_LEVEL=info
+#sauce_browser: --tags @bvt_orders_ship_date URL=cc USR=bvtsauce00020cc PW=pass111SELENIUM_BROWSER=firefox SELENIUM_VERSION=latest SELENIUM_PLATFORM='Mac 10.12' TUNNEL_IDENTIFIER=rob LOG_LEVEL=info SCREEN_RESOLUTION=1152x864
 #mhossain1_cc: --tags @registration_normal_workflow WEB_APP=orders JENKINS=true URL=cc LOG_LEVEL=info BROWSER=ff MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
-#mhossain1_cc: --tags @pp_header_favicons_browser_mobile JENKINS=true URL=qacc BROWSER_MOBILE_EMULATOR=gc,'iPhone X' USR=wteam@stamps.com PW=password1
+#mhossain1_cc: --tags @pp_header_favicons_browser_mobile JENKINS=true URL=qacc BROWSER=gc BROWSER_MOBILE_EMULATOR=gc,'iPhone X' USR=wteam@stamps.com PW=password1 WEB_DEV=true
 #mhossain1_cc: --tags @pp_log_in_page_validation JENKINS=true URL=stg BROWSER=ff USR=wteam@stamps.com PW=password1 FIREFOX_PROFILE=true WEB_DEV=true
 
-mhossain1_cc: --tags @ewwr_session_state_data_validation JENKINS=true URL=stg BROWSER=chrome FIREFOX_PROFILE=true WEB_DEV=true LOG_LEVEL=info #USR=qawebdevelopment@stamps.com PW=password1
+mhossain1_cc: --tags @sdcw_postage_online_page_validation_mobile URL=stg BROWSER=gc_iPhone_4 LOG_LEVEL=info #USR=wteam@stamps.com PW=password1
 
-kaushal_cc: --tags @ewwr_security_question_page_validation JENKINS=true URL=stg BROWSER=edge FIREFOX_PROFILE=true WEB_DEV=true #USR=qawebdevelopment@stamps.com PW=password1
+kaushal_cc: --tags @ewwr_security_question_page_validation URL=stg BROWSER=edge #USR=qawebdevelopment@stamps.com PW=password1
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess BROWSER=ff MAX_WINDOW=false
 
@@ -375,7 +375,8 @@ bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_internati
 bvt_shipstation_search: --tags @bvt_shipstation_search --guess
 bvt_orders_ship_date: --tags @bvt_orders_ship_date --guess WEB_APP=orders
 bvt_orders_ship_date_calendar: --tags @bvt_orders_ship_date_calendar --guess WEB_APP=orders
-bvt_orders_ui_validation: --tags @bvt_orders_ui_validation --guess WEB_APP=orders
+bvt_form_validation_orders_details: --tags @bvt_form_validation_orders_details --guess WEB_APP=orders
+bvt_form_validation_bulk_update: --tags @bvt_form_validation_bulk_update --guess WEB_APP=orders
 bvt_all_tests: --tags @bvt_all_tests --guess WEB_APP=orders
 
 dev_bvt_shipping_address_management: --tags @bvt_shipping_address_management --guess WEB_APP=orders
@@ -646,36 +647,42 @@ mail_hidden_postage: --tags @mail_hidden_postage --guess PRINTER=factory
 mail_bug_ordersauto_3243: --tags @mail_bug_ordersauto_3243 --guess PRINTER=factory
 mail_manage_printing_options: --tags @mail_manage_printing_options --guess
 #Partner Portal
-pp_log_in_page_validation: --tags @pp_log_in_page_validation --guess JENKINS=true MAX_WINDOW=true WEB_DEV=true
-pp_header_favicons_browser: --tags @pp_header_favicons_browser --guess JENKINS=true MAX_WINDOW=true WEB_DEV=true
-pp_header_favicons_browser_mobile: --tags @pp_header_favicons_browser_mobile --guess JENKINS=true WEB_DEV=true
-pp_dashboard_single_contract_ui_validaiton: --tags @pp_dashboard_single_contract_ui_validaiton --guess JENKINS=true WEB_DEV=true
-pp_dashboard_single_contract_chart_data_validation: --tags @pp_dashboard_single_contract_chart_data_validation --guess JENKINS=true WEB_DEV=true
-pp_authenticate: --tags @pp_authenticate --guess JENKINS=true WEB_DEV=true
-pp_footer: --tags @pp_footer --guess JENKINS=true WEB_DEV=true
-pp_left_panel: --tags @pp_left_panel --guess JENKINS=true WEB_DEV=true
-pp_left_panel_mobile: --tags @pp_left_panel_mobile --guess JENKINS=true WEB_DEV=true
-pp_reset_password: --tags @pp_reset_password --guess JENKINS=true WEB_DEV=true
-pp_dashboard_single_contract_export_data_ui_validation: --tags @pp_dashboard_single_contract_export_data_ui_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
-pp_dashboard_single_contract_export_data_validation: --tags @pp_dashboard_single_contract_export_data_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
+pp_log_in_page_validation: --tags @pp_log_in_page_validation --guess
+pp_header_favicons_browser: --tags @pp_header_favicons_browser --guess
+pp_header_favicons_browser_mobile: --tags @pp_header_favicons_browser_mobile --guess
+pp_dashboard_single_contract_ui_validaiton: --tags @pp_dashboard_single_contract_ui_validaiton --guess LOG_LEVEL=info
+pp_dashboard_single_contract_chart_data_validation: --tags @pp_dashboard_single_contract_chart_data_validation --guess LOG_LEVEL=info
+pp_authenticate: --tags @pp_authenticate --guess
+pp_footer: --tags @pp_footer --guess
+pp_left_panel: --tags @pp_left_panel --guess
+pp_left_panel_mobile: --tags @pp_left_panel_mobile --guess
+pp_reset_password: --tags @pp_reset_password --guess
+pp_dashboard_single_contract_export_data_ui_validation: --tags @pp_dashboard_single_contract_export_data_ui_validation --guess LOG_LEVEL=info
+pp_dashboard_single_contract_export_data_validation: --tags @pp_dashboard_single_contract_export_data_validation --guess LOG_LEVEL=info
+#Stamps Website
+sdcw_postage_online_page_validation: --tags @sdcw_postage_online_page_validation --guess
+sdcw_postage_online_page_validation_mobile: --tags @sdcw_postage_online_page_validation_mobile --guess
 #Stamps WebReg
-sdcwr_random_workflow: --tags @sdcwr_normal_workflow --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
-sdcwr_membership_page_ui_validation: --tags @sdcwr_membership_page_ui_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
-sdcwr_header_footer_validation: --tags @sdcwr_header_footer_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
-sdcwr_membership_page_addr_validation: --tags @sdcwr_membership_page_addr_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
-sdcwr_membership_page_username_taken_validation: --tags @sdcwr_membership_page_username_taken_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
-sdcwr_security_question_page_validation: --tags @sdcwr_security_question_page_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
-sdcwr_profile_page_ui_validation: --tags @sdcwr_profile_page_ui_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
-sdcwr_offer_573_workflow: --tags @sdcwr_offer_573_workflow --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
-sdcwr_offer_592_workflow: --tags @sdcwr_offer_592_workflow --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
-sdcwr_offer_399_workflow: --tags @sdcwr_offer_399_workflow --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
-sdcwr_choose_supplies_page_not_present_workflow: --tags @sdcwr_choose_supplies_page_not_present_workflow --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
-sdcwr_session_state_data_validation: --tags @sdcwr_session_state_data_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
+sdcwr_random_workflow: --tags @sdcwr_normal_workflow --guess LOG_LEVEL=info
+sdcwr_membership_page_ui_validation: --tags @sdcwr_membership_page_ui_validation --guess LOG_LEVEL=info
+sdcwr_header_footer_validation: --tags @sdcwr_header_footer_validation --guess LOG_LEVEL=info
+sdcwr_membership_page_addr_validation: --tags @sdcwr_membership_page_addr_validation --guess LOG_LEVEL=info
+sdcwr_membership_page_username_taken_validation: --tags @sdcwr_membership_page_username_taken_validation --guess LOG_LEVEL=info
+sdcwr_security_question_page_validation: --tags @sdcwr_security_question_page_validation --guess  LOG_LEVEL=info
+sdcwr_profile_page_ui_validation: --tags @sdcwr_profile_page_ui_validation --guess LOG_LEVEL=info
+sdcwr_offer_573_workflow: --tags @sdcwr_offer_573_workflow --guess LOG_LEVEL=info
+sdcwr_offer_592_workflow: --tags @sdcwr_offer_592_workflow --guess LOG_LEVEL=info
+sdcwr_offer_399_workflow: --tags @sdcwr_offer_399_workflow --guess LOG_LEVEL=info
+sdcwr_choose_supplies_page_not_present_workflow: --tags @sdcwr_choose_supplies_page_not_present_workflow --guess LOG_LEVEL=info
+sdcwr_session_state_data_validation: --tags @sdcwr_session_state_data_validation --guess LOG_LEVEL=info
 #Endicia WebReg
-ewwr_profile_page_ui_validation: --tags @ewwr_profile_page_ui_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
-ewwr_membership_page_ui_validation: --tags @ewwr_membership_page_ui_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
-ewwr_membership_page_addr_validation: --tags @ewwr_membership_page_addr_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
-ewwr_membership_page_username_taken_validation: --tags @ewwr_membership_page_username_taken_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
-ewwr_offer_707_workflow: --tags @ewwr_offer_707_workflow --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
-ewwr_session_state_data_validation: --tags @ewwr_session_state_data_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
-ewwr_security_question_page_validation: --tags @ewwr_security_question_page_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true LOG_LEVEL=info
+ewwr_profile_page_ui_validation: --tags @ewwr_profile_page_ui_validation --guess  LOG_LEVEL=info
+ewwr_membership_page_ui_validation: --tags @ewwr_membership_page_ui_validation --guess  LOG_LEVEL=info
+ewwr_membership_page_addr_validation: --tags @ewwr_membership_page_addr_validation --guess  LOG_LEVEL=info
+ewwr_membership_page_username_taken_validation: --tags @ewwr_membership_page_username_taken_validation --guess  LOG_LEVEL=info
+ewwr_offer_707_workflow: --tags @ewwr_offer_707_workflow --guess  LOG_LEVEL=info
+ewwr_session_state_data_validation: --tags @ewwr_session_state_data_validation --guess  LOG_LEVEL=info
+ewwr_security_question_page_validation: --tags @ewwr_security_question_page_validation --guess  LOG_LEVEL=info
+ewwr_header_footer_validation: --tags @ewwr_header_footer_validation --guess  LOG_LEVEL=info
+#Shipworks WebReg
+swwr_create_your_account_page_validation: --tags @swwr_create_your_account_page_validation --guess LOG_LEVEL=info
