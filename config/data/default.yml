@@ -58,7 +58,7 @@ sql_server_vbridge:
 
 sql_server_stampmart:
   qacc:
-    server: sdc11db01.qa02.aws.local
+    server: vsdc11db-ls01.qa02.aws.local
     database: Stampmart
     port: 1433
     username: qalab
