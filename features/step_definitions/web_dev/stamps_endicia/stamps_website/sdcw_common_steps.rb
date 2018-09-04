@@ -315,16 +315,17 @@ Then /^SDCW: verify default elements on footer for browser$/ do
   step 'SDCW: click footer system status'
   step 'SDCW: click company stuff --> about us'
   step 'SDCW: click company stuff --> shipping partners'
-  step 'SDCW: click footer privacy policy'
-  step 'SDCW: click footer investor info'
-  step 'SDCW: click footer careers'
-  step 'SDCW: click footer affiliates'
-  step 'SDCW: click footer site map'
-  step 'SDCW: click footer contact us'
-  step 'SDCW: click footer developer overview'
-  step 'SDCW: click footer developer registration'
-  step 'SDCW: click footer developer reference guide'
-  step 'SDCW: click footer developer products'
+  step 'SDCW: click company stuff --> privacy policy'
+  step 'SDCW: click company stuff --> investor info'
+  step 'SDCW: click company stuff --> careers'
+  step 'SDCW: click company stuff --> affiliates'
+  step 'SDCW: click company stuff --> site map'
+  step 'SDCW: click company stuff --> site map'
+  step 'SDCW: click company stuff --> contact us'
+  step 'SDCW: click developers --> developer overview'
+  step 'SDCW: click developers --> developer registration'
+  step 'SDCW: click developers --> developer reference guide'
+  step 'SDCW: click developers --> developer products'
   step 'SDCW: click footer facebook'
   step 'SDCW: click footer twitter'
   step 'SDCW: click footer google plus'
@@ -349,6 +350,18 @@ Then /^SDCW: verify default elements on footer for mobile$/ do
   step 'SDCW: collapse footer support mobile'
   step 'SDCW: click company stuff --> about us'
   step 'SDCW: click company stuff --> shipping partners'
+  step 'SDCW: click company stuff --> privacy policy'
+  step 'SDCW: click company stuff --> investor info'
+  step 'SDCW: click company stuff --> careers'
+  step 'SDCW: click company stuff --> affiliates'
+  step 'SDCW: click company stuff --> site map'
+  step 'SDCW: click company stuff --> contact us'
+  step 'SDCW: collapse footer company stuff mobile'
+  step 'SDCW: click developers --> developer overview'
+  step 'SDCW: click developers --> developer registration'
+  step 'SDCW: click developers --> developer reference guide'
+  step 'SDCW: click developers --> developer products'
+  step 'SDCW: collapse footer developers mobile'
 end
 
 #........footer...........#
@@ -410,6 +423,7 @@ Then /^SDCW: expand footer products mobile$/ do
   common_page.footer_products_xs.scroll_into_view
   status = common_page.footer_products_xs.attribute_value  'class'
   common_page.footer_products_xs.click if status.include? 'collapsed'
+  step 'pause for 1 second'
 end
 
 Then /^SDCW: collapse footer products mobile$/ do
@@ -417,12 +431,12 @@ Then /^SDCW: collapse footer products mobile$/ do
   common_page.footer_products_xs.scroll_into_view
   status = common_page.footer_products_xs.attribute_value  'class'
   common_page.footer_products_xs.click if status.exclude? 'collapsed'
+  step 'pause for 1 second'
 end
 
 Then /^SDCW: click footer small office mailers$/ do
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device|| TestSession.env.mobile_device
-
     step 'SDCW: expand footer products mobile'
     common_page.footer_office_mailers[2].click
   else
@@ -626,7 +640,7 @@ Then /^SDCW: click footer download software$/ do
       common_page.download_software[1].click
     end
   end
-  step 'pause for 3 second'
+  step 'pause for 5 second'
   url = SdcPage.browser.url
   case TestSession.env.url
     when :qacc
@@ -763,6 +777,7 @@ Then /^SDCW: expand footer company stuff mobile$/ do
   common_page.footer_company_stuff_xs.scroll_into_view
   status = common_page.footer_company_stuff_xs.attribute_value  'class'
   common_page.footer_company_stuff_xs.click if status.include? 'collapsed'
+  step 'pause for 1 second'
 end
 
 Then /^SDCW: collapse footer company stuff mobile$/ do
@@ -770,6 +785,7 @@ Then /^SDCW: collapse footer company stuff mobile$/ do
   common_page.footer_company_stuff_xs.scroll_into_view
   status = common_page.footer_company_stuff_xs.attribute_value  'class'
   common_page.footer_company_stuff_xs.click if status.exclude? 'collapsed'
+  step 'pause for 1 second'
 end
 
 Then /^SDCW: click company stuff --> about us$/ do
@@ -829,23 +845,19 @@ Then /^SDCW: click company stuff --> shipping partners$/ do
   step 'SDCW: navigate back'
 end
 
-Then /^SDCW: click footer privacy policy$/ do
+Then /^SDCW: click company stuff --> privacy policy$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-
-    common_page.footer_company_stuff_menu_xs.scroll_into_view
-    common_page.footer_company_stuff_menu_xs.click!
-
-    common_page.privacy_policy_xs.hover
-    common_page.privacy_policy_xs.click
+    step 'SDCW: expand footer company stuff mobile'
+    common_page.privacy_policy[0].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.privacy_policy.click
+      common_page.privacy_policy[1].click
     else
-      common_page.privacy_policy.scroll_into_view
-      common_page.privacy_policy.hover
-      common_page.privacy_policy.click
+      common_page.privacy_policy[1].scroll_into_view
+      common_page.privacy_policy[1].hover
+      common_page.privacy_policy[1].click
     end
   end
   step 'pause for 1 second'
@@ -861,23 +873,19 @@ Then /^SDCW: click footer privacy policy$/ do
   step 'SDCW: navigate back'
 end
 
-Then /^SDCW: click footer investor info$/ do
+Then /^SDCW: click company stuff --> investor info$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-
-    common_page.footer_company_stuff_menu_xs.scroll_into_view
-    common_page.footer_company_stuff_menu_xs.click!
-
-    common_page.investor_info_xs.hover
-    common_page.investor_info_xs.click
+    step 'SDCW: expand footer company stuff mobile'
+    common_page.investor_info[0].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.investor_info.click
+      common_page.investor_info[1].click
     else
-      common_page.investor_info.scroll_into_view
-      common_page.investor_info.hover
-      common_page.investor_info.click
+      common_page.investor_info[1].scroll_into_view
+      common_page.investor_info[1].hover
+      common_page.investor_info[1].click
     end
   end
   step 'pause for 3 second'
@@ -895,22 +903,19 @@ Then /^SDCW: click footer investor info$/ do
 
 end
 
-Then /^SDCW: click footer careers$/ do
+Then /^SDCW: click company stuff --> careers$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-
-    common_page.footer_company_stuff_menu_xs.scroll_into_view
-
-    common_page.careers_xs.hover
-    common_page.careers_xs.click
+    step 'SDCW: expand footer company stuff mobile'
+    common_page.careers[0].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.careers.click
+      common_page.careers[1].click
     else
-      common_page.careers.scroll_into_view
-      common_page.careers.hover
-      common_page.careers.click
+      common_page.careers[1].scroll_into_view
+      common_page.careers[1].hover
+      common_page.careers[1].click
     end
   end
   step 'pause for 3 second'
@@ -919,29 +924,26 @@ Then /^SDCW: click footer careers$/ do
   SdcPage.browser.windows.last.close
 
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-    expect(url.include? 'https://careers-stamps.icims.com/jobs/intro?hashed=-435738745&mobile=true&')
+    expect(url.include? 'https://careers-stamps.icims.com/jobs/intro?hashed=-435738745')
   else
-    expect(url).to eql('https://careers-stamps.icims.com/jobs/intro?hashed=-435738745&mobile=false&width=970&height=500&bga=true&needsRedirect=false&jan1offset=-480&jun1offset=-420')
+    expect(url).to eql('https://careers-stamps.icims.com/jobs/intro?hashed=-435738745')
   end
 
 end
 
-Then /^SDCW: click footer affiliates$/ do
+Then /^SDCW: click company stuff --> affiliates$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-
-    common_page.footer_company_stuff_menu_xs.scroll_into_view
-
-    common_page.affiliates_xs.hover
-    common_page.affiliates_xs.click
+    step 'SDCW: expand footer company stuff mobile'
+    common_page.affiliates[0].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.affiliates.click
+      common_page.affiliates[1].click
     else
-      common_page.affiliates.scroll_into_view
-      common_page.affiliates.hover
-      common_page.affiliates.click
+      common_page.affiliates[1].scroll_into_view
+      common_page.affiliates[1].hover
+      common_page.affiliates[1].click
     end
   end
   step 'pause for 3 second'
@@ -959,23 +961,19 @@ Then /^SDCW: click footer affiliates$/ do
   step 'SDCW: navigate back'
 end
 
-Then /^SDCW: click footer site map$/ do
+Then /^SDCW: click company stuff --> site map$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-
-    common_page.footer_company_stuff_menu_xs.scroll_into_view
-    common_page.footer_company_stuff_menu_xs.click!
-
-    common_page.site_map_xs.hover
-    common_page.site_map_xs.click
+    step 'SDCW: expand footer company stuff mobile'
+    common_page.site_map[0].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.site_map.click
+      common_page.site_map[1].click
     else
-      common_page.site_map.scroll_into_view
-      common_page.site_map.hover
-      common_page.site_map.click
+      common_page.site_map[1].scroll_into_view
+      common_page.site_map[1].hover
+      common_page.site_map[1].click
     end
   end
   step 'pause for 1 second'
@@ -992,23 +990,19 @@ Then /^SDCW: click footer site map$/ do
   step 'SDCW: navigate back'
 end
 
-Then /^SDCW: click footer contact us$/ do
+Then /^SDCW: click company stuff --> contact us$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-
-    common_page.footer_company_stuff_menu_xs.scroll_into_view
-    common_page.footer_company_stuff_menu_xs.click!
-
-    common_page.contact_us_xs.hover
-    common_page.contact_us_xs.click
+    step 'SDCW: expand footer company stuff mobile'
+    common_page.contact_us[0].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.contact_us.click
+      common_page.contact_us[1].click
     else
-      common_page.contact_us.scroll_into_view
-      common_page.contact_us.hover
-      common_page.contact_us.click
+      common_page.contact_us[1].scroll_into_view
+      common_page.contact_us[1].hover
+      common_page.contact_us[1].click
     end
   end
   step 'pause for 1 second'
@@ -1025,18 +1019,33 @@ Then /^SDCW: click footer contact us$/ do
 end
 
 #### developers ####
-Then /^SDCW: click footer developer overview$/ do
+Then /^SDCW: expand footer developers mobile$/ do
+  common_page = StampsWebsite.common_page
+  common_page.developers_xs.scroll_into_view
+  status = common_page.developers_xs.attribute_value  'class'
+  common_page.developers_xs.click if status.include? 'collapsed'
+end
+
+Then /^SDCW: collapse footer developers mobile$/ do
+  common_page = StampsWebsite.common_page
+  common_page.developers_xs.scroll_into_view
+  status = common_page.developers_xs.attribute_value  'class'
+  common_page.developers_xs.click if status.exclude? 'collapsed'
+end
+
+Then /^SDCW: click developers --> developer overview$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-    common_page.developer_overview_xs.click
+    step 'SDCW: expand footer developers mobile'
+    common_page.developer_overview[0].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.developer_overview.click
+      common_page.developer_overview[0].click
     else
-      common_page.developer_overview.scroll_into_view
-      common_page.developer_overview.hover
-      common_page.developer_overview.click
+      common_page.developer_overview[0].scroll_into_view
+      common_page.developer_overview[0].hover
+      common_page.developer_overview[0].click
     end
   end
   step 'pause for 3 second'
@@ -1051,21 +1060,21 @@ Then /^SDCW: click footer developer overview$/ do
     when :prod
       expect(url).to eql('https://stamps.com/developer/')
   end
-
 end
 
-Then /^SDCW: click footer developer registration$/ do
+Then /^SDCW: click developers --> developer registration$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-    common_page.developer_reg_xs.click
+    step 'SDCW: expand footer developers mobile'
+    common_page.developer_reg[0].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.developer_reg.click
+      common_page.developer_reg[1].click
     else
-      common_page.developer_reg.scroll_into_view
-      common_page.developer_reg.hover
-      common_page.developer_reg.click
+      common_page.developer_reg[1].scroll_into_view
+      common_page.developer_reg[1].hover
+      common_page.developer_reg[1].click
     end
   end
   step 'pause for 3 second'
@@ -1084,18 +1093,19 @@ Then /^SDCW: click footer developer registration$/ do
 
 end
 
-Then /^SDCW: click footer developer reference guide$/ do
+Then /^SDCW: click developers --> developer reference guide$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-    common_page.developer_reff_xs.click
+    step 'SDCW: expand footer developers mobile'
+    common_page.developer_ref_guide[0].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.developer_reff.click
+      common_page.developer_ref_guide[1].click
     else
-      common_page.developer_reff.scroll_into_view
-      common_page.developer_reff.hover
-      common_page.developer_reff.click
+      common_page.developer_ref_guide[1].scroll_into_view
+      common_page.developer_ref_guide[1].hover
+      common_page.developer_ref_guide[1].click
     end
   end
   step 'pause for 3 second'
@@ -1114,18 +1124,19 @@ Then /^SDCW: click footer developer reference guide$/ do
 
 end
 
-Then /^SDCW: click footer developer products$/ do
+Then /^SDCW: click developers --> developer products$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-    common_page.developer_products_xs.click
+    step 'SDCW: expand footer developers mobile'
+    common_page.developer_products[0].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.developer_products.click
+      common_page.developer_products[1].click
     else
-      common_page.developer_products.scroll_into_view
-      common_page.developer_products.hover
-      common_page.developer_products.click
+      common_page.developer_products[1].scroll_into_view
+      common_page.developer_products[1].hover
+      common_page.developer_products[1].click
     end
   end
   step 'pause for 3 second'
@@ -1145,6 +1156,22 @@ Then /^SDCW: click footer developer products$/ do
 end
 
 ####### follow us #####
+Then /^SDCW: expand footer follow us mobile$/ do
+  common_page = StampsWebsite.common_page
+  common_page.follow_us_xs.scroll_into_view
+  status = common_page.follow_us_xs.attribute_value  'class'
+  common_page.follow_us_xs.click if status.include? 'collapsed'
+  step 'pause for 1 second'
+end
+
+Then /^SDCW: collapse footer follow us mobile$/ do
+  common_page = StampsWebsite.common_page
+  common_page.follow_us_xs.scroll_into_view
+  status = common_page.follow_us_xs.attribute_value  'class'
+  common_page.follow_us_xs.click if status.exclude? 'collapsed'
+  step 'pause for 1 second'
+end
+
 Then /^SDCW: click footer facebook$/ do
 
   common_page = StampsWebsite.common_page

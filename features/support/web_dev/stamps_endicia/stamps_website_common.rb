@@ -53,24 +53,26 @@ module StampsWebsite
     page_object(:footer_company_stuff_xs) { {xpath: '//a[@href="#company-menu"]'} }
     page_objects(:about_us) {{xpath: '//a[contains(text(), "About Us")]'}}
     page_objects(:shipping_partners) {{xpath: '//a[contains(text(), "Shipping Partners")]'}}
-    page_object(:privacy_policy) {{xpath: '//ul/li/a[contains(@href , "privacy-policy")]'}}
-    page_object(:investor_info) {{xpath: '//ul/li/a[contains(@href , "investor")]'}}
-    page_object(:careers) {{xpath: '//ul/li/a[contains(@href , "careers")]'}}
-    page_object(:affiliates) {{xpath: '//ul/li/a[contains(@href , "affiliates")]'}}
-    page_object(:site_map) {{xpath: '//ul/li/a[contains(@href , "sitemap")]'}}
-    page_object(:contact_us) {{xpath: '//ul/li/a[contains(@href , "contact-us")]'}}
+    page_objects(:privacy_policy) { {xpath: '//a[contains(text(), "Privacy Policy")]'} }
+    page_objects(:investor_info) {{xpath: '//a[contains(text(), "Investor Info")]'}}
+    page_objects(:careers) {{xpath: '//a[contains(text(), "Careers")]'}}
+    page_objects(:affiliates) {{xpath: '//a[contains(text(), "Affiliates")]'}}
+    page_objects(:site_map) {{xpath: '//a[contains(text(), "Site Map")]'}}
+    page_objects(:contact_us) {{xpath: '//a[contains(text(), "Contact Us")]'}}
     ## developers ##
-    page_objects(:developer_overview, index: 0) {{xpath: '//ul/li/a[contains(@href , "developer")]'}}
-    page_object(:developer_reg) {{xpath: '//ul/li/a[contains(@href , "register")]'}}
-    page_object(:developer_reff) {{xpath: '//ul/li/a[contains(@href , "docs")]'}}
-    page_object(:developer_products) {{xpath: '//ul/li/a[contains(@href , "products")]'}}
+    page_object(:developers_xs) { {xpath: '//a[@href="#developers-menu"]'} }
+    page_objects(:developer_overview) {{xpath: '//a[contains(text(), "Developer Overview")]'}}
+    page_objects(:developer_reg) {{xpath: '//a[contains(text(), "Developer Registration")]'}}
+    page_objects(:developer_ref_guide) {{xpath: '//a[contains(text(), "Developer Reference Guide")]'}}
+    page_objects(:developer_products) {{xpath: '//a[contains(text(), "Developer Products")]'}}
     ## follow us ##
-    page_object(:facebook) {{xpath: '//ul/li/a[contains(@href , "facebook.com")]'}}
-    page_object(:twitter) {{xpath: '//ul/li/a[contains(@href , "twitter.com")]'}}
-    page_object(:google_plus) {{xpath: '//ul/li/a[contains(@href , "plus.google.com")]'}}
-    page_object(:youtube) {{xpath: '//ul/li/a[contains(text() , "YouTube")]'}}
-    page_object(:linkedin) {{xpath: '//ul/li/a[contains(@href , "linkedin")]'}}
-    page_object(:blog) {{xpath: '//ul/li/a[contains(@href , "blog")]'}}
+    page_object(:follow_us_xs) { {xpath: '//a[@href="#followus-menu""]'} }
+    page_objects(:facebook) {{xpath: '//a[contains(text(), "Facebook")]'}}
+    page_objects(:twitter) {{xpath: '//ul/li/a[contains(@href , "twitter.com")]'}}
+    page_objects(:google_plus) {{xpath: '//ul/li/a[contains(@href , "plus.google.com")]'}}
+    page_objects(:youtube) {{xpath: '//ul/li/a[contains(text() , "YouTube")]'}}
+    page_objects(:linkedin) {{xpath: '//ul/li/a[contains(@href , "linkedin")]'}}
+    page_objects(:blog) {{xpath: '//ul/li/a[contains(@href , "blog")]'}}
 
 
     ############## mobile footer #############
