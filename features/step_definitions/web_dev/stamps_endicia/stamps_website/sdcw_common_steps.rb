@@ -302,7 +302,7 @@ Then /^SDCW: verify default elements on footer for browser$/ do
   step 'SDCW: expect stamps website footer copyright exists'
   step 'SDCW: expect stamps website footer copyright text is Copyright © 1998-2018 Stamps.com Inc.'
   step 'SDCW: click footer copyright link'
-  step 'SDCW: click footer small office mailers'
+  step 'SDCW: click products --> small office mailers'
   step 'SDCW: click footer online sellers'
   step 'SDCW: click footer warehouse shippers'
   step 'SDCW: click footer corporate postage solutions'
@@ -335,7 +335,7 @@ Then /^SDCW: verify default elements on footer for browser$/ do
 end
 
 Then /^SDCW: verify default elements on footer for mobile$/ do
-  # step 'SDCW: click footer small office mailers'
+   step 'SDCW: click products --> small office mailers'
   # step 'SDCW: click footer online sellers'
   # step 'SDCW: click footer warehouse shippers'
   # step 'SDCW: click footer corporate postage solutions'
@@ -366,8 +366,8 @@ Then /^SDCW: verify default elements on footer for mobile$/ do
   # step 'SDCW: click follow us --> twitter'
   # step 'SDCW: click follow us --> google plus'
   # step 'SDCW: click follow us --> youtube'
-  step 'SDCW: click follow us --> linkedin'
-  step 'SDCW: click follow us --> blog'
+  # step 'SDCW: click follow us --> linkedin'
+  # step 'SDCW: click follow us --> blog'
 end
 
 #........footer...........#
@@ -440,7 +440,7 @@ Then /^SDCW: collapse footer products mobile$/ do
   step 'pause for 1 second'
 end
 
-Then /^SDCW: click footer small office mailers$/ do
+Then /^SDCW: click products --> small office mailers$/ do
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device|| TestSession.env.mobile_device
     step 'SDCW: expand footer products mobile'
