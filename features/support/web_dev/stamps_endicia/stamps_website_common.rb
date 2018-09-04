@@ -71,8 +71,8 @@ module StampsWebsite
     page_objects(:twitter) {{xpath: '//a[contains(text(), "Twitter")]'}}
     page_objects(:google_plus) {{xpath: '//a[contains(text(), "Google+")]'}}
     page_objects(:youtube) {{xpath: '//a[contains(text(), "YouTube")]'}}
-    page_objects(:linkedin) {{xpath: '//ul/li/a[contains(@href , "linkedin")]'}}
-    page_objects(:blog) {{xpath: '//ul/li/a[contains(@href , "blog")]'}}
+    page_objects(:linkedin) {{xpath: '//a[contains(text(), "LinkedIn")]'}}
+    page_objects(:blog) {{xpath: '//a[contains(text(), "Blog")]'}}
 
 
     ############## mobile footer #############

@@ -330,8 +330,8 @@ Then /^SDCW: verify default elements on footer for browser$/ do
   step 'SDCW: click follow us --> twitter'
   step 'SDCW: click follow us --> google plus'
   step 'SDCW: click follow us --> youtube'
-  step 'SDCW: click footer linkedin'
-  step 'SDCW: click footer blog'
+  step 'SDCW: click follow us --> linkedin'
+  step 'SDCW: click follow us --> blog'
 end
 
 Then /^SDCW: verify default elements on footer for mobile$/ do
@@ -362,10 +362,12 @@ Then /^SDCW: verify default elements on footer for mobile$/ do
   # step 'SDCW: click developers --> developer reference guide'
   # step 'SDCW: click developers --> developer products'
   # step 'SDCW: collapse footer developers mobile'
-  step 'SDCW: click follow us --> facebook'
-  step 'SDCW: click follow us --> twitter'
-  step 'SDCW: click follow us --> google plus'
-  step 'SDCW: click follow us --> youtube'
+  # step 'SDCW: click follow us --> facebook'
+  # step 'SDCW: click follow us --> twitter'
+  # step 'SDCW: click follow us --> google plus'
+  # step 'SDCW: click follow us --> youtube'
+  step 'SDCW: click follow us --> linkedin'
+  step 'SDCW: click follow us --> blog'
 end
 
 #........footer...........#
@@ -1300,18 +1302,20 @@ Then /^SDCW: click follow us --> youtube$/ do
 
 end
 
-Then /^SDCW: click footer linkedin$/ do
+Then /^SDCW: click follow us --> linkedin$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-    common_page.linkedin_xs.click
+    step 'SDCW: expand footer follow us mobile'
+    common_page.linkedin[1].scroll_into_view
+    common_page.linkedin[0].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.linkedin.click
+      common_page.linkedin[0].click
     else
-      common_page.linkedin.scroll_into_view
-      common_page.linkedin.hover
-      common_page.linkedin.click
+      common_page.linkedin[1].scroll_into_view
+      common_page.linkedin[1].hover
+      common_page.linkedin[1].click
     end
   end
   step 'pause for 3 second'
@@ -1321,18 +1325,20 @@ Then /^SDCW: click footer linkedin$/ do
   expect(url).to include('https://www.linkedin.com/')
 end
 
-Then /^SDCW: click footer blog$/ do
+Then /^SDCW: click follow us --> blog$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-    common_page.blog_xs.click
+    step 'SDCW: expand footer follow us mobile'
+    common_page.blog[0].scroll_into_view
+    common_page.blog[0].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.blog.click
+      common_page.blog[1].click
     else
-      common_page.blog.scroll_into_view
-      common_page.blog.hover
-      common_page.blog.click
+      common_page.blog[1].scroll_into_view
+      common_page.blog[1].hover
+      common_page.blog[1].click
     end
   end
   step 'pause for 3 second'
