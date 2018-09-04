@@ -103,7 +103,7 @@ Then /^loading orders...$/ do
   toolbar = SdcOrders.toolbar
   loading_orders = SdcOrders.loading_orders
   landing_page = SdcWebsite.landing_page
-  landing_page.username.safe_wait_while_present(timeout: 90)
+  landing_page.username.safe_wait_while_present(timeout: 120)
   SdcLogger.debug 'loading_orders.safe_wait_until_present(timeout: 30)...'
   loading_orders.safe_wait_until_present(timeout: 160)
   SdcLogger.debug 'loading_orders.safe_wait_while_present(timeout: 60)...'
