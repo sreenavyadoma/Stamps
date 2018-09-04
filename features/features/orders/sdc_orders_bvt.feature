@@ -130,7 +130,7 @@ Feature:  BVT tests for Orders
     Then set customs package contents to Humanitarian Donation
     Then set customs package contents to Merchandise
     Then set customs package contents to Other
-    Then set customs more info to random
+    Then set customs more info to random string
     Then set customs non-delivery options to Return to sender
     Then set customs internal transaction number to Not required
     Then check customs form i agree to the usps privacy act statement

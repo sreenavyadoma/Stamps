@@ -56,7 +56,7 @@ Then /^expect customs internal transaction number is (?:correct|(.*))$/ do |str|
   expect(SdcWebsite.customs_form.internal_transaction.text_field.text_value).to eql(str)
 end
 
-Then /^set customs more info to (?:random string|(.*))$/ do |str|
+Then /^set customs more info to (?:random string|random|(.*))$/ do |str|
   str ||= TestHelper.rand_alpha_numeric(min: 6, max: 18)
   SdcWebsite.customs_form.more_info.set(str) if SdcWebsite.customs_form.more_info.present?
   step "expect Customs More Info is #{str}"

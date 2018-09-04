@@ -25,6 +25,7 @@ Then /^add order (\d+)$/ do |count|
     end
   end
   order_details.order_id.safe_wait_until_present(timeout: 20)
+  order_details.order_id.click if order_details.order_id.present?
   order_details.title.safe_wait_until_present(timeout: 20)
   expect(order_details.order_id.text_value).not_to eql ''
   sleep 1 unless TestSession.env.build_number
