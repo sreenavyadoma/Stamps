@@ -75,6 +75,7 @@ Then /^sign-in to orders with (.+)\/(.+)$/ do |usr, pw|
     step 'ios: click sign-in button'
   elsif TestSession.env.browser_test
     step 'browser: click sign-in button'
+    step 'check for server error'
     step 'close whats new modal in orders' if SdcGlobal.web_app.eql? :orders
   end
   TestData.hash[:username] = usr
@@ -84,6 +85,7 @@ end
 
 Then /^browser: click sign-in button$/ do
   step 'click Orders landing page sign-in button'
+  step 'check for server error'
   step 'loading orders...' if SdcGlobal.web_app.eql? :orders
 end
 
@@ -160,6 +162,7 @@ Then /^click Orders landing page sign-in button$/ do
     landing_page.sign_in.safe_wait_while_present(timeout: 2)
     break unless landing_page.sign_in.present?
     landing_page.sign_in.safe_click if landing_page.sign_in.present?
+    step 'check for server error'
   end
   landing_page.invalid_username.safe_wait_while_present(timeout: 2)
   if landing_page.invalid_username.present?
@@ -173,6 +176,7 @@ Then /^click Orders landing page sign-in button$/ do
     rating_error.ok.click
     expect(error_msg).to eql('')
   end
+  step 'check for server error'
 end
 
 Then /^close whats new modal in orders$/ do
