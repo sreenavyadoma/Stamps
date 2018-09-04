@@ -1,13 +1,13 @@
 
-default: --backtrace --profile sauce_browser
+default: --backtrace --profile local_browser
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
 # tests: bvt_shipstation_updates_domestic
 local_mobile: --tags @mail_authentication_mobile URL=stg USR=sauce0020 PW=pass111 SELENIUM_DEVICE='iPhone X 11.3' SELENIUM_PLATFORM=iOS SELENIUM_BROWSER=Safari SELENIUM_VERSION=11.3 LOG_LEVEL=debug
 #local_mobile: --tags @bvt_new_order URL=cc USR=cctruer0u PW=pass111 SELENIUM_DEVICE='iPhone X 11.3' SELENIUM_PLATFORM=iOS SELENIUM_BROWSER=Safari SELENIUM_VERSION=11.3 LOG_LEVEL=debug
-local_browser: --tags @mail_bvt_international URL=stg BROWSER=ff MAX_WINDOW=false USR=bvtstgosxgc1 PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=info WINDOW_SIZE=1280x1020
-#local_browser: --tags @mail_authentication_mobile URL=cc BROWSER=ff MAX_WINDOW=false USR=bvtsauce00020cc PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=info WINDOW_SIZE=1000x900
+#local_browser: --tags @bvt_international_shipping URL=stg BROWSER=ff MAX_WINDOW=false USR=bvtstgosxgc1 PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=info WINDOW_SIZE=1280x1020
+local_browser: --tags @bvt_international_shipping URL=cc BROWSER=ff MAX_WINDOW=false USR=bvtsauce00020cc PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=info WINDOW_SIZE=1000x900
 #local_browser: --tags @bvt_shipstation_updates_domestic URL=sc BROWSER=ff MAX_WINDOW=false USR=scsejsglwa PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=info
 sauce_mobile: --tags @mail_authentication_mobile URL=stg USR=sauce0020 PW=pass111 SELENIUM_DEVICE='iPhone X Simulator' SELENIUM_PLATFORM=iOS SELENIUM_BROWSER=Safari SELENIUM_VERSION=11.3TUNNEL_IDENTIFIER=rob LOG_LEVEL=info
 #sauce_browser: --tags @bvt_shipstation_updates_domestic URL=stg USR=stgvoc0kcnt6rw PW=pass111SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Mac 10.10' TUNNEL_IDENTIFIER=rob LOG_LEVEL=info
