@@ -73,8 +73,10 @@ module TestSession
     key(:build_url) { ENV['BUILD_URL'] }
     # cloud settings
     key(:tunnel_identifier) { ENV['TUNNEL_IDENTIFIER'] }
-    key(:selenium_host) { ENV['SELENIUM_HOST'] }
-    key(:selenium_port) { ENV['SELENIUM_PORT'] }
+    key(:sauce_username) { ENV['SAUCE_USERNAME'] || 'robcruz' }
+    key(:sauce_access_key) { ENV['SAUCE_ACCESS_KEY'] || '0e60dbc9-5bbf-425a-988b-f81c42d6b7ef' }
+    key(:selenium_host) { ENV['SELENIUM_HOST'] || 'ondemand.saucelabs.com' }
+    key(:selenium_port) { ENV['SELENIUM_PORT'] || '443' }
     key(:selenium_platform) { ENV['SELENIUM_PLATFORM'] }
     key(:selenium_version) { ENV['SELENIUM_VERSION'] }
     key(:selenium_browser) do
@@ -229,6 +231,8 @@ module TestSession
           :tunnelIdentifier => env.tunnel_identifier,
           :idleTimeout => env.idle_timeout
       }
+      error_msg = 'SELENIUM_BROWSER is nil'
+      raise ArgumentError, error_msg unless env.selenium_browser
       caps = Selenium::WebDriver::Remote::Capabilities.send(env.selenium_browser, desired_caps)
       client = Selenium::WebDriver::Remote::Http::Default.new
       client.timeout = env.idle_timeout
