@@ -15,8 +15,8 @@ module SdcOrders
   end
 
   class SdcShipToCountryDom < SdcPage
-    page_object(:drop_down) { { xpath: '//div[contains(@id, "matltocountrydroplist-trigger-picker")]' } }
-    page_object(:text_field) { { xpath: '//input[contains(@id, "matltocountrydroplist")]' } }
+    page_object(:drop_down) { { xpath: '(//*[@name="ShipCountryCode"]/../..//div[contains(@id, "trigger-picker")])[1]' } }
+    page_object(:text_field) { { xpath: '(//*[@name="ShipCountryCode"])[1]' } }
 
     def selection(str)
       SdcElement.new(page_objects(:selections) { { xpath: "//li[text()='#{str}']" } }.last)
@@ -24,8 +24,8 @@ module SdcOrders
   end
 
   class SdcShipToCountryIntl < SdcPage
-    page_object(:drop_down) { { xpath: '(//*[contains(@id, "international")]//*[contains(@id, "picker")])[1]' } }
-    page_object(:text_field) { { xpath: '//div[contains(@id, "shiptoview-international")]//input[contains(@id, "combo")]' } }
+    page_object(:drop_down) { { xpath: '(//*[@name="ShipCountryCode"]/../..//div[contains(@id, "trigger-picker")])[2]' } }
+    page_object(:text_field) { { xpath: '(//*[@name="ShipCountryCode"])[2]' } }
 
     def selection(str)
       SdcElement.new(page_objects(:selections) { { xpath: "//li[text()='#{str}']" } }.last)
