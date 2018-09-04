@@ -3,6 +3,7 @@ Then /^add new order$/ do
 end
 
 Then /^add order (\d+)$/ do |count|
+  step 'check for server error'
   toolbar = SdcOrders.toolbar
   order_details = SdcOrders.order_details
   ship_from = order_details.ship_from
