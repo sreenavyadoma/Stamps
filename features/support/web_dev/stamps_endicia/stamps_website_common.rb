@@ -66,11 +66,11 @@ module StampsWebsite
     page_objects(:developer_ref_guide) {{xpath: '//a[contains(text(), "Developer Reference Guide")]'}}
     page_objects(:developer_products) {{xpath: '//a[contains(text(), "Developer Products")]'}}
     ## follow us ##
-    page_object(:follow_us_xs) { {xpath: '//a[@href="#followus-menu""]'} }
+    page_object(:follow_us_xs) { {xpath: '//a[@href="#followus-menu"]'} }
     page_objects(:facebook) {{xpath: '//a[contains(text(), "Facebook")]'}}
-    page_objects(:twitter) {{xpath: '//ul/li/a[contains(@href , "twitter.com")]'}}
-    page_objects(:google_plus) {{xpath: '//ul/li/a[contains(@href , "plus.google.com")]'}}
-    page_objects(:youtube) {{xpath: '//ul/li/a[contains(text() , "YouTube")]'}}
+    page_objects(:twitter) {{xpath: '//a[contains(text(), "Twitter")]'}}
+    page_objects(:google_plus) {{xpath: '//a[contains(text(), "Google+")]'}}
+    page_objects(:youtube) {{xpath: '//a[contains(text(), "YouTube")]'}}
     page_objects(:linkedin) {{xpath: '//ul/li/a[contains(@href , "linkedin")]'}}
     page_objects(:blog) {{xpath: '//ul/li/a[contains(@href , "blog")]'}}
 

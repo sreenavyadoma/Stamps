@@ -326,42 +326,46 @@ Then /^SDCW: verify default elements on footer for browser$/ do
   step 'SDCW: click developers --> developer registration'
   step 'SDCW: click developers --> developer reference guide'
   step 'SDCW: click developers --> developer products'
-  step 'SDCW: click footer facebook'
-  step 'SDCW: click footer twitter'
-  step 'SDCW: click footer google plus'
-  step 'SDCW: click footer youtube'
+  step 'SDCW: click follow us --> facebook'
+  step 'SDCW: click follow us --> twitter'
+  step 'SDCW: click follow us --> google plus'
+  step 'SDCW: click follow us --> youtube'
   step 'SDCW: click footer linkedin'
   step 'SDCW: click footer blog'
 end
 
 Then /^SDCW: verify default elements on footer for mobile$/ do
-  step 'SDCW: click footer small office mailers'
-  step 'SDCW: click footer online sellers'
-  step 'SDCW: click footer warehouse shippers'
-  step 'SDCW: click footer corporate postage solutions'
-  step 'SDCW: click footer photo stamps'
-  step 'SDCW: click footer supplies'
-  step 'SDCW: collapse footer products mobile'
-  step 'SDCW: click footer download software'
-  step 'SDCW: click footer customer support'
-  step 'SDCW: click footer how to videos'
-  step 'SDCW: click footer faq'
-  step 'SDCW: click footer system status'
-  step 'SDCW: collapse footer support mobile'
-  step 'SDCW: click company stuff --> about us'
-  step 'SDCW: click company stuff --> shipping partners'
-  step 'SDCW: click company stuff --> privacy policy'
-  step 'SDCW: click company stuff --> investor info'
-  step 'SDCW: click company stuff --> careers'
-  step 'SDCW: click company stuff --> affiliates'
-  step 'SDCW: click company stuff --> site map'
-  step 'SDCW: click company stuff --> contact us'
-  step 'SDCW: collapse footer company stuff mobile'
-  step 'SDCW: click developers --> developer overview'
-  step 'SDCW: click developers --> developer registration'
-  step 'SDCW: click developers --> developer reference guide'
-  step 'SDCW: click developers --> developer products'
-  step 'SDCW: collapse footer developers mobile'
+  # step 'SDCW: click footer small office mailers'
+  # step 'SDCW: click footer online sellers'
+  # step 'SDCW: click footer warehouse shippers'
+  # step 'SDCW: click footer corporate postage solutions'
+  # step 'SDCW: click footer photo stamps'
+  # step 'SDCW: click footer supplies'
+  # step 'SDCW: collapse footer products mobile'
+  # step 'SDCW: click footer download software'
+  # step 'SDCW: click footer customer support'
+  # step 'SDCW: click footer how to videos'
+  # step 'SDCW: click footer faq'
+  # step 'SDCW: click footer system status'
+  # step 'SDCW: collapse footer support mobile'
+  # step 'SDCW: click company stuff --> about us'
+  # step 'SDCW: click company stuff --> shipping partners'
+  # step 'SDCW: click company stuff --> privacy policy'
+  # step 'SDCW: click company stuff --> investor info'
+  # step 'SDCW: click company stuff --> careers'
+  # step 'SDCW: click company stuff --> affiliates'
+  # step 'SDCW: click company stuff --> site map'
+  # step 'SDCW: click company stuff --> contact us'
+  # step 'SDCW: collapse footer company stuff mobile'
+  # step 'SDCW: click developers --> developer overview'
+  # step 'SDCW: click developers --> developer registration'
+  # step 'SDCW: click developers --> developer reference guide'
+  # step 'SDCW: click developers --> developer products'
+  # step 'SDCW: collapse footer developers mobile'
+  step 'SDCW: click follow us --> facebook'
+  step 'SDCW: click follow us --> twitter'
+  step 'SDCW: click follow us --> google plus'
+  step 'SDCW: click follow us --> youtube'
 end
 
 #........footer...........#
@@ -1172,18 +1176,20 @@ Then /^SDCW: collapse footer follow us mobile$/ do
   step 'pause for 1 second'
 end
 
-Then /^SDCW: click footer facebook$/ do
+Then /^SDCW: click follow us --> facebook$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-    common_page.facebook_xs.click
+    step 'SDCW: expand footer follow us mobile'
+    common_page.facebook[0].scroll_into_view
+    common_page.facebook[0].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.facebook.click
+      common_page.facebook[1].click
     else
-      common_page.facebook.scroll_into_view
-      common_page.facebook.hover
-      common_page.facebook.click
+      common_page.facebook[1].scroll_into_view
+      common_page.facebook[1].hover
+      common_page.facebook[1].click
     end
   end
   step 'pause for 3 second'
@@ -1191,22 +1197,33 @@ Then /^SDCW: click footer facebook$/ do
   url =  SdcPage.browser.windows.last.url
   SdcPage.browser.windows.last.close
 
-  expect(url).to eql('https://www.facebook.com/stamps.com/')
+
+  if SdcGlobal.web_dev_device
+    expect(url).to eql('https://m.facebook.com/stamps.com/')
+  elsif  TestSession.env.local_browser == :gc_iPad
+    expect(url).to eql('https://m.facebook.com/stamps.com/')
+  elsif  TestSession.env.mobile_device
+    expect(url).to eql('https://m.facebook.com/stamps.com/')
+  else
+    expect(url).to eql('https://www.facebook.com/stamps.com/')
+  end
 
 end
 
-Then /^SDCW: click footer twitter/ do
+Then /^SDCW: click follow us --> twitter$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-    common_page.twitter_xs.click
+    step 'SDCW: expand footer follow us mobile'
+    common_page.twitter[0].scroll_into_view
+    common_page.twitter[0].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.twitter.click
+      common_page.twitter[1].click
     else
-      common_page.twitter.scroll_into_view
-      common_page.twitter.hover
-      common_page.twitter.click
+      common_page.twitter[1].scroll_into_view
+      common_page.twitter[1].hover
+      common_page.twitter[1].click
     end
   end
   step 'pause for 3 second'
@@ -1214,43 +1231,56 @@ Then /^SDCW: click footer twitter/ do
   url =  SdcPage.browser.windows.last.url
   SdcPage.browser.windows.last.close
 
-  expect(url).to eql('https://twitter.com/stampscom/')
+  if SdcGlobal.web_dev_device
+    expect(url).to eql('https://mobile.twitter.com/stampscom/')
+  elsif  TestSession.env.local_browser == :gc_iPad
+    expect(url).to eql('https://mobile.twitter.com/stampscom/')
+  elsif  TestSession.env.mobile_device
+    expect(url).to eql('https://mobile.twitter.com/stampscom/')
+  else
+    expect(url).to eql('https://twitter.com/stampscom/')
+  end
 
 end
 
-Then /^SDCW: click footer google plus/ do
+Then /^SDCW: click follow us --> google plus$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-    common_page.google_plus_xs.click
+    step 'SDCW: expand footer follow us mobile'
+    common_page.google_plus[0].scroll_into_view
+    common_page.google_plus[0].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.google_plus.click
+      common_page.google_plus[1].click
     else
-      common_page.google_plus.scroll_into_view
-      common_page.google_plus.hover
-      common_page.google_plus.click
+      common_page.google_plus[1].scroll_into_view
+      common_page.google_plus[1].hover
+      common_page.google_plus[1].click
     end
   end
   step 'pause for 3 second'
   url =  SdcPage.browser.windows.last.url
   SdcPage.browser.windows.last.close
+
   expect(url).to eql('https://plus.google.com/+stampscom')
 
 end
 
-Then /^SDCW: click footer youtube/ do
+Then /^SDCW: click follow us --> youtube$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-    common_page.youtube_xs.click
+    step 'SDCW: expand footer follow us mobile'
+    common_page.youtube[0].scroll_into_view
+    common_page.youtube[0].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.youtube.click
+      common_page.youtube[1].click
     else
-      common_page.youtube.scroll_into_view
-      common_page.youtube.hover
-      common_page.youtube.click
+      common_page.youtube[1].scroll_into_view
+      common_page.youtube[1].hover
+      common_page.youtube[1].click
     end
   end
   step 'pause for 3 second'
@@ -1258,11 +1288,19 @@ Then /^SDCW: click footer youtube/ do
   url =  SdcPage.browser.windows.last.url
   SdcPage.browser.windows.last.close
 
-  expect(url).to eql('https://www.youtube.com/user/StampscomVideo')
+  if SdcGlobal.web_dev_device
+    expect(url).to eql('https://m.youtube.com/user/StampscomVideo')
+  elsif  TestSession.env.local_browser == :gc_iPad
+    expect(url).to eql('https://m.youtube.com/user/StampscomVideo')
+  elsif  TestSession.env.mobile_device
+    expect(url).to eql('https://m.youtube.com/user/StampscomVideo')
+  else
+    expect(url).to eql('https://www.youtube.com/user/StampscomVideo')
+  end
 
 end
 
-Then /^SDCW: click footer linkedin/ do
+Then /^SDCW: click footer linkedin$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
@@ -1283,7 +1321,7 @@ Then /^SDCW: click footer linkedin/ do
   expect(url).to include('https://www.linkedin.com/')
 end
 
-Then /^SDCW: click footer blog/ do
+Then /^SDCW: click footer blog$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
