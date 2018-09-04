@@ -731,8 +731,7 @@ end
 
 Then /^expect order details is present$/ do
   order_details = SdcWebsite.orders.order_details
-  order_details.wait_until_present(timeout: 10)
-  expect(order_details).to be_present
+  expect(order_details.title.text).to include('Order')
 end
 
 Then /^expect order details ship-from is (?:correct|(.*))$/ do |str|
