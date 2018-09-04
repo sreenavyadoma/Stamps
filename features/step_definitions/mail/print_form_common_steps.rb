@@ -275,7 +275,7 @@ end
 Then /^[Ss]et Print Form Ship-To Country to a random country in PMI Flat Rate price group (.*)$/ do |group|
   country_list = data_for(:country_groups_PMI_flat_rate, {})["group" + group].values
   TestData.hash[:country] = country_list[rand(country_list.size)]
-  step "set print form mail-to country to #{TestData.hash[:country]}"
+  step "set print form mail-to country to #{TestData.hash[:country]}" unless SdcMail.print_form.mail_to.text_field.text_value.eql?(TestData.hash[:country])
 end
 
 Then /^set print form ship-to to international address$/ do |table|
@@ -298,12 +298,12 @@ Then /^set print form mail-to country to (.*)$/ do |str|
   text_field = mail_to.dom_text_field
   text_field.safe_wait_until_present(timeout: 1)
   text_field = mail_to.int_text_field if mail_to.int_text_field.present?
-  unless text_field.text_value.eql? str
-    text_field.set str
+  unless text_field.text_value.eql?(str)
+    text_field.set(str)
     mail_to.selection_element.safe_wait_until_present(timeout: 2)
-    mail_to.selection_element.safe_click
+    mail_to.selection_element.safe_click if mail_to.selection_element.present?
   end
-  expect(text_field.text_value).to eql str
+  expect(text_field.text_value).to eql(str)
 end
 
 Then /^set print form name to (.*)$/ do |str|

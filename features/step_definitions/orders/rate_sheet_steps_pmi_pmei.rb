@@ -355,7 +355,7 @@ Then /^run rate sheet (.*) in country price group (\d+)$/ do |param_sheet, group
   pass_format = Spreadsheet::Format.new :color => :green, :weight => :bold
 
   # Workaround for selecting international countries. We need to switch domestic form to international
-  step 'set order details domestic ship-to country to Mexico'
+  step 'set order details domestic ship-to country to Mexico' if SdcGlobal.web_app == :orders
 
   # Set weight and services
   @rate_sheet.each_with_index do |row, row_number|
