@@ -3,12 +3,14 @@ Then /^add new order$/ do
 end
 
 Then /^add order (\d+)$/ do |count|
+  step 'check for server error'
   toolbar = SdcOrders.toolbar
   order_details = SdcOrders.order_details
   ship_from = order_details.ship_from
   initializing = SdcOrders.initializing_orders_db
   toolbar.add.wait_until_present(timeout: 10)
 
+  step 'check for server error'
   toolbar.add.click if TestSession.env.browser_test
   toolbar.add.send_keys(:enter) if TestSession.env.ios_test
 
