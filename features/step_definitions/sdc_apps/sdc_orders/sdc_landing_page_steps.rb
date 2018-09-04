@@ -103,15 +103,21 @@ Then /^loading orders...$/ do
   toolbar = SdcOrders.toolbar
   loading_orders = SdcOrders.loading_orders
   landing_page = SdcWebsite.landing_page
+  step 'check for server error'
   landing_page.username.safe_wait_while_present(timeout: 120)
+  step 'check for server error'
   SdcLogger.debug 'loading_orders.safe_wait_until_present(timeout: 30)...'
-  loading_orders.safe_wait_until_present(timeout: 160)
+  loading_orders.safe_wait_until_present(timeout: 90)
+  step 'check for server error'
   SdcLogger.debug 'loading_orders.safe_wait_while_present(timeout: 60)...'
-  loading_orders.safe_wait_while_present(timeout: 120)
+  loading_orders.safe_wait_while_present(timeout: 90)
+  step 'check for server error'
   SdcLogger.debug 'SdcGrid.body.safe_wait_until_present(timeout: 60)...'
   SdcGrid.body.safe_wait_until_present(timeout: 120)
+  step 'check for server error'
   SdcLogger.debug 'expect(toolbar.add).to be_present...'
   expect(landing_page.username).to_not be_present
+  step 'check for server error'
   SdcLogger.debug 'loading orders... done!'
 end
 
