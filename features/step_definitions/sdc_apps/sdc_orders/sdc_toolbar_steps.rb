@@ -10,6 +10,7 @@ Then /^add order (\d+)$/ do |count|
   initializing = SdcOrders.initializing_orders_db
   toolbar.add.wait_until_present(timeout: 10)
 
+  step 'check for server error'
   toolbar.add.click if TestSession.env.browser_test
   toolbar.add.send_keys(:enter) if TestSession.env.ios_test
 
