@@ -148,18 +148,18 @@ end
 
 Then /^[Cc]lick the [Ss]ign [Ii]n button in [Mm]ail$/ do
   modal = SdcWebsite.navigation.mail_sign_in_modal
-  #verifying_account_info = SdcMail.verifying_account_info
-  if SdcEnv.ios
-    raise StandardError, 'Not Implemented'
-  elsif SdcEnv.android
-    raise StandardError, 'Not Implemented'
-  else
-    verifying = SdcMail.verifying_account_info
-    modal.sign_in_link.wait_until_present(timeout: 3)
-    modal.sign_in_link.hover unless modal.sign_in.present?
-    modal.sign_in.click
-    verifying.safe_wait_until_present(timeout: 20)
-    verifying.safe_wait_while_present(timeout: 70)
+  verifying_account_info = SdcMail.verifying_account_info
+  modal.sign_in_link.wait_until_present(timeout: 3)
+  modal.sign_in_link.hover unless modal.sign_in.present?
+  modal.sign_in.click
+  modal.invalid_sign_in.safe_wait_until_present(timeout: 1)
+  if modal.invalid_sign_in.present?
+    expect(modal.invalid_sign_in.text_value).to eql ''
+  end
+  verifying_account_info.safe_wait_until_present(timeout: 20)
+  verifying_account_info.safe_wait_while_present(timeout: 70)
+  if verifying_account_info.present?
+    expect(verifying_account_info.text_value).not_to include('Verifying account information')
   end
 end
 
