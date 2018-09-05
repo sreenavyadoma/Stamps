@@ -58,7 +58,8 @@ end
 
 Then /^browser: sign-in to mail as (.+)\/(.+)$/ do |usr, pw|
   modal = SdcWebsite.navigation.mail_sign_in_modal
-  modal.sign_in_link.wait_until_present(timeout: 10)
+  modal.sign_in_link.safe_wait_until_present(timeout: 10)
+  expect(modal.sign_in_link).to be_present
   modal.sign_in_link.hover
   step "set Mail username to #{usr}"
   step "set Mail password to #{pw}"
