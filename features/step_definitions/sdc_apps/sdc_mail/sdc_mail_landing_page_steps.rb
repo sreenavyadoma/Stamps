@@ -49,7 +49,6 @@ Then /^sign out$/ do
         landing_page.username.safe_wait_until_present(timeout: 1)
         break if landing_page.username.present?
       end
-      landing_page.username.safe_wait_until_present(timeout: 1)
     end
   rescue
     # ignore
