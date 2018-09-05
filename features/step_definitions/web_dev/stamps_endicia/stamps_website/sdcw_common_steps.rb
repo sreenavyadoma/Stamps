@@ -335,18 +335,18 @@ Then /^SDCW: verify default elements on footer for browser$/ do
 end
 
 Then /^SDCW: verify default elements on footer for mobile$/ do
-   step 'SDCW: click products --> small office mailers'
-   step 'SDCW: click products --> online sellers'
-   step 'SDCW: click products --> warehouse shippers'
-   step 'SDCW: click products --> corporate postage solutions'
-   step 'SDCW: click products --> photo stamps'
-   step 'SDCW: click products --> supplies'
-   step 'SDCW: collapse footer products mobile'
-   step 'SDCW: click support --> download software'
-   step 'SDCW: click support --> customer support'
-   step 'SDCW: click support --> how to videos'
-   step 'SDCW: click support --> faq'
-   step 'SDCW: click support --> system status'
+  step 'SDCW: click products --> small office mailers'
+  step 'SDCW: click products --> online sellers'
+  step 'SDCW: click products --> warehouse shippers'
+  step 'SDCW: click products --> corporate postage solutions'
+  step 'SDCW: click products --> photo stamps'
+  step 'SDCW: click products --> supplies'
+  step 'SDCW: collapse footer products mobile'
+  step 'SDCW: click support --> download software'
+  step 'SDCW: click support --> customer support'
+  step 'SDCW: click support --> how to videos'
+  step 'SDCW: click support --> faq'
+  step 'SDCW: click support --> system status'
   step 'SDCW: collapse footer support mobile'
   step 'SDCW: click company stuff --> about us'
   step 'SDCW: click company stuff --> shipping partners'
@@ -712,6 +712,8 @@ Then /^SDCW: click support --> how to videos$/ do
 
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
     expect(url).to eql('https://m.youtube.com/user/StampscomVideo')
+  elsif TestSession.env.local_browser == :gc_iPad
+    expect(url).to eql('https://m.youtube.com/user/StampscomVideo')
   else
     expect(url).to eql('https://www.youtube.com/user/StampscomVideo')
   end
@@ -929,12 +931,12 @@ Then /^SDCW: click company stuff --> careers$/ do
   url =  SdcPage.browser.windows.last.url
   SdcPage.browser.windows.last.close
 
-  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-    expect(url.include? 'https://careers-stamps.icims.com/jobs/intro?hashed=-435738745')
-  else
-    expect(url).to eql('https://careers-stamps.icims.com/jobs/intro?hashed=-435738745')
-  end
-
+  # if SdcGlobal.web_dev_device || TestSession.env.mobile_device
+  #   expect(url).to include 'https://careers-stamps.icims.com/jobs/intro?hashed=-435738745'
+  # else
+  #   expect(url).to eql('https://careers-stamps.icims.com/jobs/intro?hashed=-435738745')
+  # end
+  expect(url).to include 'https://careers-stamps.icims.com/jobs/intro?hashed=-435738745'
 end
 
 Then /^SDCW: click company stuff --> affiliates$/ do
@@ -1047,11 +1049,11 @@ Then /^SDCW: click developers --> developer overview$/ do
     common_page.developer_overview[0].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.developer_overview[0].click
+      common_page.developer_overview[1].click
     else
-      common_page.developer_overview[0].scroll_into_view
-      common_page.developer_overview[0].hover
-      common_page.developer_overview[0].click
+      common_page.developer_overview[1].scroll_into_view
+      common_page.developer_overview[1].hover
+      common_page.developer_overview[1].click
     end
   end
   step 'pause for 3 second'
