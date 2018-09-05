@@ -31,7 +31,7 @@ module StampsWebsite
     end
 
     #footer
-    page_objects(:usps_logo,  index: 1) {{xpath: '//figure[@id="usps-logo-words"]/img'}}
+    page_objects(:usps_logo) {{xpath: '//figure[@id="usps-logo-words"]/img'}}
     page_objects(:usps_logo_caption,  index: 1) {{xpath: '//figure[@id="usps-logo-words"]/figcaption'}}
     page_object(:copyright) { {xpath: '//p[@class="copyright hidden-xs"]/a'} }
     ## products ##
@@ -73,33 +73,6 @@ module StampsWebsite
     page_objects(:youtube) {{xpath: '//a[contains(text(), "YouTube")]'}}
     page_objects(:linkedin) {{xpath: '//a[contains(text(), "LinkedIn")]'}}
     page_objects(:blog) {{xpath: '//a[contains(text(), "Blog")]'}}
-
-
-    ############## mobile footer #############
-    ## company stuff ##
-    page_object(:footer_company_stuff_menu_xs) {{xpath: '//div[@class="collapse list-group panel visible-xs"]/a[contains(@href , "#company-menu")]'}}
-    page_objects(:about_us_xs,  index: 0) {{xpath: '//div[@id="company-menu"]/a[contains(@href , "company-info")]'}}
-    page_object(:shipping_partners_xs) {{xpath: '//div[@id="company-menu"]/a[contains(@href , "integration")]'}}
-    page_object(:privacy_policy_xs) {{xpath: '//div[@id="company-menu"]/a[contains(@href , "privacy-policy")]'}}
-    page_object(:investor_info_xs) {{xpath: '//div[@id="company-menu"]/a[contains(@href , "investor")]'}}
-    page_object(:careers_xs) {{xpath: '//div[@id="company-menu"]/a[contains(@href , "careers")]'}}
-    page_object(:affiliates_xs) {{xpath: '//div[@id="company-menu"]/a[contains(@href , "affiliates")]'}}
-    page_object(:site_map_xs) {{xpath: '//div[@id="company-menu"]/a[contains(@href , "sitemap")]'}}
-    page_object(:contact_us_xs) {{xpath: '//div[@id="company-menu"]/a[contains(@href , "contact-us")]'}}
-    ## developers ##
-    page_object(:footer_developers_menu_xs) {{xpath: '//div[@class="collapse list-group panel visible-xs"]/a[contains(@href , "#developers-menu")]'}}
-    page_objects(:developer_overview_xs, index: 0) {{xpath: '//ul/li/a[contains(@href , "developer")]'}}
-    page_object(:developer_reg_xs) {{xpath: '//ul/li/a[contains(@href , "register")]'}}
-    page_object(:developer_reff_xs) {{xpath: '//ul/li/a[contains(@href , "docs")]'}}
-    page_object(:developer_products_xs) {{xpath: '//ul/li/a[contains(@href , "products")]'}}
-    ## follow us ##
-    page_object(:footer_follow_us_menu_xs) {{xpath: '//div[@class="collapse list-group panel visible-xs"]/a[contains(@href , "#followus-menu")]'}}
-    page_object(:facebook_xs) {{xpath: '//ul/li/a[contains(@href , "facebook.com")]'}}
-    page_object(:twitter_xs) {{xpath: '//ul/li/a[contains(@href , "twitter.com")]'}}
-    page_object(:google_plus_xs) {{xpath: '//ul/li/a[contains(@href , "plus.google.com")]'}}
-    page_object(:youtube_xs) {{xpath: '//ul/li/a[contains(text() , "YouTube")]'}}
-    page_object(:linkedin_xs) {{xpath: '//ul/li/a[contains(@href , "linkedin")]'}}
-    page_object(:blog_xs) {{xpath: '//ul/li/a[contains(@href , "blog")]'}}
 
   end
 

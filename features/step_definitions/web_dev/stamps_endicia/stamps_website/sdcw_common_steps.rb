@@ -372,7 +372,12 @@ end
 
 #........footer...........#
 Then /^SDCW: expect stamps website footer usps logo exists$/ do
-  usps_logo = StampsWebsite.common_page.usps_logo
+  if SdcGlobal.web_dev_device|| TestSession.env.mobile_device
+    usps_logo = StampsWebsite.common_page.usps_logo[0]
+  else
+    usps_logo = StampsWebsite.common_page.usps_logo[1]
+  end
+
   usps_logo.wait_until_present(timeout: 2)
   expect(usps_logo).to be_present
 end
@@ -622,6 +627,7 @@ Then /^SDCW: expand footer support mobile$/ do
   common_page.footer_support_xs.scroll_into_view
   status = common_page.footer_support_xs.attribute_value  'class'
   common_page.footer_support_xs.click if status.include? 'collapsed'
+  step 'pause for 1 second'
 end
 
 Then /^SDCW: collapse footer support mobile$/ do
@@ -629,6 +635,7 @@ Then /^SDCW: collapse footer support mobile$/ do
   common_page.footer_support_xs.scroll_into_view
   status = common_page.footer_support_xs.attribute_value  'class'
   common_page.footer_support_xs.click if status.exclude? 'collapsed'
+  step 'pause for 1 second'
 end
 
 Then /^SDCW: click support --> download software$/ do
@@ -1032,6 +1039,7 @@ Then /^SDCW: expand footer developers mobile$/ do
   common_page.developers_xs.scroll_into_view
   status = common_page.developers_xs.attribute_value  'class'
   common_page.developers_xs.click if status.include? 'collapsed'
+  step 'pause for 1 second'
 end
 
 Then /^SDCW: collapse footer developers mobile$/ do
@@ -1039,6 +1047,7 @@ Then /^SDCW: collapse footer developers mobile$/ do
   common_page.developers_xs.scroll_into_view
   status = common_page.developers_xs.attribute_value  'class'
   common_page.developers_xs.click if status.exclude? 'collapsed'
+  step 'pause for 1 second'
 end
 
 Then /^SDCW: click developers --> developer overview$/ do
@@ -1116,7 +1125,7 @@ Then /^SDCW: click developers --> developer reference guide$/ do
       common_page.developer_ref_guide[1].click
     end
   end
-  step 'pause for 3 second'
+  step 'pause for 5 second'
 
   url =  SdcPage.browser.windows.last.url
   SdcPage.browser.windows.last.close
@@ -1309,11 +1318,11 @@ Then /^SDCW: click follow us --> linkedin$/ do
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
     step 'SDCW: expand footer follow us mobile'
-    common_page.linkedin[1].scroll_into_view
+    common_page.linkedin[0].scroll_into_view
     common_page.linkedin[0].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.linkedin[0].click
+      common_page.linkedin[1].click
     else
       common_page.linkedin[1].scroll_into_view
       common_page.linkedin[1].hover
