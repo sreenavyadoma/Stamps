@@ -6,7 +6,7 @@ Feature: FCM Package Rates
     Given excel rate sheet is loaded
     Given prepare environment for ratings test
 
-  @rates_fcm_package
+  @rates_mail_fcm_package
   Scenario: FCM Package
     Then run rate test FCM Package
     Then Rates: Number of failed test should be less than 1

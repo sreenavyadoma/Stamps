@@ -52,7 +52,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) qty to (.*)$/ do |item, 
   SdcOrders.order_details.associated_item.item_qty(item).set(qty)
   TestData.hash[:details_associated_items][item][:item_qty] = qty.to_i
   TestData.hash[:items_ordered_qty] += qty.to_i
-  step 'Save Order Details data'
+  step 'save order details data'
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) ID to (.*)$/ do |item, str|
@@ -61,7 +61,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) ID to (.*)$/ do |item, s
   str = TestHelper.rand_alpha_numeric if str.downcase.include?('random')
   SdcOrders.order_details.associated_item.id(item).set(str)
   TestData.hash[:details_associated_items][item][:item_id] = str
-  step 'Save Order Details data'
+  step 'save order details data'
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) description to (.*)$/ do |item, str|
@@ -70,7 +70,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) description to (.*)$/ do
   str = TestHelper.rand_alpha_numeric if str.downcase.include?('random')
   SdcOrders.order_details.associated_item.description(item).set(str)
   TestData.hash[:details_associated_items][item][:item_description] = str
-  step 'Save Order Details data'
+  step 'save order details data'
 end
 
 Then /^set order details dimensions to length (\d+) width (\d+) height (\d+)$/ do |l, w, h|
@@ -213,7 +213,7 @@ Then /^set order details ship-to text area to (.*)$/ do |address|
     break if ship_to.show_less.present?
   end
   TestData.hash[:ship_to_domestic] = address
-  step 'Save Order Details data'
+  step 'save order details data'
 end
 
 Then /^hide order ship-to details$/ do
@@ -250,7 +250,7 @@ Then /^set order details phone to (?:random|(.*))$/ do |str|
   str ||= TestHelper.rand_phone
   SdcOrders.order_details.ship_to.domestic.phone.set(str)
   TestData.hash[:phone] = str
-  step 'Save Order Details data'
+  step 'save order details data'
 end
 
 Then /^set order details email to (?:random|(.*))$/ do |str|
@@ -258,7 +258,7 @@ Then /^set order details email to (?:random|(.*))$/ do |str|
   str ||= TestHelper.rand_email
   SdcOrders.order_details.ship_to.domestic.email.set(str)
   TestData.hash[:email] = str
-  step 'Save Order Details data'
+  step 'save order details data'
 end
 
 Then /^expect order details ship-to phone is (?:correct|(.*))$/ do |str|
@@ -371,7 +371,7 @@ Then /^set order details service to (.*)$/ do |str|
   expect(service.text_field.text_value).to include(str)
   service.wait_until(timeout: 15) { service.cost.text_value.dollar_amount_str.to_f.round(2) > 0 }
   step 'check for server error'
-  step 'Save Order Details data'
+  step 'save order details data'
   TestData.hash[:service] = str
 end
 
@@ -380,7 +380,7 @@ Then /^set order details pounds to (.+)$/ do |str|
   weight = order_details.weight
   weight.lbs.set(str)
   TestData.hash[:pounds] = str
-  step 'Save Order Details data'
+  step 'save order details data'
 end
 
 Then /^set order details ounces to (.+)$/ do |str|
@@ -388,7 +388,18 @@ Then /^set order details ounces to (.+)$/ do |str|
   weight = order_details.weight
   weight.oz.set(str)
   TestData.hash[:ounces] = str
-  step 'Save Order Details data'
+  step 'save order details data'
+end
+
+Then /^set order details ounces to (.+) by arrows$/ do |val|
+  oz = SdcOrders.order_details.weight.oz
+  iterations = val.to_i - oz.text_value.to_i
+  iterations.abs.times do oz.increment.click end if iterations > 0
+  iterations.abs.times do oz.decrement.click end if iterations < 0
+  step "expect order details ounces is #{val.to_i}"
+  TestData.hash[:ounces] = oz.text_value
+  step 'save order details data'
+
 end
 
 Then /^set order details length to (\d*)$/ do |str|
@@ -398,7 +409,7 @@ Then /^set order details length to (\d*)$/ do |str|
   dimensions.length.set(str)
   expect(dimensions.length.text_value).to eql str
   TestData.hash[:length] = str
-  step 'Save Order Details data'
+  step 'save order details data'
 end
 
 Then /^set order details width to (\d*)$/ do |str|
@@ -408,7 +419,7 @@ Then /^set order details width to (\d*)$/ do |str|
   dimensions.width.set(str)
   expect(dimensions.width.text_value).to eql str
   TestData.hash[:width] = str
-  step 'Save Order Details data'
+  step 'save order details data'
 end
 
 Then /^set order details height to (\d*)$/ do |str|
@@ -418,7 +429,7 @@ Then /^set order details height to (\d*)$/ do |str|
   dimensions.height.set(str)
   expect(dimensions.height.text_value).to eql str
   TestData.hash[:height] = str
-  step 'Save Order Details data'
+  step 'save order details data'
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ss]ervice is (?:correct|(.*))$/ do |str|
@@ -431,7 +442,7 @@ Then /^expect order details international service is (?:correct|(.*))$/ do |str|
   str ||= TestData.hash[:int_service]
   result = SdcOrders.order_details.service.text_field.text_value
   expect(result).to include(str)
-  step 'Save Order Details data'
+  step 'save order details data'
 end
 
 Then /^set order details domestic ship-to country to (.*)$/ do |str|
@@ -444,6 +455,24 @@ Then /^set order details domestic ship-to country to (.*)$/ do |str|
   actual_result = country.text_field.text_value
   expect(actual_result).to eql str
   TestData.hash[:country] = str
+end
+
+Then /^set order details international ship-to country to a random country in (.*) price group (.*)$/ do |str, number|
+  group = case str
+    when /PMI/
+      :country_groups_PMI
+    when /PMEI/
+      :country_groups_PMEI
+    when /PMI Flat Rate/
+      :country_groups_PMI_flat_rate
+    when /PMEI Flat Rate/
+      :country_groups_PMEI_flat_rate
+  end
+  country_list = data_for(group, {})["group" + number].values
+  TestData.hash[:country] = country_list[rand(country_list.size)].sub!(/\|.*$/, '')
+  # return if SdcOrders.order_details.ship_to.international.country.text_field.text_value.eql?(TestData.hash[:country])
+  step "set order details international ship-to country to #{TestData.hash[:country]}" unless
+      SdcOrders.order_details.ship_to.international.country.text_field.text_value.eql?(TestData.hash[:country])
 end
 
 Then /^set order details international ship-to country to (.*)$/ do |str|
@@ -596,7 +625,7 @@ Then /^set order details insure-for to (\d+\.\d{2})$/ do |str|
   end
   TestData.hash[:insured_value] = str.to_f
   step 'blur out on order details form'
-  step 'Save Order Details data'
+  step 'save order details data'
 end
 
 Then /^set order details tracking to (.*)$/ do |str|
@@ -612,13 +641,13 @@ Then /^set order details tracking to (.*)$/ do |str|
   end
   expect(tracking.text_field.text_value).to eql(str)
   TestData.hash[:tracking] = str
-  step 'Save Order Details data'
+  step 'save order details data'
 end
 
 Then /^set order details reference to (.*)$/ do |str|
   SdcOrders.order_details.reference_no.set(str)
   TestData.hash[:reference_no] = str
-  step 'Save Order Details data'
+  step 'save order details data'
 end
 
 Then /^set order details ship-from to (.+)$/ do |str|
@@ -769,7 +798,7 @@ Then /^set order details reference number to (?:a random string|(.*))$/ do |str|
   order_details.reference_no_label.click
   order_details.reference_no_label.click
   TestData.hash[:reference_no] = str
-  step 'Save Order Details data'
+  step 'save order details data'
 end
 
 Then /^expect order details ship from is (?:correct|(.*))$/ do |str|

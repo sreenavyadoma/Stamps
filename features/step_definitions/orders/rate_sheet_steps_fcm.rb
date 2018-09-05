@@ -182,6 +182,14 @@ Then /^run rate sheet (.*)$/ do |param_sheet|
   fail_format = Spreadsheet::Format.new :color => :red, :weight => :bold
   pass_format = Spreadsheet::Format.new :color => :green, :weight => :bold
   # Set weight and services
+
+  # Set address to proper zone
+  step 'set order details ship-to to random address between zone 1 and 4'  if SdcGlobal.web_app == :orders
+  step 'set print form mail-to to a random address in zone 1 through 4' if SdcGlobal.web_app == :mail
+  step 'save print form mail from' if SdcGlobal.web_app == :mail
+  step 'save order details data' if SdcGlobal.web_app == :orders
+
+
   @rate_sheet.each_with_index do |row, row_number|
     @row = row
     TestData.hash[:result_sheet].row(0)[TestData.hash[:result_sheet_columns][:zone]] = "zone#{zone}"
@@ -190,9 +198,9 @@ Then /^run rate sheet (.*)$/ do |param_sheet|
         SdcLogger.info "#{"#" * 80} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_number}"
 
         # Set address to proper zone
-        step "set order details ship-to to random address between zone 1 and 4"  if SdcGlobal.web_app == :orders
-        step "set print form mail-to to a random address in zone 1 through 4" if SdcGlobal.web_app == :mail
-        step "save print form mail from" if SdcGlobal.web_app == :mail
+        # step "set order details ship-to to random address between zone 1 and 4"  if SdcEnv.sdc_app == :orders
+        # step "set print form mail-to to a random address in zone 1 through 4" if SdcEnv.sdc_app == :mail
+        # step "save print form mail from" if SdcEnv.sdc_app == :mail
         # spreadsheet price for zone
 
         if row[zone_column] == nil
@@ -255,7 +263,7 @@ Then /^run rate sheet (.*)$/ do |param_sheet|
           # record execution time as time service was selected.
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:execution_date]] = Time.now.strftime("%b %d, %Y %H:%M")
 
-          step "set Order Details service to #{service}" if SdcGlobal.web_app == :orders
+          step "set order details service to #{service}" if SdcGlobal.web_app == :orders
           step "select print form service #{service}" if SdcGlobal.web_app == :mail
 
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:service_selected]] = TestData.hash[:service]
@@ -268,7 +276,7 @@ Then /^run rate sheet (.*)$/ do |param_sheet|
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:tracking_selected]] = TestData.hash[:tracking]
           step 'pause for 1 second'
           # get total cost actual value from UI
-          step 'Save Order Details data' if SdcGlobal.web_app == :orders
+          step 'Save order details data' if SdcGlobal.web_app == :orders
           step 'save print form total cost' if SdcGlobal.web_app == :mail
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:total_ship_cost]] = (TestData.hash[:total_ship_cost].to_f * 100).round / 100.0
 
