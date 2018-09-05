@@ -303,16 +303,16 @@ Then /^SDCW: verify default elements on footer for browser$/ do
   step 'SDCW: expect stamps website footer copyright text is Copyright © 1998-2018 Stamps.com Inc.'
   step 'SDCW: click footer copyright link'
   step 'SDCW: click products --> small office mailers'
-  step 'SDCW: click footer online sellers'
-  step 'SDCW: click footer warehouse shippers'
-  step 'SDCW: click footer corporate postage solutions'
-  step 'SDCW: click footer photo stamps'
-  step 'SDCW: click footer supplies'
-  step 'SDCW: click footer download software'
-  step 'SDCW: click footer customer support'
-  step 'SDCW: click footer how to videos'
-  step 'SDCW: click footer faq'
-  step 'SDCW: click footer system status'
+  step 'SDCW: click products --> online sellers'
+  step 'SDCW: click products --> warehouse shippers'
+  step 'SDCW: click products --> corporate postage solutions'
+  step 'SDCW: click products --> photo stamps'
+  step 'SDCW: click products --> supplies'
+  step 'SDCW: click support --> download software'
+  step 'SDCW: click support --> customer support'
+  step 'SDCW: click support --> how to videos'
+  step 'SDCW: click support --> faq'
+  step 'SDCW: click support --> system status'
   step 'SDCW: click company stuff --> about us'
   step 'SDCW: click company stuff --> shipping partners'
   step 'SDCW: click company stuff --> privacy policy'
@@ -336,38 +336,38 @@ end
 
 Then /^SDCW: verify default elements on footer for mobile$/ do
    step 'SDCW: click products --> small office mailers'
-  # step 'SDCW: click footer online sellers'
-  # step 'SDCW: click footer warehouse shippers'
-  # step 'SDCW: click footer corporate postage solutions'
-  # step 'SDCW: click footer photo stamps'
-  # step 'SDCW: click footer supplies'
-  # step 'SDCW: collapse footer products mobile'
-  # step 'SDCW: click footer download software'
-  # step 'SDCW: click footer customer support'
-  # step 'SDCW: click footer how to videos'
-  # step 'SDCW: click footer faq'
-  # step 'SDCW: click footer system status'
-  # step 'SDCW: collapse footer support mobile'
-  # step 'SDCW: click company stuff --> about us'
-  # step 'SDCW: click company stuff --> shipping partners'
-  # step 'SDCW: click company stuff --> privacy policy'
-  # step 'SDCW: click company stuff --> investor info'
-  # step 'SDCW: click company stuff --> careers'
-  # step 'SDCW: click company stuff --> affiliates'
-  # step 'SDCW: click company stuff --> site map'
-  # step 'SDCW: click company stuff --> contact us'
-  # step 'SDCW: collapse footer company stuff mobile'
-  # step 'SDCW: click developers --> developer overview'
-  # step 'SDCW: click developers --> developer registration'
-  # step 'SDCW: click developers --> developer reference guide'
-  # step 'SDCW: click developers --> developer products'
-  # step 'SDCW: collapse footer developers mobile'
-  # step 'SDCW: click follow us --> facebook'
-  # step 'SDCW: click follow us --> twitter'
-  # step 'SDCW: click follow us --> google plus'
-  # step 'SDCW: click follow us --> youtube'
-  # step 'SDCW: click follow us --> linkedin'
-  # step 'SDCW: click follow us --> blog'
+   step 'SDCW: click products --> online sellers'
+   step 'SDCW: click products --> warehouse shippers'
+   step 'SDCW: click products --> corporate postage solutions'
+   step 'SDCW: click products --> photo stamps'
+   step 'SDCW: click products --> supplies'
+   step 'SDCW: collapse footer products mobile'
+   step 'SDCW: click support --> download software'
+   step 'SDCW: click support --> customer support'
+   step 'SDCW: click support --> how to videos'
+   step 'SDCW: click support --> faq'
+   step 'SDCW: click support --> system status'
+  step 'SDCW: collapse footer support mobile'
+  step 'SDCW: click company stuff --> about us'
+  step 'SDCW: click company stuff --> shipping partners'
+  step 'SDCW: click company stuff --> privacy policy'
+  step 'SDCW: click company stuff --> investor info'
+  step 'SDCW: click company stuff --> careers'
+  step 'SDCW: click company stuff --> affiliates'
+  step 'SDCW: click company stuff --> site map'
+  step 'SDCW: click company stuff --> contact us'
+  step 'SDCW: collapse footer company stuff mobile'
+  step 'SDCW: click developers --> developer overview'
+  step 'SDCW: click developers --> developer registration'
+  step 'SDCW: click developers --> developer reference guide'
+  step 'SDCW: click developers --> developer products'
+  step 'SDCW: collapse footer developers mobile'
+  step 'SDCW: click follow us --> facebook'
+  step 'SDCW: click follow us --> twitter'
+  step 'SDCW: click follow us --> google plus'
+  step 'SDCW: click follow us --> youtube'
+  step 'SDCW: click follow us --> linkedin'
+  step 'SDCW: click follow us --> blog'
 end
 
 #........footer...........#
@@ -467,7 +467,7 @@ Then /^SDCW: click products --> small office mailers$/ do
   step 'SDCW: navigate back'
 end
 
-Then /^SDCW: click footer online sellers$/ do
+Then /^SDCW: click products --> online sellers$/ do
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device|| TestSession.env.mobile_device
     step 'SDCW: expand footer products mobile'
@@ -495,7 +495,7 @@ Then /^SDCW: click footer online sellers$/ do
   step 'SDCW: navigate back'
 end
 
-Then /^SDCW: click footer warehouse shippers$/ do
+Then /^SDCW: click products --> warehouse shippers$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device|| TestSession.env.mobile_device
@@ -523,7 +523,7 @@ Then /^SDCW: click footer warehouse shippers$/ do
   step 'SDCW: navigate back'
 end
 
-Then /^SDCW: click footer corporate postage solutions$/ do
+Then /^SDCW: click products --> corporate postage solutions$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device|| TestSession.env.mobile_device
@@ -551,7 +551,7 @@ Then /^SDCW: click footer corporate postage solutions$/ do
   step 'SDCW: navigate back'
 end
 
-Then /^SDCW: click footer photo stamps$/ do
+Then /^SDCW: click products --> photo stamps$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
@@ -582,7 +582,7 @@ Then /^SDCW: click footer photo stamps$/ do
   step 'pause for 1 second'
 end
 
-Then /^SDCW: click footer supplies$/ do
+Then /^SDCW: click products --> supplies$/ do
   common_page = StampsWebsite.common_page
 
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
@@ -631,7 +631,7 @@ Then /^SDCW: collapse footer support mobile$/ do
   common_page.footer_support_xs.click if status.exclude? 'collapsed'
 end
 
-Then /^SDCW: click footer download software$/ do
+Then /^SDCW: click support --> download software$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
@@ -660,7 +660,7 @@ Then /^SDCW: click footer download software$/ do
   step 'SDCW: navigate back'
 end
 
-Then /^SDCW: click footer customer support$/ do
+Then /^SDCW: click support --> customer support$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
@@ -691,7 +691,7 @@ Then /^SDCW: click footer customer support$/ do
 
 end
 
-Then /^SDCW: click footer how to videos$/ do
+Then /^SDCW: click support --> how to videos$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
@@ -718,7 +718,7 @@ Then /^SDCW: click footer how to videos$/ do
 
 end
 
-Then /^SDCW: click footer faq$/ do
+Then /^SDCW: click support --> faq$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
@@ -747,7 +747,7 @@ Then /^SDCW: click footer faq$/ do
   step 'SDCW: navigate back'
 end
 
-Then /^SDCW: click footer system status$/ do
+Then /^SDCW: click support --> system status$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device || TestSession.env.mobile_device
