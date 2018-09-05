@@ -382,6 +382,7 @@ end
 
 Then /^click print form edit customs form button$/ do
   SdcMail.print_form.contents.customs_form.click
+  # that's it you're ready to print
 end
 
 Then /^click print form restrictions button$/ do

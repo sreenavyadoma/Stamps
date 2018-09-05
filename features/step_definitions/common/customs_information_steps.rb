@@ -205,11 +205,19 @@ Then /^close customs information form$/ do
   step 'blur out on customs form'
   step 'Save Customs Information form Total amount'
   customs_form = SdcWebsite.customs_form
-  5.times do
+  ready_to_print = SdcWebsite.modals.ready_to_print
+  3.times do
     customs_form.close.safe_click
     customs_form.close.safe_wait_while_present(timeout: 1)
+    ready_to_print.window.safe_wait_while_present(timeout: 2)
+    if ready_to_print.window.present?
+      SdcLogger.info ready_to_print.body.text_value
+      ready_to_print.close.safe_click
+      ready_to_print.close.safe_wait_while_present(timeout: 1)
+    end
     break unless customs_form.close.present?
   end
+  expect(customs_form.close).to_not be_present
 end
 
 Then /^Cancel Customs Form$/ do
@@ -386,8 +394,11 @@ Then /^set customs associated item (\d+) made in (.*)$/ do |item, value|
     text_field.set value
     step 'blur out on customs form'
     break if text_field.text_value.eql? value
+    step 'blur out on customs form'
   end
+  step 'blur out on customs form'
   expect(text_field.text_value).to include value
+  step 'blur out on customs form'
   TestData.hash[:customs_associated_items][item] ||= {}
   TestData.hash[:customs_associated_items][item][:made_in] = value
 end
@@ -419,7 +430,9 @@ end
 
 Then /^expect customs associated item (\d+) Made In is (?:correct|(.*))$/ do |item, str|
   str ||= TestData.hash[:customs_associated_items][item][:made_in]
-  result = SdcWebsite.customs_form.item.made_in.text_field(item).text_value
+  element = SdcWebsite.customs_form.item.made_in.text_field(item)
+  element.safe_wait_until_present(timeout: 2)
+  result = element.text_value
   expect(result).to eql(str)
 end
 

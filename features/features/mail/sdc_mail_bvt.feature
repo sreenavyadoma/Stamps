@@ -74,6 +74,7 @@ Feature:  Mail BVT
     Then expect customs i agree to the usps privacy act statement is checked
     Then expect Customs Total Value is correct
     Then close customs information form
+    Then sign out
 
   @mail_authentication
   Scenario: Mail - Authentication
