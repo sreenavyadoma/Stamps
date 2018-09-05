@@ -7,7 +7,7 @@ Then /^[Ee]xpect [Cc]ustoms [Ff]orm is [Pp]resent$/ do
   expect(SdcWebsite.customs_form.title).to be_present, 'Customs form did not open'
 end
 
-Then /^[Bb]lur [Oo]ut [Oo]n [Cc]ustoms [Ff]orm$/ do
+Then /^blur out on customs form$/ do
   SdcWebsite.customs_form.total.blur_out
   SdcWebsite.customs_form.title.blur_out
 end
@@ -202,9 +202,13 @@ end
 
 Then /^close customs information form$/ do
   step 'pause for 4 seconds'
-  step 'Blur out on Customs form'
+  step 'blur out on customs form'
   step 'Save Customs Information form Total amount'
-  SdcWebsite.customs_form.close.click
+  customs_form = SdcWebsite.customs_form
+  5.times do
+    customs_form.close.safe_click
+    break unless customs_form.close.present?
+  end
 end
 
 Then /^Cancel Customs Form$/ do
@@ -266,7 +270,7 @@ Then /^[Ss]ave Customs Information form [Tt]otal amount$/ do
 end
 
 Then /^[Ee]xpect Customs Total Value is (?:correct|(.*))$/ do |str|
-  step 'Blur out on Customs form'
+  step 'blur out on customs form'
   str ||= TestData.hash[:customs_total_value]
   customs_form = SdcWebsite.customs_form
   expect(customs_form.total.text_value.dollar_amount_str.to_f.round(2)).to eql(str)
@@ -373,21 +377,14 @@ end
 
 Then /^set customs associated item (\d+) made in (.*)$/ do |item, value|
   made_in = SdcWebsite.customs_form.item.made_in
-  drop_down = made_in.drop_down(item)
   text_field = made_in.text_field(item)
   selection = made_in.selection(item, value)
-  drop_down.scroll_into_view
-  text_field.scroll_into_view
-  drop_down.wait_until_present(timeout: 5)
-  drop_down.click
-  selection.safe_wait_until_present(timeout: 2)
-  drop_down.click unless selection.present?
-  selection.scroll_into_view
-  selection.safe_wait_until_present(timeout: 2)
-  selection.safe_click
-  drop_down.scroll_into_view
-  text_field.scroll_into_view
-  text_field.wait_until_present(timeout: 2)
+  5.times do
+    text_field.set value
+    text_field.set value
+    step 'blur out on customs form'
+    break if text_field.text_value.eql? value
+  end
   expect(text_field.text_value).to include value
   TestData.hash[:customs_associated_items][item] ||= {}
   TestData.hash[:customs_associated_items][item][:made_in] = value
