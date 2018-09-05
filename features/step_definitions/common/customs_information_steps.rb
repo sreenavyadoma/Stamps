@@ -362,7 +362,10 @@ end
 
 Then /^set customs associated item (\d+) unit price to (.*)$/ do |item, value|
   unit_price = SdcWebsite.customs_form.item.unit_price(item)
-  unit_price.set(value)
+  4.times do
+    unit_price.set(value)
+    break if unit_price.text_field.text_value.include value.to_s
+  end
   step 'Save Customs Information form Total amount'
   TestData.hash[:customs_associated_items][item] ||= {}
   TestData.hash[:customs_associated_items][item][:price] = value

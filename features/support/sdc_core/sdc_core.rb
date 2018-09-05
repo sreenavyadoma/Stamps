@@ -894,7 +894,7 @@ class SdcNumber < BasicObject
   end
 
   def method_missing(name, *args, &block)
-    super unless @text_field.respond_to?(name)
+    super unless @element.respond_to?(name)
     @element.send(name, *args, &block)
   end
 end
