@@ -224,12 +224,14 @@ Then /^select print form service (.*)$/ do |str|
   SdcLogger.debug "service: #{str}"
   TestData.hash[:service] = str
   service = SdcMail.print_form.service
-  service.drop_down.click
-  service_element = service.service_element(:service, str)
-  #service.inline_cost_element(:inline_cost, str)
-  service.drop_down.click unless service_element.present?
-  service_element.scroll_into_view
-  service_element.click
+  unless service.text_field.text_value.include?(str)
+    service.drop_down.click
+    service_element = service.service_element(:service, str)
+    #service.inline_cost_element(:inline_cost, str)
+    service.drop_down.click unless service_element.present?
+    service_element.scroll_into_view
+    service_element.click if service_element.present?
+  end
   expect(service.text_field.text_value).to include str
 end
 
