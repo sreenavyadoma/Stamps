@@ -10,7 +10,7 @@ module StampsWebsite
     page_objects(:online_sellers, index: 0) { {xpath: '//a[contains(text(),"Online Sellers")]' } }
     page_objects(:warehouse_shippers, index: 0) { {xpath: '//a[contains(text(),"Warehouse Shippers")]' } }
     page_objects(:corporate_postage_solutions, index: 0) { {xpath: '//a[contains(text(),"Corporate Postage Solutions")]' } }
-    page_objects(:faq, index: 0) { {xpath: '//a[contains(text(),"FAQ")]'} }
+    page_objects(:faq_header, index: 0) { {xpath: '//a[contains(text(),"FAQ")]'} }
 
     #mobile
     button(:get_started_xs) {{class: ['btn btn-success btn-xs register visible-xs-block']}}
@@ -32,8 +32,8 @@ module StampsWebsite
 
     #footer
     page_objects(:usps_logo) {{xpath: '//figure[@id="usps-logo-words"]/img'}}
-    page_objects(:usps_logo_caption,  index: 1) {{xpath: '//figure[@id="usps-logo-words"]/figcaption'}}
-    page_object(:copyright) { {xpath: '//p[@class="copyright hidden-xs"]/a'} }
+    page_objects(:usps_logo_caption) {{xpath: '//figure[@id="usps-logo-words"]/figcaption'}}
+    page_objects(:copyright) { {xpath: '//a[contains(text(), "Copyright © 1998-2018 Stamps.com Inc.")]'} }
     ## products ##
     page_object(:footer_products_xs) { {xpath: '//a[@href="#products-menu"]'} }
     page_objects(:footer_office_mailers) {{xpath: '//a[contains(text(), "Small Office Mailers")]'}}

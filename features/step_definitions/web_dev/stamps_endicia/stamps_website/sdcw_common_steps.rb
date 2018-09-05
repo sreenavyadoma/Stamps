@@ -68,7 +68,7 @@ Then /^SDCW: click FAQ$/ do
     step 'SDCW: click hamburger button'
     common_page.faq_header_xs.click
   else
-    common_page.faq_header_xs.click
+    common_page.faq_header.click
   end
 
   step 'pause for 2 second'
@@ -335,6 +335,11 @@ Then /^SDCW: verify default elements on footer for browser$/ do
 end
 
 Then /^SDCW: verify default elements on footer for mobile$/ do
+  step 'SDCW: expect stamps website footer usps logo exists'
+  step 'SDCW: expect stamps website footer usps logo words is Stamps.com is an independent vendor of the USPS.'
+  step 'SDCW: expect stamps website footer copyright exists'
+  step 'SDCW: expect stamps website footer copyright text is Copyright © 1998-2018 Stamps.com Inc.'
+  step 'SDCW: click footer copyright link'
   step 'SDCW: click products --> small office mailers'
   step 'SDCW: click products --> online sellers'
   step 'SDCW: click products --> warehouse shippers'
@@ -379,38 +384,56 @@ Then /^SDCW: expect stamps website footer usps logo exists$/ do
   end
 
   usps_logo.wait_until_present(timeout: 2)
+  usps_logo.scroll_into_view
   expect(usps_logo).to be_present
 end
 
 Then /^SDCW: expect stamps website footer usps logo words is (.*)$/ do |str|
-  usps_logo_caption = StampsWebsite.common_page.usps_logo_caption
-  expect(usps_logo_caption.text_value.strip).to eql(str)
+  if SdcGlobal.web_dev_device|| TestSession.env.mobile_device
+    usps_logo_caption = StampsWebsite.common_page.usps_logo_caption[0]
+  else
+    usps_logo_caption = StampsWebsite.common_page.usps_logo_caption[1]
+  end
+  usps_logo_caption.scroll_into_view
+  text = usps_logo_caption.inner_text.strip
+  expect(text).to eql(str)
 end
 
 Then /^SDCW: expect stamps website footer copyright exists$/ do
-  copyright = StampsWebsite.common_page.copyright
+  if SdcGlobal.web_dev_device|| TestSession.env.mobile_device
+    copyright = StampsWebsite.common_page.copyright[0]
+  else
+    copyright = StampsWebsite.common_page.copyright[1]
+  end
   copyright.wait_until_present(timeout: 2)
+  copyright.scroll_into_view
   expect(copyright).to be_present
 end
 
 
 Then /^SDCW: expect stamps website footer copyright text is (.*)$/ do |str|
-  copyright = StampsWebsite.common_page.copyright
-  expect(copyright.text_value.strip).to eql(str)
+  if SdcGlobal.web_dev_device|| TestSession.env.mobile_device
+    copyright = StampsWebsite.common_page.copyright[0]
+  else
+    copyright = StampsWebsite.common_page.copyright[1]
+  end
+  text = copyright.inner_text.strip
+  expect(text).to eql(str)
 end
 
 Then /^SDCW: click footer copyright link$/ do
 
   common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device|| TestSession.env.mobile_device
-    common_page.copyright_xs.click
+    common_page.copyright[0].scroll_into_view
+    common_page.copyright[0].click
   else
     if TestSession.env.local_browser == :edge
-      common_page.copyright.click
+      common_page.copyright[1].click
     else
-      common_page.copyright.scroll_into_view
-      common_page.copyright.hover
-      common_page.copyright.click
+      common_page.copyright[1].scroll_into_view
+      common_page.copyright[1].hover
+      common_page.copyright[1].click
     end
   end
   step 'pause for 1 second'

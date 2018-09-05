@@ -14,3 +14,4 @@ Feature: Stamps Website: Postage Online Page
     Then SDCW: verify default elements on header for mobile
     Then SDCW: click FAQ
     Then SDCW: navigate back
+    Then SDCW: verify default elements on footer for mobile
