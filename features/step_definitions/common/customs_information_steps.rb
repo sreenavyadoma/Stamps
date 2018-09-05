@@ -207,6 +207,7 @@ Then /^close customs information form$/ do
   customs_form = SdcWebsite.customs_form
   5.times do
     customs_form.close.safe_click
+    customs_form.close.safe_wait_while_present(timeout: 1)
     break unless customs_form.close.present?
   end
 end
