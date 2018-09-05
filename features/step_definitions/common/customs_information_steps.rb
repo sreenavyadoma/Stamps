@@ -370,6 +370,7 @@ Then /^set customs associated item (\d+) unit price to (.*)$/ do |item, value|
     unit_price.set(value)
     break if unit_price.text_field.text_value.include value.to_s
   end
+  expect(unit_price.text_field.text_value).to include(value)
   step 'Save Customs Information form Total amount'
   TestData.hash[:customs_associated_items][item] ||= {}
   TestData.hash[:customs_associated_items][item][:price] = value
