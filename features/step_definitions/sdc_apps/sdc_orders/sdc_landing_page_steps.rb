@@ -77,22 +77,13 @@ Then /^sign-in to orders with (.+)\/(.+)$/ do |usr, pw|
     step 'browser: click sign-in button'
     step 'check for server error'
     if SdcGlobal.web_app.eql? :orders
-      step 'step through orders welcome tutorial modal'
+      step 'click through windows tutorial'
       step 'close whats new modal in orders'
     end
   end
   TestData.hash[:username] = usr
   TestData.hash[:password] = pw
   print 'sign-in to orders... done!'
-end
-
-
-
-Then /^step through orders welcome tutorial modal$/ do
-  # whats_new = SdcWebsite.modals.whats_new
-  # if whats_new.title.present?
-  #   whats_new.close.click
-  # end
 end
 
 Then /^close whats new modal in orders$/ do

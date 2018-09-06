@@ -22,6 +22,14 @@ module SdcWebsite
       page_object(:more_info) { { xpath: '//span[contains(text(), "More Info")]' } }
     end
 
+    class WindowsTutorial < SdcPage
+      page_object(:window) { { xpath: '//div[@id="sdc-window-tutorial"]' } }
+      page_object(:title) { { xpath: '//div[@id="sdc-window-tutorial_header-targetEl"]//div[contains(@class, "x-title-text-default")]' } }
+      page_object(:body) { { xpath: '//div[@id="sdc-window-tutorial-innerCt"]' } }
+      page_object(:next) { { xpath: '//span[text()="Next"]' } }
+      page_object(:close) { { xpath: '//div[@id="sdc-window-tutorial_header-innerCt"]//span[contains(@class, "sdc-icon-mobile-close-light")]' } }
+    end
+
     class WelcomeTutorial < SdcPage
 
     end
@@ -39,9 +47,10 @@ module SdcWebsite
         ReadyToPrint.new
       end
 
-      def welcome_tutorial
-        WelcomeTutorial.new
+      def windows_tutorial
+        WindowsTutorial.new
       end
+
     end
   end
 end

@@ -12,21 +12,8 @@ Then /^blur out on customs form$/ do
   SdcWebsite.customs_form.title.blur_out
 end
 
-Then /^click through customs select package contents modal$/ do
-  tutorial = SdcWebsite.customs_form.tutorial
-  while tutorial.window.present?
-    tutorial.title.safe_wait_until_present(timeout: 1)
-    if tutorial.title.text.eql? 'Agree to Terms'
-      tutorial.close.click
-      break
-    end
-    tutorial.next.safe_click if tutorial.next.present?
-    tutorial.window.safe_wait_until_present(timeout: 1)
-  end
-end
-
 Then /^set customs package contents to (.*)$/ do |value|
-  step 'click through customs select package contents modal'
+  step 'click through windows tutorial'
   package_contents = SdcWebsite.customs_form.package_contents
   package_contents.selection_element(name: :selection, value: value)
   package_contents.drop_down.click unless package_contents.selection.present?
@@ -37,13 +24,13 @@ Then /^set customs package contents to (.*)$/ do |value|
 end
 
 Then /^expect customs package contents is (?:correct|(.*))$/ do |expectation|
-  step 'click through customs select package contents modal'
+  step 'click through windows tutorial'
   expectation ||= TestData.hash[:customs_package_contents]
   expect(SdcWebsite.customs_form.package_contents.text_field.text_value).to eql(expectation), 'Package Content is incorrect'
 end
 
 Then /^set customs non-delivery options to (.*)$/ do |value|
-  step 'click through customs select package contents modal'
+  step 'click through windows tutorial'
   non_delivery = SdcWebsite.customs_form.non_delivery
   non_delivery.selection_element(name: :selection, value: value)
   non_delivery.drop_down.click unless non_delivery.selection.present?
@@ -53,13 +40,13 @@ Then /^set customs non-delivery options to (.*)$/ do |value|
 end
 
 Then /^expect customs non-delivery options is (?:correct|(.*))$/ do |str|
-  step 'click through customs select package contents modal'
+  step 'click through windows tutorial'
   str ||= TestData.hash[:customs_non_delivery_options]
   expect(SdcWebsite.customs_form.non_delivery.text_field.text_value).to eql(str)
 end
 
 Then /^set customs internal transaction number to (.*)$/ do |value|
-  step 'click through customs select package contents modal'
+  step 'click through windows tutorial'
   internal_transaction = SdcWebsite.customs_form.internal_transaction
   internal_transaction.selection_element(name: :selection, value: value)
   internal_transaction.drop_down.click unless internal_transaction.selection.present?
@@ -70,13 +57,13 @@ Then /^set customs internal transaction number to (.*)$/ do |value|
 end
 
 Then /^expect customs internal transaction number is (?:correct|(.*))$/ do |str|
-  step 'click through customs select package contents modal'
+  step 'click through windows tutorial'
   str ||= TestData.hash[:customs_internal_transaction_no]
   expect(SdcWebsite.customs_form.internal_transaction.text_field.text_value).to eql(str)
 end
 
 Then /^set customs more info to (?:random string|random|(.*))$/ do |str|
-  step 'click through customs select package contents modal'
+  step 'click through windows tutorial'
   str ||= TestHelper.rand_alpha_numeric(min: 6, max: 18)
   SdcWebsite.customs_form.more_info.set(str) if SdcWebsite.customs_form.more_info.present?
   step "expect Customs More Info is #{str}"

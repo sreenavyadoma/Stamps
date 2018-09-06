@@ -1,11 +1,4 @@
 module SdcWebsite
-  class SdcCustomsTutorialWindow < SdcPage
-    page_object(:window) { { xpath: '//div[@id="sdc-window-tutorial"]' } }
-    page_object(:title) { { xpath: '//div[@id="sdc-window-tutorial_header-targetEl"]//div[contains(@class, "x-title-text-default")]' } }
-    page_object(:body) { { xpath: '//div[@id="sdc-window-tutorial-innerCt"]' } }
-    page_object(:next) { { xpath: '//span[text()="Next"]' } }
-    page_object(:close) { { xpath: '//div[@id="sdc-window-tutorial_header-innerCt"]//span[contains(@class, "sdc-icon-mobile-close-light")]' } }
-  end
 
   class SdcCustomsForm < SdcPage
     page_object(:title) { { xpath: '//*[text()="Customs Information"]' } }
@@ -48,10 +41,6 @@ module SdcWebsite
 
     def item
       CustomsFormItem.new
-    end
-
-    def tutorial
-      SdcCustomsTutorialWindow.new
     end
   end
 
