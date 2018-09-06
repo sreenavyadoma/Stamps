@@ -13,10 +13,15 @@ Cucumber::Rake::Task.new(:sdc_contacts_delete_multiple_from_top_navigation) do |
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:sdc_contacts_delete_from_details_menu) do |t|
-  t.profile = 'sdc_contacts_delete_from_details_menu'
+Cucumber::Rake::Task.new(:sdc_contacts_delete_single_from_details_menu) do |t|
+  t.profile = 'sdc_contacts_delete_single_from_details_menu'
   t.cucumber_opts = "-p cuke_reports"
 end
+Cucumber::Rake::Task.new(:sdc_contacts_delete_multiple_from_details_menu) do |t|
+  t.profile = 'sdc_contacts_delete_multiple_from_details_menu'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:sdc_contacts_add_valid_email) do |t|
   t.profile = 'sdc_contacts_add_valid_email'
   t.cucumber_opts = "-p cuke_reports"
@@ -42,33 +47,30 @@ Cucumber::Rake::Task.new(:sdc_contacts_detail_name_all_details) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-#BEGIN WEB DEV
-  #BEGIN PARTNER PORTAL
-  Cucumber::Rake::Task.new(:pp_log_in_page_validation) do |t|
-    t.profile = 'pp_log_in_page_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+Cucumber::Rake::Task.new(:sdc_contacts_detail_company_single) do |t|
+  t.profile = 'sdc_contacts_detail_company_single'
+  t.cucumber_opts = "-p cuke_reports"
+end
 
-  Cucumber::Rake::Task.new(:pp_header_favicons_browser) do |t|
-    t.profile = 'pp_header_favicons_browser'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+Cucumber::Rake::Task.new(:sdc_contacts_detail_company_expand_collapse) do |t|
+  t.profile = 'sdc_contacts_detail_company_expand_collapse'
+  t.cucumber_opts = "-p cuke_reports"
+end
 
-  Cucumber::Rake::Task.new(:pp_header_favicons_browser_mobile) do |t|
-    t.profile = 'pp_header_favicons_browser_mobile'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+Cucumber::Rake::Task.new(:sdc_contacts_detail_company_department_and_title_details) do |t|
+  t.profile = 'sdc_contacts_detail_company_department_and_title_details'
+  t.cucumber_opts = "-p cuke_reports"
+end
 
-  Cucumber::Rake::Task.new(:pp_dashboard_single_contract_ui_validaiton) do |t|
-    t.profile = 'pp_dashboard_single_contract_ui_validaiton'
-    t.cucumber_opts = "-p cuke_reports"
-  end
+Cucumber::Rake::Task.new(:sdc_contacts_existing_add_invalid_reference_number) do |t|
+  t.profile = 'sdc_contacts_existing_add_invalid_reference_number'
+  t.cucumber_opts = "-p cuke_reports"
+end
 
-  Cucumber::Rake::Task.new(:pp_dashboard_single_contract_chart_data_validation) do |t|
-    t.profile = 'pp_dashboard_single_contract_chart_data_validation'
-    t.cucumber_opts = "-p cuke_reports"
-  end
-
+Cucumber::Rake::Task.new(:sdc_contacts_existing_add_valid_reference_number) do |t|
+  t.profile = 'sdc_contacts_existing_add_valid_reference_number'
+  t.cucumber_opts = "-p cuke_reports"
+end
   Cucumber::Rake::Task.new(:pp_authenticate) do |t|
     t.profile = 'pp_authenticate'
     t.cucumber_opts = "-p cuke_reports"
