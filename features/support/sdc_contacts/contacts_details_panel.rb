@@ -56,6 +56,7 @@ module SdcContacts
     page_object(:menu_collapse_panel, required: true, timeout: 10) { { xpath: '//span[contains(@id, "menuitem-")][text()="Collapse Panel"]'}}
   end
 
+
   class ContactsNamePrefix < SdcPage
     text_field(:prefix_text_field, tag: :text_field) { { xpath: '//*[@id="Prefix-inputEl"]' } }
     page_object(:prefix_drop_down) { { xpath: '//*[@id="Prefix-trigger-picker"]' } }
