@@ -4,10 +4,10 @@ Then /^visit (.+)$/ do |str|
 end
 
 Then /^search for (.+)$/ do |str|
+  Google.search_page.text_field.wait_until_present(timeout: 10)
   Google.search_page.text_field.set(str)
   Google.search_page.google_image.click
   Google.search_page.google_search.click
-  Google.search_page.google_image.wait_while_present(timeout: 10)
 end
 
 Then /^verify result page contains (.+)$/ do |str|
