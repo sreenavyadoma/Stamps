@@ -21,6 +21,11 @@ module SdcContacts
   end
   module_function :contacts_left_navigation_panel
 
+  def contacts_left_navigation_search_results
+    SearchResults.new
+  end
+  module_function :contacts_left_navigation_search_results
+
   def contacts_filter_panel
     ContactsFilter.new
   end
@@ -36,7 +41,20 @@ module SdcContacts
   end
   module_function :contacts_delete_message_box
 
+  def contacts_toolbar_cost_codes
+    ContactsToolbarCostCodes.new
+  end
+  module_function :contacts_toolbar_cost_codes
 
+  def contacts_popup_cost_code
+    ContactsPopupCostCode.new
+  end
+  module_function :contacts_popup_cost_code
+
+  def contact_toolbar_settings
+    ContactsToolSettings.new
+  end
+  module_function :contact_toolbar_settings
 
   #--------Details Panel---------
   def contacts_detail
@@ -84,4 +102,13 @@ module SdcContacts
   end
   module_function :contacts_column
 
+  def contacts_gridcolumn
+    SdcContactsGridColumn.new
+  end
+  module_function :contacts_gridcolumn
+
+  def reference_message_box
+  AddReferenceMessageBox.new
+  end
+  module_function :reference_message_box
 end

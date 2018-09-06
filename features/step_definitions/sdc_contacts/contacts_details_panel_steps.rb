@@ -2,12 +2,21 @@ Then /^[Ss]et [Cc]ontact [Dd]etails [Nn]ame [Tt]o (.*)$/ do |str|
   contacts_detail= SdcContacts.contacts_detail
   contacts_detail.name.safe_wait_until_present(timeout: 15)
   contacts_detail.name.set(str)
+  contacts_detail.company.click
 end
 
-Then /^Click on Contact Details Panel Name Expand Button$/ do
+Then /^[Cc]lick [Oo]n [Cc]ontact [Dd]etails [Pp]anel [Nn]ame [Ee]xpand [Bb]utton$/ do
   contacts_detail= SdcContacts.contacts_detail
   contacts_detail.name_expand.safe_wait_until_present(timeout: 15)
+  #contacts_detail.name_expand.flash
   contacts_detail.name_expand.click
+end
+
+Then /^[Cc]lick [Oo]n [Cc]ontact [Dd]etails [Pp]anel [Nn]ame [Cc]ollapse [Bb]utton$/ do
+  contacts_detail= SdcContacts.contacts_detail
+  contacts_detail.name_collapse.safe_wait_until_present(timeout: 15)
+  #contacts_detail.name_collapse.flash
+  contacts_detail.name_collapse.click
 end
 
 Then /^[Ss]et [Cc]ontact [Dd]etails [Nn]ame [Pp]refix [Tt]o (.*)$/ do |str|
@@ -17,36 +26,69 @@ Then /^[Ss]et [Cc]ontact [Dd]etails [Nn]ame [Pp]refix [Tt]o (.*)$/ do |str|
   name_pre.prefix_text_field.set(str)
   name_pre.prefix_selection.safe_click
   expect(name_pre.prefix_text_field.text_value).to include(str)
+  contacts_detail= SdcContacts.contacts_detail
+  contacts_detail.name.click
 end
 
 Then /^[Ss]et [Cc]ontact [Dd]etails [Ff]irst[Nn]ame [Tt]o (.*)$/ do |str|
   contacts_detail= SdcContacts.contacts_detail
   contacts_detail.first_name.safe_wait_until_present(timeout: 15)
   contacts_detail.first_name.set(str)
+  contacts_detail.middle_name.click
 end
 
 Then /^[Ss]et [Cc]ontact [Dd]etails [Mm]iddle[Nn]ame [Tt]o (.*)$/ do |str|
   contacts_detail= SdcContacts.contacts_detail
   contacts_detail.middle_name.safe_wait_until_present(timeout: 15)
   contacts_detail.middle_name.set(str)
+  contacts_detail.last_name.click
 end
 
 Then /^[Ss]et [Cc]ontact [Dd]etails [Ll]ast[Nn]ame [Tt]o (.*)$/ do |str|
   contacts_detail= SdcContacts.contacts_detail
   contacts_detail.last_name.safe_wait_until_present(timeout: 15)
   contacts_detail.last_name.set(str)
+  contacts_detail.name_suffix.click
 end
 
 Then /^[Ss]et [Cc]ontact [Dd]etails [Ss]uffix [Tt]o (.*)$/ do |str|
   contacts_detail= SdcContacts.contacts_detail
   contacts_detail.name_suffix.safe_wait_until_present(timeout: 15)
   contacts_detail.name_suffix.set(str)
+  contacts_detail.company.click
 end
 
 Then /^[Ss]et [Cc]ontact [Dd]etails [Cc]ompany [Tt]o (.*)$/ do |str|
   contacts_detail= SdcContacts.contacts_detail
   contacts_detail.company.wait_until_present(timeout: 15)
   contacts_detail.company.set(str)
+  contacts_detail.street_address.click
+end
+
+Then /^[Cc]lick [Oo]n [Cc]ontact [Dd]etails [Pp]anel [Cc]ompany [Ee]xpand [Bb]utton$/ do
+  contacts_detail= SdcContacts.contacts_detail
+  contacts_detail.company_expand.safe_wait_until_present(timeout: 15)
+  contacts_detail.company_expand.click
+end
+
+Then /^[Cc]lick [Oo]n [Cc]ontact [Dd]etails [Pp]anel [Cc]ompany [Cc]ollapse [Bb]utton$/ do
+  contacts_detail= SdcContacts.contacts_detail
+  contacts_detail.company_collapse.safe_wait_until_present(timeout: 15)
+  contacts_detail.company_collapse.click
+end
+
+Then /^[Ss]et [Cc]ontact [Dd]etails [Tt]itle [Tt]o (.*)$/ do |str|
+  contacts_detail= SdcContacts.contacts_detail
+  contacts_detail.title.safe_wait_until_present(timeout: 15)
+  contacts_detail.title.set(str)
+  contacts_detail.department.click
+end
+
+Then /^[Ss]et [Cc]ontact [Dd]etails [Dd]epartment [Tt]o (.*)$/ do |str|
+  contacts_detail= SdcContacts.contacts_detail
+  contacts_detail.department.safe_wait_until_present(timeout: 15)
+  contacts_detail.department.set(str)
+  contacts_detail.title.click
 end
 
 Then /^[Ss]et [Cc]ontact [Dd]etails [Cc]ountry [Tt]o (.*)$/ do |str|
@@ -56,18 +98,22 @@ Then /^[Ss]et [Cc]ontact [Dd]etails [Cc]ountry [Tt]o (.*)$/ do |str|
   country.text_field.set(str)
   country.selection.safe_click
   expect(country.text_field.text_value).to include(str)
+  contacts_detail= SdcContacts.contacts_detail
+  contacts_detail.street_address.click
 end
 
 Then /^[Ss]et [Cc]ontact [Dd]etails [Ss]treet [Aa]ddress [Tt]o (.*)$/ do |str|
   contacts_detail= SdcContacts.contacts_detail
   contacts_detail.street_address.wait_until_present(timeout: 15)
   contacts_detail.street_address.send_keys(str)
+  contacts_detail.postal_code.click
 end
 
 Then /^[Ss]et [Cc]ontact [Dd]etails [Cc]ity [Tt]o (.*)$/ do |str|
   contacts_detail= SdcContacts.contacts_detail
   contacts_detail.city.wait_until_present(timeout: 15)
   contacts_detail.city.set(str)
+  contacts_detail.postal_code.click
 end
 
 Then /^[Ss]et [Cc]ontact [Dd]etails [Ss]tate [Tt]o (.*)$/ do |str|
@@ -77,18 +123,22 @@ Then /^[Ss]et [Cc]ontact [Dd]etails [Ss]tate [Tt]o (.*)$/ do |str|
   state.text_field.set(str)
   state.selection.click
   expect(state.text_field.text_value).to include(str)
+  contacts_detail= SdcContacts.contacts_detail
+  contacts_detail.postal_code.click
 end
 
 Then /^[Ss]et [Cc]ontact [Dd]etails [Pp]rovince [Tt]o (.*)$/ do |str|
   contacts_detail= SdcContacts.contacts_detail
   contacts_detail.province.wait_until_present(timeout: 15)
   contacts_detail.province.set(str)
+  contacts_detail.postal_code.click
 end
 
-Then /^[Ss]et [Cc]ontact [Dd]etails [Pp]ostal code [Tt]o (.*)$/ do |str|
+Then /^[Ss]et [Cc]ontact [Dd]etails [Pp]ostal [Cc]ode [Tt]o (.*)$/ do |str|
   contacts_detail= SdcContacts.contacts_detail
   contacts_detail.postal_code.wait_until_present(timeout: 15)
   contacts_detail.postal_code.set(str)
+  contacts_detail.email.click
 end
 
 Then /^[Ss]et [Cc]ontact [Dd]etails [Ee]mail [Tt]o (.*)$/ do |str|
@@ -104,12 +154,14 @@ Then /^[Ss]et [Cc]ontact [Dd]etails [Pp]hone to (.*)$/ do |str|
   contacts_detail= SdcContacts.contacts_detail
   contacts_detail.phone.wait_until_present(timeout: 15)
   contacts_detail.phone.set(str)
+  contacts_detail.phone_ext.click
 end
 
 Then /^[Ss]et [Cc]ontact [Dd]etails [Pp]hone [Ee]xtension [Tt]o (.*)$/ do |str|
   contacts_detail= SdcContacts.contacts_detail
   contacts_detail.phone_ext.wait_until_present(timeout: 15)
   contacts_detail.phone_ext.set(str)
+  contacts_detail.reference_number.click
 end
 
 Then /^[Ss]et [Cc]ontact [Dd]etails [Gg]roups [Tt]o (.*)$/ do |str|
@@ -118,6 +170,8 @@ Then /^[Ss]et [Cc]ontact [Dd]etails [Gg]roups [Tt]o (.*)$/ do |str|
   group.drop_down.click unless group.selection.present?
   group.text_field.set(str)
   group.selection.safe_click
+  contacts_detail= SdcContacts.contacts_detail
+  contacts_detail.reference_number.click
   #expect(group.text_list.text_value).to include(str)
 end
 
@@ -125,6 +179,7 @@ Then /^[Ss]et [Cc]ontact [Dd]etails [Rr]eference [Nn]umber [Tt]o (.*)$/ do |str|
   contacts_detail= SdcContacts.contacts_detail
   contacts_detail.reference_number.wait_until_present(timeout: 15)
   contacts_detail.reference_number.set(str)
+  contacts_detail.phone_ext.click
 end
 
 Then /^[Ss]et [Cc]ontact [Dd]etails [Cc]ost [Cc]ode [Tt]o (.*)$/ do |str|
@@ -134,22 +189,25 @@ Then /^[Ss]et [Cc]ontact [Dd]etails [Cc]ost [Cc]ode [Tt]o (.*)$/ do |str|
   cost_code.text_field.set(str)
   cost_code.selection.safe_click
   expect(cost_code.text_field.text_value).to include(str)
+  contacts_detail= SdcContacts.contacts_detail
+  contacts_detail.reference_number.click
 end
 
-Then /^expect email error is displayed$/ do
-  error= SdcContacts.contacts_email_error.email_error
-  error.present?.eql("true")
+Then /^[Ee]xpect [Ee]mail [Ee]rror [Ii]s [Dd]isplayed$/ do
+  error= SdcContacts.contacts_email_error
+  error.email_error.safe_wait_until_present(timeout:10)
+  #expect(error.email_error.present?).to be(true)
 end
 
-Then /^expect email error is not displayed$/ do
-  error= SdcContacts.contacts_email_error.email_error
-  error.present?.eql("false")
+Then /^[Ee]xpect [Ee]mail [Ee]rror [Ii]s [Nn]ot [Dd]isplayed$/ do
+  error= SdcContacts.contacts_email_error
+  expect(error.email_error.present?).to be(false)
 end
 
 Then /^[Cc]lick [Oo]n [Cc]ontact [Dd]etails [Mm]enu [Dd]ropdown$/ do
   toolbar_menu = SdcContacts.contacts_detail_toolbar_menu
-  toolbar_menu.menu_button.safe_wait_until_present(timeout: 10)
-  toolbar_menu.menu_button.wait_until_present(timeout: 10)
+  toolbar_menu.menu_button.safe_wait_until_present(timeout: 20)
+  toolbar_menu.menu_button.wait_until_present(timeout: 20)
   toolbar_menu.menu_button.click
 end
 

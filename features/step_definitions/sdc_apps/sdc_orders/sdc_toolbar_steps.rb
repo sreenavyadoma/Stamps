@@ -64,6 +64,7 @@ end
 Then /^click orders toolbar print button$/ do
   step 'Save Order Details data'
   SdcOrders.order_details.footer.print.click
+  sleep(5)
   expect(SdcOrders.modals.print.title).to be_present
   expect(SdcOrders.modals.print.title.text_value).to match(/You have \d label ready to print/)
 end
@@ -95,3 +96,6 @@ end
 Then /^expect orders toolbar more actions is present$/ do
   expect(SdcOrders.toolbar.more_actions).to be_present, "Orders Toolbar More Actions button is not present!"
 end
+
+
+

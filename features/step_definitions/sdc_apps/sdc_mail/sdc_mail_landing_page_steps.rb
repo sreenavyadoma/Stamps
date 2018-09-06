@@ -117,7 +117,7 @@ Then /^[Cc]lick the [Ss]ign [Ii]n button in [Mm]ail$/ do
     modal.sign_in_link.hover unless modal.sign_in.present?
     modal.sign_in.click
     SdcMail.verifying_account_info.safe_wait_until_present(timeout: 3)
-    SdcMail.verifying_account_info.wait_while_present(timeout: 12)
+    SdcMail.verifying_account_info.wait_while_present(timeout: 120)
   end
 end
 

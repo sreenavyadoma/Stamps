@@ -1,4 +1,3 @@
-module SdcOrders
   module SdcOrdersModals
     class SdcExactAddressNotFound < SdcPage
       page_object(:title) { { xpath: '//*[text()="Exact Address Not Found"]' } }
@@ -250,4 +249,3 @@ module SdcOrders
     end
     module_function :exact_address_not_found
   end
-end

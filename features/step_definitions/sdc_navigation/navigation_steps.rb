@@ -1,9 +1,9 @@
-Then /^navigate to contacts$/ do
-  SdcNavigation.contacts.safe_wait_until_present(timeout: 60)
-  sleep(5)
+Then /^[Nn]avigate [Tt]o [Cc]ontacts$/ do
+  SdcNavigation.contacts.safe_wait_until_present(timeout: 20)
+  SdcNavigation.contacts.wait_until_present(timeout: 20)
   SdcNavigation.contacts.click
-  SdcContacts.loading_contacts.safe_wait_until_present(timeout: 60)
-  SdcContacts.contacts_body.safe_wait_until_present(timeout: 20)
+  SdcContacts.loading_contacts.safe_wait_until_present(timeout: 20)
+  SdcContacts.contacts_body.safe_wait_until_present(timeout: 30)
 end
 
 Then /^navigate to orders$/ do
