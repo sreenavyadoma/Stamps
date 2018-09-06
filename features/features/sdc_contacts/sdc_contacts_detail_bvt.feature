@@ -3,6 +3,19 @@ Feature:  Contacts BVT - Contacts Details
   Background:
     Given Start test driver
 
+  @sdc_contacts_detail_name_all_details
+  Scenario: Contacts BVT Scenario 1 :Add/Edit All the Name fields(prefix, firstname, middlename, lastname, suffix) in Contact Details panel and verify Grid is updated correctly
+    Then sign-in to orders
+    Then pause for 5 seconds
+    Then navigate to contacts
+    Then on left navigation menu search contact FirstName
+    Then expect count of contact search results is 1
+    Then in contacts grid check row 1
+    Then click on contact details panel name expand button
+    Then set contact details name prefix to BG
+    Then pause for 5 seconds
+
+
   @sdc_contacts_delete_single_from_details_menu
   Scenario: Delete Contact Details Menu Scenario 1:Delete single contacts from details panel
     Then sign-in to orders
@@ -64,9 +77,8 @@ Feature:  Contacts BVT - Contacts Details
     Then on left navigation menu search contact Jon
     Then expect count of contact search results is 1
 
-
   @sdc_contacts_add_valid_email
-  Scenario: Contacts Add Email Scenario 1 :Add valid Email to a newly added contact via contact details modal
+  Scenario: Contacts BVT Scenario 1 :Add valid Email to a newly added contact via contact details modal
     Then sign-in to orders
     Then navigate to contacts
     Then delete all available contacts with the value Aloha9154
@@ -97,7 +109,7 @@ Feature:  Contacts BVT - Contacts Details
     Then expect value of Email in contacts grid is aanand@123stamps.com
 
   @sdc_contacts_add_invalid_email
-  Scenario: Contacts Add Email Scenario 2 :Add Invalid Email to a newly added contact via contact details modal
+  Scenario: Contacts BVT Scenario 1 :Add Invalid Email to a newly added contact via contact details modal
     Then sign-in to orders
     Then navigate to contacts
     Then delete all available contacts with the value Conatct Email Invalid
@@ -127,32 +139,47 @@ Feature:  Contacts BVT - Contacts Details
     Then on left navigation menu search contact Aloha9154
     Then expect value of Email in contacts grid is blank
 
+  @sdc_contacts_bvt_3
+  Scenario: Contacts BVT Scenario 1 :Add Invalid Email to an existing contact via contact details modal
+    Then Sign-in to Orders
+    Then Navigate to Contacts
+    Then On Left Navigation menu search contact Jon
+    Then In Contacts Grid Check Row 1
+    Then Set Contact Details Email to Jon123@stamps
+
+  @sdc_contacts_bvt_4
+  Scenario: Contacts BVT Scenario 1 :Add valid Email to an existing contact via contact details modal
+    Then Sign-in to Orders
+    Then Navigate to Contacts
+    Then On Left Navigation menu search contact Jon
+    Then In Contacts Grid Check Row 1
+    Then Set Contact Details Email to Jon123@stamps.com
 
   @sdc_contacts_detail_name_singleName
-  Scenario: Contacts Details Add Name Scenario 1 :Add/Edit Single Name in Contact Details panel and verify Grid is updated correctly
-    Then sign-in to orders
-    Then navigate to contacts
-    Then delete all available contacts with the value CAPT P Al tha Lydia Anand
-    Then expect count of contact search results is 0
-    Then close the search results by clicking on remove button
-    Then click contacts toolbar add button
-    Then set contact details name to CAPT P Al tha Lydia Anand
-    Then in contacts grid uncheck row 1
-    Then on left navigation menu search contact CAPT P Al tha Lydia Anand
-    Then expect count of contact search results is 1
-    Then expect name details for CAPT P Al tha Lydia Anand in contacts grid is updated appropriately
+  Scenario: Contacts BVT Scenario 1 :Add/Edit Single Name in Contact Details panel and verify Grid is updated correctly
+    Then Sign-in to Orders
+    Then pause for 60 seconds
+    Then Navigate to Contacts
+    Then pause for 60 seconds
+    Then Click Contacts Toolbar Add Button
+    Then Set Contact Details Name to CAPT P Aloha Altha Lydia Anand
+    Then In Contacts Grid Uncheck Row 1
+    Then On Left Navigation Menu Search Contact CAPT P Aloha Altha Lydia Anand
+    Then pause for 5 seconds
+    Then Expect Name Details for CAPT P Aloha Altha Lydia Anand In Contacts Grid Is Updated Appropriately
 
   @sdc_contacts_detail_name_expand_collapse
-  Scenario: Contacts Details Expand and Collapse Name Scenario 1 :Expand the Name field in Contact Details panel
+  Scenario: Contacts BVT Scenario 1 :Expand the Name field in Contact Details panel
     Then Sign-in to Orders
     Then Navigate to Contacts
     Then In Contacts Grid Check Row 1
     Then Click on Contact Details Panel Name Expand Button
     Then Click on Contact Details Panel Name Collapse Button
 
-  @sdc_contacts_detail_name_all_details
-  Scenario: Contacts Details Add Name Scenario 2 :Add/Edit All the Name fields(prefix, firstname, middlename, lastname, suffix) in Contact Details panel and verify Grid is updated correctly
+  @sdc_contacts_detail_name_all_details1
+  Scenario: Contacts BVT Scenario 1 :Add/Edit All the Name fields(prefix, firstname, middlename, lastname, suffix) in Contact Details panel and verify Grid is updated correctly
     Then sign-in to orders
+    Then pause for 5 seconds
     Then navigate to contacts
     Then delete all available contacts with the value FirstName
     Then expect count of contact search results is 0
@@ -174,9 +201,8 @@ Feature:  Contacts BVT - Contacts Details
     Then expect value of Last Name in contacts grid is LastName
     Then expect value of Suffix in contacts grid is Suffix
 
-
   @sdc_contacts_detail_company_single
-  Scenario: Contacts Details Add Company Scenario 1 :Add/Edit Single Company in Contact Details panel
+  Scenario: Contacts BVT Scenario 1 :Add/Edit Single Name in Contact Details panel
     Then sign-in to orders
     Then navigate to contacts
     Then delete all available contacts with the value CompanySingle
@@ -192,7 +218,7 @@ Feature:  Contacts BVT - Contacts Details
     Then expect value of Company in contacts grid is Company123
 
   @sdc_contacts_detail_company_expand_collapse
-  Scenario: Contacts Details Expand and Collapse Company Scenario 1 :Expand/Collapse the Company field in Contact Details panel
+  Scenario: Contacts BVT Scenario 1 :Expand/Collapse the Company field in Contact Details panel
     Then sign-in to orders
     Then navigate to contacts
     Then In Contacts Grid Check Row 1
@@ -200,7 +226,7 @@ Feature:  Contacts BVT - Contacts Details
     Then Click on Contact Details Panel Company Collapse Button
 
   @sdc_contacts_detail_company_department_and_title_details
-  Scenario: Contacts Details - Company Add Title and Department Scenario 1:Expand the Name field in Contact Details panel
+  Scenario: Contacts BVT Scenario 1 :Expand the Name field in Contact Details panel
     Then sign-in to orders
     Then navigate to contacts
     Then delete all available contacts with the value CompanyDetail
