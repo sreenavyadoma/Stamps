@@ -2,9 +2,73 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
-
+#CONTACTS
 Cucumber::Rake::Task.new(:sdc_contacts_delete_single_from_top_navigation) do |t|
   t.profile = 'sdc_contacts_delete_single_from_top_navigation'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:sdc_contacts_delete_multiple_from_top_navigation) do |t|
+  t.profile = 'sdc_contacts_delete_multiple_from_top_navigation'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:sdc_contacts_delete_single_from_details_menu) do |t|
+  t.profile = 'sdc_contacts_delete_single_from_details_menu'
+  t.cucumber_opts = "-p cuke_reports"
+end
+Cucumber::Rake::Task.new(:sdc_contacts_delete_multiple_from_details_menu) do |t|
+  t.profile = 'sdc_contacts_delete_multiple_from_details_menu'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:sdc_contacts_add_valid_email) do |t|
+  t.profile = 'sdc_contacts_add_valid_email'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:sdc_contacts_add_invalid_email) do |t|
+  t.profile = 'sdc_contacts_add_invalid_email'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:sdc_contacts_detail_name_singleName) do |t|
+  t.profile = 'sdc_contacts_detail_name_singleName'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:sdc_contacts_detail_name_expand_collapse) do |t|
+  t.profile = 'sdc_contacts_detail_name_expand_collapse'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:sdc_contacts_detail_name_all_details) do |t|
+  t.profile = 'sdc_contacts_detail_name_all_details'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:sdc_contacts_detail_company_single) do |t|
+  t.profile = 'sdc_contacts_detail_company_single'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:sdc_contacts_detail_company_expand_collapse) do |t|
+  t.profile = 'sdc_contacts_detail_company_expand_collapse'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:sdc_contacts_detail_company_department_and_title_details) do |t|
+  t.profile = 'sdc_contacts_detail_company_department_and_title_details'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:sdc_contacts_existing_add_invalid_reference_number) do |t|
+  t.profile = 'sdc_contacts_existing_add_invalid_reference_number'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:sdc_contacts_existing_add_valid_reference_number) do |t|
+  t.profile = 'sdc_contacts_existing_add_valid_reference_number'
   t.cucumber_opts = "-p cuke_reports"
 end
 
