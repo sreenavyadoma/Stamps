@@ -72,6 +72,9 @@ Cucumber::Rake::Task.new(:sdc_contacts_existing_add_valid_reference_number) do |
   t.cucumber_opts = "-p cuke_reports"
 end
 
+
+sdc_contacts_existing_add_valid_reference_number
+
 #BEGIN WEB DEV
   #BEGIN PARTNER PORTAL
   Cucumber::Rake::Task.new(:pp_log_in_page_validation) do |t|
