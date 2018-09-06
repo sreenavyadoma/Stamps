@@ -1,21 +1,18 @@
 module Google
   class GoogleSearchPage < SdcPage
-    page_object(:text_field, tag: :text_field) { { xpath: '//input[@name="q"]' } }
-    page_object(:google_image) { { xpath: '//img[@alt="Google"]' } }
-    page_object(:google_search) { { xpath: '//div[@class="FPdoLc VlcLAe"]//input[@value="Google Search"]' } }
+    page_object(:text_field, tag: :text_field) { { xpath: '' } }
+    page_object(:google_image) { { xpath: '' } }
+    page_object(:google_search) { { xpath: '' } }
   end
 
   class << self
     def visit(str)
-      SdcPage.browser.goto(str)
     end
 
     def search_page
-      GoogleSearchPage.new
     end
 
     def page_source
-      SdcPage.browser.text
     end
   end
 end
