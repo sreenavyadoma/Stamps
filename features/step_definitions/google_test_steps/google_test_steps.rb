@@ -10,6 +10,6 @@ Then /^search for (.+)$/ do |str|
   Google.search_page.google_image.wait_while_present(timeout: 10)
 end
 
-Then /^Then verify result page contains (.+)$/ do |str|
+Then /^verify result page contains (.+)$/ do |str|
   expect(Google.page_source).to include str
 end

@@ -1,12 +1,10 @@
-Feature File:
-
 Feature: Ruby/Cucumber Final Exam
 
   Background:
     Given Start test driver
 
-  @mail_bvt_international
+  @google_search
   Scenario: <your name> - Google test
-    Then visit google
+    Then visit www.google.com
     Then search for stamps.com
-    Then verify result page has www.stamps.com
+    Then verify result page contains stamps.com
