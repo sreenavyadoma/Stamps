@@ -26,16 +26,16 @@ Then /^close form 3811 modal$/ do
 end
 
 Then /^expect label 200 modal is present$/ do
-  expect(SdcMail.modals.label_200.title).to be_present
+  expect(SdcMail.modals.label_200_or_200n.title).to be_present
 end
 
 Then /^expect label 200 modal is not present$/ do
-  expect(SdcMail.modals.label_200.title).not_to be_present
+  expect(SdcMail.modals.label_200_or_200n.title).not_to be_present
 end
 
 Then /^close label 200 modal$/ do
   step 'expect label 200 modal is present'
-  SdcMail.modals.label_200.x_btn.click
+  SdcMail.modals.label_200_or_200n.x_btn.click
   step 'expect label 200 modal is not present'
 end
 
