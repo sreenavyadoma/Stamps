@@ -59,7 +59,7 @@ Feature:  Contacts BVT - Contacts ToolBar
     Then expect count of contact search results is 1
 
   @sdc_contacts_existing_add_invalid_reference_number
-  Scenario: Contacts BVT Scenario 1 :Add an Invalid Reference to an Existing Contact via Contacts Toolbar
+  Scenario: Add Reference Number from Top Nav Scenario 1 :Add an Invalid Reference to an Existing Contact via Contacts Toolbar
     Then sign-in to orders
     Then navigate to contacts
     Then in contacts grid check row 1
@@ -68,7 +68,7 @@ Feature:  Contacts BVT - Contacts ToolBar
     Then expect reference number error is displayed
 
   @sdc_contacts_existing_add_valid_reference_number
-  Scenario: Contacts BVT Scenario 1 :Add an Valid Reference to an Existing Contact via Contacts Toolbar
+  Scenario: Add Reference Number from Top Nav Scenario 2 :Add an Valid Reference to an Existing Contact via Contacts Toolbar
     Then sign-in to orders
     Then navigate to contacts
     Then in contacts grid check row 1
