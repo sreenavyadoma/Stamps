@@ -76,11 +76,30 @@ Then /^sign-in to orders with (.+)\/(.+)$/ do |usr, pw|
   elsif TestSession.env.browser_test
     step 'browser: click sign-in button'
     step 'check for server error'
-    step 'close whats new modal in orders' if SdcGlobal.web_app.eql? :orders
+    if SdcGlobal.web_app.eql? :orders
+      step 'step through orders welcome tutorial modal'
+      step 'close whats new modal in orders'
+    end
   end
   TestData.hash[:username] = usr
   TestData.hash[:password] = pw
   print 'sign-in to orders... done!'
+end
+
+
+
+Then /^step through orders welcome tutorial modal$/ do
+  # whats_new = SdcWebsite.modals.whats_new
+  # if whats_new.title.present?
+  #   whats_new.close.click
+  # end
+end
+
+Then /^close whats new modal in orders$/ do
+  whats_new = SdcWebsite.modals.whats_new
+  if whats_new.title.present?
+    whats_new.close.click
+  end
 end
 
 Then /^browser: click sign-in button$/ do
@@ -102,14 +121,14 @@ Then /^click sign-in button on android$/ do
 end
 
 Then /^loading orders...$/ do
-  toolbar = SdcOrders.toolbar
+  #toolbar = SdcOrders.toolbar
   loading_orders = SdcOrders.loading_orders
   landing_page = SdcWebsite.landing_page
   step 'check for server error'
   landing_page.username.safe_wait_while_present(timeout: 120)
   step 'check for server error'
   SdcLogger.debug 'loading_orders.safe_wait_until_present(timeout: 30)...'
-  loading_orders.safe_wait_until_present(timeout: 90)
+  loading_orders.safe_wait_until_present(timeout: 20)
   step 'check for server error'
   SdcLogger.debug 'loading_orders.safe_wait_while_present(timeout: 60)...'
   loading_orders.safe_wait_while_present(timeout: 90)
@@ -177,25 +196,6 @@ Then /^click Orders landing page sign-in button$/ do
     expect(error_msg).to eql('')
   end
   step 'check for server error'
-end
-
-Then /^close whats new modal in orders$/ do
-  whats_new = SdcWebsite.modals.whats_new
-  if whats_new.title.present?
-    whats_new.close.click
-  end
-end
-
-Then /^[Ss]ign-out of SDC [Ww]ebsite$/ do
-  # if TestSession.env.browser_test
-  #   user_drop_down = SdcNavigation.user_drop_down
-  #   user_drop_down.signed_in_user.wait_until_present(timeout: 5)
-  #   user_drop_down.signed_in_user.safe_hover
-  #   user_drop_down.signed_in_user.safe_click unless user_drop_down.sign_out_link.present?
-  #   user_drop_down.sign_out_link.safe_wait_until_present(timeout: 1)
-  #   user_drop_down.sign_out_link.safe_click
-  #   SdcWebsite.landing_page.username.safe_wait_until_present(timeout: 4)
-  # end
 end
 
 Then /^Verify Health Check for (.+)$/ do |str|

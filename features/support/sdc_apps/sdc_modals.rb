@@ -22,6 +22,10 @@ module SdcWebsite
       page_object(:more_info) { { xpath: '//span[contains(text(), "More Info")]' } }
     end
 
+    class WelcomeTutorial < SdcPage
+
+    end
+
     class << self
       def whats_new
         SdcWhatsNew.new
@@ -33,6 +37,10 @@ module SdcWebsite
 
       def ready_to_print
         ReadyToPrint.new
+      end
+
+      def welcome_tutorial
+        WelcomeTutorial.new
       end
     end
   end
