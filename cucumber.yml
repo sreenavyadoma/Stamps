@@ -18,7 +18,7 @@ sauce_browser: --tags @bvt_orders_ui_validation URL=stg USR=bvtstgw7ff8 PW=pass1
 #mhossain1_cc: --tags @pp_header_favicons_browser_mobile JENKINS=true URL=qacc BROWSER=gc BROWSER_MOBILE_EMULATOR=gc,'iPhone X' USR=wteam@stamps.com PW=password1 WEB_DEV=true
 #mhossain1_cc: --tags @pp_log_in_page_validation JENKINS=true URL=stg BROWSER=ff USR=wteam@stamps.com PW=password1 FIREFOX_PROFILE=true WEB_DEV=true
 
-mhossain1_cc: --tags @sdcwr_choose_supplies_page_not_present_workflow URL=stg BROWSER=edge LOG_LEVEL=info #USR=wteam@stamps.com PW=password1
+mhossain1_cc: --tags @ewwr_membership_page_addr_validation URL=stg BROWSER=chrome LOG_LEVEL=info #USR=wteam@stamps.com PW=password1
 
 kaushal_cc: --tags @ewwr_security_question_page_validation URL=stg BROWSER=edge #USR=qawebdevelopment@stamps.com PW=password1
 
