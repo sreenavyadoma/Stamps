@@ -111,11 +111,8 @@ module SdcNavigation
     end
 
     def mail_sign_in_modal
-      if TestSession.env.responsive
-        MailSignInModalTablet.new
-      else
-        MailSignInModal.new
-      end
+      return MailSignInModalTablet.new if TestSession.env.responsive
+      MailSignInModal.new
     end
 
     def balance

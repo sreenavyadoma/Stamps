@@ -74,6 +74,7 @@ Feature:  Mail BVT
     Then expect customs i agree to the usps privacy act statement is checked
     Then expect Customs Total Value is correct
     Then close customs information form
+    Then sign out
 
   @mail_authentication
   Scenario: Mail - Authentication
@@ -379,8 +380,6 @@ Feature:  Mail BVT
     Then close extra services
     Then select print form service PME Flat Rate Envelope
     Then select advanced options extra services
-#    Then check extra services do not deliver on saturday
-#    Then uncheck extra services do not deliver on saturday
     Then close extra services
 
     Then click advanced options service commitments
@@ -404,8 +403,6 @@ Feature:  Mail BVT
     Then set print form weight to lbs 0 oz 1
     Then select print form service FCM Letter
     Then select advanced options extra services
-    Then check extra services odd shaped/non-machinable
-    Then uncheck extra services odd shaped/non-machinable
     Then close extra services
     Then check advanced options include return address
     Then uncheck advanced options include return address
@@ -600,13 +597,12 @@ Feature:  Mail BVT
     Then expect advanced options hide label value is checked
     Then select advanced options extra services
     Then set extra services security to Registered Mail
-    Then click value must be shown window continue button
     Then expect extra services security price to be 11.90
     Then set extra services security value to 30.00
-    Then pause for 15 seconds
+    #Then pause for 15 seconds
     Then expect extra services security price to be 12.60
     Then set extra services cod to 20.00
-    Then pause for 15 seconds
+    #Then pause for 15 seconds
     Then expect extra services cod price to be 5.70
     Then check extra services return receipt
     Then expect extra services return receipt price to be 2.75
@@ -614,7 +610,7 @@ Feature:  Mail BVT
     Then expect extra services restricted delivery price to be 5.10
     Then check extra services notice of non-delivery
     Then expect extra services notice of non-delivery price to be 0.00
-    Then pause for 15 seconds
+    #Then pause for 15 seconds
     Then expect extra services total price to be 26.15
     Then save extra services
     Then select advanced options extra services

@@ -11,7 +11,7 @@ Feature: Mail Balance
     Then set order details service to PM Package
     Then set order details tracking to USPS Tracking
     Then pause for 1 second
-    Then Save Order Details data
+    Then save order details data
     Then click orders toolbar print button
     Then set print modal print-on to Shipping Label - 8 ½" x 11" Paper
     Then set orders print modal printer

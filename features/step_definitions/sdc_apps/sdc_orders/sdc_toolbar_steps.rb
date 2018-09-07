@@ -3,12 +3,14 @@ Then /^add new order$/ do
 end
 
 Then /^add order (\d+)$/ do |count|
+  step 'check for server error'
   toolbar = SdcOrders.toolbar
   order_details = SdcOrders.order_details
   ship_from = order_details.ship_from
   initializing = SdcOrders.initializing_orders_db
   toolbar.add.wait_until_present(timeout: 10)
 
+  step 'check for server error'
   toolbar.add.click if TestSession.env.browser_test
   toolbar.add.send_keys(:enter) if TestSession.env.ios_test
 
@@ -23,13 +25,14 @@ Then /^add order (\d+)$/ do |count|
     end
   end
   order_details.order_id.safe_wait_until_present(timeout: 20)
+  order_details.order_id.click if order_details.order_id.present?
   order_details.title.safe_wait_until_present(timeout: 20)
   expect(order_details.order_id.text_value).not_to eql ''
   sleep 1 unless TestSession.env.build_number
   order_id = order_details.order_id.text_value.parse_digits
   TestData.hash[:order_id][count.to_i] = order_id
 
-  step 'Save Order Details data'
+  step 'save order details data'
   TestData.hash[:ord_id_ctr] += 1
   TestData.hash[:items_ordered_qty] = 0
   TestData.hash[:customs_items_qty] = 0
@@ -53,7 +56,8 @@ Then /^wait until orders available$/ do
   SdcOrders.grid.body.wait_until_present(timeout: 20)
 end
 
-Then /^Save Order Details data$/ do
+# #{TestData.hash[:full_name]}, #{TestData.hash[:street_address]}, #{TestData.hash[:city]}, #{TestData.hash[:state]}, #{TestData.hash[:zip]}"
+Then /^save order details data$/ do
   step 'expect order details is present'
   order_details = SdcOrders.order_details
   TestData.hash[:country] = order_details.ship_to.domestic.country.text_field.text_value
@@ -63,6 +67,10 @@ Then /^Save Order Details data$/ do
   TestData.hash[:insure_for_cost] = order_details.insure_for.cost.text_value.dollar_amount_str.to_f.round(2)
   TestData.hash[:total_ship_cost] = order_details.footer.total_ship_cost.text_value.dollar_amount_str.to_f.round(2)
   TestData.hash[:awaiting_shipment_count] = SdcOrders.filter_panel.awaiting_shipment.count.text_value.to_f.round(2)
+  if !order_details.ship_to.domestic.address.text_value.nil? && !order_details.ship_to.domestic.address.text_value.eql?('')
+    TestData.hash[:full_name], TestData.hash[:company], TestData.hash[:street_address], TestData.hash[:city], TestData.hash[:state],
+        TestData.hash[:zip] = TestHelper.address_str_to_hash(order_details.ship_to.domestic.address.text_value).values
+  end
   if order_details.tracking.cost.present?
     TestData.hash[:tracking_cost] = order_details.tracking.cost.text_value.dollar_amount_str.to_f.round(2)
   end
@@ -72,7 +80,7 @@ Then /^Save Order Details data$/ do
 end
 
 Then /^click orders toolbar print button$/ do
-  step 'Save Order Details data'
+  step 'save order details data'
   SdcOrders.order_details.footer.print.click
   expect(SdcOrders.modals.print.title).to be_present
   expect(SdcOrders.modals.print.title.text_value).to match(/You have \d label ready to print/)
@@ -80,7 +88,7 @@ end
 
 
 Then /^click orders toolbar print all button$/ do
-  step 'Save Order Details data'
+  step 'save order details data'
   SdcOrders.order_details.footer.print.click
   expect(SdcOrders.modals.print.title).to be_present
   expect(SdcOrders.modals.print.title.text_value).to match(/You have \d label ready to print/)

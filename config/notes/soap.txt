@@ -6,7 +6,7 @@ bvtstgosxgc4 bvt_orders_ship_date
 stgmacgc1 mac_chrome » mail_bvt_advanced_options
 stgmacgc2 mac_chrome » mail_bvt_stamps
 stgmacgc3 mac_chrome » mail_bvt_address_cleansing
-stgmacgc4
+stgmacgc4 mac_chrome » mail_bvt_international
 stgmacgc5
 stgmacgc6
 stgmacgc7

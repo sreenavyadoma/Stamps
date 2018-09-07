@@ -1,17 +1,17 @@
 
-default: --backtrace --profile mhossain1_cc
+default: --backtrace --profile local_browser
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
 # tests: bvt_shipstation_updates_domestic
 local_mobile: --tags @mail_authentication_mobile URL=stg USR=sauce0020 PW=pass111 SELENIUM_DEVICE='iPhone X 11.3' SELENIUM_PLATFORM=iOS SELENIUM_BROWSER=Safari SELENIUM_VERSION=11.3 LOG_LEVEL=debug
 #local_mobile: --tags @bvt_new_order URL=cc USR=cctruer0u PW=pass111 SELENIUM_DEVICE='iPhone X 11.3' SELENIUM_PLATFORM=iOS SELENIUM_BROWSER=Safari SELENIUM_VERSION=11.3 LOG_LEVEL=debug
-local_browser: --tags @mail_bvt_stamps URL=stg BROWSER=ff MAX_WINDOW=false USR=bvtstgosxgc1 PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=info WINDOW_SIZE=1280x1020
-#local_browser: --tags @mail_authentication_mobile URL=cc BROWSER=ff MAX_WINDOW=false USR=bvtsauce00020cc PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=info WINDOW_SIZE=1000x900
+local_browser: --tags @bvt_shipstation_updates_international URL=stg BROWSER=ff MAX_WINDOW=false USR=stgmacgc6 PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=info WINDOW_SIZE=1300x900
+#local_browser: --tags @bvt_shipstation_updates_international URL=cc BROWSER=ff MAX_WINDOW=false USR=bvtccosxgc18 PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=info WINDOW_SIZE=1300x900
 #local_browser: --tags @bvt_shipstation_updates_domestic URL=sc BROWSER=ff MAX_WINDOW=false USR=scsejsglwa PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=info
 sauce_mobile: --tags @mail_authentication_mobile URL=stg USR=sauce0020 PW=pass111 SELENIUM_DEVICE='iPhone X Simulator' SELENIUM_PLATFORM=iOS SELENIUM_BROWSER=Safari SELENIUM_VERSION=11.3TUNNEL_IDENTIFIER=rob LOG_LEVEL=info
 #sauce_browser: --tags @bvt_shipstation_updates_domestic URL=stg USR=stgvoc0kcnt6rw PW=pass111SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Mac 10.10' TUNNEL_IDENTIFIER=rob LOG_LEVEL=info
-sauce_browser: --tags @bvt_orders_ui_validation URL=stg USR=bvtstgw7ff8 PW=pass111SELENIUM_BROWSER=firefox SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 2008'TUNNEL_IDENTIFIER=rob LOG_LEVEL=info
+sauce_browser: --tags @bvt_international_shipping URL=stg USR=bvtstgw7ff8 PW=pass111 SELENIUM_BROWSER=MicrosoftEdge SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' TUNNEL_IDENTIFIER=rob LOG_LEVEL=info
 #sauce_browser: --tags @bvt_orders_ui_validation URL=cc USR=cctruer0u PW=pass111SELENIUM_BROWSER=firefox SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 2008' TUNNEL_IDENTIFIER=rob LOG_LEVEL=info
 #sauce_browser: --tags @bvt_orders_ship_date URL=cc USR=bvtsauce00020cc PW=pass111SELENIUM_BROWSER=firefox SELENIUM_VERSION=latest SELENIUM_PLATFORM='Mac 10.12' TUNNEL_IDENTIFIER=rob LOG_LEVEL=info SCREEN_RESOLUTION=1152x864
 #mhossain1_cc: --tags @registration_normal_workflow WEB_APP=orders JENKINS=true URL=cc LOG_LEVEL=info BROWSER=ff MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
@@ -28,15 +28,15 @@ eli_dev: --tags @mail_bvt_stamps --guess JENKINS=false WEB_APP=mail URL=stg BROW
 ray_dev: --tags @rates_parcel_select_ground --guess JENKINS=false WEB_APP=orders URL=stg BROWSER=ff USR=default PW=pass111
 sap: --tags @registration_orders WEB_APP=registration URL=cc --guess BROWSER=ff MAX_WINDOW=false
 
-alex_mail: --tags @rates_pm_comm_base_zone_1 BROWSER=firefox URL=stg USR=abqast2 PW=password1 new_framework=true --guess LOG_LEVEL=info HEALTHCHECK=false
-alex_regress: --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders URL=cc USR=abqacc10 PW=password1 --guess LOG_LEVEL=info MAX_WINDOW=false
-alex_rates: --tags @rates_fcm_package BROWSER=ff URL=qast USR=abqast2 PW=password1 WEB_APP=orders --guess LOG_LEVEL=info HEALTHCHECK=false
-alex_rates_pmi: --tags @rates_pmi_comm_plus_group_9 BROWSER=ff WEB_APP=orders URL=stg USR=abqast2 PW=password1 --guess LOG_LEVEL=info MAX_WINDOW=false
-#alex_orders: --tags @bvt_shipstation_updates_international BROWSER=ff URL=prod USR=abqaprod2 PW=password1 PRINTER=factory --guess LOG_LEVEL=info HEALTHCHECK=false
-alex_orders: --tags @bvt_orders_ui_validation BROWSER=ff URL=prod USR=abqaprod2 PW=password1 PRINTER=factory --guess LOG_LEVEL=info HEALTHCHECK=false
-#alex_orders: --tags @bvt_new_order BROWSER=ff URL=stg USR=abqast2 PW=password1 new_framework=true --guess LOG_LEVEL=info #abqast1
-alex_test: --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders URL=qacc USR=abqacc10 PW=password1 --guess LOG_LEVEL=info MAX_WINDOW=false
-saucelabs_alex: --tags @rates_pme_comm_base_zone_1 URL=stg USR=abqast2 PW=password1 LOG_LEVEL=info 
+alex_mail:  --tags @rates_pmi_comm_base_group_10 BROWSER=firefox URL=qacc USR=abqaccsas1 PW=password1 new_framework=true  --guess LOG_LEVEL=info HEALTHCHECK=false
+alex_regress:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders URL=cc USR=abqacc10 PW=password1  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false
+alex_rates:  --tags @rates_orders_pme_comm_plus_zone_5 BROWSER=ff URL=stg USR=abqast2 PW=password1  --guess LOG_LEVEL=info HEALTHCHECK=false
+alex_rates_pmi:  --tags @rates_pmi_comm_plus_group_9 BROWSER=ff WEB_APP=orders URL=stg USR=abqast2 PW=password1  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false
+#alex_orders:  --tags @bvt_shipstation_updates_international BROWSER=ff URL=prod USR=abqaprod2 PW=password1  PRINTER=factory --guess LOG_LEVEL=info HEALTHCHECK=false
+alex_orders:  --tags @bvt_orders_ui_validation BROWSER=ff URL=prod USR=abqaprod2 PW=password1  PRINTER=factory --guess LOG_LEVEL=info HEALTHCHECK=false
+#alex_orders:  --tags @bvt_new_order BROWSER=ff URL=stg USR=abqast2 PW=password1 new_framework=true  --guess LOG_LEVEL=info HEALTHCHECK=false #abqast1
+alex_test:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders URL=qacc USR=abqacc10 PW=password1  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false
+saucelabs_alex: --tags @rates_pme_comm_base_zone_1 URL=stg USR=abqast2 PW=password1 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=alexbaranovskyi SAUCE_ACCESS_KEY=bcd50193-981d-4890-9bce-b18d3097f373 SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
 
 mail_print_envelope_11: --tags @mail_print_envelope_11 --guess PRINTER=factory
 
@@ -59,127 +59,248 @@ rates_pm_comm_plus: --tags @rates_pm_comm_plus --guess LOG_LEVEL=info WEB_APP=or
 rates_parcel_select_ground: --tags @rates_parcel_select_ground --guess LOG_LEVEL=info WEB_APP=orders
 rates_pmei_comm_base: --tags @rates_pmei_comm_base --guess LOG_LEVEL=info
 rates_pmei_comm_plus: --tags @rates_pmei_comm_plus --guess LOG_LEVEL=info
-rates_pmei_comm_base_group_1: --tags @rates_pmei_comm_base_group_1 --guess LOG_LEVEL=info
-rates_pmei_comm_base_group_2: --tags @rates_pmei_comm_base_group_2 --guess LOG_LEVEL=info
-rates_pmei_comm_base_group_3: --tags @rates_pmei_comm_base_group_3 --guess LOG_LEVEL=info
-rates_pmei_comm_base_group_4: --tags @rates_pmei_comm_base_group_4 --guess LOG_LEVEL=info
-rates_pmei_comm_base_group_5: --tags @rates_pmei_comm_base_group_5 --guess LOG_LEVEL=info
-rates_pmei_comm_base_group_6: --tags @rates_pmei_comm_base_group_6 --guess LOG_LEVEL=info
-rates_pmei_comm_base_group_7: --tags @rates_pmei_comm_base_group_7 --guess LOG_LEVEL=info
-rates_pmei_comm_base_group_8: --tags @rates_pmei_comm_base_group_8 --guess LOG_LEVEL=info
-rates_pmei_comm_base_group_9: --tags @rates_pmei_comm_base_group_9 --guess LOG_LEVEL=info
-rates_pmei_comm_base_group_10: --tags @rates_pmei_comm_base_group_10 --guess LOG_LEVEL=info
-rates_pmei_comm_base_group_11: --tags @rates_pmei_comm_base_group_11 --guess LOG_LEVEL=info
-rates_pmei_comm_base_group_12: --tags @rates_pmei_comm_base_group_12 --guess LOG_LEVEL=info
-rates_pmei_comm_base_group_13: --tags @rates_pmei_comm_base_group_13 --guess LOG_LEVEL=info
-rates_pmei_comm_base_group_14: --tags @rates_pmei_comm_base_group_14 --guess LOG_LEVEL=info
-rates_pmei_comm_base_group_15: --tags @rates_pmei_comm_base_group_15 --guess LOG_LEVEL=info
-rates_pmei_comm_base_group_16: --tags @rates_pmei_comm_base_group_16 --guess LOG_LEVEL=info
-rates_pmei_comm_base_group_17: --tags @rates_pmei_comm_base_group_17 --guess LOG_LEVEL=info
-rates_pmei_comm_plus_group_1: --tags @rates_pmei_comm_plus_group_1 --guess LOG_LEVEL=info
-rates_pmei_comm_plus_group_2: --tags @rates_pmei_comm_plus_group_2 --guess LOG_LEVEL=info
-rates_pmei_comm_plus_group_3: --tags @rates_pmei_comm_plus_group_3 --guess LOG_LEVEL=info
-rates_pmei_comm_plus_group_4: --tags @rates_pmei_comm_plus_group_4 --guess LOG_LEVEL=info
-rates_pmei_comm_plus_group_5: --tags @rates_pmei_comm_plus_group_5 --guess LOG_LEVEL=info
-rates_pmei_comm_plus_group_6: --tags @rates_pmei_comm_plus_group_6 --guess LOG_LEVEL=info
-rates_pmei_comm_plus_group_7: --tags @rates_pmei_comm_plus_group_7 --guess LOG_LEVEL=info
-rates_pmei_comm_plus_group_8: --tags @rates_pmei_comm_plus_group_8 --guess LOG_LEVEL=info
-rates_pmei_comm_plus_group_9: --tags @rates_pmei_comm_plus_group_9 --guess LOG_LEVEL=info
-rates_pmei_comm_plus_group_10: --tags @rates_pmei_comm_plus_group_10 --guess LOG_LEVEL=info
-rates_pmei_comm_plus_group_11: --tags @rates_pmei_comm_plus_group_11 --guess LOG_LEVEL=info
-rates_pmei_comm_plus_group_12: --tags @rates_pmei_comm_plus_group_12 --guess LOG_LEVEL=info
-rates_pmei_comm_plus_group_13: --tags @rates_pmei_comm_plus_group_13 --guess LOG_LEVEL=info
-rates_pmei_comm_plus_group_14: --tags @rates_pmei_comm_plus_group_14 --guess LOG_LEVEL=info
-rates_pmei_comm_plus_group_15: --tags @rates_pmei_comm_plus_group_15 --guess LOG_LEVEL=info
-rates_pmei_comm_plus_group_16: --tags @rates_pmei_comm_plus_group_16 --guess LOG_LEVEL=info
-rates_pmei_comm_plus_group_17: --tags @rates_pmei_comm_plus_group_17 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_base_group_1: --tags @rates_mail_pmei_comm_base_group_1 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_base_group_2: --tags @rates_mail_pmei_comm_base_group_2 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_base_group_3: --tags @rates_mail_pmei_comm_base_group_3 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_base_group_4: --tags @rates_mail_pmei_comm_base_group_4 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_base_group_5: --tags @rates_mail_pmei_comm_base_group_5 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_base_group_6: --tags @rates_mail_pmei_comm_base_group_6 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_base_group_7: --tags @rates_mail_pmei_comm_base_group_7 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_base_group_8: --tags @rates_mail_pmei_comm_base_group_8 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_base_group_9: --tags @rates_mail_pmei_comm_base_group_9 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_base_group_10: --tags @rates_mail_pmei_comm_base_group_10 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_base_group_11: --tags @rates_mail_pmei_comm_base_group_11 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_base_group_12: --tags @rates_mail_pmei_comm_base_group_12 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_base_group_13: --tags @rates_mail_pmei_comm_base_group_13 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_base_group_14: --tags @rates_mail_pmei_comm_base_group_14 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_base_group_15: --tags @rates_mail_pmei_comm_base_group_15 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_base_group_16: --tags @rates_mail_pmei_comm_base_group_16 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_base_group_17: --tags @rates_mail_pmei_comm_base_group_17 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_plus_group_1: --tags @rates_mail_pmei_comm_plus_group_1 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_plus_group_2: --tags @rates_mail_pmei_comm_plus_group_2 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_plus_group_3: --tags @rates_mail_pmei_comm_plus_group_3 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_plus_group_4: --tags @rates_mail_pmei_comm_plus_group_4 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_plus_group_5: --tags @rates_mail_pmei_comm_plus_group_5 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_plus_group_6: --tags @rates_mail_pmei_comm_plus_group_6 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_plus_group_7: --tags @rates_mail_pmei_comm_plus_group_7 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_plus_group_8: --tags @rates_mail_pmei_comm_plus_group_8 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_plus_group_9: --tags @rates_mail_pmei_comm_plus_group_9 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_plus_group_10: --tags @rates_mail_pmei_comm_plus_group_10 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_plus_group_11: --tags @rates_mail_pmei_comm_plus_group_11 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_plus_group_12: --tags @rates_mail_pmei_comm_plus_group_12 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_plus_group_13: --tags @rates_mail_pmei_comm_plus_group_13 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_plus_group_14: --tags @rates_mail_pmei_comm_plus_group_14 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_plus_group_15: --tags @rates_mail_pmei_comm_plus_group_15 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_plus_group_16: --tags @rates_mail_pmei_comm_plus_group_16 --guess LOG_LEVEL=info
+rates_mail_pmei_comm_plus_group_17: --tags @rates_mail_pmei_comm_plus_group_17 --guess LOG_LEVEL=info
 
-rates_pme_comm_base_zone_1: --tags @rates_pme_comm_base_zone_1 --guess LOG_LEVEL=info
-rates_pme_comm_base_zone_2: --tags @rates_pme_comm_base_zone_2 --guess LOG_LEVEL=info
-rates_pme_comm_base_zone_3: --tags @rates_pme_comm_base_zone_3 --guess LOG_LEVEL=info
-rates_pme_comm_base_zone_4: --tags @rates_pme_comm_base_zone_4 --guess LOG_LEVEL=info
-rates_pme_comm_base_zone_5: --tags @rates_pme_comm_base_zone_5 --guess LOG_LEVEL=info
-rates_pme_comm_base_zone_6: --tags @rates_pme_comm_base_zone_6 --guess LOG_LEVEL=info
-rates_pme_comm_base_zone_7: --tags @rates_pme_comm_base_zone_7 --guess LOG_LEVEL=info
-rates_pme_comm_base_zone_8: --tags @rates_pme_comm_base_zone_8 --guess LOG_LEVEL=info
-rates_pme_comm_base_zone_9: --tags @rates_pme_comm_base_zone_9 --guess LOG_LEVEL=info
-rates_pme_comm_plus_zone_1: --tags @rates_pme_comm_plus_zone_1 --guess LOG_LEVEL=info
-rates_pme_comm_plus_zone_2: --tags @rates_pme_comm_plus_zone_2 --guess LOG_LEVEL=info
-rates_pme_comm_plus_zone_3: --tags @rates_pme_comm_plus_zone_3 --guess LOG_LEVEL=info
-rates_pme_comm_plus_zone_4: --tags @rates_pme_comm_plus_zone_4 --guess LOG_LEVEL=info
-rates_pme_comm_plus_zone_5: --tags @rates_pme_comm_plus_zone_5 --guess LOG_LEVEL=info
-rates_pme_comm_plus_zone_6: --tags @rates_pme_comm_plus_zone_6 --guess LOG_LEVEL=info
-rates_pme_comm_plus_zone_7: --tags @rates_pme_comm_plus_zone_7 --guess LOG_LEVEL=info
-rates_pme_comm_plus_zone_8: --tags @rates_pme_comm_plus_zone_8 --guess LOG_LEVEL=info
-rates_pme_comm_plus_zone_9: --tags @rates_pme_comm_plus_zone_9 --guess LOG_LEVEL=info
+rates_mail_pme_comm_base_zone_1: --tags @rates_mail_pme_comm_base_zone_1 --guess LOG_LEVEL=info
+rates_mail_pme_comm_base_zone_2: --tags @rates_mail_pme_comm_base_zone_2 --guess LOG_LEVEL=info
+rates_mail_pme_comm_base_zone_3: --tags @rates_mail_pme_comm_base_zone_3 --guess LOG_LEVEL=info
+rates_mail_pme_comm_base_zone_4: --tags @rates_mail_pme_comm_base_zone_4 --guess LOG_LEVEL=info
+rates_mail_pme_comm_base_zone_5: --tags @rates_mail_pme_comm_base_zone_5 --guess LOG_LEVEL=info
+rates_mail_pme_comm_base_zone_6: --tags @rates_mail_pme_comm_base_zone_6 --guess LOG_LEVEL=info
+rates_mail_pme_comm_base_zone_7: --tags @rates_mail_pme_comm_base_zone_7 --guess LOG_LEVEL=info
+rates_mail_pme_comm_base_zone_8: --tags @rates_mail_pme_comm_base_zone_8 --guess LOG_LEVEL=info
+rates_mail_pme_comm_base_zone_9: --tags @rates_mail_pme_comm_base_zone_9 --guess LOG_LEVEL=info
+rates_mail_pme_comm_plus_zone_1: --tags @rates_mail_pme_comm_plus_zone_1 --guess LOG_LEVEL=info
+rates_mail_pme_comm_plus_zone_2: --tags @rates_mail_pme_comm_plus_zone_2 --guess LOG_LEVEL=info
+rates_mail_pme_comm_plus_zone_3: --tags @rates_mail_pme_comm_plus_zone_3 --guess LOG_LEVEL=info
+rates_mail_pme_comm_plus_zone_4: --tags @rates_mail_pme_comm_plus_zone_4 --guess LOG_LEVEL=info
+rates_mail_pme_comm_plus_zone_5: --tags @rates_mail_pme_comm_plus_zone_5 --guess LOG_LEVEL=info
+rates_mail_pme_comm_plus_zone_6: --tags @rates_mail_pme_comm_plus_zone_6 --guess LOG_LEVEL=info
+rates_mail_pme_comm_plus_zone_7: --tags @rates_mail_pme_comm_plus_zone_7 --guess LOG_LEVEL=info
+rates_mail_pme_comm_plus_zone_8: --tags @rates_mail_pme_comm_plus_zone_8 --guess LOG_LEVEL=info
+rates_mail_pme_comm_plus_zone_9: --tags @rates_mail_pme_comm_plus_zone_9 --guess LOG_LEVEL=info
 
-rates_pm_comm_base_zone_1: --tags @rates_pm_comm_base_zone_1 --guess LOG_LEVEL=info
-rates_pm_comm_base_zone_2: --tags @rates_pm_comm_base_zone_2 --guess LOG_LEVEL=info
-rates_pm_comm_base_zone_3: --tags @rates_pm_comm_base_zone_3 --guess LOG_LEVEL=info
-rates_pm_comm_base_zone_4: --tags @rates_pm_comm_base_zone_4 --guess LOG_LEVEL=info
-rates_pm_comm_base_zone_5: --tags @rates_pm_comm_base_zone_5 --guess LOG_LEVEL=info
-rates_pm_comm_base_zone_6: --tags @rates_pm_comm_base_zone_6 --guess LOG_LEVEL=info
-rates_pm_comm_base_zone_7: --tags @rates_pm_comm_base_zone_7 --guess LOG_LEVEL=info
-rates_pm_comm_base_zone_8: --tags @rates_pm_comm_base_zone_8 --guess LOG_LEVEL=info
-rates_pm_comm_base_zone_9: --tags @rates_pm_comm_base_zone_9 --guess LOG_LEVEL=info
-rates_pm_comm_plus_zone_1: --tags @rates_pm_comm_plus_zone_1 --guess LOG_LEVEL=info
-rates_pm_comm_plus_zone_2: --tags @rates_pm_comm_plus_zone_2 --guess LOG_LEVEL=info
-rates_pm_comm_plus_zone_3: --tags @rates_pm_comm_plus_zone_3 --guess LOG_LEVEL=info
-rates_pm_comm_plus_zone_4: --tags @rates_pm_comm_plus_zone_4 --guess LOG_LEVEL=info
-rates_pm_comm_plus_zone_5: --tags @rates_pm_comm_plus_zone_5 --guess LOG_LEVEL=info
-rates_pm_comm_plus_zone_6: --tags @rates_pm_comm_plus_zone_6 --guess LOG_LEVEL=info
-rates_pm_comm_plus_zone_7: --tags @rates_pm_comm_plus_zone_7 --guess LOG_LEVEL=info
-rates_pm_comm_plus_zone_8: --tags @rates_pm_comm_plus_zone_8 --guess LOG_LEVEL=info
-rates_pm_comm_plus_zone_9: --tags @rates_pm_comm_plus_zone_9 --guess LOG_LEVEL=info
+rates_mail_pm_comm_base_zone_1: --tags @rates_mail_pm_comm_base_zone_1 --guess LOG_LEVEL=info
+rates_mail_pm_comm_base_zone_2: --tags @rates_mail_pm_comm_base_zone_2 --guess LOG_LEVEL=info
+rates_mail_pm_comm_base_zone_3: --tags @rates_mail_pm_comm_base_zone_3 --guess LOG_LEVEL=info
+rates_mail_pm_comm_base_zone_4: --tags @rates_mail_pm_comm_base_zone_4 --guess LOG_LEVEL=info
+rates_mail_pm_comm_base_zone_5: --tags @rates_mail_pm_comm_base_zone_5 --guess LOG_LEVEL=info
+rates_mail_pm_comm_base_zone_6: --tags @rates_mail_pm_comm_base_zone_6 --guess LOG_LEVEL=info
+rates_mail_pm_comm_base_zone_7: --tags @rates_mail_pm_comm_base_zone_7 --guess LOG_LEVEL=info
+rates_mail_pm_comm_base_zone_8: --tags @rates_mail_pm_comm_base_zone_8 --guess LOG_LEVEL=info
+rates_mail_pm_comm_base_zone_9: --tags @rates_mail_pm_comm_base_zone_9 --guess LOG_LEVEL=info
+rates_mail_pm_comm_plus_zone_1: --tags @rates_mail_pm_comm_plus_zone_1 --guess LOG_LEVEL=info
+rates_mail_pm_comm_plus_zone_2: --tags @rates_mail_pm_comm_plus_zone_2 --guess LOG_LEVEL=info
+rates_mail_pm_comm_plus_zone_3: --tags @rates_mail_pm_comm_plus_zone_3 --guess LOG_LEVEL=info
+rates_mail_pm_comm_plus_zone_4: --tags @rates_mail_pm_comm_plus_zone_4 --guess LOG_LEVEL=info
+rates_mail_pm_comm_plus_zone_5: --tags @rates_mail_pm_comm_plus_zone_5 --guess LOG_LEVEL=info
+rates_mail_pm_comm_plus_zone_6: --tags @rates_mail_pm_comm_plus_zone_6 --guess LOG_LEVEL=info
+rates_mail_pm_comm_plus_zone_7: --tags @rates_mail_pm_comm_plus_zone_7 --guess LOG_LEVEL=info
+rates_mail_pm_comm_plus_zone_8: --tags @rates_mail_pm_comm_plus_zone_8 --guess LOG_LEVEL=info
+rates_mail_pm_comm_plus_zone_9: --tags @rates_mail_pm_comm_plus_zone_9 --guess LOG_LEVEL=info
 
-rates_parcel_select_ground_zone_1: --tags @rates_parcel_select_ground_zone_1 --guess LOG_LEVEL=info
-rates_parcel_select_ground_zone_2: --tags @rates_parcel_select_ground_zone_2 --guess LOG_LEVEL=info
-rates_parcel_select_ground_zone_3: --tags @rates_parcel_select_ground_zone_3 --guess LOG_LEVEL=info
-rates_parcel_select_ground_zone_4: --tags @rates_parcel_select_ground_zone_4 --guess LOG_LEVEL=info
-rates_parcel_select_ground_zone_5: --tags @rates_parcel_select_ground_zone_5 --guess LOG_LEVEL=info
-rates_parcel_select_ground_zone_6: --tags @rates_parcel_select_ground_zone_6 --guess LOG_LEVEL=info
-rates_parcel_select_ground_zone_7: --tags @rates_parcel_select_ground_zone_7 --guess LOG_LEVEL=info
-rates_parcel_select_ground_zone_8: --tags @rates_parcel_select_ground_zone_8 --guess LOG_LEVEL=info
-rates_parcel_select_ground_zone_9: --tags @rates_parcel_select_ground_zone_9 --guess LOG_LEVEL=info
+rates_mail_parcel_select_ground_zone_1: --tags @rates_mail_parcel_select_ground_zone_1 --guess LOG_LEVEL=info
+rates_mail_parcel_select_ground_zone_2: --tags @rates_mail_parcel_select_ground_zone_2 --guess LOG_LEVEL=info
+rates_mail_parcel_select_ground_zone_3: --tags @rates_mail_parcel_select_ground_zone_3 --guess LOG_LEVEL=info
+rates_mail_parcel_select_ground_zone_4: --tags @rates_mail_parcel_select_ground_zone_4 --guess LOG_LEVEL=info
+rates_mail_parcel_select_ground_zone_5: --tags @rates_mail_parcel_select_ground_zone_5 --guess LOG_LEVEL=info
+rates_mail_parcel_select_ground_zone_6: --tags @rates_mail_parcel_select_ground_zone_6 --guess LOG_LEVEL=info
+rates_mail_parcel_select_ground_zone_7: --tags @rates_mail_parcel_select_ground_zone_7 --guess LOG_LEVEL=info
+rates_mail_parcel_select_ground_zone_8: --tags @rates_mail_parcel_select_ground_zone_8 --guess LOG_LEVEL=info
+rates_mail_parcel_select_ground_zone_9: --tags @rates_mail_parcel_select_ground_zone_9 --guess LOG_LEVEL=info
 
-rates_pmi_comm_base_group_1: --tags @rates_pmi_comm_base_group_1 --guess LOG_LEVEL=info
-rates_pmi_comm_base_group_2: --tags @rates_pmi_comm_base_group_2 --guess LOG_LEVEL=info
-rates_pmi_comm_base_group_3: --tags @rates_pmi_comm_base_group_3 --guess LOG_LEVEL=info
-rates_pmi_comm_base_group_4: --tags @rates_pmi_comm_base_group_4 --guess LOG_LEVEL=info
-rates_pmi_comm_base_group_5: --tags @rates_pmi_comm_base_group_5 --guess LOG_LEVEL=info
-rates_pmi_comm_base_group_6: --tags @rates_pmi_comm_base_group_6 --guess LOG_LEVEL=info
-rates_pmi_comm_base_group_7: --tags @rates_pmi_comm_base_group_7 --guess LOG_LEVEL=info
-rates_pmi_comm_base_group_8: --tags @rates_pmi_comm_base_group_8 --guess LOG_LEVEL=info
-rates_pmi_comm_base_group_9: --tags @rates_pmi_comm_base_group_9 --guess LOG_LEVEL=info
-rates_pmi_comm_base_group_10: --tags @rates_pmi_comm_base_group_10 --guess LOG_LEVEL=info
-rates_pmi_comm_base_group_11: --tags @rates_pmi_comm_base_group_11 --guess LOG_LEVEL=info
-rates_pmi_comm_base_group_12: --tags @rates_pmi_comm_base_group_12 --guess LOG_LEVEL=info
-rates_pmi_comm_base_group_13: --tags @rates_pmi_comm_base_group_13 --guess LOG_LEVEL=info
-rates_pmi_comm_base_group_14: --tags @rates_pmi_comm_base_group_14 --guess LOG_LEVEL=info
-rates_pmi_comm_base_group_15: --tags @rates_pmi_comm_base_group_15 --guess LOG_LEVEL=info
-rates_pmi_comm_base_group_16: --tags @rates_pmi_comm_base_group_16 --guess LOG_LEVEL=info
-rates_pmi_comm_base_group_17: --tags @rates_pmi_comm_base_group_17 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_base_group_1: --tags @rates_mail_pmi_comm_base_group_1 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_base_group_2: --tags @rates_mail_pmi_comm_base_group_2 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_base_group_3: --tags @rates_mail_pmi_comm_base_group_3 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_base_group_4: --tags @rates_mail_pmi_comm_base_group_4 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_base_group_5: --tags @rates_mail_pmi_comm_base_group_5 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_base_group_6: --tags @rates_mail_pmi_comm_base_group_6 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_base_group_7: --tags @rates_mail_pmi_comm_base_group_7 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_base_group_8: --tags @rates_mail_pmi_comm_base_group_8 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_base_group_9: --tags @rates_mail_pmi_comm_base_group_9 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_base_group_10: --tags @rates_mail_pmi_comm_base_group_10 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_base_group_11: --tags @rates_mail_pmi_comm_base_group_11 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_base_group_12: --tags @rates_mail_pmi_comm_base_group_12 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_base_group_13: --tags @rates_mail_pmi_comm_base_group_13 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_base_group_14: --tags @rates_mail_pmi_comm_base_group_14 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_base_group_15: --tags @rates_mail_pmi_comm_base_group_15 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_base_group_16: --tags @rates_mail_pmi_comm_base_group_16 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_base_group_17: --tags @rates_mail_pmi_comm_base_group_17 --guess LOG_LEVEL=info
 
-rates_pmi_comm_plus_group_1: --tags @rates_pmi_comm_plus_group_1 --guess LOG_LEVEL=info
-rates_pmi_comm_plus_group_2: --tags @rates_pmi_comm_plus_group_2 --guess LOG_LEVEL=info
-rates_pmi_comm_plus_group_3: --tags @rates_pmi_comm_plus_group_3 --guess LOG_LEVEL=info
-rates_pmi_comm_plus_group_4: --tags @rates_pmi_comm_plus_group_4 --guess LOG_LEVEL=info
-rates_pmi_comm_plus_group_5: --tags @rates_pmi_comm_plus_group_5 --guess LOG_LEVEL=info
-rates_pmi_comm_plus_group_6: --tags @rates_pmi_comm_plus_group_6 --guess LOG_LEVEL=info
-rates_pmi_comm_plus_group_7: --tags @rates_pmi_comm_plus_group_7 --guess LOG_LEVEL=info
-rates_pmi_comm_plus_group_8: --tags @rates_pmi_comm_plus_group_8 --guess LOG_LEVEL=info
-rates_pmi_comm_plus_group_9: --tags @rates_pmi_comm_plus_group_9 --guess LOG_LEVEL=info
-rates_pmi_comm_plus_group_10: --tags @rates_pmi_comm_plus_group_10 --guess LOG_LEVEL=info
-rates_pmi_comm_plus_group_11: --tags @rates_pmi_comm_plus_group_11 --guess LOG_LEVEL=info
-rates_pmi_comm_plus_group_12: --tags @rates_pmi_comm_plus_group_12 --guess LOG_LEVEL=info
-rates_pmi_comm_plus_group_13: --tags @rates_pmi_comm_plus_group_13 --guess LOG_LEVEL=info
-rates_pmi_comm_plus_group_14: --tags @rates_pmi_comm_plus_group_14 --guess LOG_LEVEL=info
-rates_pmi_comm_plus_group_15: --tags @rates_pmi_comm_plus_group_15 --guess LOG_LEVEL=info
-rates_pmi_comm_plus_group_16: --tags @rates_pmi_comm_plus_group_16 --guess LOG_LEVEL=info
-rates_pmi_comm_plus_group_17: --tags @rates_pmi_comm_plus_group_17 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_plus_group_1: --tags @rates_mail_pmi_comm_plus_group_1 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_plus_group_2: --tags @rates_mail_pmi_comm_plus_group_2 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_plus_group_3: --tags @rates_mail_pmi_comm_plus_group_3 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_plus_group_4: --tags @rates_mail_pmi_comm_plus_group_4 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_plus_group_5: --tags @rates_mail_pmi_comm_plus_group_5 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_plus_group_6: --tags @rates_mail_pmi_comm_plus_group_6 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_plus_group_7: --tags @rates_mail_pmi_comm_plus_group_7 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_plus_group_8: --tags @rates_mail_pmi_comm_plus_group_8 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_plus_group_9: --tags @rates_mail_pmi_comm_plus_group_9 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_plus_group_10: --tags @rates_mail_pmi_comm_plus_group_10 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_plus_group_11: --tags @rates_mail_pmi_comm_plus_group_11 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_plus_group_12: --tags @rates_mail_pmi_comm_plus_group_12 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_plus_group_13: --tags @rates_mail_pmi_comm_plus_group_13 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_plus_group_14: --tags @rates_mail_pmi_comm_plus_group_14 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_plus_group_15: --tags @rates_mail_pmi_comm_plus_group_15 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_plus_group_16: --tags @rates_mail_pmi_comm_plus_group_16 --guess LOG_LEVEL=info
+rates_mail_pmi_comm_plus_group_17: --tags @rates_mail_pmi_comm_plus_group_17 --guess LOG_LEVEL=info
 
-rates_fcm_package: --tags @rates_fcm_package --guess LOG_LEVEL=info
-rates_mail_fcm_package: --tags @rates_mail_fcm_package --guess LOG_LEVEL=info
+rates_mail_fcm_package:   --tags @rates_mail_fcm_package --guess LOG_LEVEL=info
+#RATES ORDERS -------------------------------------------------------------
+rates_orders_fcm_package:   --tags @rates_orders_fcm_package --guess LOG_LEVEL=info
+rates_orders_parcel_select_ground_zone_1:  --tags @rates_orders_parcel_select_ground_zone_1 --guess LOG_LEVEL=info
+rates_orders_parcel_select_ground_zone_2:  --tags @rates_orders_parcel_select_ground_zone_2 --guess LOG_LEVEL=info
+rates_orders_parcel_select_ground_zone_3:  --tags @rates_orders_parcel_select_ground_zone_3 --guess LOG_LEVEL=info
+rates_orders_parcel_select_ground_zone_4:  --tags @rates_orders_parcel_select_ground_zone_4 --guess LOG_LEVEL=info
+rates_orders_parcel_select_ground_zone_5:  --tags @rates_orders_parcel_select_ground_zone_5 --guess LOG_LEVEL=info
+rates_orders_parcel_select_ground_zone_6:  --tags @rates_orders_parcel_select_ground_zone_6 --guess LOG_LEVEL=info
+rates_orders_parcel_select_ground_zone_7:  --tags @rates_orders_parcel_select_ground_zone_7 --guess LOG_LEVEL=info
+rates_orders_parcel_select_ground_zone_8:  --tags @rates_orders_parcel_select_ground_zone_8 --guess LOG_LEVEL=info
+rates_orders_parcel_select_ground_zone_9:  --tags @rates_orders_parcel_select_ground_zone_9 --guess LOG_LEVEL=info
+
+rates_orders_pme_comm_base_zone_1:  --tags @rates_orders_pme_comm_base_zone_1 --guess LOG_LEVEL=info
+rates_orders_pme_comm_base_zone_2:  --tags @rates_orders_pme_comm_base_zone_2 --guess LOG_LEVEL=info
+rates_orders_pme_comm_base_zone_3:  --tags @rates_orders_pme_comm_base_zone_3 --guess LOG_LEVEL=info
+rates_orders_pme_comm_base_zone_4:  --tags @rates_orders_pme_comm_base_zone_4 --guess LOG_LEVEL=info
+rates_orders_pme_comm_base_zone_5:  --tags @rates_orders_pme_comm_base_zone_5 --guess LOG_LEVEL=info
+rates_orders_pme_comm_base_zone_6:  --tags @rates_orders_pme_comm_base_zone_6 --guess LOG_LEVEL=info
+rates_orders_pme_comm_base_zone_7:  --tags @rates_orders_pme_comm_base_zone_7 --guess LOG_LEVEL=info
+rates_orders_pme_comm_base_zone_8:  --tags @rates_orders_pme_comm_base_zone_8 --guess LOG_LEVEL=info
+rates_orders_pme_comm_base_zone_9:  --tags @rates_orders_pme_comm_base_zone_9 --guess LOG_LEVEL=info
+rates_orders_pme_comm_plus_zone_1:  --tags @rates_orders_pme_comm_plus_zone_1 --guess LOG_LEVEL=info
+rates_orders_pme_comm_plus_zone_2:  --tags @rates_orders_pme_comm_plus_zone_2 --guess LOG_LEVEL=info
+rates_orders_pme_comm_plus_zone_3:  --tags @rates_orders_pme_comm_plus_zone_3 --guess LOG_LEVEL=info
+rates_orders_pme_comm_plus_zone_4:  --tags @rates_orders_pme_comm_plus_zone_4 --guess LOG_LEVEL=info
+rates_orders_pme_comm_plus_zone_5:  --tags @rates_orders_pme_comm_plus_zone_5 --guess LOG_LEVEL=info
+rates_orders_pme_comm_plus_zone_6:  --tags @rates_orders_pme_comm_plus_zone_6 --guess LOG_LEVEL=info
+rates_orders_pme_comm_plus_zone_7:  --tags @rates_orders_pme_comm_plus_zone_7 --guess LOG_LEVEL=info
+rates_orders_pme_comm_plus_zone_8:  --tags @rates_orders_pme_comm_plus_zone_8 --guess LOG_LEVEL=info
+rates_orders_pme_comm_plus_zone_9:  --tags @rates_orders_pme_comm_plus_zone_9 --guess LOG_LEVEL=info
+
+rates_orders_pm_comm_base_zone_1:  --tags @rates_orders_pm_comm_base_zone_1 --guess LOG_LEVEL=info
+rates_orders_pm_comm_base_zone_2:  --tags @rates_orders_pm_comm_base_zone_2 --guess LOG_LEVEL=info
+rates_orders_pm_comm_base_zone_3:  --tags @rates_orders_pm_comm_base_zone_3 --guess LOG_LEVEL=info
+rates_orders_pm_comm_base_zone_4:  --tags @rates_orders_pm_comm_base_zone_4 --guess LOG_LEVEL=info
+rates_orders_pm_comm_base_zone_5:  --tags @rates_orders_pm_comm_base_zone_5 --guess LOG_LEVEL=info
+rates_orders_pm_comm_base_zone_6:  --tags @rates_orders_pm_comm_base_zone_6 --guess LOG_LEVEL=info
+rates_orders_pm_comm_base_zone_7:  --tags @rates_orders_pm_comm_base_zone_7 --guess LOG_LEVEL=info
+rates_orders_pm_comm_base_zone_8:  --tags @rates_orders_pm_comm_base_zone_8 --guess LOG_LEVEL=info
+rates_orders_pm_comm_base_zone_9:  --tags @rates_orders_pm_comm_base_zone_9 --guess LOG_LEVEL=info
+rates_orders_pm_comm_plus_zone_1:  --tags @rates_orders_pm_comm_plus_zone_1 --guess LOG_LEVEL=info
+rates_orders_pm_comm_plus_zone_2:  --tags @rates_orders_pm_comm_plus_zone_2 --guess LOG_LEVEL=info
+rates_orders_pm_comm_plus_zone_3:  --tags @rates_orders_pm_comm_plus_zone_3 --guess LOG_LEVEL=info
+rates_orders_pm_comm_plus_zone_4:  --tags @rates_orders_pm_comm_plus_zone_4 --guess LOG_LEVEL=info
+rates_orders_pm_comm_plus_zone_5:  --tags @rates_orders_pm_comm_plus_zone_5 --guess LOG_LEVEL=info
+rates_orders_pm_comm_plus_zone_6:  --tags @rates_orders_pm_comm_plus_zone_6 --guess LOG_LEVEL=info
+rates_orders_pm_comm_plus_zone_7:  --tags @rates_orders_pm_comm_plus_zone_7 --guess LOG_LEVEL=info
+rates_orders_pm_comm_plus_zone_8:  --tags @rates_orders_pm_comm_plus_zone_8 --guess LOG_LEVEL=info
+rates_orders_pm_comm_plus_zone_9:  --tags @rates_orders_pm_comm_plus_zone_9 --guess LOG_LEVEL=info
+
+rates_orders_pmi_comm_base_group_1: --tags @rates_orders_pmi_comm_base_group_1 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_base_group_2: --tags @rates_orders_pmi_comm_base_group_2 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_base_group_3: --tags @rates_orders_pmi_comm_base_group_3 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_base_group_4: --tags @rates_orders_pmi_comm_base_group_4 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_base_group_5: --tags @rates_orders_pmi_comm_base_group_5 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_base_group_6: --tags @rates_orders_pmi_comm_base_group_6 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_base_group_7: --tags @rates_orders_pmi_comm_base_group_7 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_base_group_8: --tags @rates_orders_pmi_comm_base_group_8 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_base_group_9: --tags @rates_orders_pmi_comm_base_group_9 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_base_group_10: --tags @rates_orders_pmi_comm_base_group_10 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_base_group_11: --tags @rates_orders_pmi_comm_base_group_11 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_base_group_12: --tags @rates_orders_pmi_comm_base_group_12 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_base_group_13: --tags @rates_orders_pmi_comm_base_group_13 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_base_group_14: --tags @rates_orders_pmi_comm_base_group_14 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_base_group_15: --tags @rates_orders_pmi_comm_base_group_15 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_base_group_16: --tags @rates_orders_pmi_comm_base_group_16 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_base_group_17: --tags @rates_orders_pmi_comm_base_group_17 --guess LOG_LEVEL=info
+
+rates_orders_pmi_comm_plus_group_1: --tags @rates_orders_pmi_comm_plus_group_1 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_plus_group_2: --tags @rates_orders_pmi_comm_plus_group_2 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_plus_group_3: --tags @rates_orders_pmi_comm_plus_group_3 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_plus_group_4: --tags @rates_orders_pmi_comm_plus_group_4 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_plus_group_5: --tags @rates_orders_pmi_comm_plus_group_5 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_plus_group_6: --tags @rates_orders_pmi_comm_plus_group_6 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_plus_group_7: --tags @rates_orders_pmi_comm_plus_group_7 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_plus_group_8: --tags @rates_orders_pmi_comm_plus_group_8 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_plus_group_9: --tags @rates_orders_pmi_comm_plus_group_9 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_plus_group_10: --tags @rates_orders_pmi_comm_plus_group_10 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_plus_group_11: --tags @rates_orders_pmi_comm_plus_group_11 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_plus_group_12: --tags @rates_orders_pmi_comm_plus_group_12 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_plus_group_13: --tags @rates_orders_pmi_comm_plus_group_13 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_plus_group_14: --tags @rates_orders_pmi_comm_plus_group_14 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_plus_group_15: --tags @rates_orders_pmi_comm_plus_group_15 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_plus_group_16: --tags @rates_orders_pmi_comm_plus_group_16 --guess LOG_LEVEL=info
+rates_orders_pmi_comm_plus_group_17: --tags @rates_orders_pmi_comm_plus_group_17 --guess LOG_LEVEL=info
+
+rates_orders_pmei_comm_base_group_1: --tags @rates_orders_pmei_comm_base_group_1 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_base_group_2: --tags @rates_orders_pmei_comm_base_group_2 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_base_group_3: --tags @rates_orders_pmei_comm_base_group_3 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_base_group_4: --tags @rates_orders_pmei_comm_base_group_4 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_base_group_5: --tags @rates_orders_pmei_comm_base_group_5 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_base_group_6: --tags @rates_orders_pmei_comm_base_group_6 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_base_group_7: --tags @rates_orders_pmei_comm_base_group_7 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_base_group_8: --tags @rates_orders_pmei_comm_base_group_8 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_base_group_9: --tags @rates_orders_pmei_comm_base_group_9 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_base_group_10: --tags @rates_orders_pmei_comm_base_group_10 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_base_group_11: --tags @rates_orders_pmei_comm_base_group_11 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_base_group_12: --tags @rates_orders_pmei_comm_base_group_12 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_base_group_13: --tags @rates_orders_pmei_comm_base_group_13 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_base_group_14: --tags @rates_orders_pmei_comm_base_group_14 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_base_group_15: --tags @rates_orders_pmei_comm_base_group_15 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_base_group_16: --tags @rates_orders_pmei_comm_base_group_16 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_base_group_17: --tags @rates_orders_pmei_comm_base_group_17 --guess LOG_LEVEL=info
+
+rates_orders_pmei_comm_plus_group_1: --tags @rates_orders_pmei_comm_plus_group_1 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_plus_group_2: --tags @rates_orders_pmei_comm_plus_group_2 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_plus_group_3: --tags @rates_orders_pmei_comm_plus_group_3 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_plus_group_4: --tags @rates_orders_pmei_comm_plus_group_4 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_plus_group_5: --tags @rates_orders_pmei_comm_plus_group_5 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_plus_group_6: --tags @rates_orders_pmei_comm_plus_group_6 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_plus_group_7: --tags @rates_orders_pmei_comm_plus_group_7 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_plus_group_8: --tags @rates_orders_pmei_comm_plus_group_8 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_plus_group_9: --tags @rates_orders_pmei_comm_plus_group_9 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_plus_group_10: --tags @rates_orders_pmei_comm_plus_group_10 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_plus_group_11: --tags @rates_orders_pmei_comm_plus_group_11 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_plus_group_12: --tags @rates_orders_pmei_comm_plus_group_12 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_plus_group_13: --tags @rates_orders_pmei_comm_plus_group_13 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_plus_group_14: --tags @rates_orders_pmei_comm_plus_group_14 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_plus_group_15: --tags @rates_orders_pmei_comm_plus_group_15 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_plus_group_16: --tags @rates_orders_pmei_comm_plus_group_16 --guess LOG_LEVEL=info
+rates_orders_pmei_comm_plus_group_17: --tags @rates_orders_pmei_comm_plus_group_17 --guess LOG_LEVEL=info
+#END RATES ORDERS -------------------------------------------------------------
 
 bvt_mail_piece_validation: --tags @bvt_mail_piece_validation --guess PRINTER=factory
 
@@ -187,7 +308,7 @@ bvt_mail_piece_validation: --tags @bvt_mail_piece_validation --guess PRINTER=fac
 # PAM
 pam_db_user_appscap_provisioning: --tags @pam_db_user_appscap_provisioning --guess WEB_APP=pam --guess LOG_LEVEL=info MAX_WINDOW=false
 
-mail_bvt_advanced_options: --tags @mail_bvt_advanced_options --guess 
+mail_bvt_advanced_options: --tags @mail_bvt_advanced_options --guess
 
 registration_normal_workflow: --tags @registration_normal_workflofoxw WEB_APP=registration --guess MAX_WINDOW=true
 registration_profile_page_ui_validation: --tags @registration_profile_page_ui_validation WEB_APP=registration --guess MAX_WINDOW=true
@@ -243,7 +364,7 @@ bvt_shipping_address_management: --tags @bvt_shipping_address_management --guess
 bvt_ambigious_address: --tags @bvt_ambigious_address --guess WEB_APP=orders
 bvt_bulk_update: --tags @bvt_bulk_update --guess WEB_APP=orders
 bvt_address_cleansing: --tags @bvt_address_cleansing --guess WEB_APP=orders
-bvt_international_shipping: --tags @bvt_international_shipping --guess 
+bvt_international_shipping: --tags @bvt_international_shipping --guess
 bvt_new_order: --tags @bvt_new_order --guess LOG_LEVEL=info
 bvt_printing: --tags @bvt_printing --guess WEB_APP=orders PRINTER=factory
 bvt_purchasing: --tags @bvt_purchasing --guess WEB_APP=orders
@@ -251,7 +372,7 @@ bvt_purchasing_cc: --tags @bvt_purchasing_cc --guess WEB_APP=orders USR=cchrvv6q
 bvt_purchasing_stg: --tags @bvt_purchasing_stg --guess WEB_APP=orders USR=stgugqex0q4 PW=pass111
 bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic --guess HEALTHCHECK=falsepa WEB_APP=orders
 bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess WEB_APP=orders
-bvt_shipstation_search: --tags @bvt_shipstation_search --guess 
+bvt_shipstation_search: --tags @bvt_shipstation_search --guess
 bvt_orders_ship_date: --tags @bvt_orders_ship_date --guess WEB_APP=orders
 bvt_orders_ship_date_calendar: --tags @bvt_orders_ship_date_calendar --guess WEB_APP=orders
 bvt_form_validation_orders_details: --tags @bvt_form_validation_orders_details --guess WEB_APP=orders
@@ -421,15 +542,15 @@ square_workflow: --tags @square_workflow --guess WEB_APP=orders
 paypal_workflow: --tags @paypal_workflow --guess WEB_APP=orders
 
 # ----------------------------# MAIL Bugs
-bugs_advanced_options: --tags @bugs_advanced_options --guess 
-bugs_certified_mail: --tags @bugs_certified_mail --guess 
-bugs_contacts_modal: --tags @bugs_contacts_modal --guess 
-bugs_envelope: --tags @bugs_envelope --guess 
-bugs_extra_services: --tags @bugs_extra_services --guess 
-bugs_roll: --tags @bugs_roll --guess 
-bugs_shipping_label: --tags @bugs_shipping_label --guess 
-bugs_stamps_print: --tags @bugs_stamps_print --guess 
-bugs_stamps: --tags @bugs_stamps --guess 
+bugs_advanced_options: --tags @bugs_advanced_options --guess
+bugs_certified_mail: --tags @bugs_certified_mail --guess
+bugs_contacts_modal: --tags @bugs_contacts_modal --guess
+bugs_envelope: --tags @bugs_envelope --guess
+bugs_extra_services: --tags @bugs_extra_services --guess
+bugs_roll: --tags @bugs_roll --guess
+bugs_shipping_label: --tags @bugs_shipping_label --guess
+bugs_stamps_print: --tags @bugs_stamps_print --guess
+bugs_stamps: --tags @bugs_stamps --guess
 
 # MAIL
 mail_authentication: --tags @mail_authentication --guess
@@ -438,12 +559,12 @@ mail_bvt_ship_date: --tags @mail_bvt_ship_date --guess
 mail_bvt_address_cleansing: --tags @mail_bvt_address_cleansing --guess 
 mail_bvt_contacts: --tags @mail_bvt_contacts --guess 
 mail_bvt_envelopes: --tags @mail_bvt_envelopes --guess PRINTER=factory
-mail_bvt_extra_services: --tags @mail_bvt_extra_services --guess 
-mail_bvt_purchasing: --tags @mail_bvt_purchasing --guess 
+mail_bvt_extra_services: --tags @mail_bvt_extra_services --guess
+mail_bvt_purchasing: --tags @mail_bvt_purchasing --guess
 mail_bvt_stamps: --tags @mail_bvt_stamps --guess PRINTER=factory
-mail_bvt_international: --tags @mail_bvt_international --guess 
-mail_reset: --tags @mail_reset --guess 
-mail_bvt_ui_validation: --tags @mail_bvt_ui_validation --guess 
+mail_bvt_international: --tags @mail_bvt_international --guess
+mail_reset: --tags @mail_reset --guess
+mail_bvt_ui_validation: --tags @mail_bvt_ui_validation --guess
 
 dev_mail_authentication: --tags @mail_authentication --guess HEALTHCHECK=false
 dev_mail_bvt_address_cleansing: --tags @mail_bvt_address_cleansing --guess HEALTHCHECK=false
@@ -504,18 +625,18 @@ mail_print_shipping_label_sdc1200_pm_box: --tags @mail_print_shipping_label_sdc1
 mail_print_shipping_label_sdc1200_pm_envelope_package: --tags @mail_print_shipping_label_sdc1200_pm_envelope_package --guess PRINTER=factory
 mail_print_envelope_12: --tags @mail_print_envelope_12 --guess PRINTER=factory
 mail_print_shipping_label_preview_panel_options: --tags @mail_print_shipping_label_preview_panel_options --guess PRINTER=factory
-mail_forgot_username: --tags @mail_forgot_username --guess 
-mail_forgot_password: --tags @mail_forgot_password --guess 
+mail_forgot_username: --tags @mail_forgot_username --guess
+mail_forgot_password: --tags @mail_forgot_password --guess
 
 mail_stamps_series_a_b_c_k_l_ml: --tags @mail_stamps_series_a_b_c_k_l_ml --guess PRINTER=factory
 mail_stamps_series_p_r_s_v_wn: --tags @mail_stamps_series_p_r_s_v_wn --guess PRINTER=factory
 
 mail_print_on_list_of_values: --tags @mail_print_on_list_of_values --guess PRINTER=factory
 mail_print_postage_fields: --tags @mail_print_postage_fields --guess PRINTER=factory
-mail_invalid_credentials: --tags @mail_invalid_credentials --guess 
-mail_manage_shipping_addresses: --tags @mail_manage_shipping_addresses --guess 
-mail_remember_username: --tags @mail_remember_username --guess 
-mail_welcome: --tags @mail_welcome --guess 
+mail_invalid_credentials: --tags @mail_invalid_credentials --guess
+mail_manage_shipping_addresses: --tags @mail_manage_shipping_addresses --guess
+mail_remember_username: --tags @mail_remember_username --guess
+mail_welcome: --tags @mail_welcome --guess
 mail_print_envelope_10_return_address: --tags @mail_print_envelope_10_return_address --guess PRINTER=factory
 mail_print_envelope_10_delivery_address: --tags @mail_print_envelope_10_delivery_address --guess PRINTER=factory
 mail_print_envelope_10_postage: --tags @mail_print_envelope_10_postage --guess PRINTER=factory
@@ -524,7 +645,7 @@ mail_fci_flats: --tags @mail_fci_flats --guess PRINTER=factory
 mail_hidden_postage: --tags @mail_hidden_postage --guess PRINTER=factory
 
 mail_bug_ordersauto_3243: --tags @mail_bug_ordersauto_3243 --guess PRINTER=factory
-mail_manage_printing_options: --tags @mail_manage_printing_options --guess 
+mail_manage_printing_options: --tags @mail_manage_printing_options --guess
 #Partner Portal
 pp_log_in_page_validation: --tags @pp_log_in_page_validation --guess
 pp_header_favicons_browser: --tags @pp_header_favicons_browser --guess

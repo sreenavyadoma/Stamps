@@ -38,7 +38,6 @@ Then /^select print on (.+)$/ do |str|
     print_on.drop_down.safe_click
     # select print on
     print_on.selection(:selection_element, str)
-    print_on.text_field.click
     print_on.text_field.set_attribute('value', '')
     print_on.text_field.set str
     print_on.selection_element.safe_wait_until_present(timeout: 1)

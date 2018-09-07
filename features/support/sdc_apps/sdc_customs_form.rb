@@ -1,4 +1,5 @@
 module SdcWebsite
+
   class SdcCustomsForm < SdcPage
     page_object(:title) { { xpath: '//*[text()="Customs Information"]' } }
     page_object(:add_item) { { xpath: '//*[contains(@class, "x-toolbar-white")]//*[contains(@id, "btnWrap")]' } }
@@ -7,7 +8,7 @@ module SdcWebsite
     page_object(:agree_verify) { { xpath: '//*[contains(@class, "x-docked-bottom")]//div[contains(@class, "x-form-type-checkbox")]' } }
     checkbox(:agree, :agree_chooser, :agree_verify, 'class', 'checked')
 
-    page_object(:close) { { xpath: '//*[contains(@class, "x-window")]//*[text()="Close"]' } }
+    page_object(:close) { { xpath: '//div[starts-with(@id, "customswindow")]//div[contains(@class, "x-panel-default-docked-bottom")]//span[text()="Close"]' } }
     page_object(:x_btn) { { xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]' } }
     page_object(:total) { { xpath: '//*[contains(@class, "x-window")]//*[contains(text(), "Total:")]/..' } }
     page_object(:usps_warning) { { xpath: '//*[text()="You must agree to the USPS Privacy Act Statement"]' } }
