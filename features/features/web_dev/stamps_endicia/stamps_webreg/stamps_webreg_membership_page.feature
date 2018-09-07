@@ -304,10 +304,10 @@ Feature: Stamps WebReg: Membership Page
     Then WL: set membership page billing address to 47 W 13th St
     Then WL: click membership page billing address
     Then WL: select membership page billing address autocomplete index 4
-    Then WL: expect membership page billing address is 47 W 13th St
-    Then WL: expect membership page billing city is San Bernardino
+    Then WL: expect membership page billing address is W 13th St
+    Then WL: expect membership page billing city is Azusa
     Then WL: expect membership page billing state is CA
-    Then WL: expect membership page billing zip is 92405
+    Then WL: expect membership page billing zip is 91702
 
     Then WL: set membership page billing address to 47 W 13th St
     Then WL: click membership page billing address
