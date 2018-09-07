@@ -278,6 +278,14 @@ module SdcGrid
       klass.new.body
     end
 
+    def empty?
+      xpath = '//div[@class="x-grid-empty"]'
+      klass = Class.new(SdcPage) do
+        page_object(:grid_empty) { { xpath: xpath } }
+      end
+      klass.new.grid_empty.present?
+    end
+
     def grid_column(column)
       body.wait_until_present(timeout: 15)
 

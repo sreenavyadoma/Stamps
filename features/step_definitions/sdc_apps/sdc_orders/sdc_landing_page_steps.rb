@@ -77,13 +77,47 @@ Then /^sign-in to orders with (.+)\/(.+)$/ do |usr, pw|
     step 'browser: click sign-in button'
     step 'check for server error'
     if SdcGlobal.web_app.eql? :orders
-      step 'click through windows tutorial'
+      step 'close windows tutorial modal'
+      step 'close learn more modal'
+      step 'close add advanced shipping features modal'
       step 'close whats new modal in orders'
     end
   end
   TestData.hash[:username] = usr
   TestData.hash[:password] = pw
   print 'sign-in to orders... done!'
+end
+
+Then /^close add advanced shipping features modal$/ do
+  modal = SdcWebsite.modals.advanced_shipiping_features
+  modal.window.safe_wait_until_present(timeout: 1)
+  6.times do
+    break unless modal.window.present?
+    modal.x_button.safe_wait_until_present(timeout: 2)
+    modal.x_button.safe_click if modal.x_button.present?
+    modal.window.safe_wait_until_present(timeout: 1)
+  end
+end
+
+Then /^close windows tutorial modal$/ do
+  modal = SdcWebsite.modals.tutorial_window
+  modal.window.safe_wait_until_present(timeout: 1)
+  6.times do
+    break unless modal.window.present?
+    modal.next.safe_wait_until_present(timeout: 2)
+    modal.next.safe_click if modal.next.present?
+    modal.window.safe_wait_until_present(timeout: 1)
+  end
+end
+
+Then /^close learn more modal$/ do
+  modal = SdcWebsite.modals.learn_more
+  modal.window.safe_wait_until_present(timeout: 1)
+  5.times do
+    break unless modal.window.present?
+    modal.close.safe_wait_until_present(timeout: 1)
+    modal.close.safe_click if modal.close.present?
+  end
 end
 
 Then /^close whats new modal in orders$/ do
@@ -119,7 +153,7 @@ Then /^loading orders...$/ do
   landing_page.username.safe_wait_while_present(timeout: 120)
   step 'check for server error'
   SdcLogger.debug 'loading_orders.safe_wait_until_present(timeout: 30)...'
-  loading_orders.safe_wait_until_present(timeout: 20)
+  loading_orders.safe_wait_until_present(timeout: 5)
   step 'check for server error'
   SdcLogger.debug 'loading_orders.safe_wait_while_present(timeout: 60)...'
   loading_orders.safe_wait_while_present(timeout: 90)
