@@ -423,7 +423,7 @@ Then /^WL: expect user is navigated to print page for (.*)$/ do |str|
 
   common_page= WhiteLabel.common_page
 
-  if SdcEnv.browser == :edge
+  if TestSession.env.local_browser == :edge
   common_page.print_edge_detail_link.safe_wait_until_present(timeout: 10)
   common_page.print_edge_detail_link.click if common_page.print_edge_detail_link.present?
   common_page.print_edge_go_on_link.click if common_page.print_edge_go_on_link.present?
