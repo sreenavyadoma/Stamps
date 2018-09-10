@@ -206,7 +206,7 @@ Then /^close customs information form$/ do
   step 'Save Customs Information form Total amount'
   customs_form = SdcWebsite.customs_form
   ready_to_print = SdcWebsite.modals.ready_to_print
-  3.times do
+  8.times do
     customs_form.close.safe_click
     customs_form.close.safe_wait_while_present(timeout: 1)
     ready_to_print.window.safe_wait_while_present(timeout: 2)

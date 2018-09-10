@@ -33,6 +33,7 @@ module SdcWebsite
 
     class TutorialWindow < TutorialBase
       page_object(:next) { { xpath: '//span[text()="Next"]' } }
+      page_object(:close) { { xpath: '//span[contains(text(), "Close")]' } }
     end
 
     class LearnMore < TutorialBase
