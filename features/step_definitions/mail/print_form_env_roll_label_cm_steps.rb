@@ -7,6 +7,10 @@ Then /^set print form mail-to (?:|to )(?:|a )(?:|random )address(?: to| in| betw
   TestData.hash[:address] = address
 end
 
+Then /^select from print form mail-to text area list of values (.+)$/ do |str|
+
+end
+
 Then /^[Ee]xpect Print form Mail To is disabled$/ do
   pending
   #expect(stamps.mail.print_form.mail_to.enabled?).to be(true), "Print form Mail To is NOT disabled"
