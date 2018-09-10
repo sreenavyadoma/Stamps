@@ -448,12 +448,15 @@ end
 Then /^set order details domestic ship-to country to (.*)$/ do |str|
   step 'show order ship-to details'
   country = SdcOrders.order_details.ship_to.domestic.country
-  country.drop_down.click
-  selection = country.selection(str)
-  selection.scroll_into_view
-  selection.safe_click
-  actual_result = country.text_field.text_value
-  expect(actual_result).to eql str
+  3.times do
+    country.text_field.set str
+    country.text_field.set str
+    country.text_field.send_keys :enter
+    step 'blur out on order details form'
+    country.text_field.scroll_into_view
+    break if country.text_field.text_value.eql? str
+  end
+  expect(country.text_field.text_value).to eql str
   TestData.hash[:country] = str
 end
 
@@ -490,7 +493,7 @@ end
 Then /^set order details international ship-to name to (.*)$/ do |str|
   str = TestHelper.rand_full_name if str.downcase.include?('random')
   international = SdcOrders.order_details.ship_to.international
-  international.name.wait_until_present(timeout: 2)
+  international.name.wait_until_present(timeout: 5)
   international.name.send_keys(:enter)
   international.name.send_keys(:tab)
   international.name.set(str)

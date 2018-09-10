@@ -339,6 +339,7 @@ Then /^PP: set dashboard page from date field to (?:random date|(.*))$/ do |str|
     from_date_field.send_keys(:backspace)
   end
 
+  from_date_field.scroll_into_view
   from_date_field.set(TestData.hash[:from_date] = (str.nil?) ? (TestData.hash[:from_date]) : str)
   from_date_field.parent.click
   SdcLogger.info "From: #{TestData.hash[:from_date]}\n"
@@ -350,7 +351,7 @@ Then /^PP: set dashboard page to date field to (?:random date|(.*))$/ do |str|
   while to_date_field.text_value != ''
     to_date_field.send_keys(:backspace)
   end
-
+  to_date_field.scroll_into_view
   to_date_field.set(TestData.hash[:to_date] = (str.nil?) ? (TestData.hash[:to_date]) : str)
   to_date_field.parent.click
   SdcLogger.info "To:: #{TestData.hash[:to_date]}\n"
@@ -417,7 +418,17 @@ Then /^PP: expect CSV file to be downloaded with correct file name$/ do
    downloads_before = Dir.entries download_directory
 
   case(TestSession.env.local_browser)
-    when :chrome
+    when :gc_web_dev
+      600.times do
+        difference = Dir.entries(download_directory)
+        if difference.last.exclude?('.crdownload')
+          TestData.hash[:file_name]  =  difference.last
+          break
+        end
+        sleep 1
+      end
+
+    when :gc_iPad
       600.times do
         difference = Dir.entries(download_directory)
         if difference.last.exclude?('.crdownload')
@@ -437,7 +448,7 @@ Then /^PP: expect CSV file to be downloaded with correct file name$/ do
         sleep 1
       end
 
-    when :firefox
+    when :ff_web_dev
       600.times do
         if  Dir.entries(download_directory).size == 3
           TestData.hash[:file_name]  =  Dir.entries(download_directory)[2]
@@ -457,14 +468,12 @@ Then /^PP: expect CSV file to be downloaded with correct file name$/ do
         end
         sleep 1
       end
-
   end
 
 
   expect(TestData.hash[:file_name]).to eql(TestData.hash[:file_name_expected])
 
 end
-
 
 Then /^PP: generate random date for from and to date fields$/ do
   last_update_on = PartnerPortal.dashboard_page.contract_last_updated_on.text_value.split(':').last.strip

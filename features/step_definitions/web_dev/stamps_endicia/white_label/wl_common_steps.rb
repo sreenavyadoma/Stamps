@@ -308,6 +308,7 @@ end
 
 Then /^WL: set username taken to (?:random value|(.*))/ do |str|
   new_username = WhiteLabel.membership_page.new_username
+  new_username.wait_until_present(timeout: 10)
   new_username.set((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
   new_username.click
   new_username.send_keys(:tab)
@@ -325,6 +326,7 @@ end
 
 Then /^WL: expect username taken header to be (.*)$/ do |str|
   membership_page = WhiteLabel.membership_page
+  step 'pause for 1 second'
   membership_page.username_taken_header.wait_until_present(timeout: 15)
   expect(membership_page.username_taken_header.text_value.strip).to eql(str)
 end
@@ -423,7 +425,7 @@ Then /^WL: expect user is navigated to print page for (.*)$/ do |str|
 
   common_page= WhiteLabel.common_page
 
-  if SdcEnv.browser == :edge
+  if TestSession.env.local_browser == :edge
   common_page.print_edge_detail_link.safe_wait_until_present(timeout: 10)
   common_page.print_edge_detail_link.click if common_page.print_edge_detail_link.present?
   common_page.print_edge_go_on_link.click if common_page.print_edge_go_on_link.present?

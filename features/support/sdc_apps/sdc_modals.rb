@@ -17,21 +17,34 @@ module SdcWebsite
     end
 
     class SdcWhatsNew < SdcPage
+      page_object(:window) { { xpath: '//div[contains(@id,"dialoguemodal")][contains(@class,"x-window-default-closable")]' } }
+      page_object(:x_button) { { xpath: '//span[contains(@class, "icon-mobile-close-light")]' } }
       page_object(:title) { { xpath: '//div[contains(text(), "What")]' } }
       page_object(:close) { { xpath: '//span[contains(text(), "Close")]' } }
       page_object(:more_info) { { xpath: '//span[contains(text(), "More Info")]' } }
     end
 
-    class WindowsTutorial < SdcPage
+    class TutorialBase < SdcPage
       page_object(:window) { { xpath: '//div[@id="sdc-window-tutorial"]' } }
       page_object(:title) { { xpath: '//div[@id="sdc-window-tutorial_header-targetEl"]//div[contains(@class, "x-title-text-default")]' } }
       page_object(:body) { { xpath: '//div[@id="sdc-window-tutorial-innerCt"]' } }
-      page_object(:next) { { xpath: '//span[text()="Next"]' } }
-      page_object(:close) { { xpath: '//div[@id="sdc-window-tutorial_header-innerCt"]//span[contains(@class, "sdc-icon-mobile-close-light")]' } }
+      page_object(:x_button) { { xpath: '//span[contains(@class, "icon-mobile-close-light")]' } }
     end
 
-    class WelcomeTutorial < SdcPage
+    class TutorialWindow < TutorialBase
+      page_object(:next) { { xpath: '//span[text()="Next"]' } }
+      page_object(:close) { { xpath: '//span[contains(text(), "Close")]' } }
+    end
 
+    class LearnMore < TutorialBase
+      page_object(:close) { { xpath: '//span[contains(text(), "Close")]' } }
+      page_object(:learn_more) { { xpath: '//span[contains(text(), "Learn More")]' } }
+    end
+
+
+    class AddAdvancedShippingFeatures < SdcPage
+      page_object(:window) { { xpath: '//div[starts-with(@id, "shipstationsinglepageupgradeview-")][contains(@class, "x-window-default-closable")]' } }
+      page_object(:x_button) { { xpath: '//span[contains(@class, "icon-mobile-close-light")]' } }
     end
 
     class << self
@@ -47,10 +60,17 @@ module SdcWebsite
         ReadyToPrint.new
       end
 
-      def windows_tutorial
-        WindowsTutorial.new
+      def tutorial_window
+        TutorialWindow.new
       end
 
+      def learn_more
+        LearnMore.new
+      end
+
+      def advanced_shipiping_features
+        AddAdvancedShippingFeatures.new
+      end
     end
   end
 end

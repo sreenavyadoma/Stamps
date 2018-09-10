@@ -16,8 +16,8 @@ module SdcOrders
 
   class SdcShipToCountryDom < SdcPage
     #page_object(:drop_down) { { xpath: '//div[contains(@id, "matltocountrydroplist-trigger-picker")]' } }
-    page_object(:drop_down) { { xpath: '//div[contains(@class, "shipto-view")]//div[contains(@class, "x-fit-item")][1]//div[contains(@id, "-trigger-picker")][contains(@id, "combo")]' } }
-    page_object(:text_field) { { xpath: '//div[contains(@class, "shipto-view")]//div[contains(@class, "x-fit-item")][1]//input[@name="ShipCountryCode"]' } }
+    page_object(:drop_down) { { xpath: '//div[@id="sdc-mainpanel-matltocountrydroplist-trigger-picker"]' } }
+    page_object(:text_field, tag: :text_field) { { xpath: '//input[@id="sdc-mainpanel-matltocountrydroplist-inputEl"]' } }
 
     def selection(str)
       SdcElement.new(page_objects(:selections) { { xpath: "//li[text()='#{str}']" } }.last)
