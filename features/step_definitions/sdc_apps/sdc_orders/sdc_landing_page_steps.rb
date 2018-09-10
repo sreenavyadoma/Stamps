@@ -73,6 +73,7 @@ Then /^[Ss]ign-in [Tt]o [Oo]rders$/ do
     step 'close whats new modal in orders'
   end
   SdcEnv.sdc_app = :orders
+  SdcGrid.body.wait_until_present(timeout: 20)
   end
 
 Then /^click sign-in button on browser$/ do

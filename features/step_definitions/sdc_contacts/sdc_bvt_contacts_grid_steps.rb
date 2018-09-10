@@ -2,7 +2,6 @@
 Then /^[Ii]n [Cc]ontacts [Gg]rid [Cc]heck [Rr]ow [Hh]eader$/ do
   contacts_grid_body = SdcContacts.contacts_body
   contacts_grid_body.safe_wait_until_present(timeout: 60)
-  #checkbox = SdcContacts.contacts_column.contacts_header_element(:checkbox)
   checkbox = SdcContacts.contacts_grid_column(:checkbox)
   checkbox.safe_wait_until_present(timeout: 30)
   checkbox.check  unless checkbox.checked?
@@ -104,9 +103,12 @@ Then /^[Ee]xpect [Nn]ame [Dd]etails for (.*) [Ii]n [Cc]ontacts [Gg]rid [Ii]s [Uu
   end
 end
 
+#Validate Details in Contacts Grid
 Then /^[Ee]xpect [Vv]alue [Oo]f (.*) in [Cc]ontacts [Gg]rid is (.*)$/ do |col,value|
   contacts_grid_body = SdcContacts.contacts_body
   contacts_grid_body.safe_wait_until_present(timeout: 60)
+
+  p '**Grid**'
   if value=='blank'
     new_value = ""
   else
@@ -114,14 +116,7 @@ Then /^[Ee]xpect [Vv]alue [Oo]f (.*) in [Cc]ontacts [Gg]rid is (.*)$/ do |col,va
   end
 
   case col
-      #phone: 'Phone',
-      #phone_ext: 'Ext.',
-      #city: 'City',
-      #state_prv: 'State/Prv',
-      #street_address: 'Street Address',
-      #postal_code: 'Postal Code',
-      #cost_code: 'Postal Code',
-      #reference_no: 'Reference #'
+
   when 'Name'
   column = SdcContacts.contacts_grid_column(:name)
   expect(column).present?
@@ -167,10 +162,55 @@ Then /^[Ee]xpect [Vv]alue [Oo]f (.*) in [Cc]ontacts [Gg]rid is (.*)$/ do |col,va
     expect(column).present?
     expect(column.contacts_header_text).to eql('Department')
 
+  when 'Country'
+    column = SdcContacts.contacts_grid_column(:country)
+    expect(column).present?
+    expect(column.contacts_header_text).to eql('Country')
+
+  when 'Street Address'
+    column = SdcContacts.contacts_grid_column(:street_address)
+    expect(column).present?
+    expect(column.contacts_header_text).to eql('Street Address')
+
+  when 'City'
+    column = SdcContacts.contacts_grid_column(:city)
+    expect(column).present?
+    expect(column.contacts_header_text).to eql('City')
+
+  when 'State/Prv'
+    column = SdcContacts.contacts_grid_column(:state_prv)
+    expect(column).present?
+    expect(column.contacts_header_text).to eql('State/Prv')
+
+    case value
+      when 'Florida'
+        new_value='FL'
+    end
+
+  when 'Postal Code'
+    column = SdcContacts.contacts_grid_column(:postal_code)
+    expect(column).present?
+    expect(column.contacts_header_text).to eql('Postal Code')
+
   when 'Email'
     column = SdcContacts.contacts_grid_column(:email)
     expect(column).present?
     expect(column.contacts_header_text).to eql('Email')
+
+  when 'Phone'
+    column = SdcContacts.contacts_grid_column(:phone)
+    expect(column).present?
+    expect(column.contacts_header_text).to eql('Phone')
+
+  when 'Phone Extension'
+    column = SdcContacts.contacts_grid_column(:phone_ext)
+    expect(column).present?
+    expect(column.contacts_header_text).to eql('Ext.')
+
+  when 'Groups'
+    column = SdcContacts.contacts_grid_column(:groups)
+    expect(column).present?
+    expect(column.contacts_header_text).to eql('Groups')
 
   when 'Reference Number'
     column = SdcContacts.contacts_grid_column(:reference_no)
@@ -182,9 +222,15 @@ Then /^[Ee]xpect [Vv]alue [Oo]f (.*) in [Cc]ontacts [Gg]rid is (.*)$/ do |col,va
     expect(column).present?
     expect(column.contacts_header_text).to eql('Cost Code')
   end
+
   p column.contacts_header_text
   actual_value = column.contacts_text_at_row(1)
   p 'given value :' + value
   p 'actual value :' + actual_value
-  expect(actual_value).to eql new_value
+  if column.contacts_header_text =='Country'
+    val=actual_value.split("-")
+    expect(val[1].strip).to eql new_value.strip
+  else
+    expect(actual_value.strip).to eql new_value.strip
+  end
 end

@@ -1,3 +1,73 @@
+Then /^[Ss]et [Cc]ontact [Dd]etails to$/ do |table|
+  param = table.hashes.first
+
+  full_name = param['full_name']
+  company = param['company']
+  country = param['country']
+  street_address = param['street_address']
+  city = param['city']
+  state = param['state']
+  postal_code = param['postal_code']
+  email = param['email']
+  phone = param['phone']
+  phone_ext = param['phone_ext']
+  groups =  param['groups']
+  reference_number = param['reference_number']
+  cost_code =  param['cost_code']
+
+
+  if full_name.nil? || full_name.downcase.include?('random')
+        full_name = TestHelper.rand_full_name
+  end
+
+  if company.nil? || company.downcase.include?('random')
+    company = TestHelper.rand_comp_name
+  end
+
+  if street_address && street_address.downcase.include?('random')
+    street_address = TestHelper.rand_alpha_numeric(min: 2, max: 7)
+  end
+
+  if country.nil? || country.size.zero?
+    country = 'United States'
+  end
+
+  if phone.nil? || phone.downcase.include?('random')
+    phone = TestHelper.rand_phone
+  end
+
+  if email.nil? || email.downcase.include?('random')
+    email = TestHelper.rand_email
+  end
+
+  step "set contact details country to #{country}"
+  step "set contact details Street Address to #{street_address}"
+  step "set contact details city to #{city}"
+  step "set contact details state to #{state}"
+  step "set contact details postal code to #{postal_code}"
+  step "set contact details email to #{email}"
+  step "set contact details phone to #{phone}"
+  step "set contact details phone extension to #{phone_ext}"
+  step "set contact details groups to #{groups}"
+  step "set contact details reference number to #{reference_number}"
+  step "set contact details cost code to #{cost_code}"
+
+  TestData.hash[:full_name] = full_name
+  TestData.hash[:company] = company
+  TestData.hash[:country] = country
+  TestData.hash[:street_address] = street_address
+  TestData.hash[:city] = city
+  TestData.hash[:state] = state
+  TestData.hash[:postal_code] = postal_code
+  TestData.hash[:email] = email
+  TestData.hash[:phone] = phone
+  TestData.hash[:phone_ext] = phone_ext
+  TestData.hash[:groups] = groups
+  TestData.hash[:cost_code] = cost_code
+  TestData.hash[:reference_number] = reference_number
+
+end
+
 Then /^[Ss]et [Cc]ontact [Dd]etails [Nn]ame [Tt]o (.*)$/ do |str|
   contacts_detail= SdcContacts.contacts_detail
   contacts_detail.name.safe_wait_until_present(timeout: 15)
@@ -228,9 +298,101 @@ Then /^[Ss]elect (.*) from dropdown menu$/ do |menu_item|
   end
 end
 
-  Then /^[Ee]xpand [Cc]ollapsed [Cc]ontact [Dd]etails [Pp]anel$/ do
+Then /^[Ee]xpand [Cc]ollapsed [Cc]ontact [Dd]etails [Pp]anel$/ do
     contact_detail = SdcContacts.contacts_detail
     contact_detail.expand_button.wait_until_present(timeout: 10)
     contact_detail.expand_button.flash
     contact_detail.expand_button.click
+end
+
+#Validation of Values on the Details Panel
+Then /^[Ee]xpect [Vv]alue [Oo]f (.*) in [Cc]ontacts [Dd]etail [Pp]anel is (.*)$/ do |col,value|
+    contacts_detail= SdcContacts.contacts_detail
+    contacts_detail.reference_number.safe_wait_until_present(timeout: 15)
+	
+p '**Details Panel**'
+
+  if value=='blank'
+    new_value = ""
+  else
+    new_value = value
   end
+
+  case col
+
+  when 'Name'
+    actual_value = contacts_detail.name.text_value
+
+  when 'Prefix'
+    name_pre = SdcContacts.contacts_name_prefix
+    actual_value =  name_pre.prefix_text_field.text_value
+
+  when 'First Name'
+    actual_value = contacts_detail.first_name.text_value
+
+  when 'Middle Name'
+    actual_value = contacts_detail.middle_name.text_value
+
+  when 'Last Name'
+    actual_value = contacts_detail.last_name.text_value
+
+  when 'Suffix'
+    actual_value = contacts_detail.name_suffix.text_value
+
+  when 'Company'
+    actual_value = contacts_detail.company.text_value
+
+  when 'Title'
+    actual_value = contacts_detail.title.text_value
+
+  when 'Department'
+    actual_value = contacts_detail.department.text_value
+
+  when 'Country'
+    country = SdcContacts.contacts_country
+    actual_value = country.text_field.text_value
+
+  when 'Street Address'
+    actual_value = contacts_detail.street_address.text_value
+
+  when 'City'
+    actual_value = contacts_detail.city.text_value
+
+  when 'State/Prv' ,'State','Province'
+    if col=='State'
+    state = SdcContacts.contacts_state
+    actual_value = state.text_field.text_value
+      p 'incide case - IF:' + actual_value
+    #actual_value = contacts_detail.state_prv.text_value
+    else
+      actual_value = contacts_detail.state_prv.text_value
+    end
+
+  when 'Postal Code'
+    actual_value = contacts_detail.postal_code.text_value
+
+  when 'Email'
+    actual_value = contacts_detail.email.text_value
+
+  when 'Phone'
+    actual_value = contacts_detail.phone.text_value
+
+  when 'Phone Extension'
+    actual_value = contacts_detail.phone_ext.text_value
+
+  when 'Groups'
+    groups = SdcContacts.contacts_group
+    actual_value = groups.text_field.text_value
+
+  when 'Reference Number'
+    actual_value = contacts_detail.reference_number.text_value
+
+  when 'Cost Code'
+    cost_code = SdcContacts.contacts_cost_code
+    actual_value = cost_code.text_field.text_value
+  end
+  p 'Col: ' + col
+  p 'given value :' + value
+  p 'actual value :' + actual_value
+  expect(actual_value.strip).to eql new_value.strip
+end

@@ -131,6 +131,7 @@ Feature:  Contacts BVT - Contacts Details
   @sdc_contacts_detail_name_singleName
   Scenario: Contacts Details Add Name Scenario 1 :Add/Edit Single Name in Contact Details panel and verify Grid is updated correctly
     Then sign-in to orders
+    Then pause for 5 seconds
     Then navigate to contacts
     Then delete all available contacts with the value CAPT P Al tha Lydia Anand
     Then expect count of contact search results is 0
@@ -173,7 +174,6 @@ Feature:  Contacts BVT - Contacts Details
     Then expect value of Middle Name in contacts grid is MiddleName
     Then expect value of Last Name in contacts grid is LastName
     Then expect value of Suffix in contacts grid is Suffix
-
 
   @sdc_contacts_detail_company_single
   Scenario: Contacts Details Add Company Scenario 1 :Add/Edit Single Company in Contact Details panel

@@ -24,6 +24,7 @@ module SdcContacts
           company: 'Company',
           title: 'Title',
           department: 'Department',
+          country: 'Country',
           email: 'Email',
           phone: 'Phone',
           phone_ext: 'Ext.',
@@ -33,6 +34,7 @@ module SdcContacts
           postal_code: 'Postal Code',
           cost_code: 'Cost Code',
           reference_no: 'Reference #',
+          groups: 'Groups'
       }
     end
 

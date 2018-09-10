@@ -30,11 +30,14 @@ module SdcContacts
     page_object(:title, tag: :text_field,  required: true, timeout: 10) { { xpath: '//*[@id="Title-inputEl"]' } }
     page_object(:error_title,  required: true, timeout: 10){{xpath: '//*[@id="Title-errorEl"]'} }
 
-    page_object(:street_address, required: true, timeout: 20) { { xpath: '//*[@id="StreetAddress-inputEl"]' } }
+    page_object(:street_address, required: true, timeout: 20) { { xpath: '//*[@id="StreetAddress-inputEl"]' }
+    }
     page_object(:city, tag: :text_field,  required: true, timeout: 20) { { xpath: '//*[@id="City-inputEl"]' } }
     #page_object(:state, tag: :text_field,  required: true, timeout: 20) { { xpath: '//*[@id="stateContactDetailsCmb-inputEl"]' } }
     page_object(:province, tag: :text_field,  required: true, timeout: 20) { { xpath: '//*[@id="Province-inputEl"]'} }
+
     page_object(:postal_code, tag: :text_field,  required: true, timeout: 20) { { xpath: '//*[@id="PostalCode-inputEl"]' } }
+
     page_object(:email, tag: :text_field, required: true, timeout: 20) { { xpath: '//*[@id="Email-inputEl"]' } }
     #text_field(:email){ { xpath: '//*(@id="Email-inputEl")]' } }
     page_object(:phone, tag: :text_field,  required: true, timeout: 20) { { xpath: '//*[@id="Phone-inputEl"]' } }
