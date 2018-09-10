@@ -11,7 +11,7 @@ end
 
 Then /^WL: click membership page submit button$/ do
   step 'pause for 1 second'
-  WhiteLabel.membership_page.submit.click!
+  WhiteLabel.membership_page.submit.click
   step 'pause for 1 second'
 end
 
