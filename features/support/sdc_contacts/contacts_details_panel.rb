@@ -120,4 +120,50 @@ module SdcContacts
     page_object(:email_error_message){{xpath: '//div[@id="Email-errorEl"]//li'}}
   end
 
+  class << self
+  def contacts_detail
+    ContactsDetailsPanel.new
+  end
+
+  def contacts_detail_toolbar_menu
+    ContactsDetailsToolBarMenu.new
+  end
+
+  def contacts_name_prefix
+    ContactsNamePrefix.new
+  end
+
+  def contacts_country
+    ContactsCountry.new
+  end
+
+  def contacts_group
+    ContactsGroup.new
+  end
+
+  def contacts_cost_code
+    ContactsCostCode.new
+  end
+
+  def contacts_state
+    ContactsState.new
+  end
+
+  def contacts_email_error
+    ContactsEmailErrorMessage.new
+  end
+
+  def contacts_column
+    ContactsGridColumnBase.new
+  end
+
+  def contacts_gridcolumn
+    SdcContactsGridColumn.new
+  end
+
+  def reference_message_box
+    AddReferenceMessageBox.new
+  end
+end
+
 end

@@ -25,5 +25,16 @@ module SdcContacts
   end
 
 
+  class << self
+    def contacts_left_navigation_panel
+      ContactsLeftNavigation.new
+    end
+
+    def contacts_left_navigation_search_results
+      SearchResults.new
+    end
+
+  end
+
 
 end

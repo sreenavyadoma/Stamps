@@ -179,7 +179,6 @@ Feature:  Contacts BVT - Contacts ToolBar
   @sdc_contacts_existing_add_valid_reference_number
   Scenario: Add Reference Number from Top Nav Scenario 2 :Add an Valid Reference to an Existing Contact via Contacts Toolbar
     Then sign-in to orders
-    Then pause for 5 seconds
     Then navigate to contacts
     Then delete all available contacts with the value AddValidReference
     Then expect count of contact search results is 0

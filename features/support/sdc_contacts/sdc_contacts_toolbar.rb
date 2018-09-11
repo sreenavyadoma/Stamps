@@ -31,5 +31,26 @@ module SdcContacts
     page_object(:cost_codes_addeditcostcode, required: true, timeout: 10) { { xpath: '//span[contains(@id, "add-edit-cost-code-item-textEl")][text()="Add/Edit Cost Codes"]'}}
   end
 
+  class << self
+    def contacts_toolbar
+      ContactsToolbar.new
+    end
+
+    def contacts_delete_message_box
+      DeleteContactMessageBox.new
+    end
+
+    def contacts_toolbar_cost_codes
+      ContactsToolbarCostCodes.new
+    end
+
+    def contacts_popup_cost_code
+      ContactsPopupCostCode.new
+    end
+
+    def contact_toolbar_settings
+      ContactsToolSettings.new
+    end
+  end
 
 end

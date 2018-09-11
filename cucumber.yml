@@ -583,7 +583,7 @@ sdcwr_normal_workflow:  --tags @sdcwr_normal_workflow --guess JENKINS=true WEB_D
 sdcwr_membership_page_ui_validation:  --tags @sdcwr_membership_page_ui_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 
 #Contacts
-aloha: --tags @sdc_contacts_change_cost_code URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core003 PW=password2
+aloha: --tags @sdc_contacts_existing_add_valid_reference_number URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core003 PW=password2
 #aloha: --tags @sdc_contact_orders_print_shipping_label_contact_saves URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false WEB_APP=orders USR=tcs_core002 PW=password1
 #print_dialog_printing_on_5x8_shipping_label: --tags @print_dialog_printing_on_5x8_shipping_label --guess  HEALTHCHECK=true WEB_APP=orders PRINTER=factory
 #aloha: --tags @sdc_contacts_delete_single_from_details_menu URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password
