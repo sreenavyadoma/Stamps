@@ -3,12 +3,13 @@
 
 Then /^[Ss]et Print form Mail-From to (.*)$/ do |str|
   mail_from = SdcMail.print_form.mail_from
-  mail_from.selection(:selection_element, str)
+  selection = mail_from.selection(:selection_element, str)
   text = mail_from.text_field.text_value
   unless text.eql? str
     mail_from.drop_down.click
-    mail_from.selection_element.click unless mail_from.selection_element.present?
-    mail_from.selection_element.safe_click
+    selection.scroll_into_view
+    selection.safe_wait_until_present(timeout: 1)
+    selection.safe_click
   end
 end
 
@@ -223,12 +224,14 @@ Then /^select print form service (.*)$/ do |str|
   SdcLogger.debug "service: #{str}"
   TestData.hash[:service] = str
   service = SdcMail.print_form.service
-  service.drop_down.click
-  service.service_element(:service, str)
-  service.inline_cost_element(:inline_cost, str)
-  service.drop_down.click unless service.service.present?
-  service.service.scroll_into_view
-  service.service.click
+  unless service.text_field.text_value.include?(str)
+    service.drop_down.click
+    service_element = service.service_element(:service, str)
+    #service.inline_cost_element(:inline_cost, str)
+    service.drop_down.click unless service_element.present?
+    service_element.scroll_into_view
+    service_element.click if service_element.present?
+  end
   expect(service.text_field.text_value).to include str
 end
 
@@ -274,20 +277,20 @@ end
 Then /^[Ss]et Print Form Ship-To Country to a random country in PMI Flat Rate price group (.*)$/ do |group|
   country_list = data_for(:country_groups_PMI_flat_rate, {})["group" + group].values
   TestData.hash[:country] = country_list[rand(country_list.size)]
-  step "set print form mail-to country to #{TestData.hash[:country]}"
+  step "set print form mail-to country to #{TestData.hash[:country]}" unless SdcMail.print_form.mail_to.text_field.text_value.eql?(TestData.hash[:country])
 end
 
 Then /^set print form ship-to to international address$/ do |table|
   hash = table.hashes.first
   step "set print form mail-to country to #{hash['country']}"
   step "set print form name to #{hash['name']}"
-  step "set print form company to #{hash['company']}"
+  step "set print form company to #{hash[:company]}"
   step "set print form address 1 to #{hash['street_address1']}"
-  step "set print form address 2 to #{hash['street_address2']}"
+  step "set print form address 2 to #{hash[:street_address2]}"
   step "set print form province to #{hash['province']}"
-  step "set print form city to #{hash['city']}"
+  step "set print form city to #{hash[:city]}"
   step "set print form postal code to #{hash['postal_code']}"
-  step "set print form phone to #{hash['phone']}"
+  step "set print form phone to #{hash[:phone]}"
   TestData.hash[:address_hash] = hash
 end
 
@@ -297,12 +300,12 @@ Then /^set print form mail-to country to (.*)$/ do |str|
   text_field = mail_to.dom_text_field
   text_field.safe_wait_until_present(timeout: 1)
   text_field = mail_to.int_text_field if mail_to.int_text_field.present?
-  unless text_field.text_value.eql? str
-    text_field.set str
+  unless text_field.text_value.eql?(str)
+    text_field.set(str)
     mail_to.selection_element.safe_wait_until_present(timeout: 2)
-    mail_to.selection_element.safe_click
+    mail_to.selection_element.safe_click if mail_to.selection_element.present?
   end
-  expect(text_field.text_value).to eql str
+  expect(text_field.text_value).to eql(str)
 end
 
 Then /^set print form name to (.*)$/ do |str|

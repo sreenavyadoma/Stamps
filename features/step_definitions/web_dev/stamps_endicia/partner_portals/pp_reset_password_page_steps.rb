@@ -37,7 +37,7 @@ end
 Then /^PP: set reset password page email to (?:env value|(.*))/ do |str|
   email =  PartnerPortal.reset_password_page.email
   email.wait_until_present(timeout: 5)
-  email.set(TestData.hash[:email] = (str.nil?) ? (SdcEnv.usr) : str)
+  email.set(TestData.hash[:email] = (str.nil?) ? (TestSession.env.usr) : str)
 end
 
 

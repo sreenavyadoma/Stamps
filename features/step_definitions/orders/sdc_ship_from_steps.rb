@@ -3,79 +3,79 @@ Then /^[Oo]n [Oo]rder [Dd]etails form, Delete Ship-From address (\w+)$/ do |addr
   # pending
 end
 
-Then /^[Oo]n [Mm]anage [Ss]hipping [Aa]ddress modal, delete all addresses$/ do
-  step 'Open Manage Shipping Address modal'
-  step 'On Manage Shipping Address modal, delete all rows'
-  step 'Close Manage Shipping Address modal'
+Then /^delete all addresses on manage shipping address modal$/ do
+  step 'open manage shipping address'
+  step 'delete all rows on manage shipping address modal'
+  step 'close manage shipping address modal'
 end
 
-Then /^[Oo]n [Mm]anage [Ss]hipping [Aa]ddress modal, delete all rows$/ do
+Then /^delete all rows on manage shipping address modal$/ do
   while SdcOrders.modals.manage_shipping_addresses.addresses.count > 1 do
-    step "On Manage Shipping Address modal, delete row #{1}"
+    step 'delete manage shipping address row 1'
   end
-  step 'Expect Manage Shipping Address all rows deleted'
+  step 'expect all rows deleted on manage shipping address'
 end
 
-Then /^[Oo]n [Mm]anage [Ss]hipping [Aa]ddress [Mm]odal, delete row (\d)$/ do |row_num|
+Then /^delete manage shipping address row (\d)$/ do |row_num|
   address_count = SdcOrders.modals.manage_shipping_addresses.addresses.count
-  step "On Manage Shipping Address modal select row #{row_num}"
-  step 'On Manage Shipping Address modal click delete button'
-  step 'On Delete Shipping Address modal click delete button'
+  step "select manage shipping address row #{row_num}"
+  step 'click manage shipping address delete button'
+  step 'click delete shipping address modal delete button'
   expect(SdcOrders.modals.manage_shipping_addresses.addresses.count).to eql(address_count - 1), 'Address hasn\'t been removed!'
 end
 
-Then /^[Oo]n [Mm]anage [Ss]hipping [Aa]ddress modal select row (\d)$/ do |row_num|
+Then /^select manage shipping address row (\d)$/ do |row_num|
   SdcOrders.modals.manage_shipping_addresses.address_element(row_num).click
 end
 
-Then /^[Oo]n [Mm]anage [Ss]hipping [Aa]ddress modal click delete button$/ do
+Then /^click manage shipping address delete button$/ do
   SdcOrders.modals.manage_shipping_addresses.delete.click
-  step 'expect Delete Shipping Address modal is present'
+  step 'expect delete shipping address modal is present'
 end
 
-Then /^[Oo]n [Dd]elete [Ss]hipping [Aa]ddress [Mm]odal click delete button$/ do
+Then /^click delete shipping address modal delete button$/ do
   SdcOrders.modals.delete_shipping_address.delete.click
-  step 'expect Delete Shipping Address modal is not present'
+  step 'expect delete shipping address modal is not present'
 end
 
-Then /^[Ee]xpect [Mm]anage [Ss]hipping [Aa]ddress all rows deleted$/ do
+Then /^expect all rows deleted on manage shipping address$/ do
   expect(SdcOrders.modals.manage_shipping_addresses.addresses.count).to eql(1)
 end
 
-Then /^[Oo]pen [Mm]anage [Ss]hipping [Aa]ddress modal$/ do
+Then /^open manage shipping address$/ do
   step 'set order details ship-from to Manage Shipping Addresses...'
-  step 'expect Manage Shipping Address modal is present'
+  step 'expect manage shipping address is present'
 end
 
-Then /^[Ee]xpect [Mm]anage [Ss]hipping [Aa]ddress modal is present$/ do
+Then /^expect manage shipping address is present$/ do
   expect(SdcOrders.modals.manage_shipping_addresses.title).to be_present
 end
 
-Then /^[Ee]xpect [Mm]anage [Ss]hipping [Aa]ddress modal is not present$/ do
+Then /^expect manage shipping address is not present$/ do
   expect(SdcOrders.modals.manage_shipping_addresses.title).not_to be_present
 end
 
-Then /^[Ee]xpect Delete [Ss]hipping [Aa]ddress modal is present$/ do
+Then /^expect delete shipping address modal is present$/ do
   expect(SdcOrders.modals.delete_shipping_address.title).to be_present
 end
 
-Then /^[Ee]xpect Delete [Ss]hipping [Aa]ddress modal is not present$/ do
+Then /^expect delete shipping address modal is not present$/ do
   SdcOrders.modals.delete_shipping_address.title.wait_while_present(timeout: 3)
   expect(SdcOrders.modals.delete_shipping_address.title).not_to be_present
 end
 
-Then /^[Cc]lick [Mm]anage [Ss]hipping [Aa]ddress [Aa]dd button$/ do
+Then /^click manage shipping address add button$/ do
   SdcOrders.modals.manage_shipping_addresses.add.click
-  step 'expect Add Shipping Address modal is present'
+  step 'expect add shipping address modal is present'
 end
 
-Then /^[Ee]xpect [Aa]dd [Ss]hipping [Aa]ddress [Mm]odal is present$/ do
+Then /^expect add shipping address modal is present$/ do
   expect(SdcOrders.modals.add_edit_shipping_address.title).to be_present
 end
 
-Then /^[Cc]lose [Mm]anage [Ss]hipping [Aa]ddress [Mm]odal$/ do
+Then /^close manage shipping address modal$/ do
   SdcOrders.modals.manage_shipping_addresses.x_btn.click
-  step 'expect Manage Shipping Address modal is not present'
+  step 'expect manage shipping address is not present'
 end
 
 Then /^[Oo]n [Mm]anage [Ss]hipping [Aa]ddress [Mm]odal, edit address for name=\"(.*)\", company=\"(.*)\" and city=\"(.*)\" to:$/ do |name, company, city, new_address|
@@ -99,19 +99,19 @@ Then /^[Aa]dd random Ship-from address from (.*)$/ do |address|
   #stamps.orders.order_details.single_ship_from.select('Manage Shipping Addresses').add.ship_from_address(TestData.hash[:ship_from_address])
 end
 
-Then /^on manage shipping address modal, add address$/ do |ship_from|
+Then /^add new address to manage shipping address$/ do |ship_from|
   TestData.hash[:ship_from_address] = ship_from.hashes.first
-  TestData.hash[:ship_from_zip] = TestData.hash[:ship_from_address]['ship_from_zip']
+  TestData.hash[:ship_from_zip] = TestData.hash[:ship_from_address][:ship_from_zip]
   TestData.hash[:full_name] = TestData.hash[:ship_from_address][:full_name]
-  TestData.hash[:company] = TestData.hash[:ship_from_address]['company']
-  TestData.hash[:street_address] = TestData.hash[:ship_from_address]['street_address']
-  TestData.hash[:street_address2] = TestData.hash[:ship_from_address]['street_address2']
-  TestData.hash[:city] = TestData.hash[:ship_from_address]['city']
-  TestData.hash[:state] = TestData.hash[:ship_from_address]['state']
-  TestData.hash[:zip] = TestData.hash[:ship_from_address]['zip']
+  TestData.hash[:company] = TestData.hash[:ship_from_address][:company]
+  TestData.hash[:street_address] = TestData.hash[:ship_from_address][:street_address]
+  TestData.hash[:street_address2] = TestData.hash[:ship_from_address][:street_address2]
+  TestData.hash[:city] = TestData.hash[:ship_from_address][:city]
+  TestData.hash[:state] = TestData.hash[:ship_from_address][:state]
+  TestData.hash[:zip] = TestData.hash[:ship_from_address][:zip]
   TestData.hash[:phone] = TestData.hash[:ship_from_address][:phone]
-  step 'Open Manage Shipping Address modal'
-  step 'Click Manage Shipping Address Add button'
+  step 'open manage shipping address'
+  step 'click manage shipping address add button'
   modal = SdcOrders.modals.add_edit_shipping_address
   modal.ship_from_zip.set(TestData.hash[:ship_from_zip])
   modal.name.set(TestData.hash[:full_name])
@@ -129,7 +129,7 @@ Then /^on manage shipping address modal, add address$/ do |ship_from|
   expect(modal.state.text_field.text_value).to include(TestData.hash[:state])
   SdcOrders.modals.add_edit_shipping_address.save.click
   SdcOrders.modals.manage_shipping_addresses.title.safe_wait_while_present(timeout: 2)
-  step 'Close Manage Shipping Address modal'
+  step 'close manage shipping address modal'
 end
 
 # this step step def is only for private use - DO NOT use it in any feature file
@@ -144,8 +144,8 @@ Then /^add default ship-from shipping address (.+)$/ do |ship_from|
   TestData.hash[:zip] = zip
   TestData.hash[:phone] = phone
 
-  step 'Open Manage Shipping Address modal'
-  step 'Click Manage Shipping Address Add button'
+  step 'open manage shipping address'
+  step 'click manage shipping address add button'
   modal = SdcOrders.modals.add_edit_shipping_address
   modal.ship_from_zip.set(TestData.hash[:ship_from_zip])
   modal.company.set(TestData.hash[:company])
@@ -161,14 +161,14 @@ Then /^add default ship-from shipping address (.+)$/ do |ship_from|
   expect(modal.state.text_field.text_value).to include(TestData.hash[:state])
   SdcOrders.modals.add_edit_shipping_address.save.click
   SdcOrders.modals.manage_shipping_addresses.title.safe_wait_while_present(timeout: 2)
-  step 'Close Manage Shipping Address modal'
+  step 'close manage shipping address modal'
 end
 
 
 
 
 Then /^[Oo]n Manage Shipping Address modal, add address (\w+)$/ do |address|
-  # TestData.hash[:ship_from_address] = address.include?('random ship from zone 1 through 4') ? TestHelper.rand_ship_from_zone_1_4(SdcEnv.env) : address
+  # TestData.hash[:ship_from_address] = address.include?('random ship from zone 1 through 4') ? TestHelper.rand_ship_from_zone_1_4(TestSession.env.url) : address
   pending
     #stamps.orders.order_details.single_ship_from.select('Manage Shipping Addresses').add(TestData.hash[:ship_from_address])
 end

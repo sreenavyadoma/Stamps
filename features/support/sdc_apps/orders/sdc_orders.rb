@@ -1,50 +1,51 @@
 
 module SdcOrders
-
-  def loading_orders
-    klass = Class.new(SdcPage) do
-      page_object(:loading) { { xpath: '//*[contains(text(), "Loading orders...")]' } }
+  class << self
+    def loading_orders
+      klass = Class.new(SdcPage) do
+        page_object(:loading) { { xpath: '//*[contains(text(), "Loading orders...")]' } }
+      end
+      klass.new.loading
     end
-    klass.new.loading
-  end
-  module_function :loading_orders
 
-  def initializing_orders_db
-    klass = Class.new(SdcPage) do
-      page_object(:initializing_orders) { { xpath: '//*[text()="Initializing Order Database"]' } }
+    def updating_orders
+      klass = Class.new(SdcPage) do
+        page_object(:updating) { { xpath: '//*[text()="Updating Orders"]' } }
+      end
+
+      klass.new.updating
     end
-    klass.new.initializing_orders
-  end
-  module_function :initializing_orders_db
 
-  def order_details
-    SdcOrderDetails.new
-  end
-  module_function :order_details
+    def initializing_orders_db
+      klass = Class.new(SdcPage) do
+        page_object(:initializing_orders) { { xpath: '//*[text()="Initializing Order Database"]' } }
+      end
+      klass.new.initializing_orders
+    end
 
-  def bulk_update
-    SdcBulkUpdate.new
-  end
-  module_function :bulk_update
+    def order_details
+      SdcOrderDetails.new
+    end
 
-  def toolbar
-    SdcOrdersToolbar.new
-  end
-  module_function :toolbar
+    def bulk_update
+      SdcBulkUpdate.new
+    end
 
-  def grid
-    SdcGrid
-  end
-  module_function :grid
+    def toolbar
+      SdcOrdersToolbar.new
+    end
 
-  def filter_panel
-    SdcOrdersFilterPanel.new
-  end
-  module_function :filter_panel
+    def grid
+      SdcGrid
+    end
 
-  def modals
-    SdcOrdersModals
+    def filter_panel
+      SdcOrdersFilterPanel.new
+    end
+
+    def modals
+      SdcOrdersModals
+    end
   end
-  module_function :modals
 
 end

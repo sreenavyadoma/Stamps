@@ -1,3 +1,4 @@
+module SdcOrders
   module SdcOrdersModals
     class SdcExactAddressNotFound < SdcPage
       page_object(:title) { { xpath: '//*[text()="Exact Address Not Found"]' } }
@@ -167,6 +168,7 @@
     class SdcOrdersSettingsInt < SdcPage
 
     end
+
     class OrdersSettingsLabel < SdcPage
 
     end
@@ -179,7 +181,7 @@
     end
 
     class OrdersSettingsModal < SdcPage
-      page_object(:general) { { xpath: '//*[text()="Print All Orders"]' } }
+      page_object(:general) { { xpath: '//span[text()="General"]' } }
       page_object(:stores) { { xpath: '//*[text()="Stores"]' } }
       page_object(:international) { { xpath: '//*[text()="International"]' } }
       page_object(:label_msgs) { { xpath: '//*[text()="Label Messages"]' } }
@@ -188,64 +190,58 @@
       page_object(:close) { { xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]' } }
 
       def general_settings
-        @general_settings ||= SdcOrdersModalsSettingsGeneral.new
+        SdcOrdersModalsSettingsGeneral.new
       end
 
       def stores_settings
-        @stores_settings ||= OrdersSettingsStores.new
+        OrdersSettingsStores.new
       end
 
       def int_settings
-        @intl_settings ||= SdcOrdersSettingsInt.new
+        SdcOrdersSettingsInt.new
       end
 
       def label_msgs_settings
-        @label_msgs_settings ||= OrdersSettingsLabel.new
+        OrdersSettingsLabel.new
       end
     end
 
-    def print
-      OrdersPrintModal.new
-    end
-    module_function :print
+    class << self
+      def print
+        OrdersPrintModal.new
+      end
 
-    def settings
-      OrdersSettingsModal.new
-    end
-    module_function :settings
+      def settings
+        OrdersSettingsModal.new
+      end
 
-    def manage_shipping_addresses
-      ManageShippingAddresses.new
-    end
-    module_function :manage_shipping_addresses
+      def manage_shipping_addresses
+        ManageShippingAddresses.new
+      end
 
-    def add_edit_shipping_address
-      AddEditShippingAddress.new
-    end
-    module_function :add_edit_shipping_address
+      def add_edit_shipping_address
+        AddEditShippingAddress.new
+      end
 
-    def delete_shipping_address
-      DeleteShippingAddress.new
-    end
-    module_function :delete_shipping_address
+      def delete_shipping_address
+        DeleteShippingAddress.new
+      end
 
-    def print_all
-      PrintAllOrders.new
-    end
-    module_function :print_all
+      def print_all
+        PrintAllOrders.new
+      end
 
-    def server_error
-      ServerError.new
-    end
-    module_function :server_error
+      def server_error
+        ServerError.new
+      end
 
-    def insurance_terms
-      InsuranceTerms.new
-    end
-    module_function :insurance_terms
+      def insurance_terms
+        InsuranceTerms.new
+      end
 
-    def exact_address_not_found
-      SdcExactAddressNotFound.new
+      def exact_address_not_found
+        SdcExactAddressNotFound.new
+      end
     end
-    module_function :exact_address_not_found
   end
+end

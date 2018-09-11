@@ -10,10 +10,16 @@ module SdcEnv
   class << self
     attr_accessor :sdc_app, :env, :health_check, :usr, :pw, :url, :debug,
                   :printer, :browser, :hostname, :mobile, :scenario,
-                  :sauce_device, :test_name, :log_level, :driver_log_level,
+                  :sauce_device, :test_name, :driver_log_level,
                   :browser_mobile_emulator, :android, :ios, :firefox_profile,
-                  :new_framework, :window_size, :web_dev, :jenkins, :sauce,
+                  :new_framework, :web_dev, :jenkins, :sauce,
                   :width, :height
+  end
+end
+
+module SdcGlobal
+  class << self
+    attr_accessor :web_app, :scenario, :web_dev_device
   end
 end
 
@@ -27,7 +33,7 @@ class SdcModel
       keys << name unless keys.include? name
 
       define_method(name) do |*args|
-        self.instance_exec(*args, &block)
+        instance_exec(*args, &block)
       end
     end
   end
@@ -55,139 +61,394 @@ end
 # BUILD_NUMBER  The current build number, such as "153"
 # NODE_NAME Name of the agent if the build is on an agent, or "master" if run on master
 # BUILD_URL Full URL of this build, like http://server:port/jenkins/job/foo/15/
-class SauceConfig < ::SdcModel
-  key(:sauce_username) { ENV['SAUCE_USERNAME'] }
-  key(:sauce_access_key) { ENV['SAUCE_ACCESS_KEY'] }
-  key(:host) { ENV['SELENIUM_HOST'] }
-  key(:port) { ENV['SELENIUM_PORT'] }
-  key(:platform) { ENV['SELENIUM_PLATFORM'] }
-  key(:version) { ENV['SELENIUM_VERSION'] }
-  key(:browser) { ENV['SELENIUM_BROWSER'] }
-  key(:driver) { ENV['SELENIUM_DRIVER'] }
-  key(:url) { ENV['SELENIUM_URL'] }
-  key(:starting_url) { ENV['SELENIUM_STARTING_URL'] }
-  key(:sauce_on_demand_browsers) { ENV['SAUCE_ONDEMAND_BROWSERS'] }
-  key(:job_name) { ENV['JOB_NAME'] }
-  key(:job_base_name) { ENV['JOB_BASE_NAME'] }
-  key(:build_tag) { ENV['BUILD_TAG'] }
-  key(:build_number) { ENV['BUILD_NUMBER'] }
-  key(:node_name) { ENV['NODE_NAME'] }
-  key(:build_url) { ENV['BUILD_URL'] }
-  key(:screen_resolution) { ENV['SCREEN_RESOLUTION'] || '1280x1024' }
-  key(:idle_timeout) { ENV['IDLE_TIMEOUT'] || 120 }
-  key(:sauce_end_point) { "https://#{sauce_username}:#{sauce_access_key}@#{host}:#{port}/wd/hub" }
-  # "https://robcruz:0e60dbc9-5bbf-425a-988b-f81c42d6b7ef@ondemand.saucelabs.com:443/wd/hub"
+#
+module TestSession
+  class SdcEnvVars < ::SdcModel
+    # Jenkins settings
+    key(:job_name) { ENV['JOB_NAME'] }
+    key(:job_base_name) { ENV['JOB_BASE_NAME'] }
+    key(:build_tag) { ENV['BUILD_TAG'] }
+    key(:build_number) { ENV['BUILD_NUMBER'] }
+    key(:node_name) { ENV['NODE_NAME'] }
+    key(:build_url) { ENV['BUILD_URL'] }
+    # cloud settings
+    key(:tunnel_identifier) { ENV['TUNNEL_IDENTIFIER'] }
+    key(:sauce_username) { ENV['SAUCE_USERNAME'] || 'robcruz' }
+    key(:sauce_access_key) { ENV['SAUCE_ACCESS_KEY'] || '0e60dbc9-5bbf-425a-988b-f81c42d6b7ef' }
+    key(:selenium_host) { ENV['SELENIUM_HOST'] || 'ondemand.saucelabs.com' }
+    key(:selenium_port) { ENV['SELENIUM_PORT'] || '443' }
+    key(:selenium_platform) { ENV['SELENIUM_PLATFORM'] }
+    key(:selenium_version) { ENV['SELENIUM_VERSION'] }
+    key(:selenium_browser) do
+      if ENV['SELENIUM_BROWSER']
+        if ENV['SELENIUM_BROWSER'].eql?('MicrosoftEdge')
+          ENV['SELENIUM_BROWSER'] = 'edge'
+        elsif ENV['SELENIUM_BROWSER'].eql?('internet explorer')
+          ENV['SELENIUM_BROWSER'] = 'internet_explorer'
+        else
+          ENV['SELENIUM_BROWSER']
+        end
+      end
+    end
+    key(:selenium_driver) { ENV['SELENIUM_DRIVER'] }
+    key(:sauce_build_name) { ENV['SAUCE_BUILD_NAME'] }
+    key(:selenium_url) { ENV['SELENIUM_URL'] }
+    key(:selenium_starting_url) { ENV['SELENIUM_STARTING_URL'] }
+    key(:sauce_on_demand_browsers) { ENV['SAUCE_ONDEMAND_BROWSERS'] }
+    key(:screen_resolution) { ENV['SCREEN_RESOLUTION'] || '1280x1024' }
+    key(:extendedDebugging) { ENV['EXTENDED_DEBUGGING'] || true }
+    key(:idle_timeout) { ENV['IDLE_TIMEOUT'] || 120 }
+    key(:appium_wait) { ENV['APPIUM_WAIT'] || 300 }
+    key(:sauce_end_point) { "https://#{sauce_username}:#{sauce_access_key}@#{selenium_host}:#{selenium_port}/wd/hub" }
+    # cloud mobile
+    key(:selenium_device) { ENV['SELENIUM_DEVICE'] }
+    key(:device_orientation) { ENV['SELENIUM_DEVICE_ORIENTATION'] || 'portrait'}
+    key(:automation_name) { ENV['AUTOMATION_NAME'] || 'XCUITest' }
+    key(:appium_version) { ENV['APPIUM_VERSION'] || '1.8.1' }
+    # test helper
+    key(:sauce_browser) do
+      oss = ['Windows', 'windows', 'Mac', 'mac']
+      if selenium_platform
+        oss.include?(selenium_platform.split(' ').first)
+      end
+    end
+    key(:local_browser) { ENV['BROWSER'].to_sym if ENV['BROWSER'] }
+    key(:browser_test) { sauce_browser || local_browser }
+    key(:ios_test) do
+      if selenium_platform
+        ['iOS', 'ios'].include? selenium_platform.split(' ').first
+      end
+    end
+    key(:android_test) do
+      if selenium_platform
+        ['android'].include? selenium_platform.split(' ').first
+      end
+    end
+    key(:mobile_device) { ios_test || android_test }
+    # test settings
+    key(:test_log_level) do
+      ENV['LOG_LEVEL'].to_sym if ENV['LOG_LEVEL']
+    end
+    key(:selenium_log_level) do
+      ENV['SELENIUM_LOG_LEVEL'].to_sym if ENV['SELENIUM_LOG_LEVEL']
+    end
+    key(:window_size) { ENV['WINDOW_SIZE'] }
+    key(:web_dev) { ENV['WEB_DEV'] }
+    key(:firefox_profile) { ENV['FIREFOX_PROFILE'] }
+    key(:pw) { ENV['PW'] }
+    key(:usr) { ENV['USR'] }
+    key(:healthcheck) do
+      (ENV['HEALTHCHECK'].casecmp('true') if ENV['HEALTHCHECK']) || true
+    end
+    key(:printer) { ENV['PRINTER'] }
+    key(:web_app) { ENV['WEB_APP'].downcase.to_sym unless ENV['WEB_APP'].nil? }
+    key(:url) do
+      if ENV['URL']
+        case ENV['URL'].downcase
+        when /stg/
+          :stg
+        when /cc/
+          :qacc
+        when /sc/
+          :qasc
+        when /rat/
+          :rating
+        when /prod/
+          :prod
+        else
+          ENV['URL'].downcase.to_sym
+        end
+      end
+    end
 
-  def test_name
-    job_name || "#{SdcEnv.scenario.feature.name} - #{SdcEnv.scenario.name}"
+    def test_name
+      job_name || "#{SdcGlobal.scenario.feature.name} - #{SdcGlobal.scenario.name}"
+    end
+
+    def build
+      build_tag || Socket.gethostname
+    end
+
+    def session_info(session_id)
+      "SauceOnDemandSessionID=#{session_id} job-name=#{test_name}"
+    end
+
+    def responsive
+      mobile_device || SdcPage.browser.window.size.width < 1195
+    end
   end
 
-  def build
-    build_tag || Socket.gethostname
+  class << self
+    def env
+      @env ||= SdcEnvVars.new
+    end
+
+    # name: env.test_name,
+    #     appiumVersion: '1.8.1',
+    #     deviceName: env.device,
+    #     deviceOrientation: env.device_orientation,
+    #     platformVersion: '11.2', #env.version,
+    #     platformName: 'iOS',
+    #     browserName: 'Safari',
+    #     automationName: 'XCUITest'
+    def mobile_device
+      desired_caps = {
+          caps: {
+              :name => env.test_name,
+              :appiumVersion => env.appium_version,
+              :deviceName => env.selenium_device,
+              :deviceOrientation => env.device_orientation,
+              :platformVersion => env.selenium_version,
+              :platformName => env.selenium_platform,
+              :browserName => env.selenium_browser,
+              :automationName => env.automation_name,
+              :extendedDebugging => env.extendedDebugging,
+              :tunnelIdentifier => env.tunnel_identifier,
+              :idleTimeout => env.idle_timeout
+          },
+          appium_lib: {
+              :sauce_username => env.sauce_username,
+              :sauce_access_key => env.sauce_access_key,
+              :wait => env.appium_wait
+          }
+      }
+
+      @driver = Appium::Driver.new(desired_caps, false).start_driver
+    rescue StandardError => e
+      SdcLogger.error e.message
+      SdcLogger.error e.backtrace.join("\n")
+      raise e
+    end
+
+    def sauce_browser
+      desired_caps = {
+          :name => env.test_name,
+          :version => env.selenium_version,
+          :platform => env.selenium_platform,
+          :build => env.build,
+          :screenResolution => env.screen_resolution,
+          :extendedDebugging => env.extendedDebugging,
+          :tunnelIdentifier => env.tunnel_identifier,
+          :idleTimeout => env.idle_timeout
+      }
+      error_msg = 'SELENIUM_BROWSER is nil'
+      raise ArgumentError, error_msg unless env.selenium_browser
+      caps = Selenium::WebDriver::Remote::Capabilities.send(env.selenium_browser, desired_caps)
+      client = Selenium::WebDriver::Remote::Http::Default.new
+      client.timeout = env.idle_timeout
+      url = env.sauce_end_point
+      @driver = Watir::Browser.new(:remote, desired_capabilities: caps, http_client: client, url: url)
+    rescue StandardError => e
+      SdcLogger.error e.message
+      SdcLogger.error e.backtrace.join("\n")
+      raise e
+    end
+
+    def local_browser
+
+      chrome_switches = %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)
+      # Watir.always_locate = true
+      case(env.local_browser)
+
+      when :edge
+        kill('taskkill /im MicrosoftEdge.exe /f')
+
+        @driver = SdcDriverDecorator.new(Watir::Browser.new(:edge, accept_insecure_certs: true))
+
+      when :ff, :firefox
+        kill('taskkill /im firefox.exe /f')
+        if TestSession.env.firefox_profile
+          profile = Selenium::WebDriver::Firefox::ProfilePage.from_name(env.firefox_profile)
+          profile.assume_untrusted_certificate_issuer = true
+          profile['network.http.phishy-userpass-length'] = 255
+          @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
+          @driver.driver.manage.timeouts.page_load = 60
+        else
+          @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, accept_insecure_certs: true))
+        end
+
+      when :gc, :chrome
+        kill('taskkill /im chrome.exe /f')
+        @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: chrome_switches))
+
+      when :ff_web_dev
+        kill('taskkill /im firefox.exe /f')
+        download_directory = "#{Dir.getwd}/download"
+        download_directory.tr!('/', '\\') if Selenium::WebDriver::Platform.windows?
+        profile = Selenium::WebDriver::Firefox::Profile.new
+        profile['browser.download.folderList'] = 2 # custom location
+        profile['browser.download.dir'] = download_directory
+        profile['browser.helperApps.neverAsk.saveToDisk'] = 'text/csv,application/pdf,image/png,application/x-zip-compressed,text/plain'
+        @driver = SdcDriverDecorator.new(Watir::Browser.new(:firefox, profile: profile, accept_insecure_certs: true))
+        Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
+
+      when :gc_web_dev
+        prefs = {
+            download: {
+                prompt_for_download: false,
+                default_directory: "#{Dir.getwd}/download"
+            }
+        }
+        kill('taskkill /im chrome.exe /f')
+        @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, options: { prefs: prefs }, switches: chrome_switches))
+        Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download")
+        @driver.driver.manage.timeouts.page_load = 60
+
+      when :gc_iPhone_X, :gc_iPhone_4, :gc_iPad, :gc_Pixel_2_XL, :gc_Pixel_2
+        kill('taskkill /im chrome.exe /f')
+        device_name = env.local_browser.to_s.gsub('gc', '').gsub('_', ' ').strip
+        driver = SdcTest.browser_emulator_options(device_name)
+        SdcGlobal.web_dev_device = device_name unless device_name.include? 'iPad'
+        @driver = SdcDriverDecorator.new(Watir::Browser.new(driver, switches: chrome_switches))
+        @driver.driver.manage.timeouts.page_load = 60
+
+        Dir.mkdir("#{Dir.getwd}/download") unless Dir.exist?("#{Dir.getwd}/download/")
+
+        @driver.driver.manage.timeouts.page_load = 60
+
+      when :chromeb
+        kill('taskkill /im chrome.exe /f')
+        Selenium::WebDriver::Chrome.path = data_for(:setup, {})['windows']['chromedriverbeta']
+        @driver = SdcDriverDecorator.new(Watir::Browser.new(:chrome, switches: chrome_switches))
+
+        @driver.driver.manage.timeouts.page_load = 60
+
+      when :ie
+        kill('taskkill /im iexplore.exe /f')
+        @driver = SdcDriverDecorator.new(Watir::Browser.new(:ie))
+
+      when :safari
+        kill("killall 'Safari Technology Preview'")
+        @driver = SdcDriverDecorator.new(Watir::Browser.new(:safari, technology_preview: true))
+
+      else
+        raise ArgumentError, "Invalid browser selection. #{env.local_browser}"
+      end
+
+      if env.window_size
+        width, height = env.window_size.downcase.split("x")
+        begin
+          @driver.window.resize_to(width, height)
+          @driver.window.move_to(0, 0)
+        rescue Exception
+          @driver.window.maximize
+        end
+      else
+        @driver.window.maximize
+      end
+
+      @driver
+
+    rescue StandardError => e
+      SdcLogger.error e.message
+      SdcLogger.error e.backtrace.join("\n")
+      raise e, 'Browser driver failed to start'
+    end
+
+    def kill(str)
+      stdout, stdeerr, status = Open3.capture3(str)
+    rescue
+      # ignore
+    end
   end
 
-  def session_info(session_id)
-    "SauceOnDemandSessionID=#{session_id} job-name=#{test_name}"
-  end
-
-end
-
-class SauceSession
-  def initialize
-    @sauce_config = ::SauceConfig.new
-  end
-
-  def create_browser
-    caps_conf = {
-        :version => @sauce_config.version,
-        :platform => @sauce_config.platform,
-        :name => @sauce_config.test_name,
-        :build => @sauce_config.build,
-        :idleTimeout => @sauce_config.idle_timeout,
-        :screenResolution => @sauce_config.screen_resolution,
-        :extendedDebugging => true
-    }
-
-    caps = Selenium::WebDriver::Remote::Capabilities.send(@sauce_config.browser, caps_conf)
-    client = Selenium::WebDriver::Remote::Http::Default.new
-    client.timeout = 120
-    url = @sauce_config.sauce_end_point
-    @browser = Watir::Browser.new(:remote, desired_capabilities: caps, http_client: client, url: url)
-  end
 end
 
 module SdcFinder
 
-  # @param [Browser] browser either Watir::Browser or Appium::Core::Driver
-  # @param [String]  HTML tag
-  # @param [Integer] timeout in seconds
-  def element(browser, tag: nil, timeout: 15)
-    if browser.is_a? Watir::Browser
-      if tag
-        element = instance_eval("browser.#{tag}(#{yield})", __FILE__, __LINE__)
-        result = Watir::Wait.until(timeout: timeout) { element }
-        if result
+  class << self
+    # @param [Browser] browser either Watir::Browser or Appium::Core::Driver
+    # @param [String]  HTML tag
+    # @param [Integer] timeout in seconds
+    def element(browser, tag: nil, timeout: 60)
+      if browser.is_a? Watir::Browser
+        if tag
           element = instance_eval("browser.#{tag}(#{yield})", __FILE__, __LINE__)
-          return SdcElement.new(element)
+          result = Watir::Wait.until(timeout: timeout) { element }
+          if result
+            element = instance_eval("browser.#{tag}(#{yield})", __FILE__, __LINE__)
+            return SdcElement.new(element)
+          end
+        else
+          element = browser.element(yield)
+          result = Watir::Wait.until(timeout: timeout) { element }
+          if result
+            element = browser.element(yield)
+            return SdcElement.new(element)
+          end
         end
       else
-        element = browser.element(yield)
+        element = browser.find_element(yield)
         result = Watir::Wait.until(timeout: timeout) { element }
         if result
-          element = browser.element(yield)
+          element = browser.find_element(yield)
           return SdcElement.new(element)
         end
       end
-    else
-      element = browser.find_element(yield)
-      result = Watir::Wait.until(timeout: timeout) { element }
-      if result
-        element = browser.find_element(yield)
-        return SdcElement.new(element)
-      end
+
+      message = "Cannot locate element #{yield}"
+      error = Selenium::WebDriver::Error::NoSuchElementError
+      raise error, message
     end
 
-    message = "Cannot locate element #{yield}"
-    error = Selenium::WebDriver::Error::NoSuchElementError
-    raise error, message
-  end
-  module_function :element
-
-  def elements(browser, tag: nil, timeout: 15)
-    if browser.is_a? Watir::Browser
-      if tag
-        begin
-          code = "browser.#{tag}(#{yield})"
-          elements = instance_eval(code, __FILE__, __LINE__)
+    def elements(browser, tag: nil, timeout: 60)
+      if browser.is_a? Watir::Browser
+        if tag
+          begin
+            code = "browser.#{tag}(#{yield})"
+            elements = instance_eval(code, __FILE__, __LINE__)
+            result = Watir::Wait.until(timeout: timeout) { elements }
+            return instance_eval(code, __FILE__, __LINE__) if result
+          rescue Selenium::WebDriver::Error::TimeOutError
+            # ignore
+          end
+        else
+          elements = browser.elements(yield)
           result = Watir::Wait.until(timeout: timeout) { elements }
-          return instance_eval(code, __FILE__, __LINE__) if result
-        rescue Selenium::WebDriver::Error::TimeOutError
-          # ignore
+          return browser.elements(yield) if result
         end
       else
-        elements = browser.elements(yield)
+        elements = browser.find_elements(yield)
         result = Watir::Wait.until(timeout: timeout) { elements }
-        return browser.elements(yield) if result
+        return browser.find_elements(yield) if result
       end
-    else
-      elements = browser.find_elements(yield)
-      result = Watir::Wait.until(timeout: timeout) { elements }
-      return browser.find_elements(yield) if result
-    end
 
-    message = "Cannot locate elements #{yield}"
-    error = Selenium::WebDriver::Error::NoSuchElementError
-    raise error, message
+      message = "Cannot locate elements #{yield}"
+      error = Selenium::WebDriver::Error::NoSuchElementError
+      raise error, message
+    end
   end
-  module_function :elements
 
 end
 
 class SdcPage < WatirDrops::PageObject
 
   class << self
+    def visit(*args)
+      new.tap do |page|
+        if TestSession.env.mobile_device
+          url = page.page_url(args[0])
+          page.get(url)
+        else
+          page.goto(*args)
+        end
+        exception = Selenium::WebDriver::Error::WebDriverError
+        message = "Expected to be on #{page.class}, but conditions not met"
+        if page.page_verifiable?
+          begin
+            page.wait_until(&:on_page?)
+          rescue Watir::Wait::TimeoutError
+            raise exception, message
+          end
+        end
+      end
+    end
 
-    def page_object(name, tag: nil, required: false, timeout: 15, &block)
+    def get(*args)
+      browser.get page_url(*args)
+    end
+
+    def page_object(name, tag: nil, required: false, timeout: 60, &block)
       element(name.to_sym, required: required) do
         browser = self.class.browser
         SdcFinder.element(browser, tag: tag, timeout: timeout, &block)
@@ -199,7 +460,7 @@ class SdcPage < WatirDrops::PageObject
     alias selection page_object
     alias link page_object
 
-    def page_objects(name, tag: nil, index: nil, required: false, timeout: 15)
+    def page_objects(name, tag: nil, index: nil, required: false, timeout: 60)
       list_name = index.nil? ? name : "#{name}s".to_sym
 
       elements(list_name) do
@@ -294,9 +555,10 @@ class SdcDriverDecorator < BasicObject
 
 end
 
-module HtmlElementMethods
+module SdcElementHelper
+  include ::Watir::Waitable
   def present?
-    send(:displayed?) if respond_to?(:displayed?)
+    return send(:displayed?) if respond_to?(:displayed?)
     send(:present?)
   end
 
@@ -324,7 +586,7 @@ module HtmlElementMethods
     begin
       send(:focus)
       send(:hover)
-    rescue ::StandardError
+    rescue
       # ignore
     end
 
@@ -337,21 +599,22 @@ module HtmlElementMethods
   end
 
   def safe_set(*args)
-    begin
-      set(*args)
-    rescue Watir::Exception::UnknownObjectException
-      # ignore
-    end
+
+    set(*args)
+  rescue Watir::Exception::UnknownObjectException
+    # ignore
+
   end
 
   def set_attribute(name, value)
+    value.gsub!("\n", "\\n") if value.include? "\n"
     execute_script("return arguments[0].#{name.to_s}='#{value.to_s}'", @element)
   end
 
-  def safe_send_keys(*args, ctr: 1)
-    ctr.to_i.times do
+  def safe_send_keys(arg, iteration: 1)
+    iteration.to_i.times do
       begin
-        send(:send_keys, *args)
+        send(:send_keys, arg)
       rescue ::StandardError
         # ignore
       end
@@ -360,12 +623,12 @@ module HtmlElementMethods
     self
   end
 
-  def send_keys_while_present(*args, ctr: 1)
-    ctr.to_i.times do
+  def send_keys_while_present(arg, iteration: 1, timeout: 2)
+    iteration.to_i.times do
       begin
-        break unless present?
-        safe_send_keys(*args)
-        safe_wait_while_present(timeout: 1)
+        break unless send(:present?)
+        send(:send_keys, arg)
+        wait_while_present(timeout: timeout)
       rescue ::StandardError
         # ignore
       end
@@ -384,6 +647,14 @@ module HtmlElementMethods
     self
   end
 
+  def double_click
+    begin
+      @element.double_click
+    rescue
+      # ignore
+    end
+  end
+
   def safe_double_click(ctr: 1)
     ctr.to_i.times do
       begin
@@ -396,40 +667,47 @@ module HtmlElementMethods
     self
   end
 
-  def wait_until_present(timeout: nil, message: nil, interval: nil)
+  def wait_until_present(timeout: 60, message: nil, interval: nil)
     if respond_to? :wait_until_present
       send(:wait_until_present, timeout: timeout, interval: interval)
     else
-      wait_until(timeout: timeout, interval: interval, &:present?)
+      Appium::Core::Wait.until_true(timeout: timeout, message: message) { present? }
     end
 
     self
   end
 
-  def wait_while_present(timeout: nil, message: nil, interval: nil)
+  def wait_while_present(timeout: 60, message: nil, interval: nil)
     if respond_to? :wait_while_present
       send(:wait_while_present, timeout: timeout)
     else
-      wait_while(timeout: timeout, interval: interval, &:present?)
+      Appium::Core::Wait.until_true(timeout: timeout, message: message) { !present? }
     end
 
     self
   end
 
-  def safe_wait_until_present(timeout: nil, message: nil, interval: nil)
+  def safe_wait_until_present(timeout: 60, message: nil, interval: nil)
     wait_until_present(timeout: timeout, interval: interval)
   rescue ::Watir::Wait::TimeoutError
     # ignore
+  rescue ::Appium::Core::Wait::TimeoutError
+    # ignore
   rescue ::Selenium::WebDriver::Error::TimeOutError
     # ignore
+  rescue ::Selenium::WebDriver::Error::StaleElementReferenceError
     # ignored
   end
 
-  def safe_wait_while_present(timeout: nil, message: nil, interval: nil)
+  def safe_wait_while_present(timeout: 60, message: nil, interval: nil)
     wait_while_present(timeout: timeout)
   rescue ::Watir::Wait::TimeoutError
     # ignore
+  rescue ::Appium::Core::Wait::TimeoutError
+    # ignore
   rescue ::Selenium::WebDriver::Error::TimeOutError
+    # ignore
+  rescue ::Selenium::WebDriver::Error::StaleElementReferenceError
     # ignore
   end
 
@@ -510,8 +788,7 @@ module HtmlElementMethods
 end
 
 class SdcElement < BasicObject
-  include ::HtmlElementMethods
-  include ::Watir::Waitable
+  include ::SdcElementHelper
 
   def initialize(element)
     @element = element
@@ -528,7 +805,7 @@ class SdcElement < BasicObject
 end
 
 class SdcChooser < BasicObject
-  include ::HtmlElementMethods
+  include ::SdcElementHelper
 
   def initialize(element, verify, property, value)
     @element = element
@@ -545,6 +822,7 @@ class SdcChooser < BasicObject
              end
 
     return result if [true, false].include? result
+
     if result.casecmp('true').zero? || result .casecmp('false').zero?
       return result.casecmp('true').zero?
     end
@@ -556,9 +834,10 @@ class SdcChooser < BasicObject
 
   def choose(iter: 3)
     iter.times do
-      click
       break if chosen?
+      click
     end
+
     chosen?
   end
 
@@ -577,11 +856,11 @@ class SdcChooser < BasicObject
   alias uncheck unchoose
   alias unselect unchoose
 
-  def wait_until_chosen(timeout: 4)
+  def wait_until_chosen(timeout: 10)
     @element.browser.wait_until(timeout: timeout) { chosen? }
   end
 
-  def safe_wait_until_chosen(timeout: 4)
+  def safe_wait_until_chosen(timeout: 10)
     wait_until_chosen(timeout: timeout)
   end
 
@@ -596,7 +875,7 @@ class SdcChooser < BasicObject
 end
 
 class SdcNumber < BasicObject
-  include ::HtmlElementMethods
+  include ::SdcElementHelper
 
   attr_reader :increment, :decrement
 
@@ -615,7 +894,7 @@ class SdcNumber < BasicObject
   end
 
   def method_missing(name, *args, &block)
-    super unless @text_field.respond_to?(name)
+    super unless @element.respond_to?(name)
     @element.send(name, *args, &block)
   end
 end

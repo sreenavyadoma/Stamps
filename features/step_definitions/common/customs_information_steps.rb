@@ -1,4 +1,17 @@
 
+Then /^click through customs windows tutorial$/ do
+  tutorial = SdcWebsite.modals.tutorial_window
+  while tutorial.window.present?
+    tutorial.title.safe_wait_until_present(timeout: 1)
+    if tutorial.title.text.eql? 'Agree to Terms'
+      tutorial.close.click
+      break
+    end
+    tutorial.next.safe_click if tutorial.next.present?
+    tutorial.window.safe_wait_until_present(timeout: 1)
+  end
+end
+
 Then /^click order details form (?:edit customs|edit|customs) form button$/ do
   SdcOrders.order_details.contents.customs_form.click
 end
@@ -7,12 +20,13 @@ Then /^[Ee]xpect [Cc]ustoms [Ff]orm is [Pp]resent$/ do
   expect(SdcWebsite.customs_form.title).to be_present, 'Customs form did not open'
 end
 
-Then /^[Bb]lur [Oo]ut [Oo]n [Cc]ustoms [Ff]orm$/ do
+Then /^blur out on customs form$/ do
   SdcWebsite.customs_form.total.blur_out
   SdcWebsite.customs_form.title.blur_out
 end
 
 Then /^set customs package contents to (.*)$/ do |value|
+  step 'click through customs windows tutorial'
   package_contents = SdcWebsite.customs_form.package_contents
   package_contents.selection_element(name: :selection, value: value)
   package_contents.drop_down.click unless package_contents.selection.present?
@@ -23,6 +37,7 @@ Then /^set customs package contents to (.*)$/ do |value|
 end
 
 Then /^expect customs package contents is (?:correct|(.*))$/ do |expectation|
+  step 'click through customs windows tutorial'
   expectation ||= TestData.hash[:customs_package_contents]
   expect(SdcWebsite.customs_form.package_contents.text_field.text_value).to eql(expectation), 'Package Content is incorrect'
 end
@@ -37,11 +52,13 @@ Then /^set customs non-delivery options to (.*)$/ do |value|
 end
 
 Then /^expect customs non-delivery options is (?:correct|(.*))$/ do |str|
+  step 'click through customs windows tutorial'
   str ||= TestData.hash[:customs_non_delivery_options]
   expect(SdcWebsite.customs_form.non_delivery.text_field.text_value).to eql(str)
 end
 
 Then /^set customs internal transaction number to (.*)$/ do |value|
+  step 'click through customs windows tutorial'
   internal_transaction = SdcWebsite.customs_form.internal_transaction
   internal_transaction.selection_element(name: :selection, value: value)
   internal_transaction.drop_down.click unless internal_transaction.selection.present?
@@ -52,11 +69,13 @@ Then /^set customs internal transaction number to (.*)$/ do |value|
 end
 
 Then /^expect customs internal transaction number is (?:correct|(.*))$/ do |str|
+  step 'click through customs windows tutorial'
   str ||= TestData.hash[:customs_internal_transaction_no]
   expect(SdcWebsite.customs_form.internal_transaction.text_field.text_value).to eql(str)
 end
 
-Then /^set customs more info to (?:random string|(.*))$/ do |str|
+Then /^set customs more info to (?:random string|random|(.*))$/ do |str|
+  step 'click through customs windows tutorial'
   str ||= TestHelper.rand_alpha_numeric(min: 6, max: 18)
   SdcWebsite.customs_form.more_info.set(str) if SdcWebsite.customs_form.more_info.present?
   step "expect Customs More Info is #{str}"
@@ -182,9 +201,22 @@ end
 
 Then /^close customs information form$/ do
   step 'pause for 4 seconds'
-  step 'Blur out on Customs form'
+  step 'blur out on customs form'
   step 'Save Customs Information form Total amount'
-  SdcWebsite.customs_form.close.click
+  customs_form = SdcWebsite.customs_form
+  ready_to_print = SdcWebsite.modals.ready_to_print
+  8.times do
+    customs_form.close.safe_click
+    customs_form.close.safe_wait_while_present(timeout: 1)
+    ready_to_print.window.safe_wait_while_present(timeout: 2)
+    if ready_to_print.window.present?
+      SdcLogger.info ready_to_print.body.text_value
+      ready_to_print.close.safe_click
+      ready_to_print.close.safe_wait_while_present(timeout: 1)
+    end
+    break unless customs_form.close.present?
+  end
+  expect(customs_form.close).to_not be_present
 end
 
 Then /^Cancel Customs Form$/ do
@@ -246,7 +278,7 @@ Then /^[Ss]ave Customs Information form [Tt]otal amount$/ do
 end
 
 Then /^[Ee]xpect Customs Total Value is (?:correct|(.*))$/ do |str|
-  step 'Blur out on Customs form'
+  step 'blur out on customs form'
   str ||= TestData.hash[:customs_total_value]
   customs_form = SdcWebsite.customs_form
   expect(customs_form.total.text_value.dollar_amount_str.to_f.round(2)).to eql(str)
@@ -315,10 +347,10 @@ Then /^increment customs associated item (\d+) qty by (\d+)$/ do |item, value|
   value.times do
     qty.increment.click
   end
-  step "expect customs associated item #{item} qty is #{old_qty+value}"
+  step "expect customs associated item #{item} qty is #{old_qty + value}"
   step 'Save Customs Information form Total amount'
   TestData.hash[:customs_associated_items][item] ||= {}
-  TestData.hash[:customs_associated_items][item][:quantity] = old_qty+value
+  TestData.hash[:customs_associated_items][item][:quantity] = old_qty + value
 end
 
 Then /^decrement customs associated item (\d+) qty by (\d+)$/ do |item, value|
@@ -328,10 +360,10 @@ Then /^decrement customs associated item (\d+) qty by (\d+)$/ do |item, value|
   value.times do
     qty.decrement.click
   end
-  step "expect customs associated item #{item} qty is #{old_qty-value}"
+  step "expect customs associated item #{item} qty is #{old_qty - value}"
   step 'Save Customs Information form Total amount'
   TestData.hash[:customs_associated_items][item] ||= {}
-  TestData.hash[:customs_associated_items][item][:quantity] = old_qty-value
+  TestData.hash[:customs_associated_items][item][:quantity] = old_qty - value
 end
 
 Then /^expect customs associated item (\d+) qty is (\d+)$/ do |item, value|
@@ -342,8 +374,11 @@ end
 
 Then /^set customs associated item (\d+) unit price to (.*)$/ do |item, value|
   unit_price = SdcWebsite.customs_form.item.unit_price(item)
-  unit_price.scroll_into_view
-  unit_price.set(value)
+  4.times do
+    unit_price.set(value)
+    break if unit_price.text_field.text_value.include value.to_s
+  end
+  expect(unit_price.text_field.text_value).to include(value)
   step 'Save Customs Information form Total amount'
   TestData.hash[:customs_associated_items][item] ||= {}
   TestData.hash[:customs_associated_items][item][:price] = value
@@ -351,20 +386,18 @@ end
 
 Then /^set customs associated item (\d+) made in (.*)$/ do |item, value|
   made_in = SdcWebsite.customs_form.item.made_in
-  drop_down = made_in.drop_down(item)
   text_field = made_in.text_field(item)
   selection = made_in.selection(item, value)
-  drop_down.scroll_into_view
-  text_field.scroll_into_view
-  drop_down.click
-  selection.safe_wait_until_present(timeout: 2)
-  drop_down.click unless selection.present?
-  selection.scroll_into_view
-  selection.safe_click
-  drop_down.scroll_into_view
-  text_field.scroll_into_view
-  text_field.wait_until_present(timeout: 2)
+  5.times do
+    text_field.set value
+    text_field.set value
+    step 'blur out on customs form'
+    break if text_field.text_value.eql? value
+    step 'blur out on customs form'
+  end
+  step 'blur out on customs form'
   expect(text_field.text_value).to include value
+  step 'blur out on customs form'
   TestData.hash[:customs_associated_items][item] ||= {}
   TestData.hash[:customs_associated_items][item][:made_in] = value
 end
@@ -396,7 +429,9 @@ end
 
 Then /^expect customs associated item (\d+) Made In is (?:correct|(.*))$/ do |item, str|
   str ||= TestData.hash[:customs_associated_items][item][:made_in]
-  result = SdcWebsite.customs_form.item.made_in.text_field(item).text_value
+  element = SdcWebsite.customs_form.item.made_in.text_field(item)
+  element.safe_wait_until_present(timeout: 2)
+  result = element.text_value
   expect(result).to eql(str)
 end
 

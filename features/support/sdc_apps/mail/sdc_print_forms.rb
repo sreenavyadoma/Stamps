@@ -7,7 +7,7 @@ module SdcMail
         page_object(:text_field, tag: :text_field) { { xpath: '//*[@name="ShipFrom"]' } }
 
         def selection(name, str)
-          page_object(name) { { xpath: "//li[text()='#{str}']" } }
+          page_object(name) { { xpath: "//li[contains(text(), '#{str}')]" } }
         end
       end
 
@@ -59,18 +59,19 @@ module SdcMail
     end
 
     module ExtraServicesContainer
-      class ExtraServices < SdcPage
-        page_object(:button) { { xpath: '//*[@id="sdc-mainpanel-extraservicesbtn-btnInnerEl"]' } }
+      class PrintFormExtraServicesContainer < SdcPage
+        page_object(:select) { { xpath: '//*[@id="sdc-mainpanel-extraservicesbtn-btnInnerEl"]' } }
         page_object(:cost) { { xpath: '//*[@id="sdc-mainpanel-extraservicespricelabel"]' } }
       end
 
       def extra_services
-        ExtraServices.new
+        PrintFormExtraServicesContainer.new
       end
     end
 
     module AdvancedOptionsContainer
       class AdvancedOptions < SdcPage
+
         page_object(:reference_num, tag: :text_field) { { xpath: '//*[text()="Reference #:"]/..//input' } }
 
         page_object(:hide_label_value_chooser) { {xpath: '//*[text()="Hide Label Value"]/../span'} }

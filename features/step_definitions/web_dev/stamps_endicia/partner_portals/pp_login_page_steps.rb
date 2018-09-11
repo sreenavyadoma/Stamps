@@ -68,7 +68,7 @@ end
 Then /^[Pp]P: set login page email to (?:env value|(.*))$/ do |str|
   email =  PartnerPortal.login_page.email
   email.wait_until_present(timeout: 5)
-  email.set(TestData.hash[:email] = (str.nil?) ? (SdcEnv.usr) : str)
+  email.set(TestData.hash[:email] = (str.nil?) ? (TestSession.env.usr) : str)
 end
 
 
@@ -93,7 +93,7 @@ end
 Then /^[Pp]P: set login page password to (?:env value|(.*))$/ do |str|
   password =  PartnerPortal.login_page.password
   password.wait_until_present(timeout: 5)
-  password.set(TestData.hash[:password] = (str.nil?) ? (SdcEnv.pw) : str)
+  password.set(TestData.hash[:password] = (str.nil?) ? (TestSession.env.pw) : str)
 end
 
 
@@ -130,7 +130,7 @@ end
 Then /^[Pp]P: Expect a record of Log Type (\d+) event is added in Audit Records for (?:user|(.*))/ do |log_info, user|
   step 'Establish Partner Portal db connection'
 
-  TestData.hash[:user_id] = PartnerPortal.common_page.user_table_query(((user.nil?) ? (SdcEnv.usr) :user), 'PartnerUserId')
+  TestData.hash[:user_id] = PartnerPortal.common_page.user_table_query(((user.nil?) ? (TestSession.env.usr) :user), 'PartnerUserId')
 
   TestData.hash[:login_status] = PartnerPortal.common_page.log_table_query(TestData.hash[:user_id], 'LogTypeId')
   TestData.hash[:date_created] = PartnerPortal.common_page.log_table_query(TestData.hash[:user_id], 'DateCreated')

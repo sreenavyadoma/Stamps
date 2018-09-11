@@ -15,8 +15,4 @@ module SdcWebsite
     page_url { |env| "https://print#{env}.stamps.com/webpostage/default2.aspx" }
   end
 
-  class SdcContactsLandingPage < SdcPage
-    page_url { |env| "https://print#{env}.stamps.com/SignIn/Default.aspx?env=Contacts&" }
-  end
-
 end

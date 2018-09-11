@@ -15,20 +15,21 @@ module SdcOrders
   end
 
   class SdcShipToCountryDom < SdcPage
-    page_object(:drop_down) { { xpath: '//div[contains(@id, "matltocountrydroplist-trigger-picker")]' } }
-    page_object(:text_field) { { xpath: '//input[contains(@id, "matltocountrydroplist")]' } }
+    #page_object(:drop_down) { { xpath: '//div[contains(@id, "matltocountrydroplist-trigger-picker")]' } }
+    page_object(:drop_down) { { xpath: '//div[@id="sdc-mainpanel-matltocountrydroplist-trigger-picker"]' } }
+    page_object(:text_field, tag: :text_field) { { xpath: '//input[@id="sdc-mainpanel-matltocountrydroplist-inputEl"]' } }
 
     def selection(str)
-      page_object(:selection_obj) { { xpath: "//li[text()='#{str}']" } }
+      SdcElement.new(page_objects(:selections) { { xpath: "//li[text()='#{str}']" } }.last)
     end
   end
 
   class SdcShipToCountryIntl < SdcPage
-    page_object(:drop_down) { { xpath: '(//*[contains(@id, "international")]//*[contains(@id, "picker")])[1]' } }
-    page_object(:text_field) { { xpath: '//div[contains(@id, "shiptoview-international")]//input[contains(@id, "combo")]' } }
+    page_object(:drop_down) { { xpath: '(//*[@name="ShipCountryCode"]/../..//div[contains(@id, "trigger-picker")])[2]' } }
+    page_object(:text_field) { { xpath: '(//*[@name="ShipCountryCode"])[2]' } }
 
     def selection(str)
-      page_object(:selection_obj) { { xpath: "//li[text()='#{str}']" } }
+      SdcElement.new(page_objects(:selections) { { xpath: "//li[text()='#{str}']" } }.last)
     end
   end
 
@@ -73,7 +74,7 @@ module SdcOrders
   class SdcOrderDetailsDomestic < SdcPage
     page_object(:phone, tag: :text_field) { { xpath: '(//input[@name="ShipPhone"])[1]' } }
     page_object(:email, tag: :text_field) { { xpath: '(//input[@name="BuyerEmail"])[1]' } }
-    page_object(:address, tag: :textarea) { { xpath: '//textarea[contains(@id, "shiptotextarea")]' } }
+    page_object(:address, tag: :textarea) { { xpath: '//textarea[@id = "sdc-mainpanel-shiptotextarea-inputEl"]' } }
 
     def country
       SdcShipToCountryDom.new
@@ -172,6 +173,7 @@ module SdcOrders
     page_object(:ship_to_label, required: true, timeout: 20) { { xpath: '//div[starts-with(@id, "singleOrderDetailsForm")]//label[text()="Ship To:"]' } }
     page_object(:order_id, required: true, timeout: 20) { { xpath: '(//*[contains(@class, "singleorder-detailsform")]//div[contains(@class, "sdc-toolbar")]//b)[1]' } }
     page_object(:reference_no, tag: :text_field) { { xpath: '//*[contains(@class, "reference-field-container")]//input' } }
+    page_object(:reference_no_label) { { xpath: '//label[text()="Reference #:"]' } }
     page_object(:add_item) { { xpath: '//*[text()="Add Item"]' } }
     page_objects(:items_ordered, index: 0) { { xpath: '//div[text()="Items Ordered"]' } }
 

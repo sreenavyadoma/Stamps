@@ -4,6 +4,9 @@ Then /^[Nn]avigate [Tt]o [Cc]ontacts$/ do
   SdcNavigation.contacts.click
   SdcContacts.loading_contacts.safe_wait_until_present(timeout: 15)
   SdcContacts.contacts_body.safe_wait_until_present(timeout: 15)
+  #header = SdcContacts.header
+  #header.page_title.wait_until_present(timeout: 20)
+  #expect(header.page_title.text_value).to eql('Contacts')
 end
 
 Then /^navigate to orders$/ do

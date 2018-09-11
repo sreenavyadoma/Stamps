@@ -87,17 +87,17 @@ Then /^set order details ship-to ambiguous address to$/ do |table|
   address = TestHelper.format_address(table.hashes.first)
   order_details = SdcOrders.order_details
   exact_address_not_found = SdcOrders.modals.exact_address_not_found
-  order_details.ship_to.domestic.address.set(address)
-  order_details.weight_label.double_click
-  order_details.service_label.double_click
-  order_details.reference_no.double_click
-  order_details.ship_to_label.double_click
-  unless  exact_address_not_found.title.present?
+  5.times do
     order_details.ship_to.domestic.address.set(address)
+    order_details.weight_label.safe_double_click
+    order_details.service_label.safe_double_click
+    order_details.reference_no.safe_double_click
+    order_details.ship_to_label.safe_double_click
+    order_details.order_id.double_click
+    order_details.title.double_click
+    exact_address_not_found.title.safe_wait_until_present(timeout: 1)
+    break if exact_address_not_found.title.present?
   end
-  order_details.order_id.double_click
-  order_details.title.double_click
-  exact_address_not_found.title.safe_wait_until_present(timeout: 3)
   step 'expect exact address not found window title is Exact Address Not Found'
   TestData.hash[:ship_to_domestic] = address
 end
@@ -105,7 +105,7 @@ end
 Then /^expect exact address not found window title is (.+)$/ do |str|
   not_found = SdcOrders.modals.exact_address_not_found
   not_found.title.safe_wait_until_present(timeout: 3)
-  result =not_found.title.text_value
+  result = not_found.title.text_value
   expect(result).to eql(str)
 end
 
@@ -136,67 +136,67 @@ end
 Then /^[Dd]ecrement [Oo]rder [Dd]etails Pounds by (\d*)$/ do |str|
   pending
   #str.to_i.times { stamps.orders.order_details.weight.lb.decrement.click }
-  # step 'Save Order Details data'
+  # step 'save order details data'
 end
 
 Then /^[Ii]ncrement [Oo]rder [Dd]etails Ounces by (\d*)$/ do |str|
   pending
   #str.to_i.times { stamps.orders.order_details.weight.oz.increment.click }
-  # step 'Save Order Details data'
+  # step 'save order details data'
 end
 
 Then /^[Dd]ecrement [Oo]rder [Dd]etails Ounces by (\d*)$/ do |str|
   pending
   #str.to_i.times { stamps.orders.order_details.weight.oz.decrement.click }
-  # step 'Save Order Details data'
+  # step 'save order details data'
 end
 
 Then /^[Ii]ncrement [Oo]rder [Dd]etails Length by (\d*)$/ do |str|
   pending
   #str.to_i.times { stamps.orders.order_details.dimensions.length.increment.click }
-  # step 'Save Order Details data'
+  # step 'save order details data'
 end
 
 Then /^[Dd]ecrement [Oo]rder [Dd]etails Length by (\d*)$/ do |str|
   pending
   #str.to_i.times { stamps.orders.order_details.dimensions.length.decrement.click }
-  # step 'Save Order Details data'
+  # step 'save order details data'
 end
 
 Then /^[Ii]ncrement [Oo]rder [Dd]etails Width by (\d*)$/ do |str|
   pending
   #str.to_i.times { stamps.orders.order_details.dimensions.width.increment.click }
-  # step 'Save Order Details data'
+  # step 'save order details data'
 end
 
 Then /^[Dd]ecrement [Oo]rder [Dd]etails Width by (\d*)$/ do |str|
   pending
   #str.to_i.times { stamps.orders.order_details.dimensions.width.decrement.click }
-  # step 'Save Order Details data'
+  # step 'save order details data'
 end
 
 Then /^[Ii]ncrement [Oo]rder [Dd]etails Height by (\d*)$/ do |str|
   pending
   #str.to_i.times { stamps.orders.order_details.dimensions.height.increment.click }
-  # step 'Save Order Details data'
+  # step 'save order details data'
 end
 
 Then /^[Dd]ecrement [Oo]rder [Dd]etails Height by (\d*)$/ do |str|
   pending
   #str.to_i.times { stamps.orders.order_details.dimensions.height.decrement.click }
-  # step 'Save Order Details data'
+  # step 'save order details data'
 end
 
 Then /^[Ii]ncrement [Oo]rder [Dd]etails [Ii]nsure-[Ff]or by (\d*)$/ do |str|
   pending
   #str.to_i.times { stamps.orders.order_details.insure_for.increment.click }
-  # step 'Save Order Details data'
+  # step 'save order details data'
 end
 
 Then /^[Dd]ecrement [Oo]rder [Dd]etails [Ii]nsure-[Ff]or by (\d*)$/ do |str|
   pending
   #str.to_i.times { stamps.orders.order_details.insure_for.decrement.click }
-  # step 'Save Order Details data'
+  # step 'save order details data'
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails Domestic [Ss]hip-[Tt]o Company is (.*)$/ do |str| #todo-Rob add is 'correct'

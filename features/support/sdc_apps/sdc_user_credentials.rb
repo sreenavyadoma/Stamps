@@ -31,8 +31,8 @@ module Stamps
 
       def random_credentials(test_tag)
         @user_credentials = {}
-        results = connection.query("select * from user_credentials where test_env='#{SdcEnv.env.to_s}' and user_status='Active' and test_tag='#{test_tag}' and in_use=0")
-        expect(results.size).to be > 0, "No user found in MySQL DB for test tag #{@cuke_tag} in #{SdcEnv.env.to_s.upcase}. Try again later or add more users to the database."
+        results = connection.query("select * from user_credentials where test_env='#{TestSession.env.url.to_s}' and user_status='Active' and test_tag='#{test_tag}' and in_use=0")
+        expect(results.size).to be > 0, "No user found in MySQL DB for test tag #{@cuke_tag} in #{TestSession.env.url.to_s.upcase}. Try again later or add more users to the database."
         rand_num = rand(results.size)
         results.each_with_index do |row, index|
           if rand_num == index
@@ -45,7 +45,7 @@ module Stamps
       end
 
       def all_user_credentials
-        results = connection.query("select * from user_credentials where test_env='#{SdcEnv.env}' and user_status='Active'")
+        results = connection.query("select * from user_credentials where test_env='#{TestSession.env.url}' and user_status='Active'")
         credentials = Array.new(results.size){Hash.new}
         results.each_with_index do |row, index| credentials[index] = {:username => row['username'], :password => row['password']} end
         credentials

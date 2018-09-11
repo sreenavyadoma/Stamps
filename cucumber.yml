@@ -593,7 +593,7 @@ aloha: --tags @sdc_contacts_change_cost_code URL=stg LOG_LEVEL=debug HEALTHCHECK
 #aloha: --tags @sdc_contacts_show_all_columns URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
 #aloha: --tags @sample URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
 
-sdc_contacts_delete_single_from_top_navigation: --tags @sdc_contacts_delete_single_from_top_navigation URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
+sdc_contacts_existing_add_invalid_reference_number: --tags @sdc_contacts_delete_single_from_top_navigation URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
 sdc_contacts_delete_multiple_from_top_navigation: --tags @sdc_contacts_delete_multiple_from_top_navigation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 
 sdc_contacts_add_valid_email: --tags @sdc_contacts_add_valid_email  --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true

@@ -198,7 +198,7 @@ Feature:  Contacts BVT - Contacts ToolBar
 
   @sdc_contacts_change_cost_code
   Scenario: Contacts BVT Scenario 1: Change Cost Code to an Existing Contact via Contacts Toolbar
-    Then Sign-in to Orders
+    Then sign-in to orders
     Then pause for 5 seconds
     Then Navigate to Contacts
     Then pause for 5 seconds

@@ -31,7 +31,7 @@ end
 Then /^set orders print modal printer ?(?:|(.*))$/ do |str|
   step "expect orders print modal is present"
   step "orders print modal printer dropdown is present"
-  expect(TestData.hash[:printer] = (str.nil?) ? SdcEnv.printer : str).to_not be_nil, "PRINTER parameter is not defined. Printing tests must define PRINTER value either in cucumber.yml file or in Jenkins."
+  expect(TestData.hash[:printer] = (str.nil?) ? TestSession.env.printer : str).to_not be_nil, "PRINTER parameter is not defined. Printing tests must define PRINTER value either in cucumber.yml file or in Jenkins."
   if TestData.hash[:printer].include?('\\') #validate printer format
     expect(TestData.hash[:printer]).to match(/\\.+\.*/)
     TestData.hash[:printer] = /\\\\(.+)\\/.match(TestData.hash[:printer])[1]
@@ -40,7 +40,7 @@ Then /^set orders print modal printer ?(?:|(.*))$/ do |str|
   printer.selection_element(value: TestData.hash[:printer])
   printer.drop_down.click unless printer.selection.present?
   printer.selection.click
-  expect(printer.text_field.text_value).to include(TestData.hash[:printer]), "Unable to select printer \"#{TestData.hash[:printer]}\". \nMake sure \"#{TestData.hash[:printer]}\" is configured for host #{SdcEnv.hostname}. \nUSR: #{TestData.hash[:username]}, #{SdcEnv.sdc_app.to_s.capitalize}(#{SdcEnv.env.upcase})"
+  expect(printer.text_field.text_value).to include(TestData.hash[:printer]), "Unable to select printer \"#{TestData.hash[:printer]}\". \nMake sure \"#{TestData.hash[:printer]}\" is configured for host #{SdcEnv.hostname}. \nUSR: #{TestData.hash[:username]}, #{SdcGlobal.web_app.to_s.capitalize}(#{TestSession.env.url.upcase})"
 end
 
 Then /^orders print modal printer dropdown is present$/ do
@@ -82,11 +82,11 @@ end
 
 # Then /^set print modal ship date to (?:today|today plus (\d+))$/ do |day|
 Then /^set print modal ship date to today plus (\d+)$/ do |day|
-  step "expect print modal ship date dropdown is present"
+  step "expect print modal ship date drop down is present"
   text_field = SdcOrders.modals.print.ship_date.text_field
   date = TestHelper.mail_date_text_field_format(day)
   text_field.set_attribute('value', date)
-  step "blur out on Print modal Ship date 5"
+  step "blur out on print modal ship date 5"
   expect(text_field.value).to eql(date)
 end
 
@@ -123,33 +123,40 @@ Then /^[Cc]lear [Pp]rint [Mm]odal [Ss]hip [Dd]ate$/ do
     sleep(0.2)
     break if SdcOrders.modals.print.ship_date.text_field.text_value.eql?("")
   end
-  step "blur out on Print modal Ship date 10"
+  step "blur out on print modal ship date 10"
 end
 
-Then /^[Bb]lur [Oo]ut [Oo]n [Pp]rint [Mm]odal [Ss]hip [Dd]ate (\d+)$/ do |count|
-  pending
-  # count.times do
-  #   SdcOrders.modals.print.total.safe_click
-  #   SdcOrders.modals.print.total.safe_double_click
-  #   sleep(0.2)
-  # end
+Then /^blur out on print modal ship date (\d+)$/ do |count|
+  count.times do
+    SdcOrders.modals.print.total.safe_click
+    SdcOrders.modals.print.total.safe_double_click
+    sleep(0.2)
+  end
 end
 
-Then /^[Ss]et [Pp]rint [Mm]odal Ship Date [Cc]alendar to (?:today|today plus (\d+))$/ do |day|
-  pending
-  # step "expect print modal ship date dropdown is present"
-  # stamps.orders.modals.orders_print_modal.ship_date.date_picker.today_plus(day.nil? ? '0' : day)  #If print date is today, set day increase to zero, otherwise set to 'day' value
-  # step "expect print modal ship date is #{day} days from today"
+Then /^set print modal ship date calendar to (?:today|today plus (\d+))$/ do |day|
+  step "expect print modal ship date drop down is present"
+  stamps.orders.modals.orders_print_modal.ship_date.date_picker.today_plus(day.nil? ? '0' : day)  #If print date is today, set day increase to zero, otherwise set to 'day' value
+  step "expect print modal ship date is #{day} days from today"
 end
 
 Then /^expect print modal ship date is (\d+) (?:day|days) from today$/ do |day|
-  step 'expect print modal ship date dropdown is present'
+  step 'expect print modal ship date drop down is present'
   expectation = TestHelper.mail_date_text_field_format(day)
-  result = SdcOrders.modals.print.ship_date.text_field.text_value
+  ship_date = SdcOrders.modals.print.ship_date
+  begin
+    SdcPage.browser.wait_until(timeout: 3) do
+      ship_date.text_field.text_value.eql? expectation
+    end
+  rescue
+    # ignore
+  end
+  result = ship_date.text_field.text_value
   expect(result).to eql(expectation)
 end
 
-Then /^[Ee]xpect [Pp]rint [Mm]odal [Ss]hip [Dd]ate [Dd]rop[Dd]own is present$/ do
+Then /^expect print modal ship date drop down is present$/ do
+
   expect(SdcOrders.modals.print.ship_date.drop_down).to be_present
 end
 

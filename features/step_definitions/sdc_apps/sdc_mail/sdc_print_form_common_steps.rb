@@ -38,7 +38,6 @@ Then /^select print on (.+)$/ do |str|
     print_on.drop_down.safe_click
     # select print on
     print_on.selection(:selection_element, str)
-    print_on.text_field.click
     print_on.text_field.set_attribute('value', '')
     print_on.text_field.set str
     print_on.selection_element.safe_wait_until_present(timeout: 1)
@@ -161,7 +160,7 @@ Then /^set print form ship date to today plus (\d+)$/ do |day|
   text_field = SdcOrders.modals.print.ship_date.text_field
   date = TestHelper.mail_date_text_field_format(day)
   text_field.set_attribute('value', date)
-  step "blur out on Print modal Ship date 5"
+  step "blur out on print modal ship date 5"
   expect(text_field.value).to eql(date)
 end
 
