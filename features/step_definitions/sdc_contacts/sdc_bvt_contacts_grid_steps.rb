@@ -97,9 +97,9 @@ Then /^[Ee]xpect [Nn]ame [Dd]etails for (.*) [Ii]n [Cc]ontacts [Gg]rid [Ii]s [Uu
       expect(value_last).to eql words[word_count-1]
       expect(value_middle).to eql words[word_count-2]
       expect(value_first).to eql firstname.rstrip
-      p value_last+'- Last :' + words[word_count-1]
-      p value_middle+'- Middle :'+words[word_count-2]
-      p value_first+'- First :' + firstname
+      #p value_last+'- Last :' + words[word_count-1]
+      #p value_middle+'- Middle :'+words[word_count-2]
+      #p value_first+'- First :' + firstname
   end
 end
 
@@ -108,7 +108,7 @@ Then /^[Ee]xpect [Vv]alue [Oo]f (.*) in [Cc]ontacts [Gg]rid is (.*)$/ do |col,va
   contacts_grid_body = SdcContacts.contacts_body
   contacts_grid_body.safe_wait_until_present(timeout: 60)
 
-  p '**Grid**'
+  #p '**Grid**'
   if value=='blank'
     new_value = ""
   else
@@ -223,10 +223,10 @@ Then /^[Ee]xpect [Vv]alue [Oo]f (.*) in [Cc]ontacts [Gg]rid is (.*)$/ do |col,va
     expect(column.contacts_header_text).to eql('Cost Code')
   end
 
-  p column.contacts_header_text
+  #p column.contacts_header_text
   actual_value = column.contacts_text_at_row(1)
-  p 'given value :' + value
-  p 'actual value :' + actual_value
+  #p 'given value :' + value
+  #p 'actual value :' + actual_value
   if column.contacts_header_text =='Country'
     val=actual_value.split("-")
     expect(val[1].strip).to eql new_value.strip

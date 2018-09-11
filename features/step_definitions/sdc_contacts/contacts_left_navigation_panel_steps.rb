@@ -14,7 +14,6 @@ end
   Then /^[Dd]elete [Aa]ll [Aa]vailable [Cc]ontacts [Ww]ith [Tt]he [Vv]alue (.*)$/ do |str|
     step "on left navigation menu search contact #{str}"
     search_results= SdcContacts.contacts_left_navigation_search_results
-    search_results.safe_wait_until_present(timeout: 15)
     actual_count =search_results.search_results_count.text_value
     if actual_count.to_i != 0
       i=1
@@ -24,10 +23,9 @@ end
       end
       step "click contacts toolbar delete button"
       step "delete contacts message box click on yes button"
-      p 'actual :' + actual_count
-      search_results.safe_wait_until_present(timeout: 15)
+      #p 'actual :' + actual_count
       new_count =search_results.search_results_count.text_value
-      p 'new_count :' + new_count
+      #p 'new_count :' + new_count
       expect(new_count== '0').to be (true)
     end
   end
@@ -47,8 +45,8 @@ end
   Then /^[Ee]xpect [Cc]ount [Oo]f [Cc]ontact [Ss]earch [Rr]esults [Ii]s (.*)$/ do |count|
     search_results= SdcContacts.contacts_left_navigation_search_results
     actual_count =search_results.search_results_count.text_value
-    p 'actual :' + actual_count
-    p 'given :' + count
+    #p 'actual :' + actual_count
+    #p 'given :' + count
     expect(actual_count==count).to be (true)
   end
 
