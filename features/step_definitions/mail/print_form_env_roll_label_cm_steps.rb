@@ -7,6 +7,21 @@ Then /^set print form mail-to (?:|to )(?:|a )(?:|random )address(?: to| in| betw
   TestData.hash[:address] = address
 end
 
+Then /^select from print form mail-to text area (.+), (.+)$/ do |name, company|
+  mail_to = SdcMail.print_form.mail_to
+  selection = mail_to.list_of_values(name, company)
+  # add
+  5.times do
+    mail_to.text_area.set(name)
+    mail_to.text_area.click
+    mail_to.text_area.click
+    selection.safe_wait_until_present(timeout: 3)
+    selection.safe_click if selection.present?
+    #break if mail_to.text_area.text_value.include?(company)
+    break if mail_to.add.present?
+  end
+end
+
 Then /^[Ee]xpect Print form Mail To is disabled$/ do
   pending
   #expect(stamps.mail.print_form.mail_to.enabled?).to be(true), "Print form Mail To is NOT disabled"
