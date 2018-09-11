@@ -126,10 +126,10 @@ Then /^WL: click membership page address$/ do
 end
 
 Then /WL: select membership page address autocomplete index (\d+)$/ do |index|
-  address_auto_complete = WhiteLabel.membership_page.address_auto_complete[index-1]
+  membership_page = WhiteLabel.membership_page
+  membership_page.address.scroll_into_view
+  address_auto_complete = membership_page.address_auto_complete[index-1]
   address_auto_complete.wait_until_present(timeout: 2)
-  address_auto_complete.scroll_into_view
-  address_auto_complete.focus
   address_auto_complete.hover if TestSession.env.local_browser == :ff or TestSession.env.local_browser == :firefox
   address_auto_complete.click
   step 'WL: blur_out on membership page'
