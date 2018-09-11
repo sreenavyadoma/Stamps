@@ -44,8 +44,8 @@ Feature:  Mail defects from Sprint
     Then click print label
     Then expect incomplete fields modal is not present
 
-  @mail_bvt_ui_validation
-  Scenario: BVT Mail UI Validation - Extra Services
+  @extra_services_not_updating_cost
+  Scenario: WEBAPPS-10539 Web Client Mail | Extra Services Not Updating Price Weight Zero
     Then sign-in to mail
     Then select print on Shipping Label - 8 ½" x 11" Paper
     Then set print form mail-to to a random address in zone 1
@@ -59,4 +59,15 @@ Feature:  Mail defects from Sprint
     Then expect extra services fragile cost is greater than 0
     Then save extra services
     Then expect print form advanced options extra services button is present
-    Then
+
+    Then expect print form service cost to be 0.00
+    Then expect print form service cost is greater than 0.00
+
+    Then expect print form insure-for cost to be 0.00
+    Then expect print form insure-for is greater than 0.00
+
+    Then expect print form tracking cost to be 0.00
+    Then expect print form tracking cost is greater than 0.00
+
+    Then expect print form extra services cost to be 0.00
+    Then expect print form extra services cost is greater than 0.00
