@@ -146,7 +146,7 @@ Feature: Stamps WebReg: Normal Workflow
 
   @sdcwr_choose_supplies_page_not_present_workflow
   Scenario: Stamps WebReg: Choose Supplies Page Not Preset Workflow
-    Then WL: navigates to default registration page for stamps with the following offer id 533
+    Then WL: navigates to default registration page for stamps with the following offer id 391
     Then WL: set profile page default values
     Then WL: select security questions first security question What is your father's birthplace?
     Then WL: set security questions first security answer to Los Angeles
