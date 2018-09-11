@@ -1,11 +1,11 @@
-Then /^check row for order (\d+)$/ do |num|
+Then /^check orders grid row (\d+)$/ do |num|
   order_id = TestData.hash[:order_id][num]
   SdcGrid.body.wait_until_present(timeout: 10)
   sleep 7 unless TestSession.env.build_number
   step "check grid order id #{order_id}"
 end
 
-Then /^uncheck row for order (\d+)$/ do |num|
+Then /^uncheck orders grid row (\d+)$/ do |num|
   order_id = TestData.hash[:order_id][num]
   SdcGrid.body.wait_until_present(timeout: 10)
   sleep 7 unless TestSession.env.build_number

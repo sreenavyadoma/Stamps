@@ -388,8 +388,8 @@ Feature:  BVT tests for Orders
     Then blur out on order details form
 
 #  Check 1st two orders
-    Then check row for order 1
-    Then check row for order 2
+    Then check orders grid row 1
+    Then check orders grid row 2
 
   # Updating order details
     Then expect bulk update is present
@@ -402,18 +402,18 @@ Feature:  BVT tests for Orders
     Then wait until orders available
 
 #  # Uncheck both orders
-    Then uncheck row for order 1
-    Then uncheck row for order 2
+    Then uncheck orders grid row 1
+    Then uncheck orders grid row 2
 
 #  # verify fields in 1st order
-    Then check row for order 1
+    Then check orders grid row 1
     Then expect Order Details service is PM Large Package
     Then expect order details pound is 0
     Then expect order details ounce is 3
-    Then uncheck row for order 1
+    Then uncheck orders grid row 1
 
 #  # verify fields in 2nd order
-    Then check row for order 2
+    Then check orders grid row 2
     Then expect order details international service is PMI Package/Flat/Thick Envelope
     Then expect order details pound is 0
     Then expect order details ounce is 3

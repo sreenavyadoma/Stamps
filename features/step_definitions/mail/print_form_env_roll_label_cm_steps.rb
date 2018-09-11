@@ -24,6 +24,29 @@ Then /^select from print form mail-to text area (.+), (.+)$/ do |name, company|
   expect(mail_to.add.present?).to be(true)
 end
 
+Then /^set mail-to add address text area to (.*)$/ do |str|
+  address = TestHelper.address_helper(str)
+  add_address = SdcMail.modals.add_address
+  expect(add_address.window.present?).to be(true)
+  add_address.address.set(address)
+  TestData.hash[:mail_to_add_address] = address
+end
+
+Then /^set mail-to add address email to (.*)$/ do |str|
+  add_address = SdcMail.modals.add_address
+  expect(add_address.window.present?).to be(true)
+  add_address.email.set(str)
+  expect(add_address.email.text_value).to eql(str)
+  TestData.hash[:mail_to_add_address_email] = str
+end
+
+Then /^expect mail-to add address email is (.*)$/ do |str|
+  str ||= TestData.hash[:mail_to_add_address_email]
+  add_address = SdcMail.modals.add_address
+  expect(add_address.window.present?).to be(true)
+  expect(add_address.email.text_value).to eql(str)
+end
+
 Then /^click mail-to add button$/ do
   step 'blur out on print form'
   mail_to = SdcMail.print_form.mail_to
