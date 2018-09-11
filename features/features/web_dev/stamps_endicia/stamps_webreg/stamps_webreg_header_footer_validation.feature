@@ -61,8 +61,8 @@ Feature: Stamps WebReg: Header Footer Validation
 
     #Membership Page
     Then WL: set membership page default values
+    Then WL: set membership page address to PO Box 2951 US-41
     Then WL: select membership page address autocomplete index 1
-#    Then WL: set membership page address to PO Box 2951 US-41
 #    Then WL: set membership page city to Inverness
 #    Then WL: select membership page state FL
 #    Then WL: set membership page zip to 34450
