@@ -1,5 +1,6 @@
 Then /^WL: check choose supplies page is present then verify the page and click place order button$/ do
   if TestData.hash[:atg_promotion] == ''
+    step 'pause for 2 second'
     expect(WhiteLabel.choose_supplies.cs_header).not_to be_present, 'Choose Supplies Page is PRESENT when there is no ATG Promotion'
   else
     step 'WL: expect choose supplies page is present'
