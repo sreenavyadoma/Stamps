@@ -12,6 +12,10 @@ Then /^click mail toolbar settings$/ do
   step 'expect settings modal is present'
 end
 
+Then /^click print label$/ do
+  SdcMail.toolbar.print_label.click
+end
+
 Then /^click mail toolbar print$/ do
   step 'expect mail toolbar print is present'
   SdcMail.toolbar.print.click

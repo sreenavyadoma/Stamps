@@ -19,4 +19,6 @@ Feature:  Mail BVT
     Then select advanced options extra services
     Then check extra services hold for pickup
     Then save extra services
+    Then click print label
+    Then expect incomplete fields modal is not present
 
