@@ -12,7 +12,6 @@ Then /^[Ee]xpect [Pp]rint [Ff]orm Print Media (.*) is enabled$/ do |selection|
 end
 
 Then /^[Ee]xpect [Pp]rint [Ff]orm Ship-To address is (.*)$/ do |address|
-
 end
 
 Then /^[Ee]xpect [Pp]rint [Ff]orm [Pp]rint [Oo]n [Ff]ield is present$/ do
