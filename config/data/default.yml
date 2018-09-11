@@ -65,7 +65,7 @@ sql_server_stampmart:
     password: StampsQA!
     azure: false
   stg:
-    server: sdc11db01.stage02.aws.local
+    server: vsdc11db-ls01.stage02.aws.local
     database: StampMart
     port: 1433
     username: qalab
