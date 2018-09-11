@@ -108,6 +108,7 @@ end
 
 Then /^WL: set membership page address to (.*)$/ do |str|
   address = WhiteLabel.membership_page.address
+  address.scroll_into_view
   address.clear
 
   5.times do
