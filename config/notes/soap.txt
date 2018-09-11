@@ -34,7 +34,7 @@ stgmacgc28
 stgmacgc29
 stgmacgc30
 stgmacgc31
-stgmacgc32
+stgmacgc32 - Multi contact
 
 Win10 Chrome Beta Staging
 bvtstgw10gc1 win10_chrome_beta » bvt_address_cleansing

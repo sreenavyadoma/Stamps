@@ -56,6 +56,7 @@ module SdcMail
 
     class SdcEditMailingAddress < SdcPage
     end
+
     class MailSettingsModal < SdcPage
       page_object(:title) { { xpath: '//div[text()="Settings"]' } }
       page_object(:postdate_text_field) { { xpath: '(//*[contains(@id, "generaltabview")]//input[contains(@class, "x-form-text")])[2]' } }
@@ -252,6 +253,27 @@ module SdcMail
       page_object(:x_btn) { { xpath: '//div[text()="Settings"]/../..//*[contains(@class, "close")]' } }
     end
 
+    class MailToAddAddress < SdcPage
+      page_object(:window) { { xpath: '//div[starts-with(@id, "addeditaddressmodal")][contains(@id,"-outerCt")]' } }
+      page_object(:title) { { xpath: '//div[starts-with(@id, "addeditaddressmodal-")][contains(@id,"_header-innerCt")]//div[contains(@class, "x-title-text")]' } }
+      page_object(:address, tag: :textarea) { { xpath: '//div[starts-with(@id, "addeditaddressmodal")]//textarea[@name="freeFormAddEditAddress"]' } }
+      page_object(:email, tag: :text_field) { { xpath: '//div[starts-with(@id, "addeditaddressmodal")][contains(@id,"-outerCt")]//input[@placeholder="Optional"]' } }
+      page_object(:ok) { { xpath: '//span[text()="OK"]' } }
+      page_object(:cancel) { { xpath: '//span[text()="Cancel"]' } }
+      page_object(:x_button) { { xpath: '//span[contains(@class, "icon-mobile-close-light")]' } }
+
+      def list_of_values(name, company)
+        page_object(:mail_to_lov) { { xpath: "//div[text()='#{name}, #{company}']" } }
+      end
+    end
+
+    class IncompleteFields < SdcPage
+      page_object(:window) { { xpath: '//div[starts-with(@id, "dialoguemodal")][contains(@class,"x-window-closable")]' } }
+      page_object(:title) { { xpath: '//div[contains(@class, "x-window-header-title")]//div[@class="x-title-text x-title-text-default x-title-item"]' } }
+      page_object(:x_button) { { xpath: '//span[contains(@class, "icon-mobile-close-light")]' } }
+      page_object(:close) { { xpath: '//span[text()="Close"]' } }
+    end
+
 
     class << self
       def notification_bar
@@ -314,6 +336,13 @@ module SdcMail
         MailPrintModal.new
       end
 
+      def add_address
+        MailToAddAddress.new
+      end
+
+      def incomplete_fields
+        IncompleteFields.new
+      end
       # def settings
       #   SdcSettings.new
       # end

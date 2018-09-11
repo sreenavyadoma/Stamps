@@ -8,10 +8,11 @@ Then /^set print form mail-to (?:|to )(?:|a )(?:|random )address(?: to| in| betw
 end
 
 Then /^select from print form mail-to text area (.+), (.+)$/ do |name, company|
+  step 'blur out on print form'
   mail_to = SdcMail.print_form.mail_to
   selection = mail_to.list_of_values(name, company)
   # add
-  5.times do
+  15.times do
     mail_to.text_area.set(name)
     mail_to.text_area.click
     mail_to.text_area.click
@@ -20,6 +21,33 @@ Then /^select from print form mail-to text area (.+), (.+)$/ do |name, company|
     #break if mail_to.text_area.text_value.include?(company)
     break if mail_to.add.present?
   end
+  expect(mail_to.add.present?).to be(true)
+end
+
+Then /^click mail-to add button$/ do
+  step 'blur out on print form'
+  mail_to = SdcMail.print_form.mail_to
+  add_address = SdcMail.modals.add_address
+  5.times do
+    mail_to.add.safe_click
+    break if add_address.window.present?
+  end
+  expect(add_address.title.text).to eql('Add Address')
+end
+
+Then /^select from mail-to add address text area (.+), (.+)$/ do |name, company|
+  add_address = SdcMail.modals.add_address
+  selection = add_address.list_of_values(name, company)
+  # add
+  15.times do
+    add_address.text_area.set(name)
+    add_address.text_area.click
+    add_address.text_area.click
+    selection.safe_wait_until_present(timeout: 3)
+    selection.safe_click if selection.present?
+    break if add_address.text_area.text_value.include?(company)
+  end
+
 end
 
 Then /^[Ee]xpect Print form Mail To is disabled$/ do
