@@ -241,13 +241,27 @@ Then /^check extra services fragile$/ do
   step 'expect extra services fragile is checked'
 end
 
+Then /^expect extra services fragile is checked$/ do
+  expect(SdcMail.modals.extra_services.fragile.checked?).to be(true)
+end
+
+Then /^expect extra services fragile cost to be (.+)$/ do |str|
+  extra_services = SdcMail.modals.extra_services
+  extra_services.fragile.cost.safe_wait_until_present(timeout: 3)
+  expect(extra_services.fragile.cost.present?).to be(true)
+  expect(extra_services.fragile.cost.text_value.gsub('$', '')).to eql(str)
+end
+
+Then /^expect extra services fragile cost is greater than (.+)$/ do |str|
+  extra_services = SdcMail.modals.extra_services
+  extra_services.fragile.cost.safe_wait_until_present(timeout: 3)
+  expect(extra_services.fragile.cost.present?).to be(true)
+  expect(extra_services.fragile.cost.text_value.gsub('$', '').to_f).to be > str.to_f
+end
+
 Then /^uncheck extra services fragile$/ do
   SdcMail.modals.extra_services.fragile.uncheck if SdcMail.modals.extra_services.fragile.checked?
   step 'expect extra services fragile is unchecked'
-end
-
-Then /^expect extra services fragile is checked$/ do
-  expect(SdcMail.modals.extra_services.fragile.checked?).to be(true)
 end
 
 Then /^expect extra services fragile is unchecked$/ do

@@ -43,3 +43,20 @@ Feature:  Mail defects from Sprint
     Then save extra services
     Then click print label
     Then expect incomplete fields modal is not present
+
+  @mail_bvt_ui_validation
+  Scenario: BVT Mail UI Validation - Extra Services
+    Then sign-in to mail
+    Then select print on Shipping Label - 8 ½" x 11" Paper
+    Then set print form mail-to to a random address in zone 1
+    Then set print form email tracking stamps@mailinator.com
+    Then select print form service PM Package
+    Then set print form weight to lbs 1 oz 1
+    Then show advanced options
+    Then select advanced options extra services
+    Then expect extra services fragile cost to be 0.00
+    Then check extra services fragile
+    Then expect extra services fragile cost is greater than 0
+    Then save extra services
+    Then expect print form advanced options extra services button is present
+    Then
