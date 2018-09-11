@@ -127,7 +127,6 @@ end
 
 Then /WL: select membership page address autocomplete index (\d+)$/ do |index|
   membership_page = WhiteLabel.membership_page
-  membership_page.address.scroll_into_view
   address_auto_complete = membership_page.address_auto_complete[index-1]
   address_auto_complete.wait_until_present(timeout: 2)
   address_auto_complete.hover if TestSession.env.local_browser == :ff or TestSession.env.local_browser == :firefox
