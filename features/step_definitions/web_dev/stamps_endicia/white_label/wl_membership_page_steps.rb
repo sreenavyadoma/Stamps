@@ -36,16 +36,17 @@ end
 
 Then /^WL: set membership page first name to (?:random value|(.*))$/ do |str|
   first_name = WhiteLabel.membership_page.first_name
+  first_name.scroll_into_view
   first_name.wait_until_present(timeout: 10)
-  first_name.clear
 
   str ||=  TestHelper.rand_alpha_str.capitalize
   5.times do
+    first_name.clear
     first_name.set(str)
     break unless first_name.text_value.strip == ''
+    step "WL: blur_out on membership page"
   end
 
-  step "WL: blur_out on membership page"
   TestData.hash[:first_name] = str
 end
 
