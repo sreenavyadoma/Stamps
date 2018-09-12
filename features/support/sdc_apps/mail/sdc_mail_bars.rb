@@ -3,7 +3,6 @@ module SdcMail
     page_object(:print_label) { { xpath: '//span[text()="Print Label"]' } }
     page_object(:print_stamps) { { xpath: '//span[text()="Print Stamps"]' } }
     page_object(:print_dropdown) { { xpath: '(//*[contains(@class, "x-btn-arrow-right")])[1]' } }
-    page_object(:print_label) { { xpath: '(//div[contains(@id, "menu")]//span[contains(text(), "Print")])[1]' } }
     page_object(:print_sample) { { xpath: '//*[text()="Print Sample"][contains(@id, "menuitem")]' } }
     page_object(:print_tooltip) { { xpath: '//*[contains(text(), "More Print Options")]' } }
 
