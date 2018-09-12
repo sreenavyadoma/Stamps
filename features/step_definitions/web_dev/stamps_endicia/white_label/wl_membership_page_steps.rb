@@ -614,7 +614,7 @@ end
 
 Then /^WL: expect membership page terms and conditions modal is present$/ do
   terms_conditions_header = WhiteLabel.membership_page.terms_conditions_header
-  terms_conditions_header.wait_until_present(timeout: 2)
+  terms_conditions_header.wait_until_present(timeout:10)
   expect(terms_conditions_header).to be_present
 end
 
