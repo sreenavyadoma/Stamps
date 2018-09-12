@@ -321,6 +321,7 @@ Then /^WL: set username taken username to an existing username from db$/ do
 end
 
 Then /^WL: click username taken continue button$/ do
+  step 'pause for 1 second'
   WhiteLabel.membership_page.username_taken_continue_btn.click!
 end
 
