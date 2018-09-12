@@ -257,7 +257,6 @@ end
 
 
 Then /^SDCW: verify default elements on header for browser$/ do
-  step 'SDCW: navigate to postage online page'
   step 'SDCW: click stamps website logo'
   step 'SDCW: navigate back'
   step 'SDCW: click get started button'
@@ -275,7 +274,6 @@ Then /^SDCW: verify default elements on header for browser$/ do
 end
 
 Then /^SDCW: verify default elements on header for mobile$/ do
-  step 'SDCW: navigate to postage online page'
   step 'SDCW: click stamps website logo'
   step 'SDCW: navigate back'
   step 'SDCW: click get started button'
@@ -311,7 +309,6 @@ Then /^SDCW: verify default elements on footer for browser$/ do
   step 'SDCW: click support --> download software'
   step 'SDCW: click support --> customer support'
   step 'SDCW: click support --> how to videos'
-  step 'SDCW: click support --> faq'
   step 'SDCW: click support --> system status'
   step 'SDCW: click company stuff --> about us'
   step 'SDCW: click company stuff --> shipping partners'
@@ -350,7 +347,6 @@ Then /^SDCW: verify default elements on footer for mobile$/ do
   step 'SDCW: click support --> download software'
   step 'SDCW: click support --> customer support'
   step 'SDCW: click support --> how to videos'
-  step 'SDCW: click support --> faq'
   step 'SDCW: click support --> system status'
   step 'SDCW: collapse footer support mobile'
   step 'SDCW: click company stuff --> about us'
@@ -750,34 +746,6 @@ Then /^SDCW: click support --> how to videos$/ do
 
 end
 
-Then /^SDCW: click support --> faq$/ do
-
-  common_page = StampsWebsite.common_page
-  if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-    step 'SDCW: expand footer support mobile'
-    common_page.faq[0].click
-  else
-    if TestSession.env.local_browser == :edge
-      common_page.faq[1].click
-    else
-      common_page.faq[1].scroll_into_view
-      common_page.faq[1].hover
-      common_page.faq[1].click
-    end
-  end
-  step 'pause for 1 second'
-  url = SdcPage.browser.url
-
-  case TestSession.env.url
-    when :qacc
-      expect(url).to eql('https://sdcwebsite.qacc.stamps.com/postage-online/faqs/')
-    when :stg
-      expect(url).to eql('https://sdcwebsite.staging.stamps.com/postage-online/faqs/')
-    when :prod
-      expect(url).to eql('https://stamps.com/postage-online/faqs')
-  end
-  step 'SDCW: navigate back'
-end
 
 Then /^SDCW: click support --> system status$/ do
 
