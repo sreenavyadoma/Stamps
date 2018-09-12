@@ -229,6 +229,7 @@ Feature: Endicia WebReg: Membership Page
   Scenario: Membership Page Address Validation
     Then WL: navigates to default registration page for endicia with the following offer id 707
     Then WL: set profile page default values
+    Then WL: set profile page promo code to empty
     Then WL: click profile page continue button
     Then WL: set membership page default values
 
