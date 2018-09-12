@@ -6,8 +6,8 @@ Feature: Stamps Website: Postage Online Page
   Scenario: Stamps Website: Postage Website Validation
     Then SDCW: navigate to postage online page
     Then SDCW: verify default elements on header for browser
-#    Then SDCW: click FAQ
-#    Then SDCW: navigate back
+    Then SDCW: click FAQ
+    Then SDCW: navigate back
     Then SDCW: verify default elements on footer for browser
     Then SDCW: postage online page click support --> faq
 
