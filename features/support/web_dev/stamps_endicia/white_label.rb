@@ -64,7 +64,7 @@ module WhiteLabel
     #Credit Card
     page_object(:cc_auth) {{id: 'auth-copy'}}
     text_field(:cc_holder_name, tag: :text_field, required: true) { { id: 'ccName' } }
-    page_object(:cc_holder_name_help_block) {{xpath: '//li[@id="creditcard"]/div/div[contains(@class, "col-xs-12")]/div[contains(@class, "form-group has-error")]/div/span'}}
+    page_object(:cc_holder_name_help_block) {{xpath: '//li[@id="creditcard"]/div/div[1]/div[2]/div/span'}}
     text_field(:cc_number, tag: :text_field, required: true) { { id: 'ccNumber' } }
     page_object(:cc_visa) {{id: 'visa'}}
     page_object(:cc_mastercard) {{id: 'mastercard'}}
