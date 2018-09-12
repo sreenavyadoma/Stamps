@@ -32,6 +32,7 @@ Feature: Endicia WebReg: Header Footer Validation
 
     #Profile Page
     Then WL: set profile page default values
+    Then WL: set profile page promo code to empty
     Then WL: click profile page continue button
 
     #Validate navigate to Membership page
