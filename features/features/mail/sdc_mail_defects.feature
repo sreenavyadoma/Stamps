@@ -8,6 +8,7 @@ Feature:  Mail defects from Sprint
   Scenario: WEBAPPS-11803 Email Required Not Validating Correctly
     Then sign-in to mail
     Then select print on Shipping Label - 8 ½" x 11" Paper
+    Then show advanced options
     Then expect print form service cost is $0.00
     Then expect print form insure-for cost is $0.00
     Then expect print form tracking cost is $0.00
@@ -29,7 +30,7 @@ Feature:  Mail defects from Sprint
     Then expect print form service cost is greater than $0.00
     Then expect print form insure-for cost is greater than $0.00
     Then expect print form tracking cost is greater than $0.00
-    Then expect print form extra services cost is greater than $0.00
+    Then expect print form extra services cost is $0.00
     Then click print label
     Then expect incomplete fields modal is not present
 
@@ -82,4 +83,4 @@ Feature:  Mail defects from Sprint
     Then expect print form extra services cost is $0.00
     Then expect print form extra services cost is greater than $0.00
 
-    Then expect print form total amount is $6.55
+    #Then expect print form total amount is $6.55

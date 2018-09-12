@@ -10,6 +10,7 @@ Then /^expect advanced options responds to (.+) \((.+)\)$/ do |method_descriptio
 end
 
 Then /^select advanced options extra services$/ do
+  step 'show advanced options'
   SdcMail.print_form.extra_services.select.click
   step 'expect extra services model is present'
 end

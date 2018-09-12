@@ -254,6 +254,7 @@ end
 
 Then /^expect print form extra services cost is \$(.+)$/ do |str|
   step 'blur out on print form'
+  step 'show advanced options'
   extra_services = SdcMail.print_form.extra_services
   expect(extra_services.cost.present?).to be_truthy
   cost = extra_services.cost.text_value.parse_digits.to_f
@@ -262,6 +263,7 @@ end
 
 Then /^expect print form extra services cost is greater than \$(.+)$/ do |str|
   step 'blur out on print form'
+  step 'show advanced options'
   extra_services = SdcMail.print_form.extra_services
   expect(extra_services.cost.present?).to be_truthy
   cost = extra_services.cost.text_value.parse_digits.to_f

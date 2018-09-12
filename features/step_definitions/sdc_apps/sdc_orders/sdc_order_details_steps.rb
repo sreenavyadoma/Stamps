@@ -602,7 +602,6 @@ end
 
 Then /^set order details insure-for to (\d+\.\d{2})$/ do |str|
   insure_for = SdcOrders.order_details.insure_for
-  insurance_terms = SdcWebsite.modals.insurance_terms
   insure_for.checkbox.scroll_into_view
   insure_for.checkbox.check
   insure_for.checkbox.safe_wait_until_chosen(timeout: 3)
@@ -610,18 +609,7 @@ Then /^set order details insure-for to (\d+\.\d{2})$/ do |str|
   insure_for.amount.set(str)
   insure_for.cost.scroll_into_view
   insure_for.cost.safe_click
-  insurance_terms.title.safe_wait_until_present(timeout: 2)
-  # This is a work around, there's a bug in the code where there are more
-  # than one Terms and Conditions modal on top of each other.
-  10.times do
-    if insurance_terms.title.present?
-      window_title = 'Stamps.com Insurance Terms and Conditions'
-      expect(insurance_terms.title.text).to eql window_title
-      insurance_terms.i_agree_btns[0].safe_click
-    else
-      break
-    end
-  end
+  step 'click through insurance terms and conditions'
   TestData.hash[:insured_value] = str.to_f
   step 'blur out on order details form'
   step 'save order details data'
