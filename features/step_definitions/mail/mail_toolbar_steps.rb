@@ -23,6 +23,14 @@ end
 Then /^click continue on confirm print modal$/ do
   SdcMail.modals.incomplete_fields
   comfirm_print = SdcMail.modals.comfirm_print
+  comfirm_print.continue.safe_wait_until_present(timeout: 2)
+  if comfirm_print.continue.present?
+    3.times do
+      comfirm_print.continue.safe_click
+      break unless comfirm_print.continue.present?
+    end
+  end
+  expect(comfirm_print.continue.present?).to be(false)
 end
 
 Then /^click print label expecting no errors$/ do

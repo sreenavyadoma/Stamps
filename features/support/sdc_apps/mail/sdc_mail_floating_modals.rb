@@ -280,6 +280,11 @@ module SdcMail
       page_object(:title) { { xpath: '//div[contains(@class, "x-window-header-title")]//div[@class="x-title-text x-title-text-default x-title-item"]' } }
       page_object(:body) { { xpath: '//label[@class="x-component x-box-item x-window-item x-component-default"]' } }
       page_object(:x_button) { { xpath: '//span[contains(@class, "icon-mobile-close-light")]' } }
+
+      page_object(:checkbox) { {xpath: '//div[starts-with(@id, "dialoguemodal-")][contains(@id, "-targetEl")]//input[starts-with(@id, "checkbox-")][contains(@id, "-inputEl")]'} }
+      page_object(:verify) { {xpath: '//div[starts-with(@id, "dialoguemodal-")][contains(@id, "-targetEl")]//div[contains(@class, "x-form-type-checkbox")]' } }
+      checkbox(:dont_show_this_again, :checkbox, :verify, 'class', 'checked')
+
       page_object(:continue) { { xpath: '//span[text()="Continue"][@class="x-btn-inner x-btn-inner-primary-medium"]' } }
     end
 
