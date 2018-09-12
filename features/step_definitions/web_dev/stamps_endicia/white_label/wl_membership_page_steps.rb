@@ -818,7 +818,9 @@ Then /^WL: expect membership page need mailing info header to be$/ do |str|
 end
 
 Then /^WL: expect membership page need mailing info paragraph to be$/ do |str|
-  expect(WhiteLabel.membership_page.need_mailing_info_p.text_value.strip).to eql(str)
+   text = WhiteLabel.membership_page.need_mailing_info_p.text_value.strip
+   print text
+  expect(text).to eql(str)
 end
 
 Then /^WL: expect membership page change mailing address header to be$/ do |str|
