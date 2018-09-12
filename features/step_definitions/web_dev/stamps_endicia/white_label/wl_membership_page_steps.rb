@@ -109,14 +109,14 @@ end
 Then /^WL: set membership page address to (.*)$/ do |str|
   address = WhiteLabel.membership_page.address
   address.scroll_into_view
-  address.clear
 
   5.times do
+    address.clear
     address.set(str)
+    step "WL: blur_out on membership page"
     break unless address.text_value.strip == ''
   end
 
-  step "WL: blur_out on membership page"
   TestData.hash[:address] = str
 end
 
@@ -149,9 +149,13 @@ end
 
 Then /^WL: set membership page city to (.*)$/ do |str|
   city = WhiteLabel.membership_page.city
-  city.clear
-  city.set(str)
-  step "WL: blur_out on membership page"
+
+  5.times do
+    city.clear
+    city.set(str)
+    step "WL: blur_out on membership page"
+    break unless city.text_value.strip == ''
+  end
 
   TestData.hash[:city] = str
 end

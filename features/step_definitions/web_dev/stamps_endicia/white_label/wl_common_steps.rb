@@ -309,7 +309,13 @@ end
 Then /^WL: set username taken to (?:random value|(.*))/ do |str|
   new_username = WhiteLabel.membership_page.new_username
   new_username.wait_until_present(timeout: 10)
-  new_username.set((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
+
+  5.times do
+    new_username.clear
+    new_username.set((TestData.hash[:username]=(str.nil?)?(TestHelper.rand_usr) : str))
+    break unless new_username.text_value.strip == ''
+  end
+
   new_username.click
   new_username.send_keys(:tab)
   SdcLogger.info "UserName Taken = #{TestData.hash[:username]}"
