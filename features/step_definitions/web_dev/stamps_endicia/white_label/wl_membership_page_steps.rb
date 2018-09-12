@@ -306,7 +306,8 @@ Then /^WL: expect membership page cardholder's name is (?:correct|(.*))$/ do |st
 end
 
 Then /WL: expect membership page cardholder's name tooltip to be (.*)$/ do |str|
-  expect(WhiteLabel.membership_page.cc_holder_name_help_block.text_value.strip).to eql(str)
+  text = WhiteLabel.membership_page.cc_holder_name_help_block.text_value.strip
+  expect(text).to eql(str)
 end
 
 Then /^WL: set membership page credit card number to (?:default value|(.*))$/ do |str|
