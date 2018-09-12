@@ -205,6 +205,7 @@ Then /^select print form service (.*)$/ do |str|
 end
 
 Then /^expect print form service cost is \$(.+)$/ do |str|
+  step 'blur out on print form'
   service = SdcMail.print_form.service
   expect(service.cost.present?).to be_truthy
   cost = service.cost.text_value.parse_digits.to_f
@@ -212,6 +213,7 @@ Then /^expect print form service cost is \$(.+)$/ do |str|
 end
 
 Then /^expect print form service cost is greater than \$(.+)$/ do |str|
+  step 'blur out on print form'
   service = SdcMail.print_form.service
   expect(service.cost.present?).to be_truthy
   cost = service.cost.text_value.parse_digits.to_f
@@ -219,6 +221,7 @@ Then /^expect print form service cost is greater than \$(.+)$/ do |str|
 end
 
 Then /^expect print form insure-for cost is \$(.+)$/ do |str|
+  step 'blur out on print form'
   insure_for = SdcMail.print_form.insure_for
   expect(insure_for.cost.present?).to be_truthy
   cost = insure_for.cost.text_value.parse_digits.to_f
@@ -226,6 +229,7 @@ Then /^expect print form insure-for cost is \$(.+)$/ do |str|
 end
 
 Then /^expect print form insure-for cost is greater than \$(.+)$/ do |str|
+  step 'blur out on print form'
   insure_for = SdcMail.print_form.insure_for
   expect(insure_for.cost.present?).to be_truthy
   cost = insure_for.cost.text_value.parse_digits.to_f
@@ -233,6 +237,7 @@ Then /^expect print form insure-for cost is greater than \$(.+)$/ do |str|
 end
 
 Then /^expect print form tracking cost is \$(.+)$/ do |str|
+  step 'blur out on print form'
   tracking = SdcMail.print_form.tracking
   expect(tracking.cost.present?).to be_truthy
   cost = tracking.cost.text_value.parse_digits.to_f
@@ -240,6 +245,7 @@ Then /^expect print form tracking cost is \$(.+)$/ do |str|
 end
 
 Then /^expect print form tracking cost is greater than \$(.+)$/ do |str|
+  step 'blur out on print form'
   tracking = SdcMail.print_form.tracking
   expect(tracking.cost.present?).to be_truthy
   cost = tracking.cost.text_value.parse_digits.to_f
@@ -247,6 +253,7 @@ Then /^expect print form tracking cost is greater than \$(.+)$/ do |str|
 end
 
 Then /^expect print form extra services cost is \$(.+)$/ do |str|
+  step 'blur out on print form'
   extra_services = SdcMail.print_form.extra_services
   expect(extra_services.cost.present?).to be_truthy
   cost = extra_services.cost.text_value.parse_digits.to_f
@@ -254,6 +261,7 @@ Then /^expect print form extra services cost is \$(.+)$/ do |str|
 end
 
 Then /^expect print form extra services cost is greater than \$(.+)$/ do |str|
+  step 'blur out on print form'
   extra_services = SdcMail.print_form.extra_services
   expect(extra_services.cost.present?).to be_truthy
   cost = extra_services.cost.text_value.parse_digits.to_f
@@ -261,6 +269,7 @@ Then /^expect print form extra services cost is greater than \$(.+)$/ do |str|
 end
 
 Then /^expect print form total amount is \$(.+)$/ do |str|
+  step 'blur out on print form'
   statusbar = SdcMail.statusbar
   expect(statusbar.total.present?).to be_truthy
   total = statusbar.total.text_value.parse_digits.to_f

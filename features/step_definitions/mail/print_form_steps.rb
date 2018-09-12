@@ -89,7 +89,23 @@ Then /^set print form email tracking (.+)$/ do |value|
 end
 
 Then /^set print form insure for to \$(.+)$/ do |value|
-  SdcMail.print_form.insure_for.insurance.set(value)
+  insure_for = SdcMail.print_form.insure_for
+  insurance_terms = SdcWebsite.modals.insurance_terms
+
+  insure_for.insurance.set(value)
+  insure_for.insurance.safe_click
+  insurance_terms.window.safe_wait_until_present(timeout: 3)
+  # This is a work around, there's a bug in the code where there are more
+  # than one Terms and Conditions modal on top of each other.
+  10.times do
+    if insurance_terms.title.present?
+      window_title = 'Stamps.com Insurance Terms and Conditions'
+      expect(insurance_terms.title.text).to eql window_title
+      insurance_terms.i_agree_btns[0].safe_click
+    else
+      break
+    end
+  end
   expect(SdcMail.print_form.insure_for.insurance.text_value.to_f).to eql(value.to_f)
 end
 

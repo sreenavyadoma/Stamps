@@ -3,9 +3,9 @@ Feature:  Mail defects from Sprint
   Background:
     Given Start test driver
 
+    # setup: sign-in account must have 4 contacts listed below, all contacts must have valid email addresses
   @multiple_contacts_email_not_required
   Scenario: WEBAPPS-11803 Email Required Not Validating Correctly
-    # setup: sign-in account must have 4 contacts listed below, all contacts must have valid email addresses
     Then sign-in to mail
     Then select print on Shipping Label - 8 ½" x 11" Paper
     Then expect print form service cost is $0.00
