@@ -68,7 +68,7 @@ end
 
 #BEGIN STAMPS WEB REG
 Cucumber::Rake::Task.new(:sdcwr_random_workflow) do |t|
-  t.profile = 'sdcwr_normal_workflow'
+  t.profile = 'sdcwr_random_workflow'
   t.cucumber_opts = "-p cuke_reports"
 end
 
