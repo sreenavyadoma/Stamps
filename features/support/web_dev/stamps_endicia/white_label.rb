@@ -178,6 +178,7 @@ module WhiteLabel
     page_objects(:cs_business_envelopes) {{xpath: '//div[@id="midCopyContent"]/div[3]/div[18]/ul/li/input[1]'}}
     page_objects(:cs_large_mailers) {{xpath: '//*[@id="midCopyContent"]/div[3]/div[21]/ul/li/input[1]'}}
     page_object(:place_order) { {id: 'mincartButtonTopDpawr'}}
+    page_object(:cs_welcome_kit) {{xpath: '//div[@id="skuList"]/div/span[1]'}}
 
    def atg_promotion
       SdcPage.browser.execute_script('return WR.model.session.atgPromotion')
