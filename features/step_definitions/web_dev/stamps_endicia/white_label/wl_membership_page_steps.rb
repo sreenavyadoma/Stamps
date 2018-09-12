@@ -43,8 +43,8 @@ Then /^WL: set membership page first name to (?:random value|(.*))$/ do |str|
   5.times do
     first_name.clear
     first_name.set(str)
-    break unless first_name.text_value.strip == ''
     step "WL: blur_out on membership page"
+    break unless first_name.text_value.strip == ''
   end
 
   TestData.hash[:first_name] = str
