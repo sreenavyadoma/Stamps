@@ -100,7 +100,7 @@ module WhiteLabel
 
     #Side Mailing Info
     page_object(:need_mailing_info_header) { {xpath:  '//div[@id="need-mailing-info"]/h3'} }
-    page_object(:need_mailing_info_p) { {xpath:  '//div[@id="need-mailing-info"]/p/text()'} }
+    page_object(:need_mailing_info_p) { {xpath:  '//div[@id="need-mailing-info"]/p'} }
     page_object(:change_mailing_addr_header) { {xpath:  '//div[@id="change-mailing-address"]/h3'} }
     page_object(:change_mailing_addr_p) { {xpath:  '//div[@id="change-mailing-address"]/p'} }
     page_object(:outside_my_office_header) { {xpath:  '//div[@id="outside-my-office"]/h3'} }
