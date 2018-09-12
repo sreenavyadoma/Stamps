@@ -274,7 +274,7 @@ end
 
 Then /^[Ss]ave Customs Information form [Tt]otal amount$/ do
   customs_form = SdcWebsite.customs_form
-  total = customs_form.total.text_value.dollar_amount_str.to_f.round(2)
+  total = customs_form.total.text_value.parse_digits.to_f.round(2)
   TestData.hash[:customs_total_value] = total
 end
 
@@ -282,7 +282,7 @@ Then /^[Ee]xpect Customs Total Value is (?:correct|(.*))$/ do |str|
   step 'blur out on customs form'
   str ||= TestData.hash[:customs_total_value]
   customs_form = SdcWebsite.customs_form
-  expect(customs_form.total.text_value.dollar_amount_str.to_f.round(2)).to eql(str)
+  expect(customs_form.total.text_value.parse_digits.to_f.round(2)).to eql(str)
 end
 
 Then /^add customs associated item (\d+), description (.*), qty (\d+), Price (.+), Made In (.+), Tariff (.*)$/ do |item, description, qty, price, made_in, tariff|

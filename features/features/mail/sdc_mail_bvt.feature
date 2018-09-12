@@ -334,8 +334,8 @@ Feature:  Mail BVT
     Then set print form dimensions to length 2 width 2 height 2
     Then set print form tracking Signature Required
     Then set print form tracking USPS Tracking
-    Then set print form insure for 100
-    Then set print form insure for 0
+    Then set print form insure for to $100
+    Then set print form insure for to $0
 
 #    EXTRA SERVICES
     Then select advanced options extra services
@@ -611,7 +611,7 @@ Feature:  Mail BVT
     Then check extra services notice of non-delivery
     Then expect extra services notice of non-delivery price to be 0.00
     #Then pause for 15 seconds
-    Then expect extra services total price to be 26.15
+    Then expect extra services total cost is $26.15
     Then save extra services
     Then select advanced options extra services
     Then expect extra services security price to be 12.60
@@ -619,7 +619,7 @@ Feature:  Mail BVT
     Then expect extra services restricted delivery price to be 5.10
     Then expect extra services cod price to be 5.70
     Then expect extra services notice of non-delivery price to be 0.00
-    Then expect extra services total price to be 26.15
+    Then expect extra services total cost is $26.15
     Then save extra services
     Then sign out
 

@@ -8,18 +8,28 @@ Feature:  Mail defects from Sprint
     # setup: sign-in account must have 4 contacts listed below, all contacts must have valid email addresses
     Then sign-in to mail
     Then select print on Shipping Label - 8 ½" x 11" Paper
+    Then expect print form service cost is $0.00
+    Then expect print form insure-for cost is $0.00
+    Then expect print form tracking cost is $0.00
+    Then expect print form extra services cost is $0.00
     Then select from print form mail-to text area Person 1, Company 1
-    Then click mail-to add button
-    Then select from mail-to add address text area Person 2, Company 2
-    Then click mail-to add button
-    Then select from mail-to add address text area Person 3, Company 3
-    Then click mail-to add button
-    Then select from mail-to add address text area Person 4, Company 4
+#    Then click mail-to add button
+#    Then select from mail-to add address text area Person 2, Company 2
+#    Then click mail-to add button
+#    Then select from mail-to add address text area Person 3, Company 3
+#    Then click mail-to add button
+#    Then select from mail-to add address text area Person 4, Company 4
     Then select print form service PM Package
+    Then set print form insure for to $10
+    Then set print form tracking Signature Required
     Then show advanced options
     Then select advanced options extra services
     Then check extra services hold for pickup
     Then save extra services
+    Then expect print form service cost is greater than $0.00
+    Then expect print form insure-for cost is greater than $0.00
+    Then expect print form tracking cost is greater than $0.00
+    Then expect print form extra services cost is greater than $0.00
     Then click print label
     Then expect incomplete fields modal is not present
 
@@ -54,20 +64,22 @@ Feature:  Mail defects from Sprint
     Then set print form weight to lbs 1 oz 1
     Then show advanced options
     Then select advanced options extra services
-    Then expect extra services fragile cost to be 0.00
+    Then expect extra services fragile cost to be $0.00
     Then check extra services fragile
-    Then expect extra services fragile cost is greater than 0
+    Then expect extra services fragile cost is greater than $0
     Then save extra services
     Then expect print form advanced options extra services button is present
 
-    Then expect print form service cost to be 0.00
-    Then expect print form service cost is greater than 0.00
+    Then expect print form service cost is $0.00
+    Then expect print form service cost is greater than $0.00
 
-    Then expect print form insure-for cost to be 0.00
-    Then expect print form insure-for is greater than 0.00
+    Then expect print form insure-for cost is $0.00
+    Then expect print form insure-for cost is greater than $0.00
 
-    Then expect print form tracking cost to be 0.00
-    Then expect print form tracking cost is greater than 0.00
+    Then expect print form tracking cost is $0.00
+    Then expect print form tracking cost is greater than $0.00
 
-    Then expect print form extra services cost to be 0.00
-    Then expect print form extra services cost is greater than 0.00
+    Then expect print form extra services cost is $0.00
+    Then expect print form extra services cost is greater than $0.00
+
+    Then expect print form total amount is $6.55

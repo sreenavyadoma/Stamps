@@ -189,37 +189,6 @@ Then /^expect print form height is (?:correct|(\d+))$/ do |h|
   expect(SdcMail.print_form.dimensions.height.text_value.to_i).to eql(h)
 end
 
-# dimension expectations
-Then /^[Ee]xpect Print form Length is (?:correct|(\d+))$/ do |str|
-  pending
-  #expect(stamps.mail.print_form.dimensions.length.text.to_i).to eql((str.nil? ? TestData.hash[:length] : str).to_i)
-end
-
-Then /^[Ee]xpect Print form width is (?:correct|(\d+))$/ do |str|
-  pending
-  #expect(stamps.mail.print_form.dimensions.width.text.to_i).to eql((str.nil? ? TestData.hash[:width] : str).to_i)
-end
-
-Then /^[Ee]xpect Print form height is (?:correct|(\d+))$/ do |str|
-  pending
-  #expect(stamps.mail.print_form.dimensions.height.text.to_i).to eql((str.nil? ? TestData.hash[:height] : str).to_i)
-end
-
-Then /^[Ee]xpect [Pp]rint [Ff]orm [Ss]ervice (.*) is not present in dropdown list$/ do |service|
-  pending
-  #expect(stamps.mail.print_form.service.select_service(TestData.hash[:service] = service).present?).to be(false)
-end
-
-# Then /^select print form service for stamps (.*)$/ do |str|
-#   service = SdcMail.print_form.service
-#   service.service_element(:service, str)
-#   service.drop_down.click unless service.service.present?
-#   expect(service.service.present?).to be(true), "Service #{str} is not on list of values"
-#   service.service.click
-#   expect(service.text_field.text_value).to include(str)
-#   step 'blur out on print form'
-# end
-
 Then /^select print form service (.*)$/ do |str|
   SdcLogger.debug "service: #{str}"
   TestData.hash[:service] = str
@@ -233,6 +202,70 @@ Then /^select print form service (.*)$/ do |str|
     service_element.click if service_element.present?
   end
   expect(service.text_field.text_value).to include str
+end
+
+Then /^expect print form service cost is \$(.+)$/ do |str|
+  service = SdcMail.print_form.service
+  expect(service.cost.present?).to be_truthy
+  cost = service.cost.text_value.parse_digits.to_f
+  expect(cost).to eql(str.to_f)
+end
+
+Then /^expect print form service cost is greater than \$(.+)$/ do |str|
+  service = SdcMail.print_form.service
+  expect(service.cost.present?).to be_truthy
+  cost = service.cost.text_value.parse_digits.to_f
+  expect(cost).to be > str.to_f
+end
+
+Then /^expect print form insure-for cost is \$(.+)$/ do |str|
+  insure_for = SdcMail.print_form.insure_for
+  expect(insure_for.cost.present?).to be_truthy
+  cost = insure_for.cost.text_value.parse_digits.to_f
+  expect(cost).to eql(str.to_f)
+end
+
+Then /^expect print form insure-for cost is greater than \$(.+)$/ do |str|
+  insure_for = SdcMail.print_form.insure_for
+  expect(insure_for.cost.present?).to be_truthy
+  cost = insure_for.cost.text_value.parse_digits.to_f
+  expect(cost).to be > str.to_f
+end
+
+Then /^expect print form tracking cost is \$(.+)$/ do |str|
+  tracking = SdcMail.print_form.tracking
+  expect(tracking.cost.present?).to be_truthy
+  cost = tracking.cost.text_value.parse_digits.to_f
+  expect(cost).to eql(str.to_f)
+end
+
+Then /^expect print form tracking cost is greater than \$(.+)$/ do |str|
+  tracking = SdcMail.print_form.tracking
+  expect(tracking.cost.present?).to be_truthy
+  cost = tracking.cost.text_value.parse_digits.to_f
+  expect(cost).to be > str.to_f
+end
+
+Then /^expect print form extra services cost is \$(.+)$/ do |str|
+  extra_services = SdcMail.print_form.extra_services
+  expect(extra_services.cost.present?).to be_truthy
+  cost = extra_services.cost.text_value.parse_digits.to_f
+  expect(cost).to eql(str.to_f)
+end
+
+Then /^expect print form extra services cost is greater than \$(.+)$/ do |str|
+  extra_services = SdcMail.print_form.extra_services
+  expect(extra_services.cost.present?).to be_truthy
+  cost = extra_services.cost.text_value.parse_digits.to_f
+  expect(cost).to be > str.to_f
+end
+
+Then /^expect print form total amount is \$(.+)$/ do |str|
+  statusbar = SdcMail.statusbar
+  expect(statusbar.total.present?).to be_truthy
+  total = statusbar.total.text_value.parse_digits.to_f
+  expect(total).to eql(str.to_f)
+  SdcMail.statusbar.total.text_value.parse_digits.to_f
 end
 
 Then /^expect settings link is present in notification bar$/ do
@@ -448,7 +481,7 @@ Then /^[Ee]xpect Print form International Phone Field is present$/ do
 end
 
 Then /^save print form total cost$/ do
-  TestData.hash[:total_ship_cost] = SdcMail.statusbar.total.text_value.dollar_amount_str.to_f
+  TestData.hash[:total_ship_cost] = SdcMail.statusbar.total.text_value.parse_digits.to_f
 end
 
 Then /^save print form mail from$/ do

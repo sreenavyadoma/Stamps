@@ -88,7 +88,7 @@ Then /^set print form email tracking (.+)$/ do |value|
   expect(SdcMail.print_form.email_tracking.text_field.text_value).to eql(value)
 end
 
-Then /^set print form insure for ([\d.]+)$/ do |value|
+Then /^set print form insure for to \$(.+)$/ do |value|
   SdcMail.print_form.insure_for.insurance.set(value)
   expect(SdcMail.print_form.insure_for.insurance.text_value.to_f).to eql(value.to_f)
 end

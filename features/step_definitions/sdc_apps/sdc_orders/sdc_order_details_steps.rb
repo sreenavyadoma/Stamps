@@ -369,7 +369,7 @@ Then /^set order details service to (.*)$/ do |str|
   service.drop_down.click unless service.selection_element.present?
   service.selection_element.click unless service.selection_element.class_disabled?
   expect(service.text_field.text_value).to include(str)
-  service.wait_until(timeout: 15) { service.cost.text_value.dollar_amount_str.to_f.round(2) > 0 }
+  service.wait_until(timeout: 15) { service.cost.text_value.parse_digits.to_f.round(2) > 0 }
   step 'check for server error'
   step 'save order details data'
   TestData.hash[:service] = str
@@ -696,14 +696,14 @@ end
 Then /^expect order details service cost is (?:correct|(\d+.\d*))$/ do |str|
   str ||= TestData.hash[:service_cost]
   result = SdcOrders.order_details.service.cost.text_value
-  cost = result.dollar_amount_str.to_f.round(2)
+  cost = result.parse_digits.to_f.round(2)
   expect(cost).to eql(str.to_f.round(2))
 end
 
 Then /^expect order details tracking cost is (?:correct|(\d+.\d*))$/ do |str|
   str ||= TestData.hash[:tracking_cost]
   result = SdcOrders.order_details.tracking.cost.text_value
-  cost = result.dollar_amount_str.to_f.round(2)
+  cost = result.parse_digits.to_f.round(2)
   expect(cost).to eql(str.to_f.round(2))
 end
 

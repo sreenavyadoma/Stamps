@@ -61,18 +61,18 @@ Then /^save order details data$/ do
   step 'expect order details is present'
   order_details = SdcOrders.order_details
   TestData.hash[:country] = order_details.ship_to.domestic.country.text_field.text_value
-  TestData.hash[:service_cost] = order_details.service.cost.text_value.dollar_amount_str.to_f.round(2)
+  TestData.hash[:service_cost] = order_details.service.cost.text_value.parse_digits.to_f.round(2)
   TestData.hash[:service] = order_details.service.text_field.text_value
   TestData.hash[:ship_from] = order_details.ship_from.text_field.text_value
-  TestData.hash[:insure_for_cost] = order_details.insure_for.cost.text_value.dollar_amount_str.to_f.round(2)
-  TestData.hash[:total_ship_cost] = order_details.footer.total_ship_cost.text_value.dollar_amount_str.to_f.round(2)
+  TestData.hash[:insure_for_cost] = order_details.insure_for.cost.text_value.parse_digits.to_f.round(2)
+  TestData.hash[:total_ship_cost] = order_details.footer.total_ship_cost.text_value.parse_digits.to_f.round(2)
   TestData.hash[:awaiting_shipment_count] = SdcOrders.filter_panel.awaiting_shipment.count.text_value.to_f.round(2)
   if !order_details.ship_to.domestic.address.text_value.nil? && !order_details.ship_to.domestic.address.text_value.eql?('')
     TestData.hash[:full_name], TestData.hash[:company], TestData.hash[:street_address], TestData.hash[:city], TestData.hash[:state],
         TestData.hash[:zip] = TestHelper.address_str_to_hash(order_details.ship_to.domestic.address.text_value).values
   end
   if order_details.tracking.cost.present?
-    TestData.hash[:tracking_cost] = order_details.tracking.cost.text_value.dollar_amount_str.to_f.round(2)
+    TestData.hash[:tracking_cost] = order_details.tracking.cost.text_value.parse_digits.to_f.round(2)
   end
   if order_details.tracking.text_field.present?
     TestData.hash[:tracking] = order_details.tracking.text_field.text_value

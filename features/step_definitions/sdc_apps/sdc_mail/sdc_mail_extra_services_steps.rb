@@ -39,7 +39,7 @@ end
 
 Then /^expect extra services cod price to be (\d*.?\d+)$/ do |expectation|
   SdcMail.modals.extra_services.cod_price.wait_until_present(timeout: 10)
-  expect(SdcMail.modals.extra_services.cod_price.text_value.dollar_amount_str.to_f.round(2)).to eql(expectation.to_f.round(2))
+  expect(SdcMail.modals.extra_services.cod_price.text_value.parse_digits.to_f.round(2)).to eql(expectation.to_f.round(2))
 end
 
 Then /^expect extra services save button is present$/ do
@@ -122,7 +122,7 @@ end
 Then /^expect extra services security price to be (.+)$/ do |expectation|
   extra_services = SdcMail.modals.extra_services
   extra_services.security_price.wait_until_present(timeout: 5)
-  result = extra_services.security_price.text_value.dollar_amount_str.to_f.round(2)
+  result = extra_services.security_price.text_value.parse_digits.to_f.round(2)
   expect(result).to eql(expectation.to_f.round(2))
 end
 
@@ -187,7 +187,7 @@ end
 
 Then /^expect extra services modal return receipt price to be (\d*.?\d+)$/ do |expectation|
   SdcMail.modals.extra_services.return_receipt_price.wait_until_present(timeout: 5)
-  expect(SdcMail.modals.extra_services.return_receipt_price.text_value.dollar_amount_str.to_f.round(2)).to eql(expectation.to_f.round(2))
+  expect(SdcMail.modals.extra_services.return_receipt_price.text_value.parse_digits.to_f.round(2)).to eql(expectation.to_f.round(2))
 end
 
 Then /^check extra services modal restricted delivery$/ do
@@ -210,7 +210,7 @@ end
 
 Then /^expect extra services modal restricted delivery price to be (\d*.?\d+)$/ do |expectation|
   SdcMail.modals.extra_services.restricted_delivery_price.wait_until_present(timeout: 5)
-  expect(SdcMail.modals.extra_services.restricted_delivery_price.text_value.dollar_amount_str.to_f.round(2)).to eql(expectation.to_f.round(2))
+  expect(SdcMail.modals.extra_services.restricted_delivery_price.text_value.parse_digits.to_f.round(2)).to eql(expectation.to_f.round(2))
 end
 
 Then /^check extra services notice of non-delivery$/ do
@@ -233,7 +233,7 @@ end
 
 Then /^expect extra services notice of non-delivery price to be (\d*.?\d+)$/ do |expectation|
   SdcMail.modals.extra_services.notice_non_delivery_price.wait_until_present(timeout: 5)
-  expect(SdcMail.modals.extra_services.notice_non_delivery_price.text_value.dollar_amount_str.to_f.round(2)).to eql(expectation.to_f.round(2))
+  expect(SdcMail.modals.extra_services.notice_non_delivery_price.text_value.parse_digits.to_f.round(2)).to eql(expectation.to_f.round(2))
 end
 
 Then /^check extra services fragile$/ do
@@ -245,14 +245,14 @@ Then /^expect extra services fragile is checked$/ do
   expect(SdcMail.modals.extra_services.fragile.checked?).to be(true)
 end
 
-Then /^expect extra services fragile cost to be (.+)$/ do |str|
+Then /^expect extra services fragile cost to be \$(.+)$/ do |str|
   extra_services = SdcMail.modals.extra_services
   extra_services.fragile.cost.safe_wait_until_present(timeout: 3)
   expect(extra_services.fragile.cost.present?).to be(true)
   expect(extra_services.fragile.cost.text_value.gsub('$', '')).to eql(str)
 end
 
-Then /^expect extra services fragile cost is greater than (.+)$/ do |str|
+Then /^expect extra services fragile cost is greater than \$(.+)$/ do |str|
   extra_services = SdcMail.modals.extra_services
   extra_services.fragile.cost.safe_wait_until_present(timeout: 3)
   expect(extra_services.fragile.cost.present?).to be(true)
@@ -266,11 +266,6 @@ end
 
 Then /^expect extra services fragile is unchecked$/ do
   expect(SdcMail.modals.extra_services.fragile.checked?).to be(false)
-end
-
-Then /^expect extra services fragile price to be (\d*.?\d+)$/ do |expectation|
-  SdcMail.modals.extra_services.fragile_price.wait_until_present(timeout: 5)
-  expect(SdcMail.modals.extra_services.fragile_price.text_value.dollar_amount_str.to_f.round(2)).to eql(expectation.to_f.round(2))
 end
 
 Then /^check extra services return receipt for merchandise$/ do
@@ -309,8 +304,10 @@ Then /^expect extra services non-rectangular is unchecked$/ do
   expect(SdcMail.modals.extra_services.non_rectangular.checked?).to be(false)
 end
 
-Then /^expect extra services total price to be (\d*.?\d+)$/ do |expectation|
-  expect(SdcMail.modals.extra_services.total.text_value.dollar_amount_str.to_f.round(2)).to eql(expectation.to_f.round(2))
+Then /^expect extra services total cost is \$(\d*.?\d+)$/ do |expectation|
+  extra_services = SdcMail.modals.extra_services
+  result = extra_services.total.text_value.parse_digits.to_f.round(2)
+  expect(result).to eql(expectation.to_f.round(2))
 end
 
 Then /^check extra services hold for pickup$/ do
@@ -331,8 +328,10 @@ Then /^expect extra services hold for pickup is unchecked$/ do
   expect(SdcMail.modals.extra_services.hold_for_pickup.checked?).to be(false)
 end
 
-Then /^expect extra services hold for pickup price to be (\d*.?\d+)$/ do |expectation|
-  expect(SdcMail.modals.extra_services.hold_for_pickup_price.text_value.to_f.round(2)).to eql(expectation.to_f.round(2))
+Then /^expect extra services hold for pickup price is $(\d*.?\d+)$/ do |expectation|
+  extra_services = SdcMail.modals.extra_services
+  result = extra_services.hold_for_pickup_price.text_value.parse_digits.to_f.round(2)
+  expect(result).to eql(expectation.to_f.round(2))
 end
 
 Then /^click extra services form 3811$/ do
@@ -409,7 +408,7 @@ end
 
 Then /^expect extra services restricted delivery price to be (\d*.?\d+)$/ do |expectation|
   SdcMail.modals.extra_services.restricted_delivery_price.wait_until_present(timeout: 5)
-  expect(SdcMail.modals.extra_services.restricted_delivery_price.text_value.dollar_amount_str.to_f.round(2)).to eql(expectation.to_f.round(2))
+  expect(SdcMail.modals.extra_services.restricted_delivery_price.text_value.parse_digits.to_f.round(2)).to eql(expectation.to_f.round(2))
 end
 
 Then /^expect extra services return receipt is present$/ do
@@ -453,7 +452,7 @@ end
 Then /^expect extra services return receipt price to be (\d*.?\d+)$/ do |str|
   extra_services = SdcMail.modals.extra_services
   extra_services.return_receipt_price.wait_until_present(timeout: 5)
-  result = extra_services.return_receipt_price.text_value.dollar_amount_str.to_f.round(2)
+  result = extra_services.return_receipt_price.text_value.parse_digits.to_f.round(2)
   expect(result).to eql(str.to_f.round(2))
 end
 

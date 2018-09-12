@@ -265,7 +265,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then check Extra Services Notice of Non-Delivery
     Then expect extra services notice of non-delivery price to be 0.00
 
-    Then expect extra services total price to be 25.85
+    Then expect extra services total cost is $25.85
 
     Then save Extra Services
 
@@ -276,7 +276,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then expect extra services modal restricted delivery price to be 4.95
     Then expect extra services cod price to be 5.65
     Then expect extra services notice of non-delivery price to be 0.00
-    Then expect extra services total price to be 25.85
+    Then expect extra services total cost is $25.85
 
     Then save Extra Services
     Then sign out

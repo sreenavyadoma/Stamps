@@ -22,7 +22,7 @@ Then /^navigate to mail$/ do
 end
 
 Then /^save balance amount$/ do
-  TestData.hash[:old_balance] = SdcWebsite.navigation.balance.amount.text_value.dollar_amount_str.to_f
+  TestData.hash[:old_balance] = SdcWebsite.navigation.balance.amount.text_value.parse_digits.to_f
 end
 
 Then /^on add funds modal, purchase 10$/ do
@@ -81,7 +81,7 @@ end
 
 Then /^buy mail: expect customer balance increased by \$(\d+)$/ do |str|
   str = str.to_f.round(2)
-  value = SdcWebsite.navigation.balance.amount.text_value.dollar_amount_str.to_f
+  value = SdcWebsite.navigation.balance.amount.text_value.parse_digits.to_f
   result = (value - TestData.hash[:old_balance].to_f).round(2)
   expect(result).to eql(str)
 end
