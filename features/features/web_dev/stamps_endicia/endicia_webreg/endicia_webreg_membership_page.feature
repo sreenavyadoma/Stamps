@@ -10,6 +10,7 @@ Feature: Endicia WebReg: Membership Page
 
     # Profile Page
     Then WL: set profile page default values
+    Then WL: set profile page promo code to empty
     Then WL: click profile page continue button
 
     # Membership Page
