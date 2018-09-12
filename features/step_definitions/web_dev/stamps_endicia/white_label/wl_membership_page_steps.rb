@@ -231,7 +231,8 @@ end
 
 Then /^WL: expect membership page phone is (?:correct|(.*))$/ do |str|
   str ||= TestData.hash[:phone]
-  expect(WhiteLabel.membership_page.phone.text_value.strip).to eql(str)
+  text = WhiteLabel.membership_page.phone.text_value.strip
+  expect(text).to eql(str)
   TestData.hash[:phone] = str
 end
 
