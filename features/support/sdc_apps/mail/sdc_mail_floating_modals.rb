@@ -275,6 +275,13 @@ module SdcMail
       page_object(:close) { { xpath: '//span[text()="Close"]' } }
     end
 
+    class MailConfirmPrint < SdcPage
+      page_object(:window) { { xpath: '//div[starts-with(@id, "dialoguemodal")][contains(@class,"x-window-closable")]' } }
+      page_object(:title) { { xpath: '//div[contains(@class, "x-window-header-title")]//div[@class="x-title-text x-title-text-default x-title-item"]' } }
+      page_object(:body) { { xpath: '//label[@class="x-component x-box-item x-window-item x-component-default"]' } }
+      page_object(:x_button) { { xpath: '//span[contains(@class, "icon-mobile-close-light")]' } }
+      page_object(:continue) { { xpath: '//span[text()="Continue"][@class="x-btn-inner x-btn-inner-primary-medium"]' } }
+    end
 
     class << self
       def notification_bar
@@ -344,6 +351,11 @@ module SdcMail
       def incomplete_fields
         IncompleteFields.new
       end
+
+      def comfirm_print
+        MailConfirmPrint.new
+      end
+
       # def settings
       #   SdcSettings.new
       # end

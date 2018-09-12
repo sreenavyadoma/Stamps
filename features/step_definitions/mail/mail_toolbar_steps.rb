@@ -12,8 +12,23 @@ Then /^click mail toolbar settings$/ do
   step 'expect settings modal is present'
 end
 
+Then /^click print stamps$/ do
+  SdcMail.toolbar.print_label.click
+end
+
 Then /^click print label$/ do
   SdcMail.toolbar.print_label.click
+end
+
+Then /^click continue on confirm print modal$/ do
+  SdcMail.modals.incomplete_fields
+  comfirm_print = SdcMail.modals.comfirm_print
+end
+
+Then /^click print label expecting no errors$/ do
+  step 'click print label'
+  step 'click continue on confirm print modal'
+  step 'expect incomplete fields modal is not present'
 end
 
 Then /^click mail toolbar print$/ do
