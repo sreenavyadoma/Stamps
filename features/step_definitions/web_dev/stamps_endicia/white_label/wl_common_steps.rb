@@ -350,7 +350,7 @@ end
 #.........................An Error Occurred..............................#
 Then /^WL: expect an error occurred modal head to be (.*)$/ do |str|
   error_occurred_header = WhiteLabel.common_page.error_occurred_header
-  error_occurred_header.wait_until_present(timeout: 15)
+  error_occurred_header.wait_until_present(timeout: 20)
   expect(error_occurred_header.text_value.strip).to eql(str)
 end
 
