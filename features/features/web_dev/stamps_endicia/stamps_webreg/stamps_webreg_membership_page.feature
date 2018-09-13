@@ -10,7 +10,9 @@ Feature: Stamps WebReg: Membership Page
     Then WL: navigates to default registration page for stamps with the following offer id 404
     Then WL: set profile page default values
 
+    Then WL: set profile page promo code to empty
     Then WL: click profile page continue button
+
 
     # Membership Page
     # Membership Page Validate Help block tooltips
@@ -418,7 +420,7 @@ Feature: Stamps WebReg: Membership Page
     Then WL: expect postage meter address tooltip to be This field is required
     Then WL: expect postage meter city tooltip to be This field is required
     Then WL: expect postage meter state tooltip to be This field is required
-    Then WL: set postage meter address between zone 5 and zone 8
+    Then WL: set postage meter address between zone 8
     Then WL: click membership page submit button
 
     Then WL: expect username taken header to be Username Taken
@@ -445,7 +447,7 @@ Feature: Stamps WebReg: Membership Page
     Then WL: expect username taken tooltip to be 2 character minimum
     Then WL: set username taken username to an existing username from db
     Then WL: click username taken continue button
-    #Then WL: expect username taken header to be Username Taken
+    Then WL: expect username taken header to be Username Taken
 
     Then WL: click modal x button
 

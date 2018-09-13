@@ -5,7 +5,7 @@ end
 
 Then /^WL: expect membership page bread crumbs is (.*)/ do |str|
   membership_bread_crumb = WhiteLabel.membership_page.membership_bread_crumb
-  membership_bread_crumb.wait_until_present(timeout: 10)
+  membership_bread_crumb.wait_until_present(timeout: 50)
   expect(membership_bread_crumb.text_value.strip).to eql(str)
 end
 
@@ -36,16 +36,17 @@ end
 
 Then /^WL: set membership page first name to (?:random value|(.*))$/ do |str|
   first_name = WhiteLabel.membership_page.first_name
+  first_name.scroll_into_view
   first_name.wait_until_present(timeout: 10)
-  first_name.clear
 
   str ||=  TestHelper.rand_alpha_str.capitalize
   5.times do
+    first_name.clear
     first_name.set(str)
+    step "WL: blur_out on membership page"
     break unless first_name.text_value.strip == ''
   end
 
-  step "WL: blur_out on membership page"
   TestData.hash[:first_name] = str
 end
 
@@ -108,14 +109,15 @@ end
 
 Then /^WL: set membership page address to (.*)$/ do |str|
   address = WhiteLabel.membership_page.address
-  address.clear
+  address.scroll_into_view
 
   5.times do
+    address.clear
     address.set(str)
+    step "WL: blur_out on membership page"
     break unless address.text_value.strip == ''
   end
 
-  step "WL: blur_out on membership page"
   TestData.hash[:address] = str
 end
 
@@ -125,7 +127,8 @@ Then /^WL: click membership page address$/ do
 end
 
 Then /WL: select membership page address autocomplete index (\d+)$/ do |index|
-  address_auto_complete = WhiteLabel.membership_page.address_auto_complete[index-1]
+  membership_page = WhiteLabel.membership_page
+  address_auto_complete = membership_page.address_auto_complete[index-1]
   address_auto_complete.wait_until_present(timeout: 2)
   address_auto_complete.hover if TestSession.env.local_browser == :ff or TestSession.env.local_browser == :firefox
   address_auto_complete.click
@@ -147,9 +150,13 @@ end
 
 Then /^WL: set membership page city to (.*)$/ do |str|
   city = WhiteLabel.membership_page.city
-  city.clear
-  city.set(str)
-  step "WL: blur_out on membership page"
+
+  5.times do
+    city.clear
+    city.set(str)
+    step "WL: blur_out on membership page"
+    break unless city.text_value.strip == ''
+  end
 
   TestData.hash[:city] = str
 end
@@ -225,7 +232,8 @@ end
 
 Then /^WL: expect membership page phone is (?:correct|(.*))$/ do |str|
   str ||= TestData.hash[:phone]
-  expect(WhiteLabel.membership_page.phone.text_value.strip).to eql(str)
+  text = WhiteLabel.membership_page.phone.text_value.strip
+  expect(text).to eql(str)
   TestData.hash[:phone] = str
 end
 
@@ -299,7 +307,10 @@ Then /^WL: expect membership page cardholder's name is (?:correct|(.*))$/ do |st
 end
 
 Then /WL: expect membership page cardholder's name tooltip to be (.*)$/ do |str|
-  expect(WhiteLabel.membership_page.cc_holder_name_help_block.text_value.strip).to eql(str)
+  membership_page = WhiteLabel.membership_page
+  membership_page.cc_holder_name_help_block.scroll_into_view
+  text = membership_page.cc_holder_name_help_block.text_value.strip
+  expect(text).to eql(str)
 end
 
 Then /^WL: set membership page credit card number to (?:default value|(.*))$/ do |str|
@@ -607,7 +618,7 @@ end
 
 Then /^WL: expect membership page terms and conditions modal is present$/ do
   terms_conditions_header = WhiteLabel.membership_page.terms_conditions_header
-  terms_conditions_header.wait_until_present(timeout: 2)
+  terms_conditions_header.wait_until_present(timeout:10)
   expect(terms_conditions_header).to be_present
 end
 
@@ -802,11 +813,13 @@ end
 
 #....................................Side content........................................#
 Then /^WL: expect membership page need mailing info header to be$/ do |str|
-  expect(WhiteLabel.membership_page.need_mailing_info_header.text_value.strip).to eql(str)
+  text = WhiteLabel.membership_page.need_mailing_info_header.text_value.strip
+  expect(text).to eql(str)
 end
 
 Then /^WL: expect membership page need mailing info paragraph to be$/ do |str|
-  expect(WhiteLabel.membership_page.need_mailing_info_p.text_value.strip).to eql(str)
+   text = WhiteLabel.membership_page.need_mailing_info_p.text_value.strip
+   expect(text).to eql(str)
 end
 
 Then /^WL: expect membership page change mailing address header to be$/ do |str|
