@@ -460,7 +460,7 @@ Then /^WL: expect user is navigated to print page for (.*)$/ do |str|
         expect(SdcPage.browser.url).to include('https://print.endicia.com')
       end
   end
-  if TestData.hash[:offer_id] == 391
+  if SdcGlobal.scenario.tags[0].name == "@sdcwr_choose_supplies_page_not_present_workflow"
     #Todo Bug: Offer that has no atg promotion redirects to web postage without user not logged in.
     # When fixed, remove this conditions and just keep: expect(common_page.print_username.attribute_value('title').strip).to eql(TestData.hash[:username])
   else
