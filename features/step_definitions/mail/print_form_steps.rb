@@ -24,15 +24,15 @@ Then /^select from print form mail-to text area (.+), (.+)$/ do |name, company|
   expect(mail_to.add.present?).to be(true)
 end
 
-Then /^set mail-to add address text area to (.*)$/ do |str|
+Then /^set address to (.+) in add address modal$/ do |str|
   address = TestHelper.address_helper(str)
   add_address = SdcMail.modals.add_address
   expect(add_address.window.present?).to be(true)
   add_address.address.set(address)
   TestData.hash[:mail_to_add_address] = address
 end
-
-Then /^set mail-to add address email to (.*)$/ do |str|
+# set email to (.+) in add
+Then /^set email to (.*) in add address modal$/ do |str|
   add_address = SdcMail.modals.add_address
   expect(add_address.window.present?).to be(true)
   add_address.email.set(str)
