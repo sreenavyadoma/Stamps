@@ -1,4 +1,4 @@
-Feature: Stamps WebReg: Normal Workflow
+Feature: Stamps WebReg: Workflow
   Background:
     Given Start test driver
 
