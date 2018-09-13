@@ -7,7 +7,7 @@ Then /^set print form mail-to (?:|to )(?:|a )(?:|random )address(?: to| in| betw
   TestData.hash[:address] = address
 end
 
-Then /^select from print form mail-to text area (.+), (.+)$/ do |name, company|
+Then /^select address from print form mail-to (.+), (.+)$/ do |name, company|
   step 'blur out on print form'
   mail_to = SdcMail.print_form.mail_to
   selection = mail_to.list_of_values(name, company)
@@ -22,40 +22,6 @@ Then /^select from print form mail-to text area (.+), (.+)$/ do |name, company|
     break if mail_to.add.present?
   end
   expect(mail_to.add.present?).to be(true)
-end
-
-Then /^set address on add address modal to (.+)$/ do |str|
-  address = TestHelper.address_helper(str)
-  add_address = SdcMail.modals.add_address
-  expect(add_address.window.present?).to be(true)
-  add_address.address.set!(address)
-  add_address.address_label.blur_out
-  add_address.email_label.blur_out
-  TestData.hash[:add_address_address] = address
-end
-
-Then /^click cancel on add address modal$/ do
-  add_address = SdcMail.modals.add_address
-  3.times do
-    add_address.cancel.safe_click
-    break unless add_address.window.present?
-  end
-end
-
-Then /^click ok on add address modal$/ do
-  add_address = SdcMail.modals.add_address
-  3.times do
-    add_address.ok.safe_click
-    break unless add_address.window.present?
-  end
-end
-
-Then /^set email on add address modal to (.*)$/ do |str|
-  add_address = SdcMail.modals.add_address
-  expect(add_address.window.present?).to be(true)
-  add_address.email.set(str)
-  expect(add_address.email.text_value).to eql(str)
-  TestData.hash[:add_address_email] = str
 end
 
 Then /^expect invalid contact selected modal is present$/ do
@@ -100,17 +66,18 @@ Then /^click mail-to add button$/ do
   expect(add_address.title.text).to eql('Add Address')
 end
 
-Then /^select from mail-to add address text area (.+), (.+)$/ do |name, company|
+Then /^select address from add address modal (.+), (.+)$/ do |name, company|
   add_address = SdcMail.modals.add_address
-  selection = add_address.list_of_values(name, company)
-  # add
-  15.times do
-    add_address.text_area.set(name)
-    add_address.text_area.click
-    add_address.text_area.click
+  invalid_contact = SdcMail.modals.invalid_contact_selected
+  5.times do
+    add_address.address.set(name)
+    add_address.address.click
+    add_address.address.click
+    selection = add_address.list_of_values(name, company)
     selection.safe_wait_until_present(timeout: 3)
     selection.safe_click if selection.present?
-    break if add_address.text_area.text_value.include?(company)
+    break if invalid_contact.window.present?
+    break if add_address.address.text_value.include?(company)
   end
 
 end

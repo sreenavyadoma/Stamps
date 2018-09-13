@@ -265,7 +265,7 @@ module SdcMail
       page_object(:address_label) { { xpath: '//div[starts-with(@id, "addeditaddressmodal-")][contains(@id, "innerCt")]//span[text()="Address:"]' } }
 
       def list_of_values(name, company)
-        page_object(:mail_to_lov) { { xpath: "//div[text()='#{name}, #{company}']" } }
+        SdcElement.new(page_objects(:mail_to_lov) { { xpath: "//div[text()='#{name}, #{company}']" } }.last)
       end
     end
 
@@ -280,7 +280,7 @@ module SdcMail
     class IncompleteFields < SdcPage
       page_object(:window) { { xpath: '//div[starts-with(@id, "dialoguemodal")][contains(@class,"x-window-closable")]' } }
       page_object(:title) { { xpath: '//div[contains(@class, "x-window-header-title")]//div[@class="x-title-text x-title-text-default x-title-item"]' } }
-      page_object(:body) { { xpath: '//div[starts-with(@id, "dialoguemodal-")][@class="x-autocontainer-innerCt"]' } }
+      page_object(:error_message) { { xpath: '//div[starts-with(@id, "dialoguemodal-")][@class="x-autocontainer-innerCt"]' } }
       page_object(:x_button) { { xpath: '//span[contains(@class, "icon-mobile-close-light")]' } }
       page_object(:close) { { xpath: '//span[text()="Close"]' } }
     end

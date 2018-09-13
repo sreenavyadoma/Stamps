@@ -346,20 +346,6 @@ Then /^click extra services label 200$/ do
   step 'expect label 200 modal is present'
 end
 
-Then /^[Cc]lick [Cc]ontinue in [Hh]idden [Pp]ostage [Nn]ot [Aa]llowed modal$/ do
-  pending #stamps.mail.mail_toolbar.hidden_postage_warning.continue
-end
-
-Then /^[Cc]lick [Cc]ancel in [Hh]idden [Pp]ostage [Nn]ot [Aa]llowed modal$/ do
-  pending #stamps.mail.mail_toolbar.hidden_postage_warning.cancel
-end
-
-Then /^[Ee]xpect [Hh]idden [Pp]ostage [Nn]ot [Aa]llowed modal appears due to [Ee]xtra [Ss]ervice (.*)$/ do |service|
-  pending #expect(stamps.mail.mail_toolbar.hidden_postage_warning.present?).to be(true)
-  #expect(stamps.mail.mail_toolbar.hidden_postage_warning.extra_service(service).present?).to be(true)
-end
-
-
 Then /^expect extra services electronic return receipt is present$/ do
   expect(SdcMail.modals.extra_services.electronic_return_receipt).to be_present
 end
