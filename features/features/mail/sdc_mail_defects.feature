@@ -16,8 +16,14 @@ Feature:  Mail defects from Sprint
     Then expect print form extra services cost is $0.00
     Then select from print form mail-to text area Person 1, Company 1
     Then click mail-to add button
-    Then set address to random name, random company, 1350 Market Street #2905, San Francisco, CA in add address modal
-    Then set email to rcruz@stamps.com in add address modal
+
+    Then set email on add address modal to rcruz@stamps.com
+    Then set address on add address modal to random name, random company, 1350 Market Street #2905, San Francisco, CA
+    Then expect invalid contact selected modal is present
+    Then expect error message on invalid contact selected modal is Contacts with an address that requires a customs form cannot be batch printed.
+    Then click close button on invalid contact selected modal
+    Then click cancel on add address modal
+
     #Then select from mail-to add address text area Person 2, Company 2
 #    Then click mail-to add button
 #    Then select from mail-to add address text area Person 3, Company 3

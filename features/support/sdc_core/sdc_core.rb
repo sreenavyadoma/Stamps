@@ -470,7 +470,8 @@ class SdcPage < WatirDrops::PageObject
 
       if index
         element(name, required: required) do
-          SdcElement.new(instance_eval(list_name.to_s, __FILE__, __LINE__)[index])
+          element = instance_eval(list_name.to_s, __FILE__, __LINE__)[index]
+          SdcElement.new(element)
         end
       end
     end

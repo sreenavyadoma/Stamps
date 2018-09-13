@@ -261,10 +261,20 @@ module SdcMail
       page_object(:ok) { { xpath: '//span[text()="OK"]' } }
       page_object(:cancel) { { xpath: '//span[text()="Cancel"]' } }
       page_object(:x_button) { { xpath: '//span[contains(@class, "icon-mobile-close-light")]' } }
+      page_object(:email_label) { { xpath: '//div[starts-with(@id, "addeditaddressmodal-")][contains(@id, "innerCt")]//span[text()="Email:"]' } }
+      page_object(:address_label) { { xpath: '//div[starts-with(@id, "addeditaddressmodal-")][contains(@id, "innerCt")]//span[text()="Address:"]' } }
 
       def list_of_values(name, company)
         page_object(:mail_to_lov) { { xpath: "//div[text()='#{name}, #{company}']" } }
       end
+    end
+
+    class MailToInvalidContactSelected < SdcPage
+      page_objects(:window, index: 0) { { xpath: '//div[starts-with(@id, "dialoguemodal")][contains(@class,"x-window-closable")]' } }
+      page_objects(:title, index: 0) { { xpath: '//div[starts-with(@id, "dialoguemodal-")][contains(@id,"_header-targetEl")]' } }
+      page_objects(:body, index: 0) { { xpath: '//div[starts-with(@id, "dialoguemodal-")][@class="x-autocontainer-innerCt"]' } }
+      page_objects(:x_buttons) { { xpath: '//div[starts-with(@id, "dialoguemodal-")][contains(@id,"_header-targetEl")]//a//span[contains(@class, "sdc-icon-mobile-close-light")]' } }
+      page_objects(:close_buttons) { { xpath: '//span[text()="Close"]' } }
     end
 
     class IncompleteFields < SdcPage
@@ -351,6 +361,10 @@ module SdcMail
 
       def add_address
         MailToAddAddress.new
+      end
+
+      def invalid_contact_selected
+        MailToInvalidContactSelected.new
       end
 
       def incomplete_fields
