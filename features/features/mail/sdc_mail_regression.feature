@@ -129,11 +129,11 @@ Feature: Manage Print Options
     Then select print on Certified Mail Label - SDC-3710
     Then show advanced options
     Then expect extra services return receipt is not present
-    Then expect extra services restricted delivery is is present
-    Then check extra services restricted delivery
-    Then expect extra services restricted delivery is checked
-    Then uncheck extra services restricted delivery
-    Then expect extra services restricted delivery is unchecked
+    Then expect restricted delivery on extra services modal is is present
+    Then check restricted delivery on extra services modal
+    Then expect restricted delivery on extra services modal is checked
+    Then uncheck restricted delivery on extra services modal
+    Then expect restricted delivery on extra services modal is unchecked
     Then expect print form advanced options mail date is present
     Then expect print form advanced options reference number field is present
     Then set print form advanced options reference number to random string
@@ -158,11 +158,11 @@ Feature: Manage Print Options
     Then expect extra services electronic return receipt is checked
 
     Then expect extra services electronic return receipt is unchecked
-    Then expect extra services restricted delivery is is present
-    Then check extra services restricted delivery
-    Then expect extra services restricted delivery is checked
-    Then uncheck extra services restricted delivery
-    Then expect extra services restricted delivery is unchecked
+    Then expect restricted delivery on extra services modal is is present
+    Then check restricted delivery on extra services modal
+    Then expect restricted delivery on extra services modal is checked
+    Then uncheck restricted delivery on extra services modal
+    Then expect restricted delivery on extra services modal is unchecked
     Then expect print form advanced options mail date is present
     Then expect print form advanced options reference number field is present
     Then set print form advanced options reference number to random string
@@ -178,20 +178,20 @@ Feature: Manage Print Options
     Then sign-in to mail
     Then select print on Certified Mail Label - SDC-3910
     Then expect extra services return receipt is present
-    Then check extra services return receipt
+    Then check return receipt on extra services modal
     Then expect extra services return receipt is checked
-    Then uncheck extra services return receipt
+    Then uncheck return receipt on extra services modal
     Then expect extra services return receipt is unchecked
     Then expect extra services electronic return receipt is present
 
     Then expect extra services electronic return receipt is checked
 
     Then expect extra services electronic return receipt is unchecked
-    Then expect extra services restricted delivery is is present
-    Then check extra services restricted delivery
-    Then expect extra services restricted delivery is checked
-    Then uncheck extra services restricted delivery
-    Then expect extra services restricted delivery is unchecked
+    Then expect restricted delivery on extra services modal is is present
+    Then check restricted delivery on extra services modal
+    Then expect restricted delivery on extra services modal is checked
+    Then uncheck restricted delivery on extra services modal
+    Then expect restricted delivery on extra services modal is unchecked
     Then expect print form advanced options mail date is present
     Then expect print form advanced options reference number field is present
     Then set print form advanced options reference number to random string
@@ -207,15 +207,15 @@ Feature: Manage Print Options
     Then sign-in to mail
     Then select print on Certified Mail Label - SDC-3930
     Then expect extra services return receipt is present
-    Then check extra services return receipt
+    Then check return receipt on extra services modal
     Then expect extra services return receipt is checked
-    Then uncheck extra services return receipt
+    Then uncheck return receipt on extra services modal
     Then expect extra services return receipt is unchecked
-    Then expect extra services restricted delivery is is present
-    Then check extra services restricted delivery
-    Then expect extra services restricted delivery is checked
-    Then uncheck extra services restricted delivery
-    Then expect extra services restricted delivery is unchecked
+    Then expect restricted delivery on extra services modal is is present
+    Then check restricted delivery on extra services modal
+    Then expect restricted delivery on extra services modal is checked
+    Then uncheck restricted delivery on extra services modal
+    Then expect restricted delivery on extra services modal is unchecked
     Then expect print form advanced options mail date is present
     Then expect print form advanced options reference number field is present
     Then set print form advanced options reference number to random string
@@ -232,11 +232,11 @@ Feature: Manage Print Options
     Then select print on Certified Mail #11 Envelope - SDC-3810
     Then expect extra services return receipt is present
     Then expect extra services return receipt is checked
-    Then expect extra services restricted delivery is is present
-    Then check extra services restricted delivery
-    Then expect extra services restricted delivery is checked
-    Then uncheck extra services restricted delivery
-    Then expect extra services restricted delivery is unchecked
+    Then expect restricted delivery on extra services modal is is present
+    Then check restricted delivery on extra services modal
+    Then expect restricted delivery on extra services modal is checked
+    Then uncheck restricted delivery on extra services modal
+    Then expect restricted delivery on extra services modal is unchecked
     Then expect print form advanced options mail date is present
     Then expect print form advanced options reference number field is present
     Then set print form advanced options reference number to random string

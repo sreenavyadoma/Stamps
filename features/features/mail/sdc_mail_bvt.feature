@@ -339,27 +339,25 @@ Feature:  Mail BVT
 
 #    EXTRA SERVICES
     Then select advanced options extra services
-    Then check extra services fragile
-    Then uncheck extra services fragile
+    Then check fragile on extra services modal
+    Then uncheck fragile on extra services modal
 
     Then expect value must be shown modal is present
     Then click value must be shown window continue button
     Then click extra services form 3811
     Then close form 3811 modal
-    Then check extra services non-rectangular
-    Then uncheck extra services non-rectangular
-    Then check extra services hold for pickup
-    Then uncheck extra services hold for pickup
+    Then check hold for pickup on extra services modal
+    Then uncheck hold for pickup on extra services modal
     Then set extra services security to USPS Insurance
     Then set extra services security to Registered Mail
     Then increment extra services security value by 2
     Then decrement extra services security value by 2
     Then set extra services security value to 3
     Then set extra services security value to 0
-    Then check extra services modal return receipt
-    Then uncheck extra services modal return receipt
-    Then check extra services modal restricted delivery
-    Then uncheck extra services modal restricted delivery
+    Then check return receipt on extra services modal
+    Then uncheck return receipt on extra services modal
+    Then check restricted delivery on extra services modal
+    Then uncheck restricted delivery on extra services modal
     Then blur out on extra services form
     Then increment extra services cod by 2
     Then decrement extra services cod by 2
@@ -419,11 +417,11 @@ Feature:  Mail BVT
     Then select print form service FCM Letter
 
 
-    Then check extra services restricted delivery
-    Then uncheck extra services restricted delivery
+    Then check restricted delivery on extra services modal
+    Then uncheck restricted delivery on extra services modal
     Then select print on Certified Mail Label - SDC-3910
-    Then check extra services return receipt
-    Then uncheck extra services return receipt
+    Then check return receipt on extra services modal
+    Then uncheck return receipt on extra services modal
     Then sign out
 
   @mail_bvt_ui_validation
@@ -595,25 +593,19 @@ Feature:  Mail BVT
     Then expect advanced options hide label value is checked
     Then select advanced options extra services
     Then set extra services security to Registered Mail
-    Then expect extra services security price to be 11.90
     Then set extra services security value to 30.00
-    #Then pause for 15 seconds
-    Then expect extra services security price to be 12.60
     Then set extra services cod to 20.00
-    #Then pause for 15 seconds
     Then expect extra services cod price to be 5.70
-    Then check extra services return receipt
+    Then check return receipt on extra services modal
     Then expect extra services return receipt price to be 2.75
-    Then check extra services restricted delivery
-    Then expect extra services restricted delivery price to be 5.10
+    Then check restricted delivery on extra services modal
+    Then expect restricted delivery on extra services modal price to be 5.10
 
-    #Then pause for 15 seconds
     Then expect extra services total cost is $26.15
     Then save extra services
     Then select advanced options extra services
-    Then expect extra services security price to be 12.60
     Then expect extra services return receipt price to be 2.75
-    Then expect extra services restricted delivery price to be 5.10
+    Then expect restricted delivery on extra services modal price to be 5.10
     Then expect extra services cod price to be 5.70
     Then expect extra services total cost is $26.15
     Then save extra services

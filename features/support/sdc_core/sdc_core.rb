@@ -835,8 +835,8 @@ class SdcChooser < BasicObject
 
   def choose(iter: 3)
     iter.times do
-      break if chosen?
       click
+      break if chosen?
     end
 
     chosen?
@@ -847,8 +847,8 @@ class SdcChooser < BasicObject
 
   def unchoose(iter: 3)
     iter.times do
-      break unless chosen?
       click
+      break unless chosen?
     end
 
     chosen?

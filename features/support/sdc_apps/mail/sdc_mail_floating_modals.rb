@@ -86,6 +86,10 @@ module SdcMail
       page_object(:title) { { xpath: '//div[contains(@class, "app-window-extra-services")]//div[contains(@class, "x-title-text-default")]' } }
       page_object(:x_btn) { { xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]' } }
 
+      page_object(:security_label) { { xpath: '//label[text()="Security:"]' } }
+      page_object(:cod_label) { { xpath: '//label[text()="COD:"]' } }
+      page_object(:handling_label) { { xpath: '//label[text()="Handling:"]' } }
+
       page_object(:rr_chooser) { { xpath: '//span[@id="sdc-extraserviceswin-rrcheckbox-displayEl"]' } }
       page_object(:rr_verify) { { xpath: '//div[@id="sdc-extraserviceswin-rrcheckbox"]' } }
       checkbox(:return_receipt, :rr_chooser, :rr_verify, 'class', 'checked')
@@ -118,21 +122,19 @@ module SdcMail
 
       page_object(:rrmerch_chooser) { { xpath: '//span[@id="sdc-extraserviceswin-rrmcheckbox-displayEl"]' } }
       page_object(:rrmerch_verify) { { xpath: '//div[@id="sdc-extraserviceswin-rrmcheckbox"]' } }
-      checkbox(:return_receipt_merchandise, :rrmerch_chooser, :rrmerch_verify, 'class', 'checked')
+      checkbox(:return_receipt_merch, :rrmerch_chooser, :rrmerch_verify, 'class', 'checked')
 
       page_object(:nnd_chooser) { { xpath: '//span[@id="sdc-extraserviceswin-nndcheckbox-displayEl"]' } }
       page_object(:nnd_verify) { { xpath: '//div[@id="sdc-extraserviceswin-nndcheckbox"]' } }
       checkbox(:notice_non_delivery, :nnd_chooser, :nnd_verify, 'class', 'checked')
 
-      page_object(:security_price) { { xpath: '//label[@id="sdc-extraserviceswin-securitypricelabel"]' } }
-      page_object(:return_receipt_price) { { xpath: '//label[@id="sdc-extraserviceswin-rrpricelabel"]' } }
-      page_object(:restricted_delivery_price) { { xpath: '//label[@id="sdc-extraserviceswin-rdpricelabel"]' } }
-      page_object(:cod_price) { { xpath: '//label[@id="sdc-extraserviceswin-codpricelabel"]' } }
-      page_object(:notice_non_delivery_price) { { xpath: '//label[@id="sdc-extraserviceswin-nndpricelabel"]' } }
-      page_object(:handling_price) { { xpath: '//label[@id="sdc-extraserviceswin-contentpricelabel"]' } }
-      page_object(:fragile_price) { { xpath: '//label[@id="sdc-extraserviceswin-shpricelabel"]' } }
-      page_object(:return_receipt_m_price) { { xpath: '//label[@id="sdc-extraserviceswin-rrmpricelabel"]' } }
-      page_object(:hold_for_pickup_price) { { xpath: '//label[@id="sdc-extraserviceswin-hfpupricelabel"]' } }
+      page_object(:return_receipt_cost) { { xpath: '//label[@id="sdc-extraserviceswin-rrpricelabel"]' } }
+      page_object(:restricted_delivery_cost) { { xpath: '//label[@id="sdc-extraserviceswin-rdpricelabel"]' } }
+      page_object(:cod_cost) { { xpath: '//label[@id="sdc-extraserviceswin-codpricelabel"]' } }
+      page_object(:notice_non_delivery_cost) { { xpath: '//label[@id="sdc-extraserviceswin-nndpricelabel"]' } }
+      page_object(:fragile_cost) { { xpath: '//label[@id="sdc-extraserviceswin-shpricelabel"]' } }
+      page_object(:return_receipt_merch_cost) { { xpath: '//label[@id="sdc-extraserviceswin-rrmpricelabel"]' } }
+      page_object(:hold_for_pickup_cost) { { xpath: '//label[@id="sdc-extraserviceswin-hfpupricelabel"]' } }
 
       page_object(:form_3811) { { xpath: '//span[@id="sdc-extraserviceswin-rrformbtn-btnInnerEl"]//u' } }
       page_object(:label_200_or_200n) { { xpath: '//span[@id="sdc-extraserviceswin-securityformbtn-btnInnerEl"]/u' } }
