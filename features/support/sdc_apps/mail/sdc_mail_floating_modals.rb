@@ -260,11 +260,12 @@ module SdcMail
       page_object(:title) { { xpath: '//div[starts-with(@id, "addeditaddressmodal-")][contains(@id,"_header-innerCt")]//div[contains(@class, "x-title-text")]' } }
       page_object(:address, tag: :textarea) { { xpath: '//div[starts-with(@id, "addeditaddressmodal")]//textarea[@name="freeFormAddEditAddress"]' } }
       page_object(:email, tag: :text_field) { { xpath: '//div[starts-with(@id, "addeditaddressmodal")][contains(@id,"-outerCt")]//input[@placeholder="Optional"]' } }
-      page_object(:ok) { { xpath: '//span[text()="OK"]' } }
+      page_object(:add) { { xpath: '//span[text()="Add"]' } }
       page_object(:cancel) { { xpath: '//span[text()="Cancel"]' } }
       page_object(:x_button) { { xpath: '//span[contains(@class, "icon-mobile-close-light")]' } }
       page_object(:email_label) { { xpath: '//div[starts-with(@id, "addeditaddressmodal-")][contains(@id, "innerCt")]//span[text()="Email:"]' } }
       page_object(:address_label) { { xpath: '//div[starts-with(@id, "addeditaddressmodal-")][contains(@id, "innerCt")]//span[text()="Address:"]' } }
+      page_object(:email_error_message) { { xpath: '//div[contains(@data-errorqtip,"email")]' } }
 
       def list_of_values(name, company)
         SdcElement.new(page_objects(:mail_to_lov) { { xpath: "//div[text()='#{name}, #{company}']" } }.last)

@@ -9,26 +9,46 @@ Then /^set address on add address modal to (.+)$/ do |str|
   TestData.hash[:add_address_address] = address
 end
 
-Then /^click cancel on add address modal$/ do
+Then /^click cancel button on add address modal$/ do
   add_address = SdcMail.modals.add_address
-  3.times do
-    add_address.cancel.safe_click
-    break unless add_address.window.present?
-  end
+  add_address.cancel.safe_click
 end
 
-Then /^click ok on add address modal$/ do
+Then /^click add button on add address modal$/ do
   add_address = SdcMail.modals.add_address
-  3.times do
-    add_address.ok.safe_click
-    break unless add_address.window.present?
-  end
+  add_address.add.safe_click
 end
+
+Then /^blur out on add address modal$/ do
+  add_address = SdcMail.modals.add_address
+  add_address.email_label.blur_out
+  add_address.address_label.blur_out
+end
+
+Then /^expect add address modal is present$/ do
+  add_address = SdcMail.modals.add_address
+  expect(add_address.window.present?).to be true
+  expect(add_address.title.text.strip).to eql 'Add Address'
+end
+
+Then /^expect add address email error message is (.*)$/ do |str|
+  add_address = SdcMail.modals.add_address
+  5.times do
+    step 'blur out on add address modal'
+    add_address.email_error_message.safe_wait_until_present(timeout: 2)
+    add_address.email_error_message.safe_click
+    break if add_address.email_error_message.present?
+  end
+  expect(add_address.email_error_message.attribute_value 'data-errorqtip').to include str
+end
+
+
 
 Then /^set email on add address modal to (.*)$/ do |str|
   add_address = SdcMail.modals.add_address
   expect(add_address.window.present?).to be(true)
   add_address.email.set(str)
+  step 'blur out on add address modal'
   expect(add_address.email.text_value).to eql(str)
   TestData.hash[:add_address_email] = str
 end

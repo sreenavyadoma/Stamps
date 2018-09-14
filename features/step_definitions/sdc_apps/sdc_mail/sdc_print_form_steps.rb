@@ -2,9 +2,15 @@
 # common Print form steps for Envelope|Label|Roll|CM
 
 Then /^set print form mail-to (?:|to )(?:|a )(?:|random )address(?: to| in| between|) (.*)$/ do |str|
-  step 'blur out on print form'
   address = TestHelper.address_helper(str)
-  SdcMail.print_form.mail_to.text_area.set(address)
+  mail_to = SdcMail.print_form.mail_to
+  5.times do
+    mail_to.text_area.set(address)
+    step 'blur out on print form'
+    sleep 1
+    break if mail_to.add.present?
+  end
+
   step 'blur out on print form'
   TestData.hash[:address] = address
 end
