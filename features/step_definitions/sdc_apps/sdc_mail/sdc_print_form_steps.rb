@@ -66,9 +66,11 @@ end
 Then /^click add address button on print form$/ do
   step 'blur out on print form'
   mail_to = SdcMail.print_form.mail_to
+  statusbar = SdcMail.statusbar
   add_address = SdcMail.modals.add_address
   5.times do
     mail_to.add.safe_click
+    statusbar.total.blur_out
     break if add_address.window.present?
   end
   expect(add_address.title.text).to eql('Add Address')

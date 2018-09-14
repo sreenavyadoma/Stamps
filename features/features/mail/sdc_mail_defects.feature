@@ -4,22 +4,36 @@ Feature:  Mail defects from Sprint
     Given Start test driver
 
 
-  @add_address_email_validation
-  Scenario: WEBAPPS-11803 Email Required Not Validating Correctly
+  @multiple_prints_wrong_cost
+  Scenario: WEBAPPS-11799 Cost Shows Wrong Cost for Multiple Prints
+            Precondition:
+            Account used to sign-in must have 4 contacts listed below, all contacts must have valid email addresses
     Then sign-in to mail
-    """
-    Precondition:
-    Account used to sign-in must have 4 contacts listed below, all contacts must have valid email addresses
-    """
     Then select print on Shipping Label - 8 ½" x 11" Paper
-    Then set print form mail-to to address to Invalid Email, On Add Address Modal, 1350 Market Street #2905, San Francisco CA 94102
+    Then expect print form service cost is $0.00
+    Then expect print form total amount is $0.00
+    Then set print form mail-to to address to Wrong Cost, Multiple Prints, 1350 Market Street #2905, San Francisco CA 94102
     Then set print form email tracking
     Then select print form service PM Package
     Then set print form pounds to 57
+
     Then click add address button on print form
     Then select address from add address modal Person 2, Company 2
     Then click add button on add address modal
     Then expect selected contacts count is 2
+
+#    Then click add address button on print form
+#    Then select address from add address modal Person 3, Company 3
+#    Then click add button on add address modal
+#    Then expect selected contacts count is 3
+#
+#    Then click add address button on print form
+#    Then select address from add address modal Person 4, Company 4
+#    Then click add button on add address modal
+#    Then expect selected contacts count is 4
+    
+    Then expect print form service cost is greater than $50.00
+    Then expect print form total amount is greater than $50.00
 
   @add_address_email_validation
   Scenario: WEBAPPS-11803 Email Required Not Validating Correctly
@@ -80,11 +94,9 @@ Feature:  Mail defects from Sprint
 
   @extra_services_cost_for_rrb_service
   Scenario: WEBAPPS-10539 Web Client Mail | Extra Services Not Updating Price Weight Zero
+            Customer selects Fragile under Extra services and notices the price
+            does not update on the Mail page but price is accurate if printed.
     Then sign-in to mail
-    """
-    Customer selects Fragile under Extra services and notices the price
-    does not update on the Mail page but price is accurate if printed.
-    """
     Then select print on Shipping Label - 8 ½" x 11" Paper
     Then set print form mail-to to a random address in zone 1
     Then set print form email tracking stamps@mailinator.com

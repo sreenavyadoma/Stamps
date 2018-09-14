@@ -282,8 +282,16 @@ Then /^expect print form total amount is \$(.+)$/ do |str|
   expect(statusbar.total.present?).to be_truthy
   total = statusbar.total.text_value.parse_digits.to_f
   expect(total).to eql(str.to_f)
-  SdcMail.statusbar.total.text_value.parse_digits.to_f
 end
+
+Then /^expect print form total amount is greater than \$(.+)$/ do |str|
+  step 'blur out on print form'
+  statusbar = SdcMail.statusbar
+  expect(statusbar.total.present?).to be_truthy
+  total = statusbar.total.text_value.parse_digits.to_f
+  expect(total).to be > str.to_f
+end
+
 
 Then /^expect settings link is present in notification bar$/ do
   SdcMail.modals.notification_bar.settings_link.safe_wait_until_present(timeout: 15)
