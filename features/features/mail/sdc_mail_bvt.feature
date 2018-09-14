@@ -341,12 +341,11 @@ Feature:  Mail BVT
     Then select advanced options extra services
     Then check extra services fragile
     Then uncheck extra services fragile
-    Then check extra services return receipt for merchandise
+
     Then expect value must be shown modal is present
     Then click value must be shown window continue button
     Then click extra services form 3811
     Then close form 3811 modal
-    Then uncheck extra services return receipt for merchandise
     Then check extra services non-rectangular
     Then uncheck extra services non-rectangular
     Then check extra services hold for pickup
@@ -366,8 +365,7 @@ Feature:  Mail BVT
     Then decrement extra services cod by 2
     Then set extra services cod to 3
     Then pause for 15 second
-    Then check extra services notice of non-delivery
-    Then uncheck extra services notice of non-delivery
+
     Then set extra services cod to 0
     Then blur out on extra services form
     Then set extra services handling to Hazardous Materials
@@ -419,8 +417,8 @@ Feature:  Mail BVT
     Then set print form mail-to to a random address in zone 8
     Then set print form weight to lbs 0 oz 1
     Then select print form service FCM Letter
-    Then check extra services electronic return receipt
-    Then uncheck extra services electronic return receipt
+
+
     Then check extra services restricted delivery
     Then uncheck extra services restricted delivery
     Then select print on Certified Mail Label - SDC-3910
@@ -608,8 +606,7 @@ Feature:  Mail BVT
     Then expect extra services return receipt price to be 2.75
     Then check extra services restricted delivery
     Then expect extra services restricted delivery price to be 5.10
-    Then check extra services notice of non-delivery
-    Then expect extra services notice of non-delivery price to be 0.00
+
     #Then pause for 15 seconds
     Then expect extra services total cost is $26.15
     Then save extra services
@@ -618,7 +615,6 @@ Feature:  Mail BVT
     Then expect extra services return receipt price to be 2.75
     Then expect extra services restricted delivery price to be 5.10
     Then expect extra services cod price to be 5.70
-    Then expect extra services notice of non-delivery price to be 0.00
     Then expect extra services total cost is $26.15
     Then save extra services
     Then sign out

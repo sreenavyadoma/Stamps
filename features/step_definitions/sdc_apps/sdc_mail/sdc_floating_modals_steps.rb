@@ -43,7 +43,8 @@ end
 
 Then /^expect incomplete fields modal is present$/ do
   incomplete_fields = SdcMail.modals.incomplete_fields
-  incomplete_fields.window.safe_wait_until_present(timeout: 3)
+  incomplete_fields.window.safe_wait_until_present(timeout: 10)
+  expect(incomplete_fields.window.present?).to be true
   expect(incomplete_fields.title.text.strip).to eql('Incomplete Fields')
 end
 

@@ -48,12 +48,17 @@ end
 
 Then /^save extra services$/ do
   step 'expect extra services modal is present'
-  SdcMail.modals.extra_services.save.click
+  extra_services = SdcMail.modals.extra_services
+  extra_services.title.blur_out
+  extra_services.save.click
+  extra_services.save.wait_while_present(timeout: 5)
   step 'expect extra services modal is not present'
 end
 
 Then /^expect extra services modal is present$/ do
-  expect(SdcMail.modals.extra_services.title).to be_present
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  expect(extra_services.title.text_value).to eql 'Extra Services'
 end
 
 Then /^expect extra services modal is not present$/ do
@@ -67,8 +72,10 @@ Then /^close extra services$/ do
 end
 
 Then /^expect extra services security is present$/ do
-  expect(SdcMail.modals.extra_services.security.drop_down).to be_present
-  expect(SdcMail.modals.extra_services.security.text_field).to be_present
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  expect(extra_services.security.drop_down).to be_present
+  expect(extra_services.security.text_field).to be_present
 end
 
 Then /^set extra services security to (.*)$/ do |value|
@@ -85,15 +92,21 @@ Then /^set extra services security to (.*)$/ do |value|
 end
 
 Then /^expect extra services security is (.*)$/ do |value|
-  expect(SdcMail.modals.extra_services.security.text_field.text_value).to eql(value)
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  expect(extra_services.security.text_field.text_value).to eql(value)
 end
 
 Then /^expect value must be shown modal is present$/ do
-  expect(SdcMail.modals.extra_services.value_must_be_shown.title).to be_present
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  expect(extra_services.value_must_be_shown.title).to be_present
 end
 
 Then /^expect value must be shown modal is not present$/ do
-  expect(SdcMail.modals.extra_services.value_must_be_shown.title).not_to be_present
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  expect(extra_services.value_must_be_shown.title).not_to be_present
 end
 
 Then /^click value must be shown window continue button$/ do
@@ -132,27 +145,35 @@ Then /^expect extra services security value is enabled$/ do
 end
 
 Then /^set extra services security value to (\d*.?\d+)$/ do |value|
-  SdcMail.modals.extra_services.value.set(value)
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  extra_services.value.set(value)
 end
 
 Then /^increment extra services security value by (\d+)$/ do |value|
-  price = SdcMail.modals.extra_services.value.text_value.to_f
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  price = extra_services.value.text_value.to_f
   value.times do
-    SdcMail.modals.extra_services.value.increment.click
+    extra_services.value.increment.click
   end
   step "expect extra services security value is #{price + value.to_f}"
 end
 
 Then /^decrement extra services security value by (\d+)$/ do |value|
-  price = SdcMail.modals.extra_services.value.text_value.to_f
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  price = extra_services.value.text_value.to_f
   value.times do
-    SdcMail.modals.extra_services.value.decrement.click
+    extra_services.value.decrement.click
   end
   step "expect extra services security value is #{price - value.to_f}"
 end
 
 Then /^expect extra services security value is (\d*.?\d+)$/ do |value|
-  expect(SdcMail.modals.extra_services.value.text_value.to_f).to eql(value.to_f)
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  expect(extra_services.value.text_value.to_f).to eql(value.to_f)
 end
 
 Then /^set extra services handling to (.*)$/ do |str|
@@ -164,85 +185,88 @@ Then /^set extra services handling to (.*)$/ do |str|
 end
 
 Then /^expect extra services handling is (.*)$/ do |str|
-  expect(SdcMail.modals.extra_services.handling.text_field.text_value).to eql(str)
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  expect(extra_services.handling.text_field.text_value).to eql(str)
 end
 
 Then /^check extra services modal return receipt$/ do
-  SdcMail.modals.extra_services.return_receipt.check unless SdcMail.modals.extra_services.return_receipt.checked?
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  extra_services.return_receipt.check
   step 'expect extra services modal return receipt is checked'
 end
 
 Then /^uncheck extra services modal return receipt$/ do
-  SdcMail.modals.extra_services.return_receipt.uncheck if SdcMail.modals.extra_services.return_receipt.checked?
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  extra_services.return_receipt.uncheck
   step 'expect extra services modal return receipt is unchecked'
 end
 
 Then /^expect extra services modal return receipt is checked$/ do
-  expect(SdcMail.modals.extra_services.return_receipt.checked?).to be_truthy
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  expect(extra_services.return_receipt.checked?).to be_truthy
 end
 
 Then /^expect extra services modal return receipt is unchecked$/ do
-  expect(SdcMail.modals.extra_services.return_receipt.checked?).not_to be_truthy
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  expect(extra_services.return_receipt.checked?).not_to be_truthy
 end
 
 Then /^expect extra services modal return receipt price to be (\d*.?\d+)$/ do |expectation|
-  SdcMail.modals.extra_services.return_receipt_price.wait_until_present(timeout: 5)
-  expect(SdcMail.modals.extra_services.return_receipt_price.text_value.parse_digits.to_f.round(2)).to eql(expectation.to_f.round(2))
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  result = extra_services.return_receipt_price.text_value.parse_digits.to_f.round(2)
+  expect(result).to eql(expectation.to_f.round(2))
 end
 
 Then /^check extra services modal restricted delivery$/ do
-  SdcMail.modals.extra_services.restricted_delivery.check unless SdcMail.modals.extra_services.restricted_delivery.checked?
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  extra_services.restricted_delivery.check
   step 'expect extra services modal restricted delivery is checked'
 end
 
 Then /^uncheck extra services modal restricted delivery$/ do
-  SdcMail.modals.extra_services.restricted_delivery.uncheck if SdcMail.modals.extra_services.restricted_delivery.checked?
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  extra_services.restricted_delivery.uncheck
   step 'expect extra services modal restricted delivery is unchecked'
 end
 
 Then /^expect extra services modal restricted delivery is checked$/ do
-  expect(SdcMail.modals.extra_services.restricted_delivery.checked?).to be(true)
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  expect(extra_services.restricted_delivery.checked?).to be(true)
 end
 
 Then /^expect extra services modal restricted delivery is unchecked$/ do
-  expect(SdcMail.modals.extra_services.restricted_delivery.checked?).to be(false)
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  expect(extra_services.restricted_delivery.checked?).to be(false)
 end
 
 Then /^expect extra services modal restricted delivery price to be (\d*.?\d+)$/ do |expectation|
-  SdcMail.modals.extra_services.restricted_delivery_price.wait_until_present(timeout: 5)
-  expect(SdcMail.modals.extra_services.restricted_delivery_price.text_value.parse_digits.to_f.round(2)).to eql(expectation.to_f.round(2))
-end
-
-Then /^check extra services notice of non-delivery$/ do
-  SdcMail.modals.extra_services.notice_non_delivery.check unless SdcMail.modals.extra_services.notice_non_delivery.checked?
-  step 'expect extra services notice of non-delivery is checked'
-end
-
-Then /^uncheck extra services notice of non-delivery$/ do
-  SdcMail.modals.extra_services.notice_non_delivery.uncheck if SdcMail.modals.extra_services.notice_non_delivery.checked?
-  step 'expect extra services notice of non-delivery is unchecked'
-end
-
-Then /^expect extra services notice of non-delivery is checked$/ do
-  expect(SdcMail.modals.extra_services.notice_non_delivery.checked?).to be(true)
-end
-
-Then /^expect extra services notice of non-delivery is unchecked$/ do
-  expect(SdcMail.modals.extra_services.notice_non_delivery.checked?).to be(false)
-end
-
-Then /^expect extra services notice of non-delivery price to be (\d*.?\d+)$/ do |expectation|
-  SdcMail.modals.extra_services.notice_non_delivery_price.wait_until_present(timeout: 5)
-  expect(SdcMail.modals.extra_services.notice_non_delivery_price.text_value.parse_digits.to_f.round(2)).to eql(expectation.to_f.round(2))
+  extra_services = SdcMail.modals.extra_services
+  extra_services.restricted_delivery_price.safe_wait_until_present(timeout: 10)
+  result = extra_services.restricted_delivery_price.text_value.parse_digits.to_f.round(2)
+  expect(result).to eql(expectation.to_f.round(2))
 end
 
 Then /^check extra services fragile$/ do
-  SdcMail.modals.extra_services.fragile.check unless SdcMail.modals.extra_services.fragile.checked?
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  extra_services.fragile.check
   step 'expect extra services fragile is checked'
 end
 
 Then /^expect extra services fragile is checked$/ do
-  expect(SdcMail.modals.extra_services.fragile.checked?).to be(true)
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  expect(extra_services.fragile.checked?).to be(true)
 end
 
 Then /^expect extra services fragile cost to be \$(.+)$/ do |str|
@@ -260,48 +284,42 @@ Then /^expect extra services fragile cost is greater than \$(.+)$/ do |str|
 end
 
 Then /^uncheck extra services fragile$/ do
-  SdcMail.modals.extra_services.fragile.uncheck if SdcMail.modals.extra_services.fragile.checked?
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  extra_services.fragile.uncheck
   step 'expect extra services fragile is unchecked'
 end
 
 Then /^expect extra services fragile is unchecked$/ do
-  expect(SdcMail.modals.extra_services.fragile.checked?).to be(false)
-end
-
-Then /^check extra services return receipt for merchandise$/ do
-  SdcMail.modals.extra_services.return_receipt_merchandise.check unless SdcMail.modals.extra_services.return_receipt_merchandise.checked?
-  step 'expect extra services return receipt for merchandise is checked'
-end
-
-Then /^uncheck extra services return receipt for merchandise$/ do
-  SdcMail.modals.extra_services.return_receipt_merchandise.uncheck if SdcMail.modals.extra_services.return_receipt_merchandise.checked?
-  step 'expect extra services return receipt for merchandise is unchecked'
-end
-
-Then /^expect extra services return receipt for merchandise is checked$/ do
-  expect(SdcMail.modals.extra_services.return_receipt_merchandise.checked?).to be(true)
-end
-
-Then /^expect extra services return receipt for merchandise is unchecked$/ do
-  expect(SdcMail.modals.extra_services.return_receipt_merchandise.checked?).to be(false)
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  expect(extra_services.fragile.checked?).to be(false)
 end
 
 Then /^check extra services non-rectangular$/ do
-  SdcMail.modals.extra_services.non_rectangular.check unless SdcMail.modals.extra_services.non_rectangular.checked?
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  extra_services.non_rectangular.check
   step 'expect extra services non-rectangular is checked'
 end
 
 Then /^uncheck extra services non-rectangular$/ do
-  SdcMail.modals.extra_services.non_rectangular.uncheck if SdcMail.modals.extra_services.non_rectangular.checked?
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  extra_services.non_rectangular.uncheck
   step 'expect extra services non-rectangular is unchecked'
 end
 
 Then /^expect extra services non-rectangular is checked$/ do
-  expect(SdcMail.modals.extra_services.non_rectangular.checked?).to be(true)
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  expect(extra_services.non_rectangular.checked?).to be(true)
 end
 
 Then /^expect extra services non-rectangular is unchecked$/ do
-  expect(SdcMail.modals.extra_services.non_rectangular.checked?).to be(false)
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  expect(extra_services.non_rectangular.checked?).to be(false)
 end
 
 Then /^expect extra services total cost is \$(\d*.?\d+)$/ do |expectation|
@@ -311,25 +329,34 @@ Then /^expect extra services total cost is \$(\d*.?\d+)$/ do |expectation|
 end
 
 Then /^check extra services hold for pickup$/ do
-  SdcMail.modals.extra_services.hold_for_pickup.check unless SdcMail.modals.extra_services.hold_for_pickup.checked?
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.wait_until_present(timeout: 5)
+  extra_services.hold_for_pickup.check
   step 'expect extra services hold for pickup is checked'
 end
 
 Then /^uncheck extra services hold for pickup$/ do
-  SdcMail.modals.extra_services.hold_for_pickup.uncheck if SdcMail.modals.extra_services.hold_for_pickup.checked?
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.wait_until_present(timeout: 5)
+  extra_services.hold_for_pickup.uncheck
   step 'expect extra services hold for pickup is unchecked'
 end
 
 Then /^expect extra services hold for pickup is checked$/ do
-  expect(SdcMail.modals.extra_services.hold_for_pickup.checked?).to be(true)
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  expect(extra_services.hold_for_pickup.checked?).to be(true)
 end
 
 Then /^expect extra services hold for pickup is unchecked$/ do
-  expect(SdcMail.modals.extra_services.hold_for_pickup.checked?).to be(false)
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  expect(extra_services.hold_for_pickup.checked?).to be(false)
 end
 
 Then /^expect extra services hold for pickup price is $(\d*.?\d+)$/ do |expectation|
   extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
   result = extra_services.hold_for_pickup_price.text_value.parse_digits.to_f.round(2)
   expect(result).to eql(expectation.to_f.round(2))
 end
@@ -342,79 +369,69 @@ end
 
 Then /^click extra services label 200$/ do
   step 'expect label 200 modal is not present'
-  SdcMail.modals.extra_services.label_200_or_200n.click
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  extra_services.label_200_or_200n.click
   step 'expect label 200 modal is present'
 end
 
-Then /^expect extra services electronic return receipt is present$/ do
-  expect(SdcMail.modals.extra_services.electronic_return_receipt).to be_present
-end
-
-Then /^check extra services electronic return receipt$/ do
-  SdcMail.print_form.advanced_options.electronic_return_receipt.check unless SdcMail.print_form.electronic_return_receipt.checked?
-  step 'expect extra services electronic return receipt is checked'
-end
-
-Then /^uncheck extra services electronic return receipt$/ do
-  SdcMail.print_form.advanced_options.electronic_return_receipt.uncheck if SdcMail.print_form.electronic_return_receipt.checked?
-  step 'expect extra services electronic return receipt is unchecked'
-end
-
-Then /^expect extra services electronic return receipt is checked$/ do
-  expect(SdcMail.print_form.advanced_options.electronic_return_receipt.checked?).to be(true)
-end
-
-Then /^expect extra services electronic return receipt is unchecked$/ do
-  expect(SdcMail.print_form.advanced_options.electronic_return_receipt.checked?).to be(false)
-end
-
 Then /^expect extra services restricted delivery is is present$/ do
-  expect(SdcMail.print_form.advanced_options.restricted_delivery).to be_present
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 10)
+  expect(extra_services.restricted_delivery.present?).to be true
 end
 
 Then /^check extra services restricted delivery$/ do
   step 'blur out on print form'
-  SdcMail.print_form.advanced_options.restricted_delivery.check unless SdcMail.print_form.advanced_options.restricted_delivery.checked?
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.wait_until_present(timeout: 5)
+  extra_services.restricted_delivery.check
   step 'expect extra services restricted delivery is checked'
 end
 
 Then /^uncheck extra services restricted delivery$/ do
   step 'blur out on print form'
-  SdcMail.print_form.advanced_options.restricted_delivery.uncheck if SdcMail.print_form.advanced_options.restricted_delivery.checked?
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.wait_until_present(timeout: 5)
+  extra_services.restricted_delivery.uncheck
   step 'expect extra services restricted delivery is unchecked'
 end
 
 Then /^expect extra services restricted delivery is checked$/ do
-  expect(SdcMail.modals.extra_services.restricted_delivery.checked?).to be(true)
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.wait_until_present(timeout: 5)
+  expect(extra_services.restricted_delivery.checked?).to be(true)
 end
 
 Then /^expect extra services restricted delivery is unchecked$/ do
-  expect(SdcMail.modals.extra_services.restricted_delivery.checked?).to be(false)
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.wait_until_present(timeout: 5)
+  expect(extra_services.restricted_delivery.checked?).to be(false)
 end
 
 Then /^expect extra services restricted delivery price to be (\d*.?\d+)$/ do |expectation|
-  SdcMail.modals.extra_services.restricted_delivery_price.wait_until_present(timeout: 5)
-  expect(SdcMail.modals.extra_services.restricted_delivery_price.text_value.parse_digits.to_f.round(2)).to eql(expectation.to_f.round(2))
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.wait_until_present(timeout: 5)
+  result = extra_services.restricted_delivery_price.text_value.parse_digits.to_f.round(2)
+  expect(result).to eql(expectation.to_f.round(2))
 end
 
 Then /^expect extra services return receipt is present$/ do
-  expect(SdcMail.modals.extra_services.return_receipt).to be_present
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.wait_until_present(timeout: 5)
+  expect(extra_services.return_receipt.present?).to be(true)
 end
 
 Then /^expect extra services return receipt is not present$/ do
-  expect(SdcMail.modals.extra_services.return_receipt).not_to be_present
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.wait_until_present(timeout: 5)
+  expect(extra_services.return_receipt.present?).to be(false)
 end
 
 Then /^check extra services return receipt$/ do
   extra_services = SdcMail.modals.extra_services
   extra_services.return_receipt.check unless extra_services.return_receipt.checked?
   step 'expect extra services return receipt is checked'
-end
-
-Then /^expect extra services model is present$/ do
-  extra_services = SdcMail.modals.extra_services
-  extra_services.window.safe_wait_until_present(timeout: 10)
-  expect(extra_services.title.text_value).to eql 'Extra Services'
 end
 
 Then /^uncheck extra services return receipt$/ do
@@ -424,15 +441,21 @@ Then /^uncheck extra services return receipt$/ do
 end
 
 Then /^expect extra services return receipt is checked$/ do
-  expect(SdcMail.print_form.advanced_options.return_receipt.checked?).to be_truthy
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.wait_until_present(timeout: 5)
+  expect(extra_services.return_receipt.checked?).to be true
 end
 
 Then /^expect extra services return receipt is unchecked$/ do
-  expect(SdcMail.print_form.advanced_options.return_receipt.checked?).not_to be_truthy
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.wait_until_present(timeout: 5)
+  expect(extra_services.return_receipt.checked?).not_to be false
 end
 
 Then /^expect extra services return receipt is disabled$/ do
-  expect(SdcMail.print_form.advanced_options.return_receipt.class_disabled?).not_to be_truthy
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.wait_until_present(timeout: 5)
+  expect(extra_services.return_receipt.class_disabled?).to be false
 end
 
 Then /^expect extra services return receipt price to be (\d*.?\d+)$/ do |str|
@@ -441,22 +464,6 @@ Then /^expect extra services return receipt price to be (\d*.?\d+)$/ do |str|
   result = extra_services.return_receipt_price.text_value.parse_digits.to_f.round(2)
   expect(result).to eql(str.to_f.round(2))
 end
-
-
-Then /^expect extra services certified mail is checked$/ do
-  expect(SdcMail.print_form.advanced_options.certified_mail.checked?).to be_truthy
-end
-
-Then /^expect extra services certified mail is present$/ do
-  expect(SdcMail.print_form.advanced_options.certified_mail).to be_present
-end
-
-Then /^expect extra services certified mail is disabled$/ do
-  expect(SdcMail.print_form.advanced_options.certified_mail.class_disabled?).to be_truthy
-end
-
-
-
 
 
 

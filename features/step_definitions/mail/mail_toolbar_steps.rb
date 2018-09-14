@@ -17,6 +17,8 @@ Then /^click print stamps$/ do
 end
 
 Then /^click print label$/ do
+  step 'blur out on print form'
+  sleep 2
   SdcMail.toolbar.print_label.click
 end
 

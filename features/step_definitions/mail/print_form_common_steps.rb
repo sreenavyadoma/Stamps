@@ -21,12 +21,15 @@ end
 Then /^set print form weight to lbs (\d+) oz (\d+)$/ do |lbs, oz|
   step "set print form pounds to #{lbs}"
   step "set print form ounces to #{oz}"
+  step 'blur out on print form'
 end
 
 Then /^set print form pounds to (\d+\.?\d*)$/ do |lbs|
+  step 'blur out on print form'
   SdcMail.print_form.weight.lbs.set(lbs)
   step "expect print form pounds is #{lbs}"
   TestData.hash[:lbs] = lbs
+  step 'blur out on print form'
 end
 
 Then /^set print form pounds to (\d+) by arrows$/ do |lbs|
@@ -35,6 +38,7 @@ Then /^set print form pounds to (\d+) by arrows$/ do |lbs|
   iterations.abs.times do SdcMail.print_form.weight.lbs.decrement.click end if iterations < 0
   step "expect print form pounds is #{lbs}"
   TestData.hash[:lbs] = lbs
+  step 'blur out on print form'
 end
 
 Then /^set print form ounces to (\d+\.?\d*)$/ do |oz|
@@ -190,6 +194,7 @@ Then /^expect print form height is (?:correct|(\d+))$/ do |h|
 end
 
 Then /^select print form service (.*)$/ do |str|
+  step 'blur out on print form'
   SdcLogger.debug "service: #{str}"
   TestData.hash[:service] = str
   service = SdcMail.print_form.service
@@ -202,6 +207,7 @@ Then /^select print form service (.*)$/ do |str|
     service_element.click if service_element.present?
   end
   expect(service.text_field.text_value).to include str
+  step 'blur out on print form'
 end
 
 Then /^expect print form service cost is \$(.+)$/ do |str|

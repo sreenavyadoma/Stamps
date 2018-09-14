@@ -54,17 +54,32 @@ Feature:  Mail defects from Sprint
     Then click close button on incomplete fields
 
     Then set print form mail-to to address to Email Validation, Not Enforced, 1350 Market Street #2905, San Francisco, CA
+    Then blur out on print form
+    Then pause for 1 seconds
     Then select print form service PM Package
+    Then blur out on print form
+    Then show advanced options
+    Then pause for 1 seconds
+    Then select advanced options extra services
+    Then pause for 1 seconds
+    Then check extra services hold for pickup
+    Then pause for 1 seconds
+    Then save extra services
+    Then blur out on print form
     Then click print label
+    Then pause for 1 seconds
     Then expect incomplete fields modal is present
     Then expect error message on incomplete fields modal includes Weight cannot be 0
     Then click close button on incomplete fields
+    Then increment print form ounces by 1
+    Then blur out on print form
+    Then pause for 1 seconds
+    #Then increment print form pounds by 1
+    Then set print form tracking Signature Required
+    Then blur out on print form
 
-    Then set print form weight to lbs 1 oz 1
-    Then show advanced options
-    Then select advanced options extra services
-    Then check extra services hold for pickup
-    Then save extra services
+    Then pause for 1 seconds
+    Then blur out on print form
     Then click print label
     Then expect incomplete fields modal is present
     Then expect error message on incomplete fields modal includes Email is required.

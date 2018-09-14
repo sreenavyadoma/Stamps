@@ -128,15 +128,7 @@ Feature: Manage Print Options
     Then sign-in to mail
     Then select print on Certified Mail Label - SDC-3710
     Then show advanced options
-    Then expect extra services certified mail is checked
-    Then expect extra services certified mail is present
-#    Then expect extra services certified mail is disabled  #todo - Uncomment when class_disabled? method is working
     Then expect extra services return receipt is not present
-    Then expect extra services electronic return receipt is present
-    Then check extra services electronic return receipt
-    Then expect extra services electronic return receipt is checked
-    Then uncheck extra services electronic return receipt
-    Then expect extra services electronic return receipt is unchecked
     Then expect extra services restricted delivery is is present
     Then check extra services restricted delivery
     Then expect extra services restricted delivery is checked
@@ -160,14 +152,11 @@ Feature: Manage Print Options
     Then set print form mail-to to a random address in zone 1
     Then select print form service PM Package
     Then show advanced options
-    Then expect extra services certified mail is checked
-    Then expect extra services certified mail is present
-#    Then expect extra services certified mail is disabled  #todo - Uncomment when class_disabled? method is working
     Then expect extra services return receipt is not present
     Then expect extra services electronic return receipt is present
-    Then check extra services electronic return receipt
+
     Then expect extra services electronic return receipt is checked
-    Then uncheck extra services electronic return receipt
+
     Then expect extra services electronic return receipt is unchecked
     Then expect extra services restricted delivery is is present
     Then check extra services restricted delivery
@@ -188,18 +177,15 @@ Feature: Manage Print Options
   Scenario: Advanced Options for Certified Mail Label - SDC-3910
     Then sign-in to mail
     Then select print on Certified Mail Label - SDC-3910
-    Then expect extra services certified mail is checked
-    Then expect extra services certified mail is present
-#    Then expect extra services certified mail is disabled  #todo - Uncomment when class_disabled? method is working
     Then expect extra services return receipt is present
     Then check extra services return receipt
     Then expect extra services return receipt is checked
     Then uncheck extra services return receipt
     Then expect extra services return receipt is unchecked
     Then expect extra services electronic return receipt is present
-    Then check extra services electronic return receipt
+
     Then expect extra services electronic return receipt is checked
-    Then uncheck extra services electronic return receipt
+
     Then expect extra services electronic return receipt is unchecked
     Then expect extra services restricted delivery is is present
     Then check extra services restricted delivery
@@ -220,19 +206,11 @@ Feature: Manage Print Options
   Scenario: Advanced Options for Certified Mail Label - SDC-3930
     Then sign-in to mail
     Then select print on Certified Mail Label - SDC-3930
-    Then expect extra services certified mail is checked
-    Then expect extra services certified mail is present
-#    Then expect extra services certified mail is disabled  #todo - Uncomment when class_disabled? method is working
     Then expect extra services return receipt is present
     Then check extra services return receipt
     Then expect extra services return receipt is checked
     Then uncheck extra services return receipt
     Then expect extra services return receipt is unchecked
-    Then expect extra services electronic return receipt is present
-    Then check extra services electronic return receipt
-    Then expect extra services electronic return receipt is checked
-    Then uncheck extra services electronic return receipt
-    Then expect extra services electronic return receipt is unchecked
     Then expect extra services restricted delivery is is present
     Then check extra services restricted delivery
     Then expect extra services restricted delivery is checked
@@ -252,17 +230,8 @@ Feature: Manage Print Options
   Scenario: Advanced Options for Certified Mail Label - SDC-3810
     Then sign-in to mail
     Then select print on Certified Mail #11 Envelope - SDC-3810
-    Then expect extra services certified mail is checked
-    Then expect extra services certified mail is present
-#    Then expect extra services certified mail is disabled  #todo - Uncomment when class_disabled? method is working
     Then expect extra services return receipt is present
-#    Then expect extra services return receipt is disabled  #todo - Uncomment when class_disabled? method is working
     Then expect extra services return receipt is checked
-    Then expect extra services electronic return receipt is present
-    Then check extra services electronic return receipt
-    Then expect extra services electronic return receipt is checked
-    Then uncheck extra services electronic return receipt
-    Then expect extra services electronic return receipt is unchecked
     Then expect extra services restricted delivery is is present
     Then check extra services restricted delivery
     Then expect extra services restricted delivery is checked

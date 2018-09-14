@@ -12,7 +12,7 @@ end
 Then /^select advanced options extra services$/ do
   step 'show advanced options'
   SdcMail.print_form.extra_services.select.click
-  step 'expect extra services model is present'
+  step 'expect extra services modal is present'
 end
 
 Then /^expect print form advanced options extra services button is (\w+)/ do |str|

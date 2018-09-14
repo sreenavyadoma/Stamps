@@ -15,16 +15,14 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then expect advanced options hide label value is checked
     Then select Advanced Options Extra Services
 
-    Then check extra services return receipt for Merchandise
+
     Then click value must be shown window continue button
-    Then expect extra services return receipt for merchandise is checked
     Then save Extra Services
     Then expect advanced options hide label value is unchecked
     Then check advanced options hide label value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Return Receipt for Merchandise
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
-    Then expect extra services return receipt for merchandise is unchecked
 
     Then set extra services security to Registered Mail
     Then click value must be shown window continue button
@@ -71,7 +69,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then select Advanced Options Extra Services
     Then set extra services security to USPS Insurance
     Then set Extra Services Value to 1.00
-    Then check extra services electronic return receipt
+
     Then click value must be shown window continue button
     Then expect extra services electronic return receipt is checked
     Then save Extra Services
@@ -107,9 +105,8 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
 
   @mail_hidden_postage_backlog
   Scenario: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbox State for Hide Label Value
-    Then check extra services return receipt for Merchandise
+
     Then click value must be shown window continue button
-    Then expect extra services return receipt for merchandise is checked
     Then save Extra Services
     Then expect advanced options hide label value is unchecked
     Then check advanced options hide label value
@@ -160,7 +157,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then select Advanced Options Extra Services
     Then set extra services security to USPS Insurance
     Then set Extra Services Value to 1.00
-    Then check extra services electronic return receipt
+
     Then click value must be shown window continue button
     Then expect extra services electronic return receipt is checked
     Then save Extra Services
@@ -211,7 +208,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then select Advanced Options Extra Services
     Then set extra services security to USPS Insurance
     Then set Extra Services Value to 1.00
-    Then check extra services electronic return receipt
+
     Then click value must be shown window continue button
     Then expect extra services electronic return receipt is checked
     Then save Extra Services
@@ -262,8 +259,6 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then check extra services modal restricted delivery
     Then expect extra services modal restricted delivery price to be 4.95
 
-    Then check Extra Services Notice of Non-Delivery
-    Then expect extra services notice of non-delivery price to be 0.00
 
     Then expect extra services total cost is $25.85
 
@@ -275,7 +270,6 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then expect extra services modal return receipt price to be 2.75
     Then expect extra services modal restricted delivery price to be 4.95
     Then expect extra services cod price to be 5.65
-    Then expect extra services notice of non-delivery price to be 0.00
     Then expect extra services total cost is $25.85
 
     Then save Extra Services
