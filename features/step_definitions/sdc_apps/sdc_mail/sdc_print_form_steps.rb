@@ -63,7 +63,7 @@ Then /^expect mail-to add address email is (.*)$/ do |str|
   expect(add_address.email.text_value).to eql(str)
 end
 
-Then /^click mail-to add button$/ do
+Then /^click add address button on print form$/ do
   step 'blur out on print form'
   mail_to = SdcMail.print_form.mail_to
   add_address = SdcMail.modals.add_address
@@ -90,6 +90,15 @@ Then /^select address from add address modal (.+), (.+)$/ do |name, company|
 
 end
 
+Then /^expect selected contacts count is (.+)$/ do |str|
+  add_address = SdcMail.modals.add_address
+  add_address.selected_contacts_count.wait_until_present(timeout: 5)
+  expect(add_address.selected_contacts_count.text.parse_digits.to_i).to eql str.to_i
+end
+
+
+
+
 Then /^[Ee]xpect Print form Mail To is disabled$/ do
   pending
   #expect(stamps.mail.print_form.mail_to.enabled?).to be(true), "Print form Mail To is NOT disabled"
@@ -100,17 +109,21 @@ Then /^click print form mail to link$/ do
   step 'expect search contacts modal is present'
 end
 
-Then /^set print form email tracking (.+)$/ do |value|
-  SdcMail.print_form.email_tracking.text_field.set(value)
-  expect(SdcMail.print_form.email_tracking.text_field.text_value).to eql(value)
+Then /^set print form email tracking(?:| (.+))$/ do |str|
+  str ||= TestHelper.rand_email
+  email_tracking = SdcMail.print_form.email_tracking
+  email_tracking.text_field.set(str)
+  expect(email_tracking.text_field.text_value).to eql(str)
+  TestData.hash[:email_tracking] = str
 end
 
-Then /^set print form insure for to \$(.+)$/ do |value|
+Then /^set print form insure for to \$(.+)$/ do |str|
   insure_for = SdcMail.print_form.insure_for
-  insure_for.insurance.set(value)
+  insure_for.insurance.set(str)
   insure_for.insurance.safe_click
   step 'click through insurance terms and conditions'
-  expect(insure_for.insurance.text_value.to_f).to eql(value.to_f)
+  expect(insure_for.insurance.text_value.to_f).to eql(str.to_f)
+  TestData.hash[:insure_for] = str
 end
 
 Then /^click through insurance terms and conditions$/ do

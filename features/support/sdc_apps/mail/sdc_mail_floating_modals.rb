@@ -266,6 +266,7 @@ module SdcMail
       page_object(:email_label) { { xpath: '//div[starts-with(@id, "addeditaddressmodal-")][contains(@id, "innerCt")]//span[text()="Email:"]' } }
       page_object(:address_label) { { xpath: '//div[starts-with(@id, "addeditaddressmodal-")][contains(@id, "innerCt")]//span[text()="Address:"]' } }
       page_object(:email_error_message) { { xpath: '//div[contains(@data-errorqtip,"email")]' } }
+      page_object(:selected_contacts_count) { { xpath: '//label[contains(text()," Contacts")]' } }
 
       def list_of_values(name, company)
         SdcElement.new(page_objects(:mail_to_lov) { { xpath: "//div[text()='#{name}, #{company}']" } }.last)

@@ -24,11 +24,11 @@ Then /^set print form weight to lbs (\d+) oz (\d+)$/ do |lbs, oz|
   step 'blur out on print form'
 end
 
-Then /^set print form pounds to (\d+\.?\d*)$/ do |lbs|
+Then /^set print form pounds to (.+)$/ do |str|
   step 'blur out on print form'
-  SdcMail.print_form.weight.lbs.set(lbs)
-  step "expect print form pounds is #{lbs}"
-  TestData.hash[:lbs] = lbs
+  SdcMail.print_form.weight.lbs.set(str)
+  step "expect print form pounds is #{str}"
+  TestData.hash[:lbs] = str.to_f
   step 'blur out on print form'
 end
 
@@ -43,7 +43,7 @@ end
 
 Then /^set print form ounces to (\d+\.?\d*)$/ do |oz|
   SdcMail.print_form.weight.oz.set(oz)
-  TestData.hash[:oz] = oz
+  TestData.hash[:oz] = oz.to_f
 end
 
 Then /^increment print form weight by lbs (\d+) oz (\d+)$/ do |lbs, oz|
