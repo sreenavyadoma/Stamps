@@ -19,7 +19,7 @@ module SdcMail
     module MailToContainer
       class MailTo < SdcPage
         # Mail To Drop down
-        page_objects(:add, index: 0) { { xpath: '//span[contains(@class, "sdc-icon-add-button")]' } }
+        page_objects(:add_buttons) { { xpath: '//span[contains(@class, "sdc-icon-add-button")]' } }
         page_object(:dom_drop_down) { { xpath: '//*[@id="sdc-mainpanel-matltocountrydroplist-trigger-picker"]' } }
         page_object(:int_drop_down) { { xpath: '//*[@id="shiptoview-international-targetEl"]//div[contains(@id, "-trigger-picker")][starts-with(@id, "combo")]' } }
         page_objects(:dom_text_field, index: 0, tag: :text_fields) { { xpath: '//input[@name="ShipCountryCode"]' } }
@@ -38,6 +38,12 @@ module SdcMail
         page_object(:postal_code, tag: :text_field) { { xpath: '//input[@name="ShipPostalCode"]' } }
         page_objects(:phone, tag: :text_fields, index: 0) { { xpath: '//input[@name="ShipPhone"]' } }
         page_objects(:int_phone, tag: :text_fields, index: 1) { { xpath: '//input[@name="ShipPhone"]' } }
+
+        def add_button
+          add_buttons.each do |button|
+            return SdcElement.new(button) if button.present?
+          end
+        end
 
         def selection(name, str)
           page_object(name) { { xpath: "//li[text()='#{str}']" } }

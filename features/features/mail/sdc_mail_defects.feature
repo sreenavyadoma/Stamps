@@ -16,22 +16,21 @@ Feature:  Mail defects from Sprint
     Then set print form email tracking
     Then select print form service PM Package
     Then set print form pounds to 57
-
+    # Add 2nd contact
     Then click add address button on print form
-    Then select address from add address modal Person 2, Company 2
+    Then set address on add address modal to Add Address, Add Address Company, 1350 Market Street 2904, San Francisco CA 94102
+    Then set email on add address modal to rcruz@stamps.com
     Then click add button on add address modal
     Then expect selected contacts count is 2
+    Then expect multiple contacts view include Wrong Cost, Add Address
+    # Add 3rd contact
+    Then click add address button on print form
+    Then set address on add address modal to Third Contact, Some Company, 1350 Market Street 2906, San Francisco CA 94102
+    Then set email on add address modal to rcruz@stamps.com
+    Then click add button on add address modal
+    Then expect selected contacts count is 3
+    Then expect multiple contacts view include Wrong Cost, Add Address, Third Contact
 
-#    Then click add address button on print form
-#    Then select address from add address modal Person 3, Company 3
-#    Then click add button on add address modal
-#    Then expect selected contacts count is 3
-#
-#    Then click add address button on print form
-#    Then select address from add address modal Person 4, Company 4
-#    Then click add button on add address modal
-#    Then expect selected contacts count is 4
-    
     Then expect print form service cost is greater than $50.00
     Then expect print form total amount is greater than $50.00
 

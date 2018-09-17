@@ -8,7 +8,7 @@ Then /^set print form mail-to (?:|to )(?:|a )(?:|random )address(?: to| in| betw
     mail_to.text_area.set(address)
     step 'blur out on print form'
     sleep 1
-    break if mail_to.add.present?
+    break if mail_to.add_button.present?
   end
 
   step 'blur out on print form'
@@ -69,7 +69,7 @@ Then /^click add address button on print form$/ do
   statusbar = SdcMail.statusbar
   add_address = SdcMail.modals.add_address
   5.times do
-    mail_to.add.safe_click
+    mail_to.add_button.safe_click
     statusbar.total.blur_out
     break if add_address.window.present?
   end
@@ -95,11 +95,24 @@ end
 Then /^expect selected contacts count is (.+)$/ do |str|
   add_address = SdcMail.modals.add_address
   add_address.selected_contacts_count.wait_until_present(timeout: 5)
+  begin
+    SdcPage.browser.wait_until(timeout: 5) do
+      add_address.selected_contacts_count.text.parse_digits.to_i.eql? str.to_i
+    end
+  rescue
+    # ignore
+  end
   expect(add_address.selected_contacts_count.text.parse_digits.to_i).to eql str.to_i
 end
 
-
-
+Then /^expect multiple contacts view include (.+)$/ do |str|
+  expectations = str.split(',').map(&:strip)
+  add_address = SdcMail.modals.add_address
+  add_address.contacts_view.container.wait_until_present(timeout: 5)
+  contacts = []
+  add_address.contacts_view.contacts_list.each { |contact| contacts[contacts.size] = contact.text }
+  expectations.each { |contact| expect(contacts).to include contact }
+end
 
 Then /^[Ee]xpect Print form Mail To is disabled$/ do
   pending

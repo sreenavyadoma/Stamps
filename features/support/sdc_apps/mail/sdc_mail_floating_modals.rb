@@ -255,6 +255,11 @@ module SdcMail
       page_object(:x_btn) { { xpath: '//div[text()="Settings"]/../..//*[contains(@class, "close")]' } }
     end
 
+    class ContactsView < SdcPage
+      page_object(:container) { { xpath: '//div[starts-with(@id,"multiplecontactsview-")][contains(@id,"-innerCt")]' } }
+      page_objects(:contacts_list) { { xpath: '//div[starts-with(@id,"multiplecontactsview-")][contains(@id,"-innerCt")]//li[@id="ContactId"]//div[@class="x-tagfield-item-text"]' } }
+    end
+
     class MailToAddAddress < SdcPage
       page_object(:window) { { xpath: '//div[starts-with(@id, "addeditaddressmodal")][contains(@id,"-outerCt")]' } }
       page_object(:title) { { xpath: '//div[starts-with(@id, "addeditaddressmodal-")][contains(@id,"_header-innerCt")]//div[contains(@class, "x-title-text")]' } }
@@ -270,6 +275,10 @@ module SdcMail
 
       def list_of_values(name, company)
         SdcElement.new(page_objects(:mail_to_lov) { { xpath: "//div[text()='#{name}, #{company}']" } }.last)
+      end
+
+      def contacts_view
+        ContactsView.new
       end
     end
 

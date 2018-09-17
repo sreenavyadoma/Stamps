@@ -75,34 +75,6 @@ Then /^set contacts password(?: to (.+)|)$/ do |pw|
   modal.contacts_password.set(pw)
 end
 
-Then /^[Cc]heck [Rr]emember [Uu]sername$/ do
-  modal = SdcWebsite.navigation.contacts_sign_in_modal
-  modal.contacts_sign_in_link.wait_until_present(timeout: 15)
-  modal.contacts_sign_in_link.hover unless modal.remember_username.present?
-  modal.contacts_remember_username.set
-end
-
-Then /^[Uu]ncheck [Rr]emember [Uu]sername$/ do
-  modal = SdcWebsite.navigation.contacts_sign_in_modal
-  modal.contacts_sign_in_link.wait_until_present(timeout: 15)
-  modal.contacts_sign_in_link.hover
-  modal.contacts_remember_username.clear
-end
-
-Then /^[Ee]xpect [Rr]emember [Uu]sername is [Cc]hecked$/ do
-  modal = SdcWebsite.navigation.contacts_sign_in_modal
-  modal.contacts_sign_in_link.wait_until_present(timeout: 3)
-  modal.contacts_sign_in_link.hover
-  expect(modal.contacts_remember_username.set?).to eql true
-end
-
-Then /^[Ee]xpect [Rr]emember [Uu]sername to be [Uu]nchecked$/ do
-  modal = SdcWebsite.navigation.contacts_sign_in_modal
-  modal.contcats_sign_in_link.wait_until_present(timeout: 3)
-  modal.contacts_sign_in_link.hover
-  expect(modal.contacts_remember_username.set?).to eql false
-end
-
 Then /^[Cc]lick the [Ss]ign [Ii]n button in [Cc]ontacts$/ do
   contacts_modal = SdcWebsite.navigation.contacts_sign_in_modal
   #verifying_account_info = SdcMail.verifying_account_info
