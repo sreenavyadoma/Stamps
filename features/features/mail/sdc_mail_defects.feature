@@ -3,7 +3,6 @@ Feature:  Mail defects from Sprint
   Background:
     Given Start test driver
 
-
   @multiple_prints_wrong_cost
   Scenario: WEBAPPS-11799 Cost Shows Wrong Cost for Multiple Prints
             Precondition:
@@ -30,7 +29,6 @@ Feature:  Mail defects from Sprint
     Then click add button on add address modal
     Then expect selected contacts count is 3
     Then expect multiple contacts view include Wrong Cost, Add Address, Third Contact
-
     Then expect print form service cost is greater than $50.00
     Then expect print form total amount is greater than $50.00
 
@@ -115,70 +113,3 @@ Feature:  Mail defects from Sprint
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-#    Then expect print form service cost is $0.00
-    #Then expect print form service cost is greater than $0.00
-
-#    Then expect print form insure-for cost is $0.00
-#    Then expect print form insure-for cost is greater than $0.00
-#
-#    Then expect print form tracking cost is $0.00
-#    Then expect print form tracking cost is greater than $0.00
-#
-#    Then expect print form extra services cost is $0.00
-#    Then expect print form extra services cost is greater than $0.00
-
-    #Then expect print form total amount is $6.55
-
-
-#    Then uncheck fragile on extra services modal
-#    Then check fragile on extra services modal
-#    Then check hold for pickup on extra services modal
-#    Then uncheck hold for pickup on extra services modal
-#    Then check restricted delivery on extra services modal
-#    Then uncheck restricted delivery on extra services modal
-#    Then check return receipt on extra services modal
-#    Then uncheck return receipt on extra services modal
-
-#    Then set print form weight to lbs 0 oz 1
-#    Then show advanced options
-#    Then expect print form service cost is $0.00
-#    Then expect print form insure-for cost is $0.00
-#    Then expect print form tracking cost is $0.00
-#    Then expect print form extra services cost is $0.00
-#    Then click add address button on print form
-#    Then select address from add address modal Person 2, Company 2
-#
-#    Then expect invalid contact selected modal is present
-#    Then expect error message on invalid contact selected modal is Contacts with an address that requires a customs form cannot be batch printed.
-#    Then click close button on invalid contact selected modal
-#    Then click cancel on add address modal
-
-    #Then select address from add address modal Person 2, Company 2
-#    Then click add address button on print form
-#    Then select address from add address modal Person 3, Company 3
-#    Then click add address button on print form
-#    Then select address from add address modal Person 4, Company 4
-#    Then select print form service PM Package
-#    Then set print form insure for to $10
-#    Then set print form tracking Signature Required
-#    Then show advanced options
-#    Then select advanced options extra services
-#    Then check hold for pickup on extra services modal
-#    Then save extra services
-#    Then expect print form service cost is greater than $0.00
-#    Then expect print form insure-for cost is greater than $0.00
-#    Then expect print form tracking cost is greater than $0.00
-#    Then expect print form extra services cost is $0.00
-#    Then click print label expecting no errors
