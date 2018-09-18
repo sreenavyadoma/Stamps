@@ -135,8 +135,11 @@ end
 Then /^set print form insure for to \$(.+)$/ do |str|
   insure_for = SdcMail.print_form.insure_for
   insure_for.insurance.set(str)
+  step 'blur out on print form'
   insure_for.insurance.safe_click
+  step 'blur out on print form'
   step 'click through insurance terms and conditions'
+  step 'blur out on print form'
   expect(insure_for.insurance.text_value.to_f).to eql(str.to_f)
   TestData.hash[:insure_for] = str
 end
@@ -145,8 +148,8 @@ Then /^click through insurance terms and conditions$/ do
   # This is a work around, there's a bug in the code where there are more
   # than one Terms and Conditions modal on top of each other.
   insurance_terms = SdcWebsite.modals.insurance_terms
-  insurance_terms.window.safe_wait_until_present(timeout: 3)
-  10.times do
+  insurance_terms.window.safe_wait_until_present(timeout: 2)
+  5.times do
     if insurance_terms.title.present?
       window_title = 'Stamps.com Insurance Terms and Conditions'
       expect(insurance_terms.title.text).to eql window_title
@@ -155,6 +158,31 @@ Then /^click through insurance terms and conditions$/ do
       break
     end
   end
+end
+
+Then /^expect print form message toolbar is present$/ do
+  step 'blur out on print form'
+  message_toolbar = SdcMail.print_form.message_toolbar
+  message_toolbar.message_label.safe_wait_until_present(timeout: 2)
+  10.times do
+    step 'blur out on print form'
+    message_toolbar.message_label.safe_click
+    break if message_toolbar.message_label.present?
+  end
+  expect(message_toolbar.message_label.present?).to be(true)
+end
+
+Then /^expect print form message toolbar reads (.+)$/ do |str|
+  step 'blur out on print form'
+  message_toolbar = SdcMail.print_form.message_toolbar
+  message_toolbar.message_label.safe_wait_until_present(timeout: 2)
+  10.times do
+    step 'blur out on print form'
+    message_toolbar.message_label.safe_click
+    break if message_toolbar.message_label.present?
+  end
+  step 'blur out on print form'
+  expect(message_toolbar.message_label.text.strip).to eql str
 end
 
 Then /^set print form tracking (.+)$/ do |value|

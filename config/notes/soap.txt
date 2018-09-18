@@ -331,7 +331,7 @@ bvtccw10edg13
 bvtccw10edg14
 bvtccw10edg15
 bvtccw10edg16
-bvtccw10edg17
+bvtccw10edg17 - no good
 bvtccw10edg18
 bvtccw10edg19 - cukes rob
 

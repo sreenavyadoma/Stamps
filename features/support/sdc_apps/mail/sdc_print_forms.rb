@@ -290,6 +290,11 @@ module SdcMail
       page_object(:restrictions) { { xpath: '//*[text()="Restrictions..."]' } }
     end
 
+    class MailMessageToolbar < SdcPage
+      page_object(:message_label) { { xpath: '//div[contains(@class,"app-container-form-messages")]//label[@class="x-component x-component-default"]' } }
+      page_object(:close) { { xpath: '//div[contains(@class,"app-container-form-messages")]//a//span[contains(@class,"sdc-icon-message-close-dark")]' } }
+    end
+
     class PrintFormBase < SdcPage
       include MailFromContainer
       include MailToContainer
@@ -299,6 +304,10 @@ module SdcMail
 
       page_object(:show_advanced_options) { { xpath: '//*[text()="Show Advanced Options"]' } }
       page_object(:hide_advanced_options) { { xpath: '//*[text()="Hide Advanced Options"]' } }
+
+      def message_toolbar
+        MailMessageToolbar.new
+      end
     end
 
     class Stamps < PrintFormBase
