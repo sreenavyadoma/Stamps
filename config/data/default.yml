@@ -69,6 +69,13 @@ sql_server_vbridge:
     username: qalab
     password: StampsQA!
     azure: false
+  dev:
+    server: qa-clientdb08-v
+    database: Bridge
+    port: 1433
+    username: corp\lab
+    password: Sdcqatest623
+    azure: false
 
 sql_server_stampmart:
   qacc:
@@ -85,6 +92,13 @@ sql_server_stampmart:
     username: qalab
     password: StampsQA!
     azure: false
+  dev:
+      server: vsdc11db-ls01.qa02.aws.local
+      database: Stampmart
+      port: 1433
+      username: qalab
+      password: StampsQA!
+      azure: false
 
 rates_test:
   rate_file: rate_file.xls
