@@ -882,7 +882,9 @@ Then /^SDCW: click company stuff --> shipping partners$/ do
     when :stg
       expect(url).to eql('https://sdcwebsite.staging.stamps.com/shipping/integrations/')
     when :prod
-      expect(url).to eql('https://stamps.com/shipping/integrations/')
+      expect(url).to eql('https://www.stamps.com/shipping/integrations/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/shipping/integrations/")
   end
   step 'SDCW: navigate back'
 end
@@ -910,7 +912,9 @@ Then /^SDCW: click company stuff --> privacy policy$/ do
     when :stg
       expect(url).to eql('https://sdcwebsite.staging.stamps.com/privacy-policy/')
     when :prod
-      expect(url).to eql('https://stamps.com/privacy-policy/')
+      expect(url).to eql('https://www.stamps.com/privacy-policy/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom//privacy-policy/")
   end
   step 'SDCW: navigate back'
 end
