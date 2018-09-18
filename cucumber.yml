@@ -53,7 +53,19 @@ jenkinsvm: --tags @healthcheck --guess LOG_LEVEL=info JENKINS=false URL=stg BROW
 
 # regression
 extra_services_cost_for_rrb_service: --tags @extra_services_cost_for_rrb_service --guess
+print_form_incomplete_fields: --tags @print_form_incomplete_fields --guess
+add_address_email_validation: --tags @add_address_email_validation --guess
+multiple_prints_wrong_cost: --tags @multiple_prints_wrong_cost --guess
+mail_print_button_labels: --tags @mail_print_button_labels --guess
+shipping_labels_envelopes_extra_services: --tags @shipping_labels_envelopes_extra_services --guess
+priority_mail_insurance_notification: --tags @priority_mail_insurance_notification --guess
+xxxxxxxxx: --tags @xxxxxxxxx --guess
+xxxxxxxxx: --tags @xxxxxxxxx --guess
+xxxxxxxxx: --tags @xxxxxxxxx --guess
+xxxxxxxxx: --tags @xxxxxxxxx --guess
+xxxxxxxxx: --tags @xxxxxxxxx --guess
 
+# rates
 rates_pme_comm_base_mail: --tags @rates_pme_comm_base --guess LOG_LEVEL=info
 rates_pme_comm_base: --tags @rates_pme_comm_base --guess LOG_LEVEL=info
 rates_pm_comm_base: --tags @rates_pm_comm_base --guess LOG_LEVEL=info
