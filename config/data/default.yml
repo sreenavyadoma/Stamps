@@ -39,6 +39,13 @@ sql_server_sdcwebsite:
     username: stampswebsitedb-sdcstaging_user@q5zymesd76
     password: Qa@zure!
     azure: true
+  dev:
+    server: q5zymesd76.database.windows.net
+    database: stampswebsitedb-sdcstaging
+    port: 1433
+    username: stampswebsitedb-sdcstaging_user@q5zymesd76
+    password: Qa@zure!
+    azure: true
 
 sql_server_vbridge:
   qacc:

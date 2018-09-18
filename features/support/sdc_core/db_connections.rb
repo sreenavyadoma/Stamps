@@ -81,7 +81,11 @@ module SdcCore
 
   class SdcWebsiteDB < BasicObject
     def initialize
-      env = ::TestSession.env.url.to_s
+      if ::TestSession.env.url.include(:iigwe, :jjones, :cjanczak, :cesar, :wlanni)
+        env = 'dev'
+      else
+        env = ::TestSession.env.url.to_s
+      end
       server = data_for(:sql_server_sdcwebsite, {})[env]['server']
       database = data_for(:sql_server_sdcwebsite, {})[env]['database']
       port = data_for(:sql_server_sdcwebsite, {})[env]['port']

@@ -183,7 +183,14 @@ module WhiteLabel
 
   class SDCWWebsite <SdcPage
     def self.visit(str)
-      page_url { |env| "https://#{env}stamps.com/?source=#{str}&mboxDisable=1" }
+      if TestSession.env.url.include(:iigwe, :jjones, :cjanczak, :cesar, :wlanni)
+        page_url { |env| "https://#{env}-win10.corp.stamps.com/stampscom/?source=#{str}&mboxDisable=1" }
+      elsif TestSession.env.url.include(:prod)
+        page_url { |env| "https://www.#{env}stamps.com/?source=#{str}&mboxDisable=1" }
+      else
+        page_url { |env| "https://#{env}stamps.com/?source=#{str}&mboxDisable=1" }
+      end
+
       super(case TestSession.env.url
               when :qacc
                 'sdcwebsite.qacc.'
@@ -191,6 +198,16 @@ module WhiteLabel
                 'sdcwebsite.staging.'
               when :prod
                 ''
+              when :iigwe
+                'iigwe'
+              when :jjones
+                'jjones'
+              when :cjanczak
+                'cjanczak'
+              when :cesar
+                'cesar'
+              when :wlanni
+                'wlanni'
               else
                 # ignore
             end)

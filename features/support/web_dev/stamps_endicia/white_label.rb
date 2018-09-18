@@ -200,10 +200,6 @@ module WhiteLabel
       ChooseSupplies.new
     end
 
-    def white_label_sdc_website
-      WlSDCWebsite.new
-    end
-
     def common_page
       Common.new
     end
