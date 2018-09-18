@@ -7,6 +7,11 @@ Cucumber::Rake::Task.new(:priority_mail_insurance_notification) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:print_form_incomplete_fields) do |t|
+  t.profile = 'print_form_incomplete_fields'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:shipping_labels_envelopes_extra_services) do |t|
   t.profile = 'shipping_labels_envelopes_extra_services'
   t.cucumber_opts = "-p cuke_reports"
