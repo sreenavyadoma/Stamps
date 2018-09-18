@@ -1029,7 +1029,9 @@ Then /^SDCW: click company stuff --> site map$/ do
     when :stg
       expect(url).to eql('https://sdcwebsite.staging.stamps.com/sitemap/')
     when :prod
-      expect(url).to eql('https://stamps.com/sitemap/')
+      expect(url).to eql('https://www.stamps.com/sitemap/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/sitemap/")
   end
   step 'SDCW: navigate back'
 end
@@ -1057,7 +1059,9 @@ Then /^SDCW: click company stuff --> contact us$/ do
     when :stg
       expect(url).to eql('https://sdcwebsite.staging.stamps.com/contact-us/')
     when :prod
-      expect(url).to eql('https://stamps.com/contact-us/')
+      expect(url).to eql('https://www.stamps.com/contact-us/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/contact-us/")
   end
   step 'SDCW: navigate back'
 end
@@ -1105,6 +1109,8 @@ Then /^SDCW: click developers --> developer overview$/ do
       expect(url).to eql('https://developer.staging.stamps.com/developer/')
     when :prod
       expect(url).to eql('https://stamps.com/developer/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/developer/")
   end
 end
 
@@ -1134,7 +1140,9 @@ Then /^SDCW: click developers --> developer registration$/ do
     when :stg
       expect(url).to eql('https://developer.staging.stamps.com/developer/register/')
     when :prod
-      expect(url).to eql('https://stamps.com/developer/register/')
+      expect(url).to eql('https://developer.stamps.com/developer/register/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/developer/register/")
   end
 
 end
@@ -1166,6 +1174,8 @@ Then /^SDCW: click developers --> developer reference guide$/ do
       expect(url).to eql('https://developer.staging.stamps.com/developer/docs/swsimv71.html#stamps-api-reference-guide')
     when :prod
       expect(url).to eql('https://developer.stamps.com/developer/docs/swsimv71.html#stamps-api-reference-guide')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-developer.corp.stamps.com/swsimv71.html#stamps-api-reference-guide")
   end
 
 end
@@ -1197,6 +1207,8 @@ Then /^SDCW: click developers --> developer products$/ do
       expect(url).to eql('https://developer.staging.stamps.com/developer/products/')
     when :prod
       expect(url).to eql('https://developer.stamps.com/developer/products/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-developer.corp.stamps.com/developer/products")
   end
 
 end
