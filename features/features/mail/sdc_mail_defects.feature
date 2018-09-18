@@ -51,6 +51,14 @@ Feature:  Mail defects from Sprint
 
     Then close extra services
 
+    Then select print on Envelope - #10, 4 ⅛" x 9 ½"
+    Then expect multiple contacts view include Switching Envelope, Add Address
+
+    Then expect fragile on extra services modal is not present
+    Then expect return receipt for merchandise on extra services modal is not present
+    Then expect non-rectangular on extra services modal is not present
+    Then expect hold for pickup on extra services modal is not present
+
     Then sign out
 
   @mail_print_button_labels

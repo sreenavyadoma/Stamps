@@ -49,6 +49,13 @@ Then /^expect fragile on extra services modal is present$/ do
   expect(extra_services.fragile.present?).to be(true)
 end
 
+Then /^expect fragile on extra services modal is not present$/ do
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 1)
+  step 'blur out on extra services modal'
+  expect(extra_services.fragile.present?).to be(false)
+end
+
 Then /^expect fragile cost on extra services modal is \$(.+)$/ do |str|
   extra_services = SdcMail.modals.extra_services
   extra_services.fragile_cost.safe_wait_until_present(timeout: 3)
@@ -123,6 +130,13 @@ Then /^expect return receipt for merchandise on extra services modal is present$
   expect(extra_services.return_receipt_for_merchandise.present?).to be(true)
 end
 
+Then /^expect return receipt for merchandise on extra services modal is not present$/ do
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 1)
+  step 'blur out on extra services modal'
+  expect(extra_services.return_receipt_for_merchandise.present?).to be(false)
+end
+
 Then /^expect return receipt for merchandise cost on extra services modal is \$(.+)$/ do |str|
   extra_services = SdcMail.modals.extra_services
   extra_services.return_receipt_for_merchandise_cost.safe_wait_until_present(timeout: 3)
@@ -172,12 +186,26 @@ Then /^expect non-rectangular on extra services modal is present$/ do
   expect(extra_services.non_rectangular.present?).to be(true)
 end
 
+Then /^expect non-rectangular on extra services modal is not present$/ do
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 1)
+  step 'blur out on extra services modal'
+  expect(extra_services.non_rectangular.present?).to be(false)
+end
+
 # hold for pickup on extra services modal
 Then /^expect hold for pickup on extra services modal is present$/ do
   extra_services = SdcMail.modals.extra_services
   extra_services.window.safe_wait_until_present(timeout: 1)
   step 'blur out on extra services modal'
   expect(extra_services.hold_for_pickup.present?).to be(true)
+end
+
+Then /^expect hold for pickup on extra services modal is not present$/ do
+  extra_services = SdcMail.modals.extra_services
+  extra_services.window.safe_wait_until_present(timeout: 1)
+  step 'blur out on extra services modal'
+  expect(extra_services.hold_for_pickup.present?).to be(false)
 end
 
 Then /^check hold for pickup on extra services modal$/ do
