@@ -24,20 +24,35 @@ module PartnerPortal
     label(:password_placeholder) { { xpath: '//input[@placeholder="Password"]' } }
     button(:log_in) { { xpath: '//button[@label="Log In"]' } }
     button(:login_label) { { xpath: '//button[@label="Log In"]/span' } }
-    link(:forgot_pw) { { xpath: '//a[@href="/reset-password/request"]' } }
+    link(:forgot_pw) { { xpath: '//a[contains(text(),"Forgot Password?")]' } }
 
-    page_url { |env| "https://partner.#{env}stamps.com/" }
 
     def self.visit
+      if [:iigwe, :jjones, :cjanczak, :cesar, :wlanni].include?(TestSession.env.url)
+        page_url { |env| "https://#{env}-win10.corp.stamps.com/partner/" }
+      else
+        page_url { |env| "https://partner.#{env}stamps.com/" }
+      end
+
       super(case TestSession.env.url
-            when :qacc
-              'qacc.'
-            when :stg
-              'staging.'
-            when :prod
-              ''
-            else
-              # ignore
+              when :qacc
+                'qacc.'
+              when :stg
+                'staging.'
+              when :prod
+                ''
+              when :iigwe
+                'iigwe'
+              when :jjones
+                'jjones'
+              when :cjanczak
+                'cjanczak'
+              when :cesar
+                'cesar'
+              when :wlanni
+                'wlanni'
+              else
+                # ignore
             end)
     end
 
@@ -107,7 +122,7 @@ module PartnerPortal
     end
 
     def pp_rand_date from = 0.0, to = Time.now
-        Time.at(from + rand * (to.to_f - from.to_f))
+      Time.at(from + rand * (to.to_f - from.to_f))
     end
 
   end
@@ -129,14 +144,14 @@ module PartnerPortal
 
     def self.visit
       super(case TestSession.env.url
-            when :qacc
-              'qacc.'
-            when :stg
-              'staging.'
-            when :prod
-              ''
-            else
-              # ignore
+              when :qacc
+                'qacc.'
+              when :stg
+                'staging.'
+              when :prod
+                ''
+              else
+                # ignore
             end)
     end
 
@@ -150,14 +165,14 @@ module PartnerPortal
 
     def self.visit
       super(case TestSession.env.url
-            when :qacc
-              'qacc.'
-            when :stg
-              'staging.'
-            when :prod
-              ''
-            else
-              # ignore
+              when :qacc
+                'qacc.'
+              when :stg
+                'staging.'
+              when :prod
+                ''
+              else
+                # ignore
             end)
     end
   end
@@ -167,14 +182,14 @@ module PartnerPortal
 
     def self.visit
       super(case TestSession.env.url
-            when :qacc
-              'qacc.'
-            when :stg
-              'staging.'
-            when :prod
-              ''
-            else
-              # ignore
+              when :qacc
+                'qacc.'
+              when :stg
+                'staging.'
+              when :prod
+                ''
+              else
+                # ignore
             end)
     end
   end
@@ -184,14 +199,14 @@ module PartnerPortal
 
     def self.visit
       super(case TestSession.env.url
-            when :qacc
-              'qacc.'
-            when :stg
-              'staging.'
-            when :prod
-              ''
-            else
-              # ignore
+              when :qacc
+                'qacc.'
+              when :stg
+                'staging.'
+              when :prod
+                ''
+              else
+                # ignore
             end)
     end
 
@@ -202,14 +217,14 @@ module PartnerPortal
 
     def self.visit
       super(case TestSession.env.url
-            when :qacc
-              'qacc.'
-            when :stg
-              'staging.'
-            when :prod
-              ''
-            else
-              # ignore
+              when :qacc
+                'qacc.'
+              when :stg
+                'staging.'
+              when :prod
+                ''
+              else
+                # ignore
             end)
     end
 

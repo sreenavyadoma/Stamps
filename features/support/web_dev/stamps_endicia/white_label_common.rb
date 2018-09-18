@@ -218,7 +218,7 @@ module WhiteLabel
 
     def self.visit
       if [:iigwe, :jjones, :cjanczak, :cesar, :wlanni].include?(TestSession.env.url)
-        page_url { |env| "https://#{TestSession.env.url}-win10.corp.endicia.com/registration/" }
+        page_url { |env| "https://#{env}-win10.corp.endicia.com/registration/" }
       elsif TestSession.env.url == :prod
         page_url { |env| "https://#{env}.endicia.com/registration/"}
       else
