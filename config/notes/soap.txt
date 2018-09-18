@@ -273,7 +273,7 @@ stgmacff20 mail_authentication_iphonex
 =================================================
 
 OS X Latest Chrome QACC
-bvtccosxgc1
+bvtccosxgc1 extra_services_cost_for_rrb_service
 bvtccosxgc2
 bvtccosxgc3
 bvtccosxgc4

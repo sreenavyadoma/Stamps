@@ -10,9 +10,9 @@ Feature:  Mail defects from Sprint
     Then set print form mail-to to address to Priority Mail, Insurance Yellow Notification, 1350 Market Street #2905, San Francisco CA 94102
     Then select print form service PM Package
     Then set print form insure for to $50
-
     Then expect print form message toolbar is present
     Then expect print form message toolbar reads When using Priority Mail the USPS includes up to $50 of insurance at no charge to you.
+    Then sign out
 
   @shipping_labels_envelopes_extra_services
   Scenario: WEBAPPS-11798 Switching Envelope to Shipping Label does not Update Extra Services
@@ -69,7 +69,6 @@ Feature:  Mail defects from Sprint
     Then expect return receipt for merchandise on extra services modal is not present
     Then expect non-rectangular on extra services modal is not present
     Then expect hold for pickup on extra services modal is not present
-
     Then sign out
 
   @mail_print_button_labels
@@ -177,7 +176,7 @@ Feature:  Mail defects from Sprint
     Then sign-in to mail
     Then select print on Shipping Label - 8 ½" x 11" Paper
     Then set print form mail-to to a random address in zone 1
-    Then set print form email tracking stamps@mailinator.com
+    Then set print form email tracking rcruz@stamps.com
     Then select print form service PM Regional Rate Box A
     Then set print form weight to lbs 0 oz 0
     Then show advanced options

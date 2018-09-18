@@ -1,7 +1,11 @@
 require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
-# BEGIN WEB DEV
+
+Cucumber::Rake::Task.new(:extra_services_cost_for_rrb_service) do |t|
+  t.profile = 'extra_services_cost_for_rrb_service'
+  t.cucumber_opts = "-p cuke_reports"
+end
 
 #BEGIN PARTNER PORTAL
 Cucumber::Rake::Task.new(:pp_log_in_page_validation) do |t|
