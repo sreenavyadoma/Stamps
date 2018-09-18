@@ -139,10 +139,13 @@ module PartnerPortal
 
     page_object(:email_error) { { xpath:  '//*[@name="email"]/div/div'} }
 
-
-    page_url { |env| "https://partner.#{env}stamps.com/reset-password/request" }
-
     def self.visit
+      if [:iigwe, :jjones, :cjanczak, :cesar, :wlanni].include?(TestSession.env.url)
+        page_url { |env| "https://#{env}-win10.corp.stamps.com/reset-password/request" }
+      else
+        page_url { |env| "https://partner.#{env}stamps.com/reset-password/request" }
+      end
+
       super(case TestSession.env.url
               when :qacc
                 'qacc.'
@@ -150,6 +153,16 @@ module PartnerPortal
                 'staging.'
               when :prod
                 ''
+              when :iigwe
+                'iigwe'
+              when :jjones
+                'jjones'
+              when :cjanczak
+                'cjanczak'
+              when :cesar
+                'cesar'
+              when :wlanni
+                'wlanni'
               else
                 # ignore
             end)
@@ -161,9 +174,13 @@ module PartnerPortal
     #header
     page_object(:header) { { xpath:  '//h1[contains(text(), "Reset Email Sent")]'} }
 
-    page_url { |env| "https://partner.#{env}stamps.com/reset-password/request/confirmation" }
-
     def self.visit
+      if [:iigwe, :jjones, :cjanczak, :cesar, :wlanni].include?(TestSession.env.url)
+        page_url { |env| "https://#{env}-win10.corp.stamps.com/reset-password/request/confirmation" }
+      else
+        page_url { |env| "https://partner.#{env}stamps.com/reset-password/request/confirmation" }
+      end
+
       super(case TestSession.env.url
               when :qacc
                 'qacc.'
@@ -171,6 +188,16 @@ module PartnerPortal
                 'staging.'
               when :prod
                 ''
+              when :iigwe
+                'iigwe'
+              when :jjones
+                'jjones'
+              when :cjanczak
+                'cjanczak'
+              when :cesar
+                'cesar'
+              when :wlanni
+                'wlanni'
               else
                 # ignore
             end)
@@ -178,9 +205,14 @@ module PartnerPortal
   end
 
   class PPSetPasswordPage < SdcPage
-    page_url { |env| "https://partner.#{env}stamps.com/set-password" }
 
     def self.visit
+      if [:iigwe, :jjones, :cjanczak, :cesar, :wlanni].include?(TestSession.env.url)
+        page_url { |env| "https://#{env}-win10.corp.stamps.com/set-password" }
+      else
+        page_url { |env| "https://partner.#{env}stamps.com/set-password" }
+      end
+
       super(case TestSession.env.url
               when :qacc
                 'qacc.'
@@ -188,6 +220,16 @@ module PartnerPortal
                 'staging.'
               when :prod
                 ''
+              when :iigwe
+                'iigwe'
+              when :jjones
+                'jjones'
+              when :cjanczak
+                'cjanczak'
+              when :cesar
+                'cesar'
+              when :wlanni
+                'wlanni'
               else
                 # ignore
             end)
@@ -195,9 +237,13 @@ module PartnerPortal
   end
 
   class PPError404Page < SdcPage
-    page_url { |env| "https://partner.#{env}stamps.com/error-404" }
 
     def self.visit
+      if [:iigwe, :jjones, :cjanczak, :cesar, :wlanni].include?(TestSession.env.url)
+        page_url { |env| "https://#{env}-win10.corp.stamps.com/error-404" }
+      else
+        page_url { |env| "https://partner.#{env}stamps.com/error-404" }
+      end
       super(case TestSession.env.url
               when :qacc
                 'qacc.'
@@ -205,6 +251,16 @@ module PartnerPortal
                 'staging.'
               when :prod
                 ''
+              when :iigwe
+                'iigwe'
+              when :jjones
+                'jjones'
+              when :cjanczak
+                'cjanczak'
+              when :cesar
+                'cesar'
+              when :wlanni
+                'wlanni'
               else
                 # ignore
             end)
@@ -213,9 +269,14 @@ module PartnerPortal
   end
 
   class PPError500Page < SdcPage
-    page_url { |env| "https://partner.#{env}stamps.com/error-500" }
 
     def self.visit
+      if [:iigwe, :jjones, :cjanczak, :cesar, :wlanni].include?(TestSession.env.url)
+        page_url { |env| "https://#{env}-win10.corp.stamps.com/error-500" }
+      else
+        page_url { |env| "https://partner.#{env}stamps.com/error-500" }
+      end
+
       super(case TestSession.env.url
               when :qacc
                 'qacc.'
@@ -223,6 +284,16 @@ module PartnerPortal
                 'staging.'
               when :prod
                 ''
+              when :iigwe
+                'iigwe'
+              when :jjones
+                'jjones'
+              when :cjanczak
+                'cjanczak'
+              when :cesar
+                'cesar'
+              when :wlanni
+                'wlanni'
               else
                 # ignore
             end)
