@@ -914,7 +914,7 @@ Then /^SDCW: click company stuff --> privacy policy$/ do
     when :prod
       expect(url).to eql('https://www.stamps.com/privacy-policy/')
     else
-      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom//privacy-policy/")
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/privacy-policy/")
   end
   step 'SDCW: navigate back'
 end
@@ -945,6 +945,8 @@ Then /^SDCW: click company stuff --> investor info$/ do
       expect(url).to eql('http://investor.stamps.com/')
     when :prod
       expect(url).to eql('http://investor.stamps.com/')
+    else
+      expect(url).to eql('http://investor.stamps.com/')
   end
 
 end
@@ -968,12 +970,6 @@ Then /^SDCW: click company stuff --> careers$/ do
 
   url =  SdcPage.browser.windows.last.url
   SdcPage.browser.windows.last.close
-
-  # if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-  #   expect(url).to include 'https://careers-stamps.icims.com/jobs/intro?hashed=-435738745'
-  # else
-  #   expect(url).to eql('https://careers-stamps.icims.com/jobs/intro?hashed=-435738745')
-  # end
   expect(url).to include 'https://careers-stamps.icims.com/jobs/intro?hashed=-435738745'
 end
 
@@ -1001,7 +997,9 @@ Then /^SDCW: click company stuff --> affiliates$/ do
     when :stg
       expect(url).to eql('https://sdcwebsite.staging.stamps.com/affiliates/')
     when :prod
-      expect(url).to eql('https://stamps.com/affiliates/')
+      expect(url).to eql('https://www.stamps.com/affiliates/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/affiliates/")
   end
 
   step 'SDCW: navigate back'
