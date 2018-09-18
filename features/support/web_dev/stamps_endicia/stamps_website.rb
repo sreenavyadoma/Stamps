@@ -17,7 +17,13 @@ module StampsWebsite
     page_object(:offer_box) {{id: 'offer-box'}}
     page_objects(:offer_details_link, index: 0) { {xpath: '//div[@id="fivedollar"]/a'} }
 
-    page_url { |env| "https://#{env}stamps.com/?mboxDisable=1" }
+    if TestSession.env.url.include(:iigwe, :jjones, :cjanczak, :cesar, :wlanni)
+      page_url { |env| "https://#{env}-win10.corp.stamps.com/stampscom/?mboxDisable=1" }
+    elsif TestSession.env.url.include(:prod)
+      page_url { |env| "https://www.#{env}stamps.com/?mboxDisable=1" }
+    else
+      page_url { |env| "https://#{env}stamps.com/?mboxDisable=1" }
+    end
     def self.visit
       super(case TestSession.env.url
               when :qacc
@@ -26,6 +32,16 @@ module StampsWebsite
                 'sdcwebsite.staging.'
               when :prod
                 ''
+              when :iigwe
+                'iigwe'
+              when :jjones
+                'jjones'
+              when :cjanczak
+                'cjanczak'
+              when :cesar
+                'cesar'
+              when :wlanni
+                'wlanni'
               else
                 # ignore
             end)
@@ -33,8 +49,13 @@ module StampsWebsite
   end
 
   class PostageOnlinePage < SdcPage
-
-    page_url { |env| "https://#{env}stamps.com/postage-online/?mboxDisable=1" }
+    if TestSession.env.url.include(:iigwe, :jjones, :cjanczak, :cesar, :wlanni)
+      page_url { |env| "https://#{env}-win10.corp.stamps.com/stampscom/?mboxDisable=1" }
+    elsif TestSession.env.url.include(:prod)
+      page_url { |env| "https://www.#{env}stamps.com/?mboxDisable=1" }
+    else
+      page_url { |env| "https://#{env}stamps.com/?mboxDisable=1" }
+    end
     def self.visit
       super(case TestSession.env.url
               when :qacc
@@ -43,6 +64,16 @@ module StampsWebsite
                 'sdcwebsite.staging.'
               when :prod
                 ''
+              when :iigwe
+                'iigwe'
+              when :jjones
+                'jjones'
+              when :cjanczak
+                'cjanczak'
+              when :cesar
+                'cesar'
+              when :wlanni
+                'wlanni'
               else
                 # ignore
             end)
