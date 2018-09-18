@@ -111,7 +111,11 @@ module SdcCore
 
   class VBridgeDB < BasicObject
     def initialize
-      env = ::TestSession.env.url.to_s
+      if [:iigwe, :jjones, :cjanczak, :cesar, :wlanni].include?(::TestSession.env.url)
+        env = 'dev'
+      else
+        env = ::TestSession.env.url.to_s
+      end
       server = data_for(:sql_server_vbridge, {})[env]['server']
       database = data_for(:sql_server_vbridge, {})[env]['database']
       port = data_for(:sql_server_vbridge, {})[env]['port']
@@ -133,7 +137,11 @@ module SdcCore
 
   class StampMartDB < BasicObject
     def initialize
-      env = ::TestSession.env.url.to_s
+      if [:iigwe, :jjones, :cjanczak, :cesar, :wlanni].include?(::TestSession.env.url)
+        env = 'dev'
+      else
+        env = ::TestSession.env.url.to_s
+      end
       server = data_for(:sql_server_stampmart, {})[env]['server']
       database = data_for(:sql_server_stampmart, {})[env]['database']
       port = data_for(:sql_server_stampmart, {})[env]['port']
