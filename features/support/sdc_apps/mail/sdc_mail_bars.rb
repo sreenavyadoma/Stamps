@@ -1,6 +1,8 @@
 module SdcMail
   class SdcMailToolbar < SdcPage
+    page_object(:print_button) { { xpath: '//div[contains(@class,"toolbar-background-color")]//a[contains(@class,"x-btn-primary-medium")]//span[starts-with(text(),"Print ")]' } }
     page_object(:print_label) { { xpath: '//span[text()="Print Label"]' } }
+    page_object(:print_envelope) { { xpath: '//span[text()="Print Envelope"]' } }
     page_object(:print_stamps) { { xpath: '//span[text()="Print Stamps"]' } }
     page_object(:print_dropdown) { { xpath: '(//*[contains(@class, "x-btn-arrow-right")])[1]' } }
     page_object(:print_sample) { { xpath: '//*[text()="Print Sample"][contains(@id, "menuitem")]' } }

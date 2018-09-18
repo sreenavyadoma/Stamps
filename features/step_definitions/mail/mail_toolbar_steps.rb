@@ -46,6 +46,18 @@ Then /^click mail toolbar print$/ do
   SdcMail.toolbar.print.click
 end
 
+Then /^expect mail toolbar print button label is (.+)$/ do |str|
+  toolbar = SdcMail.toolbar
+  begin
+    SdcPage.browser.wait_until(timeout: 3) do
+      toolbar.print_button.text.eql? str
+    end
+  rescue
+    # ignore
+  end
+  expect(toolbar.print_button.text).to eql str
+end
+
 Then /^expect mail toolbar print is present$/ do
   expect(SdcMail.toolbar.print).to be_present, "Toolbar Print button is not present"
 end

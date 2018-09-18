@@ -338,12 +338,12 @@ Feature:  Mail BVT
     Then set print form insure for to $0
 
 #    EXTRA SERVICES
-    Then select advanced options extra services
+    Then click select extra services button on print form
     Then check fragile on extra services modal
     Then uncheck fragile on extra services modal
 
     Then expect value must be shown modal is present
-    Then click value must be shown window continue button
+    Then click continue button on value must be shown modal
     Then click extra services form 3811
     Then close form 3811 modal
     Then check hold for pickup on extra services modal
@@ -375,7 +375,7 @@ Feature:  Mail BVT
     Then set extra services handling to Normal
     Then close extra services
     Then select print form service PME Flat Rate Envelope
-    Then select advanced options extra services
+    Then click select extra services button on print form
     Then close extra services
 
     Then click advanced options service commitments
@@ -398,7 +398,7 @@ Feature:  Mail BVT
     Then set print form mail-to to a random address in zone 2
     Then set print form weight to lbs 0 oz 1
     Then select print form service FCM Letter
-    Then select advanced options extra services
+    Then click select extra services button on print form
     Then close extra services
     Then check advanced options include return address
     Then uncheck advanced options include return address
@@ -591,7 +591,7 @@ Feature:  Mail BVT
     Then set print form ounces to 1
     Then select print form service PM Padded Flat Rate Envelope
     Then expect advanced options hide label value is checked
-    Then select advanced options extra services
+    Then click select extra services button on print form
     Then set extra services security to Registered Mail
     Then set extra services security value to 30.00
     Then set extra services cod to 20.00
@@ -603,7 +603,7 @@ Feature:  Mail BVT
 
     Then expect extra services total cost is $26.15
     Then save extra services
-    Then select advanced options extra services
+    Then click select extra services button on print form
     Then expect extra services return receipt price to be 2.75
     Then expect restricted delivery on extra services modal price to be 5.10
     Then expect extra services cod price to be 5.70

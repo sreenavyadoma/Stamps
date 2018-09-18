@@ -44,7 +44,8 @@ end
 
 
 
-Then /^set email on add address modal to (.*)$/ do |str|
+Then /^set email on add address modal(?:| (.+))$/ do |str|
+  str ||= TestHelper.rand_email
   add_address = SdcMail.modals.add_address
   expect(add_address.window.present?).to be(true)
   add_address.email.set(str)

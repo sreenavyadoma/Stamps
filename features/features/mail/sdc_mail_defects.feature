@@ -3,6 +3,69 @@ Feature:  Mail defects from Sprint
   Background:
     Given Start test driver
 
+  @shipping_labels_envelopes_extra_services
+  Scenario: WEBAPPS-11798 Switching Envelope to Shipping Label does not Update Extra Services
+    Then sign-in to mail
+    Then select print on Shipping Label - 8 ½" x 11" Paper
+    Then set print form mail-to to address to Switching Envelope, Does not Update Extra Services, 1350 Market Street #2905, San Francisco CA 94102
+    Then set print form email tracking
+    Then click add address button on print form
+    Then set address on add address modal to Add Address, Add Address Company, 1350 Market Street 2904, San Francisco CA 94102
+    Then set email on add address modal
+    Then click add button on add address modal
+    Then expect selected contacts count is 2
+    Then expect multiple contacts view include Switching Envelope, Add Address
+    Then select print form service PM Package
+    Then set print form ounces to 1
+
+    Then click select extra services button on print form
+
+    Then expect fragile on extra services modal is present
+    Then check fragile on extra services modal
+    Then expect fragile on extra services modal is checked
+    Then expect fragile cost on extra services modal is greater than $0.00
+    Then uncheck fragile on extra services modal
+    Then expect fragile on extra services modal is unchecked
+
+    Then expect return receipt for merchandise on extra services modal is present
+    Then check return receipt for merchandise on extra services modal
+    Then expect return receipt for merchandise on extra services modal is checked
+    Then expect return receipt for merchandise cost on extra services modal is greater than $0.00
+    Then expect form 3811 link is present
+    Then uncheck return receipt for merchandise on extra services modal
+    Then expect return receipt for merchandise on extra services modal is unchecked
+    Then expect form 3811 link is not present
+
+    Then expect non-rectangular on extra services modal is present
+    Then check non-rectangular on extra services modal
+    Then expect non-rectangular on extra services modal is checked
+    Then uncheck non-rectangular on extra services modal
+    Then expect non-rectangular on extra services modal is unchecked
+
+    Then expect hold for pickup on extra services modal is present
+    Then check hold for pickup on extra services modal
+    Then expect hold for pickup on extra services modal is checked
+    Then expect hold for pickup cost on extra services modal is $0.00
+    Then uncheck hold for pickup on extra services modal
+    Then expect hold for pickup on extra services modal is unchecked
+
+    Then close extra services
+
+    Then sign out
+
+  @mail_print_button_labels
+  Scenario: EBAPPS-11938 Label for printing stamps has incorrect text
+    Then sign-in to mail
+    Then select print on Stamps
+    Then expect mail toolbar print button label is Print Stamps
+    Then select print on Shipping Label - 8 ½" x 11" Paper
+    Then expect mail toolbar print button label is Print Label
+    Then select print on Envelope - #10, 4 ⅛" x 9 ½"
+    Then expect mail toolbar print button label is Print Envelope
+    Then select print on Roll - 4" x 6" Shipping Label
+    Then expect mail toolbar print button label is Print Label
+    Then sign out
+
   @multiple_prints_wrong_cost
   Scenario: WEBAPPS-11799 Cost Shows Wrong Cost for Multiple Prints
             Precondition:
@@ -18,14 +81,14 @@ Feature:  Mail defects from Sprint
     # Add 2nd contact
     Then click add address button on print form
     Then set address on add address modal to Add Address, Add Address Company, 1350 Market Street 2904, San Francisco CA 94102
-    Then set email on add address modal to rcruz@stamps.com
+    Then set email on add address modal rcruz@stamps.com
     Then click add button on add address modal
     Then expect selected contacts count is 2
     Then expect multiple contacts view include Wrong Cost, Add Address
     # Add 3rd contact
     Then click add address button on print form
     Then set address on add address modal to Third Contact, Some Company, 1350 Market Street 2906, San Francisco CA 94102
-    Then set email on add address modal to rcruz@stamps.com
+    Then set email on add address modal rcruz@stamps.com
     Then click add button on add address modal
     Then expect selected contacts count is 3
     Then expect multiple contacts view include Wrong Cost, Add Address, Third Contact
@@ -39,7 +102,7 @@ Feature:  Mail defects from Sprint
     Then set print form mail-to to address to Invalid Email, On Add Address Modal, 1350 Market Street #2905, San Francisco CA 94102
     Then click add address button on print form
     Then set address on add address modal to Bad Email, Invalid Email Address, 1350 Market Street #2905, San Francisco CA 94102
-    Then set email on add address modal to argh!
+    Then set email on add address modal argh!
     Then click add button on add address modal
     Then expect add address modal is present
     Then expect add address email error message is Please enter a valid email address
@@ -63,7 +126,7 @@ Feature:  Mail defects from Sprint
     Then blur out on print form
     Then show advanced options
     Then pause for 1 second
-    Then select advanced options extra services
+    Then click select extra services button on print form
     Then pause for 1 second
     Then check hold for pickup on extra services modal
     Then pause for 1 seconds
@@ -99,7 +162,7 @@ Feature:  Mail defects from Sprint
     Then select print form service PM Regional Rate Box A
     Then set print form weight to lbs 0 oz 0
     Then show advanced options
-    Then select advanced options extra services
+    Then click select extra services button on print form
     # Cost should not be $0
     Then check fragile on extra services modal
     Then expect fragile cost on extra services modal is $0.00

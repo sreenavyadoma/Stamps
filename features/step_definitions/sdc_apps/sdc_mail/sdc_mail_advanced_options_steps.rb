@@ -9,7 +9,7 @@ Then /^expect advanced options responds to (.+) \((.+)\)$/ do |method_descriptio
   #expect(stamps.mail.print_form.advanced_options).to respond_to(method.to_sym)
 end
 
-Then /^select advanced options extra services$/ do
+Then /^click select extra services button on print form$/ do
   step 'show advanced options'
   SdcMail.print_form.extra_services.select.click
   step 'expect extra services modal is present'

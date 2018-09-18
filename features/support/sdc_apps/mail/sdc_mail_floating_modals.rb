@@ -93,10 +93,12 @@ module SdcMail
       page_object(:rr_chooser) { { xpath: '//span[@id="sdc-extraserviceswin-rrcheckbox-displayEl"]' } }
       page_object(:rr_verify) { { xpath: '//div[@id="sdc-extraserviceswin-rrcheckbox"]' } }
       checkbox(:return_receipt, :rr_chooser, :rr_verify, 'class', 'checked')
+      page_object(:return_receipt_cost) { { xpath: '//label[@id="sdc-extraserviceswin-rrpricelabel"]' } }
 
       page_object(:rd_chooser) { { xpath: '//span[@id="sdc-extraserviceswin-rdcheckbox-displayEl"]' } }
       page_object(:rd_verify) { { xpath: '//div[@id="sdc-extraserviceswin-rdcheckbox"]' } }
       checkbox(:restricted_delivery, :rd_chooser, :rd_verify, 'class', 'checked')
+      page_object(:restricted_delivery_cost) { { xpath: '//label[@id="sdc-extraserviceswin-rdpricelabel"]' } }
 
       text_field(:value_text_field, tag: :text_field) { { xpath: '//input[@id="sdc-extraserviceswin-valuenumberfield-inputEl"]' } }
       page_object(:val_inc) { { xpath: '//*[@id="sdc-extraserviceswin-valuenumberfield-trigger-spinner"]//*[contains(@class,"up")]' } }
@@ -107,36 +109,33 @@ module SdcMail
       page_object(:cod_inc) { { xpath: '//*[@id="sdc-extraserviceswin-codnumberfield-trigger-spinner"]//*[contains(@class,"up")]' } }
       page_object(:cod_dec) { { xpath: '//*[@id="sdc-extraserviceswin-codnumberfield-trigger-spinner"]//*[contains(@class,"down")]' } }
       sdc_number(:cod, :cod_text_field, :cod_inc, :cod_dec)
+      page_object(:cod_cost) { { xpath: '//label[@id="sdc-extraserviceswin-codpricelabel"]' } }
+
+      page_object(:hpu_chooser) { { xpath: '//span[@id="sdc-extraserviceswin-hfpucheckbox-displayEl"]' } }
+      page_object(:hpu_verify) { { xpath: '//div[@id="sdc-extraserviceswin-hfpucheckbox"]' } }
+      checkbox(:hold_for_pickup, :hpu_chooser, :hpu_verify, 'class', 'checked')
+      page_object(:hold_for_pickup_cost) { { xpath: '//label[@id="sdc-extraserviceswin-hfpupricelabel"]' } }
+
+      page_object(:frag_chooser) { { xpath: '//span[@id="sdc-extraserviceswin-shcheckbox-displayEl"]' } }
+      page_object(:frag_verify) { { xpath: '//div[@id="sdc-extraserviceswin-shcheckbox"]' } }
+      checkbox(:fragile, :frag_chooser, :frag_verify, 'class', 'checked')
+      page_object(:fragile_cost) { { xpath: '//label[@id="sdc-extraserviceswin-shpricelabel"]' } }
+
+      page_object(:rrmerch_chooser) { { xpath: '//span[@id="sdc-extraserviceswin-rrmcheckbox-displayEl"]' } }
+      page_object(:rrmerch_verify) { { xpath: '//div[@id="sdc-extraserviceswin-rrmcheckbox"]' } }
+      checkbox(:return_receipt_for_merchandise, :rrmerch_chooser, :rrmerch_verify, 'class', 'checked')
+      page_object(:return_receipt_for_merchandise_cost) { { xpath: '//label[@id="sdc-extraserviceswin-rrmpricelabel"]' } }
 
       page_object(:nrect_chooser) { { xpath: '//span[@id="sdc-extraserviceswin-notrectangularcheckbox-displayEl"]' } }
       page_object(:nrect_verify) { { xpath: '//div[@id="sdc-extraserviceswin-notrectangularcheckbox"]' } }
       checkbox(:non_rectangular, :nrect_chooser, :nrect_verify, 'class', 'checked')
 
-      page_object(:hpu_chooser) { { xpath: '//span[@id="sdc-extraserviceswin-hfpucheckbox-displayEl"]' } }
-      page_object(:hpu_verify) { { xpath: '//div[@id="sdc-extraserviceswin-hfpucheckbox"]' } }
-      checkbox(:hold_for_pickup, :hpu_chooser, :hpu_verify, 'class', 'checked')
-
-      page_object(:frag_chooser) { { xpath: '//span[@id="sdc-extraserviceswin-shcheckbox-displayEl"]' } }
-      page_object(:frag_verify) { { xpath: '//div[@id="sdc-extraserviceswin-shcheckbox"]' } }
-      checkbox(:fragile, :frag_chooser, :frag_verify, 'class', 'checked')
-
-      page_object(:rrmerch_chooser) { { xpath: '//span[@id="sdc-extraserviceswin-rrmcheckbox-displayEl"]' } }
-      page_object(:rrmerch_verify) { { xpath: '//div[@id="sdc-extraserviceswin-rrmcheckbox"]' } }
-      checkbox(:return_receipt_merch, :rrmerch_chooser, :rrmerch_verify, 'class', 'checked')
-
       page_object(:nnd_chooser) { { xpath: '//span[@id="sdc-extraserviceswin-nndcheckbox-displayEl"]' } }
       page_object(:nnd_verify) { { xpath: '//div[@id="sdc-extraserviceswin-nndcheckbox"]' } }
       checkbox(:notice_non_delivery, :nnd_chooser, :nnd_verify, 'class', 'checked')
-
-      page_object(:return_receipt_cost) { { xpath: '//label[@id="sdc-extraserviceswin-rrpricelabel"]' } }
-      page_object(:restricted_delivery_cost) { { xpath: '//label[@id="sdc-extraserviceswin-rdpricelabel"]' } }
-      page_object(:cod_cost) { { xpath: '//label[@id="sdc-extraserviceswin-codpricelabel"]' } }
       page_object(:notice_non_delivery_cost) { { xpath: '//label[@id="sdc-extraserviceswin-nndpricelabel"]' } }
-      page_object(:fragile_cost) { { xpath: '//label[@id="sdc-extraserviceswin-shpricelabel"]' } }
-      page_object(:return_receipt_merch_cost) { { xpath: '//label[@id="sdc-extraserviceswin-rrmpricelabel"]' } }
-      page_object(:hold_for_pickup_cost) { { xpath: '//label[@id="sdc-extraserviceswin-hfpupricelabel"]' } }
 
-      page_object(:form_3811) { { xpath: '//span[@id="sdc-extraserviceswin-rrformbtn-btnInnerEl"]//u' } }
+      page_object(:form_3811) { { xpath: '//u[text()="Form 3811"]' } }
       page_object(:label_200_or_200n) { { xpath: '//span[@id="sdc-extraserviceswin-securityformbtn-btnInnerEl"]/u' } }
       page_object(:total) { { xpath: '//*[@id="sdc-extraservices-totalcostlabel"]' } }
       page_object(:save) { { xpath: '//span[@id="sdc-extraservices-savebtn-btnInnerEl"]' } }

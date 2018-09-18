@@ -604,7 +604,13 @@ Then /^set order details insure-for to (\d+\.\d{2})$/ do |str|
   insure_for = SdcOrders.order_details.insure_for
   insure_for.checkbox.scroll_into_view
   insure_for.checkbox.check
-  insure_for.checkbox.safe_wait_until_chosen(timeout: 3)
+  begin
+    SdcPage.browser.wait_until(timeout: 3) do
+      insure_for.checkbox.checked?
+    end
+  rescue
+    # ignore
+  end
   expect(insure_for.checkbox.checked?). to be(true), 'Cannot check Insure-for checkbox'
   insure_for.amount.set(str)
   insure_for.cost.scroll_into_view
