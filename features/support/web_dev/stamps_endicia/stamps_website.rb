@@ -17,14 +17,14 @@ module StampsWebsite
     page_object(:offer_box) {{id: 'offer-box'}}
     page_objects(:offer_details_link, index: 0) { {xpath: '//div[@id="fivedollar"]/a'} }
 
-    if TestSession.env.url.include(:iigwe, :jjones, :cjanczak, :cesar, :wlanni)
-      page_url { |env| "https://#{env}-win10.corp.stamps.com/stampscom/?mboxDisable=1" }
-    elsif TestSession.env.url.include(:prod)
-      page_url { |env| "https://www.#{env}stamps.com/?mboxDisable=1" }
-    else
-      page_url { |env| "https://#{env}stamps.com/?mboxDisable=1" }
-    end
     def self.visit
+      if TestSession.env.url.include(:iigwe, :jjones, :cjanczak, :cesar, :wlanni)
+        page_url { |env| "https://#{env}-win10.corp.stamps.com/stampscom/?mboxDisable=1" }
+      elsif TestSession.env.url.include(:prod)
+        page_url { |env| "https://www.#{env}stamps.com/?mboxDisable=1" }
+      else
+        page_url { |env| "https://#{env}stamps.com/?mboxDisable=1" }
+      end
       super(case TestSession.env.url
               when :qacc
                 'sdcwebsite.qacc.'
@@ -49,14 +49,14 @@ module StampsWebsite
   end
 
   class PostageOnlinePage < SdcPage
-    if TestSession.env.url.include(:iigwe, :jjones, :cjanczak, :cesar, :wlanni)
-      page_url { |env| "https://#{env}-win10.corp.stamps.com/stampscom/?mboxDisable=1" }
-    elsif TestSession.env.url.include(:prod)
-      page_url { |env| "https://www.#{env}stamps.com/?mboxDisable=1" }
-    else
-      page_url { |env| "https://#{env}stamps.com/?mboxDisable=1" }
-    end
     def self.visit
+      if TestSession.env.url.include(:iigwe, :jjones, :cjanczak, :cesar, :wlanni)
+        page_url { |env| "https://#{env}-win10.corp.stamps.com/stampscom/postage-online/?mboxDisable=1" }
+      elsif TestSession.env.url.include(:prod)
+        page_url { |env| "https://www.#{env}stamps.com/postage-online/?mboxDisable=1" }
+      else
+        page_url { |env| "https://#{env}stamps.com/postage-online/?mboxDisable=1" }
+      end
       super(case TestSession.env.url
               when :qacc
                 'sdcwebsite.qacc.'
