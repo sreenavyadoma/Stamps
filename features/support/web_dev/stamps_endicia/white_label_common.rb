@@ -224,7 +224,7 @@ module WhiteLabel
               when :stg
                 'registration.staging'
               when :prod
-                ''
+                'registration'
               else
                 # ignore
             end)
