@@ -217,7 +217,14 @@ module WhiteLabel
   class EWWebsite < SdcPage
 
     def self.visit
-      page_url { |env| "https://#{env}.endicia.com/registration/"}
+      if [:iigwe, :jjones, :cjanczak, :cesar, :wlanni].include?(TestSession.env.url)
+        page_url { |env| "https://#{TestSession.env.url}-win10.corp.endicia.com/registration/" }
+      elsif TestSession.env.url == :prod
+        page_url { |env| "https://#{env}.endicia.com/registration/"}
+      else
+        page_url { |env| "https://#{env}.endicia.com/registration/"}
+      end
+
       super(case TestSession.env.url
               when :qacc
                 'registrationext.qacc'
@@ -225,6 +232,16 @@ module WhiteLabel
                 'registration.staging'
               when :prod
                 'registration'
+              when :iigwe
+                'iigwe'
+              when :jjones
+                'jjones'
+              when :cjanczak
+                'cjanczak'
+              when :cesar
+                'cesar'
+              when :wlanni
+                'wlanni'
               else
                 # ignore
             end)
