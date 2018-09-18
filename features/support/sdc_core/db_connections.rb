@@ -85,7 +85,7 @@ module SdcCore
 
   class SdcWebsiteDB < BasicObject
     def initialize
-      if ::TestSession.env.url.include(:iigwe, :jjones, :cjanczak, :cesar, :wlanni)
+      if [:iigwe, :jjones, :cjanczak, :cesar, :wlanni].include?(::TestSession.env.url)
         env = 'dev'
       else
         env = ::TestSession.env.url.to_s

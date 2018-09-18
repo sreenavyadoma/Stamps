@@ -183,9 +183,9 @@ module WhiteLabel
 
   class SDCWWebsite <SdcPage
     def self.visit(str)
-      if TestSession.env.url.include(:iigwe, :jjones, :cjanczak, :cesar, :wlanni)
+      if [:iigwe, :jjones, :cjanczak, :cesar, :wlanni].include?(TestSession.env.url)
         page_url { |env| "https://#{env}-win10.corp.stamps.com/stampscom/?source=#{str}&mboxDisable=1" }
-      elsif TestSession.env.url.include(:prod)
+      elsif TestSession.env.url == :prod
         page_url { |env| "https://www.#{env}stamps.com/?source=#{str}&mboxDisable=1" }
       else
         page_url { |env| "https://#{env}stamps.com/?source=#{str}&mboxDisable=1" }

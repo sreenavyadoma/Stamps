@@ -31,6 +31,7 @@ module StampsWebsite
     end
 
     #footer
+    page_object(:footer) { {id: 'footer-default'} }
     page_objects(:usps_logo) {{xpath: '//figure[@id="usps-logo-words"]/img'}}
     page_objects(:usps_logo_caption) {{xpath: '//figure[@id="usps-logo-words"]/figcaption'}}
     page_objects(:copyright) { {xpath: '//a[contains(text(), "Copyright © 1998-2018 Stamps.com Inc.")]'} }

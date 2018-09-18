@@ -42,7 +42,7 @@ Then /^SDCW: click get started button$/ do
 
   case TestSession.env.url
     when :qacc
-      expect(url).to eql('https://qacc-registration.stamps.com/registration/#!&p=profile')
+      expect(url).to eql('https://qa-registration.stamps.com/registration/#!&p=profile')
     when :stg
       expect(url).to eql('https://staging-registration.stamps.com/registration/#!&p=profile')
     when :prod
@@ -63,8 +63,6 @@ Then /^SDCW: click get log in button$/ do
       expect(url).to eql('https://print.testing.stamps.com/SignIn/')
     when :prod
       expect(url).to eql('https://print.stamps.com/SignIn/')
-    else
-      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/postage-online/undefined")
   end
 end
 
@@ -114,6 +112,8 @@ Then /^SDCW: click hamburger --> get started link$/ do
       expect(url).to eql('https://staging-registration.stamps.com/registration/#!&p=profile')
     when :prod
       expect(url).to eql('https://registration.stamps.com/registration/#!&p=profile')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/registration/#!&p=profile")
   end
 end
 
@@ -220,10 +220,12 @@ Then /^SDCW: click learn more --> corporate postage solutions link$/ do
   else
     if TestSession.env.local_browser == :edge
       common_page.learn_more.click
+      common_page.corporate_postage_solutions.focus
+      common_page.corporate_postage_solutions.click
     else
       common_page.learn_more.hover
+      common_page.corporate_postage_solutions.click
     end
-    common_page.corporate_postage_solutions.click
   end
   step 'pause for 2 second'
   url = SdcPage.browser.url
@@ -389,24 +391,28 @@ end
 
 #........footer...........#
 Then /^SDCW: expect stamps website footer usps logo exists$/ do
+  common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device|| TestSession.env.mobile_device
-    usps_logo = StampsWebsite.common_page.usps_logo[0]
+    usps_logo = common_page.usps_logo[0]
   else
-    usps_logo = StampsWebsite.common_page.usps_logo[1]
+    usps_logo = common_page.usps_logo[1]
   end
 
-  usps_logo.wait_until_present(timeout: 2)
-  usps_logo.scroll_into_view
+  common_page.footer.wait_until_present(timeout: 2)
+  common_page. footer.scroll_into_view
   expect(usps_logo).to be_present
 end
 
 Then /^SDCW: expect stamps website footer usps logo words is (.*)$/ do |str|
+  common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device|| TestSession.env.mobile_device
-    usps_logo_caption = StampsWebsite.common_page.usps_logo_caption[0]
+    usps_logo_caption = common_page.usps_logo_caption[0]
   else
-    usps_logo_caption = StampsWebsite.common_page.usps_logo_caption[1]
+    usps_logo_caption = common_page.usps_logo_caption[1]
   end
-  usps_logo_caption.scroll_into_view
+
+  common_page.footer.wait_until_present(timeout: 2)
+  common_page.footer.scroll_into_view
   text = usps_logo_caption.inner_text.strip
   expect(text).to eql(str)
 end
@@ -441,6 +447,7 @@ Then /^SDCW: click footer copyright link$/ do
     common_page.copyright[0].click
   else
     if TestSession.env.local_browser == :edge
+      common_page.copyright[1].focus
       common_page.copyright[1].click
     else
       common_page.copyright[1].scroll_into_view
@@ -651,7 +658,7 @@ Then /^SDCW: click products --> supplies$/ do
   end
   step 'pause for 1 second'
   SdcPage.browser.windows.last.use
-  common_page.stamps_store_logo.wait_until_present(timeout: 15)
+  common_page.stamps_store_logo.wait_until_present(timeout: 30)
   url = SdcPage.browser.windows.last.url
   SdcPage.browser.windows.last.close
   case TestSession.env.url
@@ -710,7 +717,7 @@ Then /^SDCW: click support --> download software$/ do
     when :prod
       expect(url).to eql('https://www.stamps.com/download/')
     else
-      expect(url).to eql("https://#{TestSession.env.local_browser}-win10.corp.stamps.com/stampscom/download/")
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/download/")
   end
 
   step 'SDCW: navigate back'
@@ -1110,7 +1117,7 @@ Then /^SDCW: click developers --> developer overview$/ do
     when :prod
       expect(url).to eql('https://stamps.com/developer/')
     else
-      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/developer/")
+      expect(url).to eql("https://#{TestSession.env.url}-developer.corp.stamps.com/developer/")
   end
 end
 
@@ -1142,7 +1149,7 @@ Then /^SDCW: click developers --> developer registration$/ do
     when :prod
       expect(url).to eql('https://developer.stamps.com/developer/register/')
     else
-      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/developer/register/")
+      expect(url).to eql("https://#{TestSession.env.url}-developer.corp.stamps.com/developer/register/")
   end
 
 end
@@ -1175,7 +1182,7 @@ Then /^SDCW: click developers --> developer reference guide$/ do
     when :prod
       expect(url).to eql('https://developer.stamps.com/developer/docs/swsimv71.html#stamps-api-reference-guide')
     else
-      expect(url).to eql("https://#{TestSession.env.url}-developer.corp.stamps.com/swsimv71.html#stamps-api-reference-guide")
+      expect(url).to include("https://#{TestSession.env.url}-developer.corp.stamps.com/developer/docs")
   end
 
 end
