@@ -99,23 +99,23 @@ Then /^WL: navigates to default registration page for endicia with the following
   step 'WL: establish stamps website db connection'
   common_page = WhiteLabel.common_page
   if str.nil?
-    source_id, content, promo_code, offer_id, target_url = common_page.sdc_website_source_id_query(nil)
+    source_id, content, promo_code, offer_id, target_url, vendor_id = common_page.sdc_website_source_id_query(nil)
   else
-    source_id, content, promo_code, offer_id, target_url  = common_page.sdc_website_source_id_query(str)
+    source_id, content, promo_code, offer_id, target_url, vendor_id  = common_page.sdc_website_source_id_query(str)
   end
   step 'WL: close stamps website db connection'
 
   EWWebsite.visit
 
-  SdcLogger.info "Sourceid = #{source_id}"
-  SdcLogger.info "Sourceid = #{offer_id}"
+  SdcLogger.info "VendorId = #{vendor_id}"
+  SdcLogger.info "OfferId = #{offer_id}"
 
   TestData.hash[:source_id] = source_id
+  TestData.hash[:vendor_id] = vendor_id
   TestData.hash[:content] = content
   TestData.hash[:promo_code] = promo_code
   TestData.hash[:offer_id] = offer_id
   TestData.hash[:target_url] = target_url
-
 end
 
 

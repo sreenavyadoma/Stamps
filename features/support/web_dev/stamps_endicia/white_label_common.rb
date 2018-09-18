@@ -113,7 +113,7 @@ module WhiteLabel
           inner join [dbo].sdct_SW_Offer as sw_offer on sw_offer.OfferId = sw_source.OfferId
           ORDER BY NEWID()")
         source_id.each do |item|
-          return item['SourceId'], item['Content'], item['PromoCode'], item['OfferId'], item['TargetUrl']
+          return item['SourceId'], item['Content'], item['PromoCode'], item['OfferId'], item['TargetUrl'], item['VendorId']
         end
       else
         source_id = WhiteLabel.sdc_db_connection.execute(
@@ -123,7 +123,7 @@ module WhiteLabel
 		      where sw_offer.OfferId = #{offer_id}
           ORDER BY NEWID()")
         source_id.each do |item|
-          return item['SourceId'], item['Content'], item['PromoCode'], item['OfferId'], item['TargetUrl']
+          return item['SourceId'], item['Content'], item['PromoCode'], item['OfferId'], item['TargetUrl'], item['VendorId']
         end
       end
     end
