@@ -231,9 +231,10 @@ Feature: Stamps WebReg: Membership Page
 
   @sdcwr_membership_page_addr_validation
   Scenario: Membership Page Address Validation
-    Then WL: navigates to default registration page for stamps with the following offer id 399
+    Then WL: navigates to default registration page for stamps with the following offer id 721
     Then WL: set profile page default values
     Then WL: set pp username to an existing username from db
+    Then WL: set profile page promo code to empty
     Then WL: click profile page continue button
     Then WL: set membership page default values
 
