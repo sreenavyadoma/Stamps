@@ -30,7 +30,7 @@ module PartnerPortal
     def self.visit
       dev_env = data_for(:web_dev_env, {})['dev']
       if dev_env.include?(TestSession.env.url.to_s)
-        page_url { |env| "https://#{env}-win10.corp.stamps.com/partner/" }
+        page_url {"https://#{TestSession.env.url.to_s}-win10.corp.stamps.com/partner/" }
       else
         page_url { |env| "https://partner.#{env}stamps.com/" }
       end
@@ -42,18 +42,6 @@ module PartnerPortal
                 'staging.'
               when :prod
                 ''
-              when :iigwe
-                'iigwe'
-              when :jjones
-                'jjones'
-              when :cjanczak
-                'cjanczak'
-              when :cesar
-                'cesar'
-              when :wlanni
-                'wlanni'
-              else
-                # ignore
             end)
     end
 
@@ -143,7 +131,7 @@ module PartnerPortal
     def self.visit
       dev_env = data_for(:web_dev_env, {})['dev']
       if dev_env.include?(TestSession.env.url.to_s)
-        page_url { |env| "https://#{env}-win10.corp.stamps.com/reset-password/request" }
+        page_url {"https://#{TestSession.env.url.to_s}-win10.corp.stamps.com/reset-password/request" }
       else
         page_url { |env| "https://partner.#{env}stamps.com/reset-password/request" }
       end
@@ -155,18 +143,6 @@ module PartnerPortal
                 'staging.'
               when :prod
                 ''
-              when :iigwe
-                'iigwe'
-              when :jjones
-                'jjones'
-              when :cjanczak
-                'cjanczak'
-              when :cesar
-                'cesar'
-              when :wlanni
-                'wlanni'
-              else
-                # ignore
             end)
     end
 
@@ -179,7 +155,7 @@ module PartnerPortal
     def self.visit
       dev_env = data_for(:web_dev_env, {})['dev']
       if dev_env.include?(TestSession.env.url.to_s)
-        page_url { |env| "https://#{env}-win10.corp.stamps.com/reset-password/request/confirmation" }
+        page_url {"https://#{TestSession.env.url.to_s}-win10.corp.stamps.com/reset-password/request/confirmation" }
       else
         page_url { |env| "https://partner.#{env}stamps.com/reset-password/request/confirmation" }
       end
@@ -191,18 +167,6 @@ module PartnerPortal
                 'staging.'
               when :prod
                 ''
-              when :iigwe
-                'iigwe'
-              when :jjones
-                'jjones'
-              when :cjanczak
-                'cjanczak'
-              when :cesar
-                'cesar'
-              when :wlanni
-                'wlanni'
-              else
-                # ignore
             end)
     end
   end
@@ -212,7 +176,7 @@ module PartnerPortal
     def self.visit
       dev_env = data_for(:web_dev_env, {})['dev']
       if dev_env.include?(TestSession.env.url.to_s)
-        page_url { |env| "https://#{env}-win10.corp.stamps.com/set-password" }
+        page_url {"https://#{TestSession.env.url.to_s}-win10.corp.stamps.com/set-password" }
       else
         page_url { |env| "https://partner.#{env}stamps.com/set-password" }
       end
@@ -224,18 +188,6 @@ module PartnerPortal
                 'staging.'
               when :prod
                 ''
-              when :iigwe
-                'iigwe'
-              when :jjones
-                'jjones'
-              when :cjanczak
-                'cjanczak'
-              when :cesar
-                'cesar'
-              when :wlanni
-                'wlanni'
-              else
-                # ignore
             end)
     end
   end
@@ -245,7 +197,7 @@ module PartnerPortal
     def self.visit
       dev_env = data_for(:web_dev_env, {})['dev']
       if dev_env.include?(TestSession.env.url.to_s)
-        page_url { |env| "https://#{env}-win10.corp.stamps.com/error-404" }
+        page_url {"https://#{TestSession.env.url.to_s}-win10.corp.stamps.com/error-404" }
       else
         page_url { |env| "https://partner.#{env}stamps.com/error-404" }
       end
@@ -256,18 +208,6 @@ module PartnerPortal
                 'staging.'
               when :prod
                 ''
-              when :iigwe
-                'iigwe'
-              when :jjones
-                'jjones'
-              when :cjanczak
-                'cjanczak'
-              when :cesar
-                'cesar'
-              when :wlanni
-                'wlanni'
-              else
-                # ignore
             end)
     end
 
@@ -278,7 +218,7 @@ module PartnerPortal
     def self.visit
       dev_env = data_for(:web_dev_env, {})['dev']
       if dev_env.include?(TestSession.env.url.to_s)
-        page_url { |env| "https://#{env}-win10.corp.stamps.com/error-500" }
+        page_url {"https://#{TestSession.env.url.to_s}-win10.corp.stamps.com/error-500" }
       else
         page_url { |env| "https://partner.#{env}stamps.com/error-500" }
       end
@@ -290,18 +230,6 @@ module PartnerPortal
                 'staging.'
               when :prod
                 ''
-              when :iigwe
-                'iigwe'
-              when :jjones
-                'jjones'
-              when :cjanczak
-                'cjanczak'
-              when :cesar
-                'cesar'
-              when :wlanni
-                'wlanni'
-              else
-                # ignore
             end)
     end
 

@@ -20,7 +20,7 @@ module StampsWebsite
     def self.visit
       dev_env = data_for(:web_dev_env, {})['dev']
       if dev_env.include?(TestSession.env.url.to_s)
-        page_url { |env| "https://#{env}-win10.corp.stamps.com/stampscom/?mboxDisable=1" }
+        page_url {"https://#{TestSession.env.url.to_s}-win10.corp.stamps.com/stampscom/?mboxDisable=1" }
       elsif TestSession.env.url == :prod
         page_url { |env| "https://www.#{env}stamps.com/?mboxDisable=1" }
       else
@@ -33,18 +33,6 @@ module StampsWebsite
                 'sdcwebsite.staging.'
               when :prod
                 ''
-              when :iigwe
-                'iigwe'
-              when :jjones
-                'jjones'
-              when :cjanczak
-                'cjanczak'
-              when :cesar
-                'cesar'
-              when :wlanni
-                'wlanni'
-              else
-                # ignore
             end)
     end
   end
@@ -53,7 +41,7 @@ module StampsWebsite
     def self.visit
       dev_env = data_for(:web_dev_env, {})['dev']
       if dev_env.include?(TestSession.env.url.to_s)
-        page_url { |env| "https://#{env}-win10.corp.stamps.com/stampscom/postage-online/?mboxDisable=1" }
+        page_url {"https://#{TestSession.env.url.to_s}-win10.corp.stamps.com/stampscom/postage-online/?mboxDisable=1" }
       elsif TestSession.env.url == :prod
         page_url { |env| "https://www.#{env}stamps.com/postage-online/?mboxDisable=1" }
       else
@@ -67,18 +55,6 @@ module StampsWebsite
                 'sdcwebsite.staging.'
               when :prod
                 ''
-              when :iigwe
-                'iigwe'
-              when :jjones
-                'jjones'
-              when :cjanczak
-                'cjanczak'
-              when :cesar
-                'cesar'
-              when :wlanni
-                'wlanni'
-              else
-                # ignore
             end)
     end
 

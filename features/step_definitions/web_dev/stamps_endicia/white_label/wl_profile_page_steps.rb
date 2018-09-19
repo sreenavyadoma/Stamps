@@ -7,7 +7,7 @@ end
 
 Then /^WL: expect profile page email exists$/ do
    email = WhiteLabel.profile_page.email
-   email.wait_until_present(timeout: 5)
+   email.wait_until_present(timeout: 20)
   expect(email).to be_present
 end
 

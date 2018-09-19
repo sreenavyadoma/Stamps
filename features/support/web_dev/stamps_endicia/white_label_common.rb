@@ -185,7 +185,7 @@ module WhiteLabel
     def self.visit(str)
       dev_env = data_for(:web_dev_env, {})['dev']
       if dev_env.include?(TestSession.env.url.to_s)
-        page_url { |env| "https://#{env}-win10.corp.stamps.com/stampscom/?source=#{str}&mboxDisable=1" }
+        page_url {"https://#{TestSession.env.url.to_s}-win10.corp.stamps.com/stampscom/?source=#{str}&mboxDisable=1" }
       elsif TestSession.env.url == :prod
         page_url { |env| "https://www.#{env}stamps.com/?source=#{str}&mboxDisable=1" }
       else
@@ -199,18 +199,6 @@ module WhiteLabel
                 'sdcwebsite.staging.'
               when :prod
                 ''
-              when :iigwe
-                'iigwe'
-              when :jjones
-                'jjones'
-              when :cjanczak
-                'cjanczak'
-              when :cesar
-                'cesar'
-              when :wlanni
-                'wlanni'
-              else
-                # ignore
             end)
     end
   end
@@ -220,7 +208,7 @@ module WhiteLabel
     def self.visit
       dev_env = data_for(:web_dev_env, {})['dev']
       if dev_env.include?(TestSession.env.url.to_s)
-        page_url { |env| "https://#{env}-win10.corp.endicia.com/registration/" }
+        page_url {"https://#{TestSession.env.url.to_s}-win10.corp.endicia.com/registration/" }
       elsif TestSession.env.url == :prod
         page_url { |env| "https://#{env}.endicia.com/registration/"}
       else
@@ -234,18 +222,6 @@ module WhiteLabel
                 'registration.staging'
               when :prod
                 'registration'
-              when :iigwe
-                'iigwe'
-              when :jjones
-                'jjones'
-              when :cjanczak
-                'cjanczak'
-              when :cesar
-                'cesar'
-              when :wlanni
-                'wlanni'
-              else
-                # ignore
             end)
     end
   end

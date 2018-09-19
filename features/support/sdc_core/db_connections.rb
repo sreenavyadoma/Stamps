@@ -59,7 +59,8 @@ module SdcCore
 
   class PartnerPortalDB < BasicObject
     def initialize
-      if [:iigwe, :jjones, :cjanczak, :cesar, :wlanni].include?(::TestSession.env.url)
+      dev_env = data_for(:web_dev_env, {})['dev']
+      if dev_env.include?(::TestSession.env.url.to_s)
         env = 'dev'
       else
         env = ::TestSession.env.url.to_s
@@ -85,7 +86,8 @@ module SdcCore
 
   class SdcWebsiteDB < BasicObject
     def initialize
-      if [:iigwe, :jjones, :cjanczak, :cesar, :wlanni].include?(::TestSession.env.url)
+      dev_env = data_for(:web_dev_env, {})['dev']
+      if dev_env.include?(::TestSession.env.url.to_s)
         env = 'dev'
       else
         env = ::TestSession.env.url.to_s
@@ -111,7 +113,8 @@ module SdcCore
 
   class VBridgeDB < BasicObject
     def initialize
-      if [:iigwe, :jjones, :cjanczak, :cesar, :wlanni].include?(::TestSession.env.url)
+      dev_env = data_for(:web_dev_env, {})['dev']
+      if dev_env.include?(::TestSession.env.url.to_s)
         env = 'dev'
       else
         env = ::TestSession.env.url.to_s
@@ -137,7 +140,8 @@ module SdcCore
 
   class StampMartDB < BasicObject
     def initialize
-      if [:iigwe, :jjones, :cjanczak, :cesar, :wlanni].include?(::TestSession.env.url)
+      dev_env = data_for(:web_dev_env, {})['dev']
+      if dev_env.include?(::TestSession.env.url.to_s)
         env = 'dev'
       else
         env = ::TestSession.env.url.to_s
