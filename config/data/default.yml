@@ -101,7 +101,7 @@ sql_server_stampmart:
       azure: false
 
 web_dev_env:
-  dev: [iigwe, jjones, cjanczak, cesar, wlanni]
+  dev: [iigwe, jjones, cjanczak, cesar, wlanni, ghan]
 
 rates_test:
   rate_file: rate_file.xls
