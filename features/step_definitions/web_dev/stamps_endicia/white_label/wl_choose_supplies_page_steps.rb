@@ -24,7 +24,8 @@ Then /^WL: expect choose supplies page header to be (.*)$/ do |str|
   cs_header =  WhiteLabel.choose_supplies.cs_header
   cs_header.wait_until_present(timeout: 50)
   step 'pause for 1 second'
-  expect(cs_header.text_value.strip).to eql(str)
+  text = cs_header.text_value.strip
+  expect(text).to eql(str)
 end
 
 Then /^WL: expect choose supplies page paragraph index (\d+) to be$/ do |index, str|
