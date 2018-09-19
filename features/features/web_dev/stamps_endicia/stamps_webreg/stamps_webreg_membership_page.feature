@@ -218,9 +218,10 @@ Feature: Stamps WebReg: Membership Page
     Cancel online or simply call us toll-free at 1-855-608-2677, M-F, 6am-6pm PST.
     """
 
-    Then WL: click membership page bonus offer details link
-    Then WL: expect membership page your stamps.com offer modal to be present
-    Then WL: click membership page bonus offer details modal x button
+    Then WL: expect membership page bonus offer details link to be present
+#    Then WL: click membership page bonus offer details link
+#    Then WL: expect membership page your stamps.com offer modal to be present
+#    Then WL: click membership page bonus offer details modal x button
 
     Then WL: uncheck membership page terms & conditions
     Then WL: expect membership page terms & conditions is unchecked
