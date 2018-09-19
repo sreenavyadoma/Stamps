@@ -74,7 +74,7 @@ end
 
 Then /^WL: click choose supplies page place order button$/ do
   choose_supplies =  WhiteLabel.choose_supplies
-  choose_supplies.cs_welcome_kit.wait_until_present(timeout: 50)
+  choose_supplies.cs_welcome_kit.wait_until_present(timeout: 50) rescue false
   choose_supplies.place_order.wait_until_present(timeout: 30)
   choose_supplies.place_order.click!
 
