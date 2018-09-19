@@ -219,9 +219,9 @@ Feature: Stamps WebReg: Membership Page
     """
 
     Then WL: expect membership page bonus offer details link to be present
-#    Then WL: click membership page bonus offer details link
-#    Then WL: expect membership page your stamps.com offer modal to be present
-#    Then WL: click membership page bonus offer details modal x button
+    Then WL: click membership page bonus offer details link
+    Then WL: expect membership page your stamps.com offer modal to be present
+    Then WL: click membership page bonus offer details modal x button
 
     Then WL: uncheck membership page terms & conditions
     Then WL: expect membership page terms & conditions is unchecked
