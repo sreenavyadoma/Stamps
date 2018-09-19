@@ -183,7 +183,8 @@ module WhiteLabel
 
   class SDCWWebsite <SdcPage
     def self.visit(str)
-      if [:iigwe, :jjones, :cjanczak, :cesar, :wlanni].include?(TestSession.env.url)
+      dev_env = data_for(:web_dev_env, {})['dev']
+      if dev_env.include?(TestSession.env.url.to_s)
         page_url { |env| "https://#{env}-win10.corp.stamps.com/stampscom/?source=#{str}&mboxDisable=1" }
       elsif TestSession.env.url == :prod
         page_url { |env| "https://www.#{env}stamps.com/?source=#{str}&mboxDisable=1" }
@@ -217,7 +218,8 @@ module WhiteLabel
   class EWWebsite < SdcPage
 
     def self.visit
-      if [:iigwe, :jjones, :cjanczak, :cesar, :wlanni].include?(TestSession.env.url)
+      dev_env = data_for(:web_dev_env, {})['dev']
+      if dev_env.include?(TestSession.env.url.to_s)
         page_url { |env| "https://#{env}-win10.corp.endicia.com/registration/" }
       elsif TestSession.env.url == :prod
         page_url { |env| "https://#{env}.endicia.com/registration/"}

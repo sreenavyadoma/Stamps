@@ -28,7 +28,8 @@ module PartnerPortal
 
 
     def self.visit
-      if [:iigwe, :jjones, :cjanczak, :cesar, :wlanni].include?(TestSession.env.url)
+      dev_env = data_for(:web_dev_env, {})['dev']
+      if dev_env.include?(TestSession.env.url.to_s)
         page_url { |env| "https://#{env}-win10.corp.stamps.com/partner/" }
       else
         page_url { |env| "https://partner.#{env}stamps.com/" }
@@ -140,7 +141,8 @@ module PartnerPortal
     page_object(:email_error) { { xpath:  '//*[@name="email"]/div/div'} }
 
     def self.visit
-      if [:iigwe, :jjones, :cjanczak, :cesar, :wlanni].include?(TestSession.env.url)
+      dev_env = data_for(:web_dev_env, {})['dev']
+      if dev_env.include?(TestSession.env.url.to_s)
         page_url { |env| "https://#{env}-win10.corp.stamps.com/reset-password/request" }
       else
         page_url { |env| "https://partner.#{env}stamps.com/reset-password/request" }
@@ -175,7 +177,8 @@ module PartnerPortal
     page_object(:header) { { xpath:  '//h1[contains(text(), "Reset Email Sent")]'} }
 
     def self.visit
-      if [:iigwe, :jjones, :cjanczak, :cesar, :wlanni].include?(TestSession.env.url)
+      dev_env = data_for(:web_dev_env, {})['dev']
+      if dev_env.include?(TestSession.env.url.to_s)
         page_url { |env| "https://#{env}-win10.corp.stamps.com/reset-password/request/confirmation" }
       else
         page_url { |env| "https://partner.#{env}stamps.com/reset-password/request/confirmation" }
@@ -207,7 +210,8 @@ module PartnerPortal
   class PPSetPasswordPage < SdcPage
 
     def self.visit
-      if [:iigwe, :jjones, :cjanczak, :cesar, :wlanni].include?(TestSession.env.url)
+      dev_env = data_for(:web_dev_env, {})['dev']
+      if dev_env.include?(TestSession.env.url.to_s)
         page_url { |env| "https://#{env}-win10.corp.stamps.com/set-password" }
       else
         page_url { |env| "https://partner.#{env}stamps.com/set-password" }
@@ -239,7 +243,8 @@ module PartnerPortal
   class PPError404Page < SdcPage
 
     def self.visit
-      if [:iigwe, :jjones, :cjanczak, :cesar, :wlanni].include?(TestSession.env.url)
+      dev_env = data_for(:web_dev_env, {})['dev']
+      if dev_env.include?(TestSession.env.url.to_s)
         page_url { |env| "https://#{env}-win10.corp.stamps.com/error-404" }
       else
         page_url { |env| "https://partner.#{env}stamps.com/error-404" }
@@ -271,7 +276,8 @@ module PartnerPortal
   class PPError500Page < SdcPage
 
     def self.visit
-      if [:iigwe, :jjones, :cjanczak, :cesar, :wlanni].include?(TestSession.env.url)
+      dev_env = data_for(:web_dev_env, {})['dev']
+      if dev_env.include?(TestSession.env.url.to_s)
         page_url { |env| "https://#{env}-win10.corp.stamps.com/error-500" }
       else
         page_url { |env| "https://partner.#{env}stamps.com/error-500" }

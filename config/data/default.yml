@@ -100,6 +100,9 @@ sql_server_stampmart:
       password: StampsQA!
       azure: false
 
+web_dev_env:
+  dev: [iigwe, jjones, cjanczak, cesar, wlanni]
+
 rates_test:
   rate_file: rate_file.xls
   rates_pme_comm_base: PME Comm Base

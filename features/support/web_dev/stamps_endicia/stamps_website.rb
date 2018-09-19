@@ -18,7 +18,8 @@ module StampsWebsite
     page_objects(:offer_details_link, index: 0) { {xpath: '//div[@id="fivedollar"]/a'} }
 
     def self.visit
-      if [:iigwe, :jjones, :cjanczak, :cesar, :wlanni].include?(TestSession.env.url)
+      dev_env = data_for(:web_dev_env, {})['dev']
+      if dev_env.include?(TestSession.env.url.to_s)
         page_url { |env| "https://#{env}-win10.corp.stamps.com/stampscom/?mboxDisable=1" }
       elsif TestSession.env.url == :prod
         page_url { |env| "https://www.#{env}stamps.com/?mboxDisable=1" }
@@ -50,7 +51,8 @@ module StampsWebsite
 
   class PostageOnlinePage < SdcPage
     def self.visit
-      if [:iigwe, :jjones, :cjanczak, :cesar, :wlanni].include?(TestSession.env.url)
+      dev_env = data_for(:web_dev_env, {})['dev']
+      if dev_env.include?(TestSession.env.url.to_s)
         page_url { |env| "https://#{env}-win10.corp.stamps.com/stampscom/postage-online/?mboxDisable=1" }
       elsif TestSession.env.url == :prod
         page_url { |env| "https://www.#{env}stamps.com/postage-online/?mboxDisable=1" }
