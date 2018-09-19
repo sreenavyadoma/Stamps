@@ -274,9 +274,9 @@ stgmacff20 mail_authentication_iphonex
 
 OS X Latest Chrome QACC
 bvtccosxgc1 extra_services_cost_for_rrb_service
-bvtccosxgc2
-bvtccosxgc3
-bvtccosxgc4
+bvtccosxgc2 print_form_incomplete_fields
+bvtccosxgc3 multiple_prints_wrong_cost
+bvtccosxgc4 multiple_prints_wrong_cost
 bvtccosxgc5
 bvtccosxgc6
 bvtccosxgc7
