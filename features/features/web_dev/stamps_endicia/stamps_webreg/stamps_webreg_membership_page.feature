@@ -94,7 +94,7 @@ Feature: Stamps WebReg: Membership Page
     Then WL: expect membership page credit card number is correct
     Then WL: expect membership page credit card visa is present
 
-    Then WL: set membership page credit card number to 5111111111111111
+    Then WL: set membership page credit card number to 5241744011877736
     Then WL: expect membership page credit card number is correct
     Then WL: expect membership page credit card mastercard is present
 
