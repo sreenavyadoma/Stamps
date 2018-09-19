@@ -12,9 +12,50 @@ Then /^click mail toolbar settings$/ do
   step 'expect settings modal is present'
 end
 
+Then /^click print stamps$/ do
+  SdcMail.toolbar.print_label.click
+end
+
+Then /^click print label$/ do
+  step 'blur out on print form'
+  sleep 2
+  SdcMail.toolbar.print_label.click
+end
+
+Then /^click continue on confirm print modal$/ do
+  SdcMail.modals.incomplete_fields
+  comfirm_print = SdcMail.modals.comfirm_print
+  comfirm_print.continue.safe_wait_until_present(timeout: 2)
+  if comfirm_print.continue.present?
+    3.times do
+      comfirm_print.continue.safe_click
+      break unless comfirm_print.continue.present?
+    end
+  end
+  expect(comfirm_print.continue.present?).to be(false)
+end
+
+Then /^click print label expecting no errors$/ do
+  step 'click print label'
+  step 'click continue on confirm print modal'
+  step 'expect incomplete fields modal is not present'
+end
+
 Then /^click mail toolbar print$/ do
   step 'expect mail toolbar print is present'
   SdcMail.toolbar.print.click
+end
+
+Then /^expect mail toolbar print button label is (.+)$/ do |str|
+  toolbar = SdcMail.toolbar
+  begin
+    SdcPage.browser.wait_until(timeout: 3) do
+      toolbar.print_button.text.eql? str
+    end
+  rescue
+    # ignore
+  end
+  expect(toolbar.print_button.text).to eql str
 end
 
 Then /^expect mail toolbar print is present$/ do

@@ -47,6 +47,15 @@ module SdcWebsite
       page_object(:x_button) { { xpath: '//span[contains(@class, "icon-mobile-close-light")]' } }
     end
 
+    class InsuranceTerms < SdcPage
+      page_object(:window) { { xpath: '//div[starts-with(@id, "termsconditions-")][contains(@class, "x-window-default-closable")]' } }
+      page_object(:title) { { xpath: '//div[text()="Stamps.com Insurance Terms and Conditions"]' } }
+      page_object(:terms_link) { { xpath: '//u[text()="Stamps.com Insurance Terms and Conditions"]' } }
+      page_object(:x_button) { { xpath: '//span[contains(@class, "sdc-icon-mobile-close-light")]' } }
+      page_objects(:i_agree_btns) { { xpath: '//*[text()="I Agree"]' } }
+      page_objects(:cancel_btns) { { xpath: '//*[text()="Cancel"]' } }
+    end
+
     class << self
       def whats_new
         SdcWhatsNew.new
@@ -70,6 +79,10 @@ module SdcWebsite
 
       def advanced_shipiping_features
         AddAdvancedShippingFeatures.new
+      end
+
+      def insurance_terms
+        InsuranceTerms.new
       end
     end
   end

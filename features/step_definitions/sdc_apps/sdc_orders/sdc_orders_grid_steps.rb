@@ -1,11 +1,11 @@
-Then /^check row for order (\d+)$/ do |num|
+Then /^check orders grid row (\d+)$/ do |num|
   order_id = TestData.hash[:order_id][num]
   SdcGrid.body.wait_until_present(timeout: 10)
   sleep 7 unless TestSession.env.build_number
   step "check grid order id #{order_id}"
 end
 
-Then /^uncheck row for order (\d+)$/ do |num|
+Then /^uncheck orders grid row (\d+)$/ do |num|
   order_id = TestData.hash[:order_id][num]
   SdcGrid.body.wait_until_present(timeout: 10)
   sleep 7 unless TestSession.env.build_number
@@ -85,7 +85,7 @@ Then /^expect orders grid ship cost is (?:correct|(.*))$/ do |str|
              elsif order_id.size < 2
                TestData.hash[:order_id][order_id.to_i]
              end
-  result = SdcGrid.grid_column(:ship_cost).data(order_id).dollar_amount_str
+  result = SdcGrid.grid_column(:ship_cost).data(order_id).parse_digits
   expect(result.to_f).to eql str.to_f
 end
 
@@ -291,7 +291,7 @@ Then /^expect orders grid insured value is (?:correct|(.*))$/ do |str|
                TestData.hash[:order_id][order_id.to_i]
              end
   result = SdcGrid.grid_column(:insured_value).data(order_id)
-  cost = result.dollar_amount_str.to_f
+  cost = result.parse_digits.to_f
   expect(cost).to eql str.to_f
 end
 
@@ -346,7 +346,7 @@ Then /^expect orders grid order total is (?:correct|(.*))$/ do |str|
   #              TestData.hash[:order_id][order_id.to_i]
   #            end
   # result = SdcGrid.grid_column(:ship_cost).data(order_id)
-  # expect(result.dollar_amount_str.to_f).to eql str.to_f
+  # expect(result.parse_digits.to_f).to eql str.to_f
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Ship Cost error to contain \"(.*)\"$/ do |str|

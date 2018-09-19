@@ -15,9 +15,8 @@ module SdcOrders
   end
 
   class SdcShipToCountryDom < SdcPage
-    #page_object(:drop_down) { { xpath: '//div[contains(@id, "matltocountrydroplist-trigger-picker")]' } }
-    page_object(:drop_down) { { xpath: '//div[@id="sdc-mainpanel-matltocountrydroplist-trigger-picker"]' } }
-    page_object(:text_field, tag: :text_field) { { xpath: '//input[@id="sdc-mainpanel-matltocountrydroplist-inputEl"]' } }
+    page_object(:drop_down) { { xpath: '//div[@class="x-container x-fit-item x-container-default x-box-layout-ct"]//div[starts-with(@id, "combo-")][contains(@id, "-trigger-picker")]' } }
+    page_object(:text_field, tag: :text_field) { { xpath: '//div[@class="x-container x-fit-item x-container-default x-box-layout-ct"]//input[@name="ShipCountryCode"]' } }
 
     def selection(str)
       SdcElement.new(page_objects(:selections) { { xpath: "//li[text()='#{str}']" } }.last)
@@ -74,7 +73,7 @@ module SdcOrders
   class SdcOrderDetailsDomestic < SdcPage
     page_object(:phone, tag: :text_field) { { xpath: '(//input[@name="ShipPhone"])[1]' } }
     page_object(:email, tag: :text_field) { { xpath: '(//input[@name="BuyerEmail"])[1]' } }
-    page_object(:address, tag: :textarea) { { xpath: '//textarea[@id = "sdc-mainpanel-shiptotextarea-inputEl"]' } }
+    page_object(:address, tag: :textarea) { { xpath: '//textarea[@name="freeFormAddress"]' } }
 
     def country
       SdcShipToCountryDom.new

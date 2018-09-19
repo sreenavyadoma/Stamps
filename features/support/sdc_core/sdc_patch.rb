@@ -39,15 +39,10 @@ String.class_eval do
 
   ##
   # str=$34.68 returns 34.68 | str = "Total: $123.3" -> "123.3"
-  def dollar_amount_str
-    self.delete('[Tt]otal: ').delete('$').delete(',')
-  end
-
-  ##
-  # Extracts numbers from string.
-  #   "Order #1516802121794".extract_numbers returns 1516802121794
+  #   "Order #1516802121794" returns 1516802121794
+  # 'Total: $8,245.01' returns 8245.01
   def parse_digits
-    /\d+/.match(self).to_s
+    /\d+[.\d+]*/.match(self.gsub(',','')).to_s
   end
 
   def alpha_numeric

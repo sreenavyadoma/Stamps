@@ -50,6 +50,7 @@ end
 
 Then /^blur out on print form$/ do
   print_on = SdcMail.print_on
+  statusbar = SdcMail.statusbar
   print_on.text_field.wait_until_present(timeout: 6)
   print_on.label.safe_click
   print_on.label.double_click
@@ -57,6 +58,8 @@ Then /^blur out on print form$/ do
   print_on.label.double_click
   print_on.label.safe_click
   print_on.label.double_click
+  statusbar.total.blur_out
+  statusbar.total.blur_out
 end
 
 Then /^select all options in manage printing options/ do

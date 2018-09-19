@@ -24,7 +24,7 @@ Then /^Verify Local Rating$/ do |table|
   #   #todo-Rob fix this grade school coding smells problem
   #   10.times do
   #     order_details_form.blur_out
-  #     total = order_details_form.footer.total_ship_cost.text.dollar_amount_str.to_f.round(2)
+  #     total = order_details_form.footer.total_ship_cost.text.parse_digits.to_f.round(2)
   #     if total.eql? field["total"]
   #       results[index] = total.eql? field["total"]
   #       break
@@ -32,14 +32,14 @@ Then /^Verify Local Rating$/ do |table|
   #       results[index] = total.eql? field["total"]
   #     end
   #   end
-  #   total = order_details_form.footer.total_ship_cost.text.dollar_amount_str.to_f.round(2)
+  #   total = order_details_form.footer.total_ship_cost.text.parse_digits.to_f.round(2)
   #
   #   expected_total_amount = field["total"]
   #
   #   5.times do
   #     stamps.orders.order_details.blur_out
   #     sleep(0.5)
-  #     total_ship_cost = stamps.orders.order_details.footer.total_ship_cost.text.dollar_amount_str.to_f.round(2)
+  #     total_ship_cost = stamps.orders.order_details.footer.total_ship_cost.text.parse_digits.to_f.round(2)
   #     stamps.orders.order_details.blur_out
   #     stamps.orders.order_details.blur_out
   #     sleep(0.5)
@@ -50,7 +50,7 @@ Then /^Verify Local Rating$/ do |table|
   #   #SdcLog.step "  Test #{index} #{(results[index])?"Passed":"Failed"}"
   #   #SdcLog.step "  --------------------------------------------------------------------------- "
   #
-  #   actual = stamps.orders.order_details.footer.total_ship_cost.text.dollar_amount_str.to_f.round(2)
+  #   actual = stamps.orders.order_details.footer.total_ship_cost.text.parse_digits.to_f.round(2)
   #   expect(actual).to eql expected_total_amount
   #
   #   expect("").to eql "| Test #{index} | #{(results[index]) ? "Passed" : "Failed"} |Expectation=#{field["total"]},Actual=#{total}| | #{field["service"]} | #{field["weight_lb"]} | #{field["weight_oz"]} | #{field["length"]} | #{field["height"]} | #{field["width"]} | #{field["tracking"]} | #{field["total"]} |" if actual != expected_total_amount

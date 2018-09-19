@@ -56,6 +56,7 @@ module SdcMail
 
     class SdcEditMailingAddress < SdcPage
     end
+
     class MailSettingsModal < SdcPage
       page_object(:title) { { xpath: '//div[text()="Settings"]' } }
       page_object(:postdate_text_field) { { xpath: '(//*[contains(@id, "generaltabview")]//input[contains(@class, "x-form-text")])[2]' } }
@@ -85,13 +86,19 @@ module SdcMail
       page_object(:title) { { xpath: '//div[contains(@class, "app-window-extra-services")]//div[contains(@class, "x-title-text-default")]' } }
       page_object(:x_btn) { { xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]' } }
 
+      page_object(:security_label) { { xpath: '//label[text()="Security:"]' } }
+      page_object(:cod_label) { { xpath: '//label[text()="COD:"]' } }
+      page_object(:handling_label) { { xpath: '//label[text()="Handling:"]' } }
+
       page_object(:rr_chooser) { { xpath: '//span[@id="sdc-extraserviceswin-rrcheckbox-displayEl"]' } }
       page_object(:rr_verify) { { xpath: '//div[@id="sdc-extraserviceswin-rrcheckbox"]' } }
       checkbox(:return_receipt, :rr_chooser, :rr_verify, 'class', 'checked')
+      page_object(:return_receipt_cost) { { xpath: '//label[@id="sdc-extraserviceswin-rrpricelabel"]' } }
 
       page_object(:rd_chooser) { { xpath: '//span[@id="sdc-extraserviceswin-rdcheckbox-displayEl"]' } }
       page_object(:rd_verify) { { xpath: '//div[@id="sdc-extraserviceswin-rdcheckbox"]' } }
       checkbox(:restricted_delivery, :rd_chooser, :rd_verify, 'class', 'checked')
+      page_object(:restricted_delivery_cost) { { xpath: '//label[@id="sdc-extraserviceswin-rdpricelabel"]' } }
 
       text_field(:value_text_field, tag: :text_field) { { xpath: '//input[@id="sdc-extraserviceswin-valuenumberfield-inputEl"]' } }
       page_object(:val_inc) { { xpath: '//*[@id="sdc-extraserviceswin-valuenumberfield-trigger-spinner"]//*[contains(@class,"up")]' } }
@@ -102,38 +109,33 @@ module SdcMail
       page_object(:cod_inc) { { xpath: '//*[@id="sdc-extraserviceswin-codnumberfield-trigger-spinner"]//*[contains(@class,"up")]' } }
       page_object(:cod_dec) { { xpath: '//*[@id="sdc-extraserviceswin-codnumberfield-trigger-spinner"]//*[contains(@class,"down")]' } }
       sdc_number(:cod, :cod_text_field, :cod_inc, :cod_dec)
+      page_object(:cod_cost) { { xpath: '//label[@id="sdc-extraserviceswin-codpricelabel"]' } }
+
+      page_object(:hpu_chooser) { { xpath: '//span[@id="sdc-extraserviceswin-hfpucheckbox-displayEl"]' } }
+      page_object(:hpu_verify) { { xpath: '//div[@id="sdc-extraserviceswin-hfpucheckbox"]' } }
+      checkbox(:hold_for_pickup, :hpu_chooser, :hpu_verify, 'class', 'checked')
+      page_object(:hold_for_pickup_cost) { { xpath: '//label[@id="sdc-extraserviceswin-hfpupricelabel"]' } }
+
+      page_object(:frag_chooser) { { xpath: '//span[@id="sdc-extraserviceswin-shcheckbox-displayEl"]' } }
+      page_object(:frag_verify) { { xpath: '//div[@id="sdc-extraserviceswin-shcheckbox"]' } }
+      checkbox(:fragile, :frag_chooser, :frag_verify, 'class', 'checked')
+      page_object(:fragile_cost) { { xpath: '//label[@id="sdc-extraserviceswin-shpricelabel"]' } }
+
+      page_object(:rrmerch_chooser) { { xpath: '//span[@id="sdc-extraserviceswin-rrmcheckbox-displayEl"]' } }
+      page_object(:rrmerch_verify) { { xpath: '//div[@id="sdc-extraserviceswin-rrmcheckbox"]' } }
+      checkbox(:return_receipt_for_merchandise, :rrmerch_chooser, :rrmerch_verify, 'class', 'checked')
+      page_object(:return_receipt_for_merchandise_cost) { { xpath: '//label[@id="sdc-extraserviceswin-rrmpricelabel"]' } }
 
       page_object(:nrect_chooser) { { xpath: '//span[@id="sdc-extraserviceswin-notrectangularcheckbox-displayEl"]' } }
       page_object(:nrect_verify) { { xpath: '//div[@id="sdc-extraserviceswin-notrectangularcheckbox"]' } }
       checkbox(:non_rectangular, :nrect_chooser, :nrect_verify, 'class', 'checked')
 
-      page_object(:hpu_chooser) { { xpath: '//span[@id="sdc-extraserviceswin-hfpucheckbox-displayEl"]' } }
-      page_object(:hpu_verify) { { xpath: '//div[@id="sdc-extraserviceswin-hfpucheckbox"]' } }
-      checkbox(:hold_for_pickup, :hpu_chooser, :hpu_verify, 'class', 'checked')
-
-      page_object(:frag_chooser) { { xpath: '//span[@id="sdc-extraserviceswin-shcheckbox-displayEl"]' } }
-      page_object(:frag_verify) { { xpath: '//div[@id="sdc-extraserviceswin-shcheckbox"]' } }
-      checkbox(:fragile, :frag_chooser, :frag_verify, 'class', 'checked')
-
-      page_object(:rrmerch_chooser) { { xpath: '//span[@id="sdc-extraserviceswin-rrmcheckbox-displayEl"]' } }
-      page_object(:rrmerch_verify) { { xpath: '//div[@id="sdc-extraserviceswin-rrmcheckbox"]' } }
-      checkbox(:return_receipt_merchandise, :rrmerch_chooser, :rrmerch_verify, 'class', 'checked')
-
       page_object(:nnd_chooser) { { xpath: '//span[@id="sdc-extraserviceswin-nndcheckbox-displayEl"]' } }
       page_object(:nnd_verify) { { xpath: '//div[@id="sdc-extraserviceswin-nndcheckbox"]' } }
       checkbox(:notice_non_delivery, :nnd_chooser, :nnd_verify, 'class', 'checked')
+      page_object(:notice_non_delivery_cost) { { xpath: '//label[@id="sdc-extraserviceswin-nndpricelabel"]' } }
 
-      page_object(:security_price) { { xpath: '//label[@id="sdc-extraserviceswin-securitypricelabel"]' } }
-      page_object(:return_receipt_price) { { xpath: '//label[@id="sdc-extraserviceswin-rrpricelabel"]' } }
-      page_object(:restricted_delivery_price) { { xpath: '//label[@id="sdc-extraserviceswin-rdpricelabel"]' } }
-      page_object(:cod_price) { { xpath: '//label[@id="sdc-extraserviceswin-codpricelabel"]' } }
-      page_object(:notice_non_delivery_price) { { xpath: '//label[@id="sdc-extraserviceswin-nndpricelabel"]' } }
-      page_object(:handling_price) { { xpath: '//label[@id="sdc-extraserviceswin-contentpricelabel"]' } }
-      page_object(:fragile_price) { { xpath: '//label[@id="sdc-extraserviceswin-shpricelabel"]' } }
-      page_object(:return_receipt_m_price) { { xpath: '//label[@id="sdc-extraserviceswin-rrmpricelabel"]' } }
-      page_object(:hold_for_pickup_price) { { xpath: '//label[@id="sdc-extraserviceswin-hfpupricelabel"]' } }
-
-      page_object(:form_3811) { { xpath: '//span[@id="sdc-extraserviceswin-rrformbtn-btnInnerEl"]//u' } }
+      page_object(:form_3811) { { xpath: '//u[text()="Form 3811"]' } }
       page_object(:label_200_or_200n) { { xpath: '//span[@id="sdc-extraserviceswin-securityformbtn-btnInnerEl"]/u' } }
       page_object(:total) { { xpath: '//*[@id="sdc-extraservices-totalcostlabel"]' } }
       page_object(:save) { { xpath: '//span[@id="sdc-extraservices-savebtn-btnInnerEl"]' } }
@@ -252,6 +254,61 @@ module SdcMail
       page_object(:x_btn) { { xpath: '//div[text()="Settings"]/../..//*[contains(@class, "close")]' } }
     end
 
+    class ContactsView < SdcPage
+      page_object(:container) { { xpath: '//div[starts-with(@id,"multiplecontactsview-")][contains(@id,"-innerCt")]' } }
+      page_objects(:contacts_list) { { xpath: '//div[starts-with(@id,"multiplecontactsview-")][contains(@id,"-innerCt")]//li[@id="ContactId"]//div[@class="x-tagfield-item-text"]' } }
+    end
+
+    class MailToAddAddress < SdcPage
+      page_object(:window) { { xpath: '//div[starts-with(@id, "addeditaddressmodal")][contains(@id,"-outerCt")]' } }
+      page_object(:title) { { xpath: '//div[starts-with(@id, "addeditaddressmodal-")][contains(@id,"_header-innerCt")]//div[contains(@class, "x-title-text")]' } }
+      page_object(:address, tag: :textarea) { { xpath: '//div[starts-with(@id, "addeditaddressmodal")]//textarea[@name="freeFormAddEditAddress"]' } }
+      page_object(:email, tag: :text_field) { { xpath: '//div[starts-with(@id, "addeditaddressmodal")][contains(@id,"-outerCt")]//input[@placeholder="Optional"]' } }
+      page_object(:add) { { xpath: '//span[text()="Add"]' } }
+      page_object(:cancel) { { xpath: '//span[text()="Cancel"]' } }
+      page_object(:x_button) { { xpath: '//span[contains(@class, "icon-mobile-close-light")]' } }
+      page_object(:email_label) { { xpath: '//div[starts-with(@id, "addeditaddressmodal-")][contains(@id, "innerCt")]//span[text()="Email:"]' } }
+      page_object(:address_label) { { xpath: '//div[starts-with(@id, "addeditaddressmodal-")][contains(@id, "innerCt")]//span[text()="Address:"]' } }
+      page_object(:email_error_message) { { xpath: '//div[contains(@data-errorqtip,"email")]' } }
+      page_object(:selected_contacts_count) { { xpath: '//label[contains(text()," Contacts")]' } }
+
+      def list_of_values(name, company)
+        SdcElement.new(page_objects(:mail_to_lov) { { xpath: "//div[text()='#{name}, #{company}']" } }.last)
+      end
+
+      def contacts_view
+        ContactsView.new
+      end
+    end
+
+    class MailToInvalidContactSelected < SdcPage
+      page_objects(:window, index: 0) { { xpath: '//div[starts-with(@id, "dialoguemodal")][contains(@class,"x-window-closable")]' } }
+      page_objects(:title, index: 0) { { xpath: '//div[starts-with(@id, "dialoguemodal-")][contains(@id,"_header-targetEl")]' } }
+      page_objects(:body, index: 0) { { xpath: '//div[starts-with(@id, "dialoguemodal-")][@class="x-autocontainer-innerCt"]' } }
+      page_objects(:x_buttons) { { xpath: '//div[starts-with(@id, "dialoguemodal-")][contains(@id,"_header-targetEl")]//a//span[contains(@class, "sdc-icon-mobile-close-light")]' } }
+      page_objects(:close_buttons) { { xpath: '//span[text()="Close"]' } }
+    end
+
+    class IncompleteFields < SdcPage
+      page_object(:window) { { xpath: '//div[starts-with(@id, "dialoguemodal")][contains(@class,"x-window-closable")]' } }
+      page_object(:title) { { xpath: '//div[contains(@class, "x-window-header-title")]//div[@class="x-title-text x-title-text-default x-title-item"]' } }
+      page_object(:error_message) { { xpath: '//div[starts-with(@id, "dialoguemodal-")][@class="x-autocontainer-innerCt"]' } }
+      page_object(:x_button) { { xpath: '//span[contains(@class, "icon-mobile-close-light")]' } }
+      page_object(:close) { { xpath: '//span[text()="Close"]' } }
+    end
+
+    class MailConfirmPrint < SdcPage
+      page_object(:window) { { xpath: '//div[starts-with(@id, "dialoguemodal")][contains(@class,"x-window-closable")]' } }
+      page_object(:title) { { xpath: '//div[contains(@class, "x-window-header-title")]//div[@class="x-title-text x-title-text-default x-title-item"]' } }
+      page_object(:body) { { xpath: '//label[@class="x-component x-box-item x-window-item x-component-default"]' } }
+      page_object(:x_button) { { xpath: '//span[contains(@class, "icon-mobile-close-light")]' } }
+
+      page_object(:checkbox) { {xpath: '//div[starts-with(@id, "dialoguemodal-")][contains(@id, "-targetEl")]//input[starts-with(@id, "checkbox-")][contains(@id, "-inputEl")]'} }
+      page_object(:verify) { {xpath: '//div[starts-with(@id, "dialoguemodal-")][contains(@id, "-targetEl")]//div[contains(@class, "x-form-type-checkbox")]' } }
+      checkbox(:dont_show_this_again, :checkbox, :verify, 'class', 'checked')
+
+      page_object(:continue) { { xpath: '//span[text()="Continue"][@class="x-btn-inner x-btn-inner-primary-medium"]' } }
+    end
 
     class << self
       def notification_bar
@@ -312,6 +369,22 @@ module SdcMail
 
       def print
         MailPrintModal.new
+      end
+
+      def add_address
+        MailToAddAddress.new
+      end
+
+      def invalid_contact_selected
+        MailToInvalidContactSelected.new
+      end
+
+      def incomplete_fields
+        IncompleteFields.new
+      end
+
+      def comfirm_print
+        MailConfirmPrint.new
       end
 
       # def settings
