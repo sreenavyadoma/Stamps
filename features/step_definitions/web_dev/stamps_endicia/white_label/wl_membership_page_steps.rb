@@ -875,7 +875,7 @@ Then /^WL: expect membership page cancel anytime paragraph to be$/ do |str|
 end
 
 Then /^WL: expect membership page bonus offer details link to be present$/ do
-  WhiteLabel.membership_page.bonus_offer_details.to be_present
+ expect(WhiteLabel.membership_page.bonus_offer_details).to be_present
 end
 
 Then /^WL: click membership page bonus offer details link$/ do
