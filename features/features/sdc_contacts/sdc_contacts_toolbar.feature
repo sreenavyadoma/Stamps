@@ -6,25 +6,22 @@ Feature:  Contacts BVT - Contacts ToolBar
   @sdc_contact_add_new_contact1
   Scenario: Contacts BVT Scenario 1 : Click add, add new contact  and the open and view details
     Then sign-in to orders
-    Then add new order
     Then navigate to contacts
-    Then delete all available contacts with the value NewContact
-    Then expect count of contact search results is 0
-    Then close the search results by clicking on remove button
     Then click contacts toolbar add button
     Then set contact details to
-      | full_name   | company      | street_address |  city | state | postal_code    | country       | phone  |  email |    reference_number|   groups     |
-      | AlohaLydia | company123  | Urb San Francisco |San Juan  | Puerto Rico     |  00927-5827  | United States | 233451525  | alolyd@gmail.com  | refrence1a2b | group 1 |
-
-    Then On Left Navigation menu search contact {full_name}
+      | full_name | company | country| street_address | city | state | postal_code | phone  |  email | groups | reference_number|cost_code |
+      |random     |random   |United States|random     |San Juan|Puerto Rico|0097-5824|23345142-123|random  |        |random           |          |
+      #| random | random | United States| random|San Juan | Puerto Rico | 00927-5827   | random  | random  || random |                |
+    Then pause for 5 seconds
+    Then on left navigation menu search contact newly added
     Then In Contacts Grid Check Row 1
+    Then expect values contact added contacts grid are correct
+    #Then expect value of State/Prv in contacts grid is Florida
 
   @sdc_contacts_add_new_contact
    Scenario: Add new Contact Top Nav Scenario 1 :Click add, add new contact  and the open and view details
     Then sign-in to orders
-    Then pause for 5 seconds
     Then navigate to contacts
-    Then pause for 5 seconds
     #Then delete all available contacts with the value NewContact
     #Then expect count of contact search results is 0
     #Then close the search results by clicking on remove button
@@ -58,7 +55,7 @@ Feature:  Contacts BVT - Contacts ToolBar
     #Then expect value of Last Name in contacts grid is Verify
     #Then expect value of Suffix in contacts grid is blank
     #Then expect value of Company in contacts grid is FL Homes
-    #Then expect value of Title in contacts grid is Home Furnishings
+    #Then expect value of Titlentavts in contacts grid is Home Furnishings
     #Then expect value of Department in contacts grid is Home Department
     #Then expect value of Country in contacts grid is United States
     #Then expect value of Street Address in contacts grid is  223 E. Concord Street
@@ -67,7 +64,7 @@ Feature:  Contacts BVT - Contacts ToolBar
     #Then expect value of State/Prv in contacts grid is Florida
     #** check postal code
     Then expect value of Postal Code in contacts grid is 32801
-    #Then expect value of Email in contacts grid is new@contact.add
+    Then expect value of Email in contacts grid is new@contact.add
     #Then expect value of Phone in contacts grid is 23345152
     #Then expect value of Phone Extension in contacts grid is 987
     #Then expect value of Reference Number in contacts grid is ref00012
@@ -194,16 +191,6 @@ Feature:  Contacts BVT - Contacts ToolBar
     Then click on add reference save button
     Then expect value of Reference Number in contacts grid is Reference 123456789
 
-  @sdc_contacts_change_cost_code
-  Scenario: Contacts BVT Scenario 1: Change Cost Code to an Existing Contact via Contacts Toolbar
-    Then sign-in to orders
-    Then pause for 5 seconds
-    Then Navigate to Contacts
-    Then pause for 5 seconds
-    Then in contacts grid check row header
-    Then In Contacts Grid Check Row 1
-    Then Click Contacts Toolbar Cost Codes Dropdown
-    Then Select Cost Codes to Change Cost Code
-    Then Set Cost code value in the Change Costcode pop up box to sam1
-    Then click on cost code save button
-    Then expect value of Cost Code in contacts grid is sam1
+
+
+

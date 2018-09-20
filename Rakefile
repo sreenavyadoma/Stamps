@@ -3,6 +3,17 @@ require 'cucumber'
 require 'cucumber/rake/task'
 
 #CONTACTS
+
+Cucumber::Rake::Task.new(:sdc_contacts_toolbar_add_new_cost_code_toolbar) do |t|
+  t.profile = 'sdc_contacts_toolbar_add_new_cost_code_toolbar'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:sdc_contacts_toolbar_add_existing_cost_code_toolbar) do |t|
+  t.profile = 'sdc_contacts_toolbar_add_existing_cost_code_toolbar'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:sdc_contacts_delete_single_from_top_navigation) do |t|
   t.profile = 'sdc_contacts_delete_single_from_top_navigation'
   t.cucumber_opts = "-p cuke_reports"

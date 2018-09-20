@@ -30,6 +30,17 @@ Then /^[Ii]n [Cc]ontacts [Gg]rid [Uu]ncheck [Rr]ow (\d+)$/ do |row|
   expect(contacts_detail.contacts_detail_panel.present?).to be(false)
 end
 
+
+Then /^[Ee]xpect [Nn]umber [Oo]f [Cc]ontacts [Dd]isplayed [Ii]n [Tt]he [Gg]rid [Ii]s (.*)$/ do |count|
+  grid=SdcContacts.contacts_col
+  p "given"
+  p count
+  p "actul value"
+  p grid.count
+  expect(grid.count==count).to be(true)
+end
+
+
 Then /^[Ee]xpect [Nn]ame [Dd]etails for (.*) [Ii]n [Cc]ontacts [Gg]rid [Ii]s [Uu]pdated [Aa]ppropriately$/ do |name|
   contacts_grid_body = SdcContacts.contacts_body
   contacts_grid_body.safe_wait_until_present(timeout: 60)
@@ -103,20 +114,46 @@ Then /^[Ee]xpect [Nn]ame [Dd]etails for (.*) [Ii]n [Cc]ontacts [Gg]rid [Ii]s [Uu
   end
 end
 
+Then /^expect values contact added contacts grid are correct$/ do
+
+  full_name	=	TestData.hash[:full_name]
+  company	=	TestData.hash[:company]
+  country	=	TestData.hash[:country]
+  street_address	=	TestData.hash[:street_address]
+  city	=	TestData.hash[:city]
+  state	=	TestData.hash[:state]
+  postal_code	=	TestData.hash[:postal_code]
+  email	=	TestData.hash[:email]
+  phone	=	TestData.hash[:phone]
+  phone_ext	=	TestData.hash[:phone_ext]
+  groups	=	TestData.hash[:groups]
+  reference_number	=	TestData.hash[:reference_number]
+  cost_code	=	TestData.hash[:cost_code]
+
+  step "expect value of Name in contacts grid is #{full_name}"
+  step "expect value of Company in contacts grid is #{company}"
+  step "expect value of Country in contacts grid is #{country}"
+  step "expect value of Street Address in contacts grid is #{street_address}"
+  step "expect value of City in contacts grid is #{city}"
+  step "expect value of State/Prv in contacts grid is #{state}"
+  step "expect value of Postal Code in contacts grid is #{postal_code}"
+  step "expect value of Email in contacts grid is #{email}"
+  step "expect value of Phone in contacts grid is #{phone}"
+  step "expect value of Phone Extension in contacts grid is #{phone_ext}"
+  step "expect value of Groups in contacts grid is #{groups}"
+  step "expect value of Reference Number in contacts grid is #{reference_number}"
+  step "expect value of Cost Code in contacts grid is #{cost_code}"
+
+end
+
 #Validate Details in Contacts Grid
 Then /^[Ee]xpect [Vv]alue [Oo]f (.*) in [Cc]ontacts [Gg]rid is (.*)$/ do |col,value|
   contacts_grid_body = SdcContacts.contacts_body
   contacts_grid_body.safe_wait_until_present(timeout: 60)
 
   #p '**Grid**'
-  if value=='blank'
-    new_value = ""
-  else
-    new_value = value
-  end
 
   case col
-
   when 'Name'
   column = SdcContacts.contacts_grid_column(:name)
   expect(column).present?
@@ -181,11 +218,14 @@ Then /^[Ee]xpect [Vv]alue [Oo]f (.*) in [Cc]ontacts [Gg]rid is (.*)$/ do |col,va
     column = SdcContacts.contacts_grid_column(:state_prv)
     expect(column).present?
     expect(column.contacts_header_text).to eql('State/Prv')
-
-    case value
-      when 'Florida'
-        new_value='FL'
-    end
+    states = {"Puerto Rico" => "PR"}
+    new_value = states[value]
+    #case value
+      #when 'Florida'
+        #new_value ='FL'
+      #when 'Puerto Rico'
+        #new_value ='PR'
+    # #end
 
   when 'Postal Code'
     column = SdcContacts.contacts_grid_column(:postal_code)
@@ -221,12 +261,22 @@ Then /^[Ee]xpect [Vv]alue [Oo]f (.*) in [Cc]ontacts [Gg]rid is (.*)$/ do |col,va
     column = SdcContacts.contacts_grid_column(:cost_code)
     expect(column).present?
     expect(column.contacts_header_text).to eql('Cost Code')
+    if value == "correct?"
+      temp ||= TestData.hash[:costcode_val]
+    end
   end
-
+  if value=='blank'
+    new_value = ""
+  elsif value == "correct?"
+    new_value= temp
+  else
+    new_value = value
+  end
   #p column.contacts_header_text
   actual_value = column.contacts_text_at_row(1)
-  #p 'given value :' + value
-  #p 'actual value :' + actual_value
+  p 'given value :' + value
+  p 'actual value :' + actual_value
+  p 'new value :' + new_value
   if column.contacts_header_text =='Country'
     val=actual_value.split("-")
     expect(val[1].strip).to eql new_value.strip
