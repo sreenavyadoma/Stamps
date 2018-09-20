@@ -276,9 +276,9 @@ OS X Latest Chrome QACC
 bvtccosxgc1 extra_services_cost_for_rrb_service
 bvtccosxgc2 print_form_incomplete_fields
 bvtccosxgc3 multiple_prints_wrong_cost
-bvtccosxgc4 multiple_prints_wrong_cost
-bvtccosxgc5
-bvtccosxgc6
+bvtccosxgc4 shipping_labels_envelopes_extra_services
+bvtccosxgc5 priority_mail_insurance_notification
+bvtccosxgc6 add_address_email_validation
 bvtccosxgc7
 bvtccosxgc8
 bvtccosxgc9
