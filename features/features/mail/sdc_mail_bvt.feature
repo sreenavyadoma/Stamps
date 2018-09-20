@@ -3,6 +3,38 @@ Feature:  Mail BVT
   Background:
     Given Start test driver
 
+
+  @alex_mail_test
+  Scenario: Alex Test Services
+    Then sign-in to mail
+    Then select print on Shipping Label - 8 ½" x 11" Paper
+    Then select print form service FCM Large Envelope/Flat
+    Then set print form weight to lbs 0 oz 1
+    Then select print form service FCM Package/Thick Envelope
+    Then set print form weight to lbs 1 oz 2
+    Then select print form service PM Large/Thick Envelope
+#    Then set print form weight to lbs 0 oz 3
+    Then select print form service PM Flat Rate Envelope
+    Then set print form weight to lbs 5 oz 0
+    Then select print form service PM Large Package
+#    Then set print form weight to lbs 0 oz 3
+    Then select print form service PM Padded Flat Rate Envelope
+    Then select print form service PM Legal Flat Rate Envelope
+    Then select print form service PM Small Flat Rate Box
+#    Then select print form service PM Medium Flat Rate Box
+#    Then select print form service PM Large Flat Rate Box
+#    Then select print form service PM Regional Rate Box A
+#    Then select print form service PM Regional Rate Box B
+#    Then select print form service PME Package/Flat/Thick Envelope
+#    Then select print form service PME Flat Rate Envelope
+#    Then select print form service PME Padded Flat Rate Envelope
+#    Then select print form service PME Legal Flat Rate Envelope
+#    Then select print form service MM Package/Flat/Thick Envelope
+#    Then select print form service PSG Package/Flat/Thick Envelope
+#    Then select print form service PSG Large Package
+#    Then select print form service PSG Oversized Package
+    Then sign out
+
   @mail_bvt_international
   Scenario: International Shipping
     Then sign-in to mail
