@@ -279,7 +279,7 @@ bvtccosxgc3 multiple_prints_wrong_cost
 bvtccosxgc4 shipping_labels_envelopes_extra_services
 bvtccosxgc5 priority_mail_insurance_notification
 bvtccosxgc6 add_address_email_validation
-bvtccosxgc7
+bvtccosxgc7 mail_print_button_labels
 bvtccosxgc8
 bvtccosxgc9
 bvtccosxgc10
