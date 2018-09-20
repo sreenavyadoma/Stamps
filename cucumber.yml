@@ -4,17 +4,17 @@ default: --backtrace --profile alex_mail
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
 # tests: bvt_shipstation_updates_domestic
-local_mobile: --tags @mail_authentication_mobile URL=stg USR=sauce0020 PW=pass111 SELENIUM_DEVICE='iPhone X 11.3' SELENIUM_PLATFORM=iOS SELENIUM_BROWSER=Safari SELENIUM_VERSION=11.3 LOG_LEVEL=debug
-#local_mobile: --tags @bvt_new_order URL=cc USR=cctruer0u PW=pass111 SELENIUM_DEVICE='iPhone X 11.3' SELENIUM_PLATFORM=iOS SELENIUM_BROWSER=Safari SELENIUM_VERSION=11.3 LOG_LEVEL=debug
-local_browser: --tags @mail_bvt_international URL=stg BROWSER=ff MAX_WINDOW=false USR=stgmacgc6 PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=info WINDOW_SIZE=1300x900
-#local_browser: --tags @bvt_shipstation_updates_international URL=cc BROWSER=ff MAX_WINDOW=false USR=bvtccosxgc18 PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=info WINDOW_SIZE=1300x900
-#local_browser: --tags @bvt_shipstation_updates_domestic URL=sc BROWSER=ff MAX_WINDOW=false USR=scsejsglwa PW=pass111 PRINTER=factory WEB_APP=orders LOG_LEVEL=info
+#local_mobile: --tags @mail_authentication_mobile URL=stg USR=sauce0020 PW=pass111 SELENIUM_DEVICE='iPhone X 11.3' SELENIUM_PLATFORM=iOS SELENIUM_BROWSER=Safari SELENIUM_VERSION=11.3 LOG_LEVEL=debug
+#local_mobile: --tags @multiple_contact_email_not_required URL=cc USR=bvtsauce00019cc PW=pass111 SELENIUM_DEVICE='iPhone X 11.3' SELENIUM_PLATFORM=iOS SELENIUM_BROWSER=Safari SELENIUM_VERSION=11.3 LOG_LEVEL=debug
+#local_browser: --tags @multiple_contact_email_not_required URL=stg BROWSER=ff MAX_WINDOW=false USR=stgmacgc6 PW=pass111 PRINTER=factory LOG_LEVEL=info WINDOW_SIZE=1300x900
+local_browser: --tags @bvt_international_shipping URL=cc BROWSER=gc MAX_WINDOW=false USR=bvtccw10edg15 PW=pass111 PRINTER=factory LOG_LEVEL=info WINDOW_SIZE=1300x900
+#local_browser: --tags @bvt_shipstation_updates_domestic URL=sc BROWSER=ff MAX_WINDOW=false USR=scsejsglwa PW=pass111 PRINTER=factory LOG_LEVEL=info
 sauce_mobile: --tags @mail_authentication_mobile URL=stg USR=sauce0020 PW=pass111 SELENIUM_DEVICE='iPhone X Simulator' SELENIUM_PLATFORM=iOS SELENIUM_BROWSER=Safari SELENIUM_VERSION=11.3TUNNEL_IDENTIFIER=rob LOG_LEVEL=info
 #sauce_browser: --tags @bvt_shipstation_updates_domestic URL=stg USR=stgvoc0kcnt6rw PW=pass111SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Mac 10.10' TUNNEL_IDENTIFIER=rob LOG_LEVEL=info
 sauce_browser: --tags @bvt_international_shipping URL=stg USR=bvtstgw7ff8 PW=pass111 SELENIUM_BROWSER=MicrosoftEdge SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' TUNNEL_IDENTIFIER=rob LOG_LEVEL=info
 #sauce_browser: --tags @bvt_orders_ui_validation URL=cc USR=cctruer0u PW=pass111SELENIUM_BROWSER=firefox SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 2008' TUNNEL_IDENTIFIER=rob LOG_LEVEL=info
 #sauce_browser: --tags @bvt_orders_ship_date URL=cc USR=bvtsauce00020cc PW=pass111SELENIUM_BROWSER=firefox SELENIUM_VERSION=latest SELENIUM_PLATFORM='Mac 10.12' TUNNEL_IDENTIFIER=rob LOG_LEVEL=info SCREEN_RESOLUTION=1152x864
-#mhossain1_cc: --tags @registration_normal_workflow WEB_APP=orders JENKINS=true URL=cc LOG_LEVEL=info BROWSER=ff MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
+#mhossain1_cc: --tags @registration_normal_workflow JENKINS=true URL=cc LOG_LEVEL=info BROWSER=ff MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
 #mhossain1_cc: --tags @pp_header_favicons_browser_mobile JENKINS=true URL=qacc BROWSER=gc BROWSER_MOBILE_EMULATOR=gc,'iPhone X' USR=wteam@stamps.com PW=password1 WEB_DEV=true
 #mhossain1_cc: --tags @pp_log_in_page_validation JENKINS=true URL=stg BROWSER=ff USR=wteam@stamps.com PW=password1 FIREFOX_PROFILE=true WEB_DEV=true
 
@@ -22,10 +22,10 @@ mhossain1_cc: --tags @sdcwr_choose_supplies_page_not_present_workflow URL=stg BR
 
 kaushal_cc: --tags @ewwr_security_question_page_validation URL=stg BROWSER=edge #USR=qawebdevelopment@stamps.com PW=password1
 
-web_apps_dev: --tags @bvt_new_order WEB_APP=orders USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess BROWSER=ff MAX_WINDOW=false
+web_apps_dev: --tags @bvt_new_order USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess BROWSER=ff MAX_WINDOW=false
 
 eli_dev: --tags @mail_bvt_stamps --guess JENKINS=false WEB_APP=mail URL=stg BROWSER=ff USR=stgld1uw4sroe7 PW=pass111 PRINTER=factory
-ray_dev: --tags @rates_parcel_select_ground --guess JENKINS=false WEB_APP=orders URL=stg BROWSER=ff USR=default PW=pass111
+ray_dev: --tags @rates_parcel_select_ground --guess JENKINS=false URL=stg BROWSER=ff USR=default PW=pass111
 sap: --tags @registration_orders WEB_APP=registration URL=cc --guess BROWSER=ff MAX_WINDOW=false
 
 alex_mail:  --tags @alex_mail_test BROWSER=firefox URL=stg USR=abqast3 PW=password1 new_framework=true  --guess LOG_LEVEL=info HEALTHCHECK=true
@@ -35,28 +35,38 @@ alex_rates_pmi:  --tags @rates_mail_pme_comm_base_zone_2 BROWSER=ff URL=stg USR=
 #alex_orders:  --tags @bvt_shipstation_updates_international BROWSER=ff URL=prod USR=abqaprod2 PW=password1  PRINTER=factory --guess LOG_LEVEL=info HEALTHCHECK=false
 alex_orders:  --tags @bvt_orders_ui_validation BROWSER=ff URL=prod USR=abqaprod2 PW=password1  PRINTER=factory --guess LOG_LEVEL=info HEALTHCHECK=false
 #alex_orders:  --tags @bvt_new_order BROWSER=ff URL=stg USR=abqast2 PW=password1 new_framework=true  --guess LOG_LEVEL=info HEALTHCHECK=false #abqast1
-alex_test:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders URL=qacc USR=abqacc10 PW=password1  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false
+alex_test:  --tags @bvt_shipping_address_management BROWSER=ff URL=qacc USR=abqacc10 PW=password1  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false
 saucelabs_alex: --tags @rates_pme_comm_base_zone_1 URL=stg USR=abqast2 PW=password1 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=alexbaranovskyi SAUCE_ACCESS_KEY=bcd50193-981d-4890-9bce-b18d3097f373 SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
 
 mail_print_envelope_11: --tags @mail_print_envelope_11 --guess PRINTER=factory
 
-poc_stg_chrome: --tags @authentication --guess WEB_APP=orders URL=stg BROWSER=ff
-poc_stg_firefox: --tags @authentication --guess WEB_APP=orders URL=stg BROWSER=ff
-poc_cc_chrome: --tags @authentication --guess WEB_APP=orders URL=cc BROWSER=ff
-poc_cc_firefox: --tags @authentication --guess WEB_APP=orders URL=cc BROWSER=ff
-poc_sc_chrome: --tags @authentication --guess WEB_APP=orders URL=sc BROWSER=ff
-poc_sc_firefox: --tags @authentication --guess WEB_APP=orders URL=sc BROWSER=ff
-poc_cc_edge: --tags @authentication --guess WEB_APP=orders URL=cc BROWSER=edge
-poc_stg_edge: --tags @authentication --guess WEB_APP=orders URL=stg BROWSER=edge
+poc_stg_chrome: --tags @authentication --guess URL=stg BROWSER=ff
+poc_stg_firefox: --tags @authentication --guess URL=stg BROWSER=ff
+poc_cc_chrome: --tags @authentication --guess URL=cc BROWSER=ff
+poc_cc_firefox: --tags @authentication --guess URL=cc BROWSER=ff
+poc_sc_chrome: --tags @authentication --guess URL=sc BROWSER=ff
+poc_sc_firefox: --tags @authentication --guess URL=sc BROWSER=ff
+poc_cc_edge: --tags @authentication --guess URL=cc BROWSER=edge
+poc_stg_edge: --tags @authentication --guess URL=stg BROWSER=edge
 
-jenkinsvm: --tags @healthcheck --guess LOG_LEVEL=info JENKINS=false WEB_APP=orders URL=stg BROWSER=ff USR=ss_cctest3 PW=password1
+jenkinsvm: --tags @healthcheck --guess LOG_LEVEL=info JENKINS=false URL=stg BROWSER=ff USR=ss_cctest3 PW=password1
 
+# regression
+extra_services_cost_for_rrb_service: --tags @extra_services_cost_for_rrb_service --guess
+print_form_incomplete_fields: --tags @print_form_incomplete_fields --guess
+add_address_email_validation: --tags @add_address_email_validation --guess
+multiple_prints_wrong_cost: --tags @multiple_prints_wrong_cost --guess
+mail_print_button_labels: --tags @mail_print_button_labels --guess
+shipping_labels_envelopes_extra_services: --tags @shipping_labels_envelopes_extra_services --guess
+priority_mail_insurance_notification: --tags @priority_mail_insurance_notification --guess
+
+# rates
 rates_pme_comm_base_mail: --tags @rates_pme_comm_base --guess LOG_LEVEL=info
-rates_pme_comm_base: --tags @rates_pme_comm_base --guess LOG_LEVEL=info WEB_APP=orders
-rates_pm_comm_base: --tags @rates_pm_comm_base --guess LOG_LEVEL=info WEB_APP=orders
-rates_pme_comm_plus: --tags @rates_pme_comm_plus --guess LOG_LEVEL=info WEB_APP=orders
-rates_pm_comm_plus: --tags @rates_pm_comm_plus --guess LOG_LEVEL=info WEB_APP=orders
-rates_parcel_select_ground: --tags @rates_parcel_select_ground --guess LOG_LEVEL=info WEB_APP=orders
+rates_pme_comm_base: --tags @rates_pme_comm_base --guess LOG_LEVEL=info
+rates_pm_comm_base: --tags @rates_pm_comm_base --guess LOG_LEVEL=info
+rates_pme_comm_plus: --tags @rates_pme_comm_plus --guess LOG_LEVEL=info
+rates_pm_comm_plus: --tags @rates_pm_comm_plus --guess LOG_LEVEL=info
+rates_parcel_select_ground: --tags @rates_parcel_select_ground --guess LOG_LEVEL=info
 rates_pmei_comm_base: --tags @rates_pmei_comm_base --guess LOG_LEVEL=info
 rates_pmei_comm_plus: --tags @rates_pmei_comm_plus --guess LOG_LEVEL=info
 rates_mail_pmei_comm_base_group_1: --tags @rates_mail_pmei_comm_base_group_1 --guess LOG_LEVEL=info
@@ -325,18 +335,18 @@ registration_security_questions_happy_path: --tags @registration_security_questi
 
 mail_print_shipping_label_8x11: --tags @mail_print_shipping_label_8x11 --guess _print_shipping_label_8x11 PRINTER=factory
 
-search_orders: --tags @search_orders --guess WEB_APP=orders
-search_orders_on_hold: --tags @search_orders_on_hold --guess WEB_APP=orders
+search_orders: --tags @search_orders --guess
+search_orders_on_hold: --tags @search_orders_on_hold --guess
 
-output_username: --tags @output_username --guess WEB_APP=orders
-generate_username: --tags @generate_username --guess WEB_APP=orders
+output_username: --tags @output_username --guess
+generate_username: --tags @generate_username --guess
 
 healthcheck: --tags @healthcheck --guess
 
 authentication: --tags @authentication --guess LOG_LEVEL=info
 
-customs_form_auto_calculate_weight: --tags @customs_form_auto_calculate_weight --guess WEB_APP=orders
-whats_new: --tags @whats_new --guess WEB_APP=orders
+customs_form_auto_calculate_weight: --tags @customs_form_auto_calculate_weight --guess
+whats_new: --tags @whats_new --guess
 
 Registration: --tags @Registration --guess WEB_APP=Registration
 pam: --tags @pam --guess WEB_APP=pam
@@ -348,198 +358,198 @@ registration_meter_limit_100k: --tags @registration_meter_limit_100k --guess WEB
 pam_meter_limit_100k: --tags @pam_meter_limit_100k --guess WEB_APP=Registration
 
 # -------------------------- ORDERS Bugs
-bugs_orders_filter_panel: --tags @bugs_orders_filter_panel --guess WEB_APP=orders
-bugs_multi_order_details: --tags @bugs_multi_order_details --guess WEB_APP=orders
-bugs_orders_customs_form: --tags @bugs_orders_customs_form --guess WEB_APP=orders
-bugs_orders_grid: --tags @bugs_orders_grid --guess WEB_APP=orders
-bugs_orders_grid_toolbar: --tags @bugs_orders_grid_toolbar --guess WEB_APP=orders
-bugs_orders_navigation_bar: --tags @bugs_orders_navigation_bar --guess WEB_APP=orders
-bugs_orders_settings: --tags @bugs_orders_settings --guess WEB_APP=orders
-bugs_single_order_details_form: --tags @bugs_single_order_details_form --guess WEB_APP=orders
-bugs_print_modal: --tags @bugs_print_modal --guess WEB_APP=orders
+bugs_orders_filter_panel: --tags @bugs_orders_filter_panel --guess
+bugs_multi_order_details: --tags @bugs_multi_order_details --guess
+bugs_orders_customs_form: --tags @bugs_orders_customs_form --guess
+bugs_orders_grid: --tags @bugs_orders_grid --guess
+bugs_orders_grid_toolbar: --tags @bugs_orders_grid_toolbar --guess
+bugs_orders_navigation_bar: --tags @bugs_orders_navigation_bar --guess
+bugs_orders_settings: --tags @bugs_orders_settings --guess
+bugs_single_order_details_form: --tags @bugs_single_order_details_form --guess
+bugs_print_modal: --tags @bugs_print_modal --guess
 
 
 # -------------------------- ORDERS BVT
-bvt_shipping_address_management: --tags @bvt_shipping_address_management --guess WEB_APP=orders
-bvt_ambigious_address: --tags @bvt_ambigious_address --guess WEB_APP=orders
-bvt_bulk_update: --tags @bvt_bulk_update --guess WEB_APP=orders
-bvt_address_cleansing: --tags @bvt_address_cleansing --guess WEB_APP=orders
+bvt_shipping_address_management: --tags @bvt_shipping_address_management --guess
+bvt_ambigious_address: --tags @bvt_ambigious_address --guess
+bvt_bulk_update: --tags @bvt_bulk_update --guess
+bvt_address_cleansing: --tags @bvt_address_cleansing --guess
 bvt_international_shipping: --tags @bvt_international_shipping --guess
 bvt_new_order: --tags @bvt_new_order --guess LOG_LEVEL=info
-bvt_printing: --tags @bvt_printing --guess WEB_APP=orders PRINTER=factory
-bvt_purchasing: --tags @bvt_purchasing --guess WEB_APP=orders
-bvt_purchasing_cc: --tags @bvt_purchasing_cc --guess WEB_APP=orders USR=cchrvv6qp PW=pass111
-bvt_purchasing_stg: --tags @bvt_purchasing_stg --guess WEB_APP=orders USR=stgugqex0q4 PW=pass111
-bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic --guess HEALTHCHECK=falsepa WEB_APP=orders
-bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess WEB_APP=orders
+bvt_printing: --tags @bvt_printing --guess PRINTER=factory
+bvt_purchasing: --tags @bvt_purchasing --guess
+bvt_purchasing_cc: --tags @bvt_purchasing_cc --guess USR=cchrvv6qp PW=pass111
+bvt_purchasing_stg: --tags @bvt_purchasing_stg --guess USR=stgugqex0q4 PW=pass111
+bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic --guess HEALTHCHECK=falsepa
+bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess
 bvt_shipstation_search: --tags @bvt_shipstation_search --guess
-bvt_orders_ship_date: --tags @bvt_orders_ship_date --guess WEB_APP=orders
-bvt_orders_ship_date_calendar: --tags @bvt_orders_ship_date_calendar --guess WEB_APP=orders
-bvt_form_validation_orders_details: --tags @bvt_form_validation_orders_details --guess WEB_APP=orders
-bvt_form_validation_bulk_update: --tags @bvt_form_validation_bulk_update --guess WEB_APP=orders
-bvt_all_tests: --tags @bvt_all_tests --guess WEB_APP=orders
+bvt_orders_ship_date: --tags @bvt_orders_ship_date --guess
+bvt_orders_ship_date_calendar: --tags @bvt_orders_ship_date_calendar --guess
+bvt_form_validation_orders_details: --tags @bvt_form_validation_orders_details --guess
+bvt_form_validation_bulk_update: --tags @bvt_form_validation_bulk_update --guess
+bvt_all_tests: --tags @bvt_all_tests --guess
 
-dev_bvt_shipping_address_management: --tags @bvt_shipping_address_management --guess WEB_APP=orders
-dev_bvt_address_cleansing: --tags @bvt_address_cleansing --guess WEB_APP=orders
-dev_bvt_international_shipping: --tags @bvt_international_shipping --guess WEB_APP=orders
-dev_bvt_new_order: --tags @bvt_new_order --guess WEB_APP=orders
-dev_bvt_printing: --tags @bvt_printing --guess WEB_APP=orders PRINTER=factory
-dev_bvt_purchasing: --tags @bvt_purchasing --guess WEB_APP=orders
-dev_bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic --guess WEB_APP=orders
-dev_bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess WEB_APP=orders
-dev_bvt_shipstation_search: --tags @bvt_shipstation_search --guess WEB_APP=orders
-dev_import_orders: --tags @import_orders --guess WEB_APP=orders
+dev_bvt_shipping_address_management: --tags @bvt_shipping_address_management --guess
+dev_bvt_address_cleansing: --tags @bvt_address_cleansing --guess
+dev_bvt_international_shipping: --tags @bvt_international_shipping --guess
+dev_bvt_new_order: --tags @bvt_new_order --guess
+dev_bvt_printing: --tags @bvt_printing --guess PRINTER=factory
+dev_bvt_purchasing: --tags @bvt_purchasing --guess
+dev_bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic --guess
+dev_bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess
+dev_bvt_shipstation_search: --tags @bvt_shipstation_search --guess
+dev_import_orders: --tags @import_orders --guess
 
 #PRINT DIALOG SHIP DATE CALENDAR
-print_dialog_ship_date_calendar: --tags @print_dialog_ship_date_calendar --guess WEB_APP=orders
+print_dialog_ship_date_calendar: --tags @print_dialog_ship_date_calendar --guess
 
 
 # PRINT TWO UP EXPANDED
-print_two_up_expanded_sdc1200_left_print3: --tags @print_two_up_expanded_sdc1200_left_print3 --guess WEB_APP=orders PRINTER=factory
-print_two_up_expanded_sdc1200_4x6_left_print1: --tags @print_two_up_expanded_sdc1200_4x6_left_print1 --guess WEB_APP=orders PRINTER=factory
-print_two_up_expanded_paper: --tags @print_two_up_expanded_paper --guess WEB_APP=orders PRINTER=factory
-print_two_up_expanded_fpo_cn22_paper_right: --tags @print_two_up_expanded_fpo_cn22_paper_right --guess WEB_APP=orders PRINTER=factory
+print_two_up_expanded_sdc1200_left_print3: --tags @print_two_up_expanded_sdc1200_left_print3 --guess PRINTER=factory
+print_two_up_expanded_sdc1200_4x6_left_print1: --tags @print_two_up_expanded_sdc1200_4x6_left_print1 --guess PRINTER=factory
+print_two_up_expanded_paper: --tags @print_two_up_expanded_paper --guess PRINTER=factory
+print_two_up_expanded_fpo_cn22_paper_right: --tags @print_two_up_expanded_fpo_cn22_paper_right --guess PRINTER=factory
 
-print_two_up_expanded_cp72: --tags @print_two_up_expanded_cp72 --guess WEB_APP=orders PRINTER=factory
-print_two_up_expanded_cn22: --tags @print_two_up_expanded_cn22 --guess WEB_APP=orders PRINTER=factory
-print_two_up_expanded_5x8: --tags @print_two_up_expanded_5x8 --guess WEB_APP=orders PRINTER=factory
+print_two_up_expanded_cp72: --tags @print_two_up_expanded_cp72 --guess PRINTER=factory
+print_two_up_expanded_cn22: --tags @print_two_up_expanded_cn22 --guess PRINTER=factory
+print_two_up_expanded_5x8: --tags @print_two_up_expanded_5x8 --guess PRINTER=factory
 
 #PRINT TWO UP
-print_dialog_two_up_window_title: --tags @print_dialog_two_up_window_title --guess WEB_APP=orders PRINTER=factory
-print_dialog_two_up_x_number_of_labels: --tags @print_dialog_two_up_x_number_of_labels --guess WEB_APP=orders PRINTER=factory
-print_two_up_multiple_domestic_labels: --tags @print_two_up_multiple_domestic_labels --guess WEB_APP=orders PRINTER=factory
+print_dialog_two_up_window_title: --tags @print_dialog_two_up_window_title --guess PRINTER=factory
+print_dialog_two_up_x_number_of_labels: --tags @print_dialog_two_up_x_number_of_labels --guess PRINTER=factory
+print_two_up_multiple_domestic_labels: --tags @print_two_up_multiple_domestic_labels --guess PRINTER=factory
 # PRINT SAMPLE
-print_sample_pm_flat_rate_envelope: --tags @print_sample_pm_flat_rate_envelope --guess WEB_APP=orders PRINTER=factory
-print_sample_pme_package: --tags @print_sample_pme_package --guess WEB_APP=orders PRINTER=factory
-print_sample_pm_regional_rate_box_a: --tags @print_sample_pm_regional_rate_box_a --guess WEB_APP=orders PRINTER=factory
-print_sample_parcel_select_ground_large_package: --tags @print_sample_parcel_select_ground_large_package --guess WEB_APP=orders PRINTER=factory
-print_sample_pme_padded_flat_rate_envelope: --tags @print_sample_pme_padded_flat_rate_envelope --guess WEB_APP=orders PRINTER=factory
-print_multiple_orders: --tags @print_multiple_orders --guess WEB_APP=orders PRINTER=factory
+print_sample_pm_flat_rate_envelope: --tags @print_sample_pm_flat_rate_envelope --guess PRINTER=factory
+print_sample_pme_package: --tags @print_sample_pme_package --guess PRINTER=factory
+print_sample_pm_regional_rate_box_a: --tags @print_sample_pm_regional_rate_box_a --guess PRINTER=factory
+print_sample_parcel_select_ground_large_package: --tags @print_sample_parcel_select_ground_large_package --guess PRINTER=factory
+print_sample_pme_padded_flat_rate_envelope: --tags @print_sample_pme_padded_flat_rate_envelope --guess PRINTER=factory
+print_multiple_orders: --tags @print_multiple_orders --guess PRINTER=factory
 # PRINT SHIP DATE
-print_dialog_ship_date: --tags @print_dialog_ship_date --guess WEB_APP=orders PRINTER=factory
+print_dialog_ship_date: --tags @print_dialog_ship_date --guess PRINTER=factory
 # PRINT MEDIA
-tooltip_print_media: --tags @tooltip_print_media --guess WEB_APP=orders PRINTER=factory
-print_dialog_printing_on_8x11_paper: --tags @print_dialog_printing_on_8x11_paper --guess WEB_APP=orders PRINTER=factory
-print_dialog_printing_on_4x6_sdc1200: --tags @print_dialog_printing_on_4x6_sdc1200 --guess WEB_APP=orders PRINTER=factory
-print_dialog_printing_on_5x8_shipping_label: --tags @print_dialog_printing_on_5x8_shipping_label --guess WEB_APP=orders PRINTER=factory
-print_dialog_printing_on_4x6_shipping_label: --tags @print_dialog_printing_on_4x6_shipping_label --guess WEB_APP=orders PRINTER=factory
-print_dialog_printing_on_4x6_roll: --tags @print_dialog_printing_on_4x6_roll --guess WEB_APP=orders PRINTER=factory
-print_dialog_hide_postage_value: --tags @print_dialog_hide_postage_value --guess WEB_APP=orders PRINTER=factory
-print_dialog_email_tracking: --tags @print_dialog_email_tracking --guess WEB_APP=orders PRINTER=factory
+tooltip_print_media: --tags @tooltip_print_media --guess PRINTER=factory
+print_dialog_printing_on_8x11_paper: --tags @print_dialog_printing_on_8x11_paper --guess PRINTER=factory
+print_dialog_printing_on_4x6_sdc1200: --tags @print_dialog_printing_on_4x6_sdc1200 --guess PRINTER=factory
+print_dialog_printing_on_5x8_shipping_label: --tags @print_dialog_printing_on_5x8_shipping_label --guess PRINTER=factory
+print_dialog_printing_on_4x6_shipping_label: --tags @print_dialog_printing_on_4x6_shipping_label --guess PRINTER=factory
+print_dialog_printing_on_4x6_roll: --tags @print_dialog_printing_on_4x6_roll --guess PRINTER=factory
+print_dialog_hide_postage_value: --tags @print_dialog_hide_postage_value --guess PRINTER=factory
+print_dialog_email_tracking: --tags @print_dialog_email_tracking --guess PRINTER=factory
 # PRINT LABEL SIDES
-print_dialog_label_sides: --tags @print_dialog_label_sides --guess WEB_APP=orders PRINTER=factory
+print_dialog_label_sides: --tags @print_dialog_label_sides --guess PRINTER=factory
 # CP72 & CN22
-print_layout_cp72: --tags @print_layout_cp72 --guess WEB_APP=orders PRINTER=factory
-print_layout_cn22_5x8: --tags @print_layout_cn22_5x8 --guess WEB_APP=orders PRINTER=factory
-print_layout_cn22_5x8_continuation: --tags @print_layout_cn22_5x8_continuation --guess WEB_APP=orders PRINTER=factory
-print_layout_cn22_paper_left_side: --tags @print_layout_cn22_paper_left_side --guess WEB_APP=orders PRINTER=factory
-print_layout_cn22_roll: --tags @print_layout_cn22_roll --guess WEB_APP=orders PRINTER=factory
+print_layout_cp72: --tags @print_layout_cp72 --guess PRINTER=factory
+print_layout_cn22_5x8: --tags @print_layout_cn22_5x8 --guess PRINTER=factory
+print_layout_cn22_5x8_continuation: --tags @print_layout_cn22_5x8_continuation --guess PRINTER=factory
+print_layout_cn22_paper_left_side: --tags @print_layout_cn22_paper_left_side --guess PRINTER=factory
+print_layout_cn22_roll: --tags @print_layout_cn22_roll --guess PRINTER=factory
 #PRINT BULK UPDATE
-bulk_update_dom: --tags @bulk_update_dom --guess WEB_APP=orders
-bulk_update_int: --tags @bulk_update_int --guess WEB_APP=orders
+bulk_update_dom: --tags @bulk_update_dom --guess
+bulk_update_int: --tags @bulk_update_int --guess
 # CHECK IF THESE ARE IN JENKINS
-reprint_tests: --tags @reprint_tests --guess WEB_APP=orders PRINTER=factory
-print_multiple_reprints: --tags @print_multiple_reprints --guess WEB_APP=orders PRINTER=factory
-print_on_thermal: --tags @print_on_thermal --guess WEB_APP=orders PRINTER=factory
+reprint_tests: --tags @reprint_tests --guess PRINTER=factory
+print_multiple_reprints: --tags @print_multiple_reprints --guess PRINTER=factory
+print_on_thermal: --tags @print_on_thermal --guess PRINTER=factory
 
-tsce_printing: --tags @tsce_printing --guess WEB_APP=orders PRINTER=tse_pritnern
+tsce_printing: --tags @tsce_printing --guess PRINTER=tse_pritnern
 # ORDERS REGRESSION
-details_edit_order: --tags @details_edit_order --guess WEB_APP=orders
-details_services: --tags @details_services --guess WEB_APP=orders
-details_flat_rate_no_weight_international: --tags @details_flat_rate_no_weight_international --guess WEB_APP=orders
-details_flat_rate_no_weight_domestic: --tags @details_flat_rate_no_weight_domestic --guess WEB_APP=orders
-details_large_dimensions_pm: --tags @details_large_dimensions_pm --guess WEB_APP=orders
-international_customs_form: --tags @international_customs_form --guess WEB_APP=orders
-international_customs_form_totals: --tags @international_customs_form_totals --guess WEB_APP=orders
-international_customs_form_edit_delete_item: --tags @international_customs_form_edit_delete_item --guess WEB_APP=orders
-tooltip_customs_form: --tags @tooltip_customs_form --guess WEB_APP=orders
-tooltips: --tags @tooltips --guess WEB_APP=orders
-details_reference_no: --tags @details_reference_no --guess WEB_APP=orders
-customs_form_qty: --tags @customs_form_qty --guess WEB_APP=orders
-grid_automation_test: --tags @grid_automation_test --guess WEB_APP=orders
-orders_grid_tests: --tags @orders_grid_tests --guess WEB_APP=orders
-grid_insured_value: --tags @grid_insured_value --guess WEB_APP=orders
-grid_order_status: --tags @grid_order_status --guess WEB_APP=orders
-grid_tracking: --tags @grid_tracking --guess WEB_APP=orders
-grid_ship_cost: --tags @grid_ship_cost --guess WEB_APP=orders
-print_dialog_thermal_number_of_labels_count: --tags @print_dialog_thermal_number_of_labels_count --guess WEB_APP=orders PRINTER=factory
-details_placeholders: --tags @details_placeholders --guess WEB_APP=orders
-general_settings: --tags @general_settings --guess WEB_APP=orders
-details_ship_cost_total: --tags @details_ship_cost_total --guess WEB_APP=orders
-nav_postage_balance_update: --tags @nav_postage_balance_update --guess WEB_APP=orders
-tracking_defaults: --tags @tracking_defaults --guess WEB_APP=orders
-parcel_select: --tags @parcel_select --guess WEB_APP=orders
-filter_panel: --tags @filter_panel --guess WEB_APP=orders
-address_cleansing: --tags @address_cleansing,@bvt_ambigious_address --guess WEB_APP=orders
-address_management: --tags @address_management --guess WEB_APP=orders
-inline_service_rates: --tags @inline_service_rates --guess WEB_APP=orders
-purchasing: --tags @purchasing --guess WEB_APP=orders
-sorting: --tags @sort --guess WEB_APP=orders
-auto_suggest: --tags @auto_suggest --guess WEB_APP=orders
-new_country: --tags @new_country --guess WEB_APP=orders
-details_panel: --tags @details_panel --guess WEB_APP=orders
-details_order: --tags @details_order --guess WEB_APP=orders
-import_updated_orders: --tags @import_updated_orders --guess WEB_APP=orders
-automation_rule: --tags @automation_rule --guess WEB_APP=orders
-general_settings_test_cases: --tags @general_settings_test_cases --guess WEB_APP=orders
-stores_shipstation_postupgrade: --tags @stores_shipstation_postupgrade --guess WEB_APP=orders
-stores_shipstation_preupgrade: --tags @stores_shipstation_preupgrade --guess WEB_APP=orders
-orders_fci_flats: --tags @orders_fci_flats --guess WEB_APP=orders
-print_label_preview_image: --tags @print_label_preview_image --guess WEB_APP=orders
-split_order: --tags @split_order --guess WEB_APP=orders
-details_non_integer_lb: --tags @details_non_integer_lb --guess WEB_APP=orders
-tooltips_improvements: --tags @tooltips_improvements --guess WEB_APP=orders
+details_edit_order: --tags @details_edit_order --guess
+details_services: --tags @details_services --guess
+details_flat_rate_no_weight_international: --tags @details_flat_rate_no_weight_international --guess
+details_flat_rate_no_weight_domestic: --tags @details_flat_rate_no_weight_domestic --guess
+details_large_dimensions_pm: --tags @details_large_dimensions_pm --guess
+international_customs_form: --tags @international_customs_form --guess
+international_customs_form_totals: --tags @international_customs_form_totals --guess
+international_customs_form_edit_delete_item: --tags @international_customs_form_edit_delete_item --guess
+tooltip_customs_form: --tags @tooltip_customs_form --guess
+tooltips: --tags @tooltips --guess
+details_reference_no: --tags @details_reference_no --guess
+customs_form_qty: --tags @customs_form_qty --guess
+grid_automation_test: --tags @grid_automation_test --guess
+orders_grid_tests: --tags @orders_grid_tests --guess
+grid_insured_value: --tags @grid_insured_value --guess
+grid_order_status: --tags @grid_order_status --guess
+grid_tracking: --tags @grid_tracking --guess
+grid_ship_cost: --tags @grid_ship_cost --guess
+print_dialog_thermal_number_of_labels_count: --tags @print_dialog_thermal_number_of_labels_count --guess PRINTER=factory
+details_placeholders: --tags @details_placeholders --guess
+general_settings: --tags @general_settings --guess
+details_ship_cost_total: --tags @details_ship_cost_total --guess
+nav_postage_balance_update: --tags @nav_postage_balance_update --guess
+tracking_defaults: --tags @tracking_defaults --guess
+parcel_select: --tags @parcel_select --guess
+filter_panel: --tags @filter_panel --guess
+address_cleansing: --tags @address_cleansing,@bvt_ambigious_address --guess
+address_management: --tags @address_management --guess
+inline_service_rates: --tags @inline_service_rates --guess
+purchasing: --tags @purchasing --guess
+sorting: --tags @sort --guess
+auto_suggest: --tags @auto_suggest --guess
+new_country: --tags @new_country --guess
+details_panel: --tags @details_panel --guess
+details_order: --tags @details_order --guess
+import_updated_orders: --tags @import_updated_orders --guess
+automation_rule: --tags @automation_rule --guess
+general_settings_test_cases: --tags @general_settings_test_cases --guess
+stores_shipstation_postupgrade: --tags @stores_shipstation_postupgrade --guess
+stores_shipstation_preupgrade: --tags @stores_shipstation_preupgrade --guess
+orders_fci_flats: --tags @orders_fci_flats --guess
+print_label_preview_image: --tags @print_label_preview_image --guess
+split_order: --tags @split_order --guess
+details_non_integer_lb: --tags @details_non_integer_lb --guess
+tooltips_improvements: --tags @tooltips_improvements --guess
 
 # REGRESSION NOT INCLUDED
-grid_column_order: --tags @grid_column_order --guess WEB_APP=orders
-import_orders: --tags @import_orders --guess WEB_APP=orders
-pagination: --tags @pagination --guess WEB_APP=orders
-registration_specify_username_jenkins: --tags @registration_specify_username_jenkins --guess WEB_APP=orders
+grid_column_order: --tags @grid_column_order --guess
+import_orders: --tags @import_orders --guess
+pagination: --tags @pagination --guess
+registration_specify_username_jenkins: --tags @registration_specify_username_jenkins --guess
 # DOES NOT EXIST
-print_label_position: --tags @print_label_position --guess WEB_APP=orders PRINTER=factory
-print_media: --tags @print_media --guess WEB_APP=orders PRINTER=factory
-print_media_tooltips: --tags @print_media_tooltips --guess WEB_APP=orders PRINTER=factory
-printing_errors: --tags @printing_error --guess WEB_APP=orders PRINTER=factory
-printing: --tags @mail --guess WEB_APP=orders PRINTER=factory
-print_date: --tags @print_date --guess WEB_APP=orders PRINTER=factory
-print_two_up_expanded: --tags @print_two_up_expanded --guess WEB_APP=orders PRINTER=factory
-print_label_position_layouts: --tags @print_label_position_layouts --guess WEB_APP=orders PRINTER=factory
-print_layouts_cp72: --tags @print_two_up_expanded --guess WEB_APP=orders PRINTER=factory
-international: --tags @international --guess WEB_APP=orders
-change_settings: --tags @settings --guess WEB_APP=orders
-fcm_selection_enabled: --tags @fcm_selection_enabled --guess WEB_APP=orders
-multiple_order_total_cost: --tags @multiple_order_total_cost --guess WEB_APP=orders
+print_label_position: --tags @print_label_position --guess PRINTER=factory
+print_media: --tags @print_media --guess PRINTER=factory
+print_media_tooltips: --tags @print_media_tooltips --guess PRINTER=factory
+printing_errors: --tags @printing_error --guess PRINTER=factory
+printing: --tags @mail --guess PRINTER=factory
+print_date: --tags @print_date --guess PRINTER=factory
+print_two_up_expanded: --tags @print_two_up_expanded --guess PRINTER=factory
+print_label_position_layouts: --tags @print_label_position_layouts --guess PRINTER=factory
+print_layouts_cp72: --tags @print_two_up_expanded --guess PRINTER=factory
+international: --tags @international --guess
+change_settings: --tags @settings --guess
+fcm_selection_enabled: --tags @fcm_selection_enabled --guess
+multiple_order_total_cost: --tags @multiple_order_total_cost --guess
 
 # NO USER_CREDENTIALS
-auto_suggest_international: --tags @auto_suggest_international --guess WEB_APP=orders
-item_details: --tags @item_details --guess WEB_APP=orders
+auto_suggest_international: --tags @auto_suggest_international --guess
+item_details: --tags @item_details --guess
 
 
 #need to reevaluate
-rules_domestic: --tags @rules_domestic --guess WEB_APP=orders
-international_rules: --tags @international_rules --guess WEB_APP=orders
-orders_10: --tags @orders_10 --guess WEB_APP=orders
-orders_20: --tags @orders_20 --guess WEB_APP=orders
-jenkins_orders: --tags @jenkins_orders --guess WEB_APP=orders
+rules_domestic: --tags @rules_domestic --guess
+international_rules: --tags @international_rules --guess
+orders_10: --tags @orders_10 --guess
+orders_20: --tags @orders_20 --guess
+jenkins_orders: --tags @jenkins_orders --guess
 
-local_rating: --tags @local_rating --guess WEB_APP=orders
-local_rating_smoke_test: --tags @local_rating_smoke_test --guess WEB_APP=orders
-import_orders_ship_from_test: --tags @import_orders_ship_from_test --guess WEB_APP=orders
+local_rating: --tags @local_rating --guess
+local_rating_smoke_test: --tags @local_rating_smoke_test --guess
+import_orders_ship_from_test: --tags @import_orders_ship_from_test --guess
 
 # Stores
-stores: --tags @stores --guess WEB_APP=orders
-marketplace: --tags @marketplace --guess WEB_APP=orders
-big_commerce: --tags @big_commerce --guess WEB_APP=orders
-paypal: --tags @paypal --guess WEB_APP=orders
-yahoo: --tags @yahoo --guess WEB_APP=orders
-threedcart: --tags @3dcart --guess WEB_APP=orders
-shopify: --tags @shopify --guess WEB_APP=orders
-etsy: --tags @etsy --guess WEB_APP=orders
-rakuten: --tags @rakuten --guess WEB_APP=orders
-volusion: --tags @volusion --guess WEB_APP=orders
-amazon: --tags @amazon --guess WEB_APP=orders
-square_workflow: --tags @square_workflow --guess WEB_APP=orders
-paypal_workflow: --tags @paypal_workflow --guess WEB_APP=orders
+stores: --tags @stores --guess
+marketplace: --tags @marketplace --guess
+big_commerce: --tags @big_commerce --guess
+paypal: --tags @paypal --guess
+yahoo: --tags @yahoo --guess
+threedcart: --tags @3dcart --guess
+shopify: --tags @shopify --guess
+etsy: --tags @etsy --guess
+rakuten: --tags @rakuten --guess
+volusion: --tags @volusion --guess
+amazon: --tags @amazon --guess
+square_workflow: --tags @square_workflow --guess
+paypal_workflow: --tags @paypal_workflow --guess
 
 # ----------------------------# MAIL Bugs
 bugs_advanced_options: --tags @bugs_advanced_options --guess
@@ -689,8 +699,8 @@ swwr_create_your_account_page_validation: --tags @swwr_create_your_account_page_
 
 #Contacts
 aloha: --tags @sdc_contacts_change_cost_code URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core003 PW=password2
-#aloha: --tags @sdc_contact_orders_print_shipping_label_contact_saves URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false WEB_APP=orders USR=tcs_core002 PW=password1
-#print_dialog_printing_on_5x8_shipping_label: --tags @print_dialog_printing_on_5x8_shipping_label --guess  HEALTHCHECK=true WEB_APP=orders PRINTER=factory
+#aloha: --tags @sdc_contact_orders_print_shipping_label_contact_saves URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
+#print_dialog_printing_on_5x8_shipping_label: --tags @print_dialog_printing_on_5x8_shipping_label --guess  HEALTHCHECK=true PRINTER=factory
 #aloha: --tags @sdc_contacts_delete_single_from_details_menu URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password
 #aloha: --tags @sdc_contacts_detail_name_expand_collapse URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
 #aloha: --tags @sdc_contacts_detail_name_all_details URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1

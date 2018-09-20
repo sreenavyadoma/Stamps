@@ -369,7 +369,7 @@ Then /^set order details service to (.*)$/ do |str|
   service.drop_down.click unless service.selection_element.present?
   service.selection_element.click unless service.selection_element.class_disabled?
   expect(service.text_field.text_value).to include(str)
-  service.wait_until(timeout: 15) { service.cost.text_value.dollar_amount_str.to_f.round(2) > 0 }
+  service.wait_until(timeout: 15) { service.cost.text_value.parse_digits.to_f.round(2) > 0 }
   step 'check for server error'
   step 'save order details data'
   TestData.hash[:service] = str
@@ -602,30 +602,20 @@ end
 
 Then /^set order details insure-for to (\d+\.\d{2})$/ do |str|
   insure_for = SdcOrders.order_details.insure_for
-  insurance_terms = SdcOrders.modals.insurance_terms
   insure_for.checkbox.scroll_into_view
   insure_for.checkbox.check
-  insure_for.checkbox.safe_wait_until_chosen(timeout: 3)
+  begin
+    SdcPage.browser.wait_until(timeout: 3) do
+      insure_for.checkbox.checked?
+    end
+  rescue
+    # ignore
+  end
   expect(insure_for.checkbox.checked?). to be(true), 'Cannot check Insure-for checkbox'
   insure_for.amount.set(str)
   insure_for.cost.scroll_into_view
   insure_for.cost.safe_click
-  insurance_terms.title.safe_wait_until_present(timeout: 2)
-  # This is a work around, there's a bug in the code where there are more
-  # than one Terms and Conditions modal on top of each other.
-  3.times do
-    if insurance_terms.title.present?
-      window_title = 'Stamps.com Insurance Terms and Conditions'
-      expect(insurance_terms.title.text).to eql window_title
-      insurance_terms.i_agree_btns.each do |element|
-        wrapped_element = SdcElement.new(element)
-        wrapped_element.safe_wait_until_present(timeout: 2)
-        wrapped_element.safe_click
-      end
-    else
-      break
-    end
-  end
+  step 'click through insurance terms and conditions'
   TestData.hash[:insured_value] = str.to_f
   step 'blur out on order details form'
   step 'save order details data'
@@ -696,14 +686,14 @@ end
 Then /^expect order details service cost is (?:correct|(\d+.\d*))$/ do |str|
   str ||= TestData.hash[:service_cost]
   result = SdcOrders.order_details.service.cost.text_value
-  cost = result.dollar_amount_str.to_f.round(2)
+  cost = result.parse_digits.to_f.round(2)
   expect(cost).to eql(str.to_f.round(2))
 end
 
 Then /^expect order details tracking cost is (?:correct|(\d+.\d*))$/ do |str|
   str ||= TestData.hash[:tracking_cost]
   result = SdcOrders.order_details.tracking.cost.text_value
-  cost = result.dollar_amount_str.to_f.round(2)
+  cost = result.parse_digits.to_f.round(2)
   expect(cost).to eql(str.to_f.round(2))
 end
 

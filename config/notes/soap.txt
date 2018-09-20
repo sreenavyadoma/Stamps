@@ -34,7 +34,7 @@ stgmacgc28
 stgmacgc29
 stgmacgc30
 stgmacgc31
-stgmacgc32
+stgmacgc32 - Multi contact
 
 Win10 Chrome Beta Staging
 bvtstgw10gc1 win10_chrome_beta » bvt_address_cleansing
@@ -273,12 +273,12 @@ stgmacff20 mail_authentication_iphonex
 =================================================
 
 OS X Latest Chrome QACC
-bvtccosxgc1
-bvtccosxgc2
-bvtccosxgc3
-bvtccosxgc4
-bvtccosxgc5
-bvtccosxgc6
+bvtccosxgc1 extra_services_cost_for_rrb_service
+bvtccosxgc2 print_form_incomplete_fields
+bvtccosxgc3 multiple_prints_wrong_cost
+bvtccosxgc4 shipping_labels_envelopes_extra_services
+bvtccosxgc5 priority_mail_insurance_notification
+bvtccosxgc6 add_address_email_validation
 bvtccosxgc7
 bvtccosxgc8
 bvtccosxgc9
@@ -331,9 +331,9 @@ bvtccw10edg13
 bvtccw10edg14
 bvtccw10edg15
 bvtccw10edg16
-bvtccw10edg17
+bvtccw10edg17 - no good
 bvtccw10edg18
-bvtccw10edg19
+bvtccw10edg19 - cukes rob
 
 
 
@@ -380,8 +380,8 @@ bvtsauce00013cc bvt_shipstation_search
 bvtsauce00014cc
 bvtsauce00015cc
 bvtsauce00016cc
-bvtsauce00017cc
-bvtsauce00018cc
+bvtsauce00017cc - rubymine
+bvtsauce00018cc person
 bvtsauce000019cc
 bvtsauce00019cc multiple reprints
 bvtsauce00020cc rob cukes
@@ -390,7 +390,7 @@ bvtsauce00020cc rob cukes
 bvtsauce00001sc
 bvtsauce00002sc
 bvtsauce00003sc
-
+scsejsglwa
 
 
 mobile000001stg

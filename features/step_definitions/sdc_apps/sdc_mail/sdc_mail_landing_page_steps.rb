@@ -156,7 +156,7 @@ Then /^[Cc]lick the [Ss]ign [Ii]n button in [Mm]ail$/ do
     error_msg = "#{TestSession.env.url.upcase} / #{TestSession.env.usr}"
     expect(modal.invalid_sign_in.text_value).to eql error_msg
   end
-  verifying_account_info.safe_wait_until_present(timeout: 20)
+  verifying_account_info.safe_wait_until_present(timeout: 3)
   verifying_account_info.safe_wait_while_present(timeout: 70)
   if verifying_account_info.present?
     expect(verifying_account_info.text_value).not_to include('Verifying account information')

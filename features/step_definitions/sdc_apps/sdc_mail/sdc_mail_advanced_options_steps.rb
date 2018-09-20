@@ -9,9 +9,10 @@ Then /^expect advanced options responds to (.+) \((.+)\)$/ do |method_descriptio
   #expect(stamps.mail.print_form.advanced_options).to respond_to(method.to_sym)
 end
 
-Then /^select advanced options extra services$/ do
+Then /^click select extra services button on print form$/ do
+  step 'show advanced options'
   SdcMail.print_form.extra_services.select.click
-  step 'expect extra services model is present'
+  step 'expect extra services modal is present'
 end
 
 Then /^expect print form advanced options extra services button is (\w+)/ do |str|
@@ -213,27 +214,27 @@ Then /^expect print form advanced options cost code is (.*)$/ do |expectation|
 end
 
 # Certified Mail
-# Then /^expect extra services restricted delivery is is present$/ do
+# Then /^expect restricted delivery on extra services modal is is present$/ do
 #   step 'expect advanced options responds to Restricted Delivery (restricted_delivery)'
 #   expect(stamps.mail.print_form.advanced_options.restricted_delivery).to be_present, 'Advanced Options include Restricted Delivery is NOT present'
 # end
 
-# Then /^check extra services restricted delivery$/ do
+# Then /^check restricted delivery on extra services modal$/ do
 #   step 'expect advanced options responds to Restricted Delivery (restricted_delivery)'
 #   stamps.mail.print_form.advanced_options.restricted_delivery.check
 # end
 
-# Then /^expect extra services restricted delivery is checked$/ do
+# Then /^expect restricted delivery on extra services modal is checked$/ do
 #   step 'expect advanced options responds to Restricted Delivery (restricted_delivery)'
 #   expect(stamps.mail.print_form.advanced_options.restricted_delivery.checked?).to be(true), 'Advanced Options include Restricted Delivery is NOT checked'
 # end
 
-# Then /^uncheck extra services restricted delivery$/ do
+# Then /^uncheck restricted delivery on extra services modal$/ do
 #   step 'expect advanced options responds to Restricted Delivery (restricted_delivery)'
 #   stamps.mail.print_form.advanced_options.restricted_delivery.uncheck
 # end
 
-# Then /^expect extra services restricted delivery is unchecked$/ do
+# Then /^expect restricted delivery on extra services modal is unchecked$/ do
 #   step 'expect advanced options responds to Restricted Delivery (restricted_delivery)'
 #   expect(stamps.mail.print_form.advanced_options.restricted_delivery.checked?).not_to be(true), 'Advanced Options include Restricted Delivery is NOT unchecked'
 # end
@@ -288,7 +289,7 @@ end
 #   expect(stamps.mail.print_form.return_receipt.present?).to be(false), 'Print Form Return Receipt is visible'
 # end
 #
-# Then /^check extra services return receipt$/ do
+# Then /^check return receipt on extra services modal$/ do
 #   step 'Expect Print form responds to Return Receipt (return_receipt)'
 #   stamps.mail.print_form.return_receipt.check
 # end
@@ -298,7 +299,7 @@ end
 #   expect(stamps.mail.print_form.return_receipt.checked?).to be(true), 'Print form include Return Receipt is NOT checked'
 # end
 
-# Then /^uncheck extra services return receipt$/ do
+# Then /^uncheck return receipt on extra services modal$/ do
 #   step 'Expect Print form responds to Return Receipt (return_receipt)'
 #   stamps.mail.print_form.return_receipt.uncheck
 # end

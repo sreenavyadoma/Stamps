@@ -1,7 +1,41 @@
 require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
-# BEGIN WEB DEV
+
+Cucumber::Rake::Task.new(:priority_mail_insurance_notification) do |t|
+  t.profile = 'priority_mail_insurance_notification'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_form_incomplete_fields) do |t|
+  t.profile = 'print_form_incomplete_fields'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:shipping_labels_envelopes_extra_services) do |t|
+  t.profile = 'shipping_labels_envelopes_extra_services'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_print_button_labels) do |t|
+  t.profile = 'mail_print_button_labels'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:multiple_prints_wrong_cost) do |t|
+  t.profile = 'multiple_prints_wrong_cost'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:add_address_email_validation) do |t|
+  t.profile = 'add_address_email_validation'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:extra_services_cost_for_rrb_service) do |t|
+  t.profile = 'extra_services_cost_for_rrb_service'
+  t.cucumber_opts = "-p cuke_reports"
+end
 
 #BEGIN PARTNER PORTAL
 Cucumber::Rake::Task.new(:pp_log_in_page_validation) do |t|
