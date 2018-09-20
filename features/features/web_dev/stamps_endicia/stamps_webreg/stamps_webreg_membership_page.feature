@@ -94,7 +94,7 @@ Feature: Stamps WebReg: Membership Page
     Then WL: expect membership page credit card number is correct
     Then WL: expect membership page credit card visa is present
 
-    Then WL: set membership page credit card number to 5111111111111111
+    Then WL: set membership page credit card number to 5241744011877736
     Then WL: expect membership page credit card number is correct
     Then WL: expect membership page credit card mastercard is present
 
@@ -218,6 +218,7 @@ Feature: Stamps WebReg: Membership Page
     Cancel online or simply call us toll-free at 1-855-608-2677, M-F, 6am-6pm PST.
     """
 
+    Then WL: expect membership page bonus offer details link to be present
     Then WL: click membership page bonus offer details link
     Then WL: expect membership page your stamps.com offer modal to be present
     Then WL: click membership page bonus offer details modal x button
@@ -234,6 +235,7 @@ Feature: Stamps WebReg: Membership Page
     Then WL: navigates to default registration page for stamps with the following offer id 721
     Then WL: set profile page default values
     Then WL: set pp username to an existing username from db
+    Then WL: set profile page promo code to empty
     Then WL: click profile page continue button
     Then WL: set membership page default values
 

@@ -10,6 +10,7 @@ Feature: Endicia WebReg: Security Question Workflow
 
    # Profile Page
     Then WL: set profile page default values
+    Then WL: set profile page promo code to empty
     Then WL: click profile page continue button
 
     #Validate Security Question header is not present

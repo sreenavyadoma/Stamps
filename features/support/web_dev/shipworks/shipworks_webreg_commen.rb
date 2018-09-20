@@ -67,7 +67,7 @@ module SWWR
 
     def plan_query(offer_id, sku)
       data = SWWR.stamp_mart_db_connection.execute(
-          "select  offer_pricing_plans.OfferID, offer_pricing_plans.PlanID, pricing_plans.SKU, pricing_plans.MonthlyBaseFee
+       "select  offer_pricing_plans.OfferID, offer_pricing_plans.PlanID, pricing_plans.SKU, pricing_plans.MonthlyBaseFee
        from [dbo].[smt_pricingplans] as pricing_plans
        inner join  [dbo].[smt_OfferPricingPlans] as offer_pricing_plans on  offer_pricing_plans.PlanID = pricing_plans.PlanID
        where offer_pricing_plans.OfferID = #{offer_id} and pricing_plans.SKU = #{sku}")

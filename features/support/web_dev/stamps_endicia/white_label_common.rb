@@ -113,7 +113,7 @@ module WhiteLabel
           inner join [dbo].sdct_SW_Offer as sw_offer on sw_offer.OfferId = sw_source.OfferId
           ORDER BY NEWID()")
         source_id.each do |item|
-          return item['SourceId'], item['Content'], item['PromoCode'], item['OfferId'], item['TargetUrl']
+          return item['SourceId'], item['Content'], item['PromoCode'], item['OfferId'], item['TargetUrl'], item['VendorId']
         end
       else
         source_id = WhiteLabel.sdc_db_connection.execute(
@@ -123,7 +123,7 @@ module WhiteLabel
 		      where sw_offer.OfferId = #{offer_id}
           ORDER BY NEWID()")
         source_id.each do |item|
-          return item['SourceId'], item['Content'], item['PromoCode'], item['OfferId'], item['TargetUrl']
+          return item['SourceId'], item['Content'], item['PromoCode'], item['OfferId'], item['TargetUrl'], item['VendorId']
         end
       end
     end
@@ -163,7 +163,7 @@ module WhiteLabel
       "select  offer_pricing_plans.OfferID, offer_pricing_plans.PlanID, pricing_plans.SKU, pricing_plans.MonthlyBaseFee
        from [dbo].[smt_pricingplans] as pricing_plans
        inner join  [dbo].[smt_OfferPricingPlans] as offer_pricing_plans on  offer_pricing_plans.PlanID = pricing_plans.PlanID
-       where offer_pricing_plans.OfferID = #{offer_id} and pricing_plans.SKU = #{sku}")
+       where offer_pricing_plans.OfferID = #{offer_id} and pricing_plans.SKU like '%#{sku}%'")
 
       data.each do |item|
         return item['MonthlyBaseFee']
@@ -183,7 +183,15 @@ module WhiteLabel
 
   class SDCWWebsite <SdcPage
     def self.visit(str)
-      page_url { |env| "https://#{env}stamps.com/?source=#{str}&mboxDisable=1" }
+      dev_env = data_for(:web_dev_env, {})['dev']
+      if dev_env.include?(TestSession.env.url.to_s)
+        page_url {"https://#{TestSession.env.url.to_s}-win10.corp.stamps.com/stampscom/?source=#{str}&mboxDisable=1" }
+      elsif TestSession.env.url == :prod
+        page_url { |env| "https://www.#{env}stamps.com/?source=#{str}&mboxDisable=1" }
+      else
+        page_url { |env| "https://#{env}stamps.com/?source=#{str}&mboxDisable=1" }
+      end
+
       super(case TestSession.env.url
               when :qacc
                 'sdcwebsite.qacc.'
@@ -191,8 +199,6 @@ module WhiteLabel
                 'sdcwebsite.staging.'
               when :prod
                 ''
-              else
-                # ignore
             end)
     end
   end
@@ -200,16 +206,22 @@ module WhiteLabel
   class EWWebsite < SdcPage
 
     def self.visit
-      page_url { |env| "https://#{env}.endicia.com/registration/"}
+      dev_env = data_for(:web_dev_env, {})['dev']
+      if dev_env.include?(TestSession.env.url.to_s)
+        page_url {"https://#{TestSession.env.url.to_s}-win10.corp.endicia.com/registration/" }
+      elsif TestSession.env.url == :prod
+        page_url { |env| "https://#{env}.endicia.com/registration/"}
+      else
+        page_url { |env| "https://#{env}.endicia.com/registration/"}
+      end
+
       super(case TestSession.env.url
               when :qacc
                 'registrationext.qacc'
               when :stg
                 'registration.staging'
               when :prod
-                ''
-              else
-                # ignore
+                'registration'
             end)
     end
   end

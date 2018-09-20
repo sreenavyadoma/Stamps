@@ -24,7 +24,8 @@ Then /^WL: expect choose supplies page header to be (.*)$/ do |str|
   cs_header =  WhiteLabel.choose_supplies.cs_header
   cs_header.wait_until_present(timeout: 50)
   step 'pause for 1 second'
-  expect(cs_header.text_value.strip).to eql(str)
+  text = cs_header.text_value.strip
+  expect(text).to eql(str)
 end
 
 Then /^WL: expect choose supplies page paragraph index (\d+) to be$/ do |index, str|
@@ -74,7 +75,7 @@ end
 
 Then /^WL: click choose supplies page place order button$/ do
   choose_supplies =  WhiteLabel.choose_supplies
-  choose_supplies.cs_welcome_kit.wait_until_present(timeout: 50)
+  choose_supplies.cs_welcome_kit.safe_wait_until_present(timeout: 50) if TestSession.env.local_browser == :firefox or TestSession.env.local_browser == :ff
   choose_supplies.place_order.wait_until_present(timeout: 30)
   choose_supplies.place_order.click!
 

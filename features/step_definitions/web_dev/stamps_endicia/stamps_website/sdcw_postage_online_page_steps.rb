@@ -29,7 +29,9 @@ Then /^SDCW: postage online page click support --> faq$/ do
     when :stg
       expect(url).to eql('https://sdcwebsite.staging.stamps.com/postage-online/faqs/')
     when :prod
-      expect(url).to eql('https://stamps.com/postage-online/faqs')
+      expect(url).to eql('https://www.stamps.com/postage-online/faqs')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/postage-online/faqs/")
   end
   step 'SDCW: navigate back'
 end

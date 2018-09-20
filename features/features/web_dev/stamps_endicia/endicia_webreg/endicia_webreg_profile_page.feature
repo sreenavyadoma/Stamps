@@ -111,7 +111,7 @@ Feature: Endicia WebReg: Profile Page
     Then WL: expect profile page how did you hear about us option is correct
 
     #Validate Promo code
-    Then WL: set profile page promo code to default
+    Then WL: set profile page promo code to X7G8-2HMQ
     Then WL: click profile page continue button
     Then WL: expect membership page header exists
     Then WL: click membership page back button

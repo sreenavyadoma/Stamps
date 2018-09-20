@@ -23,6 +23,13 @@ sql_server_pp:
     username: corp\lab
     password: Sdcqatest623
     azure: false
+  dev:
+    server: dev-db14-v
+    database: PartnerPortal
+    port: 1433
+    username: pp_sp_user
+    password: Pw4_pp_sp_use!
+    azure: false
 
 sql_server_sdcwebsite:
   qacc:
@@ -37,6 +44,13 @@ sql_server_sdcwebsite:
     database: stampswebsitedb-sdcstaging
     port: 1433
     username: stampswebsitedb-sdcstaging_user@q5zymesd76
+    password: Qa@zure!
+    azure: true
+  dev:
+    server: v7z5h2jc8j.database.windows.net
+    database: stampswebsitedb-sdcqacc
+    port: 1433
+    username: stampswebsitedb-sdcqacc_user@v7z5h2jc8j
     password: Qa@zure!
     azure: true
 
@@ -55,6 +69,13 @@ sql_server_vbridge:
     username: qalab
     password: StampsQA!
     azure: false
+  dev:
+    server: qa-clientdb08-v
+    database: Bridge
+    port: 1433
+    username: corp\lab
+    password: Sdcqatest623
+    azure: false
 
 sql_server_stampmart:
   qacc:
@@ -71,6 +92,16 @@ sql_server_stampmart:
     username: qalab
     password: StampsQA!
     azure: false
+  dev:
+      server: vsdc11db-ls01.qa02.aws.local
+      database: Stampmart
+      port: 1433
+      username: qalab
+      password: StampsQA!
+      azure: false
+
+web_dev_env:
+  dev: [iigwe, jjones, cjanczak, cesar, wlanni, ghan]
 
 rates_test:
   rate_file: rate_file.xls
