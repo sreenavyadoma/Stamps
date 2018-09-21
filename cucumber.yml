@@ -1,5 +1,5 @@
 
-default: --backtrace --profile mhossain1_cc
+default: --backtrace --profile aloha
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -565,9 +565,9 @@ bugs_stamps: --tags @bugs_stamps --guess
 # MAIL
 mail_authentication: --tags @mail_authentication --guess
 mail_authentication_mobile: --tags @mail_authentication_mobile --guess
-mail_bvt_ship_date: --tags @mail_bvt_ship_date --guess 
-mail_bvt_address_cleansing: --tags @mail_bvt_address_cleansing --guess 
-mail_bvt_contacts: --tags @mail_bvt_contacts --guess 
+mail_bvt_ship_date: --tags @mail_bvt_ship_date --guess
+mail_bvt_address_cleansing: --tags @mail_bvt_address_cleansing --guess
+mail_bvt_contacts: --tags @mail_bvt_contacts --guess
 mail_bvt_envelopes: --tags @mail_bvt_envelopes --guess PRINTER=factory
 mail_bvt_extra_services: --tags @mail_bvt_extra_services --guess
 mail_bvt_purchasing: --tags @mail_bvt_purchasing --guess
@@ -698,15 +698,8 @@ ewwr_header_footer_validation: --tags @ewwr_header_footer_validation --guess  LO
 swwr_create_your_account_page_validation: --tags @swwr_create_your_account_page_validation --guess LOG_LEVEL=info
 
 #Contacts
-aloha: --tags @sdc_contacts_change_cost_code URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core003 PW=password2
-#aloha: --tags @sdc_contact_orders_print_shipping_label_contact_saves URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
-#print_dialog_printing_on_5x8_shipping_label: --tags @print_dialog_printing_on_5x8_shipping_label --guess  HEALTHCHECK=true PRINTER=factory
-#aloha: --tags @sdc_contacts_delete_single_from_details_menu URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password
-#aloha: --tags @sdc_contacts_detail_name_expand_collapse URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
-#aloha: --tags @sdc_contacts_detail_name_all_details URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
-#aloha: --tags @sdc_contacts_detail_name_singleName URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
-#aloha: --tags @sdc_contacts_show_all_columns URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
-#aloha: --tags @sample URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
+aloha: --tags @sdc_contacts_left_panel_hide_show URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core006 PW=password1
+#aloha: --tags @sdc_contacts_show_all_columns URL=qacc LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=Tmaheryar PW=password1
 
 sdc_contacts_delete_multiple_from_top_navigation: --tags @sdc_contacts_delete_multiple_from_top_navigation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 
@@ -726,3 +719,11 @@ sdc_contacts_detail_company_department_and_title_details: --tags @sdc_contacts_d
 
 sdc_contacts_existing_add_invalid_reference_number: --tags @sdc_contacts_existing_add_invalid_reference_number --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 sdc_contacts_existing_add_valid_reference_number: --tags @sdc_contacts_existing_add_valid_reference_number --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
+
+sdc_contacts_toolbar_add_new_cost_code_toolbar: --tags @sdc_contacts_toolbar_add_new_cost_code_toolbar URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
+sdc_contacts_toolbar_add_existing_cost_code_toolbar: --tags @sdc_contacts_toolbar_add_existing_cost_code_toolbar URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
+
+sdc_contacts_change_cost_code_add_new: --tags @sdc_contacts_change_cost_code_add_new --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
+sdc_contacts_change_to_existing_cost_code:  --tags @sdc_contacts_change_cost_code_add_new --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
+
+sdc_contacts_left_panel_hide_show: --tags @sdc_contacts_left_panel_hide_show --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true

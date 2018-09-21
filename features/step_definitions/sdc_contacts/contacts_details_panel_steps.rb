@@ -1,6 +1,6 @@
 Then /^[Ss]et [Cc]ontact [Dd]etails to$/ do |table|
-  param = table.hashes.first
 
+  param = table.hashes.first
   full_name = param['full_name']
   company = param['company']
   country = param['country']
@@ -9,48 +9,77 @@ Then /^[Ss]et [Cc]ontact [Dd]etails to$/ do |table|
   state = param['state']
   postal_code = param['postal_code']
   email = param['email']
-  phone = param['phone']
+  full_phone = param['phone']
   phone_ext = param['phone_ext']
   groups =  param['groups']
   reference_number = param['reference_number']
   cost_code =  param['cost_code']
 
-
-  if full_name.nil? || full_name.downcase.include?('random')
-        full_name = TestHelper.rand_full_name
+  if full_name.empty? || full_name.downcase.include?('random')
+    full_name = TestHelper.rand_full_name
   end
 
-  if company.nil? || company.downcase.include?('random')
+  if company.empty? || company.downcase.include?('random')
     company = TestHelper.rand_comp_name
+  end
+
+  if country.empty? || country.size.zero?
+    country = 'United States'
   end
 
   if street_address && street_address.downcase.include?('random')
     street_address = TestHelper.rand_alpha_numeric(min: 2, max: 7)
   end
 
-  if country.nil? || country.size.zero?
-    country = 'United States'
+#  step "set contact details address to invalid domestic"
+
+  if full_phone.empty? || full_phone.downcase.include?('random')
+    full_phone = TestHelper.rand_phone
   end
 
-  if phone.nil? || phone.downcase.include?('random')
-    phone = TestHelper.rand_phone
-  end
-
-  if email.nil? || email.downcase.include?('random')
+  if email.empty? || email.downcase.include?('random')
     email = TestHelper.rand_email
   end
 
+  step "set contact details name to #{full_name}"
+  step "set contact details company to #{company}"
   step "set contact details country to #{country}"
   step "set contact details Street Address to #{street_address}"
   step "set contact details city to #{city}"
   step "set contact details state to #{state}"
   step "set contact details postal code to #{postal_code}"
   step "set contact details email to #{email}"
-  step "set contact details phone to #{phone}"
-  step "set contact details phone extension to #{phone_ext}"
-  step "set contact details groups to #{groups}"
-  step "set contact details reference number to #{reference_number}"
-  step "set contact details cost code to #{cost_code}"
+
+  if full_phone.to_s.include? ('-')
+    temp = full_phone.to_s.split('-')
+    phone=temp[0]
+    phone_ext=temp[1]
+    step "set contact details phone to #{phone}"
+    step "set contact details phone extension to #{phone_ext}"
+  else
+    step "set contact details phone to #{full_phone}"
+  end
+
+  if groups.empty?
+    # Do not set value of groups
+  else
+    step "set contact details groups to #{groups}"
+  end
+
+  if reference_number.empty?
+    # Do not set value of reference number
+    elsif reference_number.downcase.include?('random')
+      reference_number = TestHelper.rand_reference_number
+      step "set contact details reference number to #{reference_number}"
+    else
+      step "set contact details reference number to #{reference_number}"
+  end
+
+  if cost_code.empty?
+    cost_code='None'
+  else
+    step "set contact details cost code to #{cost_code}"
+  end
 
   TestData.hash[:full_name] = full_name
   TestData.hash[:company] = company
@@ -60,6 +89,7 @@ Then /^[Ss]et [Cc]ontact [Dd]etails to$/ do |table|
   TestData.hash[:state] = state
   TestData.hash[:postal_code] = postal_code
   TestData.hash[:email] = email
+  TestData.hash[:full_phone] = full_phone
   TestData.hash[:phone] = phone
   TestData.hash[:phone_ext] = phone_ext
   TestData.hash[:groups] = groups
@@ -161,6 +191,22 @@ Then /^[Ss]et [Cc]ontact [Dd]etails [Dd]epartment [Tt]o (.*)$/ do |str|
   contacts_detail.title.click
 end
 
+Then /^set contact details address to invalid domestic$/ do |str|
+
+  #case str
+  #when 'domestic' ||'invalid domestic'
+  #  step "set contact details country to United States"
+  #when 'international'
+  #  step "set contact details country to <>"
+ # end
+
+#step "set contact details Street Address to #{street_address}"
+#step "set contact details city to #{city}"
+#step "set contact details state to #{state}"
+#step "set contact details postal code to #{postal_code}"
+
+end
+
 Then /^[Ss]et [Cc]ontact [Dd]etails [Cc]ountry [Tt]o (.*)$/ do |str|
   country = SdcContacts.contacts_country
   country.selection_country(value: str)
@@ -191,7 +237,7 @@ Then /^[Ss]et [Cc]ontact [Dd]etails [Ss]tate [Tt]o (.*)$/ do |str|
   state.selection_state(value: str)
   state.drop_down.click unless state.selection.present?
   state.text_field.set(str)
-  state.selection.click
+  state.selection.safe_click
   expect(state.text_field.text_value).to include(str)
   contacts_detail= SdcContacts.contacts_detail
   contacts_detail.postal_code.click
@@ -396,3 +442,4 @@ p '**Details Panel**'
   p 'actual value :' + actual_value
   expect(actual_value.strip).to eql new_value.strip
 end
+
