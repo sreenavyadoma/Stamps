@@ -414,6 +414,7 @@ Feature: Endicia WebReg: Membership Page
     Then WL: navigates to default registration page for endicia with the following offer id 707
     Then WL: set profile page default values
     Then WL: set pp username to an existing username from db
+    Then WL: set profile page promo code to empty
     Then WL: click profile page continue button
     Then WL: set membership page default values
     Then WL: click membership page submit button

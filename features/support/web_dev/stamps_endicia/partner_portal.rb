@@ -24,20 +24,24 @@ module PartnerPortal
     label(:password_placeholder) { { xpath: '//input[@placeholder="Password"]' } }
     button(:log_in) { { xpath: '//button[@label="Log In"]' } }
     button(:login_label) { { xpath: '//button[@label="Log In"]/span' } }
-    link(:forgot_pw) { { xpath: '//a[@href="/reset-password/request"]' } }
+    link(:forgot_pw) { { xpath: '//a[contains(text(),"Forgot Password?")]' } }
 
-    page_url { |env| "https://partner.#{env}stamps.com/" }
 
     def self.visit
+      dev_env = data_for(:web_dev_env, {})['dev']
+      if dev_env.include?(TestSession.env.url.to_s)
+        page_url {"https://#{TestSession.env.url.to_s}-win10.corp.stamps.com/partner/" }
+      else
+        page_url { |env| "https://partner.#{env}stamps.com/" }
+      end
+
       super(case TestSession.env.url
-            when :qacc
-              'qacc.'
-            when :stg
-              'staging.'
-            when :prod
-              ''
-            else
-              # ignore
+              when :qacc
+                'qacc.'
+              when :stg
+                'staging.'
+              when :prod
+                ''
             end)
     end
 
@@ -107,7 +111,7 @@ module PartnerPortal
     end
 
     def pp_rand_date from = 0.0, to = Time.now
-        Time.at(from + rand * (to.to_f - from.to_f))
+      Time.at(from + rand * (to.to_f - from.to_f))
     end
 
   end
@@ -124,19 +128,21 @@ module PartnerPortal
 
     page_object(:email_error) { { xpath:  '//*[@name="email"]/div/div'} }
 
-
-    page_url { |env| "https://partner.#{env}stamps.com/reset-password/request" }
-
     def self.visit
+      dev_env = data_for(:web_dev_env, {})['dev']
+      if dev_env.include?(TestSession.env.url.to_s)
+        page_url {"https://#{TestSession.env.url.to_s}-win10.corp.stamps.com/reset-password/request" }
+      else
+        page_url { |env| "https://partner.#{env}stamps.com/reset-password/request" }
+      end
+
       super(case TestSession.env.url
-            when :qacc
-              'qacc.'
-            when :stg
-              'staging.'
-            when :prod
-              ''
-            else
-              # ignore
+              when :qacc
+                'qacc.'
+              when :stg
+                'staging.'
+              when :prod
+                ''
             end)
     end
 
@@ -146,70 +152,84 @@ module PartnerPortal
     #header
     page_object(:header) { { xpath:  '//h1[contains(text(), "Reset Email Sent")]'} }
 
-    page_url { |env| "https://partner.#{env}stamps.com/reset-password/request/confirmation" }
-
     def self.visit
+      dev_env = data_for(:web_dev_env, {})['dev']
+      if dev_env.include?(TestSession.env.url.to_s)
+        page_url {"https://#{TestSession.env.url.to_s}-win10.corp.stamps.com/reset-password/request/confirmation" }
+      else
+        page_url { |env| "https://partner.#{env}stamps.com/reset-password/request/confirmation" }
+      end
+
       super(case TestSession.env.url
-            when :qacc
-              'qacc.'
-            when :stg
-              'staging.'
-            when :prod
-              ''
-            else
-              # ignore
+              when :qacc
+                'qacc.'
+              when :stg
+                'staging.'
+              when :prod
+                ''
             end)
     end
   end
 
   class PPSetPasswordPage < SdcPage
-    page_url { |env| "https://partner.#{env}stamps.com/set-password" }
 
     def self.visit
+      dev_env = data_for(:web_dev_env, {})['dev']
+      if dev_env.include?(TestSession.env.url.to_s)
+        page_url {"https://#{TestSession.env.url.to_s}-win10.corp.stamps.com/set-password" }
+      else
+        page_url { |env| "https://partner.#{env}stamps.com/set-password" }
+      end
+
       super(case TestSession.env.url
-            when :qacc
-              'qacc.'
-            when :stg
-              'staging.'
-            when :prod
-              ''
-            else
-              # ignore
+              when :qacc
+                'qacc.'
+              when :stg
+                'staging.'
+              when :prod
+                ''
             end)
     end
   end
 
   class PPError404Page < SdcPage
-    page_url { |env| "https://partner.#{env}stamps.com/error-404" }
 
     def self.visit
+      dev_env = data_for(:web_dev_env, {})['dev']
+      if dev_env.include?(TestSession.env.url.to_s)
+        page_url {"https://#{TestSession.env.url.to_s}-win10.corp.stamps.com/error-404" }
+      else
+        page_url { |env| "https://partner.#{env}stamps.com/error-404" }
+      end
       super(case TestSession.env.url
-            when :qacc
-              'qacc.'
-            when :stg
-              'staging.'
-            when :prod
-              ''
-            else
-              # ignore
+              when :qacc
+                'qacc.'
+              when :stg
+                'staging.'
+              when :prod
+                ''
             end)
     end
 
   end
 
   class PPError500Page < SdcPage
-    page_url { |env| "https://partner.#{env}stamps.com/error-500" }
 
     def self.visit
+      dev_env = data_for(:web_dev_env, {})['dev']
+      if dev_env.include?(TestSession.env.url.to_s)
+        page_url {"https://#{TestSession.env.url.to_s}-win10.corp.stamps.com/error-500" }
+      else
+        page_url { |env| "https://partner.#{env}stamps.com/error-500" }
+      end
+
       super(case TestSession.env.url
-            when :qacc
-              'qacc.'
-            when :stg
-              'staging.'
-            when :prod
-              ''
-            else
-              # ignore
+              when :qacc
+                'qacc.'
+              when :stg
+                'staging.'
+              when :prod
+                ''
             end)
     end
 

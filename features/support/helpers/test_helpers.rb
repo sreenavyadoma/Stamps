@@ -15,8 +15,16 @@ module SdcCore
         "#{rand_alpha_str(*args).capitalize} #{rand_alpha_str(*args).capitalize}"
       end
 
-      def rand_comp_name(*args)
+      def rand_cost_code(*args)
         rand_alpha_numeric(*args).to_s.split.map(&:capitalize).join(' ')
+      end
+
+      def rand_reference_number(*args)
+        rand_alpha_numeric(*args).to_s.split.map(&:capitalize).join(' ')
+      end
+
+      def rand_comp_name(*args)
+        'comapy '+rand_alpha_numeric(*args).to_s.split.map(&:capitalize).join(' ')
       end
 
       def rand_usr
@@ -135,6 +143,8 @@ module SdcCore
         end
         formatted_address
       end
+
+
 
       def address_helper_zone(zone)
         case zone.downcase

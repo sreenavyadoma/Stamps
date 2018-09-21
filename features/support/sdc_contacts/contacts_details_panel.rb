@@ -48,7 +48,7 @@ module SdcContacts
     #def expand_collapsed_panel
       page_object(:expand_button, required: true, timeout: 20) { { xpath: '//*[@class="x-tool-img x-tool-expand-left"]'}}
     #end
-
+    page_object(:clear_all_link, required: true, timeout: 20) { { xpath: '//span[text()="(Clear All)"]'}}
   end
 
   class ContactsDetailsToolBarMenu < SdcPage
@@ -58,7 +58,6 @@ module SdcContacts
     page_object(:menu_delete, required: true, timeout: 10) { { xpath: '//span[contains(@id, "menuitem-")][text()="Delete"]'}}
     page_object(:menu_collapse_panel, required: true, timeout: 10) { { xpath: '//span[contains(@id, "menuitem-")][text()="Collapse Panel"]'}}
   end
-
 
   class ContactsNamePrefix < SdcPage
     text_field(:prefix_text_field, tag: :text_field) { { xpath: '//*[@id="Prefix-inputEl"]' } }
@@ -119,5 +118,51 @@ module SdcContacts
     page_object(:email_error,  required: true, timeout: 20){{xpath: '//*[@id="Email-errorEl"]//ul'}}
     page_object(:email_error_message){{xpath: '//div[@id="Email-errorEl"]//li'}}
   end
+
+  class << self
+  def contacts_detail
+    ContactsDetailsPanel.new
+  end
+
+  def contacts_detail_toolbar_menu
+    ContactsDetailsToolBarMenu.new
+  end
+
+  def contacts_name_prefix
+    ContactsNamePrefix.new
+  end
+
+  def contacts_country
+    ContactsCountry.new
+  end
+
+  def contacts_group
+    ContactsGroup.new
+  end
+
+  def contacts_cost_code
+    ContactsCostCode.new
+  end
+
+  def contacts_state
+    ContactsState.new
+  end
+
+  def contacts_email_error
+    ContactsEmailErrorMessage.new
+  end
+
+  def contacts_column
+    ContactsGridColumnBase.new
+  end
+
+  def contacts_gridcolumn
+    SdcContactsGridColumn.new
+  end
+
+  def reference_message_box
+    AddReferenceMessageBox.new
+  end
+end
 
 end

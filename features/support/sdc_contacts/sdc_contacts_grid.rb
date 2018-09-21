@@ -84,6 +84,10 @@ module SdcContacts
       size.zero?
     end
 
+    def grid_message
+      message=page_object(:empty_grid_message) { {xpath: '//*[@class="x-grid-empty"]'} }
+      message.text_value
+    end
     def text_at(column, row)
       contacts_scroll_to(column)
       element = element_at_row(column, row)
@@ -280,4 +284,9 @@ end
   end
   module_function :contacts_grid_column
 
+  class << self
+    def contacts_col
+      ContactsGridColumnBase.new
+    end
+  end
 end

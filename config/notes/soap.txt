@@ -279,8 +279,8 @@ bvtccosxgc3 multiple_prints_wrong_cost
 bvtccosxgc4 shipping_labels_envelopes_extra_services
 bvtccosxgc5 priority_mail_insurance_notification
 bvtccosxgc6 add_address_email_validation
-bvtccosxgc7
-bvtccosxgc8
+bvtccosxgc7 mail_print_button_labels
+bvtccosxgc8 contacts_list_reference_number
 bvtccosxgc9
 bvtccosxgc10
 bvtccosxgc11

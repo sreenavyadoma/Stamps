@@ -23,6 +23,8 @@ Then /^SDCW: click stamps website logo$/ do
       expect(url).to eql('https://sdcwebsite.staging.stamps.com/')
     when :prod
       expect(url).to eql('https://www.stamps.com/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/")
   end
 end
 
@@ -40,11 +42,13 @@ Then /^SDCW: click get started button$/ do
 
   case TestSession.env.url
     when :qacc
-      expect(url).to eql('https://qacc-registration.stamps.com/registration/#!&p=profile')
+      expect(url).to eql('https://qa-registration.stamps.com/registration/#!&p=profile')
     when :stg
       expect(url).to eql('https://staging-registration.stamps.com/registration/#!&p=profile')
     when :prod
       expect(url).to eql('https://registration.stamps.com/registration/#!&p=profile')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/registration/#!&p=profile")
   end
 end
 
@@ -79,7 +83,9 @@ Then /^SDCW: click FAQ$/ do
     when :stg
       expect(url).to eql('https://sdcwebsite.staging.stamps.com/postage-online/faqs/')
     when :prod
-      expect(url).to eql('https://stamps.com/postage-online/faqs/')
+      expect(url).to eql('https://www.stamps.com/postage-online/faqs/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/postage-online/faqs/")
   end
 end
 
@@ -106,6 +112,8 @@ Then /^SDCW: click hamburger --> get started link$/ do
       expect(url).to eql('https://staging-registration.stamps.com/registration/#!&p=profile')
     when :prod
       expect(url).to eql('https://registration.stamps.com/registration/#!&p=profile')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/registration/#!&p=profile")
   end
 end
 
@@ -142,7 +150,9 @@ Then /^SDCW: click learn more --> small office mailers link$/ do
     when :stg
       expect(url).to eql('https://sdcwebsite.staging.stamps.com/postage-online/')
     when :prod
-      expect(url).to eql('https://stamps.com/postage-online/')
+      expect(url).to eql('https://www.stamps.com/postage-online/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/postage-online/")
   end
 end
 
@@ -168,7 +178,9 @@ Then /^SDCW: click learn more --> online sellers link$/ do
     when :stg
       expect(url).to eql('https://sdcwebsite.staging.stamps.com/shipping/')
     when :prod
-      expect(url).to eql('https://stamps.com/shipping/')
+      expect(url).to eql('https://www.stamps.com/shipping/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/shipping/")
   end
 end
 
@@ -194,7 +206,9 @@ Then /^SDCW: click learn more --> warehouse shippers link$/ do
     when :stg
       expect(url).to eql('https://sdcwebsite.staging.stamps.com/warehouse/')
     when :prod
-      expect(url).to eql('https://stamps.com/warehouse/')
+      expect(url).to eql('https://www.stamps.com/warehouse/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/warehouse/")
   end
 end
 
@@ -206,10 +220,12 @@ Then /^SDCW: click learn more --> corporate postage solutions link$/ do
   else
     if TestSession.env.local_browser == :edge
       common_page.learn_more.click
+      common_page.corporate_postage_solutions.focus
+      common_page.corporate_postage_solutions.click
     else
       common_page.learn_more.hover
+      common_page.corporate_postage_solutions.click
     end
-    common_page.corporate_postage_solutions.click
   end
   step 'pause for 2 second'
   url = SdcPage.browser.url
@@ -219,7 +235,9 @@ Then /^SDCW: click learn more --> corporate postage solutions link$/ do
     when :stg
       expect(url).to eql('https://sdcwebsite.staging.stamps.com/enterprise/')
     when :prod
-      expect(url).to eql('https://stamps.com/enterprise/')
+      expect(url).to eql('https://www.stamps.com/enterprise/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/enterprise/")
   end
 end
 
@@ -373,24 +391,28 @@ end
 
 #........footer...........#
 Then /^SDCW: expect stamps website footer usps logo exists$/ do
+  common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device|| TestSession.env.mobile_device
-    usps_logo = StampsWebsite.common_page.usps_logo[0]
+    usps_logo = common_page.usps_logo[0]
   else
-    usps_logo = StampsWebsite.common_page.usps_logo[1]
+    usps_logo = common_page.usps_logo[1]
   end
 
-  usps_logo.wait_until_present(timeout: 2)
-  usps_logo.scroll_into_view
+  common_page.footer.wait_until_present(timeout: 2)
+  common_page. footer.scroll_into_view
   expect(usps_logo).to be_present
 end
 
 Then /^SDCW: expect stamps website footer usps logo words is (.*)$/ do |str|
+  common_page = StampsWebsite.common_page
   if SdcGlobal.web_dev_device|| TestSession.env.mobile_device
-    usps_logo_caption = StampsWebsite.common_page.usps_logo_caption[0]
+    usps_logo_caption = common_page.usps_logo_caption[0]
   else
-    usps_logo_caption = StampsWebsite.common_page.usps_logo_caption[1]
+    usps_logo_caption = common_page.usps_logo_caption[1]
   end
-  usps_logo_caption.scroll_into_view
+
+  common_page.footer.wait_until_present(timeout: 2)
+  common_page.footer.scroll_into_view
   text = usps_logo_caption.inner_text.strip
   expect(text).to eql(str)
 end
@@ -425,6 +447,7 @@ Then /^SDCW: click footer copyright link$/ do
     common_page.copyright[0].click
   else
     if TestSession.env.local_browser == :edge
+      common_page.copyright[1].focus
       common_page.copyright[1].click
     else
       common_page.copyright[1].scroll_into_view
@@ -440,7 +463,9 @@ Then /^SDCW: click footer copyright link$/ do
     when :stg
       expect(url).to eql('https://sdcwebsite.staging.stamps.com/site/copyright/#copyright')
     when :prod
-      expect(url).to eql('https://stamps.com/site/copyright/#copyright')
+      expect(url).to eql('https://www.stamps.com/site/copyright/#copyright')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/site/copyright/#copyright")
   end
 
   step 'SDCW: navigate back'
@@ -486,7 +511,9 @@ Then /^SDCW: click products --> small office mailers$/ do
     when :stg
       expect(url).to eql('https://sdcwebsite.staging.stamps.com/postage-online/')
     when :prod
-      expect(url).to eql('https://stamps.com/postage-online/')
+      expect(url).to eql('https://www.stamps.com/postage-online/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/postage-online/")
   end
   step 'SDCW: navigate back'
 end
@@ -514,7 +541,9 @@ Then /^SDCW: click products --> online sellers$/ do
     when :stg
       expect(url).to eql('https://sdcwebsite.staging.stamps.com/shipping/')
     when :prod
-      expect(url).to eql('https://stamps.com/shipping/')
+      expect(url).to eql('https://www.stamps.com/shipping/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/shipping/")
   end
   step 'SDCW: navigate back'
 end
@@ -542,7 +571,9 @@ Then /^SDCW: click products --> warehouse shippers$/ do
     when :stg
       expect(url).to eql('https://sdcwebsite.staging.stamps.com/warehouse/')
     when :prod
-      expect(url).to eql('https://stamps.com/warehouse/')
+      expect(url).to eql('https://www.stamps.com/warehouse/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/warehouse/")
   end
   step 'SDCW: navigate back'
 end
@@ -570,7 +601,9 @@ Then /^SDCW: click products --> corporate postage solutions$/ do
     when :stg
       expect(url).to eql('https://sdcwebsite.staging.stamps.com/enterprise/')
     when :prod
-      expect(url).to eql('https://stamps.com/enterprise/')
+      expect(url).to eql('https://www.stamps.com/enterprise/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/enterprise/")
   end
   step 'SDCW: navigate back'
 end
@@ -625,7 +658,7 @@ Then /^SDCW: click products --> supplies$/ do
   end
   step 'pause for 1 second'
   SdcPage.browser.windows.last.use
-  common_page.stamps_store_logo.wait_until_present(timeout: 15)
+  common_page.stamps_store_logo.wait_until_present(timeout: 30)
   url = SdcPage.browser.windows.last.url
   SdcPage.browser.windows.last.close
   case TestSession.env.url
@@ -634,6 +667,8 @@ Then /^SDCW: click products --> supplies$/ do
     when :stg
       expect(url).to eql('https://store.staging.stamps.com/Store/')
     when :prod
+      expect(url).to eql('https://store.corp.stamps.com/Store/')
+    else
       expect(url).to eql('https://store.corp.stamps.com/Store/')
   end
 
@@ -680,7 +715,9 @@ Then /^SDCW: click support --> download software$/ do
     when :stg
       expect(url).to eql('https://sdcwebsite.staging.stamps.com/download/')
     when :prod
-      expect(url).to eql('https://stamps.com/download/')
+      expect(url).to eql('https://www.stamps.com/download/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/download/")
   end
 
   step 'SDCW: navigate back'
@@ -712,6 +749,8 @@ Then /^SDCW: click support --> customer support$/ do
     when :stg
       expect(url).to eql('https://stamps--tst.custhelp.com/')
     when :prod
+      expect(url).to eql('https://stamps--tst.custhelp.com/')
+    else
       expect(url).to eql('https://stamps--tst.custhelp.com/')
   end
 
@@ -773,6 +812,8 @@ Then /^SDCW: click support --> system status$/ do
       expect(url).to eql('https://status.stamps.com/')
     when :prod
       expect(url).to eql('https://status.stamps.com/')
+    else
+      expect(url).to eql('https://status.stamps.com/')
   end
 
 end
@@ -818,7 +859,9 @@ Then /^SDCW: click company stuff --> about us$/ do
     when :stg
       expect(url).to eql('https://sdcwebsite.staging.stamps.com/company-info/')
     when :prod
-      expect(url).to eql('https://stamps.com/company-info/')
+      expect(url).to eql('https://www.stamps.com/company-info/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/company-info/")
   end
   step 'SDCW: navigate back'
 end
@@ -846,7 +889,9 @@ Then /^SDCW: click company stuff --> shipping partners$/ do
     when :stg
       expect(url).to eql('https://sdcwebsite.staging.stamps.com/shipping/integrations/')
     when :prod
-      expect(url).to eql('https://stamps.com/shipping/integrations/')
+      expect(url).to eql('https://www.stamps.com/shipping/integrations/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/shipping/integrations/")
   end
   step 'SDCW: navigate back'
 end
@@ -874,7 +919,9 @@ Then /^SDCW: click company stuff --> privacy policy$/ do
     when :stg
       expect(url).to eql('https://sdcwebsite.staging.stamps.com/privacy-policy/')
     when :prod
-      expect(url).to eql('https://stamps.com/privacy-policy/')
+      expect(url).to eql('https://www.stamps.com/privacy-policy/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/privacy-policy/")
   end
   step 'SDCW: navigate back'
 end
@@ -905,6 +952,8 @@ Then /^SDCW: click company stuff --> investor info$/ do
       expect(url).to eql('http://investor.stamps.com/')
     when :prod
       expect(url).to eql('http://investor.stamps.com/')
+    else
+      expect(url).to eql('http://investor.stamps.com/')
   end
 
 end
@@ -928,12 +977,6 @@ Then /^SDCW: click company stuff --> careers$/ do
 
   url =  SdcPage.browser.windows.last.url
   SdcPage.browser.windows.last.close
-
-  # if SdcGlobal.web_dev_device || TestSession.env.mobile_device
-  #   expect(url).to include 'https://careers-stamps.icims.com/jobs/intro?hashed=-435738745'
-  # else
-  #   expect(url).to eql('https://careers-stamps.icims.com/jobs/intro?hashed=-435738745')
-  # end
   expect(url).to include 'https://careers-stamps.icims.com/jobs/intro?hashed=-435738745'
 end
 
@@ -961,7 +1004,9 @@ Then /^SDCW: click company stuff --> affiliates$/ do
     when :stg
       expect(url).to eql('https://sdcwebsite.staging.stamps.com/affiliates/')
     when :prod
-      expect(url).to eql('https://stamps.com/affiliates/')
+      expect(url).to eql('https://www.stamps.com/affiliates/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/affiliates/")
   end
 
   step 'SDCW: navigate back'
@@ -991,7 +1036,9 @@ Then /^SDCW: click company stuff --> site map$/ do
     when :stg
       expect(url).to eql('https://sdcwebsite.staging.stamps.com/sitemap/')
     when :prod
-      expect(url).to eql('https://stamps.com/sitemap/')
+      expect(url).to eql('https://www.stamps.com/sitemap/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/sitemap/")
   end
   step 'SDCW: navigate back'
 end
@@ -1019,7 +1066,9 @@ Then /^SDCW: click company stuff --> contact us$/ do
     when :stg
       expect(url).to eql('https://sdcwebsite.staging.stamps.com/contact-us/')
     when :prod
-      expect(url).to eql('https://stamps.com/contact-us/')
+      expect(url).to eql('https://www.stamps.com/contact-us/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-win10.corp.stamps.com/stampscom/contact-us/")
   end
   step 'SDCW: navigate back'
 end
@@ -1067,6 +1116,8 @@ Then /^SDCW: click developers --> developer overview$/ do
       expect(url).to eql('https://developer.staging.stamps.com/developer/')
     when :prod
       expect(url).to eql('https://stamps.com/developer/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-developer.corp.stamps.com/developer/")
   end
 end
 
@@ -1096,7 +1147,9 @@ Then /^SDCW: click developers --> developer registration$/ do
     when :stg
       expect(url).to eql('https://developer.staging.stamps.com/developer/register/')
     when :prod
-      expect(url).to eql('https://stamps.com/developer/register/')
+      expect(url).to eql('https://developer.stamps.com/developer/register/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-developer.corp.stamps.com/developer/register/")
   end
 
 end
@@ -1128,6 +1181,8 @@ Then /^SDCW: click developers --> developer reference guide$/ do
       expect(url).to eql('https://developer.staging.stamps.com/developer/docs/swsimv71.html#stamps-api-reference-guide')
     when :prod
       expect(url).to eql('https://developer.stamps.com/developer/docs/swsimv71.html#stamps-api-reference-guide')
+    else
+      expect(url).to include("https://#{TestSession.env.url}-developer.corp.stamps.com/developer/docs")
   end
 
 end
@@ -1159,6 +1214,8 @@ Then /^SDCW: click developers --> developer products$/ do
       expect(url).to eql('https://developer.staging.stamps.com/developer/products/')
     when :prod
       expect(url).to eql('https://developer.stamps.com/developer/products/')
+    else
+      expect(url).to eql("https://#{TestSession.env.url}-developer.corp.stamps.com/developer/products")
   end
 
 end

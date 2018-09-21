@@ -59,7 +59,12 @@ module SdcCore
 
   class PartnerPortalDB < BasicObject
     def initialize
-      env = ::TestSession.env.url.to_s
+      dev_env = data_for(:web_dev_env, {})['dev']
+      if dev_env.include?(::TestSession.env.url.to_s)
+        env = 'dev'
+      else
+        env = ::TestSession.env.url.to_s
+      end
       server = data_for(:sql_server_pp, {})[env]['server']
       database = data_for(:sql_server_pp, {})[env]['database']
       port = data_for(:sql_server_pp, {})[env]['port']
@@ -81,7 +86,12 @@ module SdcCore
 
   class SdcWebsiteDB < BasicObject
     def initialize
-      env = ::TestSession.env.url.to_s
+      dev_env = data_for(:web_dev_env, {})['dev']
+      if dev_env.include?(::TestSession.env.url.to_s)
+        env = 'dev'
+      else
+        env = ::TestSession.env.url.to_s
+      end
       server = data_for(:sql_server_sdcwebsite, {})[env]['server']
       database = data_for(:sql_server_sdcwebsite, {})[env]['database']
       port = data_for(:sql_server_sdcwebsite, {})[env]['port']
@@ -103,7 +113,12 @@ module SdcCore
 
   class VBridgeDB < BasicObject
     def initialize
-      env = ::TestSession.env.url.to_s
+      dev_env = data_for(:web_dev_env, {})['dev']
+      if dev_env.include?(::TestSession.env.url.to_s)
+        env = 'dev'
+      else
+        env = ::TestSession.env.url.to_s
+      end
       server = data_for(:sql_server_vbridge, {})[env]['server']
       database = data_for(:sql_server_vbridge, {})[env]['database']
       port = data_for(:sql_server_vbridge, {})[env]['port']
@@ -125,7 +140,12 @@ module SdcCore
 
   class StampMartDB < BasicObject
     def initialize
-      env = ::TestSession.env.url.to_s
+      dev_env = data_for(:web_dev_env, {})['dev']
+      if dev_env.include?(::TestSession.env.url.to_s)
+        env = 'dev'
+      else
+        env = ::TestSession.env.url.to_s
+      end
       server = data_for(:sql_server_stampmart, {})[env]['server']
       database = data_for(:sql_server_stampmart, {})[env]['database']
       port = data_for(:sql_server_stampmart, {})[env]['port']
