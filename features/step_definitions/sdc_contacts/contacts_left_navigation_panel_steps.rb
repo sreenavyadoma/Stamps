@@ -1,11 +1,19 @@
 Then /^[Oo]n [Ll]eft [Nn]avigation [Mm]enu [Ss]earch [Cc]ontact (.*)$/ do |str|
+
   contacts_detail= SdcContacts.contacts_detail
   contacts_detail.contacts_detail_panel.safe_wait_until_present(timeout: 15)
-  contacts_left_navigation= SdcContacts.contacts_left_navigation_panel
-  contacts_left_navigation.search_contacts.safe_wait_until_present(timeout: 15)
-  contacts_left_navigation.search_contacts.set(str)
-  contacts_left_navigation.search_icon.safe_wait_until_present(timeout: 15)
-  contacts_left_navigation.search_icon.click
+  if str=='newly added'
+    value ||= TestData.hash[:full_name]
+    step "set contacts filter panel search textbox to #{value}"
+  else
+    step "set contacts filter panel search textbox to #{str}"
+  end
+  #contacts_left_navigation= SdcContacts.contacts_left_navigation_panel
+  #contacts_left_navigation.search_contacts.safe_wait_until_present(timeout: 15)
+  #contacts_left_navigation.search_contacts.set(str)
+  step "click contacts filter panel search button"
+  #contacts_left_navigation.search_icon.safe_wait_until_present(timeout: 15)
+  #contacts_left_navigation.search_icon.click
   SdcContacts.loading_contacts.safe_wait_until_present(timeout: 15)
   SdcContacts.contacts_body.safe_wait_until_present(timeout: 15)
   SdcContacts.contacts_left_navigation_search_results.results.safe_wait_until_present(timeout:30)
@@ -50,9 +58,10 @@ end
     expect(actual_count==count).to be (true)
   end
 
-  Then /^close the search results by clicking on remove button$/ do
+
+Then /^close the search results by clicking on remove button$/ do
     search_results= SdcContacts.contacts_left_navigation_search_results
     search_results.search_results_remove.safe_wait_until_present(timeout: 15)
     search_results.search_results_remove.click
-  end
+end
 

@@ -832,7 +832,7 @@ class SdcChooser < BasicObject
   alias checked? chosen?
   alias selected? chosen?
 
-  def choose(iter: 3)
+  def choose(iter: 1)
     iter.times do
       break if chosen?
       click

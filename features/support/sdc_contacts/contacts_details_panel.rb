@@ -48,7 +48,7 @@ module SdcContacts
     #def expand_collapsed_panel
       page_object(:expand_button, required: true, timeout: 20) { { xpath: '//*[@class="x-tool-img x-tool-expand-left"]'}}
     #end
-
+    page_object(:clear_all_link, required: true, timeout: 20) { { xpath: '//span[text()="(Clear All)"]'}}
   end
 
   class ContactsDetailsToolBarMenu < SdcPage
@@ -58,7 +58,6 @@ module SdcContacts
     page_object(:menu_delete, required: true, timeout: 10) { { xpath: '//span[contains(@id, "menuitem-")][text()="Delete"]'}}
     page_object(:menu_collapse_panel, required: true, timeout: 10) { { xpath: '//span[contains(@id, "menuitem-")][text()="Collapse Panel"]'}}
   end
-
 
   class ContactsNamePrefix < SdcPage
     text_field(:prefix_text_field, tag: :text_field) { { xpath: '//*[@id="Prefix-inputEl"]' } }

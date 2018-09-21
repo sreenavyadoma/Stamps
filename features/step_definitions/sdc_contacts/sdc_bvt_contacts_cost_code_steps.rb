@@ -150,7 +150,6 @@ Then /^[Oo]n [Ll]eft [Nn]avigation [Ee]xpect (.*) [Ii]s [Aa]vilable [Uu]nder [Cc
     i=1
     while i<= row_count.to_i
       if left_nav_costcode.cost_code_name(i) == value
-        p 'inside while text'
         p left_nav_costcode.cost_code_name(i)
         result = left_nav_costcode.cost_code_name(i)
         expect(result).to eql(value)
@@ -175,7 +174,6 @@ Then /^[Oo]n [Ll]eft [Nn]avigation [Ee]xpect [Cc]ount [Oo]f (.*) [Ii]s (.*)$/ do
     i=1
     while i<= row_count.to_i
       if left_nav_costcode.cost_code_name(i) == value
-        p 'inside while count'
         p left_nav_costcode.cost_code_name(i)
         actual_count=left_nav_costcode.cost_code_count(i)
         expect(actual_count).to eql(count)

@@ -192,6 +192,15 @@ module SdcMail
       page_object(:cancel) { { id: 'modalCancel' } }
       page_object(:x_btn) { { xpath: '//div[text()="Search Contacts"]/../..//*[contains(@class, "close")]' } }
 
+      text_field(:search_text, tag: :text_field) { {xpath: '//*[@placeholder="Search Contacts"]'} }
+      page_object(:search_icon) { {xpath: '//*[contains(@class, "search-trigger-grey")]'} }
+
+      link(:search_bar) { {xpath: '//*[@placeholder="Search Orders"]'} }
+      link(:groups) { {xpath: '//*[text()="Groups"]'} }
+      link(:cost_codes) { {xpath: '//*[text()="Cost Codes"]'} }
+      link(:collapse) { {xpath: '//*[contains(@class, "sdc-icon-collapse")]'} }
+      link(:expand) { {xpath: '//*[contains(@class, "expand-right")]'} }
+
     end
 
     class SdcServiceCommitments < SdcPage

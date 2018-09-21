@@ -4,6 +4,16 @@ require 'cucumber/rake/task'
 
 #CONTACTS
 
+ Cucumber::Rake::Task.new(:sdc_contacts_change_cost_code_add_new) do |t|
+   t.profile = 'sdc_contacts_change_cost_code_add_new'
+   t.cucumber_opts = "-p cuke_reports"
+ end
+
+ Cucumber::Rake::Task.new(:sdc_contacts_change_to_existing_cost_code) do |t|
+   t.profile = 'sdc_contacts_change_to_existing_cost_code'
+   t.cucumber_opts = "-p cuke_reports"
+ end
+
 Cucumber::Rake::Task.new(:sdc_contacts_toolbar_add_new_cost_code_toolbar) do |t|
   t.profile = 'sdc_contacts_toolbar_add_new_cost_code_toolbar'
   t.cucumber_opts = "-p cuke_reports"
