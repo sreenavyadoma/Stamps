@@ -441,8 +441,9 @@ Then /^run rate sheet (.*) in country price group (\d+)$/ do |param_sheet, group
             step "set order details pounds to #{weight_lb}" if SdcGlobal.web_app == :orders
             step "set print form pounds to #{weight_lb} by arrows" if SdcGlobal.web_app == :mail
           else
-            weight_oz = Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_f       #AB_ORDERSAUTO_3580 - IDE bug, Weight require 2 parameters
-            #SdcLog.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
+            step 'set order details pounds to 0'  if SdcGlobal.web_app == :orders
+            step 'set print form pounds to 0 by arrows'  if SdcGlobal.web_app == :mail
+            weight_oz = Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_f
             TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:weight]] = "#{weight_oz} oz."
             TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:weight_lb]] = weight_oz
             step "set order details ounces to #{weight_oz}" if SdcGlobal.web_app == :orders
