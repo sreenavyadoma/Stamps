@@ -4,7 +4,12 @@ require 'cucumber/rake/task'
 
 #CONTACTS
 
- Cucumber::Rake::Task.new(:sdc_contacts_change_cost_code_add_new) do |t|
+Cucumber::Rake::Task.new(:sdc_contacts_left_panel_hide_show) do |t|
+  t.profile = 'sdc_contacts_left_panel_hide_show'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:sdc_contacts_change_cost_code_add_new) do |t|
    t.profile = 'sdc_contacts_change_cost_code_add_new'
    t.cucumber_opts = "-p cuke_reports"
  end

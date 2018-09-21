@@ -58,10 +58,20 @@ end
     expect(actual_count==count).to be (true)
   end
 
-
-Then /^close the search results by clicking on remove button$/ do
+Then /^[Cc]lose [Tt]he [Ss]earch [Rr]esults [Bb]y [Cc]licking [Oo]n [Rr]emove [Bb]utton$/ do
     search_results= SdcContacts.contacts_left_navigation_search_results
     search_results.search_results_remove.safe_wait_until_present(timeout: 15)
     search_results.search_results_remove.click
 end
 
+Then /^[Oo]n [Ll]eft [Nn]avigation [Pp]anel [Cc]lick [Oo]n [Cc]ollapse [Bb]utton$/ do
+  left_navigation = SdcContacts.contacts_left_navigation_panel
+  left_navigation.collapse.safe_wait_until_present(timeout: 15)
+  left_navigation.collapse.click
+end
+
+Then /^[Ee]xpand [Cc]ollapsed [Ll]eft [Nn]avigation [Ff]ilter [Pp]anel$/ do
+  left_navigation = SdcContacts.contacts_left_navigation_panel
+  left_navigation.expand.safe_wait_until_present(timeout: 15)
+  left_navigation.expand.click
+end

@@ -1,14 +1,16 @@
 module SdcContacts
   class ContactsLeftNavigation < SdcPage
+    page_object(:left_nav){{xpath: '//*[@id="left_navigation_items"]'}}
     text_field(:search_contacts, tag: :text_field) { {xpath: '//*[@placeholder="Search Contacts"]'} }
     page_object(:search_icon) { {xpath: '//*[contains(@class, "search-trigger-grey")]'} }
-
     link(:search_bar) { {xpath: '//*[@placeholder="Search Orders"]'} }
     link(:groups) { {xpath: '//*[text()="Groups"]'} }
     link(:cost_codes) { {xpath: '//*[text()="Cost Codes"]'} }
-    link(:collapse) { {xpath: '//*[contains(@class, "sdc-icon-collapse")]'} }
-    link(:expand) { {xpath: '//*[contains(@class, "expand-right")]'} }
+    link(:collapse,required: true, timeout: 45 ) { {xpath: '//*[contains(@class, "sdc-icon-collapse")]'} }
+    link(:expand,required: true, timeout: 45 ) { {xpath: '//*[contains(@class, "expand-right")]'} }
+    #page_object(:left_nav_collapsed){{xpath: '//*[@id="filter-nav-collapsed-left"]'}}
   end
+
   class SearchResults < SdcPage
     page_object(:results){{xpath: '//*[@id="total_search_result"]'}}
     page_object(:search_results_count) { {xpath: '(//*[contains(@class, "sdc-badgebutton-widget")]//div[@class="sdc-badge"])'} }

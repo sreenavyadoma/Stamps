@@ -583,7 +583,7 @@ sdcwr_normal_workflow:  --tags @sdcwr_normal_workflow --guess JENKINS=true WEB_D
 sdcwr_membership_page_ui_validation:  --tags @sdcwr_membership_page_ui_validation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 
 #Contacts
-aloha: --tags @sdc_contacts_change_cost_code_add_new URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core006 PW=password1
+aloha: --tags @sdc_contacts_left_panel_hide_show URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core006 PW=password1
 #aloha: --tags @sdc_contacts_show_all_columns URL=qacc LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=Tmaheryar PW=password1
 
 sdc_contacts_existing_add_invalid_reference_number: --tags @sdc_contacts_delete_single_from_top_navigation URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
@@ -611,3 +611,5 @@ sdc_contacts_toolbar_add_existing_cost_code_toolbar: --tags @sdc_contacts_toolba
 
 sdc_contacts_change_cost_code_add_new: --tags @sdc_contacts_change_cost_code_add_new --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 sdc_contacts_change_to_existing_cost_code:  --tags @sdc_contacts_change_cost_code_add_new --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
+
+sdc_contacts_left_panel_hide_show: --tags @sdc_contacts_left_panel_hide_show --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
