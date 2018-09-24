@@ -37,6 +37,22 @@ module SdcContacts
     page_object(:groups) { {xpath: '//*[contains(@class, "groups-filters")]'}}
     page_object(:groups_expand_button,required: true, timeout: 45 ) { {   xpath: '//*[contains(@class, "groups-filters")]//img[contains(@class, "-expand-bottom")]'} }
     page_object(:groups_collapse_button,required: true, timeout: 45 ) { { xpath: '//*[contains(@class, "groups-filters")]//img[contains(@class, "-collapse-top")]'} }
+    page_objects(:total_groups) { {xpath: '//*[contains(@class, "groups")]//table[@class="sdc-badgebutton x-box-item sdc-badgebutton-default"]'} }
+
+    def group_name(position)
+      #xpath_text = "(//*[@id='left_nav_costcodes_fieldset-targetEl']//table[@class='sdc-badgebutton x-box-item sdc-badgebutton-default']//tr/td[1]/div[@class='table-cell-inner sdc-badgebutton-text'])[#{position}]"
+      xpath_text = "(//*[contains(@class, 'groups-filters')]//table[@class='sdc-badgebutton x-box-item sdc-badgebutton-default']//tr/td[1]/div[@class='table-cell-inner sdc-badgebutton-text'])[#{position}]"
+      label = page_object(:group_label, required: true, timeout: 10){ { xpath: xpath_text }}
+      label.text_value
+    end
+
+        def group_count(row)
+      #xpath_count = "(//*[@id='left_nav_costcodes_fieldset-targetEl']//table[@class='sdc-badgebutton x-box-item sdc-badgebutton-default']//tr/td[2]/div[@class='table-cell-inner sdc-badgebutton-widget'])[#{row}]" xpath_count = "(//*[contains(@class, 'groups-filters')]//table[@class='sdc-badgebutton x-box-item sdc-badgebutton-default']//tr/td[2]/div[@class='table-cell-inner sdc-badgebutton-widget'])[#{row}]"
+      value = page_object(:group_count, required: true, timeout: 10){ { xpath: xpath_count }}
+      value.text_value
+    end
+
+
   end
 
   class LeftNavigationCostCodes <SdcPage

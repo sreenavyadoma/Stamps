@@ -141,7 +141,7 @@ Then /^[Oo]n [Cc]ontacts [Ll]eft [Nn]avigation [Cc]lick [Oo]n [Cc]ost [Cc]odes [
   left_cost_code.cost_codes_collapse_button.click
 end
 
-Then /^[Oo]n [Cc]ontacts [Ll]eft [Nn]avigation [Gg]et [Cc]ount [Oo]f [Aa]ll [Tt]he [Gg]roups [Aa]vailable$/ do
+Then /^[Oo]n [Cc]ontacts [Ll]eft [Nn]avigation [Gg]et [Cc]ount [Oo]f [Aa]ll [Tt]he [Cc]ost [Cc]odes [Aa]vailable$/ do
   left_nav_costcode = SdcContacts.contacts_left_nav_cost_code
   row_count = left_nav_costcode.total_costcodes.count
   p "Total no of cost codes : " + row_count.to_s
