@@ -1,5 +1,5 @@
 
-default: --backtrace --profile aloha
+default: --backtrace --profile mhossain1_cc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -18,7 +18,8 @@ sauce_browser: --tags @bvt_international_shipping URL=stg USR=bvtstgw7ff8 PW=pas
 #mhossain1_cc: --tags @pp_header_favicons_browser_mobile JENKINS=true URL=qacc BROWSER=gc BROWSER_MOBILE_EMULATOR=gc,'iPhone X' USR=wteam@stamps.com PW=password1 WEB_DEV=true
 #mhossain1_cc: --tags @pp_log_in_page_validation JENKINS=true URL=stg BROWSER=ff USR=wteam@stamps.com PW=password1 FIREFOX_PROFILE=true WEB_DEV=true
 
-mhossain1_cc: --tags @ewwr_security_question_page_validation URL=stg BROWSER=gc_web_dev LOG_LEVEL=info #USR=wteam@stamps.com PW=password1
+mhossain_sauce: --tags @ewwr_offer_707_workflow URL=stg BROWSER=edge LOG_LEVEL=info SELENIUM_BROWSER=MicrosoftEdge SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' TUNNEL_IDENTIFIER=mohammed WINDOW_SIZE=1920x1080 LOG_LEVEL=info
+mhossain1_cc: --tags @sdcw_postage_online_page_validation URL=stg BROWSER=ff LOG_LEVEL=info USR=wteam@stamps.com PW=password1
 
 kaushal_cc: --tags @ewwr_security_question_page_validation URL=stg BROWSER=edge #USR=qawebdevelopment@stamps.com PW=password1
 
