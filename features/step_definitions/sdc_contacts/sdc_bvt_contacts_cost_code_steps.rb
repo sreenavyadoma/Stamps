@@ -135,6 +135,12 @@ Then /^[Oo]n [Cc]ontacts [Ll]eft [Nn]avigation [Cc]lick [Oo]n [Cc]ost [Cc]odes [
   left_cost_code.cost_codes_expand_button.click
 end
 
+Then /^[Oo]n [Cc]ontacts [Ll]eft [Nn]avigation [Cc]lick [Oo]n [Cc]ost [Cc]odes [Cc]ollapse [Bb]utton$/ do
+  left_cost_code  = SdcContacts.contacts_left_nav_cost_code
+  left_cost_code.cost_codes_collapse_button.safe_wait_until_present(timeout: 15)
+  left_cost_code.cost_codes_collapse_button.click
+end
+
 Then /^[Oo]n [Ll]eft [Nn]avigation [Ee]xpect (.*) [Ii]s [Aa]vilable [Uu]nder [Cc]ostcode [Ff]ilter$/ do |costcode_name|
 
   if costcode_name == "new costcode added"

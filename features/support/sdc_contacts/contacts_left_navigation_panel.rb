@@ -38,13 +38,14 @@ module SdcContacts
   end
 
   class LeftNavigationCostCodes <SdcPage
-    page_object(:cost_codes_expand_button,required: true, timeout: 45 ) { { xpath: '//*[@id="left_nav_costcodes_fieldset"]//*[@class="x-tool-img x-tool-expand-bottom"]'} }
+    #page_object(:cost_codes_expand_button,required: true, timeout: 45 ) { { xpath: '//*[@id="left_nav_costcodes_fieldset"]//*[@class="x-tool-img x-tool-expand-bottom"]'} } - Id changed
     page_object(:cost_codes_results_count) { {xpath: '(//*[@id="left_nav_costcodes_fieldset"]//div[@class="sdc-badge"])'} }
     page_object(:cost_codes_results_text) { {xpath: '(//*[@id="left_nav_costcodes_fieldset"]//div[@class="table-cell-inner sdc-badgebutton-text"])'} }
     page_objects(:total_costcodes) { {xpath: '(//*[@id="left_nav_costcodes_fieldset-targetEl"]//table[@class="sdc-badgebutton x-box-item sdc-badgebutton-default"])'} }
-
     #chooser_xpath_value = "//*[@id='left_nav_costcodes_fieldset-targetEl']//table[@class='sdc-badgebutton x-box-item sdc-badgebutton-default']"
-
+    page_object(:cost_codes) { {xpath: '//*[contains(@class, "cost-codes-filters")]'}}
+    page_object(:cost_codes_expand_button,required: true, timeout: 45 ) { {   xpath: '//*[contains(@class, "cost-codes-filters")]//img[contains(@class, "-expand-bottom")]'} }
+    page_object(:cost_codes_collapse_button,required: true, timeout: 45 ) { { xpath: '//*[contains(@class, "cost-codes-filters")]//img[contains(@class, "-collapse-top")]'} }
 
     def cost_code_name(position)
       xpath_text = "(//*[@id='left_nav_costcodes_fieldset-targetEl']//table[@class='sdc-badgebutton x-box-item sdc-badgebutton-default']//tr/td[1]/div[@class='table-cell-inner sdc-badgebutton-text'])[#{position}]"
