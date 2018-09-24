@@ -39,6 +39,11 @@ end
 
 #CONTACTS
 
+Cucumber::Rake::Task.new(:sdc_contacts_left_panel_expand_collapse_groups) do |t|
+  t.profile = 'sdc_contacts_left_panel_expand_collapse_groups'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:sdc_contacts_left_panel_all_cost_codes_count) do |t|
   t.profile = 'sdc_contacts_left_panel_all_cost_codes_count'
   t.cucumber_opts = "-p cuke_reports"

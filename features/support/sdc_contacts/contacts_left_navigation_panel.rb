@@ -34,7 +34,9 @@ module SdcContacts
   end
 
   class LeftNavigationGroups <SdcPage
-    #yet to code
+    page_object(:groups) { {xpath: '//*[contains(@class, "groups-filters")]'}}
+    page_object(:groups_expand_button,required: true, timeout: 45 ) { {   xpath: '//*[contains(@class, "groups-filters")]//img[contains(@class, "-expand-bottom")]'} }
+    page_object(:groups_collapse_button,required: true, timeout: 45 ) { { xpath: '//*[contains(@class, "groups-filters")]//img[contains(@class, "-collapse-top")]'} }
   end
 
   class LeftNavigationCostCodes <SdcPage
@@ -83,6 +85,10 @@ module SdcContacts
 
     def contacts_left_nav_cost_code
       LeftNavigationCostCodes.new
+    end
+
+    def contacts_left_nav_group
+      LeftNavigationGroups.new
     end
 
   end
