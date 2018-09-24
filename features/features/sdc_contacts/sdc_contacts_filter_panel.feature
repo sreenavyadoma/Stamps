@@ -16,3 +16,10 @@ Feature:  Contacts BVT - Contacts Filter Panel
     Then navigate to contacts
     Then on contacts left navigation click on cost codes expand button
     Then on contacts left navigation click on cost codes collapse button
+
+  @sdc_contacts_left_panel_all_cost_codes_count
+  Scenario: Contacts Filter Panel Hide/Show: Collapse and expand contacts Left navigation Filter Panel
+    Then sign-in to orders
+    Then navigate to contacts
+    Then on contacts left navigation click on cost codes expand button
+    Then on contacts left navigation get count of all the groups available

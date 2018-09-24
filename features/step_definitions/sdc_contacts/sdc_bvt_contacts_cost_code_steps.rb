@@ -141,6 +141,21 @@ Then /^[Oo]n [Cc]ontacts [Ll]eft [Nn]avigation [Cc]lick [Oo]n [Cc]ost [Cc]odes [
   left_cost_code.cost_codes_collapse_button.click
 end
 
+Then /^[Oo]n [Cc]ontacts [Ll]eft [Nn]avigation [Gg]et [Cc]ount [Oo]f [Aa]ll [Tt]he [Gg]roups [Aa]vailable$/ do
+  left_nav_costcode = SdcContacts.contacts_left_nav_cost_code
+  row_count = left_nav_costcode.total_costcodes.count
+  p "Total no of cost codes : " + row_count.to_s
+    i=1
+    while i<= row_count.to_i
+        cost_code_label = left_nav_costcode.cost_code_name(i)
+        p "name : "+cost_code_label
+        count = left_nav_costcode.cost_code_count(i)
+        p "count of #{cost_code_label} is : " + count
+      i=i+1
+    end
+end
+
+
 Then /^[Oo]n [Ll]eft [Nn]avigation [Ee]xpect (.*) [Ii]s [Aa]vilable [Uu]nder [Cc]ostcode [Ff]ilter$/ do |costcode_name|
 
   if costcode_name == "new costcode added"
