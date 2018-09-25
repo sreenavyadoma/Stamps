@@ -280,7 +280,7 @@ bvtccosxgc4 shipping_labels_envelopes_extra_services
 bvtccosxgc5 priority_mail_insurance_notification
 bvtccosxgc6 add_address_email_validation
 bvtccosxgc7 mail_print_button_labels
-bvtccosxgc8
+bvtccosxgc8 reference_number_from_contacts_list
 bvtccosxgc9
 bvtccosxgc10
 bvtccosxgc11
