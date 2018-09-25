@@ -726,6 +726,6 @@ sdc_contacts_toolbar_add_existing_cost_code_toolbar: --tags @sdc_contacts_toolba
 sdc_contacts_change_cost_code_add_new: --tags @sdc_contacts_change_cost_code_add_new --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 sdc_contacts_change_to_existing_cost_code:  --tags @sdc_contacts_change_cost_code_add_new --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 
-sdc_contacts_toolbar_add_group: --tags @sdc_contacts_toolbar_add_existing_group --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
+sdc_contacts_toolbar_add_group: --tags @sdc_contacts_toolbar_add_group --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 sdc_contacts_left_panel_regression: --tags @sdc_contacts_left_panel_regression --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 
