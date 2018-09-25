@@ -129,19 +129,21 @@ Then /^[Ss]et (.*) [Vv]alue [Ii]n [Dd]etails [Mm]enu [Cc]ost [Cc]ode [Dd]ropdown
   expect(cost_code.text_field.text_value).to include(str)
 end
 
-Then /^[Oo]n [Cc]ontacts [Ll]eft [Nn]avigation [Cc]lick [Oo]n [Cc]ost [Cc]odes [Ee]xpand [Bb]utton$/ do
+Then /^click on cost codes expand button of contacts left navigation$/ do
   left_cost_code  = SdcContacts.contacts_left_nav_cost_code
   left_cost_code.cost_codes_expand_button.safe_wait_until_present(timeout: 15)
   left_cost_code.cost_codes_expand_button.click
+  expect(left_cost_code.cost_codes_collapse_button.present?).to be(true)
 end
 
-Then /^[Oo]n [Cc]ontacts [Ll]eft [Nn]avigation [Cc]lick [Oo]n [Cc]ost [Cc]odes [Cc]ollapse [Bb]utton$/ do
+Then /^click on cost codes collapse button of contacts left navigation$/ do
   left_cost_code  = SdcContacts.contacts_left_nav_cost_code
   left_cost_code.cost_codes_collapse_button.safe_wait_until_present(timeout: 15)
   left_cost_code.cost_codes_collapse_button.click
+  expect(left_cost_code.cost_codes_expand_button.present?).to be(true)
 end
 
-Then /^[Oo]n [Cc]ontacts [Ll]eft [Nn]avigation [Gg]et [Cc]ount [Oo]f [Aa]ll [Tt]he [Cc]ost [Cc]odes [Aa]vailable$/ do
+Then /^fetch total against each cost code available$/ do
   left_nav_costcode = SdcContacts.contacts_left_nav_cost_code
   row_count = left_nav_costcode.total_costcodes.count
   p "Total no of cost codes : " + row_count.to_s

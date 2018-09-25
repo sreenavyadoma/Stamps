@@ -38,29 +38,9 @@ Cucumber::Rake::Task.new(:extra_services_cost_for_rrb_service) do |t|
 end
 
 #CONTACTS
-
-Cucumber::Rake::Task.new(:sdc_contacts_left_panel_all_groups_count) do |t|
-  t.profile = 'sdc_contacts_left_panel_all_groups_count'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:sdc_contacts_left_panel_expand_collapse_groups) do |t|
-  t.profile = 'sdc_contacts_left_panel_expand_collapse_groups'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:sdc_contacts_left_panel_all_cost_codes_count) do |t|
-  t.profile = 'sdc_contacts_left_panel_all_cost_codes_count'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:sdc_contacts_left_panel_expand_collapse_cost_codes) do |t|
-  t.profile = 'sdc_contacts_left_panel_expand_collapse_cost_codes'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:sdc_contacts_left_panel_hide_show) do |t|
-  t.profile = 'sdc_contacts_left_panel_hide_show'
+#
+Cucumber::Rake::Task.new(:sdc_contacts_left_panel_regression) do |t|
+  t.profile = 'sdc_contacts_left_panel_regression'
   t.cucumber_opts = "-p cuke_reports"
 end
 

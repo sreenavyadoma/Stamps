@@ -23,4 +23,17 @@ Then /^[Cc]lick [Cc]ontacts [Tt]oolbar [Aa]dd [Rr]eference [Bb]utton$/ do
   add_ref_win = SdcContacts.reference_message_box
   add_ref_win.add_reference_window.safe_wait_until_present(timeout: 30)
 end
+Then /^click on groups menu dropdown on contacts toolbar$/ do
+  toolbar = SdcContacts.contacts_toolbar_groups
+  step "on contacts toolbar mousehover on groups dropdown"
+  toolbar.toolbar_groups(timeout: 15)
+  toolbar.toolbar_groups.click
+end
+
+Then /^[Oo]n [Cc]ontacts [Tt]oolbar [Mm]ousehover [Oo]n [Gg]roups [Dd]ropdown$/ do
+  toolbar = SdcContacts.contacts_toolbar_groups
+  toolbar.toolbar_groups.safe_wait_until_present(timeout: 15)
+  toolbar.toolbar_groups.hover
+end
+
 

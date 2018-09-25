@@ -64,14 +64,22 @@ Then /^[Cc]lose [Tt]he [Ss]earch [Rr]esults [Bb]y [Cc]licking [Oo]n [Rr]emove [B
     search_results.search_results_remove.click
 end
 
-Then /^[Oo]n [Ll]eft [Nn]avigation [Pp]anel [Cc]lick [Oo]n [Cc]ollapse [Bb]utton$/ do
-  left_navigation = SdcContacts.contacts_left_navigation_panel
-  left_navigation.collapse.safe_wait_until_present(timeout: 15)
-  left_navigation.collapse.click
-end
-
-Then /^[Ee]xpand [Cc]ollapsed [Ll]eft [Nn]avigation [Ff]ilter [Pp]anel$/ do
+Then /^click on expand button of contacts left navigation$/ do
   left_navigation = SdcContacts.contacts_left_navigation_panel
   left_navigation.expand.safe_wait_until_present(timeout: 15)
   left_navigation.expand.click
+  expect(left_navigation.collapse.present?).to be(true)
+end
+
+Then /^click on collapse button of contacts left navigation$/ do
+  left_navigation = SdcContacts.contacts_left_navigation_panel
+  left_navigation.collapse.safe_wait_until_present(timeout: 15)
+  left_navigation.collapse.click
+  expect(left_navigation.expand.present?).to be(true)
+end
+
+Then /^fetch total count of all contacts$/ do
+  left_nav_all_contacts = SdcContacts.contacts_left_navigation_all_contacts
+  left_nav_all_contacts.all_contacts.safe_wait_until_present(timeout: 15)
+  p "All Contacts count : "+left_nav_all_contacts.all_contacts_count.text_value
 end
