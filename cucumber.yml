@@ -698,7 +698,7 @@ ewwr_header_footer_validation: --tags @ewwr_header_footer_validation --guess  LO
 swwr_create_your_account_page_validation: --tags @swwr_create_your_account_page_validation --guess LOG_LEVEL=info
 
 #Contacts
-aloha: --tags @sdc_contacts_left_panel_regression URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core006 PW=password1
+aloha: --tags @sdc_contacts_toolbar_add_group URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
 #aloha: --tags @sdc_contacts_show_all_columns URL=qacc LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=Tmaheryar PW=password1
 
 sdc_contacts_delete_multiple_from_top_navigation: --tags @sdc_contacts_delete_multiple_from_top_navigation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
@@ -726,9 +726,6 @@ sdc_contacts_toolbar_add_existing_cost_code_toolbar: --tags @sdc_contacts_toolba
 sdc_contacts_change_cost_code_add_new: --tags @sdc_contacts_change_cost_code_add_new --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 sdc_contacts_change_to_existing_cost_code:  --tags @sdc_contacts_change_cost_code_add_new --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 
-sdc_contacts_toolbar_add_existing_group: --tags @sdc_contacts_toolbar_add_existing_group --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
-sdc_contacts_toolbar_add_new_group : --tags @sdc_contacts_toolbar_add_new_group --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
-
-
+sdc_contacts_toolbar_add_group: --tags @sdc_contacts_toolbar_add_existing_group --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 sdc_contacts_left_panel_regression: --tags @sdc_contacts_left_panel_regression --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 
