@@ -189,20 +189,70 @@ module SdcMail
       page_object(:x_btn) { { xpath: '//div[text()="Special Contents Warning"]/../..//*[contains(@class, "close")]' } }
     end
 
-    class SdcSearchContacts < SdcPage
+    class SdcSearchContactsFilterPanel < SdcPage
+      page_object(:search_contacts) { { xpath: '//input[@placeholder="Search Contacts"]' } }
+      page_object(:selected) { { xpath: '//div[text()="Selected"][contains(@class,"sdc-badgebutton-text")]' } }
+      page_object(:selected_count) { { xpath: '//div[text()="Selected"]/../following-sibling::td//div[@class="sdc-badge"]' } }
+      page_object(:all_contacts) { { xpath: '//div[text()="All Contacts"][contains(@class,"sdc-badgebutton-text")]' } }
+      page_object(:all_contacts_count) { { xpath: '//div[text()="All Contacts"]/../following-sibling::td//div[@class="sdc-badge"]' } }
+
+      page_object(:groups_drop_down) { { xpath: '//div[contains(@class,"sdc-badgebuttongroup-header-title-default")]//div[text()="Groups"]' } }
+      page_object(:cost_codes_drop_down) { { xpath: '//div[contains(@class,"sdc-badgebuttongroup-header-title-default")]//div[text()="Cost Codes"]' } }
+
+      page_object(:ungrouped) { { xpath: '//div[text()="Ungrouped"]' } }
+      page_object(:ungrouped_count) { { xpath: '//div[text()="Ungrouped"]/../following-sibling::td//div[@class="sdc-badge"]' } }
+
+      page_object(:none) { { xpath: '//div[text()="None"]' } }
+      page_object(:none_count) { { xpath: '//div[text()="None"]/../following-sibling::td//div[@class="sdc-badge"]' } }
+    end
+
+    class SdcSearchContactsToolbar < SdcPage
+      page_object(:select) { { xpath: '//span[@class="x-btn-inner x-btn-inner-primary-medium"][contains(text(),"Select")]' } }
+      page_object(:cancel) { { xpath: '//span[@class="x-btn-inner x-btn-inner-secondary-medium"][text()="Cancel"]' } }
+    end
+
+    class SdcSearchContactsGrid < SdcPage
+      page_objects(:names) { { xpath: '//div[@id="contactsGrid-normal-body"]//table[starts-with(@id,"tableview-")]//tr[contains(@class,"x-grid-row")]//td[2]' } }
+
+      def count
+        page_objects(:count) { { xpath: '//div[@id="contactsGrid-normal-body"]//table[starts-with(@id,"tableview-")]//tr[contains(@class,"x-grid-row")]' } }.size
+      end
+
+      def name(str, index: 0)
+        page_objects(:contacts_grid_name, index: index) { { xpath: "//div[text()='#{str}'][contains(@class,'x-grid-cell-inner')]" } }
+      end
+
+      def row_number_for_name(name)
+        names.each_with_index { |field, index| return index if SdcElement.new(field).text_value.eql? name }
+      end
+
+      def checkbox_for_row(num)
+        page_objects("chooser#{num}", index: num) { { xpath: '//div[@id="contactsGrid-normal-body"]//div[@class="x-grid-row-checker"]' } }
+        page_objects("verify#{num}", index: num) { { xpath: '//div[@id="contactsGrid-normal-body"]//table' } }
+        checkbox("checkbox_for_row#{num}", "chooser#{num}", "verify#{num}", 'class', 'selected')
+      end
+    end
+
+    class SdcSearchContactsModal < SdcPage
+      page_object(:window) { { xpath: '//div[contains(@class,"search-contacts-modal")]' } }
       page_object(:title) { { xpath: '//*[text()="Search Contacts"]' } }
       page_object(:cancel) { { id: 'modalCancel' } }
       page_object(:x_btn) { { xpath: '//div[text()="Search Contacts"]/../..//*[contains(@class, "close")]' } }
 
-      text_field(:search_text, tag: :text_field) { {xpath: '//*[@placeholder="Search Contacts"]'} }
-      page_object(:search_icon) { {xpath: '//*[contains(@class, "search-trigger-grey")]'} }
+      text_field(:search_text, tag: :text_field) { { xpath: '//input[@placeholder="Search Contacts"]' } }
+      page_object(:search_icon) { { xpath: '//*[contains(@class, "search-trigger-grey")]' } }
 
-      link(:search_bar) { {xpath: '//*[@placeholder="Search Orders"]'} }
-      link(:groups) { {xpath: '//*[text()="Groups"]'} }
-      link(:cost_codes) { {xpath: '//*[text()="Cost Codes"]'} }
-      link(:collapse) { {xpath: '//*[contains(@class, "sdc-icon-collapse")]'} }
-      link(:expand) { {xpath: '//*[contains(@class, "expand-right")]'} }
+      def grid
+        SdcSearchContactsGrid.new
+      end
 
+      def filter_panel
+        SdcSearchContactsFilterPanel.new
+      end
+
+      def toolbar
+        SdcSearchContactsToolbar.new
+      end
     end
 
     class SdcServiceCommitments < SdcPage
@@ -312,8 +362,8 @@ module SdcMail
       page_object(:body) { { xpath: '//label[@class="x-component x-box-item x-window-item x-component-default"]' } }
       page_object(:x_button) { { xpath: '//span[contains(@class, "icon-mobile-close-light")]' } }
 
-      page_object(:checkbox) { {xpath: '//div[starts-with(@id, "dialoguemodal-")][contains(@id, "-targetEl")]//input[starts-with(@id, "checkbox-")][contains(@id, "-inputEl")]'} }
-      page_object(:verify) { {xpath: '//div[starts-with(@id, "dialoguemodal-")][contains(@id, "-targetEl")]//div[contains(@class, "x-form-type-checkbox")]' } }
+      page_object(:checkbox) { { xpath: '//div[starts-with(@id, "dialoguemodal-")][contains(@id, "-targetEl")]//input[starts-with(@id, "checkbox-")][contains(@id, "-inputEl")]' } }
+      page_object(:verify) { { xpath: '//div[starts-with(@id, "dialoguemodal-")][contains(@id, "-targetEl")]//div[contains(@class, "x-form-type-checkbox")]' } }
       checkbox(:dont_show_this_again, :checkbox, :verify, 'class', 'checked')
 
       page_object(:continue) { { xpath: '//span[text()="Continue"][@class="x-btn-inner x-btn-inner-primary-medium"]' } }
@@ -373,7 +423,7 @@ module SdcMail
       end
 
       def search_contacts
-        SdcSearchContacts.new
+        SdcSearchContactsModal.new
       end
 
       def print
