@@ -25,12 +25,12 @@ Then /^[Cc]lick [Cc]ontacts [Tt]oolbar [Aa]dd [Rr]eference [Bb]utton$/ do
 end
 Then /^click on groups menu dropdown on contacts toolbar$/ do
   toolbar = SdcContacts.contacts_toolbar_groups
-  step "on contacts toolbar mousehover on groups dropdown"
+  step "hover on groups button of contacts toolbar"
   toolbar.toolbar_groups(timeout: 15)
   toolbar.toolbar_groups.click
 end
 
-Then /^[Oo]n [Cc]ontacts [Tt]oolbar [Mm]ousehover [Oo]n [Gg]roups [Dd]ropdown$/ do
+Then /^hover on groups button of contacts toolbar$/ do
   toolbar = SdcContacts.contacts_toolbar_groups
   toolbar.toolbar_groups.safe_wait_until_present(timeout: 15)
   toolbar.toolbar_groups.hover

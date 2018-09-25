@@ -39,6 +39,11 @@ end
 
 #CONTACTS
 #
+Cucumber::Rake::Task.new(:sdc_contacts_toolbar_add_group) do |t|
+  t.profile = 'sdc_contacts_toolbar_add_group'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:sdc_contacts_left_panel_regression) do |t|
   t.profile = 'sdc_contacts_left_panel_regression'
   t.cucumber_opts = "-p cuke_reports"
