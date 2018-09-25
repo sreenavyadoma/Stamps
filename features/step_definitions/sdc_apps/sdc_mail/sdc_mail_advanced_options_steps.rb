@@ -60,11 +60,6 @@ Then /^expect print form advanced options ship date is (\d+) (?:day|days) from t
   result = SdcOrders.modals.print.ship_date.text_field.text_value
   expect(result).to eql(expectation)
 end
-
-Then /^set print form ship date to today$/ do
-  step 'set print form advanced options ship date to today plus 0'
-end
-
 Then /^set print form advanced options ship date to today plus (\d+)$/ do |day|
   step 'expect print form advanced options mail date is present'
   text_field = SdcOrders.modals.print.ship_date.text_field

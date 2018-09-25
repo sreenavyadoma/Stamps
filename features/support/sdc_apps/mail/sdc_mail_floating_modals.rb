@@ -189,7 +189,42 @@ module SdcMail
       page_object(:x_btn) { { xpath: '//div[text()="Special Contents Warning"]/../..//*[contains(@class, "close")]' } }
     end
 
-    class SdcSearchContacts < SdcPage
+    class SdcSearchContactsFilterPanel < SdcPage
+      page_object(:selected) { { xpath: '//div[text()="Selected"][contains(@class,"sdc-badgebutton-text")]' } }
+      page_object(:selected_count) { { xpath: '//div[text()="Selected"]/../following-sibling::td//div[@class="sdc-badge"]' } }
+      page_object(:all_contacts) { { xpath: '//div[text()="All Contacts"][contains(@class,"sdc-badgebutton-text")]' } }
+      page_object(:all_contacts_count) { { xpath: '//div[text()="All Contacts"]/../following-sibling::td//div[@class="sdc-badge"]' } }
+    end
+
+    class SdcSearchContactsToolbar < SdcPage
+      page_object(:select) { { xpath: '//span[@class="x-btn-inner x-btn-inner-primary-medium"][contains(text(),"Select")]' } }
+      page_object(:cancel) { { xpath: '//span[@class="x-btn-inner x-btn-inner-secondary-medium"][text()="Cancel"]' } }
+    end
+
+    class SdcSearchContactsGrid < SdcPage
+      page_objects(:names) { { xpath: '//div[@id="contactsGrid-normal-body"]//table[starts-with(@id,"tableview-")]//tr[contains(@class,"x-grid-row")]//td[2]' } }
+
+      def count
+        page_objects(:count) { { xpath: '//div[@id="contactsGrid-normal-body"]//table[starts-with(@id,"tableview-")]//tr[contains(@class,"x-grid-row")]' } }.size
+      end
+
+      def name(str, index: 0)
+        page_objects(:contacts_grid_name, index: index) { { xpath: "//div[text()='#{str}'][contains(@class,'x-grid-cell-inner')]" } }
+      end
+
+      def row_number_for_name(name)
+        names.each_with_index { |field, index| return index if SdcElement.new(field).text_value.eql? name }
+      end
+
+      def checkbox_for_row(num)
+        page_objects("chooser#{num}", index: num) { { xpath: '//div[@id="contactsGrid-normal-body"]//div[@class="x-grid-row-checker"]' } }
+        page_objects("verify#{num}", index: num) { { xpath: '//div[@id="contactsGrid-normal-body"]//table' } }
+        checkbox("checkbox_for_row#{num}", "chooser#{num}", "verify#{num}", 'class', 'selected')
+      end
+    end
+
+    class SdcSearchContactsModal < SdcPage
+      page_object(:window) { { xpath: '//div[contains(@class,"search-contacts-modal")]' } }
       page_object(:title) { { xpath: '//*[text()="Search Contacts"]' } }
       page_object(:cancel) { { id: 'modalCancel' } }
       page_object(:x_btn) { { xpath: '//div[text()="Search Contacts"]/../..//*[contains(@class, "close")]' } }
@@ -203,6 +238,17 @@ module SdcMail
       link(:collapse) { {xpath: '//*[contains(@class, "sdc-icon-collapse")]'} }
       link(:expand) { {xpath: '//*[contains(@class, "expand-right")]'} }
 
+      def grid
+        SdcSearchContactsGrid.new
+      end
+
+      def filter_panel
+        SdcSearchContactsFilterPanel.new
+      end
+
+      def toolbar
+        SdcSearchContactsToolbar.new
+      end
     end
 
     class SdcServiceCommitments < SdcPage
@@ -373,7 +419,7 @@ module SdcMail
       end
 
       def search_contacts
-        SdcSearchContacts.new
+        SdcSearchContactsModal.new
       end
 
       def print
