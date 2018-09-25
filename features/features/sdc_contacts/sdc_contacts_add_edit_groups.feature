@@ -21,3 +21,20 @@ Feature:  Contacts BVT - Contacts ToolBar
     Then expect error message is not displayed on add groups pop up window
     Then expect manage groups pop up is displayed
     Then expect group name added is available in the manage group pop up table
+
+  @sdc_contacts_change_group_add_remove
+  Scenario: Contacts BVT Scenario 1: Change Group to an Existing Contact via Contacts Toolbar
+    Then sign-in to orders
+    Then navigate to contacts
+    Then in contacts grid check row 1
+    Then click on groups menu dropdown on contacts toolbar
+    Then select Change Groups from groups menu dropdown of contacts toolbar
+    Then search and choose existing group from groups list from change groups popup to add
+    Then click on save button of change groups pop up window
+    Then expect added group is available in details groups textbox
+    Then click on groups menu dropdown on contacts toolbar
+    Then select Change Groups from groups menu dropdown of contacts toolbar
+    Then search and choose existing group from groups list from change groups popup to remove
+    Then click on save button of change groups pop up window
+    Then expect removed group is not available in details groups textbox
+
