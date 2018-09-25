@@ -33,7 +33,7 @@ Then /^select (.*) from groups menu dropdown of contacts toolbar$/ do |str|
     p str
     toolbar.toolbar_groups_change_groups.safe_wait_until_present(timeout: 15)
     toolbar.toolbar_groups_change_groups.click
-
+    step 'expect change groups pop up is displayed'
   when 'Add/Edit Groups'
     toolbar.toolbar_groups_add_edit_groups.safe_wait_until_present(timeout: 15)
     toolbar.toolbar_groups_add_edit_groups.click
@@ -130,6 +130,171 @@ Then /^expect group name added is available in the manage group pop up table$/ d
     end
   expect(group_name_available=='yes').to eql(true)
 end
+
+Then /^expect change groups pop up is displayed$/ do
+  group_popup = SdcContacts.contacts_popup_groups
+  group_popup.change_groups_title.safe_wait_until_present(timeout: 15)
+  expect(group_popup.change_groups_title.present?).to be(true)
+end
+
+  Then /^search and choose (.*) group from groups list from change groups popup to add$/ do |group_name|
+  group_popup = SdcContacts.contacts_popup_groups
+  group_popup.change_groups_search.safe_wait_until_present(timeout: 15)
+
+ case group_name
+ when "existing"
+   row_count = group_popup.change_groups_table.count
+   p "row count" + row_count.to_s
+   if row_count != 0
+     i = 1
+      str=""
+      while i <= row_count
+        if group_popup.groups_checkbox_row(i).checked? == false
+          str = group_popup.group_name(i)
+          break
+        end
+        i = i +1
+      end
+      if str==""
+        p " All Groups available have already been added"
+        else
+          group_popup.change_groups_search.set(str)
+          TestData.hash[:group_added_value] = str
+      end
+
+    else
+      p "No groups available for this account"
+    end
+  else
+    group_popup.change_groups_search.set(group_name)
+    TestData.hash[:group_added_value] = group_name
+ end
+  sleep(2)
+  search_count = group_popup.change_groups_table.count
+  p "search count" +search_count.to_s
+  if search_count != 0
+    step 'check change groups grid row 1'
+  else
+    p "no such group found for this account"
+  end
+end
+
+Then /^search and choose (.*) group from groups list from change groups popup to remove$/ do |group_name|
+  group_popup = SdcContacts.contacts_popup_groups
+  group_popup.change_groups_search.safe_wait_until_present(timeout: 15)
+  case group_name
+  when "existing"
+    row_count = group_popup.change_groups_table.count
+    p "row count" + row_count.to_s
+    if row_count != 0
+      i = 1
+      str=""
+      while i <= row_count
+        if group_popup.groups_checkbox_row(i).checked? == true
+           str = group_popup.group_name(i)
+          break
+        end
+        i = i +1
+      end
+      if str==""
+        p "No Groups available on the selected contact to remove"
+      else
+        group_popup.change_groups_search.set(str)
+        TestData.hash[:group_removed_value] = str
+
+      end
+    else
+      p "No groups available for this account"
+    end
+  else
+    group_popup.change_groups_search.set(group_name)
+    TestData.hash[:group_removed_value] = group_name
+  end
+  sleep(2)
+  search_count = group_popup.change_groups_table.count
+  p "search_count" + search_count.to_s
+  if search_count != 0
+    "inside search not equal to 0"
+    step 'uncheck change groups grid row 1'
+  else
+    expect(group_popup.change_groups_empty_table.present?).to be (true)
+    p "No such group found for this account"
+  end
+end
+
+Then /^check change groups grid row (\d+)$/ do |row|
+  groups_grid_body = SdcContacts.contacts_popup_groups
+  groups_grid_body.change_groups_grid_body.safe_wait_until_present(timeout: 60)
+  checkbox = groups_grid_body.groups_checkbox_row(row)
+  checkbox.safe_wait_until_present(timeout: 30)
+  checkbox.check unless checkbox.checked?
+  expect(checkbox.checked?).to be(true)
+
+end
+
+Then /^uncheck change groups grid row (\d+)$/ do |row|
+  groups_grid_body = SdcContacts.contacts_popup_groups
+  groups_grid_body.change_groups_grid_body.safe_wait_until_present(timeout: 60)
+  checkbox = groups_grid_body.groups_checkbox_row(row)
+  checkbox.safe_wait_until_present(timeout: 30)
+  if checkbox.checked?
+    checkbox.uncheck
+  end
+  expect(checkbox.checked?).to be(false)
+end
+
+Then /^click on save button of change groups pop up window$/ do
+  group_popup = SdcContacts.contacts_popup_groups
+  group_popup.groups_save_button.safe_wait_until_present(timeout: 10)
+  group_popup.groups_save_button.click
+end
+
+Then /^expect added group is available in details groups textbox$/ do
+  group_popup = SdcContacts.contacts_popup_groups
+  str ||= TestData.hash[:group_added_value]
+  group_count = group_popup.details_groups_list.count
+  p 'Group_list_count:' + group_count.to_s
+  if group_count != 0
+    i = 1
+    included ="false"
+    while i<= group_count
+      if str == group_popup.group_list_name(i)
+        included = "true"
+        p str + " is included in the group details"
+        break
+      end
+      i = i+1
+    end
+  end
+  #expect(included == "true").to be(true)
+  if included =="false"
+    p str + " is not included in the group details"
+  end
+end
+
+Then /^expect removed group is not available in details groups textbox$/ do
+  group_popup = SdcContacts.contacts_popup_groups
+  str ||= TestData.hash[:group_removed_value]
+  group_count = group_popup.details_groups_list.count
+  p 'Group_list_count:' + group_count.to_s
+  if group_count != 0
+    i = 1
+    included ="false"
+    while i<= group_count
+      if str == group_popup.group_list_name(i)
+        included = "true"
+        p str + " is included in the group details"
+        break
+      end
+      i = i+1
+    end
+  end
+  #expect(included == "true").to be(true)
+  if included =="false"
+    p str + " is not included in the group details"
+  end
+end
+
 
 
 

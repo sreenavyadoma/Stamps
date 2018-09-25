@@ -43,16 +43,25 @@ module SdcContacts
     page_object(:change_groups_grid_body, required: true, timeout: 10) { {xpath: '//*[contains(@id,"grid-")]'} }
     page_object(:groups_save_button, tag: :span, required: true, timeout: 45 ) { { xpath: '//span[text()="Save"]'} }
     #page_objects(:change_groups_table, required: true, timeout: 10) { {xpath: '//*[@id = "multiselect-groups-grid"]//*[@class="x-grid-item-container"]//table'} }
-    page_objects(:change_groups_table, required: true, timeout: 10) { {xpath: '//*[contains(@id,"tableview-")]//*[@class="x-grid-item-container"]//table'} }
+    page_objects(:change_groups_table, required: true, timeout: 10) { {xpath: '//*[contains(@id,"title-")][text() = "Change Groups"]//following::div[contains(@id,"tableview-")]//*[@class="x-grid-item-container"]//table'} }
+    page_objects(:change_groups_empty_table, required: true, timeout: 10) { {xpath: '//*[contains(@id,"title-")][text() = "Change Groups"]//following::div[contains(@id,"tableview-")]//*[@class="x-grid-empty"]'}}
+    text_field(:details_groups, tag: :text_field) { {xpath: ' //*[@name="Groups"]'} }
+    page_objects(:details_groups_list, required: true, timeout: 10) { {xpath: '//*[@class="x-tagfield-list"]//li'} }
 
-    def groups_checkbox_row_1(row)
+    def group_list_name(position)
+      xpath_text = "//*[@class='x-tagfield-list']//li[#{position}]//div[1]"
+      label = page_object(:group_text, required: true, timeout: 10){ { xpath: xpath_text }}
+      label.text_value
+    end
+
+    def groups_checkbox_row(row)
       #contacts_scroll_into_view
       #chooser_xpath = "//*[@id = 'multiselect-groups-grid']//table[#{row}]//div[@class='x-grid-row-checker']"
-      chooser_xpath = "//*[contains(@id,'group-multiselector-search-')]//*[contains(@id,'tableview-')]//table[#{row}]//div[@class='x-grid-row-checker']"
+      chooser_xpath = "//*[contains(@id,'title-')][text() = 'Change Groups']//following::div[contains(@id,'group-multiselector-search-')]//*[contains(@id,'tableview-')]//table[#{row}]//div[@class='x-grid-row-checker']"
       chooser_name = "grid_chooser_#{row}"
       page_object(chooser_name) { { xpath: chooser_xpath } }
       # verify_xpath = "//*[@id = 'multiselect-groups-grid']//div[@class='x-grid-item-container']//table[#{row}]"
-      verify_xpath = "//*[contains(@id,'group-multiselector-search-')]//*[contains(@id,'tableview-')]//div[@class='x-grid-item-container']//table[#{row}]"
+      verify_xpath = "//*[contains(@id,'title-')][text() = 'Change Groups']//following::div[contains(@id,'group-multiselector-search-')]//*[contains(@id,'tableview-')]//div[@class='x-grid-item-container']//table[#{row}]"
       verify_name = "grid_verify_#{row}"
       page_object(verify_name) { { xpath: verify_xpath } }
       groups_checkbox_name = "grid_checkbox_#{row}"
@@ -62,7 +71,7 @@ module SdcContacts
 
     def group_name(row)
       #xpath_text = "//*[@id = 'multiselect-groups-grid']//*[@class='x-grid-item-container']//table[#{row}]//tbody//tr//td[2]"
-      xpath_text = "//*[contains(@id,'tableview-')]//*[@class='x-grid-item-container']//table[#{row}]//tbody//tr//td[2]"
+      xpath_text = "//*[contains(@id,'title-')][text() = 'Change Groups']//following::div[contains(@id,'tableview-')]//*[@class='x-grid-item-container']//table[#{row}]//tbody//tr//td[2]"
       label = page_object(:group_text, required: true, timeout: 10){ { xpath: xpath_text }}
       label.text_value
     end
