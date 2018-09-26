@@ -281,7 +281,7 @@ bvtccosxgc5 priority_mail_insurance_notification
 bvtccosxgc6 add_address_email_validation
 bvtccosxgc7 mail_print_button_labels
 bvtccosxgc8 reference_number_from_contacts_list
-bvtccosxgc9
+bvtccosxgc9 display_rates_for_multiple_contacts
 bvtccosxgc10
 bvtccosxgc11
 bvtccosxgc12

@@ -32,6 +32,13 @@ Then /^check search contacts grid name (.+)$/ do |str|
   expect(checkbox.checked?).to be(true)
 end
 
+Then /^check search contacts grid row (\d+)$/ do |row|
+  grid = SdcMail.modals.search_contacts.grid
+  checkbox = grid.checkbox_for_row(row)
+  checkbox.check
+  expect(checkbox.checked?).to be(true)
+end
+
 Then /^expect search contacts filter panel selected count is (.+)$/ do |str|
   filter_panel = SdcMail.modals.search_contacts.filter_panel
   filter_panel.selected_count.wait_until_present(timeout: 5)
