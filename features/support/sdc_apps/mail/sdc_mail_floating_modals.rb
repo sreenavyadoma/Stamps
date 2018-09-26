@@ -89,6 +89,7 @@ module SdcMail
       page_object(:security_label) { { xpath: '//label[text()="Security:"]' } }
       page_object(:cod_label) { { xpath: '//label[text()="COD:"]' } }
       page_object(:handling_label) { { xpath: '//label[text()="Handling:"]' } }
+      page_object(:other_label) { { xpath: '//label[text()="Other:"]' } }
 
       page_object(:rr_chooser) { { xpath: '//span[@id="sdc-extraserviceswin-rrcheckbox-displayEl"]' } }
       page_object(:rr_verify) { { xpath: '//div[@id="sdc-extraserviceswin-rrcheckbox"]' } }

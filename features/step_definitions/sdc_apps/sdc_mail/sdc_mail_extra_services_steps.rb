@@ -5,6 +5,7 @@ Then /^blur out on extra services form$/ do
   extra_services.security_label.blur_out if extra_services.security_label.present?
   extra_services.cod_label.blur_out if extra_services.cod_label.present?
   extra_services.handling_label.blur_out if extra_services.handling_label.present?
+  extra_services.other_label.blur_out if extra_services.other_label.present?
 end
 
 # fragile on extra services modal
