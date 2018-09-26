@@ -2,6 +2,9 @@ Then /^blur out on extra services form$/ do
   extra_services = SdcMail.modals.extra_services
   extra_services.total.blur_out
   extra_services.title.blur_out
+  extra_services.security_label.blur_out if extra_services.security_label.present?
+  extra_services.cod_label.blur_out if extra_services.cod_label.present?
+  extra_services.handling_label.blur_out if extra_services.handling_label.present?
 end
 
 # fragile on extra services modal
@@ -258,80 +261,73 @@ Then /^expect hold for pickup cost on extra services modal is greater than \$(.+
   expect(extra_services.hold_for_pickup_cost.text_value.parse_digits.to_f).to be > str.to_f
 end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Then /^expect extra services cod is present$/ do
   expect(SdcMail.modals.extra_services.cod).to be_present
 end
 
-Then /^set extra services cod to (\d*.?\d+)$/ do |amount|
+Then /^set extra services cod to (.+)$/ do |str|
   step 'expect extra services cod is present'
-  SdcMail.modals.extra_services.cod.set(amount)
-  step "expect extra services cod value is #{amount}"
-end
+  step 'blur out on extra services form'
+  extra_services = SdcMail.modals.extra_services
+  extra_services.cod.wait_until_present(timeout: 5)
 
-Then /^increment extra services cod by (\d+)$/ do |amount|
-  step 'expect extra services cod is present'
-  cod_value = SdcMail.modals.extra_services.cod.text_value.to_f
-  amount.times do
-    SdcMail.modals.extra_services.cod.increment.click
+  15.times do
+    extra_services.cod.set(str)
+    extra_services.cod_cost.safe_wait_until_present(timeout: 1)
+    extra_services.cod_cost.safe_click
+    step 'click continue button on value must be shown modal'
+    step 'blur out on extra services form'
+    break if extra_services.cod_cost.text_value.parse_digits.to_f > 1
   end
-  step "expect extra services cod value is #{cod_value+amount.to_f}"
+
+  step "expect extra services cod value is $#{str}"
 end
 
-Then /^decrement extra services cod by (\d+)$/ do |amount|
+Then /^increment extra services cod by (\d+)$/ do |str|
+  extra_services = SdcMail.modals.extra_services
   step 'expect extra services cod is present'
-  cod_value = SdcMail.modals.extra_services.cod.text_value.to_f
-  amount.times do
-    SdcMail.modals.extra_services.cod.decrement.click
+  cod_value = extra_services.cod.text_value.to_f
+  str.times do
+    extra_services.cod.increment.click
   end
-  step "expect extra services cod value is #{cod_value-amount.to_f}"
+  step 'blur out on extra services form'
+  step "expect extra services cod value is $#{cod_value + str.to_f}"
 end
 
-Then /^expect extra services cod value is (\d*.?\d+)$/ do |amount|
+Then /^decrement extra services cod by (\d+)$/ do |str|
+  extra_services = SdcMail.modals.extra_services
   step 'expect extra services cod is present'
-  expect(SdcMail.modals.extra_services.cod.text_value.to_f).to eql(amount.to_f)
+  cod_value = extra_services.cod.text_value.to_f
+  str.times do
+    extra_services.cod.decrement.click
+  end
+  step 'blur out on extra services form'
+  step "expect extra services cod value is $#{cod_value - str.to_f}"
 end
 
-Then /^expect extra services cod price to be (\d*.?\d+)$/ do |expectation|
-  SdcMail.modals.extra_services.cod_cost.wait_until_present(timeout: 10)
-  expect(SdcMail.modals.extra_services.cod_cost.text_value.parse_digits.to_f.round(2)).to eql(expectation.to_f.round(2))
+Then /^expect extra services cod value is \$(.+)$/ do |str|
+  step 'expect extra services cod is present'
+  step 'blur out on extra services form'
+  extra_services = SdcMail.modals.extra_services
+  extra_services.cod.wait_until_present(timeout: 5)
+  expect(extra_services.cod.text_value.to_f).to eql(str.to_f)
+end
+
+Then /^expect extra services cod price is \$(.+)$/ do |str|
+  extra_services = SdcMail.modals.extra_services
+  extra_services.cod_cost.wait_until_present(timeout: 10)
+  step 'blur out on extra services form'
+  result = extra_services.cod_cost.text_value.parse_digits.to_f
+  expect(result).to eql(str.to_f)
+end
+
+Then /^expect extra services cod price is greater than \$(.+)$/ do |str|
+  extra_services = SdcMail.modals.extra_services
+  extra_services.cod_cost.wait_until_present(timeout: 5)
+  step 'blur out on extra services form'
+  expect(extra_services.cod_cost.present?).to be(true)
+  result = extra_services.cod_cost.text_value.parse_digits.to_f
+  expect(result).to be > str.to_f
 end
 
 Then /^expect extra services save button is present$/ do
@@ -355,17 +351,6 @@ end
 
 Then /^expect extra services modal is not present$/ do
   expect(SdcMail.modals.extra_services.title).not_to be_present
-end
-
-Then /^close extra services$/ do
-  step 'expect extra services modal is present'
-  extra_services = SdcMail.modals.extra_services
-  3.times do
-    extra_services.x_btn.safe_click
-    extra_services.window.safe_wait_while_present(timeout: 1)
-    break unless extra_services.window.present?
-  end
-  step 'expect extra services modal is not present'
 end
 
 Then /^expect extra services security is present$/ do
@@ -408,12 +393,15 @@ end
 
 Then /^click continue button on value must be shown modal$/ do
   value_must_be_shown = SdcMail.modals.extra_services.value_must_be_shown
-  value_must_be_shown.title.safe_wait_until_present(timeout: 5)
-  expect(value_must_be_shown.title.text_value).to eql 'Value Must be Shown'
-  value_must_be_shown.continue.click
-  value_must_be_shown.continue.wait_while_present(timeout: 5)
+  value_must_be_shown.title.safe_wait_until_present(timeout: 2)
   step 'blur out on extra services form'
-  step 'expect value must be shown modal is not present'
+  if value_must_be_shown.title.present?
+    expect(value_must_be_shown.title.text_value).to eql 'Value Must be Shown'
+    value_must_be_shown.continue.click
+    value_must_be_shown.continue.wait_while_present(timeout: 3)
+    step 'blur out on extra services form'
+    step 'expect value must be shown modal is not present'
+  end
 end
 
 Then /^click cancel button on value must be shown modal$/ do

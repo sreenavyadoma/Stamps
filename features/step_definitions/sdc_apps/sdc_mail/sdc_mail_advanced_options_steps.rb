@@ -15,6 +15,18 @@ Then /^click select extra services button on print form$/ do
   step 'expect extra services modal is present'
 end
 
+Then /^open extra services$/ do
+  step 'click select extra services button on print form'
+end
+
+Then /^close extra services$/ do
+  step 'expect extra services modal is present'
+  extra_services = SdcMail.modals.extra_services
+  extra_services.x_btn.click
+  extra_services.window.wait_while_present(timeout: 3)
+  step 'expect extra services modal is not present'
+end
+
 Then /^expect print form advanced options extra services button is (\w+)/ do |str|
   case str
   when /enabled/

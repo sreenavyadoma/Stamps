@@ -1,4 +1,4 @@
-Feature:  Mail Extra Services
+Feature:  Mail Contacts
 
   Background:
     Given Start test driver

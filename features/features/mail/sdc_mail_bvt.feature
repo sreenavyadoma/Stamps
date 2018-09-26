@@ -627,7 +627,7 @@ Feature:  Mail BVT
     Then set extra services security to Registered Mail
     Then set extra services security value to 30.00
     Then set extra services cod to 20.00
-    Then expect extra services cod price to be 5.70
+    Then expect extra services cod price is $5.70
     Then check return receipt on extra services modal
     Then expect extra services return receipt price to be 2.75
     Then check restricted delivery on extra services modal
@@ -638,7 +638,7 @@ Feature:  Mail BVT
     Then click select extra services button on print form
     Then expect extra services return receipt price to be 2.75
     Then expect restricted delivery on extra services modal price to be 5.10
-    Then expect extra services cod price to be 5.70
+    Then expect extra services cod price is $5.70
     Then expect extra services total cost is $26.15
     Then save extra services
     Then sign out

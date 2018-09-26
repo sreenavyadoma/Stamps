@@ -43,14 +43,14 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
 
     Then set extra services cod to 20.00
     Then click continue button on value must be shown modal
-    Then expect extra services cod value is 20.00
+    Then expect extra services cod value is $20.00
     Then save Extra Services
     Then expect advanced options hide label value is unchecked
     Then check advanced options hide label value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Collect On Delivery
     Then click continue in Hidden Postage not Allowed modal
     Then click select extra services button on print form
-    Then expect extra services cod value is 0.00
+    Then expect extra services cod value is $0.00
 
     Then set extra services handling to Live Animal (with Fee)
     Then click continue button on value must be shown modal
@@ -132,14 +132,14 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
 
     Then set extra services cod to 20.00
     Then click continue button on value must be shown modal
-    Then expect extra services cod value is 20.00
+    Then expect extra services cod value is $20.00
     Then save Extra Services
     Then expect advanced options hide label value is unchecked
     Then check advanced options hide label value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Collect on Delivery
     Then click continue in Hidden Postage not Allowed modal
     Then click select extra services button on print form
-    Then expect extra services cod value is None
+    Then expect extra services cod value is $None
 
     Then set extra services handling to Live Animal (with Fee)
     Then click continue button on value must be shown modal
@@ -183,14 +183,14 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
 
     Then set extra services cod to 20.00
     Then click continue button on value must be shown modal
-    Then expect extra services cod value is 20.00
+    Then expect extra services cod value is $20.00
     Then save Extra Services
     Then expect advanced options hide label value is unchecked
     Then check advanced options hide label value
     Then expect Hidden Postage not Allowed modal appears due to Extra Service Collect on Delivery
     Then click continue in Hidden Postage not Allowed modal
     Then click select extra services button on print form
-    Then expect extra services cod value is None
+    Then expect extra services cod value is $None
 
     Then set extra services handling to Live Animal (with Fee)
     Then click continue button on value must be shown modal
@@ -247,7 +247,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
 
 
     Then set extra services cod to 20.00
-    Then expect extra services cod price to be 5.65
+    Then expect extra services cod price is $5.65
 
     Then check return receipt on extra services modal
     Then expect return receipt on extra services modal price to be 2.75
@@ -264,7 +264,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
 
     Then expect return receipt on extra services modal price to be 2.75
     Then expect restricted delivery on extra services modal price to be 4.95
-    Then expect extra services cod price to be 5.65
+    Then expect extra services cod price is $5.65
     Then expect extra services total cost is $25.85
 
     Then save Extra Services

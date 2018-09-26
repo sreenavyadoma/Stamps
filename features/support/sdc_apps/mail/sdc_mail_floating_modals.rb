@@ -84,7 +84,7 @@ module SdcMail
 
       page_object(:window) { { xpath: '//div[contains(@class, "app-window-extra-services")]' } }
       page_object(:title) { { xpath: '//div[contains(@class, "app-window-extra-services")]//div[contains(@class, "x-title-text-default")]' } }
-      page_object(:x_btn) { { xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]' } }
+      page_object(:x_btn) { { xpath: '//div[starts-with(@id,"extraserviceswindow")]//span[contains(@class, "close")]' } }
 
       page_object(:security_label) { { xpath: '//label[text()="Security:"]' } }
       page_object(:cod_label) { { xpath: '//label[text()="COD:"]' } }
