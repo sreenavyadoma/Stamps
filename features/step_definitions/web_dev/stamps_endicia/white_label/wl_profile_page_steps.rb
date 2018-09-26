@@ -75,7 +75,7 @@ Then /^WL: set profile page username to (?:random value|(.*))$/ do |str|
   end
   expect(username.text_value.strip).not_to eql('')
   step "WL: blur_out on profile page"
-  TestData.hash[:username_taken] = WhiteLabel.common_page.username_query(TestData.hash[:username_taken])
+  #TestData.hash[:username_taken] = WhiteLabel.common_page.username_query(TestData.hash[:username_taken])
   SdcLogger.info "UserName = #{str}"
   TestData.hash[:username] = str
 end

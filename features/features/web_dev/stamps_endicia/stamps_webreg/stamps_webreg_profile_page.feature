@@ -134,14 +134,14 @@ Feature: Stamps WebReg: Profile Page
     Then WL: set profile page promo code to 522MS
     Then WL: click profile page continue button
     Then WL: expect membership page header exists
-    Then WL: expect membership page pricing and billing paragraph for offer 511 and plan sku 01020088 to be If you decide to continue past the trial, you will be charged a service fee of just $plan_rate per month. This includes the month following registration. For your convenience, your Stamps.com service will continue uninterrupted unless you decide to cancel. No service fee will be charged if you cancel within the trial period. Your credit card may also be used to pay for postage and optional services.
+    Then WL: expect membership page pricing and billing paragraph for offer 511 and plan sku 1020088 to be If you decide to continue past the trial, you will be charged a service fee of just $plan_rate per month. This includes the month following registration. For your convenience, your Stamps.com service will continue uninterrupted unless you decide to cancel. No service fee will be charged if you cancel within the trial period. Your credit card may also be used to pay for postage and optional services.
     Then WL: click membership page back button
 
 
     Then WL: set profile page promo code to P5ZQ-XSZ9
     Then WL: click profile page continue button
     Then WL: expect membership page header exists
-    Then WL: expect membership page pricing and billing paragraph for offer 593 and plan sku 01020144 to be If you decide to continue past the trial, you will be charged a service fee of just $plan_rate per month. This includes the month following registration. For your convenience, your Stamps.com service will continue uninterrupted unless you decide to cancel. No service fee will be charged if you cancel within the trial period. Your credit card may also be used to pay for postage and optional services.
+    Then WL: expect membership page pricing and billing paragraph for offer 593 and plan sku 1020144 to be If you decide to continue past the trial, you will be charged a service fee of just $plan_rate per month. This includes the month following registration. For your convenience, your Stamps.com service will continue uninterrupted unless you decide to cancel. No service fee will be charged if you cancel within the trial period. Your credit card may also be used to pay for postage and optional services.
 
     Then WL: click membership page back button
 
@@ -149,3 +149,29 @@ Feature: Stamps WebReg: Profile Page
     Then WL: click profile page continue button
     Then WL: expect membership page header exists
     Then WL: expect membership page pricing and billing paragraph for offer 699 and plan sku 1020156 to be If you decide to continue past the trial, you will be charged a service fee of just $plan_rate per month. This includes the month following registration. For your convenience, your Stamps.com service will continue uninterrupted unless you decide to cancel. No service fee will be charged if you cancel within the trial period. Your credit card may also be used to pay for postage and optional services.
+
+
+  @sdcwr_profile_page_ui_validation_mobile
+  Scenario: Profile Page Validation Mobile
+    Then WL: navigates to default registration page for stamps with the following offer id 404
+
+    #Verifying all content present
+    Then pause for 5 seconds
+    Then WL: expect registration navigation bar stamps logo exists
+    Then WL: expect profile bread crumbs is Profile
+
+    Then WL: expect profile page header contain Sign up and avoid trips to the Post Office
+    Then WL: expect profile page side content side account header is Why do I need to create an account?
+    Then WL: expect profile page paragraph contain
+    """
+    The USPS requires you to register your name, telephone number and physical address from which your postage will be printed. This information will be used to create your Stamps.com account.
+    """
+    #Then WL: expect profile page money-saving offers and new products header is "Money-saving offers and new products"
+    Then WL: expect profile page content under money-saving offers and new products
+    """
+    Send me special money-saving offers and information on new products and services from Stamps.com and its partners.
+    """
+    Then WL: expect profile page money-saving offers and new products is checked
+    Then WL: uncheck profile page money-saving offers and new products
+    Then WL: check profile page money-saving offers and new products
+    Then WL: expect profile page money-saving offers and new products is unchecked
