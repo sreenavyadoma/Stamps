@@ -7,6 +7,11 @@ Cucumber::Rake::Task.new(:local_browser) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:sauce_browser) do |t|
+  t.profile = 'sauce_browser'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:display_rates_for_multiple_contacts) do |t|
   t.profile = 'display_rates_for_multiple_contacts'
   t.cucumber_opts = "-p cuke_reports"
