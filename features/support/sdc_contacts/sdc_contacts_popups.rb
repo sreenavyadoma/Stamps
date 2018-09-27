@@ -26,15 +26,19 @@ module SdcContacts
 
   class ContactsPopupCostCode < SdcPage
 
-    text_field(:text_field, tag: :text_field) { { xpath: '//*[contains(@id,"changeCostCode-")]//input[contains(@id, "-inputEl")]' } }
-    page_object(:drop_down) { { xpath: '//*[contains(@id,"changeCostCode-")]//*[contains(@id, "trigger-picker")][contains(@class, "arrow")]' } }
-    page_object(:save_button, tag: :span, required: true, timeout: 45 ) { { xpath: '//span[text()="Save"]'} }
+    #text_field(:text_field, tag: :text_field) { { xpath: '//*[contains(@id,"changeCostCode-")]//input[contains(@id, "-inputEl")]' } } ID Changed
+    #page_object(:drop_down) { { xpath: '//*[contains(@id,"changeCostCode-")]//*[contains(@id, "trigger-picker")][contains(@class, "arrow")]' } } ID Changed
+    # page_object(:save_button, tag: :span, required: true, timeout: 45 ) { { xpath: '//span[text()="Save"]'} }
+    page_object(:drop_down) { { xpath: '//div[text()="Change Cost Code"]//following::div[contains(@id, "trigger-picker")][contains(@class, "arrow")]' } }
+    text_field(:text_field, tag: :text_field) { { xpath: '//div[text()="Change Cost Code"]//following::input[contains(@id, "-inputEl")]' } }
+    page_object(:save_button, tag: :span, required: true, timeout: 45 ) { { xpath: '//div[text()="Change Cost Code"]//following::span[text()="Save"]'} }
 
     def selection_costcode(name: 'selection', value: 'None')
       page_object(name) { { xpath: "//li[text()='#{value}']" } }
     end
 
   end
+
 
 
 end

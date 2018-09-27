@@ -69,7 +69,8 @@ Then /^[sS]et [Cc]ost [Cc]ode [Vv]alue [Ii]n [Tt]he [Cc]hange [Cc]ostcode [Pp]op
   elsif costcode_name == "existing value"
     left_nav_costcode = SdcContacts.contacts_left_nav_cost_code
     row_count = left_nav_costcode.total_costcodes.count
-    str = left_nav_costcode.cost_code_name(row_count-2)
+    str = left_nav_costcode.cost_code_name(row_count-1)
+    TestData.hash[:costcode_val] = str
   else
     str = costcode_name
   end

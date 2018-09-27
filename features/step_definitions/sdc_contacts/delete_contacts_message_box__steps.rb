@@ -22,21 +22,3 @@ Then /^delete contacts message box click on close button$/ do
     contacts_grid = SdcContacts.contacts_body
     contacts_grid.wait_until_present(timeout: 20)
 end
-
-Then /^Set Cost code value in the Change Costcode pop up box to (.*)/ do |str|
-  cost_code = SdcContacts.contacts_popup_cost_code
-  #cost_code.text_field.safe_wait_until_present(timeout: 10)
-  cost_code.selection_costcode(value: str)
-  cost_code.drop_down.click unless cost_code.selection.present?
-  cost_code.text_field.set(str)
-  cost_code.selection.safe_click
-  expect(cost_code.text_field.text_value).to include(str)
-  p str
-end
-
-Then /^click on cost code save button$/ do
-  cost_code = SdcContacts.contacts_popup_cost_code
-  cost_code.save_button.safe_wait_until_present(timeout: 10)
-  cost_code.save_button.click
-end
-
