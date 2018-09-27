@@ -7,7 +7,7 @@ Feature:  Contacts BVT - Contacts Cost Codes
   Scenario: Add Cost Code scenario 1: Add cost code from TOP Nav ,Sent to Cost codes page, add an exsisting cost code and expect error is displayed and make sure cost codes save and visible on contacts page
     Then sign-in to orders
     Then navigate to contacts
-    #Then on contacts left navigation click on cost codes expand button
+    Then on contacts left navigation click on cost codes expand button
     Then click contacts toolbar cost codes dropdown
     Then on cost codes dropdown menu select Add/Edit Cost Codes
     Then expect cost code page is displayed

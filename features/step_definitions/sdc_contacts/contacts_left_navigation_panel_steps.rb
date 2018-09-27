@@ -1,19 +1,15 @@
-Then /^[Oo]n [Ll]eft [Nn]avigation [Mm]enu [Ss]earch [Cc]ontact (.*)$/ do |str|
-
+Then /^search for contact (.*) from the contacts left navigation filter$/ do |str|
   contacts_detail= SdcContacts.contacts_detail
   contacts_detail.contacts_detail_panel.safe_wait_until_present(timeout: 15)
   if str=='newly added'
     value ||= TestData.hash[:full_name]
-    step "set contacts filter panel search textbox to #{value}"
+    step "set search text on contacts filter panel to #{value}"
   else
-    step "set contacts filter panel search textbox to #{str}"
+    step "set search text on contacts filter panel to #{str}"
   end
-  #contacts_left_navigation= SdcContacts.contacts_left_navigation_panel
-  #contacts_left_navigation.search_contacts.safe_wait_until_present(timeout: 15)
-  #contacts_left_navigation.search_contacts.set(str)
-  step "click contacts filter panel search button"
-  #contacts_left_navigation.search_icon.safe_wait_until_present(timeout: 15)
-  #contacts_left_navigation.search_icon.click
+
+  step "click search button on contacts filter panel search button"
+
   SdcContacts.loading_contacts.safe_wait_until_present(timeout: 15)
   SdcContacts.contacts_body.safe_wait_until_present(timeout: 15)
   SdcContacts.contacts_left_navigation_search_results.results.safe_wait_until_present(timeout:30)
@@ -38,13 +34,13 @@ end
     end
   end
 
-  Then /^[Ss]et [Cc]ontacts [Ff]ilter [Pp]anel [Ss]earch [Tt]extbox [Tt]o (.*)$/ do |str|
+  Then /^set search text on contacts filter panel to (.*)$/ do |str|
     contacts_left_navigation= SdcContacts.contacts_left_navigation_panel
     contacts_left_navigation.search_contacts.safe_wait_until_present(timeout: 15)
     contacts_left_navigation.search_contacts.set(str)
   end
 
-  Then /^[Cc]lick [Cc]ontacts [Ff]ilter [Pp]anel [Ss]earch [Bb]utton$/ do
+  Then /^click search button on contacts filter panel search button$/ do
     contacts_left_navigation= SdcContacts.contacts_left_navigation_panel
     contacts_left_navigation.search_icon.safe_wait_until_present(timeout: 15)
     contacts_left_navigation.search_icon.click
@@ -64,14 +60,22 @@ Then /^[Cc]lose [Tt]he [Ss]earch [Rr]esults [Bb]y [Cc]licking [Oo]n [Rr]emove [B
     search_results.search_results_remove.click
 end
 
-Then /^[Oo]n [Ll]eft [Nn]avigation [Pp]anel [Cc]lick [Oo]n [Cc]ollapse [Bb]utton$/ do
-  left_navigation = SdcContacts.contacts_left_navigation_panel
-  left_navigation.collapse.safe_wait_until_present(timeout: 15)
-  left_navigation.collapse.click
-end
-
-Then /^[Ee]xpand [Cc]ollapsed [Ll]eft [Nn]avigation [Ff]ilter [Pp]anel$/ do
+Then /^click on expand button of contacts left navigation$/ do
   left_navigation = SdcContacts.contacts_left_navigation_panel
   left_navigation.expand.safe_wait_until_present(timeout: 15)
   left_navigation.expand.click
+  expect(left_navigation.collapse.present?).to be(true)
+end
+
+Then /^click on collapse button of contacts left navigation$/ do
+  left_navigation = SdcContacts.contacts_left_navigation_panel
+  left_navigation.collapse.safe_wait_until_present(timeout: 15)
+  left_navigation.collapse.click
+  expect(left_navigation.expand.present?).to be(true)
+end
+
+Then /^fetch total count of all contacts$/ do
+  left_nav_all_contacts = SdcContacts.contacts_left_navigation_all_contacts
+  left_nav_all_contacts.all_contacts.safe_wait_until_present(timeout: 15)
+  p "All Contacts count : "+left_nav_all_contacts.all_contacts_count.text_value
 end
