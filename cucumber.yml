@@ -336,7 +336,7 @@ bvt_printing: --tags @bvt_printing --guess PRINTER=factory
 bvt_purchasing: --tags @bvt_purchasing --guess
 bvt_purchasing_cc: --tags @bvt_purchasing_cc --guess USR=cchrvv6qp PW=pass111
 bvt_purchasing_stg: --tags @bvt_purchasing_stg --guess USR=stgugqex0q4 PW=pass111
-bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic --guess HEALTHCHECK=falsepa
+bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic --guess
 bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess
 bvt_shipstation_search: --tags @bvt_shipstation_search --guess
 bvt_orders_ship_date: --tags @bvt_orders_ship_date --guess
