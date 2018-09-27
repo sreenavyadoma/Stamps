@@ -2,6 +2,11 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
+Cucumber::Rake::Task.new(:display_rates_for_multiple_contacts) do |t|
+  t.profile = 'display_rates_for_multiple_contacts'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:reference_number_from_contacts_list) do |t|
   t.profile = 'reference_number_from_contacts_list'
   t.cucumber_opts = "-p cuke_reports"
