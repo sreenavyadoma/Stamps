@@ -3,96 +3,19 @@ Feature:  Contacts BVT - Contacts ToolBar
   Background:
     Given Start test driver
 
-  @sdc_contact_add_new_contact1
+  @sdc_contact_add_new_contact
   Scenario: Contacts BVT Scenario 1 : Click add, add new contact  and the open and view details
     Then sign-in to orders
     Then navigate to contacts
-    Then click contacts toolbar add button
+    Then click add button on contacts toolbar
     Then set contact details to
       | full_name | company | country| street_address | city | state | postal_code | phone  |  email | groups | reference_number|cost_code |
-      |random     |random   |United States|random     |San Juan|Puerto Rico|0097-5824|23345142-123|random  |        |random           |          |
-      #| random | random | United States| random|San Juan | Puerto Rico | 00927-5827   | random  | random  || random |                |
-    Then pause for 5 seconds
-    Then on left navigation menu search contact newly added
-    Then In Contacts Grid Check Row 1
-    Then expect values contact added contacts grid are correct
-    #Then expect value of State/Prv in contacts grid is Florida
-
-  @sdc_contacts_add_new_contact
-   Scenario: Add new Contact Top Nav Scenario 1 :Click add, add new contact  and the open and view details
-    Then sign-in to orders
-    Then navigate to contacts
-    #Then delete all available contacts with the value NewContact
-    #Then expect count of contact search results is 0
-    #Then close the search results by clicking on remove button
-    #Then click contacts toolbar add button
-    #Then set contact details name to BG NewContact Add Verify
-    #Then set contact details company to FL Homes
-    #Then click on contact details panel company expand button
-    #Then set contact details department to Home Department
-    #Then set contact details title to Home Furnishings
-    #Then set contact details country to United States
-    #Then set contact details country to India
-    #Then set contact details street address to  223 E. Concord Street
-    #Then set contact details city to Orlando
-    #Then set contact details Province to Telengana
-    #Then set contact details state to Florida
-    #Then set contact details postal code to 32801
-    #Then set contact details email to new@contact.add
-    #Then set contact details phone to 23345152
-    #Then set contact details phone extension to 987
-    #Then set contact details groups to group1
-    #Then set contact details reference number to ref00012
-    #Then set contact details cost code to Costcode1
-    #Then in contacts grid uncheck row 1
-    Then on left navigation menu search contact NewContact
-    Then expect count of contact search results is 1
-    #== Validation in Contacts Grid
-    #Then expect value of Name in contacts grid is BG NewContact Add Verify
-    #Then expect value of Prefix in contacts grid is BG
-    #Then expect value of First Name in contacts grid is NewContact
-    #Then expect value of Middle Name in contacts grid is Add
-    #Then expect value of Last Name in contacts grid is Verify
-    #Then expect value of Suffix in contacts grid is blank
-    #Then expect value of Company in contacts grid is FL Homes
-    #Then expect value of Titlentavts in contacts grid is Home Furnishings
-    #Then expect value of Department in contacts grid is Home Department
-    #Then expect value of Country in contacts grid is United States
-    #Then expect value of Street Address in contacts grid is  223 E. Concord Street
-    #Then expect value of City in contacts grid is Orlando
-    #Then expect value of Province in contacts grid is blank
-    #Then expect value of State/Prv in contacts grid is Florida
-    #** check postal code
-    Then expect value of Postal Code in contacts grid is 32801
-    Then expect value of Email in contacts grid is new@contact.add
-    #Then expect value of Phone in contacts grid is 23345152
-    #Then expect value of Phone Extension in contacts grid is 987
-    #Then expect value of Reference Number in contacts grid is ref00012
-    #Then expect value of Cost Code in contacts grid is Costcode1
-    # Validation in the Details Panel
+      |random     |random   |United States|random     |San Juan|Federated States Of Micronesia|0097-5824|23345142-123|random  |        |random           |          |
+    Then in contacts grid uncheck row 1
+    Then search for contact newly added from the contacts left navigation filter
     Then in contacts grid check row 1
-    #Then expect value of Name in contacts detail panel is BG NewContact Add Verify
-    #Then click on contact details panel name expand button
-    #Then expect value of Prefix in contacts detail panel is BG
-    #Then expect value of First Name in contacts detail panel is NewContact
-    #Then expect value of Middle Name in contacts detail panel is Add
-    #Then expect value of Last Name in contacts detail panel is Verify
-    #Then expect value of Suffix in contacts detail panel is blank
-    #Then expect value of Company in contacts detail panel is FL Homes
-    #Then click on contact details panel company expand button
-    #Then expect value of Title in contacts detail panel is Home Furnishings
-    #Then expect value of Department in contacts detail panel is Home Department
-    #Then expect value of Country in contacts detail panel is United States
-    #Then expect value of Street Address in contacts detail panel is  223 E. Concord Street
-    #Then expect value of City in contacts detail panel is Orlando
-    #Then expect value of State in contacts detail panel is Florida
-    #Then expect value of Postal Code in contacts detail panel is 32801
-    #Then expect value of Email in contacts detail panel is new@contact.add
-    #Then expect value of Phone in contacts detail panel is 23345152
-    Then expect value of Phone Extension in contacts detail panel is 987
-    Then expect value of Groups in contacts detail panel is group1
-    Then expect value of Reference Number in contacts detail panel is ref00012
-    Then expect value of Cost Code in contacts detail panel is Costcode1
+    Then expect values of contact added in contacts grid are correct
+    Then expect values of contact added in contacts detail panel are correct
 
   @sdc_contacts_delete_single_from_top_navigation
   Scenario: Delete Contact Top Nav Scenario 1 :Delete a newly added contact from top navigation
