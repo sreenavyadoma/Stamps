@@ -18,10 +18,12 @@ module SdcContacts
 
   class ContactsToolbarCostCodes< SdcPage
     #page_object(:toolbar){{xpath: '//*[contains(@class,"x-toolbar sdc-toolbar")]'}}
-    page_object(:cost_codes) { {xpath: '//*[@id="CostCodesMenu"]'} }
+    #page_object(:cost_codes) { {xpath: '//*[@id="CostCodesMenu"]'} } ID Chnages
+    page_object(:cost_codes) { {xpath: '//*[contains(@id,"button-")][text()="Cost Codes"]'} }
     page_object(:cost_codes_change_costcode, required: true, timeout: 10) { { xpath: '//span[text()="Change Cost Code"]'}}
-    page_object(:cost_codes_add_edit_costcode, required: true, timeout: 10) { { xpath: '//span[contains(@id, "add-edit-cost-code-item-textEl")][text()="Add/Edit Cost Codes"]'}}
+    page_object(:cost_codes_add_edit_costcode, required: true, timeout: 10) { { xpath: '//span[text()="Add/Edit Cost Codes"]'}}
   end
+
 
   class << self
     def contacts_toolbar

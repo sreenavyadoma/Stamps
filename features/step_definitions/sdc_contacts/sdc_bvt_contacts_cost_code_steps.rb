@@ -66,22 +66,23 @@ Then /^[sS]et [Cc]ost [Cc]ode [Vv]alue [Ii]n [Tt]he [Cc]hange [Cc]ostcode [Pp]op
 
   if costcode_name == "new costcode added"
     str ||= TestData.hash[:costcode_val]
-  elsif costcode_name == "existing value"
-    left_nav_costcode = SdcContacts.contacts_left_nav_cost_code
-    row_count = left_nav_costcode.total_costcodes.count
-    str = left_nav_costcode.cost_code_name(row_count-2)
-  else
+    elsif costcode_name == "existing value"
+      left_nav_costcode = SdcContacts.contacts_left_nav_cost_code
+      row_count = left_nav_costcode.total_costcodes.count
+      str = left_nav_costcode.cost_code_name(row_count-1)
+      TestData.hash[:costcode_val] = str
+    else
     str = costcode_name
   end
-
   cost_code = SdcContacts.contacts_popup_cost_code
   #cost_code.text_field.safe_wait_until_present(timeout: 10)
   cost_code.selection_costcode(value: str)
   cost_code.drop_down.click unless cost_code.selection.present?
   cost_code.text_field.set(str)
-  cost_code.selection.safe_click
   expect(cost_code.text_field.text_value).to include(str)
+  cost_code.selection.safe_click
   p str
+
 end
 
 Then /^[Cc]lick [Oo]n [Cc]ost [Cc]ode [Ss]ave [Bb]utton$/ do
