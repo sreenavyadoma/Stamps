@@ -1,4 +1,4 @@
-Then /^[Cc]lick [Cc]ontacts [Tt]oolbar [Aa]dd [Bb]utton$/ do
+Then /^click add button on contacts toolbar$/ do
   toolbar =SdcContacts.contacts_toolbar
   toolbar.cost_codes.safe_wait_until_present(timeout: 15)
   toolbar.add.safe_wait_until_present(timeout: 15)

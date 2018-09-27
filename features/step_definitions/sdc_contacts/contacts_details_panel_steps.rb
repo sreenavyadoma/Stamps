@@ -76,7 +76,7 @@ Then /^[Ss]et [Cc]ontact [Dd]etails to$/ do |table|
   end
 
   if cost_code.empty?
-    cost_code='None'
+    # Do not do anything
   else
     step "set contact details cost code to #{cost_code}"
   end
@@ -124,7 +124,7 @@ Then /^[Ss]et [Cc]ontact [Dd]etails [Nn]ame [Pp]refix [Tt]o (.*)$/ do |str|
   name_pre.prefix_selection(value: str)
   name_pre.prefix_drop_down.click unless name_pre.selection.present?
   name_pre.prefix_text_field.set(str)
-  name_pre.prefix_selection.safe_click
+  name_pre.selection.safe_click
   expect(name_pre.prefix_text_field.text_value).to include(str)
   contacts_detail= SdcContacts.contacts_detail
   contacts_detail.name.click
@@ -351,8 +351,38 @@ Then /^[Ee]xpand [Cc]ollapsed [Cc]ontact [Dd]etails [Pp]anel$/ do
     contact_detail.expand_button.click
 end
 
+Then /^expect values of contact added in contacts detail panel are correct$/ do
+  full_name	=	TestData.hash[:full_name]
+  company	=	TestData.hash[:company]
+  country	=	TestData.hash[:country]
+  street_address	=	TestData.hash[:street_address]
+  city	=	TestData.hash[:city]
+  state	=	TestData.hash[:state]
+  postal_code	=	TestData.hash[:postal_code]
+  email	=	TestData.hash[:email]
+  phone	=	TestData.hash[:phone]
+  phone_ext	=	TestData.hash[:phone_ext]
+  groups	=	TestData.hash[:groups]
+  reference_number	=	TestData.hash[:reference_number]
+  cost_code	=	TestData.hash[:cost_code]
+
+  step "expect value of Name in contact details panel is #{full_name}"
+  step "expect value of Company in contact details panel is #{company}"
+  step "expect value of Country in contact details panel is #{country}"
+  step "expect value of Street Address in contact details panel is #{street_address}"
+  step "expect value of City in contact details panel is #{city}"
+  step "expect value of State/Prv in contact details panel is #{state}"
+  step "expect value of Postal Code in contact details panel is #{postal_code}"
+  step "expect value of Email in contact details panel is #{email}"
+  step "expect value of Phone in contact details panel is #{phone}"
+  step "expect value of Phone Extension in contact details panel is #{phone_ext}"
+  step "expect value of Groups in contact details panel is #{groups}"
+  step "expect value of Reference Number in contact details panel is #{reference_number}"
+  step "expect value of Cost Code in contact details panel is #{cost_code}"
+end
+
 #Validation of Values on the Details Panel
-Then /^[Ee]xpect [Vv]alue [Oo]f (.*) in [Cc]ontacts [Dd]etail [Pp]anel is (.*)$/ do |col,value|
+Then /^expect value of (.*) in contact details panel is (.*)$/ do |label,value|
     contacts_detail= SdcContacts.contacts_detail
     contacts_detail.reference_number.safe_wait_until_present(timeout: 15)
 	
@@ -364,7 +394,7 @@ p '**Details Panel**'
     new_value = value
   end
 
-  case col
+  case label
 
   when 'Name'
     actual_value = contacts_detail.name.text_value
@@ -405,9 +435,9 @@ p '**Details Panel**'
     actual_value = contacts_detail.city.text_value
 
   when 'State/Prv' ,'State','Province'
-    if col=='State'
     state = SdcContacts.contacts_state
-    actual_value = state.text_field.text_value
+    if state.text_field.present?
+      actual_value = state.text_field.text_value
       p 'incide case - IF:' + actual_value
     #actual_value = contacts_detail.state_prv.text_value
     else
@@ -416,7 +446,7 @@ p '**Details Panel**'
 
   when 'Postal Code'
     actual_value = contacts_detail.postal_code.text_value
-
+    p "val " + actual_value
   when 'Email'
     actual_value = contacts_detail.email.text_value
 
@@ -428,18 +458,27 @@ p '**Details Panel**'
 
   when 'Groups'
     groups = SdcContacts.contacts_group
-    actual_value = groups.text_field.text_value
-
+    actual_value=groups.text_field.text_value
+    #if p_c.nil?
+      #actual_value = ""
+    #else
+      #actual_value = p_c
+    #end
   when 'Reference Number'
     actual_value = contacts_detail.reference_number.text_value
 
   when 'Cost Code'
     cost_code = SdcContacts.contacts_cost_code
     actual_value = cost_code.text_field.text_value
+    if new_value ==""
+      new_value = 'None'
+    end
   end
-  p 'Col: ' + col
+  p 'Label: ' + label
   p 'given value :' + value
-  p 'actual value :' + actual_value
+  p 'Modified given value '+ new_value
+  p 'Value in details panel :' + actual_value.to_s
+
   expect(actual_value.strip).to eql new_value.strip
 end
 

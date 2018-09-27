@@ -19,7 +19,7 @@ Then /^[Ii]n [Cc]ontacts [Gg]rid [Cc]heck [Rr]ow (\d+)$/ do |row|
   contacts_detail.contacts_detail_panel.safe_wait_until_present(timeout: 30)
 end
 
-Then /^[Ii]n [Cc]ontacts [Gg]rid [Uu]ncheck [Rr]ow (\d+)$/ do |row|
+Then /^in contacts grid uncheck row (\d+)$/ do |row|
   contacts_grid_body = SdcContacts.contacts_body
   contacts_grid_body.safe_wait_until_present(timeout: 60)
   checkbox = SdcContacts.contacts_grid_column(:checkbox).contacts_checkbox_row(row)
@@ -114,7 +114,7 @@ Then /^[Ee]xpect [Nn]ame [Dd]etails for (.*) [Ii]n [Cc]ontacts [Gg]rid [Ii]s [Uu
   end
 end
 
-Then /^expect values contact added contacts grid are correct$/ do
+Then /^expect values of contact added in contacts grid are correct$/ do
 
   full_name	=	TestData.hash[:full_name]
   company	=	TestData.hash[:company]
@@ -126,7 +126,6 @@ Then /^expect values contact added contacts grid are correct$/ do
   email	=	TestData.hash[:email]
   phone	=	TestData.hash[:phone]
   phone_ext	=	TestData.hash[:phone_ext]
-  groups	=	TestData.hash[:groups]
   reference_number	=	TestData.hash[:reference_number]
   cost_code	=	TestData.hash[:cost_code]
 
@@ -140,14 +139,12 @@ Then /^expect values contact added contacts grid are correct$/ do
   step "expect value of Email in contacts grid is #{email}"
   step "expect value of Phone in contacts grid is #{phone}"
   step "expect value of Phone Extension in contacts grid is #{phone_ext}"
-  step "expect value of Groups in contacts grid is #{groups}"
   step "expect value of Reference Number in contacts grid is #{reference_number}"
   step "expect value of Cost Code in contacts grid is #{cost_code}"
-
 end
 
 #Validate Details in Contacts Grid
-Then /^[Ee]xpect [Vv]alue [Oo]f (.*) in [Cc]ontacts [Gg]rid is (.*)$/ do |col,value|
+Then /^expect value of (.*) in contacts grid is (.*)$/ do |col,value|
   contacts_grid_body = SdcContacts.contacts_body
   contacts_grid_body.safe_wait_until_present(timeout: 60)
 
@@ -218,15 +215,12 @@ Then /^[Ee]xpect [Vv]alue [Oo]f (.*) in [Cc]ontacts [Gg]rid is (.*)$/ do |col,va
     column = SdcContacts.contacts_grid_column(:state_prv)
     expect(column).present?
     expect(column.contacts_header_text).to eql('State/Prv')
-    states = {"Puerto Rico" => "PR"}
-    new_value = states[value]
     #case value
       #when 'Florida'
         #new_value ='FL'
       #when 'Puerto Rico'
         #new_value ='PR'
     # #end
-
   when 'Postal Code'
     column = SdcContacts.contacts_grid_column(:postal_code)
     expect(column).present?
@@ -246,11 +240,6 @@ Then /^[Ee]xpect [Vv]alue [Oo]f (.*) in [Cc]ontacts [Gg]rid is (.*)$/ do |col,va
     column = SdcContacts.contacts_grid_column(:phone_ext)
     expect(column).present?
     expect(column.contacts_header_text).to eql('Ext.')
-
-  when 'Groups'
-    column = SdcContacts.contacts_grid_column(:groups)
-    expect(column).present?
-    expect(column.contacts_header_text).to eql('Groups')
 
   when 'Reference Number'
     column = SdcContacts.contacts_grid_column(:reference_no)
@@ -274,13 +263,82 @@ Then /^[Ee]xpect [Vv]alue [Oo]f (.*) in [Cc]ontacts [Gg]rid is (.*)$/ do |col,va
   end
   #p column.contacts_header_text
   actual_value = column.contacts_text_at_row(1)
-  p 'given value :' + value
-  p 'actual value :' + actual_value
-  p 'new value :' + new_value
+
   if column.contacts_header_text =='Country'
     val=actual_value.split("-")
     expect(val[1].strip).to eql new_value.strip
+  elsif column.contacts_header_text =='State/Prv'
+    states = {"AA (Armed Forces)" => "AA",
+        "AE (Armed Forces)" => "AE",
+        "Alaska" => "AK",
+        "Alabama" => "AL",
+        "AP (Armed Forces)" => "AP",
+        "Arkansas" => "AR",
+        "American Samoa" => "AS",
+        "Arizona" => "AZ",
+        "California" => "CA",
+        "Colorado" => "CO",
+        "Connecticut" => "CT",
+        "Dist. of Columbia" => "DC",
+        "Delaware" => "DE",
+        "Florida" => "FL",
+        "Federated States Of Micronesia" => "FM",
+        "Georgia" => "GA",
+        "Guam" => "GU",
+        "Hawaii" => "HI",
+        "Iowa" => "IA",
+        "Idaho" => "ID",
+        "Illinois" => "IL",
+        "Indiana" => "IN",
+        "Kansas" => "KS",
+        "Kentucky" => "KY",
+        "Louisiana" => "LA",
+        "Massachusetts" => "MA",
+        "Maryland" => "MD",
+        "Maine" => "ME",
+        "Marshall Islands" => "MH",
+        "Michigan" => "MI",
+        "Minnesota" => "MN",
+        "Missouri" => "MO",
+        "Northern Mariana Islands" => "MP",
+        "Mississippi" => "MS",
+        "Montana" => "MT",
+        "North Carolina" => "NC",
+        "North Dakota" => "ND",
+        "Nebraska" => "NE",
+        "New Hampshire" => "NH",
+        "New Jersey" => "NJ",
+        "New Mexico" => "NM",
+        "Nevada" => "NV",
+        "New York" => "NY",
+        "Ohio" => "OH",
+        "Oklahoma" => "OK",
+        "Oregon" => "OR",
+        "Pennsylvania" => "PA",
+        "Puerto Rico" => "PR",
+        "Palau" => "PW",
+        "Rhode Island" => "RI",
+        "South Carolina" => "SC",
+        "South Dakota" => "SD",
+        "Tennessee" => "TN",
+        "Texas" => "TX",
+        "Utah" => "UT",
+        "Virginia" => "VA",
+        "Virgin Islands" => "VI",
+        "Vermont" => "VT",
+        "Washington" => "WA",
+        "Wisconsin" => "WI",
+        "West Virginia" => "WV",
+        "Wyoming" => "WY"}
+        #TestData.hash[:states]=
+    new_value = states[value]
+    expect(actual_value.strip).to eql new_value.strip
   else
     expect(actual_value.strip).to eql new_value.strip
   end
+
+  p 'given value :' + value
+  p 'modified given value :' + new_value
+  p 'value on Grid :' + actual_value
+
 end
