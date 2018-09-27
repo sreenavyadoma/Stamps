@@ -62,6 +62,12 @@ Cucumber::Rake::Task.new(:sdc_contacts_change_group_add_remove) do |t|
   t.profile = 'sdc_contacts_change_group_add_remove'
   t.cucumber_opts = "-p cuke_reports"
 end
+
+Cucumber::Rake::Task.new(:sdc_contacts_edit_delete_group) do |t|
+  t.profile = 'sdc_contacts_edit_delete_group'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:sdc_contact_add_new_contact) do |t|
   t.profile = 'sdc_contact_add_new_contact'
   t.cucumber_opts = "-p cuke_reports"
