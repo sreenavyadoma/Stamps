@@ -136,8 +136,62 @@ Then /^hide advanced options$/ do
 end
 
 Then /^set print form reference number (.+)$/ do |value|
-  SdcMail.print_form.advanced_options.reference_num.set(value)
+  advanced_options = SdcMail.print_form.advanced_options
+  advanced_options.reference_num.wait_until_present(timeout: 5)
+  advanced_options.reference_num.set(value)
 end
+
+Then /^expect use reference # from contact list on print form is present$/ do
+  advanced_options = SdcMail.print_form.advanced_options
+  advanced_options.use_ref_num_from_contact_list.wait_until_present(timeout: 5)
+  expect(advanced_options.use_ref_num_from_contact_list).to be_present
+end
+
+Then /^expect use reference # from contact list on print form is unchecked$/ do
+  advanced_options = SdcMail.print_form.advanced_options
+  advanced_options.use_ref_num_from_contact_list.wait_until_present(timeout: 5)
+  expect(advanced_options.use_ref_num_from_contact_list.checked?).to be(false)
+end
+
+Then /^check use reference # from contact list on print form$/ do
+  advanced_options = SdcMail.print_form.advanced_options
+  advanced_options.use_ref_num_from_contact_list.wait_until_present(timeout: 5)
+  advanced_options.use_ref_num_from_contact_list.check
+  expect(advanced_options.use_ref_num_from_contact_list.checked?).to be(true)
+end
+
+Then /^uncheck use reference # from contact list on print form$/ do
+  advanced_options = SdcMail.print_form.advanced_options
+  advanced_options.use_ref_num_from_contact_list.wait_until_present(timeout: 5)
+  advanced_options.use_ref_num_from_contact_list.uncheck
+  expect(advanced_options.use_ref_num_from_contact_list.checked?).to be(false)
+end
+
+Then /^expect use reference # from contact list on print form is checked$/ do
+  advanced_options = SdcMail.print_form.advanced_options
+  advanced_options.use_ref_num_from_contact_list.wait_until_present(timeout: 5)
+  expect(advanced_options.use_ref_num_from_contact_list.checked?).to be(true)
+end
+
+Then /^expect placeholder for disabled reference # on print form is (.+)$/ do |str|
+  advanced_options = SdcMail.print_form.advanced_options
+  advanced_options.reference_num_disabled.wait_until_present(timeout: 5)
+  placeholder = advanced_options.reference_num_disabled.attribute_value('placeholder').strip
+  expect(placeholder).to eql str
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Then /^set print form cost code (.+)$/ do |value|
   cost_code = SdcMail.print_form.advanced_options.cost_code
@@ -146,6 +200,61 @@ Then /^set print form cost code (.+)$/ do |value|
   cost_code.selection.click
   expect(cost_code.text_field.text_value).to include(value)
 end
+
+Then /^expect use cost code from contact list on print form is present$/ do
+  advanced_options = SdcMail.print_form.advanced_options
+  advanced_options.use_cost_code_from_contact_list.wait_until_present(timeout: 5)
+  expect(advanced_options.use_cost_code_from_contact_list).to be_present
+end
+
+Then /^expect use cost code from contact list on print form is unchecked$/ do
+  advanced_options = SdcMail.print_form.advanced_options
+  advanced_options.use_cost_code_from_contact_list.wait_until_present(timeout: 5)
+  expect(advanced_options.use_cost_code_from_contact_list.checked?).to be(false)
+end
+
+Then /^check use cost code from contact list on print form$/ do
+  advanced_options = SdcMail.print_form.advanced_options
+  advanced_options.use_cost_code_from_contact_list.wait_until_present(timeout: 5)
+  advanced_options.use_cost_code_from_contact_list.check
+  expect(advanced_options.use_cost_code_from_contact_list.checked?).to be(true)
+end
+
+Then /^uncheck use cost code from contact list on print form$/ do
+  advanced_options = SdcMail.print_form.advanced_options
+  advanced_options.use_cost_code_from_contact_list.wait_until_present(timeout: 5)
+  advanced_options.use_cost_code_from_contact_list.uncheck
+  expect(advanced_options.use_cost_code_from_contact_list.checked?).to be(false)
+end
+
+Then /^expect use cost code from contact list on print form is checked$/ do
+  advanced_options = SdcMail.print_form.advanced_options
+  advanced_options.use_cost_code_from_contact_list.wait_until_present(timeout: 5)
+  expect(advanced_options.use_cost_code_from_contact_list.checked?).to be(true)
+end
+
+Then /^expect placeholder for disabled cost code on print form is (.+)$/ do |str|
+  advanced_options = SdcMail.print_form.advanced_options
+  advanced_options.cost_code_disabled.wait_until_present(timeout: 5)
+  placeholder = advanced_options.cost_code_disabled.attribute_value('placeholder').strip
+  expect(placeholder).to eql str
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Then /^expect print form ship date is (\d+) (?:day|days) from today$/ do |day|
   step "expect print form ship date dropdown is present"
@@ -156,6 +265,7 @@ end
 
 Then /^set print form ship date to today$/ do
   step 'set print form ship date to today plus 0'
+  #step 'set print form advanced options ship date to today plus 0'
 end
 
 Then /^set print form ship date to today plus (\d+)$/ do |day|

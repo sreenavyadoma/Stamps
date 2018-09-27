@@ -361,8 +361,8 @@ Then /^run rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
             step "set order details pounds to #{weight_lb}"  if SdcGlobal.web_app == :orders
             step "set print form pounds to #{weight_lb} by arrows"  if SdcGlobal.web_app == :mail
           else
-            step 'set order details pounds to 0'  if SdcEnv.sdc_app == :orders
-            step 'set print form pounds to 0 by arrows'  if SdcEnv.sdc_app == :mail
+            step 'set order details pounds to 0'  if SdcGlobal.web_app == :orders
+            step 'set print form pounds to 0 by arrows'  if SdcGlobal.web_app == :mail
             weight_oz = Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_f
             TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:weight]] = "#{weight_oz} oz."
             TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:weight_lb]] = weight_oz
@@ -392,8 +392,8 @@ Then /^run rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           TestData.hash[:result_sheet][row_number, TestData.hash[:result_sheet_columns][:tracking_selected]] = TestData.hash[:tracking]
           # sleep(0.525)
           step 'wait for js to stop'
-          step 'blur out on print form' if SdcEnv.sdc_app == :mail
-          step 'blur out on order details form' if SdcEnv.sdc_app == :orders
+          step 'blur out on print form' if SdcGlobal.web_app == :mail
+          step 'blur out on order details form' if SdcGlobal.web_app == :orders
           step 'pause for 1 second'
 
           # get total cost actual value from UI

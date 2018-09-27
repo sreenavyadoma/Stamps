@@ -25,7 +25,8 @@ module SdcMail
         page_objects(:dom_text_field, index: 0, tag: :text_fields) { { xpath: '//input[@name="ShipCountryCode"]' } }
         page_objects(:int_text_field, index: 1, tag: :text_fields) { { xpath: '//input[@name="ShipCountryCode"]' } }
         # Mail To link
-        page_object(:link, tag: :u) { { xpath: '//label[contains(@class, "sdc-mainpanel-shiptolinkbtn")]//u' } }
+        #page_object(:link, tag: :u) { { xpath: '//label[contains(@class, "sdc-mainpanel-shiptolinkbtn")]//u' } }
+        page_object(:link) { { xpath: '//label[contains(@class, "sdc-mainpanel-shiptolinkbtn")]//b' } }
         # Domestic Address
         page_object(:text_area, tag: :textarea) { { xpath: '//textarea[@name="freeFormAddress"]' } }
         # International Address
@@ -83,9 +84,29 @@ module SdcMail
     end
 
     module AdvancedOptionsContainer
+
+      class AdvancedOptionsCostCode < SdcPage
+        text_field(:text_field, tag: :text_field) { { xpath: '//input[contains(@id, "costcodesdroplist")]' } }
+        page_object(:drop_down) { { xpath: '//*[contains(@id, "costcodesdroplist")][contains(@class, "arrow")]' } }
+
+        def selection_element(name: 'selection', value: 'None')
+          page_object(name) { { xpath: "//li[text()='#{value}']" } }
+        end
+      end
+
       class AdvancedOptions < SdcPage
 
-        page_object(:reference_num, tag: :text_field) { { xpath: '//*[text()="Reference #:"]/..//input' } }
+        page_object(:reference_num, tag: :text_field) { { xpath: '//label[text()="Reference #:"]/..//input[@maxlength="50"]' } }
+        page_object(:reference_num_disabled, tag: :text_field) { { xpath: '//label[text()="Reference #:"]/..//input[contains(@placeholder,"Contact List")]' } }
+
+        page_object(:ref_num_chooser) { { xpath: '//label[text()="Use Reference # from Contact List"]/preceding-sibling::span' } }
+        page_object(:ref_num_verify) { { xpath: '//label[text()="Use Reference # from Contact List"]/../../..' } }
+        chooser(:use_ref_num_from_contact_list, :ref_num_chooser, :ref_num_verify, :class, :checked)
+
+        page_object(:cost_code_disabled, tag: :text_field) { { xpath: '//label[text()="Cost Code:"]/..//input[contains(@placeholder,"Contact List")]' } }
+        page_object(:cost_code_chooser) { { xpath: '//label[text()="Use Cost Code from Contact List"]/preceding-sibling::span' } }
+        page_object(:cost_code_verify) { { xpath: '//label[text()="Use Cost Code from Contact List"]/../../..' } }
+        chooser(:use_cost_code_from_contact_list, :cost_code_chooser, :cost_code_verify, :class, :checked)
 
         page_object(:hide_label_value_chooser) { { xpath: '//*[text()="Hide Label Value"]/../span' } }
         page_object(:hide_label_value_verify) { { xpath: '//*[text()="Hide Label Value"]/../../..' } }
@@ -141,15 +162,6 @@ module SdcMail
 
         def cost_code
           AdvancedOptionsCostCode.new
-        end
-      end
-
-      class AdvancedOptionsCostCode < SdcPage
-        text_field(:text_field, tag: :text_field) { { xpath: '//input[contains(@id, "costcodesdroplist")]' } }
-        page_object(:drop_down) { { xpath: '//*[contains(@id, "costcodesdroplist")][contains(@class, "arrow")]' } }
-
-        def selection_element(name: 'selection', value: 'None')
-          page_object(name) { { xpath: "//li[text()='#{value}']" } }
         end
       end
 

@@ -19,6 +19,10 @@ module SdcCore
         rand_alpha_numeric(*args).to_s.split.map(&:capitalize).join(' ')
       end
 
+      def rand_group_name(*args)
+        rand_alpha_numeric(*args).to_s.split.map(&:capitalize).join(' ')
+      end
+
       def rand_reference_number(*args)
         rand_alpha_numeric(*args).to_s.split.map(&:capitalize).join(' ')
       end
