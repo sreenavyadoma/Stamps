@@ -38,6 +38,12 @@ Cucumber::Rake::Task.new(:extra_services_cost_for_rrb_service) do |t|
 end
 
 #CONTACTS
+
+Cucumber::Rake::Task.new(:sdc_contacts_edit_delete_group) do |t|
+  t.profile = 'sdc_contacts_edit_delete_group'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:sdc_contact_add_new_contact) do |t|
   t.profile = 'sdc_contact_add_new_contact'
   t.cucumber_opts = "-p cuke_reports"
