@@ -47,7 +47,3 @@ Feature:  Contacts BVT - Contacts Filter Panel
     Then click on save button of add groups pop up window
     Then expect error message is not displayed on add groups pop up window
 
-
-
-
-

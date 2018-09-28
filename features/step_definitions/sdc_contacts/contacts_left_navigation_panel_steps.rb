@@ -34,6 +34,7 @@ end
     end
   end
 
+
   Then /^set search text on contacts filter panel to (.*)$/ do |str|
     contacts_left_navigation= SdcContacts.contacts_left_navigation_panel
     contacts_left_navigation.search_contacts.safe_wait_until_present(timeout: 15)

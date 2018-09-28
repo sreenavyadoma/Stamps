@@ -27,6 +27,7 @@ module SdcContacts
     page_object(:label) { {xpath: '(//*[contains(@class, "sdc-badgebutton-text")])[2]'} }
   end
 
+
   class LeftNavigationAllContacts <SdcPage
     #page_object(:all_contacts){{xpath: '//*[@id="total_contacts"]'}}
     #page_object(:all_contacts_count) { {xpath: '(//*[@id="total_contacts"]//div[contains(@class, "sdc-badgebutton-widget")]//div[@class="sdc-badge"])'} }

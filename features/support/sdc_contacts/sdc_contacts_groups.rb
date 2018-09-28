@@ -20,7 +20,6 @@ module SdcContacts
     page_objects(:manage_groups_table, required: true, timeout: 10) { {xpath: '//*[contains(@id,"title-")][text() = "Manage Groups"]/following::div[contains(@id,"tableview-")]//*[@class="x-grid-item-container"]//table'} }
     page_object(:manage_groups_close, required: true, timeout: 10) { { xpath: '//*[contains(@id,"title-")][text() = "Manage Groups"]/following::span[contains(@class,"-close-")]' } }
 
-
     def group_name(row)
       #xpath_text = "//*[@id = 'multiselect-groups-grid']//*[@class='x-grid-item-container']//table[#{row}]//tbody//tr//td[2]"
       xpath_text = "//*[contains(@id,'title-')][text() = 'Manage Groups']/following::div[contains(@id,'tableview-')]//*[@class='x-grid-item-container']//table[#{row}]/tbody/tr/td"

@@ -53,6 +53,7 @@ Then /^click on groups add button of contacts left navigation$/ do
   step "expect add groups pop up is displayed"
 end
 
+
 Then /^click on groups settings button of contacts left navigation$/ do
   toolbar = SdcContacts.contacts_left_nav_group
   toolbar.left_nav_add_edit_groups.flash
