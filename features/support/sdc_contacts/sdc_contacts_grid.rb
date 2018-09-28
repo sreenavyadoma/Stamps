@@ -53,7 +53,7 @@ module SdcContacts
         page_object(:checkbox_header) { { xpath: xpath } }
       else
         xpath = contacts_column_xpath(column)
-        page_object("header_element_#{column}") { { xpath: xpath } }
+        page_object(:header_element) { { xpath: xpath } }
       end
     end
 
