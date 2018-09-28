@@ -166,7 +166,6 @@ Then /^expect group name added is available in the manage group pop up table$/ d
       i=i+1
     end
   expect(group_name_available=='yes').to eql(true)
-  SdcLogger.info "Group is not available in the Manange Groups table"
 end
 
 Then /^expect group name deleted is not available in the manage group pop up table$/ do
@@ -185,7 +184,7 @@ Then /^expect group name deleted is not available in the manage group pop up tab
     end
     i=i+1
   end
-  expect(group_name_available=='no').to eql(true)
+  expect(group_name_available=='yes').to eql(false)
   SdcLogger.info "Group is not available in the Manange Groups table"
 end
 
