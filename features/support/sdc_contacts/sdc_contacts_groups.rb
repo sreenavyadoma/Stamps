@@ -134,7 +134,6 @@ module SdcContacts
     def contacts_delete_groups
       ContactsDeleteGroups.new
     end
-
   end
 
   end

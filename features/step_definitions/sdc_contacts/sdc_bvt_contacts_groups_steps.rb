@@ -219,7 +219,6 @@ Then /^search and choose (.*) group from groups list from change groups popup to
           group_popup.change_groups_search.set(str)
           TestData.hash[:group_added_value] = str
       end
-
     else
       p "No groups available for this account"
     end

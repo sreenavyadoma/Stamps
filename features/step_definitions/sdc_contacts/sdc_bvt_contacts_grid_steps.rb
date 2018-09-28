@@ -337,6 +337,7 @@ Then /^expect value of (.*) in contacts grid is (.*)$/ do |col,value|
     expect(actual_value.strip).to eql new_value.strip
   end
 
+
   p 'given value :' + value
   p 'modified given value :' + new_value
   p 'value on Grid :' + actual_value

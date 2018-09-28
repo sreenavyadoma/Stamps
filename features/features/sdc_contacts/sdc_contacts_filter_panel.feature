@@ -46,3 +46,42 @@ Feature:  Contacts BVT - Contacts Filter Panel
     Then click on save button of add groups pop up window
     Then expect error message is not displayed on add groups pop up window
 
+  @sdc_contacts_left_add_edit_group_add
+  Scenario: Contacts BVT Scenario 1: Add/Edit group from contact left navigation
+    Then sign-in to orders
+    Then navigate to contacts
+    # Groups Left Navigation settings Button - Add from (manage groups)
+    Then mousehover on groups section of left navigation
+    Then click on groups settings button of contacts left navigation
+    Then expect manage groups pop up is displayed
+    Then click add button on manage groups window toolbar
+    Then set group name on add group pop up to blank
+    Then click on save button of add groups pop up window
+    Then expect error message of blank group name is displayed on add groups pop up window
+    Then set group name on add group pop up to existing
+    Then click on save button of add groups pop up window
+    Then expect error message of existing group name is displayed on add groups pop up window
+    Then set group name on add group pop up to random
+    Then click on save button of add groups pop up window
+    Then expect error message is not displayed on add groups pop up window
+    Then expect manage groups pop up is displayed
+    Then expect group name added is available in the manage group pop up table
+    # Groups Left Navigation settings Button - Edit and delete from (manage groups)
+    Then click existing row in manage group table
+    Then click edit button on manage groups window toolbar
+    Then set group name on edit pop up to blank
+    Then click on save button of edit groups pop up
+    Then expect error message of blank group name is displayed on edit groups pop up window
+    Then set group name on edit pop up to existing
+    Then click on save button of edit groups pop up
+    Then expect error message of existing group name is displayed on edit groups pop up window
+    Then set group name on edit pop up to random
+    Then click on save button of edit groups pop up
+    Then expect error message is not displayed on edit groups pop up window
+    Then expect manage groups pop up is displayed
+    Then expect group name added is available in the manage group pop up table
+    Then click existing row in manage group table
+    Then click delete button on manage groups window toolbar
+    Then click on yes button of delete groups pop up
+    Then expect group name deleted is not available in the manage group pop up table
+

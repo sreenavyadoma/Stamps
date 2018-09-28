@@ -49,8 +49,6 @@ end
   Then /^[Ee]xpect [Cc]ount [Oo]f [Cc]ontact [Ss]earch [Rr]esults [Ii]s (.*)$/ do |count|
     search_results= SdcContacts.contacts_left_navigation_search_results
     actual_count =search_results.search_results_count.text_value
-    #p 'actual :' + actual_count
-    #p 'given :' + count
     expect(actual_count==count).to be (true)
   end
 
