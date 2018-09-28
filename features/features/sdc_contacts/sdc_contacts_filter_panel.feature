@@ -29,7 +29,6 @@ Feature:  Contacts BVT - Contacts Filter Panel
     Then click on groups expand button of contacts left navigation
     Then fetch total against each group available
 
-
   @sdc_contacts_left_navigation_add_group
   Scenario: Contacts BVT Scenario 1: Add new group from contact left navigation
     Then sign-in to orders
