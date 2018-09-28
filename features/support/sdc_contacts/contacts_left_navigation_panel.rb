@@ -38,6 +38,9 @@ module SdcContacts
 
   class LeftNavigationGroups <SdcPage
     page_object(:groups) { {xpath: '//*[contains(@class, "groups-filters")]'}}
+    page_object(:left_nav_add_groups, required: true, timeout: 20) { { xpath: '//*[@class="x-tool-img x-tool-plus"]'}}
+    page_object(:left_nav_add_edit_groups, required: true, timeout: 20) { { xpath: '//*[contains(@class, "x-title sdc-badgebuttongroup-header-")]/div[text()="Groups"]//following::img[@class="x-tool-img x-tool-gear"]'}}
+    page_object(:left_nav_groups, required: true, timeout: 20) { { xpath: '//*[contains(@class, "groups-filters")]//div[text()="Groups"]'}}
     page_object(:groups_expand_button,required: true, timeout: 45 ) { {   xpath: '//*[contains(@class, "groups-filters")]//img[contains(@class, "-expand-bottom")]'} }
     page_object(:groups_collapse_button,required: true, timeout: 45 ) { { xpath: '//*[contains(@class, "groups-filters")]//img[contains(@class, "-collapse-top")]'} }
     page_objects(:total_groups) { {xpath: '//*[contains(@class, "groups")]//table[@class="sdc-badgebutton x-box-item sdc-badgebutton-default"]'} }

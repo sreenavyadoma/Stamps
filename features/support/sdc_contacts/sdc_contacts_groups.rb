@@ -15,6 +15,8 @@ module SdcContacts
     #page_object(:manage_groups_add_button, required: true, timeout: 10) { { xpath: '//*[@id="groups_add-btnEl"]'}}
     page_object(:manage_groups_add_icon, required: true, timeout: 10) { { xpath: '//*[contains(@id,"title-")][text() = "Manage Groups"]/following::span[contains(@class,"sdc-icon-add")]' } }
     page_object(:manage_groups_add_button, required: true, timeout: 10) { { xpath: '//*[contains(@id,"title-")][text() = "Manage Groups"]/following::span[text()="Add"]' } }
+    page_object(:manage_groups_edit_button, required: true, timeout: 10) { { xpath: '//*[contains(@id,"title-")][text() = "Manage Groups"]/following::span[text()="Edit"]' } }
+    page_object(:manage_groups_delete_button, required: true, timeout: 10) { { xpath: '//*[contains(@id,"title-")][text() = "Manage Groups"]/following::span[text()="Delete"]' } }
     page_objects(:manage_groups_table, required: true, timeout: 10) { {xpath: '//*[contains(@id,"title-")][text() = "Manage Groups"]/following::div[contains(@id,"tableview-")]//*[@class="x-grid-item-container"]//table'} }
     page_object(:manage_groups_close, required: true, timeout: 10) { { xpath: '//*[contains(@id,"title-")][text() = "Manage Groups"]/following::span[contains(@class,"-close-")]' } }
 
@@ -33,12 +35,11 @@ module SdcContacts
     #page_object(:add_groups_save_button, required: true, timeout: 10) { { xpath: '//*[@id="saveAddNewGroupDialogBtn-btnInnerEl"]'}}
     # page_object(:add_groups_error_message, required: true, timeout: 10) { { xpath: '//*[@id="new_group_field-errorEl"]'}}
     text_field(:add_groups_group_name_textbox, tag: :text_field) { { xpath: '//*[contains(@id,"title-")][text() = "Add Group"]//following::input[contains(@name,"textfield-")]'} }
-    page_object(:add_groups_save_button, required: true, timeout: 10) { { xpath: '//*[contains(@id,"button-")][text()="Save"]' } }
+    page_object(:add_groups_save_button, required: true, timeout: 10) { { xpath: '//*[contains(@id,"title-")][text() = "Add Group"]/following::span[text()="Save"]' } }
     page_object(:add_groups_error_message, required: true, timeout: 10) { { xpath: '//*[contains(@id,"title-")][text() = "Add Group"]//following::div[contains(@class,"-error-msg")]//ul'} }
     page_object(:error_message_text, required: true, timeout: 10) { { xpath: '//*[contains(@id,"title-")][text() = "Add Group"]//following::div[contains(@class,"-error-msg")]//ul/li'} }
     page_object(:add_groups_title, required: true, timeout: 10) { { xpath: '//*[contains(@id,"title-")][text() = "Add Group"]' } }
     page_object(:add_groups_close, required: true, timeout: 10) { { xpath: '//*[contains(@id,"title-")][text() = "Add Group"]/following::span[contains(@class,"-close-")]' } }
-
   end
 
   class ContactsChangeGroupsPopup < SdcPage
@@ -85,10 +86,6 @@ module SdcContacts
 
   end
 
-
-
-  end
-
   class ContactsEditGroups < SdcPage
     page_object(:edit_groups_row, required: true, timeout: 10) { { xpath: '(//*[@id="manage_groups_grid_toolbar-body"]//*[@class="x-grid-item-container"]//table[@class="x-grid-item"]//*[@class="x-grid-cell-inner "])[2]'}}
     #page_object(:groups_edit_button, required: true, timeout: 10) { { xpath: '//*[@id="groups_edit-btnInnerEl"]'}}
@@ -107,7 +104,7 @@ module SdcContacts
 
   class ContactsDeleteGroups < SdcPage
     page_object(:groups_delete_popup) { { xpath: '//*[contains(@id,"dialoguemodal-")]' } }
-    page_object(:groups_delete_yes_button, tag: :span, required: true, timeout: 45 ) { { xpath: '//*[contains(@id,"title-")][text() = "Delete Group"]/following::span[text()="Yes"]'} }
+    page_object(:groups_delete_yes_button, required: true, timeout: 45 ) { { xpath: '//*[contains(@id,"title-")][text() = "Delete Group"]/following::span[text()="Yes"]'} }
     page_object(:delete_groups_title, required: true, timeout: 10) { { xpath: '//*[contains(@id,"title-")][text() = "Delete Group"]' } }
     page_object(:delete_groups_close, required: true, timeout: 10) { { xpath: '//*[contains(@id,"title-")][text() = "Delete Group"]/following::span[contains(@class,"-close-")]' } }
     page_object(:delete_groups_no_button, required: true, timeout: 10) { { xpath: '//*[contains(@id,"title-")][text() = "Delete Group"]/following::span[text()="No"]'} }
@@ -139,4 +136,6 @@ module SdcContacts
       ContactsDeleteGroups.new
     end
 
-end
+  end
+
+  end
