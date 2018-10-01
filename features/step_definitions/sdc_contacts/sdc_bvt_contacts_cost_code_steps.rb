@@ -81,7 +81,6 @@ Then /^[sS]et [Cc]ost [Cc]ode [Vv]alue [Ii]n [Tt]he [Cc]hange [Cc]ostcode [Pp]op
   cost_code.text_field.set(str)
   expect(cost_code.text_field.text_value).to include(str)
   cost_code.selection.safe_click
-  #p str
 end
 
 Then /^[Cc]lick [Oo]n [Cc]ost [Cc]ode [Ss]ave [Bb]utton$/ do
