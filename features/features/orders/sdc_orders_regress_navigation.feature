@@ -8,7 +8,6 @@ Feature:  Web Client Navigation
     Then sign-in to orders
     Then pause for 2 seconds
     Then navigate to Mail
-    Then pause for 2 seconds
     Then navigate to Orders
     Then pause for 2 seconds
     Then navigate to Contacts
@@ -21,11 +20,8 @@ Feature:  Web Client Navigation
     Then pause for 2 seconds
     Then navigate to Supplies
     Then pause for 2 seconds
-#    Then navigate to history then select Search Print History
-#    Then navigate to history then select Request a Postage Refund
-#    Then navigate to history then select File an Insurance Claim
-#    Then navigate to history then select Create a SCAN Form
-#    Then navigate to history then select Schedule a USPS Pickup
-#    Then navigate to Contacts
-#    Then navigate to Orders
-#    Then navigate to Mail
+    Then hover on history navigation then select Search Print History
+    Then hover on history navigation then select Request a Postage Refund
+    Then hover on history navigation then select File an Insurance Claim
+    Then hover on history navigation then select Create a SCAN Form
+    Then hover on history navigation then select Schedule a USPS Pickup

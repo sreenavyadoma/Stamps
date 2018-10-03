@@ -27,6 +27,12 @@ Then /^navigate to (.+)$/ do |str|
   end
 end
 
+Then /^hover on history navigation then select (.+)$/ do |str|
+  nav_element = SdcNavigation.nav_element(str)
+  nav_element.wait_until_present(timeout: 20)
+  nav_element.hover
+end
+
 Then /^save balance amount$/ do
   TestData.hash[:old_balance] = SdcWebsite.navigation.balance.amount.text_value.parse_digits.to_f
 end

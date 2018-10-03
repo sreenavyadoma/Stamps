@@ -132,39 +132,8 @@ module SdcNavigation
       klass.new.navigation_item
     end
 
-    def mail
-      klass = Class.new(SdcPage) do
-        page_object(:mail_page) { { xpath: '//a[text()="Mail"]' } }
-      end
-      klass.new.mail_page
-    end
+    def history_selection(str)
 
-    def orders
-      klass = Class.new(SdcPage) do
-        page_object(:orders_page) { { xpath: '//a[text()="Orders"]' } }
-      end
-      klass.new.orders_page
-    end
-
-    def products
-      klass = Class.new(SdcPage) do
-        page_object(:products_page) { { xpath: '//a[text()="Products"]' } }
-      end
-      klass.new.products_page
-    end
-
-    def contacts
-      klass = Class.new(SdcPage) do
-        page_object(:contacts_page) { { xpath: '//a[text()="Contacts"]' } }
-      end
-      klass.new.contacts_page
-    end
-
-    def reports
-      klass = Class.new(SdcPage) do
-        page_object(:reports_page) { { xpath: '//a[text()="Reports"]' } }
-      end
-      klass.new.reports_page
     end
   end
 end
