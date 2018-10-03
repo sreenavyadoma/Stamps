@@ -77,6 +77,7 @@ Then /^expect mail toolbar print dropdown tooltip is present$/ do
 end
 
 Then /^expect mail toolbar print dropdown tooltip is not present$/ do
+  SdcMail.toolbar.print_dropdown_tooltip.wait_until_present
   expect(SdcMail.toolbar.print_dropdown_tooltip).not_to be_present
 end
 
