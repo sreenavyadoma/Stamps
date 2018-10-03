@@ -125,6 +125,7 @@ module SdcNavigation
               else
                 "//ul[@class='nav hide-on-phone']//a[starts-with(text(),'#{str}')]"
               end
+
       klass = Class.new(SdcPage) do
         page_object(:navigation_item) { { xpath: xpath } }
       end
@@ -133,7 +134,17 @@ module SdcNavigation
     end
 
     def history_selection(str)
+      xpath = if TestSession.env.mobile_device
+                "//div[starts-with(@class,'tablet')]//a[text()='#{str}']"
+              else
+                "//ul[@class='nav hide-on-phone']//a[text()='#{str}']"
+              end
 
+      klass = Class.new(SdcPage) do
+        page_object(:history_selection) { { xpath: xpath } }
+      end
+
+      klass.new.history_selection
     end
   end
 end
