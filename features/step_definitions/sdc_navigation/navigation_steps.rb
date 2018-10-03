@@ -31,9 +31,7 @@ Then /^hover on navigation history then select (.+)$/ do |str|
   nav_element = SdcNavigation.nav_element('History')
   nav_element.wait_until_present(timeout: 20)
   nav_element.hover
-  history_selection = SdcNavigation.history_selection(str)
-  history_selection.click
-  history_selection.present?
+  SdcNavigation.history_selection(str).click
 end
 
 Then /^save balance amount$/ do

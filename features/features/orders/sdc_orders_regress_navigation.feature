@@ -31,16 +31,3 @@ Feature:  Web Client Navigation
     Then navigate to Supplies
     Then pause for 2 seconds
 
-
-    Then navigate to Mail
-    Then navigate to Orders
-    Then navigate to Contacts
-    Then navigate to Reports
-    Then navigate to History
-    Then hover on navigation history then select Search Print History
-    Then hover on navigation history then select Request a Postage Refund
-    Then hover on navigation history then select File an Insurance Claim
-    Then hover on navigation history then select Create a SCAN Form
-    Then hover on navigation history then select Schedule a USPS Pickup
-    Then navigate to Products
-    Then navigate to Supplies
