@@ -23,5 +23,5 @@ Feature:  Mail Print Form Toolbar
     Then expect mail toolbar print dropdown tooltip is present
     Then blur out on print form
     Then click mail toolbar print dropdown
-    Then expect mail toolbar print dropdown tooltip is present
+    Then expect mail toolbar print dropdown tooltip is not present
     Then sign out
