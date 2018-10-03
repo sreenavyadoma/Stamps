@@ -5,10 +5,10 @@ Feature:  BVT tests for Orders
 
   @healthcheck
   Scenario: Orders Healthcheck
-    Then Verify Health Check for Orders
-    Then Verify Health Check for Address Book
-    Then Verify Health Check for OR Reports
-    Then Verify Health Check for Postage Tools
+    Then verify health check for Orders
+    Then verify health check for Address Book
+    Then verify health check for OR Reports
+    Then verify health check for Postage Tools
 
   @authentication
   Scenario: Orders Authentication Test

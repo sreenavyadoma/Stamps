@@ -8,4 +8,4 @@ Feature:  Contacts BVT
     Then sign-in to orders
     Then navigate to contacts
     Then navigate to orders
-    Then navigate to mailS
+    Then navigate to mail

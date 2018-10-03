@@ -20,7 +20,7 @@ Then /^visit Mail$/ do
 end
 
 Then /^sign-in to mail$/ do
-  step 'Verify Health Check for Orders' if TestSession.env.healthcheck
+  step 'verify health check for Orders' if TestSession.env.healthcheck
   step 'visit Mail'
   usr = TestSession.env.usr
   pw = TestSession.env.pw

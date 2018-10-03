@@ -60,7 +60,7 @@ Then /^fetch user credentials from MySQL$/ do
 end
 
 Then /^sign-in to orders$/ do
-  step 'Verify Health Check for Orders' if TestSession.env.healthcheck
+  step 'verify health check for Orders' if TestSession.env.healthcheck
   step 'visit Orders landing page'
   usr = TestSession.env.usr
   pw = TestSession.env.pw
@@ -223,7 +223,7 @@ Then /^click Orders landing page sign-in button$/ do
   step 'check for server error'
 end
 
-Then /^Verify Health Check for (.+)$/ do |str|
+Then /^verify health check for (.+)$/ do |str|
 
   env = case str.downcase
         when /orders/
@@ -309,3 +309,60 @@ Then /^Verify Health Check for (.+)$/ do |str|
   print "\n"
 end
 
+
+Then /^expect landing page help link is (.*)$/ do |str|
+  landing_page = SdcWebsite.landing_page
+  expect(landing_page.help_link.text_value).to eql str
+end
+
+Then /^expect landing page sign up link is (.*)$/ do |str|
+  landing_page = SdcWebsite.landing_page
+  expect(landing_page.sign_up.text_value).to eql str
+end
+
+Then /^click sign up link on landing page$/ do
+  landing_page = SdcWebsite.landing_page
+  landing_page.sign_up.wait_until_present(timeout: 5)
+  landing_page.sign_up.click
+end
+
+Then /^expect resulting web reg url is correct$/ do
+  expected_url = case TestSession.env.url
+                 when :qacc
+                   'https://qa-registration.stamps.com/registration/#!&p=profile'
+                 when :stg
+                   'https://staging-registration.stamps.com/registration/#!&p=profile'
+                 when :prod
+                   'https://registration.stamps.com/registration/#!&p=profile'
+                 else
+                   "https://#{TestSession.env.url}-win10.corp.stamps.com/registration/#!&p=profile"
+                 end
+  begin
+    SdcPage.browser.wait_until(timeout: 5) do
+      SdcPage.browser.url.eql expected_url
+    end
+  rescue
+    # ignore
+  end
+  actual_url = SdcPage.browser.url
+  expect(actual_url).to eql expected_url
+end
+
+Then /^click on visit our learning center link on landing page$/ do
+  landing_page = SdcWebsite.landing_page
+  landing_page.learning_center.wait_until_present(timeout: 5)
+  landing_page.learning_center.click
+end
+
+Then /^expect resulting help page url is correct$/ do
+  expected_url = 'https://stamps.custhelp.com/app'
+  begin
+    SdcPage.browser.wait_until(timeout: 5) do
+      SdcPage.browser.url.eql expected_url
+    end
+  rescue
+    # ignore
+  end
+  actual_url = SdcPage.browser.url
+  expect(actual_url).to eql expected_url
+end
