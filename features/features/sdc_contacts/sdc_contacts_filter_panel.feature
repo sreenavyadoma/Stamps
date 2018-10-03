@@ -10,7 +10,7 @@ Feature:  Contacts BVT - Contacts Filter Panel
   Contacts Filter Panel Groups Expand/Collapse: Collapse and expand contacts Left navigation Cost Codes Filter Groups
   Contacts Filter Panel All Contacts count :Left filter panel contact count
     Then sign-in to orders
-    Then navigate to contacts
+    Then navigate to Contacts
     #Contacts Filter Panel All Contacts count :Left filter panel contact count
     Then fetch total count of all contacts
     # Contacts Filter Panel Hide/Show: Collapse and expand contacts Left navigation Filter Panel

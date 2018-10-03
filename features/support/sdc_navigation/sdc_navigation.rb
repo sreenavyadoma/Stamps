@@ -119,6 +119,19 @@ module SdcNavigation
       SdcNavigationBalance.new
     end
 
+    def nav_element(str)
+      xpath = if TestSession.env.mobile_device
+                "//div[starts-with(@class,'tablet')]//a[starts-with(text(),'#{str}')]"
+              else
+                "//ul[@class='nav hide-on-phone']//a[starts-with(text(),'#{str}')]"
+              end
+      klass = Class.new(SdcPage) do
+        page_object(:navigation_item) { { xpath: xpath } }
+      end
+
+      klass.new.navigation_item
+    end
+
     def mail
       klass = Class.new(SdcPage) do
         page_object(:mail_page) { { xpath: '//a[text()="Mail"]' } }
