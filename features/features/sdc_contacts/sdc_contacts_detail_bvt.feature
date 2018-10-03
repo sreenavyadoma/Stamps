@@ -6,7 +6,7 @@ Feature:  Contacts BVT - Contacts Details
   @sdc_contacts_delete_single_from_details_menu
   Scenario: Delete Contact Details Menu Scenario 1:Delete single contacts from details panel
     Then sign-in to orders
-    Then navigate to contacts
+    Then navigate to Contacts
     Then delete all available contacts with the value Anand Raj
     Then expect count of contact search results is 0
     Then close the search results by clicking on remove button
@@ -40,7 +40,7 @@ Feature:  Contacts BVT - Contacts Details
   @sdc_contacts_delete_multiple_from_details_menu
   Scenario: Delete Contact Details Menu Scenario 2 :Delete multiple contacts from Details Panel
     Then sign-in to orders
-    Then navigate to contacts
+    Then navigate to Contacts
     Then delete all available contacts with the value Jon
     Then expect count of contact search results is 0
     Then close the search results by clicking on remove button
@@ -68,7 +68,7 @@ Feature:  Contacts BVT - Contacts Details
   @sdc_contacts_add_valid_email
   Scenario: Contacts Add Email Scenario 1 :Add valid Email to a newly added contact via contact details modal
     Then sign-in to orders
-    Then navigate to contacts
+    Then navigate to Contacts
     Then delete all available contacts with the value Aloha9154
     Then expect count of contact search results is 0
     Then close the search results by clicking on remove button
@@ -99,7 +99,7 @@ Feature:  Contacts BVT - Contacts Details
   @sdc_contacts_add_invalid_email
   Scenario: Contacts Add Email Scenario 2 :Add Invalid Email to a newly added contact via contact details modal
     Then sign-in to orders
-    Then navigate to contacts
+    Then navigate to Contacts
     Then delete all available contacts with the value Conatct Email Invalid
     Then expect count of contact search results is 0
     Then close the search results by clicking on remove button
@@ -132,7 +132,7 @@ Feature:  Contacts BVT - Contacts Details
   Scenario: Contacts Details Add Name Scenario 1 :Add/Edit Single Name in Contact Details panel and verify Grid is updated correctly
     Then sign-in to orders
     Then pause for 5 seconds
-    Then navigate to contacts
+    Then navigate to Contacts
     Then delete all available contacts with the value CAPT P Al tha Lydia Anand
     Then expect count of contact search results is 0
     Then close the search results by clicking on remove button

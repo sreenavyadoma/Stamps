@@ -6,7 +6,7 @@ Feature:  Contacts BVT - Contacts ToolBar
   @sdc_contact_add_new_contact
   Scenario: Contacts BVT Scenario 1 : Click add, add new contact  and the open and view details
     Then sign-in to orders
-    Then navigate to contacts
+    Then navigate to Contacts
     Then click add button on contacts toolbar
     Then set contact details to
       | full_name | company | country| street_address | city | state | postal_code | phone  |  email | groups | reference_number|cost_code |
@@ -20,7 +20,7 @@ Feature:  Contacts BVT - Contacts ToolBar
   @sdc_contacts_delete_single_from_top_navigation
   Scenario: Delete Contact Top Nav Scenario 1 :Delete a newly added contact from top navigation
     Then sign-in to orders
-    Then navigate to contacts
+    Then navigate to Contacts
     Then delete all available contacts with the value RuthAnand
     Then expect count of contact search results is 0
     Then close the search results by clicking on remove button
@@ -53,7 +53,7 @@ Feature:  Contacts BVT - Contacts ToolBar
   @sdc_contacts_delete_multiple_from_top_navigation
   Scenario: Delete Contact Top Nav Scenario 2 :Delete multiple contacts from top navigation
     Then sign-in to orders
-    Then navigate to contacts
+    Then navigate to Contacts
     Then delete all available contacts with the value Jon
     Then expect count of contact search results is 0
     Then close the search results by clicking on remove button
@@ -78,7 +78,7 @@ Feature:  Contacts BVT - Contacts ToolBar
   @sdc_contacts_existing_add_invalid_reference_number
   Scenario: Add Reference Number from Top Nav Scenario 1 :Add an Invalid Reference to an Existing Contact via Contacts Toolbar
     Then sign-in to orders
-    Then navigate to contacts
+    Then navigate to Contacts
     Then delete all available contacts with the value AddInValidReference
     Then expect count of contact search results is 0
     Then close the search results by clicking on remove button
@@ -98,7 +98,7 @@ Feature:  Contacts BVT - Contacts ToolBar
   @sdc_contacts_existing_add_valid_reference_number
   Scenario: Add Reference Number from Top Nav Scenario 2 :Add an Valid Reference to an Existing Contact via Contacts Toolbar
     Then sign-in to orders
-    Then navigate to contacts
+    Then navigate to Contacts
     Then delete all available contacts with the value AddValidReference
     Then expect count of contact search results is 0
     Then close the search results by clicking on remove button

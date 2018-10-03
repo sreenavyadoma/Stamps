@@ -1,24 +1,37 @@
-Then /^[Nn]avigate [Tt]o [Cc]ontacts$/ do
-  SdcNavigation.contacts.safe_wait_until_present(timeout: 20)
-  SdcNavigation.contacts.wait_until_present(timeout: 15)
-  SdcNavigation.contacts.click
-  SdcContacts.loading_contacts.safe_wait_until_present(timeout: 15)
-  SdcContacts.contacts_body.safe_wait_until_present(timeout: 15)
-  #header = SdcContacts.header
-  #header.page_title.wait_until_present(timeout: 20)
-  #expect(header.page_title.text_value).to eql('Contacts')
+
+Then /^navigate to (.+)$/ do |str|
+  nav_element = SdcNavigation.nav_element(str)
+  nav_element.wait_until_present(timeout: 20)
+  nav_element.click
+  case(str.downcase.to_sym)
+  when :mail
+    SdcMail.print_on.label.wait_until_present(timeout: 15)
+  when :orders
+    step 'click through tutorial modal'
+    SdcOrders.loading_orders.safe_wait_until_present(timeout: 7)
+    SdcOrders.loading_orders.safe_wait_while_present(timeout: 10)
+    SdcGrid.body.wait_until_present(timeout: 20)
+  when :contacts
+    step 'click through tutorial modal'
+    SdcContacts.loading_contacts.safe_wait_until_present(timeout: 20)
+    SdcContacts.contacts_body.safe_wait_until_present(timeout: 20)
+  when :history
+    step 'click through tutorial modal'
+  when :reports
+    step 'click through tutorial modal'
+  when :products
+    step 'click through tutorial modal'
+    SdcOrders.loading_orders.safe_wait_until_present(timeout: 7)
+    SdcOrders.loading_orders.safe_wait_while_present(timeout: 10)
+  when :supplies
+  end
 end
 
-Then /^navigate to orders$/ do
-  SdcNavigation.orders.click
-  SdcOrders.loading_orders.safe_wait_until_present(timeout: 7)
-  SdcOrders.loading_orders.safe_wait_while_present(timeout: 10)
-  SdcGrid.body.wait_until_present(timeout: 20)
-end
-
-Then /^navigate to mail$/ do
-  SdcNavigation.mail.click
-  # wait for mail to be fully loaded before moving on
+Then /^hover on navigation history then select (.+)$/ do |str|
+  nav_element = SdcNavigation.nav_element('History')
+  nav_element.wait_until_present(timeout: 20)
+  nav_element.hover
+  SdcNavigation.history_selection(str).click
 end
 
 Then /^save balance amount$/ do

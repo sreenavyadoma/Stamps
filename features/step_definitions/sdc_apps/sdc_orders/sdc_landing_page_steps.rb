@@ -77,7 +77,7 @@ Then /^sign-in to orders with (.+)\/(.+)$/ do |usr, pw|
     step 'browser: click sign-in button'
     step 'check for server error'
     if SdcGlobal.web_app.eql? :orders
-      step 'close windows tutorial modal'
+      step 'click through tutorial modal'
       step 'close learn more modal'
       step 'close add advanced shipping features modal'
       step 'close whats new modal in orders'
@@ -99,7 +99,7 @@ Then /^close add advanced shipping features modal$/ do
   end
 end
 
-Then /^close windows tutorial modal$/ do
+Then /^click through tutorial modal$/ do
   modal = SdcWebsite.modals.tutorial_window
   modal.window.safe_wait_until_present(timeout: 1)
   6.times do
