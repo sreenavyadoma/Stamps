@@ -51,6 +51,7 @@ shipping_labels_envelopes_extra_services: --tags @shipping_labels_envelopes_extr
 priority_mail_insurance_notification: --tags @priority_mail_insurance_notification --guess
 display_rates_for_multiple_contacts: --tags @display_rates_for_multiple_contacts --guess
 reference_number_from_contacts_list: --tags @reference_number_from_contacts_list --guess
+changes_to_landing_page: --tags @changes_to_landing_page --guess
 rates_pme_comm_base_mail: --tags @rates_pme_comm_base --guess LOG_LEVEL=info
 rates_pme_comm_base: --tags @rates_pme_comm_base --guess LOG_LEVEL=info
 rates_pm_comm_base: --tags @rates_pm_comm_base --guess LOG_LEVEL=info
