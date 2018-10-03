@@ -68,20 +68,21 @@ end
 
 Then /^click mail toolbar print dropdown$/ do
   SdcMail.toolbar.print_dropdown.click
-  #step 'hover on mail toolbar print dropdown tooltip'
 end
 
 Then /^expect mail toolbar print dropdown tooltip is present$/ do
-  SdcMail.toolbar.print_dropdown_tooltip.wait_until_present
+  step 'wait for mail toolbar print dropdown tooltip'
   expect(SdcMail.toolbar.print_dropdown_tooltip).to be_present
 end
 
 Then /^expect mail toolbar print dropdown tooltip is not present$/ do
-  SdcMail.toolbar.print_dropdown_tooltip.wait_until_present
+  step 'wait for mail toolbar print dropdown tooltip'
   expect(SdcMail.toolbar.print_dropdown_tooltip).not_to be_present
 end
 
-
+Then /^wait for mail toolbar print dropdown tooltip$/ do
+  SdcMail.toolbar.print_dropdown_tooltip.wait_until_present
+end
 
 Then /^hover on mail toolbar print dropdown tooltip$/ do
   SdcMail.toolbar.print_dropwown_tooltip.hover if SdcMail.toolbar.print_dropwown_tooltip.present?
