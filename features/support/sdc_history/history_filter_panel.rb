@@ -1,9 +1,31 @@
 module SdcHistory
 
   class HistoryDatePrinted < SdcPage
-    page_object(:xxxx) { { xpath:'xxxx' } }
-    page_object(:xxxx) { { xpath:'xxxx' } }
-    page_object(:xxxx) { { xpath:'xxxx' } }
+    page_object(:header) { { xpath:'xxxx' } }
+
+    page_object(:today) { { xpath:'xxxx' } }
+    page_object(:today_count) { { xpath:'xxxx' } }
+
+    page_object(:past_7_days) { { xpath:'xxxx' } }
+    page_object(:past_7_days_count) { { xpath:'xxxx' } }
+
+    page_object(:past_30_days) { { xpath:'xxxx' } }
+    page_object(:past_30_days_count) { { xpath:'xxxx' } }
+
+    page_object(:past_3_months) { { xpath:'xxxx' } }
+    page_object(:past_3_months_count) { { xpath:'xxxx' } }
+
+    page_object(:past_6_months) { { xpath:'xxxx' } }
+    page_object(:past_6_months_count) { { xpath:'xxxx' } }
+
+    page_object(:past_12_months) { { xpath:'xxxx' } }
+    page_object(:past_12_months_count) { { xpath:'xxxx' } }
+
+    page_object(:past_2_years) { { xpath:'xxxx' } }
+    page_object(:past_2_years_count) { { xpath:'xxxx' } }
+
+    page_object(:all) { { xpath:'xxxx' } }
+    page_object(:custom_date_range) { { xpath:'xxxx' } }
   end
 
   class HistoryEligibleFor < SdcPage
