@@ -17,14 +17,8 @@ Then /^[Cc]lick [Cc]ontacts [Tt]oolbar [Dd]elete [Bb]utton$/ do
 end
 
 Then /^click contacts toolbar print postage button$/ do
-  begin
-    Timeout::timeout(1) do
-      SdcContacts.contacts_toolbar.print_postage.click
-    end
-  rescue Timeout::Error => msg
-    #puts "Recovered from Timeout"
-    step 'expect mail server error is not present'
-  end
+  SdcContacts.contacts_toolbar.print_postage.safe_click
+  step 'expect mail server error is not present'
 end
 
 Then /^[Cc]lick [Cc]ontacts [Tt]oolbar [Aa]dd [Rr]eference [Bb]utton$/ do
