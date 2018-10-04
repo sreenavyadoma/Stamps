@@ -29,9 +29,16 @@ module SdcHistory
   end
 
   class HistoryEligibleFor < SdcPage
-    page_object(:xxxx) { { xpath:'xxxx' } }
-    page_object(:xxxx) { { xpath:'xxxx' } }
-    page_object(:xxxx) { { xpath:'xxxx' } }
+    page_object(:header) { { xpath:'xxxx' } }
+
+    page_object(:refund) { { xpath:'xxxx' } }
+    page_object(:scan_form_count) { { xpath:'xxxx' } }
+
+    page_object(:refund) { { xpath:'xxxx' } }
+    page_object(:usps_pickup_count) { { xpath:'xxxx' } }
+
+    page_object(:insurance_claim) { { xpath:'xxxx' } }
+    page_object(:insurance_claim_count) { { xpath:'xxxx' } }
   end
 
   class HistoryStatus < SdcPage
