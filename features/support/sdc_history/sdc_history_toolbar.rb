@@ -3,9 +3,5 @@ module SdcHistory
 
   end
 
-  class << self
-    def toolbar
-      SdcHistoryToolbar.new
-    end
-  end
+  #all your toolbar modals goes here
 end
