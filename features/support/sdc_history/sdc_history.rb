@@ -6,7 +6,7 @@ module SdcHistory
     end
 
     def filter_panel
-      SdcHistoryFilterPanel.new
+      HistoryFilterPanel
     end
   end
 end
