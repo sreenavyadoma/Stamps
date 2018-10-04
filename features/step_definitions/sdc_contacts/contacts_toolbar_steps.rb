@@ -16,6 +16,17 @@ Then /^[Cc]lick [Cc]ontacts [Tt]oolbar [Dd]elete [Bb]utton$/ do
   del_con_win.title.safe_wait_until_present(timeout:10)
 end
 
+Then /^click contacts toolbar print postage button$/ do
+  begin
+    Timeout::timeout(1) do
+      SdcContacts.contacts_toolbar.print_postage.click
+    end
+  rescue Timeout::Error => msg
+    #puts "Recovered from Timeout"
+    step 'expect mail server error is not present'
+  end
+end
+
 Then /^[Cc]lick [Cc]ontacts [Tt]oolbar [Aa]dd [Rr]eference [Bb]utton$/ do
   toolbar = SdcContacts.contacts_toolbar
   toolbar.ref.safe_wait_until_present(timeout: 15)
@@ -23,6 +34,7 @@ Then /^[Cc]lick [Cc]ontacts [Tt]oolbar [Aa]dd [Rr]eference [Bb]utton$/ do
   add_ref_win = SdcContacts.reference_message_box
   add_ref_win.add_reference_window.safe_wait_until_present(timeout: 30)
 end
+
 Then /^click on groups menu dropdown on contacts toolbar$/ do
   toolbar = SdcContacts.contacts_toolbar_groups
   step "hover on groups button of contacts toolbar"

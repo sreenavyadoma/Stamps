@@ -245,3 +245,13 @@ Feature: Manage Print Options
     Then set print form advanced options cost code None
     Then expect print form advanced options cost code is None
     Then sign out
+
+  @mail_contacts_comm_error
+  Scenario: Communication error in FF durint navigation between Mail and Contacts pages
+    Then sign-in to mail
+    Then navigate to Contacts
+    Then expect mail server error is not present
+    Then in contacts grid check row 1
+    Then click contacts toolbar print postage button
+    Then expect mail server error is not present
+    Then sign out

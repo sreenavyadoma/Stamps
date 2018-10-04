@@ -4004,6 +4004,11 @@ Cucumber::Rake::Task.new(:mail_bvt_ui_validation) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:mail_contacts_comm_error) do |t|
+  t.profile = 'mail_contacts_comm_error'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 
 
 #--------------------### Orders Bugs ##---------------------

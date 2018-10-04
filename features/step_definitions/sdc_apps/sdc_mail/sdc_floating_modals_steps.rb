@@ -84,3 +84,17 @@ Then /^click close button on incomplete fields$/ do
   end
   expect(incomplete_fields.window.present?).to be(false)
 end
+
+Then /^expect mail server error is present$/ do
+  expect(SdcMail.modals.server_error.title).to be_present
+end
+
+Then /^expect mail server error is not present$/ do
+  expect(SdcMail.modals.server_error.title).not_to be_present
+end
+
+Then /^wait for mail server error$/ do
+  SdcMail.modals.server_error.title.wait_until_present
+end
+
+
