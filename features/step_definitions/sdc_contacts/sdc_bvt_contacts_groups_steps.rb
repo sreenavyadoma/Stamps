@@ -363,6 +363,7 @@ Then /^click (.*) row in manage group table$/ do |group_name|
       while i<= row_count.to_i
         if manage_groups.group_name(i) == group_name
           TestData.hash[:old_group] = group_name
+          manage_groups.group_text.safe_wait_until_present(timeout:45)
           manage_groups.group_text.click
         end
         i=i+1
