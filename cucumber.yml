@@ -619,14 +619,9 @@ sdc_contacts_existing_add_invalid_reference_number: --tags @sdc_contacts_existin
 sdc_contacts_existing_add_valid_reference_number: --tags @sdc_contacts_existing_add_valid_reference_number --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 sdc_contacts_toolbar_add_new_cost_code_toolbar: --tags @sdc_contacts_toolbar_add_new_cost_code_toolbar URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
 sdc_contacts_toolbar_add_existing_cost_code_toolbar: --tags @sdc_contacts_toolbar_add_existing_cost_code_toolbar URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
-sdc_contacts_change_cost_code_add_new: --tags @sdc_contacts_change_cost_code_add_new --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
-sdc_contacts_change_to_existing_cost_code:  --tags @sdc_contacts_change_cost_code_add_new --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
-sdc_contacts_change_group_add_remove: --tags @sdc_contacts_change_group_add_remove --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
+sdc_contacts_toolbar_change_cost_code_add_edit: --tags @sdc_contacts_toolbar_change_cost_code_add_edit --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
+sdc_contacts_toolbar_change_group_add_remove: --tags @sdc_contacts_toolbar_change_group_add_remove --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 sdc_contacts_toolbar_add_group: --tags @sdc_contacts_toolbar_add_group --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 sdc_contacts_left_panel_regression: --tags @sdc_contacts_left_panel_regression --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 sdc_contact_add_new_contact: --tags @sdc_contact_add_new_contact --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
-sdc_contacts_edit_delete_group: --tags @sdc_contacts_edit_delete_group --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
-sdc_contacts_change_cost_code_add_edit: --tags @sdc_contacts_change_cost_code_add_edit --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
-
-sdc_contacts_left_navigation_add_group:  --tags @sdc_contacts_left_navigation_add_group --guess  LOG_LEVEL=info
-sdc_contacts_left_add_edit_group_add:  --tags @sdc_contacts_left_add_edit_group_add --guess  LOG_LEVEL=info
+sdc_contacts_toolbar_change_group_add_remove: --tags @sdc_contacts_edit_delete_group --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
