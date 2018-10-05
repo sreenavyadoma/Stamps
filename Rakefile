@@ -93,13 +93,13 @@ end
    t.cucumber_opts = "-p cuke_reports"
  end
 
-Cucumber::Rake::Task.new(:sdc_contacts_toolbar_add_new_cost_code_toolbar) do |t|
-  t.profile = 'sdc_contacts_toolbar_add_new_cost_code_toolbar'
+Cucumber::Rake::Task.new(:sdc_contacts_toolbar_add_new_cost_code) do |t|
+  t.profile = 'sdc_contacts_toolbar_add_new_cost_code'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:sdc_contacts_toolbar_add_existing_cost_code_toolbar) do |t|
-  t.profile = 'sdc_contacts_toolbar_add_existing_cost_code_toolbar'
+Cucumber::Rake::Task.new(:sdc_contacts_toolbar_add_existing_cost_code) do |t|
+  t.profile = 'sdc_contacts_toolbar_add_existing_cost_code'
   t.cucumber_opts = "-p cuke_reports"
 end
 
