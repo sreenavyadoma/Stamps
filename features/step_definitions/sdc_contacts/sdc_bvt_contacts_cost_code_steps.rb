@@ -204,3 +204,15 @@ Then /^on left navigation expect count of (.*) is (.*)$/ do |costcode_name,count
     end
   end
 end
+
+Then /^mousehover on cost codes section of left navigation$/ do
+  left_nav = SdcContacts.contacts_left_nav_cost_code
+  left_nav.cost_codes.hover
+  expect( left_nav.left_nav_add_edit_costcodes.present?).to be(true)
+end
+
+Then /^click on cost codes settings button of contacts left navigation$/ do
+  left_nav = SdcContacts.contacts_left_nav_cost_code
+  left_nav.left_nav_add_edit_costcodes.flash
+  left_nav.left_nav_add_edit_costcodes.click
+end

@@ -470,3 +470,4 @@ Then /^click on close button of manage groups pop up window$/ do
   manage_groups.manage_groups_close.safe_wait_until_present(timeout: 10)
   manage_groups.manage_groups_close.click
 end
+

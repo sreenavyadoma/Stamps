@@ -77,3 +77,4 @@ Then /^fetch total count of all contacts$/ do
   left_nav_all_contacts.all_contacts.safe_wait_until_present(timeout: 15)
   p "All Contacts count : "+left_nav_all_contacts.all_contacts_count.text_value
 end
+

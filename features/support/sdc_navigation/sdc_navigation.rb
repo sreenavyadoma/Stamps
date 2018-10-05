@@ -122,8 +122,10 @@ module SdcNavigation
     def nav_element(str)
       xpath = if TestSession.env.mobile_device
                 "//div[starts-with(@class,'tablet')]//a[starts-with(text(),'#{str}')]"
-              else
+              elsif
                 "//ul[@class='nav hide-on-phone']//a[starts-with(text(),'#{str}')]"
+              else
+                "//ul[contains(@class,'nav']//a[starts-with(text(),'#{str}')]"
               end
 
       klass = Class.new(SdcPage) do
