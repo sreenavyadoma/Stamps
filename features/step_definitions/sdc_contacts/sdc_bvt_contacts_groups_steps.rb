@@ -172,7 +172,7 @@ Then /^expect group name deleted is not available in the manage group pop up tab
   actual_added||=TestData.hash[:group_name]
   manage_groups=SdcContacts.contacts_manage_groups
   row_count = manage_groups.manage_groups_table.count
-  SdcLogger.info "existing group count #{row_count.to_s}"
+  p "existing group count" +row_count.to_s
   i=1
   group_name_available = 'no'
   while  i <= row_count
@@ -201,7 +201,7 @@ Then /^search and choose (.*) group from groups list from change groups popup to
  case group_name
  when "existing"
    row_count = group_popup.change_groups_table.count
-   SdcLogger.info "row count: #{row_count.to_s}"
+   p "row count" + row_count.to_s
    if row_count != 0
      i = 1
       str=""
@@ -213,13 +213,13 @@ Then /^search and choose (.*) group from groups list from change groups popup to
         i = i +1
       end
       if str==""
-        SdcLogger.info " All Groups available have already been added"
+        p " All Groups available have already been added"
         else
           group_popup.change_groups_search.set(str)
           TestData.hash[:group_added_value] = str
       end
     else
-      SdcLogger.info  "No groups available for this account"
+      p "No groups available for this account"
     end
   else
     group_popup.change_groups_search.set(group_name)
@@ -227,11 +227,11 @@ Then /^search and choose (.*) group from groups list from change groups popup to
  end
   sleep(2)
   search_count = group_popup.change_groups_table.count
-  SdcLogger.info "search count #{search_count.to_s}"
+  p "search count" +search_count.to_s
   if search_count != 0
     step 'check change groups grid row 1'
   else
-    SdcLogger.info "no such group found for this account"
+    p "no such group found for this account"
   end
 end
 

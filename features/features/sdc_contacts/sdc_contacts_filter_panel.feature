@@ -46,7 +46,7 @@ Feature:  Contacts BVT - Contacts Filter Panel
     Then click on save button of add groups pop up window
     Then expect error message is not displayed on add groups pop up window
 
-  @sdc_contacts_left_add_edit_group_add
+  @sdc_contacts_left_add_edit_group
   Scenario: Contacts BVT Scenario 1: Add/Edit group from contact left navigation
     Then sign-in to orders
     Then navigate to contacts
