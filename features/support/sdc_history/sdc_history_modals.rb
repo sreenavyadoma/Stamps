@@ -1,6 +1,40 @@
 module SdcHistory
   module SdcHistoryModals
 
+    class << self
+      def refund
+        Refund.new
+      end
+
+      def manage_pickups
+        ManagePickups.new
+      end
+
+      def schedule_pickup
+        SchedulePickup.new
+      end
+
+      def schedule_pickup_confirm
+        SchedulePickupConfirm.new
+      end
+
+      def pickup_error
+        PickupError.new
+      end
+
+      def scan_form
+        ScanForm.new
+      end
+
+      def reprint_scan_form
+        ReprintScanForm.new
+      end
+
+      def change_cost_code
+        ChangeCostCode.new
+      end
+    end
+
     class Refund < SdcPage
       page_object(:title) { {xpath: '//*[contains(@class, "x-title-text")][text()="Refund"]'} }
       page_object(:submit) { {xpath: '//*[text()="Submit"]'} }
@@ -76,7 +110,6 @@ module SdcHistory
 
     class ScanFormError < SdcPage
       #title, xbtn, close, learn more
-
     end
 
     class ChangeCostCode < SdcPage
