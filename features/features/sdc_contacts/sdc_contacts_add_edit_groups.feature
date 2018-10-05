@@ -6,7 +6,7 @@ Feature:  Contacts BVT - Contacts ToolBar
   @sdc_contacts_toolbar_add_group
   Scenario: Contacts BVT Scenario 1: Add new Group via Contacts Toolbar
     Then sign-in to orders
-    Then navigate to contacts
+    Then navigate to Contacts
     Then click on groups menu dropdown on contacts toolbar
     Then select Add/Edit Groups from groups menu dropdown of contacts toolbar
     Then click add button on manage groups window toolbar
@@ -22,10 +22,10 @@ Feature:  Contacts BVT - Contacts ToolBar
     Then expect manage groups pop up is displayed
     Then expect group name added is available in the manage group pop up table
 
-  @sdc_contacts_change_group_add_remove
+  @sdc_contacts_toolbar_change_group_add_remove
   Scenario: Contacts BVT Scenario 1: Change Group to an Existing Contact via Contacts Toolbar
     Then sign-in to orders
-    Then navigate to contacts
+    Then navigate to Contacts
     Then in contacts grid check row 1
     Then click on groups menu dropdown on contacts toolbar
     Then select Change Groups from groups menu dropdown of contacts toolbar
@@ -38,10 +38,10 @@ Feature:  Contacts BVT - Contacts ToolBar
     Then click on save button of change groups pop up window
     Then expect removed group is not available in details groups textbox
 
-  @sdc_contacts_edit_delete_group
+  @sdc_contacts_toolbar_edit_delete_group
   Scenario: Contacts BVT Scenario 1: Edit existing group via Contacts Toolbar
     Then sign-in to orders
-    Then navigate to contacts
+    Then navigate to Contacts
     Then click on groups menu dropdown on contacts toolbar
     Then select Add/Edit Groups from groups menu dropdown of contacts toolbar
     Then click existing row in manage group table
@@ -60,5 +60,4 @@ Feature:  Contacts BVT - Contacts ToolBar
     Then click existing row in manage group table
     Then click delete button on manage groups window toolbar
     Then click on yes button of delete groups pop up
-    Then expect group name added is not available in the manage group pop up table
-
+    Then expect group name deleted is not available in the manage group pop up table
