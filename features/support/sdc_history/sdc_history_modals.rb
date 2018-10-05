@@ -56,7 +56,7 @@ module SdcHistory
     end
 
     class ScanForm < SdcPage
-      page_object(:title) { {xpath: '//*[text()="Pickup Error"]'} }
+      page_object(:title) { {xpath: '//*[text()="Scan Form"]'} }
       page_object(:x_btn) { {xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
       page_object(:close) { {xpath: '//*[text()="Close"]'} }
       page_object(:print_scan_form) { {xpath: '//*[text()="Print Scan Form"]'} }
@@ -65,17 +65,27 @@ module SdcHistory
     end
 
     class ReprintScanForm < SdcPage
-      #print scan form, print details, title, xbtn
+      page_object(:title) { {xpath: '//*[text()="Reprint Scan Form"]'} }
+      page_object(:x_btn) { {xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
+      page_object(:close) { {xpath: '//*[text()="Close"]'} }
+      page_object(:print_scan_form) { {xpath: '//*[text()="Print Scan Form"]'} }
+      page_object(:print_details) { {xpath: '//*[text()="Print Details"]'} }
 
-
+      #todo - row
     end
 
     class ScanFormError < SdcPage
       #title, xbtn, close, learn more
+
     end
 
     class ChangeCostCode < SdcPage
       #title, xbtn, save, dropdown
+      page_object(:title) { {xpath: '//*[text()="Change Cost Code"]'} }
+      page_object(:x_btn) { {xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
+      page_object(:save) { {xpath: '//*[text()="Save"]'} }
+
+      #todo - dropdown
     end
 
   end
