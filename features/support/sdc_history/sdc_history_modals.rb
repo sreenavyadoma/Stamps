@@ -56,23 +56,30 @@ module SdcHistory
       page_object(:submit) { {xpath: '//*[text()="Submit"]'} }
       page_object(:cancel) { {xpath: '//*[text()="Cancel"]'} }
 
-      page_object(:first_name, tag: textfield) { {xpath: '//*[@name="FirstName"]'} }
-      page_object(:last_name, tag: textfield) { {xpath: '//*[@name="LastName"]'} }
-      page_object(:company, tag: textfield) { {xpath: '//*[@name="Company"]'} }
-      page_object(:address, tag: textfield) { {xpath: '//*[@name="Address"]'} }
-      page_object(:city, tag: textfield) { {xpath: '//*[@name="City"]'} }
-      page_object(:phone_number, tag: textfield) { {xpath: '//*[@name="PhoneNumber"]'} }
-      page_object(:phone_ext, tag: textfield) { {xpath: '//*[@name="PhoneExt"]'} }
-      page_object(:express_mail_pieces, tag: textfield) { {xpath: '//*[@name="ExpressMailPieces"]'} }
-      page_object(:priority_mail_pieces, tag: textfield) { {xpath: '//*[@name="PriorityMailPieces"]'} }
-      page_object(:international_pieces, tag: textfield) { {xpath: '//*[@name="InternationalPieces"]'} }
-      page_object(:first_class_pieces, tag: textfield) { {xpath: '//*[@name="FirstClassPieces"]'} }
-      page_object(:other_pieces, tag: textfield) { {xpath: '//*[@name="OtherPieces"]'} }
-      page_object(:estimated_weight, tag: textfield) { {xpath: '//*[@name="EstimatedWeight"]'} }
-      page_object(:special_instructions, tag: textfield) { {xpath: '//*[@name="SpecialInstructions"]'} }
+      page_object(:first_name, tag: textfield) { {xpath: '//input[@name="FirstName"]'} }
+      page_object(:last_name, tag: textfield) { {xpath: '//input[@name="LastName"]'} }
+      page_object(:company, tag: textfield) { {xpath: '//input[@name="Company"]'} }
+      page_object(:address, tag: textfield) { {xpath: '//input[@name="Address"]'} }
+      page_object(:city, tag: textfield) { {xpath: '//input[@name="City"]'} }
+      page_object(:phone_number, tag: textfield) { {xpath: '//input[@name="PhoneNumber"]'} }
+      page_object(:phone_ext, tag: textfield) { {xpath: '//input[@name="PhoneExt"]'} }
+      page_object(:express_mail_pieces, tag: textfield) { {xpath: '//input[@name="ExpressMailPieces"]'} }
+      page_object(:priority_mail_pieces, tag: textfield) { {xpath: '//input[@name="PriorityMailPieces"]'} }
+      page_object(:international_pieces, tag: textfield) { {xpath: '//input[@name="InternationalPieces"]'} }
+      page_object(:first_class_pieces, tag: textfield) { {xpath: '//input[@name="FirstClassPieces"]'} }
+      page_object(:other_pieces, tag: textfield) { {xpath: '//input[@name="OtherPieces"]'} }
+      page_object(:estimated_weight, tag: textfield) { {xpath: '//input[@name="EstimatedWeight"]'} }
+      page_object(:special_instructions, tag: textfield) { {xpath: '//input[@name="SpecialInstructions"]'} }
 
-      #todo - state
-      #todo - location
+      page_object(:state_text_field, tag: textfield) { { xpath: '//input[@name="State"]' } }
+      page_object(:state_drop_down) { { xpath: '//input[@name="State"]/../../*[contains(@class, "trigger")]' } }
+
+      page_object(:package_location_text_field, tag: textfield) { { xpath: '//input[@name="PackageLocation"]' } }
+      page_object(:package_location_drop_down) { { xpath: '//input[@name="PackageLocation"]/../../*[contains(@class, "trigger")]' } }
+
+      def selection(str)
+        page_object(:selection_obj) { { xpath: "//li[text()='#{str}']" } }
+      end
     end
 
     class SchedulePickupConfirm < SdcPage
@@ -95,7 +102,9 @@ module SdcHistory
       page_object(:close) { {xpath: '//*[text()="Close"]'} }
       page_object(:print_scan_form) { {xpath: '//*[text()="Print Scan Form"]'} }
 
-      #todo - checkbox for details
+      page_object(:chooser_elem) { { xpath: '//div[contains(@id, "scan-confirmation")]//input]' } }
+      page_object(:verify_elem) { { xpath: '//div[contains(@id, "scan-confirmation")]//div[contains(@class, "checkbox")]' } }
+      checkbox(:print_details, :chooser_elem, :verify_elem, 'class', 'checked')
     end
 
     class ReprintScanForm < SdcPage
@@ -105,21 +114,26 @@ module SdcHistory
       page_object(:print_scan_form) { {xpath: '//*[text()="Print Scan Form"]'} }
       page_object(:print_details) { {xpath: '//*[text()="Print Details"]'} }
 
-      #todo - row
+      def row_select(num)
+        page_object(:row) { {xpath: "(//div[contains(@id, 'reprint-scan-form')]//tr)[#{num}]"} }
+      end
+    end
+
+    class ChangeCostCode < SdcPage
+      page_object(:title) { {xpath: '//*[text()="Change Cost Code"]'} }
+      page_object(:x_btn) { {xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
+      page_object(:save) { {xpath: '//*[text()="Save"]'} }
+
+      page_object(:change_cost_code_text_field, tag: textfield) { { xpath: '//div[contains(@id, "changeCostCode")]//input' } }
+      page_object(:change_cost_code_drop_down) { { xpath: '//div[contains(@id, "changeCostCode")]//*[contains(@class, "arrow")]' } }
+
+      def selection(str)
+        page_object(:selection_obj) { { xpath: "//li[text()='#{str}']" } }
+      end
     end
 
     class ScanFormError < SdcPage
       #title, xbtn, close, learn more
     end
-
-    class ChangeCostCode < SdcPage
-      #title, xbtn, save, dropdown
-      page_object(:title) { {xpath: '//*[text()="Change Cost Code"]'} }
-      page_object(:x_btn) { {xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
-      page_object(:save) { {xpath: '//*[text()="Save"]'} }
-
-      #todo - dropdown
-    end
-
   end
 end
