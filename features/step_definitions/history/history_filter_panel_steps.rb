@@ -5,7 +5,7 @@ Then /^expand date printed on history filter panel$/ do
   expect(date_printed.today.text).to eql 'Today'
 end
 
-Then /^select date printer today on history filter panel$/ do
+Then /^select date printed today on history filter panel$/ do
   date_printed = SdcHistory.filter_panel.date_printed
   date_printed.today.click
   step 'expect date printed today is selected on history filter panel'

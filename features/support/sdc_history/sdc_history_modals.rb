@@ -47,7 +47,11 @@ module SdcHistory
       page_object(:x_btn) { {xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
       page_object(:edit_pickup) { {xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
       page_object(:cancel_pickup) { {xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
-      page_objects(:rows) { {xpath: '//div[contains(@id, "manage-pickup-window")]//tr'} }
+
+      def row_select(num)
+        page_objects(:row) { {xpath: "(//div[contains(@id, 'manage-pickup-window')]//tr)[#{num}]" } }
+      end
+
     end
 
     class SchedulePickup < SdcPage
@@ -61,6 +65,7 @@ module SdcHistory
       page_object(:company, tag: textfield) { {xpath: '//input[@name="Company"]'} }
       page_object(:address, tag: textfield) { {xpath: '//input[@name="Address"]'} }
       page_object(:city, tag: textfield) { {xpath: '//input[@name="City"]'} }
+      page_object(:zip, tag: textfield) { {xpath: '//input[@name="Zip"]'} }
       page_object(:phone_number, tag: textfield) { {xpath: '//input[@name="PhoneNumber"]'} }
       page_object(:phone_ext, tag: textfield) { {xpath: '//input[@name="PhoneExt"]'} }
       page_object(:express_mail_pieces, tag: textfield) { {xpath: '//input[@name="ExpressMailPieces"]'} }
