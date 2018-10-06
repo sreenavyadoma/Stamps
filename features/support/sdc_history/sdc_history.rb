@@ -2,7 +2,7 @@ module SdcHistory
 
   class << self
     def toolbar
-      SdcHistoryToolbar.new
+      SdcHistoryToolbar
     end
 
     def filter_panel
