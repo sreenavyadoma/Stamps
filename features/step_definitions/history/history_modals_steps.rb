@@ -181,4 +181,83 @@ Then /^select row (\d+) on manage pickups modal$/ do |num|
   SdcHistory.modals.manage_pickups.row_select(num).click
 end
 
+Then /^close manage pickups modal on history$/ do
+  SdcHistory.modals.manage_pickups.x_btn.click
+end
+
 #scan form
+Then /^expect scan form on history is present$/ do
+  expect(SdcHistory.modals.scan_form.title).to be_present
+end
+
+Then /^close scan form modal on history$/ do
+  SdcHistory.modals.scan_form.x_btn.click
+end
+
+Then /^click print scan form on scan form modal$/ do
+  SdcHistory.modals.scan_form.print_scan_form.click
+end
+
+Then /^click close on scan form modal$/ do
+  SdcHistory.modals.scan_form.close.click
+end
+
+Then /^check print details on scan form modal$/ do
+  step 'expect print details on scan form modal is unchecked'
+  SdcHistory.modals.scan_form.print_details.click
+  step 'expect print details on scan form modal is checked'
+end
+
+Then /^uncheck print details on scan form modal$/ do
+  step 'expect print details on scan form modal is checked'
+  SdcHistory.modals.scan_form.print_details.click
+  step 'expect print details on scan form modal is unchecked'
+end
+
+Then /^expect print details on scan form modal is checked$/ do
+  expect(SdcHistory.modals.scan_form.print_details.checked?).to be_truthy
+end
+
+Then /^expect print details on scan form modal is unchecked$/ do
+  expect(SdcHistory.modals.scan_form.print_details.checked?).to be_falsy
+end
+
+#reprint scan form
+Then /^expect reprint scan form on history is present$/ do
+  expect(SdcHistory.modals.reprint_scan_form.title).to be_present
+end
+
+Then /^close reprint scan form modal on history$/ do
+  SdcHistory.modals.reprint_scan_form.x_btn.click
+end
+
+Then /^expect print scan form button on reprint scan form is enabled$/ do
+  expect(SdcHistory.modals.reprint_scan_form.print_scan_form.class_disabled?).to be_falsy
+end
+
+Then /^expect print scan form button on reprint scan form is disabled$/ do
+  expect(SdcHistory.modals.reprint_scan_form.print_scan_form.class_disabled?).to be_truthy
+end
+
+Then /^expect print details button on reprint scan form is enabled$/ do
+  expect(SdcHistory.modals.reprint_scan_form.print_details.class_disabled?).to be_falsy
+end
+
+Then /^expect print details button on reprint scan form is disabled$/ do
+  expect(SdcHistory.modals.reprint_scan_form.print_details.class_disabled?).to be_truthy
+end
+
+Then /^click print scan form button on reprint scan form modal$/ do
+  step 'expect print scan form button on reprint scan form is enabled'
+  SdcHistory.modals.reprint_scan_form.print_details.click
+end
+
+Then /^click print details button on reprint scan form modal$/ do
+  step 'expect print scan form button on reprint scan form is enabled'
+  SdcHistory.modals.reprint_scan_form.print_details.click
+end
+
+Then /^select row (\d+) on reprint scan form modal$/ do |num|
+  SdcHistory.modals.reprint_scan_form.row_select(num).click
+end
+

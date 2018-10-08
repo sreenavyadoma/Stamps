@@ -33,6 +33,10 @@ module SdcHistory
       def change_cost_code
         ChangeCostCode.new
       end
+
+      def return_label
+        ReturnLabel.new
+      end
     end
 
     class Refund < SdcPage
@@ -49,7 +53,7 @@ module SdcHistory
       page_object(:cancel_pickup) { {xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
 
       def row_select(num)
-        page_objects(:row) { {xpath: "(//div[contains(@id, 'manage-pickup-window')]//tr)[#{num}]" } }
+        page_object(:row) { {xpath: "(//div[contains(@id, 'manage-pickup-window')]//tr)[#{num}]" } }
       end
 
     end
@@ -140,5 +144,91 @@ module SdcHistory
     class ScanFormError < SdcPage
       #title, xbtn, close, learn more
     end
+
+    class ReturnLabel < SdcPage
+      page_object(:title) { {xpath: '//*[text()="Return Label"]'} }
+      page_object(:x_btn) { {xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
+      page_object(:continue) { {xpath: '//*[text()="Continue"]'} }
+      page_object(:from, tag: textarea) { {xpath: '//textarea[@name="ReturnFrom"]'} }
+      page_object(:to, tag: textarea) { {xpath: '//textarea[@name="ReturnTo"]'} }
+
+      #
+      text_field(:lbs_text_field, tag: :text_field) { { xpath: '//*[@name="WeightLbs"]' } }
+      page_object(:lbs_increment) { { xpath: '//*[contains(@class,"pounds")]//*[contains(@class,"up")]' } }
+      page_object(:lbs_decrement) { { xpath: '//*[contains(@class,"pounds")]//*[contains(@class,"down")]' } }
+      sdc_number(:lbs, :lbs_text_field, :lbs_increment, :lbs_decrement)
+
+      text_field(:oz_text_field, tag: :text_field) { { xpath: '//*[@name="WeightOz"]' } }
+      page_object(:oz_increment) { { xpath: '//*[contains(@class,"ounces")]//*[contains(@class,"up")]' } }
+      page_object(:oz_decrement) { { xpath: '//*[contains(@class,"ounces")]//*[contains(@class,"down")]' } }
+      sdc_number(:oz, :oz_text_field, :oz_increment, :oz_decrement)
+      #
+
+      page_object(:rma_memo, tag: textfield) { {xpath: '//*[@name="RMAMemo"]'} }
+      page_object(:cost_code) { {xpath: ''} }
+      page_object(:total) { {xpath: ''} }
+
+      def service
+        ReturnLabelService.new
+      end
+
+      def insure_for
+        Insurance.new
+      end
+
+      def tracking
+        Tracking.new
+      end
+
+      def cost_code
+
+      end
+    end
+
+    class ReturnLabelService < SdcPage
+      text_field(:text_field, tag: :text_field) { { xpath: '//*[@id="sdc-mainpanel-servicedroplist-inputEl"]' } }
+      page_object(:drop_down) { { xpath: '//*[@id="sdc-mainpanel-servicedroplist-trigger-picker"]' } }
+      page_object(:cost) { { xpath: '//*[@id="sdc-mainpanel-servicepricelabel"]' } }
+
+      def service_element(name, str)
+        page_object(name) { { xpath: "//*[@id='#{data_for(:mail_services, {})[str]}']//td[@class='x-boundlist-item-text']" } }
+      end
+
+      def inline_cost_element(name, str)
+        page_object(name) { { xpath: "//*[@id='#{data_for(:mail_services, {})[str]}']//td[@class='x-boundlist-item-amount']" } }
+      end
+    end
+
+    class ReturnLabelInsurance < SdcPage
+      text_field(:insurance_text_field, tag: :text_field) { { xpath: '//*[@id="sdc-mainpanel-insureamtnumberfield-inputEl"]' } }
+      page_object(:insurance_increment) { { xpath: '//*[@id="sdc-mainpanel-insureamtnumberfield-trigger-spinner"]//*[contains(@class, "up")]' } }
+      page_object(:insurance_decrement) { { xpath: '//*[@id="sdc-mainpanel-insureamtnumberfield-trigger-spinner"]//*[contains(@class, "down")]' } }
+      sdc_number(:insurance, :insurance_text_field, :insurance_increment, :insurance_decrement)
+      page_object(:cost) { { xpath: '//*[@id="sdc-mainpanel-insurancepricelabel"]' } }
+    end
+
+    class ReturnLabelTracking < SdcPage
+      text_field(:text_field, tag: :text_field) { { xpath: '//*[@id="sdc-mainpanel-trackingdroplist-inputEl"]' } }
+      page_object(:drop_down) { { xpath: '//*[@id="sdc-mainpanel-trackingdroplist-trigger-picker"]' } }
+      page_object(:cost) { { xpath: '//*[@id="sdc-mainpanel-trackingpricelabel"]' } }
+
+      def tracking_element(name: "selection", value: "None")
+        page_object(name) { { xpath: "//*[@id='#{data_for(:mail_tracking_service, {})[value]}']//td[@class='x-boundlist-item-text']" } }
+      end
+
+      def inline_cost_element(name, str)
+        page_object(name) { { xpath: "//*[@id='#{data_for(:mail_tracking_service, {})[str]}']//td[@class='x-boundlist-item-amount']" } }
+      end
+    end
+
+    class ReturnLabelCostCode < SdcPage
+      text_field(:text_field, tag: :text_field) { { xpath: '//*[@name="CostCode"]' } }
+      page_object(:drop_down) { { xpath: '//input[@name="CostCode"]/../../*[contains(@class, "trigger")]' } }
+
+      def selection(str)
+        page_object(:selection_obj) { { xpath: "//li[text()='#{str}']" } }
+      end
+    end
+
   end
 end
