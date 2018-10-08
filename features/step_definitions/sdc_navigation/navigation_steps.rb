@@ -29,7 +29,7 @@ Then /^navigate to (.+)$/ do |str|
 end
 
 Then /^wait while loading history grid$/ do
-  SdcHistory.loading.safe_wait_until_present(timeout: 15)
+  SdcHistory.loading.safe_wait_until_present(timeout: 8)
   SdcHistory.loading.wait_while_present(timeout: 240)
 
 end
