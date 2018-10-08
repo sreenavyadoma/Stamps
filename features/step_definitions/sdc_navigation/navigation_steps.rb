@@ -29,8 +29,8 @@ Then /^navigate to (.+)$/ do |str|
 end
 
 Then /^wait while loading history grid$/ do
-  SdcHistory.loading.safe_wait_until_present(timeout: 10)
-  SdcHistory.loading.safe_wait_while_present(timeout: 200)
+  SdcHistory.loading.safe_wait_until_present(timeout: 15)
+  SdcHistory.loading.wait_while_present(timeout: 240)
   expect(SdcHistory.loading.text).to eql ''
 end
 
