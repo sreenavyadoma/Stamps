@@ -31,7 +31,7 @@ end
 Then /^wait while loading history grid$/ do
   SdcHistory.loading.safe_wait_until_present(timeout: 15)
   SdcHistory.loading.wait_while_present(timeout: 240)
-  expect(SdcHistory.loading.text).to eql ''
+
 end
 
 Then /^hover on navigation history then select (.+)$/ do |str|

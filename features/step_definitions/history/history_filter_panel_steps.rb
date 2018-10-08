@@ -52,7 +52,7 @@ end
 Then /^expect past 7 days count on history filter panel is greater than (\d+)$/ do |num|
   date_printed = SdcHistory.filter_panel.date_printed
   step 'wait while loading history grid'
-  expect(date_printed.past_7_days.text.to_i).to be > num.to_i
+  expect(date_printed.past_7_days_count.text.to_i).to be > num.to_i
 end
 
 # Past 30 Days
@@ -102,7 +102,7 @@ end
 Then /^expect past 3 months count on history filter panel is greater than (\d+)$/ do |num|
   date_printed = SdcHistory.filter_panel.date_printed
   step 'wait while loading history grid'
-  expect(date_printed.past_3_months.text.to_i).to be > num.to_i
+  expect(date_printed.past_3_months_count.text.to_i).to be > num.to_i
 end
 
 # Past 6 Months
@@ -127,7 +127,7 @@ end
 Then /^expect past 6 months count on history filter panel is greater than (\d+)$/ do |num|
   date_printed = SdcHistory.filter_panel.date_printed
   step 'wait while loading history grid'
-  expect(date_printed.past_6_months.text.to_i).to be > num.to_i
+  expect(date_printed.past_6_months_count.text.to_i).to be > num.to_i
 end
 
 # Past 12 Months
@@ -152,7 +152,7 @@ end
 Then /^expect past 12 months count on history filter panel is greater than (\d+)$/ do |num|
   date_printed = SdcHistory.filter_panel.date_printed
   step 'wait while loading history grid'
-  expect(date_printed.past_12_months.text.to_i).to be > num.to_i
+  expect(date_printed.past_12_months_count.text.to_i).to be > num.to_i
 end
 
 # Past 2 Years
@@ -177,7 +177,7 @@ end
 Then /^expect past 2 years count on history filter panel is greater than (\d+)$/ do |num|
   date_printed = SdcHistory.filter_panel.date_printed
   step 'wait while loading history grid'
-  expect(date_printed.past_2_years.text.to_i).to be > num.to_i
+  expect(date_printed.past_2_years_count.text.to_i).to be > num.to_i
 end
 
 
