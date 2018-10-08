@@ -3,22 +3,52 @@ module SdcHistory
   class HistoryDatePrinted < SdcPage
     page_object(:header) { { xpath: '//div[text()="Date Printed"]' } }
     page_object(:after_date_printed_tool) { { xpath: '//div[text()="Date Printed"]/../../div[starts-with(@id,"tool")]/img' } }
-    page_object(:today) { { xpath: '//*[contains(@class,"badgebutton")]//div[text()="Today"]' } }
+
+    page_object(:today) { { xpath: '' } }
+    page_object(:today_chooser) { { xpath: '//*[contains(@class,"badgebutton")]//div[text()="Today"]' } }
+    page_object(:today_verify) { { xpath: '//*[contains(@class,"badgebutton")]//div[text()="Today"]/../../../..' } }
+    chooser(:today, :today_chooser, :today_verify, :class, :selected)
+
     page_object(:today_count) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Today"]/../following-sibling::td//*[@class="sdc-badge"]' } }
-    page_object(:past_7_days) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Past 7 Days"]' } }
+
+    page_object(:past_7_days_chooser) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Past 7 Days"]' } }
+    page_object(:past_7_days_verify) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Past 7 Days"]/../../../..' } }
+    chooser(:past_7_days, :past_7_days_chooser, :past_7_days_verify, :class, :selected)
     page_object(:past_7_days_count) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Past 7 Days"]/../following-sibling::td//*[@class="sdc-badge"]' } }
-    page_object(:past_30_days) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Past 30 Days"]' } }
+
+
+    page_object(:past_30_days_chooser) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Past 30 Days"]' } }
+    page_object(:past_30_days_verify) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Past 30 Days"]/../../../..' } }
+    chooser(:past_30_days, :past_30_days_chooser, :past_30_days_verify, :class, :selected)
     page_object(:past_30_days_count) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Past 30 Days"]/../following-sibling::td//*[@class="sdc-badge"]' } }
-    page_object(:past_3_months) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Past 3 Months"]' } }
+
+    page_object(:past_3_months_chooser) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Past 3 Months"]' } }
+    page_object(:past_3_months_verify) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Past 3 Months"]/../../../..' } }
+    chooser(:past_3_months, :past_3_months_chooser, :past_3_months_verify, :class, :selected)
     page_object(:past_3_months_count) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Past 3 Months"]/../following-sibling::td//*[@class="sdc-badge"]' } }
-    page_object(:past_6_months) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Past 6 Months"]' } }
+
+    page_object(:past_6_months_chooser) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Past 6 Months"]' } }
+    page_object(:past_6_months_verify) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Past 6 Months"]/../../../..' } }
+    chooser(:past_6_months, :past_6_months_chooser, :past_6_months_verify, :class, :selected)
     page_object(:past_6_months_count) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Past 6 Months"]/../following-sibling::td//*[@class="sdc-badge"]' } }
-    page_object(:past_12_months) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Past 12 Months"]' } }
+
+    page_object(:past_12_months_chooser) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Past 12 Months"]' } }
+    page_object(:past_12_months_verify) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Past 12 Months"]/../../../..' } }
+    chooser(:past_12_months, :past_12_months_chooser, :past_12_months_verify, :class, :selected)
     page_object(:past_12_months_count) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Past 12 Months"]/../following-sibling::td//*[@class="sdc-badge"]' } }
-    page_object(:past_2_years) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Past 2 Years"]' } }
+
+    page_object(:past_2_years_chooser) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Past 2 Years"]' } }
+    page_object(:past_2_years_verify) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Past 2 Years"]/../../../..' } }
+    chooser(:past_2_years, :past_2_years_chooser, :past_2_years_verify, :class, :selected)
     page_object(:past_2_years_count) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Past 2 Years"]/../following-sibling::td//*[@class="sdc-badge"]' } }
-    page_object(:all) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="All"]' } }
-    page_object(:custom_date_range) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Custom Date Range"]' } }
+
+    page_object(:all_chooser) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="All"]' } }
+    page_object(:all_verify) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="All"]/../../../..' } }
+    chooser(:all, :all_chooser, :all_verify, :class, :selected)
+
+    page_object(:custom_date_chooser) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Custom Date Range"]' } }
+    page_object(:custom_date_verify) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Custom Date Range"]/../../../..' } }
+    chooser(:custom_date_range, :custom_date_chooser, :custom_date_verify, :class, :selected)
   end
 
   class HistoryEligibleFor < SdcPage
