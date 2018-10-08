@@ -5,6 +5,7 @@ Then /^expand date printed on history filter panel$/ do
   expect(date_printed.today.text).to eql 'Today'
 end
 
+# Today
 Then /^select today on history filter panel$/ do
   date_printed = SdcHistory.filter_panel.date_printed
   date_printed.today.select
@@ -27,6 +28,30 @@ Then /^expect today count on history filter panel is greater than (\d+)$/ do |nu
   expect(date_printed.today_count.text.to_i).to be > num.to_i
 end
 
+# Past 7 Days
+Then /^select past 7 days on history filter panel$/ do
+  date_printed = SdcHistory.filter_panel.date_printed
+  date_printed.past_7_days.select
+  step 'wait while loading history grid'
+  begin
+    SdcPage.browser.wait_until(timeout: 5) { date_printed.past_30_days.selected? }
+  rescue
+    # ignore
+  end
+  expect(date_printed.past_7_days.selected?).to be true
+end
+
+Then /^expect past 7 days is selected on history filter panel$/ do
+  date_printed = SdcHistory.filter_panel.date_printed
+  expect(date_printed.past_7_days.selected?).to be true
+end
+
+Then /^expect past 7 days count on history filter panel is greater than (\d+)$/ do |num|
+  date_printed = SdcHistory.filter_panel.date_printed
+  expect(date_printed.past_7_days.text.to_i).to be > num.to_i
+end
+
+# Past 30 Days
 Then /^select past 30 days on history filter panel$/ do
   date_printed = SdcHistory.filter_panel.date_printed
   date_printed.past_30_days.select
@@ -48,3 +73,97 @@ Then /^expect past 30 days count on history filter panel is greater than (\d+)$/
   date_printed = SdcHistory.filter_panel.date_printed
   expect(date_printed.past_30_days_count.text.to_i).to be > num.to_i
 end
+
+# Past 3 Months
+Then /^select past 3 months on history filter panel$/ do
+  date_printed = SdcHistory.filter_panel.date_printed
+  date_printed.past_3_months.select
+  step 'wait while loading history grid'
+  begin
+    SdcPage.browser.wait_until(timeout: 5) { date_printed.past_30_days.selected? }
+  rescue
+    # ignore
+  end
+  expect(date_printed.past_3_months.selected?).to be true
+end
+
+Then /^expect past 3 months is selected on history filter panel$/ do
+  date_printed = SdcHistory.filter_panel.date_printed
+  expect(date_printed.past_3_months.selected?).to be true
+end
+
+Then /^expect past 3 months count on history filter panel is greater than (\d+)$/ do |num|
+  date_printed = SdcHistory.filter_panel.date_printed
+  expect(date_printed.past_3_months.text.to_i).to be > num.to_i
+end
+
+# Past 6 Months
+Then /^select past 6 months on history filter panel$/ do
+  date_printed = SdcHistory.filter_panel.date_printed
+  date_printed.past_6_months.select
+  step 'wait while loading history grid'
+  begin
+    SdcPage.browser.wait_until(timeout: 5) { date_printed.past_30_days.selected? }
+  rescue
+    # ignore
+  end
+  expect(date_printed.past_6_months.selected?).to be true
+end
+
+Then /^expect past 6 months is selected on history filter panel$/ do
+  date_printed = SdcHistory.filter_panel.date_printed
+  expect(date_printed.past_6_months.selected?).to be true
+end
+
+Then /^expect past 6 months count on history filter panel is greater than (\d+)$/ do |num|
+  date_printed = SdcHistory.filter_panel.date_printed
+  expect(date_printed.past_6_months.text.to_i).to be > num.to_i
+end
+
+# Past 12 Months
+Then /^select past 12 months on history filter panel$/ do
+  date_printed = SdcHistory.filter_panel.date_printed
+  date_printed.past_12_months.select
+  step 'wait while loading history grid'
+  begin
+    SdcPage.browser.wait_until(timeout: 5) { date_printed.past_30_days.selected? }
+  rescue
+    # ignore
+  end
+  expect(date_printed.past_12_months.selected?).to be true
+end
+
+Then /^expect past 12 months is selected on history filter panel$/ do
+  date_printed = SdcHistory.filter_panel.date_printed
+  expect(date_printed.past_12_months.selected?).to be true
+end
+
+Then /^expect past 12 months count on history filter panel is greater than (\d+)$/ do |num|
+  date_printed = SdcHistory.filter_panel.date_printed
+  expect(date_printed.past_12_months.text.to_i).to be > num.to_i
+end
+
+# Past 2 Years
+Then /^select past 2 years on history filter panel$/ do
+  date_printed = SdcHistory.filter_panel.date_printed
+  date_printed.past_2_years.select
+  step 'wait while loading history grid'
+  begin
+    SdcPage.browser.wait_until(timeout: 5) { date_printed.past_30_days.selected? }
+  rescue
+    # ignore
+  end
+  expect(date_printed.past_2_years.selected?).to be true
+end
+
+Then /^expect past 2 years is selected on history filter panel$/ do
+  date_printed = SdcHistory.filter_panel.date_printed
+  expect(date_printed.past_2_years.selected?).to be true
+end
+
+Then /^expect past 2 years count on history filter panel is greater than (\d+)$/ do |num|
+  date_printed = SdcHistory.filter_panel.date_printed
+  expect(date_printed.past_2_years.text.to_i).to be > num.to_i
+end
+
+
