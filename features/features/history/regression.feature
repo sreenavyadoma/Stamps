@@ -32,7 +32,7 @@ Feature:  History regression
     Then expect postage message panel tracking label is Postage was sent to your printer. Your Tracking Number is
     Then save postage message panel tracking number
     Then navigate to history
-    Then click container label on history filter panel
+    Then select eligible for container label on history filter panel
     Then select row 1 on history grid
     Then click create container label on history toolbar
     Then click selected packages on create container label
@@ -81,7 +81,7 @@ Feature:  History regression
     Then expect postage message panel tracking label is Postage was sent to your printer. Your Tracking Number is
     Then save postage message panel tracking number
     Then navigate to history
-    Then click container label on history filter panel
+    Then select eligible for container label on history filter panel
     Then select row 1 on history grid
     Then click create container label on history toolbar
     Then click selected packages on create container label
@@ -130,7 +130,7 @@ Feature:  History regression
     Then expect postage message panel tracking label is Postage was sent to your printer. Your Tracking Number is
     Then save postage message panel tracking number
     Then navigate to history
-    Then click container label on history filter panel
+    Then select eligible for container label on history filter panel
     Then select row 1 on history grid
     Then click create container label on history toolbar
     Then click selected packages on create container label
@@ -179,7 +179,7 @@ Feature:  History regression
     Then expect postage message panel tracking label is Postage was sent to your printer. Your Tracking Number is
     Then save postage message panel tracking number
     Then navigate to history
-    Then click container label on history filter panel
+    Then select eligible for container label on history filter panel
     Then select row 1 on history grid
     Then click create container label on history toolbar
     Then click selected packages on create container label
@@ -222,7 +222,7 @@ Feature:  History regression
     Then expect postage message panel tracking label is Postage was sent to your printer. Your Tracking Number is
     Then save postage message panel tracking number
     Then navigate to history
-    Then click container label on history filter panel
+    Then select eligible for container label on history filter panel
     Then select row 1 on history grid
     Then click create container label on history toolbar
     Then click selected packages on create container label

@@ -180,4 +180,6 @@ Then /^expect past 2 years count on history filter panel is greater than (\d+)$/
   expect(date_printed.past_2_years_count.text.to_i).to be > num.to_i
 end
 
-
+Then /^select eligible for container label on history filter panel$/ do
+  SdcHistory.filter_panel.eligible_for.container_label.click
+end
