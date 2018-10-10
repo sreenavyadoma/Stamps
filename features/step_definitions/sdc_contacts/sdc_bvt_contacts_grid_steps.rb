@@ -1,11 +1,20 @@
-
-Then /^[Ii]n [Cc]ontacts [Gg]rid [Cc]heck [Rr]ow [Hh]eader$/ do
+Then /^check row header in contacts grid$/ do
   contacts_grid_body = SdcContacts.contacts_body
-  contacts_grid_body.safe_wait_until_present(timeout: 60)
-  checkbox = SdcContacts.contacts_grid_column(:checkbox)
-  checkbox.safe_wait_until_present(timeout: 30)
-  checkbox.check  unless checkbox.checked?
-  expect(checkbox.checked?).to be(true)
+  contacts_grid_body.safe_wait_until_present(timeout: 10)
+  header_checkbox = SdcContacts.contacts_col.contacts_header_element(:checkbox)
+  header_checkbox.safe_wait_until_present(timeout: 10)
+  if header_checkbox.checked? == false
+    header_checkbox.check
+  end
+end
+
+Then /^uncheck row header in contacts grid$/ do
+  contacts_grid_body = SdcContacts.contacts_body
+  contacts_grid_body.safe_wait_until_present(timeout: 10)
+  header_checkbox = SdcContacts.contacts_col.contacts_header_element(:checkbox)
+  header_checkbox.safe_wait_until_present(timeout: 10)
+  header_checkbox.uncheck
+
 end
 
 Then /^[Ii]n [Cc]ontacts [Gg]rid [Cc]heck [Rr]ow (\d+)$/ do |row|
