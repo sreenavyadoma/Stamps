@@ -43,9 +43,8 @@ Feature:  History regression
     Then expect total cost on ready to print modal is 0
     Then select printer factory on ready to print modal
     Then click print button on ready to print modal
-
     Then select today on history filter panel
     Then select row 1 on history grid
-    Then click refund on toolbar
-
+    Then click refund button on history toolbar
+    Then expect can't refund modal on history is present
     Then sign out
