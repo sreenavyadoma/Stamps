@@ -1,7 +1,7 @@
 
-module SdcGrid
+module HistoryGrid
 
-  class GridColumnBase < SdcPage
+  class HistoryGridBase < SdcPage
     @@column_number = {}
 
     def self.set(property, value)
@@ -15,36 +15,25 @@ module SdcGrid
     def self.column_names
       @@column_names ||= {
           checkbox: ' ',
-          store: 'Store',
-          ship_cost: 'Ship Cost',
-          age: 'Age',
-          order_id: 'Order ID',
-          order_date: 'Order Date',
-          recipient: 'Recipient',
-          company: 'Company',
-          address: 'Address',
-          city: 'City',
-          state: 'State',
-          zip: 'Zip',
-          country: 'Country',
-          phone: 'Phone',
-          email: 'Email',
-          qty: 'Qty.',
-          item_sku: 'Item SKU',
-          item_name: 'Item Name',
-          ship_from: 'Ship From',
-          service: 'Service',
-          requested_service: 'Requested Service',
-          weight: 'Weight',
-          insured_value: 'Insured Value',
-          tracking_service: 'Tracking Service',
-          reference_no: 'Reference #',
-          order_status: 'Order Status',
           date_printed: 'Date Printed',
+          adj_amount: 'Adj. Amount',
+          shipment_status: 'Shipment Status',
+          tracking_number: 'Tracking #',
+          date_delivered: 'Date Delivered',
+          recipient: 'Recipient',
+          weight: 'Weight',
+          carrier: 'Carrier',
+          service: 'Service',
+          insured_for: 'Insured For',
+          insurance_id: 'Insurance ID',
           ship_date: 'Ship Date',
-          tracking_no: 'Tracking #',
-          order_total: 'Order Total',
-          source: 'Source'
+          cost_code: 'Cost Code',
+          printed_message: 'Printed Message',
+          user: 'User',
+          refund_type: 'Refund Type',
+          refund_request_date: 'Refund Request Date',
+          refund_status: 'Refund Status',
+          refund_requested: 'Refund Requested'
       }
     end
 
@@ -73,8 +62,8 @@ module SdcGrid
       field
     end
 
-    def text_for_id(column, order_id)
-      row = row_num(order_id)
+    def text_for_id(column, tracking_number)
+      row = row_num(tracking_number)
       text_at(column, row)
     end
 
@@ -104,14 +93,14 @@ module SdcGrid
     def element_at_row(column, row)
       column_num = column_number(column).to_s
       xpath = "#{grid_container}//table[#{row.to_s}]//tbody//td[#{column_num}]//div"
-      coordinates = "col#{column}xrow#{row}"
-      element = page_object(coordinates.to_sym) { { xpath: xpath } }
+      coordinate = "col#{column}xrow#{row}"
+      element = page_object(coordinate.to_sym) { { xpath: xpath } }
       element.scroll_into_view
       element
     end
 
-    def element_for_id(column,order_id)
-      row = row_num(order_id)
+    def element_for_id(column, tracking_number)
+      row = row_num(tracking_number)
       element_at_row(column, row)
     end
 
@@ -150,42 +139,18 @@ module SdcGrid
       raise ArgumentError, error_message
     end
 
-    def row_num(order_id)
-      scroll_to(:order_id)
-      col_num = column_number(:order_id)
+    def row_num(tracking_number)
+      scroll_to(:tracking_number)
+      col_num = column_number(:tracking_number)
       xpath = "#{grid_container}//tbody//td[#{col_num}]//div"
       divs = page_objects(:row_number_divs) { { xpath: xpath } }
       divs.each_with_index do |field, index|
         element = SdcElement.new(field)
         element.scroll_into_view
-        return index + 1 if element.text.include?(order_id)
+        return index + 1 if element.text.include?(tracking_number)
       end
 
-      raise ArgumentError, "Cannot locate Order ID #{order_id}"
-    end
-
-    def sort_order(column, sort_order)
-      # scroll_to_column(column)
-      #
-      # span = driver.span(text: column_text[column])
-      # column = StampsField.new(span)
-      # sort_order = sort_order == :sort_ascending ? "ASC" : "DESC"
-      # sort_order_span = span.parent.parent.parent.parent.parent
-      #
-      # 10.times do
-      #   column.scroll_into_view
-      #   5.times do
-      #     sleep(1)
-      #     if sort_order_span.attribute_value('class').include?(sort_order)
-      #       break;
-      #     else
-      #       column.click
-      #     end
-      #   end
-      # end
-      # return "ASC" if  sort_order_span.attribute_value('class').include?("ASC")
-      # return "DESC" if  sort_order_span.attribute_value('class').include?("DESC")
-      # nil
+      raise ArgumentError, "Cannot locate Order ID #{tracking_number}"
     end
 
     def get(property)
@@ -201,7 +166,7 @@ module SdcGrid
     end
   end
 
-  class SdcGridCheckBox < GridColumnBase
+  class HistoryGridCheckBox < HistoryGridBase
     sdc_param(:chooser_xpath) { '//*[@id="sdc-mainpanel-calculatepostageradio-displayEl"]' }
     page_object(:chooser) { { xpath: '//div[contains(@class, "x-column-header-checkbox")]//span' } }
     page_object(:verify) { { xpath: '//div[contains(@class, "x-column-header-checkbox")]' } }
@@ -225,7 +190,7 @@ module SdcGrid
     end
   end
 
-  class SdcGridColumn < GridColumnBase
+  class HistoryGridColumn < HistoryGridBase
     def initialize(column)
       @column = column
     end
@@ -248,16 +213,16 @@ module SdcGrid
       text_at(@column, row)
     end
 
-    def data(order_id)
-      text_for_id(@column, order_id)
+    def data(tracking_number)
+      text_for_id(@column, tracking_number)
     end
 
     def element(row)
       element_at_row(@column, row)
     end
 
-    def element_for_id(order_id)
-      super(@column, order_id)
+    def element_for_id(tracking_number)
+      super(@column, tracking_number)
     end
 
     def sort_ascending
@@ -271,46 +236,26 @@ module SdcGrid
 
   class << self
     def body
-      xpath = '//div[starts-with(@id, "ordersGrid-")][contains(@id, "-normal-body")]'
+      xpath = '//div[@id="printsGrid-normal-body"]'
       klass = Class.new(SdcPage) do
         page_object(:body) { { xpath: xpath } }
       end
       klass.new.body
     end
 
-    def empty?
-      xpath = '//div[@class="x-grid-empty"]'
-      klass = Class.new(SdcPage) do
-        page_object(:grid_empty) { { xpath: xpath } }
-      end
-      klass.new.grid_empty.present?
-    end
-
     def grid_column(column)
       body.wait_until_present(timeout: 15)
 
-      unless GridColumnBase.column_names.keys.include? column
+      unless HistoryGridBase.column_names.keys.include? column
         raise ArgumentError, "Invalid grid column: #{column}"
       end
 
       case column
       when :checkbox
-        SdcGridCheckBox.new
-
-      when :weight
-        klass = Class.new(SdcGridColumn) do
-          def lb order_id
-            data(order_id).scan(/\d+ lb./).first.scan(/\d/).first.to_i
-          end
-
-          def oz order_id
-            data(order_id).scan(/\d+ oz./).first.scan(/\d/).first.to_i
-          end
-        end
-        klass.new(column)
+        HistoryGridCheckBox.new
 
       else
-        SdcGridColumn.new(column)
+        HistoryGridColumn.new(column)
       end
     end
   end

@@ -15,4 +15,6 @@ Feature:  Mail BVT
     Then expect postage message panel tracking label is Postage was sent to your printer. Your Tracking Number is
     Then save postage message panel tracking number
     Then navigate to History
+    Then expect today is selected on history filter panel
+    Then check history grid row for saved tracking number
     Then sign out
