@@ -6,7 +6,7 @@ Feature:  Contacts BVT - Contacts ToolBar
   @sdc_contacts_toolbar_add_group
   Scenario: Contacts BVT Scenario 1: Add new Group via Contacts Toolbar
     Then sign-in to orders
-    Then navigate to contacts
+    Then navigate to Contacts
     Then click on groups menu dropdown on contacts toolbar
     Then select Add/Edit Groups from groups menu dropdown of contacts toolbar
     Then click add button on manage groups window toolbar
@@ -25,7 +25,7 @@ Feature:  Contacts BVT - Contacts ToolBar
   @sdc_contacts_change_group_add_remove
   Scenario: Contacts BVT Scenario 1: Change Group to an Existing Contact via Contacts Toolbar
     Then sign-in to orders
-    Then navigate to contacts
+    Then navigate to Contacts
     Then in contacts grid check row 1
     Then click on groups menu dropdown on contacts toolbar
     Then select Change Groups from groups menu dropdown of contacts toolbar
@@ -41,7 +41,7 @@ Feature:  Contacts BVT - Contacts ToolBar
   @sdc_contacts_edit_delete_group
   Scenario: Contacts BVT Scenario 1: Edit existing group via Contacts Toolbar
     Then sign-in to orders
-    Then navigate to contacts
+    Then navigate to Contacts
     Then click on groups menu dropdown on contacts toolbar
     Then select Add/Edit Groups from groups menu dropdown of contacts toolbar
     Then click existing row in manage group table

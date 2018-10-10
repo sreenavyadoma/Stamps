@@ -154,7 +154,7 @@ Feature:  Contacts BVT - Contacts Details
   @sdc_contacts_detail_name_all_details
   Scenario: Contacts Details Add Name Scenario 2 :Add/Edit All the Name fields(prefix, firstname, middlename, lastname, suffix) in Contact Details panel and verify Grid is updated correctly
     Then sign-in to orders
-    Then navigate to contacts
+    Then navigate to Contacts
     Then delete all available contacts with the value FirstName
     Then expect count of contact search results is 0
     Then close the search results by clicking on remove button
@@ -178,7 +178,7 @@ Feature:  Contacts BVT - Contacts Details
   @sdc_contacts_detail_company_single
   Scenario: Contacts Details Add Company Scenario 1 :Add/Edit Single Company in Contact Details panel
     Then sign-in to orders
-    Then navigate to contacts
+    Then navigate to Contacts
     Then delete all available contacts with the value CompanySingle
     Then expect count of contact search results is 0
     Then close the search results by clicking on remove button
@@ -194,7 +194,7 @@ Feature:  Contacts BVT - Contacts Details
   @sdc_contacts_detail_company_expand_collapse
   Scenario: Contacts Details Expand and Collapse Company Scenario 1 :Expand/Collapse the Company field in Contact Details panel
     Then sign-in to orders
-    Then navigate to contacts
+    Then navigate to Contacts
     Then In Contacts Grid Check Row 1
     Then Click on Contact Details Panel Company Expand Button
     Then Click on Contact Details Panel Company Collapse Button
@@ -202,7 +202,7 @@ Feature:  Contacts BVT - Contacts Details
   @sdc_contacts_detail_company_department_and_title_details
   Scenario: Contacts Details - Company Add Title and Department Scenario 1:Expand the Name field in Contact Details panel
     Then sign-in to orders
-    Then navigate to contacts
+    Then navigate to Contacts
     Then delete all available contacts with the value CompanyDetail
     Then expect count of contact search results is 0
     Then close the search results by clicking on remove button
