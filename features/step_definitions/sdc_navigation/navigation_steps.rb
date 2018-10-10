@@ -15,6 +15,7 @@ Then /^navigate to (.+)$/ do |str|
   when :contacts
     step 'click through tutorial modal'
     SdcContacts.loading_contacts.safe_wait_until_present(timeout: 10)
+    SdcContacts.loading_contacts.safe_wait_while_present(timeout: 45)
     SdcContacts.contacts_body.safe_wait_until_present(timeout: 20)
   when :history
     step 'click through tutorial modal'
