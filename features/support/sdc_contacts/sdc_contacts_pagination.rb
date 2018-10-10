@@ -13,8 +13,6 @@ module SdcContacts
     page_object(:max_pages, required: true, timeout: 20) { { xpath: '//*[contains(@id,"numberfield")]/following::div[contains(@id,"tbtext")][1]'}}
     page_object(:current_page, required: true, timeout: 20) { { xpath: '//*[@name="inputItem"]'}}
 
-
-
     def selection_pagination(name: 'selection', value: 'None')
       page_object(name) { { xpath: "//li[text()='#{value}']" } }
     end

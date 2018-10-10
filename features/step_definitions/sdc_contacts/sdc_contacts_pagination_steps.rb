@@ -66,7 +66,6 @@ Then /^expect next and last page arrows are enabled$/ do
   step "expect last page is enabled"
 end
 
-
 Then /^expect (.*) page is enabled$/ do |value|
   pagination = SdcContacts.contacts_pagination
   SdcLogger.info "#{value} Page disabled #{pagination.page_arrow_disabled(value)}"

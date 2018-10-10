@@ -38,8 +38,6 @@ Then /^in contacts grid uncheck row (\d+)$/ do |row|
   contacts_detail= SdcContacts.contacts_detail
   expect(contacts_detail.contacts_detail_panel.present?).to be(false)
 end
-
-
 Then /^[Ee]xpect [Nn]umber [Oo]f [Cc]ontacts [Dd]isplayed [Ii]n [Tt]he [Gg]rid [Ii]s (.*)$/ do |count|
   grid=SdcContacts.contacts_col
   p "given"

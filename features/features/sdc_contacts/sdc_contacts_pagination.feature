@@ -16,3 +16,4 @@ Scenario: Contacts BVT Scenario 1: Contacts Pagination
     # perpage : 500
     Then set per page drop down of pagination on contacts toolbar to 500
     Then expect contacts on contacts grid is reflected according to the selected pagination
+

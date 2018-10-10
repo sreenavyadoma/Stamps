@@ -70,7 +70,6 @@ module SdcContacts
     end
 
 
-
     def contacts_scroll_to(column)
       field = contacts_header_element(column)
       field.scroll_into_view
