@@ -32,7 +32,7 @@ Feature:  Contacts BVT - Contacts Filter Panel
   @sdc_contacts_left_navigation_add_group
   Scenario: Contacts BVT Scenario 1: Add new group from contact left navigation
     Then sign-in to orders
-    Then navigate to contacts
+    Then navigate to Contacts
     # Groups Left Navigation plus Button - Add
     Then mousehover on groups section of left navigation
     Then click on groups add button of contacts left navigation
@@ -49,7 +49,7 @@ Feature:  Contacts BVT - Contacts Filter Panel
   @sdc_contacts_left_add_edit_group_add
   Scenario: Contacts BVT Scenario 1: Add/Edit group from contact left navigation
     Then sign-in to orders
-    Then navigate to contacts
+    Then navigate to Contacts
     # Groups Left Navigation settings Button - Add from (manage groups)
     Then mousehover on groups section of left navigation
     Then click on groups settings button of contacts left navigation
