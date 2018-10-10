@@ -40,6 +40,7 @@ Feature:  History regression
     Then expect return to on print details contains El Segundo, CA
     Then sign out
 
+  @container_label_return_address
   Scenario: Container label return address is default address
     Then sign-in to mail
     Then select print on Shipping Label - 8 ½" x 11" Paper
