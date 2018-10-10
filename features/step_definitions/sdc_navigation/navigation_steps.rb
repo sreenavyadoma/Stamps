@@ -2,6 +2,7 @@
 Then /^navigate to (.+)$/ do |str|
   nav_element = SdcNavigation.nav_element(str)
   nav_element.wait_until_present(timeout: 20)
+  expect(nav_element).to be_present
   nav_element.click
   case(str.downcase.to_sym)
   when :mail
