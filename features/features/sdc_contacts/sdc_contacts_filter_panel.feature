@@ -9,25 +9,41 @@ Feature:  Contacts BVT - Contacts Filter Panel
   Contacts Filter Panel Cost Code count: Expand contacts Left navigation individual Cost Codes count
   Contacts Filter Panel Groups Expand/Collapse: Collapse and expand contacts Left navigation Cost Codes Filter Groups
   Contacts Filter Panel All Contacts count :Left filter panel contact count
+  Contacts Filter Panel	Search Contact : Search for exsisting contact based on name, cost code, group
+  Contacts Filter Panel	Search Contact : Search for non exsisting contact
     Then sign-in to orders
     Then navigate to Contacts
-    #Contacts Filter Panel All Contacts count :Left filter panel contact count
-    Then fetch total count of all contacts
-    # Contacts Filter Panel Hide/Show: Collapse and expand contacts Left navigation Filter Panel
+	#Contacts Filter Panel Hide/Show: Collapse and expand contacts Left navigation Filter Panel
     Then click on collapse button of contacts left navigation
     Then click on expand button of contacts left navigation
-    # Contacts Filter Panel Cost Code Expand/Collapse: Collapse and expand contacts Left navigation Cost Codes Filter Panel
-    Then click on cost codes expand button of contacts left navigation
-    Then click on cost codes collapse button of contacts left navigation
-    # Contacts Filter Panel Cost Code count: Expand contacts Left navigation individual Cost Codes count
-    Then click on cost codes expand button of contacts left navigation
-    Then fetch total against each cost code available
-    # Contacts Filter Panel Groups Expand/Collapse: Collapse and expand contacts Left navigation Cost Codes Filter Groups
-    Then click on groups expand button of contacts left navigation
-    Then click on groups collapse button of contacts left navigation
-    # Contacts Filter Panel Group count: Expand contacts Left navigation individual Group count
+	#Contacts Filter Panel - SEARCH BAR
+    Then expect search bar is available on the contacts left navigation panel
+   	#Contacts Filter Panel	Search Contact : Search for exsisting contact based on name
+    Then set search text on contacts left navigation search bar to aloha
+    Then click search button on contacts left navigation search bar
+    Then expect search results is available on the contacts left navigation panel
+    Then expect contacts with Name containing the value aloha are retrieved in the grid
+	#Contacts Filter Panel	Search Contact : Search for non exsisting contact
+    Then set search text on contacts left navigation search bar to Non Exsisting
+    Then click search button on contacts left navigation search bar
+    Then expect empty search message for searched contact is displayed on the contacts grid
+    Then click on remove button of search results on contacts left navigation panel
+	#Contacts Filter Panel - SELECTED Filter
+    Then expect selected filter on the contacts left navigation panel is available
+    Then fetch count of selected contacts
+	#Contacts Filter Panel - ALL CONTACTS Filter and its count
+    Then expect all contacts filter is available on the contacts left navigation panel
+    Then fetch total count of all contacts
+   	#Contacts Filter Panel - GROUPS Filter - expand , fetch each group count , collapse
+    Then expect groups filter is available on the contacts left navigation panel
     Then click on groups expand button of contacts left navigation
     Then fetch total against each group available
+    Then click on groups collapse button of contacts left navigation
+	#Contacts Filter Panel - COST CODES Filter - expand , fetch each cost code count , collpase
+    Then expect cost codes filter is available on the contacts left navigation panel
+    Then click on cost codes expand button of contacts left navigation
+    Then fetch total against each cost code available
+    Then click on cost codes collapse button of contacts left navigation
 
   @sdc_contacts_left_navigation_add_group
   Scenario: Contacts BVT Scenario 1: Add new group from contact left navigation
