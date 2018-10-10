@@ -55,6 +55,10 @@ Then /^refresh the browser$/ do
   end
 end
 
+Then /^go to url (.+)$/ do |str|
+  SdcPage.browser.goto str
+end
+
 Then /^pause for (\d+) second(?:|s)?$/ do |seconds|
   sleep(seconds.to_i)
 end

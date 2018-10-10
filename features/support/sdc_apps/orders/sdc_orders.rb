@@ -36,7 +36,7 @@ module SdcOrders
     end
 
     def grid
-      SdcGrid
+      OrdersGrid
     end
 
     def filter_panel

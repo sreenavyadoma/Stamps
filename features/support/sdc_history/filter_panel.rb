@@ -97,7 +97,7 @@ module SdcHistory
     page_object(:username) { { xpath: '//div[@id="filter-panel-view-placeholder-innerCt"]//div[contains(@class,"x-title-item")]' } }
   end
 
-  module HistoryFilterPanel
+  module FilterPanel
     class << self
       def date_printed
         HistoryDatePrinted.new

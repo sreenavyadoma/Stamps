@@ -13,7 +13,11 @@ module SdcHistory
     end
 
     def filter_panel
-      HistoryFilterPanel
+      FilterPanel
+    end
+
+    def grid
+      Grid
     end
   end
 end
