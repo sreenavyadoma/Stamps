@@ -133,8 +133,15 @@ module SdcHistory
       page_object(:x_btn) { {xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
       page_object(:save) { {xpath: '//*[text()="Save"]'} }
 
-      page_object(:change_cost_code_text_field, tag: textfield) { { xpath: '//div[contains(@id, "changeCostCode")]//input' } }
-      page_object(:change_cost_code_drop_down) { { xpath: '//div[contains(@id, "changeCostCode")]//*[contains(@class, "arrow")]' } }
+      def new_cost_code
+        NewCostCode.new
+      end
+
+    end
+
+    class NewCostCode < SdcPage
+      page_object(:text_field, tag: textfield) { { xpath: '//div[contains(@id, "changeCostCode")]//input' } }
+      page_object(:drop_down) { { xpath: '//div[contains(@id, "changeCostCode")]//*[contains(@class, "arrow")]' } }
 
       def selection(str)
         page_object(:selection_obj) { { xpath: "//li[text()='#{str}']" } }
@@ -165,8 +172,7 @@ module SdcHistory
       #
 
       page_object(:rma_memo, tag: textfield) { {xpath: '//*[@name="RMAMemo"]'} }
-      page_object(:cost_code) { {xpath: ''} }
-      page_object(:total) { {xpath: ''} }
+      page_object(:total) { {xpath: '(//*[text()="Total:"]/../*)[2]'} }
 
       def service
         ReturnLabelService.new
@@ -181,7 +187,7 @@ module SdcHistory
       end
 
       def cost_code
-
+        ReturnLabelCostCode.new
       end
     end
 

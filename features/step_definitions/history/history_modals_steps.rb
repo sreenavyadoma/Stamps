@@ -261,3 +261,159 @@ Then /^select row (\d+) on reprint scan form modal$/ do |num|
   SdcHistory.modals.reprint_scan_form.row_select(num).click
 end
 
+#create return label
+Then /^expect return label modal on history is present$/ do
+  expect(SdcHistory.modals.return_label.title).to be_present
+end
+
+Then /^close return label modal on history$/ do
+  SdcHistory.modals.return_label.x_btn.click
+end
+
+Then /^expect from address on return label modal is (.*)$/ do |str|
+  expect(SdcHistory.modals.return_label.from.text_value).to eql(str)
+end
+
+Then /^set from address on return label modal to (.*)$/ do |str|
+  SdcHistory.modals.return_label.from.set(str)
+end
+
+Then /^expect to address on return label modal is (.*)$/ do |str|
+  expect(SdcHistory.modals.return_label.to.text_value).to eql(str)
+end
+
+Then /^set to address on return label modal to (.*)$/ do |str|
+  SdcHistory.modals.return_label.to.set(str)
+end
+
+Then /^set weight on return label modal to (\d+) lbs (\d+) oz$/ do |lbs, oz|
+  step "set lbs on return label modal to #{lbs}"
+  step "set oz on return label modal to #{oz}"
+end
+
+Then /^set lbs on return label modal to (.+)$/ do |val|
+  lbs = SdcHistory.modals.return_label.weight.lbs
+  iterations = val.to_i - lbs.text_value.to_i
+  iterations.abs.times do lbs.increment.click end if iterations > 0
+  iterations.abs.times do lbs.decrement.click end if iterations < 0
+  step "expect lbs on return label modal is #{val}"
+end
+
+Then /^set oz on return label modal to (.+)$/ do |val|
+  oz = SdcHistory.modals.return_label.weight.oz
+  iterations = val.to_i - oz.text_value.to_i
+  iterations.abs.times do oz.increment.click end if iterations > 0
+  iterations.abs.times do oz.decrement.click end if iterations < 0
+  step "expect oz on return label modal is #{val}"
+end
+
+Then /^expect lbs on return label modal is (\d+)$/ do |num|
+  expect(SdcHistory.modals.return_label.weight.lbs).to eql(num)
+end
+
+Then /^expect oz on return label modal is (\d+)$/ do |num|
+  expect(SdcHistory.modals.return_label.weight.oz).to eql(num)
+end
+
+Then /^select service on return label modal (.*)$/ do |str|
+  service = SdcHistory.modals.return_label.service
+  unless service.text_field.text_value.include?(str)
+    service.drop_down.click
+    service_element = service.service_element(:service, str)
+    service.drop_down.click unless service_element.present?
+    service_element.scroll_into_view unless service_element.present?
+    service_element.click if service_element.present?
+  end
+  step "expect service on return label modal is #{str}"
+end
+
+Then /^expect service on return label modal is (.*)$/ do |str|
+  expect(SdcHistory.modals.return_label.service.text_field.text_value).to eql(str)
+end
+
+Then /^expect service on return label modal is \$(.+)$/ do |str|
+  service = SdcHistory.modals.return_label.service
+  expect(service.cost.present?).to be_truthy
+  cost = service.cost.text_value.parse_digits.to_f
+  expect(cost).to eql(str.to_f)
+end
+
+Then /^set insure for on return label modal to (\d+)$/ do |val|
+  SdcHistory.modals.return_label.insure_for.set(val)
+  step "expect insure for on return label modal is #{val}"
+end
+
+Then /^expect insure for on return label modal is (.*)$/ do |str|
+  expect(SdcHistory.modals.return_label.insure_for.text_value).to eql(str)
+end
+
+Then /^select tracking on return label modal (.*)$/ do |str|
+  tracking = SdcHistory.modals.return_label.tracking
+  unless tracking.text_field.text_value.include?(str)
+    tracking.drop_down.click
+    tracking_element = tracking.tracking_element(:service, str)
+    tracking.drop_down.click unless tracking_element.present?
+    tracking_element.scroll_into_view unless tracking_element.present?
+    tracking_element.click if tracking_element.present?
+  end
+  step "expect tracking on return label modal is #{str}"
+end
+
+Then /^expect tracking on return label modal is (.*)$/ do |str|
+  expect(SdcHistory.modals.return_label.tracking.text_value).to eql(str)
+end
+
+Then /^set rma memo on return label modal to (.*)$/ do |str|
+  SdcHistory.modals.return_label.rma_memo.set(str)
+  step "expect rma memo on return label modal is #{val}"
+end
+
+Then /^expect rma memo on return label modal is (.*)$/ do |str|
+  expect(SdcHistory.modals.return_label.rma_memo.text_value).to eql(str)
+end
+
+Then /^select cost code on return label modal (.*)$/ do |str|
+  cost_code = SdcHistory.modals.return_label.cost_code
+  unless cost_code.text_field.text_value.include?(str)
+    cost_code.drop_down.click
+    cost_code.selection(str)
+    cost_code.drop_down.click unless selection_obj.present?
+    selection_obj.scroll_into_view unless selection_obj.present?
+    selection_obj.click if selection_obj.present?
+  end
+  step "expect tracking on return label modal is #{str}"
+end
+
+Then /^expect cost code on return label modal is (.*)$/ do |str|
+  expect(SdcHistory.modals.return_label.cost_code.text_field.text_value).to eql(str)
+end
+
+#change cost code
+Then /^expect change cost code modal on history is present$/ do
+  expect(SdcHistory.modals.change_cost_code.title).to be_present
+end
+
+Then /^close change cost code modal on history$/ do
+  SdcHistory.modals.change_cost_code.x_btn.click
+end
+
+Then /^click save button on change cost code modal$/ do
+  SdcHistory.modals.change_cost_code.save.click
+end
+
+Then /^select new cost code on change cost code modal (.*)$/ do |str|
+  new_cost_code = SdcHistory.modals.change_cost_code.new_cost_code
+  unless new_cost_code.text_field.text_value.include?(str)
+    new_cost_code.drop_down.click
+    new_cost_code.selection(str)
+    new_cost_code.drop_down.click unless selection_obj.present?
+    selection_obj.scroll_into_view unless selection_obj.present?
+    selection_obj.click if selection_obj.present?
+  end
+  step "expect new cost code on return label modal is #{str}"
+end
+
+Then /^expect new cost code on return label modal is (.*)$/ do |str|
+  expect(SdcHistory.modals.change_cost_code.new_cost_code.text_field.text_value).to eql(str)
+end
+
