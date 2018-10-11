@@ -2,6 +2,7 @@
 Then /^navigate to (.+)$/ do |str|
   nav_element = SdcNavigation.nav_element(str)
   nav_element.wait_until_present(timeout: 20)
+  expect(nav_element).to be_present
   nav_element.click
   case(str.downcase.to_sym)
   when :mail
@@ -14,6 +15,7 @@ Then /^navigate to (.+)$/ do |str|
   when :contacts
     step 'click through tutorial modal'
     SdcContacts.loading_contacts.safe_wait_until_present(timeout: 20)
+    SdcContacts.loading_contacts.safe_wait_while_present(timeout: 45)
     SdcContacts.contacts_body.safe_wait_until_present(timeout: 20)
   when :history
     step 'click through tutorial modal'
@@ -31,7 +33,6 @@ end
 Then /^wait while loading history grid$/ do
   SdcHistory.loading.safe_wait_until_present(timeout: 8)
   SdcHistory.loading.wait_while_present(timeout: 240)
-
 end
 
 Then /^hover on navigation history then select (.+)$/ do |str|
