@@ -83,6 +83,7 @@ Feature:  Contacts BVT - Contacts Filter Panel
     Then click existing row in manage group table
     Then click delete button on manage groups window toolbar
     Then click on yes button of delete groups pop up
+    Then expect manage groups pop up is displayed
     Then expect group name deleted is not available in the manage group pop up table
 
 
