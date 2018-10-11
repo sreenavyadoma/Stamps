@@ -363,6 +363,7 @@ Then /^click (.*) row in manage group table$/ do |group_name|
       while i<= row_count.to_i
         if manage_groups.group_name(i) == group_name
           TestData.hash[:old_group] = group_name
+          manage_groups.group_text.safe_wait_until_present(timeout:45)
           manage_groups.group_text.click
         end
         i=i+1
@@ -457,8 +458,17 @@ Then /^click on yes button of delete groups pop up$/ do
   delete_groups.groups_delete_yes_button.safe_wait_until_present(timeout: 10)
   delete_groups.groups_delete_yes_button.flash
   delete_groups.groups_delete_yes_button.click
+  step "expect manage groups popup is displayed"
 end
 
+Then /^expect manage groups popup is displayed$/ do
+  manage_groups = SdcContacts.contacts_manage_groups
+  manage_groups.manage_groups_title.safe_wait_until_present(timeout: 45)
+end
 
-
+Then /^click on close button of manage groups pop up window$/ do
+  manage_groups = SdcContacts.contacts_manage_groups
+  manage_groups.manage_groups_close.safe_wait_until_present(timeout: 10)
+  manage_groups.manage_groups_close.click
+end
 

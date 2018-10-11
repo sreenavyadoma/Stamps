@@ -84,7 +84,7 @@ module SdcContacts
     page_object(:cost_codes) { {xpath: '//*[contains(@class, "cost-codes-filters")]'}}
     page_object(:cost_codes_expand_button,required: true, timeout: 45 ) { {   xpath: '//*[contains(@class, "cost-codes-filters")]//img[contains(@class, "-expand-bottom")]'} }
     page_object(:cost_codes_collapse_button,required: true, timeout: 45 ) { { xpath: '//*[contains(@class, "cost-codes-filters")]//img[contains(@class, "-collapse-top")]'} }
-    page_object(:left_nav_add_edit_costcodes, required: true, timeout: 20) { { xpath: '(//*[contains(@class, "cost-codes-filters")]//following::img[@class="x-tool-img x-tool-gear"])[1]'}}
+    page_object(:left_nav_add_edit_costcodes, required: true, timeout: 20) { { xpath: '(//*[contains(@class, "cost-codes-filters")]//following::img[@class="x-tool-img x-tool-gear"])'}}
     page_objects(:total_costcodes) { {xpath: '//*[contains(@class, "cost-codes-filters")]//table[@class="sdc-badgebutton x-box-item sdc-badgebutton-default"]'} }
 
     def cost_code_name(position)
@@ -129,4 +129,6 @@ module SdcContacts
     end
 
   end
+
+
 end

@@ -73,24 +73,18 @@ Cucumber::Rake::Task.new(:sdc_contacts_left_add_edit_group_add) do |t|
   t.profile = 'sdc_contacts_left_add_edit_group_add'
   t.cucumber_opts = "-p cuke_reports"
 end
-
 Cucumber::Rake::Task.new(:sdc_contacts_left_navigation_add_group) do |t|
   t.profile = 'sdc_contacts_left_navigation_add_group'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:sdc_contacts_change_cost_code_add_edit) do |t|
-  t.profile = 'sdc_contacts_change_cost_code_add_edit'
+Cucumber::Rake::Task.new(:sdc_contacts_left_add_edit_group) do |t|
+  t.profile = 'sdc_contacts_left_add_edit_group'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:sdc_contacts_change_group_add_remove) do |t|
-  t.profile = 'sdc_contacts_change_group_add_remove'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:sdc_contacts_edit_delete_group) do |t|
-  t.profile = 'sdc_contacts_edit_delete_group'
+Cucumber::Rake::Task.new(:sdc_contacts_toolbar_edit_delete_group) do |t|
+  t.profile = 'sdc_contacts_toolbar_edit_delete_group'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -99,8 +93,8 @@ Cucumber::Rake::Task.new(:sdc_contact_add_new_contact) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:sdc_contacts_change_group_add_remove) do |t|
-  t.profile = 'sdc_contacts_change_group_add_remove'
+Cucumber::Rake::Task.new(:sdc_contacts_toolbar_change_group_add_remove) do |t|
+  t.profile = 'sdc_contacts_toolbar_change_group_add_remove'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -114,23 +108,18 @@ Cucumber::Rake::Task.new(:sdc_contacts_left_panel_regression) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:sdc_contacts_change_cost_code_add_new) do |t|
-   t.profile = 'sdc_contacts_change_cost_code_add_new'
+ Cucumber::Rake::Task.new(:sdc_contacts_toolbar_change_cost_code_add_edit) do |t|
+   t.profile = 'sdc_contacts_toolbar_change_cost_code_add_edit'
    t.cucumber_opts = "-p cuke_reports"
  end
 
- Cucumber::Rake::Task.new(:sdc_contacts_change_to_existing_cost_code) do |t|
-   t.profile = 'sdc_contacts_change_to_existing_cost_code'
-   t.cucumber_opts = "-p cuke_reports"
- end
-
-Cucumber::Rake::Task.new(:sdc_contacts_toolbar_add_new_cost_code_toolbar) do |t|
-  t.profile = 'sdc_contacts_toolbar_add_new_cost_code_toolbar'
+Cucumber::Rake::Task.new(:sdc_contacts_toolbar_add_new_cost_code) do |t|
+  t.profile = 'sdc_contacts_toolbar_add_new_cost_code'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:sdc_contacts_toolbar_add_existing_cost_code_toolbar) do |t|
-  t.profile = 'sdc_contacts_toolbar_add_existing_cost_code_toolbar'
+Cucumber::Rake::Task.new(:sdc_contacts_toolbar_add_existing_cost_code) do |t|
+  t.profile = 'sdc_contacts_toolbar_add_existing_cost_code'
   t.cucumber_opts = "-p cuke_reports"
 end
 
