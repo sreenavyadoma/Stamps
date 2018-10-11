@@ -117,10 +117,11 @@ Feature:  Contacts BVT - Contacts ToolBar
   @sdc_contacts_toolbar_settings_show_hide_all_columns
   Scenario: Contacts BVT Scenario 1 : Select columns to show/hide in the Grid
     Then sign-in to orders
-    Then navigate to contacts
+    Then navigate to Contacts
     Then click on settings button of contacts toolbar
     Then select columns from contacts toolbar settings dropdown menu
     Then check all the columns from the list to show all columns in the contacts grid
     Then expect all columns are available on the contacts grid
+    Then select columns from contacts toolbar settings dropdown menu
     Then uncheck all the columns from the list to hide all columns in the contacts grid
     Then expect all columns are not available on the contacts grid
