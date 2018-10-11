@@ -1,5 +1,5 @@
 
-module SdcGrid
+module OrdersGrid
 
   class GridColumnBase < SdcPage
     @@column_number = {}

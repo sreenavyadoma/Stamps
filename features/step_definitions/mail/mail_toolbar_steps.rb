@@ -35,6 +35,19 @@ Then /^click continue on confirm print modal$/ do
   expect(comfirm_print.continue.present?).to be(false)
 end
 
+Then /^expect postage message panel tracking label is (.+)$/ do |str|
+  message_panel = SdcMail.print_form.message_panel
+  message_panel.tracking_label.wait_until_present(timeout: 40)
+  expect(message_panel.tracking_label.text.strip).to include str
+end
+
+Then /^save postage message panel tracking number$/ do
+  message_panel = SdcMail.print_form.message_panel
+  message_panel.tracking_number.wait_until_present(timeout: 40)
+  TestData.hash[:tracking_number] = message_panel.tracking_number.text.strip
+  expect(TestData.hash[:tracking_number].size).to be > 15
+end
+
 Then /^click print label expecting no errors$/ do
   step 'click print label'
   step 'click continue on confirm print modal'
