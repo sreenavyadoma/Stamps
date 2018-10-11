@@ -61,7 +61,7 @@ end
 
 Then /^expect manage groups pop up is displayed$/ do
   manage_groups = SdcContacts.contacts_manage_groups
-  manage_groups.manage_groups_title.safe_wait_until_present(timeout: 10)
+  manage_groups.manage_groups_title.safe_wait_until_present(timeout: 60)
   expect(manage_groups.manage_groups_title.present?).to be(true)
 end
 
