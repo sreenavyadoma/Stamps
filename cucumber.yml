@@ -1,5 +1,5 @@
 
-default: --backtrace --profile aloha
+default: --backtrace --profile alex_mail
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -566,6 +566,7 @@ mail_fci_flats: --tags @mail_fci_flats --guess PRINTER=factory
 mail_hidden_postage: --tags @mail_hidden_postage --guess PRINTER=factory
 mail_bug_ordersauto_3243: --tags @mail_bug_ordersauto_3243 --guess PRINTER=factory
 mail_manage_printing_options: --tags @mail_manage_printing_options --guess
+mail_dropdown_tooltip: --tags @mail_dropdown_tooltip --guess
 pp_log_in_page_validation: --tags @pp_log_in_page_validation --guess
 pp_header_favicons_browser: --tags @pp_header_favicons_browser --guess
 pp_header_favicons_browser_mobile: --tags @pp_header_favicons_browser_mobile --guess
@@ -626,5 +627,5 @@ sdc_contacts_left_panel_regression: --tags @sdc_contacts_left_panel_regression  
 sdc_contact_add_new_contact: --tags @sdc_contact_add_new_contact --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 sdc_contacts_toolbar_edit_delete_group: --tags @sdc_contacts_toolbar_edit_delete_group --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 sdc_contacts_left_navigation_add_group:  --tags @sdc_contacts_left_navigation_add_group --guess  LOG_LEVEL=info
-sdc_contacts_left_add_edit_group_add:  --tags @sdc_contacts_left_add_edit_group_add --guess  LOG_LEVEL=info
+sdc_contacts_left_add_edit_group:  --tags @sdc_contacts_left_add_edit_group --guess  LOG_LEVEL=info
 sdc_contacts_pagination: --tags @sdc_contacts_pagination --guess  LOG_LEVEL=info
