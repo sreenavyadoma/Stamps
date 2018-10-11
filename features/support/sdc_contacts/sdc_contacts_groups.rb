@@ -22,7 +22,7 @@ module SdcContacts
 
     def group_name(row)
       #xpath_text = "//*[@id = 'multiselect-groups-grid']//*[@class='x-grid-item-container']//table[#{row}]//tbody//tr//td[2]"
-      xpath_text = "//*[contains(@id,'title-')][text() = 'Manage Groups']/following::div[contains(@id,'tableview-')]//*[@class='x-grid-item-container']//table[#{row}]/tbody/tr/td"
+      xpath_text = "//*[contains(@id,'title-')][text() = 'Manage Groups']/following::div[contains(@id,'tableview-')]//*[@class='x-grid-item-container']//table[#{row}]/tbody/tr/td/div"
       label = page_object(:group_text, required: true, timeout: 10){ { xpath: xpath_text }}
       label.text_value
     end
