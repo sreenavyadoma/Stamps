@@ -46,7 +46,11 @@ Then /^[Ss]et [Cc]ontact [Dd]etails to$/ do |table|
   step "set contact details country to #{country}"
   step "set contact details Street Address to #{street_address}"
   step "set contact details city to #{city}"
-  step "set contact details state to #{state}"
+  if state.empty?
+  else
+    step "set contact details state to #{state}"
+  end
+
   step "set contact details postal code to #{postal_code}"
   step "set contact details email to #{email}"
 
@@ -513,4 +517,285 @@ end
 Then /^expect street address error message is not displayed$/ do
   contacts_detail= SdcContacts.contacts_detail
   expect(contacts_detail.error_street_address.present?).to be(false)
+end
+
+Then /^set address to (.*)$/ do |address|
+  case address
+  when "domestic"
+    country = 'United States'
+    street_address = TestHelper.rand_street1_address
+    city =   TestHelper.rand_city_name
+    us_states = data_for(:us_states, {})
+    states = us_states.values
+    state = states[rand(us_states.size)]
+    SdcLogger.info  "state value from random states value #{state}"
+    postal_code = TestHelper.rand_postal_code
+  when "international"
+    domestic_countries = {"Afghanistan"=>"AF",
+                          "Albania"=>"AL",
+                          "Algeria"=>"DZ",
+                          "American Samoa"=>"AS",
+                          "Andorra"=>"AD",
+                          "Angola"=>"AO",
+                          "Anguilla"=>"AI",
+                          "Antigua & Barbuda"=>"AG",
+                          "Argentina"=>"AR",
+                          "Armenia"=>"AM",
+                          "Aruba"=>"AW",
+                          "Ascension"=>"SH",
+                          "Australia "=>"AU",
+                          "Austria"=>"AT",
+                          "Azerbaijan"=>"AZ",
+                          "Bahamas"=>"BS",
+                          "Bahrain"=>"BH",
+                          "Bangladesh"=>"BD",
+                          "Barbados"=>"BB",
+                          "Belarus"=>"BY",
+                          "Belgium"=>"BE",
+                          "Belize"=>"BZ",
+                          "Benin"=>"AS",
+                          "Bermuda"=>"BM",
+                          "Bhutan"=>"BT",
+                          "Bolivia"=>"BO",
+                          "Bonaire, Sint Eustatius and Saba"=>"BQ",
+                          "Bosnia-Herzegovina"=>"BA",
+                          "Botswana"=>"BW",
+                          "Brazil"=>"BR",
+                          "British Virgin Islands"=>"VG",
+                          "Brunei Darussalam"=>"BN",
+                          "Bulgaria"=>"BG",
+                          "Burkina Faso"=>"BF",
+                          "Burma (Myanmar)"=>"MM",
+                          "Burundi"=>"BI",
+                          "Cambodia"=>"KH",
+                          "Cameroon"=>"CM",
+                          "Canada"=>"CA",
+                          "Cape Verde"=>"CV",
+                          "Cayman Islands"=>"KY",
+                          "Central African Republic"=>"CF",
+                          "Chad"=>"TD",
+                          "Chile"=>"CL",
+                          "China"=>"CN",
+                          "Colombia"=>"CO",
+                          "Comoros"=>"KM",
+                          "Costa Rica"=>"CR",
+                          "Croatia"=>"HR",
+                          "Cuba"=>"CU",
+                          "Curacao"=>"CW",
+                          "Cyprus"=>"CY",
+                          "Czech Republic"=>"CZ",
+                          "Democratic Republic Of The Congo"=>"CD",
+                          "Denmark"=>"DK",
+                          "Djibouti"=>"DJ",
+                          "Dominica"=>"DM",
+                          "Dominican Republic"=>"DO",
+                          "Ecuador"=>"EC",
+                          "Egypt"=>"EG",
+                          "El Salvador"=>"SV",
+                          "England (Great Britain)"=>"GB",
+                          "Equatorial Guine"=>"GQ",
+                          "Eritrea"=>"ER",
+                          "Estonia"=>"EE",
+                          "Ethiopia"=>"ET",
+                          "Falkland Islands"=>"FK",
+                          "Faroe Islands"=>"FO",
+                          "Fiji"=>"FJ",
+                          "Finland"=>"FI",
+                          "France"=>"FR",
+                          "French Guiana"=>"GF",
+                          "French Polynesia"=>"PF",
+                          "Gabon"=>"GA",
+                          "Gambia"=>"GM",
+                          "Germany"=>"DE",
+                          "Ghana"=>"GH",
+                          "Gibraltar"=>"GI",
+                          "Great Britain"=>"GB",
+                          "Greece"=>"GR",
+                          "Greenland"=>"GL",
+                          "Grenada"=>"GD",
+                          "Guadeloupe"=>"GP",
+                          "Guam"=>"GU",
+                          "Guatemala"=>"GT",
+                          "Guinea"=>"GN",
+                          "Guinea-Bissau"=>"GW",
+                          "Guyana"=>"GY",
+                          "Haiti"=>"HT",
+                          "Honduras"=>"HN",
+                          "Hong Kong"=>"HK",
+                          "Hungary"=>"HU",
+                          "Iceland"=>"IS",
+                          "India"=>"IN",
+                          "Indonesia"=>"ID",
+                          "Iran"=>"IR",
+                          "Iraq"=>"IQ",
+                          "Ireland"=>"IE",
+                          "Israel"=>"IL",
+                          "Italy"=>"IT",
+                          "Jamaica"=>"JM",
+                          "Japan"=>"JP",
+                          "Jordan"=>"JO",
+                          "Kazakhstan"=>"KZ",
+                          "Kenya"=>"KE",
+                          "Kiribati"=>"KI",
+                          "Kosovo"=>"XZ",
+                          "Kuwait"=>"KW",
+                          "Kyrgyzstan"=>"KG",
+                          "Laos"=>"LA",
+                          "Latvia"=>"LV",
+                          "Lebanon"=>"LB",
+                          "Lesotho"=>"LS",
+                          "Liberia"=>"LR",
+                          "Libya"=>"LY",
+                          "Liechtenstein"=>"LI",
+                          "Lithuania"=>"LT",
+                          "Luxembourg"=>"LU",
+                          "Macao"=>"MO",
+                          "Madagascar"=>"MG",
+                          "Malawi"=>"MW",
+                          "Malaysia"=>"MY",
+                          "Maldives"=>"MV",
+                          "Mali"=>"ML",
+                          "Malta"=>"MT",
+                          "Marshall Islands"=>"MH",
+                          "Martinique"=>"MQ",
+                          "Mauritania"=>"MR",
+                          "Mauritius"=>"MU",
+                          "Mexico"=>"MX",
+                          "Micronesia"=>"FM",
+                          "Moldova"=>"MD",
+                          "Mongolia"=>"MN",
+                          "Montserrat"=>"MS",
+                          "Morocco"=>"MA",
+                          "Mozambique"=>"MZ",
+                          "Namibia"=>"NA",
+                          "Nauru"=>"NR",
+                          "Nepal"=>"NP",
+                          "Netherlands"=>"NL",
+                          "New Caledonia"=>"NC",
+                          "New Zealand"=>"NZ",
+                          "Nicaragua"=>"NI",
+                          "Niger"=>"NE",
+                          "Nigeria"=>"NG",
+                          "No Country"=>"0",
+                          "Northern Ireland (Great Britain)"=>"GB",
+                          "Northern Mariana Islands"=>"MP",
+                          "Norway"=>"NO",
+                          "Oman"=>"OM",
+                          "Pakistan "=>"PK",
+                          "Palau"=>"PW",
+                          "Panama"=>"PA",
+                          "Papua New Guinea"=>"PG",
+                          "Paraguay"=>"PY",
+                          "Peru"=>"PE",
+                          "Philippines"=>"PH",
+                          "Pitcairn Island"=>"PN",
+                          "Poland"=>"PL",
+                          "Portugal"=>"PT",
+                          "Puerto Rico"=>"PR",
+                          "Qatar "=>"QA",
+                          "Republic of (South) Korea"=>"KR",
+                          "Republic Of Georgia"=>"GE",
+                          "Republic Of Macedonia"=>"MK",
+                          "Republic of Montenegro"=>"ME",
+                          "Republic of Serbia"=>"RS",
+                          "Republic Of The Congo"=>"CG",
+                          "Reunion "=>"RE",
+                          "Romania "=>"RO",
+                          "Russia"=>"RU",
+                          "Rwanda"=>"RW",
+                          "Saint Helena"=>"SH",
+                          "Saint Lucia"=>"LC",
+                          "Saint Pierre & Miquelon"=>"PM",
+                          "Saint Vincent & Grenadines"=>"VC",
+                          "San Marino"=>"SM",
+                          "Sao Tome & Principe"=>"ST",
+                          "Saudi Arabia"=>"SA",
+                          "Scotland (Great Britain)"=>"GB",
+                          "Senegal"=>"SN",
+                          "Seychelles"=>"SC",
+                          "Sierra Leone"=>"SL",
+                          "Singapore"=>"SG",
+                          "Sint Maarten"=>"SX",
+                          "Slovak Republic (Slovakia)"=>"SK",
+                          "Slovenia"=>"SI",
+                          "Solomon Islands"=>"SB",
+                          "Somalia"=>"SO",
+                          "South Africa"=>"ZA",
+                          "Spain"=>"ES",
+                          "Sri Lanka"=>"LK",
+                          "St. Christopher (St. Kitts) & Nevis"=>"KN",
+                          "Sudan"=>"SD",
+                          "Suriname"=>"SR",
+                          "Swaziland"=>"SZ",
+                          "Sweden"=>"SE",
+                          "Switzerland "=>"CH",
+                          "Syria"=>"SY",
+                          "Taiwan"=>"TW",
+                          "Tajikistan"=>"TJ",
+                          "Tanzania"=>"TZ",
+                          "Thailand"=>"TH",
+                          "Tibet (China)"=>"CN",
+                          "Timor Leste"=>"TL",
+                          "Togo"=>"TG",
+                          "Tong"=>"TO",
+                          "Trinidad & Tobago"=>"TT",
+                          "Tristan da Cunha"=>"SH",
+                          "Tunisia"=>"TN",
+                          "Turkey"=>"TR",
+                          "Turkmenistan"=>"TM",
+                          "Turks & Caicos Islands"=>"TC",
+                          "Tuvalu"=>"TV",
+                          "Uganda"=>"UG",
+                          "Ukraine"=>"UA",
+                          "United Arab Emirates"=>"AE",
+                          "United Kingdom (Great Britain)"=>"GB",
+                          "Uruguay"=>"UY",
+                          "Uzbekistan"=>"UZ",
+                          "Vanuatu"=>"VU",
+                          "Vatican City"=>"VA",
+                          "Venezuela"=>"VE",
+                          "Vietnam"=>"VN",
+                          "Virgin Islands"=>"VI",
+                          "Wales (Great Britain)"=>"GB",
+                          "Wallis & Futuna"=>"WF",
+                          "Western Samoa"=>"WS",
+                          "Yemen"=>"YE",
+                          "Zambia"=>"ZM",
+                          "Zimbabwe"=>"ZW"}
+    domestic_countries = domestic_countries.keys
+    country = domestic_countries[rand(domestic_countries.size)]
+    street_address =  TestHelper.rand_street1_address
+    city =   TestHelper.rand_city_name
+    us_states = data_for(:us_states, {})
+    states = us_states.values
+    state = states[rand(us_states.size)]
+    SdcLogger.info  "state value from random states value #{state}"
+    postal_code = TestHelper.rand_postal_code
+  when "apo"
+    country = 'United States'
+    apo_states = {"AA (Armed Forces)" => "AA", "AE (Armed Forces)" => "AE"}
+    apo_states = apo_states.keys
+    state = apo_states[rand(apo_states.size)]
+    SdcLogger.info  "state value from random states value #{state}"
+    street_address =  TestHelper.rand_street1_address
+    city =   TestHelper.rand_city_name
+    postal_code = TestHelper.rand_postal_code
+  end
+  if address == "international"
+    step "set contact details country to #{country}"
+  end
+  step "set contact details Street Address to #{street_address}"
+  step "set contact details city to #{city}"
+  if country == "United States"
+    step "set contact details state to #{state}"
+  else
+    step "set contact details province to #{state}"
+  end
+  step "set contact details postal code to #{postal_code}"
+
+  TestData.hash[:country] = country
+  TestData.hash[:street_address] = street_address
+  TestData.hash[:city] = city
+  TestData.hash[:state] = state
+  TestData.hash[:postal_code] = postal_code
 end

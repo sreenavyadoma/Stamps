@@ -141,7 +141,11 @@ Then /^expect values of contact added in contacts grid are correct$/ do
   step "expect value of Country in contacts grid is #{country}"
   step "expect value of Street Address in contacts grid is #{street_address}"
   step "expect value of City in contacts grid is #{city}"
-  step "expect value of State/Prv in contacts grid is #{state}"
+  if country =="United States"
+    step "expect value of State/Prv in contacts grid is #{state}"
+  else
+    step "expect value of Province in contacts grid is #{state}"
+  end
   step "expect value of Postal Code in contacts grid is #{postal_code}"
   step "expect value of Email in contacts grid is #{email}"
   step "expect value of Phone in contacts grid is #{phone}"
@@ -228,6 +232,10 @@ Then /^expect value of (.*) in contacts grid is (.*)$/ do |col,value|
       #when 'Puerto Rico'
         #new_value ='PR'
     # #end
+  when 'Province'
+    column = SdcContacts.contacts_grid_column(:state_prv)
+    expect(column).present?
+    expect(column.contacts_header_text).to eql('State/Prv')
   when 'Postal Code'
     column = SdcContacts.contacts_grid_column(:postal_code)
     expect(column).present?
@@ -274,7 +282,7 @@ Then /^expect value of (.*) in contacts grid is (.*)$/ do |col,value|
   if column.contacts_header_text =='Country'
     val=actual_value.split("-")
     expect(val[1].strip).to eql new_value.strip
-  elsif column.contacts_header_text =='State/Prv'
+  elsif (column.contacts_header_text =='State/Prv' && col == 'State/Prv')
     states = {"AA (Armed Forces)" => "AA",
         "AE (Armed Forces)" => "AE",
         "Alaska" => "AK",
