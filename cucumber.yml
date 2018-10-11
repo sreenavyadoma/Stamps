@@ -1,5 +1,5 @@
 
-default: --backtrace --profile aloha
+default: --backtrace --profile alex_mail
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -7,7 +7,7 @@ cuke_reports: --format json --out report.json --backtrace -f pretty -r features 
 #local_mobile: --tags @mail_authentication_mobile URL=stg USR=sauce0020 PW=pass111 SELENIUM_DEVICE='iPhone X 11.3' SELENIUM_PLATFORM=iOS SELENIUM_BROWSER=Safari SELENIUM_VERSION=11.3 LOG_LEVEL=debug
 #local_mobile: --tags @multiple_contact_email_not_required URL=cc USR=bvtsauce00019cc PW=pass111 SELENIUM_DEVICE='iPhone X 11.3' SELENIUM_PLATFORM=iOS SELENIUM_BROWSER=Safari SELENIUM_VERSION=11.3 LOG_LEVEL=debug
 #local_browser: --tags @refresh_filter_grid_after_actions URL=stg BROWSER=ff MAX_WINDOW=false USR=stgmacgc6 PW=pass111 PRINTER=factory LOG_LEVEL=info WINDOW_SIZE=1300x900
-local_browser: --tags @bvt_shipstation_updates_domestic URL=cc BROWSER=ff MAX_WINDOW=false USR=bvtccosxgc9 PW=pass111 PRINTER=factory LOG_LEVEL=info WINDOW_SIZE=1300x900
+local_browser: --tags @sdc_contacts_toolbar_add_new_cost_code_toolbar URL=cc BROWSER=gc MAX_WINDOW=false USR=bvtccosxgc9 PW=pass111 PRINTER=factory LOG_LEVEL=info WINDOW_SIZE=1300x900
 #local_browser: --tags @bvt_shipstation_updates_domestic URL=sc BROWSER=ff MAX_WINDOW=false USR=scsejsglwa PW=pass111 PRINTER=factory LOG_LEVEL=info
 sauce_mobile: --tags @mail_authentication_mobile URL=stg USR=sauce0020 PW=pass111 SELENIUM_DEVICE='iPhone X Simulator' SELENIUM_PLATFORM=iOS SELENIUM_BROWSER=Safari SELENIUM_VERSION=11.3TUNNEL_IDENTIFIER=rob LOG_LEVEL=info
 #sauce_browser: --tags @bvt_shipstation_updates_domestic URL=stg USR=stgvoc0kcnt6rw PW=pass111SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Mac 10.10' TUNNEL_IDENTIFIER=rob LOG_LEVEL=info
@@ -23,13 +23,11 @@ web_apps_dev: --tags @bvt_new_order USR=default PW=pass111 URL=tcarney-win7-3.co
 eli_dev: --tags @mail_bvt_stamps --guess JENKINS=false WEB_APP=mail URL=stg BROWSER=ff USR=stgld1uw4sroe7 PW=pass111 PRINTER=factory
 ray_dev: --tags @rates_parcel_select_ground --guess JENKINS=false URL=stg BROWSER=ff USR=default PW=pass111
 sap: --tags @registration_orders WEB_APP=registration URL=cc --guess BROWSER=ff MAX_WINDOW=false
-alex_mail:  --tags @alex_mail_test BROWSER=firefox URL=stg USR=abqast3 PW=password1 new_framework=true  --guess LOG_LEVEL=info HEALTHCHECK=true
+alex_mail:  --tags @mail_dropdown_tooltip BROWSER=firefox URL=qacc USR=abqaccsas1 PW=password1 new_framework=true  --guess LOG_LEVEL=info HEALTHCHECK=true
 alex_regress:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders URL=cc USR=abqacc10 PW=password1  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false
 alex_rates:  --tags @rates_orders_pme_comm_plus_zone_5 BROWSER=ff URL=stg USR=abqast2 PW=password1  --guess LOG_LEVEL=info HEALTHCHECK=false
 alex_rates_pmi:  --tags @rates_mail_pmei_comm_base_group_2 BROWSER=ff URL=stg USR=abqast5 PW=password1  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false
-#alex_orders:  --tags @bvt_shipstation_updates_international BROWSER=ff URL=prod USR=abqaprod2 PW=password1  PRINTER=factory --guess LOG_LEVEL=info HEALTHCHECK=false
 alex_orders:  --tags @bvt_orders_ui_validation BROWSER=ff URL=prod USR=abqaprod2 PW=password1  PRINTER=factory --guess LOG_LEVEL=info HEALTHCHECK=false
-#alex_orders:  --tags @bvt_new_order BROWSER=ff URL=stg USR=abqast2 PW=password1 new_framework=true  --guess LOG_LEVEL=info HEALTHCHECK=false #abqast1
 alex_test:  --tags @bvt_shipping_address_management BROWSER=ff URL=qacc USR=abqacc10 PW=password1  --guess LOG_LEVEL=info HEALTHCHECK=false MAX_WINDOW=false
 saucelabs_alex: --tags @rates_pme_comm_base_zone_1 URL=stg USR=abqast2 PW=password1 LOG_LEVEL=debug SELENIUM_LOG_LEVEL=debug SAUCE_USERNAME=alexbaranovskyi SAUCE_ACCESS_KEY=bcd50193-981d-4890-9bce-b18d3097f373 SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
 mail_print_envelope_11: --tags @mail_print_envelope_11 --guess PRINTER=factory
@@ -566,6 +564,7 @@ mail_fci_flats: --tags @mail_fci_flats --guess PRINTER=factory
 mail_hidden_postage: --tags @mail_hidden_postage --guess PRINTER=factory
 mail_bug_ordersauto_3243: --tags @mail_bug_ordersauto_3243 --guess PRINTER=factory
 mail_manage_printing_options: --tags @mail_manage_printing_options --guess
+mail_dropdown_tooltip: --tags @mail_dropdown_tooltip --guess
 pp_log_in_page_validation: --tags @pp_log_in_page_validation --guess
 pp_header_favicons_browser: --tags @pp_header_favicons_browser --guess
 pp_header_favicons_browser_mobile: --tags @pp_header_favicons_browser_mobile --guess
@@ -601,7 +600,7 @@ ewwr_session_state_data_validation: --tags @ewwr_session_state_data_validation -
 ewwr_security_question_page_validation: --tags @ewwr_security_question_page_validation --guess  LOG_LEVEL=info
 ewwr_header_footer_validation: --tags @ewwr_header_footer_validation --guess  LOG_LEVEL=info
 swwr_create_your_account_page_validation: --tags @swwr_create_your_account_page_validation --guess LOG_LEVEL=info
-aloha: --tags @sdc_contacts_left_nav_add_edit_cost_code URL=stg LOG_LEVEL=info HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
+aloha: --tags @sdc_contacts_left_add_edit_group_add URL=stg LOG_LEVEL=info HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
 #aloha: --tags @sdc_contact_add_new_contact URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
 #aloha: --tags @sdc_contacts_show_all_columns URL=qacc LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=Tmaheryar PW=password1
 sdc_contacts_delete_multiple_from_top_navigation: --tags @sdc_contacts_delete_multiple_from_top_navigation --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
@@ -617,14 +616,16 @@ sdc_contacts_detail_company_expand_collapse: --tags @sdc_contacts_detail_company
 sdc_contacts_detail_company_department_and_title_details: --tags @sdc_contacts_detail_company_department_and_title_details --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 sdc_contacts_existing_add_invalid_reference_number: --tags @sdc_contacts_existing_add_invalid_reference_number --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 sdc_contacts_existing_add_valid_reference_number: --tags @sdc_contacts_existing_add_valid_reference_number --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
-sdc_contacts_toolbar_add_new_cost_code: --tags @sdc_contacts_toolbar_add_new_cost_code  --guess  LOG_LEVEL=info
-sdc_contacts_toolbar_add_existing_cost_code: --tags @sdc_contacts_toolbar_add_existing_cost_code  --guess  LOG_LEVEL=info
-sdc_contacts_toolbar_change_cost_code_add_edit: --tags @sdc_contacts_toolbar_change_cost_code_add_edit  --guess  LOG_LEVEL=info
-sdc_contacts_toolbar_change_group_add_remove: --tags @sdc_contacts_toolbar_change_group_add_remove --guess  LOG_LEVEL=info
-sdc_contacts_toolbar_add_group: --tags @sdc_contacts_toolbar_add_group  --guess  LOG_LEVEL=info
-sdc_contacts_left_panel_regression: --tags @sdc_contacts_left_panel_regression  --guess  LOG_LEVEL=info
-sdc_contact_add_new_contact: --tags @sdc_contact_add_new_contact --guess JENKINS=true  --guess  LOG_LEVEL=info
-sdc_contacts_toolbar_change_group_add_remove: --tags @sdc_contacts_edit_delete_group --guess JENKINS=true  --guess  LOG_LEVEL=info
-sdc_contacts_left_navigation_add_group: --tags @sdc_contacts_left_navigation_add_group  --guess JENKINS=true  --guess  LOG_LEVEL=info
-sdc_contacts_left_add_edit_group: --tags @sdc_contacts_left_add_edit_group  --guess JENKINS=true  --guess  LOG_LEVEL=info
-sdc_contacts_left_nav_add_edit_cost_code:  --tags @sdc_contacts_left_nav_add_edit_cost_code  --guess JENKINS=true  --guess  LOG_LEVEL=info
+sdc_contacts_toolbar_add_new_cost_code_toolbar: --tags @sdc_contacts_toolbar_add_new_cost_code_toolbar URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
+sdc_contacts_toolbar_add_existing_cost_code_toolbar: --tags @sdc_contacts_toolbar_add_existing_cost_code_toolbar URL=stg LOG_LEVEL=debug HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=tcs_core002 PW=password1
+sdc_contacts_change_cost_code_add_new: --tags @sdc_contacts_change_cost_code_add_new --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
+sdc_contacts_change_to_existing_cost_code:  --tags @sdc_contacts_change_cost_code_add_new --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
+sdc_contacts_change_group_add_remove: --tags @sdc_contacts_change_group_add_remove --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
+sdc_contacts_toolbar_add_group: --tags @sdc_contacts_toolbar_add_group --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
+sdc_contacts_left_panel_regression: --tags @sdc_contacts_left_panel_regression --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
+sdc_contact_add_new_contact: --tags @sdc_contact_add_new_contact --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
+sdc_contacts_edit_delete_group: --tags @sdc_contacts_edit_delete_group --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
+sdc_contacts_change_cost_code_add_edit: --tags @sdc_contacts_change_cost_code_add_edit --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
+
+sdc_contacts_left_navigation_add_group:  --tags @sdc_contacts_left_navigation_add_group --guess  LOG_LEVEL=info
+sdc_contacts_left_add_edit_group_add:  --tags @sdc_contacts_left_add_edit_group_add --guess  LOG_LEVEL=info

@@ -119,39 +119,34 @@ module SdcNavigation
       SdcNavigationBalance.new
     end
 
-    def mail
+    def nav_element(str)
+      xpath = if SdcPage.browser.url.include? 'account'
+                "//a[starts-with(text(),'#{str}')]"
+              elsif TestSession.env.mobile_device
+                "//div[starts-with(@class,'tablet')]//a[starts-with(text(),'#{str}')]"
+              else
+                "//ul[@class='nav hide-on-phone']//a[starts-with(text(),'#{str}')]"
+              end
+
       klass = Class.new(SdcPage) do
-        page_object(:mail_page) { { xpath: '//a[text()="Mail"]' } }
+        page_object(:navigation_item) { { xpath: xpath } }
       end
-      klass.new.mail_page
+
+      klass.new.navigation_item
     end
 
-    def orders
-      klass = Class.new(SdcPage) do
-        page_object(:orders_page) { { xpath: '//a[text()="Orders"]' } }
-      end
-      klass.new.orders_page
-    end
+    def history_selection(str)
+      xpath = if TestSession.env.mobile_device
+                "//div[starts-with(@class,'tablet')]//a[text()='#{str}']"
+              else
+                "//ul[@class='nav hide-on-phone']//a[text()='#{str}']"
+              end
 
-    def products
       klass = Class.new(SdcPage) do
-        page_object(:products_page) { { xpath: '//a[text()="Products"]' } }
+        page_object(:history_selection) { { xpath: xpath } }
       end
-      klass.new.products_page
-    end
 
-    def contacts
-      klass = Class.new(SdcPage) do
-        page_object(:contacts_page) { { xpath: '//a[text()="Contacts"]' } }
-      end
-      klass.new.contacts_page
-    end
-
-    def reports
-      klass = Class.new(SdcPage) do
-        page_object(:reports_page) { { xpath: '//a[text()="Reports"]' } }
-      end
-      klass.new.reports_page
+      klass.new.history_selection
     end
   end
 end
