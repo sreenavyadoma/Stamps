@@ -625,4 +625,4 @@ sdc_contacts_left_panel_regression: --tags @sdc_contacts_left_panel_regression -
 sdc_contact_add_new_contact: --tags @sdc_contact_add_new_contact --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 sdc_contacts_toolbar_edit_delete_group: --tags @sdc_contacts_toolbar_edit_delete_group --guess JENKINS=true WEB_DEV=true FIREFOX_PROFILE=true
 sdc_contacts_left_navigation_add_group:  --tags @sdc_contacts_left_navigation_add_group --guess  LOG_LEVEL=info
-sdc_contacts_left_add_edit_group_add:  --tags @sdc_contacts_left_add_edit_group_add --guess  LOG_LEVEL=info
+sdc_contacts_left_add_edit_group:  --tags @sdc_contacts_left_add_edit_group --guess  LOG_LEVEL=info
