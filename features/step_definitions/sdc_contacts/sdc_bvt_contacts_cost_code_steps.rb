@@ -131,8 +131,7 @@ end
 Then /^click on cost codes expand button of contacts left navigation$/ do
   left_cost_code  = SdcContacts.contacts_left_nav_cost_code
   left_cost_code.cost_codes_expand_button.safe_wait_until_present(timeout: 30)
-  left_cost_code.cost_codes.hover
-  expect(left_cost_code.cost_codes_expand_button).to be_present
+  left_cost_code.cost_codes_expand_button.hover
   left_cost_code.cost_codes_expand_button.click
   expect(left_cost_code.cost_codes_collapse_button.present?).to be(true)
 end
