@@ -17,7 +17,7 @@ Then /^uncheck row header in contacts grid$/ do
 
 end
 
-Then /^[Ii]n [Cc]ontacts [Gg]rid [Cc]heck [Rr]ow (\d+)$/ do |row|
+Then /^In contacts grid check row (\d+)$/ do |row|
   contacts_grid_body = SdcContacts.contacts_body
   contacts_grid_body.safe_wait_until_present(timeout: 60)
   checkbox = SdcContacts.contacts_grid_column(:checkbox).contacts_checkbox_row(row)
@@ -40,10 +40,6 @@ Then /^in contacts grid uncheck row (\d+)$/ do |row|
 end
 Then /^[Ee]xpect [Nn]umber [Oo]f [Cc]ontacts [Dd]isplayed [Ii]n [Tt]he [Gg]rid [Ii]s (.*)$/ do |count|
   grid=SdcContacts.contacts_col
-  p "given"
-  p count
-  p "actul value"
-  p grid.count
   expect(grid.count==count).to be(true)
 end
 
@@ -66,9 +62,6 @@ Then /^[Ee]xpect [Nn]ame [Dd]etails for (.*) [Ii]n [Cc]ontacts [Gg]rid [Ii]s [Uu
 
   words=name.split(" ")
   word_count = words.length
-  p word_count
-  p words[0]
-
   case word_count
     when 1
       if words[0] == 'CAPT' || words[0]=='BG'
@@ -89,9 +82,9 @@ Then /^[Ee]xpect [Nn]ame [Dd]etails for (.*) [Ii]n [Cc]ontacts [Gg]rid [Ii]s [Uu
         expect(value_prefix).to eql words[0]
         expect(value_first).to eql words[word_count-2]
         expect(value_last).to eql words[word_count-1]
-        p value_prefix+' - Prefix: ' + words[0]
-        p value_first+' - First: ' + words[word_count-2]
-        p value_last+' - Last: ' + words[word_count-1]
+        SdcLogger.info "#{value_prefix} - Prefix: #{words[0]}"
+        SdcLogger.info "#{value_first} - First: #{words[word_count-2]}"
+        SdcLogger.info "#{value_last} - Last: ' #{words[word_count-1]}"
       else
         expect(value_first).to eql words[0]
         expect(value_middle).to eql words[word_count-2]
@@ -100,16 +93,14 @@ Then /^[Ee]xpect [Nn]ame [Dd]etails for (.*) [Ii]n [Cc]ontacts [Gg]rid [Ii]s [Uu
     else
       if words[0]== 'CAPT' || words[0]== 'BGen.'
         expect(value_prefix).to eql words[0]
-        p value_prefix+' - Prefix: ' + words[0]
+        SdcLogger.info "#{value_prefix} - Prefix: #{words[0]}"
         i=1
       else
         i = 0
       end
       firstname =""
       while i < word_count-2
-        p i
         firstname = firstname + words[i] + " "
-        p 'firstname@'+i.to_s+firstname
         i=i+1
       end
       expect(value_last).to eql words[word_count-1]
@@ -276,7 +267,6 @@ Then /^expect value of (.*) in contacts grid is (.*)$/ do |col,value|
   else
     new_value = value
   end
-  #p column.contacts_header_text
   actual_value = column.contacts_text_at_row(1)
 
   if column.contacts_header_text =='Country'
@@ -353,8 +343,8 @@ Then /^expect value of (.*) in contacts grid is (.*)$/ do |col,value|
   end
 
 
-  p 'given value :' + value
-  p 'modified given value :' + new_value
-  p 'value on Grid :' + actual_value
+  SdcLogger.info "given value : #{value}"
+  SdcLogger.info "modified given value : #{new_value}"
+  SdcLogger.info "value on Grid :#{actual_value}"
 
 end
