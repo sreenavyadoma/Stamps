@@ -68,11 +68,11 @@ Then /^[Ss]et [Cc]ontact [Dd]etails to$/ do |table|
 
   if reference_number.empty?
     # Do not set value of reference number
-    elsif reference_number.downcase.include?('random')
-      reference_number = TestHelper.rand_reference_number
-      step "set contact details reference number to #{reference_number}"
-    else
-      step "set contact details reference number to #{reference_number}"
+  elsif reference_number.downcase.include?('random')
+    reference_number = TestHelper.rand_reference_number
+    step "set contact details reference number to #{reference_number}"
+  else
+    step "set contact details reference number to #{reference_number}"
   end
 
   if cost_code.empty?
@@ -198,12 +198,12 @@ Then /^set contact details address to invalid domestic$/ do |str|
   #  step "set contact details country to United States"
   #when 'international'
   #  step "set contact details country to <>"
- # end
+  # end
 
-#step "set contact details Street Address to #{street_address}"
-#step "set contact details city to #{city}"
-#step "set contact details state to #{state}"
-#step "set contact details postal code to #{postal_code}"
+  #step "set contact details Street Address to #{street_address}"
+  #step "set contact details city to #{city}"
+  #step "set contact details state to #{state}"
+  #step "set contact details postal code to #{postal_code}"
 
 end
 
@@ -264,7 +264,7 @@ Then /^[Ss]et [Cc]ontact [Dd]etails [Ee]mail [Tt]o (.*)$/ do |str|
   contacts_detail.phone.click
   #SdcContacts.contacts_detail.email.set(str)
   #SdcContacts.contacts_detail.title.click
-  end
+end
 
 Then /^[Ss]et [Cc]ontact [Dd]etails [Pp]hone to (.*)$/ do |str|
   contacts_detail= SdcContacts.contacts_detail
@@ -345,10 +345,10 @@ Then /^[Ss]elect (.*) from dropdown menu$/ do |menu_item|
 end
 
 Then /^[Ee]xpand [Cc]ollapsed [Cc]ontact [Dd]etails [Pp]anel$/ do
-    contact_detail = SdcContacts.contacts_detail
-    contact_detail.expand_button.wait_until_present(timeout: 10)
-    contact_detail.expand_button.flash
-    contact_detail.expand_button.click
+  contact_detail = SdcContacts.contacts_detail
+  contact_detail.expand_button.wait_until_present(timeout: 10)
+  contact_detail.expand_button.flash
+  contact_detail.expand_button.click
 end
 
 Then /^expect values of contact added in contacts detail panel are correct$/ do
@@ -383,10 +383,10 @@ end
 
 #Validation of Values on the Details Panel
 Then /^expect value of (.*) in contact details panel is (.*)$/ do |label,value|
-    contacts_detail= SdcContacts.contacts_detail
-    contacts_detail.reference_number.safe_wait_until_present(timeout: 15)
-	
-p '**Details Panel**'
+  contacts_detail= SdcContacts.contacts_detail
+  contacts_detail.reference_number.safe_wait_until_present(timeout: 15)
+
+  SdcLogger.info '**Details Panel**'
 
   if value=='blank'
     new_value = ""
@@ -438,15 +438,15 @@ p '**Details Panel**'
     state = SdcContacts.contacts_state
     if state.text_field.present?
       actual_value = state.text_field.text_value
-      p 'incide case - IF:' + actual_value
-    #actual_value = contacts_detail.state_prv.text_value
+      SdcLogger.info 'incide case - IF:' + actual_value
+      #actual_value = contacts_detail.state_prv.text_value
     else
       actual_value = contacts_detail.state_prv.text_value
     end
 
   when 'Postal Code'
     actual_value = contacts_detail.postal_code.text_value
-    p "val " + actual_value
+    SdcLogger.info "val " + actual_value
   when 'Email'
     actual_value = contacts_detail.email.text_value
 
@@ -460,9 +460,9 @@ p '**Details Panel**'
     groups = SdcContacts.contacts_group
     actual_value=groups.text_field.text_value
     #if p_c.nil?
-      #actual_value = ""
+    #actual_value = ""
     #else
-      #actual_value = p_c
+    #actual_value = p_c
     #end
   when 'Reference Number'
     actual_value = contacts_detail.reference_number.text_value
@@ -474,10 +474,10 @@ p '**Details Panel**'
       new_value = 'None'
     end
   end
-  p 'Label: ' + label
-  p 'given value :' + value
-  p 'Modified given value '+ new_value
-  p 'Value in details panel :' + actual_value.to_s
+  SdcLogger.info 'Label: ' + label
+  SdcLogger.info 'given value :' + value
+  SdcLogger.info 'Modified given value '+ new_value
+  SdcLogger.info 'Value in details panel :' + actual_value.to_s
 
   expect(actual_value.strip).to eql new_value.strip
 end
