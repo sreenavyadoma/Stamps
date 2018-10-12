@@ -22,7 +22,7 @@ Then /^expect contacts on contacts grid is reflected according to the selected p
   if all_contacts_count.to_i > pagination_count.to_i
     while current_page.to_i <= max_pages.to_i
       #if current_page.to_i < max_pages.to_i
-        step "check row header in contacts grid"
+        step 'check row header in contacts grid'
         current_selected_count = pagination.selected_contacts_count.text_value
         step "uncheck row header in contacts grid"
         total_selected_count = total_selected_count+ current_selected_count.to_i
