@@ -1,5 +1,4 @@
 Then /^set contact details to$/ do |table|
-
   param = table.hashes.first
   full_name = param['full_name']
   company = param['company']
