@@ -10,7 +10,6 @@ module SdcContacts
 
   end
 
-
   class ContactsManageGroups < SdcPage
     page_object(:manage_groups_title, required: true, timeout: 10) { { xpath: '//*[contains(@id,"title-")][text() = "Manage Groups"]'}}
     #page_object(:manage_groups_add_button, required: true, timeout: 10) { { xpath: '//*[@id="groups_add-btnEl"]'}}

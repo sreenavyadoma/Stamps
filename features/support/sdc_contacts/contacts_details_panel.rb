@@ -65,6 +65,7 @@ module SdcContacts
     #page_object(:province, tag: :text_field,  required: true, timeout: 20) { { xpath: '//*[@id="Province-inputEl"]'} } - ID Changed
     #page_object(:postal_code, tag: :text_field,  required: true, timeout: 20) { { xpath: '//*[@id="PostalCode-inputEl"]' } } - ID Changed
     page_object(:street_address, required: true, timeout: 20) { { xpath: '//*[@name="StreetAddress"]' } }
+    page_object(:error_street_address, required: true, timeout: 20) { { xpath: '//*[@name="StreetAddress"]//following::div[contains(@class,"x-form-error-msg x-form-invalid-icon")][1]' } }
     page_object(:city, tag: :text_field,  required: true, timeout: 20) { { xpath: '//input[@name="City"]' } }
     page_object(:province, tag: :text_field,  required: true, timeout: 20) { { xpath: '//input[@name="Province"]'} }
     page_object(:postal_code, tag: :text_field,  required: true, timeout: 20) { { xpath: '//input[@name="PostalCode"]' } }

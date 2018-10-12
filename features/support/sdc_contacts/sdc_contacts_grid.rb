@@ -39,8 +39,9 @@ module SdcContacts
     end
 
     def contacts_grid_container
-      '//div[@class="x-grid-item-container"]'
+      '//div[contains(@class,"x-grid-inner-normal")]//div[@class="x-grid-item-container"]'
     end
+
 
     def contacts_column_xpath(column)
       column = column_names[column] if column.class.eql?(Symbol)

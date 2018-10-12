@@ -1,5 +1,6 @@
 module SdcContacts
 
+
   class ContactsAddCostCodes < SdcPage
 
     page_object(:add_cost_code, tag: :text_field,  required: true, timeout: 10) { { xpath: '//*[@name="newReferenceCode"]' } }

@@ -1,21 +1,27 @@
 module SdcContacts
   class ContactsLeftNavigation < SdcPage
     page_object(:left_nav){{xpath: '//*[@id="left_navigation_items"]'}}
-    text_field(:search_contacts, tag: :text_field) { {xpath: '//*[@placeholder="Search Contacts"]'} }
+    text_field(:search_bar, tag: :text_field) { {xpath: '//*[@placeholder="Search Contacts"]'} }
     page_object(:search_icon) { {xpath: '//*[contains(@class, "search-trigger-grey")]'} }
-    link(:search_bar) { {xpath: '//*[@placeholder="Search Orders"]'} }
-    link(:groups) { {xpath: '//*[text()="Groups"]'} }
-    link(:cost_codes) { {xpath: '//*[text()="Cost Codes"]'} }
+    page_object(:search_results) { {xpath: '//*[contains(@class, "sdc-badgebutton-default")]//div[text()="Search Results"]'} }
+    page_object(:selected) { {xpath: '//*[contains(@class, "sdc-badgebutton-default")]//div[text()="Selected"]'} }
+    page_object(:all_contacts) { {xpath: '//*[contains(@class, "sdc-badgebutton-default")]//div[text()="All Contacts"]'} }
+    page_object(:groups) { {xpath: '//*[contains(@class, "groups-filters")]'}}
+    page_object(:cost_codes)   { {xpath: '//*[contains(@class, "cost-codes-filters")]'}}
     link(:collapse,required: true, timeout: 45 ) { {xpath: '//*[contains(@class, "sdc-icon-collapse")]'} }
     link(:expand,required: true, timeout: 45 ) { {xpath: '//*[contains(@class, "expand-right")]'} }
     #page_object(:left_nav_collapsed){{xpath: '//*[@id="filter-nav-collapsed-left"]'}}
   end
 
   class SearchResults < SdcPage
-    page_object(:results){{xpath: '//*[@id="total_search_result"]'}}
-    page_object(:search_results_count) { {xpath: '(//*[contains(@class, "sdc-badgebutton-widget")]//div[@class="sdc-badge"])'} }
-    page_object(:search_results_text) { {xpath: '(//*[contains(@class, "sdc-badgebutton-text")])'} }
-    page_object(:search_results_remove) { {xpath: '//*[contains(@class, "sdc-icon-remove")]'} }
+    #page_object(:results){{xpath: '//*[@id="total_search_result"]'}}
+    #page_object(:search_results_count) { {xpath: '(//*[contains(@class, "sdc-badgebutton-widget")]//div[@class="sdc-badge"])'} }
+    #page_object(:search_results_text) { {xpath: '(//*[contains(@class, "sdc-badgebutton-text")])'} }
+    #page_object(:search_results_remove) { {xpath: '//*[contains(@class, "sdc-icon-remove")]'} }
+    page_object(:search_results_remove) { {xpath: '//*[contains(@class, "sdc-badgebutton-default")]//a[contains(@class,"sdc-icon-remove")]'}}
+    page_object(:search_results_count) { {xpath: '(//*[contains(@class, "sdc-badgebutton-widget")]//div[contains(@class, "sdc-badge")])[1]'} }
+    page_object(:search_results) { {xpath: '(//*[contains(@class, "sdc-badgebutton-text")])[1]'} }
+
   end
 
   class LeftNavigationSelected <SdcPage
@@ -38,8 +44,8 @@ module SdcContacts
 
   class LeftNavigationGroups <SdcPage
     page_object(:groups) { {xpath: '//*[contains(@class, "groups-filters")]'}}
-    page_object(:left_nav_add_groups, required: true, timeout: 20) { { xpath: '//*[@class="x-tool-img x-tool-plus"]'}}
-    page_object(:left_nav_add_edit_groups, required: true, timeout: 20) { { xpath: '//*[contains(@class, "x-title sdc-badgebuttongroup-header-")]/div[text()="Groups"]//following::img[@class="x-tool-img x-tool-gear"]'}}
+    page_object(:left_nav_add_groups, required: true, timeout: 20) { { xpath: '//*[contains(@class, "groups-filters")]//following::img[@class="x-tool-img x-tool-plus"]'}}
+    page_object(:left_nav_add_edit_groups, required: true, timeout: 20) { { xpath: '(//*[contains(@class, "groups-filters")]//following::img[@class="x-tool-img x-tool-gear"])[1]'}}
     page_object(:left_nav_groups, required: true, timeout: 20) { { xpath: '//*[contains(@class, "groups-filters")]//div[text()="Groups"]'}}
     page_object(:groups_expand_button,required: true, timeout: 45 ) { {   xpath: '//*[contains(@class, "groups-filters")]//img[contains(@class, "-expand-bottom")]'} }
     page_object(:groups_collapse_button,required: true, timeout: 45 ) { { xpath: '//*[contains(@class, "groups-filters")]//img[contains(@class, "-collapse-top")]'} }
@@ -60,14 +66,14 @@ module SdcContacts
       #delete = page_object(:group_delete, required: true, timeout: 10){ { xpath: xpath_delete}}
 
       case value
-        when 'name'
-          group_name.text_value
-        when 'count'
-          group_count.text_value
+      when 'name'
+        group_name.text_value
+      when 'count'
+        group_count.text_value
       end
     end
 
-   end
+  end
 
   class LeftNavigationCostCodes <SdcPage
     #page_object(:cost_codes_expand_button,required: true, timeout: 45 ) { { xpath: '//*[@id="left_nav_costcodes_fieldset"]//*[@class="x-tool-img x-tool-expand-bottom"]'} } - Id changed
@@ -78,6 +84,7 @@ module SdcContacts
     page_object(:cost_codes) { {xpath: '//*[contains(@class, "cost-codes-filters")]'}}
     page_object(:cost_codes_expand_button,required: true, timeout: 45 ) { {   xpath: '//*[contains(@class, "cost-codes-filters")]//img[contains(@class, "-expand-bottom")]'} }
     page_object(:cost_codes_collapse_button,required: true, timeout: 45 ) { { xpath: '//*[contains(@class, "cost-codes-filters")]//img[contains(@class, "-collapse-top")]'} }
+    page_object(:left_nav_add_edit_costcodes, required: true, timeout: 20) { { xpath: '(//*[contains(@class, "cost-codes-filters")]//following::img[@class="x-tool-img x-tool-gear"])'}}
     page_objects(:total_costcodes) { {xpath: '//*[contains(@class, "cost-codes-filters")]//table[@class="sdc-badgebutton x-box-item sdc-badgebutton-default"]'} }
 
     def cost_code_name(position)

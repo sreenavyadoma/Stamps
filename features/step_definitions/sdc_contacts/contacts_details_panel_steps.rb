@@ -482,3 +482,35 @@ p '**Details Panel**'
   expect(actual_value.strip).to eql new_value.strip
 end
 
+
+Then /^set street address on contact page details to maximum lines (\d+)$/ do |lines|
+  contacts_detail= SdcContacts.contacts_detail
+  contacts_detail.street_address.wait_until_present(timeout: 15)
+  street1 = TestHelper.rand_street1_address
+  street2 = TestHelper.rand_street2_address
+  street3 = TestHelper.rand_street3_address
+  if lines == 3
+    contacts_detail.street_address.send_keys(street1 + "\n"+ street2 + "\n" + street3)
+    address = contacts_detail.street_address.text_value
+    address = address.split("\n")
+    total_address = address[0] + " "+ address[1] + " "+ address[2]
+  else
+    contacts_detail.street_address.send_keys(street1 + "\n"+ street2 + "\n" + street3 + "\n"+ street2)
+    address = contacts_detail.street_address.text_value
+    address = address.split("\n")
+    total_address = address[0] + " "+ address[1] + " "+ address[2] + " "+ address[3]
+  end
+  TestData.hash[:street_address] = total_address
+  SdcLogger.info "Given street address #{total_address}"
+  contacts_detail.postal_code.click
+end
+
+Then /^expect street address error message is displayed$/ do
+  contacts_detail= SdcContacts.contacts_detail
+  expect(contacts_detail.error_street_address.present?).to be(true)
+end
+
+Then /^expect street address error message is not displayed$/ do
+  contacts_detail= SdcContacts.contacts_detail
+  expect(contacts_detail.error_street_address.present?).to be(false)
+end
