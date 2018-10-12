@@ -304,34 +304,32 @@ module SdcContacts
     end
   end
 
-  def contacts_body
-    xpath = '//div[starts-with(@id, "contactsGrid-")][contains(@id, "-normal-body")]'
-    klass = Class.new(SdcPage) do
-      page_object(:body) { { xpath: xpath } }
-    end
-    klass.new.body
-  end
-  module_function :contacts_body
-
-  def contacts_grid_column(column)
-    contacts_body.wait_until_present(timeout: 15)
-
-    unless ContactsGridColumnBase.contacts_column_names.keys.include? column
-      raise ArgumentError, "Invalid grid column: #{column}"
-    end
-
-    case column
-    when :checkbox
-      SdcContactsGridCheckBox.new
-    else
-      SdcContactsGridColumn.new(column)
-    end
-  end
-  module_function :contacts_grid_column
-
   class << self
     def contacts_col
       ContactsGridColumnBase.new
+    end
+
+    def contacts_body
+      xpath = '//div[starts-with(@id, "contactsGrid-")][contains(@id, "-normal-body")]'
+      klass = Class.new(SdcPage) do
+        page_object(:body) { { xpath: xpath } }
+      end
+      klass.new.body
+    end
+
+    def contacts_grid_column(column)
+      contacts_body.wait_until_present(timeout: 15)
+
+      unless ContactsGridColumnBase.contacts_column_names.keys.include? column
+        raise ArgumentError, "Invalid grid column: #{column}"
+      end
+
+      case column
+      when :checkbox
+        SdcContactsGridCheckBox.new
+      else
+        SdcContactsGridColumn.new(column)
+      end
     end
   end
 end
