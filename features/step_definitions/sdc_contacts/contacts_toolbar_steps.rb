@@ -58,6 +58,7 @@ Then /^check all the columns from the list to show all columns in the contacts g
   columns.each{|col|
     step "choose #{col} on contact settings columns menu list"
   }
+  step "click on search bar of contacts left navigation panel"
 end
 
 Then /^choose (.*) on contact settings columns menu list$/ do |column|
@@ -76,6 +77,7 @@ Then /^uncheck all the columns from the list to hide all columns in the contacts
   columns.each{|col|
     step "unchoose #{col} on contact settings columns menu list"
   }
+  step "click on search bar of contacts left navigation panel"
 end
 
 Then /^unchoose (.*) on contact settings columns menu list$/ do |column|
