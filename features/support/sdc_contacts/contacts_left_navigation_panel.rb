@@ -51,6 +51,11 @@ module SdcContacts
     page_object(:groups_collapse_button,required: true, timeout: 45 ) { { xpath: '//*[contains(@class, "groups-filters")]//img[contains(@class, "-collapse-top")]'} }
     page_objects(:total_groups) { {xpath: '//*[contains(@class, "groups")]//table[@class="sdc-badgebutton x-box-item sdc-badgebutton-default"]'} }
 
+    def group_element(row)
+      xpath="(//*[contains(@class, 'groups-filters')]//table[@class='sdc-badgebutton x-box-item sdc-badgebutton-default'])[#{row}]"
+      page_object(:group_element){{xpath: xpath}}
+    end
+
     def group(value,row)
       xpath_label = "(//*[contains(@class, 'groups-filters')]//table[@class='sdc-badgebutton x-box-item sdc-badgebutton-default']//tr/td[1]/div[@class='table-cell-inner sdc-badgebutton-text'])[#{row}]"
       group_name = page_object(:name, required: true, timeout: 10){ { xpath: xpath_label }}
@@ -86,6 +91,11 @@ module SdcContacts
     page_object(:cost_codes_collapse_button,required: true, timeout: 45 ) { { xpath: '//*[contains(@class, "cost-codes-filters")]//img[contains(@class, "-collapse-top")]'} }
     page_object(:left_nav_add_edit_costcodes, required: true, timeout: 20) { { xpath: '(//*[contains(@class, "cost-codes-filters")]//following::img[@class="x-tool-img x-tool-gear"])'}}
     page_objects(:total_costcodes) { {xpath: '//*[contains(@class, "cost-codes-filters")]//table[@class="sdc-badgebutton x-box-item sdc-badgebutton-default"]'} }
+
+    def cost_code_element(position)
+      xpath="(//*[contains(@class, 'cost-codes-filters')]//table[@class='sdc-badgebutton x-box-item sdc-badgebutton-default'])[#{position}]"
+      page_object(:costcode_element){{xpath: xpath}}
+    end
 
     def cost_code_name(position)
       #xpath_text = "(//*[@id='left_nav_costcodes_fieldset-targetEl']//table[@class='sdc-badgebutton x-box-item sdc-badgebutton-default']//tr/td[1]/div[@class='table-cell-inner sdc-badgebutton-text'])[#{position}]"

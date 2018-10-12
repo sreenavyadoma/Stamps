@@ -776,3 +776,14 @@ Then /^set address to (.*)$/ do |address|
   TestData.hash[:state] = state
   TestData.hash[:postal_code] = postal_code
 end
+Then /^expect clear all link is displayed on contact detail panel$/ do
+  contacts_detail= SdcContacts.contacts_detail
+  expect(contacts_detail.clear_all_link.present?).to be (true)
+end
+
+Then /^click on clear all link of contact detail panel$/ do
+  contacts_detail= SdcContacts.contacts_detail
+  contacts_detail.clear_all_link.safe_wait_until_present(timeout: 15)
+  contacts_detail.clear_all_link.click
+end
+
