@@ -24,7 +24,7 @@ Then /^in contacts grid check row (\d+)$/ do |row|
   checkbox.safe_wait_until_present(timeout: 30)
   checkbox.check  unless checkbox.checked?
   expect(checkbox.checked?).to be(true)
-  contacts_detail= SdcContacts.contacts_detail
+  contacts_detail = SdcContacts.contacts_detail
   contacts_detail.contacts_detail_panel.safe_wait_until_present(timeout: 30)
 end
 
@@ -35,12 +35,12 @@ Then /^in contacts grid uncheck row (\d+)$/ do |row|
   checkbox.safe_wait_until_present(timeout: 30)
   checkbox.uncheck if checkbox.checked?
   expect(checkbox.checked?).to be(false)
-  contacts_detail= SdcContacts.contacts_detail
+  contacts_detail = SdcContacts.contacts_detail
   expect(contacts_detail.contacts_detail_panel.present?).to be(false)
 end
 Then /^[Ee]xpect [Nn]umber [Oo]f [Cc]ontacts [Dd]isplayed [Ii]n [Tt]he [Gg]rid [Ii]s (.*)$/ do |count|
-  grid=SdcContacts.contacts_col
-  expect(grid.count==count).to be(true)
+  grid = SdcContacts.contacts_col
+  expect(grid.count == count).to be(true)
 end
 
 
@@ -49,28 +49,28 @@ Then /^[Ee]xpect [Nn]ame [Dd]etails for (.*) [Ii]n [Cc]ontacts [Gg]rid [Ii]s [Uu
   contacts_grid_body.safe_wait_until_present(timeout: 60)
 
   col_prefix = SdcContacts.contacts_grid_column(:prefix)
-  value_prefix =col_prefix.contacts_text_at_row(1)
+  value_prefix = col_prefix.contacts_text_at_row(1)
 
   col_first = SdcContacts.contacts_grid_column(:first_name)
-  value_first =col_first.contacts_text_at_row(1)
+  value_first = col_first.contacts_text_at_row(1)
 
   col_middle = SdcContacts.contacts_grid_column(:middle)
-  value_middle =col_middle.contacts_text_at_row(1)
+  value_middle = col_middle.contacts_text_at_row(1)
 
   col_last = SdcContacts.contacts_grid_column(:last_name)
-  value_last =col_last.contacts_text_at_row(1)
+  value_last = col_last.contacts_text_at_row(1)
 
-  words=name.split(" ")
+  words = name.split(" ")
   word_count = words.length
   case word_count
     when 1
-      if words[0] == 'CAPT' || words[0]=='BG'
+      if words[0] == 'CAPT' || words[0] == 'BG'
         expect(value_prefix).to eql words[0]
       else
         expect(value_last).to eql words[0]
       end
     when 2
-      if words[0]=='CAPT'
+      if words[0] == 'CAPT'
          expect(value_prefix).to eql words[0]
          expect(value_last).to eql words[1]
       else
@@ -78,33 +78,33 @@ Then /^[Ee]xpect [Nn]ame [Dd]etails for (.*) [Ii]n [Cc]ontacts [Gg]rid [Ii]s [Uu
          expect(value_last).to eql words[1]
       end
     when 3
-      if words[0]== 'CAPT' || words[0]=='ENS'
+      if words[0] == 'CAPT' || words[0] == 'ENS'
         expect(value_prefix).to eql words[0]
-        expect(value_first).to eql words[word_count-2]
-        expect(value_last).to eql words[word_count-1]
+        expect(value_first).to eql words[word_count - 2]
+        expect(value_last).to eql words[word_count - 1]
         SdcLogger.info "#{value_prefix} - Prefix: #{words[0]}"
-        SdcLogger.info "#{value_first} - First: #{words[word_count-2]}"
-        SdcLogger.info "#{value_last} - Last: ' #{words[word_count-1]}"
+        SdcLogger.info "#{value_first} - First: #{words[word_count - 2]}"
+        SdcLogger.info "#{value_last} - Last: ' #{words[word_count - 1]}"
       else
         expect(value_first).to eql words[0]
-        expect(value_middle).to eql words[word_count-2]
-        expect(value_last).to eql words[word_count-1]
+        expect(value_middle).to eql words[word_count - 2]
+        expect(value_last).to eql words[word_count - 1]
       end
     else
-      if words[0]== 'CAPT' || words[0]== 'BGen.'
+      if words[0] == 'CAPT' || words[0] == 'BGen.'
         expect(value_prefix).to eql words[0]
         SdcLogger.info "#{value_prefix} - Prefix: #{words[0]}"
-        i=1
+        i = 1
       else
         i = 0
       end
-      firstname =""
-      while i < word_count-2
+      firstname = ""
+      while i < word_count - 2
         firstname = firstname + words[i] + " "
-        i=i+1
+        i = i + 1
       end
-      expect(value_last).to eql words[word_count-1]
-      expect(value_middle).to eql words[word_count-2]
+      expect(value_last).to eql words[word_count - 1]
+      expect(value_middle).to eql words[word_count - 2]
       expect(value_first).to eql firstname.rstrip
       #p value_last+'- Last :' + words[word_count-1]
       #p value_middle+'- Middle :'+words[word_count-2]
@@ -260,20 +260,21 @@ Then /^expect value of (.*) in contacts grid is (.*)$/ do |col,value|
       temp ||= TestData.hash[:costcode_val]
     end
   end
-  if value=='blank'
+  if value == 'blank'
     new_value = ""
   elsif value == "correct?"
-    new_value= temp
+    new_value = temp
   else
     new_value = value
   end
   actual_value = column.contacts_text_at_row(1)
 
-  if column.contacts_header_text =='Country'
-    val=actual_value.split("-")
+  if column.contacts_header_text.eql?('Country')
+    val = actual_value.split('-')
     expect(val[1].strip).to eql new_value.strip
-  elsif (column.contacts_header_text =='State/Prv' && col == 'State/Prv')
-    states = {"AA (Armed Forces)" => "AA",
+  elsif column.contacts_header_text.eql?('State/Prv') && col.eql?('State/Prv')
+    states = {
+        "AA (Armed Forces)" => "AA",
         "AE (Armed Forces)" => "AE",
         "Alaska" => "AK",
         "Alabama" => "AL",
@@ -334,7 +335,8 @@ Then /^expect value of (.*) in contacts grid is (.*)$/ do |col,value|
         "Washington" => "WA",
         "Wisconsin" => "WI",
         "West Virginia" => "WV",
-        "Wyoming" => "WY"}
+        "Wyoming" => "WY"
+    }
         #TestData.hash[:states]=
     new_value = states[value]
     expect(actual_value.strip).to eql new_value.strip
