@@ -64,6 +64,11 @@ end
 
 #CONTACTS
 
+Cucumber::Rake::Task.new(:sdc_contacts_toolbar_settings_show_hide_all_columns) do |t|
+  t.profile = 'sdc_contacts_toolbar_settings_show_hide_all_columns'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:sdc_contact_add_new_contact_different_addresses) do |t|
   t.profile = 'sdc_contact_add_new_contact_different_addresses'
   t.cucumber_opts = "-p cuke_reports"
