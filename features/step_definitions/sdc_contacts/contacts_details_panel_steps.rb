@@ -760,6 +760,7 @@ Then /^set address to (.*)$/ do |address|
   end
   step "set contact details street address to #{street_address}"
   step "set contact details city to #{city}"
+
   if country == "United States"
     step "set contact details state to #{state}"
   else

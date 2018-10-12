@@ -63,6 +63,21 @@ Cucumber::Rake::Task.new(:extra_services_cost_for_rrb_service) do |t|
 end
 
 #CONTACTS
+#
+Cucumber::Rake::Task.new(:sdc_contact_columns_name_sort) do |t|
+  t.profile = 'sdc_contact_columns_name_sort'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:sdc_contact_columns_sort_asc_dec) do |t|
+  t.profile = 'sdc_contact_columns_sort_asc_dec'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:sdc_contact_column_header_dropdown_menu) do |t|
+  t.profile = 'sdc_contact_column_header_dropdown_menu'
+  t.cucumber_opts = "-p cuke_reports"
+end
 
 Cucumber::Rake::Task.new(:sdc_contacts_toolbar_settings_show_hide_all_columns) do |t|
   t.profile = 'sdc_contacts_toolbar_settings_show_hide_all_columns'
