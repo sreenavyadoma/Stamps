@@ -16,10 +16,39 @@ Then /^expect selected filter on the contacts left navigation panel is available
   expect(contacts_left_navigation.selected.present?).to be (true)
 end
 
+Then /^expect count on selected filter is (.*)$/ do |count|
+  sel= SdcContacts.contacts_left_navigation_selected_contacts
+  actual_count = sel.selected_count.text_value
+  p 'actual :' + actual_count
+  expect(actual_count==count).to be (true)
+end
+
+Then /^click on selected filter of contacts left navigation panel$/ do
+  sel= SdcContacts.contacts_left_navigation_selected_contacts
+  sel.selected.flash
+  sel.selected.click
+  SdcContacts.loading_contacts.safe_wait_until_present(timeout: 15)
+  SdcContacts.contacts_body.safe_wait_until_present(timeout: 15)
+end
+
+Then /^expect empty state message of selected contacts is displayed on the contacts grid$/ do
+  grid=SdcContacts.contacts_col
+  expect(grid.count==0).to be(true)
+  expect(grid.grid_message).to eql('There are no contacts selected.')
+end
+
 Then /^expect all contacts filter is available on the contacts left navigation panel$/ do
   contacts_left_navigation= SdcContacts.contacts_left_navigation_panel
   contacts_left_navigation.all_contacts.safe_wait_until_present(timeout: 15)
   expect(contacts_left_navigation.all_contacts.present?).to be (true)
+end
+
+Then /^click on all contacts filter of contacts left navigation panel$/ do
+  all_con= SdcContacts.contacts_left_navigation_all_contacts
+  all_con.all_contacts.flash
+  all_con.all_contacts.click
+  SdcContacts.loading_contacts.safe_wait_until_present(timeout: 15)
+  SdcContacts.contacts_body.safe_wait_until_present(timeout: 15)
 end
 
 Then /^expect groups filter is available on the contacts left navigation panel$/ do
@@ -149,3 +178,30 @@ Then /^fetch count of selected contacts$/ do
   left_nav_selected.selected.safe_wait_until_present(timeout: 15)
   SdcLogger.info "Selected Contacts count #{left_nav_selected.selected_count.text_value}"
 end
+
+Then /^select an existing cost code from left navigation filter panel/ do
+  step "click on cost codes expand button of contacts left navigation"
+  left_nav_costcode = SdcContacts.contacts_left_nav_cost_code
+  row_count = left_nav_costcode.total_costcodes.count
+  if row_count >1
+    left_nav_costcode.cost_code_element(row_count-1).click
+  else
+    SdcLogger.info "No cost codes for this account to select"
+    left_nav_costcode.cost_code_element(row_count).click
+  end
+  step "click on cost codes collapse button of contacts left navigation"
+end
+
+Then /^select an existing group from left navigation filter panel/ do
+  step "click on groups expand button of contacts left navigation"
+  left_nav_group = SdcContacts.contacts_left_nav_group
+  row_count = left_nav_group.total_groups.count
+  if row_count >1
+    left_nav_group.group_element(row_count-1).click
+  else
+    SdcLogger.info "No cost codes for this account to select"
+    left_nav_group.group_element(row_count).click
+  end
+  step "click on groups collapse button of contacts left navigation"
+end
+
