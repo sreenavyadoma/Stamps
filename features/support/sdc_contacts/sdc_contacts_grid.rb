@@ -51,11 +51,24 @@ module SdcContacts
       if column.eql? :checkbox
         xpath = '*//div[contains(@class, "x-column-header-checkbox")]'
         page_object(:checkbox_header) { { xpath: xpath } }
+        #sdc_param(:chooser_xpath) { '//*[@id="sdc-mainpanel-calculatepostageradio-displayEl"]' }
+
+        chooser_xpath = "//div[contains(@class,'x-column-header-checkbox')]//div[@class= 'x-column-header-text']"
+        chooser_name = "grid_chooser"
+        page_object(chooser_name) { { xpath: chooser_xpath } }
+        verify_xpath = "//div[contains(@class, 'x-column-header-checkbox')]"
+        verify_name = "grid_verify"
+        page_object(verify_name) { { xpath: verify_xpath } }
+        grid_checkbox_name = "grid_checkbox"
+        SdcPage.chooser(grid_checkbox_name, chooser_name, verify_name, :class, 'selected')
+        instance_eval(grid_checkbox_name)
+
       else
         xpath = contacts_column_xpath(column)
         page_object("header_element_#{column}") { { xpath: xpath } }
       end
     end
+
 
     def contacts_scroll_to(column)
       field = contacts_header_element(column)
