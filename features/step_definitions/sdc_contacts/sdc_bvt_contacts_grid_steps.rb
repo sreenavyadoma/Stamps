@@ -17,7 +17,7 @@ Then /^uncheck row header in contacts grid$/ do
 
 end
 
-Then /^In contacts grid check row (\d+)$/ do |row|
+Then /^in contacts grid check row (\d+)$/ do |row|
   contacts_grid_body = SdcContacts.contacts_body
   contacts_grid_body.safe_wait_until_present(timeout: 60)
   checkbox = SdcContacts.contacts_grid_column(:checkbox).contacts_checkbox_row(row)
