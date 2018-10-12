@@ -31,13 +31,14 @@ Then(/^verify (.*) in contact header menu dropdown is enabled$/) do |menu_name|
   menu_item.wait_until_present(timeout: 15)
   enable_value = SdcContacts.contacts_col.header_menu_item_disabled(menu_name)
   expect(enable_value).to eql(false)
-  SdcLogger.info "#{menu_name} in contact header menu dropdown for is enabled"
+  SdcLogger.info "#{menu_name} menu item is available and enabled"
+
 end
 
 Then(/^verify (.*) in contact header menu dropdown is disabled$/) do |menu_name|
   enable_value = SdcContacts.contacts_col.header_menu_item_disabled(menu_name)
   expect(enable_value).to eql(true)
-  SdcLogger.info "#{menu_name} in contact header menu dropdown for is disabled"
+  SdcLogger.info "#{menu_name} menu item is available and disabled"
    #if enable_value
     #SdcLogger.info "#{menu_name} in contact header menu dropdown for is disabled"
   #else
