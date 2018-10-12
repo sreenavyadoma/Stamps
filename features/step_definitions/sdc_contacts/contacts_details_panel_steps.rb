@@ -44,7 +44,7 @@ Then /^set contact details to$/ do |table|
   step "set contact details name to #{full_name}"
   step "set contact details company to #{company}"
   step "set contact details country to #{country}"
-  step "set contact details Street Address to #{street_address}"
+  step "set contact details street address to #{street_address}"
   step "set contact details city to #{city}"
   if state.empty?
   else
