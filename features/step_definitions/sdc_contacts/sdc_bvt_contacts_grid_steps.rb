@@ -3,15 +3,10 @@ Then /^check row header in contacts grid$/ do
   contacts_grid_body.safe_wait_until_present(timeout: 10)
   header_checkbox = SdcContacts.contacts_col.contacts_header_element(:checkbox)
   header_checkbox.safe_wait_until_present(timeout: 10)
-  unless header_checkbox.checked?
-    header_checkbox.check
-  end
-
-  header_checkbox.check unless header_checkbox.checked?
-
   if header_checkbox.checked? == false
     header_checkbox.check
   end
+  # header_checkbox.check unless header_checkbox.checked?
 end
 
 Then /^uncheck row header in contacts grid$/ do
@@ -41,8 +36,8 @@ Then /^in contacts grid uncheck row (\d+)$/ do |row|
   checkbox.safe_wait_until_present(timeout: 30)
   checkbox.uncheck if checkbox.checked?
   expect(checkbox.checked?).to be(false)
-  contacts_detail = SdcContacts.contacts_detail
-  expect(contacts_detail.contacts_detail_panel.present?).to be(false)
+  #contacts_detail = SdcContacts.contacts_detail
+  #expect(contacts_detail.contacts_detail_panel.present?).to be(false)
 end
 Then /^[Ee]xpect [Nn]umber [Oo]f [Cc]ontacts [Dd]isplayed [Ii]n [Tt]he [Gg]rid [Ii]s (.*)$/ do |count|
   grid = SdcContacts.contacts_col

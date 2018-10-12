@@ -101,7 +101,6 @@ Feature:  Contacts BVT - Contacts Filter Panel
     Then click on yes button of delete groups pop up
     Then expect group name deleted is not available in the manage group pop up table
 
-
   @sdc_contacts_left_nav_add_edit_cost_code
   Scenario: Contacts BVT Scenario 1: Add/Edit cost code from contact left navigation
     Then sign-in to orders
@@ -127,4 +126,40 @@ Feature:  Contacts BVT - Contacts Filter Panel
     Then click on cost code save button
     Then expect value of Cost Code in contacts grid is correct?
 
-
+  @sdc_contacts_left_navigation_selected_filter
+  Scenario: Selected Contacts Filter
+    Then sign-in to orders
+    Then navigate to Contacts
+    #Selected filter - Default
+    Then expect selected filter on the contacts left navigation panel is available
+    Then expect count on selected filter is 0
+    #Selected filter - Empty State
+    Then click on selected filter of contacts left navigation panel
+    Then expect empty state message of selected contacts is displayed on the contacts grid
+    Then click on all contacts filter of contacts left navigation panel
+    #Selected filter -counts
+    Then in contacts grid check row 1
+    Then expect count on selected filter is 1
+    Then in contacts grid check row 2
+    Then expect count on selected filter is 2
+    Then in contacts grid uncheck row 1
+    Then expect count on selected filter is 1
+    Then in contacts grid check row 3
+    Then expect count on selected filter is 2
+	#Switches filters - based on cost codes
+    Then select an existing cost code from left navigation filter panel
+    Then expect count on selected filter is 2
+	#Switches filters - based on groups
+    Then select an existing group from left navigation filter panel
+    Then expect count on selected filter is 2
+	#Searches contacts
+    Then search for contact aloha from the contacts left navigation filter
+    Then expect count on selected filter is 2
+	#Changes pages or page numbers in the filter (Bottom footer)
+    Then set per page drop down of pagination on contacts toolbar to 100
+    Then expect count on selected filter is 2
+    #Clear All Link
+    Then expect clear all link is displayed on contact detail panel
+    Then click on clear all link of contact detail panel
+    Then expect clear contacts pop up box is displayed
+    Then click on yes button of clear contacts pop up window

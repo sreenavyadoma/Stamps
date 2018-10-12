@@ -216,3 +216,5 @@ Then /^click on cost codes settings button of contacts left navigation$/ do
   left_nav.left_nav_add_edit_costcodes.flash
   left_nav.left_nav_add_edit_costcodes.click
 end
+
+
