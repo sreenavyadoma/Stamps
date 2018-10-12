@@ -3,7 +3,7 @@ Feature:  Contacts BVT - Contacts Cost Codes
   Background:
     Given Start test driver
 
-  @sdc_contacts_toolbar_add_existing_cost_code_toolbar
+  @sdc_contacts_toolbar_add_existing_cost_code
   Scenario: Add Cost Code scenario 1: Add cost code from TOP Nav ,Sent to Cost codes page, add an exsisting cost code and expect error is displayed and make sure cost codes save and visible on contacts page
     Then sign-in to orders
     Then navigate to Contacts
@@ -15,7 +15,7 @@ Feature:  Contacts BVT - Contacts Cost Codes
     Then on cost codes page click on add button
     Then expect error message box is displayed
 
-  @sdc_contacts_toolbar_add_new_cost_code_toolbar
+  @sdc_contacts_toolbar_add_new_cost_code
   Scenario: Add Cost Code scenario 1: Add cost code from TOP Nav ,Sent to Cost codes page, add an new cost code and expect error is not displayed and make sure cost codes save and visible on contacts page
     Then sign-in to orders
     Then navigate to Contacts
@@ -38,7 +38,7 @@ Feature:  Contacts BVT - Contacts Cost Codes
     Then expect value of Cost Code in contacts grid is correct?
     Then on left navigation expect count of new costcode added is 1
 
-  @sdc_contacts_change_cost_code_add_edit
+  @sdc_contacts_toolbar_change_cost_code_add_edit
   Scenario: Contacts BVT Scenario 1: Add Cost Code from change cost codes pop up via Contacts Toolbar
     Then sign-in to orders
     Then navigate to Contacts
