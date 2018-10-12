@@ -122,6 +122,7 @@ Feature:  Contacts BVT - Contacts ToolBar
     Then select columns from contacts toolbar settings dropdown menu
     Then check all the columns from the list to show all columns in the contacts grid
     Then expect all columns are available on the contacts grid
+    Then click on settings button of contacts toolbar
     Then select columns from contacts toolbar settings dropdown menu
     Then uncheck all the columns from the list to hide all columns in the contacts grid
     Then expect all columns are not available on the contacts grid

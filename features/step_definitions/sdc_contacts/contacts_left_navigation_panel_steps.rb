@@ -4,6 +4,12 @@ Then /^expect search bar is available on the contacts left navigation panel$/ do
   expect(contacts_left_navigation.search_bar.present?).to be (true)
 end
 
+Then /^click on search bar of contacts left navigation panel$/ do
+  contacts_left_navigation= SdcContacts.contacts_left_navigation_panel
+  contacts_left_navigation.search_bar.safe_wait_until_present(timeout: 15)
+ contacts_left_navigation.search_bar.click
+end
+
 Then /^expect selected filter on the contacts left navigation panel is available$/ do
   contacts_left_navigation= SdcContacts.contacts_left_navigation_panel
   contacts_left_navigation.selected.safe_wait_until_present(timeout: 15)
