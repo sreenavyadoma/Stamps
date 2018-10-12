@@ -236,3 +236,35 @@ Feature:  Contacts BVT - Contacts Details
       |random     |random   |United States  |San Juan|Federated States Of Micronesia|0097-5824|23345142-123|random  |        |random           |          |
     Then set street address on contact page details to maximum lines 4
     Then expect street address error message is displayed
+
+  @sdc_contact_add_new_contact_different_addresses
+  Scenario: Contacts BVT Scenario 1 : Click add, add new contact  and the open and view details
+    Then sign-in to orders
+    Then navigate to Contacts
+    Then click add button on contacts toolbar
+    Then set contact details to
+      | full_name | company | country| city | state | postal_code | phone  |  email | groups | reference_number|cost_code |
+      |random     |random   |  ||||23345142-123|random  |        |random           |          |
+    Then set address to domestic
+    Then in contacts grid uncheck row 1
+    Then search for contact newly added from the contacts left navigation filter
+    Then in contacts grid check row 1
+    Then expect values of contact added in contacts grid are correct
+    Then click add button on contacts toolbar
+    Then set contact details to
+      | full_name | company | country| city | state | postal_code | phone  |  email | groups | reference_number|cost_code |
+      |random     |random   |  ||||23345142-123|random  |        |random           |          |
+    Then set address to international
+    Then in contacts grid uncheck row 1
+    Then search for contact newly added from the contacts left navigation filter
+    Then in contacts grid check row 1
+    Then expect values of contact added in contacts grid are correct
+    Then click add button on contacts toolbar
+    Then set contact details to
+      | full_name | company | country| city | state | postal_code | phone  |  email | groups | reference_number|cost_code |
+      |random     |random   |  ||||23345142-123|random  |        |random           |          |
+    Then set address to apo
+    Then in contacts grid uncheck row 1
+    Then search for contact newly added from the contacts left navigation filter
+    Then in contacts grid check row 1
+    Then expect values of contact added in contacts grid are correct
