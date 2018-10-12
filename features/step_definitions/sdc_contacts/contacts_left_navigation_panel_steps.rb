@@ -31,6 +31,12 @@ Then /^click on selected filter of contacts left navigation panel$/ do
   SdcContacts.contacts_body.safe_wait_until_present(timeout: 15)
 end
 
+Then /^expect empty state message of selected contacts is displayed on the contacts grid$/ do
+  grid=SdcContacts.contacts_col
+  expect(grid.count==0).to be(true)
+  expect(grid.grid_message).to eql('There are no contacts selected.')
+end
+
 Then /^expect all contacts filter is available on the contacts left navigation panel$/ do
   contacts_left_navigation= SdcContacts.contacts_left_navigation_panel
   contacts_left_navigation.all_contacts.safe_wait_until_present(timeout: 15)
