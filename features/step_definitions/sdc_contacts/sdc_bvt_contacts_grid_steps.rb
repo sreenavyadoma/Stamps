@@ -3,6 +3,12 @@ Then /^check row header in contacts grid$/ do
   contacts_grid_body.safe_wait_until_present(timeout: 10)
   header_checkbox = SdcContacts.contacts_col.contacts_header_element(:checkbox)
   header_checkbox.safe_wait_until_present(timeout: 10)
+  unless header_checkbox.checked?
+    header_checkbox.check
+  end
+
+  header_checkbox.check unless header_checkbox.checked?
+
   if header_checkbox.checked? == false
     header_checkbox.check
   end
@@ -63,52 +69,52 @@ Then /^[Ee]xpect [Nn]ame [Dd]etails for (.*) [Ii]n [Cc]ontacts [Gg]rid [Ii]s [Uu
   words = name.split(" ")
   word_count = words.length
   case word_count
-    when 1
-      if words[0] == 'CAPT' || words[0] == 'BG'
-        expect(value_prefix).to eql words[0]
-      else
-        expect(value_last).to eql words[0]
-      end
-    when 2
-      if words[0] == 'CAPT'
-         expect(value_prefix).to eql words[0]
-         expect(value_last).to eql words[1]
-      else
-         expect(value_first).to eql words[0]
-         expect(value_last).to eql words[1]
-      end
-    when 3
-      if words[0] == 'CAPT' || words[0] == 'ENS'
-        expect(value_prefix).to eql words[0]
-        expect(value_first).to eql words[word_count - 2]
-        expect(value_last).to eql words[word_count - 1]
-        SdcLogger.info "#{value_prefix} - Prefix: #{words[0]}"
-        SdcLogger.info "#{value_first} - First: #{words[word_count - 2]}"
-        SdcLogger.info "#{value_last} - Last: ' #{words[word_count - 1]}"
-      else
-        expect(value_first).to eql words[0]
-        expect(value_middle).to eql words[word_count - 2]
-        expect(value_last).to eql words[word_count - 1]
-      end
+  when 1
+    if words[0] == 'CAPT' || words[0] == 'BG'
+      expect(value_prefix).to eql words[0]
     else
-      if words[0] == 'CAPT' || words[0] == 'BGen.'
-        expect(value_prefix).to eql words[0]
-        SdcLogger.info "#{value_prefix} - Prefix: #{words[0]}"
-        i = 1
-      else
-        i = 0
-      end
-      firstname = ""
-      while i < word_count - 2
-        firstname = firstname + words[i] + " "
-        i = i + 1
-      end
+      expect(value_last).to eql words[0]
+    end
+  when 2
+    if words[0] == 'CAPT'
+      expect(value_prefix).to eql words[0]
+      expect(value_last).to eql words[1]
+    else
+      expect(value_first).to eql words[0]
+      expect(value_last).to eql words[1]
+    end
+  when 3
+    if words[0] == 'CAPT' || words[0] == 'ENS'
+      expect(value_prefix).to eql words[0]
+      expect(value_first).to eql words[word_count - 2]
       expect(value_last).to eql words[word_count - 1]
+      SdcLogger.info "#{value_prefix} - Prefix: #{words[0]}"
+      SdcLogger.info "#{value_first} - First: #{words[word_count - 2]}"
+      SdcLogger.info "#{value_last} - Last: ' #{words[word_count - 1]}"
+    else
+      expect(value_first).to eql words[0]
       expect(value_middle).to eql words[word_count - 2]
-      expect(value_first).to eql firstname.rstrip
-      #p value_last+'- Last :' + words[word_count-1]
-      #p value_middle+'- Middle :'+words[word_count-2]
-      #p value_first+'- First :' + firstname
+      expect(value_last).to eql words[word_count - 1]
+    end
+  else
+    if words[0] == 'CAPT' || words[0] == 'BGen.'
+      expect(value_prefix).to eql words[0]
+      SdcLogger.info "#{value_prefix} - Prefix: #{words[0]}"
+      i = 1
+    else
+      i = 0
+    end
+    firstname = ""
+    while i < word_count - 2
+      firstname = firstname + words[i] + " "
+      i = i + 1
+    end
+    expect(value_last).to eql words[word_count - 1]
+    expect(value_middle).to eql words[word_count - 2]
+    expect(value_first).to eql firstname.rstrip
+    #p value_last+'- Last :' + words[word_count-1]
+    #p value_middle+'- Middle :'+words[word_count-2]
+    #p value_first+'- First :' + firstname
   end
 end
 
@@ -154,9 +160,9 @@ Then /^expect value of (.*) in contacts grid is (.*)$/ do |col,value|
 
   case col
   when 'Name'
-  column = SdcContacts.contacts_grid_column(:name)
-  expect(column).present?
-  expect(column.contacts_header_text).to eql('Name')
+    column = SdcContacts.contacts_grid_column(:name)
+    expect(column).present?
+    expect(column.contacts_header_text).to eql('Name')
 
   when 'Prefix'
     column = SdcContacts.contacts_grid_column(:prefix)
@@ -218,10 +224,10 @@ Then /^expect value of (.*) in contacts grid is (.*)$/ do |col,value|
     expect(column).present?
     expect(column.contacts_header_text).to eql('State/Prv')
     #case value
-      #when 'Florida'
-        #new_value ='FL'
-      #when 'Puerto Rico'
-        #new_value ='PR'
+    #when 'Florida'
+    #new_value ='FL'
+    #when 'Puerto Rico'
+    #new_value ='PR'
     # #end
   when 'Province'
     column = SdcContacts.contacts_grid_column(:state_prv)
@@ -262,7 +268,7 @@ Then /^expect value of (.*) in contacts grid is (.*)$/ do |col,value|
   end
   if value == 'blank'
     new_value = ""
-  elsif value == "correct?"
+  elsif value.eql? 'correct?'
     new_value = temp
   else
     new_value = value
@@ -337,7 +343,7 @@ Then /^expect value of (.*) in contacts grid is (.*)$/ do |col,value|
         "West Virginia" => "WV",
         "Wyoming" => "WY"
     }
-        #TestData.hash[:states]=
+    #TestData.hash[:states]=
     new_value = states[value]
     expect(actual_value.strip).to eql new_value.strip
   else
