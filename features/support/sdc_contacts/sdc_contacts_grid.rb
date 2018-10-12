@@ -108,8 +108,8 @@ module SdcContacts
     end
 
     #def text_for_id(column, order_id)
-     # row = row_num(order_id)
-      #text_at(column, row)
+    # row = row_num(order_id)
+    #text_at(column, row)
     #end
 
     def count
@@ -148,10 +148,10 @@ module SdcContacts
       element
     end
 
-   # def contacts_element_for_id(column,order_id)
-      #row = contacts_row_num(order_id)
-      #contacts_element_at_row(column, row)
-   # end
+    # def contacts_element_for_id(column,order_id)
+    #row = contacts_row_num(order_id)
+    #contacts_element_at_row(column, row)
+    # end
 
     def contacts_grid_field_column_name(column, row)
       col = contacts_column_number(column)
@@ -284,7 +284,7 @@ module SdcContacts
     end
 
     #def data(order_id)
-      #text_for_id(@column, order_id)
+    #text_for_id(@column, order_id)
     #end
 
     def contacts_element(row)
@@ -292,7 +292,7 @@ module SdcContacts
     end
 
     #def element_for_id(order_id)
-      #super(@column, order_id)
+    #super(@column, order_id)
     #end
 
     def contacts_sort_ascending
@@ -305,15 +305,15 @@ module SdcContacts
   end
 
   def contacts_body
-  xpath = '//div[starts-with(@id, "contactsGrid-")][contains(@id, "-normal-body")]'
-  klass = Class.new(SdcPage) do
-    page_object(:body) { { xpath: xpath } }
+    xpath = '//div[starts-with(@id, "contactsGrid-")][contains(@id, "-normal-body")]'
+    klass = Class.new(SdcPage) do
+      page_object(:body) { { xpath: xpath } }
+    end
+    klass.new.body
   end
-  klass.new.body
-end
   module_function :contacts_body
 
-   def contacts_grid_column(column)
+  def contacts_grid_column(column)
     contacts_body.wait_until_present(timeout: 15)
 
     unless ContactsGridColumnBase.contacts_column_names.keys.include? column
