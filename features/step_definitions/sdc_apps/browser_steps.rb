@@ -35,6 +35,14 @@ Then /^configure saucelabs$/ do
 end
 
 Then /^Start test driver$/ do
+  step 'launch the browser'
+end
+
+Then /^launch the browser$/ do
+  SdcTest.configure
+end
+
+Then /^close the browser$/ do
   SdcTest.configure
 end
 
@@ -45,6 +53,10 @@ Then /^refresh the browser$/ do
   rescue
     # ignore
   end
+end
+
+Then /^go to url (.+)$/ do |str|
+  SdcPage.browser.goto str
 end
 
 Then /^pause for (\d+) second(?:|s)?$/ do |seconds|

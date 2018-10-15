@@ -297,6 +297,20 @@ module SdcMail
       end
     end
 
+    module PostageMessagePanelContainer
+      class MessagePanel < SdcPage
+        page_object(:tracking_number) { { xpath: '//span[@id="trackingNumber"]' } }
+        page_object(:tracking_label) { { xpath: '//span[@id="trackingNumber"]/..' } }
+        page_object(:copy_tracking) { { xpath: '//span[text()="Copy Tracking"]' } }
+        page_object(:reprint) { { xpath: '//span[text()="Reprint"]' } }
+        page_object(:save_as_favorite) { { xpath: '//span[text()="Save as Favorite"]' } }
+      end
+
+      def message_panel
+        MessagePanel.new
+      end
+    end
+
     class Contents < SdcPage
       page_object(:customs_form) { { xpath: '//*[@id="sdc-mainpanel-editcustombtn-btnInnerEl"]' } }
       page_object(:restrictions) { { xpath: '//*[text()="Restrictions..."]' } }
@@ -360,6 +374,7 @@ module SdcMail
       include DimensionsContainer
       include ExtraServicesContainer
       include MailDateContainer
+      include PostageMessagePanelContainer
 
       def contents
         Contents.new

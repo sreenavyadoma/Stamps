@@ -35,6 +35,19 @@ Then /^click continue on confirm print modal$/ do
   expect(comfirm_print.continue.present?).to be(false)
 end
 
+Then /^expect postage message panel tracking label is (.+)$/ do |str|
+  message_panel = SdcMail.print_form.message_panel
+  message_panel.tracking_label.wait_until_present(timeout: 40)
+  expect(message_panel.tracking_label.text.strip).to include str
+end
+
+Then /^save postage message panel tracking number$/ do
+  message_panel = SdcMail.print_form.message_panel
+  message_panel.tracking_number.wait_until_present(timeout: 40)
+  TestData.hash[:tracking_number] = message_panel.tracking_number.text.strip
+  expect(TestData.hash[:tracking_number].size).to be > 15
+end
+
 Then /^click print label expecting no errors$/ do
   step 'click print label'
   step 'click continue on confirm print modal'
@@ -59,16 +72,33 @@ Then /^expect mail toolbar print button label is (.+)$/ do |str|
 end
 
 Then /^expect mail toolbar print is present$/ do
-  expect(SdcMail.toolbar.print).to be_present, "Toolbar Print button is not present"
+  expect(SdcMail.toolbar.print).to be_present
+end
+
+Then /^hover on mail toolbar print dropdown$/ do
+  SdcMail.toolbar.print_dropdown.hover
 end
 
 Then /^click mail toolbar print dropdown$/ do
   SdcMail.toolbar.print_dropdown.click
-  step 'hover on mail toolbar print tooltip'
 end
 
-Then /^hover on mail toolbar print tooltip$/ do
-  SdcMail.toolbar.print_tooltip.hover if SdcMail.toolbar.print_tooltip.present?
+Then /^expect mail toolbar print dropdown tooltip is present$/ do
+  step 'wait for mail toolbar print dropdown tooltip'
+  expect(SdcMail.toolbar.print_dropdown_tooltip).to be_present
+end
+
+Then /^expect mail toolbar print dropdown tooltip is not present$/ do
+  step 'wait for mail toolbar print dropdown tooltip'
+  expect(SdcMail.toolbar.print_dropdown_tooltip).not_to be_present
+end
+
+Then /^wait for mail toolbar print dropdown tooltip$/ do
+  SdcMail.toolbar.print_dropdown_tooltip.wait_until_present
+end
+
+Then /^hover on mail toolbar print dropdown tooltip$/ do
+  SdcMail.toolbar.print_dropwown_tooltip.hover if SdcMail.toolbar.print_dropwown_tooltip.present?
 end
 
 Then /^click mail toolbar print (?:postage|label|stamps|envelope)$/ do

@@ -31,7 +31,7 @@ Then /^click bulk update update order button$/ do
   updating = SdcOrders.updating_orders
   updating.safe_wait_until_present(timeout: 2)
   updating.safe_wait_while_present(timeout: 2)
-  SdcGrid.body.wait_until_present(timeout: 10)
+  OrdersGrid.body.wait_until_present(timeout: 10)
   sleep 2 unless TestSession.env.build_number
   step 'wait for js to stop'
 end

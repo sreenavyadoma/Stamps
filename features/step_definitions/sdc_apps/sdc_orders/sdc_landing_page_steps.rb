@@ -159,7 +159,7 @@ Then /^loading orders...$/ do
   loading_orders.safe_wait_while_present(timeout: 90)
   step 'check for server error'
   SdcLogger.debug 'SdcGrid.body.safe_wait_until_present(timeout: 60)...'
-  SdcGrid.body.safe_wait_until_present(timeout: 120)
+  OrdersGrid.body.safe_wait_until_present(timeout: 120)
   step 'check for server error'
   SdcLogger.debug 'expect(toolbar.add).to be_present...'
   expect(landing_page.username).to_not be_present
