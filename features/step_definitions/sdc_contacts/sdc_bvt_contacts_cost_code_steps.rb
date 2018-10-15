@@ -1,11 +1,11 @@
 
-Then /^[Ee]xpect [Cc]ost [Cc]ode [Pp]age [Ii]s [Dd]isplayed$/ do
+Then /^expect cost code page is displayed$/ do
   add_cost_code  = SdcContacts.contacts_cost_codes
   add_cost_code.cost_codes_page.safe_wait_until_present(timeout: 20)
   expect(add_cost_code.cost_codes_page.present?).to be(true)
 end
 
-Then /^[Oo]n [Cc]ost [Cc]ode [Pp]age [Ss]et [Vv]alue [Oo]f [Nn]ew [Cc]ost [Cc]ode [Tt]extbox [Tt]o (.*)$/ do |costcode_name|
+Then /^on cost code page set value of new cost code textbox to (.*)$/ do |costcode_name|
 
   #check for costcodes count and remove one if count =10 and then add
   add_cost_code  = SdcContacts.contacts_cost_codes
@@ -28,41 +28,41 @@ Then /^[Oo]n [Cc]ost [Cc]ode [Pp]age [Ss]et [Vv]alue [Oo]f [Nn]ew [Cc]ost [Cc]od
 
 end
 
-Then /^[Rr]emove [Cc]ostcode [Ff]rom [Tt]he [Cc]ostcode [Tt]able$/ do
+Then /^remove costcode from the costcode table$/ do
   add_cost_code  = SdcContacts.contacts_cost_codes
   add_cost_code.cost_codes_checkbox.click
   add_cost_code.remove_cost_code_button.click
   add_cost_code.remove_cost_code_button.click
 end
 
-Then /^[Oo]n [Cc]ost [Cc]odes [Pp]age [Cc]lick [Oo]n [Aa]dd [Bb]utton$/ do
+Then /^on cost codes page click on add button$/ do
   add_cost_code  = SdcContacts.contacts_cost_codes
   add_cost_code.add_cost_code_button.click
 end
 
-Then /^[Ee]xpect [Ee]rror [Mm]essage [Bb]ox [Ii]s [Dd]isplayed$/ do
+Then /^expect error message box is displayed$/ do
   add_cost_code  = SdcContacts.contacts_cost_codes
   expect(add_cost_code.error_cost_code.present?).to be(true)
 end
 
-Then /^[Ee]xpect [Ee]rror [Mm]essage [Bb]ox [Ii]s [Nn]ot [Dd]isplayed$/ do
+Then /^expect error message box is not displayed$/ do
   add_cost_code  = SdcContacts.contacts_cost_codes
   expect(add_cost_code.error_cost_code.present?).to be(false)
 end
 
-Then /^[Oo]n [Cc]ost [Cc]odes [Pp]age [Cc]lick [Oo]n [Dd]one [Bb]utton$/ do
+Then /^on cost codes page click on done button$/ do
   add_cost_code  = SdcContacts.contacts_cost_codes
   add_cost_code.done_cost_code_button.click
   add_cost_code.cost_codes_accounts_page.safe_wait_until_present(timeout: 15)
 end
 
-Then /^[Ee]xpect [Cc]hange [Cc]ost [Cc]ode [Pp]opup$/ do
+Then /^expect change cost code popup$/ do
   cost_code = SdcContacts.contacts_popup_cost_code
   cost_code.drop_down.safe_wait_until_present(timeout: 10)
   expect(cost_code.drop_down.present?).to be(true)
 end
 
-Then /^[sS]et [Cc]ost [Cc]ode [Vv]alue [Ii]n [Tt]he [Cc]hange [Cc]ostcode [Pp]op [Uu]p [Bb]ox [Tt]o (.*)/ do |costcode_name|
+Then /^set cost code value in the change costcode pop up box [Tt]o (.*)/ do |costcode_name|
 
   if costcode_name == "new costcode added"
     str ||= TestData.hash[:costcode_val]
@@ -81,22 +81,23 @@ Then /^[sS]et [Cc]ost [Cc]ode [Vv]alue [Ii]n [Tt]he [Cc]hange [Cc]ostcode [Pp]op
   cost_code.text_field.set(str)
   expect(cost_code.text_field.text_value).to include(str)
   cost_code.selection.safe_click
+  #p str
 end
 
-Then /^[Cc]lick [Oo]n [Cc]ost [Cc]ode [Ss]ave [Bb]utton$/ do
+Then /^click on cost code save button$/ do
   cost_code = SdcContacts.contacts_popup_cost_code
   cost_code.save_button.safe_wait_until_present(timeout: 10)
   cost_code.save_button.click
 end
 
-Then /^[Cc]lick [Cc]ontacts [Tt]oolbar [Cc]ost [Cc]odes [Dd]ropdown$/ do
+Then /^click contacts toolbar cost codes dropdown$/ do
   toolbar = SdcContacts.contacts_toolbar_cost_codes
   toolbar.cost_codes.safe_wait_until_present(timeout: 15)
   step "mouse hover on cost codes"
   toolbar.cost_codes.click
 end
 
-Then /^[Oo]n [Cc]ost [Cc]odes [Dd]ropdown [Mm]enu [Ss]elect (.*)$/ do |str|
+Then /^on cost codes dropdown menu select (.*)$/ do |str|
   toolbar = SdcContacts.contacts_toolbar_cost_codes
   case str
   when 'Change Cost Code'
@@ -106,14 +107,13 @@ Then /^[Oo]n [Cc]ost [Cc]odes [Dd]ropdown [Mm]enu [Ss]elect (.*)$/ do |str|
     toolbar.cost_codes_add_edit_costcode.click
   end
 end
-
-Then /^[Mm]ouse [Hh]over [Oo]n [Cc]ost [Cc]odes$/ do
+Then /^mouse hover on cost codes$/ do
   toolbar = SdcContacts.contacts_toolbar_cost_codes
   toolbar.cost_codes.safe_wait_until_present(timeout: 15)
   toolbar.cost_codes.hover
 end
 
-Then /^[Ss]et (.*) [Vv]alue [Ii]n [Dd]etails [Mm]enu [Cc]ost [Cc]ode [Dd]ropdown/ do |costcode_name|
+Then /^set (.*) value in details menu cost code dropdown/ do |costcode_name|
   if costcode_name == "new costcode added"
     str ||= TestData.hash[:costcode_val]
   else
@@ -131,7 +131,6 @@ end
 Then /^click on cost codes expand button of contacts left navigation$/ do
   left_cost_code  = SdcContacts.contacts_left_nav_cost_code
   left_cost_code.cost_codes_expand_button.safe_wait_until_present(timeout: 30)
-  expect(left_cost_code.cost_codes_expand_button).to be_present
   left_cost_code.cost_codes_expand_button.click
   expect(left_cost_code.cost_codes_collapse_button.present?).to be(true)
 end
@@ -146,19 +145,19 @@ end
 Then /^fetch total against each cost code available$/ do
   left_nav_costcode = SdcContacts.contacts_left_nav_cost_code
   row_count = left_nav_costcode.total_costcodes.count
-  p "Total no of cost codes : " + row_count.to_s
+  SdcLogger.info "Total no of cost codes : #{row_count.to_s}"
     i=1
     while i<= row_count.to_i
         cost_code_label = left_nav_costcode.cost_code_name(i)
-        p "name : "+cost_code_label
+        SdcLogger.info "Costcode name : #{cost_code_label}"
         count = left_nav_costcode.cost_code_count(i)
-        p "count of #{cost_code_label} is : " + count
+        SdcLogger.info "count of #{cost_code_label} is : #{count}"
       i=i+1
     end
 end
 
 
-Then /^[Oo]n [Ll]eft [Nn]avigation [Ee]xpect (.*) [Ii]s [Aa]vilable [Uu]nder [Cc]ostcode [Ff]ilter$/ do |costcode_name|
+Then /^on left navigation expect (.*) is avilable under costcode filter$/ do |costcode_name|
 
   if costcode_name == "new costcode added"
     value ||= TestData.hash[:costcode_val]
@@ -168,12 +167,12 @@ Then /^[Oo]n [Ll]eft [Nn]avigation [Ee]xpect (.*) [Ii]s [Aa]vilable [Uu]nder [Cc
 
   left_nav_costcode = SdcContacts.contacts_left_nav_cost_code
   row_count = left_nav_costcode.total_costcodes.count
-  p row_count
+  SdcLogger.info "Count :#{row_count}"
   if row_count.to_i != 0
     i=1
     while i<= row_count.to_i
       if left_nav_costcode.cost_code_name(i) == value
-        p left_nav_costcode.cost_code_name(i)
+        SdcLogger.info "Cost code Name : #{left_nav_costcode.cost_code_name(i)}"
         result = left_nav_costcode.cost_code_name(i)
         expect(result).to eql(value)
       end
@@ -182,7 +181,7 @@ Then /^[Oo]n [Ll]eft [Nn]avigation [Ee]xpect (.*) [Ii]s [Aa]vilable [Uu]nder [Cc
   end
 end
 
-Then /^[Oo]n [Ll]eft [Nn]avigation [Ee]xpect [Cc]ount [Oo]f (.*) [Ii]s (.*)$/ do |costcode_name,count|
+Then /^on left navigation expect count of (.*) is (.*)$/ do |costcode_name,count|
 
   if costcode_name == "new costcode added"
     value ||= TestData.hash[:costcode_val]
@@ -192,12 +191,12 @@ Then /^[Oo]n [Ll]eft [Nn]avigation [Ee]xpect [Cc]ount [Oo]f (.*) [Ii]s (.*)$/ do
 
   left_nav_costcode = SdcContacts.contacts_left_nav_cost_code
   row_count = left_nav_costcode.total_costcodes.count
-  p row_count
+  SdcLogger.info "Count :#{row_count}"
   if row_count.to_i != 0
     i=1
     while i<= row_count.to_i
       if left_nav_costcode.cost_code_name(i) == value
-        p left_nav_costcode.cost_code_name(i)
+        SdcLogger.info "Cost code Name : #{left_nav_costcode.cost_code_name(i)}"
         actual_count=left_nav_costcode.cost_code_count(i)
         expect(actual_count).to eql(count)
       end
@@ -205,3 +204,17 @@ Then /^[Oo]n [Ll]eft [Nn]avigation [Ee]xpect [Cc]ount [Oo]f (.*) [Ii]s (.*)$/ do
     end
   end
 end
+
+Then /^mousehover on cost codes section of left navigation$/ do
+  left_nav = SdcContacts.contacts_left_nav_cost_code
+  left_nav.cost_codes.hover
+  expect( left_nav.left_nav_add_edit_costcodes.present?).to be(true)
+end
+
+Then /^click on cost codes settings button of contacts left navigation$/ do
+  left_nav = SdcContacts.contacts_left_nav_cost_code
+  left_nav.left_nav_add_edit_costcodes.flash
+  left_nav.left_nav_add_edit_costcodes.click
+end
+
+
