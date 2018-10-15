@@ -32,3 +32,5 @@ Feature:  History Toolbar
     Then close scan form modal on history
     Then click reprint scan form button on history toolbar create scan form
     Then expect reprint scan form on history is present
+
+    Then click create return label button on history toolbar
