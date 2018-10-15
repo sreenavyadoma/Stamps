@@ -80,11 +80,27 @@ module SdcHistory
       page_object(:estimated_weight, tag: textfield) { {xpath: '//input[@name="EstimatedWeight"]'} }
       page_object(:special_instructions, tag: textfield) { {xpath: '//input[@name="SpecialInstructions"]'} }
 
-      page_object(:state_text_field, tag: textfield) { { xpath: '//input[@name="State"]' } }
-      page_object(:state_drop_down) { { xpath: '//input[@name="State"]/../../*[contains(@class, "trigger")]' } }
+      def state
+        SchedulePickupState.new
+      end
 
-      page_object(:package_location_text_field, tag: textfield) { { xpath: '//input[@name="PackageLocation"]' } }
-      page_object(:package_location_drop_down) { { xpath: '//input[@name="PackageLocation"]/../../*[contains(@class, "trigger")]' } }
+      def package_location
+        SchedulePickupPackageLocation.new
+      end
+    end
+
+    class SchedulePickupState < SdcPage
+      page_object(:text_field, tag: textfield) { { xpath: '//input[@name="State"]' } }
+      page_object(:drop_down) { { xpath: '//input[@name="State"]/../../*[contains(@class, "trigger")]' } }
+
+      def selection(str)
+        page_object(:selection_obj) { { xpath: "//li[text()='#{str}']" } }
+      end
+    end
+
+    class SchedulePickupPackageLocation
+      page_object(:text_field, tag: textfield) { { xpath: '//input[@name="PackageLocation"]' } }
+      page_object(:drop_down) { { xpath: '//input[@name="PackageLocation"]/../../*[contains(@class, "trigger")]' } }
 
       def selection(str)
         page_object(:selection_obj) { { xpath: "//li[text()='#{str}']" } }

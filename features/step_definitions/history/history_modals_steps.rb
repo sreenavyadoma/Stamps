@@ -72,7 +72,17 @@ Then /^expect city on schedule pickup is (.*)$/ do |str|
   expect(SdcHistory.modals.schedule_pickup.city.text_value).to eql(str)
 end
 
-#todo - State
+Then /^select state on return label modal (.*)$/ do |str|
+  state = SdcHistory.modals.return_label.state
+  unless state.text_field.text_value.include?(str)
+    state.drop_down.click
+    state.selection(str)
+    state.drop_down.click unless selection_obj.present?
+    selection_obj.scroll_into_view unless selection_obj.present?
+    selection_obj.click if selection_obj.present?
+  end
+  step "expect service on return label modal is #{str}"
+end
 
 Then /^set zip on schedule pickup modal to (.+)$/ do |str|
   SdcHistory.modals.schedule_pickup.zip.set(str)
@@ -82,71 +92,81 @@ Then /^expect zip on schedule pickup is (.*)$/ do |str|
   expect(SdcHistory.modals.schedule_pickup.zip.text_value).to eql(str)
 end
 
-Then /^set phone on schedule pickup modal to (.+)$/ do |str|
+Then /^set phone on schedule pickup modal to (\d+)$/ do |str|
   SdcHistory.modals.schedule_pickup.phone_number.set(str)
   step "expect phone on schedule pickup is #{str}"
 end
-Then /^expect phone on schedule pickup is (.*)$/ do |str|
+Then /^expect phone on schedule pickup is (\d+)$/ do |str|
   expect(SdcHistory.modals.schedule_pickup.phone_number.text_value).to eql(str)
 end
 
-Then /^set phone ext on schedule pickup modal to (.+)$/ do |str|
+Then /^set phone ext on schedule pickup modal to (\d+)$/ do |str|
   SdcHistory.modals.schedule_pickup.phone_ext.set(str)
   step "expect phone on schedule pickup is #{str}"
 end
-Then /^expect phone ext on schedule pickup is (.*)$/ do |str|
+Then /^expect phone ext on schedule pickup is (\d+)$/ do |str|
   expect(SdcHistory.modals.schedule_pickup.phone_ext.text_value).to eql(str)
 end
 
-Then /^set number of express mail pieces on schedule pickup modal to (.+)$/ do |str|
+Then /^set number of express mail pieces on schedule pickup modal to (\d+)$/ do |str|
   SdcHistory.modals.schedule_pickup.express_mail_pieces.set(str)
   step "expect phone on schedule pickup is #{str}"
 end
-Then /^expect number of express mail pieces on schedule pickup is (.*)$/ do |str|
+Then /^expect number of express mail pieces on schedule pickup is (\d+)$/ do |str|
   expect(SdcHistory.modals.schedule_pickup.express_mail_pieces.text_value).to eql(str)
 end
 
-Then /^set number of priority mail pieces on schedule pickup modal to (.+)$/ do |str|
+Then /^set number of priority mail pieces on schedule pickup modal to (\d+)$/ do |str|
   SdcHistory.modals.schedule_pickup.priority_mail_pieces.set(str)
   step "expect phone on schedule pickup is #{str}"
 end
-Then /^expect number of priority mail pieces on schedule pickup is (.*)$/ do |str|
+Then /^expect number of priority mail pieces on schedule pickup is (\d+)$/ do |str|
   expect(SdcHistory.modals.schedule_pickup.priority_mail_pieces.text_value).to eql(str)
 end
 
-Then /^set number of international pieces on schedule pickup modal to (.+)$/ do |str|
+Then /^set number of international pieces on schedule pickup modal to (\d+)$/ do |str|
   SdcHistory.modals.schedule_pickup.international_pieces.set(str)
   step "expect phone on schedule pickup is #{str}"
 end
-Then /^expect number of international pieces on schedule pickup is (.*)$/ do |str|
+Then /^expect number of international pieces on schedule pickup is (\d+)$/ do |str|
   expect(SdcHistory.modals.schedule_pickup.international_pieces.text_value).to eql(str)
 end
 
-Then /^set number of first class pieces on schedule pickup modal to (.+)$/ do |str|
+Then /^set number of first class pieces on schedule pickup modal to (\d+)$/ do |str|
   SdcHistory.modals.schedule_pickup.first_class_pieces.set(str)
   step "expect phone on schedule pickup is #{str}"
 end
-Then /^expect number of first class pieces on schedule pickup is (.*)$/ do |str|
+Then /^expect number of first class pieces on schedule pickup is (\d+)$/ do |str|
   expect(SdcHistory.modals.schedule_pickup.first_class_pieces.text_value).to eql(str)
 end
 
-Then /^set number of other pieces on schedule pickup modal to (.+)$/ do |str|
+Then /^set number of other pieces on schedule pickup modal to (\d+)$/ do |str|
   SdcHistory.modals.schedule_pickup.other_pieces.set(str)
   step "expect phone on schedule pickup is #{str}"
 end
-Then /^expect number of other pieces on schedule pickup is (.*)$/ do |str|
+Then /^expect number of other pieces on schedule pickup is (\d+)$/ do |str|
   expect(SdcHistory.modals.schedule_pickup.other_pieces.text_value).to eql(str)
 end
 
-Then /^set estimated weight on schedule pickup modal to (.+)$/ do |str|
+Then /^set estimated weight on schedule pickup modal to (\d+)$/ do |str|
   SdcHistory.modals.schedule_pickup.estimated_weight.set(str)
   step "expect phone on schedule pickup is #{str}"
 end
-Then /^expect estimated weight on schedule pickup is (.*)$/ do |str|
+Then /^expect estimated weight on schedule pickup is (\d+)$/ do |str|
   expect(SdcHistory.modals.schedule_pickup.estimated_weight.text_value).to eql(str)
 end
 
-#todo - Package location
+Then /^select package location on return label modal (.*)$/ do |str|
+  package_location = SdcHistory.modals.return_label.package_location
+  unless package_location.text_field.text_value.include?(str)
+    package_location.drop_down.click
+    package_location.selection(str)
+    package_location.drop_down.click unless selection_obj.present?
+    selection_obj.scroll_into_view unless selection_obj.present?
+    selection_obj.click if selection_obj.present?
+  end
+  step "expect service on return label modal is #{str}"
+end
 
 Then /^set special instructions on schedule pickup modal to (.+)$/ do |str|
   SdcHistory.modals.schedule_pickup.special_instructions.set(str)
@@ -264,6 +284,10 @@ end
 #create return label
 Then /^expect return label modal on history is present$/ do
   expect(SdcHistory.modals.return_label.title).to be_present
+end
+
+Then /^expect return label modal on history is not present$/ do
+  expect(SdcHistory.modals.return_label.title).not_to be_present
 end
 
 Then /^close return label modal on history$/ do
@@ -391,6 +415,10 @@ end
 #change cost code
 Then /^expect change cost code modal on history is present$/ do
   expect(SdcHistory.modals.change_cost_code.title).to be_present
+end
+
+Then /^expect change cost code modal on history is not present$/ do
+  expect(SdcHistory.modals.change_cost_code.title).not_to be_present
 end
 
 Then /^close change cost code modal on history$/ do
