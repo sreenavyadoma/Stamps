@@ -12,35 +12,35 @@ Feature:  History Toolbar
     Then expect refund modal on history is present
     Then close refund modal on history
 
-    Then click schedule pickup button on history toolbar
-    Then click all eligible packages button on history toolbar schedule pickup
-    Then expect schedule pickup on history is present
-    Then set first name on schedule pickup modal to random
-    Then set last name on schedule pickup modal to random
-    Then set company on schedule pickup modal to stamps.com
-    Then set address on schedule pickup modal to 1990 east grand ave
-    Then set city on schedule pickup modal to El Segundo
-    Then select state on schedule pickup modal California
-    Then set zip on schedule pickup modal to 90245
-    Then set phone on schedule pickup modal to 8885556622
-    Then set phone ext on schedule pickup modal to 123
-    Then set number of express mail pieces on schedule pickup modal to 1
-    Then set number of priority mail pieces on schedule pickup modal to 1
-    Then set number of international pieces on schedule pickup modal to 1
-    Then set number of first class pieces on schedule pickup modal to 1
-    Then set number of other pieces on schedule pickup modal to 1
-    Then set estimated weight on schedule pickup modal to 1
-    Then select package location on schedule pickup modal Office
-    Then set special instructions on schedule pickup modal to none
-    Then close schedule pickup modal on history
-    Then click schedule pickup button on history toolbar
-    Then click selected packages button on history toolbar schedule pickup
-    Then expect schedule pickup on history is present
-    Then close schedule pickup modal on history
-    Then click schedule pickup button on history toolbar
-    Then click manage pickups button on history toolbar schedule pickup
-    Then expect manage pickups on history is present
-    Then close manage pickups modal on history
+#    Then click schedule pickup button on history toolbar
+#    Then click all eligible packages button on history toolbar schedule pickup
+#    Then expect schedule pickup on history is present
+#    Then set first name on schedule pickup modal to random
+#    Then set last name on schedule pickup modal to random
+#    Then set company on schedule pickup modal to stamps.com
+#    Then set address on schedule pickup modal to 1990 east grand ave
+#    Then set city on schedule pickup modal to El Segundo
+#    Then select state on schedule pickup modal California
+#    Then set zip on schedule pickup modal to 90245
+#    Then set phone on schedule pickup modal to 8885556622
+#    Then set phone ext on schedule pickup modal to 123
+#    Then set number of express mail pieces on schedule pickup modal to 1
+#    Then set number of priority mail pieces on schedule pickup modal to 1
+#    Then set number of international pieces on schedule pickup modal to 1
+#    Then set number of first class pieces on schedule pickup modal to 1
+#    Then set number of other pieces on schedule pickup modal to 1
+#    Then set estimated weight on schedule pickup modal to 1
+#    Then select package location on schedule pickup modal Office
+#    Then set special instructions on schedule pickup modal to none
+#    Then close schedule pickup modal on history
+#    Then click schedule pickup button on history toolbar
+#    Then click selected packages button on history toolbar schedule pickup
+#    Then expect schedule pickup on history is present
+#    Then close schedule pickup modal on history
+#    Then click schedule pickup button on history toolbar
+#    Then click manage pickups button on history toolbar schedule pickup
+#    Then expect manage pickups on history is present
+#    Then close manage pickups modal on history
 
     Then click create scan form button on history toolbar
     Then click all eligible packages button on history toolbar create scan form

@@ -14,6 +14,11 @@ end
 
 Then /^click create scan form button on history toolbar$/ do
   SdcHistory.toolbar.create_scan_form.link.click
+  step 'hover on create scan form button tooltip on history toolbar'
+end
+
+Then /^hover on create scan form button tooltip on history toolbar$/ do
+  SdcHistory.toolbar.create_scan_form.tooltip.hover if SdcHistory.toolbar.create_scan_form.tooltip.present?
 end
 
 Then /^click create return label button on history toolbar$/ do
@@ -43,6 +48,7 @@ end
 
 #create scan form
 Then /^click all eligible packages button on history toolbar create scan form$/ do
+  # step 'hover on create scan form button on history toolbar'
   SdcHistory.toolbar.create_scan_form.all_eligible_packages.click
 end
 

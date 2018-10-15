@@ -8,7 +8,8 @@ module SdcHistory
   end
 
   class SdcHistoryToolbarScanForm < SdcPage
-    page_object(:link) { {xpath: '//span[text()="Create Scan Form"]'} }
+    page_object(:link) { {xpath: '//span[text()="Create SCAN Form"]'} }
+    page_object(:tooltip) { {xpath: '//*[contains(@id, "quicktips")]//div[contains(text(), "SCAN Form")]'} }
     page_object(:all_eligible_packages) { {xpath: '//*[text()="Reprint Scan Form"]/../../..//*[text()="All Eligible Packages"]'} }
     page_object(:selected_packages) { {xpath: '//*[text()="Reprint Scan Form"]/../../..//*[text()="Selected Packages"]'} }
     page_object(:reprint_scan_form) { {xpath: '//*[text()="Reprint Scan Form"]'} }
