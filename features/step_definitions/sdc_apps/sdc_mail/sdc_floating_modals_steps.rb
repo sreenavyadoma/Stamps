@@ -90,7 +90,9 @@ Then /^expect mail server error is present$/ do
 end
 
 Then /^expect mail server error is not present$/ do
-  expect(SdcMail.modals.server_error.title).not_to be_present
+  server_error = SdcMail.modals.server_error
+  server_error.title.safe_wait_until_present(timeout: 2)
+  expect(server_error.title).not_to be_present
 end
 
 Then /^wait for mail server error$/ do
