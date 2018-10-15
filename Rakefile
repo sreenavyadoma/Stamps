@@ -4086,6 +4086,8 @@ Cucumber::Rake::Task.new(:bugs_print_modal) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-
-
-#----------------------------------------------------------------
+#------------------- History ---------------------------------------------
+Cucumber::Rake::Task.new(:history_toolbar) do |t|
+  t.profile = 'history_toolbar'
+  t.cucumber_opts = "-p cuke_reports"
+end

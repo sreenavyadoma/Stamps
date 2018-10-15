@@ -72,6 +72,11 @@ Then /^click add\/edit cost codes button on history toolbar cost codes$/ do
 end
 
 
+# temp
+
+Then /^select row 1 on history grid$/ do
+  pause(1)
+end
 
 
 
