@@ -9,7 +9,11 @@ module SdcHistory
     end
 
     def toolbar
-      SdcHistoryToolbar
+      Toolbar
+    end
+
+    def modals
+      Modals
     end
 
     def filter_panel

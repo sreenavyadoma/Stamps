@@ -20,10 +20,23 @@ module SdcHistory
     page_object(:add_edit_cost_codes) { {xpath: '//*[text()="Add/Edit Cost Codes"]'} }
   end
 
-  module SdcHistoryToolbar
+  class SdcHistoryRefund < SdcPage
+    page_object(:link, tag: :span, required: true, timeout: 45) { {xpath: '//span[text()="Refund"]'} }
+  end
+
+  class SdcHistoryCreateReturnLabel < SdcPage
+    page_object(:link) { {xpath: '//span[text()="Create Return Label"]'} }
+  end
+
+  module Toolbar
     class << self
-      page_object(:refund, tag: :span, required: true, timeout: 45) { {xpath: '//span[text()="Refund"]'} }
-      page_object(:create_return_label) { {xpath: '//span[text()="Create Return Label"]'} }
+      def refund
+        SdcHistoryRefund.new
+      end
+
+      def create_return_label
+        SdcHistoryCreateReturnLabel.new
+      end
 
       def schedule_pickup
         SdcHistoryToolbarPickup.new

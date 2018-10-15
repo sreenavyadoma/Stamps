@@ -4,7 +4,7 @@ Then /^expect refund button on history toolbar is enabled$/ do
 end
 
 Then /^click refund button on history toolbar$/ do
-  SdcHistory.toolbar.refund.click
+  SdcHistory.toolbar.refund.link.click
   #todo - do we need to add expectation of refund modal??
 end
 
@@ -17,7 +17,7 @@ Then /^click create scan form button on history toolbar$/ do
 end
 
 Then /^click create return label button on history toolbar$/ do
-  SdcHistory.toolbar.create_return_label.click
+  SdcHistory.toolbar.create_return_label.link.click
 end
 
 Then /^click cost codes button on history toolbar$/ do
@@ -75,7 +75,7 @@ end
 # temp
 
 Then /^select row 1 on history grid$/ do
-  pause(1)
+  sleep(1)
 end
 
 
