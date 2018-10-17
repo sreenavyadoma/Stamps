@@ -48,11 +48,11 @@ Then /^expect not shipped on row (.*) on auto refund selected$/ do |str|
   expect(SdcAutoRefund.not_shipped(str).radio.selected?).to be_truthy
 end
 
-Then /^click update label status button on auto refund present$/ do |str|
+Then /^click update label status button on auto refund present$/ do
   SdcAutoRefund.update_label_status.click
 end
 
-Then /^expect success message on auto refund present$/ do |str|
+Then /^expect success message on auto refund present$/ do
   expect(SdcAutoRefund.success_msg).to be_present
 end
 
