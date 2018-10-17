@@ -39,8 +39,9 @@ module SdcContacts
     end
 
     def contacts_grid_container
-      '//div[@class="x-grid-item-container"]'
+      '//div[contains(@class,"x-grid-inner-normal")]//div[@class="x-grid-item-container"]'
     end
+
 
     def contacts_column_xpath(column)
       column = column_names[column] if column.class.eql?(Symbol)
@@ -51,10 +52,54 @@ module SdcContacts
       if column.eql? :checkbox
         xpath = '*//div[contains(@class, "x-column-header-checkbox")]'
         page_object(:checkbox_header) { { xpath: xpath } }
+        #sdc_param(:chooser_xpath) { '//*[@id="sdc-mainpanel-calculatepostageradio-displayEl"]' }
+
+        chooser_xpath = "//div[contains(@class,'x-column-header-checkbox')]//div[@class= 'x-column-header-text']"
+        chooser_name = "grid_chooser"
+        page_object(chooser_name) { { xpath: chooser_xpath } }
+        verify_xpath = "//div[contains(@class, 'x-column-header-checkbox')]"
+        verify_name = "grid_verify"
+        page_object(verify_name) { { xpath: verify_xpath } }
+        grid_checkbox_name = "grid_checkbox"
+        SdcPage.chooser(grid_checkbox_name, chooser_name, verify_name, :class, 'selected')
+        instance_eval(grid_checkbox_name)
+
       else
         xpath = contacts_column_xpath(column)
-        page_object("header_element_#{column}") { { xpath: xpath } }
+        page_object(:header_element) { { xpath: xpath } }
       end
+    end
+    def header_element_trigger_xpath(column)
+      column = column_names[column] if column.class.eql?(Symbol)
+      "*//span[text()='#{column}']/following::div[1]"
+    end
+
+    def select_header_column_trigger(column)
+      xpath = header_element_trigger_xpath(column)
+      page_object(:header_element_trigger){ { xpath:xpath } }
+    end
+
+    def header_dropdown_menu_list
+      xpath = '//*[@class="x-menu x-layer x-menu-default x-border-box"]//div[contains(@class,"x-menu-item")]/a'
+      page_objects(:header_element_dropdown_menu){{xpath: xpath}}
+    end
+
+    def header_dropdown_menu_item(menu_item)
+      if (menu_item == 'Columns')
+        xpath = "//*[@class='x-menu x-layer x-menu-default x-border-box']//div[contains(@class,'x-menu-item')]/a/span[contains(@class,'x-menu-item-indent-right-arrow')][text()='#{menu_item}']"
+      else
+        xpath = "//*[@class='x-menu x-layer x-menu-default x-border-box']//div[contains(@class,'x-menu-item')]/a/span[text()='#{menu_item}']"
+      end
+      page_object(:menu_item){{xpath: xpath}}
+    end
+
+    def header_menu_item_disabled(menu_item)
+      xpath = "//span[text()='#{menu_item}']/ancestor::div[contains(@class,'x-menu-item')]"
+      item = page_object(:parent_item){{xpath: xpath}}
+      #item.attribute_value("class")
+      class_value = item.attribute_value("class")
+      class_value.include?("disabled")
+
     end
 
     def contacts_scroll_to(column)
@@ -63,8 +108,8 @@ module SdcContacts
     end
 
     #def text_for_id(column, order_id)
-     # row = row_num(order_id)
-      #text_at(column, row)
+    # row = row_num(order_id)
+    #text_at(column, row)
     #end
 
     def count
@@ -85,7 +130,7 @@ module SdcContacts
     end
 
     def grid_message
-      message=page_object(:empty_grid_message) { {xpath: '//*[@class="x-grid-empty"]'} }
+      message = page_object(:empty_grid_message) { {xpath: '//*[@class="x-grid-empty"]'} }
       message.text_value
     end
     def text_at(column, row)
@@ -103,10 +148,10 @@ module SdcContacts
       element
     end
 
-   # def contacts_element_for_id(column,order_id)
-      #row = contacts_row_num(order_id)
-      #contacts_element_at_row(column, row)
-   # end
+    # def contacts_element_for_id(column,order_id)
+    #row = contacts_row_num(order_id)
+    #contacts_element_at_row(column, row)
+    # end
 
     def contacts_grid_field_column_name(column, row)
       col = contacts_column_number(column)
@@ -239,7 +284,7 @@ module SdcContacts
     end
 
     #def data(order_id)
-      #text_for_id(@column, order_id)
+    #text_for_id(@column, order_id)
     #end
 
     def contacts_element(row)
@@ -247,7 +292,7 @@ module SdcContacts
     end
 
     #def element_for_id(order_id)
-      #super(@column, order_id)
+    #super(@column, order_id)
     #end
 
     def contacts_sort_ascending
@@ -259,34 +304,32 @@ module SdcContacts
     end
   end
 
-  def contacts_body
-  xpath = '//div[starts-with(@id, "contactsGrid-")][contains(@id, "-normal-body")]'
-  klass = Class.new(SdcPage) do
-    page_object(:body) { { xpath: xpath } }
-  end
-  klass.new.body
-end
-  module_function :contacts_body
-
-   def contacts_grid_column(column)
-    contacts_body.wait_until_present(timeout: 15)
-
-    unless ContactsGridColumnBase.contacts_column_names.keys.include? column
-      raise ArgumentError, "Invalid grid column: #{column}"
-    end
-
-    case column
-    when :checkbox
-      SdcContactsGridCheckBox.new
-    else
-      SdcContactsGridColumn.new(column)
-    end
-  end
-  module_function :contacts_grid_column
-
   class << self
     def contacts_col
       ContactsGridColumnBase.new
+    end
+
+    def contacts_body
+      xpath = '//div[starts-with(@id, "contactsGrid-")][contains(@id, "-normal-body")]'
+      klass = Class.new(SdcPage) do
+        page_object(:body) { { xpath: xpath } }
+      end
+      klass.new.body
+    end
+
+    def contacts_grid_column(column)
+      contacts_body.wait_until_present(timeout: 15)
+
+      unless ContactsGridColumnBase.contacts_column_names.keys.include? column
+        raise ArgumentError, "Invalid grid column: #{column}"
+      end
+
+      case column
+      when :checkbox
+        SdcContactsGridCheckBox.new
+      else
+        SdcContactsGridColumn.new(column)
+      end
     end
   end
 end

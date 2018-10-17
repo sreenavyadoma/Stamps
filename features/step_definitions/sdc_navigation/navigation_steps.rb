@@ -2,6 +2,7 @@
 Then /^navigate to (.+)$/ do |str|
   nav_element = SdcNavigation.nav_element(str)
   nav_element.wait_until_present(timeout: 20)
+  expect(nav_element).to be_present
   nav_element.click
   case(str.downcase.to_sym)
   when :mail
@@ -13,7 +14,8 @@ Then /^navigate to (.+)$/ do |str|
     OrdersGrid.body.wait_until_present(timeout: 20)
   when :contacts
     step 'click through tutorial modal'
-    SdcContacts.loading_contacts.safe_wait_until_present(timeout: 10)
+    SdcContacts.loading_contacts.safe_wait_until_present(timeout: 20)
+    SdcContacts.loading_contacts.safe_wait_while_present(timeout: 45)
     SdcContacts.contacts_body.safe_wait_until_present(timeout: 20)
   when :history
     step 'click through tutorial modal'
