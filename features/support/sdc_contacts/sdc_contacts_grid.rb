@@ -75,29 +75,29 @@ module SdcContacts
     end
 
     def select_header_column_trigger(column)
-      xpath=header_element_trigger_xpath(column)
+      xpath = header_element_trigger_xpath(column)
       page_object(:header_element_trigger){ { xpath:xpath } }
     end
 
     def header_dropdown_menu_list
-      xpath= '//*[@class="x-menu x-layer x-menu-default x-border-box"]//div[contains(@class,"x-menu-item")]/a'
+      xpath = '//*[@class="x-menu x-layer x-menu-default x-border-box"]//div[contains(@class,"x-menu-item")]/a'
       page_objects(:header_element_dropdown_menu){{xpath: xpath}}
     end
 
     def header_dropdown_menu_item(menu_item)
-      if (menu_item=='Columns')
-        xpath="//*[@class='x-menu x-layer x-menu-default x-border-box']//div[contains(@class,'x-menu-item')]/a/span[contains(@class,'x-menu-item-indent-right-arrow')][text()='#{menu_item}']"
+      if (menu_item == 'Columns')
+        xpath = "//*[@class='x-menu x-layer x-menu-default x-border-box']//div[contains(@class,'x-menu-item')]/a/span[contains(@class,'x-menu-item-indent-right-arrow')][text()='#{menu_item}']"
       else
-        xpath="//*[@class='x-menu x-layer x-menu-default x-border-box']//div[contains(@class,'x-menu-item')]/a/span[text()='#{menu_item}']"
+        xpath = "//*[@class='x-menu x-layer x-menu-default x-border-box']//div[contains(@class,'x-menu-item')]/a/span[text()='#{menu_item}']"
       end
       page_object(:menu_item){{xpath: xpath}}
     end
 
     def header_menu_item_disabled(menu_item)
-      xpath="//span[text()='#{menu_item}']/ancestor::div[contains(@class,'x-menu-item')]"
-      item=page_object(:parent_item){{xpath: xpath}}
+      xpath = "//span[text()='#{menu_item}']/ancestor::div[contains(@class,'x-menu-item')]"
+      item = page_object(:parent_item){{xpath: xpath}}
       #item.attribute_value("class")
-      class_value =  item.attribute_value("class")
+      class_value = item.attribute_value("class")
       class_value.include?("disabled")
 
     end
@@ -130,7 +130,7 @@ module SdcContacts
     end
 
     def grid_message
-      message=page_object(:empty_grid_message) { {xpath: '//*[@class="x-grid-empty"]'} }
+      message = page_object(:empty_grid_message) { {xpath: '//*[@class="x-grid-empty"]'} }
       message.text_value
     end
     def text_at(column, row)
