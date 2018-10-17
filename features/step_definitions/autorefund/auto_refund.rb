@@ -56,4 +56,8 @@ Then /^expect success message on auto refund present$/ do
   expect(SdcAutoRefund.success_msg).to be_present
 end
 
+Then /^expect not shipped for all rows on auto refund selected$/ do
+  #not implemented
+end
+
 

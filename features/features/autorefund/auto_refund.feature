@@ -10,6 +10,7 @@ Feature: Auto Refund UI test
     Then expect title on auto refund present
     Then expect terms and conditions link on auto refund present
     Then expect update label status button on auto refund present
+    Then expect not shipped for all rows on auto refund selected
     Then select shipped on row 1 on auto refund
     Then select not shipped on row 1 on auto refund
     Then click update label status button on auto refund present
