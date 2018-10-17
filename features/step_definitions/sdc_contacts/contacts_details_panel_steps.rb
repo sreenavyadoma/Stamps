@@ -1,5 +1,51 @@
-Then /^set contact details to$/ do |table|
 
+Then /^add a valid contact with domestic address$/ do
+
+  full_name = TestHelper.rand_full_name
+  company =TestHelper.rand_comp_name
+  country = "United States"
+  street_address = "2441 61st St"
+  city = "Port Arthur"
+  state = "TX"
+  postal_code = "77640-6942"
+  email =  TestHelper.rand_email
+  full_phone = TestHelper.rand_phone_format
+  phone_ext =  TestHelper.rand_phone
+  #groups =  TestHelper.rand_group_name
+  reference_number =  TestHelper.rand_reference_number
+  #cost_code =  param['cost_code']
+
+  step "set contact details name to #{full_name}"
+  step "set contact details company to #{company}"
+  step "set contact details country to #{country}"
+  step "set contact details street address to #{street_address}"
+  step "set contact details city to #{city}"
+  step "set contact details state to #{state}"
+  step "set contact details postal code to #{postal_code}"
+  step "set contact details email to #{email}"
+  step "set contact details phone to #{full_phone}"
+  #step "set contact details groups to #{groups}"
+  step "set contact details reference number to #{reference_number}"
+  #step "set contact details groups to #{}cost_code}"
+
+  TestData.hash[:full_name] = full_name
+  TestData.hash[:company] = company
+  TestData.hash[:country] = country
+  TestData.hash[:street_address] = street_address
+  TestData.hash[:city] = city
+  TestData.hash[:state] = state
+  TestData.hash[:postal_code] = postal_code
+  TestData.hash[:email] = email
+  TestData.hash[:full_phone] = full_phone
+  TestData.hash[:phone] = phone
+  TestData.hash[:phone_ext] = phone_ext
+  TestData.hash[:groups] = groups
+  TestData.hash[:cost_code] = cost_code
+  TestData.hash[:reference_number] = reference_number
+
+end
+
+Then /^set contact details to$/ do |table|
   param = table.hashes.first
   full_name = param['full_name']
   company = param['company']
@@ -66,6 +112,17 @@ Then /^set contact details to$/ do |table|
 
   if groups.empty?
     # Do not set value of groups
+  elsif groups.downcase.include?('random')
+    step "click on groups expand button of contacts left navigation"
+    left_nav_group  = SdcContacts.contacts_left_nav_group
+    row_count = left_nav_group.total_groups.count
+    if row_count != 0
+      groups = left_nav_group.group('name',rand(1..row_count-1))
+      step "click on groups collapse button of contacts left navigation"
+      step "set contact details groups to #{groups}"
+    else
+      SdcLogger.info "No Groups for this account to add"
+    end
   else
     step "set contact details groups to #{groups}"
   end
@@ -81,6 +138,13 @@ Then /^set contact details to$/ do |table|
 
   if cost_code.empty?
     # Do not do anything
+  elsif
+  step "click on cost codes expand button of contacts left navigation"
+    left_nav_costcode = SdcContacts.contacts_left_nav_cost_code
+    row_count = left_nav_costcode.total_costcodes.count
+    cost_code = left_nav_costcode.cost_code_name(rand(1..row_count-1))
+    step 'click on cost codes collapse button of contacts left navigation'
+    step "set contact details cost code to #{cost_code}"
   else
     step "set contact details cost code to #{cost_code}"
   end

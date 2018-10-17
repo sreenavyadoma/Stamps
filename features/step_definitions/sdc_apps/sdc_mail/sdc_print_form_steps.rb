@@ -38,6 +38,11 @@ Then /^expect invalid contact selected modal is present$/ do
   expect(invalid_contact.title.text.strip).to eql 'Invalid Contact Selected'
 end
 
+Then /^expect invalid contact selected modal is not displayed$/ do
+  invalid_contact = SdcMail.modals.invalid_contact_selected
+  expect(invalid_contact.window.present?).to be(false)
+end
+
 Then /^expect error message on invalid contact selected modal is (.*)$/ do |str|
   invalid_contact = SdcMail.modals.invalid_contact_selected
   invalid_contact.window.safe_wait_until_present(timeout: 3)

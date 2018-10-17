@@ -66,11 +66,14 @@ Then /^set cost code value in the change costcode pop up box [Tt]o (.*)/ do |cos
 
   if costcode_name == "new costcode added"
     str ||= TestData.hash[:costcode_val]
+    TestData.hash[:cost_code_count]= 0
     elsif costcode_name == "existing value"
       left_nav_costcode = SdcContacts.contacts_left_nav_cost_code
       row_count = left_nav_costcode.total_costcodes.count
       str = left_nav_costcode.cost_code_name(row_count-1)
+      count =left_nav_costcode.cost_code_count(row_count-1)
       TestData.hash[:costcode_val] = str
+      TestData.hash[:cost_code_count]= count
     else
     str = costcode_name
   end
@@ -181,28 +184,33 @@ Then /^on left navigation expect (.*) is avilable under costcode filter$/ do |co
   end
 end
 
+
 Then /^on left navigation expect count of (.*) is (.*)$/ do |costcode_name,count|
-
-  if costcode_name == "new costcode added"
-    value ||= TestData.hash[:costcode_val]
-  else
-    value =costcode_name
-  end
-
   left_nav_costcode = SdcContacts.contacts_left_nav_cost_code
   row_count = left_nav_costcode.total_costcodes.count
-  SdcLogger.info "Count :#{row_count}"
+  if costcode_name == "new costcode added"
+      value ||= TestData.hash[:costcode_val]
+    else
+      value =costcode_name
+  end
   if row_count.to_i != 0
     i=1
     while i<= row_count.to_i
-      if left_nav_costcode.cost_code_name(i) == value
-        SdcLogger.info "Cost code Name : #{left_nav_costcode.cost_code_name(i)}"
+      if left_nav_costcode.cost_code_name(i).eql? value
         actual_count=left_nav_costcode.cost_code_count(i)
-        expect(actual_count).to eql(count)
       end
       i=i+1
     end
+   end
+
+  if count.eql? 'incremented by 1'
+    old_count=TestData.hash[:cost_code_count]
+    expect(actual_count).to eql (old_count+1)
+  else
+    expect(actual_count).to eql(count)
+
   end
+
 end
 
 Then /^mousehover on cost codes section of left navigation$/ do

@@ -228,9 +228,18 @@ module SdcMail
       end
 
       def checkbox_for_row(num)
-        page_objects("chooser#{num}", index: num) { { xpath: '//div[@id="contactsGrid-normal-body"]//div[@class="x-grid-row-checker"]' } }
-        page_objects("verify#{num}", index: num) { { xpath: '//div[@id="contactsGrid-normal-body"]//table' } }
-        checkbox("checkbox_for_row#{num}", "chooser#{num}", "verify#{num}", 'class', 'selected')
+        # page_objects("chooser#{num}", index: num) { { xpath: '//div[@id="contactsGrid-normal-body"]//div[@class="x-grid-row-checker"]' } }
+        # page_objects("verify#{num}", index: num) { { xpath: '//div[@id="contactsGrid-normal-body"]//table' } }
+        # SdcPage.checkbox("checkbox_for_row#{num}", "chooser#{num}", "verify#{num}", :class, 'selected')
+        chooser_xpath = "//div[@id='contactsGrid-normal-body']//div[@class='x-grid-row-checker']"
+        chooser_name = "grid_chooser_#{num}"
+        page_object(chooser_name) { { xpath: chooser_xpath } }
+        verify_xpath = "//div[@id='contactsGrid-normal-body']//table[#{num}]"
+        verify_name = "grid_verify_#{num}"
+        page_object(verify_name) { { xpath: verify_xpath } }
+        grid_checkbox_name = "grid_checkbox_#{num}"
+        SdcPage.chooser(grid_checkbox_name, chooser_name, verify_name, :class, 'selected')
+        instance_eval(grid_checkbox_name)
       end
     end
 

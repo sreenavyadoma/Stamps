@@ -11,8 +11,35 @@ module SdcCore
         Array.new(rand(min..max)) { [*'a'..'z'].sample }.join
       end
 
+      def rand_prifix(*args)
+        prefix=['1Lt.', '1stLt.','2Lt.','2ndLt.','Amb.','Amb.&amp;Mrs.','BG','BGen.','BrigGen.','Brother',
+                'CAPT','Capt.','Capt.&amp;Mrs.','CDR','COL','Col.','Col.&amp;Mrs.','CPT','Dean','Dr.',
+                'Dr.&amp;Mrs.','Drs.','ENS','Est.of','GEN','Gen.','Gen.&amp;Mrs.','Gov.','Hon.','Hon.&amp;Mrs.',
+                'Justice','LCDR','LCDR&amp;Mrs.','LCpl','LT','Lt.','LTC','LtCol.','LTG','LtGen.','LTJG','MAJ','Maj.',
+                'MajGen.','Mayor','Mdme.','MG','Miss','Mr.','Mr.&amp;Dr.','Mr.&amp;Mrs.','Mrs.','Ms.','MSG','Msgr.','MSgt.',
+                '-None-','Prince','Prof.','Prof.&amp;Mrs.','Rabbi','RADM','Rev.','Rev.&amp;Mrs.','Rev.Dr.','Rev.Dr.&amp;Mrs.',
+                'Rev.Father',	'RT.REV.',	'Senator','Sir','Sister']
+        prefix[Random.rand(prefix.size)]
+      end
+
+      def rand_first_name(min = 2, max = 10)
+        (('a'..'z').to_a + ('A'..'Z').to_a ).sample(Random.rand(min..max)).shuffle.join
+      end
+
+      def rand_middle_name(min = 2, max = 5)
+        (('a'..'z').to_a + ('A'..'Z').to_a ).sample(Random.rand(min..max)).shuffle.join
+      end
+
+      def rand_last_name(min = 2, max = 10)
+        (('a'..'z').to_a + ('A'..'Z').to_a ).sample(Random.rand(min..max)).shuffle.join
+      end
+
+      def rand_suffix(min = 2, max = 8)
+        (('a'..'z').to_a + ('A'..'Z').to_a ).sample(Random.rand(min..max)).shuffle.join
+      end
+
       def rand_full_name(*args)
-        "#{rand_alpha_str(*args).capitalize} #{rand_alpha_str(*args).capitalize}"
+        rand_prifix(*args).to_s + " " + rand_first_name(*args).to_s + " " + rand_middle_name(*args).to_s + " " +  rand_last_name(*args).to_s + " " + rand_suffix(*args).to_s
       end
 
       def rand_cost_code(*args)
@@ -28,7 +55,7 @@ module SdcCore
       end
 
       def rand_comp_name(*args)
-        'comapy '+rand_alpha_numeric(*args).to_s.split.map(&:capitalize).join(' ')
+        'company '+rand_alpha_numeric(*args).to_s.split.map(&:capitalize).join(' ')
       end
 
       def rand_city_name(*args)

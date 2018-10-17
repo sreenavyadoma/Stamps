@@ -141,9 +141,9 @@ module SdcContacts
 
   class ContactsGroup < SdcPage
 
-    text_field(:text_field, tag: :text_field) { { xpath: '//input[contains(@id, "groupsContactDetailsCmb")]' } }
-    text_field(:text_list, tag: :text_field) { { xpath: '//input[contains(@id, "groupsContactDetailsCmb-itemList")]' } }
-    page_object(:drop_down) { { xpath: '//*[contains(@id, "groupsContactDetailsCmb")][contains(@class, "arrow")]' } }
+    #text_field(:text_list, tag: :text_field) { { xpath: '//input[contains(@id, "groupsContactDetailsCmb")]' } }
+    text_field(:text_field, tag: :text_field) { { xpath: '//input[@name="Groups"]'} }
+    page_object(:drop_down){ { xpath: '//input[@name="Groups"]/following::div[contains(@id,"-trigger-picker")]' } }
 
     def selection_group(name: 'selection', value: 'None')
       page_object(name) { { xpath: "//li[text()='#{value}']" } }

@@ -24,9 +24,14 @@ Then /^click mail-to link on print form$/ do
   expect(search_contacts.title.text).to eql 'Search Contacts'
 end
 
-Then /^check search contacts grid name (.+)$/ do |str|
+Then /^check search contacts grid name (.*)$/ do |str|
   grid = SdcMail.modals.search_contacts.grid
-  row = grid.row_number_for_name(str)
+  if str.eql? 'newly added'
+    value ||= TestData.hash[:full_name]
+    row = grid.row_number_for_name(value)
+  else
+    row = grid.row_number_for_name(str)
+  end
   checkbox = grid.checkbox_for_row(row)
   checkbox.check
   expect(checkbox.checked?).to be(true)

@@ -199,3 +199,5 @@ Then /^select an existing group from left navigation filter panel/ do
   step "click on groups collapse button of contacts left navigation"
 end
 
+
+

@@ -7,7 +7,7 @@ Then /^click add button on contacts toolbar$/ do
   contacts_detail.contacts_detail_panel.safe_wait_until_present(timeout: 10)
 end
 
-Then /^[Cc]lick [Cc]ontacts [Tt]oolbar [Dd]elete [Bb]utton$/ do
+Then /^click delete button on contacts toolbar$/ do
   toolbar = SdcContacts.contacts_toolbar
   toolbar.delete.safe_wait_until_present(timeout: 10)
   toolbar.delete.wait_until_present(timeout: 10)
@@ -16,7 +16,7 @@ Then /^[Cc]lick [Cc]ontacts [Tt]oolbar [Dd]elete [Bb]utton$/ do
   del_con_win.title.safe_wait_until_present(timeout:10)
 end
 
-Then /^[Cc]lick [Cc]ontacts [Tt]oolbar [Aa]dd [Rr]eference [Bb]utton$/ do
+Then /^click add reference button on contacts toolbar$/ do
   toolbar = SdcContacts.contacts_toolbar
   toolbar.ref.safe_wait_until_present(timeout: 15)
   toolbar.ref.click
@@ -122,4 +122,19 @@ Then(/^expect all columns are not available on the contacts grid$/) do
   }
 end
 
+Then /^click import button of contacts toolbar$/ do
+  toolbar = SdcContacts.contacts_toolbar
+  toolbar.import.safe_wait_until_present(timeout: 15)
+  toolbar.import.flash
+  toolbar.import.click
+  expect(SdcContacts.contacts_import.import_header.present?).to be (true)
+end
+
+
+Then /^click export button of contacts toolbar$/ do
+  toolbar = SdcContacts.contacts_toolbar
+  toolbar.export.safe_wait_until_present(timeout: 15)
+  toolbar.export.flash
+  toolbar.export.click
+end
 

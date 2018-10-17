@@ -36,4 +36,3 @@ Feature:  History Filter Panel
     Then select past 2 years on history filter panel
     Then expect past 2 years is selected on history filter panel
     Then expect past 2 years count on history filter panel is greater than 0
-
