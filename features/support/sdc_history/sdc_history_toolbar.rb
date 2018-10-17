@@ -10,13 +10,14 @@ module SdcHistory
   class SdcHistoryToolbarScanForm < SdcPage
     page_object(:link) { {xpath: '//span[text()="Create SCAN Form"]'} }
     page_object(:tooltip) { {xpath: '//*[contains(@id, "quicktips")]//div[contains(text(), "SCAN Form")]'} }
-    page_object(:all_eligible_packages) { {xpath: '//*[text()="Reprint Scan Form"]/../../..//*[text()="All Eligible Packages"]'} }
-    page_object(:selected_packages) { {xpath: '//*[text()="Reprint Scan Form"]/../../..//*[text()="Selected Packages"]'} }
-    page_object(:reprint_scan_form) { {xpath: '//*[text()="Reprint Scan Form"]'} }
+    page_object(:all_eligible_packages) { {xpath: '//*[text()="Reprint SCAN Form"]/../../..//*[text()="All Eligible Packages"]'} }
+    page_object(:selected_packages) { {xpath: '//*[text()="Reprint SCAN Form"]/../../..//*[text()="Selected Packages"]'} }
+    page_object(:reprint_scan_form) { {xpath: '//*[text()="Reprint SCAN Form"]'} }
   end
 
   class SdcHistoryToolbarCostCodes < SdcPage
     page_object(:link) { {xpath: '//span[text()="Cost Codes"]'} }
+    page_object(:tooltip) { {xpath: '//*[contains(@id, "quicktips")]//div[contains(text(), "Cost Code")]'} }
     page_object(:change_cost_code) { {xpath: '//*[text()="Change Cost Code"]'} }
     page_object(:add_edit_cost_codes) { {xpath: '//*[text()="Add/Edit Cost Codes"]'} }
   end

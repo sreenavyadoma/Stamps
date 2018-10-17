@@ -234,13 +234,13 @@ end
 
 Then /^check print details on scan form modal$/ do
   step 'expect print details on scan form modal is unchecked'
-  SdcHistory.modals.scan_form.print_details.click
+  SdcHistory.modals.scan_form.print_details.check
   step 'expect print details on scan form modal is checked'
 end
 
 Then /^uncheck print details on scan form modal$/ do
   step 'expect print details on scan form modal is checked'
-  SdcHistory.modals.scan_form.print_details.click
+  SdcHistory.modals.scan_form.print_details.uncheck
   step 'expect print details on scan form modal is unchecked'
 end
 
@@ -293,6 +293,7 @@ end
 
 #create return label
 Then /^expect return label modal on history is present$/ do
+  SdcHistory.modals.return_label.title.wait_until_present(timeout: 5)
   expect(SdcHistory.modals.return_label.title).to be_present
 end
 
@@ -326,7 +327,7 @@ Then /^set weight on return label modal to (\d+) lbs (\d+) oz$/ do |lbs, oz|
 end
 
 Then /^set lbs on return label modal to (.+)$/ do |val|
-  lbs = SdcHistory.modals.return_label.weight.lbs
+  lbs = SdcHistory.modals.return_label.lbs
   iterations = val.to_i - lbs.text_value.to_i
   iterations.abs.times do lbs.increment.click end if iterations > 0
   iterations.abs.times do lbs.decrement.click end if iterations < 0
@@ -334,26 +335,25 @@ Then /^set lbs on return label modal to (.+)$/ do |val|
 end
 
 Then /^set oz on return label modal to (.+)$/ do |val|
-  oz = SdcHistory.modals.return_label.weight.oz
+  oz = SdcHistory.modals.return_label.oz
   iterations = val.to_i - oz.text_value.to_i
   iterations.abs.times do oz.increment.click end if iterations > 0
   iterations.abs.times do oz.decrement.click end if iterations < 0
   step "expect oz on return label modal is #{val}"
 end
 
-Then /^expect lbs on return label modal is (\d+)$/ do |num|
-  expect(SdcHistory.modals.return_label.weight.lbs).to eql(num)
+Then /^expect lbs on return label modal is (.*)$/ do |num|
+  expect(SdcHistory.modals.return_label.lbs.text_value).to eql(num)
 end
 
-Then /^expect oz on return label modal is (\d+)$/ do |num|
-  expect(SdcHistory.modals.return_label.weight.oz).to eql(num)
+Then /^expect oz on return label modal is (.*)$/ do |num|
+  expect(SdcHistory.modals.return_label.oz.text_value).to eql(num)
 end
 
 Then /^select service on return label modal (.*)$/ do |str|
   service = SdcHistory.modals.return_label.service
   unless service.text_field.text_value.include?(str)
-    service.drop_down.click
-    service_element = service.service_element(:service, str)
+    service.service_element(:service_element, str)
     service.drop_down.click unless service_element.present?
     service_element.scroll_into_view unless service_element.present?
     service_element.click if service_element.present?

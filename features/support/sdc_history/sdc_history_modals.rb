@@ -122,21 +122,21 @@ module SdcHistory
   end
 
   class ScanForm < SdcPage
-    page_object(:title) { {xpath: '//*[text()="Scan Form"]'} }
+    page_object(:title) { {xpath: '//div[contains(@id,"title")][text()="SCAN Form"]'} }
     page_object(:x_btn) { {xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
     page_object(:close) { {xpath: '//*[text()="Close"]'} }
-    page_object(:print_scan_form) { {xpath: '//*[text()="Print Scan Form"]'} }
+    page_object(:print_scan_form) { {xpath: '//*[text()="Print SCAN Form"]'} }
 
-    page_object(:chooser_elem) { { xpath: '//div[contains(@id, "scan-confirmation")]//input]' } }
+    page_object(:chooser_elem) { { xpath: '//div[contains(@id, "scan-confirmation")]//span[contains(@id, "checkbox")]' } }
     page_object(:verify_elem) { { xpath: '//div[contains(@id, "scan-confirmation")]//div[contains(@class, "checkbox")]' } }
     checkbox(:print_details, :chooser_elem, :verify_elem, 'class', 'checked')
   end
 
   class ReprintScanForm < SdcPage
-    page_object(:title) { {xpath: '//*[text()="Reprint Scan Form"]'} }
+    page_object(:title) { {xpath: '//div[text()="Reprint SCAN Form"]'} }
     page_object(:x_btn) { {xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
     page_object(:close) { {xpath: '//*[text()="Close"]'} }
-    page_object(:print_scan_form) { {xpath: '//*[text()="Print Scan Form"]'} }
+    page_object(:print_scan_form) { {xpath: '//*[text()="Print SCAN Form"]'} }
     page_object(:print_details) { {xpath: '//*[text()="Print Details"]'} }
 
     def row_select(num)
@@ -145,7 +145,7 @@ module SdcHistory
   end
 
   class ChangeCostCode < SdcPage
-    page_object(:title) { {xpath: '//*[text()="Change Cost Code"]'} }
+    page_object(:title) { {xpath: '//div[text()="Change Cost Code"]'} }
     page_object(:x_btn) { {xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
     page_object(:save) { {xpath: '//*[text()="Save"]'} }
 
@@ -208,8 +208,8 @@ module SdcHistory
   end
 
   class ReturnLabelService < SdcPage
-    text_field(:text_field, tag: :text_field) { { xpath: '//*[@id="sdc-mainpanel-servicedroplist-inputEl"]' } }
-    page_object(:drop_down) { { xpath: '//*[@id="sdc-mainpanel-servicedroplist-trigger-picker"]' } }
+    text_field(:s_text_field, tag: :text_field) { { xpath: '//*[@id="sdc-mainpanel-servicedroplist-inputEl"]' } }
+    page_object(:s_drop_down) { { xpath: '//*[@id="sdc-mainpanel-servicedroplist-trigger-picker"]' } }
     page_object(:cost) { { xpath: '//*[@id="sdc-mainpanel-servicepricelabel"]' } }
 
     def service_element(name, str)

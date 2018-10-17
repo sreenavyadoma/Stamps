@@ -13,8 +13,13 @@ Then /^click schedule pickup button on history toolbar$/ do
 end
 
 Then /^click create scan form button on history toolbar$/ do
-  SdcHistory.toolbar.create_scan_form.link.click
-  step 'hover on create scan form button tooltip on history toolbar'
+  create_scan_form = SdcHistory.toolbar.create_scan_form
+  create_scan_form.link.click
+  if create_scan_form.tooltip.present?
+    create_scan_form.tooltip.hover
+    create_scan_form.link.click if create_scan_form.tooltip.present?
+    create_scan_form.link.click
+  end
 end
 
 Then /^hover on create scan form button tooltip on history toolbar$/ do
@@ -26,7 +31,21 @@ Then /^click create return label button on history toolbar$/ do
 end
 
 Then /^click cost codes button on history toolbar$/ do
-  SdcHistory.toolbar.cost_codes.click
+  cost_codes = SdcHistory.toolbar.cost_codes
+  cost_codes.link.click
+  if cost_codes.tooltip.present?
+    cost_codes.tooltip.hover
+    cost_codes.link.click if cost_codes.tooltip.present?
+    cost_codes.link.click
+  end
+end
+
+Then /^hover on cost codes button on history toolbar$/ do
+  SdcHistory.toolbar.cost_codes.link.hover
+end
+
+Then /^hover on cost codes button tooltip on history toolbar$/ do
+  SdcHistory.toolbar.cost_codes.tooltip.hover if SdcHistory.toolbar.cost_codes.tooltip.present?
 end
 
 #schedule pickup
@@ -48,7 +67,6 @@ end
 
 #create scan form
 Then /^click all eligible packages button on history toolbar create scan form$/ do
-  # step 'hover on create scan form button on history toolbar'
   SdcHistory.toolbar.create_scan_form.all_eligible_packages.click
 end
 
