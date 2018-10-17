@@ -13,7 +13,7 @@ Feature: Auto Refund UI test
     Then select shipped on row 1 on auto refund
     Then select not shipped on row 1 on auto refund
     Then click update label status button on auto refund present
-    Then expect label status on auto refund updated
+    Then expect success message on auto refund present
     Then select shipped on row 1 on auto refund
     Then click update label status button on auto refund present
-    Then expect label status on auto refund updated
+    Then expect success message on auto refund present

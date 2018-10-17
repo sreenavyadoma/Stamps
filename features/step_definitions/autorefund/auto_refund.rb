@@ -56,3 +56,4 @@ Then /^expect success message on auto refund present$/ do |str|
   expect(SdcAutoRefund.success_msg).to be_present
 end
 
+
