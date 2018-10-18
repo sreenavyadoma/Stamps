@@ -30,6 +30,14 @@ module SdcHistory
     page_object(:link) { {xpath: '//span[text()="Create Return Label"]'} }
   end
 
+  class ToolbarCreateContainerLabel < SdcPage
+    page_object(:link) { {xpath: '//span[text()="Create Container Label"]'} }
+    page_object(:tooltip) { {xpath: '//*[contains(@id, "quicktips")]//div[contains(text(), "Create Container Label")]'} }
+    page_object(:all_eligible_packages) { {xpath: '//*[text()="Reprint Last Label"]/../../..//*[text()="All Eligible Packages"]'} }
+    page_object(:selected_packages) { {xpath: '//*[text()="Reprint Last Label"]/../../..//*[text()="Selected Packages"]'} }
+    page_object(:reprint_scan_form) { {xpath: '//*[text()="Reprint Last Label"]'} }
+  end
+
   module Toolbar
     class << self
       def refund
@@ -50,6 +58,10 @@ module SdcHistory
 
       def cost_codes
         SdcHistoryToolbarCostCodes.new
+      end
+
+      def create_container_label
+        ToolbarCreateContainerLabel.new
       end
     end
   end

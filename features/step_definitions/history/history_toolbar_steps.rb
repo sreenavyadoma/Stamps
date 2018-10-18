@@ -48,6 +48,21 @@ Then /^hover on cost codes button tooltip on history toolbar$/ do
   SdcHistory.toolbar.cost_codes.tooltip.hover if SdcHistory.toolbar.cost_codes.tooltip.present?
 end
 
+
+Then /^click create container label button on history toolbar$/ do
+  create_container_label = SdcHistory.toolbar.create_container_label
+  create_container_label.link.click
+  if create_container_label.tooltip.present?
+    create_container_label.tooltip.hover
+    create_container_label.link.click if create_container_label.tooltip.present?
+    create_container_label.link.click
+  end
+end
+
+Then /^hover on create container label tooltip on history toolbar$/ do
+  SdcHistory.toolbar.create_container_label.tooltip.hover if SdcHistory.toolbar.create_container_label.tooltip.present?
+end
+
 #schedule pickup
 Then /^click all eligible packages button on history toolbar schedule pickup$/ do
   SdcHistory.toolbar.schedule_pickup.all_eligible_packages.click
@@ -95,5 +110,21 @@ Then /^click add\/edit cost codes button on history toolbar cost codes$/ do
   SdcHistory.toolbar.cost_codes.add_edit_cost_codes.click
 end
 
+#container label
+Then /^click all eligible packages button on history toolbar create container label$/ do
+  SdcHistory.toolbar.create_container_label.all_eligible_packages.click
+end
+
+Then /^expect selected packages button on history toolbar create container label is enabled$/ do
+  expect(SdcHistory.toolbar.create_container_label.selected_packages.class_disabled?).to be_falsy
+end
+
+Then /^click selected packages button on history toolbar create container label$/ do
+  SdcHistory.toolbar.create_container_label.selected_packages.click
+end
+
+Then /^click reprint scan form button on history toolbar create container label$/ do
+  SdcHistory.toolbar.create_container_label.reprint_scan_form.click
+end
 
 
