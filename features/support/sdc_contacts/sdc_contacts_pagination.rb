@@ -4,15 +4,15 @@ module SdcContacts
     page_object(:perpage_drop_down) { { xpath: '//*[@name="perpage"]/following::div[contains(@class,"arrow-trigger")]' } }
     text_field(:perpage_textbox, tag: :text_field) { { xpath: '//*[@name="perpage"]'} }
     page_object(:page_first, required: true, timeout: 20) { { xpath: '//*[contains(@class,"page-first")]'}}
-    page_object(:page_previous, required: true, timeout: 20) { { xpath: '//*[contains(@class,"page-prev")]'}}
+    page_object(:page_prev, required: true, timeout: 20) { { xpath: '//*[contains(@class,"page-prev")]'}}
     page_object(:page_next, required: true, timeout: 20) { { xpath: '//*//*[contains(@class,"page-next")]'}}
     page_object(:page_last, required: true, timeout: 20) { { xpath: '//*[contains(@class,"page-last")]'}}
     page_objects(:contacts_grid, required: true, timeout: 20) { { xpath: '//*[@id="contactsGrid-normal-body"]//table'}}
     page_object(:all_contacts_count, required: true, timeout: 20) { { xpath: '//*[contains(@class,"sdc-badgebutton-selected")]//*[@class="sdc-badge"]'}}
     page_object(:selected_contacts_count, required: true, timeout: 20) { { xpath: '//*[contains(@class,"sdc-badgebutton-first")][2]//*[@class="sdc-badge"]'}}
     page_object(:max_pages, required: true, timeout: 20) { { xpath: '//*[contains(@id,"numberfield")]/following::div[contains(@id,"tbtext")][1]'}}
-    page_object(:current_page, required: true, timeout: 20) { { xpath: '//*[@name="inputItem"]'}}
-
+    #page_object(:current_page, required: true, timeout: 20) { { xpath: '//*[@name="inputItem"]'}}
+    text_field(:current_page, required: true, timeout: 20) { { xpath: '//*[@name="inputItem"]'}}
     def selection_pagination(name: 'selection', value: 'None')
       page_object(name) { { xpath: "//li[text()='#{value}']" } }
     end

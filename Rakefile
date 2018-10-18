@@ -104,6 +104,11 @@ Cucumber::Rake::Task.new(:sdc_contacts_pagination) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:sdc_contacts_pagination_navigate_different_pages) do |t|
+  t.profile = 'sdc_contacts_pagination_navigate_different_pages'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:sdc_contacts_left_add_edit_group_add) do |t|
   t.profile = 'sdc_contacts_left_add_edit_group_add'
   t.cucumber_opts = "-p cuke_reports"
