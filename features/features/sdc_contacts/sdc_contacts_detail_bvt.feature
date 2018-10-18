@@ -268,3 +268,11 @@ Feature:  Contacts BVT - Contacts Details
     Then search for contact newly added from the contacts left navigation filter
     Then in contacts grid check row 1
     Then expect values of contact added in contacts grid are correct
+
+  @sdc_contacts_search_country_results
+  Scenario: Contacts BVT Scenario 1 : Add new contact with maximum no of line in Street Address field
+    Then sign-in to orders
+    Then navigate to Contacts
+    Then click add button on contacts toolbar
+    Then search contact details country with value Great
+    Then expect search country list contains value Great

@@ -123,6 +123,20 @@ module SdcContacts
       page_object(name) { { xpath: "//li[text()='#{value}']" } }
     end
 
+    def search_countries(str,value)
+      case value
+      when 'count'
+        page_objects(:namelist) { { xpath: "//*[contains(@id,'boundlist')]//li[contains(text(),'#{str.to_s.upcase!}')]" } }
+      when 'name'
+        page_object(name)  { { xpath: "//*[contains(@id,'boundlist')]//li[contains(text(),'#{str.to_s.upcase!}')]" } }
+      end
+    end
+
+    def search_countries_list(str,row)
+      label = page_object(:namelist) { { xpath: "//*[contains(@id,'boundlist')]//li[contains(text(),'#{str.to_s.upcase!}')][#{row}]" } }
+      label.text_value
+    end
+
   end
 
   class ContactsState < SdcPage

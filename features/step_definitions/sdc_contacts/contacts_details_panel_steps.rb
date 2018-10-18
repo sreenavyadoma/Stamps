@@ -851,3 +851,31 @@ Then /^click on clear all link of contact detail panel$/ do
   contacts_detail.clear_all_link.click
 end
 
+Then /^search contact details country with value (.*)$/ do |str|
+  country = SdcContacts.contacts_country
+  country.selection_country(value: str)
+  country.drop_down.click unless country.selection.present?
+  country.text_field.set(str)
+  search_list_count = country.search_countries(str,'count')
+  i=1
+  country_list = Array.new
+  while  i <= search_list_count.count
+    country_list[i] = country.search_countries_list(str,i)
+    i=i+1
+  end
+  TestData.hash[:country_list] = Array.new
+  TestData.hash[:country_list]  = country_list
+  SdcLogger.info "#{search_list_count.count} countries are avaliable in search of #{str}"
+end
+
+Then /^expect search country list contains value (.*)$/ do |country_name|
+  country = SdcContacts.contacts_country
+  search_list_count=  TestData.hash[:country_list].size
+  i=1
+  while  i < search_list_count
+    expect(country.search_countries(TestData.hash[:country_list][i],'name').present?).to be (true)
+    SdcLogger.info "#{TestData.hash[:country_list][i]} is present in search list of #{country_name}"
+    i=i+1
+  end
+
+end
