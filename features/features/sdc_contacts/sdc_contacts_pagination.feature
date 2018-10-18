@@ -26,8 +26,8 @@ Scenario: Contacts BVT Scenario 1: Contacts Pagination
     Then fetch the maximum page count in contacts pagination
     Then set current page text box on contacts pagination to random
     Then click on the pagination prev button of contacts page
-    Then click on the pagination first button of contacts page
     Then click on the pagination next button of contacts page
+    Then click on the pagination first button of contacts page
     Then click on the pagination last button of contacts page
 
 

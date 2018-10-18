@@ -103,8 +103,13 @@ Then /^click on the pagination next button of contacts page$/ do
   if all_contacts_count.to_i > pagination_count.to_i
     TestData.hash[:clicked_arrow] = 'next'
     TestData.hash[:current_page] = pagination.current_page.text_value
-    pagination.page_next.click
-    step 'expect current page text box is reflected accordingly'
+    if pagination.current_page.text_value.to_i.eql?TestData.hash[:max_pages_count]
+    step 'expect next and last page arrows are disabled'
+    SdcLogger.info 'As the current page is max next arrow is disabled'
+    else
+      pagination.page_next.click
+      step 'expect current page text box is reflected accordingly'
+    end
   end
 
 end
@@ -117,9 +122,13 @@ Then /^click on the pagination prev button of contacts page$/ do
   if all_contacts_count.to_i > pagination_count.to_i
     TestData.hash[:clicked_arrow] = 'prev'
     TestData.hash[:current_page] = pagination.current_page.text_value
-    pagination.page_prev.click
-    step 'expect current page text box is reflected accordingly'
-
+    if pagination.current_page.text_value.to_i.eql?1
+      step 'expect first and prev page arrows are disabled'
+      SdcLogger.info 'As the current page is 1 prev arrow is disabled'
+    else
+      pagination.page_prev.click
+      step 'expect current page text box is reflected accordingly'
+   end
   end
 
 end
@@ -132,8 +141,13 @@ Then /^click on the pagination first button of contacts page$/ do
   if all_contacts_count.to_i > pagination_count.to_i
     TestData.hash[:clicked_arrow] = 'first'
     TestData.hash[:current_page] = pagination.current_page.text_value
-    pagination.page_first.click
-    step 'expect current page text box is reflected accordingly'
+    if pagination.current_page.text_value.to_i.eql?1
+      step 'expect first and prev page arrows are disabled'
+      SdcLogger.info 'As the current page is 1 first arrow is disabled'
+    else
+      pagination.page_first.click
+      step 'expect current page text box is reflected accordingly'
+  end
   end
 end
 
@@ -145,8 +159,13 @@ Then /^click on the pagination last button of contacts page$/ do
   if all_contacts_count.to_i > pagination_count.to_i
     TestData.hash[:clicked_arrow] = 'last'
     TestData.hash[:current_page] = pagination.current_page.text_value
-    pagination.page_last.click
-    step 'expect current page text box is reflected accordingly'
+    if pagination.current_page.text_value.to_i.eql?TestData.hash[:max_pages_count]
+      step 'expect next and last page arrows are disabled'
+      SdcLogger.info 'As the current page is max last arrow is disabled'
+    else
+      pagination.page_last.click
+      step 'expect current page text box is reflected accordingly'
+  end
   end
 
 end
