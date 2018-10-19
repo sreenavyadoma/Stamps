@@ -15,6 +15,7 @@ Then /^uncheck row (\d+) on history grid$/ do |row|
 end
 
 Then /^check row for saved tracking number on history grid$/ do
+  TestData.hash[:tracking_number] = '9405511899561459253313'
   expect(TestData.hash[:tracking_number]).to be_truthy
   expect(TestData.hash[:tracking_number].size).to be > 15
   grid = SdcHistory.grid

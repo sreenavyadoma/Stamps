@@ -16,10 +16,10 @@ Feature:  Mail BVT
     Then save postage message panel tracking number
     Then navigate to History
     Then expect today is selected on history filter panel
-    Then check row for saved tracking number on history grid
     Then check row 1 on history grid
     Then uncheck row 1 on history grid
     Then check row 1 on history grid
 
+    Then check row for saved tracking number on history grid
 
     Then sign out
