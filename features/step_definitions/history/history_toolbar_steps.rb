@@ -113,6 +113,7 @@ end
 #container label
 Then /^click all eligible packages button on history toolbar create container label$/ do
   SdcHistory.toolbar.create_container_label.all_eligible_packages.click
+  # expect modal step ''
 end
 
 Then /^expect selected packages button on history toolbar create container label is enabled$/ do
@@ -121,10 +122,16 @@ end
 
 Then /^click selected packages button on history toolbar create container label$/ do
   SdcHistory.toolbar.create_container_label.selected_packages.click
+  # expect modal step ''
 end
 
-Then /^click reprint scan form button on history toolbar create container label$/ do
-  SdcHistory.toolbar.create_container_label.reprint_scan_form.click
+Then /^expect reprint last label on history toolbar create container label is enabled$/ do
+  expect(SdcHistory.toolbar.create_container_label.reprint_last_label.class_disabled?).to be_falsy
+end
+
+Then /^click reprint last label button on history toolbar create container label$/ do
+  SdcHistory.toolbar.create_container_label.reprint_last_label.click
+  # expect modal step ''
 end
 
 

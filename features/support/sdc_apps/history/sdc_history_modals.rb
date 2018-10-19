@@ -36,6 +36,10 @@ module SdcHistory
       def return_label
         ReturnLabel.new
       end
+
+      def container_label
+        ContainerLabel.new
+      end
     end
   end
 
@@ -250,5 +254,17 @@ module SdcHistory
     def selection(str)
       page_object(:selection_obj) { { xpath: "//li[text()='#{str}']" } }
     end
+  end
+  
+  class ContainerLabel < SdcPage
+    page_object(:title) { {xpath: '//div[contains(@id,"title")][text()="Container Label"]'} }
+    page_object(:x_btn) { {xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
+    page_object(:cancel) { {xpath: '//*[text()="Cancel"]'} }
+    page_object(:print_label) { {xpath: '//*[text()="Print Label"]'} }
+
+    text_field(:nc_text_field, tag: :text_field) { { xpath: '//*[contains(@id, "containerLabelModal")]//input' } }
+    page_object(:nc_increment) { { xpath: '//*[contains(@id, "containerLabelModal")]//*[contains(@class, "up")]' } }
+    page_object(:nc_decrement) { { xpath: '//*[contains(@id, "containerLabelModal")]//*[contains(@class, "down")]' } }
+    sdc_number(:number_container, :nc_text_field, :nc_increment, :nc_decrement)
   end
 end
