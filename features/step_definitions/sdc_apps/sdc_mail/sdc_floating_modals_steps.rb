@@ -84,3 +84,15 @@ Then /^click close button on incomplete fields$/ do
   end
   expect(incomplete_fields.window.present?).to be(false)
 end
+
+Then /^expect address cleansing modal is present$/ do
+  address_cleansing=SdcMail.modals.address_cleansing
+  address_cleansing.title.flash
+  expect(address_cleansing.title.present?).to be(true)
+end
+
+Then /^click accept button on address cleansing modal$/ do
+  address_cleansing=SdcMail.modals.address_cleansing
+  address_cleansing.accept_button.flash
+  expect(address_cleansing.accept_button.present?).to be(true)
+end
