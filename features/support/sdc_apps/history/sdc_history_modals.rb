@@ -261,6 +261,7 @@ module SdcHistory
     page_object(:x_btn) { {xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
     page_object(:cancel) { {xpath: '//*[text()="Cancel"]'} }
     page_object(:print_label) { {xpath: '//*[text()="Print Label"]'} }
+    page_object(:packages) { {xpath: '//*[contains(@id, "containerLabelModal")]//p/b'} }
 
     text_field(:nc_text_field, tag: :text_field) { { xpath: '//*[contains(@id, "containerLabelModal")]//input' } }
     page_object(:nc_increment) { { xpath: '//*[contains(@id, "containerLabelModal")]//*[contains(@class, "up")]' } }

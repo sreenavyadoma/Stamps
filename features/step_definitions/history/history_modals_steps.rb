@@ -455,3 +455,31 @@ Then /^expect new cost code on return label modal is (.*)$/ do |str|
   expect(SdcHistory.modals.change_cost_code.new_cost_code.text_field.text_value).to eql(str)
 end
 
+#container label
+Then /^expect container label modal on history is present$/ do
+  expect(SdcHistory.modals.container_label.title).to be_present
+end
+
+Then /^close container label modal on history$/ do
+  SdcHistory.modals.container_label.x_btn.click
+end
+
+Then /^click print label on container label modal$/ do
+  SdcHistory.modals.container_label.print_label.click
+end
+
+Then /^click cancel on container label modal$/ do
+  SdcHistory.modals.container_label.cancel.click
+end
+
+Then /^set number of containers on container label modal to (.+)$/ do |val|
+  number = SdcHistory.modals.container_label.number_containers
+  iterations = val.to_i - number.text_value.to_i
+  iterations.abs.times do number.increment.click end if iterations > 0
+  iterations.abs.times do number.decrement.click end if iterations < 0
+  step "expect number of containers on container label modal is #{val}"
+end
+
+Then /^expect number of containers on container label modal is (.+)$/ do |val|
+  expect(SdcHistory.modals.container_label.number_containers.text_value).to eql(val)
+end
