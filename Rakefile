@@ -4097,3 +4097,8 @@ Cucumber::Rake::Task.new(:history_toolbar) do |t|
   t.profile = 'history_toolbar'
   t.cucumber_opts = "-p cuke_reports"
 end
+
+Cucumber::Rake::Task.new(:container_label_return_address) do |t|
+  t.profile = 'container_label_return_address'
+  t.cucumber_opts = "-p cuke_reports"
+end
