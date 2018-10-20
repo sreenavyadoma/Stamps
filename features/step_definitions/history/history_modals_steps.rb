@@ -466,6 +466,7 @@ end
 
 Then /^click print label on container label modal$/ do
   SdcHistory.modals.container_label.print_label.click
+  step 'expect ready to print modal on history is present'
 end
 
 Then /^click cancel on container label modal$/ do
@@ -482,4 +483,24 @@ end
 
 Then /^expect number of containers on container label modal is (.+)$/ do |val|
   expect(SdcHistory.modals.container_label.number_containers.text_value).to eql(val)
+end
+
+#container label ready to print
+Then /^expect ready to print modal on history is present$/ do
+  expect(SdcHistory.modals.ready_to_print.title).to be_present
+end
+
+Then /^expect ready to print modal on history is not present$/ do
+  expect(SdcHistory.modals.ready_to_print.title).not_to be_present
+end
+
+Then /^click print button on ready to print modal$/ do
+  SdcHistory.modals.ready_to_print.print.click
+  step 'wait while loading history grid'
+  begin
+    SdcPage.browser.wait_until(timeout: 5) { container_label.selected? }
+  rescue
+    # ignore
+  end
+  step 'expect ready to print modal on history is not present'
 end

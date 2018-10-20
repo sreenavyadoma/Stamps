@@ -121,8 +121,9 @@ Then /^expect selected packages button on history toolbar create container label
 end
 
 Then /^click selected packages button on history toolbar create container label$/ do
+  step 'expect selected packages button on history toolbar create container label is enabled'
   SdcHistory.toolbar.create_container_label.selected_packages.click
-  # expect modal step ''
+  step 'expect container label modal on history is present'
 end
 
 Then /^expect reprint last label on history toolbar create container label is enabled$/ do
