@@ -225,13 +225,13 @@ module SdcHistory
         super(@column, tracking_number)
       end
 
-      def sort_ascending
-        sort_order(@column, :sort_ascending)
-      end
-
-      def sort_descending
-        sort_order(@column, :sort_descending)
-      end
+      # def sort_ascending
+      #   sort_order(@column, :sort_ascending)
+      # end
+      #
+      # def sort_descending
+      #   sort_order(@column, :sort_descending)
+      # end
     end
 
     class << self
