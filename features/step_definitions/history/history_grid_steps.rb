@@ -26,3 +26,15 @@ Then /^check row for saved tracking number on history grid$/ do
   row.check
 end
 
+Then /^expect history grid column (.+) is (.+) for row (\d+)$/ do |column, value, row|
+
+end
+
+Then /^expect history grid column Shipment Status is Printed for saved tracking number$/ do
+
+end
+
+Then /^expect history grid weight is correct for row (\d+)$/ do |row|
+
+end
+
