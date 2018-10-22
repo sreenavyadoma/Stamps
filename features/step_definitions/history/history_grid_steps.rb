@@ -35,6 +35,7 @@ Then /^expect history grid column Shipment Status is Printed for saved tracking 
 end
 
 Then /^expect history grid weight is correct for row (\d+)$/ do |row|
-
+  str = "0 lbs. #{TestData.hash[:weight]} oz."
+  step "expect history grid column Weight is #{str} for row #{row}"
 end
 
