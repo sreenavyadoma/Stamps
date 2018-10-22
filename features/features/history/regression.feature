@@ -35,7 +35,7 @@ Feature:  History regression
     Then navigate to History
     Then expand eligible for on history filter panel
     Then select container label on history filter panel eligible for
-    Then select row 1 on history grid
+    Then check row 1 on history grid
     Then click create container label button on history toolbar
     Then click selected packages button on history toolbar create container label
     Then click print label on container label modal
@@ -43,7 +43,7 @@ Feature:  History regression
     Then close your container label modal on history
     Then expand date printed on history filter panel
     Then select today on history filter panel
-    Then select row 1 on history grid
+    Then check row 1 on history grid
 #    Then expect print details on history is present
 #    Then expect return to on print details contains Test User2
 #    Then expect return to on print details contains El Segundo, CA
