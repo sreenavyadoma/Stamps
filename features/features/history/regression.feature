@@ -28,8 +28,8 @@ Feature:  History regression
 #    Then check customs form i agree to the usps privacy act statement
 #    Then close customs information form
 #    Then set print form weight to lbs 0 oz 1
-    Then click print label
-    Then click continue on confirm print modal
+#    Then click print label
+#    Then click continue on confirm print modal
 #    Then expect postage message panel tracking label is Postage was sent to your printer. Your Tracking Number is
 #    Then save postage message panel tracking number
     Then navigate to History
@@ -40,6 +40,7 @@ Feature:  History regression
     Then click selected packages button on history toolbar create container label
     Then click print label on container label modal
     Then click print button on ready to print modal
+    Then close your container label modal on history
     Then expand date printed on history filter panel
     Then select today on history filter panel
     Then select row 1 on history grid

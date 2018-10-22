@@ -44,6 +44,14 @@ module SdcHistory
       def ready_to_print
         ReadyToPrint.new
       end
+
+      def your_container_label
+        YourContainerLabel.new
+      end
+
+      def reprint
+        Reprint.new
+      end
     end
   end
 
@@ -315,6 +323,31 @@ module SdcHistory
 
     def selection_element(name: :selection, value: 'Normal')
       page_object(name) { { xpath: "//li[text()='#{value}']" } }
+    end
+  end
+
+  class YourContainerLabel < SdcPage
+    page_object(:title) { {xpath: '//div[contains(@id,"title")][text()="Your Container Label"]'} }
+    page_object(:x_btn) { {xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
+    page_object(:close) { {xpath: '//*[text()="Close"]'} }
+    page_object(:reprint) { {xpath: '//*[text()="Reprint"]'} }
+  end
+
+  class Reprint < SdcPage
+    page_object(:title) { {xpath: '//div[text()="Reprint"]'} }
+    page_object(:reprint) { {xpath: '//span[text()="Reprint"]'} }
+    page_object(:total_cost) { {xpath: '//*[text()="Total Cost:"]/..//div[contains(test(), "$")]'} }
+    page_object(:x_btn) { {xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
+
+    def printing_on
+      PrintingOn.new
+    end
+    def printer
+      Printer.new
+    end
+
+    def paper_tray
+      PaperTray.new
     end
   end
 end

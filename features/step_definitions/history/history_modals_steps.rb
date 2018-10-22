@@ -498,9 +498,46 @@ Then /^click print button on ready to print modal$/ do
   SdcHistory.modals.ready_to_print.print.click
   step 'wait while loading history grid'
   begin
-    SdcPage.browser.wait_until(timeout: 5) { container_label.selected? }
+    SdcPage.browser.wait_until(timeout: 10) { container_label.selected? }
   rescue
     # ignore
   end
-  step 'expect ready to print modal on history is not present'
+  step 'expect your container label modal on history is present'
+end
+
+#your container label
+Then /^expect your container label modal on history is present$/ do
+  expect(SdcHistory.modals.your_container_label.title).to be_present
+end
+
+Then /^expect your container label modal on history is not present$/ do
+  expect(SdcHistory.modals.your_container_label.title).not_to be_present
+end
+
+Then /^close your container label modal on history$/ do
+  SdcHistory.modals.your_container_label.x_btn.click
+  step 'expect your container label modal on history is not present'
+end
+
+Then /^click close button on your container label modal$/ do
+  SdcHistory.modals.your_container_label.close.click
+end
+
+Then /^click reprint button on your container label modal$/ do
+  SdcHistory.modals.your_container_label.reprint.click
+  step 'expect reprint modal on history is present'
+end
+
+#reprint container label
+Then /^expect reprint modal on history is present$/ do
+  expect(SdcHistory.modals.reprint.title).to be_present
+end
+
+Then /^expect reprint modal on history is not present$/ do
+  expect(SdcHistory.modals.reprint.title).not_to be_present
+end
+
+Then /^click reprint button on reprint modal$/ do
+  SdcHistory.modals.reprint.reprint.click
+  step 'expect your container label modal on history is present'
 end
