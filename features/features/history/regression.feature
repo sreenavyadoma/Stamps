@@ -44,9 +44,9 @@ Feature:  History regression
     Then expand date printed on history filter panel
     Then select today on history filter panel
     Then check row 1 on history grid
-#    Then expect print details on history is present
-#    Then expect return to on print details contains Test User2
-#    Then expect return to on print details contains El Segundo, CA
+    Then expect print details on history is present
+    Then expect return to on history print details contain Test User2
+    Then expect return to on history print details contain El Segundo, CA
     Then sign out
 
 #  @container_label_return_address

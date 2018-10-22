@@ -23,5 +23,9 @@ module SdcHistory
     def grid
       Grid
     end
+
+    def details
+      Details
+    end
   end
 end
