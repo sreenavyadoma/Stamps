@@ -39,7 +39,7 @@ module SdcContacts
     end
 
     def contacts_grid_container
-      '//div[contains(@class,"x-grid-inner-normal")]//div[@class="x-grid-item-container"]'
+      '//div[contains(@class,"x-grid-inner-normal")]//div[contains(@class,"x-grid-view x-grid-with-row-lines")]//div[@class="x-grid-item-container"]'
     end
 
 
@@ -87,6 +87,8 @@ module SdcContacts
     def header_dropdown_menu_item(menu_item)
       if (menu_item == 'Columns')
         xpath = "//*[@class='x-menu x-layer x-menu-default x-border-box']//div[contains(@class,'x-menu-item')]/a/span[contains(@class,'x-menu-item-indent-right-arrow')][text()='#{menu_item}']"
+      # elsif(menu_item == 'Unfreeze')||(menu_item == 'Unfreeze')
+      #   xpath = "(//*[@class='x-menu x-layer x-menu-default x-border-box']//div[contains(@class,'x-menu-item')]/a/span[text()='#{menu_item}'])[2]"
       else
         xpath = "//*[@class='x-menu x-layer x-menu-default x-border-box']//div[contains(@class,'x-menu-item')]/a/span[text()='#{menu_item}']"
       end
@@ -247,8 +249,8 @@ module SdcContacts
     end
 
     def contacts_checkbox_row(row)
-      #contacts_scroll_into_view
-      chooser_xpath = "//table[#{row}]//div[@class='x-grid-row-checker']"
+      contacts_scroll_into_view
+      chooser_xpath = "#{contacts_grid_container}//table[#{row}]/tbody/tr/td//div[@class='x-grid-row-checker']"
       chooser_name = "grid_chooser_#{row}"
       page_object(chooser_name) { { xpath: chooser_xpath } }
       verify_xpath = "#{contacts_grid_container}//table[#{row}]"

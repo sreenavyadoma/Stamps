@@ -123,6 +123,20 @@ module SdcContacts
       page_object(name) { { xpath: "//li[text()='#{value}']" } }
     end
 
+    def search_countries(str,value)
+      case value
+      when 'count'
+        page_objects(:namelist) { { xpath: "//*[contains(@id,'boundlist')]//li[contains(text(),'#{str.to_s.upcase!}')]" } }
+      when 'name'
+        page_object(name)  { { xpath: "//*[contains(@id,'boundlist')]//li[contains(text(),'#{str.to_s.upcase!}')]" } }
+      end
+    end
+
+    def search_countries_list(str,row)
+      label = page_object(:namelist) { { xpath: "//*[contains(@id,'boundlist')]//li[contains(text(),'#{str.to_s.upcase!}')][#{row}]" } }
+      label.text_value
+    end
+
   end
 
   class ContactsState < SdcPage
@@ -141,9 +155,9 @@ module SdcContacts
 
   class ContactsGroup < SdcPage
 
-    text_field(:text_field, tag: :text_field) { { xpath: '//input[contains(@id, "groupsContactDetailsCmb")]' } }
-    text_field(:text_list, tag: :text_field) { { xpath: '//input[contains(@id, "groupsContactDetailsCmb-itemList")]' } }
-    page_object(:drop_down) { { xpath: '//*[contains(@id, "groupsContactDetailsCmb")][contains(@class, "arrow")]' } }
+    #text_field(:text_list, tag: :text_field) { { xpath: '//input[contains(@id, "groupsContactDetailsCmb")]' } }
+    text_field(:text_field, tag: :text_field) { { xpath: '//input[@name="Groups"]'} }
+    page_object(:drop_down){ { xpath: '//input[@name="Groups"]/following::div[contains(@id,"-trigger-picker")]' } }
 
     def selection_group(name: 'selection', value: 'None')
       page_object(name) { { xpath: "//li[text()='#{value}']" } }

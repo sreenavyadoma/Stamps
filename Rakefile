@@ -63,6 +63,16 @@ Cucumber::Rake::Task.new(:extra_services_cost_for_rrb_service) do |t|
 end
 
 #CONTACTS
+#
+Cucumber::Rake::Task.new(:sdc_contact_top_nav_print_postage) do |t|
+  t.profile = 'sdc_contact_top_nav_print_postage'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:sdc_contacts_search_country_results) do |t|
+  t.profile = 'sdc_contacts_search_country_results'
+  t.cucumber_opts = "-p cuke_reports"
+end
 
 Cucumber::Rake::Task.new(:sdc_contacts_left_navigation_selected_filter) do |t|
   t.profile = 'sdc_contacts_left_navigation_selected_filter'
@@ -101,6 +111,11 @@ end
 
 Cucumber::Rake::Task.new(:sdc_contacts_pagination) do |t|
   t.profile = 'sdc_contacts_pagination'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:sdc_contacts_pagination_navigate_different_pages) do |t|
+  t.profile = 'sdc_contacts_pagination_navigate_different_pages'
   t.cucumber_opts = "-p cuke_reports"
 end
 
