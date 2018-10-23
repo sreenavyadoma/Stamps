@@ -1,9 +1,9 @@
 
 Then /^expect ship-to country on mail is (.*)$/ do |value|
   if value.eql? 'correct?'
-    country	=	TestData.hash[:country]
+    country = TestData.hash[:country]
   else
-    country=value
+    country = value
   end
   mail_to = SdcMail::SdcPrintForm::MailToContainer::MailTo.new
   actual_value = mail_to.dom_text_field
@@ -12,14 +12,14 @@ end
 
 Then /^expect ship-to address on mail is (.*)$/ do |value|
   if value.eql? 'correct?'
-    full_name	=	TestData.hash[:full_name]
-    company	=	TestData.hash[:company]
-    street_address	=	TestData.hash[:street_address]
-    city =	TestData.hash[:city]
-    state	=	TestData.hash[:state]
-    postal_code	=	TestData.hash[:postal_code]
+    full_name = TestData.hash[:full_name]
+    company = TestData.hash[:company]
+    street_address = TestData.hash[:street_address]
+    city = TestData.hash[:city]
+    state = TestData.hash[:state]
+    postal_code = TestData.hash[:postal_code]
   else
-    address=value
+    address = value
   end
   states = {
       "AA (Armed Forces)" => "AA", "AE (Armed Forces)" => "AE", "Alaska" => "AK","Alabama" => "AL", "AP (Armed Forces)" => "AP",
@@ -36,17 +36,17 @@ Then /^expect ship-to address on mail is (.*)$/ do |value|
       "Vermont" => "VT", "Washington" => "WA", "Wisconsin" => "WI", "West Virginia" => "WV", "Wyoming" => "WY"
   }
   state_abbver = states[state]
-  address ="#{full_name}\n#{company}\n#{street_address}\n#{city}, #{state_abbver} #{postal_code}"
+  address = "#{full_name}\n#{company}\n#{street_address}\n#{city}, #{state_abbver} #{postal_code}"
   mail_to = SdcMail::SdcPrintForm::MailToContainer::MailTo.new
-  actual_value=mail_to.text_area
+  actual_value = mail_to.text_area
   expect(actual_value.text_value.to_s).to eql(address.to_s)
 end
 
 Then /^expect email on mail is (.*)$/ do |value|
   if value.eql? 'correct?'
-    email	=	TestData.hash[:email]
+    email = TestData.hash[:email]
   else
-    email=value
+    email = value
   end
   email_obj = SdcMail::SdcPrintForm::EmailTrackingContainer::EmailTracking.new
   actual_value = email_obj.text_field
@@ -55,29 +55,29 @@ end
 
 Then /^expect reference # on mail is (?:correct|(.*))$/ do |str|
   # if value.eql? 'correct?'
-  #   reference_number	=	TestData.hash[:reference_number]
+  #   reference_number  =  TestData.hash[:reference_number]
   # else
   #   reference_number=value
   # end
 
   str ||= TestData.hash[:reference_number]
-  advanced_options=SdcMail::SdcPrintForm::AdvancedOptionsContainer::AdvancedOptions.new
-  actual_value=advanced_options.reference_num
+  advanced_options = SdcMail::SdcPrintForm::AdvancedOptionsContainer::AdvancedOptions.new
+  actual_value = advanced_options.reference_num
   expect(actual_value.text_value.to_s).to eql(str.to_s)
 end
 
 Then /^expect cost code on mail is (.*)$/ do |value|
   if value.eql? 'correct?'
-    temp=TestData.hash[:cost_code]
+    temp = TestData.hash[:cost_code]
     if temp.eql? ""
-      cost_code	= "None"
+      cost_code  = "None"
     else
-      cost_code	=TestData.hash[:cost_code]
+      cost_code = TestData.hash[:cost_code]
     end
   else
-    cost_code=value
+    cost_code = value
   end
-  advanced_options=SdcMail::SdcPrintForm::AdvancedOptionsContainer::AdvancedOptionsCostCode.new
-  actual_value=advanced_options.text_field
+  advanced_options = SdcMail::SdcPrintForm::AdvancedOptionsContainer::AdvancedOptionsCostCode.new
+  actual_value = advanced_options.text_field
   expect(actual_value.text_value.to_s).to eql(cost_code.to_s)
 end
