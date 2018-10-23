@@ -263,7 +263,7 @@ module SdcContacts
       @column = column
     end
 
-    def contacts_header_text
+    def header_text
       element = scroll_to(:checkbox)
       element.text_value
     end
@@ -273,7 +273,7 @@ module SdcContacts
       element.present?
     end
 
-    def contacts_scroll_into_view
+    def scroll_into_view
       scroll_to(@column)
     end
 
@@ -315,7 +315,7 @@ module SdcContacts
       klass.new.body
     end
 
-    def contacts_grid_column(column)
+    def grid_column(column)
       contacts_body.wait_until_present(timeout: 15)
 
       unless ContactsGridColumnBase.contacts_column_names.keys.include? column
