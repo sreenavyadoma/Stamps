@@ -104,7 +104,7 @@ module SdcContacts
 
     end
 
-    def contacts_scroll_to(column)
+    def scroll_to(column)
       field = contacts_header_element(column)
       field.scroll_into_view
     end
@@ -136,7 +136,7 @@ module SdcContacts
       message.text_value
     end
     def text_at(column, row)
-      contacts_scroll_to(column)
+      scroll_to(column)
       element = element_at_row(column, row)
       element.text_value
     end
@@ -179,7 +179,7 @@ module SdcContacts
           set(key, index + 1)
 
           if key.eql?(name)
-            contacts_scroll_to(name)
+            scroll_to(name)
             col_num = get(name)
             return col_num
           end
@@ -244,12 +244,8 @@ module SdcContacts
     page_object(:verify) { { xpath: '//div[contains(@class, "x-column-header-text")]' } }
     SdcPage.chooser(:checkbox_header, :chooser, :verify, :class, 'checker-on')
 
-    def contacts_scroll_into_view
-      contacts_scroll_to(:checkbox)
-    end
-
-    def contacts_checkbox_row(row)
-      contacts_scroll_into_view
+    def checkbox_row(row)
+      scroll_to(:checkbox)
       chooser_xpath = "#{contacts_grid_container}//table[#{row}]/tbody/tr/td//div[@class='x-grid-row-checker']"
       chooser_name = "grid_chooser_#{row}"
       page_object(chooser_name) { { xpath: chooser_xpath } }
@@ -268,17 +264,17 @@ module SdcContacts
     end
 
     def contacts_header_text
-      element = contacts_scroll_into_view
+      element = scroll_to(:checkbox)
       element.text_value
     end
 
     def present?
-      element = contacts_scroll_into_view
+      element = scroll_to(:checkbox)
       element.present?
     end
 
     def contacts_scroll_into_view
-      contacts_scroll_to(@column)
+      scroll_to(@column)
     end
 
     def contacts_text_at_row(row)
