@@ -140,7 +140,7 @@ Feature:  Mail BVT
   Scenario: Address Cleansing
     Then sign-in to mail
     Then select print on Shipping Label - 8 ½" x 11" Paper
-#    Then set Print form Mail-From to Manage Mailing Addresses...
+#    Then set print form mail-from to Manage Mailing Addresses...
     Then set print form mail-to country to United States
     Then set print form mail-to country to Brazil
     Then set print form mail-to country to United States

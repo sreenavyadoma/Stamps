@@ -20,6 +20,7 @@ Then /^click print label$/ do
   step 'blur out on print form'
   sleep 2
   SdcMail.toolbar.print_label.click
+  step 'expect print modal on mail is present'
 end
 
 Then /^click continue on confirm print modal$/ do
@@ -45,7 +46,7 @@ Then /^save postage message panel tracking number$/ do
   message_panel = SdcMail.print_form.message_panel
   message_panel.tracking_number.wait_until_present(timeout: 40)
   TestData.hash[:tracking_number] = message_panel.tracking_number.text.strip
-  expect(TestData.hash[:tracking_number].size).to be > 15
+  expect(TestData.hash[:tracking_number].size).to be > 12
 end
 
 Then /^click print label expecting no errors$/ do

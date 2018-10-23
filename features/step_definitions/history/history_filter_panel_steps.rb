@@ -215,7 +215,7 @@ end
 Then /^select container label on history filter panel eligible for$/ do
   container_label = SdcHistory.filter_panel.eligible_for.container_label
   container_label.select
-  step 'wait while loading history grid'
+  step 'wait while loading history filters grid'
   begin
     SdcPage.browser.wait_until(timeout: 5) { container_label.selected? }
   rescue
@@ -226,4 +226,9 @@ end
 
 Then /^expect container label on history filter panel eligible for is selected$/ do
   expect(SdcHistory.filter_panel.eligible_for.container_label.selected?).to be true
+end
+
+Then /^wait while loading history filters grid$/ do
+  SdcHistory.filter_panel.loading.safe_wait_until_present(timeout: 8)
+  SdcHistory.filter_panel.loading.wait_while_present(timeout: 240)
 end

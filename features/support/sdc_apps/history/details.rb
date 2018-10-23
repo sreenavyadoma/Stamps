@@ -1,6 +1,12 @@
 module SdcHistory
   module Details
     class << self
+      def loading
+        klass = Class.new(SdcPage) do
+          page_object(:loading) { { xpath: '(//div[text()="Loading..."])[3]' } }
+        end
+        klass.new.loading
+      end
 
       def status
         klass = Class.new(SdcPage) do

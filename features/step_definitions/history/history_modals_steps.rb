@@ -496,9 +496,9 @@ end
 
 Then /^click print button on ready to print modal$/ do
   SdcHistory.modals.ready_to_print.print.click
-  step 'wait while loading history grid'
+  step 'wait while loading history filters grid'
   begin
-    SdcPage.browser.wait_until(timeout: 10) { container_label.selected? }
+    SdcPage.browser.wait_until(timeout: 30) { container_label.selected? }
   rescue
     # ignore
   end

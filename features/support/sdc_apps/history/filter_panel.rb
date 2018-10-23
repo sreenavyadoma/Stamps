@@ -143,6 +143,13 @@ module SdcHistory
       def collapsed_view
         CollapsedView.new
       end
+
+      def loading
+        klass = Class.new(SdcPage) do
+          page_object(:loading) { { xpath: '(//div[text()="Loading..."])[2]' } }
+        end
+        klass.new.loading
+      end
     end
   end
 

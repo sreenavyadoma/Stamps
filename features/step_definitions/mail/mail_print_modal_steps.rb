@@ -15,9 +15,9 @@ Then /^[Ee]xpect [Pp]rint [Ff]orm [Ww]arning [Mm]essage is (.*)/ do |str|
   # expect(stamps.mail.mail_modals.incomplete_fields.warning_message.text).to include(str)
 end
 
-When /^[Cc]lick [Mm]ail [Pp]rint modal Print [Bb]utton$/ do
+Then /^click print button on mail print modal$/ do
   SdcMail.modals.print.button.click
-  sleep(3.5)
+  step 'expect print modal on mail is not present'
 end
 
 Then /^set mail print modal printer ?(?:|(.*))$/ do |str|
@@ -64,4 +64,12 @@ end
 Then /^Mail: in Print modal, Close$/ do
   pending
   # stamps.mail.mail_toolbar.mail_print_modal.x_button.click
+end
+
+Then /^expect print modal on mail is present$/ do
+  expect(SdcMail.modals.print.title).to be_present
+end
+
+Then /^expect print modal on mail is not present$/ do
+  expect(SdcMail.modals.print.title).not_to be_present
 end
