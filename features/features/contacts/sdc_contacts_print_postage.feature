@@ -6,7 +6,7 @@ Feature:  Contacts BVT - Print Postage
   @sample
   Scenario: Printing Postage from Contacts Page
 
-   @sdc_contact_top_nav_print_postage
+  @sdc_contact_top_nav_print_postage
   Scenario: Add a new contact and print postage from top navigation
     Then sign-in to orders
     Then navigate to Contacts
@@ -23,5 +23,6 @@ Feature:  Contacts BVT - Print Postage
     Then expect ship-to address on mail is correct?
     Then expect email on mail is correct?
     Then show advanced options
-    Then expect reference # on mail is correct?
+    Then expect reference # on mail is Ref#xyz123
+    Then expect reference # on mail is correct
     Then expect cost code on mail is correct?

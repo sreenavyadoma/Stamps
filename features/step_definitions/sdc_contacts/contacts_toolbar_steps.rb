@@ -195,7 +195,7 @@ end
 Then /^click print postage button on contacts toolbar$/ do
   toolbar = SdcContacts.contacts_toolbar
   toolbar.print_postage.safe_wait_until_present(timeout: 15)
-  toolbar.print_postage.flash
   toolbar.print_postage.click
+  toolbar.print_postage.safe_wait_until_present(timeout: 1)
 end
 
