@@ -91,7 +91,7 @@ module SdcContacts
     page_object(:clear_all_link, required: true, timeout: 20) { { xpath: '//span[text()="(Clear All)"]'}}
   end
 
-  class ContactsDetailsToolBarMenu < SdcPage
+  class DetailsToolBarMenu < SdcPage
     #page_object(:menu_button, required: true, timeout: 20) { { xpath: '//a[contains(@class, "x-btn toolbar-menu")]' } }
     page_object(:menu_button, required: true, timeout: 10) { { xpath: '//div[@id="contactDetailsPanel_header-innerCt"]//a'}}
     page_object(:menu_print_postage, required: true, timeout: 10) { { xpath: '//span[contains(@id, "menuitem-")][text()="Print Postage"]'}}
@@ -99,7 +99,7 @@ module SdcContacts
     page_object(:menu_collapse_panel, required: true, timeout: 10) { { xpath: '//span[contains(@id, "menuitem-")][text()="Collapse Panel"]'}}
   end
 
-  class ContactsNamePrefix < SdcPage
+  class DetailsNamePrefix < SdcPage
     #text_field(:prefix_text_field, tag: :text_field) { { xpath: '//*[@id="Prefix-inputEl"]' } } - ID Changed
     #page_object(:prefix_drop_down) { { xpath: '//*[@id="Prefix-trigger-picker"]' } } - ID Changed
 
@@ -111,7 +111,7 @@ module SdcContacts
     end
   end
 
-  class ContactsCountry < SdcPage
+  class DetailsCountry < SdcPage
 
     #text_field(:text_field, tag: :text_field) { { xpath: '//input[contains(@id, "countryContactDetailsCmb")]' } } - ID Changed
     #page_object(:drop_down) { { xpath: '//*[contains(@id, "countryContactDetailsCmb")][contains(@class, "arrow")]' } } - ID Changed
@@ -139,7 +139,7 @@ module SdcContacts
 
   end
 
-  class ContactsState < SdcPage
+  class DetailsState < SdcPage
 
     #text_field(:text_field, tag: :text_field) { { xpath: '//input[contains(@id, "stateContactDetailsCmb")]' } } - ID Changed
     #page_object(:drop_down) { { xpath: '//*[contains(@id, "stateContactDetailsCmb")][contains(@class, "arrow")]' } } - ID Changed
@@ -153,7 +153,7 @@ module SdcContacts
 
   end
 
-  class ContactsGroup < SdcPage
+  class DetailsGroup < SdcPage
 
     #text_field(:text_list, tag: :text_field) { { xpath: '//input[contains(@id, "groupsContactDetailsCmb")]' } }
     text_field(:text_field, tag: :text_field) { { xpath: '//input[@name="Groups"]'} }
@@ -165,7 +165,7 @@ module SdcContacts
 
   end
 
-  class ContactsCostCode < SdcPage
+  class DetailsCostCode < SdcPage
 
     #text_field(:text_field, tag: :text_field) { { xpath: '//input[contains(@id, "costCodesContactDetailsCmb")]' } } - ID Changed
     #page_object(:drop_down) { { xpath: '//*[contains(@id, "costCodesContactDetailsCmb")][contains(@class, "arrow")]' } } - ID Changed
@@ -179,7 +179,7 @@ module SdcContacts
 
   end
 
-  class ContactsEmailErrorMessage < SdcPage
+  class DetailsEmailErrorMessage < SdcPage
     page_object(:email_error,  required: true, timeout: 20){{xpath: '//*[@id="Email-errorEl"]//ul'}}
     page_object(:email_error_message){{xpath: '//div[@id="Email-errorEl"]//li'}}
   end
@@ -189,32 +189,32 @@ module SdcContacts
     ContactsDetailsPanel.new
   end
 
-  def contacts_detail_toolbar_menu
-    ContactsDetailsToolBarMenu.new
+  def details_toolbar_menu
+    DetailsToolBarMenu.new
   end
 
-  def contacts_name_prefix
-    ContactsNamePrefix.new
+  def details_name_prefix
+    DetailsNamePrefix.new
   end
 
-  def contacts_country
-    ContactsCountry.new
+  def details_country
+    DetailsCountry.new
   end
 
-  def contacts_group
-    ContactsGroup.new
+  def details_group
+    DetailsGroup.new
   end
 
-  def contacts_cost_code
-    ContactsCostCode.new
+  def details_cost_code
+    DetailsCostCode.new
   end
 
-  def contacts_state
-    ContactsState.new
+  def details_state
+    DetailsState.new
   end
 
-  def contacts_email_error
-    ContactsEmailErrorMessage.new
+  def details_email_error
+    DetailsEmailErrorMessage.new
   end
 
   def contacts_column

@@ -10,7 +10,7 @@
   
     class << self
 
-      def clear_contacts_popup
+      def clear_contacts_modal
         ClearContacts.new
       end
 

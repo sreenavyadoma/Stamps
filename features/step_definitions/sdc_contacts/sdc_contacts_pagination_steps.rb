@@ -1,6 +1,6 @@
 
 Then /^set per page drop down of pagination on contacts toolbar to (\d+)$/ do |number|
-  pagination = SdcContacts.contacts_pagination
+  pagination = SdcContacts.pagination
   pagination.selection_pagination(value: number)
   pagination.perpage_drop_down.click unless pagination.selection.present?
   pagination.selection.safe_click
@@ -9,7 +9,7 @@ Then /^set per page drop down of pagination on contacts toolbar to (\d+)$/ do |n
 end
 
 Then /^expect contacts on contacts grid is reflected according to the selected pagination$/ do
-  pagination = SdcContacts.contacts_pagination
+  pagination = SdcContacts.pagination
   all_contacts_count = pagination.all_contacts_count.text_value
   pagination_count =pagination.perpage_textbox.text_value
   total_selected_count = 0
@@ -67,7 +67,7 @@ Then /^expect next and last page arrows are enabled$/ do
 end
 
 Then /^expect (.*) page is enabled$/ do |value|
-  pagination = SdcContacts.contacts_pagination
+  pagination = SdcContacts.pagination
   SdcLogger.info "#{value} Page disabled #{pagination.page_arrow_disabled(value)}"
   expect(pagination.page_arrow_disabled(value)).to be(false)
 end
@@ -78,13 +78,13 @@ Then /^expect next and last page arrows are disabled$/ do
 end
 
 Then /^expect (.*) page is disabled$/ do|value|
-  pagination = SdcContacts.contacts_pagination
+  pagination = SdcContacts.pagination
   SdcLogger.info "#{value}Page disabled #{pagination.page_arrow_disabled(value)}"
   expect(pagination.page_arrow_disabled(value)).to be(true)
 end
 
 Then /^expect all the page arrows are disabled$/ do
-  pagination = SdcContacts.contacts_pagination
+  pagination = SdcContacts.pagination
   SdcLogger.info "First Page disabled #{pagination.page_arrow_disabled('first')}"
   expect(pagination.page_arrow_disabled('first')).to be(true)
   SdcLogger.info "Last Page disabled #{pagination.page_arrow_disabled('last')}"
@@ -96,21 +96,21 @@ Then /^expect all the page arrows are disabled$/ do
 end
 
 Then /^click on the pagination next button of contacts page$/ do
-  pagination = SdcContacts.contacts_pagination
+  pagination = SdcContacts.pagination
   pagination.page_next.click
 end
 
 Then /^click on the pagination prev button of contacts page$/ do
-  pagination = SdcContacts.contacts_pagination
+  pagination = SdcContacts.pagination
   pagination.page_prev.click
 end
 
 Then /^click on the pagination first button of contacts page$/ do
-  pagination = SdcContacts.contacts_pagination
+  pagination = SdcContacts.pagination
   pagination.page_first.click
 end
 
 Then /^click on the pagination last button of contacts page$/ do
-  pagination = SdcContacts.contacts_pagination
+  pagination = SdcContacts.pagination
   pagination.page_last.click
 end

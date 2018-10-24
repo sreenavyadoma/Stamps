@@ -108,27 +108,27 @@ module SdcContacts
   end
 
   class << self
-    def contacts_toolbar_groups
+    def toolbar_groups
       ContactsToolbarGroups.new
     end
 
-    def contacts_manage_groups
+    def manage_groups
       ContactsManageGroups.new
     end
 
-    def contacts_add_groups
+    def add_groups
       ContactsAddGroups.new
     end
 
-    def contacts_popup_groups
+    def change_groups
       ContactsChangeGroupsPopup.new
     end
 
-    def contacts_edit_groups
+    def edit_groups
       ContactsEditGroups.new
     end
 
-    def contacts_delete_groups
+    def delete_groups
       ContactsDeleteGroups.new
     end
   end

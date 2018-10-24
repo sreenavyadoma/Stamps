@@ -27,7 +27,7 @@ module SdcContacts
   end
 
   class << self
-    def contacts_pagination
+    def pagination
       ContactsPagination.new
     end
   end

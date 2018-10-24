@@ -26,14 +26,14 @@ Then /^click add reference button on contacts toolbar$/ do
 end
 
 Then /^click on groups menu dropdown on contacts toolbar$/ do
-  toolbar = SdcContacts.contacts_toolbar_groups
+  toolbar = SdcContacts.toolbar_groups
   step 'hover on groups button of contacts toolbar'
   toolbar.toolbar_groups(timeout: 15)
   toolbar.toolbar_groups.click
 end
 
 Then /^hover on groups button of contacts toolbar$/ do
-  toolbar = SdcContacts.contacts_toolbar_groups
+  toolbar = SdcContacts.toolbar_groups
   toolbar.toolbar_groups.safe_wait_until_present(timeout: 15)
   toolbar.toolbar_groups.hover
 end
@@ -115,7 +115,7 @@ Then /^unchoose (.*) on contact settings columns menu list$/ do |column|
 end
 
 Then /^expect (.*) column is available on contacts grid$/ do |column|
-  column_header =SdcContacts.contacts_col.contacts_header_element(column)
+  column_header =SdcContacts.contacts_col.header_element(column)
   column_header.scroll_into_view
   column_header.flash
   SdcLogger.info "Header Element Present? : #{column} - #{column_header.present?.to_s}"
@@ -123,7 +123,7 @@ Then /^expect (.*) column is available on contacts grid$/ do |column|
 end
 
 Then /^expect (.*) column is not available on contacts grid$/ do |column|
-  column_header =SdcContacts.contacts_col.contacts_header_element(column)
+  column_header =SdcContacts.contacts_col.header_element(column)
   column_header.scroll_into_view
   SdcLogger.info "Header Element Present? : #{column} - #{column_header.present?.to_s}"
   expect(column_header.present?).to be (false)

@@ -38,16 +38,16 @@ module SdcContacts
       }
     end
 
-    def contacts_grid_container
+    def grid_container
       '//div[contains(@class,"x-grid-inner-normal")]//div[@class="x-grid-item-container"]'
     end
 
-    def contacts_column_xpath(column)
+    def column_xpath(column)
       column = column_names[column] if column.class.eql?(Symbol)
       "*//span[text()='#{column}']"
     end
 
-    def contacts_header_element(column)
+    def header_element(column)
       if column.eql? :checkbox
         xpath = '*//div[contains(@class, "x-column-header-checkbox")]'
         page_object(:checkbox_header) { { xpath: xpath } }
@@ -62,7 +62,7 @@ module SdcContacts
         SdcPage.chooser(grid_checkbox_name, chooser_name, verify_name, :class, 'selected')
         instance_eval(grid_checkbox_name)
       else
-        xpath = contacts_column_xpath(column)
+        xpath = column_xpath(column)
         page_object(:header_element) { { xpath: xpath } }
       end
     end
@@ -108,7 +108,7 @@ module SdcContacts
     end
 
     def count
-      xpath = "#{contacts_grid_container}//table"
+      xpath = "#{grid_container}//table"
       grid_row_ct = page_object(:contacts_grid_row_ct) { { xpath: xpath } }
       begin
         ct = grid_row_ct.size.to_i
@@ -135,20 +135,20 @@ module SdcContacts
     end
 
     def element_at_row(column, row)
-      column_num = contacts_column_number(column).to_s
-      xpath = "#{contacts_grid_container}//table[#{row.to_s}]//tbody//td[#{column_num}]//div"
+      column_num = column_number(column).to_s
+      xpath = "#{grid_container}//table[#{row.to_s}]//tbody//td[#{column_num}]//div"
       coordinates = "col#{column}xrow#{row}"
       element = page_object(coordinates.to_sym) { { xpath: xpath } }
       element.scroll_into_view
       element
     end
 
-    def contacts_grid_field_column_name(column, row)
-      col = contacts_column_number(column)
+    def grid_field_column_name(column, row)
+      col = column_number(column)
       text_at(col, row)
     end
 
-    def contacts_column_number(name)
+    def column_number(name)
       col_num = get(name)
       if col_num
         return col_num
@@ -177,10 +177,10 @@ module SdcContacts
       raise ArgumentError, error_message
     end
 
-    def contacts_row_num(name)
+    def row_num(name)
       scroll_to(:name)
-      col_num = contacts_column_number(:name)
-      xpath = "#{contacts_grid_container}//tbody//td[#{col_num}]//div"
+      col_num = column_number(:name)
+      xpath = "#{grid_container}//tbody//td[#{col_num}]//div"
       divs = page_objects(:row_number_divs) { { xpath: xpath } }
       divs.each_with_index do |field, index|
         return index + 1 if field.text.include?(name)
@@ -213,7 +213,7 @@ module SdcContacts
       chooser_xpath = "//table[#{row}]//div[@class='x-grid-row-checker']"
       chooser_name = "grid_chooser_#{row}"
       page_object(chooser_name) { { xpath: chooser_xpath } }
-      verify_xpath = "#{contacts_grid_container}//table[#{row}]"
+      verify_xpath = "#{grid_container}//table[#{row}]"
       verify_name = "grid_verify_#{row}"
       page_object(verify_name) { { xpath: verify_xpath } }
       grid_checkbox_name = "grid_checkbox_#{row}"
