@@ -1,5 +1,6 @@
 Then /^click add button on contacts toolbar$/ do
   toolbar =SdcContacts.contacts_toolbar
+  toolbar = SdcContacts.toolbar
   toolbar.cost_codes.safe_wait_until_present(timeout: 15)
   toolbar.add.safe_wait_until_present(timeout: 15)
   toolbar.add.click
@@ -92,7 +93,7 @@ Then /^unchoose (.*) on contact settings columns menu list$/ do |column|
   end
 end
 Then(/^expect (.*) column is available on contacts grid$/) do |column|
-  column_header =SdcContacts.contacts_col.contacts_header_element(column)
+  column_header =SdcContacts.grid.column.contacts_header_element(column)
   column_header.scroll_into_view
   column_header.flash
   SdcLogger.info "Header Element Present? : #{column} - #{column_header.present?.to_s}"
@@ -100,7 +101,7 @@ Then(/^expect (.*) column is available on contacts grid$/) do |column|
 end
 
 Then(/^expect (.*) column is not available on contacts grid$/) do |column|
-  column_header =SdcContacts.contacts_col.contacts_header_element(column)
+  column_header =SdcContacts.grid.column.contacts_header_element(column)
   column_header.scroll_into_view
   SdcLogger.info "Header Element Present? : #{column} - #{column_header.present?.to_s}"
   expect(column_header.present?).to be (false)

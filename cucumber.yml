@@ -626,7 +626,7 @@ sdc_contacts_toolbar_edit_delete_group: --tags @sdc_contacts_toolbar_edit_delete
 sdc_contacts_left_navigation_add_group:  --tags @sdc_contacts_left_navigation_add_group --guess  LOG_LEVEL=info
 sdc_contacts_left_add_edit_group:  --tags @sdc_contacts_left_add_edit_group --guess  LOG_LEVEL=info
 sdc_contacts_pagination: --tags @sdc_contacts_pagination --guess  LOG_LEVEL=info
-sdc_contacts_add_new_contact_max_lines: --tags @sdc_contacts_add_new_contact_max_lines --guess LOG_LEVEL=info
+SdcContacts.grid.contacts_grid_column: --tags @SdcContacts.grid.contacts_grid_column --guess LOG_LEVEL=info
 sdc_contact_add_new_contact_different_addresses: --tags @sdc_contact_add_new_contact_different_addresses --guess LOG_LEVEL=info
 sdc_contacts_toolbar_settings_show_hide_all_columns: --tags @sdc_contacts_toolbar_settings_show_hide_all_columns --guess LOG_LEVEL=info
 sdc_contact_column_header_dropdown_menu: --tags @sdc_contact_column_header_dropdown_menu --guess LOG_LEVEL=info

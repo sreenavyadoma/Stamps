@@ -94,8 +94,8 @@ Cucumber::Rake::Task.new(:sdc_contact_add_new_contact_different_addresses) do |t
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:sdc_contacts_add_new_contact_max_lines) do |t|
-  t.profile = 'sdc_contacts_add_new_contact_max_lines'
+Cucumber::Rake::Task.new(:SdcContacts.grid.grid_column) do |t|
+  t.profile = 'SdcContacts.grid.contacts_grid_column'
   t.cucumber_opts = "-p cuke_reports"
 end
 

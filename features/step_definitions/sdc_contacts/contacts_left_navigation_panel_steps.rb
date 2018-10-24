@@ -28,17 +28,17 @@ Then /^click on selected filter of contacts left navigation panel$/ do
   sel.selected.flash
   sel.selected.click
   SdcContacts.loading_contacts.safe_wait_until_present(timeout: 15)
-  SdcContacts.contacts_body.safe_wait_until_present(timeout: 15)
+  SdcContacts.grid.body.safe_wait_until_present(timeout: 15)
 end
 
 Then /^expect empty state message of selected contacts is displayed on the contacts grid$/ do
-  grid = SdcContacts.contacts_col
+  grid = SdcContacts.grid.column
   expect(grid.count == 0).to be(true)
   expect(grid.grid_message).to eql('There are no contacts selected.')
 end
 
 Then /^expect contacts grid message for selected contact is (.+)$/ do |str|
-  grid = SdcContacts.contacts_col
+  grid = SdcContacts.grid.column
   expect(grid.count).to equal 0
   expect(grid.grid_message).to eql(str)
 end
@@ -54,7 +54,7 @@ Then /^click on all contacts filter of contacts left navigation panel$/ do
   all_con.all_contacts.flash
   all_con.all_contacts.click
   SdcContacts.loading_contacts.safe_wait_until_present(timeout: 15)
-  SdcContacts.contacts_body.safe_wait_until_present(timeout: 15)
+  SdcContacts.grid.body.safe_wait_until_present(timeout: 15)
 end
 
 Then /^expect groups filter is available on the contacts left navigation panel$/ do
@@ -80,7 +80,7 @@ Then /^search for contact (.*) from the contacts left navigation filter$/ do |st
   end
   step "click search button on contacts left navigation search bar"
   SdcContacts.loading_contacts.safe_wait_until_present(timeout: 15)
-  SdcContacts.contacts_body.safe_wait_until_present(timeout: 15)
+  SdcContacts.grid.body.safe_wait_until_present(timeout: 15)
   SdcContacts.contacts_left_navigation_panel.search_results.safe_wait_until_present(timeout:30)
 end
 
@@ -127,7 +127,7 @@ Then /^expect contacts with (.*) containing the value (.*) are retrieved in the 
   SdcLogger.info "Search Count : #{search_count}"
   case column_name
   when 'Name'
-    column = SdcContacts.contacts_grid_column(:name)
+    column = SdcContacts.grid.grid_column(:name)
     expect(column).present?
     expect(column.contacts_header_text).to eql('Name')
   end
@@ -142,7 +142,7 @@ Then /^expect contacts with (.*) containing the value (.*) are retrieved in the 
 end
 
 Then /^expect empty search message for searched contact is displayed on the contacts grid$/ do
-  grid = SdcContacts.contacts_col
+  grid = SdcContacts.grid.column
   expect(grid.count == 0).to be(true)
   expect(grid.grid_message).to eql('No contacts found.')
 end
