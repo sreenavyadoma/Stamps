@@ -69,7 +69,7 @@ Then /^set cost code value in the change costcode pop up box [Tt]o (.*)/ do |cos
     elsif costcode_name.eql? 'existing value'
       left_nav_costcode = SdcContacts.cost_code_filter
       row_count = left_nav_costcode.total_costcodes.count
-      str = left_nav_costcode.cost_code_name(row_count-1)
+      str = left_nav_costcode.cost_code_name(row_count-1).text_value
       TestData.hash[:costcode_val] = str
     else
     str = costcode_name
@@ -148,9 +148,9 @@ Then /^fetch total against each cost code available$/ do
   SdcLogger.info "Total no of cost codes : #{row_count.to_s}"
     i=1
     while i<= row_count.to_i
-        cost_code_label = left_nav_costcode.cost_code_name(i)
+        cost_code_label = left_nav_costcode.cost_code_name(i).text_value
         SdcLogger.info "Costcode name : #{cost_code_label}"
-        count = left_nav_costcode.cost_code_count(i)
+        count = left_nav_costcode.cost_code_count(i).text_value
         SdcLogger.info "count of #{cost_code_label} is : #{count}"
       i=i+1
     end
@@ -171,9 +171,9 @@ Then /^on left navigation expect (.*) is avilable under costcode filter$/ do |co
   if row_count.to_i != 0
     i=1
     while i<= row_count.to_i
-      if left_nav_costcode.cost_code_name(i) == value
-        SdcLogger.info "Cost code Name : #{left_nav_costcode.cost_code_name(i)}"
-        result = left_nav_costcode.cost_code_name(i)
+      if (left_nav_costcode.cost_code_name(i).text_value).eql? value
+        SdcLogger.info "Cost code Name : #{left_nav_costcode.cost_code_name(i).text_value}"
+        result = left_nav_costcode.cost_code_name(i).text_value
         expect(result).to eql(value)
       end
       i=i+1
@@ -193,9 +193,9 @@ Then /^on left navigation expect count of (.*) is (.*)$/ do |costcode_name,count
   if row_count.to_i != 0
     i=1
     while i<= row_count.to_i
-      if left_nav_costcode.cost_code_name(i) == value
-        SdcLogger.info "Cost code Name : #{left_nav_costcode.cost_code_name(i)}"
-        actual_count=left_nav_costcode.cost_code_count(i)
+      if (left_nav_costcode.cost_code_name(i).text_value).eql? value
+        SdcLogger.info "Cost code Name : #{left_nav_costcode.cost_code_name(i).text_value}"
+        actual_count=left_nav_costcode.cost_code_count(i).text_value
         expect(actual_count).to eql(count)
       end
       i=i+1

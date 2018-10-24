@@ -57,14 +57,7 @@ module SdcContacts
     end
 
     def group(value,row)
-      xpath_label = "(//*[contains(@class, 'groups-filters')]//table[@class='sdc-badgebutton x-box-item sdc-badgebutton-default']//tr/td[1]/div[@class='table-cell-inner sdc-badgebutton-text'])[#{row}]"
-      group_name = page_object(:name, required: true, timeout: 10){ { xpath: xpath_label }}
-
-      xpath_widget= "(//*[contains(@class, 'groups-filters')]//table[@class='sdc-badgebutton x-box-item sdc-badgebutton-default']//tr/td[2]/div[@class='table-cell-inner sdc-badgebutton-widget'])[#{row}]"
-      xpath_count ="#{xpath_widget}/div"
-      group_count = page_object(:count, required: true, timeout: 10){ { xpath: xpath_count}}
-
-      xpath_edit="#{xpath_widget}/a[@class='sdc-badge-preset-btn sdc-icon-pencil']"
+            xpath_edit="#{xpath_widget}/a[@class='sdc-badge-preset-btn sdc-icon-pencil']"
       #edit = page_object(:group_edit, required: true, timeout: 10){ { xpath: xpath_edit}}
 
       xpath_delete="#{xpath_widget}/a[@class='sdc-badge-preset-btn sdc-icon-trash-bin']"
@@ -72,9 +65,12 @@ module SdcContacts
 
       case value
       when 'name'
-        group_name.text_value
+        xpath_label = "(//*[contains(@class, 'groups-filters')]//table[@class='sdc-badgebutton x-box-item sdc-badgebutton-default']//tr/td[1]/div[@class='table-cell-inner sdc-badgebutton-text'])[#{row}]"
+        page_object(:name, required: true, timeout: 10){ { xpath: xpath_label }}
       when 'count'
-        group_count.text_value
+        xpath_widget= "(//*[contains(@class, 'groups-filters')]//table[@class='sdc-badgebutton x-box-item sdc-badgebutton-default']//tr/td[2]/div[@class='table-cell-inner sdc-badgebutton-widget'])[#{row}]"
+        xpath_count ="#{xpath_widget}/div"
+        page_object(:count, required: true, timeout: 10){ { xpath: xpath_count}}
       end
     end
 
@@ -100,15 +96,14 @@ module SdcContacts
     def cost_code_name(position)
       #xpath_text = "(//*[@id='left_nav_costcodes_fieldset-targetEl']//table[@class='sdc-badgebutton x-box-item sdc-badgebutton-default']//tr/td[1]/div[@class='table-cell-inner sdc-badgebutton-text'])[#{position}]"
       xpath_text = "(//*[contains(@class, 'cost-codes-filters')]//table[@class='sdc-badgebutton x-box-item sdc-badgebutton-default']//tr/td[1]/div[@class='table-cell-inner sdc-badgebutton-text'])[#{position}]"
-      label = page_object(:cost_code_text, required: true, timeout: 10){ { xpath: xpath_text }}
-      label.text_value
+      page_object(:cost_code_text, required: true, timeout: 10){ { xpath: xpath_text }}
+
     end
 
     def cost_code_count(row)
       #xpath_count = "(//*[@id='left_nav_costcodes_fieldset-targetEl']//table[@class='sdc-badgebutton x-box-item sdc-badgebutton-default']//tr/td[2]/div[@class='table-cell-inner sdc-badgebutton-widget'])[#{row}]"
       xpath_count = "(//*[contains(@class, 'cost-codes-filters')]//table[@class='sdc-badgebutton x-box-item sdc-badgebutton-default']//tr/td[2]/div[@class='table-cell-inner sdc-badgebutton-widget'])[#{row}]"
-      value = page_object(:cost_codes_value, required: true, timeout: 10){ { xpath: xpath_count }}
-      value.text_value
+      page_object(:cost_codes_value, required: true, timeout: 10){ { xpath: xpath_count }}
     end
 
   end

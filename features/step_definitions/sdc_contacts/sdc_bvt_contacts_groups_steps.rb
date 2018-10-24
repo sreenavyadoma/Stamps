@@ -18,9 +18,9 @@ Then /^fetch total against each group available$/ do
   #"Total no of groups : " + row_count.to_s
   i=1
   while i<= row_count.to_i
-    group_label = left_nav_group.group('name',i)
+    group_label = left_nav_group.group('name',i).text_value
     SdcLogger.info  "name : #{group_label.to_s}"
-    count = left_nav_group.group('count',i)
+    count = left_nav_group.group('count',i).text_value
     SdcLogger.info "count of #{group_label} is : #{count.to_s}"
     i=i+1
   end
@@ -105,7 +105,7 @@ Then /^set group name on add group pop up to (.*)$/ do |name|
       TestData.hash[:group_count] = row_count
       SdcLogger.info  "Total no of groups : #{row_count.to_s}"
       if row_count != 0
-        str = left_nav_group.group('name',row_count-1)
+        str = left_nav_group.group('name',row_count-1).text_value
         group_name=str
       end
     end
