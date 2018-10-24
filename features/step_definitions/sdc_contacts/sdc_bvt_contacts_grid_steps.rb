@@ -21,7 +21,7 @@ end
 Then /^in contacts grid check row (\d+)$/ do |row|
   contacts_grid_body = SdcContacts.contacts_body
   contacts_grid_body.safe_wait_until_present(timeout: 60)
-  checkbox = SdcContacts.contacts_grid_column(:checkbox).contacts_checkbox_row(row)
+  checkbox = SdcContacts.grid_column(:checkbox).checkbox_row(row)
   checkbox.safe_wait_until_present(timeout: 30)
   checkbox.check  unless checkbox.checked?
   expect(checkbox.checked?).to be(true)
@@ -32,7 +32,7 @@ end
 Then /^in contacts grid uncheck row (\d+)$/ do |row|
   contacts_grid_body = SdcContacts.contacts_body
   contacts_grid_body.safe_wait_until_present(timeout: 60)
-  checkbox = SdcContacts.contacts_grid_column(:checkbox).contacts_checkbox_row(row)
+  checkbox = SdcContacts.grid_column(:checkbox).checkbox_row(row)
   checkbox.safe_wait_until_present(timeout: 30)
   checkbox.uncheck if checkbox.checked?
   expect(checkbox.checked?).to be(false)
@@ -49,16 +49,16 @@ Then /^[Ee]xpect [Nn]ame [Dd]etails for (.*) [Ii]n [Cc]ontacts [Gg]rid [Ii]s [Uu
   contacts_grid_body = SdcContacts.contacts_body
   contacts_grid_body.safe_wait_until_present(timeout: 60)
 
-  col_prefix = SdcContacts.contacts_grid_column(:prefix)
+  col_prefix = SdcContacts.grid_column(:prefix)
   value_prefix = col_prefix.contacts_text_at_row(1)
 
-  col_first = SdcContacts.contacts_grid_column(:first_name)
+  col_first = SdcContacts.grid_column(:first_name)
   value_first = col_first.contacts_text_at_row(1)
 
-  col_middle = SdcContacts.contacts_grid_column(:middle)
+  col_middle = SdcContacts.grid_column(:middle)
   value_middle = col_middle.contacts_text_at_row(1)
 
-  col_last = SdcContacts.contacts_grid_column(:last_name)
+  col_last = SdcContacts.grid_column(:last_name)
   value_last = col_last.contacts_text_at_row(1)
 
   words = name.split(" ")
@@ -155,69 +155,69 @@ Then /^expect value of (.*) in contacts grid is (.*)$/ do |col,value|
 
   case col
   when 'Name'
-    column = SdcContacts.contacts_grid_column(:name)
+    column = SdcContacts.grid_column(:name)
     expect(column).present?
-    expect(column.contacts_header_text).to eql('Name')
+    expect(column.header_text).to eql('Name')
 
   when 'Prefix'
-    column = SdcContacts.contacts_grid_column(:prefix)
+    column = SdcContacts.grid_column(:prefix)
     expect(column).present?
-    expect(column.contacts_header_text).to eql('Prefix')
+    expect(column.header_text).to eql('Prefix')
 
   when 'First Name'
-    column = SdcContacts.contacts_grid_column(:first_name)
+    column = SdcContacts.grid_column(:first_name)
     expect(column).present?
-    expect(column.contacts_header_text).to eql('First Name')
+    expect(column.header_text).to eql('First Name')
 
   when 'Middle Name'
-    column = SdcContacts.contacts_grid_column(:middle)
+    column = SdcContacts.grid_column(:middle)
     expect(column).present?
-    expect(column.contacts_header_text).to eql('Middle')
+    expect(column.header_text).to eql('Middle')
 
   when 'Last Name'
-    column = SdcContacts.contacts_grid_column(:last_name)
+    column = SdcContacts.grid_column(:last_name)
     expect(column).present?
-    expect(column.contacts_header_text).to eql('Last Name')
+    expect(column.header_text).to eql('Last Name')
 
   when 'Suffix'
-    column = SdcContacts.contacts_grid_column(:suffix)
+    column = SdcContacts.grid_column(:suffix)
     expect(column).present?
-    expect(column.contacts_header_text).to eql('Suffix')
+    expect(column.header_text).to eql('Suffix')
 
   when 'Company'
-    column = SdcContacts.contacts_grid_column(:company)
+    column = SdcContacts.grid_column(:company)
     expect(column).present?
-    expect(column.contacts_header_text).to eql('Company')
+    expect(column.header_text).to eql('Company')
 
   when 'Title'
-    column = SdcContacts.contacts_grid_column(:title)
+    column = SdcContacts.grid_column(:title)
     expect(column).present?
-    expect(column.contacts_header_text).to eql('Title')
+    expect(column.header_text).to eql('Title')
 
   when 'Department'
-    column = SdcContacts.contacts_grid_column(:department)
+    column = SdcContacts.grid_column(:department)
     expect(column).present?
-    expect(column.contacts_header_text).to eql('Department')
+    expect(column.header_text).to eql('Department')
 
   when 'Country'
-    column = SdcContacts.contacts_grid_column(:country)
+    column = SdcContacts.grid_column(:country)
     expect(column).present?
-    expect(column.contacts_header_text).to eql('Country')
+    expect(column.header_text).to eql('Country')
 
   when 'Street Address'
-    column = SdcContacts.contacts_grid_column(:street_address)
+    column = SdcContacts.grid_column(:street_address)
     expect(column).present?
-    expect(column.contacts_header_text).to eql('Street Address')
+    expect(column.header_text).to eql('Street Address')
 
   when 'City'
-    column = SdcContacts.contacts_grid_column(:city)
+    column = SdcContacts.grid_column(:city)
     expect(column).present?
-    expect(column.contacts_header_text).to eql('City')
+    expect(column.header_text).to eql('City')
 
   when 'State/Prv'
-    column = SdcContacts.contacts_grid_column(:state_prv)
+    column = SdcContacts.grid_column(:state_prv)
     expect(column).present?
-    expect(column.contacts_header_text).to eql('State/Prv')
+    expect(column.header_text).to eql('State/Prv')
     #case value
     #when 'Florida'
     #new_value ='FL'
@@ -225,38 +225,38 @@ Then /^expect value of (.*) in contacts grid is (.*)$/ do |col,value|
     #new_value ='PR'
     # #end
   when 'Province'
-    column = SdcContacts.contacts_grid_column(:state_prv)
+    column = SdcContacts.grid_column(:state_prv)
     expect(column).present?
-    expect(column.contacts_header_text).to eql('State/Prv')
+    expect(column.header_text).to eql('State/Prv')
   when 'Postal Code'
-    column = SdcContacts.contacts_grid_column(:postal_code)
+    column = SdcContacts.grid_column(:postal_code)
     expect(column).present?
-    expect(column.contacts_header_text).to eql('Postal Code')
+    expect(column.header_text).to eql('Postal Code')
 
   when 'Email'
-    column = SdcContacts.contacts_grid_column(:email)
+    column = SdcContacts.grid_column(:email)
     expect(column).present?
-    expect(column.contacts_header_text).to eql('Email')
+    expect(column.header_text).to eql('Email')
 
   when 'Phone'
-    column = SdcContacts.contacts_grid_column(:phone)
+    column = SdcContacts.grid_column(:phone)
     expect(column).present?
-    expect(column.contacts_header_text).to eql('Phone')
+    expect(column.header_text).to eql('Phone')
 
   when 'Phone Extension'
-    column = SdcContacts.contacts_grid_column(:phone_ext)
+    column = SdcContacts.grid_column(:phone_ext)
     expect(column).present?
-    expect(column.contacts_header_text).to eql('Ext.')
+    expect(column.header_text).to eql('Ext.')
 
   when 'Reference Number'
-    column = SdcContacts.contacts_grid_column(:reference_no)
+    column = SdcContacts.grid_column(:reference_no)
     expect(column).present?
-    expect(column.contacts_header_text).to eql('Reference #')
+    expect(column.header_text).to eql('Reference #')
 
   when 'Cost Code'
-    column = SdcContacts.contacts_grid_column(:cost_code)
+    column = SdcContacts.grid_column(:cost_code)
     expect(column).present?
-    expect(column.contacts_header_text).to eql('Cost Code')
+    expect(column.header_text).to eql('Cost Code')
     if value == "correct?"
       temp ||= TestData.hash[:costcode_val]
     end
@@ -270,10 +270,10 @@ Then /^expect value of (.*) in contacts grid is (.*)$/ do |col,value|
   end
   actual_value = column.contacts_text_at_row(1)
 
-  if column.contacts_header_text.eql?('Country')
+  if column.header_text.eql?('Country')
     val = actual_value.split('-')
     expect(val[1].strip).to eql new_value.strip
-  elsif column.contacts_header_text.eql?('State/Prv') && col.eql?('State/Prv')
+  elsif column.header_text.eql?('State/Prv') && col.eql?('State/Prv')
     states = {
         "AA (Armed Forces)" => "AA",
         "AE (Armed Forces)" => "AE",

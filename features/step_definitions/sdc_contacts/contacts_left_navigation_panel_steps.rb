@@ -121,9 +121,9 @@ Then /^expect contacts with (.*) containing the value (.*) are retrieved in the 
   SdcLogger.info "Search Count : #{search_count}"
   case column_name
   when 'Name'
-    column = SdcContacts.contacts_grid_column(:name)
+    column = SdcContacts.grid_column(:name)
     expect(column).present?
-    expect(column.contacts_header_text).to eql('Name')
+    expect(column.header_text).to eql('Name')
   end
   i=1
   while i<=search_count.to_i
