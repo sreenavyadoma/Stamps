@@ -16,6 +16,7 @@ module SdcHistory
         @@column_names ||= {
             checkbox: ' ',
             date_printed: 'Date Printed',
+            total_code: 'Total Cost',
             adj_amount: 'Adj. Amount',
             shipment_status: 'Shipment Status',
             tracking_number: 'Tracking #',
