@@ -16,9 +16,4 @@ module SdcContacts
   end
   module_function :verifying_account
 
-  #-----Contacts Tool Bar---------
-
-
-  #--------Details Panel---------
-
 end

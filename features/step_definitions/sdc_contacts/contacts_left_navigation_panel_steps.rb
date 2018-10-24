@@ -19,8 +19,8 @@ end
 Then /^expect count on selected filter is (.*)$/ do |count|
   sel= SdcContacts.contacts_left_navigation_selected_contacts
   actual_count = sel.selected_count.text_value
-  p 'actual :' + actual_count
-  expect(actual_count==count).to be (true)
+  SdcLogger.info "actual : #{actual_count}"
+  expect(actual_count.to_i).to eql(count.to_i)
 end
 
 Then /^click on selected filter of contacts left navigation panel$/ do
@@ -33,7 +33,7 @@ end
 
 Then /^expect empty state message of selected contacts is displayed on the contacts grid$/ do
   grid=SdcContacts.contacts_col
-  expect(grid.count==0).to be(true)
+  expect(grid.count.to_i).to eql(0)
   expect(grid.grid_message).to eql('There are no contacts selected.')
 end
 
@@ -66,13 +66,13 @@ end
 Then /^search for contact (.*) from the contacts left navigation filter$/ do |str|
   contacts_detail= SdcContacts.contacts_detail
   contacts_detail.contacts_detail_panel.safe_wait_until_present(timeout: 15)
-  if str=='newly added'
+  if str.eql?'newly added'
     value ||= TestData.hash[:full_name]
     step "set search text on contacts left navigation search bar to #{value}"
   else
     step "set search text on contacts left navigation search bar to #{str}"
   end
-  step "click search button on contacts left navigation search bar"
+  step 'click search button on contacts left navigation search bar'
   SdcContacts.loading_contacts.safe_wait_until_present(timeout: 15)
   SdcContacts.contacts_body.safe_wait_until_present(timeout: 15)
   SdcContacts.contacts_left_navigation_panel.search_results.safe_wait_until_present(timeout:30)
@@ -88,12 +88,12 @@ Then /^delete all available contacts with the value (.*)$/ do |str|
       step "in contacts grid check row #{i}"
       i=i+1
     end
-    step "click contacts toolbar delete button"
-    step "delete contacts message box click on yes button"
+    step 'click contacts toolbar delete button'
+    step 'delete contacts message box click on yes button'
     #SdcLogger.info 'actual :' + actual_count
     new_count =search_results.search_results_count.text_value
     #SdcLogger.info 'new_count :' + new_count
-    expect(new_count== '0').to be (true)
+    expect(new_count.to_i).to eql (0)
   end
 end
 
@@ -137,14 +137,14 @@ end
 
 Then /^expect empty search message for searched contact is displayed on the contacts grid$/ do
   grid=SdcContacts.contacts_col
-  expect(grid.count==0).to be(true)
+  expect(grid.count.to_i).to eql(0)
   expect(grid.grid_message).to eql('No contacts found.')
 end
 
 Then /^expect count of contact search results is (.*)$/ do |count|
   search_results= SdcContacts.contacts_left_navigation_search_results
   actual_count =search_results.search_results_count.text_value
-  expect(actual_count==count).to be (true)
+  expect(actual_count.to_i).to eql(count.to_i)
 end
 
 Then /^click on remove button of search results on contacts left navigation panel$/ do
@@ -180,28 +180,27 @@ Then /^fetch count of selected contacts$/ do
 end
 
 Then /^select an existing cost code from left navigation filter panel/ do
-  step "click on cost codes expand button of contacts left navigation"
+  step 'click on cost codes expand button of contacts left navigation'
   left_nav_costcode = SdcContacts.contacts_left_nav_cost_code
   row_count = left_nav_costcode.total_costcodes.count
   if row_count >1
     left_nav_costcode.cost_code_element(row_count-1).click
   else
-    SdcLogger.info "No cost codes for this account to select"
+    SdcLogger.info 'No cost codes for this account to select'
     left_nav_costcode.cost_code_element(row_count).click
   end
-  step "click on cost codes collapse button of contacts left navigation"
+  step 'click on cost codes collapse button of contacts left navigation'
 end
 
 Then /^select an existing group from left navigation filter panel/ do
-  step "click on groups expand button of contacts left navigation"
+  step 'click on groups expand button of contacts left navigation'
   left_nav_group = SdcContacts.contacts_left_nav_group
   row_count = left_nav_group.total_groups.count
   if row_count >1
     left_nav_group.group_element(row_count-1).click
   else
-    SdcLogger.info "No cost codes for this account to select"
+    SdcLogger.info 'No cost codes for this account to select'
     left_nav_group.group_element(row_count).click
   end
-  step "click on groups collapse button of contacts left navigation"
+  step 'click on groups collapse button of contacts left navigation'
 end
-

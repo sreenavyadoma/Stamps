@@ -29,16 +29,16 @@ Then /^expect contacts on contacts grid is reflected according to the selected p
         SdcLogger.info "total grid count #{total_selected_count}"
         SdcLogger.info "remaining grid count #{current_selected_count}"
         if current_page.to_i == 1
-          step "expect next and last page arrows are enabled"
-          step "expect first and prev page arrows are disabled"
-          step "click on the pagination next button of contacts page"
+          step 'expect next and last page arrows are enabled'
+          step 'expect first and prev page arrows are disabled'
+          step 'click on the pagination next button of contacts page'
         elsif current_page.to_i == max_pages.to_i
-          step "expect next and last page arrows are disabled"
-          step "expect first and prev page arrows are enabled"
+          step 'expect next and last page arrows are disabled'
+          step 'expect first and prev page arrows are enabled'
         elsif current_page.to_i < max_pages.to_i
-          step "expect next and last page arrows are enabled"
-          step "expect first and prev page arrows are enabled"
-          step "click on the pagination next button of contacts page"
+          step 'expect next and last page arrows are enabled'
+          step 'expect first and prev page arrows are enabled'
+          step 'click on the pagination next button of contacts page'
         end
       #end
       current_page = current_page.to_i + 1
@@ -46,24 +46,24 @@ Then /^expect contacts on contacts grid is reflected according to the selected p
 
   else
       expect(current_page).to eql(max_pages)
-      step "expect all the page arrows are disabled"
+      step 'expect all the page arrows are disabled'
   end
 
  end
 
  Then /^expect first and prev page arrows are disabled$/ do
-  step "expect first page is disabled"
-  step "expect prev page is disabled"
+  step 'expect first page is disabled'
+  step 'expect prev page is disabled'
 end
 
 Then /^expect first and prev page arrows are enabled$/ do
-  step "expect first page is enabled"
-  step "expect prev page is enabled"
+  step 'expect first page is enabled'
+  step 'expect prev page is enabled'
 end
 
 Then /^expect next and last page arrows are enabled$/ do
-  step "expect next page is enabled"
-  step "expect last page is enabled"
+  step 'expect next page is enabled'
+  step 'expect last page is enabled'
 end
 
 Then /^expect (.*) page is enabled$/ do |value|
@@ -73,8 +73,8 @@ Then /^expect (.*) page is enabled$/ do |value|
 end
 
 Then /^expect next and last page arrows are disabled$/ do
-  step "expect next page is disabled"
-  step "expect last page is disabled"
+  step 'expect next page is disabled'
+  step 'expect last page is disabled'
 end
 
 Then /^expect (.*) page is disabled$/ do|value|

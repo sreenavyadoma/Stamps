@@ -39,9 +39,8 @@ module SdcContacts
     end
 
     def contacts_grid_container
-      '//div[contains(@class,"x-grid-inner-normal")]//div[contains(@class,"x-grid-view x-grid-with-row-lines")]//div[@class="x-grid-item-container"]'
+      '//div[contains(@class,"x-grid-inner-normal")]//div[@class="x-grid-item-container"]'
     end
-
 
     def contacts_column_xpath(column)
       column = column_names[column] if column.class.eql?(Symbol)
@@ -53,7 +52,6 @@ module SdcContacts
         xpath = '*//div[contains(@class, "x-column-header-checkbox")]'
         page_object(:checkbox_header) { { xpath: xpath } }
         #sdc_param(:chooser_xpath) { '//*[@id="sdc-mainpanel-calculatepostageradio-displayEl"]' }
-
         chooser_xpath = "//div[contains(@class,'x-column-header-checkbox')]//div[@class= 'x-column-header-text']"
         chooser_name = "grid_chooser"
         page_object(chooser_name) { { xpath: chooser_xpath } }
@@ -63,12 +61,12 @@ module SdcContacts
         grid_checkbox_name = "grid_checkbox"
         SdcPage.chooser(grid_checkbox_name, chooser_name, verify_name, :class, 'selected')
         instance_eval(grid_checkbox_name)
-
       else
         xpath = contacts_column_xpath(column)
         page_object(:header_element) { { xpath: xpath } }
       end
     end
+
     def header_element_trigger_xpath(column)
       column = column_names[column] if column.class.eql?(Symbol)
       "*//span[text()='#{column}']/following::div[1]"
@@ -109,11 +107,6 @@ module SdcContacts
       field.scroll_into_view
     end
 
-    #def text_for_id(column, order_id)
-    # row = row_num(order_id)
-    #text_at(column, row)
-    #end
-
     def count
       xpath = "#{contacts_grid_container}//table"
       grid_row_ct = page_object(:contacts_grid_row_ct) { { xpath: xpath } }
@@ -132,9 +125,9 @@ module SdcContacts
     end
 
     def grid_message
-      message = page_object(:empty_grid_message) { {xpath: '//*[@class="x-grid-empty"]'} }
-      message.text_value
+     page_object(:grid_message) { {xpath: '//*[@class="x-grid-empty"]'} }
     end
+
     def text_at(column, row)
       scroll_to(column)
       element = element_at_row(column, row)
@@ -149,11 +142,6 @@ module SdcContacts
       element.scroll_into_view
       element
     end
-
-    # def contacts_element_for_id(column,order_id)
-    #row = contacts_row_num(order_id)
-    #contacts_element_at_row(column, row)
-    # end
 
     def contacts_grid_field_column_name(column, row)
       col = contacts_column_number(column)
@@ -189,40 +177,16 @@ module SdcContacts
       raise ArgumentError, error_message
     end
 
-    def contacts_row_num(order_id)
-      scroll_to(:order_id)
-      col_num = contacts_column_number(:order_id)
+    def contacts_row_num(name)
+      scroll_to(:name)
+      col_num = contacts_column_number(:name)
       xpath = "#{contacts_grid_container}//tbody//td[#{col_num}]//div"
       divs = page_objects(:row_number_divs) { { xpath: xpath } }
       divs.each_with_index do |field, index|
-        return index + 1 if field.text.include?(order_id)
+        return index + 1 if field.text.include?(name)
       end
 
-      raise ArgumentError, "Cannot locate Order ID #{order_id}"
-    end
-
-    def sort_order(column, sort_order)
-      # scroll_to_column(column)
-      #
-      # span = driver.span(text: column_text[column])
-      # column = StampsField.new(span)
-      # sort_order = sort_order == :sort_ascending ? "ASC" : "DESC"
-      # sort_order_span = span.parent.parent.parent.parent.parent
-      #
-      # 10.times do
-      #   column.scroll_into_view
-      #   5.times do
-      #     sleep(1)
-      #     if sort_order_span.attribute_value('class').include?(sort_order)
-      #       break;
-      #     else
-      #       column.click
-      #     end
-      #   end
-      # end
-      # return "ASC" if  sort_order_span.attribute_value('class').include?("ASC")
-      # return "DESC" if  sort_order_span.attribute_value('class').include?("DESC")
-      # nil
+      raise ArgumentError, "Cannot locate Name #{name}"
     end
 
     def get(property)
@@ -246,7 +210,7 @@ module SdcContacts
 
     def checkbox_row(row)
       scroll_to(:checkbox)
-      chooser_xpath = "#{contacts_grid_container}//table[#{row}]/tbody/tr/td//div[@class='x-grid-row-checker']"
+      chooser_xpath = "//table[#{row}]//div[@class='x-grid-row-checker']"
       chooser_name = "grid_chooser_#{row}"
       page_object(chooser_name) { { xpath: chooser_xpath } }
       verify_xpath = "#{contacts_grid_container}//table[#{row}]"
@@ -264,12 +228,12 @@ module SdcContacts
     end
 
     def header_text
-      element = scroll_to(:checkbox)
+      element = scroll_into_view
       element.text_value
     end
 
     def present?
-      element = scroll_to(:checkbox)
+      element = scroll_into_view
       element.present?
     end
 
@@ -277,27 +241,19 @@ module SdcContacts
       scroll_to(@column)
     end
 
-    def contacts_text_at_row(row)
+    def text_at_row(row)
       text_at(@column, row)
     end
 
-    #def data(order_id)
-    #text_for_id(@column, order_id)
-    #end
-
-    def contacts_element(row)
-      contacts_element_at_row(@column, row)
+    def element(row)
+      element_at_row(@column, row)
     end
 
-    #def element_for_id(order_id)
-    #super(@column, order_id)
-    #end
-
-    def contacts_sort_ascending
+    def sort_ascending
       sort_order(@column, :sort_ascending)
     end
 
-    def contacts_sort_descending
+    def sort_descending
       sort_order(@column, :sort_descending)
     end
   end

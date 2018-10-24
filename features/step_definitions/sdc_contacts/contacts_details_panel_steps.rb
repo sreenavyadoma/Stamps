@@ -1,5 +1,4 @@
 
-
 Then /^add a valid contact with domestic address$/ do
 
   full_name = TestHelper.rand_full_name
@@ -439,7 +438,7 @@ Then /^expect value of (.*) in contact details panel is (.*)$/ do |label,value|
   contacts_detail= SdcContacts.contacts_detail
   contacts_detail.reference_number.safe_wait_until_present(timeout: 15)
 
-  if value.to eql? 'blank'
+  if value.eql? 'blank'
     new_value = ""
   else
     new_value = value

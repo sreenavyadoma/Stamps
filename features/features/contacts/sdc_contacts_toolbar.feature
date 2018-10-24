@@ -24,7 +24,7 @@ Feature:  Contacts BVT - Contacts ToolBar
     Then delete all available contacts with the value RuthAnand
     Then expect count of contact search results is 0
     Then close the search results by clicking on remove button
-    Then click contacts toolbar add button
+    Then click add button on contacts toolbar
     Then Set Contact Details Name to RuthAnand
     Then Set Contact Details Company to FL Homes
     Then Set Contact Details Country to United States
@@ -44,9 +44,9 @@ Feature:  Contacts BVT - Contacts ToolBar
     Then On Left Navigation Menu Search Contact Ruth
     Then Expect Count of Contact Search Results is 1
     Then In Contacts Grid Check Row 1
-    Then Click Contacts Toolbar Delete Button
-    Then Expect Contacts Delete Message Box is Available
-    Then Delete Contacts Message Box Click on Yes Button
+    Then click delete button on contacts toolbar
+    Then expect delete contacts modal is displayed
+    Then click yes button on delete contacts modal
     Then On Left Navigation menu search contact Ruth
     Then Expect Count of Contact Search Results is 0
 
@@ -57,21 +57,21 @@ Feature:  Contacts BVT - Contacts ToolBar
     Then delete all available contacts with the value Jon
     Then expect count of contact search results is 0
     Then close the search results by clicking on remove button
-    Then click contacts toolbar add button
+    Then click add button on contacts toolbar
     Then set contact details name to Jon1
     Then in contacts grid uncheck row 1
-    Then click contacts toolbar add button
+    Then click add button on contacts toolbar
     Then set contact details name to Jon2
     Then in contacts grid uncheck row 1
-    Then click contacts toolbar add button
+    Then click add button on contacts toolbar
     Then set contact details name to Jon3
     Then in contacts grid uncheck row 1
     Then on left navigation menu search contact Jon
     Then expect count of contact search results is 3
     Then in contacts grid check row 1
     Then In contacts grid check row 3
-    Then click contacts toolbar delete button
-    Then delete contacts message box click on yes button
+    Then click delete button on contacts toolbar
+    Then click yes button on delete contacts modal
     Then on left navigation menu search contact Jon
     Then expect count of contact search results is 1
 
@@ -82,14 +82,14 @@ Feature:  Contacts BVT - Contacts ToolBar
     Then delete all available contacts with the value AddInValidReference
     Then expect count of contact search results is 0
     Then close the search results by clicking on remove button
-    Then click contacts toolbar add button
+    Then click add button on contacts toolbar
     Then set contact details name to AddInValidReference
     Then set contact details reference number to valid
     Then in contacts grid uncheck row 1
     Then on left navigation menu search contact AddInValidReference
     Then expect count of contact search results is 1
     Then in contacts grid check row 1
-    Then click contacts toolbar add reference button
+    Then click add reference button on contacts toolbar
     Then set reference number to Invalid Reference1 Reference2 Reference3
     Then expect reference number error is displayed
     Then click on add reference close button
@@ -102,13 +102,13 @@ Feature:  Contacts BVT - Contacts ToolBar
     Then delete all available contacts with the value AddValidReference
     Then expect count of contact search results is 0
     Then close the search results by clicking on remove button
-    Then click contacts toolbar add button
+    Then click add button on contacts toolbar
     Then set contact details name to AddValidReference
     Then in contacts grid uncheck row 1
     Then on left navigation menu search contact AddValidReference
     Then expect count of contact search results is 1
     Then in contacts grid check row 1
-    Then click contacts toolbar add reference button
+    Then click add reference button on contacts toolbar
     Then set reference number to Reference 123456789
     Then expect reference number error is not displayed
     Then click on add reference save button

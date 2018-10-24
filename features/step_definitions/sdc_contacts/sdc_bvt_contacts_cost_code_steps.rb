@@ -10,15 +10,15 @@ Then /^on cost code page set value of new cost code textbox to (.*)$/ do |costco
   #check for costcodes count and remove one if count =10 and then add
   add_cost_code  = SdcContacts.contacts_cost_codes
   row_count = add_cost_code.cost_code_table_rows.count
-  if row_count == 11
-    step "remove costcode from the costcode table"
+  if row_count.to_i.eql? 11
+    step 'remove costcode from the costcode table'
   end
   add_cost_code.add_cost_code.safe_wait_until_present(timeout: 20)
-  if costcode_name=="random"
+  if costcode_name.eql?'random'
     cost_code = TestHelper.rand_cost_code
     add_cost_code.add_cost_code.set(cost_code)
     TestData.hash[:costcode_val] = cost_code
-  elsif costcode_name == "existing value"
+  elsif costcode_name.eql?'existing value'
     str = add_cost_code.cost_code_table_value.text_value
     add_cost_code.add_cost_code.set(str)
   else
@@ -64,9 +64,9 @@ end
 
 Then /^set cost code value in the change costcode pop up box [Tt]o (.*)/ do |costcode_name|
 
-  if costcode_name == "new costcode added"
+  if costcode_name.eql?'new costcode added'
     str ||= TestData.hash[:costcode_val]
-    elsif costcode_name == "existing value"
+    elsif costcode_name.eql? 'existing value'
       left_nav_costcode = SdcContacts.contacts_left_nav_cost_code
       row_count = left_nav_costcode.total_costcodes.count
       str = left_nav_costcode.cost_code_name(row_count-1)
@@ -93,7 +93,7 @@ end
 Then /^click contacts toolbar cost codes dropdown$/ do
   toolbar = SdcContacts.contacts_toolbar_cost_codes
   toolbar.cost_codes.safe_wait_until_present(timeout: 15)
-  step "mouse hover on cost codes"
+  step 'mouse hover on cost codes'
   toolbar.cost_codes.click
 end
 
@@ -114,8 +114,8 @@ Then /^mouse hover on cost codes$/ do
 end
 
 Then /^set (.*) value in details menu cost code dropdown/ do |costcode_name|
-  if costcode_name == "new costcode added"
-    str ||= TestData.hash[:costcode_val]
+  if costcode_name.eql?'new costcode added'
+    str = TestData.hash[:costcode_val]
   else
     str = costcode_name
   end
@@ -159,8 +159,8 @@ end
 
 Then /^on left navigation expect (.*) is avilable under costcode filter$/ do |costcode_name|
 
-  if costcode_name == "new costcode added"
-    value ||= TestData.hash[:costcode_val]
+  if costcode_name.eql?'new costcode added'
+    value = TestData.hash[:costcode_val]
   else
     value =costcode_name
   end
@@ -182,13 +182,11 @@ Then /^on left navigation expect (.*) is avilable under costcode filter$/ do |co
 end
 
 Then /^on left navigation expect count of (.*) is (.*)$/ do |costcode_name,count|
-
-  if costcode_name == "new costcode added"
-    value ||= TestData.hash[:costcode_val]
+  if costcode_name.eql?'new costcode added'
+    value = TestData.hash[:costcode_val]
   else
     value =costcode_name
   end
-
   left_nav_costcode = SdcContacts.contacts_left_nav_cost_code
   row_count = left_nav_costcode.total_costcodes.count
   SdcLogger.info "Count :#{row_count}"

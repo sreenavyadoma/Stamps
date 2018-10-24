@@ -3,10 +3,8 @@ Then /^check row header in contacts grid$/ do
   contacts_grid_body.safe_wait_until_present(timeout: 10)
   header_checkbox = SdcContacts.contacts_col.contacts_header_element(:checkbox)
   header_checkbox.safe_wait_until_present(timeout: 10)
-  if header_checkbox.checked? == false
-    header_checkbox.check
-  end
-  # header_checkbox.check unless header_checkbox.checked?
+  header_checkbox.check unless header_checkbox.checked?
+  expect(header_checkbox.checked?).to be(true)
 end
 
 Then /^uncheck row header in contacts grid$/ do
@@ -14,8 +12,8 @@ Then /^uncheck row header in contacts grid$/ do
   contacts_grid_body.safe_wait_until_present(timeout: 10)
   header_checkbox = SdcContacts.contacts_col.contacts_header_element(:checkbox)
   header_checkbox.safe_wait_until_present(timeout: 10)
-  header_checkbox.uncheck
-
+  header_checkbox.uncheck if header_checkbox.checked?
+  expect(header_checkbox.checked?).to be(false)
 end
 
 Then /^in contacts grid check row (\d+)$/ do |row|
@@ -39,13 +37,13 @@ Then /^in contacts grid uncheck row (\d+)$/ do |row|
   #contacts_detail = SdcContacts.contacts_detail
   #expect(contacts_detail.contacts_detail_panel.present?).to be(false)
 end
-Then /^[Ee]xpect [Nn]umber [Oo]f [Cc]ontacts [Dd]isplayed [Ii]n [Tt]he [Gg]rid [Ii]s (.*)$/ do |count|
+Then /^expect number of contacts displayed in the grid is (.*)$/ do |count|
   grid = SdcContacts.contacts_col
-  expect(grid.count == count).to be(true)
+  expect(grid.count.to_i).to eql(count.to_i)
 end
 
 
-Then /^[Ee]xpect [Nn]ame [Dd]etails for (.*) [Ii]n [Cc]ontacts [Gg]rid [Ii]s [Uu]pdated [Aa]ppropriately$/ do |name|
+Then /^expect name details for (.*) in contacts grid is updated appropriately$/ do |name|
   contacts_grid_body = SdcContacts.contacts_body
   contacts_grid_body.safe_wait_until_present(timeout: 60)
 
@@ -65,13 +63,13 @@ Then /^[Ee]xpect [Nn]ame [Dd]etails for (.*) [Ii]n [Cc]ontacts [Gg]rid [Ii]s [Uu
   word_count = words.length
   case word_count
   when 1
-    if words[0] == 'CAPT' || words[0] == 'BG'
+    if words[0].eql?('CAPT') || words[0].eql?('BG')
       expect(value_prefix).to eql words[0]
     else
       expect(value_last).to eql words[0]
     end
   when 2
-    if words[0] == 'CAPT'
+    if words[0].eql?'CAPT'
       expect(value_prefix).to eql words[0]
       expect(value_last).to eql words[1]
     else
@@ -79,7 +77,7 @@ Then /^[Ee]xpect [Nn]ame [Dd]etails for (.*) [Ii]n [Cc]ontacts [Gg]rid [Ii]s [Uu
       expect(value_last).to eql words[1]
     end
   when 3
-    if words[0] == 'CAPT' || words[0] == 'ENS'
+    if words[0].eql?("CAPT") || words[0].eql?("ENS")
       expect(value_prefix).to eql words[0]
       expect(value_first).to eql words[word_count - 2]
       expect(value_last).to eql words[word_count - 1]
@@ -92,7 +90,7 @@ Then /^[Ee]xpect [Nn]ame [Dd]etails for (.*) [Ii]n [Cc]ontacts [Gg]rid [Ii]s [Uu
       expect(value_last).to eql words[word_count - 1]
     end
   else
-    if words[0] == 'CAPT' || words[0] == 'BGen.'
+    if words[0].eql?("CAPT") || words[0].eql?("BGen.")
       expect(value_prefix).to eql words[0]
       SdcLogger.info "#{value_prefix} - Prefix: #{words[0]}"
       i = 1
@@ -115,18 +113,18 @@ end
 
 Then /^expect values of contact added in contacts grid are correct$/ do
 
-  full_name	=	TestData.hash[:full_name]
-  company	=	TestData.hash[:company]
-  country	=	TestData.hash[:country]
-  street_address	=	TestData.hash[:street_address]
-  city	=	TestData.hash[:city]
-  state	=	TestData.hash[:state]
-  postal_code	=	TestData.hash[:postal_code]
-  email	=	TestData.hash[:email]
-  phone	=	TestData.hash[:phone]
-  phone_ext	=	TestData.hash[:phone_ext]
-  reference_number	=	TestData.hash[:reference_number]
-  cost_code	=	TestData.hash[:cost_code]
+  full_name||=	TestData.hash[:full_name]
+  company||=	TestData.hash[:company]
+  country||=	TestData.hash[:country]
+  street_address||=	TestData.hash[:street_address]
+  city||=	TestData.hash[:city]
+  state||=	TestData.hash[:state]
+  postal_code||=	TestData.hash[:postal_code]
+  email||=	TestData.hash[:email]
+  phone||=	TestData.hash[:phone]
+  phone_ext||=	TestData.hash[:phone_ext]
+  reference_number||=	TestData.hash[:reference_number]
+  cost_code||=	TestData.hash[:cost_code]
 
   step "expect value of Name in contacts grid is #{full_name}"
   step "expect value of Company in contacts grid is #{company}"
@@ -156,7 +154,9 @@ Then /^expect value of (.*) in contacts grid is (.*)$/ do |col,value|
   case col
   when 'Name'
     column = SdcContacts.grid_column(:name)
-    expect(column).present?
+    #p column
+    #expect(column).to be present?
+    p column.header_text
     expect(column.header_text).to eql('Name')
 
   when 'Prefix'
@@ -218,16 +218,12 @@ Then /^expect value of (.*) in contacts grid is (.*)$/ do |col,value|
     column = SdcContacts.grid_column(:state_prv)
     expect(column).present?
     expect(column.header_text).to eql('State/Prv')
-    #case value
-    #when 'Florida'
-    #new_value ='FL'
-    #when 'Puerto Rico'
-    #new_value ='PR'
-    # #end
+
   when 'Province'
     column = SdcContacts.grid_column(:state_prv)
     expect(column).present?
     expect(column.header_text).to eql('State/Prv')
+
   when 'Postal Code'
     column = SdcContacts.grid_column(:postal_code)
     expect(column).present?
@@ -261,85 +257,21 @@ Then /^expect value of (.*) in contacts grid is (.*)$/ do |col,value|
       temp ||= TestData.hash[:costcode_val]
     end
   end
-  if value == 'blank'
+   if value.eql?'blank'
     new_value = ""
   elsif value.eql? 'correct?'
     new_value = temp
   else
     new_value = value
   end
-  actual_value = column.contacts_text_at_row(1)
+  actual_value = column.text_at_row(1)
 
   if column.header_text.eql?('Country')
     val = actual_value.split('-')
     expect(val[1].strip).to eql new_value.strip
   elsif column.header_text.eql?('State/Prv') && col.eql?('State/Prv')
-    states = {
-        "AA (Armed Forces)" => "AA",
-        "AE (Armed Forces)" => "AE",
-        "Alaska" => "AK",
-        "Alabama" => "AL",
-        "AP (Armed Forces)" => "AP",
-        "Arkansas" => "AR",
-        "American Samoa" => "AS",
-        "Arizona" => "AZ",
-        "California" => "CA",
-        "Colorado" => "CO",
-        "Connecticut" => "CT",
-        "Dist. of Columbia" => "DC",
-        "Delaware" => "DE",
-        "Florida" => "FL",
-        "Federated States Of Micronesia" => "FM",
-        "Georgia" => "GA",
-        "Guam" => "GU",
-        "Hawaii" => "HI",
-        "Iowa" => "IA",
-        "Idaho" => "ID",
-        "Illinois" => "IL",
-        "Indiana" => "IN",
-        "Kansas" => "KS",
-        "Kentucky" => "KY",
-        "Louisiana" => "LA",
-        "Massachusetts" => "MA",
-        "Maryland" => "MD",
-        "Maine" => "ME",
-        "Marshall Islands" => "MH",
-        "Michigan" => "MI",
-        "Minnesota" => "MN",
-        "Missouri" => "MO",
-        "Northern Mariana Islands" => "MP",
-        "Mississippi" => "MS",
-        "Montana" => "MT",
-        "North Carolina" => "NC",
-        "North Dakota" => "ND",
-        "Nebraska" => "NE",
-        "New Hampshire" => "NH",
-        "New Jersey" => "NJ",
-        "New Mexico" => "NM",
-        "Nevada" => "NV",
-        "New York" => "NY",
-        "Ohio" => "OH",
-        "Oklahoma" => "OK",
-        "Oregon" => "OR",
-        "Pennsylvania" => "PA",
-        "Puerto Rico" => "PR",
-        "Palau" => "PW",
-        "Rhode Island" => "RI",
-        "South Carolina" => "SC",
-        "South Dakota" => "SD",
-        "Tennessee" => "TN",
-        "Texas" => "TX",
-        "Utah" => "UT",
-        "Virginia" => "VA",
-        "Virgin Islands" => "VI",
-        "Vermont" => "VT",
-        "Washington" => "WA",
-        "Wisconsin" => "WI",
-        "West Virginia" => "WV",
-        "Wyoming" => "WY"
-    }
-    #TestData.hash[:states]=
-    new_value = states[value]
+    us_states= data_for(:us_states, {})
+    new_value=us_states.key(value)
     expect(actual_value.strip).to eql new_value.strip
   else
     expect(actual_value.strip).to eql new_value.strip

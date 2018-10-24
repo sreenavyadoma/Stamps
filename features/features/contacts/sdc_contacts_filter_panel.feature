@@ -135,7 +135,7 @@ Feature:  Contacts BVT - Contacts Filter Panel
     Then expect count on selected filter is 0
     #Selected filter - Empty State
     Then click on selected filter of contacts left navigation panel
-    Then expect empty state message of selected contacts is displayed on the contacts grid
+    Then expect contacts grid message for selected contact is There are no contacts selected.
     Then click on all contacts filter of contacts left navigation panel
     #Selected filter -counts
     Then in contacts grid check row 1

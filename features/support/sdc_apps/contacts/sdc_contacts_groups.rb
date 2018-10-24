@@ -23,8 +23,8 @@ module SdcContacts
     def group_name(row)
       #xpath_text = "//*[@id = 'multiselect-groups-grid']//*[@class='x-grid-item-container']//table[#{row}]//tbody//tr//td[2]"
       xpath_text = "//*[contains(@id,'title-')][text() = 'Manage Groups']/following::div[contains(@id,'tableview-')]//*[@class='x-grid-item-container']//table[#{row}]/tbody/tr/td"
-      label = page_object(:group_text, required: true, timeout: 10){ { xpath: xpath_text }}
-      label.text_value
+      page_object(:group_text, required: true, timeout: 10){ { xpath: xpath_text }}
+
     end
   end
 
@@ -56,8 +56,7 @@ module SdcContacts
 
     def group_list_name(position)
       xpath_text = "//*[@class='x-tagfield-list']//li[#{position}]//div[1]"
-      label = page_object(:group_text, required: true, timeout: 10){ { xpath: xpath_text }}
-      label.text_value
+      page_object(:group_text, required: true, timeout: 10){ { xpath: xpath_text }}
     end
 
     def groups_checkbox_row(row)
@@ -78,8 +77,7 @@ module SdcContacts
     def group_name(row)
       #xpath_text = "//*[@id = 'multiselect-groups-grid']//*[@class='x-grid-item-container']//table[#{row}]//tbody//tr//td[2]"
       xpath_text = "//*[contains(@id,'title-')][text() = 'Change Groups']//following::div[contains(@id,'tableview-')]//*[@class='x-grid-item-container']//table[#{row}]//tbody//tr//td[2]"
-      label = page_object(:group_text, required: true, timeout: 10){ { xpath: xpath_text }}
-      label.text_value
+      page_object(:group_text, required: true, timeout: 10){ { xpath: xpath_text }}
     end
 
   end

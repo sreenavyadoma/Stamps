@@ -140,5 +140,4 @@ module SdcContacts
 
   end
 
-
 end

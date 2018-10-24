@@ -94,7 +94,7 @@ Then /^set group name on add group pop up to (.*)$/ do |name|
       TestData.hash[:group_count] = row_count
       SdcLogger.info "exsisting group count #{row_count.to_s}"
       if row_count != 0
-        str = manage_groups.group_name(row_count)
+        str = manage_groups.group_name(row_count).text_value
         group_name=str
       end
     else
@@ -135,7 +135,7 @@ Then /^expect error message of existing group name is displayed on add groups po
   group_count  =  TestData.hash[:group_count]
     expect(add_groups.add_groups_error_message.present?).to be(true)
   # add_groups.error_message_text.text_value
-  if group_count==0
+  if group_count.eql? '0'
     expect(add_groups.error_message_text.text_value).to eql("Group name required.")
     else
     expect(add_groups.error_message_text.text_value).to eql("This group name is already in use. Please choose a unique group name")
@@ -157,15 +157,15 @@ Then /^expect group name added is available in the manage group pop up table$/ d
     i=1
     group_name_available = 'no'
     while  i <= row_count
-      str = manage_groups.group_name(i)
-      if str==actual_added
+      str = manage_groups.group_name(i).text_value
+      if str.eql? 'actual_added'
         group_name_available = 'yes'
         SdcLogger.info  "Group is available in the Manange Groups table"
         break
       end
       i=i+1
     end
-  expect(group_name_available=='yes').to eql(true)
+  expect(group_name_available.eql? 'yes').to eql(true)
 end
 
 Then /^expect group name deleted is not available in the manage group pop up table$/ do
@@ -176,15 +176,15 @@ Then /^expect group name deleted is not available in the manage group pop up tab
   i=1
   group_name_available = 'no'
   while  i <= row_count
-    str = manage_groups.group_name(i)
-    if str==actual_added
+    str = manage_groups.group_name(i).text_value
+    if str.eql? 'actual_added'
       group_name_available = 'yes'
       SdcLogger.info "Group is available in the Manange Groups table"
       break
     end
     i=i+1
   end
-  expect(group_name_available=='yes').to eql(false)
+  expect(group_name_available.eql? 'yes').to eql(false)
   SdcLogger.info "Group is not available in the Manange Groups table"
 end
 
@@ -206,13 +206,13 @@ Then /^search and choose (.*) group from groups list from change groups popup to
      i = 1
       str=""
       while i <= row_count
-        if group_popup.groups_checkbox_row(i).checked? == false
-          str = group_popup.group_name(i)
+        if (group_popup.groups_checkbox_row(i).checked?).eql? false
+          str = group_popup.group_name(i).text_value
           break
         end
         i = i +1
       end
-      if str==""
+      if str.eql? ''
         SdcLogger.info " All Groups available have already been added"
         else
           group_popup.change_groups_search.set(str)
@@ -246,13 +246,13 @@ Then /^search and choose (.*) group from groups list from change groups popup to
       i = 1
       str=""
       while i <= row_count
-        if group_popup.groups_checkbox_row(i).checked? == true
-           str = group_popup.group_name(i)
+        if group_popup.groups_checkbox_row(i).checked? .eql? true
+           str = group_popup.group_name(i).text_value
           break
         end
         i = i +1
       end
-      if str==""
+      if str.eql? ''
         #SdcLogger.info "No Groups available on the selected contact to remove"
       else
         group_popup.change_groups_search.set(str)
@@ -314,7 +314,7 @@ Then /^expect added group is available in details groups textbox$/ do
     i = 1
     included ="false"
     while i<= group_count
-      if str == group_popup.group_list_name(i)
+      if str.eql? group_popup.group_list_name(i).text_value
         included = "true"
         SdcLogger.info  "#{str} is included in the group details"
         break
@@ -323,7 +323,7 @@ Then /^expect added group is available in details groups textbox$/ do
     end
   end
   #expect(included == "true").to be(true)
-  if included =="false"
+  if included .eql? 'false'
     SdcLogger.info  "#{str} is not included in the group details"
   end
 end
@@ -337,7 +337,7 @@ Then /^expect removed group is not available in details groups textbox$/ do
     i = 1
     included ="false"
     while i<= group_count
-      if str == group_popup.group_list_name(i)
+      if str.eql?  group_popup.group_list_name(i).text_value
         included = "true"
         SdcLogger.info  "#{str} is included in the group details"
         break
@@ -345,8 +345,8 @@ Then /^expect removed group is not available in details groups textbox$/ do
       i = i+1
     end
   end
-  #expect(included == "true").to be(true)
-  if included =="false"
+  #expect(included.eql? 'true').to be(true)
+  if included .eql? 'false'
     SdcLogger.info  "#{str} + is not included in the group details"
   end
 end
@@ -361,7 +361,7 @@ Then /^click (.*) row in manage group table$/ do |group_name|
     if row_count.to_i != 0
       i=1
       while i<= row_count.to_i
-        if manage_groups.group_name(i) == group_name
+        if (manage_groups.group_name(i).text_value).eql? "#{group_name}"
           TestData.hash[:old_group] = group_name
           manage_groups.group_text.safe_wait_until_present(timeout:45)
           manage_groups.group_text.click
@@ -370,7 +370,7 @@ Then /^click (.*) row in manage group table$/ do |group_name|
       end
     end
   else
-    str = manage_groups.group_name(row_count-1)
+    str = manage_groups.group_name(row_count-1).text_value
     TestData.hash[:old_group] = str
     manage_groups.group_text.click
   end
@@ -401,7 +401,7 @@ Then /^set group name on edit pop up to (.*)$/ do |group_name|
     TestData.hash[:new_group] = new_group_name
   when "existing"
     manage_groups=SdcContacts.contacts_manage_groups
-    str = manage_groups.group_name(1)
+    str = manage_groups.group_name(1).text_value
     edit_groups.edit_groups_group_name_textbox.set(str)
   when "blank"
     edit_groups.edit_groups_group_name_textbox.set("")

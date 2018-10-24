@@ -225,9 +225,6 @@ module SdcContacts
     SdcContactsGridColumn.new
   end
 
-  def reference_message_box
-    AddReferenceMessageBox.new
-  end
 end
 
 end
