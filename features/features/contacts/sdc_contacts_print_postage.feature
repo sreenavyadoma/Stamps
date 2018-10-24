@@ -19,10 +19,9 @@ Feature:  Contacts BVT - Print Postage
     Then in contacts grid check row 1
     Then click print postage button on contacts toolbar
     Then select print on Shipping Label - 5 ½" x 8 ½"
-    Then expect ship-to country on mail is correct?
-    Then expect ship-to address on mail is correct?
-    Then expect email on mail is correct?
+    Then expect ship-to country on mail is correct
+    Then expect ship-to address on mail is correct
+    Then expect email on mail is correct
     Then show advanced options
-    Then expect reference # on mail is Ref#xyz123
     Then expect reference # on mail is correct
-    Then expect cost code on mail is correct?
+    Then expect cost code on mail is correct
