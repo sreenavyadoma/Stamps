@@ -37,3 +37,13 @@ Feature:  History Filter Panel
     Then expect past 2 years is selected on history filter panel
     Then expect past 2 years count on history filter panel is greater than 0
 
+  @history_filter_direct_url
+    Then sign-in to mail
+    Then navigate to delivered filter on history directly
+    Then expect delivered is selected on history filter panel status
+    Then navigate to pending recipient action filter on history directly
+    Then expect pending recipient action is selected on history filter panel status
+    Then navigate to undeliverable filter on history directly
+    Then expect undeliverable is selected on history filter panel status
+    Then sign out
+

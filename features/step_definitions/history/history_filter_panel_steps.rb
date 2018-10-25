@@ -189,4 +189,28 @@ Then /^expect all count on history filter panel is greater than (\d+)$/ do |num|
   expect(date_printed.all_count.text.to_i).to be > num.to_i
 end
 
-
+Then /^navigate to (delivered|pending recipient action|undeliverable) filter on history directly$/ do |str|
+  env = case SdcEnv.env
+          when :qacc
+            'ext.qacc'
+          when :qasc
+            'ext.qasc'
+          when :stg
+            '.staging'
+          when :prod
+            ''
+          else
+            # ignore
+        end
+  filter = case str
+             when 'delivered'
+               'delivered'
+             when 'pending recipient action'
+               'pendingaction'
+             when 'undeliverable'
+               'undeliverable'
+             else
+               #ignore
+           end
+  step "go to url https://or#{env}.stamps.com/PostageTools/redirect?p=#{filter}&IsInStore=1"
+end
