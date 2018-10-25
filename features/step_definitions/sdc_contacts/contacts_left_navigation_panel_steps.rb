@@ -79,7 +79,7 @@ Then /^search contacts from contacts filter panel with name (.*)$/ do |str|
 end
 
 Then /^delete all available contacts with the value (.*)$/ do |str|
-  step "on left navigation menu search contact #{str}"
+  step "search contacts from contacts filter panel with name #{str}"
   search_results= SdcContacts.search_results_filter
   actual_count =search_results.search_results_count.text_value
   if actual_count.to_i != 0
@@ -88,8 +88,8 @@ Then /^delete all available contacts with the value (.*)$/ do |str|
       step "in contacts grid check row #{i}"
       i=i+1
     end
-    step 'click contacts toolbar delete button'
-    step 'delete contacts message box click on yes button'
+    step 'click delete button on contacts toolbar'
+    step 'click yes button on delete contacts modal'
     #SdcLogger.info 'actual :' + actual_count
     new_count =search_results.search_results_count.text_value
     #SdcLogger.info 'new_count :' + new_count

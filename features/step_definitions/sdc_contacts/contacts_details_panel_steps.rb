@@ -114,10 +114,10 @@ Then /^set contact details to$/ do |table|
     # Do not set value of groups
   elsif groups.downcase.include?('random')
     step 'click on groups expand button of contacts left navigation'
-    left_nav_group  = SdcContacts.contacts_left_nav_group
-    row_count = left_nav_group.total_groups.count
+    left_nav_group  = SdcContacts.cost_code_filter
+    row_count = left_nav_group.total_costcodes.count
     if row_count != 0
-      groups = left_nav_group.group('name',rand(1..row_count-1))
+      groups = left_nav_group.group('name',rand(1..row_count-1)).text_value
       step 'click on groups collapse button of contacts left navigation'
       step "set contact details groups to #{groups}"
     else
@@ -140,9 +140,9 @@ Then /^set contact details to$/ do |table|
     # Do not do anything
   elsif
   step 'click on cost codes expand button of contacts left navigation'
-    left_nav_costcode = SdcContacts.contacts_left_nav_cost_code
+    left_nav_costcode = SdcContacts.cost_code_filter
     row_count = left_nav_costcode.total_costcodes.count
-    cost_code = left_nav_costcode.cost_code_name(rand(1..row_count-1))
+    cost_code = left_nav_costcode.cost_code_name(rand(1..row_count-1)).text_value
     step 'click on cost codes collapse button of contacts left navigation'
     step "set contact details cost code to #{cost_code}"
   else

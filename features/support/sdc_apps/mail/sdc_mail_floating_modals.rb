@@ -359,7 +359,7 @@ module SdcMail
 
 
     class AddressCleansingModal < SdcPage
-      page_object(:title) { { xpath: '//div[contains(@class, "x-window-header-title")]//div[@class="x-title-text x-title-text-default x-title-item"]' } }
+      page_object(:title) { { xpath: '//div[contains(@class, "x-window-header-title")]//div[contains(text(),"Address Cleansing")][@class="x-title-text x-title-text-default x-title-item"]' } }
       page_object(:x_button) { { xpath: '//span[contains(@class, "icon-mobile-close-light")]' } }
       page_object(:address, tag: :textarea) { { xpath: '//textarea[@name="invalidAddressTextArea"]' } }
       page_object(:address_close_icon, tag: :span) { { xpath: '//span[contains(@class,"sdc-icon-stop")]' } }

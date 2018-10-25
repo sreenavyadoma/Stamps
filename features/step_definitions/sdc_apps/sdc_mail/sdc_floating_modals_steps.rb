@@ -87,12 +87,13 @@ end
 
 Then /^expect address cleansing modal is present$/ do
   address_cleansing=SdcMail.modals.address_cleansing
-  address_cleansing.title.flash
+  address_cleansing.title.safe_wait_until_present(timeout:10)
   expect(address_cleansing.title.present?).to be(true)
 end
 
 Then /^click accept button on address cleansing modal$/ do
   address_cleansing=SdcMail.modals.address_cleansing
-  address_cleansing.accept_button.flash
+  address_cleansing.accept_button.safe_wait_until_present(timeout:10)
   expect(address_cleansing.accept_button.present?).to be(true)
+  address_cleansing.accept_button.click
 end

@@ -456,7 +456,6 @@ end
 Then /^click on yes button of delete groups pop up$/ do
   delete_groups =  SdcContacts.delete_groups
   delete_groups.groups_delete_yes_button.safe_wait_until_present(timeout: 10)
-  delete_groups.groups_delete_yes_button.flash
   delete_groups.groups_delete_yes_button.click
   step "expect manage groups popup is displayed"
 end
