@@ -3,11 +3,11 @@ Then /^add a valid contact with domestic address$/ do
 
   full_name = TestHelper.rand_full_name
   company =TestHelper.rand_comp_name
-  country = "United States"
-  street_address = "2441 61st St"
-  city = "Port Arthur"
-  state = "TX"
-  postal_code = "77640-6942"
+  country = 'United States'
+  street_address = '2441 61st St'
+  city = 'Port Arthur'
+  state = 'TX'
+  postal_code = '77640-6942'
   email =  TestHelper.rand_email
   full_phone = TestHelper.rand_phone_format
   phone_ext =  TestHelper.rand_phone
@@ -113,15 +113,15 @@ Then /^set contact details to$/ do |table|
   if groups.empty?
     # Do not set value of groups
   elsif groups.downcase.include?('random')
-    step "click on groups expand button of contacts left navigation"
-    left_nav_group  = SdcContacts.group_filter
+    step 'click on groups expand button of contacts left navigation'
+    left_nav_group  = SdcContacts.contacts_left_nav_group
     row_count = left_nav_group.total_groups.count
     if row_count != 0
-      groups = left_nav_group.group('name',rand(1..row_count-1)).text_value
-      step "click on groups collapse button of contacts left navigation"
+      groups = left_nav_group.group('name',rand(1..row_count-1))
+      step 'click on groups collapse button of contacts left navigation'
       step "set contact details groups to #{groups}"
     else
-      SdcLogger.info "No Groups for this account to add"
+      SdcLogger.info 'No Groups for this account to add'
     end
   else
     step "set contact details groups to #{groups}"
@@ -139,10 +139,10 @@ Then /^set contact details to$/ do |table|
   if cost_code.empty?
     # Do not do anything
   elsif
-  step "click on cost codes expand button of contacts left navigation"
-    left_nav_costcode = SdcContacts.cost_code_filter
+  step 'click on cost codes expand button of contacts left navigation'
+    left_nav_costcode = SdcContacts.contacts_left_nav_cost_code
     row_count = left_nav_costcode.total_costcodes.count
-    cost_code = left_nav_costcode.cost_code_name(rand(1..row_count-1)).text_value
+    cost_code = left_nav_costcode.cost_code_name(rand(1..row_count-1))
     step 'click on cost codes collapse button of contacts left navigation'
     step "set contact details cost code to #{cost_code}"
   else
@@ -188,7 +188,7 @@ Then /^click on contact details panel name collapse button$/ do
 end
 
 Then /^set contact details name prefix to (.*)$/ do |str|
-  name_pre = SdcContacts.details_name_prefix
+  name_pre = SdcContacts.contacts_name_prefix
   name_pre.prefix_selection(value: str)
   name_pre.prefix_drop_down.click unless name_pre.selection.present?
   name_pre.prefix_text_field.set(str)
@@ -260,7 +260,7 @@ Then /^set contact details department to (.*)$/ do |str|
 end
 
 Then /^set contact details country to (.*)$/ do |str|
-  country = SdcContacts.details_country
+  country = SdcContacts.contacts_country
   country.selection_country(value: str)
   country.drop_down.click unless country.selection.present?
   country.text_field.set(str)
@@ -285,7 +285,7 @@ Then /^set contact details city to (.*)$/ do |str|
 end
 
 Then /^set contact details state to (.*)$/ do |str|
-  state = SdcContacts.details_state
+  state = SdcContacts.contacts_state
   state.selection_state(value: str)
   state.drop_down.click unless state.selection.present?
   state.text_field.set(str)
@@ -333,7 +333,7 @@ Then /^set contact details phone extension to (.*)$/ do |str|
 end
 
 Then /^set contact details groups to (.*)$/ do |str|
-  group = SdcContacts.details_group
+  group = SdcContacts.contacts_group
   group.selection_group(value: str)
   group.drop_down.click unless group.selection.present?
   group.text_field.set(str)
@@ -351,7 +351,7 @@ Then /^set contact details reference number to (.*)$/ do |str|
 end
 
 Then /^set contact details cost code to (.*)$/ do |str|
-  cost_code = SdcContacts.details_cost_code
+  cost_code = SdcContacts.contacts_cost_code
   cost_code.selection_costcode(value: str)
   cost_code.drop_down.click unless cost_code.selection.present?
   cost_code.text_field.set(str)
@@ -362,33 +362,33 @@ Then /^set contact details cost code to (.*)$/ do |str|
 end
 
 Then /^expect email error is displayed$/ do
-  error= SdcContacts.details_email_error
+  error= SdcContacts.contacts_email_error
   error.email_error.safe_wait_until_present(timeout:10)
   #expect(error.email_error.present?).to be(true)
 end
 
 Then /^expect email error is not displayed$/ do
-  error= SdcContacts.details_email_error
+  error= SdcContacts.contacts_email_error
   expect(error.email_error.present?).to be(false)
 end
 
 Then /^click on contact details menu dropdown$/ do
-  toolbar_menu = SdcContacts.details_toolbar_menu
+  toolbar_menu = SdcContacts.contacts_detail_toolbar_menu
   toolbar_menu.menu_button.safe_wait_until_present(timeout: 20)
   toolbar_menu.menu_button.wait_until_present(timeout: 20)
   toolbar_menu.menu_button.click
 end
 
 Then /^select (.*) from dropdown menu$/ do |menu_item|
-  toolbar_menu = SdcContacts.details_toolbar_menu
+  toolbar_menu = SdcContacts.contacts_detail_toolbar_menu
   case menu_item
-  when menu_item.eql("Print Postage")
+  when 'Print Postage'
     toolbar_menu.menu_print_postage.wait_until_present(timeout: 10)
     toolbar_menu.menu_print_postage.click
-  when menu_item.eql("Delete")
+  when 'Delete'
     toolbar_menu.menu_delete.wait_until_present(timeout: 10)
     toolbar_menu.menu_delete.click
-  when menu_item.eql("Collapse Panel")
+  when 'Collapse Panel'
     toolbar_menu.menu_collapse_panel.wait_until_present(timeout: 10)
     toolbar_menu.menu_collapse_panel.click
   else
@@ -450,7 +450,7 @@ Then /^expect value of (.*) in contact details panel is (.*)$/ do |label,value|
     actual_value = contacts_detail.name.text_value
 
   when 'Prefix'
-    name_pre = SdcContacts.details_name_prefix
+    name_pre = SdcContacts.contacts_name_prefix
     actual_value =  name_pre.prefix_text_field.text_value
 
   when 'First Name'
@@ -475,7 +475,7 @@ Then /^expect value of (.*) in contact details panel is (.*)$/ do |label,value|
     actual_value = contacts_detail.department.text_value
 
   when 'Country'
-    country = SdcContacts.details_country
+    country = SdcContacts.contacts_country
     actual_value = country.text_field.text_value
 
   when 'Street Address'
@@ -485,7 +485,7 @@ Then /^expect value of (.*) in contact details panel is (.*)$/ do |label,value|
     actual_value = contacts_detail.city.text_value
 
   when 'State/Prv' ,'State','Province'
-    state = SdcContacts.details_state
+    state = SdcContacts.contacts_state
     if state.text_field.present?
       actual_value = state.text_field.text_value
     else
@@ -505,16 +505,16 @@ Then /^expect value of (.*) in contact details panel is (.*)$/ do |label,value|
     actual_value = contacts_detail.phone_ext.text_value
 
   when 'Groups'
-    groups = SdcContacts.details_group
+    groups = SdcContacts.contacts_group
     actual_value=groups.text_field.text_value
 
   when 'Reference Number'
     actual_value = contacts_detail.reference_number.text_value
 
   when 'Cost Code'
-    cost_code = SdcContacts.details_cost_code
+    cost_code = SdcContacts.contacts_cost_code
     actual_value = cost_code.text_field.text_value
-    if new_value ==""
+    if new_value.eql? ''
       new_value = 'None'
     end
   end
@@ -533,7 +533,7 @@ Then /^set street address on contact page details to maximum lines (\d+)$/ do |l
   street1 = TestHelper.rand_street1_address
   street2 = TestHelper.rand_street2_address
   street3 = TestHelper.rand_street3_address
-  if lines == 3
+  if lines.eql? '3'
     contacts_detail.street_address.send_keys(street1 + "\n"+ street2 + "\n" + street3)
     address = contacts_detail.street_address.text_value
     address = address.split("\n")
@@ -561,7 +561,7 @@ end
 
 Then /^set address to (.*)$/ do |address|
   case address
-  when "domestic"
+  when 'domestic'
     country = 'United States'
     street_address = TestHelper.rand_street1_address
     city =   TestHelper.rand_city_name
@@ -570,7 +570,7 @@ Then /^set address to (.*)$/ do |address|
     state = states[rand(us_states.size)]
     SdcLogger.info  "state value from random states value #{state}"
     postal_code = TestHelper.rand_postal_code
-  when "international"
+  when 'international'
     domestic_countries = {"Afghanistan"=>"AF",
                           "Albania"=>"AL",
                           "Algeria"=>"DZ",
@@ -811,7 +811,7 @@ Then /^set address to (.*)$/ do |address|
     state = states[rand(us_states.size)]
     SdcLogger.info  "state value from random states value #{state}"
     postal_code = TestHelper.rand_postal_code
-  when "apo"
+  when 'apo'
     country = 'United States'
     apo_states = {"AA (Armed Forces)" => "AA", "AE (Armed Forces)" => "AE"}
     apo_states = apo_states.keys
@@ -821,13 +821,13 @@ Then /^set address to (.*)$/ do |address|
     city =   TestHelper.rand_city_name
     postal_code = TestHelper.rand_postal_code
   end
-  if address == "international"
+  if address.eql? 'international'
     step "set contact details country to #{country}"
   end
   step "set contact details street address to #{street_address}"
   step "set contact details city to #{city}"
 
-  if country == "United States"
+  if country.eql? 'United States'
     step "set contact details state to #{state}"
   else
     step "set contact details province to #{state}"
@@ -840,6 +840,7 @@ Then /^set address to (.*)$/ do |address|
   TestData.hash[:state] = state
   TestData.hash[:postal_code] = postal_code
 end
+
 Then /^expect clear all link is displayed on contact detail panel$/ do
   contacts_detail= SdcContacts.contacts_detail
   expect(contacts_detail.clear_all_link.present?).to be (true)
@@ -852,7 +853,7 @@ Then /^click on clear all link of contact detail panel$/ do
 end
 
 Then /^search contact details country with value (.*)$/ do |str|
-  country = SdcContacts.details_country
+  country = SdcContacts.contacts_country
   country.selection_country(value: str)
   country.drop_down.click unless country.selection.present?
   country.text_field.set(str)
@@ -869,7 +870,7 @@ Then /^search contact details country with value (.*)$/ do |str|
 end
 
 Then /^expect search country list contains value (.*)$/ do |country_name|
-  country = SdcContacts.details_country
+  country = SdcContacts.contacts_country
   search_list_count=  TestData.hash[:country_list].size
   i=1
   while  i < search_list_count
