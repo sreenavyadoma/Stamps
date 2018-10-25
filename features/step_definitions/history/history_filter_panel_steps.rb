@@ -189,6 +189,21 @@ Then /^expect all count on history filter panel is greater than (\d+)$/ do |num|
   expect(date_printed.all_count.text.to_i).to be > num.to_i
 end
 
+
+Then /^expect delivered is selected on history filter panel status$/ do
+  status = SdcHistory.filter_panel.status
+  expect(status.delivered.selected?).to be true
+end
+
+Then /^expect pending recipient action is selected on history filter panel status$/ do
+  status = SdcHistory.filter_panel.status
+  expect(status.pending_recipient_action.selected?).to be true
+end
+Then /^expect undeliverable is selected on history filter panel status$/ do
+  status = SdcHistory.filter_panel.status
+  expect(status.undeliverable.selected?).to be true
+end
+
 Then /^navigate to (delivered|pending recipient action|undeliverable) filter on history directly$/ do |str|
   env = case SdcEnv.env
           when :qacc
@@ -213,4 +228,9 @@ Then /^navigate to (delivered|pending recipient action|undeliverable) filter on 
                #ignore
            end
   step "go to url https://or#{env}.stamps.com/PostageTools/redirect?p=#{filter}&IsInStore=1"
+end
+
+Then /^wait while loading history filters grid$/ do
+  SdcHistory.filter_panel.loading.safe_wait_until_present(timeout: 8)
+  SdcHistory.filter_panel.loading.wait_while_present(timeout: 240)
 end

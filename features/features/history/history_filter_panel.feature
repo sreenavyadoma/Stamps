@@ -40,10 +40,17 @@ Feature:  History Filter Panel
   @history_filter_direct_url
     Then sign-in to mail
     Then navigate to delivered filter on history directly
+    Then wait while loading history filters grid
     Then expect delivered is selected on history filter panel status
     Then navigate to pending recipient action filter on history directly
+    Then wait while loading history filters grid
     Then expect pending recipient action is selected on history filter panel status
     Then navigate to undeliverable filter on history directly
+    Then wait while loading history filters grid
     Then expect undeliverable is selected on history filter panel status
     Then sign out
+
+#  @history_filter_direct_url
+#    Then navigate to delivered filter on history directly
+
 
