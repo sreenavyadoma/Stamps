@@ -45,9 +45,11 @@ module SdcContacts
     def column_xpath(column)
       column = column_names[column] if column.class.eql?(Symbol)
       "*//span[text()='#{column}']"
+
     end
 
-    def header_element(column)
+    def contacts_header_element(column)
+
       if column.eql? :checkbox
         xpath = '*//div[contains(@class, "x-column-header-checkbox")]'
         page_object(:checkbox_header) { { xpath: xpath } }
@@ -103,7 +105,7 @@ module SdcContacts
     end
 
     def scroll_to(column)
-      field = header_element(column)
+      field = contacts_header_element(column)
       field.scroll_into_view
     end
 
@@ -208,8 +210,12 @@ module SdcContacts
     page_object(:verify) { { xpath: '//div[contains(@class, "x-column-header-text")]' } }
     SdcPage.chooser(:checkbox_header, :chooser, :verify, :class, 'checker-on')
 
-    def checkbox_row(row)
+    def scroll_into_view
       scroll_to(:checkbox)
+    end
+
+    def checkbox_row(row)
+      scroll_into_view
       chooser_xpath = "//table[#{row}]//div[@class='x-grid-row-checker']"
       chooser_name = "grid_chooser_#{row}"
       page_object(chooser_name) { { xpath: chooser_xpath } }

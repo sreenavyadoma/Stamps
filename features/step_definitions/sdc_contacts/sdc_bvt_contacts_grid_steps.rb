@@ -154,9 +154,7 @@ Then /^expect value of (.*) in contacts grid is (.*)$/ do |col,value|
   case col
   when 'Name'
     column = SdcContacts.grid_column(:name)
-    #p column
-    #expect(column).to be present?
-    p column.header_text
+    expect(column).present?
     expect(column.header_text).to eql('Name')
 
   when 'Prefix'
