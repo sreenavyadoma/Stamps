@@ -77,7 +77,6 @@ end
 
 Then /^[Cc]lick the [Ss]ign [Ii]n button in [Cc]ontacts$/ do
   contacts_modal = SdcWebsite.navigation.contacts_sign_in_modal
-  #verifying_account_info = SdcMail.verifying_account_info
   if SdcEnv.ios
     raise StandardError, 'Not Implemented'
   elsif SdcEnv.android
@@ -86,8 +85,8 @@ Then /^[Cc]lick the [Ss]ign [Ii]n button in [Cc]ontacts$/ do
     contacts_modal.contacts_sign_in_link.wait_until_present(timeout: 3)
     contacts_modal.contacts_sign_in_link.hover unless contacts_modal.sign_in.present?
     contacts_modal.sign_in.click
-    SdcContacts.verifying_account.safe_wait_until_present(timeout: 3)
-    SdcContacts.verifying_account.wait_while_present(timeout: 12)
+    SdcContacts.modals.verifying_account.safe_wait_until_present(timeout: 3)
+    SdcContacts.modals.verifying_account.wait_while_present(timeout: 12)
   end
 end
 

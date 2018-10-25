@@ -102,198 +102,198 @@ Then /^set contact details to$/ do |table|
 end
 
 Then /^set contact details name to (.*)$/ do |str|
-  contacts_detail = SdcContacts.contacts_detail
-  contacts_detail.name.safe_wait_until_present(timeout: 15)
-  contacts_detail.name.set(str)
-  contacts_detail.company.click
+  contact_details = SdcContacts.contact_details
+  contact_details.name.safe_wait_until_present(timeout: 15)
+  contact_details.name.set(str)
+  contact_details.company.click
 end
 
 Then /^click on contact details panel name expand button$/ do
-  contacts_detail = SdcContacts.contacts_detail
-  contacts_detail.name_expand.safe_wait_until_present(timeout: 15)
-  #contacts_detail.name_expand.flash
-  contacts_detail.name_expand.click
+  contact_details = SdcContacts.contact_details
+  contact_details.name_expand.safe_wait_until_present(timeout: 15)
+  #contact_details.name_expand.flash
+  contact_details.name_expand.click
 end
 
 Then /^click on contact details panel name collapse button$/ do
-  contacts_detail = SdcContacts.contacts_detail
-  contacts_detail.name_collapse.safe_wait_until_present(timeout: 15)
-  #contacts_detail.name_collapse.flash
-  contacts_detail.name_collapse.click
+  contact_details = SdcContacts.contact_details
+  contact_details.name_collapse.safe_wait_until_present(timeout: 15)
+  #contact_details.name_collapse.flash
+  contact_details.name_collapse.click
 end
 
 Then /^set contact details name prefix to (.*)$/ do |str|
-  name_pre = SdcContacts.contacts_name_prefix
+  name_pre = SdcContacts.contact_details.name_prefix
   name_pre.prefix_selection(value: str)
   name_pre.prefix_drop_down.click unless name_pre.selection.present?
   name_pre.prefix_text_field.set(str)
   name_pre.selection.safe_click
   expect(name_pre.prefix_text_field.text_value).to include(str)
-  contacts_detail = SdcContacts.contacts_detail
-  contacts_detail.name.click
+  contact_details = SdcContacts.contact_details
+  contact_details.name.click
 end
 
 Then /^set contact details firstname to (.*)$/ do |str|
-  contacts_detail = SdcContacts.contacts_detail
-  contacts_detail.first_name.safe_wait_until_present(timeout: 15)
-  contacts_detail.first_name.set(str)
-  contacts_detail.middle_name.click
+  contact_details = SdcContacts.contact_details
+  contact_details.first_name.safe_wait_until_present(timeout: 15)
+  contact_details.first_name.set(str)
+  contact_details.middle_name.click
 end
 
 Then /^set contact details middlename to (.*)$/ do |str|
-  contacts_detail = SdcContacts.contacts_detail
-  contacts_detail.middle_name.safe_wait_until_present(timeout: 15)
-  contacts_detail.middle_name.set(str)
-  contacts_detail.last_name.click
+  contact_details = SdcContacts.contact_details
+  contact_details.middle_name.safe_wait_until_present(timeout: 15)
+  contact_details.middle_name.set(str)
+  contact_details.last_name.click
 end
 
 Then /^set contact details lastname to (.*)$/ do |str|
-  contacts_detail = SdcContacts.contacts_detail
-  contacts_detail.last_name.safe_wait_until_present(timeout: 15)
-  contacts_detail.last_name.set(str)
-  contacts_detail.name_suffix.click
+  contact_details = SdcContacts.contact_details
+  contact_details.last_name.safe_wait_until_present(timeout: 15)
+  contact_details.last_name.set(str)
+  contact_details.name_suffix.click
 end
 
 Then /^set contact details suffix to (.*)$/ do |str|
-  contacts_detail = SdcContacts.contacts_detail
-  contacts_detail.name_suffix.safe_wait_until_present(timeout: 15)
-  contacts_detail.name_suffix.set(str)
-  contacts_detail.company.click
+  contact_details = SdcContacts.contact_details
+  contact_details.name_suffix.safe_wait_until_present(timeout: 15)
+  contact_details.name_suffix.set(str)
+  contact_details.company.click
 end
 
 Then /^set contact details company to (.*)$/ do |str|
-  contacts_detail = SdcContacts.contacts_detail
-  contacts_detail.company.wait_until_present(timeout: 15)
-  contacts_detail.company.set(str)
-  contacts_detail.street_address.click
+  contact_details = SdcContacts.contact_details
+  contact_details.company.wait_until_present(timeout: 15)
+  contact_details.company.set(str)
+  contact_details.street_address.click
 end
 
 Then /^click on contact details panel company expand [Bb]utton$/ do
-  contacts_detail = SdcContacts.contacts_detail
-  contacts_detail.company_expand.safe_wait_until_present(timeout: 15)
-  contacts_detail.company_expand.click
+  contact_details = SdcContacts.contact_details
+  contact_details.company_expand.safe_wait_until_present(timeout: 15)
+  contact_details.company_expand.click
 end
 
 Then /^click on contact details panel company collapse [Bb]utton$/ do
-  contacts_detail = SdcContacts.contacts_detail
-  contacts_detail.company_collapse.safe_wait_until_present(timeout: 15)
-  contacts_detail.company_collapse.click
+  contact_details = SdcContacts.contact_details
+  contact_details.company_collapse.safe_wait_until_present(timeout: 15)
+  contact_details.company_collapse.click
 end
 
 Then /^set contact details title to (.*)$/ do |str|
-  contacts_detail = SdcContacts.contacts_detail
-  contacts_detail.title.safe_wait_until_present(timeout: 15)
-  contacts_detail.title.set(str)
-  contacts_detail.department.click
+  contact_details = SdcContacts.contact_details
+  contact_details.title.safe_wait_until_present(timeout: 15)
+  contact_details.title.set(str)
+  contact_details.department.click
 end
 
 Then /^set contact details department to (.*)$/ do |str|
-  contacts_detail = SdcContacts.contacts_detail
-  contacts_detail.department.safe_wait_until_present(timeout: 15)
-  contacts_detail.department.set(str)
-  contacts_detail.title.click
+  contact_details = SdcContacts.contact_details
+  contact_details.department.safe_wait_until_present(timeout: 15)
+  contact_details.department.set(str)
+  contact_details.title.click
 end
 
 Then /^set contact details country to (.*)$/ do |str|
-  country = SdcContacts.contacts_country
+  country = SdcContacts.contact_details.country
   country.selection_country(value: str)
   country.drop_down.click unless country.selection.present?
   country.text_field.set(str)
   country.selection.safe_click
   expect(country.text_field.text_value).to include(str)
-  contacts_detail = SdcContacts.contacts_detail
-  contacts_detail.street_address.click
+  contact_details = SdcContacts.contact_details
+  contact_details.street_address.click
 end
 
 Then /^set contact details street address to (.*)$/ do |str|
-  contacts_detail = SdcContacts.contacts_detail
-  contacts_detail.street_address.wait_until_present(timeout: 15)
-  contacts_detail.street_address.send_keys(str)
-  contacts_detail.postal_code.click
+  contact_details = SdcContacts.contact_details
+  contact_details.street_address.wait_until_present(timeout: 15)
+  contact_details.street_address.send_keys(str)
+  contact_details.postal_code.click
 end
 
 Then /^set contact details city to (.*)$/ do |str|
-  contacts_detail = SdcContacts.contacts_detail
-  contacts_detail.city.wait_until_present(timeout: 15)
-  contacts_detail.city.set(str)
-  contacts_detail.postal_code.click
+  contact_details = SdcContacts.contact_details
+  contact_details.city.wait_until_present(timeout: 15)
+  contact_details.city.set(str)
+  contact_details.postal_code.click
 end
 
 Then /^set contact details state to (.*)$/ do |str|
-  state = SdcContacts.contacts_state
+  state = SdcContacts.contact_details.state
   state.selection_state(value: str)
   state.drop_down.click unless state.selection.present?
   state.text_field.set(str)
   state.selection.safe_click
   expect(state.text_field.text_value).to include(str)
-  contacts_detail = SdcContacts.contacts_detail
-  contacts_detail.postal_code.click
+  contact_details = SdcContacts.contact_details
+  contact_details.postal_code.click
 end
 
 Then /^set contact details province to (.*)$/ do |str|
-  contacts_detail = SdcContacts.contacts_detail
-  contacts_detail.province.wait_until_present(timeout: 15)
-  contacts_detail.province.set(str)
-  contacts_detail.postal_code.click
+  contact_details = SdcContacts.contact_details
+  contact_details.province.wait_until_present(timeout: 15)
+  contact_details.province.set(str)
+  contact_details.postal_code.click
 end
 
 Then /^set contact details postal code to (.*)$/ do |str|
-  contacts_detail = SdcContacts.contacts_detail
-  contacts_detail.postal_code.wait_until_present(timeout: 15)
-  contacts_detail.postal_code.set(str)
-  contacts_detail.email.click
+  contact_details = SdcContacts.contact_details
+  contact_details.postal_code.wait_until_present(timeout: 15)
+  contact_details.postal_code.set(str)
+  contact_details.email.click
 end
 
 Then /^set contact details email to (.*)$/ do |str|
-  contacts_detail = SdcContacts.contacts_detail
-  contacts_detail.email.wait_until_present(timeout: 15)
-  contacts_detail.email.set(str)
-  contacts_detail.phone.click
-  #SdcContacts.contacts_detail.email.set(str)
-  #SdcContacts.contacts_detail.title.click
+  contact_details = SdcContacts.contact_details
+  contact_details.email.wait_until_present(timeout: 15)
+  contact_details.email.set(str)
+  contact_details.phone.click
+  #SdcContacts.contact_details.email.set(str)
+  #SdcContacts.contact_details.title.click
 end
 
 Then /^set contact details phone to (.*)$/ do |str|
-  contacts_detail = SdcContacts.contacts_detail
-  contacts_detail.phone.wait_until_present(timeout: 15)
-  contacts_detail.phone.set(str)
-  contacts_detail.phone_ext.click
+  contact_details = SdcContacts.contact_details
+  contact_details.phone.wait_until_present(timeout: 15)
+  contact_details.phone.set(str)
+  contact_details.phone_ext.click
 end
 
 Then /^set contact details phone extension to (.*)$/ do |str|
-  contacts_detail = SdcContacts.contacts_detail
-  contacts_detail.phone_ext.wait_until_present(timeout: 15)
-  contacts_detail.phone_ext.set(str)
-  contacts_detail.reference_number.click
+  contact_details = SdcContacts.contact_details
+  contact_details.phone_ext.wait_until_present(timeout: 15)
+  contact_details.phone_ext.set(str)
+  contact_details.reference_number.click
 end
 
 Then /^set contact details groups to (.*)$/ do |str|
-  group = SdcContacts.contacts_group
+  group = SdcContacts.contact_details.group
   group.selection_group(value: str)
   group.drop_down.click unless group.selection.present?
   group.text_field.set(str)
   group.selection.safe_click
-  contacts_detail = SdcContacts.contacts_detail
-  contacts_detail.reference_number.click
+  contact_details = SdcContacts.contact_details
+  contact_details.reference_number.click
   #expect(group.text_list.text_value).to include(str)
 end
 
 Then /^set contact details reference number to (.*)$/ do |str|
-  contacts_detail = SdcContacts.contacts_detail
-  contacts_detail.reference_number.wait_until_present(timeout: 15)
-  contacts_detail.reference_number.set(str)
-  contacts_detail.phone_ext.click
+  contact_details = SdcContacts.contact_details
+  contact_details.reference_number.wait_until_present(timeout: 15)
+  contact_details.reference_number.set(str)
+  contact_details.phone_ext.click
 end
 
 Then /^set contact details cost code to (.*)$/ do |str|
-  cost_code = SdcContacts.contacts_cost_code
+  cost_code = SdcContacts.contact_details.cost_code
   cost_code.selection_costcode(value: str)
   cost_code.drop_down.click unless cost_code.selection.present?
   cost_code.text_field.set(str)
   cost_code.selection.safe_click
   expect(cost_code.text_field.text_value).to include(str)
-  contacts_detail = SdcContacts.contacts_detail
-  contacts_detail.reference_number.click
+  contact_details = SdcContacts.contact_details
+  contact_details.reference_number.click
 end
 
 Then /^expect email error is displayed$/ do
@@ -308,14 +308,14 @@ Then /^expect email error is not displayed$/ do
 end
 
 Then /^click on contact details menu dropdown$/ do
-  toolbar_menu = SdcContacts.contacts_detail_toolbar_menu
+  toolbar_menu = SdcContacts.contact_details.toolbar_menu
   toolbar_menu.menu_button.safe_wait_until_present(timeout: 20)
   toolbar_menu.menu_button.wait_until_present(timeout: 20)
   toolbar_menu.menu_button.click
 end
 
 Then /^select (.*) from dropdown menu$/ do |menu_item|
-  toolbar_menu = SdcContacts.contacts_detail_toolbar_menu
+  toolbar_menu = SdcContacts.contact_details.toolbar_menu
   case menu_item
   when menu_item.eql("Print Postage")
     toolbar_menu.menu_print_postage.wait_until_present(timeout: 10)
@@ -332,7 +332,7 @@ Then /^select (.*) from dropdown menu$/ do |menu_item|
 end
 
 Then /^expand collapsed contact details panel$/ do
-  contact_detail = SdcContacts.contacts_detail
+  contact_detail = SdcContacts.contact_details
   contact_detail.expand_button.wait_until_present(timeout: 10)
   contact_detail.expand_button.flash
   contact_detail.expand_button.click
@@ -370,8 +370,8 @@ end
 
 #Validation of Values on the Details Panel
 Then /^expect value of (.*) in contact details panel is (.*)$/ do |label,value|
-  contacts_detail = SdcContacts.contacts_detail
-  contacts_detail.reference_number.safe_wait_until_present(timeout: 15)
+  contact_details = SdcContacts.contact_details
+  contact_details.reference_number.safe_wait_until_present(timeout: 15)
 
   if value == 'blank'
     new_value = ""
@@ -381,72 +381,72 @@ Then /^expect value of (.*) in contact details panel is (.*)$/ do |label,value|
 
   case label
   when 'Name'
-    actual_value = contacts_detail.name.text_value
+    actual_value = contact_details.name.text_value
 
   when 'Prefix'
-    name_pre = SdcContacts.contacts_name_prefix
+    name_pre = SdcContacts.contact_details.name_prefix
     actual_value =  name_pre.prefix_text_field.text_value
 
   when 'First Name'
-    actual_value = contacts_detail.first_name.text_value
+    actual_value = contact_details.first_name.text_value
 
   when 'Middle Name'
-    actual_value = contacts_detail.middle_name.text_value
+    actual_value = contact_details.middle_name.text_value
 
   when 'Last Name'
-    actual_value = contacts_detail.last_name.text_value
+    actual_value = contact_details.last_name.text_value
 
   when 'Suffix'
-    actual_value = contacts_detail.name_suffix.text_value
+    actual_value = contact_details.name_suffix.text_value
 
   when 'Company'
-    actual_value = contacts_detail.company.text_value
+    actual_value = contact_details.company.text_value
 
   when 'Title'
-    actual_value = contacts_detail.title.text_value
+    actual_value = contact_details.title.text_value
 
   when 'Department'
-    actual_value = contacts_detail.department.text_value
+    actual_value = contact_details.department.text_value
 
   when 'Country'
-    country = SdcContacts.contacts_country
+    country = SdcContacts.contact_details.country
     actual_value = country.text_field.text_value
 
   when 'Street Address'
-    actual_value = contacts_detail.street_address.text_value
+    actual_value = contact_details.street_address.text_value
 
   when 'City'
-    actual_value = contacts_detail.city.text_value
+    actual_value = contact_details.city.text_value
 
   when 'State/Prv' ,'State','Province'
-    state = SdcContacts.contacts_state
+    state = SdcContacts.contact_details.state
     if state.text_field.present?
       actual_value = state.text_field.text_value
     else
-      actual_value = contacts_detail.state_prv.text_value
+      actual_value = contact_details.state_prv.text_value
     end
 
   when 'Postal Code'
-    actual_value = contacts_detail.postal_code.text_value
+    actual_value = contact_details.postal_code.text_value
 
   when 'Email'
-    actual_value = contacts_detail.email.text_value
+    actual_value = contact_details.email.text_value
 
   when 'Phone'
-    actual_value = contacts_detail.phone.text_value
+    actual_value = contact_details.phone.text_value
 
   when 'Phone Extension'
-    actual_value = contacts_detail.phone_ext.text_value
+    actual_value = contact_details.phone_ext.text_value
 
   when 'Groups'
-    groups = SdcContacts.contacts_group
+    groups = SdcContacts.contact_details.group
     actual_value = groups.text_field.text_value
 
   when 'Reference Number'
-    actual_value = contacts_detail.reference_number.text_value
+    actual_value = contact_details.reference_number.text_value
 
   when 'Cost Code'
-    cost_code = SdcContacts.contacts_cost_code
+    cost_code = SdcContacts.contact_details.cost_code
     actual_value = cost_code.text_field.text_value
     if new_value == ""
       new_value = 'None'
@@ -462,35 +462,35 @@ end
 
 
 Then /^set street address on contact page details to maximum lines (\d+)$/ do |lines|
-  contacts_detail = SdcContacts.contacts_detail
-  contacts_detail.street_address.wait_until_present(timeout: 15)
+  contact_details = SdcContacts.contact_details
+  contact_details.street_address.wait_until_present(timeout: 15)
   street1 = TestHelper.rand_street1_address
   street2 = TestHelper.rand_street2_address
   street3 = TestHelper.rand_street3_address
   if lines == 3
-    contacts_detail.street_address.send_keys(street1 + "\n" + street2 + "\n" + street3)
-    address = contacts_detail.street_address.text_value
+    contact_details.street_address.send_keys(street1 + "\n" + street2 + "\n" + street3)
+    address = contact_details.street_address.text_value
     address = address.split("\n")
     total_address = address[0] + " " + address[1] + " " + address[2]
   else
-    contacts_detail.street_address.send_keys(street1 + "\n" + street2 + "\n" + street3 + "\n" + street2)
-    address = contacts_detail.street_address.text_value
+    contact_details.street_address.send_keys(street1 + "\n" + street2 + "\n" + street3 + "\n" + street2)
+    address = contact_details.street_address.text_value
     address = address.split("\n")
     total_address = address[0] + " " + address[1] + " " + address[2] + " " + address[3]
   end
   TestData.hash[:street_address] = total_address
   SdcLogger.info "Given street address #{total_address}"
-  contacts_detail.postal_code.click
+  contact_details.postal_code.click
 end
 
 Then /^expect street address error message is displayed$/ do
-  contacts_detail = SdcContacts.contacts_detail
-  expect(contacts_detail.error_street_address.present?).to be(true)
+  contact_details = SdcContacts.contact_details
+  expect(contact_details.error_street_address.present?).to be(true)
 end
 
 Then /^expect street address error message is not displayed$/ do
-  contacts_detail = SdcContacts.contacts_detail
-  expect(contacts_detail.error_street_address.present?).to be(false)
+  contact_details = SdcContacts.contact_details
+  expect(contact_details.error_street_address.present?).to be(false)
 end
 
 Then /^set address to (.*)$/ do |address|
@@ -775,13 +775,13 @@ Then /^set address to (.*)$/ do |address|
   TestData.hash[:postal_code] = postal_code
 end
 Then /^expect clear all link is displayed on contact detail panel$/ do
-  contacts_detail= SdcContacts.contacts_detail
-  expect(contacts_detail.clear_all_link.present?).to be (true)
+  contact_details= SdcContacts.contact_details
+  expect(contact_details.clear_all_link.present?).to be (true)
 end
 
 Then /^click on clear all link of contact detail panel$/ do
-  contacts_detail= SdcContacts.contacts_detail
-  contacts_detail.clear_all_link.safe_wait_until_present(timeout: 15)
-  contacts_detail.clear_all_link.click
+  contact_details= SdcContacts.contact_details
+  contact_details.clear_all_link.safe_wait_until_present(timeout: 15)
+  contact_details.clear_all_link.click
 end
 

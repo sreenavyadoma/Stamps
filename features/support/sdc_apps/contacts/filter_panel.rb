@@ -115,27 +115,27 @@ module SdcContacts
     end
 
     class << self
-      def contacts_left_navigation_panel
+      def left_navigation_panel
         ContactsLeftNavigation.new
       end
 
-      def contacts_left_navigation_search_results
+      def contacts_left_navigation_search_results #todo-Aloha does this belong to SdcContacts.modals ?
         SearchResults.new
       end
 
-      def contacts_left_navigation_selected_contacts
+      def selected_contacts
         LeftNavigationSelected.new
       end
 
-      def contacts_left_navigation_all_contacts
+      def all_contacts
         LeftNavigationAllContacts.new
       end
 
-      def contacts_left_nav_cost_code
+      def cost_code
         LeftNavigationCostCodes.new
       end
 
-      def contacts_left_nav_group
+      def nav_group
         LeftNavigationGroups.new
       end
 

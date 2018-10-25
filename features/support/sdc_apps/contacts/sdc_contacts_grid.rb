@@ -237,6 +237,7 @@ module SdcContacts
     end
 
     class SdcContactsGridCheckBox < ContactsGridColumnBase
+      #todo-Aloha refactor name I don't want to see SdcContacts or Contacts in front of class name
       #sdc_param(:chooser_xpath) { '//*[@id="sdc-mainpanel-calculatepostageradio-displayEl"]' }
       page_object(:chooser) { { xpath: '//div[contains(@class, "x-column-header-text")]//span' } }
       page_object(:verify) { { xpath: '//div[contains(@class, "x-column-header-text")]' } }
@@ -260,7 +261,7 @@ module SdcContacts
       end
     end
 
-    class SdcContactsGridColumn < ContactsGridColumnBase
+    class SdcContactsGridColumn < ContactsGridColumnBase #todo-Aloha refactor name I don't want to see SdcContacts or Contacts in front of class name
       def initialize(column)
         @column = column
       end

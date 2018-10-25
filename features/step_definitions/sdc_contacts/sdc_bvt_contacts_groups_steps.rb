@@ -1,19 +1,19 @@
 Then /^click on groups expand button of contacts left navigation$/ do
-  left_nav_group  = SdcContacts.contacts_left_nav_group
+  left_nav_group  = SdcContacts.filter_panel.nav_group
   left_nav_group.groups_expand_button.safe_wait_until_present(timeout: 15)
   left_nav_group.groups_expand_button.click
   expect(left_nav_group.groups_collapse_button.present?).to be(true)
 end
 
 Then /^click on groups collapse button of contacts left navigation$/ do
-  left_nav_group  = SdcContacts.contacts_left_nav_group
+  left_nav_group  = SdcContacts.filter_panel.nav_group
   left_nav_group.groups_collapse_button.safe_wait_until_present(timeout: 15)
   left_nav_group.groups_collapse_button.click
   expect(left_nav_group.groups_expand_button.present?).to be(true)
 end
 
 Then /^fetch total against each group available$/ do
-  left_nav_group  = SdcContacts.contacts_left_nav_group
+  left_nav_group  = SdcContacts.filter_panel.nav_group
   row_count = left_nav_group.total_groups.count
   #"Total no of groups : " + row_count.to_s
   i=1
@@ -41,20 +41,20 @@ Then /^select (.*) from groups menu dropdown of contacts toolbar$/ do |str|
 end
 
 Then /^mousehover on groups section of left navigation$/ do
-  toolbar = SdcContacts.contacts_left_nav_group
+  toolbar = SdcContacts.filter_panel.nav_group
   toolbar.left_nav_groups.hover
   expect( toolbar.left_nav_add_groups.present?).to be(true)
 end
 
 Then /^click on groups add button of contacts left navigation$/ do
-  toolbar = SdcContacts.contacts_left_nav_group
+  toolbar = SdcContacts.filter_panel.nav_group
   toolbar.left_nav_add_groups.flash
   toolbar.left_nav_add_groups.click
   step "expect add groups pop up is displayed"
 end
 
 Then /^click on groups settings button of contacts left navigation$/ do
-  toolbar = SdcContacts.contacts_left_nav_group
+  toolbar = SdcContacts.filter_panel.nav_group
   toolbar.left_nav_add_edit_groups.flash
   toolbar.left_nav_add_edit_groups.click
 end
@@ -100,7 +100,7 @@ Then /^set group name on add group pop up to (.*)$/ do |name|
     else
       #from left nav
       step "click on groups expand button of contacts left navigation"
-      left_nav_group  = SdcContacts.contacts_left_nav_group
+      left_nav_group  = SdcContacts.filter_panel.nav_group
       row_count = left_nav_group.total_groups.count
       TestData.hash[:group_count] = row_count
       SdcLogger.info  "Total no of groups : #{row_count.to_s}"
