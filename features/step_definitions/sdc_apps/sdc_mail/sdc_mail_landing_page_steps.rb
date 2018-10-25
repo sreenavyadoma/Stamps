@@ -42,40 +42,9 @@ Then /^login to webclient$/ do
   pw = TestSession.env.pw
   TestData.hash[:username] = usr
   TestData.hash[:password] = pw
-
-
   step "set sign in page username to #{usr}"
   step "set sign in page password to #{pw}"
   step 'click sign in page sign-in button'
-
-
-
-  # if TestSession.env.ios_test
-  #   step 'ios: click sign-in button'
-  # elsif TestSession.env.browser_test
-  #   step 'browser: click sign-in button'
-  #   step 'check for server error'
-  #   if SdcGlobal.web_app.eql? :orders
-  #     step 'click through tutorial modal'
-  #     step 'close learn more modal'
-  #     step 'close add advanced shipping features modal'
-  #     step 'close whats new modal in orders'
-  #   end
-  # end
-  # TestData.hash[:username] = usr
-  # TestData.hash[:password] = pw
-  #
-  #
-  #
-  # if TestSession.env.mobile_device
-  #   step "mobile: sign-in to mail as #{usr}/#{pw}"
-  # elsif TestSession.env.responsive
-  #   step "mobile: sign-in to mail as #{usr}/#{pw}"
-  #   step 'mail rating error'
-  # else
-  #   step "browser: sign-in to mail as #{usr}/#{pw}"
-  #   step 'mail rating error'
-  # end
 end
 
 
