@@ -194,7 +194,7 @@ end
 Then /^click sign in page sign-in button$/ do
   landing_page = SdcWebsite.landing_page
   landing_page.sign_in.wait_until_present(timeout: 10)
-  landing_pagee.sign_in.click
+  landing_page.sign_in.click
 end
 
 Then /^click Orders landing page sign-in button$/ do
