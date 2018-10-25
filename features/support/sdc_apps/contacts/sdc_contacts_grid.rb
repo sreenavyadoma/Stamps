@@ -103,7 +103,7 @@ module SdcContacts
     end
 
     def scroll_to(column)
-      field = contacts_header_element(column)
+      field = header_element(column)
       field.scroll_into_view
     end
 
