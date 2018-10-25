@@ -15,7 +15,7 @@ Feature:  Contacts BVT - Print Postage
       | full_name | company | country| street_address | city | state | postal_code | phone  |  email | groups | reference_number|cost_code |
       |random  |random   |United States|189 Second St|Newburgh|New York|12550|random|random  |random      |random           |random      |
     Then in contacts grid uncheck row 1
-    Then search for contact newly added from the contacts left navigation filter
+    Then search contacts from contacts filter panel with name newly added
     Then in contacts grid check row 1
     Then click print postage button on contacts toolbar
     Then select print on Shipping Label - 5 ½" x 8 ½"

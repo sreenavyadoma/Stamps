@@ -43,7 +43,7 @@ Then /^expect number of contacts displayed in the grid is (.*)$/ do |count|
 end
 
 
-Then /^expect name details for (.*) in contacts grid is updated appropriately$/ do |name|
+Then /^expect name details on contacts grid are updated appropriately for (.*)$/ do |name|
   contacts_grid_body = SdcContacts.contacts_body
   contacts_grid_body.safe_wait_until_present(timeout: 60)
 

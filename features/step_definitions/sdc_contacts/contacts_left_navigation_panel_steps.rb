@@ -31,10 +31,10 @@ Then /^click on selected filter of contacts left navigation panel$/ do
   SdcContacts.contacts_body.safe_wait_until_present(timeout: 15)
 end
 
-Then /^expect empty state message of selected contacts is displayed on the contacts grid$/ do
+Then /^expect contacts grid message for selected contact is (.*)$/ do |message|
   grid=SdcContacts.contacts_col
   expect(grid.count.to_i).to eql(0)
-  expect(grid.grid_message).to eql('There are no contacts selected.')
+  expect(grid.grid_message).to eql(message)
 end
 
 Then /^expect all contacts filter is available on the contacts left navigation panel$/ do
@@ -63,7 +63,7 @@ Then /^expect cost codes filter is available on the contacts left navigation pan
   expect(contacts_left_navigation.cost_codes.present?).to be (true)
 end
 
-Then /^search for contact (.*) from the contacts left navigation filter$/ do |str|
+Then /^search contacts from contacts filter panel with name (.*)$/ do |str|
   contacts_detail= SdcContacts.contacts_detail
   contacts_detail.contacts_detail_panel.safe_wait_until_present(timeout: 15)
   if str.eql?'newly added'
@@ -147,7 +147,7 @@ Then /^expect count of contact search results is (.*)$/ do |count|
   expect(actual_count.to_i).to eql(count.to_i)
 end
 
-Then /^click on remove button of search results on contacts left navigation panel$/ do
+Then /^click remove button on search results of contacts filter$/ do
   search_results= SdcContacts.search_results_filter
   search_results.search_results_remove.safe_wait_until_present(timeout: 15)
   search_results.search_results_remove.click

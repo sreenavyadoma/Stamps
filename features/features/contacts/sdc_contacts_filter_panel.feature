@@ -27,7 +27,7 @@ Feature:  Contacts BVT - Contacts Filter Panel
     Then set search text on contacts left navigation search bar to Non Exsisting
     Then click search button on contacts left navigation search bar
     Then expect empty search message for searched contact is displayed on the contacts grid
-    Then click on remove button of search results on contacts left navigation panel
+    Then click remove button on search results of contacts filter
 	#Contacts Filter Panel - SELECTED Filter
     Then expect selected filter on the contacts left navigation panel is available
     Then fetch count of selected contacts
@@ -50,7 +50,7 @@ Feature:  Contacts BVT - Contacts Filter Panel
     Then sign-in to orders
     Then navigate to Contacts
     # Groups Left Navigation plus Button - Add
-    Then mousehover on groups section of left navigation
+    Then hover on groups section of left navigation
     Then click on groups add button of contacts left navigation
     Then set group name on add group pop up to blank
     Then click on save button of add groups pop up window
@@ -67,7 +67,7 @@ Feature:  Contacts BVT - Contacts Filter Panel
     Then sign-in to orders
     Then navigate to Contacts
     # Groups Left Navigation settings Button - Add from (manage groups)
-    Then mousehover on groups section of left navigation
+    Then hover on groups section of left navigation
     Then click on groups settings button of contacts left navigation
     Then expect manage groups pop up is displayed
     Then click add button on manage groups window toolbar
@@ -153,7 +153,7 @@ Feature:  Contacts BVT - Contacts Filter Panel
     Then select an existing group from left navigation filter panel
     Then expect count on selected filter is 2
 	#Searches contacts
-    Then search for contact aloha from the contacts left navigation filter
+    Then search contacts from contacts filter panel with name aloha
     Then expect count on selected filter is 2
 	#Changes pages or page numbers in the filter (Bottom footer)
     Then set per page drop down of pagination on contacts toolbar to 100

@@ -40,7 +40,7 @@ Then /^select (.*) from groups menu dropdown of contacts toolbar$/ do |str|
   end
 end
 
-Then /^mousehover on groups section of left navigation$/ do
+Then /^hover on groups section of left navigation$/ do
   toolbar = SdcContacts.group_filter
   toolbar.left_nav_groups.hover
   expect( toolbar.left_nav_add_groups.present?).to be(true)

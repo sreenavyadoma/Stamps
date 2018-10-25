@@ -12,7 +12,7 @@ Feature:  Contacts BVT - Contacts ToolBar
       | full_name | company | country| street_address | city | state | postal_code | phone  |  email | groups | reference_number|cost_code |
       |random     |random   |United States|random     |San Juan|Federated States Of Micronesia|0097-5824|23345142-123|random  |        |random           |          |
     Then in contacts grid uncheck row 1
-    Then search for contact newly added from the contacts left navigation filter
+    Then search contacts from contacts filter panel with name newly added
     Then in contacts grid check row 1
     Then expect values of contact added in contacts grid are correct
     Then expect values of contact added in contacts detail panel are correct
@@ -23,7 +23,7 @@ Feature:  Contacts BVT - Contacts ToolBar
     Then navigate to Contacts
     Then delete all available contacts with the value RuthAnand
     Then expect count of contact search results is 0
-    Then close the search results by clicking on remove button
+    Then click remove button on search results of contacts filter
     Then click add button on contacts toolbar
     Then Set Contact Details Name to RuthAnand
     Then Set Contact Details Company to FL Homes
@@ -41,13 +41,13 @@ Feature:  Contacts BVT - Contacts ToolBar
     Then Set Contact Details Reference Number to ref00012
     Then Set Contact Details Cost Code to Costcode1
     Then In Contacts Grid Uncheck Row 1
-    Then On Left Navigation Menu Search Contact Ruth
+    Then search contacts from contacts filter panel with name Ruth
     Then Expect Count of Contact Search Results is 1
     Then In Contacts Grid Check Row 1
     Then click delete button on contacts toolbar
     Then expect delete contacts modal is displayed
     Then click yes button on delete contacts modal
-    Then On Left Navigation menu search contact Ruth
+    Then search contacts from contacts filter panel with name Ruth
     Then Expect Count of Contact Search Results is 0
 
   @sdc_contacts_delete_multiple_from_top_navigation
@@ -56,7 +56,7 @@ Feature:  Contacts BVT - Contacts ToolBar
     Then navigate to Contacts
     Then delete all available contacts with the value Jon
     Then expect count of contact search results is 0
-    Then close the search results by clicking on remove button
+    Then click remove button on search results of contacts filter
     Then click add button on contacts toolbar
     Then set contact details name to Jon1
     Then in contacts grid uncheck row 1
@@ -66,13 +66,13 @@ Feature:  Contacts BVT - Contacts ToolBar
     Then click add button on contacts toolbar
     Then set contact details name to Jon3
     Then in contacts grid uncheck row 1
-    Then on left navigation menu search contact Jon
+    Then search contacts from contacts filter panel with name Jon
     Then expect count of contact search results is 3
     Then in contacts grid check row 1
     Then In contacts grid check row 3
     Then click delete button on contacts toolbar
     Then click yes button on delete contacts modal
-    Then on left navigation menu search contact Jon
+    Then search contacts from contacts filter panel with name Jon
     Then expect count of contact search results is 1
 
   @sdc_contacts_existing_add_invalid_reference_number
@@ -81,12 +81,12 @@ Feature:  Contacts BVT - Contacts ToolBar
     Then navigate to Contacts
     Then delete all available contacts with the value AddInValidReference
     Then expect count of contact search results is 0
-    Then close the search results by clicking on remove button
+    Then click remove button on search results of contacts filter
     Then click add button on contacts toolbar
     Then set contact details name to AddInValidReference
     Then set contact details reference number to valid
     Then in contacts grid uncheck row 1
-    Then on left navigation menu search contact AddInValidReference
+    Then search contacts from contacts filter panel with name AddInValidReference
     Then expect count of contact search results is 1
     Then in contacts grid check row 1
     Then click add reference button on contacts toolbar
@@ -101,11 +101,11 @@ Feature:  Contacts BVT - Contacts ToolBar
     Then navigate to Contacts
     Then delete all available contacts with the value AddValidReference
     Then expect count of contact search results is 0
-    Then close the search results by clicking on remove button
+    Then click remove button on search results of contacts filter
     Then click add button on contacts toolbar
     Then set contact details name to AddValidReference
     Then in contacts grid uncheck row 1
-    Then on left navigation menu search contact AddValidReference
+    Then search contacts from contacts filter panel with name AddValidReference
     Then expect count of contact search results is 1
     Then in contacts grid check row 1
     Then click add reference button on contacts toolbar
