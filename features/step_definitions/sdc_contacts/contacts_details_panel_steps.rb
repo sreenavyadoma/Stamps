@@ -861,7 +861,7 @@ Then /^search contact details country with value (.*)$/ do |str|
   i=1
   country_list = Array.new
   while  i <= search_list_count.count
-    country_list[i] = country.search_countries_list(str,i)
+    country_list[i] = country.search_countries_list(str,i).text_value
     i=i+1
   end
   TestData.hash[:country_list] = Array.new

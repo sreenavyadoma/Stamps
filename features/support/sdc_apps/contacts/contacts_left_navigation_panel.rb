@@ -14,29 +14,18 @@ module SdcContacts
   end
 
   class SearchResults < SdcPage
-    #page_object(:results){{xpath: '//*[@id="total_search_result"]'}}
-    #page_object(:search_results_count) { {xpath: '(//*[contains(@class, "sdc-badgebutton-widget")]//div[@class="sdc-badge"])'} }
-    #page_object(:search_results_text) { {xpath: '(//*[contains(@class, "sdc-badgebutton-text")])'} }
-    #page_object(:search_results_remove) { {xpath: '//*[contains(@class, "sdc-icon-remove")]'} }
     page_object(:search_results_remove) { {xpath: '//*[contains(@class, "sdc-badgebutton-default")]//a[contains(@class,"sdc-icon-remove")]'}}
     page_object(:search_results_count) { {xpath: '(//*[contains(@class, "sdc-badgebutton-widget")]//div[contains(@class, "sdc-badge")])[1]'} }
     page_object(:search_results) { {xpath: '(//*[contains(@class, "sdc-badgebutton-text")])[1]'} }
-
   end
 
   class Selected <SdcPage
-    #page_object(:selected){{xpath: '//*[@id=""]'}}
-    #page_object(:selected_count) { {xpath: '(//*[contains(@class, "sdc-badgebutton-widget")]//div[@class="sdc-badge"])'} }
-    #page_object(:selected_text) { {xpath: '(//*[contains(@class, "sdc-badgebutton-text")])'} }
     page_object(:selected) { {xpath: '(//*[contains(@class, "sdc-badgebutton sdc-badgebutton-first")])[2]'}}
     page_object(:selected_count) { {xpath: '(//*[contains(@class, "sdc-badgebutton-widget")]//div[contains(@class, "sdc-badge")])[2]'} }
     page_object(:label) { {xpath: '(//*[contains(@class, "sdc-badgebutton-text")])[2]'} }
   end
 
   class AllContacts <SdcPage
-    #page_object(:all_contacts){{xpath: '//*[@id="total_contacts"]'}}
-    #page_object(:all_contacts_count) { {xpath: '(//*[@id="total_contacts"]//div[contains(@class, "sdc-badgebutton-widget")]//div[@class="sdc-badge"])'} }
-    #page_object(:all_contacts_text) { {xpath: '([@id="total_contacts"]//div[contains(@class, "sdc-badgebutton-text")])'} }
     page_object(:all_contacts) { {xpath: '(//*[contains(@class, "sdc-badgebutton-default")])[3]'}}
     page_object(:all_contacts_count) { {xpath: '(//*[contains(@class, "sdc-badgebutton-widget")]//div[contains(@class, "sdc-badge")])[3]'} }
     page_object(:all_contacts_label) { {xpath: '(//*[contains(@class, "sdc-badgebutton-text")])[3]'} }
