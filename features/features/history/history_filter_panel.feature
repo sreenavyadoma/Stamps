@@ -40,6 +40,7 @@ Feature:  History Filter Panel
   @history_filter_direct_url
   Scenario: Navigating to direct URLs
     Then sign-in to mail
+    Then navigate to History
     Then navigate to delivered filter on history directly
     Then wait while loading history filters grid
     Then expect delivered is selected on history filter panel status
