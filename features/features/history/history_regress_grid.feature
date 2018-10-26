@@ -13,7 +13,7 @@ Feature:  Mail BVT
     Then click print label
     Then click continue on confirm print modal
     Then expect postage message panel tracking label is Postage was sent to your printer. Your Tracking Number is
-    Then save postage message panel tracking number
+    Then save tracking number on print form message panel
     Then navigate to History
     Then expect today is selected on history filter panel
     Then expect history grid column Shipment Status is Printed for row 1

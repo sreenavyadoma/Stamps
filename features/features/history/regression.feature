@@ -4,6 +4,7 @@ Feature:  History regression
     Given Start test driver
 
   @container_label_return_address
+  @container_label_return_address_selected
   Scenario: Container label return address is user selected
     Then sign-in to mail
     Then select print on Shipping Label - 8 ½" x 11" Paper
@@ -24,7 +25,7 @@ Feature:  History regression
     Then click print label
     Then click print button on mail print modal
     Then expect postage message panel tracking label is Postage was sent to your printer. Your Tracking Number is
-    Then save postage message panel tracking number
+    Then save tracking number on print form message panel
     Then navigate to History
     Then expand eligible for on history filter panel
     Then select container label on history filter panel eligible for
@@ -63,7 +64,7 @@ Feature:  History regression
     Then click print label
     Then click print button on mail print modal
     Then expect postage message panel tracking label is Postage was sent to your printer. Your Tracking Number is
-    Then save postage message panel tracking number
+    Then save tracking number on print form message panel
     Then navigate to History
     Then expand eligible for on history filter panel
     Then select container label on history filter panel eligible for
