@@ -63,7 +63,7 @@ Cucumber::Rake::Task.new(:extra_services_cost_for_rrb_service) do |t|
 end
 
 #CONTACTS
-#
+
 Cucumber::Rake::Task.new(:bug_postal_code_not_added_contact_details) do |t|
   t.profile = 'bug_postal_code_not_added_contact_details'
   t.cucumber_opts = "-p cuke_reports"

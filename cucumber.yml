@@ -635,5 +635,5 @@ sdc_contact_columns_name_sort:  --tags @sdc_contact_columns_name_sort --guess LO
 sdc_contacts_left_navigation_selected_filter:  --tags @sdc_contacts_left_navigation_selected_filter --guess LOG_LEVEL=info
 sdc_contacts_pagination_navigate_different_pages: --tags @sdc_contacts_pagination_navigate_different_pages --guess LOG_LEVEL=info
 sdc_contacts_search_country_results: --tags @sdc_contacts_search_country_results --guess LOG_LEVEL=info
-sdc_contact_top_nav_print_postage: --tags @sdc_contact_top_nav_print_postage --guess LOG_LEVEL = info
-bug_postal_code_not_added_contact_details: --tags @bug_postal_code_not_added_contact_details --guess LOG_LEVEL = info
+sdc_contact_top_nav_print_postage: --tags @sdc_contact_top_nav_print_postage --guess LOG_LEVEL=info
+bug_postal_code_not_added_contact_details: --tags @bug_postal_code_not_added_contact_details --guess LOG_LEVEL=info
