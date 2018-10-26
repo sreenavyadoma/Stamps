@@ -1,5 +1,5 @@
 Then /^check row header in contacts grid$/ do
-  contacts_grid_body = SdcContacts.contacts_body
+  contacts_grid_body = SdcContacts::Grid.body
   contacts_grid_body.safe_wait_until_present(timeout: 10)
   header_checkbox = SdcContacts.contacts_col.header_element(:checkbox)
   header_checkbox.safe_wait_until_present(timeout: 10)
@@ -8,7 +8,7 @@ Then /^check row header in contacts grid$/ do
 end
 
 Then /^uncheck row header in contacts grid$/ do
-  contacts_grid_body = SdcContacts.contacts_body
+  contacts_grid_body = SdcContacts::Grid.body
   contacts_grid_body.safe_wait_until_present(timeout: 10)
   header_checkbox = SdcContacts.contacts_col.header_element(:checkbox)
   header_checkbox.safe_wait_until_present(timeout: 10)
@@ -17,7 +17,7 @@ Then /^uncheck row header in contacts grid$/ do
 end
 
 Then /^in contacts grid check row (\d+)$/ do |row|
-  contacts_grid_body = SdcContacts.contacts_body
+  contacts_grid_body = SdcContacts::Grid.body
   contacts_grid_body.safe_wait_until_present(timeout: 60)
   checkbox = SdcContacts.grid_column(:checkbox).checkbox_row(row)
   checkbox.safe_wait_until_present(timeout: 30)
@@ -28,7 +28,7 @@ Then /^in contacts grid check row (\d+)$/ do |row|
 end
 
 Then /^in contacts grid uncheck row (\d+)$/ do |row|
-  contacts_grid_body = SdcContacts.contacts_body
+  contacts_grid_body = SdcContacts::Grid.body
   contacts_grid_body.safe_wait_until_present(timeout: 60)
   checkbox = SdcContacts.grid_column(:checkbox).checkbox_row(row)
   checkbox.safe_wait_until_present(timeout: 30)
@@ -44,7 +44,7 @@ end
 
 
 Then /^expect name details on contacts grid are updated appropriately for (.*)$/ do |name|
-  contacts_grid_body = SdcContacts.contacts_body
+  contacts_grid_body = SdcContacts::Grid.body
   contacts_grid_body.safe_wait_until_present(timeout: 60)
 
   col_prefix = SdcContacts.grid_column(:prefix)
@@ -146,7 +146,7 @@ end
 
 #Validate Details in Contacts Grid
 Then /^expect value of (.*) in contacts grid is (.*)$/ do |col,value|
-  contacts_grid_body = SdcContacts.contacts_body
+  contacts_grid_body = SdcContacts::Grid.body
   contacts_grid_body.safe_wait_until_present(timeout: 60)
 
   #SdcLogger.info '**Grid**'
