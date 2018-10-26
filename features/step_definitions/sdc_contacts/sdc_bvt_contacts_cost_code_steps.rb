@@ -160,7 +160,7 @@ end
 Then /^on left navigation expect (.*) is avilable under costcode filter$/ do |costcode_name|
 
   if costcode_name.eql?'new costcode added'
-    value = TestData.hash[:costcode_val]
+    value||= TestData.hash[:costcode_val]
   else
     value =costcode_name
   end
@@ -183,11 +183,7 @@ end
 
 Then /^on left navigation expect count of (.*) is (.*)$/ do |costcode_name,count|
   if costcode_name.eql?'new costcode added'
-    value = TestData.hash[:costcode_val]
-  left_nav_costcode = SdcContacts.contacts_left_nav_cost_code
-  row_count = left_nav_costcode.total_costcodes.count
-  if costcode_name .eql?'new costcode added'
-    value ||= TestData.hash[:costcode_val]
+    value||= TestData.hash[:costcode_val]
   else
     value =costcode_name
   end
@@ -201,8 +197,7 @@ Then /^on left navigation expect count of (.*) is (.*)$/ do |costcode_name,count
         SdcLogger.info "Cost code Name : #{left_nav_costcode.cost_code_name(i).text_value}"
         actual_count=left_nav_costcode.cost_code_count(i).text_value
         expect(actual_count).to eql(count)
-      if left_nav_costcode.cost_code_name(i).eql? value
-        actual_count=left_nav_costcode.cost_code_count(i)
+
       end
       i=i+1
     end
