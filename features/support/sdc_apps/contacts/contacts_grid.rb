@@ -62,7 +62,7 @@ module SdcContacts
           xpath = '*//div[contains(@class, "x-column-header-checkbox")]'
           page_object(:checkbox_header) { { xpath: xpath } }
           grid_checkbox_name = "grid_checkbox"
-          SdcPage.chooser(grid_checkbox_name, chooser_name, verify_name, :class, 'selected')
+          SdcPage.chooser(grid_checkbox_name, chooser_name, verify_name, :class, 'checker-on')
           instance_eval(grid_checkbox_name)
 
         else
@@ -285,9 +285,9 @@ module SdcContacts
 
     class << self
       # todo-Rob this column method will be removed. I need to see how it's being used first. all column calls should be done through grid_column(column)
-      # def column
-      #   ContactsGridColumnBase.new
-      # end
+      def column
+        GridColumnBase.new
+      end
 
       def body
         xpath = '//div[starts-with(@id, "contactsGrid-")][contains(@id, "-normal-body")]'
