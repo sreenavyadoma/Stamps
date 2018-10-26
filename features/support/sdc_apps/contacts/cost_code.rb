@@ -15,7 +15,7 @@ module SdcContacts
     page_object(:cost_code_table_value, required: true, timeout: 45 ) { { xpath: '//*[@id="codeTable"]//tr/td[2]'} }
 
     def count
-      xpath = "#{grid_container}//table"
+      xpath = "#{contacts_grid_container}//table"
       grid_row_ct = page_object(:contacts_grid_row_ct) { { xpath: xpath } }
       begin
         ct = grid_row_ct.size.to_i
