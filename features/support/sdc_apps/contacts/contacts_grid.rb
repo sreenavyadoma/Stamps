@@ -228,7 +228,7 @@ module SdcContacts
       end
     end
 
-    class GridCheckBox < ContactsGridColumnBase
+    class GridCheckBox < GridColumnBase
       page_object(:chooser) { { xpath: '//div[contains(@class, "x-column-header-text")]//span' } }
       page_object(:verify) { { xpath: '//div[contains(@class, "x-column-header-text")]' } }
       SdcPage.chooser(:checkbox_header, :chooser, :verify, :class, 'checker-on')
@@ -247,7 +247,7 @@ module SdcContacts
       end
     end
 
-    class GridColumn < ContactsGridColumnBase #todo-Aloha refactor name I don't want to see SdcContacts or Contacts in front of class name
+    class GridColumn < GridColumnBase #todo-Aloha refactor name I don't want to see SdcContacts or Contacts in front of class name
       def initialize(column)
         @column = column
       end
