@@ -6,7 +6,7 @@ module SdcContacts
     end
 
     def toolbar
-      Toolbar::GridToolbar.new
+      Toolbar::Toolbar.new
     end
 
     def filter_panel

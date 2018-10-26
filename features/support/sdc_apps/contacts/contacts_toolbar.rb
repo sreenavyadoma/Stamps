@@ -63,7 +63,7 @@ module SdcContacts
       end
 
       def groups_dropdown
-        CostCodesDropdown.new
+        GroupsDropdown.new
       end
 
       def cost_codes_dropdown

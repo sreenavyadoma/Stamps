@@ -253,12 +253,12 @@ module SdcContacts
       end
 
       def header_text
-        element = contacts_scroll_into_view
+        element = scroll_into_view
         element.text_value
       end
 
       def present?
-        element = contacts_scroll_into_view
+        element = scroll_into_view
         element.present?
       end
 
