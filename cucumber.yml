@@ -1,5 +1,5 @@
 
-default: --backtrace --profile alex_history
+default: --backtrace --profile saucelabs_alex
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -33,7 +33,7 @@ alex_test:  --tags @bvt_shipping_address_management BROWSER=ff URL=qacc USR=abqa
 saucelabs_alex: --tags @history_filter_direct_url URL=qacc USR=abqaccsas1 PW=password1 --guess SAUCE_USERNAME=robcruz SAUCE_ACCESS_KEY=0e60dbc9-5bbf-425a-988b-f81c42d6b7ef SELENIUM_BROWSER=firefox SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 10' SELENIUM_HOST=ondemand.saucelabs.com SELENIUM_PORT=443
 mail_print_envelope_11: --tags @mail_print_envelope_11 --guess PRINTER=factory
 poc_stg_chrome: --tags @authentication --guess URL=stg BROWSER=ff
-poc_stg_firefox: --tags @authentication --guess URL=stg BR      OWSER=ff
+poc_stg_firefox: --tags @authentication --guess URL=stg BROWSER=ff
 poc_cc_chrome: --tags @authentication --guess URL=cc BROWSER=ff
 poc_cc_firefox: --tags @authentication --guess URL=cc BROWSER=ff
 poc_sc_chrome: --tags @authentication --guess URL=sc BROWSER=ff
