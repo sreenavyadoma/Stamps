@@ -52,6 +52,10 @@ module SdcHistory
       def reprint
         Reprint.new
       end
+
+      def welcome
+        Welcome.new
+      end
     end
   end
 
@@ -349,5 +353,13 @@ module SdcHistory
     def paper_tray
       PaperTray.new
     end
+  end
+
+  class Welcome < SdcPage
+    page_object(:title) { {xpath: '//*[text()="Welcome!"]'} }
+    page_object(:x_btn) { {xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
+    page_object(:next) { {xpath: '//*[text()="Next"]'} }
+    page_object(:close) { {xpath: '//*[text()="Close"]'} }
+    page_object(:learn_more) { {xpath: '//*[text()="Learn More"]'} }
   end
 end
