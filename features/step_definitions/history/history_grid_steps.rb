@@ -20,6 +20,7 @@ Then /^expect history grid column (.+) is (.+) for row (\d+)$/ do |column, value
   expect(column.text_at_row(row)).to eql(value)
 end
 
+
 Then /^expect history grid column (.+) is (.+) for saved tracking number$/ do |column, value|
   grid_column = SdcHistory.grid.grid_column(:tracking_number)
   row_num = grid_column.row_num(TestData.hash[:tracking_number])
