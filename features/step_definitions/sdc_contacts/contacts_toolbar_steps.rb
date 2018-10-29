@@ -16,6 +16,11 @@ Then /^[Cc]lick [Cc]ontacts [Tt]oolbar [Dd]elete [Bb]utton$/ do
   del_con_win.title.safe_wait_until_present(timeout:10)
 end
 
+Then /^click contacts toolbar print postage button$/ do
+  SdcContacts.contacts_toolbar.print_postage.safe_click
+  step 'expect mail server error is not present'
+end
+
 Then /^[Cc]lick [Cc]ontacts [Tt]oolbar [Aa]dd [Rr]eference [Bb]utton$/ do
   toolbar = SdcContacts.contacts_toolbar
   toolbar.ref.safe_wait_until_present(timeout: 15)

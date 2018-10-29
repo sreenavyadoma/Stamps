@@ -54,13 +54,30 @@ module SdcHistory
   class HistoryEligibleFor < SdcPage
     page_object(:header) { { xpath: '//div[text()="Eligible For"]' } }
     page_object(:after_eligible_for_tool) { { xpath: '//div[text()="Eligible For"]/../../div[starts-with(@id,"tool")]/img' } }
-    page_object(:refund) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Refund"]' } }
+
+    page_object(:refund_chooser) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Refund"]' } }
+    page_object(:refund_verify) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Refund"]/../../../..' } }
+    chooser(:refund, :refund_chooser, :refund_verify, :class, :selected)
     page_object(:refund_count) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Refund"]/../following-sibling::td//*[@class="sdc-badge"]' } }
-    page_object(:scan_form) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="SCAN Form"]' } }
+
+    page_object(:container_label_chooser) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Container Label"]' } }
+    page_object(:container_label_verify) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Container Label"]/../../../..' } }
+    chooser(:container_label, :container_label_chooser, :container_label_verify, :class, :selected)
+    page_object(:container_label_count) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Container Label"]/../following-sibling::td//*[@class="sdc-badge"]' } }
+
+    page_object(:scan_form_chooser) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="SCAN Form"]' } }
+    page_object(:scan_form_verify) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="SCAN Form"]/../../../..' } }
+    chooser(:scan_form, :scan_form_chooser, :scan_form_verify, :class, :selected)
     page_object(:scan_form_count) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="SCAN Form"]/../following-sibling::td//*[@class="sdc-badge"]' } }
-    page_object(:usps_pickup) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="USPS Pickup"]' } }
+
+    page_object(:usps_pickup_chooser) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="USPS Pickup"]' } }
+    page_object(:usps_pickup_verify) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="USPS Pickup"]/../../../..' } }
+    chooser(:usps_pickup, :usps_pickup_chooser, :usps_pickup_verify, :class, :selected)
     page_object(:usps_pickup_count) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="USPS Pickup"]/../following-sibling::td//*[@class="sdc-badge"]' } }
-    page_object(:insurance_claim) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Insurance Claim"]' } }
+
+    page_object(:insurance_claim_chooser) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Insurance Claim"]' } }
+    page_object(:insurance_claim_verify) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Insurance Claim"]/../../../..' } }
+    chooser(:insurance_claim, :insurance_claim_chooser, :insurance_claim_verify, :class, :selected)
     page_object(:insurance_claim_count) { { xpath: '//*[contains(@class,"badgebutton")]//*[text()="Insurance Claim"]/../following-sibling::td//*[@class="sdc-badge"]' } }
   end
 
@@ -125,6 +142,13 @@ module SdcHistory
 
       def collapsed_view
         CollapsedView.new
+      end
+
+      def loading
+        klass = Class.new(SdcPage) do
+          page_object(:loading) { { xpath: '(//div[text()="Loading..."])[2]' } }
+        end
+        klass.new.loading
       end
     end
   end

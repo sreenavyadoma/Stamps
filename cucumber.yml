@@ -1,5 +1,5 @@
 
-default: --backtrace --profile alex_history
+default: --backtrace --profile local_browser
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -564,6 +564,7 @@ mail_fci_flats: --tags @mail_fci_flats --guess PRINTER=factory
 mail_hidden_postage: --tags @mail_hidden_postage --guess PRINTER=factory
 mail_bug_ordersauto_3243: --tags @mail_bug_ordersauto_3243 --guess PRINTER=factory
 mail_manage_printing_options: --tags @mail_manage_printing_options --guess
+mail_contacts_comm_error: --tags @mail_contacts_comm_error --guess
 pp_log_in_page_validation: --tags @pp_log_in_page_validation --guess
 pp_header_favicons_browser: --tags @pp_header_favicons_browser --guess
 pp_header_favicons_browser_mobile: --tags @pp_header_favicons_browser_mobile --guess
@@ -634,3 +635,4 @@ sdc_contact_columns_sort_asc_dec: --tags @sdc_contact_columns_sort_asc_dec --gue
 sdc_contact_columns_name_sort:  --tags @sdc_contact_columns_name_sort --guess LOG_LEVEL=info
 sdc_contacts_left_navigation_selected_filter:  --tags @sdc_contacts_left_navigation_selected_filter --guess LOG_LEVEL=info
 history_toolbar:  --tags @history_toolbar --guess LOG_LEVEL=info
+container_label_return_address:  --tags @container_label_return_address --guess LOG_LEVEL=info

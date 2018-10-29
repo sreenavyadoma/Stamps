@@ -40,6 +40,18 @@ module SdcHistory
       def container_label
         ContainerLabel.new
       end
+
+      def ready_to_print
+        ReadyToPrint.new
+      end
+
+      def your_container_label
+        YourContainerLabel.new
+      end
+
+      def reprint
+        Reprint.new
+      end
     end
   end
 
@@ -267,5 +279,75 @@ module SdcHistory
     page_object(:nc_increment) { { xpath: '//*[contains(@id, "containerLabelModal")]//*[contains(@class, "up")]' } }
     page_object(:nc_decrement) { { xpath: '//*[contains(@id, "containerLabelModal")]//*[contains(@class, "down")]' } }
     sdc_number(:number_container, :nc_text_field, :nc_increment, :nc_decrement)
+  end
+
+  class ReadyToPrint < SdcPage
+    page_object(:title) { {xpath: '//div[contains(text(), "ready to print")]'} }
+    page_object(:print) { {xpath: '//*[text()="Print"]'} }
+    page_object(:total_cost) { {xpath: '//*[text()="Total Cost:"]/..//div[contains(test(), "$")]'} }
+    page_object(:x_btn) { {xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
+
+    def printing_on
+      PrintingOn.new
+    end
+    def printer
+      Printer.new
+    end
+
+    def paper_tray
+      PaperTray.new
+    end
+  end
+
+  class PrintingOn < SdcPage
+    page_object(:text_field) { { xpath: '//input[contains(@id, "printmediadroplist")]' } }
+    page_object(:drop_down) { { xpath: '//div[contains(@id, "printmediadroplist")]//div[contains(@class, "arrow")]' } }
+
+    def selection_element(name: :selection, value: 'factory')
+      page_object(name) { { xpath: "//li[text()='#{value}']" } }
+    end
+  end
+
+  class Printer < SdcPage
+    page_object(:text_field) { { xpath: '//input[contains(@name, "printers")]' } }
+    page_object(:drop_down) { { xpath: '//input[contains(@name, "printers")]/parent::*/parent::*/div[contains(@id, "trigger-picker")]' } }
+
+    def selection_element(name: :selection, value: 'factory')
+      page_object(name) { { xpath: "//li[text()='#{value}']" } }
+    end
+  end
+
+  class PaperTray < SdcPage
+    page_object(:text_field, tag: :text_field) { { xpath: '//*[text()="Paper Tray:"]/../..//input' } }
+    page_object(:drop_down) { { xpath: '//*[text()="Paper Tray:"]/../..//div[contains(@class, "arrow")]' } }
+
+    def selection_element(name: :selection, value: 'Normal')
+      page_object(name) { { xpath: "//li[text()='#{value}']" } }
+    end
+  end
+
+  class YourContainerLabel < SdcPage
+    page_object(:title) { {xpath: '//div[contains(@id,"title")][text()="Your Container Label"]'} }
+    page_object(:x_btn) { {xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
+    page_object(:close) { {xpath: '//*[text()="Close"]'} }
+    page_object(:reprint) { {xpath: '//*[text()="Reprint"]'} }
+  end
+
+  class Reprint < SdcPage
+    page_object(:title) { {xpath: '//div[text()="Reprint"]'} }
+    page_object(:reprint) { {xpath: '//span[text()="Reprint"]'} }
+    page_object(:total_cost) { {xpath: '//*[text()="Total Cost:"]/..//div[contains(test(), "$")]'} }
+    page_object(:x_btn) { {xpath: '//*[contains(@class, "sdc-icon-mobile-close-light")]'} }
+
+    def printing_on
+      PrintingOn.new
+    end
+    def printer
+      Printer.new
+    end
+
+    def paper_tray
+      PaperTray.new
+    end
   end
 end

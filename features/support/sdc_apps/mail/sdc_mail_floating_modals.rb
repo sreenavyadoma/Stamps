@@ -370,6 +370,12 @@ module SdcMail
       page_object(:continue) { { xpath: '//span[text()="Continue"][@class="x-btn-inner x-btn-inner-primary-medium"]' } }
     end
 
+    class MailServerError < SdcPage
+      page_object(:title) { { xpath: '//*[text()="Server Error"]' } }
+      page_object(:body) { { xpath: '//div[contains(@class, "sdc-warning")]//div[contains(@id, "-innerCt")]' } }
+      page_object(:ok) { { xpath: '//span[text()="OK"]' } }
+    end
+
     class << self
       def notification_bar
         SdcNotificationBar.new
@@ -445,6 +451,10 @@ module SdcMail
 
       def comfirm_print
         MailConfirmPrint.new
+      end
+
+      def server_error
+        MailServerError.new
       end
 
       # def settings

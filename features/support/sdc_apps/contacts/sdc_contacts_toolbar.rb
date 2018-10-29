@@ -4,7 +4,7 @@ module SdcContacts
     #page_object(:toolbar){{xpath: '//*[contains(@class,"x-toolbar sdc-toolbar")]'}}
     page_object(:add, tag: :span, required: true, timeout: 45) { {xpath: '//span[text()="Add"]'} }
     page_object(:delete) { {xpath: '//*[@id="deleteContactToolBarBtn-btnInnerEl"]'} }
-    page_object(:print_postage) { {xpath: '//*[@id="printPostageToolBar-btnInnerEl"]'} }
+    page_object(:print_postage) { {xpath: '//*[text()="Print Postage"]'} }
     page_object(:groups) { {xpath: '//*[@id="GroupsMenu-btnInnerEl"]'}}
     page_object(:cost_codes) { {xpath: '//*[@id="CostCodesMenu-btnInnerEl"]'} }
     page_object(:ref){{xpath: '//span[@id="toolBarReferenceBtn-btnInnerEl"]'}}
