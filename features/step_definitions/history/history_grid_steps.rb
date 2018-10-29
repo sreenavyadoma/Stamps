@@ -14,66 +14,15 @@ Then /^uncheck row (\d+) on history grid$/ do |row|
   expect(row.checked?).to be false
 end
 
-Then /^check row for saved tracking number on history grid$/ do
-  TestData.hash[:tracking_number] = '9405511899561459253313'
-  expect(TestData.hash[:tracking_number]).to be_truthy
-  expect(TestData.hash[:tracking_number].size).to be > 15
-  tracking = SdcHistory.grid_column(:tracking_number)
-  row_number = tracking.row_num(TestData.hash[:tracking_number])
-
-  checkbox = grid.grid_column(:checkbox)
-  row = checkbox.checkbox_row(row_number)
-  row.check
-end
-
 Then /^expect history grid column (.+) is (.+) for row (\d+)$/ do |column, value, row|
-  column = case column
-             when 'Date Printed'
-               :date_printed
-             when 'Total Cost'
-               :total_cost
-             when 'Adj. Amount'
-               :adj_amount
-             when 'Shipment Status'
-               :shipment_status
-             when 'Tracking #'
-               :tracking_number
-             when 'Date Delivered'
-               :date_delivered
-             when 'Recipient'
-               :recipient
-             when 'Weight'
-               :weight
-             when 'Carrier'
-               :carrier
-             when 'Service'
-               :service
-             when 'Insured For'
-               :insured_for
-             when 'Insurance ID'
-               :insurance_id
-             when 'Ship Date'
-               :ship_date
-             when 'Cost Code'
-               :cost_code
-             when 'Printed Message'
-               :printed_message
-             when 'User'
-               :user
-             when 'Refund Type'
-               :refund_type
-             when 'Refund Request Date'
-               :refund_request_date
-             when 'Refund Status'
-               :refund_status
-             when 'Refund Requested'
-               :refund_requested
-           end
-  expect(SdcHistory.grid.grid_column(column).text_at_row(row)).to eql(value)
+  column_symbol = column.gsub(' ', '_').downcase.to_sym
+  column = SdcHistory.grid.grid_column(column_symbol)
+  expect(column.text_at_row(row)).to eql(value)
 end
 
 Then /^expect history grid column (.+) is (.+) for saved tracking number$/ do |column, value|
-  row_num = SdcHistory.grid.grid_column(:tracking_number).row_num(TestData.hash[:tracking_number])
+  grid_column = SdcHistory.grid.grid_column(:tracking_number)
+  row_num = grid_column.row_num(TestData.hash[:tracking_number])
   step "expect history grid column #{column} is #{value} for row #{row_num}"
 end
 

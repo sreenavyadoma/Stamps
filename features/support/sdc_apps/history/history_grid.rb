@@ -247,7 +247,7 @@ module SdcHistory
       def grid_column(column)
         body.wait_until_present(timeout: 15)
 
-        unless HistoryGridBase.column_names.keys.include? column
+        unless HistoryGridBase.column_names.key? column
           raise ArgumentError, "Invalid grid column: #{column}"
         end
 

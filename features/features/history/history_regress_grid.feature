@@ -24,6 +24,5 @@ Feature:  Mail BVT
     Then uncheck row 1 on history grid
     Then check row 1 on history grid
 
-    Then check row for saved tracking number on history grid
 
     Then sign out
