@@ -204,7 +204,7 @@ Then /^expect undeliverable is selected on history filter panel status$/ do
   expect(status.undeliverable.selected?).to be true
 end
 
-Then /^navigate to (delivered|pending recipient action|undeliverable) filter on history directly$/ do |str|
+Then /^go to (delivered|pending recipient action|undeliverable) filter on history directly$/ do |str|
   env = case TestSession.env.url
           when :qacc
             'ext.qacc'

@@ -38,33 +38,34 @@ Feature:  History Filter Panel
     Then expect past 2 years count on history filter panel is greater than 0
 
   @history_filter_direct_url
+  @history_filter_direct_url_1
   Scenario: Navigating to direct URLs
     Then sign-in to mail
     Then navigate to History
-    Then navigate to Delivered filter on history directly
+    Then go to delivered filter on history directly
     Then wait while loading history filters grid
     Then expect delivered is selected on history filter panel status
-    Then navigate to Pending Recipient Action filter on history directly
+    Then go to pending recipient action filter on history directly
     Then wait while loading history filters grid
     Then expect pending recipient action is selected on history filter panel status
-    Then navigate to Undeliverable filter on history directly
+    Then go to undeliverable filter on history directly
     Then wait while loading history filters grid
     Then expect undeliverable is selected on history filter panel status
     Then sign out
 
   @history_filter_direct_url
   Scenario: Not signed in user navigates to direct URLs
-    Then navigate to Delivered filter on history directly
+    Then go to delivered filter on history directly
     Then login to webclient
     Then wait while loading history filters grid
     Then expect delivered is selected on history filter panel status
     Then sign out
-    Then navigate to Pending Recipient Action filter on history directly
+    Then go to pending recipient action filter on history directly
     Then login to webclient
     Then wait while loading history filters grid
     Then expect pending recipient action is selected on history filter panel status
     Then sign out
-    Then navigate to Undeliverable filter on history directly
+    Then go to undeliverable filter on history directly
     Then login to webclient
     Then wait while loading history filters grid
     Then expect undeliverable is selected on history filter panel status
