@@ -53,7 +53,7 @@ Feature:  History Filter Panel
     Then expect undeliverable is selected on history filter panel status
     Then sign out
 
-  @history_filter_direct_url
+  @history_filter_direct_urlx
   Scenario: Not signed in user navigates to direct URLs
     Then go to delivered filter on history directly
     Then login to webclient
