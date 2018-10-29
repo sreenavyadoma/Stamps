@@ -116,10 +116,12 @@ Then /^set contact details to$/ do |table|
     step 'click on groups expand button of contacts left navigation'
     left_nav_group  = SdcContacts.contacts_filter.groups
     row_count = left_nav_group.total_groups.count
-    p row_count
-    if row_count != 0
-      groups = left_nav_group.group('name',rand(1..row_count)).text_value
-      p groups
+    if row_count > 2
+      groups = left_nav_group.group('name',rand(1..row_count-1)).text_value
+      step 'click on groups collapse button of contacts left navigation'
+      step "set contact details groups to #{groups}"
+    elsif row_count.eql 2
+      groups = left_nav_group.group('name',1).text_value
       step 'click on groups collapse button of contacts left navigation'
       step "set contact details groups to #{groups}"
     else

@@ -42,8 +42,7 @@ end
 Then /^click on settings button of contacts toolbar$/ do
   toolbar = SdcContacts.toolbar
   toolbar.settings.safe_wait_until_present(timeout: 20)
-  #sleep(5)
-  settings.settings.click
+  toolbar.settings.click
 end
 
 Then /^select columns from contacts toolbar settings dropdown menu$/ do
@@ -81,10 +80,9 @@ end
 Then /^choose (.*) on contact settings columns menu list$/ do |column|
   settings = SdcContacts::Toolbar.toolbar_settings
   checkbox = settings.column_menu_checkbox(column)
-  #checkbox.flash
   # checkbox.checked? will return true if it is unchecked as the property_name in chooser item 'unchecked'
   checkbox.check if checkbox.checked?
-  step 'click on search bar of contacts left navigation panel'
+  #step 'click on search bar of contacts left navigation panel'
 end
 
 Then /^uncheck all the columns from the list to hide all columns in the contacts grid$/ do
@@ -108,22 +106,21 @@ end
 Then /^unchoose (.*) on contact settings columns menu list$/ do |column|
   settings = SdcContacts::Toolbar.toolbar_settings
   checkbox = settings.column_menu_checkbox(column)
-  #checkbox.flash
   # checkbox.checked? will return true if it is unchecked as the property_name in chooser item 'unchecked'
   checkbox.check unless checkbox.checked?
-  step 'click on search bar of contacts left navigation panel'
+  #step 'click on search bar of contacts left navigation panel'
 end
 
 Then /^expect (.*) column is available on contacts grid$/ do |column|
-  column_header =SdcContacts::Grid::GridColumnBase.header_element(column)
+  column_header =SdcContacts.grid.column.contacts_header_element(column)
   column_header.scroll_into_view
-  column_header.flash
+  #column_header.flash
   SdcLogger.info "Header Element Present? : #{column} - #{column_header.present?.to_s}"
   expect(column_header.present?).to be (true)
 end
 
 Then /^expect (.*) column is not available on contacts grid$/ do |column|
-  column_header =SdcContacts.contacts_col.header_element(column)
+  column_header =SdcContacts.grid.column.contacts_header_element(column)
   #todo-Aloha check with rob
   column_header.scroll_into_view
   SdcLogger.info "Header Element Present? : #{column} - #{column_header.present?.to_s}"

@@ -10,11 +10,11 @@ module SdcContacts
 
     class AddReference < SdcPage
       page_object(:add_reference_window){{xpath: '//*[@id="contacts-ref"]'} }
-      page_object(:title) { {xpath: '//*[text()="Change Reference #"]'} }
-      page_object(:close){ { xpath: '//*[@class="x-tool-img x-tool-close"]'} }
-      page_object(:reference_num, tag: :text_field,  required: true, timeout: 10) { { xpath: '//*[@id="ref-number-inputEl"]' } }
-      page_object(:reference_error, required: true, timeout: 10) { { xpath: '//*[@id="ref-number-errorEl"]//ul'}}
-      page_object(:save_button, tag: :span, required: true, timeout: 45 ) { { xpath: '//span[text()="Save"]'} }
+      page_object(:title) { {xpath: '//*//div[contains(@id,"title-")][text() = "Change Reference #"]'} }
+      page_object(:close){ { xpath: '//div[contains(@id,"title-")][text() = "Change Reference #"]//following::span[contains(@class,"x-btn-icon-")][contains(@class,"-close")]'} }
+      page_object(:reference_num, tag: :text_field,  required: true, timeout: 10) { { xpath: '//*[@name="ref-number"]' } }
+      page_object(:reference_error, required: true, timeout: 10) { { xpath: '//div[contains(@id,"title-")][text() = "Change Reference #"]//following::div[contains(@class,"-error-msg")]'} }
+      page_object(:save_button, tag: :span, required: true, timeout: 45 ) { { xpath: '//div[contains(@id,"title-")][text() = "Change Reference #"]//following::span[text()="Save"]'} }
     end
 
     class ChangeCostCode < SdcPage

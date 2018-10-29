@@ -25,30 +25,18 @@ Feature:  Contacts BVT - Contacts ToolBar
     Then expect count of contact search results is 0
     Then click remove button on search results of contacts filter
     Then click add button on contacts toolbar
-    Then Set Contact Details Name to RuthAnand
-    Then Set Contact Details Company to FL Homes
-    Then Set Contact Details Country to United States
-    Then Set Contact Details Country to India
-    Then Set Contact Details Street Address to  223 E. Concord Street
-    #Then Set Contact Details City to Orlando
-    Then Set Contact Details Province to Telengana
-    #Then Set Contact Details State to Florida
-    Then Set Contact Details Postal Code to 32801
-    Then Set Contact Details Email to ruthanand@gmail.com
-    Then Set Contact Details Phone to 23345152
-    Then Set Contact Details Phone Extension to 987
-    Then Set Contact Details Groups to group1
-    Then Set Contact Details Reference Number to ref00012
-    Then Set Contact Details Cost Code to Costcode1
-    Then In Contacts Grid Uncheck Row 1
-    Then search contacts from contacts filter panel with name Ruth
-    Then Expect Count of Contact Search Results is 1
-    Then In Contacts Grid Check Row 1
+    Then set contact details to
+      | full_name | company | country| street_address | city | state | postal_code | phone  |  email | groups | reference_number|cost_code |
+      |RuthAnand  |FL Homes|United States|223 E. Concord Street|Orlando|Florida|32801|random|random  |random   |random |random     |
+    Then in contacts grid uncheck row 1
+    Then search contacts from contacts filter panel with name RuthAnand
+    Then expect count of contact search results is 1
+    Then in contacts grid check row 1
     Then click delete button on contacts toolbar
     Then expect delete contacts modal is displayed
     Then click yes button on delete contacts modal
-    Then search contacts from contacts filter panel with name Ruth
-    Then Expect Count of Contact Search Results is 0
+    Then search contacts from contacts filter panel with name RuthAnand
+    Then expect count of contact search results is 0
 
   @sdc_contacts_delete_multiple_from_top_navigation
   Scenario: Delete Contact Top Nav Scenario 2 :Delete multiple contacts from top navigation
@@ -58,18 +46,24 @@ Feature:  Contacts BVT - Contacts ToolBar
     Then expect count of contact search results is 0
     Then click remove button on search results of contacts filter
     Then click add button on contacts toolbar
-    Then set contact details name to Jon1
+    Then set contact details to
+      | full_name | company | country| street_address | city | state | postal_code | phone  |  email | groups | reference_number|cost_code |
+      |Jon1 |FL Homes|United States|223 E. Concord Street|Orlando|Florida|32801|random|random  |random   |random |random     |
     Then in contacts grid uncheck row 1
     Then click add button on contacts toolbar
-    Then set contact details name to Jon2
+    Then set contact details to
+      | full_name | company | country| street_address | city | state | postal_code | phone  |  email | groups | reference_number|cost_code |
+      |Jon2 |random|United States|223 E. Concord Street|Orlando|Florida|32801|random|random  |random   |random |random     |
     Then in contacts grid uncheck row 1
     Then click add button on contacts toolbar
-    Then set contact details name to Jon3
+    Then set contact details to
+      | full_name | company | country| street_address | city | state | postal_code | phone  |  email | groups | reference_number|cost_code |
+      |Jon3 |random|United States|223 E. Concord Street|Orlando|Florida|32801|random|random  |random   |random |random     |
     Then in contacts grid uncheck row 1
     Then search contacts from contacts filter panel with name Jon
     Then expect count of contact search results is 3
     Then in contacts grid check row 1
-    Then In contacts grid check row 3
+    Then in contacts grid check row 3
     Then click delete button on contacts toolbar
     Then click yes button on delete contacts modal
     Then search contacts from contacts filter panel with name Jon
@@ -83,8 +77,9 @@ Feature:  Contacts BVT - Contacts ToolBar
     Then expect count of contact search results is 0
     Then click remove button on search results of contacts filter
     Then click add button on contacts toolbar
-    Then set contact details name to AddInValidReference
-    Then set contact details reference number to valid
+    Then set contact details to
+      | full_name | company | country| street_address | city | state | postal_code | phone  |  email | groups | reference_number|cost_code |
+      |AddInValidReference |random|United States|223 E. Concord Street|Orlando|Florida|32801|random|random  |random   | |random     |
     Then in contacts grid uncheck row 1
     Then search contacts from contacts filter panel with name AddInValidReference
     Then expect count of contact search results is 1
@@ -93,7 +88,7 @@ Feature:  Contacts BVT - Contacts ToolBar
     Then set reference number to Invalid Reference1 Reference2 Reference3
     Then expect reference number error is displayed
     Then click on add reference close button
-    Then expect value of Reference Number in contacts grid is valid
+    Then expect value of Reference Number in contacts grid is blank
 
   @sdc_contacts_existing_add_valid_reference_number
   Scenario: Add Reference Number from Top Nav Scenario 2 :Add an Valid Reference to an Existing Contact via Contacts Toolbar
@@ -103,7 +98,9 @@ Feature:  Contacts BVT - Contacts ToolBar
     Then expect count of contact search results is 0
     Then click remove button on search results of contacts filter
     Then click add button on contacts toolbar
-    Then set contact details name to AddValidReference
+    Then set contact details to
+      | full_name | company | country| street_address | city | state | postal_code | phone  |  email | groups | reference_number|cost_code |
+      |AddValidReference |random|United States|223 E. Concord Street|Orlando|Florida|32801|random|random  |random   | |random     |
     Then in contacts grid uncheck row 1
     Then search contacts from contacts filter panel with name AddValidReference
     Then expect count of contact search results is 1

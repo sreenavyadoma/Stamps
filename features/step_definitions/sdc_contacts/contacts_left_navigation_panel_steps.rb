@@ -1,30 +1,30 @@
 Then /^expect search bar is available on the contacts left navigation panel$/ do
-  contacts_left_navigation= SdcContacts.filter_panel
+  contacts_left_navigation= SdcContacts.contacts_filter.filter_panel
   contacts_left_navigation.search_bar.safe_wait_until_present(timeout: 15)
   expect(contacts_left_navigation.search_bar.present?).to be (true)
 end
 
 Then /^click on search bar of contacts left navigation panel$/ do
-  contacts_left_navigation= SdcContacts.filter_panel
+  contacts_left_navigation= SdcContacts.contacts_filter.filter_panel
   contacts_left_navigation.search_bar.safe_wait_until_present(timeout: 15)
  contacts_left_navigation.search_bar.click
 end
 
 Then /^expect selected filter on the contacts left navigation panel is available$/ do
-  contacts_left_navigation= SdcContacts.filter_panel
+  contacts_left_navigation= SdcContacts.contacts_filter.filter_panel
   contacts_left_navigation.selected.safe_wait_until_present(timeout: 15)
   expect(contacts_left_navigation.selected.present?).to be (true)
 end
 
 Then /^expect count on selected filter is (.*)$/ do |count|
-  sel= SdcContacts.selected_filter
+  sel= SdcContacts.contacts_filter.selected
   actual_count = sel.selected_count.text_value
   SdcLogger.info "actual : #{actual_count}"
   expect(actual_count.to_i).to eql(count.to_i)
 end
 
 Then /^click on selected filter of contacts left navigation panel$/ do
-  sel= SdcContacts.selected_filter
+  sel= SdcContacts.contacts_filter.selected
   sel.selected.flash
   sel.selected.click
   SdcContacts.loading_contacts.safe_wait_until_present(timeout: 15)
@@ -38,27 +38,27 @@ Then /^expect contacts grid message for selected contact is (.*)$/ do |message|
 end
 
 Then /^expect all contacts filter is available on the contacts left navigation panel$/ do
-  contacts_left_navigation= SdcContacts.filter_panel
+  contacts_left_navigation= SdcContacts.contacts_filter.filter_panel
   contacts_left_navigation.all_contacts.safe_wait_until_present(timeout: 15)
   expect(contacts_left_navigation.all_contacts.present?).to be (true)
 end
 
 Then /^click on all contacts filter of contacts left navigation panel$/ do
-  all_con= SdcContacts.filter_panel
+  all_con= SdcContacts.contacts_filter.filter_panel
   all_con.all_contacts.flash
   all_con.all_contacts.click
   SdcContacts.loading_contacts.safe_wait_until_present(timeout: 15)
-  SdcContacts.contacts_body.safe_wait_until_present(timeout: 15)
+  SdcContacts.grid.body.safe_wait_until_present(timeout: 15)
 end
 
 Then /^expect groups filter is available on the contacts left navigation panel$/ do
-  contacts_left_navigation= SdcContacts.filter_panel
+  contacts_left_navigation= SdcContacts.contacts_filter.filter_panel
   contacts_left_navigation.groups.safe_wait_until_present(timeout: 15)
   expect(contacts_left_navigation.groups.present?).to be (true)
 end
 
 Then /^expect cost codes filter is available on the contacts left navigation panel$/ do
-  contacts_left_navigation= SdcContacts.filter_panel
+  contacts_left_navigation= SdcContacts.contacts_filter.filter_panel
   contacts_left_navigation.cost_codes.safe_wait_until_present(timeout: 15)
   expect(contacts_left_navigation.cost_codes.present?).to be (true)
 end
@@ -80,7 +80,7 @@ end
 
 Then /^delete all available contacts with the value (.*)$/ do |str|
   step "search contacts from contacts filter panel with name #{str}"
-  search_results= SdcContacts.SdcContacts.contacts_filter.search_results
+  search_results= SdcContacts.contacts_filter.search_results
   actual_count =search_results.search_results_count.text_value
   if actual_count.to_i != 0
     i=1
@@ -142,46 +142,46 @@ Then /^expect empty search message for searched contact is displayed on the cont
 end
 
 Then /^expect count of contact search results is (.*)$/ do |count|
-  search_results= SdcContacts.search_results_filter
+  search_results= SdcContacts.contacts_filter.search_results
   actual_count =search_results.search_results_count.text_value
   expect(actual_count.to_i).to eql(count.to_i)
 end
 
 Then /^click remove button on search results of contacts filter$/ do
-  search_results= SdcContacts.search_results_filter
+  search_results= SdcContacts.contacts_filter.search_results
   search_results.search_results_remove.safe_wait_until_present(timeout: 15)
   search_results.search_results_remove.click
 end
 
 Then /^click on expand button of contacts left navigation$/ do
-  left_navigation = SdcContacts.contacts_left_navigation_panel
+  left_navigation = SdcContacts.contacts_filter
   left_navigation.expand.safe_wait_until_present(timeout: 15)
   left_navigation.expand.click
   expect(left_navigation.collapse.present?).to be(true)
 end
 
 Then /^click on collapse button of contacts left navigation$/ do
-  left_navigation = SdcContacts.contacts_left_navigation_panel
+  left_navigation = SdcContacts.contacts_filter
   left_navigation.collapse.safe_wait_until_present(timeout: 15)
   left_navigation.collapse.click
   expect(left_navigation.expand.present?).to be(true)
 end
 
 Then /^fetch total count of all contacts$/ do
-  left_nav_all_contacts = SdcContacts.all_contacts_filter
+  left_nav_all_contacts = SdcContacts.contacts_filter.all_contacts
   left_nav_all_contacts.all_contacts.safe_wait_until_present(timeout: 15)
   SdcLogger.info "All Contacts count : #{left_nav_all_contacts.all_contacts_count.text_value}"
 end
 
 Then /^fetch count of selected contacts$/ do
-  left_nav_selected = SdcContacts.selected_filter
+  left_nav_selected = SdcContacts.contacts_filter.selected
   left_nav_selected.selected.safe_wait_until_present(timeout: 15)
   SdcLogger.info "Selected Contacts count #{left_nav_selected.selected_count.text_value}"
 end
 
 Then /^select an existing cost code from left navigation filter panel/ do
   step 'click on cost codes expand button of contacts left navigation'
-  left_nav_costcode = SdcContacts.cost_code_filter
+  left_nav_costcode = SdcContacts.contacts_filter.groups
   row_count = left_nav_costcode.total_costcodes.count
   if row_count >1
     left_nav_costcode.cost_code_element(row_count-1).click
@@ -194,7 +194,7 @@ end
 
 Then /^select an existing group from left navigation filter panel/ do
   step 'click on groups expand button of contacts left navigation'
-  left_nav_group = SdcContacts.group_filter
+  left_nav_group = SdcContacts.contacts_filter.groups
   row_count = left_nav_group.total_groups.count
   if row_count >1
     left_nav_group.group_element(row_count-1).click
