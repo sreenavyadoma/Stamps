@@ -52,6 +52,7 @@ end
 Then /^click create container label button on history toolbar$/ do
   create_container_label = SdcHistory.toolbar.create_container_label
   create_container_label.link.click
+  create_container_label.tooltip.safe_wait_until_present(timeout: 2)
   if create_container_label.tooltip.present?
     create_container_label.tooltip.hover
     create_container_label.link.click if create_container_label.tooltip.present?
