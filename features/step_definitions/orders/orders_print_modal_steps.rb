@@ -62,7 +62,6 @@ end
 
 Then /^[Pp]rint [Ss]hipping [Ll]abel for SAS$/ do
   step "click Orders Toolbar Print button"
-  step "expect print modal on mail is present"
   step "click print modal print button"
 end
 

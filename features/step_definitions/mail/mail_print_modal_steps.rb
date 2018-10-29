@@ -60,14 +60,9 @@ When /^[Cc]lick Print button on [Mm]ail [Pp]rint modal Sample$/ do
   # @printing_error = mail_print_modal.print
 end
 
-#todo-Rob change sentence structure and make print modal float (stamps.mail.mail_print_modal)
 Then /^Mail: in Print modal, Close$/ do
   pending
   # stamps.mail.mail_toolbar.mail_print_modal.x_button.click
-end
-
-Then /^expect print modal on mail is present$/ do
-  expect(SdcMail.modals.print.title).to be_present
 end
 
 Then /^expect print modal on mail is not present$/ do

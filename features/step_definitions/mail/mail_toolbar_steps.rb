@@ -20,7 +20,6 @@ Then /^click print label$/ do
   step 'blur out on print form'
   sleep 2
   SdcMail.toolbar.print_label.click
-  step 'expect print modal on mail is present'
 end
 
 Then /^click continue on confirm print modal$/ do
