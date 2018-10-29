@@ -216,7 +216,7 @@ Feature:  Contacts BVT - Contacts Details
     Then expect value of Title in contacts grid is CompanyTitle
     Then expect value of Department in contacts grid is CompanyDepartment
 
-  @sdc_contacts_add_new_contact_max_lines
+  @SdcContacts.grid.contacts_grid_column
   Scenario: Contacts BVT Scenario 1 : Add new contact with maximum no of line in Street Address field
     Then sign-in to orders
     Then navigate to Contacts
