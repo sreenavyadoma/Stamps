@@ -41,30 +41,30 @@ Feature:  History Filter Panel
   Scenario: Navigating to direct URLs
     Then sign-in to mail
     Then navigate to History
-    Then navigate to delivered filter on history directly
+    Then navigate to Delivered filter on history directly
     Then wait while loading history filters grid
     Then expect delivered is selected on history filter panel status
-    Then navigate to pending recipient action filter on history directly
+    Then navigate to Pending Recipient Action filter on history directly
     Then wait while loading history filters grid
     Then expect pending recipient action is selected on history filter panel status
-    Then navigate to undeliverable filter on history directly
+    Then navigate to Undeliverable filter on history directly
     Then wait while loading history filters grid
     Then expect undeliverable is selected on history filter panel status
     Then sign out
 
   @history_filter_direct_url
   Scenario: Not signed in user navigates to direct URLs
-    Then navigate to delivered filter on history directly
+    Then navigate to Delivered filter on history directly
     Then login to webclient
     Then wait while loading history filters grid
     Then expect delivered is selected on history filter panel status
     Then sign out
-    Then navigate to pending recipient action filter on history directly
+    Then navigate to Pending Recipient Action filter on history directly
     Then login to webclient
     Then wait while loading history filters grid
     Then expect pending recipient action is selected on history filter panel status
     Then sign out
-    Then navigate to undeliverable filter on history directly
+    Then navigate to Undeliverable filter on history directly
     Then login to webclient
     Then wait while loading history filters grid
     Then expect undeliverable is selected on history filter panel status

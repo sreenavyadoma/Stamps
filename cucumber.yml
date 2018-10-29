@@ -1,5 +1,5 @@
 
-default: --backtrace --profile saucelabs_alex
+default: --backtrace --profile local_browser
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -7,13 +7,13 @@ cuke_reports: --format json --out report.json --backtrace -f pretty -r features 
 #local_mobile: --tags @mail_authentication_mobile URL=stg USR=sauce0020 PW=pass111 SELENIUM_DEVICE='iPhone X 11.3' SELENIUM_PLATFORM=iOS SELENIUM_BROWSER=Safari SELENIUM_VERSION=11.3 LOG_LEVEL=debug
 #local_mobile: --tags @multiple_contact_email_not_required URL=cc USR=bvtsauce00019cc PW=pass111 SELENIUM_DEVICE='iPhone X 11.3' SELENIUM_PLATFORM=iOS SELENIUM_BROWSER=Safari SELENIUM_VERSION=11.3 LOG_LEVEL=debug
 #local_browser: --tags @refresh_filter_grid_after_actions URL=stg BROWSER=ff MAX_WINDOW=false USR=stgmacgc6 PW=pass111 PRINTER=factory LOG_LEVEL=info WINDOW_SIZE=1300x900
-local_browser: --tags @history_toolbar URL=cc BROWSER=gc MAX_WINDOW=false USR=bvtccosxgc9 PW=pass111 PRINTER=factory LOG_LEVEL=info WINDOW_SIZE=1300x900
+local_browser: --tags @history_filter_direct_url URL=cc BROWSER=gc MAX_WINDOW=false USR=bvtccosxgc9 PW=pass111 PRINTER=factory LOG_LEVEL=info #WINDOW_SIZE=1300x900
 #local_browser: --tags @bvt_shipstation_updates_domestic URL=sc BROWSER=ff MAX_WINDOW=false USR=scsejsglwa PW=pass111 PRINTER=factory LOG_LEVEL=info
 sauce_mobile: --tags @mail_authentication_mobile URL=stg USR=sauce0020 PW=pass111 SELENIUM_DEVICE='iPhone X Simulator' SELENIUM_PLATFORM=iOS SELENIUM_BROWSER=Safari SELENIUM_VERSION=12.0 TUNNEL_IDENTIFIER=rob LOG_LEVEL=info
-#sauce_browser: --tags @bvt_shipstation_updates_domestic URL=stg USR=stgvoc0kcnt6rw PW=pass111SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Mac 10.10' TUNNEL_IDENTIFIER=rob LOG_LEVEL=info
-sauce_browser: --tags @authentication URL=stg USR=bvtstgw7ff8 PW=pass111 SELENIUM_BROWSER=safari SELENIUM_VERSION=latest SELENIUM_PLATFORM='macOS 10.13' TUNNEL_IDENTIFIER=rob LOG_LEVEL=info SCREEN_RESOLUTION=1376x1032
-#sauce_browser: --tags @bvt_orders_ui_validation URL=cc USR=cctruer0u PW=pass111SELENIUM_BROWSER=firefox SELENIUM_VERSION=latest SELENIUM_PLATFORM='Windows 2008' TUNNEL_IDENTIFIER=rob LOG_LEVEL=info
-#sauce_browser: --tags @bvt_orders_ship_date URL=cc USR=bvtsauce00020cc PW=pass111SELENIUM_BROWSER=firefox SELENIUM_VERSION=latest SELENIUM_PLATFORM='Mac 10.12' TUNNEL_IDENTIFIER=rob LOG_LEVEL=info SCREEN_RESOLUTION=1152x864
+#sauce_browser: --tags @bvt_shipstation_updates_domestic URL=stg USR=stgvoc0kcnt6rw PW=pass111 SELENIUM_BROWSER=chrome SELENIUM_VERSION=latest SELENIUM_PLATFORM='Mac 10.10' TUNNEL_IDENTIFIER=rob LOG_LEVEL=info
+#sauce_browser: --tags @history_filter_direct_url URL=stg USR=bvtstgw7ff8 PW=pass111 SELENIUM_BROWSER=safari SELENIUM_VERSION=latest SELENIUM_PLATFORM='macOS 10.13' TUNNEL_IDENTIFIER=rob LOG_LEVEL=info SCREEN_RESOLUTION=1376x1032
+sauce_browser: --tags @history_filter_direct_url URL=cc USR=cctruer0u PW=pass111 SELENIUM_BROWSER=firefox SELENIUM_VERSION=latest SELENIUM_PLATFORM='macOS 10.13' TUNNEL_IDENTIFIER=rob LOG_LEVEL=info SCREEN_RESOLUTION=1280x960
+#sauce_browser: --tags @bvt_orders_ship_date URL=cc USR=bvtsauce00020cc PW=pass111 SELENIUM_BROWSER=firefox SELENIUM_VERSION=latest SELENIUM_PLATFORM='Mac 10.12' TUNNEL_IDENTIFIER=rob LOG_LEVEL=info SCREEN_RESOLUTION=1152x864
 #mhossain1_cc: --tags @registration_normal_workflow JENKINS=true URL=cc LOG_LEVEL=info BROWSER=ff MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
 #mhossain1_cc: --tags @pp_header_favicons_browser_mobile JENKINS=true URL=qacc BROWSER=gc BROWSER_MOBILE_EMULATOR=gc,'iPhone X' USR=wteam@stamps.com PW=password1 WEB_DEV=true
 #mhossain1_cc: --tags @pp_log_in_page_validation JENKINS=true URL=stg BROWSER=ff USR=wteam@stamps.com PW=password1 FIREFOX_PROFILE=true WEB_DEV=true

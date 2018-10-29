@@ -107,7 +107,7 @@ module TestSession
     key(:appium_version) { ENV['APPIUM_VERSION'] || '1.8.1' }
     # test helper
     key(:sauce_browser) do
-      oss = ['Windows', 'windows', 'Mac', 'mac']
+      oss = ['Windows', 'windows', 'Mac', 'mac', 'macOS', 'OS X', 'OS']
       if selenium_platform
         oss.include?(selenium_platform.split(' ').first)
       end
