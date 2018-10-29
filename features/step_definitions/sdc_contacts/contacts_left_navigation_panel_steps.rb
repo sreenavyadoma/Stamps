@@ -64,7 +64,7 @@ Then /^expect cost codes filter is available on the contacts left navigation pan
 end
 
 Then /^search contacts from contacts filter panel with name (.*)$/ do |str|
-  contacts_detail= SdcContacts.contacts_detail
+  contacts_detail= SdcContacts.details
   contacts_detail.contacts_detail_panel.safe_wait_until_present(timeout: 15)
   if str.eql?'newly added'
     value ||= TestData.hash[:full_name]
@@ -74,13 +74,13 @@ Then /^search contacts from contacts filter panel with name (.*)$/ do |str|
   end
   step 'click search button on contacts left navigation search bar'
   SdcContacts.loading_contacts.safe_wait_until_present(timeout: 15)
-  SdcContacts.contacts_body.safe_wait_until_present(timeout: 15)
-  SdcContacts.filter_panel.search_results.safe_wait_until_present(timeout:30)
+  SdcContacts::Grid.body.safe_wait_until_present(timeout: 15)
+  SdcContacts.contacts_filter.filter_panel.search_results.safe_wait_until_present(timeout:30)
 end
 
 Then /^delete all available contacts with the value (.*)$/ do |str|
   step "search contacts from contacts filter panel with name #{str}"
-  search_results= SdcContacts.search_results_filter
+  search_results= SdcContacts.SdcContacts.contacts_filter.search_results
   actual_count =search_results.search_results_count.text_value
   if actual_count.to_i != 0
     i=1
@@ -98,19 +98,19 @@ Then /^delete all available contacts with the value (.*)$/ do |str|
 end
 
 Then /^set search text on contacts left navigation search bar to (.*)$/ do |str|
-  contacts_left_navigation= SdcContacts.filter_panel
+  contacts_left_navigation= SdcContacts.contacts_filter.filter_panel
   contacts_left_navigation.search_bar.safe_wait_until_present(timeout: 15)
   contacts_left_navigation.search_bar.set(str)
 end
 
 Then /^click search button on contacts left navigation search bar$/ do
-  contacts_left_navigation= SdcContacts.filter_panel
+  contacts_left_navigation= SdcContacts.contacts_filter.filter_panel
   contacts_left_navigation.search_icon.safe_wait_until_present(timeout: 15)
   contacts_left_navigation.search_icon.click
 end
 
 Then /^expect search results is available on the contacts left navigation panel$/ do
-  contacts_left_navigation= SdcContacts.filter_panel
+  contacts_left_navigation= SdcContacts.contacts_filter.filter_panel
   contacts_left_navigation.search_results.safe_wait_until_present(timeout: 15)
   expect(contacts_left_navigation.search_results.present?).to be (true)
 end

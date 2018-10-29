@@ -129,21 +129,21 @@ Then /^set (.*) value in details menu cost code dropdown/ do |costcode_name|
 end
 
 Then /^click on cost codes expand button of contacts left navigation$/ do
-  left_cost_code  = SdcContacts.cost_code_filter
+  left_cost_code  = SdcContacts.contacts_filter.cost_codes
   left_cost_code.cost_codes_expand_button.safe_wait_until_present(timeout: 30)
   left_cost_code.cost_codes_expand_button.click
   expect(left_cost_code.cost_codes_collapse_button.present?).to be(true)
 end
 
 Then /^click on cost codes collapse button of contacts left navigation$/ do
-  left_cost_code  = SdcContacts.cost_code_filter
+  left_cost_code  = SdcContacts.contacts_filter.cost_codes
   left_cost_code.cost_codes_collapse_button.safe_wait_until_present(timeout: 15)
   left_cost_code.cost_codes_collapse_button.click
   expect(left_cost_code.cost_codes_expand_button.present?).to be(true)
 end
 
 Then /^fetch total against each cost code available$/ do
-  left_nav_costcode = SdcContacts.cost_code_filter
+  left_nav_costcode = SdcContacts.contacts_filter.cost_codes
   row_count = left_nav_costcode.total_costcodes.count
   SdcLogger.info "Total no of cost codes : #{row_count.to_s}"
     i=1
@@ -165,7 +165,7 @@ Then /^on left navigation expect (.*) is avilable under costcode filter$/ do |co
     value =costcode_name
   end
 
-  left_nav_costcode = SdcContacts.cost_code_filter
+  left_nav_costcode = SdcContacts.contacts_filter.cost_codes
   row_count = left_nav_costcode.total_costcodes.count
   SdcLogger.info "Count :#{row_count}"
   if row_count.to_i != 0
@@ -187,7 +187,7 @@ Then /^on left navigation expect count of (.*) is (.*)$/ do |costcode_name,count
   else
     value =costcode_name
   end
-  left_nav_costcode = SdcContacts.cost_code_filter
+  left_nav_costcode = SdcContacts.contacts_filter.cost_codes
   row_count = left_nav_costcode.total_costcodes.count
   SdcLogger.info "Count :#{row_count}"
   if row_count.to_i != 0
@@ -214,13 +214,13 @@ Then /^on left navigation expect count of (.*) is (.*)$/ do |costcode_name,count
 end
 
 Then /^mousehover on cost codes section of left navigation$/ do
-  left_nav = SdcContacts.cost_code_filter
+  left_nav = SdcContacts.contacts_filter.cost_codes
   left_nav.cost_codes.hover
   expect( left_nav.left_nav_add_edit_costcodes.present?).to be(true)
 end
 
 Then /^click on cost codes settings button of contacts left navigation$/ do
-  left_nav = SdcContacts.cost_code_filter
+  left_nav = SdcContacts.contacts_filter.cost_codes
   left_nav.left_nav_add_edit_costcodes.flash
   left_nav.left_nav_add_edit_costcodes.click
 end

@@ -10,7 +10,7 @@ Feature:  Contacts BVT - Contacts ToolBar
     Then click add button on contacts toolbar
     Then set contact details to
       | full_name | company | country| street_address | city | state | postal_code | phone  |  email | groups | reference_number|cost_code |
-      |random     |random   |United States|random     |San Juan|Federated States Of Micronesia|0097-5824|23345142-123|random  |        |random           |          |
+      |random     |random   |United States|random     |San Juan|Federated States Of Micronesia|0097-5824|random|random  |random   |random |random     |
     Then in contacts grid uncheck row 1
     Then search contacts from contacts filter panel with name newly added
     Then in contacts grid check row 1

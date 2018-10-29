@@ -45,15 +45,15 @@ module SdcContacts
         label.text_value
       end
 
-      def add_group
+      def add_groups
         AddGroups.new
       end
 
-      def edit_group
+      def edit_groups
         EditGroups.new
       end
 
-      def delete_group
+      def delete_groups
         DeleteGroups.new
       end
 
@@ -177,11 +177,11 @@ module SdcContacts
         ChangeCostCode.new
       end
 
-      def manage_group
+      def manage_groups
         ManageGroups.new
       end
 
-      def change_group
+      def change_groups
         ChangeGroups.new
       end
 

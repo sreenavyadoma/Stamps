@@ -24,8 +24,8 @@ module SdcContacts
       Toolbar::Toolbar.new
     end
 
-    def filter_panel
-      FilterPanel
+    def contacts_filter
+      ContactsFilterPanel
     end
 
     def grid
