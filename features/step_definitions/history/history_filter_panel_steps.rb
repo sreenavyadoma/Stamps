@@ -228,10 +228,6 @@ Then /^expect container label on history filter panel eligible for is selected$/
   expect(SdcHistory.filter_panel.eligible_for.container_label.selected?).to be true
 end
 
-Then /^wait while loading history filters grid$/ do
-  SdcHistory.filter_panel.loading.safe_wait_until_present(timeout: 8)
-  SdcHistory.filter_panel.loading.wait_while_present(timeout: 240)
-end
 Then /^expect delivered is selected on history filter panel status$/ do
   status = SdcHistory.filter_panel.status
   expect(status.delivered.selected?).to be true
