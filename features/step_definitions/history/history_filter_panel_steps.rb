@@ -232,3 +232,47 @@ Then /^wait while loading history filters grid$/ do
   SdcHistory.filter_panel.loading.safe_wait_until_present(timeout: 8)
   SdcHistory.filter_panel.loading.wait_while_present(timeout: 240)
 end
+Then /^expect delivered is selected on history filter panel status$/ do
+  status = SdcHistory.filter_panel.status
+  expect(status.delivered.selected?).to be true
+end
+
+Then /^expect pending recipient action is selected on history filter panel status$/ do
+  status = SdcHistory.filter_panel.status
+  expect(status.pending_recipient_action.selected?).to be true
+end
+Then /^expect undeliverable is selected on history filter panel status$/ do
+  status = SdcHistory.filter_panel.status
+  expect(status.undeliverable.selected?).to be true
+end
+
+Then /^go to (delivered|pending recipient action|undeliverable) filter on history directly$/ do |str|
+  env = case TestSession.env.url
+          when :qacc
+            'ext.qacc'
+          when :qasc
+            'ext.qasc'
+          when :stg
+            '.staging'
+          when :prod
+            ''
+          else
+            # ignore
+        end
+  filter = case str
+             when 'delivered'
+               'delivered'
+             when 'pending recipient action'
+               'pendingaction'
+             when 'undeliverable'
+               'undeliverable'
+             else
+               #ignore
+           end
+  step "go to url https://or#{env}.stamps.com/PostageTools/redirect?p=#{filter}&IsInStore=1"
+end
+
+Then /^wait while loading history filters grid$/ do
+  SdcHistory.filter_panel.loading.safe_wait_until_present(timeout: 8)
+  SdcHistory.filter_panel.loading.wait_while_present(timeout: 240)
+end
