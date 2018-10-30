@@ -25,7 +25,7 @@ module SdcContacts
     end
 
     def contacts_filter
-      ContactsFilterPanel
+      ContactsFilterPanel::Filter.new
     end
 
     def grid

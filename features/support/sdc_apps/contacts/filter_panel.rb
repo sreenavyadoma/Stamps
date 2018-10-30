@@ -13,6 +13,29 @@ module SdcContacts
       link(:collapse,required: true, timeout: 45 ) { {xpath: '//*[contains(@class, "sdc-icon-collapse")]'} }
       link(:expand,required: true, timeout: 45 ) { {xpath: '//*[contains(@class, "expand-right")]'} }
       #page_object(:left_nav_collapsed){{xpath: '//*[@id="filter-nav-collapsed-left"]'}}
+
+      def search_results
+        SearchResults.new
+      end
+
+      def selected
+        Selected.new
+      end
+
+      def all_contacts
+        AllContacts.new
+      end
+
+      def cost_codes
+        CostCodes.new
+      end
+
+      def groups
+        Groups.new
+      end
+
+
+
     end
 
     class SearchResults < SdcPage
@@ -101,28 +124,7 @@ module SdcContacts
       def filter_panel
         Filter.new
       end
-
-      def search_results
-        SearchResults.new
-      end
-
-      def selected
-        Selected.new
-      end
-
-      def all_contacts
-        AllContacts.new
-      end
-
-      def cost_codes
-        CostCodes.new
-      end
-
-      def groups
-        Groups.new
-      end
-
-    end
+          end
 
   end
 end
