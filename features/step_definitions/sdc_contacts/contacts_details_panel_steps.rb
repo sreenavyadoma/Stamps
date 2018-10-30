@@ -379,11 +379,10 @@ end
 Then /^click on contact details menu dropdown$/ do
   toolbar_menu = SdcContacts.details.toolbar_menu
   toolbar_menu.menu_button.safe_wait_until_present(timeout: 20)
-  toolbar_menu.menu_button.wait_until_present(timeout: 20)
   toolbar_menu.menu_button.click
 end
 
-Then /^select (.*) from dropdown menu$/ do |menu_item|
+Then /^select contact details menu (.*)$/ do |menu_item|
   toolbar_menu = SdcContacts.details.toolbar_menu
   case menu_item
   when 'Print Postage'
@@ -510,7 +509,7 @@ Then /^expect value of (.*) in contact details panel is (.*)$/ do |label,value|
 
   when 'Groups'
     groups = SdcContacts.details.group
-    actual_value=groups.text_field.text_value
+    actual_value=groups.text_list.text_value
 
   when 'Reference Number'
     actual_value = contacts_detail.reference_number.text_value

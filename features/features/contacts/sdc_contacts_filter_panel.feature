@@ -166,3 +166,4 @@ Feature:  Contacts BVT - Contacts Filter Panel
     Then click on clear all link of contact detail panel
     Then expect clear contacts pop up box is displayed
     Then click on yes button of clear contacts pop up window
+    Then sign out

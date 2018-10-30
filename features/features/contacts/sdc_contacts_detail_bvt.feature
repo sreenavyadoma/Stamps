@@ -7,58 +7,53 @@ Feature:  Contacts BVT - Contacts Details
   Scenario: Delete Contact Details Menu Scenario 1:Delete single contacts from details panel
     Then sign-in to orders
     Then navigate to Contacts
-    Then delete all available contacts with the value Anand Raj
+    Then delete all available contacts with the value RuthAnand
     Then expect count of contact search results is 0
     Then click remove button on search results of contacts filter
     Then click add button on contacts toolbar
-    Then set contact details name to Anand Raj
-    Then set contact details company to FL Homes
-    Then set contact details country to United States
-    #Then set contact details country to India
-    Then set contact details street address to  223 E. Concord Street
-    Then set contact details city to Orlando
-    #Then set contact details Province to Telengana
-    Then set contact details state to Florida
-    Then set contact details postal code to 32801
-    Then set contact details email to anand@gmail.com
-    Then set contact details phone to 23345152
-    Then set contact details phone extension to 987
-    Then set contact details groups to group1
-    Then set contact details reference number to ref00012
-    Then set contact details cost code to Costcode1
+    Then set contact details to
+      | full_name | company | country| street_address | city | state | postal_code | phone  |  email | groups | reference_number|cost_code |
+      |RuthAnand  |FL Homes|United States|223 E. Concord Street|Orlando|Florida|32801|random|random  |random   |random |random     |
     Then in contacts grid uncheck row 1
-    Then search contacts from contacts filter panel with name Anand Raj
+    Then search contacts from contacts filter panel with name RuthAnand
     Then expect count of contact search results is 1
     Then in contacts grid check row 1
     Then click on contact details menu dropdown
-    Then select Delete from dropdown menu
+    Then select contact details menu Delete
     Then expect delete contacts modal is displayed
     Then click yes button on delete contacts modal
-    Then search contacts from contacts filter panel with name Anand Raj
+    Then search contacts from contacts filter panel with name RuthAnand
     Then expect count of contact search results is 0
+    Then sign out
 
   @sdc_contacts_delete_multiple_from_details_menu
   Scenario: Delete Contact Details Menu Scenario 2 :Delete multiple contacts from Details Panel
     Then sign-in to orders
     Then navigate to Contacts
-    Then delete all available contacts with the value Jon
-    Then expect count of contact search results is 0
-    Then click remove button on search results of contacts filter
-    Then click add button on contacts toolbar
-    Then set contact details name to Jon1
-    Then in contacts grid uncheck row 1
-    Then click add button on contacts toolbar
-    Then set contact details name to Jon2
-    Then in contacts grid uncheck row 1
-    Then click add button on contacts toolbar
-    Then set contact details name to Jon3
-    Then in contacts grid uncheck row 1
+#    Then delete all available contacts with the value Jon
+#    Then expect count of contact search results is 0
+#    Then click remove button on search results of contacts filter
+#    Then click add button on contacts toolbar
+#    Then set contact details to
+#      | full_name | company | country| street_address | city | state | postal_code | phone  |  email | groups | reference_number|cost_code |
+#      |Jon1 |FL Homes|United States|223 E. Concord Street|Orlando|Florida|32801|random|random  |random   |random |random     |
+#    Then in contacts grid uncheck row 1
+#    Then click add button on contacts toolbar
+#    Then set contact details to
+#      | full_name | company | country| street_address | city | state | postal_code | phone  |  email | groups | reference_number|cost_code |
+#      |Jon2 |random|United States|223 E. Concord Street|Orlando|Florida|32801|random|random  |random   |random |random     |
+#    Then in contacts grid uncheck row 1
+#    Then click add button on contacts toolbar
+#    Then set contact details to
+#      | full_name | company | country| street_address | city | state | postal_code | phone  |  email | groups | reference_number|cost_code |
+#      |Jon3 |random|United States|223 E. Concord Street|Orlando|Florida|32801|random|random  |random   |random |random     |
+#    Then in contacts grid uncheck row 1
     Then search contacts from contacts filter panel with name Jon
     Then expect count of contact search results is 3
     Then in contacts grid check row 1
-    Then In contacts grid check row 3
+    Then in contacts grid check row 3
     Then click on contact details menu dropdown
-    Then select Delete from dropdown menu
+    Then select contact details menu Delete
     Then expect delete contacts modal is displayed
     Then click on yes button of delete groups pop up
     Then search contacts from contacts filter panel with name Jon

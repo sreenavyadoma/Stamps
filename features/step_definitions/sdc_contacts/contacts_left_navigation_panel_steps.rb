@@ -28,7 +28,7 @@ Then /^click on selected filter of contacts left navigation panel$/ do
   sel.selected.flash
   sel.selected.click
   SdcContacts.loading_contacts.safe_wait_until_present(timeout: 15)
-  SdcContacts.contacts_body.safe_wait_until_present(timeout: 15)
+  SdcContacts.grid.body.safe_wait_until_present(timeout: 15)
 end
 
 Then /^expect contacts grid message for selected contact is (.*)$/ do |message|
@@ -74,8 +74,8 @@ Then /^search contacts from contacts filter panel with name (.*)$/ do |str|
   end
   step 'click search button on contacts left navigation search bar'
   SdcContacts.loading_contacts.safe_wait_until_present(timeout: 15)
-  SdcContacts::Grid.body.safe_wait_until_present(timeout: 15)
-  SdcContacts.contacts_filter.filter_panel.search_results.safe_wait_until_present(timeout:30)
+  SdcContacts.grid.body.safe_wait_until_present(timeout: 15)
+  SdcContacts.contacts_filter.search_results_filter.safe_wait_until_present(timeout:30)
 end
 
 Then /^delete all available contacts with the value (.*)$/ do |str|
@@ -181,7 +181,7 @@ end
 
 Then /^select an existing cost code from left navigation filter panel/ do
   step 'click on cost codes expand button of contacts left navigation'
-  left_nav_costcode = SdcContacts.contacts_filter.groups
+  left_nav_costcode = SdcContacts.contacts_filter.cost_codes
   row_count = left_nav_costcode.total_costcodes.count
   if row_count >1
     left_nav_costcode.cost_code_element(row_count-1).click

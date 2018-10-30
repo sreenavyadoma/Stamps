@@ -3,7 +3,7 @@ module SdcContacts
 
     class ToolBarMenu < SdcPage
       #page_object(:menu_button, required: true, timeout: 10) { { xpath: '//div[@id="contactDetailsPanel_header-innerCt"]//a'}}
-      page_object(:menu_button, required: true, timeout: 10) { { xpath: '//*[contains(@class,"x-btn-after-title")][1]'}}
+      page_object(:menu_button, required: true, timeout: 10) { { xpath: '//div[contains(@id,"singlecontactdetails")]/a[contains(@class,"x-btn-after-title")]'}}
       page_object(:print_postage, required: true, timeout: 10) { { xpath: '//span[contains(@id, "menuitem-")][text()="Print Postage"]'}}
       page_object(:delete, required: true, timeout: 10) { { xpath: '//span[contains(@id, "menuitem-")][text()="Delete"]'}}
       page_object(:collapse_panel, required: true, timeout: 10) { { xpath: '//span[contains(@id, "menuitem-")][text()="Collapse Panel"]'}}
@@ -42,7 +42,7 @@ module SdcContacts
     class Group < SdcPage
       text_field(:text_field, tag: :text_field) { { xpath: '//input[@name="Groups"]' } }
       page_object(:drop_down) { { xpath: '//input[@name="Groups"]/following::div[contains(@id,"-trigger-picker")]' } }
-      text_field(:text_list, tag: :text_field) { {xpath: '//*[@class="x-tagfield-list"]//li'} }
+      text_field(:text_list) { {xpath: '//*[@class="x-tagfield-list"]//li'} }
 
       def selection_group(name: 'selection', value: 'None')
         page_object(name) { { xpath: "//li[text()='#{value}']" } }
