@@ -26,7 +26,7 @@ Feature:  Contacts BVT - Contacts Filter Panel
 	#Contacts Filter Panel	Search Contact : Search for non exsisting contact
     Then set search text on contacts left navigation search bar to Non Exsisting
     Then click search button on contacts left navigation search bar
-    Then expect empty search message for searched contact is displayed on the contacts grid
+    Then expect contacts grid message for searched contact is No contacts found.
     Then click remove button on search results of contacts filter
 	#Contacts Filter Panel - SELECTED Filter
     Then expect selected filter on the contacts left navigation panel is available

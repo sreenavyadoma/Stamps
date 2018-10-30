@@ -12,7 +12,7 @@ end
 
 Then /^expect selected filter on the contacts left navigation panel is available$/ do
   contacts_left_navigation= SdcContacts.contacts_filter
-  contacts_left_navigation.selected.safe_wait_until_present(timeout: 15)
+  contacts_left_navigation.selected_filter.safe_wait_until_present(timeout: 15)
   expect(contacts_left_navigation.selected.present?).to be (true)
 end
 
@@ -34,32 +34,32 @@ end
 Then /^expect contacts grid message for selected contact is (.*)$/ do |message|
   grid=SdcContacts.grid.column
   expect(grid.count.to_i).to eql(0)
-  expect(grid.grid_message).to eql(message)
+  expect(grid.grid_message.text_value).to eql(message)
 end
 
 Then /^expect all contacts filter is available on the contacts left navigation panel$/ do
-  contacts_left_navigation= SdcContacts.contacts_filter.filter_panel
-  contacts_left_navigation.all_contacts.safe_wait_until_present(timeout: 15)
+  contacts_left_navigation= SdcContacts.contacts_filter
+  contacts_left_navigation.all_contacts_filter.safe_wait_until_present(timeout: 15)
   expect(contacts_left_navigation.all_contacts.present?).to be (true)
 end
 
 Then /^click on all contacts filter of contacts left navigation panel$/ do
-  all_con= SdcContacts.contacts_filter.filter_panel
+  contacts_left_navigation= SdcContacts.contacts_filter
   #all_con.all_contacts.flash
-  all_con.all_contacts.click
+  contacts_left_navigation.all_contacts_filter.click
   SdcContacts.loading_contacts.safe_wait_until_present(timeout: 15)
   SdcContacts.grid.body.safe_wait_until_present(timeout: 15)
 end
 
 Then /^expect groups filter is available on the contacts left navigation panel$/ do
-  contacts_left_navigation= SdcContacts.contacts_filter.filter_panel
-  contacts_left_navigation.groups.safe_wait_until_present(timeout: 15)
+  contacts_left_navigation= SdcContacts.contacts_filter
+  contacts_left_navigation.groups_filter.safe_wait_until_present(timeout: 15)
   expect(contacts_left_navigation.groups.present?).to be (true)
 end
 
 Then /^expect cost codes filter is available on the contacts left navigation panel$/ do
-  contacts_left_navigation= SdcContacts.contacts_filter.filter_panel
-  contacts_left_navigation.cost_codes.safe_wait_until_present(timeout: 15)
+  contacts_left_navigation= SdcContacts.contacts_filter
+  contacts_left_navigation.cost_codes_filter.safe_wait_until_present(timeout: 15)
   expect(contacts_left_navigation.cost_codes.present?).to be (true)
 end
 
@@ -111,12 +111,12 @@ end
 
 Then /^expect search results is available on the contacts left navigation panel$/ do
   contacts_left_navigation= SdcContacts.contacts_filter
-  contacts_left_navigation.search_results.safe_wait_until_present(timeout: 15)
-  expect(contacts_left_navigation.search_results.present?).to be (true)
+  contacts_left_navigation.search_results_filter.safe_wait_until_present(timeout: 15)
+  expect(contacts_left_navigation.search_results_filter.present?).to be (true)
 end
 
 Then /^expect contacts with (.*) containing the value (.*) are retrieved in the grid/ do |column_name,value|
-  search_results= SdcContacts.details.search_results
+  search_results= SdcContacts.contacts_filter.search_results
   search_count =search_results.search_results_count.text_value
   SdcLogger.info "Search Count : #{search_count}"
   case column_name
@@ -127,7 +127,7 @@ Then /^expect contacts with (.*) containing the value (.*) are retrieved in the 
   end
   i=1
   while i<=search_count.to_i
-    actual_value = column.contacts_text_at_row(i).downcase.to_sym
+    actual_value = column.text_at_row(i).downcase.to_sym
     SdcLogger.info "value of #{column_name} at row #{i} is #{actual_value}"
     SdcLogger.info "value passed is #{value}"
     expect(actual_value.to_s.include? value.to_s).to be true
@@ -135,10 +135,10 @@ Then /^expect contacts with (.*) containing the value (.*) are retrieved in the 
   end
 end
 
-Then /^expect empty search message for searched contact is displayed on the contacts grid$/ do
+Then /^expect contacts grid message for searched contact is (.*)$/ do |message|
   grid=SdcContacts.grid.column
   expect(grid.count.to_i).to eql(0)
-  expect(grid.grid_message).to eql('No contacts found.')
+  expect(grid.grid_message.text_value).to eql(message)
 end
 
 Then /^expect count of contact search results is (.*)$/ do |count|
