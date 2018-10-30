@@ -46,14 +46,14 @@ Then /^click on settings button of contacts toolbar$/ do
 end
 
 Then /^select columns from contacts toolbar settings dropdown menu$/ do
-  settings = SdcContacts::Toolbar.toolbar_settings
+  settings = SdcContacts.toolbar.toolbar_settings
   settings.settings_columns.safe_wait_until_present(timeout: 10)
   #settings.settings_columns.flash
   settings.settings_columns.hover
 end
 
 Then /^select freeze columns from contacts toolbar settings dropdown menu$/ do
-  settings = SdcContacts::Toolbar.toolbar_settings
+  settings = SdcContacts.toolbar.toolbar_settings
   settings.settings_freeze_columns.safe_wait_until_present(timeout: 10)
   #settings.settings_freeze_columns.flash
   settings.settings_freeze_columns.hover
@@ -78,7 +78,7 @@ Then /^check all the columns from the list to freeze columns on the contacts gri
 end
 
 Then /^choose (.*) on contact settings columns menu list$/ do |column|
-  settings = SdcContacts::Toolbar.toolbar_settings
+  settings = SdcContacts.toolbar.toolbar_settings
   checkbox = settings.column_menu_checkbox(column)
   # checkbox.checked? will return true if it is unchecked as the property_name in chooser item 'unchecked'
   checkbox.check if checkbox.checked?
@@ -104,7 +104,7 @@ Then /^uncheck all the columns from the list to unfreeze columns on the contacts
 end
 
 Then /^unchoose (.*) on contact settings columns menu list$/ do |column|
-  settings = SdcContacts::Toolbar.toolbar_settings
+  settings = SdcContacts.toolbar.toolbar_settings
   checkbox = settings.column_menu_checkbox(column)
   # checkbox.checked? will return true if it is unchecked as the property_name in chooser item 'unchecked'
   checkbox.check unless checkbox.checked?

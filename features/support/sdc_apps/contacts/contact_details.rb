@@ -141,7 +141,7 @@ module SdcContacts
         State.new
       end
 
-      def clear_aa
+      def clear_contacts
         SdcContacts::Modals::ClearContacts.new
       end
 

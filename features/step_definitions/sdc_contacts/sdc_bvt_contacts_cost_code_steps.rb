@@ -1,6 +1,6 @@
 
 Then /^expect cost code page is displayed$/ do
-  add_cost_code  = SdcContacts.contacts_cost_codes
+  add_cost_code  = SdcAccountServices.cost_codes
   add_cost_code.cost_codes_page.safe_wait_until_present(timeout: 20)
   expect(add_cost_code.cost_codes_page.present?).to be(true)
 end
@@ -8,7 +8,7 @@ end
 Then /^on cost code page set value of new cost code textbox to (.*)$/ do |costcode_name|
 
   #check for costcodes count and remove one if count =10 and then add
-  add_cost_code  = SdcContacts.contacts_cost_codes
+  add_cost_code  = SdcAccountServices.cost_codes
   row_count = add_cost_code.cost_code_table_rows.count
   if row_count.to_i.eql? 11
     step 'remove costcode from the costcode table'
@@ -29,35 +29,35 @@ Then /^on cost code page set value of new cost code textbox to (.*)$/ do |costco
 end
 
 Then /^remove costcode from the costcode table$/ do
-  add_cost_code  = SdcContacts.contacts_cost_codes
+  add_cost_code  = SdcAccountServices.cost_codes
   add_cost_code.cost_codes_checkbox.click
   add_cost_code.remove_cost_code_button.click
   add_cost_code.remove_cost_code_button.click
 end
 
 Then /^on cost codes page click on add button$/ do
-  add_cost_code  = SdcContacts.contacts_cost_codes
+  add_cost_code  =SdcAccountServices.cost_codes
   add_cost_code.add_cost_code_button.click
 end
 
 Then /^expect error message box is displayed$/ do
-  add_cost_code  = SdcContacts.contacts_cost_codes
+  add_cost_code  = SdcAccountServices.cost_codes
   expect(add_cost_code.error_cost_code.present?).to be(true)
 end
 
 Then /^expect error message box is not displayed$/ do
-  add_cost_code  = SdcContacts.contacts_cost_codes
+  add_cost_code  = SdcAccountServices.cost_codes
   expect(add_cost_code.error_cost_code.present?).to be(false)
 end
 
 Then /^on cost codes page click on done button$/ do
-  add_cost_code  = SdcContacts.contacts_cost_codes
+  add_cost_code  = SdcAccountServices.cost_codes
   add_cost_code.done_cost_code_button.click
   add_cost_code.cost_codes_accounts_page.safe_wait_until_present(timeout: 15)
 end
 
 Then /^expect change cost code popup$/ do
-  cost_code = SdcContacts.contacts_popup_cost_code
+  cost_code = SdcContacts.modals.change_cost_code
   cost_code.drop_down.safe_wait_until_present(timeout: 10)
   expect(cost_code.drop_down.present?).to be(true)
 end
@@ -67,14 +67,14 @@ Then /^set cost code value in the change costcode pop up box [Tt]o (.*)/ do |cos
   if costcode_name.eql?'new costcode added'
     str ||= TestData.hash[:costcode_val]
     elsif costcode_name.eql? 'existing value'
-      left_nav_costcode = SdcContacts.cost_code_filter
+      left_nav_costcode = SdcContacts.contacts_filter.cost_codes
       row_count = left_nav_costcode.total_costcodes.count
       str = left_nav_costcode.cost_code_name(row_count-1).text_value
       TestData.hash[:costcode_val] = str
     else
     str = costcode_name
   end
-  cost_code = SdcContacts.contacts_popup_cost_code
+  cost_code = SdcContacts.modals.change_cost_code
   #cost_code.text_field.safe_wait_until_present(timeout: 10)
   cost_code.selection_costcode(value: str)
   cost_code.drop_down.click unless cost_code.selection.present?
@@ -85,7 +85,7 @@ Then /^set cost code value in the change costcode pop up box [Tt]o (.*)/ do |cos
 end
 
 Then /^click on cost code save button$/ do
-  cost_code = SdcContacts.contacts_popup_cost_code
+  cost_code = SdcContacts.modals.change_cost_code
   cost_code.save_button.safe_wait_until_present(timeout: 10)
   cost_code.save_button.click
 end
@@ -98,7 +98,7 @@ Then /^click contacts toolbar cost codes dropdown$/ do
 end
 
 Then /^on cost codes dropdown menu select (.*)$/ do |str|
-  toolbar = SdcContacts.cost_codes_dropdown
+  toolbar = SdcContacts.toolbar.cost_codes_dropdown
   case str
   when 'Change Cost Code'
     toolbar.cost_codes_change_costcode.click
@@ -120,7 +120,7 @@ Then /^set (.*) value in details menu cost code dropdown/ do |costcode_name|
     str = costcode_name
   end
 
-  cost_code = SdcContacts.details_cost_code
+  cost_code = SdcContacts.details.cost_code
   cost_code.selection_costcode(value: str)
   cost_code.drop_down.click unless cost_code.selection.present?
   cost_code.text_field.set(str)

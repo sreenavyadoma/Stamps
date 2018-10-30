@@ -192,7 +192,7 @@ Then /^click on contact details panel name collapse button$/ do
 end
 
 Then /^set contact details name prefix to (.*)$/ do |str|
-  name_pre = SdcContacts.details_name_prefix
+  name_pre = SdcContacts.details.name_prefix
   name_pre.prefix_selection(value: str)
   name_pre.prefix_drop_down.click unless name_pre.selection.present?
   name_pre.prefix_text_field.set(str)
@@ -366,14 +366,14 @@ Then /^set contact details cost code to (.*)$/ do |str|
 end
 
 Then /^expect email error is displayed$/ do
-  error= SdcContacts.details_email_error
-  error.email_error.safe_wait_until_present(timeout:10)
-  #expect(error.email_error.present?).to be(true)
+  contacts_detail= SdcContacts.details
+  contacts_detail.email_error.safe_wait_until_present(timeout:10)
+  expect(contacts_detail.email_error.present?).to be(true)
 end
 
 Then /^expect email error is not displayed$/ do
-  error= SdcContacts.details_email_error
-  expect(error.email_error.present?).to be(false)
+  contacts_detail= SdcContacts.details
+  expect(contacts_detail.email_error.present?).to be(false)
 end
 
 Then /^click on contact details menu dropdown$/ do
@@ -627,7 +627,7 @@ Then /^click on clear all link of contact detail panel$/ do
 end
 
 Then /^search contact details country with value (.*)$/ do |str|
-  country = SdcContacts.details_country
+  country = SdcContacts.details.country
   country.selection_country(value: str)
   country.drop_down.click unless country.selection.present?
   country.text_field.set(str)
@@ -644,7 +644,7 @@ Then /^search contact details country with value (.*)$/ do |str|
 end
 
 Then /^expect search country list contains value (.*)$/ do |country_name|
-  country = SdcContacts.details_country
+  country = SdcContacts.details.country
   search_list_count=  TestData.hash[:country_list].size
   i=1
   while  i < search_list_count

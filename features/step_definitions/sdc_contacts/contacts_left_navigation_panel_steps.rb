@@ -32,7 +32,7 @@ Then /^click on selected filter of contacts left navigation panel$/ do
 end
 
 Then /^expect contacts grid message for selected contact is (.*)$/ do |message|
-  grid=SdcContacts.contacts_col
+  grid=SdcContacts.grid.column
   expect(grid.count.to_i).to eql(0)
   expect(grid.grid_message).to eql(message)
 end
@@ -45,7 +45,7 @@ end
 
 Then /^click on all contacts filter of contacts left navigation panel$/ do
   all_con= SdcContacts.contacts_filter.filter_panel
-  all_con.all_contacts.flash
+  #all_con.all_contacts.flash
   all_con.all_contacts.click
   SdcContacts.loading_contacts.safe_wait_until_present(timeout: 15)
   SdcContacts.grid.body.safe_wait_until_present(timeout: 15)
@@ -116,12 +116,12 @@ Then /^expect search results is available on the contacts left navigation panel$
 end
 
 Then /^expect contacts with (.*) containing the value (.*) are retrieved in the grid/ do |column_name,value|
-  search_results= SdcContacts.search_results_filter
+  search_results= SdcContacts.details.search_results
   search_count =search_results.search_results_count.text_value
   SdcLogger.info "Search Count : #{search_count}"
   case column_name
   when 'Name'
-    column = SdcContacts.grid_column(:name)
+    column = SdcContacts.grid.grid_column(:name)
     expect(column).present?
     expect(column.header_text).to eql('Name')
   end
@@ -136,7 +136,7 @@ Then /^expect contacts with (.*) containing the value (.*) are retrieved in the 
 end
 
 Then /^expect empty search message for searched contact is displayed on the contacts grid$/ do
-  grid=SdcContacts.contacts_col
+  grid=SdcContacts.grid.column
   expect(grid.count.to_i).to eql(0)
   expect(grid.grid_message).to eql('No contacts found.')
 end

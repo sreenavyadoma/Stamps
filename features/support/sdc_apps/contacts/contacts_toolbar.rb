@@ -13,6 +13,18 @@ module SdcContacts
       page_object(:feedback) { {xpath: '//*[contains(@class, "sdc-icon-feedback")]'} }
       page_object(:settings) { {xpath: '//*[contains(@class, "sdc-icon-settings")]'} }
 
+      def groups_dropdown
+        GroupsDropdown.new
+      end
+
+      def cost_codes_dropdown
+        CostCodesDropdown.new
+      end
+
+      def toolbar_settings
+        ToolbarSettings.new
+      end
+
     end
 
     class GroupsDropdown< SdcPage
@@ -55,24 +67,6 @@ module SdcContacts
         class_value.include?("unchecked")
       end
 
-    end
-
-    class << self
-      def toolbar
-        Toolbar.new
-      end
-
-      def groups_dropdown
-        GroupsDropdown.new
-      end
-
-      def cost_codes_dropdown
-        CostCodesDropdown.new
-      end
-
-      def toolbar_settings
-        ToolbarSettings.new
-      end
     end
 
   end
