@@ -369,6 +369,7 @@ Then /^expect email error is displayed$/ do
   contacts_detail= SdcContacts.details
   contacts_detail.email_error.safe_wait_until_present(timeout:10)
   expect(contacts_detail.email_error.present?).to be(true)
+  SdcLogger.info "Error message: #{contacts_detail.email_error_message.text_value}"
 end
 
 Then /^expect email error is not displayed$/ do
@@ -378,6 +379,12 @@ end
 
 Then /^click on contact details menu dropdown$/ do
   toolbar_menu = SdcContacts.details.toolbar_menu
+  toolbar_menu.menu_button.safe_wait_until_present(timeout: 20)
+  toolbar_menu.menu_button.click
+end
+
+Then /^click on multiple contact details menu dropdown$/ do
+  toolbar_menu = SdcContacts.multi_details
   toolbar_menu.menu_button.safe_wait_until_present(timeout: 20)
   toolbar_menu.menu_button.click
 end

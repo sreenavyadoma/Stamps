@@ -20,6 +20,10 @@ module SdcContacts
       ContactDetails::Panel.new
     end
 
+    def multi_details
+      MultiContactDetails::Panel.new
+    end
+
     def toolbar
       Toolbar::Toolbar.new
     end
