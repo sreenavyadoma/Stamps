@@ -31,18 +31,17 @@ module SdcContacts
     class ManageGroups < SdcPage
       page_object(:manage_groups_title, required: true, timeout: 10) { { xpath: '//*[contains(@id,"title-")][text() = "Manage Groups"]'}}
       page_object(:manage_groups_add_icon, required: true, timeout: 10) { { xpath: '//*[contains(@id,"title-")][text() = "Manage Groups"]/following::span[contains(@class,"sdc-icon-add")]' } }
-      page_object(:manage_groups_add_button, required: true, timeout: 10) { { xpath: '//*[contains(@id,"title-")][text() = "Manage Groups"]/following::span[text()="Add"]' } }
-      page_object(:manage_groups_edit_button, required: true, timeout: 10) { { xpath: '//*[contains(@id,"title-")][text() = "Manage Groups"]/following::span[text()="Edit"]' } }
-      page_object(:manage_groups_delete_button, required: true, timeout: 10) { { xpath: '//*[contains(@id,"title-")][text() = "Manage Groups"]/following::span[text()="Delete"]' } }
+      page_object(:add_button, required: true, timeout: 10) { { xpath: '//*[contains(@id,"title-")][text() = "Manage Groups"]/following::span[text()="Add"]' } }
+      page_object(:edit_button, required: true, timeout: 10) { { xpath: '//*[contains(@id,"title-")][text() = "Manage Groups"]/following::span[text()="Edit"]' } }
+      page_object(:delete_button, required: true, timeout: 10) { { xpath: '//*[contains(@id,"title-")][text() = "Manage Groups"]/following::span[text()="Delete"]' } }
       page_objects(:manage_groups_table, required: true, timeout: 10) { {xpath: '//*[contains(@id,"title-")][text() = "Manage Groups"]/following::div[contains(@id,"tableview-")]//*[@class="x-grid-item-container"]//table'} }
-      page_object(:edit_groups_row, required: true, timeout: 10) { { xpath: '(//*[@id="manage_groups_grid_toolbar-body"]//*[@class="x-grid-item-container"]//table[@class="x-grid-item"]//*[@class="x-grid-cell-inner "])[2]'}}
+      page_object(:group_row, required: true, timeout: 10) { { xpath: '(//*[@id="manage_groups_grid_toolbar-body"]//*[@class="x-grid-item-container"]//table[@class="x-grid-item"]//*[@class="x-grid-cell-inner "])[2]'}}
 
       page_object(:manage_groups_close, required: true, timeout: 10) { { xpath: '//*[contains(@id,"title-")][text() = "Manage Groups"]/following::span[contains(@class,"-close-")]' } }
 
       def group_name(row)
         xpath_text = "//*[contains(@id,'title-')][text() = 'Manage Groups']/following::div[contains(@id,'tableview-')]//*[@class='x-grid-item-container']//table[#{row}]/tbody/tr/td"
         label = page_object(:group_text, required: true, timeout: 10){ { xpath: xpath_text }}
-        label.text_value
       end
 
       def add_groups

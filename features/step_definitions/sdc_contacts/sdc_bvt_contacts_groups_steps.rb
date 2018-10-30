@@ -68,8 +68,8 @@ end
 Then /^click add button on manage groups window toolbar$/ do
   manage_groups = SdcContacts.modals.manage_groups
   manage_groups.manage_groups_title.safe_wait_until_present(timeout: 10)
-  manage_groups.manage_groups_add_button.click
-  step "expect add groups pop up is displayed"
+  manage_groups.add_button.click
+  step 'expect add groups pop up is displayed'
 end
 
 Then /^expect add groups pop up is displayed$/ do
@@ -108,6 +108,7 @@ Then /^set group name on add group pop up to (.*)$/ do |name|
         str = left_nav_group.group('name',row_count-1).text_value
         group_name=str
       end
+      step 'click on groups collapse button of contacts left navigation'
     end
   else
     group_name=name
@@ -121,25 +122,12 @@ Then /^click on save button of add groups pop up window$/ do
   add_groups.add_groups_save_button.click
 end
 
-Then /^expect error message of blank group name is displayed on add groups pop up window$/ do
+Then /^expect error message on add groups modal is (.*)$/ do |message|
   add_groups = SdcContacts.modals.manage_groups.add_groups
   add_groups.add_groups_save_button.safe_wait_until_present(timeout: 10)
   expect(add_groups.add_groups_error_message.present?).to be(true)
   # add_groups.error_message_text.text_value
-  expect(add_groups.error_message_text.text_value).to eql("Group name required.")
-end
-
-Then /^expect error message of existing group name is displayed on add groups pop up window$/ do
-  add_groups = SdcContacts.modals.manage_groups.add_groups
-  add_groups.add_groups_error_message.safe_wait_until_present(timeout: 20)
-  group_count  =  TestData.hash[:group_count]
-    expect(add_groups.add_groups_error_message.present?).to be(true)
-  # add_groups.error_message_text.text_value
-  if group_count.eql? '0'
-    expect(add_groups.error_message_text.text_value).to eql('Group name required.')
-    else
-    expect(add_groups.error_message_text.text_value).to eql('This group name is already in use. Please choose a unique group name')
-  end
+  expect(add_groups.error_message_text.text_value).to eql(message)
 end
 
 Then /^expect error message is not displayed on add groups pop up window$/ do
@@ -158,14 +146,14 @@ Then /^expect group name added is available in the manage group pop up table$/ d
     group_name_available = 'no'
     while  i <= row_count
       str = manage_groups.group_name(i).text_value
-      if str.eql? 'actual_added'
+      if str.eql? actual_added
         group_name_available = 'yes'
         SdcLogger.info  'Group is available in the Manange Groups table'
         break
       end
       i=i+1
     end
-  expect(group_name_available.eql? 'yes').to eql(true)
+  expect(group_name_available).to eql('yes')
 end
 
 Then /^expect group name deleted is not available in the manage group pop up table$/ do
@@ -351,12 +339,11 @@ Then /^expect removed group is not available in details groups textbox$/ do
 end
 
 Then /^click (.*) row in manage group table$/ do |group_name|
-  edit_groups =  SdcContacts.modals.manage_groups.edit_groups
-  edit_groups.edit_groups_row.safe_wait_until_present(timeout: 10)
-  manage_groups=SdcContacts.modals.manage_groups
+  manage_groups =  SdcContacts.modals.manage_groups
+  manage_groups.group_row.safe_wait_until_present(timeout: 10)
+  edit_groups=SdcContacts.modals.manage_groups.edit_groups
   row_count = manage_groups.manage_groups_table.count
   if group_name != 'existing'
-
     if row_count.to_i != 0
       i=1
       while i<= row_count.to_i
@@ -379,7 +366,7 @@ end
 Then /^click edit button on manage groups window toolbar$/ do
   manage_groups = SdcContacts.modals.manage_groups
   manage_groups.manage_groups_title.safe_wait_until_present(timeout: 10)
-  manage_groups.manage_groups_edit_button.click
+  manage_groups.edit_button.click
   step 'expect edit groups pop up is displayed'
 end
 
@@ -417,20 +404,12 @@ Then /^click on save button of edit groups pop up$/ do
   edit_groups.edit_groups_save_button.click
 end
 
-Then /^expect error message of blank group name is displayed on edit groups pop up window$/ do
+Then /^expect error message on edit groups modal is (.*)$/ do |message|
   edit_groups = SdcContacts.modals.manage_groups.edit_groups
   edit_groups.edit_groups_error_message.safe_wait_until_present(timeout: 10)
   expect(edit_groups.edit_groups_error_message.present?).to be(true)
   # edit_groups.error_message_text.text_value
-  expect(edit_groups.error_message_text.text_value).to eql("Group name required.")
-end
-
-Then /^expect error message of existing group name is displayed on edit groups pop up window$/ do
-  edit_groups = SdcContacts.modals.manage_groups.edit_groups
-  edit_groups.edit_groups_error_message.safe_wait_until_present(timeout: 30)
-  expect(edit_groups.edit_groups_error_message.present?).to be(true)
-  #edit_groups.error_message_text.text_value
-  expect(edit_groups.error_message_text.text_value).to eql("This group name is already in use. Please choose a unique group name")
+  expect(edit_groups.error_message_text.text_value).to eql(message)
 end
 
 Then /^expect error message is not displayed on edit groups pop up window$/ do
@@ -441,8 +420,8 @@ end
 
 Then /^click delete button on manage groups window toolbar$/ do
   manage_groups = SdcContacts.modals.manage_groups
-  manage_groups.manage_groups_delete_button.safe_wait_until_present(timeout: 10)
-  manage_groups.manage_groups_delete_button.click
+  manage_groups.delete_button.safe_wait_until_present(timeout: 10)
+  manage_groups.delete_button.click
   step 'expect delete groups pop up is displayed'
 end
 

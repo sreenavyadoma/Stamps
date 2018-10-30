@@ -44,6 +44,7 @@ Feature:  Contacts BVT - Contacts Filter Panel
     Then click on cost codes expand button of contacts left navigation
     Then fetch total against each cost code available
     Then click on cost codes collapse button of contacts left navigation
+    Then sign out
 
   @sdc_contacts_left_navigation_add_group
   Scenario: Contacts BVT Scenario 1: Add new group from contact left navigation
@@ -54,13 +55,14 @@ Feature:  Contacts BVT - Contacts Filter Panel
     Then click on groups add button of contacts left navigation
     Then set group name on add group pop up to blank
     Then click on save button of add groups pop up window
-    Then expect error message of blank group name is displayed on add groups pop up window
+    Then expect error message on add groups modal is Group name required.
     Then set group name on add group pop up to existing
     Then click on save button of add groups pop up window
-    Then expect error message of existing group name is displayed on add groups pop up window
+    Then expect error message on add groups modal is This group name is already in use. Please choose a unique group name
     Then set group name on add group pop up to random
     Then click on save button of add groups pop up window
     Then expect error message is not displayed on add groups pop up window
+    Then sign out
 
   @sdc_contacts_left_add_edit_group
   Scenario: Contacts BVT Scenario 1: Add/Edit group from contact left navigation
@@ -73,10 +75,10 @@ Feature:  Contacts BVT - Contacts Filter Panel
     Then click add button on manage groups window toolbar
     Then set group name on add group pop up to blank
     Then click on save button of add groups pop up window
-    Then expect error message of blank group name is displayed on add groups pop up window
+    Then expect error message on add groups modal is Group name required.
     Then set group name on add group pop up to existing
     Then click on save button of add groups pop up window
-    Then expect error message of existing group name is displayed on add groups pop up window
+    Then expect error message on add groups modal is This group name is already in use. Please choose a unique group name
     Then set group name on add group pop up to random
     Then click on save button of add groups pop up window
     Then expect error message is not displayed on add groups pop up window
@@ -87,10 +89,10 @@ Feature:  Contacts BVT - Contacts Filter Panel
     Then click edit button on manage groups window toolbar
     Then set group name on edit pop up to blank
     Then click on save button of edit groups pop up
-    Then expect error message of blank group name is displayed on edit groups pop up window
+    Then expect error message on edit groups modal is Group name required.
     Then set group name on edit pop up to existing
     Then click on save button of edit groups pop up
-    Then expect error message of existing group name is displayed on edit groups pop up window
+    Then expect error message on edit groups modal is This group name is already in use. Please choose a unique group name
     Then set group name on edit pop up to random
     Then click on save button of edit groups pop up
     Then expect error message is not displayed on edit groups pop up window
