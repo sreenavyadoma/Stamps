@@ -60,12 +60,12 @@ module SdcContacts
         instance_eval(menu_item_checkbox_name)
       end
 
-      def checkbox_checked(column)
-        xpath="//span[text()='#{column}']/ancestor::div[contains(@class,'x-menu-item')]"
-        item=page_object(:parent_item){{xpath: xpath}}
-        class_value =  item.attribute_value("class")
-        class_value.include?("unchecked")
-      end
+      # def checkbox_checked(column)
+      #   xpath="//span[text()='#{column}']/ancestor::div[contains(@class,'x-menu-item')]"
+      #   item=page_object(:parent_item){{xpath: xpath}}
+      #   class_value =  item.attribute_value("class")
+      #   class_value.include?("unchecked")
+      # end
 
     end
 
