@@ -1,20 +1,20 @@
 
 Then /^expect ship-to country on mail is (?:correct|(.*))$/ do |str|
-  str||=TestData.hash[:country]
+  str ||= TestData.hash[:country]
   mail_to = SdcMail::SdcPrintForm::MailToContainer::MailTo.new
   actual_value = mail_to.dom_text_field
   expect(actual_value.text_value.to_s).to eql(str.to_s)
 end
 
 Then /^expect ship-to address on mail is (?:correct|(.*))$/ do |str|
-    full_name||= TestData.hash[:full_name]
-    company||= TestData.hash[:company]
-    street_address||= TestData.hash[:street_address]
-    city||= TestData.hash[:city]
-    state||= TestData.hash[:state]
-      us_states= data_for(:us_states, {})
-      state_abbver=us_states.key(state)
-    postal_code||= TestData.hash[:postal_code]
+  full_name ||= TestData.hash[:full_name]
+  company ||= TestData.hash[:company]
+  street_address ||= TestData.hash[:street_address]
+  city ||= TestData.hash[:city]
+  state ||= TestData.hash[:state]
+  us_states = data_for(:us_states, {})
+  state_abbver = us_states.key(state)
+  postal_code ||= TestData.hash[:postal_code]
   address = "#{full_name}\n#{company}\n#{street_address}\n#{city}, #{state_abbver} #{postal_code}"
   mail_to = SdcMail::SdcPrintForm::MailToContainer::MailTo.new
   actual_value = mail_to.text_area
@@ -22,7 +22,7 @@ Then /^expect ship-to address on mail is (?:correct|(.*))$/ do |str|
 end
 
 Then /^expect email on mail is (?:correct|(.*))$/ do |str|
-  str||=TestData.hash[:email]
+  str ||= TestData.hash[:email]
   email_obj = SdcMail::SdcPrintForm::EmailTrackingContainer::EmailTracking.new
   actual_value = email_obj.text_field
   expect(actual_value.text_value.to_s).to eql(str.to_s)
@@ -36,12 +36,12 @@ Then /^expect reference # on mail is (?:correct|(.*))$/ do |str|
 end
 
 Then /^expect cost code on mail is (?:correct|(.*))$/ do |str|
-    temp||= TestData.hash[:cost_code]
-    if temp.eql? ""
-      str  = "None"
-    else
-      str||= TestData.hash[:cost_code]
-    end
+  temp ||= TestData.hash[:cost_code]
+  if temp.eql? ""
+    str = "None"
+  else
+    str ||= TestData.hash[:cost_code]
+  end
 
   advanced_options = SdcMail::SdcPrintForm::AdvancedOptionsContainer::AdvancedOptionsCostCode.new
   actual_value = advanced_options.text_field
@@ -58,7 +58,7 @@ end
 
 
 Then /^expect contact address value after address cleansing is (?:correct|(.*))$/ do |str|
-  str||= TestData.hash[:mail_to_domestic_address]
+  str ||= TestData.hash[:mail_to_domestic_address]
   addr = str.split("\n")
   word_count = addr.length
   full_name	=	addr[0]
@@ -67,12 +67,12 @@ Then /^expect contact address value after address cleansing is (?:correct|(.*))$
   #street_address
   street_address	=	addr[2]
   #city
-  city_state =addr[3].split(',')
+  city_state = addr[3].split(',')
   city = city_state[0]
   #state
-  temp_state=city_state[1].split(' ')
-  us_states= data_for(:us_states, {})
-  state=us_states[temp_state[0]]
+  temp_state = city_state[1].split(' ')
+  us_states = data_for(:us_states, {})
+  state = us_states[temp_state[0]]
   #postal_code
   postal_code = temp_state[1]
 

@@ -1,10 +1,10 @@
 
 Then /^click add button on contacts toolbar$/ do
-  toolbar =SdcContacts.toolbar
+  toolbar = SdcContacts.toolbar
   toolbar.cost_codes.safe_wait_until_present(timeout: 15)
   toolbar.add.safe_wait_until_present(timeout: 15)
   toolbar.add.click
-  contacts_detail= SdcContacts.details
+  contacts_detail = SdcContacts.details
   contacts_detail.contacts_detail_panel.safe_wait_until_present(timeout: 10)
 end
 
@@ -13,7 +13,7 @@ Then /^click delete button on contacts toolbar$/ do
   toolbar.delete.safe_wait_until_present(timeout: 10)
   toolbar.delete.wait_until_present(timeout: 10)
   toolbar.delete.click
-  del_con_win =SdcContacts.modals.delete_contact
+  del_con_win = SdcContacts.modals.delete_contact
   del_con_win.title.safe_wait_until_present(timeout:10)
 end
 
@@ -60,7 +60,7 @@ Then /^select freeze columns from contacts toolbar settings dropdown menu$/ do
 end
 
 Then /^check all the columns from the list to show all columns in the contacts grid$/ do
-  columns=['Name','Prefix','First Name','Middle','Last Name','Suffix','Company','Title','Department',
+  columns = ['Name','Prefix','First Name','Middle','Last Name','Suffix','Company','Title','Department',
            'Email','Phone','Ext.','City','State/Prv','Street Address','Postal Code','Country','Cost Code','Reference #']
   columns.each{|col|
     step "choose #{col} on contact settings columns menu list"
@@ -69,7 +69,7 @@ Then /^check all the columns from the list to show all columns in the contacts g
 end
 
 Then /^check all the columns from the list to freeze columns on the contacts grid$/ do
-  columns=['Name','Prefix','First Name','Middle','Last Name','Suffix','Company','Title','Department',
+  columns = ['Name','Prefix','First Name','Middle','Last Name','Suffix','Company','Title','Department',
            'Email','Phone','Ext.','City','State/Prv','Street Address','Postal Code','Country','Cost Code','Reference #']
   columns.each{|col|
     step "choose #{col} on contact settings columns menu list"
@@ -86,7 +86,7 @@ Then /^choose (.*) on contact settings columns menu list$/ do |column|
 end
 
 Then /^uncheck all the columns from the list to hide all columns in the contacts grid$/ do
-  columns=['Name','Prefix','First Name','Middle','Last Name','Suffix','Company','Title','Department',
+  columns = ['Name','Prefix','First Name','Middle','Last Name','Suffix','Company','Title','Department',
            'Email','Phone','Ext.','City','State/Prv','Street Address','Postal Code','Country','Cost Code','Reference #']
   columns.each{|col|
     step "unchoose #{col} on contact settings columns menu list"
@@ -95,7 +95,7 @@ Then /^uncheck all the columns from the list to hide all columns in the contacts
 end
 
 Then /^uncheck all the columns from the list to unfreeze columns on the contacts grid$/ do
-  columns=['Name','Prefix','First Name','Middle','Last Name','Suffix','Company','Title','Department',
+  columns = ['Name','Prefix','First Name','Middle','Last Name','Suffix','Company','Title','Department',
            'Email','Phone','Ext.','City','State/Prv','Street Address','Postal Code','Country','Cost Code','Reference #']
   columns.each{|col|
     step "unchoose #{col} on contact settings columns menu list"
@@ -112,7 +112,7 @@ Then /^unchoose (.*) on contact settings columns menu list$/ do |column|
 end
 
 Then /^expect (.*) column is available on contacts grid$/ do |column|
-  column_header =SdcContacts.grid.column.contacts_header_element(column)
+  column_header = SdcContacts.grid.column.contacts_header_element(column)
   column_header.scroll_into_view
   #column_header.flash
   SdcLogger.info "Header Element Present? : #{column} - #{column_header.present?.to_s}"
@@ -120,7 +120,7 @@ Then /^expect (.*) column is available on contacts grid$/ do |column|
 end
 
 Then /^expect (.*) column is not available on contacts grid$/ do |column|
-  column_header =SdcContacts.grid.column.contacts_header_element(column)
+  column_header = SdcContacts.grid.column.contacts_header_element(column)
   #todo-Aloha check with rob
   column_header.scroll_into_view
   SdcLogger.info "Header Element Present? : #{column} - #{column_header.present?.to_s}"
@@ -145,7 +145,7 @@ end
 
 
 Then /^expect all columns are available on the contacts grid$/ do
-  columns=['Name','Prefix','First Name','Middle','Last Name','Suffix','Company','Title','Department',
+  columns = ['Name','Prefix','First Name','Middle','Last Name','Suffix','Company','Title','Department',
            'Email','Phone','Ext.','City','State/Prv','Street Address','Postal Code','Country','Cost Code','Reference #']
   columns.each{|col|
     step "expect #{col} column is available on contacts grid"
@@ -153,7 +153,7 @@ Then /^expect all columns are available on the contacts grid$/ do
 end
 
 Then /^expect all columns are not available on the contacts grid$/ do
-  columns=['Name','Prefix','First Name','Middle','Last Name','Suffix','Company','Title','Department',
+  columns = ['Name','Prefix','First Name','Middle','Last Name','Suffix','Company','Title','Department',
            'Email','Phone','Ext.','City','State/Prv','Street Address','Postal Code','Country','Cost Code','Reference #']
   columns.each{|col|
     step "expect #{col} column is not available on contacts grid"
@@ -161,7 +161,7 @@ Then /^expect all columns are not available on the contacts grid$/ do
 end
 
 Then /^expect all columns are freezed on the contacts grid$/ do
-  columns=['Name','Prefix','First Name','Middle','Last Name','Suffix','Company','Title','Department',
+  columns = ['Name','Prefix','First Name','Middle','Last Name','Suffix','Company','Title','Department',
            'Email','Phone','Ext.','City','State/Prv','Street Address','Postal Code','Country','Cost Code','Reference #']
   columns.each{|col|
     step "expect #{col} column is freezed on contacts grid"
@@ -169,7 +169,7 @@ Then /^expect all columns are freezed on the contacts grid$/ do
 end
 
 Then /^expect all columns are unfreezed on the contacts grid$/ do
-  columns=['Name','Prefix','First Name','Middle','Last Name','Suffix','Company','Title','Department',
+  columns = ['Name','Prefix','First Name','Middle','Last Name','Suffix','Company','Title','Department',
            'Email','Phone','Ext.','City','State/Prv','Street Address','Postal Code','Country','Cost Code','Reference #']
   columns.each{|col|
     step "expect #{col} column is unfreezed on contacts grid"

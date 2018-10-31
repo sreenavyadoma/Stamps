@@ -83,7 +83,7 @@ module SdcContacts
 
       def header_dropdown_menu_list
         xpath = '//*[@class="x-menu x-layer x-menu-default x-border-box"]//div[contains(@class,"x-menu-item")]/a'
-        page_objects(:header_element_dropdown_menu){{xpath: xpath}}
+        page_objects(:header_element_dropdown_menu){{ xpath: xpath }}
       end
 
       def header_dropdown_menu_item(menu_item)
@@ -92,12 +92,12 @@ module SdcContacts
         else
           xpath = "//*[@class='x-menu x-layer x-menu-default x-border-box']//div[contains(@class,'x-menu-item')]/a/span[text()='#{menu_item}']"
         end
-        page_object(:menu_item){{xpath: xpath}}
+        page_object(:menu_item){{ xpath: xpath }}
       end
 
       def header_menu_item_disabled(menu_item)
         xpath = "//span[text()='#{menu_item}']/ancestor::div[contains(@class,'x-menu-item')]"
-        item = page_object(:parent_item){{xpath: xpath}}
+        item = page_object(:parent_item){{ xpath: xpath }}
         #item.attribute_value("class")
         class_value = item.attribute_value("class")
         class_value.include?("disabled")
@@ -127,7 +127,7 @@ module SdcContacts
       end
 
       def grid_message
-        page_object(:grid_message) { {xpath: '//*[@class="x-grid-empty"]'} }
+        page_object(:grid_message) { { xpath: '//*[@class="x-grid-empty"]' } }
       end
 
       def text_at(column, row)
@@ -270,7 +270,7 @@ module SdcContacts
         text_at(@column, row)
       end
 
-       def element(row)
+      def element(row)
         element_at_row(@column, row)
       end
 

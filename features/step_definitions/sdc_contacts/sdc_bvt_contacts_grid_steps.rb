@@ -46,10 +46,12 @@ Then /^expect name details on contacts grid are updated appropriately for (.*)$/
   contacts_grid_body = SdcContacts.grid.body
   contacts_grid_body.safe_wait_until_present(timeout: 60)
 
+  expect(contacts_grid_body.present?).to be true
+
   col_prefix = SdcContacts.grid.grid_column(:prefix)
   value_prefix = col_prefix.text_at_row(1)
 
-  col_first =SdcContacts.grid.grid_column(:first_name)
+  col_first = SdcContacts.grid.grid_column(:first_name)
   value_first = col_first.text_at_row(1)
 
   col_middle = SdcContacts.grid.grid_column(:middle)
@@ -112,18 +114,18 @@ end
 
 Then /^expect values of contact added in contacts grid are correct$/ do
 
-  full_name||=	TestData.hash[:full_name]
-  company||=	TestData.hash[:company]
-  country||=	TestData.hash[:country]
-  street_address||=	TestData.hash[:street_address]
-  city||=	TestData.hash[:city]
-  state||=	TestData.hash[:state]
-  postal_code||=	TestData.hash[:postal_code]
-  email||=	TestData.hash[:email]
-  phone||=	TestData.hash[:phone]
-  phone_ext||=	TestData.hash[:phone_ext]
-  reference_number||=	TestData.hash[:reference_number]
-  cost_code||=	TestData.hash[:cost_code]
+  full_name = TestData.hash[:full_name]
+  company = TestData.hash[:company]
+  country = TestData.hash[:country]
+  street_address = TestData.hash[:street_address]
+  city = TestData.hash[:city]
+  state = TestData.hash[:state]
+  postal_code = TestData.hash[:postal_code]
+  email = TestData.hash[:email]
+  phone = TestData.hash[:phone]
+  phone_ext = TestData.hash[:phone_ext]
+  reference_number = TestData.hash[:reference_number]
+  cost_code = TestData.hash[:cost_code]
 
   step "expect value of Name in contacts grid is #{full_name}"
   step "expect value of Company in contacts grid is #{company}"
@@ -172,12 +174,12 @@ Then /^expect value of (.*) in contacts grid is (.*)$/ do |col,value|
     expect(column.header_text).to eql('Middle')
 
   when 'Last Name'
-    column =SdcContacts.grid.grid_column(:last_name)
+    column = SdcContacts.grid.grid_column(:last_name)
     expect(column).present?
     expect(column.header_text).to eql('Last Name')
 
   when 'Suffix'
-    column =SdcContacts.grid.grid_column(:suffix)
+    column = SdcContacts.grid.grid_column(:suffix)
     expect(column).present?
     expect(column.header_text).to eql('Suffix')
 
@@ -187,7 +189,7 @@ Then /^expect value of (.*) in contacts grid is (.*)$/ do |col,value|
     expect(column.header_text).to eql('Company')
 
   when 'Title'
-    column =SdcContacts.grid.grid_column(:title)
+    column = SdcContacts.grid.grid_column(:title)
     expect(column).present?
     expect(column.header_text).to eql('Title')
 
@@ -212,7 +214,7 @@ Then /^expect value of (.*) in contacts grid is (.*)$/ do |col,value|
     expect(column.header_text).to eql('City')
 
   when 'State/Prv'
-    column =SdcContacts.grid.grid_column(:state_prv)
+    column = SdcContacts.grid.grid_column(:state_prv)
     expect(column).present?
     expect(column.header_text).to eql('State/Prv')
 
@@ -254,21 +256,23 @@ Then /^expect value of (.*) in contacts grid is (.*)$/ do |col,value|
       temp ||= TestData.hash[:costcode_val]
     end
   end
-   if value.eql?'blank'
-    new_value = ""
-  elsif value.eql? 'correct?'
-    new_value = temp
-  else
-    new_value = value
-  end
+
+  new_value = if value.eql?'blank'
+                ""
+              elsif value.eql? 'correct?'
+                temp
+              else
+                value
+              end
+
   actual_value = column.text_at_row(1)
 
   if column.header_text.eql?('Country')
     val = actual_value.split('-')
     expect(val[1].strip).to eql new_value.strip
   elsif column.header_text.eql?('State/Prv') && col.eql?('State/Prv')
-    us_states= data_for(:us_states, {})
-    new_value=us_states.key(value)
+    us_states = data_for(:us_states, {})
+    new_value = us_states.key(value)
     expect(actual_value.strip).to eql new_value.strip
   else
     expect(actual_value.strip).to eql new_value.strip

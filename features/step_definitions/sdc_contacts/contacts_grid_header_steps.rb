@@ -1,5 +1,5 @@
 Then /^hover on (.*) column on contacts grid$/ do |column|
-  column_header =SdcContacts.grid.column.contacts_header_element(column)
+  column_header = SdcContacts.grid.column.contacts_header_element(column)
   column_header.scroll_into_view
   # SdcLogger.info "Header Element Present of #{column} is #{column_header.present?}"
   #column_header.flash
@@ -14,7 +14,7 @@ Then /^click on (.*) column header dropdown trigger$/ do |column|
 end
 
 Then /^expect contacts header dropdown menu is displayed$/ do
-  menu_list=SdcContacts.grid.column.header_dropdown_menu_list
+  menu_list = SdcContacts.grid.column.header_dropdown_menu_list
   expect(menu_list.present?).to be(true)
 end
 
@@ -44,7 +44,7 @@ end
 
 
 Then /^verify sorting options for all columns in contact header menu$/ do
-  enabled_columns=['Name','Prefix','First Name','Middle','Last Name','Suffix','Company','Title','Department',
+  enabled_columns = ['Name','Prefix','First Name','Middle','Last Name','Suffix','Company','Title','Department',
                    'Email','Phone','Ext.','City','State/Prv','Street Address','Postal Code','Country','Cost Code','Reference #']
   enabled_columns.each{|col|
     #SdcLogger.info "****** #{col} *******"
@@ -70,7 +70,7 @@ end
 
 Then /^expect row name dropdown for all columns is present$/ do
   #"First Name",'Last Name'
-  columns=['Name','Prefix','First Name','Middle','Last Name','Suffix','Company','Title','Department',
+  columns = ['Name','Prefix','First Name','Middle','Last Name','Suffix','Company','Title','Department',
            'Email','Phone','Ext.','City','State/Prv','Street Address','Postal Code','Country','Cost Code','Reference #']
   columns.each{|col|
     #SdcLogger.info "****** #{col} *******"
@@ -87,7 +87,7 @@ Then /^expect row name dropdown for all columns is present$/ do
 end
 
 Then /^click on (.*) column header on the grid to sort$/ do |column|
-  column_header =SdcContacts.grid.column.contacts_header_element(column)
+  column_header = SdcContacts.grid.column.contacts_header_element(column)
   column_header.scroll_into_view
   SdcLogger.info "Header Element Present of #{column} is #{column_header.present?}"
   column_header.flash
@@ -97,7 +97,7 @@ Then /^click on (.*) column header on the grid to sort$/ do |column|
 end
 
 Then /^verify the contacts grid is sorted based on (.*)$/ do |column|
-  grid_count =SdcContacts.grid.count
+  grid_count = SdcContacts.grid.count
   SdcLogger.info grid_count
   sleep (5)
   #yet to code

@@ -5,10 +5,9 @@ Then /^set per page drop down of pagination on contacts toolbar to (\d+)$/ do |n
   pagination.perpage_drop_down.click unless pagination.selection.present?
   pagination.selection.safe_click
   expect(pagination.perpage_textbox.text_value).to include(number.to_s)
-
 end
 
- Then /^expect first and prev page arrows are disabled$/ do
+Then /^expect first and prev page arrows are disabled$/ do
   step 'expect first page is disabled'
   step 'expect prev page is disabled'
 end

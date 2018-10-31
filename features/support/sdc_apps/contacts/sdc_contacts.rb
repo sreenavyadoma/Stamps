@@ -11,7 +11,7 @@ module SdcContacts
 
     def verifying_account
       klass = Class.new(SdcPage) do
-        page_object(:verifying_account) { {xpath: '//*[contains(text(), "Verifying")]'} }
+        page_object(:verifying_account) { { xpath: '//*[contains(text(), "Verifying")]' } }
       end
       klass.new.verifying_account
     end

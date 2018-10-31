@@ -578,7 +578,7 @@ Then /^set address to (.*)$/ do |address|
     us_states = data_for(:us_states, {})
     states = us_states.values
     state = states[rand(us_states.size)]
-    SdcLogger.info  "state value from random states value #{state}"
+    SdcLogger.info "state value from random states value #{state}"
     postal_code = TestHelper.rand_postal_code
   when 'international'
     countries = data_for(:countries, {})
@@ -589,14 +589,14 @@ Then /^set address to (.*)$/ do |address|
     us_states = data_for(:us_states, {})
     states = us_states.values
     state = states[rand(us_states.size)]
-    SdcLogger.info  "state value from random states value #{state}"
+    SdcLogger.info "state value from random states value #{state}"
     postal_code = TestHelper.rand_postal_code
   when 'apo'
     country = 'United States'
     apo_states = {"AA (Armed Forces)" => "AA", "AE (Armed Forces)" => "AE"}
     apo_states = apo_states.keys
     state = apo_states[rand(apo_states.size)]
-    SdcLogger.info  "state value from random states value #{state}"
+    SdcLogger.info "state value from random states value #{state}"
     street_address = TestHelper.rand_street1_address
     city = TestHelper.rand_city_name
     postal_code = TestHelper.rand_postal_code
@@ -640,7 +640,7 @@ Then /^search contact details country with value (.*)$/ do |str|
   search_list_count = country.search_countries(str,'count')
   i = 1
   country_list = Array.new
-  while  i <= search_list_count.count
+  while i <= search_list_count.count
     country_list[i] = country.search_countries_list(str,i).text_value
     i = i + 1
   end
@@ -653,7 +653,7 @@ Then /^expect search country list contains value (.*)$/ do |country_name|
   country = SdcContacts.details.country
   search_list_count = TestData.hash[:country_list].size
   i = 1
-  while  i < search_list_count
+  while i < search_list_count
     expect(country.search_countries(TestData.hash[:country_list][i],'name').present?).to be (true)
     SdcLogger.info "#{TestData.hash[:country_list][i]} is present in search list of #{country_name}"
     i = i + 1
